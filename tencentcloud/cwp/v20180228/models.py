@@ -40642,19 +40642,17 @@ class DescribeLicenseBindListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LicenseId: 授权ID
+        :param _LicenseId: <p>授权ID取DescribeLicenseList接口List对象下的LicenseId参数值</p>
         :type LicenseId: int
-        :param _LicenseType: 授权类型
+        :param _LicenseType: <p>授权类型</p><p>枚举值：</p><ul><li>0： 专业版-按量计费</li><li>1： 专业版-包年包月(主机安全)</li><li>2： 旗舰版-包年包月(主机安全)</li><li>3： 轻量版-LH-包年包月</li><li>6： 专业版-包年包月（云安全中心）</li><li>7： 旗舰版-包年包月（云安全中心）</li></ul>
         :type LicenseType: int
-        :param _ResourceId: 资源ID
+        :param _ResourceId: <p>资源ID,取DescribeLicenseList接口List对象下的ResourceId参数值</p>
         :type ResourceId: str
-        :param _Filters: <li>InstanceID、IP、
-
-MachineName 模糊查询</li>
+        :param _Filters: <li>InstanceID、IP、<p>MachineName 模糊查询</li></p>
         :type Filters: list of Filters
-        :param _Limit: 限制条数,默认10.
+        :param _Limit: <p>限制条数,默认10.</p>
         :type Limit: int
-        :param _Offset: 偏移量,默认0.
+        :param _Offset: <p>偏移量,默认0.</p>
         :type Offset: int
         """
         self._LicenseId = None
@@ -40666,7 +40664,7 @@ MachineName 模糊查询</li>
 
     @property
     def LicenseId(self):
-        r"""授权ID
+        r"""<p>授权ID取DescribeLicenseList接口List对象下的LicenseId参数值</p>
         :rtype: int
         """
         return self._LicenseId
@@ -40677,7 +40675,7 @@ MachineName 模糊查询</li>
 
     @property
     def LicenseType(self):
-        r"""授权类型
+        r"""<p>授权类型</p><p>枚举值：</p><ul><li>0： 专业版-按量计费</li><li>1： 专业版-包年包月(主机安全)</li><li>2： 旗舰版-包年包月(主机安全)</li><li>3： 轻量版-LH-包年包月</li><li>6： 专业版-包年包月（云安全中心）</li><li>7： 旗舰版-包年包月（云安全中心）</li></ul>
         :rtype: int
         """
         return self._LicenseType
@@ -40688,7 +40686,7 @@ MachineName 模糊查询</li>
 
     @property
     def ResourceId(self):
-        r"""资源ID
+        r"""<p>资源ID,取DescribeLicenseList接口List对象下的ResourceId参数值</p>
         :rtype: str
         """
         return self._ResourceId
@@ -40699,9 +40697,7 @@ MachineName 模糊查询</li>
 
     @property
     def Filters(self):
-        r"""<li>InstanceID、IP、
-
-MachineName 模糊查询</li>
+        r"""<li>InstanceID、IP、<p>MachineName 模糊查询</li></p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -40712,7 +40708,7 @@ MachineName 模糊查询</li>
 
     @property
     def Limit(self):
-        r"""限制条数,默认10.
+        r"""<p>限制条数,默认10.</p>
         :rtype: int
         """
         return self._Limit
@@ -40723,7 +40719,7 @@ MachineName 模糊查询</li>
 
     @property
     def Offset(self):
-        r"""偏移量,默认0.
+        r"""<p>偏移量,默认0.</p>
         :rtype: int
         """
         return self._Offset
@@ -40762,9 +40758,9 @@ class DescribeLicenseBindListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总条数
+        :param _TotalCount: <p>总条数</p>
         :type TotalCount: int
-        :param _List: 绑定机器列表信息
+        :param _List: <p>绑定机器列表信息</p>
         :type List: list of LicenseBindDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40775,7 +40771,7 @@ class DescribeLicenseBindListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -40786,7 +40782,7 @@ class DescribeLicenseBindListResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""绑定机器列表信息
+        r"""<p>绑定机器列表信息</p>
         :rtype: list of LicenseBindDetail
         """
         return self._List

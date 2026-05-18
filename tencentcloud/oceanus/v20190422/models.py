@@ -4293,26 +4293,41 @@ class CreateVariableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 变量名
+        :param _Name: <p>变量名</p>
         :type Name: str
-        :param _Value: 变量值
+        :param _Value: <p>变量值</p>
         :type Value: str
-        :param _Type: 变量类型  1：显式   2：隐藏
+        :param _Type: <p>变量类型  1：显式   2：隐藏</p>
         :type Type: int
-        :param _Remark: 描述信息
+        :param _Remark: <p>描述信息</p>
         :type Remark: str
-        :param _WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
         :type WorkSpaceId: str
+        :param _ValueType: <p>变量值类型</p><p>枚举值：</p><ul><li>0： 自定义变量</li><li>1： 凭据值</li></ul>
+        :type ValueType: int
+        :param _SecretRegion: <p>凭据所在地域</p>
+        :type SecretRegion: str
+        :param _SecretName: <p>凭据名称</p>
+        :type SecretName: str
+        :param _SecretVersionId: <p>凭据版本</p>
+        :type SecretVersionId: str
+        :param _SecretValueMd5: <p>凭据值md5</p>
+        :type SecretValueMd5: str
         """
         self._Name = None
         self._Value = None
         self._Type = None
         self._Remark = None
         self._WorkSpaceId = None
+        self._ValueType = None
+        self._SecretRegion = None
+        self._SecretName = None
+        self._SecretVersionId = None
+        self._SecretValueMd5 = None
 
     @property
     def Name(self):
-        r"""变量名
+        r"""<p>变量名</p>
         :rtype: str
         """
         return self._Name
@@ -4323,7 +4338,7 @@ class CreateVariableRequest(AbstractModel):
 
     @property
     def Value(self):
-        r"""变量值
+        r"""<p>变量值</p>
         :rtype: str
         """
         return self._Value
@@ -4334,7 +4349,7 @@ class CreateVariableRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""变量类型  1：显式   2：隐藏
+        r"""<p>变量类型  1：显式   2：隐藏</p>
         :rtype: int
         """
         return self._Type
@@ -4345,7 +4360,7 @@ class CreateVariableRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""描述信息
+        r"""<p>描述信息</p>
         :rtype: str
         """
         return self._Remark
@@ -4356,7 +4371,7 @@ class CreateVariableRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 SerialId
+        r"""<p>工作空间 SerialId</p>
         :rtype: str
         """
         return self._WorkSpaceId
@@ -4365,6 +4380,61 @@ class CreateVariableRequest(AbstractModel):
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
 
+    @property
+    def ValueType(self):
+        r"""<p>变量值类型</p><p>枚举值：</p><ul><li>0： 自定义变量</li><li>1： 凭据值</li></ul>
+        :rtype: int
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def SecretRegion(self):
+        r"""<p>凭据所在地域</p>
+        :rtype: str
+        """
+        return self._SecretRegion
+
+    @SecretRegion.setter
+    def SecretRegion(self, SecretRegion):
+        self._SecretRegion = SecretRegion
+
+    @property
+    def SecretName(self):
+        r"""<p>凭据名称</p>
+        :rtype: str
+        """
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def SecretVersionId(self):
+        r"""<p>凭据版本</p>
+        :rtype: str
+        """
+        return self._SecretVersionId
+
+    @SecretVersionId.setter
+    def SecretVersionId(self, SecretVersionId):
+        self._SecretVersionId = SecretVersionId
+
+    @property
+    def SecretValueMd5(self):
+        r"""<p>凭据值md5</p>
+        :rtype: str
+        """
+        return self._SecretValueMd5
+
+    @SecretValueMd5.setter
+    def SecretValueMd5(self, SecretValueMd5):
+        self._SecretValueMd5 = SecretValueMd5
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4372,6 +4442,11 @@ class CreateVariableRequest(AbstractModel):
         self._Type = params.get("Type")
         self._Remark = params.get("Remark")
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._ValueType = params.get("ValueType")
+        self._SecretRegion = params.get("SecretRegion")
+        self._SecretName = params.get("SecretName")
+        self._SecretVersionId = params.get("SecretVersionId")
+        self._SecretValueMd5 = params.get("SecretValueMd5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4389,7 +4464,7 @@ class CreateVariableResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VariableId: 变量Id
+        :param _VariableId: <p>变量Id</p>
         :type VariableId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4399,7 +4474,7 @@ class CreateVariableResponse(AbstractModel):
 
     @property
     def VariableId(self):
-        r"""变量Id
+        r"""<p>变量Id</p>
         :rtype: str
         """
         return self._VariableId
@@ -14754,6 +14829,10 @@ class Setats(AbstractModel):
         :type ImageVersion: str
         :param _WebUIType: <p>类型：0 公网，1 内网</p><p>枚举值：</p><ul><li>0： 公网</li><li>1： 内网</li></ul><p>默认值：0</p>
         :type WebUIType: int
+        :param _Name: <p>setats集群的名字</p>
+        :type Name: str
+        :param _Remark: <p>setats集群注释</p>
+        :type Remark: str
         """
         self._SetatsSerialId = None
         self._Status = None
@@ -14772,6 +14851,8 @@ class Setats(AbstractModel):
         self._SetatsUiUrl = None
         self._ImageVersion = None
         self._WebUIType = None
+        self._Name = None
+        self._Remark = None
 
     @property
     def SetatsSerialId(self):
@@ -14972,6 +15053,28 @@ class Setats(AbstractModel):
     def WebUIType(self, WebUIType):
         self._WebUIType = WebUIType
 
+    @property
+    def Name(self):
+        r"""<p>setats集群的名字</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        r"""<p>setats集群注释</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._SetatsSerialId = params.get("SetatsSerialId")
@@ -15002,6 +15105,8 @@ class Setats(AbstractModel):
         self._SetatsUiUrl = params.get("SetatsUiUrl")
         self._ImageVersion = params.get("ImageVersion")
         self._WebUIType = params.get("WebUIType")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16818,31 +16923,43 @@ class VariableItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SerialId: 变量id
+        :param _SerialId: <p>变量id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SerialId: str
-        :param _Name: 变量名
+        :param _Name: <p>变量名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Value: 变量值
+        :param _Value: <p>变量值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
-        :param _Type: 变量值是否隐藏
+        :param _ValueType: <p>变量值类型</p><p>枚举值：</p><ul><li>0： 自定义变量</li><li>1： 凭据值</li></ul>
+        :type ValueType: int
+        :param _SecretRegion: <p>凭据所在地域</p>
+        :type SecretRegion: str
+        :param _SecretName: <p>凭据名称</p>
+        :type SecretName: str
+        :param _SecretVersionId: <p>凭据版本</p>
+        :type SecretVersionId: str
+        :param _Type: <p>变量值是否隐藏</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
-        :param _Remark: 变量描述
+        :param _Remark: <p>变量描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _CreateTime: 变量创建时间
+        :param _CreateTime: <p>变量创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _CreatorUin: 变量创建人
+        :param _CreatorUin: <p>变量创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: str
         """
         self._SerialId = None
         self._Name = None
         self._Value = None
+        self._ValueType = None
+        self._SecretRegion = None
+        self._SecretName = None
+        self._SecretVersionId = None
         self._Type = None
         self._Remark = None
         self._CreateTime = None
@@ -16850,7 +16967,7 @@ class VariableItem(AbstractModel):
 
     @property
     def SerialId(self):
-        r"""变量id
+        r"""<p>变量id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16862,7 +16979,7 @@ class VariableItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""变量名
+        r"""<p>变量名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16874,7 +16991,7 @@ class VariableItem(AbstractModel):
 
     @property
     def Value(self):
-        r"""变量值
+        r"""<p>变量值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16885,8 +17002,52 @@ class VariableItem(AbstractModel):
         self._Value = Value
 
     @property
+    def ValueType(self):
+        r"""<p>变量值类型</p><p>枚举值：</p><ul><li>0： 自定义变量</li><li>1： 凭据值</li></ul>
+        :rtype: int
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def SecretRegion(self):
+        r"""<p>凭据所在地域</p>
+        :rtype: str
+        """
+        return self._SecretRegion
+
+    @SecretRegion.setter
+    def SecretRegion(self, SecretRegion):
+        self._SecretRegion = SecretRegion
+
+    @property
+    def SecretName(self):
+        r"""<p>凭据名称</p>
+        :rtype: str
+        """
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def SecretVersionId(self):
+        r"""<p>凭据版本</p>
+        :rtype: str
+        """
+        return self._SecretVersionId
+
+    @SecretVersionId.setter
+    def SecretVersionId(self, SecretVersionId):
+        self._SecretVersionId = SecretVersionId
+
+    @property
     def Type(self):
-        r"""变量值是否隐藏
+        r"""<p>变量值是否隐藏</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16898,7 +17059,7 @@ class VariableItem(AbstractModel):
 
     @property
     def Remark(self):
-        r"""变量描述
+        r"""<p>变量描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16910,7 +17071,7 @@ class VariableItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""变量创建时间
+        r"""<p>变量创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16922,7 +17083,7 @@ class VariableItem(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""变量创建人
+        r"""<p>变量创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16937,6 +17098,10 @@ class VariableItem(AbstractModel):
         self._SerialId = params.get("SerialId")
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        self._ValueType = params.get("ValueType")
+        self._SecretRegion = params.get("SecretRegion")
+        self._SecretName = params.get("SecretName")
+        self._SecretVersionId = params.get("SecretVersionId")
         self._Type = params.get("Type")
         self._Remark = params.get("Remark")
         self._CreateTime = params.get("CreateTime")

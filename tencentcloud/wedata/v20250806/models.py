@@ -30898,38 +30898,38 @@ class ListTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _PageNumber: 请求的数据页数。默认值为1，取值大于等于1
+        :param _PageNumber: <p>请求的数据页数。默认值为1，取值大于等于1</p>
         :type PageNumber: int
-        :param _PageSize: 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        :param _PageSize: <p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200</p>
         :type PageSize: int
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _WorkflowId: 所属工作流ID
+        :param _WorkflowId: <p>所属工作流ID</p>
         :type WorkflowId: str
-        :param _OwnerUin: 责任人ID
+        :param _OwnerUin: <p>责任人ID</p>
         :type OwnerUin: str
-        :param _TaskTypeId: 任务类型
+        :param _TaskTypeId: <p>任务类型</p>
         :type TaskTypeId: int
-        :param _Status: 任务状态
-* N: 新建 
-* Y: 调度中 
-* F: 已下线 
-* O: 已暂停 
-* T: 下线中 
-* INVALID: 已失效
+        :param _Status: <p>任务状态</p><ul><li>N: 新建 </li><li>Y: 调度中 </li><li>F: 已下线 </li><li>O: 已暂停 </li><li>T: 下线中 </li><li>INVALID: 已失效</li></ul>
         :type Status: str
-        :param _Submit: 提交状态
+        :param _Submit: <p>提交状态</p>
         :type Submit: bool
-        :param _BundleId: BundleId信息
+        :param _BundleId: <p>BundleId信息</p>
         :type BundleId: str
-        :param _CreateUserUin: 创建人ID
+        :param _CreateUserUin: <p>创建人ID</p>
         :type CreateUserUin: str
-        :param _ModifyTime: 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :param _ModifyTime: <p>修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :type ModifyTime: list of str
-        :param _CreateTime: 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :param _CreateTime: <p>创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :type CreateTime: list of str
+        :param _TaskFolderPathList: <p>任务文件夹路径列表，支持多选，从工作流下的目录开始填写，节点类型无需填写。选择上层文件夹时，自动包含所有子文件夹下的任务。 路径格式为绝对路径，如 &quot;/子目录A&quot;，根目录为 &quot;/&quot;</p>
+        :type TaskFolderPathList: list of str
+        :param _WorkflowFolderPathList: <p>工作流文件夹路径列表，支持多选。选择上层文件夹时，自动包含所有子文件夹下工作流的任务。 路径格式为绝对路径，如 &quot;/数据开发/子目录&quot;，根目录为 &quot;/&quot;。</p>
+        :type WorkflowFolderPathList: list of str
+        :param _TaskNodeTypeList: <p>节点类型列表，用于按任务节点分类筛选，支持多选， 可选值参考下面枚举类型 。 传入后将根据这些节点类型包含的任务类型ID列表进行筛选。</p><p>枚举值：</p><ul><li>ETL： 数据集成节点</li><li>EMR： EMR节点</li><li>DLC： DLC节点</li><li>SETATS： SETATS节点</li><li>TDSQL： TDSQL节点</li><li>TCHOUSE： TCHOUSE节点</li><li>GENERAL： 通用节点</li><li>DATA_QUALITY： 数据质量节点</li><li>INDICATOR： 指标节点</li><li>TI_ONE： TI-ONE机器学习节点</li></ul>
+        :type TaskNodeTypeList: list of str
         """
         self._ProjectId = None
         self._PageNumber = None
@@ -30944,10 +30944,13 @@ class ListTasksRequest(AbstractModel):
         self._CreateUserUin = None
         self._ModifyTime = None
         self._CreateTime = None
+        self._TaskFolderPathList = None
+        self._WorkflowFolderPathList = None
+        self._TaskNodeTypeList = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -30958,7 +30961,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""请求的数据页数。默认值为1，取值大于等于1
+        r"""<p>请求的数据页数。默认值为1，取值大于等于1</p>
         :rtype: int
         """
         return self._PageNumber
@@ -30969,7 +30972,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        r"""<p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200</p>
         :rtype: int
         """
         return self._PageSize
@@ -30980,7 +30983,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -30991,7 +30994,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""所属工作流ID
+        r"""<p>所属工作流ID</p>
         :rtype: str
         """
         return self._WorkflowId
@@ -31002,7 +31005,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""责任人ID
+        r"""<p>责任人ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -31013,7 +31016,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def TaskTypeId(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
         :rtype: int
         """
         return self._TaskTypeId
@@ -31024,13 +31027,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态
-* N: 新建 
-* Y: 调度中 
-* F: 已下线 
-* O: 已暂停 
-* T: 下线中 
-* INVALID: 已失效
+        r"""<p>任务状态</p><ul><li>N: 新建 </li><li>Y: 调度中 </li><li>F: 已下线 </li><li>O: 已暂停 </li><li>T: 下线中 </li><li>INVALID: 已失效</li></ul>
         :rtype: str
         """
         return self._Status
@@ -31041,7 +31038,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def Submit(self):
-        r"""提交状态
+        r"""<p>提交状态</p>
         :rtype: bool
         """
         return self._Submit
@@ -31052,7 +31049,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""BundleId信息
+        r"""<p>BundleId信息</p>
         :rtype: str
         """
         return self._BundleId
@@ -31063,7 +31060,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def CreateUserUin(self):
-        r"""创建人ID
+        r"""<p>创建人ID</p>
         :rtype: str
         """
         return self._CreateUserUin
@@ -31074,7 +31071,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        r"""<p>修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :rtype: list of str
         """
         return self._ModifyTime
@@ -31085,7 +31082,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        r"""<p>创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :rtype: list of str
         """
         return self._CreateTime
@@ -31093,6 +31090,39 @@ class ListTasksRequest(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def TaskFolderPathList(self):
+        r"""<p>任务文件夹路径列表，支持多选，从工作流下的目录开始填写，节点类型无需填写。选择上层文件夹时，自动包含所有子文件夹下的任务。 路径格式为绝对路径，如 &quot;/子目录A&quot;，根目录为 &quot;/&quot;</p>
+        :rtype: list of str
+        """
+        return self._TaskFolderPathList
+
+    @TaskFolderPathList.setter
+    def TaskFolderPathList(self, TaskFolderPathList):
+        self._TaskFolderPathList = TaskFolderPathList
+
+    @property
+    def WorkflowFolderPathList(self):
+        r"""<p>工作流文件夹路径列表，支持多选。选择上层文件夹时，自动包含所有子文件夹下工作流的任务。 路径格式为绝对路径，如 &quot;/数据开发/子目录&quot;，根目录为 &quot;/&quot;。</p>
+        :rtype: list of str
+        """
+        return self._WorkflowFolderPathList
+
+    @WorkflowFolderPathList.setter
+    def WorkflowFolderPathList(self, WorkflowFolderPathList):
+        self._WorkflowFolderPathList = WorkflowFolderPathList
+
+    @property
+    def TaskNodeTypeList(self):
+        r"""<p>节点类型列表，用于按任务节点分类筛选，支持多选， 可选值参考下面枚举类型 。 传入后将根据这些节点类型包含的任务类型ID列表进行筛选。</p><p>枚举值：</p><ul><li>ETL： 数据集成节点</li><li>EMR： EMR节点</li><li>DLC： DLC节点</li><li>SETATS： SETATS节点</li><li>TDSQL： TDSQL节点</li><li>TCHOUSE： TCHOUSE节点</li><li>GENERAL： 通用节点</li><li>DATA_QUALITY： 数据质量节点</li><li>INDICATOR： 指标节点</li><li>TI_ONE： TI-ONE机器学习节点</li></ul>
+        :rtype: list of str
+        """
+        return self._TaskNodeTypeList
+
+    @TaskNodeTypeList.setter
+    def TaskNodeTypeList(self, TaskNodeTypeList):
+        self._TaskNodeTypeList = TaskNodeTypeList
 
 
     def _deserialize(self, params):
@@ -31109,6 +31139,9 @@ class ListTasksRequest(AbstractModel):
         self._CreateUserUin = params.get("CreateUserUin")
         self._ModifyTime = params.get("ModifyTime")
         self._CreateTime = params.get("CreateTime")
+        self._TaskFolderPathList = params.get("TaskFolderPathList")
+        self._WorkflowFolderPathList = params.get("WorkflowFolderPathList")
+        self._TaskNodeTypeList = params.get("TaskNodeTypeList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31126,7 +31159,7 @@ class ListTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 任务分页信息
+        :param _Data: <p>任务分页信息</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.ListTaskInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31136,7 +31169,7 @@ class ListTasksResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""任务分页信息
+        r"""<p>任务分页信息</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTaskInfo`
         """
         return self._Data
@@ -32230,35 +32263,38 @@ class ListTriggerTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _PageNumber: 请求的数据页数。默认值为1，取值大于等于1
+        :param _PageNumber: <p>请求的数据页数。默认值为1，取值大于等于1</p>
         :type PageNumber: int
-        :param _PageSize: 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        :param _PageSize: <p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200</p>
         :type PageSize: int
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _WorkflowId: 所属工作流ID
+        :param _WorkflowId: <p>所属工作流ID</p>
         :type WorkflowId: str
-        :param _OwnerUin: 责任人ID
+        :param _OwnerUin: <p>责任人ID</p>
         :type OwnerUin: str
-        :param _TaskTypeId: 任务类型
+        :param _TaskTypeId: <p>任务类型</p>
         :type TaskTypeId: int
-        :param _Status: 任务状态
-* N: 新建 
-* Y: 调度中 
-
+        :param _Status: <p>任务状态</p><ul><li>N: 新建 </li><li>Y: 调度中</li></ul>
         :type Status: str
-        :param _Submit: 提交状态
+        :param _Submit: <p>提交状态</p>
         :type Submit: bool
-        :param _BundleId: BundleId信息
+        :param _BundleId: <p>BundleId信息</p>
         :type BundleId: str
-        :param _CreateUserUin: 创建人ID
+        :param _CreateUserUin: <p>创建人ID</p>
         :type CreateUserUin: str
-        :param _ModifyTime: 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :param _ModifyTime: <p>修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :type ModifyTime: list of str
-        :param _CreateTime: 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :param _CreateTime: <p>创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :type CreateTime: list of str
+        :param _TaskFolderPathList: <p>任务文件夹路径列表，支持多选，从工作流下的目录开始填写，节点类型无需填写。选择上层文件夹时，自动包含所有子文件夹下的任务。 路径格式为绝对路径，如 &quot;/子目录A&quot;，根目录为 &quot;/&quot;</p>
+        :type TaskFolderPathList: list of str
+        :param _WorkflowFolderPathList: <p>工作流文件夹路径列表，支持多选。选择上层文件夹时，自动包含所有子文件夹下工作流的任务。 路径格式为绝对路径，如 &quot;/数据开发/子目录&quot;，根目录为 &quot;/&quot;</p>
+        :type WorkflowFolderPathList: list of str
+        :param _TaskNodeTypeList: <p>节点类型列表，用于按任务节点分类筛选，支持多选，可选值参考下面枚举类型 。 传入后将根据这些节点类型包含的任务类型ID列表进行筛选。</p><p>枚举值：</p><ul><li>ETL： 数据集成节点</li><li>EMR： EMR节点</li><li>DLC： DLC节点</li><li>SETATS： SETATS节点</li><li>TDSQL： TDSQL节点</li><li>TCHOUSE： TCHOUSE节点</li><li>GENERAL： 通用节点</li><li>DATA_QUALITY： 数据质量节点</li><li>INDICATOR： 指标节点</li><li>TI_ONE： TI-ONE机器学习节点</li></ul>
+        :type TaskNodeTypeList: list of str
         """
         self._ProjectId = None
         self._PageNumber = None
@@ -32273,10 +32309,13 @@ class ListTriggerTasksRequest(AbstractModel):
         self._CreateUserUin = None
         self._ModifyTime = None
         self._CreateTime = None
+        self._TaskFolderPathList = None
+        self._WorkflowFolderPathList = None
+        self._TaskNodeTypeList = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -32287,7 +32326,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""请求的数据页数。默认值为1，取值大于等于1
+        r"""<p>请求的数据页数。默认值为1，取值大于等于1</p>
         :rtype: int
         """
         return self._PageNumber
@@ -32298,7 +32337,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        r"""<p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200</p>
         :rtype: int
         """
         return self._PageSize
@@ -32309,7 +32348,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -32320,7 +32359,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""所属工作流ID
+        r"""<p>所属工作流ID</p>
         :rtype: str
         """
         return self._WorkflowId
@@ -32331,7 +32370,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""责任人ID
+        r"""<p>责任人ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -32342,7 +32381,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def TaskTypeId(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
         :rtype: int
         """
         return self._TaskTypeId
@@ -32353,10 +32392,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态
-* N: 新建 
-* Y: 调度中 
-
+        r"""<p>任务状态</p><ul><li>N: 新建 </li><li>Y: 调度中</li></ul>
         :rtype: str
         """
         return self._Status
@@ -32367,7 +32403,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def Submit(self):
-        r"""提交状态
+        r"""<p>提交状态</p>
         :rtype: bool
         """
         return self._Submit
@@ -32378,7 +32414,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""BundleId信息
+        r"""<p>BundleId信息</p>
         :rtype: str
         """
         return self._BundleId
@@ -32389,7 +32425,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def CreateUserUin(self):
-        r"""创建人ID
+        r"""<p>创建人ID</p>
         :rtype: str
         """
         return self._CreateUserUin
@@ -32400,7 +32436,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        r"""<p>修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :rtype: list of str
         """
         return self._ModifyTime
@@ -32411,7 +32447,7 @@ class ListTriggerTasksRequest(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        r"""<p>创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :rtype: list of str
         """
         return self._CreateTime
@@ -32419,6 +32455,39 @@ class ListTriggerTasksRequest(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def TaskFolderPathList(self):
+        r"""<p>任务文件夹路径列表，支持多选，从工作流下的目录开始填写，节点类型无需填写。选择上层文件夹时，自动包含所有子文件夹下的任务。 路径格式为绝对路径，如 &quot;/子目录A&quot;，根目录为 &quot;/&quot;</p>
+        :rtype: list of str
+        """
+        return self._TaskFolderPathList
+
+    @TaskFolderPathList.setter
+    def TaskFolderPathList(self, TaskFolderPathList):
+        self._TaskFolderPathList = TaskFolderPathList
+
+    @property
+    def WorkflowFolderPathList(self):
+        r"""<p>工作流文件夹路径列表，支持多选。选择上层文件夹时，自动包含所有子文件夹下工作流的任务。 路径格式为绝对路径，如 &quot;/数据开发/子目录&quot;，根目录为 &quot;/&quot;</p>
+        :rtype: list of str
+        """
+        return self._WorkflowFolderPathList
+
+    @WorkflowFolderPathList.setter
+    def WorkflowFolderPathList(self, WorkflowFolderPathList):
+        self._WorkflowFolderPathList = WorkflowFolderPathList
+
+    @property
+    def TaskNodeTypeList(self):
+        r"""<p>节点类型列表，用于按任务节点分类筛选，支持多选，可选值参考下面枚举类型 。 传入后将根据这些节点类型包含的任务类型ID列表进行筛选。</p><p>枚举值：</p><ul><li>ETL： 数据集成节点</li><li>EMR： EMR节点</li><li>DLC： DLC节点</li><li>SETATS： SETATS节点</li><li>TDSQL： TDSQL节点</li><li>TCHOUSE： TCHOUSE节点</li><li>GENERAL： 通用节点</li><li>DATA_QUALITY： 数据质量节点</li><li>INDICATOR： 指标节点</li><li>TI_ONE： TI-ONE机器学习节点</li></ul>
+        :rtype: list of str
+        """
+        return self._TaskNodeTypeList
+
+    @TaskNodeTypeList.setter
+    def TaskNodeTypeList(self, TaskNodeTypeList):
+        self._TaskNodeTypeList = TaskNodeTypeList
 
 
     def _deserialize(self, params):
@@ -32435,6 +32504,9 @@ class ListTriggerTasksRequest(AbstractModel):
         self._CreateUserUin = params.get("CreateUserUin")
         self._ModifyTime = params.get("ModifyTime")
         self._CreateTime = params.get("CreateTime")
+        self._TaskFolderPathList = params.get("TaskFolderPathList")
+        self._WorkflowFolderPathList = params.get("WorkflowFolderPathList")
+        self._TaskNodeTypeList = params.get("TaskNodeTypeList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32452,7 +32524,7 @@ class ListTriggerTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 任务分页信息
+        :param _Data: <p>任务分页信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -32463,7 +32535,7 @@ class ListTriggerTasksResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""任务分页信息
+        r"""<p>任务分页信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskInfo`
         """

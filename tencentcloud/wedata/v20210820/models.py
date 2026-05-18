@@ -17824,26 +17824,28 @@ class CreateTaskVersionDsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Task: 任务id
+        :param _Task: <p>任务id</p>
         :type Task: :class:`tencentcloud.wedata.v20210820.models.BatchCreateTaskVersionDTO`
-        :param _NeedCheckParentSubmitted: 是否需要校验父任务已经提交到调度
+        :param _NeedCheckParentSubmitted: <p>是否需要校验父任务已经提交到调度</p>
         :type NeedCheckParentSubmitted: bool
-        :param _AutoRun: 是否自动运行
+        :param _AutoRun: <p>是否自动运行</p>
         :type AutoRun: bool
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
         :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
         :type RequestFromSource: str
-        :param _AlarmWays: 告警方式:email-邮件;sms-短信;wecom-企业微信
+        :param _AlarmWays: <p>告警方式:email-邮件;sms-短信;wecom-企业微信</p>
         :type AlarmWays: str
-        :param _AlarmRecipientTypes: 告警对象:1-项目管理员，2-任务责任人
+        :param _AlarmRecipientTypes: <p>告警对象:1-项目管理员，2-任务责任人</p>
         :type AlarmRecipientTypes: str
-        :param _EnableCheckTaskCycleLink: 是否需要校验循环依赖，默认为 true，如果使用了 CheckTaskCycleLink 和 CheckTaskCycleConfiguration 两个接口校验成功可以传 false，后台服务器不再做校验
+        :param _EnableCheckTaskCycleLink: <p>是否需要校验循环依赖，默认为 true，如果使用了 CheckTaskCycleLink 和 CheckTaskCycleConfiguration 两个接口校验成功可以传 false，后台服务器不再做校验</p>
         :type EnableCheckTaskCycleLink: bool
-        :param _EnableMakeUp: 是否需要补录中间实例
+        :param _EnableMakeUp: <p>是否需要补录中间实例</p>
         :type EnableMakeUp: bool
-        :param _AssignApprovalList: 指定审批人列表
+        :param _AssignApprovalList: <p>指定审批人列表</p>
         :type AssignApprovalList: list of str
+        :param _MissingInstanceStrategy: <p>MAKEUP:补录缺失的实例;FORCE_SUCCESS:将缺失的实例置成功;SKIP:不处理，忽略缺失的实例</p>
+        :type MissingInstanceStrategy: str
         """
         self._Task = None
         self._NeedCheckParentSubmitted = None
@@ -17855,10 +17857,11 @@ class CreateTaskVersionDsRequest(AbstractModel):
         self._EnableCheckTaskCycleLink = None
         self._EnableMakeUp = None
         self._AssignApprovalList = None
+        self._MissingInstanceStrategy = None
 
     @property
     def Task(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchCreateTaskVersionDTO`
         """
         return self._Task
@@ -17869,7 +17872,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
 
     @property
     def NeedCheckParentSubmitted(self):
-        r"""是否需要校验父任务已经提交到调度
+        r"""<p>是否需要校验父任务已经提交到调度</p>
         :rtype: bool
         """
         return self._NeedCheckParentSubmitted
@@ -17880,7 +17883,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
 
     @property
     def AutoRun(self):
-        r"""是否自动运行
+        r"""<p>是否自动运行</p>
         :rtype: bool
         """
         return self._AutoRun
@@ -17891,7 +17894,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -17913,7 +17916,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
 
     @property
     def AlarmWays(self):
-        r"""告警方式:email-邮件;sms-短信;wecom-企业微信
+        r"""<p>告警方式:email-邮件;sms-短信;wecom-企业微信</p>
         :rtype: str
         """
         return self._AlarmWays
@@ -17924,7 +17927,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
 
     @property
     def AlarmRecipientTypes(self):
-        r"""告警对象:1-项目管理员，2-任务责任人
+        r"""<p>告警对象:1-项目管理员，2-任务责任人</p>
         :rtype: str
         """
         return self._AlarmRecipientTypes
@@ -17935,7 +17938,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
 
     @property
     def EnableCheckTaskCycleLink(self):
-        r"""是否需要校验循环依赖，默认为 true，如果使用了 CheckTaskCycleLink 和 CheckTaskCycleConfiguration 两个接口校验成功可以传 false，后台服务器不再做校验
+        r"""<p>是否需要校验循环依赖，默认为 true，如果使用了 CheckTaskCycleLink 和 CheckTaskCycleConfiguration 两个接口校验成功可以传 false，后台服务器不再做校验</p>
         :rtype: bool
         """
         return self._EnableCheckTaskCycleLink
@@ -17946,7 +17949,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
 
     @property
     def EnableMakeUp(self):
-        r"""是否需要补录中间实例
+        r"""<p>是否需要补录中间实例</p>
         :rtype: bool
         """
         return self._EnableMakeUp
@@ -17957,7 +17960,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
 
     @property
     def AssignApprovalList(self):
-        r"""指定审批人列表
+        r"""<p>指定审批人列表</p>
         :rtype: list of str
         """
         return self._AssignApprovalList
@@ -17965,6 +17968,17 @@ class CreateTaskVersionDsRequest(AbstractModel):
     @AssignApprovalList.setter
     def AssignApprovalList(self, AssignApprovalList):
         self._AssignApprovalList = AssignApprovalList
+
+    @property
+    def MissingInstanceStrategy(self):
+        r"""<p>MAKEUP:补录缺失的实例;FORCE_SUCCESS:将缺失的实例置成功;SKIP:不处理，忽略缺失的实例</p>
+        :rtype: str
+        """
+        return self._MissingInstanceStrategy
+
+    @MissingInstanceStrategy.setter
+    def MissingInstanceStrategy(self, MissingInstanceStrategy):
+        self._MissingInstanceStrategy = MissingInstanceStrategy
 
 
     def _deserialize(self, params):
@@ -17980,6 +17994,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
         self._EnableCheckTaskCycleLink = params.get("EnableCheckTaskCycleLink")
         self._EnableMakeUp = params.get("EnableMakeUp")
         self._AssignApprovalList = params.get("AssignApprovalList")
+        self._MissingInstanceStrategy = params.get("MissingInstanceStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17997,7 +18012,7 @@ class CreateTaskVersionDsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 版本
+        :param _Data: <p>版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18008,7 +18023,7 @@ class CreateTaskVersionDsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""版本
+        r"""<p>版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22886,37 +22901,43 @@ class DatasourceBaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatabaseNames: 若数据源列表为绑定数据库，则为db名称
+        :param _DatabaseNames: <p>若数据源列表为绑定数据库，则为db名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseNames: list of str
-        :param _Description: 数据源描述信息
+        :param _Description: <p>数据源描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _ID: 数据源ID
+        :param _ID: <p>数据源ID</p>
         :type ID: int
-        :param _Instance: 数据源引擎的实例ID，如CDB实例ID
+        :param _Instance: <p>数据源引擎的实例ID，如CDB实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Instance: str
-        :param _Name: 数据源名称，在相同SpaceName下，数据源名称不能为空
+        :param _Name: <p>数据源名称，在相同SpaceName下，数据源名称不能为空</p>
         :type Name: str
-        :param _Region: 数据源引擎所属区域
+        :param _Region: <p>数据源引擎所属区域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Type: 数据源类型:枚举值
+        :param _Type: <p>数据源类型:枚举值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _ClusterId: 数据源所属的集群id
+        :param _ClusterId: <p>数据源所属的集群id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param _Version: 数据源版本信息
+        :param _Version: <p>数据源版本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
-        :param _ParamsString: 数据源附带参数信息Params json字符串
+        :param _ParamsString: <p>数据源附带参数信息Params json字符串</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamsString: str
-        :param _Category: 区分数据源类型自定义源还是系统源
+        :param _Category: <p>区分数据源类型自定义源还是系统源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
+        :param _Ip: <p>数据实例ip</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param _Port: <p>数据实例port</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
         """
         self._DatabaseNames = None
         self._Description = None
@@ -22929,10 +22950,12 @@ class DatasourceBaseInfo(AbstractModel):
         self._Version = None
         self._ParamsString = None
         self._Category = None
+        self._Ip = None
+        self._Port = None
 
     @property
     def DatabaseNames(self):
-        r"""若数据源列表为绑定数据库，则为db名称
+        r"""<p>若数据源列表为绑定数据库，则为db名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -22944,7 +22967,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""数据源描述信息
+        r"""<p>数据源描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22956,7 +22979,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def ID(self):
-        r"""数据源ID
+        r"""<p>数据源ID</p>
         :rtype: int
         """
         return self._ID
@@ -22967,7 +22990,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def Instance(self):
-        r"""数据源引擎的实例ID，如CDB实例ID
+        r"""<p>数据源引擎的实例ID，如CDB实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22979,7 +23002,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""数据源名称，在相同SpaceName下，数据源名称不能为空
+        r"""<p>数据源名称，在相同SpaceName下，数据源名称不能为空</p>
         :rtype: str
         """
         return self._Name
@@ -22990,7 +23013,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""数据源引擎所属区域
+        r"""<p>数据源引擎所属区域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23002,7 +23025,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""数据源类型:枚举值
+        r"""<p>数据源类型:枚举值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23014,7 +23037,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""数据源所属的集群id
+        r"""<p>数据源所属的集群id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23026,7 +23049,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def Version(self):
-        r"""数据源版本信息
+        r"""<p>数据源版本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23038,7 +23061,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def ParamsString(self):
-        r"""数据源附带参数信息Params json字符串
+        r"""<p>数据源附带参数信息Params json字符串</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23050,7 +23073,7 @@ class DatasourceBaseInfo(AbstractModel):
 
     @property
     def Category(self):
-        r"""区分数据源类型自定义源还是系统源
+        r"""<p>区分数据源类型自定义源还是系统源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23059,6 +23082,30 @@ class DatasourceBaseInfo(AbstractModel):
     @Category.setter
     def Category(self, Category):
         self._Category = Category
+
+    @property
+    def Ip(self):
+        r"""<p>数据实例ip</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        r"""<p>数据实例port</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
@@ -23073,6 +23120,8 @@ class DatasourceBaseInfo(AbstractModel):
         self._Version = params.get("Version")
         self._ParamsString = params.get("ParamsString")
         self._Category = params.get("Category")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -85129,34 +85178,34 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 唯一标识
+        :param _Id: <p>唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _ParamKey: 参数名
+        :param _ParamKey: <p>参数名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamKey: str
-        :param _ParamDesc: 参数描述
+        :param _ParamDesc: <p>参数描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamDesc: str
-        :param _ParamDefine: 参数定义
+        :param _ParamDefine: <p>参数定义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamDefine: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _TaskName: 任务名
+        :param _TaskName: <p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _ProjectName: 项目名
+        :param _ProjectName: <p>项目名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
         """
@@ -85173,7 +85222,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def Id(self):
-        r"""唯一标识
+        r"""<p>唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -85185,7 +85234,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -85197,7 +85246,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def ParamKey(self):
-        r"""参数名
+        r"""<p>参数名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -85209,7 +85258,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def ParamDesc(self):
-        r"""参数描述
+        r"""<p>参数描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -85221,7 +85270,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def ParamDefine(self):
-        r"""参数定义
+        r"""<p>参数定义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -85233,7 +85282,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -85245,7 +85294,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -85257,7 +85306,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名
+        r"""<p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -85269,7 +85318,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -85281,7 +85330,7 @@ class ParameterTaskOutDsDto(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名
+        r"""<p>项目名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -109598,354 +109647,324 @@ class TaskDsDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _VirtualTaskId: 虚拟任务标记
+        :param _VirtualTaskId: <p>虚拟任务标记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualTaskId: str
-        :param _VirtualFlag: 虚拟任务标记
+        :param _VirtualFlag: <p>虚拟任务标记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualFlag: bool
-        :param _TaskName: 任务名
+        :param _TaskName: <p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _WorkflowId: 工作流id
+        :param _WorkflowId: <p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _RealWorkflowId: 真实工作流id
+        :param _RealWorkflowId: <p>真实工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealWorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _FolderId: 文件夹id
+        :param _FolderId: <p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _FolderName: 文件夹名字
+        :param _FolderName: <p>文件夹名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _LastUpdate: 更新时间
+        :param _LastUpdate: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdate: str
-        :param _Status: <p>任务状态，取值范围：</p>
-<ul>
-<li>N 新建</li>
-<li>Y 运行</li>
-<li>F 停止</li>
-<li>O 冻结</li>
-<li>T 停止中</li>
-<li>INVALID 已失效</li>
-</ul>
+        :param _Status: <p>任务状态，取值范围：</p><ul><li>N 新建</li><li>Y 运行</li><li>F 停止</li><li>O 冻结</li><li>T 停止中</li><li>INVALID 已失效</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _InCharge: 责任人
+        :param _InCharge: <p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InCharge: str
-        :param _InChargeId: 责任人用户id
+        :param _InChargeId: <p>责任人用户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InChargeId: str
-        :param _StartTime: 生效日期
+        :param _StartTime: <p>生效日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 结束日期
+        :param _EndTime: <p>结束日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _ExecutionStartTime: 执行时间左闭区间
+        :param _ExecutionStartTime: <p>执行时间左闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行时间右闭区间
+        :param _ExecutionEndTime: <p>执行时间右闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionEndTime: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _ProjectIdent: 项目标识
+        :param _ProjectIdent: <p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectIdent: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _CycleType: 周期类型
+        :param _CycleType: <p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _CycleStep: 步长
+        :param _CycleStep: <p>步长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleStep: int
-        :param _CrontabExpression: 对于crontab类型调度配置其为用户输入 对于周期类型调度配置其为系统计算
+        :param _CrontabExpression: <p>对于crontab类型调度配置其为用户输入 对于周期类型调度配置其为系统计算</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrontabExpression: str
-        :param _DelayTime: 延时调度
+        :param _DelayTime: <p>延时调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DelayTime: int
-        :param _StartupTime: 延时执行时间
+        :param _StartupTime: <p>延时执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartupTime: int
-        :param _RetryWait: 重试等待时间,单位分钟
+        :param _RetryWait: <p>重试等待时间,单位分钟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryWait: int
-        :param _Retriable: 是否可重试
+        :param _Retriable: <p>是否可重试</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Retriable: int
-        :param _TaskAction: 调度扩展信息
+        :param _TaskAction: <p>调度扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAction: str
-        :param _TryLimit: 运行次数限制
+        :param _TryLimit: <p>运行次数限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TryLimit: int
-        :param _RunPriority: 运行优先级
+        :param _RunPriority: <p>运行优先级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunPriority: int
-        :param _TaskType: 任务类型
+        :param _TaskType: <p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeDsVO`
-        :param _BrokerIp: 指定的运行节点
+        :param _BrokerIp: <p>指定的运行节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrokerIp: str
-        :param _ClusterId: 集群name
+        :param _ClusterId: <p>集群name</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param _MinDateTime: 最小数据时间
+        :param _MinDateTime: <p>最小数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinDateTime: str
-        :param _MaxDateTime: 最大数据时间
+        :param _MaxDateTime: <p>最大数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDateTime: str
-        :param _ExecutionTTL: 运行耗时超时时间
+        :param _ExecutionTTL: <p>运行耗时超时时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionTTL: int
-        :param _SelfDepend: 是否自身依赖 是1 否2 并行3
+        :param _SelfDepend: <p>是否自身依赖 是1 否2 并行3</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfDepend: str
-        :param _LeftCoordinate: LeftCoordinate坐标
+        :param _LeftCoordinate: <p>LeftCoordinate坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LeftCoordinate: float
-        :param _TopCoordinate: TopCoordinate坐标
+        :param _TopCoordinate: <p>TopCoordinate坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopCoordinate: float
-        :param _TaskExt: TaskExt信息
+        :param _TaskExt: <p>TaskExt信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskExt: :class:`tencentcloud.wedata.v20210820.models.TaskExtDsVO`
-        :param _Properties: taskExt 导入导出json使用 private Map  properties;
+        :param _Properties: <p>taskExt 导入导出json使用 private Map  properties;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: str
-        :param _Notes: 任务备注
+        :param _Notes: <p>任务备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Notes: str
-        :param _InstanceInitStrategy: 实例生成策略 T+1 表示当前周期生成上一周期数据时间任务实例 默认T+1 T+0 表示当前周期生成当前周期数据时间任务实例 T-1
-     * 表示当前周期生成下一周期数据时间任务实例
-     *
-     * service不做默认策略处理, 下沉到数据初始化默认T+1, service涉及到多个更新task的路径
+        :param _InstanceInitStrategy: <p>实例生成策略 T+1 表示当前周期生成上一周期数据时间任务实例 默认T+1 T+0 表示当前周期生成当前周期数据时间任务实例 T-1</p><pre><code> * 表示当前周期生成下一周期数据时间任务实例 * * service不做默认策略处理, 下沉到数据初始化默认T+1, service涉及到多个更新task的路径</code></pre>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceInitStrategy: str
-        :param _YarnQueue: 资源池队列名称
+        :param _YarnQueue: <p>资源池队列名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type YarnQueue: str
-        :param _Alarms: 任务告警信息
+        :param _Alarms: <p>任务告警信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alarms: list of AlarmDsVO
-        :param _Alarm: alarmDTO 导入导出json使用
+        :param _Alarm: <p>alarmDTO 导入导出json使用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alarm: str
-        :param _ScriptChange: 任务脚本是否发生变化
+        :param _ScriptChange: <p>任务脚本是否发生变化</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScriptChange: bool
-        :param _Submit: 任务版本是否已提交
+        :param _Submit: <p>任务版本是否已提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Submit: bool
-        :param _LastSchedulerCommitTime: 最新调度计划变更时间 仅生产态
+        :param _LastSchedulerCommitTime: <p>最新调度计划变更时间 仅生产态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastSchedulerCommitTime: str
-        :param _NormalizedJobStartTime: 仅生产态存储于生产态序列化任务信息, 减少base CPU重复密集计算
+        :param _NormalizedJobStartTime: <p>仅生产态存储于生产态序列化任务信息, 减少base CPU重复密集计算</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NormalizedJobStartTime: str
-        :param _RecoverFreezeStartTime: 启动暂停的任务时，选择不补录中间实例，通过此字段来标识从哪个时间开始生成实例
+        :param _RecoverFreezeStartTime: <p>启动暂停的任务时，选择不补录中间实例，通过此字段来标识从哪个时间开始生成实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecoverFreezeStartTime: str
-        :param _SourceServer: 源数据源
+        :param _SourceServer: <p>源数据源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceServer: str
-        :param _TargetServer: 目标数据源
+        :param _TargetServer: <p>目标数据源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetServer: str
-        :param _Tasks: 父子节点树
+        :param _Tasks: <p>父子节点树</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of TaskDsDTO
-        :param _Creater: 创建者
+        :param _Creater: <p>创建者</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creater: str
-        :param _DependencyRel: 分支，依赖关系，and/or, 默认and
+        :param _DependencyRel: <p>分支，依赖关系，and/or, 默认and</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyRel: str
-        :param _DependencyWorkflow: 是否支持工作流依赖 yes / no 默认 no
+        :param _DependencyWorkflow: <p>是否支持工作流依赖 yes / no 默认 no</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyWorkflow: str
-        :param _EventListenerConfig: 支持事件监听器配置导入导出
+        :param _EventListenerConfig: <p>支持事件监听器配置导入导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventListenerConfig: str
-        :param _EventPublisherConfig: 支持事件触发器配置导入导出
+        :param _EventPublisherConfig: <p>支持事件触发器配置导入导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventPublisherConfig: str
-        :param _DependencyConfigList: 依赖配置
+        :param _DependencyConfigList: <p>依赖配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyConfigList: list of DependencyConfigDsDTO
-        :param _VirtualTaskStatus: <p>任务状态，取值范围：</p>
-<ul>
-<li>N 新建</li>
-<li>Y 运行</li>
-<li>F 停止</li>
-<li>O 冻结</li>
-<li>T 停止中</li>
-<li>INVALID 已失效</li>
-</ul>
+        :param _VirtualTaskStatus: <p>任务状态，取值范围：</p><ul><li>N 新建</li><li>Y 运行</li><li>F 停止</li><li>O 冻结</li><li>T 停止中</li><li>INVALID 已失效</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualTaskStatus: str
-        :param _RecycleTips: 回收站还原提示语
+        :param _RecycleTips: <p>回收站还原提示语</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecycleTips: str
-        :param _RecycleUser: 回收站所属用户
+        :param _RecycleUser: <p>回收站所属用户</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecycleUser: str
-        :param _NewOrUpdate: 新增 或 修改
+        :param _NewOrUpdate: <p>新增 或 修改</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewOrUpdate: str
-        :param _Params: 任务上游依赖信息 用于发布管理导入导出
+        :param _Params: <p>任务上游依赖信息 用于发布管理导入导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Params: list of ParameterTaskDsDto
-        :param _TaskLinkInfo: 任务上游依赖信息 用于发布管理导入导出
+        :param _TaskLinkInfo: <p>任务上游依赖信息 用于发布管理导入导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskLinkInfo: list of TaskLinkDsDTO
-        :param _ImportResult: 导入结果
+        :param _ImportResult: <p>导入结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImportResult: bool
-        :param _ImportErrMsg: 导入失败原因
+        :param _ImportErrMsg: <p>导入失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImportErrMsg: str
-        :param _ContentType: 任务内容 全部内容 配置内容 资源内容
+        :param _ContentType: <p>任务内容 全部内容 配置内容 资源内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentType: str
-        :param _TaskAutoSubmit: 是否导入提交运行
+        :param _TaskAutoSubmit: <p>是否导入提交运行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAutoSubmit: bool
-        :param _ProductName: 上层产品 数据质量 / 数据开发 / ...
+        :param _ProductName: <p>上层产品 数据质量 / 数据开发 / ...</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
-        :param _OwnId: 创建者帐号
+        :param _OwnId: <p>创建者帐号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnId: str
-        :param _UserId: 子账号
+        :param _UserId: <p>子账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param _TenantId: 租户id
+        :param _TenantId: <p>租户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: str
-        :param _UpdateUser: 最后修改的人
+        :param _UpdateUser: <p>最后修改的人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUser: str
-        :param _UpdateTime: 最后修改时间
+        :param _UpdateTime: <p>最后修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _UpdateUserId: 最后修改的人的ID
+        :param _UpdateUserId: <p>最后修改的人的ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUserId: str
-        :param _SchedulerDesc: 调度计划
+        :param _SchedulerDesc: <p>调度计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerDesc: str
-        :param _ResourceGroup: 资源组
-
+        :param _ResourceGroup: <p>资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroup: str
-        :param _VersionDesc: 版本提交说明
+        :param _VersionDesc: <p>版本提交说明</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionDesc: str
-        :param _LinkId: 编排-删除添加的链接
+        :param _LinkId: <p>编排-删除添加的链接</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LinkId: str
-        :param _UserFileId: 脚本引用关系
+        :param _UserFileId: <p>脚本引用关系</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserFileId: str
-        :param _SourceServiceId: 来源数据源ID
+        :param _SourceServiceId: <p>来源数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceServiceId: str
-        :param _SourceServiceType: 来源数据源类型
+        :param _SourceServiceType: <p>来源数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceServiceType: str
-        :param _TargetServiceId: 去向数据源ID
+        :param _TargetServiceId: <p>去向数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetServiceId: str
-        :param _TargetServiceType: 去向数据源类型
+        :param _TargetServiceType: <p>去向数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetServiceType: str
-        :param _ParamInList: 输入参数
+        :param _ParamInList: <p>输入参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamInList: list of ParameterTaskInDsDto
-        :param _ParamOutList: 输出参数
+        :param _ParamOutList: <p>输出参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamOutList: list of ParameterTaskOutDsDto
-        :param _TaskFolderId: 任务文件夹id
+        :param _TaskFolderId: <p>任务文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskFolderId: str
-        :param _MaxRetryAttempts: 最大尝试次数
+        :param _MaxRetryAttempts: <p>最大尝试次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetryAttempts: int
-        :param _ResourceGroupName: 资源组名称
+        :param _ResourceGroupName: <p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupName: str
-        :param _SourceServiceName: 数据源
+        :param _SourceServiceName: <p>数据源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceServiceName: str
-        :param _TaskRegisterOutputTable: 任务产出登记
+        :param _TaskRegisterOutputTable: <p>任务产出登记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskRegisterOutputTable: list of TaskDataRegistryDTO
-        :param _CycleDependencyConfigList: 循环依赖配置
+        :param _CycleDependencyConfigList: <p>循环依赖配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleDependencyConfigList: list of TaskCycleLinkDTO
-        :param _Warning: 特殊警告信息
+        :param _Warning: <p>特殊警告信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Warning: str
-        :param _ScheduleRunType: 0 正常调度 1 空跑调度
+        :param _ScheduleRunType: <p>0 正常调度 1 空跑调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleRunType: int
-        :param _ConcurrentStrategy: 0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill
+        :param _ConcurrentStrategy: <p>0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConcurrentStrategy: int
-        :param _ScheduleTimeZone: UTC+8;UDC-8
+        :param _ScheduleTimeZone: <p>UTC+8;UDC-8</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
-        :param _TemplateId: 引用的代码模版id
+        :param _TemplateId: <p>引用的代码模版id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
-        :param _AllowRedoType: 允许重跑类 ALL 无论实例成功或者失败，都允许重跑 FAILURE 只有失败的实例允许重跑，成功的实例不允许重跑 NONE 无论成功或者失败，都不允许重跑
+        :param _AllowRedoType: <p>允许重跑类 ALL 无论实例成功或者失败，都允许重跑 FAILURE 只有失败的实例允许重跑，成功的实例不允许重跑 NONE 无论成功或者失败，都不允许重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowRedoType: str
-        :param _BundleId: BundleId
-CI/CD工程生成的bundle唯一标识
+        :param _BundleId: <p>BundleId<br>CI/CD工程生成的bundle唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleId: str
-        :param _BundleInfo: bundle信息
+        :param _BundleInfo: <p>bundle信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleInfo: str
-        :param _AllowDownstreamDependency: 是否允许下游依赖 0 不允许 1 允许
+        :param _AllowDownstreamDependency: <p>是否允许下游依赖 0 不允许 1 允许</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowDownstreamDependency: int
-        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        :param _DependencyTriggerPolicy: <ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyTriggerPolicy: str
+        :param _LastUpdateTimestamp: <p>任务最后更新时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTimestamp: int
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -110052,10 +110071,11 @@ CI/CD工程生成的bundle唯一标识
         self._BundleInfo = None
         self._AllowDownstreamDependency = None
         self._DependencyTriggerPolicy = None
+        self._LastUpdateTimestamp = None
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110067,7 +110087,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def VirtualTaskId(self):
-        r"""虚拟任务标记
+        r"""<p>虚拟任务标记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110079,7 +110099,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def VirtualFlag(self):
-        r"""虚拟任务标记
+        r"""<p>虚拟任务标记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -110091,7 +110111,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TaskName(self):
-        r"""任务名
+        r"""<p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110103,7 +110123,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def WorkflowId(self):
-        r"""工作流id
+        r"""<p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110115,7 +110135,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def RealWorkflowId(self):
-        r"""真实工作流id
+        r"""<p>真实工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110127,7 +110147,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110139,7 +110159,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def FolderId(self):
-        r"""文件夹id
+        r"""<p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110151,7 +110171,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def FolderName(self):
-        r"""文件夹名字
+        r"""<p>文件夹名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110163,7 +110183,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110175,7 +110195,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def LastUpdate(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110187,15 +110207,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Status(self):
-        r"""<p>任务状态，取值范围：</p>
-<ul>
-<li>N 新建</li>
-<li>Y 运行</li>
-<li>F 停止</li>
-<li>O 冻结</li>
-<li>T 停止中</li>
-<li>INVALID 已失效</li>
-</ul>
+        r"""<p>任务状态，取值范围：</p><ul><li>N 新建</li><li>Y 运行</li><li>F 停止</li><li>O 冻结</li><li>T 停止中</li><li>INVALID 已失效</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110207,7 +110219,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def InCharge(self):
-        r"""责任人
+        r"""<p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110219,7 +110231,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def InChargeId(self):
-        r"""责任人用户id
+        r"""<p>责任人用户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110231,7 +110243,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def StartTime(self):
-        r"""生效日期
+        r"""<p>生效日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110243,7 +110255,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def EndTime(self):
-        r"""结束日期
+        r"""<p>结束日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110255,7 +110267,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ExecutionStartTime(self):
-        r"""执行时间左闭区间
+        r"""<p>执行时间左闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110267,7 +110279,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ExecutionEndTime(self):
-        r"""执行时间右闭区间
+        r"""<p>执行时间右闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110279,7 +110291,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110291,7 +110303,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ProjectIdent(self):
-        r"""项目标识
+        r"""<p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110303,7 +110315,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110315,7 +110327,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def CycleType(self):
-        r"""周期类型
+        r"""<p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110327,7 +110339,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def CycleStep(self):
-        r"""步长
+        r"""<p>步长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -110339,7 +110351,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def CrontabExpression(self):
-        r"""对于crontab类型调度配置其为用户输入 对于周期类型调度配置其为系统计算
+        r"""<p>对于crontab类型调度配置其为用户输入 对于周期类型调度配置其为系统计算</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110351,7 +110363,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def DelayTime(self):
-        r"""延时调度
+        r"""<p>延时调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -110363,7 +110375,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def StartupTime(self):
-        r"""延时执行时间
+        r"""<p>延时执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -110375,7 +110387,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def RetryWait(self):
-        r"""重试等待时间,单位分钟
+        r"""<p>重试等待时间,单位分钟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -110387,7 +110399,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Retriable(self):
-        r"""是否可重试
+        r"""<p>是否可重试</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -110399,7 +110411,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TaskAction(self):
-        r"""调度扩展信息
+        r"""<p>调度扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110411,7 +110423,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TryLimit(self):
-        r"""运行次数限制
+        r"""<p>运行次数限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -110423,7 +110435,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def RunPriority(self):
-        r"""运行优先级
+        r"""<p>运行优先级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -110435,7 +110447,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TaskType(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskTypeDsVO`
         """
@@ -110447,7 +110459,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def BrokerIp(self):
-        r"""指定的运行节点
+        r"""<p>指定的运行节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110459,7 +110471,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ClusterId(self):
-        r"""集群name
+        r"""<p>集群name</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110471,7 +110483,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def MinDateTime(self):
-        r"""最小数据时间
+        r"""<p>最小数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110483,7 +110495,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def MaxDateTime(self):
-        r"""最大数据时间
+        r"""<p>最大数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110495,7 +110507,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ExecutionTTL(self):
-        r"""运行耗时超时时间
+        r"""<p>运行耗时超时时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -110507,7 +110519,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def SelfDepend(self):
-        r"""是否自身依赖 是1 否2 并行3
+        r"""<p>是否自身依赖 是1 否2 并行3</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110519,7 +110531,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def LeftCoordinate(self):
-        r"""LeftCoordinate坐标
+        r"""<p>LeftCoordinate坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -110531,7 +110543,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TopCoordinate(self):
-        r"""TopCoordinate坐标
+        r"""<p>TopCoordinate坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -110543,7 +110555,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TaskExt(self):
-        r"""TaskExt信息
+        r"""<p>TaskExt信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskExtDsVO`
         """
@@ -110555,7 +110567,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Properties(self):
-        r"""taskExt 导入导出json使用 private Map  properties;
+        r"""<p>taskExt 导入导出json使用 private Map  properties;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110567,7 +110579,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Notes(self):
-        r"""任务备注
+        r"""<p>任务备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110579,10 +110591,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def InstanceInitStrategy(self):
-        r"""实例生成策略 T+1 表示当前周期生成上一周期数据时间任务实例 默认T+1 T+0 表示当前周期生成当前周期数据时间任务实例 T-1
-     * 表示当前周期生成下一周期数据时间任务实例
-     *
-     * service不做默认策略处理, 下沉到数据初始化默认T+1, service涉及到多个更新task的路径
+        r"""<p>实例生成策略 T+1 表示当前周期生成上一周期数据时间任务实例 默认T+1 T+0 表示当前周期生成当前周期数据时间任务实例 T-1</p><pre><code> * 表示当前周期生成下一周期数据时间任务实例 * * service不做默认策略处理, 下沉到数据初始化默认T+1, service涉及到多个更新task的路径</code></pre>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110594,7 +110603,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def YarnQueue(self):
-        r"""资源池队列名称
+        r"""<p>资源池队列名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110606,7 +110615,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Alarms(self):
-        r"""任务告警信息
+        r"""<p>任务告警信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AlarmDsVO
         """
@@ -110618,7 +110627,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Alarm(self):
-        r"""alarmDTO 导入导出json使用
+        r"""<p>alarmDTO 导入导出json使用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110630,7 +110639,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ScriptChange(self):
-        r"""任务脚本是否发生变化
+        r"""<p>任务脚本是否发生变化</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -110642,7 +110651,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Submit(self):
-        r"""任务版本是否已提交
+        r"""<p>任务版本是否已提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -110654,7 +110663,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def LastSchedulerCommitTime(self):
-        r"""最新调度计划变更时间 仅生产态
+        r"""<p>最新调度计划变更时间 仅生产态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110666,7 +110675,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def NormalizedJobStartTime(self):
-        r"""仅生产态存储于生产态序列化任务信息, 减少base CPU重复密集计算
+        r"""<p>仅生产态存储于生产态序列化任务信息, 减少base CPU重复密集计算</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110678,7 +110687,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def RecoverFreezeStartTime(self):
-        r"""启动暂停的任务时，选择不补录中间实例，通过此字段来标识从哪个时间开始生成实例
+        r"""<p>启动暂停的任务时，选择不补录中间实例，通过此字段来标识从哪个时间开始生成实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110690,7 +110699,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def SourceServer(self):
-        r"""源数据源
+        r"""<p>源数据源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110702,7 +110711,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TargetServer(self):
-        r"""目标数据源
+        r"""<p>目标数据源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110714,7 +110723,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Tasks(self):
-        r"""父子节点树
+        r"""<p>父子节点树</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskDsDTO
         """
@@ -110726,7 +110735,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Creater(self):
-        r"""创建者
+        r"""<p>创建者</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110738,7 +110747,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def DependencyRel(self):
-        r"""分支，依赖关系，and/or, 默认and
+        r"""<p>分支，依赖关系，and/or, 默认and</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110750,7 +110759,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def DependencyWorkflow(self):
-        r"""是否支持工作流依赖 yes / no 默认 no
+        r"""<p>是否支持工作流依赖 yes / no 默认 no</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110762,7 +110771,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def EventListenerConfig(self):
-        r"""支持事件监听器配置导入导出
+        r"""<p>支持事件监听器配置导入导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110774,7 +110783,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def EventPublisherConfig(self):
-        r"""支持事件触发器配置导入导出
+        r"""<p>支持事件触发器配置导入导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110786,7 +110795,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def DependencyConfigList(self):
-        r"""依赖配置
+        r"""<p>依赖配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DependencyConfigDsDTO
         """
@@ -110798,15 +110807,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def VirtualTaskStatus(self):
-        r"""<p>任务状态，取值范围：</p>
-<ul>
-<li>N 新建</li>
-<li>Y 运行</li>
-<li>F 停止</li>
-<li>O 冻结</li>
-<li>T 停止中</li>
-<li>INVALID 已失效</li>
-</ul>
+        r"""<p>任务状态，取值范围：</p><ul><li>N 新建</li><li>Y 运行</li><li>F 停止</li><li>O 冻结</li><li>T 停止中</li><li>INVALID 已失效</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110818,7 +110819,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def RecycleTips(self):
-        r"""回收站还原提示语
+        r"""<p>回收站还原提示语</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110830,7 +110831,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def RecycleUser(self):
-        r"""回收站所属用户
+        r"""<p>回收站所属用户</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110842,7 +110843,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def NewOrUpdate(self):
-        r"""新增 或 修改
+        r"""<p>新增 或 修改</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110854,7 +110855,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Params(self):
-        r"""任务上游依赖信息 用于发布管理导入导出
+        r"""<p>任务上游依赖信息 用于发布管理导入导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParameterTaskDsDto
         """
@@ -110866,7 +110867,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TaskLinkInfo(self):
-        r"""任务上游依赖信息 用于发布管理导入导出
+        r"""<p>任务上游依赖信息 用于发布管理导入导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskLinkDsDTO
         """
@@ -110878,7 +110879,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ImportResult(self):
-        r"""导入结果
+        r"""<p>导入结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -110890,7 +110891,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ImportErrMsg(self):
-        r"""导入失败原因
+        r"""<p>导入失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110902,7 +110903,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ContentType(self):
-        r"""任务内容 全部内容 配置内容 资源内容
+        r"""<p>任务内容 全部内容 配置内容 资源内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110914,7 +110915,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TaskAutoSubmit(self):
-        r"""是否导入提交运行
+        r"""<p>是否导入提交运行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -110926,7 +110927,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ProductName(self):
-        r"""上层产品 数据质量 / 数据开发 / ...
+        r"""<p>上层产品 数据质量 / 数据开发 / ...</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110938,7 +110939,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def OwnId(self):
-        r"""创建者帐号
+        r"""<p>创建者帐号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110950,7 +110951,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def UserId(self):
-        r"""子账号
+        r"""<p>子账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110962,7 +110963,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TenantId(self):
-        r"""租户id
+        r"""<p>租户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110974,7 +110975,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def UpdateUser(self):
-        r"""最后修改的人
+        r"""<p>最后修改的人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110986,7 +110987,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def UpdateTime(self):
-        r"""最后修改时间
+        r"""<p>最后修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -110998,7 +110999,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def UpdateUserId(self):
-        r"""最后修改的人的ID
+        r"""<p>最后修改的人的ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111010,7 +111011,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def SchedulerDesc(self):
-        r"""调度计划
+        r"""<p>调度计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111022,8 +111023,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ResourceGroup(self):
-        r"""资源组
-
+        r"""<p>资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111035,7 +111035,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def VersionDesc(self):
-        r"""版本提交说明
+        r"""<p>版本提交说明</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111047,7 +111047,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def LinkId(self):
-        r"""编排-删除添加的链接
+        r"""<p>编排-删除添加的链接</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111059,7 +111059,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def UserFileId(self):
-        r"""脚本引用关系
+        r"""<p>脚本引用关系</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111071,7 +111071,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def SourceServiceId(self):
-        r"""来源数据源ID
+        r"""<p>来源数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111083,7 +111083,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def SourceServiceType(self):
-        r"""来源数据源类型
+        r"""<p>来源数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111095,7 +111095,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TargetServiceId(self):
-        r"""去向数据源ID
+        r"""<p>去向数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111107,7 +111107,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TargetServiceType(self):
-        r"""去向数据源类型
+        r"""<p>去向数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111119,7 +111119,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ParamInList(self):
-        r"""输入参数
+        r"""<p>输入参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParameterTaskInDsDto
         """
@@ -111131,7 +111131,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ParamOutList(self):
-        r"""输出参数
+        r"""<p>输出参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParameterTaskOutDsDto
         """
@@ -111143,7 +111143,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TaskFolderId(self):
-        r"""任务文件夹id
+        r"""<p>任务文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111155,7 +111155,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def MaxRetryAttempts(self):
-        r"""最大尝试次数
+        r"""<p>最大尝试次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -111167,7 +111167,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ResourceGroupName(self):
-        r"""资源组名称
+        r"""<p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111179,7 +111179,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def SourceServiceName(self):
-        r"""数据源
+        r"""<p>数据源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111191,7 +111191,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TaskRegisterOutputTable(self):
-        r"""任务产出登记
+        r"""<p>任务产出登记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskDataRegistryDTO
         """
@@ -111203,7 +111203,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def CycleDependencyConfigList(self):
-        r"""循环依赖配置
+        r"""<p>循环依赖配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskCycleLinkDTO
         """
@@ -111215,7 +111215,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def Warning(self):
-        r"""特殊警告信息
+        r"""<p>特殊警告信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111227,7 +111227,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ScheduleRunType(self):
-        r"""0 正常调度 1 空跑调度
+        r"""<p>0 正常调度 1 空跑调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -111239,7 +111239,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ConcurrentStrategy(self):
-        r"""0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill
+        r"""<p>0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -111251,7 +111251,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def ScheduleTimeZone(self):
-        r"""UTC+8;UDC-8
+        r"""<p>UTC+8;UDC-8</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111263,7 +111263,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def TemplateId(self):
-        r"""引用的代码模版id
+        r"""<p>引用的代码模版id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111275,7 +111275,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def AllowRedoType(self):
-        r"""允许重跑类 ALL 无论实例成功或者失败，都允许重跑 FAILURE 只有失败的实例允许重跑，成功的实例不允许重跑 NONE 无论成功或者失败，都不允许重跑
+        r"""<p>允许重跑类 ALL 无论实例成功或者失败，都允许重跑 FAILURE 只有失败的实例允许重跑，成功的实例不允许重跑 NONE 无论成功或者失败，都不允许重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111287,8 +111287,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def BundleId(self):
-        r"""BundleId
-CI/CD工程生成的bundle唯一标识
+        r"""<p>BundleId<br>CI/CD工程生成的bundle唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111300,7 +111299,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def BundleInfo(self):
-        r"""bundle信息
+        r"""<p>bundle信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111312,7 +111311,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def AllowDownstreamDependency(self):
-        r"""是否允许下游依赖 0 不允许 1 允许
+        r"""<p>是否允许下游依赖 0 不允许 1 允许</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -111324,19 +111323,7 @@ CI/CD工程生成的bundle唯一标识
 
     @property
     def DependencyTriggerPolicy(self):
-        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        r"""<ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -111345,6 +111332,18 @@ CI/CD工程生成的bundle唯一标识
     @DependencyTriggerPolicy.setter
     def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
         self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
+    @property
+    def LastUpdateTimestamp(self):
+        r"""<p>任务最后更新时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastUpdateTimestamp
+
+    @LastUpdateTimestamp.setter
+    def LastUpdateTimestamp(self, LastUpdateTimestamp):
+        self._LastUpdateTimestamp = LastUpdateTimestamp
 
 
     def _deserialize(self, params):
@@ -111502,6 +111501,7 @@ CI/CD工程生成的bundle唯一标识
         self._BundleInfo = params.get("BundleInfo")
         self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
+        self._LastUpdateTimestamp = params.get("LastUpdateTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -117781,54 +117781,57 @@ class TestRunningRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _RecordId: 试运行记录id
+        :param _RecordId: <p>试运行记录id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: int
-        :param _JobId: 开发侧提交的jobid
+        :param _JobId: <p>开发侧提交的jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: int
-        :param _ExecutionJobId: 执行平台jobid
+        :param _ExecutionJobId: <p>执行平台jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionJobId: str
-        :param _RecordName: 试运行记录名称
+        :param _RecordName: <p>试运行记录名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordName: str
-        :param _ScriptContent: 脚本内容
+        :param _ScriptContent: <p>脚本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScriptContent: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _TimeCost: 耗时
+        :param _TimeCost: <p>耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeCost: int
-        :param _UserUin: 用户uin
+        :param _UserUin: <p>用户uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserUin: str
-        :param _OwnerUin: 主账户uin
+        :param _OwnerUin: <p>主账户uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param _SubRecordList: 子记录信息
+        :param _SubRecordList: <p>子记录信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubRecordList: list of TestRunningSubRecord
-        :param _Region: 结果或日志地域
+        :param _Region: <p>结果或日志地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _BucketName: 结果或日志桶名
+        :param _BucketName: <p>结果或日志桶名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BucketName: str
-        :param _ErrorMessage: 错误信息
+        :param _ErrorMessage: <p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
+        :param _ScriptContentTruncated: <p>脚本内容是否被截断</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptContentTruncated: bool
         """
         self._StartTime = None
         self._EndTime = None
@@ -117846,10 +117849,11 @@ class TestRunningRecord(AbstractModel):
         self._Region = None
         self._BucketName = None
         self._ErrorMessage = None
+        self._ScriptContentTruncated = None
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117861,7 +117865,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117873,7 +117877,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117885,7 +117889,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""试运行记录id
+        r"""<p>试运行记录id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -117897,7 +117901,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def JobId(self):
-        r"""开发侧提交的jobid
+        r"""<p>开发侧提交的jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -117909,7 +117913,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def ExecutionJobId(self):
-        r"""执行平台jobid
+        r"""<p>执行平台jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117921,7 +117925,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def RecordName(self):
-        r"""试运行记录名称
+        r"""<p>试运行记录名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117933,7 +117937,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def ScriptContent(self):
-        r"""脚本内容
+        r"""<p>脚本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117945,7 +117949,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117957,7 +117961,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def TimeCost(self):
-        r"""耗时
+        r"""<p>耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -117969,7 +117973,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def UserUin(self):
-        r"""用户uin
+        r"""<p>用户uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117981,7 +117985,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""主账户uin
+        r"""<p>主账户uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117993,7 +117997,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def SubRecordList(self):
-        r"""子记录信息
+        r"""<p>子记录信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TestRunningSubRecord
         """
@@ -118005,7 +118009,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def Region(self):
-        r"""结果或日志地域
+        r"""<p>结果或日志地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118017,7 +118021,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def BucketName(self):
-        r"""结果或日志桶名
+        r"""<p>结果或日志桶名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118029,7 +118033,7 @@ class TestRunningRecord(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118038,6 +118042,18 @@ class TestRunningRecord(AbstractModel):
     @ErrorMessage.setter
     def ErrorMessage(self, ErrorMessage):
         self._ErrorMessage = ErrorMessage
+
+    @property
+    def ScriptContentTruncated(self):
+        r"""<p>脚本内容是否被截断</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ScriptContentTruncated
+
+    @ScriptContentTruncated.setter
+    def ScriptContentTruncated(self, ScriptContentTruncated):
+        self._ScriptContentTruncated = ScriptContentTruncated
 
 
     def _deserialize(self, params):
@@ -118062,6 +118078,7 @@ class TestRunningRecord(AbstractModel):
         self._Region = params.get("Region")
         self._BucketName = params.get("BucketName")
         self._ErrorMessage = params.get("ErrorMessage")
+        self._ScriptContentTruncated = params.get("ScriptContentTruncated")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -118079,60 +118096,66 @@ class TestRunningSubRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开发时间
+        :param _StartTime: <p>开发时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _ExecutionJobId: 执行平台执行id
+        :param _ExecutionJobId: <p>执行平台执行id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionJobId: str
-        :param _ExecutionSubJobId: 执行平台子执行jobid
+        :param _ExecutionSubJobId: <p>执行平台子执行jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionSubJobId: str
-        :param _JobId: 开发侧提交的jobid
+        :param _JobId: <p>开发侧提交的jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param _DetailId: 子记录id
+        :param _DetailId: <p>子记录id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailId: int
-        :param _RecordId: 试运行记录id
+        :param _RecordId: <p>试运行记录id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: int
-        :param _ScriptContent: 脚本内容
+        :param _ScriptContent: <p>脚本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScriptContent: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _TimeCost: 耗时
+        :param _TimeCost: <p>耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeCost: int
-        :param _ResultTotalCount: 结果总行数
+        :param _ResultTotalCount: <p>结果总行数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultTotalCount: int
-        :param _ResultPreviewCount: 预览结果行数
+        :param _ResultPreviewCount: <p>预览结果行数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultPreviewCount: int
-        :param _ResultFilePath: 结果文件路径
+        :param _ResultFilePath: <p>结果文件路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultFilePath: str
-        :param _ResultPreviewFilePath: 预览结果文件路径
+        :param _ResultPreviewFilePath: <p>预览结果文件路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultPreviewFilePath: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _Sequence: 序号
+        :param _Sequence: <p>序号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sequence: str
-        :param _LogFilePath: 日志路径
+        :param _LogFilePath: <p>日志路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogFilePath: str
-        :param _HasSubResultSet: 是否包含子结果
+        :param _HasSubResultSet: <p>是否包含子结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasSubResultSet: bool
+        :param _ScriptContentTruncated: <p>脚本内容是否被截断</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptContentTruncated: bool
+        :param _SchemaInfoFilePath: <p>结果集表字符信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaInfoFilePath: str
         """
         self._StartTime = None
         self._EndTime = None
@@ -118152,10 +118175,12 @@ class TestRunningSubRecord(AbstractModel):
         self._Sequence = None
         self._LogFilePath = None
         self._HasSubResultSet = None
+        self._ScriptContentTruncated = None
+        self._SchemaInfoFilePath = None
 
     @property
     def StartTime(self):
-        r"""开发时间
+        r"""<p>开发时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118167,7 +118192,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118179,7 +118204,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def ExecutionJobId(self):
-        r"""执行平台执行id
+        r"""<p>执行平台执行id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118191,7 +118216,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def ExecutionSubJobId(self):
-        r"""执行平台子执行jobid
+        r"""<p>执行平台子执行jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118203,7 +118228,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def JobId(self):
-        r"""开发侧提交的jobid
+        r"""<p>开发侧提交的jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118215,7 +118240,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def DetailId(self):
-        r"""子记录id
+        r"""<p>子记录id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -118227,7 +118252,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""试运行记录id
+        r"""<p>试运行记录id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -118239,7 +118264,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def ScriptContent(self):
-        r"""脚本内容
+        r"""<p>脚本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118251,7 +118276,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118263,7 +118288,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def TimeCost(self):
-        r"""耗时
+        r"""<p>耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -118275,7 +118300,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def ResultTotalCount(self):
-        r"""结果总行数
+        r"""<p>结果总行数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -118287,7 +118312,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def ResultPreviewCount(self):
-        r"""预览结果行数
+        r"""<p>预览结果行数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -118299,7 +118324,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def ResultFilePath(self):
-        r"""结果文件路径
+        r"""<p>结果文件路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118311,7 +118336,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def ResultPreviewFilePath(self):
-        r"""预览结果文件路径
+        r"""<p>预览结果文件路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118323,7 +118348,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118335,7 +118360,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def Sequence(self):
-        r"""序号
+        r"""<p>序号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118347,7 +118372,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def LogFilePath(self):
-        r"""日志路径
+        r"""<p>日志路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -118359,7 +118384,7 @@ class TestRunningSubRecord(AbstractModel):
 
     @property
     def HasSubResultSet(self):
-        r"""是否包含子结果
+        r"""<p>是否包含子结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -118368,6 +118393,30 @@ class TestRunningSubRecord(AbstractModel):
     @HasSubResultSet.setter
     def HasSubResultSet(self, HasSubResultSet):
         self._HasSubResultSet = HasSubResultSet
+
+    @property
+    def ScriptContentTruncated(self):
+        r"""<p>脚本内容是否被截断</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ScriptContentTruncated
+
+    @ScriptContentTruncated.setter
+    def ScriptContentTruncated(self, ScriptContentTruncated):
+        self._ScriptContentTruncated = ScriptContentTruncated
+
+    @property
+    def SchemaInfoFilePath(self):
+        r"""<p>结果集表字符信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaInfoFilePath
+
+    @SchemaInfoFilePath.setter
+    def SchemaInfoFilePath(self, SchemaInfoFilePath):
+        self._SchemaInfoFilePath = SchemaInfoFilePath
 
 
     def _deserialize(self, params):
@@ -118389,6 +118438,8 @@ class TestRunningSubRecord(AbstractModel):
         self._Sequence = params.get("Sequence")
         self._LogFilePath = params.get("LogFilePath")
         self._HasSubResultSet = params.get("HasSubResultSet")
+        self._ScriptContentTruncated = params.get("ScriptContentTruncated")
+        self._SchemaInfoFilePath = params.get("SchemaInfoFilePath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -61,6 +61,24 @@ class IoaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCompanyDirectoryConfig(
+            self,
+            request: models.CreateCompanyDirectoryConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateCompanyDirectoryConfigResponse:
+        """
+        创建企业目录配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCompanyDirectoryConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCompanyDirectoryConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDLPFileDetectTask(
             self,
             request: models.CreateDLPFileDetectTaskRequest,
@@ -236,6 +254,24 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "DescribeBusinessResources"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBusinessResourcesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCompanyDirectoryConfig(
+            self,
+            request: models.DescribeCompanyDirectoryConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCompanyDirectoryConfigResponse:
+        """
+        获取企业目录配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCompanyDirectoryConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCompanyDirectoryConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -686,6 +722,24 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "ModifyBusinessResource"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyBusinessResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCompanyDirectoryConfig(
+            self,
+            request: models.ModifyCompanyDirectoryConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCompanyDirectoryConfigResponse:
+        """
+        编辑企业目录配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCompanyDirectoryConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCompanyDirectoryConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -6285,11 +6285,11 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :type InstanceId: str
-        :param _Kind: 集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
+        :param _Kind: <p>集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)</p>
         :type Kind: str
-        :param _Content: 集成配置
+        :param _Content: <p>集成配置</p>
         :type Content: str
         """
         self._InstanceId = None
@@ -6298,7 +6298,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-abcdefgh
+        r"""<p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6309,7 +6309,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
-        r"""集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
+        r"""<p>集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)</p>
         :rtype: str
         """
         return self._Kind
@@ -6320,7 +6320,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""集成配置
+        r"""<p>集成配置</p>
         :rtype: str
         """
         return self._Content
@@ -6351,7 +6351,7 @@ class CreateGrafanaIntegrationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IntegrationId: 集成 ID
+        :param _IntegrationId: <p>集成 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntegrationId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6362,7 +6362,7 @@ class CreateGrafanaIntegrationResponse(AbstractModel):
 
     @property
     def IntegrationId(self):
-        r"""集成 ID
+        r"""<p>集成 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8469,155 +8469,6 @@ class CreateSSOAccountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
-        self._RequestId = params.get("RequestId")
-
-
-class CreateServiceDiscoveryRequest(AbstractModel):
-    r"""CreateServiceDiscovery请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Prometheus 实例 ID
-        :type InstanceId: str
-        :param _KubeClusterId: <li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
-        :type KubeClusterId: str
-        :param _KubeType: 用户 Kubernetes 集群类型：
-<li> 1 = 容器服务集群(TKE) </li>
-        :type KubeType: int
-        :param _Type: 服务发现类型，取值如下：
-<li> 1 = ServiceMonitor</li>
-<li> 2 = PodMonitor</li>
-<li> 3 = JobMonitor</li>
-        :type Type: int
-        :param _Yaml: 服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
-        :type Yaml: str
-        """
-        self._InstanceId = None
-        self._KubeClusterId = None
-        self._KubeType = None
-        self._Type = None
-        self._Yaml = None
-
-    @property
-    def InstanceId(self):
-        r"""Prometheus 实例 ID
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def KubeClusterId(self):
-        r"""<li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
-        :rtype: str
-        """
-        return self._KubeClusterId
-
-    @KubeClusterId.setter
-    def KubeClusterId(self, KubeClusterId):
-        self._KubeClusterId = KubeClusterId
-
-    @property
-    def KubeType(self):
-        r"""用户 Kubernetes 集群类型：
-<li> 1 = 容器服务集群(TKE) </li>
-        :rtype: int
-        """
-        return self._KubeType
-
-    @KubeType.setter
-    def KubeType(self, KubeType):
-        self._KubeType = KubeType
-
-    @property
-    def Type(self):
-        r"""服务发现类型，取值如下：
-<li> 1 = ServiceMonitor</li>
-<li> 2 = PodMonitor</li>
-<li> 3 = JobMonitor</li>
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def Yaml(self):
-        r"""服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
-        :rtype: str
-        """
-        return self._Yaml
-
-    @Yaml.setter
-    def Yaml(self, Yaml):
-        self._Yaml = Yaml
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._KubeClusterId = params.get("KubeClusterId")
-        self._KubeType = params.get("KubeType")
-        self._Type = params.get("Type")
-        self._Yaml = params.get("Yaml")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateServiceDiscoveryResponse(AbstractModel):
-    r"""CreateServiceDiscovery返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceDiscovery: 创建成功之后，返回对应服务发现信息
-        :type ServiceDiscovery: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ServiceDiscovery = None
-        self._RequestId = None
-
-    @property
-    def ServiceDiscovery(self):
-        r"""创建成功之后，返回对应服务发现信息
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.ServiceDiscoveryItem`
-        """
-        return self._ServiceDiscovery
-
-    @ServiceDiscovery.setter
-    def ServiceDiscovery(self, ServiceDiscovery):
-        self._ServiceDiscovery = ServiceDiscovery
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("ServiceDiscovery") is not None:
-            self._ServiceDiscovery = ServiceDiscoveryItem()
-            self._ServiceDiscovery._deserialize(params.get("ServiceDiscovery"))
         self._RequestId = params.get("RequestId")
 
 
@@ -24920,124 +24771,6 @@ class DescribeSSOAccountResponse(AbstractModel):
                 obj = GrafanaAccountInfo()
                 obj._deserialize(item)
                 self._AccountSet.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeServiceDiscoveryRequest(AbstractModel):
-    r"""DescribeServiceDiscovery请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Prometheus 实例 ID
-        :type InstanceId: str
-        :param _KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
-        :type KubeClusterId: str
-        :param _KubeType: 用户 Kubernetes 集群类型：
-<li> 1 = 容器服务集群(TKE) </li>
-        :type KubeType: int
-        """
-        self._InstanceId = None
-        self._KubeClusterId = None
-        self._KubeType = None
-
-    @property
-    def InstanceId(self):
-        r"""Prometheus 实例 ID
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def KubeClusterId(self):
-        r"""<li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
-        :rtype: str
-        """
-        return self._KubeClusterId
-
-    @KubeClusterId.setter
-    def KubeClusterId(self, KubeClusterId):
-        self._KubeClusterId = KubeClusterId
-
-    @property
-    def KubeType(self):
-        r"""用户 Kubernetes 集群类型：
-<li> 1 = 容器服务集群(TKE) </li>
-        :rtype: int
-        """
-        return self._KubeType
-
-    @KubeType.setter
-    def KubeType(self, KubeType):
-        self._KubeType = KubeType
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._KubeClusterId = params.get("KubeClusterId")
-        self._KubeType = params.get("KubeType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeServiceDiscoveryResponse(AbstractModel):
-    r"""DescribeServiceDiscovery返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceDiscoverySet: 返回服务发现列表信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceDiscoverySet: list of ServiceDiscoveryItem
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ServiceDiscoverySet = None
-        self._RequestId = None
-
-    @property
-    def ServiceDiscoverySet(self):
-        r"""返回服务发现列表信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of ServiceDiscoveryItem
-        """
-        return self._ServiceDiscoverySet
-
-    @ServiceDiscoverySet.setter
-    def ServiceDiscoverySet(self, ServiceDiscoverySet):
-        self._ServiceDiscoverySet = ServiceDiscoverySet
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("ServiceDiscoverySet") is not None:
-            self._ServiceDiscoverySet = []
-            for item in params.get("ServiceDiscoverySet"):
-                obj = ServiceDiscoveryItem()
-                obj._deserialize(item)
-                self._ServiceDiscoverySet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

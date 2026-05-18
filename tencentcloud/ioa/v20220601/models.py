@@ -1127,6 +1127,222 @@ class CreateBusinessResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCompanyDirectoryConfigRequest(AbstractModel):
+    r"""CreateCompanyDirectoryConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>企业目录类型</p>
+        :type Type: str
+        :param _Name: <p>企业目录名</p>
+        :type Name: str
+        :param _Config: <p>配置是通过 SM2 加密再 Hex 之后的数据</p>
+        :type Config: str
+        :param _SyncEnable: <p>是否开启定时同步</p>
+        :type SyncEnable: bool
+        :param _SyncPolicy: <p>定时同步的策略，枚举值：支持每4小时（4hours）/每日定时（daily）/每周定时（weekly）</p>
+        :type SyncPolicy: str
+        :param _SyncPolicyParams: <p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+        :type SyncPolicyParams: str
+        :param _CreateAuthConfig: <p>是否同步创建认证源</p>
+        :type CreateAuthConfig: bool
+        :param _DisplayOnLoginPage: <p>是否在登录页展示</p>
+        :type DisplayOnLoginPage: bool
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Scene: <p>使用场景：API 创建，快速上手，普通配置等</p>
+        :type Scene: str
+        """
+        self._Type = None
+        self._Name = None
+        self._Config = None
+        self._SyncEnable = None
+        self._SyncPolicy = None
+        self._SyncPolicyParams = None
+        self._CreateAuthConfig = None
+        self._DisplayOnLoginPage = None
+        self._Description = None
+        self._Scene = None
+
+    @property
+    def Type(self):
+        r"""<p>企业目录类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>企业目录名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Config(self):
+        r"""<p>配置是通过 SM2 加密再 Hex 之后的数据</p>
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def SyncEnable(self):
+        r"""<p>是否开启定时同步</p>
+        :rtype: bool
+        """
+        return self._SyncEnable
+
+    @SyncEnable.setter
+    def SyncEnable(self, SyncEnable):
+        self._SyncEnable = SyncEnable
+
+    @property
+    def SyncPolicy(self):
+        r"""<p>定时同步的策略，枚举值：支持每4小时（4hours）/每日定时（daily）/每周定时（weekly）</p>
+        :rtype: str
+        """
+        return self._SyncPolicy
+
+    @SyncPolicy.setter
+    def SyncPolicy(self, SyncPolicy):
+        self._SyncPolicy = SyncPolicy
+
+    @property
+    def SyncPolicyParams(self):
+        r"""<p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+        :rtype: str
+        """
+        return self._SyncPolicyParams
+
+    @SyncPolicyParams.setter
+    def SyncPolicyParams(self, SyncPolicyParams):
+        self._SyncPolicyParams = SyncPolicyParams
+
+    @property
+    def CreateAuthConfig(self):
+        r"""<p>是否同步创建认证源</p>
+        :rtype: bool
+        """
+        return self._CreateAuthConfig
+
+    @CreateAuthConfig.setter
+    def CreateAuthConfig(self, CreateAuthConfig):
+        self._CreateAuthConfig = CreateAuthConfig
+
+    @property
+    def DisplayOnLoginPage(self):
+        r"""<p>是否在登录页展示</p>
+        :rtype: bool
+        """
+        return self._DisplayOnLoginPage
+
+    @DisplayOnLoginPage.setter
+    def DisplayOnLoginPage(self, DisplayOnLoginPage):
+        self._DisplayOnLoginPage = DisplayOnLoginPage
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Scene(self):
+        r"""<p>使用场景：API 创建，快速上手，普通配置等</p>
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Config = params.get("Config")
+        self._SyncEnable = params.get("SyncEnable")
+        self._SyncPolicy = params.get("SyncPolicy")
+        self._SyncPolicyParams = params.get("SyncPolicyParams")
+        self._CreateAuthConfig = params.get("CreateAuthConfig")
+        self._DisplayOnLoginPage = params.get("DisplayOnLoginPage")
+        self._Description = params.get("Description")
+        self._Scene = params.get("Scene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCompanyDirectoryConfigResponse(AbstractModel):
+    r"""CreateCompanyDirectoryConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>创建企业目录配置的结果</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DirectoryConfigResultData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>创建企业目录配置的结果</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DirectoryConfigResultData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DirectoryConfigResultData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDLPFileDetectTaskData(AbstractModel):
     r"""文件鉴定任务分页数据
 
@@ -4511,6 +4727,87 @@ class DescribeBusinessResourcesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = DescribeBusinessResourcePageRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCompanyDirectoryConfigRequest(AbstractModel):
+    r"""DescribeCompanyDirectoryConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>企业目录 ID</p>
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>企业目录 ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCompanyDirectoryConfigResponse(AbstractModel):
+    r"""DescribeCompanyDirectoryConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>企业目录配置详情</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DirectoryConfigData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>企业目录配置详情</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DirectoryConfigData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DirectoryConfigData()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -11051,6 +11348,348 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
         
 
 
+class DirectoryConfigData(AbstractModel):
+    r"""企业目录的配置数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>企业目录 ID</p>
+        :type Id: int
+        :param _Type: <p>目录对应身份源类型</p><p>枚举值：</p><ul><li>WeCom： 企业微信</li><li>Lark： 飞书</li><li>DingTalk： 钉钉</li><li>MicrosoftEntraID： 微软 AAD</li></ul>
+        :type Type: str
+        :param _Name: <p>企业目录名称</p>
+        :type Name: str
+        :param _Config: <p>使用 JSON 字符串表示的配置信息</p>
+        :type Config: str
+        :param _SyncEnable: <p>是否开启了定时同步</p>
+        :type SyncEnable: bool
+        :param _SyncPolicy: <p>定时同步的策略</p><p>枚举值：</p><ul><li>4hours： 按创建时间开始的每 4 小时</li><li>daily： 每日</li><li>weekly： 每周</li></ul>
+        :type SyncPolicy: str
+        :param _SyncPolicyParams: <p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+        :type SyncPolicyParams: str
+        :param _CreateAuthConfig: <p>是否配置了同步创建认证配置</p>
+        :type CreateAuthConfig: bool
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _SourceId: <p>对应 Config 的配置 ID</p>
+        :type SourceId: str
+        :param _DisplayOnLoginPage: <p>是否在登录页展示</p>
+        :type DisplayOnLoginPage: bool
+        """
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Config = None
+        self._SyncEnable = None
+        self._SyncPolicy = None
+        self._SyncPolicyParams = None
+        self._CreateAuthConfig = None
+        self._Description = None
+        self._SourceId = None
+        self._DisplayOnLoginPage = None
+
+    @property
+    def Id(self):
+        r"""<p>企业目录 ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>目录对应身份源类型</p><p>枚举值：</p><ul><li>WeCom： 企业微信</li><li>Lark： 飞书</li><li>DingTalk： 钉钉</li><li>MicrosoftEntraID： 微软 AAD</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>企业目录名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Config(self):
+        r"""<p>使用 JSON 字符串表示的配置信息</p>
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def SyncEnable(self):
+        r"""<p>是否开启了定时同步</p>
+        :rtype: bool
+        """
+        return self._SyncEnable
+
+    @SyncEnable.setter
+    def SyncEnable(self, SyncEnable):
+        self._SyncEnable = SyncEnable
+
+    @property
+    def SyncPolicy(self):
+        r"""<p>定时同步的策略</p><p>枚举值：</p><ul><li>4hours： 按创建时间开始的每 4 小时</li><li>daily： 每日</li><li>weekly： 每周</li></ul>
+        :rtype: str
+        """
+        return self._SyncPolicy
+
+    @SyncPolicy.setter
+    def SyncPolicy(self, SyncPolicy):
+        self._SyncPolicy = SyncPolicy
+
+    @property
+    def SyncPolicyParams(self):
+        r"""<p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+        :rtype: str
+        """
+        return self._SyncPolicyParams
+
+    @SyncPolicyParams.setter
+    def SyncPolicyParams(self, SyncPolicyParams):
+        self._SyncPolicyParams = SyncPolicyParams
+
+    @property
+    def CreateAuthConfig(self):
+        r"""<p>是否配置了同步创建认证配置</p>
+        :rtype: bool
+        """
+        return self._CreateAuthConfig
+
+    @CreateAuthConfig.setter
+    def CreateAuthConfig(self, CreateAuthConfig):
+        self._CreateAuthConfig = CreateAuthConfig
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SourceId(self):
+        r"""<p>对应 Config 的配置 ID</p>
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def DisplayOnLoginPage(self):
+        r"""<p>是否在登录页展示</p>
+        :rtype: bool
+        """
+        return self._DisplayOnLoginPage
+
+    @DisplayOnLoginPage.setter
+    def DisplayOnLoginPage(self, DisplayOnLoginPage):
+        self._DisplayOnLoginPage = DisplayOnLoginPage
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Config = params.get("Config")
+        self._SyncEnable = params.get("SyncEnable")
+        self._SyncPolicy = params.get("SyncPolicy")
+        self._SyncPolicyParams = params.get("SyncPolicyParams")
+        self._CreateAuthConfig = params.get("CreateAuthConfig")
+        self._Description = params.get("Description")
+        self._SourceId = params.get("SourceId")
+        self._DisplayOnLoginPage = params.get("DisplayOnLoginPage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DirectoryConfigResultData(AbstractModel):
+    r"""创建/编辑企业目录配置之后返回结果数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>企业目录 ID</p>
+        :type Id: int
+        :param _Name: <p>企业目录名称</p>
+        :type Name: str
+        :param _IdentifySourceId: <p>身份源配置 ID</p>
+        :type IdentifySourceId: str
+        :param _CreateAuthConfig: <p>是否同步创建了认证配置</p>
+        :type CreateAuthConfig: bool
+        :param _AuthSourceId: <p>认证源配置 ID</p>
+        :type AuthSourceId: str
+        :param _AuthConfigId: <p>认证配置 ID</p>
+        :type AuthConfigId: int
+        :param _AuthPolicyId: <p>认证策略 ID</p>
+        :type AuthPolicyId: int
+        :param _AuthSupportPlatforms: <p>认证支持的平台, PC 或 Mobile</p>
+        :type AuthSupportPlatforms: list of str
+        :param _AuthMethods: <p>认证方式，授权认证/扫码认证 等</p>
+        :type AuthMethods: list of str
+        """
+        self._Id = None
+        self._Name = None
+        self._IdentifySourceId = None
+        self._CreateAuthConfig = None
+        self._AuthSourceId = None
+        self._AuthConfigId = None
+        self._AuthPolicyId = None
+        self._AuthSupportPlatforms = None
+        self._AuthMethods = None
+
+    @property
+    def Id(self):
+        r"""<p>企业目录 ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>企业目录名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdentifySourceId(self):
+        r"""<p>身份源配置 ID</p>
+        :rtype: str
+        """
+        return self._IdentifySourceId
+
+    @IdentifySourceId.setter
+    def IdentifySourceId(self, IdentifySourceId):
+        self._IdentifySourceId = IdentifySourceId
+
+    @property
+    def CreateAuthConfig(self):
+        r"""<p>是否同步创建了认证配置</p>
+        :rtype: bool
+        """
+        return self._CreateAuthConfig
+
+    @CreateAuthConfig.setter
+    def CreateAuthConfig(self, CreateAuthConfig):
+        self._CreateAuthConfig = CreateAuthConfig
+
+    @property
+    def AuthSourceId(self):
+        r"""<p>认证源配置 ID</p>
+        :rtype: str
+        """
+        return self._AuthSourceId
+
+    @AuthSourceId.setter
+    def AuthSourceId(self, AuthSourceId):
+        self._AuthSourceId = AuthSourceId
+
+    @property
+    def AuthConfigId(self):
+        r"""<p>认证配置 ID</p>
+        :rtype: int
+        """
+        return self._AuthConfigId
+
+    @AuthConfigId.setter
+    def AuthConfigId(self, AuthConfigId):
+        self._AuthConfigId = AuthConfigId
+
+    @property
+    def AuthPolicyId(self):
+        r"""<p>认证策略 ID</p>
+        :rtype: int
+        """
+        return self._AuthPolicyId
+
+    @AuthPolicyId.setter
+    def AuthPolicyId(self, AuthPolicyId):
+        self._AuthPolicyId = AuthPolicyId
+
+    @property
+    def AuthSupportPlatforms(self):
+        r"""<p>认证支持的平台, PC 或 Mobile</p>
+        :rtype: list of str
+        """
+        return self._AuthSupportPlatforms
+
+    @AuthSupportPlatforms.setter
+    def AuthSupportPlatforms(self, AuthSupportPlatforms):
+        self._AuthSupportPlatforms = AuthSupportPlatforms
+
+    @property
+    def AuthMethods(self):
+        r"""<p>认证方式，授权认证/扫码认证 等</p>
+        :rtype: list of str
+        """
+        return self._AuthMethods
+
+    @AuthMethods.setter
+    def AuthMethods(self, AuthMethods):
+        self._AuthMethods = AuthMethods
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._IdentifySourceId = params.get("IdentifySourceId")
+        self._CreateAuthConfig = params.get("CreateAuthConfig")
+        self._AuthSourceId = params.get("AuthSourceId")
+        self._AuthConfigId = params.get("AuthConfigId")
+        self._AuthPolicyId = params.get("AuthPolicyId")
+        self._AuthSupportPlatforms = params.get("AuthSupportPlatforms")
+        self._AuthMethods = params.get("AuthMethods")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExportDeviceDownloadTaskRequest(AbstractModel):
     r"""ExportDeviceDownloadTask请求参数结构体
 
@@ -12859,6 +13498,222 @@ class ModifyBusinessResourceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCompanyDirectoryConfigRequest(AbstractModel):
+    r"""ModifyCompanyDirectoryConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>企业目录类型</p>
+        :type Type: str
+        :param _Name: <p>企业目录名</p>
+        :type Name: str
+        :param _Config: <p>使用 JSON 字符串表示的配置信息</p><p>调用此接口前，需要先调用DescribeCompanyDirectoryConfig获取完整的配置，然后对里面需要更新的配置进行修改，请求的时候必须传完整配置，否则可能导致配置缺失出现错误。如果是脱敏的信息，保持原样的脱敏格式提交，如果和脱敏格式不一致，会认为是新的配置值更新原有配置</p>
+        :type Config: str
+        :param _SyncEnable: <p>是否开启定时同步</p>
+        :type SyncEnable: bool
+        :param _SyncPolicy: <p>定时同步的策略，枚举值：支持每4小时（4hours）/每日定时（daily）/每周定时（weekly）</p>
+        :type SyncPolicy: str
+        :param _SyncPolicyParams: <p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+        :type SyncPolicyParams: str
+        :param _CreateAuthConfig: <p>是否同步创建认证源</p>
+        :type CreateAuthConfig: bool
+        :param _DisplayOnLoginPage: <p>是否在登录页展示</p>
+        :type DisplayOnLoginPage: bool
+        :param _Id: <p>企业目录 ID</p>
+        :type Id: int
+        :param _Description: <p>描述</p>
+        :type Description: str
+        """
+        self._Type = None
+        self._Name = None
+        self._Config = None
+        self._SyncEnable = None
+        self._SyncPolicy = None
+        self._SyncPolicyParams = None
+        self._CreateAuthConfig = None
+        self._DisplayOnLoginPage = None
+        self._Id = None
+        self._Description = None
+
+    @property
+    def Type(self):
+        r"""<p>企业目录类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>企业目录名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Config(self):
+        r"""<p>使用 JSON 字符串表示的配置信息</p><p>调用此接口前，需要先调用DescribeCompanyDirectoryConfig获取完整的配置，然后对里面需要更新的配置进行修改，请求的时候必须传完整配置，否则可能导致配置缺失出现错误。如果是脱敏的信息，保持原样的脱敏格式提交，如果和脱敏格式不一致，会认为是新的配置值更新原有配置</p>
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def SyncEnable(self):
+        r"""<p>是否开启定时同步</p>
+        :rtype: bool
+        """
+        return self._SyncEnable
+
+    @SyncEnable.setter
+    def SyncEnable(self, SyncEnable):
+        self._SyncEnable = SyncEnable
+
+    @property
+    def SyncPolicy(self):
+        r"""<p>定时同步的策略，枚举值：支持每4小时（4hours）/每日定时（daily）/每周定时（weekly）</p>
+        :rtype: str
+        """
+        return self._SyncPolicy
+
+    @SyncPolicy.setter
+    def SyncPolicy(self, SyncPolicy):
+        self._SyncPolicy = SyncPolicy
+
+    @property
+    def SyncPolicyParams(self):
+        r"""<p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+        :rtype: str
+        """
+        return self._SyncPolicyParams
+
+    @SyncPolicyParams.setter
+    def SyncPolicyParams(self, SyncPolicyParams):
+        self._SyncPolicyParams = SyncPolicyParams
+
+    @property
+    def CreateAuthConfig(self):
+        r"""<p>是否同步创建认证源</p>
+        :rtype: bool
+        """
+        return self._CreateAuthConfig
+
+    @CreateAuthConfig.setter
+    def CreateAuthConfig(self, CreateAuthConfig):
+        self._CreateAuthConfig = CreateAuthConfig
+
+    @property
+    def DisplayOnLoginPage(self):
+        r"""<p>是否在登录页展示</p>
+        :rtype: bool
+        """
+        return self._DisplayOnLoginPage
+
+    @DisplayOnLoginPage.setter
+    def DisplayOnLoginPage(self, DisplayOnLoginPage):
+        self._DisplayOnLoginPage = DisplayOnLoginPage
+
+    @property
+    def Id(self):
+        r"""<p>企业目录 ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Config = params.get("Config")
+        self._SyncEnable = params.get("SyncEnable")
+        self._SyncPolicy = params.get("SyncPolicy")
+        self._SyncPolicyParams = params.get("SyncPolicyParams")
+        self._CreateAuthConfig = params.get("CreateAuthConfig")
+        self._DisplayOnLoginPage = params.get("DisplayOnLoginPage")
+        self._Id = params.get("Id")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCompanyDirectoryConfigResponse(AbstractModel):
+    r"""ModifyCompanyDirectoryConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>编辑企业目录配置的结果</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DirectoryConfigResultData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>编辑企业目录配置的结果</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DirectoryConfigResultData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DirectoryConfigResultData()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 

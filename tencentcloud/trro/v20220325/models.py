@@ -1343,14 +1343,20 @@ class DescribeDeviceSessionDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionId: 会话ID
+        :param _SessionId: <p>会话ID</p>
         :type SessionId: str
+        :param _StartTime: <p>查询指标开始时间</p><p>单位：秒</p>
+        :type StartTime: int
+        :param _EndTime: <p>查询指标结束时间</p><p>单位：秒</p>
+        :type EndTime: int
         """
         self._SessionId = None
+        self._StartTime = None
+        self._EndTime = None
 
     @property
     def SessionId(self):
-        r"""会话ID
+        r"""<p>会话ID</p>
         :rtype: str
         """
         return self._SessionId
@@ -1359,9 +1365,33 @@ class DescribeDeviceSessionDetailsRequest(AbstractModel):
     def SessionId(self, SessionId):
         self._SessionId = SessionId
 
+    @property
+    def StartTime(self):
+        r"""<p>查询指标开始时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询指标结束时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1379,7 +1409,7 @@ class DescribeDeviceSessionDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Details: 按设备区分的会话详细数据
+        :param _Details: <p>按设备区分的会话详细数据</p>
         :type Details: list of SessionDeviceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1389,7 +1419,7 @@ class DescribeDeviceSessionDetailsResponse(AbstractModel):
 
     @property
     def Details(self):
-        r"""按设备区分的会话详细数据
+        r"""<p>按设备区分的会话详细数据</p>
         :rtype: list of SessionDeviceDetail
         """
         return self._Details
@@ -5314,79 +5344,81 @@ class SessionDeviceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceType: 设备类型：field或remote
+        :param _DeviceType: <p>设备类型：field或remote</p>
         :type DeviceType: str
-        :param _StartTime: 起始点位时间，单位：秒
+        :param _StartTime: <p>起始点位时间，单位：秒</p>
         :type StartTime: int
-        :param _EndTime: 结束点位时间，单位：秒
+        :param _EndTime: <p>结束点位时间，单位：秒</p>
         :type EndTime: int
-        :param _SessionId: 会话ID
+        :param _SessionId: <p>会话ID</p>
         :type SessionId: str
-        :param _Rate: 码率，单位：kbps
+        :param _Rate: <p>码率，单位：kbps</p>
         :type Rate: list of int
-        :param _Fps: 帧率
+        :param _Fps: <p>帧率</p>
         :type Fps: list of int
-        :param _Lost: 丢包率，单位：%
+        :param _Lost: <p>丢包率，单位：%</p>
         :type Lost: list of float
-        :param _NetworkLatency: 网络时延，单位：ms
+        :param _NetworkLatency: <p>网络时延，单位：ms</p>
         :type NetworkLatency: list of int
-        :param _VideoLatency: 视频时延，单位：ms
+        :param _VideoLatency: <p>视频时延，单位：ms</p>
         :type VideoLatency: list of int
-        :param _CpuUsed: CPU使用率，单位：%
+        :param _CpuUsed: <p>CPU使用率，单位：%</p>
         :type CpuUsed: list of float
-        :param _MemUsed: 内存使用率，单位：%
+        :param _MemUsed: <p>内存使用率，单位：%</p>
         :type MemUsed: list of float
-        :param _TimeOffset: 时间偏移量，单位：秒
+        :param _TimeOffset: <p>时间偏移量，单位：秒</p>
         :type TimeOffset: list of int non-negative
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _DeviceId: 设备ID
+        :param _DeviceId: <p>设备ID</p>
         :type DeviceId: str
-        :param _Ver: sdk版本
+        :param _Ver: <p>sdk版本</p>
         :type Ver: str
-        :param _SdkMode: 模式(p2p/server)
+        :param _SdkMode: <p>模式(p2p/server)</p>
         :type SdkMode: str
-        :param _DecodeCost: 解码耗时，单位：ms
+        :param _DecodeCost: <p>解码耗时，单位：ms</p>
         :type DecodeCost: list of int
-        :param _RenderConst: 【已废弃，使用RenderCost】
+        :param _RenderConst: <p>【已废弃，使用RenderCost】</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenderConst: list of int
-        :param _K100: 卡顿k100
+        :param _K100: <p>卡顿k100</p>
         :type K100: list of float
-        :param _K150: 卡顿k150
+        :param _K150: <p>卡顿k150</p>
         :type K150: list of float
-        :param _NACK: nack请求数
+        :param _NACK: <p>nack请求数</p>
         :type NACK: list of int
-        :param _BitRateEstimate: 服务端调控码率,单位：kbps
+        :param _BitRateEstimate: <p>服务端调控码率,单位：kbps</p>
         :type BitRateEstimate: list of int
-        :param _Width: 宽度
+        :param _Width: <p>宽度</p>
         :type Width: int
-        :param _Height: 高度
+        :param _Height: <p>高度</p>
         :type Height: int
-        :param _EncodeCost: 编码耗时，单位：ms
+        :param _EncodeCost: <p>编码耗时，单位：ms</p>
         :type EncodeCost: list of int
-        :param _CaptureCost: 采集耗时，单位：ms
+        :param _CaptureCost: <p>采集耗时，单位：ms</p>
         :type CaptureCost: list of int
-        :param _RenderCost: 渲染耗时，单位：ms
+        :param _RenderCost: <p>渲染耗时，单位：ms</p>
         :type RenderCost: list of int
-        :param _ConfigWidth: 配置宽度
+        :param _ConfigWidth: <p>配置宽度</p>
         :type ConfigWidth: int
-        :param _ConfigHeight: 配置高度
+        :param _ConfigHeight: <p>配置高度</p>
         :type ConfigHeight: int
-        :param _FrameDelta: 平均帧间隔
+        :param _FrameDelta: <p>平均帧间隔</p>
         :type FrameDelta: list of int
-        :param _MaxFrameDelta: 最大帧间隔
+        :param _MaxFrameDelta: <p>最大帧间隔</p>
         :type MaxFrameDelta: list of int
-        :param _TotalBitrateEstimate: 总码率评估,单位：kbps
+        :param _TotalBitrateEstimate: <p>总码率评估,单位：kbps</p>
         :type TotalBitrateEstimate: list of int
-        :param _Lag100Duration: 帧间隔大于100ms的卡顿时长
+        :param _Lag100Duration: <p>帧间隔大于100ms的卡顿时长</p>
         :type Lag100Duration: list of int
-        :param _Lag150Duration: 帧间隔大于150ms的卡顿时长
+        :param _Lag150Duration: <p>帧间隔大于150ms的卡顿时长</p>
         :type Lag150Duration: list of int
-        :param _MultiMode: 是否开启多网：0 单网，1 多网
+        :param _MultiMode: <p>是否开启多网：0 单网，1 多网</p>
         :type MultiMode: int
-        :param _MultiNet: 多网卡信息
+        :param _MultiNet: <p>多网卡信息</p>
         :type MultiNet: list of MultiNet
+        :param _ControlLatency: <p>现场设备和远端设备消息通道往返延迟</p><p>单位：毫秒ms</p>
+        :type ControlLatency: list of int
         """
         self._DeviceType = None
         self._StartTime = None
@@ -5424,10 +5456,11 @@ class SessionDeviceDetail(AbstractModel):
         self._Lag150Duration = None
         self._MultiMode = None
         self._MultiNet = None
+        self._ControlLatency = None
 
     @property
     def DeviceType(self):
-        r"""设备类型：field或remote
+        r"""<p>设备类型：field或remote</p>
         :rtype: str
         """
         return self._DeviceType
@@ -5438,7 +5471,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始点位时间，单位：秒
+        r"""<p>起始点位时间，单位：秒</p>
         :rtype: int
         """
         return self._StartTime
@@ -5449,7 +5482,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束点位时间，单位：秒
+        r"""<p>结束点位时间，单位：秒</p>
         :rtype: int
         """
         return self._EndTime
@@ -5460,7 +5493,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""会话ID
+        r"""<p>会话ID</p>
         :rtype: str
         """
         return self._SessionId
@@ -5471,7 +5504,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Rate(self):
-        r"""码率，单位：kbps
+        r"""<p>码率，单位：kbps</p>
         :rtype: list of int
         """
         return self._Rate
@@ -5482,7 +5515,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Fps(self):
-        r"""帧率
+        r"""<p>帧率</p>
         :rtype: list of int
         """
         return self._Fps
@@ -5493,7 +5526,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Lost(self):
-        r"""丢包率，单位：%
+        r"""<p>丢包率，单位：%</p>
         :rtype: list of float
         """
         return self._Lost
@@ -5504,7 +5537,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def NetworkLatency(self):
-        r"""网络时延，单位：ms
+        r"""<p>网络时延，单位：ms</p>
         :rtype: list of int
         """
         return self._NetworkLatency
@@ -5515,7 +5548,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def VideoLatency(self):
-        r"""视频时延，单位：ms
+        r"""<p>视频时延，单位：ms</p>
         :rtype: list of int
         """
         return self._VideoLatency
@@ -5526,7 +5559,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def CpuUsed(self):
-        r"""CPU使用率，单位：%
+        r"""<p>CPU使用率，单位：%</p>
         :rtype: list of float
         """
         return self._CpuUsed
@@ -5537,7 +5570,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def MemUsed(self):
-        r"""内存使用率，单位：%
+        r"""<p>内存使用率，单位：%</p>
         :rtype: list of float
         """
         return self._MemUsed
@@ -5548,7 +5581,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def TimeOffset(self):
-        r"""时间偏移量，单位：秒
+        r"""<p>时间偏移量，单位：秒</p>
         :rtype: list of int non-negative
         """
         return self._TimeOffset
@@ -5559,7 +5592,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -5570,7 +5603,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
         :rtype: str
         """
         return self._DeviceId
@@ -5581,7 +5614,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Ver(self):
-        r"""sdk版本
+        r"""<p>sdk版本</p>
         :rtype: str
         """
         return self._Ver
@@ -5592,7 +5625,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def SdkMode(self):
-        r"""模式(p2p/server)
+        r"""<p>模式(p2p/server)</p>
         :rtype: str
         """
         return self._SdkMode
@@ -5603,7 +5636,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def DecodeCost(self):
-        r"""解码耗时，单位：ms
+        r"""<p>解码耗时，单位：ms</p>
         :rtype: list of int
         """
         return self._DecodeCost
@@ -5616,7 +5649,7 @@ class SessionDeviceDetail(AbstractModel):
     def RenderConst(self):
         warnings.warn("parameter `RenderConst` is deprecated", DeprecationWarning) 
 
-        r"""【已废弃，使用RenderCost】
+        r"""<p>【已废弃，使用RenderCost】</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -5630,7 +5663,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def K100(self):
-        r"""卡顿k100
+        r"""<p>卡顿k100</p>
         :rtype: list of float
         """
         return self._K100
@@ -5641,7 +5674,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def K150(self):
-        r"""卡顿k150
+        r"""<p>卡顿k150</p>
         :rtype: list of float
         """
         return self._K150
@@ -5652,7 +5685,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def NACK(self):
-        r"""nack请求数
+        r"""<p>nack请求数</p>
         :rtype: list of int
         """
         return self._NACK
@@ -5663,7 +5696,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def BitRateEstimate(self):
-        r"""服务端调控码率,单位：kbps
+        r"""<p>服务端调控码率,单位：kbps</p>
         :rtype: list of int
         """
         return self._BitRateEstimate
@@ -5674,7 +5707,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Width(self):
-        r"""宽度
+        r"""<p>宽度</p>
         :rtype: int
         """
         return self._Width
@@ -5685,7 +5718,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Height(self):
-        r"""高度
+        r"""<p>高度</p>
         :rtype: int
         """
         return self._Height
@@ -5696,7 +5729,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def EncodeCost(self):
-        r"""编码耗时，单位：ms
+        r"""<p>编码耗时，单位：ms</p>
         :rtype: list of int
         """
         return self._EncodeCost
@@ -5707,7 +5740,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def CaptureCost(self):
-        r"""采集耗时，单位：ms
+        r"""<p>采集耗时，单位：ms</p>
         :rtype: list of int
         """
         return self._CaptureCost
@@ -5718,7 +5751,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def RenderCost(self):
-        r"""渲染耗时，单位：ms
+        r"""<p>渲染耗时，单位：ms</p>
         :rtype: list of int
         """
         return self._RenderCost
@@ -5729,7 +5762,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def ConfigWidth(self):
-        r"""配置宽度
+        r"""<p>配置宽度</p>
         :rtype: int
         """
         return self._ConfigWidth
@@ -5740,7 +5773,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def ConfigHeight(self):
-        r"""配置高度
+        r"""<p>配置高度</p>
         :rtype: int
         """
         return self._ConfigHeight
@@ -5751,7 +5784,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def FrameDelta(self):
-        r"""平均帧间隔
+        r"""<p>平均帧间隔</p>
         :rtype: list of int
         """
         return self._FrameDelta
@@ -5762,7 +5795,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def MaxFrameDelta(self):
-        r"""最大帧间隔
+        r"""<p>最大帧间隔</p>
         :rtype: list of int
         """
         return self._MaxFrameDelta
@@ -5773,7 +5806,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def TotalBitrateEstimate(self):
-        r"""总码率评估,单位：kbps
+        r"""<p>总码率评估,单位：kbps</p>
         :rtype: list of int
         """
         return self._TotalBitrateEstimate
@@ -5784,7 +5817,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Lag100Duration(self):
-        r"""帧间隔大于100ms的卡顿时长
+        r"""<p>帧间隔大于100ms的卡顿时长</p>
         :rtype: list of int
         """
         return self._Lag100Duration
@@ -5795,7 +5828,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def Lag150Duration(self):
-        r"""帧间隔大于150ms的卡顿时长
+        r"""<p>帧间隔大于150ms的卡顿时长</p>
         :rtype: list of int
         """
         return self._Lag150Duration
@@ -5806,7 +5839,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def MultiMode(self):
-        r"""是否开启多网：0 单网，1 多网
+        r"""<p>是否开启多网：0 单网，1 多网</p>
         :rtype: int
         """
         return self._MultiMode
@@ -5817,7 +5850,7 @@ class SessionDeviceDetail(AbstractModel):
 
     @property
     def MultiNet(self):
-        r"""多网卡信息
+        r"""<p>多网卡信息</p>
         :rtype: list of MultiNet
         """
         return self._MultiNet
@@ -5825,6 +5858,17 @@ class SessionDeviceDetail(AbstractModel):
     @MultiNet.setter
     def MultiNet(self, MultiNet):
         self._MultiNet = MultiNet
+
+    @property
+    def ControlLatency(self):
+        r"""<p>现场设备和远端设备消息通道往返延迟</p><p>单位：毫秒ms</p>
+        :rtype: list of int
+        """
+        return self._ControlLatency
+
+    @ControlLatency.setter
+    def ControlLatency(self, ControlLatency):
+        self._ControlLatency = ControlLatency
 
 
     def _deserialize(self, params):
@@ -5869,6 +5913,7 @@ class SessionDeviceDetail(AbstractModel):
                 obj = MultiNet()
                 obj._deserialize(item)
                 self._MultiNet.append(obj)
+        self._ControlLatency = params.get("ControlLatency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

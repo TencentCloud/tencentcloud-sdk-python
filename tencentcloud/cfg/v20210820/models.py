@@ -5661,40 +5661,42 @@ class TaskListItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: int
-        :param _TaskTitle: 任务标题
+        :param _TaskTitle: <p>任务标题</p>
         :type TaskTitle: str
-        :param _TaskDescription: 任务描述
+        :param _TaskDescription: <p>任务描述</p>
         :type TaskDescription: str
-        :param _TaskTag: 任务标签
+        :param _TaskTag: <p>任务标签</p>
         :type TaskTag: str
-        :param _TaskStatus: 任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)
+        :param _TaskStatus: <p>任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)</p>
         :type TaskStatus: int
-        :param _TaskCreateTime: 任务创建时间
+        :param _TaskCreateTime: <p>任务创建时间</p>
         :type TaskCreateTime: str
-        :param _TaskUpdateTime: 任务更新时间
+        :param _TaskUpdateTime: <p>任务更新时间</p>
         :type TaskUpdateTime: str
-        :param _TaskPreCheckStatus: 0--未开始，1--进行中，2--已完成
+        :param _TaskPreCheckStatus: <p>0--未开始，1--进行中，2--已完成</p>
         :type TaskPreCheckStatus: int
-        :param _TaskPreCheckSuccess: 环境检查是否通过
+        :param _TaskPreCheckSuccess: <p>环境检查是否通过</p>
         :type TaskPreCheckSuccess: bool
-        :param _TaskExpect: 演练是否符合预期 1-符合预期 2-不符合预期
+        :param _TaskExpect: <p>演练是否符合预期 1-符合预期 2-不符合预期</p>
         :type TaskExpect: int
-        :param _ApplicationId: 关联应用ID
+        :param _ApplicationId: <p>关联应用ID</p>
         :type ApplicationId: str
-        :param _ApplicationName: 关联应用名称
+        :param _ApplicationName: <p>关联应用名称</p>
         :type ApplicationName: str
-        :param _VerifyId: 验证项ID
+        :param _VerifyId: <p>验证项ID</p>
         :type VerifyId: int
-        :param _TaskStatusType: 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
+        :param _TaskStatusType: <p>状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止</p>
         :type TaskStatusType: int
-        :param _ArchId: 架构ID
+        :param _ArchId: <p>架构ID</p>
         :type ArchId: str
-        :param _ArchName: 架构名称
+        :param _ArchName: <p>架构名称</p>
         :type ArchName: str
-        :param _TaskSource: 来源
+        :param _TaskSource: <p>来源</p>
         :type TaskSource: int
+        :param _Tags: <p>云资源标签列表</p>
+        :type Tags: list of TagWithDescribe
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -5713,10 +5715,11 @@ class TaskListItem(AbstractModel):
         self._ArchId = None
         self._ArchName = None
         self._TaskSource = None
+        self._Tags = None
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: int
         """
         return self._TaskId
@@ -5727,7 +5730,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskTitle(self):
-        r"""任务标题
+        r"""<p>任务标题</p>
         :rtype: str
         """
         return self._TaskTitle
@@ -5738,7 +5741,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskDescription(self):
-        r"""任务描述
+        r"""<p>任务描述</p>
         :rtype: str
         """
         return self._TaskDescription
@@ -5749,7 +5752,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskTag(self):
-        r"""任务标签
+        r"""<p>任务标签</p>
         :rtype: str
         """
         return self._TaskTag
@@ -5760,7 +5763,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)
+        r"""<p>任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)</p>
         :rtype: int
         """
         return self._TaskStatus
@@ -5771,7 +5774,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskCreateTime(self):
-        r"""任务创建时间
+        r"""<p>任务创建时间</p>
         :rtype: str
         """
         return self._TaskCreateTime
@@ -5782,7 +5785,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskUpdateTime(self):
-        r"""任务更新时间
+        r"""<p>任务更新时间</p>
         :rtype: str
         """
         return self._TaskUpdateTime
@@ -5793,7 +5796,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskPreCheckStatus(self):
-        r"""0--未开始，1--进行中，2--已完成
+        r"""<p>0--未开始，1--进行中，2--已完成</p>
         :rtype: int
         """
         return self._TaskPreCheckStatus
@@ -5804,7 +5807,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskPreCheckSuccess(self):
-        r"""环境检查是否通过
+        r"""<p>环境检查是否通过</p>
         :rtype: bool
         """
         return self._TaskPreCheckSuccess
@@ -5815,7 +5818,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskExpect(self):
-        r"""演练是否符合预期 1-符合预期 2-不符合预期
+        r"""<p>演练是否符合预期 1-符合预期 2-不符合预期</p>
         :rtype: int
         """
         return self._TaskExpect
@@ -5826,7 +5829,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""关联应用ID
+        r"""<p>关联应用ID</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -5837,7 +5840,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""关联应用名称
+        r"""<p>关联应用名称</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -5848,7 +5851,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def VerifyId(self):
-        r"""验证项ID
+        r"""<p>验证项ID</p>
         :rtype: int
         """
         return self._VerifyId
@@ -5859,7 +5862,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskStatusType(self):
-        r"""状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
+        r"""<p>状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止</p>
         :rtype: int
         """
         return self._TaskStatusType
@@ -5870,7 +5873,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def ArchId(self):
-        r"""架构ID
+        r"""<p>架构ID</p>
         :rtype: str
         """
         return self._ArchId
@@ -5881,7 +5884,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def ArchName(self):
-        r"""架构名称
+        r"""<p>架构名称</p>
         :rtype: str
         """
         return self._ArchName
@@ -5892,7 +5895,7 @@ class TaskListItem(AbstractModel):
 
     @property
     def TaskSource(self):
-        r"""来源
+        r"""<p>来源</p>
         :rtype: int
         """
         return self._TaskSource
@@ -5900,6 +5903,17 @@ class TaskListItem(AbstractModel):
     @TaskSource.setter
     def TaskSource(self, TaskSource):
         self._TaskSource = TaskSource
+
+    @property
+    def Tags(self):
+        r"""<p>云资源标签列表</p>
+        :rtype: list of TagWithDescribe
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -5920,6 +5934,12 @@ class TaskListItem(AbstractModel):
         self._ArchId = params.get("ArchId")
         self._ArchName = params.get("ArchName")
         self._TaskSource = params.get("TaskSource")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagWithDescribe()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

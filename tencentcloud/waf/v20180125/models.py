@@ -25921,6 +25921,10 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         :type TokenUsage: int
         :param _ImageEncode: <p>图片base64编码后的数据,body大小最大支持10M</p>
         :type ImageEncode: str
+        :param _ToolName: <p>tool_call 场景工具名称</p>
+        :type ToolName: str
+        :param _ToolArgs: <p>tool_call 场景工具参数</p>
+        :type ToolArgs: str
         """
         self._ServiceId = None
         self._Type = None
@@ -25930,6 +25934,8 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         self._UserId = None
         self._TokenUsage = None
         self._ImageEncode = None
+        self._ToolName = None
+        self._ToolArgs = None
 
     @property
     def ServiceId(self):
@@ -26019,6 +26025,28 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
     def ImageEncode(self, ImageEncode):
         self._ImageEncode = ImageEncode
 
+    @property
+    def ToolName(self):
+        r"""<p>tool_call 场景工具名称</p>
+        :rtype: str
+        """
+        return self._ToolName
+
+    @ToolName.setter
+    def ToolName(self, ToolName):
+        self._ToolName = ToolName
+
+    @property
+    def ToolArgs(self):
+        r"""<p>tool_call 场景工具参数</p>
+        :rtype: str
+        """
+        return self._ToolArgs
+
+    @ToolArgs.setter
+    def ToolArgs(self, ToolArgs):
+        self._ToolArgs = ToolArgs
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -26029,6 +26057,8 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         self._UserId = params.get("UserId")
         self._TokenUsage = params.get("TokenUsage")
         self._ImageEncode = params.get("ImageEncode")
+        self._ToolName = params.get("ToolName")
+        self._ToolArgs = params.get("ToolArgs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

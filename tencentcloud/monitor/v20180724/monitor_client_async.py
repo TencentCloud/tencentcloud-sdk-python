@@ -536,26 +536,6 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateServiceDiscovery(
-            self,
-            request: models.CreateServiceDiscoveryRequest,
-            opts: Dict = None,
-    ) -> models.CreateServiceDiscoveryResponse:
-        """
-        在腾讯云容器服务下创建 Prometheus 服务发现。
-        <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
-        <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateServiceDiscovery"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateServiceDiscoveryResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteAlarmNotices(
             self,
             request: models.DeleteAlarmNoticesRequest,
@@ -2111,26 +2091,6 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "DescribeSSOAccount"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSSOAccountResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeServiceDiscovery(
-            self,
-            request: models.DescribeServiceDiscoveryRequest,
-            opts: Dict = None,
-    ) -> models.DescribeServiceDiscoveryResponse:
-        """
-        列出在腾讯云容器服务下创建的 Prometheus 服务发现。
-        <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
-        <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeServiceDiscovery"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeServiceDiscoveryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

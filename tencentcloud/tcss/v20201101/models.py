@@ -12339,20 +12339,22 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _All: 是否扫描全部镜像
+        :param _All: <p>是否扫描全部镜像</p>
         :type All: bool
-        :param _Images: 扫描的镜像列表
+        :param _Images: <p>扫描的镜像列表</p>
         :type Images: list of ImageInfo
-        :param _ScanType: 扫描类型数组
+        :param _ScanType: <p>扫描类型数组</p>
         :type ScanType: list of str
-        :param _Id: 扫描的镜像列表
+        :param _Id: <p>扫描的镜像列表</p>
         :type Id: list of int non-negative
-        :param _Filters: 过滤条件
+        :param _Filters: <p>过滤条件</p>
         :type Filters: list of AssetFilters
-        :param _ExcludeImageList: 不需要扫描的镜像列表, 与Filters配合使用
+        :param _ExcludeImageList: <p>不需要扫描的镜像列表, 与Filters配合使用</p>
         :type ExcludeImageList: list of int non-negative
-        :param _OnlyScanLatest: 是否仅扫描各repository最新版的镜像, 与Filters配合使用
+        :param _OnlyScanLatest: <p>是否仅扫描各repository最新版的镜像, 与Filters配合使用</p>
         :type OnlyScanLatest: bool
+        :param _Timeout: <p>任务超时时长</p><p>单位：秒</p>
+        :type Timeout: int
         """
         self._All = None
         self._Images = None
@@ -12361,10 +12363,11 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
         self._Filters = None
         self._ExcludeImageList = None
         self._OnlyScanLatest = None
+        self._Timeout = None
 
     @property
     def All(self):
-        r"""是否扫描全部镜像
+        r"""<p>是否扫描全部镜像</p>
         :rtype: bool
         """
         return self._All
@@ -12375,7 +12378,7 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
 
     @property
     def Images(self):
-        r"""扫描的镜像列表
+        r"""<p>扫描的镜像列表</p>
         :rtype: list of ImageInfo
         """
         return self._Images
@@ -12386,7 +12389,7 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        r"""扫描类型数组
+        r"""<p>扫描类型数组</p>
         :rtype: list of str
         """
         return self._ScanType
@@ -12397,7 +12400,7 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""扫描的镜像列表
+        r"""<p>扫描的镜像列表</p>
         :rtype: list of int non-negative
         """
         return self._Id
@@ -12408,7 +12411,7 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件
+        r"""<p>过滤条件</p>
         :rtype: list of AssetFilters
         """
         return self._Filters
@@ -12419,7 +12422,7 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
 
     @property
     def ExcludeImageList(self):
-        r"""不需要扫描的镜像列表, 与Filters配合使用
+        r"""<p>不需要扫描的镜像列表, 与Filters配合使用</p>
         :rtype: list of int non-negative
         """
         return self._ExcludeImageList
@@ -12430,7 +12433,7 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
 
     @property
     def OnlyScanLatest(self):
-        r"""是否仅扫描各repository最新版的镜像, 与Filters配合使用
+        r"""<p>是否仅扫描各repository最新版的镜像, 与Filters配合使用</p>
         :rtype: bool
         """
         return self._OnlyScanLatest
@@ -12438,6 +12441,17 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
     @OnlyScanLatest.setter
     def OnlyScanLatest(self, OnlyScanLatest):
         self._OnlyScanLatest = OnlyScanLatest
+
+    @property
+    def Timeout(self):
+        r"""<p>任务超时时长</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
 
 
     def _deserialize(self, params):
@@ -12458,6 +12472,7 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
                 self._Filters.append(obj)
         self._ExcludeImageList = params.get("ExcludeImageList")
         self._OnlyScanLatest = params.get("OnlyScanLatest")
+        self._Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12475,7 +12490,7 @@ class CreateAssetImageRegistryScanTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskID: 返回的任务ID
+        :param _TaskID: <p>返回的任务ID</p>
         :type TaskID: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12485,7 +12500,7 @@ class CreateAssetImageRegistryScanTaskResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        r"""返回的任务ID
+        r"""<p>返回的任务ID</p>
         :rtype: int
         """
         return self._TaskID

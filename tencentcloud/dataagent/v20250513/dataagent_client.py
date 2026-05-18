@@ -297,6 +297,29 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetUserInstanceList(self, request):
+        r"""获取实例信息列表
+
+        :param request: Request instance for GetUserInstanceList.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.GetUserInstanceListRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.GetUserInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetUserInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetUserInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyChunk(self, request):
         r"""编辑修改分片
 

@@ -677,31 +677,6 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateServiceDiscovery(self, request):
-        r"""在腾讯云容器服务下创建 Prometheus 服务发现。
-        <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
-        <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
-
-        :param request: Request instance for CreateServiceDiscovery.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateServiceDiscoveryRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateServiceDiscoveryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateServiceDiscovery", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateServiceDiscoveryResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteAlarmNotices(self, request):
         r"""删除告警通知模板
 
@@ -2683,31 +2658,6 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribeSSOAccount", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSSOAccountResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeServiceDiscovery(self, request):
-        r"""列出在腾讯云容器服务下创建的 Prometheus 服务发现。
-        <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
-        <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
-
-        :param request: Request instance for DescribeServiceDiscovery.
-        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeServiceDiscoveryRequest`
-        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeServiceDiscoveryResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeServiceDiscovery", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeServiceDiscoveryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -72,6 +72,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCompanyDirectoryConfig(self, request):
+        r"""创建企业目录配置
+
+        :param request: Request instance for CreateCompanyDirectoryConfig.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.CreateCompanyDirectoryConfigRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateCompanyDirectoryConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCompanyDirectoryConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCompanyDirectoryConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDLPFileDetectTask(self, request):
         r"""创建文件鉴定任务，私有化调用path为：capi/DlpOpenApi/CreateDLPFileDetectTask
 
@@ -293,6 +316,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeBusinessResources", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBusinessResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCompanyDirectoryConfig(self, request):
+        r"""获取企业目录配置
+
+        :param request: Request instance for DescribeCompanyDirectoryConfig.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeCompanyDirectoryConfigRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeCompanyDirectoryConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCompanyDirectoryConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCompanyDirectoryConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -868,6 +914,29 @@ class IoaClient(AbstractClient):
             body = self.call("ModifyBusinessResource", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBusinessResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCompanyDirectoryConfig(self, request):
+        r"""编辑企业目录配置
+
+        :param request: Request instance for ModifyCompanyDirectoryConfig.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.ModifyCompanyDirectoryConfigRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ModifyCompanyDirectoryConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCompanyDirectoryConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCompanyDirectoryConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

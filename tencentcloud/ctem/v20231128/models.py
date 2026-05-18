@@ -13361,23 +13361,23 @@ class DisplayDomain(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: <p>主键ID</p>
         :type Id: int
-        :param _Domain: 主域名
+        :param _Domain: <p>主域名</p>
         :type Domain: str
-        :param _ICP: ICP
+        :param _ICP: <p>ICP</p>
         :type ICP: str
-        :param _RegisteredTime: 注册时间
+        :param _RegisteredTime: <p>注册时间</p>
         :type RegisteredTime: str
-        :param _ExpiredTime: 过期时间
+        :param _ExpiredTime: <p>过期时间</p>
         :type ExpiredTime: str
-        :param _Company: 公司
+        :param _Company: <p>公司</p>
         :type Company: str
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _IsCloudAsset: 是否为云资产
+        :param _IsCloudAsset: <p>是否为云资产</p>
         :type IsCloudAsset: int
-        :param _CloudAssetStatus: 云资产状态，-1为下线
+        :param _CloudAssetStatus: <p>云资产状态，-1为下线</p>
         :type CloudAssetStatus: int
         """
         self._Id = None
@@ -13392,7 +13392,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def Id(self):
-        r"""主键ID
+        r"""<p>主键ID</p>
         :rtype: int
         """
         return self._Id
@@ -13403,7 +13403,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def Domain(self):
-        r"""主域名
+        r"""<p>主域名</p>
         :rtype: str
         """
         return self._Domain
@@ -13414,7 +13414,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def ICP(self):
-        r"""ICP
+        r"""<p>ICP</p>
         :rtype: str
         """
         return self._ICP
@@ -13425,7 +13425,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def RegisteredTime(self):
-        r"""注册时间
+        r"""<p>注册时间</p>
         :rtype: str
         """
         return self._RegisteredTime
@@ -13436,7 +13436,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: str
         """
         return self._ExpiredTime
@@ -13447,7 +13447,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def Company(self):
-        r"""公司
+        r"""<p>公司</p>
         :rtype: str
         """
         return self._Company
@@ -13458,7 +13458,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -13469,7 +13469,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def IsCloudAsset(self):
-        r"""是否为云资产
+        r"""<p>是否为云资产</p>
         :rtype: int
         """
         return self._IsCloudAsset
@@ -13480,7 +13480,7 @@ class DisplayDomain(AbstractModel):
 
     @property
     def CloudAssetStatus(self):
-        r"""云资产状态，-1为下线
+        r"""<p>云资产状态，-1为下线</p>
         :rtype: int
         """
         return self._CloudAssetStatus
@@ -17161,32 +17161,34 @@ class DisplayToolCommon(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnterpriseUid: 子公司ID
+        :param _EnterpriseUid: <p>子公司ID</p>
         :type EnterpriseUid: str
-        :param _EnterpriseName: 子公司名称
+        :param _EnterpriseName: <p>子公司名称</p>
         :type EnterpriseName: str
-        :param _JobId: 主任务ID
+        :param _JobId: <p>主任务ID</p>
         :type JobId: int
-        :param _JobStageId: 单任务ID
+        :param _JobStageId: <p>单任务ID</p>
         :type JobStageId: int
-        :param _Ignored: 是否忽略
+        :param _Ignored: <p>是否忽略</p>
         :type Ignored: bool
-        :param _JobRecordId: 子任务ID
+        :param _JobRecordId: <p>子任务ID</p>
         :type JobRecordId: int
-        :param _CustomerId: 企业ID
+        :param _CustomerId: <p>企业ID</p>
         :type CustomerId: int
-        :param _CustomerName: 企业名称
+        :param _CustomerName: <p>企业名称</p>
         :type CustomerName: str
-        :param _Detail: 详情
+        :param _Detail: <p>详情</p>
         :type Detail: str
-        :param _Md5: Md5值
+        :param _Md5: <p>Md5值</p>
         :type Md5: str
-        :param _CreateAt: 创建时间
+        :param _CreateAt: <p>创建时间</p>
         :type CreateAt: str
-        :param _UpdateAt: 更新时间
+        :param _UpdateAt: <p>更新时间</p>
         :type UpdateAt: str
-        :param _Labels: 标签列表，json格式：{\"tag1\":[\"责任人xxx\"],\"tag2\":[\"测试站\"]}
+        :param _Labels: <p>标签列表，json格式：{"tag1":["责任人xxx"],"tag2":["测试站"]}</p>
         :type Labels: str
+        :param _IsPlainTextInDemo: <p>演示模式是否明文展示</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :type IsPlainTextInDemo: int
         """
         self._EnterpriseUid = None
         self._EnterpriseName = None
@@ -17201,10 +17203,11 @@ class DisplayToolCommon(AbstractModel):
         self._CreateAt = None
         self._UpdateAt = None
         self._Labels = None
+        self._IsPlainTextInDemo = None
 
     @property
     def EnterpriseUid(self):
-        r"""子公司ID
+        r"""<p>子公司ID</p>
         :rtype: str
         """
         return self._EnterpriseUid
@@ -17215,7 +17218,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def EnterpriseName(self):
-        r"""子公司名称
+        r"""<p>子公司名称</p>
         :rtype: str
         """
         return self._EnterpriseName
@@ -17226,7 +17229,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def JobId(self):
-        r"""主任务ID
+        r"""<p>主任务ID</p>
         :rtype: int
         """
         return self._JobId
@@ -17237,7 +17240,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def JobStageId(self):
-        r"""单任务ID
+        r"""<p>单任务ID</p>
         :rtype: int
         """
         return self._JobStageId
@@ -17248,7 +17251,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def Ignored(self):
-        r"""是否忽略
+        r"""<p>是否忽略</p>
         :rtype: bool
         """
         return self._Ignored
@@ -17259,7 +17262,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def JobRecordId(self):
-        r"""子任务ID
+        r"""<p>子任务ID</p>
         :rtype: int
         """
         return self._JobRecordId
@@ -17270,7 +17273,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def CustomerId(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
         :rtype: int
         """
         return self._CustomerId
@@ -17281,7 +17284,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def CustomerName(self):
-        r"""企业名称
+        r"""<p>企业名称</p>
         :rtype: str
         """
         return self._CustomerName
@@ -17292,7 +17295,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def Detail(self):
-        r"""详情
+        r"""<p>详情</p>
         :rtype: str
         """
         return self._Detail
@@ -17303,7 +17306,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def Md5(self):
-        r"""Md5值
+        r"""<p>Md5值</p>
         :rtype: str
         """
         return self._Md5
@@ -17314,7 +17317,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def CreateAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateAt
@@ -17325,7 +17328,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def UpdateAt(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateAt
@@ -17336,7 +17339,7 @@ class DisplayToolCommon(AbstractModel):
 
     @property
     def Labels(self):
-        r"""标签列表，json格式：{\"tag1\":[\"责任人xxx\"],\"tag2\":[\"测试站\"]}
+        r"""<p>标签列表，json格式：{"tag1":["责任人xxx"],"tag2":["测试站"]}</p>
         :rtype: str
         """
         return self._Labels
@@ -17344,6 +17347,17 @@ class DisplayToolCommon(AbstractModel):
     @Labels.setter
     def Labels(self, Labels):
         self._Labels = Labels
+
+    @property
+    def IsPlainTextInDemo(self):
+        r"""<p>演示模式是否明文展示</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :rtype: int
+        """
+        return self._IsPlainTextInDemo
+
+    @IsPlainTextInDemo.setter
+    def IsPlainTextInDemo(self, IsPlainTextInDemo):
+        self._IsPlainTextInDemo = IsPlainTextInDemo
 
 
     def _deserialize(self, params):
@@ -17360,6 +17374,7 @@ class DisplayToolCommon(AbstractModel):
         self._CreateAt = params.get("CreateAt")
         self._UpdateAt = params.get("UpdateAt")
         self._Labels = params.get("Labels")
+        self._IsPlainTextInDemo = params.get("IsPlainTextInDemo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

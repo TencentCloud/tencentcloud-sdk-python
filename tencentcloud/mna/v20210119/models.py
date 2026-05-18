@@ -1534,32 +1534,34 @@ class DeviceBaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceId: 设备唯一ID
+        :param _DeviceId: <p>设备唯一ID</p>
         :type DeviceId: str
-        :param _DeviceName: 设备名称
+        :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _CreateTime: 设备创建的时间，单位：ms
+        :param _CreateTime: <p>设备创建的时间，单位：ms</p>
         :type CreateTime: str
-        :param _LastTime: 设备最后在线时间，单位：ms
+        :param _LastTime: <p>设备最后在线时间，单位：ms</p>
         :type LastTime: str
-        :param _Remark: 设备的备注
+        :param _Remark: <p>设备的备注</p>
         :type Remark: str
-        :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :param _AccessScope: <p>接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）</p>
         :type AccessScope: int
-        :param _LicensePayMode: license授权有效期 0：月度授权 1：永久授权
+        :param _LicensePayMode: <p>license授权有效期 0：月度授权 1：永久授权</p>
         :type LicensePayMode: int
-        :param _Payer: 付费方 0：厂商付费 1：客户付费
+        :param _Payer: <p>付费方 0：厂商付费 1：客户付费</p>
         :type Payer: int
-        :param _GroupId: 设备分组ID
+        :param _GroupId: <p>设备分组ID</p>
         :type GroupId: str
-        :param _GroupName: 设备分组名称
+        :param _GroupName: <p>设备分组名称</p>
         :type GroupName: str
-        :param _FlowTrunc: 设备无流量包处理方式，0: 按量付费，1: 截断加速
+        :param _FlowTrunc: <p>设备无流量包处理方式，0: 按量付费，1: 截断加速</p>
         :type FlowTrunc: int
-        :param _Sn: 设备sn
+        :param _Sn: <p>设备sn</p>
         :type Sn: str
-        :param _Vendor: 厂商
+        :param _Vendor: <p>厂商</p>
         :type Vendor: str
+        :param _AllowedRegions: <p>可接入地域列表。</p>
+        :type AllowedRegions: list of str
         """
         self._DeviceId = None
         self._DeviceName = None
@@ -1574,10 +1576,11 @@ class DeviceBaseInfo(AbstractModel):
         self._FlowTrunc = None
         self._Sn = None
         self._Vendor = None
+        self._AllowedRegions = None
 
     @property
     def DeviceId(self):
-        r"""设备唯一ID
+        r"""<p>设备唯一ID</p>
         :rtype: str
         """
         return self._DeviceId
@@ -1588,7 +1591,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -1599,7 +1602,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""设备创建的时间，单位：ms
+        r"""<p>设备创建的时间，单位：ms</p>
         :rtype: str
         """
         return self._CreateTime
@@ -1610,7 +1613,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def LastTime(self):
-        r"""设备最后在线时间，单位：ms
+        r"""<p>设备最后在线时间，单位：ms</p>
         :rtype: str
         """
         return self._LastTime
@@ -1621,7 +1624,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def Remark(self):
-        r"""设备的备注
+        r"""<p>设备的备注</p>
         :rtype: str
         """
         return self._Remark
@@ -1632,7 +1635,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def AccessScope(self):
-        r"""接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        r"""<p>接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）</p>
         :rtype: int
         """
         return self._AccessScope
@@ -1643,7 +1646,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def LicensePayMode(self):
-        r"""license授权有效期 0：月度授权 1：永久授权
+        r"""<p>license授权有效期 0：月度授权 1：永久授权</p>
         :rtype: int
         """
         return self._LicensePayMode
@@ -1654,7 +1657,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def Payer(self):
-        r"""付费方 0：厂商付费 1：客户付费
+        r"""<p>付费方 0：厂商付费 1：客户付费</p>
         :rtype: int
         """
         return self._Payer
@@ -1665,7 +1668,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""设备分组ID
+        r"""<p>设备分组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -1676,7 +1679,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""设备分组名称
+        r"""<p>设备分组名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -1687,7 +1690,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def FlowTrunc(self):
-        r"""设备无流量包处理方式，0: 按量付费，1: 截断加速
+        r"""<p>设备无流量包处理方式，0: 按量付费，1: 截断加速</p>
         :rtype: int
         """
         return self._FlowTrunc
@@ -1698,7 +1701,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def Sn(self):
-        r"""设备sn
+        r"""<p>设备sn</p>
         :rtype: str
         """
         return self._Sn
@@ -1709,7 +1712,7 @@ class DeviceBaseInfo(AbstractModel):
 
     @property
     def Vendor(self):
-        r"""厂商
+        r"""<p>厂商</p>
         :rtype: str
         """
         return self._Vendor
@@ -1717,6 +1720,17 @@ class DeviceBaseInfo(AbstractModel):
     @Vendor.setter
     def Vendor(self, Vendor):
         self._Vendor = Vendor
+
+    @property
+    def AllowedRegions(self):
+        r"""<p>可接入地域列表。</p>
+        :rtype: list of str
+        """
+        return self._AllowedRegions
+
+    @AllowedRegions.setter
+    def AllowedRegions(self, AllowedRegions):
+        self._AllowedRegions = AllowedRegions
 
 
     def _deserialize(self, params):
@@ -1733,6 +1747,7 @@ class DeviceBaseInfo(AbstractModel):
         self._FlowTrunc = params.get("FlowTrunc")
         self._Sn = params.get("Sn")
         self._Vendor = params.get("Vendor")
+        self._AllowedRegions = params.get("AllowedRegions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5909,15 +5924,15 @@ class GetNetMonitorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceId: 设备id
+        :param _DeviceId: <p>设备id</p>
         :type DeviceId: str
-        :param _BeginTime: 开始时间
+        :param _BeginTime: <p>开始时间</p>
         :type BeginTime: int
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
-        :param _Metrics: 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+        :param _Metrics: <p>统计指标（上行速率：&quot;TxRate&quot;:bit/s，下行速率：&quot;RxRate&quot;:bit/s，丢包：&quot;Loss&quot;:%，时延：&quot;RTT&quot;:ms）</p>
         :type Metrics: str
-        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :param _GatewayType: <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :type GatewayType: int
         """
         self._DeviceId = None
@@ -5928,7 +5943,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备id
+        r"""<p>设备id</p>
         :rtype: str
         """
         return self._DeviceId
@@ -5939,7 +5954,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._BeginTime
@@ -5950,7 +5965,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -5961,7 +5976,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def Metrics(self):
-        r"""统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+        r"""<p>统计指标（上行速率：&quot;TxRate&quot;:bit/s，下行速率：&quot;RxRate&quot;:bit/s，丢包：&quot;Loss&quot;:%，时延：&quot;RTT&quot;:ms）</p>
         :rtype: str
         """
         return self._Metrics
@@ -5972,7 +5987,7 @@ class GetNetMonitorRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""<p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :rtype: int
         """
         return self._GatewayType
@@ -6005,13 +6020,9 @@ class GetNetMonitorResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MonitorData: 监控数据
+        :param _MonitorData: <p>监控数据</p>
         :type MonitorData: list of MonitorData
-        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM']
-MC=中国大陆
-AP=亚太
-EU=欧洲
-AM=美洲
+        :param _AccessRegion: <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;]<br>MC=中国大陆<br>AP=亚太<br>EU=欧洲<br>AM=美洲</p>
         :type AccessRegion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6022,7 +6033,7 @@ AM=美洲
 
     @property
     def MonitorData(self):
-        r"""监控数据
+        r"""<p>监控数据</p>
         :rtype: list of MonitorData
         """
         return self._MonitorData
@@ -6033,11 +6044,7 @@ AM=美洲
 
     @property
     def AccessRegion(self):
-        r"""接入区域。取值范围：['MC','AP','EU','AM']
-MC=中国大陆
-AP=亚太
-EU=欧洲
-AM=美洲
+        r"""<p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;]<br>MC=中国大陆<br>AP=亚太<br>EU=欧洲<br>AM=美洲</p>
         :rtype: str
         """
         return self._AccessRegion

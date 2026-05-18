@@ -317,9 +317,6 @@ INVALIDPARAMETERVALUE_ASYNCTRIGGERCONFIG = 'InvalidParameterValue.AsyncTriggerCo
 # Cdn传入错误。
 INVALIDPARAMETERVALUE_CDN = 'InvalidParameterValue.Cdn'
 
-# CertConfig配置为空。
-INVALIDPARAMETERVALUE_CERTCONFIG_EMPTY = 'InvalidParameterValue.CertConfig.empty'
-
 # CfsId参数异常。
 INVALIDPARAMETERVALUE_CFSID = 'InvalidParameterValue.CfsId'
 
