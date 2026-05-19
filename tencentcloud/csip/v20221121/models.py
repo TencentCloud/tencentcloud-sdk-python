@@ -63560,51 +63560,41 @@ class SkillScanItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SkillName: Skill 名称
+        :param _SkillName: <p>Skill 名称</p>
         :type SkillName: str
-        :param _SkillDescription: Skill 描述，帮助理解 Skill 的主要用途
+        :param _SkillDescription: <p>Skill 描述，帮助理解 Skill 的主要用途</p>
         :type SkillDescription: str
-        :param _ContentHash: ZIP 文件的 SHA256 Hash
-参数格式：sha256:<64位hex>
+        :param _ContentHash: <p>ZIP 文件的 SHA256 Hash<br>参数格式：sha256:&lt;64位hex&gt;</p>
         :type ContentHash: str
-        :param _UploadFileCount: 原始上传 ZIP 文件解压后的实际文件数，也是计费的范围，扫描成功后1个文件计为1次额度
+        :param _UploadFileCount: <p>原始上传 ZIP 文件解压后的实际文件数，也是计费的范围，扫描成功后1个文件计为1次额度</p>
         :type UploadFileCount: int
-        :param _RiskLevel: 综合风险等级
-枚举值：
-malicious：恶意
-suspicious：可疑
-benign：可信
+        :param _RiskLevel: <p>综合风险等级<br>枚举值：<br>malicious：恶意<br>suspicious：可疑<br>benign：可信</p>
         :type RiskLevel: str
-        :param _PrimaryRuleID: 风险主标签融合规则 ID（9xxxx），由服务端从命中的融合风险标签中生成；benign 且无规则命中时为空。展示名称可通过 RuleCatalog 获取
+        :param _PrimaryRuleID: <p>风险主标签融合规则 ID（9xxxx），由服务端从命中的融合风险标签中生成；benign 且无规则命中时为空。展示名称可通过 RuleCatalog 获取</p>
         :type PrimaryRuleID: str
-        :param _Mitigation: 综合处置建议，用于指导调用方优先执行下线、隔离、修复、复检等动作。历史结果中可能为空。传 Language=en-US 时返回英文文案
+        :param _Mitigation: <p>综合处置建议，用于指导调用方优先执行下线、隔离、修复、复检等动作。历史结果中可能为空。传 Language=en-US 时返回英文文案</p>
         :type Mitigation: str
-        :param _RiskDescription: 风险综合描述，对本次检测发现的风险进行概括性说明。传 Language=en-US 时返回英文文案
+        :param _RiskDescription: <p>风险综合描述，对本次检测发现的风险进行概括性说明。传 Language=en-US 时返回英文文案</p>
         :type RiskDescription: str
-        :param _SecurityScore: 安全评分
-取值范围：[0, 100]
-补充说明：100 为最安全
+        :param _SecurityScore: <p>安全评分取值范围：[0, 100]补充说明：分数越高越安全</p>
         :type SecurityScore: int
-        :param _EngineVersion: 本次扫描使用的引擎版本号
+        :param _EngineVersion: <p>本次扫描使用的引擎版本号</p>
         :type EngineVersion: int
-        :param _CapabilityTags: Skill 能力标签列表，描述 Skill 具备的能力特征或适用场景。不等同于风险标签，也不参与风险等级判定。传 Language=en-US 时 Name 切换为英文，ID 保持不变
+        :param _CapabilityTags: <p>Skill 能力标签列表，描述 Skill 具备的能力特征或适用场景。不等同于风险标签，也不参与风险等级判定。传 Language=en-US 时 Name 切换为英文，ID 保持不变</p>
         :type CapabilityTags: list of SkillCapabilityTag
-        :param _RuleCatalog: 融合规则目录全集，包含所有融合规则类别（9xxxx），调用方可据此展示分类标签，无需本地维护映射表。传 Language=en-US 时返回英文名称
+        :param _RuleCatalog: <p>融合规则目录全集，包含所有融合规则类别（9xxxx），调用方可据此展示分类标签，无需本地维护映射表。传 Language=en-US 时返回英文名称</p>
         :type RuleCatalog: list of SkillRuleCatalogItem
-        :param _ScanItems: 扫描结果详情，按子引擎分组。每个元素包含 ScanType（引擎类型）和 RuleList（命中规则列表）。规则中的 RuleID 使用融合编码（9xxxx），可与 RuleCatalog 交叉引用。传 Language=en-US 时 Description 返回英文文本
+        :param _ScanItems: <p>扫描结果详情，按子引擎分组。每个元素包含 ScanType（引擎类型）和 RuleList（命中规则列表）。规则中的 RuleID 使用融合编码（9xxxx），可与 RuleCatalog 交叉引用。传 Language=en-US 时 Description 返回英文文本</p>
         :type ScanItems: list of SkillScanEngineResult
-        :param _ReportURL: 综合安全审计报告地址（签名 URL）。有效期由请求参数 ReportURLExpireHours 控制
+        :param _ReportURL: <p>综合安全审计报告地址（签名 URL）。有效期由请求参数 ReportURLExpireHours 控制</p>
         :type ReportURL: str
-        :param _ScannedAt: 扫描完成时间。仅 Status=SUCCESS 时有值
-参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :param _ScannedAt: <p>扫描完成时间。仅 Status=SUCCESS 时有值<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :type ScannedAt: str
-        :param _CreatedAt: 任务创建时间。仅 Status=SCANNING 时有值
-参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :param _CreatedAt: <p>任务创建时间。仅 Status=SCANNING 时有值<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :type CreatedAt: str
-        :param _FailedAt: 失败时间。仅 Status=FAILED 时有值
-参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :param _FailedAt: <p>失败时间。仅 Status=FAILED 时有值<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :type FailedAt: str
-        :param _Message: 失败原因描述。仅 Status=FAILED 时有值
+        :param _Message: <p>失败原因描述。仅 Status=FAILED 时有值</p>
         :type Message: str
         """
         self._SkillName = None
@@ -63628,7 +63618,7 @@ benign：可信
 
     @property
     def SkillName(self):
-        r"""Skill 名称
+        r"""<p>Skill 名称</p>
         :rtype: str
         """
         return self._SkillName
@@ -63639,7 +63629,7 @@ benign：可信
 
     @property
     def SkillDescription(self):
-        r"""Skill 描述，帮助理解 Skill 的主要用途
+        r"""<p>Skill 描述，帮助理解 Skill 的主要用途</p>
         :rtype: str
         """
         return self._SkillDescription
@@ -63650,8 +63640,7 @@ benign：可信
 
     @property
     def ContentHash(self):
-        r"""ZIP 文件的 SHA256 Hash
-参数格式：sha256:<64位hex>
+        r"""<p>ZIP 文件的 SHA256 Hash<br>参数格式：sha256:&lt;64位hex&gt;</p>
         :rtype: str
         """
         return self._ContentHash
@@ -63662,7 +63651,7 @@ benign：可信
 
     @property
     def UploadFileCount(self):
-        r"""原始上传 ZIP 文件解压后的实际文件数，也是计费的范围，扫描成功后1个文件计为1次额度
+        r"""<p>原始上传 ZIP 文件解压后的实际文件数，也是计费的范围，扫描成功后1个文件计为1次额度</p>
         :rtype: int
         """
         return self._UploadFileCount
@@ -63673,11 +63662,7 @@ benign：可信
 
     @property
     def RiskLevel(self):
-        r"""综合风险等级
-枚举值：
-malicious：恶意
-suspicious：可疑
-benign：可信
+        r"""<p>综合风险等级<br>枚举值：<br>malicious：恶意<br>suspicious：可疑<br>benign：可信</p>
         :rtype: str
         """
         return self._RiskLevel
@@ -63688,7 +63673,7 @@ benign：可信
 
     @property
     def PrimaryRuleID(self):
-        r"""风险主标签融合规则 ID（9xxxx），由服务端从命中的融合风险标签中生成；benign 且无规则命中时为空。展示名称可通过 RuleCatalog 获取
+        r"""<p>风险主标签融合规则 ID（9xxxx），由服务端从命中的融合风险标签中生成；benign 且无规则命中时为空。展示名称可通过 RuleCatalog 获取</p>
         :rtype: str
         """
         return self._PrimaryRuleID
@@ -63699,7 +63684,7 @@ benign：可信
 
     @property
     def Mitigation(self):
-        r"""综合处置建议，用于指导调用方优先执行下线、隔离、修复、复检等动作。历史结果中可能为空。传 Language=en-US 时返回英文文案
+        r"""<p>综合处置建议，用于指导调用方优先执行下线、隔离、修复、复检等动作。历史结果中可能为空。传 Language=en-US 时返回英文文案</p>
         :rtype: str
         """
         return self._Mitigation
@@ -63710,7 +63695,7 @@ benign：可信
 
     @property
     def RiskDescription(self):
-        r"""风险综合描述，对本次检测发现的风险进行概括性说明。传 Language=en-US 时返回英文文案
+        r"""<p>风险综合描述，对本次检测发现的风险进行概括性说明。传 Language=en-US 时返回英文文案</p>
         :rtype: str
         """
         return self._RiskDescription
@@ -63721,9 +63706,7 @@ benign：可信
 
     @property
     def SecurityScore(self):
-        r"""安全评分
-取值范围：[0, 100]
-补充说明：100 为最安全
+        r"""<p>安全评分取值范围：[0, 100]补充说明：分数越高越安全</p>
         :rtype: int
         """
         return self._SecurityScore
@@ -63734,7 +63717,7 @@ benign：可信
 
     @property
     def EngineVersion(self):
-        r"""本次扫描使用的引擎版本号
+        r"""<p>本次扫描使用的引擎版本号</p>
         :rtype: int
         """
         return self._EngineVersion
@@ -63745,7 +63728,7 @@ benign：可信
 
     @property
     def CapabilityTags(self):
-        r"""Skill 能力标签列表，描述 Skill 具备的能力特征或适用场景。不等同于风险标签，也不参与风险等级判定。传 Language=en-US 时 Name 切换为英文，ID 保持不变
+        r"""<p>Skill 能力标签列表，描述 Skill 具备的能力特征或适用场景。不等同于风险标签，也不参与风险等级判定。传 Language=en-US 时 Name 切换为英文，ID 保持不变</p>
         :rtype: list of SkillCapabilityTag
         """
         return self._CapabilityTags
@@ -63756,7 +63739,7 @@ benign：可信
 
     @property
     def RuleCatalog(self):
-        r"""融合规则目录全集，包含所有融合规则类别（9xxxx），调用方可据此展示分类标签，无需本地维护映射表。传 Language=en-US 时返回英文名称
+        r"""<p>融合规则目录全集，包含所有融合规则类别（9xxxx），调用方可据此展示分类标签，无需本地维护映射表。传 Language=en-US 时返回英文名称</p>
         :rtype: list of SkillRuleCatalogItem
         """
         return self._RuleCatalog
@@ -63767,7 +63750,7 @@ benign：可信
 
     @property
     def ScanItems(self):
-        r"""扫描结果详情，按子引擎分组。每个元素包含 ScanType（引擎类型）和 RuleList（命中规则列表）。规则中的 RuleID 使用融合编码（9xxxx），可与 RuleCatalog 交叉引用。传 Language=en-US 时 Description 返回英文文本
+        r"""<p>扫描结果详情，按子引擎分组。每个元素包含 ScanType（引擎类型）和 RuleList（命中规则列表）。规则中的 RuleID 使用融合编码（9xxxx），可与 RuleCatalog 交叉引用。传 Language=en-US 时 Description 返回英文文本</p>
         :rtype: list of SkillScanEngineResult
         """
         return self._ScanItems
@@ -63778,7 +63761,7 @@ benign：可信
 
     @property
     def ReportURL(self):
-        r"""综合安全审计报告地址（签名 URL）。有效期由请求参数 ReportURLExpireHours 控制
+        r"""<p>综合安全审计报告地址（签名 URL）。有效期由请求参数 ReportURLExpireHours 控制</p>
         :rtype: str
         """
         return self._ReportURL
@@ -63789,8 +63772,7 @@ benign：可信
 
     @property
     def ScannedAt(self):
-        r"""扫描完成时间。仅 Status=SUCCESS 时有值
-参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        r"""<p>扫描完成时间。仅 Status=SUCCESS 时有值<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :rtype: str
         """
         return self._ScannedAt
@@ -63801,8 +63783,7 @@ benign：可信
 
     @property
     def CreatedAt(self):
-        r"""任务创建时间。仅 Status=SCANNING 时有值
-参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        r"""<p>任务创建时间。仅 Status=SCANNING 时有值<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -63813,8 +63794,7 @@ benign：可信
 
     @property
     def FailedAt(self):
-        r"""失败时间。仅 Status=FAILED 时有值
-参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        r"""<p>失败时间。仅 Status=FAILED 时有值<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :rtype: str
         """
         return self._FailedAt
@@ -63825,7 +63805,7 @@ benign：可信
 
     @property
     def Message(self):
-        r"""失败原因描述。仅 Status=FAILED 时有值
+        r"""<p>失败原因描述。仅 Status=FAILED 时有值</p>
         :rtype: str
         """
         return self._Message

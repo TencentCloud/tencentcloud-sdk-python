@@ -17717,33 +17717,33 @@ class DescribeDBPriceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: 实例时长，单位：月，最小值 1，最大值为 36；查询按量计费价格时，该字段无效。
+        :param _Period: <p>实例时长，单位：月，最小值 1，最大值为 36；查询按量计费价格时，该字段无效。</p>
         :type Period: int
-        :param _Zone: 可用区信息，格式如 "ap-guangzhou-2"。具体能设置的值请通过 <a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a> 接口查询。InstanceId为空时该参数为必填项。
+        :param _Zone: <p>可用区信息，格式如 &quot;ap-guangzhou-2&quot;。具体能设置的值请通过 <a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a> 接口查询。InstanceId为空时该参数为必填项。</p>
         :type Zone: str
-        :param _GoodsNum: 实例数量，默认值为 1，最小值 1，最大值为 100。InstanceId为空时该参数为必填项。
+        :param _GoodsNum: <p>实例数量，默认值为 1，最小值 1，最大值为 100。InstanceId为空时该参数为必填项。</p>
         :type GoodsNum: int
-        :param _Memory: 实例内存大小，单位：MB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的实例内存大小范围。
+        :param _Memory: <p>实例内存大小，单位：MB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 <a href="https://cloud.tencent.com/document/product/236/17229">获取云数据库可售卖规格</a> 接口获取可售卖的实例内存大小范围。</p>
         :type Memory: int
-        :param _Volume: 实例硬盘大小，单位：GB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的硬盘大小范围。
+        :param _Volume: <p>实例硬盘大小，单位：GB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 <a href="https://cloud.tencent.com/document/product/236/17229">获取云数据库可售卖规格</a> 接口获取可售卖的硬盘大小范围。</p>
         :type Volume: int
-        :param _InstanceRole: 实例类型，默认为 master，支持值包括：master - 表示主实例，ro - 表示只读实例，dr - 表示灾备实例。InstanceId为空时该参数为必填项。
+        :param _InstanceRole: <p>实例类型，默认为 master，支持值包括：master - 表示主实例，ro - 表示只读实例，dr - 表示灾备实例。InstanceId为空时该参数为必填项。</p>
         :type InstanceRole: str
-        :param _PayType: 付费类型，支持值包括：PRE_PAID - 包年包月，HOUR_PAID - 按量计费。InstanceId为空时该参数为必填项。
+        :param _PayType: <p>付费类型，支持值包括：PRE_PAID - 包年包月，HOUR_PAID - 按量计费。InstanceId为空时该参数为必填项。</p>
         :type PayType: str
-        :param _ProtectMode: 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
+        :param _ProtectMode: <p>数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。</p>
         :type ProtectMode: int
-        :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - 单节点云盘版实例。 "CLOUD_NATIVE_CLUSTER" - 集群版标准型， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。   不指定则默认为通用型实例。
+        :param _DeviceType: <p>实例隔离类型。</p><p>枚举值：</p><ul><li>UNIVERSAL： 通用型实例</li><li>EXCLUSIVE： 独享型实例</li><li>CLOUD_NATIVE_CLUSTER： 云盘版标准型</li><li>CLOUD_NATIVE_CLUSTER_EXCLUSIVE： 云盘版加强型</li><li>CLOUD_NATIVE_CLUSTER_ULTRA： 云盘版旗舰型</li></ul><p>默认值：UNIVERSAL</p><p>如需查询单节点云盘版实例的价格，请设置此参数为 CLOUD_NATIVE_CLUSTER，并且指定参数 InstanceNodes 为1。</p>
         :type DeviceType: str
-        :param _InstanceNodes: 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要询价三节点实例， 请将该值设置为3。其余主实例该值默认为2。
+        :param _InstanceNodes: <p>实例节点数。<br>1.查询 RO 实例或者单节点实例价格时，此字段值为1。<br>2.查询双节点实例价格时，此字段值为2。<br>3.查询三节点实例价格时，此字段值为3。<br>4.查询云盘版实例价格时，此字段值范围可输入2 - 6，取值为2表示云盘版实例下对应有1个读写节点 + 1个只读节点；取值为6表示云盘版实例下对应有1个读写节点 + 5个只读节点；其余取值（3 - 5）按1个读写节点 +（取值数 - 1）个只读节点规则类推。</p>
         :type InstanceNodes: int
-        :param _Cpu: 询价实例的CPU核心数目，单位：核，为保证传入 CPU 值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值。
+        :param _Cpu: <p>询价实例的CPU核心数目，单位：核，为保证传入 CPU 值有效，请使用 <a href="https://cloud.tencent.com/document/product/236/17229">获取云数据库可售卖规格</a> 接口获取可售卖的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值。</p>
         :type Cpu: int
-        :param _InstanceId: 询价续费实例ID。如需查询实例续费价格，填写InstanceId和Period即可。
+        :param _InstanceId: <p>询价续费实例ID。如需查询实例续费价格，填写InstanceId和Period即可。</p>
         :type InstanceId: str
-        :param _Ladder: 按量计费阶梯。仅PayType=HOUR_PAID有效，支持值包括：1，2，3。阶梯时长见https://cloud.tencent.com/document/product/236/18335。
+        :param _Ladder: <p>按量计费阶梯。仅PayType=HOUR_PAID有效，支持值包括：1，2，3。阶梯时长见https://cloud.tencent.com/document/product/236/18335。</p>
         :type Ladder: int
-        :param _DiskType: 磁盘类型，查询集群版、单节点云盘版实例价格可以指定该参数。支持值包括： "CLOUD_SSD" - SSD云硬盘， "CLOUD_HSSD" - 增强型SSD云硬盘。  默认为 SSD云硬盘。
+        :param _DiskType: <p>磁盘类型，查询云盘版、单节点云盘版实例价格可以指定该参数。默认值为 SSD 云硬盘。<br>支持值包括：<br>&quot;CLOUD_SSD&quot; - SSD 云硬盘。<br>&quot;CLOUD_HSSD&quot; - 增强型 SSD 云硬盘。<br>&quot;CLOUD_PREMIUM&quot; - 高性能云硬盘。</p>
         :type DiskType: str
         """
         self._Period = None
@@ -17763,7 +17763,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""实例时长，单位：月，最小值 1，最大值为 36；查询按量计费价格时，该字段无效。
+        r"""<p>实例时长，单位：月，最小值 1，最大值为 36；查询按量计费价格时，该字段无效。</p>
         :rtype: int
         """
         return self._Period
@@ -17774,7 +17774,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区信息，格式如 "ap-guangzhou-2"。具体能设置的值请通过 <a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a> 接口查询。InstanceId为空时该参数为必填项。
+        r"""<p>可用区信息，格式如 &quot;ap-guangzhou-2&quot;。具体能设置的值请通过 <a href="https://cloud.tencent.com/document/api/236/17229">DescribeDBZoneConfig</a> 接口查询。InstanceId为空时该参数为必填项。</p>
         :rtype: str
         """
         return self._Zone
@@ -17785,7 +17785,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""实例数量，默认值为 1，最小值 1，最大值为 100。InstanceId为空时该参数为必填项。
+        r"""<p>实例数量，默认值为 1，最小值 1，最大值为 100。InstanceId为空时该参数为必填项。</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -17796,7 +17796,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""实例内存大小，单位：MB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的实例内存大小范围。
+        r"""<p>实例内存大小，单位：MB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 <a href="https://cloud.tencent.com/document/product/236/17229">获取云数据库可售卖规格</a> 接口获取可售卖的实例内存大小范围。</p>
         :rtype: int
         """
         return self._Memory
@@ -17807,7 +17807,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""实例硬盘大小，单位：GB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的硬盘大小范围。
+        r"""<p>实例硬盘大小，单位：GB。InstanceId 为空时该参数为必填项。为保证传入值有效，请使用 <a href="https://cloud.tencent.com/document/product/236/17229">获取云数据库可售卖规格</a> 接口获取可售卖的硬盘大小范围。</p>
         :rtype: int
         """
         return self._Volume
@@ -17818,7 +17818,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        r"""实例类型，默认为 master，支持值包括：master - 表示主实例，ro - 表示只读实例，dr - 表示灾备实例。InstanceId为空时该参数为必填项。
+        r"""<p>实例类型，默认为 master，支持值包括：master - 表示主实例，ro - 表示只读实例，dr - 表示灾备实例。InstanceId为空时该参数为必填项。</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -17829,7 +17829,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def PayType(self):
-        r"""付费类型，支持值包括：PRE_PAID - 包年包月，HOUR_PAID - 按量计费。InstanceId为空时该参数为必填项。
+        r"""<p>付费类型，支持值包括：PRE_PAID - 包年包月，HOUR_PAID - 按量计费。InstanceId为空时该参数为必填项。</p>
         :rtype: str
         """
         return self._PayType
@@ -17840,7 +17840,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
+        r"""<p>数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -17851,7 +17851,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - 单节点云盘版实例。 "CLOUD_NATIVE_CLUSTER" - 集群版标准型， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 集群版加强型。   不指定则默认为通用型实例。
+        r"""<p>实例隔离类型。</p><p>枚举值：</p><ul><li>UNIVERSAL： 通用型实例</li><li>EXCLUSIVE： 独享型实例</li><li>CLOUD_NATIVE_CLUSTER： 云盘版标准型</li><li>CLOUD_NATIVE_CLUSTER_EXCLUSIVE： 云盘版加强型</li><li>CLOUD_NATIVE_CLUSTER_ULTRA： 云盘版旗舰型</li></ul><p>默认值：UNIVERSAL</p><p>如需查询单节点云盘版实例的价格，请设置此参数为 CLOUD_NATIVE_CLUSTER，并且指定参数 InstanceNodes 为1。</p>
         :rtype: str
         """
         return self._DeviceType
@@ -17862,7 +17862,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def InstanceNodes(self):
-        r"""实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要询价三节点实例， 请将该值设置为3。其余主实例该值默认为2。
+        r"""<p>实例节点数。<br>1.查询 RO 实例或者单节点实例价格时，此字段值为1。<br>2.查询双节点实例价格时，此字段值为2。<br>3.查询三节点实例价格时，此字段值为3。<br>4.查询云盘版实例价格时，此字段值范围可输入2 - 6，取值为2表示云盘版实例下对应有1个读写节点 + 1个只读节点；取值为6表示云盘版实例下对应有1个读写节点 + 5个只读节点；其余取值（3 - 5）按1个读写节点 +（取值数 - 1）个只读节点规则类推。</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -17873,7 +17873,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""询价实例的CPU核心数目，单位：核，为保证传入 CPU 值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值。
+        r"""<p>询价实例的CPU核心数目，单位：核，为保证传入 CPU 值有效，请使用 <a href="https://cloud.tencent.com/document/product/236/17229">获取云数据库可售卖规格</a> 接口获取可售卖的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值。</p>
         :rtype: int
         """
         return self._Cpu
@@ -17884,7 +17884,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""询价续费实例ID。如需查询实例续费价格，填写InstanceId和Period即可。
+        r"""<p>询价续费实例ID。如需查询实例续费价格，填写InstanceId和Period即可。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -17895,7 +17895,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Ladder(self):
-        r"""按量计费阶梯。仅PayType=HOUR_PAID有效，支持值包括：1，2，3。阶梯时长见https://cloud.tencent.com/document/product/236/18335。
+        r"""<p>按量计费阶梯。仅PayType=HOUR_PAID有效，支持值包括：1，2，3。阶梯时长见https://cloud.tencent.com/document/product/236/18335。</p>
         :rtype: int
         """
         return self._Ladder
@@ -17906,7 +17906,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""磁盘类型，查询集群版、单节点云盘版实例价格可以指定该参数。支持值包括： "CLOUD_SSD" - SSD云硬盘， "CLOUD_HSSD" - 增强型SSD云硬盘。  默认为 SSD云硬盘。
+        r"""<p>磁盘类型，查询云盘版、单节点云盘版实例价格可以指定该参数。默认值为 SSD 云硬盘。<br>支持值包括：<br>&quot;CLOUD_SSD&quot; - SSD 云硬盘。<br>&quot;CLOUD_HSSD&quot; - 增强型 SSD 云硬盘。<br>&quot;CLOUD_PREMIUM&quot; - 高性能云硬盘。</p>
         :rtype: str
         """
         return self._DiskType
@@ -17948,11 +17948,11 @@ class DescribeDBPriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Price: 实例价格，单位：分。
+        :param _Price: <p>实例价格，单位：分。</p>
         :type Price: int
-        :param _OriginalPrice: 实例原价，单位：分。
+        :param _OriginalPrice: <p>实例原价，单位：分。</p>
         :type OriginalPrice: int
-        :param _Currency: 货币单位。CNY-人民币，USD-美元。
+        :param _Currency: <p>货币单位。CNY-人民币，USD-美元。</p>
         :type Currency: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17964,7 +17964,7 @@ class DescribeDBPriceResponse(AbstractModel):
 
     @property
     def Price(self):
-        r"""实例价格，单位：分。
+        r"""<p>实例价格，单位：分。</p>
         :rtype: int
         """
         return self._Price
@@ -17975,7 +17975,7 @@ class DescribeDBPriceResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""实例原价，单位：分。
+        r"""<p>实例原价，单位：分。</p>
         :rtype: int
         """
         return self._OriginalPrice
@@ -17986,7 +17986,7 @@ class DescribeDBPriceResponse(AbstractModel):
 
     @property
     def Currency(self):
-        r"""货币单位。CNY-人民币，USD-美元。
+        r"""<p>货币单位。CNY-人民币，USD-美元。</p>
         :rtype: str
         """
         return self._Currency

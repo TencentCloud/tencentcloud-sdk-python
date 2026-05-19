@@ -1296,6 +1296,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTrainingTaskPodUrl(self, request):
+        r"""获取单个训练任务实例的登录链接
+
+        :param request: Request instance for DescribeTrainingTaskPodUrl.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTaskPodUrlRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTaskPodUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTrainingTaskPodUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTrainingTaskPodUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTrainingTaskPods(self, request):
         r"""训练任务pod列表
 

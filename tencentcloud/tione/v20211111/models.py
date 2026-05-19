@@ -12702,6 +12702,85 @@ class DescribeTrainingModelVersionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTrainingTaskPodUrlRequest(AbstractModel):
+    r"""DescribeTrainingTaskPodUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodName: 任务实例名
+        :type PodName: str
+        """
+        self._PodName = None
+
+    @property
+    def PodName(self):
+        r"""任务实例名
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+
+    def _deserialize(self, params):
+        self._PodName = params.get("PodName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrainingTaskPodUrlResponse(AbstractModel):
+    r"""DescribeTrainingTaskPodUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodUrl: Pod登录URL
+        :type PodUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PodUrl = None
+        self._RequestId = None
+
+    @property
+    def PodUrl(self):
+        r"""Pod登录URL
+        :rtype: str
+        """
+        return self._PodUrl
+
+    @PodUrl.setter
+    def PodUrl(self, PodUrl):
+        self._PodUrl = PodUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PodUrl = params.get("PodUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTrainingTaskPodsRequest(AbstractModel):
     r"""DescribeTrainingTaskPods请求参数结构体
 

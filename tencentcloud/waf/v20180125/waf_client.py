@@ -2694,6 +2694,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSkillSecScanResult(self, request):
+        r"""根据文件Hash查询Skill安全检测结果
+
+        :param request: Request instance for DescribeSkillSecScanResult.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeSkillSecScanResultRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeSkillSecScanResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSkillSecScanResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSkillSecScanResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSpartaProtectionInfo(self, request):
         r"""waf斯巴达-获取防护域名信息
 
@@ -4963,6 +4986,29 @@ class WafClient(AbstractClient):
             body = self.call("UpdateRateLimitV2", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateRateLimitV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UploadSkillSecScan(self, request):
+        r"""上传Skill ZIP文件，触发异步安全检测
+
+        :param request: Request instance for UploadSkillSecScan.
+        :type request: :class:`tencentcloud.waf.v20180125.models.UploadSkillSecScanRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.UploadSkillSecScanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadSkillSecScan", params, headers=headers)
+            response = json.loads(body)
+            model = models.UploadSkillSecScanResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

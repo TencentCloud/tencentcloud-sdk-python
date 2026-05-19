@@ -2343,23 +2343,23 @@ class CompliancePackRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
         :type RuleName: str
-        :param _RiskLevel: 风险等级
+        :param _RiskLevel: <p>风险等级</p>
         :type RiskLevel: int
-        :param _InputParameter: 入参
+        :param _InputParameter: <p>入参</p>
         :type InputParameter: list of InputParameter
-        :param _Identifier: 规则身份标识
+        :param _Identifier: <p>规则身份标识</p>
         :type Identifier: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _ManagedRuleIdentifier: 预设规则身份标识
+        :param _ManagedRuleIdentifier: <p>预设规则身份标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManagedRuleIdentifier: str
-        :param _ConfigRuleId: 规则ID
+        :param _ConfigRuleId: <p>规则ID</p>
         :type ConfigRuleId: str
-        :param _CompliancePackId: 合规包ID
+        :param _CompliancePackId: <p>合规包ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompliancePackId: str
         """
@@ -2374,7 +2374,7 @@ class CompliancePackRule(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -2385,7 +2385,7 @@ class CompliancePackRule(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
+        r"""<p>风险等级</p>
         :rtype: int
         """
         return self._RiskLevel
@@ -2396,7 +2396,7 @@ class CompliancePackRule(AbstractModel):
 
     @property
     def InputParameter(self):
-        r"""入参
+        r"""<p>入参</p>
         :rtype: list of InputParameter
         """
         return self._InputParameter
@@ -2407,7 +2407,7 @@ class CompliancePackRule(AbstractModel):
 
     @property
     def Identifier(self):
-        r"""规则身份标识
+        r"""<p>规则身份标识</p>
         :rtype: str
         """
         return self._Identifier
@@ -2418,7 +2418,7 @@ class CompliancePackRule(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2430,7 +2430,7 @@ class CompliancePackRule(AbstractModel):
 
     @property
     def ManagedRuleIdentifier(self):
-        r"""预设规则身份标识
+        r"""<p>预设规则身份标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2442,7 +2442,7 @@ class CompliancePackRule(AbstractModel):
 
     @property
     def ConfigRuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: str
         """
         return self._ConfigRuleId
@@ -2453,7 +2453,7 @@ class CompliancePackRule(AbstractModel):
 
     @property
     def CompliancePackId(self):
-        r"""合规包ID
+        r"""<p>合规包ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2744,26 +2744,26 @@ class ConfigCompliancePack(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 合规包状态
+        :param _Status: <p>合规包状态</p>
         :type Status: str
-        :param _CompliancePackId: 合规包ID
+        :param _CompliancePackId: <p>合规包ID</p>
         :type CompliancePackId: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _CompliancePackName: 合规包名称
+        :param _CompliancePackName: <p>合规包名称</p>
         :type CompliancePackName: str
-        :param _RiskLevel: 风险等级
+        :param _RiskLevel: <p>风险等级</p>
         :type RiskLevel: int
-        :param _ComplianceResult: 评估结果
+        :param _ComplianceResult: <p>评估结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComplianceResult: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _NoCompliantNames: 不合规规则名
+        :param _NoCompliantNames: <p>不合规规则名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoCompliantNames: list of str
-        :param _RuleCount: 合规包规则数
+        :param _RuleCount: <p>合规包规则数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleCount: int
         """
@@ -2779,7 +2779,7 @@ class ConfigCompliancePack(AbstractModel):
 
     @property
     def Status(self):
-        r"""合规包状态
+        r"""<p>合规包状态</p>
         :rtype: str
         """
         return self._Status
@@ -2790,7 +2790,7 @@ class ConfigCompliancePack(AbstractModel):
 
     @property
     def CompliancePackId(self):
-        r"""合规包ID
+        r"""<p>合规包ID</p>
         :rtype: str
         """
         return self._CompliancePackId
@@ -2801,7 +2801,7 @@ class ConfigCompliancePack(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2813,7 +2813,7 @@ class ConfigCompliancePack(AbstractModel):
 
     @property
     def CompliancePackName(self):
-        r"""合规包名称
+        r"""<p>合规包名称</p>
         :rtype: str
         """
         return self._CompliancePackName
@@ -2824,7 +2824,7 @@ class ConfigCompliancePack(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
+        r"""<p>风险等级</p>
         :rtype: int
         """
         return self._RiskLevel
@@ -2835,7 +2835,7 @@ class ConfigCompliancePack(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        r"""评估结果
+        r"""<p>评估结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2847,7 +2847,7 @@ class ConfigCompliancePack(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2858,7 +2858,7 @@ class ConfigCompliancePack(AbstractModel):
 
     @property
     def NoCompliantNames(self):
-        r"""不合规规则名
+        r"""<p>不合规规则名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2870,7 +2870,7 @@ class ConfigCompliancePack(AbstractModel):
 
     @property
     def RuleCount(self):
-        r"""合规包规则数
+        r"""<p>合规包规则数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5902,14 +5902,14 @@ class DescribeSystemCompliancePackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompliancePackId: 合规包ID
+        :param _CompliancePackId: <p>合规包ID</p>
         :type CompliancePackId: str
         """
         self._CompliancePackId = None
 
     @property
     def CompliancePackId(self):
-        r"""合规包ID
+        r"""<p>合规包ID</p>
         :rtype: str
         """
         return self._CompliancePackId
@@ -5938,15 +5938,15 @@ class DescribeSystemCompliancePackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompliancePackId: 合规包ID
+        :param _CompliancePackId: <p>合规包ID</p>
         :type CompliancePackId: str
-        :param _CompliancePackName: 合规包名称
+        :param _CompliancePackName: <p>合规包名称</p>
         :type CompliancePackName: str
-        :param _Description: 合规包描述
+        :param _Description: <p>合规包描述</p>
         :type Description: str
-        :param _RiskLevel: 风险等级
+        :param _RiskLevel: <p>风险等级</p>
         :type RiskLevel: int
-        :param _ConfigRules: 合规包规则列表
+        :param _ConfigRules: <p>合规包规则列表</p>
         :type ConfigRules: list of CompliancePackRuleForManage
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5960,7 +5960,7 @@ class DescribeSystemCompliancePackResponse(AbstractModel):
 
     @property
     def CompliancePackId(self):
-        r"""合规包ID
+        r"""<p>合规包ID</p>
         :rtype: str
         """
         return self._CompliancePackId
@@ -5971,7 +5971,7 @@ class DescribeSystemCompliancePackResponse(AbstractModel):
 
     @property
     def CompliancePackName(self):
-        r"""合规包名称
+        r"""<p>合规包名称</p>
         :rtype: str
         """
         return self._CompliancePackName
@@ -5982,7 +5982,7 @@ class DescribeSystemCompliancePackResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""合规包描述
+        r"""<p>合规包描述</p>
         :rtype: str
         """
         return self._Description
@@ -5993,7 +5993,7 @@ class DescribeSystemCompliancePackResponse(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
+        r"""<p>风险等级</p>
         :rtype: int
         """
         return self._RiskLevel
@@ -6004,7 +6004,7 @@ class DescribeSystemCompliancePackResponse(AbstractModel):
 
     @property
     def ConfigRules(self):
-        r"""合规包规则列表
+        r"""<p>合规包规则列表</p>
         :rtype: list of CompliancePackRuleForManage
         """
         return self._ConfigRules
@@ -9718,7 +9718,7 @@ class RemediationExecutions(AbstractModel):
 
 
 class ResourceListInfo(AbstractModel):
-    r"""资源列列表信息
+    r"""资源列表信息
 
     """
 
@@ -10357,46 +10357,46 @@ class SystemConfigRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Identifier: 规则标识
+        :param _Identifier: <p>规则标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Identifier: str
-        :param _RuleName: 规则名
+        :param _RuleName: <p>规则名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
-        :param _InputParameter: 规则参数
+        :param _InputParameter: <p>规则参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputParameter: list of InputParameterForManage
-        :param _SourceCondition: 规则触发条件
+        :param _SourceCondition: <p>规则触发条件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceCondition: list of SourceConditionForManage
-        :param _ResourceType: 支持的资源类型
+        :param _ResourceType: <p>支持的资源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: list of str
-        :param _Label: 标签
+        :param _Label: <p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: list of str
-        :param _RiskLevel: 风险等级，1，2，3
+        :param _RiskLevel: <p>风险等级，1，2，3</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: int
-        :param _ServiceFunction: 对应的函数
+        :param _ServiceFunction: <p>对应的函数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceFunction: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _TriggerType: 触发类型
+        :param _TriggerType: <p>触发类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: list of str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _ReferenceCount: 使用次数
+        :param _ReferenceCount: <p>使用次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReferenceCount: int
-        :param _IdentifierType: 规则类型
+        :param _IdentifierType: <p>规则类型</p>
         :type IdentifierType: str
         """
         self._Identifier = None
@@ -10416,7 +10416,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def Identifier(self):
-        r"""规则标识
+        r"""<p>规则标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10428,7 +10428,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名
+        r"""<p>规则名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10440,7 +10440,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def InputParameter(self):
-        r"""规则参数
+        r"""<p>规则参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InputParameterForManage
         """
@@ -10452,7 +10452,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def SourceCondition(self):
-        r"""规则触发条件
+        r"""<p>规则触发条件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SourceConditionForManage
         """
@@ -10464,7 +10464,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""支持的资源类型
+        r"""<p>支持的资源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10476,7 +10476,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def Label(self):
-        r"""标签
+        r"""<p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10488,7 +10488,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级，1，2，3
+        r"""<p>风险等级，1，2，3</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10500,7 +10500,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def ServiceFunction(self):
-        r"""对应的函数
+        r"""<p>对应的函数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10512,7 +10512,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10524,7 +10524,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10536,7 +10536,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""触发类型
+        r"""<p>触发类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10548,7 +10548,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10560,7 +10560,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def ReferenceCount(self):
-        r"""使用次数
+        r"""<p>使用次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10572,7 +10572,7 @@ class SystemConfigRule(AbstractModel):
 
     @property
     def IdentifierType(self):
-        r"""规则类型
+        r"""<p>规则类型</p>
         :rtype: str
         """
         return self._IdentifierType

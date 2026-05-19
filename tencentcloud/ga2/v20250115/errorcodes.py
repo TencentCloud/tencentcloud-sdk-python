@@ -191,6 +191,9 @@ UNSUPPORTEDOPERATION_EXISTACCELERATORAREA = 'UnsupportedOperation.ExistAccelerat
 # 存在默认准许所有流量访问通道访问控制策略，不支持当前操作。
 UNSUPPORTEDOPERATION_EXISTACCEPTACLPOLICY = 'UnsupportedOperation.ExistAcceptAclPolicy'
 
+# 存在访问日志，不支持当前操作。
+UNSUPPORTEDOPERATION_EXISTACCESSLOG = 'UnsupportedOperation.ExistAccessLog'
+
 # 配置了策略为拒绝的访问规则，不支持当前操作。
 UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = 'UnsupportedOperation.ExistDropAcceptAclRule'
 
@@ -209,6 +212,9 @@ UNSUPPORTEDOPERATION_EXISTLISTENER = 'UnsupportedOperation.ExistListener'
 # 转发规则不支持配置默认终端节点组。
 UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = 'UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup'
 
+# 监听器和终端节点组的HTTP最大协议版本需要保持一致。
+UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = 'UnsupportedOperation.HttpVersionInconsistent'
+
 # 实例不是运行状态，不支持当前操作。
 UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = 'UnsupportedOperation.InstanceNotRunning'
 
@@ -217,6 +223,9 @@ UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = 'UnsupportedOperation.Inst
 
 # 账户余额不足。
 UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = 'UnsupportedOperation.InsufficientFunds'
+
+# 当前全球加速实例未开通内网回源特性。
+UNSUPPORTEDOPERATION_INTERNALENDPOINTFEATURENOTENABLED = 'UnsupportedOperation.InternalEndpointFeatureNotEnabled'
 
 # 不支持IPV6。
 UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = 'UnsupportedOperation.Ipv6NotSupport'
@@ -227,11 +236,20 @@ UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = 'UnsupportedOperation.ListenerPortSeg
 # 当前全球加速实例没有设置跨境类型。无法创建跨境加速地域或终端节点组。
 UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = 'UnsupportedOperation.NotSetCrossBorderType'
 
+# 仅TCP监听器，支持通过TOA获取客户端IP。
+UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = 'UnsupportedOperation.OnlyTcpListenerSupportToa'
+
 # 当前操作使终端节点组域名和全球加速实例域名一致，不支持当前操作。
 UNSUPPORTEDOPERATION_SAMEDOMAIN = 'UnsupportedOperation.SameDomain'
 
 # 当前操作使终端节点组域名和全球加速实例加速地域公网IP一致，不支持当前操作。
 UNSUPPORTEDOPERATION_SAMEPUBLICIP = 'UnsupportedOperation.SamePublicIp'
+
+# 当前全球加速实例未开通TOA特性，请联系腾讯云客服申请。
+UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = 'UnsupportedOperation.TOAFeatureNotEnabled'
+
+# 不支持创建三网类型的加速地域。
+UNSUPPORTEDOPERATION_THREENETWORKSACCELERATEAREAS = 'UnsupportedOperation.ThreeNetworksAccelerateAreas'
 
 # 不支持创建三网类型的终端节点组。
 UNSUPPORTEDOPERATION_THREENETWORKSENDPOINTGROUP = 'UnsupportedOperation.ThreeNetworksEndpointGroup'

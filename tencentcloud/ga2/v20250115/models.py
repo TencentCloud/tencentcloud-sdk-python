@@ -2631,13 +2631,13 @@ class EndpointConfigurations(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EndpointType: 域名类型。可选值'Domain', 'PublicIp'。
+        :param _EndpointType: <p>域名类型。可选值&#39;Domain&#39;, &#39;PublicIp&#39;。</p>
         :type EndpointType: str
-        :param _EndpointService: 域名。
+        :param _EndpointService: <p>域名。</p>
         :type EndpointService: str
-        :param _Weight: 权重。
+        :param _Weight: <p>权重。</p>
         :type Weight: int
-        :param _HealthCheckStatus: 健康检查状态；HEALTH：健康；UNHEALTH：不健康。
+        :param _HealthCheckStatus: <p>健康检查状态；HEALTH：健康；UNHEALTH：不健康。</p>
         :type HealthCheckStatus: str
         """
         self._EndpointType = None
@@ -2647,7 +2647,7 @@ class EndpointConfigurations(AbstractModel):
 
     @property
     def EndpointType(self):
-        r"""域名类型。可选值'Domain', 'PublicIp'。
+        r"""<p>域名类型。可选值&#39;Domain&#39;, &#39;PublicIp&#39;。</p>
         :rtype: str
         """
         return self._EndpointType
@@ -2658,7 +2658,7 @@ class EndpointConfigurations(AbstractModel):
 
     @property
     def EndpointService(self):
-        r"""域名。
+        r"""<p>域名。</p>
         :rtype: str
         """
         return self._EndpointService
@@ -2669,7 +2669,7 @@ class EndpointConfigurations(AbstractModel):
 
     @property
     def Weight(self):
-        r"""权重。
+        r"""<p>权重。</p>
         :rtype: int
         """
         return self._Weight
@@ -2680,7 +2680,7 @@ class EndpointConfigurations(AbstractModel):
 
     @property
     def HealthCheckStatus(self):
-        r"""健康检查状态；HEALTH：健康；UNHEALTH：不健康。
+        r"""<p>健康检查状态；HEALTH：健康；UNHEALTH：不健康。</p>
         :rtype: str
         """
         return self._HealthCheckStatus
@@ -5259,33 +5259,33 @@ class ModifyListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _Name: 名称，最大长度不能超过60个字节。
+        :param _Name: <p>名称，最大长度不能超过60个字节。</p>
         :type Name: str
-        :param _Description: 描述信息，最大长度不能超过100个字节。
+        :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
         :type Description: str
-        :param _IdleTimeout: 连接空闲等待时间。
+        :param _IdleTimeout: <p>连接空闲等待时间。</p>
         :type IdleTimeout: int
-        :param _ClientAffinity: 是否开启会话保持。
+        :param _ClientAffinity: <p>是否开启会话保持。</p>
         :type ClientAffinity: str
-        :param _ClientAffinityTime: 会话保持时间。
+        :param _ClientAffinityTime: <p>会话保持时间。</p>
         :type ClientAffinityTime: int
-        :param _RequestTimeout: 请求超时时间。
+        :param _RequestTimeout: <p>请求超时时间。</p>
         :type RequestTimeout: int
-        :param _XForwardedForRealIp: 是否打开七层获取源IP方式。
+        :param _XForwardedForRealIp: <p>是否打开七层获取源IP方式。</p>
         :type XForwardedForRealIp: bool
-        :param _CertificationType: 解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。
+        :param _CertificationType: <p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
         :type CertificationType: str
-        :param _CipherPolicyId: 加密算法套件。
+        :param _CipherPolicyId: <p>加密算法套件。</p>
         :type CipherPolicyId: str
-        :param _ServerCertificates: 服务器证书。
+        :param _ServerCertificates: <p>服务器证书。</p>
         :type ServerCertificates: list of str
-        :param _ClientCaCertificates: 客户端证书。
+        :param _ClientCaCertificates: <p>客户端证书。</p>
         :type ClientCaCertificates: list of str
-        :param _GetRealIpType: 四层获取源IP方式。
+        :param _GetRealIpType: <p>四层获取源IP方式。</p>
         :type GetRealIpType: str
         """
         self._GlobalAcceleratorId = None
@@ -5305,7 +5305,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -5316,7 +5316,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -5327,7 +5327,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称，最大长度不能超过60个字节。
+        r"""<p>名称，最大长度不能超过60个字节。</p>
         :rtype: str
         """
         return self._Name
@@ -5338,7 +5338,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息，最大长度不能超过100个字节。
+        r"""<p>描述信息，最大长度不能超过100个字节。</p>
         :rtype: str
         """
         return self._Description
@@ -5349,7 +5349,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def IdleTimeout(self):
-        r"""连接空闲等待时间。
+        r"""<p>连接空闲等待时间。</p>
         :rtype: int
         """
         return self._IdleTimeout
@@ -5360,7 +5360,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ClientAffinity(self):
-        r"""是否开启会话保持。
+        r"""<p>是否开启会话保持。</p>
         :rtype: str
         """
         return self._ClientAffinity
@@ -5371,7 +5371,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ClientAffinityTime(self):
-        r"""会话保持时间。
+        r"""<p>会话保持时间。</p>
         :rtype: int
         """
         return self._ClientAffinityTime
@@ -5382,7 +5382,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def RequestTimeout(self):
-        r"""请求超时时间。
+        r"""<p>请求超时时间。</p>
         :rtype: int
         """
         return self._RequestTimeout
@@ -5393,7 +5393,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def XForwardedForRealIp(self):
-        r"""是否打开七层获取源IP方式。
+        r"""<p>是否打开七层获取源IP方式。</p>
         :rtype: bool
         """
         return self._XForwardedForRealIp
@@ -5404,7 +5404,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def CertificationType(self):
-        r"""解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。
+        r"""<p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
         :rtype: str
         """
         return self._CertificationType
@@ -5415,7 +5415,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def CipherPolicyId(self):
-        r"""加密算法套件。
+        r"""<p>加密算法套件。</p>
         :rtype: str
         """
         return self._CipherPolicyId
@@ -5426,7 +5426,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ServerCertificates(self):
-        r"""服务器证书。
+        r"""<p>服务器证书。</p>
         :rtype: list of str
         """
         return self._ServerCertificates
@@ -5437,7 +5437,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ClientCaCertificates(self):
-        r"""客户端证书。
+        r"""<p>客户端证书。</p>
         :rtype: list of str
         """
         return self._ClientCaCertificates
@@ -5448,7 +5448,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def GetRealIpType(self):
-        r"""四层获取源IP方式。
+        r"""<p>四层获取源IP方式。</p>
         :rtype: str
         """
         return self._GetRealIpType
@@ -5490,7 +5490,7 @@ class ModifyListenerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID。
+        :param _TaskId: <p>任务ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5500,7 +5500,7 @@ class ModifyListenerResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID。
+        r"""<p>任务ID。</p>
         :rtype: str
         """
         return self._TaskId

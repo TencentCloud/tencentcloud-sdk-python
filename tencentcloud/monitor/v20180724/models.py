@@ -25747,17 +25747,17 @@ class ExportPrometheusReadOnlyDynamicAPIRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Prometheus 实例 ID
+        :param _InstanceId: <p>Prometheus 实例 ID</p>
         :type InstanceId: str
-        :param _Method: HTTP 方法名 GET/POST/PUT/DELETE 等
+        :param _Method: <p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
         :type Method: str
-        :param _Path: HTTP 路径（包括 query string）
+        :param _Path: <p>HTTP 路径（包括 query string）</p>
         :type Path: str
-        :param _RequestBody: HTTP 请求体，任何数据
+        :param _RequestBody: <p>HTTP 请求体，任何数据</p>
         :type RequestBody: str
-        :param _Headers: HTTP 请求头
+        :param _Headers: <p>HTTP 请求头</p>
         :type Headers: list of PrometheusStringKeyValuePair
-        :param _SelfMonitor: 是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+        :param _SelfMonitor: <p>是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。</p>
         :type SelfMonitor: bool
         """
         self._InstanceId = None
@@ -25769,7 +25769,7 @@ class ExportPrometheusReadOnlyDynamicAPIRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Prometheus 实例 ID
+        r"""<p>Prometheus 实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -25780,7 +25780,7 @@ class ExportPrometheusReadOnlyDynamicAPIRequest(AbstractModel):
 
     @property
     def Method(self):
-        r"""HTTP 方法名 GET/POST/PUT/DELETE 等
+        r"""<p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
         :rtype: str
         """
         return self._Method
@@ -25791,7 +25791,7 @@ class ExportPrometheusReadOnlyDynamicAPIRequest(AbstractModel):
 
     @property
     def Path(self):
-        r"""HTTP 路径（包括 query string）
+        r"""<p>HTTP 路径（包括 query string）</p>
         :rtype: str
         """
         return self._Path
@@ -25802,7 +25802,7 @@ class ExportPrometheusReadOnlyDynamicAPIRequest(AbstractModel):
 
     @property
     def RequestBody(self):
-        r"""HTTP 请求体，任何数据
+        r"""<p>HTTP 请求体，任何数据</p>
         :rtype: str
         """
         return self._RequestBody
@@ -25813,7 +25813,7 @@ class ExportPrometheusReadOnlyDynamicAPIRequest(AbstractModel):
 
     @property
     def Headers(self):
-        r"""HTTP 请求头
+        r"""<p>HTTP 请求头</p>
         :rtype: list of PrometheusStringKeyValuePair
         """
         return self._Headers
@@ -25824,7 +25824,7 @@ class ExportPrometheusReadOnlyDynamicAPIRequest(AbstractModel):
 
     @property
     def SelfMonitor(self):
-        r"""是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+        r"""<p>是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。</p>
         :rtype: bool
         """
         return self._SelfMonitor
@@ -25863,7 +25863,7 @@ class ExportPrometheusReadOnlyDynamicAPIResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HTTP: HTTP 响应数据
+        :param _HTTP: <p>HTTP 响应数据</p>
         :type HTTP: :class:`tencentcloud.monitor.v20180724.models.PrometheusDynamicAPIResponseHTTP`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25873,7 +25873,7 @@ class ExportPrometheusReadOnlyDynamicAPIResponse(AbstractModel):
 
     @property
     def HTTP(self):
-        r"""HTTP 响应数据
+        r"""<p>HTTP 响应数据</p>
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusDynamicAPIResponseHTTP`
         """
         return self._HTTP

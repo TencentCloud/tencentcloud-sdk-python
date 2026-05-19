@@ -2132,17 +2132,26 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，形如：tdsql3-42f40429.
+        :param _InstanceId: <p>实例 ID，形如：tdsql3-42f40429.</p>
         :type InstanceId: str
-        :param _DbName: 数据库名称，通过 DescribeDatabases 接口获取。
+        :param _DbName: <p>数据库名称，通过 DescribeDatabases 接口获取。</p>
         :type DbName: str
+        :param _Offset: <p>分页索引</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量</p>
+        :type Limit: int
+        :param _TableRegexp: <p>数据表名称匹配表达式</p>
+        :type TableRegexp: str
         """
         self._InstanceId = None
         self._DbName = None
+        self._Offset = None
+        self._Limit = None
+        self._TableRegexp = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，形如：tdsql3-42f40429.
+        r"""<p>实例 ID，形如：tdsql3-42f40429.</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2153,7 +2162,7 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称，通过 DescribeDatabases 接口获取。
+        r"""<p>数据库名称，通过 DescribeDatabases 接口获取。</p>
         :rtype: str
         """
         return self._DbName
@@ -2162,10 +2171,46 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
     def DbName(self, DbName):
         self._DbName = DbName
 
+    @property
+    def Offset(self):
+        r"""<p>分页索引</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TableRegexp(self):
+        r"""<p>数据表名称匹配表达式</p>
+        :rtype: str
+        """
+        return self._TableRegexp
+
+    @TableRegexp.setter
+    def TableRegexp(self, TableRegexp):
+        self._TableRegexp = TableRegexp
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._DbName = params.get("DbName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TableRegexp = params.get("TableRegexp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2183,20 +2228,20 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 透传入参。
+        :param _InstanceId: <p>透传入参。</p>
         :type InstanceId: str
-        :param _DbName: 数据库名称。
+        :param _DbName: <p>数据库名称。</p>
         :type DbName: str
-        :param _Tables: 表列表。
+        :param _Tables: <p>表列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of DatabaseTable
-        :param _Views: 视图列表。
+        :param _Views: <p>视图列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Views: list of DatabaseView
-        :param _Procs: 存储过程列表。
+        :param _Procs: <p>存储过程列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Procs: list of DatabaseProcedure
-        :param _Funcs: 函数列表。
+        :param _Funcs: <p>函数列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Funcs: list of DatabaseFunction
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2212,7 +2257,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""透传入参。
+        r"""<p>透传入参。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2223,7 +2268,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称。
+        r"""<p>数据库名称。</p>
         :rtype: str
         """
         return self._DbName
@@ -2234,7 +2279,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def Tables(self):
-        r"""表列表。
+        r"""<p>表列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DatabaseTable
         """
@@ -2246,7 +2291,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def Views(self):
-        r"""视图列表。
+        r"""<p>视图列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DatabaseView
         """
@@ -2258,7 +2303,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def Procs(self):
-        r"""存储过程列表。
+        r"""<p>存储过程列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DatabaseProcedure
         """
@@ -2270,7 +2315,7 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def Funcs(self):
-        r"""函数列表。
+        r"""<p>函数列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DatabaseFunction
         """

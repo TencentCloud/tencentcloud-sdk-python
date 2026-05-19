@@ -171,60 +171,6 @@ class LkeapClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateAttributeLabel(
-            self,
-            request: models.CreateAttributeLabelRequest,
-            opts: Dict = None,
-    ) -> models.CreateAttributeLabelResponse:
-        """
-        用于为问答对创建属性标签，以便对内容进行分类和管理。 使用场景：当需要为问答对添加分类标签和属性标记时使用，比如为问答对添加“售后”标签。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateAttributeLabel"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateAttributeLabelResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateKnowledgeBase(
-            self,
-            request: models.CreateKnowledgeBaseRequest,
-            opts: Dict = None,
-    ) -> models.CreateKnowledgeBaseResponse:
-        """
-        用于在系统中创建一个新的知识库。知识库是一个用于存储和管理知识条目的集合，可以包括文档、问答对、属性标签等。创建知识库后，可以向其中添加各种知识条目，以便在后续的知识检索中使用。 使用场景：当需要在系统中建立一个新的知识库以存储和管理特定领域或项目的知识条目时使用。例如，一个用户可能需要创建一个知识库，以存储用户指南、常见问题解答和技术文档。体验用户最多可创建3个知识库，付费用户最多可创建100个知识库。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateKnowledgeBase"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateKnowledgeBaseResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateQA(
-            self,
-            request: models.CreateQARequest,
-            opts: Dict = None,
-    ) -> models.CreateQAResponse:
-        """
-        用于创建新的问答对。问答对可以在SearchKnowledge接口知识检索时提供匹配的答案。 使用场景：当需要添加新的知识点和对应的问答对时使用，比如为产品添加新的常见问题解答。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateQA"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateQAResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateReconstructDocumentFlow(
             self,
             request: models.CreateReconstructDocumentFlowRequest,
@@ -259,96 +205,6 @@ class LkeapClient(AbstractClient):
         kwargs["action"] = "CreateSplitDocumentFlow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateSplitDocumentFlowResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteAttributeLabels(
-            self,
-            request: models.DeleteAttributeLabelsRequest,
-            opts: Dict = None,
-    ) -> models.DeleteAttributeLabelsResponse:
-        """
-        用于删除不再需要的属性标签。 使用场景：当某个标签不再使用时，可以将其删除以保持标签系统的整洁。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteAttributeLabels"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteAttributeLabelsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteDocs(
-            self,
-            request: models.DeleteDocsRequest,
-            opts: Dict = None,
-    ) -> models.DeleteDocsResponse:
-        """
-        用于删除已有的文档。 使用场景：当某个文档不再需要时，可以将其删除以保持文档库的整洁。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteDocs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteDocsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteKnowledgeBase(
-            self,
-            request: models.DeleteKnowledgeBaseRequest,
-            opts: Dict = None,
-    ) -> models.DeleteKnowledgeBaseResponse:
-        """
-        用于从系统中删除一个现有的知识库。删除知识库将移除该知识库及其所有关联的知识条目（如文档、问答对、属性标签等）。该操作是不可逆的，请在执行前确认是否需要删除。**使用场景**：当某个知识库不再需要时，可以使用此接口将其从系统中删除。例如，一个项目结束后，其相关的知识库可能不再需要存储，可以使用该接口进行删除。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteKnowledgeBase"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteKnowledgeBaseResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteQAs(
-            self,
-            request: models.DeleteQAsRequest,
-            opts: Dict = None,
-    ) -> models.DeleteQAsResponse:
-        """
-        用于删除已有的问答对。 使用场景：当某个问答对不再适用或需要移除时使用。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteQAs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteQAsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeDoc(
-            self,
-            request: models.DescribeDocRequest,
-            opts: Dict = None,
-    ) -> models.DescribeDocResponse:
-        """
-        用于查询特定文档的详细信息。 使用场景：当需要查看某个文档的具体内容和属性时使用。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeDoc"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeDocResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -427,114 +283,6 @@ class LkeapClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ImportQAs(
-            self,
-            request: models.ImportQAsRequest,
-            opts: Dict = None,
-    ) -> models.ImportQAsResponse:
-        """
-        用于批量导入问答对，最多支持50,000条数据导入。通过此接口，可以将多个问答对一次性导入系统中，以便在后续的知识检索中使用。导入的问答对可以来自外部系统、文件或其他数据源。使用场景：当需要一次性导入大量的问答对时使用。例如，一个公司可能需要将其产品的常见问题解答从一个文档或外部系统批量导入到知识库中，以便用户可以通过知识检索系统进行查询。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ImportQAs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ImportQAsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ListAttributeLabels(
-            self,
-            request: models.ListAttributeLabelsRequest,
-            opts: Dict = None,
-    ) -> models.ListAttributeLabelsResponse:
-        """
-        用于获取所有属性标签的列表。 使用场景：用于查看当前系统中所有已有的属性标签，方便进行管理和维护。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ListAttributeLabels"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ListAttributeLabelsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ListDocs(
-            self,
-            request: models.ListDocsRequest,
-            opts: Dict = None,
-    ) -> models.ListDocsResponse:
-        """
-        用于获取所有文档的列表。 使用场景：用于查看当前系统中所有已有的文档，方便进行管理和维护。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ListDocs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ListDocsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ListQAs(
-            self,
-            request: models.ListQAsRequest,
-            opts: Dict = None,
-    ) -> models.ListQAsResponse:
-        """
-        用于获取所有问答对的列表。 使用场景：用于查看当前系统中所有已有的问答对，方便进行管理和维护。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ListQAs"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ListQAsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyAttributeLabel(
-            self,
-            request: models.ModifyAttributeLabelRequest,
-            opts: Dict = None,
-    ) -> models.ModifyAttributeLabelResponse:
-        """
-        用于修改已有的属性标签。 使用场景：当需要更改属性标签的名称或描述时使用，比如将“售后”标签改为“售前”。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyAttributeLabel"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyAttributeLabelResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyQA(
-            self,
-            request: models.ModifyQARequest,
-            opts: Dict = None,
-    ) -> models.ModifyQAResponse:
-        """
-        用于修改已有的问答对。 使用场景：当需要更新问答对的内容或答案时使用。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyQA"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyQAResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def QueryRewrite(
             self,
             request: models.QueryRewriteRequest,
@@ -575,24 +323,6 @@ class LkeapClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def RetrieveKnowledge(
-            self,
-            request: models.RetrieveKnowledgeRequest,
-            opts: Dict = None,
-    ) -> models.RetrieveKnowledgeResponse:
-        """
-        用于检索知识库中的文档和问答对内容。 使用场景：适用于查询长期存储在知识库中的文档和问答对，比如产品手册、用户指南等内容的检索。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RetrieveKnowledge"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RetrieveKnowledgeResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def RunRerank(
             self,
             request: models.RunRerankRequest,
@@ -606,25 +336,6 @@ class LkeapClient(AbstractClient):
         kwargs["action"] = "RunRerank"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RunRerankResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def UploadDoc(
-            self,
-            request: models.UploadDocRequest,
-            opts: Dict = None,
-    ) -> models.UploadDocResponse:
-        """
-        用于上传文档内容。上传的文档将存储在知识库中，可以通过RetrieveKnowledge[知识库内容检索接口](https://cloud.tencent.com/document/product/1772/115349)进行检索。
-        使用场景：适用于需要长期存储和检索的文档内容，如产品手册、用户指南等。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UploadDoc"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UploadDocResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

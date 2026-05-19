@@ -29417,46 +29417,47 @@ class RabbitMQClusterAccessInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PublicAccessEndpoint: 集群公网接入地址
+        :param _PublicAccessEndpoint: <p>集群公网接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicAccessEndpoint: str
-        :param _WebConsoleEndpoint: 集群控制台访问地址
+        :param _WebConsoleEndpoint: <p>集群 Web 控制台公网访问地址</p>
         :type WebConsoleEndpoint: str
-        :param _WebConsoleUsername: 集群控制台登录用户名
+        :param _WebConsoleUsername: <p>集群 Web 控制台登录用户名</p>
         :type WebConsoleUsername: str
-        :param _WebConsolePassword: 集群控制台登录密码
+        :param _WebConsolePassword: <p>集群 Web 控制台登录密码</p>
         :type WebConsolePassword: str
-        :param _PublicAccessEndpointStatus: 已废弃
+        :param _PublicAccessEndpointStatus: <p>已废弃</p>
         :type PublicAccessEndpointStatus: bool
-        :param _PublicControlConsoleSwitchStatus: 已废弃
+        :param _PublicControlConsoleSwitchStatus: <p>已废弃</p>
         :type PublicControlConsoleSwitchStatus: bool
-        :param _VpcControlConsoleSwitchStatus: 已废弃
+        :param _VpcControlConsoleSwitchStatus: <p>已废弃</p>
         :type VpcControlConsoleSwitchStatus: bool
-        :param _VpcWebConsoleEndpoint: Vpc管控台访问地址，示例值，http://1.1.1.1:15672
+        :param _VpcWebConsoleEndpoint: <p>Web 管控台 VPC 访问地址</p>
         :type VpcWebConsoleEndpoint: str
-        :param _PublicWebConsoleSwitchStatus: 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+        :param _PublicWebConsoleSwitchStatus: <p>Web 控制台公网访问开关状态</p><p>枚举值：</p><ul><li>OFF： 已关闭</li><li>ON： 已开启</li><li>CREATING： 创建中</li><li>DELETING： 删除中</li><li>CREATE_FAILURE： 创建失败</li><li>DELETE_FAILURE： 删除失败</li></ul>
         :type PublicWebConsoleSwitchStatus: str
-        :param _VpcWebConsoleSwitchStatus: Vpc管控台开关状态，示例值，
-OFF/ON/CREATING/DELETING
+        :param _VpcWebConsoleSwitchStatus: <p>Web 控制台 VPC 访问开关状态</p><p>枚举值：</p><ul><li>OFF： 已关闭</li><li>ON： 已开启</li><li>CREATING： 创建中</li><li>DELETING： 删除中</li><li>CREATE_FAILURE： 创建失败</li><li>DELETE_FAILURE： 删除失败</li></ul>
         :type VpcWebConsoleSwitchStatus: str
-        :param _PublicDataStreamStatus: 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+        :param _PublicDataStreamStatus: <p>公网接入点开关状态</p><p>枚举值：</p><ul><li>OFF： 已关闭</li><li>ON： 已开启</li><li>CREATING： 创建中</li><li>DELETING： 删除中</li><li>CREATE_FAILURE： 创建失败</li><li>DELETE_FAILURE： 删除失败</li></ul>
         :type PublicDataStreamStatus: str
-        :param _PrometheusEndpointInfo: Prometheus信息
+        :param _PrometheusEndpointInfo: <p>Prometheus信息</p>
         :type PrometheusEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.PrometheusEndpointInfo`
-        :param _WebConsoleDomainEndpoint: 公网域名接入点
+        :param _WebConsoleDomainEndpoint: <p>公网域名接入点</p>
         :type WebConsoleDomainEndpoint: str
-        :param _ControlPlaneEndpointInfo: 控制面所使用的VPC信息
+        :param _ControlPlaneEndpointInfo: <p>控制面所使用的VPC信息</p>
         :type ControlPlaneEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
-        :param _PublicTlsAccessEndpoint: TLS加密的数据流公网接入点
+        :param _PublicTlsAccessEndpoint: <p>TLS加密的数据流公网接入点</p>
         :type PublicTlsAccessEndpoint: str
-        :param _PublicIpReused: 公网IP是否复用
+        :param _PublicIpReused: <p>公网IP是否复用</p>
         :type PublicIpReused: bool
-        :param _PublicWebConsoleErrorMessage: 公网控制台接入点操作的错误信息
+        :param _PublicWebConsoleErrorMessage: <p>Web 控制台公网访问操作的错误信息</p>
         :type PublicWebConsoleErrorMessage: str
-        :param _VpcWebConsoleErrorMessage: 内网控制台接入点操作的错误信息
+        :param _VpcWebConsoleErrorMessage: <p>Web 控制台 VPC 访问操作的错误信息</p>
         :type VpcWebConsoleErrorMessage: str
-        :param _PublicDataStreamErrorMessage: 公网接入点操作的错误信息
+        :param _PublicDataStreamErrorMessage: <p>公网接入点操作的错误信息</p>
         :type PublicDataStreamErrorMessage: str
+        :param _PublicStreamAccessEndpoint: <p>公网Stream接入点</p>
+        :type PublicStreamAccessEndpoint: str
         """
         self._PublicAccessEndpoint = None
         self._WebConsoleEndpoint = None
@@ -29477,10 +29478,11 @@ OFF/ON/CREATING/DELETING
         self._PublicWebConsoleErrorMessage = None
         self._VpcWebConsoleErrorMessage = None
         self._PublicDataStreamErrorMessage = None
+        self._PublicStreamAccessEndpoint = None
 
     @property
     def PublicAccessEndpoint(self):
-        r"""集群公网接入地址
+        r"""<p>集群公网接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29492,7 +29494,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsoleEndpoint(self):
-        r"""集群控制台访问地址
+        r"""<p>集群 Web 控制台公网访问地址</p>
         :rtype: str
         """
         return self._WebConsoleEndpoint
@@ -29503,7 +29505,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsoleUsername(self):
-        r"""集群控制台登录用户名
+        r"""<p>集群 Web 控制台登录用户名</p>
         :rtype: str
         """
         return self._WebConsoleUsername
@@ -29514,7 +29516,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsolePassword(self):
-        r"""集群控制台登录密码
+        r"""<p>集群 Web 控制台登录密码</p>
         :rtype: str
         """
         return self._WebConsolePassword
@@ -29525,7 +29527,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicAccessEndpointStatus(self):
-        r"""已废弃
+        r"""<p>已废弃</p>
         :rtype: bool
         """
         return self._PublicAccessEndpointStatus
@@ -29536,7 +29538,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicControlConsoleSwitchStatus(self):
-        r"""已废弃
+        r"""<p>已废弃</p>
         :rtype: bool
         """
         return self._PublicControlConsoleSwitchStatus
@@ -29547,7 +29549,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcControlConsoleSwitchStatus(self):
-        r"""已废弃
+        r"""<p>已废弃</p>
         :rtype: bool
         """
         return self._VpcControlConsoleSwitchStatus
@@ -29558,7 +29560,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcWebConsoleEndpoint(self):
-        r"""Vpc管控台访问地址，示例值，http://1.1.1.1:15672
+        r"""<p>Web 管控台 VPC 访问地址</p>
         :rtype: str
         """
         return self._VpcWebConsoleEndpoint
@@ -29569,7 +29571,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicWebConsoleSwitchStatus(self):
-        r"""公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+        r"""<p>Web 控制台公网访问开关状态</p><p>枚举值：</p><ul><li>OFF： 已关闭</li><li>ON： 已开启</li><li>CREATING： 创建中</li><li>DELETING： 删除中</li><li>CREATE_FAILURE： 创建失败</li><li>DELETE_FAILURE： 删除失败</li></ul>
         :rtype: str
         """
         return self._PublicWebConsoleSwitchStatus
@@ -29580,8 +29582,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcWebConsoleSwitchStatus(self):
-        r"""Vpc管控台开关状态，示例值，
-OFF/ON/CREATING/DELETING
+        r"""<p>Web 控制台 VPC 访问开关状态</p><p>枚举值：</p><ul><li>OFF： 已关闭</li><li>ON： 已开启</li><li>CREATING： 创建中</li><li>DELETING： 删除中</li><li>CREATE_FAILURE： 创建失败</li><li>DELETE_FAILURE： 删除失败</li></ul>
         :rtype: str
         """
         return self._VpcWebConsoleSwitchStatus
@@ -29592,7 +29593,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicDataStreamStatus(self):
-        r"""公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+        r"""<p>公网接入点开关状态</p><p>枚举值：</p><ul><li>OFF： 已关闭</li><li>ON： 已开启</li><li>CREATING： 创建中</li><li>DELETING： 删除中</li><li>CREATE_FAILURE： 创建失败</li><li>DELETE_FAILURE： 删除失败</li></ul>
         :rtype: str
         """
         return self._PublicDataStreamStatus
@@ -29603,7 +29604,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PrometheusEndpointInfo(self):
-        r"""Prometheus信息
+        r"""<p>Prometheus信息</p>
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.PrometheusEndpointInfo`
         """
         return self._PrometheusEndpointInfo
@@ -29614,7 +29615,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def WebConsoleDomainEndpoint(self):
-        r"""公网域名接入点
+        r"""<p>公网域名接入点</p>
         :rtype: str
         """
         return self._WebConsoleDomainEndpoint
@@ -29625,7 +29626,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def ControlPlaneEndpointInfo(self):
-        r"""控制面所使用的VPC信息
+        r"""<p>控制面所使用的VPC信息</p>
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
         """
         return self._ControlPlaneEndpointInfo
@@ -29636,7 +29637,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicTlsAccessEndpoint(self):
-        r"""TLS加密的数据流公网接入点
+        r"""<p>TLS加密的数据流公网接入点</p>
         :rtype: str
         """
         return self._PublicTlsAccessEndpoint
@@ -29647,7 +29648,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicIpReused(self):
-        r"""公网IP是否复用
+        r"""<p>公网IP是否复用</p>
         :rtype: bool
         """
         return self._PublicIpReused
@@ -29658,7 +29659,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicWebConsoleErrorMessage(self):
-        r"""公网控制台接入点操作的错误信息
+        r"""<p>Web 控制台公网访问操作的错误信息</p>
         :rtype: str
         """
         return self._PublicWebConsoleErrorMessage
@@ -29669,7 +29670,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def VpcWebConsoleErrorMessage(self):
-        r"""内网控制台接入点操作的错误信息
+        r"""<p>Web 控制台 VPC 访问操作的错误信息</p>
         :rtype: str
         """
         return self._VpcWebConsoleErrorMessage
@@ -29680,7 +29681,7 @@ OFF/ON/CREATING/DELETING
 
     @property
     def PublicDataStreamErrorMessage(self):
-        r"""公网接入点操作的错误信息
+        r"""<p>公网接入点操作的错误信息</p>
         :rtype: str
         """
         return self._PublicDataStreamErrorMessage
@@ -29688,6 +29689,17 @@ OFF/ON/CREATING/DELETING
     @PublicDataStreamErrorMessage.setter
     def PublicDataStreamErrorMessage(self, PublicDataStreamErrorMessage):
         self._PublicDataStreamErrorMessage = PublicDataStreamErrorMessage
+
+    @property
+    def PublicStreamAccessEndpoint(self):
+        r"""<p>公网Stream接入点</p>
+        :rtype: str
+        """
+        return self._PublicStreamAccessEndpoint
+
+    @PublicStreamAccessEndpoint.setter
+    def PublicStreamAccessEndpoint(self, PublicStreamAccessEndpoint):
+        self._PublicStreamAccessEndpoint = PublicStreamAccessEndpoint
 
 
     def _deserialize(self, params):
@@ -29714,6 +29726,7 @@ OFF/ON/CREATING/DELETING
         self._PublicWebConsoleErrorMessage = params.get("PublicWebConsoleErrorMessage")
         self._VpcWebConsoleErrorMessage = params.get("VpcWebConsoleErrorMessage")
         self._PublicDataStreamErrorMessage = params.get("PublicDataStreamErrorMessage")
+        self._PublicStreamAccessEndpoint = params.get("PublicStreamAccessEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31406,32 +31419,37 @@ class RabbitMQUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+        :param _InstanceId: <p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
         :type InstanceId: str
-        :param _User: 用户名，登录时使用
+        :param _User: <p>用户名，登录时使用</p>
         :type User: str
-        :param _Password: 密码，登录时使用
+        :param _Password: <p>密码，登录时使用</p>
         :type Password: str
-        :param _Description: 用户描述
+        :param _Description: <p>用户描述</p>
         :type Description: str
-        :param _Tags: 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
+        :param _Tags: <p>用户标签，用于决定改用户访问RabbitMQ Management的权限范围</p>
         :type Tags: list of str
-        :param _CreateTime: 用户创建时间
+        :param _CreateTime: <p>用户创建时间</p>
         :type CreateTime: str
-        :param _ModifyTime: 用户最后修改时间
+        :param _ModifyTime: <p>用户最后修改时间</p>
         :type ModifyTime: str
-        :param _Type: 用户类型，System：系统创建，User：用户创建
+        :param _Type: <p>用户类型，System：系统创建，User：用户创建</p>
         :type Type: str
-        :param _MaxConnections: 单个用户最大可用连接数
+        :param _MaxConnections: <p>单个用户最大可用连接数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxConnections: int
-        :param _MaxChannels: 单个用户最大可用通道数
+        :param _MaxChannels: <p>单个用户最大可用通道数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxChannels: int
-        :param _CreateTs: 创建时间时间戳
+        :param _CreateTs: <p>创建时间时间戳</p>
         :type CreateTs: int
-        :param _ModifyTs: 修改时间时间戳
+        :param _ModifyTs: <p>修改时间时间戳</p>
         :type ModifyTs: int
+        :param _CamAuthEnabled: <p>是否开启cam验证</p><p>默认值：false</p>
+        :type CamAuthEnabled: bool
+        :param _CamCredentialName: <p>cam凭据名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CamCredentialName: str
         """
         self._InstanceId = None
         self._User = None
@@ -31445,10 +31463,12 @@ class RabbitMQUser(AbstractModel):
         self._MaxChannels = None
         self._CreateTs = None
         self._ModifyTs = None
+        self._CamAuthEnabled = None
+        self._CamCredentialName = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+        r"""<p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -31459,7 +31479,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def User(self):
-        r"""用户名，登录时使用
+        r"""<p>用户名，登录时使用</p>
         :rtype: str
         """
         return self._User
@@ -31470,7 +31490,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def Password(self):
-        r"""密码，登录时使用
+        r"""<p>密码，登录时使用</p>
         :rtype: str
         """
         return self._Password
@@ -31481,7 +31501,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def Description(self):
-        r"""用户描述
+        r"""<p>用户描述</p>
         :rtype: str
         """
         return self._Description
@@ -31492,7 +31512,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def Tags(self):
-        r"""用户标签，用于决定改用户访问RabbitMQ Management的权限范围
+        r"""<p>用户标签，用于决定改用户访问RabbitMQ Management的权限范围</p>
         :rtype: list of str
         """
         return self._Tags
@@ -31503,7 +31523,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""用户创建时间
+        r"""<p>用户创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -31514,7 +31534,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""用户最后修改时间
+        r"""<p>用户最后修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -31525,7 +31545,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def Type(self):
-        r"""用户类型，System：系统创建，User：用户创建
+        r"""<p>用户类型，System：系统创建，User：用户创建</p>
         :rtype: str
         """
         return self._Type
@@ -31536,7 +31556,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def MaxConnections(self):
-        r"""单个用户最大可用连接数
+        r"""<p>单个用户最大可用连接数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -31548,7 +31568,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def MaxChannels(self):
-        r"""单个用户最大可用通道数
+        r"""<p>单个用户最大可用通道数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -31560,7 +31580,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def CreateTs(self):
-        r"""创建时间时间戳
+        r"""<p>创建时间时间戳</p>
         :rtype: int
         """
         return self._CreateTs
@@ -31571,7 +31591,7 @@ class RabbitMQUser(AbstractModel):
 
     @property
     def ModifyTs(self):
-        r"""修改时间时间戳
+        r"""<p>修改时间时间戳</p>
         :rtype: int
         """
         return self._ModifyTs
@@ -31579,6 +31599,29 @@ class RabbitMQUser(AbstractModel):
     @ModifyTs.setter
     def ModifyTs(self, ModifyTs):
         self._ModifyTs = ModifyTs
+
+    @property
+    def CamAuthEnabled(self):
+        r"""<p>是否开启cam验证</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._CamAuthEnabled
+
+    @CamAuthEnabled.setter
+    def CamAuthEnabled(self, CamAuthEnabled):
+        self._CamAuthEnabled = CamAuthEnabled
+
+    @property
+    def CamCredentialName(self):
+        r"""<p>cam凭据名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CamCredentialName
+
+    @CamCredentialName.setter
+    def CamCredentialName(self, CamCredentialName):
+        self._CamCredentialName = CamCredentialName
 
 
     def _deserialize(self, params):
@@ -31594,6 +31637,8 @@ class RabbitMQUser(AbstractModel):
         self._MaxChannels = params.get("MaxChannels")
         self._CreateTs = params.get("CreateTs")
         self._ModifyTs = params.get("ModifyTs")
+        self._CamAuthEnabled = params.get("CamAuthEnabled")
+        self._CamCredentialName = params.get("CamCredentialName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31728,64 +31773,56 @@ class RabbitMQVipInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: <p>实例 ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InstanceVersion: 实例版本
+        :param _InstanceVersion: <p>实例版本</p>
         :type InstanceVersion: str
-        :param _Status: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        :param _Status: <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败</p>
         :type Status: int
-        :param _NodeCount: 节点数量
+        :param _NodeCount: <p>节点数量</p>
         :type NodeCount: int
-        :param _ConfigDisplay: 实例配置规格名称
+        :param _ConfigDisplay: <p>实例配置规格名称</p>
         :type ConfigDisplay: str
-        :param _MaxTps: 峰值TPS
+        :param _MaxTps: <p>峰值TPS</p>
         :type MaxTps: int
-        :param _MaxBandWidth: 峰值带宽，Mbps为单位
+        :param _MaxBandWidth: <p>峰值带宽，Mbps为单位</p>
         :type MaxBandWidth: int
-        :param _MaxStorage: 存储容量，GB为单位
+        :param _MaxStorage: <p>存储容量，GB为单位</p>
         :type MaxStorage: int
-        :param _ExpireTime: 实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
+        :param _ExpireTime: <p>实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳</p>
         :type ExpireTime: int
-        :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :param _AutoRenewFlag: <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :type AutoRenewFlag: int
-        :param _PayMode: 1 表示预付费，0 表示后付费
+        :param _PayMode: <p>1 表示预付费，0 表示后付费</p>
         :type PayMode: int
-        :param _Remark: 备注信息
+        :param _Remark: <p>备注信息</p>
         :type Remark: str
-        :param _SpecName: 集群的节点规格，对应的规格标识：
-2C8G：rabbit-vip-profession-2c8g
-4C16G：rabbit-vip-profession-4c16g
-8C32G：rabbit-vip-profession-8c32g
-16C32G：rabbit-vip-basic-4
-16C64G：rabbit-vip-profession-16c64g
-2C4G：rabbit-vip-basic-5
-4C8G：rabbit-vip-basic-1
-8C16G（已售罄）：rabbit-vip-basic-2
-不传默认为 4C8G：rabbit-vip-basic-1
+        :param _SpecName: <p>集群的节点规格，对应的规格标识：<br>2C8G：rabbit-vip-profession-2c8g<br>4C16G：rabbit-vip-profession-4c16g<br>8C32G：rabbit-vip-profession-8c32g<br>16C32G：rabbit-vip-basic-4<br>16C64G：rabbit-vip-profession-16c64g<br>2C4G：rabbit-vip-basic-5<br>4C8G：rabbit-vip-basic-1<br>8C16G（已售罄）：rabbit-vip-basic-2<br>不传默认为 4C8G：rabbit-vip-basic-1</p>
         :type SpecName: str
-        :param _ExceptionInformation: 集群异常信息
+        :param _ExceptionInformation: <p>集群异常信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionInformation: str
-        :param _ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
-为了和计费区分开，额外开启一个状态位，用于显示。
+        :param _ClusterStatus: <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败<br>为了和计费区分开，额外开启一个状态位，用于显示。</p>
         :type ClusterStatus: int
-        :param _PublicAccessEndpoint: 公网接入点
+        :param _PublicAccessEndpoint: <p>公网接入点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicAccessEndpoint: str
-        :param _Vpcs: VPC 接入点列表
+        :param _Vpcs: <p>VPC 接入点列表</p>
         :type Vpcs: list of VpcEndpointInfo
-        :param _CreateTime: 创建时间，毫秒为单位。unix 时间戳
+        :param _CreateTime: <p>创建时间，毫秒为单位。unix 时间戳</p>
         :type CreateTime: int
-        :param _InstanceType: 实例类型，0 托管版、1 Serverless 版
+        :param _InstanceType: <p>实例类型</p><p>枚举值：</p><ul><li>0： 托管版实例</li></ul>
         :type InstanceType: int
-        :param _IsolatedTime: 隔离时间，毫秒为单位。unix 时间戳
+        :param _IsolatedTime: <p>隔离时间，毫秒为单位。unix 时间戳</p>
         :type IsolatedTime: int
-        :param _EnableDeletionProtection: 是否已开启删除保护
+        :param _EnableDeletionProtection: <p>是否已开启删除保护</p>
         :type EnableDeletionProtection: bool
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
+        :param _PublicStreamAccessEndpoint: <p>公有数据流Stream接入点</p>
+        :type PublicStreamAccessEndpoint: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -31810,10 +31847,11 @@ class RabbitMQVipInstance(AbstractModel):
         self._IsolatedTime = None
         self._EnableDeletionProtection = None
         self._Tags = None
+        self._PublicStreamAccessEndpoint = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -31824,7 +31862,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -31835,7 +31873,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        r"""实例版本
+        r"""<p>实例版本</p>
         :rtype: str
         """
         return self._InstanceVersion
@@ -31846,7 +31884,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        r"""<p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败</p>
         :rtype: int
         """
         return self._Status
@@ -31857,7 +31895,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""节点数量
+        r"""<p>节点数量</p>
         :rtype: int
         """
         return self._NodeCount
@@ -31868,7 +31906,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def ConfigDisplay(self):
-        r"""实例配置规格名称
+        r"""<p>实例配置规格名称</p>
         :rtype: str
         """
         return self._ConfigDisplay
@@ -31879,7 +31917,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def MaxTps(self):
-        r"""峰值TPS
+        r"""<p>峰值TPS</p>
         :rtype: int
         """
         return self._MaxTps
@@ -31890,7 +31928,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        r"""峰值带宽，Mbps为单位
+        r"""<p>峰值带宽，Mbps为单位</p>
         :rtype: int
         """
         return self._MaxBandWidth
@@ -31901,7 +31939,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def MaxStorage(self):
-        r"""存储容量，GB为单位
+        r"""<p>存储容量，GB为单位</p>
         :rtype: int
         """
         return self._MaxStorage
@@ -31912,7 +31950,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
+        r"""<p>实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -31923,7 +31961,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        r"""<p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -31934,7 +31972,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""1 表示预付费，0 表示后付费
+        r"""<p>1 表示预付费，0 表示后付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -31945,7 +31983,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
         :rtype: str
         """
         return self._Remark
@@ -31956,16 +31994,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def SpecName(self):
-        r"""集群的节点规格，对应的规格标识：
-2C8G：rabbit-vip-profession-2c8g
-4C16G：rabbit-vip-profession-4c16g
-8C32G：rabbit-vip-profession-8c32g
-16C32G：rabbit-vip-basic-4
-16C64G：rabbit-vip-profession-16c64g
-2C4G：rabbit-vip-basic-5
-4C8G：rabbit-vip-basic-1
-8C16G（已售罄）：rabbit-vip-basic-2
-不传默认为 4C8G：rabbit-vip-basic-1
+        r"""<p>集群的节点规格，对应的规格标识：<br>2C8G：rabbit-vip-profession-2c8g<br>4C16G：rabbit-vip-profession-4c16g<br>8C32G：rabbit-vip-profession-8c32g<br>16C32G：rabbit-vip-basic-4<br>16C64G：rabbit-vip-profession-16c64g<br>2C4G：rabbit-vip-basic-5<br>4C8G：rabbit-vip-basic-1<br>8C16G（已售罄）：rabbit-vip-basic-2<br>不传默认为 4C8G：rabbit-vip-basic-1</p>
         :rtype: str
         """
         return self._SpecName
@@ -31976,7 +32005,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def ExceptionInformation(self):
-        r"""集群异常信息
+        r"""<p>集群异常信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31988,8 +32017,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def ClusterStatus(self):
-        r"""实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
-为了和计费区分开，额外开启一个状态位，用于显示。
+        r"""<p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败<br>为了和计费区分开，额外开启一个状态位，用于显示。</p>
         :rtype: int
         """
         return self._ClusterStatus
@@ -32000,7 +32028,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def PublicAccessEndpoint(self):
-        r"""公网接入点
+        r"""<p>公网接入点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32012,7 +32040,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def Vpcs(self):
-        r"""VPC 接入点列表
+        r"""<p>VPC 接入点列表</p>
         :rtype: list of VpcEndpointInfo
         """
         return self._Vpcs
@@ -32023,7 +32051,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，毫秒为单位。unix 时间戳
+        r"""<p>创建时间，毫秒为单位。unix 时间戳</p>
         :rtype: int
         """
         return self._CreateTime
@@ -32034,7 +32062,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型，0 托管版、1 Serverless 版
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>0： 托管版实例</li></ul>
         :rtype: int
         """
         return self._InstanceType
@@ -32045,7 +32073,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        r"""隔离时间，毫秒为单位。unix 时间戳
+        r"""<p>隔离时间，毫秒为单位。unix 时间戳</p>
         :rtype: int
         """
         return self._IsolatedTime
@@ -32056,7 +32084,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def EnableDeletionProtection(self):
-        r"""是否已开启删除保护
+        r"""<p>是否已开启删除保护</p>
         :rtype: bool
         """
         return self._EnableDeletionProtection
@@ -32067,7 +32095,7 @@ class RabbitMQVipInstance(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -32075,6 +32103,17 @@ class RabbitMQVipInstance(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def PublicStreamAccessEndpoint(self):
+        r"""<p>公有数据流Stream接入点</p>
+        :rtype: str
+        """
+        return self._PublicStreamAccessEndpoint
+
+    @PublicStreamAccessEndpoint.setter
+    def PublicStreamAccessEndpoint(self, PublicStreamAccessEndpoint):
+        self._PublicStreamAccessEndpoint = PublicStreamAccessEndpoint
 
 
     def _deserialize(self, params):
@@ -32111,6 +32150,7 @@ class RabbitMQVipInstance(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._PublicStreamAccessEndpoint = params.get("PublicStreamAccessEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41464,6 +41504,10 @@ class VpcEndpointInfo(AbstractModel):
         :type VpcTlsEndpoint: str
         :param _VpcErrorMessage: <p>VPC 接入点操作失败的错误信息</p>
         :type VpcErrorMessage: str
+        :param _Id: <p>接入点ID</p>
+        :type Id: str
+        :param _VpcStreamEndpoint: <p>vpc Stream接入点</p>
+        :type VpcStreamEndpoint: str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -41471,6 +41515,8 @@ class VpcEndpointInfo(AbstractModel):
         self._VpcDataStreamEndpointStatus = None
         self._VpcTlsEndpoint = None
         self._VpcErrorMessage = None
+        self._Id = None
+        self._VpcStreamEndpoint = None
 
     @property
     def VpcId(self):
@@ -41538,6 +41584,28 @@ class VpcEndpointInfo(AbstractModel):
     def VpcErrorMessage(self, VpcErrorMessage):
         self._VpcErrorMessage = VpcErrorMessage
 
+    @property
+    def Id(self):
+        r"""<p>接入点ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def VpcStreamEndpoint(self):
+        r"""<p>vpc Stream接入点</p>
+        :rtype: str
+        """
+        return self._VpcStreamEndpoint
+
+    @VpcStreamEndpoint.setter
+    def VpcStreamEndpoint(self, VpcStreamEndpoint):
+        self._VpcStreamEndpoint = VpcStreamEndpoint
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -41546,6 +41614,8 @@ class VpcEndpointInfo(AbstractModel):
         self._VpcDataStreamEndpointStatus = params.get("VpcDataStreamEndpointStatus")
         self._VpcTlsEndpoint = params.get("VpcTlsEndpoint")
         self._VpcErrorMessage = params.get("VpcErrorMessage")
+        self._Id = params.get("Id")
+        self._VpcStreamEndpoint = params.get("VpcStreamEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

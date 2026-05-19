@@ -26529,22 +26529,17 @@ class DescribeProxiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。
+        :param _ClusterId: <p>集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。</p>
         :type ClusterId: str
-        :param _Limit: 返回数量，默认为 20，最大值为 100
+        :param _Limit: <p>返回数量，默认为 20，最大值为 100</p>
         :type Limit: int
-        :param _Offset: 记录偏移量，默认值为0
+        :param _Offset: <p>记录偏移量，默认值为0</p>
         :type Offset: int
-        :param _OrderBy: 排序字段，取值范围：
-<li> CREATETIME：创建时间</li>
-<li> PERIODENDTIME：过期时间</li>
+        :param _OrderBy: <p>排序字段，取值范围：</p><li> CREATETIME：创建时间</li><li> PERIODENDTIME：过期时间</li>
         :type OrderBy: str
-        :param _OrderByType: 排序类型，取值范围：
-<li> ASC：升序排序 </li>
-<li> DESC：降序排序 </li>
+        :param _OrderByType: <p>排序类型，取值范围：</p><li> ASC：升序排序 </li><li> DESC：降序排序 </li>
         :type OrderByType: str
-        :param _Filters: 搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。
-说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。
+        :param _Filters: <p>搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。<br>说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。</p>
         :type Filters: list of QueryParamFilter
         """
         self._ClusterId = None
@@ -26556,7 +26551,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。
+        r"""<p>集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。</p>
         :rtype: str
         """
         return self._ClusterId
@@ -26567,7 +26562,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为 20，最大值为 100
+        r"""<p>返回数量，默认为 20，最大值为 100</p>
         :rtype: int
         """
         return self._Limit
@@ -26578,7 +26573,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""记录偏移量，默认值为0
+        r"""<p>记录偏移量，默认值为0</p>
         :rtype: int
         """
         return self._Offset
@@ -26589,9 +26584,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序字段，取值范围：
-<li> CREATETIME：创建时间</li>
-<li> PERIODENDTIME：过期时间</li>
+        r"""<p>排序字段，取值范围：</p><li> CREATETIME：创建时间</li><li> PERIODENDTIME：过期时间</li>
         :rtype: str
         """
         return self._OrderBy
@@ -26602,9 +26595,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""排序类型，取值范围：
-<li> ASC：升序排序 </li>
-<li> DESC：降序排序 </li>
+        r"""<p>排序类型，取值范围：</p><li> ASC：升序排序 </li><li> DESC：降序排序 </li>
         :rtype: str
         """
         return self._OrderByType
@@ -26615,8 +26606,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。
-说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。
+        r"""<p>搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。<br>说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。</p>
         :rtype: list of QueryParamFilter
         """
         return self._Filters
@@ -26655,24 +26645,27 @@ class DescribeProxiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 数据库代理组数
+        :param _TotalCount: <p>数据库代理组数</p>
         :type TotalCount: int
-        :param _ProxyGroupInfos: 数据库代理组列表
+        :param _ProxyGroupInfos: <p>数据库代理组列表</p>
         :type ProxyGroupInfos: list of ProxyGroupInfo
-        :param _ProxyNodeInfos: 数据库代理节点
+        :param _ProxyNodeInfos: <p>数据库代理节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyNodeInfos: list of ProxyNodeInfo
+        :param _ColumnStoreProxyForward: <p>sql自动转发</p>
+        :type ColumnStoreProxyForward: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._ProxyGroupInfos = None
         self._ProxyNodeInfos = None
+        self._ColumnStoreProxyForward = None
         self._RequestId = None
 
     @property
     def TotalCount(self):
-        r"""数据库代理组数
+        r"""<p>数据库代理组数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -26683,7 +26676,7 @@ class DescribeProxiesResponse(AbstractModel):
 
     @property
     def ProxyGroupInfos(self):
-        r"""数据库代理组列表
+        r"""<p>数据库代理组列表</p>
         :rtype: list of ProxyGroupInfo
         """
         return self._ProxyGroupInfos
@@ -26694,7 +26687,7 @@ class DescribeProxiesResponse(AbstractModel):
 
     @property
     def ProxyNodeInfos(self):
-        r"""数据库代理节点
+        r"""<p>数据库代理节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProxyNodeInfo
         """
@@ -26703,6 +26696,17 @@ class DescribeProxiesResponse(AbstractModel):
     @ProxyNodeInfos.setter
     def ProxyNodeInfos(self, ProxyNodeInfos):
         self._ProxyNodeInfos = ProxyNodeInfos
+
+    @property
+    def ColumnStoreProxyForward(self):
+        r"""<p>sql自动转发</p>
+        :rtype: str
+        """
+        return self._ColumnStoreProxyForward
+
+    @ColumnStoreProxyForward.setter
+    def ColumnStoreProxyForward(self, ColumnStoreProxyForward):
+        self._ColumnStoreProxyForward = ColumnStoreProxyForward
 
     @property
     def RequestId(self):
@@ -26730,6 +26734,7 @@ class DescribeProxiesResponse(AbstractModel):
                 obj = ProxyNodeInfo()
                 obj._deserialize(item)
                 self._ProxyNodeInfos.append(obj)
+        self._ColumnStoreProxyForward = params.get("ColumnStoreProxyForward")
         self._RequestId = params.get("RequestId")
 
 

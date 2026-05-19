@@ -95,6 +95,9 @@ FAILEDOPERATION_GENERATEDEALSANDPAYERROR = 'FailedOperation.GenerateDealsAndPayE
 # 获取环境属性失败。
 FAILEDOPERATION_GETENVIRONMENTATTRIBUTESFAILED = 'FailedOperation.GetEnvironmentAttributesFailed'
 
+# 获取 Tag 失败
+FAILEDOPERATION_GETTAGS = 'FailedOperation.GetTags'
+
 # 获取主题分区数失败。
 FAILEDOPERATION_GETTOPICPARTITIONSFAILED = 'FailedOperation.GetTopicPartitionsFailed'
 

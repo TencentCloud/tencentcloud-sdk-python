@@ -2113,6 +2113,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSkillSecScanResult(
+            self,
+            request: models.DescribeSkillSecScanResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillSecScanResultResponse:
+        """
+        根据文件Hash查询Skill安全检测结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillSecScanResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillSecScanResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSpartaProtectionInfo(
             self,
             request: models.DescribeSpartaProtectionInfoRequest,
@@ -3896,6 +3914,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "UpdateRateLimitV2"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateRateLimitV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UploadSkillSecScan(
+            self,
+            request: models.UploadSkillSecScanRequest,
+            opts: Dict = None,
+    ) -> models.UploadSkillSecScanResponse:
+        """
+        上传Skill ZIP文件，触发异步安全检测
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UploadSkillSecScan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UploadSkillSecScanResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

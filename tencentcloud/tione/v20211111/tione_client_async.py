@@ -1020,6 +1020,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTrainingTaskPodUrl(
+            self,
+            request: models.DescribeTrainingTaskPodUrlRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTrainingTaskPodUrlResponse:
+        """
+        获取单个训练任务实例的登录链接
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTrainingTaskPodUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTrainingTaskPodUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTrainingTaskPods(
             self,
             request: models.DescribeTrainingTaskPodsRequest,
