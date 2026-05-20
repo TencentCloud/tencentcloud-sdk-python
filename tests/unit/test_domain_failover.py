@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-域名切换容灾（Domain Failover）功能的测试脚本。
+Test script for Domain Failover functionality.
 
-本功能为 SDK 内部机制，对用户完全透明。本脚本通过白盒 + 集成两种方式验证：
-  1. 候选域名生成（build_candidates）是否符合规则。
-  2. 异常识别（_classify_exception）对 6 类故障的分类是否准确。
-  3. 主域名故障时是否能按 [主 → .com.cn → .cn] 顺序切换。
-  4. `.intl.` 域名是否严格不切换。
-  5. 自定义 endpoint / IP 是否不受影响。
-  6. 断路器是否在连续失败后跳过坏候选。
+This feature is an internal SDK mechanism, completely transparent to users. This script validates through white-box + integration approaches:
+  1. Whether candidate domain generation (build_candidates) follows the rules.
+  2. Whether exception classification (_classify_exception) accurately categorizes 6 types of failures.
+  3. Whether primary domain failures trigger switching in the order [primary → .com.cn → .cn].
+  4. Whether `.intl.` domains strictly do not switch.
+  5. Whether custom endpoints / IPs are unaffected.
+  6. Whether circuit breakers skip bad candidates after consecutive failures.
 
-运行方式：
+Run method:
     python tests/dns_failure_test/test_domain_failover.py
 """
 from __future__ import print_function
@@ -21,7 +21,7 @@ import sys
 import time
 import traceback
 
-# 强制使用工程根目录下的 SDK，而非系统全局安装的旧版本
+# Force using SDK from project root directory, not globally installed old version
 _PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 if _PROJECT_ROOT not in sys.path:
     sys.path.insert(0, _PROJECT_ROOT)
@@ -37,7 +37,7 @@ from tencentcloud.cvm.v20170312 import cvm_client, models
 
 
 # --------------------------------------------------------------------------- #
-# 1) 白盒：候选域名生成
+# 1) White-box: Candidate domain generation
 # --------------------------------------------------------------------------- #
 
 def test_build_candidates():
@@ -74,7 +74,7 @@ def test_build_candidates():
 
 
 # --------------------------------------------------------------------------- #
-# 2) 白盒：_classify_exception
+# 2) White-box: _classify_exception
 # --------------------------------------------------------------------------- #
 
 def test_classify_exception():
@@ -84,7 +84,7 @@ def test_classify_exception():
     import requests
 
     def _wrap(raw_exc):
-        """模拟网络层包装：TencentCloudSDKException('ClientNetworkError', ...) from e"""
+        """Simulate network layer wrapping: TencentCloudSDKException('ClientNetworkError', ...) from e"""
         try:
             raise raw_exc
         except Exception as e:
@@ -94,8 +94,8 @@ def test_classify_exception():
                 return tce
 
     def _chain(inner, outer_cls):
-        """构造 outer(inner) 的链（outer 捕获 inner 再抛自己），模拟 requests 对
-        底层异常的包装。"""
+        """Construct outer(inner) chain (outer catches inner and throws itself), simulating requests'
+        wrapping of underlying exceptions."""
         try:
             try:
                 raise inner
@@ -128,7 +128,7 @@ def test_classify_exception():
         passed += int(ok)
     print("Summary: %d/%d passed" % (passed, len(cases)))
 
-    # 验证 is_failover_triggered 的口径
+    # Validate is_failover_triggered semantics
     assert is_failover_triggered("DNS_NXDOMAIN") is True
     assert is_failover_triggered("DNS_TIMEOUT") is True
     assert is_failover_triggered("TCP_CONN_REFUSED") is True
@@ -140,8 +140,8 @@ def test_classify_exception():
 
 
 # --------------------------------------------------------------------------- #
-# 3) 集成：触发不同 host 的容灾路径
-#    注：按新的"用户无感知"设计，ClientProfile 不再暴露 domain_failover 配置。
+# 3) Integration: Trigger failover paths for different hosts
+#    Note: According to the new "user-transparent" design, ClientProfile no longer exposes domain_failover configuration.
 # --------------------------------------------------------------------------- #
 
 def make_client(endpoint, req_timeout=3):
@@ -152,15 +152,15 @@ def make_client(endpoint, req_timeout=3):
     http_profile.endpoint = endpoint
     client_profile = ClientProfile()
     client_profile.httpProfile = http_profile
-    client_profile.disable_region_breaker = True   # 避免 region_breaker 干扰
+    client_profile.disable_region_breaker = True   # Avoid region_breaker interference
     return cvm_client.CvmClient(cred, "ap-guangzhou", client_profile)
 
 
 class _GaiPatcher(object):
-    """Patch socket.getaddrinfo：
-    - 落在 resolvable_hosts 中的 host 返回 fake_ip。
-    - 其他 tencentcloudapi host 返回 NXDOMAIN。
-    - 其他 host 走真实解析。
+    """Patch socket.getaddrinfo:
+    - Hosts in resolvable_hosts return fake_ip.
+    - Other tencentcloudapi hosts return NXDOMAIN.
+    - Other hosts use real resolution.
     """
 
     def __init__(self, resolvable_hosts=None, fake_ip=None):
@@ -195,18 +195,18 @@ def run_case(title, fn):
     try:
         fn()
     except Exception as e:
-        print("!!! 用例抛出未捕获的异常: %s: %s" % (type(e).__name__, e))
+        print("!!! Test case threw uncaught exception: %s: %s" % (type(e).__name__, e))
         traceback.print_exc()
-    print("耗时: %.3fs" % (time.time() - t0))
+    print("Time taken: %.3fs" % (time.time() - t0))
 
 
 def case_all_dns_fail():
-    """所有 3 个候选都 DNS 失败：期望按序尝试 [com, com.cn, cn]。"""
+    """All 3 candidates DNS fail: Expected to try in order [com, com.cn, cn]."""
     client = make_client("cvm.tencentcloudapi.com")
     with _GaiPatcher() as p:
         try:
             client.DescribeRegions(models.DescribeRegionsRequest())
-            print("!!! 未抛异常，不符合预期")
+            print("!!! No exception thrown, not as expected")
         except TencentCloudSDKException:
             pass
         print("resolved hosts sequence:")
@@ -220,13 +220,13 @@ def case_all_dns_fail():
             if h not in uniq:
                 uniq.append(h)
         ok = (uniq == expected)
-        print("顺序校验: " + ("OK" if ok else "FAIL, got=%s" % uniq))
+        print("Order validation: " + ("OK" if ok else "FAIL, got=%s" % uniq))
 
 
 def case_primary_fail_backup_tried():
-    """主域名 DNS 失败，第二候选被"解析成功"但连接到 127.0.0.1:443（无服务）→
-    连接被拒 → 切到第三候选 → 再 DNS 失败。
-    目的是验证切换确实发生，而不是一遇到主域名失败就返回。"""
+    """Primary domain DNS fails, second candidate "resolves successfully" but connects to 127.0.0.1:443 (no service) →
+    Connection refused → switch to third candidate → then DNS fails again.
+    Purpose is to verify that switching actually occurs, not returning immediately upon primary domain failure."""
     client = make_client("cvm.tencentcloudapi.com")
     with _GaiPatcher(resolvable_hosts={"cvm.tencentcloudapi.com.cn"},
                      fake_ip="127.0.0.1") as p:
@@ -240,12 +240,12 @@ def case_primary_fail_backup_tried():
         tried = set(p.resolved_log)
         ok_primary = "cvm.tencentcloudapi.com" in tried
         ok_backup = "cvm.tencentcloudapi.com.cn" in tried
-        print("主域名被尝试:   %s" % ok_primary)
-        print("第二候选被尝试: %s" % ok_backup)
+        print("Primary domain attempted:   %s" % ok_primary)
+        print("Second candidate attempted: %s" % ok_backup)
 
 
 def case_intl_no_failover():
-    """intl 域名必须不做切换。"""
+    """intl domains must not switch."""
     client = make_client("cvm.intl.tencentcloudapi.com")
     with _GaiPatcher() as p:
         try:
@@ -255,28 +255,28 @@ def case_intl_no_failover():
         uniq_tried = list(dict.fromkeys(p.resolved_log))
         print("resolved hosts: %s" % uniq_tried)
         ok = (uniq_tried == ["cvm.intl.tencentcloudapi.com"])
-        print("仅尝试主域名（intl 不切换）: " + ("OK" if ok else "FAIL"))
+        print("Only primary domain attempted (intl no switching): " + ("OK" if ok else "FAIL"))
 
 
 def case_custom_endpoint_no_failover():
-    """非 tencentcloudapi 后缀的 endpoint 不切换。"""
+    """Endpoints without tencentcloudapi suffix do not switch."""
     client = make_client("custom.example.invalid")
     try:
         client.DescribeRegions(models.DescribeRegionsRequest())
     except TencentCloudSDKException:
         pass
     breakers = client.domain_failover._breakers
-    print("注册的候选数: %d" % len(breakers))
-    print("候选列表: %s" % list(breakers.keys()))
+    print("Registered candidate count: %d" % len(breakers))
+    print("Candidate list: %s" % list(breakers.keys()))
     ok = (list(breakers.keys()) == ["custom.example.invalid"])
-    print("仅保留单一候选（自定义 endpoint 不切换）: " + ("OK" if ok else "FAIL"))
+    print("Only single candidate retained (custom endpoint no switching): " + ("OK" if ok else "FAIL"))
 
 
 def case_breaker_skips_bad_candidate():
-    """多次失败后，主域名断路器进入 OPEN 状态。"""
+    """After multiple failures, primary domain circuit breaker enters OPEN state."""
     from tencentcloud.common.circuit_breaker import STATE_OPEN
     client = make_client("cvm.tencentcloudapi.com")
-    # 直接修改内部常量的副本阈值，方便快速触发（仅影响当前 client 的断路器）
+    # Directly modify copy of internal constant thresholds for quick triggering (only affects current client's circuit breakers)
     for br_name in ("cvm.tencentcloudapi.com", "cvm.tencentcloudapi.com.cn", "cvm.tencentcloudapi.cn"):
         br = client.domain_failover.get_breaker(br_name)
         br.breaker_setting.max_fail_num = 2
@@ -291,15 +291,15 @@ def case_breaker_skips_bad_candidate():
     primary_breaker = client.domain_failover._breakers.get("cvm.tencentcloudapi.com")
     print("primary breaker state: %s (OPEN=%d)" % (primary_breaker.state, STATE_OPEN))
     ok = primary_breaker.state == STATE_OPEN
-    print("主域名断路器 OPEN: " + ("OK" if ok else "FAIL"))
+    print("Primary domain circuit breaker OPEN: " + ("OK" if ok else "FAIL"))
 
 
 def case_no_profile_exposed():
-    """回归：ClientProfile 不再暴露 domain_failover 相关字段/参数。"""
+    """Regression: ClientProfile no longer exposes domain_failover related fields/parameters."""
     cp = ClientProfile()
     assert not hasattr(cp, "domain_failover_profile"), \
         "ClientProfile should NOT expose domain_failover_profile"
-    # 确保 DomainFailoverProfile 类也不从 client_profile 导出
+    # Ensure DomainFailoverProfile class is also not exported from client_profile
     try:
         from tencentcloud.common.profile import client_profile as cp_mod
         assert not hasattr(cp_mod, "DomainFailoverProfile"), \
@@ -307,8 +307,8 @@ def case_no_profile_exposed():
     except Exception as e:
         print("!!! %s" % e)
         raise
-    print("ClientProfile 未暴露 domain_failover_profile: OK")
-    print("client_profile 模块未导出 DomainFailoverProfile: OK")
+    print("ClientProfile does not expose domain_failover_profile: OK")
+    print("client_profile module does not export DomainFailoverProfile: OK")
 
 
 # --------------------------------------------------------------------------- #
@@ -319,12 +319,12 @@ def main():
     test_build_candidates()
     test_classify_exception()
 
-    run_case("A 全部候选 DNS 失败，观察切换顺序", case_all_dns_fail)
-    run_case("B 主域名失败切到第二候选", case_primary_fail_backup_tried)
-    run_case("C intl 严格不切换", case_intl_no_failover)
-    run_case("D 自定义 endpoint 不切换", case_custom_endpoint_no_failover)
-    run_case("E 断路器会跳过坏候选", case_breaker_skips_bad_candidate)
-    run_case("F Profile 未暴露容灾开关（用户无感知）", case_no_profile_exposed)
+    run_case("A All candidate DNS failures, observe switching order", case_all_dns_fail)
+    run_case("B Primary domain failure switches to second candidate", case_primary_fail_backup_tried)
+    run_case("C intl strictly no switching", case_intl_no_failover)
+    run_case("D Custom endpoint no switching", case_custom_endpoint_no_failover)
+    run_case("E Circuit breaker skips bad candidate", case_breaker_skips_bad_candidate)
+    run_case("F Profile does not expose failover switch (user transparent)", case_no_profile_exposed)
 
 
 if __name__ == "__main__":

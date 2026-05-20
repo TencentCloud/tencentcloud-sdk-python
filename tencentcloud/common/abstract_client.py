@@ -93,7 +93,7 @@ class AbstractClient(object):
                 self.profile.region_breaker_profile = RegionBreakerProfile()
             self.circuit_breaker = CircuitBreaker(self.profile.region_breaker_profile)
 
-        # 域名级容灾管理器（SDK 内部机制，对用户完全透明，.com → .com.cn → .cn）
+        # Domain-level failover manager (SDK internal mechanism, completely transparent to users, .com → .com.cn → .cn)
         self.domain_failover = DomainFailoverManager()
 
         if self.profile.request_client:
@@ -435,7 +435,7 @@ class AbstractClient(object):
         if not self.profile.disable_region_breaker:
             return self._call_with_region_breaker(action, params, options, headers)
 
-        # apigw_endpoint 由用户显式指定，跳过域名切换
+        # apigw_endpoint explicitly specified by user, skip domain switching
         if self.profile.httpProfile.apigw_endpoint:
             req = RequestInternal(self._get_endpoint(options=options),
                                   self.profile.httpProfile.reqMethod,
@@ -450,29 +450,29 @@ class AbstractClient(object):
         return self._call_with_domain_failover(origin_endpoint, action, params, options, headers)
 
     def _call_with_domain_failover(self, origin_endpoint, action, params, options, headers):
-        """按候选域名顺序串行尝试，首次可切换异常即切到下一个候选。
+        """Try sequentially in candidate domain order, switch to next candidate upon first switchable exception.
 
-        每个候选都携带独立的断路器；任何一次成功都会重置对应候选的失败计数。
-        全部候选失败，抛出最后一次的 TencentCloudSDKException（异常链保留）。
+        Each candidate carries independent circuit breaker; any success resets the failure count for that candidate.
+        All candidates fail, throw the last TencentCloudSDKException (exception chain preserved).
         """
         usable = self.domain_failover.iter_available_candidates(origin_endpoint)
         last_err = None
 
         for idx, (cand_host, breaker, generation) in enumerate(usable):
-            # 每个候选都需要重新构造 req 并重新签名（因为 Host 变了，TC3 签名里
-            # `host:` 也要跟着变）。注意 headers 是外部传入的字典，为避免签名残留
-            # 污染下个候选，这里深拷贝一份。
+            # Each candidate needs to reconstruct req and resign (because Host changes, TC3 signature
+            # `host:` also needs to change). Note headers is an external dictionary, to avoid signature residue
+            # polluting the next candidate, deep copy here.
             cand_headers = dict(headers)
             req = RequestInternal(cand_host,
                                   self.profile.httpProfile.reqMethod,
                                   self._requestPath,
                                   header=cand_headers)
             self._build_req_inter(action, params, req, options)
-            # 覆写 Host，确保即便老签名版本 (HmacSHA1/256) 没设 Host 也能生效
+            # Override Host to ensure even old signature versions (HmacSHA1/256) without Host set can work
             req.header["Host"] = cand_host
 
-            # ProxyConnection.request_host 会在请求时作为 setdefault("Host") 的兜底；
-            # 为确保 HTTP 层也看到正确的 Host，这里一并同步（不影响 rootDomain 配置）。
+            # ProxyConnection.request_host will serve as fallback for setdefault("Host") during request;
+            # To ensure HTTP layer also sees correct Host, synchronize here (does not affect rootDomain configuration).
             prev_request_host = self.request.conn.request_host
             self.request.conn.request_host = cand_host
             try:
@@ -482,22 +482,22 @@ class AbstractClient(object):
             except TencentCloudSDKException as e:
                 kind = _classify_exception(e)
                 if is_failover_triggered(kind):
-                    # 触发切换：反馈失败并尝试下一个候选
+                # Trigger switch: report failure and try next candidate
                     breaker.after_requests(generation, False)
                     last_err = e
                     logger.debug(
                         "domain_failover: candidate=%s kind=%s err=%s, try next",
                         cand_host, kind, e)
                     continue
-                # 非网络类异常：不切换，直接抛；不影响断路器计数（避免业务错误污染）
+            # Non-network exceptions: no switch, throw directly; doesn't affect circuit breaker count (avoid business error pollution)
                 raise
             finally:
                 self.request.conn.request_host = prev_request_host
 
-        # 全部候选失败：抛出最后一次的异常（异常链已经通过 `raise ... from e` 保留）
+        # All candidates failed: throw the last exception (exception chain preserved via `raise ... from e`)
         if last_err is not None:
             raise last_err
-        # 理论上走不到这里
+        # Theoretically shouldn't reach here
         raise TencentCloudSDKException("ClientNetworkError", "all failover candidates failed")
 
     def call(self, action, params, options=None, headers=None):

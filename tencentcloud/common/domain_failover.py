@@ -8,17 +8,18 @@
 #
 #    http://www.apache.org/licenses/LICENSE-2.0
 """
-域名级容灾切换模块。
+Domain-level failover switching module.
 
-当 SDK 发起的请求命中 DNS/TCP/TLS 类故障（详见 `tests/dns_failure_test/
-DNS_FAILURE_SDK_EXCEPTION_ANALYSIS.md`）时，本模块按"主域名 → .com.cn →
-.cn"的顺序串行重试，并为每个候选域名维护一个独立的 CircuitBreaker。
+When SDK-initiated requests hit DNS/TCP/TLS class failures (see `tests/dns_failure_test/
+DNS_FAILURE_SDK_EXCEPTION_ANALYSIS.md` for details), this module retries sequentially
+in the order "primary domain → .com.cn → .cn" and maintains an independent CircuitBreaker
+for each candidate domain.
 
-规则：
+Rules:
   - *.tencentcloudapi.com             ->  *.tencentcloudapi.com.cn  ->  *.tencentcloudapi.cn
   - *.{region}.tencentcloudapi.com    ->  *.{region}.tencentcloudapi.com.cn  ->  *.{region}.tencentcloudapi.cn
-  - *.internal.tencentcloudapi.com    ->  按通用规则切换
-  - *.intl.tencentcloudapi.com        ->  不切换（国际站）
+  - *.internal.tencentcloudapi.com    ->  Follow general rules for switching
+  - *.intl.tencentcloudapi.com        ->  No switching (international site)
 """
 import json
 import logging
@@ -35,46 +36,46 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 
 logger = logging.getLogger("tencentcloud_sdk_common")
 
-# 主域名根 → 备份候选根（按优先级排列）
+# Primary domain root → backup candidate roots (in priority order)
 _FAILOVER_SUFFIX_RULES = [
     ("tencentcloudapi.com", ["tencentcloudapi.com.cn", "tencentcloudapi.cn"]),
 ]
 
-# 国际站域名后缀：严格匹配，不做切换
+# International site domain suffix: strict match, no switching
 _INTL_SUFFIX = ".intl.tencentcloudapi.com"
 
 
 class _InternalBreakerSetting(object):
-    """域名容灾用的断路器阈值（完全内部常量，不暴露给用户）。
+    """Circuit breaker thresholds for domain failover (completely internal constants, not exposed to users).
 
-    字段名与 RegionBreakerProfile 保持一致，以便复用已有的 CircuitBreaker 实现。
-    每个候选域名的 CircuitBreaker 持有独立的 setting 实例，避免相互影响。
+    Field names are consistent with RegionBreakerProfile to reuse existing CircuitBreaker implementation.
+    Each candidate domain's CircuitBreaker holds an independent setting instance to avoid mutual interference.
     """
 
     def __init__(self):
         self.max_fail_num = 5
         self.max_fail_percent = 0.75
-        self.window_interval = 60 * 5   # 5 分钟内累计窗口
-        self.timeout = 60               # OPEN 状态 60s 后进入 HALF_OPEN
-        self.max_requests = 5           # HALF_OPEN 下累计 5 次成功后回到 CLOSED
+        self.window_interval = 60 * 5   # Accumulated window within 5 minutes
+        self.timeout = 60               # Enter HALF_OPEN after 60s in OPEN state
+        self.max_requests = 5           # Return to CLOSED after accumulating 5 successes in HALF_OPEN
 
 
 def _classify_exception(exc):
-    """沿 __cause__ / __context__ 链识别原始异常类型，返回可触发域名切换的 kind。
+    """Identify the original exception type along the __cause__ / __context__ chain, return the kind that can trigger domain switching.
 
-    返回值：
-      - "DNS_NXDOMAIN" / "DNS_TIMEOUT"      -> A 类 DNS 故障
-      - "TCP_CONN_REFUSED"                  -> B 类 连接被拒
-      - "TCP_READ_TIMEOUT"                  -> B 类 读超时
-      - "TLS_ERROR"                         -> C 类 证书错误
-      - "JSON_DECODE_ERROR"                 -> C 类 JSON 解析失败（不切换）
-      - None                                -> 非网络类异常（不切换）
+    Return values:
+      - "DNS_NXDOMAIN" / "DNS_TIMEOUT"      -> Class A DNS failure
+      - "TCP_CONN_REFUSED"                  -> Class B connection refused
+      - "TCP_READ_TIMEOUT"                  -> Class B read timeout
+      - "TLS_ERROR"                         -> Class C certificate error
+      - "JSON_DECODE_ERROR"                 -> Class C JSON parsing failure (no switching)
+      - None                                -> Non-network class exception (no switching)
     """
-    # 业务方法层的 JSONDecodeError 包装
+    # JSONDecodeError wrapper at business method level
     if isinstance(exc, TencentCloudSDKException) and exc.get_code() == "JSONDecodeError":
         return "JSON_DECODE_ERROR"
 
-    # 沿异常链找到原始异常
+    # Find the original exception along the exception chain
     raw = None
     if isinstance(exc, TencentCloudSDKException):
         raw = exc.__cause__ or exc.__context__
@@ -83,7 +84,7 @@ def _classify_exception(exc):
     if raw is None:
         return None
 
-    # 走到链末端
+    # Walk to the end of the chain
     root = raw
     seen = set()
     while True:
@@ -93,7 +94,7 @@ def _classify_exception(exc):
         seen.add(id(root))
         root = nxt
 
-    # 延迟导入 requests，避免影响未使用 http 的调用路径
+    # Lazy import requests to avoid affecting call paths not using http
     try:
         import requests
         req_conn_err = requests.exceptions.ConnectionError
@@ -103,35 +104,35 @@ def _classify_exception(exc):
     except ImportError:  # pragma: no cover
         req_conn_err = req_read_timeout = req_connect_timeout = req_ssl_error = ()
 
-    # TLS 错误
+    # TLS error
     if req_ssl_error and isinstance(raw, req_ssl_error):
         return "TLS_ERROR"
     if _ssl is not None and isinstance(root, _ssl.SSLError):
         return "TLS_ERROR"
 
-    # 读超时
+    # Read timeout
     if req_read_timeout and isinstance(raw, req_read_timeout):
         return "TCP_READ_TIMEOUT"
     if isinstance(root, socket.timeout):
         return "TCP_READ_TIMEOUT"
 
-    # 连接超时
+    # Connection timeout
     if req_connect_timeout and isinstance(raw, req_connect_timeout):
         return "TCP_READ_TIMEOUT"
 
-    # 连接被拒（包括 DNS 返回 0.0.0.0 / 被劫持到无服务 IP）
+    # Connection refused (including DNS returning 0.0.0.0 / hijacked to non-service IP)
     if isinstance(root, ConnectionRefusedError):
         return "TCP_CONN_REFUSED"
 
-    # DNS 解析失败
+    # DNS resolution failure
     if isinstance(root, socket.gaierror):
         errno = getattr(root, "errno", None)
-        # EAI_AGAIN = -3 on glibc, 11002 on Windows → 多为 DNS 超时
+        # EAI_AGAIN = -3 on glibc, 11002 on Windows → mostly DNS timeout
         if errno in (socket.EAI_AGAIN, -3, 11002):
             return "DNS_TIMEOUT"
         return "DNS_NXDOMAIN"
 
-    # 其他 ConnectionError（兜底也触发切换，避免漏判）
+    # Other ConnectionError (fallback also triggers switching to avoid missed judgments)
     if req_conn_err and isinstance(raw, req_conn_err):
         return "DNS_NXDOMAIN"
 
@@ -139,34 +140,34 @@ def _classify_exception(exc):
 
 
 def is_failover_triggered(kind):
-    """kind 是否触发域名切换。JSON_DECODE_ERROR 和 None 均不触发。"""
+    """Whether the kind triggers domain switching. JSON_DECODE_ERROR and None do not trigger."""
     return kind in ("DNS_NXDOMAIN", "DNS_TIMEOUT",
                     "TCP_CONN_REFUSED", "TCP_READ_TIMEOUT", "TLS_ERROR")
 
 
 def _split_host_suffix(host):
-    """将 host 按 "tencentcloudapi.com" 等已知后缀拆分为 (prefix, matched_suffix)。
-    若未命中任何受支持后缀则返回 (None, None)。
+    """Split host by known suffixes like "tencentcloudapi.com" into (prefix, matched_suffix).
+    Returns (None, None) if no supported suffix is matched.
     """
     if not host:
         return None, None
     for suffix, _ in _FAILOVER_SUFFIX_RULES:
         if host == suffix or host.endswith("." + suffix):
-            prefix = host[: -len(suffix)]  # 含结尾的 '.'（或空串）
+            prefix = host[: -len(suffix)]  # including the trailing '.' (or empty string)
             return prefix, suffix
     return None, None
 
 
 def build_candidates(host):
-    """根据原始 host 构造候选域名序列，首项始终是 host 自身。
+    """Construct candidate domain sequence based on original host, with the host itself always as the first item.
 
-    若 host 命中 `*.intl.tencentcloudapi.com`，则返回 `[host]`（不切换）。
-    若 host 未命中任何受支持后缀（比如用户自定义 endpoint / ip），也返回 `[host]`。
+    If host matches `*.intl.tencentcloudapi.com`, returns `[host]` (no switching).
+    If host doesn't match any supported suffix (e.g., user-defined endpoint / ip), also returns `[host]`.
     """
     if not host:
         return [host]
 
-    # 国际站不切换
+    # International sites do not switch
     if host == _INTL_SUFFIX.lstrip(".") or host.endswith(_INTL_SUFFIX):
         return [host]
 
@@ -181,15 +182,16 @@ def build_candidates(host):
 
 
 class DomainFailoverManager(object):
-    """按候选域名维度维护断路器的容器。
+    """Container for maintaining circuit breakers by candidate domain dimension.
 
-    生命周期：AbstractClient 持有一个实例；每个候选域名首次出现时动态
-    创建 CircuitBreaker。不同 client 实例间不共享（与现有 region_breaker
-    的作用域一致）。
+    Lifecycle: AbstractClient holds one instance; CircuitBreaker is dynamically created
+    when each candidate domain first appears. Not shared between different client instances
+    (consistent with the scope of existing region_breaker).
 
-    本管理器为 SDK 内部组件，对用户完全透明：不暴露开关、不暴露阈值，
-    始终生效。仅当 host 未命中 `*.tencentcloudapi.com` 族（例如 intl 域名、
-    自定义 endpoint、IP）时等价于"不切换"，此时行为与改造前完全一致。
+    This manager is an internal SDK component, completely transparent to users: no switches exposed,
+    no thresholds exposed, always active. Only when host doesn't match `*.tencentcloudapi.com` family
+    (e.g., intl domains, custom endpoints, IPs) is equivalent to "no switching", with behavior
+    completely consistent with before the modification.
     """
 
     def __init__(self):
@@ -205,11 +207,11 @@ class DomainFailoverManager(object):
             return br
 
     def iter_available_candidates(self, host):
-        """按顺序返回 (candidate_host, breaker, generation)。
+        """Return (candidate_host, breaker, generation) in order.
 
-        - 若断路器为 OPEN，则跳过该候选；若全部 OPEN，则降级为"仍然尝试主域名"
-          以避免流量全部被拒（与现有 region_breaker 行为一致）。
-        - 调用方负责调用 breaker.after_requests(generation, success) 回写结果。
+        - If circuit breaker is OPEN, skip that candidate; if all are OPEN, downgrade to "still try primary domain"
+          to avoid all traffic being rejected (consistent with existing region_breaker behavior).
+        - Caller is responsible for calling breaker.after_requests(generation, success) to write back results.
         """
         candidates = build_candidates(host)
         usable = []
@@ -222,7 +224,7 @@ class DomainFailoverManager(object):
             usable.append((c, br, generation))
 
         if not usable:
-            # 全部断路器都 OPEN，这种情况也要给一次机会，选择主域名
+        # All circuit breakers are OPEN, give one more chance in this case, choose primary domain
             br = self.get_breaker(candidates[0])
             generation, _ = br.before_requests()
             usable.append((candidates[0], br, generation))
