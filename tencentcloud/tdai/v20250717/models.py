@@ -1484,17 +1484,59 @@ class CreateChatCompletionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsHidden: 是否隐藏
+        :param _InputContent: <p>输入内容</p>
+        :type InputContent: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _ChatId: <p>对话窗口ID，空值表示新的会话</p>
+        :type ChatId: str
+        :param _IsHidden: <p>是否隐藏</p>
         :type IsHidden: bool
-        :param _IsChatHidden: 是否隐藏会话
+        :param _IsChatHidden: <p>是否隐藏会话</p>
         :type IsChatHidden: bool
         """
+        self._InputContent = None
+        self._InstanceId = None
+        self._ChatId = None
         self._IsHidden = None
         self._IsChatHidden = None
 
     @property
+    def InputContent(self):
+        r"""<p>输入内容</p>
+        :rtype: str
+        """
+        return self._InputContent
+
+    @InputContent.setter
+    def InputContent(self, InputContent):
+        self._InputContent = InputContent
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ChatId(self):
+        r"""<p>对话窗口ID，空值表示新的会话</p>
+        :rtype: str
+        """
+        return self._ChatId
+
+    @ChatId.setter
+    def ChatId(self, ChatId):
+        self._ChatId = ChatId
+
+    @property
     def IsHidden(self):
-        r"""是否隐藏
+        r"""<p>是否隐藏</p>
         :rtype: bool
         """
         return self._IsHidden
@@ -1505,7 +1547,7 @@ class CreateChatCompletionRequest(AbstractModel):
 
     @property
     def IsChatHidden(self):
-        r"""是否隐藏会话
+        r"""<p>是否隐藏会话</p>
         :rtype: bool
         """
         return self._IsChatHidden
@@ -1516,6 +1558,9 @@ class CreateChatCompletionRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InputContent = params.get("InputContent")
+        self._InstanceId = params.get("InstanceId")
+        self._ChatId = params.get("ChatId")
         self._IsHidden = params.get("IsHidden")
         self._IsChatHidden = params.get("IsChatHidden")
         memeber_set = set(params.keys())

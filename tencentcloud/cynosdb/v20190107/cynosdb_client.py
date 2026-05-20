@@ -141,6 +141,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddLibraDBInstances(self, request):
+        r"""本接口（AddLibraDBInstances）用于集群添加只读分析引擎
+
+        :param request: Request instance for AddLibraDBInstances.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.AddLibraDBInstancesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AddLibraDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddLibraDBInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddLibraDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AssociateSecurityGroups(self, request):
         r"""本接口（AssociateSecurityGroups）用于安全组批量绑定云资源。
 

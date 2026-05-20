@@ -417,6 +417,29 @@ class Ga2Client(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskResult(self, request):
+        r"""查询异步任务结果
+
+        :param request: Request instance for DescribeTaskResult.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.DescribeTaskResultRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.DescribeTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAccelerateAreas(self, request):
         r"""修改加速地域
 

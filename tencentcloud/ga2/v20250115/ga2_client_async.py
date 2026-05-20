@@ -331,6 +331,24 @@ class Ga2Client(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTaskResult(
+            self,
+            request: models.DescribeTaskResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTaskResultResponse:
+        """
+        查询异步任务结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTaskResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTaskResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAccelerateAreas(
             self,
             request: models.ModifyAccelerateAreasRequest,

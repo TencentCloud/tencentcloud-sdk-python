@@ -14442,7 +14442,7 @@ class CreateTopicRequest(AbstractModel):
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         :param _IsSourceFrom: <p>开启记录公网来源ip和服务端接收时间</p>
         :type IsSourceFrom: bool
-        :param _BillingMode: <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul><p>默认值：0</p><p>通过接口调用时默认值为0，通过控制台调用时默认值为1</p>
+        :param _BillingMode: <p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul><p>默认值：0</p>
         :type BillingMode: int
         """
         self._LogsetId = None
@@ -14641,7 +14641,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def BillingMode(self):
-        r"""<p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul><p>默认值：0</p><p>通过接口调用时默认值为0，通过控制台调用时默认值为1</p>
+        r"""<p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._BillingMode
@@ -42579,7 +42579,7 @@ class ModifyTopicRequest(AbstractModel):
         :type Encryption: int
         :param _IsSourceFrom: <p>开启记录公网来源ip和服务端接收时间</p>
         :type IsSourceFrom: bool
-        :param _BillingMode: <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        :param _BillingMode: <p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul><p>默认值：0</p>
         :type BillingMode: int
         """
         self._TopicId = None
@@ -42778,7 +42778,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def BillingMode(self):
-        r"""<p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        r"""<p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._BillingMode
@@ -50204,9 +50204,9 @@ class TopicInfo(AbstractModel):
         :type EffectiveDate: str
         :param _IsSourceFrom: <p>IsSourceFrom 开启记录公网来源ip和服务端接收时间</p>
         :type IsSourceFrom: bool
-        :param _BillingMode: <p>当前计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        :param _BillingMode: <p>当前计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul>
         :type BillingMode: int
-        :param _NewBillingMode: <p>如果有异步任务，任务成功后的新计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        :param _NewBillingMode: <p>如果有异步任务，任务成功后的新计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul>
         :type NewBillingMode: int
         """
         self._LogsetId = None
@@ -50526,7 +50526,7 @@ class TopicInfo(AbstractModel):
 
     @property
     def BillingMode(self):
-        r"""<p>当前计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        r"""<p>当前计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul>
         :rtype: int
         """
         return self._BillingMode
@@ -50537,7 +50537,7 @@ class TopicInfo(AbstractModel):
 
     @property
     def NewBillingMode(self):
-        r"""<p>如果有异步任务，任务成功后的新计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        r"""<p>如果有异步任务，任务成功后的新计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul>
         :rtype: int
         """
         return self._NewBillingMode

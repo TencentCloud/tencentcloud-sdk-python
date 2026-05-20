@@ -29571,6 +29571,115 @@ class DeleteTranscodeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteVoiceRequest(AbstractModel):
+    r"""DeleteVoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色Id</p>
+        :type VoiceId: str
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        """
+        self._VoiceId = None
+        self._ExtParam = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色Id</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVoiceResponse(AbstractModel):
+    r"""DeleteVoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，成功时返回success</p>
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，成功时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，成功时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteWatermarkTemplateRequest(AbstractModel):
     r"""DeleteWatermarkTemplate请求参数结构体
 
@@ -82647,7 +82756,7 @@ class SyncDubbingRequest(AbstractModel):
         :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
         :param _ResourceId: <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
         :type ResourceId: str
-        :param _ExtParam: <p>扩展参数，json字符串</p><p>synExt    Object    语音合成扩展参数<br>    -duration    Float    合成音频时长，单位秒，示例：5.2<br>    -sampleRate    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>    -pitch    Integer    音调，默认0原音色输出，取值[-12, 12]<br>cloneExt    Object    音色克隆扩展参数<br>    -timeRanges    Float[][]    指定克隆音频时间范围，默认[[0, 20]]，示例[[5.2, 10], [45, 59.8]]</p>
+        :param _ExtParam: <p>扩展参数，json字符串</p><p><strong>synExt</strong>    Object    语音合成扩展参数<br>  <strong>duration</strong>    Float    合成音频时长（单位秒），默认不控制时长。示例：5.2<br>  <strong>sampleRate</strong>    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,24000,32000,44100]<br>  <strong>pitch</strong>    Integer    音调，默认0原音色输出，取值[-12, 12]<br><strong>cloneExt</strong>    Object    音色克隆扩展参数<br>  <strong>timeRanges</strong>    Float[][]    指定克隆音频时间范围（单位秒），默认取音频前20s。示例：[[5.2, 10], [45, 59.8]]</p>
         :type ExtParam: str
         """
         self._Text = None
@@ -82762,7 +82871,7 @@ class SyncDubbingRequest(AbstractModel):
 
     @property
     def ExtParam(self):
-        r"""<p>扩展参数，json字符串</p><p>synExt    Object    语音合成扩展参数<br>    -duration    Float    合成音频时长，单位秒，示例：5.2<br>    -sampleRate    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>    -pitch    Integer    音调，默认0原音色输出，取值[-12, 12]<br>cloneExt    Object    音色克隆扩展参数<br>    -timeRanges    Float[][]    指定克隆音频时间范围，默认[[0, 20]]，示例[[5.2, 10], [45, 59.8]]</p>
+        r"""<p>扩展参数，json字符串</p><p><strong>synExt</strong>    Object    语音合成扩展参数<br>  <strong>duration</strong>    Float    合成音频时长（单位秒），默认不控制时长。示例：5.2<br>  <strong>sampleRate</strong>    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,24000,32000,44100]<br>  <strong>pitch</strong>    Integer    音调，默认0原音色输出，取值[-12, 12]<br><strong>cloneExt</strong>    Object    音色克隆扩展参数<br>  <strong>timeRanges</strong>    Float[][]    指定克隆音频时间范围（单位秒），默认取音频前20s。示例：[[5.2, 10], [45, 59.8]]</p>
         :rtype: str
         """
         return self._ExtParam

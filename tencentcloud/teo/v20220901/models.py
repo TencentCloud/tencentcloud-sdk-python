@@ -32879,7 +32879,7 @@ class ExportZoneConfigRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _Types: 导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
+        :param _Types: 导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li><li> AccelerationDomain：表示导出加速域名配置，对应控制台「域名服务-域名管理」和「域名服务-共享 CNAME 管理」。</li><li> Origin：表示导出源站配置，对应控制台「源站配置-源站组」和「源站配置-负载均衡」。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
         :type Types: list of str
         """
         self._ZoneId = None
@@ -32898,7 +32898,7 @@ class ExportZoneConfigRequest(AbstractModel):
 
     @property
     def Types(self):
-        r"""导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
+        r"""导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li><li> AccelerationDomain：表示导出加速域名配置，对应控制台「域名服务-域名管理」和「域名服务-共享 CNAME 管理」。</li><li> Origin：表示导出源站配置，对应控制台「源站配置-源站组」和「源站配置-负载均衡」。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
         :rtype: list of str
         """
         return self._Types
@@ -53476,6 +53476,7 @@ class RuleEngineAction(AbstractModel):
 <li>Shield：源站卸载配置；</li>
 <li>TLSConfig：SSL/TLS 安全；</li>
 <li>ModifyOrigin：修改源站；</li>
+<li> SiteFailover：源站故障转移；</li>
 <li>HTTPUpstreamTimeout：七层回源超时配置；</li>
 <li>HttpResponse：HTTP 应答；</li>
 <li>ErrorPage：自定义错误页面；</li>
@@ -53574,6 +53575,9 @@ class RuleEngineAction(AbstractModel):
         :param _ModifyOriginParameters: 修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyOriginParameters: :class:`tencentcloud.teo.v20220901.models.ModifyOriginParameters`
+        :param _SiteFailoverParameters: 源站故障转移配置参数，当 Name 取值为 SiteFailover 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SiteFailoverParameters: :class:`tencentcloud.teo.v20220901.models.SiteFailoverParameters`
         :param _HTTPUpstreamTimeoutParameters: 七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HTTPUpstreamTimeoutParameters: :class:`tencentcloud.teo.v20220901.models.HTTPUpstreamTimeoutParameters`
@@ -53633,6 +53637,7 @@ class RuleEngineAction(AbstractModel):
         self._ShieldParameters = None
         self._TLSConfigParameters = None
         self._ModifyOriginParameters = None
+        self._SiteFailoverParameters = None
         self._HTTPUpstreamTimeoutParameters = None
         self._HttpResponseParameters = None
         self._ErrorPageParameters = None
@@ -53676,6 +53681,7 @@ class RuleEngineAction(AbstractModel):
 <li>Shield：源站卸载配置；</li>
 <li>TLSConfig：SSL/TLS 安全；</li>
 <li>ModifyOrigin：修改源站；</li>
+<li> SiteFailover：源站故障转移；</li>
 <li>HTTPUpstreamTimeout：七层回源超时配置；</li>
 <li>HttpResponse：HTTP 应答；</li>
 <li>ErrorPage：自定义错误页面；</li>
@@ -54043,6 +54049,18 @@ class RuleEngineAction(AbstractModel):
         self._ModifyOriginParameters = ModifyOriginParameters
 
     @property
+    def SiteFailoverParameters(self):
+        r"""源站故障转移配置参数，当 Name 取值为 SiteFailover 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SiteFailoverParameters`
+        """
+        return self._SiteFailoverParameters
+
+    @SiteFailoverParameters.setter
+    def SiteFailoverParameters(self, SiteFailoverParameters):
+        self._SiteFailoverParameters = SiteFailoverParameters
+
+    @property
     def HTTPUpstreamTimeoutParameters(self):
         r"""七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -54250,6 +54268,9 @@ class RuleEngineAction(AbstractModel):
         if params.get("ModifyOriginParameters") is not None:
             self._ModifyOriginParameters = ModifyOriginParameters()
             self._ModifyOriginParameters._deserialize(params.get("ModifyOriginParameters"))
+        if params.get("SiteFailoverParameters") is not None:
+            self._SiteFailoverParameters = SiteFailoverParameters()
+            self._SiteFailoverParameters._deserialize(params.get("SiteFailoverParameters"))
         if params.get("HTTPUpstreamTimeoutParameters") is not None:
             self._HTTPUpstreamTimeoutParameters = HTTPUpstreamTimeoutParameters()
             self._HTTPUpstreamTimeoutParameters._deserialize(params.get("HTTPUpstreamTimeoutParameters"))
@@ -56567,6 +56588,333 @@ class ShieldParameters(AbstractModel):
 
     def _deserialize(self, params):
         self._ShieldSpaceId = params.get("ShieldSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SiteFailover(AbstractModel):
+    r"""源站故障转移 配置参数内部结构。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 源站故障转移类型。取值有：
+<li>FailoverToHost:回源到指定 IP/域名；</li>
+<li> FailoverToCOS:回源到腾讯云 COS；</li>
+<li>FailoverToS3CompatibleObjectStorage:回源到 S3 兼容；</li>
+<li> FailoverRedirectToURL :重定向至指定 URL；</li>
+<li> FailoverCustomResponsePage:使用自定义响应页面。</li>
+        :type Mode: str
+        :param _Origin: 源站地址，根据 Mode 的取值分为以下情况：
+<li>当 Mode = FailoverToHost 时，该参数请填写 IPV4、IPV6 地址或域名；</li>
+<li>当 Mode = FailoverToCOS 时，该参数请填写 COS 桶的访问域名；</li>
+<li>当 Mode = FailoverToS3CompatibleObjectStorage，该参数请填写 S3 桶的访问域名。</li>
+        :type Origin: str
+        :param _OriginProtocol: 回源协议配置。当 Mode 取值为 FailoverToHost 时该参数必填。取值有：
+<li>http：使用 HTTP 协议；</li>
+<li>https：使用 HTTPS 协议；</li>
+<li>follow：协议跟随。</li>
+        :type OriginProtocol: str
+        :param _HTTPOriginPort: HTTP 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 http 或者 follow 时该参数必填。
+        :type HTTPOriginPort: int
+        :param _HTTPSOriginPort: HTTPS 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 https 或者 follow 时该参数必填。
+        :type HTTPSOriginPort: int
+        :param _UpstreamHostHeader: 回源Host Header 重写配置，
+        :type UpstreamHostHeader: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
+        :param _UpstreamURLRewrite: 回源 URL 重写配置。
+        :type UpstreamURLRewrite: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
+        :param _UpstreamRequestParameters: 回源请求参数配置。
+        :type UpstreamRequestParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
+        :param _UpstreamHTTP2Parameters: HTTP2 回源配置参数。
+        :type UpstreamHTTP2Parameters: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，当源站类型 Mode = FailoverToCOS 或 FailoverToS3CompatibleObjectStorage 时该参数必填，取值有：
+<li>on：使用私有鉴权；</li>
+<li>off：不使用私有鉴权。</li>
+        :type PrivateAccess: str
+        :param _PrivateParameters: 私有鉴权使用参数，该参数仅当 Mode = FailoverToS3CompatibleObjectStorage 且 PrivateAccess = on 时会生效。
+        :type PrivateParameters: :class:`tencentcloud.teo.v20220901.models.OriginPrivateParameters`
+        :param _RedirectURL: 重定向目标 URL。当 Mode 取值为 FailoverRedirectToURL 时该参数必填。
+        :type RedirectURL: str
+        :param _ResponsePageId: 响应页面 ID。当 Mode 取值为 FailoverCustomResponsePage 时该参数必填。
+        :type ResponsePageId: str
+        :param _StatusCode: 响应状态码。当 Mode 取值为 FailoverRedirectToURL 或 FailoverCustomResponsePage 时该参数必填。取值有：
+<li>当 Mode = FailoverRedirectToURL 时，该参数取值为 301、302、303、307、308 之一；</li>
+<li>当 Mode = FailoverCustomResponsePage 时，该参数取值为 400、403、404、405、414、416、451、500、501、502、503、504 之一。</li>
+        :type StatusCode: int
+        """
+        self._Mode = None
+        self._Origin = None
+        self._OriginProtocol = None
+        self._HTTPOriginPort = None
+        self._HTTPSOriginPort = None
+        self._UpstreamHostHeader = None
+        self._UpstreamURLRewrite = None
+        self._UpstreamRequestParameters = None
+        self._UpstreamHTTP2Parameters = None
+        self._PrivateAccess = None
+        self._PrivateParameters = None
+        self._RedirectURL = None
+        self._ResponsePageId = None
+        self._StatusCode = None
+
+    @property
+    def Mode(self):
+        r"""源站故障转移类型。取值有：
+<li>FailoverToHost:回源到指定 IP/域名；</li>
+<li> FailoverToCOS:回源到腾讯云 COS；</li>
+<li>FailoverToS3CompatibleObjectStorage:回源到 S3 兼容；</li>
+<li> FailoverRedirectToURL :重定向至指定 URL；</li>
+<li> FailoverCustomResponsePage:使用自定义响应页面。</li>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Origin(self):
+        r"""源站地址，根据 Mode 的取值分为以下情况：
+<li>当 Mode = FailoverToHost 时，该参数请填写 IPV4、IPV6 地址或域名；</li>
+<li>当 Mode = FailoverToCOS 时，该参数请填写 COS 桶的访问域名；</li>
+<li>当 Mode = FailoverToS3CompatibleObjectStorage，该参数请填写 S3 桶的访问域名。</li>
+        :rtype: str
+        """
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def OriginProtocol(self):
+        r"""回源协议配置。当 Mode 取值为 FailoverToHost 时该参数必填。取值有：
+<li>http：使用 HTTP 协议；</li>
+<li>https：使用 HTTPS 协议；</li>
+<li>follow：协议跟随。</li>
+        :rtype: str
+        """
+        return self._OriginProtocol
+
+    @OriginProtocol.setter
+    def OriginProtocol(self, OriginProtocol):
+        self._OriginProtocol = OriginProtocol
+
+    @property
+    def HTTPOriginPort(self):
+        r"""HTTP 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 http 或者 follow 时该参数必填。
+        :rtype: int
+        """
+        return self._HTTPOriginPort
+
+    @HTTPOriginPort.setter
+    def HTTPOriginPort(self, HTTPOriginPort):
+        self._HTTPOriginPort = HTTPOriginPort
+
+    @property
+    def HTTPSOriginPort(self):
+        r"""HTTPS 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 https 或者 follow 时该参数必填。
+        :rtype: int
+        """
+        return self._HTTPSOriginPort
+
+    @HTTPSOriginPort.setter
+    def HTTPSOriginPort(self, HTTPSOriginPort):
+        self._HTTPSOriginPort = HTTPSOriginPort
+
+    @property
+    def UpstreamHostHeader(self):
+        r"""回源Host Header 重写配置，
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
+        """
+        return self._UpstreamHostHeader
+
+    @UpstreamHostHeader.setter
+    def UpstreamHostHeader(self, UpstreamHostHeader):
+        self._UpstreamHostHeader = UpstreamHostHeader
+
+    @property
+    def UpstreamURLRewrite(self):
+        r"""回源 URL 重写配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
+        """
+        return self._UpstreamURLRewrite
+
+    @UpstreamURLRewrite.setter
+    def UpstreamURLRewrite(self, UpstreamURLRewrite):
+        self._UpstreamURLRewrite = UpstreamURLRewrite
+
+    @property
+    def UpstreamRequestParameters(self):
+        r"""回源请求参数配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
+        """
+        return self._UpstreamRequestParameters
+
+    @UpstreamRequestParameters.setter
+    def UpstreamRequestParameters(self, UpstreamRequestParameters):
+        self._UpstreamRequestParameters = UpstreamRequestParameters
+
+    @property
+    def UpstreamHTTP2Parameters(self):
+        r"""HTTP2 回源配置参数。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        """
+        return self._UpstreamHTTP2Parameters
+
+    @UpstreamHTTP2Parameters.setter
+    def UpstreamHTTP2Parameters(self, UpstreamHTTP2Parameters):
+        self._UpstreamHTTP2Parameters = UpstreamHTTP2Parameters
+
+    @property
+    def PrivateAccess(self):
+        r"""指定是否允许访问私有对象存储源站，当源站类型 Mode = FailoverToCOS 或 FailoverToS3CompatibleObjectStorage 时该参数必填，取值有：
+<li>on：使用私有鉴权；</li>
+<li>off：不使用私有鉴权。</li>
+        :rtype: str
+        """
+        return self._PrivateAccess
+
+    @PrivateAccess.setter
+    def PrivateAccess(self, PrivateAccess):
+        self._PrivateAccess = PrivateAccess
+
+    @property
+    def PrivateParameters(self):
+        r"""私有鉴权使用参数，该参数仅当 Mode = FailoverToS3CompatibleObjectStorage 且 PrivateAccess = on 时会生效。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPrivateParameters`
+        """
+        return self._PrivateParameters
+
+    @PrivateParameters.setter
+    def PrivateParameters(self, PrivateParameters):
+        self._PrivateParameters = PrivateParameters
+
+    @property
+    def RedirectURL(self):
+        r"""重定向目标 URL。当 Mode 取值为 FailoverRedirectToURL 时该参数必填。
+        :rtype: str
+        """
+        return self._RedirectURL
+
+    @RedirectURL.setter
+    def RedirectURL(self, RedirectURL):
+        self._RedirectURL = RedirectURL
+
+    @property
+    def ResponsePageId(self):
+        r"""响应页面 ID。当 Mode 取值为 FailoverCustomResponsePage 时该参数必填。
+        :rtype: str
+        """
+        return self._ResponsePageId
+
+    @ResponsePageId.setter
+    def ResponsePageId(self, ResponsePageId):
+        self._ResponsePageId = ResponsePageId
+
+    @property
+    def StatusCode(self):
+        r"""响应状态码。当 Mode 取值为 FailoverRedirectToURL 或 FailoverCustomResponsePage 时该参数必填。取值有：
+<li>当 Mode = FailoverRedirectToURL 时，该参数取值为 301、302、303、307、308 之一；</li>
+<li>当 Mode = FailoverCustomResponsePage 时，该参数取值为 400、403、404、405、414、416、451、500、501、502、503、504 之一。</li>
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Origin = params.get("Origin")
+        self._OriginProtocol = params.get("OriginProtocol")
+        self._HTTPOriginPort = params.get("HTTPOriginPort")
+        self._HTTPSOriginPort = params.get("HTTPSOriginPort")
+        if params.get("UpstreamHostHeader") is not None:
+            self._UpstreamHostHeader = HostHeaderParameters()
+            self._UpstreamHostHeader._deserialize(params.get("UpstreamHostHeader"))
+        if params.get("UpstreamURLRewrite") is not None:
+            self._UpstreamURLRewrite = UpstreamURLRewriteParameters()
+            self._UpstreamURLRewrite._deserialize(params.get("UpstreamURLRewrite"))
+        if params.get("UpstreamRequestParameters") is not None:
+            self._UpstreamRequestParameters = UpstreamRequestParameters()
+            self._UpstreamRequestParameters._deserialize(params.get("UpstreamRequestParameters"))
+        if params.get("UpstreamHTTP2Parameters") is not None:
+            self._UpstreamHTTP2Parameters = UpstreamHTTP2Parameters()
+            self._UpstreamHTTP2Parameters._deserialize(params.get("UpstreamHTTP2Parameters"))
+        self._PrivateAccess = params.get("PrivateAccess")
+        if params.get("PrivateParameters") is not None:
+            self._PrivateParameters = OriginPrivateParameters()
+            self._PrivateParameters._deserialize(params.get("PrivateParameters"))
+        self._RedirectURL = params.get("RedirectURL")
+        self._ResponsePageId = params.get("ResponsePageId")
+        self._StatusCode = params.get("StatusCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SiteFailoverParameters(AbstractModel):
+    r"""源站故障转移配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SiteFailoverStatusCodes: 源站故障转移条件状态码。当源站返回的响应状态码命中本字段返回时，才会按照SiteFailoverParams执行源站转移。该参数取值为 4xx、5xx 之一。
+        :type SiteFailoverStatusCodes: list of int
+        :param _SiteFailoverParams: 源站故障转移配置参数列表。最小长度为1，最大长度为2。
+        :type SiteFailoverParams: list of SiteFailover
+        """
+        self._SiteFailoverStatusCodes = None
+        self._SiteFailoverParams = None
+
+    @property
+    def SiteFailoverStatusCodes(self):
+        r"""源站故障转移条件状态码。当源站返回的响应状态码命中本字段返回时，才会按照SiteFailoverParams执行源站转移。该参数取值为 4xx、5xx 之一。
+        :rtype: list of int
+        """
+        return self._SiteFailoverStatusCodes
+
+    @SiteFailoverStatusCodes.setter
+    def SiteFailoverStatusCodes(self, SiteFailoverStatusCodes):
+        self._SiteFailoverStatusCodes = SiteFailoverStatusCodes
+
+    @property
+    def SiteFailoverParams(self):
+        r"""源站故障转移配置参数列表。最小长度为1，最大长度为2。
+        :rtype: list of SiteFailover
+        """
+        return self._SiteFailoverParams
+
+    @SiteFailoverParams.setter
+    def SiteFailoverParams(self, SiteFailoverParams):
+        self._SiteFailoverParams = SiteFailoverParams
+
+
+    def _deserialize(self, params):
+        self._SiteFailoverStatusCodes = params.get("SiteFailoverStatusCodes")
+        if params.get("SiteFailoverParams") is not None:
+            self._SiteFailoverParams = []
+            for item in params.get("SiteFailoverParams"):
+                obj = SiteFailover()
+                obj._deserialize(item)
+                self._SiteFailoverParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

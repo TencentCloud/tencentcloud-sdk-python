@@ -3249,7 +3249,7 @@ class SentenceDetail(AbstractModel):
         :param _EmotionalEnergy: <p>情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmotionalEnergy: float
-        :param _SilenceTime: <p>本句与上一句之间的静音时长</p>
+        :param _SilenceTime: <p>本句与上一句之间的静音时长（ms）</p><p>枚举值：</p><ul><li>0： 表示无静音间隔</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SilenceTime: int
         :param _EmotionType: <p>情绪类型（可能为空，有2种情况 1、没有对应资源包；2、情绪跟语音效果相关，如果情绪不够强烈时可能无法识别）</p>
@@ -3401,7 +3401,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def SilenceTime(self):
-        r"""<p>本句与上一句之间的静音时长</p>
+        r"""<p>本句与上一句之间的静音时长（ms）</p><p>枚举值：</p><ul><li>0： 表示无静音间隔</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

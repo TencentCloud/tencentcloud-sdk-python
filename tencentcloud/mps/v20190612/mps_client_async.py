@@ -1425,6 +1425,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteVoice(
+            self,
+            request: models.DeleteVoiceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVoiceResponse:
+        """
+        删除音色（通过音色克隆或设计创建的）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVoiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteWatermarkTemplate(
             self,
             request: models.DeleteWatermarkTemplateRequest,

@@ -1183,6 +1183,470 @@ class AddInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddLibraDBInstancesRequest(AbstractModel):
+    r"""AddLibraDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Cpu: Cpu核数
+        :type Cpu: int
+        :param _Mem: 内存，单位为GB
+        :type Mem: int
+        :param _StorageSize: 磁盘大小
+        :type StorageSize: int
+        :param _PayMode: 付费模式
+        :type PayMode: int
+        :param _Objects: 同步对象列表
+        :type Objects: :class:`tencentcloud.cynosdb.v20190107.models.Objects`
+        :param _Port: 新增RO组时使用的Port，取值范围为[0,65535)
+        :type Port: int
+        :param _GoodsNum: 新增只读实例数，取值范围为(0,15]
+        :type GoodsNum: int
+        :param _InstanceName: 实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，'_','-','.'
+        :type InstanceName: str
+        :param _ReplicasNum: 副本数
+        :type ReplicasNum: int
+        :param _InstanceType: ReplicasNum>1或者ReplicasNum=1且Cpu>=32核的时候取值为'Exclusive'，其余场景取值'Common'
+        :type InstanceType: str
+        :param _StorageType: 磁盘类型
+        :type StorageType: str
+        :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
+        :type AutoVoucher: int
+        :param _OrderSource: 订单来源，字符串长度范围为[0,64)
+        :type OrderSource: str
+        :param _DealMode: 交易模式 0-下单并支付 1-下单
+        :type DealMode: int
+        :param _VpcId: 所属VPC网络ID。
+        :type VpcId: str
+        :param _SubnetId: 所属子网ID，如果设置了VpcId，则SubnetId必填。
+        :type SubnetId: str
+        :param _SecurityGroupIds: 安全组ID，新建只读实例时可以指定安全组。
+        :type SecurityGroupIds: list of str
+        :param _LibraDBVersion: 分析引擎版本
+        :type LibraDBVersion: str
+        :param _TimeSpan: 购买时长,与TimeUnit组合才能生效
+        :type TimeSpan: int
+        :param _TimeUnit: 购买时长单位, 与TimeSpan组合生效，可选:日:d,月:m
+        :type TimeUnit: str
+        :param _SrcInstanceId: 源端实例id
+        :type SrcInstanceId: str
+        """
+        self._Zone = None
+        self._ClusterId = None
+        self._Cpu = None
+        self._Mem = None
+        self._StorageSize = None
+        self._PayMode = None
+        self._Objects = None
+        self._Port = None
+        self._GoodsNum = None
+        self._InstanceName = None
+        self._ReplicasNum = None
+        self._InstanceType = None
+        self._StorageType = None
+        self._AutoVoucher = None
+        self._OrderSource = None
+        self._DealMode = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._SecurityGroupIds = None
+        self._LibraDBVersion = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._SrcInstanceId = None
+
+    @property
+    def Zone(self):
+        r"""可用区
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Cpu(self):
+        r"""Cpu核数
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        r"""内存，单位为GB
+        :rtype: int
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def StorageSize(self):
+        r"""磁盘大小
+        :rtype: int
+        """
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
+    def PayMode(self):
+        r"""付费模式
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Objects(self):
+        r"""同步对象列表
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.Objects`
+        """
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def Port(self):
+        r"""新增RO组时使用的Port，取值范围为[0,65535)
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def GoodsNum(self):
+        r"""新增只读实例数，取值范围为(0,15]
+        :rtype: int
+        """
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def InstanceName(self):
+        r"""实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，'_','-','.'
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ReplicasNum(self):
+        r"""副本数
+        :rtype: int
+        """
+        return self._ReplicasNum
+
+    @ReplicasNum.setter
+    def ReplicasNum(self, ReplicasNum):
+        self._ReplicasNum = ReplicasNum
+
+    @property
+    def InstanceType(self):
+        r"""ReplicasNum>1或者ReplicasNum=1且Cpu>=32核的时候取值为'Exclusive'，其余场景取值'Common'
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def StorageType(self):
+        r"""磁盘类型
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def AutoVoucher(self):
+        r"""是否自动选择代金券 1是 0否 默认为0
+        :rtype: int
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def OrderSource(self):
+        r"""订单来源，字符串长度范围为[0,64)
+        :rtype: str
+        """
+        return self._OrderSource
+
+    @OrderSource.setter
+    def OrderSource(self, OrderSource):
+        self._OrderSource = OrderSource
+
+    @property
+    def DealMode(self):
+        r"""交易模式 0-下单并支付 1-下单
+        :rtype: int
+        """
+        return self._DealMode
+
+    @DealMode.setter
+    def DealMode(self, DealMode):
+        self._DealMode = DealMode
+
+    @property
+    def VpcId(self):
+        r"""所属VPC网络ID。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""所属子网ID，如果设置了VpcId，则SubnetId必填。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SecurityGroupIds(self):
+        r"""安全组ID，新建只读实例时可以指定安全组。
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def LibraDBVersion(self):
+        r"""分析引擎版本
+        :rtype: str
+        """
+        return self._LibraDBVersion
+
+    @LibraDBVersion.setter
+    def LibraDBVersion(self, LibraDBVersion):
+        self._LibraDBVersion = LibraDBVersion
+
+    @property
+    def TimeSpan(self):
+        r"""购买时长,与TimeUnit组合才能生效
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""购买时长单位, 与TimeSpan组合生效，可选:日:d,月:m
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def SrcInstanceId(self):
+        r"""源端实例id
+        :rtype: str
+        """
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._ClusterId = params.get("ClusterId")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._StorageSize = params.get("StorageSize")
+        self._PayMode = params.get("PayMode")
+        if params.get("Objects") is not None:
+            self._Objects = Objects()
+            self._Objects._deserialize(params.get("Objects"))
+        self._Port = params.get("Port")
+        self._GoodsNum = params.get("GoodsNum")
+        self._InstanceName = params.get("InstanceName")
+        self._ReplicasNum = params.get("ReplicasNum")
+        self._InstanceType = params.get("InstanceType")
+        self._StorageType = params.get("StorageType")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._OrderSource = params.get("OrderSource")
+        self._DealMode = params.get("DealMode")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._LibraDBVersion = params.get("LibraDBVersion")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddLibraDBInstancesResponse(AbstractModel):
+    r"""AddLibraDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealIds: 大订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealIds: list of str
+        :param _TranId: 冻结流水，一次开通一个冻结流水。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param _DealNames: 后付费订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param _ResourceIds: 发货资源id列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BigDealIds = None
+        self._TranId = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._RequestId = None
+
+    @property
+    def BigDealIds(self):
+        r"""大订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def TranId(self):
+        r"""冻结流水，一次开通一个冻结流水。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def DealNames(self):
+        r"""后付费订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        r"""发货资源id列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigDealIds = params.get("BigDealIds")
+        self._TranId = params.get("TranId")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._RequestId = params.get("RequestId")
+
+
 class Addr(AbstractModel):
     r"""数据库地址
 
@@ -7769,7 +8233,7 @@ class CreateClustersRequest(AbstractModel):
         :type Cpu: int
         :param _Memory: <p>当DbMode为NORMAL或不填时必选<br>普通实例内存,单位GB</p>
         :type Memory: int
-        :param _InstanceCount: <p>实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos</p>
+        :param _InstanceCount: <p>实例数量</p><p>取值范围：[1, 16]</p><p>默认值：2</p><ul><li>取值为2，表示一个 rw 实例 + 一个 ro 实例。</li><li>传递的 n 表示1个 rw 实例 + n-1个 ro 实例（规格相同）。</li><li>如需要更精确的集群组成搭配，请使用 InstanceInitInfos。</li><li>此参数设置的数值适用于预置资源集群，如需设置 Serverless 集群的实例规格及数量，请使用 InstanceInitInfos.N 中的 InstanceInitInfo 结构。</li></ul>
         :type InstanceCount: int
         :param _Storage: <p>该参数无实际意义，已废弃。<br>存储大小，单位GB。</p>
         :type Storage: int
@@ -7843,6 +8307,8 @@ class CreateClustersRequest(AbstractModel):
         :type AutoArchive: str
         :param _AutoArchiveDelayHours: <p>暂停后的归档处理时间</p><p>单位：时</p><p>默认值：12</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
         :type AutoArchiveDelayHours: int
+        :param _ClusterLevel: <p>集群级别，可空。例如 P0, P1。（可忽略该字段）</p>
+        :type ClusterLevel: str
         :param _CynosVersion: <p>内核小版本号</p>
         :type CynosVersion: str
         """
@@ -7891,6 +8357,7 @@ class CreateClustersRequest(AbstractModel):
         self._ProxyConfig = None
         self._AutoArchive = None
         self._AutoArchiveDelayHours = None
+        self._ClusterLevel = None
         self._CynosVersion = None
 
     @property
@@ -7983,7 +8450,7 @@ class CreateClustersRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
-        r"""<p>实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos</p>
+        r"""<p>实例数量</p><p>取值范围：[1, 16]</p><p>默认值：2</p><ul><li>取值为2，表示一个 rw 实例 + 一个 ro 实例。</li><li>传递的 n 表示1个 rw 实例 + n-1个 ro 实例（规格相同）。</li><li>如需要更精确的集群组成搭配，请使用 InstanceInitInfos。</li><li>此参数设置的数值适用于预置资源集群，如需设置 Serverless 集群的实例规格及数量，请使用 InstanceInitInfos.N 中的 InstanceInitInfo 结构。</li></ul>
         :rtype: int
         """
         return self._InstanceCount
@@ -8389,6 +8856,17 @@ class CreateClustersRequest(AbstractModel):
         self._AutoArchiveDelayHours = AutoArchiveDelayHours
 
     @property
+    def ClusterLevel(self):
+        r"""<p>集群级别，可空。例如 P0, P1。（可忽略该字段）</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
+    @property
     def CynosVersion(self):
         r"""<p>内核小版本号</p>
         :rtype: str
@@ -8463,6 +8941,7 @@ class CreateClustersRequest(AbstractModel):
             self._ProxyConfig._deserialize(params.get("ProxyConfig"))
         self._AutoArchive = params.get("AutoArchive")
         self._AutoArchiveDelayHours = params.get("AutoArchiveDelayHours")
+        self._ClusterLevel = params.get("ClusterLevel")
         self._CynosVersion = params.get("CynosVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -44249,6 +44728,46 @@ class ObjectTask(AbstractModel):
         self._TaskStatus = params.get("TaskStatus")
         self._ObjectId = params.get("ObjectId")
         self._ObjectType = params.get("ObjectType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Objects(AbstractModel):
+    r"""同步对象列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseTables: 包含数据库表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseTables: :class:`tencentcloud.cynosdb.v20190107.models.MigrateObject`
+        """
+        self._DatabaseTables = None
+
+    @property
+    def DatabaseTables(self):
+        r"""包含数据库表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.MigrateObject`
+        """
+        return self._DatabaseTables
+
+    @DatabaseTables.setter
+    def DatabaseTables(self, DatabaseTables):
+        self._DatabaseTables = DatabaseTables
+
+
+    def _deserialize(self, params):
+        if params.get("DatabaseTables") is not None:
+            self._DatabaseTables = MigrateObject()
+            self._DatabaseTables._deserialize(params.get("DatabaseTables"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

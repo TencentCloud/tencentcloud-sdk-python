@@ -2524,19 +2524,19 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。TDSQL MySQL数据库类型，实例ID应填写为“实例ID&amp;分片ID”的格式。</p>
         :type InstanceId: str
-        :param _StartTime: 开始时间，如“2020-11-08T14:00:00+08:00”。
+        :param _StartTime: <p>开始时间，如“2020-11-08T14:00:00+08:00”。</p>
         :type StartTime: str
-        :param _EndTime: 结束时间，如“2020-11-09T14:00:00+08:00”。
+        :param _EndTime: <p>结束时间，如“2020-11-09T14:00:00+08:00”。</p>
         :type EndTime: str
-        :param _SendMailFlag: 是否发送邮件: 0 - 否，1 - 是。
+        :param _SendMailFlag: <p>是否发送邮件: 0 - 否，1 - 是。</p>
         :type SendMailFlag: int
-        :param _ContactPerson: 接收邮件的联系人ID数组。
+        :param _ContactPerson: <p>接收邮件的联系人ID数组。</p>
         :type ContactPerson: list of int
-        :param _ContactGroup: 接收邮件的联系组ID数组。
+        :param _ContactGroup: <p>接收邮件的联系组ID数组。</p>
         :type ContactGroup: list of int
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
+        :param _Product: <p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;mariadb&quot; - 云数据库 MariaDB，&quot;dcdb&quot; - 云数据库 TDSQL MySQL，默认为&quot;mysql&quot;。</p>
         :type Product: str
         """
         self._InstanceId = None
@@ -2549,7 +2549,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。TDSQL MySQL数据库类型，实例ID应填写为“实例ID&amp;分片ID”的格式。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2560,7 +2560,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间，如“2020-11-08T14:00:00+08:00”。
+        r"""<p>开始时间，如“2020-11-08T14:00:00+08:00”。</p>
         :rtype: str
         """
         return self._StartTime
@@ -2571,7 +2571,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，如“2020-11-09T14:00:00+08:00”。
+        r"""<p>结束时间，如“2020-11-09T14:00:00+08:00”。</p>
         :rtype: str
         """
         return self._EndTime
@@ -2582,7 +2582,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def SendMailFlag(self):
-        r"""是否发送邮件: 0 - 否，1 - 是。
+        r"""<p>是否发送邮件: 0 - 否，1 - 是。</p>
         :rtype: int
         """
         return self._SendMailFlag
@@ -2593,7 +2593,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def ContactPerson(self):
-        r"""接收邮件的联系人ID数组。
+        r"""<p>接收邮件的联系人ID数组。</p>
         :rtype: list of int
         """
         return self._ContactPerson
@@ -2604,7 +2604,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def ContactGroup(self):
-        r"""接收邮件的联系组ID数组。
+        r"""<p>接收邮件的联系组ID数组。</p>
         :rtype: list of int
         """
         return self._ContactGroup
@@ -2615,7 +2615,7 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
+        r"""<p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;mariadb&quot; - 云数据库 MariaDB，&quot;dcdb&quot; - 云数据库 TDSQL MySQL，默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -2650,7 +2650,7 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        :param _AsyncRequestId: <p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :type AsyncRequestId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2660,7 +2660,7 @@ class CreateDBDiagReportTaskResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        r"""<p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :rtype: int
         """
         return self._AsyncRequestId
@@ -13619,13 +13619,13 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _SqlText: SQL语句。
+        :param _SqlText: <p>SQL语句。</p>
         :type SqlText: str
-        :param _Schema: 库名。
+        :param _Schema: <p>库名。</p>
         :type Schema: str
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+        :param _Product: <p>服务产品类型，支持值&quot;dcdb&quot; - 云数据库TDSQL MySQL；&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL；&quot;dbbrain-mysql&quot; - 自建 MySQL，默认为&quot;mysql&quot;。</p>
         :type Product: str
         """
         self._InstanceId = None
@@ -13635,7 +13635,7 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13646,7 +13646,7 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def SqlText(self):
-        r"""SQL语句。
+        r"""<p>SQL语句。</p>
         :rtype: str
         """
         return self._SqlText
@@ -13657,7 +13657,7 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def Schema(self):
-        r"""库名。
+        r"""<p>库名。</p>
         :rtype: str
         """
         return self._Schema
@@ -13668,7 +13668,7 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+        r"""<p>服务产品类型，支持值&quot;dcdb&quot; - 云数据库TDSQL MySQL；&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL；&quot;dbbrain-mysql&quot; - 自建 MySQL，默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -13700,19 +13700,19 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Advices: SQL优化建议，可解析为JSON数组，无需优化时输出为空。
+        :param _Advices: <p>SQL优化建议，可解析为JSON数组，无需优化时输出为空。</p>
         :type Advices: str
-        :param _Comments: SQL优化建议备注，可解析为String数组，无需优化时输出为空。
+        :param _Comments: <p>SQL优化建议备注，可解析为String数组，无需优化时输出为空。</p>
         :type Comments: str
-        :param _SqlText: SQL语句。
+        :param _SqlText: <p>SQL语句。</p>
         :type SqlText: str
-        :param _Schema: 库名。
+        :param _Schema: <p>库名。</p>
         :type Schema: str
-        :param _Tables: 相关表的DDL信息，可解析为JSON数组。
+        :param _Tables: <p>相关表的DDL信息，可解析为JSON数组。</p>
         :type Tables: str
-        :param _SqlPlan: SQL执行计划，可解析为JSON，无需优化时输出为空。
+        :param _SqlPlan: <p>SQL执行计划，可解析为JSON，无需优化时输出为空。</p>
         :type SqlPlan: str
-        :param _Cost: SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
+        :param _Cost: <p>SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。</p>
         :type Cost: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13728,7 +13728,7 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Advices(self):
-        r"""SQL优化建议，可解析为JSON数组，无需优化时输出为空。
+        r"""<p>SQL优化建议，可解析为JSON数组，无需优化时输出为空。</p>
         :rtype: str
         """
         return self._Advices
@@ -13739,7 +13739,7 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Comments(self):
-        r"""SQL优化建议备注，可解析为String数组，无需优化时输出为空。
+        r"""<p>SQL优化建议备注，可解析为String数组，无需优化时输出为空。</p>
         :rtype: str
         """
         return self._Comments
@@ -13750,7 +13750,7 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def SqlText(self):
-        r"""SQL语句。
+        r"""<p>SQL语句。</p>
         :rtype: str
         """
         return self._SqlText
@@ -13761,7 +13761,7 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Schema(self):
-        r"""库名。
+        r"""<p>库名。</p>
         :rtype: str
         """
         return self._Schema
@@ -13772,7 +13772,7 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Tables(self):
-        r"""相关表的DDL信息，可解析为JSON数组。
+        r"""<p>相关表的DDL信息，可解析为JSON数组。</p>
         :rtype: str
         """
         return self._Tables
@@ -13783,7 +13783,7 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def SqlPlan(self):
-        r"""SQL执行计划，可解析为JSON，无需优化时输出为空。
+        r"""<p>SQL执行计划，可解析为JSON，无需优化时输出为空。</p>
         :rtype: str
         """
         return self._SqlPlan
@@ -13794,7 +13794,7 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Cost(self):
-        r"""SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
+        r"""<p>SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。</p>
         :rtype: str
         """
         return self._Cost

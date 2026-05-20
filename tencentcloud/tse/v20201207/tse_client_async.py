@@ -25,6 +25,42 @@ class TseClient(AbstractClient):
     _endpoint = 'tse.tencentcloudapi.com'
     _service = 'tse'
 
+    async def AddCloudNativeAPIGatewayConsumerGroupAuth(
+            self,
+            request: models.AddCloudNativeAPIGatewayConsumerGroupAuthRequest,
+            opts: Dict = None,
+    ) -> models.AddCloudNativeAPIGatewayConsumerGroupAuthResponse:
+        """
+        添加消费者组授权
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddCloudNativeAPIGatewayConsumerGroupAuth"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddCloudNativeAPIGatewayConsumerGroupAuthResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddCloudNativeAPIGatewayConsumerInGroup(
+            self,
+            request: models.AddCloudNativeAPIGatewayConsumerInGroupRequest,
+            opts: Dict = None,
+    ) -> models.AddCloudNativeAPIGatewayConsumerInGroupResponse:
+        """
+        将消费者添加到指定的消费者组中
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddCloudNativeAPIGatewayConsumerInGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddCloudNativeAPIGatewayConsumerInGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindAutoScalerResourceStrategyToGroups(
             self,
             request: models.BindAutoScalerResourceStrategyToGroupsRequest,
@@ -133,6 +169,78 @@ class TseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCloudNativeAPIGatewayConsumer(
+            self,
+            request: models.CreateCloudNativeAPIGatewayConsumerRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudNativeAPIGatewayConsumerResponse:
+        """
+        创建云原生网关的消费者，支持多种密钥生成方式
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudNativeAPIGatewayConsumer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudNativeAPIGatewayConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCloudNativeAPIGatewayConsumerGroup(
+            self,
+            request: models.CreateCloudNativeAPIGatewayConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudNativeAPIGatewayConsumerGroupResponse:
+        """
+        创建云原生网关的消费者组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudNativeAPIGatewayConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudNativeAPIGatewayConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCloudNativeAPIGatewayLLMModelAPI(
+            self,
+            request: models.CreateCloudNativeAPIGatewayLLMModelAPIRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudNativeAPIGatewayLLMModelAPIResponse:
+        """
+        创建AI网关模型 API
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudNativeAPIGatewayLLMModelAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudNativeAPIGatewayLLMModelAPIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCloudNativeAPIGatewayLLMModelService(
+            self,
+            request: models.CreateCloudNativeAPIGatewayLLMModelServiceRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudNativeAPIGatewayLLMModelServiceResponse:
+        """
+        创建 LLM 模型服务。同一网关下 Name 唯一。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudNativeAPIGatewayLLMModelService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudNativeAPIGatewayLLMModelServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCloudNativeAPIGatewayPublicNetwork(
             self,
             request: models.CreateCloudNativeAPIGatewayPublicNetworkRequest,
@@ -182,6 +290,24 @@ class TseClient(AbstractClient):
         kwargs["action"] = "CreateCloudNativeAPIGatewayRouteRateLimit"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateCloudNativeAPIGatewayRouteRateLimitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCloudNativeAPIGatewaySecretKey(
+            self,
+            request: models.CreateCloudNativeAPIGatewaySecretKeyRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudNativeAPIGatewaySecretKeyResponse:
+        """
+        创建云原生网关密钥
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudNativeAPIGatewaySecretKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudNativeAPIGatewaySecretKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -565,6 +691,42 @@ class TseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCloudNativeAPIGatewayConsumer(
+            self,
+            request: models.DeleteCloudNativeAPIGatewayConsumerRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudNativeAPIGatewayConsumerResponse:
+        """
+        删除指定的云原生网关消费者
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudNativeAPIGatewayConsumer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudNativeAPIGatewayConsumerGroup(
+            self,
+            request: models.DeleteCloudNativeAPIGatewayConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudNativeAPIGatewayConsumerGroupResponse:
+        """
+        删除云原生网关消费者组的信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudNativeAPIGatewayConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCloudNativeAPIGatewayIPRestriction(
             self,
             request: models.DeleteCloudNativeAPIGatewayIPRestrictionRequest,
@@ -578,6 +740,42 @@ class TseClient(AbstractClient):
         kwargs["action"] = "DeleteCloudNativeAPIGatewayIPRestriction"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayIPRestrictionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudNativeAPIGatewayLLMModelAPI(
+            self,
+            request: models.DeleteCloudNativeAPIGatewayLLMModelAPIRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudNativeAPIGatewayLLMModelAPIResponse:
+        """
+        删除 LLM 模型 API 信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudNativeAPIGatewayLLMModelAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayLLMModelAPIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudNativeAPIGatewayLLMModelService(
+            self,
+            request: models.DeleteCloudNativeAPIGatewayLLMModelServiceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudNativeAPIGatewayLLMModelServiceResponse:
+        """
+        删除 LLM 模型服务信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudNativeAPIGatewayLLMModelService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayLLMModelServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -632,6 +830,24 @@ class TseClient(AbstractClient):
         kwargs["action"] = "DeleteCloudNativeAPIGatewayRouteRateLimit"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayRouteRateLimitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudNativeAPIGatewaySecretKey(
+            self,
+            request: models.DeleteCloudNativeAPIGatewaySecretKeyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudNativeAPIGatewaySecretKeyResponse:
+        """
+        删除云原生网关密钥
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudNativeAPIGatewaySecretKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewaySecretKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1069,6 +1285,78 @@ class TseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudNativeAPIGatewayConsumer(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayConsumerRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayConsumerResponse:
+        """
+        查询指定的云原生网关消费者
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayConsumer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayConsumerGroup(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayConsumerGroupResponse:
+        """
+        查看云原生网关消费者组的信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayConsumerGroupList(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayConsumerGroupListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayConsumerGroupListResponse:
+        """
+        获取消费者组列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayConsumerGroupList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayConsumerGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayConsumerList(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayConsumerListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayConsumerListResponse:
+        """
+        查询云原生网关消费者列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayConsumerList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayConsumerListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudNativeAPIGatewayIPRestriction(
             self,
             request: models.DescribeCloudNativeAPIGatewayIPRestrictionRequest,
@@ -1100,6 +1388,78 @@ class TseClient(AbstractClient):
         kwargs["action"] = "DescribeCloudNativeAPIGatewayInfoByIp"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayInfoByIpResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayLLMModelAPI(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayLLMModelAPIRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayLLMModelAPIResponse:
+        """
+        查询单个 LLM 模型 API 信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayLLMModelAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayLLMModelAPIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayLLMModelAPIs(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayLLMModelAPIsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayLLMModelAPIsResponse:
+        """
+        查询 LLM 模型 API 列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayLLMModelAPIs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayLLMModelAPIsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayLLMModelService(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayLLMModelServiceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayLLMModelServiceResponse:
+        """
+        查询单个 LLM 模型服务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayLLMModelService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayLLMModelServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayLLMModelServices(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayLLMModelServicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayLLMModelServicesResponse:
+        """
+        查询 LLM 模型服务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayLLMModelServices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayLLMModelServicesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1172,6 +1532,60 @@ class TseClient(AbstractClient):
         kwargs["action"] = "DescribeCloudNativeAPIGatewayRoutes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayRoutesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewaySecretKey(
+            self,
+            request: models.DescribeCloudNativeAPIGatewaySecretKeyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewaySecretKeyResponse:
+        """
+        查询密钥详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewaySecretKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewaySecretKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewaySecretKeyList(
+            self,
+            request: models.DescribeCloudNativeAPIGatewaySecretKeyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewaySecretKeyListResponse:
+        """
+        获取密钥列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewaySecretKeyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewaySecretKeyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewaySecretKeyValue(
+            self,
+            request: models.DescribeCloudNativeAPIGatewaySecretKeyValueRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewaySecretKeyValueResponse:
+        """
+        查询密钥值
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewaySecretKeyValue"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewaySecretKeyValueResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1879,6 +2293,78 @@ class TseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyCloudNativeAPIGatewayConsumer(
+            self,
+            request: models.ModifyCloudNativeAPIGatewayConsumerRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudNativeAPIGatewayConsumerResponse:
+        """
+        修改云原生网关消费者的信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudNativeAPIGatewayConsumer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewayConsumerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCloudNativeAPIGatewayConsumerGroup(
+            self,
+            request: models.ModifyCloudNativeAPIGatewayConsumerGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudNativeAPIGatewayConsumerGroupResponse:
+        """
+        修改云原生网关消费者组的信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudNativeAPIGatewayConsumerGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewayConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCloudNativeAPIGatewayLLMModelAPI(
+            self,
+            request: models.ModifyCloudNativeAPIGatewayLLMModelAPIRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudNativeAPIGatewayLLMModelAPIResponse:
+        """
+        修改 LLM 模型 API 信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudNativeAPIGatewayLLMModelAPI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewayLLMModelAPIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCloudNativeAPIGatewayLLMModelService(
+            self,
+            request: models.ModifyCloudNativeAPIGatewayLLMModelServiceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudNativeAPIGatewayLLMModelServiceResponse:
+        """
+        修改 LLM 模型服务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudNativeAPIGatewayLLMModelService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewayLLMModelServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyCloudNativeAPIGatewayRoute(
             self,
             request: models.ModifyCloudNativeAPIGatewayRouteRequest,
@@ -1910,6 +2396,24 @@ class TseClient(AbstractClient):
         kwargs["action"] = "ModifyCloudNativeAPIGatewayRouteRateLimit"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewayRouteRateLimitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCloudNativeAPIGatewaySecretKeyStatus(
+            self,
+            request: models.ModifyCloudNativeAPIGatewaySecretKeyStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudNativeAPIGatewaySecretKeyStatusResponse:
+        """
+        修改密钥状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudNativeAPIGatewaySecretKeyStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewaySecretKeyStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2216,6 +2720,42 @@ class TseClient(AbstractClient):
         kwargs["action"] = "PublishConfigFiles"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.PublishConfigFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveCloudNativeAPIGatewayConsumerGroupAuth(
+            self,
+            request: models.RemoveCloudNativeAPIGatewayConsumerGroupAuthRequest,
+            opts: Dict = None,
+    ) -> models.RemoveCloudNativeAPIGatewayConsumerGroupAuthResponse:
+        """
+        云原生网关移除消费者组授权
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveCloudNativeAPIGatewayConsumerGroupAuth"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveCloudNativeAPIGatewayConsumerGroupAuthResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveCloudNativeAPIGatewayConsumerInGroup(
+            self,
+            request: models.RemoveCloudNativeAPIGatewayConsumerInGroupRequest,
+            opts: Dict = None,
+    ) -> models.RemoveCloudNativeAPIGatewayConsumerInGroupResponse:
+        """
+        从指定的消费者组中移除消费者
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveCloudNativeAPIGatewayConsumerInGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveCloudNativeAPIGatewayConsumerInGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

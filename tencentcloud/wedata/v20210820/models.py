@@ -21581,12 +21581,16 @@ class DataSourceInfoPage(AbstractModel):
         :param _TotalPageNumber: 总分页页码
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalPageNumber: int
+        :param _SnapshotId: 快照Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotId: str
         """
         self._PageNumber = None
         self._PageSize = None
         self._Rows = None
         self._TotalCount = None
         self._TotalPageNumber = None
+        self._SnapshotId = None
 
     @property
     def PageNumber(self):
@@ -21648,6 +21652,18 @@ class DataSourceInfoPage(AbstractModel):
     def TotalPageNumber(self, TotalPageNumber):
         self._TotalPageNumber = TotalPageNumber
 
+    @property
+    def SnapshotId(self):
+        r"""快照Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
@@ -21660,6 +21676,7 @@ class DataSourceInfoPage(AbstractModel):
                 self._Rows.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._TotalPageNumber = params.get("TotalPageNumber")
+        self._SnapshotId = params.get("SnapshotId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30130,13 +30147,13 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNumber: 页码
+        :param _PageNumber: <p>页码</p>
         :type PageNumber: int
-        :param _PageSize: 返回数量
+        :param _PageSize: <p>返回数量</p>
         :type PageSize: int
-        :param _OrderFields: 排序配置
+        :param _OrderFields: <p>排序配置</p>
         :type OrderFields: list of OrderField
-        :param _Filters: 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+        :param _Filters: <p>可选过滤条件，Filter可选配置(参考): &quot;Name&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;数据源名称&quot; }, &quot;Type&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;类型&quot; }, &quot;ClusterId&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;集群id&quot; }, &quot;CategoryId&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;分类，项目或空间id&quot; }</p>
         :type Filters: list of Filter
         """
         self._PageNumber = None
@@ -30146,7 +30163,7 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""<p>页码</p>
         :rtype: int
         """
         return self._PageNumber
@@ -30157,7 +30174,7 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""返回数量
+        r"""<p>返回数量</p>
         :rtype: int
         """
         return self._PageSize
@@ -30168,7 +30185,7 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def OrderFields(self):
-        r"""排序配置
+        r"""<p>排序配置</p>
         :rtype: list of OrderField
         """
         return self._OrderFields
@@ -30179,7 +30196,7 @@ class DescribeDataSourceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+        r"""<p>可选过滤条件，Filter可选配置(参考): &quot;Name&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;数据源名称&quot; }, &quot;Type&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;类型&quot; }, &quot;ClusterId&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;集群id&quot; }, &quot;CategoryId&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;分类，项目或空间id&quot; }</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -30221,7 +30238,7 @@ class DescribeDataSourceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 数据源列表
+        :param _Data: <p>数据源列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20210820.models.DataSourceInfoPage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -30232,7 +30249,7 @@ class DescribeDataSourceListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""数据源列表
+        r"""<p>数据源列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.DataSourceInfoPage`
         """
@@ -34461,39 +34478,39 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
-        :param _CurRunDate: 数据时间
+        :param _CurRunDate: <p>数据时间</p>
         :type CurRunDate: str
-        :param _LogLevelType: 日志级别，Info/Debug/Warn/Error/All
+        :param _LogLevelType: <p>日志级别，Info/Debug/Warn/Error/All</p>
         :type LogLevelType: str
-        :param _ExecutionFileType: 文件类型,Log/Code
+        :param _ExecutionFileType: <p>文件类型,Log/Code</p>
         :type ExecutionFileType: str
-        :param _ExecutionJobId: 统一执行平台执行id, 注意: ExecutionJobId 跟 "BrokerIp+OriginFileName" 必须有一个不为空
+        :param _ExecutionJobId: <p>统一执行平台执行id, 注意: ExecutionJobId 跟 &quot;BrokerIp+OriginFileName&quot; 必须有一个不为空</p>
         :type ExecutionJobId: str
-        :param _BrokerIp: 服务器Ip, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
+        :param _BrokerIp: <p>服务器Ip, 注意: &quot;BrokerIp+OriginFileName&quot;跟ExecutionJobId必须有一个不为空</p>
         :type BrokerIp: str
-        :param _OriginFileName: 文件Name, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
+        :param _OriginFileName: <p>文件Name, 注意: &quot;BrokerIp+OriginFileName&quot;跟ExecutionJobId必须有一个不为空</p>
         :type OriginFileName: str
-        :param _StartCount: 起始行
+        :param _StartCount: <p>起始行</p>
         :type StartCount: int
-        :param _LineCount: 每次查询行数
+        :param _LineCount: <p>每次查询行数</p>
         :type LineCount: int
-        :param _ExtInfo: 查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null
+        :param _ExtInfo: <p>查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null</p>
         :type ExtInfo: str
         :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
         :type RequestFromSource: str
-        :param _InstanceLifeDetailDtoList: 生命周期为基础数据进行日志匹配
+        :param _InstanceLifeDetailDtoList: <p>生命周期为基础数据进行日志匹配</p>
         :type InstanceLifeDetailDtoList: list of InstanceLifeDetailDto
-        :param _CurrentLifeRound: 当前生命周期
+        :param _CurrentLifeRound: <p>当前生命周期</p>
         :type CurrentLifeRound: int
-        :param _MaxLifeRound: 生命周期总数
+        :param _MaxLifeRound: <p>生命周期总数</p>
         :type MaxLifeRound: int
-        :param _Tries: 当前生命周期重试次数
+        :param _Tries: <p>当前生命周期重试次数</p>
         :type Tries: int
-        :param _Dynamic: 动态加载日志
+        :param _Dynamic: <p>动态加载日志</p>
         :type Dynamic: bool
         """
         self._ProjectId = None
@@ -34516,7 +34533,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -34527,7 +34544,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -34538,7 +34555,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def CurRunDate(self):
-        r"""数据时间
+        r"""<p>数据时间</p>
         :rtype: str
         """
         return self._CurRunDate
@@ -34549,7 +34566,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def LogLevelType(self):
-        r"""日志级别，Info/Debug/Warn/Error/All
+        r"""<p>日志级别，Info/Debug/Warn/Error/All</p>
         :rtype: str
         """
         return self._LogLevelType
@@ -34560,7 +34577,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def ExecutionFileType(self):
-        r"""文件类型,Log/Code
+        r"""<p>文件类型,Log/Code</p>
         :rtype: str
         """
         return self._ExecutionFileType
@@ -34571,7 +34588,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def ExecutionJobId(self):
-        r"""统一执行平台执行id, 注意: ExecutionJobId 跟 "BrokerIp+OriginFileName" 必须有一个不为空
+        r"""<p>统一执行平台执行id, 注意: ExecutionJobId 跟 &quot;BrokerIp+OriginFileName&quot; 必须有一个不为空</p>
         :rtype: str
         """
         return self._ExecutionJobId
@@ -34582,7 +34599,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def BrokerIp(self):
-        r"""服务器Ip, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
+        r"""<p>服务器Ip, 注意: &quot;BrokerIp+OriginFileName&quot;跟ExecutionJobId必须有一个不为空</p>
         :rtype: str
         """
         return self._BrokerIp
@@ -34593,7 +34610,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def OriginFileName(self):
-        r"""文件Name, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
+        r"""<p>文件Name, 注意: &quot;BrokerIp+OriginFileName&quot;跟ExecutionJobId必须有一个不为空</p>
         :rtype: str
         """
         return self._OriginFileName
@@ -34604,7 +34621,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def StartCount(self):
-        r"""起始行
+        r"""<p>起始行</p>
         :rtype: int
         """
         return self._StartCount
@@ -34615,7 +34632,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def LineCount(self):
-        r"""每次查询行数
+        r"""<p>每次查询行数</p>
         :rtype: int
         """
         return self._LineCount
@@ -34626,7 +34643,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null
+        r"""<p>查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -34648,7 +34665,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def InstanceLifeDetailDtoList(self):
-        r"""生命周期为基础数据进行日志匹配
+        r"""<p>生命周期为基础数据进行日志匹配</p>
         :rtype: list of InstanceLifeDetailDto
         """
         return self._InstanceLifeDetailDtoList
@@ -34659,7 +34676,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def CurrentLifeRound(self):
-        r"""当前生命周期
+        r"""<p>当前生命周期</p>
         :rtype: int
         """
         return self._CurrentLifeRound
@@ -34670,7 +34687,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def MaxLifeRound(self):
-        r"""生命周期总数
+        r"""<p>生命周期总数</p>
         :rtype: int
         """
         return self._MaxLifeRound
@@ -34681,7 +34698,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def Tries(self):
-        r"""当前生命周期重试次数
+        r"""<p>当前生命周期重试次数</p>
         :rtype: int
         """
         return self._Tries
@@ -34692,7 +34709,7 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
 
     @property
     def Dynamic(self):
-        r"""动态加载日志
+        r"""<p>动态加载日志</p>
         :rtype: bool
         """
         return self._Dynamic
@@ -34742,7 +34759,7 @@ class DescribeInstanceLogDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 日志结果
+        :param _Data: <p>日志结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20210820.models.InstanceLogInfoOpsDto`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -34753,7 +34770,7 @@ class DescribeInstanceLogDetailResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""日志结果
+        r"""<p>日志结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.InstanceLogInfoOpsDto`
         """
@@ -34789,33 +34806,33 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
-        :param _CurRunDate: 实例数据时间
+        :param _CurRunDate: <p>实例数据时间</p>
         :type CurRunDate: str
         :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
         :type RequestFromSource: str
-        :param _BrokerIp: 执行机IP
+        :param _BrokerIp: <p>执行机IP</p>
         :type BrokerIp: str
-        :param _OriginFileName: 日志文件名
+        :param _OriginFileName: <p>日志文件名</p>
         :type OriginFileName: str
-        :param _ExecutionJobId: 执行平台下发执行id
+        :param _ExecutionJobId: <p>执行平台下发执行id</p>
         :type ExecutionJobId: str
-        :param _LogLevelType: 日志级别，Info/Debug/Warn/Error/All
+        :param _LogLevelType: <p>日志级别，Info/Debug/Warn/Error/All</p>
         :type LogLevelType: str
-        :param _ExecutionFileType: 文件类型,Log/Code
+        :param _ExecutionFileType: <p>文件类型,Log/Code</p>
         :type ExecutionFileType: str
-        :param _InstanceLifeDetailDtoList: 生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用
+        :param _InstanceLifeDetailDtoList: <p>生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用</p>
         :type InstanceLifeDetailDtoList: list of InstanceLifeDetailDto
-        :param _CurrentLifeRound: 当前生命周期数
+        :param _CurrentLifeRound: <p>当前生命周期数</p>
         :type CurrentLifeRound: int
-        :param _MaxLifeRound: 最大生命周期数
+        :param _MaxLifeRound: <p>最大生命周期数</p>
         :type MaxLifeRound: int
-        :param _Tries: 当前生命周期重试次数
+        :param _Tries: <p>当前生命周期重试次数</p>
         :type Tries: int
-        :param _Dynamic: 动态获取日志信息标识
+        :param _Dynamic: <p>动态获取日志信息标识</p>
         :type Dynamic: bool
         """
         self._ProjectId = None
@@ -34835,7 +34852,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -34846,7 +34863,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -34857,7 +34874,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def CurRunDate(self):
-        r"""实例数据时间
+        r"""<p>实例数据时间</p>
         :rtype: str
         """
         return self._CurRunDate
@@ -34879,7 +34896,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def BrokerIp(self):
-        r"""执行机IP
+        r"""<p>执行机IP</p>
         :rtype: str
         """
         return self._BrokerIp
@@ -34890,7 +34907,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def OriginFileName(self):
-        r"""日志文件名
+        r"""<p>日志文件名</p>
         :rtype: str
         """
         return self._OriginFileName
@@ -34901,7 +34918,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def ExecutionJobId(self):
-        r"""执行平台下发执行id
+        r"""<p>执行平台下发执行id</p>
         :rtype: str
         """
         return self._ExecutionJobId
@@ -34912,7 +34929,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def LogLevelType(self):
-        r"""日志级别，Info/Debug/Warn/Error/All
+        r"""<p>日志级别，Info/Debug/Warn/Error/All</p>
         :rtype: str
         """
         return self._LogLevelType
@@ -34923,7 +34940,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def ExecutionFileType(self):
-        r"""文件类型,Log/Code
+        r"""<p>文件类型,Log/Code</p>
         :rtype: str
         """
         return self._ExecutionFileType
@@ -34934,7 +34951,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def InstanceLifeDetailDtoList(self):
-        r"""生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用
+        r"""<p>生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用</p>
         :rtype: list of InstanceLifeDetailDto
         """
         return self._InstanceLifeDetailDtoList
@@ -34945,7 +34962,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def CurrentLifeRound(self):
-        r"""当前生命周期数
+        r"""<p>当前生命周期数</p>
         :rtype: int
         """
         return self._CurrentLifeRound
@@ -34956,7 +34973,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def MaxLifeRound(self):
-        r"""最大生命周期数
+        r"""<p>最大生命周期数</p>
         :rtype: int
         """
         return self._MaxLifeRound
@@ -34967,7 +34984,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def Tries(self):
-        r"""当前生命周期重试次数
+        r"""<p>当前生命周期重试次数</p>
         :rtype: int
         """
         return self._Tries
@@ -34978,7 +34995,7 @@ class DescribeInstanceLogFileRequest(AbstractModel):
 
     @property
     def Dynamic(self):
-        r"""动态获取日志信息标识
+        r"""<p>动态获取日志信息标识</p>
         :rtype: bool
         """
         return self._Dynamic
@@ -35025,7 +35042,7 @@ class DescribeInstanceLogFileResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 下载文件详情
+        :param _Data: <p>下载文件详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20210820.models.InstanceDownloadLogInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -35036,7 +35053,7 @@ class DescribeInstanceLogFileResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""下载文件详情
+        r"""<p>下载文件详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.InstanceDownloadLogInfo`
         """
@@ -60957,17 +60974,17 @@ class GetCosTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: str
-        :param _OriginDomain: 请求域名
+        :param _OriginDomain: <p>请求域名</p>
         :type OriginDomain: str
-        :param _CrossFlag: 是否需要跨域
+        :param _CrossFlag: <p>是否需要跨域</p>
         :type CrossFlag: bool
-        :param _BucketName: 桶名
+        :param _BucketName: <p>桶名</p>
         :type BucketName: str
-        :param _RemotePath: 远程地址
+        :param _RemotePath: <p>远程地址</p>
         :type RemotePath: str
-        :param _RemoteRegion: 地域
+        :param _RemoteRegion: <p>地域</p>
         :type RemoteRegion: str
         """
         self._ProjectId = None
@@ -60979,7 +60996,7 @@ class GetCosTokenRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -60990,7 +61007,7 @@ class GetCosTokenRequest(AbstractModel):
 
     @property
     def OriginDomain(self):
-        r"""请求域名
+        r"""<p>请求域名</p>
         :rtype: str
         """
         return self._OriginDomain
@@ -61001,7 +61018,7 @@ class GetCosTokenRequest(AbstractModel):
 
     @property
     def CrossFlag(self):
-        r"""是否需要跨域
+        r"""<p>是否需要跨域</p>
         :rtype: bool
         """
         return self._CrossFlag
@@ -61012,7 +61029,7 @@ class GetCosTokenRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        r"""桶名
+        r"""<p>桶名</p>
         :rtype: str
         """
         return self._BucketName
@@ -61023,7 +61040,7 @@ class GetCosTokenRequest(AbstractModel):
 
     @property
     def RemotePath(self):
-        r"""远程地址
+        r"""<p>远程地址</p>
         :rtype: str
         """
         return self._RemotePath
@@ -61034,7 +61051,7 @@ class GetCosTokenRequest(AbstractModel):
 
     @property
     def RemoteRegion(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._RemoteRegion
@@ -61068,16 +61085,16 @@ class GetCosTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: cos地域
+        :param _Region: <p>cos地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Token: Token信息
+        :param _Token: <p>Token信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Token: :class:`tencentcloud.wedata.v20210820.models.CosTokenResponse`
-        :param _Bucket: 桶名
+        :param _Bucket: <p>桶名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
-        :param _EndPoint: 终止点（针对私有云环境）
+        :param _EndPoint: <p>终止点（针对私有云环境）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndPoint: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -61091,7 +61108,7 @@ class GetCosTokenResponse(AbstractModel):
 
     @property
     def Region(self):
-        r"""cos地域
+        r"""<p>cos地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -61103,7 +61120,7 @@ class GetCosTokenResponse(AbstractModel):
 
     @property
     def Token(self):
-        r"""Token信息
+        r"""<p>Token信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.CosTokenResponse`
         """
@@ -61115,7 +61132,7 @@ class GetCosTokenResponse(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""桶名
+        r"""<p>桶名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -61127,7 +61144,7 @@ class GetCosTokenResponse(AbstractModel):
 
     @property
     def EndPoint(self):
-        r"""终止点（针对私有云环境）
+        r"""<p>终止点（针对私有云环境）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

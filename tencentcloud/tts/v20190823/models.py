@@ -39,7 +39,7 @@ class CreateTtsTaskRequest(AbstractModel):
         :type VoiceType: int
         :param _PrimaryLanguage: <p>主语言类型：<li>1-中文（默认）</li><li>2-英文</li></p>
         :type PrimaryLanguage: int
-        :param _SampleRate: <p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p>
+        :param _SampleRate: <p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p><p>枚举值：</p><ul><li>16000： 16kHz音频采样率</li></ul>
         :type SampleRate: int
         :param _Codec: <p>返回音频格式，可取值：mp3（默认），wav，pcm</p>
         :type Codec: str
@@ -148,7 +148,7 @@ class CreateTtsTaskRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""<p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p>
+        r"""<p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p><p>枚举值：</p><ul><li>16000： 16kHz音频采样率</li></ul>
         :rtype: int
         """
         return self._SampleRate

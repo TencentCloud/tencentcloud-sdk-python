@@ -4804,21 +4804,22 @@ class CreateRabbitMQUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+        :param _InstanceId: <p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
         :type InstanceId: str
-        :param _User: 用户名，登录时使用
+        :param _User: <p>用户名，登录时使用</p>
         :type User: str
-        :param _Password: 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
+        :param _Password: <p>密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&amp;*_=|{}[]:;&#39;,.?/】中的两项</p>
         :type Password: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _Tags: 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
-management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+        :param _Tags: <p>用户标签，用于决定改用户访问RabbitMQ Management的权限范围<br>management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户</p>
         :type Tags: list of str
-        :param _MaxConnections: 该用户的最大连接数，不填写则不限制
+        :param _MaxConnections: <p>该用户的最大连接数，不填写则不限制</p>
         :type MaxConnections: int
-        :param _MaxChannels: 该用户的最大channel数，不填写则不限制
+        :param _MaxChannels: <p>该用户的最大channel数，不填写则不限制</p>
         :type MaxChannels: int
+        :param _EnableCamAuth: <p>是否开启cam验证</p>
+        :type EnableCamAuth: bool
         """
         self._InstanceId = None
         self._User = None
@@ -4827,10 +4828,11 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
         self._Tags = None
         self._MaxConnections = None
         self._MaxChannels = None
+        self._EnableCamAuth = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+        r"""<p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4841,7 +4843,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def User(self):
-        r"""用户名，登录时使用
+        r"""<p>用户名，登录时使用</p>
         :rtype: str
         """
         return self._User
@@ -4852,7 +4854,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def Password(self):
-        r"""密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
+        r"""<p>密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&amp;*_=|{}[]:;&#39;,.?/】中的两项</p>
         :rtype: str
         """
         return self._Password
@@ -4863,7 +4865,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -4874,8 +4876,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def Tags(self):
-        r"""用户标签，用于决定改用户访问RabbitMQ Management的权限范围
-management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+        r"""<p>用户标签，用于决定改用户访问RabbitMQ Management的权限范围<br>management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户</p>
         :rtype: list of str
         """
         return self._Tags
@@ -4886,7 +4887,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def MaxConnections(self):
-        r"""该用户的最大连接数，不填写则不限制
+        r"""<p>该用户的最大连接数，不填写则不限制</p>
         :rtype: int
         """
         return self._MaxConnections
@@ -4897,7 +4898,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def MaxChannels(self):
-        r"""该用户的最大channel数，不填写则不限制
+        r"""<p>该用户的最大channel数，不填写则不限制</p>
         :rtype: int
         """
         return self._MaxChannels
@@ -4905,6 +4906,17 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
     @MaxChannels.setter
     def MaxChannels(self, MaxChannels):
         self._MaxChannels = MaxChannels
+
+    @property
+    def EnableCamAuth(self):
+        r"""<p>是否开启cam验证</p>
+        :rtype: bool
+        """
+        return self._EnableCamAuth
+
+    @EnableCamAuth.setter
+    def EnableCamAuth(self, EnableCamAuth):
+        self._EnableCamAuth = EnableCamAuth
 
 
     def _deserialize(self, params):
@@ -4915,6 +4927,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
         self._Tags = params.get("Tags")
         self._MaxConnections = params.get("MaxConnections")
         self._MaxChannels = params.get("MaxChannels")
+        self._EnableCamAuth = params.get("EnableCamAuth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4932,7 +4945,7 @@ class CreateRabbitMQUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _User: 用户名，登录时使用
+        :param _User: <p>用户名，登录时使用</p>
         :type User: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4942,7 +4955,7 @@ class CreateRabbitMQUserResponse(AbstractModel):
 
     @property
     def User(self):
-        r"""用户名，登录时使用
+        r"""<p>用户名，登录时使用</p>
         :rtype: str
         """
         return self._User
@@ -25071,21 +25084,22 @@ class ModifyRabbitMQUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+        :param _InstanceId: <p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
         :type InstanceId: str
-        :param _User: 用户名，形如rabbitmq。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。
+        :param _User: <p>用户名，形如rabbitmq。有效的 User 名称可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。</p>
         :type User: str
-        :param _Password: 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
+        :param _Password: <p>密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&amp;*_=|{}[]:;&#39;,.?/】中的两项</p>
         :type Password: str
-        :param _Description: 描述，不传则不修改
+        :param _Description: <p>描述，不传则不修改</p>
         :type Description: str
-        :param _Tags: 用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
-management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+        :param _Tags: <p>用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围<br>management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户</p>
         :type Tags: list of str
-        :param _MaxConnections: 该用户的最大连接数，不传则不修改
+        :param _MaxConnections: <p>该用户的最大连接数，不传则不修改</p>
         :type MaxConnections: int
-        :param _MaxChannels: 该用户的最大channel数，不传则不修改
+        :param _MaxChannels: <p>该用户的最大channel数，不传则不修改</p>
         :type MaxChannels: int
+        :param _EnableCamAuth: <p>是否开启cam验证</p>
+        :type EnableCamAuth: bool
         """
         self._InstanceId = None
         self._User = None
@@ -25094,10 +25108,11 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
         self._Tags = None
         self._MaxConnections = None
         self._MaxChannels = None
+        self._EnableCamAuth = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+        r"""<p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -25108,7 +25123,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def User(self):
-        r"""用户名，形如rabbitmq。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。
+        r"""<p>用户名，形如rabbitmq。有效的 User 名称可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。</p>
         :rtype: str
         """
         return self._User
@@ -25119,7 +25134,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def Password(self):
-        r"""密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
+        r"""<p>密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&amp;*_=|{}[]:;&#39;,.?/】中的两项</p>
         :rtype: str
         """
         return self._Password
@@ -25130,7 +25145,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def Description(self):
-        r"""描述，不传则不修改
+        r"""<p>描述，不传则不修改</p>
         :rtype: str
         """
         return self._Description
@@ -25141,8 +25156,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def Tags(self):
-        r"""用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
-management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+        r"""<p>用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围<br>management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户</p>
         :rtype: list of str
         """
         return self._Tags
@@ -25153,7 +25167,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def MaxConnections(self):
-        r"""该用户的最大连接数，不传则不修改
+        r"""<p>该用户的最大连接数，不传则不修改</p>
         :rtype: int
         """
         return self._MaxConnections
@@ -25164,7 +25178,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
 
     @property
     def MaxChannels(self):
-        r"""该用户的最大channel数，不传则不修改
+        r"""<p>该用户的最大channel数，不传则不修改</p>
         :rtype: int
         """
         return self._MaxChannels
@@ -25172,6 +25186,17 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
     @MaxChannels.setter
     def MaxChannels(self, MaxChannels):
         self._MaxChannels = MaxChannels
+
+    @property
+    def EnableCamAuth(self):
+        r"""<p>是否开启cam验证</p>
+        :rtype: bool
+        """
+        return self._EnableCamAuth
+
+    @EnableCamAuth.setter
+    def EnableCamAuth(self, EnableCamAuth):
+        self._EnableCamAuth = EnableCamAuth
 
 
     def _deserialize(self, params):
@@ -25182,6 +25207,7 @@ management：普通控制台用户，monitoring：管理型控制台用户，其
         self._Tags = params.get("Tags")
         self._MaxConnections = params.get("MaxConnections")
         self._MaxChannels = params.get("MaxChannels")
+        self._EnableCamAuth = params.get("EnableCamAuth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

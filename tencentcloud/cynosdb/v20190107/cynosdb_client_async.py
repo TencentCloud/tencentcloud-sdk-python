@@ -115,6 +115,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddLibraDBInstances(
+            self,
+            request: models.AddLibraDBInstancesRequest,
+            opts: Dict = None,
+    ) -> models.AddLibraDBInstancesResponse:
+        """
+        本接口（AddLibraDBInstances）用于集群添加只读分析引擎
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddLibraDBInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddLibraDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AssociateSecurityGroups(
             self,
             request: models.AssociateSecurityGroupsRequest,

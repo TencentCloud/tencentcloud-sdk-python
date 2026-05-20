@@ -4483,93 +4483,71 @@ class DetachDisksResponse(AbstractModel):
 
 
 class DetailPrice(AbstractModel):
-    r"""描述购买云盘时的费用明细。
+    r"""描述购买云硬盘时的费用明细。
 
     """
 
     def __init__(self):
         r"""
-        :param _PriceTitle: 描述计费项目名称。
-        :type PriceTitle: str
-        :param _PriceName: 描述计费项目显示名称，用户控制台展示。
-        :type PriceName: str
-        :param _OriginalPrice: 预付费云盘预支费用的原价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalPrice: float
-        :param _DiscountPrice: 预付费云盘预支费用的折扣价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiscountPrice: float
-        :param _UnitPrice: 后付费云盘原单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnitPrice: float
-        :param _UnitPriceDiscount: 后付费云盘折扣单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnitPriceDiscount: float
-        :param _ChargeUnit: 后付费云盘的计价单元，取值范围：HOUR：表示后付费云盘的计价单元是按小时计算。
+        :param _ChargeUnit: 后付费云硬盘的计价单元，取值范围：HOUR：表示后付费云硬盘的计价单元是按小时计算。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
-        :param _OriginalPriceHigh: 高精度预付费云盘预支费用的原价，单位：元。
+        :param _DiscountPrice: 预付费云硬盘预支费用的折扣价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalPriceHigh: str
-        :param _DiscountPriceHigh: 高精度预付费云盘预支费用的折扣价，单位：元。
+        :type DiscountPrice: float
+        :param _DiscountPriceHigh: 高精度预付费云硬盘预支费用的折扣价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPriceHigh: str
-        :param _UnitPriceHigh: 高精度后付费云盘原单价，单位：元。
+        :param _OriginalPrice: 预付费云硬盘预支费用的原价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type UnitPriceHigh: str
-        :param _UnitPriceDiscountHigh: 高精度后付费云盘折扣单价，单位：元。
+        :type OriginalPrice: float
+        :param _OriginalPriceHigh: 高精度预付费云硬盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPriceHigh: str
+        :param _PriceName: 描述计费项目名称
+        :type PriceName: str
+        :param _PriceTitle: 描述计费项目显示名称，用户控制台展示
+        :type PriceTitle: str
+        :param _UnitPrice: 后付费云硬盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: float
+        :param _UnitPriceDiscount: 后付费云硬盘折扣单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscount: float
+        :param _UnitPriceDiscountHigh: 高精度后付费云硬盘折扣单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscountHigh: str
+        :param _UnitPriceHigh: 高精度后付费云硬盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceHigh: str
         """
-        self._PriceTitle = None
-        self._PriceName = None
-        self._OriginalPrice = None
+        self._ChargeUnit = None
         self._DiscountPrice = None
+        self._DiscountPriceHigh = None
+        self._OriginalPrice = None
+        self._OriginalPriceHigh = None
+        self._PriceName = None
+        self._PriceTitle = None
         self._UnitPrice = None
         self._UnitPriceDiscount = None
-        self._ChargeUnit = None
-        self._OriginalPriceHigh = None
-        self._DiscountPriceHigh = None
-        self._UnitPriceHigh = None
         self._UnitPriceDiscountHigh = None
+        self._UnitPriceHigh = None
 
     @property
-    def PriceTitle(self):
-        r"""描述计费项目名称。
-        :rtype: str
-        """
-        return self._PriceTitle
-
-    @PriceTitle.setter
-    def PriceTitle(self, PriceTitle):
-        self._PriceTitle = PriceTitle
-
-    @property
-    def PriceName(self):
-        r"""描述计费项目显示名称，用户控制台展示。
-        :rtype: str
-        """
-        return self._PriceName
-
-    @PriceName.setter
-    def PriceName(self, PriceName):
-        self._PriceName = PriceName
-
-    @property
-    def OriginalPrice(self):
-        r"""预付费云盘预支费用的原价，单位：元。
+    def ChargeUnit(self):
+        r"""后付费云硬盘的计价单元，取值范围：HOUR：表示后付费云硬盘的计价单元是按小时计算。
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: float
+        :rtype: str
         """
-        return self._OriginalPrice
+        return self._ChargeUnit
 
-    @OriginalPrice.setter
-    def OriginalPrice(self, OriginalPrice):
-        self._OriginalPrice = OriginalPrice
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
 
     @property
     def DiscountPrice(self):
-        r"""预付费云盘预支费用的折扣价，单位：元。
+        r"""预付费云硬盘预支费用的折扣价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -4580,8 +4558,66 @@ class DetailPrice(AbstractModel):
         self._DiscountPrice = DiscountPrice
 
     @property
+    def DiscountPriceHigh(self):
+        r"""高精度预付费云硬盘预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiscountPriceHigh
+
+    @DiscountPriceHigh.setter
+    def DiscountPriceHigh(self, DiscountPriceHigh):
+        self._DiscountPriceHigh = DiscountPriceHigh
+
+    @property
+    def OriginalPrice(self):
+        r"""预付费云硬盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def OriginalPriceHigh(self):
+        r"""高精度预付费云硬盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OriginalPriceHigh
+
+    @OriginalPriceHigh.setter
+    def OriginalPriceHigh(self, OriginalPriceHigh):
+        self._OriginalPriceHigh = OriginalPriceHigh
+
+    @property
+    def PriceName(self):
+        r"""描述计费项目名称
+        :rtype: str
+        """
+        return self._PriceName
+
+    @PriceName.setter
+    def PriceName(self, PriceName):
+        self._PriceName = PriceName
+
+    @property
+    def PriceTitle(self):
+        r"""描述计费项目显示名称，用户控制台展示
+        :rtype: str
+        """
+        return self._PriceTitle
+
+    @PriceTitle.setter
+    def PriceTitle(self, PriceTitle):
+        self._PriceTitle = PriceTitle
+
+    @property
     def UnitPrice(self):
-        r"""后付费云盘原单价，单位：元。
+        r"""后付费云硬盘原单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -4593,7 +4629,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def UnitPriceDiscount(self):
-        r"""后付费云盘折扣单价，单位：元。
+        r"""后付费云硬盘折扣单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -4604,56 +4640,8 @@ class DetailPrice(AbstractModel):
         self._UnitPriceDiscount = UnitPriceDiscount
 
     @property
-    def ChargeUnit(self):
-        r"""后付费云盘的计价单元，取值范围：HOUR：表示后付费云盘的计价单元是按小时计算。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._ChargeUnit
-
-    @ChargeUnit.setter
-    def ChargeUnit(self, ChargeUnit):
-        self._ChargeUnit = ChargeUnit
-
-    @property
-    def OriginalPriceHigh(self):
-        r"""高精度预付费云盘预支费用的原价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._OriginalPriceHigh
-
-    @OriginalPriceHigh.setter
-    def OriginalPriceHigh(self, OriginalPriceHigh):
-        self._OriginalPriceHigh = OriginalPriceHigh
-
-    @property
-    def DiscountPriceHigh(self):
-        r"""高精度预付费云盘预支费用的折扣价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._DiscountPriceHigh
-
-    @DiscountPriceHigh.setter
-    def DiscountPriceHigh(self, DiscountPriceHigh):
-        self._DiscountPriceHigh = DiscountPriceHigh
-
-    @property
-    def UnitPriceHigh(self):
-        r"""高精度后付费云盘原单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._UnitPriceHigh
-
-    @UnitPriceHigh.setter
-    def UnitPriceHigh(self, UnitPriceHigh):
-        self._UnitPriceHigh = UnitPriceHigh
-
-    @property
     def UnitPriceDiscountHigh(self):
-        r"""高精度后付费云盘折扣单价，单位：元。
+        r"""高精度后付费云硬盘折扣单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4663,19 +4651,31 @@ class DetailPrice(AbstractModel):
     def UnitPriceDiscountHigh(self, UnitPriceDiscountHigh):
         self._UnitPriceDiscountHigh = UnitPriceDiscountHigh
 
+    @property
+    def UnitPriceHigh(self):
+        r"""高精度后付费云硬盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UnitPriceHigh
+
+    @UnitPriceHigh.setter
+    def UnitPriceHigh(self, UnitPriceHigh):
+        self._UnitPriceHigh = UnitPriceHigh
+
 
     def _deserialize(self, params):
-        self._PriceTitle = params.get("PriceTitle")
-        self._PriceName = params.get("PriceName")
-        self._OriginalPrice = params.get("OriginalPrice")
+        self._ChargeUnit = params.get("ChargeUnit")
         self._DiscountPrice = params.get("DiscountPrice")
+        self._DiscountPriceHigh = params.get("DiscountPriceHigh")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self._PriceName = params.get("PriceName")
+        self._PriceTitle = params.get("PriceTitle")
         self._UnitPrice = params.get("UnitPrice")
         self._UnitPriceDiscount = params.get("UnitPriceDiscount")
-        self._ChargeUnit = params.get("ChargeUnit")
-        self._OriginalPriceHigh = params.get("OriginalPriceHigh")
-        self._DiscountPriceHigh = params.get("DiscountPriceHigh")
-        self._UnitPriceHigh = params.get("UnitPriceHigh")
         self._UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
+        self._UnitPriceHigh = params.get("UnitPriceHigh")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7617,27 +7617,27 @@ class Placement(AbstractModel):
         :param _CageId: 围笼Id，可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CageId: str
+        :param _CdcId: 实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
+        :param _CdcName: 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcName: str
+        :param _DedicatedClusterId: 独享集群id。
+        :type DedicatedClusterId: str
         :param _ProjectId: 实例所属项目ID，可通过DescribeProject获取。不填默认为0，表示默认项目。
         :type ProjectId: int
         :param _ProjectName: 实例所属项目名称，可通过[DescribeProject](/document/api/651/78725)获取。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _CdcName: 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CdcName: str
-        :param _CdcId: 实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CdcId: str
-        :param _DedicatedClusterId: 独享集群id。
-        :type DedicatedClusterId: str
         """
         self._Zone = None
         self._CageId = None
+        self._CdcId = None
+        self._CdcName = None
+        self._DedicatedClusterId = None
         self._ProjectId = None
         self._ProjectName = None
-        self._CdcName = None
-        self._CdcId = None
-        self._DedicatedClusterId = None
 
     @property
     def Zone(self):
@@ -7663,6 +7663,41 @@ class Placement(AbstractModel):
         self._CageId = CageId
 
     @property
+    def CdcId(self):
+        r"""实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
+    def CdcName(self):
+        r"""独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CdcName
+
+    @CdcName.setter
+    def CdcName(self, CdcName):
+        self._CdcName = CdcName
+
+    @property
+    def DedicatedClusterId(self):
+        r"""独享集群id。
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
     def ProjectId(self):
         r"""实例所属项目ID，可通过DescribeProject获取。不填默认为0，表示默认项目。
         :rtype: int
@@ -7685,50 +7720,15 @@ class Placement(AbstractModel):
     def ProjectName(self, ProjectName):
         self._ProjectName = ProjectName
 
-    @property
-    def CdcName(self):
-        r"""独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CdcName
-
-    @CdcName.setter
-    def CdcName(self, CdcName):
-        self._CdcName = CdcName
-
-    @property
-    def CdcId(self):
-        r"""实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CdcId
-
-    @CdcId.setter
-    def CdcId(self, CdcId):
-        self._CdcId = CdcId
-
-    @property
-    def DedicatedClusterId(self):
-        r"""独享集群id。
-        :rtype: str
-        """
-        return self._DedicatedClusterId
-
-    @DedicatedClusterId.setter
-    def DedicatedClusterId(self, DedicatedClusterId):
-        self._DedicatedClusterId = DedicatedClusterId
-
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._CageId = params.get("CageId")
+        self._CdcId = params.get("CdcId")
+        self._CdcName = params.get("CdcName")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._ProjectId = params.get("ProjectId")
         self._ProjectName = params.get("ProjectName")
-        self._CdcName = params.get("CdcName")
-        self._CdcId = params.get("CdcId")
-        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8015,65 +8015,65 @@ class PrepayPrice(AbstractModel):
 
 
 class Price(AbstractModel):
-    r"""描述预付费或后付费云盘的价格。
+    r"""描述预付费或后付费云硬盘的价格。
 
     """
 
     def __init__(self):
         r"""
-        :param _UnitPriceDiscount: 后付费云盘折扣单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnitPriceDiscount: float
-        :param _DiscountPrice: 预付费云盘预支费用的折扣价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiscountPrice: float
-        :param _UnitPrice: 后付费云盘原单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnitPrice: float
-        :param _UnitPriceHigh: 高精度后付费云盘原单价, 单位：元
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnitPriceHigh: str
-        :param _OriginalPriceHigh: 高精度预付费云盘预支费用的原价, 单位：元	。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalPriceHigh: str
-        :param _OriginalPrice: 预付费云盘预支费用的原价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalPrice: float
-        :param _DiscountPriceHigh: 高精度预付费云盘预支费用的折扣价, 单位：元
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiscountPriceHigh: str
-        :param _UnitPriceDiscountHigh: 高精度后付费云盘折扣单价, 单位：元
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnitPriceDiscountHigh: str
-        :param _ChargeUnit: 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。</li>
+        :param _ChargeUnit: 后付费云硬盘的计价单元，取值范围：HOUR：表示后付费云硬盘的计价单元是按小时计算。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeUnit: str
+        :param _DiscountPrice: 预付费云硬盘预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPrice: float
+        :param _DiscountPriceHigh: 高精度预付费云硬盘预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPriceHigh: str
+        :param _OriginalPrice: 预付费云硬盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPrice: float
+        :param _OriginalPriceHigh: 高精度预付费云硬盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPriceHigh: str
+        :param _UnitPrice: 后付费云硬盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: float
+        :param _UnitPriceDiscount: 后付费云硬盘折扣单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscount: float
+        :param _UnitPriceDiscountHigh: 高精度后付费云硬盘折扣单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscountHigh: str
+        :param _UnitPriceHigh: 高精度后付费云硬盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceHigh: str
         """
-        self._UnitPriceDiscount = None
-        self._DiscountPrice = None
-        self._UnitPrice = None
-        self._UnitPriceHigh = None
-        self._OriginalPriceHigh = None
-        self._OriginalPrice = None
-        self._DiscountPriceHigh = None
-        self._UnitPriceDiscountHigh = None
         self._ChargeUnit = None
+        self._DiscountPrice = None
+        self._DiscountPriceHigh = None
+        self._OriginalPrice = None
+        self._OriginalPriceHigh = None
+        self._UnitPrice = None
+        self._UnitPriceDiscount = None
+        self._UnitPriceDiscountHigh = None
+        self._UnitPriceHigh = None
 
     @property
-    def UnitPriceDiscount(self):
-        r"""后付费云盘折扣单价，单位：元。
+    def ChargeUnit(self):
+        r"""后付费云硬盘的计价单元，取值范围：HOUR：表示后付费云硬盘的计价单元是按小时计算。
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: float
+        :rtype: str
         """
-        return self._UnitPriceDiscount
+        return self._ChargeUnit
 
-    @UnitPriceDiscount.setter
-    def UnitPriceDiscount(self, UnitPriceDiscount):
-        self._UnitPriceDiscount = UnitPriceDiscount
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
 
     @property
     def DiscountPrice(self):
-        r"""预付费云盘预支费用的折扣价，单位：元。
+        r"""预付费云硬盘预支费用的折扣价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -8084,56 +8084,8 @@ class Price(AbstractModel):
         self._DiscountPrice = DiscountPrice
 
     @property
-    def UnitPrice(self):
-        r"""后付费云盘原单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: float
-        """
-        return self._UnitPrice
-
-    @UnitPrice.setter
-    def UnitPrice(self, UnitPrice):
-        self._UnitPrice = UnitPrice
-
-    @property
-    def UnitPriceHigh(self):
-        r"""高精度后付费云盘原单价, 单位：元
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._UnitPriceHigh
-
-    @UnitPriceHigh.setter
-    def UnitPriceHigh(self, UnitPriceHigh):
-        self._UnitPriceHigh = UnitPriceHigh
-
-    @property
-    def OriginalPriceHigh(self):
-        r"""高精度预付费云盘预支费用的原价, 单位：元	。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._OriginalPriceHigh
-
-    @OriginalPriceHigh.setter
-    def OriginalPriceHigh(self, OriginalPriceHigh):
-        self._OriginalPriceHigh = OriginalPriceHigh
-
-    @property
-    def OriginalPrice(self):
-        r"""预付费云盘预支费用的原价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: float
-        """
-        return self._OriginalPrice
-
-    @OriginalPrice.setter
-    def OriginalPrice(self, OriginalPrice):
-        self._OriginalPrice = OriginalPrice
-
-    @property
     def DiscountPriceHigh(self):
-        r"""高精度预付费云盘预支费用的折扣价, 单位：元
+        r"""高精度预付费云硬盘预支费用的折扣价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8144,8 +8096,56 @@ class Price(AbstractModel):
         self._DiscountPriceHigh = DiscountPriceHigh
 
     @property
+    def OriginalPrice(self):
+        r"""预付费云硬盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def OriginalPriceHigh(self):
+        r"""高精度预付费云硬盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OriginalPriceHigh
+
+    @OriginalPriceHigh.setter
+    def OriginalPriceHigh(self, OriginalPriceHigh):
+        self._OriginalPriceHigh = OriginalPriceHigh
+
+    @property
+    def UnitPrice(self):
+        r"""后付费云硬盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._UnitPrice
+
+    @UnitPrice.setter
+    def UnitPrice(self, UnitPrice):
+        self._UnitPrice = UnitPrice
+
+    @property
+    def UnitPriceDiscount(self):
+        r"""后付费云硬盘折扣单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._UnitPriceDiscount
+
+    @UnitPriceDiscount.setter
+    def UnitPriceDiscount(self, UnitPriceDiscount):
+        self._UnitPriceDiscount = UnitPriceDiscount
+
+    @property
     def UnitPriceDiscountHigh(self):
-        r"""高精度后付费云盘折扣单价, 单位：元
+        r"""高精度后付费云硬盘折扣单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8156,28 +8156,28 @@ class Price(AbstractModel):
         self._UnitPriceDiscountHigh = UnitPriceDiscountHigh
 
     @property
-    def ChargeUnit(self):
-        r"""后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。</li>
+    def UnitPriceHigh(self):
+        r"""高精度后付费云硬盘原单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
-        return self._ChargeUnit
+        return self._UnitPriceHigh
 
-    @ChargeUnit.setter
-    def ChargeUnit(self, ChargeUnit):
-        self._ChargeUnit = ChargeUnit
+    @UnitPriceHigh.setter
+    def UnitPriceHigh(self, UnitPriceHigh):
+        self._UnitPriceHigh = UnitPriceHigh
 
 
     def _deserialize(self, params):
-        self._UnitPriceDiscount = params.get("UnitPriceDiscount")
-        self._DiscountPrice = params.get("DiscountPrice")
-        self._UnitPrice = params.get("UnitPrice")
-        self._UnitPriceHigh = params.get("UnitPriceHigh")
-        self._OriginalPriceHigh = params.get("OriginalPriceHigh")
-        self._OriginalPrice = params.get("OriginalPrice")
-        self._DiscountPriceHigh = params.get("DiscountPriceHigh")
-        self._UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
         self._ChargeUnit = params.get("ChargeUnit")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._DiscountPriceHigh = params.get("DiscountPriceHigh")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self._UnitPrice = params.get("UnitPrice")
+        self._UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self._UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
+        self._UnitPriceHigh = params.get("UnitPriceHigh")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

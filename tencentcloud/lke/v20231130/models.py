@@ -34206,147 +34206,52 @@ class SaveDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID。应用ID 获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
-导入知识库文档时，该参数填入知识库 ID。
-
+        :param _BotBizId: <p>应用ID。应用ID 获取方法参看<a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">如何获取   BotBizId</a><br>导入知识库文档时，该参数填入知识库 ID。</p>
         :type BotBizId: str
-        :param _FileName: 文件名，需要包含文件扩展名
+        :param _FileName: <p>文件名，需要包含文件扩展名</p>
         :type FileName: str
-        :param _FileType: 文档支持下面类型
-pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；
-xlsx、xls、md、txt、csv、html，单个文件不超过20MB；
-
-图片支持下面类型：
-jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB
+        :param _FileType: <p>文档支持下面类型<br>pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；<br>xlsx、xls、md、txt、csv、html，单个文件不超过20MB；</p><p>图片支持下面类型：<br>jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB</p>
         :type FileType: str
-        :param _CosUrl: 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
+        :param _CosUrl: <p>平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致</p>
         :type CosUrl: str
-        :param _ETag: ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取
+        :param _ETag: <p>ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取</p>
         :type ETag: str
-        :param _CosHash: cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性  
-成功上传cos后，从返回头中获取
-
-请注意：
-cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判定为重复文档
+        :param _CosHash: <p>cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性<br>成功上传cos后，从返回头中获取</p><p>请注意：<br>cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判定为重复文档</p>
         :type CosHash: str
-        :param _Size: 文件大小
+        :param _Size: <p>文件大小</p>
         :type Size: str
-        :param _AttrRange: 标签适用范围，1:全部，2:按条件。默认为1。
+        :param _AttrRange: <p>标签适用范围，1:全部，2:按条件。默认为1。</p>
         :type AttrRange: int
-        :param _Source: 来源（0 从本地文档导入），默认值为0
+        :param _Source: <p>来源（0 从本地文档导入），默认值为0</p>
         :type Source: int
-        :param _WebUrl: 自定义链接地址, IsRefer为true的时候，该值才有意义
+        :param _WebUrl: <p>自定义链接地址, IsRefer为true的时候，该值才有意义</p>
         :type WebUrl: str
-        :param _AttrLabels: 标签引用
+        :param _AttrLabels: <p>标签引用</p>
         :type AttrLabels: list of AttrLabelRefer
-        :param _ReferUrlType: 外部引用链接类型 0：系统链接 1：自定义链接
-值为1时，WebUrl 字段不能为空，否则不生效。
+        :param _ReferUrlType: <p>外部引用链接类型 0：系统链接 1：自定义链接<br>值为1时，WebUrl 字段不能为空，否则不生效。</p>
         :type ReferUrlType: int
-        :param _ExpireStart: 有效开始时间，unix秒级时间戳，默认为0
+        :param _ExpireStart: <p>有效开始时间，unix秒级时间戳，默认为0</p>
         :type ExpireStart: str
-        :param _ExpireEnd: 有效结束时间，unix秒级时间戳，默认为0代表永久有效
+        :param _ExpireEnd: <p>有效结束时间，unix秒级时间戳，默认为0代表永久有效</p>
         :type ExpireEnd: str
-        :param _IsRefer: 是否显示引用的文档来源(false不显示 true显示）默认false
+        :param _IsRefer: <p>是否显示引用的文档来源(false不显示 true显示）默认false</p>
         :type IsRefer: bool
-        :param _Opt: 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
+        :param _Opt: <p>文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板</p>
         :type Opt: int
-        :param _CateBizId: 分类ID
+        :param _CateBizId: <p>分类ID</p>
         :type CateBizId: str
-        :param _IsDownload: 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+        :param _IsDownload: <p>是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义</p>
         :type IsDownload: bool
-        :param _DuplicateFileHandles: 重复文档处理方式，按顺序匹配第一个满足条件的方式处理
+        :param _DuplicateFileHandles: <p>重复文档处理方式，按顺序匹配第一个满足条件的方式处理</p>
         :type DuplicateFileHandles: list of DuplicateFileHandle
-        :param _SplitRule: 自定义切分规则
-
-请求参数为一个 **JSON Object**，具体格式可参见接口示例值。包含以下主要字段：
-
-| 字段名             | 类型      | 说明                                   |
-|--------------------|--------|----------------------------------------|
-| `xlsx_splitter`    | Object   | **Excel（xlsx）文件切分策略配置**，仅当处理 Excel 文件时有效 |
-| `common_splitter`  | Object  | **通用文件（如 txt、pdf 等）切分策略配置**，按页或按标签切分 |
-| `table_style`      | String | 表格内容的输出格式，如 HTML 或 Markdown |
-
----
-
-## `xlsx_splitter`（Excel 切分策略）
-
-用于配置 **表格文件的切分方式**。
-**类型：Object**
-
-```json
-"xlsx_splitter": {
-  "header_interval": [1, 2],
-  "content_start": 10,
-  "split_row": 2
-}
-```
-
-### 字段说明：
-
-| 字段名            | 类型   | 说明                                                                 |
-|-------------------|--------|----------------------------------------------------------------------|
-| `header_interval` | Array\<Number\>  | 表头所在的行区间，格式为 `[起始行, 结束行]`，**行号从 1 开始计数**。例如 `[1, 2]` 表示第 1~2 行为表头。 |
-| `content_start`   | Number  | **表格内容的起始行号（从 1 开始）**。 |
-| `split_row`       | Number   | **切分行数**。                   |
-
----
-## `common_splitter`（通用文件切分策略）
-
-用于配置 **非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式**，支持两种策略：**按页切分（page）** 或 **按标识符切分（tag）**。
-
-**类型：Object**
-
-```json
-"common_splitter": {
-  "splitter": "page",
-  "page_splitter": {
-    "chunk_length": 1000,
-    "chunk_overlap_length": 100
-  }
-}
-```
-
-### 字段说明：
-
-| 字段名            | 类型     | 说明                                                                 |
-|-------------------|--------|---------------------------------------------------|
-| `splitter`        | String  | 切分策略类型，可选值为：`"page"`（按页切分） 或 `"tag"`（按标识符切分）。 |
-| `page_splitter`   | Object   | **按页切分的配置**。                                         |
-| `page_splitter.chunk_length`   | 1000    | **切片最大长度**。              |
-| `page_splitter.chunk_overlap_length`  | 100    | **切片重叠长度**。  |
-| `tag_splitter`             | Object          | **自定义切分配置**。             |
-| `tag_splitter.tag`         | Array\<String\>    | **切分标识符**。                             |
-| `tag_splitter.chunk_length`| Number       | **切片最大长度**。                                                               |
-| `tag_splitter.chunk_overlap_length` | Number    | **切块重叠长度**。                                                  |
-
-🔹 **补充说明：**
-
-- `splitter` 字段的值可以是：
-  - `"page"`：只使用按页切分逻辑，此时只需要关心 `page_splitter` 相关字段。
-  - `"tag"`：只使用按标识符（如分号、换行等）切分逻辑，此时关注 `tag_splitter`。
----
-
-##  `table_style`（表格输出样式）
-
-用于指定 **表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回**，方便前端展示或后续处理。
-
-**类型：String**
-
-```json
-"table_style": "md"
-```
-
-### 字段说明：
-
-| 字段名       | 类型   | 说明                                                                 |
-|--------------|--------|----------------------------------------------------------------------|
-| `table_style` | String | 指定表格内容的输出格式。可用值：<br>• `"html"`：以 HTML 表格形式返回，适合网页展示。<br>• `"md"`：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。|
+        :param _SplitRule: <p>自定义切分规则</p><p>请求参数为一个 <strong>JSON Object</strong>，具体格式可参见接口示例值。包含以下主要字段：</p><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>xlsx_splitter</code></td><td>Object</td><td><strong>Excel（xlsx）文件切分策略配置</strong>，仅当处理 Excel 文件时有效</td></tr><tr><td><code>common_splitter</code></td><td>Object</td><td><strong>通用文件（如 txt、pdf 等）切分策略配置</strong>，按页或按标签切分</td></tr><tr><td><code>table_style</code></td><td>String</td><td>表格内容的输出格式，如 HTML 或 Markdown</td></tr></tbody></table><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88Excel-.E5.88.87.E5.88.86.E7.AD.96.E7.95.A5.EF.BC.89"><code>xlsx_splitter</code>（Excel 切分策略）</h2><p>用于配置 <strong>表格文件的切分方式</strong>。<br><strong>类型：Object</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;xlsx_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>  <span class="hljs-attr">&quot;header_interval&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-number">2</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;content_start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;split_row&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">}</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>header_interval</code></td><td>Array&lt;Number&gt;</td><td>表头所在的行区间，格式为 <code>[起始行, 结束行]</code>，<strong>行号从 1 开始计数</strong>。例如 <code>[1, 2]</code> 表示第 1~2 行为表头。</td></tr><tr><td><code>content_start</code></td><td>Number</td><td><strong>表格内容的起始行号（从 1 开始）</strong>。</td></tr><tr><td><code>split_row</code></td><td>Number</td><td><strong>切分行数</strong>。</td></tr></tbody></table><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88.E9.80.9A.E7.94.A8.E6.96.87.E4.BB.B6.E5.88.87.E5.88.86.E7.AD.96.E7.95.A5.EF.BC.89"><code>common_splitter</code>（通用文件切分策略）</h2><p>用于配置 <strong>非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式</strong>，支持两种策略：<strong>按页切分（page）</strong> 或 <strong>按标识符切分（tag）</strong>。</p><p><strong>类型：Object</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;common_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>  <span class="hljs-attr">&quot;splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;page&quot;</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;page_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>    <span class="hljs-attr">&quot;chunk_length&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1000</span><span class="hljs-punctuation">,</span>    <span class="hljs-attr">&quot;chunk_overlap_length&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">100</span>  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A2">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>splitter</code></td><td>String</td><td>切分策略类型，可选值为：<code>&quot;page&quot;</code>（按页切分） 或 <code>&quot;tag&quot;</code>（按标识符切分）。</td></tr><tr><td><code>page_splitter</code></td><td>Object</td><td><strong>按页切分的配置</strong>。</td></tr><tr><td><code>page_splitter.chunk_length</code></td><td>1000</td><td><strong>切片最大长度</strong>。</td></tr><tr><td><code>page_splitter.chunk_overlap_length</code></td><td>100</td><td><strong>切片重叠长度</strong>。</td></tr><tr><td><code>tag_splitter</code></td><td>Object</td><td><strong>自定义切分配置</strong>。</td></tr><tr><td><code>tag_splitter.tag</code></td><td>Array&lt;String&gt;</td><td><strong>切分标识符</strong>。</td></tr><tr><td><code>tag_splitter.chunk_length</code></td><td>Number</td><td><strong>切片最大长度</strong>。</td></tr><tr><td><code>tag_splitter.chunk_overlap_length</code></td><td>Number</td><td><strong>切块重叠长度</strong>。</td></tr></tbody></table><p>???? <strong>补充说明：</strong></p><ul><li><code>splitter</code> 字段的值可以是：<ul><li><code>&quot;page&quot;</code>：只使用按页切分逻辑，此时只需要关心 <code>page_splitter</code> 相关字段。</li><li><code>&quot;tag&quot;</code>：只使用按标识符（如分号、换行等）切分逻辑，此时关注 <code>tag_splitter</code>。</li></ul></li></ul><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88.E8.A1.A8.E6.A0.BC.E8.BE.93.E5.87.BA.E6.A0.B7.E5.BC.8F.EF.BC.89"><code>table_style</code>（表格输出样式）</h2><p>用于指定 <strong>表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回</strong>，方便前端展示或后续处理。</p><p><strong>类型：String</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;table_style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;md&quot;</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A3">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>table_style</code></td><td>String</td><td>指定表格内容的输出格式。可用值：<br>• <code>&quot;html&quot;</code>：以 HTML 表格形式返回，适合网页展示。<br>• <code>&quot;md&quot;</code>：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。</td></tr></tbody></table>
         :type SplitRule: str
-        :param _UpdatePeriodInfo: 文档更新频率，默认值为0不更新
+        :param _UpdatePeriodInfo: <p>文档更新频率，默认值为0不更新</p>
         :type UpdatePeriodInfo: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
-        :param _EnableScope: 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
-默认值：应用内默认知识库为2，共享知识库为4。
+        :param _EnableScope: <p>文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效<br>默认值：应用内默认知识库为2，共享知识库为4。</p>
         :type EnableScope: int
+        :param _FileUrl: <p>文件url 文件的 FileUrl、CosUrl必须提供一个，如果都提供，只使用CosUrl</p>
+        :type FileUrl: str
         """
         self._BotBizId = None
         self._FileName = None
@@ -34370,12 +34275,11 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
         self._SplitRule = None
         self._UpdatePeriodInfo = None
         self._EnableScope = None
+        self._FileUrl = None
 
     @property
     def BotBizId(self):
-        r"""应用ID。应用ID 获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
-导入知识库文档时，该参数填入知识库 ID。
-
+        r"""<p>应用ID。应用ID 获取方法参看<a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">如何获取   BotBizId</a><br>导入知识库文档时，该参数填入知识库 ID。</p>
         :rtype: str
         """
         return self._BotBizId
@@ -34386,7 +34290,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def FileName(self):
-        r"""文件名，需要包含文件扩展名
+        r"""<p>文件名，需要包含文件扩展名</p>
         :rtype: str
         """
         return self._FileName
@@ -34397,12 +34301,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def FileType(self):
-        r"""文档支持下面类型
-pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；
-xlsx、xls、md、txt、csv、html，单个文件不超过20MB；
-
-图片支持下面类型：
-jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB
+        r"""<p>文档支持下面类型<br>pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；<br>xlsx、xls、md、txt、csv、html，单个文件不超过20MB；</p><p>图片支持下面类型：<br>jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB</p>
         :rtype: str
         """
         return self._FileType
@@ -34413,7 +34312,7 @@ jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB
 
     @property
     def CosUrl(self):
-        r"""平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
+        r"""<p>平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致</p>
         :rtype: str
         """
         return self._CosUrl
@@ -34424,7 +34323,7 @@ jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB
 
     @property
     def ETag(self):
-        r"""ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取
+        r"""<p>ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取</p>
         :rtype: str
         """
         return self._ETag
@@ -34435,11 +34334,7 @@ jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB
 
     @property
     def CosHash(self):
-        r"""cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性  
-成功上传cos后，从返回头中获取
-
-请注意：
-cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判定为重复文档
+        r"""<p>cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性<br>成功上传cos后，从返回头中获取</p><p>请注意：<br>cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判定为重复文档</p>
         :rtype: str
         """
         return self._CosHash
@@ -34450,7 +34345,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def Size(self):
-        r"""文件大小
+        r"""<p>文件大小</p>
         :rtype: str
         """
         return self._Size
@@ -34461,7 +34356,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def AttrRange(self):
-        r"""标签适用范围，1:全部，2:按条件。默认为1。
+        r"""<p>标签适用范围，1:全部，2:按条件。默认为1。</p>
         :rtype: int
         """
         return self._AttrRange
@@ -34472,7 +34367,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def Source(self):
-        r"""来源（0 从本地文档导入），默认值为0
+        r"""<p>来源（0 从本地文档导入），默认值为0</p>
         :rtype: int
         """
         return self._Source
@@ -34483,7 +34378,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def WebUrl(self):
-        r"""自定义链接地址, IsRefer为true的时候，该值才有意义
+        r"""<p>自定义链接地址, IsRefer为true的时候，该值才有意义</p>
         :rtype: str
         """
         return self._WebUrl
@@ -34494,7 +34389,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def AttrLabels(self):
-        r"""标签引用
+        r"""<p>标签引用</p>
         :rtype: list of AttrLabelRefer
         """
         return self._AttrLabels
@@ -34505,8 +34400,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def ReferUrlType(self):
-        r"""外部引用链接类型 0：系统链接 1：自定义链接
-值为1时，WebUrl 字段不能为空，否则不生效。
+        r"""<p>外部引用链接类型 0：系统链接 1：自定义链接<br>值为1时，WebUrl 字段不能为空，否则不生效。</p>
         :rtype: int
         """
         return self._ReferUrlType
@@ -34517,7 +34411,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def ExpireStart(self):
-        r"""有效开始时间，unix秒级时间戳，默认为0
+        r"""<p>有效开始时间，unix秒级时间戳，默认为0</p>
         :rtype: str
         """
         return self._ExpireStart
@@ -34528,7 +34422,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def ExpireEnd(self):
-        r"""有效结束时间，unix秒级时间戳，默认为0代表永久有效
+        r"""<p>有效结束时间，unix秒级时间戳，默认为0代表永久有效</p>
         :rtype: str
         """
         return self._ExpireEnd
@@ -34539,7 +34433,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def IsRefer(self):
-        r"""是否显示引用的文档来源(false不显示 true显示）默认false
+        r"""<p>是否显示引用的文档来源(false不显示 true显示）默认false</p>
         :rtype: bool
         """
         return self._IsRefer
@@ -34550,7 +34444,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def Opt(self):
-        r"""文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
+        r"""<p>文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板</p>
         :rtype: int
         """
         return self._Opt
@@ -34561,7 +34455,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def CateBizId(self):
-        r"""分类ID
+        r"""<p>分类ID</p>
         :rtype: str
         """
         return self._CateBizId
@@ -34572,7 +34466,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def IsDownload(self):
-        r"""是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+        r"""<p>是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义</p>
         :rtype: bool
         """
         return self._IsDownload
@@ -34583,7 +34477,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def DuplicateFileHandles(self):
-        r"""重复文档处理方式，按顺序匹配第一个满足条件的方式处理
+        r"""<p>重复文档处理方式，按顺序匹配第一个满足条件的方式处理</p>
         :rtype: list of DuplicateFileHandle
         """
         return self._DuplicateFileHandles
@@ -34594,91 +34488,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def SplitRule(self):
-        r"""自定义切分规则
-
-请求参数为一个 **JSON Object**，具体格式可参见接口示例值。包含以下主要字段：
-
-| 字段名             | 类型      | 说明                                   |
-|--------------------|--------|----------------------------------------|
-| `xlsx_splitter`    | Object   | **Excel（xlsx）文件切分策略配置**，仅当处理 Excel 文件时有效 |
-| `common_splitter`  | Object  | **通用文件（如 txt、pdf 等）切分策略配置**，按页或按标签切分 |
-| `table_style`      | String | 表格内容的输出格式，如 HTML 或 Markdown |
-
----
-
-## `xlsx_splitter`（Excel 切分策略）
-
-用于配置 **表格文件的切分方式**。
-**类型：Object**
-
-```json
-"xlsx_splitter": {
-  "header_interval": [1, 2],
-  "content_start": 10,
-  "split_row": 2
-}
-```
-
-### 字段说明：
-
-| 字段名            | 类型   | 说明                                                                 |
-|-------------------|--------|----------------------------------------------------------------------|
-| `header_interval` | Array\<Number\>  | 表头所在的行区间，格式为 `[起始行, 结束行]`，**行号从 1 开始计数**。例如 `[1, 2]` 表示第 1~2 行为表头。 |
-| `content_start`   | Number  | **表格内容的起始行号（从 1 开始）**。 |
-| `split_row`       | Number   | **切分行数**。                   |
-
----
-## `common_splitter`（通用文件切分策略）
-
-用于配置 **非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式**，支持两种策略：**按页切分（page）** 或 **按标识符切分（tag）**。
-
-**类型：Object**
-
-```json
-"common_splitter": {
-  "splitter": "page",
-  "page_splitter": {
-    "chunk_length": 1000,
-    "chunk_overlap_length": 100
-  }
-}
-```
-
-### 字段说明：
-
-| 字段名            | 类型     | 说明                                                                 |
-|-------------------|--------|---------------------------------------------------|
-| `splitter`        | String  | 切分策略类型，可选值为：`"page"`（按页切分） 或 `"tag"`（按标识符切分）。 |
-| `page_splitter`   | Object   | **按页切分的配置**。                                         |
-| `page_splitter.chunk_length`   | 1000    | **切片最大长度**。              |
-| `page_splitter.chunk_overlap_length`  | 100    | **切片重叠长度**。  |
-| `tag_splitter`             | Object          | **自定义切分配置**。             |
-| `tag_splitter.tag`         | Array\<String\>    | **切分标识符**。                             |
-| `tag_splitter.chunk_length`| Number       | **切片最大长度**。                                                               |
-| `tag_splitter.chunk_overlap_length` | Number    | **切块重叠长度**。                                                  |
-
-🔹 **补充说明：**
-
-- `splitter` 字段的值可以是：
-  - `"page"`：只使用按页切分逻辑，此时只需要关心 `page_splitter` 相关字段。
-  - `"tag"`：只使用按标识符（如分号、换行等）切分逻辑，此时关注 `tag_splitter`。
----
-
-##  `table_style`（表格输出样式）
-
-用于指定 **表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回**，方便前端展示或后续处理。
-
-**类型：String**
-
-```json
-"table_style": "md"
-```
-
-### 字段说明：
-
-| 字段名       | 类型   | 说明                                                                 |
-|--------------|--------|----------------------------------------------------------------------|
-| `table_style` | String | 指定表格内容的输出格式。可用值：<br>• `"html"`：以 HTML 表格形式返回，适合网页展示。<br>• `"md"`：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。|
+        r"""<p>自定义切分规则</p><p>请求参数为一个 <strong>JSON Object</strong>，具体格式可参见接口示例值。包含以下主要字段：</p><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>xlsx_splitter</code></td><td>Object</td><td><strong>Excel（xlsx）文件切分策略配置</strong>，仅当处理 Excel 文件时有效</td></tr><tr><td><code>common_splitter</code></td><td>Object</td><td><strong>通用文件（如 txt、pdf 等）切分策略配置</strong>，按页或按标签切分</td></tr><tr><td><code>table_style</code></td><td>String</td><td>表格内容的输出格式，如 HTML 或 Markdown</td></tr></tbody></table><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88Excel-.E5.88.87.E5.88.86.E7.AD.96.E7.95.A5.EF.BC.89"><code>xlsx_splitter</code>（Excel 切分策略）</h2><p>用于配置 <strong>表格文件的切分方式</strong>。<br><strong>类型：Object</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;xlsx_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>  <span class="hljs-attr">&quot;header_interval&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-number">2</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;content_start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;split_row&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">}</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>header_interval</code></td><td>Array&lt;Number&gt;</td><td>表头所在的行区间，格式为 <code>[起始行, 结束行]</code>，<strong>行号从 1 开始计数</strong>。例如 <code>[1, 2]</code> 表示第 1~2 行为表头。</td></tr><tr><td><code>content_start</code></td><td>Number</td><td><strong>表格内容的起始行号（从 1 开始）</strong>。</td></tr><tr><td><code>split_row</code></td><td>Number</td><td><strong>切分行数</strong>。</td></tr></tbody></table><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88.E9.80.9A.E7.94.A8.E6.96.87.E4.BB.B6.E5.88.87.E5.88.86.E7.AD.96.E7.95.A5.EF.BC.89"><code>common_splitter</code>（通用文件切分策略）</h2><p>用于配置 <strong>非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式</strong>，支持两种策略：<strong>按页切分（page）</strong> 或 <strong>按标识符切分（tag）</strong>。</p><p><strong>类型：Object</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;common_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>  <span class="hljs-attr">&quot;splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;page&quot;</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;page_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>    <span class="hljs-attr">&quot;chunk_length&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1000</span><span class="hljs-punctuation">,</span>    <span class="hljs-attr">&quot;chunk_overlap_length&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">100</span>  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A2">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>splitter</code></td><td>String</td><td>切分策略类型，可选值为：<code>&quot;page&quot;</code>（按页切分） 或 <code>&quot;tag&quot;</code>（按标识符切分）。</td></tr><tr><td><code>page_splitter</code></td><td>Object</td><td><strong>按页切分的配置</strong>。</td></tr><tr><td><code>page_splitter.chunk_length</code></td><td>1000</td><td><strong>切片最大长度</strong>。</td></tr><tr><td><code>page_splitter.chunk_overlap_length</code></td><td>100</td><td><strong>切片重叠长度</strong>。</td></tr><tr><td><code>tag_splitter</code></td><td>Object</td><td><strong>自定义切分配置</strong>。</td></tr><tr><td><code>tag_splitter.tag</code></td><td>Array&lt;String&gt;</td><td><strong>切分标识符</strong>。</td></tr><tr><td><code>tag_splitter.chunk_length</code></td><td>Number</td><td><strong>切片最大长度</strong>。</td></tr><tr><td><code>tag_splitter.chunk_overlap_length</code></td><td>Number</td><td><strong>切块重叠长度</strong>。</td></tr></tbody></table><p>???? <strong>补充说明：</strong></p><ul><li><code>splitter</code> 字段的值可以是：<ul><li><code>&quot;page&quot;</code>：只使用按页切分逻辑，此时只需要关心 <code>page_splitter</code> 相关字段。</li><li><code>&quot;tag&quot;</code>：只使用按标识符（如分号、换行等）切分逻辑，此时关注 <code>tag_splitter</code>。</li></ul></li></ul><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88.E8.A1.A8.E6.A0.BC.E8.BE.93.E5.87.BA.E6.A0.B7.E5.BC.8F.EF.BC.89"><code>table_style</code>（表格输出样式）</h2><p>用于指定 <strong>表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回</strong>，方便前端展示或后续处理。</p><p><strong>类型：String</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;table_style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;md&quot;</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A3">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>table_style</code></td><td>String</td><td>指定表格内容的输出格式。可用值：<br>• <code>&quot;html&quot;</code>：以 HTML 表格形式返回，适合网页展示。<br>• <code>&quot;md&quot;</code>：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。</td></tr></tbody></table>
         :rtype: str
         """
         return self._SplitRule
@@ -34689,7 +34499,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def UpdatePeriodInfo(self):
-        r"""文档更新频率，默认值为0不更新
+        r"""<p>文档更新频率，默认值为0不更新</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
         """
         return self._UpdatePeriodInfo
@@ -34700,8 +34510,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def EnableScope(self):
-        r"""文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
-默认值：应用内默认知识库为2，共享知识库为4。
+        r"""<p>文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效<br>默认值：应用内默认知识库为2，共享知识库为4。</p>
         :rtype: int
         """
         return self._EnableScope
@@ -34709,6 +34518,17 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
     @EnableScope.setter
     def EnableScope(self, EnableScope):
         self._EnableScope = EnableScope
+
+    @property
+    def FileUrl(self):
+        r"""<p>文件url 文件的 FileUrl、CosUrl必须提供一个，如果都提供，只使用CosUrl</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
 
 
     def _deserialize(self, params):
@@ -34746,6 +34566,7 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
             self._UpdatePeriodInfo = UpdatePeriodInfo()
             self._UpdatePeriodInfo._deserialize(params.get("UpdatePeriodInfo"))
         self._EnableScope = params.get("EnableScope")
+        self._FileUrl = params.get("FileUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34763,15 +34584,15 @@ class SaveDocResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DocBizId: 文档ID
+        :param _DocBizId: <p>文档ID</p>
         :type DocBizId: str
-        :param _ErrorMsg: 导入错误信息
+        :param _ErrorMsg: <p>导入错误信息</p>
         :type ErrorMsg: str
-        :param _ErrorLink: 错误链接
+        :param _ErrorLink: <p>错误链接</p>
         :type ErrorLink: str
-        :param _ErrorLinkText: 错误链接文本
+        :param _ErrorLinkText: <p>错误链接文本</p>
         :type ErrorLinkText: str
-        :param _DuplicateFileCheckType: 重复类型，0：未重复，其他取值请参考入参DuplicateFileHandle结构体的CheckType字段
+        :param _DuplicateFileCheckType: <p>重复类型，0：未重复，其他取值请参考入参DuplicateFileHandle结构体的CheckType字段</p>
         :type DuplicateFileCheckType: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -34785,7 +34606,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def DocBizId(self):
-        r"""文档ID
+        r"""<p>文档ID</p>
         :rtype: str
         """
         return self._DocBizId
@@ -34796,7 +34617,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        r"""导入错误信息
+        r"""<p>导入错误信息</p>
         :rtype: str
         """
         return self._ErrorMsg
@@ -34807,7 +34628,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def ErrorLink(self):
-        r"""错误链接
+        r"""<p>错误链接</p>
         :rtype: str
         """
         return self._ErrorLink
@@ -34818,7 +34639,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def ErrorLinkText(self):
-        r"""错误链接文本
+        r"""<p>错误链接文本</p>
         :rtype: str
         """
         return self._ErrorLinkText
@@ -34829,7 +34650,7 @@ class SaveDocResponse(AbstractModel):
 
     @property
     def DuplicateFileCheckType(self):
-        r"""重复类型，0：未重复，其他取值请参考入参DuplicateFileHandle结构体的CheckType字段
+        r"""<p>重复类型，0：未重复，其他取值请参考入参DuplicateFileHandle结构体的CheckType字段</p>
         :rtype: int
         """
         return self._DuplicateFileCheckType

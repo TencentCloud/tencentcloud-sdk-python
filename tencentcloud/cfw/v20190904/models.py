@@ -8075,21 +8075,21 @@ class DescribeAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _Index: 需要查询的索引，特定场景使用，可不填
+        :param _Index: <p>需要查询的索引，特定场景使用，可不填</p>
         :type Index: str
-        :param _Filters: 过滤条件组合
+        :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _StartTime: 检索的起始时间，可不传
+        :param _StartTime: <p>检索的起始时间，可不传</p>
         :type StartTime: str
-        :param _EndTime: 检索的截止时间，可不传
+        :param _EndTime: <p>检索的截止时间，可不传</p>
         :type EndTime: str
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
         :type Order: str
-        :param _By: 排序所用到的字段，默认为sequence
+        :param _By: <p>排序所用到的字段，默认为sequence</p>
         :type By: str
         """
         self._Limit = None
@@ -8103,7 +8103,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -8114,7 +8114,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -8125,7 +8125,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def Index(self):
-        r"""需要查询的索引，特定场景使用，可不填
+        r"""<p>需要查询的索引，特定场景使用，可不填</p>
         :rtype: str
         """
         return self._Index
@@ -8136,7 +8136,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合
+        r"""<p>过滤条件组合</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -8147,7 +8147,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检索的起始时间，可不传
+        r"""<p>检索的起始时间，可不传</p>
         :rtype: str
         """
         return self._StartTime
@@ -8158,7 +8158,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检索的截止时间，可不传
+        r"""<p>检索的截止时间，可不传</p>
         :rtype: str
         """
         return self._EndTime
@@ -8169,7 +8169,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
         :rtype: str
         """
         return self._Order
@@ -8180,7 +8180,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段，默认为sequence
+        r"""<p>排序所用到的字段，默认为sequence</p>
         :rtype: str
         """
         return self._By
@@ -8221,11 +8221,11 @@ class DescribeAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总条数
+        :param _Total: <p>总条数</p>
         :type Total: int
-        :param _Data: nat访问控制列表数据
+        :param _Data: <p>nat访问控制列表数据</p>
         :type Data: list of DescAcItem
-        :param _AllTotal: 未过滤的总条数
+        :param _AllTotal: <p>未过滤的总条数</p>
         :type AllTotal: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8237,7 +8237,7 @@ class DescribeAclRuleResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._Total
@@ -8248,7 +8248,7 @@ class DescribeAclRuleResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""nat访问控制列表数据
+        r"""<p>nat访问控制列表数据</p>
         :rtype: list of DescAcItem
         """
         return self._Data
@@ -8259,7 +8259,7 @@ class DescribeAclRuleResponse(AbstractModel):
 
     @property
     def AllTotal(self):
-        r"""未过滤的总条数
+        r"""<p>未过滤的总条数</p>
         :rtype: int
         """
         return self._AllTotal
@@ -12840,21 +12840,21 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _Index: 需要查询的索引，特定场景使用，可不填
+        :param _Index: <p>需要查询的索引，特定场景使用，可不填</p>
         :type Index: str
-        :param _Filters: 过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则
+        :param _Filters: <p>过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则</p>
         :type Filters: list of CommonFilter
-        :param _StartTime: 检索的起始时间，可不传
+        :param _StartTime: <p>检索的起始时间，可不传</p>
         :type StartTime: str
-        :param _EndTime: 检索的截止时间，可不传
+        :param _EndTime: <p>检索的截止时间，可不传</p>
         :type EndTime: str
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
         :type Order: str
-        :param _By: 排序所用到的字段，默认为sequence
+        :param _By: <p>排序所用到的字段，默认为sequence</p>
         :type By: str
         """
         self._Limit = None
@@ -12868,7 +12868,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -12879,7 +12879,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -12890,7 +12890,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Index(self):
-        r"""需要查询的索引，特定场景使用，可不填
+        r"""<p>需要查询的索引，特定场景使用，可不填</p>
         :rtype: str
         """
         return self._Index
@@ -12901,7 +12901,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则
+        r"""<p>过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -12912,7 +12912,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检索的起始时间，可不传
+        r"""<p>检索的起始时间，可不传</p>
         :rtype: str
         """
         return self._StartTime
@@ -12923,7 +12923,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检索的截止时间，可不传
+        r"""<p>检索的截止时间，可不传</p>
         :rtype: str
         """
         return self._EndTime
@@ -12934,7 +12934,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
         :rtype: str
         """
         return self._Order
@@ -12945,7 +12945,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段，默认为sequence
+        r"""<p>排序所用到的字段，默认为sequence</p>
         :rtype: str
         """
         return self._By
@@ -12986,11 +12986,11 @@ class DescribeNatAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总条数
+        :param _Total: <p>总条数</p>
         :type Total: int
-        :param _Data: nat访问控制列表数据
+        :param _Data: <p>nat访问控制列表数据</p>
         :type Data: list of DescAcItem
-        :param _AllTotal: 未过滤的总条数
+        :param _AllTotal: <p>未过滤的总条数</p>
         :type AllTotal: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13002,7 +13002,7 @@ class DescribeNatAcRuleResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._Total
@@ -13013,7 +13013,7 @@ class DescribeNatAcRuleResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""nat访问控制列表数据
+        r"""<p>nat访问控制列表数据</p>
         :rtype: list of DescAcItem
         """
         return self._Data
@@ -13024,7 +13024,7 @@ class DescribeNatAcRuleResponse(AbstractModel):
 
     @property
     def AllTotal(self):
-        r"""未过滤的总条数
+        r"""<p>未过滤的总条数</p>
         :rtype: int
         """
         return self._AllTotal
@@ -15897,21 +15897,21 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _Index: 需要查询的索引，特定场景使用，可不填
+        :param _Index: <p>需要查询的索引，特定场景使用，可不填</p>
         :type Index: str
-        :param _Filters: 过滤条件组合
+        :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _StartTime: 检索的起始时间，可不传
+        :param _StartTime: <p>检索的起始时间，可不传</p>
         :type StartTime: str
-        :param _EndTime: 检索的截止时间，可不传
+        :param _EndTime: <p>检索的截止时间，可不传</p>
         :type EndTime: str
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :type Order: str
-        :param _By: 排序所用到的字段
+        :param _By: <p>排序所用到的字段</p>
         :type By: str
         """
         self._Limit = None
@@ -15925,7 +15925,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -15936,7 +15936,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -15947,7 +15947,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Index(self):
-        r"""需要查询的索引，特定场景使用，可不填
+        r"""<p>需要查询的索引，特定场景使用，可不填</p>
         :rtype: str
         """
         return self._Index
@@ -15958,7 +15958,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合
+        r"""<p>过滤条件组合</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -15969,7 +15969,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检索的起始时间，可不传
+        r"""<p>检索的起始时间，可不传</p>
         :rtype: str
         """
         return self._StartTime
@@ -15980,7 +15980,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检索的截止时间，可不传
+        r"""<p>检索的截止时间，可不传</p>
         :rtype: str
         """
         return self._EndTime
@@ -15991,7 +15991,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :rtype: str
         """
         return self._Order
@@ -16002,7 +16002,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段
+        r"""<p>排序所用到的字段</p>
         :rtype: str
         """
         return self._By
@@ -16043,9 +16043,9 @@ class DescribeVpcAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总条数
+        :param _Total: <p>总条数</p>
         :type Total: int
-        :param _Data: 内网间访问控制列表数据
+        :param _Data: <p>内网间访问控制列表数据</p>
         :type Data: list of VpcRuleItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16056,7 +16056,7 @@ class DescribeVpcAcRuleResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._Total
@@ -16067,7 +16067,7 @@ class DescribeVpcAcRuleResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""内网间访问控制列表数据
+        r"""<p>内网间访问控制列表数据</p>
         :rtype: list of VpcRuleItem
         """
         return self._Data

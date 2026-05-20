@@ -1806,6 +1806,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteVoice(self, request):
+        r"""删除音色（通过音色克隆或设计创建的）。
+
+        :param request: Request instance for DeleteVoice.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteVoiceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteWatermarkTemplate(self, request):
         r"""删除用户自定义水印模板。
 
