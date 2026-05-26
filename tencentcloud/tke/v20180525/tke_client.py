@@ -2626,7 +2626,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterVirtualNode(self, request):
-        r"""查看超级节点列表
+        r"""查看超级节点列表，仅支持TKE标准集群
 
         :param request: Request instance for DescribeClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterVirtualNodeRequest`

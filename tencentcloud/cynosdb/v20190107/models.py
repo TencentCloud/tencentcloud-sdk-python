@@ -11499,108 +11499,97 @@ class CynosdbCluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 集群状态， 可选值如下:
-creating: 创建中
-running:运行中
-isolating:隔离中
-isolated:已隔离
-activating:解隔离中
-offlining:下线中
-offlined:已下线
-deleting:删除中
-deleted:已删除
+        :param _Status: <p>集群状态， 可选值如下:<br>creating: 创建中<br>running:运行中<br>isolating:隔离中<br>isolated:已隔离<br>activating:解隔离中<br>offlining:下线中<br>offlined:已下线<br>deleting:删除中<br>deleted:已删除</p>
         :type Status: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _InstanceNum: 实例数
+        :param _InstanceNum: <p>实例数</p>
         :type InstanceNum: int
-        :param _Uin: 用户uin
+        :param _Uin: <p>用户uin</p>
         :type Uin: str
-        :param _DbType: 引擎类型
+        :param _DbType: <p>引擎类型</p>
         :type DbType: str
-        :param _AppId: 用户appid
+        :param _AppId: <p>用户appid</p>
         :type AppId: int
-        :param _StatusDesc: 集群状态描述
+        :param _StatusDesc: <p>集群状态描述</p>
         :type StatusDesc: str
-        :param _CreateTime: 集群创建时间
+        :param _CreateTime: <p>集群创建时间</p>
         :type CreateTime: str
-        :param _PayMode: 付费模式。0-按量计费，1-包年包月
+        :param _PayMode: <p>付费模式。0-按量计费，1-包年包月</p>
         :type PayMode: int
-        :param _PeriodEndTime: 截止时间
+        :param _PeriodEndTime: <p>截止时间</p>
         :type PeriodEndTime: str
-        :param _Vip: 集群读写vip
+        :param _Vip: <p>集群读写vip</p>
         :type Vip: str
-        :param _Vport: 集群读写vport
+        :param _Vport: <p>集群读写vport</p>
         :type Vport: int
-        :param _ProjectID: 项目id
+        :param _ProjectID: <p>项目id</p>
         :type ProjectID: int
-        :param _VpcId: 私有网络ID
+        :param _VpcId: <p>私有网络ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _CynosVersion: cynos内核版本
+        :param _CynosVersion: <p>cynos内核版本</p>
         :type CynosVersion: str
-        :param _CynosVersionTag: cynos版本标签
+        :param _CynosVersionTag: <p>cynos版本标签</p>
         :type CynosVersionTag: str
-        :param _StorageLimit: 存储容量
+        :param _StorageLimit: <p>存储容量</p>
         :type StorageLimit: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: <p>续费标志</p>
         :type RenewFlag: int
-        :param _ProcessingTask: 正在处理的任务
+        :param _ProcessingTask: <p>正在处理的任务</p>
         :type ProcessingTask: str
-        :param _Tasks: 集群的任务数组
+        :param _Tasks: <p>集群的任务数组</p>
         :type Tasks: list of ObjectTask
-        :param _ResourceTags: 集群绑定的tag数组
+        :param _ResourceTags: <p>集群绑定的tag数组</p>
         :type ResourceTags: list of Tag
-        :param _DbMode: Db类型(NORMAL, SERVERLESS)
+        :param _DbMode: <p>Db类型(NORMAL, SERVERLESS)</p>
         :type DbMode: str
-        :param _ServerlessStatus: 当Db类型为SERVERLESS时，serverless集群状态，可选值:
-resume
-pause
+        :param _ServerlessStatus: <p>当Db类型为SERVERLESS时，serverless集群状态，可选值:<br>resume<br>pause</p>
         :type ServerlessStatus: str
-        :param _Storage: 集群预付费存储值大小
+        :param _Storage: <p>集群预付费存储值大小</p>
         :type Storage: int
-        :param _StorageId: 集群存储为预付费时的存储ID，用于预付费存储变配
+        :param _StorageId: <p>集群存储为预付费时的存储ID，用于预付费存储变配</p>
         :type StorageId: str
-        :param _StoragePayMode: 集群存储付费模式。0-按量计费，1-包年包月
+        :param _StoragePayMode: <p>集群存储付费模式。0-按量计费，1-包年包月</p>
         :type StoragePayMode: int
-        :param _MinStorageSize: 集群计算规格对应的最小存储值
+        :param _MinStorageSize: <p>集群计算规格对应的最小存储值</p>
         :type MinStorageSize: int
-        :param _MaxStorageSize: 集群计算规格对应的最大存储值
+        :param _MaxStorageSize: <p>集群计算规格对应的最大存储值</p>
         :type MaxStorageSize: int
-        :param _NetAddrs: 集群网络信息
+        :param _NetAddrs: <p>集群网络信息</p>
         :type NetAddrs: list of NetAddr
-        :param _PhysicalZone: 物理可用区
+        :param _PhysicalZone: <p>物理可用区</p>
         :type PhysicalZone: str
-        :param _MasterZone: 主可用区
+        :param _MasterZone: <p>主可用区</p>
         :type MasterZone: str
-        :param _HasSlaveZone: 是否有从可用区
+        :param _HasSlaveZone: <p>是否有从可用区</p>
         :type HasSlaveZone: str
-        :param _SlaveZones: 从可用区
+        :param _SlaveZones: <p>从可用区</p>
         :type SlaveZones: list of str
-        :param _BusinessType: 商业类型
+        :param _BusinessType: <p>商业类型</p>
         :type BusinessType: str
-        :param _IsFreeze: 是否冻结
+        :param _IsFreeze: <p>是否冻结</p>
         :type IsFreeze: str
-        :param _OrderSource: 订单来源
+        :param _OrderSource: <p>订单来源</p>
         :type OrderSource: str
-        :param _Ability: 能力
+        :param _Ability: <p>能力</p>
         :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
-        :param _ResourcePackages: 实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）	
+        :param _ResourcePackages: <p>实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）</p>
         :type ResourcePackages: list of ResourcePackage
-        :param _GdnId: 全球数据库唯一标识
+        :param _GdnId: <p>全球数据库唯一标识</p>
         :type GdnId: str
-        :param _GdnRole: 集群角色。主集群- primary，从集群 - standby，如果 GdnId为空，该字段无效。
+        :param _GdnRole: <p>集群角色。主集群- primary，从集群 - standby，如果 GdnId为空，该字段无效。</p>
         :type GdnRole: str
         """
         self._Status = None
@@ -11652,16 +11641,7 @@ pause
 
     @property
     def Status(self):
-        r"""集群状态， 可选值如下:
-creating: 创建中
-running:运行中
-isolating:隔离中
-isolated:已隔离
-activating:解隔离中
-offlining:下线中
-offlined:已下线
-deleting:删除中
-deleted:已删除
+        r"""<p>集群状态， 可选值如下:<br>creating: 创建中<br>running:运行中<br>isolating:隔离中<br>isolated:已隔离<br>activating:解隔离中<br>offlining:下线中<br>offlined:已下线<br>deleting:删除中<br>deleted:已删除</p>
         :rtype: str
         """
         return self._Status
@@ -11672,7 +11652,7 @@ deleted:已删除
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -11683,7 +11663,7 @@ deleted:已删除
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -11694,7 +11674,7 @@ deleted:已删除
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -11705,7 +11685,7 @@ deleted:已删除
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -11716,7 +11696,7 @@ deleted:已删除
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -11727,7 +11707,7 @@ deleted:已删除
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -11738,7 +11718,7 @@ deleted:已删除
 
     @property
     def InstanceNum(self):
-        r"""实例数
+        r"""<p>实例数</p>
         :rtype: int
         """
         return self._InstanceNum
@@ -11749,7 +11729,7 @@ deleted:已删除
 
     @property
     def Uin(self):
-        r"""用户uin
+        r"""<p>用户uin</p>
         :rtype: str
         """
         return self._Uin
@@ -11760,7 +11740,7 @@ deleted:已删除
 
     @property
     def DbType(self):
-        r"""引擎类型
+        r"""<p>引擎类型</p>
         :rtype: str
         """
         return self._DbType
@@ -11771,7 +11751,7 @@ deleted:已删除
 
     @property
     def AppId(self):
-        r"""用户appid
+        r"""<p>用户appid</p>
         :rtype: int
         """
         return self._AppId
@@ -11782,7 +11762,7 @@ deleted:已删除
 
     @property
     def StatusDesc(self):
-        r"""集群状态描述
+        r"""<p>集群状态描述</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -11793,7 +11773,7 @@ deleted:已删除
 
     @property
     def CreateTime(self):
-        r"""集群创建时间
+        r"""<p>集群创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -11804,7 +11784,7 @@ deleted:已删除
 
     @property
     def PayMode(self):
-        r"""付费模式。0-按量计费，1-包年包月
+        r"""<p>付费模式。0-按量计费，1-包年包月</p>
         :rtype: int
         """
         return self._PayMode
@@ -11815,7 +11795,7 @@ deleted:已删除
 
     @property
     def PeriodEndTime(self):
-        r"""截止时间
+        r"""<p>截止时间</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -11826,7 +11806,7 @@ deleted:已删除
 
     @property
     def Vip(self):
-        r"""集群读写vip
+        r"""<p>集群读写vip</p>
         :rtype: str
         """
         return self._Vip
@@ -11837,7 +11817,7 @@ deleted:已删除
 
     @property
     def Vport(self):
-        r"""集群读写vport
+        r"""<p>集群读写vport</p>
         :rtype: int
         """
         return self._Vport
@@ -11848,7 +11828,7 @@ deleted:已删除
 
     @property
     def ProjectID(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: int
         """
         return self._ProjectID
@@ -11859,7 +11839,7 @@ deleted:已删除
 
     @property
     def VpcId(self):
-        r"""私有网络ID
+        r"""<p>私有网络ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -11870,7 +11850,7 @@ deleted:已删除
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -11881,7 +11861,7 @@ deleted:已删除
 
     @property
     def CynosVersion(self):
-        r"""cynos内核版本
+        r"""<p>cynos内核版本</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -11892,7 +11872,7 @@ deleted:已删除
 
     @property
     def CynosVersionTag(self):
-        r"""cynos版本标签
+        r"""<p>cynos版本标签</p>
         :rtype: str
         """
         return self._CynosVersionTag
@@ -11903,7 +11883,7 @@ deleted:已删除
 
     @property
     def StorageLimit(self):
-        r"""存储容量
+        r"""<p>存储容量</p>
         :rtype: int
         """
         return self._StorageLimit
@@ -11914,7 +11894,7 @@ deleted:已删除
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""<p>续费标志</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -11925,7 +11905,7 @@ deleted:已删除
 
     @property
     def ProcessingTask(self):
-        r"""正在处理的任务
+        r"""<p>正在处理的任务</p>
         :rtype: str
         """
         return self._ProcessingTask
@@ -11936,7 +11916,7 @@ deleted:已删除
 
     @property
     def Tasks(self):
-        r"""集群的任务数组
+        r"""<p>集群的任务数组</p>
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -11947,7 +11927,7 @@ deleted:已删除
 
     @property
     def ResourceTags(self):
-        r"""集群绑定的tag数组
+        r"""<p>集群绑定的tag数组</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -11958,7 +11938,7 @@ deleted:已删除
 
     @property
     def DbMode(self):
-        r"""Db类型(NORMAL, SERVERLESS)
+        r"""<p>Db类型(NORMAL, SERVERLESS)</p>
         :rtype: str
         """
         return self._DbMode
@@ -11969,9 +11949,7 @@ deleted:已删除
 
     @property
     def ServerlessStatus(self):
-        r"""当Db类型为SERVERLESS时，serverless集群状态，可选值:
-resume
-pause
+        r"""<p>当Db类型为SERVERLESS时，serverless集群状态，可选值:<br>resume<br>pause</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -11982,7 +11960,7 @@ pause
 
     @property
     def Storage(self):
-        r"""集群预付费存储值大小
+        r"""<p>集群预付费存储值大小</p>
         :rtype: int
         """
         return self._Storage
@@ -11993,7 +11971,7 @@ pause
 
     @property
     def StorageId(self):
-        r"""集群存储为预付费时的存储ID，用于预付费存储变配
+        r"""<p>集群存储为预付费时的存储ID，用于预付费存储变配</p>
         :rtype: str
         """
         return self._StorageId
@@ -12004,7 +11982,7 @@ pause
 
     @property
     def StoragePayMode(self):
-        r"""集群存储付费模式。0-按量计费，1-包年包月
+        r"""<p>集群存储付费模式。0-按量计费，1-包年包月</p>
         :rtype: int
         """
         return self._StoragePayMode
@@ -12015,7 +11993,7 @@ pause
 
     @property
     def MinStorageSize(self):
-        r"""集群计算规格对应的最小存储值
+        r"""<p>集群计算规格对应的最小存储值</p>
         :rtype: int
         """
         return self._MinStorageSize
@@ -12026,7 +12004,7 @@ pause
 
     @property
     def MaxStorageSize(self):
-        r"""集群计算规格对应的最大存储值
+        r"""<p>集群计算规格对应的最大存储值</p>
         :rtype: int
         """
         return self._MaxStorageSize
@@ -12037,7 +12015,7 @@ pause
 
     @property
     def NetAddrs(self):
-        r"""集群网络信息
+        r"""<p>集群网络信息</p>
         :rtype: list of NetAddr
         """
         return self._NetAddrs
@@ -12048,7 +12026,7 @@ pause
 
     @property
     def PhysicalZone(self):
-        r"""物理可用区
+        r"""<p>物理可用区</p>
         :rtype: str
         """
         return self._PhysicalZone
@@ -12059,7 +12037,7 @@ pause
 
     @property
     def MasterZone(self):
-        r"""主可用区
+        r"""<p>主可用区</p>
         :rtype: str
         """
         return self._MasterZone
@@ -12070,7 +12048,7 @@ pause
 
     @property
     def HasSlaveZone(self):
-        r"""是否有从可用区
+        r"""<p>是否有从可用区</p>
         :rtype: str
         """
         return self._HasSlaveZone
@@ -12081,7 +12059,7 @@ pause
 
     @property
     def SlaveZones(self):
-        r"""从可用区
+        r"""<p>从可用区</p>
         :rtype: list of str
         """
         return self._SlaveZones
@@ -12092,7 +12070,7 @@ pause
 
     @property
     def BusinessType(self):
-        r"""商业类型
+        r"""<p>商业类型</p>
         :rtype: str
         """
         return self._BusinessType
@@ -12103,7 +12081,7 @@ pause
 
     @property
     def IsFreeze(self):
-        r"""是否冻结
+        r"""<p>是否冻结</p>
         :rtype: str
         """
         return self._IsFreeze
@@ -12114,7 +12092,7 @@ pause
 
     @property
     def OrderSource(self):
-        r"""订单来源
+        r"""<p>订单来源</p>
         :rtype: str
         """
         return self._OrderSource
@@ -12125,7 +12103,7 @@ pause
 
     @property
     def Ability(self):
-        r"""能力
+        r"""<p>能力</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         """
         return self._Ability
@@ -12136,7 +12114,7 @@ pause
 
     @property
     def ResourcePackages(self):
-        r"""实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）	
+        r"""<p>实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）</p>
         :rtype: list of ResourcePackage
         """
         return self._ResourcePackages
@@ -12147,7 +12125,7 @@ pause
 
     @property
     def GdnId(self):
-        r"""全球数据库唯一标识
+        r"""<p>全球数据库唯一标识</p>
         :rtype: str
         """
         return self._GdnId
@@ -12158,7 +12136,7 @@ pause
 
     @property
     def GdnRole(self):
-        r"""集群角色。主集群- primary，从集群 - standby，如果 GdnId为空，该字段无效。
+        r"""<p>集群角色。主集群- primary，从集群 - standby，如果 GdnId为空，该字段无效。</p>
         :rtype: str
         """
         return self._GdnRole
@@ -47183,31 +47161,33 @@ class ParamItemDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CurrentValue: 当前值
+        :param _CurrentValue: <p>当前值</p>
         :type CurrentValue: str
-        :param _Default: 默认值
+        :param _Default: <p>默认值</p>
         :type Default: str
-        :param _EnumValue: 参数的可选枚举值。如果为非枚举值，则为空
+        :param _EnumValue: <p>参数的可选枚举值。如果为非枚举值，则为空</p>
         :type EnumValue: list of str
-        :param _IsGlobal: 1：全局参数，0：非全局参数
+        :param _IsGlobal: <p>1：全局参数，0：非全局参数</p>
         :type IsGlobal: int
-        :param _Max: 最大值
+        :param _Max: <p>最大值</p>
         :type Max: str
-        :param _Min: 最小值
+        :param _Min: <p>最小值</p>
         :type Min: str
-        :param _NeedReboot: 修改参数后，是否需要重启数据库以使参数生效。0-不需要重启，1-需要重启。
+        :param _NeedReboot: <p>修改参数后，是否需要重启数据库以使参数生效。0-不需要重启，1-需要重启。</p>
         :type NeedReboot: int
-        :param _ParamName: 参数名称
+        :param _ParamName: <p>参数名称</p>
         :type ParamName: str
-        :param _ParamType: 参数类型：integer，enum，float，string，func
+        :param _ParamType: <p>参数类型：integer，enum，float，string，func</p>
         :type ParamType: str
-        :param _Description: 参数描述
+        :param _ModifiableInfo: <p>参数是否可修改</p>
+        :type ModifiableInfo: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
+        :param _Description: <p>参数描述</p>
         :type Description: str
-        :param _IsFunc: 类型是否为公式
+        :param _IsFunc: <p>类型是否为公式</p>
         :type IsFunc: bool
-        :param _Func: 参数配置公式
+        :param _Func: <p>参数配置公式</p>
         :type Func: str
-        :param _FuncPattern: 支持公式的参数的默认公式样式
+        :param _FuncPattern: <p>支持公式的参数的默认公式样式</p>
         :type FuncPattern: str
         """
         self._CurrentValue = None
@@ -47219,6 +47199,7 @@ class ParamItemDetail(AbstractModel):
         self._NeedReboot = None
         self._ParamName = None
         self._ParamType = None
+        self._ModifiableInfo = None
         self._Description = None
         self._IsFunc = None
         self._Func = None
@@ -47226,7 +47207,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def CurrentValue(self):
-        r"""当前值
+        r"""<p>当前值</p>
         :rtype: str
         """
         return self._CurrentValue
@@ -47237,7 +47218,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def Default(self):
-        r"""默认值
+        r"""<p>默认值</p>
         :rtype: str
         """
         return self._Default
@@ -47248,7 +47229,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def EnumValue(self):
-        r"""参数的可选枚举值。如果为非枚举值，则为空
+        r"""<p>参数的可选枚举值。如果为非枚举值，则为空</p>
         :rtype: list of str
         """
         return self._EnumValue
@@ -47259,7 +47240,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def IsGlobal(self):
-        r"""1：全局参数，0：非全局参数
+        r"""<p>1：全局参数，0：非全局参数</p>
         :rtype: int
         """
         return self._IsGlobal
@@ -47270,7 +47251,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def Max(self):
-        r"""最大值
+        r"""<p>最大值</p>
         :rtype: str
         """
         return self._Max
@@ -47281,7 +47262,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def Min(self):
-        r"""最小值
+        r"""<p>最小值</p>
         :rtype: str
         """
         return self._Min
@@ -47292,7 +47273,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def NeedReboot(self):
-        r"""修改参数后，是否需要重启数据库以使参数生效。0-不需要重启，1-需要重启。
+        r"""<p>修改参数后，是否需要重启数据库以使参数生效。0-不需要重启，1-需要重启。</p>
         :rtype: int
         """
         return self._NeedReboot
@@ -47303,7 +47284,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def ParamName(self):
-        r"""参数名称
+        r"""<p>参数名称</p>
         :rtype: str
         """
         return self._ParamName
@@ -47314,7 +47295,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def ParamType(self):
-        r"""参数类型：integer，enum，float，string，func
+        r"""<p>参数类型：integer，enum，float，string，func</p>
         :rtype: str
         """
         return self._ParamType
@@ -47324,8 +47305,19 @@ class ParamItemDetail(AbstractModel):
         self._ParamType = ParamType
 
     @property
+    def ModifiableInfo(self):
+        r"""<p>参数是否可修改</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
+        """
+        return self._ModifiableInfo
+
+    @ModifiableInfo.setter
+    def ModifiableInfo(self, ModifiableInfo):
+        self._ModifiableInfo = ModifiableInfo
+
+    @property
     def Description(self):
-        r"""参数描述
+        r"""<p>参数描述</p>
         :rtype: str
         """
         return self._Description
@@ -47336,7 +47328,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def IsFunc(self):
-        r"""类型是否为公式
+        r"""<p>类型是否为公式</p>
         :rtype: bool
         """
         return self._IsFunc
@@ -47347,7 +47339,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def Func(self):
-        r"""参数配置公式
+        r"""<p>参数配置公式</p>
         :rtype: str
         """
         return self._Func
@@ -47358,7 +47350,7 @@ class ParamItemDetail(AbstractModel):
 
     @property
     def FuncPattern(self):
-        r"""支持公式的参数的默认公式样式
+        r"""<p>支持公式的参数的默认公式样式</p>
         :rtype: str
         """
         return self._FuncPattern
@@ -47378,6 +47370,9 @@ class ParamItemDetail(AbstractModel):
         self._NeedReboot = params.get("NeedReboot")
         self._ParamName = params.get("ParamName")
         self._ParamType = params.get("ParamType")
+        if params.get("ModifiableInfo") is not None:
+            self._ModifiableInfo = ModifiableInfo()
+            self._ModifiableInfo._deserialize(params.get("ModifiableInfo"))
         self._Description = params.get("Description")
         self._IsFunc = params.get("IsFunc")
         self._Func = params.get("Func")

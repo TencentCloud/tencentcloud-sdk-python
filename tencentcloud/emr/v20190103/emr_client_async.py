@@ -460,6 +460,24 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDynamicInstanceDetail(
+            self,
+            request: models.DescribeDynamicInstanceDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDynamicInstanceDetailResponse:
+        """
+        描述容器EMR-TKE集群DynamicInstance详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDynamicInstanceDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDynamicInstanceDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDynamicInstanceList(
             self,
             request: models.DescribeDynamicInstanceListRequest,

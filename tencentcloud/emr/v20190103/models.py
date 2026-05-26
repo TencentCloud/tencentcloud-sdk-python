@@ -9844,6 +9844,443 @@ class DescribeDAGInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDynamicInstanceDetailRequest(AbstractModel):
+    r"""DescribeDynamicInstanceDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>EMR 集群 id</p>
+        :type InstanceId: str
+        :param _RayClusterId: <p>Ray集群Id</p>
+        :type RayClusterId: int
+        """
+        self._InstanceId = None
+        self._RayClusterId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>EMR 集群 id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RayClusterId(self):
+        r"""<p>Ray集群Id</p>
+        :rtype: int
+        """
+        return self._RayClusterId
+
+    @RayClusterId.setter
+    def RayClusterId(self, RayClusterId):
+        self._RayClusterId = RayClusterId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RayClusterId = params.get("RayClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDynamicInstanceDetailResponse(AbstractModel):
+    r"""DescribeDynamicInstanceDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RayClusterName: <p>ray集群名</p>
+        :type RayClusterName: str
+        :param _RayClusterId: <p>ray集群ID</p>
+        :type RayClusterId: int
+        :param _SubmitType: <p>创建类型</p><p>枚举值：</p><ul><li>1： 表单创建</li><li>2： yaml创建</li></ul>
+        :type SubmitType: int
+        :param _Namespace: <p>命名空间</p>
+        :type Namespace: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _Labels: <p>labels</p>
+        :type Labels: list of NameValue
+        :param _Tolerations: <p>Tolerations</p>
+        :type Tolerations: list of Toleration
+        :param _Env: <p>环境变量</p>
+        :type Env: list of NameValue
+        :param _SupportExternalKerberosService: <p>是否依赖 Kerberos 外部组件</p>
+        :type SupportExternalKerberosService: bool
+        :param _KerberosCluster: <p>依赖的Kerberos集群</p>
+        :type KerberosCluster: str
+        :param _Token: <p>token</p>
+        :type Token: str
+        :param _HeadGroupSpec: <p>HeadGroup</p>
+        :type HeadGroupSpec: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceGroupSpec`
+        :param _WorkerGroupSpecs: <p>WorkerGroup</p>
+        :type WorkerGroupSpecs: list of DynamicInstanceGroupSpec
+        :param _StorageConfigEnabled: <p>是否开启存储配置</p>
+        :type StorageConfigEnabled: bool
+        :param _RedisInstance: <p>Redis 实例信息</p>
+        :type RedisInstance: :class:`tencentcloud.emr.v20190103.models.RedisInstance`
+        :param _CustomImage: <p>镜像信息</p>
+        :type CustomImage: :class:`tencentcloud.emr.v20190103.models.CustomImage`
+        :param _DashboardUrl: <p>dashboard链接</p>
+        :type DashboardUrl: str
+        :param _TotalPodCount: <p>pod 总数</p>
+        :type TotalPodCount: int
+        :param _HighAvailability: <p>是否高可用</p>
+        :type HighAvailability: bool
+        :param _PersistentVolume: <p>存储信息</p>
+        :type PersistentVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolume`
+        :param _RayClusterYaml: <p>rayClusterYamlJson</p>
+        :type RayClusterYaml: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RayClusterName = None
+        self._RayClusterId = None
+        self._SubmitType = None
+        self._Namespace = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Labels = None
+        self._Tolerations = None
+        self._Env = None
+        self._SupportExternalKerberosService = None
+        self._KerberosCluster = None
+        self._Token = None
+        self._HeadGroupSpec = None
+        self._WorkerGroupSpecs = None
+        self._StorageConfigEnabled = None
+        self._RedisInstance = None
+        self._CustomImage = None
+        self._DashboardUrl = None
+        self._TotalPodCount = None
+        self._HighAvailability = None
+        self._PersistentVolume = None
+        self._RayClusterYaml = None
+        self._RequestId = None
+
+    @property
+    def RayClusterName(self):
+        r"""<p>ray集群名</p>
+        :rtype: str
+        """
+        return self._RayClusterName
+
+    @RayClusterName.setter
+    def RayClusterName(self, RayClusterName):
+        self._RayClusterName = RayClusterName
+
+    @property
+    def RayClusterId(self):
+        r"""<p>ray集群ID</p>
+        :rtype: int
+        """
+        return self._RayClusterId
+
+    @RayClusterId.setter
+    def RayClusterId(self, RayClusterId):
+        self._RayClusterId = RayClusterId
+
+    @property
+    def SubmitType(self):
+        r"""<p>创建类型</p><p>枚举值：</p><ul><li>1： 表单创建</li><li>2： yaml创建</li></ul>
+        :rtype: int
+        """
+        return self._SubmitType
+
+    @SubmitType.setter
+    def SubmitType(self, SubmitType):
+        self._SubmitType = SubmitType
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Labels(self):
+        r"""<p>labels</p>
+        :rtype: list of NameValue
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Tolerations(self):
+        r"""<p>Tolerations</p>
+        :rtype: list of Toleration
+        """
+        return self._Tolerations
+
+    @Tolerations.setter
+    def Tolerations(self, Tolerations):
+        self._Tolerations = Tolerations
+
+    @property
+    def Env(self):
+        r"""<p>环境变量</p>
+        :rtype: list of NameValue
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def SupportExternalKerberosService(self):
+        r"""<p>是否依赖 Kerberos 外部组件</p>
+        :rtype: bool
+        """
+        return self._SupportExternalKerberosService
+
+    @SupportExternalKerberosService.setter
+    def SupportExternalKerberosService(self, SupportExternalKerberosService):
+        self._SupportExternalKerberosService = SupportExternalKerberosService
+
+    @property
+    def KerberosCluster(self):
+        r"""<p>依赖的Kerberos集群</p>
+        :rtype: str
+        """
+        return self._KerberosCluster
+
+    @KerberosCluster.setter
+    def KerberosCluster(self, KerberosCluster):
+        self._KerberosCluster = KerberosCluster
+
+    @property
+    def Token(self):
+        r"""<p>token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def HeadGroupSpec(self):
+        r"""<p>HeadGroup</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceGroupSpec`
+        """
+        return self._HeadGroupSpec
+
+    @HeadGroupSpec.setter
+    def HeadGroupSpec(self, HeadGroupSpec):
+        self._HeadGroupSpec = HeadGroupSpec
+
+    @property
+    def WorkerGroupSpecs(self):
+        r"""<p>WorkerGroup</p>
+        :rtype: list of DynamicInstanceGroupSpec
+        """
+        return self._WorkerGroupSpecs
+
+    @WorkerGroupSpecs.setter
+    def WorkerGroupSpecs(self, WorkerGroupSpecs):
+        self._WorkerGroupSpecs = WorkerGroupSpecs
+
+    @property
+    def StorageConfigEnabled(self):
+        r"""<p>是否开启存储配置</p>
+        :rtype: bool
+        """
+        return self._StorageConfigEnabled
+
+    @StorageConfigEnabled.setter
+    def StorageConfigEnabled(self, StorageConfigEnabled):
+        self._StorageConfigEnabled = StorageConfigEnabled
+
+    @property
+    def RedisInstance(self):
+        r"""<p>Redis 实例信息</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.RedisInstance`
+        """
+        return self._RedisInstance
+
+    @RedisInstance.setter
+    def RedisInstance(self, RedisInstance):
+        self._RedisInstance = RedisInstance
+
+    @property
+    def CustomImage(self):
+        r"""<p>镜像信息</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CustomImage`
+        """
+        return self._CustomImage
+
+    @CustomImage.setter
+    def CustomImage(self, CustomImage):
+        self._CustomImage = CustomImage
+
+    @property
+    def DashboardUrl(self):
+        r"""<p>dashboard链接</p>
+        :rtype: str
+        """
+        return self._DashboardUrl
+
+    @DashboardUrl.setter
+    def DashboardUrl(self, DashboardUrl):
+        self._DashboardUrl = DashboardUrl
+
+    @property
+    def TotalPodCount(self):
+        r"""<p>pod 总数</p>
+        :rtype: int
+        """
+        return self._TotalPodCount
+
+    @TotalPodCount.setter
+    def TotalPodCount(self, TotalPodCount):
+        self._TotalPodCount = TotalPodCount
+
+    @property
+    def HighAvailability(self):
+        r"""<p>是否高可用</p>
+        :rtype: bool
+        """
+        return self._HighAvailability
+
+    @HighAvailability.setter
+    def HighAvailability(self, HighAvailability):
+        self._HighAvailability = HighAvailability
+
+    @property
+    def PersistentVolume(self):
+        r"""<p>存储信息</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PersistentVolume`
+        """
+        return self._PersistentVolume
+
+    @PersistentVolume.setter
+    def PersistentVolume(self, PersistentVolume):
+        self._PersistentVolume = PersistentVolume
+
+    @property
+    def RayClusterYaml(self):
+        r"""<p>rayClusterYamlJson</p>
+        :rtype: str
+        """
+        return self._RayClusterYaml
+
+    @RayClusterYaml.setter
+    def RayClusterYaml(self, RayClusterYaml):
+        self._RayClusterYaml = RayClusterYaml
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RayClusterName = params.get("RayClusterName")
+        self._RayClusterId = params.get("RayClusterId")
+        self._SubmitType = params.get("SubmitType")
+        self._Namespace = params.get("Namespace")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = NameValue()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Tolerations") is not None:
+            self._Tolerations = []
+            for item in params.get("Tolerations"):
+                obj = Toleration()
+                obj._deserialize(item)
+                self._Tolerations.append(obj)
+        if params.get("Env") is not None:
+            self._Env = []
+            for item in params.get("Env"):
+                obj = NameValue()
+                obj._deserialize(item)
+                self._Env.append(obj)
+        self._SupportExternalKerberosService = params.get("SupportExternalKerberosService")
+        self._KerberosCluster = params.get("KerberosCluster")
+        self._Token = params.get("Token")
+        if params.get("HeadGroupSpec") is not None:
+            self._HeadGroupSpec = DynamicInstanceGroupSpec()
+            self._HeadGroupSpec._deserialize(params.get("HeadGroupSpec"))
+        if params.get("WorkerGroupSpecs") is not None:
+            self._WorkerGroupSpecs = []
+            for item in params.get("WorkerGroupSpecs"):
+                obj = DynamicInstanceGroupSpec()
+                obj._deserialize(item)
+                self._WorkerGroupSpecs.append(obj)
+        self._StorageConfigEnabled = params.get("StorageConfigEnabled")
+        if params.get("RedisInstance") is not None:
+            self._RedisInstance = RedisInstance()
+            self._RedisInstance._deserialize(params.get("RedisInstance"))
+        if params.get("CustomImage") is not None:
+            self._CustomImage = CustomImage()
+            self._CustomImage._deserialize(params.get("CustomImage"))
+        self._DashboardUrl = params.get("DashboardUrl")
+        self._TotalPodCount = params.get("TotalPodCount")
+        self._HighAvailability = params.get("HighAvailability")
+        if params.get("PersistentVolume") is not None:
+            self._PersistentVolume = PersistentVolume()
+            self._PersistentVolume._deserialize(params.get("PersistentVolume"))
+        self._RayClusterYaml = params.get("RayClusterYaml")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDynamicInstanceListRequest(AbstractModel):
     r"""DescribeDynamicInstanceList请求参数结构体
 
@@ -18234,6 +18671,286 @@ class DynamicInstanceGroup(AbstractModel):
                 obj = CFSTurboVolume()
                 obj._deserialize(item)
                 self._CFSTurboVolumes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DynamicInstanceGroupSpec(AbstractModel):
+    r"""DynamicInstanceGroupSpec
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: group 名称
+        :type Name: str
+        :param _PodCount: pod 数量
+        :type PodCount: int
+        :param _MinNodes: 最小节点数
+        :type MinNodes: int
+        :param _MaxNodes: 最大节点数
+        :type MaxNodes: int
+        :param _StorageConfigEnabled:  是否开启存储配置
+        :type StorageConfigEnabled: bool
+        :param _GroupType: headGroup:head;
+workerGroup:worker
+        :type GroupType: str
+        :param _Cpu: CPU 核数
+        :type Cpu: int
+        :param _MemSize: 内存(GB)
+        :type MemSize: int
+        :param _GpuType: GPU类型
+        :type GpuType: str
+        :param _Gpu: GPU核数
+        :type Gpu: int
+        :param _ResourceLabels: 资源标签
+        :type ResourceLabels: str
+        :param _Env: 环境变量
+        :type Env: list of NameValue
+        :param _Labels: 标签
+        :type Labels: list of NameValue
+        :param _Tolerations: 容忍度
+        :type Tolerations: list of Toleration
+        :param _Scheduler: 调度策略
+        :type Scheduler: str
+        :param _PersistentVolume: 卷目录
+        :type PersistentVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolume`
+        """
+        self._Name = None
+        self._PodCount = None
+        self._MinNodes = None
+        self._MaxNodes = None
+        self._StorageConfigEnabled = None
+        self._GroupType = None
+        self._Cpu = None
+        self._MemSize = None
+        self._GpuType = None
+        self._Gpu = None
+        self._ResourceLabels = None
+        self._Env = None
+        self._Labels = None
+        self._Tolerations = None
+        self._Scheduler = None
+        self._PersistentVolume = None
+
+    @property
+    def Name(self):
+        r"""group 名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PodCount(self):
+        r"""pod 数量
+        :rtype: int
+        """
+        return self._PodCount
+
+    @PodCount.setter
+    def PodCount(self, PodCount):
+        self._PodCount = PodCount
+
+    @property
+    def MinNodes(self):
+        r"""最小节点数
+        :rtype: int
+        """
+        return self._MinNodes
+
+    @MinNodes.setter
+    def MinNodes(self, MinNodes):
+        self._MinNodes = MinNodes
+
+    @property
+    def MaxNodes(self):
+        r"""最大节点数
+        :rtype: int
+        """
+        return self._MaxNodes
+
+    @MaxNodes.setter
+    def MaxNodes(self, MaxNodes):
+        self._MaxNodes = MaxNodes
+
+    @property
+    def StorageConfigEnabled(self):
+        r""" 是否开启存储配置
+        :rtype: bool
+        """
+        return self._StorageConfigEnabled
+
+    @StorageConfigEnabled.setter
+    def StorageConfigEnabled(self, StorageConfigEnabled):
+        self._StorageConfigEnabled = StorageConfigEnabled
+
+    @property
+    def GroupType(self):
+        r"""headGroup:head;
+workerGroup:worker
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def Cpu(self):
+        r"""CPU 核数
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def MemSize(self):
+        r"""内存(GB)
+        :rtype: int
+        """
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def GpuType(self):
+        r"""GPU类型
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def Gpu(self):
+        r"""GPU核数
+        :rtype: int
+        """
+        return self._Gpu
+
+    @Gpu.setter
+    def Gpu(self, Gpu):
+        self._Gpu = Gpu
+
+    @property
+    def ResourceLabels(self):
+        r"""资源标签
+        :rtype: str
+        """
+        return self._ResourceLabels
+
+    @ResourceLabels.setter
+    def ResourceLabels(self, ResourceLabels):
+        self._ResourceLabels = ResourceLabels
+
+    @property
+    def Env(self):
+        r"""环境变量
+        :rtype: list of NameValue
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Labels(self):
+        r"""标签
+        :rtype: list of NameValue
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Tolerations(self):
+        r"""容忍度
+        :rtype: list of Toleration
+        """
+        return self._Tolerations
+
+    @Tolerations.setter
+    def Tolerations(self, Tolerations):
+        self._Tolerations = Tolerations
+
+    @property
+    def Scheduler(self):
+        r"""调度策略
+        :rtype: str
+        """
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+    @property
+    def PersistentVolume(self):
+        r"""卷目录
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PersistentVolume`
+        """
+        return self._PersistentVolume
+
+    @PersistentVolume.setter
+    def PersistentVolume(self, PersistentVolume):
+        self._PersistentVolume = PersistentVolume
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._PodCount = params.get("PodCount")
+        self._MinNodes = params.get("MinNodes")
+        self._MaxNodes = params.get("MaxNodes")
+        self._StorageConfigEnabled = params.get("StorageConfigEnabled")
+        self._GroupType = params.get("GroupType")
+        self._Cpu = params.get("Cpu")
+        self._MemSize = params.get("MemSize")
+        self._GpuType = params.get("GpuType")
+        self._Gpu = params.get("Gpu")
+        self._ResourceLabels = params.get("ResourceLabels")
+        if params.get("Env") is not None:
+            self._Env = []
+            for item in params.get("Env"):
+                obj = NameValue()
+                obj._deserialize(item)
+                self._Env.append(obj)
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = NameValue()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Tolerations") is not None:
+            self._Tolerations = []
+            for item in params.get("Tolerations"):
+                obj = Toleration()
+                obj._deserialize(item)
+                self._Tolerations.append(obj)
+        self._Scheduler = params.get("Scheduler")
+        if params.get("PersistentVolume") is not None:
+            self._PersistentVolume = PersistentVolume()
+            self._PersistentVolume._deserialize(params.get("PersistentVolume"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32298,6 +33015,162 @@ class Period(AbstractModel):
         
 
 
+class PersistentVolume(AbstractModel):
+    r"""卷目录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CBSVolumes: <p>cbs 存储卷</p>
+        :type CBSVolumes: list of CBSVolume
+        :param _CFSVolumes: <p>cfs存储卷</p>
+        :type CFSVolumes: list of CFSVolume
+        :param _COSVolumes: <p>cos 存储卷</p>
+        :type COSVolumes: list of COSVolume
+        :param _StorageVolumeName: <p>存储卷名称（yaml 提交的没有存储卷的类型）</p>
+        :type StorageVolumeName: list of str
+        :param _VolumeMounts: <p>存储卷列表</p>
+        :type VolumeMounts: list of VolumeMount
+        :param _StorageVolumeDetail: <p>存储卷详情</p>
+        :type StorageVolumeDetail: list of StorageVolumeDetail
+        :param _CFSTurboVolumes: <p>cfs trubo存储卷</p>
+        :type CFSTurboVolumes: list of CFSTurboVolume
+        """
+        self._CBSVolumes = None
+        self._CFSVolumes = None
+        self._COSVolumes = None
+        self._StorageVolumeName = None
+        self._VolumeMounts = None
+        self._StorageVolumeDetail = None
+        self._CFSTurboVolumes = None
+
+    @property
+    def CBSVolumes(self):
+        r"""<p>cbs 存储卷</p>
+        :rtype: list of CBSVolume
+        """
+        return self._CBSVolumes
+
+    @CBSVolumes.setter
+    def CBSVolumes(self, CBSVolumes):
+        self._CBSVolumes = CBSVolumes
+
+    @property
+    def CFSVolumes(self):
+        r"""<p>cfs存储卷</p>
+        :rtype: list of CFSVolume
+        """
+        return self._CFSVolumes
+
+    @CFSVolumes.setter
+    def CFSVolumes(self, CFSVolumes):
+        self._CFSVolumes = CFSVolumes
+
+    @property
+    def COSVolumes(self):
+        r"""<p>cos 存储卷</p>
+        :rtype: list of COSVolume
+        """
+        return self._COSVolumes
+
+    @COSVolumes.setter
+    def COSVolumes(self, COSVolumes):
+        self._COSVolumes = COSVolumes
+
+    @property
+    def StorageVolumeName(self):
+        r"""<p>存储卷名称（yaml 提交的没有存储卷的类型）</p>
+        :rtype: list of str
+        """
+        return self._StorageVolumeName
+
+    @StorageVolumeName.setter
+    def StorageVolumeName(self, StorageVolumeName):
+        self._StorageVolumeName = StorageVolumeName
+
+    @property
+    def VolumeMounts(self):
+        r"""<p>存储卷列表</p>
+        :rtype: list of VolumeMount
+        """
+        return self._VolumeMounts
+
+    @VolumeMounts.setter
+    def VolumeMounts(self, VolumeMounts):
+        self._VolumeMounts = VolumeMounts
+
+    @property
+    def StorageVolumeDetail(self):
+        r"""<p>存储卷详情</p>
+        :rtype: list of StorageVolumeDetail
+        """
+        return self._StorageVolumeDetail
+
+    @StorageVolumeDetail.setter
+    def StorageVolumeDetail(self, StorageVolumeDetail):
+        self._StorageVolumeDetail = StorageVolumeDetail
+
+    @property
+    def CFSTurboVolumes(self):
+        r"""<p>cfs trubo存储卷</p>
+        :rtype: list of CFSTurboVolume
+        """
+        return self._CFSTurboVolumes
+
+    @CFSTurboVolumes.setter
+    def CFSTurboVolumes(self, CFSTurboVolumes):
+        self._CFSTurboVolumes = CFSTurboVolumes
+
+
+    def _deserialize(self, params):
+        if params.get("CBSVolumes") is not None:
+            self._CBSVolumes = []
+            for item in params.get("CBSVolumes"):
+                obj = CBSVolume()
+                obj._deserialize(item)
+                self._CBSVolumes.append(obj)
+        if params.get("CFSVolumes") is not None:
+            self._CFSVolumes = []
+            for item in params.get("CFSVolumes"):
+                obj = CFSVolume()
+                obj._deserialize(item)
+                self._CFSVolumes.append(obj)
+        if params.get("COSVolumes") is not None:
+            self._COSVolumes = []
+            for item in params.get("COSVolumes"):
+                obj = COSVolume()
+                obj._deserialize(item)
+                self._COSVolumes.append(obj)
+        self._StorageVolumeName = params.get("StorageVolumeName")
+        if params.get("VolumeMounts") is not None:
+            self._VolumeMounts = []
+            for item in params.get("VolumeMounts"):
+                obj = VolumeMount()
+                obj._deserialize(item)
+                self._VolumeMounts.append(obj)
+        if params.get("StorageVolumeDetail") is not None:
+            self._StorageVolumeDetail = []
+            for item in params.get("StorageVolumeDetail"):
+                obj = StorageVolumeDetail()
+                obj._deserialize(item)
+                self._StorageVolumeDetail.append(obj)
+        if params.get("CFSTurboVolumes") is not None:
+            self._CFSTurboVolumes = []
+            for item in params.get("CFSTurboVolumes"):
+                obj = CFSTurboVolume()
+                obj._deserialize(item)
+                self._CFSTurboVolumes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PersistentVolumeContext(AbstractModel):
     r"""Pod PVC存储方式描述
 
@@ -35033,6 +35906,72 @@ class RayCluster(AbstractModel):
         self._RedisCount = params.get("RedisCount")
         self._SubmitType = params.get("SubmitType")
         self._DashboardUrl = params.get("DashboardUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisInstance(AbstractModel):
+    r"""Redis 实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: redis实例id
+        :type Id: str
+        :param _Host: 实例 ip
+        :type Host: str
+        :param _Port: 实例端口
+        :type Port: int
+        """
+        self._Id = None
+        self._Host = None
+        self._Port = None
+
+    @property
+    def Id(self):
+        r"""redis实例id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Host(self):
+        r"""实例 ip
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        r"""实例端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41185,6 +42124,72 @@ class StorageSummaryDistribution(AbstractModel):
                 obj = Dps()
                 obj._deserialize(item)
                 self._Dps.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageVolumeDetail(AbstractModel):
+    r"""存储卷详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeName: 存储卷名称
+        :type VolumeName: str
+        :param _VolumeType: 存储卷类型
+        :type VolumeType: str
+        :param _Desc: 存储卷详情
+        :type Desc: str
+        """
+        self._VolumeName = None
+        self._VolumeType = None
+        self._Desc = None
+
+    @property
+    def VolumeName(self):
+        r"""存储卷名称
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def VolumeType(self):
+        r"""存储卷类型
+        :rtype: str
+        """
+        return self._VolumeType
+
+    @VolumeType.setter
+    def VolumeType(self, VolumeType):
+        self._VolumeType = VolumeType
+
+    @property
+    def Desc(self):
+        r"""存储卷详情
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._VolumeName = params.get("VolumeName")
+        self._VolumeType = params.get("VolumeType")
+        self._Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

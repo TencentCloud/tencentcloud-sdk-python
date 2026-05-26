@@ -14162,7 +14162,7 @@ class CreateSplunkDeliverRequest(AbstractModel):
         r"""
         :param _TopicId: <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _Name: <p>splunk投递任务名称；<br>name有如下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
+        :param _Name: <p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于256- 只能包含aA-zZ、下划线、-、0-9</p>
         :type Name: str
         :param _NetInfo: <p>Splunk投递任务-目标配置-网络信息</p>
         :type NetInfo: :class:`tencentcloud.cls.v20201016.models.NetInfo`
@@ -14211,7 +14211,7 @@ class CreateSplunkDeliverRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>splunk投递任务名称；<br>name有如下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
+        r"""<p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于256- 只能包含aA-zZ、下划线、-、0-9</p>
         :rtype: str
         """
         return self._Name
@@ -42286,7 +42286,7 @@ class ModifySplunkDeliverRequest(AbstractModel):
         :type TaskId: str
         :param _TopicId: <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _Name: <p>投递任务名称<br>name有以下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
+        :param _Name: <p>投递任务名称name有以下限制：- 不能为空- 长度不大于256- 只能包含aA-zZ、下划线、-、0-9</p>
         :type Name: str
         :param _Enable: <p>投递任务启用状态；0:禁用；1:启用</p>
         :type Enable: int
@@ -42350,7 +42350,7 @@ class ModifySplunkDeliverRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>投递任务名称<br>name有以下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
+        r"""<p>投递任务名称name有以下限制：- 不能为空- 长度不大于256- 只能包含aA-zZ、下划线、-、0-9</p>
         :rtype: str
         """
         return self._Name

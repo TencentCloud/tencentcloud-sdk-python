@@ -5714,36 +5714,31 @@ class AnalyseConditions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessCodes: 产品名称代码
+        :param _BusinessCodes: <p>产品名称代码</p>
         :type BusinessCodes: str
-        :param _ProductCodes: 子产品名称代码
+        :param _ProductCodes: <p>子产品名称代码</p>
         :type ProductCodes: str
-        :param _ComponentCode: 组件类型代码
+        :param _ComponentCode: <p>组件类型代码</p>
         :type ComponentCode: str
-        :param _ZoneIds: 可用区ID：资源所属可用区ID
+        :param _ZoneIds: <p>可用区ID：资源所属可用区ID</p>
         :type ZoneIds: str
-        :param _RegionIds: 地域ID:资源所属地域ID
+        :param _RegionIds: <p>地域ID:资源所属地域ID</p>
         :type RegionIds: str
-        :param _ProjectIds: 项目ID:资源所属项目ID
+        :param _ProjectIds: <p>项目ID:资源所属项目ID</p>
         :type ProjectIds: str
-        :param _PayModes: 计费模式 prePay(表示包年包月)/postPay(表示按量计费)
+        :param _PayModes: <p>计费模式 prePay(表示包年包月)/postPay(表示按量计费)</p>
         :type PayModes: str
-        :param _ActionTypes: 交易类型，查询交易类型（请使用交易类型code入参）
+        :param _ActionTypes: <p>交易类型，查询交易类型（请使用交易类型code入参）</p>
         :type ActionTypes: str
-        :param _Tags: 分账标签键
+        :param _Tags: <p>分账标签</p>
         :type Tags: str
-        :param _FeeType: 费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：
-cashPayAmount:现金 
-incentivePayAmount:赠送金 
-voucherPayAmount:优惠券 
-tax:税金 
-costBeforeTax:税前价
+        :param _FeeType: <p>费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：<br>cashPayAmount:现金<br>incentivePayAmount:赠送金<br>voucherPayAmount:优惠券<br>tax:税金<br>costBeforeTax:税前价</p>
         :type FeeType: str
-        :param _PayerUins: 查询成本分析数据的用户UIN
+        :param _PayerUins: <p>查询成本分析数据的用户UIN</p>
         :type PayerUins: str
-        :param _OwnerUins: 使用资源的用户UIN
+        :param _OwnerUins: <p>使用资源的用户UIN</p>
         :type OwnerUins: str
-        :param _ConsumptionTypes: 消耗类型，查询消耗类型（请使用消耗类型code入参）
+        :param _ConsumptionTypes: <p>消耗类型，查询消耗类型（请使用消耗类型code入参）</p>
         :type ConsumptionTypes: str
         """
         self._BusinessCodes = None
@@ -5762,7 +5757,7 @@ costBeforeTax:税前价
 
     @property
     def BusinessCodes(self):
-        r"""产品名称代码
+        r"""<p>产品名称代码</p>
         :rtype: str
         """
         return self._BusinessCodes
@@ -5773,7 +5768,7 @@ costBeforeTax:税前价
 
     @property
     def ProductCodes(self):
-        r"""子产品名称代码
+        r"""<p>子产品名称代码</p>
         :rtype: str
         """
         return self._ProductCodes
@@ -5784,7 +5779,7 @@ costBeforeTax:税前价
 
     @property
     def ComponentCode(self):
-        r"""组件类型代码
+        r"""<p>组件类型代码</p>
         :rtype: str
         """
         return self._ComponentCode
@@ -5795,7 +5790,7 @@ costBeforeTax:税前价
 
     @property
     def ZoneIds(self):
-        r"""可用区ID：资源所属可用区ID
+        r"""<p>可用区ID：资源所属可用区ID</p>
         :rtype: str
         """
         return self._ZoneIds
@@ -5806,7 +5801,7 @@ costBeforeTax:税前价
 
     @property
     def RegionIds(self):
-        r"""地域ID:资源所属地域ID
+        r"""<p>地域ID:资源所属地域ID</p>
         :rtype: str
         """
         return self._RegionIds
@@ -5817,7 +5812,7 @@ costBeforeTax:税前价
 
     @property
     def ProjectIds(self):
-        r"""项目ID:资源所属项目ID
+        r"""<p>项目ID:资源所属项目ID</p>
         :rtype: str
         """
         return self._ProjectIds
@@ -5828,7 +5823,7 @@ costBeforeTax:税前价
 
     @property
     def PayModes(self):
-        r"""计费模式 prePay(表示包年包月)/postPay(表示按量计费)
+        r"""<p>计费模式 prePay(表示包年包月)/postPay(表示按量计费)</p>
         :rtype: str
         """
         return self._PayModes
@@ -5839,7 +5834,7 @@ costBeforeTax:税前价
 
     @property
     def ActionTypes(self):
-        r"""交易类型，查询交易类型（请使用交易类型code入参）
+        r"""<p>交易类型，查询交易类型（请使用交易类型code入参）</p>
         :rtype: str
         """
         return self._ActionTypes
@@ -5850,7 +5845,7 @@ costBeforeTax:税前价
 
     @property
     def Tags(self):
-        r"""分账标签键
+        r"""<p>分账标签</p>
         :rtype: str
         """
         return self._Tags
@@ -5861,12 +5856,7 @@ costBeforeTax:税前价
 
     @property
     def FeeType(self):
-        r"""费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：
-cashPayAmount:现金 
-incentivePayAmount:赠送金 
-voucherPayAmount:优惠券 
-tax:税金 
-costBeforeTax:税前价
+        r"""<p>费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：<br>cashPayAmount:现金<br>incentivePayAmount:赠送金<br>voucherPayAmount:优惠券<br>tax:税金<br>costBeforeTax:税前价</p>
         :rtype: str
         """
         return self._FeeType
@@ -5877,7 +5867,7 @@ costBeforeTax:税前价
 
     @property
     def PayerUins(self):
-        r"""查询成本分析数据的用户UIN
+        r"""<p>查询成本分析数据的用户UIN</p>
         :rtype: str
         """
         return self._PayerUins
@@ -5888,7 +5878,7 @@ costBeforeTax:税前价
 
     @property
     def OwnerUins(self):
-        r"""使用资源的用户UIN
+        r"""<p>使用资源的用户UIN</p>
         :rtype: str
         """
         return self._OwnerUins
@@ -5899,7 +5889,7 @@ costBeforeTax:税前价
 
     @property
     def ConsumptionTypes(self):
-        r"""消耗类型，查询消耗类型（请使用消耗类型code入参）
+        r"""<p>消耗类型，查询消耗类型（请使用消耗类型code入参）</p>
         :rtype: str
         """
         return self._ConsumptionTypes
@@ -24305,40 +24295,27 @@ class DescribeCostExplorerSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 周期开始时间，格式为yyyy-mm-dd hh:ii:ss
+        :param _BeginTime: <p>周期开始时间，格式为yyyy-mm-dd hh:ii:ss</p>
         :type BeginTime: str
-        :param _EndTime: 周期结束时间，格式为yyyy-mm-dd hh:ii:ss
+        :param _EndTime: <p>周期结束时间，格式为yyyy-mm-dd hh:ii:ss</p>
         :type EndTime: str
-        :param _BillType: 账单类型：1-费用账单、2-消耗账单
+        :param _BillType: <p>账单类型：1-费用账单、2-消耗账单</p>
         :type BillType: str
-        :param _PeriodType: 统计周期：日-day，月-month；
+        :param _PeriodType: <p>统计周期：日-day，月-month；</p>
         :type PeriodType: str
-        :param _Dimensions: 分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：
-default=仅总计
-feeType=费用类型
-billType=账单类型
-business=产品
-product=子产品
-region=地域
-zone=可用区
-actionType=交易类型
-payMode =计费模式
-tags=标签
-project =项目
-payerUin=支付者账号
-ownerUin=使用者账号
+        :param _Dimensions: <p>分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：<br>default=仅总计<br>feeType=费用类型<br>billType=账单类型<br>business=产品<br>product=子产品<br>region=地域<br>zone=可用区<br>actionType=交易类型<br>payMode =计费模式<br>tags=标签<br>project =项目<br>payerUin=支付者账号<br>ownerUin=使用者账号</p>
         :type Dimensions: str
-        :param _FeeType: 费用类型：cost-折后总费用，totalCost-原价费用
+        :param _FeeType: <p>费用类型：cost-折后总费用，totalCost-原价费用</p>
         :type FeeType: str
-        :param _PageSize: 数量，每页最大值为100
+        :param _PageSize: <p>数量，每页最大值为100</p>
         :type PageSize: int
-        :param _PageNo: 起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。
+        :param _PageNo: <p>起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。</p>
         :type PageNo: int
-        :param _TagKeyStr: 分账标签值
+        :param _TagKeyStr: <p>分账标签键</p>
         :type TagKeyStr: str
-        :param _NeedConditionValue: 是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。
+        :param _NeedConditionValue: <p>是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。</p>
         :type NeedConditionValue: str
-        :param _Conditions: 筛选参数
+        :param _Conditions: <p>筛选参数</p>
         :type Conditions: :class:`tencentcloud.billing.v20180709.models.AnalyseConditions`
         """
         self._BeginTime = None
@@ -24355,7 +24332,7 @@ ownerUin=使用者账号
 
     @property
     def BeginTime(self):
-        r"""周期开始时间，格式为yyyy-mm-dd hh:ii:ss
+        r"""<p>周期开始时间，格式为yyyy-mm-dd hh:ii:ss</p>
         :rtype: str
         """
         return self._BeginTime
@@ -24366,7 +24343,7 @@ ownerUin=使用者账号
 
     @property
     def EndTime(self):
-        r"""周期结束时间，格式为yyyy-mm-dd hh:ii:ss
+        r"""<p>周期结束时间，格式为yyyy-mm-dd hh:ii:ss</p>
         :rtype: str
         """
         return self._EndTime
@@ -24377,7 +24354,7 @@ ownerUin=使用者账号
 
     @property
     def BillType(self):
-        r"""账单类型：1-费用账单、2-消耗账单
+        r"""<p>账单类型：1-费用账单、2-消耗账单</p>
         :rtype: str
         """
         return self._BillType
@@ -24388,7 +24365,7 @@ ownerUin=使用者账号
 
     @property
     def PeriodType(self):
-        r"""统计周期：日-day，月-month；
+        r"""<p>统计周期：日-day，月-month；</p>
         :rtype: str
         """
         return self._PeriodType
@@ -24399,20 +24376,7 @@ ownerUin=使用者账号
 
     @property
     def Dimensions(self):
-        r"""分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：
-default=仅总计
-feeType=费用类型
-billType=账单类型
-business=产品
-product=子产品
-region=地域
-zone=可用区
-actionType=交易类型
-payMode =计费模式
-tags=标签
-project =项目
-payerUin=支付者账号
-ownerUin=使用者账号
+        r"""<p>分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：<br>default=仅总计<br>feeType=费用类型<br>billType=账单类型<br>business=产品<br>product=子产品<br>region=地域<br>zone=可用区<br>actionType=交易类型<br>payMode =计费模式<br>tags=标签<br>project =项目<br>payerUin=支付者账号<br>ownerUin=使用者账号</p>
         :rtype: str
         """
         return self._Dimensions
@@ -24423,7 +24387,7 @@ ownerUin=使用者账号
 
     @property
     def FeeType(self):
-        r"""费用类型：cost-折后总费用，totalCost-原价费用
+        r"""<p>费用类型：cost-折后总费用，totalCost-原价费用</p>
         :rtype: str
         """
         return self._FeeType
@@ -24434,7 +24398,7 @@ ownerUin=使用者账号
 
     @property
     def PageSize(self):
-        r"""数量，每页最大值为100
+        r"""<p>数量，每页最大值为100</p>
         :rtype: int
         """
         return self._PageSize
@@ -24445,7 +24409,7 @@ ownerUin=使用者账号
 
     @property
     def PageNo(self):
-        r"""起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。
+        r"""<p>起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。</p>
         :rtype: int
         """
         return self._PageNo
@@ -24456,7 +24420,7 @@ ownerUin=使用者账号
 
     @property
     def TagKeyStr(self):
-        r"""分账标签值
+        r"""<p>分账标签键</p>
         :rtype: str
         """
         return self._TagKeyStr
@@ -24467,7 +24431,7 @@ ownerUin=使用者账号
 
     @property
     def NeedConditionValue(self):
-        r"""是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。
+        r"""<p>是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。</p>
         :rtype: str
         """
         return self._NeedConditionValue
@@ -24478,7 +24442,7 @@ ownerUin=使用者账号
 
     @property
     def Conditions(self):
-        r"""筛选参数
+        r"""<p>筛选参数</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseConditions`
         """
         return self._Conditions
@@ -24519,15 +24483,15 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 数据条数
+        :param _Total: <p>数据条数</p>
         :type Total: int
-        :param _Header: 表头信息
+        :param _Header: <p>表头信息</p>
         :type Header: :class:`tencentcloud.billing.v20180709.models.AnalyseHeaderDetail`
-        :param _Detail: 数据明细
+        :param _Detail: <p>数据明细</p>
         :type Detail: list of AnalyseDetail
-        :param _TotalDetail: 数据总计
+        :param _TotalDetail: <p>数据总计</p>
         :type TotalDetail: :class:`tencentcloud.billing.v20180709.models.AnalyseDetail`
-        :param _ConditionValue: 筛选框
+        :param _ConditionValue: <p>筛选框</p>
         :type ConditionValue: :class:`tencentcloud.billing.v20180709.models.AnalyseConditionDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24541,7 +24505,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""数据条数
+        r"""<p>数据条数</p>
         :rtype: int
         """
         return self._Total
@@ -24552,7 +24516,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def Header(self):
-        r"""表头信息
+        r"""<p>表头信息</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseHeaderDetail`
         """
         return self._Header
@@ -24563,7 +24527,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""数据明细
+        r"""<p>数据明细</p>
         :rtype: list of AnalyseDetail
         """
         return self._Detail
@@ -24574,7 +24538,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def TotalDetail(self):
-        r"""数据总计
+        r"""<p>数据总计</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseDetail`
         """
         return self._TotalDetail
@@ -24585,7 +24549,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
 
     @property
     def ConditionValue(self):
-        r"""筛选框
+        r"""<p>筛选框</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AnalyseConditionDetail`
         """
         return self._ConditionValue

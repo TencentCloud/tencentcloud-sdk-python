@@ -2899,35 +2899,29 @@ class CcInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mobile: 被抄送方手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。
-请确认手机号所有方为此业务通知方。
+        :param _Mobile: <p>被抄送方手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。<br>请确认手机号所有方为此业务通知方。</p>
         :type Mobile: str
-        :param _Name: 被抄送方姓名。
-抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。
+        :param _Name: <p>被抄送方姓名。<br>抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。</p>
         :type Name: str
-        :param _CcType: 被抄送方类型, 可设置以下类型:
-<ul><li> **0** :个人抄送方</li>
-<li> **1** :企业员工抄送方</li></ul>
+        :param _CcType: <p>被抄送方类型, 可设置以下类型:</p><ul><li> **0** :个人抄送方</li><li> **1** :企业员工抄送方</li></ul>
         :type CcType: int
-        :param _CcPermission: 被抄送方权限, 可设置如下权限:
-<ul><li> **0** :可查看合同内容</li>
-<li> **1** :可查看合同内容也可下载原文</li></ul>
+        :param _CcPermission: <p>被抄送方权限, 可设置如下权限:</p><ul><li> **0** :可查看合同内容</li><li> **1** :可查看合同内容也可下载原文</li></ul>
         :type CcPermission: int
-        :param _NotifyType: 通知签署方经办人的方式,  有以下途径:
-<ul><li> **sms** :  (默认)短信</li>
-<li> **none** : 不通知</li></ul>
+        :param _NotifyType: <p>通知签署方经办人的方式,  有以下途径:</p><ul><li> **sms** :  (默认)短信</li><li> **none** : 不通知</li></ul>
         :type NotifyType: str
+        :param _OrganizationName: <p>被抄送方企业名称。<br>请确认该名称与企业营业执照中注册的名称一致。<br>如果名称中包含英文括号()，请使用中文括号（）代替。</p><p>注意:<br><font color="red">此为白名单功能，需要联系客户经理，开通白名单后才能使用。</font><br>使用文档 <a href="https://qian.tencent.com/developers/company/enterprise_inbox">签署方/抄送方仅指定企业名称发起合同</a></p>
+        :type OrganizationName: str
         """
         self._Mobile = None
         self._Name = None
         self._CcType = None
         self._CcPermission = None
         self._NotifyType = None
+        self._OrganizationName = None
 
     @property
     def Mobile(self):
-        r"""被抄送方手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。
-请确认手机号所有方为此业务通知方。
+        r"""<p>被抄送方手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。<br>请确认手机号所有方为此业务通知方。</p>
         :rtype: str
         """
         return self._Mobile
@@ -2938,8 +2932,7 @@ class CcInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""被抄送方姓名。
-抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。
+        r"""<p>被抄送方姓名。<br>抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。</p>
         :rtype: str
         """
         return self._Name
@@ -2950,9 +2943,7 @@ class CcInfo(AbstractModel):
 
     @property
     def CcType(self):
-        r"""被抄送方类型, 可设置以下类型:
-<ul><li> **0** :个人抄送方</li>
-<li> **1** :企业员工抄送方</li></ul>
+        r"""<p>被抄送方类型, 可设置以下类型:</p><ul><li> **0** :个人抄送方</li><li> **1** :企业员工抄送方</li></ul>
         :rtype: int
         """
         return self._CcType
@@ -2963,9 +2954,7 @@ class CcInfo(AbstractModel):
 
     @property
     def CcPermission(self):
-        r"""被抄送方权限, 可设置如下权限:
-<ul><li> **0** :可查看合同内容</li>
-<li> **1** :可查看合同内容也可下载原文</li></ul>
+        r"""<p>被抄送方权限, 可设置如下权限:</p><ul><li> **0** :可查看合同内容</li><li> **1** :可查看合同内容也可下载原文</li></ul>
         :rtype: int
         """
         return self._CcPermission
@@ -2976,9 +2965,7 @@ class CcInfo(AbstractModel):
 
     @property
     def NotifyType(self):
-        r"""通知签署方经办人的方式,  有以下途径:
-<ul><li> **sms** :  (默认)短信</li>
-<li> **none** : 不通知</li></ul>
+        r"""<p>通知签署方经办人的方式,  有以下途径:</p><ul><li> **sms** :  (默认)短信</li><li> **none** : 不通知</li></ul>
         :rtype: str
         """
         return self._NotifyType
@@ -2987,6 +2974,17 @@ class CcInfo(AbstractModel):
     def NotifyType(self, NotifyType):
         self._NotifyType = NotifyType
 
+    @property
+    def OrganizationName(self):
+        r"""<p>被抄送方企业名称。<br>请确认该名称与企业营业执照中注册的名称一致。<br>如果名称中包含英文括号()，请使用中文括号（）代替。</p><p>注意:<br><font color="red">此为白名单功能，需要联系客户经理，开通白名单后才能使用。</font><br>使用文档 <a href="https://qian.tencent.com/developers/company/enterprise_inbox">签署方/抄送方仅指定企业名称发起合同</a></p>
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
 
     def _deserialize(self, params):
         self._Mobile = params.get("Mobile")
@@ -2994,6 +2992,7 @@ class CcInfo(AbstractModel):
         self._CcType = params.get("CcType")
         self._CcPermission = params.get("CcPermission")
         self._NotifyType = params.get("NotifyType")
+        self._OrganizationName = params.get("OrganizationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

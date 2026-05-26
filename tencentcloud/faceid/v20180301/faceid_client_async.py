@@ -403,6 +403,24 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetNFCToken(
+            self,
+            request: models.GetNFCTokenRequest,
+            opts: Dict = None,
+    ) -> models.GetNFCTokenResponse:
+        """
+        NFC核验服务，获取NFC识别请求对应的Token信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetNFCToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetNFCTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetWeChatBillDetails(
             self,
             request: models.GetWeChatBillDetailsRequest,
@@ -416,6 +434,24 @@ class FaceidClient(AbstractClient):
         kwargs["action"] = "GetWeChatBillDetails"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetWeChatBillDetailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetWxNFCResult(
+            self,
+            request: models.GetWxNFCResultRequest,
+            opts: Dict = None,
+    ) -> models.GetWxNFCResultResponse:
+        """
+        获取到证件NFC数据，接口传入NFC SDK返回的Token（十分钟内有效），可返回对应NFC获取的证件信息。支持身份证类证件（二代身份证、港澳居住证、台湾居住证、外国人永居证）以及旅行类证件（港澳通行证、台湾通行证、台胞证、回乡证）的NFC识别及核验。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetWxNFCResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetWxNFCResultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

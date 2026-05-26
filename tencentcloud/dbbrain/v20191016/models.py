@@ -4548,9 +4548,9 @@ class EventInfo(AbstractModel):
         :type EventId: int
         :param _DiagType: 诊断类型。
         :type DiagType: str
-        :param _StartTime: 开始时间。
+        :param _StartTime: 开始时间。格式: "yyyy-MM-dd'T'HH:mm:ssXXX"
         :type StartTime: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间。格式: "yyyy-MM-dd'T'HH:mm:ssXXX"
         :type EndTime: str
         :param _Outline: 概要。
         :type Outline: str
@@ -4597,7 +4597,7 @@ class EventInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间。
+        r"""开始时间。格式: "yyyy-MM-dd'T'HH:mm:ssXXX"
         :rtype: str
         """
         return self._StartTime
@@ -4608,7 +4608,7 @@ class EventInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间。
+        r"""结束时间。格式: "yyyy-MM-dd'T'HH:mm:ssXXX"
         :rtype: str
         """
         return self._EndTime

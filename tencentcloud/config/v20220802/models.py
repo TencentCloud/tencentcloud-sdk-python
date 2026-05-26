@@ -1245,7 +1245,7 @@ class AggregateEvaluationResult(AbstractModel):
 
 
 class AggregateResourceInfo(AbstractModel):
-    r"""资源列列表信息
+    r"""资源列表信息
 
     """
 

@@ -637,24 +637,6 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DeleteTopicIpWhiteList(
-            self,
-            request: models.DeleteTopicIpWhiteListRequest,
-            opts: Dict = None,
-    ) -> models.DeleteTopicIpWhiteListResponse:
-        """
-        删除主题IP白名单
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteTopicIpWhiteList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteTopicIpWhiteListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteUser(
             self,
             request: models.DeleteUserRequest,

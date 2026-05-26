@@ -10493,19 +10493,35 @@ class TokenLimitConfigDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LimitRequestBody: 单次请求上限，k
+        :param _Type: <p>限流类型</p><p>枚举值：</p><ul><li>minute： 时间窗口</li><li>day： 自然日</li><li>month： 自然月</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _LimitRequestBody: <p>单次请求上限，k</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LimitRequestBody: int
-        :param _LimitWindows: 累次token总量消耗上限
+        :param _LimitWindows: <p>累次token总量消耗上限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LimitWindows: list of LimitWindowsDTO
         """
+        self._Type = None
         self._LimitRequestBody = None
         self._LimitWindows = None
 
     @property
+    def Type(self):
+        r"""<p>限流类型</p><p>枚举值：</p><ul><li>minute： 时间窗口</li><li>day： 自然日</li><li>month： 自然月</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
     def LimitRequestBody(self):
-        r"""单次请求上限，k
+        r"""<p>单次请求上限，k</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10517,7 +10533,7 @@ class TokenLimitConfigDTO(AbstractModel):
 
     @property
     def LimitWindows(self):
-        r"""累次token总量消耗上限
+        r"""<p>累次token总量消耗上限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LimitWindowsDTO
         """
@@ -10529,6 +10545,7 @@ class TokenLimitConfigDTO(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Type = params.get("Type")
         self._LimitRequestBody = params.get("LimitRequestBody")
         if params.get("LimitWindows") is not None:
             self._LimitWindows = []

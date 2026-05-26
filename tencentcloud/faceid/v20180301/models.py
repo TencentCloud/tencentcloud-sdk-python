@@ -6402,6 +6402,55 @@ class GetLiveCodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetNFCTokenRequest(AbstractModel):
+    r"""GetNFCToken请求参数结构体
+
+    """
+
+
+class GetNFCTokenResponse(AbstractModel):
+    r"""GetNFCToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: NFCToken
+        :type Token: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Token = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        r"""NFCToken
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._RequestId = params.get("RequestId")
+
+
 class GetWeChatBillDetailsRequest(AbstractModel):
     r"""GetWeChatBillDetails请求参数结构体
 
@@ -6557,6 +6606,391 @@ class GetWeChatBillDetailsResponse(AbstractModel):
                 obj = WeChatBillDetail()
                 obj._deserialize(item)
                 self._WeChatBillDetails.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetWxNFCResultRequest(AbstractModel):
+    r"""GetWxNFCResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NFCToken: <p>前端 NFC SDK返回的唯一标识ID</p>
+        :type NFCToken: str
+        """
+        self._NFCToken = None
+
+    @property
+    def NFCToken(self):
+        r"""<p>前端 NFC SDK返回的唯一标识ID</p>
+        :rtype: str
+        """
+        return self._NFCToken
+
+    @NFCToken.setter
+    def NFCToken(self, NFCToken):
+        self._NFCToken = NFCToken
+
+
+    def _deserialize(self, params):
+        self._NFCToken = params.get("NFCToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetWxNFCResultResponse(AbstractModel):
+    r"""GetWxNFCResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultCode: <p>NFC计费结果码，NFC识读成功一次则计费一次（同一个NFC请求重复拉取结果不会重复计费）。计费结果码取值范围：<br>  0：识读成功，计费<br>-1：识读失败，不计费</p>
+        :type ResultCode: str
+        :param _IdNum: <p>身份证号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdNum: str
+        :param _Name: <p>姓名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Picture: <p>证件中的人像照片</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Picture: str
+        :param _IdCardFrontImg: <p>身份类证件正面照片（人像面）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdCardFrontImg: str
+        :param _IdCardBackImg: <p>身份类证件背面照片（国徽面）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdCardBackImg: str
+        :param _BirthDate: <p>出生日期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BirthDate: str
+        :param _BeginTime: <p>有效期起始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param _EndTime: <p>有效期结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _Address: <p>住址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param _Nation: <p>民族</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nation: str
+        :param _Sex: <p>性别</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sex: str
+        :param _IdType: <p>证件类型</p><p>枚举值：</p><ul><li>01： 身份证</li><li>03： 中国护照</li><li>06： 港澳通行证</li><li>07： 台胞证</li><li>08： 外国护照</li><li>13： 外国人永久居留证</li><li>14： 港澳台居民居住证</li><li>15： 回乡证</li><li>16： 大陆居民来往台湾通行证</li><li>99： 其他证件</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdType: str
+        :param _EnName: <p>英文姓名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnName: str
+        :param _SigningOrganization: <p>签发机关</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SigningOrganization: str
+        :param _OtherIdNum: <p>港澳台居民居住证，通行证号码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherIdNum: str
+        :param _Nationality: <p>旅行证件国籍</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nationality: str
+        :param _PersonalNumber: <p>旅行证件机读区第二行 29~42 位</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersonalNumber: str
+        :param _CheckMRTD: <p>证件的验真结果</p><ul><li>JSON格式如下： {&quot;result_issuer &quot;:&quot;签发者证书合法性验证结果 &quot;,&quot;result_paper&quot;:&quot;证件安全对象合法性验证结果 &quot;,&quot;result_data&quot; :&quot;防数据篡改验证结果 &quot;,&quot;result_chip&quot; :&quot;防证书件芯片被复制验证结果&quot;} 。 - 取值范围： 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckMRTD: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultCode = None
+        self._IdNum = None
+        self._Name = None
+        self._Picture = None
+        self._IdCardFrontImg = None
+        self._IdCardBackImg = None
+        self._BirthDate = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Address = None
+        self._Nation = None
+        self._Sex = None
+        self._IdType = None
+        self._EnName = None
+        self._SigningOrganization = None
+        self._OtherIdNum = None
+        self._Nationality = None
+        self._PersonalNumber = None
+        self._CheckMRTD = None
+        self._RequestId = None
+
+    @property
+    def ResultCode(self):
+        r"""<p>NFC计费结果码，NFC识读成功一次则计费一次（同一个NFC请求重复拉取结果不会重复计费）。计费结果码取值范围：<br>  0：识读成功，计费<br>-1：识读失败，不计费</p>
+        :rtype: str
+        """
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def IdNum(self):
+        r"""<p>身份证号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdNum
+
+    @IdNum.setter
+    def IdNum(self, IdNum):
+        self._IdNum = IdNum
+
+    @property
+    def Name(self):
+        r"""<p>姓名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Picture(self):
+        r"""<p>证件中的人像照片</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Picture
+
+    @Picture.setter
+    def Picture(self, Picture):
+        self._Picture = Picture
+
+    @property
+    def IdCardFrontImg(self):
+        r"""<p>身份类证件正面照片（人像面）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdCardFrontImg
+
+    @IdCardFrontImg.setter
+    def IdCardFrontImg(self, IdCardFrontImg):
+        self._IdCardFrontImg = IdCardFrontImg
+
+    @property
+    def IdCardBackImg(self):
+        r"""<p>身份类证件背面照片（国徽面）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdCardBackImg
+
+    @IdCardBackImg.setter
+    def IdCardBackImg(self, IdCardBackImg):
+        self._IdCardBackImg = IdCardBackImg
+
+    @property
+    def BirthDate(self):
+        r"""<p>出生日期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BirthDate
+
+    @BirthDate.setter
+    def BirthDate(self, BirthDate):
+        self._BirthDate = BirthDate
+
+    @property
+    def BeginTime(self):
+        r"""<p>有效期起始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""<p>有效期结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Address(self):
+        r"""<p>住址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Nation(self):
+        r"""<p>民族</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Nation
+
+    @Nation.setter
+    def Nation(self, Nation):
+        self._Nation = Nation
+
+    @property
+    def Sex(self):
+        r"""<p>性别</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def IdType(self):
+        r"""<p>证件类型</p><p>枚举值：</p><ul><li>01： 身份证</li><li>03： 中国护照</li><li>06： 港澳通行证</li><li>07： 台胞证</li><li>08： 外国护照</li><li>13： 外国人永久居留证</li><li>14： 港澳台居民居住证</li><li>15： 回乡证</li><li>16： 大陆居民来往台湾通行证</li><li>99： 其他证件</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdType
+
+    @IdType.setter
+    def IdType(self, IdType):
+        self._IdType = IdType
+
+    @property
+    def EnName(self):
+        r"""<p>英文姓名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
+    @property
+    def SigningOrganization(self):
+        r"""<p>签发机关</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SigningOrganization
+
+    @SigningOrganization.setter
+    def SigningOrganization(self, SigningOrganization):
+        self._SigningOrganization = SigningOrganization
+
+    @property
+    def OtherIdNum(self):
+        r"""<p>港澳台居民居住证，通行证号码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OtherIdNum
+
+    @OtherIdNum.setter
+    def OtherIdNum(self, OtherIdNum):
+        self._OtherIdNum = OtherIdNum
+
+    @property
+    def Nationality(self):
+        r"""<p>旅行证件国籍</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
+    def PersonalNumber(self):
+        r"""<p>旅行证件机读区第二行 29~42 位</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PersonalNumber
+
+    @PersonalNumber.setter
+    def PersonalNumber(self, PersonalNumber):
+        self._PersonalNumber = PersonalNumber
+
+    @property
+    def CheckMRTD(self):
+        r"""<p>证件的验真结果</p><ul><li>JSON格式如下： {&quot;result_issuer &quot;:&quot;签发者证书合法性验证结果 &quot;,&quot;result_paper&quot;:&quot;证件安全对象合法性验证结果 &quot;,&quot;result_data&quot; :&quot;防数据篡改验证结果 &quot;,&quot;result_chip&quot; :&quot;防证书件芯片被复制验证结果&quot;} 。 - 取值范围： 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CheckMRTD
+
+    @CheckMRTD.setter
+    def CheckMRTD(self, CheckMRTD):
+        self._CheckMRTD = CheckMRTD
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultCode = params.get("ResultCode")
+        self._IdNum = params.get("IdNum")
+        self._Name = params.get("Name")
+        self._Picture = params.get("Picture")
+        self._IdCardFrontImg = params.get("IdCardFrontImg")
+        self._IdCardBackImg = params.get("IdCardBackImg")
+        self._BirthDate = params.get("BirthDate")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Address = params.get("Address")
+        self._Nation = params.get("Nation")
+        self._Sex = params.get("Sex")
+        self._IdType = params.get("IdType")
+        self._EnName = params.get("EnName")
+        self._SigningOrganization = params.get("SigningOrganization")
+        self._OtherIdNum = params.get("OtherIdNum")
+        self._Nationality = params.get("Nationality")
+        self._PersonalNumber = params.get("PersonalNumber")
+        self._CheckMRTD = params.get("CheckMRTD")
         self._RequestId = params.get("RequestId")
 
 

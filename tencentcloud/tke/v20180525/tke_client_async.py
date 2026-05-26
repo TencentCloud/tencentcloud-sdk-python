@@ -2065,7 +2065,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeClusterVirtualNodeResponse:
         """
-        查看超级节点列表
+        查看超级节点列表，仅支持TKE标准集群
         """
         
         kwargs = {}

@@ -40993,50 +40993,56 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LicenseCnt: 总授权数 (包含隔离,过期等不可用状态)
+        :param _LicenseCnt: <p>总授权数 (包含隔离,过期等不可用状态)</p>
         :type LicenseCnt: int
-        :param _AvailableLicenseCnt: 可用授权数
+        :param _AvailableLicenseCnt: <p>可用授权数</p>
         :type AvailableLicenseCnt: int
-        :param _AvailableProVersionLicenseCnt: 可用专业版授权数(包含后付费).
+        :param _AvailableProVersionLicenseCnt: <p>可用专业版授权数(包含后付费).</p>
         :type AvailableProVersionLicenseCnt: int
-        :param _AvailableFlagshipVersionLicenseCnt: 可用旗舰版授权数
+        :param _AvailableFlagshipVersionLicenseCnt: <p>可用旗舰版授权数</p>
         :type AvailableFlagshipVersionLicenseCnt: int
-        :param _NearExpiryLicenseCnt: 即将到期授权数 (15天内到期的)
+        :param _NearExpiryLicenseCnt: <p>即将到期授权数 (15天内到期的)</p>
         :type NearExpiryLicenseCnt: int
-        :param _ExpireLicenseCnt: 已到期授权数(不包含已删除的记录)
+        :param _ExpireLicenseCnt: <p>已到期授权数(不包含已删除的记录)</p>
         :type ExpireLicenseCnt: int
-        :param _AutoOpenStatus: 自动升级开关状态,默认 false,  true 开启, false 关闭
+        :param _AutoOpenStatus: <p>自动升级开关状态,默认 false,  true 开启, false 关闭</p>
         :type AutoOpenStatus: bool
-        :param _ProtectType: PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费
+        :param _ProtectType: <p>PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费</p>
         :type ProtectType: str
-        :param _IsOpenStatusHistory: 历史是否开通过自动升级开关
+        :param _IsOpenStatusHistory: <p>历史是否开通过自动升级开关</p>
         :type IsOpenStatusHistory: bool
-        :param _UsedLicenseCnt: 已使用授权数
+        :param _UsedLicenseCnt: <p>已使用授权数</p>
         :type UsedLicenseCnt: int
-        :param _NotExpiredLicenseCnt: 未到期授权数
+        :param _NotExpiredLicenseCnt: <p>未到期授权数</p>
         :type NotExpiredLicenseCnt: int
-        :param _FlagshipVersionLicenseCnt: 旗舰版总授权数(有效订单)
+        :param _FlagshipVersionLicenseCnt: <p>旗舰版总授权数(有效订单)</p>
         :type FlagshipVersionLicenseCnt: int
-        :param _ProVersionLicenseCnt: 专业版总授权数(有效订单)
+        :param _ProVersionLicenseCnt: <p>专业版总授权数(有效订单)</p>
         :type ProVersionLicenseCnt: int
-        :param _CwpVersionLicenseCnt: 轻量版总授权数(有效订单的授权数)
+        :param _CwpVersionLicenseCnt: <p>轻量版总授权数(有效订单的授权数)</p>
         :type CwpVersionLicenseCnt: int
-        :param _AvailableLHLicenseCnt: 可用惠普版授权数
+        :param _AvailableLHLicenseCnt: <p>可用惠普版授权数</p>
         :type AvailableLHLicenseCnt: int
-        :param _AutoRepurchaseSwitch: 自动加购开关, true 开启, false 关闭
+        :param _AutoRepurchaseSwitch: <p>自动加购开关, true 开启, false 关闭</p>
         :type AutoRepurchaseSwitch: bool
-        :param _AutoRepurchaseRenewSwitch: 自动加购订单是否自动续费 ,true 开启, false 关闭
+        :param _AutoRepurchaseRenewSwitch: <p>自动加购订单是否自动续费 ,true 开启, false 关闭</p>
         :type AutoRepurchaseRenewSwitch: bool
-        :param _DestroyOrderNum: 已销毁订单数
+        :param _DestroyOrderNum: <p>已销毁订单数</p>
         :type DestroyOrderNum: int
-        :param _RepurchaseRenewSwitch: 自动加购是否自动续费开关,true 开启,false 关闭
+        :param _RepurchaseRenewSwitch: <p>自动加购是否自动续费开关,true 开启,false 关闭</p>
         :type RepurchaseRenewSwitch: bool
-        :param _AutoBindRaspSwitch: 是否自动新增机器绑定rasp防护,false 关闭 true 开启
+        :param _AutoBindRaspSwitch: <p>是否自动新增机器绑定rasp防护,false 关闭 true 开启</p>
         :type AutoBindRaspSwitch: bool
-        :param _AutoOpenRaspSwitch: 是否自动新增机器开启rasp防护,false 关闭 true 开启
+        :param _AutoOpenRaspSwitch: <p>是否自动新增机器开启rasp防护,false 关闭 true 开启</p>
         :type AutoOpenRaspSwitch: bool
-        :param _AutoDowngradeSwitch: 是否自动缩容开关开启
+        :param _AutoDowngradeSwitch: <p>是否自动缩容开关开启</p>
         :type AutoDowngradeSwitch: bool
+        :param _AvailableAISecurityLicenseCnt: <p>可使用的AI防护版授权数</p>
+        :type AvailableAISecurityLicenseCnt: int
+        :param _AISecurityVersionLicenseCnt: <p>AI 防护版总授权数</p>
+        :type AISecurityVersionLicenseCnt: int
+        :param _ApplicationAvailableLicenseCnt: <p>应用防护授权数+旗舰版授权数相加后的可使用授权数</p>
+        :type ApplicationAvailableLicenseCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -41062,11 +41068,14 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._AutoBindRaspSwitch = None
         self._AutoOpenRaspSwitch = None
         self._AutoDowngradeSwitch = None
+        self._AvailableAISecurityLicenseCnt = None
+        self._AISecurityVersionLicenseCnt = None
+        self._ApplicationAvailableLicenseCnt = None
         self._RequestId = None
 
     @property
     def LicenseCnt(self):
-        r"""总授权数 (包含隔离,过期等不可用状态)
+        r"""<p>总授权数 (包含隔离,过期等不可用状态)</p>
         :rtype: int
         """
         return self._LicenseCnt
@@ -41077,7 +41086,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AvailableLicenseCnt(self):
-        r"""可用授权数
+        r"""<p>可用授权数</p>
         :rtype: int
         """
         return self._AvailableLicenseCnt
@@ -41088,7 +41097,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AvailableProVersionLicenseCnt(self):
-        r"""可用专业版授权数(包含后付费).
+        r"""<p>可用专业版授权数(包含后付费).</p>
         :rtype: int
         """
         return self._AvailableProVersionLicenseCnt
@@ -41099,7 +41108,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AvailableFlagshipVersionLicenseCnt(self):
-        r"""可用旗舰版授权数
+        r"""<p>可用旗舰版授权数</p>
         :rtype: int
         """
         return self._AvailableFlagshipVersionLicenseCnt
@@ -41110,7 +41119,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def NearExpiryLicenseCnt(self):
-        r"""即将到期授权数 (15天内到期的)
+        r"""<p>即将到期授权数 (15天内到期的)</p>
         :rtype: int
         """
         return self._NearExpiryLicenseCnt
@@ -41121,7 +41130,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def ExpireLicenseCnt(self):
-        r"""已到期授权数(不包含已删除的记录)
+        r"""<p>已到期授权数(不包含已删除的记录)</p>
         :rtype: int
         """
         return self._ExpireLicenseCnt
@@ -41132,7 +41141,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AutoOpenStatus(self):
-        r"""自动升级开关状态,默认 false,  true 开启, false 关闭
+        r"""<p>自动升级开关状态,默认 false,  true 开启, false 关闭</p>
         :rtype: bool
         """
         return self._AutoOpenStatus
@@ -41143,7 +41152,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def ProtectType(self):
-        r"""PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费
+        r"""<p>PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费</p>
         :rtype: str
         """
         return self._ProtectType
@@ -41154,7 +41163,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def IsOpenStatusHistory(self):
-        r"""历史是否开通过自动升级开关
+        r"""<p>历史是否开通过自动升级开关</p>
         :rtype: bool
         """
         return self._IsOpenStatusHistory
@@ -41165,7 +41174,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def UsedLicenseCnt(self):
-        r"""已使用授权数
+        r"""<p>已使用授权数</p>
         :rtype: int
         """
         return self._UsedLicenseCnt
@@ -41176,7 +41185,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def NotExpiredLicenseCnt(self):
-        r"""未到期授权数
+        r"""<p>未到期授权数</p>
         :rtype: int
         """
         return self._NotExpiredLicenseCnt
@@ -41187,7 +41196,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def FlagshipVersionLicenseCnt(self):
-        r"""旗舰版总授权数(有效订单)
+        r"""<p>旗舰版总授权数(有效订单)</p>
         :rtype: int
         """
         return self._FlagshipVersionLicenseCnt
@@ -41198,7 +41207,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def ProVersionLicenseCnt(self):
-        r"""专业版总授权数(有效订单)
+        r"""<p>专业版总授权数(有效订单)</p>
         :rtype: int
         """
         return self._ProVersionLicenseCnt
@@ -41209,7 +41218,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def CwpVersionLicenseCnt(self):
-        r"""轻量版总授权数(有效订单的授权数)
+        r"""<p>轻量版总授权数(有效订单的授权数)</p>
         :rtype: int
         """
         return self._CwpVersionLicenseCnt
@@ -41220,7 +41229,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AvailableLHLicenseCnt(self):
-        r"""可用惠普版授权数
+        r"""<p>可用惠普版授权数</p>
         :rtype: int
         """
         return self._AvailableLHLicenseCnt
@@ -41231,7 +41240,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AutoRepurchaseSwitch(self):
-        r"""自动加购开关, true 开启, false 关闭
+        r"""<p>自动加购开关, true 开启, false 关闭</p>
         :rtype: bool
         """
         return self._AutoRepurchaseSwitch
@@ -41242,7 +41251,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AutoRepurchaseRenewSwitch(self):
-        r"""自动加购订单是否自动续费 ,true 开启, false 关闭
+        r"""<p>自动加购订单是否自动续费 ,true 开启, false 关闭</p>
         :rtype: bool
         """
         return self._AutoRepurchaseRenewSwitch
@@ -41253,7 +41262,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def DestroyOrderNum(self):
-        r"""已销毁订单数
+        r"""<p>已销毁订单数</p>
         :rtype: int
         """
         return self._DestroyOrderNum
@@ -41264,7 +41273,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def RepurchaseRenewSwitch(self):
-        r"""自动加购是否自动续费开关,true 开启,false 关闭
+        r"""<p>自动加购是否自动续费开关,true 开启,false 关闭</p>
         :rtype: bool
         """
         return self._RepurchaseRenewSwitch
@@ -41275,7 +41284,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AutoBindRaspSwitch(self):
-        r"""是否自动新增机器绑定rasp防护,false 关闭 true 开启
+        r"""<p>是否自动新增机器绑定rasp防护,false 关闭 true 开启</p>
         :rtype: bool
         """
         return self._AutoBindRaspSwitch
@@ -41286,7 +41295,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AutoOpenRaspSwitch(self):
-        r"""是否自动新增机器开启rasp防护,false 关闭 true 开启
+        r"""<p>是否自动新增机器开启rasp防护,false 关闭 true 开启</p>
         :rtype: bool
         """
         return self._AutoOpenRaspSwitch
@@ -41297,7 +41306,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
 
     @property
     def AutoDowngradeSwitch(self):
-        r"""是否自动缩容开关开启
+        r"""<p>是否自动缩容开关开启</p>
         :rtype: bool
         """
         return self._AutoDowngradeSwitch
@@ -41305,6 +41314,39 @@ class DescribeLicenseGeneralResponse(AbstractModel):
     @AutoDowngradeSwitch.setter
     def AutoDowngradeSwitch(self, AutoDowngradeSwitch):
         self._AutoDowngradeSwitch = AutoDowngradeSwitch
+
+    @property
+    def AvailableAISecurityLicenseCnt(self):
+        r"""<p>可使用的AI防护版授权数</p>
+        :rtype: int
+        """
+        return self._AvailableAISecurityLicenseCnt
+
+    @AvailableAISecurityLicenseCnt.setter
+    def AvailableAISecurityLicenseCnt(self, AvailableAISecurityLicenseCnt):
+        self._AvailableAISecurityLicenseCnt = AvailableAISecurityLicenseCnt
+
+    @property
+    def AISecurityVersionLicenseCnt(self):
+        r"""<p>AI 防护版总授权数</p>
+        :rtype: int
+        """
+        return self._AISecurityVersionLicenseCnt
+
+    @AISecurityVersionLicenseCnt.setter
+    def AISecurityVersionLicenseCnt(self, AISecurityVersionLicenseCnt):
+        self._AISecurityVersionLicenseCnt = AISecurityVersionLicenseCnt
+
+    @property
+    def ApplicationAvailableLicenseCnt(self):
+        r"""<p>应用防护授权数+旗舰版授权数相加后的可使用授权数</p>
+        :rtype: int
+        """
+        return self._ApplicationAvailableLicenseCnt
+
+    @ApplicationAvailableLicenseCnt.setter
+    def ApplicationAvailableLicenseCnt(self, ApplicationAvailableLicenseCnt):
+        self._ApplicationAvailableLicenseCnt = ApplicationAvailableLicenseCnt
 
     @property
     def RequestId(self):
@@ -41341,6 +41383,9 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._AutoBindRaspSwitch = params.get("AutoBindRaspSwitch")
         self._AutoOpenRaspSwitch = params.get("AutoOpenRaspSwitch")
         self._AutoDowngradeSwitch = params.get("AutoDowngradeSwitch")
+        self._AvailableAISecurityLicenseCnt = params.get("AvailableAISecurityLicenseCnt")
+        self._AISecurityVersionLicenseCnt = params.get("AISecurityVersionLicenseCnt")
+        self._ApplicationAvailableLicenseCnt = params.get("ApplicationAvailableLicenseCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -41602,14 +41647,14 @@ class DescribeLicenseWhiteConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleName: 规则名称,例如: cwp
+        :param _RuleName: <p>规则名称,例如: cwp</p>
         :type RuleName: str
         """
         self._RuleName = None
 
     @property
     def RuleName(self):
-        r"""规则名称,例如: cwp
+        r"""<p>规则名称,例如: cwp</p>
         :rtype: str
         """
         return self._RuleName
@@ -41638,14 +41683,16 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlagShip: 旗舰版 配置信息
+        :param _FlagShip: <p>旗舰版 配置信息</p>
         :type FlagShip: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
-        :param _Professional: 专业版 配置信息
+        :param _Professional: <p>专业版 配置信息</p>
         :type Professional: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
-        :param _PrattWhitney: 轻量版 配置信息
+        :param _PrattWhitney: <p>轻量版 配置信息</p>
         :type PrattWhitney: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
-        :param _RASP: 重保授权包 配置信息
+        :param _RASP: <p>重保授权包 配置信息</p>
         :type RASP: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
+        :param _LOG: <p>日志分析配置信息</p>
+        :type LOG: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -41653,11 +41700,12 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
         self._Professional = None
         self._PrattWhitney = None
         self._RASP = None
+        self._LOG = None
         self._RequestId = None
 
     @property
     def FlagShip(self):
-        r"""旗舰版 配置信息
+        r"""<p>旗舰版 配置信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         """
         return self._FlagShip
@@ -41668,7 +41716,7 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
 
     @property
     def Professional(self):
-        r"""专业版 配置信息
+        r"""<p>专业版 配置信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         """
         return self._Professional
@@ -41679,7 +41727,7 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
 
     @property
     def PrattWhitney(self):
-        r"""轻量版 配置信息
+        r"""<p>轻量版 配置信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         """
         return self._PrattWhitney
@@ -41690,7 +41738,7 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
 
     @property
     def RASP(self):
-        r"""重保授权包 配置信息
+        r"""<p>重保授权包 配置信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         """
         return self._RASP
@@ -41698,6 +41746,17 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
     @RASP.setter
     def RASP(self, RASP):
         self._RASP = RASP
+
+    @property
+    def LOG(self):
+        r"""<p>日志分析配置信息</p>
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
+        """
+        return self._LOG
+
+    @LOG.setter
+    def LOG(self, LOG):
+        self._LOG = LOG
 
     @property
     def RequestId(self):
@@ -41724,6 +41783,9 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
         if params.get("RASP") is not None:
             self._RASP = VersionWhiteConfig()
             self._RASP._deserialize(params.get("RASP"))
+        if params.get("LOG") is not None:
+            self._LOG = VersionWhiteConfig()
+            self._LOG._deserialize(params.get("LOG"))
         self._RequestId = params.get("RequestId")
 
 

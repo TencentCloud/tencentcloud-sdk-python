@@ -531,6 +531,132 @@ class TrpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeFlavorKingCycleBrandImportantCityScanAnalysis(
+            self,
+            request: models.DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse:
+        """
+        统计用户次数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlavorKingCycleBrandImportantCityScanAnalysis"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis(
+            self,
+            request: models.DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse:
+        """
+        统计用户次数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis(
+            self,
+            request: models.DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse:
+        """
+        统计用户次数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFlavorKingCycleBrandProvinceCityScanAnalysis(
+            self,
+            request: models.DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse:
+        """
+        统计用户次数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlavorKingCycleBrandProvinceCityScanAnalysis"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFlavorKingCycleBrandProvinceScanAnalysis(
+            self,
+            request: models.DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse:
+        """
+        统计用户次数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlavorKingCycleBrandProvinceScanAnalysis"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFlavorKingCycleBrandScanAnalysis(
+            self,
+            request: models.DescribeFlavorKingCycleBrandScanAnalysisRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlavorKingCycleBrandScanAnalysisResponse:
+        """
+        统计扫码次数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlavorKingCycleBrandScanAnalysis"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlavorKingCycleBrandScanAnalysisResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFlavorKingCycleBrandScanMetrics(
+            self,
+            request: models.DescribeFlavorKingCycleBrandScanMetricsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlavorKingCycleBrandScanMetricsResponse:
+        """
+        统计用户次数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlavorKingCycleBrandScanMetrics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlavorKingCycleBrandScanMetricsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeJobFileUrl(
             self,
             request: models.DescribeJobFileUrlRequest,
@@ -797,6 +923,24 @@ class TrpClient(AbstractClient):
         kwargs["action"] = "DescribeTraceDataList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTraceDataListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DownloadGEO(
+            self,
+            request: models.DownloadGEORequest,
+            opts: Dict = None,
+    ) -> models.DownloadGEOResponse:
+        """
+        地理位置信息下载
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DownloadGEO"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DownloadGEOResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

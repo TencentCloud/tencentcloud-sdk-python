@@ -5710,6 +5710,798 @@ class DescribeCustomRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandImportantCityScanAnalysis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: <p>企业ID</p>
+        :type CorpId: int
+        :param _TypeDate: <p>日期类型</p>
+        :type TypeDate: str
+        :param _QueryDate: <p>溯源ID</p>
+        :type QueryDate: str
+        """
+        self._CorpId = None
+        self._TypeDate = None
+        self._QueryDate = None
+
+    @property
+    def CorpId(self):
+        r"""<p>企业ID</p>
+        :rtype: int
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def TypeDate(self):
+        r"""<p>日期类型</p>
+        :rtype: str
+        """
+        return self._TypeDate
+
+    @TypeDate.setter
+    def TypeDate(self, TypeDate):
+        self._TypeDate = TypeDate
+
+    @property
+    def QueryDate(self):
+        r"""<p>溯源ID</p>
+        :rtype: str
+        """
+        return self._QueryDate
+
+    @QueryDate.setter
+    def QueryDate(self, QueryDate):
+        self._QueryDate = QueryDate
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._TypeDate = params.get("TypeDate")
+        self._QueryDate = params.get("QueryDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandImportantCityScanAnalysis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数据</p>
+        :type Data: list of FlavorKingCycleBrandImportantCityScanAnalysisCityItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+        :rtype: list of FlavorKingCycleBrandImportantCityScanAnalysisCityItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FlavorKingCycleBrandImportantCityScanAnalysisCityItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: <p>企业ID</p>
+        :type CorpId: int
+        :param _TypeDate: <p>日期类型</p>
+        :type TypeDate: str
+        :param _QueryDate: <p>溯源ID</p>
+        :type QueryDate: str
+        :param _ProvinceList: <p>省份</p>
+        :type ProvinceList: list of str
+        """
+        self._CorpId = None
+        self._TypeDate = None
+        self._QueryDate = None
+        self._ProvinceList = None
+
+    @property
+    def CorpId(self):
+        r"""<p>企业ID</p>
+        :rtype: int
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def TypeDate(self):
+        r"""<p>日期类型</p>
+        :rtype: str
+        """
+        return self._TypeDate
+
+    @TypeDate.setter
+    def TypeDate(self, TypeDate):
+        self._TypeDate = TypeDate
+
+    @property
+    def QueryDate(self):
+        r"""<p>溯源ID</p>
+        :rtype: str
+        """
+        return self._QueryDate
+
+    @QueryDate.setter
+    def QueryDate(self, QueryDate):
+        self._QueryDate = QueryDate
+
+    @property
+    def ProvinceList(self):
+        r"""<p>省份</p>
+        :rtype: list of str
+        """
+        return self._ProvinceList
+
+    @ProvinceList.setter
+    def ProvinceList(self, ProvinceList):
+        self._ProvinceList = ProvinceList
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._TypeDate = params.get("TypeDate")
+        self._QueryDate = params.get("QueryDate")
+        self._ProvinceList = params.get("ProvinceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数据</p>
+        :type Data: list of FlavorKingCycleBrandImportantProvinceScanAnalysisProvinceItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+        :rtype: list of FlavorKingCycleBrandImportantProvinceScanAnalysisProvinceItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FlavorKingCycleBrandImportantProvinceScanAnalysisProvinceItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: <p>企业ID</p>
+        :type CorpId: int
+        :param _TypeDate: <p>日期类型</p>
+        :type TypeDate: str
+        :param _QueryDate: <p>溯源ID</p>
+        :type QueryDate: str
+        :param _ProvinceList: <p>省份</p>
+        :type ProvinceList: list of str
+        """
+        self._CorpId = None
+        self._TypeDate = None
+        self._QueryDate = None
+        self._ProvinceList = None
+
+    @property
+    def CorpId(self):
+        r"""<p>企业ID</p>
+        :rtype: int
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def TypeDate(self):
+        r"""<p>日期类型</p>
+        :rtype: str
+        """
+        return self._TypeDate
+
+    @TypeDate.setter
+    def TypeDate(self, TypeDate):
+        self._TypeDate = TypeDate
+
+    @property
+    def QueryDate(self):
+        r"""<p>溯源ID</p>
+        :rtype: str
+        """
+        return self._QueryDate
+
+    @QueryDate.setter
+    def QueryDate(self, QueryDate):
+        self._QueryDate = QueryDate
+
+    @property
+    def ProvinceList(self):
+        r"""<p>省份</p>
+        :rtype: list of str
+        """
+        return self._ProvinceList
+
+    @ProvinceList.setter
+    def ProvinceList(self, ProvinceList):
+        self._ProvinceList = ProvinceList
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._TypeDate = params.get("TypeDate")
+        self._QueryDate = params.get("QueryDate")
+        self._ProvinceList = params.get("ProvinceList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数据</p>
+        :type Data: list of FlavorKingCycleBrandImportantProvinceUserAnalysisProvinceItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+        :rtype: list of FlavorKingCycleBrandImportantProvinceUserAnalysisProvinceItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FlavorKingCycleBrandImportantProvinceUserAnalysisProvinceItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandProvinceCityScanAnalysis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: <p>CorpId</p>
+        :type CorpId: int
+        :param _QueryDate: <p>溯源ID</p>
+        :type QueryDate: str
+        """
+        self._CorpId = None
+        self._QueryDate = None
+
+    @property
+    def CorpId(self):
+        r"""<p>CorpId</p>
+        :rtype: int
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def QueryDate(self):
+        r"""<p>溯源ID</p>
+        :rtype: str
+        """
+        return self._QueryDate
+
+    @QueryDate.setter
+    def QueryDate(self, QueryDate):
+        self._QueryDate = QueryDate
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._QueryDate = params.get("QueryDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandProvinceCityScanAnalysis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数据</p>
+        :type Data: list of FlavorKingCycleBrandProvinceCityScanAnalysisProvinceItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+        :rtype: list of FlavorKingCycleBrandProvinceCityScanAnalysisProvinceItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FlavorKingCycleBrandProvinceCityScanAnalysisProvinceItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandProvinceScanAnalysis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: <p>企业ID</p>
+        :type CorpId: int
+        :param _TypeDate: <p>日期类型</p>
+        :type TypeDate: str
+        :param _QueryDate: <p>溯源ID</p>
+        :type QueryDate: str
+        """
+        self._CorpId = None
+        self._TypeDate = None
+        self._QueryDate = None
+
+    @property
+    def CorpId(self):
+        r"""<p>企业ID</p>
+        :rtype: int
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def TypeDate(self):
+        r"""<p>日期类型</p>
+        :rtype: str
+        """
+        return self._TypeDate
+
+    @TypeDate.setter
+    def TypeDate(self, TypeDate):
+        self._TypeDate = TypeDate
+
+    @property
+    def QueryDate(self):
+        r"""<p>溯源ID</p>
+        :rtype: str
+        """
+        return self._QueryDate
+
+    @QueryDate.setter
+    def QueryDate(self, QueryDate):
+        self._QueryDate = QueryDate
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._TypeDate = params.get("TypeDate")
+        self._QueryDate = params.get("QueryDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandProvinceScanAnalysis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数据</p>
+        :type Data: :class:`tencentcloud.trp.v20210515.models.FlavorKingCycleBrandProvinceScanAnalysisResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+        :rtype: :class:`tencentcloud.trp.v20210515.models.FlavorKingCycleBrandProvinceScanAnalysisResponse`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = FlavorKingCycleBrandProvinceScanAnalysisResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFlavorKingCycleBrandScanAnalysisRequest(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandScanAnalysis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: <p>企业ID</p>
+        :type CorpId: int
+        :param _TypeDate: <p>日期类型</p>
+        :type TypeDate: str
+        :param _QueryDate: <p>溯源ID</p>
+        :type QueryDate: str
+        """
+        self._CorpId = None
+        self._TypeDate = None
+        self._QueryDate = None
+
+    @property
+    def CorpId(self):
+        r"""<p>企业ID</p>
+        :rtype: int
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def TypeDate(self):
+        r"""<p>日期类型</p>
+        :rtype: str
+        """
+        return self._TypeDate
+
+    @TypeDate.setter
+    def TypeDate(self, TypeDate):
+        self._TypeDate = TypeDate
+
+    @property
+    def QueryDate(self):
+        r"""<p>溯源ID</p>
+        :rtype: str
+        """
+        return self._QueryDate
+
+    @QueryDate.setter
+    def QueryDate(self, QueryDate):
+        self._QueryDate = QueryDate
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._TypeDate = params.get("TypeDate")
+        self._QueryDate = params.get("QueryDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlavorKingCycleBrandScanAnalysisResponse(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandScanAnalysis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>响应</p>
+        :type Data: :class:`tencentcloud.trp.v20210515.models.FlavorKingCycleBrandScanAnalysisResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>响应</p>
+        :rtype: :class:`tencentcloud.trp.v20210515.models.FlavorKingCycleBrandScanAnalysisResponse`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = FlavorKingCycleBrandScanAnalysisResponse()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFlavorKingCycleBrandScanMetricsRequest(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandScanMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: <p>CorpId</p>
+        :type CorpId: int
+        :param _QueryDate: <p>溯源ID</p>
+        :type QueryDate: str
+        """
+        self._CorpId = None
+        self._QueryDate = None
+
+    @property
+    def CorpId(self):
+        r"""<p>CorpId</p>
+        :rtype: int
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def QueryDate(self):
+        r"""<p>溯源ID</p>
+        :rtype: str
+        """
+        return self._QueryDate
+
+    @QueryDate.setter
+    def QueryDate(self, QueryDate):
+        self._QueryDate = QueryDate
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._QueryDate = params.get("QueryDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlavorKingCycleBrandScanMetricsResponse(AbstractModel):
+    r"""DescribeFlavorKingCycleBrandScanMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数据</p>
+        :type Data: list of FlavorKingCycleBrandScanMetricsItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+        :rtype: list of FlavorKingCycleBrandScanMetricsItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FlavorKingCycleBrandScanMetricsItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeJobFileUrlRequest(AbstractModel):
     r"""DescribeJobFileUrl请求参数结构体
 
@@ -7816,6 +8608,40 @@ class DescribeTraceDataListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DownloadGEORequest(AbstractModel):
+    r"""DownloadGEO请求参数结构体
+
+    """
+
+
+class DownloadGEOResponse(AbstractModel):
+    r"""DownloadGEO返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class EffectFeedbackRequest(AbstractModel):
     r"""EffectFeedback请求参数结构体
 
@@ -7931,6 +8757,1541 @@ class Ext(AbstractModel):
 
     def _deserialize(self, params):
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandImportantCityScanAnalysisCityItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ratio: <p>口味王分布</p>
+        :type Ratio: float
+        :param _MarketShare: <p>口味王市场份额</p>
+        :type MarketShare: float
+        :param _OtherMarketShare: <p>其他品牌市场份额</p>
+        :type OtherMarketShare: float
+        :param _LastCycleRatio: <p>上周期口味王分布</p>
+        :type LastCycleRatio: float
+        :param _LastCycleMarketShare: <p>上周期口味王牌市场份额</p>
+        :type LastCycleMarketShare: float
+        :param _LastCycleOtherMarketShare: <p>上周期其他品牌市场份额</p>
+        :type LastCycleOtherMarketShare: float
+        :param _GrowRatio: <p>口味王增长率</p>
+        :type GrowRatio: float
+        :param _OtherGrowRatio: <p>其他品牌增长率</p>
+        :type OtherGrowRatio: float
+        :param _Regions: <p>下属城市明细</p>
+        :type Regions: list of FlavorKingCycleBrandImportantCityScanAnalysisRegionItem
+        :param _City: <p>城市</p>
+        :type City: str
+        """
+        self._Ratio = None
+        self._MarketShare = None
+        self._OtherMarketShare = None
+        self._LastCycleRatio = None
+        self._LastCycleMarketShare = None
+        self._LastCycleOtherMarketShare = None
+        self._GrowRatio = None
+        self._OtherGrowRatio = None
+        self._Regions = None
+        self._City = None
+
+    @property
+    def Ratio(self):
+        r"""<p>口味王分布</p>
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def MarketShare(self):
+        r"""<p>口味王市场份额</p>
+        :rtype: float
+        """
+        return self._MarketShare
+
+    @MarketShare.setter
+    def MarketShare(self, MarketShare):
+        self._MarketShare = MarketShare
+
+    @property
+    def OtherMarketShare(self):
+        r"""<p>其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._OtherMarketShare
+
+    @OtherMarketShare.setter
+    def OtherMarketShare(self, OtherMarketShare):
+        self._OtherMarketShare = OtherMarketShare
+
+    @property
+    def LastCycleRatio(self):
+        r"""<p>上周期口味王分布</p>
+        :rtype: float
+        """
+        return self._LastCycleRatio
+
+    @LastCycleRatio.setter
+    def LastCycleRatio(self, LastCycleRatio):
+        self._LastCycleRatio = LastCycleRatio
+
+    @property
+    def LastCycleMarketShare(self):
+        r"""<p>上周期口味王牌市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleMarketShare
+
+    @LastCycleMarketShare.setter
+    def LastCycleMarketShare(self, LastCycleMarketShare):
+        self._LastCycleMarketShare = LastCycleMarketShare
+
+    @property
+    def LastCycleOtherMarketShare(self):
+        r"""<p>上周期其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleOtherMarketShare
+
+    @LastCycleOtherMarketShare.setter
+    def LastCycleOtherMarketShare(self, LastCycleOtherMarketShare):
+        self._LastCycleOtherMarketShare = LastCycleOtherMarketShare
+
+    @property
+    def GrowRatio(self):
+        r"""<p>口味王增长率</p>
+        :rtype: float
+        """
+        return self._GrowRatio
+
+    @GrowRatio.setter
+    def GrowRatio(self, GrowRatio):
+        self._GrowRatio = GrowRatio
+
+    @property
+    def OtherGrowRatio(self):
+        r"""<p>其他品牌增长率</p>
+        :rtype: float
+        """
+        return self._OtherGrowRatio
+
+    @OtherGrowRatio.setter
+    def OtherGrowRatio(self, OtherGrowRatio):
+        self._OtherGrowRatio = OtherGrowRatio
+
+    @property
+    def Regions(self):
+        r"""<p>下属城市明细</p>
+        :rtype: list of FlavorKingCycleBrandImportantCityScanAnalysisRegionItem
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+
+    def _deserialize(self, params):
+        self._Ratio = params.get("Ratio")
+        self._MarketShare = params.get("MarketShare")
+        self._OtherMarketShare = params.get("OtherMarketShare")
+        self._LastCycleRatio = params.get("LastCycleRatio")
+        self._LastCycleMarketShare = params.get("LastCycleMarketShare")
+        self._LastCycleOtherMarketShare = params.get("LastCycleOtherMarketShare")
+        self._GrowRatio = params.get("GrowRatio")
+        self._OtherGrowRatio = params.get("OtherGrowRatio")
+        if params.get("Regions") is not None:
+            self._Regions = []
+            for item in params.get("Regions"):
+                obj = FlavorKingCycleBrandImportantCityScanAnalysisRegionItem()
+                obj._deserialize(item)
+                self._Regions.append(obj)
+        self._City = params.get("City")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandImportantCityScanAnalysisRegionItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ratio: <p>口味王分布</p>
+        :type Ratio: float
+        :param _MarketShare: <p>口味王市场份额</p>
+        :type MarketShare: float
+        :param _OtherMarketShare: <p>其他品牌市场份额</p>
+        :type OtherMarketShare: float
+        :param _LastCycleRatio: <p>上周期口味王分布</p>
+        :type LastCycleRatio: float
+        :param _LastCycleMarketShare: <p>上周期口味王市场份额</p>
+        :type LastCycleMarketShare: float
+        :param _LastCycleOtherMarketShare: <p>上周期其他品牌市场份额</p>
+        :type LastCycleOtherMarketShare: float
+        :param _GrowRatio: <p>口味王增长率</p>
+        :type GrowRatio: float
+        :param _OtherGrowRatio: <p>其他品牌增长率</p>
+        :type OtherGrowRatio: float
+        :param _Region: <p>区</p>
+        :type Region: str
+        """
+        self._Ratio = None
+        self._MarketShare = None
+        self._OtherMarketShare = None
+        self._LastCycleRatio = None
+        self._LastCycleMarketShare = None
+        self._LastCycleOtherMarketShare = None
+        self._GrowRatio = None
+        self._OtherGrowRatio = None
+        self._Region = None
+
+    @property
+    def Ratio(self):
+        r"""<p>口味王分布</p>
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def MarketShare(self):
+        r"""<p>口味王市场份额</p>
+        :rtype: float
+        """
+        return self._MarketShare
+
+    @MarketShare.setter
+    def MarketShare(self, MarketShare):
+        self._MarketShare = MarketShare
+
+    @property
+    def OtherMarketShare(self):
+        r"""<p>其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._OtherMarketShare
+
+    @OtherMarketShare.setter
+    def OtherMarketShare(self, OtherMarketShare):
+        self._OtherMarketShare = OtherMarketShare
+
+    @property
+    def LastCycleRatio(self):
+        r"""<p>上周期口味王分布</p>
+        :rtype: float
+        """
+        return self._LastCycleRatio
+
+    @LastCycleRatio.setter
+    def LastCycleRatio(self, LastCycleRatio):
+        self._LastCycleRatio = LastCycleRatio
+
+    @property
+    def LastCycleMarketShare(self):
+        r"""<p>上周期口味王市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleMarketShare
+
+    @LastCycleMarketShare.setter
+    def LastCycleMarketShare(self, LastCycleMarketShare):
+        self._LastCycleMarketShare = LastCycleMarketShare
+
+    @property
+    def LastCycleOtherMarketShare(self):
+        r"""<p>上周期其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleOtherMarketShare
+
+    @LastCycleOtherMarketShare.setter
+    def LastCycleOtherMarketShare(self, LastCycleOtherMarketShare):
+        self._LastCycleOtherMarketShare = LastCycleOtherMarketShare
+
+    @property
+    def GrowRatio(self):
+        r"""<p>口味王增长率</p>
+        :rtype: float
+        """
+        return self._GrowRatio
+
+    @GrowRatio.setter
+    def GrowRatio(self, GrowRatio):
+        self._GrowRatio = GrowRatio
+
+    @property
+    def OtherGrowRatio(self):
+        r"""<p>其他品牌增长率</p>
+        :rtype: float
+        """
+        return self._OtherGrowRatio
+
+    @OtherGrowRatio.setter
+    def OtherGrowRatio(self, OtherGrowRatio):
+        self._OtherGrowRatio = OtherGrowRatio
+
+    @property
+    def Region(self):
+        r"""<p>区</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Ratio = params.get("Ratio")
+        self._MarketShare = params.get("MarketShare")
+        self._OtherMarketShare = params.get("OtherMarketShare")
+        self._LastCycleRatio = params.get("LastCycleRatio")
+        self._LastCycleMarketShare = params.get("LastCycleMarketShare")
+        self._LastCycleOtherMarketShare = params.get("LastCycleOtherMarketShare")
+        self._GrowRatio = params.get("GrowRatio")
+        self._OtherGrowRatio = params.get("OtherGrowRatio")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandImportantProvinceScanAnalysisCityItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ratio: <p>口味王分布</p>
+        :type Ratio: float
+        :param _MarketShare: <p>口味王市场份额</p>
+        :type MarketShare: float
+        :param _OtherMarketShare: <p>其他品牌市场份额</p>
+        :type OtherMarketShare: float
+        :param _LastCycleRatio: <p>上周期口味王分布</p>
+        :type LastCycleRatio: float
+        :param _LastCycleMarketShare: <p>上周期口味王市场份额</p>
+        :type LastCycleMarketShare: float
+        :param _LastCycleOtherMarketShare: <p>上周期其他品牌市场份额</p>
+        :type LastCycleOtherMarketShare: float
+        :param _GrowRatio: <p>口味王增长率</p>
+        :type GrowRatio: float
+        :param _OtherGrowRatio: <p>其他品牌增长率</p>
+        :type OtherGrowRatio: float
+        :param _City: <p>城市</p>
+        :type City: str
+        """
+        self._Ratio = None
+        self._MarketShare = None
+        self._OtherMarketShare = None
+        self._LastCycleRatio = None
+        self._LastCycleMarketShare = None
+        self._LastCycleOtherMarketShare = None
+        self._GrowRatio = None
+        self._OtherGrowRatio = None
+        self._City = None
+
+    @property
+    def Ratio(self):
+        r"""<p>口味王分布</p>
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def MarketShare(self):
+        r"""<p>口味王市场份额</p>
+        :rtype: float
+        """
+        return self._MarketShare
+
+    @MarketShare.setter
+    def MarketShare(self, MarketShare):
+        self._MarketShare = MarketShare
+
+    @property
+    def OtherMarketShare(self):
+        r"""<p>其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._OtherMarketShare
+
+    @OtherMarketShare.setter
+    def OtherMarketShare(self, OtherMarketShare):
+        self._OtherMarketShare = OtherMarketShare
+
+    @property
+    def LastCycleRatio(self):
+        r"""<p>上周期口味王分布</p>
+        :rtype: float
+        """
+        return self._LastCycleRatio
+
+    @LastCycleRatio.setter
+    def LastCycleRatio(self, LastCycleRatio):
+        self._LastCycleRatio = LastCycleRatio
+
+    @property
+    def LastCycleMarketShare(self):
+        r"""<p>上周期口味王市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleMarketShare
+
+    @LastCycleMarketShare.setter
+    def LastCycleMarketShare(self, LastCycleMarketShare):
+        self._LastCycleMarketShare = LastCycleMarketShare
+
+    @property
+    def LastCycleOtherMarketShare(self):
+        r"""<p>上周期其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleOtherMarketShare
+
+    @LastCycleOtherMarketShare.setter
+    def LastCycleOtherMarketShare(self, LastCycleOtherMarketShare):
+        self._LastCycleOtherMarketShare = LastCycleOtherMarketShare
+
+    @property
+    def GrowRatio(self):
+        r"""<p>口味王增长率</p>
+        :rtype: float
+        """
+        return self._GrowRatio
+
+    @GrowRatio.setter
+    def GrowRatio(self, GrowRatio):
+        self._GrowRatio = GrowRatio
+
+    @property
+    def OtherGrowRatio(self):
+        r"""<p>其他品牌增长率</p>
+        :rtype: float
+        """
+        return self._OtherGrowRatio
+
+    @OtherGrowRatio.setter
+    def OtherGrowRatio(self, OtherGrowRatio):
+        self._OtherGrowRatio = OtherGrowRatio
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+
+    def _deserialize(self, params):
+        self._Ratio = params.get("Ratio")
+        self._MarketShare = params.get("MarketShare")
+        self._OtherMarketShare = params.get("OtherMarketShare")
+        self._LastCycleRatio = params.get("LastCycleRatio")
+        self._LastCycleMarketShare = params.get("LastCycleMarketShare")
+        self._LastCycleOtherMarketShare = params.get("LastCycleOtherMarketShare")
+        self._GrowRatio = params.get("GrowRatio")
+        self._OtherGrowRatio = params.get("OtherGrowRatio")
+        self._City = params.get("City")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandImportantProvinceScanAnalysisProvinceItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ratio: <p>口味王分布</p>
+        :type Ratio: float
+        :param _MarketShare: <p>口味王市场份额</p>
+        :type MarketShare: float
+        :param _OtherMarketShare: <p>其他品牌市场份额</p>
+        :type OtherMarketShare: float
+        :param _LastCycleRatio: <p>上周期口味王分布</p>
+        :type LastCycleRatio: float
+        :param _LastCycleMarketShare: <p>上周期口味王市场份额</p>
+        :type LastCycleMarketShare: float
+        :param _LastCycleOtherMarketShare: <p>上周期其他品牌市场份额</p>
+        :type LastCycleOtherMarketShare: float
+        :param _GrowRatio: <p>口味王增长率</p>
+        :type GrowRatio: float
+        :param _OtherGrowRatio: <p>其他品牌增长率</p>
+        :type OtherGrowRatio: float
+        :param _Cities: <p>下属城市明细</p>
+        :type Cities: list of FlavorKingCycleBrandImportantProvinceScanAnalysisCityItem
+        :param _Province: <p>省份</p>
+        :type Province: str
+        """
+        self._Ratio = None
+        self._MarketShare = None
+        self._OtherMarketShare = None
+        self._LastCycleRatio = None
+        self._LastCycleMarketShare = None
+        self._LastCycleOtherMarketShare = None
+        self._GrowRatio = None
+        self._OtherGrowRatio = None
+        self._Cities = None
+        self._Province = None
+
+    @property
+    def Ratio(self):
+        r"""<p>口味王分布</p>
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def MarketShare(self):
+        r"""<p>口味王市场份额</p>
+        :rtype: float
+        """
+        return self._MarketShare
+
+    @MarketShare.setter
+    def MarketShare(self, MarketShare):
+        self._MarketShare = MarketShare
+
+    @property
+    def OtherMarketShare(self):
+        r"""<p>其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._OtherMarketShare
+
+    @OtherMarketShare.setter
+    def OtherMarketShare(self, OtherMarketShare):
+        self._OtherMarketShare = OtherMarketShare
+
+    @property
+    def LastCycleRatio(self):
+        r"""<p>上周期口味王分布</p>
+        :rtype: float
+        """
+        return self._LastCycleRatio
+
+    @LastCycleRatio.setter
+    def LastCycleRatio(self, LastCycleRatio):
+        self._LastCycleRatio = LastCycleRatio
+
+    @property
+    def LastCycleMarketShare(self):
+        r"""<p>上周期口味王市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleMarketShare
+
+    @LastCycleMarketShare.setter
+    def LastCycleMarketShare(self, LastCycleMarketShare):
+        self._LastCycleMarketShare = LastCycleMarketShare
+
+    @property
+    def LastCycleOtherMarketShare(self):
+        r"""<p>上周期其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleOtherMarketShare
+
+    @LastCycleOtherMarketShare.setter
+    def LastCycleOtherMarketShare(self, LastCycleOtherMarketShare):
+        self._LastCycleOtherMarketShare = LastCycleOtherMarketShare
+
+    @property
+    def GrowRatio(self):
+        r"""<p>口味王增长率</p>
+        :rtype: float
+        """
+        return self._GrowRatio
+
+    @GrowRatio.setter
+    def GrowRatio(self, GrowRatio):
+        self._GrowRatio = GrowRatio
+
+    @property
+    def OtherGrowRatio(self):
+        r"""<p>其他品牌增长率</p>
+        :rtype: float
+        """
+        return self._OtherGrowRatio
+
+    @OtherGrowRatio.setter
+    def OtherGrowRatio(self, OtherGrowRatio):
+        self._OtherGrowRatio = OtherGrowRatio
+
+    @property
+    def Cities(self):
+        r"""<p>下属城市明细</p>
+        :rtype: list of FlavorKingCycleBrandImportantProvinceScanAnalysisCityItem
+        """
+        return self._Cities
+
+    @Cities.setter
+    def Cities(self, Cities):
+        self._Cities = Cities
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+
+    def _deserialize(self, params):
+        self._Ratio = params.get("Ratio")
+        self._MarketShare = params.get("MarketShare")
+        self._OtherMarketShare = params.get("OtherMarketShare")
+        self._LastCycleRatio = params.get("LastCycleRatio")
+        self._LastCycleMarketShare = params.get("LastCycleMarketShare")
+        self._LastCycleOtherMarketShare = params.get("LastCycleOtherMarketShare")
+        self._GrowRatio = params.get("GrowRatio")
+        self._OtherGrowRatio = params.get("OtherGrowRatio")
+        if params.get("Cities") is not None:
+            self._Cities = []
+            for item in params.get("Cities"):
+                obj = FlavorKingCycleBrandImportantProvinceScanAnalysisCityItem()
+                obj._deserialize(item)
+                self._Cities.append(obj)
+        self._Province = params.get("Province")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandImportantProvinceUserAnalysisCityItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarketShare: <p>口味王市场份额</p>
+        :type MarketShare: float
+        :param _OtherMarketShare: <p>其他品牌市场份额</p>
+        :type OtherMarketShare: float
+        :param _GrowRatio: <p>口味王增长率</p>
+        :type GrowRatio: float
+        :param _OtherGrowRatio: <p>其他品牌增长率</p>
+        :type OtherGrowRatio: float
+        :param _City: <p>城市</p>
+        :type City: str
+        """
+        self._MarketShare = None
+        self._OtherMarketShare = None
+        self._GrowRatio = None
+        self._OtherGrowRatio = None
+        self._City = None
+
+    @property
+    def MarketShare(self):
+        r"""<p>口味王市场份额</p>
+        :rtype: float
+        """
+        return self._MarketShare
+
+    @MarketShare.setter
+    def MarketShare(self, MarketShare):
+        self._MarketShare = MarketShare
+
+    @property
+    def OtherMarketShare(self):
+        r"""<p>其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._OtherMarketShare
+
+    @OtherMarketShare.setter
+    def OtherMarketShare(self, OtherMarketShare):
+        self._OtherMarketShare = OtherMarketShare
+
+    @property
+    def GrowRatio(self):
+        r"""<p>口味王增长率</p>
+        :rtype: float
+        """
+        return self._GrowRatio
+
+    @GrowRatio.setter
+    def GrowRatio(self, GrowRatio):
+        self._GrowRatio = GrowRatio
+
+    @property
+    def OtherGrowRatio(self):
+        r"""<p>其他品牌增长率</p>
+        :rtype: float
+        """
+        return self._OtherGrowRatio
+
+    @OtherGrowRatio.setter
+    def OtherGrowRatio(self, OtherGrowRatio):
+        self._OtherGrowRatio = OtherGrowRatio
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+
+    def _deserialize(self, params):
+        self._MarketShare = params.get("MarketShare")
+        self._OtherMarketShare = params.get("OtherMarketShare")
+        self._GrowRatio = params.get("GrowRatio")
+        self._OtherGrowRatio = params.get("OtherGrowRatio")
+        self._City = params.get("City")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandImportantProvinceUserAnalysisProvinceItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarketShare: <p>口味王市场份额</p>
+        :type MarketShare: float
+        :param _OtherMarketShare: <p>其他品牌市场份额</p>
+        :type OtherMarketShare: float
+        :param _GrowRatio: <p>口味王增长率</p>
+        :type GrowRatio: float
+        :param _OtherGrowRatio: <p>其他品牌增长率</p>
+        :type OtherGrowRatio: float
+        :param _Cities: <p>下属城市明细</p>
+        :type Cities: list of FlavorKingCycleBrandImportantProvinceUserAnalysisCityItem
+        :param _Province: <p>省份</p>
+        :type Province: str
+        """
+        self._MarketShare = None
+        self._OtherMarketShare = None
+        self._GrowRatio = None
+        self._OtherGrowRatio = None
+        self._Cities = None
+        self._Province = None
+
+    @property
+    def MarketShare(self):
+        r"""<p>口味王市场份额</p>
+        :rtype: float
+        """
+        return self._MarketShare
+
+    @MarketShare.setter
+    def MarketShare(self, MarketShare):
+        self._MarketShare = MarketShare
+
+    @property
+    def OtherMarketShare(self):
+        r"""<p>其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._OtherMarketShare
+
+    @OtherMarketShare.setter
+    def OtherMarketShare(self, OtherMarketShare):
+        self._OtherMarketShare = OtherMarketShare
+
+    @property
+    def GrowRatio(self):
+        r"""<p>口味王增长率</p>
+        :rtype: float
+        """
+        return self._GrowRatio
+
+    @GrowRatio.setter
+    def GrowRatio(self, GrowRatio):
+        self._GrowRatio = GrowRatio
+
+    @property
+    def OtherGrowRatio(self):
+        r"""<p>其他品牌增长率</p>
+        :rtype: float
+        """
+        return self._OtherGrowRatio
+
+    @OtherGrowRatio.setter
+    def OtherGrowRatio(self, OtherGrowRatio):
+        self._OtherGrowRatio = OtherGrowRatio
+
+    @property
+    def Cities(self):
+        r"""<p>下属城市明细</p>
+        :rtype: list of FlavorKingCycleBrandImportantProvinceUserAnalysisCityItem
+        """
+        return self._Cities
+
+    @Cities.setter
+    def Cities(self, Cities):
+        self._Cities = Cities
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+
+    def _deserialize(self, params):
+        self._MarketShare = params.get("MarketShare")
+        self._OtherMarketShare = params.get("OtherMarketShare")
+        self._GrowRatio = params.get("GrowRatio")
+        self._OtherGrowRatio = params.get("OtherGrowRatio")
+        if params.get("Cities") is not None:
+            self._Cities = []
+            for item in params.get("Cities"):
+                obj = FlavorKingCycleBrandImportantProvinceUserAnalysisCityItem()
+                obj._deserialize(item)
+                self._Cities.append(obj)
+        self._Province = params.get("Province")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandProvinceCityScanAnalysisCityItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ratio: <p>口味王分布</p>
+        :type Ratio: list of float
+        :param _Regions: <p>分区域数据</p>
+        :type Regions: list of FlavorKingCycleBrandProvinceCityScanAnalysisRegionItem
+        :param _City: <p>城市</p>
+        :type City: str
+        """
+        self._Ratio = None
+        self._Regions = None
+        self._City = None
+
+    @property
+    def Ratio(self):
+        r"""<p>口味王分布</p>
+        :rtype: list of float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Regions(self):
+        r"""<p>分区域数据</p>
+        :rtype: list of FlavorKingCycleBrandProvinceCityScanAnalysisRegionItem
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+
+    def _deserialize(self, params):
+        self._Ratio = params.get("Ratio")
+        if params.get("Regions") is not None:
+            self._Regions = []
+            for item in params.get("Regions"):
+                obj = FlavorKingCycleBrandProvinceCityScanAnalysisRegionItem()
+                obj._deserialize(item)
+                self._Regions.append(obj)
+        self._City = params.get("City")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandProvinceCityScanAnalysisProvinceItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ratio: <p>口味王分布</p>
+        :type Ratio: list of float
+        :param _Cities: <p>下属城市明细</p>
+        :type Cities: list of FlavorKingCycleBrandProvinceCityScanAnalysisCityItem
+        :param _Province: <p>省份</p>
+        :type Province: str
+        """
+        self._Ratio = None
+        self._Cities = None
+        self._Province = None
+
+    @property
+    def Ratio(self):
+        r"""<p>口味王分布</p>
+        :rtype: list of float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Cities(self):
+        r"""<p>下属城市明细</p>
+        :rtype: list of FlavorKingCycleBrandProvinceCityScanAnalysisCityItem
+        """
+        return self._Cities
+
+    @Cities.setter
+    def Cities(self, Cities):
+        self._Cities = Cities
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+
+    def _deserialize(self, params):
+        self._Ratio = params.get("Ratio")
+        if params.get("Cities") is not None:
+            self._Cities = []
+            for item in params.get("Cities"):
+                obj = FlavorKingCycleBrandProvinceCityScanAnalysisCityItem()
+                obj._deserialize(item)
+                self._Cities.append(obj)
+        self._Province = params.get("Province")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandProvinceCityScanAnalysisRegionItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ratio: <p>口味王分布</p>
+        :type Ratio: list of float
+        :param _Region: <p>区域</p>
+        :type Region: str
+        """
+        self._Ratio = None
+        self._Region = None
+
+    @property
+    def Ratio(self):
+        r"""<p>口味王分布</p>
+        :rtype: list of float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Region(self):
+        r"""<p>区域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Ratio = params.get("Ratio")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandProvinceScanAnalysisDataItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarketShare: <p>口味王市场份额</p>
+        :type MarketShare: float
+        :param _OtherMarketShare: <p>其他品牌市场份额</p>
+        :type OtherMarketShare: float
+        :param _LastCycleMarketShare: <p>上周期口味王市场份额</p>
+        :type LastCycleMarketShare: float
+        :param _OtherLastCycleMarketShare: <p>上周期其他品牌市场份额</p>
+        :type OtherLastCycleMarketShare: float
+        :param _Ratio: <p>口味王分布</p>
+        :type Ratio: float
+        :param _LastCycleRatio: <p>上周期口味王分布</p>
+        :type LastCycleRatio: float
+        :param _Province: <p>省份</p>
+        :type Province: str
+        :param _GrowRatio: <p>口味王环比</p>
+        :type GrowRatio: float
+        :param _OtherGrowRatio: <p>其他平台环比</p>
+        :type OtherGrowRatio: float
+        """
+        self._MarketShare = None
+        self._OtherMarketShare = None
+        self._LastCycleMarketShare = None
+        self._OtherLastCycleMarketShare = None
+        self._Ratio = None
+        self._LastCycleRatio = None
+        self._Province = None
+        self._GrowRatio = None
+        self._OtherGrowRatio = None
+
+    @property
+    def MarketShare(self):
+        r"""<p>口味王市场份额</p>
+        :rtype: float
+        """
+        return self._MarketShare
+
+    @MarketShare.setter
+    def MarketShare(self, MarketShare):
+        self._MarketShare = MarketShare
+
+    @property
+    def OtherMarketShare(self):
+        r"""<p>其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._OtherMarketShare
+
+    @OtherMarketShare.setter
+    def OtherMarketShare(self, OtherMarketShare):
+        self._OtherMarketShare = OtherMarketShare
+
+    @property
+    def LastCycleMarketShare(self):
+        r"""<p>上周期口味王市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleMarketShare
+
+    @LastCycleMarketShare.setter
+    def LastCycleMarketShare(self, LastCycleMarketShare):
+        self._LastCycleMarketShare = LastCycleMarketShare
+
+    @property
+    def OtherLastCycleMarketShare(self):
+        r"""<p>上周期其他品牌市场份额</p>
+        :rtype: float
+        """
+        return self._OtherLastCycleMarketShare
+
+    @OtherLastCycleMarketShare.setter
+    def OtherLastCycleMarketShare(self, OtherLastCycleMarketShare):
+        self._OtherLastCycleMarketShare = OtherLastCycleMarketShare
+
+    @property
+    def Ratio(self):
+        r"""<p>口味王分布</p>
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def LastCycleRatio(self):
+        r"""<p>上周期口味王分布</p>
+        :rtype: float
+        """
+        return self._LastCycleRatio
+
+    @LastCycleRatio.setter
+    def LastCycleRatio(self, LastCycleRatio):
+        self._LastCycleRatio = LastCycleRatio
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def GrowRatio(self):
+        r"""<p>口味王环比</p>
+        :rtype: float
+        """
+        return self._GrowRatio
+
+    @GrowRatio.setter
+    def GrowRatio(self, GrowRatio):
+        self._GrowRatio = GrowRatio
+
+    @property
+    def OtherGrowRatio(self):
+        r"""<p>其他平台环比</p>
+        :rtype: float
+        """
+        return self._OtherGrowRatio
+
+    @OtherGrowRatio.setter
+    def OtherGrowRatio(self, OtherGrowRatio):
+        self._OtherGrowRatio = OtherGrowRatio
+
+
+    def _deserialize(self, params):
+        self._MarketShare = params.get("MarketShare")
+        self._OtherMarketShare = params.get("OtherMarketShare")
+        self._LastCycleMarketShare = params.get("LastCycleMarketShare")
+        self._OtherLastCycleMarketShare = params.get("OtherLastCycleMarketShare")
+        self._Ratio = params.get("Ratio")
+        self._LastCycleRatio = params.get("LastCycleRatio")
+        self._Province = params.get("Province")
+        self._GrowRatio = params.get("GrowRatio")
+        self._OtherGrowRatio = params.get("OtherGrowRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandProvinceScanAnalysisResponse(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarketShare: <p>口味王全国份额</p>
+        :type MarketShare: float
+        :param _LastCycleMarketShare: <p>上周期口味王市场份额</p>
+        :type LastCycleMarketShare: float
+        :param _Provinces: <p>口味王全国周环比</p>
+        :type Provinces: list of FlavorKingCycleBrandProvinceScanAnalysisDataItem
+        :param _GrowRatio: <p>口味王环比</p>
+        :type GrowRatio: float
+        :param _OtherGrowRatio: <p>其他品牌环比</p>
+        :type OtherGrowRatio: float
+        """
+        self._MarketShare = None
+        self._LastCycleMarketShare = None
+        self._Provinces = None
+        self._GrowRatio = None
+        self._OtherGrowRatio = None
+
+    @property
+    def MarketShare(self):
+        r"""<p>口味王全国份额</p>
+        :rtype: float
+        """
+        return self._MarketShare
+
+    @MarketShare.setter
+    def MarketShare(self, MarketShare):
+        self._MarketShare = MarketShare
+
+    @property
+    def LastCycleMarketShare(self):
+        r"""<p>上周期口味王市场份额</p>
+        :rtype: float
+        """
+        return self._LastCycleMarketShare
+
+    @LastCycleMarketShare.setter
+    def LastCycleMarketShare(self, LastCycleMarketShare):
+        self._LastCycleMarketShare = LastCycleMarketShare
+
+    @property
+    def Provinces(self):
+        r"""<p>口味王全国周环比</p>
+        :rtype: list of FlavorKingCycleBrandProvinceScanAnalysisDataItem
+        """
+        return self._Provinces
+
+    @Provinces.setter
+    def Provinces(self, Provinces):
+        self._Provinces = Provinces
+
+    @property
+    def GrowRatio(self):
+        r"""<p>口味王环比</p>
+        :rtype: float
+        """
+        return self._GrowRatio
+
+    @GrowRatio.setter
+    def GrowRatio(self, GrowRatio):
+        self._GrowRatio = GrowRatio
+
+    @property
+    def OtherGrowRatio(self):
+        r"""<p>其他品牌环比</p>
+        :rtype: float
+        """
+        return self._OtherGrowRatio
+
+    @OtherGrowRatio.setter
+    def OtherGrowRatio(self, OtherGrowRatio):
+        self._OtherGrowRatio = OtherGrowRatio
+
+
+    def _deserialize(self, params):
+        self._MarketShare = params.get("MarketShare")
+        self._LastCycleMarketShare = params.get("LastCycleMarketShare")
+        if params.get("Provinces") is not None:
+            self._Provinces = []
+            for item in params.get("Provinces"):
+                obj = FlavorKingCycleBrandProvinceScanAnalysisDataItem()
+                obj._deserialize(item)
+                self._Provinces.append(obj)
+        self._GrowRatio = params.get("GrowRatio")
+        self._OtherGrowRatio = params.get("OtherGrowRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandScanAnalysisDataItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: <p>周期时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: str
+        :param _BrandName: <p>品牌</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrandName: str
+        :param _Ratio: <p>品牌占比</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ratio: float
+        """
+        self._Duration = None
+        self._BrandName = None
+        self._Ratio = None
+
+    @property
+    def Duration(self):
+        r"""<p>周期时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def BrandName(self):
+        r"""<p>品牌</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BrandName
+
+    @BrandName.setter
+    def BrandName(self, BrandName):
+        self._BrandName = BrandName
+
+    @property
+    def Ratio(self):
+        r"""<p>品牌占比</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        self._BrandName = params.get("BrandName")
+        self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandScanAnalysisResponse(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: <p>总数</p>
+        :type Count: int
+        :param _CycleRatio: <p>占比</p>
+        :type CycleRatio: float
+        :param _CycleOverCycle: <p>环比</p>
+        :type CycleOverCycle: float
+        :param _CycleRatioItems: <p>占比详情</p>
+        :type CycleRatioItems: list of FlavorKingCycleBrandScanAnalysisDataItem
+        """
+        self._Count = None
+        self._CycleRatio = None
+        self._CycleOverCycle = None
+        self._CycleRatioItems = None
+
+    @property
+    def Count(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def CycleRatio(self):
+        r"""<p>占比</p>
+        :rtype: float
+        """
+        return self._CycleRatio
+
+    @CycleRatio.setter
+    def CycleRatio(self, CycleRatio):
+        self._CycleRatio = CycleRatio
+
+    @property
+    def CycleOverCycle(self):
+        r"""<p>环比</p>
+        :rtype: float
+        """
+        return self._CycleOverCycle
+
+    @CycleOverCycle.setter
+    def CycleOverCycle(self, CycleOverCycle):
+        self._CycleOverCycle = CycleOverCycle
+
+    @property
+    def CycleRatioItems(self):
+        r"""<p>占比详情</p>
+        :rtype: list of FlavorKingCycleBrandScanAnalysisDataItem
+        """
+        return self._CycleRatioItems
+
+    @CycleRatioItems.setter
+    def CycleRatioItems(self, CycleRatioItems):
+        self._CycleRatioItems = CycleRatioItems
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._CycleRatio = params.get("CycleRatio")
+        self._CycleOverCycle = params.get("CycleOverCycle")
+        if params.get("CycleRatioItems") is not None:
+            self._CycleRatioItems = []
+            for item in params.get("CycleRatioItems"):
+                obj = FlavorKingCycleBrandScanAnalysisDataItem()
+                obj._deserialize(item)
+                self._CycleRatioItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlavorKingCycleBrandScanMetricsItem(AbstractModel):
+    r"""品牌扫码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: <p>日期范围</p>
+        :type Duration: str
+        :param _Ratio: <p>口味王分布</p>
+        :type Ratio: float
+        """
+        self._Duration = None
+        self._Ratio = None
+
+    @property
+    def Duration(self):
+        r"""<p>日期范围</p>
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Ratio(self):
+        r"""<p>口味王分布</p>
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        self._Ratio = params.get("Ratio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11122,6 +13483,12 @@ class ScanDetailItem(AbstractModel):
         :type IP: str
         :param _Code: <p>码</p>
         :type Code: str
+        :param _ExtUid: <p>Uid扩展字段</p>
+        :type ExtUid: str
+        :param _Latitude: <p>维度</p><p>取值范围：[-90, 90]</p>
+        :type Latitude: float
+        :param _Longitude: <p>精度</p><p>取值范围：[-180, 180]</p>
+        :type Longitude: float
         """
         self._Uid = None
         self._Time = None
@@ -11132,6 +13499,9 @@ class ScanDetailItem(AbstractModel):
         self._SpecName = None
         self._IP = None
         self._Code = None
+        self._ExtUid = None
+        self._Latitude = None
+        self._Longitude = None
 
     @property
     def Uid(self):
@@ -11232,6 +13602,39 @@ class ScanDetailItem(AbstractModel):
     def Code(self, Code):
         self._Code = Code
 
+    @property
+    def ExtUid(self):
+        r"""<p>Uid扩展字段</p>
+        :rtype: str
+        """
+        return self._ExtUid
+
+    @ExtUid.setter
+    def ExtUid(self, ExtUid):
+        self._ExtUid = ExtUid
+
+    @property
+    def Latitude(self):
+        r"""<p>维度</p><p>取值范围：[-90, 90]</p>
+        :rtype: float
+        """
+        return self._Latitude
+
+    @Latitude.setter
+    def Latitude(self, Latitude):
+        self._Latitude = Latitude
+
+    @property
+    def Longitude(self):
+        r"""<p>精度</p><p>取值范围：[-180, 180]</p>
+        :rtype: float
+        """
+        return self._Longitude
+
+    @Longitude.setter
+    def Longitude(self, Longitude):
+        self._Longitude = Longitude
+
 
     def _deserialize(self, params):
         self._Uid = params.get("Uid")
@@ -11243,6 +13646,9 @@ class ScanDetailItem(AbstractModel):
         self._SpecName = params.get("SpecName")
         self._IP = params.get("IP")
         self._Code = params.get("Code")
+        self._ExtUid = params.get("ExtUid")
+        self._Latitude = params.get("Latitude")
+        self._Longitude = params.get("Longitude")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

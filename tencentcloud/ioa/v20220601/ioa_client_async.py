@@ -169,6 +169,24 @@ class IoaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDeviceVirtualGroup(
+            self,
+            request: models.DeleteDeviceVirtualGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDeviceVirtualGroupResponse:
+        """
+        删除终端自定义分组，私有化调用path为：/capi/Assets/Device/DeleteDeviceVirtualGroup
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDeviceVirtualGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDeviceVirtualGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAccountGroups(
             self,
             request: models.DescribeAccountGroupsRequest,

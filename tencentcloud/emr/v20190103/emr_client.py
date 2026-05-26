@@ -581,6 +581,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDynamicInstanceDetail(self, request):
+        r"""描述容器EMR-TKE集群DynamicInstance详情
+
+        :param request: Request instance for DescribeDynamicInstanceDetail.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeDynamicInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeDynamicInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDynamicInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDynamicInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDynamicInstanceList(self, request):
         r"""描述容器EMR-TKE集群DynamicInstance列表
 

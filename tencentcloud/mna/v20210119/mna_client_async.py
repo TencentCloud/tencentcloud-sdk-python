@@ -223,6 +223,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAccessRegions(
+            self,
+            request: models.DescribeAccessRegionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccessRegionsResponse:
+        """
+        查询可接入地域列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccessRegions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccessRegionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DownloadActiveDeviceCount(
             self,
             request: models.DownloadActiveDeviceCountRequest,
@@ -722,6 +740,24 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "GroupDeleteDevice"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GroupDeleteDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDeviceAccessRegions(
+            self,
+            request: models.ModifyDeviceAccessRegionsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDeviceAccessRegionsResponse:
+        """
+        修改设备接入地域。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDeviceAccessRegions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDeviceAccessRegionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

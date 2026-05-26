@@ -854,6 +854,24 @@ class CamClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetPasswordRules(
+            self,
+            request: models.GetPasswordRulesRequest,
+            opts: Dict = None,
+    ) -> models.GetPasswordRulesResponse:
+        """
+        获取CAM密码设置规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetPasswordRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetPasswordRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetPolicy(
             self,
             request: models.GetPolicyRequest,
@@ -1533,6 +1551,24 @@ class CamClient(AbstractClient):
         kwargs["action"] = "UpdateOIDCConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateOIDCConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdatePasswordRules(
+            self,
+            request: models.UpdatePasswordRulesRequest,
+            opts: Dict = None,
+    ) -> models.UpdatePasswordRulesResponse:
+        """
+        更新CAM密码设置规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdatePasswordRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdatePasswordRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

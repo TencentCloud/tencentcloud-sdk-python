@@ -5773,6 +5773,87 @@ class GetGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetPasswordRulesRequest(AbstractModel):
+    r"""GetPasswordRules请求参数结构体
+
+    """
+
+
+class GetPasswordRulesResponse(AbstractModel):
+    r"""GetPasswordRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 密码规则
+        :type Rules: :class:`tencentcloud.cam.v20190116.models.PassWordRule`
+        :param _UpdateTime: 修改时间
+        :type UpdateTime: str
+        :param _Modifier: 修改人
+        :type Modifier: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rules = None
+        self._UpdateTime = None
+        self._Modifier = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        r"""密码规则
+        :rtype: :class:`tencentcloud.cam.v20190116.models.PassWordRule`
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def UpdateTime(self):
+        r"""修改时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Modifier(self):
+        r"""修改人
+        :rtype: str
+        """
+        return self._Modifier
+
+    @Modifier.setter
+    def Modifier(self, Modifier):
+        self._Modifier = Modifier
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = PassWordRule()
+            self._Rules._deserialize(params.get("Rules"))
+        self._UpdateTime = params.get("UpdateTime")
+        self._Modifier = params.get("Modifier")
+        self._RequestId = params.get("RequestId")
+
+
 class GetPolicyRequest(AbstractModel):
     r"""GetPolicy请求参数结构体
 
@@ -10299,6 +10380,129 @@ class OffsiteFlag(AbstractModel):
         
 
 
+class PassWordRule(AbstractModel):
+    r"""子账号密码规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinimumLength: 最小长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinimumLength: int
+        :param _MustContain: 必须包含的字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MustContain: str
+        :param _ForcePasswordChange: 强制修改周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForcePasswordChange: int
+        :param _ReusePasswordLimit: 重复使用次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReusePasswordLimit: int
+        :param _RetryPasswordLimit: 密码重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryPasswordLimit: int
+        :param _PasswordExpirationInvalidation: 密码过期失效 1：是，2：否（是：密码过期后，子用户无法登录，需要管理员重置密码。否：密码过期后，子用户可登录，登录后强制根据旧密码修改密码）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PasswordExpirationInvalidation: int
+        """
+        self._MinimumLength = None
+        self._MustContain = None
+        self._ForcePasswordChange = None
+        self._ReusePasswordLimit = None
+        self._RetryPasswordLimit = None
+        self._PasswordExpirationInvalidation = None
+
+    @property
+    def MinimumLength(self):
+        r"""最小长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MinimumLength
+
+    @MinimumLength.setter
+    def MinimumLength(self, MinimumLength):
+        self._MinimumLength = MinimumLength
+
+    @property
+    def MustContain(self):
+        r"""必须包含的字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MustContain
+
+    @MustContain.setter
+    def MustContain(self, MustContain):
+        self._MustContain = MustContain
+
+    @property
+    def ForcePasswordChange(self):
+        r"""强制修改周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ForcePasswordChange
+
+    @ForcePasswordChange.setter
+    def ForcePasswordChange(self, ForcePasswordChange):
+        self._ForcePasswordChange = ForcePasswordChange
+
+    @property
+    def ReusePasswordLimit(self):
+        r"""重复使用次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ReusePasswordLimit
+
+    @ReusePasswordLimit.setter
+    def ReusePasswordLimit(self, ReusePasswordLimit):
+        self._ReusePasswordLimit = ReusePasswordLimit
+
+    @property
+    def RetryPasswordLimit(self):
+        r"""密码重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RetryPasswordLimit
+
+    @RetryPasswordLimit.setter
+    def RetryPasswordLimit(self, RetryPasswordLimit):
+        self._RetryPasswordLimit = RetryPasswordLimit
+
+    @property
+    def PasswordExpirationInvalidation(self):
+        r"""密码过期失效 1：是，2：否（是：密码过期后，子用户无法登录，需要管理员重置密码。否：密码过期后，子用户可登录，登录后强制根据旧密码修改密码）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PasswordExpirationInvalidation
+
+    @PasswordExpirationInvalidation.setter
+    def PasswordExpirationInvalidation(self, PasswordExpirationInvalidation):
+        self._PasswordExpirationInvalidation = PasswordExpirationInvalidation
+
+
+    def _deserialize(self, params):
+        self._MinimumLength = params.get("MinimumLength")
+        self._MustContain = params.get("MustContain")
+        self._ForcePasswordChange = params.get("ForcePasswordChange")
+        self._ReusePasswordLimit = params.get("ReusePasswordLimit")
+        self._RetryPasswordLimit = params.get("RetryPasswordLimit")
+        self._PasswordExpirationInvalidation = params.get("PasswordExpirationInvalidation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PolicyVersionDetail(AbstractModel):
     r"""策略版本详情
 
@@ -12703,6 +12907,72 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
 class UpdateOIDCConfigResponse(AbstractModel):
     r"""UpdateOIDCConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdatePasswordRulesRequest(AbstractModel):
+    r"""UpdatePasswordRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 密码规则
+        :type Rules: :class:`tencentcloud.cam.v20190116.models.PassWordRule`
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        r"""密码规则
+        :rtype: :class:`tencentcloud.cam.v20190116.models.PassWordRule`
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = PassWordRule()
+            self._Rules._deserialize(params.get("Rules"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePasswordRulesResponse(AbstractModel):
+    r"""UpdatePasswordRules返回参数结构体
 
     """
 

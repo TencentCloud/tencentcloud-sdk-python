@@ -509,6 +509,29 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetNFCToken(self, request):
+        r"""NFC核验服务，获取NFC识别请求对应的Token信息。
+
+        :param request: Request instance for GetNFCToken.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetNFCTokenRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetNFCTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetNFCToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetNFCTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetWeChatBillDetails(self, request):
         r"""查询微信渠道服务（微信小程序、微信原生H5、微信普通H5）的账单明细及计费状态。
 
@@ -523,6 +546,29 @@ class FaceidClient(AbstractClient):
             body = self.call("GetWeChatBillDetails", params, headers=headers)
             response = json.loads(body)
             model = models.GetWeChatBillDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetWxNFCResult(self, request):
+        r"""获取到证件NFC数据，接口传入NFC SDK返回的Token（十分钟内有效），可返回对应NFC获取的证件信息。支持身份证类证件（二代身份证、港澳居住证、台湾居住证、外国人永居证）以及旅行类证件（港澳通行证、台湾通行证、台胞证、回乡证）的NFC识别及核验。
+
+        :param request: Request instance for GetWxNFCResult.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetWxNFCResultRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetWxNFCResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetWxNFCResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetWxNFCResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

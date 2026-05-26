@@ -12452,29 +12452,29 @@ class AigcImageTaskInputFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
+        :param _Type: <p>输入的文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li>  <li>Base64：图片或视频转换的Base64字符串；</li></p>
         :type Type: str
-        :param _FileId: 图片文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
-说明：
-1. 推荐使用小于7M的图片；
-2. 图片格式的取值为：jpeg，jpg, png, webp。
+        :param _FileId: <p>图片文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。<br>说明：</p><ol><li>推荐使用小于7M的图片；</li><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol>
         :type FileId: str
-        :param _Url: 可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
-说明：
-1. 推荐使用小于7M的图片；
-2. 图片格式的取值为：jpeg，jpg, png, webp。
+        :param _Url: <p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。<br>说明：</p><ol><li>推荐使用小于7M的图片；</li><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol>
         :type Url: str
-        :param _Text: 输入图片的描述信息，用于帮助模型理解图片。仅GEM 2.5、GEM 3.0 有效。
+        :param _Base64: <p>可访问的文件 Base64。当 Type 取值为 Base64 时，本参数有效。说明：</p><ol><li>所有文件的文件大小总和不能超过 7 MB，避免转为 Base64 后超出云 API 的 10 MB包大小上限；</li><li>图片格式应为：jpeg，jpg, png, webp；</li><li>不要有data:image/jpeg;base64,之类的前缀。</li></ol>
+        :type Base64: str
+        :param _Text: <p>输入图片的描述信息，用于帮助模型理解图片。仅GEM 2.5、GEM 3.0 有效。</p>
         :type Text: str
+        :param _ReferenceType: <p><strong>仅当 ModelName 为 OG 时有效</strong>。图片类型。</p><p>枚举值：</p><ul><li>mask： 图片蒙版。</li></ul>
+        :type ReferenceType: str
         """
         self._Type = None
         self._FileId = None
         self._Url = None
+        self._Base64 = None
         self._Text = None
+        self._ReferenceType = None
 
     @property
     def Type(self):
-        r"""输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
+        r"""<p>输入的文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li>  <li>Base64：图片或视频转换的Base64字符串；</li></p>
         :rtype: str
         """
         return self._Type
@@ -12485,10 +12485,7 @@ class AigcImageTaskInputFileInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""图片文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
-说明：
-1. 推荐使用小于7M的图片；
-2. 图片格式的取值为：jpeg，jpg, png, webp。
+        r"""<p>图片文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。<br>说明：</p><ol><li>推荐使用小于7M的图片；</li><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol>
         :rtype: str
         """
         return self._FileId
@@ -12499,10 +12496,7 @@ class AigcImageTaskInputFileInfo(AbstractModel):
 
     @property
     def Url(self):
-        r"""可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
-说明：
-1. 推荐使用小于7M的图片；
-2. 图片格式的取值为：jpeg，jpg, png, webp。
+        r"""<p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。<br>说明：</p><ol><li>推荐使用小于7M的图片；</li><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol>
         :rtype: str
         """
         return self._Url
@@ -12512,8 +12506,19 @@ class AigcImageTaskInputFileInfo(AbstractModel):
         self._Url = Url
 
     @property
+    def Base64(self):
+        r"""<p>可访问的文件 Base64。当 Type 取值为 Base64 时，本参数有效。说明：</p><ol><li>所有文件的文件大小总和不能超过 7 MB，避免转为 Base64 后超出云 API 的 10 MB包大小上限；</li><li>图片格式应为：jpeg，jpg, png, webp；</li><li>不要有data:image/jpeg;base64,之类的前缀。</li></ol>
+        :rtype: str
+        """
+        return self._Base64
+
+    @Base64.setter
+    def Base64(self, Base64):
+        self._Base64 = Base64
+
+    @property
     def Text(self):
-        r"""输入图片的描述信息，用于帮助模型理解图片。仅GEM 2.5、GEM 3.0 有效。
+        r"""<p>输入图片的描述信息，用于帮助模型理解图片。仅GEM 2.5、GEM 3.0 有效。</p>
         :rtype: str
         """
         return self._Text
@@ -12522,12 +12527,25 @@ class AigcImageTaskInputFileInfo(AbstractModel):
     def Text(self, Text):
         self._Text = Text
 
+    @property
+    def ReferenceType(self):
+        r"""<p><strong>仅当 ModelName 为 OG 时有效</strong>。图片类型。</p><p>枚举值：</p><ul><li>mask： 图片蒙版。</li></ul>
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._FileId = params.get("FileId")
         self._Url = params.get("Url")
+        self._Base64 = params.get("Base64")
         self._Text = params.get("Text")
+        self._ReferenceType = params.get("ReferenceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14077,7 +14095,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: <p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li></p>
+        :param _Type: <p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> <li>Base64：图片或视频转换的Base64字符串；</li></p>
         :type Type: str
         :param _Category: <p>文件分类。取值为：</p><ul><li>Image: 图片；<strong>注意，要使用Usage字段定义图片类型</strong>。</li><li>Video: 视频。</li></ul>
         :type Category: str
@@ -14085,6 +14103,8 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         :type FileId: str
         :param _Url: <p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。<br>说明：</p><ol><li>推荐使用小于10M的图片；</li><li>图片格式的取值为：jpeg，jpg, png。</li></ol>
         :type Url: str
+        :param _Base64: <p>可访问的文件 Base64。当 Type 取值为 Base64 时，本参数有效。说明：</p><ol><li>所有文件的文件大小总和不能超过7MB，避免转为 Base64 后超出云API的10MB包大小上限；</li><li>图片格式应为：jpeg，jpg, png, webp。</li><li>视频格式应为：mp4, mov, avi。</li><li>不要有data:image/jpeg;base64,之类的前缀。</li></ol>
+        :type Base64: str
         :param _ReferenceType: <p>参考类型，GV、Kling、PixVerse模型适用。<br>注意：<br>当使用 GV 模型时，可作为参考方式，可选值：asset 表示素材、style 表示风格；<br>当使用 Kling 模型以及 Category 为 Video 时，可区分参考视频类型，feature 表示特征参考视频，base 表示待编辑视频；<br>当使用 PixVerse 模型时，可用于多图（主体）参考生模式，可选值：subject 表示主体、background 表示背景；</p>
         :type ReferenceType: str
         :param _ObjectId: <p>用法：Vidu主体Id。<br>Vidu主体Id：prompt可以通过 @主体Id 的方式使用。当 Category 为 Image 时有效。</p>
@@ -14102,6 +14122,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         self._Category = None
         self._FileId = None
         self._Url = None
+        self._Base64 = None
         self._ReferenceType = None
         self._ObjectId = None
         self._VoiceId = None
@@ -14111,7 +14132,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""<p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li></p>
+        r"""<p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> <li>Base64：图片或视频转换的Base64字符串；</li></p>
         :rtype: str
         """
         return self._Type
@@ -14152,6 +14173,17 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
     @Url.setter
     def Url(self, Url):
         self._Url = Url
+
+    @property
+    def Base64(self):
+        r"""<p>可访问的文件 Base64。当 Type 取值为 Base64 时，本参数有效。说明：</p><ol><li>所有文件的文件大小总和不能超过7MB，避免转为 Base64 后超出云API的10MB包大小上限；</li><li>图片格式应为：jpeg，jpg, png, webp。</li><li>视频格式应为：mp4, mov, avi。</li><li>不要有data:image/jpeg;base64,之类的前缀。</li></ol>
+        :rtype: str
+        """
+        return self._Base64
+
+    @Base64.setter
+    def Base64(self, Base64):
+        self._Base64 = Base64
 
     @property
     def ReferenceType(self):
@@ -14225,6 +14257,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         self._Category = params.get("Category")
         self._FileId = params.get("FileId")
         self._Url = params.get("Url")
+        self._Base64 = params.get("Base64")
         self._ReferenceType = params.get("ReferenceType")
         self._ObjectId = params.get("ObjectId")
         self._VoiceId = params.get("VoiceId")
@@ -14344,14 +14377,17 @@ class AigcVideoTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileInfos: AIGC 生视频任务的输出文件信息。	
+        :param _FileInfos: <p>AIGC 生视频任务的输出文件信息。</p>
         :type FileInfos: list of AigcVideoTaskOutputFileInfo
+        :param _ProcedureTaskIds: <p>任务类型为 Procedure 的任务 ID。若发起<a href="https://cloud.tencent.com/document/product/266/126239">创建 AIGC 生视频任务</a>时指定了任务流模板(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。</p>
+        :type ProcedureTaskIds: list of str
         """
         self._FileInfos = None
+        self._ProcedureTaskIds = None
 
     @property
     def FileInfos(self):
-        r"""AIGC 生视频任务的输出文件信息。	
+        r"""<p>AIGC 生视频任务的输出文件信息。</p>
         :rtype: list of AigcVideoTaskOutputFileInfo
         """
         return self._FileInfos
@@ -14359,6 +14395,17 @@ class AigcVideoTaskOutput(AbstractModel):
     @FileInfos.setter
     def FileInfos(self, FileInfos):
         self._FileInfos = FileInfos
+
+    @property
+    def ProcedureTaskIds(self):
+        r"""<p>任务类型为 Procedure 的任务 ID。若发起<a href="https://cloud.tencent.com/document/product/266/126239">创建 AIGC 生视频任务</a>时指定了任务流模板(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。</p>
+        :rtype: list of str
+        """
+        return self._ProcedureTaskIds
+
+    @ProcedureTaskIds.setter
+    def ProcedureTaskIds(self, ProcedureTaskIds):
+        self._ProcedureTaskIds = ProcedureTaskIds
 
 
     def _deserialize(self, params):
@@ -14368,6 +14415,7 @@ class AigcVideoTaskOutput(AbstractModel):
                 obj = AigcVideoTaskOutputFileInfo()
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
+        self._ProcedureTaskIds = params.get("ProcedureTaskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24447,6 +24495,8 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type InputRegion: str
         :param _SceneType: <p>场景类型。取值如下：</p><li>当 ModelName 为 Kling 时：    motion_control 表示动作控制；    avatar_i2v 表示数字人；    lip_sync 表示对口型；</li><li>当 ModelName 为 Vidu 时：    template_effect 表示特效模板；</li><li>其他 ModelName 暂不支持。</li>
         :type SceneType: str
+        :param _Procedure: <p><a href="https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81">任务流名称</a>，在需要对生成的新视频执行任务流时填写。</p>
+        :type Procedure: str
         :param _Seed: <p>模型随机种子。</p>
         :type Seed: int
         :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
@@ -24471,6 +24521,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._OutputConfig = None
         self._InputRegion = None
         self._SceneType = None
+        self._Procedure = None
         self._Seed = None
         self._SessionId = None
         self._SessionContext = None
@@ -24621,6 +24672,17 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._SceneType = SceneType
 
     @property
+    def Procedure(self):
+        r"""<p><a href="https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81">任务流名称</a>，在需要对生成的新视频执行任务流时填写。</p>
+        :rtype: str
+        """
+        return self._Procedure
+
+    @Procedure.setter
+    def Procedure(self, Procedure):
+        self._Procedure = Procedure
+
+    @property
     def Seed(self):
         r"""<p>模型随机种子。</p>
         :rtype: int
@@ -24702,6 +24764,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
             self._OutputConfig._deserialize(params.get("OutputConfig"))
         self._InputRegion = params.get("InputRegion")
         self._SceneType = params.get("SceneType")
+        self._Procedure = params.get("Procedure")
         self._Seed = params.get("Seed")
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")

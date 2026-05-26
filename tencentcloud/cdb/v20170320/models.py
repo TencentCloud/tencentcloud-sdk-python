@@ -7945,7 +7945,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param _SpecifiedRollbackTime: <p>如果需要克隆实例回档到指定时间，则指定该值。时间格式为：yyyy-mm-dd hh:mm:ss。<br>说明：此参数和 SpecifiedBackupId 参数需要2选1进行设置。</p>
         :type SpecifiedRollbackTime: str
-        :param _SpecifiedBackupId: <p>如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 <a href="/document/api/236/15842">查询数据备份文件列表</a>。<br>说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、云盘版实例，备份文件为快照备份。</p>
+        :param _SpecifiedBackupId: <p>如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 <a href="/document/api/236/15842">查询数据备份文件列表</a>。</p><p>如果是克隆双节点、三节点、四节点实例，备份文件为物理备份，如果是克隆单节点、云盘版实例，备份文件为快照备份。</p>
         :type SpecifiedBackupId: int
         :param _UniqVpcId: <p>私有网络 ID，请使用 <a href="/document/api/215/15778">查询私有网络列表</a>。</p>
         :type UniqVpcId: str
@@ -7973,7 +7973,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type BackupZone: str
         :param _DeviceType: <p>克隆实例类型。支持值包括：&quot;UNIVERSAL&quot; - 通用型实例，&quot;EXCLUSIVE&quot; - 独享型实例，&quot;CLOUD_NATIVE_CLUSTER&quot; - 云盘版标准型，&quot;CLOUD_NATIVE_CLUSTER_EXCLUSIVE&quot; - 云盘版加强型。不指定则默认为通用型。</p>
         :type DeviceType: str
-        :param _InstanceNodes: <p>新克隆实例节点数。如果需要克隆出三节点实例， 请将该值设置为3 或指定 BackupZone 参数。如果需要克隆出两节点实例，请将该值设置为2。默认克隆出两节点实例。</p>
+        :param _InstanceNodes: <p>新克隆实例节点数。</p><p>如果需要克隆出三节点实例，请将该值设置为3，或指定 BackupZone 参数；如果需要克隆出双节点实例，请将该值设置为2，默认克隆出双节点实例；如果需要克隆出四节点实例，请将该值设置为4，或指定 FourthZone 参数。</p>
         :type InstanceNodes: int
         :param _DeployGroupId: <p>置放群组 ID。</p>
         :type DeployGroupId: str
@@ -7997,6 +7997,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type MasterZone: str
         :param _Zone: <p>新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。</p>
         :type Zone: str
+        :param _FourthZone: <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
+        :type FourthZone: str
         """
         self._InstanceId = None
         self._SpecifiedRollbackTime = None
@@ -8026,6 +8028,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._SpecifiedSubBackupId = None
         self._MasterZone = None
         self._Zone = None
+        self._FourthZone = None
 
     @property
     def InstanceId(self):
@@ -8051,7 +8054,7 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     @property
     def SpecifiedBackupId(self):
-        r"""<p>如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 <a href="/document/api/236/15842">查询数据备份文件列表</a>。<br>说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、云盘版实例，备份文件为快照备份。</p>
+        r"""<p>如果需要克隆实例回档到指定备份集，则指定该值为备份文件的 Id。请使用 <a href="/document/api/236/15842">查询数据备份文件列表</a>。</p><p>如果是克隆双节点、三节点、四节点实例，备份文件为物理备份，如果是克隆单节点、云盘版实例，备份文件为快照备份。</p>
         :rtype: int
         """
         return self._SpecifiedBackupId
@@ -8205,7 +8208,7 @@ class CreateCloneInstanceRequest(AbstractModel):
 
     @property
     def InstanceNodes(self):
-        r"""<p>新克隆实例节点数。如果需要克隆出三节点实例， 请将该值设置为3 或指定 BackupZone 参数。如果需要克隆出两节点实例，请将该值设置为2。默认克隆出两节点实例。</p>
+        r"""<p>新克隆实例节点数。</p><p>如果需要克隆出三节点实例，请将该值设置为3，或指定 BackupZone 参数；如果需要克隆出双节点实例，请将该值设置为2，默认克隆出双节点实例；如果需要克隆出四节点实例，请将该值设置为4，或指定 FourthZone 参数。</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -8339,6 +8342,17 @@ class CreateCloneInstanceRequest(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def FourthZone(self):
+        r"""<p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
+        :rtype: str
+        """
+        return self._FourthZone
+
+    @FourthZone.setter
+    def FourthZone(self, FourthZone):
+        self._FourthZone = FourthZone
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8376,6 +8390,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._SpecifiedSubBackupId = params.get("SpecifiedSubBackupId")
         self._MasterZone = params.get("MasterZone")
         self._Zone = params.get("Zone")
+        self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8604,7 +8619,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type UniqSubnetId: str
         :param _ProjectId: <p>项目 ID，不填为默认项目。</p>
         :type ProjectId: int
-        :param _Zone: <p>可用区信息，请使用 <a href="https://cloud.tencent.com/document/api/236/17229">获取云数据库可售卖规格</a> 接口获取可创建的可用区。<br>说明：若您创建单节点、双节点、三节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建云盘版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。</p>
+        :param _Zone: <p>可用区信息，请使用 <a href="https://cloud.tencent.com/document/api/236/17229">获取云数据库可售卖规格</a> 接口获取可创建的可用区。</p><p>若您创建单节点、双节点、三节点、四节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建云盘版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。</p>
         :type Zone: str
         :param _MasterInstanceId: <p>实例 ID，购买只读实例或者灾备实例时必填，该字段表示只读实例或者灾备实例的主实例 ID，请使用 <a href="https://cloud.tencent.com/document/api/236/15872">查询实例列表</a> 接口查询云数据库实例 ID。</p>
         :type MasterInstanceId: str
@@ -8622,9 +8637,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ProtectMode: int
         :param _DeployMode: <p>多可用区域，默认为 0，支持值包括：0 - 表示单可用区，1 - 表示多可用区，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义。</p>
         :type DeployMode: int
-        :param _SlaveZone: <p>备库 1 的可用区信息。<br>说明：双节点、三节点实例请指定此参数值，若不指定，则默认为 Zone 的值；云盘版实例此参数可不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置；单节点实例为单可用区，无需指定此参数。</p>
+        :param _SlaveZone: <p>备库 1 的可用区信息。</p><p>双节点、三节点、四节点实例请指定此参数值，若不指定，则默认为 Zone 的值；云盘版实例此参数可不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置；单节点实例为单可用区，无需指定此参数。</p>
         :type SlaveZone: str
-        :param _BackupZone: <p>备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数。</p>
+        :param _BackupZone: <p>备库 2 的可用区信息，默认为空。</p><p>购买三节点主实例、四节点主实例时可指定该参数。</p>
         :type BackupZone: str
         :param _SecurityGroup: <p>安全组参数，可使用 <a href="https://cloud.tencent.com/document/api/236/15850">查询项目安全组信息</a> 接口查询某个项目的安全组详情。</p>
         :type SecurityGroup: list of str
@@ -8646,7 +8661,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ParamTemplateId: int
         :param _AlarmPolicyList: <p>告警策略id数组。腾讯云可观测平台DescribeAlarmPolicy接口返回的OriginId。</p>
         :type AlarmPolicyList: list of int
-        :param _InstanceNodes: <p>实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。</p>
+        :param _InstanceNodes: <p>实例节点数。</p><p>对于 RO 和 基础版实例，该值默认为1。如果需要购买三节点实例，请将该值设置为3，或指定 BackupZone 参数；当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是2，即购买双节点实例；如果需要购买四节点实例，请将该值设置为4，或指定 FourthZone 参数。</p>
         :type InstanceNodes: int
         :param _Cpu: <p>实例 Cpu 核数。</p><p>当内存规格 Memory 存在多种 Cpu 配置时（如 64000MB 内存对应 8核/16核/32核），必须传入 Cpu 参数。</p>
         :type Cpu: int
@@ -8674,6 +8689,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ClusterType: str
         :param _DestroyProtect: <p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
         :type DestroyProtect: str
+        :param _FourthZone: <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
+        :type FourthZone: str
         """
         self._GoodsNum = None
         self._Memory = None
@@ -8717,6 +8734,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DiskType = None
         self._ClusterType = None
         self._DestroyProtect = None
+        self._FourthZone = None
 
     @property
     def GoodsNum(self):
@@ -8797,7 +8815,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""<p>可用区信息，请使用 <a href="https://cloud.tencent.com/document/api/236/17229">获取云数据库可售卖规格</a> 接口获取可创建的可用区。<br>说明：若您创建单节点、双节点、三节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建云盘版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。</p>
+        r"""<p>可用区信息，请使用 <a href="https://cloud.tencent.com/document/api/236/17229">获取云数据库可售卖规格</a> 接口获取可创建的可用区。</p><p>若您创建单节点、双节点、三节点、四节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建云盘版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。</p>
         :rtype: str
         """
         return self._Zone
@@ -8896,7 +8914,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def SlaveZone(self):
-        r"""<p>备库 1 的可用区信息。<br>说明：双节点、三节点实例请指定此参数值，若不指定，则默认为 Zone 的值；云盘版实例此参数可不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置；单节点实例为单可用区，无需指定此参数。</p>
+        r"""<p>备库 1 的可用区信息。</p><p>双节点、三节点、四节点实例请指定此参数值，若不指定，则默认为 Zone 的值；云盘版实例此参数可不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置；单节点实例为单可用区，无需指定此参数。</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -8907,7 +8925,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def BackupZone(self):
-        r"""<p>备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数。</p>
+        r"""<p>备库 2 的可用区信息，默认为空。</p><p>购买三节点主实例、四节点主实例时可指定该参数。</p>
         :rtype: str
         """
         return self._BackupZone
@@ -9028,7 +9046,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     @property
     def InstanceNodes(self):
-        r"""<p>实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。</p>
+        r"""<p>实例节点数。</p><p>对于 RO 和 基础版实例，该值默认为1。如果需要购买三节点实例，请将该值设置为3，或指定 BackupZone 参数；当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是2，即购买双节点实例；如果需要购买四节点实例，请将该值设置为4，或指定 FourthZone 参数。</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -9180,6 +9198,17 @@ class CreateDBInstanceHourRequest(AbstractModel):
     def DestroyProtect(self, DestroyProtect):
         self._DestroyProtect = DestroyProtect
 
+    @property
+    def FourthZone(self):
+        r"""<p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
+        :rtype: str
+        """
+        return self._FourthZone
+
+    @FourthZone.setter
+    def FourthZone(self, FourthZone):
+        self._FourthZone = FourthZone
+
 
     def _deserialize(self, params):
         self._GoodsNum = params.get("GoodsNum")
@@ -9238,6 +9267,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DiskType = params.get("DiskType")
         self._ClusterType = params.get("ClusterType")
         self._DestroyProtect = params.get("DestroyProtect")
+        self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9321,7 +9351,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type Period: int
         :param _GoodsNum: <p>实例数量，默认值为1, 最小值1，最大值为100。</p>
         :type GoodsNum: int
-        :param _Zone: <p>可用区信息，请使用 <a href="https://cloud.tencent.com/document/api/236/17229">获取云数据库可售卖规格</a> 接口获取可创建的可用区。<br>说明：若您创建单节点、双节点、三节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建云盘版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。</p>
+        :param _Zone: <p>可用区信息，请使用 <a href="https://cloud.tencent.com/document/api/236/17229">获取云数据库可售卖规格</a> 接口获取可创建的可用区。</p><p>若您创建单节点、双节点、三节点、四节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建云盘版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。</p>
         :type Zone: str
         :param _UniqVpcId: <p>私有网络 ID，请使用 <a href="/document/api/215/15778">查询私有网络列表</a>。<br>说明：如果创建的是云盘版实例，此参数为必填且为私有网络类型。若此项不填，则系统会选择默认的 VPC。</p>
         :type UniqVpcId: str
@@ -9343,11 +9373,11 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ProtectMode: int
         :param _DeployMode: <p>多可用区域，默认为 0，支持值包括：0 - 表示单可用区，1 - 表示多可用区。</p>
         :type DeployMode: int
-        :param _SlaveZone: <p>备库 1 的可用区信息。<br>说明：双节点、三节点实例请指定此参数值，若不指定，则默认为 Zone 的值；云盘版实例此参数可不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置；单节点实例为单可用区，无需指定此参数。</p>
+        :param _SlaveZone: <p>备库 1 的可用区信息。</p><p>双节点、三节点、四节点实例请指定此参数值，若不指定，则默认为 Zone 的值；云盘版实例此参数可不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置；单节点实例为单可用区，无需指定此参数。</p>
         :type SlaveZone: str
         :param _ParamList: <p>参数列表，参数格式如 ParamList.0.Name=auto_increment&amp;ParamList.0.Value=1。可通过 <a href="https://cloud.tencent.com/document/api/236/32662">查询默认的可设置参数列表</a> 查询支持设置的参数。<br>说明：表名大小写敏感的开启和关闭可通过参数 lower_case_table_names 进行设置，参数值为0表示开启，参数值为1表示关闭，若不设置则此参数默认值为0。若您创建的是 MySQL 8.0 版本的实例，则需要在创建实例时通过设置 lower_case_table_names 参数来开启或关闭表名大小写敏感，创建实例后无法修改参数，即创建后无法修改表名大小写敏感。其他数据库版本的实例支持在创建实例后修改 lower_case_table_names 参数。创建实例时设置表名大小写敏感的 API 调用方法请参见本文中的示例3。</p>
         :type ParamList: list of ParamInfo
-        :param _BackupZone: <p>备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数。</p>
+        :param _BackupZone: <p>备库 2 的可用区信息，默认为空。</p><p>购买三节点主实例、四节点主实例时可指定该参数。</p>
         :type BackupZone: str
         :param _AutoRenewFlag: <p>自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。默认为0。</p>
         :type AutoRenewFlag: int
@@ -9371,7 +9401,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ParamTemplateId: int
         :param _AlarmPolicyList: <p>告警策略id数组。腾讯云可观测平台DescribeAlarmPolicy接口返回的OriginId。</p>
         :type AlarmPolicyList: list of int
-        :param _InstanceNodes: <p>实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。</p>
+        :param _InstanceNodes: <p>实例节点数。</p><p>对于 RO 和基础版实例，该值默认为1。如果需要购买三节点实例，请将该值设置为3，或指定 BackupZone 参数；当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是2，即购买双节点实例；如果需要购买四节点实例，请将该值设置为4，或指定 FourthZone 参数。</p>
         :type InstanceNodes: int
         :param _Cpu: <p>实例 Cpu 核数。</p><p>当内存规格 Memory 存在多种 CPU 配置时（如 64000MB 内存对应 8核/16核/32核），必须传入 Cpu 参数。</p>
         :type Cpu: int
@@ -9397,6 +9427,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DiskType: str
         :param _DestroyProtect: <p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
         :type DestroyProtect: str
+        :param _FourthZone: <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
+        :type FourthZone: str
         """
         self._Memory = None
         self._Volume = None
@@ -9440,6 +9472,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self._ClusterTopology = None
         self._DiskType = None
         self._DestroyProtect = None
+        self._FourthZone = None
 
     @property
     def Memory(self):
@@ -9487,7 +9520,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""<p>可用区信息，请使用 <a href="https://cloud.tencent.com/document/api/236/17229">获取云数据库可售卖规格</a> 接口获取可创建的可用区。<br>说明：若您创建单节点、双节点、三节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建云盘版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。</p>
+        r"""<p>可用区信息，请使用 <a href="https://cloud.tencent.com/document/api/236/17229">获取云数据库可售卖规格</a> 接口获取可创建的可用区。</p><p>若您创建单节点、双节点、三节点、四节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建云盘版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。</p>
         :rtype: str
         """
         return self._Zone
@@ -9608,7 +9641,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SlaveZone(self):
-        r"""<p>备库 1 的可用区信息。<br>说明：双节点、三节点实例请指定此参数值，若不指定，则默认为 Zone 的值；云盘版实例此参数可不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置；单节点实例为单可用区，无需指定此参数。</p>
+        r"""<p>备库 1 的可用区信息。</p><p>双节点、三节点、四节点实例请指定此参数值，若不指定，则默认为 Zone 的值；云盘版实例此参数可不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置；单节点实例为单可用区，无需指定此参数。</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -9630,7 +9663,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def BackupZone(self):
-        r"""<p>备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数。</p>
+        r"""<p>备库 2 的可用区信息，默认为空。</p><p>购买三节点主实例、四节点主实例时可指定该参数。</p>
         :rtype: str
         """
         return self._BackupZone
@@ -9762,7 +9795,7 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceNodes(self):
-        r"""<p>实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。</p>
+        r"""<p>实例节点数。</p><p>对于 RO 和基础版实例，该值默认为1。如果需要购买三节点实例，请将该值设置为3，或指定 BackupZone 参数；当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是2，即购买双节点实例；如果需要购买四节点实例，请将该值设置为4，或指定 FourthZone 参数。</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -9903,6 +9936,17 @@ class CreateDBInstanceRequest(AbstractModel):
     def DestroyProtect(self, DestroyProtect):
         self._DestroyProtect = DestroyProtect
 
+    @property
+    def FourthZone(self):
+        r"""<p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
+        :rtype: str
+        """
+        return self._FourthZone
+
+    @FourthZone.setter
+    def FourthZone(self, FourthZone):
+        self._FourthZone = FourthZone
+
 
     def _deserialize(self, params):
         self._Memory = params.get("Memory")
@@ -9961,6 +10005,7 @@ class CreateDBInstanceRequest(AbstractModel):
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         self._DiskType = params.get("DiskType")
         self._DestroyProtect = params.get("DestroyProtect")
+        self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16509,16 +16554,18 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         :type ProtectMode: int
         :param _DeployMode: <p>主实例部署方式，可能的返回值：0 - 单可用部署，1 - 多可用区部署。</p>
         :type DeployMode: int
-        :param _Zone: <p>实例可用区信息，格式如 &quot;ap-shanghai-2&quot;。</p>
+        :param _Zone: <p>实例主可用区信息，格式如 &quot;ap-shanghai-2&quot;。</p>
         :type Zone: str
-        :param _SlaveConfig: <p>备库的配置信息。</p>
+        :param _SlaveConfig: <p>双节点、三节点、四节点实例第一备库的配置信息。</p><p>查询双节点时，此参数返回为双节点的备库信息；查询三节点、四节点时，此参数返回为实例的第一备库信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveConfig: :class:`tencentcloud.cdb.v20170320.models.SlaveConfig`
-        :param _BackupConfig: <p>强同步实例第二备库的配置信息。</p>
+        :param _BackupConfig: <p>三节点、四节点实例第二备库的配置信息。</p><p>查询三节点、四节点时，此参数返回为第二备库的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupConfig: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
         :param _Switched: <p>是否切换备库。</p>
         :type Switched: bool
+        :param _FourthConfig: <p>四节点实例第三备库的配置信息。</p><p>查询四节点时，此参数返回为第三备库的信息。</p>
+        :type FourthConfig: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16528,6 +16575,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
         self._SlaveConfig = None
         self._BackupConfig = None
         self._Switched = None
+        self._FourthConfig = None
         self._RequestId = None
 
     @property
@@ -16554,7 +16602,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
 
     @property
     def Zone(self):
-        r"""<p>实例可用区信息，格式如 &quot;ap-shanghai-2&quot;。</p>
+        r"""<p>实例主可用区信息，格式如 &quot;ap-shanghai-2&quot;。</p>
         :rtype: str
         """
         return self._Zone
@@ -16565,7 +16613,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
 
     @property
     def SlaveConfig(self):
-        r"""<p>备库的配置信息。</p>
+        r"""<p>双节点、三节点、四节点实例第一备库的配置信息。</p><p>查询双节点时，此参数返回为双节点的备库信息；查询三节点、四节点时，此参数返回为实例的第一备库信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveConfig`
         """
@@ -16577,7 +16625,7 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
 
     @property
     def BackupConfig(self):
-        r"""<p>强同步实例第二备库的配置信息。</p>
+        r"""<p>三节点、四节点实例第二备库的配置信息。</p><p>查询三节点、四节点时，此参数返回为第二备库的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
         """
@@ -16597,6 +16645,17 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
     @Switched.setter
     def Switched(self, Switched):
         self._Switched = Switched
+
+    @property
+    def FourthConfig(self):
+        r"""<p>四节点实例第三备库的配置信息。</p><p>查询四节点时，此参数返回为第三备库的信息。</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.BackupConfig`
+        """
+        return self._FourthConfig
+
+    @FourthConfig.setter
+    def FourthConfig(self, FourthConfig):
+        self._FourthConfig = FourthConfig
 
     @property
     def RequestId(self):
@@ -16621,6 +16680,9 @@ class DescribeDBInstanceConfigResponse(AbstractModel):
             self._BackupConfig = BackupConfig()
             self._BackupConfig._deserialize(params.get("BackupConfig"))
         self._Switched = params.get("Switched")
+        if params.get("FourthConfig") is not None:
+            self._FourthConfig = BackupConfig()
+            self._FourthConfig._deserialize(params.get("FourthConfig"))
         self._RequestId = params.get("RequestId")
 
 

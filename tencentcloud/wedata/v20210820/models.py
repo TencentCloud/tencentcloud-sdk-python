@@ -8477,7 +8477,7 @@ class BatchTaskOperateNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 操作Id
+        :param _JobId: <p>操作Id</p><p>可使用JobId字段通过ListBatchDetail接口 查询异步操作结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: int
         """
@@ -8485,7 +8485,7 @@ class BatchTaskOperateNew(AbstractModel):
 
     @property
     def JobId(self):
-        r"""操作Id
+        r"""<p>操作Id</p><p>可使用JobId字段通过ListBatchDetail接口 查询异步操作结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -62202,22 +62202,22 @@ class GetPaginationTaskScriptResponseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目编号
+        :param _ProjectId: <p>项目编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _TaskId: 任务编号
+        :param _TaskId: <p>任务编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _PageSize: 页内尺寸
+        :param _PageSize: <p>页内尺寸</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
-        :param _PageNum: 页码
+        :param _PageNum: <p>页码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageNum: int
-        :param _PageTotal: 总页数
+        :param _PageTotal: <p>总页数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageTotal: int
-        :param _Base64ScriptContent: 分页内容
+        :param _Base64ScriptContent: <p>分页内容</p><p>分页拉取全部代码内容后，先拼接，再Base64解码获取完整脚本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Base64ScriptContent: str
         """
@@ -62230,7 +62230,7 @@ class GetPaginationTaskScriptResponseInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目编号
+        r"""<p>项目编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -62242,7 +62242,7 @@ class GetPaginationTaskScriptResponseInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务编号
+        r"""<p>任务编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -62254,7 +62254,7 @@ class GetPaginationTaskScriptResponseInfo(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""页内尺寸
+        r"""<p>页内尺寸</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -62266,7 +62266,7 @@ class GetPaginationTaskScriptResponseInfo(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""页码
+        r"""<p>页码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -62278,7 +62278,7 @@ class GetPaginationTaskScriptResponseInfo(AbstractModel):
 
     @property
     def PageTotal(self):
-        r"""总页数
+        r"""<p>总页数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -62290,7 +62290,7 @@ class GetPaginationTaskScriptResponseInfo(AbstractModel):
 
     @property
     def Base64ScriptContent(self):
-        r"""分页内容
+        r"""<p>分页内容</p><p>分页拉取全部代码内容后，先拼接，再Base64解码获取完整脚本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -117793,6 +117793,7 @@ class TaskVersionInstance(AbstractModel):
 
 class TestRunningRecord(AbstractModel):
     r"""编排空间试运行记录
+    查询执行日志 可调用DownloadLogByLine接口
 
     """
 

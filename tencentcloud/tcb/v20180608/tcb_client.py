@@ -97,6 +97,31 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindStorageSource(self, request):
+        r"""为云存储绑定外部云存储源。
+        将一个用户自有的 COS桶 作为外部存储源绑定到指定云开发环境的云存储。绑定后，该环境的云存储文件操作将指向此桶，通过 BasePath 路径前缀实现与其他环境的数据隔离。
+        每个环境仅允许绑定 1 个外部云存储源。
+
+        :param request: Request instance for BindStorageSource.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.BindStorageSourceRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BindStorageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindStorageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindStorageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckTcbService(self, request):
         r"""检查是否开通Tcb服务
 
@@ -1773,6 +1798,33 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyStorageSource(self, request):
+        r"""修改指定云开发环境已绑定的外部云存储源配置。
+        修改之后，大约3~5分钟生效。
+
+        注意⚠️
+        本接口仅更新存储源绑定关系，不会迁移您的数据。
+
+        :param request: Request instance for ModifyStorageSource.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyStorageSourceRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyStorageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStorageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStorageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUser(self, request):
         r"""修改tcb用户
 
@@ -1908,6 +1960,33 @@ class TcbClient(AbstractClient):
             body = self.call("SearchClsLog", params, headers=headers)
             response = json.loads(body)
             model = models.SearchClsLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindStorageSource(self, request):
+        r"""从指定云开发环境中解绑已绑定的外部云存储源。解绑后，该环境将不再关联外部 存储源，云存储功能恢复为未绑定状态。
+        解绑操作仅移除 CloudBase 侧的绑定关系，不会删除桶本身及桶内数据，桶仍由用户自行管理。
+
+        注意⚠️
+        解绑之后，会导致云存储不可用，请谨慎操作。
+
+        :param request: Request instance for UnbindStorageSource.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.UnbindStorageSourceRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.UnbindStorageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindStorageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindStorageSourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1341,6 +1341,87 @@ class BanConfig(AbstractModel):
         
 
 
+class BindStorageSourceRequest(AbstractModel):
+    r"""BindStorageSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _StorageConfig: 存储源
+        :type StorageConfig: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
+        """
+        self._EnvId = None
+        self._StorageConfig = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def StorageConfig(self):
+        r"""存储源
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
+        """
+        return self._StorageConfig
+
+    @StorageConfig.setter
+    def StorageConfig(self, StorageConfig):
+        self._StorageConfig = StorageConfig
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        if params.get("StorageConfig") is not None:
+            self._StorageConfig = ExternalStorage()
+            self._StorageConfig._deserialize(params.get("StorageConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindStorageSourceResponse(AbstractModel):
+    r"""BindStorageSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CheckTcbServiceRequest(AbstractModel):
     r"""CheckTcbService请求参数结构体
 
@@ -7569,16 +7650,15 @@ class DescribeEnvsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境ID，如果传了这个参数则只返回该环境的相关信息
+        :param _EnvId: <p>环境ID，如果传了这个参数则只返回该环境的相关信息</p>
         :type EnvId: str
-        :param _IsVisible: 指定Channels字段为可见渠道列表或不可见渠道列表
-如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
+        :param _IsVisible: <p>指定Channels字段为可见渠道列表或不可见渠道列表<br>如只想获取渠道A的环境 就填写IsVisible= true,Channels = [&quot;A&quot;], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = [&quot;A&quot;]</p>
         :type IsVisible: bool
-        :param _Channels: 渠道列表，代表可见或不可见渠道由IsVisible参数指定
+        :param _Channels: <p>渠道列表，代表可见或不可见渠道由IsVisible参数指定</p>
         :type Channels: list of str
-        :param _Limit: 分页参数，单页限制个数
+        :param _Limit: <p>分页参数，单页限制个数</p>
         :type Limit: int
-        :param _Offset: 分页参数，偏移量
+        :param _Offset: <p>分页参数，偏移量</p>
         :type Offset: int
         """
         self._EnvId = None
@@ -7589,7 +7669,7 @@ class DescribeEnvsRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境ID，如果传了这个参数则只返回该环境的相关信息
+        r"""<p>环境ID，如果传了这个参数则只返回该环境的相关信息</p>
         :rtype: str
         """
         return self._EnvId
@@ -7600,8 +7680,7 @@ class DescribeEnvsRequest(AbstractModel):
 
     @property
     def IsVisible(self):
-        r"""指定Channels字段为可见渠道列表或不可见渠道列表
-如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
+        r"""<p>指定Channels字段为可见渠道列表或不可见渠道列表<br>如只想获取渠道A的环境 就填写IsVisible= true,Channels = [&quot;A&quot;], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = [&quot;A&quot;]</p>
         :rtype: bool
         """
         return self._IsVisible
@@ -7612,7 +7691,7 @@ class DescribeEnvsRequest(AbstractModel):
 
     @property
     def Channels(self):
-        r"""渠道列表，代表可见或不可见渠道由IsVisible参数指定
+        r"""<p>渠道列表，代表可见或不可见渠道由IsVisible参数指定</p>
         :rtype: list of str
         """
         return self._Channels
@@ -7623,7 +7702,7 @@ class DescribeEnvsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页参数，单页限制个数
+        r"""<p>分页参数，单页限制个数</p>
         :rtype: int
         """
         return self._Limit
@@ -7634,7 +7713,7 @@ class DescribeEnvsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页参数，偏移量
+        r"""<p>分页参数，偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -7667,9 +7746,9 @@ class DescribeEnvsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvList: 环境信息列表
+        :param _EnvList: <p>环境信息列表</p>
         :type EnvList: list of EnvInfo
-        :param _Total: 环境个数
+        :param _Total: <p>环境个数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7680,7 +7759,7 @@ class DescribeEnvsResponse(AbstractModel):
 
     @property
     def EnvList(self):
-        r"""环境信息列表
+        r"""<p>环境信息列表</p>
         :rtype: list of EnvInfo
         """
         return self._EnvList
@@ -7691,7 +7770,7 @@ class DescribeEnvsResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""环境个数
+        r"""<p>环境个数</p>
         :rtype: int
         """
         return self._Total
@@ -10694,6 +10773,10 @@ class EnvInfo(AbstractModel):
         :type ArchitectureType: str
         :param _Recycle: <p>回收标志，默认为空</p>
         :type Recycle: str
+        :param _Meta: <p>环境meta信息列表</p>
+        :type Meta: list of KVPair
+        :param _PostgreSQL: <p>pg信息</p>
+        :type PostgreSQL: list of PostgreSQLInfo
         """
         self._EnvId = None
         self._Source = None
@@ -10720,6 +10803,8 @@ class EnvInfo(AbstractModel):
         self._PackageType = None
         self._ArchitectureType = None
         self._Recycle = None
+        self._Meta = None
+        self._PostgreSQL = None
 
     @property
     def EnvId(self):
@@ -10996,6 +11081,28 @@ class EnvInfo(AbstractModel):
     def Recycle(self, Recycle):
         self._Recycle = Recycle
 
+    @property
+    def Meta(self):
+        r"""<p>环境meta信息列表</p>
+        :rtype: list of KVPair
+        """
+        return self._Meta
+
+    @Meta.setter
+    def Meta(self, Meta):
+        self._Meta = Meta
+
+    @property
+    def PostgreSQL(self):
+        r"""<p>pg信息</p>
+        :rtype: list of PostgreSQLInfo
+        """
+        return self._PostgreSQL
+
+    @PostgreSQL.setter
+    def PostgreSQL(self, PostgreSQL):
+        self._PostgreSQL = PostgreSQL
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -11058,6 +11165,18 @@ class EnvInfo(AbstractModel):
         self._PackageType = params.get("PackageType")
         self._ArchitectureType = params.get("ArchitectureType")
         self._Recycle = params.get("Recycle")
+        if params.get("Meta") is not None:
+            self._Meta = []
+            for item in params.get("Meta"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Meta.append(obj)
+        if params.get("PostgreSQL") is not None:
+            self._PostgreSQL = []
+            for item in params.get("PostgreSQL"):
+                obj = PostgreSQLInfo()
+                obj._deserialize(item)
+                self._PostgreSQL.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15790,6 +15909,87 @@ class ModifySafeRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyStorageSourceRequest(AbstractModel):
+    r"""ModifyStorageSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _StorageConfig: 存储源
+        :type StorageConfig: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
+        """
+        self._EnvId = None
+        self._StorageConfig = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def StorageConfig(self):
+        r"""存储源
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
+        """
+        return self._StorageConfig
+
+    @StorageConfig.setter
+    def StorageConfig(self, StorageConfig):
+        self._StorageConfig = StorageConfig
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        if params.get("StorageConfig") is not None:
+            self._StorageConfig = ExternalStorage()
+            self._StorageConfig._deserialize(params.get("StorageConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStorageSourceResponse(AbstractModel):
+    r"""ModifyStorageSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyUserRequest(AbstractModel):
     r"""ModifyUser请求参数结构体
 
@@ -16827,6 +17027,102 @@ class PermissionInfo(AbstractModel):
         self._AclTag = params.get("AclTag")
         self._EnvId = params.get("EnvId")
         self._Rule = params.get("Rule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PostgreSQLInfo(AbstractModel):
+    r"""PostgreSQL资源信息结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>数据库名称</p>
+        :type Name: str
+        :param _InstanceName: <p>实例id</p>
+        :type InstanceName: str
+        :param _Status: <p>实例状态</p>
+        :type Status: int
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _Version: <p>数据库引擎版本</p>
+        :type Version: str
+        """
+        self._Name = None
+        self._InstanceName = None
+        self._Status = None
+        self._Region = None
+        self._Version = None
+
+    @property
+    def Name(self):
+        r"""<p>数据库名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Status(self):
+        r"""<p>实例状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Version(self):
+        r"""<p>数据库引擎版本</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._InstanceName = params.get("InstanceName")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18942,6 +19238,70 @@ class TkeClusterInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindStorageSourceRequest(AbstractModel):
+    r"""UnbindStorageSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindStorageSourceResponse(AbstractModel):
+    r"""UnbindStorageSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateAIModelRequest(AbstractModel):

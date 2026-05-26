@@ -1500,14 +1500,13 @@ class GetEmbeddingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 说明：选择生成向量的模型备注：可选[lke-text-embedding-v1,lke-text-embedding-v2,youtu-embedding-llm-v1]
+        :param _Model: <p>说明：选择生成向量的模型</p><p>枚举值：</p><ul><li>lke-text-embedding-v1： 文本embedding v1</li><li>lke-text-embedding-v2： 文本embedding v2</li></ul>
         :type Model: str
-        :param _Inputs: 说明：需要 embedding 的文本
-备注：单条query最多2000个字符，总条数最多7条
+        :param _Inputs: <p>说明：需要 embedding 的文本<br>备注：单条query最多2000个字符，总条数最多7条</p>
         :type Inputs: list of str
-        :param _TextType: 说明：文本向量化的类型，为使得检索任务有更好的检索效果，建议区分查询文本（query）和文档文本（document）类型, 聚类、分类等对称任务可以不用特殊指定，采用系统默认值document即可。
+        :param _TextType: <p>说明：文本向量化的类型，为使得检索任务有更好的检索效果，建议区分查询文本（query）和文档文本（document）类型, 聚类、分类等对称任务可以不用特殊指定，采用系统默认值document即可。</p>
         :type TextType: str
-        :param _Instruction: 说明：自定义任务指令词，当且仅当TextType=query且Model为youtu-embedding-llm-v1时，生效
+        :param _Instruction: <p>说明：自定义任务指令词，当且仅当TextType=query且Model为lke-text-embedding-v1时，生效</p>
         :type Instruction: str
         """
         self._Model = None
@@ -1517,7 +1516,7 @@ class GetEmbeddingRequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""说明：选择生成向量的模型备注：可选[lke-text-embedding-v1,lke-text-embedding-v2,youtu-embedding-llm-v1]
+        r"""<p>说明：选择生成向量的模型</p><p>枚举值：</p><ul><li>lke-text-embedding-v1： 文本embedding v1</li><li>lke-text-embedding-v2： 文本embedding v2</li></ul>
         :rtype: str
         """
         return self._Model
@@ -1528,8 +1527,7 @@ class GetEmbeddingRequest(AbstractModel):
 
     @property
     def Inputs(self):
-        r"""说明：需要 embedding 的文本
-备注：单条query最多2000个字符，总条数最多7条
+        r"""<p>说明：需要 embedding 的文本<br>备注：单条query最多2000个字符，总条数最多7条</p>
         :rtype: list of str
         """
         return self._Inputs
@@ -1540,7 +1538,7 @@ class GetEmbeddingRequest(AbstractModel):
 
     @property
     def TextType(self):
-        r"""说明：文本向量化的类型，为使得检索任务有更好的检索效果，建议区分查询文本（query）和文档文本（document）类型, 聚类、分类等对称任务可以不用特殊指定，采用系统默认值document即可。
+        r"""<p>说明：文本向量化的类型，为使得检索任务有更好的检索效果，建议区分查询文本（query）和文档文本（document）类型, 聚类、分类等对称任务可以不用特殊指定，采用系统默认值document即可。</p>
         :rtype: str
         """
         return self._TextType
@@ -1551,7 +1549,7 @@ class GetEmbeddingRequest(AbstractModel):
 
     @property
     def Instruction(self):
-        r"""说明：自定义任务指令词，当且仅当TextType=query且Model为youtu-embedding-llm-v1时，生效
+        r"""<p>说明：自定义任务指令词，当且仅当TextType=query且Model为lke-text-embedding-v1时，生效</p>
         :rtype: str
         """
         return self._Instruction
@@ -1583,9 +1581,9 @@ class GetEmbeddingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 特征
+        :param _Data: <p>特征</p>
         :type Data: list of EmbeddingObject
-        :param _Usage: 消耗量，返回TotalToken
+        :param _Usage: <p>消耗量，返回TotalToken</p>
         :type Usage: :class:`tencentcloud.lkeap.v20240522.models.Usage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1596,7 +1594,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""特征
+        r"""<p>特征</p>
         :rtype: list of EmbeddingObject
         """
         return self._Data
@@ -1607,7 +1605,7 @@ class GetEmbeddingResponse(AbstractModel):
 
     @property
     def Usage(self):
-        r"""消耗量，返回TotalToken
+        r"""<p>消耗量，返回TotalToken</p>
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.Usage`
         """
         return self._Usage

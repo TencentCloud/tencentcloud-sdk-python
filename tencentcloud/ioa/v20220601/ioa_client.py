@@ -210,6 +210,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDeviceVirtualGroup(self, request):
+        r"""删除终端自定义分组，私有化调用path为：/capi/Assets/Device/DeleteDeviceVirtualGroup
+
+        :param request: Request instance for DeleteDeviceVirtualGroup.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DeleteDeviceVirtualGroupRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DeleteDeviceVirtualGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeviceVirtualGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDeviceVirtualGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccountGroups(self, request):
         r"""以分页的方式查询账号分组列表，私有化调用path为：/capi/Assets/DescribeAccountGroups
 

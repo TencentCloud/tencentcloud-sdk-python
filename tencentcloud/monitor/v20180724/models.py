@@ -21467,6 +21467,87 @@ class DescribePrometheusAlertPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePrometheusAlertmanagerConfigRequest(AbstractModel):
+    r"""DescribePrometheusAlertmanagerConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Prometheus 实例 ID</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Prometheus 实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusAlertmanagerConfigResponse(AbstractModel):
+    r"""DescribePrometheusAlertmanagerConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlertmanagerConfig: <p>Alertmanager 配置</p>
+        :type AlertmanagerConfig: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertmanagerConfigV2`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AlertmanagerConfig = None
+        self._RequestId = None
+
+    @property
+    def AlertmanagerConfig(self):
+        r"""<p>Alertmanager 配置</p>
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertmanagerConfigV2`
+        """
+        return self._AlertmanagerConfig
+
+    @AlertmanagerConfig.setter
+    def AlertmanagerConfig(self, AlertmanagerConfig):
+        self._AlertmanagerConfig = AlertmanagerConfig
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AlertmanagerConfig") is not None:
+            self._AlertmanagerConfig = PrometheusAlertmanagerConfigV2()
+            self._AlertmanagerConfig._deserialize(params.get("AlertmanagerConfig"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrometheusClusterAgentsRequest(AbstractModel):
     r"""DescribePrometheusClusterAgents请求参数结构体
 
@@ -34111,6 +34192,121 @@ class PrometheusAlertRule(AbstractModel):
         
 
 
+class PrometheusAlertmanagerConfigInhibitRule(AbstractModel):
+    r"""Prometheus Alertmanger 抑制规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceMatchers: Source 告警的标签匹配规则，比如 "a=b"、"a!=c" 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceMatchers: list of str
+        :param _TargetMatchers: Target 告警的标签匹配规则，比如 "a=b"、"a!=c" 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetMatchers: list of str
+        :param _Equal: Source 和 Target 告警都必须有的一组标签名，比如 alertname、cluster 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Equal: list of str
+        """
+        self._SourceMatchers = None
+        self._TargetMatchers = None
+        self._Equal = None
+
+    @property
+    def SourceMatchers(self):
+        r"""Source 告警的标签匹配规则，比如 "a=b"、"a!=c" 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SourceMatchers
+
+    @SourceMatchers.setter
+    def SourceMatchers(self, SourceMatchers):
+        self._SourceMatchers = SourceMatchers
+
+    @property
+    def TargetMatchers(self):
+        r"""Target 告警的标签匹配规则，比如 "a=b"、"a!=c" 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._TargetMatchers
+
+    @TargetMatchers.setter
+    def TargetMatchers(self, TargetMatchers):
+        self._TargetMatchers = TargetMatchers
+
+    @property
+    def Equal(self):
+        r"""Source 和 Target 告警都必须有的一组标签名，比如 alertname、cluster 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Equal
+
+    @Equal.setter
+    def Equal(self, Equal):
+        self._Equal = Equal
+
+
+    def _deserialize(self, params):
+        self._SourceMatchers = params.get("SourceMatchers")
+        self._TargetMatchers = params.get("TargetMatchers")
+        self._Equal = params.get("Equal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAlertmanagerConfigV2(AbstractModel):
+    r"""Prometheus Alertmanger 可修改配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InhibitRules: Prometheus Alertmanger 抑制规则组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InhibitRules: list of PrometheusAlertmanagerConfigInhibitRule
+        """
+        self._InhibitRules = None
+
+    @property
+    def InhibitRules(self):
+        r"""Prometheus Alertmanger 抑制规则组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusAlertmanagerConfigInhibitRule
+        """
+        return self._InhibitRules
+
+    @InhibitRules.setter
+    def InhibitRules(self, InhibitRules):
+        self._InhibitRules = InhibitRules
+
+
+    def _deserialize(self, params):
+        if params.get("InhibitRules") is not None:
+            self._InhibitRules = []
+            for item in params.get("InhibitRules"):
+                obj = PrometheusAlertmanagerConfigInhibitRule()
+                obj._deserialize(item)
+                self._InhibitRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusClusterAgentBasic(AbstractModel):
     r"""与腾讯云可观测平台融合托管 Prometheus 实例，关联集群基础信息
 
@@ -38453,6 +38649,87 @@ class RemoteWriteHeader(AbstractModel):
         
 
 
+class ReplacePrometheusAlertmanagerConfigRequest(AbstractModel):
+    r"""ReplacePrometheusAlertmanagerConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Prometheus 实例 ID</p>
+        :type InstanceId: str
+        :param _AlertmanagerConfig: <p>Alertmanager 配置</p>
+        :type AlertmanagerConfig: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertmanagerConfigV2`
+        """
+        self._InstanceId = None
+        self._AlertmanagerConfig = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Prometheus 实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AlertmanagerConfig(self):
+        r"""<p>Alertmanager 配置</p>
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertmanagerConfigV2`
+        """
+        return self._AlertmanagerConfig
+
+    @AlertmanagerConfig.setter
+    def AlertmanagerConfig(self, AlertmanagerConfig):
+        self._AlertmanagerConfig = AlertmanagerConfig
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("AlertmanagerConfig") is not None:
+            self._AlertmanagerConfig = PrometheusAlertmanagerConfigV2()
+            self._AlertmanagerConfig._deserialize(params.get("AlertmanagerConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplacePrometheusAlertmanagerConfigResponse(AbstractModel):
+    r"""ReplacePrometheusAlertmanagerConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResumeGrafanaInstanceRequest(AbstractModel):
     r"""ResumeGrafanaInstance请求参数结构体
 
@@ -38514,6 +38791,152 @@ class ResumeGrafanaInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RoutePrometheusDynamicAPIRequest(AbstractModel):
+    r"""RoutePrometheusDynamicAPI请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>Prometheus 实例 ID</p>
+        :type InstanceId: str
+        :param _Method: <p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
+        :type Method: str
+        :param _Path: <p>HTTP 路径（包括 query string）</p>
+        :type Path: str
+        :param _RequestBody: <p>HTTP 请求体，任何数据</p>
+        :type RequestBody: str
+        :param _Headers: <p>HTTP 请求头</p>
+        :type Headers: list of PrometheusStringKeyValuePair
+        """
+        self._InstanceId = None
+        self._Method = None
+        self._Path = None
+        self._RequestBody = None
+        self._Headers = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>Prometheus 实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Method(self):
+        r"""<p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Path(self):
+        r"""<p>HTTP 路径（包括 query string）</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def RequestBody(self):
+        r"""<p>HTTP 请求体，任何数据</p>
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+    @property
+    def Headers(self):
+        r"""<p>HTTP 请求头</p>
+        :rtype: list of PrometheusStringKeyValuePair
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Method = params.get("Method")
+        self._Path = params.get("Path")
+        self._RequestBody = params.get("RequestBody")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = PrometheusStringKeyValuePair()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoutePrometheusDynamicAPIResponse(AbstractModel):
+    r"""RoutePrometheusDynamicAPI返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HTTP: <p>HTTP 响应数据</p>
+        :type HTTP: :class:`tencentcloud.monitor.v20180724.models.PrometheusDynamicAPIResponseHTTP`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HTTP = None
+        self._RequestId = None
+
+    @property
+    def HTTP(self):
+        r"""<p>HTTP 响应数据</p>
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusDynamicAPIResponseHTTP`
+        """
+        return self._HTTP
+
+    @HTTP.setter
+    def HTTP(self, HTTP):
+        self._HTTP = HTTP
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HTTP") is not None:
+            self._HTTP = PrometheusDynamicAPIResponseHTTP()
+            self._HTTP._deserialize(params.get("HTTP"))
         self._RequestId = params.get("RequestId")
 
 

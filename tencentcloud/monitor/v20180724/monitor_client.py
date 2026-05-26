@@ -2155,6 +2155,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePrometheusAlertmanagerConfig(self, request):
+        r"""获取 Prometheus Alertmanager 配置
+
+        :param request: Request instance for DescribePrometheusAlertmanagerConfig.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAlertmanagerConfigRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusAlertmanagerConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusAlertmanagerConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusAlertmanagerConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePrometheusClusterAgents(self, request):
         r"""获取TMP实例关联集群列表
 
@@ -3311,6 +3334,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReplacePrometheusAlertmanagerConfig(self, request):
+        r"""替换 Prometheus Alertmanager 配置
+
+        :param request: Request instance for ReplacePrometheusAlertmanagerConfig.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ReplacePrometheusAlertmanagerConfigRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ReplacePrometheusAlertmanagerConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplacePrometheusAlertmanagerConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplacePrometheusAlertmanagerConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResumeGrafanaInstance(self, request):
         r"""本接口（ResumeGrafanaInstance）用于 Grafana 包年包月实例的停服续费，调用后按原版本续费一个月。仍在运行中的实例无法使用该接口进行续费。
 
@@ -3325,6 +3371,45 @@ class MonitorClient(AbstractClient):
             body = self.call("ResumeGrafanaInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ResumeGrafanaInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RoutePrometheusDynamicAPI(self, request):
+        r"""Prometheus 内部动态 api 代理，支持以云api形式访问prometheus原生api
+        支持以下api:
+
+        >! 读接口建议使用ExportPrometheusReadOnlyDynamicAPI调用，支持更长的查询时延与响应大小。同时便于权限管理
+
+        | path | method | 用途 |
+        | - | - | - |
+        | /api/v1/query | GET, POST | 点查询 |
+        | /api/v1/query_range | GET, POST |  范围查询 |
+        | /api/v1/series | GET, POST | series列表查询 |
+        | /api/v1/labels | GET, POST | label名查询 |
+        | /api/v1/label/{label_name}/values | GET | label值查询 |
+        | /api/v1/rules | GET | 告警，预聚合规则查询 |
+        | /api/v1/user_limits | GET | prometheus实例限制查询 |
+        | /alertmanager/api/v2/alerts/groups | GET | 当前告警信息查询 |
+        | /alertmanager/api/v2/silences | GET, POST | 告警静默查询/创建/修改 |
+        | /alertmanager/api/v2/silence/{id} | GET, DELETE | 告警静默详情查询/删除 |
+
+        :param request: Request instance for RoutePrometheusDynamicAPI.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.RoutePrometheusDynamicAPIRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.RoutePrometheusDynamicAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RoutePrometheusDynamicAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.RoutePrometheusDynamicAPIResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

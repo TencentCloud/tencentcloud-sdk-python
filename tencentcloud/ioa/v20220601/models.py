@@ -2168,6 +2168,100 @@ class CreatePrivilegeCodeRspData(AbstractModel):
         
 
 
+class DeleteDeviceVirtualGroupRequest(AbstractModel):
+    r"""DeleteDeviceVirtualGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        :param _DeviceVirtualGroupId: 必填，终端自定义分组id
+        :type DeviceVirtualGroupId: int
+        :param _OsType: 必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
+        :type OsType: int
+        """
+        self._DomainInstanceId = None
+        self._DeviceVirtualGroupId = None
+        self._OsType = None
+
+    @property
+    def DomainInstanceId(self):
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
+    def DeviceVirtualGroupId(self):
+        r"""必填，终端自定义分组id
+        :rtype: int
+        """
+        return self._DeviceVirtualGroupId
+
+    @DeviceVirtualGroupId.setter
+    def DeviceVirtualGroupId(self, DeviceVirtualGroupId):
+        self._DeviceVirtualGroupId = DeviceVirtualGroupId
+
+    @property
+    def OsType(self):
+        r"""必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
+        :rtype: int
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+
+    def _deserialize(self, params):
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        self._DeviceVirtualGroupId = params.get("DeviceVirtualGroupId")
+        self._OsType = params.get("OsType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceVirtualGroupResponse(AbstractModel):
+    r"""DeleteDeviceVirtualGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAccountGroupsData(AbstractModel):
     r"""账号分组信息
 

@@ -909,14 +909,14 @@ class DescribeVsmAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源Id
+        :param _ResourceId: <p>资源Id</p>
         :type ResourceId: str
         """
         self._ResourceId = None
 
     @property
     def ResourceId(self):
-        r"""资源Id
+        r"""<p>资源Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -945,54 +945,56 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源Id
+        :param _ResourceId: <p>资源Id</p>
         :type ResourceId: str
-        :param _ResourceName: 资源名称
+        :param _ResourceName: <p>资源名称</p>
         :type ResourceName: str
-        :param _Status: 资源状态，1表示资源为正常，2表示资源处于隔离状态
+        :param _Status: <p>资源状态，1表示资源为正常，2表示资源处于隔离状态</p>
         :type Status: int
-        :param _Vip: 资源IP
+        :param _Vip: <p>资源IP</p>
         :type Vip: str
-        :param _VpcId: 资源所属Vpc
+        :param _VpcId: <p>资源所属Vpc</p>
         :type VpcId: str
-        :param _SubnetId: 资源所属子网
+        :param _SubnetId: <p>资源所属子网</p>
         :type SubnetId: str
-        :param _Model: 资源所属HSM的规格
+        :param _Model: <p>资源所属HSM的规格</p>
         :type Model: str
-        :param _VsmType: 资源类型，17表示EVSM，33表示GVSM，49表示SVSM
+        :param _VsmType: <p>资源类型，17表示EVSM，33表示GVSM，49表示SVSM</p>
         :type VsmType: int
-        :param _RegionId: 地域Id，返回腾讯云地域代码，如广州为1，北京为8
+        :param _RegionId: <p>地域Id，返回腾讯云地域代码，如广州为1，北京为8</p>
         :type RegionId: int
-        :param _ZoneId: 区域Id，返回腾讯云每个地域的可用区代码
+        :param _ZoneId: <p>区域Id，返回腾讯云每个地域的可用区代码</p>
         :type ZoneId: int
-        :param _ExpireTime: 资源过期时间，以时间戳形式展示。
+        :param _ExpireTime: <p>资源过期时间，以时间戳形式展示。</p>
         :type ExpireTime: int
-        :param _SgList: 安全组详情信息,如果未配置字段返回null
+        :param _SgList: <p>安全组详情信息,如果未配置字段返回null</p>
         :type SgList: list of UsgRuleDetail
-        :param _SubnetName: 子网名
+        :param _SubnetName: <p>子网名</p>
         :type SubnetName: str
-        :param _RegionName: 地域名
+        :param _RegionName: <p>地域名</p>
         :type RegionName: str
-        :param _ZoneName: 区域名
+        :param _ZoneName: <p>区域名</p>
         :type ZoneName: str
-        :param _Expired: 实例是否已经过期
+        :param _Expired: <p>实例是否已经过期</p>
         :type Expired: bool
-        :param _RemainSeconds: 为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
+        :param _RemainSeconds: <p>为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒</p>
         :type RemainSeconds: int
-        :param _VpcName: 私有虚拟网络名称
+        :param _VpcName: <p>私有虚拟网络名称</p>
         :type VpcName: str
-        :param _VpcCidrBlock: VPC的IPv4 CIDR
+        :param _VpcCidrBlock: <p>VPC的IPv4 CIDR</p>
         :type VpcCidrBlock: str
-        :param _SubnetCidrBlock: 子网的CIDR
+        :param _SubnetCidrBlock: <p>子网的CIDR</p>
         :type SubnetCidrBlock: str
-        :param _Tags: 资源所关联的标签Tag
+        :param _Tags: <p>资源所关联的标签Tag</p>
         :type Tags: list of Tag
-        :param _RenewFlag: 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :param _RenewFlag: <p>资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :type RenewFlag: int
-        :param _Manufacturer: 厂商
+        :param _Manufacturer: <p>厂商</p>
         :type Manufacturer: str
-        :param _PqcFlag: 0-关闭，1-开启
+        :param _PqcFlag: <p>0-关闭，1-开启</p>
         :type PqcFlag: int
+        :param _DeployEnv: <p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
+        :type DeployEnv: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1020,11 +1022,12 @@ class DescribeVsmAttributesResponse(AbstractModel):
         self._RenewFlag = None
         self._Manufacturer = None
         self._PqcFlag = None
+        self._DeployEnv = None
         self._RequestId = None
 
     @property
     def ResourceId(self):
-        r"""资源Id
+        r"""<p>资源Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -1035,7 +1038,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""资源名称
+        r"""<p>资源名称</p>
         :rtype: str
         """
         return self._ResourceName
@@ -1046,7 +1049,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""资源状态，1表示资源为正常，2表示资源处于隔离状态
+        r"""<p>资源状态，1表示资源为正常，2表示资源处于隔离状态</p>
         :rtype: int
         """
         return self._Status
@@ -1057,7 +1060,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Vip(self):
-        r"""资源IP
+        r"""<p>资源IP</p>
         :rtype: str
         """
         return self._Vip
@@ -1068,7 +1071,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""资源所属Vpc
+        r"""<p>资源所属Vpc</p>
         :rtype: str
         """
         return self._VpcId
@@ -1079,7 +1082,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""资源所属子网
+        r"""<p>资源所属子网</p>
         :rtype: str
         """
         return self._SubnetId
@@ -1090,7 +1093,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Model(self):
-        r"""资源所属HSM的规格
+        r"""<p>资源所属HSM的规格</p>
         :rtype: str
         """
         return self._Model
@@ -1101,7 +1104,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def VsmType(self):
-        r"""资源类型，17表示EVSM，33表示GVSM，49表示SVSM
+        r"""<p>资源类型，17表示EVSM，33表示GVSM，49表示SVSM</p>
         :rtype: int
         """
         return self._VsmType
@@ -1112,7 +1115,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域Id，返回腾讯云地域代码，如广州为1，北京为8
+        r"""<p>地域Id，返回腾讯云地域代码，如广州为1，北京为8</p>
         :rtype: int
         """
         return self._RegionId
@@ -1123,7 +1126,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""区域Id，返回腾讯云每个地域的可用区代码
+        r"""<p>区域Id，返回腾讯云每个地域的可用区代码</p>
         :rtype: int
         """
         return self._ZoneId
@@ -1134,7 +1137,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""资源过期时间，以时间戳形式展示。
+        r"""<p>资源过期时间，以时间戳形式展示。</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -1145,7 +1148,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def SgList(self):
-        r"""安全组详情信息,如果未配置字段返回null
+        r"""<p>安全组详情信息,如果未配置字段返回null</p>
         :rtype: list of UsgRuleDetail
         """
         return self._SgList
@@ -1156,7 +1159,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""子网名
+        r"""<p>子网名</p>
         :rtype: str
         """
         return self._SubnetName
@@ -1167,7 +1170,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""地域名
+        r"""<p>地域名</p>
         :rtype: str
         """
         return self._RegionName
@@ -1178,7 +1181,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def ZoneName(self):
-        r"""区域名
+        r"""<p>区域名</p>
         :rtype: str
         """
         return self._ZoneName
@@ -1189,7 +1192,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Expired(self):
-        r"""实例是否已经过期
+        r"""<p>实例是否已经过期</p>
         :rtype: bool
         """
         return self._Expired
@@ -1200,7 +1203,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def RemainSeconds(self):
-        r"""为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
+        r"""<p>为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒</p>
         :rtype: int
         """
         return self._RemainSeconds
@@ -1211,7 +1214,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""私有虚拟网络名称
+        r"""<p>私有虚拟网络名称</p>
         :rtype: str
         """
         return self._VpcName
@@ -1222,7 +1225,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        r"""VPC的IPv4 CIDR
+        r"""<p>VPC的IPv4 CIDR</p>
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -1233,7 +1236,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def SubnetCidrBlock(self):
-        r"""子网的CIDR
+        r"""<p>子网的CIDR</p>
         :rtype: str
         """
         return self._SubnetCidrBlock
@@ -1244,7 +1247,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""资源所关联的标签Tag
+        r"""<p>资源所关联的标签Tag</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -1255,7 +1258,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        r"""<p>资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -1266,7 +1269,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def Manufacturer(self):
-        r"""厂商
+        r"""<p>厂商</p>
         :rtype: str
         """
         return self._Manufacturer
@@ -1277,7 +1280,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
 
     @property
     def PqcFlag(self):
-        r"""0-关闭，1-开启
+        r"""<p>0-关闭，1-开启</p>
         :rtype: int
         """
         return self._PqcFlag
@@ -1285,6 +1288,17 @@ class DescribeVsmAttributesResponse(AbstractModel):
     @PqcFlag.setter
     def PqcFlag(self, PqcFlag):
         self._PqcFlag = PqcFlag
+
+    @property
+    def DeployEnv(self):
+        r"""<p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
+        :rtype: str
+        """
+        return self._DeployEnv
+
+    @DeployEnv.setter
+    def DeployEnv(self, DeployEnv):
+        self._DeployEnv = DeployEnv
 
     @property
     def RequestId(self):
@@ -1333,6 +1347,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._Manufacturer = params.get("Manufacturer")
         self._PqcFlag = params.get("PqcFlag")
+        self._DeployEnv = params.get("DeployEnv")
         self._RequestId = params.get("RequestId")
 
 
@@ -2310,58 +2325,58 @@ class ResourceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源Id
+        :param _ResourceId: <p>资源Id</p>
         :type ResourceId: str
-        :param _ResourceName: 资源名称
+        :param _ResourceName: <p>资源名称</p>
         :type ResourceName: str
-        :param _Status: 资源状态，1-正常，2-隔离，3-销毁
+        :param _Status: <p>资源状态，1-正常，2-隔离，3-销毁</p>
         :type Status: int
-        :param _Vip: 资源IP
+        :param _Vip: <p>资源IP</p>
         :type Vip: str
-        :param _VpcId: 资源所属Vpc
+        :param _VpcId: <p>资源所属Vpc</p>
         :type VpcId: str
-        :param _SubnetId: 资源所属子网
+        :param _SubnetId: <p>资源所属子网</p>
         :type SubnetId: str
-        :param _Model: 资源所属HSM规格
+        :param _Model: <p>资源所属HSM规格</p>
         :type Model: str
-        :param _VsmType: 云加密机类型id
+        :param _VsmType: <p>云加密机类型id</p>
         :type VsmType: int
-        :param _RegionId: 地域Id
+        :param _RegionId: <p>地域Id</p>
         :type RegionId: int
-        :param _ZoneId: 区域Id
+        :param _ZoneId: <p>区域Id</p>
         :type ZoneId: int
-        :param _ExpireTime: 过期时间（Epoch Unix Timestamp）
+        :param _ExpireTime: <p>过期时间（Epoch Unix Timestamp）</p>
         :type ExpireTime: int
-        :param _RegionName: 地域名
+        :param _RegionName: <p>地域名</p>
         :type RegionName: str
-        :param _ZoneName: 区域名
+        :param _ZoneName: <p>区域名</p>
         :type ZoneName: str
-        :param _SgList: 实例的安全组列表
+        :param _SgList: <p>实例的安全组列表</p>
         :type SgList: list of SgUnit
-        :param _SubnetName: 子网名称
+        :param _SubnetName: <p>子网名称</p>
         :type SubnetName: str
-        :param _Expired: 当前实例是否已经过期
+        :param _Expired: <p>当前实例是否已经过期</p>
         :type Expired: bool
-        :param _RemainSeconds: 为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒
+        :param _RemainSeconds: <p>为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒</p>
         :type RemainSeconds: int
-        :param _VpcName: Vpc名称
+        :param _VpcName: <p>Vpc名称</p>
         :type VpcName: str
-        :param _CreateUin: 创建者Uin账号
+        :param _CreateUin: <p>创建者Uin账号</p>
         :type CreateUin: str
-        :param _RenewFlag: 自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
+        :param _RenewFlag: <p>自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续</p>
         :type RenewFlag: int
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
-        :param _Manufacturer: 厂商
+        :param _Manufacturer: <p>厂商</p>
         :type Manufacturer: str
-        :param _AlarmStatus: 告警状态，0：停用，1：启用
+        :param _AlarmStatus: <p>告警状态，0：停用，1：启用</p>
         :type AlarmStatus: int
-        :param _PqcStatus: 0不支持
-1关闭
-2开启
+        :param _PqcStatus: <p>0不支持<br>1关闭<br>2开启</p>
         :type PqcStatus: int
-        :param _PqcFlag: 0关闭，1开启
+        :param _PqcFlag: <p>0关闭，1开启</p>
         :type PqcFlag: int
+        :param _DeployEnv: <p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
+        :type DeployEnv: str
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -2388,10 +2403,11 @@ class ResourceInfo(AbstractModel):
         self._AlarmStatus = None
         self._PqcStatus = None
         self._PqcFlag = None
+        self._DeployEnv = None
 
     @property
     def ResourceId(self):
-        r"""资源Id
+        r"""<p>资源Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -2402,7 +2418,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""资源名称
+        r"""<p>资源名称</p>
         :rtype: str
         """
         return self._ResourceName
@@ -2413,7 +2429,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""资源状态，1-正常，2-隔离，3-销毁
+        r"""<p>资源状态，1-正常，2-隔离，3-销毁</p>
         :rtype: int
         """
         return self._Status
@@ -2424,7 +2440,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Vip(self):
-        r"""资源IP
+        r"""<p>资源IP</p>
         :rtype: str
         """
         return self._Vip
@@ -2435,7 +2451,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""资源所属Vpc
+        r"""<p>资源所属Vpc</p>
         :rtype: str
         """
         return self._VpcId
@@ -2446,7 +2462,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""资源所属子网
+        r"""<p>资源所属子网</p>
         :rtype: str
         """
         return self._SubnetId
@@ -2457,7 +2473,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Model(self):
-        r"""资源所属HSM规格
+        r"""<p>资源所属HSM规格</p>
         :rtype: str
         """
         return self._Model
@@ -2468,7 +2484,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def VsmType(self):
-        r"""云加密机类型id
+        r"""<p>云加密机类型id</p>
         :rtype: int
         """
         return self._VsmType
@@ -2479,7 +2495,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域Id
+        r"""<p>地域Id</p>
         :rtype: int
         """
         return self._RegionId
@@ -2490,7 +2506,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""区域Id
+        r"""<p>区域Id</p>
         :rtype: int
         """
         return self._ZoneId
@@ -2501,7 +2517,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""过期时间（Epoch Unix Timestamp）
+        r"""<p>过期时间（Epoch Unix Timestamp）</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -2512,7 +2528,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""地域名
+        r"""<p>地域名</p>
         :rtype: str
         """
         return self._RegionName
@@ -2523,7 +2539,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def ZoneName(self):
-        r"""区域名
+        r"""<p>区域名</p>
         :rtype: str
         """
         return self._ZoneName
@@ -2534,7 +2550,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def SgList(self):
-        r"""实例的安全组列表
+        r"""<p>实例的安全组列表</p>
         :rtype: list of SgUnit
         """
         return self._SgList
@@ -2545,7 +2561,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""子网名称
+        r"""<p>子网名称</p>
         :rtype: str
         """
         return self._SubnetName
@@ -2556,7 +2572,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Expired(self):
-        r"""当前实例是否已经过期
+        r"""<p>当前实例是否已经过期</p>
         :rtype: bool
         """
         return self._Expired
@@ -2567,7 +2583,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def RemainSeconds(self):
-        r"""为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒
+        r"""<p>为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒</p>
         :rtype: int
         """
         return self._RemainSeconds
@@ -2578,7 +2594,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""Vpc名称
+        r"""<p>Vpc名称</p>
         :rtype: str
         """
         return self._VpcName
@@ -2589,7 +2605,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建者Uin账号
+        r"""<p>创建者Uin账号</p>
         :rtype: str
         """
         return self._CreateUin
@@ -2600,7 +2616,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
+        r"""<p>自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -2611,7 +2627,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -2622,7 +2638,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def Manufacturer(self):
-        r"""厂商
+        r"""<p>厂商</p>
         :rtype: str
         """
         return self._Manufacturer
@@ -2633,7 +2649,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def AlarmStatus(self):
-        r"""告警状态，0：停用，1：启用
+        r"""<p>告警状态，0：停用，1：启用</p>
         :rtype: int
         """
         return self._AlarmStatus
@@ -2644,9 +2660,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def PqcStatus(self):
-        r"""0不支持
-1关闭
-2开启
+        r"""<p>0不支持<br>1关闭<br>2开启</p>
         :rtype: int
         """
         return self._PqcStatus
@@ -2657,7 +2671,7 @@ class ResourceInfo(AbstractModel):
 
     @property
     def PqcFlag(self):
-        r"""0关闭，1开启
+        r"""<p>0关闭，1开启</p>
         :rtype: int
         """
         return self._PqcFlag
@@ -2665,6 +2679,17 @@ class ResourceInfo(AbstractModel):
     @PqcFlag.setter
     def PqcFlag(self, PqcFlag):
         self._PqcFlag = PqcFlag
+
+    @property
+    def DeployEnv(self):
+        r"""<p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
+        :rtype: str
+        """
+        return self._DeployEnv
+
+    @DeployEnv.setter
+    def DeployEnv(self, DeployEnv):
+        self._DeployEnv = DeployEnv
 
 
     def _deserialize(self, params):
@@ -2703,6 +2728,7 @@ class ResourceInfo(AbstractModel):
         self._AlarmStatus = params.get("AlarmStatus")
         self._PqcStatus = params.get("PqcStatus")
         self._PqcFlag = params.get("PqcFlag")
+        self._DeployEnv = params.get("DeployEnv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

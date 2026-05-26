@@ -62,6 +62,9 @@ FAILEDOPERATION_LISTTABLE = 'FailedOperation.ListTable'
 # 网络异常
 FAILEDOPERATION_NETWORKERROR = 'FailedOperation.NetworkError'
 
+# 操作冲突。
+FAILEDOPERATION_OPERATIONCONFLICT = 'FailedOperation.OperationConflict'
+
 # Failed to connect to PostgreSQL instance.
 FAILEDOPERATION_PGCONNECTERROR = 'FailedOperation.PGConnectError'
 

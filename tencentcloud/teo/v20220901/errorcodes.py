@@ -1184,6 +1184,9 @@ OPERATIONDENIED_ENVNOTREADY = 'OperationDenied.EnvNotReady'
 # 站点处于停用状态，请开启后重试。
 OPERATIONDENIED_ERRZONEISALREADYPAUSED = 'OperationDenied.ErrZoneIsAlreadyPaused'
 
+# 待变更域名边缘HTTPS证书不一致，请确认变更域名证书一致后重试。
+OPERATIONDENIED_HOSTSCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsCertificateInconsistency'
+
 # 待变更域名边缘双向认证证书不一致，请确认变更域名证书一致后重试。
 OPERATIONDENIED_HOSTSCLIENTCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsClientCertificateInconsistency'
 
@@ -1378,6 +1381,9 @@ OPERATIONDENIED_VERSIONCONTROLNEEDNSSWITCHED = 'OperationDenied.VersionControlNe
 
 # 站点工作模式不属于版本管理模式。
 OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = 'OperationDenied.WorkModeNotInVersionControl'
+
+# 修改加速区域时，如果站点下存在域名，则不允许同时修改其他信息。
+OPERATIONDENIED_ZONEHASHOSTSMODIFYCONFLICT = 'OperationDenied.ZoneHasHostsModifyConflict'
 
 # 共享CNAME已被其他站点绑定，请先解绑才能删除站点
 OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = 'OperationDenied.ZoneIsBindingSharedCNAME'

@@ -9457,6 +9457,150 @@ class CreateUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateUserRoleRequest(AbstractModel):
+    r"""CreateUserRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Arn: 角色Arn信息
+        :type Arn: str
+        :param _Desc: 角色描述信息
+        :type Desc: str
+        :param _Name: 角色名称
+        :type Name: str
+        :param _CosPermissionList: cos授权路径列表
+        :type CosPermissionList: list of CosPermission
+        :param _PermissionJson: cam策略json
+        :type PermissionJson: str
+        :param _IsDefault: 是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+        :type IsDefault: int
+        """
+        self._Arn = None
+        self._Desc = None
+        self._Name = None
+        self._CosPermissionList = None
+        self._PermissionJson = None
+        self._IsDefault = None
+
+    @property
+    def Arn(self):
+        r"""角色Arn信息
+        :rtype: str
+        """
+        return self._Arn
+
+    @Arn.setter
+    def Arn(self, Arn):
+        self._Arn = Arn
+
+    @property
+    def Desc(self):
+        r"""角色描述信息
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Name(self):
+        r"""角色名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CosPermissionList(self):
+        r"""cos授权路径列表
+        :rtype: list of CosPermission
+        """
+        return self._CosPermissionList
+
+    @CosPermissionList.setter
+    def CosPermissionList(self, CosPermissionList):
+        self._CosPermissionList = CosPermissionList
+
+    @property
+    def PermissionJson(self):
+        r"""cam策略json
+        :rtype: str
+        """
+        return self._PermissionJson
+
+    @PermissionJson.setter
+    def PermissionJson(self, PermissionJson):
+        self._PermissionJson = PermissionJson
+
+    @property
+    def IsDefault(self):
+        r"""是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+
+    def _deserialize(self, params):
+        self._Arn = params.get("Arn")
+        self._Desc = params.get("Desc")
+        self._Name = params.get("Name")
+        if params.get("CosPermissionList") is not None:
+            self._CosPermissionList = []
+            for item in params.get("CosPermissionList"):
+                obj = CosPermission()
+                obj._deserialize(item)
+                self._CosPermissionList.append(obj)
+        self._PermissionJson = params.get("PermissionJson")
+        self._IsDefault = params.get("IsDefault")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserRoleResponse(AbstractModel):
+    r"""CreateUserRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateUserVpcConnectionRequest(AbstractModel):
     r"""CreateUserVpcConnection请求参数结构体
 

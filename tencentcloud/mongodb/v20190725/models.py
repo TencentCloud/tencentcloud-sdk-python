@@ -4251,6 +4251,85 @@ class DeleteAuditLogFileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDBBackupsRequest(AbstractModel):
+    r"""DeleteDBBackups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id,cmgo-xxxx
+        :type InstanceId: str
+        :param _BackupIds: 备份文件id列表
+        :type BackupIds: list of int
+        """
+        self._InstanceId = None
+        self._BackupIds = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id,cmgo-xxxx
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupIds(self):
+        r"""备份文件id列表
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupIds = params.get("BackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDBBackupsResponse(AbstractModel):
+    r"""DeleteDBBackups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteLogDownloadTaskRequest(AbstractModel):
     r"""DeleteLogDownloadTask请求参数结构体
 
@@ -8658,6 +8737,40 @@ class DescribeMongodbLogsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePasswordRotationRequest(AbstractModel):
+    r"""DescribePasswordRotation请求参数结构体
+
+    """
+
+
+class DescribePasswordRotationResponse(AbstractModel):
+    r"""DescribePasswordRotation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSRVConnectionDomainRequest(AbstractModel):
     r"""DescribeSRVConnectionDomain请求参数结构体
 
@@ -9516,6 +9629,40 @@ class DropDBInstanceParamTplRequest(AbstractModel):
 
 class DropDBInstanceParamTplResponse(AbstractModel):
     r"""DropDBInstanceParamTpl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EnablePasswordRotationRequest(AbstractModel):
+    r"""EnablePasswordRotation请求参数结构体
+
+    """
+
+
+class EnablePasswordRotationResponse(AbstractModel):
+    r"""EnablePasswordRotation返回参数结构体
 
     """
 
@@ -13385,6 +13532,115 @@ class ModifyAuditServiceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBackupExpireTimeRequest(AbstractModel):
+    r"""ModifyBackupExpireTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _ExpireTime: <p>过期时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type ExpireTime: str
+        :param _BackupIds: <p>备份ID</p>
+        :type BackupIds: list of int
+        """
+        self._InstanceId = None
+        self._ExpireTime = None
+        self._BackupIds = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ExpireTime(self):
+        r"""<p>过期时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def BackupIds(self):
+        r"""<p>备份ID</p>
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._BackupIds = params.get("BackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupExpireTimeResponse(AbstractModel):
+    r"""ModifyBackupExpireTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedBackups: <p>失败的备份ID</p>
+        :type FailedBackups: list of int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedBackups = None
+        self._RequestId = None
+
+    @property
+    def FailedBackups(self):
+        r"""<p>失败的备份ID</p>
+        :rtype: list of int
+        """
+        return self._FailedBackups
+
+    @FailedBackups.setter
+    def FailedBackups(self, FailedBackups):
+        self._FailedBackups = FailedBackups
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FailedBackups = params.get("FailedBackups")
         self._RequestId = params.get("RequestId")
 
 

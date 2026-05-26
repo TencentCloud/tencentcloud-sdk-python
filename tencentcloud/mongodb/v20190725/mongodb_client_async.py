@@ -242,6 +242,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDBBackups(
+            self,
+            request: models.DeleteDBBackupsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDBBackupsResponse:
+        """
+        删除全量备份
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDBBackups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDBBackupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteLogDownloadTask(
             self,
             request: models.DeleteLogDownloadTaskRequest,
@@ -676,6 +694,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePasswordRotation(
+            self,
+            request: models.DescribePasswordRotationRequest,
+            opts: Dict = None,
+    ) -> models.DescribePasswordRotationResponse:
+        """
+        获取密码轮转状态信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePasswordRotation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePasswordRotationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSRVConnectionDomain(
             self,
             request: models.DescribeSRVConnectionDomainRequest,
@@ -816,6 +852,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DropDBInstanceParamTpl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DropDBInstanceParamTplResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnablePasswordRotation(
+            self,
+            request: models.EnablePasswordRotationRequest,
+            opts: Dict = None,
+    ) -> models.EnablePasswordRotationResponse:
+        """
+        开启密码轮转
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnablePasswordRotation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnablePasswordRotationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1033,6 +1087,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "ModifyAuditService"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAuditServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBackupExpireTime(
+            self,
+            request: models.ModifyBackupExpireTimeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBackupExpireTimeResponse:
+        """
+        修改备份过期时间
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBackupExpireTime"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBackupExpireTimeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

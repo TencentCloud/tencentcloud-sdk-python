@@ -5107,6 +5107,8 @@ class DataConfig(AbstractModel):
         :param _PublicDataSource: <p>公有云数据源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicDataSource: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
+        :param _ReadOnly: <p>是否是只读存储</p>
+        :type ReadOnly: bool
         """
         self._MappingPath = None
         self._DataSourceUsage = None
@@ -5121,6 +5123,7 @@ class DataConfig(AbstractModel):
         self._CBSSource = None
         self._HostPathSource = None
         self._PublicDataSource = None
+        self._ReadOnly = None
 
     @property
     def MappingPath(self):
@@ -5276,6 +5279,17 @@ class DataConfig(AbstractModel):
     def PublicDataSource(self, PublicDataSource):
         self._PublicDataSource = PublicDataSource
 
+    @property
+    def ReadOnly(self):
+        r"""<p>是否是只读存储</p>
+        :rtype: bool
+        """
+        return self._ReadOnly
+
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
+
 
     def _deserialize(self, params):
         self._MappingPath = params.get("MappingPath")
@@ -5311,6 +5325,7 @@ class DataConfig(AbstractModel):
         if params.get("PublicDataSource") is not None:
             self._PublicDataSource = PublicDataSourceFS()
             self._PublicDataSource._deserialize(params.get("PublicDataSource"))
+        self._ReadOnly = params.get("ReadOnly")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14113,27 +14128,30 @@ class GooseFS(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: goosefs实例id
+        :param _Id: <p>goosefs实例id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param _Type: GooseFS类型，包括GooseFS和GooseFSx
+        :param _Type: <p>GooseFS类型，包括GooseFS和GooseFSx</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _Path: GooseFSx实例需要挂载的路径
+        :param _Path: <p>GooseFSx实例需要挂载的路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param _NameSpace: GooseFS命名空间
+        :param _NameSpace: <p>GooseFS命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NameSpace: str
+        :param _MountOptions: <p>客户端的挂载参数，逗号分隔的参数名</p>
+        :type MountOptions: str
         """
         self._Id = None
         self._Type = None
         self._Path = None
         self._NameSpace = None
+        self._MountOptions = None
 
     @property
     def Id(self):
-        r"""goosefs实例id
+        r"""<p>goosefs实例id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14145,7 +14163,7 @@ class GooseFS(AbstractModel):
 
     @property
     def Type(self):
-        r"""GooseFS类型，包括GooseFS和GooseFSx
+        r"""<p>GooseFS类型，包括GooseFS和GooseFSx</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14157,7 +14175,7 @@ class GooseFS(AbstractModel):
 
     @property
     def Path(self):
-        r"""GooseFSx实例需要挂载的路径
+        r"""<p>GooseFSx实例需要挂载的路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14169,7 +14187,7 @@ class GooseFS(AbstractModel):
 
     @property
     def NameSpace(self):
-        r"""GooseFS命名空间
+        r"""<p>GooseFS命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14179,12 +14197,24 @@ class GooseFS(AbstractModel):
     def NameSpace(self, NameSpace):
         self._NameSpace = NameSpace
 
+    @property
+    def MountOptions(self):
+        r"""<p>客户端的挂载参数，逗号分隔的参数名</p>
+        :rtype: str
+        """
+        return self._MountOptions
+
+    @MountOptions.setter
+    def MountOptions(self, MountOptions):
+        self._MountOptions = MountOptions
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Type = params.get("Type")
         self._Path = params.get("Path")
         self._NameSpace = params.get("NameSpace")
+        self._MountOptions = params.get("MountOptions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14202,9 +14232,9 @@ class GooseFSx(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: goosefsx实例id
+        :param _Id: <p>goosefsx实例id</p>
         :type Id: str
-        :param _Path: GooseFSx实例需要挂载的路径
+        :param _Path: <p>GooseFSx实例需要挂载的路径</p>
         :type Path: str
         """
         self._Id = None
@@ -14212,7 +14242,7 @@ class GooseFSx(AbstractModel):
 
     @property
     def Id(self):
-        r"""goosefsx实例id
+        r"""<p>goosefsx实例id</p>
         :rtype: str
         """
         return self._Id
@@ -14223,7 +14253,7 @@ class GooseFSx(AbstractModel):
 
     @property
     def Path(self):
-        r"""GooseFSx实例需要挂载的路径
+        r"""<p>GooseFSx实例需要挂载的路径</p>
         :rtype: str
         """
         return self._Path

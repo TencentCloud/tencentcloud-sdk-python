@@ -43,6 +43,42 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCloneInstance(
+            self,
+            request: models.CreateCloneInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloneInstanceResponse:
+        """
+        本接口（CreateCloneInstance）提供创建克隆实例功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloneInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloneInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDBInstances(
+            self,
+            request: models.CreateDBInstancesRequest,
+            opts: Dict = None,
+    ) -> models.CreateDBInstancesResponse:
+        """
+        本接口（CreateDBInstances）提供批量创建实例功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDBInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDBSBackup(
             self,
             request: models.CreateDBSBackupRequest,
@@ -74,6 +110,42 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "DeleteDBSBackupSets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDBSBackupSetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBInstanceDetail(
+            self,
+            request: models.DescribeDBInstanceDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBInstanceDetailResponse:
+        """
+        本接口（DescribeDBInstanceDetail）提供查询实例详情功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBInstanceDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBInstanceDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBInstances(
+            self,
+            request: models.DescribeDBInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBInstancesResponse:
+        """
+        本接口（DescribeDBInstances）提供查询实例列表功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBInstancesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -133,6 +205,78 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBSBackupPolicy(
+            self,
+            request: models.DescribeDBSBackupPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSBackupPolicyResponse:
+        """
+        查询实例备份策略 DescribeDBSBackupPolicy
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSBackupPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSBackupPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBSBackupSets(
+            self,
+            request: models.DescribeDBSBackupSetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSBackupSetsResponse:
+        """
+        查询实例备份集信息 DescribeDBSBackupSets
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSBackupSets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSBackupSetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBSBackupStatistics(
+            self,
+            request: models.DescribeDBSBackupStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSBackupStatisticsResponse:
+        """
+        查询实例备份空间概览 DescribeDBSBackupStatistics
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSBackupStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSBackupStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBSBackupStatisticsDetail(
+            self,
+            request: models.DescribeDBSBackupStatisticsDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSBackupStatisticsDetailResponse:
+        """
+        查询备份集统计详情 DescribeDBSBackupStatisticsDetail
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSBackupStatisticsDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSBackupStatisticsDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBSCloneInstances(
             self,
             request: models.DescribeDBSCloneInstancesRequest,
@@ -187,6 +331,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDatabases(
+            self,
+            request: models.DescribeDatabasesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDatabasesResponse:
+        """
+        本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDatabases"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDatabasesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeFlow(
             self,
             request: models.DescribeFlowRequest,
@@ -205,6 +367,78 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSaleInfo(
+            self,
+            request: models.DescribeSaleInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSaleInfoResponse:
+        """
+        本接口（DescribeSaleInfo）提供查询可用售卖地域功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSaleInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSaleInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSpecs(
+            self,
+            request: models.DescribeSpecsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSpecsResponse:
+        """
+        本接口（DescribeSpecs）提供查询售卖规格功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSpecs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserPrivileges(
+            self,
+            request: models.DescribeUserPrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserPrivilegesResponse:
+        """
+        本接口（DescribeUserPrivileges）提供查询用户的权限功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserPrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserPrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUsers(
+            self,
+            request: models.DescribeUsersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUsersResponse:
+        """
+        本接口（DescribeUsers）提供查询用户列表功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DestroyInstances(
             self,
             request: models.DestroyInstancesRequest,
@@ -218,6 +452,24 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "DestroyInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DestroyInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExpandInstance(
+            self,
+            request: models.ExpandInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ExpandInstanceResponse:
+        """
+        本接口（ExpandInstance）提供横向扩容实例功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExpandInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExpandInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -344,6 +596,60 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "ModifyInstanceName"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyInstanceNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyUserPrivileges(
+            self,
+            request: models.ModifyUserPrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserPrivilegesResponse:
+        """
+        本接口(ModifyPrivileges)修改用户权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUserPrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserPrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RestartDBInstances(
+            self,
+            request: models.RestartDBInstancesRequest,
+            opts: Dict = None,
+    ) -> models.RestartDBInstancesResponse:
+        """
+        本接口（RestartDBInstances）用于重启数据库实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RestartDBInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RestartDBInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpgradeInstance(
+            self,
+            request: models.UpgradeInstanceRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeInstanceResponse:
+        """
+        本接口（UpgradeInstance）提供纵向扩容实例功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -286,9 +286,17 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
         :type KeyIds: list of str
         :param _InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
+        :param _AssociateType: 绑定类型。可选值：
+ONLINE - 在线绑定，不需要关机。
+OFFLINE - 离线绑定，会对实例进行关机。
+        :type AssociateType: str
+        :param _Username: 绑定的用户名。当 AssociateType 为 OFFLINE 时，不支持该参数。
+        :type Username: str
         """
         self._KeyIds = None
         self._InstanceIds = None
+        self._AssociateType = None
+        self._Username = None
 
     @property
     def KeyIds(self):
@@ -312,10 +320,36 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
     def InstanceIds(self, InstanceIds):
         self._InstanceIds = InstanceIds
 
+    @property
+    def AssociateType(self):
+        r"""绑定类型。可选值：
+ONLINE - 在线绑定，不需要关机。
+OFFLINE - 离线绑定，会对实例进行关机。
+        :rtype: str
+        """
+        return self._AssociateType
+
+    @AssociateType.setter
+    def AssociateType(self, AssociateType):
+        self._AssociateType = AssociateType
+
+    @property
+    def Username(self):
+        r"""绑定的用户名。当 AssociateType 为 OFFLINE 时，不支持该参数。
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
 
     def _deserialize(self, params):
         self._KeyIds = params.get("KeyIds")
         self._InstanceIds = params.get("InstanceIds")
+        self._AssociateType = params.get("AssociateType")
+        self._Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -352,6 +386,57 @@ class AssociateInstancesKeyPairsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class AssociatedInstanceInfo(AbstractModel):
+    r"""密钥对关联的实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _Username: <p>密钥对绑定的用户。</p>
+        :type Username: str
+        """
+        self._InstanceId = None
+        self._Username = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Username(self):
+        r"""<p>密钥对绑定的用户。</p>
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Username = params.get("Username")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AttachCcnRequest(AbstractModel):
@@ -9919,9 +10004,17 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
         :type KeyIds: list of str
         :param _InstanceIds: 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
         :type InstanceIds: list of str
+        :param _DisassociateType: 解绑定类型。可选值：
+ONLINE - 在线解绑定，不需要关机。
+OFFLINE - 离线解绑定，需要关机。
+        :type DisassociateType: str
+        :param _Username: 解绑定的用户名。当 DisassociateType 为 OFFLINE 时，不支持该参数。
+        :type Username: str
         """
         self._KeyIds = None
         self._InstanceIds = None
+        self._DisassociateType = None
+        self._Username = None
 
     @property
     def KeyIds(self):
@@ -9945,10 +10038,36 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
     def InstanceIds(self, InstanceIds):
         self._InstanceIds = InstanceIds
 
+    @property
+    def DisassociateType(self):
+        r"""解绑定类型。可选值：
+ONLINE - 在线解绑定，不需要关机。
+OFFLINE - 离线解绑定，需要关机。
+        :rtype: str
+        """
+        return self._DisassociateType
+
+    @DisassociateType.setter
+    def DisassociateType(self, DisassociateType):
+        self._DisassociateType = DisassociateType
+
+    @property
+    def Username(self):
+        r"""解绑定的用户名。当 DisassociateType 为 OFFLINE 时，不支持该参数。
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
 
     def _deserialize(self, params):
         self._KeyIds = params.get("KeyIds")
         self._InstanceIds = params.get("InstanceIds")
+        self._DisassociateType = params.get("DisassociateType")
+        self._Username = params.get("Username")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14991,6 +15110,8 @@ class KeyPair(AbstractModel):
         :type PublicKey: str
         :param _AssociatedInstanceIds: 密钥对关联的实例 ID 列表。
         :type AssociatedInstanceIds: list of str
+        :param _AssociatedInstanceSet: 密钥对关联的实例列表。
+        :type AssociatedInstanceSet: list of AssociatedInstanceInfo
         :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
@@ -15004,6 +15125,7 @@ class KeyPair(AbstractModel):
         self._KeyName = None
         self._PublicKey = None
         self._AssociatedInstanceIds = None
+        self._AssociatedInstanceSet = None
         self._CreatedTime = None
         self._PrivateKey = None
         self._Tags = None
@@ -15053,6 +15175,17 @@ class KeyPair(AbstractModel):
         self._AssociatedInstanceIds = AssociatedInstanceIds
 
     @property
+    def AssociatedInstanceSet(self):
+        r"""密钥对关联的实例列表。
+        :rtype: list of AssociatedInstanceInfo
+        """
+        return self._AssociatedInstanceSet
+
+    @AssociatedInstanceSet.setter
+    def AssociatedInstanceSet(self, AssociatedInstanceSet):
+        self._AssociatedInstanceSet = AssociatedInstanceSet
+
+    @property
     def CreatedTime(self):
         r"""创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15093,6 +15226,12 @@ class KeyPair(AbstractModel):
         self._KeyName = params.get("KeyName")
         self._PublicKey = params.get("PublicKey")
         self._AssociatedInstanceIds = params.get("AssociatedInstanceIds")
+        if params.get("AssociatedInstanceSet") is not None:
+            self._AssociatedInstanceSet = []
+            for item in params.get("AssociatedInstanceSet"):
+                obj = AssociatedInstanceInfo()
+                obj._deserialize(item)
+                self._AssociatedInstanceSet.append(obj)
         self._CreatedTime = params.get("CreatedTime")
         self._PrivateKey = params.get("PrivateKey")
         if params.get("Tags") is not None:

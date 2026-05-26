@@ -81,6 +81,26 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BindStorageSource(
+            self,
+            request: models.BindStorageSourceRequest,
+            opts: Dict = None,
+    ) -> models.BindStorageSourceResponse:
+        """
+        为云存储绑定外部云存储源。
+        将一个用户自有的 COS桶 作为外部存储源绑定到指定云开发环境的云存储。绑定后，该环境的云存储文件操作将指向此桶，通过 BasePath 路径前缀实现与其他环境的数据隔离。
+        每个环境仅允许绑定 1 个外部云存储源。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindStorageSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindStorageSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckTcbService(
             self,
             request: models.CheckTcbServiceRequest,
@@ -1417,6 +1437,28 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyStorageSource(
+            self,
+            request: models.ModifyStorageSourceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyStorageSourceResponse:
+        """
+        修改指定云开发环境已绑定的外部云存储源配置。
+        修改之后，大约3~5分钟生效。
+
+        注意⚠️
+        本接口仅更新存储源绑定关系，不会迁移您的数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyStorageSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyStorageSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyUser(
             self,
             request: models.ModifyUserRequest,
@@ -1526,6 +1568,28 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "SearchClsLog"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchClsLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnbindStorageSource(
+            self,
+            request: models.UnbindStorageSourceRequest,
+            opts: Dict = None,
+    ) -> models.UnbindStorageSourceResponse:
+        """
+        从指定云开发环境中解绑已绑定的外部云存储源。解绑后，该环境将不再关联外部 存储源，云存储功能恢复为未绑定状态。
+        解绑操作仅移除 CloudBase 侧的绑定关系，不会删除桶本身及桶内数据，桶仍由用户自行管理。
+
+        注意⚠️
+        解绑之后，会导致云存储不可用，请谨慎操作。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnbindStorageSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnbindStorageSourceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

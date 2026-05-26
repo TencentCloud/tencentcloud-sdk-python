@@ -55,6 +55,8 @@ class CreateProductSecretRequest(AbstractModel):
         :type AccountRemark: str
         :param _AccountType: <p>数据库账号类型，目前仅在创建sqlserver凭据场景会使用到，仅支持L3</p><p>枚举值：</p><ul><li>L3： 普通权限账号</li></ul>
         :type AccountType: str
+        :param _EncryptType: <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥</li><li>1： 软件密钥</li></ul><p>默认值：0</p>
+        :type EncryptType: int
         """
         self._SecretName = None
         self._UserNamePrefix = None
@@ -71,6 +73,7 @@ class CreateProductSecretRequest(AbstractModel):
         self._KmsHsmClusterId = None
         self._AccountRemark = None
         self._AccountType = None
+        self._EncryptType = None
 
     @property
     def SecretName(self):
@@ -237,6 +240,17 @@ class CreateProductSecretRequest(AbstractModel):
     def AccountType(self, AccountType):
         self._AccountType = AccountType
 
+    @property
+    def EncryptType(self):
+        r"""<p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥</li><li>1： 软件密钥</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
@@ -264,6 +278,7 @@ class CreateProductSecretRequest(AbstractModel):
         self._KmsHsmClusterId = params.get("KmsHsmClusterId")
         self._AccountRemark = params.get("AccountRemark")
         self._AccountType = params.get("AccountType")
+        self._EncryptType = params.get("EncryptType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -369,22 +384,22 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+        :param _SecretName: <p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。</p>
         :type SecretName: str
-        :param _ProjectId: 密钥对创建后所属的项目ID。
+        :param _ProjectId: <p>密钥对创建后所属的项目ID。</p>
         :type ProjectId: int
-        :param _Description: 描述信息，用于详细描述用途等，最大支持2048字节。
+        :param _Description: <p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
         :type Description: str
-        :param _KmsKeyId: 指定对凭据进行加密的KMS CMK。
-如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
-您也可以指定在同region 下自行创建的KMS CMK进行加密。
+        :param _KmsKeyId: <p>指定对凭据进行加密的KMS CMK。<br>如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。<br>您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
         :type KmsKeyId: str
-        :param _Tags: 标签列表。
+        :param _Tags: <p>标签列表。</p>
         :type Tags: list of Tag
-        :param _SSHKeyName: 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
+        :param _SSHKeyName: <p>用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。</p>
         :type SSHKeyName: str
-        :param _KmsHsmClusterId: KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        :param _KmsHsmClusterId: <p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
         :type KmsHsmClusterId: str
+        :param _EncryptType: <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥</li><li>1： 软件密钥</li></ul><p>默认值：0</p>
+        :type EncryptType: int
         """
         self._SecretName = None
         self._ProjectId = None
@@ -393,10 +408,11 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
         self._Tags = None
         self._SSHKeyName = None
         self._KmsHsmClusterId = None
+        self._EncryptType = None
 
     @property
     def SecretName(self):
-        r"""凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+        r"""<p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。</p>
         :rtype: str
         """
         return self._SecretName
@@ -407,7 +423,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""密钥对创建后所属的项目ID。
+        r"""<p>密钥对创建后所属的项目ID。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -418,7 +434,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息，用于详细描述用途等，最大支持2048字节。
+        r"""<p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
         :rtype: str
         """
         return self._Description
@@ -429,9 +445,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def KmsKeyId(self):
-        r"""指定对凭据进行加密的KMS CMK。
-如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
-您也可以指定在同region 下自行创建的KMS CMK进行加密。
+        r"""<p>指定对凭据进行加密的KMS CMK。<br>如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。<br>您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
         :rtype: str
         """
         return self._KmsKeyId
@@ -442,7 +456,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表。
+        r"""<p>标签列表。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -453,7 +467,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def SSHKeyName(self):
-        r"""用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
+        r"""<p>用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。</p>
         :rtype: str
         """
         return self._SSHKeyName
@@ -464,7 +478,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
 
     @property
     def KmsHsmClusterId(self):
-        r"""KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        r"""<p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
         :rtype: str
         """
         return self._KmsHsmClusterId
@@ -472,6 +486,17 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
     @KmsHsmClusterId.setter
     def KmsHsmClusterId(self, KmsHsmClusterId):
         self._KmsHsmClusterId = KmsHsmClusterId
+
+    @property
+    def EncryptType(self):
+        r"""<p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥</li><li>1： 软件密钥</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
 
 
     def _deserialize(self, params):
@@ -487,6 +512,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
                 self._Tags.append(obj)
         self._SSHKeyName = params.get("SSHKeyName")
         self._KmsHsmClusterId = params.get("KmsHsmClusterId")
+        self._EncryptType = params.get("EncryptType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -504,15 +530,15 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 创建的凭据名称。
+        :param _SecretName: <p>创建的凭据名称。</p>
         :type SecretName: str
-        :param _SSHKeyID: 创建的SSH密钥ID。
+        :param _SSHKeyID: <p>创建的SSH密钥ID。</p>
         :type SSHKeyID: str
-        :param _SSHKeyName: 创建的SSH密钥名称。
+        :param _SSHKeyName: <p>创建的SSH密钥名称。</p>
         :type SSHKeyName: str
-        :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :param _TagCode: <p>标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误</p>
         :type TagCode: int
-        :param _TagMsg: 标签操作的返回信息。
+        :param _TagMsg: <p>标签操作的返回信息。</p>
         :type TagMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -526,7 +552,7 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
-        r"""创建的凭据名称。
+        r"""<p>创建的凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -537,7 +563,7 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def SSHKeyID(self):
-        r"""创建的SSH密钥ID。
+        r"""<p>创建的SSH密钥ID。</p>
         :rtype: str
         """
         return self._SSHKeyID
@@ -548,7 +574,7 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def SSHKeyName(self):
-        r"""创建的SSH密钥名称。
+        r"""<p>创建的SSH密钥名称。</p>
         :rtype: str
         """
         return self._SSHKeyName
@@ -559,7 +585,7 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def TagCode(self):
-        r"""标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        r"""<p>标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误</p>
         :rtype: int
         """
         return self._TagCode
@@ -570,7 +596,7 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
 
     @property
     def TagMsg(self):
-        r"""标签操作的返回信息。
+        r"""<p>标签操作的返回信息。</p>
         :rtype: str
         """
         return self._TagMsg
@@ -607,26 +633,28 @@ class CreateSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
+        :param _SecretName: <p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。</p>
         :type SecretName: str
-        :param _VersionId: 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。
+        :param _VersionId: <p>凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。</p>
         :type VersionId: str
-        :param _Description: 描述信息，用于详细描述用途等，最大支持2048字节。
+        :param _Description: <p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
         :type Description: str
-        :param _KmsKeyId: 指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
+        :param _KmsKeyId: <p>指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
         :type KmsKeyId: str
-        :param _SecretType: 凭据类型，默认为0自定义凭据。
+        :param _SecretType: <p>凭据类型，默认为0自定义凭据。</p>
         :type SecretType: int
-        :param _SecretBinary: 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+        :param _SecretBinary: <p>二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。</p>
         :type SecretBinary: str
-        :param _SecretString: 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+        :param _SecretString: <p>文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。</p>
         :type SecretString: str
-        :param _AdditionalConfig: JSON 格式字符串，用于指定特定凭据类型的额外配置。
+        :param _AdditionalConfig: <p>JSON 格式字符串，用于指定特定凭据类型的额外配置。</p>
         :type AdditionalConfig: str
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
-        :param _KmsHsmClusterId: KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        :param _KmsHsmClusterId: <p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
         :type KmsHsmClusterId: str
+        :param _EncryptType: <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul>
+        :type EncryptType: int
         """
         self._SecretName = None
         self._VersionId = None
@@ -638,10 +666,11 @@ class CreateSecretRequest(AbstractModel):
         self._AdditionalConfig = None
         self._Tags = None
         self._KmsHsmClusterId = None
+        self._EncryptType = None
 
     @property
     def SecretName(self):
-        r"""凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
+        r"""<p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。</p>
         :rtype: str
         """
         return self._SecretName
@@ -652,7 +681,7 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。
+        r"""<p>凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。</p>
         :rtype: str
         """
         return self._VersionId
@@ -663,7 +692,7 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息，用于详细描述用途等，最大支持2048字节。
+        r"""<p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
         :rtype: str
         """
         return self._Description
@@ -674,7 +703,7 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def KmsKeyId(self):
-        r"""指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
+        r"""<p>指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
         :rtype: str
         """
         return self._KmsKeyId
@@ -685,7 +714,7 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretType(self):
-        r"""凭据类型，默认为0自定义凭据。
+        r"""<p>凭据类型，默认为0自定义凭据。</p>
         :rtype: int
         """
         return self._SecretType
@@ -696,7 +725,7 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretBinary(self):
-        r"""二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+        r"""<p>二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。</p>
         :rtype: str
         """
         return self._SecretBinary
@@ -707,7 +736,7 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretString(self):
-        r"""文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+        r"""<p>文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。</p>
         :rtype: str
         """
         return self._SecretString
@@ -718,7 +747,7 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def AdditionalConfig(self):
-        r"""JSON 格式字符串，用于指定特定凭据类型的额外配置。
+        r"""<p>JSON 格式字符串，用于指定特定凭据类型的额外配置。</p>
         :rtype: str
         """
         return self._AdditionalConfig
@@ -729,7 +758,7 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -740,7 +769,7 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def KmsHsmClusterId(self):
-        r"""KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        r"""<p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
         :rtype: str
         """
         return self._KmsHsmClusterId
@@ -748,6 +777,17 @@ class CreateSecretRequest(AbstractModel):
     @KmsHsmClusterId.setter
     def KmsHsmClusterId(self, KmsHsmClusterId):
         self._KmsHsmClusterId = KmsHsmClusterId
+
+    @property
+    def EncryptType(self):
+        r"""<p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul>
+        :rtype: int
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
 
 
     def _deserialize(self, params):
@@ -766,6 +806,7 @@ class CreateSecretRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._KmsHsmClusterId = params.get("KmsHsmClusterId")
+        self._EncryptType = params.get("EncryptType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -783,13 +824,13 @@ class CreateSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 新创建的凭据名称。
+        :param _SecretName: <p>新创建的凭据名称。</p>
         :type SecretName: str
-        :param _VersionId: 新创建的凭据版本。
+        :param _VersionId: <p>新创建的凭据版本。</p>
         :type VersionId: str
-        :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        :param _TagCode: <p>标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误</p>
         :type TagCode: int
-        :param _TagMsg: 标签操作的返回信息
+        :param _TagMsg: <p>标签操作的返回信息</p>
         :type TagMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -802,7 +843,7 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
-        r"""新创建的凭据名称。
+        r"""<p>新创建的凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -813,7 +854,7 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""新创建的凭据版本。
+        r"""<p>新创建的凭据版本。</p>
         :rtype: str
         """
         return self._VersionId
@@ -824,7 +865,7 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def TagCode(self):
-        r"""标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+        r"""<p>标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误</p>
         :rtype: int
         """
         return self._TagCode
@@ -835,7 +876,7 @@ class CreateSecretResponse(AbstractModel):
 
     @property
     def TagMsg(self):
-        r"""标签操作的返回信息
+        r"""<p>标签操作的返回信息</p>
         :rtype: str
         """
         return self._TagMsg
@@ -1422,14 +1463,14 @@ class DescribeSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 指定需要获取凭据详细信息的凭据名称。
+        :param _SecretName: <p>指定需要获取凭据详细信息的凭据名称。</p>
         :type SecretName: str
         """
         self._SecretName = None
 
     @property
     def SecretName(self):
-        r"""指定需要获取凭据详细信息的凭据名称。
+        r"""<p>指定需要获取凭据详细信息的凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -1458,40 +1499,44 @@ class DescribeSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据名称。
+        :param _SecretName: <p>凭据名称。</p>
         :type SecretName: str
-        :param _Description: 凭据描述信息。
+        :param _Description: <p>凭据描述信息。</p>
         :type Description: str
-        :param _KmsKeyId: 用于加密的KMS CMK ID。
+        :param _KmsKeyId: <p>用于加密的KMS CMK ID。</p>
         :type KmsKeyId: str
-        :param _CreateUin: 创建者UIN。
+        :param _CreateUin: <p>创建者UIN。</p>
         :type CreateUin: int
-        :param _Status: 凭据状态：Enabled、Disabled、PendingDelete, Creating, Failed。
+        :param _Status: <p>凭据状态：Enabled、Disabled、PendingDelete, Creating, Failed。</p>
         :type Status: str
-        :param _DeleteTime: 删除日期，uinx 时间戳，非计划删除状态的凭据为0。
+        :param _DeleteTime: <p>删除日期，uinx 时间戳，非计划删除状态的凭据为0。</p>
         :type DeleteTime: int
-        :param _CreateTime: 创建日期。
+        :param _CreateTime: <p>创建日期。</p>
         :type CreateTime: int
-        :param _SecretType: 0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型；3 -- 云API密钥（AKSK）凭据类型（使用此功能需要联系云助手单独开启白名单）；4 -- Redis类型凭据。
+        :param _SecretType: <p>0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型；3 -- 云API密钥（AKSK）凭据类型（使用此功能需要联系云助手单独开启白名单）；4 -- Redis类型凭据。</p>
         :type SecretType: int
-        :param _ProductName: 云产品名称。
+        :param _ProductName: <p>云产品名称。</p>
         :type ProductName: str
-        :param _ResourceID: 云产品实例ID。
+        :param _ResourceID: <p>云产品实例ID。</p>
         :type ResourceID: str
-        :param _RotationStatus: 是否开启轮转：True -- 开启轮转；False -- 关闭轮转。
+        :param _RotationStatus: <p>是否开启轮转：True -- 开启轮转；False -- 关闭轮转。</p>
         :type RotationStatus: bool
-        :param _RotationFrequency: 轮转周期，默认以天为单位。
+        :param _RotationFrequency: <p>轮转周期，默认以天为单位。</p>
         :type RotationFrequency: int
-        :param _ResourceName: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+        :param _ResourceName: <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。</p>
         :type ResourceName: str
-        :param _ProjectID: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+        :param _ProjectID: <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。</p>
         :type ProjectID: int
-        :param _AssociatedInstanceIDs: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+        :param _AssociatedInstanceIDs: <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。</p>
         :type AssociatedInstanceIDs: list of str
-        :param _TargetUin: 当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
+        :param _TargetUin: <p>当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。</p>
         :type TargetUin: int
-        :param _AdditionalConfig: 凭据额外配置
+        :param _AdditionalConfig: <p>凭据额外配置</p>
         :type AdditionalConfig: str
+        :param _EncryptType: <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+        :type EncryptType: int
+        :param _EncryptSwitching: <p>凭据更新状态</p>
+        :type EncryptSwitching: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1512,11 +1557,13 @@ class DescribeSecretResponse(AbstractModel):
         self._AssociatedInstanceIDs = None
         self._TargetUin = None
         self._AdditionalConfig = None
+        self._EncryptType = None
+        self._EncryptSwitching = None
         self._RequestId = None
 
     @property
     def SecretName(self):
-        r"""凭据名称。
+        r"""<p>凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -1527,7 +1574,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""凭据描述信息。
+        r"""<p>凭据描述信息。</p>
         :rtype: str
         """
         return self._Description
@@ -1538,7 +1585,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def KmsKeyId(self):
-        r"""用于加密的KMS CMK ID。
+        r"""<p>用于加密的KMS CMK ID。</p>
         :rtype: str
         """
         return self._KmsKeyId
@@ -1549,7 +1596,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建者UIN。
+        r"""<p>创建者UIN。</p>
         :rtype: int
         """
         return self._CreateUin
@@ -1560,7 +1607,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""凭据状态：Enabled、Disabled、PendingDelete, Creating, Failed。
+        r"""<p>凭据状态：Enabled、Disabled、PendingDelete, Creating, Failed。</p>
         :rtype: str
         """
         return self._Status
@@ -1571,7 +1618,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def DeleteTime(self):
-        r"""删除日期，uinx 时间戳，非计划删除状态的凭据为0。
+        r"""<p>删除日期，uinx 时间戳，非计划删除状态的凭据为0。</p>
         :rtype: int
         """
         return self._DeleteTime
@@ -1582,7 +1629,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建日期。
+        r"""<p>创建日期。</p>
         :rtype: int
         """
         return self._CreateTime
@@ -1593,7 +1640,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def SecretType(self):
-        r"""0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型；3 -- 云API密钥（AKSK）凭据类型（使用此功能需要联系云助手单独开启白名单）；4 -- Redis类型凭据。
+        r"""<p>0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型；3 -- 云API密钥（AKSK）凭据类型（使用此功能需要联系云助手单独开启白名单）；4 -- Redis类型凭据。</p>
         :rtype: int
         """
         return self._SecretType
@@ -1604,7 +1651,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def ProductName(self):
-        r"""云产品名称。
+        r"""<p>云产品名称。</p>
         :rtype: str
         """
         return self._ProductName
@@ -1615,7 +1662,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def ResourceID(self):
-        r"""云产品实例ID。
+        r"""<p>云产品实例ID。</p>
         :rtype: str
         """
         return self._ResourceID
@@ -1626,7 +1673,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def RotationStatus(self):
-        r"""是否开启轮转：True -- 开启轮转；False -- 关闭轮转。
+        r"""<p>是否开启轮转：True -- 开启轮转；False -- 关闭轮转。</p>
         :rtype: bool
         """
         return self._RotationStatus
@@ -1637,7 +1684,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def RotationFrequency(self):
-        r"""轮转周期，默认以天为单位。
+        r"""<p>轮转周期，默认以天为单位。</p>
         :rtype: int
         """
         return self._RotationFrequency
@@ -1648,7 +1695,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+        r"""<p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。</p>
         :rtype: str
         """
         return self._ResourceName
@@ -1659,7 +1706,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def ProjectID(self):
-        r"""当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+        r"""<p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。</p>
         :rtype: int
         """
         return self._ProjectID
@@ -1670,7 +1717,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def AssociatedInstanceIDs(self):
-        r"""当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+        r"""<p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。</p>
         :rtype: list of str
         """
         return self._AssociatedInstanceIDs
@@ -1681,7 +1728,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def TargetUin(self):
-        r"""当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
+        r"""<p>当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。</p>
         :rtype: int
         """
         return self._TargetUin
@@ -1692,7 +1739,7 @@ class DescribeSecretResponse(AbstractModel):
 
     @property
     def AdditionalConfig(self):
-        r"""凭据额外配置
+        r"""<p>凭据额外配置</p>
         :rtype: str
         """
         return self._AdditionalConfig
@@ -1700,6 +1747,28 @@ class DescribeSecretResponse(AbstractModel):
     @AdditionalConfig.setter
     def AdditionalConfig(self, AdditionalConfig):
         self._AdditionalConfig = AdditionalConfig
+
+    @property
+    def EncryptType(self):
+        r"""<p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
+
+    @property
+    def EncryptSwitching(self):
+        r"""<p>凭据更新状态</p>
+        :rtype: bool
+        """
+        return self._EncryptSwitching
+
+    @EncryptSwitching.setter
+    def EncryptSwitching(self, EncryptSwitching):
+        self._EncryptSwitching = EncryptSwitching
 
     @property
     def RequestId(self):
@@ -1731,6 +1800,8 @@ class DescribeSecretResponse(AbstractModel):
         self._AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
         self._TargetUin = params.get("TargetUin")
         self._AdditionalConfig = params.get("AdditionalConfig")
+        self._EncryptType = params.get("EncryptType")
+        self._EncryptSwitching = params.get("EncryptSwitching")
         self._RequestId = params.get("RequestId")
 
 
@@ -2625,37 +2696,24 @@ class ListSecretsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 查询列表的起始位置，以0开始，不设置默认为0。
+        :param _Offset: <p>查询列表的起始位置，以0开始，不设置默认为0。</p>
         :type Offset: int
-        :param _Limit: 单次查询返回的最大数量，0或不设置则使用默认值 20。
+        :param _Limit: <p>单次查询返回的最大数量，0或不设置则使用默认值 20。</p>
         :type Limit: int
-        :param _OrderType: 根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。
+        :param _OrderType: <p>根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。</p>
         :type OrderType: int
-        :param _State: 根据凭据状态进行过滤。
-默认为0表示查询全部。
-1 --  表示查询Enabled 凭据列表。
-2 --  表示查询Disabled 凭据列表。
-3 --  表示查询PendingDelete 凭据列表。
-4 --  表示PendingCreate。
-5 --  表示CreateFailed。
-其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效
+        :param _State: <p>根据凭据状态进行过滤。<br>默认为0表示查询全部。<br>1 --  表示查询Enabled 凭据列表。<br>2 --  表示查询Disabled 凭据列表。<br>3 --  表示查询PendingDelete 凭据列表。<br>4 --  表示PendingCreate。<br>5 --  表示CreateFailed。<br>其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效</p>
         :type State: int
-        :param _SearchSecretName: 根据凭据名称进行过滤，为空表示不过滤。
+        :param _SearchSecretName: <p>根据凭据名称进行过滤，为空表示不过滤。</p>
         :type SearchSecretName: str
-        :param _TagFilters: 标签过滤条件。
+        :param _TagFilters: <p>标签过滤条件。</p>
         :type TagFilters: list of TagFilter
-        :param _SecretType: 0  -- 表示用户自定义凭据，默认为0。
-1  -- 表示用户云产品凭据。
-2 -- 表示SSH密钥对凭据。
-3 -- 表示云API密钥对凭据。
+        :param _SecretType: <p>0  -- 表示用户自定义凭据，默认为0。<br>1  -- 表示用户云产品凭据。<br>2 -- 表示SSH密钥对凭据。<br>3 -- 表示云API密钥对凭据。</p>
         :type SecretType: int
-        :param _ProductName: 此参数仅在SecretType参数值为1时生效，
-当SecretType值为1时：
-如果ProductName值为空，则表示查询所有类型的云产品凭据；
-如果ProductName值为某个指定的云产品值如Mysql时，则表示查询Mysql数据库凭据；
-如果ProductName值为多个云产品值，如：Mysql,Tdsql-mysql,Tdsql_C_Mysql（多个值以英文逗号,分隔开）则表示查询三种云产品类型的凭据；
-支持的云产品列表请通过接口：DescribeSupportedProducts进行查询。
+        :param _ProductName: <p>此参数仅在SecretType参数值为1时生效，<br>当SecretType值为1时：<br>如果ProductName值为空，则表示查询所有类型的云产品凭据；<br>如果ProductName值为某个指定的云产品值如Mysql时，则表示查询Mysql数据库凭据；<br>如果ProductName值为多个云产品值，如：Mysql,Tdsql-mysql,Tdsql_C_Mysql（多个值以英文逗号,分隔开）则表示查询三种云产品类型的凭据；<br>支持的云产品列表请通过接口：DescribeSupportedProducts进行查询。</p>
         :type ProductName: str
+        :param _EncryptType: <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+        :type EncryptType: int
         """
         self._Offset = None
         self._Limit = None
@@ -2665,10 +2723,11 @@ class ListSecretsRequest(AbstractModel):
         self._TagFilters = None
         self._SecretType = None
         self._ProductName = None
+        self._EncryptType = None
 
     @property
     def Offset(self):
-        r"""查询列表的起始位置，以0开始，不设置默认为0。
+        r"""<p>查询列表的起始位置，以0开始，不设置默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -2679,7 +2738,7 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次查询返回的最大数量，0或不设置则使用默认值 20。
+        r"""<p>单次查询返回的最大数量，0或不设置则使用默认值 20。</p>
         :rtype: int
         """
         return self._Limit
@@ -2690,7 +2749,7 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。
+        r"""<p>根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。</p>
         :rtype: int
         """
         return self._OrderType
@@ -2701,14 +2760,7 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def State(self):
-        r"""根据凭据状态进行过滤。
-默认为0表示查询全部。
-1 --  表示查询Enabled 凭据列表。
-2 --  表示查询Disabled 凭据列表。
-3 --  表示查询PendingDelete 凭据列表。
-4 --  表示PendingCreate。
-5 --  表示CreateFailed。
-其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效
+        r"""<p>根据凭据状态进行过滤。<br>默认为0表示查询全部。<br>1 --  表示查询Enabled 凭据列表。<br>2 --  表示查询Disabled 凭据列表。<br>3 --  表示查询PendingDelete 凭据列表。<br>4 --  表示PendingCreate。<br>5 --  表示CreateFailed。<br>其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效</p>
         :rtype: int
         """
         return self._State
@@ -2719,7 +2771,7 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def SearchSecretName(self):
-        r"""根据凭据名称进行过滤，为空表示不过滤。
+        r"""<p>根据凭据名称进行过滤，为空表示不过滤。</p>
         :rtype: str
         """
         return self._SearchSecretName
@@ -2730,7 +2782,7 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""标签过滤条件。
+        r"""<p>标签过滤条件。</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -2741,10 +2793,7 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def SecretType(self):
-        r"""0  -- 表示用户自定义凭据，默认为0。
-1  -- 表示用户云产品凭据。
-2 -- 表示SSH密钥对凭据。
-3 -- 表示云API密钥对凭据。
+        r"""<p>0  -- 表示用户自定义凭据，默认为0。<br>1  -- 表示用户云产品凭据。<br>2 -- 表示SSH密钥对凭据。<br>3 -- 表示云API密钥对凭据。</p>
         :rtype: int
         """
         return self._SecretType
@@ -2755,12 +2804,7 @@ class ListSecretsRequest(AbstractModel):
 
     @property
     def ProductName(self):
-        r"""此参数仅在SecretType参数值为1时生效，
-当SecretType值为1时：
-如果ProductName值为空，则表示查询所有类型的云产品凭据；
-如果ProductName值为某个指定的云产品值如Mysql时，则表示查询Mysql数据库凭据；
-如果ProductName值为多个云产品值，如：Mysql,Tdsql-mysql,Tdsql_C_Mysql（多个值以英文逗号,分隔开）则表示查询三种云产品类型的凭据；
-支持的云产品列表请通过接口：DescribeSupportedProducts进行查询。
+        r"""<p>此参数仅在SecretType参数值为1时生效，<br>当SecretType值为1时：<br>如果ProductName值为空，则表示查询所有类型的云产品凭据；<br>如果ProductName值为某个指定的云产品值如Mysql时，则表示查询Mysql数据库凭据；<br>如果ProductName值为多个云产品值，如：Mysql,Tdsql-mysql,Tdsql_C_Mysql（多个值以英文逗号,分隔开）则表示查询三种云产品类型的凭据；<br>支持的云产品列表请通过接口：DescribeSupportedProducts进行查询。</p>
         :rtype: str
         """
         return self._ProductName
@@ -2768,6 +2812,17 @@ class ListSecretsRequest(AbstractModel):
     @ProductName.setter
     def ProductName(self, ProductName):
         self._ProductName = ProductName
+
+    @property
+    def EncryptType(self):
+        r"""<p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
 
 
     def _deserialize(self, params):
@@ -2784,6 +2839,7 @@ class ListSecretsRequest(AbstractModel):
                 self._TagFilters.append(obj)
         self._SecretType = params.get("SecretType")
         self._ProductName = params.get("ProductName")
+        self._EncryptType = params.get("EncryptType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2801,9 +2857,9 @@ class ListSecretsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 根据State和SearchSecretName 筛选的凭据总数。
+        :param _TotalCount: <p>根据State和SearchSecretName 筛选的凭据总数。</p>
         :type TotalCount: int
-        :param _SecretMetadatas: 返回凭据信息列表。
+        :param _SecretMetadatas: <p>返回凭据信息列表。</p>
         :type SecretMetadatas: list of SecretMetadata
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2814,7 +2870,7 @@ class ListSecretsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""根据State和SearchSecretName 筛选的凭据总数。
+        r"""<p>根据State和SearchSecretName 筛选的凭据总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2825,7 +2881,7 @@ class ListSecretsResponse(AbstractModel):
 
     @property
     def SecretMetadatas(self):
-        r"""返回凭据信息列表。
+        r"""<p>返回凭据信息列表。</p>
         :rtype: list of SecretMetadata
         """
         return self._SecretMetadatas
@@ -3428,48 +3484,48 @@ class SecretMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据名称
+        :param _SecretName: <p>凭据名称</p>
         :type SecretName: str
-        :param _Description: 凭据的描述信息
+        :param _Description: <p>凭据的描述信息</p>
         :type Description: str
-        :param _KmsKeyId: 用于加密凭据的KMS KeyId
+        :param _KmsKeyId: <p>用于加密凭据的KMS KeyId</p>
         :type KmsKeyId: str
-        :param _CreateUin: 创建者UIN
+        :param _CreateUin: <p>创建者UIN</p>
         :type CreateUin: int
-        :param _Status: 凭据状态：Enabled、Disabled、PendingDelete、Creating、Failed
+        :param _Status: <p>凭据状态：Enabled、Disabled、PendingDelete、Creating、Failed</p>
         :type Status: str
-        :param _DeleteTime: 凭据删除日期，对于status为PendingDelete 的有效，unix时间戳
+        :param _DeleteTime: <p>凭据删除日期，对于status为PendingDelete 的有效，unix时间戳</p>
         :type DeleteTime: int
-        :param _CreateTime: 凭据创建时间，unix时间戳
+        :param _CreateTime: <p>凭据创建时间，unix时间戳</p>
         :type CreateTime: int
-        :param _KmsKeyType: 用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥
+        :param _KmsKeyType: <p>用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥</p>
         :type KmsKeyType: str
-        :param _RotationStatus: 1:--开启轮转；0--禁止轮转
+        :param _RotationStatus: <p>1:--开启轮转；0--禁止轮转</p>
         :type RotationStatus: int
-        :param _NextRotationTime: 下一次轮转开始时间，uinx 时间戳
+        :param _NextRotationTime: <p>下一次轮转开始时间，uinx 时间戳</p>
         :type NextRotationTime: int
-        :param _SecretType: 0 -- 用户自定义凭据；
-1 -- 云产品凭据；
-2 -- SSH密钥对凭据；
-3 -- 云API密钥对凭据；
-4 -- Redis类型凭据；
+        :param _SecretType: <p>0 -- 用户自定义凭据；<br>1 -- 云产品凭据；<br>2 -- SSH密钥对凭据；<br>3 -- 云API密钥对凭据；<br>4 -- Redis类型凭据；</p>
         :type SecretType: int
-        :param _ProductName: 云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效
+        :param _ProductName: <p>云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效</p>
         :type ProductName: str
-        :param _ResourceName: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+        :param _ResourceName: <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。</p>
         :type ResourceName: str
-        :param _ProjectID: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+        :param _ProjectID: <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。</p>
         :type ProjectID: int
-        :param _AssociatedInstanceIDs: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+        :param _AssociatedInstanceIDs: <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。</p>
         :type AssociatedInstanceIDs: list of str
-        :param _TargetUin: 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
+        :param _TargetUin: <p>当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。</p>
         :type TargetUin: int
-        :param _RotationFrequency: 轮转的频率，以天作为单位，在轮转开启状态下生效。
+        :param _RotationFrequency: <p>轮转的频率，以天作为单位，在轮转开启状态下生效。</p>
         :type RotationFrequency: int
-        :param _ResourceID: 云产品凭据对应的云产品实例 ID 号。
+        :param _ResourceID: <p>云产品凭据对应的云产品实例 ID 号。</p>
         :type ResourceID: str
-        :param _RotationBeginTime: 用户指定的轮转开始时间。
+        :param _RotationBeginTime: <p>用户指定的轮转开始时间。</p>
         :type RotationBeginTime: str
+        :param _EncryptType: <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+        :type EncryptType: int
+        :param _EncryptSwitching: <p>凭据密钥加密切换中</p>
+        :type EncryptSwitching: bool
         """
         self._SecretName = None
         self._Description = None
@@ -3490,10 +3546,12 @@ class SecretMetadata(AbstractModel):
         self._RotationFrequency = None
         self._ResourceID = None
         self._RotationBeginTime = None
+        self._EncryptType = None
+        self._EncryptSwitching = None
 
     @property
     def SecretName(self):
-        r"""凭据名称
+        r"""<p>凭据名称</p>
         :rtype: str
         """
         return self._SecretName
@@ -3504,7 +3562,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def Description(self):
-        r"""凭据的描述信息
+        r"""<p>凭据的描述信息</p>
         :rtype: str
         """
         return self._Description
@@ -3515,7 +3573,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def KmsKeyId(self):
-        r"""用于加密凭据的KMS KeyId
+        r"""<p>用于加密凭据的KMS KeyId</p>
         :rtype: str
         """
         return self._KmsKeyId
@@ -3526,7 +3584,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建者UIN
+        r"""<p>创建者UIN</p>
         :rtype: int
         """
         return self._CreateUin
@@ -3537,7 +3595,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def Status(self):
-        r"""凭据状态：Enabled、Disabled、PendingDelete、Creating、Failed
+        r"""<p>凭据状态：Enabled、Disabled、PendingDelete、Creating、Failed</p>
         :rtype: str
         """
         return self._Status
@@ -3548,7 +3606,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def DeleteTime(self):
-        r"""凭据删除日期，对于status为PendingDelete 的有效，unix时间戳
+        r"""<p>凭据删除日期，对于status为PendingDelete 的有效，unix时间戳</p>
         :rtype: int
         """
         return self._DeleteTime
@@ -3559,7 +3617,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""凭据创建时间，unix时间戳
+        r"""<p>凭据创建时间，unix时间戳</p>
         :rtype: int
         """
         return self._CreateTime
@@ -3570,7 +3628,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def KmsKeyType(self):
-        r"""用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥
+        r"""<p>用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥</p>
         :rtype: str
         """
         return self._KmsKeyType
@@ -3581,7 +3639,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def RotationStatus(self):
-        r"""1:--开启轮转；0--禁止轮转
+        r"""<p>1:--开启轮转；0--禁止轮转</p>
         :rtype: int
         """
         return self._RotationStatus
@@ -3592,7 +3650,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def NextRotationTime(self):
-        r"""下一次轮转开始时间，uinx 时间戳
+        r"""<p>下一次轮转开始时间，uinx 时间戳</p>
         :rtype: int
         """
         return self._NextRotationTime
@@ -3603,11 +3661,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def SecretType(self):
-        r"""0 -- 用户自定义凭据；
-1 -- 云产品凭据；
-2 -- SSH密钥对凭据；
-3 -- 云API密钥对凭据；
-4 -- Redis类型凭据；
+        r"""<p>0 -- 用户自定义凭据；<br>1 -- 云产品凭据；<br>2 -- SSH密钥对凭据；<br>3 -- 云API密钥对凭据；<br>4 -- Redis类型凭据；</p>
         :rtype: int
         """
         return self._SecretType
@@ -3618,7 +3672,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def ProductName(self):
-        r"""云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效
+        r"""<p>云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效</p>
         :rtype: str
         """
         return self._ProductName
@@ -3629,7 +3683,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+        r"""<p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。</p>
         :rtype: str
         """
         return self._ResourceName
@@ -3640,7 +3694,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def ProjectID(self):
-        r"""当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+        r"""<p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。</p>
         :rtype: int
         """
         return self._ProjectID
@@ -3651,7 +3705,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def AssociatedInstanceIDs(self):
-        r"""当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+        r"""<p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。</p>
         :rtype: list of str
         """
         return self._AssociatedInstanceIDs
@@ -3662,7 +3716,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def TargetUin(self):
-        r"""当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
+        r"""<p>当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。</p>
         :rtype: int
         """
         return self._TargetUin
@@ -3673,7 +3727,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def RotationFrequency(self):
-        r"""轮转的频率，以天作为单位，在轮转开启状态下生效。
+        r"""<p>轮转的频率，以天作为单位，在轮转开启状态下生效。</p>
         :rtype: int
         """
         return self._RotationFrequency
@@ -3684,7 +3738,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def ResourceID(self):
-        r"""云产品凭据对应的云产品实例 ID 号。
+        r"""<p>云产品凭据对应的云产品实例 ID 号。</p>
         :rtype: str
         """
         return self._ResourceID
@@ -3695,7 +3749,7 @@ class SecretMetadata(AbstractModel):
 
     @property
     def RotationBeginTime(self):
-        r"""用户指定的轮转开始时间。
+        r"""<p>用户指定的轮转开始时间。</p>
         :rtype: str
         """
         return self._RotationBeginTime
@@ -3703,6 +3757,28 @@ class SecretMetadata(AbstractModel):
     @RotationBeginTime.setter
     def RotationBeginTime(self, RotationBeginTime):
         self._RotationBeginTime = RotationBeginTime
+
+    @property
+    def EncryptType(self):
+        r"""<p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
+
+    @property
+    def EncryptSwitching(self):
+        r"""<p>凭据密钥加密切换中</p>
+        :rtype: bool
+        """
+        return self._EncryptSwitching
+
+    @EncryptSwitching.setter
+    def EncryptSwitching(self, EncryptSwitching):
+        self._EncryptSwitching = EncryptSwitching
 
 
     def _deserialize(self, params):
@@ -3725,6 +3801,8 @@ class SecretMetadata(AbstractModel):
         self._RotationFrequency = params.get("RotationFrequency")
         self._ResourceID = params.get("ResourceID")
         self._RotationBeginTime = params.get("RotationBeginTime")
+        self._EncryptType = params.get("EncryptType")
+        self._EncryptSwitching = params.get("EncryptSwitching")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

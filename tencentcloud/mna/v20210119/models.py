@@ -1423,6 +1423,60 @@ class DeleteL3ConnResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAccessRegionsRequest(AbstractModel):
+    r"""DescribeAccessRegions请求参数结构体
+
+    """
+
+
+class DescribeAccessRegionsResponse(AbstractModel):
+    r"""DescribeAccessRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionList: <p>地域信息列表</p>
+        :type RegionList: list of RegionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegionList = None
+        self._RequestId = None
+
+    @property
+    def RegionList(self):
+        r"""<p>地域信息列表</p>
+        :rtype: list of RegionInfo
+        """
+        return self._RegionList
+
+    @RegionList.setter
+    def RegionList(self, RegionList):
+        self._RegionList = RegionList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RegionList") is not None:
+            self._RegionList = []
+            for item in params.get("RegionList"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self._RegionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DestIpInfo(AbstractModel):
     r"""目标IP信息
 
@@ -7434,6 +7488,85 @@ class L3ConnInfo(AbstractModel):
         
 
 
+class ModifyDeviceAccessRegionsRequest(AbstractModel):
+    r"""ModifyDeviceAccessRegions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceIds: <p>设备ID</p>
+        :type DeviceIds: list of str
+        :param _AllowedRegions: <p>接入地域</p>
+        :type AllowedRegions: list of str
+        """
+        self._DeviceIds = None
+        self._AllowedRegions = None
+
+    @property
+    def DeviceIds(self):
+        r"""<p>设备ID</p>
+        :rtype: list of str
+        """
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+    @property
+    def AllowedRegions(self):
+        r"""<p>接入地域</p>
+        :rtype: list of str
+        """
+        return self._AllowedRegions
+
+    @AllowedRegions.setter
+    def AllowedRegions(self, AllowedRegions):
+        self._AllowedRegions = AllowedRegions
+
+
+    def _deserialize(self, params):
+        self._DeviceIds = params.get("DeviceIds")
+        self._AllowedRegions = params.get("AllowedRegions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceAccessRegionsResponse(AbstractModel):
+    r"""ModifyDeviceAccessRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyPackageRenewFlagRequest(AbstractModel):
     r"""ModifyPackageRenewFlag请求参数结构体
 
@@ -8084,6 +8217,72 @@ class OrderPerLicenseResponse(AbstractModel):
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
         self._RequestId = params.get("RequestId")
+
+
+class RegionInfo(AbstractModel):
+    r"""此数据结构用来展示可用地域信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: <p>地域 ID。</p>
+        :type RegionId: str
+        :param _RegionName: <p>地域名称。</p>
+        :type RegionName: str
+        :param _RegionAbbr: <p>地域英文缩写。</p>
+        :type RegionAbbr: str
+        """
+        self._RegionId = None
+        self._RegionName = None
+        self._RegionAbbr = None
+
+    @property
+    def RegionId(self):
+        r"""<p>地域 ID。</p>
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        r"""<p>地域名称。</p>
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def RegionAbbr(self):
+        r"""<p>地域英文缩写。</p>
+        :rtype: str
+        """
+        return self._RegionAbbr
+
+    @RegionAbbr.setter
+    def RegionAbbr(self, RegionAbbr):
+        self._RegionAbbr = RegionAbbr
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._RegionAbbr = params.get("RegionAbbr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ReportOrderRequest(AbstractModel):

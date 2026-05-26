@@ -3665,52 +3665,42 @@ class CasterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CasterId: 导播台ID
+        :param _CasterId: <p>导播台ID</p>
         :type CasterId: int
-        :param _CasterName: 导播台名称
+        :param _CasterName: <p>导播台名称</p>
         :type CasterName: str
-        :param _StartLiveTime: 导播台上一次启动pgm的时间，值为unix时间戳。
+        :param _StartLiveTime: <p>导播台上一次启动pgm的时间，值为unix时间戳。</p>
         :type StartLiveTime: int
-        :param _Description: 导播台的描述
+        :param _Description: <p>导播台的描述</p>
         :type Description: str
-        :param _CreateTime: 导播台创建时间，值为unix时间戳。
+        :param _CreateTime: <p>导播台创建时间，值为unix时间戳。</p>
         :type CreateTime: int
-        :param _Status: 导播台状态 
-0：停止状态，无预监，无主监
-1：无预监，有主监
-2：有预监，无主监
-3：有预监，有主监
+        :param _Status: <p>导播台状态<br>0：停止状态，无预监，无主监<br>1：无预监，有主监<br>2：有预监，无主监<br>3：有预监，有主监</p>
         :type Status: int
-        :param _ExpireTime: 导播台的过期时间戳。值为-1或unix时间戳。 
-默认值为-1。 当值为-1时，表示该导播台永不过期。 
-当值为正常unix时间戳时，导播台将在该时间过期。 
-导播台过期后，预监与主监画面将自动停止，转推自动停止。 
-点播、直播url将停止转拉，推流url需自行停止推流。
+        :param _ExpireTime: <p>导播台的过期时间戳。值为-1或unix时间戳。<br>默认值为-1。 当值为-1时，表示该导播台永不过期。<br>当值为正常unix时间戳时，导播台将在该时间过期。<br>导播台过期后，预监与主监画面将自动停止，转推自动停止。<br>点播、直播url将停止转拉，推流url需自行停止推流。</p>
         :type ExpireTime: int
-        :param _DelayTime: 导播台延时播放时间，单位为秒。 
+        :param _DelayTime: <p>导播台延时播放时间，单位为秒。</p>
         :type DelayTime: int
-        :param _PgmWidth: 导播台主监输出的宽度，单位为像素。
+        :param _PgmWidth: <p>导播台主监输出的宽度，单位为像素。</p>
         :type PgmWidth: int
-        :param _PgmHeight: 导播台主监输出的高度，单位为像素。
+        :param _PgmHeight: <p>导播台主监输出的高度，单位为像素。</p>
         :type PgmHeight: int
-        :param _PgmFps: 导播台主监输出的帧率。
+        :param _PgmFps: <p>导播台主监输出的帧率。</p>
         :type PgmFps: int
-        :param _PgmBitRate: 导播台主监输出的码率，单位为kbps
+        :param _PgmBitRate: <p>导播台主监输出的码率，单位为kbps</p>
         :type PgmBitRate: int
-        :param _PgmAudioBitRate: 导播台主监输出的音频码率，单位为kbps。
+        :param _PgmAudioBitRate: <p>导播台主监输出的音频码率，单位为kbps。</p>
         :type PgmAudioBitRate: int
-        :param _FeeType: 导播台的计费类型。 
-0 通用型 1 播单型。
-注： 本参数暂无作用。
+        :param _FeeType: <p>导播台的计费类型。<br>0 通用型 1 播单型。<br>注： 本参数暂无作用。</p>
         :type FeeType: int
-        :param _RecordTemplateId: 录制模板id。
+        :param _RecordTemplateId: <p>录制模板id。</p>
         :type RecordTemplateId: int
-        :param _RecordStatus: 录制状态。 
-0：未录制 
-1：录制中
+        :param _RecordStatus: <p>录制状态。<br>0：未录制<br>1：录制中</p>
         :type RecordStatus: int
-        :param _RecordTaskId: 录制接口返回的taskid
+        :param _RecordTaskId: <p>录制接口返回的taskid</p>
         :type RecordTaskId: str
+        :param _PgmVcodec: <p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+        :type PgmVcodec: str
         """
         self._CasterId = None
         self._CasterName = None
@@ -3729,10 +3719,11 @@ class CasterInfo(AbstractModel):
         self._RecordTemplateId = None
         self._RecordStatus = None
         self._RecordTaskId = None
+        self._PgmVcodec = None
 
     @property
     def CasterId(self):
-        r"""导播台ID
+        r"""<p>导播台ID</p>
         :rtype: int
         """
         return self._CasterId
@@ -3743,7 +3734,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def CasterName(self):
-        r"""导播台名称
+        r"""<p>导播台名称</p>
         :rtype: str
         """
         return self._CasterName
@@ -3754,7 +3745,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def StartLiveTime(self):
-        r"""导播台上一次启动pgm的时间，值为unix时间戳。
+        r"""<p>导播台上一次启动pgm的时间，值为unix时间戳。</p>
         :rtype: int
         """
         return self._StartLiveTime
@@ -3765,7 +3756,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""导播台的描述
+        r"""<p>导播台的描述</p>
         :rtype: str
         """
         return self._Description
@@ -3776,7 +3767,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""导播台创建时间，值为unix时间戳。
+        r"""<p>导播台创建时间，值为unix时间戳。</p>
         :rtype: int
         """
         return self._CreateTime
@@ -3787,11 +3778,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""导播台状态 
-0：停止状态，无预监，无主监
-1：无预监，有主监
-2：有预监，无主监
-3：有预监，有主监
+        r"""<p>导播台状态<br>0：停止状态，无预监，无主监<br>1：无预监，有主监<br>2：有预监，无主监<br>3：有预监，有主监</p>
         :rtype: int
         """
         return self._Status
@@ -3802,11 +3789,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""导播台的过期时间戳。值为-1或unix时间戳。 
-默认值为-1。 当值为-1时，表示该导播台永不过期。 
-当值为正常unix时间戳时，导播台将在该时间过期。 
-导播台过期后，预监与主监画面将自动停止，转推自动停止。 
-点播、直播url将停止转拉，推流url需自行停止推流。
+        r"""<p>导播台的过期时间戳。值为-1或unix时间戳。<br>默认值为-1。 当值为-1时，表示该导播台永不过期。<br>当值为正常unix时间戳时，导播台将在该时间过期。<br>导播台过期后，预监与主监画面将自动停止，转推自动停止。<br>点播、直播url将停止转拉，推流url需自行停止推流。</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -3817,7 +3800,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""导播台延时播放时间，单位为秒。 
+        r"""<p>导播台延时播放时间，单位为秒。</p>
         :rtype: int
         """
         return self._DelayTime
@@ -3828,7 +3811,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmWidth(self):
-        r"""导播台主监输出的宽度，单位为像素。
+        r"""<p>导播台主监输出的宽度，单位为像素。</p>
         :rtype: int
         """
         return self._PgmWidth
@@ -3839,7 +3822,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmHeight(self):
-        r"""导播台主监输出的高度，单位为像素。
+        r"""<p>导播台主监输出的高度，单位为像素。</p>
         :rtype: int
         """
         return self._PgmHeight
@@ -3850,7 +3833,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmFps(self):
-        r"""导播台主监输出的帧率。
+        r"""<p>导播台主监输出的帧率。</p>
         :rtype: int
         """
         return self._PgmFps
@@ -3861,7 +3844,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmBitRate(self):
-        r"""导播台主监输出的码率，单位为kbps
+        r"""<p>导播台主监输出的码率，单位为kbps</p>
         :rtype: int
         """
         return self._PgmBitRate
@@ -3872,7 +3855,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def PgmAudioBitRate(self):
-        r"""导播台主监输出的音频码率，单位为kbps。
+        r"""<p>导播台主监输出的音频码率，单位为kbps。</p>
         :rtype: int
         """
         return self._PgmAudioBitRate
@@ -3883,9 +3866,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def FeeType(self):
-        r"""导播台的计费类型。 
-0 通用型 1 播单型。
-注： 本参数暂无作用。
+        r"""<p>导播台的计费类型。<br>0 通用型 1 播单型。<br>注： 本参数暂无作用。</p>
         :rtype: int
         """
         return self._FeeType
@@ -3896,7 +3877,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def RecordTemplateId(self):
-        r"""录制模板id。
+        r"""<p>录制模板id。</p>
         :rtype: int
         """
         return self._RecordTemplateId
@@ -3907,9 +3888,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def RecordStatus(self):
-        r"""录制状态。 
-0：未录制 
-1：录制中
+        r"""<p>录制状态。<br>0：未录制<br>1：录制中</p>
         :rtype: int
         """
         return self._RecordStatus
@@ -3920,7 +3899,7 @@ class CasterInfo(AbstractModel):
 
     @property
     def RecordTaskId(self):
-        r"""录制接口返回的taskid
+        r"""<p>录制接口返回的taskid</p>
         :rtype: str
         """
         return self._RecordTaskId
@@ -3928,6 +3907,17 @@ class CasterInfo(AbstractModel):
     @RecordTaskId.setter
     def RecordTaskId(self, RecordTaskId):
         self._RecordTaskId = RecordTaskId
+
+    @property
+    def PgmVcodec(self):
+        r"""<p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+        :rtype: str
+        """
+        return self._PgmVcodec
+
+    @PgmVcodec.setter
+    def PgmVcodec(self, PgmVcodec):
+        self._PgmVcodec = PgmVcodec
 
 
     def _deserialize(self, params):
@@ -3948,6 +3938,7 @@ class CasterInfo(AbstractModel):
         self._RecordTemplateId = params.get("RecordTemplateId")
         self._RecordStatus = params.get("RecordStatus")
         self._RecordTaskId = params.get("RecordTaskId")
+        self._PgmVcodec = params.get("PgmVcodec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7605,48 +7596,30 @@ class CreateCasterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CasterName: 导播台名称
+        :param _CasterName: <p>导播台名称</p>
         :type CasterName: str
-        :param _Description: 导播台的描述
-最大允许长度256
+        :param _Description: <p>导播台的描述<br>最大允许长度256</p>
         :type Description: str
-        :param _ExpireTime: 导播台的过期时间戳。值为-1或unix时间戳。
-默认值为-1。
-当值为-1时，表示该导播台永不过期。
-当值为正常unix时间戳时，导播台将在该时间过期。
-导播台过期后，预监与主监画面将自动停止，转推自动停止。
-点播、直播url将停止转拉，推流url需自行停止推流。
+        :param _ExpireTime: <p>导播台的过期时间戳。值为-1或unix时间戳。<br>默认值为-1。<br>当值为-1时，表示该导播台永不过期。<br>当值为正常unix时间戳时，导播台将在该时间过期。<br>导播台过期后，预监与主监画面将自动停止，转推自动停止。<br>点播、直播url将停止转拉，推流url需自行停止推流。</p>
         :type ExpireTime: int
-        :param _DelayTime: 导播台延时播放时间，单位为秒。
-默认为0，最大支持300秒
+        :param _DelayTime: <p>导播台延时播放时间，单位为秒。<br>默认为0，最大支持300秒</p>
         :type DelayTime: int
-        :param _TransitionType: 导播台转场类型。
-默认为空。
-允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+        :param _TransitionType: <p>导播台转场类型。<br>默认为空。<br>允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。</p>
         :type TransitionType: str
-        :param _PgmWidth: 导播台主监输出的宽度，单位为像素。
-默认为1280，最大允许4096。
+        :param _PgmWidth: <p>导播台主监输出的宽度，单位为像素。<br>默认为1280，最大允许4096。</p>
         :type PgmWidth: int
-        :param _PgmHeight: 导播台主监输出的高度，单位为像素。
-默认为720，最大允许2160。
+        :param _PgmHeight: <p>导播台主监输出的高度，单位为像素。<br>默认为720，最大允许2160。</p>
         :type PgmHeight: int
-        :param _PgmFps: 导播台主监输出的帧率。
-默认为0，表示随源输出。
-最大支持60。
+        :param _PgmFps: <p>导播台主监输出的帧率。<br>默认为0，表示随源输出。<br>最大支持60。</p>
         :type PgmFps: int
-        :param _PgmBitRate: 导播台主监输出的码率，单位为kbps。
-默认为0，表示随源的码率输出。
-最大允许10000kbps。
+        :param _PgmBitRate: <p>导播台主监输出的码率，单位为kbps。<br>默认为0，表示随源的码率输出。<br>最大允许10000kbps。</p>
         :type PgmBitRate: int
-        :param _FeeType: 导播台的计费类型。
-0 通用型 
-1 播单型。
-注： 本参数暂无作用。
+        :param _FeeType: <p>导播台的计费类型。<br>0 通用型<br>1 播单型。<br>注： 本参数暂无作用。</p>
         :type FeeType: int
-        :param _PgmAudioBitRate: 导播台主监输出的音频码率，单位为kbps。
-可选项：[0, 128, 192, 256]
-默认值为0，表示随源的音频码率输出。
+        :param _PgmAudioBitRate: <p>导播台主监输出的音频码率，单位为kbps。<br>可选项：[0, 128, 192, 256]<br>默认值为0，表示随源的音频码率输出。</p>
         :type PgmAudioBitRate: int
+        :param _PgmVcodec: <p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+        :type PgmVcodec: str
         """
         self._CasterName = None
         self._Description = None
@@ -7659,10 +7632,11 @@ class CreateCasterRequest(AbstractModel):
         self._PgmBitRate = None
         self._FeeType = None
         self._PgmAudioBitRate = None
+        self._PgmVcodec = None
 
     @property
     def CasterName(self):
-        r"""导播台名称
+        r"""<p>导播台名称</p>
         :rtype: str
         """
         return self._CasterName
@@ -7673,8 +7647,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""导播台的描述
-最大允许长度256
+        r"""<p>导播台的描述<br>最大允许长度256</p>
         :rtype: str
         """
         return self._Description
@@ -7685,12 +7658,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""导播台的过期时间戳。值为-1或unix时间戳。
-默认值为-1。
-当值为-1时，表示该导播台永不过期。
-当值为正常unix时间戳时，导播台将在该时间过期。
-导播台过期后，预监与主监画面将自动停止，转推自动停止。
-点播、直播url将停止转拉，推流url需自行停止推流。
+        r"""<p>导播台的过期时间戳。值为-1或unix时间戳。<br>默认值为-1。<br>当值为-1时，表示该导播台永不过期。<br>当值为正常unix时间戳时，导播台将在该时间过期。<br>导播台过期后，预监与主监画面将自动停止，转推自动停止。<br>点播、直播url将停止转拉，推流url需自行停止推流。</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -7701,8 +7669,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""导播台延时播放时间，单位为秒。
-默认为0，最大支持300秒
+        r"""<p>导播台延时播放时间，单位为秒。<br>默认为0，最大支持300秒</p>
         :rtype: int
         """
         return self._DelayTime
@@ -7713,9 +7680,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def TransitionType(self):
-        r"""导播台转场类型。
-默认为空。
-允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+        r"""<p>导播台转场类型。<br>默认为空。<br>允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。</p>
         :rtype: str
         """
         return self._TransitionType
@@ -7726,8 +7691,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmWidth(self):
-        r"""导播台主监输出的宽度，单位为像素。
-默认为1280，最大允许4096。
+        r"""<p>导播台主监输出的宽度，单位为像素。<br>默认为1280，最大允许4096。</p>
         :rtype: int
         """
         return self._PgmWidth
@@ -7738,8 +7702,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmHeight(self):
-        r"""导播台主监输出的高度，单位为像素。
-默认为720，最大允许2160。
+        r"""<p>导播台主监输出的高度，单位为像素。<br>默认为720，最大允许2160。</p>
         :rtype: int
         """
         return self._PgmHeight
@@ -7750,9 +7713,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmFps(self):
-        r"""导播台主监输出的帧率。
-默认为0，表示随源输出。
-最大支持60。
+        r"""<p>导播台主监输出的帧率。<br>默认为0，表示随源输出。<br>最大支持60。</p>
         :rtype: int
         """
         return self._PgmFps
@@ -7763,9 +7724,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmBitRate(self):
-        r"""导播台主监输出的码率，单位为kbps。
-默认为0，表示随源的码率输出。
-最大允许10000kbps。
+        r"""<p>导播台主监输出的码率，单位为kbps。<br>默认为0，表示随源的码率输出。<br>最大允许10000kbps。</p>
         :rtype: int
         """
         return self._PgmBitRate
@@ -7776,10 +7735,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def FeeType(self):
-        r"""导播台的计费类型。
-0 通用型 
-1 播单型。
-注： 本参数暂无作用。
+        r"""<p>导播台的计费类型。<br>0 通用型<br>1 播单型。<br>注： 本参数暂无作用。</p>
         :rtype: int
         """
         return self._FeeType
@@ -7790,9 +7746,7 @@ class CreateCasterRequest(AbstractModel):
 
     @property
     def PgmAudioBitRate(self):
-        r"""导播台主监输出的音频码率，单位为kbps。
-可选项：[0, 128, 192, 256]
-默认值为0，表示随源的音频码率输出。
+        r"""<p>导播台主监输出的音频码率，单位为kbps。<br>可选项：[0, 128, 192, 256]<br>默认值为0，表示随源的音频码率输出。</p>
         :rtype: int
         """
         return self._PgmAudioBitRate
@@ -7800,6 +7754,17 @@ class CreateCasterRequest(AbstractModel):
     @PgmAudioBitRate.setter
     def PgmAudioBitRate(self, PgmAudioBitRate):
         self._PgmAudioBitRate = PgmAudioBitRate
+
+    @property
+    def PgmVcodec(self):
+        r"""<p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+        :rtype: str
+        """
+        return self._PgmVcodec
+
+    @PgmVcodec.setter
+    def PgmVcodec(self, PgmVcodec):
+        self._PgmVcodec = PgmVcodec
 
 
     def _deserialize(self, params):
@@ -7814,6 +7779,7 @@ class CreateCasterRequest(AbstractModel):
         self._PgmBitRate = params.get("PgmBitRate")
         self._FeeType = params.get("FeeType")
         self._PgmAudioBitRate = params.get("PgmAudioBitRate")
+        self._PgmVcodec = params.get("PgmVcodec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7831,7 +7797,7 @@ class CreateCasterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CasterId: 导播台ID
+        :param _CasterId: <p>导播台ID</p>
         :type CasterId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7841,7 +7807,7 @@ class CreateCasterResponse(AbstractModel):
 
     @property
     def CasterId(self):
-        r"""导播台ID
+        r"""<p>导播台ID</p>
         :rtype: int
         """
         return self._CasterId
@@ -33681,6 +33647,8 @@ class ModifyCasterRequest(AbstractModel):
         :type RecordTaskId: str
         :param _PgmAudioBitRate: <p>导播台主监输出的音频码率，单位为kbps。<br>可选项：[0, 128, 192, 256]<br>默认值为0，表示随源的音频码率输出。</p>
         :type PgmAudioBitRate: int
+        :param _PgmVcodec: <p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+        :type PgmVcodec: str
         """
         self._CasterId = None
         self._CasterName = None
@@ -33697,6 +33665,7 @@ class ModifyCasterRequest(AbstractModel):
         self._FeeType = None
         self._RecordTaskId = None
         self._PgmAudioBitRate = None
+        self._PgmVcodec = None
 
     @property
     def CasterId(self):
@@ -33863,6 +33832,17 @@ class ModifyCasterRequest(AbstractModel):
     def PgmAudioBitRate(self, PgmAudioBitRate):
         self._PgmAudioBitRate = PgmAudioBitRate
 
+    @property
+    def PgmVcodec(self):
+        r"""<p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+        :rtype: str
+        """
+        return self._PgmVcodec
+
+    @PgmVcodec.setter
+    def PgmVcodec(self, PgmVcodec):
+        self._PgmVcodec = PgmVcodec
+
 
     def _deserialize(self, params):
         self._CasterId = params.get("CasterId")
@@ -33880,6 +33860,7 @@ class ModifyCasterRequest(AbstractModel):
         self._FeeType = params.get("FeeType")
         self._RecordTaskId = params.get("RecordTaskId")
         self._PgmAudioBitRate = params.get("PgmAudioBitRate")
+        self._PgmVcodec = params.get("PgmVcodec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
