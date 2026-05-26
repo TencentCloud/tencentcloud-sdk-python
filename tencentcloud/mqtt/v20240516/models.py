@@ -7318,6 +7318,105 @@ class DescribeSharedSubscriptionGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSharedSubscriptionGroupsWithSubscriptionsRequest(AbstractModel):
+    r"""DescribeSharedSubscriptionGroupsWithSubscriptions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSharedSubscriptionGroupsWithSubscriptionsResponse(AbstractModel):
+    r"""DescribeSharedSubscriptionGroupsWithSubscriptions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>集群下共享订阅组列表</p>
+        :type Data: list of SharedSubscriptionGroupWithSubscriptions
+        :param _TotalCount: <p>查询总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>集群下共享订阅组列表</p>
+        :rtype: list of SharedSubscriptionGroupWithSubscriptions
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>查询总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SharedSubscriptionGroupWithSubscriptions()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSharedSubscriptionLagRequest(AbstractModel):
     r"""DescribeSharedSubscriptionLag请求参数结构体
 
@@ -12057,6 +12156,115 @@ class ModifyUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyX509ConfigRequest(AbstractModel):
+    r"""ModifyX509Config请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+        :type InstanceId: str
+        :param _X509Mode: <p>证书验证模式</p><p>枚举值：</p><ul><li>TLS： 单向认证</li><li>mTLS： 双向认证</li><li>BYOC： 一机一证</li></ul>
+        :type X509Mode: str
+        :param _DeviceCertificateProvisionType: <p>证书注册方式</p><p>枚举值：</p><ul><li>JITP： 自动注册</li><li>API： 手工注册</li></ul>
+        :type DeviceCertificateProvisionType: str
+        :param _AutomaticActivation: <p>证书自动后激活状态</p><p>枚举值：</p><ul><li>true： 自动激活</li><li>false： 不激活</li></ul>
+        :type AutomaticActivation: bool
+        """
+        self._InstanceId = None
+        self._X509Mode = None
+        self._DeviceCertificateProvisionType = None
+        self._AutomaticActivation = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def X509Mode(self):
+        r"""<p>证书验证模式</p><p>枚举值：</p><ul><li>TLS： 单向认证</li><li>mTLS： 双向认证</li><li>BYOC： 一机一证</li></ul>
+        :rtype: str
+        """
+        return self._X509Mode
+
+    @X509Mode.setter
+    def X509Mode(self, X509Mode):
+        self._X509Mode = X509Mode
+
+    @property
+    def DeviceCertificateProvisionType(self):
+        r"""<p>证书注册方式</p><p>枚举值：</p><ul><li>JITP： 自动注册</li><li>API： 手工注册</li></ul>
+        :rtype: str
+        """
+        return self._DeviceCertificateProvisionType
+
+    @DeviceCertificateProvisionType.setter
+    def DeviceCertificateProvisionType(self, DeviceCertificateProvisionType):
+        self._DeviceCertificateProvisionType = DeviceCertificateProvisionType
+
+    @property
+    def AutomaticActivation(self):
+        r"""<p>证书自动后激活状态</p><p>枚举值：</p><ul><li>true： 自动激活</li><li>false： 不激活</li></ul>
+        :rtype: bool
+        """
+        return self._AutomaticActivation
+
+    @AutomaticActivation.setter
+    def AutomaticActivation(self, AutomaticActivation):
+        self._AutomaticActivation = AutomaticActivation
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._X509Mode = params.get("X509Mode")
+        self._DeviceCertificateProvisionType = params.get("DeviceCertificateProvisionType")
+        self._AutomaticActivation = params.get("AutomaticActivation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyX509ConfigResponse(AbstractModel):
+    r"""ModifyX509Config返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class PriceTag(AbstractModel):
     r"""价格标签信息
 
@@ -13214,6 +13422,87 @@ class SharedSubscriptionClient(AbstractModel):
         self._SharedName = params.get("SharedName")
         self._TopicFilter = params.get("TopicFilter")
         self._Online = params.get("Online")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SharedSubscriptionGroupWithSubscriptions(AbstractModel):
+    r"""查询共享订阅组（带订阅）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SharedName: <p>共享组名</p>
+        :type SharedName: str
+        :param _CreateTime: <p>创建时间</p><p>单位：毫秒级时间戳</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p><p>单位：毫秒级时间戳</p>
+        :type UpdateTime: int
+        :param _TopicFilters: <p>订阅表达式</p>
+        :type TopicFilters: list of str
+        """
+        self._SharedName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._TopicFilters = None
+
+    @property
+    def SharedName(self):
+        r"""<p>共享组名</p>
+        :rtype: str
+        """
+        return self._SharedName
+
+    @SharedName.setter
+    def SharedName(self, SharedName):
+        self._SharedName = SharedName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>单位：毫秒级时间戳</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>单位：毫秒级时间戳</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def TopicFilters(self):
+        r"""<p>订阅表达式</p>
+        :rtype: list of str
+        """
+        return self._TopicFilters
+
+    @TopicFilters.setter
+    def TopicFilters(self, TopicFilters):
+        self._TopicFilters = TopicFilters
+
+
+    def _deserialize(self, params):
+        self._SharedName = params.get("SharedName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._TopicFilters = params.get("TopicFilters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

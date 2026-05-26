@@ -1794,6 +1794,135 @@ class CreateChatCompletionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMemoryPlusSpaceRequest(AbstractModel):
+    r"""CreateMemoryPlusSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Memory 实例的自定义名称，用于唯一标识和管理实例。支持 60 个字符内的中英文、数字、中划线（-）及下划线（_）。</p>
+        :type Name: str
+        :param _Description: <p>emory 实例的简要描述，包括使用场景、用途或背景信息，便于日常运维识别。长度限制为 0-200 个字符。</p>
+        :type Description: str
+        :param _ResourceTags: <p>以键值对（Key-Value）形式为 Memory 实例绑定的标签，用于项目管理、成本分摊、环境隔离等场景。</p>
+        :type ResourceTags: list of ResourceTag
+        :param _GoodsNum: <p>单次批量创建 Memory 实例的数量。取值范围为 1-50。</p>
+        :type GoodsNum: int
+        """
+        self._Name = None
+        self._Description = None
+        self._ResourceTags = None
+        self._GoodsNum = None
+
+    @property
+    def Name(self):
+        r"""<p>Memory 实例的自定义名称，用于唯一标识和管理实例。支持 60 个字符内的中英文、数字、中划线（-）及下划线（_）。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>emory 实例的简要描述，包括使用场景、用途或背景信息，便于日常运维识别。长度限制为 0-200 个字符。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourceTags(self):
+        r"""<p>以键值对（Key-Value）形式为 Memory 实例绑定的标签，用于项目管理、成本分摊、环境隔离等场景。</p>
+        :rtype: list of ResourceTag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def GoodsNum(self):
+        r"""<p>单次批量创建 Memory 实例的数量。取值范围为 1-50。</p>
+        :rtype: int
+        """
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._GoodsNum = params.get("GoodsNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMemoryPlusSpaceResponse(AbstractModel):
+    r"""CreateMemoryPlusSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: <p>实例 ID 列表。</p>
+        :type SpaceIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SpaceIds = None
+        self._RequestId = None
+
+    @property
+    def SpaceIds(self):
+        r"""<p>实例 ID 列表。</p>
+        :rtype: list of str
+        """
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatingProgress(AbstractModel):
     r"""发货步骤描述
 
@@ -3163,6 +3292,778 @@ class DescribeChatsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMemoryPlusRecordRequest(AbstractModel):
+    r"""DescribeMemoryPlusRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>查询的 Memory 实例 ID。</p>
+        :type SpaceId: str
+        :param _Offset: <p>查询列表的起始位置（偏移量）。用于分页查询，指明从符合条件的第几条数据开始返回。</p>
+        :type Offset: int
+        :param _Limit: <p>单次查询返回的记录数量上限（分页大小）。</p>
+        :type Limit: int
+        :param _RecordType: <p>查询的记忆类型。</p><ul><li>conversation：L0 原始对话。</li><li>memory：L1 原子记忆。</li><li>scene：L2 场景记忆。</li><li>persona：L3 个性化画像。</li><li>memory/persona：L1 原子记忆-画像型。</li><li>memory/episodic：L1 原子记忆-事件型。</li><li>memory/instruction：L1 原子记忆-指令型。</li></ul>
+        :type RecordType: str
+        :param _Output: <p>指定返回记录中的特定字段。</p>
+        :type Output: list of str
+        :param _Filters: <p>过滤条件，当前仅支持 <strong>RecordType</strong> 为 <strong>conversation</strong> 的 <strong>session_id</strong> 过滤。</p>
+        :type Filters: list of VDBFieldMap
+        :param _OrderDirection: <p>查询结果列表的排序规则。</p><ul><li>ASC：升序。</li><li>DESC：降序。</li></ul>
+        :type OrderDirection: str
+        :param _StartTime: <p>查询时间范围的起始时间点。</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询时间范围的结束时间点。</p>
+        :type EndTime: str
+        """
+        self._SpaceId = None
+        self._Offset = None
+        self._Limit = None
+        self._RecordType = None
+        self._Output = None
+        self._Filters = None
+        self._OrderDirection = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>查询的 Memory 实例 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Offset(self):
+        r"""<p>查询列表的起始位置（偏移量）。用于分页查询，指明从符合条件的第几条数据开始返回。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单次查询返回的记录数量上限（分页大小）。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def RecordType(self):
+        r"""<p>查询的记忆类型。</p><ul><li>conversation：L0 原始对话。</li><li>memory：L1 原子记忆。</li><li>scene：L2 场景记忆。</li><li>persona：L3 个性化画像。</li><li>memory/persona：L1 原子记忆-画像型。</li><li>memory/episodic：L1 原子记忆-事件型。</li><li>memory/instruction：L1 原子记忆-指令型。</li></ul>
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def Output(self):
+        r"""<p>指定返回记录中的特定字段。</p>
+        :rtype: list of str
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，当前仅支持 <strong>RecordType</strong> 为 <strong>conversation</strong> 的 <strong>session_id</strong> 过滤。</p>
+        :rtype: list of VDBFieldMap
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderDirection(self):
+        r"""<p>查询结果列表的排序规则。</p><ul><li>ASC：升序。</li><li>DESC：降序。</li></ul>
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def StartTime(self):
+        r"""<p>查询时间范围的起始时间点。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询时间范围的结束时间点。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._RecordType = params.get("RecordType")
+        self._Output = params.get("Output")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = VDBFieldMap()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._OrderDirection = params.get("OrderDirection")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMemoryPlusRecordResponse(AbstractModel):
+    r"""DescribeMemoryPlusRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>查询结果总数量。</p>
+        :type TotalCount: int
+        :param _Documents: <p>查询的记忆数据。</p>
+        :type Documents: list of VDBDocument
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Documents = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>查询结果总数量。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Documents(self):
+        r"""<p>查询的记忆数据。</p>
+        :rtype: list of VDBDocument
+        """
+        return self._Documents
+
+    @Documents.setter
+    def Documents(self, Documents):
+        self._Documents = Documents
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Documents") is not None:
+            self._Documents = []
+            for item in params.get("Documents"):
+                obj = VDBDocument()
+                obj._deserialize(item)
+                self._Documents.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMemoryPlusSpaceRequest(AbstractModel):
+    r"""DescribeMemoryPlusSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>指定查询的 Memory 实例 ID。</p>
+        :type SpaceId: str
+        """
+        self._SpaceId = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>指定查询的 Memory 实例 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMemoryPlusSpaceResponse(AbstractModel):
+    r"""DescribeMemoryPlusSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>Memory 实例 ID。</p>
+        :type SpaceId: str
+        :param _Name: <p>Memory 实例的自定义名称。</p>
+        :type Name: str
+        :param _Description: <p>Memory 实例的简要描述，包括使用场景、用途或背景信息，便于日常运维识别。</p>
+        :type Description: str
+        :param _AppId: <p>腾讯云账号的 APPID。</p>
+        :type AppId: int
+        :param _Region: <p>Memroy 实例所属地域。</p>
+        :type Region: str
+        :param _ResourceTags: <p>Memory 实例的标签信息。</p>
+        :type ResourceTags: list of ResourceTag
+        :param _Status: <p>Memory 实例当前运行状态。</p><ul><li>1：运行中。</li><li>2：创建中。</li><li>3：销毁中。</li><li>4：已销毁。</li><li>5：隔离中。</li><li>6：已隔离。</li><li>7：恢复中。</li></ul>
+        :type Status: int
+        :param _PayMode: <p>Memory 实例计费模式。</p><ul><li>-1：免费体验。</li><li>0：包年包月。</li><li>1：按量计费。</li></ul>
+        :type PayMode: int
+        :param _Version: <p>Memory 版本信息：v1。</p>
+        :type Version: str
+        :param _MemoryUsage: <p>Memory 当前已写入的记忆条数。</p>
+        :type MemoryUsage: int
+        :param _MemoryLimit: <p>Memory 实例记忆条数配额上限。</p>
+        :type MemoryLimit: int
+        :param _CreditUsage: <p>Memory 实例当前 Credit 的使用数量。</p>
+        :type CreditUsage: float
+        :param _CreditLimit: <p>Memory 实例 Credit 的最大使用数量。</p>
+        :type CreditLimit: float
+        :param _AccessUrl: <p>Memory 实例的内网访问地址。</p>
+        :type AccessUrl: str
+        :param _WanAccessUrl: <p>Memory 实例的外网访问地址。</p>
+        :type WanAccessUrl: str
+        :param _CreatedAt: <p>Memory 实例的创建时间。</p>
+        :type CreatedAt: str
+        :param _ExpiredAt: <p>Memory 实例的到期时间。</p>
+        :type ExpiredAt: str
+        :param _IsolatedAt: <p>Memory 实例的隔离时间。</p>
+        :type IsolatedAt: str
+        :param _DestroyAt: <p>到期销毁时间</p>
+        :type DestroyAt: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SpaceId = None
+        self._Name = None
+        self._Description = None
+        self._AppId = None
+        self._Region = None
+        self._ResourceTags = None
+        self._Status = None
+        self._PayMode = None
+        self._Version = None
+        self._MemoryUsage = None
+        self._MemoryLimit = None
+        self._CreditUsage = None
+        self._CreditLimit = None
+        self._AccessUrl = None
+        self._WanAccessUrl = None
+        self._CreatedAt = None
+        self._ExpiredAt = None
+        self._IsolatedAt = None
+        self._DestroyAt = None
+        self._RequestId = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>Memory 实例 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Name(self):
+        r"""<p>Memory 实例的自定义名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Memory 实例的简要描述，包括使用场景、用途或背景信息，便于日常运维识别。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AppId(self):
+        r"""<p>腾讯云账号的 APPID。</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Region(self):
+        r"""<p>Memroy 实例所属地域。</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ResourceTags(self):
+        r"""<p>Memory 实例的标签信息。</p>
+        :rtype: list of ResourceTag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def Status(self):
+        r"""<p>Memory 实例当前运行状态。</p><ul><li>1：运行中。</li><li>2：创建中。</li><li>3：销毁中。</li><li>4：已销毁。</li><li>5：隔离中。</li><li>6：已隔离。</li><li>7：恢复中。</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PayMode(self):
+        r"""<p>Memory 实例计费模式。</p><ul><li>-1：免费体验。</li><li>0：包年包月。</li><li>1：按量计费。</li></ul>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Version(self):
+        r"""<p>Memory 版本信息：v1。</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def MemoryUsage(self):
+        r"""<p>Memory 当前已写入的记忆条数。</p>
+        :rtype: int
+        """
+        return self._MemoryUsage
+
+    @MemoryUsage.setter
+    def MemoryUsage(self, MemoryUsage):
+        self._MemoryUsage = MemoryUsage
+
+    @property
+    def MemoryLimit(self):
+        r"""<p>Memory 实例记忆条数配额上限。</p>
+        :rtype: int
+        """
+        return self._MemoryLimit
+
+    @MemoryLimit.setter
+    def MemoryLimit(self, MemoryLimit):
+        self._MemoryLimit = MemoryLimit
+
+    @property
+    def CreditUsage(self):
+        r"""<p>Memory 实例当前 Credit 的使用数量。</p>
+        :rtype: float
+        """
+        return self._CreditUsage
+
+    @CreditUsage.setter
+    def CreditUsage(self, CreditUsage):
+        self._CreditUsage = CreditUsage
+
+    @property
+    def CreditLimit(self):
+        r"""<p>Memory 实例 Credit 的最大使用数量。</p>
+        :rtype: float
+        """
+        return self._CreditLimit
+
+    @CreditLimit.setter
+    def CreditLimit(self, CreditLimit):
+        self._CreditLimit = CreditLimit
+
+    @property
+    def AccessUrl(self):
+        r"""<p>Memory 实例的内网访问地址。</p>
+        :rtype: str
+        """
+        return self._AccessUrl
+
+    @AccessUrl.setter
+    def AccessUrl(self, AccessUrl):
+        self._AccessUrl = AccessUrl
+
+    @property
+    def WanAccessUrl(self):
+        r"""<p>Memory 实例的外网访问地址。</p>
+        :rtype: str
+        """
+        return self._WanAccessUrl
+
+    @WanAccessUrl.setter
+    def WanAccessUrl(self, WanAccessUrl):
+        self._WanAccessUrl = WanAccessUrl
+
+    @property
+    def CreatedAt(self):
+        r"""<p>Memory 实例的创建时间。</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ExpiredAt(self):
+        r"""<p>Memory 实例的到期时间。</p>
+        :rtype: str
+        """
+        return self._ExpiredAt
+
+    @ExpiredAt.setter
+    def ExpiredAt(self, ExpiredAt):
+        self._ExpiredAt = ExpiredAt
+
+    @property
+    def IsolatedAt(self):
+        r"""<p>Memory 实例的隔离时间。</p>
+        :rtype: str
+        """
+        return self._IsolatedAt
+
+    @IsolatedAt.setter
+    def IsolatedAt(self, IsolatedAt):
+        self._IsolatedAt = IsolatedAt
+
+    @property
+    def DestroyAt(self):
+        r"""<p>到期销毁时间</p>
+        :rtype: str
+        """
+        return self._DestroyAt
+
+    @DestroyAt.setter
+    def DestroyAt(self, DestroyAt):
+        self._DestroyAt = DestroyAt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._AppId = params.get("AppId")
+        self._Region = params.get("Region")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._Status = params.get("Status")
+        self._PayMode = params.get("PayMode")
+        self._Version = params.get("Version")
+        self._MemoryUsage = params.get("MemoryUsage")
+        self._MemoryLimit = params.get("MemoryLimit")
+        self._CreditUsage = params.get("CreditUsage")
+        self._CreditLimit = params.get("CreditLimit")
+        self._AccessUrl = params.get("AccessUrl")
+        self._WanAccessUrl = params.get("WanAccessUrl")
+        self._CreatedAt = params.get("CreatedAt")
+        self._ExpiredAt = params.get("ExpiredAt")
+        self._IsolatedAt = params.get("IsolatedAt")
+        self._DestroyAt = params.get("DestroyAt")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMemoryPlusSpacesRequest(AbstractModel):
+    r"""DescribeMemoryPlusSpaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>查询列表的起始位置（偏移量）。用于分页查询，指明从符合条件的第几条数据开始返回。</p>
+        :type Offset: int
+        :param _Limit: <p>单次查询返回的记录数量上限（分页大小）。</p>
+        :type Limit: int
+        :param _SearchKeys: <p>查询实例名称或者实例id</p>
+        :type SearchKeys: list of str
+        :param _Status: <p>实例状态</p><p>枚举值：</p><ul><li>1： 运行中</li><li>2： 创建中</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 隔离中</li><li>6： 已隔离（进入回收站）</li><li>7： 恢复中（从回收站恢复）</li></ul>
+        :type Status: list of int
+        :param _ResourceTags: <p>资源标签</p>
+        :type ResourceTags: list of ResourceTag
+        :param _Orderby: <p>排序字段</p>
+        :type Orderby: str
+        :param _OrderDirection: <p>排序方向</p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul>
+        :type OrderDirection: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._SearchKeys = None
+        self._Status = None
+        self._ResourceTags = None
+        self._Orderby = None
+        self._OrderDirection = None
+
+    @property
+    def Offset(self):
+        r"""<p>查询列表的起始位置（偏移量）。用于分页查询，指明从符合条件的第几条数据开始返回。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单次查询返回的记录数量上限（分页大小）。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchKeys(self):
+        r"""<p>查询实例名称或者实例id</p>
+        :rtype: list of str
+        """
+        return self._SearchKeys
+
+    @SearchKeys.setter
+    def SearchKeys(self, SearchKeys):
+        self._SearchKeys = SearchKeys
+
+    @property
+    def Status(self):
+        r"""<p>实例状态</p><p>枚举值：</p><ul><li>1： 运行中</li><li>2： 创建中</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 隔离中</li><li>6： 已隔离（进入回收站）</li><li>7： 恢复中（从回收站恢复）</li></ul>
+        :rtype: list of int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResourceTags(self):
+        r"""<p>资源标签</p>
+        :rtype: list of ResourceTag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def Orderby(self):
+        r"""<p>排序字段</p>
+        :rtype: str
+        """
+        return self._Orderby
+
+    @Orderby.setter
+    def Orderby(self, Orderby):
+        self._Orderby = Orderby
+
+    @property
+    def OrderDirection(self):
+        r"""<p>排序方向</p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul>
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchKeys = params.get("SearchKeys")
+        self._Status = params.get("Status")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._Orderby = params.get("Orderby")
+        self._OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMemoryPlusSpacesResponse(AbstractModel):
+    r"""DescribeMemoryPlusSpaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>查询结果总数量。</p>
+        :type TotalCount: int
+        :param _Items: <p>实例列表信息</p>
+        :type Items: list of MemoryPlusInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>查询结果总数量。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""<p>实例列表信息</p>
+        :rtype: list of MemoryPlusInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = MemoryPlusInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeReportUrlRequest(AbstractModel):
     r"""DescribeReportUrl请求参数结构体
 
@@ -3209,6 +4110,149 @@ class DescribeReportUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeServiceAccessKeyRequest(AbstractModel):
+    r"""DescribeServiceAccessKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: <p>指定 Memroy 实例 ID。</p>
+        :type ServiceId: str
+        """
+        self._ServiceId = None
+
+    @property
+    def ServiceId(self):
+        r"""<p>指定 Memroy 实例 ID。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceAccessKeyResponse(AbstractModel):
+    r"""DescribeServiceAccessKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthKey: <p>访问密钥。</p>
+        :type AuthKey: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AuthKey = None
+        self._RequestId = None
+
+    @property
+    def AuthKey(self):
+        r"""<p>访问密钥。</p>
+        :rtype: str
+        """
+        return self._AuthKey
+
+    @AuthKey.setter
+    def AuthKey(self, AuthKey):
+        self._AuthKey = AuthKey
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AuthKey = params.get("AuthKey")
+        self._RequestId = params.get("RequestId")
+
+
+class DestroyMemoryPlusSpaceRequest(AbstractModel):
+    r"""DestroyMemoryPlusSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: <p>指定需要销毁的 Memory 实例 ID 列表。</p>
+        :type SpaceIds: list of str
+        """
+        self._SpaceIds = None
+
+    @property
+    def SpaceIds(self):
+        r"""<p>指定需要销毁的 Memory 实例 ID 列表。</p>
+        :rtype: list of str
+        """
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyMemoryPlusSpaceResponse(AbstractModel):
+    r"""DestroyMemoryPlusSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3438,6 +4482,276 @@ class IsolateAgentInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IsolateMemoryPlusSpaceRequest(AbstractModel):
+    r"""IsolateMemoryPlusSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: <p>指定需要放入回收站的 Memory 实例 ID 列表。</p>
+        :type SpaceIds: list of str
+        """
+        self._SpaceIds = None
+
+    @property
+    def SpaceIds(self):
+        r"""<p>指定需要放入回收站的 Memory 实例 ID 列表。</p>
+        :rtype: list of str
+        """
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateMemoryPlusSpaceResponse(AbstractModel):
+    r"""IsolateMemoryPlusSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class MemoryPlusInfo(AbstractModel):
+    r"""Memory正式版实例列表元素信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>实例id</p>
+        :type SpaceId: str
+        :param _Name: <p>实例名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Status: <p>实例状态</p>
+        :type Status: int
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _MemoryUsage: <p>记忆条数</p>
+        :type MemoryUsage: int
+        :param _CreditUsage: <p>当月积分数</p>
+        :type CreditUsage: float
+        :param _ResourceTags: <p>资源标签</p>
+        :type ResourceTags: list of ResourceTag
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
+        :param _IsolatedAt: <p>隔离时间</p>
+        :type IsolatedAt: str
+        :param _ExpiredAt: <p>到期时间</p>
+        :type ExpiredAt: str
+        :param _DestroyAt: <p>到期销毁时间</p>
+        :type DestroyAt: str
+        """
+        self._SpaceId = None
+        self._Name = None
+        self._Description = None
+        self._Status = None
+        self._Region = None
+        self._MemoryUsage = None
+        self._CreditUsage = None
+        self._ResourceTags = None
+        self._CreatedAt = None
+        self._IsolatedAt = None
+        self._ExpiredAt = None
+        self._DestroyAt = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Name(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>实例状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def MemoryUsage(self):
+        r"""<p>记忆条数</p>
+        :rtype: int
+        """
+        return self._MemoryUsage
+
+    @MemoryUsage.setter
+    def MemoryUsage(self, MemoryUsage):
+        self._MemoryUsage = MemoryUsage
+
+    @property
+    def CreditUsage(self):
+        r"""<p>当月积分数</p>
+        :rtype: float
+        """
+        return self._CreditUsage
+
+    @CreditUsage.setter
+    def CreditUsage(self, CreditUsage):
+        self._CreditUsage = CreditUsage
+
+    @property
+    def ResourceTags(self):
+        r"""<p>资源标签</p>
+        :rtype: list of ResourceTag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def IsolatedAt(self):
+        r"""<p>隔离时间</p>
+        :rtype: str
+        """
+        return self._IsolatedAt
+
+    @IsolatedAt.setter
+    def IsolatedAt(self, IsolatedAt):
+        self._IsolatedAt = IsolatedAt
+
+    @property
+    def ExpiredAt(self):
+        r"""<p>到期时间</p>
+        :rtype: str
+        """
+        return self._ExpiredAt
+
+    @ExpiredAt.setter
+    def ExpiredAt(self, ExpiredAt):
+        self._ExpiredAt = ExpiredAt
+
+    @property
+    def DestroyAt(self):
+        r"""<p>到期销毁时间</p>
+        :rtype: str
+        """
+        return self._DestroyAt
+
+    @DestroyAt.setter
+    def DestroyAt(self, DestroyAt):
+        self._DestroyAt = DestroyAt
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._MemoryUsage = params.get("MemoryUsage")
+        self._CreditUsage = params.get("CreditUsage")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._CreatedAt = params.get("CreatedAt")
+        self._IsolatedAt = params.get("IsolatedAt")
+        self._ExpiredAt = params.get("ExpiredAt")
+        self._DestroyAt = params.get("DestroyAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAgentInstanceParametersRequest(AbstractModel):
     r"""ModifyAgentInstanceParameters请求参数结构体
 
@@ -3619,6 +4933,100 @@ class ModifyChatTitleRequest(AbstractModel):
 
 class ModifyChatTitleResponse(AbstractModel):
     r"""ModifyChatTitle返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMemoryPlusSpaceRequest(AbstractModel):
+    r"""ModifyMemoryPlusSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>指定需要修改的 Memory 实例 ID。</p>
+        :type SpaceId: str
+        :param _Name: <p>指定修改后的实例名称。支持 60 个字符内 的中英文、数字、中划线（-）及下划线（_）。</p>
+        :type Name: str
+        :param _Description: <p>指定修改后的实例描述。最多支持 200 个字符。</p>
+        :type Description: str
+        """
+        self._SpaceId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>指定需要修改的 Memory 实例 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Name(self):
+        r"""<p>指定修改后的实例名称。支持 60 个字符内 的中英文、数字、中划线（-）及下划线（_）。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>指定修改后的实例描述。最多支持 200 个字符。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMemoryPlusSpaceResponse(AbstractModel):
+    r"""ModifyMemoryPlusSpace返回参数结构体
 
     """
 
@@ -3860,6 +5268,70 @@ class RecoverAgentInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RecoverMemoryPlusSpaceRequest(AbstractModel):
+    r"""RecoverMemoryPlusSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: <p>指定需要恢复的 Memory 实例 ID 列表。</p>
+        :type SpaceIds: list of str
+        """
+        self._SpaceIds = None
+
+    @property
+    def SpaceIds(self):
+        r"""<p>指定需要恢复的 Memory 实例 ID 列表。</p>
+        :rtype: list of str
+        """
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecoverMemoryPlusSpaceResponse(AbstractModel):
+    r"""RecoverMemoryPlusSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RemoveChatRequest(AbstractModel):
     r"""RemoveChat请求参数结构体
 
@@ -3937,6 +5409,57 @@ class RemoveChatResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ResourceTag(AbstractModel):
+    r"""资源tag
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签值
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""标签键
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""标签值
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SqlAgentParameter(AbstractModel):
@@ -4462,6 +5985,143 @@ class UploadDelta(AbstractModel):
     def _deserialize(self, params):
         self._StepBrief = params.get("StepBrief")
         self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VDBDocument(AbstractModel):
+    r"""vdb数据库文档结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>vdb document数据id</p>
+        :type Id: str
+        :param _Fields: <p>vdb document数据标量字段</p>
+        :type Fields: list of VDBFieldMap
+        """
+        self._Id = None
+        self._Fields = None
+
+    @property
+    def Id(self):
+        r"""<p>vdb document数据id</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Fields(self):
+        r"""<p>vdb document数据标量字段</p>
+        :rtype: list of VDBFieldMap
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = VDBFieldMap()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VDBFieldMap(AbstractModel):
+    r"""vdb数据库文档中键值结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>vdb document字段名</p>
+        :type Name: str
+        :param _Value: <p>vdb document字段值</p>
+        :type Value: str
+        :param _Type: <p>vdb document字段类型</p>
+        :type Type: str
+        :param _Description: <p>字段描述</p>
+        :type Description: str
+        """
+        self._Name = None
+        self._Value = None
+        self._Type = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        r"""<p>vdb document字段名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>vdb document字段值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        r"""<p>vdb document字段类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        r"""<p>字段描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

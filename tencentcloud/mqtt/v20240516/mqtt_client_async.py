@@ -876,6 +876,24 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSharedSubscriptionGroupsWithSubscriptions(
+            self,
+            request: models.DescribeSharedSubscriptionGroupsWithSubscriptionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSharedSubscriptionGroupsWithSubscriptionsResponse:
+        """
+        查询集群下共享订阅组列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSharedSubscriptionGroupsWithSubscriptions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSharedSubscriptionGroupsWithSubscriptionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSharedSubscriptionLag(
             self,
             request: models.DescribeSharedSubscriptionLagRequest,
@@ -1184,6 +1202,24 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "ModifyUser"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyX509Config(
+            self,
+            request: models.ModifyX509ConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyX509ConfigResponse:
+        """
+        修改集群X509配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyX509Config"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyX509ConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -79,6 +79,24 @@ class TdaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMemoryPlusSpace(
+            self,
+            request: models.CreateMemoryPlusSpaceRequest,
+            opts: Dict = None,
+    ) -> models.CreateMemoryPlusSpaceResponse:
+        """
+        本接口（CreateMemoryPlusSpace）用于创建正式版 Memory 实例。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMemoryPlusSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMemoryPlusSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAgentDutyTaskDetail(
             self,
             request: models.DescribeAgentDutyTaskDetailRequest,
@@ -205,6 +223,60 @@ class TdaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMemoryPlusRecord(
+            self,
+            request: models.DescribeMemoryPlusRecordRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMemoryPlusRecordResponse:
+        """
+        本接口（DescribeMemoryPlusRecord）用于查询 Memory 实例的记忆数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMemoryPlusRecord"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMemoryPlusRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMemoryPlusSpace(
+            self,
+            request: models.DescribeMemoryPlusSpaceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMemoryPlusSpaceResponse:
+        """
+        本接口（DescribeMemoryPlusSpace）用于查询 Memory 正式版实例详情。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMemoryPlusSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMemoryPlusSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMemoryPlusSpaces(
+            self,
+            request: models.DescribeMemoryPlusSpacesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMemoryPlusSpacesResponse:
+        """
+        本接口（DescribeMemoryPlusSpaces）用于查询 Memory正式版实例列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMemoryPlusSpaces"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMemoryPlusSpacesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeReportUrl(
             self,
             request: models.DescribeReportUrlRequest,
@@ -223,6 +295,42 @@ class TdaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeServiceAccessKey(
+            self,
+            request: models.DescribeServiceAccessKeyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeServiceAccessKeyResponse:
+        """
+        本接口（DescribeServiceAccessKey）用于查询服务访问密钥。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeServiceAccessKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeServiceAccessKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DestroyMemoryPlusSpace(
+            self,
+            request: models.DestroyMemoryPlusSpaceRequest,
+            opts: Dict = None,
+    ) -> models.DestroyMemoryPlusSpaceResponse:
+        """
+        本接口（DestroyMemoryPlusSpace）用于从回收站彻底销毁 Memory 实例。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DestroyMemoryPlusSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DestroyMemoryPlusSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def IsolateAgentInstance(
             self,
             request: models.IsolateAgentInstanceRequest,
@@ -236,6 +344,24 @@ class TdaiClient(AbstractClient):
         kwargs["action"] = "IsolateAgentInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.IsolateAgentInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def IsolateMemoryPlusSpace(
+            self,
+            request: models.IsolateMemoryPlusSpaceRequest,
+            opts: Dict = None,
+    ) -> models.IsolateMemoryPlusSpaceResponse:
+        """
+        本接口（IsolateMemoryPlusSpace）用于将正式版 Memory 实例放入回收站隔离。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IsolateMemoryPlusSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IsolateMemoryPlusSpaceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -277,6 +403,24 @@ class TdaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyMemoryPlusSpace(
+            self,
+            request: models.ModifyMemoryPlusSpaceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMemoryPlusSpaceResponse:
+        """
+        本接口（ModifyMemoryPlusSpace）用于修改正式版 Memory 实例，可修改实例名称与描述。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMemoryPlusSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMemoryPlusSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def PauseAgentWork(
             self,
             request: models.PauseAgentWorkRequest,
@@ -308,6 +452,24 @@ class TdaiClient(AbstractClient):
         kwargs["action"] = "RecoverAgentInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RecoverAgentInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RecoverMemoryPlusSpace(
+            self,
+            request: models.RecoverMemoryPlusSpaceRequest,
+            opts: Dict = None,
+    ) -> models.RecoverMemoryPlusSpaceResponse:
+        """
+        本接口（RecoverMemoryPlusSpace）用于从回收站恢复 Memory 实例。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RecoverMemoryPlusSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RecoverMemoryPlusSpaceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

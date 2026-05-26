@@ -2249,6 +2249,9 @@ class Cluster(AbstractModel):
         :type CdcId: str
         :param _IsHighAvailability: <p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行</p>
         :type IsHighAvailability: bool
+        :param _ClusterCategory: <p>集群分类：tke=标准TKE集群，agent=Agent集群</p><p>默认值：tke</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterCategory: str
         :param _SecurityModeConfig: <p>开启后会下发Gatekeeper和网络策略</p>
         :type SecurityModeConfig: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
         """
@@ -2278,6 +2281,7 @@ class Cluster(AbstractModel):
         self._ClusterEtcdNodeNum = None
         self._CdcId = None
         self._IsHighAvailability = None
+        self._ClusterCategory = None
         self._SecurityModeConfig = None
 
     @property
@@ -2568,6 +2572,18 @@ class Cluster(AbstractModel):
         self._IsHighAvailability = IsHighAvailability
 
     @property
+    def ClusterCategory(self):
+        r"""<p>集群分类：tke=标准TKE集群，agent=Agent集群</p><p>默认值：tke</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterCategory
+
+    @ClusterCategory.setter
+    def ClusterCategory(self, ClusterCategory):
+        self._ClusterCategory = ClusterCategory
+
+    @property
     def SecurityModeConfig(self):
         r"""<p>开启后会下发Gatekeeper和网络策略</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
@@ -2613,6 +2629,7 @@ class Cluster(AbstractModel):
         self._ClusterEtcdNodeNum = params.get("ClusterEtcdNodeNum")
         self._CdcId = params.get("CdcId")
         self._IsHighAvailability = params.get("IsHighAvailability")
+        self._ClusterCategory = params.get("ClusterCategory")
         if params.get("SecurityModeConfig") is not None:
             self._SecurityModeConfig = SecurityModeConfig()
             self._SecurityModeConfig._deserialize(params.get("SecurityModeConfig"))
@@ -52410,6 +52427,98 @@ class Step(AbstractModel):
         
 
 
+class SubnetAllocation(AbstractModel):
+    r"""子网资源分配
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubnetId: <p>子网 ID</p>
+        :type SubnetId: str
+        :param _Ratio: <p>分配比例（百分比），所有 Ratio 之和必须等于 100</p>
+        :type Ratio: int
+        """
+        self._SubnetId = None
+        self._Ratio = None
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网 ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Ratio(self):
+        r"""<p>分配比例（百分比），所有 Ratio 之和必须等于 100</p>
+        :rtype: int
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+
+    def _deserialize(self, params):
+        self._SubnetId = params.get("SubnetId")
+        self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubnetAllocationPolicy(AbstractModel):
+    r"""子网资源分配策略，精确控制各子网之间的资源分配比例。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Allocations: <p>子网分配列表</p>
+        :type Allocations: list of SubnetAllocation
+        """
+        self._Allocations = None
+
+    @property
+    def Allocations(self):
+        r"""<p>子网分配列表</p>
+        :rtype: list of SubnetAllocation
+        """
+        return self._Allocations
+
+    @Allocations.setter
+    def Allocations(self, Allocations):
+        self._Allocations = Allocations
+
+
+    def _deserialize(self, params):
+        if params.get("Allocations") is not None:
+            self._Allocations = []
+            for item in params.get("Allocations"):
+                obj = SubnetAllocation()
+                obj._deserialize(item)
+                self._Allocations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubnetInfos(AbstractModel):
     r"""子网信息
 
@@ -56442,24 +56551,23 @@ class VirtualNodePool(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodePoolId: 节点池ID
+        :param _NodePoolId: <p>节点池ID</p>
         :type NodePoolId: str
-        :param _SubnetIds: 子网列表
+        :param _SubnetIds: <p>子网列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: list of str
-        :param _Name: 节点池名称
+        :param _Name: <p>节点池名称</p>
         :type Name: str
-        :param _LifeState: 节点池生命周期
-- creating：创建中
-- normal：正常
-- updating：更新中
+        :param _LifeState: <p>节点池生命周期</p><ul><li>creating：创建中</li><li>normal：正常</li><li>updating：更新中</li></ul>
         :type LifeState: str
-        :param _Labels: 虚拟节点label
+        :param _Labels: <p>虚拟节点label</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of Label
-        :param _Taints: 虚拟节点taint
+        :param _Taints: <p>虚拟节点taint</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Taints: list of Taint
+        :param _SubnetAllocationPolicy: <p>子网分配策略</p>
+        :type SubnetAllocationPolicy: :class:`tencentcloud.tke.v20180525.models.SubnetAllocationPolicy`
         """
         self._NodePoolId = None
         self._SubnetIds = None
@@ -56467,10 +56575,11 @@ class VirtualNodePool(AbstractModel):
         self._LifeState = None
         self._Labels = None
         self._Taints = None
+        self._SubnetAllocationPolicy = None
 
     @property
     def NodePoolId(self):
-        r"""节点池ID
+        r"""<p>节点池ID</p>
         :rtype: str
         """
         return self._NodePoolId
@@ -56481,7 +56590,7 @@ class VirtualNodePool(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网列表
+        r"""<p>子网列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -56493,7 +56602,7 @@ class VirtualNodePool(AbstractModel):
 
     @property
     def Name(self):
-        r"""节点池名称
+        r"""<p>节点池名称</p>
         :rtype: str
         """
         return self._Name
@@ -56504,10 +56613,7 @@ class VirtualNodePool(AbstractModel):
 
     @property
     def LifeState(self):
-        r"""节点池生命周期
-- creating：创建中
-- normal：正常
-- updating：更新中
+        r"""<p>节点池生命周期</p><ul><li>creating：创建中</li><li>normal：正常</li><li>updating：更新中</li></ul>
         :rtype: str
         """
         return self._LifeState
@@ -56518,7 +56624,7 @@ class VirtualNodePool(AbstractModel):
 
     @property
     def Labels(self):
-        r"""虚拟节点label
+        r"""<p>虚拟节点label</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Label
         """
@@ -56530,7 +56636,7 @@ class VirtualNodePool(AbstractModel):
 
     @property
     def Taints(self):
-        r"""虚拟节点taint
+        r"""<p>虚拟节点taint</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Taint
         """
@@ -56539,6 +56645,17 @@ class VirtualNodePool(AbstractModel):
     @Taints.setter
     def Taints(self, Taints):
         self._Taints = Taints
+
+    @property
+    def SubnetAllocationPolicy(self):
+        r"""<p>子网分配策略</p>
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SubnetAllocationPolicy`
+        """
+        return self._SubnetAllocationPolicy
+
+    @SubnetAllocationPolicy.setter
+    def SubnetAllocationPolicy(self, SubnetAllocationPolicy):
+        self._SubnetAllocationPolicy = SubnetAllocationPolicy
 
 
     def _deserialize(self, params):
@@ -56558,6 +56675,9 @@ class VirtualNodePool(AbstractModel):
                 obj = Taint()
                 obj._deserialize(item)
                 self._Taints.append(obj)
+        if params.get("SubnetAllocationPolicy") is not None:
+            self._SubnetAllocationPolicy = SubnetAllocationPolicy()
+            self._SubnetAllocationPolicy._deserialize(params.get("SubnetAllocationPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

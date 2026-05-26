@@ -22956,15 +22956,11 @@ class TerminateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+        :param _InstanceIds: <p>一个或多个待操作的实例ID。可通过 <a href="https://cloud.tencent.com/document/api/213/15728">DescribeInstances</a> 接口返回值中的<code>InstanceId</code>获取。每次请求批量实例的上限为100。</p>
         :type InstanceIds: list of str
-        :param _ReleaseAddress: 释放弹性IP。EIP2.0下，仅提供主网卡下首个EIP，EIP类型限定在HighQualityEIP、AntiDDoSEIP、EIPv6、HighQualityEIPv6这几种类型。默认行为不释放。
-
-示例值：true
-默认值：false
+        :param _ReleaseAddress: <p>释放弹性IP。EIP2.0下，仅提供主网卡下首个EIP，EIP类型限定在HighQualityEIP、AntiDDoSEIP、EIPv6、HighQualityEIPv6这几种类型。默认行为不释放。</p><p>默认值：false</p>
         :type ReleaseAddress: bool
-        :param _ReleasePrepaidDataDisks: 释放实例挂载的包年包月数据盘。true表示销毁实例同时释放包年包月数据盘，false表示只销毁实例。
-默认值：false
+        :param _ReleasePrepaidDataDisks: <p>释放实例挂载的包年包月数据盘。true表示销毁实例同时释放包年包月数据盘，false表示只销毁实例。<br>默认值：false</p>
         :type ReleasePrepaidDataDisks: bool
         """
         self._InstanceIds = None
@@ -22973,7 +22969,7 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+        r"""<p>一个或多个待操作的实例ID。可通过 <a href="https://cloud.tencent.com/document/api/213/15728">DescribeInstances</a> 接口返回值中的<code>InstanceId</code>获取。每次请求批量实例的上限为100。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -22984,10 +22980,7 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def ReleaseAddress(self):
-        r"""释放弹性IP。EIP2.0下，仅提供主网卡下首个EIP，EIP类型限定在HighQualityEIP、AntiDDoSEIP、EIPv6、HighQualityEIPv6这几种类型。默认行为不释放。
-
-示例值：true
-默认值：false
+        r"""<p>释放弹性IP。EIP2.0下，仅提供主网卡下首个EIP，EIP类型限定在HighQualityEIP、AntiDDoSEIP、EIPv6、HighQualityEIPv6这几种类型。默认行为不释放。</p><p>默认值：false</p>
         :rtype: bool
         """
         return self._ReleaseAddress
@@ -22998,8 +22991,7 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def ReleasePrepaidDataDisks(self):
-        r"""释放实例挂载的包年包月数据盘。true表示销毁实例同时释放包年包月数据盘，false表示只销毁实例。
-默认值：false
+        r"""<p>释放实例挂载的包年包月数据盘。true表示销毁实例同时释放包年包月数据盘，false表示只销毁实例。<br>默认值：false</p>
         :rtype: bool
         """
         return self._ReleasePrepaidDataDisks

@@ -18,6 +18,72 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIOptimizerStatus(AbstractModel):
+    r"""AI 优化器状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>状态。closing-关闭中，closed-关闭，opening-开启中，training-训练中，trained-训练完成，train_failed-训练失败。</p>
+        :type Status: str
+        :param _OpenTime: <p>开启时间</p>
+        :type OpenTime: str
+        :param _TrainingProgress: <p>训练进度</p>
+        :type TrainingProgress: int
+        """
+        self._Status = None
+        self._OpenTime = None
+        self._TrainingProgress = None
+
+    @property
+    def Status(self):
+        r"""<p>状态。closing-关闭中，closed-关闭，opening-开启中，training-训练中，trained-训练完成，train_failed-训练失败。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def OpenTime(self):
+        r"""<p>开启时间</p>
+        :rtype: str
+        """
+        return self._OpenTime
+
+    @OpenTime.setter
+    def OpenTime(self, OpenTime):
+        self._OpenTime = OpenTime
+
+    @property
+    def TrainingProgress(self):
+        r"""<p>训练进度</p>
+        :rtype: int
+        """
+        return self._TrainingProgress
+
+    @TrainingProgress.setter
+    def TrainingProgress(self, TrainingProgress):
+        self._TrainingProgress = TrainingProgress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._OpenTime = params.get("OpenTime")
+        self._TrainingProgress = params.get("TrainingProgress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Ability(AbstractModel):
     r"""集群支持的功能
 
@@ -6370,46 +6436,44 @@ class ClusterInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InstanceType: 引擎类型
+        :param _InstanceType: <p>引擎类型</p>
         :type InstanceType: str
-        :param _InstanceStatus: 实例状态
+        :param _InstanceStatus: <p>实例状态</p>
         :type InstanceStatus: str
-        :param _InstanceStatusDesc: 实例状态描述
+        :param _InstanceStatusDesc: <p>实例状态描述</p>
         :type InstanceStatusDesc: str
-        :param _InstanceCpu: cpu核数
+        :param _InstanceCpu: <p>cpu核数</p>
         :type InstanceCpu: int
-        :param _InstanceMemory: 内存
+        :param _InstanceMemory: <p>内存</p>
         :type InstanceMemory: int
-        :param _InstanceStorage: 硬盘
+        :param _InstanceStorage: <p>硬盘</p>
         :type InstanceStorage: int
-        :param _InstanceRole: 实例角色
+        :param _InstanceRole: <p>实例角色</p>
         :type InstanceRole: str
-        :param _MaintainStartTime: 执行开始时间(距离0点的秒数)	
+        :param _MaintainStartTime: <p>执行开始时间(距离0点的秒数)</p>
         :type MaintainStartTime: int
-        :param _MaintainDuration: 持续的时间(单位：秒)	
+        :param _MaintainDuration: <p>持续的时间(单位：秒)</p>
         :type MaintainDuration: int
-        :param _MaintainWeekDays: 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
+        :param _MaintainWeekDays: <p>可以执行的时间，枚举值：[&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thu&quot;,&quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;]</p>
         :type MaintainWeekDays: list of str
-        :param _ServerlessStatus: serverless实例子状态
+        :param _ServerlessStatus: <p>serverless实例子状态</p>
         :type ServerlessStatus: str
-        :param _InstanceTasks: 实例任务信息
+        :param _InstanceTasks: <p>实例任务信息</p>
         :type InstanceTasks: list of ObjectTask
-        :param _InstanceDeviceType: 实例机器类型
-1. common，通用型。
-2. exclusive，独享型。
+        :param _InstanceDeviceType: <p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
         :type InstanceDeviceType: str
-        :param _InstanceStorageType: 实例存储类型
-说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
+        :param _InstanceStorageType: <p>实例存储类型<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
         :type InstanceStorageType: str
-        :param _DbMode: 数据库类型
+        :param _DbMode: <p>数据库类型</p>
         :type DbMode: str
-        :param _NodeList: 节点列表
-说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
+        :param _NodeList: <p>节点列表<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
         :type NodeList: list of str
+        :param _AIOptimizerStatus: <p>AI优化器状态</p>
+        :type AIOptimizerStatus: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerStatus`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -6429,10 +6493,11 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceStorageType = None
         self._DbMode = None
         self._NodeList = None
+        self._AIOptimizerStatus = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6443,7 +6508,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -6454,7 +6519,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""引擎类型
+        r"""<p>引擎类型</p>
         :rtype: str
         """
         return self._InstanceType
@@ -6465,7 +6530,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -6476,7 +6541,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceStatusDesc(self):
-        r"""实例状态描述
+        r"""<p>实例状态描述</p>
         :rtype: str
         """
         return self._InstanceStatusDesc
@@ -6487,7 +6552,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceCpu(self):
-        r"""cpu核数
+        r"""<p>cpu核数</p>
         :rtype: int
         """
         return self._InstanceCpu
@@ -6498,7 +6563,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceMemory(self):
-        r"""内存
+        r"""<p>内存</p>
         :rtype: int
         """
         return self._InstanceMemory
@@ -6509,7 +6574,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceStorage(self):
-        r"""硬盘
+        r"""<p>硬盘</p>
         :rtype: int
         """
         return self._InstanceStorage
@@ -6520,7 +6585,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceRole(self):
-        r"""实例角色
+        r"""<p>实例角色</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -6531,7 +6596,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def MaintainStartTime(self):
-        r"""执行开始时间(距离0点的秒数)	
+        r"""<p>执行开始时间(距离0点的秒数)</p>
         :rtype: int
         """
         return self._MaintainStartTime
@@ -6542,7 +6607,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def MaintainDuration(self):
-        r"""持续的时间(单位：秒)	
+        r"""<p>持续的时间(单位：秒)</p>
         :rtype: int
         """
         return self._MaintainDuration
@@ -6553,7 +6618,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def MaintainWeekDays(self):
-        r"""可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
+        r"""<p>可以执行的时间，枚举值：[&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thu&quot;,&quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;]</p>
         :rtype: list of str
         """
         return self._MaintainWeekDays
@@ -6564,7 +6629,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def ServerlessStatus(self):
-        r"""serverless实例子状态
+        r"""<p>serverless实例子状态</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -6575,7 +6640,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceTasks(self):
-        r"""实例任务信息
+        r"""<p>实例任务信息</p>
         :rtype: list of ObjectTask
         """
         return self._InstanceTasks
@@ -6586,9 +6651,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceDeviceType(self):
-        r"""实例机器类型
-1. common，通用型。
-2. exclusive，独享型。
+        r"""<p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
         :rtype: str
         """
         return self._InstanceDeviceType
@@ -6599,8 +6662,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceStorageType(self):
-        r"""实例存储类型
-说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
+        r"""<p>实例存储类型<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
         :rtype: str
         """
         return self._InstanceStorageType
@@ -6611,7 +6673,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def DbMode(self):
-        r"""数据库类型
+        r"""<p>数据库类型</p>
         :rtype: str
         """
         return self._DbMode
@@ -6622,8 +6684,7 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def NodeList(self):
-        r"""节点列表
-说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
+        r"""<p>节点列表<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
         :rtype: list of str
         """
         return self._NodeList
@@ -6631,6 +6692,17 @@ class ClusterInstanceDetail(AbstractModel):
     @NodeList.setter
     def NodeList(self, NodeList):
         self._NodeList = NodeList
+
+    @property
+    def AIOptimizerStatus(self):
+        r"""<p>AI优化器状态</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerStatus`
+        """
+        return self._AIOptimizerStatus
+
+    @AIOptimizerStatus.setter
+    def AIOptimizerStatus(self, AIOptimizerStatus):
+        self._AIOptimizerStatus = AIOptimizerStatus
 
 
     def _deserialize(self, params):
@@ -6657,6 +6729,9 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceStorageType = params.get("InstanceStorageType")
         self._DbMode = params.get("DbMode")
         self._NodeList = params.get("NodeList")
+        if params.get("AIOptimizerStatus") is not None:
+            self._AIOptimizerStatus = AIOptimizerStatus()
+            self._AIOptimizerStatus._deserialize(params.get("AIOptimizerStatus"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7042,9 +7117,9 @@ class CopyBackupToVaultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VaultId: 目标保险箱ID，备份文件将复制到此保险箱
+        :param _VaultId: <p>目标保险箱ID，备份文件将复制到此保险箱</p>
         :type VaultId: str
-        :param _BackupIds: 备份文件ID列表，支持批量复制多个备份文件
+        :param _BackupIds: <p>备份文件ID列表，支持批量复制多个备份文件</p>
         :type BackupIds: list of int
         """
         self._VaultId = None
@@ -7052,7 +7127,7 @@ class CopyBackupToVaultRequest(AbstractModel):
 
     @property
     def VaultId(self):
-        r"""目标保险箱ID，备份文件将复制到此保险箱
+        r"""<p>目标保险箱ID，备份文件将复制到此保险箱</p>
         :rtype: str
         """
         return self._VaultId
@@ -7063,7 +7138,7 @@ class CopyBackupToVaultRequest(AbstractModel):
 
     @property
     def BackupIds(self):
-        r"""备份文件ID列表，支持批量复制多个备份文件
+        r"""<p>备份文件ID列表，支持批量复制多个备份文件</p>
         :rtype: list of int
         """
         return self._BackupIds
@@ -7093,7 +7168,7 @@ class CopyBackupToVaultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7103,7 +7178,7 @@ class CopyBackupToVaultResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: int
         """
         return self._TaskId
@@ -55344,15 +55419,15 @@ class SparseBackupConfigInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OpType: 操作类型:add,modify,remove
+        :param _OpType: <p>操作类型:add,modify,remove</p>
         :type OpType: str
-        :param _ConfigId: 配置 ID
+        :param _ConfigId: <p>配置 ID</p>
         :type ConfigId: str
-        :param _SparsePeriodConfig: 周期策略类型：weekly/monthly/yearly
+        :param _SparsePeriodConfig: <p>周期策略类型：weekly/monthly/yearly</p>
         :type SparsePeriodConfig: str
-        :param _SparsePeriodTime: 周期时间配置
+        :param _SparsePeriodTime: <p>周期时间配置</p>
         :type SparsePeriodTime: :class:`tencentcloud.cynosdb.v20190107.models.SparsePeriodTime`
-        :param _SparseBackupSaveDays: 保留天数（7-7320天，最长20年）
+        :param _SparseBackupSaveDays: <p>保留天数（7-7320天，最长20年）</p>
         :type SparseBackupSaveDays: int
         """
         self._OpType = None
@@ -55363,7 +55438,7 @@ class SparseBackupConfigInfo(AbstractModel):
 
     @property
     def OpType(self):
-        r"""操作类型:add,modify,remove
+        r"""<p>操作类型:add,modify,remove</p>
         :rtype: str
         """
         return self._OpType
@@ -55374,7 +55449,7 @@ class SparseBackupConfigInfo(AbstractModel):
 
     @property
     def ConfigId(self):
-        r"""配置 ID
+        r"""<p>配置 ID</p>
         :rtype: str
         """
         return self._ConfigId
@@ -55385,7 +55460,7 @@ class SparseBackupConfigInfo(AbstractModel):
 
     @property
     def SparsePeriodConfig(self):
-        r"""周期策略类型：weekly/monthly/yearly
+        r"""<p>周期策略类型：weekly/monthly/yearly</p>
         :rtype: str
         """
         return self._SparsePeriodConfig
@@ -55396,7 +55471,7 @@ class SparseBackupConfigInfo(AbstractModel):
 
     @property
     def SparsePeriodTime(self):
-        r"""周期时间配置
+        r"""<p>周期时间配置</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SparsePeriodTime`
         """
         return self._SparsePeriodTime
@@ -55407,7 +55482,7 @@ class SparseBackupConfigInfo(AbstractModel):
 
     @property
     def SparseBackupSaveDays(self):
-        r"""保留天数（7-7320天，最长20年）
+        r"""<p>保留天数（7-7320天，最长20年）</p>
         :rtype: int
         """
         return self._SparseBackupSaveDays
@@ -55442,10 +55517,10 @@ class SparseBackupConfigRsp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SparseBackupSwitch: 稀疏备份开关：ON/OFF
+        :param _SparseBackupSwitch: <p>稀疏备份开关：ON/OFF</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparseBackupSwitch: str
-        :param _SparseBackupConfigInfos: 稀疏备份策略列表（1-3条）
+        :param _SparseBackupConfigInfos: <p>稀疏备份策略列表（1-3条）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparseBackupConfigInfos: list of SparseBackupConfigInfo
         """
@@ -55454,7 +55529,7 @@ class SparseBackupConfigRsp(AbstractModel):
 
     @property
     def SparseBackupSwitch(self):
-        r"""稀疏备份开关：ON/OFF
+        r"""<p>稀疏备份开关：ON/OFF</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55466,7 +55541,7 @@ class SparseBackupConfigRsp(AbstractModel):
 
     @property
     def SparseBackupConfigInfos(self):
-        r"""稀疏备份策略列表（1-3条）
+        r"""<p>稀疏备份策略列表（1-3条）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SparseBackupConfigInfo
         """

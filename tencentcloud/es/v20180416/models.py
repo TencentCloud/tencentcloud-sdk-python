@@ -2804,98 +2804,92 @@ class CreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _EsVersion: 实例版本（支持"5.6.4"、"6.4.3"、"6.8.2"、"7.5.1"、"7.10.1"）
+        :param _EsVersion: <p>实例版本（支持&quot;5.6.4&quot;、&quot;6.4.3&quot;、&quot;6.8.2&quot;、&quot;7.5.1&quot;、&quot;7.10.1&quot;）</p>
         :type EsVersion: str
-        :param _VpcId: 私有网络ID
+        :param _VpcId: <p>私有网络ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _Password: 访问密码（密码需8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
+        :param _Password: <p>访问密码（密码需8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&amp;^*+=_:;,.?]的特殊符号）</p>
         :type Password: str
-        :param _InstanceName: 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+        :param _InstanceName: <p>实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）</p>
         :type InstanceName: str
-        :param _NodeNum: 已废弃请使用NodeInfoList
-节点数量（2-50个）
+        :param _NodeNum: <p>已废弃请使用NodeInfoList<br>节点数量（2-50个）</p>
         :type NodeNum: int
-        :param _ChargeType: 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
+        :param _ChargeType: <p>计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR</p>
         :type ChargeType: str
-        :param _ChargePeriod: 包年包月购买时长（单位由参数TimeUnit决定）
+        :param _ChargePeriod: <p>包年包月购买时长（单位由参数TimeUnit决定）</p>
         :type ChargePeriod: int
-        :param _RenewFlag: 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费
+        :param _RenewFlag: <p>自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费</p>
         :type RenewFlag: str
-        :param _NodeType: 已废弃请使用NodeInfoList
-节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param _NodeType: <p>已废弃请使用NodeInfoList<br>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :type NodeType: str
-        :param _DiskType: 已废弃请使用NodeInfoList
-节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li> CLOUD_HSSD：增强型SSD云硬盘</li><li> CLOUD_BSSD：通用型SSD云硬盘</li>默认值CLOUD_SSD
+        :param _DiskType: <p>已废弃请使用NodeInfoList<br>节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li> CLOUD_HSSD：增强型SSD云硬盘</li><li> CLOUD_BSSD：通用型SSD云硬盘</li>默认值CLOUD_SSD</p>
         :type DiskType: str
-        :param _DiskSize: 已废弃请使用NodeInfoList
-节点磁盘容量（单位GB）
+        :param _DiskSize: <p>已废弃请使用NodeInfoList<br>节点磁盘容量（单位GB）</p>
         :type DiskSize: int
-        :param _TimeUnit: 计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）
+        :param _TimeUnit: <p>计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）</p>
         :type TimeUnit: str
-        :param _AutoVoucher: 是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0
+        :param _AutoVoucher: <p>是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0</p>
         :type AutoVoucher: int
-        :param _VoucherIds: 代金券ID列表（目前仅支持指定一张代金券）
+        :param _VoucherIds: <p>代金券ID列表（目前仅支持指定一张代金券）</p>
         :type VoucherIds: list of str
-        :param _EnableDedicatedMaster: 已废弃请使用NodeInfoList
-是否创建专用主节点<li>true：开启专用主节点</li><li>false：不开启专用主节点</li>默认值false
+        :param _EnableDedicatedMaster: <p>已废弃请使用NodeInfoList<br>是否创建专用主节点<li>true：开启专用主节点</li><li>false：不开启专用主节点</li>默认值false</p>
         :type EnableDedicatedMaster: bool
-        :param _MasterNodeNum: 已废弃请使用NodeInfoList
-专用主节点个数（只支持3个和5个，EnableDedicatedMaster为true时该值必传）
+        :param _MasterNodeNum: <p>已废弃请使用NodeInfoList<br>专用主节点个数（只支持3个和5个，EnableDedicatedMaster为true时该值必传）</p>
         :type MasterNodeNum: int
-        :param _MasterNodeType: 已废弃请使用NodeInfoList
-专用主节点类型（EnableDedicatedMaster为true时必传）<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param _MasterNodeType: <p>已废弃请使用NodeInfoList<br>专用主节点类型（EnableDedicatedMaster为true时必传）<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :type MasterNodeType: str
-        :param _MasterNodeDiskSize: 已废弃请使用NodeInfoList
-专用主节点磁盘大小（单位GB，非必传，若传递则必须为50，暂不支持自定义）
+        :param _MasterNodeDiskSize: <p>已废弃请使用NodeInfoList<br>专用主节点磁盘大小（单位GB，非必传，若传递则必须为50，暂不支持自定义）</p>
         :type MasterNodeDiskSize: int
-        :param _ClusterNameInConf: 集群配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
+        :param _ClusterNameInConf: <p>集群配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）</p>
         :type ClusterNameInConf: str
-        :param _DeployMode: 集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>默认为0
+        :param _DeployMode: <p>集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>默认为0</p>
         :type DeployMode: int
-        :param _MultiZoneInfo: 多可用区部署时可用区的详细信息(DeployMode为1时必传)
+        :param _MultiZoneInfo: <p>多可用区部署时可用区的详细信息(DeployMode为1时必传)</p>
         :type MultiZoneInfo: list of ZoneDetail
-        :param _LicenseType: License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
+        :param _LicenseType: <p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum</p>
         :type LicenseType: str
-        :param _NodeInfoList: 节点信息列表， 用于描述集群各类节点的规格信息如节点类型，节点个数，节点规格，磁盘类型，磁盘大小等
+        :param _NodeInfoList: <p>节点信息列表， 用于描述集群各类节点的规格信息如节点类型，节点个数，节点规格，磁盘类型，磁盘大小等</p>
         :type NodeInfoList: list of NodeInfo
-        :param _TagList: 节点标签信息列表
+        :param _TagList: <p>节点标签信息列表</p>
         :type TagList: list of TagInfo
-        :param _BasicSecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+        :param _BasicSecurityType: <p>6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li></p>
         :type BasicSecurityType: int
-        :param _SceneType: 场景化模板类型 0：不启用 1：通用 2：日志 3：搜索
+        :param _SceneType: <p>场景化模板类型 0：不启用 1：通用 2：日志 3：搜索</p>
         :type SceneType: int
-        :param _WebNodeTypeInfo: 可视化节点配置
+        :param _WebNodeTypeInfo: <p>可视化节点配置</p>
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
-        :param _Protocol: 创建https集群，默认是http
+        :param _Protocol: <p>创建https集群，默认是http</p>
         :type Protocol: str
-        :param _OperationDuration: 可维护时间段
+        :param _OperationDuration: <p>可维护时间段</p>
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
-        :param _EnableHybridStorage: 是否开启存算分离
+        :param _EnableHybridStorage: <p>是否开启存算分离</p>
         :type EnableHybridStorage: bool
-        :param _DiskEnhance: 硬盘额外性能
+        :param _DiskEnhance: <p>硬盘额外性能</p>
         :type DiskEnhance: int
-        :param _EnableDiagnose: 是否开启智能巡检
+        :param _EnableDiagnose: <p>是否开启智能巡检</p>
         :type EnableDiagnose: bool
-        :param _CdcId: cdcId，使用cdc子网时传递
+        :param _CdcId: <p>cdcId，使用cdc子网时传递</p>
         :type CdcId: str
-        :param _DisasterRecoverGroupAffinity: 置放群组亲和度，范围[0,10]，0表示不开启
+        :param _DisasterRecoverGroupAffinity: <p>置放群组亲和度，范围[0,10]，0表示不开启</p>
         :type DisasterRecoverGroupAffinity: int
-        :param _SubProductCode: 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+        :param _SubProductCode: <p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
         :type SubProductCode: str
-        :param _ReadWriteMode: 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+        :param _ReadWriteMode: <p>读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离</p>
         :type ReadWriteMode: int
-        :param _EnableScheduleRecoverGroup: 置放群组是否开启异步任务
+        :param _EnableScheduleRecoverGroup: <p>置放群组是否开启异步任务</p>
         :type EnableScheduleRecoverGroup: bool
-        :param _EnableScheduleOperationDuration: 置放群组开启异步任务的可维护时间段
+        :param _EnableScheduleOperationDuration: <p>置放群组开启异步任务的可维护时间段</p>
         :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
-        :param _AutoScaleDiskInfoList: 自动扩盘参数列表
+        :param _AutoScaleDiskInfoList: <p>自动扩盘参数列表</p>
         :type AutoScaleDiskInfoList: list of AutoScaleDiskInfo
-        :param _EnableKibanaPublicAccess: 是否开启kibana公网访问，不传默认开启
+        :param _EnableKibanaPublicAccess: <p>是否开启kibana公网访问，不传默认开启</p>
         :type EnableKibanaPublicAccess: str
+        :param _AlarmPolicyIds: <p>已有的云监控告警策略 ID</p>
+        :type AlarmPolicyIds: list of str
         """
         self._Zone = None
         self._EsVersion = None
@@ -2939,10 +2933,11 @@ class CreateInstanceRequest(AbstractModel):
         self._EnableScheduleOperationDuration = None
         self._AutoScaleDiskInfoList = None
         self._EnableKibanaPublicAccess = None
+        self._AlarmPolicyIds = None
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -2953,7 +2948,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EsVersion(self):
-        r"""实例版本（支持"5.6.4"、"6.4.3"、"6.8.2"、"7.5.1"、"7.10.1"）
+        r"""<p>实例版本（支持&quot;5.6.4&quot;、&quot;6.4.3&quot;、&quot;6.8.2&quot;、&quot;7.5.1&quot;、&quot;7.10.1&quot;）</p>
         :rtype: str
         """
         return self._EsVersion
@@ -2964,7 +2959,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络ID
+        r"""<p>私有网络ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -2975,7 +2970,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -2986,7 +2981,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""访问密码（密码需8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
+        r"""<p>访问密码（密码需8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&amp;^*+=_:;,.?]的特殊符号）</p>
         :rtype: str
         """
         return self._Password
@@ -2997,7 +2992,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+        r"""<p>实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）</p>
         :rtype: str
         """
         return self._InstanceName
@@ -3008,8 +3003,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def NodeNum(self):
-        r"""已废弃请使用NodeInfoList
-节点数量（2-50个）
+        r"""<p>已废弃请使用NodeInfoList<br>节点数量（2-50个）</p>
         :rtype: int
         """
         return self._NodeNum
@@ -3020,7 +3014,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def ChargeType(self):
-        r"""计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
+        r"""<p>计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR</p>
         :rtype: str
         """
         return self._ChargeType
@@ -3031,7 +3025,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def ChargePeriod(self):
-        r"""包年包月购买时长（单位由参数TimeUnit决定）
+        r"""<p>包年包月购买时长（单位由参数TimeUnit决定）</p>
         :rtype: int
         """
         return self._ChargePeriod
@@ -3042,7 +3036,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费
+        r"""<p>自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费</p>
         :rtype: str
         """
         return self._RenewFlag
@@ -3053,8 +3047,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""已废弃请使用NodeInfoList
-节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        r"""<p>已废弃请使用NodeInfoList<br>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :rtype: str
         """
         return self._NodeType
@@ -3065,8 +3058,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""已废弃请使用NodeInfoList
-节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li> CLOUD_HSSD：增强型SSD云硬盘</li><li> CLOUD_BSSD：通用型SSD云硬盘</li>默认值CLOUD_SSD
+        r"""<p>已废弃请使用NodeInfoList<br>节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li> CLOUD_HSSD：增强型SSD云硬盘</li><li> CLOUD_BSSD：通用型SSD云硬盘</li>默认值CLOUD_SSD</p>
         :rtype: str
         """
         return self._DiskType
@@ -3077,8 +3069,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""已废弃请使用NodeInfoList
-节点磁盘容量（单位GB）
+        r"""<p>已废弃请使用NodeInfoList<br>节点磁盘容量（单位GB）</p>
         :rtype: int
         """
         return self._DiskSize
@@ -3089,7 +3080,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）
+        r"""<p>计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -3100,7 +3091,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0
+        r"""<p>是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -3111,7 +3102,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        r"""代金券ID列表（目前仅支持指定一张代金券）
+        r"""<p>代金券ID列表（目前仅支持指定一张代金券）</p>
         :rtype: list of str
         """
         return self._VoucherIds
@@ -3122,8 +3113,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EnableDedicatedMaster(self):
-        r"""已废弃请使用NodeInfoList
-是否创建专用主节点<li>true：开启专用主节点</li><li>false：不开启专用主节点</li>默认值false
+        r"""<p>已废弃请使用NodeInfoList<br>是否创建专用主节点<li>true：开启专用主节点</li><li>false：不开启专用主节点</li>默认值false</p>
         :rtype: bool
         """
         return self._EnableDedicatedMaster
@@ -3134,8 +3124,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def MasterNodeNum(self):
-        r"""已废弃请使用NodeInfoList
-专用主节点个数（只支持3个和5个，EnableDedicatedMaster为true时该值必传）
+        r"""<p>已废弃请使用NodeInfoList<br>专用主节点个数（只支持3个和5个，EnableDedicatedMaster为true时该值必传）</p>
         :rtype: int
         """
         return self._MasterNodeNum
@@ -3146,8 +3135,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def MasterNodeType(self):
-        r"""已废弃请使用NodeInfoList
-专用主节点类型（EnableDedicatedMaster为true时必传）<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        r"""<p>已废弃请使用NodeInfoList<br>专用主节点类型（EnableDedicatedMaster为true时必传）<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :rtype: str
         """
         return self._MasterNodeType
@@ -3158,8 +3146,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def MasterNodeDiskSize(self):
-        r"""已废弃请使用NodeInfoList
-专用主节点磁盘大小（单位GB，非必传，若传递则必须为50，暂不支持自定义）
+        r"""<p>已废弃请使用NodeInfoList<br>专用主节点磁盘大小（单位GB，非必传，若传递则必须为50，暂不支持自定义）</p>
         :rtype: int
         """
         return self._MasterNodeDiskSize
@@ -3170,7 +3157,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def ClusterNameInConf(self):
-        r"""集群配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
+        r"""<p>集群配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）</p>
         :rtype: str
         """
         return self._ClusterNameInConf
@@ -3181,7 +3168,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def DeployMode(self):
-        r"""集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>默认为0
+        r"""<p>集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>默认为0</p>
         :rtype: int
         """
         return self._DeployMode
@@ -3192,7 +3179,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def MultiZoneInfo(self):
-        r"""多可用区部署时可用区的详细信息(DeployMode为1时必传)
+        r"""<p>多可用区部署时可用区的详细信息(DeployMode为1时必传)</p>
         :rtype: list of ZoneDetail
         """
         return self._MultiZoneInfo
@@ -3203,7 +3190,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
+        r"""<p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum</p>
         :rtype: str
         """
         return self._LicenseType
@@ -3214,7 +3201,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def NodeInfoList(self):
-        r"""节点信息列表， 用于描述集群各类节点的规格信息如节点类型，节点个数，节点规格，磁盘类型，磁盘大小等
+        r"""<p>节点信息列表， 用于描述集群各类节点的规格信息如节点类型，节点个数，节点规格，磁盘类型，磁盘大小等</p>
         :rtype: list of NodeInfo
         """
         return self._NodeInfoList
@@ -3225,7 +3212,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""节点标签信息列表
+        r"""<p>节点标签信息列表</p>
         :rtype: list of TagInfo
         """
         return self._TagList
@@ -3236,7 +3223,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def BasicSecurityType(self):
-        r"""6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+        r"""<p>6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li></p>
         :rtype: int
         """
         return self._BasicSecurityType
@@ -3247,7 +3234,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""场景化模板类型 0：不启用 1：通用 2：日志 3：搜索
+        r"""<p>场景化模板类型 0：不启用 1：通用 2：日志 3：搜索</p>
         :rtype: int
         """
         return self._SceneType
@@ -3258,7 +3245,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def WebNodeTypeInfo(self):
-        r"""可视化节点配置
+        r"""<p>可视化节点配置</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         return self._WebNodeTypeInfo
@@ -3269,7 +3256,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""创建https集群，默认是http
+        r"""<p>创建https集群，默认是http</p>
         :rtype: str
         """
         return self._Protocol
@@ -3280,7 +3267,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def OperationDuration(self):
-        r"""可维护时间段
+        r"""<p>可维护时间段</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
         return self._OperationDuration
@@ -3291,7 +3278,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EnableHybridStorage(self):
-        r"""是否开启存算分离
+        r"""<p>是否开启存算分离</p>
         :rtype: bool
         """
         return self._EnableHybridStorage
@@ -3302,7 +3289,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def DiskEnhance(self):
-        r"""硬盘额外性能
+        r"""<p>硬盘额外性能</p>
         :rtype: int
         """
         return self._DiskEnhance
@@ -3313,7 +3300,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EnableDiagnose(self):
-        r"""是否开启智能巡检
+        r"""<p>是否开启智能巡检</p>
         :rtype: bool
         """
         return self._EnableDiagnose
@@ -3324,7 +3311,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""cdcId，使用cdc子网时传递
+        r"""<p>cdcId，使用cdc子网时传递</p>
         :rtype: str
         """
         return self._CdcId
@@ -3335,7 +3322,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def DisasterRecoverGroupAffinity(self):
-        r"""置放群组亲和度，范围[0,10]，0表示不开启
+        r"""<p>置放群组亲和度，范围[0,10]，0表示不开启</p>
         :rtype: int
         """
         return self._DisasterRecoverGroupAffinity
@@ -3346,7 +3333,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def SubProductCode(self):
-        r"""子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+        r"""<p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
         :rtype: str
         """
         return self._SubProductCode
@@ -3357,7 +3344,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def ReadWriteMode(self):
-        r"""读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+        r"""<p>读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离</p>
         :rtype: int
         """
         return self._ReadWriteMode
@@ -3368,7 +3355,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EnableScheduleRecoverGroup(self):
-        r"""置放群组是否开启异步任务
+        r"""<p>置放群组是否开启异步任务</p>
         :rtype: bool
         """
         return self._EnableScheduleRecoverGroup
@@ -3379,7 +3366,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EnableScheduleOperationDuration(self):
-        r"""置放群组开启异步任务的可维护时间段
+        r"""<p>置放群组开启异步任务的可维护时间段</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
         """
         return self._EnableScheduleOperationDuration
@@ -3390,7 +3377,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def AutoScaleDiskInfoList(self):
-        r"""自动扩盘参数列表
+        r"""<p>自动扩盘参数列表</p>
         :rtype: list of AutoScaleDiskInfo
         """
         return self._AutoScaleDiskInfoList
@@ -3401,7 +3388,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EnableKibanaPublicAccess(self):
-        r"""是否开启kibana公网访问，不传默认开启
+        r"""<p>是否开启kibana公网访问，不传默认开启</p>
         :rtype: str
         """
         return self._EnableKibanaPublicAccess
@@ -3409,6 +3396,17 @@ class CreateInstanceRequest(AbstractModel):
     @EnableKibanaPublicAccess.setter
     def EnableKibanaPublicAccess(self, EnableKibanaPublicAccess):
         self._EnableKibanaPublicAccess = EnableKibanaPublicAccess
+
+    @property
+    def AlarmPolicyIds(self):
+        r"""<p>已有的云监控告警策略 ID</p>
+        :rtype: list of str
+        """
+        return self._AlarmPolicyIds
+
+    @AlarmPolicyIds.setter
+    def AlarmPolicyIds(self, AlarmPolicyIds):
+        self._AlarmPolicyIds = AlarmPolicyIds
 
 
     def _deserialize(self, params):
@@ -3480,6 +3478,7 @@ class CreateInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._AutoScaleDiskInfoList.append(obj)
         self._EnableKibanaPublicAccess = params.get("EnableKibanaPublicAccess")
+        self._AlarmPolicyIds = params.get("AlarmPolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3497,9 +3496,9 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _DealName: 订单号
+        :param _DealName: <p>订单号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3511,7 +3510,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3522,7 +3521,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号
+        r"""<p>订单号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17135,36 +17134,39 @@ class NodeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeNum: 节点数量
+        :param _NodeNum: <p>节点数量</p>
         :type NodeNum: int
-        :param _NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param _NodeType: <p>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :type NodeType: str
-        :param _Type: 节点类型<li>hotData: 热数据节点</li>
-<li>warmData: 冷数据节点</li>
-<li>dedicatedMaster: 专用主节点</li>
-默认值为hotData
+        :param _Type: <p>节点类型<li>hotData: 热数据节点</li></p><li>warmData: 冷数据节点</li><li>dedicatedMaster: 专用主节点</li>默认值为hotData
         :type Type: str
-        :param _DiskType: 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+        :param _DiskType: <p>节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD</p>
         :type DiskType: str
-        :param _DiskSize: 节点磁盘容量（单位GB）
+        :param _DiskSize: <p>节点磁盘容量（单位GB）</p>
         :type DiskSize: int
-        :param _LocalDiskInfo: 节点本地盘信息
+        :param _LocalDiskInfo: <p>节点本地盘信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
-        :param _DiskCount: 节点磁盘块数
+        :param _DiskCount: <p>节点磁盘块数</p>
         :type DiskCount: int
-        :param _DiskEncrypt: 节点磁盘是否加密 0: 不加密，1: 加密；默认不加密
+        :param _DiskEncrypt: <p>节点磁盘是否加密 0: 不加密，1: 加密；默认不加密</p>
         :type DiskEncrypt: int
-        :param _CpuNum: cpu数目
+        :param _KmsKeyId: <p>自定义加密密钥id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsKeyId: str
+        :param _KmsKeyName: <p>自定义加密密钥name</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsKeyName: str
+        :param _CpuNum: <p>cpu数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CpuNum: int
-        :param _MemSize: 内存大小，单位GB
+        :param _MemSize: <p>内存大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemSize: int
-        :param _DiskEnhance: 硬盘额外性能
+        :param _DiskEnhance: <p>硬盘额外性能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskEnhance: int
-        :param _GpuInfo: 节点Gpu信息
+        :param _GpuInfo: <p>节点Gpu信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuInfo: :class:`tencentcloud.es.v20180416.models.GpuInfo`
         """
@@ -17176,6 +17178,8 @@ class NodeInfo(AbstractModel):
         self._LocalDiskInfo = None
         self._DiskCount = None
         self._DiskEncrypt = None
+        self._KmsKeyId = None
+        self._KmsKeyName = None
         self._CpuNum = None
         self._MemSize = None
         self._DiskEnhance = None
@@ -17183,7 +17187,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def NodeNum(self):
-        r"""节点数量
+        r"""<p>节点数量</p>
         :rtype: int
         """
         return self._NodeNum
@@ -17194,7 +17198,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        r"""<p>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :rtype: str
         """
         return self._NodeType
@@ -17205,10 +17209,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""节点类型<li>hotData: 热数据节点</li>
-<li>warmData: 冷数据节点</li>
-<li>dedicatedMaster: 专用主节点</li>
-默认值为hotData
+        r"""<p>节点类型<li>hotData: 热数据节点</li></p><li>warmData: 冷数据节点</li><li>dedicatedMaster: 专用主节点</li>默认值为hotData
         :rtype: str
         """
         return self._Type
@@ -17219,7 +17220,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+        r"""<p>节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD</p>
         :rtype: str
         """
         return self._DiskType
@@ -17230,7 +17231,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""节点磁盘容量（单位GB）
+        r"""<p>节点磁盘容量（单位GB）</p>
         :rtype: int
         """
         return self._DiskSize
@@ -17241,7 +17242,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def LocalDiskInfo(self):
-        r"""节点本地盘信息
+        r"""<p>节点本地盘信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
         """
@@ -17253,7 +17254,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def DiskCount(self):
-        r"""节点磁盘块数
+        r"""<p>节点磁盘块数</p>
         :rtype: int
         """
         return self._DiskCount
@@ -17264,7 +17265,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def DiskEncrypt(self):
-        r"""节点磁盘是否加密 0: 不加密，1: 加密；默认不加密
+        r"""<p>节点磁盘是否加密 0: 不加密，1: 加密；默认不加密</p>
         :rtype: int
         """
         return self._DiskEncrypt
@@ -17274,8 +17275,32 @@ class NodeInfo(AbstractModel):
         self._DiskEncrypt = DiskEncrypt
 
     @property
+    def KmsKeyId(self):
+        r"""<p>自定义加密密钥id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def KmsKeyName(self):
+        r"""<p>自定义加密密钥name</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KmsKeyName
+
+    @KmsKeyName.setter
+    def KmsKeyName(self, KmsKeyName):
+        self._KmsKeyName = KmsKeyName
+
+    @property
     def CpuNum(self):
-        r"""cpu数目
+        r"""<p>cpu数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17287,7 +17312,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def MemSize(self):
-        r"""内存大小，单位GB
+        r"""<p>内存大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17299,7 +17324,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def DiskEnhance(self):
-        r"""硬盘额外性能
+        r"""<p>硬盘额外性能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17311,7 +17336,7 @@ class NodeInfo(AbstractModel):
 
     @property
     def GpuInfo(self):
-        r"""节点Gpu信息
+        r"""<p>节点Gpu信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.GpuInfo`
         """
@@ -17333,6 +17358,8 @@ class NodeInfo(AbstractModel):
             self._LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
         self._DiskCount = params.get("DiskCount")
         self._DiskEncrypt = params.get("DiskEncrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._KmsKeyName = params.get("KmsKeyName")
         self._CpuNum = params.get("CpuNum")
         self._MemSize = params.get("MemSize")
         self._DiskEnhance = params.get("DiskEnhance")

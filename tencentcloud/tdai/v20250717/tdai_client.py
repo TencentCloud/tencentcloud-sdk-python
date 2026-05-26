@@ -90,6 +90,29 @@ class TdaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMemoryPlusSpace(self, request):
+        r"""本接口（CreateMemoryPlusSpace）用于创建正式版 Memory 实例。
+
+        :param request: Request instance for CreateMemoryPlusSpace.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.CreateMemoryPlusSpaceRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.CreateMemoryPlusSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMemoryPlusSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMemoryPlusSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAgentDutyTaskDetail(self, request):
         r"""查询智能体值守任务详情
 
@@ -251,6 +274,75 @@ class TdaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMemoryPlusRecord(self, request):
+        r"""本接口（DescribeMemoryPlusRecord）用于查询 Memory 实例的记忆数据。
+
+        :param request: Request instance for DescribeMemoryPlusRecord.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.DescribeMemoryPlusRecordRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.DescribeMemoryPlusRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMemoryPlusRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMemoryPlusRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMemoryPlusSpace(self, request):
+        r"""本接口（DescribeMemoryPlusSpace）用于查询 Memory 正式版实例详情。
+
+        :param request: Request instance for DescribeMemoryPlusSpace.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.DescribeMemoryPlusSpaceRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.DescribeMemoryPlusSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMemoryPlusSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMemoryPlusSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMemoryPlusSpaces(self, request):
+        r"""本接口（DescribeMemoryPlusSpaces）用于查询 Memory正式版实例列表。
+
+        :param request: Request instance for DescribeMemoryPlusSpaces.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.DescribeMemoryPlusSpacesRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.DescribeMemoryPlusSpacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMemoryPlusSpaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMemoryPlusSpacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeReportUrl(self, request):
         r"""智能体报告地址生成并下载
 
@@ -274,6 +366,52 @@ class TdaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeServiceAccessKey(self, request):
+        r"""本接口（DescribeServiceAccessKey）用于查询服务访问密钥。
+
+        :param request: Request instance for DescribeServiceAccessKey.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.DescribeServiceAccessKeyRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.DescribeServiceAccessKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServiceAccessKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServiceAccessKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DestroyMemoryPlusSpace(self, request):
+        r"""本接口（DestroyMemoryPlusSpace）用于从回收站彻底销毁 Memory 实例。
+
+        :param request: Request instance for DestroyMemoryPlusSpace.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.DestroyMemoryPlusSpaceRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.DestroyMemoryPlusSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyMemoryPlusSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyMemoryPlusSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def IsolateAgentInstance(self, request):
         r"""本接口（IsolateAgentInstance）用于隔离智能体实例，通常在用户需要隔离智能体实例时使用。
 
@@ -288,6 +426,29 @@ class TdaiClient(AbstractClient):
             body = self.call("IsolateAgentInstance", params, headers=headers)
             response = json.loads(body)
             model = models.IsolateAgentInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def IsolateMemoryPlusSpace(self, request):
+        r"""本接口（IsolateMemoryPlusSpace）用于将正式版 Memory 实例放入回收站隔离。
+
+        :param request: Request instance for IsolateMemoryPlusSpace.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.IsolateMemoryPlusSpaceRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.IsolateMemoryPlusSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateMemoryPlusSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsolateMemoryPlusSpaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -343,6 +504,29 @@ class TdaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMemoryPlusSpace(self, request):
+        r"""本接口（ModifyMemoryPlusSpace）用于修改正式版 Memory 实例，可修改实例名称与描述。
+
+        :param request: Request instance for ModifyMemoryPlusSpace.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.ModifyMemoryPlusSpaceRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.ModifyMemoryPlusSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMemoryPlusSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMemoryPlusSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def PauseAgentWork(self, request):
         r"""本接口（PauseAgentWork）用于暂停智能体实例的值守任务，通常在用户需要暂停时使用。
 
@@ -380,6 +564,29 @@ class TdaiClient(AbstractClient):
             body = self.call("RecoverAgentInstance", params, headers=headers)
             response = json.loads(body)
             model = models.RecoverAgentInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RecoverMemoryPlusSpace(self, request):
+        r"""本接口（RecoverMemoryPlusSpace）用于从回收站恢复 Memory 实例。
+
+        :param request: Request instance for RecoverMemoryPlusSpace.
+        :type request: :class:`tencentcloud.tdai.v20250717.models.RecoverMemoryPlusSpaceRequest`
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.RecoverMemoryPlusSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecoverMemoryPlusSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecoverMemoryPlusSpaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

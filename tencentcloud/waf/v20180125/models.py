@@ -2648,136 +2648,108 @@ class AddSpartaProtectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 需要防护的域名
+        :param _Domain: <p>需要防护的域名</p>
         :type Domain: str
-        :param _CertType: 证书类型。
-0：仅配置HTTP监听端口，没有证书
-1：证书来源为自有证书
-2：证书来源为托管证书
+        :param _CertType: <p>证书类型。<br>0：仅配置HTTP监听端口，没有证书<br>1：证书来源为自有证书<br>2：证书来源为托管证书</p>
         :type CertType: int
-        :param _IsCdn: waf前是否部署有七层代理服务。
-0：没有部署代理服务
-1：有部署代理服务，waf将使用XFF获取客户端IP
-2：有部署代理服务，waf将使用remote_addr获取客户端IP
-3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+        :param _IsCdn: <p>waf前是否部署有七层代理服务。<br>0：没有部署代理服务<br>1：有部署代理服务，waf将使用XFF获取客户端IP<br>2：有部署代理服务，waf将使用remote_addr获取客户端IP<br>3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
         :type IsCdn: int
-        :param _UpstreamType: 回源类型。
-0：通过IP回源
-1：通过域名回源
+        :param _UpstreamType: <p>回源类型。<br>0：通过IP回源<br>1：通过域名回源</p>
         :type UpstreamType: int
-        :param _IsWebsocket: 是否开启WebSocket支持。
-0：关闭
-1：开启
+        :param _IsWebsocket: <p>是否开启WebSocket支持。<br>0：关闭<br>1：开启</p>
         :type IsWebsocket: int
-        :param _LoadBalance: 回源负载均衡策略。
-0：轮询
-1：IP hash
-2：加权轮询
+        :param _LoadBalance: <p>回源负载均衡策略。<br>0：轮询<br>1：IP hash<br>2：加权轮询</p>
         :type LoadBalance: str
-        :param _Ports: 服务端口列表配置。
-NginxServerId：新增域名时填'0'
-Port：监听端口号
-Protocol：端口协议
-UpstreamPort：与Port相同
-UpstreamProtocol：与Protocol相同
+        :param _Ports: <p>服务端口列表配置。<br>NginxServerId：新增域名时填&#39;0&#39;<br>Port：监听端口号<br>Protocol：端口协议<br>UpstreamPort：与Port相同<br>UpstreamProtocol：与Protocol相同</p>
         :type Ports: list of PortItem
-        :param _IsKeepAlive: 必填项，是否开启长连接。
-0： 短连接
-1： 长连接
+        :param _IsKeepAlive: <p>必填项，是否开启长连接。<br>0： 短连接<br>1： 长连接</p>
         :type IsKeepAlive: str
-        :param _InstanceID: 必填项，域名所属实例id
+        :param _InstanceID: <p>必填项，域名所属实例id</p>
         :type InstanceID: str
-        :param _HttpsRewrite: 是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转
+        :param _HttpsRewrite: <p>是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转</p>
         :type HttpsRewrite: int
-        :param _IsHttp2: 是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启
+        :param _IsHttp2: <p>是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启</p>
         :type IsHttp2: int
-        :param _ActiveCheck: 是否开启主动健康检测。0：不开启1：开启
+        :param _ActiveCheck: <p>是否开启主动健康检测。0：不开启1：开启</p>
         :type ActiveCheck: int
-        :param _CipherTemplate: 加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
+        :param _CipherTemplate: <p>加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板</p>
         :type CipherTemplate: int
-        :param _Cert: CertType为1时，需要填充此参数，表示自有证书的证书链
+        :param _Cert: <p>CertType为1时，需要填充此参数，表示自有证书的证书链</p>
         :type Cert: str
-        :param _PrivateKey: CertType为1时，需要填充此参数，表示自有证书的私钥
+        :param _PrivateKey: <p>CertType为1时，需要填充此参数，表示自有证书的私钥</p>
         :type PrivateKey: str
-        :param _SSLId: CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        :param _SSLId: <p>CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
         :type SSLId: str
-        :param _ResourceId: Waf的资源ID。
+        :param _ResourceId: <p>Waf的资源ID。</p>
         :type ResourceId: str
-        :param _IpHeaders: IsCdn为3时，需要填此参数，表示自定义header
+        :param _IpHeaders: <p>IsCdn为3时，需要填此参数，表示自定义header</p>
         :type IpHeaders: list of str
-        :param _UpstreamScheme: 服务配置有HTTPS端口时，HTTPS的回源协议。
-http：使用http协议回源，和HttpsUpstreamPort配合使用
-https：使用https协议回源
+        :param _UpstreamScheme: <p>服务配置有HTTPS端口时，HTTPS的回源协议。<br>http：使用http协议回源，和HttpsUpstreamPort配合使用<br>https：使用https协议回源</p>
         :type UpstreamScheme: str
-        :param _HttpsUpstreamPort: HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
+        :param _HttpsUpstreamPort: <p>HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段</p>
         :type HttpsUpstreamPort: str
-        :param _IsGray: 是否开启灰度，0表示不开启灰度。
+        :param _IsGray: <p>是否开启灰度，0表示不开启灰度。</p>
         :type IsGray: int
-        :param _GrayAreas: 灰度的地区
+        :param _GrayAreas: <p>灰度的地区</p>
         :type GrayAreas: list of str
-        :param _UpstreamDomain: 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+        :param _UpstreamDomain: <p>域名回源时的回源域名。UpstreamType为1时，需要填充此字段</p>
         :type UpstreamDomain: str
-        :param _SrcList: IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+        :param _SrcList: <p>IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段</p>
         :type SrcList: list of str
-        :param _Edition: WAF实例类型。
-sparta-waf：SAAS型WAF
-clb-waf：负载均衡型WAF
-cdn-waf：CDN上的Web防护能力
+        :param _Edition: <p>WAF实例类型。<br>sparta-waf：SAAS型WAF<br>clb-waf：负载均衡型WAF<br>cdn-waf：CDN上的Web防护能力</p>
         :type Edition: str
-        :param _Anycast: 目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+        :param _Anycast: <p>目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP</p>
         :type Anycast: int
-        :param _Weights: 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
+        :param _Weights: <p>回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []</p>
         :type Weights: list of int
-        :param _TLSVersion: TLS版本信息
+        :param _TLSVersion: <p>TLS版本信息</p>
         :type TLSVersion: int
-        :param _Ciphers: 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+        :param _Ciphers: <p>自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。</p>
         :type Ciphers: list of int
-        :param _ProxyConnectTimeout: WAF与源站的连接超时，默认10s。
+        :param _ProxyConnectTimeout: <p>WAF与源站的连接超时，默认10s。</p>
         :type ProxyConnectTimeout: int
-        :param _ProxyReadTimeout: WAF与源站的读超时时间，默认300s。
+        :param _ProxyReadTimeout: <p>WAF与源站的读超时时间，默认300s。</p>
         :type ProxyReadTimeout: int
-        :param _ProxySendTimeout: WAF与源站的写超时时间，默认300s。
+        :param _ProxySendTimeout: <p>WAF与源站的写超时时间，默认300s。</p>
         :type ProxySendTimeout: int
-        :param _SniType: WAF回源时的SNI类型。
-0：关闭SNI，不配置client_hello中的server_name
-1：开启SNI，client_hello中的server_name为防护域名
-2：开启SNI，SNI为域名回源时的源站域名
-3：开启SNI，SNI为自定义域名
+        :param _SniType: <p>WAF回源时的SNI类型。<br>0：关闭SNI，不配置client_hello中的server_name<br>1：开启SNI，client_hello中的server_name为防护域名<br>2：开启SNI，SNI为域名回源时的源站域名<br>3：开启SNI，SNI为自定义域名</p>
         :type SniType: int
-        :param _SniHost: SniType为3时，需要填此参数，表示自定义的SNI；
+        :param _SniHost: <p>SniType为3时，需要填此参数，表示自定义的SNI；</p>
         :type SniHost: str
-        :param _XFFReset: 是否开启XFF重置。0：关闭 1：开启
+        :param _XFFReset: <p>是否开启XFF重置。0：关闭 1：开启</p>
         :type XFFReset: int
-        :param _Note: 域名备注信息
+        :param _Note: <p>域名备注信息</p>
         :type Note: str
-        :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+        :param _UpstreamHost: <p>自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。</p>
         :type UpstreamHost: str
-        :param _ProxyBuffer: 是否开启缓存。 0：关闭 1：开启
+        :param _ProxyBuffer: <p>是否开启缓存。 0：关闭 1：开启</p>
         :type ProxyBuffer: int
-        :param _ProbeStatus: 是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测
+        :param _ProbeStatus: <p>是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测</p>
         :type ProbeStatus: int
-        :param _GmType: 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+        :param _GmType: <p>国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问</p>
         :type GmType: int
-        :param _GmCertType: 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+        :param _GmCertType: <p>国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书</p>
         :type GmCertType: int
-        :param _GmCert: GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+        :param _GmCert: <p>GmCertType为1时，需要填充此参数，表示自有国密证书的证书链</p>
         :type GmCert: str
-        :param _GmPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+        :param _GmPrivateKey: <p>GmCertType为1时，需要填充此参数，表示自有国密证书的私钥</p>
         :type GmPrivateKey: str
-        :param _GmEncCert: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+        :param _GmEncCert: <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书</p>
         :type GmEncCert: str
-        :param _GmEncPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+        :param _GmEncPrivateKey: <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥</p>
         :type GmEncPrivateKey: str
-        :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        :param _GmSSLId: <p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
         :type GmSSLId: str
-        :param _UpstreamPolicy: 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+        :param _UpstreamPolicy: <p>回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源</p>
         :type UpstreamPolicy: int
-        :param _UpstreamRules: 分流回源时生效，分流回源的规则。
+        :param _UpstreamRules: <p>分流回源时生效，分流回源的规则。</p>
         :type UpstreamRules: list of UpstreamRule
-        :param _UseCase: 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        :param _UseCase: <p>业务场景。0：默认值，表示常规业务场景 1：大模型业务场景</p>
         :type UseCase: int
-        :param _Gzip: gzip开关。0：关闭 1：默认值，打开。
+        :param _Gzip: <p>gzip开关。0：关闭 1：默认值，打开。</p>
         :type Gzip: int
+        :param _Tags: <p>标签信息</p>
+        :type Tags: list of TagInfo
         """
         self._Domain = None
         self._CertType = None
@@ -2829,10 +2801,11 @@ cdn-waf：CDN上的Web防护能力
         self._UpstreamRules = None
         self._UseCase = None
         self._Gzip = None
+        self._Tags = None
 
     @property
     def Domain(self):
-        r"""需要防护的域名
+        r"""<p>需要防护的域名</p>
         :rtype: str
         """
         return self._Domain
@@ -2843,10 +2816,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def CertType(self):
-        r"""证书类型。
-0：仅配置HTTP监听端口，没有证书
-1：证书来源为自有证书
-2：证书来源为托管证书
+        r"""<p>证书类型。<br>0：仅配置HTTP监听端口，没有证书<br>1：证书来源为自有证书<br>2：证书来源为托管证书</p>
         :rtype: int
         """
         return self._CertType
@@ -2857,11 +2827,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def IsCdn(self):
-        r"""waf前是否部署有七层代理服务。
-0：没有部署代理服务
-1：有部署代理服务，waf将使用XFF获取客户端IP
-2：有部署代理服务，waf将使用remote_addr获取客户端IP
-3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+        r"""<p>waf前是否部署有七层代理服务。<br>0：没有部署代理服务<br>1：有部署代理服务，waf将使用XFF获取客户端IP<br>2：有部署代理服务，waf将使用remote_addr获取客户端IP<br>3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
         :rtype: int
         """
         return self._IsCdn
@@ -2872,9 +2838,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def UpstreamType(self):
-        r"""回源类型。
-0：通过IP回源
-1：通过域名回源
+        r"""<p>回源类型。<br>0：通过IP回源<br>1：通过域名回源</p>
         :rtype: int
         """
         return self._UpstreamType
@@ -2885,9 +2849,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def IsWebsocket(self):
-        r"""是否开启WebSocket支持。
-0：关闭
-1：开启
+        r"""<p>是否开启WebSocket支持。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._IsWebsocket
@@ -2898,10 +2860,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def LoadBalance(self):
-        r"""回源负载均衡策略。
-0：轮询
-1：IP hash
-2：加权轮询
+        r"""<p>回源负载均衡策略。<br>0：轮询<br>1：IP hash<br>2：加权轮询</p>
         :rtype: str
         """
         return self._LoadBalance
@@ -2912,12 +2871,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def Ports(self):
-        r"""服务端口列表配置。
-NginxServerId：新增域名时填'0'
-Port：监听端口号
-Protocol：端口协议
-UpstreamPort：与Port相同
-UpstreamProtocol：与Protocol相同
+        r"""<p>服务端口列表配置。<br>NginxServerId：新增域名时填&#39;0&#39;<br>Port：监听端口号<br>Protocol：端口协议<br>UpstreamPort：与Port相同<br>UpstreamProtocol：与Protocol相同</p>
         :rtype: list of PortItem
         """
         return self._Ports
@@ -2928,9 +2882,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def IsKeepAlive(self):
-        r"""必填项，是否开启长连接。
-0： 短连接
-1： 长连接
+        r"""<p>必填项，是否开启长连接。<br>0： 短连接<br>1： 长连接</p>
         :rtype: str
         """
         return self._IsKeepAlive
@@ -2941,7 +2893,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def InstanceID(self):
-        r"""必填项，域名所属实例id
+        r"""<p>必填项，域名所属实例id</p>
         :rtype: str
         """
         return self._InstanceID
@@ -2952,7 +2904,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def HttpsRewrite(self):
-        r"""是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转
+        r"""<p>是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转</p>
         :rtype: int
         """
         return self._HttpsRewrite
@@ -2963,7 +2915,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def IsHttp2(self):
-        r"""是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启
+        r"""<p>是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启</p>
         :rtype: int
         """
         return self._IsHttp2
@@ -2974,7 +2926,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def ActiveCheck(self):
-        r"""是否开启主动健康检测。0：不开启1：开启
+        r"""<p>是否开启主动健康检测。0：不开启1：开启</p>
         :rtype: int
         """
         return self._ActiveCheck
@@ -2985,7 +2937,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def CipherTemplate(self):
-        r"""加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
+        r"""<p>加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板</p>
         :rtype: int
         """
         return self._CipherTemplate
@@ -2996,7 +2948,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def Cert(self):
-        r"""CertType为1时，需要填充此参数，表示自有证书的证书链
+        r"""<p>CertType为1时，需要填充此参数，表示自有证书的证书链</p>
         :rtype: str
         """
         return self._Cert
@@ -3007,7 +2959,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def PrivateKey(self):
-        r"""CertType为1时，需要填充此参数，表示自有证书的私钥
+        r"""<p>CertType为1时，需要填充此参数，表示自有证书的私钥</p>
         :rtype: str
         """
         return self._PrivateKey
@@ -3018,7 +2970,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def SSLId(self):
-        r"""CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        r"""<p>CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
         :rtype: str
         """
         return self._SSLId
@@ -3031,7 +2983,7 @@ UpstreamProtocol：与Protocol相同
     def ResourceId(self):
         warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
 
-        r"""Waf的资源ID。
+        r"""<p>Waf的资源ID。</p>
         :rtype: str
         """
         return self._ResourceId
@@ -3044,7 +2996,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def IpHeaders(self):
-        r"""IsCdn为3时，需要填此参数，表示自定义header
+        r"""<p>IsCdn为3时，需要填此参数，表示自定义header</p>
         :rtype: list of str
         """
         return self._IpHeaders
@@ -3055,9 +3007,7 @@ UpstreamProtocol：与Protocol相同
 
     @property
     def UpstreamScheme(self):
-        r"""服务配置有HTTPS端口时，HTTPS的回源协议。
-http：使用http协议回源，和HttpsUpstreamPort配合使用
-https：使用https协议回源
+        r"""<p>服务配置有HTTPS端口时，HTTPS的回源协议。<br>http：使用http协议回源，和HttpsUpstreamPort配合使用<br>https：使用https协议回源</p>
         :rtype: str
         """
         return self._UpstreamScheme
@@ -3070,7 +3020,7 @@ https：使用https协议回源
     def HttpsUpstreamPort(self):
         warnings.warn("parameter `HttpsUpstreamPort` is deprecated", DeprecationWarning) 
 
-        r"""HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
+        r"""<p>HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段</p>
         :rtype: str
         """
         return self._HttpsUpstreamPort
@@ -3085,7 +3035,7 @@ https：使用https协议回源
     def IsGray(self):
         warnings.warn("parameter `IsGray` is deprecated", DeprecationWarning) 
 
-        r"""是否开启灰度，0表示不开启灰度。
+        r"""<p>是否开启灰度，0表示不开启灰度。</p>
         :rtype: int
         """
         return self._IsGray
@@ -3100,7 +3050,7 @@ https：使用https协议回源
     def GrayAreas(self):
         warnings.warn("parameter `GrayAreas` is deprecated", DeprecationWarning) 
 
-        r"""灰度的地区
+        r"""<p>灰度的地区</p>
         :rtype: list of str
         """
         return self._GrayAreas
@@ -3113,7 +3063,7 @@ https：使用https协议回源
 
     @property
     def UpstreamDomain(self):
-        r"""域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+        r"""<p>域名回源时的回源域名。UpstreamType为1时，需要填充此字段</p>
         :rtype: str
         """
         return self._UpstreamDomain
@@ -3124,7 +3074,7 @@ https：使用https协议回源
 
     @property
     def SrcList(self):
-        r"""IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+        r"""<p>IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段</p>
         :rtype: list of str
         """
         return self._SrcList
@@ -3137,10 +3087,7 @@ https：使用https协议回源
     def Edition(self):
         warnings.warn("parameter `Edition` is deprecated", DeprecationWarning) 
 
-        r"""WAF实例类型。
-sparta-waf：SAAS型WAF
-clb-waf：负载均衡型WAF
-cdn-waf：CDN上的Web防护能力
+        r"""<p>WAF实例类型。<br>sparta-waf：SAAS型WAF<br>clb-waf：负载均衡型WAF<br>cdn-waf：CDN上的Web防护能力</p>
         :rtype: str
         """
         return self._Edition
@@ -3155,7 +3102,7 @@ cdn-waf：CDN上的Web防护能力
     def Anycast(self):
         warnings.warn("parameter `Anycast` is deprecated", DeprecationWarning) 
 
-        r"""目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+        r"""<p>目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP</p>
         :rtype: int
         """
         return self._Anycast
@@ -3168,7 +3115,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def Weights(self):
-        r"""回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
+        r"""<p>回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []</p>
         :rtype: list of int
         """
         return self._Weights
@@ -3179,7 +3126,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def TLSVersion(self):
-        r"""TLS版本信息
+        r"""<p>TLS版本信息</p>
         :rtype: int
         """
         return self._TLSVersion
@@ -3190,7 +3137,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def Ciphers(self):
-        r"""自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+        r"""<p>自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。</p>
         :rtype: list of int
         """
         return self._Ciphers
@@ -3201,7 +3148,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def ProxyConnectTimeout(self):
-        r"""WAF与源站的连接超时，默认10s。
+        r"""<p>WAF与源站的连接超时，默认10s。</p>
         :rtype: int
         """
         return self._ProxyConnectTimeout
@@ -3212,7 +3159,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def ProxyReadTimeout(self):
-        r"""WAF与源站的读超时时间，默认300s。
+        r"""<p>WAF与源站的读超时时间，默认300s。</p>
         :rtype: int
         """
         return self._ProxyReadTimeout
@@ -3223,7 +3170,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def ProxySendTimeout(self):
-        r"""WAF与源站的写超时时间，默认300s。
+        r"""<p>WAF与源站的写超时时间，默认300s。</p>
         :rtype: int
         """
         return self._ProxySendTimeout
@@ -3234,11 +3181,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def SniType(self):
-        r"""WAF回源时的SNI类型。
-0：关闭SNI，不配置client_hello中的server_name
-1：开启SNI，client_hello中的server_name为防护域名
-2：开启SNI，SNI为域名回源时的源站域名
-3：开启SNI，SNI为自定义域名
+        r"""<p>WAF回源时的SNI类型。<br>0：关闭SNI，不配置client_hello中的server_name<br>1：开启SNI，client_hello中的server_name为防护域名<br>2：开启SNI，SNI为域名回源时的源站域名<br>3：开启SNI，SNI为自定义域名</p>
         :rtype: int
         """
         return self._SniType
@@ -3249,7 +3192,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def SniHost(self):
-        r"""SniType为3时，需要填此参数，表示自定义的SNI；
+        r"""<p>SniType为3时，需要填此参数，表示自定义的SNI；</p>
         :rtype: str
         """
         return self._SniHost
@@ -3260,7 +3203,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def XFFReset(self):
-        r"""是否开启XFF重置。0：关闭 1：开启
+        r"""<p>是否开启XFF重置。0：关闭 1：开启</p>
         :rtype: int
         """
         return self._XFFReset
@@ -3271,7 +3214,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def Note(self):
-        r"""域名备注信息
+        r"""<p>域名备注信息</p>
         :rtype: str
         """
         return self._Note
@@ -3282,7 +3225,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def UpstreamHost(self):
-        r"""自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+        r"""<p>自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。</p>
         :rtype: str
         """
         return self._UpstreamHost
@@ -3293,7 +3236,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def ProxyBuffer(self):
-        r"""是否开启缓存。 0：关闭 1：开启
+        r"""<p>是否开启缓存。 0：关闭 1：开启</p>
         :rtype: int
         """
         return self._ProxyBuffer
@@ -3304,7 +3247,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def ProbeStatus(self):
-        r"""是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测
+        r"""<p>是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测</p>
         :rtype: int
         """
         return self._ProbeStatus
@@ -3315,7 +3258,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def GmType(self):
-        r"""国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+        r"""<p>国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问</p>
         :rtype: int
         """
         return self._GmType
@@ -3326,7 +3269,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def GmCertType(self):
-        r"""国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+        r"""<p>国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书</p>
         :rtype: int
         """
         return self._GmCertType
@@ -3337,7 +3280,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def GmCert(self):
-        r"""GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+        r"""<p>GmCertType为1时，需要填充此参数，表示自有国密证书的证书链</p>
         :rtype: str
         """
         return self._GmCert
@@ -3348,7 +3291,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def GmPrivateKey(self):
-        r"""GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+        r"""<p>GmCertType为1时，需要填充此参数，表示自有国密证书的私钥</p>
         :rtype: str
         """
         return self._GmPrivateKey
@@ -3359,7 +3302,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def GmEncCert(self):
-        r"""GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+        r"""<p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书</p>
         :rtype: str
         """
         return self._GmEncCert
@@ -3370,7 +3313,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def GmEncPrivateKey(self):
-        r"""GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+        r"""<p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥</p>
         :rtype: str
         """
         return self._GmEncPrivateKey
@@ -3381,7 +3324,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def GmSSLId(self):
-        r"""GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        r"""<p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
         :rtype: str
         """
         return self._GmSSLId
@@ -3392,7 +3335,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def UpstreamPolicy(self):
-        r"""回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+        r"""<p>回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源</p>
         :rtype: int
         """
         return self._UpstreamPolicy
@@ -3403,7 +3346,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def UpstreamRules(self):
-        r"""分流回源时生效，分流回源的规则。
+        r"""<p>分流回源时生效，分流回源的规则。</p>
         :rtype: list of UpstreamRule
         """
         return self._UpstreamRules
@@ -3414,7 +3357,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def UseCase(self):
-        r"""业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        r"""<p>业务场景。0：默认值，表示常规业务场景 1：大模型业务场景</p>
         :rtype: int
         """
         return self._UseCase
@@ -3425,7 +3368,7 @@ cdn-waf：CDN上的Web防护能力
 
     @property
     def Gzip(self):
-        r"""gzip开关。0：关闭 1：默认值，打开。
+        r"""<p>gzip开关。0：关闭 1：默认值，打开。</p>
         :rtype: int
         """
         return self._Gzip
@@ -3433,6 +3376,17 @@ cdn-waf：CDN上的Web防护能力
     @Gzip.setter
     def Gzip(self, Gzip):
         self._Gzip = Gzip
+
+    @property
+    def Tags(self):
+        r"""<p>标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -3496,6 +3450,12 @@ cdn-waf：CDN上的Web防护能力
                 self._UpstreamRules.append(obj)
         self._UseCase = params.get("UseCase")
         self._Gzip = params.get("Gzip")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5561,6 +5521,208 @@ class ApiSecSensitiveRule(AbstractModel):
             self._CustomRule = ApiSecCustomSensitiveRule()
             self._CustomRule._deserialize(params.get("CustomRule"))
         self._IsPan = params.get("IsPan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiSecSensitiveWhiteField(AbstractModel):
+    r"""敏感数据加白字段模型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: <p>字段名称</p>
+        :type FieldName: str
+        :param _FieldType: <p>字段位置</p>
+        :type FieldType: str
+        :param _SensitiveTypes: <p>敏感数据类型列表</p>
+        :type SensitiveTypes: list of str
+        """
+        self._FieldName = None
+        self._FieldType = None
+        self._SensitiveTypes = None
+
+    @property
+    def FieldName(self):
+        r"""<p>字段名称</p>
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def FieldType(self):
+        r"""<p>字段位置</p>
+        :rtype: str
+        """
+        return self._FieldType
+
+    @FieldType.setter
+    def FieldType(self, FieldType):
+        self._FieldType = FieldType
+
+    @property
+    def SensitiveTypes(self):
+        r"""<p>敏感数据类型列表</p>
+        :rtype: list of str
+        """
+        return self._SensitiveTypes
+
+    @SensitiveTypes.setter
+    def SensitiveTypes(self, SensitiveTypes):
+        self._SensitiveTypes = SensitiveTypes
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
+        self._FieldType = params.get("FieldType")
+        self._SensitiveTypes = params.get("SensitiveTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiSecSensitiveWhiteRule(AbstractModel):
+    r"""敏感数据加白规则模型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: <p>白名单规则名称</p>
+        :type RuleName: str
+        :param _ApiNameOp: <p>加白对象配置</p>
+        :type ApiNameOp: list of ApiNameOp
+        :param _WhiteMode: <p>加白模式</p><p>枚举值：</p><ul><li>1： 对整个API加白</li><li>2： 对指定字段加白</li></ul>
+        :type WhiteMode: int
+        :param _WhiteFields: <p>加白字段配置列表</p>
+        :type WhiteFields: list of ApiSecSensitiveWhiteField
+        :param _Status: <p>规则开关</p><p>枚举值：</p><ul><li>0： 关</li><li>1： 开</li></ul>
+        :type Status: int
+        :param _Description: <p>规则描述</p>
+        :type Description: str
+        :param _UpdateTime: <p>修改时间</p><p>单位：s</p>
+        :type UpdateTime: int
+        """
+        self._RuleName = None
+        self._ApiNameOp = None
+        self._WhiteMode = None
+        self._WhiteFields = None
+        self._Status = None
+        self._Description = None
+        self._UpdateTime = None
+
+    @property
+    def RuleName(self):
+        r"""<p>白名单规则名称</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def ApiNameOp(self):
+        r"""<p>加白对象配置</p>
+        :rtype: list of ApiNameOp
+        """
+        return self._ApiNameOp
+
+    @ApiNameOp.setter
+    def ApiNameOp(self, ApiNameOp):
+        self._ApiNameOp = ApiNameOp
+
+    @property
+    def WhiteMode(self):
+        r"""<p>加白模式</p><p>枚举值：</p><ul><li>1： 对整个API加白</li><li>2： 对指定字段加白</li></ul>
+        :rtype: int
+        """
+        return self._WhiteMode
+
+    @WhiteMode.setter
+    def WhiteMode(self, WhiteMode):
+        self._WhiteMode = WhiteMode
+
+    @property
+    def WhiteFields(self):
+        r"""<p>加白字段配置列表</p>
+        :rtype: list of ApiSecSensitiveWhiteField
+        """
+        return self._WhiteFields
+
+    @WhiteFields.setter
+    def WhiteFields(self, WhiteFields):
+        self._WhiteFields = WhiteFields
+
+    @property
+    def Status(self):
+        r"""<p>规则开关</p><p>枚举值：</p><ul><li>0： 关</li><li>1： 开</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Description(self):
+        r"""<p>规则描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UpdateTime(self):
+        r"""<p>修改时间</p><p>单位：s</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        if params.get("ApiNameOp") is not None:
+            self._ApiNameOp = []
+            for item in params.get("ApiNameOp"):
+                obj = ApiNameOp()
+                obj._deserialize(item)
+                self._ApiNameOp.append(obj)
+        self._WhiteMode = params.get("WhiteMode")
+        if params.get("WhiteFields") is not None:
+            self._WhiteFields = []
+            for item in params.get("WhiteFields"):
+                obj = ApiSecSensitiveWhiteField()
+                obj._deserialize(item)
+                self._WhiteFields.append(obj)
+        self._Status = params.get("Status")
+        self._Description = params.get("Description")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10889,38 +11051,40 @@ class ClbDomainsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _DomainId: 域名唯一ID
+        :param _DomainId: <p>域名唯一ID</p>
         :type DomainId: str
-        :param _InstanceId: 域名所属实例ID
+        :param _InstanceId: <p>域名所属实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 域名所属实例名
+        :param _InstanceName: <p>域名所属实例名</p>
         :type InstanceName: str
-        :param _Edition: 域名所属实例类型
+        :param _Edition: <p>域名所属实例类型</p>
         :type Edition: str
-        :param _IsCdn: waf前是否部署有七层代理服务。 0：没有部署代理服务 1：有部署代理服务，waf将使用XFF获取客户端IP 2：有部署代理服务，waf将使用remote_addr获取客户端IP 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+        :param _IsCdn: <p>waf前是否部署有七层代理服务。 0：没有部署代理服务 1：有部署代理服务，waf将使用XFF获取客户端IP 2：有部署代理服务，waf将使用remote_addr获取客户端IP 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
         :type IsCdn: int
-        :param _LoadBalancerSet: 负载均衡类型为clb时，对应的负载均衡器信息
+        :param _LoadBalancerSet: <p>负载均衡类型为clb时，对应的负载均衡器信息</p>
         :type LoadBalancerSet: list of LoadBalancerPackageNew
-        :param _FlowMode: 负载均衡型WAF的流量模式，1：清洗模式，0：镜像模式
+        :param _FlowMode: <p>负载均衡型WAF的流量模式，1：清洗模式，0：镜像模式</p>
         :type FlowMode: int
-        :param _State: 域名绑定负载均衡器状态
+        :param _State: <p>域名绑定负载均衡器状态</p>
         :type State: int
-        :param _AlbType: 负载均衡类型，clb或者apisix
+        :param _AlbType: <p>负载均衡类型，clb或者apisix</p>
         :type AlbType: str
-        :param _IpHeaders: IsCdn=3时，表示自定义header
+        :param _IpHeaders: <p>IsCdn=3时，表示自定义header</p>
         :type IpHeaders: list of str
-        :param _CdcClusters: cdc-clb-waf类型WAF的CDC集群信息
+        :param _CdcClusters: <p>cdc-clb-waf类型WAF的CDC集群信息</p>
         :type CdcClusters: str
-        :param _CloudType: 云类型:public:公有云；private:私有云;hybrid:混合云
+        :param _CloudType: <p>云类型:public:公有云；private:私有云;hybrid:混合云</p>
         :type CloudType: str
-        :param _Note: 域名备注信息
+        :param _Note: <p>域名备注信息</p>
         :type Note: str
-        :param _Labels: 域名标签
+        :param _Labels: <p>域名标签</p>
         :type Labels: list of str
-        :param _AccessStatus: clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
+        :param _AccessStatus: <p>clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”</p>
         :type AccessStatus: int
+        :param _TagInfos: <p>标签信息</p>
+        :type TagInfos: list of TagInfo
         """
         self._Domain = None
         self._DomainId = None
@@ -10938,10 +11102,11 @@ class ClbDomainsInfo(AbstractModel):
         self._Note = None
         self._Labels = None
         self._AccessStatus = None
+        self._TagInfos = None
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -10952,7 +11117,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名唯一ID
+        r"""<p>域名唯一ID</p>
         :rtype: str
         """
         return self._DomainId
@@ -10963,7 +11128,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""域名所属实例ID
+        r"""<p>域名所属实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -10974,7 +11139,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""域名所属实例名
+        r"""<p>域名所属实例名</p>
         :rtype: str
         """
         return self._InstanceName
@@ -10985,7 +11150,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def Edition(self):
-        r"""域名所属实例类型
+        r"""<p>域名所属实例类型</p>
         :rtype: str
         """
         return self._Edition
@@ -10996,7 +11161,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def IsCdn(self):
-        r"""waf前是否部署有七层代理服务。 0：没有部署代理服务 1：有部署代理服务，waf将使用XFF获取客户端IP 2：有部署代理服务，waf将使用remote_addr获取客户端IP 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+        r"""<p>waf前是否部署有七层代理服务。 0：没有部署代理服务 1：有部署代理服务，waf将使用XFF获取客户端IP 2：有部署代理服务，waf将使用remote_addr获取客户端IP 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
         :rtype: int
         """
         return self._IsCdn
@@ -11007,7 +11172,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def LoadBalancerSet(self):
-        r"""负载均衡类型为clb时，对应的负载均衡器信息
+        r"""<p>负载均衡类型为clb时，对应的负载均衡器信息</p>
         :rtype: list of LoadBalancerPackageNew
         """
         return self._LoadBalancerSet
@@ -11018,7 +11183,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def FlowMode(self):
-        r"""负载均衡型WAF的流量模式，1：清洗模式，0：镜像模式
+        r"""<p>负载均衡型WAF的流量模式，1：清洗模式，0：镜像模式</p>
         :rtype: int
         """
         return self._FlowMode
@@ -11029,7 +11194,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def State(self):
-        r"""域名绑定负载均衡器状态
+        r"""<p>域名绑定负载均衡器状态</p>
         :rtype: int
         """
         return self._State
@@ -11040,7 +11205,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def AlbType(self):
-        r"""负载均衡类型，clb或者apisix
+        r"""<p>负载均衡类型，clb或者apisix</p>
         :rtype: str
         """
         return self._AlbType
@@ -11051,7 +11216,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def IpHeaders(self):
-        r"""IsCdn=3时，表示自定义header
+        r"""<p>IsCdn=3时，表示自定义header</p>
         :rtype: list of str
         """
         return self._IpHeaders
@@ -11062,7 +11227,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def CdcClusters(self):
-        r"""cdc-clb-waf类型WAF的CDC集群信息
+        r"""<p>cdc-clb-waf类型WAF的CDC集群信息</p>
         :rtype: str
         """
         return self._CdcClusters
@@ -11073,7 +11238,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def CloudType(self):
-        r"""云类型:public:公有云；private:私有云;hybrid:混合云
+        r"""<p>云类型:public:公有云；private:私有云;hybrid:混合云</p>
         :rtype: str
         """
         return self._CloudType
@@ -11084,7 +11249,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def Note(self):
-        r"""域名备注信息
+        r"""<p>域名备注信息</p>
         :rtype: str
         """
         return self._Note
@@ -11095,7 +11260,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def Labels(self):
-        r"""域名标签
+        r"""<p>域名标签</p>
         :rtype: list of str
         """
         return self._Labels
@@ -11106,7 +11271,7 @@ class ClbDomainsInfo(AbstractModel):
 
     @property
     def AccessStatus(self):
-        r"""clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
+        r"""<p>clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”</p>
         :rtype: int
         """
         return self._AccessStatus
@@ -11114,6 +11279,17 @@ class ClbDomainsInfo(AbstractModel):
     @AccessStatus.setter
     def AccessStatus(self, AccessStatus):
         self._AccessStatus = AccessStatus
+
+    @property
+    def TagInfos(self):
+        r"""<p>标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._TagInfos
+
+    @TagInfos.setter
+    def TagInfos(self, TagInfos):
+        self._TagInfos = TagInfos
 
 
     def _deserialize(self, params):
@@ -11138,6 +11314,12 @@ class ClbDomainsInfo(AbstractModel):
         self._Note = params.get("Note")
         self._Labels = params.get("Labels")
         self._AccessStatus = params.get("AccessStatus")
+        if params.get("TagInfos") is not None:
+            self._TagInfos = []
+            for item in params.get("TagInfos"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11155,62 +11337,68 @@ class ClbObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ObjectId: 对象ID
+        :param _ObjectId: <p>对象ID</p>
         :type ObjectId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _PreciseDomains: 精准域名列表
+        :param _PreciseDomains: <p>精准域名列表</p>
         :type PreciseDomains: list of str
-        :param _Status: WAF功能开关状态，0关闭1开启
+        :param _Status: <p>WAF功能开关状态，0关闭1开启</p>
         :type Status: int
-        :param _ClsStatus: WAF日志开关状态，0关闭1开启
+        :param _ClsStatus: <p>WAF日志开关状态，0关闭1开启</p>
         :type ClsStatus: int
-        :param _VirtualDomain: CLB对象对应的虚拟域名
+        :param _VirtualDomain: <p>CLB对象对应的虚拟域名</p>
         :type VirtualDomain: str
-        :param _ObjectName: 对象名称
+        :param _ObjectName: <p>对象名称</p>
         :type ObjectName: str
-        :param _PublicIp: 公网地址
+        :param _PublicIp: <p>公网地址</p>
         :type PublicIp: list of str
-        :param _PrivateIp: 内网地址
+        :param _PrivateIp: <p>内网地址</p>
         :type PrivateIp: list of str
-        :param _VpcName: VPC名称
+        :param _VpcName: <p>VPC名称</p>
         :type VpcName: str
-        :param _Vpc: VPC ID
+        :param _Vpc: <p>VPC ID</p>
         :type Vpc: str
-        :param _InstanceLevel: waf实例等级，如果未绑定实例为0
+        :param _InstanceLevel: <p>waf实例等级，如果未绑定实例为0</p>
         :type InstanceLevel: int
-        :param _PostCLSStatus: clb投递开关
+        :param _PostCLSStatus: <p>clb投递开关</p>
         :type PostCLSStatus: int
-        :param _PostCKafkaStatus: kafka投递开关
+        :param _PostCKafkaStatus: <p>kafka投递开关</p>
         :type PostCKafkaStatus: int
-        :param _Type: 对象类型：CLB:负载均衡器，TSE:云原生网关
+        :param _Type: <p>对象类型：CLB:负载均衡器，TSE:云原生网关</p>
         :type Type: str
-        :param _Region: 对象地域
+        :param _Region: <p>对象地域</p>
         :type Region: str
-        :param _Proxy: 代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出
+        :param _Proxy: <p>代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出</p>
         :type Proxy: int
-        :param _IpHeaders: 指定获取客户端IP的头部字段列表。IsCdn为3时有效
+        :param _IpHeaders: <p>指定获取客户端IP的头部字段列表。IsCdn为3时有效</p>
         :type IpHeaders: list of str
-        :param _BotStatus: bot防护开关
+        :param _BotStatus: <p>bot防护开关</p>
         :type BotStatus: int
-        :param _ApiStatus: api防护开关
+        :param _ApiStatus: <p>api防护开关</p>
         :type ApiStatus: int
-        :param _ObjectFlowMode: 对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式
+        :param _ObjectFlowMode: <p>对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式</p>
         :type ObjectFlowMode: int
-        :param _NumericalVpcId: 数值形式的私有网络 ID
+        :param _NumericalVpcId: <p>数值形式的私有网络 ID</p>
         :type NumericalVpcId: int
-        :param _ModifyTime: 修改时间
+        :param _ModifyTime: <p>修改时间</p>
         :type ModifyTime: str
-        :param _AddTime: 创建时间
+        :param _AddTime: <p>创建时间</p>
         :type AddTime: str
-        :param _MemberAppId: 跨账号时，表示成员账号的appid
+        :param _MemberAppId: <p>跨账号时，表示成员账号的appid</p>
         :type MemberAppId: int
-        :param _MemberUin: 跨账号时，表示成员账号的uin
+        :param _MemberUin: <p>跨账号时，表示成员账号的uin</p>
         :type MemberUin: str
-        :param _MemberNickName: 跨账号时，表示成员账号的昵称
+        :param _MemberNickName: <p>跨账号时，表示成员账号的昵称</p>
         :type MemberNickName: str
+        :param _TagInfos: <p>标签信息</p>
+        :type TagInfos: list of TagInfo
+        :param _PreciseDomainDetails: <p>精准域名信息</p>
+        :type PreciseDomainDetails: list of DomainInfo
+        :param _WafAccessStatus: <p>waf接入状态</p>
+        :type WafAccessStatus: int
         """
         self._ObjectId = None
         self._InstanceId = None
@@ -11240,10 +11428,13 @@ class ClbObject(AbstractModel):
         self._MemberAppId = None
         self._MemberUin = None
         self._MemberNickName = None
+        self._TagInfos = None
+        self._PreciseDomainDetails = None
+        self._WafAccessStatus = None
 
     @property
     def ObjectId(self):
-        r"""对象ID
+        r"""<p>对象ID</p>
         :rtype: str
         """
         return self._ObjectId
@@ -11254,7 +11445,7 @@ class ClbObject(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -11265,7 +11456,7 @@ class ClbObject(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -11276,7 +11467,7 @@ class ClbObject(AbstractModel):
 
     @property
     def PreciseDomains(self):
-        r"""精准域名列表
+        r"""<p>精准域名列表</p>
         :rtype: list of str
         """
         return self._PreciseDomains
@@ -11287,7 +11478,7 @@ class ClbObject(AbstractModel):
 
     @property
     def Status(self):
-        r"""WAF功能开关状态，0关闭1开启
+        r"""<p>WAF功能开关状态，0关闭1开启</p>
         :rtype: int
         """
         return self._Status
@@ -11298,7 +11489,7 @@ class ClbObject(AbstractModel):
 
     @property
     def ClsStatus(self):
-        r"""WAF日志开关状态，0关闭1开启
+        r"""<p>WAF日志开关状态，0关闭1开启</p>
         :rtype: int
         """
         return self._ClsStatus
@@ -11309,7 +11500,7 @@ class ClbObject(AbstractModel):
 
     @property
     def VirtualDomain(self):
-        r"""CLB对象对应的虚拟域名
+        r"""<p>CLB对象对应的虚拟域名</p>
         :rtype: str
         """
         return self._VirtualDomain
@@ -11320,7 +11511,7 @@ class ClbObject(AbstractModel):
 
     @property
     def ObjectName(self):
-        r"""对象名称
+        r"""<p>对象名称</p>
         :rtype: str
         """
         return self._ObjectName
@@ -11331,7 +11522,7 @@ class ClbObject(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""公网地址
+        r"""<p>公网地址</p>
         :rtype: list of str
         """
         return self._PublicIp
@@ -11342,7 +11533,7 @@ class ClbObject(AbstractModel):
 
     @property
     def PrivateIp(self):
-        r"""内网地址
+        r"""<p>内网地址</p>
         :rtype: list of str
         """
         return self._PrivateIp
@@ -11353,7 +11544,7 @@ class ClbObject(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""VPC名称
+        r"""<p>VPC名称</p>
         :rtype: str
         """
         return self._VpcName
@@ -11364,7 +11555,7 @@ class ClbObject(AbstractModel):
 
     @property
     def Vpc(self):
-        r"""VPC ID
+        r"""<p>VPC ID</p>
         :rtype: str
         """
         return self._Vpc
@@ -11375,7 +11566,7 @@ class ClbObject(AbstractModel):
 
     @property
     def InstanceLevel(self):
-        r"""waf实例等级，如果未绑定实例为0
+        r"""<p>waf实例等级，如果未绑定实例为0</p>
         :rtype: int
         """
         return self._InstanceLevel
@@ -11386,7 +11577,7 @@ class ClbObject(AbstractModel):
 
     @property
     def PostCLSStatus(self):
-        r"""clb投递开关
+        r"""<p>clb投递开关</p>
         :rtype: int
         """
         return self._PostCLSStatus
@@ -11397,7 +11588,7 @@ class ClbObject(AbstractModel):
 
     @property
     def PostCKafkaStatus(self):
-        r"""kafka投递开关
+        r"""<p>kafka投递开关</p>
         :rtype: int
         """
         return self._PostCKafkaStatus
@@ -11408,7 +11599,7 @@ class ClbObject(AbstractModel):
 
     @property
     def Type(self):
-        r"""对象类型：CLB:负载均衡器，TSE:云原生网关
+        r"""<p>对象类型：CLB:负载均衡器，TSE:云原生网关</p>
         :rtype: str
         """
         return self._Type
@@ -11419,7 +11610,7 @@ class ClbObject(AbstractModel):
 
     @property
     def Region(self):
-        r"""对象地域
+        r"""<p>对象地域</p>
         :rtype: str
         """
         return self._Region
@@ -11430,7 +11621,7 @@ class ClbObject(AbstractModel):
 
     @property
     def Proxy(self):
-        r"""代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出
+        r"""<p>代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出</p>
         :rtype: int
         """
         return self._Proxy
@@ -11441,7 +11632,7 @@ class ClbObject(AbstractModel):
 
     @property
     def IpHeaders(self):
-        r"""指定获取客户端IP的头部字段列表。IsCdn为3时有效
+        r"""<p>指定获取客户端IP的头部字段列表。IsCdn为3时有效</p>
         :rtype: list of str
         """
         return self._IpHeaders
@@ -11452,7 +11643,7 @@ class ClbObject(AbstractModel):
 
     @property
     def BotStatus(self):
-        r"""bot防护开关
+        r"""<p>bot防护开关</p>
         :rtype: int
         """
         return self._BotStatus
@@ -11463,7 +11654,7 @@ class ClbObject(AbstractModel):
 
     @property
     def ApiStatus(self):
-        r"""api防护开关
+        r"""<p>api防护开关</p>
         :rtype: int
         """
         return self._ApiStatus
@@ -11474,7 +11665,7 @@ class ClbObject(AbstractModel):
 
     @property
     def ObjectFlowMode(self):
-        r"""对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式
+        r"""<p>对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式</p>
         :rtype: int
         """
         return self._ObjectFlowMode
@@ -11485,7 +11676,7 @@ class ClbObject(AbstractModel):
 
     @property
     def NumericalVpcId(self):
-        r"""数值形式的私有网络 ID
+        r"""<p>数值形式的私有网络 ID</p>
         :rtype: int
         """
         return self._NumericalVpcId
@@ -11496,7 +11687,7 @@ class ClbObject(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -11507,7 +11698,7 @@ class ClbObject(AbstractModel):
 
     @property
     def AddTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._AddTime
@@ -11518,7 +11709,7 @@ class ClbObject(AbstractModel):
 
     @property
     def MemberAppId(self):
-        r"""跨账号时，表示成员账号的appid
+        r"""<p>跨账号时，表示成员账号的appid</p>
         :rtype: int
         """
         return self._MemberAppId
@@ -11529,7 +11720,7 @@ class ClbObject(AbstractModel):
 
     @property
     def MemberUin(self):
-        r"""跨账号时，表示成员账号的uin
+        r"""<p>跨账号时，表示成员账号的uin</p>
         :rtype: str
         """
         return self._MemberUin
@@ -11540,7 +11731,7 @@ class ClbObject(AbstractModel):
 
     @property
     def MemberNickName(self):
-        r"""跨账号时，表示成员账号的昵称
+        r"""<p>跨账号时，表示成员账号的昵称</p>
         :rtype: str
         """
         return self._MemberNickName
@@ -11548,6 +11739,39 @@ class ClbObject(AbstractModel):
     @MemberNickName.setter
     def MemberNickName(self, MemberNickName):
         self._MemberNickName = MemberNickName
+
+    @property
+    def TagInfos(self):
+        r"""<p>标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._TagInfos
+
+    @TagInfos.setter
+    def TagInfos(self, TagInfos):
+        self._TagInfos = TagInfos
+
+    @property
+    def PreciseDomainDetails(self):
+        r"""<p>精准域名信息</p>
+        :rtype: list of DomainInfo
+        """
+        return self._PreciseDomainDetails
+
+    @PreciseDomainDetails.setter
+    def PreciseDomainDetails(self, PreciseDomainDetails):
+        self._PreciseDomainDetails = PreciseDomainDetails
+
+    @property
+    def WafAccessStatus(self):
+        r"""<p>waf接入状态</p>
+        :rtype: int
+        """
+        return self._WafAccessStatus
+
+    @WafAccessStatus.setter
+    def WafAccessStatus(self, WafAccessStatus):
+        self._WafAccessStatus = WafAccessStatus
 
 
     def _deserialize(self, params):
@@ -11579,6 +11803,19 @@ class ClbObject(AbstractModel):
         self._MemberAppId = params.get("MemberAppId")
         self._MemberUin = params.get("MemberUin")
         self._MemberNickName = params.get("MemberNickName")
+        if params.get("TagInfos") is not None:
+            self._TagInfos = []
+            for item in params.get("TagInfos"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagInfos.append(obj)
+        if params.get("PreciseDomainDetails") is not None:
+            self._PreciseDomainDetails = []
+            for item in params.get("PreciseDomainDetails"):
+                obj = DomainInfo()
+                obj._deserialize(item)
+                self._PreciseDomainDetails.append(obj)
+        self._WafAccessStatus = params.get("WafAccessStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13049,17 +13286,20 @@ class CreateHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Host: 防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。
+        :param _Host: <p>防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。</p>
         :type Host: :class:`tencentcloud.waf.v20180125.models.HostRecord`
-        :param _InstanceID: 实例id
+        :param _InstanceID: <p>实例id</p>
         :type InstanceID: str
+        :param _Tags: <p>标签信息</p>
+        :type Tags: list of TagInfo
         """
         self._Host = None
         self._InstanceID = None
+        self._Tags = None
 
     @property
     def Host(self):
-        r"""防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。
+        r"""<p>防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.HostRecord`
         """
         return self._Host
@@ -13070,7 +13310,7 @@ class CreateHostRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceID
@@ -13079,12 +13319,29 @@ class CreateHostRequest(AbstractModel):
     def InstanceID(self, InstanceID):
         self._InstanceID = InstanceID
 
+    @property
+    def Tags(self):
+        r"""<p>标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Host") is not None:
             self._Host = HostRecord()
             self._Host._deserialize(params.get("Host"))
         self._InstanceID = params.get("InstanceID")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13102,7 +13359,7 @@ class CreateHostResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 新增防护域名ID
+        :param _DomainId: <p>新增防护域名ID</p>
         :type DomainId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13112,7 +13369,7 @@ class CreateHostResponse(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""新增防护域名ID
+        r"""<p>新增防护域名ID</p>
         :rtype: str
         """
         return self._DomainId
@@ -13928,20 +14185,23 @@ class CreateProtectGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 防护对象组名称
+        :param _Name: <p>防护对象组名称</p>
         :type Name: str
-        :param _Domains: 防护对象组的应用范围
+        :param _Domains: <p>防护对象组的应用范围</p>
         :type Domains: list of str
-        :param _Remark: 防护对象组备注
+        :param _Remark: <p>防护对象组备注</p>
         :type Remark: str
+        :param _Tags: <p>标签信息</p>
+        :type Tags: list of TagInfo
         """
         self._Name = None
         self._Domains = None
         self._Remark = None
+        self._Tags = None
 
     @property
     def Name(self):
-        r"""防护对象组名称
+        r"""<p>防护对象组名称</p>
         :rtype: str
         """
         return self._Name
@@ -13952,7 +14212,7 @@ class CreateProtectGroupRequest(AbstractModel):
 
     @property
     def Domains(self):
-        r"""防护对象组的应用范围
+        r"""<p>防护对象组的应用范围</p>
         :rtype: list of str
         """
         return self._Domains
@@ -13963,7 +14223,7 @@ class CreateProtectGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""防护对象组备注
+        r"""<p>防护对象组备注</p>
         :rtype: str
         """
         return self._Remark
@@ -13972,11 +14232,28 @@ class CreateProtectGroupRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def Tags(self):
+        r"""<p>标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Domains = params.get("Domains")
         self._Remark = params.get("Remark")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13994,7 +14271,7 @@ class CreateProtectGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 防护对象组的ID
+        :param _GroupId: <p>防护对象组的ID</p>
         :type GroupId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14004,7 +14281,7 @@ class CreateProtectGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""防护对象组的ID
+        r"""<p>防护对象组的ID</p>
         :rtype: int
         """
         return self._GroupId
@@ -18936,20 +19213,22 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _IsQueryApiExtractRule: 是否查询api提取规则策略，true表示查询
+        :param _IsQueryApiExtractRule: <p>是否查询api提取规则策略，true表示查询</p>
         :type IsQueryApiExtractRule: bool
-        :param _IsQueryApiPrivilegeRule: 是否查询api鉴权规则
+        :param _IsQueryApiPrivilegeRule: <p>是否查询api鉴权规则</p>
         :type IsQueryApiPrivilegeRule: bool
-        :param _IsQueryApiSceneRule: 是否查询api场景规则
+        :param _IsQueryApiSceneRule: <p>是否查询api场景规则</p>
         :type IsQueryApiSceneRule: bool
-        :param _RuleName: 查询鉴权配置的时候，该rule只返回鉴权配置的规则
+        :param _RuleName: <p>查询鉴权配置的时候，该rule只返回鉴权配置的规则</p>
         :type RuleName: str
-        :param _IsQueryApiCustomEventRule: 是否查询api自定义事件规则
+        :param _IsQueryApiCustomEventRule: <p>是否查询api自定义事件规则</p>
         :type IsQueryApiCustomEventRule: bool
-        :param _IsQueryApiExcludeRule: 是否查询无效api排除策略
+        :param _IsQueryApiExcludeRule: <p>是否查询无效api排除策略</p>
         :type IsQueryApiExcludeRule: bool
+        :param _IsQueryApiSensitiveWhiteRule: <p>是否查询敏感数据加白规则</p>
+        :type IsQueryApiSensitiveWhiteRule: bool
         """
         self._Domain = None
         self._IsQueryApiExtractRule = None
@@ -18958,10 +19237,11 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
         self._RuleName = None
         self._IsQueryApiCustomEventRule = None
         self._IsQueryApiExcludeRule = None
+        self._IsQueryApiSensitiveWhiteRule = None
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -18972,7 +19252,7 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
 
     @property
     def IsQueryApiExtractRule(self):
-        r"""是否查询api提取规则策略，true表示查询
+        r"""<p>是否查询api提取规则策略，true表示查询</p>
         :rtype: bool
         """
         return self._IsQueryApiExtractRule
@@ -18983,7 +19263,7 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
 
     @property
     def IsQueryApiPrivilegeRule(self):
-        r"""是否查询api鉴权规则
+        r"""<p>是否查询api鉴权规则</p>
         :rtype: bool
         """
         return self._IsQueryApiPrivilegeRule
@@ -18994,7 +19274,7 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
 
     @property
     def IsQueryApiSceneRule(self):
-        r"""是否查询api场景规则
+        r"""<p>是否查询api场景规则</p>
         :rtype: bool
         """
         return self._IsQueryApiSceneRule
@@ -19005,7 +19285,7 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""查询鉴权配置的时候，该rule只返回鉴权配置的规则
+        r"""<p>查询鉴权配置的时候，该rule只返回鉴权配置的规则</p>
         :rtype: str
         """
         return self._RuleName
@@ -19016,7 +19296,7 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
 
     @property
     def IsQueryApiCustomEventRule(self):
-        r"""是否查询api自定义事件规则
+        r"""<p>是否查询api自定义事件规则</p>
         :rtype: bool
         """
         return self._IsQueryApiCustomEventRule
@@ -19027,7 +19307,7 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
 
     @property
     def IsQueryApiExcludeRule(self):
-        r"""是否查询无效api排除策略
+        r"""<p>是否查询无效api排除策略</p>
         :rtype: bool
         """
         return self._IsQueryApiExcludeRule
@@ -19035,6 +19315,17 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
     @IsQueryApiExcludeRule.setter
     def IsQueryApiExcludeRule(self, IsQueryApiExcludeRule):
         self._IsQueryApiExcludeRule = IsQueryApiExcludeRule
+
+    @property
+    def IsQueryApiSensitiveWhiteRule(self):
+        r"""<p>是否查询敏感数据加白规则</p>
+        :rtype: bool
+        """
+        return self._IsQueryApiSensitiveWhiteRule
+
+    @IsQueryApiSensitiveWhiteRule.setter
+    def IsQueryApiSensitiveWhiteRule(self, IsQueryApiSensitiveWhiteRule):
+        self._IsQueryApiSensitiveWhiteRule = IsQueryApiSensitiveWhiteRule
 
 
     def _deserialize(self, params):
@@ -19045,6 +19336,7 @@ class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
         self._RuleName = params.get("RuleName")
         self._IsQueryApiCustomEventRule = params.get("IsQueryApiCustomEventRule")
         self._IsQueryApiExcludeRule = params.get("IsQueryApiExcludeRule")
+        self._IsQueryApiSensitiveWhiteRule = params.get("IsQueryApiSensitiveWhiteRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19062,32 +19354,34 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: api敏感规则列表
+        :param _Data: <p>api敏感规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ApiSecSensitiveRule
-        :param _Total: 规则数量
+        :param _Total: <p>规则数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _Status: 自定义敏感检测规则总开关
+        :param _Status: <p>自定义敏感检测规则总开关</p>
         :type Status: int
-        :param _RuleNameList: 非内置规则的rulename列表
+        :param _RuleNameList: <p>非内置规则的rulename列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleNameList: list of str
-        :param _ApiExtractRule: api提取规则列表
+        :param _ApiExtractRule: <p>api提取规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiExtractRule: list of ApiSecExtractRule
-        :param _ApiSecPrivilegeRule: api鉴权规则列表
+        :param _ApiSecPrivilegeRule: <p>api鉴权规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiSecPrivilegeRule: list of ApiSecPrivilegeRule
-        :param _ApiSecSceneRule: api场景规则列表
+        :param _ApiSecSceneRule: <p>api场景规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiSecSceneRule: list of ApiSecSceneRule
-        :param _ApiSecCustomEventRule: 自定义事件规则
+        :param _ApiSecCustomEventRule: <p>自定义事件规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiSecCustomEventRule: list of ApiSecCustomEventRule
-        :param _ApiExcludeRule: 无效api排除规则列表
+        :param _ApiExcludeRule: <p>无效api排除规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiExcludeRule: list of ApiSecExcludeRule
+        :param _ApiSecSensitiveWhiteRule: <p>敏感数据加白规则列表</p>
+        :type ApiSecSensitiveWhiteRule: list of ApiSecSensitiveWhiteRule
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -19100,11 +19394,12 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
         self._ApiSecSceneRule = None
         self._ApiSecCustomEventRule = None
         self._ApiExcludeRule = None
+        self._ApiSecSensitiveWhiteRule = None
         self._RequestId = None
 
     @property
     def Data(self):
-        r"""api敏感规则列表
+        r"""<p>api敏感规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiSecSensitiveRule
         """
@@ -19116,7 +19411,7 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""规则数量
+        r"""<p>规则数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -19128,7 +19423,7 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""自定义敏感检测规则总开关
+        r"""<p>自定义敏感检测规则总开关</p>
         :rtype: int
         """
         return self._Status
@@ -19139,7 +19434,7 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
 
     @property
     def RuleNameList(self):
-        r"""非内置规则的rulename列表
+        r"""<p>非内置规则的rulename列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -19151,7 +19446,7 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
 
     @property
     def ApiExtractRule(self):
-        r"""api提取规则列表
+        r"""<p>api提取规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiSecExtractRule
         """
@@ -19163,7 +19458,7 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
 
     @property
     def ApiSecPrivilegeRule(self):
-        r"""api鉴权规则列表
+        r"""<p>api鉴权规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiSecPrivilegeRule
         """
@@ -19175,7 +19470,7 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
 
     @property
     def ApiSecSceneRule(self):
-        r"""api场景规则列表
+        r"""<p>api场景规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiSecSceneRule
         """
@@ -19187,7 +19482,7 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
 
     @property
     def ApiSecCustomEventRule(self):
-        r"""自定义事件规则
+        r"""<p>自定义事件规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiSecCustomEventRule
         """
@@ -19199,7 +19494,7 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
 
     @property
     def ApiExcludeRule(self):
-        r"""无效api排除规则列表
+        r"""<p>无效api排除规则列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApiSecExcludeRule
         """
@@ -19208,6 +19503,17 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
     @ApiExcludeRule.setter
     def ApiExcludeRule(self, ApiExcludeRule):
         self._ApiExcludeRule = ApiExcludeRule
+
+    @property
+    def ApiSecSensitiveWhiteRule(self):
+        r"""<p>敏感数据加白规则列表</p>
+        :rtype: list of ApiSecSensitiveWhiteRule
+        """
+        return self._ApiSecSensitiveWhiteRule
+
+    @ApiSecSensitiveWhiteRule.setter
+    def ApiSecSensitiveWhiteRule(self, ApiSecSensitiveWhiteRule):
+        self._ApiSecSensitiveWhiteRule = ApiSecSensitiveWhiteRule
 
     @property
     def RequestId(self):
@@ -19261,6 +19567,12 @@ class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
                 obj = ApiSecExcludeRule()
                 obj._deserialize(item)
                 self._ApiExcludeRule.append(obj)
+        if params.get("ApiSecSensitiveWhiteRule") is not None:
+            self._ApiSecSensitiveWhiteRule = []
+            for item in params.get("ApiSecSensitiveWhiteRule"):
+                obj = ApiSecSensitiveWhiteRule()
+                obj._deserialize(item)
+                self._ApiSecSensitiveWhiteRule.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -24010,11 +24322,11 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+        :param _Offset: <p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
         :type Offset: int
-        :param _Limit: 返回域名的数量
+        :param _Limit: <p>返回域名的数量</p>
         :type Limit: int
-        :param _Filters: 过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤
+        :param _Filters: <p>过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf AlbType：七层接入类型细分，clb或tsegw或apisix或scf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤</p>
         :type Filters: list of FiltersItemNew
         """
         self._Offset = None
@@ -24023,7 +24335,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+        r"""<p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
         :rtype: int
         """
         return self._Offset
@@ -24034,7 +24346,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回域名的数量
+        r"""<p>返回域名的数量</p>
         :rtype: int
         """
         return self._Limit
@@ -24045,7 +24357,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤
+        r"""<p>过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf AlbType：七层接入类型细分，clb或tsegw或apisix或scf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤</p>
         :rtype: list of FiltersItemNew
         """
         return self._Filters
@@ -24081,9 +24393,9 @@ class DescribeDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _Domains: domain列表
+        :param _Domains: <p>domain列表</p>
         :type Domains: list of DomainInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24094,7 +24406,7 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -24105,7 +24417,7 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def Domains(self):
-        r"""domain列表
+        r"""<p>domain列表</p>
         :rtype: list of DomainInfo
         """
         return self._Domains
@@ -31413,171 +31725,90 @@ class DomainInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _DomainId: 域名ID
+        :param _DomainId: <p>域名ID</p>
         :type DomainId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Cname: cname地址
+        :param _Cname: <p>cname地址</p>
         :type Cname: str
-        :param _Edition: 域名所属实例类型。
-sparta-waf：SaaS型WAF实例
-clb-waf：负载均衡型WAF实例
-cdc-clb-waf：CDC环境下负载均衡型WAF实例
+        :param _Edition: <p>域名所属实例类型。<br>sparta-waf：SaaS型WAF实例<br>clb-waf：负载均衡型WAF实例<br>cdc-clb-waf：CDC环境下负载均衡型WAF实例</p>
         :type Edition: str
-        :param _Region: 地域。
-"多伦多": "ca"
-"广州": "gz"
-"成都": "cd"
-"福州": "fzec"
-"深圳": "szx"
-"印度": "in"
-"济南": "jnec"
-"重庆": "cq"
-"天津": "tsn"
-"欧洲东北": "ru"
-"南京": "nj"
-"美国硅谷": "usw"
-"泰国": "th"
-"广州Open": "gzopen"
-"深圳金融": "szjr"
-"法兰克福": "de"
-"日本": "jp"
-"弗吉尼亚": "use"
-"北京": "bj"
-"中国香港": "hk"
-"杭州": "hzec"
-"北京金融": "bjjr"
-"上海金融": "shjr"
-"台北": "tpe"
-"首尔": "kr"
-"上海": "sh"
-"新加坡": "sg"
-"清远": "qy"
+        :param _Region: <p>地域。<br>&quot;多伦多&quot;: &quot;ca&quot;<br>&quot;广州&quot;: &quot;gz&quot;<br>&quot;成都&quot;: &quot;cd&quot;<br>&quot;福州&quot;: &quot;fzec&quot;<br>&quot;深圳&quot;: &quot;szx&quot;<br>&quot;印度&quot;: &quot;in&quot;<br>&quot;济南&quot;: &quot;jnec&quot;<br>&quot;重庆&quot;: &quot;cq&quot;<br>&quot;天津&quot;: &quot;tsn&quot;<br>&quot;欧洲东北&quot;: &quot;ru&quot;<br>&quot;南京&quot;: &quot;nj&quot;<br>&quot;美国硅谷&quot;: &quot;usw&quot;<br>&quot;泰国&quot;: &quot;th&quot;<br>&quot;广州Open&quot;: &quot;gzopen&quot;<br>&quot;深圳金融&quot;: &quot;szjr&quot;<br>&quot;法兰克福&quot;: &quot;de&quot;<br>&quot;日本&quot;: &quot;jp&quot;<br>&quot;弗吉尼亚&quot;: &quot;use&quot;<br>&quot;北京&quot;: &quot;bj&quot;<br>&quot;中国香港&quot;: &quot;hk&quot;<br>&quot;杭州&quot;: &quot;hzec&quot;<br>&quot;北京金融&quot;: &quot;bjjr&quot;<br>&quot;上海金融&quot;: &quot;shjr&quot;<br>&quot;台北&quot;: &quot;tpe&quot;<br>&quot;首尔&quot;: &quot;kr&quot;<br>&quot;上海&quot;: &quot;sh&quot;<br>&quot;新加坡&quot;: &quot;sg&quot;<br>&quot;清远&quot;: &quot;qy&quot;</p>
         :type Region: str
-        :param _InstanceName: 实例名
+        :param _InstanceName: <p>实例名</p>
         :type InstanceName: str
-        :param _ClsStatus: 访问日志开关状态。
-0：关闭
-1：开启
+        :param _ClsStatus: <p>访问日志开关状态。<br>0：关闭<br>1：开启</p>
         :type ClsStatus: int
-        :param _FlowMode: 负载均衡型WAF使用模式。
-0：镜像模式 
-1：清洗模式
+        :param _FlowMode: <p>负载均衡型WAF使用模式。<br>0：镜像模式<br>1：清洗模式</p>
         :type FlowMode: int
-        :param _Status: waf开关状态。
-0：关闭 
-1：开启
+        :param _Status: <p>waf开关状态。<br>0：关闭<br>1：开启</p>
         :type Status: int
-        :param _Mode: 规则引擎防护模式。
-0：观察模式 
-1：拦截模式
+        :param _Mode: <p>规则引擎防护模式。<br>0：观察模式<br>1：拦截模式</p>
         :type Mode: int
-        :param _Engine: 规则引擎和AI引擎防护模式联合状态。
-1:初始状态,规则引擎拦截&&AI引擎未操作开关状态
-10：规则引擎观察&&AI引擎关闭模式 
-11：规则引擎观察&&AI引擎观察模式 
-12：规则引擎观察&&AI引擎拦截模式 
-20：规则引擎拦截&&AI引擎关闭模式 
-21：规则引擎拦截&&AI引擎观察模式 
-22：规则引擎拦截&&AI引擎拦截模式
+        :param _Engine: <p>规则引擎和AI引擎防护模式联合状态。<br>1:初始状态,规则引擎拦截&amp;&amp;AI引擎未操作开关状态<br>10：规则引擎观察&amp;&amp;AI引擎关闭模式<br>11：规则引擎观察&amp;&amp;AI引擎观察模式<br>12：规则引擎观察&amp;&amp;AI引擎拦截模式<br>20：规则引擎拦截&amp;&amp;AI引擎关闭模式<br>21：规则引擎拦截&amp;&amp;AI引擎观察模式<br>22：规则引擎拦截&amp;&amp;AI引擎拦截模式</p>
         :type Engine: int
-        :param _CCList: 沙箱集群回源出口IP列表
+        :param _CCList: <p>沙箱集群回源出口IP列表</p>
         :type CCList: list of str
-        :param _RsList: 生产集群回源出口IP列表
+        :param _RsList: <p>生产集群回源出口IP列表</p>
         :type RsList: list of str
-        :param _Ports: 服务端口配置
+        :param _Ports: <p>服务端口配置</p>
         :type Ports: list of PortInfo
-        :param _LoadBalancerSet: 负载均衡器相关配置
+        :param _LoadBalancerSet: <p>负载均衡器相关配置</p>
         :type LoadBalancerSet: list of LoadBalancerPackageNew
-        :param _AppId: 用户id
+        :param _AppId: <p>用户id</p>
         :type AppId: int
-        :param _State: SAAS型WAF域名状态：
--2：配置下发失败
--1：配置下发中
-0：DNS解析中
-1：无DNS解析记录，请接入WAF
-10：DNS解析未知，域名启用了代理
-11：DNS解析异常，使用A记录接入WAF IP
-200：检测源站不可达
-220：源站不支持长连接
-311：证书过期
-312：证书即将过期
-310：证书异常
-316：备案异常
-5：WAF回源已变更
-负载均衡型WAF域名LB监听器状态：
-0：操作成功 
-4：正在绑定LB 
-6：正在解绑LB 
-7：解绑LB失败 
-8：绑定LB失败 
-10：内部错误
+        :param _State: <p>SAAS型WAF域名状态：<br>-2：配置下发失败<br>-1：配置下发中<br>0：DNS解析中<br>1：无DNS解析记录，请接入WAF<br>10：DNS解析未知，域名启用了代理<br>11：DNS解析异常，使用A记录接入WAF IP<br>200：检测源站不可达<br>220：源站不支持长连接<br>311：证书过期<br>312：证书即将过期<br>310：证书异常<br>316：备案异常<br>5：WAF回源已变更<br>负载均衡型WAF域名LB监听器状态：<br>0：操作成功<br>4：正在绑定LB<br>6：正在解绑LB<br>7：解绑LB失败<br>8：绑定LB失败<br>10：内部错误</p>
         :type State: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _Ipv6Status: Ipv6开关状态。
-0：关闭 
-1：开启
+        :param _ModifyTime: <p>编辑时间</p>
+        :type ModifyTime: str
+        :param _Ipv6Status: <p>Ipv6开关状态。<br>0：关闭<br>1：开启</p>
         :type Ipv6Status: int
-        :param _BotStatus: BOT开关状态。
-0：关闭 
-1：关闭
-2：开启
-3：开启
+        :param _BotStatus: <p>BOT开关状态。<br>0：关闭<br>1：关闭<br>2：开启<br>3：开启</p>
         :type BotStatus: int
-        :param _Level: 实例版本信息。
-101：小微敏捷版 
-102：小微超轻版
-2：高级版
-3：企业版
-4：旗舰版
-6：独享版
+        :param _Level: <p>实例版本信息。<br>101：小微敏捷版<br>102：小微超轻版<br>2：高级版<br>3：企业版<br>4：旗舰版<br>6：独享版</p>
         :type Level: int
-        :param _PostCLSStatus: 投递CLS状态。
-0：关闭 
-1：开启
+        :param _PostCLSStatus: <p>投递CLS状态。<br>0：关闭<br>1：开启</p>
         :type PostCLSStatus: int
-        :param _PostCKafkaStatus: 投递CKafka状态。
-0：关闭 
-1：开启
+        :param _PostCKafkaStatus: <p>投递CKafka状态。<br>0：关闭<br>1：开启</p>
         :type PostCKafkaStatus: int
-        :param _CdcClusters: cdc实例域名接入的集群信息,非cdc实例忽略。
+        :param _CdcClusters: <p>cdc实例域名接入的集群信息,非cdc实例忽略。</p>
         :type CdcClusters: str
-        :param _ApiStatus: api安全开关状态。
-0：关闭 
-1：开启
+        :param _ApiStatus: <p>api安全开关状态。<br>0：关闭<br>1：开启</p>
         :type ApiStatus: int
-        :param _AlbType: 应用型负载均衡类型，默认clb。
-clb：七层负载均衡器类型
-apisix：apisix网关型
+        :param _AlbType: <p>应用型负载均衡类型，默认clb。<br>clb：七层负载均衡器类型<br>apisix：apisix网关型</p>
         :type AlbType: str
-        :param _SgState: 安全组状态。
-0：不展示
-1：非腾讯云源站
-2：安全组绑定失败
-3：安全组发生变更
+        :param _SgState: <p>安全组状态。<br>0：不展示<br>1：非腾讯云源站<br>2：安全组绑定失败<br>3：安全组发生变更</p>
         :type SgState: int
-        :param _SgDetail: 安全组状态的详细解释
+        :param _SgDetail: <p>安全组状态的详细解释</p>
         :type SgDetail: str
-        :param _CloudType: 域名云环境。hybrid：混合云域名
-public：公有云域名
+        :param _CloudType: <p>域名云环境。hybrid：混合云域名<br>public：公有云域名</p>
         :type CloudType: str
-        :param _Note: 域名备注信息
+        :param _Note: <p>域名备注信息</p>
         :type Note: str
-        :param _SrcList: SAASWAF源站IP列表
+        :param _SrcList: <p>SAASWAF源站IP列表</p>
         :type SrcList: list of str
-        :param _UpstreamDomainList: SAASWAF源站域名列表
+        :param _UpstreamDomainList: <p>SAASWAF源站域名列表</p>
         :type UpstreamDomainList: list of str
-        :param _SgID: 安全组ID
+        :param _SgID: <p>安全组ID</p>
         :type SgID: str
-        :param _AccessStatus: clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
+        :param _AccessStatus: <p>clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”</p>
         :type AccessStatus: int
-        :param _Labels: 域名标签
+        :param _Labels: <p>域名标签</p>
         :type Labels: list of str
-        :param _PrivateVipStatus: saaswaf独享ip状态，0是关闭，1是开启，2是开启中
+        :param _PrivateVipStatus: <p>saaswaf独享ip状态，0是关闭，1是开启，2是开启中</p>
         :type PrivateVipStatus: int
+        :param _IsREIP: <p>代表是否是四层clbwaf域名</p>
+        :type IsREIP: int
+        :param _REIPObjectId: <p>四层关联的对象ID</p>
+        :type REIPObjectId: str
+        :param _TagInfos: <p>标签结构体</p>
+        :type TagInfos: list of TagInfo
+        :param _LLMStatus: <p>大模型开关</p><p>枚举值：</p><ul><li>0： 大模型开关关闭状态</li><li>1： 大模型开关开启状态</li></ul>
+        :type LLMStatus: int
         """
         self._Domain = None
         self._DomainId = None
@@ -31598,6 +31829,7 @@ public：公有云域名
         self._AppId = None
         self._State = None
         self._CreateTime = None
+        self._ModifyTime = None
         self._Ipv6Status = None
         self._BotStatus = None
         self._Level = None
@@ -31616,10 +31848,14 @@ public：公有云域名
         self._AccessStatus = None
         self._Labels = None
         self._PrivateVipStatus = None
+        self._IsREIP = None
+        self._REIPObjectId = None
+        self._TagInfos = None
+        self._LLMStatus = None
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -31630,7 +31866,7 @@ public：公有云域名
 
     @property
     def DomainId(self):
-        r"""域名ID
+        r"""<p>域名ID</p>
         :rtype: str
         """
         return self._DomainId
@@ -31641,7 +31877,7 @@ public：公有云域名
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -31652,7 +31888,7 @@ public：公有云域名
 
     @property
     def Cname(self):
-        r"""cname地址
+        r"""<p>cname地址</p>
         :rtype: str
         """
         return self._Cname
@@ -31663,10 +31899,7 @@ public：公有云域名
 
     @property
     def Edition(self):
-        r"""域名所属实例类型。
-sparta-waf：SaaS型WAF实例
-clb-waf：负载均衡型WAF实例
-cdc-clb-waf：CDC环境下负载均衡型WAF实例
+        r"""<p>域名所属实例类型。<br>sparta-waf：SaaS型WAF实例<br>clb-waf：负载均衡型WAF实例<br>cdc-clb-waf：CDC环境下负载均衡型WAF实例</p>
         :rtype: str
         """
         return self._Edition
@@ -31677,35 +31910,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def Region(self):
-        r"""地域。
-"多伦多": "ca"
-"广州": "gz"
-"成都": "cd"
-"福州": "fzec"
-"深圳": "szx"
-"印度": "in"
-"济南": "jnec"
-"重庆": "cq"
-"天津": "tsn"
-"欧洲东北": "ru"
-"南京": "nj"
-"美国硅谷": "usw"
-"泰国": "th"
-"广州Open": "gzopen"
-"深圳金融": "szjr"
-"法兰克福": "de"
-"日本": "jp"
-"弗吉尼亚": "use"
-"北京": "bj"
-"中国香港": "hk"
-"杭州": "hzec"
-"北京金融": "bjjr"
-"上海金融": "shjr"
-"台北": "tpe"
-"首尔": "kr"
-"上海": "sh"
-"新加坡": "sg"
-"清远": "qy"
+        r"""<p>地域。<br>&quot;多伦多&quot;: &quot;ca&quot;<br>&quot;广州&quot;: &quot;gz&quot;<br>&quot;成都&quot;: &quot;cd&quot;<br>&quot;福州&quot;: &quot;fzec&quot;<br>&quot;深圳&quot;: &quot;szx&quot;<br>&quot;印度&quot;: &quot;in&quot;<br>&quot;济南&quot;: &quot;jnec&quot;<br>&quot;重庆&quot;: &quot;cq&quot;<br>&quot;天津&quot;: &quot;tsn&quot;<br>&quot;欧洲东北&quot;: &quot;ru&quot;<br>&quot;南京&quot;: &quot;nj&quot;<br>&quot;美国硅谷&quot;: &quot;usw&quot;<br>&quot;泰国&quot;: &quot;th&quot;<br>&quot;广州Open&quot;: &quot;gzopen&quot;<br>&quot;深圳金融&quot;: &quot;szjr&quot;<br>&quot;法兰克福&quot;: &quot;de&quot;<br>&quot;日本&quot;: &quot;jp&quot;<br>&quot;弗吉尼亚&quot;: &quot;use&quot;<br>&quot;北京&quot;: &quot;bj&quot;<br>&quot;中国香港&quot;: &quot;hk&quot;<br>&quot;杭州&quot;: &quot;hzec&quot;<br>&quot;北京金融&quot;: &quot;bjjr&quot;<br>&quot;上海金融&quot;: &quot;shjr&quot;<br>&quot;台北&quot;: &quot;tpe&quot;<br>&quot;首尔&quot;: &quot;kr&quot;<br>&quot;上海&quot;: &quot;sh&quot;<br>&quot;新加坡&quot;: &quot;sg&quot;<br>&quot;清远&quot;: &quot;qy&quot;</p>
         :rtype: str
         """
         return self._Region
@@ -31716,7 +31921,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def InstanceName(self):
-        r"""实例名
+        r"""<p>实例名</p>
         :rtype: str
         """
         return self._InstanceName
@@ -31727,9 +31932,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def ClsStatus(self):
-        r"""访问日志开关状态。
-0：关闭
-1：开启
+        r"""<p>访问日志开关状态。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._ClsStatus
@@ -31740,9 +31943,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def FlowMode(self):
-        r"""负载均衡型WAF使用模式。
-0：镜像模式 
-1：清洗模式
+        r"""<p>负载均衡型WAF使用模式。<br>0：镜像模式<br>1：清洗模式</p>
         :rtype: int
         """
         return self._FlowMode
@@ -31753,9 +31954,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def Status(self):
-        r"""waf开关状态。
-0：关闭 
-1：开启
+        r"""<p>waf开关状态。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._Status
@@ -31766,9 +31965,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def Mode(self):
-        r"""规则引擎防护模式。
-0：观察模式 
-1：拦截模式
+        r"""<p>规则引擎防护模式。<br>0：观察模式<br>1：拦截模式</p>
         :rtype: int
         """
         return self._Mode
@@ -31779,14 +31976,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def Engine(self):
-        r"""规则引擎和AI引擎防护模式联合状态。
-1:初始状态,规则引擎拦截&&AI引擎未操作开关状态
-10：规则引擎观察&&AI引擎关闭模式 
-11：规则引擎观察&&AI引擎观察模式 
-12：规则引擎观察&&AI引擎拦截模式 
-20：规则引擎拦截&&AI引擎关闭模式 
-21：规则引擎拦截&&AI引擎观察模式 
-22：规则引擎拦截&&AI引擎拦截模式
+        r"""<p>规则引擎和AI引擎防护模式联合状态。<br>1:初始状态,规则引擎拦截&amp;&amp;AI引擎未操作开关状态<br>10：规则引擎观察&amp;&amp;AI引擎关闭模式<br>11：规则引擎观察&amp;&amp;AI引擎观察模式<br>12：规则引擎观察&amp;&amp;AI引擎拦截模式<br>20：规则引擎拦截&amp;&amp;AI引擎关闭模式<br>21：规则引擎拦截&amp;&amp;AI引擎观察模式<br>22：规则引擎拦截&amp;&amp;AI引擎拦截模式</p>
         :rtype: int
         """
         return self._Engine
@@ -31797,7 +31987,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def CCList(self):
-        r"""沙箱集群回源出口IP列表
+        r"""<p>沙箱集群回源出口IP列表</p>
         :rtype: list of str
         """
         return self._CCList
@@ -31808,7 +31998,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def RsList(self):
-        r"""生产集群回源出口IP列表
+        r"""<p>生产集群回源出口IP列表</p>
         :rtype: list of str
         """
         return self._RsList
@@ -31819,7 +32009,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def Ports(self):
-        r"""服务端口配置
+        r"""<p>服务端口配置</p>
         :rtype: list of PortInfo
         """
         return self._Ports
@@ -31830,7 +32020,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def LoadBalancerSet(self):
-        r"""负载均衡器相关配置
+        r"""<p>负载均衡器相关配置</p>
         :rtype: list of LoadBalancerPackageNew
         """
         return self._LoadBalancerSet
@@ -31841,7 +32031,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def AppId(self):
-        r"""用户id
+        r"""<p>用户id</p>
         :rtype: int
         """
         return self._AppId
@@ -31852,27 +32042,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def State(self):
-        r"""SAAS型WAF域名状态：
--2：配置下发失败
--1：配置下发中
-0：DNS解析中
-1：无DNS解析记录，请接入WAF
-10：DNS解析未知，域名启用了代理
-11：DNS解析异常，使用A记录接入WAF IP
-200：检测源站不可达
-220：源站不支持长连接
-311：证书过期
-312：证书即将过期
-310：证书异常
-316：备案异常
-5：WAF回源已变更
-负载均衡型WAF域名LB监听器状态：
-0：操作成功 
-4：正在绑定LB 
-6：正在解绑LB 
-7：解绑LB失败 
-8：绑定LB失败 
-10：内部错误
+        r"""<p>SAAS型WAF域名状态：<br>-2：配置下发失败<br>-1：配置下发中<br>0：DNS解析中<br>1：无DNS解析记录，请接入WAF<br>10：DNS解析未知，域名启用了代理<br>11：DNS解析异常，使用A记录接入WAF IP<br>200：检测源站不可达<br>220：源站不支持长连接<br>311：证书过期<br>312：证书即将过期<br>310：证书异常<br>316：备案异常<br>5：WAF回源已变更<br>负载均衡型WAF域名LB监听器状态：<br>0：操作成功<br>4：正在绑定LB<br>6：正在解绑LB<br>7：解绑LB失败<br>8：绑定LB失败<br>10：内部错误</p>
         :rtype: int
         """
         return self._State
@@ -31883,7 +32053,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -31893,10 +32063,19 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
         self._CreateTime = CreateTime
 
     @property
+    def ModifyTime(self):
+        r"""<p>编辑时间</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
     def Ipv6Status(self):
-        r"""Ipv6开关状态。
-0：关闭 
-1：开启
+        r"""<p>Ipv6开关状态。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._Ipv6Status
@@ -31907,11 +32086,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def BotStatus(self):
-        r"""BOT开关状态。
-0：关闭 
-1：关闭
-2：开启
-3：开启
+        r"""<p>BOT开关状态。<br>0：关闭<br>1：关闭<br>2：开启<br>3：开启</p>
         :rtype: int
         """
         return self._BotStatus
@@ -31922,13 +32097,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def Level(self):
-        r"""实例版本信息。
-101：小微敏捷版 
-102：小微超轻版
-2：高级版
-3：企业版
-4：旗舰版
-6：独享版
+        r"""<p>实例版本信息。<br>101：小微敏捷版<br>102：小微超轻版<br>2：高级版<br>3：企业版<br>4：旗舰版<br>6：独享版</p>
         :rtype: int
         """
         return self._Level
@@ -31939,9 +32108,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def PostCLSStatus(self):
-        r"""投递CLS状态。
-0：关闭 
-1：开启
+        r"""<p>投递CLS状态。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._PostCLSStatus
@@ -31952,9 +32119,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def PostCKafkaStatus(self):
-        r"""投递CKafka状态。
-0：关闭 
-1：开启
+        r"""<p>投递CKafka状态。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._PostCKafkaStatus
@@ -31965,7 +32130,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def CdcClusters(self):
-        r"""cdc实例域名接入的集群信息,非cdc实例忽略。
+        r"""<p>cdc实例域名接入的集群信息,非cdc实例忽略。</p>
         :rtype: str
         """
         return self._CdcClusters
@@ -31976,9 +32141,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def ApiStatus(self):
-        r"""api安全开关状态。
-0：关闭 
-1：开启
+        r"""<p>api安全开关状态。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._ApiStatus
@@ -31989,9 +32152,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 
     @property
     def AlbType(self):
-        r"""应用型负载均衡类型，默认clb。
-clb：七层负载均衡器类型
-apisix：apisix网关型
+        r"""<p>应用型负载均衡类型，默认clb。<br>clb：七层负载均衡器类型<br>apisix：apisix网关型</p>
         :rtype: str
         """
         return self._AlbType
@@ -32002,11 +32163,7 @@ apisix：apisix网关型
 
     @property
     def SgState(self):
-        r"""安全组状态。
-0：不展示
-1：非腾讯云源站
-2：安全组绑定失败
-3：安全组发生变更
+        r"""<p>安全组状态。<br>0：不展示<br>1：非腾讯云源站<br>2：安全组绑定失败<br>3：安全组发生变更</p>
         :rtype: int
         """
         return self._SgState
@@ -32017,7 +32174,7 @@ apisix：apisix网关型
 
     @property
     def SgDetail(self):
-        r"""安全组状态的详细解释
+        r"""<p>安全组状态的详细解释</p>
         :rtype: str
         """
         return self._SgDetail
@@ -32028,8 +32185,7 @@ apisix：apisix网关型
 
     @property
     def CloudType(self):
-        r"""域名云环境。hybrid：混合云域名
-public：公有云域名
+        r"""<p>域名云环境。hybrid：混合云域名<br>public：公有云域名</p>
         :rtype: str
         """
         return self._CloudType
@@ -32040,7 +32196,7 @@ public：公有云域名
 
     @property
     def Note(self):
-        r"""域名备注信息
+        r"""<p>域名备注信息</p>
         :rtype: str
         """
         return self._Note
@@ -32051,7 +32207,7 @@ public：公有云域名
 
     @property
     def SrcList(self):
-        r"""SAASWAF源站IP列表
+        r"""<p>SAASWAF源站IP列表</p>
         :rtype: list of str
         """
         return self._SrcList
@@ -32062,7 +32218,7 @@ public：公有云域名
 
     @property
     def UpstreamDomainList(self):
-        r"""SAASWAF源站域名列表
+        r"""<p>SAASWAF源站域名列表</p>
         :rtype: list of str
         """
         return self._UpstreamDomainList
@@ -32073,7 +32229,7 @@ public：公有云域名
 
     @property
     def SgID(self):
-        r"""安全组ID
+        r"""<p>安全组ID</p>
         :rtype: str
         """
         return self._SgID
@@ -32084,7 +32240,7 @@ public：公有云域名
 
     @property
     def AccessStatus(self):
-        r"""clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
+        r"""<p>clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”</p>
         :rtype: int
         """
         return self._AccessStatus
@@ -32095,7 +32251,7 @@ public：公有云域名
 
     @property
     def Labels(self):
-        r"""域名标签
+        r"""<p>域名标签</p>
         :rtype: list of str
         """
         return self._Labels
@@ -32106,7 +32262,7 @@ public：公有云域名
 
     @property
     def PrivateVipStatus(self):
-        r"""saaswaf独享ip状态，0是关闭，1是开启，2是开启中
+        r"""<p>saaswaf独享ip状态，0是关闭，1是开启，2是开启中</p>
         :rtype: int
         """
         return self._PrivateVipStatus
@@ -32114,6 +32270,50 @@ public：公有云域名
     @PrivateVipStatus.setter
     def PrivateVipStatus(self, PrivateVipStatus):
         self._PrivateVipStatus = PrivateVipStatus
+
+    @property
+    def IsREIP(self):
+        r"""<p>代表是否是四层clbwaf域名</p>
+        :rtype: int
+        """
+        return self._IsREIP
+
+    @IsREIP.setter
+    def IsREIP(self, IsREIP):
+        self._IsREIP = IsREIP
+
+    @property
+    def REIPObjectId(self):
+        r"""<p>四层关联的对象ID</p>
+        :rtype: str
+        """
+        return self._REIPObjectId
+
+    @REIPObjectId.setter
+    def REIPObjectId(self, REIPObjectId):
+        self._REIPObjectId = REIPObjectId
+
+    @property
+    def TagInfos(self):
+        r"""<p>标签结构体</p>
+        :rtype: list of TagInfo
+        """
+        return self._TagInfos
+
+    @TagInfos.setter
+    def TagInfos(self, TagInfos):
+        self._TagInfos = TagInfos
+
+    @property
+    def LLMStatus(self):
+        r"""<p>大模型开关</p><p>枚举值：</p><ul><li>0： 大模型开关关闭状态</li><li>1： 大模型开关开启状态</li></ul>
+        :rtype: int
+        """
+        return self._LLMStatus
+
+    @LLMStatus.setter
+    def LLMStatus(self, LLMStatus):
+        self._LLMStatus = LLMStatus
 
 
     def _deserialize(self, params):
@@ -32146,6 +32346,7 @@ public：公有云域名
         self._AppId = params.get("AppId")
         self._State = params.get("State")
         self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
         self._Ipv6Status = params.get("Ipv6Status")
         self._BotStatus = params.get("BotStatus")
         self._Level = params.get("Level")
@@ -32164,6 +32365,15 @@ public：公有云域名
         self._AccessStatus = params.get("AccessStatus")
         self._Labels = params.get("Labels")
         self._PrivateVipStatus = params.get("PrivateVipStatus")
+        self._IsREIP = params.get("IsREIP")
+        self._REIPObjectId = params.get("REIPObjectId")
+        if params.get("TagInfos") is not None:
+            self._TagInfos = []
+            for item in params.get("TagInfos"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagInfos.append(obj)
+        self._LLMStatus = params.get("LLMStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32394,189 +32604,128 @@ class DomainsPartInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _DomainId: 域名唯一ID
+        :param _DomainId: <p>域名唯一ID</p>
         :type DomainId: str
-        :param _InstanceId: 域名所属实例唯一ID
+        :param _InstanceId: <p>域名所属实例唯一ID</p>
         :type InstanceId: str
-        :param _Edition: 域名所属实例类型
+        :param _Edition: <p>域名所属实例类型</p>
         :type Edition: str
-        :param _InstanceName: 域名所属实例名
+        :param _InstanceName: <p>域名所属实例名</p>
         :type InstanceName: str
-        :param _Cert: 证书
+        :param _Cert: <p>证书</p>
         :type Cert: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _Engine: 规则引擎和AI引擎防护模式联合状态。
-1:初始状态,规则引擎拦截&&AI引擎未操作开关状态
-10：规则引擎观察&&AI引擎关闭模式 
-11：规则引擎观察&&AI引擎观察模式 
-12：规则引擎观察&&AI引擎拦截模式 
-20：规则引擎拦截&&AI引擎关闭模式 
-21：规则引擎拦截&&AI引擎观察模式 
-22：规则引擎拦截&&AI引擎拦截模式
+        :param _ModifyTime: <p>更新时间</p>
+        :type ModifyTime: str
+        :param _Engine: <p>规则引擎和AI引擎防护模式联合状态。<br>1:初始状态,规则引擎拦截&amp;&amp;AI引擎未操作开关状态<br>10：规则引擎观察&amp;&amp;AI引擎关闭模式<br>11：规则引擎观察&amp;&amp;AI引擎观察模式<br>12：规则引擎观察&amp;&amp;AI引擎拦截模式<br>20：规则引擎拦截&amp;&amp;AI引擎关闭模式<br>21：规则引擎拦截&amp;&amp;AI引擎观察模式<br>22：规则引擎拦截&amp;&amp;AI引擎拦截模式</p>
         :type Engine: int
-        :param _HttpsRewrite: 是否开启HTTP强制跳转到HTTPS。
-0：不强制跳转
-1：开启强制跳转
+        :param _HttpsRewrite: <p>是否开启HTTP强制跳转到HTTPS。<br>0：不强制跳转<br>1：开启强制跳转</p>
         :type HttpsRewrite: int
-        :param _HttpsUpstreamPort: HTTPS回源端口
+        :param _HttpsUpstreamPort: <p>HTTPS回源端口</p>
         :type HttpsUpstreamPort: str
-        :param _IsCdn: waf前是否部署有七层代理服务。
-0：没有部署代理服务
-1：有部署代理服务，waf将使用XFF获取客户端IP
-2：有部署代理服务，waf将使用remote_addr获取客户端IP
-3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+        :param _IsCdn: <p>waf前是否部署有七层代理服务。<br>0：没有部署代理服务<br>1：有部署代理服务，waf将使用XFF获取客户端IP<br>2：有部署代理服务，waf将使用remote_addr获取客户端IP<br>3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
         :type IsCdn: int
-        :param _IsGray: 是否开启灰度。
+        :param _IsGray: <p>是否开启灰度。</p>
         :type IsGray: int
-        :param _IsHttp2: 是否开启HTTP2，需要开启HTTPS协议支持。
-0：关闭
-1：开启
+        :param _IsHttp2: <p>是否开启HTTP2，需要开启HTTPS协议支持。<br>0：关闭<br>1：开启</p>
         :type IsHttp2: int
-        :param _IsWebsocket: 是否开启WebSocket支持。
-0：关闭
-1：开启
+        :param _IsWebsocket: <p>是否开启WebSocket支持。<br>0：关闭<br>1：开启</p>
         :type IsWebsocket: int
-        :param _LoadBalance: 回源负载均衡策略。
-0：轮询
-1：IP hash
-2：加权轮询
+        :param _LoadBalance: <p>回源负载均衡策略。<br>0：轮询<br>1：IP hash<br>2：加权轮询</p>
         :type LoadBalance: int
-        :param _Mode: 防护模式。
-0：观察模式
-1：拦截模式
+        :param _Mode: <p>防护模式。<br>0：观察模式<br>1：拦截模式</p>
         :type Mode: int
-        :param _PrivateKey: 自有证书的私钥
+        :param _PrivateKey: <p>自有证书的私钥</p>
         :type PrivateKey: str
-        :param _SSLId: CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        :param _SSLId: <p>CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
         :type SSLId: str
-        :param _UpstreamDomain: 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+        :param _UpstreamDomain: <p>域名回源时的回源域名。UpstreamType为1时，需要填充此字段</p>
         :type UpstreamDomain: str
-        :param _UpstreamType: 回源类型。
-0：通过IP回源
-1：通过域名回源
+        :param _UpstreamType: <p>回源类型。<br>0：通过IP回源<br>1：通过域名回源</p>
         :type UpstreamType: int
-        :param _SrcList: IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+        :param _SrcList: <p>IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段</p>
         :type SrcList: list of str
-        :param _Ports: 域名端口配置
+        :param _Ports: <p>域名端口配置</p>
         :type Ports: list of PortInfo
-        :param _CertType: 证书类型。
-0：仅配置HTTP监听端口，没有证书
-1：证书来源为自有证书
-2：证书来源为托管证书
+        :param _CertType: <p>证书类型。<br>0：仅配置HTTP监听端口，没有证书<br>1：证书来源为自有证书<br>2：证书来源为托管证书</p>
         :type CertType: int
-        :param _UpstreamScheme: 服务配置有HTTPS端口时，HTTPS的回源协议。
-http：使用http协议回源，和HttpsUpstreamPort配合使用
-https：使用https协议回源
+        :param _UpstreamScheme: <p>服务配置有HTTPS端口时，HTTPS的回源协议。<br>http：使用http协议回源，和HttpsUpstreamPort配合使用<br>https：使用https协议回源</p>
         :type UpstreamScheme: str
-        :param _Cls: 日志包是否开启。
-0：关闭
-1：开启
+        :param _Cls: <p>日志包是否开启。<br>0：关闭<br>1：开启</p>
         :type Cls: int
-        :param _Cname: 接入Cname，SaaS型域名使用此Cname进行接入
+        :param _Cname: <p>接入Cname，SaaS型域名使用此Cname进行接入</p>
         :type Cname: str
-        :param _IsKeepAlive: 是否开启长连接。
-0： 短连接
-1： 长连接
+        :param _IsKeepAlive: <p>是否开启长连接。<br>0： 短连接<br>1： 长连接</p>
         :type IsKeepAlive: int
-        :param _ActiveCheck: 是否开启主动健康检测。
-0：不开启
-1：开启
+        :param _ActiveCheck: <p>是否开启主动健康检测。<br>0：不开启<br>1：开启</p>
         :type ActiveCheck: int
-        :param _TLSVersion: TLS版本信息
+        :param _TLSVersion: <p>TLS版本信息</p>
         :type TLSVersion: int
-        :param _Ciphers: 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+        :param _Ciphers: <p>自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。</p>
         :type Ciphers: list of int
-        :param _CipherTemplate: 加密套件模板。
-0：不支持选择，使用默认模板  
-1：通用型模板 
-2：安全型模板
-3：自定义模板
+        :param _CipherTemplate: <p>加密套件模板。<br>0：不支持选择，使用默认模板<br>1：通用型模板<br>2：安全型模板<br>3：自定义模板</p>
         :type CipherTemplate: int
-        :param _ProxyConnectTimeout: WAF与源站的连接超时，默认10s。
+        :param _ProxyConnectTimeout: <p>WAF与源站的连接超时，默认10s。</p>
         :type ProxyConnectTimeout: int
-        :param _ProxyReadTimeout: WAF与源站的读超时时间，默认300s。
+        :param _ProxyReadTimeout: <p>WAF与源站的读超时时间，默认300s。</p>
         :type ProxyReadTimeout: int
-        :param _ProxySendTimeout: WAF与源站的写超时时间，默认300s。
+        :param _ProxySendTimeout: <p>WAF与源站的写超时时间，默认300s。</p>
         :type ProxySendTimeout: int
-        :param _SniType: WAF回源时的SNI类型。
-0：关闭SNI，不配置client_hello中的server_name
-1：开启SNI，client_hello中的server_name为防护域名
-2：开启SNI，SNI为域名回源时的源站域名
-3：开启SNI，SNI为自定义域名
+        :param _SniType: <p>WAF回源时的SNI类型。<br>0：关闭SNI，不配置client_hello中的server_name<br>1：开启SNI，client_hello中的server_name为防护域名<br>2：开启SNI，SNI为域名回源时的源站域名<br>3：开启SNI，SNI为自定义域名</p>
         :type SniType: int
-        :param _SniHost: SniType为3时，需要填此参数，表示自定义的SNI；
+        :param _SniHost: <p>SniType为3时，需要填此参数，表示自定义的SNI；</p>
         :type SniHost: str
-        :param _Weights: 回源IP权重
+        :param _Weights: <p>回源IP权重</p>
         :type Weights: list of str
-        :param _IpHeaders: IsCdn=3时，表示自定义header
+        :param _IpHeaders: <p>IsCdn=3时，表示自定义header</p>
         :type IpHeaders: list of str
-        :param _XFFReset: 是否开启XFF重置。
-0：关闭
-1：开启
+        :param _XFFReset: <p>是否开启XFF重置。<br>0：关闭<br>1：开启</p>
         :type XFFReset: int
-        :param _Note: 域名备注信息
+        :param _Note: <p>域名备注信息</p>
         :type Note: str
-        :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+        :param _UpstreamHost: <p>自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。</p>
         :type UpstreamHost: str
-        :param _Level: 防护规则
+        :param _Level: <p>防护规则</p>
         :type Level: str
-        :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
+        :param _ProxyBuffer: <p>是否开启缓存 0-关闭 1-开启</p>
         :type ProxyBuffer: int
-        :param _GmType: 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+        :param _GmType: <p>国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问</p>
         :type GmType: int
-        :param _GmCertType: 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+        :param _GmCertType: <p>国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书</p>
         :type GmCertType: int
-        :param _GmCert: GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+        :param _GmCert: <p>GmCertType为1时，需要填充此参数，表示自有国密证书的证书链</p>
         :type GmCert: str
-        :param _GmPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+        :param _GmPrivateKey: <p>GmCertType为1时，需要填充此参数，表示自有国密证书的私钥</p>
         :type GmPrivateKey: str
-        :param _GmEncCert: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+        :param _GmEncCert: <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书</p>
         :type GmEncCert: str
-        :param _GmEncPrivateKey: GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+        :param _GmEncPrivateKey: <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥</p>
         :type GmEncPrivateKey: str
-        :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        :param _GmSSLId: <p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
         :type GmSSLId: str
-        :param _Labels: 域名标签
+        :param _Labels: <p>域名标签</p>
         :type Labels: list of str
-        :param _ProbeStatus: 拨测状态。 0: 禁用拨测, 1: 启用拨测
+        :param _ProbeStatus: <p>拨测状态。 0: 禁用拨测, 1: 启用拨测</p>
         :type ProbeStatus: int
-        :param _UpstreamPolicy: 回源策略。
-0：负载均衡回源
-1：分流回源
+        :param _UpstreamPolicy: <p>回源策略。<br>0：负载均衡回源<br>1：分流回源</p>
         :type UpstreamPolicy: int
-        :param _UpstreamRules: 分流回源策略
+        :param _UpstreamRules: <p>分流回源策略</p>
         :type UpstreamRules: list of UpstreamRule
-        :param _UseCase: 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        :param _UseCase: <p>业务场景。0：默认值，表示常规业务场景 1：大模型业务场景</p>
         :type UseCase: int
-        :param _Gzip: gzip开关。0：关闭 1：默认值，打开。
+        :param _Gzip: <p>gzip开关。0：关闭 1：默认值，打开。</p>
         :type Gzip: int
-        :param _State: SAAS型WAF域名状态：
--2：配置下发失败
--1：配置下发中
-0：DNS解析中
-1：无DNS解析记录，请接入WAF
-10：DNS解析未知，域名启用了代理
-11：DNS解析异常，使用A记录接入WAF IP
-200：检测源站不可达
-220：源站不支持长连接
-311：证书过期
-312：证书即将过期
-310：证书异常
-316：备案异常
-5：WAF回源已变更
-负载均衡型WAF域名LB监听器状态：
-0：操作成功 
-4：正在绑定LB 
-6：正在解绑LB 
-7：解绑LB失败 
-8：绑定LB失败 
-10：内部错误
+        :param _State: <p>SAAS型WAF域名状态：<br>-2：配置下发失败<br>-1：配置下发中<br>0：DNS解析中<br>1：无DNS解析记录，请接入WAF<br>10：DNS解析未知，域名启用了代理<br>11：DNS解析异常，使用A记录接入WAF IP<br>200：检测源站不可达<br>220：源站不支持长连接<br>311：证书过期<br>312：证书即将过期<br>310：证书异常<br>316：备案异常<br>5：WAF回源已变更<br>负载均衡型WAF域名LB监听器状态：<br>0：操作成功<br>4：正在绑定LB<br>6：正在解绑LB<br>7：解绑LB失败<br>8：绑定LB失败<br>10：内部错误</p>
         :type State: int
-        :param _PrivateVipStatus: saaswaf独享ip状态，0是关闭状态，1是开启状态，2是开启中
+        :param _PrivateVipStatus: <p>saaswaf独享ip状态，0是关闭状态，1是开启状态，2是开启中</p>
         :type PrivateVipStatus: int
+        :param _TagInfos: <p>标签结构体</p>
+        :type TagInfos: list of TagInfo
+        :param _Ipv6Status: <p>ipv6开启状态</p><p>枚举值：</p><ul><li>1： ipv6开关打开</li><li>0： ipv6开关关闭</li></ul>
+        :type Ipv6Status: int
         """
         self._Domain = None
         self._DomainId = None
@@ -32585,6 +32734,7 @@ https：使用https协议回源
         self._InstanceName = None
         self._Cert = None
         self._CreateTime = None
+        self._ModifyTime = None
         self._Engine = None
         self._HttpsRewrite = None
         self._HttpsUpstreamPort = None
@@ -32636,10 +32786,12 @@ https：使用https协议回源
         self._Gzip = None
         self._State = None
         self._PrivateVipStatus = None
+        self._TagInfos = None
+        self._Ipv6Status = None
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -32650,7 +32802,7 @@ https：使用https协议回源
 
     @property
     def DomainId(self):
-        r"""域名唯一ID
+        r"""<p>域名唯一ID</p>
         :rtype: str
         """
         return self._DomainId
@@ -32661,7 +32813,7 @@ https：使用https协议回源
 
     @property
     def InstanceId(self):
-        r"""域名所属实例唯一ID
+        r"""<p>域名所属实例唯一ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -32672,7 +32824,7 @@ https：使用https协议回源
 
     @property
     def Edition(self):
-        r"""域名所属实例类型
+        r"""<p>域名所属实例类型</p>
         :rtype: str
         """
         return self._Edition
@@ -32683,7 +32835,7 @@ https：使用https协议回源
 
     @property
     def InstanceName(self):
-        r"""域名所属实例名
+        r"""<p>域名所属实例名</p>
         :rtype: str
         """
         return self._InstanceName
@@ -32694,7 +32846,7 @@ https：使用https协议回源
 
     @property
     def Cert(self):
-        r"""证书
+        r"""<p>证书</p>
         :rtype: str
         """
         return self._Cert
@@ -32705,7 +32857,7 @@ https：使用https协议回源
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -32715,15 +32867,19 @@ https：使用https协议回源
         self._CreateTime = CreateTime
 
     @property
+    def ModifyTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
     def Engine(self):
-        r"""规则引擎和AI引擎防护模式联合状态。
-1:初始状态,规则引擎拦截&&AI引擎未操作开关状态
-10：规则引擎观察&&AI引擎关闭模式 
-11：规则引擎观察&&AI引擎观察模式 
-12：规则引擎观察&&AI引擎拦截模式 
-20：规则引擎拦截&&AI引擎关闭模式 
-21：规则引擎拦截&&AI引擎观察模式 
-22：规则引擎拦截&&AI引擎拦截模式
+        r"""<p>规则引擎和AI引擎防护模式联合状态。<br>1:初始状态,规则引擎拦截&amp;&amp;AI引擎未操作开关状态<br>10：规则引擎观察&amp;&amp;AI引擎关闭模式<br>11：规则引擎观察&amp;&amp;AI引擎观察模式<br>12：规则引擎观察&amp;&amp;AI引擎拦截模式<br>20：规则引擎拦截&amp;&amp;AI引擎关闭模式<br>21：规则引擎拦截&amp;&amp;AI引擎观察模式<br>22：规则引擎拦截&amp;&amp;AI引擎拦截模式</p>
         :rtype: int
         """
         return self._Engine
@@ -32734,9 +32890,7 @@ https：使用https协议回源
 
     @property
     def HttpsRewrite(self):
-        r"""是否开启HTTP强制跳转到HTTPS。
-0：不强制跳转
-1：开启强制跳转
+        r"""<p>是否开启HTTP强制跳转到HTTPS。<br>0：不强制跳转<br>1：开启强制跳转</p>
         :rtype: int
         """
         return self._HttpsRewrite
@@ -32747,7 +32901,7 @@ https：使用https协议回源
 
     @property
     def HttpsUpstreamPort(self):
-        r"""HTTPS回源端口
+        r"""<p>HTTPS回源端口</p>
         :rtype: str
         """
         return self._HttpsUpstreamPort
@@ -32758,11 +32912,7 @@ https：使用https协议回源
 
     @property
     def IsCdn(self):
-        r"""waf前是否部署有七层代理服务。
-0：没有部署代理服务
-1：有部署代理服务，waf将使用XFF获取客户端IP
-2：有部署代理服务，waf将使用remote_addr获取客户端IP
-3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+        r"""<p>waf前是否部署有七层代理服务。<br>0：没有部署代理服务<br>1：有部署代理服务，waf将使用XFF获取客户端IP<br>2：有部署代理服务，waf将使用remote_addr获取客户端IP<br>3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
         :rtype: int
         """
         return self._IsCdn
@@ -32775,7 +32925,7 @@ https：使用https协议回源
     def IsGray(self):
         warnings.warn("parameter `IsGray` is deprecated", DeprecationWarning) 
 
-        r"""是否开启灰度。
+        r"""<p>是否开启灰度。</p>
         :rtype: int
         """
         return self._IsGray
@@ -32788,9 +32938,7 @@ https：使用https协议回源
 
     @property
     def IsHttp2(self):
-        r"""是否开启HTTP2，需要开启HTTPS协议支持。
-0：关闭
-1：开启
+        r"""<p>是否开启HTTP2，需要开启HTTPS协议支持。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._IsHttp2
@@ -32801,9 +32949,7 @@ https：使用https协议回源
 
     @property
     def IsWebsocket(self):
-        r"""是否开启WebSocket支持。
-0：关闭
-1：开启
+        r"""<p>是否开启WebSocket支持。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._IsWebsocket
@@ -32814,10 +32960,7 @@ https：使用https协议回源
 
     @property
     def LoadBalance(self):
-        r"""回源负载均衡策略。
-0：轮询
-1：IP hash
-2：加权轮询
+        r"""<p>回源负载均衡策略。<br>0：轮询<br>1：IP hash<br>2：加权轮询</p>
         :rtype: int
         """
         return self._LoadBalance
@@ -32828,9 +32971,7 @@ https：使用https协议回源
 
     @property
     def Mode(self):
-        r"""防护模式。
-0：观察模式
-1：拦截模式
+        r"""<p>防护模式。<br>0：观察模式<br>1：拦截模式</p>
         :rtype: int
         """
         return self._Mode
@@ -32841,7 +32982,7 @@ https：使用https协议回源
 
     @property
     def PrivateKey(self):
-        r"""自有证书的私钥
+        r"""<p>自有证书的私钥</p>
         :rtype: str
         """
         return self._PrivateKey
@@ -32852,7 +32993,7 @@ https：使用https协议回源
 
     @property
     def SSLId(self):
-        r"""CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        r"""<p>CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
         :rtype: str
         """
         return self._SSLId
@@ -32863,7 +33004,7 @@ https：使用https协议回源
 
     @property
     def UpstreamDomain(self):
-        r"""域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+        r"""<p>域名回源时的回源域名。UpstreamType为1时，需要填充此字段</p>
         :rtype: str
         """
         return self._UpstreamDomain
@@ -32874,9 +33015,7 @@ https：使用https协议回源
 
     @property
     def UpstreamType(self):
-        r"""回源类型。
-0：通过IP回源
-1：通过域名回源
+        r"""<p>回源类型。<br>0：通过IP回源<br>1：通过域名回源</p>
         :rtype: int
         """
         return self._UpstreamType
@@ -32887,7 +33026,7 @@ https：使用https协议回源
 
     @property
     def SrcList(self):
-        r"""IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+        r"""<p>IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段</p>
         :rtype: list of str
         """
         return self._SrcList
@@ -32898,7 +33037,7 @@ https：使用https协议回源
 
     @property
     def Ports(self):
-        r"""域名端口配置
+        r"""<p>域名端口配置</p>
         :rtype: list of PortInfo
         """
         return self._Ports
@@ -32909,10 +33048,7 @@ https：使用https协议回源
 
     @property
     def CertType(self):
-        r"""证书类型。
-0：仅配置HTTP监听端口，没有证书
-1：证书来源为自有证书
-2：证书来源为托管证书
+        r"""<p>证书类型。<br>0：仅配置HTTP监听端口，没有证书<br>1：证书来源为自有证书<br>2：证书来源为托管证书</p>
         :rtype: int
         """
         return self._CertType
@@ -32923,9 +33059,7 @@ https：使用https协议回源
 
     @property
     def UpstreamScheme(self):
-        r"""服务配置有HTTPS端口时，HTTPS的回源协议。
-http：使用http协议回源，和HttpsUpstreamPort配合使用
-https：使用https协议回源
+        r"""<p>服务配置有HTTPS端口时，HTTPS的回源协议。<br>http：使用http协议回源，和HttpsUpstreamPort配合使用<br>https：使用https协议回源</p>
         :rtype: str
         """
         return self._UpstreamScheme
@@ -32936,9 +33070,7 @@ https：使用https协议回源
 
     @property
     def Cls(self):
-        r"""日志包是否开启。
-0：关闭
-1：开启
+        r"""<p>日志包是否开启。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._Cls
@@ -32949,7 +33081,7 @@ https：使用https协议回源
 
     @property
     def Cname(self):
-        r"""接入Cname，SaaS型域名使用此Cname进行接入
+        r"""<p>接入Cname，SaaS型域名使用此Cname进行接入</p>
         :rtype: str
         """
         return self._Cname
@@ -32960,9 +33092,7 @@ https：使用https协议回源
 
     @property
     def IsKeepAlive(self):
-        r"""是否开启长连接。
-0： 短连接
-1： 长连接
+        r"""<p>是否开启长连接。<br>0： 短连接<br>1： 长连接</p>
         :rtype: int
         """
         return self._IsKeepAlive
@@ -32973,9 +33103,7 @@ https：使用https协议回源
 
     @property
     def ActiveCheck(self):
-        r"""是否开启主动健康检测。
-0：不开启
-1：开启
+        r"""<p>是否开启主动健康检测。<br>0：不开启<br>1：开启</p>
         :rtype: int
         """
         return self._ActiveCheck
@@ -32986,7 +33114,7 @@ https：使用https协议回源
 
     @property
     def TLSVersion(self):
-        r"""TLS版本信息
+        r"""<p>TLS版本信息</p>
         :rtype: int
         """
         return self._TLSVersion
@@ -32997,7 +33125,7 @@ https：使用https协议回源
 
     @property
     def Ciphers(self):
-        r"""自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+        r"""<p>自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。</p>
         :rtype: list of int
         """
         return self._Ciphers
@@ -33008,11 +33136,7 @@ https：使用https协议回源
 
     @property
     def CipherTemplate(self):
-        r"""加密套件模板。
-0：不支持选择，使用默认模板  
-1：通用型模板 
-2：安全型模板
-3：自定义模板
+        r"""<p>加密套件模板。<br>0：不支持选择，使用默认模板<br>1：通用型模板<br>2：安全型模板<br>3：自定义模板</p>
         :rtype: int
         """
         return self._CipherTemplate
@@ -33023,7 +33147,7 @@ https：使用https协议回源
 
     @property
     def ProxyConnectTimeout(self):
-        r"""WAF与源站的连接超时，默认10s。
+        r"""<p>WAF与源站的连接超时，默认10s。</p>
         :rtype: int
         """
         return self._ProxyConnectTimeout
@@ -33034,7 +33158,7 @@ https：使用https协议回源
 
     @property
     def ProxyReadTimeout(self):
-        r"""WAF与源站的读超时时间，默认300s。
+        r"""<p>WAF与源站的读超时时间，默认300s。</p>
         :rtype: int
         """
         return self._ProxyReadTimeout
@@ -33045,7 +33169,7 @@ https：使用https协议回源
 
     @property
     def ProxySendTimeout(self):
-        r"""WAF与源站的写超时时间，默认300s。
+        r"""<p>WAF与源站的写超时时间，默认300s。</p>
         :rtype: int
         """
         return self._ProxySendTimeout
@@ -33056,11 +33180,7 @@ https：使用https协议回源
 
     @property
     def SniType(self):
-        r"""WAF回源时的SNI类型。
-0：关闭SNI，不配置client_hello中的server_name
-1：开启SNI，client_hello中的server_name为防护域名
-2：开启SNI，SNI为域名回源时的源站域名
-3：开启SNI，SNI为自定义域名
+        r"""<p>WAF回源时的SNI类型。<br>0：关闭SNI，不配置client_hello中的server_name<br>1：开启SNI，client_hello中的server_name为防护域名<br>2：开启SNI，SNI为域名回源时的源站域名<br>3：开启SNI，SNI为自定义域名</p>
         :rtype: int
         """
         return self._SniType
@@ -33071,7 +33191,7 @@ https：使用https协议回源
 
     @property
     def SniHost(self):
-        r"""SniType为3时，需要填此参数，表示自定义的SNI；
+        r"""<p>SniType为3时，需要填此参数，表示自定义的SNI；</p>
         :rtype: str
         """
         return self._SniHost
@@ -33082,7 +33202,7 @@ https：使用https协议回源
 
     @property
     def Weights(self):
-        r"""回源IP权重
+        r"""<p>回源IP权重</p>
         :rtype: list of str
         """
         return self._Weights
@@ -33093,7 +33213,7 @@ https：使用https协议回源
 
     @property
     def IpHeaders(self):
-        r"""IsCdn=3时，表示自定义header
+        r"""<p>IsCdn=3时，表示自定义header</p>
         :rtype: list of str
         """
         return self._IpHeaders
@@ -33104,9 +33224,7 @@ https：使用https协议回源
 
     @property
     def XFFReset(self):
-        r"""是否开启XFF重置。
-0：关闭
-1：开启
+        r"""<p>是否开启XFF重置。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._XFFReset
@@ -33117,7 +33235,7 @@ https：使用https协议回源
 
     @property
     def Note(self):
-        r"""域名备注信息
+        r"""<p>域名备注信息</p>
         :rtype: str
         """
         return self._Note
@@ -33128,7 +33246,7 @@ https：使用https协议回源
 
     @property
     def UpstreamHost(self):
-        r"""自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+        r"""<p>自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。</p>
         :rtype: str
         """
         return self._UpstreamHost
@@ -33139,7 +33257,7 @@ https：使用https协议回源
 
     @property
     def Level(self):
-        r"""防护规则
+        r"""<p>防护规则</p>
         :rtype: str
         """
         return self._Level
@@ -33150,7 +33268,7 @@ https：使用https协议回源
 
     @property
     def ProxyBuffer(self):
-        r"""是否开启缓存 0-关闭 1-开启
+        r"""<p>是否开启缓存 0-关闭 1-开启</p>
         :rtype: int
         """
         return self._ProxyBuffer
@@ -33161,7 +33279,7 @@ https：使用https协议回源
 
     @property
     def GmType(self):
-        r"""国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+        r"""<p>国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问</p>
         :rtype: int
         """
         return self._GmType
@@ -33172,7 +33290,7 @@ https：使用https协议回源
 
     @property
     def GmCertType(self):
-        r"""国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+        r"""<p>国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书</p>
         :rtype: int
         """
         return self._GmCertType
@@ -33183,7 +33301,7 @@ https：使用https协议回源
 
     @property
     def GmCert(self):
-        r"""GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+        r"""<p>GmCertType为1时，需要填充此参数，表示自有国密证书的证书链</p>
         :rtype: str
         """
         return self._GmCert
@@ -33194,7 +33312,7 @@ https：使用https协议回源
 
     @property
     def GmPrivateKey(self):
-        r"""GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+        r"""<p>GmCertType为1时，需要填充此参数，表示自有国密证书的私钥</p>
         :rtype: str
         """
         return self._GmPrivateKey
@@ -33205,7 +33323,7 @@ https：使用https协议回源
 
     @property
     def GmEncCert(self):
-        r"""GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+        r"""<p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书</p>
         :rtype: str
         """
         return self._GmEncCert
@@ -33216,7 +33334,7 @@ https：使用https协议回源
 
     @property
     def GmEncPrivateKey(self):
-        r"""GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+        r"""<p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥</p>
         :rtype: str
         """
         return self._GmEncPrivateKey
@@ -33227,7 +33345,7 @@ https：使用https协议回源
 
     @property
     def GmSSLId(self):
-        r"""GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+        r"""<p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
         :rtype: str
         """
         return self._GmSSLId
@@ -33238,7 +33356,7 @@ https：使用https协议回源
 
     @property
     def Labels(self):
-        r"""域名标签
+        r"""<p>域名标签</p>
         :rtype: list of str
         """
         return self._Labels
@@ -33249,7 +33367,7 @@ https：使用https协议回源
 
     @property
     def ProbeStatus(self):
-        r"""拨测状态。 0: 禁用拨测, 1: 启用拨测
+        r"""<p>拨测状态。 0: 禁用拨测, 1: 启用拨测</p>
         :rtype: int
         """
         return self._ProbeStatus
@@ -33260,9 +33378,7 @@ https：使用https协议回源
 
     @property
     def UpstreamPolicy(self):
-        r"""回源策略。
-0：负载均衡回源
-1：分流回源
+        r"""<p>回源策略。<br>0：负载均衡回源<br>1：分流回源</p>
         :rtype: int
         """
         return self._UpstreamPolicy
@@ -33273,7 +33389,7 @@ https：使用https协议回源
 
     @property
     def UpstreamRules(self):
-        r"""分流回源策略
+        r"""<p>分流回源策略</p>
         :rtype: list of UpstreamRule
         """
         return self._UpstreamRules
@@ -33284,7 +33400,7 @@ https：使用https协议回源
 
     @property
     def UseCase(self):
-        r"""业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+        r"""<p>业务场景。0：默认值，表示常规业务场景 1：大模型业务场景</p>
         :rtype: int
         """
         return self._UseCase
@@ -33295,7 +33411,7 @@ https：使用https协议回源
 
     @property
     def Gzip(self):
-        r"""gzip开关。0：关闭 1：默认值，打开。
+        r"""<p>gzip开关。0：关闭 1：默认值，打开。</p>
         :rtype: int
         """
         return self._Gzip
@@ -33306,27 +33422,7 @@ https：使用https协议回源
 
     @property
     def State(self):
-        r"""SAAS型WAF域名状态：
--2：配置下发失败
--1：配置下发中
-0：DNS解析中
-1：无DNS解析记录，请接入WAF
-10：DNS解析未知，域名启用了代理
-11：DNS解析异常，使用A记录接入WAF IP
-200：检测源站不可达
-220：源站不支持长连接
-311：证书过期
-312：证书即将过期
-310：证书异常
-316：备案异常
-5：WAF回源已变更
-负载均衡型WAF域名LB监听器状态：
-0：操作成功 
-4：正在绑定LB 
-6：正在解绑LB 
-7：解绑LB失败 
-8：绑定LB失败 
-10：内部错误
+        r"""<p>SAAS型WAF域名状态：<br>-2：配置下发失败<br>-1：配置下发中<br>0：DNS解析中<br>1：无DNS解析记录，请接入WAF<br>10：DNS解析未知，域名启用了代理<br>11：DNS解析异常，使用A记录接入WAF IP<br>200：检测源站不可达<br>220：源站不支持长连接<br>311：证书过期<br>312：证书即将过期<br>310：证书异常<br>316：备案异常<br>5：WAF回源已变更<br>负载均衡型WAF域名LB监听器状态：<br>0：操作成功<br>4：正在绑定LB<br>6：正在解绑LB<br>7：解绑LB失败<br>8：绑定LB失败<br>10：内部错误</p>
         :rtype: int
         """
         return self._State
@@ -33337,7 +33433,7 @@ https：使用https协议回源
 
     @property
     def PrivateVipStatus(self):
-        r"""saaswaf独享ip状态，0是关闭状态，1是开启状态，2是开启中
+        r"""<p>saaswaf独享ip状态，0是关闭状态，1是开启状态，2是开启中</p>
         :rtype: int
         """
         return self._PrivateVipStatus
@@ -33345,6 +33441,28 @@ https：使用https协议回源
     @PrivateVipStatus.setter
     def PrivateVipStatus(self, PrivateVipStatus):
         self._PrivateVipStatus = PrivateVipStatus
+
+    @property
+    def TagInfos(self):
+        r"""<p>标签结构体</p>
+        :rtype: list of TagInfo
+        """
+        return self._TagInfos
+
+    @TagInfos.setter
+    def TagInfos(self, TagInfos):
+        self._TagInfos = TagInfos
+
+    @property
+    def Ipv6Status(self):
+        r"""<p>ipv6开启状态</p><p>枚举值：</p><ul><li>1： ipv6开关打开</li><li>0： ipv6开关关闭</li></ul>
+        :rtype: int
+        """
+        return self._Ipv6Status
+
+    @Ipv6Status.setter
+    def Ipv6Status(self, Ipv6Status):
+        self._Ipv6Status = Ipv6Status
 
 
     def _deserialize(self, params):
@@ -33355,6 +33473,7 @@ https：使用https协议回源
         self._InstanceName = params.get("InstanceName")
         self._Cert = params.get("Cert")
         self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
         self._Engine = params.get("Engine")
         self._HttpsRewrite = params.get("HttpsRewrite")
         self._HttpsUpstreamPort = params.get("HttpsUpstreamPort")
@@ -33416,6 +33535,13 @@ https：使用https协议回源
         self._Gzip = params.get("Gzip")
         self._State = params.get("State")
         self._PrivateVipStatus = params.get("PrivateVipStatus")
+        if params.get("TagInfos") is not None:
+            self._TagInfos = []
+            for item in params.get("TagInfos"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagInfos.append(obj)
+        self._Ipv6Status = params.get("Ipv6Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35451,7 +35577,7 @@ class GetOrganizationRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Role: Admin:集团账号创建，DelegatedAdmin:委派管理员，Member：成员，NoMember：非集团账号成员
+        :param _Role: <p>Admin:集团账号创建，DelegatedAdmin:委派管理员，Member：成员，NoMember：非集团账号成员</p>
         :type Role: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35461,7 +35587,7 @@ class GetOrganizationRoleResponse(AbstractModel):
 
     @property
     def Role(self):
-        r"""Admin:集团账号创建，DelegatedAdmin:委派管理员，Member：成员，NoMember：非集团账号成员
+        r"""<p>Admin:集团账号创建，DelegatedAdmin:委派管理员，Member：成员，NoMember：非集团账号成员</p>
         :rtype: str
         """
         return self._Role
@@ -37974,129 +38100,120 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例唯一ID
+        :param _InstanceId: <p>实例唯一ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _ResourceIds: 实例对应资源ID，计费使用
+        :param _ResourceIds: <p>实例对应资源ID，计费使用</p>
         :type ResourceIds: str
-        :param _Region: 实例所属地域
+        :param _Region: <p>实例所属地域</p>
         :type Region: str
-        :param _PayMode: 付费模式
+        :param _PayMode: <p>付费模式</p>
         :type PayMode: int
-        :param _RenewFlag: 自动续费标识。
-0：关闭
-1：开启
+        :param _RenewFlag: <p>自动续费标识。<br>0：关闭<br>1：开启</p>
         :type RenewFlag: int
-        :param _Mode: 弹性计费开关。
-0：关闭
-1：开启
+        :param _Mode: <p>弹性计费开关。<br>0：关闭<br>1：开启</p>
         :type Mode: int
-        :param _Level: 实例套餐版本。
-101：小微版
-102：超轻版
-2：高级版
-3：企业版
-4：旗舰版
-6：独享版
+        :param _Level: <p>实例套餐版本。<br>101：小微版<br>102：超轻版<br>2：高级版<br>3：企业版<br>4：旗舰版<br>6：独享版</p>
         :type Level: int
-        :param _ValidTime: 实例过期时间
+        :param _ValidTime: <p>实例过期时间</p>
         :type ValidTime: str
-        :param _BeginTime: 实例开始时间
+        :param _BeginTime: <p>实例开始时间</p>
         :type BeginTime: str
-        :param _DomainCount: 已配置域名个数
+        :param _DomainCount: <p>已配置域名个数</p>
         :type DomainCount: int
-        :param _SubDomainLimit: 域名数量上限
+        :param _SubDomainLimit: <p>域名数量上限</p>
         :type SubDomainLimit: int
-        :param _MainDomainCount: 已配置主域名个数
+        :param _MainDomainCount: <p>已配置主域名个数</p>
         :type MainDomainCount: int
-        :param _MainDomainLimit: 主域名数量上限
+        :param _MainDomainLimit: <p>主域名数量上限</p>
         :type MainDomainLimit: int
-        :param _MaxQPS: 实例30天内QPS峰值
+        :param _MaxQPS: <p>实例30天内QPS峰值</p>
         :type MaxQPS: int
-        :param _QPS: qps扩展包信息
+        :param _QPS: <p>qps扩展包信息</p>
         :type QPS: :class:`tencentcloud.waf.v20180125.models.QPSPackageNew`
-        :param _DomainPkg: 域名扩展包信息
+        :param _DomainPkg: <p>域名扩展包信息</p>
         :type DomainPkg: :class:`tencentcloud.waf.v20180125.models.DomainPackageNew`
-        :param _AppId: 用户appid
+        :param _AppId: <p>用户appid</p>
         :type AppId: int
-        :param _Edition: clb或saas
+        :param _Edition: <p>clb或saas</p>
         :type Edition: str
-        :param _FraudPkg: 业务安全包
+        :param _FraudPkg: <p>业务安全包</p>
         :type FraudPkg: :class:`tencentcloud.waf.v20180125.models.FraudPkg`
-        :param _BotPkg: Bot资源包
+        :param _BotPkg: <p>Bot资源包</p>
         :type BotPkg: :class:`tencentcloud.waf.v20180125.models.BotPkg`
-        :param _BotQPS: bot的qps详情
+        :param _BotQPS: <p>bot的qps详情</p>
         :type BotQPS: :class:`tencentcloud.waf.v20180125.models.BotQPS`
-        :param _ElasticBilling: qps弹性计费上限
+        :param _ElasticBilling: <p>qps弹性计费上限</p>
         :type ElasticBilling: int
-        :param _AttackLogPost: 攻击日志投递开关
+        :param _AttackLogPost: <p>攻击日志投递开关</p>
         :type AttackLogPost: int
-        :param _MaxBandwidth: 带宽峰值，单位为B/s(字节每秒)
+        :param _MaxBandwidth: <p>带宽峰值，单位为B/s(字节每秒)</p>
         :type MaxBandwidth: int
-        :param _APISecurity: api安全是否购买
+        :param _APISecurity: <p>api安全是否购买</p>
         :type APISecurity: int
-        :param _QpsStandard: 购买的qps规格
+        :param _QpsStandard: <p>购买的qps规格</p>
         :type QpsStandard: int
-        :param _BandwidthStandard: 购买的带宽规格
+        :param _BandwidthStandard: <p>购买的带宽规格</p>
         :type BandwidthStandard: int
-        :param _Status: 实例状态
+        :param _Status: <p>实例状态</p>
         :type Status: int
-        :param _SandboxQps: 实例沙箱qps值
+        :param _SandboxQps: <p>实例沙箱qps值</p>
         :type SandboxQps: int
-        :param _IsAPISecurityTrial: 是否api 安全试用
+        :param _IsAPISecurityTrial: <p>是否api 安全试用</p>
         :type IsAPISecurityTrial: int
-        :param _MajorEventsPkg: 重保包
+        :param _MajorEventsPkg: <p>重保包</p>
         :type MajorEventsPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsPkg`
-        :param _HybridPkg: 混合云子节点包
+        :param _HybridPkg: <p>混合云子节点包</p>
         :type HybridPkg: :class:`tencentcloud.waf.v20180125.models.HybridPkg`
-        :param _ApiPkg: API安全资源包
+        :param _ApiPkg: <p>API安全资源包</p>
         :type ApiPkg: :class:`tencentcloud.waf.v20180125.models.ApiPkg`
-        :param _MiniPkg: 小程序安全加速包
+        :param _MiniPkg: <p>小程序安全加速包</p>
         :type MiniPkg: :class:`tencentcloud.waf.v20180125.models.MiniPkg`
-        :param _MiniQpsStandard: 小程序qps规格
+        :param _MiniQpsStandard: <p>小程序qps规格</p>
         :type MiniQpsStandard: int
-        :param _MiniMaxQPS: 小程序qps峰值
+        :param _MiniMaxQPS: <p>小程序qps峰值</p>
         :type MiniMaxQPS: int
-        :param _LastQpsExceedTime: 最近一次超量时间
+        :param _LastQpsExceedTime: <p>最近一次超量时间</p>
         :type LastQpsExceedTime: str
-        :param _MiniExtendPkg: 小程序安全接入ID数量扩张包
+        :param _MiniExtendPkg: <p>小程序安全接入ID数量扩张包</p>
         :type MiniExtendPkg: :class:`tencentcloud.waf.v20180125.models.MiniExtendPkg`
-        :param _BillingItem: 计费项
+        :param _BillingItem: <p>计费项</p>
         :type BillingItem: str
-        :param _FreeDelayFlag: 实例延期释放标识
+        :param _FreeDelayFlag: <p>实例延期释放标识</p>
         :type FreeDelayFlag: int
-        :param _Last3MaxQPS: 最近3天最大qps
+        :param _Last3MaxQPS: <p>最近3天最大qps</p>
         :type Last3MaxQPS: int
-        :param _Last3MaxBandwidth: 最近3天最大带宽
+        :param _Last3MaxBandwidth: <p>最近3天最大带宽</p>
         :type Last3MaxBandwidth: int
-        :param _MajorEventsProPkg: 重保增强包
+        :param _MajorEventsProPkg: <p>重保增强包</p>
         :type MajorEventsProPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsProPkg`
-        :param _BasicFlag: 1是基础2025版本；0不是
+        :param _BasicFlag: <p>1是基础2025版本；0不是</p>
         :type BasicFlag: int
-        :param _NetworkConfig: 实例的网络配置
+        :param _NetworkConfig: <p>实例的网络配置</p>
         :type NetworkConfig: :class:`tencentcloud.waf.v20180125.models.NetworkConfig`
-        :param _RCEPkg: RCE设备安全信息包
+        :param _RCEPkg: <p>RCE设备安全信息包</p>
         :type RCEPkg: :class:`tencentcloud.waf.v20180125.models.RCEPkg`
-        :param _ExceedPolicy: 超量策略。0：超量沙箱
-1：超量限流
+        :param _ExceedPolicy: <p>超量策略。0：超量沙箱<br>1：超量限流</p>
         :type ExceedPolicy: int
-        :param _LLMPkg: 大模型安全信息包
+        :param _LLMPkg: <p>大模型安全信息包</p>
         :type LLMPkg: :class:`tencentcloud.waf.v20180125.models.LLMPkg`
-        :param _ElasticResourceId: 弹性资源Id
+        :param _ElasticResourceId: <p>弹性资源Id</p>
         :type ElasticResourceId: str
-        :param _LLMMonPkg: 预付费大模型安全信息包
+        :param _LLMMonPkg: <p>预付费大模型安全信息包</p>
         :type LLMMonPkg: :class:`tencentcloud.waf.v20180125.models.LLMMonPkg`
-        :param _RegionId: 地域id
+        :param _RegionId: <p>地域id</p>
         :type RegionId: int
-        :param _BotSecurityPkg: BOT安全护航信息
+        :param _BotSecurityPkg: <p>BOT安全护航信息</p>
         :type BotSecurityPkg: :class:`tencentcloud.waf.v20180125.models.BotSecurityPkg`
-        :param _BotMonitorPkg: BOT安全监测资源信息
+        :param _BotMonitorPkg: <p>BOT安全监测资源信息</p>
         :type BotMonitorPkg: :class:`tencentcloud.waf.v20180125.models.BotMonitorPkg`
-        :param _DedicatedIPPkg: 独享ip资源信息
+        :param _DedicatedIPPkg: <p>独享ip资源信息</p>
         :type DedicatedIPPkg: :class:`tencentcloud.waf.v20180125.models.DedicatedIPPkg`
-        :param _DedicatedIPCount: 已经配置独享ip的数量
+        :param _DedicatedIPCount: <p>已经配置独享ip的数量</p>
         :type DedicatedIPCount: int
+        :param _TagInfos: <p>标签结构体</p>
+        :type TagInfos: list of TagInfo
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -38154,10 +38271,11 @@ class InstanceInfo(AbstractModel):
         self._BotMonitorPkg = None
         self._DedicatedIPPkg = None
         self._DedicatedIPCount = None
+        self._TagInfos = None
 
     @property
     def InstanceId(self):
-        r"""实例唯一ID
+        r"""<p>实例唯一ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -38168,7 +38286,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -38179,7 +38297,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""实例对应资源ID，计费使用
+        r"""<p>实例对应资源ID，计费使用</p>
         :rtype: str
         """
         return self._ResourceIds
@@ -38190,7 +38308,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""实例所属地域
+        r"""<p>实例所属地域</p>
         :rtype: str
         """
         return self._Region
@@ -38201,7 +38319,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式
+        r"""<p>付费模式</p>
         :rtype: int
         """
         return self._PayMode
@@ -38212,9 +38330,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识。
-0：关闭
-1：开启
+        r"""<p>自动续费标识。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -38225,9 +38341,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Mode(self):
-        r"""弹性计费开关。
-0：关闭
-1：开启
+        r"""<p>弹性计费开关。<br>0：关闭<br>1：开启</p>
         :rtype: int
         """
         return self._Mode
@@ -38238,13 +38352,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Level(self):
-        r"""实例套餐版本。
-101：小微版
-102：超轻版
-2：高级版
-3：企业版
-4：旗舰版
-6：独享版
+        r"""<p>实例套餐版本。<br>101：小微版<br>102：超轻版<br>2：高级版<br>3：企业版<br>4：旗舰版<br>6：独享版</p>
         :rtype: int
         """
         return self._Level
@@ -38255,7 +38363,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ValidTime(self):
-        r"""实例过期时间
+        r"""<p>实例过期时间</p>
         :rtype: str
         """
         return self._ValidTime
@@ -38266,7 +38374,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""实例开始时间
+        r"""<p>实例开始时间</p>
         :rtype: str
         """
         return self._BeginTime
@@ -38277,7 +38385,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DomainCount(self):
-        r"""已配置域名个数
+        r"""<p>已配置域名个数</p>
         :rtype: int
         """
         return self._DomainCount
@@ -38288,7 +38396,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SubDomainLimit(self):
-        r"""域名数量上限
+        r"""<p>域名数量上限</p>
         :rtype: int
         """
         return self._SubDomainLimit
@@ -38299,7 +38407,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MainDomainCount(self):
-        r"""已配置主域名个数
+        r"""<p>已配置主域名个数</p>
         :rtype: int
         """
         return self._MainDomainCount
@@ -38310,7 +38418,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MainDomainLimit(self):
-        r"""主域名数量上限
+        r"""<p>主域名数量上限</p>
         :rtype: int
         """
         return self._MainDomainLimit
@@ -38321,7 +38429,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MaxQPS(self):
-        r"""实例30天内QPS峰值
+        r"""<p>实例30天内QPS峰值</p>
         :rtype: int
         """
         return self._MaxQPS
@@ -38332,7 +38440,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def QPS(self):
-        r"""qps扩展包信息
+        r"""<p>qps扩展包信息</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.QPSPackageNew`
         """
         return self._QPS
@@ -38343,7 +38451,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DomainPkg(self):
-        r"""域名扩展包信息
+        r"""<p>域名扩展包信息</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.DomainPackageNew`
         """
         return self._DomainPkg
@@ -38354,7 +38462,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户appid
+        r"""<p>用户appid</p>
         :rtype: int
         """
         return self._AppId
@@ -38365,7 +38473,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Edition(self):
-        r"""clb或saas
+        r"""<p>clb或saas</p>
         :rtype: str
         """
         return self._Edition
@@ -38376,7 +38484,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def FraudPkg(self):
-        r"""业务安全包
+        r"""<p>业务安全包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.FraudPkg`
         """
         return self._FraudPkg
@@ -38387,7 +38495,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BotPkg(self):
-        r"""Bot资源包
+        r"""<p>Bot资源包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.BotPkg`
         """
         return self._BotPkg
@@ -38398,7 +38506,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BotQPS(self):
-        r"""bot的qps详情
+        r"""<p>bot的qps详情</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.BotQPS`
         """
         return self._BotQPS
@@ -38409,7 +38517,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ElasticBilling(self):
-        r"""qps弹性计费上限
+        r"""<p>qps弹性计费上限</p>
         :rtype: int
         """
         return self._ElasticBilling
@@ -38420,7 +38528,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AttackLogPost(self):
-        r"""攻击日志投递开关
+        r"""<p>攻击日志投递开关</p>
         :rtype: int
         """
         return self._AttackLogPost
@@ -38431,7 +38539,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MaxBandwidth(self):
-        r"""带宽峰值，单位为B/s(字节每秒)
+        r"""<p>带宽峰值，单位为B/s(字节每秒)</p>
         :rtype: int
         """
         return self._MaxBandwidth
@@ -38442,7 +38550,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def APISecurity(self):
-        r"""api安全是否购买
+        r"""<p>api安全是否购买</p>
         :rtype: int
         """
         return self._APISecurity
@@ -38453,7 +38561,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def QpsStandard(self):
-        r"""购买的qps规格
+        r"""<p>购买的qps规格</p>
         :rtype: int
         """
         return self._QpsStandard
@@ -38464,7 +38572,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BandwidthStandard(self):
-        r"""购买的带宽规格
+        r"""<p>购买的带宽规格</p>
         :rtype: int
         """
         return self._BandwidthStandard
@@ -38475,7 +38583,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
         :rtype: int
         """
         return self._Status
@@ -38486,7 +38594,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SandboxQps(self):
-        r"""实例沙箱qps值
+        r"""<p>实例沙箱qps值</p>
         :rtype: int
         """
         return self._SandboxQps
@@ -38497,7 +38605,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def IsAPISecurityTrial(self):
-        r"""是否api 安全试用
+        r"""<p>是否api 安全试用</p>
         :rtype: int
         """
         return self._IsAPISecurityTrial
@@ -38508,7 +38616,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MajorEventsPkg(self):
-        r"""重保包
+        r"""<p>重保包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.MajorEventsPkg`
         """
         return self._MajorEventsPkg
@@ -38519,7 +38627,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def HybridPkg(self):
-        r"""混合云子节点包
+        r"""<p>混合云子节点包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.HybridPkg`
         """
         return self._HybridPkg
@@ -38530,7 +38638,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ApiPkg(self):
-        r"""API安全资源包
+        r"""<p>API安全资源包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.ApiPkg`
         """
         return self._ApiPkg
@@ -38541,7 +38649,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MiniPkg(self):
-        r"""小程序安全加速包
+        r"""<p>小程序安全加速包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.MiniPkg`
         """
         return self._MiniPkg
@@ -38552,7 +38660,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MiniQpsStandard(self):
-        r"""小程序qps规格
+        r"""<p>小程序qps规格</p>
         :rtype: int
         """
         return self._MiniQpsStandard
@@ -38563,7 +38671,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MiniMaxQPS(self):
-        r"""小程序qps峰值
+        r"""<p>小程序qps峰值</p>
         :rtype: int
         """
         return self._MiniMaxQPS
@@ -38574,7 +38682,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def LastQpsExceedTime(self):
-        r"""最近一次超量时间
+        r"""<p>最近一次超量时间</p>
         :rtype: str
         """
         return self._LastQpsExceedTime
@@ -38585,7 +38693,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MiniExtendPkg(self):
-        r"""小程序安全接入ID数量扩张包
+        r"""<p>小程序安全接入ID数量扩张包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.MiniExtendPkg`
         """
         return self._MiniExtendPkg
@@ -38596,7 +38704,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BillingItem(self):
-        r"""计费项
+        r"""<p>计费项</p>
         :rtype: str
         """
         return self._BillingItem
@@ -38607,7 +38715,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def FreeDelayFlag(self):
-        r"""实例延期释放标识
+        r"""<p>实例延期释放标识</p>
         :rtype: int
         """
         return self._FreeDelayFlag
@@ -38618,7 +38726,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Last3MaxQPS(self):
-        r"""最近3天最大qps
+        r"""<p>最近3天最大qps</p>
         :rtype: int
         """
         return self._Last3MaxQPS
@@ -38629,7 +38737,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Last3MaxBandwidth(self):
-        r"""最近3天最大带宽
+        r"""<p>最近3天最大带宽</p>
         :rtype: int
         """
         return self._Last3MaxBandwidth
@@ -38640,7 +38748,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MajorEventsProPkg(self):
-        r"""重保增强包
+        r"""<p>重保增强包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.MajorEventsProPkg`
         """
         return self._MajorEventsProPkg
@@ -38651,7 +38759,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BasicFlag(self):
-        r"""1是基础2025版本；0不是
+        r"""<p>1是基础2025版本；0不是</p>
         :rtype: int
         """
         return self._BasicFlag
@@ -38662,7 +38770,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def NetworkConfig(self):
-        r"""实例的网络配置
+        r"""<p>实例的网络配置</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.NetworkConfig`
         """
         return self._NetworkConfig
@@ -38673,7 +38781,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RCEPkg(self):
-        r"""RCE设备安全信息包
+        r"""<p>RCE设备安全信息包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.RCEPkg`
         """
         return self._RCEPkg
@@ -38684,8 +38792,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ExceedPolicy(self):
-        r"""超量策略。0：超量沙箱
-1：超量限流
+        r"""<p>超量策略。0：超量沙箱<br>1：超量限流</p>
         :rtype: int
         """
         return self._ExceedPolicy
@@ -38696,7 +38803,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def LLMPkg(self):
-        r"""大模型安全信息包
+        r"""<p>大模型安全信息包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.LLMPkg`
         """
         return self._LLMPkg
@@ -38707,7 +38814,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ElasticResourceId(self):
-        r"""弹性资源Id
+        r"""<p>弹性资源Id</p>
         :rtype: str
         """
         return self._ElasticResourceId
@@ -38718,7 +38825,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def LLMMonPkg(self):
-        r"""预付费大模型安全信息包
+        r"""<p>预付费大模型安全信息包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.LLMMonPkg`
         """
         return self._LLMMonPkg
@@ -38729,7 +38836,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域id
+        r"""<p>地域id</p>
         :rtype: int
         """
         return self._RegionId
@@ -38740,7 +38847,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BotSecurityPkg(self):
-        r"""BOT安全护航信息
+        r"""<p>BOT安全护航信息</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.BotSecurityPkg`
         """
         return self._BotSecurityPkg
@@ -38751,7 +38858,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BotMonitorPkg(self):
-        r"""BOT安全监测资源信息
+        r"""<p>BOT安全监测资源信息</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.BotMonitorPkg`
         """
         return self._BotMonitorPkg
@@ -38762,7 +38869,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DedicatedIPPkg(self):
-        r"""独享ip资源信息
+        r"""<p>独享ip资源信息</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.DedicatedIPPkg`
         """
         return self._DedicatedIPPkg
@@ -38773,7 +38880,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DedicatedIPCount(self):
-        r"""已经配置独享ip的数量
+        r"""<p>已经配置独享ip的数量</p>
         :rtype: int
         """
         return self._DedicatedIPCount
@@ -38781,6 +38888,17 @@ class InstanceInfo(AbstractModel):
     @DedicatedIPCount.setter
     def DedicatedIPCount(self, DedicatedIPCount):
         self._DedicatedIPCount = DedicatedIPCount
+
+    @property
+    def TagInfos(self):
+        r"""<p>标签结构体</p>
+        :rtype: list of TagInfo
+        """
+        return self._TagInfos
+
+    @TagInfos.setter
+    def TagInfos(self, TagInfos):
+        self._TagInfos = TagInfos
 
 
     def _deserialize(self, params):
@@ -38876,6 +38994,12 @@ class InstanceInfo(AbstractModel):
             self._DedicatedIPPkg = DedicatedIPPkg()
             self._DedicatedIPPkg._deserialize(params.get("DedicatedIPPkg"))
         self._DedicatedIPCount = params.get("DedicatedIPCount")
+        if params.get("TagInfos") is not None:
+            self._TagInfos = []
+            for item in params.get("TagInfos"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39733,6 +39857,8 @@ class LLMDetectResult(AbstractModel):
         :type ImageResult: list of ImageResult
         :param _MsgID: <p>要代答的消息id，此消息id用于作为GenerateLLMSecAnswer接口的入参</p>
         :type MsgID: str
+        :param _ToolCallResult: <p>toolcall的检测结果</p>
+        :type ToolCallResult: :class:`tencentcloud.waf.v20180125.models.ToolCallResult`
         """
         self._SensitiveResult = None
         self._KeyWordsResult = None
@@ -39744,6 +39870,7 @@ class LLMDetectResult(AbstractModel):
         self._Payload = None
         self._ImageResult = None
         self._MsgID = None
+        self._ToolCallResult = None
 
     @property
     def SensitiveResult(self):
@@ -39855,6 +39982,17 @@ class LLMDetectResult(AbstractModel):
     def MsgID(self, MsgID):
         self._MsgID = MsgID
 
+    @property
+    def ToolCallResult(self):
+        r"""<p>toolcall的检测结果</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ToolCallResult`
+        """
+        return self._ToolCallResult
+
+    @ToolCallResult.setter
+    def ToolCallResult(self, ToolCallResult):
+        self._ToolCallResult = ToolCallResult
+
 
     def _deserialize(self, params):
         if params.get("SensitiveResult") is not None:
@@ -39884,6 +40022,9 @@ class LLMDetectResult(AbstractModel):
                 obj._deserialize(item)
                 self._ImageResult.append(obj)
         self._MsgID = params.get("MsgID")
+        if params.get("ToolCallResult") is not None:
+            self._ToolCallResult = ToolCallResult()
+            self._ToolCallResult._deserialize(params.get("ToolCallResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43348,56 +43489,62 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _Status: 1表示开，0表示关，3表示删除
+        :param _Status: <p>1表示开，0表示关，3表示删除</p>
         :type Status: int
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
         :type RuleName: str
-        :param _CustomRule: 客户自定义配置
-        :type CustomRule: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomSensitiveRule`
-        :param _RuleNameList: rulename列表，批量操作的时候填改值
+        :param _RuleNameList: <p>rulename列表，批量操作的时候填改值</p>
         :type RuleNameList: list of str
-        :param _CustomApiExtractRule: api提取规则内容
-        :type CustomApiExtractRule: :class:`tencentcloud.waf.v20180125.models.ApiSecExtractRule`
-        :param _ApiExtractRuleName: 批量操作的时候的api提取规则
+        :param _CustomRule: <p>客户自定义配置</p>
+        :type CustomRule: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomSensitiveRule`
+        :param _ApiExtractRuleName: <p>批量操作的时候的api提取规则</p>
         :type ApiExtractRuleName: list of str
-        :param _ApiSecPrivilegeRule: 自定义api鉴权规则
-        :type ApiSecPrivilegeRule: :class:`tencentcloud.waf.v20180125.models.ApiSecPrivilegeRule`
-        :param _ApiSecPrivilegeRuleName: 匹配操作时候的api鉴权规则
+        :param _CustomApiExtractRule: <p>api提取规则内容</p>
+        :type CustomApiExtractRule: :class:`tencentcloud.waf.v20180125.models.ApiSecExtractRule`
+        :param _ApiSecPrivilegeRuleName: <p>匹配操作时候的api鉴权规则</p>
         :type ApiSecPrivilegeRuleName: list of str
-        :param _ApiSecSceneRuleNameList: 批量操作的时候的自定义场景列表
+        :param _ApiSecPrivilegeRule: <p>自定义api鉴权规则</p>
+        :type ApiSecPrivilegeRule: :class:`tencentcloud.waf.v20180125.models.ApiSecPrivilegeRule`
+        :param _ApiSecSceneRuleNameList: <p>批量操作的时候的自定义场景列表</p>
         :type ApiSecSceneRuleNameList: list of str
-        :param _ApiSecSceneRule: 单条自定义api场景规则
+        :param _ApiSecSceneRule: <p>单条自定义api场景规则</p>
         :type ApiSecSceneRule: :class:`tencentcloud.waf.v20180125.models.ApiSecSceneRule`
-        :param _ApiSecCustomEventRuleNameList: 批量操作的时候的自定义事件规则列表
+        :param _ApiSecCustomEventRuleNameList: <p>批量操作的时候的自定义事件规则列表</p>
         :type ApiSecCustomEventRuleNameList: list of str
-        :param _ApiSecCustomEventRuleRule: 自定义事件规则
+        :param _ApiSecCustomEventRuleRule: <p>自定义事件规则</p>
         :type ApiSecCustomEventRuleRule: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomEventRule`
-        :param _CustomApiExcludeRule: 无效api排除规则
-        :type CustomApiExcludeRule: :class:`tencentcloud.waf.v20180125.models.ApiSecExcludeRule`
-        :param _ApiExcludeRuleName: 批量操作的时候的无效api排除规则
+        :param _ApiExcludeRuleName: <p>批量操作的时候的无效api排除规则</p>
         :type ApiExcludeRuleName: list of str
+        :param _CustomApiExcludeRule: <p>无效api排除规则</p>
+        :type CustomApiExcludeRule: :class:`tencentcloud.waf.v20180125.models.ApiSecExcludeRule`
+        :param _ApiSecSensitiveWhiteRuleNameList: <p>批量操作时的敏感数据加白规则名称列表</p>
+        :type ApiSecSensitiveWhiteRuleNameList: list of str
+        :param _ApiSecSensitiveWhiteRuleRule: <p>敏感数据加白规则</p>
+        :type ApiSecSensitiveWhiteRuleRule: :class:`tencentcloud.waf.v20180125.models.ApiSecSensitiveWhiteRule`
         """
         self._Domain = None
         self._Status = None
         self._RuleName = None
-        self._CustomRule = None
         self._RuleNameList = None
-        self._CustomApiExtractRule = None
+        self._CustomRule = None
         self._ApiExtractRuleName = None
-        self._ApiSecPrivilegeRule = None
+        self._CustomApiExtractRule = None
         self._ApiSecPrivilegeRuleName = None
+        self._ApiSecPrivilegeRule = None
         self._ApiSecSceneRuleNameList = None
         self._ApiSecSceneRule = None
         self._ApiSecCustomEventRuleNameList = None
         self._ApiSecCustomEventRuleRule = None
-        self._CustomApiExcludeRule = None
         self._ApiExcludeRuleName = None
+        self._CustomApiExcludeRule = None
+        self._ApiSecSensitiveWhiteRuleNameList = None
+        self._ApiSecSensitiveWhiteRuleRule = None
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -43408,7 +43555,7 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""1表示开，0表示关，3表示删除
+        r"""<p>1表示开，0表示关，3表示删除</p>
         :rtype: int
         """
         return self._Status
@@ -43419,7 +43566,7 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -43429,19 +43576,8 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         self._RuleName = RuleName
 
     @property
-    def CustomRule(self):
-        r"""客户自定义配置
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomSensitiveRule`
-        """
-        return self._CustomRule
-
-    @CustomRule.setter
-    def CustomRule(self, CustomRule):
-        self._CustomRule = CustomRule
-
-    @property
     def RuleNameList(self):
-        r"""rulename列表，批量操作的时候填改值
+        r"""<p>rulename列表，批量操作的时候填改值</p>
         :rtype: list of str
         """
         return self._RuleNameList
@@ -43451,19 +43587,19 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         self._RuleNameList = RuleNameList
 
     @property
-    def CustomApiExtractRule(self):
-        r"""api提取规则内容
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecExtractRule`
+    def CustomRule(self):
+        r"""<p>客户自定义配置</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomSensitiveRule`
         """
-        return self._CustomApiExtractRule
+        return self._CustomRule
 
-    @CustomApiExtractRule.setter
-    def CustomApiExtractRule(self, CustomApiExtractRule):
-        self._CustomApiExtractRule = CustomApiExtractRule
+    @CustomRule.setter
+    def CustomRule(self, CustomRule):
+        self._CustomRule = CustomRule
 
     @property
     def ApiExtractRuleName(self):
-        r"""批量操作的时候的api提取规则
+        r"""<p>批量操作的时候的api提取规则</p>
         :rtype: list of str
         """
         return self._ApiExtractRuleName
@@ -43473,19 +43609,19 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         self._ApiExtractRuleName = ApiExtractRuleName
 
     @property
-    def ApiSecPrivilegeRule(self):
-        r"""自定义api鉴权规则
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecPrivilegeRule`
+    def CustomApiExtractRule(self):
+        r"""<p>api提取规则内容</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecExtractRule`
         """
-        return self._ApiSecPrivilegeRule
+        return self._CustomApiExtractRule
 
-    @ApiSecPrivilegeRule.setter
-    def ApiSecPrivilegeRule(self, ApiSecPrivilegeRule):
-        self._ApiSecPrivilegeRule = ApiSecPrivilegeRule
+    @CustomApiExtractRule.setter
+    def CustomApiExtractRule(self, CustomApiExtractRule):
+        self._CustomApiExtractRule = CustomApiExtractRule
 
     @property
     def ApiSecPrivilegeRuleName(self):
-        r"""匹配操作时候的api鉴权规则
+        r"""<p>匹配操作时候的api鉴权规则</p>
         :rtype: list of str
         """
         return self._ApiSecPrivilegeRuleName
@@ -43495,8 +43631,19 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         self._ApiSecPrivilegeRuleName = ApiSecPrivilegeRuleName
 
     @property
+    def ApiSecPrivilegeRule(self):
+        r"""<p>自定义api鉴权规则</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecPrivilegeRule`
+        """
+        return self._ApiSecPrivilegeRule
+
+    @ApiSecPrivilegeRule.setter
+    def ApiSecPrivilegeRule(self, ApiSecPrivilegeRule):
+        self._ApiSecPrivilegeRule = ApiSecPrivilegeRule
+
+    @property
     def ApiSecSceneRuleNameList(self):
-        r"""批量操作的时候的自定义场景列表
+        r"""<p>批量操作的时候的自定义场景列表</p>
         :rtype: list of str
         """
         return self._ApiSecSceneRuleNameList
@@ -43507,7 +43654,7 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
 
     @property
     def ApiSecSceneRule(self):
-        r"""单条自定义api场景规则
+        r"""<p>单条自定义api场景规则</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecSceneRule`
         """
         return self._ApiSecSceneRule
@@ -43518,7 +43665,7 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
 
     @property
     def ApiSecCustomEventRuleNameList(self):
-        r"""批量操作的时候的自定义事件规则列表
+        r"""<p>批量操作的时候的自定义事件规则列表</p>
         :rtype: list of str
         """
         return self._ApiSecCustomEventRuleNameList
@@ -43529,7 +43676,7 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
 
     @property
     def ApiSecCustomEventRuleRule(self):
-        r"""自定义事件规则
+        r"""<p>自定义事件规则</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomEventRule`
         """
         return self._ApiSecCustomEventRuleRule
@@ -43539,8 +43686,19 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         self._ApiSecCustomEventRuleRule = ApiSecCustomEventRuleRule
 
     @property
+    def ApiExcludeRuleName(self):
+        r"""<p>批量操作的时候的无效api排除规则</p>
+        :rtype: list of str
+        """
+        return self._ApiExcludeRuleName
+
+    @ApiExcludeRuleName.setter
+    def ApiExcludeRuleName(self, ApiExcludeRuleName):
+        self._ApiExcludeRuleName = ApiExcludeRuleName
+
+    @property
     def CustomApiExcludeRule(self):
-        r"""无效api排除规则
+        r"""<p>无效api排除规则</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecExcludeRule`
         """
         return self._CustomApiExcludeRule
@@ -43550,33 +43708,44 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         self._CustomApiExcludeRule = CustomApiExcludeRule
 
     @property
-    def ApiExcludeRuleName(self):
-        r"""批量操作的时候的无效api排除规则
+    def ApiSecSensitiveWhiteRuleNameList(self):
+        r"""<p>批量操作时的敏感数据加白规则名称列表</p>
         :rtype: list of str
         """
-        return self._ApiExcludeRuleName
+        return self._ApiSecSensitiveWhiteRuleNameList
 
-    @ApiExcludeRuleName.setter
-    def ApiExcludeRuleName(self, ApiExcludeRuleName):
-        self._ApiExcludeRuleName = ApiExcludeRuleName
+    @ApiSecSensitiveWhiteRuleNameList.setter
+    def ApiSecSensitiveWhiteRuleNameList(self, ApiSecSensitiveWhiteRuleNameList):
+        self._ApiSecSensitiveWhiteRuleNameList = ApiSecSensitiveWhiteRuleNameList
+
+    @property
+    def ApiSecSensitiveWhiteRuleRule(self):
+        r"""<p>敏感数据加白规则</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecSensitiveWhiteRule`
+        """
+        return self._ApiSecSensitiveWhiteRuleRule
+
+    @ApiSecSensitiveWhiteRuleRule.setter
+    def ApiSecSensitiveWhiteRuleRule(self, ApiSecSensitiveWhiteRuleRule):
+        self._ApiSecSensitiveWhiteRuleRule = ApiSecSensitiveWhiteRuleRule
 
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._Status = params.get("Status")
         self._RuleName = params.get("RuleName")
+        self._RuleNameList = params.get("RuleNameList")
         if params.get("CustomRule") is not None:
             self._CustomRule = ApiSecCustomSensitiveRule()
             self._CustomRule._deserialize(params.get("CustomRule"))
-        self._RuleNameList = params.get("RuleNameList")
+        self._ApiExtractRuleName = params.get("ApiExtractRuleName")
         if params.get("CustomApiExtractRule") is not None:
             self._CustomApiExtractRule = ApiSecExtractRule()
             self._CustomApiExtractRule._deserialize(params.get("CustomApiExtractRule"))
-        self._ApiExtractRuleName = params.get("ApiExtractRuleName")
+        self._ApiSecPrivilegeRuleName = params.get("ApiSecPrivilegeRuleName")
         if params.get("ApiSecPrivilegeRule") is not None:
             self._ApiSecPrivilegeRule = ApiSecPrivilegeRule()
             self._ApiSecPrivilegeRule._deserialize(params.get("ApiSecPrivilegeRule"))
-        self._ApiSecPrivilegeRuleName = params.get("ApiSecPrivilegeRuleName")
         self._ApiSecSceneRuleNameList = params.get("ApiSecSceneRuleNameList")
         if params.get("ApiSecSceneRule") is not None:
             self._ApiSecSceneRule = ApiSecSceneRule()
@@ -43585,10 +43754,14 @@ class ModifyApiSecSensitiveRuleRequest(AbstractModel):
         if params.get("ApiSecCustomEventRuleRule") is not None:
             self._ApiSecCustomEventRuleRule = ApiSecCustomEventRule()
             self._ApiSecCustomEventRuleRule._deserialize(params.get("ApiSecCustomEventRuleRule"))
+        self._ApiExcludeRuleName = params.get("ApiExcludeRuleName")
         if params.get("CustomApiExcludeRule") is not None:
             self._CustomApiExcludeRule = ApiSecExcludeRule()
             self._CustomApiExcludeRule._deserialize(params.get("CustomApiExcludeRule"))
-        self._ApiExcludeRuleName = params.get("ApiExcludeRuleName")
+        self._ApiSecSensitiveWhiteRuleNameList = params.get("ApiSecSensitiveWhiteRuleNameList")
+        if params.get("ApiSecSensitiveWhiteRuleRule") is not None:
+            self._ApiSecSensitiveWhiteRuleRule = ApiSecSensitiveWhiteRule()
+            self._ApiSecSensitiveWhiteRuleRule._deserialize(params.get("ApiSecSensitiveWhiteRuleRule"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47354,9 +47527,9 @@ class ModifyHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Host: 编辑的域名配置信息
+        :param _Host: <p>编辑的域名配置信息</p>
         :type Host: :class:`tencentcloud.waf.v20180125.models.HostRecord`
-        :param _InstanceID: 实例唯一ID
+        :param _InstanceID: <p>实例唯一ID</p>
         :type InstanceID: str
         """
         self._Host = None
@@ -47364,7 +47537,7 @@ class ModifyHostRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""编辑的域名配置信息
+        r"""<p>编辑的域名配置信息</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.HostRecord`
         """
         return self._Host
@@ -47375,7 +47548,7 @@ class ModifyHostRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例唯一ID
+        r"""<p>实例唯一ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -47407,7 +47580,7 @@ class ModifyHostResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 编辑的域名ID
+        :param _DomainId: <p>编辑的域名ID</p>
         :type DomainId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47417,7 +47590,7 @@ class ModifyHostResponse(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""编辑的域名ID
+        r"""<p>编辑的域名ID</p>
         :rtype: str
         """
         return self._DomainId
@@ -48367,22 +48540,24 @@ class ModifyObjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ObjectId: 修改对象标识
+        :param _ObjectId: <p>修改对象标识</p>
         :type ObjectId: str
-        :param _OpType: 改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态
+        :param _OpType: <p>改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态</p>
         :type OpType: str
-        :param _Status: 新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1
+        :param _Status: <p>新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1</p>
         :type Status: int
-        :param _InstanceId: 新的实例ID，如果和已绑定的实例相同认为修改成功
+        :param _InstanceId: <p>新的实例ID，如果和已绑定的实例相同认为修改成功</p>
         :type InstanceId: str
-        :param _Proxy: 是否开启代理，0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出(OpType为Status或Proxy时，该值有效)
+        :param _Proxy: <p>是否开启代理，0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出(OpType为Status或Proxy时，该值有效)</p>
         :type Proxy: int
-        :param _IpHeaders: IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)
+        :param _IpHeaders: <p>IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)</p>
         :type IpHeaders: list of str
-        :param _MemberAppId: 对象所属集团成员appid
+        :param _MemberAppId: <p>对象所属集团成员appid</p>
         :type MemberAppId: int
-        :param _MemberUin: 对象所属集团成员uin
+        :param _MemberUin: <p>对象所属集团成员uin</p>
         :type MemberUin: str
+        :param _Tags: <p>标签信息</p>
+        :type Tags: list of TagInfo
         """
         self._ObjectId = None
         self._OpType = None
@@ -48392,10 +48567,11 @@ class ModifyObjectRequest(AbstractModel):
         self._IpHeaders = None
         self._MemberAppId = None
         self._MemberUin = None
+        self._Tags = None
 
     @property
     def ObjectId(self):
-        r"""修改对象标识
+        r"""<p>修改对象标识</p>
         :rtype: str
         """
         return self._ObjectId
@@ -48406,7 +48582,7 @@ class ModifyObjectRequest(AbstractModel):
 
     @property
     def OpType(self):
-        r"""改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态
+        r"""<p>改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态</p>
         :rtype: str
         """
         return self._OpType
@@ -48417,7 +48593,7 @@ class ModifyObjectRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1
+        r"""<p>新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1</p>
         :rtype: int
         """
         return self._Status
@@ -48428,7 +48604,7 @@ class ModifyObjectRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""新的实例ID，如果和已绑定的实例相同认为修改成功
+        r"""<p>新的实例ID，如果和已绑定的实例相同认为修改成功</p>
         :rtype: str
         """
         return self._InstanceId
@@ -48439,7 +48615,7 @@ class ModifyObjectRequest(AbstractModel):
 
     @property
     def Proxy(self):
-        r"""是否开启代理，0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出(OpType为Status或Proxy时，该值有效)
+        r"""<p>是否开启代理，0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出(OpType为Status或Proxy时，该值有效)</p>
         :rtype: int
         """
         return self._Proxy
@@ -48450,7 +48626,7 @@ class ModifyObjectRequest(AbstractModel):
 
     @property
     def IpHeaders(self):
-        r"""IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)
+        r"""<p>IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)</p>
         :rtype: list of str
         """
         return self._IpHeaders
@@ -48461,7 +48637,7 @@ class ModifyObjectRequest(AbstractModel):
 
     @property
     def MemberAppId(self):
-        r"""对象所属集团成员appid
+        r"""<p>对象所属集团成员appid</p>
         :rtype: int
         """
         return self._MemberAppId
@@ -48472,7 +48648,7 @@ class ModifyObjectRequest(AbstractModel):
 
     @property
     def MemberUin(self):
-        r"""对象所属集团成员uin
+        r"""<p>对象所属集团成员uin</p>
         :rtype: str
         """
         return self._MemberUin
@@ -48480,6 +48656,17 @@ class ModifyObjectRequest(AbstractModel):
     @MemberUin.setter
     def MemberUin(self, MemberUin):
         self._MemberUin = MemberUin
+
+    @property
+    def Tags(self):
+        r"""<p>标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -48491,6 +48678,12 @@ class ModifyObjectRequest(AbstractModel):
         self._IpHeaders = params.get("IpHeaders")
         self._MemberAppId = params.get("MemberAppId")
         self._MemberUin = params.get("MemberUin")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53524,20 +53717,25 @@ class ProtectGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 防护对象组ID
+        :param _ID: <p>防护对象组ID</p>
         :type ID: int
-        :param _Name: 防护对象组名称
+        :param _Name: <p>防护对象组名称</p>
         :type Name: str
-        :param _Remark: 防护对象组备注
+        :param _Remark: <p>防护对象组备注</p>
         :type Remark: str
-        :param _Domains: 防护对象组中绑定的域名详情
+        :param _Domains: <p>防护对象组中绑定的域名详情</p>
         :type Domains: list of ProtectGroupDomainInfo
-        :param _RuleNum: 关联的批量规则数
+        :param _RuleNum: <p>关联的批量规则数</p>
         :type RuleNum: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
+        :param _TagInfos: <p>标签信息</p>
+        :type TagInfos: list of TagInfo
+        :param _BoundTemplate: <p>是否绑定了模板</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BoundTemplate: bool
         """
         self._ID = None
         self._Name = None
@@ -53546,10 +53744,12 @@ class ProtectGroupInfo(AbstractModel):
         self._RuleNum = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._TagInfos = None
+        self._BoundTemplate = None
 
     @property
     def ID(self):
-        r"""防护对象组ID
+        r"""<p>防护对象组ID</p>
         :rtype: int
         """
         return self._ID
@@ -53560,7 +53760,7 @@ class ProtectGroupInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""防护对象组名称
+        r"""<p>防护对象组名称</p>
         :rtype: str
         """
         return self._Name
@@ -53571,7 +53771,7 @@ class ProtectGroupInfo(AbstractModel):
 
     @property
     def Remark(self):
-        r"""防护对象组备注
+        r"""<p>防护对象组备注</p>
         :rtype: str
         """
         return self._Remark
@@ -53582,7 +53782,7 @@ class ProtectGroupInfo(AbstractModel):
 
     @property
     def Domains(self):
-        r"""防护对象组中绑定的域名详情
+        r"""<p>防护对象组中绑定的域名详情</p>
         :rtype: list of ProtectGroupDomainInfo
         """
         return self._Domains
@@ -53593,7 +53793,7 @@ class ProtectGroupInfo(AbstractModel):
 
     @property
     def RuleNum(self):
-        r"""关联的批量规则数
+        r"""<p>关联的批量规则数</p>
         :rtype: int
         """
         return self._RuleNum
@@ -53604,7 +53804,7 @@ class ProtectGroupInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -53615,7 +53815,7 @@ class ProtectGroupInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -53623,6 +53823,29 @@ class ProtectGroupInfo(AbstractModel):
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def TagInfos(self):
+        r"""<p>标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._TagInfos
+
+    @TagInfos.setter
+    def TagInfos(self, TagInfos):
+        self._TagInfos = TagInfos
+
+    @property
+    def BoundTemplate(self):
+        r"""<p>是否绑定了模板</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._BoundTemplate
+
+    @BoundTemplate.setter
+    def BoundTemplate(self, BoundTemplate):
+        self._BoundTemplate = BoundTemplate
 
 
     def _deserialize(self, params):
@@ -53638,6 +53861,13 @@ class ProtectGroupInfo(AbstractModel):
         self._RuleNum = params.get("RuleNum")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("TagInfos") is not None:
+            self._TagInfos = []
+            for item in params.get("TagInfos"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagInfos.append(obj)
+        self._BoundTemplate = params.get("BoundTemplate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57552,6 +57782,57 @@ class Tag(AbstractModel):
     """
 
 
+class TagInfo(AbstractModel):
+    r"""标签结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: <p>标签键</p>
+        :type TagKey: str
+        :param _TagValue: <p>标签值</p>
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""<p>标签键</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>标签值</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TargetEntity(AbstractModel):
     r"""需要开启/关闭API安全的 实例+域名 组合实体
 
@@ -58039,6 +58320,72 @@ class TokenVerifyRule(AbstractModel):
         if params.get("GeneralRule") is not None:
             self._GeneralRule = TokenRuleEntry()
             self._GeneralRule._deserialize(params.get("GeneralRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ToolCallResult(AbstractModel):
+    r"""tool_call 场景检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: <p>命中规则名称</p>
+        :type RuleName: str
+        :param _Action: <p>规则动作</p>
+        :type Action: str
+        :param _Severity: <p>风险等级</p><p>枚举值：</p><ul><li>critical： 严重</li><li>high： 高危    </li><li>medium： 中危    </li><li>low： 低危</li></ul>
+        :type Severity: str
+        """
+        self._RuleName = None
+        self._Action = None
+        self._Severity = None
+
+    @property
+    def RuleName(self):
+        r"""<p>命中规则名称</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Action(self):
+        r"""<p>规则动作</p>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Severity(self):
+        r"""<p>风险等级</p><p>枚举值：</p><ul><li>critical： 严重</li><li>high： 高危    </li><li>medium： 中危    </li><li>low： 低危</li></ul>
+        :rtype: str
+        """
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._Action = params.get("Action")
+        self._Severity = params.get("Severity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60495,38 +60842,40 @@ not belong：不属于
 
 
 class UserDomainInfo(AbstractModel):
-    r"""saas和clb信息
+    r"""saas和clb、四层域名信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Appid: 用户id
+        :param _Appid: <p>用户id</p>
         :type Appid: int
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _DomainId: 域名id
+        :param _DomainId: <p>域名id</p>
         :type DomainId: str
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名
+        :param _InstanceName: <p>实例名</p>
         :type InstanceName: str
-        :param _Edition: waf类型
+        :param _Edition: <p>waf类型</p>
         :type Edition: str
-        :param _Level: 版本
+        :param _Level: <p>版本</p>
         :type Level: str
-        :param _WriteConfig: 指定域名访问日志字段的开关
+        :param _WriteConfig: <p>指定域名访问日志字段的开关</p>
         :type WriteConfig: str
-        :param _Cls: 指定域名是否写cls的开关 1:写 0:不写
+        :param _Cls: <p>指定域名是否写cls的开关 1:写 0:不写</p>
         :type Cls: int
-        :param _CloudType: 标记是否是混合云接入。hybrid表示混合云接入域名
+        :param _CloudType: <p>标记是否是混合云接入。hybrid表示混合云接入域名</p>
         :type CloudType: str
-        :param _AlbType: 标记clbwaf类型
+        :param _AlbType: <p>标记clbwaf类型</p>
         :type AlbType: str
-        :param _BotStatus: BOT开关状态
+        :param _BotStatus: <p>BOT开关状态</p>
         :type BotStatus: int
-        :param _ApiStatus: API开关状态
+        :param _ApiStatus: <p>API开关状态</p>
         :type ApiStatus: int
+        :param _IsREIP: <p>是否是四层clbwaf域名</p>
+        :type IsREIP: int
         """
         self._Appid = None
         self._Domain = None
@@ -60541,10 +60890,11 @@ class UserDomainInfo(AbstractModel):
         self._AlbType = None
         self._BotStatus = None
         self._ApiStatus = None
+        self._IsREIP = None
 
     @property
     def Appid(self):
-        r"""用户id
+        r"""<p>用户id</p>
         :rtype: int
         """
         return self._Appid
@@ -60555,7 +60905,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -60566,7 +60916,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名id
+        r"""<p>域名id</p>
         :rtype: str
         """
         return self._DomainId
@@ -60577,7 +60927,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -60588,7 +60938,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名
+        r"""<p>实例名</p>
         :rtype: str
         """
         return self._InstanceName
@@ -60599,7 +60949,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def Edition(self):
-        r"""waf类型
+        r"""<p>waf类型</p>
         :rtype: str
         """
         return self._Edition
@@ -60610,7 +60960,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def Level(self):
-        r"""版本
+        r"""<p>版本</p>
         :rtype: str
         """
         return self._Level
@@ -60621,7 +60971,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def WriteConfig(self):
-        r"""指定域名访问日志字段的开关
+        r"""<p>指定域名访问日志字段的开关</p>
         :rtype: str
         """
         return self._WriteConfig
@@ -60632,7 +60982,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def Cls(self):
-        r"""指定域名是否写cls的开关 1:写 0:不写
+        r"""<p>指定域名是否写cls的开关 1:写 0:不写</p>
         :rtype: int
         """
         return self._Cls
@@ -60643,7 +60993,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def CloudType(self):
-        r"""标记是否是混合云接入。hybrid表示混合云接入域名
+        r"""<p>标记是否是混合云接入。hybrid表示混合云接入域名</p>
         :rtype: str
         """
         return self._CloudType
@@ -60654,7 +61004,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def AlbType(self):
-        r"""标记clbwaf类型
+        r"""<p>标记clbwaf类型</p>
         :rtype: str
         """
         return self._AlbType
@@ -60665,7 +61015,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def BotStatus(self):
-        r"""BOT开关状态
+        r"""<p>BOT开关状态</p>
         :rtype: int
         """
         return self._BotStatus
@@ -60676,7 +61026,7 @@ class UserDomainInfo(AbstractModel):
 
     @property
     def ApiStatus(self):
-        r"""API开关状态
+        r"""<p>API开关状态</p>
         :rtype: int
         """
         return self._ApiStatus
@@ -60684,6 +61034,17 @@ class UserDomainInfo(AbstractModel):
     @ApiStatus.setter
     def ApiStatus(self, ApiStatus):
         self._ApiStatus = ApiStatus
+
+    @property
+    def IsREIP(self):
+        r"""<p>是否是四层clbwaf域名</p>
+        :rtype: int
+        """
+        return self._IsREIP
+
+    @IsREIP.setter
+    def IsREIP(self, IsREIP):
+        self._IsREIP = IsREIP
 
 
     def _deserialize(self, params):
@@ -60700,6 +61061,7 @@ class UserDomainInfo(AbstractModel):
         self._AlbType = params.get("AlbType")
         self._BotStatus = params.get("BotStatus")
         self._ApiStatus = params.get("ApiStatus")
+        self._IsREIP = params.get("IsREIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

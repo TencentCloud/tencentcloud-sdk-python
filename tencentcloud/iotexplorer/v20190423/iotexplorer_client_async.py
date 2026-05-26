@@ -619,6 +619,42 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTWeSeeCallback(
+            self,
+            request: models.CreateTWeSeeCallbackRequest,
+            opts: Dict = None,
+    ) -> models.CreateTWeSeeCallbackResponse:
+        """
+        创建 TWeSee 回调目标
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTWeSeeCallback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTWeSeeCallbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateTWeSeePostPaidService(
+            self,
+            request: models.CreateTWeSeePostPaidServiceRequest,
+            opts: Dict = None,
+    ) -> models.CreateTWeSeePostPaidServiceResponse:
+        """
+        开通 TWeSee 后付费服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTWeSeePostPaidService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTWeSeePostPaidServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTWeSeeRecognitionTask(
             self,
             request: models.CreateTWeSeeRecognitionTaskRequest,
@@ -668,6 +704,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "CreateTWeSeeService"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateTWeSeeServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateTWeSeeSubscription(
+            self,
+            request: models.CreateTWeSeeSubscriptionRequest,
+            opts: Dict = None,
+    ) -> models.CreateTWeSeeSubscriptionResponse:
+        """
+        开通 TWeSee 预付费订阅
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTWeSeeSubscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTWeSeeSubscriptionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -956,6 +1010,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DeleteStudioProduct"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteStudioProductResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTWeSeeCallback(
+            self,
+            request: models.DeleteTWeSeeCallbackRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTWeSeeCallbackResponse:
+        """
+        删除 TWeSee 回调目标
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTWeSeeCallback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTWeSeeCallbackResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2041,6 +2113,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTWeSeeCallback(
+            self,
+            request: models.DescribeTWeSeeCallbackRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeSeeCallbackResponse:
+        """
+        查询 TWeSee 回调目标详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeSeeCallback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeSeeCallbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTWeSeeConfig(
             self,
             request: models.DescribeTWeSeeConfigRequest,
@@ -2059,6 +2149,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTWeSeePostPaidService(
+            self,
+            request: models.DescribeTWeSeePostPaidServiceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeSeePostPaidServiceResponse:
+        """
+        查询 TWeSee 后付费服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeSeePostPaidService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeSeePostPaidServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTWeSeeRecognitionTask(
             self,
             request: models.DescribeTWeSeeRecognitionTaskRequest,
@@ -2072,6 +2180,60 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DescribeTWeSeeRecognitionTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTWeSeeRecognitionTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTWeSeeSubscription(
+            self,
+            request: models.DescribeTWeSeeSubscriptionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeSeeSubscriptionResponse:
+        """
+        查询 TWeSee 预付费订阅
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeSeeSubscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeSeeSubscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTWeSeeTask(
+            self,
+            request: models.DescribeTWeSeeTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeSeeTaskResponse:
+        """
+        查询 TWeSee 任务详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeSeeTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeSeeTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTWeSeeTaskStatistics(
+            self,
+            request: models.DescribeTWeSeeTaskStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeSeeTaskStatisticsResponse:
+        """
+        获取 TWeSee 任务统计数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeSeeTaskStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeSeeTaskStatisticsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2191,6 +2353,8 @@ class IotexplorerClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeVideoLicenseResponse:
         """
+        DescribeLicenseOverView代替
+
         用于查询视频激活码统计概览
         """
         
@@ -2198,6 +2362,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DescribeVideoLicense"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVideoLicenseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DestroyTWeSeeSubscription(
+            self,
+            request: models.DestroyTWeSeeSubscriptionRequest,
+            opts: Dict = None,
+    ) -> models.DestroyTWeSeeSubscriptionResponse:
+        """
+        销毁 TWeSee 预付费订阅
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DestroyTWeSeeSubscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DestroyTWeSeeSubscriptionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2707,6 +2889,42 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InquireTWeSeeSubscriptionCreatePrice(
+            self,
+            request: models.InquireTWeSeeSubscriptionCreatePriceRequest,
+            opts: Dict = None,
+    ) -> models.InquireTWeSeeSubscriptionCreatePriceResponse:
+        """
+        查询 TWeSee 预付费新购价格
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquireTWeSeeSubscriptionCreatePrice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquireTWeSeeSubscriptionCreatePriceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InquireTWeSeeSubscriptionRenewPrice(
+            self,
+            request: models.InquireTWeSeeSubscriptionRenewPriceRequest,
+            opts: Dict = None,
+    ) -> models.InquireTWeSeeSubscriptionRenewPriceResponse:
+        """
+        查询 TWeSee 预付费续费价格
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquireTWeSeeSubscriptionRenewPrice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquireTWeSeeSubscriptionRenewPriceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def InvokeAISearchService(
             self,
             request: models.InvokeAISearchServiceRequest,
@@ -2756,6 +2974,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "InvokeExternalSourceAIServiceTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.InvokeExternalSourceAIServiceTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InvokeTWeSeeComprehension(
+            self,
+            request: models.InvokeTWeSeeComprehensionRequest,
+            opts: Dict = None,
+    ) -> models.InvokeTWeSeeComprehensionResponse:
+        """
+        调用 TWeSee 视觉理解算法
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InvokeTWeSeeComprehension"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InvokeTWeSeeComprehensionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2882,6 +3118,42 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "ListProductOtaModules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListProductOtaModulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTWeSeeCallback(
+            self,
+            request: models.ListTWeSeeCallbackRequest,
+            opts: Dict = None,
+    ) -> models.ListTWeSeeCallbackResponse:
+        """
+        查询 TWeSee 回调目标列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTWeSeeCallback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTWeSeeCallbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTWeSeeTasks(
+            self,
+            request: models.ListTWeSeeTasksRequest,
+            opts: Dict = None,
+    ) -> models.ListTWeSeeTasksResponse:
+        """
+        短摘要列表查询
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTWeSeeTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTWeSeeTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3157,6 +3429,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyTWeSeeCallback(
+            self,
+            request: models.ModifyTWeSeeCallbackRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTWeSeeCallbackResponse:
+        """
+        修改 TWeSee 回调目标
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTWeSeeCallback"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTWeSeeCallbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyTWeSeeConfig(
             self,
             request: models.ModifyTWeSeeConfigRequest,
@@ -3170,6 +3460,42 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "ModifyTWeSeeConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyTWeSeeConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyTWeSeeSubscription(
+            self,
+            request: models.ModifyTWeSeeSubscriptionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTWeSeeSubscriptionResponse:
+        """
+        修改 TWeSee 预付费订阅
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTWeSeeSubscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTWeSeeSubscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyTWeSeeSubscriptionRenewFlag(
+            self,
+            request: models.ModifyTWeSeeSubscriptionRenewFlagRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTWeSeeSubscriptionRenewFlagResponse:
+        """
+        修改 TWeSee 预付费订阅续费标识
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTWeSeeSubscriptionRenewFlag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTWeSeeSubscriptionRenewFlagResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3395,6 +3721,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RenewTWeSeeSubscription(
+            self,
+            request: models.RenewTWeSeeSubscriptionRequest,
+            opts: Dict = None,
+    ) -> models.RenewTWeSeeSubscriptionResponse:
+        """
+        续费 TWeSee 预付费订阅
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewTWeSeeSubscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewTWeSeeSubscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ResetCloudStorage(
             self,
             request: models.ResetCloudStorageRequest,
@@ -3534,6 +3878,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "SearchTopicRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchTopicRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TerminateTWeSeeSubscription(
+            self,
+            request: models.TerminateTWeSeeSubscriptionRequest,
+            opts: Dict = None,
+    ) -> models.TerminateTWeSeeSubscriptionResponse:
+        """
+        退订 TWeSee 预付费订阅
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TerminateTWeSeeSubscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TerminateTWeSeeSubscriptionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

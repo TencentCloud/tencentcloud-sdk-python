@@ -1112,6 +1112,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSharedSubscriptionGroupsWithSubscriptions(self, request):
+        r"""查询集群下共享订阅组列表
+
+        :param request: Request instance for DescribeSharedSubscriptionGroupsWithSubscriptions.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionGroupsWithSubscriptionsRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionGroupsWithSubscriptionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedSubscriptionGroupsWithSubscriptions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedSubscriptionGroupsWithSubscriptionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSharedSubscriptionLag(self, request):
         r"""查询共享订阅消息堆积量
 
@@ -1501,6 +1524,29 @@ class MqttClient(AbstractClient):
             body = self.call("ModifyUser", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyX509Config(self, request):
+        r"""修改集群X509配置
+
+        :param request: Request instance for ModifyX509Config.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyX509ConfigRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ModifyX509ConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyX509Config", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyX509ConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

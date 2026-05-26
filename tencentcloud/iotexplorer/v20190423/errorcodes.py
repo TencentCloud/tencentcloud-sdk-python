@@ -26,6 +26,9 @@ FAILEDOPERATION_ACTIONUNREACHABLE = 'FailedOperation.ActionUnreachable'
 # 已有操作正在进行中
 FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = 'FailedOperation.AnotherOperationIsRunning'
 
+# 账户余额不足
+FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
+
 # 广播任务正在执行。
 FAILEDOPERATION_BROADCASTTASKISRUNNING = 'FailedOperation.BroadcastTaskIsRunning'
 
@@ -40,6 +43,15 @@ FAILEDOPERATION_CLOUDSTORAGEAISERVICETASKALREADYEXISTS = 'FailedOperation.CloudS
 
 # 需先开通云存套餐
 FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = 'FailedOperation.CloudStoragePackageRequired'
+
+# 创建订单失败
+FAILEDOPERATION_CREATEORDERFAILED = 'FailedOperation.CreateOrderFailed'
+
+# 自定义订单 ID 已存在
+FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = 'FailedOperation.CustomOrderIdAlreadyExist'
+
+# 订单发货失败
+FAILEDOPERATION_DELIVERORDERFAILED = 'FailedOperation.DeliverOrderFailed'
 
 # 设备已经被禁用。
 FAILEDOPERATION_DEVICEALREADYDISABLED = 'FailedOperation.DeviceAlreadyDisabled'
@@ -79,6 +91,36 @@ FAILEDOPERATION_RULEALREADYDISABLED = 'FailedOperation.RuleAlreadyDisabled'
 
 # 该规则已被启用。
 FAILEDOPERATION_RULEALREADYENABLED = 'FailedOperation.RuleAlreadyEnabled'
+
+# 指定的 TWeSee 算法已开通后付费服务，不能重复开通
+FAILEDOPERATION_SEEPOSTPAIDSERVICEALREADYEXISTS = 'FailedOperation.SeePostPaidServiceAlreadyExists'
+
+# TWeSee 后付费服务已隔离
+FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATED = 'FailedOperation.SeePostPaidServiceIsolated'
+
+# TWeSee 后付费服务已隔离（账号欠费）
+FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATEDBYACCOUNT = 'FailedOperation.SeePostPaidServiceIsolatedByAccount'
+
+# 未开通 TWeSee 算法的后付费服务
+FAILEDOPERATION_SEEPOSTPAIDSERVICENOTEXISTS = 'FailedOperation.SeePostPaidServiceNotExists'
+
+# 该设备已开通指定的 TWeSee 算法预付费订阅，不能重复开通
+FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONALREADYEXISTS = 'FailedOperation.SeePrePaidSubscriptionAlreadyExists'
+
+# 该设备已开通的 TWeSee 算法预付费订阅与正在开通的 ServiceType 冲突
+FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONCONFLICTS = 'FailedOperation.SeePrePaidSubscriptionConflicts'
+
+# TWeSee 预付费订阅生效时长不能超过已开通云存套餐的生效时长
+FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = 'FailedOperation.SeePrePaidSubscriptionEndTimeExceeded'
+
+# TWeSee 预付费订阅状态异常，不能进行该操作
+FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONINVALIDSTATUS = 'FailedOperation.SeePrePaidSubscriptionInvalidStatus'
+
+# TWeSee 预付费订阅已隔离，不能进行该操作
+FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONISOLATED = 'FailedOperation.SeePrePaidSubscriptionIsolated'
+
+# 只有处于隔离状态的 TWeSee 订阅可以进行该操作
+FAILEDOPERATION_SEESUBSCRIPTIONNOTISOLATED = 'FailedOperation.SeeSubscriptionNotIsolated'
 
 # 部分产品已经被绑定。
 FAILEDOPERATION_SOMEPRODUCTISALREADYBINDED = 'FailedOperation.SomeProductIsAlreadyBinded'
@@ -205,6 +247,9 @@ INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = 'InvalidParameterValue.InvalidCallbac
 
 # SQL语句含有非法字符。
 INVALIDPARAMETERVALUE_INVALIDSQL = 'InvalidParameterValue.InvalidSQL'
+
+# URL 格式有误或无法访问
+INVALIDPARAMETERVALUE_INVALIDURL = 'InvalidParameterValue.InvalidURL'
 
 # LoRa频点参数错误。
 INVALIDPARAMETERVALUE_LORAFREQPARMSERROR = 'InvalidParameterValue.LoRaFreqParmsError'
@@ -359,6 +404,9 @@ LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = 'LimitExceeded.ProductExceedLimit'
 # 项目数量超出限制。
 LIMITEXCEEDED_PROJECTEXCEEDLIMIT = 'LimitExceeded.ProjectExceedLimit'
 
+# 累计退还资源超过限额。
+LIMITEXCEEDED_RETURNRESOURCELIMITEXCEEDED = 'LimitExceeded.ReturnResourceLimitExceeded'
+
 # LoRa频点数量超出限制。
 LIMITEXCEEDED_STUDIOLORAFREQEXCEEDLIMIT = 'LimitExceeded.StudioLoRaFreqExceedLimit'
 
@@ -403,6 +451,9 @@ RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASK = 'ResourceNotFound.CloudStorageAISer
 
 # 云存AI分析任务输出文件不存在
 RESOURCENOTFOUND_CLOUDSTORAGEAISERVICETASKFILE = 'ResourceNotFound.CloudStorageAIServiceTaskFile'
+
+# 设备通道尚未创建或已被删除。
+RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = 'ResourceNotFound.DeviceChannelNotExist'
 
 # 存在重复设备。
 RESOURCENOTFOUND_DEVICEDUPKEYEXIST = 'ResourceNotFound.DeviceDupKeyExist'
@@ -458,6 +509,18 @@ RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = 'ResourceNotFound.ProductResourceNotE
 # 项目不存在。
 RESOURCENOTFOUND_PROJECTNOTEXIST = 'ResourceNotFound.ProjectNotExist'
 
+# 指定的 TWeSee 回调目标不存在
+RESOURCENOTFOUND_SEECALLBACKNOTEXIST = 'ResourceNotFound.SeeCallbackNotExist'
+
+# 未开通 TWeSee 算法的后付费服务
+RESOURCENOTFOUND_SEEPOSTPAIDSERVICENOTEXIST = 'ResourceNotFound.SeePostPaidServiceNotExist'
+
+# TWeSee 预付费订阅不存在
+RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = 'ResourceNotFound.SeePrePaidSubscriptionNotExist'
+
+# TWeSee 任务不存在或已过期
+RESOURCENOTFOUND_SEETASKNOTEXIST = 'ResourceNotFound.SeeTaskNotExist'
+
 # 位置空间未创建或是已删除。
 RESOURCENOTFOUND_SPACENOTEXIST = 'ResourceNotFound.SpaceNotExist'
 
@@ -488,6 +551,9 @@ UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = 'UnauthorizedOperation.Api
 # App无权限。
 UNAUTHORIZEDOPERATION_APPNOPERMISSION = 'UnauthorizedOperation.AppNoPermission'
 
+# 因账号安全升级，购买云资源需完善您的实名信息。
+UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = 'UnauthorizedOperation.CertificationNeedUpgrade'
+
 # 该设备绑定了网关设备，无法删除。
 UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = 'UnauthorizedOperation.DeviceHasAlreadyBindGateway'
 
@@ -502,6 +568,9 @@ UNAUTHORIZEDOPERATION_NOPERMISSIONTOFAMILY = 'UnauthorizedOperation.NoPermission
 
 # 实例ACL错误。
 UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = 'UnauthorizedOperation.NoPermissionToInstance'
+
+# 当前子账号无支付权限
+UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = 'UnauthorizedOperation.NoPermissionToPay'
 
 # 项目ACL错误。
 UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = 'UnauthorizedOperation.NoPermissionToProject'
@@ -520,6 +589,9 @@ UNAUTHORIZEDOPERATION_NOPERMISSIONTOTRTCROOM = 'UnauthorizedOperation.NoPermissi
 
 # 您的账号未实名认证，请登录腾讯云进行实名认证
 UNAUTHORIZEDOPERATION_NOVERIFIED = 'UnauthorizedOperation.NoVerified'
+
+# 账号没有实名认证，支付失败。
+UNAUTHORIZEDOPERATION_NOTCERTIFICATION = 'UnauthorizedOperation.NotCertification'
 
 # 没有权限。
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
@@ -542,6 +614,9 @@ UNSUPPORTEDOPERATION_BINDSEXISTUNDERFENCE = 'UnsupportedOperation.BindsExistUnde
 # 存在重复的绑定关系。
 UNSUPPORTEDOPERATION_CANNOTREBINDFAMILY = 'UnsupportedOperation.CannotReBindFamily'
 
+# 指定的 TWeSee 服务类型不支持该能力项
+UNSUPPORTEDOPERATION_CAPABILITYNOTSUPPORTEDINSEESERVICETYPE = 'UnsupportedOperation.CapabilityNotSupportedInSeeServiceType'
+
 # 云存套餐与云存 AI 套餐时长不匹配
 UNSUPPORTEDOPERATION_CLOUDSTORAGEPACKAGETIMEMISMATCH = 'UnsupportedOperation.CloudStoragePackageTimeMismatch'
 
@@ -562,6 +637,9 @@ UNSUPPORTEDOPERATION_DEVICETYPE = 'UnsupportedOperation.DeviceType'
 
 # 产品下还存在未删除的设备。
 UNSUPPORTEDOPERATION_DEVICESEXISTUNDERPRODUCT = 'UnsupportedOperation.DevicesExistUnderProduct'
+
+# 指定商品未在该地域售卖
+UNSUPPORTEDOPERATION_DOESNOTSELLINTHISREGION = 'UnsupportedOperation.DoesNotSellInThisRegion'
 
 # 该项目下存在物联使能SaaS服务。
 UNSUPPORTEDOPERATION_ENABLESAASSERVICEEXISTUNDERPROJECT = 'UnsupportedOperation.EnableSaasServiceExistUnderProject'
