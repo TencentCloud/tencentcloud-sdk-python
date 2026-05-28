@@ -9114,20 +9114,22 @@ class EventDataInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 事件发生的房间号。
+        :param _RoomId: <p>事件发生的房间号。</p>
         :type RoomId: int
-        :param _UserId: 事件发生的用户。
+        :param _UserId: <p>事件发生的用户。</p>
         :type UserId: str
-        :param _Device: 用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
+        :param _Device: <p>用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.</p>
         :type Device: int
-        :param _Duration: 录制时长。单位：秒
+        :param _Duration: <p>录制时长。单位：秒</p>
         :type Duration: int
-        :param _RecordSize: 录制文件大小
+        :param _RecordSize: <p>录制文件大小</p>
         :type RecordSize: int
-        :param _RecordUrl: 录制url
+        :param _RecordUrl: <p>录制url</p>
         :type RecordUrl: str
-        :param _Reason: MemberQuit事件，对应Reason（0:主动退出 1:被踢 2:永久被踢 4:失去心跳下线 5:房间结束，成员自动退出）
+        :param _Reason: <p>MemberQuit事件，对应Reason（0:主动退出 1:被踢 2:永久被踢 4:失去心跳下线 5:房间结束，成员自动退出）</p>
         :type Reason: int
+        :param _Role: <p>角色</p><p>枚举值：</p><ul><li>0： 学生</li><li>1： 老师</li><li>2： 助教</li><li>3： 巡课/督导</li></ul>
+        :type Role: int
         """
         self._RoomId = None
         self._UserId = None
@@ -9136,10 +9138,11 @@ class EventDataInfo(AbstractModel):
         self._RecordSize = None
         self._RecordUrl = None
         self._Reason = None
+        self._Role = None
 
     @property
     def RoomId(self):
-        r"""事件发生的房间号。
+        r"""<p>事件发生的房间号。</p>
         :rtype: int
         """
         return self._RoomId
@@ -9150,7 +9153,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def UserId(self):
-        r"""事件发生的用户。
+        r"""<p>事件发生的用户。</p>
         :rtype: str
         """
         return self._UserId
@@ -9161,7 +9164,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def Device(self):
-        r"""用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
+        r"""<p>用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.</p>
         :rtype: int
         """
         return self._Device
@@ -9172,7 +9175,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def Duration(self):
-        r"""录制时长。单位：秒
+        r"""<p>录制时长。单位：秒</p>
         :rtype: int
         """
         return self._Duration
@@ -9183,7 +9186,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def RecordSize(self):
-        r"""录制文件大小
+        r"""<p>录制文件大小</p>
         :rtype: int
         """
         return self._RecordSize
@@ -9194,7 +9197,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def RecordUrl(self):
-        r"""录制url
+        r"""<p>录制url</p>
         :rtype: str
         """
         return self._RecordUrl
@@ -9205,7 +9208,7 @@ class EventDataInfo(AbstractModel):
 
     @property
     def Reason(self):
-        r"""MemberQuit事件，对应Reason（0:主动退出 1:被踢 2:永久被踢 4:失去心跳下线 5:房间结束，成员自动退出）
+        r"""<p>MemberQuit事件，对应Reason（0:主动退出 1:被踢 2:永久被踢 4:失去心跳下线 5:房间结束，成员自动退出）</p>
         :rtype: int
         """
         return self._Reason
@@ -9213,6 +9216,17 @@ class EventDataInfo(AbstractModel):
     @Reason.setter
     def Reason(self, Reason):
         self._Reason = Reason
+
+    @property
+    def Role(self):
+        r"""<p>角色</p><p>枚举值：</p><ul><li>0： 学生</li><li>1： 老师</li><li>2： 助教</li><li>3： 巡课/督导</li></ul>
+        :rtype: int
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
 
 
     def _deserialize(self, params):
@@ -9223,6 +9237,7 @@ class EventDataInfo(AbstractModel):
         self._RecordSize = params.get("RecordSize")
         self._RecordUrl = params.get("RecordUrl")
         self._Reason = params.get("Reason")
+        self._Role = params.get("Role")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14582,9 +14597,9 @@ class SetAppCustomContentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomContent: 自定义内容。
+        :param _CustomContent: <p>自定义内容。</p>
         :type CustomContent: list of AppCustomContent
-        :param _SdkAppId: 应用ID。
+        :param _SdkAppId: <p>应用ID。</p>
         :type SdkAppId: int
         """
         self._CustomContent = None
@@ -14592,7 +14607,7 @@ class SetAppCustomContentRequest(AbstractModel):
 
     @property
     def CustomContent(self):
-        r"""自定义内容。
+        r"""<p>自定义内容。</p>
         :rtype: list of AppCustomContent
         """
         return self._CustomContent
@@ -14603,7 +14618,7 @@ class SetAppCustomContentRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""应用ID。
+        r"""<p>应用ID。</p>
         :rtype: int
         """
         return self._SdkAppId

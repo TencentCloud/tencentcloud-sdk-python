@@ -25,22 +25,19 @@ class SearchProRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Query: 搜索词
+        :param _Query: <p>搜索词</p>
         :type Query: str
-        :param _Mode: 返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）
+        :param _Mode: <p>返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）</p>
         :type Mode: int
-        :param _Site: 指定域名站内搜索（用于过滤自然检索结果）
-注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
+        :param _Site: <p>指定域名站内搜索（用于过滤自然检索结果）<br>注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效</p>
         :type Site: str
-        :param _FromTime: 起始时间（用于过滤自然检索结果），精确到秒时间戳格式
-注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
+        :param _FromTime: <p>起始时间（用于过滤自然检索结果），精确到秒时间戳格式<br>注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效</p>
         :type FromTime: int
-        :param _ToTime: 结束时间（用于过滤自然检索结果），精确到秒时间戳格式
-注意：mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
+        :param _ToTime: <p>结束时间（用于过滤自然检索结果），精确到秒时间戳格式<br>注意：mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效</p>
         :type ToTime: int
-        :param _Cnt: cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
+        :param _Cnt: <p>cnt=10/20/30/40/50，最多可支持返回50条搜索结果，<strong>仅限尊享版使用</strong></p>
         :type Cnt: int
-        :param _Industry: Industry=gov/news/acad/finance，对应党政机关、权威媒体、学术（英文）、金融，**仅限尊享版使用**
+        :param _Industry: <p>Industry=gov/news/acad/finance，对应党政机关、权威媒体、学术（英文）、金融，<strong>仅限尊享版使用</strong></p>
         :type Industry: str
         """
         self._Query = None
@@ -53,7 +50,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""搜索词
+        r"""<p>搜索词</p>
         :rtype: str
         """
         return self._Query
@@ -64,7 +61,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）
+        r"""<p>返回结果类型，0-自然检索结果(默认)，1-多模态VR结果，2-混合结果（多模态VR结果+自然检索结果）</p>
         :rtype: int
         """
         return self._Mode
@@ -75,8 +72,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Site(self):
-        r"""指定域名站内搜索（用于过滤自然检索结果）
-注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
+        r"""<p>指定域名站内搜索（用于过滤自然检索结果）<br>注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效</p>
         :rtype: str
         """
         return self._Site
@@ -87,8 +83,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def FromTime(self):
-        r"""起始时间（用于过滤自然检索结果），精确到秒时间戳格式
-注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
+        r"""<p>起始时间（用于过滤自然检索结果），精确到秒时间戳格式<br>注意： mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效</p>
         :rtype: int
         """
         return self._FromTime
@@ -99,8 +94,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def ToTime(self):
-        r"""结束时间（用于过滤自然检索结果），精确到秒时间戳格式
-注意：mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效
+        r"""<p>结束时间（用于过滤自然检索结果），精确到秒时间戳格式<br>注意：mode=1模式下，参数无效；mode=0模式下，对所有结果生效；mode=2模式下，对输出的自然结果生效</p>
         :rtype: int
         """
         return self._ToTime
@@ -111,7 +105,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Cnt(self):
-        r"""cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
+        r"""<p>cnt=10/20/30/40/50，最多可支持返回50条搜索结果，<strong>仅限尊享版使用</strong></p>
         :rtype: int
         """
         return self._Cnt
@@ -122,7 +116,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Industry(self):
-        r"""Industry=gov/news/acad/finance，对应党政机关、权威媒体、学术（英文）、金融，**仅限尊享版使用**
+        r"""<p>Industry=gov/news/acad/finance，对应党政机关、权威媒体、学术（英文）、金融，<strong>仅限尊享版使用</strong></p>
         :rtype: str
         """
         return self._Industry
@@ -157,22 +151,13 @@ class SearchProResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Query: 原始查询语
+        :param _Query: <p>原始查询语</p>
         :type Query: str
-        :param _Pages: 搜索结果页面详情，格式为json字符串。
-title：结果标题
-date：内容发布时间
-url：内容发布源url
-passage：标准摘要
-content：动态摘要 （尊享版字段）
-site：网站名称，部分不知名站点结果可能为空
-score：相关性得分，取值0～1，越靠近1表示越相关
-images：图片列表
-favicon：网站图标链接，部分不知名站点结果可能为空
+        :param _Pages: <p>搜索结果页面详情，格式为json字符串。<br>title：结果标题<br>date：内容发布时间<br>url：内容发布源url<br>passage：标准摘要<br>content：动态摘要 （尊享版字段）<br>site：网站名称，部分不知名站点结果可能为空<br>score：相关性得分，取值0～1，越靠近1表示越相关<br>images：图片列表<br>favicon：网站图标链接，部分不知名站点结果可能为空</p>
         :type Pages: list of str
-        :param _Version: 用户版本：standard/premium/lite
+        :param _Version: <p>用户版本：standard/premium/lite/flagship</p>
         :type Version: str
-        :param _Msg: 提示信息
+        :param _Msg: <p>提示信息</p>
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -185,7 +170,7 @@ favicon：网站图标链接，部分不知名站点结果可能为空
 
     @property
     def Query(self):
-        r"""原始查询语
+        r"""<p>原始查询语</p>
         :rtype: str
         """
         return self._Query
@@ -196,16 +181,7 @@ favicon：网站图标链接，部分不知名站点结果可能为空
 
     @property
     def Pages(self):
-        r"""搜索结果页面详情，格式为json字符串。
-title：结果标题
-date：内容发布时间
-url：内容发布源url
-passage：标准摘要
-content：动态摘要 （尊享版字段）
-site：网站名称，部分不知名站点结果可能为空
-score：相关性得分，取值0～1，越靠近1表示越相关
-images：图片列表
-favicon：网站图标链接，部分不知名站点结果可能为空
+        r"""<p>搜索结果页面详情，格式为json字符串。<br>title：结果标题<br>date：内容发布时间<br>url：内容发布源url<br>passage：标准摘要<br>content：动态摘要 （尊享版字段）<br>site：网站名称，部分不知名站点结果可能为空<br>score：相关性得分，取值0～1，越靠近1表示越相关<br>images：图片列表<br>favicon：网站图标链接，部分不知名站点结果可能为空</p>
         :rtype: list of str
         """
         return self._Pages
@@ -216,7 +192,7 @@ favicon：网站图标链接，部分不知名站点结果可能为空
 
     @property
     def Version(self):
-        r"""用户版本：standard/premium/lite
+        r"""<p>用户版本：standard/premium/lite/flagship</p>
         :rtype: str
         """
         return self._Version
@@ -227,7 +203,7 @@ favicon：网站图标链接，部分不知名站点结果可能为空
 
     @property
     def Msg(self):
-        r"""提示信息
+        r"""<p>提示信息</p>
         :rtype: str
         """
         return self._Msg

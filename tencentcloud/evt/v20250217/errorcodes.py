@@ -13,3 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# 数据源事件没配置数据源插件
+FAILEDOPERATION_DATASOURCEEVENTPLUGINNOTCONFIGURED = 'FailedOperation.DatasourceEventPluginNotConfigured'
+
+# 事件MessageConfig配置缺失
+FAILEDOPERATION_MESSAGECONFIGNOTCONFIGURED = 'FailedOperation.MessageConfigNotConfigured'
+
+# 数据源事件不支持通过EventId触发
+INVALIDPARAMETERVALUE_DATASOURCETRIGGERBYEVENTIDNOTSUPPORTED = 'InvalidParameterValue.DatasourceTriggerByEventIdNotSupported'

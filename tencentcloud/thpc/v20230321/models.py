@@ -1840,6 +1840,72 @@ class ComputeNodeOverview(AbstractModel):
         
 
 
+class CosOption(AbstractModel):
+    r"""COS挂载信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocalPath: <p>文件系统本地挂载路径。</p>
+        :type LocalPath: str
+        :param _RemotePath: <p>COS桶地址，可以在COS桶详情页查看。</p>
+        :type RemotePath: str
+        :param _MountParamsOption: <p>cosfs2挂载工具支持的参数。</p>
+        :type MountParamsOption: str
+        """
+        self._LocalPath = None
+        self._RemotePath = None
+        self._MountParamsOption = None
+
+    @property
+    def LocalPath(self):
+        r"""<p>文件系统本地挂载路径。</p>
+        :rtype: str
+        """
+        return self._LocalPath
+
+    @LocalPath.setter
+    def LocalPath(self, LocalPath):
+        self._LocalPath = LocalPath
+
+    @property
+    def RemotePath(self):
+        r"""<p>COS桶地址，可以在COS桶详情页查看。</p>
+        :rtype: str
+        """
+        return self._RemotePath
+
+    @RemotePath.setter
+    def RemotePath(self, RemotePath):
+        self._RemotePath = RemotePath
+
+    @property
+    def MountParamsOption(self):
+        r"""<p>cosfs2挂载工具支持的参数。</p>
+        :rtype: str
+        """
+        return self._MountParamsOption
+
+    @MountParamsOption.setter
+    def MountParamsOption(self, MountParamsOption):
+        self._MountParamsOption = MountParamsOption
+
+
+    def _deserialize(self, params):
+        self._LocalPath = params.get("LocalPath")
+        self._RemotePath = params.get("RemotePath")
+        self._MountParamsOption = params.get("MountParamsOption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateClusterRequest(AbstractModel):
     r"""CreateCluster请求参数结构体
 
@@ -5114,20 +5180,23 @@ class GooseFSOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LocalPath: 文件系统本地挂载路径。
+        :param _LocalPath: <p>文件系统本地挂载路径。</p>
         :type LocalPath: str
-        :param _RemotePath: 文件系统远程挂载路径。
+        :param _RemotePath: <p>文件系统远程挂载路径。</p>
         :type RemotePath: str
-        :param _Masters: 文件系统master的ip和端口。
+        :param _Masters: <p>文件系统master的ip和端口，此参数和FileSystemId互斥。</p>
         :type Masters: list of str
+        :param _FileSystemId: <p>GooseFS的文件ID；此参数和Masters 互斥。</p>
+        :type FileSystemId: str
         """
         self._LocalPath = None
         self._RemotePath = None
         self._Masters = None
+        self._FileSystemId = None
 
     @property
     def LocalPath(self):
-        r"""文件系统本地挂载路径。
+        r"""<p>文件系统本地挂载路径。</p>
         :rtype: str
         """
         return self._LocalPath
@@ -5138,7 +5207,7 @@ class GooseFSOption(AbstractModel):
 
     @property
     def RemotePath(self):
-        r"""文件系统远程挂载路径。
+        r"""<p>文件系统远程挂载路径。</p>
         :rtype: str
         """
         return self._RemotePath
@@ -5149,7 +5218,7 @@ class GooseFSOption(AbstractModel):
 
     @property
     def Masters(self):
-        r"""文件系统master的ip和端口。
+        r"""<p>文件系统master的ip和端口，此参数和FileSystemId互斥。</p>
         :rtype: list of str
         """
         return self._Masters
@@ -5158,11 +5227,23 @@ class GooseFSOption(AbstractModel):
     def Masters(self, Masters):
         self._Masters = Masters
 
+    @property
+    def FileSystemId(self):
+        r"""<p>GooseFS的文件ID；此参数和Masters 互斥。</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
 
     def _deserialize(self, params):
         self._LocalPath = params.get("LocalPath")
         self._RemotePath = params.get("RemotePath")
         self._Masters = params.get("Masters")
+        self._FileSystemId = params.get("FileSystemId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8847,20 +8928,23 @@ class StorageOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CFSOptions: 集群挂载CFS文件系统选项。
+        :param _CFSOptions: <p>集群挂载CFS文件系统选项。</p>
         :type CFSOptions: list of CFSOption
-        :param _GooseFSOptions: 集群挂载GooseFS文件系统选项。
+        :param _GooseFSOptions: <p>集群挂载GooseFS文件系统选项。</p>
         :type GooseFSOptions: list of GooseFSOption
-        :param _GooseFSxOptions: 集群挂载GooseFSx文件系统选项。
+        :param _GooseFSxOptions: <p>集群挂载GooseFSx文件系统选项。</p>
         :type GooseFSxOptions: list of GooseFSxOption
+        :param _CosOptions: <p>集群挂载COS文件系统选项。</p>
+        :type CosOptions: list of CosOption
         """
         self._CFSOptions = None
         self._GooseFSOptions = None
         self._GooseFSxOptions = None
+        self._CosOptions = None
 
     @property
     def CFSOptions(self):
-        r"""集群挂载CFS文件系统选项。
+        r"""<p>集群挂载CFS文件系统选项。</p>
         :rtype: list of CFSOption
         """
         return self._CFSOptions
@@ -8871,7 +8955,7 @@ class StorageOption(AbstractModel):
 
     @property
     def GooseFSOptions(self):
-        r"""集群挂载GooseFS文件系统选项。
+        r"""<p>集群挂载GooseFS文件系统选项。</p>
         :rtype: list of GooseFSOption
         """
         return self._GooseFSOptions
@@ -8882,7 +8966,7 @@ class StorageOption(AbstractModel):
 
     @property
     def GooseFSxOptions(self):
-        r"""集群挂载GooseFSx文件系统选项。
+        r"""<p>集群挂载GooseFSx文件系统选项。</p>
         :rtype: list of GooseFSxOption
         """
         return self._GooseFSxOptions
@@ -8890,6 +8974,17 @@ class StorageOption(AbstractModel):
     @GooseFSxOptions.setter
     def GooseFSxOptions(self, GooseFSxOptions):
         self._GooseFSxOptions = GooseFSxOptions
+
+    @property
+    def CosOptions(self):
+        r"""<p>集群挂载COS文件系统选项。</p>
+        :rtype: list of CosOption
+        """
+        return self._CosOptions
+
+    @CosOptions.setter
+    def CosOptions(self, CosOptions):
+        self._CosOptions = CosOptions
 
 
     def _deserialize(self, params):
@@ -8911,6 +9006,12 @@ class StorageOption(AbstractModel):
                 obj = GooseFSxOption()
                 obj._deserialize(item)
                 self._GooseFSxOptions.append(obj)
+        if params.get("CosOptions") is not None:
+            self._CosOptions = []
+            for item in params.get("CosOptions"):
+                obj = CosOption()
+                obj._deserialize(item)
+                self._CosOptions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

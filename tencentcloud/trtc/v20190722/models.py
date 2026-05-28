@@ -11910,23 +11910,24 @@ class ModerationParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModerationType: 审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核4:音频流式审核 5:音频流式+视频截帧审核  默认值1 （流式审核需要供应商支持才生效）
+        :param _ModerationType: 审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核  默认值1 
         :type ModerationType: int
         :param _MaxIdleTime: 房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30 
         :type MaxIdleTime: int
-        :param _SliceAudio: 音频切片时长，默认15s 示例值：15
+        :param _SliceAudio: 音频切片时长，默认15s 示例值：15, 范围15-60s
         :type SliceAudio: int
-        :param _SliceVideo: 视频截帧间隔时长，默认5s
+        :param _SliceVideo: 视频截帧间隔时长，默认5s, 范围1-60s
         :type SliceVideo: int
         :param _ModerationSupplier: 供应商枚举，
+trtc : trtc内容理解（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 tianyu : 天御内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 ace  : ACE内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 shumei : 数美审核（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
         :type ModerationSupplier: str
-        :param _ModerationSupplierParam: 第三方审核商送审需要配置信息
+        :param _ModerationSupplierParam: 第三方审核商送审需要配置信息, ModerationSupplier为trtc时，这个参数可以不需要初始化
         :type ModerationSupplierParam: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
-        :param _SaveModerationFile: 是否保存文件  0不保存文件 1保存所有文件 2仅保存命中文件
+        :param _SaveModerationFile: 是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件
         :type SaveModerationFile: int
         :param _CallbackAllResults: 是否回调所有审核结果:0 默认回调所有结果 1 仅回调命中结果 
         :type CallbackAllResults: int
@@ -11945,7 +11946,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def ModerationType(self):
-        r"""审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核4:音频流式审核 5:音频流式+视频截帧审核  默认值1 （流式审核需要供应商支持才生效）
+        r"""审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核  默认值1 
         :rtype: int
         """
         return self._ModerationType
@@ -11967,7 +11968,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def SliceAudio(self):
-        r"""音频切片时长，默认15s 示例值：15
+        r"""音频切片时长，默认15s 示例值：15, 范围15-60s
         :rtype: int
         """
         return self._SliceAudio
@@ -11978,7 +11979,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def SliceVideo(self):
-        r"""视频截帧间隔时长，默认5s
+        r"""视频截帧间隔时长，默认5s, 范围1-60s
         :rtype: int
         """
         return self._SliceVideo
@@ -11990,6 +11991,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
     @property
     def ModerationSupplier(self):
         r"""供应商枚举，
+trtc : trtc内容理解（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 tianyu : 天御内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 ace  : ACE内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 shumei : 数美审核（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
@@ -12004,7 +12006,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def ModerationSupplierParam(self):
-        r"""第三方审核商送审需要配置信息
+        r"""第三方审核商送审需要配置信息, ModerationSupplier为trtc时，这个参数可以不需要初始化
         :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
         """
         return self._ModerationSupplierParam
@@ -12015,7 +12017,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def SaveModerationFile(self):
-        r"""是否保存文件  0不保存文件 1保存所有文件 2仅保存命中文件
+        r"""是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件
         :rtype: int
         """
         return self._SaveModerationFile

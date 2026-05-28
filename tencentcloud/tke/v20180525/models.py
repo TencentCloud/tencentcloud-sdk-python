@@ -847,6 +847,146 @@ class Addon(AbstractModel):
         
 
 
+class AgentPluginConfig(AbstractModel):
+    r"""AgentPlugin 安装配置，包含域名、Chart 版本和外部 PostgreSQL 连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChartVersion: Helm Chart 版本，一般无需指定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChartVersion: str
+        :param _Host: 外部 PostgreSQL 内网地址；配置后跳过内置 PostgreSQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _Password: 外部 PostgreSQL 密码，配置 Host 时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _Port: 外部 PostgreSQL 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _SSLMode: SSL 模式，取值：disable / require / verify-full
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSLMode: str
+        :param _ServiceDomain: Agent 实例访问域名，不填则不创建域名路由
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDomain: str
+        :param _Username: 外部 PostgreSQL 用户名，配置 Host 时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        """
+        self._ChartVersion = None
+        self._Host = None
+        self._Password = None
+        self._Port = None
+        self._SSLMode = None
+        self._ServiceDomain = None
+        self._Username = None
+
+    @property
+    def ChartVersion(self):
+        r"""Helm Chart 版本，一般无需指定
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChartVersion
+
+    @ChartVersion.setter
+    def ChartVersion(self, ChartVersion):
+        self._ChartVersion = ChartVersion
+
+    @property
+    def Host(self):
+        r"""外部 PostgreSQL 内网地址；配置后跳过内置 PostgreSQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Password(self):
+        r"""外部 PostgreSQL 密码，配置 Host 时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Port(self):
+        r"""外部 PostgreSQL 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def SSLMode(self):
+        r"""SSL 模式，取值：disable / require / verify-full
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SSLMode
+
+    @SSLMode.setter
+    def SSLMode(self, SSLMode):
+        self._SSLMode = SSLMode
+
+    @property
+    def ServiceDomain(self):
+        r"""Agent 实例访问域名，不填则不创建域名路由
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceDomain
+
+    @ServiceDomain.setter
+    def ServiceDomain(self, ServiceDomain):
+        self._ServiceDomain = ServiceDomain
+
+    @property
+    def Username(self):
+        r"""外部 PostgreSQL 用户名，配置 Host 时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+
+    def _deserialize(self, params):
+        self._ChartVersion = params.get("ChartVersion")
+        self._Host = params.get("Host")
+        self._Password = params.get("Password")
+        self._Port = params.get("Port")
+        self._SSLMode = params.get("SSLMode")
+        self._ServiceDomain = params.get("ServiceDomain")
+        self._Username = params.get("Username")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnnotationValue(AbstractModel):
     r"""注释
 
@@ -7662,26 +7802,28 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
+        :param _ClusterId: <p>集群ID，通过DescribeClusters接口获取</p>
         :type ClusterId: str
-        :param _Name: 节点池名称
+        :param _Name: <p>节点池名称</p>
         :type Name: str
-        :param _SecurityGroupIds: 安全组ID列表
+        :param _SecurityGroupIds: <p>安全组ID列表</p>
         :type SecurityGroupIds: list of str
-        :param _SubnetIds: 子网ID列表
+        :param _SubnetIds: <p>子网ID列表</p>
         :type SubnetIds: list of str
-        :param _Labels: 虚拟节点label
+        :param _Labels: <p>虚拟节点label</p>
         :type Labels: list of Label
-        :param _Taints: 虚拟节点taint
+        :param _Taints: <p>虚拟节点taint</p>
         :type Taints: list of Taint
-        :param _VirtualNodes: 节点列表
+        :param _VirtualNodes: <p>节点列表</p>
         :type VirtualNodes: list of VirtualNodeSpec
-        :param _DeletionProtection: 删除保护开关，默认关闭
+        :param _DeletionProtection: <p>删除保护开关，默认关闭</p>
         :type DeletionProtection: bool
-        :param _OS: 节点池操作系统：
-- linux（默认）
-- windows
+        :param _OS: <p>节点池操作系统：</p><ul><li>linux（默认）</li><li>windows</li></ul>
         :type OS: str
+        :param _SubnetAllocationPolicy: <p>子网资源分配策略，精确控制各子网之间的资源分配比例。</p>
+        :type SubnetAllocationPolicy: :class:`tencentcloud.tke.v20180525.models.SubnetAllocationPolicy`
+        :param _AgentPlugin: <p>AgentPlugin 安装配置。传入即表示需要安装（即使是空对象 {}）</p>
+        :type AgentPlugin: :class:`tencentcloud.tke.v20180525.models.AgentPluginConfig`
         """
         self._ClusterId = None
         self._Name = None
@@ -7692,10 +7834,12 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
         self._VirtualNodes = None
         self._DeletionProtection = None
         self._OS = None
+        self._SubnetAllocationPolicy = None
+        self._AgentPlugin = None
 
     @property
     def ClusterId(self):
-        r"""集群ID，通过DescribeClusters接口获取
+        r"""<p>集群ID，通过DescribeClusters接口获取</p>
         :rtype: str
         """
         return self._ClusterId
@@ -7706,7 +7850,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""节点池名称
+        r"""<p>节点池名称</p>
         :rtype: str
         """
         return self._Name
@@ -7717,7 +7861,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组ID列表
+        r"""<p>安全组ID列表</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -7728,7 +7872,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网ID列表
+        r"""<p>子网ID列表</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -7739,7 +7883,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        r"""虚拟节点label
+        r"""<p>虚拟节点label</p>
         :rtype: list of Label
         """
         return self._Labels
@@ -7750,7 +7894,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        r"""虚拟节点taint
+        r"""<p>虚拟节点taint</p>
         :rtype: list of Taint
         """
         return self._Taints
@@ -7761,7 +7905,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def VirtualNodes(self):
-        r"""节点列表
+        r"""<p>节点列表</p>
         :rtype: list of VirtualNodeSpec
         """
         return self._VirtualNodes
@@ -7772,7 +7916,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""删除保护开关，默认关闭
+        r"""<p>删除保护开关，默认关闭</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -7783,9 +7927,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def OS(self):
-        r"""节点池操作系统：
-- linux（默认）
-- windows
+        r"""<p>节点池操作系统：</p><ul><li>linux（默认）</li><li>windows</li></ul>
         :rtype: str
         """
         return self._OS
@@ -7793,6 +7935,28 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
     @OS.setter
     def OS(self, OS):
         self._OS = OS
+
+    @property
+    def SubnetAllocationPolicy(self):
+        r"""<p>子网资源分配策略，精确控制各子网之间的资源分配比例。</p>
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SubnetAllocationPolicy`
+        """
+        return self._SubnetAllocationPolicy
+
+    @SubnetAllocationPolicy.setter
+    def SubnetAllocationPolicy(self, SubnetAllocationPolicy):
+        self._SubnetAllocationPolicy = SubnetAllocationPolicy
+
+    @property
+    def AgentPlugin(self):
+        r"""<p>AgentPlugin 安装配置。传入即表示需要安装（即使是空对象 {}）</p>
+        :rtype: :class:`tencentcloud.tke.v20180525.models.AgentPluginConfig`
+        """
+        return self._AgentPlugin
+
+    @AgentPlugin.setter
+    def AgentPlugin(self, AgentPlugin):
+        self._AgentPlugin = AgentPlugin
 
 
     def _deserialize(self, params):
@@ -7820,6 +7984,12 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
                 self._VirtualNodes.append(obj)
         self._DeletionProtection = params.get("DeletionProtection")
         self._OS = params.get("OS")
+        if params.get("SubnetAllocationPolicy") is not None:
+            self._SubnetAllocationPolicy = SubnetAllocationPolicy()
+            self._SubnetAllocationPolicy._deserialize(params.get("SubnetAllocationPolicy"))
+        if params.get("AgentPlugin") is not None:
+            self._AgentPlugin = AgentPluginConfig()
+            self._AgentPlugin._deserialize(params.get("AgentPlugin"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7837,7 +8007,7 @@ class CreateClusterVirtualNodePoolResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodePoolId: 节点池ID
+        :param _NodePoolId: <p>节点池ID</p>
         :type NodePoolId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7847,7 +8017,7 @@ class CreateClusterVirtualNodePoolResponse(AbstractModel):
 
     @property
     def NodePoolId(self):
-        r"""节点池ID
+        r"""<p>节点池ID</p>
         :rtype: str
         """
         return self._NodePoolId

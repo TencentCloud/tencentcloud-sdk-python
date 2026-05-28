@@ -823,7 +823,7 @@ class MnaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ReportOrderResponse:
         """
-        用户上报自定义的订单信息，多网聚合加速服务将相关信息进行保存
+        用户上报自定义的订单信息，多网聚合加速（腾讯云聚通）服务将相关信息进行保存
         """
         
         kwargs = {}

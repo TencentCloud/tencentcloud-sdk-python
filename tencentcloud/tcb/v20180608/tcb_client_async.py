@@ -982,6 +982,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePGUserMigration(
+            self,
+            request: models.DescribePGUserMigrationRequest,
+            opts: Dict = None,
+    ) -> models.DescribePGUserMigrationResponse:
+        """
+        本接口（DescribePGUserMigration）用于查询目标环境指定 migration 详情。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePGUserMigration"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePGUserMigrationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeQuotaData(
             self,
             request: models.DescribeQuotaDataRequest,
@@ -995,6 +1013,26 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeQuotaData"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeQuotaDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourcePermission(
+            self,
+            request: models.DescribeResourcePermissionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourcePermissionResponse:
+        """
+        查询资源基础权限。
+
+        查询云函数、云存储和数据库表的基础权限配置。支持单个资源查询和批量查询。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourcePermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourcePermissionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1248,6 +1286,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListPGUserMigrations(
+            self,
+            request: models.ListPGUserMigrationsRequest,
+            opts: Dict = None,
+    ) -> models.ListPGUserMigrationsResponse:
+        """
+        本接口（ListPGUserMigrations）用于查询目标环境已应用的用户 migration 列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListPGUserMigrations"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListPGUserMigrationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListTables(
             self,
             request: models.ListTablesRequest,
@@ -1418,6 +1474,26 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyResourcePermission(
+            self,
+            request: models.ModifyResourcePermissionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyResourcePermissionResponse:
+        """
+        修改资源基础权限。
+
+        修改云函数、云存储和数据库表的基础权限配置。支持预定义权限级别和自定义安全规则两种方式配置资源访问权限。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyResourcePermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyResourcePermissionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifySafeRule(
             self,
             request: models.ModifySafeRuleRequest,
@@ -1477,6 +1553,42 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def PreviewPGUserMigrations(
+            self,
+            request: models.PreviewPGUserMigrationsRequest,
+            opts: Dict = None,
+    ) -> models.PreviewPGUserMigrationsResponse:
+        """
+        本接口（PreviewPGUserMigrations）用于预览SQL migrations 在远端的执行计划，不实际执行SQL。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PreviewPGUserMigrations"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PreviewPGUserMigrationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def PushPGUserMigrations(
+            self,
+            request: models.PushPGUserMigrationsRequest,
+            opts: Dict = None,
+    ) -> models.PushPGUserMigrationsResponse:
+        """
+        本接口（PushPGUserMigrations）用于批量应用Migrations。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PushPGUserMigrations"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PushPGUserMigrationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReleaseEnv(
             self,
             request: models.ReleaseEnvRequest,
@@ -1510,6 +1622,42 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "RenewEnv"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RenewEnvResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RepairPGUserMigrationHistory(
+            self,
+            request: models.RepairPGUserMigrationHistoryRequest,
+            opts: Dict = None,
+    ) -> models.RepairPGUserMigrationHistoryResponse:
+        """
+        本接口（RepairPGUserMigrationHistory）用于受控修复 history，只修改 user_schema_migrations，不执行 SQL。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RepairPGUserMigrationHistory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RepairPGUserMigrationHistoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RollbackPGUserMigrations(
+            self,
+            request: models.RollbackPGUserMigrationsRequest,
+            opts: Dict = None,
+    ) -> models.RollbackPGUserMigrationsResponse:
+        """
+        本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RollbackPGUserMigrations"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RollbackPGUserMigrationsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

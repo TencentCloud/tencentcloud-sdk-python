@@ -517,10 +517,13 @@ class PutMessageRequest(AbstractModel):
         :type Data: str
         :param _Source: <p>数据推送来源，会在生成的单据中展示数据来源</p>
         :type Source: str
+        :param _PluginId: <p>插件ID</p>
+        :type PluginId: str
         """
         self._EventId = None
         self._Data = None
         self._Source = None
+        self._PluginId = None
 
     @property
     def EventId(self):
@@ -555,11 +558,23 @@ class PutMessageRequest(AbstractModel):
     def Source(self, Source):
         self._Source = Source
 
+    @property
+    def PluginId(self):
+        r"""<p>插件ID</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
 
     def _deserialize(self, params):
         self._EventId = params.get("EventId")
         self._Data = params.get("Data")
         self._Source = params.get("Source")
+        self._PluginId = params.get("PluginId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

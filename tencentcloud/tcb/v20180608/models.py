@@ -8646,6 +8646,235 @@ class DescribeMySQLTaskStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePGUserMigrationRequest(AbstractModel):
+    r"""DescribePGUserMigration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>云开发环境ID</p>
+        :type EnvId: str
+        :param _MigrationVersion: <p>版本号</p><p>参数格式：14位时间格式</p><p>入参限制：纯数字</p>
+        :type MigrationVersion: str
+        """
+        self._EnvId = None
+        self._MigrationVersion = None
+
+    @property
+    def EnvId(self):
+        r"""<p>云开发环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def MigrationVersion(self):
+        r"""<p>版本号</p><p>参数格式：14位时间格式</p><p>入参限制：纯数字</p>
+        :rtype: str
+        """
+        return self._MigrationVersion
+
+    @MigrationVersion.setter
+    def MigrationVersion(self, MigrationVersion):
+        self._MigrationVersion = MigrationVersion
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._MigrationVersion = params.get("MigrationVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePGUserMigrationResponse(AbstractModel):
+    r"""DescribePGUserMigration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: <p>版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :type Version: str
+        :param _Name: <p>版本名</p><p>参数格式：只允许小写字母和下划线</p>
+        :type Name: str
+        :param _Query: <p>要执行的migration sql 语句</p>
+        :type Query: str
+        :param _Rollback: <p>回滚的sql 语句</p>
+        :type Rollback: str
+        :param _Checksum: <p>migration query 语句的checksum值</p><p>由服务端自动生成，同版本 checksum 不一致会拒绝执行</p>
+        :type Checksum: str
+        :param _Source: <p>用于标记调用来源</p>
+        :type Source: str
+        :param _CreatedBy: <p>用于标记该条migration由谁创建，目前默认调用的用户uin</p>
+        :type CreatedBy: str
+        :param _CreatedAt: <p>该migration创建时间</p>
+        :type CreatedAt: str
+        :param _AppliedAt: <p>该migration应用时间</p>
+        :type AppliedAt: str
+        :param _DurationMs: <p>该migration执行耗时</p><p>单位：毫秒</p>
+        :type DurationMs: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Version = None
+        self._Name = None
+        self._Query = None
+        self._Rollback = None
+        self._Checksum = None
+        self._Source = None
+        self._CreatedBy = None
+        self._CreatedAt = None
+        self._AppliedAt = None
+        self._DurationMs = None
+        self._RequestId = None
+
+    @property
+    def Version(self):
+        r"""<p>版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Name(self):
+        r"""<p>版本名</p><p>参数格式：只允许小写字母和下划线</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Query(self):
+        r"""<p>要执行的migration sql 语句</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def Rollback(self):
+        r"""<p>回滚的sql 语句</p>
+        :rtype: str
+        """
+        return self._Rollback
+
+    @Rollback.setter
+    def Rollback(self, Rollback):
+        self._Rollback = Rollback
+
+    @property
+    def Checksum(self):
+        r"""<p>migration query 语句的checksum值</p><p>由服务端自动生成，同版本 checksum 不一致会拒绝执行</p>
+        :rtype: str
+        """
+        return self._Checksum
+
+    @Checksum.setter
+    def Checksum(self, Checksum):
+        self._Checksum = Checksum
+
+    @property
+    def Source(self):
+        r"""<p>用于标记调用来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def CreatedBy(self):
+        r"""<p>用于标记该条migration由谁创建，目前默认调用的用户uin</p>
+        :rtype: str
+        """
+        return self._CreatedBy
+
+    @CreatedBy.setter
+    def CreatedBy(self, CreatedBy):
+        self._CreatedBy = CreatedBy
+
+    @property
+    def CreatedAt(self):
+        r"""<p>该migration创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def AppliedAt(self):
+        r"""<p>该migration应用时间</p>
+        :rtype: str
+        """
+        return self._AppliedAt
+
+    @AppliedAt.setter
+    def AppliedAt(self, AppliedAt):
+        self._AppliedAt = AppliedAt
+
+    @property
+    def DurationMs(self):
+        r"""<p>该migration执行耗时</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._DurationMs
+
+    @DurationMs.setter
+    def DurationMs(self, DurationMs):
+        self._DurationMs = DurationMs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Name = params.get("Name")
+        self._Query = params.get("Query")
+        self._Rollback = params.get("Rollback")
+        self._Checksum = params.get("Checksum")
+        self._Source = params.get("Source")
+        self._CreatedBy = params.get("CreatedBy")
+        self._CreatedAt = params.get("CreatedAt")
+        self._AppliedAt = params.get("AppliedAt")
+        self._DurationMs = params.get("DurationMs")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQuotaDataRequest(AbstractModel):
     r"""DescribeQuotaData请求参数结构体
 
@@ -8845,6 +9074,173 @@ class DescribeQuotaDataResponse(AbstractModel):
         self._Value = params.get("Value")
         self._SubValue = params.get("SubValue")
         self._RequestId = params.get("RequestId")
+
+
+class DescribeResourcePermissionRequest(AbstractModel):
+    r"""DescribeResourcePermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 ID
+        :type EnvId: str
+        :param _ResourceType: 资源类型：`function`-云函数、`storage`-云存储、`table`-SQL型数据库表、`collection`-文档型数据库表 `<br>`示例值：`table`。
+        :type ResourceType: str
+        :param _Resources: 资源标识列表。云函数不传或传空数组、云存储传存储桶名、数据库表传表名，不能超过100条。
+        :type Resources: list of str
+        """
+        self._EnvId = None
+        self._ResourceType = None
+        self._Resources = None
+
+    @property
+    def EnvId(self):
+        r"""环境 ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型：`function`-云函数、`storage`-云存储、`table`-SQL型数据库表、`collection`-文档型数据库表 `<br>`示例值：`table`。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Resources(self):
+        r"""资源标识列表。云函数不传或传空数组、云存储传存储桶名、数据库表传表名，不能超过100条。
+        :rtype: list of str
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ResourceType = params.get("ResourceType")
+        self._Resources = params.get("Resources")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourcePermissionResponse(AbstractModel):
+    r"""DescribeResourcePermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询资源权限返回结果
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.DescribeResourcePermissionResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询资源权限返回结果
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeResourcePermissionResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeResourcePermissionResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourcePermissionResult(AbstractModel):
+    r"""查询资源权限返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询到的资源总数
+        :type TotalCount: int
+        :param _PermissionList: 资源权限列表
+        :type PermissionList: list of ResourcePermission
+        """
+        self._TotalCount = None
+        self._PermissionList = None
+
+    @property
+    def TotalCount(self):
+        r"""查询到的资源总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PermissionList(self):
+        r"""资源权限列表
+        :rtype: list of ResourcePermission
+        """
+        return self._PermissionList
+
+    @PermissionList.setter
+    def PermissionList(self, PermissionList):
+        self._PermissionList = PermissionList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PermissionList") is not None:
+            self._PermissionList = []
+            for item in params.get("PermissionList"):
+                obj = ResourcePermission()
+                obj._deserialize(item)
+                self._PermissionList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeSafeRuleRequest(AbstractModel):
@@ -13434,6 +13830,150 @@ class KVPair(AbstractModel):
         
 
 
+class ListPGUserMigrationsRequest(AbstractModel):
+    r"""ListPGUserMigrations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>云开发环境ID</p>
+        :type EnvId: str
+        :param _Limit: <p>查询条数</p><p>取值范围：[1, 500]</p><p>默认值：100</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移</p><p>默认值：0</p>
+        :type Offset: int
+        """
+        self._EnvId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def EnvId(self):
+        r"""<p>云开发环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Limit(self):
+        r"""<p>查询条数</p><p>取值范围：[1, 500]</p><p>默认值：100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPGUserMigrationsResponse(AbstractModel):
+    r"""ListPGUserMigrations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总数量</p>
+        :type Total: int
+        :param _LatestVersion: <p>已应用最新版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :type LatestVersion: str
+        :param _Migrations: <p>已应用migration列表</p>
+        :type Migrations: list of MigrationSummary
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._LatestVersion = None
+        self._Migrations = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def LatestVersion(self):
+        r"""<p>已应用最新版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :rtype: str
+        """
+        return self._LatestVersion
+
+    @LatestVersion.setter
+    def LatestVersion(self, LatestVersion):
+        self._LatestVersion = LatestVersion
+
+    @property
+    def Migrations(self):
+        r"""<p>已应用migration列表</p>
+        :rtype: list of MigrationSummary
+        """
+        return self._Migrations
+
+    @Migrations.setter
+    def Migrations(self, Migrations):
+        self._Migrations = Migrations
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._LatestVersion = params.get("LatestVersion")
+        if params.get("Migrations") is not None:
+            self._Migrations = []
+            for item in params.get("Migrations"):
+                obj = MigrationSummary()
+                obj._deserialize(item)
+                self._Migrations.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListTablesRequest(AbstractModel):
     r"""ListTables请求参数结构体
 
@@ -14755,6 +15295,435 @@ class MgoKeySchema(AbstractModel):
         
 
 
+class MigrationConflict(AbstractModel):
+    r"""migration 执行计划冲突项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: <p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :type Version: str
+        :param _Name: <p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+        :type Name: str
+        :param _RemoteName: <p>数据库已应用migration的版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+        :type RemoteName: str
+        :param _LocalChecksum: <p>本次sql计算出来的checksum</p>
+        :type LocalChecksum: str
+        :param _RemoteChecksum: <p>已应用的migration，数据库存储的checksum</p>
+        :type RemoteChecksum: str
+        :param _Reason: <p>归入该分组的原因</p>
+        :type Reason: str
+        :param _Message: <p>冲突信息</p>
+        :type Message: str
+        """
+        self._Version = None
+        self._Name = None
+        self._RemoteName = None
+        self._LocalChecksum = None
+        self._RemoteChecksum = None
+        self._Reason = None
+        self._Message = None
+
+    @property
+    def Version(self):
+        r"""<p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Name(self):
+        r"""<p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RemoteName(self):
+        r"""<p>数据库已应用migration的版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+        :rtype: str
+        """
+        return self._RemoteName
+
+    @RemoteName.setter
+    def RemoteName(self, RemoteName):
+        self._RemoteName = RemoteName
+
+    @property
+    def LocalChecksum(self):
+        r"""<p>本次sql计算出来的checksum</p>
+        :rtype: str
+        """
+        return self._LocalChecksum
+
+    @LocalChecksum.setter
+    def LocalChecksum(self, LocalChecksum):
+        self._LocalChecksum = LocalChecksum
+
+    @property
+    def RemoteChecksum(self):
+        r"""<p>已应用的migration，数据库存储的checksum</p>
+        :rtype: str
+        """
+        return self._RemoteChecksum
+
+    @RemoteChecksum.setter
+    def RemoteChecksum(self, RemoteChecksum):
+        self._RemoteChecksum = RemoteChecksum
+
+    @property
+    def Reason(self):
+        r"""<p>归入该分组的原因</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Message(self):
+        r"""<p>冲突信息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Name = params.get("Name")
+        self._RemoteName = params.get("RemoteName")
+        self._LocalChecksum = params.get("LocalChecksum")
+        self._RemoteChecksum = params.get("RemoteChecksum")
+        self._Reason = params.get("Reason")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrationInput(AbstractModel):
+    r"""结构化 SQL migration 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: <p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :type Version: str
+        :param _Name: <p>migration 版本名</p><p>入参限制：仅允许小写字母和下划线</p>
+        :type Name: str
+        :param _Query: <p>migration 应用 sql 语句</p>
+        :type Query: str
+        :param _Rollback: <p>migration 回滚 sql 语句</p>
+        :type Rollback: str
+        """
+        self._Version = None
+        self._Name = None
+        self._Query = None
+        self._Rollback = None
+
+    @property
+    def Version(self):
+        r"""<p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Name(self):
+        r"""<p>migration 版本名</p><p>入参限制：仅允许小写字母和下划线</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Query(self):
+        r"""<p>migration 应用 sql 语句</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def Rollback(self):
+        r"""<p>migration 回滚 sql 语句</p>
+        :rtype: str
+        """
+        return self._Rollback
+
+    @Rollback.setter
+    def Rollback(self, Rollback):
+        self._Rollback = Rollback
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Name = params.get("Name")
+        self._Query = params.get("Query")
+        self._Rollback = params.get("Rollback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrationPlanItem(AbstractModel):
+    r"""migration 执行计划
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: <p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :type Version: str
+        :param _Name: <p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+        :type Name: str
+        :param _Checksum: <p>migration query sql checksum</p><p>服务端自动生成，同版本不同checksum会拒绝执行</p>
+        :type Checksum: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>applied： 已应用</li><li>pending： 待执行</li></ul>
+        :type Status: str
+        :param _Source: <p>标记请求来源</p>
+        :type Source: str
+        :param _Reason: <p>被归入该分组的原因，比如not_applied、checksum_matched</p>
+        :type Reason: str
+        """
+        self._Version = None
+        self._Name = None
+        self._Checksum = None
+        self._Status = None
+        self._Source = None
+        self._Reason = None
+
+    @property
+    def Version(self):
+        r"""<p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Name(self):
+        r"""<p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Checksum(self):
+        r"""<p>migration query sql checksum</p><p>服务端自动生成，同版本不同checksum会拒绝执行</p>
+        :rtype: str
+        """
+        return self._Checksum
+
+    @Checksum.setter
+    def Checksum(self, Checksum):
+        self._Checksum = Checksum
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>applied： 已应用</li><li>pending： 待执行</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Source(self):
+        r"""<p>标记请求来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Reason(self):
+        r"""<p>被归入该分组的原因，比如not_applied、checksum_matched</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Name = params.get("Name")
+        self._Checksum = params.get("Checksum")
+        self._Status = params.get("Status")
+        self._Source = params.get("Source")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrationSummary(AbstractModel):
+    r"""migration 列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: <p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :type Version: str
+        :param _Name: <p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+        :type Name: str
+        :param _Checksum: <p>migration query sql 语句checksum</p><p>服务端自动生成，同版本不同checksum会拒绝执行</p>
+        :type Checksum: str
+        :param _AppliedAt: <p>应用时间</p>
+        :type AppliedAt: str
+        :param _Source: <p>请求来源</p>
+        :type Source: str
+        :param _CreatedBy: <p>migration 创建时间</p>
+        :type CreatedBy: str
+        """
+        self._Version = None
+        self._Name = None
+        self._Checksum = None
+        self._AppliedAt = None
+        self._Source = None
+        self._CreatedBy = None
+
+    @property
+    def Version(self):
+        r"""<p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Name(self):
+        r"""<p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Checksum(self):
+        r"""<p>migration query sql 语句checksum</p><p>服务端自动生成，同版本不同checksum会拒绝执行</p>
+        :rtype: str
+        """
+        return self._Checksum
+
+    @Checksum.setter
+    def Checksum(self, Checksum):
+        self._Checksum = Checksum
+
+    @property
+    def AppliedAt(self):
+        r"""<p>应用时间</p>
+        :rtype: str
+        """
+        return self._AppliedAt
+
+    @AppliedAt.setter
+    def AppliedAt(self, AppliedAt):
+        self._AppliedAt = AppliedAt
+
+    @property
+    def Source(self):
+        r"""<p>请求来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def CreatedBy(self):
+        r"""<p>migration 创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedBy
+
+    @CreatedBy.setter
+    def CreatedBy(self, CreatedBy):
+        self._CreatedBy = CreatedBy
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Name = params.get("Name")
+        self._Checksum = params.get("Checksum")
+        self._AppliedAt = params.get("AppliedAt")
+        self._Source = params.get("Source")
+        self._CreatedBy = params.get("CreatedBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyClientRequest(AbstractModel):
     r"""ModifyClient请求参数结构体
 
@@ -15784,6 +16753,183 @@ class ModifyProviderResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyResourcePermissionRequest(AbstractModel):
+    r"""ModifyResourcePermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 ID
+        :type EnvId: str
+        :param _ResourceType: 资源类型：`function`-云函数、`storage`-云存储、`table`-SQL型数据库表、`collection`-文档型数据库表。
+        :type ResourceType: str
+        :param _Permission: 权限级别。可选值：- SQL型数据库表：`READONLY`-读取全部数据，修改本人数据；`PRIVATE`-读取和修改本人数据；`ADMINWRITE`-读取全部数据，不可修改数据；`ADMINONLY`-无权限 。- 文档型数据库表：`READONLY`-读取全部数据，修改本人数据；`PRIVATE`-读取和修改本人数据；`ADMINWRITE`-读取全部数据，不可修改数据；`ADMINONLY`-无权限；`CUSTOM`-自定义安全规则 。- 云函数：`CUSTOM`-自定义安全规则 。- 云存储（权限标签）：`READONLY`-所有用户可读，仅创建者和管理员可写；`PRIVATE`-仅创建者及管理员可读写；`ADMINWRITE`-所有用户可读，仅管理员可写；`ADMINONLY`-仅管理员可读写；`CUSTOM`-自定义安全规则。
+        :type Permission: str
+        :param _Resource: 资源标识。云函数可不传、云存储传存储桶名、数据库表传表名。
+        :type Resource: str
+        :param _SecurityRule: 自定义安全规则配置，当Permission为 `CUSTOM`时必传。JSON字符串格式的规则表达式。配置参考：[云函数安全规则](https://docs.cloudbase.net/cloud-function/security-rules)、[云存储安全规则](https://docs.cloudbase.net/storage/security-rules)、[文档型数据库安全规则](https://docs.cloudbase.net/database/security-rules)。
+        :type SecurityRule: str
+        """
+        self._EnvId = None
+        self._ResourceType = None
+        self._Permission = None
+        self._Resource = None
+        self._SecurityRule = None
+
+    @property
+    def EnvId(self):
+        r"""环境 ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型：`function`-云函数、`storage`-云存储、`table`-SQL型数据库表、`collection`-文档型数据库表。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Permission(self):
+        r"""权限级别。可选值：- SQL型数据库表：`READONLY`-读取全部数据，修改本人数据；`PRIVATE`-读取和修改本人数据；`ADMINWRITE`-读取全部数据，不可修改数据；`ADMINONLY`-无权限 。- 文档型数据库表：`READONLY`-读取全部数据，修改本人数据；`PRIVATE`-读取和修改本人数据；`ADMINWRITE`-读取全部数据，不可修改数据；`ADMINONLY`-无权限；`CUSTOM`-自定义安全规则 。- 云函数：`CUSTOM`-自定义安全规则 。- 云存储（权限标签）：`READONLY`-所有用户可读，仅创建者和管理员可写；`PRIVATE`-仅创建者及管理员可读写；`ADMINWRITE`-所有用户可读，仅管理员可写；`ADMINONLY`-仅管理员可读写；`CUSTOM`-自定义安全规则。
+        :rtype: str
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def Resource(self):
+        r"""资源标识。云函数可不传、云存储传存储桶名、数据库表传表名。
+        :rtype: str
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def SecurityRule(self):
+        r"""自定义安全规则配置，当Permission为 `CUSTOM`时必传。JSON字符串格式的规则表达式。配置参考：[云函数安全规则](https://docs.cloudbase.net/cloud-function/security-rules)、[云存储安全规则](https://docs.cloudbase.net/storage/security-rules)、[文档型数据库安全规则](https://docs.cloudbase.net/database/security-rules)。
+        :rtype: str
+        """
+        return self._SecurityRule
+
+    @SecurityRule.setter
+    def SecurityRule(self, SecurityRule):
+        self._SecurityRule = SecurityRule
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ResourceType = params.get("ResourceType")
+        self._Permission = params.get("Permission")
+        self._Resource = params.get("Resource")
+        self._SecurityRule = params.get("SecurityRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourcePermissionResponse(AbstractModel):
+    r"""ModifyResourcePermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 修改结果
+        :type Data: :class:`tencentcloud.tcb.v20180608.models.ModifyResourcePermissionResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""修改结果
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyResourcePermissionResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ModifyResourcePermissionResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyResourcePermissionResult(AbstractModel):
+    r"""修改资源基础权限结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 是否成功
+        :type Success: bool
+        """
+        self._Success = None
+
+    @property
+    def Success(self):
+        r"""是否成功
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifySafeRuleRequest(AbstractModel):
@@ -17133,6 +18279,180 @@ class PostgreSQLInfo(AbstractModel):
         
 
 
+class PreviewPGUserMigrationsRequest(AbstractModel):
+    r"""PreviewPGUserMigrations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>云开发环境ID</p>
+        :type EnvId: str
+        :param _Migrations: <p>预览要执行的migration 列表</p>
+        :type Migrations: list of MigrationInput
+        :param _Source: <p>标记请求来源</p>
+        :type Source: str
+        """
+        self._EnvId = None
+        self._Migrations = None
+        self._Source = None
+
+    @property
+    def EnvId(self):
+        r"""<p>云开发环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Migrations(self):
+        r"""<p>预览要执行的migration 列表</p>
+        :rtype: list of MigrationInput
+        """
+        return self._Migrations
+
+    @Migrations.setter
+    def Migrations(self, Migrations):
+        self._Migrations = Migrations
+
+    @property
+    def Source(self):
+        r"""<p>标记请求来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        if params.get("Migrations") is not None:
+            self._Migrations = []
+            for item in params.get("Migrations"):
+                obj = MigrationInput()
+                obj._deserialize(item)
+                self._Migrations.append(obj)
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PreviewPGUserMigrationsResponse(AbstractModel):
+    r"""PreviewPGUserMigrations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Pending: <p>将要执行的migration列表</p>
+        :type Pending: list of MigrationPlanItem
+        :param _Applied: <p>已经应用的migration列表</p>
+        :type Applied: list of MigrationPlanItem
+        :param _Conflicts: <p>版本相同但 checksum 不一致冲突的migration列表</p>
+        :type Conflicts: list of MigrationConflict
+        :param _Executable: <p>是否可直接执行；当前仅表示没有 checksum 冲突</p>
+        :type Executable: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Pending = None
+        self._Applied = None
+        self._Conflicts = None
+        self._Executable = None
+        self._RequestId = None
+
+    @property
+    def Pending(self):
+        r"""<p>将要执行的migration列表</p>
+        :rtype: list of MigrationPlanItem
+        """
+        return self._Pending
+
+    @Pending.setter
+    def Pending(self, Pending):
+        self._Pending = Pending
+
+    @property
+    def Applied(self):
+        r"""<p>已经应用的migration列表</p>
+        :rtype: list of MigrationPlanItem
+        """
+        return self._Applied
+
+    @Applied.setter
+    def Applied(self, Applied):
+        self._Applied = Applied
+
+    @property
+    def Conflicts(self):
+        r"""<p>版本相同但 checksum 不一致冲突的migration列表</p>
+        :rtype: list of MigrationConflict
+        """
+        return self._Conflicts
+
+    @Conflicts.setter
+    def Conflicts(self, Conflicts):
+        self._Conflicts = Conflicts
+
+    @property
+    def Executable(self):
+        r"""<p>是否可直接执行；当前仅表示没有 checksum 冲突</p>
+        :rtype: bool
+        """
+        return self._Executable
+
+    @Executable.setter
+    def Executable(self, Executable):
+        self._Executable = Executable
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Pending") is not None:
+            self._Pending = []
+            for item in params.get("Pending"):
+                obj = MigrationPlanItem()
+                obj._deserialize(item)
+                self._Pending.append(obj)
+        if params.get("Applied") is not None:
+            self._Applied = []
+            for item in params.get("Applied"):
+                obj = MigrationPlanItem()
+                obj._deserialize(item)
+                self._Applied.append(obj)
+        if params.get("Conflicts") is not None:
+            self._Conflicts = []
+            for item in params.get("Conflicts"):
+                obj = MigrationConflict()
+                obj._deserialize(item)
+                self._Conflicts.append(obj)
+        self._Executable = params.get("Executable")
+        self._RequestId = params.get("RequestId")
+
+
 class Provider(AbstractModel):
     r"""身份源配置信息。描述云开发环境下用户登录身份源的完整配置，定义了用户通过何种方式进入系统并完成身份认证。支持多种类型：包括标准协议身份源（OAuth 2.0、OIDC、SAML 2.0）、内置身份源（邮箱登录、自定义登录）以及通过插件机制扩展的身份源（如 CAS）。每个身份源包含认证配置、启用状态、用户自动注册策略、信息透传模式等核心属性，是登录认证流程的核心数据结构。
 
@@ -18014,6 +19334,150 @@ class ProviderResponseParametersMap(AbstractModel):
         
 
 
+class PushPGUserMigrationsRequest(AbstractModel):
+    r"""PushPGUserMigrations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>云开发环境ID</p>
+        :type EnvId: str
+        :param _Migrations: <p>结构化 SQL migration 列表；每项包含 Query SQL 内容</p>
+        :type Migrations: list of MigrationInput
+        :param _LockTimeoutMs: <p>等待获取数据库锁的最长时间</p><p>单位：毫秒</p><p>默认值：5000</p>
+        :type LockTimeoutMs: int
+        :param _StatementTimeoutMs: <p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
+        :type StatementTimeoutMs: int
+        :param _Source: <p>标记请求来源</p>
+        :type Source: str
+        """
+        self._EnvId = None
+        self._Migrations = None
+        self._LockTimeoutMs = None
+        self._StatementTimeoutMs = None
+        self._Source = None
+
+    @property
+    def EnvId(self):
+        r"""<p>云开发环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Migrations(self):
+        r"""<p>结构化 SQL migration 列表；每项包含 Query SQL 内容</p>
+        :rtype: list of MigrationInput
+        """
+        return self._Migrations
+
+    @Migrations.setter
+    def Migrations(self, Migrations):
+        self._Migrations = Migrations
+
+    @property
+    def LockTimeoutMs(self):
+        r"""<p>等待获取数据库锁的最长时间</p><p>单位：毫秒</p><p>默认值：5000</p>
+        :rtype: int
+        """
+        return self._LockTimeoutMs
+
+    @LockTimeoutMs.setter
+    def LockTimeoutMs(self, LockTimeoutMs):
+        self._LockTimeoutMs = LockTimeoutMs
+
+    @property
+    def StatementTimeoutMs(self):
+        r"""<p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
+        :rtype: int
+        """
+        return self._StatementTimeoutMs
+
+    @StatementTimeoutMs.setter
+    def StatementTimeoutMs(self, StatementTimeoutMs):
+        self._StatementTimeoutMs = StatementTimeoutMs
+
+    @property
+    def Source(self):
+        r"""<p>标记请求来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        if params.get("Migrations") is not None:
+            self._Migrations = []
+            for item in params.get("Migrations"):
+                obj = MigrationInput()
+                obj._deserialize(item)
+                self._Migrations.append(obj)
+        self._LockTimeoutMs = params.get("LockTimeoutMs")
+        self._StatementTimeoutMs = params.get("StatementTimeoutMs")
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PushPGUserMigrationsResponse(AbstractModel):
+    r"""PushPGUserMigrations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p><p>可通过DescribeTaskResult 接口查询进度</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p><p>可通过DescribeTaskResult 接口查询进度</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ReleaseEnvRequest(AbstractModel):
     r"""ReleaseEnv请求参数结构体
 
@@ -18186,6 +19650,422 @@ class RenewEnvResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RepairPGUserMigrationHistoryRequest(AbstractModel):
+    r"""RepairPGUserMigrationHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>云开发环境ID</p>
+        :type EnvId: str
+        :param _MigrationVersion: <p>migration版本</p><p>参数格式：14位时间格式</p><p>入参限制：纯数字</p>
+        :type MigrationVersion: str
+        :param _Name: <p>migration 版本名</p><p>入参限制：限制小写字母和下划线</p>
+        :type Name: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>applied： 已应用</li><li>reverted： 表示删除 history 记录</li></ul>
+        :type Status: str
+        :param _Reason: <p>修复原因</p>
+        :type Reason: str
+        :param _Query: <p>applied的时候填写，记录应用的sql语句</p>
+        :type Query: str
+        """
+        self._EnvId = None
+        self._MigrationVersion = None
+        self._Name = None
+        self._Status = None
+        self._Reason = None
+        self._Query = None
+
+    @property
+    def EnvId(self):
+        r"""<p>云开发环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def MigrationVersion(self):
+        r"""<p>migration版本</p><p>参数格式：14位时间格式</p><p>入参限制：纯数字</p>
+        :rtype: str
+        """
+        return self._MigrationVersion
+
+    @MigrationVersion.setter
+    def MigrationVersion(self, MigrationVersion):
+        self._MigrationVersion = MigrationVersion
+
+    @property
+    def Name(self):
+        r"""<p>migration 版本名</p><p>入参限制：限制小写字母和下划线</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>applied： 已应用</li><li>reverted： 表示删除 history 记录</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        r"""<p>修复原因</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Query(self):
+        r"""<p>applied的时候填写，记录应用的sql语句</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._MigrationVersion = params.get("MigrationVersion")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        self._Query = params.get("Query")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RepairPGUserMigrationHistoryResponse(AbstractModel):
+    r"""RepairPGUserMigrationHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResourcePermission(AbstractModel):
+    r"""资源权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 资源类型。
+        :type ResourceType: str
+        :param _Resource: 资源标识
+        :type Resource: str
+        :param _Permission: 权限级别。取值：READONLY、PRIVATE、ADMINWRITE、ADMINONLY、CUSTOM。
+        :type Permission: str
+        :param _SecurityRule: 自定义安全规则配置，当 Permission 为 CUSTOM 时返回。
+        :type SecurityRule: str
+        """
+        self._ResourceType = None
+        self._Resource = None
+        self._Permission = None
+        self._SecurityRule = None
+
+    @property
+    def ResourceType(self):
+        r"""资源类型。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Resource(self):
+        r"""资源标识
+        :rtype: str
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def Permission(self):
+        r"""权限级别。取值：READONLY、PRIVATE、ADMINWRITE、ADMINONLY、CUSTOM。
+        :rtype: str
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def SecurityRule(self):
+        r"""自定义安全规则配置，当 Permission 为 CUSTOM 时返回。
+        :rtype: str
+        """
+        return self._SecurityRule
+
+    @SecurityRule.setter
+    def SecurityRule(self, SecurityRule):
+        self._SecurityRule = SecurityRule
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._Resource = params.get("Resource")
+        self._Permission = params.get("Permission")
+        self._SecurityRule = params.get("SecurityRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackPGUserMigrationsRequest(AbstractModel):
+    r"""RollbackPGUserMigrations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>云开发环境ID</p>
+        :type EnvId: str
+        :param _LastN: <p>要回滚的条数</p><p>按照逆序回滚最近N条migration</p>
+        :type LastN: int
+        :param _LockTimeoutMs: <p>等待获取数据库锁的最长时间</p><p>单位：毫秒</p><p>默认值：5000</p>
+        :type LockTimeoutMs: int
+        :param _StatementTimeoutMs: <p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
+        :type StatementTimeoutMs: int
+        :param _Source: <p>标记API调用来源</p>
+        :type Source: str
+        """
+        self._EnvId = None
+        self._LastN = None
+        self._LockTimeoutMs = None
+        self._StatementTimeoutMs = None
+        self._Source = None
+
+    @property
+    def EnvId(self):
+        r"""<p>云开发环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def LastN(self):
+        r"""<p>要回滚的条数</p><p>按照逆序回滚最近N条migration</p>
+        :rtype: int
+        """
+        return self._LastN
+
+    @LastN.setter
+    def LastN(self, LastN):
+        self._LastN = LastN
+
+    @property
+    def LockTimeoutMs(self):
+        r"""<p>等待获取数据库锁的最长时间</p><p>单位：毫秒</p><p>默认值：5000</p>
+        :rtype: int
+        """
+        return self._LockTimeoutMs
+
+    @LockTimeoutMs.setter
+    def LockTimeoutMs(self, LockTimeoutMs):
+        self._LockTimeoutMs = LockTimeoutMs
+
+    @property
+    def StatementTimeoutMs(self):
+        r"""<p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
+        :rtype: int
+        """
+        return self._StatementTimeoutMs
+
+    @StatementTimeoutMs.setter
+    def StatementTimeoutMs(self, StatementTimeoutMs):
+        self._StatementTimeoutMs = StatementTimeoutMs
+
+    @property
+    def Source(self):
+        r"""<p>标记API调用来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._LastN = params.get("LastN")
+        self._LockTimeoutMs = params.get("LockTimeoutMs")
+        self._StatementTimeoutMs = params.get("StatementTimeoutMs")
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackPGUserMigrationsResponse(AbstractModel):
+    r"""RollbackPGUserMigrations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p><p>可通过DescribeTaskResult 接口查询进度</p>
+        :type TaskId: str
+        :param _RolledBack: <p>已成功回滚并删除 history 的 migration</p>
+        :type RolledBack: list of MigrationSummary
+        :param _SkippedRollbackSql: <p>未提供 Rollback SQL、视为成功并删除 history 的 migration</p>
+        :type SkippedRollbackSql: list of MigrationSummary
+        :param _Failed: <p>执行 Rollback SQL 失败的 migration，可为空</p>
+        :type Failed: :class:`tencentcloud.tcb.v20180608.models.MigrationSummary`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RolledBack = None
+        self._SkippedRollbackSql = None
+        self._Failed = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p><p>可通过DescribeTaskResult 接口查询进度</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RolledBack(self):
+        r"""<p>已成功回滚并删除 history 的 migration</p>
+        :rtype: list of MigrationSummary
+        """
+        return self._RolledBack
+
+    @RolledBack.setter
+    def RolledBack(self, RolledBack):
+        self._RolledBack = RolledBack
+
+    @property
+    def SkippedRollbackSql(self):
+        r"""<p>未提供 Rollback SQL、视为成功并删除 history 的 migration</p>
+        :rtype: list of MigrationSummary
+        """
+        return self._SkippedRollbackSql
+
+    @SkippedRollbackSql.setter
+    def SkippedRollbackSql(self, SkippedRollbackSql):
+        self._SkippedRollbackSql = SkippedRollbackSql
+
+    @property
+    def Failed(self):
+        r"""<p>执行 Rollback SQL 失败的 migration，可为空</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MigrationSummary`
+        """
+        return self._Failed
+
+    @Failed.setter
+    def Failed(self, Failed):
+        self._Failed = Failed
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("RolledBack") is not None:
+            self._RolledBack = []
+            for item in params.get("RolledBack"):
+                obj = MigrationSummary()
+                obj._deserialize(item)
+                self._RolledBack.append(obj)
+        if params.get("SkippedRollbackSql") is not None:
+            self._SkippedRollbackSql = []
+            for item in params.get("SkippedRollbackSql"):
+                obj = MigrationSummary()
+                obj._deserialize(item)
+                self._SkippedRollbackSql.append(obj)
+        if params.get("Failed") is not None:
+            self._Failed = MigrationSummary()
+            self._Failed._deserialize(params.get("Failed"))
         self._RequestId = params.get("RequestId")
 
 

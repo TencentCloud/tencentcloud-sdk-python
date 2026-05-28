@@ -25,31 +25,31 @@ class AbuseReport(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeliverTime: 发送时间
+        :param _DeliverTime: <p>发送时间</p>
         :type DeliverTime: str
-        :param _OriginalMailFrom: 发信地址
+        :param _OriginalMailFrom: <p>发信地址</p>
         :type OriginalMailFrom: str
-        :param _OriginalRcptTo: 收信地址
+        :param _OriginalRcptTo: <p>收信地址</p>
         :type OriginalRcptTo: str
-        :param _FromDomain: 发信域名
+        :param _FromDomain: <p>发信域名</p>
         :type FromDomain: str
-        :param _ComplainTime: 投诉时间
+        :param _ComplainTime: <p>投诉时间</p>
         :type ComplainTime: str
-        :param _Mta: 收信域名
+        :param _Mta: <p>收信域名</p>
         :type Mta: str
-        :param _SourceIp: 来源ip
+        :param _SourceIp: <p>来源ip</p>
         :type SourceIp: str
-        :param _InsertTime: 数据时间
+        :param _InsertTime: <p>数据时间</p>
         :type InsertTime: str
-        :param _TemplateId: 模板id
+        :param _TemplateId: <p>模板ID</p>
         :type TemplateId: str
-        :param _BulkId: bulkId
+        :param _BulkId: <p>bulkId</p>
         :type BulkId: str
-        :param _MessageId: 邮件Message-Id
+        :param _MessageId: <p>邮件Message-Id</p>
         :type MessageId: str
-        :param _AbuseTime: 投诉时间
+        :param _AbuseTime: <p>投诉时间</p>
         :type AbuseTime: str
-        :param _Subject: 邮件主题
+        :param _Subject: <p>邮件主题</p>
         :type Subject: str
         """
         self._DeliverTime = None
@@ -68,7 +68,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def DeliverTime(self):
-        r"""发送时间
+        r"""<p>发送时间</p>
         :rtype: str
         """
         return self._DeliverTime
@@ -79,7 +79,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def OriginalMailFrom(self):
-        r"""发信地址
+        r"""<p>发信地址</p>
         :rtype: str
         """
         return self._OriginalMailFrom
@@ -90,7 +90,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def OriginalRcptTo(self):
-        r"""收信地址
+        r"""<p>收信地址</p>
         :rtype: str
         """
         return self._OriginalRcptTo
@@ -101,7 +101,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def FromDomain(self):
-        r"""发信域名
+        r"""<p>发信域名</p>
         :rtype: str
         """
         return self._FromDomain
@@ -112,7 +112,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def ComplainTime(self):
-        r"""投诉时间
+        r"""<p>投诉时间</p>
         :rtype: str
         """
         return self._ComplainTime
@@ -123,7 +123,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def Mta(self):
-        r"""收信域名
+        r"""<p>收信域名</p>
         :rtype: str
         """
         return self._Mta
@@ -134,7 +134,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def SourceIp(self):
-        r"""来源ip
+        r"""<p>来源ip</p>
         :rtype: str
         """
         return self._SourceIp
@@ -145,7 +145,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def InsertTime(self):
-        r"""数据时间
+        r"""<p>数据时间</p>
         :rtype: str
         """
         return self._InsertTime
@@ -156,7 +156,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模板id
+        r"""<p>模板ID</p>
         :rtype: str
         """
         return self._TemplateId
@@ -167,7 +167,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def BulkId(self):
-        r"""bulkId
+        r"""<p>bulkId</p>
         :rtype: str
         """
         return self._BulkId
@@ -178,7 +178,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def MessageId(self):
-        r"""邮件Message-Id
+        r"""<p>邮件Message-Id</p>
         :rtype: str
         """
         return self._MessageId
@@ -189,7 +189,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def AbuseTime(self):
-        r"""投诉时间
+        r"""<p>投诉时间</p>
         :rtype: str
         """
         return self._AbuseTime
@@ -200,7 +200,7 @@ class AbuseReport(AbstractModel):
 
     @property
     def Subject(self):
-        r"""邮件主题
+        r"""<p>邮件主题</p>
         :rtype: str
         """
         return self._Subject

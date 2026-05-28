@@ -5173,17 +5173,17 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: <p>集群 ID</p>
         :type ClusterId: str
-        :param _MachineNames: 节点名列表
+        :param _MachineNames: <p>节点名列表</p>
         :type MachineNames: list of str
-        :param _DisplayName: machine的display name
+        :param _DisplayName: <p>machine的display name</p>
         :type DisplayName: str
-        :param _SystemDisk: 系统盘的信息
+        :param _SystemDisk: <p>系统盘的信息</p>
         :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
-        :param _SecurityGroupIDs: 安全组列表
+        :param _SecurityGroupIDs: <p>安全组列表</p>
         :type SecurityGroupIDs: list of str
-        :param _InstanceChargePrepaid: 节点预付费信息
+        :param _InstanceChargePrepaid: <p>节点预付费信息</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         self._ClusterId = None
@@ -5195,7 +5195,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群 ID
+        r"""<p>集群 ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -5206,7 +5206,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def MachineNames(self):
-        r"""节点名列表
+        r"""<p>节点名列表</p>
         :rtype: list of str
         """
         return self._MachineNames
@@ -5217,7 +5217,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        r"""machine的display name
+        r"""<p>machine的display name</p>
         :rtype: str
         """
         return self._DisplayName
@@ -5228,7 +5228,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def SystemDisk(self):
-        r"""系统盘的信息
+        r"""<p>系统盘的信息</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
         """
         return self._SystemDisk
@@ -5239,7 +5239,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def SecurityGroupIDs(self):
-        r"""安全组列表
+        r"""<p>安全组列表</p>
         :rtype: list of str
         """
         return self._SecurityGroupIDs
@@ -5250,7 +5250,7 @@ class ModifyClusterMachineRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        r"""节点预付费信息
+        r"""<p>节点预付费信息</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid

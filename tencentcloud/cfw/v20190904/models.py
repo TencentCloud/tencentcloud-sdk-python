@@ -1915,27 +1915,30 @@ class CcnAssociatedInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InsType: 实例类型
+        :param _InsType: <p>实例类型</p>
         :type InsType: str
-        :param _CidrLst: 实例的网段列表
+        :param _CidrLst: <p>实例的网段列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CidrLst: list of str
-        :param _InstanceRegion: 实例所属地域
+        :param _InstanceRegion: <p>实例所属地域</p>
         :type InstanceRegion: str
+        :param _IsCrossInstance: <p>是否跨账号</p>
+        :type IsCrossInstance: int
         """
         self._InstanceId = None
         self._InstanceName = None
         self._InsType = None
         self._CidrLst = None
         self._InstanceRegion = None
+        self._IsCrossInstance = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1946,7 +1949,7 @@ class CcnAssociatedInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -1957,7 +1960,7 @@ class CcnAssociatedInstance(AbstractModel):
 
     @property
     def InsType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: str
         """
         return self._InsType
@@ -1968,7 +1971,7 @@ class CcnAssociatedInstance(AbstractModel):
 
     @property
     def CidrLst(self):
-        r"""实例的网段列表
+        r"""<p>实例的网段列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1980,7 +1983,7 @@ class CcnAssociatedInstance(AbstractModel):
 
     @property
     def InstanceRegion(self):
-        r"""实例所属地域
+        r"""<p>实例所属地域</p>
         :rtype: str
         """
         return self._InstanceRegion
@@ -1989,6 +1992,17 @@ class CcnAssociatedInstance(AbstractModel):
     def InstanceRegion(self, InstanceRegion):
         self._InstanceRegion = InstanceRegion
 
+    @property
+    def IsCrossInstance(self):
+        r"""<p>是否跨账号</p>
+        :rtype: int
+        """
+        return self._IsCrossInstance
+
+    @IsCrossInstance.setter
+    def IsCrossInstance(self, IsCrossInstance):
+        self._IsCrossInstance = IsCrossInstance
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1996,6 +2010,7 @@ class CcnAssociatedInstance(AbstractModel):
         self._InsType = params.get("InsType")
         self._CidrLst = params.get("CidrLst")
         self._InstanceRegion = params.get("InstanceRegion")
+        self._IsCrossInstance = params.get("IsCrossInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25463,15 +25478,11 @@ class RegionFwStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _Status: 引流网络部署状态
-1. "NotDeployed"  防火墙集群未部署
-2. "Deployed"        防火墙集群已部署，但未创建引流网络
-3. "Auto"                防火墙集群已部署，并自动选择网段创建了引流网络
-4. "Custom"            防火墙集群已部署，并根据用户自定义网段创建了引流网络
+        :param _Status: <p>引流网络部署状态</p><ol><li>&quot;NotDeployed&quot;  防火墙集群未部署</li><li>&quot;Deployed&quot;        防火墙集群已部署，但未创建引流网络</li><li>&quot;DeployedCustomOnly&quot;  防火墙集群已部署，但内网段被全覆盖，无法自动选择引流网络，需自定义设置引流网段</li><li>&quot;Auto&quot;                防火墙集群已部署，并自动选择网段创建了引流网络</li><li>&quot;Custom&quot;            防火墙集群已部署，并根据用户自定义网段创建了引流网络</li></ol>
         :type Status: str
-        :param _Cidr: 引流网络的cidr，如果没有部署引流网络则为空
+        :param _Cidr: <p>引流网络的cidr，如果没有部署引流网络则为空</p>
         :type Cidr: str
         """
         self._Region = None
@@ -25480,7 +25491,7 @@ class RegionFwStatus(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -25491,11 +25502,7 @@ class RegionFwStatus(AbstractModel):
 
     @property
     def Status(self):
-        r"""引流网络部署状态
-1. "NotDeployed"  防火墙集群未部署
-2. "Deployed"        防火墙集群已部署，但未创建引流网络
-3. "Auto"                防火墙集群已部署，并自动选择网段创建了引流网络
-4. "Custom"            防火墙集群已部署，并根据用户自定义网段创建了引流网络
+        r"""<p>引流网络部署状态</p><ol><li>&quot;NotDeployed&quot;  防火墙集群未部署</li><li>&quot;Deployed&quot;        防火墙集群已部署，但未创建引流网络</li><li>&quot;DeployedCustomOnly&quot;  防火墙集群已部署，但内网段被全覆盖，无法自动选择引流网络，需自定义设置引流网段</li><li>&quot;Auto&quot;                防火墙集群已部署，并自动选择网段创建了引流网络</li><li>&quot;Custom&quot;            防火墙集群已部署，并根据用户自定义网段创建了引流网络</li></ol>
         :rtype: str
         """
         return self._Status
@@ -25506,7 +25513,7 @@ class RegionFwStatus(AbstractModel):
 
     @property
     def Cidr(self):
-        r"""引流网络的cidr，如果没有部署引流网络则为空
+        r"""<p>引流网络的cidr，如果没有部署引流网络则为空</p>
         :rtype: str
         """
         return self._Cidr

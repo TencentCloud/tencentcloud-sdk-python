@@ -34521,15 +34521,18 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: <p>结束日期，需大于等于起始日期。使用 <a href="https://cloud.tencent.com/document/product/266/11732#52">ISO 日期格式</a>。</p>
         :type EndTime: str
-        :param _AigcType: <p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li></ul>
+        :param _AigcType: <p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li></ul>
         :type AigcType: str
         :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
+        :param _APIKey: <p>API Key</p>
+        :type APIKey: str
         """
         self._StartTime = None
         self._EndTime = None
         self._AigcType = None
         self._SubAppId = None
+        self._APIKey = None
 
     @property
     def StartTime(self):
@@ -34555,7 +34558,7 @@ class DescribeAigcUsageDataRequest(AbstractModel):
 
     @property
     def AigcType(self):
-        r"""<p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li></ul>
+        r"""<p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li></ul>
         :rtype: str
         """
         return self._AigcType
@@ -34575,12 +34578,24 @@ class DescribeAigcUsageDataRequest(AbstractModel):
     def SubAppId(self, SubAppId):
         self._SubAppId = SubAppId
 
+    @property
+    def APIKey(self):
+        r"""<p>API Key</p>
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._AigcType = params.get("AigcType")
         self._SubAppId = params.get("SubAppId")
+        self._APIKey = params.get("APIKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

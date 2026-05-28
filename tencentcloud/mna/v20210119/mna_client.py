@@ -1039,7 +1039,7 @@ class MnaClient(AbstractClient):
 
 
     def ReportOrder(self, request):
-        r"""用户上报自定义的订单信息，多网聚合加速服务将相关信息进行保存
+        r"""用户上报自定义的订单信息，多网聚合加速（腾讯云聚通）服务将相关信息进行保存
 
         :param request: Request instance for ReportOrder.
         :type request: :class:`tencentcloud.mna.v20210119.models.ReportOrderRequest`

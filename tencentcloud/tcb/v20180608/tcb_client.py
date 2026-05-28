@@ -1223,6 +1223,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePGUserMigration(self, request):
+        r"""本接口（DescribePGUserMigration）用于查询目标环境指定 migration 详情。
+
+        :param request: Request instance for DescribePGUserMigration.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePGUserMigrationRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribePGUserMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePGUserMigration", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePGUserMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeQuotaData(self, request):
         r"""查询指定指标的配额使用量
 
@@ -1237,6 +1260,31 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeQuotaData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeQuotaDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourcePermission(self, request):
+        r"""查询资源基础权限。
+
+        查询云函数、云存储和数据库表的基础权限配置。支持单个资源查询和批量查询。
+
+        :param request: Request instance for DescribeResourcePermission.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeResourcePermissionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeResourcePermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePermissionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1559,6 +1607,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListPGUserMigrations(self, request):
+        r"""本接口（ListPGUserMigrations）用于查询目标环境已应用的用户 migration 列表。
+
+        :param request: Request instance for ListPGUserMigrations.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ListPGUserMigrationsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ListPGUserMigrationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPGUserMigrations", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPGUserMigrationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListTables(self, request):
         r"""本接口(ListTables)用于查询文档型数据库所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等。
 
@@ -1774,6 +1845,31 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyResourcePermission(self, request):
+        r"""修改资源基础权限。
+
+        修改云函数、云存储和数据库表的基础权限配置。支持预定义权限级别和自定义安全规则两种方式配置资源访问权限。
+
+        :param request: Request instance for ModifyResourcePermission.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyResourcePermissionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyResourcePermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourcePermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourcePermissionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySafeRule(self, request):
         r"""设置数据库安全规则。
         安全规则，用于控制C端用户的访问权限。详见 [安全规则介绍 ](https://cloud.tencent.com/document/product/876/123478)。
@@ -1848,6 +1944,52 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PreviewPGUserMigrations(self, request):
+        r"""本接口（PreviewPGUserMigrations）用于预览SQL migrations 在远端的执行计划，不实际执行SQL。
+
+        :param request: Request instance for PreviewPGUserMigrations.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.PreviewPGUserMigrationsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.PreviewPGUserMigrationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PreviewPGUserMigrations", params, headers=headers)
+            response = json.loads(body)
+            model = models.PreviewPGUserMigrationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PushPGUserMigrations(self, request):
+        r"""本接口（PushPGUserMigrations）用于批量应用Migrations。
+
+        :param request: Request instance for PushPGUserMigrations.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.PushPGUserMigrationsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.PushPGUserMigrationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PushPGUserMigrations", params, headers=headers)
+            response = json.loads(body)
+            model = models.PushPGUserMigrationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReleaseEnv(self, request):
         r"""从环境池里立即取出1个环境
 
@@ -1887,6 +2029,52 @@ class TcbClient(AbstractClient):
             body = self.call("RenewEnv", params, headers=headers)
             response = json.loads(body)
             model = models.RenewEnvResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RepairPGUserMigrationHistory(self, request):
+        r"""本接口（RepairPGUserMigrationHistory）用于受控修复 history，只修改 user_schema_migrations，不执行 SQL。
+
+        :param request: Request instance for RepairPGUserMigrationHistory.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.RepairPGUserMigrationHistoryRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.RepairPGUserMigrationHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RepairPGUserMigrationHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.RepairPGUserMigrationHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackPGUserMigrations(self, request):
+        r"""本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
+
+        :param request: Request instance for RollbackPGUserMigrations.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.RollbackPGUserMigrationsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.RollbackPGUserMigrationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackPGUserMigrations", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackPGUserMigrationsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
