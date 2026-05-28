@@ -164,6 +164,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddServerlessRoInstances(self, request):
+        r"""添加serverless集群只读实例
+
+        :param request: Request instance for AddServerlessRoInstances.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.AddServerlessRoInstancesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AddServerlessRoInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddServerlessRoInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddServerlessRoInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AssociateSecurityGroups(self, request):
         r"""本接口（AssociateSecurityGroups）用于安全组批量绑定云资源。
 
@@ -2731,6 +2754,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeRollbackTimeRange", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRollbackTimeRangeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSQLExecutionPlan(self, request):
+        r"""本接口(DescribeSQLExecutionPlan)用于查询执行计划详情
+
+        :param request: Request instance for DescribeSQLExecutionPlan.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSQLExecutionPlanRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSQLExecutionPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSQLExecutionPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSQLExecutionPlanResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -20023,6 +20023,8 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
         :type NodeDistribution: :class:`tencentcloud.cdb.v20170320.models.NodeDistribution`
         :param _ClusterTopology: <p>云盘版的节点拓扑配置。Nodeld 信息可通过 <a href="https://cloud.tencent.com/document/api/236/105116">DescribeClusterInfo</a> 接口获取。</p>
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
+        :param _DstFourthZone: <p>目标实例备机3可用区 ID。可使用 <a href="https://cloud.tencent.com/document/product/236/80281">DescribeCdbZoneConfig</a> 获取可用区 ID。</p>
+        :type DstFourthZone: int
         """
         self._InstanceId = None
         self._DstCpu = None
@@ -20037,6 +20039,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
         self._DstZoneId = None
         self._NodeDistribution = None
         self._ClusterTopology = None
+        self._DstFourthZone = None
 
     @property
     def InstanceId(self):
@@ -20181,6 +20184,17 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
     def ClusterTopology(self, ClusterTopology):
         self._ClusterTopology = ClusterTopology
 
+    @property
+    def DstFourthZone(self):
+        r"""<p>目标实例备机3可用区 ID。可使用 <a href="https://cloud.tencent.com/document/product/236/80281">DescribeCdbZoneConfig</a> 获取可用区 ID。</p>
+        :rtype: int
+        """
+        return self._DstFourthZone
+
+    @DstFourthZone.setter
+    def DstFourthZone(self, DstFourthZone):
+        self._DstFourthZone = DstFourthZone
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -20200,6 +20214,7 @@ class DescribeInstanceUpgradeTypeRequest(AbstractModel):
         if params.get("ClusterTopology") is not None:
             self._ClusterTopology = ClusterTopology()
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
+        self._DstFourthZone = params.get("DstFourthZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39554,6 +39569,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type CheckFastUpgradeReboot: int
         :param _DataCheckSensitive: <p>数据校验敏感度，非极速变配时使用此参数，敏感度根据当前实例规格计算迁移过程中的数据对比使用的cpu资源<br>对应的选项为: &quot;high&quot;、&quot;normal&quot;、&quot;low&quot;，默认为空<br>参数详解，：<br>&quot;high&quot;: 对应控制台中的高，数据库负载过高不建议使用<br>&quot;normal&quot;：对应控制台中的标准<br>&quot;low&quot;：对应控制台中的低</p>
         :type DataCheckSensitive: str
+        :param _FourthZone: <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
+        :type FourthZone: str
         """
         self._InstanceId = None
         self._Memory = None
@@ -39575,6 +39592,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._ClusterTopology = None
         self._CheckFastUpgradeReboot = None
         self._DataCheckSensitive = None
+        self._FourthZone = None
 
     @property
     def InstanceId(self):
@@ -39796,6 +39814,17 @@ class UpgradeDBInstanceRequest(AbstractModel):
     def DataCheckSensitive(self, DataCheckSensitive):
         self._DataCheckSensitive = DataCheckSensitive
 
+    @property
+    def FourthZone(self):
+        r"""<p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
+        :rtype: str
+        """
+        return self._FourthZone
+
+    @FourthZone.setter
+    def FourthZone(self, FourthZone):
+        self._FourthZone = FourthZone
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -39820,6 +39849,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         self._CheckFastUpgradeReboot = params.get("CheckFastUpgradeReboot")
         self._DataCheckSensitive = params.get("DataCheckSensitive")
+        self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

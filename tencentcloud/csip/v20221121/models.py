@@ -12977,46 +12977,50 @@ class CosAssetInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: appid
+        :param _AppId: <p>appid</p>
         :type AppId: int
-        :param _BucketName: cos桶名
+        :param _BucketName: <p>cos桶名</p>
         :type BucketName: str
-        :param _BucketRegion: cos region名
+        :param _BucketRegion: <p>cos region名</p>
         :type BucketRegion: str
-        :param _BucketRegionCode: 地域码值
+        :param _BucketRegionCode: <p>地域码值</p>
         :type BucketRegionCode: str
-        :param _BucketMarker: cos桶备注
+        :param _BucketMarker: <p>cos桶备注</p>
         :type BucketMarker: str
-        :param _BucketOwnerUin: cos桶主账号所属者
+        :param _BucketOwnerUin: <p>cos桶主账号所属者</p>
         :type BucketOwnerUin: str
-        :param _BucketOwnerNickName: cos主账号所属者昵称
+        :param _BucketOwnerNickName: <p>cos主账号所属者昵称</p>
         :type BucketOwnerNickName: str
-        :param _BucketTagInfo: cos桶标签详情
+        :param _BucketTagInfo: <p>cos桶标签详情</p>
         :type BucketTagInfo: str
-        :param _BucketSecuritySuggestion: 安全建议
-1 暂无异常
-2 建议加固
-3 立即处理
+        :param _BucketSecuritySuggestion: <p>安全建议<br>1 暂无异常<br>2 建议加固<br>3 立即处理</p>
         :type BucketSecuritySuggestion: int
-        :param _BucketAlarmList: 告警列表
+        :param _BucketAlarmList: <p>告警列表</p>
         :type BucketAlarmList: list of CosRiskAlarmInfo
-        :param _BucketRiskList: 风险列表
+        :param _BucketRiskList: <p>风险列表</p>
         :type BucketRiskList: list of CosRiskAlarmInfo
-        :param _BucketInvokeSourceIpCount: 调用源ip数
+        :param _BucketInvokeSourceIpCount: <p>调用源ip数</p>
         :type BucketInvokeSourceIpCount: int
-        :param _BucketAccessWay: 访问策略
+        :param _BucketAccessWay: <p>访问策略</p>
         :type BucketAccessWay: :class:`tencentcloud.csip.v20221121.models.CosBucketAccessWay`
-        :param _CreateTime: 创建时间Unix时间单位毫秒
+        :param _CreateTime: <p>创建时间Unix时间单位毫秒</p>
         :type CreateTime: int
-        :param _LastAccessTime: 最后访问时间Unix时间单位毫秒
+        :param _LastAccessTime: <p>最后访问时间Unix时间单位毫秒</p>
         :type LastAccessTime: int
-        :param _BucketId: 存储桶id
+        :param _BucketId: <p>存储桶id</p>
         :type BucketId: int
-        :param _MonitorStatus: 0 关闭
-1 开启
+        :param _MonitorStatus: <p>0 关闭<br>1 开启</p>
         :type MonitorStatus: int
-        :param _DataScanInfo: 数据识别扫描信息
+        :param _DataScanInfo: <p>数据识别扫描信息</p>
         :type DataScanInfo: :class:`tencentcloud.csip.v20221121.models.CosAssetDataScanDetail`
+        :param _BucketAzType: <p>存储桶Az类型</p><p>枚举值：</p><ul><li>MAZ： 多az</li><li>SAZ： 单az</li></ul>
+        :type BucketAzType: str
+        :param _BucketStorageSize: <p>存储桶存储大小</p><p>默认值：0</p>
+        :type BucketStorageSize: int
+        :param _BucketObjectCount: <p>存储桶对象个数</p><p>默认值：0</p>
+        :type BucketObjectCount: int
+        :param _IdentifySampleRate: <p>存储桶敏感识别采样率</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :type IdentifySampleRate: float
         """
         self._AppId = None
         self._BucketName = None
@@ -13036,10 +13040,14 @@ class CosAssetInfo(AbstractModel):
         self._BucketId = None
         self._MonitorStatus = None
         self._DataScanInfo = None
+        self._BucketAzType = None
+        self._BucketStorageSize = None
+        self._BucketObjectCount = None
+        self._IdentifySampleRate = None
 
     @property
     def AppId(self):
-        r"""appid
+        r"""<p>appid</p>
         :rtype: int
         """
         return self._AppId
@@ -13050,7 +13058,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketName(self):
-        r"""cos桶名
+        r"""<p>cos桶名</p>
         :rtype: str
         """
         return self._BucketName
@@ -13061,7 +13069,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketRegion(self):
-        r"""cos region名
+        r"""<p>cos region名</p>
         :rtype: str
         """
         return self._BucketRegion
@@ -13072,7 +13080,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketRegionCode(self):
-        r"""地域码值
+        r"""<p>地域码值</p>
         :rtype: str
         """
         return self._BucketRegionCode
@@ -13083,7 +13091,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketMarker(self):
-        r"""cos桶备注
+        r"""<p>cos桶备注</p>
         :rtype: str
         """
         return self._BucketMarker
@@ -13094,7 +13102,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketOwnerUin(self):
-        r"""cos桶主账号所属者
+        r"""<p>cos桶主账号所属者</p>
         :rtype: str
         """
         return self._BucketOwnerUin
@@ -13105,7 +13113,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketOwnerNickName(self):
-        r"""cos主账号所属者昵称
+        r"""<p>cos主账号所属者昵称</p>
         :rtype: str
         """
         return self._BucketOwnerNickName
@@ -13116,7 +13124,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketTagInfo(self):
-        r"""cos桶标签详情
+        r"""<p>cos桶标签详情</p>
         :rtype: str
         """
         return self._BucketTagInfo
@@ -13127,10 +13135,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketSecuritySuggestion(self):
-        r"""安全建议
-1 暂无异常
-2 建议加固
-3 立即处理
+        r"""<p>安全建议<br>1 暂无异常<br>2 建议加固<br>3 立即处理</p>
         :rtype: int
         """
         return self._BucketSecuritySuggestion
@@ -13141,7 +13146,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketAlarmList(self):
-        r"""告警列表
+        r"""<p>告警列表</p>
         :rtype: list of CosRiskAlarmInfo
         """
         return self._BucketAlarmList
@@ -13152,7 +13157,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketRiskList(self):
-        r"""风险列表
+        r"""<p>风险列表</p>
         :rtype: list of CosRiskAlarmInfo
         """
         return self._BucketRiskList
@@ -13163,7 +13168,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketInvokeSourceIpCount(self):
-        r"""调用源ip数
+        r"""<p>调用源ip数</p>
         :rtype: int
         """
         return self._BucketInvokeSourceIpCount
@@ -13174,7 +13179,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketAccessWay(self):
-        r"""访问策略
+        r"""<p>访问策略</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.CosBucketAccessWay`
         """
         return self._BucketAccessWay
@@ -13185,7 +13190,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间Unix时间单位毫秒
+        r"""<p>创建时间Unix时间单位毫秒</p>
         :rtype: int
         """
         return self._CreateTime
@@ -13196,7 +13201,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def LastAccessTime(self):
-        r"""最后访问时间Unix时间单位毫秒
+        r"""<p>最后访问时间Unix时间单位毫秒</p>
         :rtype: int
         """
         return self._LastAccessTime
@@ -13207,7 +13212,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def BucketId(self):
-        r"""存储桶id
+        r"""<p>存储桶id</p>
         :rtype: int
         """
         return self._BucketId
@@ -13218,8 +13223,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def MonitorStatus(self):
-        r"""0 关闭
-1 开启
+        r"""<p>0 关闭<br>1 开启</p>
         :rtype: int
         """
         return self._MonitorStatus
@@ -13230,7 +13234,7 @@ class CosAssetInfo(AbstractModel):
 
     @property
     def DataScanInfo(self):
-        r"""数据识别扫描信息
+        r"""<p>数据识别扫描信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.CosAssetDataScanDetail`
         """
         return self._DataScanInfo
@@ -13238,6 +13242,50 @@ class CosAssetInfo(AbstractModel):
     @DataScanInfo.setter
     def DataScanInfo(self, DataScanInfo):
         self._DataScanInfo = DataScanInfo
+
+    @property
+    def BucketAzType(self):
+        r"""<p>存储桶Az类型</p><p>枚举值：</p><ul><li>MAZ： 多az</li><li>SAZ： 单az</li></ul>
+        :rtype: str
+        """
+        return self._BucketAzType
+
+    @BucketAzType.setter
+    def BucketAzType(self, BucketAzType):
+        self._BucketAzType = BucketAzType
+
+    @property
+    def BucketStorageSize(self):
+        r"""<p>存储桶存储大小</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._BucketStorageSize
+
+    @BucketStorageSize.setter
+    def BucketStorageSize(self, BucketStorageSize):
+        self._BucketStorageSize = BucketStorageSize
+
+    @property
+    def BucketObjectCount(self):
+        r"""<p>存储桶对象个数</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._BucketObjectCount
+
+    @BucketObjectCount.setter
+    def BucketObjectCount(self, BucketObjectCount):
+        self._BucketObjectCount = BucketObjectCount
+
+    @property
+    def IdentifySampleRate(self):
+        r"""<p>存储桶敏感识别采样率</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :rtype: float
+        """
+        return self._IdentifySampleRate
+
+    @IdentifySampleRate.setter
+    def IdentifySampleRate(self, IdentifySampleRate):
+        self._IdentifySampleRate = IdentifySampleRate
 
 
     def _deserialize(self, params):
@@ -13273,6 +13321,10 @@ class CosAssetInfo(AbstractModel):
         if params.get("DataScanInfo") is not None:
             self._DataScanInfo = CosAssetDataScanDetail()
             self._DataScanInfo._deserialize(params.get("DataScanInfo"))
+        self._BucketAzType = params.get("BucketAzType")
+        self._BucketStorageSize = params.get("BucketStorageSize")
+        self._BucketObjectCount = params.get("BucketObjectCount")
+        self._IdentifySampleRate = params.get("IdentifySampleRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13356,52 +13408,58 @@ class CosAuditPayInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: APPID
+        :param _AppId: <p>APPID</p>
         :type AppId: int
-        :param _OrderStatus: 订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期
+        :param _OrderStatus: <p>订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期</p>
         :type OrderStatus: int
-        :param _BucketNum: 已购对象存储数量
+        :param _BucketNum: <p>已购对象存储数量</p>
         :type BucketNum: int
-        :param _PayMode: 支付模式，0-后付费 1-预付费
+        :param _PayMode: <p>支付模式，0-后付费 1-预付费</p>
         :type PayMode: int
-        :param _IsSelfBuy: 是否单独购买，1-单独购买，2-被其它账号共享
+        :param _IsSelfBuy: <p>是否单独购买，1-单独购买，2-被其它账号共享</p>
         :type IsSelfBuy: int
-        :param _BeginTime: 订单开始时间
+        :param _BeginTime: <p>订单开始时间</p>
         :type BeginTime: str
-        :param _EndTime: 订单到期时间
+        :param _EndTime: <p>订单到期时间</p>
         :type EndTime: str
-        :param _AutoRenew: 0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费
+        :param _AutoRenew: <p>0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费</p>
         :type AutoRenew: int
-        :param _TimeSpan: 订单时长
+        :param _TimeSpan: <p>订单时长</p>
         :type TimeSpan: int
-        :param _TimeUnit: 时长单位
+        :param _TimeUnit: <p>时长单位</p>
         :type TimeUnit: str
-        :param _ResourceId: 资源id 
+        :param _ResourceId: <p>资源id</p>
         :type ResourceId: str
-        :param _BetaEndTime: 公测结束时间
+        :param _BetaEndTime: <p>公测结束时间</p>
         :type BetaEndTime: str
-        :param _TimeNow: 系统当前时间
+        :param _TimeNow: <p>系统当前时间</p>
         :type TimeNow: str
-        :param _IsShareToOther: 是否分享给其它账号，1-是，2-否
+        :param _IsShareToOther: <p>是否分享给其它账号，1-是，2-否</p>
         :type IsShareToOther: int
-        :param _Uin: uin
+        :param _Uin: <p>uin</p>
         :type Uin: str
-        :param _NickName: 昵称
+        :param _NickName: <p>昵称</p>
         :type NickName: str
-        :param _BindBucket: 共享的bucketIdSet 
+        :param _BindBucket: <p>共享的bucketIdSet</p>
         :type BindBucket: list of CosBucketId
-        :param _SharedAppIdSet: 共享的appid
+        :param _SharedAppIdSet: <p>共享的appid</p>
         :type SharedAppIdSet: list of int non-negative
-        :param _PostPayStatus: 是否已经开启后付费
+        :param _PostPayStatus: <p>是否已经开启后付费</p>
         :type PostPayStatus: int
-        :param _IsTestUser: 0：未做过试用期试用   1 ：做过试用期试用
+        :param _IsTestUser: <p>0：未做过试用期试用   1 ：做过试用期试用</p>
         :type IsTestUser: int
-        :param _AvailableBucketNum: 剩余可用数
+        :param _AvailableBucketNum: <p>剩余可用数</p>
         :type AvailableBucketNum: int
-        :param _MonitorBucketNum: 已开启的监测存储桶数
+        :param _MonitorBucketNum: <p>已开启的监测存储桶数</p>
         :type MonitorBucketNum: int
-        :param _TotalBucketNum: 总的存储桶数
+        :param _TotalBucketNum: <p>总的存储桶数</p>
         :type TotalBucketNum: int
+        :param _PostProductStatusList: <p>后付费产品开关状态</p>
+        :type PostProductStatusList: list of int non-negative
+        :param _PostProductBuyStatusList: <p>后付费产品购买状态</p>
+        :type PostProductBuyStatusList: list of int non-negative
+        :param _NewPostPayResourceId: <p>新后付费资源id</p>
+        :type NewPostPayResourceId: str
         """
         self._AppId = None
         self._OrderStatus = None
@@ -13426,10 +13484,13 @@ class CosAuditPayInfo(AbstractModel):
         self._AvailableBucketNum = None
         self._MonitorBucketNum = None
         self._TotalBucketNum = None
+        self._PostProductStatusList = None
+        self._PostProductBuyStatusList = None
+        self._NewPostPayResourceId = None
 
     @property
     def AppId(self):
-        r"""APPID
+        r"""<p>APPID</p>
         :rtype: int
         """
         return self._AppId
@@ -13440,7 +13501,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def OrderStatus(self):
-        r"""订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期
+        r"""<p>订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期</p>
         :rtype: int
         """
         return self._OrderStatus
@@ -13451,7 +13512,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def BucketNum(self):
-        r"""已购对象存储数量
+        r"""<p>已购对象存储数量</p>
         :rtype: int
         """
         return self._BucketNum
@@ -13462,7 +13523,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""支付模式，0-后付费 1-预付费
+        r"""<p>支付模式，0-后付费 1-预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -13473,7 +13534,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def IsSelfBuy(self):
-        r"""是否单独购买，1-单独购买，2-被其它账号共享
+        r"""<p>是否单独购买，1-单独购买，2-被其它账号共享</p>
         :rtype: int
         """
         return self._IsSelfBuy
@@ -13484,7 +13545,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""订单开始时间
+        r"""<p>订单开始时间</p>
         :rtype: str
         """
         return self._BeginTime
@@ -13495,7 +13556,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""订单到期时间
+        r"""<p>订单到期时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -13506,7 +13567,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def AutoRenew(self):
-        r"""0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费
+        r"""<p>0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费</p>
         :rtype: int
         """
         return self._AutoRenew
@@ -13517,7 +13578,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""订单时长
+        r"""<p>订单时长</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -13528,7 +13589,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""时长单位
+        r"""<p>时长单位</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -13539,7 +13600,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源id 
+        r"""<p>资源id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -13550,7 +13611,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def BetaEndTime(self):
-        r"""公测结束时间
+        r"""<p>公测结束时间</p>
         :rtype: str
         """
         return self._BetaEndTime
@@ -13561,7 +13622,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def TimeNow(self):
-        r"""系统当前时间
+        r"""<p>系统当前时间</p>
         :rtype: str
         """
         return self._TimeNow
@@ -13572,7 +13633,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def IsShareToOther(self):
-        r"""是否分享给其它账号，1-是，2-否
+        r"""<p>是否分享给其它账号，1-是，2-否</p>
         :rtype: int
         """
         return self._IsShareToOther
@@ -13583,7 +13644,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""uin
+        r"""<p>uin</p>
         :rtype: str
         """
         return self._Uin
@@ -13594,7 +13655,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def NickName(self):
-        r"""昵称
+        r"""<p>昵称</p>
         :rtype: str
         """
         return self._NickName
@@ -13605,7 +13666,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def BindBucket(self):
-        r"""共享的bucketIdSet 
+        r"""<p>共享的bucketIdSet</p>
         :rtype: list of CosBucketId
         """
         return self._BindBucket
@@ -13616,7 +13677,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def SharedAppIdSet(self):
-        r"""共享的appid
+        r"""<p>共享的appid</p>
         :rtype: list of int non-negative
         """
         return self._SharedAppIdSet
@@ -13627,7 +13688,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def PostPayStatus(self):
-        r"""是否已经开启后付费
+        r"""<p>是否已经开启后付费</p>
         :rtype: int
         """
         return self._PostPayStatus
@@ -13638,7 +13699,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def IsTestUser(self):
-        r"""0：未做过试用期试用   1 ：做过试用期试用
+        r"""<p>0：未做过试用期试用   1 ：做过试用期试用</p>
         :rtype: int
         """
         return self._IsTestUser
@@ -13649,7 +13710,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def AvailableBucketNum(self):
-        r"""剩余可用数
+        r"""<p>剩余可用数</p>
         :rtype: int
         """
         return self._AvailableBucketNum
@@ -13660,7 +13721,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def MonitorBucketNum(self):
-        r"""已开启的监测存储桶数
+        r"""<p>已开启的监测存储桶数</p>
         :rtype: int
         """
         return self._MonitorBucketNum
@@ -13671,7 +13732,7 @@ class CosAuditPayInfo(AbstractModel):
 
     @property
     def TotalBucketNum(self):
-        r"""总的存储桶数
+        r"""<p>总的存储桶数</p>
         :rtype: int
         """
         return self._TotalBucketNum
@@ -13679,6 +13740,39 @@ class CosAuditPayInfo(AbstractModel):
     @TotalBucketNum.setter
     def TotalBucketNum(self, TotalBucketNum):
         self._TotalBucketNum = TotalBucketNum
+
+    @property
+    def PostProductStatusList(self):
+        r"""<p>后付费产品开关状态</p>
+        :rtype: list of int non-negative
+        """
+        return self._PostProductStatusList
+
+    @PostProductStatusList.setter
+    def PostProductStatusList(self, PostProductStatusList):
+        self._PostProductStatusList = PostProductStatusList
+
+    @property
+    def PostProductBuyStatusList(self):
+        r"""<p>后付费产品购买状态</p>
+        :rtype: list of int non-negative
+        """
+        return self._PostProductBuyStatusList
+
+    @PostProductBuyStatusList.setter
+    def PostProductBuyStatusList(self, PostProductBuyStatusList):
+        self._PostProductBuyStatusList = PostProductBuyStatusList
+
+    @property
+    def NewPostPayResourceId(self):
+        r"""<p>新后付费资源id</p>
+        :rtype: str
+        """
+        return self._NewPostPayResourceId
+
+    @NewPostPayResourceId.setter
+    def NewPostPayResourceId(self, NewPostPayResourceId):
+        self._NewPostPayResourceId = NewPostPayResourceId
 
 
     def _deserialize(self, params):
@@ -13710,6 +13804,9 @@ class CosAuditPayInfo(AbstractModel):
         self._AvailableBucketNum = params.get("AvailableBucketNum")
         self._MonitorBucketNum = params.get("MonitorBucketNum")
         self._TotalBucketNum = params.get("TotalBucketNum")
+        self._PostProductStatusList = params.get("PostProductStatusList")
+        self._PostProductBuyStatusList = params.get("PostProductBuyStatusList")
+        self._NewPostPayResourceId = params.get("NewPostPayResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13812,26 +13909,34 @@ class CosBucketBillingInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: appid
+        :param _AppId: <p>appid</p>
         :type AppId: int
-        :param _OwnerUin: uin
+        :param _OwnerUin: <p>uin</p>
         :type OwnerUin: str
-        :param _OwnerNickName: 昵称
+        :param _OwnerNickName: <p>昵称</p>
         :type OwnerNickName: str
-        :param _BucketCount: 存储桶数量
+        :param _BucketCount: <p>存储桶数量</p>
         :type BucketCount: int
-        :param _BuyStatus: 0 未购买 1  已单独购买 2 已被共享
+        :param _BuyStatus: <p>0 未购买 1  已单独购买 2 已被共享</p>
         :type BuyStatus: int
-        :param _ShareFromAppId: 共享账号appid
+        :param _ShareFromAppId: <p>共享账号appid</p>
         :type ShareFromAppId: int
-        :param _ShareFromUin: 共享账号uin
+        :param _ShareFromUin: <p>共享账号uin</p>
         :type ShareFromUin: str
-        :param _ShareFromNickName: 共享账号昵称
+        :param _ShareFromNickName: <p>共享账号昵称</p>
         :type ShareFromNickName: str
-        :param _MonitorBucketCount: 监控的存储桶数
+        :param _MonitorBucketCount: <p>监控的存储桶数</p>
         :type MonitorBucketCount: int
-        :param _IsAutoMonitor: 0 关闭 1 开启
+        :param _IsAutoMonitor: <p>0 关闭 1 开启</p>
         :type IsAutoMonitor: int
+        :param _LogFeatureWhitelist: <p>是否启用白名单日志功能</p>
+        :type LogFeatureWhitelist: bool
+        :param _IsHaveNewPostOrder: <p>是否存在新的后付费订单</p>
+        :type IsHaveNewPostOrder: bool
+        :param _IsHaveOldPostOrder: <p>是否存在旧后付费订单</p>
+        :type IsHaveOldPostOrder: bool
+        :param _PostProductList: <p>后付费产品列表</p>
+        :type PostProductList: list of int
         """
         self._AppId = None
         self._OwnerUin = None
@@ -13843,10 +13948,14 @@ class CosBucketBillingInfo(AbstractModel):
         self._ShareFromNickName = None
         self._MonitorBucketCount = None
         self._IsAutoMonitor = None
+        self._LogFeatureWhitelist = None
+        self._IsHaveNewPostOrder = None
+        self._IsHaveOldPostOrder = None
+        self._PostProductList = None
 
     @property
     def AppId(self):
-        r"""appid
+        r"""<p>appid</p>
         :rtype: int
         """
         return self._AppId
@@ -13857,7 +13966,7 @@ class CosBucketBillingInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""uin
+        r"""<p>uin</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -13868,7 +13977,7 @@ class CosBucketBillingInfo(AbstractModel):
 
     @property
     def OwnerNickName(self):
-        r"""昵称
+        r"""<p>昵称</p>
         :rtype: str
         """
         return self._OwnerNickName
@@ -13879,7 +13988,7 @@ class CosBucketBillingInfo(AbstractModel):
 
     @property
     def BucketCount(self):
-        r"""存储桶数量
+        r"""<p>存储桶数量</p>
         :rtype: int
         """
         return self._BucketCount
@@ -13890,7 +13999,7 @@ class CosBucketBillingInfo(AbstractModel):
 
     @property
     def BuyStatus(self):
-        r"""0 未购买 1  已单独购买 2 已被共享
+        r"""<p>0 未购买 1  已单独购买 2 已被共享</p>
         :rtype: int
         """
         return self._BuyStatus
@@ -13901,7 +14010,7 @@ class CosBucketBillingInfo(AbstractModel):
 
     @property
     def ShareFromAppId(self):
-        r"""共享账号appid
+        r"""<p>共享账号appid</p>
         :rtype: int
         """
         return self._ShareFromAppId
@@ -13912,7 +14021,7 @@ class CosBucketBillingInfo(AbstractModel):
 
     @property
     def ShareFromUin(self):
-        r"""共享账号uin
+        r"""<p>共享账号uin</p>
         :rtype: str
         """
         return self._ShareFromUin
@@ -13923,7 +14032,7 @@ class CosBucketBillingInfo(AbstractModel):
 
     @property
     def ShareFromNickName(self):
-        r"""共享账号昵称
+        r"""<p>共享账号昵称</p>
         :rtype: str
         """
         return self._ShareFromNickName
@@ -13934,7 +14043,7 @@ class CosBucketBillingInfo(AbstractModel):
 
     @property
     def MonitorBucketCount(self):
-        r"""监控的存储桶数
+        r"""<p>监控的存储桶数</p>
         :rtype: int
         """
         return self._MonitorBucketCount
@@ -13945,7 +14054,7 @@ class CosBucketBillingInfo(AbstractModel):
 
     @property
     def IsAutoMonitor(self):
-        r"""0 关闭 1 开启
+        r"""<p>0 关闭 1 开启</p>
         :rtype: int
         """
         return self._IsAutoMonitor
@@ -13953,6 +14062,50 @@ class CosBucketBillingInfo(AbstractModel):
     @IsAutoMonitor.setter
     def IsAutoMonitor(self, IsAutoMonitor):
         self._IsAutoMonitor = IsAutoMonitor
+
+    @property
+    def LogFeatureWhitelist(self):
+        r"""<p>是否启用白名单日志功能</p>
+        :rtype: bool
+        """
+        return self._LogFeatureWhitelist
+
+    @LogFeatureWhitelist.setter
+    def LogFeatureWhitelist(self, LogFeatureWhitelist):
+        self._LogFeatureWhitelist = LogFeatureWhitelist
+
+    @property
+    def IsHaveNewPostOrder(self):
+        r"""<p>是否存在新的后付费订单</p>
+        :rtype: bool
+        """
+        return self._IsHaveNewPostOrder
+
+    @IsHaveNewPostOrder.setter
+    def IsHaveNewPostOrder(self, IsHaveNewPostOrder):
+        self._IsHaveNewPostOrder = IsHaveNewPostOrder
+
+    @property
+    def IsHaveOldPostOrder(self):
+        r"""<p>是否存在旧后付费订单</p>
+        :rtype: bool
+        """
+        return self._IsHaveOldPostOrder
+
+    @IsHaveOldPostOrder.setter
+    def IsHaveOldPostOrder(self, IsHaveOldPostOrder):
+        self._IsHaveOldPostOrder = IsHaveOldPostOrder
+
+    @property
+    def PostProductList(self):
+        r"""<p>后付费产品列表</p>
+        :rtype: list of int
+        """
+        return self._PostProductList
+
+    @PostProductList.setter
+    def PostProductList(self, PostProductList):
+        self._PostProductList = PostProductList
 
 
     def _deserialize(self, params):
@@ -13966,6 +14119,10 @@ class CosBucketBillingInfo(AbstractModel):
         self._ShareFromNickName = params.get("ShareFromNickName")
         self._MonitorBucketCount = params.get("MonitorBucketCount")
         self._IsAutoMonitor = params.get("IsAutoMonitor")
+        self._LogFeatureWhitelist = params.get("LogFeatureWhitelist")
+        self._IsHaveNewPostOrder = params.get("IsHaveNewPostOrder")
+        self._IsHaveOldPostOrder = params.get("IsHaveOldPostOrder")
+        self._PostProductList = params.get("PostProductList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16500,20 +16657,29 @@ class CreateCosObjectScanTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: <p>1: 敏感数据识别 2:恶意文件扫描</p>
+        :param _TaskType: <p>1: 敏感数据识别 2:恶意文件扫描 3:批量扫描敏感数据</p>
         :type TaskType: int
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _BucketSet: <p>存储桶列表</p>
         :type BucketSet: list of str
+        :param _TaskArgs: <p>任务参数</p>
+        :type TaskArgs: str
+        :param _IsScanAll: <p>是否全部扫描</p>
+        :type IsScanAll: bool
+        :param _DeleteBucketSet: <p>扫描时需要剔除的存储桶</p>
+        :type DeleteBucketSet: list of str
         """
         self._TaskType = None
         self._MemberId = None
         self._BucketSet = None
+        self._TaskArgs = None
+        self._IsScanAll = None
+        self._DeleteBucketSet = None
 
     @property
     def TaskType(self):
-        r"""<p>1: 敏感数据识别 2:恶意文件扫描</p>
+        r"""<p>1: 敏感数据识别 2:恶意文件扫描 3:批量扫描敏感数据</p>
         :rtype: int
         """
         return self._TaskType
@@ -16524,7 +16690,7 @@ class CreateCosObjectScanTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -16544,11 +16710,47 @@ class CreateCosObjectScanTaskRequest(AbstractModel):
     def BucketSet(self, BucketSet):
         self._BucketSet = BucketSet
 
+    @property
+    def TaskArgs(self):
+        r"""<p>任务参数</p>
+        :rtype: str
+        """
+        return self._TaskArgs
+
+    @TaskArgs.setter
+    def TaskArgs(self, TaskArgs):
+        self._TaskArgs = TaskArgs
+
+    @property
+    def IsScanAll(self):
+        r"""<p>是否全部扫描</p>
+        :rtype: bool
+        """
+        return self._IsScanAll
+
+    @IsScanAll.setter
+    def IsScanAll(self, IsScanAll):
+        self._IsScanAll = IsScanAll
+
+    @property
+    def DeleteBucketSet(self):
+        r"""<p>扫描时需要剔除的存储桶</p>
+        :rtype: list of str
+        """
+        return self._DeleteBucketSet
+
+    @DeleteBucketSet.setter
+    def DeleteBucketSet(self, DeleteBucketSet):
+        self._DeleteBucketSet = DeleteBucketSet
+
 
     def _deserialize(self, params):
         self._TaskType = params.get("TaskType")
         self._MemberId = params.get("MemberId")
         self._BucketSet = params.get("BucketSet")
+        self._TaskArgs = params.get("TaskArgs")
+        self._IsScanAll = params.get("IsScanAll")
+        self._DeleteBucketSet = params.get("DeleteBucketSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16566,10 +16768,24 @@ class CreateCosObjectScanTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -16584,6 +16800,7 @@ class CreateCosObjectScanTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -17505,67 +17722,67 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _DangerLevel: 风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)
+        :param _DangerLevel: <p>风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)</p>
         :type DangerLevel: int
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _DbPort: 数据库端口
+        :param _DbPort: <p>数据库端口</p>
         :type DbPort: int
-        :param _DbIp: 数据库 IP
+        :param _DbIp: <p>数据库 IP</p>
         :type DbIp: str
-        :param _AssetsId: 资产 ID
+        :param _AssetsId: <p>资产 ID</p>
         :type AssetsId: int
-        :param _SessionId: 会话 ID
+        :param _SessionId: <p>会话 ID</p>
         :type SessionId: str
-        :param _ClientSideIp: 客户端 IP
+        :param _ClientSideIp: <p>客户端 IP</p>
         :type ClientSideIp: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
-        :param _HitRule: 命中规则
+        :param _HitRule: <p>命中规则</p>
         :type HitRule: int
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: int
-        :param _FuzzySearch: 模糊查询
+        :param _FuzzySearch: <p>模糊查询</p>
         :type FuzzySearch: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _ClientName: 客户端
+        :param _ClientName: <p>客户端</p>
         :type ClientName: str
-        :param _SourceTypes: 流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都都传或不传则返回所有
+        :param _SourceTypes: <p>流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都传或不传则返回所有</p>
         :type SourceTypes: list of str
-        :param _TableName: 表名，长度限制64，多个表名查询的话可以用空格连接	
+        :param _TableName: <p>表名，长度限制64，多个表名查询的话可以用空格连接</p>
         :type TableName: str
-        :param _FieldName: 字段名，长度限制64，多个字段名查询的话可以用空格连接
+        :param _FieldName: <p>字段名，长度限制64，多个字段名查询的话可以用空格连接</p>
         :type FieldName: str
-        :param _SqlMainTypes: SQL 主要类型，DDL, DML, DCL, TCL	
+        :param _SqlMainTypes: <p>SQL 主要类型，DDL, DML, DCL, TCL</p>
         :type SqlMainTypes: list of str
-        :param _SqlType: 操作类型	
+        :param _SqlType: <p>操作类型</p>
         :type SqlType: str
-        :param _RowNumMin: 影响行数最小值	
+        :param _RowNumMin: <p>影响行数最小值</p>
         :type RowNumMin: int
-        :param _RowNumMax: 影响行数最大值	
+        :param _RowNumMax: <p>影响行数最大值</p>
         :type RowNumMax: int
-        :param _DbTypes: 数据库类型	
+        :param _DbTypes: <p>数据库类型</p>
         :type DbTypes: list of str
-        :param _RetNo: 返回码	
+        :param _RetNo: <p>返回码</p>
         :type RetNo: int
-        :param _ClientDriverName: 客户端工具	
+        :param _ClientDriverName: <p>客户端工具</p>
         :type ClientDriverName: str
-        :param _ClientPort: 客户端端口	
+        :param _ClientPort: <p>客户端端口</p>
         :type ClientPort: int
-        :param _LogId: 审计日志 ID
+        :param _LogId: <p>审计日志 ID</p>
         :type LogId: str
-        :param _DangerLevels: 风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参
+        :param _DangerLevels: <p>风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参</p>
         :type DangerLevels: list of int
-        :param _SensitiveCategoryRule: 字段分类
+        :param _SensitiveCategoryRule: <p>字段分类</p>
         :type SensitiveCategoryRule: str
-        :param _SensitiveLevelRisk: 字段分级
+        :param _SensitiveLevelRisk: <p>字段分级</p>
         :type SensitiveLevelRisk: str
-        :param _TrxId: 事务Id
+        :param _TrxId: <p>事务Id</p>
         :type TrxId: int
-        :param _ClientMac: clientMac
+        :param _ClientMac: <p>clientMac</p>
         :type ClientMac: str
         """
         self._MemberId = None
@@ -17602,7 +17819,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -17613,7 +17830,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def DangerLevel(self):
-        r"""风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)
+        r"""<p>风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)</p>
         :rtype: int
         """
         return self._DangerLevel
@@ -17624,7 +17841,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -17635,7 +17852,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def DbPort(self):
-        r"""数据库端口
+        r"""<p>数据库端口</p>
         :rtype: int
         """
         return self._DbPort
@@ -17646,7 +17863,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def DbIp(self):
-        r"""数据库 IP
+        r"""<p>数据库 IP</p>
         :rtype: str
         """
         return self._DbIp
@@ -17657,7 +17874,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def AssetsId(self):
-        r"""资产 ID
+        r"""<p>资产 ID</p>
         :rtype: int
         """
         return self._AssetsId
@@ -17668,7 +17885,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""会话 ID
+        r"""<p>会话 ID</p>
         :rtype: str
         """
         return self._SessionId
@@ -17679,7 +17896,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def ClientSideIp(self):
-        r"""客户端 IP
+        r"""<p>客户端 IP</p>
         :rtype: str
         """
         return self._ClientSideIp
@@ -17690,7 +17907,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -17701,7 +17918,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def HitRule(self):
-        r"""命中规则
+        r"""<p>命中规则</p>
         :rtype: int
         """
         return self._HitRule
@@ -17712,7 +17929,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -17723,7 +17940,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def FuzzySearch(self):
-        r"""模糊查询
+        r"""<p>模糊查询</p>
         :rtype: str
         """
         return self._FuzzySearch
@@ -17734,7 +17951,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -17745,7 +17962,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def ClientName(self):
-        r"""客户端
+        r"""<p>客户端</p>
         :rtype: str
         """
         return self._ClientName
@@ -17756,7 +17973,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def SourceTypes(self):
-        r"""流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都都传或不传则返回所有
+        r"""<p>流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都传或不传则返回所有</p>
         :rtype: list of str
         """
         return self._SourceTypes
@@ -17767,7 +17984,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名，长度限制64，多个表名查询的话可以用空格连接	
+        r"""<p>表名，长度限制64，多个表名查询的话可以用空格连接</p>
         :rtype: str
         """
         return self._TableName
@@ -17778,7 +17995,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def FieldName(self):
-        r"""字段名，长度限制64，多个字段名查询的话可以用空格连接
+        r"""<p>字段名，长度限制64，多个字段名查询的话可以用空格连接</p>
         :rtype: str
         """
         return self._FieldName
@@ -17789,7 +18006,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def SqlMainTypes(self):
-        r"""SQL 主要类型，DDL, DML, DCL, TCL	
+        r"""<p>SQL 主要类型，DDL, DML, DCL, TCL</p>
         :rtype: list of str
         """
         return self._SqlMainTypes
@@ -17800,7 +18017,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def SqlType(self):
-        r"""操作类型	
+        r"""<p>操作类型</p>
         :rtype: str
         """
         return self._SqlType
@@ -17811,7 +18028,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def RowNumMin(self):
-        r"""影响行数最小值	
+        r"""<p>影响行数最小值</p>
         :rtype: int
         """
         return self._RowNumMin
@@ -17822,7 +18039,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def RowNumMax(self):
-        r"""影响行数最大值	
+        r"""<p>影响行数最大值</p>
         :rtype: int
         """
         return self._RowNumMax
@@ -17833,7 +18050,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def DbTypes(self):
-        r"""数据库类型	
+        r"""<p>数据库类型</p>
         :rtype: list of str
         """
         return self._DbTypes
@@ -17844,7 +18061,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def RetNo(self):
-        r"""返回码	
+        r"""<p>返回码</p>
         :rtype: int
         """
         return self._RetNo
@@ -17855,7 +18072,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def ClientDriverName(self):
-        r"""客户端工具	
+        r"""<p>客户端工具</p>
         :rtype: str
         """
         return self._ClientDriverName
@@ -17866,7 +18083,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def ClientPort(self):
-        r"""客户端端口	
+        r"""<p>客户端端口</p>
         :rtype: int
         """
         return self._ClientPort
@@ -17877,7 +18094,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def LogId(self):
-        r"""审计日志 ID
+        r"""<p>审计日志 ID</p>
         :rtype: str
         """
         return self._LogId
@@ -17888,7 +18105,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def DangerLevels(self):
-        r"""风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参
+        r"""<p>风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参</p>
         :rtype: list of int
         """
         return self._DangerLevels
@@ -17899,7 +18116,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def SensitiveCategoryRule(self):
-        r"""字段分类
+        r"""<p>字段分类</p>
         :rtype: str
         """
         return self._SensitiveCategoryRule
@@ -17910,7 +18127,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def SensitiveLevelRisk(self):
-        r"""字段分级
+        r"""<p>字段分级</p>
         :rtype: str
         """
         return self._SensitiveLevelRisk
@@ -17921,7 +18138,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def TrxId(self):
-        r"""事务Id
+        r"""<p>事务Id</p>
         :rtype: int
         """
         return self._TrxId
@@ -17932,7 +18149,7 @@ class CreateDspmExportTaskRequest(AbstractModel):
 
     @property
     def ClientMac(self):
-        r"""clientMac
+        r"""<p>clientMac</p>
         :rtype: str
         """
         return self._ClientMac

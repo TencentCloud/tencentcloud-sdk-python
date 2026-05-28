@@ -20789,7 +20789,7 @@ class InstanceAttributesResponse(AbstractModel):
         :type MaxGroupNum: int
         :param _Cvm: <p>售卖类型,0:标准版,1:专业版</p>
         :type Cvm: int
-        :param _InstanceType: <p>实例类型  枚举列表:<br>profession  :专业版<br>standards2  :标准版<br>premium   :高级版<br>serverless  :serverless版</p>
+        :param _InstanceType: <p>实例类型</p><p>枚举值：</p><ul><li>profession： 专业版</li><li>premium： 高级版</li><li>serverless： serverless版</li><li>其他： 标准版（如:standards2/standard，该版本已停售）</li></ul>
         :type InstanceType: str
         :param _Features: <p>表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。</p>
         :type Features: list of str
@@ -21171,7 +21171,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""<p>实例类型  枚举列表:<br>profession  :专业版<br>standards2  :标准版<br>premium   :高级版<br>serverless  :serverless版</p>
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>profession： 专业版</li><li>premium： 高级版</li><li>serverless： serverless版</li><li>其他： 标准版（如:standards2/standard，该版本已停售）</li></ul>
         :rtype: str
         """
         return self._InstanceType

@@ -1813,7 +1813,7 @@ class WafClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeObjectsResponse:
         """
-        查看防护对象列表
+        查看CLB/TSE防护对象列表
         """
         
         kwargs = {}

@@ -5215,6 +5215,12 @@ class ServiceDetail(AbstractModel):
         :type DeploymentConfigs: list of DeploymentConfig
         :param _HyperParam: 服务超参数配置
         :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
+        :param _SecurityType: 
+        :type SecurityType: str
+        :param _RoleComputeSet: 
+        :type RoleComputeSet: list of ComputeDetail
+        :param _TargetReplicas: 
+        :type TargetReplicas: int
         """
         self._ServiceId = None
         self._ServiceName = None
@@ -5226,6 +5232,9 @@ class ServiceDetail(AbstractModel):
         self._ModelName = None
         self._DeploymentConfigs = None
         self._HyperParam = None
+        self._SecurityType = None
+        self._RoleComputeSet = None
+        self._TargetReplicas = None
 
     @property
     def ServiceId(self):
@@ -5337,6 +5346,39 @@ class ServiceDetail(AbstractModel):
     def HyperParam(self, HyperParam):
         self._HyperParam = HyperParam
 
+    @property
+    def SecurityType(self):
+        r"""
+        :rtype: str
+        """
+        return self._SecurityType
+
+    @SecurityType.setter
+    def SecurityType(self, SecurityType):
+        self._SecurityType = SecurityType
+
+    @property
+    def RoleComputeSet(self):
+        r"""
+        :rtype: list of ComputeDetail
+        """
+        return self._RoleComputeSet
+
+    @RoleComputeSet.setter
+    def RoleComputeSet(self, RoleComputeSet):
+        self._RoleComputeSet = RoleComputeSet
+
+    @property
+    def TargetReplicas(self):
+        r"""
+        :rtype: int
+        """
+        return self._TargetReplicas
+
+    @TargetReplicas.setter
+    def TargetReplicas(self, TargetReplicas):
+        self._TargetReplicas = TargetReplicas
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -5361,6 +5403,14 @@ class ServiceDetail(AbstractModel):
         if params.get("HyperParam") is not None:
             self._HyperParam = HyperParam()
             self._HyperParam._deserialize(params.get("HyperParam"))
+        self._SecurityType = params.get("SecurityType")
+        if params.get("RoleComputeSet") is not None:
+            self._RoleComputeSet = []
+            for item in params.get("RoleComputeSet"):
+                obj = ComputeDetail()
+                obj._deserialize(item)
+                self._RoleComputeSet.append(obj)
+        self._TargetReplicas = params.get("TargetReplicas")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5803,12 +5853,15 @@ class TemplateDetail(AbstractModel):
         :type ComputeSet: list of ComputeDetail
         :param _SupportFunc: 当前部署模板所支持的增强功能
         :type SupportFunc: list of str
+        :param _RoleComputeSet: 
+        :type RoleComputeSet: list of ComputeDetail
         """
         self._TemplateId = None
         self._DeployMode = None
         self._EngineType = None
         self._ComputeSet = None
         self._SupportFunc = None
+        self._RoleComputeSet = None
 
     @property
     def TemplateId(self):
@@ -5865,6 +5918,17 @@ class TemplateDetail(AbstractModel):
     def SupportFunc(self, SupportFunc):
         self._SupportFunc = SupportFunc
 
+    @property
+    def RoleComputeSet(self):
+        r"""
+        :rtype: list of ComputeDetail
+        """
+        return self._RoleComputeSet
+
+    @RoleComputeSet.setter
+    def RoleComputeSet(self, RoleComputeSet):
+        self._RoleComputeSet = RoleComputeSet
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -5877,6 +5941,12 @@ class TemplateDetail(AbstractModel):
                 obj._deserialize(item)
                 self._ComputeSet.append(obj)
         self._SupportFunc = params.get("SupportFunc")
+        if params.get("RoleComputeSet") is not None:
+            self._RoleComputeSet = []
+            for item in params.get("RoleComputeSet"):
+                obj = ComputeDetail()
+                obj._deserialize(item)
+                self._RoleComputeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

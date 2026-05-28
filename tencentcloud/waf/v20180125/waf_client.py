@@ -2304,7 +2304,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeObjects(self, request):
-        r"""查看防护对象列表
+        r"""查看CLB/TSE防护对象列表
 
         :param request: Request instance for DescribeObjects.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeObjectsRequest`

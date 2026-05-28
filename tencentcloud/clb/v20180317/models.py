@@ -22551,6 +22551,8 @@ class TargetGroupInfo(AbstractModel):
         :type SessionExpireTime: int
         :param _IpVersion: <p>IP版本。</p>
         :type IpVersion: str
+        :param _SnatEnable: <p>是否开启SNAT</p>
+        :type SnatEnable: bool
         """
         self._TargetGroupId = None
         self._VpcId = None
@@ -22571,6 +22573,7 @@ class TargetGroupInfo(AbstractModel):
         self._KeepaliveEnable = None
         self._SessionExpireTime = None
         self._IpVersion = None
+        self._SnatEnable = None
 
     @property
     def TargetGroupId(self):
@@ -22787,6 +22790,17 @@ class TargetGroupInfo(AbstractModel):
     def IpVersion(self, IpVersion):
         self._IpVersion = IpVersion
 
+    @property
+    def SnatEnable(self):
+        r"""<p>是否开启SNAT</p>
+        :rtype: bool
+        """
+        return self._SnatEnable
+
+    @SnatEnable.setter
+    def SnatEnable(self, SnatEnable):
+        self._SnatEnable = SnatEnable
+
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
@@ -22820,6 +22834,7 @@ class TargetGroupInfo(AbstractModel):
         self._KeepaliveEnable = params.get("KeepaliveEnable")
         self._SessionExpireTime = params.get("SessionExpireTime")
         self._IpVersion = params.get("IpVersion")
+        self._SnatEnable = params.get("SnatEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

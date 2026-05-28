@@ -25589,40 +25589,42 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名，当操作对象为全局规则时，Domain参数应填写为"global"
+        :param _Domain: <p>域名，当操作对象为全局规则时，Domain参数应填写为&quot;global&quot;</p>
         :type Domain: str
-        :param _Count: 计数标识
+        :param _Count: <p>计数标识</p>
         :type Count: int
-        :param _ActionType: 动作，40表示查询白名单，42表示查询黑名单
+        :param _ActionType: <p>动作，40表示查询白名单，42表示查询黑名单</p>
         :type ActionType: int
-        :param _VtsMin: 最小有效时间的时间戳
+        :param _VtsMin: <p>最小有效时间的时间戳</p>
         :type VtsMin: int
-        :param _VtsMax: 最大有效时间的时间戳
+        :param _VtsMax: <p>最大有效时间的时间戳</p>
         :type VtsMax: int
-        :param _CtsMin: 最小创建时间的时间戳
+        :param _CtsMin: <p>最小创建时间的时间戳</p>
         :type CtsMin: int
-        :param _CtsMax: 最大创建时间的时间戳
+        :param _CtsMax: <p>最大创建时间的时间戳</p>
         :type CtsMax: int
-        :param _OffSet: 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+        :param _OffSet: <p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
         :type OffSet: int
-        :param _Limit: 每页返回的数量，默认为20
+        :param _Limit: <p>每页返回的数量，默认为20</p>
         :type Limit: int
-        :param _Source: 用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
+        :param _Source: <p>用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 &quot;&quot; (空字符串)    ，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护    ），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则</p>
         :type Source: str
-        :param _Sort: 排序参数
+        :param _Sort: <p>排序参数</p>
         :type Sort: str
-        :param _Ip: IP
+        :param _Ip: <p>IP</p>
         :type Ip: str
-        :param _ValidStatus: 生效状态，1表示生效中，2表示过期，0表示全部
+        :param _ValidStatus: <p>生效状态，1表示生效中，2表示过期，0表示全部</p>
         :type ValidStatus: int
-        :param _ValidTimeStampMin: 最小有效时间的时间戳
+        :param _ValidTimeStampMin: <p>最小有效时间的时间戳</p>
         :type ValidTimeStampMin: str
-        :param _ValidTimeStampMax: 最大有效时间的时间戳
+        :param _ValidTimeStampMax: <p>最大有效时间的时间戳</p>
         :type ValidTimeStampMax: str
-        :param _RuleId: 规则ID
+        :param _RuleId: <p>规则ID</p>
         :type RuleId: int
-        :param _TimerType: 0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
+        :param _TimerType: <p>0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效</p>
         :type TimerType: int
+        :param _IpList: <p>查询的ip列表</p>
+        :type IpList: list of str
         """
         self._Domain = None
         self._Count = None
@@ -25641,10 +25643,11 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._ValidTimeStampMax = None
         self._RuleId = None
         self._TimerType = None
+        self._IpList = None
 
     @property
     def Domain(self):
-        r"""域名，当操作对象为全局规则时，Domain参数应填写为"global"
+        r"""<p>域名，当操作对象为全局规则时，Domain参数应填写为&quot;global&quot;</p>
         :rtype: str
         """
         return self._Domain
@@ -25655,7 +25658,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def Count(self):
-        r"""计数标识
+        r"""<p>计数标识</p>
         :rtype: int
         """
         return self._Count
@@ -25666,7 +25669,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""动作，40表示查询白名单，42表示查询黑名单
+        r"""<p>动作，40表示查询白名单，42表示查询黑名单</p>
         :rtype: int
         """
         return self._ActionType
@@ -25679,7 +25682,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
     def VtsMin(self):
         warnings.warn("parameter `VtsMin` is deprecated", DeprecationWarning) 
 
-        r"""最小有效时间的时间戳
+        r"""<p>最小有效时间的时间戳</p>
         :rtype: int
         """
         return self._VtsMin
@@ -25694,7 +25697,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
     def VtsMax(self):
         warnings.warn("parameter `VtsMax` is deprecated", DeprecationWarning) 
 
-        r"""最大有效时间的时间戳
+        r"""<p>最大有效时间的时间戳</p>
         :rtype: int
         """
         return self._VtsMax
@@ -25707,7 +25710,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def CtsMin(self):
-        r"""最小创建时间的时间戳
+        r"""<p>最小创建时间的时间戳</p>
         :rtype: int
         """
         return self._CtsMin
@@ -25718,7 +25721,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def CtsMax(self):
-        r"""最大创建时间的时间戳
+        r"""<p>最大创建时间的时间戳</p>
         :rtype: int
         """
         return self._CtsMax
@@ -25729,7 +25732,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def OffSet(self):
-        r"""分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+        r"""<p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
         :rtype: int
         """
         return self._OffSet
@@ -25740,7 +25743,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页返回的数量，默认为20
+        r"""<p>每页返回的数量，默认为20</p>
         :rtype: int
         """
         return self._Limit
@@ -25751,7 +25754,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
+        r"""<p>用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 &quot;&quot; (空字符串)    ，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护    ），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则</p>
         :rtype: str
         """
         return self._Source
@@ -25762,7 +25765,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def Sort(self):
-        r"""排序参数
+        r"""<p>排序参数</p>
         :rtype: str
         """
         return self._Sort
@@ -25773,7 +25776,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def Ip(self):
-        r"""IP
+        r"""<p>IP</p>
         :rtype: str
         """
         return self._Ip
@@ -25784,7 +25787,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def ValidStatus(self):
-        r"""生效状态，1表示生效中，2表示过期，0表示全部
+        r"""<p>生效状态，1表示生效中，2表示过期，0表示全部</p>
         :rtype: int
         """
         return self._ValidStatus
@@ -25795,7 +25798,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def ValidTimeStampMin(self):
-        r"""最小有效时间的时间戳
+        r"""<p>最小有效时间的时间戳</p>
         :rtype: str
         """
         return self._ValidTimeStampMin
@@ -25806,7 +25809,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def ValidTimeStampMax(self):
-        r"""最大有效时间的时间戳
+        r"""<p>最大有效时间的时间戳</p>
         :rtype: str
         """
         return self._ValidTimeStampMax
@@ -25817,7 +25820,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: int
         """
         return self._RuleId
@@ -25828,7 +25831,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def TimerType(self):
-        r"""0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
+        r"""<p>0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效</p>
         :rtype: int
         """
         return self._TimerType
@@ -25836,6 +25839,17 @@ class DescribeIpAccessControlRequest(AbstractModel):
     @TimerType.setter
     def TimerType(self, TimerType):
         self._TimerType = TimerType
+
+    @property
+    def IpList(self):
+        r"""<p>查询的ip列表</p>
+        :rtype: list of str
+        """
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
 
 
     def _deserialize(self, params):
@@ -25856,6 +25870,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._ValidTimeStampMax = params.get("ValidTimeStampMax")
         self._RuleId = params.get("RuleId")
         self._TimerType = params.get("TimerType")
+        self._IpList = params.get("IpList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25873,9 +25888,9 @@ class DescribeIpAccessControlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 输出
+        :param _Data: <p>输出</p>
         :type Data: :class:`tencentcloud.waf.v20180125.models.IpAccessControlData`
-        :param _UsedTotal: 已经使用的IP黑白名单的IP总数
+        :param _UsedTotal: <p>已经使用的IP黑白名单的IP总数</p>
         :type UsedTotal: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25886,7 +25901,7 @@ class DescribeIpAccessControlResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""输出
+        r"""<p>输出</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.IpAccessControlData`
         """
         return self._Data
@@ -25897,7 +25912,7 @@ class DescribeIpAccessControlResponse(AbstractModel):
 
     @property
     def UsedTotal(self):
-        r"""已经使用的IP黑白名单的IP总数
+        r"""<p>已经使用的IP黑白名单的IP总数</p>
         :rtype: int
         """
         return self._UsedTotal

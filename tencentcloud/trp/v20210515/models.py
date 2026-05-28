@@ -8782,7 +8782,7 @@ class FlavorKingCycleBrandImportantCityScanAnalysisCityItem(AbstractModel):
         :type OtherMarketShare: float
         :param _LastCycleRatio: <p>上周期口味王分布</p>
         :type LastCycleRatio: float
-        :param _LastCycleMarketShare: <p>上周期口味王牌市场份额</p>
+        :param _LastCycleMarketShare: <p>上周期口味王品牌市场份额</p>
         :type LastCycleMarketShare: float
         :param _LastCycleOtherMarketShare: <p>上周期其他品牌市场份额</p>
         :type LastCycleOtherMarketShare: float
@@ -8852,7 +8852,7 @@ class FlavorKingCycleBrandImportantCityScanAnalysisCityItem(AbstractModel):
 
     @property
     def LastCycleMarketShare(self):
-        r"""<p>上周期口味王牌市场份额</p>
+        r"""<p>上周期口味王品牌市场份额</p>
         :rtype: float
         """
         return self._LastCycleMarketShare

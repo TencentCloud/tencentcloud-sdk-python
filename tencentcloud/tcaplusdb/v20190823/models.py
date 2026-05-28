@@ -1837,27 +1837,27 @@ class CreateClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdlType: 集群数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
+        :param _IdlType: <p>集群数据描述语言类型，统一填<code>MIX</code></p><p>枚举值：</p><ul><li>MIX： 同时支持<code>PROTO</code>，<code>TDR</code>表</li></ul>
         :type IdlType: str
-        :param _ClusterName: 集群名称，可使用中文或英文字符，最大长度32个字符
+        :param _ClusterName: <p>集群名称，可使用中文或英文字符，最大长度32个字符</p>
         :type ClusterName: str
-        :param _VpcId: 集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z
+        :param _VpcId: <p>集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z</p>
         :type VpcId: str
-        :param _SubnetId: 集群所绑定的子网实例ID，形如：subnet-pxir56ns
+        :param _SubnetId: <p>集群所绑定的子网实例ID，形如：subnet-pxir56ns</p>
         :type SubnetId: str
-        :param _Password: 集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+        :param _Password: <p>集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母</p>
         :type Password: str
-        :param _ResourceTags: 集群标签列表
+        :param _ResourceTags: <p>集群标签列表</p>
         :type ResourceTags: list of TagInfoUnit
-        :param _Ipv6Enable: 集群是否开启IPv6功能
+        :param _Ipv6Enable: <p>集群是否开启IPv6功能</p>
         :type Ipv6Enable: int
-        :param _ServerList: 独占集群占用的svr机器
+        :param _ServerList: <p>独占集群占用的svr机器</p>
         :type ServerList: list of MachineInfo
-        :param _ProxyList: 独占集群占用的proxy机器
+        :param _ProxyList: <p>独占集群占用的proxy机器</p>
         :type ProxyList: list of MachineInfo
-        :param _ClusterType: 集群类型1共享2独占
+        :param _ClusterType: <p>集群类型1共享2独占</p>
         :type ClusterType: int
-        :param _AuthType: 密码认证类型，0 静态认证， 1 签名认证
+        :param _AuthType: <p>密码认证类型，0 静态认证， 1 签名认证</p>
         :type AuthType: int
         """
         self._IdlType = None
@@ -1874,7 +1874,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def IdlType(self):
-        r"""集群数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
+        r"""<p>集群数据描述语言类型，统一填<code>MIX</code></p><p>枚举值：</p><ul><li>MIX： 同时支持<code>PROTO</code>，<code>TDR</code>表</li></ul>
         :rtype: str
         """
         return self._IdlType
@@ -1885,7 +1885,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称，可使用中文或英文字符，最大长度32个字符
+        r"""<p>集群名称，可使用中文或英文字符，最大长度32个字符</p>
         :rtype: str
         """
         return self._ClusterName
@@ -1896,7 +1896,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z
+        r"""<p>集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z</p>
         :rtype: str
         """
         return self._VpcId
@@ -1907,7 +1907,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""集群所绑定的子网实例ID，形如：subnet-pxir56ns
+        r"""<p>集群所绑定的子网实例ID，形如：subnet-pxir56ns</p>
         :rtype: str
         """
         return self._SubnetId
@@ -1918,7 +1918,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+        r"""<p>集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母</p>
         :rtype: str
         """
         return self._Password
@@ -1929,7 +1929,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""集群标签列表
+        r"""<p>集群标签列表</p>
         :rtype: list of TagInfoUnit
         """
         return self._ResourceTags
@@ -1940,7 +1940,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def Ipv6Enable(self):
-        r"""集群是否开启IPv6功能
+        r"""<p>集群是否开启IPv6功能</p>
         :rtype: int
         """
         return self._Ipv6Enable
@@ -1951,7 +1951,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ServerList(self):
-        r"""独占集群占用的svr机器
+        r"""<p>独占集群占用的svr机器</p>
         :rtype: list of MachineInfo
         """
         return self._ServerList
@@ -1962,7 +1962,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ProxyList(self):
-        r"""独占集群占用的proxy机器
+        r"""<p>独占集群占用的proxy机器</p>
         :rtype: list of MachineInfo
         """
         return self._ProxyList
@@ -1973,7 +1973,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型1共享2独占
+        r"""<p>集群类型1共享2独占</p>
         :rtype: int
         """
         return self._ClusterType
@@ -1984,7 +1984,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""密码认证类型，0 静态认证， 1 签名认证
+        r"""<p>密码认证类型，0 静态认证， 1 签名认证</p>
         :rtype: int
         """
         return self._AuthType
@@ -2038,7 +2038,7 @@ class CreateClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2048,7 +2048,7 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId

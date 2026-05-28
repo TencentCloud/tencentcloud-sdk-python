@@ -517,6 +517,130 @@ class CreateEndpointGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateForwardingPolicyRequest(AbstractModel):
+    r"""CreateForwardingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: 监听器ID。
+        :type ListenerId: str
+        :param _Host: 域名。
+        :type Host: str
+        """
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._Host = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""监听器ID。
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Host(self):
+        r"""域名。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateForwardingPolicyResponse(AbstractModel):
+    r"""CreateForwardingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务ID。
+        :type TaskId: str
+        :param _ForwardingPolicyId: 七层转发策略ID。
+        :type ForwardingPolicyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._ForwardingPolicyId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""异步任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ForwardingPolicyId(self):
+        r"""七层转发策略ID。
+        :rtype: str
+        """
+        return self._ForwardingPolicyId
+
+    @ForwardingPolicyId.setter
+    def ForwardingPolicyId(self, ForwardingPolicyId):
+        self._ForwardingPolicyId = ForwardingPolicyId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ForwardingPolicyId = params.get("ForwardingPolicyId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateForwardingRuleRequest(AbstractModel):
     r"""CreateForwardingRule请求参数结构体
 
@@ -1429,6 +1553,115 @@ class DeleteEndpointGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteForwardingPolicyRequest(AbstractModel):
+    r"""DeleteForwardingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: 监听器ID。
+        :type ListenerId: str
+        :param _ForwardingPolicyId: 策略ID。
+        :type ForwardingPolicyId: str
+        """
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._ForwardingPolicyId = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""监听器ID。
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def ForwardingPolicyId(self):
+        r"""策略ID。
+        :rtype: str
+        """
+        return self._ForwardingPolicyId
+
+    @ForwardingPolicyId.setter
+    def ForwardingPolicyId(self, ForwardingPolicyId):
+        self._ForwardingPolicyId = ForwardingPolicyId
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._ForwardingPolicyId = params.get("ForwardingPolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteForwardingPolicyResponse(AbstractModel):
+    r"""DeleteForwardingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""异步任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteForwardingRuleRequest(AbstractModel):
     r"""DeleteForwardingRule请求参数结构体
 
@@ -2178,6 +2411,150 @@ class DescribeEndpointGroupsResponse(AbstractModel):
                 obj = EndpointGroupConfigurationSet()
                 obj._deserialize(item)
                 self._EndpointGroupConfigurationSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeForwardingPolicyRequest(AbstractModel):
+    r"""DescribeForwardingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: 监听器ID。
+        :type ListenerId: str
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""监听器ID。
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeForwardingPolicyResponse(AbstractModel):
+    r"""DescribeForwardingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ForwardingPolicySet: 符合条件的策略信息。
+        :type ForwardingPolicySet: list of ForwardingPolicySet
+        :param _TotalCount: 符合条件的实例个数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ForwardingPolicySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ForwardingPolicySet(self):
+        r"""符合条件的策略信息。
+        :rtype: list of ForwardingPolicySet
+        """
+        return self._ForwardingPolicySet
+
+    @ForwardingPolicySet.setter
+    def ForwardingPolicySet(self, ForwardingPolicySet):
+        self._ForwardingPolicySet = ForwardingPolicySet
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的实例个数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ForwardingPolicySet") is not None:
+            self._ForwardingPolicySet = []
+            for item in params.get("ForwardingPolicySet"):
+                obj = ForwardingPolicySet()
+                obj._deserialize(item)
+                self._ForwardingPolicySet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -3647,6 +4024,102 @@ class Filter(AbstractModel):
         
 
 
+class ForwardingPolicySet(AbstractModel):
+    r"""七层转发策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: 监听器ID。
+        :type ListenerId: str
+        :param _ForwardingPolicyId: 策略ID。
+        :type ForwardingPolicyId: str
+        :param _Host: 域名。
+        :type Host: str
+        :param _DefaultHostFlag: 是否为默认域名。
+        :type DefaultHostFlag: bool
+        """
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._ForwardingPolicyId = None
+        self._Host = None
+        self._DefaultHostFlag = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""监听器ID。
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def ForwardingPolicyId(self):
+        r"""策略ID。
+        :rtype: str
+        """
+        return self._ForwardingPolicyId
+
+    @ForwardingPolicyId.setter
+    def ForwardingPolicyId(self, ForwardingPolicyId):
+        self._ForwardingPolicyId = ForwardingPolicyId
+
+    @property
+    def Host(self):
+        r"""域名。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DefaultHostFlag(self):
+        r"""是否为默认域名。
+        :rtype: bool
+        """
+        return self._DefaultHostFlag
+
+    @DefaultHostFlag.setter
+    def DefaultHostFlag(self, DefaultHostFlag):
+        self._DefaultHostFlag = DefaultHostFlag
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._ForwardingPolicyId = params.get("ForwardingPolicyId")
+        self._Host = params.get("Host")
+        self._DefaultHostFlag = params.get("DefaultHostFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ForwardingRuleSet(AbstractModel):
     r"""七层转发规则信息
 
@@ -4938,6 +5411,130 @@ class ModifyEndpointGroupResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyForwardingPolicyRequest(AbstractModel):
+    r"""ModifyForwardingPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: 监听器ID。
+        :type ListenerId: str
+        :param _ForwardingPolicyId: 策略ID。
+        :type ForwardingPolicyId: str
+        :param _Host: 域名。
+        :type Host: str
+        """
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._ForwardingPolicyId = None
+        self._Host = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""监听器ID。
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def ForwardingPolicyId(self):
+        r"""策略ID。
+        :rtype: str
+        """
+        return self._ForwardingPolicyId
+
+    @ForwardingPolicyId.setter
+    def ForwardingPolicyId(self, ForwardingPolicyId):
+        self._ForwardingPolicyId = ForwardingPolicyId
+
+    @property
+    def Host(self):
+        r"""域名。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._ForwardingPolicyId = params.get("ForwardingPolicyId")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyForwardingPolicyResponse(AbstractModel):
+    r"""ModifyForwardingPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""异步任务ID。
         :rtype: str
         """
         return self._TaskId

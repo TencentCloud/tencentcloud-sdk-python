@@ -133,6 +133,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddServerlessRoInstances(
+            self,
+            request: models.AddServerlessRoInstancesRequest,
+            opts: Dict = None,
+    ) -> models.AddServerlessRoInstancesResponse:
+        """
+        添加serverless集群只读实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddServerlessRoInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddServerlessRoInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AssociateSecurityGroups(
             self,
             request: models.AssociateSecurityGroupsRequest,
@@ -2144,6 +2162,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeRollbackTimeRange"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRollbackTimeRangeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSQLExecutionPlan(
+            self,
+            request: models.DescribeSQLExecutionPlanRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSQLExecutionPlanResponse:
+        """
+        本接口(DescribeSQLExecutionPlan)用于查询执行计划详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSQLExecutionPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSQLExecutionPlanResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

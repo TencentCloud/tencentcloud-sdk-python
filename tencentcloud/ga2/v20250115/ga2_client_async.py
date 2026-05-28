@@ -61,6 +61,24 @@ class Ga2Client(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateForwardingPolicy(
+            self,
+            request: models.CreateForwardingPolicyRequest,
+            opts: Dict = None,
+    ) -> models.CreateForwardingPolicyResponse:
+        """
+        创建七层转发策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateForwardingPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateForwardingPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateForwardingRule(
             self,
             request: models.CreateForwardingRuleRequest,
@@ -146,6 +164,24 @@ class Ga2Client(AbstractClient):
         kwargs["action"] = "DeleteEndpointGroups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteEndpointGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteForwardingPolicy(
+            self,
+            request: models.DeleteForwardingPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteForwardingPolicyResponse:
+        """
+        删除七层转发策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteForwardingPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteForwardingPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -277,6 +313,24 @@ class Ga2Client(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeForwardingPolicy(
+            self,
+            request: models.DescribeForwardingPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeForwardingPolicyResponse:
+        """
+        查看七层转发策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeForwardingPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeForwardingPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeForwardingRule(
             self,
             request: models.DescribeForwardingRuleRequest,
@@ -380,6 +434,24 @@ class Ga2Client(AbstractClient):
         kwargs["action"] = "ModifyEndpointGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyEndpointGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyForwardingPolicy(
+            self,
+            request: models.ModifyForwardingPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyForwardingPolicyResponse:
+        """
+        修改七层转发策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyForwardingPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyForwardingPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

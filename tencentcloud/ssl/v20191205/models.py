@@ -8042,14 +8042,14 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: 证书 ID。
+        :param _CertificateId: <p>证书 ID。</p>
         :type CertificateId: str
         """
         self._CertificateId = None
 
     @property
     def CertificateId(self):
-        r"""证书 ID。
+        r"""<p>证书 ID。</p>
         :rtype: str
         """
         return self._CertificateId
@@ -8078,214 +8078,116 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OwnerUin: 证书所属用户主账号 UIN。
+        :param _OwnerUin: <p>证书所属用户主账号 UIN。</p>
         :type OwnerUin: str
-        :param _ProjectId: 项目 ID。
+        :param _ProjectId: <p>项目 ID。</p>
         :type ProjectId: str
-        :param _From: 证书来源：
-trustasia：亚洲诚信，
-upload：用户上传。
-wosign：沃通
-sheca：上海CA
+        :param _From: <p>证书来源：<br>trustasia：亚洲诚信，<br>upload：用户上传。<br>wosign：沃通<br>sheca：上海CA</p>
         :type From: str
-        :param _CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
+        :param _CertificateType: <p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
         :type CertificateType: str
-        :param _PackageType: 证书套餐类型：
-null：用户上传证书（没有套餐类型），
-2：TrustAsia TLS RSA CA， 
-3：SecureSite 增强型企业版（EV Pro）， 
-4：SecureSite 增强型（EV）， 
-5：SecureSite 企业型专业版（OV Pro），
-6：SecureSite 企业型（OV）， 
-7：SecureSite 企业型（OV）通配符， 
-8：Geotrust 增强型（EV）， 
-9：Geotrust 企业型（OV）， 
-10：Geotrust 企业型（OV）通配符， 
-11：TrustAsia 域名型多域名 SSL 证书， 
-12：TrustAsia 域名型（DV）通配符， 
-13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
-14：TrustAsia 企业型（OV）SSL 证书（D3）， 
-15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
-16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
-17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
-18：GlobalSign 企业型（OV）SSL 证书， 
-19：GlobalSign 企业型通配符 （OV）SSL 证书， 
-20：GlobalSign 增强型 （EV）SSL 证书， 
-21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
-22：GlobalSign 企业型多域名（OV）SSL 证书， 
-23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
-24：GlobalSign 增强型多域名（EV）SSL 证书，
-25：Wotrus 域名型证书，
-26：Wotrus 域名型多域名证书，
-27：Wotrus 域名型通配符证书，
-28：Wotrus 企业型证书，
-29：Wotrus 企业型多域名证书，
-30：Wotrus 企业型通配符证书，
-31：Wotrus 增强型证书，
-32：Wotrus 增强型多域名证书，
-33：WoTrus-国密域名型证书，
-34：WoTrus-国密域名型证书（多域名），
-35：WoTrus-国密域名型证书（通配符），
-37：WoTrus-国密企业型证书，
-38：WoTrus-国密企业型证书（多域名），
-39：WoTrus-国密企业型证书（通配符），
-40：WoTrus-国密增强型证书，
-41：WoTrus-国密增强型证书（多域名），
-42：TrustAsia-域名型证书（通配符多域名），
-43：DNSPod-企业型(OV)SSL证书
-44：DNSPod-企业型(OV)通配符SSL证书
-45：DNSPod-企业型(OV)多域名SSL证书
-46：DNSPod-增强型(EV)SSL证书
-47：DNSPod-增强型(EV)多域名SSL证书
-48：DNSPod-域名型(DV)SSL证书
-49：DNSPod-域名型(DV)通配符SSL证书
-50：DNSPod-域名型(DV)多域名SSL证书
-51：DNSPod（国密）-企业型(OV)SSL证书
-52：DNSPod（国密）-企业型(OV)通配符SSL证书
-53：DNSPod（国密）-企业型(OV)多域名SSL证书
-54：DNSPod（国密）-域名型(DV)SSL证书
-55：DNSPod（国密）-域名型(DV)通配符SSL证书
-56：DNSPod（国密）-域名型(DV)多域名SSL证书
-57：SecureSite 企业型专业版多域名(OV Pro)
-58：SecureSite 企业型多域名(OV)
-59：SecureSite 增强型专业版多域名(EV Pro)
-60：SecureSite 增强型多域名(EV)
-61：Geotrust 增强型多域名(EV)
-75：SecureSite 企业型(OV)
-76：SecureSite 企业型(OV)通配符
-77：SecureSite 增强型(EV)
-78：Geotrust 企业型(OV)
-79：Geotrust 企业型(OV)通配符
-80：Geotrust 增强型(EV)
-81：GlobalSign 企业型（OV）SSL证书
-82：GlobalSign 企业型通配符 （OV）SSL证书
-83：TrustAsia C1 DV Free
-85：GlobalSign 增强型 （EV）SSL证书
-88：GlobalSign 企业型通配符多域名 （OV）SSL证书
-89：GlobalSign 企业型多域名 （OV）SSL证书
-90：GlobalSign 增强型多域名（EV） SSL证书
-91：Geotrust 增强型多域名(EV)
-92：SecureSite 企业型专业版多域名(OV Pro)
-93：SecureSite 企业型多域名(OV)
-94：SecureSite 增强型专业版多域名(EV Pro)
-95：SecureSite 增强型多域名(EV)
-96：SecureSite 增强型专业版(EV Pro)
-97：SecureSite 企业型专业版(OV Pro)
-98：CFCA 企业型(OV)SSL证书
-99：CFCA 企业型多域名(OV)SSL证书
-100：CFCA 企业型通配符(OV)SSL证书
-101：CFCA 增强型(EV)SSL证书
+        :param _PackageType: <p>证书套餐类型：<br>null：用户上传证书（没有套餐类型），<br>2：TrustAsia TLS RSA CA，<br>3：SecureSite 增强型企业版（EV Pro），<br>4：SecureSite 增强型（EV），<br>5：SecureSite 企业型专业版（OV Pro），<br>6：SecureSite 企业型（OV），<br>7：SecureSite 企业型（OV）通配符，<br>8：Geotrust 增强型（EV），<br>9：Geotrust 企业型（OV），<br>10：Geotrust 企业型（OV）通配符，<br>11：TrustAsia 域名型多域名 SSL 证书，<br>12：TrustAsia 域名型（DV）通配符，<br>13：TrustAsia 企业型通配符（OV）SSL 证书（D3），<br>14：TrustAsia 企业型（OV）SSL 证书（D3），<br>15：TrustAsia 企业型多域名 （OV）SSL 证书（D3），<br>16：TrustAsia 增强型 （EV）SSL 证书（D3），<br>17：TrustAsia 增强型多域名（EV）SSL 证书（D3），<br>18：GlobalSign 企业型（OV）SSL 证书，<br>19：GlobalSign 企业型通配符 （OV）SSL 证书，<br>20：GlobalSign 增强型 （EV）SSL 证书，<br>21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3），<br>22：GlobalSign 企业型多域名（OV）SSL 证书，<br>23：GlobalSign 企业型通配符多域名（OV）SSL 证书，<br>24：GlobalSign 增强型多域名（EV）SSL 证书，<br>25：Wotrus 域名型证书，<br>26：Wotrus 域名型多域名证书，<br>27：Wotrus 域名型通配符证书，<br>28：Wotrus 企业型证书，<br>29：Wotrus 企业型多域名证书，<br>30：Wotrus 企业型通配符证书，<br>31：Wotrus 增强型证书，<br>32：Wotrus 增强型多域名证书，<br>33：WoTrus-国密域名型证书，<br>34：WoTrus-国密域名型证书（多域名），<br>35：WoTrus-国密域名型证书（通配符），<br>37：WoTrus-国密企业型证书，<br>38：WoTrus-国密企业型证书（多域名），<br>39：WoTrus-国密企业型证书（通配符），<br>40：WoTrus-国密增强型证书，<br>41：WoTrus-国密增强型证书（多域名），<br>42：TrustAsia-域名型证书（通配符多域名），<br>43：DNSPod-企业型(OV)SSL证书<br>44：DNSPod-企业型(OV)通配符SSL证书<br>45：DNSPod-企业型(OV)多域名SSL证书<br>46：DNSPod-增强型(EV)SSL证书<br>47：DNSPod-增强型(EV)多域名SSL证书<br>48：DNSPod-域名型(DV)SSL证书<br>49：DNSPod-域名型(DV)通配符SSL证书<br>50：DNSPod-域名型(DV)多域名SSL证书<br>51：DNSPod（国密）-企业型(OV)SSL证书<br>52：DNSPod（国密）-企业型(OV)通配符SSL证书<br>53：DNSPod（国密）-企业型(OV)多域名SSL证书<br>54：DNSPod（国密）-域名型(DV)SSL证书<br>55：DNSPod（国密）-域名型(DV)通配符SSL证书<br>56：DNSPod（国密）-域名型(DV)多域名SSL证书<br>57：SecureSite 企业型专业版多域名(OV Pro)<br>58：SecureSite 企业型多域名(OV)<br>59：SecureSite 增强型专业版多域名(EV Pro)<br>60：SecureSite 增强型多域名(EV)<br>61：Geotrust 增强型多域名(EV)<br>75：SecureSite 企业型(OV)<br>76：SecureSite 企业型(OV)通配符<br>77：SecureSite 增强型(EV)<br>78：Geotrust 企业型(OV)<br>79：Geotrust 企业型(OV)通配符<br>80：Geotrust 增强型(EV)<br>81：GlobalSign 企业型（OV）SSL证书<br>82：GlobalSign 企业型通配符 （OV）SSL证书<br>83：TrustAsia C1 DV Free<br>85：GlobalSign 增强型 （EV）SSL证书<br>88：GlobalSign 企业型通配符多域名 （OV）SSL证书<br>89：GlobalSign 企业型多域名 （OV）SSL证书<br>90：GlobalSign 增强型多域名（EV） SSL证书<br>91：Geotrust 增强型多域名(EV)<br>92：SecureSite 企业型专业版多域名(OV Pro)<br>93：SecureSite 企业型多域名(OV)<br>94：SecureSite 增强型专业版多域名(EV Pro)<br>95：SecureSite 增强型多域名(EV)<br>96：SecureSite 增强型专业版(EV Pro)<br>97：SecureSite 企业型专业版(OV Pro)<br>98：CFCA 企业型(OV)SSL证书<br>99：CFCA 企业型多域名(OV)SSL证书<br>100：CFCA 企业型通配符(OV)SSL证书<br>101：CFCA 增强型(EV)SSL证书</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
-        :param _ProductZhName: 证书产品名称
+        :param _ProductZhName: <p>证书产品名称</p>
         :type ProductZhName: str
-        :param _Domain: 证书绑定通用名称域名。
+        :param _Domain: <p>证书绑定通用名称域名。</p>
         :type Domain: str
-        :param _Alias: 备注名称。
+        :param _Alias: <p>备注名称。</p>
         :type Alias: str
-        :param _Status: 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
+        :param _Status: <p>证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中</p>
         :type Status: int
-        :param _StatusMsg: 状态信息。 取值范围：
-//通用状态信息
-1、PRE-REVIEWING：预审核中
-2、LEGAL-REVIEWING：法务审核中
-3、CA-REVIEWING：CA审核中
-4、PENDING-DCV：域名验证中
-5、WAIT-ISSUE：等待签发（域名验证已通过）
-//证书审核失败状态信息
-1、订单审核失败
-2、CA审核失败，域名未通过安全审查
-3、域名验证超时，订单自动关闭，请您重新进行证书申请
-4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料
-待持续完善
+        :param _StatusMsg: <p>状态信息。 取值范围：<br>//通用状态信息<br>1、PRE-REVIEWING：预审核中<br>2、LEGAL-REVIEWING：法务审核中<br>3、CA-REVIEWING：CA审核中<br>4、PENDING-DCV：域名验证中<br>5、WAIT-ISSUE：等待签发（域名验证已通过）<br>//证书审核失败状态信息<br>1、订单审核失败<br>2、CA审核失败，域名未通过安全审查<br>3、域名验证超时，订单自动关闭，请您重新进行证书申请<br>4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料<br>待持续完善</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusMsg: str
-        :param _VerifyType: 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
+        :param _VerifyType: <p>验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyType: str
-        :param _VulnerabilityStatus: 漏洞扫描状态。
+        :param _VulnerabilityStatus: <p>漏洞扫描状态。</p>
         :type VulnerabilityStatus: str
-        :param _CertBeginTime: 证书生效时间。时区为GMT+8:00
+        :param _CertBeginTime: <p>证书生效时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertBeginTime: str
-        :param _CertEndTime: 证书失效时间。时区为GMT+8:00
+        :param _CertEndTime: <p>证书失效时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
-        :param _ValidityPeriod: 证书有效期：单位（月）。
+        :param _ValidityPeriod: <p>证书有效期：单位（月）。</p>
         :type ValidityPeriod: str
-        :param _InsertTime: 证书申请时间。时区为GMT+8:00
+        :param _InsertTime: <p>证书申请时间。时区为GMT+8:00</p>
         :type InsertTime: str
-        :param _OrderId: CA订单 ID。
+        :param _OrderId: <p>CA订单 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
-        :param _CertificateExtra: 证书扩展信息。
+        :param _CertificateExtra: <p>证书扩展信息。</p>
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
-        :param _CertificatePrivateKey: 私钥证书， 国密证书则为签名证书中的私钥证书
+        :param _CertificatePrivateKey: <p>私钥证书， 国密证书则为签名证书中的私钥证书</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificatePrivateKey: str
-        :param _CertificatePublicKey: 公钥证书， 国密则为签名证书中的公钥证书
+        :param _CertificatePublicKey: <p>公钥证书， 国密则为签名证书中的公钥证书</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificatePublicKey: str
-        :param _DvAuthDetail: 证书域名验证信息。
+        :param _DvAuthDetail: <p>证书域名验证信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthDetail: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
-        :param _VulnerabilityReport: 漏洞扫描评估报告。
+        :param _VulnerabilityReport: <p>漏洞扫描评估报告。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityReport: str
-        :param _CertificateId: 证书 ID。
+        :param _CertificateId: <p>证书 ID。</p>
         :type CertificateId: str
-        :param _TypeName: 证书类型名称。
+        :param _TypeName: <p>证书类型名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TypeName: str
-        :param _StatusName: 状态描述。
+        :param _StatusName: <p>状态描述。</p>
         :type StatusName: str
-        :param _SubjectAltName: 证书包含的多个域名（不包含主域名，主域名使用Domain字段）
+        :param _SubjectAltName: <p>证书包含的多个域名（不包含主域名，主域名使用Domain字段）</p>
         :type SubjectAltName: list of str
-        :param _IsVip: 是否为付费证书。
+        :param _IsVip: <p>是否为付费证书。</p>
         :type IsVip: bool
-        :param _IsWildcard: 是否为泛域名证书。
+        :param _IsWildcard: <p>是否为泛域名证书。</p>
         :type IsWildcard: bool
-        :param _IsDv: 是否为 DV 版证书。
+        :param _IsDv: <p>是否为 DV 版证书。</p>
         :type IsDv: bool
-        :param _IsVulnerability: 是否启用了漏洞扫描功能。
+        :param _IsVulnerability: <p>是否启用了漏洞扫描功能。</p>
         :type IsVulnerability: bool
-        :param _SubmittedData: 付费证书提交的资料信息。
+        :param _SubmittedData: <p>付费证书提交的资料信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubmittedData: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
-        :param _RenewAble: 是否可续费。
+        :param _RenewAble: <p>是否可续费。</p>
         :type RenewAble: bool
-        :param _Deployable: 是否可部署。
+        :param _Deployable: <p>是否可部署。</p>
         :type Deployable: bool
-        :param _Tags: 关联标签列表。
+        :param _Tags: <p>关联标签列表。</p>
         :type Tags: list of Tags
-        :param _RootCert: 根证书。
+        :param _RootCert: <p>根证书。</p>
         :type RootCert: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
-        :param _EncryptCert: 国密加密证书公钥， 仅国密证书有值
+        :param _EncryptCert: <p>国密加密证书公钥， 仅国密证书有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptCert: str
-        :param _EncryptPrivateKey: 国密加密私钥证书， 仅国密证书有值
+        :param _EncryptPrivateKey: <p>国密加密私钥证书， 仅国密证书有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptPrivateKey: str
-        :param _CertFingerprint: 签名证书 SHA1指纹
+        :param _CertFingerprint: <p>签名证书 SHA1指纹</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertFingerprint: str
-        :param _EncryptCertFingerprint: 加密证书 SHA1指纹 （国密证书特有）
+        :param _EncryptCertFingerprint: <p>加密证书 SHA1指纹 （国密证书特有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptCertFingerprint: str
-        :param _EncryptAlgorithm: 证书加密算法（国密证书特有）
+        :param _EncryptAlgorithm: <p>证书加密算法（国密证书特有）</p>
         :type EncryptAlgorithm: str
-        :param _DvRevokeAuthDetail: DV证书吊销验证值
+        :param _DvRevokeAuthDetail: <p>DV证书吊销验证值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvRevokeAuthDetail: list of DvAuths
-        :param _CertChainInfo: 证书链信息
+        :param _CertChainInfo: <p>证书链信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertChainInfo: list of CertBasicInfo
-        :param _DomainType: 证书域名类型， 1（单域名）；2（多域名）；3（泛域名）；4（多泛域名）
+        :param _DomainType: <p>证书域名类型， 1（单域名）；2（多域名）；3（泛域名）；4（多泛域名）</p>
         :type DomainType: int
-        :param _CertType: 证书类型，DV（域名型）；OV（企业型）；EV（增强型）
+        :param _CertType: <p>证书类型，DV（域名型）；OV（企业型）；EV（增强型）</p>
         :type CertType: str
-        :param _UseCrossSignRoot: 是否使用交叉根
+        :param _UseCrossSignRoot: <p>是否使用交叉根</p>
         :type UseCrossSignRoot: bool
+        :param _HostingStatus: <p>托管状态，0代表托管中，5代表资源替换中， 10代表托管完成， -1代表未托管</p>
+        :type HostingStatus: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8334,11 +8236,12 @@ null：用户上传证书（没有套餐类型），
         self._DomainType = None
         self._CertType = None
         self._UseCrossSignRoot = None
+        self._HostingStatus = None
         self._RequestId = None
 
     @property
     def OwnerUin(self):
-        r"""证书所属用户主账号 UIN。
+        r"""<p>证书所属用户主账号 UIN。</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -8349,7 +8252,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProjectId(self):
-        r"""项目 ID。
+        r"""<p>项目 ID。</p>
         :rtype: str
         """
         return self._ProjectId
@@ -8360,11 +8263,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def From(self):
-        r"""证书来源：
-trustasia：亚洲诚信，
-upload：用户上传。
-wosign：沃通
-sheca：上海CA
+        r"""<p>证书来源：<br>trustasia：亚洲诚信，<br>upload：用户上传。<br>wosign：沃通<br>sheca：上海CA</p>
         :rtype: str
         """
         return self._From
@@ -8375,7 +8274,7 @@ sheca：上海CA
 
     @property
     def CertificateType(self):
-        r"""证书类型：CA = 客户端证书，SVR = 服务器证书。
+        r"""<p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
         :rtype: str
         """
         return self._CertificateType
@@ -8386,91 +8285,7 @@ sheca：上海CA
 
     @property
     def PackageType(self):
-        r"""证书套餐类型：
-null：用户上传证书（没有套餐类型），
-2：TrustAsia TLS RSA CA， 
-3：SecureSite 增强型企业版（EV Pro）， 
-4：SecureSite 增强型（EV）， 
-5：SecureSite 企业型专业版（OV Pro），
-6：SecureSite 企业型（OV）， 
-7：SecureSite 企业型（OV）通配符， 
-8：Geotrust 增强型（EV）， 
-9：Geotrust 企业型（OV）， 
-10：Geotrust 企业型（OV）通配符， 
-11：TrustAsia 域名型多域名 SSL 证书， 
-12：TrustAsia 域名型（DV）通配符， 
-13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
-14：TrustAsia 企业型（OV）SSL 证书（D3）， 
-15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
-16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
-17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
-18：GlobalSign 企业型（OV）SSL 证书， 
-19：GlobalSign 企业型通配符 （OV）SSL 证书， 
-20：GlobalSign 增强型 （EV）SSL 证书， 
-21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
-22：GlobalSign 企业型多域名（OV）SSL 证书， 
-23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
-24：GlobalSign 增强型多域名（EV）SSL 证书，
-25：Wotrus 域名型证书，
-26：Wotrus 域名型多域名证书，
-27：Wotrus 域名型通配符证书，
-28：Wotrus 企业型证书，
-29：Wotrus 企业型多域名证书，
-30：Wotrus 企业型通配符证书，
-31：Wotrus 增强型证书，
-32：Wotrus 增强型多域名证书，
-33：WoTrus-国密域名型证书，
-34：WoTrus-国密域名型证书（多域名），
-35：WoTrus-国密域名型证书（通配符），
-37：WoTrus-国密企业型证书，
-38：WoTrus-国密企业型证书（多域名），
-39：WoTrus-国密企业型证书（通配符），
-40：WoTrus-国密增强型证书，
-41：WoTrus-国密增强型证书（多域名），
-42：TrustAsia-域名型证书（通配符多域名），
-43：DNSPod-企业型(OV)SSL证书
-44：DNSPod-企业型(OV)通配符SSL证书
-45：DNSPod-企业型(OV)多域名SSL证书
-46：DNSPod-增强型(EV)SSL证书
-47：DNSPod-增强型(EV)多域名SSL证书
-48：DNSPod-域名型(DV)SSL证书
-49：DNSPod-域名型(DV)通配符SSL证书
-50：DNSPod-域名型(DV)多域名SSL证书
-51：DNSPod（国密）-企业型(OV)SSL证书
-52：DNSPod（国密）-企业型(OV)通配符SSL证书
-53：DNSPod（国密）-企业型(OV)多域名SSL证书
-54：DNSPod（国密）-域名型(DV)SSL证书
-55：DNSPod（国密）-域名型(DV)通配符SSL证书
-56：DNSPod（国密）-域名型(DV)多域名SSL证书
-57：SecureSite 企业型专业版多域名(OV Pro)
-58：SecureSite 企业型多域名(OV)
-59：SecureSite 增强型专业版多域名(EV Pro)
-60：SecureSite 增强型多域名(EV)
-61：Geotrust 增强型多域名(EV)
-75：SecureSite 企业型(OV)
-76：SecureSite 企业型(OV)通配符
-77：SecureSite 增强型(EV)
-78：Geotrust 企业型(OV)
-79：Geotrust 企业型(OV)通配符
-80：Geotrust 增强型(EV)
-81：GlobalSign 企业型（OV）SSL证书
-82：GlobalSign 企业型通配符 （OV）SSL证书
-83：TrustAsia C1 DV Free
-85：GlobalSign 增强型 （EV）SSL证书
-88：GlobalSign 企业型通配符多域名 （OV）SSL证书
-89：GlobalSign 企业型多域名 （OV）SSL证书
-90：GlobalSign 增强型多域名（EV） SSL证书
-91：Geotrust 增强型多域名(EV)
-92：SecureSite 企业型专业版多域名(OV Pro)
-93：SecureSite 企业型多域名(OV)
-94：SecureSite 增强型专业版多域名(EV Pro)
-95：SecureSite 增强型多域名(EV)
-96：SecureSite 增强型专业版(EV Pro)
-97：SecureSite 企业型专业版(OV Pro)
-98：CFCA 企业型(OV)SSL证书
-99：CFCA 企业型多域名(OV)SSL证书
-100：CFCA 企业型通配符(OV)SSL证书
-101：CFCA 增强型(EV)SSL证书
+        r"""<p>证书套餐类型：<br>null：用户上传证书（没有套餐类型），<br>2：TrustAsia TLS RSA CA，<br>3：SecureSite 增强型企业版（EV Pro），<br>4：SecureSite 增强型（EV），<br>5：SecureSite 企业型专业版（OV Pro），<br>6：SecureSite 企业型（OV），<br>7：SecureSite 企业型（OV）通配符，<br>8：Geotrust 增强型（EV），<br>9：Geotrust 企业型（OV），<br>10：Geotrust 企业型（OV）通配符，<br>11：TrustAsia 域名型多域名 SSL 证书，<br>12：TrustAsia 域名型（DV）通配符，<br>13：TrustAsia 企业型通配符（OV）SSL 证书（D3），<br>14：TrustAsia 企业型（OV）SSL 证书（D3），<br>15：TrustAsia 企业型多域名 （OV）SSL 证书（D3），<br>16：TrustAsia 增强型 （EV）SSL 证书（D3），<br>17：TrustAsia 增强型多域名（EV）SSL 证书（D3），<br>18：GlobalSign 企业型（OV）SSL 证书，<br>19：GlobalSign 企业型通配符 （OV）SSL 证书，<br>20：GlobalSign 增强型 （EV）SSL 证书，<br>21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3），<br>22：GlobalSign 企业型多域名（OV）SSL 证书，<br>23：GlobalSign 企业型通配符多域名（OV）SSL 证书，<br>24：GlobalSign 增强型多域名（EV）SSL 证书，<br>25：Wotrus 域名型证书，<br>26：Wotrus 域名型多域名证书，<br>27：Wotrus 域名型通配符证书，<br>28：Wotrus 企业型证书，<br>29：Wotrus 企业型多域名证书，<br>30：Wotrus 企业型通配符证书，<br>31：Wotrus 增强型证书，<br>32：Wotrus 增强型多域名证书，<br>33：WoTrus-国密域名型证书，<br>34：WoTrus-国密域名型证书（多域名），<br>35：WoTrus-国密域名型证书（通配符），<br>37：WoTrus-国密企业型证书，<br>38：WoTrus-国密企业型证书（多域名），<br>39：WoTrus-国密企业型证书（通配符），<br>40：WoTrus-国密增强型证书，<br>41：WoTrus-国密增强型证书（多域名），<br>42：TrustAsia-域名型证书（通配符多域名），<br>43：DNSPod-企业型(OV)SSL证书<br>44：DNSPod-企业型(OV)通配符SSL证书<br>45：DNSPod-企业型(OV)多域名SSL证书<br>46：DNSPod-增强型(EV)SSL证书<br>47：DNSPod-增强型(EV)多域名SSL证书<br>48：DNSPod-域名型(DV)SSL证书<br>49：DNSPod-域名型(DV)通配符SSL证书<br>50：DNSPod-域名型(DV)多域名SSL证书<br>51：DNSPod（国密）-企业型(OV)SSL证书<br>52：DNSPod（国密）-企业型(OV)通配符SSL证书<br>53：DNSPod（国密）-企业型(OV)多域名SSL证书<br>54：DNSPod（国密）-域名型(DV)SSL证书<br>55：DNSPod（国密）-域名型(DV)通配符SSL证书<br>56：DNSPod（国密）-域名型(DV)多域名SSL证书<br>57：SecureSite 企业型专业版多域名(OV Pro)<br>58：SecureSite 企业型多域名(OV)<br>59：SecureSite 增强型专业版多域名(EV Pro)<br>60：SecureSite 增强型多域名(EV)<br>61：Geotrust 增强型多域名(EV)<br>75：SecureSite 企业型(OV)<br>76：SecureSite 企业型(OV)通配符<br>77：SecureSite 增强型(EV)<br>78：Geotrust 企业型(OV)<br>79：Geotrust 企业型(OV)通配符<br>80：Geotrust 增强型(EV)<br>81：GlobalSign 企业型（OV）SSL证书<br>82：GlobalSign 企业型通配符 （OV）SSL证书<br>83：TrustAsia C1 DV Free<br>85：GlobalSign 增强型 （EV）SSL证书<br>88：GlobalSign 企业型通配符多域名 （OV）SSL证书<br>89：GlobalSign 企业型多域名 （OV）SSL证书<br>90：GlobalSign 增强型多域名（EV） SSL证书<br>91：Geotrust 增强型多域名(EV)<br>92：SecureSite 企业型专业版多域名(OV Pro)<br>93：SecureSite 企业型多域名(OV)<br>94：SecureSite 增强型专业版多域名(EV Pro)<br>95：SecureSite 增强型多域名(EV)<br>96：SecureSite 增强型专业版(EV Pro)<br>97：SecureSite 企业型专业版(OV Pro)<br>98：CFCA 企业型(OV)SSL证书<br>99：CFCA 企业型多域名(OV)SSL证书<br>100：CFCA 企业型通配符(OV)SSL证书<br>101：CFCA 增强型(EV)SSL证书</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8482,7 +8297,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProductZhName(self):
-        r"""证书产品名称
+        r"""<p>证书产品名称</p>
         :rtype: str
         """
         return self._ProductZhName
@@ -8493,7 +8308,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Domain(self):
-        r"""证书绑定通用名称域名。
+        r"""<p>证书绑定通用名称域名。</p>
         :rtype: str
         """
         return self._Domain
@@ -8504,7 +8319,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Alias(self):
-        r"""备注名称。
+        r"""<p>备注名称。</p>
         :rtype: str
         """
         return self._Alias
@@ -8515,7 +8330,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Status(self):
-        r"""证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
+        r"""<p>证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中</p>
         :rtype: int
         """
         return self._Status
@@ -8526,19 +8341,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusMsg(self):
-        r"""状态信息。 取值范围：
-//通用状态信息
-1、PRE-REVIEWING：预审核中
-2、LEGAL-REVIEWING：法务审核中
-3、CA-REVIEWING：CA审核中
-4、PENDING-DCV：域名验证中
-5、WAIT-ISSUE：等待签发（域名验证已通过）
-//证书审核失败状态信息
-1、订单审核失败
-2、CA审核失败，域名未通过安全审查
-3、域名验证超时，订单自动关闭，请您重新进行证书申请
-4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料
-待持续完善
+        r"""<p>状态信息。 取值范围：<br>//通用状态信息<br>1、PRE-REVIEWING：预审核中<br>2、LEGAL-REVIEWING：法务审核中<br>3、CA-REVIEWING：CA审核中<br>4、PENDING-DCV：域名验证中<br>5、WAIT-ISSUE：等待签发（域名验证已通过）<br>//证书审核失败状态信息<br>1、订单审核失败<br>2、CA审核失败，域名未通过安全审查<br>3、域名验证超时，订单自动关闭，请您重新进行证书申请<br>4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料<br>待持续完善</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8550,7 +8353,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VerifyType(self):
-        r"""验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
+        r"""<p>验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8562,7 +8365,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VulnerabilityStatus(self):
-        r"""漏洞扫描状态。
+        r"""<p>漏洞扫描状态。</p>
         :rtype: str
         """
         return self._VulnerabilityStatus
@@ -8573,7 +8376,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        r"""证书生效时间。时区为GMT+8:00
+        r"""<p>证书生效时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8585,7 +8388,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        r"""证书失效时间。时区为GMT+8:00
+        r"""<p>证书失效时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8597,7 +8400,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ValidityPeriod(self):
-        r"""证书有效期：单位（月）。
+        r"""<p>证书有效期：单位（月）。</p>
         :rtype: str
         """
         return self._ValidityPeriod
@@ -8608,7 +8411,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        r"""证书申请时间。时区为GMT+8:00
+        r"""<p>证书申请时间。时区为GMT+8:00</p>
         :rtype: str
         """
         return self._InsertTime
@@ -8619,7 +8422,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def OrderId(self):
-        r"""CA订单 ID。
+        r"""<p>CA订单 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8631,7 +8434,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateExtra(self):
-        r"""证书扩展信息。
+        r"""<p>证书扩展信息。</p>
         :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         """
         return self._CertificateExtra
@@ -8642,7 +8445,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificatePrivateKey(self):
-        r"""私钥证书， 国密证书则为签名证书中的私钥证书
+        r"""<p>私钥证书， 国密证书则为签名证书中的私钥证书</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8654,7 +8457,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificatePublicKey(self):
-        r"""公钥证书， 国密则为签名证书中的公钥证书
+        r"""<p>公钥证书， 国密则为签名证书中的公钥证书</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8666,7 +8469,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DvAuthDetail(self):
-        r"""证书域名验证信息。
+        r"""<p>证书域名验证信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
         """
@@ -8678,7 +8481,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VulnerabilityReport(self):
-        r"""漏洞扫描评估报告。
+        r"""<p>漏洞扫描评估报告。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8690,7 +8493,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateId(self):
-        r"""证书 ID。
+        r"""<p>证书 ID。</p>
         :rtype: str
         """
         return self._CertificateId
@@ -8701,7 +8504,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def TypeName(self):
-        r"""证书类型名称。
+        r"""<p>证书类型名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8713,7 +8516,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusName(self):
-        r"""状态描述。
+        r"""<p>状态描述。</p>
         :rtype: str
         """
         return self._StatusName
@@ -8724,7 +8527,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SubjectAltName(self):
-        r"""证书包含的多个域名（不包含主域名，主域名使用Domain字段）
+        r"""<p>证书包含的多个域名（不包含主域名，主域名使用Domain字段）</p>
         :rtype: list of str
         """
         return self._SubjectAltName
@@ -8735,7 +8538,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVip(self):
-        r"""是否为付费证书。
+        r"""<p>是否为付费证书。</p>
         :rtype: bool
         """
         return self._IsVip
@@ -8746,7 +8549,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsWildcard(self):
-        r"""是否为泛域名证书。
+        r"""<p>是否为泛域名证书。</p>
         :rtype: bool
         """
         return self._IsWildcard
@@ -8757,7 +8560,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsDv(self):
-        r"""是否为 DV 版证书。
+        r"""<p>是否为 DV 版证书。</p>
         :rtype: bool
         """
         return self._IsDv
@@ -8768,7 +8571,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVulnerability(self):
-        r"""是否启用了漏洞扫描功能。
+        r"""<p>是否启用了漏洞扫描功能。</p>
         :rtype: bool
         """
         return self._IsVulnerability
@@ -8779,7 +8582,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SubmittedData(self):
-        r"""付费证书提交的资料信息。
+        r"""<p>付费证书提交的资料信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
         """
@@ -8791,7 +8594,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def RenewAble(self):
-        r"""是否可续费。
+        r"""<p>是否可续费。</p>
         :rtype: bool
         """
         return self._RenewAble
@@ -8802,7 +8605,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Deployable(self):
-        r"""是否可部署。
+        r"""<p>是否可部署。</p>
         :rtype: bool
         """
         return self._Deployable
@@ -8813,7 +8616,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Tags(self):
-        r"""关联标签列表。
+        r"""<p>关联标签列表。</p>
         :rtype: list of Tags
         """
         return self._Tags
@@ -8824,7 +8627,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def RootCert(self):
-        r"""根证书。
+        r"""<p>根证书。</p>
         :rtype: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
         """
         return self._RootCert
@@ -8835,7 +8638,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def EncryptCert(self):
-        r"""国密加密证书公钥， 仅国密证书有值
+        r"""<p>国密加密证书公钥， 仅国密证书有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8847,7 +8650,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def EncryptPrivateKey(self):
-        r"""国密加密私钥证书， 仅国密证书有值
+        r"""<p>国密加密私钥证书， 仅国密证书有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8859,7 +8662,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertFingerprint(self):
-        r"""签名证书 SHA1指纹
+        r"""<p>签名证书 SHA1指纹</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8871,7 +8674,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def EncryptCertFingerprint(self):
-        r"""加密证书 SHA1指纹 （国密证书特有）
+        r"""<p>加密证书 SHA1指纹 （国密证书特有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8883,7 +8686,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def EncryptAlgorithm(self):
-        r"""证书加密算法（国密证书特有）
+        r"""<p>证书加密算法（国密证书特有）</p>
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -8894,7 +8697,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DvRevokeAuthDetail(self):
-        r"""DV证书吊销验证值
+        r"""<p>DV证书吊销验证值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DvAuths
         """
@@ -8906,7 +8709,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertChainInfo(self):
-        r"""证书链信息
+        r"""<p>证书链信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CertBasicInfo
         """
@@ -8918,7 +8721,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DomainType(self):
-        r"""证书域名类型， 1（单域名）；2（多域名）；3（泛域名）；4（多泛域名）
+        r"""<p>证书域名类型， 1（单域名）；2（多域名）；3（泛域名）；4（多泛域名）</p>
         :rtype: int
         """
         return self._DomainType
@@ -8929,7 +8732,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertType(self):
-        r"""证书类型，DV（域名型）；OV（企业型）；EV（增强型）
+        r"""<p>证书类型，DV（域名型）；OV（企业型）；EV（增强型）</p>
         :rtype: str
         """
         return self._CertType
@@ -8940,7 +8743,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def UseCrossSignRoot(self):
-        r"""是否使用交叉根
+        r"""<p>是否使用交叉根</p>
         :rtype: bool
         """
         return self._UseCrossSignRoot
@@ -8948,6 +8751,17 @@ null：用户上传证书（没有套餐类型），
     @UseCrossSignRoot.setter
     def UseCrossSignRoot(self, UseCrossSignRoot):
         self._UseCrossSignRoot = UseCrossSignRoot
+
+    @property
+    def HostingStatus(self):
+        r"""<p>托管状态，0代表托管中，5代表资源替换中， 10代表托管完成， -1代表未托管</p>
+        :rtype: int
+        """
+        return self._HostingStatus
+
+    @HostingStatus.setter
+    def HostingStatus(self, HostingStatus):
+        self._HostingStatus = HostingStatus
 
     @property
     def RequestId(self):
@@ -9030,6 +8844,7 @@ null：用户上传证书（没有套餐类型），
         self._DomainType = params.get("DomainType")
         self._CertType = params.get("CertType")
         self._UseCrossSignRoot = params.get("UseCrossSignRoot")
+        self._HostingStatus = params.get("HostingStatus")
         self._RequestId = params.get("RequestId")
 
 

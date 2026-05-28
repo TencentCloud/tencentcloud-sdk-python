@@ -1713,6 +1713,323 @@ class AddLibraDBInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddServerlessRoInstancesRequest(AbstractModel):
+    r"""AddServerlessRoInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群Id</p>
+        :type ClusterId: str
+        :param _MinCpu: <p>ro实例最小规格</p>
+        :type MinCpu: float
+        :param _MaxCpu: <p>ro实例最大规格</p>
+        :type MaxCpu: float
+        :param _InstanceName: <p>ro实例名称</p>
+        :type InstanceName: str
+        :param _VpcId: <p>所属VPC网络ID</p>
+        :type VpcId: str
+        :param _SubnetId: <p>所属子网ID，如果设置了VpcId，则SubnetId必填</p>
+        :type SubnetId: str
+        :param _Port: <p>新增RO组时使用的Port，取值范围为[0,65535)</p>
+        :type Port: int
+        :param _SecurityGroupIds: <p>安全组ID，新建只读实例时可以指定安全组</p>
+        :type SecurityGroupIds: list of str
+        :param _AutoPause: <p>是否自动暂停</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+        :type AutoPause: str
+        :param _AutoPauseDelay: <p>自动暂停时间</p><p>单位：秒</p>
+        :type AutoPauseDelay: int
+        :param _InstanceParams: <p>实例参数</p>
+        :type InstanceParams: list of ModifyParamItem
+        :param _ParamTemplateId: <p>参数模板</p>
+        :type ParamTemplateId: int
+        :param _RoCount: <p>新增的只读实例数量</p>
+        :type RoCount: int
+        """
+        self._ClusterId = None
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._InstanceName = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Port = None
+        self._SecurityGroupIds = None
+        self._AutoPause = None
+        self._AutoPauseDelay = None
+        self._InstanceParams = None
+        self._ParamTemplateId = None
+        self._RoCount = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群Id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MinCpu(self):
+        r"""<p>ro实例最小规格</p>
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        r"""<p>ro实例最大规格</p>
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def InstanceName(self):
+        r"""<p>ro实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def VpcId(self):
+        r"""<p>所属VPC网络ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>所属子网ID，如果设置了VpcId，则SubnetId必填</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Port(self):
+        r"""<p>新增RO组时使用的Port，取值范围为[0,65535)</p>
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>安全组ID，新建只读实例时可以指定安全组</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def AutoPause(self):
+        r"""<p>是否自动暂停</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+        :rtype: str
+        """
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def AutoPauseDelay(self):
+        r"""<p>自动暂停时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._AutoPauseDelay
+
+    @AutoPauseDelay.setter
+    def AutoPauseDelay(self, AutoPauseDelay):
+        self._AutoPauseDelay = AutoPauseDelay
+
+    @property
+    def InstanceParams(self):
+        r"""<p>实例参数</p>
+        :rtype: list of ModifyParamItem
+        """
+        return self._InstanceParams
+
+    @InstanceParams.setter
+    def InstanceParams(self, InstanceParams):
+        self._InstanceParams = InstanceParams
+
+    @property
+    def ParamTemplateId(self):
+        r"""<p>参数模板</p>
+        :rtype: int
+        """
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
+    @property
+    def RoCount(self):
+        r"""<p>新增的只读实例数量</p>
+        :rtype: int
+        """
+        return self._RoCount
+
+    @RoCount.setter
+    def RoCount(self, RoCount):
+        self._RoCount = RoCount
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._InstanceName = params.get("InstanceName")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Port = params.get("Port")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._AutoPause = params.get("AutoPause")
+        self._AutoPauseDelay = params.get("AutoPauseDelay")
+        if params.get("InstanceParams") is not None:
+            self._InstanceParams = []
+            for item in params.get("InstanceParams"):
+                obj = ModifyParamItem()
+                obj._deserialize(item)
+                self._InstanceParams.append(obj)
+        self._ParamTemplateId = params.get("ParamTemplateId")
+        self._RoCount = params.get("RoCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddServerlessRoInstancesResponse(AbstractModel):
+    r"""AddServerlessRoInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranId: <p>冻结流水，一次开通一个冻结流水</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param _DealNames: <p>后付费订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param _ResourceIds: <p>发货资源id列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: list of str
+        :param _BigDealIds: <p>大订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TranId = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._BigDealIds = None
+        self._RequestId = None
+
+    @property
+    def TranId(self):
+        r"""<p>冻结流水，一次开通一个冻结流水</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def DealNames(self):
+        r"""<p>后付费订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        r"""<p>发货资源id列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def BigDealIds(self):
+        r"""<p>大订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TranId = params.get("TranId")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._BigDealIds = params.get("BigDealIds")
+        self._RequestId = params.get("RequestId")
+
+
 class Addr(AbstractModel):
     r"""数据库地址
 
@@ -28842,6 +29159,134 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSQLExecutionPlanRequest(AbstractModel):
+    r"""DescribeSQLExecutionPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _TemplateID: <p>SQL模板ID</p>
+        :type TemplateID: str
+        :param _PlanDetailId: <p>计划详情序列号</p>
+        :type PlanDetailId: int
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+        self._TemplateID = None
+        self._PlanDetailId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TemplateID(self):
+        r"""<p>SQL模板ID</p>
+        :rtype: str
+        """
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+    @property
+    def PlanDetailId(self):
+        r"""<p>计划详情序列号</p>
+        :rtype: int
+        """
+        return self._PlanDetailId
+
+    @PlanDetailId.setter
+    def PlanDetailId(self, PlanDetailId):
+        self._PlanDetailId = PlanDetailId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        self._TemplateID = params.get("TemplateID")
+        self._PlanDetailId = params.get("PlanDetailId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSQLExecutionPlanResponse(AbstractModel):
+    r"""DescribeSQLExecutionPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanDetail: <p>执行计划详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlanDetail: :class:`tencentcloud.cynosdb.v20190107.models.ExecutionPlanDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PlanDetail = None
+        self._RequestId = None
+
+    @property
+    def PlanDetail(self):
+        r"""<p>执行计划详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ExecutionPlanDetail`
+        """
+        return self._PlanDetail
+
+    @PlanDetail.setter
+    def PlanDetail(self, PlanDetail):
+        self._PlanDetail = PlanDetail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PlanDetail") is not None:
+            self._PlanDetail = ExecutionPlanDetail()
+            self._PlanDetail._deserialize(params.get("PlanDetail"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSSLStatusRequest(AbstractModel):
     r"""DescribeSSLStatus请求参数结构体
 
@@ -30941,6 +31386,418 @@ class ExchangeRoGroupInfo(AbstractModel):
         if params.get("DstRoGroupInfo") is not None:
             self._DstRoGroupInfo = RollbackRoGroupInfo()
             self._DstRoGroupInfo._deserialize(params.get("DstRoGroupInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecutionPlanDetail(AbstractModel):
+    r"""执行计划详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateID: <p>模板ID</p>
+        :type TemplateID: str
+        :param _Db: <p>数据库名</p>
+        :type Db: str
+        :param _SQLSample: <p>原始SQL样例</p>
+        :type SQLSample: str
+        :param _SQLSampleRewritten: <p>改写后SQL样例</p>
+        :type SQLSampleRewritten: str
+        :param _TablePlanBefore: <p>优化前执行计划- 列表</p>
+        :type TablePlanBefore: list of ExplainRow
+        :param _TablePlanAfter: <p>优化后执行计划 - 列表</p>
+        :type TablePlanAfter: list of ExplainRow
+        :param _TreePlanBefore: <p>优化前树形执行计划</p>
+        :type TreePlanBefore: str
+        :param _TreePlanAfter: <p>优化后树形执行计划</p>
+        :type TreePlanAfter: str
+        :param _QueryTimeBefore: <p>优化前查询时间</p>
+        :type QueryTimeBefore: float
+        :param _QueryTimeAfter: <p>优化后查询时间</p>
+        :type QueryTimeAfter: float
+        :param _SQLScanRowsBefore: <p>优化前扫描行数</p>
+        :type SQLScanRowsBefore: int
+        :param _SQLScanRowsAfter: <p>优化后扫描行数</p>
+        :type SQLScanRowsAfter: int
+        """
+        self._TemplateID = None
+        self._Db = None
+        self._SQLSample = None
+        self._SQLSampleRewritten = None
+        self._TablePlanBefore = None
+        self._TablePlanAfter = None
+        self._TreePlanBefore = None
+        self._TreePlanAfter = None
+        self._QueryTimeBefore = None
+        self._QueryTimeAfter = None
+        self._SQLScanRowsBefore = None
+        self._SQLScanRowsAfter = None
+
+    @property
+    def TemplateID(self):
+        r"""<p>模板ID</p>
+        :rtype: str
+        """
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+    @property
+    def Db(self):
+        r"""<p>数据库名</p>
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def SQLSample(self):
+        r"""<p>原始SQL样例</p>
+        :rtype: str
+        """
+        return self._SQLSample
+
+    @SQLSample.setter
+    def SQLSample(self, SQLSample):
+        self._SQLSample = SQLSample
+
+    @property
+    def SQLSampleRewritten(self):
+        r"""<p>改写后SQL样例</p>
+        :rtype: str
+        """
+        return self._SQLSampleRewritten
+
+    @SQLSampleRewritten.setter
+    def SQLSampleRewritten(self, SQLSampleRewritten):
+        self._SQLSampleRewritten = SQLSampleRewritten
+
+    @property
+    def TablePlanBefore(self):
+        r"""<p>优化前执行计划- 列表</p>
+        :rtype: list of ExplainRow
+        """
+        return self._TablePlanBefore
+
+    @TablePlanBefore.setter
+    def TablePlanBefore(self, TablePlanBefore):
+        self._TablePlanBefore = TablePlanBefore
+
+    @property
+    def TablePlanAfter(self):
+        r"""<p>优化后执行计划 - 列表</p>
+        :rtype: list of ExplainRow
+        """
+        return self._TablePlanAfter
+
+    @TablePlanAfter.setter
+    def TablePlanAfter(self, TablePlanAfter):
+        self._TablePlanAfter = TablePlanAfter
+
+    @property
+    def TreePlanBefore(self):
+        r"""<p>优化前树形执行计划</p>
+        :rtype: str
+        """
+        return self._TreePlanBefore
+
+    @TreePlanBefore.setter
+    def TreePlanBefore(self, TreePlanBefore):
+        self._TreePlanBefore = TreePlanBefore
+
+    @property
+    def TreePlanAfter(self):
+        r"""<p>优化后树形执行计划</p>
+        :rtype: str
+        """
+        return self._TreePlanAfter
+
+    @TreePlanAfter.setter
+    def TreePlanAfter(self, TreePlanAfter):
+        self._TreePlanAfter = TreePlanAfter
+
+    @property
+    def QueryTimeBefore(self):
+        r"""<p>优化前查询时间</p>
+        :rtype: float
+        """
+        return self._QueryTimeBefore
+
+    @QueryTimeBefore.setter
+    def QueryTimeBefore(self, QueryTimeBefore):
+        self._QueryTimeBefore = QueryTimeBefore
+
+    @property
+    def QueryTimeAfter(self):
+        r"""<p>优化后查询时间</p>
+        :rtype: float
+        """
+        return self._QueryTimeAfter
+
+    @QueryTimeAfter.setter
+    def QueryTimeAfter(self, QueryTimeAfter):
+        self._QueryTimeAfter = QueryTimeAfter
+
+    @property
+    def SQLScanRowsBefore(self):
+        r"""<p>优化前扫描行数</p>
+        :rtype: int
+        """
+        return self._SQLScanRowsBefore
+
+    @SQLScanRowsBefore.setter
+    def SQLScanRowsBefore(self, SQLScanRowsBefore):
+        self._SQLScanRowsBefore = SQLScanRowsBefore
+
+    @property
+    def SQLScanRowsAfter(self):
+        r"""<p>优化后扫描行数</p>
+        :rtype: int
+        """
+        return self._SQLScanRowsAfter
+
+    @SQLScanRowsAfter.setter
+    def SQLScanRowsAfter(self, SQLScanRowsAfter):
+        self._SQLScanRowsAfter = SQLScanRowsAfter
+
+
+    def _deserialize(self, params):
+        self._TemplateID = params.get("TemplateID")
+        self._Db = params.get("Db")
+        self._SQLSample = params.get("SQLSample")
+        self._SQLSampleRewritten = params.get("SQLSampleRewritten")
+        if params.get("TablePlanBefore") is not None:
+            self._TablePlanBefore = []
+            for item in params.get("TablePlanBefore"):
+                obj = ExplainRow()
+                obj._deserialize(item)
+                self._TablePlanBefore.append(obj)
+        if params.get("TablePlanAfter") is not None:
+            self._TablePlanAfter = []
+            for item in params.get("TablePlanAfter"):
+                obj = ExplainRow()
+                obj._deserialize(item)
+                self._TablePlanAfter.append(obj)
+        self._TreePlanBefore = params.get("TreePlanBefore")
+        self._TreePlanAfter = params.get("TreePlanAfter")
+        self._QueryTimeBefore = params.get("QueryTimeBefore")
+        self._QueryTimeAfter = params.get("QueryTimeAfter")
+        self._SQLScanRowsBefore = params.get("SQLScanRowsBefore")
+        self._SQLScanRowsAfter = params.get("SQLScanRowsAfter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExplainRow(AbstractModel):
+    r"""执行计划列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>查询的序列号</p>
+        :type Id: int
+        :param _SelectType: <p>查询的类型，常见值：SIMPLE（简单查询，不含子查询或 UNION）、PRIMARY（最外层查询）、SUBQUERY（子查询中的第一个 SELECT）、DERIVED（派生表/FROM 子句中的子查询）、UNION（UNION 中第二个及之后的 SELECT）、UNION RESULT（UNION 的结果集）。</p>
+        :type SelectType: str
+        :param _Table: <p>数据表名</p>
+        :type Table: str
+        :param _Partitions: <p>查询匹配的分区</p>
+        :type Partitions: str
+        :param _Type: <p>访问类型（非常重要，衡量查询效率的关键指标），从优到差排列：system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL。常见值说明： • system：表只有一行记录（系统表） • const：通过主键或唯一索引匹配一行，常见于 WHERE pk = 1 • eq_ref：连接时使用主键或唯一索引，每个索引值只匹配一行 • ref：使用非唯一索引查找，可能匹配多行 • range：索引范围扫描，如 BETWEEN、&gt;、&lt;、IN • index：全索引扫描（遍历整棵索引树） • ALL：全表扫描（最差，需优化）</p>
+        :type Type: str
+        :param _PossibleKeys: <p>查询中可能使用到的索引。为 NULL 表示没有可用索引。</p>
+        :type PossibleKeys: str
+        :param _Key: <p>实际使用的索引。为 NULL 表示未使用任何索引。</p>
+        :type Key: str
+        :param _KeyLen: <p>实际使用的索引长度（字节数）。可用来判断联合索引中实际使用了哪几个列。值越短说明使用的索引列越少。</p>
+        :type KeyLen: str
+        :param _Ref: <p>显示哪些列或常量与 key 列中的索引进行比较。常见值：const（常量）、某个列名、func（函数结果）。</p>
+        :type Ref: str
+        :param _Rows: <p>预估要扫描的行数</p>
+        :type Rows: int
+        :param _Filtered: <p>表示经过表条件过滤后，剩余行数占 rows 的百分比估算。100% 表示没有额外过滤，值越高越好。</p>
+        :type Filtered: float
+        :param _Extra: <p>附加信息（非常重要），常见值： • Using index：覆盖索引，无需回表（好） • Using where：在存储引擎返回行后再用 WHERE 过滤 • Using temporary：使用了临时表（常见于 GROUP BY/ORDER BY，需优化） • Using filesort：使用了文件排序而非索引排序（需优化） • Using index condition：使用了索引下推（ICP）</p>
+        :type Extra: str
+        """
+        self._Id = None
+        self._SelectType = None
+        self._Table = None
+        self._Partitions = None
+        self._Type = None
+        self._PossibleKeys = None
+        self._Key = None
+        self._KeyLen = None
+        self._Ref = None
+        self._Rows = None
+        self._Filtered = None
+        self._Extra = None
+
+    @property
+    def Id(self):
+        r"""<p>查询的序列号</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SelectType(self):
+        r"""<p>查询的类型，常见值：SIMPLE（简单查询，不含子查询或 UNION）、PRIMARY（最外层查询）、SUBQUERY（子查询中的第一个 SELECT）、DERIVED（派生表/FROM 子句中的子查询）、UNION（UNION 中第二个及之后的 SELECT）、UNION RESULT（UNION 的结果集）。</p>
+        :rtype: str
+        """
+        return self._SelectType
+
+    @SelectType.setter
+    def SelectType(self, SelectType):
+        self._SelectType = SelectType
+
+    @property
+    def Table(self):
+        r"""<p>数据表名</p>
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Partitions(self):
+        r"""<p>查询匹配的分区</p>
+        :rtype: str
+        """
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Type(self):
+        r"""<p>访问类型（非常重要，衡量查询效率的关键指标），从优到差排列：system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL。常见值说明： • system：表只有一行记录（系统表） • const：通过主键或唯一索引匹配一行，常见于 WHERE pk = 1 • eq_ref：连接时使用主键或唯一索引，每个索引值只匹配一行 • ref：使用非唯一索引查找，可能匹配多行 • range：索引范围扫描，如 BETWEEN、&gt;、&lt;、IN • index：全索引扫描（遍历整棵索引树） • ALL：全表扫描（最差，需优化）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PossibleKeys(self):
+        r"""<p>查询中可能使用到的索引。为 NULL 表示没有可用索引。</p>
+        :rtype: str
+        """
+        return self._PossibleKeys
+
+    @PossibleKeys.setter
+    def PossibleKeys(self, PossibleKeys):
+        self._PossibleKeys = PossibleKeys
+
+    @property
+    def Key(self):
+        r"""<p>实际使用的索引。为 NULL 表示未使用任何索引。</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def KeyLen(self):
+        r"""<p>实际使用的索引长度（字节数）。可用来判断联合索引中实际使用了哪几个列。值越短说明使用的索引列越少。</p>
+        :rtype: str
+        """
+        return self._KeyLen
+
+    @KeyLen.setter
+    def KeyLen(self, KeyLen):
+        self._KeyLen = KeyLen
+
+    @property
+    def Ref(self):
+        r"""<p>显示哪些列或常量与 key 列中的索引进行比较。常见值：const（常量）、某个列名、func（函数结果）。</p>
+        :rtype: str
+        """
+        return self._Ref
+
+    @Ref.setter
+    def Ref(self, Ref):
+        self._Ref = Ref
+
+    @property
+    def Rows(self):
+        r"""<p>预估要扫描的行数</p>
+        :rtype: int
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def Filtered(self):
+        r"""<p>表示经过表条件过滤后，剩余行数占 rows 的百分比估算。100% 表示没有额外过滤，值越高越好。</p>
+        :rtype: float
+        """
+        return self._Filtered
+
+    @Filtered.setter
+    def Filtered(self, Filtered):
+        self._Filtered = Filtered
+
+    @property
+    def Extra(self):
+        r"""<p>附加信息（非常重要），常见值： • Using index：覆盖索引，无需回表（好） • Using where：在存储引擎返回行后再用 WHERE 过滤 • Using temporary：使用了临时表（常见于 GROUP BY/ORDER BY，需优化） • Using filesort：使用了文件排序而非索引排序（需优化） • Using index condition：使用了索引下推（ICP）</p>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._SelectType = params.get("SelectType")
+        self._Table = params.get("Table")
+        self._Partitions = params.get("Partitions")
+        self._Type = params.get("Type")
+        self._PossibleKeys = params.get("PossibleKeys")
+        self._Key = params.get("Key")
+        self._KeyLen = params.get("KeyLen")
+        self._Ref = params.get("Ref")
+        self._Rows = params.get("Rows")
+        self._Filtered = params.get("Filtered")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

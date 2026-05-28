@@ -1943,9 +1943,11 @@ class CpuTopology(AbstractModel):
     def __init__(self):
         r"""
         :param _CoreCount: 决定启用的CPU物理核心数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CoreCount: int
         :param _ThreadPerCore: 每核心线程数。该参数决定是否开启或关闭超线程。<br><li>1 表示关闭超线程 </li><br><li>2 表示开启超线程</li>
  不设置时，实例使用默认的超线程策略。开关超线程请参考文档：[开启与关闭超线程](https://cloud.tencent.com/document/product/213/103798)。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ThreadPerCore: int
         """
         self._CoreCount = None
@@ -1954,6 +1956,7 @@ class CpuTopology(AbstractModel):
     @property
     def CoreCount(self):
         r"""决定启用的CPU物理核心数。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CoreCount
@@ -1966,6 +1969,7 @@ class CpuTopology(AbstractModel):
     def ThreadPerCore(self):
         r"""每核心线程数。该参数决定是否开启或关闭超线程。<br><li>1 表示关闭超线程 </li><br><li>2 表示开启超线程</li>
  不设置时，实例使用默认的超线程策略。开关超线程请参考文档：[开启与关闭超线程](https://cloud.tencent.com/document/product/213/103798)。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ThreadPerCore

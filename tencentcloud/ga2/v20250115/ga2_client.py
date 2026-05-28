@@ -72,6 +72,29 @@ class Ga2Client(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateForwardingPolicy(self, request):
+        r"""创建七层转发策略
+
+        :param request: Request instance for CreateForwardingPolicy.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.CreateForwardingPolicyRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.CreateForwardingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateForwardingPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateForwardingPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateForwardingRule(self, request):
         r"""创建七层转发规则
 
@@ -178,6 +201,29 @@ class Ga2Client(AbstractClient):
             body = self.call("DeleteEndpointGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteEndpointGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteForwardingPolicy(self, request):
+        r"""删除七层转发策略
+
+        :param request: Request instance for DeleteForwardingPolicy.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.DeleteForwardingPolicyRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.DeleteForwardingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteForwardingPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteForwardingPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -348,6 +394,29 @@ class Ga2Client(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeForwardingPolicy(self, request):
+        r"""查看七层转发策略
+
+        :param request: Request instance for DescribeForwardingPolicy.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.DescribeForwardingPolicyRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.DescribeForwardingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeForwardingPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeForwardingPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeForwardingRule(self, request):
         r"""查看七层转发规则
 
@@ -477,6 +546,29 @@ class Ga2Client(AbstractClient):
             body = self.call("ModifyEndpointGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyEndpointGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyForwardingPolicy(self, request):
+        r"""修改七层转发策略
+
+        :param request: Request instance for ModifyForwardingPolicy.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.ModifyForwardingPolicyRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.ModifyForwardingPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyForwardingPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyForwardingPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
