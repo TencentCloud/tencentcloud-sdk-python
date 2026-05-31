@@ -109880,7 +109880,7 @@ class TaskDsDTO(AbstractModel):
         :param _ProductName: <p>上层产品 数据质量 / 数据开发 / ...</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
-        :param _OwnId: <p>创建者帐号</p>
+        :param _OwnId: <p>创建者账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnId: str
         :param _UserId: <p>子账号</p>
@@ -110956,7 +110956,7 @@ class TaskDsDTO(AbstractModel):
 
     @property
     def OwnId(self):
-        r"""<p>创建者帐号</p>
+        r"""<p>创建者账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

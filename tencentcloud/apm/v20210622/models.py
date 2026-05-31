@@ -3313,23 +3313,25 @@ class ApmPrometheusRules(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 指标匹配规则ID
+        :param _Id: <p>指标匹配规则ID</p>
         :type Id: int
-        :param _Name: 指标匹配规则名
+        :param _Name: <p>指标匹配规则名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _ServiceName: 规则生效的应用。生效于全部应用就传空字符串
+        :param _ServiceName: <p>规则生效的应用。生效于全部应用就传空字符串</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
-        :param _Status: 指标匹配规则状态：1(启用)、2（不启用）
+        :param _Status: <p>指标匹配规则状态：1(启用)、2（不启用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _MetricNameRule: 指标匹配规则
+        :param _MetricNameRule: <p>指标匹配规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetricNameRule: str
-        :param _MetricMatchType: 匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+        :param _MetricMatchType: <p>匹配类型：0精准匹配，1前缀匹配，2后缀匹配</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetricMatchType: int
+        :param _AppendResourceAttributes: <p>是否追加资源属性</p>
+        :type AppendResourceAttributes: bool
         """
         self._Id = None
         self._Name = None
@@ -3337,10 +3339,11 @@ class ApmPrometheusRules(AbstractModel):
         self._Status = None
         self._MetricNameRule = None
         self._MetricMatchType = None
+        self._AppendResourceAttributes = None
 
     @property
     def Id(self):
-        r"""指标匹配规则ID
+        r"""<p>指标匹配规则ID</p>
         :rtype: int
         """
         return self._Id
@@ -3351,7 +3354,7 @@ class ApmPrometheusRules(AbstractModel):
 
     @property
     def Name(self):
-        r"""指标匹配规则名
+        r"""<p>指标匹配规则名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3363,7 +3366,7 @@ class ApmPrometheusRules(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""规则生效的应用。生效于全部应用就传空字符串
+        r"""<p>规则生效的应用。生效于全部应用就传空字符串</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3375,7 +3378,7 @@ class ApmPrometheusRules(AbstractModel):
 
     @property
     def Status(self):
-        r"""指标匹配规则状态：1(启用)、2（不启用）
+        r"""<p>指标匹配规则状态：1(启用)、2（不启用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3387,7 +3390,7 @@ class ApmPrometheusRules(AbstractModel):
 
     @property
     def MetricNameRule(self):
-        r"""指标匹配规则
+        r"""<p>指标匹配规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3399,7 +3402,7 @@ class ApmPrometheusRules(AbstractModel):
 
     @property
     def MetricMatchType(self):
-        r"""匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+        r"""<p>匹配类型：0精准匹配，1前缀匹配，2后缀匹配</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3409,6 +3412,17 @@ class ApmPrometheusRules(AbstractModel):
     def MetricMatchType(self, MetricMatchType):
         self._MetricMatchType = MetricMatchType
 
+    @property
+    def AppendResourceAttributes(self):
+        r"""<p>是否追加资源属性</p>
+        :rtype: bool
+        """
+        return self._AppendResourceAttributes
+
+    @AppendResourceAttributes.setter
+    def AppendResourceAttributes(self, AppendResourceAttributes):
+        self._AppendResourceAttributes = AppendResourceAttributes
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3417,6 +3431,7 @@ class ApmPrometheusRules(AbstractModel):
         self._Status = params.get("Status")
         self._MetricNameRule = params.get("MetricNameRule")
         self._MetricMatchType = params.get("MetricMatchType")
+        self._AppendResourceAttributes = params.get("AppendResourceAttributes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4235,26 +4250,29 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 指标匹配规则名
+        :param _Name: <p>指标匹配规则名</p>
         :type Name: str
-        :param _ServiceName: 规则生效的应用。作用全部应用就传空字符串
+        :param _ServiceName: <p>规则生效的应用。作用全部应用就传空字符串</p>
         :type ServiceName: str
-        :param _MetricMatchType: 指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+        :param _MetricMatchType: <p>指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配</p>
         :type MetricMatchType: int
-        :param _MetricNameRule: 客户定义的命中指标名规则。
+        :param _MetricNameRule: <p>客户定义的命中指标名规则。</p>
         :type MetricNameRule: str
-        :param _InstanceId: 业务系统ID
+        :param _InstanceId: <p>业务系统ID</p>
         :type InstanceId: str
+        :param _AppendResourceAttributes: <p>是否追加资源属性</p>
+        :type AppendResourceAttributes: bool
         """
         self._Name = None
         self._ServiceName = None
         self._MetricMatchType = None
         self._MetricNameRule = None
         self._InstanceId = None
+        self._AppendResourceAttributes = None
 
     @property
     def Name(self):
-        r"""指标匹配规则名
+        r"""<p>指标匹配规则名</p>
         :rtype: str
         """
         return self._Name
@@ -4265,7 +4283,7 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""规则生效的应用。作用全部应用就传空字符串
+        r"""<p>规则生效的应用。作用全部应用就传空字符串</p>
         :rtype: str
         """
         return self._ServiceName
@@ -4276,7 +4294,7 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def MetricMatchType(self):
-        r"""指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+        r"""<p>指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配</p>
         :rtype: int
         """
         return self._MetricMatchType
@@ -4287,7 +4305,7 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def MetricNameRule(self):
-        r"""客户定义的命中指标名规则。
+        r"""<p>客户定义的命中指标名规则。</p>
         :rtype: str
         """
         return self._MetricNameRule
@@ -4298,7 +4316,7 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""业务系统ID
+        r"""<p>业务系统ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4307,6 +4325,17 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def AppendResourceAttributes(self):
+        r"""<p>是否追加资源属性</p>
+        :rtype: bool
+        """
+        return self._AppendResourceAttributes
+
+    @AppendResourceAttributes.setter
+    def AppendResourceAttributes(self, AppendResourceAttributes):
+        self._AppendResourceAttributes = AppendResourceAttributes
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4314,6 +4343,7 @@ class CreateApmPrometheusRuleRequest(AbstractModel):
         self._MetricMatchType = params.get("MetricMatchType")
         self._MetricNameRule = params.get("MetricNameRule")
         self._InstanceId = params.get("InstanceId")
+        self._AppendResourceAttributes = params.get("AppendResourceAttributes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4331,7 +4361,7 @@ class CreateApmPrometheusRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 指标匹配规则的ID
+        :param _RuleId: <p>指标匹配规则的ID</p>
         :type RuleId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4341,7 +4371,7 @@ class CreateApmPrometheusRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""指标匹配规则的ID
+        r"""<p>指标匹配规则的ID</p>
         :rtype: int
         """
         return self._RuleId
@@ -10685,20 +10715,22 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 规则ID
+        :param _Id: <p>规则ID</p>
         :type Id: int
-        :param _InstanceId: 业务系统ID
+        :param _InstanceId: <p>业务系统ID</p>
         :type InstanceId: str
-        :param _Name: 所要修改的规则名
+        :param _Name: <p>所要修改的规则名</p>
         :type Name: str
-        :param _Status: 规则状态：1(启用)、2（不启用）、3（删除）
+        :param _Status: <p>规则状态：1(启用)、2（不启用）、3（删除）</p>
         :type Status: int
-        :param _ServiceName: 规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）
+        :param _ServiceName: <p>规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）</p>
         :type ServiceName: str
-        :param _MetricMatchType: 匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）
+        :param _MetricMatchType: <p>匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）</p>
         :type MetricMatchType: int
-        :param _MetricNameRule: 客户定义的命中指标名规则。
+        :param _MetricNameRule: <p>客户定义的命中指标名规则。</p>
         :type MetricNameRule: str
+        :param _AppendResourceAttributes: <p>是否追加资源属性</p>
+        :type AppendResourceAttributes: bool
         """
         self._Id = None
         self._InstanceId = None
@@ -10707,10 +10739,11 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
         self._ServiceName = None
         self._MetricMatchType = None
         self._MetricNameRule = None
+        self._AppendResourceAttributes = None
 
     @property
     def Id(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: int
         """
         return self._Id
@@ -10721,7 +10754,7 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""业务系统ID
+        r"""<p>业务系统ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -10732,7 +10765,7 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""所要修改的规则名
+        r"""<p>所要修改的规则名</p>
         :rtype: str
         """
         return self._Name
@@ -10743,7 +10776,7 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""规则状态：1(启用)、2（不启用）、3（删除）
+        r"""<p>规则状态：1(启用)、2（不启用）、3（删除）</p>
         :rtype: int
         """
         return self._Status
@@ -10754,7 +10787,7 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）
+        r"""<p>规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）</p>
         :rtype: str
         """
         return self._ServiceName
@@ -10765,7 +10798,7 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def MetricMatchType(self):
-        r"""匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）
+        r"""<p>匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）</p>
         :rtype: int
         """
         return self._MetricMatchType
@@ -10776,7 +10809,7 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
 
     @property
     def MetricNameRule(self):
-        r"""客户定义的命中指标名规则。
+        r"""<p>客户定义的命中指标名规则。</p>
         :rtype: str
         """
         return self._MetricNameRule
@@ -10784,6 +10817,17 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
     @MetricNameRule.setter
     def MetricNameRule(self, MetricNameRule):
         self._MetricNameRule = MetricNameRule
+
+    @property
+    def AppendResourceAttributes(self):
+        r"""<p>是否追加资源属性</p>
+        :rtype: bool
+        """
+        return self._AppendResourceAttributes
+
+    @AppendResourceAttributes.setter
+    def AppendResourceAttributes(self, AppendResourceAttributes):
+        self._AppendResourceAttributes = AppendResourceAttributes
 
 
     def _deserialize(self, params):
@@ -10794,6 +10838,7 @@ class ModifyApmPrometheusRuleRequest(AbstractModel):
         self._ServiceName = params.get("ServiceName")
         self._MetricMatchType = params.get("MetricMatchType")
         self._MetricNameRule = params.get("MetricNameRule")
+        self._AppendResourceAttributes = params.get("AppendResourceAttributes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

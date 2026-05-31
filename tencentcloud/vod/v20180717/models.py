@@ -75422,6 +75422,8 @@ class ProcessMediaRequest(AbstractModel):
         :type ExtInfo: str
         :param _Url: <p>FileID为空时有效，拉取Url生成新媒资产生新FileID，媒体处理产物将作为新媒资的附属产物。</p><p>注意：新媒资会产生存储费用</p>
         :type Url: str
+        :param _OutputAsIndependentMedia: <p>媒体处理转码结果输出为独立媒资, 开启该选项会使产物输出为独立媒资，生成全新FileID，目前仅支持TranscodeTask转码任务输出为独立媒资。</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p><p>注意：新媒资会产生存储费用，转码任务中片头片尾、溯源水印等暂不支持开启该选项。</p>
+        :type OutputAsIndependentMedia: str
         """
         self._FileId = None
         self._MediaStoragePath = None
@@ -75436,6 +75438,7 @@ class ProcessMediaRequest(AbstractModel):
         self._SessionId = None
         self._ExtInfo = None
         self._Url = None
+        self._OutputAsIndependentMedia = None
 
     @property
     def FileId(self):
@@ -75580,6 +75583,17 @@ class ProcessMediaRequest(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def OutputAsIndependentMedia(self):
+        r"""<p>媒体处理转码结果输出为独立媒资, 开启该选项会使产物输出为独立媒资，生成全新FileID，目前仅支持TranscodeTask转码任务输出为独立媒资。</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p><p>注意：新媒资会产生存储费用，转码任务中片头片尾、溯源水印等暂不支持开启该选项。</p>
+        :rtype: str
+        """
+        return self._OutputAsIndependentMedia
+
+    @OutputAsIndependentMedia.setter
+    def OutputAsIndependentMedia(self, OutputAsIndependentMedia):
+        self._OutputAsIndependentMedia = OutputAsIndependentMedia
+
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
@@ -75603,6 +75617,7 @@ class ProcessMediaRequest(AbstractModel):
         self._SessionId = params.get("SessionId")
         self._ExtInfo = params.get("ExtInfo")
         self._Url = params.get("Url")
+        self._OutputAsIndependentMedia = params.get("OutputAsIndependentMedia")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

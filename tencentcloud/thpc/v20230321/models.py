@@ -1906,6 +1906,72 @@ class CosOption(AbstractModel):
         
 
 
+class CosOptionOverview(AbstractModel):
+    r"""COS存储选项概览信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocalPath: <p>文件系统本地挂载路径。</p>
+        :type LocalPath: str
+        :param _RemotePath: <p>COS桶地址。</p>
+        :type RemotePath: str
+        :param _MountOption: <p>COS挂载参数</p>
+        :type MountOption: str
+        """
+        self._LocalPath = None
+        self._RemotePath = None
+        self._MountOption = None
+
+    @property
+    def LocalPath(self):
+        r"""<p>文件系统本地挂载路径。</p>
+        :rtype: str
+        """
+        return self._LocalPath
+
+    @LocalPath.setter
+    def LocalPath(self, LocalPath):
+        self._LocalPath = LocalPath
+
+    @property
+    def RemotePath(self):
+        r"""<p>COS桶地址。</p>
+        :rtype: str
+        """
+        return self._RemotePath
+
+    @RemotePath.setter
+    def RemotePath(self, RemotePath):
+        self._RemotePath = RemotePath
+
+    @property
+    def MountOption(self):
+        r"""<p>COS挂载参数</p>
+        :rtype: str
+        """
+        return self._MountOption
+
+    @MountOption.setter
+    def MountOption(self, MountOption):
+        self._MountOption = MountOption
+
+
+    def _deserialize(self, params):
+        self._LocalPath = params.get("LocalPath")
+        self._RemotePath = params.get("RemotePath")
+        self._MountOption = params.get("MountOption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateClusterRequest(AbstractModel):
     r"""CreateCluster请求参数结构体
 
@@ -5182,7 +5248,7 @@ class GooseFSOption(AbstractModel):
         r"""
         :param _LocalPath: <p>文件系统本地挂载路径。</p>
         :type LocalPath: str
-        :param _RemotePath: <p>文件系统远程挂载路径。</p>
+        :param _RemotePath: <p>文件系统远程挂载路径; 远端路径为GooseFS控制台看到的命名空间的url;命名空间文档参考https://cloud.tencent.com/document/product/1424/117877</p>
         :type RemotePath: str
         :param _Masters: <p>文件系统master的ip和端口，此参数和FileSystemId互斥。</p>
         :type Masters: list of str
@@ -5207,7 +5273,7 @@ class GooseFSOption(AbstractModel):
 
     @property
     def RemotePath(self):
-        r"""<p>文件系统远程挂载路径。</p>
+        r"""<p>文件系统远程挂载路径; 远端路径为GooseFS控制台看到的命名空间的url;命名空间文档参考https://cloud.tencent.com/document/product/1424/117877</p>
         :rtype: str
         """
         return self._RemotePath
@@ -9029,20 +9095,23 @@ class StorageOptionOverview(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CFSOptions: CFS存储选项概览信息列表。
+        :param _CFSOptions: <p>CFS存储选项概览信息列表。</p>
         :type CFSOptions: list of CFSOptionOverview
-        :param _GooseFSOptions: GooseFS存储选项概览信息列表。
+        :param _GooseFSOptions: <p>GooseFS存储选项概览信息列表。</p>
         :type GooseFSOptions: list of GooseFSOptionOverview
-        :param _GooseFSxOptions: GooseFSx存储选项概览信息列表。
+        :param _GooseFSxOptions: <p>GooseFSx存储选项概览信息列表。</p>
         :type GooseFSxOptions: list of GooseFSxOptionOverview
+        :param _CosOptions: <p>COS存储选项概览信息列表。</p>
+        :type CosOptions: list of CosOptionOverview
         """
         self._CFSOptions = None
         self._GooseFSOptions = None
         self._GooseFSxOptions = None
+        self._CosOptions = None
 
     @property
     def CFSOptions(self):
-        r"""CFS存储选项概览信息列表。
+        r"""<p>CFS存储选项概览信息列表。</p>
         :rtype: list of CFSOptionOverview
         """
         return self._CFSOptions
@@ -9053,7 +9122,7 @@ class StorageOptionOverview(AbstractModel):
 
     @property
     def GooseFSOptions(self):
-        r"""GooseFS存储选项概览信息列表。
+        r"""<p>GooseFS存储选项概览信息列表。</p>
         :rtype: list of GooseFSOptionOverview
         """
         return self._GooseFSOptions
@@ -9064,7 +9133,7 @@ class StorageOptionOverview(AbstractModel):
 
     @property
     def GooseFSxOptions(self):
-        r"""GooseFSx存储选项概览信息列表。
+        r"""<p>GooseFSx存储选项概览信息列表。</p>
         :rtype: list of GooseFSxOptionOverview
         """
         return self._GooseFSxOptions
@@ -9072,6 +9141,17 @@ class StorageOptionOverview(AbstractModel):
     @GooseFSxOptions.setter
     def GooseFSxOptions(self, GooseFSxOptions):
         self._GooseFSxOptions = GooseFSxOptions
+
+    @property
+    def CosOptions(self):
+        r"""<p>COS存储选项概览信息列表。</p>
+        :rtype: list of CosOptionOverview
+        """
+        return self._CosOptions
+
+    @CosOptions.setter
+    def CosOptions(self, CosOptions):
+        self._CosOptions = CosOptions
 
 
     def _deserialize(self, params):
@@ -9093,6 +9173,12 @@ class StorageOptionOverview(AbstractModel):
                 obj = GooseFSxOptionOverview()
                 obj._deserialize(item)
                 self._GooseFSxOptions.append(obj)
+        if params.get("CosOptions") is not None:
+            self._CosOptions = []
+            for item in params.get("CosOptions"):
+                obj = CosOptionOverview()
+                obj._deserialize(item)
+                self._CosOptions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

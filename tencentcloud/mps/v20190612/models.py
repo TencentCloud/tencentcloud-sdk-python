@@ -86772,6 +86772,149 @@ class UpdateSmartEraseWatermarkConfig(AbstractModel):
         
 
 
+class UpdateVoiceRequest(AbstractModel):
+    r"""UpdateVoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色Id</p>
+        :type VoiceId: str
+        :param _VoiceFields: <p>更新音色字段</p>
+        :type VoiceFields: :class:`tencentcloud.mps.v20190612.models.VoiceUpdateFields`
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        """
+        self._VoiceId = None
+        self._VoiceFields = None
+        self._ExtParam = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色Id</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def VoiceFields(self):
+        r"""<p>更新音色字段</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceUpdateFields`
+        """
+        return self._VoiceFields
+
+    @VoiceFields.setter
+    def VoiceFields(self, VoiceFields):
+        self._VoiceFields = VoiceFields
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        if params.get("VoiceFields") is not None:
+            self._VoiceFields = VoiceUpdateFields()
+            self._VoiceFields._deserialize(params.get("VoiceFields"))
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateVoiceResponse(AbstractModel):
+    r"""UpdateVoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，正确时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，正确时返回success</p>
+        :type Msg: str
+        :param _Voice: <p>更新后的音色信息</p>
+        :type Voice: :class:`tencentcloud.mps.v20190612.models.VoiceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._Voice = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，正确时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，正确时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Voice(self):
+        r"""<p>更新后的音色信息</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceInfo`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        if params.get("Voice") is not None:
+            self._Voice = VoiceInfo()
+            self._Voice._deserialize(params.get("Voice"))
+        self._RequestId = params.get("RequestId")
+
+
 class UrlInputInfo(AbstractModel):
     r"""媒体处理 URL 对象信息。
 
@@ -90207,6 +90350,147 @@ class VoiceProfile(AbstractModel):
         self._Languages = params.get("Languages")
         self._Labels = params.get("Labels")
         self._Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceUpdateFields(AbstractModel):
+    r"""音色更新字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>音色名</p>
+        :type Name: str
+        :param _Description: <p>音色描述</p>
+        :type Description: str
+        :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+        :type Gender: str
+        :param _Age: <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :type Age: str
+        :param _Languages: <p>语言</p>
+        :type Languages: list of str
+        :param _Labels: <p>标签</p>
+        :type Labels: list of str
+        :param _Scenes: <p>场景</p>
+        :type Scenes: list of str
+        :param _AudioUrl: <p>试听音频</p>
+        :type AudioUrl: str
+        """
+        self._Name = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
+        self._AudioUrl = None
+
+    @property
+    def Name(self):
+        r"""<p>音色名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>音色描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>语言</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>场景</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
+    def AudioUrl(self):
+        r"""<p>试听音频</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        self._AudioUrl = params.get("AudioUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

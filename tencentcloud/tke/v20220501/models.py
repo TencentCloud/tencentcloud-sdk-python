@@ -511,53 +511,53 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scaling: 节点池伸缩配置
+        :param _Scaling: <p>节点池伸缩配置</p>
         :type Scaling: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
-        :param _SubnetIds: 子网列表
+        :param _SubnetIds: <p>子网列表</p>
         :type SubnetIds: list of str
-        :param _InstanceChargeType: 节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
+        :param _InstanceChargeType: <p>节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；</p>
         :type InstanceChargeType: str
-        :param _SystemDisk: 系统盘配置
+        :param _SystemDisk: <p>系统盘配置</p>
         :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
-        :param _InstanceTypes: 机型列表
+        :param _InstanceTypes: <p>机型列表</p>
         :type InstanceTypes: list of str
-        :param _SecurityGroupIds: 安全组列表
+        :param _SecurityGroupIds: <p>安全组列表</p>
         :type SecurityGroupIds: list of str
-        :param _UpgradeSettings: 自动升级配置
+        :param _UpgradeSettings: <p>自动升级配置</p>
         :type UpgradeSettings: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
-        :param _AutoRepair: 是否开启自愈能力
+        :param _AutoRepair: <p>是否开启自愈能力</p>
         :type AutoRepair: bool
-        :param _InstanceChargePrepaid: 包年包月机型计费配置
+        :param _InstanceChargePrepaid: <p>包年包月机型计费配置</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
-        :param _Management: 节点池 Management 参数设置
+        :param _Management: <p>节点池 Management 参数设置</p>
         :type Management: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
-        :param _HealthCheckPolicyName: 故障自愈规则名称
+        :param _HealthCheckPolicyName: <p>故障自愈规则名称</p>
         :type HealthCheckPolicyName: str
-        :param _HostNamePattern: 原生节点池hostName模式串
+        :param _HostNamePattern: <p>原生节点池hostName模式串</p>
         :type HostNamePattern: str
-        :param _KubeletArgs: kubelet 自定义参数
+        :param _KubeletArgs: <p>kubelet 自定义参数</p>
         :type KubeletArgs: list of str
-        :param _Lifecycle: 预定义脚本
+        :param _Lifecycle: <p>预定义脚本</p>
         :type Lifecycle: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
-        :param _RuntimeRootDir: 运行时根目录
+        :param _RuntimeRootDir: <p>运行时根目录</p>
         :type RuntimeRootDir: str
-        :param _EnableAutoscaling: 是否开启弹性伸缩
+        :param _EnableAutoscaling: <p>是否开启弹性伸缩</p>
         :type EnableAutoscaling: bool
-        :param _Replicas: 期望节点数
+        :param _Replicas: <p>期望节点数</p>
         :type Replicas: int
-        :param _InternetAccessible: 公网带宽设置
+        :param _InternetAccessible: <p>公网带宽设置</p>
         :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
-        :param _DataDisks: 原生节点池数据盘列表
+        :param _DataDisks: <p>原生节点池数据盘列表</p>
         :type DataDisks: list of DataDisk
-        :param _QGPUEnable: qgpu开关
+        :param _QGPUEnable: <p>qgpu开关</p>
         :type QGPUEnable: bool
-        :param _KeyIds: 节点池ssh公钥id数组
+        :param _KeyIds: <p>节点池ssh公钥id数组</p>
         :type KeyIds: list of str
-        :param _MachineType: 节点池类型
+        :param _MachineType: <p>节点池类型</p>
         :type MachineType: str
-        :param _AutomationService: 原生节点池安装节点自动化助手开关
+        :param _AutomationService: <p>原生节点池安装节点自动化助手开关</p>
         :type AutomationService: bool
-        :param _Password: 原生节点池密码
+        :param _Password: <p>原生节点池密码</p>
         :type Password: str
         """
         self._Scaling = None
@@ -587,7 +587,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def Scaling(self):
-        r"""节点池伸缩配置
+        r"""<p>节点池伸缩配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
         """
         return self._Scaling
@@ -598,7 +598,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网列表
+        r"""<p>子网列表</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -609,7 +609,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
+        r"""<p>节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；</p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -620,7 +620,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def SystemDisk(self):
-        r"""系统盘配置
+        r"""<p>系统盘配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
         """
         return self._SystemDisk
@@ -631,7 +631,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        r"""机型列表
+        r"""<p>机型列表</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -642,7 +642,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组列表
+        r"""<p>安全组列表</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -653,7 +653,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def UpgradeSettings(self):
-        r"""自动升级配置
+        r"""<p>自动升级配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
         """
         return self._UpgradeSettings
@@ -664,7 +664,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def AutoRepair(self):
-        r"""是否开启自愈能力
+        r"""<p>是否开启自愈能力</p>
         :rtype: bool
         """
         return self._AutoRepair
@@ -675,7 +675,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        r"""包年包月机型计费配置
+        r"""<p>包年包月机型计费配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -686,7 +686,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def Management(self):
-        r"""节点池 Management 参数设置
+        r"""<p>节点池 Management 参数设置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
         """
         return self._Management
@@ -697,7 +697,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def HealthCheckPolicyName(self):
-        r"""故障自愈规则名称
+        r"""<p>故障自愈规则名称</p>
         :rtype: str
         """
         return self._HealthCheckPolicyName
@@ -708,7 +708,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def HostNamePattern(self):
-        r"""原生节点池hostName模式串
+        r"""<p>原生节点池hostName模式串</p>
         :rtype: str
         """
         return self._HostNamePattern
@@ -719,7 +719,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def KubeletArgs(self):
-        r"""kubelet 自定义参数
+        r"""<p>kubelet 自定义参数</p>
         :rtype: list of str
         """
         return self._KubeletArgs
@@ -730,7 +730,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def Lifecycle(self):
-        r"""预定义脚本
+        r"""<p>预定义脚本</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
         """
         return self._Lifecycle
@@ -741,7 +741,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def RuntimeRootDir(self):
-        r"""运行时根目录
+        r"""<p>运行时根目录</p>
         :rtype: str
         """
         return self._RuntimeRootDir
@@ -752,7 +752,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def EnableAutoscaling(self):
-        r"""是否开启弹性伸缩
+        r"""<p>是否开启弹性伸缩</p>
         :rtype: bool
         """
         return self._EnableAutoscaling
@@ -763,7 +763,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def Replicas(self):
-        r"""期望节点数
+        r"""<p>期望节点数</p>
         :rtype: int
         """
         return self._Replicas
@@ -774,7 +774,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        r"""公网带宽设置
+        r"""<p>公网带宽设置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -785,7 +785,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def DataDisks(self):
-        r"""原生节点池数据盘列表
+        r"""<p>原生节点池数据盘列表</p>
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -796,7 +796,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def QGPUEnable(self):
-        r"""qgpu开关
+        r"""<p>qgpu开关</p>
         :rtype: bool
         """
         return self._QGPUEnable
@@ -807,7 +807,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def KeyIds(self):
-        r"""节点池ssh公钥id数组
+        r"""<p>节点池ssh公钥id数组</p>
         :rtype: list of str
         """
         return self._KeyIds
@@ -818,7 +818,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def MachineType(self):
-        r"""节点池类型
+        r"""<p>节点池类型</p>
         :rtype: str
         """
         return self._MachineType
@@ -829,7 +829,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def AutomationService(self):
-        r"""原生节点池安装节点自动化助手开关
+        r"""<p>原生节点池安装节点自动化助手开关</p>
         :rtype: bool
         """
         return self._AutomationService
@@ -840,7 +840,7 @@ class CreateNativeNodePoolParam(AbstractModel):
 
     @property
     def Password(self):
-        r"""原生节点池密码
+        r"""<p>原生节点池密码</p>
         :rtype: str
         """
         return self._Password
@@ -5618,83 +5618,77 @@ class NativeNodeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MachineName: 节点名称
+        :param _MachineName: <p>节点名称</p>
         :type MachineName: str
-        :param _MachineState: Machine 状态
+        :param _MachineState: <p>Machine 状态</p>
         :type MachineState: str
-        :param _Zone: Machine 所在可用区
+        :param _Zone: <p>Machine 所在可用区</p>
         :type Zone: str
-        :param _InstanceChargeType: 节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
+        :param _InstanceChargeType: <p>节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；</p>
         :type InstanceChargeType: str
-        :param _CreatedAt: 创建时间
+        :param _CreatedAt: <p>创建时间</p>
         :type CreatedAt: str
-        :param _LoginStatus: Machine 登录状态
+        :param _LoginStatus: <p>Machine 登录状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoginStatus: str
-        :param _IsProtectedFromScaleIn: 是否开启缩容保护
+        :param _IsProtectedFromScaleIn: <p>是否开启缩容保护</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsProtectedFromScaleIn: bool
-        :param _DisplayName: Machine 名字
+        :param _DisplayName: <p>Machine 名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisplayName: str
-        :param _CPU: CPU核数，单位：核
+        :param _CPU: <p>CPU核数，单位：核</p>
         :type CPU: int
-        :param _GPU: GPU核数，单位：核
+        :param _GPU: <p>GPU核数，单位：核</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GPU: int
-        :param _RenewFlag: 自动续费标识
+        :param _RenewFlag: <p>自动续费标识</p>
         :type RenewFlag: str
-        :param _PayMode: 节点计费模式
+        :param _PayMode: <p>节点计费模式</p>
         :type PayMode: str
-        :param _Memory: 节点内存容量，单位：`GB`
+        :param _Memory: <p>节点内存容量，单位：<code>GB</code></p>
         :type Memory: int
-        :param _SystemDisk: 节点系统盘配置信息
+        :param _SystemDisk: <p>节点系统盘配置信息</p>
         :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
-        :param _InternetAccessible: 公网带宽相关信息设置
+        :param _InternetAccessible: <p>公网带宽相关信息设置</p>
         :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
-        :param _InstanceFamily: 机型所属机型族
+        :param _InstanceFamily: <p>机型所属机型族</p>
         :type InstanceFamily: str
-        :param _LanIp: 节点内网 IP
+        :param _LanIp: <p>节点内网 IP</p>
         :type LanIp: str
-        :param _InstanceType: 机型
+        :param _InstanceType: <p>机型</p>
         :type InstanceType: str
-        :param _ExpiredTime: 包年包月节点计费过期时间
+        :param _ExpiredTime: <p>包年包月节点计费过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredTime: str
-        :param _WanIp: 节点外网 IP
+        :param _WanIp: <p>节点外网 IP</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WanIp: str
-        :param _KeyIds: 节点密钥 ID 列表
+        :param _KeyIds: <p>节点密钥 ID 列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
-        :param _GPUParams: 节点GPU相关配置
+        :param _GPUParams: <p>节点GPU相关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GPUParams: :class:`tencentcloud.tke.v20220501.models.GPUParams`
-        :param _DataDisks: 数据盘列表
+        :param _DataDisks: <p>数据盘列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DataDisk
-        :param _SecurityGroupIDs: 安全组列表
+        :param _SecurityGroupIDs: <p>安全组列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIDs: list of str
-        :param _VpcId: VPC 唯一 ID
+        :param _VpcId: <p>VPC 唯一 ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网唯一 ID
+        :param _SubnetId: <p>子网唯一 ID</p>
         :type SubnetId: str
-        :param _OsImage: OS的名称
+        :param _OsImage: <p>OS的名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OsImage: str
-        :param _MachineType: **原生节点的 Machine 类型**
-
-- Native 表示 CXM 类型的原生节点
-- NativeCVM 表示 CVM 类型的原生节点
+        :param _MachineType: <p><strong>原生节点的 Machine 类型</strong></p><ul><li>Native 表示 CXM 类型的原生节点</li><li>NativeCVM 表示 CVM 类型的原生节点</li></ul>
         :type MachineType: str
-        :param _InstanceId: **原生节点对应的实例 ID**
-
-- ins-q47ofw6 表示这个实例是一个 CVM 的实例
-- eks-f8mvyaep 表示这个实例是一个 CXM 的实例
+        :param _InstanceId: <p><strong>原生节点对应的实例 ID</strong></p><ul><li>ins-q47ofw6 表示这个实例是一个 CVM 的实例</li><li>eks-f8mvyaep 表示这个实例是一个 CXM 的实例</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _Tags: 原生节点云标签
+        :param _Tags: <p>原生节点云标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
@@ -5731,7 +5725,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def MachineName(self):
-        r"""节点名称
+        r"""<p>节点名称</p>
         :rtype: str
         """
         return self._MachineName
@@ -5742,7 +5736,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def MachineState(self):
-        r"""Machine 状态
+        r"""<p>Machine 状态</p>
         :rtype: str
         """
         return self._MachineState
@@ -5753,7 +5747,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""Machine 所在可用区
+        r"""<p>Machine 所在可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -5764,7 +5758,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；
+        r"""<p>节点计费类型。PREPAID：包年包月；POSTPAID_BY_HOUR：按量计费（默认）；</p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -5775,7 +5769,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -5786,7 +5780,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def LoginStatus(self):
-        r"""Machine 登录状态
+        r"""<p>Machine 登录状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5798,7 +5792,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def IsProtectedFromScaleIn(self):
-        r"""是否开启缩容保护
+        r"""<p>是否开启缩容保护</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5810,7 +5804,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def DisplayName(self):
-        r"""Machine 名字
+        r"""<p>Machine 名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5822,7 +5816,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def CPU(self):
-        r"""CPU核数，单位：核
+        r"""<p>CPU核数，单位：核</p>
         :rtype: int
         """
         return self._CPU
@@ -5833,7 +5827,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def GPU(self):
-        r"""GPU核数，单位：核
+        r"""<p>GPU核数，单位：核</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5845,7 +5839,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识
+        r"""<p>自动续费标识</p>
         :rtype: str
         """
         return self._RenewFlag
@@ -5856,7 +5850,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""节点计费模式
+        r"""<p>节点计费模式</p>
         :rtype: str
         """
         return self._PayMode
@@ -5867,7 +5861,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def Memory(self):
-        r"""节点内存容量，单位：`GB`
+        r"""<p>节点内存容量，单位：<code>GB</code></p>
         :rtype: int
         """
         return self._Memory
@@ -5878,7 +5872,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def SystemDisk(self):
-        r"""节点系统盘配置信息
+        r"""<p>节点系统盘配置信息</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
         """
         return self._SystemDisk
@@ -5889,7 +5883,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        r"""公网带宽相关信息设置
+        r"""<p>公网带宽相关信息设置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -5900,7 +5894,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InstanceFamily(self):
-        r"""机型所属机型族
+        r"""<p>机型所属机型族</p>
         :rtype: str
         """
         return self._InstanceFamily
@@ -5911,7 +5905,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def LanIp(self):
-        r"""节点内网 IP
+        r"""<p>节点内网 IP</p>
         :rtype: str
         """
         return self._LanIp
@@ -5922,7 +5916,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""机型
+        r"""<p>机型</p>
         :rtype: str
         """
         return self._InstanceType
@@ -5933,7 +5927,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""包年包月节点计费过期时间
+        r"""<p>包年包月节点计费过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5945,7 +5939,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def WanIp(self):
-        r"""节点外网 IP
+        r"""<p>节点外网 IP</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5957,7 +5951,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def KeyIds(self):
-        r"""节点密钥 ID 列表
+        r"""<p>节点密钥 ID 列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5969,7 +5963,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def GPUParams(self):
-        r"""节点GPU相关配置
+        r"""<p>节点GPU相关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20220501.models.GPUParams`
         """
@@ -5981,7 +5975,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def DataDisks(self):
-        r"""数据盘列表
+        r"""<p>数据盘列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataDisk
         """
@@ -5993,7 +5987,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def SecurityGroupIDs(self):
-        r"""安全组列表
+        r"""<p>安全组列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6005,7 +5999,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC 唯一 ID
+        r"""<p>VPC 唯一 ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -6016,7 +6010,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网唯一 ID
+        r"""<p>子网唯一 ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -6027,7 +6021,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def OsImage(self):
-        r"""OS的名称
+        r"""<p>OS的名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6039,10 +6033,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def MachineType(self):
-        r"""**原生节点的 Machine 类型**
-
-- Native 表示 CXM 类型的原生节点
-- NativeCVM 表示 CVM 类型的原生节点
+        r"""<p><strong>原生节点的 Machine 类型</strong></p><ul><li>Native 表示 CXM 类型的原生节点</li><li>NativeCVM 表示 CVM 类型的原生节点</li></ul>
         :rtype: str
         """
         return self._MachineType
@@ -6053,10 +6044,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""**原生节点对应的实例 ID**
-
-- ins-q47ofw6 表示这个实例是一个 CVM 的实例
-- eks-f8mvyaep 表示这个实例是一个 CXM 的实例
+        r"""<p><strong>原生节点对应的实例 ID</strong></p><ul><li>ins-q47ofw6 表示这个实例是一个 CVM 的实例</li><li>eks-f8mvyaep 表示这个实例是一个 CXM 的实例</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6068,7 +6056,7 @@ class NativeNodeInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""原生节点云标签
+        r"""<p>原生节点云标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -6143,56 +6131,56 @@ class NativeNodePoolInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scaling: 伸缩配置
+        :param _Scaling: <p>伸缩配置</p>
         :type Scaling: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
-        :param _SubnetIds: 子网列表
+        :param _SubnetIds: <p>子网列表</p>
         :type SubnetIds: list of str
-        :param _SecurityGroupIds: 安全组列表
+        :param _SecurityGroupIds: <p>安全组列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
-        :param _UpgradeSettings: 自动升级配置
+        :param _UpgradeSettings: <p>自动升级配置</p>
         :type UpgradeSettings: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
-        :param _AutoRepair: 是否开启自愈能力
+        :param _AutoRepair: <p>是否开启自愈能力</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRepair: bool
-        :param _InstanceChargeType: 节点计费类型
+        :param _InstanceChargeType: <p>节点计费类型</p>
         :type InstanceChargeType: str
-        :param _InstanceChargePrepaid: 包年包月机型计费配置
+        :param _InstanceChargePrepaid: <p>包年包月机型计费配置</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
-        :param _SystemDisk: 系统盘配置
+        :param _SystemDisk: <p>系统盘配置</p>
         :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
-        :param _KeyIds: 密钥 ID 列表
+        :param _KeyIds: <p>密钥 ID 列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyIds: list of str
-        :param _Management: Machine 系统配置
+        :param _Management: <p>Machine 系统配置</p>
         :type Management: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
-        :param _HealthCheckPolicyName: 故障自愈规则名称
+        :param _HealthCheckPolicyName: <p>故障自愈规则名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckPolicyName: str
-        :param _HostNamePattern: 原生节点池hostName模式串
+        :param _HostNamePattern: <p>原生节点池hostName模式串</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostNamePattern: str
-        :param _KubeletArgs: kubelet 自定义参数
+        :param _KubeletArgs: <p>kubelet 自定义参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KubeletArgs: list of str
-        :param _Lifecycle: 预定义脚本
+        :param _Lifecycle: <p>预定义脚本</p>
         :type Lifecycle: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
-        :param _RuntimeRootDir: 运行时根目录
+        :param _RuntimeRootDir: <p>运行时根目录</p>
         :type RuntimeRootDir: str
-        :param _EnableAutoscaling: 是否开启弹性伸缩
+        :param _EnableAutoscaling: <p>是否开启弹性伸缩</p>
         :type EnableAutoscaling: bool
-        :param _InstanceTypes: 机型列表
+        :param _InstanceTypes: <p>机型列表</p>
         :type InstanceTypes: list of str
-        :param _Replicas: 期望节点数
+        :param _Replicas: <p>期望节点数</p>
         :type Replicas: int
-        :param _ReadyReplicas: 就绪 Machine 个数
+        :param _ReadyReplicas: <p>就绪 Machine 个数</p>
         :type ReadyReplicas: int
-        :param _InternetAccessible: 公网带宽设置
+        :param _InternetAccessible: <p>公网带宽设置</p>
         :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
-        :param _DataDisks: 原生节点池数据盘
+        :param _DataDisks: <p>原生节点池数据盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DataDisk
-        :param _MachineType: 原生节点机型 Native, NativeCVM
+        :param _MachineType: <p>原生节点机型 Native, NativeCVM</p>
         :type MachineType: str
         """
         self._Scaling = None
@@ -6220,7 +6208,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def Scaling(self):
-        r"""伸缩配置
+        r"""<p>伸缩配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
         """
         return self._Scaling
@@ -6231,7 +6219,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网列表
+        r"""<p>子网列表</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -6242,7 +6230,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组列表
+        r"""<p>安全组列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6254,7 +6242,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def UpgradeSettings(self):
-        r"""自动升级配置
+        r"""<p>自动升级配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
         """
         return self._UpgradeSettings
@@ -6265,7 +6253,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def AutoRepair(self):
-        r"""是否开启自愈能力
+        r"""<p>是否开启自愈能力</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -6277,7 +6265,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""节点计费类型
+        r"""<p>节点计费类型</p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -6288,7 +6276,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        r"""包年包月机型计费配置
+        r"""<p>包年包月机型计费配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -6299,7 +6287,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def SystemDisk(self):
-        r"""系统盘配置
+        r"""<p>系统盘配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
         """
         return self._SystemDisk
@@ -6310,7 +6298,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def KeyIds(self):
-        r"""密钥 ID 列表
+        r"""<p>密钥 ID 列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6322,7 +6310,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def Management(self):
-        r"""Machine 系统配置
+        r"""<p>Machine 系统配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
         """
         return self._Management
@@ -6333,7 +6321,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def HealthCheckPolicyName(self):
-        r"""故障自愈规则名称
+        r"""<p>故障自愈规则名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6345,7 +6333,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def HostNamePattern(self):
-        r"""原生节点池hostName模式串
+        r"""<p>原生节点池hostName模式串</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6357,7 +6345,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def KubeletArgs(self):
-        r"""kubelet 自定义参数
+        r"""<p>kubelet 自定义参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6369,7 +6357,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def Lifecycle(self):
-        r"""预定义脚本
+        r"""<p>预定义脚本</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
         """
         return self._Lifecycle
@@ -6380,7 +6368,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def RuntimeRootDir(self):
-        r"""运行时根目录
+        r"""<p>运行时根目录</p>
         :rtype: str
         """
         return self._RuntimeRootDir
@@ -6391,7 +6379,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def EnableAutoscaling(self):
-        r"""是否开启弹性伸缩
+        r"""<p>是否开启弹性伸缩</p>
         :rtype: bool
         """
         return self._EnableAutoscaling
@@ -6402,7 +6390,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        r"""机型列表
+        r"""<p>机型列表</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -6413,7 +6401,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def Replicas(self):
-        r"""期望节点数
+        r"""<p>期望节点数</p>
         :rtype: int
         """
         return self._Replicas
@@ -6424,7 +6412,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def ReadyReplicas(self):
-        r"""就绪 Machine 个数
+        r"""<p>就绪 Machine 个数</p>
         :rtype: int
         """
         return self._ReadyReplicas
@@ -6435,7 +6423,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        r"""公网带宽设置
+        r"""<p>公网带宽设置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -6446,7 +6434,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def DataDisks(self):
-        r"""原生节点池数据盘
+        r"""<p>原生节点池数据盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataDisk
         """
@@ -6458,7 +6446,7 @@ class NativeNodePoolInfo(AbstractModel):
 
     @property
     def MachineType(self):
-        r"""原生节点机型 Native, NativeCVM
+        r"""<p>原生节点机型 Native, NativeCVM</p>
         :rtype: str
         """
         return self._MachineType
@@ -8276,60 +8264,55 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scaling: 伸缩配置
+        :param _Scaling: <p>伸缩配置</p>
         :type Scaling: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
-        :param _SubnetIds: 子网列表
+        :param _SubnetIds: <p>子网列表</p>
         :type SubnetIds: list of str
-        :param _SecurityGroupIds: 安全组列表
+        :param _SecurityGroupIds: <p>安全组列表</p>
         :type SecurityGroupIds: list of str
-        :param _UpgradeSettings: 自动升级配置
+        :param _UpgradeSettings: <p>自动升级配置</p>
         :type UpgradeSettings: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
-        :param _AutoRepair: 是否开启自愈能力
+        :param _AutoRepair: <p>是否开启自愈能力</p>
         :type AutoRepair: bool
-        :param _InstanceChargeType: 节点计费类型变更
-当前仅支持按量计费转包年包月：
-- PREPAID
-
+        :param _InstanceChargeType: <p>计费类型</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li></ul>
         :type InstanceChargeType: str
-        :param _InstanceChargePrepaid: 包年包月机型计费配置
+        :param _InstanceChargePrepaid: <p>包年包月机型计费配置</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
-        :param _SystemDisk: 系统盘配置
+        :param _SystemDisk: <p>系统盘配置</p>
         :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
-        :param _Management: Machine 系统配置
+        :param _Management: <p>Machine 系统配置</p>
         :type Management: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
-        :param _HealthCheckPolicyName: 故障自愈规则名称
+        :param _HealthCheckPolicyName: <p>故障自愈规则名称</p>
         :type HealthCheckPolicyName: str
-        :param _HostNamePattern: 原生节点池hostName模式串
+        :param _HostNamePattern: <p>原生节点池hostName模式串</p>
         :type HostNamePattern: str
-        :param _KubeletArgs: kubelet 自定义参数
+        :param _KubeletArgs: <p>kubelet 自定义参数</p>
         :type KubeletArgs: list of str
-        :param _Lifecycle: 预定义脚本
+        :param _Lifecycle: <p>预定义脚本</p>
         :type Lifecycle: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
-        :param _RuntimeRootDir: 运行时根目录
+        :param _RuntimeRootDir: <p>运行时根目录</p>
         :type RuntimeRootDir: str
-        :param _EnableAutoscaling: 是否开启弹性伸缩
+        :param _EnableAutoscaling: <p>是否开启弹性伸缩</p>
         :type EnableAutoscaling: bool
-        :param _InstanceTypes: 机型列表
+        :param _InstanceTypes: <p>机型列表</p>
         :type InstanceTypes: list of str
-        :param _Replicas: 期望节点数
+        :param _Replicas: <p>期望节点数</p>
         :type Replicas: int
-        :param _UpdateExistedNode: 是否更新存量节点MetaData(包括： metadata、annotation、label)
+        :param _UpdateExistedNode: <p>是否更新存量节点MetaData(包括： metadata、annotation、label)</p>
         :type UpdateExistedNode: bool
-        :param _DataDisks: 数据盘列表
+        :param _DataDisks: <p>数据盘列表</p>
         :type DataDisks: list of DataDisk
-        :param _UpdateMachineManagement: 节点management参数存量更新开关，有enable（打开）、disable（关闭）两个状态可选
-
-management包括：nameserver、host、kubelet、kernel参数
+        :param _UpdateMachineManagement: <p>节点management参数存量更新开关，有enable（打开）、disable（关闭）两个状态可选</p><p>management包括：nameserver、host、kubelet、kernel参数</p>
         :type UpdateMachineManagement: str
-        :param _KeyIds: ssh公钥id数组
+        :param _KeyIds: <p>ssh公钥id数组</p>
         :type KeyIds: list of str
-        :param _DeletePolicy: 节点移出策略，有Random（随机）、Newest（优先移出最新实例）、Oldest（优先移出最旧实例）三种可选，默认是Newest
+        :param _DeletePolicy: <p>节点移出策略，有Random（随机）、Newest（优先移出最新实例）、Oldest（优先移出最旧实例）三种可选，默认是Newest</p>
         :type DeletePolicy: str
-        :param _GPUConfigs: 节点池 GPU 配置
+        :param _GPUConfigs: <p>节点池 GPU 配置</p>
         :type GPUConfigs: list of GPUConfig
-        :param _AutomationService: 原生节点池安装自动化助手开关状态
+        :param _AutomationService: <p>原生节点池安装自动化助手开关状态</p>
         :type AutomationService: bool
-        :param _Password: 原生节点池密码
+        :param _Password: <p>原生节点池密码</p>
         :type Password: str
         """
         self._Scaling = None
@@ -8360,7 +8343,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def Scaling(self):
-        r"""伸缩配置
+        r"""<p>伸缩配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineSetScaling`
         """
         return self._Scaling
@@ -8371,7 +8354,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def SubnetIds(self):
-        r"""子网列表
+        r"""<p>子网列表</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -8382,7 +8365,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组列表
+        r"""<p>安全组列表</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -8393,7 +8376,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def UpgradeSettings(self):
-        r"""自动升级配置
+        r"""<p>自动升级配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
         """
         return self._UpgradeSettings
@@ -8404,7 +8387,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def AutoRepair(self):
-        r"""是否开启自愈能力
+        r"""<p>是否开启自愈能力</p>
         :rtype: bool
         """
         return self._AutoRepair
@@ -8415,10 +8398,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def InstanceChargeType(self):
-        r"""节点计费类型变更
-当前仅支持按量计费转包年包月：
-- PREPAID
-
+        r"""<p>计费类型</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li></ul>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -8429,7 +8409,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def InstanceChargePrepaid(self):
-        r"""包年包月机型计费配置
+        r"""<p>包年包月机型计费配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -8440,7 +8420,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def SystemDisk(self):
-        r"""系统盘配置
+        r"""<p>系统盘配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.Disk`
         """
         return self._SystemDisk
@@ -8451,7 +8431,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def Management(self):
-        r"""Machine 系统配置
+        r"""<p>Machine 系统配置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.ManagementConfig`
         """
         return self._Management
@@ -8462,7 +8442,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def HealthCheckPolicyName(self):
-        r"""故障自愈规则名称
+        r"""<p>故障自愈规则名称</p>
         :rtype: str
         """
         return self._HealthCheckPolicyName
@@ -8473,7 +8453,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def HostNamePattern(self):
-        r"""原生节点池hostName模式串
+        r"""<p>原生节点池hostName模式串</p>
         :rtype: str
         """
         return self._HostNamePattern
@@ -8484,7 +8464,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def KubeletArgs(self):
-        r"""kubelet 自定义参数
+        r"""<p>kubelet 自定义参数</p>
         :rtype: list of str
         """
         return self._KubeletArgs
@@ -8495,7 +8475,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def Lifecycle(self):
-        r"""预定义脚本
+        r"""<p>预定义脚本</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.LifecycleConfig`
         """
         return self._Lifecycle
@@ -8506,7 +8486,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def RuntimeRootDir(self):
-        r"""运行时根目录
+        r"""<p>运行时根目录</p>
         :rtype: str
         """
         return self._RuntimeRootDir
@@ -8517,7 +8497,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def EnableAutoscaling(self):
-        r"""是否开启弹性伸缩
+        r"""<p>是否开启弹性伸缩</p>
         :rtype: bool
         """
         return self._EnableAutoscaling
@@ -8528,7 +8508,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def InstanceTypes(self):
-        r"""机型列表
+        r"""<p>机型列表</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -8539,7 +8519,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def Replicas(self):
-        r"""期望节点数
+        r"""<p>期望节点数</p>
         :rtype: int
         """
         return self._Replicas
@@ -8550,7 +8530,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def UpdateExistedNode(self):
-        r"""是否更新存量节点MetaData(包括： metadata、annotation、label)
+        r"""<p>是否更新存量节点MetaData(包括： metadata、annotation、label)</p>
         :rtype: bool
         """
         return self._UpdateExistedNode
@@ -8561,7 +8541,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def DataDisks(self):
-        r"""数据盘列表
+        r"""<p>数据盘列表</p>
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -8572,9 +8552,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def UpdateMachineManagement(self):
-        r"""节点management参数存量更新开关，有enable（打开）、disable（关闭）两个状态可选
-
-management包括：nameserver、host、kubelet、kernel参数
+        r"""<p>节点management参数存量更新开关，有enable（打开）、disable（关闭）两个状态可选</p><p>management包括：nameserver、host、kubelet、kernel参数</p>
         :rtype: str
         """
         return self._UpdateMachineManagement
@@ -8585,7 +8563,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def KeyIds(self):
-        r"""ssh公钥id数组
+        r"""<p>ssh公钥id数组</p>
         :rtype: list of str
         """
         return self._KeyIds
@@ -8596,7 +8574,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def DeletePolicy(self):
-        r"""节点移出策略，有Random（随机）、Newest（优先移出最新实例）、Oldest（优先移出最旧实例）三种可选，默认是Newest
+        r"""<p>节点移出策略，有Random（随机）、Newest（优先移出最新实例）、Oldest（优先移出最旧实例）三种可选，默认是Newest</p>
         :rtype: str
         """
         return self._DeletePolicy
@@ -8607,7 +8585,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def GPUConfigs(self):
-        r"""节点池 GPU 配置
+        r"""<p>节点池 GPU 配置</p>
         :rtype: list of GPUConfig
         """
         return self._GPUConfigs
@@ -8618,7 +8596,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def AutomationService(self):
-        r"""原生节点池安装自动化助手开关状态
+        r"""<p>原生节点池安装自动化助手开关状态</p>
         :rtype: bool
         """
         return self._AutomationService
@@ -8629,7 +8607,7 @@ management包括：nameserver、host、kubelet、kernel参数
 
     @property
     def Password(self):
-        r"""原生节点池密码
+        r"""<p>原生节点池密码</p>
         :rtype: str
         """
         return self._Password

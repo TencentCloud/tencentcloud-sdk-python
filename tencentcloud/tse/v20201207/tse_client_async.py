@@ -31,7 +31,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddCloudNativeAPIGatewayConsumerGroupAuthResponse:
         """
-        添加消费者组授权
+        为资源（模型 API / MCP Server）添加消费者组授权。
         """
         
         kwargs = {}
@@ -49,7 +49,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddCloudNativeAPIGatewayConsumerInGroupResponse:
         """
-        将消费者添加到指定的消费者组中
+        将消费者添加到消费者组。
         """
         
         kwargs = {}
@@ -175,7 +175,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCloudNativeAPIGatewayConsumerResponse:
         """
-        创建云原生网关的消费者，支持多种密钥生成方式
+        创建消费者。
         """
         
         kwargs = {}
@@ -193,7 +193,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCloudNativeAPIGatewayConsumerGroupResponse:
         """
-        创建云原生网关的消费者组
+        创建消费者组。
         """
         
         kwargs = {}
@@ -211,7 +211,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCloudNativeAPIGatewayLLMModelAPIResponse:
         """
-        创建AI网关模型 API
+        创建 LLM 模型 API。
         """
         
         kwargs = {}
@@ -301,7 +301,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCloudNativeAPIGatewaySecretKeyResponse:
         """
-        创建云原生网关密钥
+        创建消费者密钥。
         """
         
         kwargs = {}
@@ -697,7 +697,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteCloudNativeAPIGatewayConsumerResponse:
         """
-        删除指定的云原生网关消费者
+        删除消费者（被绑定到消费者组/密钥时需先解绑）。
         """
         
         kwargs = {}
@@ -715,7 +715,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteCloudNativeAPIGatewayConsumerGroupResponse:
         """
-        删除云原生网关消费者组的信息
+        删除消费者组（被授权资源占用时返回 CheckItems）。
         """
         
         kwargs = {}
@@ -751,7 +751,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteCloudNativeAPIGatewayLLMModelAPIResponse:
         """
-        删除 LLM 模型 API 信息
+        删除 LLM 模型 API。
         """
         
         kwargs = {}
@@ -769,7 +769,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteCloudNativeAPIGatewayLLMModelServiceResponse:
         """
-        删除 LLM 模型服务信息
+        删除 LLM 模型服务（被模型 API 绑定时需先解绑）。
         """
         
         kwargs = {}
@@ -841,7 +841,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteCloudNativeAPIGatewaySecretKeyResponse:
         """
-        删除云原生网关密钥
+        删除消费者密钥（被绑定时需先解绑）。
         """
         
         kwargs = {}
@@ -1291,7 +1291,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayConsumerResponse:
         """
-        查询指定的云原生网关消费者
+        查询消费者详情。
         """
         
         kwargs = {}
@@ -1309,7 +1309,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayConsumerGroupResponse:
         """
-        查看云原生网关消费者组的信息
+        查询消费者组详情。
         """
         
         kwargs = {}
@@ -1327,7 +1327,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayConsumerGroupListResponse:
         """
-        获取消费者组列表
+        查询消费者组列表。
         """
         
         kwargs = {}
@@ -1345,7 +1345,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayConsumerListResponse:
         """
-        查询云原生网关消费者列表
+        查询消费者列表。
         """
         
         kwargs = {}
@@ -1399,7 +1399,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayLLMModelAPIResponse:
         """
-        查询单个 LLM 模型 API 信息
+        查询单个 LLM 模型 API 详情。
         """
         
         kwargs = {}
@@ -1417,7 +1417,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayLLMModelAPIsResponse:
         """
-        查询 LLM 模型 API 列表
+        查询 LLM 模型 API 列表。
         """
         
         kwargs = {}
@@ -1435,7 +1435,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayLLMModelServiceResponse:
         """
-        查询单个 LLM 模型服务列表
+        查询单个 LLM 模型服务详情。
         """
         
         kwargs = {}
@@ -1453,7 +1453,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayLLMModelServicesResponse:
         """
-        查询 LLM 模型服务列表
+        查询 LLM 模型服务列表。
         """
         
         kwargs = {}
@@ -1543,7 +1543,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewaySecretKeyResponse:
         """
-        查询密钥详情
+        查询密钥详情（SecretValue 字段会被掩码）。
         """
         
         kwargs = {}
@@ -1561,7 +1561,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewaySecretKeyListResponse:
         """
-        获取密钥列表
+        查询密钥列表。
         """
         
         kwargs = {}
@@ -1579,7 +1579,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewaySecretKeyValueResponse:
         """
-        查询密钥值
+        查询密钥明文值（KMS 类型密钥不可获取）。
         """
         
         kwargs = {}
@@ -2299,7 +2299,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyCloudNativeAPIGatewayConsumerResponse:
         """
-        修改云原生网关消费者的信息
+        修改消费者。
         """
         
         kwargs = {}
@@ -2317,7 +2317,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyCloudNativeAPIGatewayConsumerGroupResponse:
         """
-        修改云原生网关消费者组的信息
+        修改消费者组。
         """
         
         kwargs = {}
@@ -2335,7 +2335,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyCloudNativeAPIGatewayLLMModelAPIResponse:
         """
-        修改 LLM 模型 API 信息
+        修改 LLM 模型 API。
         """
         
         kwargs = {}
@@ -2407,7 +2407,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyCloudNativeAPIGatewaySecretKeyStatusResponse:
         """
-        修改密钥状态
+        修改密钥启用状态。
         """
         
         kwargs = {}
@@ -2731,7 +2731,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RemoveCloudNativeAPIGatewayConsumerGroupAuthResponse:
         """
-        云原生网关移除消费者组授权
+        从资源（模型 API / MCP Server）移除消费者组授权。
         """
         
         kwargs = {}
@@ -2749,7 +2749,7 @@ class TseClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RemoveCloudNativeAPIGatewayConsumerInGroupResponse:
         """
-        从指定的消费者组中移除消费者
+        将消费者从消费者组移除。
         """
         
         kwargs = {}

@@ -4783,6 +4783,8 @@ class Invoker(AbstractModel):
         :type CreatedTime: str
         :param _UpdatedTime: 修改时间。格式为：YYYY-MM-DDThh:mm:ssZ
         :type UpdatedTime: str
+        :param _Tags: 标签信息。
+        :type Tags: list of Tag
         """
         self._InvokerId = None
         self._Name = None
@@ -4795,6 +4797,7 @@ class Invoker(AbstractModel):
         self._ScheduleSettings = None
         self._CreatedTime = None
         self._UpdatedTime = None
+        self._Tags = None
 
     @property
     def InvokerId(self):
@@ -4917,6 +4920,17 @@ class Invoker(AbstractModel):
     def UpdatedTime(self, UpdatedTime):
         self._UpdatedTime = UpdatedTime
 
+    @property
+    def Tags(self):
+        r"""标签信息。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._InvokerId = params.get("InvokerId")
@@ -4932,6 +4946,12 @@ class Invoker(AbstractModel):
             self._ScheduleSettings._deserialize(params.get("ScheduleSettings"))
         self._CreatedTime = params.get("CreatedTime")
         self._UpdatedTime = params.get("UpdatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

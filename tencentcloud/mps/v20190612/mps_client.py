@@ -4862,6 +4862,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateVoice(self, request):
+        r"""更新音色信息
+
+        :param request: Request instance for UpdateVoice.
+        :type request: :class:`tencentcloud.mps.v20190612.models.UpdateVoiceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def WithdrawsWatermark(self, request):
         r"""提取视频中的盲水印。
 

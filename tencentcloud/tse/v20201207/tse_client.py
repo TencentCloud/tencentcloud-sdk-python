@@ -27,7 +27,7 @@ class TseClient(AbstractClient):
 
 
     def AddCloudNativeAPIGatewayConsumerGroupAuth(self, request):
-        r"""添加消费者组授权
+        r"""为资源（模型 API / MCP Server）添加消费者组授权。
 
         :param request: Request instance for AddCloudNativeAPIGatewayConsumerGroupAuth.
         :type request: :class:`tencentcloud.tse.v20201207.models.AddCloudNativeAPIGatewayConsumerGroupAuthRequest`
@@ -50,7 +50,7 @@ class TseClient(AbstractClient):
 
 
     def AddCloudNativeAPIGatewayConsumerInGroup(self, request):
-        r"""将消费者添加到指定的消费者组中
+        r"""将消费者添加到消费者组。
 
         :param request: Request instance for AddCloudNativeAPIGatewayConsumerInGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.AddCloudNativeAPIGatewayConsumerInGroupRequest`
@@ -211,7 +211,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayConsumer(self, request):
-        r"""创建云原生网关的消费者，支持多种密钥生成方式
+        r"""创建消费者。
 
         :param request: Request instance for CreateCloudNativeAPIGatewayConsumer.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayConsumerRequest`
@@ -234,7 +234,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayConsumerGroup(self, request):
-        r"""创建云原生网关的消费者组
+        r"""创建消费者组。
 
         :param request: Request instance for CreateCloudNativeAPIGatewayConsumerGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayConsumerGroupRequest`
@@ -257,7 +257,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewayLLMModelAPI(self, request):
-        r"""创建AI网关模型 API
+        r"""创建 LLM 模型 API。
 
         :param request: Request instance for CreateCloudNativeAPIGatewayLLMModelAPI.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayLLMModelAPIRequest`
@@ -372,7 +372,7 @@ class TseClient(AbstractClient):
 
 
     def CreateCloudNativeAPIGatewaySecretKey(self, request):
-        r"""创建云原生网关密钥
+        r"""创建消费者密钥。
 
         :param request: Request instance for CreateCloudNativeAPIGatewaySecretKey.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewaySecretKeyRequest`
@@ -878,7 +878,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayConsumer(self, request):
-        r"""删除指定的云原生网关消费者
+        r"""删除消费者（被绑定到消费者组/密钥时需先解绑）。
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayConsumer.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayConsumerRequest`
@@ -901,7 +901,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayConsumerGroup(self, request):
-        r"""删除云原生网关消费者组的信息
+        r"""删除消费者组（被授权资源占用时返回 CheckItems）。
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayConsumerGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayConsumerGroupRequest`
@@ -947,7 +947,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayLLMModelAPI(self, request):
-        r"""删除 LLM 模型 API 信息
+        r"""删除 LLM 模型 API。
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayLLMModelAPI.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayLLMModelAPIRequest`
@@ -970,7 +970,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewayLLMModelService(self, request):
-        r"""删除 LLM 模型服务信息
+        r"""删除 LLM 模型服务（被模型 API 绑定时需先解绑）。
 
         :param request: Request instance for DeleteCloudNativeAPIGatewayLLMModelService.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayLLMModelServiceRequest`
@@ -1062,7 +1062,7 @@ class TseClient(AbstractClient):
 
 
     def DeleteCloudNativeAPIGatewaySecretKey(self, request):
-        r"""删除云原生网关密钥
+        r"""删除消费者密钥（被绑定时需先解绑）。
 
         :param request: Request instance for DeleteCloudNativeAPIGatewaySecretKey.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewaySecretKeyRequest`
@@ -1637,7 +1637,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayConsumer(self, request):
-        r"""查询指定的云原生网关消费者
+        r"""查询消费者详情。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayConsumer.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayConsumerRequest`
@@ -1660,7 +1660,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayConsumerGroup(self, request):
-        r"""查看云原生网关消费者组的信息
+        r"""查询消费者组详情。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayConsumerGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayConsumerGroupRequest`
@@ -1683,7 +1683,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayConsumerGroupList(self, request):
-        r"""获取消费者组列表
+        r"""查询消费者组列表。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayConsumerGroupList.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayConsumerGroupListRequest`
@@ -1706,7 +1706,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayConsumerList(self, request):
-        r"""查询云原生网关消费者列表
+        r"""查询消费者列表。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayConsumerList.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayConsumerListRequest`
@@ -1775,7 +1775,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayLLMModelAPI(self, request):
-        r"""查询单个 LLM 模型 API 信息
+        r"""查询单个 LLM 模型 API 详情。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayLLMModelAPI.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayLLMModelAPIRequest`
@@ -1798,7 +1798,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayLLMModelAPIs(self, request):
-        r"""查询 LLM 模型 API 列表
+        r"""查询 LLM 模型 API 列表。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayLLMModelAPIs.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayLLMModelAPIsRequest`
@@ -1821,7 +1821,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayLLMModelService(self, request):
-        r"""查询单个 LLM 模型服务列表
+        r"""查询单个 LLM 模型服务详情。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayLLMModelService.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayLLMModelServiceRequest`
@@ -1844,7 +1844,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayLLMModelServices(self, request):
-        r"""查询 LLM 模型服务列表
+        r"""查询 LLM 模型服务列表。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayLLMModelServices.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayLLMModelServicesRequest`
@@ -1959,7 +1959,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewaySecretKey(self, request):
-        r"""查询密钥详情
+        r"""查询密钥详情（SecretValue 字段会被掩码）。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewaySecretKey.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewaySecretKeyRequest`
@@ -1982,7 +1982,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewaySecretKeyList(self, request):
-        r"""获取密钥列表
+        r"""查询密钥列表。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewaySecretKeyList.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewaySecretKeyListRequest`
@@ -2005,7 +2005,7 @@ class TseClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewaySecretKeyValue(self, request):
-        r"""查询密钥值
+        r"""查询密钥明文值（KMS 类型密钥不可获取）。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewaySecretKeyValue.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewaySecretKeyValueRequest`
@@ -2925,7 +2925,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayConsumer(self, request):
-        r"""修改云原生网关消费者的信息
+        r"""修改消费者。
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayConsumer.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayConsumerRequest`
@@ -2948,7 +2948,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayConsumerGroup(self, request):
-        r"""修改云原生网关消费者组的信息
+        r"""修改消费者组。
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayConsumerGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayConsumerGroupRequest`
@@ -2971,7 +2971,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayLLMModelAPI(self, request):
-        r"""修改 LLM 模型 API 信息
+        r"""修改 LLM 模型 API。
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayLLMModelAPI.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayLLMModelAPIRequest`
@@ -3063,7 +3063,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewaySecretKeyStatus(self, request):
-        r"""修改密钥状态
+        r"""修改密钥启用状态。
 
         :param request: Request instance for ModifyCloudNativeAPIGatewaySecretKeyStatus.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewaySecretKeyStatusRequest`
@@ -3477,7 +3477,7 @@ class TseClient(AbstractClient):
 
 
     def RemoveCloudNativeAPIGatewayConsumerGroupAuth(self, request):
-        r"""云原生网关移除消费者组授权
+        r"""从资源（模型 API / MCP Server）移除消费者组授权。
 
         :param request: Request instance for RemoveCloudNativeAPIGatewayConsumerGroupAuth.
         :type request: :class:`tencentcloud.tse.v20201207.models.RemoveCloudNativeAPIGatewayConsumerGroupAuthRequest`
@@ -3500,7 +3500,7 @@ class TseClient(AbstractClient):
 
 
     def RemoveCloudNativeAPIGatewayConsumerInGroup(self, request):
-        r"""从指定的消费者组中移除消费者
+        r"""将消费者从消费者组移除。
 
         :param request: Request instance for RemoveCloudNativeAPIGatewayConsumerInGroup.
         :type request: :class:`tencentcloud.tse.v20201207.models.RemoveCloudNativeAPIGatewayConsumerInGroupRequest`

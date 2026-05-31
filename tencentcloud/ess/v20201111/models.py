@@ -46111,40 +46111,21 @@ class UploadFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessType: 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>   ["yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT"]
+        :param _BusinessType: <p>文件对应业务类型,可以选择的类型如下<ul><li> <strong>TEMPLATE</strong> : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> <strong>DOCUMENT</strong> : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> <strong>SEAL</strong> : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li> <strong>ARCHIVE</strong> : 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li></ul>   [&quot;yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT&quot;]</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板</li><li>DOCUMENT： 此文件用来发起合同流程</li><li>SEAL： 此文件用于印章的生成</li><li>ARCHIVE： 此文件用于归档文件夹</li></ul>
         :type BusinessType: str
-        :param _Caller: 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Caller: <p>执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Caller: :class:`tencentcloud.ess.v20201111.models.Caller`
-        :param _FileInfos: 请上传文件内容数组，最多可上传20个文件。
-
-<b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b>
+        :param _FileInfos: <p>请上传文件内容数组，最多可上传20个文件。</p><p><b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b></p>
         :type FileInfos: list of UploadFile
-        :param _FileType: 文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
-可支持的指定类型如下:
-<ul><li>pdf</li>
-<li>doc</li>
-<li>docx</li>
-<li>xls</li>
-<li>xlsx</li>
-<li>html</li>
-<li>jpg</li>
-<li>jpeg</li>
-<li>png</li></ul>
-如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
+        :param _FileType: <p>文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。<br>可支持的指定类型如下:</p><ul><li>pdf</li><li>doc</li><li>docx</li><li>xls</li><li>xlsx</li><li>html</li><li>jpg</li><li>jpeg</li><li>png</li></ul>如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
         :type FileType: str
-        :param _CoverRect: 此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。
-<ul><li>**true**：将灰色矩阵置为白色。</li>
-<li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul>
-
-注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
+        :param _CoverRect: <p>此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。</p><ul><li>**true**：将灰色矩阵置为白色。</li><li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul><p>注: <code>该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。</code></p>
         :type CoverRect: bool
-        :param _CustomIds: 该字段已不再使用
+        :param _CustomIds: <p>该字段已不再使用</p>
         :type CustomIds: list of str
-        :param _FileUrls: 不再使用，上传文件链接数组，最多支持20个URL
+        :param _FileUrls: <p>不再使用，上传文件链接数组，最多支持20个URL</p>
         :type FileUrls: str
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._BusinessType = None
@@ -46158,7 +46139,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def BusinessType(self):
-        r"""文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>   ["yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT"]
+        r"""<p>文件对应业务类型,可以选择的类型如下<ul><li> <strong>TEMPLATE</strong> : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> <strong>DOCUMENT</strong> : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> <strong>SEAL</strong> : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li> <strong>ARCHIVE</strong> : 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li></ul>   [&quot;yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT&quot;]</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板</li><li>DOCUMENT： 此文件用来发起合同流程</li><li>SEAL： 此文件用于印章的生成</li><li>ARCHIVE： 此文件用于归档文件夹</li></ul>
         :rtype: str
         """
         return self._BusinessType
@@ -46169,8 +46150,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def Caller(self):
-        r"""执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Caller`
         """
         return self._Caller
@@ -46181,9 +46161,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""请上传文件内容数组，最多可上传20个文件。
-
-<b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b>
+        r"""<p>请上传文件内容数组，最多可上传20个文件。</p><p><b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b></p>
         :rtype: list of UploadFile
         """
         return self._FileInfos
@@ -46194,18 +46172,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def FileType(self):
-        r"""文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
-可支持的指定类型如下:
-<ul><li>pdf</li>
-<li>doc</li>
-<li>docx</li>
-<li>xls</li>
-<li>xlsx</li>
-<li>html</li>
-<li>jpg</li>
-<li>jpeg</li>
-<li>png</li></ul>
-如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
+        r"""<p>文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。<br>可支持的指定类型如下:</p><ul><li>pdf</li><li>doc</li><li>docx</li><li>xls</li><li>xlsx</li><li>html</li><li>jpg</li><li>jpeg</li><li>png</li></ul>如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
         :rtype: str
         """
         return self._FileType
@@ -46216,11 +46183,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def CoverRect(self):
-        r"""此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。
-<ul><li>**true**：将灰色矩阵置为白色。</li>
-<li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul>
-
-注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
+        r"""<p>此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。</p><ul><li>**true**：将灰色矩阵置为白色。</li><li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul><p>注: <code>该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。</code></p>
         :rtype: bool
         """
         return self._CoverRect
@@ -46231,7 +46194,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def CustomIds(self):
-        r"""该字段已不再使用
+        r"""<p>该字段已不再使用</p>
         :rtype: list of str
         """
         return self._CustomIds
@@ -46244,7 +46207,7 @@ class UploadFilesRequest(AbstractModel):
     def FileUrls(self):
         warnings.warn("parameter `FileUrls` is deprecated", DeprecationWarning) 
 
-        r"""不再使用，上传文件链接数组，最多支持20个URL
+        r"""<p>不再使用，上传文件链接数组，最多支持20个URL</p>
         :rtype: str
         """
         return self._FileUrls
@@ -46257,8 +46220,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -46303,11 +46265,9 @@ class UploadFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileIds: 文件资源ID数组，每个文件资源ID为32位字符串。
-建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
-注:`有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用`
+        :param _FileIds: <p>文件资源ID数组，每个文件资源ID为32位字符串。<br>建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。<br>注:<code>有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用</code></p>
         :type FileIds: list of str
-        :param _TotalCount: 上传成功文件数量
+        :param _TotalCount: <p>上传成功文件数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46318,9 +46278,7 @@ class UploadFilesResponse(AbstractModel):
 
     @property
     def FileIds(self):
-        r"""文件资源ID数组，每个文件资源ID为32位字符串。
-建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
-注:`有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用`
+        r"""<p>文件资源ID数组，每个文件资源ID为32位字符串。<br>建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。<br>注:<code>有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用</code></p>
         :rtype: list of str
         """
         return self._FileIds
@@ -46331,7 +46289,7 @@ class UploadFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""上传成功文件数量
+        r"""<p>上传成功文件数量</p>
         :rtype: int
         """
         return self._TotalCount

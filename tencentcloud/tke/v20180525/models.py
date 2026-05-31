@@ -40622,20 +40622,22 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID，通过DescribeClusters接口获取
+        :param _ClusterId: <p>集群ID，通过DescribeClusters接口获取</p>
         :type ClusterId: str
-        :param _NodePoolId: 节点池ID，通过DescribeNodePools接口获取
+        :param _NodePoolId: <p>节点池ID，通过DescribeNodePools接口获取</p>
         :type NodePoolId: str
-        :param _Name: 节点池名称，必须修改至少一个参数
+        :param _Name: <p>节点池名称，必须修改至少一个参数</p>
         :type Name: str
-        :param _SecurityGroupIds: 安全组ID列表，必须修改至少一个参数
+        :param _SecurityGroupIds: <p>安全组ID列表，必须修改至少一个参数</p>
         :type SecurityGroupIds: list of str
-        :param _Labels: 虚拟节点label，必须修改至少一个参数
+        :param _Labels: <p>虚拟节点label，必须修改至少一个参数</p>
         :type Labels: list of Label
-        :param _Taints: 虚拟节点taint，必须修改至少一个参数
+        :param _Taints: <p>虚拟节点taint，必须修改至少一个参数</p>
         :type Taints: list of Taint
-        :param _DeletionProtection: 删除保护开关，必须修改至少一个参数
+        :param _DeletionProtection: <p>删除保护开关，必须修改至少一个参数</p>
         :type DeletionProtection: bool
+        :param _SubnetAllocationPolicy: <p>子网分配策略</p>
+        :type SubnetAllocationPolicy: :class:`tencentcloud.tke.v20180525.models.SubnetAllocationPolicy`
         """
         self._ClusterId = None
         self._NodePoolId = None
@@ -40644,10 +40646,11 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
         self._Labels = None
         self._Taints = None
         self._DeletionProtection = None
+        self._SubnetAllocationPolicy = None
 
     @property
     def ClusterId(self):
-        r"""集群ID，通过DescribeClusters接口获取
+        r"""<p>集群ID，通过DescribeClusters接口获取</p>
         :rtype: str
         """
         return self._ClusterId
@@ -40658,7 +40661,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def NodePoolId(self):
-        r"""节点池ID，通过DescribeNodePools接口获取
+        r"""<p>节点池ID，通过DescribeNodePools接口获取</p>
         :rtype: str
         """
         return self._NodePoolId
@@ -40669,7 +40672,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""节点池名称，必须修改至少一个参数
+        r"""<p>节点池名称，必须修改至少一个参数</p>
         :rtype: str
         """
         return self._Name
@@ -40680,7 +40683,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组ID列表，必须修改至少一个参数
+        r"""<p>安全组ID列表，必须修改至少一个参数</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -40691,7 +40694,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        r"""虚拟节点label，必须修改至少一个参数
+        r"""<p>虚拟节点label，必须修改至少一个参数</p>
         :rtype: list of Label
         """
         return self._Labels
@@ -40702,7 +40705,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        r"""虚拟节点taint，必须修改至少一个参数
+        r"""<p>虚拟节点taint，必须修改至少一个参数</p>
         :rtype: list of Taint
         """
         return self._Taints
@@ -40713,7 +40716,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""删除保护开关，必须修改至少一个参数
+        r"""<p>删除保护开关，必须修改至少一个参数</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -40721,6 +40724,17 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
     @DeletionProtection.setter
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
+
+    @property
+    def SubnetAllocationPolicy(self):
+        r"""<p>子网分配策略</p>
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SubnetAllocationPolicy`
+        """
+        return self._SubnetAllocationPolicy
+
+    @SubnetAllocationPolicy.setter
+    def SubnetAllocationPolicy(self, SubnetAllocationPolicy):
+        self._SubnetAllocationPolicy = SubnetAllocationPolicy
 
 
     def _deserialize(self, params):
@@ -40741,6 +40755,9 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Taints.append(obj)
         self._DeletionProtection = params.get("DeletionProtection")
+        if params.get("SubnetAllocationPolicy") is not None:
+            self._SubnetAllocationPolicy = SubnetAllocationPolicy()
+            self._SubnetAllocationPolicy._deserialize(params.get("SubnetAllocationPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1269,6 +1269,11 @@ def test_import_tmt_v20180321():
     from tencentcloud.tmt.v20180321 import models
 
 
+def test_import_tokenhub_v20260322():
+    from tencentcloud.tokenhub.v20260322 import tokenhub_client
+    from tencentcloud.tokenhub.v20260322 import models
+
+
 def test_import_tourism_v20230215():
     from tencentcloud.tourism.v20230215 import tourism_client
     from tencentcloud.tourism.v20230215 import models

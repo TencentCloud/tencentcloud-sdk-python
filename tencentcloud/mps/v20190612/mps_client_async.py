@@ -3826,6 +3826,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateVoice(
+            self,
+            request: models.UpdateVoiceRequest,
+            opts: Dict = None,
+    ) -> models.UpdateVoiceResponse:
+        """
+        更新音色信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateVoiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def WithdrawsWatermark(
             self,
             request: models.WithdrawsWatermarkRequest,

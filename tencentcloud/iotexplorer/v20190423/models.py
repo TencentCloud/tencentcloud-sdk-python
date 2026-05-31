@@ -30154,13 +30154,24 @@ class ListTWeSeeTasksRequest(AbstractModel):
         :type ProductId: str
         :param _DeviceName: 设备名称
         :type DeviceName: str
-        :param _ServiceCategory: 算法类目。可能取值：
+        :param _ServiceCategory: 算法类目。可选值：
 - `COMPREHENSION`：视觉理解
+- `HIGHLIGHT`：视频浓缩
         :type ServiceCategory: str
         :param _Limit: 分页拉取数量
         :type Limit: int
         :param _Offset: 分页拉取偏移
         :type Offset: int
+        :param _ServiceTypes: 算法类型。
+
+当 ServiceCategory 为 `COMPREHENSION` 时，可选值包括：
+- `VID_COMP`：视频理解
+- `IMG_COMP`：图片理解
+- `CONT_PERSON_MOTIONLESS`：静姿检测
+
+当 ServiceCategory 为 `HIGHLIGHT` 时，可选值包括：
+- `COMP_HIGHLIGHT`：视频浓缩
+        :type ServiceTypes: list of str
         :param _ChannelId: 通道 ID
         :type ChannelId: int
         :param _StartTimeMs: 查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。
@@ -30173,16 +30184,20 @@ class ListTWeSeeTasksRequest(AbstractModel):
 - `2`：空结果
 - `3`：有效结果
         :type Status: int
+        :param _FileURLExpireTime: 下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL
+        :type FileURLExpireTime: int
         """
         self._ProductId = None
         self._DeviceName = None
         self._ServiceCategory = None
         self._Limit = None
         self._Offset = None
+        self._ServiceTypes = None
         self._ChannelId = None
         self._StartTimeMs = None
         self._EndTimeMs = None
         self._Status = None
+        self._FileURLExpireTime = None
 
     @property
     def ProductId(self):
@@ -30208,8 +30223,9 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
-        r"""算法类目。可能取值：
+        r"""算法类目。可选值：
 - `COMPREHENSION`：视觉理解
+- `HIGHLIGHT`：视频浓缩
         :rtype: str
         """
         return self._ServiceCategory
@@ -30239,6 +30255,25 @@ class ListTWeSeeTasksRequest(AbstractModel):
     @Offset.setter
     def Offset(self, Offset):
         self._Offset = Offset
+
+    @property
+    def ServiceTypes(self):
+        r"""算法类型。
+
+当 ServiceCategory 为 `COMPREHENSION` 时，可选值包括：
+- `VID_COMP`：视频理解
+- `IMG_COMP`：图片理解
+- `CONT_PERSON_MOTIONLESS`：静姿检测
+
+当 ServiceCategory 为 `HIGHLIGHT` 时，可选值包括：
+- `COMP_HIGHLIGHT`：视频浓缩
+        :rtype: list of str
+        """
+        return self._ServiceTypes
+
+    @ServiceTypes.setter
+    def ServiceTypes(self, ServiceTypes):
+        self._ServiceTypes = ServiceTypes
 
     @property
     def ChannelId(self):
@@ -30288,6 +30323,17 @@ class ListTWeSeeTasksRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def FileURLExpireTime(self):
+        r"""下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL
+        :rtype: int
+        """
+        return self._FileURLExpireTime
+
+    @FileURLExpireTime.setter
+    def FileURLExpireTime(self, FileURLExpireTime):
+        self._FileURLExpireTime = FileURLExpireTime
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -30295,10 +30341,12 @@ class ListTWeSeeTasksRequest(AbstractModel):
         self._ServiceCategory = params.get("ServiceCategory")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._ServiceTypes = params.get("ServiceTypes")
         self._ChannelId = params.get("ChannelId")
         self._StartTimeMs = params.get("StartTimeMs")
         self._EndTimeMs = params.get("EndTimeMs")
         self._Status = params.get("Status")
+        self._FileURLExpireTime = params.get("FileURLExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38447,6 +38495,125 @@ class SeeComprehensionResult(AbstractModel):
         
 
 
+class SeeDetectContinuousConfig(AbstractModel):
+    r"""TWeSee 标签持续检测配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetectType: 检测标签。可选值：
+- `person_motionless`：人物静止
+        :type DetectType: str
+        :param _DailyStartTime: 启用检测的按日周期起始时间分钟数。取值范围：0 ~ 1440
+        :type DailyStartTime: int
+        :param _DailyEndTime: 启用检测的按日周期结束时间分钟数。取值范围：0 ~ 1440
+        :type DailyEndTime: int
+        :param _Interval: 检测间隔分钟数。取值范围：5 ~ 60。
+        :type Interval: int
+        """
+        self._DetectType = None
+        self._DailyStartTime = None
+        self._DailyEndTime = None
+        self._Interval = None
+
+    @property
+    def DetectType(self):
+        r"""检测标签。可选值：
+- `person_motionless`：人物静止
+        :rtype: str
+        """
+        return self._DetectType
+
+    @DetectType.setter
+    def DetectType(self, DetectType):
+        self._DetectType = DetectType
+
+    @property
+    def DailyStartTime(self):
+        r"""启用检测的按日周期起始时间分钟数。取值范围：0 ~ 1440
+        :rtype: int
+        """
+        return self._DailyStartTime
+
+    @DailyStartTime.setter
+    def DailyStartTime(self, DailyStartTime):
+        self._DailyStartTime = DailyStartTime
+
+    @property
+    def DailyEndTime(self):
+        r"""启用检测的按日周期结束时间分钟数。取值范围：0 ~ 1440
+        :rtype: int
+        """
+        return self._DailyEndTime
+
+    @DailyEndTime.setter
+    def DailyEndTime(self, DailyEndTime):
+        self._DailyEndTime = DailyEndTime
+
+    @property
+    def Interval(self):
+        r"""检测间隔分钟数。取值范围：5 ~ 60。
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+
+    def _deserialize(self, params):
+        self._DetectType = params.get("DetectType")
+        self._DailyStartTime = params.get("DailyStartTime")
+        self._DailyEndTime = params.get("DailyEndTime")
+        self._Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeDetectContinuousResult(AbstractModel):
+    r"""TWeSee 标签持续检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsContinuousInRange: 检测标签是否在当前区间内持续
+        :type IsContinuousInRange: bool
+        """
+        self._IsContinuousInRange = None
+
+    @property
+    def IsContinuousInRange(self):
+        r"""检测标签是否在当前区间内持续
+        :rtype: bool
+        """
+        return self._IsContinuousInRange
+
+    @IsContinuousInRange.setter
+    def IsContinuousInRange(self, IsContinuousInRange):
+        self._IsContinuousInRange = IsContinuousInRange
+
+
+    def _deserialize(self, params):
+        self._IsContinuousInRange = params.get("IsContinuousInRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SeeEventIdFilterConfig(AbstractModel):
     r"""TWeSee 处理云存事件 EventId 的过滤规则配置
 
@@ -38600,11 +38767,13 @@ class SeeTaskInfo(AbstractModel):
         :param _ServiceCategory: 算法类目。可能取值：
 
 - `COMPREHENSION`：视觉理解
+- `HIGHLIGHT`：视频浓缩
         :type ServiceCategory: str
         :param _ServiceType: 算法类型。可能取值：
 
 - `VID_COMP`：视频理解
 - `IMG_COMP`：图片理解
+- `COMP_HIGHLIGHT`：视频浓缩
         :type ServiceType: str
         :param _ServiceTier: 套餐规格。可能取值：
 
@@ -38615,6 +38784,8 @@ class SeeTaskInfo(AbstractModel):
         :type ComprehensionResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionResult`
         :param _CompHighlightResult: 视频语义浓缩结果（适用于视频语义浓缩）
         :type CompHighlightResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCompHighlightResult`
+        :param _DetectContinuousResult: 标签持续检测结果
+        :type DetectContinuousResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeDetectContinuousResult`
         :param _CostBasic: 完成该任务所消耗的基础能力额度
         :type CostBasic: int
         :param _CostAdvanced: 完成该任务所消耗的高级能力额度
@@ -38636,6 +38807,7 @@ class SeeTaskInfo(AbstractModel):
         self._ServiceTier = None
         self._ComprehensionResult = None
         self._CompHighlightResult = None
+        self._DetectContinuousResult = None
         self._CostBasic = None
         self._CostAdvanced = None
         self._Files = None
@@ -38686,6 +38858,7 @@ class SeeTaskInfo(AbstractModel):
         r"""算法类目。可能取值：
 
 - `COMPREHENSION`：视觉理解
+- `HIGHLIGHT`：视频浓缩
         :rtype: str
         """
         return self._ServiceCategory
@@ -38700,6 +38873,7 @@ class SeeTaskInfo(AbstractModel):
 
 - `VID_COMP`：视频理解
 - `IMG_COMP`：图片理解
+- `COMP_HIGHLIGHT`：视频浓缩
         :rtype: str
         """
         return self._ServiceType
@@ -38743,6 +38917,17 @@ class SeeTaskInfo(AbstractModel):
     @CompHighlightResult.setter
     def CompHighlightResult(self, CompHighlightResult):
         self._CompHighlightResult = CompHighlightResult
+
+    @property
+    def DetectContinuousResult(self):
+        r"""标签持续检测结果
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeDetectContinuousResult`
+        """
+        return self._DetectContinuousResult
+
+    @DetectContinuousResult.setter
+    def DetectContinuousResult(self, DetectContinuousResult):
+        self._DetectContinuousResult = DetectContinuousResult
 
     @property
     def CostBasic(self):
@@ -38826,6 +39011,9 @@ class SeeTaskInfo(AbstractModel):
         if params.get("CompHighlightResult") is not None:
             self._CompHighlightResult = SeeCompHighlightResult()
             self._CompHighlightResult._deserialize(params.get("CompHighlightResult"))
+        if params.get("DetectContinuousResult") is not None:
+            self._DetectContinuousResult = SeeDetectContinuousResult()
+            self._DetectContinuousResult._deserialize(params.get("DetectContinuousResult"))
         self._CostBasic = params.get("CostBasic")
         self._CostAdvanced = params.get("CostAdvanced")
         self._Files = params.get("Files")
@@ -44195,12 +44383,15 @@ class VisionSummaryConfig(AbstractModel):
         :type DetectTypes: list of str
         :param _CustomDetectQueries: 自定义检测标签
         :type CustomDetectQueries: list of VisionCustomDetectQuery
+        :param _DetectContinuous: 标签持续检测配置
+        :type DetectContinuous: list of SeeDetectContinuousConfig
         """
         self._OutputLang = None
         self._AlternativeOutputLang = None
         self._MultiCameraLayout = None
         self._DetectTypes = None
         self._CustomDetectQueries = None
+        self._DetectContinuous = None
 
     @property
     def OutputLang(self):
@@ -44358,6 +44549,17 @@ class VisionSummaryConfig(AbstractModel):
     def CustomDetectQueries(self, CustomDetectQueries):
         self._CustomDetectQueries = CustomDetectQueries
 
+    @property
+    def DetectContinuous(self):
+        r"""标签持续检测配置
+        :rtype: list of SeeDetectContinuousConfig
+        """
+        return self._DetectContinuous
+
+    @DetectContinuous.setter
+    def DetectContinuous(self, DetectContinuous):
+        self._DetectContinuous = DetectContinuous
+
 
     def _deserialize(self, params):
         self._OutputLang = params.get("OutputLang")
@@ -44370,6 +44572,12 @@ class VisionSummaryConfig(AbstractModel):
                 obj = VisionCustomDetectQuery()
                 obj._deserialize(item)
                 self._CustomDetectQueries.append(obj)
+        if params.get("DetectContinuous") is not None:
+            self._DetectContinuous = []
+            for item in params.get("DetectContinuous"):
+                obj = SeeDetectContinuousConfig()
+                obj._deserialize(item)
+                self._DetectContinuous.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
