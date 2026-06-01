@@ -25,15 +25,47 @@ class AccessControlRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccessMode: 访问方式：public - 公网，internal - 内网
+        :param _CidrBlocks: <p>网段或IP，支持IPv4或IPv6。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CidrBlocks: list of str
+        :param _Action: <p>ACCEPT 或 DROP。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param _AccessMode: <p>访问方式：public - 公网，internal - 内网</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessMode: str
         """
+        self._CidrBlocks = None
+        self._Action = None
         self._AccessMode = None
 
     @property
+    def CidrBlocks(self):
+        r"""<p>网段或IP，支持IPv4或IPv6。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CidrBlocks
+
+    @CidrBlocks.setter
+    def CidrBlocks(self, CidrBlocks):
+        self._CidrBlocks = CidrBlocks
+
+    @property
+    def Action(self):
+        r"""<p>ACCEPT 或 DROP。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
     def AccessMode(self):
-        r"""访问方式：public - 公网，internal - 内网
+        r"""<p>访问方式：public - 公网，internal - 内网</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -45,6 +77,8 @@ class AccessControlRule(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CidrBlocks = params.get("CidrBlocks")
+        self._Action = params.get("Action")
         self._AccessMode = params.get("AccessMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

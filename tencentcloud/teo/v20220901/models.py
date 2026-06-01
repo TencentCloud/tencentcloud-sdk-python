@@ -10856,6 +10856,130 @@ class CreateEdgeKVNamespaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFunctionReplicaRequest(AbstractModel):
+    r"""CreateFunctionReplica请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _ReplicaName: 边缘函数副本名称。限制可输入 1-50 个字符，允许的字符为a-z、0-9、-，且-不能单独注册或连续使用，不能放在开头或结尾。同一 FunctionId 下副本名称需唯一。
+        :type ReplicaName: str
+        :param _Content: 边缘函数副本内容，当前仅支持 JavaScript 代码，最大支持 5MB。
+        :type Content: str
+        :param _Remark: 边缘函数副本描述。最大支持 50 个字符。
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._ReplicaName = None
+        self._Content = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        r"""函数 ID。
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def ReplicaName(self):
+        r"""边缘函数副本名称。限制可输入 1-50 个字符，允许的字符为a-z、0-9、-，且-不能单独注册或连续使用，不能放在开头或结尾。同一 FunctionId 下副本名称需唯一。
+        :rtype: str
+        """
+        return self._ReplicaName
+
+    @ReplicaName.setter
+    def ReplicaName(self, ReplicaName):
+        self._ReplicaName = ReplicaName
+
+    @property
+    def Content(self):
+        r"""边缘函数副本内容，当前仅支持 JavaScript 代码，最大支持 5MB。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Remark(self):
+        r"""边缘函数副本描述。最大支持 50 个字符。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._ReplicaName = params.get("ReplicaName")
+        self._Content = params.get("Content")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFunctionReplicaResponse(AbstractModel):
+    r"""CreateFunctionReplica返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFunctionRequest(AbstractModel):
     r"""CreateFunction请求参数结构体
 
@@ -16726,6 +16850,100 @@ class DeleteEdgeKVNamespaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteFunctionReplicaRequest(AbstractModel):
+    r"""DeleteFunctionReplica请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _ReplicaNames: 需要删除的函数的副本名称。支持以列表的形式传入。
+        :type ReplicaNames: list of str
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._ReplicaNames = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        r"""函数 ID。
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def ReplicaNames(self):
+        r"""需要删除的函数的副本名称。支持以列表的形式传入。
+        :rtype: list of str
+        """
+        return self._ReplicaNames
+
+    @ReplicaNames.setter
+    def ReplicaNames(self, ReplicaNames):
+        self._ReplicaNames = ReplicaNames
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._ReplicaNames = params.get("ReplicaNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFunctionReplicaResponse(AbstractModel):
+    r"""DeleteFunctionReplica返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteFunctionRequest(AbstractModel):
     r"""DeleteFunction请求参数结构体
 
@@ -21963,6 +22181,200 @@ class DescribeFunctionComponentBindingsResponse(AbstractModel):
                 obj = FunctionComponentBinding()
                 obj._deserialize(item)
                 self._FunctionComponentBindings.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFunctionReplicasRequest(AbstractModel):
+    r"""DescribeFunctionReplicas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：200。
+        :type Limit: int
+        :param _SortBy: 排序依据，取值有：  <li>created-on：创建时间。</li>  默认根据 created-on 属性排序。
+        :type SortBy: str
+        :param _SortOrder: 列表排序方式，取值有：  <li>asc：升序排列；</li>  <li>desc：降序排列。</li>  默认值为 asc。
+        :type SortOrder: str
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回函数 ID 下全部函数副本。详细的过滤条件如下：  <li> replica-name：按照函数副本名称进行过滤，支持模糊查询。</li> 
+        :type Filters: list of AdvancedFilter
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._Offset = None
+        self._Limit = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        r"""函数 ID。
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Offset(self):
+        r"""分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页查询限制数目。默认值：20，最大值：200。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SortBy(self):
+        r"""排序依据，取值有：  <li>created-on：创建时间。</li>  默认根据 created-on 属性排序。
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""列表排序方式，取值有：  <li>asc：升序排列；</li>  <li>desc：降序排列。</li>  默认值为 asc。
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Filters(self):
+        r"""过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回函数 ID 下全部函数副本。详细的过滤条件如下：  <li> replica-name：按照函数副本名称进行过滤，支持模糊查询。</li> 
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFunctionReplicasResponse(AbstractModel):
+    r"""DescribeFunctionReplicas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 边缘函数副本总数。
+        :type TotalCount: int
+        :param _FunctionReplicas: 边缘函数副本列表。
+        :type FunctionReplicas: list of FunctionReplica
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FunctionReplicas = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""边缘函数副本总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FunctionReplicas(self):
+        r"""边缘函数副本列表。
+        :rtype: list of FunctionReplica
+        """
+        return self._FunctionReplicas
+
+    @FunctionReplicas.setter
+    def FunctionReplicas(self, FunctionReplicas):
+        self._FunctionReplicas = FunctionReplicas
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("FunctionReplicas") is not None:
+            self._FunctionReplicas = []
+            for item in params.get("FunctionReplicas"):
+                obj = FunctionReplica()
+                obj._deserialize(item)
+                self._FunctionReplicas.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -34060,6 +34472,117 @@ class FunctionRegionSelection(AbstractModel):
         
 
 
+class FunctionReplica(AbstractModel):
+    r"""边缘函数副本。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _ReplicaName: 边缘函数副本名称。
+        :type ReplicaName: str
+        :param _Content: 边缘函数副本内容。格式为 JavaScript 代码。
+        :type Content: str
+        :param _Remark: 边缘函数副本描述。
+        :type Remark: str
+        :param _CreatedOn: 边缘函数副本创建时间。
+        :type CreatedOn: str
+        :param _ModifiedOn: 边缘函数副本更新时间。
+        :type ModifiedOn: str
+        """
+        self._FunctionId = None
+        self._ReplicaName = None
+        self._Content = None
+        self._Remark = None
+        self._CreatedOn = None
+        self._ModifiedOn = None
+
+    @property
+    def FunctionId(self):
+        r"""函数 ID。
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def ReplicaName(self):
+        r"""边缘函数副本名称。
+        :rtype: str
+        """
+        return self._ReplicaName
+
+    @ReplicaName.setter
+    def ReplicaName(self, ReplicaName):
+        self._ReplicaName = ReplicaName
+
+    @property
+    def Content(self):
+        r"""边缘函数副本内容。格式为 JavaScript 代码。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Remark(self):
+        r"""边缘函数副本描述。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreatedOn(self):
+        r"""边缘函数副本创建时间。
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def ModifiedOn(self):
+        r"""边缘函数副本更新时间。
+        :rtype: str
+        """
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
+        self._ReplicaName = params.get("ReplicaName")
+        self._Content = params.get("Content")
+        self._Remark = params.get("Remark")
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FunctionRule(AbstractModel):
     r"""边缘函数触发规则。
 
@@ -41544,6 +42067,130 @@ class ModifyFunctionComponentBindingsRequest(AbstractModel):
 
 class ModifyFunctionComponentBindingsResponse(AbstractModel):
     r"""ModifyFunctionComponentBindings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyFunctionReplicaRequest(AbstractModel):
+    r"""ModifyFunctionReplica请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _ReplicaName: 需要修改的边缘函数副本名称。
+        :type ReplicaName: str
+        :param _Content: 边缘函数副本内容，当前仅支持 JavaScript 代码，最大支持 5MB。
+        :type Content: str
+        :param _Remark: 边缘函数副本描述。最大支持 50 个字符。
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._ReplicaName = None
+        self._Content = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        r"""函数 ID。
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def ReplicaName(self):
+        r"""需要修改的边缘函数副本名称。
+        :rtype: str
+        """
+        return self._ReplicaName
+
+    @ReplicaName.setter
+    def ReplicaName(self, ReplicaName):
+        self._ReplicaName = ReplicaName
+
+    @property
+    def Content(self):
+        r"""边缘函数副本内容，当前仅支持 JavaScript 代码，最大支持 5MB。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Remark(self):
+        r"""边缘函数副本描述。最大支持 50 个字符。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._ReplicaName = params.get("ReplicaName")
+        self._Content = params.get("Content")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionReplicaResponse(AbstractModel):
+    r"""ModifyFunctionReplica返回参数结构体
 
     """
 

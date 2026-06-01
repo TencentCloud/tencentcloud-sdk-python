@@ -233,6 +233,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDataRetrieval(self, request):
+        r"""创建数据检索
+
+        :param request: Request instance for CreateDataRetrieval.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.CreateDataRetrievalRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.CreateDataRetrievalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataRetrieval", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataRetrievalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLifecycleDataTask(self, request):
         r"""支持主动沉降/预热接口
 
@@ -454,6 +477,31 @@ class CfsClient(AbstractClient):
             body = self.call("DeleteDataFlow", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDataFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDataRetrieval(self, request):
+        r"""删除数据检索。
+
+        删除指定的数据检索配置，不允许在存在关联任务时删除。调用接口后，若通过 DescribeDataRetrieval 接口查询不到对应的数据检索，则表示删除成功。
+
+        :param request: Request instance for DeleteDataRetrieval.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteDataRetrievalRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteDataRetrievalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataRetrieval", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataRetrievalResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -785,6 +833,54 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataRetrieval(self, request):
+        r"""查询数据检索。
+
+        查询数据检索列表，支持按文件系统 ID、数据检索 ID、名称等条件筛选。
+
+        :param request: Request instance for DescribeDataRetrieval.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeDataRetrievalRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeDataRetrievalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataRetrieval", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataRetrievalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataRetrievalTask(self, request):
+        r"""查询数据检索任务
+
+        :param request: Request instance for DescribeDataRetrievalTask.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeDataRetrievalTaskRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeDataRetrievalTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataRetrievalTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataRetrievalTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLifecycleDataTask(self, request):
         r"""查询生命周期任务的接口。仅支持查询最近三个月内的任务数据。
 
@@ -970,6 +1066,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDataRetrieval(self, request):
+        r"""修改数据检索
+
+        :param request: Request instance for ModifyDataRetrieval.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyDataRetrievalRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.ModifyDataRetrievalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDataRetrieval", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDataRetrievalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyFileSystemAutoScaleUpRule(self, request):
         r"""用来设置文件系统扩容策略，该接口只支持turbo文件系统
 
@@ -1030,6 +1149,31 @@ class CfsClient(AbstractClient):
             body = self.call("OverrideCfsRules", params, headers=headers)
             response = json.loads(body)
             model = models.OverrideCfsRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunDataRetrievalTask(self, request):
+        r"""执行数据检索任务。
+
+        手动触发指定数据检索的执行，创建一个新的数据检索任务。单个文件系统同时执行的任务数不超过 20 个。
+
+        :param request: Request instance for RunDataRetrievalTask.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.RunDataRetrievalTaskRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.RunDataRetrievalTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunDataRetrievalTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunDataRetrievalTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

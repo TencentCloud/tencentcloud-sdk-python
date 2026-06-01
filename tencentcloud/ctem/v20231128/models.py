@@ -438,40 +438,48 @@ class CreateCustomerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 企业名称
+        :param _Name: <p>企业名称</p>
         :type Name: str
-        :param _ScanType: 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        :param _ScanType: <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
         :type ScanType: str
-        :param _Percent: 百分比取值范围为30-100
+        :param _Percent: <p>百分比取值范围为30-100</p>
         :type Percent: int
-        :param _ScanCron: 周期测绘时间
+        :param _ScanCron: <p>周期测绘时间</p>
         :type ScanCron: str
-        :param _IsScanNow: 是否立即启动
+        :param _IsScanNow: <p>是否立即启动</p>
         :type IsScanNow: bool
-        :param _EnableCron: 是否启用周期测绘
+        :param _EnableCron: <p>是否启用周期测绘</p>
         :type EnableCron: bool
-        :param _EnableScanSubEnterprise: 是否扫描子公司
+        :param _EnableScanSubEnterprise: <p>是否扫描子公司</p>
         :type EnableScanSubEnterprise: bool
-        :param _EnableAuth: 是否授权
+        :param _EnableAuth: <p>是否授权</p>
         :type EnableAuth: bool
-        :param _AuthStartAt: 授权开始时间
+        :param _AuthStartAt: <p>授权开始时间</p>
         :type AuthStartAt: str
-        :param _AuthEndAt: 授权结束时间
+        :param _AuthEndAt: <p>授权结束时间</p>
         :type AuthEndAt: str
-        :param _AuthFile: 授权文件id
+        :param _AuthFile: <p>授权文件id</p>
         :type AuthFile: str
-        :param _ScanTime: 测绘时间配置项，采用json字符串格式
+        :param _ScanTime: <p>测绘时间配置项，采用json字符串格式</p>
         :type ScanTime: str
-        :param _Keywords: 企业相关的关键字
+        :param _Keywords: <p>企业相关的关键字</p>
         :type Keywords: str
-        :param _Icon: 图标
+        :param _Icon: <p>图标</p>
         :type Icon: str
-        :param _Qps: 并发设置
+        :param _Qps: <p>并发设置</p>
         :type Qps: int
-        :param _SubCompanyLevel: 限制子公司层级，-1表示不限制
+        :param _SubCompanyLevel: <p>限制子公司层级，-1表示不限制</p>
         :type SubCompanyLevel: int
-        :param _IsIncludeFullScan: 是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。
+        :param _IsIncludeFullScan: <p>是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。</p>
         :type IsIncludeFullScan: bool
+        :param _PortScanQps: <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+        :type PortScanQps: int
+        :param _SingleIPTaskLimit: <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+        :type SingleIPTaskLimit: int
+        :param _HighRiskAck: <p>任一速率超过保守值时必须为 true，否则参数错误</p>
+        :type HighRiskAck: bool
+        :param _ScanRateAckChecklist: <p>知情同意勾选清单，用于审计回放</p>
+        :type ScanRateAckChecklist: list of str
         """
         self._Name = None
         self._ScanType = None
@@ -490,10 +498,14 @@ class CreateCustomerRequest(AbstractModel):
         self._Qps = None
         self._SubCompanyLevel = None
         self._IsIncludeFullScan = None
+        self._PortScanQps = None
+        self._SingleIPTaskLimit = None
+        self._HighRiskAck = None
+        self._ScanRateAckChecklist = None
 
     @property
     def Name(self):
-        r"""企业名称
+        r"""<p>企业名称</p>
         :rtype: str
         """
         return self._Name
@@ -504,7 +516,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        r"""资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        r"""<p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
         :rtype: str
         """
         return self._ScanType
@@ -515,7 +527,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def Percent(self):
-        r"""百分比取值范围为30-100
+        r"""<p>百分比取值范围为30-100</p>
         :rtype: int
         """
         return self._Percent
@@ -526,7 +538,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def ScanCron(self):
-        r"""周期测绘时间
+        r"""<p>周期测绘时间</p>
         :rtype: str
         """
         return self._ScanCron
@@ -537,7 +549,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def IsScanNow(self):
-        r"""是否立即启动
+        r"""<p>是否立即启动</p>
         :rtype: bool
         """
         return self._IsScanNow
@@ -548,7 +560,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def EnableCron(self):
-        r"""是否启用周期测绘
+        r"""<p>是否启用周期测绘</p>
         :rtype: bool
         """
         return self._EnableCron
@@ -559,7 +571,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def EnableScanSubEnterprise(self):
-        r"""是否扫描子公司
+        r"""<p>是否扫描子公司</p>
         :rtype: bool
         """
         return self._EnableScanSubEnterprise
@@ -570,7 +582,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def EnableAuth(self):
-        r"""是否授权
+        r"""<p>是否授权</p>
         :rtype: bool
         """
         return self._EnableAuth
@@ -581,7 +593,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def AuthStartAt(self):
-        r"""授权开始时间
+        r"""<p>授权开始时间</p>
         :rtype: str
         """
         return self._AuthStartAt
@@ -592,7 +604,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def AuthEndAt(self):
-        r"""授权结束时间
+        r"""<p>授权结束时间</p>
         :rtype: str
         """
         return self._AuthEndAt
@@ -603,7 +615,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def AuthFile(self):
-        r"""授权文件id
+        r"""<p>授权文件id</p>
         :rtype: str
         """
         return self._AuthFile
@@ -614,7 +626,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def ScanTime(self):
-        r"""测绘时间配置项，采用json字符串格式
+        r"""<p>测绘时间配置项，采用json字符串格式</p>
         :rtype: str
         """
         return self._ScanTime
@@ -625,7 +637,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def Keywords(self):
-        r"""企业相关的关键字
+        r"""<p>企业相关的关键字</p>
         :rtype: str
         """
         return self._Keywords
@@ -636,7 +648,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def Icon(self):
-        r"""图标
+        r"""<p>图标</p>
         :rtype: str
         """
         return self._Icon
@@ -647,7 +659,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def Qps(self):
-        r"""并发设置
+        r"""<p>并发设置</p>
         :rtype: int
         """
         return self._Qps
@@ -658,7 +670,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def SubCompanyLevel(self):
-        r"""限制子公司层级，-1表示不限制
+        r"""<p>限制子公司层级，-1表示不限制</p>
         :rtype: int
         """
         return self._SubCompanyLevel
@@ -669,7 +681,7 @@ class CreateCustomerRequest(AbstractModel):
 
     @property
     def IsIncludeFullScan(self):
-        r"""是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。
+        r"""<p>是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。</p>
         :rtype: bool
         """
         return self._IsIncludeFullScan
@@ -677,6 +689,50 @@ class CreateCustomerRequest(AbstractModel):
     @IsIncludeFullScan.setter
     def IsIncludeFullScan(self, IsIncludeFullScan):
         self._IsIncludeFullScan = IsIncludeFullScan
+
+    @property
+    def PortScanQps(self):
+        r"""<p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+        :rtype: int
+        """
+        return self._PortScanQps
+
+    @PortScanQps.setter
+    def PortScanQps(self, PortScanQps):
+        self._PortScanQps = PortScanQps
+
+    @property
+    def SingleIPTaskLimit(self):
+        r"""<p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._SingleIPTaskLimit
+
+    @SingleIPTaskLimit.setter
+    def SingleIPTaskLimit(self, SingleIPTaskLimit):
+        self._SingleIPTaskLimit = SingleIPTaskLimit
+
+    @property
+    def HighRiskAck(self):
+        r"""<p>任一速率超过保守值时必须为 true，否则参数错误</p>
+        :rtype: bool
+        """
+        return self._HighRiskAck
+
+    @HighRiskAck.setter
+    def HighRiskAck(self, HighRiskAck):
+        self._HighRiskAck = HighRiskAck
+
+    @property
+    def ScanRateAckChecklist(self):
+        r"""<p>知情同意勾选清单，用于审计回放</p>
+        :rtype: list of str
+        """
+        return self._ScanRateAckChecklist
+
+    @ScanRateAckChecklist.setter
+    def ScanRateAckChecklist(self, ScanRateAckChecklist):
+        self._ScanRateAckChecklist = ScanRateAckChecklist
 
 
     def _deserialize(self, params):
@@ -697,6 +753,10 @@ class CreateCustomerRequest(AbstractModel):
         self._Qps = params.get("Qps")
         self._SubCompanyLevel = params.get("SubCompanyLevel")
         self._IsIncludeFullScan = params.get("IsIncludeFullScan")
+        self._PortScanQps = params.get("PortScanQps")
+        self._SingleIPTaskLimit = params.get("SingleIPTaskLimit")
+        self._HighRiskAck = params.get("HighRiskAck")
+        self._ScanRateAckChecklist = params.get("ScanRateAckChecklist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1384,26 +1444,38 @@ class CreateJobRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerId: 企业ID
+        :param _CustomerId: <p>企业ID</p>
         :type CustomerId: int
-        :param _TaskType: 任务类型：即时任务
+        :param _TaskType: <p>任务类型：即时任务</p>
         :type TaskType: str
-        :param _ScanType: 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        :param _ScanType: <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
         :type ScanType: str
-        :param _Qps: qps设置
+        :param _Qps: <p>qps设置</p>
         :type Qps: int
-        :param _IsIncludeFullScan: 是否包含完整扫描
+        :param _IsIncludeFullScan: <p>是否包含完整扫描</p>
         :type IsIncludeFullScan: bool
+        :param _PortScanQps: <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+        :type PortScanQps: int
+        :param _SingleIPTaskLimit: <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+        :type SingleIPTaskLimit: int
+        :param _HighRiskAck: <p>任一速率超过保守值时必须为 true，否则参数错误</p>
+        :type HighRiskAck: bool
+        :param _ScanRateAckChecklist: <p>知情同意勾选清单，用于审计回放</p>
+        :type ScanRateAckChecklist: list of str
         """
         self._CustomerId = None
         self._TaskType = None
         self._ScanType = None
         self._Qps = None
         self._IsIncludeFullScan = None
+        self._PortScanQps = None
+        self._SingleIPTaskLimit = None
+        self._HighRiskAck = None
+        self._ScanRateAckChecklist = None
 
     @property
     def CustomerId(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
         :rtype: int
         """
         return self._CustomerId
@@ -1414,7 +1486,7 @@ class CreateJobRecordRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型：即时任务
+        r"""<p>任务类型：即时任务</p>
         :rtype: str
         """
         return self._TaskType
@@ -1425,7 +1497,7 @@ class CreateJobRecordRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        r"""资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        r"""<p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
         :rtype: str
         """
         return self._ScanType
@@ -1436,7 +1508,7 @@ class CreateJobRecordRequest(AbstractModel):
 
     @property
     def Qps(self):
-        r"""qps设置
+        r"""<p>qps设置</p>
         :rtype: int
         """
         return self._Qps
@@ -1447,7 +1519,7 @@ class CreateJobRecordRequest(AbstractModel):
 
     @property
     def IsIncludeFullScan(self):
-        r"""是否包含完整扫描
+        r"""<p>是否包含完整扫描</p>
         :rtype: bool
         """
         return self._IsIncludeFullScan
@@ -1456,6 +1528,50 @@ class CreateJobRecordRequest(AbstractModel):
     def IsIncludeFullScan(self, IsIncludeFullScan):
         self._IsIncludeFullScan = IsIncludeFullScan
 
+    @property
+    def PortScanQps(self):
+        r"""<p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+        :rtype: int
+        """
+        return self._PortScanQps
+
+    @PortScanQps.setter
+    def PortScanQps(self, PortScanQps):
+        self._PortScanQps = PortScanQps
+
+    @property
+    def SingleIPTaskLimit(self):
+        r"""<p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._SingleIPTaskLimit
+
+    @SingleIPTaskLimit.setter
+    def SingleIPTaskLimit(self, SingleIPTaskLimit):
+        self._SingleIPTaskLimit = SingleIPTaskLimit
+
+    @property
+    def HighRiskAck(self):
+        r"""<p>任一速率超过保守值时必须为 true，否则参数错误</p>
+        :rtype: bool
+        """
+        return self._HighRiskAck
+
+    @HighRiskAck.setter
+    def HighRiskAck(self, HighRiskAck):
+        self._HighRiskAck = HighRiskAck
+
+    @property
+    def ScanRateAckChecklist(self):
+        r"""<p>知情同意勾选清单，用于审计回放</p>
+        :rtype: list of str
+        """
+        return self._ScanRateAckChecklist
+
+    @ScanRateAckChecklist.setter
+    def ScanRateAckChecklist(self, ScanRateAckChecklist):
+        self._ScanRateAckChecklist = ScanRateAckChecklist
+
 
     def _deserialize(self, params):
         self._CustomerId = params.get("CustomerId")
@@ -1463,6 +1579,10 @@ class CreateJobRecordRequest(AbstractModel):
         self._ScanType = params.get("ScanType")
         self._Qps = params.get("Qps")
         self._IsIncludeFullScan = params.get("IsIncludeFullScan")
+        self._PortScanQps = params.get("PortScanQps")
+        self._SingleIPTaskLimit = params.get("SingleIPTaskLimit")
+        self._HighRiskAck = params.get("HighRiskAck")
+        self._ScanRateAckChecklist = params.get("ScanRateAckChecklist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1480,7 +1600,7 @@ class CreateJobRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 任务Id
+        :param _Id: <p>任务Id</p>
         :type Id: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1490,7 +1610,7 @@ class CreateJobRecordResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""任务Id
+        r"""<p>任务Id</p>
         :rtype: int
         """
         return self._Id
@@ -2841,53 +2961,57 @@ class Customer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 企业ID
+        :param _Id: <p>企业ID</p>
         :type Id: int
-        :param _Name: 企业名称
+        :param _Name: <p>企业名称</p>
         :type Name: str
-        :param _Percent: 股权占比
+        :param _Percent: <p>股权占比</p>
         :type Percent: int
-        :param _ScanType: 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        :param _ScanType: <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
         :type ScanType: str
-        :param _Creator: 创建账号
+        :param _Creator: <p>创建账号</p>
         :type Creator: str
-        :param _AppId: 腾讯云客户AppId
+        :param _AppId: <p>腾讯云客户AppId</p>
         :type AppId: int
-        :param _Uin: 腾讯云客户Uin
+        :param _Uin: <p>腾讯云客户Uin</p>
         :type Uin: str
-        :param _CreateAt: 创建时间
+        :param _CreateAt: <p>创建时间</p>
         :type CreateAt: str
-        :param _UpdateAt: 更新时间
+        :param _UpdateAt: <p>更新时间</p>
         :type UpdateAt: str
-        :param _ScanCron: 周期测绘时间
+        :param _ScanCron: <p>周期测绘时间</p>
         :type ScanCron: str
-        :param _EnableCron: 是否启用周期测绘
+        :param _EnableCron: <p>是否启用周期测绘</p>
         :type EnableCron: bool
-        :param _EnableScanSubEnterprise: 是否扫描子公司
+        :param _EnableScanSubEnterprise: <p>是否扫描子公司</p>
         :type EnableScanSubEnterprise: bool
-        :param _EnableAuth: 是否授权
+        :param _EnableAuth: <p>是否授权</p>
         :type EnableAuth: bool
-        :param _AuthStartAt: 授权开始时间
+        :param _AuthStartAt: <p>授权开始时间</p>
         :type AuthStartAt: str
-        :param _AuthEndAt: 授权结束时间
+        :param _AuthEndAt: <p>授权结束时间</p>
         :type AuthEndAt: str
-        :param _AuthFile: 授权文件id
+        :param _AuthFile: <p>授权文件id</p>
         :type AuthFile: str
-        :param _ScanTime: 测绘时间配置项
+        :param _ScanTime: <p>测绘时间配置项</p>
         :type ScanTime: str
-        :param _Icon: 图标
+        :param _Icon: <p>图标</p>
         :type Icon: str
-        :param _Keywords: 关键字
+        :param _Keywords: <p>关键字</p>
         :type Keywords: str
-        :param _Qps: Qps设置，10-500，默认100
+        :param _Qps: <p>Qps设置，10-500，默认100</p>
         :type Qps: int
-        :param _SubCompanyLevel: 子公司拓展层次
+        :param _SubCompanyLevel: <p>子公司拓展层次</p>
         :type SubCompanyLevel: int
-        :param _IsIncludeFullScan: 是否包含完整扫描
+        :param _IsIncludeFullScan: <p>是否包含完整扫描</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsIncludeFullScan: bool
-        :param _EnableGroupMemberDiscovered: 是否识别集团成员
+        :param _EnableGroupMemberDiscovered: <p>是否识别集团成员</p>
         :type EnableGroupMemberDiscovered: bool
+        :param _SingleIPTaskLimit: <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p>
+        :type SingleIPTaskLimit: int
+        :param _PortScanQps: <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p>
+        :type PortScanQps: int
         """
         self._Id = None
         self._Name = None
@@ -2912,10 +3036,12 @@ class Customer(AbstractModel):
         self._SubCompanyLevel = None
         self._IsIncludeFullScan = None
         self._EnableGroupMemberDiscovered = None
+        self._SingleIPTaskLimit = None
+        self._PortScanQps = None
 
     @property
     def Id(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
         :rtype: int
         """
         return self._Id
@@ -2926,7 +3052,7 @@ class Customer(AbstractModel):
 
     @property
     def Name(self):
-        r"""企业名称
+        r"""<p>企业名称</p>
         :rtype: str
         """
         return self._Name
@@ -2937,7 +3063,7 @@ class Customer(AbstractModel):
 
     @property
     def Percent(self):
-        r"""股权占比
+        r"""<p>股权占比</p>
         :rtype: int
         """
         return self._Percent
@@ -2948,7 +3074,7 @@ class Customer(AbstractModel):
 
     @property
     def ScanType(self):
-        r"""资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        r"""<p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
         :rtype: str
         """
         return self._ScanType
@@ -2959,7 +3085,7 @@ class Customer(AbstractModel):
 
     @property
     def Creator(self):
-        r"""创建账号
+        r"""<p>创建账号</p>
         :rtype: str
         """
         return self._Creator
@@ -2970,7 +3096,7 @@ class Customer(AbstractModel):
 
     @property
     def AppId(self):
-        r"""腾讯云客户AppId
+        r"""<p>腾讯云客户AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -2981,7 +3107,7 @@ class Customer(AbstractModel):
 
     @property
     def Uin(self):
-        r"""腾讯云客户Uin
+        r"""<p>腾讯云客户Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -2992,7 +3118,7 @@ class Customer(AbstractModel):
 
     @property
     def CreateAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateAt
@@ -3003,7 +3129,7 @@ class Customer(AbstractModel):
 
     @property
     def UpdateAt(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateAt
@@ -3014,7 +3140,7 @@ class Customer(AbstractModel):
 
     @property
     def ScanCron(self):
-        r"""周期测绘时间
+        r"""<p>周期测绘时间</p>
         :rtype: str
         """
         return self._ScanCron
@@ -3025,7 +3151,7 @@ class Customer(AbstractModel):
 
     @property
     def EnableCron(self):
-        r"""是否启用周期测绘
+        r"""<p>是否启用周期测绘</p>
         :rtype: bool
         """
         return self._EnableCron
@@ -3036,7 +3162,7 @@ class Customer(AbstractModel):
 
     @property
     def EnableScanSubEnterprise(self):
-        r"""是否扫描子公司
+        r"""<p>是否扫描子公司</p>
         :rtype: bool
         """
         return self._EnableScanSubEnterprise
@@ -3047,7 +3173,7 @@ class Customer(AbstractModel):
 
     @property
     def EnableAuth(self):
-        r"""是否授权
+        r"""<p>是否授权</p>
         :rtype: bool
         """
         return self._EnableAuth
@@ -3058,7 +3184,7 @@ class Customer(AbstractModel):
 
     @property
     def AuthStartAt(self):
-        r"""授权开始时间
+        r"""<p>授权开始时间</p>
         :rtype: str
         """
         return self._AuthStartAt
@@ -3069,7 +3195,7 @@ class Customer(AbstractModel):
 
     @property
     def AuthEndAt(self):
-        r"""授权结束时间
+        r"""<p>授权结束时间</p>
         :rtype: str
         """
         return self._AuthEndAt
@@ -3080,7 +3206,7 @@ class Customer(AbstractModel):
 
     @property
     def AuthFile(self):
-        r"""授权文件id
+        r"""<p>授权文件id</p>
         :rtype: str
         """
         return self._AuthFile
@@ -3091,7 +3217,7 @@ class Customer(AbstractModel):
 
     @property
     def ScanTime(self):
-        r"""测绘时间配置项
+        r"""<p>测绘时间配置项</p>
         :rtype: str
         """
         return self._ScanTime
@@ -3102,7 +3228,7 @@ class Customer(AbstractModel):
 
     @property
     def Icon(self):
-        r"""图标
+        r"""<p>图标</p>
         :rtype: str
         """
         return self._Icon
@@ -3113,7 +3239,7 @@ class Customer(AbstractModel):
 
     @property
     def Keywords(self):
-        r"""关键字
+        r"""<p>关键字</p>
         :rtype: str
         """
         return self._Keywords
@@ -3124,7 +3250,7 @@ class Customer(AbstractModel):
 
     @property
     def Qps(self):
-        r"""Qps设置，10-500，默认100
+        r"""<p>Qps设置，10-500，默认100</p>
         :rtype: int
         """
         return self._Qps
@@ -3135,7 +3261,7 @@ class Customer(AbstractModel):
 
     @property
     def SubCompanyLevel(self):
-        r"""子公司拓展层次
+        r"""<p>子公司拓展层次</p>
         :rtype: int
         """
         return self._SubCompanyLevel
@@ -3146,7 +3272,7 @@ class Customer(AbstractModel):
 
     @property
     def IsIncludeFullScan(self):
-        r"""是否包含完整扫描
+        r"""<p>是否包含完整扫描</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -3158,7 +3284,7 @@ class Customer(AbstractModel):
 
     @property
     def EnableGroupMemberDiscovered(self):
-        r"""是否识别集团成员
+        r"""<p>是否识别集团成员</p>
         :rtype: bool
         """
         return self._EnableGroupMemberDiscovered
@@ -3166,6 +3292,28 @@ class Customer(AbstractModel):
     @EnableGroupMemberDiscovered.setter
     def EnableGroupMemberDiscovered(self, EnableGroupMemberDiscovered):
         self._EnableGroupMemberDiscovered = EnableGroupMemberDiscovered
+
+    @property
+    def SingleIPTaskLimit(self):
+        r"""<p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p>
+        :rtype: int
+        """
+        return self._SingleIPTaskLimit
+
+    @SingleIPTaskLimit.setter
+    def SingleIPTaskLimit(self, SingleIPTaskLimit):
+        self._SingleIPTaskLimit = SingleIPTaskLimit
+
+    @property
+    def PortScanQps(self):
+        r"""<p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p>
+        :rtype: int
+        """
+        return self._PortScanQps
+
+    @PortScanQps.setter
+    def PortScanQps(self, PortScanQps):
+        self._PortScanQps = PortScanQps
 
 
     def _deserialize(self, params):
@@ -3192,6 +3340,8 @@ class Customer(AbstractModel):
         self._SubCompanyLevel = params.get("SubCompanyLevel")
         self._IsIncludeFullScan = params.get("IsIncludeFullScan")
         self._EnableGroupMemberDiscovered = params.get("EnableGroupMemberDiscovered")
+        self._SingleIPTaskLimit = params.get("SingleIPTaskLimit")
+        self._PortScanQps = params.get("PortScanQps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12421,28 +12571,30 @@ class DisplayApiSec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: <p>主键ID</p>
         :type Id: int
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _Url: Url
+        :param _Url: <p>Url</p>
         :type Url: str
-        :param _Host: Host地址
+        :param _Host: <p>Host地址</p>
         :type Host: str
-        :param _Path: Path路径
+        :param _Path: <p>Path路径</p>
         :type Path: str
-        :param _Method: 方法：POST、GET、DELETE等
+        :param _Method: <p>方法：POST、GET、DELETE等</p>
         :type Method: str
-        :param _Status: 修复状态：unrepaired:未修复，repaired:已修复, ignore:已忽略,checking:复测中
+        :param _Status: <p>修复状态：unrepaired:未修复，repaired:已修复, ignore:已忽略,checking:复测中</p>
         :type Status: str
-        :param _Code: 状态码
+        :param _Code: <p>状态码</p>
         :type Code: int
-        :param _Request: 请求体
+        :param _Request: <p>请求体</p>
         :type Request: str
-        :param _Response: 响应体
+        :param _Response: <p>响应体</p>
         :type Response: str
-        :param _IsRiskAPI: 是否风险API
+        :param _IsRiskAPI: <p>是否风险API</p>
         :type IsRiskAPI: bool
+        :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :type AggregationCount: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -12455,10 +12607,11 @@ class DisplayApiSec(AbstractModel):
         self._Request = None
         self._Response = None
         self._IsRiskAPI = None
+        self._AggregationCount = None
 
     @property
     def Id(self):
-        r"""主键ID
+        r"""<p>主键ID</p>
         :rtype: int
         """
         return self._Id
@@ -12469,7 +12622,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -12480,7 +12633,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def Url(self):
-        r"""Url
+        r"""<p>Url</p>
         :rtype: str
         """
         return self._Url
@@ -12491,7 +12644,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def Host(self):
-        r"""Host地址
+        r"""<p>Host地址</p>
         :rtype: str
         """
         return self._Host
@@ -12502,7 +12655,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def Path(self):
-        r"""Path路径
+        r"""<p>Path路径</p>
         :rtype: str
         """
         return self._Path
@@ -12513,7 +12666,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def Method(self):
-        r"""方法：POST、GET、DELETE等
+        r"""<p>方法：POST、GET、DELETE等</p>
         :rtype: str
         """
         return self._Method
@@ -12524,7 +12677,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def Status(self):
-        r"""修复状态：unrepaired:未修复，repaired:已修复, ignore:已忽略,checking:复测中
+        r"""<p>修复状态：unrepaired:未修复，repaired:已修复, ignore:已忽略,checking:复测中</p>
         :rtype: str
         """
         return self._Status
@@ -12535,7 +12688,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def Code(self):
-        r"""状态码
+        r"""<p>状态码</p>
         :rtype: int
         """
         return self._Code
@@ -12546,7 +12699,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def Request(self):
-        r"""请求体
+        r"""<p>请求体</p>
         :rtype: str
         """
         return self._Request
@@ -12557,7 +12710,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def Response(self):
-        r"""响应体
+        r"""<p>响应体</p>
         :rtype: str
         """
         return self._Response
@@ -12568,7 +12721,7 @@ class DisplayApiSec(AbstractModel):
 
     @property
     def IsRiskAPI(self):
-        r"""是否风险API
+        r"""<p>是否风险API</p>
         :rtype: bool
         """
         return self._IsRiskAPI
@@ -12576,6 +12729,17 @@ class DisplayApiSec(AbstractModel):
     @IsRiskAPI.setter
     def IsRiskAPI(self, IsRiskAPI):
         self._IsRiskAPI = IsRiskAPI
+
+    @property
+    def AggregationCount(self):
+        r"""<p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :rtype: int
+        """
+        return self._AggregationCount
+
+    @AggregationCount.setter
+    def AggregationCount(self, AggregationCount):
+        self._AggregationCount = AggregationCount
 
 
     def _deserialize(self, params):
@@ -12592,6 +12756,7 @@ class DisplayApiSec(AbstractModel):
         self._Request = params.get("Request")
         self._Response = params.get("Response")
         self._IsRiskAPI = params.get("IsRiskAPI")
+        self._AggregationCount = params.get("AggregationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13030,32 +13195,34 @@ class DisplayConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键Id
+        :param _Id: <p>主键Id</p>
         :type Id: int
-        :param _Url: 地址
+        :param _Url: <p>地址</p>
         :type Url: str
-        :param _Title: 站点标题
+        :param _Title: <p>站点标题</p>
         :type Title: str
-        :param _Code: 状态码
+        :param _Code: <p>状态码</p>
         :type Code: int
-        :param _ContentLength: 响应长度
+        :param _ContentLength: <p>响应长度</p>
         :type ContentLength: int
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _Ip: Ip数据
+        :param _Ip: <p>Ip数据</p>
         :type Ip: str
-        :param _AIRating: AI评分
+        :param _AIRating: <p>AI评分</p>
         :type AIRating: int
-        :param _AIAnalysis: AI分析
+        :param _AIAnalysis: <p>AI分析</p>
         :type AIAnalysis: str
-        :param _RiskLevel: 风险等级: 1-低危, 2-中危, 3-高危, 4-危级, 5-误报
+        :param _RiskLevel: <p>风险等级: 1-低危, 2-中危, 3-高危, 4-危级, 5-误报</p>
         :type RiskLevel: int
-        :param _Suggestion: 建议
+        :param _Suggestion: <p>建议</p>
         :type Suggestion: str
-        :param _IsCloudAsset: 是否为云资产
+        :param _IsCloudAsset: <p>是否为云资产</p>
         :type IsCloudAsset: int
-        :param _CloudAssetStatus: 云资产状态，-1为下线
+        :param _CloudAssetStatus: <p>云资产状态，-1为下线</p>
         :type CloudAssetStatus: int
+        :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :type AggregationCount: int
         """
         self._Id = None
         self._Url = None
@@ -13070,10 +13237,11 @@ class DisplayConfig(AbstractModel):
         self._Suggestion = None
         self._IsCloudAsset = None
         self._CloudAssetStatus = None
+        self._AggregationCount = None
 
     @property
     def Id(self):
-        r"""主键Id
+        r"""<p>主键Id</p>
         :rtype: int
         """
         return self._Id
@@ -13084,7 +13252,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Url(self):
-        r"""地址
+        r"""<p>地址</p>
         :rtype: str
         """
         return self._Url
@@ -13095,7 +13263,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Title(self):
-        r"""站点标题
+        r"""<p>站点标题</p>
         :rtype: str
         """
         return self._Title
@@ -13106,7 +13274,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Code(self):
-        r"""状态码
+        r"""<p>状态码</p>
         :rtype: int
         """
         return self._Code
@@ -13117,7 +13285,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def ContentLength(self):
-        r"""响应长度
+        r"""<p>响应长度</p>
         :rtype: int
         """
         return self._ContentLength
@@ -13128,7 +13296,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -13139,7 +13307,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Ip(self):
-        r"""Ip数据
+        r"""<p>Ip数据</p>
         :rtype: str
         """
         return self._Ip
@@ -13150,7 +13318,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def AIRating(self):
-        r"""AI评分
+        r"""<p>AI评分</p>
         :rtype: int
         """
         return self._AIRating
@@ -13161,7 +13329,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def AIAnalysis(self):
-        r"""AI分析
+        r"""<p>AI分析</p>
         :rtype: str
         """
         return self._AIAnalysis
@@ -13172,7 +13340,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级: 1-低危, 2-中危, 3-高危, 4-危级, 5-误报
+        r"""<p>风险等级: 1-低危, 2-中危, 3-高危, 4-危级, 5-误报</p>
         :rtype: int
         """
         return self._RiskLevel
@@ -13183,7 +13351,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""建议
+        r"""<p>建议</p>
         :rtype: str
         """
         return self._Suggestion
@@ -13194,7 +13362,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def IsCloudAsset(self):
-        r"""是否为云资产
+        r"""<p>是否为云资产</p>
         :rtype: int
         """
         return self._IsCloudAsset
@@ -13205,7 +13373,7 @@ class DisplayConfig(AbstractModel):
 
     @property
     def CloudAssetStatus(self):
-        r"""云资产状态，-1为下线
+        r"""<p>云资产状态，-1为下线</p>
         :rtype: int
         """
         return self._CloudAssetStatus
@@ -13213,6 +13381,17 @@ class DisplayConfig(AbstractModel):
     @CloudAssetStatus.setter
     def CloudAssetStatus(self, CloudAssetStatus):
         self._CloudAssetStatus = CloudAssetStatus
+
+    @property
+    def AggregationCount(self):
+        r"""<p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :rtype: int
+        """
+        return self._AggregationCount
+
+    @AggregationCount.setter
+    def AggregationCount(self, AggregationCount):
+        self._AggregationCount = AggregationCount
 
 
     def _deserialize(self, params):
@@ -13231,6 +13410,7 @@ class DisplayConfig(AbstractModel):
         self._Suggestion = params.get("Suggestion")
         self._IsCloudAsset = params.get("IsCloudAsset")
         self._CloudAssetStatus = params.get("CloudAssetStatus")
+        self._AggregationCount = params.get("AggregationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14512,47 +14692,49 @@ class DisplayHttp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: <p>主键ID</p>
         :type Id: int
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _Url: Url
+        :param _Url: <p>Url</p>
         :type Url: str
-        :param _Title: 标题
+        :param _Title: <p>标题</p>
         :type Title: str
-        :param _ContentLength: 报文长度
+        :param _ContentLength: <p>报文长度</p>
         :type ContentLength: int
-        :param _Content: 报文内容
+        :param _Content: <p>报文内容</p>
         :type Content: str
-        :param _ScreenshotThumbUrl: 截图缩略图URL
+        :param _ScreenshotThumbUrl: <p>截图缩略图URL</p>
         :type ScreenshotThumbUrl: str
-        :param _ScreenshotUrl: 截图URL
+        :param _ScreenshotUrl: <p>截图URL</p>
         :type ScreenshotUrl: str
-        :param _Code: 状态码
+        :param _Code: <p>状态码</p>
         :type Code: int
-        :param _Api: Api地址
+        :param _Api: <p>Api地址</p>
         :type Api: str
-        :param _Ip: 解析的IP
+        :param _Ip: <p>解析的IP</p>
         :type Ip: str
-        :param _Ssl: 证书信息
+        :param _Ssl: <p>证书信息</p>
         :type Ssl: str
-        :param _SslExpiredTime: ssl证书过期时间
+        :param _SslExpiredTime: <p>ssl证书过期时间</p>
         :type SslExpiredTime: str
-        :param _IsChange: 资产是否发生变动
+        :param _IsChange: <p>资产是否发生变动</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsChange: bool
-        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :param _IsCloudAsset: <p>是否为云资产：0-非云资产 1-是云资产</p>
         :type IsCloudAsset: int
-        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :param _CloudAssetStatus: <p>云资产是否下线：-1-已下线 0-正常</p>
         :type CloudAssetStatus: int
-        :param _AvailabilityRate: 可用率（百分比）
+        :param _AvailabilityRate: <p>可用率（百分比）</p>
         :type AvailabilityRate: int
-        :param _AvailabilityState: 可用状态 1:异常 0:正常
+        :param _AvailabilityState: <p>可用状态 1:异常 0:正常</p>
         :type AvailabilityState: int
-        :param _ResponseTime: 平均响应时间：单位ms
+        :param _ResponseTime: <p>平均响应时间：单位ms</p>
         :type ResponseTime: int
-        :param _AnalysisState: 域名解析状态 1:异常 0:正常
+        :param _AnalysisState: <p>域名解析状态 1:异常 0:正常</p>
         :type AnalysisState: int
+        :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :type AggregationCount: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -14574,10 +14756,11 @@ class DisplayHttp(AbstractModel):
         self._AvailabilityState = None
         self._ResponseTime = None
         self._AnalysisState = None
+        self._AggregationCount = None
 
     @property
     def Id(self):
-        r"""主键ID
+        r"""<p>主键ID</p>
         :rtype: int
         """
         return self._Id
@@ -14588,7 +14771,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -14599,7 +14782,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Url(self):
-        r"""Url
+        r"""<p>Url</p>
         :rtype: str
         """
         return self._Url
@@ -14610,7 +14793,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Title(self):
-        r"""标题
+        r"""<p>标题</p>
         :rtype: str
         """
         return self._Title
@@ -14621,7 +14804,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def ContentLength(self):
-        r"""报文长度
+        r"""<p>报文长度</p>
         :rtype: int
         """
         return self._ContentLength
@@ -14632,7 +14815,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Content(self):
-        r"""报文内容
+        r"""<p>报文内容</p>
         :rtype: str
         """
         return self._Content
@@ -14643,7 +14826,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def ScreenshotThumbUrl(self):
-        r"""截图缩略图URL
+        r"""<p>截图缩略图URL</p>
         :rtype: str
         """
         return self._ScreenshotThumbUrl
@@ -14654,7 +14837,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def ScreenshotUrl(self):
-        r"""截图URL
+        r"""<p>截图URL</p>
         :rtype: str
         """
         return self._ScreenshotUrl
@@ -14665,7 +14848,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Code(self):
-        r"""状态码
+        r"""<p>状态码</p>
         :rtype: int
         """
         return self._Code
@@ -14676,7 +14859,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Api(self):
-        r"""Api地址
+        r"""<p>Api地址</p>
         :rtype: str
         """
         return self._Api
@@ -14687,7 +14870,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Ip(self):
-        r"""解析的IP
+        r"""<p>解析的IP</p>
         :rtype: str
         """
         return self._Ip
@@ -14698,7 +14881,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def Ssl(self):
-        r"""证书信息
+        r"""<p>证书信息</p>
         :rtype: str
         """
         return self._Ssl
@@ -14709,7 +14892,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def SslExpiredTime(self):
-        r"""ssl证书过期时间
+        r"""<p>ssl证书过期时间</p>
         :rtype: str
         """
         return self._SslExpiredTime
@@ -14720,7 +14903,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def IsChange(self):
-        r"""资产是否发生变动
+        r"""<p>资产是否发生变动</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -14732,7 +14915,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def IsCloudAsset(self):
-        r"""是否为云资产：0-非云资产 1-是云资产
+        r"""<p>是否为云资产：0-非云资产 1-是云资产</p>
         :rtype: int
         """
         return self._IsCloudAsset
@@ -14743,7 +14926,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def CloudAssetStatus(self):
-        r"""云资产是否下线：-1-已下线 0-正常
+        r"""<p>云资产是否下线：-1-已下线 0-正常</p>
         :rtype: int
         """
         return self._CloudAssetStatus
@@ -14754,7 +14937,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def AvailabilityRate(self):
-        r"""可用率（百分比）
+        r"""<p>可用率（百分比）</p>
         :rtype: int
         """
         return self._AvailabilityRate
@@ -14765,7 +14948,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def AvailabilityState(self):
-        r"""可用状态 1:异常 0:正常
+        r"""<p>可用状态 1:异常 0:正常</p>
         :rtype: int
         """
         return self._AvailabilityState
@@ -14776,7 +14959,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def ResponseTime(self):
-        r"""平均响应时间：单位ms
+        r"""<p>平均响应时间：单位ms</p>
         :rtype: int
         """
         return self._ResponseTime
@@ -14787,7 +14970,7 @@ class DisplayHttp(AbstractModel):
 
     @property
     def AnalysisState(self):
-        r"""域名解析状态 1:异常 0:正常
+        r"""<p>域名解析状态 1:异常 0:正常</p>
         :rtype: int
         """
         return self._AnalysisState
@@ -14795,6 +14978,17 @@ class DisplayHttp(AbstractModel):
     @AnalysisState.setter
     def AnalysisState(self, AnalysisState):
         self._AnalysisState = AnalysisState
+
+    @property
+    def AggregationCount(self):
+        r"""<p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :rtype: int
+        """
+        return self._AggregationCount
+
+    @AggregationCount.setter
+    def AggregationCount(self, AggregationCount):
+        self._AggregationCount = AggregationCount
 
 
     def _deserialize(self, params):
@@ -14820,6 +15014,7 @@ class DisplayHttp(AbstractModel):
         self._AvailabilityState = params.get("AvailabilityState")
         self._ResponseTime = params.get("ResponseTime")
         self._AnalysisState = params.get("AnalysisState")
+        self._AggregationCount = params.get("AggregationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15768,29 +15963,30 @@ class DisplayManage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: <p>主键ID</p>
         :type Id: int
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _Url: Url
+        :param _Url: <p>Url</p>
         :type Url: str
-        :param _Title: 标题
+        :param _Title: <p>标题</p>
         :type Title: str
-        :param _Icon: Icon
+        :param _Icon: <p>Icon</p>
         :type Icon: str
-        :param _Screenshot: 缩略图
+        :param _Screenshot: <p>缩略图</p>
         :type Screenshot: str
-        :param _Code: 状态码
+        :param _Code: <p>状态码</p>
         :type Code: int
-        :param _Host: 后台Host
+        :param _Host: <p>后台Host</p>
         :type Host: str
-        :param _Status: 状态：not_converged:未收敛, converged:已收敛, ignore:已忽略
-
+        :param _Status: <p>状态：not_converged:未收敛, converged:已收敛, ignore:已忽略</p>
         :type Status: str
-        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :param _IsCloudAsset: <p>是否为云资产：0-非云资产 1-是云资产</p>
         :type IsCloudAsset: int
-        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :param _CloudAssetStatus: <p>云资产是否下线：-1-已下线 0-正常</p>
         :type CloudAssetStatus: int
+        :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :type AggregationCount: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -15803,10 +15999,11 @@ class DisplayManage(AbstractModel):
         self._Status = None
         self._IsCloudAsset = None
         self._CloudAssetStatus = None
+        self._AggregationCount = None
 
     @property
     def Id(self):
-        r"""主键ID
+        r"""<p>主键ID</p>
         :rtype: int
         """
         return self._Id
@@ -15817,7 +16014,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -15828,7 +16025,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Url(self):
-        r"""Url
+        r"""<p>Url</p>
         :rtype: str
         """
         return self._Url
@@ -15839,7 +16036,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Title(self):
-        r"""标题
+        r"""<p>标题</p>
         :rtype: str
         """
         return self._Title
@@ -15850,7 +16047,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Icon(self):
-        r"""Icon
+        r"""<p>Icon</p>
         :rtype: str
         """
         return self._Icon
@@ -15861,7 +16058,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Screenshot(self):
-        r"""缩略图
+        r"""<p>缩略图</p>
         :rtype: str
         """
         return self._Screenshot
@@ -15872,7 +16069,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Code(self):
-        r"""状态码
+        r"""<p>状态码</p>
         :rtype: int
         """
         return self._Code
@@ -15883,7 +16080,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Host(self):
-        r"""后台Host
+        r"""<p>后台Host</p>
         :rtype: str
         """
         return self._Host
@@ -15894,8 +16091,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态：not_converged:未收敛, converged:已收敛, ignore:已忽略
-
+        r"""<p>状态：not_converged:未收敛, converged:已收敛, ignore:已忽略</p>
         :rtype: str
         """
         return self._Status
@@ -15906,7 +16102,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def IsCloudAsset(self):
-        r"""是否为云资产：0-非云资产 1-是云资产
+        r"""<p>是否为云资产：0-非云资产 1-是云资产</p>
         :rtype: int
         """
         return self._IsCloudAsset
@@ -15917,7 +16113,7 @@ class DisplayManage(AbstractModel):
 
     @property
     def CloudAssetStatus(self):
-        r"""云资产是否下线：-1-已下线 0-正常
+        r"""<p>云资产是否下线：-1-已下线 0-正常</p>
         :rtype: int
         """
         return self._CloudAssetStatus
@@ -15925,6 +16121,17 @@ class DisplayManage(AbstractModel):
     @CloudAssetStatus.setter
     def CloudAssetStatus(self, CloudAssetStatus):
         self._CloudAssetStatus = CloudAssetStatus
+
+    @property
+    def AggregationCount(self):
+        r"""<p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :rtype: int
+        """
+        return self._AggregationCount
+
+    @AggregationCount.setter
+    def AggregationCount(self, AggregationCount):
+        self._AggregationCount = AggregationCount
 
 
     def _deserialize(self, params):
@@ -15941,6 +16148,7 @@ class DisplayManage(AbstractModel):
         self._Status = params.get("Status")
         self._IsCloudAsset = params.get("IsCloudAsset")
         self._CloudAssetStatus = params.get("CloudAssetStatus")
+        self._AggregationCount = params.get("AggregationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16086,34 +16294,36 @@ class DisplayPort(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: <p>主键ID</p>
         :type Id: int
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _Asset: IP或域名地址
+        :param _Asset: <p>IP或域名地址</p>
         :type Asset: str
-        :param _Ip: 解析的IP
+        :param _Ip: <p>解析的IP</p>
         :type Ip: str
-        :param _Port: 端口
+        :param _Port: <p>端口</p>
         :type Port: int
-        :param _IsHighRisk: 是否高危
+        :param _IsHighRisk: <p>是否高危</p>
         :type IsHighRisk: bool
-        :param _App: 组件名称
+        :param _App: <p>组件名称</p>
         :type App: str
-        :param _Service: 服务名称
+        :param _Service: <p>服务名称</p>
         :type Service: str
-        :param _Banner: 端口响应详情
+        :param _Banner: <p>端口响应详情</p>
         :type Banner: str
-        :param _LastCheckTime: 上次检测时间
+        :param _LastCheckTime: <p>上次检测时间</p>
         :type LastCheckTime: str
-        :param _Status: 状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略
+        :param _Status: <p>状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略</p>
         :type Status: str
-        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :param _IsCloudAsset: <p>是否为云资产：0-非云资产 1-是云资产</p>
         :type IsCloudAsset: int
-        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :param _CloudAssetStatus: <p>云资产是否下线：-1-已下线 0-正常</p>
         :type CloudAssetStatus: int
-        :param _AnalysisState: 域名解析状态 1:异常 0:正常
+        :param _AnalysisState: <p>域名解析状态 1:异常 0:正常</p>
         :type AnalysisState: int
+        :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :type AggregationCount: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -16129,10 +16339,11 @@ class DisplayPort(AbstractModel):
         self._IsCloudAsset = None
         self._CloudAssetStatus = None
         self._AnalysisState = None
+        self._AggregationCount = None
 
     @property
     def Id(self):
-        r"""主键ID
+        r"""<p>主键ID</p>
         :rtype: int
         """
         return self._Id
@@ -16143,7 +16354,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -16154,7 +16365,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Asset(self):
-        r"""IP或域名地址
+        r"""<p>IP或域名地址</p>
         :rtype: str
         """
         return self._Asset
@@ -16165,7 +16376,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Ip(self):
-        r"""解析的IP
+        r"""<p>解析的IP</p>
         :rtype: str
         """
         return self._Ip
@@ -16176,7 +16387,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: int
         """
         return self._Port
@@ -16187,7 +16398,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def IsHighRisk(self):
-        r"""是否高危
+        r"""<p>是否高危</p>
         :rtype: bool
         """
         return self._IsHighRisk
@@ -16198,7 +16409,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def App(self):
-        r"""组件名称
+        r"""<p>组件名称</p>
         :rtype: str
         """
         return self._App
@@ -16209,7 +16420,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Service(self):
-        r"""服务名称
+        r"""<p>服务名称</p>
         :rtype: str
         """
         return self._Service
@@ -16220,7 +16431,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Banner(self):
-        r"""端口响应详情
+        r"""<p>端口响应详情</p>
         :rtype: str
         """
         return self._Banner
@@ -16231,7 +16442,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def LastCheckTime(self):
-        r"""上次检测时间
+        r"""<p>上次检测时间</p>
         :rtype: str
         """
         return self._LastCheckTime
@@ -16242,7 +16453,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略
+        r"""<p>状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略</p>
         :rtype: str
         """
         return self._Status
@@ -16253,7 +16464,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def IsCloudAsset(self):
-        r"""是否为云资产：0-非云资产 1-是云资产
+        r"""<p>是否为云资产：0-非云资产 1-是云资产</p>
         :rtype: int
         """
         return self._IsCloudAsset
@@ -16264,7 +16475,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def CloudAssetStatus(self):
-        r"""云资产是否下线：-1-已下线 0-正常
+        r"""<p>云资产是否下线：-1-已下线 0-正常</p>
         :rtype: int
         """
         return self._CloudAssetStatus
@@ -16275,7 +16486,7 @@ class DisplayPort(AbstractModel):
 
     @property
     def AnalysisState(self):
-        r"""域名解析状态 1:异常 0:正常
+        r"""<p>域名解析状态 1:异常 0:正常</p>
         :rtype: int
         """
         return self._AnalysisState
@@ -16283,6 +16494,17 @@ class DisplayPort(AbstractModel):
     @AnalysisState.setter
     def AnalysisState(self, AnalysisState):
         self._AnalysisState = AnalysisState
+
+    @property
+    def AggregationCount(self):
+        r"""<p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :rtype: int
+        """
+        return self._AggregationCount
+
+    @AggregationCount.setter
+    def AggregationCount(self, AggregationCount):
+        self._AggregationCount = AggregationCount
 
 
     def _deserialize(self, params):
@@ -16302,6 +16524,7 @@ class DisplayPort(AbstractModel):
         self._IsCloudAsset = params.get("IsCloudAsset")
         self._CloudAssetStatus = params.get("CloudAssetStatus")
         self._AnalysisState = params.get("AnalysisState")
+        self._AggregationCount = params.get("AggregationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16462,20 +16685,22 @@ class DisplaySensitiveInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键Id
+        :param _Id: <p>主键Id</p>
         :type Id: int
-        :param _Type: 类型
+        :param _Type: <p>类型</p>
         :type Type: str
-        :param _Source: 来源
+        :param _Source: <p>来源</p>
         :type Source: str
-        :param _Value: 值
+        :param _Value: <p>值</p>
         :type Value: str
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :param _IsCloudAsset: <p>是否为云资产：0-非云资产 1-是云资产</p>
         :type IsCloudAsset: int
-        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :param _CloudAssetStatus: <p>云资产是否下线：-1-已下线 0-正常</p>
         :type CloudAssetStatus: int
+        :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :type AggregationCount: int
         """
         self._Id = None
         self._Type = None
@@ -16484,10 +16709,11 @@ class DisplaySensitiveInfo(AbstractModel):
         self._DisplayToolCommon = None
         self._IsCloudAsset = None
         self._CloudAssetStatus = None
+        self._AggregationCount = None
 
     @property
     def Id(self):
-        r"""主键Id
+        r"""<p>主键Id</p>
         :rtype: int
         """
         return self._Id
@@ -16498,7 +16724,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""<p>类型</p>
         :rtype: str
         """
         return self._Type
@@ -16509,7 +16735,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""来源
+        r"""<p>来源</p>
         :rtype: str
         """
         return self._Source
@@ -16520,7 +16746,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def Value(self):
-        r"""值
+        r"""<p>值</p>
         :rtype: str
         """
         return self._Value
@@ -16531,7 +16757,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -16542,7 +16768,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def IsCloudAsset(self):
-        r"""是否为云资产：0-非云资产 1-是云资产
+        r"""<p>是否为云资产：0-非云资产 1-是云资产</p>
         :rtype: int
         """
         return self._IsCloudAsset
@@ -16553,7 +16779,7 @@ class DisplaySensitiveInfo(AbstractModel):
 
     @property
     def CloudAssetStatus(self):
-        r"""云资产是否下线：-1-已下线 0-正常
+        r"""<p>云资产是否下线：-1-已下线 0-正常</p>
         :rtype: int
         """
         return self._CloudAssetStatus
@@ -16561,6 +16787,17 @@ class DisplaySensitiveInfo(AbstractModel):
     @CloudAssetStatus.setter
     def CloudAssetStatus(self, CloudAssetStatus):
         self._CloudAssetStatus = CloudAssetStatus
+
+    @property
+    def AggregationCount(self):
+        r"""<p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :rtype: int
+        """
+        return self._AggregationCount
+
+    @AggregationCount.setter
+    def AggregationCount(self, AggregationCount):
+        self._AggregationCount = AggregationCount
 
 
     def _deserialize(self, params):
@@ -16573,6 +16810,7 @@ class DisplaySensitiveInfo(AbstractModel):
             self._DisplayToolCommon._deserialize(params.get("DisplayToolCommon"))
         self._IsCloudAsset = params.get("IsCloudAsset")
         self._CloudAssetStatus = params.get("CloudAssetStatus")
+        self._AggregationCount = params.get("AggregationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16624,6 +16862,8 @@ class DisplaySubDomain(AbstractModel):
         :type DnsType: str
         :param _DnsValue: <p>DNS解析值</p>
         :type DnsValue: str
+        :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :type AggregationCount: int
         """
         self._Id = None
         self._SubDomain = None
@@ -16642,6 +16882,7 @@ class DisplaySubDomain(AbstractModel):
         self._LossRate = None
         self._DnsType = None
         self._DnsValue = None
+        self._AggregationCount = None
 
     @property
     def Id(self):
@@ -16830,6 +17071,17 @@ class DisplaySubDomain(AbstractModel):
     def DnsValue(self, DnsValue):
         self._DnsValue = DnsValue
 
+    @property
+    def AggregationCount(self):
+        r"""<p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :rtype: int
+        """
+        return self._AggregationCount
+
+    @AggregationCount.setter
+    def AggregationCount(self, AggregationCount):
+        self._AggregationCount = AggregationCount
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -16851,6 +17103,7 @@ class DisplaySubDomain(AbstractModel):
         self._LossRate = params.get("LossRate")
         self._DnsType = params.get("DnsType")
         self._DnsValue = params.get("DnsValue")
+        self._AggregationCount = params.get("AggregationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16868,42 +17121,44 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: <p>主键ID</p>
         :type Id: int
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _Url: Url
+        :param _Url: <p>Url</p>
         :type Url: str
-        :param _Title: 标题
+        :param _Title: <p>标题</p>
         :type Title: str
-        :param _ContentLength: 报文长度
+        :param _ContentLength: <p>报文长度</p>
         :type ContentLength: int
-        :param _Content: 报文内容
+        :param _Content: <p>报文内容</p>
         :type Content: str
-        :param _ScreenshotThumbUrl: 截图缩略图URL
+        :param _ScreenshotThumbUrl: <p>截图缩略图URL</p>
         :type ScreenshotThumbUrl: str
-        :param _ScreenshotUrl: 截图URL
+        :param _ScreenshotUrl: <p>截图URL</p>
         :type ScreenshotUrl: str
-        :param _Code: 状态码
+        :param _Code: <p>状态码</p>
         :type Code: int
-        :param _Api: Api
+        :param _Api: <p>Api</p>
         :type Api: str
-        :param _Ip: 解析的IP
+        :param _Ip: <p>解析的IP</p>
         :type Ip: str
-        :param _Ssl: 证书信息
+        :param _Ssl: <p>证书信息</p>
         :type Ssl: str
-        :param _SslExpiredTime: ssl证书过期时间
+        :param _SslExpiredTime: <p>ssl证书过期时间</p>
         :type SslExpiredTime: str
-        :param _SourceType: 来源类型
+        :param _SourceType: <p>来源类型</p>
         :type SourceType: str
-        :param _SourceValue: 来源值
+        :param _SourceValue: <p>来源值</p>
         :type SourceValue: str
-        :param _Trusted: 是否信任
+        :param _Trusted: <p>是否信任</p>
         :type Trusted: bool
-        :param _Owner: 所属者
+        :param _Owner: <p>所属者</p>
         :type Owner: str
-        :param _RootDomain: 根域名
+        :param _RootDomain: <p>根域名</p>
         :type RootDomain: str
+        :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :type AggregationCount: int
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -16923,10 +17178,11 @@ class DisplaySuspiciousAsset(AbstractModel):
         self._Trusted = None
         self._Owner = None
         self._RootDomain = None
+        self._AggregationCount = None
 
     @property
     def Id(self):
-        r"""主键ID
+        r"""<p>主键ID</p>
         :rtype: int
         """
         return self._Id
@@ -16937,7 +17193,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -16948,7 +17204,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Url(self):
-        r"""Url
+        r"""<p>Url</p>
         :rtype: str
         """
         return self._Url
@@ -16959,7 +17215,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Title(self):
-        r"""标题
+        r"""<p>标题</p>
         :rtype: str
         """
         return self._Title
@@ -16970,7 +17226,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def ContentLength(self):
-        r"""报文长度
+        r"""<p>报文长度</p>
         :rtype: int
         """
         return self._ContentLength
@@ -16981,7 +17237,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Content(self):
-        r"""报文内容
+        r"""<p>报文内容</p>
         :rtype: str
         """
         return self._Content
@@ -16992,7 +17248,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def ScreenshotThumbUrl(self):
-        r"""截图缩略图URL
+        r"""<p>截图缩略图URL</p>
         :rtype: str
         """
         return self._ScreenshotThumbUrl
@@ -17003,7 +17259,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def ScreenshotUrl(self):
-        r"""截图URL
+        r"""<p>截图URL</p>
         :rtype: str
         """
         return self._ScreenshotUrl
@@ -17014,7 +17270,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Code(self):
-        r"""状态码
+        r"""<p>状态码</p>
         :rtype: int
         """
         return self._Code
@@ -17025,7 +17281,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Api(self):
-        r"""Api
+        r"""<p>Api</p>
         :rtype: str
         """
         return self._Api
@@ -17036,7 +17292,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Ip(self):
-        r"""解析的IP
+        r"""<p>解析的IP</p>
         :rtype: str
         """
         return self._Ip
@@ -17047,7 +17303,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Ssl(self):
-        r"""证书信息
+        r"""<p>证书信息</p>
         :rtype: str
         """
         return self._Ssl
@@ -17058,7 +17314,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def SslExpiredTime(self):
-        r"""ssl证书过期时间
+        r"""<p>ssl证书过期时间</p>
         :rtype: str
         """
         return self._SslExpiredTime
@@ -17069,7 +17325,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""来源类型
+        r"""<p>来源类型</p>
         :rtype: str
         """
         return self._SourceType
@@ -17080,7 +17336,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def SourceValue(self):
-        r"""来源值
+        r"""<p>来源值</p>
         :rtype: str
         """
         return self._SourceValue
@@ -17091,7 +17347,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Trusted(self):
-        r"""是否信任
+        r"""<p>是否信任</p>
         :rtype: bool
         """
         return self._Trusted
@@ -17102,7 +17358,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def Owner(self):
-        r"""所属者
+        r"""<p>所属者</p>
         :rtype: str
         """
         return self._Owner
@@ -17113,7 +17369,7 @@ class DisplaySuspiciousAsset(AbstractModel):
 
     @property
     def RootDomain(self):
-        r"""根域名
+        r"""<p>根域名</p>
         :rtype: str
         """
         return self._RootDomain
@@ -17121,6 +17377,17 @@ class DisplaySuspiciousAsset(AbstractModel):
     @RootDomain.setter
     def RootDomain(self, RootDomain):
         self._RootDomain = RootDomain
+
+    @property
+    def AggregationCount(self):
+        r"""<p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+        :rtype: int
+        """
+        return self._AggregationCount
+
+    @AggregationCount.setter
+    def AggregationCount(self, AggregationCount):
+        self._AggregationCount = AggregationCount
 
 
     def _deserialize(self, params):
@@ -17144,6 +17411,7 @@ class DisplaySuspiciousAsset(AbstractModel):
         self._Trusted = params.get("Trusted")
         self._Owner = params.get("Owner")
         self._RootDomain = params.get("RootDomain")
+        self._AggregationCount = params.get("AggregationCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18611,40 +18879,48 @@ class ModifyCustomerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 企业名称
+        :param _Name: <p>企业名称</p>
         :type Name: str
-        :param _Percent: 百分比取值范围为30-100
+        :param _Percent: <p>百分比取值范围为30-100</p>
         :type Percent: int
-        :param _ScanType: 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        :param _ScanType: <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
         :type ScanType: str
-        :param _Id: 企业ID
+        :param _Id: <p>企业ID</p>
         :type Id: int
-        :param _ScanCron: 周期测绘时间
+        :param _ScanCron: <p>周期测绘时间</p>
         :type ScanCron: str
-        :param _IsScanNow: 是否立即启动
+        :param _IsScanNow: <p>是否立即启动</p>
         :type IsScanNow: bool
-        :param _EnableCron: 是否启用周期测绘
+        :param _EnableCron: <p>是否启用周期测绘</p>
         :type EnableCron: bool
-        :param _EnableScanSubEnterprise: 是否扫描子公司
+        :param _EnableScanSubEnterprise: <p>是否扫描子公司</p>
         :type EnableScanSubEnterprise: bool
-        :param _EnableAuth: 是否授权
+        :param _EnableAuth: <p>是否授权</p>
         :type EnableAuth: bool
-        :param _AuthStartAt: 授权开始时间
+        :param _AuthStartAt: <p>授权开始时间</p>
         :type AuthStartAt: str
-        :param _AuthEndAt: 授权结束时间
+        :param _AuthEndAt: <p>授权结束时间</p>
         :type AuthEndAt: str
-        :param _AuthFile: 授权文件id
+        :param _AuthFile: <p>授权文件id</p>
         :type AuthFile: str
-        :param _ScanTime: 测绘时间配置项，采用json字符串格式
+        :param _ScanTime: <p>测绘时间配置项，采用json字符串格式</p>
         :type ScanTime: str
-        :param _Icon: 企业图标
+        :param _Icon: <p>企业图标</p>
         :type Icon: str
-        :param _Qps: 并发
+        :param _Qps: <p>并发</p>
         :type Qps: int
-        :param _SubCompanyLevel: 子公司拓展层次
+        :param _SubCompanyLevel: <p>子公司拓展层次</p>
         :type SubCompanyLevel: int
-        :param _IsIncludeFullScan: 是否包含完整的扫描
+        :param _IsIncludeFullScan: <p>是否包含完整的扫描</p>
         :type IsIncludeFullScan: bool
+        :param _PortScanQps: <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+        :type PortScanQps: int
+        :param _SingleIPTaskLimit: <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+        :type SingleIPTaskLimit: int
+        :param _HighRiskAck: <p>任一速率超过保守值时必须为 true，否则参数错误</p>
+        :type HighRiskAck: bool
+        :param _ScanRateAckChecklist: <p>知情同意勾选清单，用于审计回放</p>
+        :type ScanRateAckChecklist: list of str
         """
         self._Name = None
         self._Percent = None
@@ -18663,10 +18939,14 @@ class ModifyCustomerRequest(AbstractModel):
         self._Qps = None
         self._SubCompanyLevel = None
         self._IsIncludeFullScan = None
+        self._PortScanQps = None
+        self._SingleIPTaskLimit = None
+        self._HighRiskAck = None
+        self._ScanRateAckChecklist = None
 
     @property
     def Name(self):
-        r"""企业名称
+        r"""<p>企业名称</p>
         :rtype: str
         """
         return self._Name
@@ -18677,7 +18957,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def Percent(self):
-        r"""百分比取值范围为30-100
+        r"""<p>百分比取值范围为30-100</p>
         :rtype: int
         """
         return self._Percent
@@ -18688,7 +18968,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def ScanType(self):
-        r"""资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+        r"""<p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
         :rtype: str
         """
         return self._ScanType
@@ -18699,7 +18979,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
         :rtype: int
         """
         return self._Id
@@ -18710,7 +18990,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def ScanCron(self):
-        r"""周期测绘时间
+        r"""<p>周期测绘时间</p>
         :rtype: str
         """
         return self._ScanCron
@@ -18721,7 +19001,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def IsScanNow(self):
-        r"""是否立即启动
+        r"""<p>是否立即启动</p>
         :rtype: bool
         """
         return self._IsScanNow
@@ -18732,7 +19012,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def EnableCron(self):
-        r"""是否启用周期测绘
+        r"""<p>是否启用周期测绘</p>
         :rtype: bool
         """
         return self._EnableCron
@@ -18743,7 +19023,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def EnableScanSubEnterprise(self):
-        r"""是否扫描子公司
+        r"""<p>是否扫描子公司</p>
         :rtype: bool
         """
         return self._EnableScanSubEnterprise
@@ -18754,7 +19034,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def EnableAuth(self):
-        r"""是否授权
+        r"""<p>是否授权</p>
         :rtype: bool
         """
         return self._EnableAuth
@@ -18765,7 +19045,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def AuthStartAt(self):
-        r"""授权开始时间
+        r"""<p>授权开始时间</p>
         :rtype: str
         """
         return self._AuthStartAt
@@ -18776,7 +19056,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def AuthEndAt(self):
-        r"""授权结束时间
+        r"""<p>授权结束时间</p>
         :rtype: str
         """
         return self._AuthEndAt
@@ -18787,7 +19067,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def AuthFile(self):
-        r"""授权文件id
+        r"""<p>授权文件id</p>
         :rtype: str
         """
         return self._AuthFile
@@ -18798,7 +19078,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def ScanTime(self):
-        r"""测绘时间配置项，采用json字符串格式
+        r"""<p>测绘时间配置项，采用json字符串格式</p>
         :rtype: str
         """
         return self._ScanTime
@@ -18809,7 +19089,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def Icon(self):
-        r"""企业图标
+        r"""<p>企业图标</p>
         :rtype: str
         """
         return self._Icon
@@ -18820,7 +19100,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def Qps(self):
-        r"""并发
+        r"""<p>并发</p>
         :rtype: int
         """
         return self._Qps
@@ -18831,7 +19111,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def SubCompanyLevel(self):
-        r"""子公司拓展层次
+        r"""<p>子公司拓展层次</p>
         :rtype: int
         """
         return self._SubCompanyLevel
@@ -18842,7 +19122,7 @@ class ModifyCustomerRequest(AbstractModel):
 
     @property
     def IsIncludeFullScan(self):
-        r"""是否包含完整的扫描
+        r"""<p>是否包含完整的扫描</p>
         :rtype: bool
         """
         return self._IsIncludeFullScan
@@ -18850,6 +19130,50 @@ class ModifyCustomerRequest(AbstractModel):
     @IsIncludeFullScan.setter
     def IsIncludeFullScan(self, IsIncludeFullScan):
         self._IsIncludeFullScan = IsIncludeFullScan
+
+    @property
+    def PortScanQps(self):
+        r"""<p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+        :rtype: int
+        """
+        return self._PortScanQps
+
+    @PortScanQps.setter
+    def PortScanQps(self, PortScanQps):
+        self._PortScanQps = PortScanQps
+
+    @property
+    def SingleIPTaskLimit(self):
+        r"""<p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._SingleIPTaskLimit
+
+    @SingleIPTaskLimit.setter
+    def SingleIPTaskLimit(self, SingleIPTaskLimit):
+        self._SingleIPTaskLimit = SingleIPTaskLimit
+
+    @property
+    def HighRiskAck(self):
+        r"""<p>任一速率超过保守值时必须为 true，否则参数错误</p>
+        :rtype: bool
+        """
+        return self._HighRiskAck
+
+    @HighRiskAck.setter
+    def HighRiskAck(self, HighRiskAck):
+        self._HighRiskAck = HighRiskAck
+
+    @property
+    def ScanRateAckChecklist(self):
+        r"""<p>知情同意勾选清单，用于审计回放</p>
+        :rtype: list of str
+        """
+        return self._ScanRateAckChecklist
+
+    @ScanRateAckChecklist.setter
+    def ScanRateAckChecklist(self, ScanRateAckChecklist):
+        self._ScanRateAckChecklist = ScanRateAckChecklist
 
 
     def _deserialize(self, params):
@@ -18870,6 +19194,10 @@ class ModifyCustomerRequest(AbstractModel):
         self._Qps = params.get("Qps")
         self._SubCompanyLevel = params.get("SubCompanyLevel")
         self._IsIncludeFullScan = params.get("IsIncludeFullScan")
+        self._PortScanQps = params.get("PortScanQps")
+        self._SingleIPTaskLimit = params.get("SingleIPTaskLimit")
+        self._HighRiskAck = params.get("HighRiskAck")
+        self._ScanRateAckChecklist = params.get("ScanRateAckChecklist")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18887,7 +19215,7 @@ class ModifyCustomerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 企业ID
+        :param _Id: <p>企业ID</p>
         :type Id: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18897,7 +19225,7 @@ class ModifyCustomerResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
         :rtype: int
         """
         return self._Id

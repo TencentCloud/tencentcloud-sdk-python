@@ -2545,6 +2545,175 @@ class CreateDataFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDataRetrievalRequest(AbstractModel):
+    r"""CreateDataRetrieval请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems 获取 示例值：cfs-xxxxxx</p>
+        :type FileSystemId: str
+        :param _DataRetrievalName: <p>数据检索名称 示例值：DataDive</p>
+        :type DataRetrievalName: str
+        :param _CompoundCondition: <p>聚合检索条件 示例值：from entries|where size &gt;4096</p>
+        :type CompoundCondition: str
+        :param _QueryCondition: <p>列表检索条件</p>
+        :type QueryCondition: str
+        :param _DayOfMonth: <p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一 示例值：1</p>
+        :type DayOfMonth: str
+        :param _DayOfWeek: <p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一 示例值：2,3</p>
+        :type DayOfWeek: str
+        :param _Hour: <p>重复时间点,0-23，小时 示例值：1,3,5</p>
+        :type Hour: str
+        """
+        self._FileSystemId = None
+        self._DataRetrievalName = None
+        self._CompoundCondition = None
+        self._QueryCondition = None
+        self._DayOfMonth = None
+        self._DayOfWeek = None
+        self._Hour = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems 获取 示例值：cfs-xxxxxx</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def DataRetrievalName(self):
+        r"""<p>数据检索名称 示例值：DataDive</p>
+        :rtype: str
+        """
+        return self._DataRetrievalName
+
+    @DataRetrievalName.setter
+    def DataRetrievalName(self, DataRetrievalName):
+        self._DataRetrievalName = DataRetrievalName
+
+    @property
+    def CompoundCondition(self):
+        r"""<p>聚合检索条件 示例值：from entries|where size &gt;4096</p>
+        :rtype: str
+        """
+        return self._CompoundCondition
+
+    @CompoundCondition.setter
+    def CompoundCondition(self, CompoundCondition):
+        self._CompoundCondition = CompoundCondition
+
+    @property
+    def QueryCondition(self):
+        r"""<p>列表检索条件</p>
+        :rtype: str
+        """
+        return self._QueryCondition
+
+    @QueryCondition.setter
+    def QueryCondition(self, QueryCondition):
+        self._QueryCondition = QueryCondition
+
+    @property
+    def DayOfMonth(self):
+        r"""<p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一 示例值：1</p>
+        :rtype: str
+        """
+        return self._DayOfMonth
+
+    @DayOfMonth.setter
+    def DayOfMonth(self, DayOfMonth):
+        self._DayOfMonth = DayOfMonth
+
+    @property
+    def DayOfWeek(self):
+        r"""<p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一 示例值：2,3</p>
+        :rtype: str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def Hour(self):
+        r"""<p>重复时间点,0-23，小时 示例值：1,3,5</p>
+        :rtype: str
+        """
+        return self._Hour
+
+    @Hour.setter
+    def Hour(self, Hour):
+        self._Hour = Hour
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._DataRetrievalName = params.get("DataRetrievalName")
+        self._CompoundCondition = params.get("CompoundCondition")
+        self._QueryCondition = params.get("QueryCondition")
+        self._DayOfMonth = params.get("DayOfMonth")
+        self._DayOfWeek = params.get("DayOfWeek")
+        self._Hour = params.get("Hour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataRetrievalResponse(AbstractModel):
+    r"""CreateDataRetrieval返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataRetrievalId: <p>数据检索ID示例值：dataretrieval-123456</p>
+        :type DataRetrievalId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataRetrievalId = None
+        self._RequestId = None
+
+    @property
+    def DataRetrievalId(self):
+        r"""<p>数据检索ID示例值：dataretrieval-123456</p>
+        :rtype: str
+        """
+        return self._DataRetrievalId
+
+    @DataRetrievalId.setter
+    def DataRetrievalId(self, DataRetrievalId):
+        self._DataRetrievalId = DataRetrievalId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataRetrievalId = params.get("DataRetrievalId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLifecycleDataTaskRequest(AbstractModel):
     r"""CreateLifecycleDataTask请求参数结构体
 
@@ -3456,6 +3625,378 @@ unavailable：失效
         
 
 
+class DataRetrievalInfo(AbstractModel):
+    r"""数据检索信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataRetrievalName: <p>数据检索策略名称</p>
+        :type DataRetrievalName: str
+        :param _DataRetrievalId: <p>迁移任务id<br>示例值：migrate-001</p>
+        :type DataRetrievalId: str
+        :param _FileSystemId: <p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems </p><p>获取示例值：cfs-xxxxxx</p>
+        :type FileSystemId: str
+        :param _CompoundCondition: <p>聚合检索条件</p>
+        :type CompoundCondition: str
+        :param _CreateTime: <p>创建时间<br>示例值：2023-01-09 15:03:57</p>
+        :type CreateTime: str
+        :param _DayOfWeek: <p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一</p>
+        :type DayOfWeek: str
+        :param _DayOfMonth: <p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一</p>
+        :type DayOfMonth: str
+        :param _Hour: <p>重复时间点,0-23，小时</p>
+        :type Hour: str
+        :param _QueryCondition: <p>列表检索条件</p>
+        :type QueryCondition: str
+        :param _UpdateTime: <p>修改时间</p><p>参数格式：2023-01-10 15:03:57</p>
+        :type UpdateTime: str
+        """
+        self._DataRetrievalName = None
+        self._DataRetrievalId = None
+        self._FileSystemId = None
+        self._CompoundCondition = None
+        self._CreateTime = None
+        self._DayOfWeek = None
+        self._DayOfMonth = None
+        self._Hour = None
+        self._QueryCondition = None
+        self._UpdateTime = None
+
+    @property
+    def DataRetrievalName(self):
+        r"""<p>数据检索策略名称</p>
+        :rtype: str
+        """
+        return self._DataRetrievalName
+
+    @DataRetrievalName.setter
+    def DataRetrievalName(self, DataRetrievalName):
+        self._DataRetrievalName = DataRetrievalName
+
+    @property
+    def DataRetrievalId(self):
+        r"""<p>迁移任务id<br>示例值：migrate-001</p>
+        :rtype: str
+        """
+        return self._DataRetrievalId
+
+    @DataRetrievalId.setter
+    def DataRetrievalId(self, DataRetrievalId):
+        self._DataRetrievalId = DataRetrievalId
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems </p><p>获取示例值：cfs-xxxxxx</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def CompoundCondition(self):
+        r"""<p>聚合检索条件</p>
+        :rtype: str
+        """
+        return self._CompoundCondition
+
+    @CompoundCondition.setter
+    def CompoundCondition(self, CompoundCondition):
+        self._CompoundCondition = CompoundCondition
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间<br>示例值：2023-01-09 15:03:57</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DayOfWeek(self):
+        r"""<p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一</p>
+        :rtype: str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def DayOfMonth(self):
+        r"""<p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一</p>
+        :rtype: str
+        """
+        return self._DayOfMonth
+
+    @DayOfMonth.setter
+    def DayOfMonth(self, DayOfMonth):
+        self._DayOfMonth = DayOfMonth
+
+    @property
+    def Hour(self):
+        r"""<p>重复时间点,0-23，小时</p>
+        :rtype: str
+        """
+        return self._Hour
+
+    @Hour.setter
+    def Hour(self, Hour):
+        self._Hour = Hour
+
+    @property
+    def QueryCondition(self):
+        r"""<p>列表检索条件</p>
+        :rtype: str
+        """
+        return self._QueryCondition
+
+    @QueryCondition.setter
+    def QueryCondition(self, QueryCondition):
+        self._QueryCondition = QueryCondition
+
+    @property
+    def UpdateTime(self):
+        r"""<p>修改时间</p><p>参数格式：2023-01-10 15:03:57</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._DataRetrievalName = params.get("DataRetrievalName")
+        self._DataRetrievalId = params.get("DataRetrievalId")
+        self._FileSystemId = params.get("FileSystemId")
+        self._CompoundCondition = params.get("CompoundCondition")
+        self._CreateTime = params.get("CreateTime")
+        self._DayOfWeek = params.get("DayOfWeek")
+        self._DayOfMonth = params.get("DayOfMonth")
+        self._Hour = params.get("Hour")
+        self._QueryCondition = params.get("QueryCondition")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataRetrievalTaskInfo(AbstractModel):
+    r"""数据检索任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataRetrievalTaskID: <p>数据检索任务ID<br>示例值：dataretrievaltask-123456</p>
+        :type DataRetrievalTaskID: str
+        :param _DataRetrievalId: <p>迁移任务id<br>示例值：migrate-001</p>
+        :type DataRetrievalId: str
+        :param _FileSystemId: <p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems 获取示例值：cfs-xxxxxx</p>
+        :type FileSystemId: str
+        :param _CompoundCondition: <p>聚合检索条件<br>示例值：from entries|where size &gt;4096</p>
+        :type CompoundCondition: str
+        :param _QueryCondition: <p>列表检索条件</p>
+        :type QueryCondition: str
+        :param _CreateTime: <p>创建时间<br>示例值：2023-01-09 15:03:57</p>
+        :type CreateTime: str
+        :param _State: <p>任务状态<br>已完成：completed<br>排队中：waiting<br>进行中：running<br>失败：failed</p>
+        :type State: str
+        :param _FileNum: <p>文件数量<br>示例：1000</p>
+        :type FileNum: int
+        :param _DirNum: <p>目录数量<br>示例：1000</p>
+        :type DirNum: int
+        :param _Size: <p>总文件大小，单位KiB<br>示例：1024</p>
+        :type Size: int
+        :param _FileList: <p>文件清单下载地址<br>示例值：https://xx-12345.cos.ap-shanghai.myqcloud.com/list.csv</p>
+        :type FileList: str
+        :param _ErrorInfo: <p>检索错误提示。默认：Null，当Status为failed时，将提示信息展示给用户。</p>
+        :type ErrorInfo: str
+        """
+        self._DataRetrievalTaskID = None
+        self._DataRetrievalId = None
+        self._FileSystemId = None
+        self._CompoundCondition = None
+        self._QueryCondition = None
+        self._CreateTime = None
+        self._State = None
+        self._FileNum = None
+        self._DirNum = None
+        self._Size = None
+        self._FileList = None
+        self._ErrorInfo = None
+
+    @property
+    def DataRetrievalTaskID(self):
+        r"""<p>数据检索任务ID<br>示例值：dataretrievaltask-123456</p>
+        :rtype: str
+        """
+        return self._DataRetrievalTaskID
+
+    @DataRetrievalTaskID.setter
+    def DataRetrievalTaskID(self, DataRetrievalTaskID):
+        self._DataRetrievalTaskID = DataRetrievalTaskID
+
+    @property
+    def DataRetrievalId(self):
+        r"""<p>迁移任务id<br>示例值：migrate-001</p>
+        :rtype: str
+        """
+        return self._DataRetrievalId
+
+    @DataRetrievalId.setter
+    def DataRetrievalId(self, DataRetrievalId):
+        self._DataRetrievalId = DataRetrievalId
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems 获取示例值：cfs-xxxxxx</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def CompoundCondition(self):
+        r"""<p>聚合检索条件<br>示例值：from entries|where size &gt;4096</p>
+        :rtype: str
+        """
+        return self._CompoundCondition
+
+    @CompoundCondition.setter
+    def CompoundCondition(self, CompoundCondition):
+        self._CompoundCondition = CompoundCondition
+
+    @property
+    def QueryCondition(self):
+        r"""<p>列表检索条件</p>
+        :rtype: str
+        """
+        return self._QueryCondition
+
+    @QueryCondition.setter
+    def QueryCondition(self, QueryCondition):
+        self._QueryCondition = QueryCondition
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间<br>示例值：2023-01-09 15:03:57</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def State(self):
+        r"""<p>任务状态<br>已完成：completed<br>排队中：waiting<br>进行中：running<br>失败：failed</p>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def FileNum(self):
+        r"""<p>文件数量<br>示例：1000</p>
+        :rtype: int
+        """
+        return self._FileNum
+
+    @FileNum.setter
+    def FileNum(self, FileNum):
+        self._FileNum = FileNum
+
+    @property
+    def DirNum(self):
+        r"""<p>目录数量<br>示例：1000</p>
+        :rtype: int
+        """
+        return self._DirNum
+
+    @DirNum.setter
+    def DirNum(self, DirNum):
+        self._DirNum = DirNum
+
+    @property
+    def Size(self):
+        r"""<p>总文件大小，单位KiB<br>示例：1024</p>
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def FileList(self):
+        r"""<p>文件清单下载地址<br>示例值：https://xx-12345.cos.ap-shanghai.myqcloud.com/list.csv</p>
+        :rtype: str
+        """
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
+    @property
+    def ErrorInfo(self):
+        r"""<p>检索错误提示。默认：Null，当Status为failed时，将提示信息展示给用户。</p>
+        :rtype: str
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+
+    def _deserialize(self, params):
+        self._DataRetrievalTaskID = params.get("DataRetrievalTaskID")
+        self._DataRetrievalId = params.get("DataRetrievalId")
+        self._FileSystemId = params.get("FileSystemId")
+        self._CompoundCondition = params.get("CompoundCondition")
+        self._QueryCondition = params.get("QueryCondition")
+        self._CreateTime = params.get("CreateTime")
+        self._State = params.get("State")
+        self._FileNum = params.get("FileNum")
+        self._DirNum = params.get("DirNum")
+        self._Size = params.get("Size")
+        self._FileList = params.get("FileList")
+        self._ErrorInfo = params.get("ErrorInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAutoSnapshotPolicyRequest(AbstractModel):
     r"""DeleteAutoSnapshotPolicy请求参数结构体
 
@@ -3951,6 +4492,70 @@ class DeleteDataFlowRequest(AbstractModel):
 
 class DeleteDataFlowResponse(AbstractModel):
     r"""DeleteDataFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDataRetrievalRequest(AbstractModel):
+    r"""DeleteDataRetrieval请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataRetrievalId: <p>数据检索 ID。可通过 DescribeDataRetrieval 接口获取。</p>
+        :type DataRetrievalId: str
+        """
+        self._DataRetrievalId = None
+
+    @property
+    def DataRetrievalId(self):
+        r"""<p>数据检索 ID。可通过 DescribeDataRetrieval 接口获取。</p>
+        :rtype: str
+        """
+        return self._DataRetrievalId
+
+    @DataRetrievalId.setter
+    def DataRetrievalId(self, DataRetrievalId):
+        self._DataRetrievalId = DataRetrievalId
+
+
+    def _deserialize(self, params):
+        self._DataRetrievalId = params.get("DataRetrievalId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataRetrievalResponse(AbstractModel):
+    r"""DeleteDataRetrieval返回参数结构体
 
     """
 
@@ -5499,6 +6104,319 @@ class DescribeDataFlowResponse(AbstractModel):
                 obj = DataFlowInfo()
                 obj._deserialize(item)
                 self._DataFlows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataRetrievalRequest(AbstractModel):
+    r"""DescribeDataRetrieval请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页偏移量，默认值为 0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为 20，最大值为 100。</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件列表。支持的过滤字段：FileSystemId（文件系统 ID）、DataRetrievalId（数据检索 ID）、Name（数据检索名称，支持模糊搜索）。最多支持 10 个。</p>
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认值为 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为 20，最大值为 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件列表。支持的过滤字段：FileSystemId（文件系统 ID）、DataRetrievalId（数据检索 ID）、Name（数据检索名称，支持模糊搜索）。最多支持 10 个。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataRetrievalResponse(AbstractModel):
+    r"""DescribeDataRetrieval返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>数据检索总数。</p>
+        :type TotalCount: int
+        :param _DataRetrievals: <p>数据检索策略的详细信息</p>
+        :type DataRetrievals: list of DataRetrievalInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataRetrievals = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>数据检索总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataRetrievals(self):
+        r"""<p>数据检索策略的详细信息</p>
+        :rtype: list of DataRetrievalInfo
+        """
+        return self._DataRetrievals
+
+    @DataRetrievals.setter
+    def DataRetrievals(self, DataRetrievals):
+        self._DataRetrievals = DataRetrievals
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataRetrievals") is not None:
+            self._DataRetrievals = []
+            for item in params.get("DataRetrievals"):
+                obj = DataRetrievalInfo()
+                obj._deserialize(item)
+                self._DataRetrievals.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataRetrievalTaskRequest(AbstractModel):
+    r"""DescribeDataRetrievalTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>开始时间。须早于 EndTime ，仅支持查询最近3个月内的任务数据</p><p>参数格式：2024-11-19 10:15:37</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间。须晚于 StartTime ，仅支持查询最近3个月内的任务数据。</p><p>参数格式：2024-10-  19 10:15:37</p>
+        :type EndTime: str
+        :param _DataRetrievalId: <p>数据检索ID示例值：dataretrieval-123456</p>
+        :type DataRetrievalId: str
+        :param _Offset: <p>分页的偏移量，默认值为0。 示例值：0</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。 示例值：20</p>
+        :type Limit: int
+        :param _Filters: <p>DataRetrievalTaskID按照【数据检索任务id】进行过滤。类型：String</p>
+        :type Filters: list of Filter
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._DataRetrievalId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间。须早于 EndTime ，仅支持查询最近3个月内的任务数据</p><p>参数格式：2024-11-19 10:15:37</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间。须晚于 StartTime ，仅支持查询最近3个月内的任务数据。</p><p>参数格式：2024-10-  19 10:15:37</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DataRetrievalId(self):
+        r"""<p>数据检索ID示例值：dataretrieval-123456</p>
+        :rtype: str
+        """
+        return self._DataRetrievalId
+
+    @DataRetrievalId.setter
+    def DataRetrievalId(self, DataRetrievalId):
+        self._DataRetrievalId = DataRetrievalId
+
+    @property
+    def Offset(self):
+        r"""<p>分页的偏移量，默认值为0。 示例值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为20，最大值100。 示例值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>DataRetrievalTaskID按照【数据检索任务id】进行过滤。类型：String</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DataRetrievalId = params.get("DataRetrievalId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataRetrievalTaskResponse(AbstractModel):
+    r"""DescribeDataRetrievalTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>数据检索任务总量 示例值：0</p>
+        :type TotalCount: int
+        :param _DataRetrievalTasks: <p>检索任务详情</p>
+        :type DataRetrievalTasks: list of DataRetrievalTaskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataRetrievalTasks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>数据检索任务总量 示例值：0</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataRetrievalTasks(self):
+        r"""<p>检索任务详情</p>
+        :rtype: list of DataRetrievalTaskInfo
+        """
+        return self._DataRetrievalTasks
+
+    @DataRetrievalTasks.setter
+    def DataRetrievalTasks(self, DataRetrievalTasks):
+        self._DataRetrievalTasks = DataRetrievalTasks
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataRetrievalTasks") is not None:
+            self._DataRetrievalTasks = []
+            for item in params.get("DataRetrievalTasks"):
+                obj = DataRetrievalTaskInfo()
+                obj._deserialize(item)
+                self._DataRetrievalTasks.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8702,6 +9620,160 @@ class ModifyDataFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDataRetrievalRequest(AbstractModel):
+    r"""ModifyDataRetrieval请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataRetrievalId: <p>数据检索ID示例值：dataretrieval-123456</p>
+        :type DataRetrievalId: str
+        :param _DataRetrievalName: <p>数据检索名称示例值：DataDive</p>
+        :type DataRetrievalName: str
+        :param _CompoundCondition: <p>聚合检索条件 示例值：from entries|where size &gt;4096</p>
+        :type CompoundCondition: str
+        :param _QueryCondition: <p>列表检索条件</p>
+        :type QueryCondition: str
+        :param _DayOfMonth: <p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一</p>
+        :type DayOfMonth: str
+        :param _DayOfWeek: <p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一</p>
+        :type DayOfWeek: str
+        :param _Hour: <p>重复时间点,0-23，小时</p>
+        :type Hour: str
+        """
+        self._DataRetrievalId = None
+        self._DataRetrievalName = None
+        self._CompoundCondition = None
+        self._QueryCondition = None
+        self._DayOfMonth = None
+        self._DayOfWeek = None
+        self._Hour = None
+
+    @property
+    def DataRetrievalId(self):
+        r"""<p>数据检索ID示例值：dataretrieval-123456</p>
+        :rtype: str
+        """
+        return self._DataRetrievalId
+
+    @DataRetrievalId.setter
+    def DataRetrievalId(self, DataRetrievalId):
+        self._DataRetrievalId = DataRetrievalId
+
+    @property
+    def DataRetrievalName(self):
+        r"""<p>数据检索名称示例值：DataDive</p>
+        :rtype: str
+        """
+        return self._DataRetrievalName
+
+    @DataRetrievalName.setter
+    def DataRetrievalName(self, DataRetrievalName):
+        self._DataRetrievalName = DataRetrievalName
+
+    @property
+    def CompoundCondition(self):
+        r"""<p>聚合检索条件 示例值：from entries|where size &gt;4096</p>
+        :rtype: str
+        """
+        return self._CompoundCondition
+
+    @CompoundCondition.setter
+    def CompoundCondition(self, CompoundCondition):
+        self._CompoundCondition = CompoundCondition
+
+    @property
+    def QueryCondition(self):
+        r"""<p>列表检索条件</p>
+        :rtype: str
+        """
+        return self._QueryCondition
+
+    @QueryCondition.setter
+    def QueryCondition(self, QueryCondition):
+        self._QueryCondition = QueryCondition
+
+    @property
+    def DayOfMonth(self):
+        r"""<p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一</p>
+        :rtype: str
+        """
+        return self._DayOfMonth
+
+    @DayOfMonth.setter
+    def DayOfMonth(self, DayOfMonth):
+        self._DayOfMonth = DayOfMonth
+
+    @property
+    def DayOfWeek(self):
+        r"""<p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一</p>
+        :rtype: str
+        """
+        return self._DayOfWeek
+
+    @DayOfWeek.setter
+    def DayOfWeek(self, DayOfWeek):
+        self._DayOfWeek = DayOfWeek
+
+    @property
+    def Hour(self):
+        r"""<p>重复时间点,0-23，小时</p>
+        :rtype: str
+        """
+        return self._Hour
+
+    @Hour.setter
+    def Hour(self, Hour):
+        self._Hour = Hour
+
+
+    def _deserialize(self, params):
+        self._DataRetrievalId = params.get("DataRetrievalId")
+        self._DataRetrievalName = params.get("DataRetrievalName")
+        self._CompoundCondition = params.get("CompoundCondition")
+        self._QueryCondition = params.get("QueryCondition")
+        self._DayOfMonth = params.get("DayOfMonth")
+        self._DayOfWeek = params.get("DayOfWeek")
+        self._Hour = params.get("Hour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDataRetrievalResponse(AbstractModel):
+    r"""ModifyDataRetrieval返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
     r"""ModifyFileSystemAutoScaleUpRule请求参数结构体
 
@@ -9609,6 +10681,55 @@ class PathInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RunDataRetrievalTaskRequest(AbstractModel):
+    r"""RunDataRetrievalTask请求参数结构体
+
+    """
+
+
+class RunDataRetrievalTaskResponse(AbstractModel):
+    r"""RunDataRetrievalTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataRetrievalTaskId: <p>数据检索任务 ID。</p>
+        :type DataRetrievalTaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataRetrievalTaskId = None
+        self._RequestId = None
+
+    @property
+    def DataRetrievalTaskId(self):
+        r"""<p>数据检索任务 ID。</p>
+        :rtype: str
+        """
+        return self._DataRetrievalTaskId
+
+    @DataRetrievalTaskId.setter
+    def DataRetrievalTaskId(self, DataRetrievalTaskId):
+        self._DataRetrievalTaskId = DataRetrievalTaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataRetrievalTaskId = params.get("DataRetrievalTaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ScaleUpFileSystemRequest(AbstractModel):

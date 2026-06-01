@@ -812,7 +812,8 @@ class TcbClient(AbstractClient):
 
 
     def DescribeBillingInfo(self, request):
-        r"""获取计费相关信息
+        r"""获取云开发环境的计费相关信息。
+        包括环境的 状态、当前套餐、购买时间、到期时间 等。
 
         :param request: Request instance for DescribeBillingInfo.
         :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeBillingInfoRequest`

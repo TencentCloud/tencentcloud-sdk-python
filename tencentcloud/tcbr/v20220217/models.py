@@ -2941,53 +2941,28 @@ class DiffConfigItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 配置项 Key
-MinNum 最小副本数
-MaxNum 最大副本数
-PolicyDetails 扩缩容策略
-AccessTypes 访问类型
-TimerScale 定时扩缩容
-InternalAccess 内网访问
-OperationMode 运行模式 noScale | condScale | alwaysScale | custom ｜ manualScale
-SessionAffinity 会话亲和性 open | close
-CpuSpecs cpu 规格
-MemSpecs mem规格
-EnvParam 环境变量
-LogPath 日志采集路径
-Port 端口
-Dockerfile dockerfile 文件名
-BuildDir 目标目录
-Tag 服务标签
-LogType 日志类型 none | default | custom 
-LogSetId 日志集Id
-LogTopicId 日志主题ID
-LogParseType 日志解析类型 json ｜ line
-EntryPoint entrypoint 命令
-Cmd cmd命令
-VpcConf 网络信息
+        :param _Key: <p>配置项 Key<br>MinNum 最小副本数<br>MaxNum 最大副本数<br>PolicyDetails 扩缩容策略<br>AccessTypes 访问类型<br>TimerScale 定时扩缩容<br>InternalAccess 内网访问<br>OperationMode 运行模式 noScale | condScale | alwaysScale | custom ｜ manualScale<br>SessionAffinity 会话亲和性 open | close<br>CpuSpecs cpu 规格<br>MemSpecs mem规格<br>EnvParam 环境变量<br>LogPath 日志采集路径<br>Port 端口<br>Dockerfile dockerfile 文件名<br>BuildDir 目标目录<br>Tag 服务标签<br>LogType 日志类型 none | default | custom<br>LogSetId 日志集Id<br>LogTopicId 日志主题ID<br>LogParseType 日志解析类型 json ｜ line<br>EntryPoint entrypoint 命令<br>Cmd cmd命令<br>VpcConf 网络信息</p>
         :type Key: str
-        :param _Value: 字符串类型配置项值
-InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfile、BuildDir、Tag、LogType、LogSetId、LogTopicId、LogParseType
+        :param _Value: <p>字符串类型配置项值<br>InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfile、BuildDir、Tag、LogType、LogSetId、LogTopicId、LogParseType</p>
         :type Value: str
-        :param _IntValue: int 类型配置项值
-MinNum、MaxNum、Port
+        :param _IntValue: <p>int 类型配置项值<br>MinNum、MaxNum、Port</p>
         :type IntValue: int
-        :param _BoolValue: bool 类型配置项值
+        :param _BoolValue: <p>bool 类型配置项值</p>
         :type BoolValue: bool
-        :param _FloatValue: 浮点型配置项值
-CpuSpecs、MemSpecs
+        :param _FloatValue: <p>浮点型配置项值<br>CpuSpecs、MemSpecs</p>
         :type FloatValue: float
-        :param _ArrayValue: 字符串数组配置项值
-AccessTypes，EntryPoint，Cmd
+        :param _ArrayValue: <p>字符串数组配置项值<br>AccessTypes，EntryPoint，Cmd</p>
         :type ArrayValue: list of str
-        :param _PolicyDetails: 扩缩容策略配置项值
+        :param _PolicyDetails: <p>扩缩容策略配置项值</p>
         :type PolicyDetails: list of HpaPolicy
-        :param _TimerScale: 定时扩缩容配置项值
+        :param _TimerScale: <p>定时扩缩容配置项值</p>
         :type TimerScale: list of TimerScale
-        :param _VpcConf: 配置内网访问时网络信息
+        :param _VpcConf: <p>配置内网访问时网络信息</p>
         :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
-        :param _VolumesConf: 存储配置信息
+        :param _VolumesConf: <p>存储配置信息</p>
         :type VolumesConf: list of VolumeConf
+        :param _PublicNetConf: <p>公网访问配置</p>
+        :type PublicNetConf: :class:`tencentcloud.tcbr.v20220217.models.PublicNetConf`
         """
         self._Key = None
         self._Value = None
@@ -2999,33 +2974,11 @@ AccessTypes，EntryPoint，Cmd
         self._TimerScale = None
         self._VpcConf = None
         self._VolumesConf = None
+        self._PublicNetConf = None
 
     @property
     def Key(self):
-        r"""配置项 Key
-MinNum 最小副本数
-MaxNum 最大副本数
-PolicyDetails 扩缩容策略
-AccessTypes 访问类型
-TimerScale 定时扩缩容
-InternalAccess 内网访问
-OperationMode 运行模式 noScale | condScale | alwaysScale | custom ｜ manualScale
-SessionAffinity 会话亲和性 open | close
-CpuSpecs cpu 规格
-MemSpecs mem规格
-EnvParam 环境变量
-LogPath 日志采集路径
-Port 端口
-Dockerfile dockerfile 文件名
-BuildDir 目标目录
-Tag 服务标签
-LogType 日志类型 none | default | custom 
-LogSetId 日志集Id
-LogTopicId 日志主题ID
-LogParseType 日志解析类型 json ｜ line
-EntryPoint entrypoint 命令
-Cmd cmd命令
-VpcConf 网络信息
+        r"""<p>配置项 Key<br>MinNum 最小副本数<br>MaxNum 最大副本数<br>PolicyDetails 扩缩容策略<br>AccessTypes 访问类型<br>TimerScale 定时扩缩容<br>InternalAccess 内网访问<br>OperationMode 运行模式 noScale | condScale | alwaysScale | custom ｜ manualScale<br>SessionAffinity 会话亲和性 open | close<br>CpuSpecs cpu 规格<br>MemSpecs mem规格<br>EnvParam 环境变量<br>LogPath 日志采集路径<br>Port 端口<br>Dockerfile dockerfile 文件名<br>BuildDir 目标目录<br>Tag 服务标签<br>LogType 日志类型 none | default | custom<br>LogSetId 日志集Id<br>LogTopicId 日志主题ID<br>LogParseType 日志解析类型 json ｜ line<br>EntryPoint entrypoint 命令<br>Cmd cmd命令<br>VpcConf 网络信息</p>
         :rtype: str
         """
         return self._Key
@@ -3036,8 +2989,7 @@ VpcConf 网络信息
 
     @property
     def Value(self):
-        r"""字符串类型配置项值
-InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfile、BuildDir、Tag、LogType、LogSetId、LogTopicId、LogParseType
+        r"""<p>字符串类型配置项值<br>InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfile、BuildDir、Tag、LogType、LogSetId、LogTopicId、LogParseType</p>
         :rtype: str
         """
         return self._Value
@@ -3048,8 +3000,7 @@ InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfi
 
     @property
     def IntValue(self):
-        r"""int 类型配置项值
-MinNum、MaxNum、Port
+        r"""<p>int 类型配置项值<br>MinNum、MaxNum、Port</p>
         :rtype: int
         """
         return self._IntValue
@@ -3060,7 +3011,7 @@ MinNum、MaxNum、Port
 
     @property
     def BoolValue(self):
-        r"""bool 类型配置项值
+        r"""<p>bool 类型配置项值</p>
         :rtype: bool
         """
         return self._BoolValue
@@ -3071,8 +3022,7 @@ MinNum、MaxNum、Port
 
     @property
     def FloatValue(self):
-        r"""浮点型配置项值
-CpuSpecs、MemSpecs
+        r"""<p>浮点型配置项值<br>CpuSpecs、MemSpecs</p>
         :rtype: float
         """
         return self._FloatValue
@@ -3083,8 +3033,7 @@ CpuSpecs、MemSpecs
 
     @property
     def ArrayValue(self):
-        r"""字符串数组配置项值
-AccessTypes，EntryPoint，Cmd
+        r"""<p>字符串数组配置项值<br>AccessTypes，EntryPoint，Cmd</p>
         :rtype: list of str
         """
         return self._ArrayValue
@@ -3095,7 +3044,7 @@ AccessTypes，EntryPoint，Cmd
 
     @property
     def PolicyDetails(self):
-        r"""扩缩容策略配置项值
+        r"""<p>扩缩容策略配置项值</p>
         :rtype: list of HpaPolicy
         """
         return self._PolicyDetails
@@ -3106,7 +3055,7 @@ AccessTypes，EntryPoint，Cmd
 
     @property
     def TimerScale(self):
-        r"""定时扩缩容配置项值
+        r"""<p>定时扩缩容配置项值</p>
         :rtype: list of TimerScale
         """
         return self._TimerScale
@@ -3117,7 +3066,7 @@ AccessTypes，EntryPoint，Cmd
 
     @property
     def VpcConf(self):
-        r"""配置内网访问时网络信息
+        r"""<p>配置内网访问时网络信息</p>
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
         """
         return self._VpcConf
@@ -3128,7 +3077,7 @@ AccessTypes，EntryPoint，Cmd
 
     @property
     def VolumesConf(self):
-        r"""存储配置信息
+        r"""<p>存储配置信息</p>
         :rtype: list of VolumeConf
         """
         return self._VolumesConf
@@ -3136,6 +3085,17 @@ AccessTypes，EntryPoint，Cmd
     @VolumesConf.setter
     def VolumesConf(self, VolumesConf):
         self._VolumesConf = VolumesConf
+
+    @property
+    def PublicNetConf(self):
+        r"""<p>公网访问配置</p>
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.PublicNetConf`
+        """
+        return self._PublicNetConf
+
+    @PublicNetConf.setter
+    def PublicNetConf(self, PublicNetConf):
+        self._PublicNetConf = PublicNetConf
 
 
     def _deserialize(self, params):
@@ -3166,6 +3126,9 @@ AccessTypes，EntryPoint，Cmd
                 obj = VolumeConf()
                 obj._deserialize(item)
                 self._VolumesConf.append(obj)
+        if params.get("PublicNetConf") is not None:
+            self._PublicNetConf = PublicNetConf()
+            self._PublicNetConf._deserialize(params.get("PublicNetConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4535,6 +4498,42 @@ class OperateServerManageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class PublicNetConf(AbstractModel):
+    r"""公网访问配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicNetStatus: <p>是否开启公网访问</p><p>枚举值：</p><ul><li>ENABLE： 开启公网访问</li><li>DISABLE： 关闭公网访问</li></ul>
+        :type PublicNetStatus: str
+        """
+        self._PublicNetStatus = None
+
+    @property
+    def PublicNetStatus(self):
+        r"""<p>是否开启公网访问</p><p>枚举值：</p><ul><li>ENABLE： 开启公网访问</li><li>DISABLE： 关闭公网访问</li></ul>
+        :rtype: str
+        """
+        return self._PublicNetStatus
+
+    @PublicNetStatus.setter
+    def PublicNetStatus(self, PublicNetStatus):
+        self._PublicNetStatus = PublicNetStatus
+
+
+    def _deserialize(self, params):
+        self._PublicNetStatus = params.get("PublicNetStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReleaseGrayRequest(AbstractModel):
     r"""ReleaseGray请求参数结构体
 
@@ -5163,69 +5162,71 @@ class ServerBaseConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境 Id
+        :param _EnvId: <p>环境 Id</p>
         :type EnvId: str
-        :param _ServerName: 服务名
+        :param _ServerName: <p>服务名</p>
         :type ServerName: str
-        :param _OpenAccessTypes: 是否开启公网访问
+        :param _OpenAccessTypes: <p>是否开启公网访问</p>
         :type OpenAccessTypes: list of str
-        :param _Cpu: Cpu 规格
+        :param _Cpu: <p>Cpu 规格</p>
         :type Cpu: float
-        :param _Mem: Mem 规格
+        :param _Mem: <p>Mem 规格</p>
         :type Mem: float
-        :param _MinNum: 最小副本数
+        :param _MinNum: <p>最小副本数</p>
         :type MinNum: int
-        :param _MaxNum: 最大副本数
+        :param _MaxNum: <p>最大副本数</p>
         :type MaxNum: int
-        :param _PolicyDetails: 扩缩容配置
+        :param _PolicyDetails: <p>扩缩容配置</p>
         :type PolicyDetails: list of HpaPolicy
-        :param _CustomLogs: 日志采集路径
+        :param _CustomLogs: <p>日志采集路径</p>
         :type CustomLogs: str
-        :param _EnvParams: 环境变量
+        :param _EnvParams: <p>环境变量</p>
         :type EnvParams: str
-        :param _InitialDelaySeconds: 延迟检测时间
+        :param _InitialDelaySeconds: <p>延迟检测时间</p>
         :type InitialDelaySeconds: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _Port: 服务端口
+        :param _Port: <p>服务端口</p>
         :type Port: int
-        :param _HasDockerfile: 是否有Dockerfile
+        :param _HasDockerfile: <p>是否有Dockerfile</p>
         :type HasDockerfile: bool
-        :param _Dockerfile: Dockerfile 文件名
+        :param _Dockerfile: <p>Dockerfile 文件名</p>
         :type Dockerfile: str
-        :param _BuildDir: 构建目录
+        :param _BuildDir: <p>构建目录</p>
         :type BuildDir: str
-        :param _LogType: 日志类型: none | default | custom
+        :param _LogType: <p>日志类型: none | default | custom</p>
         :type LogType: str
-        :param _LogSetId: cls setId
+        :param _LogSetId: <p>cls setId</p>
         :type LogSetId: str
-        :param _LogTopicId: cls 主题id
+        :param _LogTopicId: <p>cls 主题id</p>
         :type LogTopicId: str
-        :param _LogParseType: 解析类型：json ｜ line
+        :param _LogParseType: <p>解析类型：json ｜ line</p>
         :type LogParseType: str
-        :param _Tag: 服务标签, function: 函数托管
+        :param _Tag: <p>服务标签, function: 函数托管</p>
         :type Tag: str
-        :param _InternalAccess: 内网访问开关 close | open
+        :param _InternalAccess: <p>内网访问开关 close | open</p>
         :type InternalAccess: str
-        :param _InternalDomain: 内网域名
+        :param _InternalDomain: <p>内网域名</p>
         :type InternalDomain: str
-        :param _OperationMode: 运行模式
+        :param _OperationMode: <p>运行模式</p>
         :type OperationMode: str
-        :param _TimerScale: 定时扩缩容配置
+        :param _TimerScale: <p>定时扩缩容配置</p>
         :type TimerScale: list of TimerScale
-        :param _EntryPoint: Dockerfile EntryPoint 参数
+        :param _EntryPoint: <p>Dockerfile EntryPoint 参数</p>
         :type EntryPoint: list of str
-        :param _Cmd: Dockerfile Cmd 参数
+        :param _Cmd: <p>Dockerfile Cmd 参数</p>
         :type Cmd: list of str
-        :param _SessionAffinity: 会话亲和性开关
+        :param _SessionAffinity: <p>会话亲和性开关</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionAffinity: str
-        :param _VpcConf: Vpc 配置参数
+        :param _VpcConf: <p>Vpc 配置参数</p>
         :type VpcConf: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
-        :param _VolumesConf: 存储配置信息
+        :param _VolumesConf: <p>存储配置信息</p>
         :type VolumesConf: list of VolumeConf
-        :param _LinkImageRegistry: 关联镜像密钥
+        :param _LinkImageRegistry: <p>关联镜像密钥</p>
         :type LinkImageRegistry: str
+        :param _PublicNetConf: <p>公网访问配置</p>
+        :type PublicNetConf: :class:`tencentcloud.tcbr.v20220217.models.PublicNetConf`
         """
         self._EnvId = None
         self._ServerName = None
@@ -5258,10 +5259,11 @@ class ServerBaseConfig(AbstractModel):
         self._VpcConf = None
         self._VolumesConf = None
         self._LinkImageRegistry = None
+        self._PublicNetConf = None
 
     @property
     def EnvId(self):
-        r"""环境 Id
+        r"""<p>环境 Id</p>
         :rtype: str
         """
         return self._EnvId
@@ -5272,7 +5274,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def ServerName(self):
-        r"""服务名
+        r"""<p>服务名</p>
         :rtype: str
         """
         return self._ServerName
@@ -5283,7 +5285,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def OpenAccessTypes(self):
-        r"""是否开启公网访问
+        r"""<p>是否开启公网访问</p>
         :rtype: list of str
         """
         return self._OpenAccessTypes
@@ -5294,7 +5296,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Cpu 规格
+        r"""<p>Cpu 规格</p>
         :rtype: float
         """
         return self._Cpu
@@ -5305,7 +5307,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Mem(self):
-        r"""Mem 规格
+        r"""<p>Mem 规格</p>
         :rtype: float
         """
         return self._Mem
@@ -5316,7 +5318,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def MinNum(self):
-        r"""最小副本数
+        r"""<p>最小副本数</p>
         :rtype: int
         """
         return self._MinNum
@@ -5327,7 +5329,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def MaxNum(self):
-        r"""最大副本数
+        r"""<p>最大副本数</p>
         :rtype: int
         """
         return self._MaxNum
@@ -5338,7 +5340,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def PolicyDetails(self):
-        r"""扩缩容配置
+        r"""<p>扩缩容配置</p>
         :rtype: list of HpaPolicy
         """
         return self._PolicyDetails
@@ -5349,7 +5351,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def CustomLogs(self):
-        r"""日志采集路径
+        r"""<p>日志采集路径</p>
         :rtype: str
         """
         return self._CustomLogs
@@ -5360,7 +5362,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def EnvParams(self):
-        r"""环境变量
+        r"""<p>环境变量</p>
         :rtype: str
         """
         return self._EnvParams
@@ -5371,7 +5373,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def InitialDelaySeconds(self):
-        r"""延迟检测时间
+        r"""<p>延迟检测时间</p>
         :rtype: int
         """
         return self._InitialDelaySeconds
@@ -5382,7 +5384,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5393,7 +5395,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Port(self):
-        r"""服务端口
+        r"""<p>服务端口</p>
         :rtype: int
         """
         return self._Port
@@ -5404,7 +5406,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def HasDockerfile(self):
-        r"""是否有Dockerfile
+        r"""<p>是否有Dockerfile</p>
         :rtype: bool
         """
         return self._HasDockerfile
@@ -5415,7 +5417,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Dockerfile(self):
-        r"""Dockerfile 文件名
+        r"""<p>Dockerfile 文件名</p>
         :rtype: str
         """
         return self._Dockerfile
@@ -5426,7 +5428,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def BuildDir(self):
-        r"""构建目录
+        r"""<p>构建目录</p>
         :rtype: str
         """
         return self._BuildDir
@@ -5437,7 +5439,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def LogType(self):
-        r"""日志类型: none | default | custom
+        r"""<p>日志类型: none | default | custom</p>
         :rtype: str
         """
         return self._LogType
@@ -5448,7 +5450,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def LogSetId(self):
-        r"""cls setId
+        r"""<p>cls setId</p>
         :rtype: str
         """
         return self._LogSetId
@@ -5459,7 +5461,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def LogTopicId(self):
-        r"""cls 主题id
+        r"""<p>cls 主题id</p>
         :rtype: str
         """
         return self._LogTopicId
@@ -5470,7 +5472,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def LogParseType(self):
-        r"""解析类型：json ｜ line
+        r"""<p>解析类型：json ｜ line</p>
         :rtype: str
         """
         return self._LogParseType
@@ -5481,7 +5483,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Tag(self):
-        r"""服务标签, function: 函数托管
+        r"""<p>服务标签, function: 函数托管</p>
         :rtype: str
         """
         return self._Tag
@@ -5492,7 +5494,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def InternalAccess(self):
-        r"""内网访问开关 close | open
+        r"""<p>内网访问开关 close | open</p>
         :rtype: str
         """
         return self._InternalAccess
@@ -5503,7 +5505,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def InternalDomain(self):
-        r"""内网域名
+        r"""<p>内网域名</p>
         :rtype: str
         """
         return self._InternalDomain
@@ -5514,7 +5516,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def OperationMode(self):
-        r"""运行模式
+        r"""<p>运行模式</p>
         :rtype: str
         """
         return self._OperationMode
@@ -5525,7 +5527,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def TimerScale(self):
-        r"""定时扩缩容配置
+        r"""<p>定时扩缩容配置</p>
         :rtype: list of TimerScale
         """
         return self._TimerScale
@@ -5536,7 +5538,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def EntryPoint(self):
-        r"""Dockerfile EntryPoint 参数
+        r"""<p>Dockerfile EntryPoint 参数</p>
         :rtype: list of str
         """
         return self._EntryPoint
@@ -5547,7 +5549,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def Cmd(self):
-        r"""Dockerfile Cmd 参数
+        r"""<p>Dockerfile Cmd 参数</p>
         :rtype: list of str
         """
         return self._Cmd
@@ -5558,7 +5560,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def SessionAffinity(self):
-        r"""会话亲和性开关
+        r"""<p>会话亲和性开关</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5570,7 +5572,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def VpcConf(self):
-        r"""Vpc 配置参数
+        r"""<p>Vpc 配置参数</p>
         :rtype: :class:`tencentcloud.tcbr.v20220217.models.VpcConf`
         """
         return self._VpcConf
@@ -5581,7 +5583,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def VolumesConf(self):
-        r"""存储配置信息
+        r"""<p>存储配置信息</p>
         :rtype: list of VolumeConf
         """
         return self._VolumesConf
@@ -5592,7 +5594,7 @@ class ServerBaseConfig(AbstractModel):
 
     @property
     def LinkImageRegistry(self):
-        r"""关联镜像密钥
+        r"""<p>关联镜像密钥</p>
         :rtype: str
         """
         return self._LinkImageRegistry
@@ -5600,6 +5602,17 @@ class ServerBaseConfig(AbstractModel):
     @LinkImageRegistry.setter
     def LinkImageRegistry(self, LinkImageRegistry):
         self._LinkImageRegistry = LinkImageRegistry
+
+    @property
+    def PublicNetConf(self):
+        r"""<p>公网访问配置</p>
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.PublicNetConf`
+        """
+        return self._PublicNetConf
+
+    @PublicNetConf.setter
+    def PublicNetConf(self, PublicNetConf):
+        self._PublicNetConf = PublicNetConf
 
 
     def _deserialize(self, params):
@@ -5651,6 +5664,9 @@ class ServerBaseConfig(AbstractModel):
                 obj._deserialize(item)
                 self._VolumesConf.append(obj)
         self._LinkImageRegistry = params.get("LinkImageRegistry")
+        if params.get("PublicNetConf") is not None:
+            self._PublicNetConf = PublicNetConf()
+            self._PublicNetConf._deserialize(params.get("PublicNetConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

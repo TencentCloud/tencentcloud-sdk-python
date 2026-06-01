@@ -63499,39 +63499,36 @@ class MediaTranscodeItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 转码后的视频文件地址。
+        :param _Url: <p>转码后的视频文件地址。</p>
         :type Url: str
-        :param _Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。
-<font color=red>注意：取值 0 表示原始文件。</font> 
+        :param _Definition: <p>转码规格 ID，参见<a href="https://cloud.tencent.com/document/product/266/33476">转码参数模板</a>。<br><font color="red">注意：取值 0 表示原始文件。</font></p>
         :type Definition: int
-        :param _Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。
+        :param _Bitrate: <p>视频流码率平均值与音频流码率平均值之和， 单位：bps。</p>
         :type Bitrate: int
-        :param _Height: 视频流高度的最大值，单位：px。
+        :param _Height: <p>视频流高度的最大值，单位：px。</p>
         :type Height: int
-        :param _Width: 视频流宽度的最大值，单位：px。
+        :param _Width: <p>视频流宽度的最大值，单位：px。</p>
         :type Width: int
-        :param _Size: 媒体文件总大小，单位：字节。
-<li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和。</li>
+        :param _Size: <p>媒体文件总大小，单位：字节。</p><li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和。</li>
         :type Size: int
-        :param _Duration: 视频时长，单位：秒。
+        :param _Duration: <p>视频时长，单位：秒。</p>
         :type Duration: float
-        :param _Md5: 视频的 md5 值。
+        :param _Md5: <p>视频的 md5 值。</p>
         :type Md5: str
-        :param _Container: 容器类型，例如 m4a，mp4 等。
+        :param _Container: <p>容器类型，例如 m4a，mp4 等。</p>
         :type Container: str
-        :param _VideoStreamSet: 视频流信息。
+        :param _VideoStreamSet: <p>视频流信息。</p>
         :type VideoStreamSet: list of MediaVideoStreamItem
-        :param _AudioStreamSet: 音频流信息。
+        :param _AudioStreamSet: <p>音频流信息。</p>
         :type AudioStreamSet: list of MediaAudioStreamItem
-        :param _DigitalWatermarkType: 数字水印类型。可选值：
-<li>Trace 表示经过溯源水印处理；</li>
-<li>CopyRight 表示经过版权水印处理；</li>
-<li>None 表示没有经过数字水印处理。</li>
+        :param _DigitalWatermarkType: <p>数字水印类型。可选值：</p><li>Trace 表示经过溯源水印处理；</li><li>CopyRight 表示经过版权水印处理；</li><li>None 表示没有经过数字水印处理。</li>
         :type DigitalWatermarkType: str
-        :param _CopyRightWatermarkText: 版权信息。
+        :param _CopyRightWatermarkText: <p>版权信息。</p>
         :type CopyRightWatermarkText: str
-        :param _BlindWatermarkDefinition: 数字水印模板id。
+        :param _BlindWatermarkDefinition: <p>数字水印模板id。</p>
         :type BlindWatermarkDefinition: int
+        :param _FileId: <p>转码生成的新FileId，请求开启独立媒资输出时有效。</p>
+        :type FileId: str
         """
         self._Url = None
         self._Definition = None
@@ -63547,10 +63544,11 @@ class MediaTranscodeItem(AbstractModel):
         self._DigitalWatermarkType = None
         self._CopyRightWatermarkText = None
         self._BlindWatermarkDefinition = None
+        self._FileId = None
 
     @property
     def Url(self):
-        r"""转码后的视频文件地址。
+        r"""<p>转码后的视频文件地址。</p>
         :rtype: str
         """
         return self._Url
@@ -63561,8 +63559,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Definition(self):
-        r"""转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。
-<font color=red>注意：取值 0 表示原始文件。</font> 
+        r"""<p>转码规格 ID，参见<a href="https://cloud.tencent.com/document/product/266/33476">转码参数模板</a>。<br><font color="red">注意：取值 0 表示原始文件。</font></p>
         :rtype: int
         """
         return self._Definition
@@ -63573,7 +63570,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""视频流码率平均值与音频流码率平均值之和， 单位：bps。
+        r"""<p>视频流码率平均值与音频流码率平均值之和， 单位：bps。</p>
         :rtype: int
         """
         return self._Bitrate
@@ -63584,7 +63581,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Height(self):
-        r"""视频流高度的最大值，单位：px。
+        r"""<p>视频流高度的最大值，单位：px。</p>
         :rtype: int
         """
         return self._Height
@@ -63595,7 +63592,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Width(self):
-        r"""视频流宽度的最大值，单位：px。
+        r"""<p>视频流宽度的最大值，单位：px。</p>
         :rtype: int
         """
         return self._Width
@@ -63606,8 +63603,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Size(self):
-        r"""媒体文件总大小，单位：字节。
-<li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和。</li>
+        r"""<p>媒体文件总大小，单位：字节。</p><li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和。</li>
         :rtype: int
         """
         return self._Size
@@ -63618,7 +63614,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Duration(self):
-        r"""视频时长，单位：秒。
+        r"""<p>视频时长，单位：秒。</p>
         :rtype: float
         """
         return self._Duration
@@ -63629,7 +63625,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Md5(self):
-        r"""视频的 md5 值。
+        r"""<p>视频的 md5 值。</p>
         :rtype: str
         """
         return self._Md5
@@ -63640,7 +63636,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Container(self):
-        r"""容器类型，例如 m4a，mp4 等。
+        r"""<p>容器类型，例如 m4a，mp4 等。</p>
         :rtype: str
         """
         return self._Container
@@ -63651,7 +63647,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def VideoStreamSet(self):
-        r"""视频流信息。
+        r"""<p>视频流信息。</p>
         :rtype: list of MediaVideoStreamItem
         """
         return self._VideoStreamSet
@@ -63662,7 +63658,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def AudioStreamSet(self):
-        r"""音频流信息。
+        r"""<p>音频流信息。</p>
         :rtype: list of MediaAudioStreamItem
         """
         return self._AudioStreamSet
@@ -63673,10 +63669,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def DigitalWatermarkType(self):
-        r"""数字水印类型。可选值：
-<li>Trace 表示经过溯源水印处理；</li>
-<li>CopyRight 表示经过版权水印处理；</li>
-<li>None 表示没有经过数字水印处理。</li>
+        r"""<p>数字水印类型。可选值：</p><li>Trace 表示经过溯源水印处理；</li><li>CopyRight 表示经过版权水印处理；</li><li>None 表示没有经过数字水印处理。</li>
         :rtype: str
         """
         return self._DigitalWatermarkType
@@ -63687,7 +63680,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def CopyRightWatermarkText(self):
-        r"""版权信息。
+        r"""<p>版权信息。</p>
         :rtype: str
         """
         return self._CopyRightWatermarkText
@@ -63698,7 +63691,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def BlindWatermarkDefinition(self):
-        r"""数字水印模板id。
+        r"""<p>数字水印模板id。</p>
         :rtype: int
         """
         return self._BlindWatermarkDefinition
@@ -63706,6 +63699,17 @@ class MediaTranscodeItem(AbstractModel):
     @BlindWatermarkDefinition.setter
     def BlindWatermarkDefinition(self, BlindWatermarkDefinition):
         self._BlindWatermarkDefinition = BlindWatermarkDefinition
+
+    @property
+    def FileId(self):
+        r"""<p>转码生成的新FileId，请求开启独立媒资输出时有效。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
 
 
     def _deserialize(self, params):
@@ -63733,6 +63737,7 @@ class MediaTranscodeItem(AbstractModel):
         self._DigitalWatermarkType = params.get("DigitalWatermarkType")
         self._CopyRightWatermarkText = params.get("CopyRightWatermarkText")
         self._BlindWatermarkDefinition = params.get("BlindWatermarkDefinition")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

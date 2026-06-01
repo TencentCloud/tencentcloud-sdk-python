@@ -661,7 +661,8 @@ class TcbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeBillingInfoResponse:
         """
-        获取计费相关信息
+        获取云开发环境的计费相关信息。
+        包括环境的 状态、当前套餐、购买时间、到期时间 等。
         """
         
         kwargs = {}

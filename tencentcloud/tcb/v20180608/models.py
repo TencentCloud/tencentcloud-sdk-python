@@ -5548,14 +5548,23 @@ class DescribeBillingInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境ID
+        :param _EnvId: <p>环境ID</p>
         :type EnvId: str
+        :param _EnvIds: <p>环境列表，当环境列表不为空时，查询的环境以该参数为准</p>
+        :type EnvIds: list of str
+        :param _Limit: <p>每页条数（用于拉取列表时分页）</p>
+        :type Limit: int
+        :param _Offset: <p>偏移</p>
+        :type Offset: int
         """
         self._EnvId = None
+        self._EnvIds = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def EnvId(self):
-        r"""环境ID
+        r"""<p>环境ID</p>
         :rtype: str
         """
         return self._EnvId
@@ -5564,9 +5573,45 @@ class DescribeBillingInfoRequest(AbstractModel):
     def EnvId(self, EnvId):
         self._EnvId = EnvId
 
+    @property
+    def EnvIds(self):
+        r"""<p>环境列表，当环境列表不为空时，查询的环境以该参数为准</p>
+        :rtype: list of str
+        """
+        return self._EnvIds
+
+    @EnvIds.setter
+    def EnvIds(self, EnvIds):
+        self._EnvIds = EnvIds
+
+    @property
+    def Limit(self):
+        r"""<p>每页条数（用于拉取列表时分页）</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
+        self._EnvIds = params.get("EnvIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5584,17 +5629,20 @@ class DescribeBillingInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvBillingInfoList: 环境计费信息列表
+        :param _EnvBillingInfoList: <p>环境计费信息列表</p>
         :type EnvBillingInfoList: list of EnvBillingInfoItem
+        :param _Total: <p>总个数</p>
+        :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EnvBillingInfoList = None
+        self._Total = None
         self._RequestId = None
 
     @property
     def EnvBillingInfoList(self):
-        r"""环境计费信息列表
+        r"""<p>环境计费信息列表</p>
         :rtype: list of EnvBillingInfoItem
         """
         return self._EnvBillingInfoList
@@ -5602,6 +5650,17 @@ class DescribeBillingInfoResponse(AbstractModel):
     @EnvBillingInfoList.setter
     def EnvBillingInfoList(self, EnvBillingInfoList):
         self._EnvBillingInfoList = EnvBillingInfoList
+
+    @property
+    def Total(self):
+        r"""<p>总个数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
 
     @property
     def RequestId(self):
@@ -5622,6 +5681,7 @@ class DescribeBillingInfoResponse(AbstractModel):
                 obj = EnvBillingInfoItem()
                 obj._deserialize(item)
                 self._EnvBillingInfoList.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -10827,46 +10887,39 @@ class EnvBillingInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境ID
+        :param _EnvId: <p>环境ID</p>
         :type EnvId: str
-        :param _PackageId: tcb产品套餐ID，参考DescribePackages接口的返回值。
+        :param _PackageId: <p>tcb产品套餐ID，参考DescribePackages接口的返回值。</p>
         :type PackageId: str
-        :param _IsAutoRenew: 自动续费标记
+        :param _IsAutoRenew: <p>自动续费标记</p>
         :type IsAutoRenew: bool
-        :param _Status: 状态。包含以下取值：
-<li> 空字符串：初始化中</li>
-<li> NORMAL：正常</li>
-<li> ISOLATE：隔离</li>
+        :param _Status: <p>状态。包含以下取值：</p><li> 空字符串：初始化中</li><li> NORMAL：正常</li><li> ISOLATE：隔离</li>
         :type Status: str
-        :param _PayMode: 支付方式。包含以下取值：
-<li> PREPAYMENT：预付费</li>
-<li> POSTPAID：后付费</li>
+        :param _PayMode: <p>支付方式。包含以下取值：</p><li> PREPAYMENT：预付费</li><li> POSTPAID：后付费</li>
         :type PayMode: str
-        :param _IsolatedTime: 隔离时间，最近一次隔离的时间
+        :param _IsolatedTime: <p>隔离时间，最近一次隔离的时间</p>
         :type IsolatedTime: str
-        :param _ExpireTime: 过期时间，套餐即将到期的时间
+        :param _ExpireTime: <p>过期时间，套餐即将到期的时间</p>
         :type ExpireTime: str
-        :param _CreateTime: 创建时间，第一次接入计费方案的时间。
+        :param _CreateTime: <p>创建时间，第一次接入计费方案的时间。</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间，计费信息最近一次更新的时间。
+        :param _UpdateTime: <p>更新时间，计费信息最近一次更新的时间。</p>
         :type UpdateTime: str
-        :param _IsAlwaysFree: true表示从未升级过付费版。
+        :param _IsAlwaysFree: <p>true表示从未升级过付费版。</p>
         :type IsAlwaysFree: bool
-        :param _PaymentChannel: 付费渠道。
-<li> miniapp：小程序</li>
-<li> qcloud：腾讯云</li>
+        :param _PaymentChannel: <p>付费渠道。</p><li> miniapp：小程序</li><li> qcloud：腾讯云</li>
         :type PaymentChannel: str
-        :param _OrderInfo: 最新的订单信息
+        :param _OrderInfo: <p>最新的订单信息</p>
         :type OrderInfo: :class:`tencentcloud.tcb.v20180608.models.OrderInfo`
-        :param _FreeQuota: 免费配额信息。
+        :param _FreeQuota: <p>免费配额信息。</p>
         :type FreeQuota: str
-        :param _EnableOverrun: 是否开启 `超过套餐额度部分转按量付费`
+        :param _EnableOverrun: <p>是否开启 <code>超过套餐额度部分转按量付费</code></p>
         :type EnableOverrun: bool
-        :param _ExtPackageType: 环境套餐类型
+        :param _ExtPackageType: <p>环境套餐类型</p>
         :type ExtPackageType: str
-        :param _EnvCharged: 是否付费期环境，可取值：yes/no。
+        :param _EnvCharged: <p>是否付费期环境，可取值：yes/no。</p>
         :type EnvCharged: str
-        :param _EnvActivated: 是否已激活，可取值：yes/no。
+        :param _EnvActivated: <p>是否已激活，可取值：yes/no。</p>
         :type EnvActivated: str
         """
         self._EnvId = None
@@ -10889,7 +10942,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境ID
+        r"""<p>环境ID</p>
         :rtype: str
         """
         return self._EnvId
@@ -10900,7 +10953,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def PackageId(self):
-        r"""tcb产品套餐ID，参考DescribePackages接口的返回值。
+        r"""<p>tcb产品套餐ID，参考DescribePackages接口的返回值。</p>
         :rtype: str
         """
         return self._PackageId
@@ -10911,7 +10964,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def IsAutoRenew(self):
-        r"""自动续费标记
+        r"""<p>自动续费标记</p>
         :rtype: bool
         """
         return self._IsAutoRenew
@@ -10922,10 +10975,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态。包含以下取值：
-<li> 空字符串：初始化中</li>
-<li> NORMAL：正常</li>
-<li> ISOLATE：隔离</li>
+        r"""<p>状态。包含以下取值：</p><li> 空字符串：初始化中</li><li> NORMAL：正常</li><li> ISOLATE：隔离</li>
         :rtype: str
         """
         return self._Status
@@ -10936,9 +10986,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""支付方式。包含以下取值：
-<li> PREPAYMENT：预付费</li>
-<li> POSTPAID：后付费</li>
+        r"""<p>支付方式。包含以下取值：</p><li> PREPAYMENT：预付费</li><li> POSTPAID：后付费</li>
         :rtype: str
         """
         return self._PayMode
@@ -10949,7 +10997,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        r"""隔离时间，最近一次隔离的时间
+        r"""<p>隔离时间，最近一次隔离的时间</p>
         :rtype: str
         """
         return self._IsolatedTime
@@ -10960,7 +11008,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""过期时间，套餐即将到期的时间
+        r"""<p>过期时间，套餐即将到期的时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -10971,7 +11019,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，第一次接入计费方案的时间。
+        r"""<p>创建时间，第一次接入计费方案的时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10982,7 +11030,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间，计费信息最近一次更新的时间。
+        r"""<p>更新时间，计费信息最近一次更新的时间。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -10993,7 +11041,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def IsAlwaysFree(self):
-        r"""true表示从未升级过付费版。
+        r"""<p>true表示从未升级过付费版。</p>
         :rtype: bool
         """
         return self._IsAlwaysFree
@@ -11004,9 +11052,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def PaymentChannel(self):
-        r"""付费渠道。
-<li> miniapp：小程序</li>
-<li> qcloud：腾讯云</li>
+        r"""<p>付费渠道。</p><li> miniapp：小程序</li><li> qcloud：腾讯云</li>
         :rtype: str
         """
         return self._PaymentChannel
@@ -11017,7 +11063,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def OrderInfo(self):
-        r"""最新的订单信息
+        r"""<p>最新的订单信息</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.OrderInfo`
         """
         return self._OrderInfo
@@ -11028,7 +11074,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def FreeQuota(self):
-        r"""免费配额信息。
+        r"""<p>免费配额信息。</p>
         :rtype: str
         """
         return self._FreeQuota
@@ -11039,7 +11085,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def EnableOverrun(self):
-        r"""是否开启 `超过套餐额度部分转按量付费`
+        r"""<p>是否开启 <code>超过套餐额度部分转按量付费</code></p>
         :rtype: bool
         """
         return self._EnableOverrun
@@ -11050,7 +11096,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def ExtPackageType(self):
-        r"""环境套餐类型
+        r"""<p>环境套餐类型</p>
         :rtype: str
         """
         return self._ExtPackageType
@@ -11061,7 +11107,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def EnvCharged(self):
-        r"""是否付费期环境，可取值：yes/no。
+        r"""<p>是否付费期环境，可取值：yes/no。</p>
         :rtype: str
         """
         return self._EnvCharged
@@ -11072,7 +11118,7 @@ class EnvBillingInfoItem(AbstractModel):
 
     @property
     def EnvActivated(self):
-        r"""是否已激活，可取值：yes/no。
+        r"""<p>是否已激活，可取值：yes/no。</p>
         :rtype: str
         """
         return self._EnvActivated

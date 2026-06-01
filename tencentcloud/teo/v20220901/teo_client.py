@@ -479,6 +479,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateFunctionReplica(self, request):
+        r"""本接口用于创建指定边缘函数的副本。创建副本后，当客户端请求匹配已配置的触发规则或默认域名时，您可以通过在请求头中添加 EO-Function-Replica-Name:[副本名称] 来访问特定的函数副本。每个函数默认支持创建两个副本。
+
+        :param request: Request instance for CreateFunctionReplica.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateFunctionReplicaRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateFunctionReplicaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFunctionReplica", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFunctionReplicaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFunctionRule(self, request):
         r"""创建边缘函数的触发规则。支持通过自定义过滤条件来决定是否需要执行函数，当需要执行函数时，提供了多种选择目标函数的方式，包括：直接指定，基于客户端归属地区选择和基于权重选择。
 
@@ -1246,6 +1269,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteFunction", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteFunctionReplica(self, request):
+        r"""本接口用于删除指定的边缘函数副本。
+
+        :param request: Request instance for DeleteFunctionReplica.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionReplicaRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionReplicaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFunctionReplica", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFunctionReplicaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2168,6 +2214,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeFunctionComponentBindings", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFunctionComponentBindingsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFunctionReplicas(self, request):
+        r"""本接口用于查询边缘函数的副本列表。
+
+        :param request: Request instance for DescribeFunctionReplicas.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionReplicasRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionReplicasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFunctionReplicas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFunctionReplicasResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4062,6 +4131,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyFunctionComponentBindings", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyFunctionComponentBindingsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyFunctionReplica(self, request):
+        r"""本接口用于修改指定边缘函数副本的内容和描述。
+
+        :param request: Request instance for ModifyFunctionReplica.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionReplicaRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionReplicaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFunctionReplica", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFunctionReplicaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

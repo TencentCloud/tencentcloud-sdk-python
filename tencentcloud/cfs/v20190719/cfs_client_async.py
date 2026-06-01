@@ -187,6 +187,24 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDataRetrieval(
+            self,
+            request: models.CreateDataRetrievalRequest,
+            opts: Dict = None,
+    ) -> models.CreateDataRetrievalResponse:
+        """
+        创建数据检索
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDataRetrieval"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDataRetrievalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLifecycleDataTask(
             self,
             request: models.CreateLifecycleDataTaskRequest,
@@ -362,6 +380,26 @@ class CfsClient(AbstractClient):
         kwargs["action"] = "DeleteDataFlow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDataFlowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDataRetrieval(
+            self,
+            request: models.DeleteDataRetrievalRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDataRetrievalResponse:
+        """
+        删除数据检索。
+
+        删除指定的数据检索配置，不允许在存在关联任务时删除。调用接口后，若通过 DescribeDataRetrieval 接口查询不到对应的数据检索，则表示删除成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDataRetrieval"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDataRetrievalResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -619,6 +657,44 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataRetrieval(
+            self,
+            request: models.DescribeDataRetrievalRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDataRetrievalResponse:
+        """
+        查询数据检索。
+
+        查询数据检索列表，支持按文件系统 ID、数据检索 ID、名称等条件筛选。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataRetrieval"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataRetrievalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDataRetrievalTask(
+            self,
+            request: models.DescribeDataRetrievalTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDataRetrievalTaskResponse:
+        """
+        查询数据检索任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataRetrievalTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataRetrievalTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLifecycleDataTask(
             self,
             request: models.DescribeLifecycleDataTaskRequest,
@@ -764,6 +840,24 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDataRetrieval(
+            self,
+            request: models.ModifyDataRetrievalRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDataRetrievalResponse:
+        """
+        修改数据检索
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDataRetrieval"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDataRetrievalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyFileSystemAutoScaleUpRule(
             self,
             request: models.ModifyFileSystemAutoScaleUpRuleRequest,
@@ -813,6 +907,26 @@ class CfsClient(AbstractClient):
         kwargs["action"] = "OverrideCfsRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.OverrideCfsRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RunDataRetrievalTask(
+            self,
+            request: models.RunDataRetrievalTaskRequest,
+            opts: Dict = None,
+    ) -> models.RunDataRetrievalTaskResponse:
+        """
+        执行数据检索任务。
+
+        手动触发指定数据检索的执行，创建一个新的数据检索任务。单个文件系统同时执行的任务数不超过 20 个。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RunDataRetrievalTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RunDataRetrievalTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

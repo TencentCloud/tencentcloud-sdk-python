@@ -3003,6 +3003,51 @@ class CreateUserGroupMemberRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _GroupId: <p>用户组id</p>
+        :type GroupId: int
+        :param _UserIdList: <p>用户id集合</p>
+        :type UserIdList: list of str
+        """
+        self._GroupId = None
+        self._UserIdList = None
+
+    @property
+    def GroupId(self):
+        r"""<p>用户组id</p>
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def UserIdList(self):
+        r"""<p>用户id集合</p>
+        :rtype: list of str
+        """
+        return self._UserIdList
+
+    @UserIdList.setter
+    def UserIdList(self, UserIdList):
+        self._UserIdList = UserIdList
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._UserIdList = params.get("UserIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateUserGroupMemberResponse(AbstractModel):
     r"""CreateUserGroupMember返回参数结构体
@@ -3014,10 +3059,22 @@ class CreateUserGroupMemberResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
         self._RequestId = None
 
     @property
@@ -3031,6 +3088,42 @@ class CreateUserGroupMemberResponse(AbstractModel):
     @ErrorInfo.setter
     def ErrorInfo(self, ErrorInfo):
         self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -3048,6 +3141,9 @@ class CreateUserGroupMemberResponse(AbstractModel):
         if params.get("ErrorInfo") is not None:
             self._ErrorInfo = ErrorInfo()
             self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -3058,20 +3154,48 @@ class CreateUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 用户组名称
+        :param _AdminUserId: <p>组管理员</p>
+        :type AdminUserId: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _GroupName: <p>用户组名称</p>
         :type GroupName: str
-        :param _Location: 位置
+        :param _Location: <p>位置</p>
         :type Location: int
-        :param _ParentId: 父用户组id
+        :param _ParentId: <p>父用户组id</p>
         :type ParentId: int
         """
+        self._AdminUserId = None
+        self._Description = None
         self._GroupName = None
         self._Location = None
         self._ParentId = None
 
     @property
+    def AdminUserId(self):
+        r"""<p>组管理员</p>
+        :rtype: str
+        """
+        return self._AdminUserId
+
+    @AdminUserId.setter
+    def AdminUserId(self, AdminUserId):
+        self._AdminUserId = AdminUserId
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
     def GroupName(self):
-        r"""用户组名称
+        r"""<p>用户组名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -3082,7 +3206,7 @@ class CreateUserGroupRequest(AbstractModel):
 
     @property
     def Location(self):
-        r"""位置
+        r"""<p>位置</p>
         :rtype: int
         """
         return self._Location
@@ -3093,7 +3217,7 @@ class CreateUserGroupRequest(AbstractModel):
 
     @property
     def ParentId(self):
-        r"""父用户组id
+        r"""<p>父用户组id</p>
         :rtype: int
         """
         return self._ParentId
@@ -3104,6 +3228,8 @@ class CreateUserGroupRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._AdminUserId = params.get("AdminUserId")
+        self._Description = params.get("Description")
         self._GroupName = params.get("GroupName")
         self._Location = params.get("Location")
         self._ParentId = params.get("ParentId")
@@ -3127,10 +3253,22 @@ class CreateUserGroupResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.UserGroupVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
         self._RequestId = None
 
     @property
@@ -3144,6 +3282,42 @@ class CreateUserGroupResponse(AbstractModel):
     @ErrorInfo.setter
     def ErrorInfo(self, ErrorInfo):
         self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.UserGroupVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -3161,6 +3335,11 @@ class CreateUserGroupResponse(AbstractModel):
         if params.get("ErrorInfo") is not None:
             self._ErrorInfo = ErrorInfo()
             self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = UserGroupVO()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4881,9 +5060,9 @@ class DeleteUserGroupMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 用户组id
+        :param _GroupId: <p>用户组id</p>
         :type GroupId: int
-        :param _UserIdList: 用户id集合
+        :param _UserIdList: <p>用户id集合</p>
         :type UserIdList: list of str
         """
         self._GroupId = None
@@ -4891,7 +5070,7 @@ class DeleteUserGroupMemberRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""用户组id
+        r"""<p>用户组id</p>
         :rtype: int
         """
         return self._GroupId
@@ -4902,7 +5081,7 @@ class DeleteUserGroupMemberRequest(AbstractModel):
 
     @property
     def UserIdList(self):
-        r"""用户id集合
+        r"""<p>用户id集合</p>
         :rtype: list of str
         """
         return self._UserIdList
@@ -4935,10 +5114,22 @@ class DeleteUserGroupMemberResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
         self._RequestId = None
 
     @property
@@ -4952,6 +5143,42 @@ class DeleteUserGroupMemberResponse(AbstractModel):
     @ErrorInfo.setter
     def ErrorInfo(self, ErrorInfo):
         self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -4969,6 +5196,9 @@ class DeleteUserGroupMemberResponse(AbstractModel):
         if params.get("ErrorInfo") is not None:
             self._ErrorInfo = ErrorInfo()
             self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -4979,14 +5209,14 @@ class DeleteUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 用户组id
+        :param _Id: <p>用户组id</p>
         :type Id: int
         """
         self._Id = None
 
     @property
     def Id(self):
-        r"""用户组id
+        r"""<p>用户组id</p>
         :rtype: int
         """
         return self._Id
@@ -5018,10 +5248,22 @@ class DeleteUserGroupResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
         self._RequestId = None
 
     @property
@@ -5035,6 +5277,42 @@ class DeleteUserGroupResponse(AbstractModel):
     @ErrorInfo.setter
     def ErrorInfo(self, ErrorInfo):
         self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -5052,6 +5330,9 @@ class DeleteUserGroupResponse(AbstractModel):
         if params.get("ErrorInfo") is not None:
             self._ErrorInfo = ErrorInfo()
             self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -7426,17 +7707,17 @@ class DescribeUserGroupMemberListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: 用户组id集合
+        :param _GroupIds: <p>用户组id集合</p>
         :type GroupIds: list of int
-        :param _CreatedOnOrder: asc正序,desc倒序
+        :param _CreatedOnOrder: <p>asc正序,desc倒序</p>
         :type CreatedOnOrder: str
-        :param _Keyword: 搜索关键字
+        :param _Keyword: <p>搜索关键字</p>
         :type Keyword: str
-        :param _PageSize: 分页大小
+        :param _PageSize: <p>分页大小</p>
         :type PageSize: int
-        :param _PageNo: 分页页码
+        :param _PageNo: <p>分页页码</p>
         :type PageNo: int
-        :param _AllPage: 是否需要分页
+        :param _AllPage: <p>是否需要分页</p>
         :type AllPage: bool
         """
         self._GroupIds = None
@@ -7448,7 +7729,7 @@ class DescribeUserGroupMemberListRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        r"""用户组id集合
+        r"""<p>用户组id集合</p>
         :rtype: list of int
         """
         return self._GroupIds
@@ -7459,7 +7740,7 @@ class DescribeUserGroupMemberListRequest(AbstractModel):
 
     @property
     def CreatedOnOrder(self):
-        r"""asc正序,desc倒序
+        r"""<p>asc正序,desc倒序</p>
         :rtype: str
         """
         return self._CreatedOnOrder
@@ -7470,7 +7751,7 @@ class DescribeUserGroupMemberListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""搜索关键字
+        r"""<p>搜索关键字</p>
         :rtype: str
         """
         return self._Keyword
@@ -7481,7 +7762,7 @@ class DescribeUserGroupMemberListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._PageSize
@@ -7492,7 +7773,7 @@ class DescribeUserGroupMemberListRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        r"""分页页码
+        r"""<p>分页页码</p>
         :rtype: int
         """
         return self._PageNo
@@ -7503,7 +7784,7 @@ class DescribeUserGroupMemberListRequest(AbstractModel):
 
     @property
     def AllPage(self):
-        r"""是否需要分页
+        r"""<p>是否需要分页</p>
         :rtype: bool
         """
         return self._AllPage
@@ -7540,10 +7821,22 @@ class DescribeUserGroupMemberListResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupMemberPageListContainer`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
         self._RequestId = None
 
     @property
@@ -7557,6 +7850,42 @@ class DescribeUserGroupMemberListResponse(AbstractModel):
     @ErrorInfo.setter
     def ErrorInfo(self, ErrorInfo):
         self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupMemberPageListContainer`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -7574,7 +7903,89 @@ class DescribeUserGroupMemberListResponse(AbstractModel):
         if params.get("ErrorInfo") is not None:
             self._ErrorInfo = ErrorInfo()
             self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = DescribeUserGroupMemberPageListContainer()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeUserGroupMemberPageListContainer(AbstractModel):
+    r"""查询页面列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 列表数据集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of UserGroupMemberVO
+        :param _Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _TotalPages: 总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPages: int
+        """
+        self._List = None
+        self._Total = None
+        self._TotalPages = None
+
+    @property
+    def List(self):
+        r"""列表数据集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserGroupMemberVO
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        r"""总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TotalPages(self):
+        r"""总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = UserGroupMemberVO()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
+        self._TotalPages = params.get("TotalPages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeUserGroupTreeListRequest(AbstractModel):
@@ -11509,14 +11920,14 @@ class ModifyUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UpdateList: 用户组更新list
+        :param _UpdateList: <p>用户组更新list</p>
         :type UpdateList: list of UserGroupUpdateDTO
         """
         self._UpdateList = None
 
     @property
     def UpdateList(self):
-        r"""用户组更新list
+        r"""<p>用户组更新list</p>
         :rtype: list of UserGroupUpdateDTO
         """
         return self._UpdateList
@@ -11553,10 +11964,22 @@ class ModifyUserGroupResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of UserGroupVO
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
         self._RequestId = None
 
     @property
@@ -11570,6 +11993,42 @@ class ModifyUserGroupResponse(AbstractModel):
     @ErrorInfo.setter
     def ErrorInfo(self, ErrorInfo):
         self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserGroupVO
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -11587,6 +12046,14 @@ class ModifyUserGroupResponse(AbstractModel):
         if params.get("ErrorInfo") is not None:
             self._ErrorInfo = ErrorInfo()
             self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = UserGroupVO()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13152,21 +13619,21 @@ class QueryUserGroupMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: 用户组id集合
+        :param _GroupIds: <p>用户组id集合</p>
         :type GroupIds: list of int
-        :param _Keyword: 搜索关键字
+        :param _Keyword: <p>搜索关键字</p>
         :type Keyword: str
-        :param _PageSize: 分页大小
+        :param _PageSize: <p>分页大小</p>
         :type PageSize: int
-        :param _PageNo: 分页页码
+        :param _PageNo: <p>分页页码</p>
         :type PageNo: int
-        :param _AllPage: 是否需要分页
+        :param _AllPage: <p>是否需要分页</p>
         :type AllPage: bool
-        :param _Nodes: 用户组节点信息
+        :param _Nodes: <p>用户组节点信息</p>
         :type Nodes: list of UserGroupTreeNodeDTO
-        :param _TagValueList: 标签值
+        :param _TagValueList: <p>标签值</p>
         :type TagValueList: list of ResourceTagValue
-        :param _FilterGroupIds: 需要过滤的用户组
+        :param _FilterGroupIds: <p>需要过滤的用户组</p>
         :type FilterGroupIds: list of int
         """
         self._GroupIds = None
@@ -13180,7 +13647,7 @@ class QueryUserGroupMemberRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        r"""用户组id集合
+        r"""<p>用户组id集合</p>
         :rtype: list of int
         """
         return self._GroupIds
@@ -13191,7 +13658,7 @@ class QueryUserGroupMemberRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""搜索关键字
+        r"""<p>搜索关键字</p>
         :rtype: str
         """
         return self._Keyword
@@ -13202,7 +13669,7 @@ class QueryUserGroupMemberRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._PageSize
@@ -13213,7 +13680,7 @@ class QueryUserGroupMemberRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        r"""分页页码
+        r"""<p>分页页码</p>
         :rtype: int
         """
         return self._PageNo
@@ -13224,7 +13691,7 @@ class QueryUserGroupMemberRequest(AbstractModel):
 
     @property
     def AllPage(self):
-        r"""是否需要分页
+        r"""<p>是否需要分页</p>
         :rtype: bool
         """
         return self._AllPage
@@ -13235,7 +13702,7 @@ class QueryUserGroupMemberRequest(AbstractModel):
 
     @property
     def Nodes(self):
-        r"""用户组节点信息
+        r"""<p>用户组节点信息</p>
         :rtype: list of UserGroupTreeNodeDTO
         """
         return self._Nodes
@@ -13246,7 +13713,7 @@ class QueryUserGroupMemberRequest(AbstractModel):
 
     @property
     def TagValueList(self):
-        r"""标签值
+        r"""<p>标签值</p>
         :rtype: list of ResourceTagValue
         """
         return self._TagValueList
@@ -13257,7 +13724,7 @@ class QueryUserGroupMemberRequest(AbstractModel):
 
     @property
     def FilterGroupIds(self):
-        r"""需要过滤的用户组
+        r"""<p>需要过滤的用户组</p>
         :rtype: list of int
         """
         return self._FilterGroupIds
@@ -13306,10 +13773,22 @@ class QueryUserGroupMemberResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupMemberPageListContainer`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
         self._RequestId = None
 
     @property
@@ -13323,6 +13802,42 @@ class QueryUserGroupMemberResponse(AbstractModel):
     @ErrorInfo.setter
     def ErrorInfo(self, ErrorInfo):
         self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>结果信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupMemberPageListContainer`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -13340,6 +13855,11 @@ class QueryUserGroupMemberResponse(AbstractModel):
         if params.get("ErrorInfo") is not None:
             self._ErrorInfo = ErrorInfo()
             self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = DescribeUserGroupMemberPageListContainer()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -14434,6 +14954,95 @@ class UserGroupDTO(AbstractModel):
         
 
 
+class UserGroupMemberVO(AbstractModel):
+    r"""用户组成员VO出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _UserId: 用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _CreatedBy: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedBy: str
+        :param _CreatedOn: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedOn: str
+        """
+        self._UserName = None
+        self._UserId = None
+        self._CreatedBy = None
+        self._CreatedOn = None
+
+    @property
+    def UserName(self):
+        r"""用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserId(self):
+        r"""用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def CreatedBy(self):
+        r"""创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedBy
+
+    @CreatedBy.setter
+    def CreatedBy(self, CreatedBy):
+        self._CreatedBy = CreatedBy
+
+    @property
+    def CreatedOn(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._UserId = params.get("UserId")
+        self._CreatedBy = params.get("CreatedBy")
+        self._CreatedOn = params.get("CreatedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UserGroupPageTreeVO(AbstractModel):
     r"""用户组权限树
 
@@ -14922,6 +15531,240 @@ class UserGroupUpdateDTO(AbstractModel):
         self._ParentId = params.get("ParentId")
         self._Id = params.get("Id")
         self._ParentName = params.get("ParentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserGroupUserInfoVO(AbstractModel):
+    r"""用户组返回参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _UserName: 用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        """
+        self._UserId = None
+        self._UserName = None
+
+    @property
+    def UserId(self):
+        r"""用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        r"""用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserGroupVO(AbstractModel):
+    r"""用户组返回参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 用户组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _GroupName: 用户组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _ParentId: 所属用户组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: int
+        :param _ParentName: 所属用户组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentName: str
+        :param _IsDefault: 是否默认用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: int
+        :param _AdminUserId: 用户组管理员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminUserId: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Location: 排序位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: int
+        :param _UserList: 用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserList: list of UserGroupUserInfoVO
+        """
+        self._Id = None
+        self._GroupName = None
+        self._ParentId = None
+        self._ParentName = None
+        self._IsDefault = None
+        self._AdminUserId = None
+        self._Description = None
+        self._Location = None
+        self._UserList = None
+
+    @property
+    def Id(self):
+        r"""用户组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def GroupName(self):
+        r"""用户组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ParentId(self):
+        r"""所属用户组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def ParentName(self):
+        r"""所属用户组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentName
+
+    @ParentName.setter
+    def ParentName(self, ParentName):
+        self._ParentName = ParentName
+
+    @property
+    def IsDefault(self):
+        r"""是否默认用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def AdminUserId(self):
+        r"""用户组管理员
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AdminUserId
+
+    @AdminUserId.setter
+    def AdminUserId(self, AdminUserId):
+        self._AdminUserId = AdminUserId
+
+    @property
+    def Description(self):
+        r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Location(self):
+        r"""排序位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def UserList(self):
+        r"""用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserGroupUserInfoVO
+        """
+        return self._UserList
+
+    @UserList.setter
+    def UserList(self, UserList):
+        self._UserList = UserList
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._GroupName = params.get("GroupName")
+        self._ParentId = params.get("ParentId")
+        self._ParentName = params.get("ParentName")
+        self._IsDefault = params.get("IsDefault")
+        self._AdminUserId = params.get("AdminUserId")
+        self._Description = params.get("Description")
+        self._Location = params.get("Location")
+        if params.get("UserList") is not None:
+            self._UserList = []
+            for item in params.get("UserList"):
+                obj = UserGroupUserInfoVO()
+                obj._deserialize(item)
+                self._UserList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

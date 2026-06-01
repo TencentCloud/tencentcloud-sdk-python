@@ -554,6 +554,24 @@ class LighthouseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBlueprintsShareAcrossAccountInfos(
+            self,
+            request: models.DescribeBlueprintsShareAcrossAccountInfosRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBlueprintsShareAcrossAccountInfosResponse:
+        """
+        本接口（DescribeBlueprintsShareAcrossAccountInfos）用于查询一个或多个镜像的跨账号共享信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBlueprintsShareAcrossAccountInfos"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBlueprintsShareAcrossAccountInfosResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBundleDiscount(
             self,
             request: models.DescribeBundleDiscountRequest,

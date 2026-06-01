@@ -1039,26 +1039,29 @@ class CreateAgentAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _AuthType: 认证类型
+        :param _AuthType: <p>认证类型</p>
         :type AuthType: str
-        :param _OAuth2ResourceServerID: OAuth2资源服务器ID
+        :param _OAuth2ResourceServerID: <p>OAuth2资源服务器ID</p>
         :type OAuth2ResourceServerID: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
+        :param _ConnectorIDs: <p>API认证列表</p>
+        :type ConnectorIDs: list of str
         """
         self._InstanceID = None
         self._Name = None
         self._AuthType = None
         self._OAuth2ResourceServerID = None
         self._Description = None
+        self._ConnectorIDs = None
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -1069,7 +1072,7 @@ class CreateAgentAppRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -1080,7 +1083,7 @@ class CreateAgentAppRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""认证类型
+        r"""<p>认证类型</p>
         :rtype: str
         """
         return self._AuthType
@@ -1091,7 +1094,7 @@ class CreateAgentAppRequest(AbstractModel):
 
     @property
     def OAuth2ResourceServerID(self):
-        r"""OAuth2资源服务器ID
+        r"""<p>OAuth2资源服务器ID</p>
         :rtype: str
         """
         return self._OAuth2ResourceServerID
@@ -1102,7 +1105,7 @@ class CreateAgentAppRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -1111,6 +1114,17 @@ class CreateAgentAppRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ConnectorIDs(self):
+        r"""<p>API认证列表</p>
+        :rtype: list of str
+        """
+        return self._ConnectorIDs
+
+    @ConnectorIDs.setter
+    def ConnectorIDs(self, ConnectorIDs):
+        self._ConnectorIDs = ConnectorIDs
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -1118,6 +1132,7 @@ class CreateAgentAppRequest(AbstractModel):
         self._AuthType = params.get("AuthType")
         self._OAuth2ResourceServerID = params.get("OAuth2ResourceServerID")
         self._Description = params.get("Description")
+        self._ConnectorIDs = params.get("ConnectorIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1216,7 +1231,7 @@ class CreateAgentAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: app id
+        :param _Data: <p>app id</p>
         :type Data: :class:`tencentcloud.apis.v20240801.models.CreateAgentAppResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1226,7 +1241,7 @@ class CreateAgentAppResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""app id
+        r"""<p>app id</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.CreateAgentAppResp`
         """
         return self._Data
@@ -3416,38 +3431,42 @@ class DescribeAgentAppResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppID: 租户appID
+        :param _AppID: <p>租户appID</p>
         :type AppID: int
-        :param _Uin: 租户ID
+        :param _Uin: <p>租户ID</p>
         :type Uin: str
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _ID: 应用ID
+        :param _ID: <p>应用ID</p>
         :type ID: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 修改时间
+        :param _UpdateTime: <p>修改时间</p>
         :type UpdateTime: str
-        :param _AuthType: 认证类型
+        :param _AuthType: <p>认证类型</p>
         :type AuthType: str
-        :param _ApiKeys: apiKeys列表，脱敏
+        :param _ApiKeys: <p>apiKeys列表，脱敏</p>
         :type ApiKeys: list of str
-        :param _SecretKeys: secretKey列表，脱敏
+        :param _SecretKeys: <p>secretKey列表，脱敏</p>
         :type SecretKeys: list of AgentAppSecretKeyVO
-        :param _OAuth2ResourceServerID: OAuth2 Resource Server ID
+        :param _OAuth2ResourceServerID: <p>OAuth2 Resource Server ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OAuth2ResourceServerID: str
-        :param _McpServersNum: 绑定mcpServer数量
+        :param _McpServersNum: <p>绑定mcpServer数量</p>
         :type McpServersNum: int
-        :param _ModelServicesNum: 绑定的模型服务数量
+        :param _ModelServicesNum: <p>绑定的模型服务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelServicesNum: int
+        :param _ConnectorIDs: <p>API认证列表</p>
+        :type ConnectorIDs: list of str
+        :param _ServicesNum: <p>关联API数量</p>
+        :type ServicesNum: int
         """
         self._AppID = None
         self._Uin = None
@@ -3464,10 +3483,12 @@ class DescribeAgentAppResp(AbstractModel):
         self._OAuth2ResourceServerID = None
         self._McpServersNum = None
         self._ModelServicesNum = None
+        self._ConnectorIDs = None
+        self._ServicesNum = None
 
     @property
     def AppID(self):
-        r"""租户appID
+        r"""<p>租户appID</p>
         :rtype: int
         """
         return self._AppID
@@ -3478,7 +3499,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def Uin(self):
-        r"""租户ID
+        r"""<p>租户ID</p>
         :rtype: str
         """
         return self._Uin
@@ -3489,7 +3510,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -3500,7 +3521,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def ID(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._ID
@@ -3511,7 +3532,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -3522,7 +3543,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -3533,7 +3554,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -3544,7 +3565,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -3555,7 +3576,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -3566,7 +3587,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""认证类型
+        r"""<p>认证类型</p>
         :rtype: str
         """
         return self._AuthType
@@ -3577,7 +3598,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def ApiKeys(self):
-        r"""apiKeys列表，脱敏
+        r"""<p>apiKeys列表，脱敏</p>
         :rtype: list of str
         """
         return self._ApiKeys
@@ -3588,7 +3609,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def SecretKeys(self):
-        r"""secretKey列表，脱敏
+        r"""<p>secretKey列表，脱敏</p>
         :rtype: list of AgentAppSecretKeyVO
         """
         return self._SecretKeys
@@ -3599,7 +3620,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def OAuth2ResourceServerID(self):
-        r"""OAuth2 Resource Server ID
+        r"""<p>OAuth2 Resource Server ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3611,7 +3632,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def McpServersNum(self):
-        r"""绑定mcpServer数量
+        r"""<p>绑定mcpServer数量</p>
         :rtype: int
         """
         return self._McpServersNum
@@ -3622,7 +3643,7 @@ class DescribeAgentAppResp(AbstractModel):
 
     @property
     def ModelServicesNum(self):
-        r"""绑定的模型服务数量
+        r"""<p>绑定的模型服务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3631,6 +3652,28 @@ class DescribeAgentAppResp(AbstractModel):
     @ModelServicesNum.setter
     def ModelServicesNum(self, ModelServicesNum):
         self._ModelServicesNum = ModelServicesNum
+
+    @property
+    def ConnectorIDs(self):
+        r"""<p>API认证列表</p>
+        :rtype: list of str
+        """
+        return self._ConnectorIDs
+
+    @ConnectorIDs.setter
+    def ConnectorIDs(self, ConnectorIDs):
+        self._ConnectorIDs = ConnectorIDs
+
+    @property
+    def ServicesNum(self):
+        r"""<p>关联API数量</p>
+        :rtype: int
+        """
+        return self._ServicesNum
+
+    @ServicesNum.setter
+    def ServicesNum(self, ServicesNum):
+        self._ServicesNum = ServicesNum
 
 
     def _deserialize(self, params):
@@ -3654,6 +3697,8 @@ class DescribeAgentAppResp(AbstractModel):
         self._OAuth2ResourceServerID = params.get("OAuth2ResourceServerID")
         self._McpServersNum = params.get("McpServersNum")
         self._ModelServicesNum = params.get("ModelServicesNum")
+        self._ConnectorIDs = params.get("ConnectorIDs")
+        self._ServicesNum = params.get("ServicesNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4077,32 +4122,35 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppID: 租户应用ID
+        :param _AppID: <p>租户应用ID</p>
         :type AppID: int
-        :param _Uin: 租户ID
+        :param _Uin: <p>租户ID</p>
         :type Uin: str
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _ID: 凭据ID
+        :param _ID: <p>凭据ID</p>
         :type ID: str
-        :param _Name: 凭据名称
+        :param _Name: <p>凭据名称</p>
         :type Name: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _RelateAgentAppNum: 关联应用数
+        :param _RelateAgentAppNum: <p>关联应用数</p>
         :type RelateAgentAppNum: int
-        :param _RelateMcpServerNum: 关联mcp数
+        :param _RelateMcpServerNum: <p>关联mcp数</p>
         :type RelateMcpServerNum: int
-        :param _RelateModelNum: 关联模型数
+        :param _RelateModelNum: <p>关联模型数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelateModelNum: int
-        :param _Content: 凭据内容
+        :param _RelateServiceNum: <p>关联服务数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelateServiceNum: int
+        :param _Content: <p>凭据内容</p>
         :type Content: :class:`tencentcloud.apis.v20240801.models.AgentCredentialContentDTO`
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _LastUpdateTime: 修改时间
+        :param _LastUpdateTime: <p>修改时间</p>
         :type LastUpdateTime: str
-        :param _Type: 类型
+        :param _Type: <p>类型</p>
         :type Type: str
         """
         self._AppID = None
@@ -4114,6 +4162,7 @@ class DescribeAgentCredentialResp(AbstractModel):
         self._RelateAgentAppNum = None
         self._RelateMcpServerNum = None
         self._RelateModelNum = None
+        self._RelateServiceNum = None
         self._Content = None
         self._CreateTime = None
         self._LastUpdateTime = None
@@ -4121,7 +4170,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def AppID(self):
-        r"""租户应用ID
+        r"""<p>租户应用ID</p>
         :rtype: int
         """
         return self._AppID
@@ -4132,7 +4181,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def Uin(self):
-        r"""租户ID
+        r"""<p>租户ID</p>
         :rtype: str
         """
         return self._Uin
@@ -4143,7 +4192,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -4154,7 +4203,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def ID(self):
-        r"""凭据ID
+        r"""<p>凭据ID</p>
         :rtype: str
         """
         return self._ID
@@ -4165,7 +4214,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def Name(self):
-        r"""凭据名称
+        r"""<p>凭据名称</p>
         :rtype: str
         """
         return self._Name
@@ -4176,7 +4225,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -4187,18 +4236,22 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def RelateAgentAppNum(self):
-        r"""关联应用数
+        warnings.warn("parameter `RelateAgentAppNum` is deprecated", DeprecationWarning) 
+
+        r"""<p>关联应用数</p>
         :rtype: int
         """
         return self._RelateAgentAppNum
 
     @RelateAgentAppNum.setter
     def RelateAgentAppNum(self, RelateAgentAppNum):
+        warnings.warn("parameter `RelateAgentAppNum` is deprecated", DeprecationWarning) 
+
         self._RelateAgentAppNum = RelateAgentAppNum
 
     @property
     def RelateMcpServerNum(self):
-        r"""关联mcp数
+        r"""<p>关联mcp数</p>
         :rtype: int
         """
         return self._RelateMcpServerNum
@@ -4209,7 +4262,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def RelateModelNum(self):
-        r"""关联模型数
+        r"""<p>关联模型数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4220,8 +4273,20 @@ class DescribeAgentCredentialResp(AbstractModel):
         self._RelateModelNum = RelateModelNum
 
     @property
+    def RelateServiceNum(self):
+        r"""<p>关联服务数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RelateServiceNum
+
+    @RelateServiceNum.setter
+    def RelateServiceNum(self, RelateServiceNum):
+        self._RelateServiceNum = RelateServiceNum
+
+    @property
     def Content(self):
-        r"""凭据内容
+        r"""<p>凭据内容</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.AgentCredentialContentDTO`
         """
         return self._Content
@@ -4232,7 +4297,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -4243,7 +4308,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._LastUpdateTime
@@ -4254,7 +4319,7 @@ class DescribeAgentCredentialResp(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""<p>类型</p>
         :rtype: str
         """
         return self._Type
@@ -4274,6 +4339,7 @@ class DescribeAgentCredentialResp(AbstractModel):
         self._RelateAgentAppNum = params.get("RelateAgentAppNum")
         self._RelateMcpServerNum = params.get("RelateMcpServerNum")
         self._RelateModelNum = params.get("RelateModelNum")
+        self._RelateServiceNum = params.get("RelateServiceNum")
         if params.get("Content") is not None:
             self._Content = AgentCredentialContentDTO()
             self._Content._deserialize(params.get("Content"))
@@ -8368,26 +8434,29 @@ class ModifyAgentAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _ID: 应用ID
+        :param _ID: <p>应用ID</p>
         :type ID: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _OAuth2ResourceServerID: OAuth2资源服务器ID
+        :param _OAuth2ResourceServerID: <p>OAuth2资源服务器ID</p>
         :type OAuth2ResourceServerID: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
+        :param _ConnectorIDs: <p>凭据ID</p>
+        :type ConnectorIDs: list of str
         """
         self._InstanceID = None
         self._ID = None
         self._Name = None
         self._OAuth2ResourceServerID = None
         self._Description = None
+        self._ConnectorIDs = None
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -8398,7 +8467,7 @@ class ModifyAgentAppRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._ID
@@ -8409,7 +8478,7 @@ class ModifyAgentAppRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -8420,7 +8489,7 @@ class ModifyAgentAppRequest(AbstractModel):
 
     @property
     def OAuth2ResourceServerID(self):
-        r"""OAuth2资源服务器ID
+        r"""<p>OAuth2资源服务器ID</p>
         :rtype: str
         """
         return self._OAuth2ResourceServerID
@@ -8431,7 +8500,7 @@ class ModifyAgentAppRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -8440,6 +8509,17 @@ class ModifyAgentAppRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ConnectorIDs(self):
+        r"""<p>凭据ID</p>
+        :rtype: list of str
+        """
+        return self._ConnectorIDs
+
+    @ConnectorIDs.setter
+    def ConnectorIDs(self, ConnectorIDs):
+        self._ConnectorIDs = ConnectorIDs
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -8447,6 +8527,7 @@ class ModifyAgentAppRequest(AbstractModel):
         self._Name = params.get("Name")
         self._OAuth2ResourceServerID = params.get("OAuth2ResourceServerID")
         self._Description = params.get("Description")
+        self._ConnectorIDs = params.get("ConnectorIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8464,7 +8545,7 @@ class ModifyAgentAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: app id
+        :param _Data: <p>app id</p>
         :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8474,7 +8555,7 @@ class ModifyAgentAppResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""app id
+        r"""<p>app id</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         """
         return self._Data

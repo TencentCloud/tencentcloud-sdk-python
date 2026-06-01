@@ -383,6 +383,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateFunctionReplica(
+            self,
+            request: models.CreateFunctionReplicaRequest,
+            opts: Dict = None,
+    ) -> models.CreateFunctionReplicaResponse:
+        """
+        本接口用于创建指定边缘函数的副本。创建副本后，当客户端请求匹配已配置的触发规则或默认域名时，您可以通过在请求头中添加 EO-Function-Replica-Name:[副本名称] 来访问特定的函数副本。每个函数默认支持创建两个副本。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateFunctionReplica"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateFunctionReplicaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateFunctionRule(
             self,
             request: models.CreateFunctionRuleRequest,
@@ -989,6 +1007,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DeleteFunction"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteFunctionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteFunctionReplica(
+            self,
+            request: models.DeleteFunctionReplicaRequest,
+            opts: Dict = None,
+    ) -> models.DeleteFunctionReplicaResponse:
+        """
+        本接口用于删除指定的边缘函数副本。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteFunctionReplica"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteFunctionReplicaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1711,6 +1747,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeFunctionComponentBindings"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeFunctionComponentBindingsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFunctionReplicas(
+            self,
+            request: models.DescribeFunctionReplicasRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFunctionReplicasResponse:
+        """
+        本接口用于查询边缘函数的副本列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFunctionReplicas"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFunctionReplicasResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3200,6 +3254,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyFunctionComponentBindings"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyFunctionComponentBindingsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyFunctionReplica(
+            self,
+            request: models.ModifyFunctionReplicaRequest,
+            opts: Dict = None,
+    ) -> models.ModifyFunctionReplicaResponse:
+        """
+        本接口用于修改指定边缘函数副本的内容和描述。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyFunctionReplica"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyFunctionReplicaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

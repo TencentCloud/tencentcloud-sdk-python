@@ -690,6 +690,29 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBlueprintsShareAcrossAccountInfos(self, request):
+        r"""本接口（DescribeBlueprintsShareAcrossAccountInfos）用于查询一个或多个镜像的跨账号共享信息。
+
+        :param request: Request instance for DescribeBlueprintsShareAcrossAccountInfos.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBlueprintsShareAcrossAccountInfosRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBlueprintsShareAcrossAccountInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBlueprintsShareAcrossAccountInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBlueprintsShareAcrossAccountInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBundleDiscount(self, request):
         r"""本接口（DescribeBundleDiscount）用于查询套餐折扣信息。
 
