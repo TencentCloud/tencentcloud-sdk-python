@@ -5707,23 +5707,24 @@ class GroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 人员库名称
+        :param _GroupName: <p>人员库名称</p>
         :type GroupName: str
-        :param _GroupId: 人员库ID
+        :param _GroupId: <p>人员库ID</p>
         :type GroupId: str
-        :param _GroupExDescriptions: 人员库自定义描述字段
+        :param _GroupExDescriptions: <p>人员库自定义描述字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupExDescriptions: list of str
-        :param _Tag: 人员库信息备注
+        :param _Tag: <p>人员库信息备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: str
-        :param _FaceModelVersion: 人脸识别所用的算法模型版本。
+        :param _FaceModelVersion: <p>人脸识别所用的算法模型版本。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceModelVersion: str
-        :param _CreationTimestamp: Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
-Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
+        :param _CreationTimestamp: <p>Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。<br>Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreationTimestamp: int
+        :param _UpdateTimestamp: <p>Group的更新时间和日期 UpdateTimestamp。</p><ul><li>UpdateTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 </li><li>Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。</li><li>有关更多信息，请参阅 Unix 时间。</li></ul>
+        :type UpdateTimestamp: int
         """
         self._GroupName = None
         self._GroupId = None
@@ -5731,10 +5732,11 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
         self._Tag = None
         self._FaceModelVersion = None
         self._CreationTimestamp = None
+        self._UpdateTimestamp = None
 
     @property
     def GroupName(self):
-        r"""人员库名称
+        r"""<p>人员库名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -5745,7 +5747,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def GroupId(self):
-        r"""人员库ID
+        r"""<p>人员库ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -5756,7 +5758,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def GroupExDescriptions(self):
-        r"""人员库自定义描述字段
+        r"""<p>人员库自定义描述字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5768,7 +5770,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def Tag(self):
-        r"""人员库信息备注
+        r"""<p>人员库信息备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5780,7 +5782,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def FaceModelVersion(self):
-        r"""人脸识别所用的算法模型版本。
+        r"""<p>人脸识别所用的算法模型版本。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5792,8 +5794,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
 
     @property
     def CreationTimestamp(self):
-        r"""Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
-Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
+        r"""<p>Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。<br>Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5803,6 +5804,17 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
     def CreationTimestamp(self, CreationTimestamp):
         self._CreationTimestamp = CreationTimestamp
 
+    @property
+    def UpdateTimestamp(self):
+        r"""<p>Group的更新时间和日期 UpdateTimestamp。</p><ul><li>UpdateTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 </li><li>Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。</li><li>有关更多信息，请参阅 Unix 时间。</li></ul>
+        :rtype: int
+        """
+        return self._UpdateTimestamp
+
+    @UpdateTimestamp.setter
+    def UpdateTimestamp(self, UpdateTimestamp):
+        self._UpdateTimestamp = UpdateTimestamp
+
 
     def _deserialize(self, params):
         self._GroupName = params.get("GroupName")
@@ -5811,6 +5823,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
         self._Tag = params.get("Tag")
         self._FaceModelVersion = params.get("FaceModelVersion")
         self._CreationTimestamp = params.get("CreationTimestamp")
+        self._UpdateTimestamp = params.get("UpdateTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

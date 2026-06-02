@@ -1626,26 +1626,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def RecognizeOnlineTaxiItineraryOCR(
-            self,
-            request: models.RecognizeOnlineTaxiItineraryOCRRequest,
-            opts: Dict = None,
-    ) -> models.RecognizeOnlineTaxiItineraryOCRResponse:
-        """
-        本接口支持网约车行程单关键字段的识别，包括行程起止日期、上车时间、起点、终点、里程、金额等字段。
-
-        默认接口请求频率限制：20次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RecognizeOnlineTaxiItineraryOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RecognizeOnlineTaxiItineraryOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def RecognizeStoreName(
             self,
             request: models.RecognizeStoreNameRequest,
@@ -1945,26 +1925,6 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "TableOCR"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TableOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def TaxiInvoiceOCR(
-            self,
-            request: models.TaxiInvoiceOCRRequest,
-            opts: Dict = None,
-    ) -> models.TaxiInvoiceOCRResponse:
-        """
-        本接口支持出租车发票关键字段的识别，包括发票号码、发票代码、金额、日期、上下车时间、里程、车牌号、发票类型及所属地区等字段。
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "TaxiInvoiceOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.TaxiInvoiceOCRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

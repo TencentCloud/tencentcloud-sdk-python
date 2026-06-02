@@ -30343,9 +30343,9 @@ class KVPair(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 配置的key值
+        :param _Key: <p>配置的key值</p>
         :type Key: str
-        :param _Value: 配置的value值
+        :param _Value: <p>配置的value值</p>
         :type Value: str
         """
         self._Key = None
@@ -30353,7 +30353,7 @@ class KVPair(AbstractModel):
 
     @property
     def Key(self):
-        r"""配置的key值
+        r"""<p>配置的key值</p>
         :rtype: str
         """
         return self._Key
@@ -30364,7 +30364,7 @@ class KVPair(AbstractModel):
 
     @property
     def Value(self):
-        r"""配置的value值
+        r"""<p>配置的value值</p>
         :rtype: str
         """
         return self._Value

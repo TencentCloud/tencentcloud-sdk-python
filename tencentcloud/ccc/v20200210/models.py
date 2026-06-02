@@ -11126,9 +11126,9 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _CampaignId: 任务 ID
+        :param _CampaignId: <p>任务 ID</p>
         :type CampaignId: int
         """
         self._SdkAppId = None
@@ -11136,7 +11136,7 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -11147,7 +11147,7 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        r"""任务 ID
+        r"""<p>任务 ID</p>
         :rtype: int
         """
         return self._CampaignId
@@ -11177,28 +11177,36 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CampaignId: 任务 ID
+        :param _CampaignId: <p>任务 ID</p>
         :type CampaignId: int
-        :param _Name: 任务名称
+        :param _Name: <p>任务名称</p>
         :type Name: str
-        :param _CallOrder: 被叫呼叫顺序 0 随机 1 顺序
+        :param _CallOrder: <p>被叫呼叫顺序 0 随机 1 顺序</p>
         :type CallOrder: int
-        :param _SkillGroupId: 使用的座席技能组 ID
+        :param _SkillGroupId: <p>使用的座席技能组 ID</p>
         :type SkillGroupId: int
-        :param _IVRId: 指定的 IVR ID
+        :param _IVRId: <p>指定的 IVR ID</p>
         :type IVRId: int
-        :param _Priority: 相同应用内多个任务运行优先级，从高到底 1 - 5
+        :param _Priority: <p>相同应用内多个任务运行优先级，从高到底 1 - 5</p>
         :type Priority: int
-        :param _ExpectedAbandonRate: 预期呼损率，百分比，5 - 50
+        :param _ExpectedAbandonRate: <p>预期呼损率，百分比，5 - 50</p>
         :type ExpectedAbandonRate: int
-        :param _RetryTimes: 呼叫重试次数，0 - 2
+        :param _RetryTimes: <p>呼叫重试次数，0 - 2</p>
         :type RetryTimes: int
-        :param _RetryInterval: 呼叫重试间隔时间，单位秒，60 - 86400
+        :param _RetryInterval: <p>呼叫重试间隔时间，单位秒，60 - 86400</p>
         :type RetryInterval: int
-        :param _StartTime: 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :param _StartTime: <p>任务启动时间，Unix 时间戳，到此时间后会自动启动任务</p>
         :type StartTime: int
-        :param _EndTime: 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :param _EndTime: <p>任务结束时间，Unix 时间戳，到此时间后会自动终止任务</p>
         :type EndTime: int
+        :param _Variables: <p>自定义变量</p>
+        :type Variables: list of Variable
+        :param _UUI: <p>UUI</p>
+        :type UUI: str
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>0： 待开始 </li><li>1： 进行中</li><li>2： 已暂停</li><li>3： 已终止</li><li>4： 已完成</li></ul>
+        :type Status: int
+        :param _StatusReason: <p>任务状态原因 0 正常 1 手动结束 2 超时结束</p>
+        :type StatusReason: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11213,11 +11221,15 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
         self._RetryInterval = None
         self._StartTime = None
         self._EndTime = None
+        self._Variables = None
+        self._UUI = None
+        self._Status = None
+        self._StatusReason = None
         self._RequestId = None
 
     @property
     def CampaignId(self):
-        r"""任务 ID
+        r"""<p>任务 ID</p>
         :rtype: int
         """
         return self._CampaignId
@@ -11228,7 +11240,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._Name
@@ -11239,7 +11251,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def CallOrder(self):
-        r"""被叫呼叫顺序 0 随机 1 顺序
+        r"""<p>被叫呼叫顺序 0 随机 1 顺序</p>
         :rtype: int
         """
         return self._CallOrder
@@ -11250,7 +11262,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        r"""使用的座席技能组 ID
+        r"""<p>使用的座席技能组 ID</p>
         :rtype: int
         """
         return self._SkillGroupId
@@ -11261,7 +11273,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def IVRId(self):
-        r"""指定的 IVR ID
+        r"""<p>指定的 IVR ID</p>
         :rtype: int
         """
         return self._IVRId
@@ -11272,7 +11284,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def Priority(self):
-        r"""相同应用内多个任务运行优先级，从高到底 1 - 5
+        r"""<p>相同应用内多个任务运行优先级，从高到底 1 - 5</p>
         :rtype: int
         """
         return self._Priority
@@ -11283,7 +11295,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def ExpectedAbandonRate(self):
-        r"""预期呼损率，百分比，5 - 50
+        r"""<p>预期呼损率，百分比，5 - 50</p>
         :rtype: int
         """
         return self._ExpectedAbandonRate
@@ -11294,7 +11306,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RetryTimes(self):
-        r"""呼叫重试次数，0 - 2
+        r"""<p>呼叫重试次数，0 - 2</p>
         :rtype: int
         """
         return self._RetryTimes
@@ -11305,7 +11317,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def RetryInterval(self):
-        r"""呼叫重试间隔时间，单位秒，60 - 86400
+        r"""<p>呼叫重试间隔时间，单位秒，60 - 86400</p>
         :rtype: int
         """
         return self._RetryInterval
@@ -11316,7 +11328,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        r"""<p>任务启动时间，Unix 时间戳，到此时间后会自动启动任务</p>
         :rtype: int
         """
         return self._StartTime
@@ -11327,7 +11339,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        r"""<p>任务结束时间，Unix 时间戳，到此时间后会自动终止任务</p>
         :rtype: int
         """
         return self._EndTime
@@ -11335,6 +11347,50 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
     @EndTime.setter
     def EndTime(self, EndTime):
         self._EndTime = EndTime
+
+    @property
+    def Variables(self):
+        r"""<p>自定义变量</p>
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+    @property
+    def UUI(self):
+        r"""<p>UUI</p>
+        :rtype: str
+        """
+        return self._UUI
+
+    @UUI.setter
+    def UUI(self, UUI):
+        self._UUI = UUI
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>0： 待开始 </li><li>1： 进行中</li><li>2： 已暂停</li><li>3： 已终止</li><li>4： 已完成</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusReason(self):
+        r"""<p>任务状态原因 0 正常 1 手动结束 2 超时结束</p>
+        :rtype: int
+        """
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
 
     @property
     def RequestId(self):
@@ -11360,6 +11416,15 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
         self._RetryInterval = params.get("RetryInterval")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
+        self._UUI = params.get("UUI")
+        self._Status = params.get("Status")
+        self._StatusReason = params.get("StatusReason")
         self._RequestId = params.get("RequestId")
 
 
@@ -11511,26 +11576,29 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _PageSize: 分页尺寸，最大为 100
+        :param _PageSize: <p>分页尺寸，最大为 100</p>
         :type PageSize: int
-        :param _PageNumber: 分页页码，从 0 开始
+        :param _PageNumber: <p>分页页码，从 0 开始</p>
         :type PageNumber: int
-        :param _Name: 查询任务列表名称关键字
+        :param _Name: <p>查询任务列表名称关键字</p>
         :type Name: str
-        :param _SkillGroupId: 查询任务列表技能组 ID
+        :param _SkillGroupId: <p>查询任务列表技能组 ID</p>
         :type SkillGroupId: int
+        :param _CampaignId: <p>任务 ID</p>
+        :type CampaignId: int
         """
         self._SdkAppId = None
         self._PageSize = None
         self._PageNumber = None
         self._Name = None
         self._SkillGroupId = None
+        self._CampaignId = None
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -11541,7 +11609,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页尺寸，最大为 100
+        r"""<p>分页尺寸，最大为 100</p>
         :rtype: int
         """
         return self._PageSize
@@ -11552,7 +11620,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""分页页码，从 0 开始
+        r"""<p>分页页码，从 0 开始</p>
         :rtype: int
         """
         return self._PageNumber
@@ -11563,7 +11631,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""查询任务列表名称关键字
+        r"""<p>查询任务列表名称关键字</p>
         :rtype: str
         """
         return self._Name
@@ -11574,7 +11642,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        r"""查询任务列表技能组 ID
+        r"""<p>查询任务列表技能组 ID</p>
         :rtype: int
         """
         return self._SkillGroupId
@@ -11583,6 +11651,17 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
     def SkillGroupId(self, SkillGroupId):
         self._SkillGroupId = SkillGroupId
 
+    @property
+    def CampaignId(self):
+        r"""<p>任务 ID</p>
+        :rtype: int
+        """
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -11590,6 +11669,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
         self._PageNumber = params.get("PageNumber")
         self._Name = params.get("Name")
         self._SkillGroupId = params.get("SkillGroupId")
+        self._CampaignId = params.get("CampaignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11607,9 +11687,9 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 数据总量
+        :param _TotalCount: <p>数据总量</p>
         :type TotalCount: int
-        :param _CampaignList: 数据
+        :param _CampaignList: <p>数据</p>
         :type CampaignList: list of DescribePredictiveDialingCampaignsElement
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11620,7 +11700,7 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""数据总量
+        r"""<p>数据总量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -11631,7 +11711,7 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
 
     @property
     def CampaignList(self):
-        r"""数据
+        r"""<p>数据</p>
         :rtype: list of DescribePredictiveDialingCampaignsElement
         """
         return self._CampaignList

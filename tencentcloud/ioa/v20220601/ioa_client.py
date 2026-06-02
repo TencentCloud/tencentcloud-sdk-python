@@ -602,7 +602,7 @@ class IoaClient(AbstractClient):
 
 
     def DescribeDirectAccountGroupResources(self, request):
-        r"""列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+        r"""列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeDirectAccountGroupResources
 
         :param request: Request instance for DescribeDirectAccountGroupResources.
         :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDirectAccountGroupResourcesRequest`

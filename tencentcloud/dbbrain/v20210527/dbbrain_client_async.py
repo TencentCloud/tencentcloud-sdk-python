@@ -709,6 +709,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDatabaseAutonomyStatus(
+            self,
+            request: models.DescribeDatabaseAutonomyStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDatabaseAutonomyStatusResponse:
+        """
+        查询数据库自治功能的开关状态。当前支持 MongoDB 的索引推荐（AutoIndexAdvice）功能状态查询。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDatabaseAutonomyStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDatabaseAutonomyStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDiagDBInstances(
             self,
             request: models.DescribeDiagDBInstancesRequest,
@@ -1532,6 +1550,24 @@ class DbbrainClient(AbstractClient):
         kwargs["action"] = "UpdateAgentSwitch"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateAgentSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateDatabaseAutonomyStatus(
+            self,
+            request: models.UpdateDatabaseAutonomyStatusRequest,
+            opts: Dict = None,
+    ) -> models.UpdateDatabaseAutonomyStatusResponse:
+        """
+        设置数据库自治功能的开关状态。当前支持 MongoDB 的索引推荐（AutoIndexAdvice）功能的开启或关闭。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateDatabaseAutonomyStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateDatabaseAutonomyStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

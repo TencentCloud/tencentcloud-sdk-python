@@ -84,6 +84,42 @@ class AIOptimizerStatus(AbstractModel):
         
 
 
+class AIOptimizerTaskData(AbstractModel):
+    r"""AI 优化器任务数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateID: <p>模板ID</p>
+        :type TemplateID: str
+        """
+        self._TemplateID = None
+
+    @property
+    def TemplateID(self):
+        r"""<p>模板ID</p>
+        :rtype: str
+        """
+        return self._TemplateID
+
+    @TemplateID.setter
+    def TemplateID(self, TemplateID):
+        self._TemplateID = TemplateID
+
+
+    def _deserialize(self, params):
+        self._TemplateID = params.get("TemplateID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Ability(AbstractModel):
     r"""集群支持的功能
 
@@ -4634,91 +4670,92 @@ class BizTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 任务id
+        :param _ID: <p>任务id</p>
         :type ID: int
-        :param _AppId: 用户appid
+        :param _AppId: <p>用户appid</p>
         :type AppId: int
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _CreateTime: 任务创建时间
+        :param _CreateTime: <p>任务创建时间</p>
         :type CreateTime: str
-        :param _DelayTime: 延迟执行时间
+        :param _DelayTime: <p>延迟执行时间</p>
         :type DelayTime: str
-        :param _ErrMsg: 任务失败信息
+        :param _ErrMsg: <p>任务失败信息</p>
         :type ErrMsg: str
-        :param _FlowId: 异步任务流id
+        :param _FlowId: <p>异步任务流id</p>
         :type FlowId: int
-        :param _Input: 任务输入信息
+        :param _Input: <p>任务输入信息</p>
         :type Input: str
-        :param _InstanceGrpId: 实例组id
+        :param _InstanceGrpId: <p>实例组id</p>
         :type InstanceGrpId: str
-        :param _InstanceGroupId: 实例组id
+        :param _InstanceGroupId: <p>实例组id</p>
         :type InstanceGroupId: str
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _ObjectId: 任务操作对象id
+        :param _ObjectId: <p>任务操作对象id</p>
         :type ObjectId: str
-        :param _ObjectType: 任务操作对象类型
+        :param _ObjectType: <p>任务操作对象类型</p>
         :type ObjectType: str
-        :param _Operator: 操作者uin
+        :param _Operator: <p>操作者uin</p>
         :type Operator: str
-        :param _Output: 任务输出信息
+        :param _Output: <p>任务输出信息</p>
         :type Output: str
-        :param _Status: 任务状态
+        :param _Status: <p>任务状态</p>
         :type Status: str
-        :param _TaskType: 任务类型
+        :param _TaskType: <p>任务类型</p>
         :type TaskType: str
-        :param _TriggerTaskId: 触发本任务的父任务ID
+        :param _TriggerTaskId: <p>触发本任务的父任务ID</p>
         :type TriggerTaskId: int
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _StartTime: 任务开始时间
+        :param _StartTime: <p>任务开始时间</p>
         :type StartTime: str
-        :param _EndTime: 任务结束时间
+        :param _EndTime: <p>任务结束时间</p>
         :type EndTime: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _Process: 任务进度
+        :param _Process: <p>任务进度</p>
         :type Process: int
-        :param _ModifyParamsData: 修改参数任务信息
+        :param _ModifyParamsData: <p>修改参数任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyParamsData: list of ModifyParamsData
-        :param _CreateClustersData: 创建集群任务信息
+        :param _CreateClustersData: <p>创建集群任务信息</p>
         :type CreateClustersData: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersData`
-        :param _RollbackData: 集群回档任务信息
+        :param _RollbackData: <p>集群回档任务信息</p>
         :type RollbackData: :class:`tencentcloud.cynosdb.v20190107.models.RollbackData`
-        :param _ModifyInstanceData: 实例变配任务信息
+        :param _ModifyInstanceData: <p>实例变配任务信息</p>
         :type ModifyInstanceData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceData`
-        :param _ManualBackupData: 手动备份任务信息
+        :param _ManualBackupData: <p>手动备份任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManualBackupData: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
-        :param _ModifyDbVersionData: 修改内核版本任务信息
+        :param _ModifyDbVersionData: <p>修改内核版本任务信息</p>
         :type ModifyDbVersionData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDbVersionData`
-        :param _ClusterSlaveData: 集群可用区信息
+        :param _ClusterSlaveData: <p>集群可用区信息</p>
         :type ClusterSlaveData: :class:`tencentcloud.cynosdb.v20190107.models.ClusterSlaveData`
-        :param _SwitchClusterLogBin: 转换集群日志
+        :param _SwitchClusterLogBin: <p>转换集群日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchClusterLogBin: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterLogBin`
-        :param _ModifyInstanceParamsData: 修改实例参数数据
+        :param _ModifyInstanceParamsData: <p>修改实例参数数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyInstanceParamsData: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
-        :param _TaskMaintainInfo: 维护时间
+        :param _TaskMaintainInfo: <p>维护时间</p>
         :type TaskMaintainInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
-        :param _InstanceCLSDeliveryInfos: 实例日志投递信息
-
+        :param _InstanceCLSDeliveryInfos: <p>实例日志投递信息</p>
         :type InstanceCLSDeliveryInfos: list of InstanceCLSDeliveryInfo
-        :param _TaskProgressInfo: 任务进度信息
+        :param _TaskProgressInfo: <p>任务进度信息</p>
         :type TaskProgressInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
-        :param _GdnTaskInfo: 全球数据库网络任务
+        :param _GdnTaskInfo: <p>全球数据库网络任务</p>
         :type GdnTaskInfo: :class:`tencentcloud.cynosdb.v20190107.models.GdnTaskInfo`
-        :param _VaultId: 保险箱id
+        :param _VaultId: <p>保险箱id</p>
         :type VaultId: str
-        :param _VaultName: 保险箱名称
+        :param _VaultName: <p>保险箱名称</p>
         :type VaultName: str
+        :param _AIOptimizerTaskData: <p>AI优化器任务信息</p>
+        :type AIOptimizerTaskData: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerTaskData`
         """
         self._ID = None
         self._AppId = None
@@ -4760,10 +4797,11 @@ class BizTaskInfo(AbstractModel):
         self._GdnTaskInfo = None
         self._VaultId = None
         self._VaultName = None
+        self._AIOptimizerTaskData = None
 
     @property
     def ID(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: int
         """
         return self._ID
@@ -4774,7 +4812,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户appid
+        r"""<p>用户appid</p>
         :rtype: int
         """
         return self._AppId
@@ -4785,7 +4823,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -4796,7 +4834,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -4807,7 +4845,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""任务创建时间
+        r"""<p>任务创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -4818,7 +4856,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""延迟执行时间
+        r"""<p>延迟执行时间</p>
         :rtype: str
         """
         return self._DelayTime
@@ -4829,7 +4867,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ErrMsg(self):
-        r"""任务失败信息
+        r"""<p>任务失败信息</p>
         :rtype: str
         """
         return self._ErrMsg
@@ -4840,7 +4878,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""异步任务流id
+        r"""<p>异步任务流id</p>
         :rtype: int
         """
         return self._FlowId
@@ -4851,7 +4889,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Input(self):
-        r"""任务输入信息
+        r"""<p>任务输入信息</p>
         :rtype: str
         """
         return self._Input
@@ -4864,7 +4902,7 @@ class BizTaskInfo(AbstractModel):
     def InstanceGrpId(self):
         warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
 
-        r"""实例组id
+        r"""<p>实例组id</p>
         :rtype: str
         """
         return self._InstanceGrpId
@@ -4877,7 +4915,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        r"""实例组id
+        r"""<p>实例组id</p>
         :rtype: str
         """
         return self._InstanceGroupId
@@ -4888,7 +4926,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4899,7 +4937,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ObjectId(self):
-        r"""任务操作对象id
+        r"""<p>任务操作对象id</p>
         :rtype: str
         """
         return self._ObjectId
@@ -4910,7 +4948,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ObjectType(self):
-        r"""任务操作对象类型
+        r"""<p>任务操作对象类型</p>
         :rtype: str
         """
         return self._ObjectType
@@ -4921,7 +4959,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作者uin
+        r"""<p>操作者uin</p>
         :rtype: str
         """
         return self._Operator
@@ -4932,7 +4970,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Output(self):
-        r"""任务输出信息
+        r"""<p>任务输出信息</p>
         :rtype: str
         """
         return self._Output
@@ -4943,7 +4981,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态
+        r"""<p>任务状态</p>
         :rtype: str
         """
         return self._Status
@@ -4954,7 +4992,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
         :rtype: str
         """
         return self._TaskType
@@ -4965,7 +5003,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TriggerTaskId(self):
-        r"""触发本任务的父任务ID
+        r"""<p>触发本任务的父任务ID</p>
         :rtype: int
         """
         return self._TriggerTaskId
@@ -4976,7 +5014,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -4987,7 +5025,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""任务开始时间
+        r"""<p>任务开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -4998,7 +5036,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""任务结束时间
+        r"""<p>任务结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -5009,7 +5047,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -5020,7 +5058,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -5031,7 +5069,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def Process(self):
-        r"""任务进度
+        r"""<p>任务进度</p>
         :rtype: int
         """
         return self._Process
@@ -5044,7 +5082,7 @@ class BizTaskInfo(AbstractModel):
     def ModifyParamsData(self):
         warnings.warn("parameter `ModifyParamsData` is deprecated", DeprecationWarning) 
 
-        r"""修改参数任务信息
+        r"""<p>修改参数任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ModifyParamsData
         """
@@ -5058,7 +5096,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def CreateClustersData(self):
-        r"""创建集群任务信息
+        r"""<p>创建集群任务信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersData`
         """
         return self._CreateClustersData
@@ -5069,7 +5107,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def RollbackData(self):
-        r"""集群回档任务信息
+        r"""<p>集群回档任务信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackData`
         """
         return self._RollbackData
@@ -5080,7 +5118,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ModifyInstanceData(self):
-        r"""实例变配任务信息
+        r"""<p>实例变配任务信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceData`
         """
         return self._ModifyInstanceData
@@ -5091,7 +5129,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ManualBackupData(self):
-        r"""手动备份任务信息
+        r"""<p>手动备份任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
         """
@@ -5103,7 +5141,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ModifyDbVersionData(self):
-        r"""修改内核版本任务信息
+        r"""<p>修改内核版本任务信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDbVersionData`
         """
         return self._ModifyDbVersionData
@@ -5114,7 +5152,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ClusterSlaveData(self):
-        r"""集群可用区信息
+        r"""<p>集群可用区信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ClusterSlaveData`
         """
         return self._ClusterSlaveData
@@ -5125,7 +5163,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def SwitchClusterLogBin(self):
-        r"""转换集群日志
+        r"""<p>转换集群日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterLogBin`
         """
@@ -5137,7 +5175,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def ModifyInstanceParamsData(self):
-        r"""修改实例参数数据
+        r"""<p>修改实例参数数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
         """
@@ -5149,7 +5187,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TaskMaintainInfo(self):
-        r"""维护时间
+        r"""<p>维护时间</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
         """
         return self._TaskMaintainInfo
@@ -5160,8 +5198,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def InstanceCLSDeliveryInfos(self):
-        r"""实例日志投递信息
-
+        r"""<p>实例日志投递信息</p>
         :rtype: list of InstanceCLSDeliveryInfo
         """
         return self._InstanceCLSDeliveryInfos
@@ -5172,7 +5209,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def TaskProgressInfo(self):
-        r"""任务进度信息
+        r"""<p>任务进度信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
         """
         return self._TaskProgressInfo
@@ -5183,7 +5220,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def GdnTaskInfo(self):
-        r"""全球数据库网络任务
+        r"""<p>全球数据库网络任务</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.GdnTaskInfo`
         """
         return self._GdnTaskInfo
@@ -5194,7 +5231,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def VaultId(self):
-        r"""保险箱id
+        r"""<p>保险箱id</p>
         :rtype: str
         """
         return self._VaultId
@@ -5205,7 +5242,7 @@ class BizTaskInfo(AbstractModel):
 
     @property
     def VaultName(self):
-        r"""保险箱名称
+        r"""<p>保险箱名称</p>
         :rtype: str
         """
         return self._VaultName
@@ -5213,6 +5250,17 @@ class BizTaskInfo(AbstractModel):
     @VaultName.setter
     def VaultName(self, VaultName):
         self._VaultName = VaultName
+
+    @property
+    def AIOptimizerTaskData(self):
+        r"""<p>AI优化器任务信息</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerTaskData`
+        """
+        return self._AIOptimizerTaskData
+
+    @AIOptimizerTaskData.setter
+    def AIOptimizerTaskData(self, AIOptimizerTaskData):
+        self._AIOptimizerTaskData = AIOptimizerTaskData
 
 
     def _deserialize(self, params):
@@ -5288,6 +5336,9 @@ class BizTaskInfo(AbstractModel):
             self._GdnTaskInfo._deserialize(params.get("GdnTaskInfo"))
         self._VaultId = params.get("VaultId")
         self._VaultName = params.get("VaultName")
+        if params.get("AIOptimizerTaskData") is not None:
+            self._AIOptimizerTaskData = AIOptimizerTaskData()
+            self._AIOptimizerTaskData._deserialize(params.get("AIOptimizerTaskData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

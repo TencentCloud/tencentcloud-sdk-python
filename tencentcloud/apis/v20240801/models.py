@@ -456,6 +456,281 @@ class AgentAppSecretKeyVO(AbstractModel):
         
 
 
+class AgentAppServiceDTO(AbstractModel):
+    r"""Agent应用关联的服务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>ID</p>
+        :type ID: str
+        :param _InvokeLimitConfigStatus: <p>是否限流</p>
+        :type InvokeLimitConfigStatus: bool
+        :param _InvokeLimitConfig: <p>限流配置</p>
+        :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
+        :param _NeedAuth: <p>是否要认证</p>
+        :type NeedAuth: bool
+        :param _AgentCredentialID: <p>凭据ID</p>
+        :type AgentCredentialID: str
+        """
+        self._ID = None
+        self._InvokeLimitConfigStatus = None
+        self._InvokeLimitConfig = None
+        self._NeedAuth = None
+        self._AgentCredentialID = None
+
+    @property
+    def ID(self):
+        r"""<p>ID</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def InvokeLimitConfigStatus(self):
+        r"""<p>是否限流</p>
+        :rtype: bool
+        """
+        return self._InvokeLimitConfigStatus
+
+    @InvokeLimitConfigStatus.setter
+    def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
+
+    @property
+    def InvokeLimitConfig(self):
+        r"""<p>限流配置</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
+        """
+        return self._InvokeLimitConfig
+
+    @InvokeLimitConfig.setter
+    def InvokeLimitConfig(self, InvokeLimitConfig):
+        self._InvokeLimitConfig = InvokeLimitConfig
+
+    @property
+    def NeedAuth(self):
+        r"""<p>是否要认证</p>
+        :rtype: bool
+        """
+        return self._NeedAuth
+
+    @NeedAuth.setter
+    def NeedAuth(self, NeedAuth):
+        self._NeedAuth = NeedAuth
+
+    @property
+    def AgentCredentialID(self):
+        r"""<p>凭据ID</p>
+        :rtype: str
+        """
+        return self._AgentCredentialID
+
+    @AgentCredentialID.setter
+    def AgentCredentialID(self, AgentCredentialID):
+        self._AgentCredentialID = AgentCredentialID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._InvokeLimitConfigStatus = params.get("InvokeLimitConfigStatus")
+        if params.get("InvokeLimitConfig") is not None:
+            self._InvokeLimitConfig = InvokeLimitConfigDTO()
+            self._InvokeLimitConfig._deserialize(params.get("InvokeLimitConfig"))
+        self._NeedAuth = params.get("NeedAuth")
+        self._AgentCredentialID = params.get("AgentCredentialID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentAppServiceVO(AbstractModel):
+    r"""应用API详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>ID</p>
+        :type ID: str
+        :param _AgentAppID: <p>应用ID</p>
+        :type AgentAppID: str
+        :param _ServiceID: <p>服务ID</p>
+        :type ServiceID: str
+        :param _InvokeLimitConfigStatus: <p>是否限流</p>
+        :type InvokeLimitConfigStatus: bool
+        :param _InvokeLimitConfig: <p>限流配置</p>
+        :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
+        :param _ServiceVO: <p>服务详情</p>
+        :type ServiceVO: :class:`tencentcloud.apis.v20240801.models.ServiceVO`
+        :param _RelateTime: <p>关联时间</p>
+        :type RelateTime: str
+        :param _NeedAuth: <p>是否需要认证</p>
+        :type NeedAuth: bool
+        :param _AgentCredentialID: <p>凭据ID</p>
+        :type AgentCredentialID: str
+        :param _AgentCredentialVO: <p>凭据详情</p>
+        :type AgentCredentialVO: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialResp`
+        """
+        self._ID = None
+        self._AgentAppID = None
+        self._ServiceID = None
+        self._InvokeLimitConfigStatus = None
+        self._InvokeLimitConfig = None
+        self._ServiceVO = None
+        self._RelateTime = None
+        self._NeedAuth = None
+        self._AgentCredentialID = None
+        self._AgentCredentialVO = None
+
+    @property
+    def ID(self):
+        r"""<p>ID</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def AgentAppID(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AgentAppID
+
+    @AgentAppID.setter
+    def AgentAppID(self, AgentAppID):
+        self._AgentAppID = AgentAppID
+
+    @property
+    def ServiceID(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def InvokeLimitConfigStatus(self):
+        r"""<p>是否限流</p>
+        :rtype: bool
+        """
+        return self._InvokeLimitConfigStatus
+
+    @InvokeLimitConfigStatus.setter
+    def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
+
+    @property
+    def InvokeLimitConfig(self):
+        r"""<p>限流配置</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
+        """
+        return self._InvokeLimitConfig
+
+    @InvokeLimitConfig.setter
+    def InvokeLimitConfig(self, InvokeLimitConfig):
+        self._InvokeLimitConfig = InvokeLimitConfig
+
+    @property
+    def ServiceVO(self):
+        r"""<p>服务详情</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.ServiceVO`
+        """
+        return self._ServiceVO
+
+    @ServiceVO.setter
+    def ServiceVO(self, ServiceVO):
+        self._ServiceVO = ServiceVO
+
+    @property
+    def RelateTime(self):
+        r"""<p>关联时间</p>
+        :rtype: str
+        """
+        return self._RelateTime
+
+    @RelateTime.setter
+    def RelateTime(self, RelateTime):
+        self._RelateTime = RelateTime
+
+    @property
+    def NeedAuth(self):
+        r"""<p>是否需要认证</p>
+        :rtype: bool
+        """
+        return self._NeedAuth
+
+    @NeedAuth.setter
+    def NeedAuth(self, NeedAuth):
+        self._NeedAuth = NeedAuth
+
+    @property
+    def AgentCredentialID(self):
+        r"""<p>凭据ID</p>
+        :rtype: str
+        """
+        return self._AgentCredentialID
+
+    @AgentCredentialID.setter
+    def AgentCredentialID(self, AgentCredentialID):
+        self._AgentCredentialID = AgentCredentialID
+
+    @property
+    def AgentCredentialVO(self):
+        r"""<p>凭据详情</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialResp`
+        """
+        return self._AgentCredentialVO
+
+    @AgentCredentialVO.setter
+    def AgentCredentialVO(self, AgentCredentialVO):
+        self._AgentCredentialVO = AgentCredentialVO
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._AgentAppID = params.get("AgentAppID")
+        self._ServiceID = params.get("ServiceID")
+        self._InvokeLimitConfigStatus = params.get("InvokeLimitConfigStatus")
+        if params.get("InvokeLimitConfig") is not None:
+            self._InvokeLimitConfig = InvokeLimitConfigDTO()
+            self._InvokeLimitConfig._deserialize(params.get("InvokeLimitConfig"))
+        if params.get("ServiceVO") is not None:
+            self._ServiceVO = ServiceVO()
+            self._ServiceVO._deserialize(params.get("ServiceVO"))
+        self._RelateTime = params.get("RelateTime")
+        self._NeedAuth = params.get("NeedAuth")
+        self._AgentCredentialID = params.get("AgentCredentialID")
+        if params.get("AgentCredentialVO") is not None:
+            self._AgentCredentialVO = DescribeAgentCredentialResp()
+            self._AgentCredentialVO._deserialize(params.get("AgentCredentialVO"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentCredentialContentDTO(AbstractModel):
     r"""凭证内容
 
@@ -790,6 +1065,66 @@ class BindMcpSecurityRuleVO(AbstractModel):
         self._SupportActs = params.get("SupportActs")
         self._BodyType = params.get("BodyType")
         self._IconType = params.get("IconType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompoundCondition(AbstractModel):
+    r"""匹配条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>是否启用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        :param _Rules: <p>匹配信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of SimpleCondition
+        """
+        self._Enable = None
+        self._Rules = None
+
+    @property
+    def Enable(self):
+        r"""<p>是否启用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Rules(self):
+        r"""<p>匹配信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SimpleCondition
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = SimpleCondition()
+                obj._deserialize(item)
+                self._Rules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1265,6 +1600,122 @@ class CreateAgentAppResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = CreateAgentAppResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAgentAppServicesRequest(AbstractModel):
+    r"""CreateAgentAppServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _ID: <p>应用ID</p>
+        :type ID: str
+        :param _Services: <p>服务详情</p>
+        :type Services: list of AgentAppServiceDTO
+        """
+        self._InstanceID = None
+        self._ID = None
+        self._Services = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def ID(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Services(self):
+        r"""<p>服务详情</p>
+        :rtype: list of AgentAppServiceDTO
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._ID = params.get("ID")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = AgentAppServiceDTO()
+                obj._deserialize(item)
+                self._Services.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAgentAppServicesResponse(AbstractModel):
+    r"""CreateAgentAppServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>app id</p>
+        :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>app id</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ResultIDVO()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -2472,6 +2923,99 @@ class CreateModelServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateServiceRequest(AbstractModel):
+    r"""CreateService请求参数结构体
+
+    """
+
+
+class CreateServiceResponse(AbstractModel):
+    r"""CreateService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CustomMatch(AbstractModel):
+    r"""自定义匹配条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeadersMatch: <p>请求头  匹配条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadersMatch: :class:`tencentcloud.apis.v20240801.models.CompoundCondition`
+        :param _QueryMatch: <p>请求参数 匹配条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryMatch: :class:`tencentcloud.apis.v20240801.models.CompoundCondition`
+        """
+        self._HeadersMatch = None
+        self._QueryMatch = None
+
+    @property
+    def HeadersMatch(self):
+        r"""<p>请求头  匹配条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.CompoundCondition`
+        """
+        return self._HeadersMatch
+
+    @HeadersMatch.setter
+    def HeadersMatch(self, HeadersMatch):
+        self._HeadersMatch = HeadersMatch
+
+    @property
+    def QueryMatch(self):
+        r"""<p>请求参数 匹配条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.CompoundCondition`
+        """
+        return self._QueryMatch
+
+    @QueryMatch.setter
+    def QueryMatch(self, QueryMatch):
+        self._QueryMatch = QueryMatch
+
+
+    def _deserialize(self, params):
+        if params.get("HeadersMatch") is not None:
+            self._HeadersMatch = CompoundCondition()
+            self._HeadersMatch._deserialize(params.get("HeadersMatch"))
+        if params.get("QueryMatch") is not None:
+            self._QueryMatch = CompoundCondition()
+            self._QueryMatch._deserialize(params.get("QueryMatch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAgentAppMcpServersRequest(AbstractModel):
     r"""DeleteAgentAppMcpServers请求参数结构体
 
@@ -2763,6 +3307,117 @@ class DeleteAgentAppResponse(AbstractModel):
     @property
     def Data(self):
         r"""app id
+        :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ResultIDVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAgentAppServicesRequest(AbstractModel):
+    r"""DeleteAgentAppServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _ID: <p>应用ID</p>
+        :type ID: str
+        :param _ServiceIDs: <p>服务IDs</p>
+        :type ServiceIDs: list of str
+        """
+        self._InstanceID = None
+        self._ID = None
+        self._ServiceIDs = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def ID(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ServiceIDs(self):
+        r"""<p>服务IDs</p>
+        :rtype: list of str
+        """
+        return self._ServiceIDs
+
+    @ServiceIDs.setter
+    def ServiceIDs(self, ServiceIDs):
+        self._ServiceIDs = ServiceIDs
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._ID = params.get("ID")
+        self._ServiceIDs = params.get("ServiceIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAgentAppServicesResponse(AbstractModel):
+    r"""DeleteAgentAppServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>app id</p>
+        :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>app id</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         """
         return self._Data
@@ -3109,6 +3764,85 @@ class DeleteModelServiceResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = ResultIDVO()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteServiceRequest(AbstractModel):
+    r"""DeleteService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: 实例ID
+        :type InstanceID: str
+        :param _ID: 业务ID
+        :type ID: str
+        """
+        self._InstanceID = None
+        self._ID = None
+
+    @property
+    def InstanceID(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def ID(self):
+        r"""业务ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteServiceResponse(AbstractModel):
+    r"""DeleteService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3752,6 +4486,263 @@ class DescribeAgentAppResponse(AbstractModel):
             self._Data = DescribeAgentAppResp()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeAgentAppServicesRequest(AbstractModel):
+    r"""DescribeAgentAppServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _Limit: <p>数据量</p>
+        :type Limit: int
+        :param _IDs: <p>IDs</p>
+        :type IDs: list of str
+        :param _AgentAppIDs: <p>应用IDs</p>
+        :type AgentAppIDs: list of str
+        :param _ServiceIDs: <p>服务IDs</p>
+        :type ServiceIDs: list of str
+        :param _Keyword: <p>关键字</p>
+        :type Keyword: str
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _AgentCredentialExist: <p>是否有凭据</p>
+        :type AgentCredentialExist: bool
+        :param _AgentCredentialIDs: <p>凭据ID</p>
+        :type AgentCredentialIDs: list of str
+        """
+        self._InstanceID = None
+        self._Limit = None
+        self._IDs = None
+        self._AgentAppIDs = None
+        self._ServiceIDs = None
+        self._Keyword = None
+        self._Offset = None
+        self._AgentCredentialExist = None
+        self._AgentCredentialIDs = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Limit(self):
+        r"""<p>数据量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def IDs(self):
+        r"""<p>IDs</p>
+        :rtype: list of str
+        """
+        return self._IDs
+
+    @IDs.setter
+    def IDs(self, IDs):
+        self._IDs = IDs
+
+    @property
+    def AgentAppIDs(self):
+        r"""<p>应用IDs</p>
+        :rtype: list of str
+        """
+        return self._AgentAppIDs
+
+    @AgentAppIDs.setter
+    def AgentAppIDs(self, AgentAppIDs):
+        self._AgentAppIDs = AgentAppIDs
+
+    @property
+    def ServiceIDs(self):
+        r"""<p>服务IDs</p>
+        :rtype: list of str
+        """
+        return self._ServiceIDs
+
+    @ServiceIDs.setter
+    def ServiceIDs(self, ServiceIDs):
+        self._ServiceIDs = ServiceIDs
+
+    @property
+    def Keyword(self):
+        r"""<p>关键字</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def AgentCredentialExist(self):
+        r"""<p>是否有凭据</p>
+        :rtype: bool
+        """
+        return self._AgentCredentialExist
+
+    @AgentCredentialExist.setter
+    def AgentCredentialExist(self, AgentCredentialExist):
+        self._AgentCredentialExist = AgentCredentialExist
+
+    @property
+    def AgentCredentialIDs(self):
+        r"""<p>凭据ID</p>
+        :rtype: list of str
+        """
+        return self._AgentCredentialIDs
+
+    @AgentCredentialIDs.setter
+    def AgentCredentialIDs(self, AgentCredentialIDs):
+        self._AgentCredentialIDs = AgentCredentialIDs
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Limit = params.get("Limit")
+        self._IDs = params.get("IDs")
+        self._AgentAppIDs = params.get("AgentAppIDs")
+        self._ServiceIDs = params.get("ServiceIDs")
+        self._Keyword = params.get("Keyword")
+        self._Offset = params.get("Offset")
+        self._AgentCredentialExist = params.get("AgentCredentialExist")
+        self._AgentCredentialIDs = params.get("AgentCredentialIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentAppServicesResponse(AbstractModel):
+    r"""DescribeAgentAppServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>app id</p>
+        :type Data: :class:`tencentcloud.apis.v20240801.models.DescribeAgentAppServicesVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>app id</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeAgentAppServicesVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeAgentAppServicesVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAgentAppServicesVO(AbstractModel):
+    r"""应用服务查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _Items: <p>数据列表</p>
+        :type Items: list of AgentAppServiceVO
+        """
+        self._Total = None
+        self._Items = None
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        r"""<p>数据列表</p>
+        :rtype: list of AgentAppServiceVO
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AgentAppServiceVO()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAgentAppsRequest(AbstractModel):
@@ -7304,6 +8295,242 @@ class DescribeModelsSort(AbstractModel):
         
 
 
+class DescribeServiceRequest(AbstractModel):
+    r"""DescribeService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: 实例ID
+        :type InstanceID: str
+        :param _ID: 业务ID
+        :type ID: str
+        """
+        self._InstanceID = None
+        self._ID = None
+
+    @property
+    def InstanceID(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def ID(self):
+        r"""业务ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceResponse(AbstractModel):
+    r"""DescribeService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeServicesRequest(AbstractModel):
+    r"""DescribeServices请求参数结构体
+
+    """
+
+
+class DescribeServicesResponse(AbstractModel):
+    r"""DescribeServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class FieldValueDTO(AbstractModel):
+    r"""FieldValue结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Field: <p>属性</p>
+        :type Field: str
+        :param _Value: <p>值</p>
+        :type Value: str
+        """
+        self._Field = None
+        self._Value = None
+
+    @property
+    def Field(self):
+        r"""<p>属性</p>
+        :rtype: str
+        """
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Field = params.get("Field")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthCheckConfigDTO(AbstractModel):
+    r"""HealthCheckConfigDTO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckPath: 健康检查路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckPath: str
+        :param _ValidHealthCheckStatusCode: 状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidHealthCheckStatusCode: list of int
+        :param _HealthCheckTimeout: 请求的超时时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckTimeout: int
+        """
+        self._HealthCheckPath = None
+        self._ValidHealthCheckStatusCode = None
+        self._HealthCheckTimeout = None
+
+    @property
+    def HealthCheckPath(self):
+        r"""健康检查路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HealthCheckPath
+
+    @HealthCheckPath.setter
+    def HealthCheckPath(self, HealthCheckPath):
+        self._HealthCheckPath = HealthCheckPath
+
+    @property
+    def ValidHealthCheckStatusCode(self):
+        r"""状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._ValidHealthCheckStatusCode
+
+    @ValidHealthCheckStatusCode.setter
+    def ValidHealthCheckStatusCode(self, ValidHealthCheckStatusCode):
+        self._ValidHealthCheckStatusCode = ValidHealthCheckStatusCode
+
+    @property
+    def HealthCheckTimeout(self):
+        r"""请求的超时时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._HealthCheckTimeout
+
+    @HealthCheckTimeout.setter
+    def HealthCheckTimeout(self, HealthCheckTimeout):
+        self._HealthCheckTimeout = HealthCheckTimeout
+
+
+    def _deserialize(self, params):
+        self._HealthCheckPath = params.get("HealthCheckPath")
+        self._ValidHealthCheckStatusCode = params.get("ValidHealthCheckStatusCode")
+        self._HealthCheckTimeout = params.get("HealthCheckTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IDNameVO(AbstractModel):
     r"""IDNameVO
 
@@ -9831,6 +11058,582 @@ class ModifyModelServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyServiceRequest(AbstractModel):
+    r"""ModifyService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>实例</p>
+        :type InstanceID: str
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _PaasID: <p>里约应用ID</p>
+        :type PaasID: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _LabelIDs: <p>标签</p>
+        :type LabelIDs: list of str
+        :param _CategoryIDs: <p>目录</p>
+        :type CategoryIDs: list of str
+        :param _AuthType: <p>鉴权方式</p>
+        :type AuthType: str
+        :param _SignType: <p>签名</p>
+        :type SignType: str
+        :param _LoginTypes: <p>登录方式</p>
+        :type LoginTypes: list of str
+        :param _TargetSelect: <p>负载方式</p>
+        :type TargetSelect: str
+        :param _PubPath: <p>公开路径</p>
+        :type PubPath: str
+        :param _RequestMethod: <p>请求方法</p>
+        :type RequestMethod: str
+        :param _HttpProtocolType: <p>是否https</p>
+        :type HttpProtocolType: str
+        :param _CheckTargetCertsError: <p>证书检查</p>
+        :type CheckTargetCertsError: bool
+        :param _HttpProtocolVersion: <p>http协议类型</p>
+        :type HttpProtocolVersion: str
+        :param _Versions: <p>版本号</p>
+        :type Versions: list of VersionDTO
+        :param _TargetPath: <p>目标路径</p>
+        :type TargetPath: str
+        :param _RequestParamsValidatorStatus: <p>入参</p>
+        :type RequestParamsValidatorStatus: bool
+        :param _RequestParamsValidatorJsonInfoT: <p>入参</p>
+        :type RequestParamsValidatorJsonInfoT: str
+        :param _ResponseParamsValidatorStatus: <p>出参</p>
+        :type ResponseParamsValidatorStatus: bool
+        :param _ResponseParamsValidatorJsonInfoT: <p>出参</p>
+        :type ResponseParamsValidatorJsonInfoT: str
+        :param _InvokeLimitConfigStatus: <p>流量控制</p>
+        :type InvokeLimitConfigStatus: bool
+        :param _InvokeLimitConfig: <p>流量控制</p>
+        :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
+        :param _HealthCheckStatus: <p>健康检查</p>
+        :type HealthCheckStatus: bool
+        :param _HealthCheckConfig: <p>健康检查</p>
+        :type HealthCheckConfig: :class:`tencentcloud.apis.v20240801.models.HealthCheckConfigDTO`
+        :param _SourceTypeStatus: <p>格式转换</p>
+        :type SourceTypeStatus: bool
+        :param _SourceTypeConfig: <p>格式转换</p>
+        :type SourceTypeConfig: :class:`tencentcloud.apis.v20240801.models.SourceTypeConfigDTO`
+        :param _IpWhiteStatus: <p>IP白名单</p>
+        :type IpWhiteStatus: bool
+        :param _IpWhiteList: <p>IP白名单</p>
+        :type IpWhiteList: list of str
+        :param _IpBlackStatus: <p>IP黑名单</p>
+        :type IpBlackStatus: bool
+        :param _IpBlackList: <p>IP黑名单</p>
+        :type IpBlackList: list of str
+        :param _PluginConfigs: <p>插件</p>
+        :type PluginConfigs: list of PluginConfigDTO
+        :param _ID: <p>服务ID</p>
+        :type ID: str
+        """
+        self._InstanceID = None
+        self._Name = None
+        self._PaasID = None
+        self._Description = None
+        self._LabelIDs = None
+        self._CategoryIDs = None
+        self._AuthType = None
+        self._SignType = None
+        self._LoginTypes = None
+        self._TargetSelect = None
+        self._PubPath = None
+        self._RequestMethod = None
+        self._HttpProtocolType = None
+        self._CheckTargetCertsError = None
+        self._HttpProtocolVersion = None
+        self._Versions = None
+        self._TargetPath = None
+        self._RequestParamsValidatorStatus = None
+        self._RequestParamsValidatorJsonInfoT = None
+        self._ResponseParamsValidatorStatus = None
+        self._ResponseParamsValidatorJsonInfoT = None
+        self._InvokeLimitConfigStatus = None
+        self._InvokeLimitConfig = None
+        self._HealthCheckStatus = None
+        self._HealthCheckConfig = None
+        self._SourceTypeStatus = None
+        self._SourceTypeConfig = None
+        self._IpWhiteStatus = None
+        self._IpWhiteList = None
+        self._IpBlackStatus = None
+        self._IpBlackList = None
+        self._PluginConfigs = None
+        self._ID = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PaasID(self):
+        warnings.warn("parameter `PaasID` is deprecated", DeprecationWarning) 
+
+        r"""<p>里约应用ID</p>
+        :rtype: str
+        """
+        return self._PaasID
+
+    @PaasID.setter
+    def PaasID(self, PaasID):
+        warnings.warn("parameter `PaasID` is deprecated", DeprecationWarning) 
+
+        self._PaasID = PaasID
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LabelIDs(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._LabelIDs
+
+    @LabelIDs.setter
+    def LabelIDs(self, LabelIDs):
+        self._LabelIDs = LabelIDs
+
+    @property
+    def CategoryIDs(self):
+        r"""<p>目录</p>
+        :rtype: list of str
+        """
+        return self._CategoryIDs
+
+    @CategoryIDs.setter
+    def CategoryIDs(self, CategoryIDs):
+        self._CategoryIDs = CategoryIDs
+
+    @property
+    def AuthType(self):
+        warnings.warn("parameter `AuthType` is deprecated", DeprecationWarning) 
+
+        r"""<p>鉴权方式</p>
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        warnings.warn("parameter `AuthType` is deprecated", DeprecationWarning) 
+
+        self._AuthType = AuthType
+
+    @property
+    def SignType(self):
+        warnings.warn("parameter `SignType` is deprecated", DeprecationWarning) 
+
+        r"""<p>签名</p>
+        :rtype: str
+        """
+        return self._SignType
+
+    @SignType.setter
+    def SignType(self, SignType):
+        warnings.warn("parameter `SignType` is deprecated", DeprecationWarning) 
+
+        self._SignType = SignType
+
+    @property
+    def LoginTypes(self):
+        warnings.warn("parameter `LoginTypes` is deprecated", DeprecationWarning) 
+
+        r"""<p>登录方式</p>
+        :rtype: list of str
+        """
+        return self._LoginTypes
+
+    @LoginTypes.setter
+    def LoginTypes(self, LoginTypes):
+        warnings.warn("parameter `LoginTypes` is deprecated", DeprecationWarning) 
+
+        self._LoginTypes = LoginTypes
+
+    @property
+    def TargetSelect(self):
+        r"""<p>负载方式</p>
+        :rtype: str
+        """
+        return self._TargetSelect
+
+    @TargetSelect.setter
+    def TargetSelect(self, TargetSelect):
+        self._TargetSelect = TargetSelect
+
+    @property
+    def PubPath(self):
+        r"""<p>公开路径</p>
+        :rtype: str
+        """
+        return self._PubPath
+
+    @PubPath.setter
+    def PubPath(self, PubPath):
+        self._PubPath = PubPath
+
+    @property
+    def RequestMethod(self):
+        r"""<p>请求方法</p>
+        :rtype: str
+        """
+        return self._RequestMethod
+
+    @RequestMethod.setter
+    def RequestMethod(self, RequestMethod):
+        self._RequestMethod = RequestMethod
+
+    @property
+    def HttpProtocolType(self):
+        r"""<p>是否https</p>
+        :rtype: str
+        """
+        return self._HttpProtocolType
+
+    @HttpProtocolType.setter
+    def HttpProtocolType(self, HttpProtocolType):
+        self._HttpProtocolType = HttpProtocolType
+
+    @property
+    def CheckTargetCertsError(self):
+        r"""<p>证书检查</p>
+        :rtype: bool
+        """
+        return self._CheckTargetCertsError
+
+    @CheckTargetCertsError.setter
+    def CheckTargetCertsError(self, CheckTargetCertsError):
+        self._CheckTargetCertsError = CheckTargetCertsError
+
+    @property
+    def HttpProtocolVersion(self):
+        r"""<p>http协议类型</p>
+        :rtype: str
+        """
+        return self._HttpProtocolVersion
+
+    @HttpProtocolVersion.setter
+    def HttpProtocolVersion(self, HttpProtocolVersion):
+        self._HttpProtocolVersion = HttpProtocolVersion
+
+    @property
+    def Versions(self):
+        r"""<p>版本号</p>
+        :rtype: list of VersionDTO
+        """
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def TargetPath(self):
+        r"""<p>目标路径</p>
+        :rtype: str
+        """
+        return self._TargetPath
+
+    @TargetPath.setter
+    def TargetPath(self, TargetPath):
+        self._TargetPath = TargetPath
+
+    @property
+    def RequestParamsValidatorStatus(self):
+        r"""<p>入参</p>
+        :rtype: bool
+        """
+        return self._RequestParamsValidatorStatus
+
+    @RequestParamsValidatorStatus.setter
+    def RequestParamsValidatorStatus(self, RequestParamsValidatorStatus):
+        self._RequestParamsValidatorStatus = RequestParamsValidatorStatus
+
+    @property
+    def RequestParamsValidatorJsonInfoT(self):
+        r"""<p>入参</p>
+        :rtype: str
+        """
+        return self._RequestParamsValidatorJsonInfoT
+
+    @RequestParamsValidatorJsonInfoT.setter
+    def RequestParamsValidatorJsonInfoT(self, RequestParamsValidatorJsonInfoT):
+        self._RequestParamsValidatorJsonInfoT = RequestParamsValidatorJsonInfoT
+
+    @property
+    def ResponseParamsValidatorStatus(self):
+        r"""<p>出参</p>
+        :rtype: bool
+        """
+        return self._ResponseParamsValidatorStatus
+
+    @ResponseParamsValidatorStatus.setter
+    def ResponseParamsValidatorStatus(self, ResponseParamsValidatorStatus):
+        self._ResponseParamsValidatorStatus = ResponseParamsValidatorStatus
+
+    @property
+    def ResponseParamsValidatorJsonInfoT(self):
+        r"""<p>出参</p>
+        :rtype: str
+        """
+        return self._ResponseParamsValidatorJsonInfoT
+
+    @ResponseParamsValidatorJsonInfoT.setter
+    def ResponseParamsValidatorJsonInfoT(self, ResponseParamsValidatorJsonInfoT):
+        self._ResponseParamsValidatorJsonInfoT = ResponseParamsValidatorJsonInfoT
+
+    @property
+    def InvokeLimitConfigStatus(self):
+        r"""<p>流量控制</p>
+        :rtype: bool
+        """
+        return self._InvokeLimitConfigStatus
+
+    @InvokeLimitConfigStatus.setter
+    def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
+
+    @property
+    def InvokeLimitConfig(self):
+        r"""<p>流量控制</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
+        """
+        return self._InvokeLimitConfig
+
+    @InvokeLimitConfig.setter
+    def InvokeLimitConfig(self, InvokeLimitConfig):
+        self._InvokeLimitConfig = InvokeLimitConfig
+
+    @property
+    def HealthCheckStatus(self):
+        r"""<p>健康检查</p>
+        :rtype: bool
+        """
+        return self._HealthCheckStatus
+
+    @HealthCheckStatus.setter
+    def HealthCheckStatus(self, HealthCheckStatus):
+        self._HealthCheckStatus = HealthCheckStatus
+
+    @property
+    def HealthCheckConfig(self):
+        r"""<p>健康检查</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.HealthCheckConfigDTO`
+        """
+        return self._HealthCheckConfig
+
+    @HealthCheckConfig.setter
+    def HealthCheckConfig(self, HealthCheckConfig):
+        self._HealthCheckConfig = HealthCheckConfig
+
+    @property
+    def SourceTypeStatus(self):
+        r"""<p>格式转换</p>
+        :rtype: bool
+        """
+        return self._SourceTypeStatus
+
+    @SourceTypeStatus.setter
+    def SourceTypeStatus(self, SourceTypeStatus):
+        self._SourceTypeStatus = SourceTypeStatus
+
+    @property
+    def SourceTypeConfig(self):
+        r"""<p>格式转换</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.SourceTypeConfigDTO`
+        """
+        return self._SourceTypeConfig
+
+    @SourceTypeConfig.setter
+    def SourceTypeConfig(self, SourceTypeConfig):
+        self._SourceTypeConfig = SourceTypeConfig
+
+    @property
+    def IpWhiteStatus(self):
+        r"""<p>IP白名单</p>
+        :rtype: bool
+        """
+        return self._IpWhiteStatus
+
+    @IpWhiteStatus.setter
+    def IpWhiteStatus(self, IpWhiteStatus):
+        self._IpWhiteStatus = IpWhiteStatus
+
+    @property
+    def IpWhiteList(self):
+        r"""<p>IP白名单</p>
+        :rtype: list of str
+        """
+        return self._IpWhiteList
+
+    @IpWhiteList.setter
+    def IpWhiteList(self, IpWhiteList):
+        self._IpWhiteList = IpWhiteList
+
+    @property
+    def IpBlackStatus(self):
+        r"""<p>IP黑名单</p>
+        :rtype: bool
+        """
+        return self._IpBlackStatus
+
+    @IpBlackStatus.setter
+    def IpBlackStatus(self, IpBlackStatus):
+        self._IpBlackStatus = IpBlackStatus
+
+    @property
+    def IpBlackList(self):
+        r"""<p>IP黑名单</p>
+        :rtype: list of str
+        """
+        return self._IpBlackList
+
+    @IpBlackList.setter
+    def IpBlackList(self, IpBlackList):
+        self._IpBlackList = IpBlackList
+
+    @property
+    def PluginConfigs(self):
+        r"""<p>插件</p>
+        :rtype: list of PluginConfigDTO
+        """
+        return self._PluginConfigs
+
+    @PluginConfigs.setter
+    def PluginConfigs(self, PluginConfigs):
+        self._PluginConfigs = PluginConfigs
+
+    @property
+    def ID(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Name = params.get("Name")
+        self._PaasID = params.get("PaasID")
+        self._Description = params.get("Description")
+        self._LabelIDs = params.get("LabelIDs")
+        self._CategoryIDs = params.get("CategoryIDs")
+        self._AuthType = params.get("AuthType")
+        self._SignType = params.get("SignType")
+        self._LoginTypes = params.get("LoginTypes")
+        self._TargetSelect = params.get("TargetSelect")
+        self._PubPath = params.get("PubPath")
+        self._RequestMethod = params.get("RequestMethod")
+        self._HttpProtocolType = params.get("HttpProtocolType")
+        self._CheckTargetCertsError = params.get("CheckTargetCertsError")
+        self._HttpProtocolVersion = params.get("HttpProtocolVersion")
+        if params.get("Versions") is not None:
+            self._Versions = []
+            for item in params.get("Versions"):
+                obj = VersionDTO()
+                obj._deserialize(item)
+                self._Versions.append(obj)
+        self._TargetPath = params.get("TargetPath")
+        self._RequestParamsValidatorStatus = params.get("RequestParamsValidatorStatus")
+        self._RequestParamsValidatorJsonInfoT = params.get("RequestParamsValidatorJsonInfoT")
+        self._ResponseParamsValidatorStatus = params.get("ResponseParamsValidatorStatus")
+        self._ResponseParamsValidatorJsonInfoT = params.get("ResponseParamsValidatorJsonInfoT")
+        self._InvokeLimitConfigStatus = params.get("InvokeLimitConfigStatus")
+        if params.get("InvokeLimitConfig") is not None:
+            self._InvokeLimitConfig = InvokeLimitConfigDTO()
+            self._InvokeLimitConfig._deserialize(params.get("InvokeLimitConfig"))
+        self._HealthCheckStatus = params.get("HealthCheckStatus")
+        if params.get("HealthCheckConfig") is not None:
+            self._HealthCheckConfig = HealthCheckConfigDTO()
+            self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
+        self._SourceTypeStatus = params.get("SourceTypeStatus")
+        if params.get("SourceTypeConfig") is not None:
+            self._SourceTypeConfig = SourceTypeConfigDTO()
+            self._SourceTypeConfig._deserialize(params.get("SourceTypeConfig"))
+        self._IpWhiteStatus = params.get("IpWhiteStatus")
+        self._IpWhiteList = params.get("IpWhiteList")
+        self._IpBlackStatus = params.get("IpBlackStatus")
+        self._IpBlackList = params.get("IpBlackList")
+        if params.get("PluginConfigs") is not None:
+            self._PluginConfigs = []
+            for item in params.get("PluginConfigs"):
+                obj = PluginConfigDTO()
+                obj._deserialize(item)
+                self._PluginConfigs.append(obj)
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyServiceResponse(AbstractModel):
+    r"""ModifyService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class PluginConfigDTO(AbstractModel):
     r"""PluginConfigDTO
 
@@ -10251,6 +12054,1731 @@ class SensitiveDataCheckConfigDTO(AbstractModel):
         
 
 
+class ServiceDatabaseOrderParam(AbstractModel):
+    r"""ServiceDatabaseOrderParam
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: <p>字段名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldName: str
+        :param _Order: <p>排序 asc desc</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Order: str
+        """
+        self._FieldName = None
+        self._Order = None
+
+    @property
+    def FieldName(self):
+        r"""<p>字段名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def Order(self):
+        r"""<p>排序 asc desc</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceDatabaseReqParam(AbstractModel):
+    r"""向导模式请求参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: <p>表字段名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldName: str
+        :param _Operator: <p>操作符</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param _Val: <p>参数名/常量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Val: str
+        :param _ValType: <p>参数类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValType: str
+        :param _InternalField: <p>内部字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalField: bool
+        """
+        self._FieldName = None
+        self._Operator = None
+        self._Val = None
+        self._ValType = None
+        self._InternalField = None
+
+    @property
+    def FieldName(self):
+        r"""<p>表字段名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def Operator(self):
+        r"""<p>操作符</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Val(self):
+        r"""<p>参数名/常量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Val
+
+    @Val.setter
+    def Val(self, Val):
+        self._Val = Val
+
+    @property
+    def ValType(self):
+        r"""<p>参数类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ValType
+
+    @ValType.setter
+    def ValType(self, ValType):
+        self._ValType = ValType
+
+    @property
+    def InternalField(self):
+        r"""<p>内部字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._InternalField
+
+    @InternalField.setter
+    def InternalField(self, InternalField):
+        self._InternalField = InternalField
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
+        self._Operator = params.get("Operator")
+        self._Val = params.get("Val")
+        self._ValType = params.get("ValType")
+        self._InternalField = params.get("InternalField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceDatabaseRespParam(AbstractModel):
+    r"""响应参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: <p>源字段名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldName: str
+        :param _Name: <p>目标字段名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._FieldName = None
+        self._Name = None
+
+    @property
+    def FieldName(self):
+        r"""<p>源字段名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def Name(self):
+        r"""<p>目标字段名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceVO(AbstractModel):
+    r"""ServiceVO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>实例</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
+        :param _Name: <p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _PaasID: <p>里约应用ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaasID: str
+        :param _Description: <p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _LabelIDs: <p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelIDs: list of str
+        :param _CategoryIDs: <p>目录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryIDs: list of str
+        :param _AuthType: <p>鉴权方式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: str
+        :param _SignType: <p>签名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignType: str
+        :param _LoginTypes: <p>登录方式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoginTypes: list of str
+        :param _TargetSelect: <p>负载方式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetSelect: str
+        :param _PubPath: <p>公开路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PubPath: str
+        :param _RequestMethod: <p>请求方法</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestMethod: str
+        :param _TargetHosts: <p>目标服务器</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetHosts: list of TargetHostDTO
+        :param _HttpProtocolType: <p>是否https</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpProtocolType: str
+        :param _CheckTargetCertsError: <p>证书检查</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckTargetCertsError: bool
+        :param _HttpProtocolVersion: <p>http协议类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpProtocolVersion: str
+        :param _Versions: <p>版本号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Versions: list of VersionDTO
+        :param _TargetPath: <p>目标路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetPath: str
+        :param _RequestParamsValidatorStatus: <p>入参</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestParamsValidatorStatus: bool
+        :param _RequestParamsValidatorJsonInfoT: <p>入参</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestParamsValidatorJsonInfoT: str
+        :param _ResponseParamsValidatorStatus: <p>出参</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseParamsValidatorStatus: bool
+        :param _ResponseParamsValidatorJsonInfoT: <p>出参</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseParamsValidatorJsonInfoT: str
+        :param _InvokeLimitConfigStatus: <p>流量控制</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeLimitConfigStatus: bool
+        :param _InvokeLimitConfig: <p>流量控制</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
+        :param _HealthCheckStatus: <p>健康检查</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckStatus: bool
+        :param _HealthCheckConfig: <p>健康检查</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckConfig: :class:`tencentcloud.apis.v20240801.models.HealthCheckConfigDTO`
+        :param _SourceTypeStatus: <p>格式转换</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceTypeStatus: bool
+        :param _SourceTypeConfig: <p>格式转换</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceTypeConfig: :class:`tencentcloud.apis.v20240801.models.SourceTypeConfigDTO`
+        :param _TokenLimitStatus: <p>是否开启Token限流</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenLimitStatus: bool
+        :param _TokenLimitConfig: <p>Token限流配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenLimitConfig: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
+        :param _TmsStatus: <p>是否开启内容安全</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TmsStatus: bool
+        :param _TmsConfig: <p>内容安全配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TmsConfig: :class:`tencentcloud.apis.v20240801.models.TmsConfigDTO`
+        :param _IpWhiteStatus: <p>IP白名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpWhiteStatus: bool
+        :param _IpWhiteList: <p>IP白名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpWhiteList: list of str
+        :param _IpBlackStatus: <p>IP黑名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpBlackStatus: bool
+        :param _IpBlackList: <p>IP黑名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpBlackList: list of str
+        :param _PluginConfigs: <p>插件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PluginConfigs: list of PluginConfigDTO
+        :param _ID: <p>服务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Status: <p>状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Url: <p>预览地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _App: <p>app</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type App: :class:`tencentcloud.apis.v20240801.models.IDNameVO`
+        :param _Catalogs: <p>目录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Catalogs: list of IDNameVO
+        :param _Labels: <p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of IDNameVO
+        :param _Logins: <p>认证方式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Logins: list of IDNameVO
+        :param _AuthAppNum: <p>授权数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthAppNum: int
+        :param _CreateTime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _LastUpdateTime: <p>最后修改时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
+        :param _AppID: <p>应用ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppID: int
+        :param _Uin: <p>用户ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _Domain: <p>域名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _OpenMessageLogStatus: <p>是否开启报文记录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenMessageLogStatus: bool
+        :param _CurrPaasIDSubscriptionID: <p>订阅页面的当前用户是否订阅了该API</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrPaasIDSubscriptionID: str
+        :param _TargetServiceType: <p>目标服务类型 Restful Database Mock</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceType: str
+        :param _SqlTemplate: <p>SQL模板</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlTemplate: :class:`tencentcloud.apis.v20240801.models.SqlTemplate`
+        :param _TargetHostType: <p>目标Host类型 0 默认 1 vpc</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetHostType: int
+        :param _TargetServiceHostType: <p>后端服务类型 0 自定义 原始数据:ip/域名或vpc 1 后端服务 服务组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceHostType: int
+        :param _TargetServerGroupID: <p>后端服务组ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServerGroupID: str
+        :param _TargetServerGroup: <p>后端服务组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServerGroup: :class:`tencentcloud.apis.v20240801.models.TargetServerGroupDTO`
+        :param _CustomHttpHost: <p>自定义host</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomHttpHost: str
+        :param _HttpHostType: <p>Http 请求host类型 useRequestHost 保持源请求host targetHost 修正为源站host  customHost 自定义host</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpHostType: str
+        :param _MockStatusCode: <p>mock响应状态码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MockStatusCode: int
+        :param _MockBody: <p>mock响应body</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MockBody: str
+        :param _MockHeaders: <p>mock响应头</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MockHeaders: list of FieldValueDTO
+        :param _PathMatchType: <p>路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathMatchType: str
+        :param _CustomMatch: <p>自定义匹配条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomMatch: :class:`tencentcloud.apis.v20240801.models.CustomMatch`
+        :param _Timeout: <p>请求的超时时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        :param _McpServerNum: <p>绑定的mcp server数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type McpServerNum: int
+        """
+        self._InstanceID = None
+        self._Name = None
+        self._PaasID = None
+        self._Description = None
+        self._LabelIDs = None
+        self._CategoryIDs = None
+        self._AuthType = None
+        self._SignType = None
+        self._LoginTypes = None
+        self._TargetSelect = None
+        self._PubPath = None
+        self._RequestMethod = None
+        self._TargetHosts = None
+        self._HttpProtocolType = None
+        self._CheckTargetCertsError = None
+        self._HttpProtocolVersion = None
+        self._Versions = None
+        self._TargetPath = None
+        self._RequestParamsValidatorStatus = None
+        self._RequestParamsValidatorJsonInfoT = None
+        self._ResponseParamsValidatorStatus = None
+        self._ResponseParamsValidatorJsonInfoT = None
+        self._InvokeLimitConfigStatus = None
+        self._InvokeLimitConfig = None
+        self._HealthCheckStatus = None
+        self._HealthCheckConfig = None
+        self._SourceTypeStatus = None
+        self._SourceTypeConfig = None
+        self._TokenLimitStatus = None
+        self._TokenLimitConfig = None
+        self._TmsStatus = None
+        self._TmsConfig = None
+        self._IpWhiteStatus = None
+        self._IpWhiteList = None
+        self._IpBlackStatus = None
+        self._IpBlackList = None
+        self._PluginConfigs = None
+        self._ID = None
+        self._Status = None
+        self._Url = None
+        self._App = None
+        self._Catalogs = None
+        self._Labels = None
+        self._Logins = None
+        self._AuthAppNum = None
+        self._CreateTime = None
+        self._LastUpdateTime = None
+        self._AppID = None
+        self._Uin = None
+        self._Domain = None
+        self._OpenMessageLogStatus = None
+        self._CurrPaasIDSubscriptionID = None
+        self._TargetServiceType = None
+        self._SqlTemplate = None
+        self._TargetHostType = None
+        self._TargetServiceHostType = None
+        self._TargetServerGroupID = None
+        self._TargetServerGroup = None
+        self._CustomHttpHost = None
+        self._HttpHostType = None
+        self._MockStatusCode = None
+        self._MockBody = None
+        self._MockHeaders = None
+        self._PathMatchType = None
+        self._CustomMatch = None
+        self._Timeout = None
+        self._McpServerNum = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PaasID(self):
+        warnings.warn("parameter `PaasID` is deprecated", DeprecationWarning) 
+
+        r"""<p>里约应用ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PaasID
+
+    @PaasID.setter
+    def PaasID(self, PaasID):
+        warnings.warn("parameter `PaasID` is deprecated", DeprecationWarning) 
+
+        self._PaasID = PaasID
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LabelIDs(self):
+        r"""<p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._LabelIDs
+
+    @LabelIDs.setter
+    def LabelIDs(self, LabelIDs):
+        self._LabelIDs = LabelIDs
+
+    @property
+    def CategoryIDs(self):
+        r"""<p>目录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CategoryIDs
+
+    @CategoryIDs.setter
+    def CategoryIDs(self, CategoryIDs):
+        self._CategoryIDs = CategoryIDs
+
+    @property
+    def AuthType(self):
+        warnings.warn("parameter `AuthType` is deprecated", DeprecationWarning) 
+
+        r"""<p>鉴权方式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        warnings.warn("parameter `AuthType` is deprecated", DeprecationWarning) 
+
+        self._AuthType = AuthType
+
+    @property
+    def SignType(self):
+        warnings.warn("parameter `SignType` is deprecated", DeprecationWarning) 
+
+        r"""<p>签名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SignType
+
+    @SignType.setter
+    def SignType(self, SignType):
+        warnings.warn("parameter `SignType` is deprecated", DeprecationWarning) 
+
+        self._SignType = SignType
+
+    @property
+    def LoginTypes(self):
+        warnings.warn("parameter `LoginTypes` is deprecated", DeprecationWarning) 
+
+        r"""<p>登录方式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._LoginTypes
+
+    @LoginTypes.setter
+    def LoginTypes(self, LoginTypes):
+        warnings.warn("parameter `LoginTypes` is deprecated", DeprecationWarning) 
+
+        self._LoginTypes = LoginTypes
+
+    @property
+    def TargetSelect(self):
+        r"""<p>负载方式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetSelect
+
+    @TargetSelect.setter
+    def TargetSelect(self, TargetSelect):
+        self._TargetSelect = TargetSelect
+
+    @property
+    def PubPath(self):
+        r"""<p>公开路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PubPath
+
+    @PubPath.setter
+    def PubPath(self, PubPath):
+        self._PubPath = PubPath
+
+    @property
+    def RequestMethod(self):
+        r"""<p>请求方法</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestMethod
+
+    @RequestMethod.setter
+    def RequestMethod(self, RequestMethod):
+        self._RequestMethod = RequestMethod
+
+    @property
+    def TargetHosts(self):
+        r"""<p>目标服务器</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TargetHostDTO
+        """
+        return self._TargetHosts
+
+    @TargetHosts.setter
+    def TargetHosts(self, TargetHosts):
+        self._TargetHosts = TargetHosts
+
+    @property
+    def HttpProtocolType(self):
+        r"""<p>是否https</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HttpProtocolType
+
+    @HttpProtocolType.setter
+    def HttpProtocolType(self, HttpProtocolType):
+        self._HttpProtocolType = HttpProtocolType
+
+    @property
+    def CheckTargetCertsError(self):
+        r"""<p>证书检查</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CheckTargetCertsError
+
+    @CheckTargetCertsError.setter
+    def CheckTargetCertsError(self, CheckTargetCertsError):
+        self._CheckTargetCertsError = CheckTargetCertsError
+
+    @property
+    def HttpProtocolVersion(self):
+        r"""<p>http协议类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HttpProtocolVersion
+
+    @HttpProtocolVersion.setter
+    def HttpProtocolVersion(self, HttpProtocolVersion):
+        self._HttpProtocolVersion = HttpProtocolVersion
+
+    @property
+    def Versions(self):
+        r"""<p>版本号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VersionDTO
+        """
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def TargetPath(self):
+        r"""<p>目标路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetPath
+
+    @TargetPath.setter
+    def TargetPath(self, TargetPath):
+        self._TargetPath = TargetPath
+
+    @property
+    def RequestParamsValidatorStatus(self):
+        r"""<p>入参</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._RequestParamsValidatorStatus
+
+    @RequestParamsValidatorStatus.setter
+    def RequestParamsValidatorStatus(self, RequestParamsValidatorStatus):
+        self._RequestParamsValidatorStatus = RequestParamsValidatorStatus
+
+    @property
+    def RequestParamsValidatorJsonInfoT(self):
+        r"""<p>入参</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestParamsValidatorJsonInfoT
+
+    @RequestParamsValidatorJsonInfoT.setter
+    def RequestParamsValidatorJsonInfoT(self, RequestParamsValidatorJsonInfoT):
+        self._RequestParamsValidatorJsonInfoT = RequestParamsValidatorJsonInfoT
+
+    @property
+    def ResponseParamsValidatorStatus(self):
+        r"""<p>出参</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ResponseParamsValidatorStatus
+
+    @ResponseParamsValidatorStatus.setter
+    def ResponseParamsValidatorStatus(self, ResponseParamsValidatorStatus):
+        self._ResponseParamsValidatorStatus = ResponseParamsValidatorStatus
+
+    @property
+    def ResponseParamsValidatorJsonInfoT(self):
+        r"""<p>出参</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResponseParamsValidatorJsonInfoT
+
+    @ResponseParamsValidatorJsonInfoT.setter
+    def ResponseParamsValidatorJsonInfoT(self, ResponseParamsValidatorJsonInfoT):
+        self._ResponseParamsValidatorJsonInfoT = ResponseParamsValidatorJsonInfoT
+
+    @property
+    def InvokeLimitConfigStatus(self):
+        r"""<p>流量控制</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._InvokeLimitConfigStatus
+
+    @InvokeLimitConfigStatus.setter
+    def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
+
+    @property
+    def InvokeLimitConfig(self):
+        r"""<p>流量控制</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
+        """
+        return self._InvokeLimitConfig
+
+    @InvokeLimitConfig.setter
+    def InvokeLimitConfig(self, InvokeLimitConfig):
+        self._InvokeLimitConfig = InvokeLimitConfig
+
+    @property
+    def HealthCheckStatus(self):
+        r"""<p>健康检查</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HealthCheckStatus
+
+    @HealthCheckStatus.setter
+    def HealthCheckStatus(self, HealthCheckStatus):
+        self._HealthCheckStatus = HealthCheckStatus
+
+    @property
+    def HealthCheckConfig(self):
+        r"""<p>健康检查</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.HealthCheckConfigDTO`
+        """
+        return self._HealthCheckConfig
+
+    @HealthCheckConfig.setter
+    def HealthCheckConfig(self, HealthCheckConfig):
+        self._HealthCheckConfig = HealthCheckConfig
+
+    @property
+    def SourceTypeStatus(self):
+        r"""<p>格式转换</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SourceTypeStatus
+
+    @SourceTypeStatus.setter
+    def SourceTypeStatus(self, SourceTypeStatus):
+        self._SourceTypeStatus = SourceTypeStatus
+
+    @property
+    def SourceTypeConfig(self):
+        r"""<p>格式转换</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.SourceTypeConfigDTO`
+        """
+        return self._SourceTypeConfig
+
+    @SourceTypeConfig.setter
+    def SourceTypeConfig(self, SourceTypeConfig):
+        self._SourceTypeConfig = SourceTypeConfig
+
+    @property
+    def TokenLimitStatus(self):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
+        r"""<p>是否开启Token限流</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._TokenLimitStatus
+
+    @TokenLimitStatus.setter
+    def TokenLimitStatus(self, TokenLimitStatus):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
+        self._TokenLimitStatus = TokenLimitStatus
+
+    @property
+    def TokenLimitConfig(self):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
+        r"""<p>Token限流配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
+        """
+        return self._TokenLimitConfig
+
+    @TokenLimitConfig.setter
+    def TokenLimitConfig(self, TokenLimitConfig):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
+        self._TokenLimitConfig = TokenLimitConfig
+
+    @property
+    def TmsStatus(self):
+        warnings.warn("parameter `TmsStatus` is deprecated", DeprecationWarning) 
+
+        r"""<p>是否开启内容安全</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._TmsStatus
+
+    @TmsStatus.setter
+    def TmsStatus(self, TmsStatus):
+        warnings.warn("parameter `TmsStatus` is deprecated", DeprecationWarning) 
+
+        self._TmsStatus = TmsStatus
+
+    @property
+    def TmsConfig(self):
+        warnings.warn("parameter `TmsConfig` is deprecated", DeprecationWarning) 
+
+        r"""<p>内容安全配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.TmsConfigDTO`
+        """
+        return self._TmsConfig
+
+    @TmsConfig.setter
+    def TmsConfig(self, TmsConfig):
+        warnings.warn("parameter `TmsConfig` is deprecated", DeprecationWarning) 
+
+        self._TmsConfig = TmsConfig
+
+    @property
+    def IpWhiteStatus(self):
+        r"""<p>IP白名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IpWhiteStatus
+
+    @IpWhiteStatus.setter
+    def IpWhiteStatus(self, IpWhiteStatus):
+        self._IpWhiteStatus = IpWhiteStatus
+
+    @property
+    def IpWhiteList(self):
+        r"""<p>IP白名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._IpWhiteList
+
+    @IpWhiteList.setter
+    def IpWhiteList(self, IpWhiteList):
+        self._IpWhiteList = IpWhiteList
+
+    @property
+    def IpBlackStatus(self):
+        r"""<p>IP黑名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IpBlackStatus
+
+    @IpBlackStatus.setter
+    def IpBlackStatus(self, IpBlackStatus):
+        self._IpBlackStatus = IpBlackStatus
+
+    @property
+    def IpBlackList(self):
+        r"""<p>IP黑名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._IpBlackList
+
+    @IpBlackList.setter
+    def IpBlackList(self, IpBlackList):
+        self._IpBlackList = IpBlackList
+
+    @property
+    def PluginConfigs(self):
+        r"""<p>插件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PluginConfigDTO
+        """
+        return self._PluginConfigs
+
+    @PluginConfigs.setter
+    def PluginConfigs(self, PluginConfigs):
+        self._PluginConfigs = PluginConfigs
+
+    @property
+    def ID(self):
+        r"""<p>服务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Url(self):
+        r"""<p>预览地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def App(self):
+        r"""<p>app</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.IDNameVO`
+        """
+        return self._App
+
+    @App.setter
+    def App(self, App):
+        self._App = App
+
+    @property
+    def Catalogs(self):
+        r"""<p>目录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IDNameVO
+        """
+        return self._Catalogs
+
+    @Catalogs.setter
+    def Catalogs(self, Catalogs):
+        self._Catalogs = Catalogs
+
+    @property
+    def Labels(self):
+        r"""<p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IDNameVO
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Logins(self):
+        r"""<p>认证方式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IDNameVO
+        """
+        return self._Logins
+
+    @Logins.setter
+    def Logins(self, Logins):
+        self._Logins = Logins
+
+    @property
+    def AuthAppNum(self):
+        r"""<p>授权数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AuthAppNum
+
+    @AuthAppNum.setter
+    def AuthAppNum(self, AuthAppNum):
+        self._AuthAppNum = AuthAppNum
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastUpdateTime(self):
+        r"""<p>最后修改时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def AppID(self):
+        r"""<p>应用ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Uin(self):
+        r"""<p>用户ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def OpenMessageLogStatus(self):
+        r"""<p>是否开启报文记录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._OpenMessageLogStatus
+
+    @OpenMessageLogStatus.setter
+    def OpenMessageLogStatus(self, OpenMessageLogStatus):
+        self._OpenMessageLogStatus = OpenMessageLogStatus
+
+    @property
+    def CurrPaasIDSubscriptionID(self):
+        warnings.warn("parameter `CurrPaasIDSubscriptionID` is deprecated", DeprecationWarning) 
+
+        r"""<p>订阅页面的当前用户是否订阅了该API</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CurrPaasIDSubscriptionID
+
+    @CurrPaasIDSubscriptionID.setter
+    def CurrPaasIDSubscriptionID(self, CurrPaasIDSubscriptionID):
+        warnings.warn("parameter `CurrPaasIDSubscriptionID` is deprecated", DeprecationWarning) 
+
+        self._CurrPaasIDSubscriptionID = CurrPaasIDSubscriptionID
+
+    @property
+    def TargetServiceType(self):
+        r"""<p>目标服务类型 Restful Database Mock</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetServiceType
+
+    @TargetServiceType.setter
+    def TargetServiceType(self, TargetServiceType):
+        self._TargetServiceType = TargetServiceType
+
+    @property
+    def SqlTemplate(self):
+        r"""<p>SQL模板</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.SqlTemplate`
+        """
+        return self._SqlTemplate
+
+    @SqlTemplate.setter
+    def SqlTemplate(self, SqlTemplate):
+        self._SqlTemplate = SqlTemplate
+
+    @property
+    def TargetHostType(self):
+        r"""<p>目标Host类型 0 默认 1 vpc</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetHostType
+
+    @TargetHostType.setter
+    def TargetHostType(self, TargetHostType):
+        self._TargetHostType = TargetHostType
+
+    @property
+    def TargetServiceHostType(self):
+        r"""<p>后端服务类型 0 自定义 原始数据:ip/域名或vpc 1 后端服务 服务组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetServiceHostType
+
+    @TargetServiceHostType.setter
+    def TargetServiceHostType(self, TargetServiceHostType):
+        self._TargetServiceHostType = TargetServiceHostType
+
+    @property
+    def TargetServerGroupID(self):
+        r"""<p>后端服务组ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetServerGroupID
+
+    @TargetServerGroupID.setter
+    def TargetServerGroupID(self, TargetServerGroupID):
+        self._TargetServerGroupID = TargetServerGroupID
+
+    @property
+    def TargetServerGroup(self):
+        r"""<p>后端服务组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.TargetServerGroupDTO`
+        """
+        return self._TargetServerGroup
+
+    @TargetServerGroup.setter
+    def TargetServerGroup(self, TargetServerGroup):
+        self._TargetServerGroup = TargetServerGroup
+
+    @property
+    def CustomHttpHost(self):
+        r"""<p>自定义host</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomHttpHost
+
+    @CustomHttpHost.setter
+    def CustomHttpHost(self, CustomHttpHost):
+        self._CustomHttpHost = CustomHttpHost
+
+    @property
+    def HttpHostType(self):
+        r"""<p>Http 请求host类型 useRequestHost 保持源请求host targetHost 修正为源站host  customHost 自定义host</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HttpHostType
+
+    @HttpHostType.setter
+    def HttpHostType(self, HttpHostType):
+        self._HttpHostType = HttpHostType
+
+    @property
+    def MockStatusCode(self):
+        r"""<p>mock响应状态码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MockStatusCode
+
+    @MockStatusCode.setter
+    def MockStatusCode(self, MockStatusCode):
+        self._MockStatusCode = MockStatusCode
+
+    @property
+    def MockBody(self):
+        r"""<p>mock响应body</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MockBody
+
+    @MockBody.setter
+    def MockBody(self, MockBody):
+        self._MockBody = MockBody
+
+    @property
+    def MockHeaders(self):
+        r"""<p>mock响应头</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FieldValueDTO
+        """
+        return self._MockHeaders
+
+    @MockHeaders.setter
+    def MockHeaders(self, MockHeaders):
+        self._MockHeaders = MockHeaders
+
+    @property
+    def PathMatchType(self):
+        r"""<p>路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PathMatchType
+
+    @PathMatchType.setter
+    def PathMatchType(self, PathMatchType):
+        self._PathMatchType = PathMatchType
+
+    @property
+    def CustomMatch(self):
+        r"""<p>自定义匹配条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.CustomMatch`
+        """
+        return self._CustomMatch
+
+    @CustomMatch.setter
+    def CustomMatch(self, CustomMatch):
+        self._CustomMatch = CustomMatch
+
+    @property
+    def Timeout(self):
+        r"""<p>请求的超时时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def McpServerNum(self):
+        r"""<p>绑定的mcp server数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._McpServerNum
+
+    @McpServerNum.setter
+    def McpServerNum(self, McpServerNum):
+        self._McpServerNum = McpServerNum
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Name = params.get("Name")
+        self._PaasID = params.get("PaasID")
+        self._Description = params.get("Description")
+        self._LabelIDs = params.get("LabelIDs")
+        self._CategoryIDs = params.get("CategoryIDs")
+        self._AuthType = params.get("AuthType")
+        self._SignType = params.get("SignType")
+        self._LoginTypes = params.get("LoginTypes")
+        self._TargetSelect = params.get("TargetSelect")
+        self._PubPath = params.get("PubPath")
+        self._RequestMethod = params.get("RequestMethod")
+        if params.get("TargetHosts") is not None:
+            self._TargetHosts = []
+            for item in params.get("TargetHosts"):
+                obj = TargetHostDTO()
+                obj._deserialize(item)
+                self._TargetHosts.append(obj)
+        self._HttpProtocolType = params.get("HttpProtocolType")
+        self._CheckTargetCertsError = params.get("CheckTargetCertsError")
+        self._HttpProtocolVersion = params.get("HttpProtocolVersion")
+        if params.get("Versions") is not None:
+            self._Versions = []
+            for item in params.get("Versions"):
+                obj = VersionDTO()
+                obj._deserialize(item)
+                self._Versions.append(obj)
+        self._TargetPath = params.get("TargetPath")
+        self._RequestParamsValidatorStatus = params.get("RequestParamsValidatorStatus")
+        self._RequestParamsValidatorJsonInfoT = params.get("RequestParamsValidatorJsonInfoT")
+        self._ResponseParamsValidatorStatus = params.get("ResponseParamsValidatorStatus")
+        self._ResponseParamsValidatorJsonInfoT = params.get("ResponseParamsValidatorJsonInfoT")
+        self._InvokeLimitConfigStatus = params.get("InvokeLimitConfigStatus")
+        if params.get("InvokeLimitConfig") is not None:
+            self._InvokeLimitConfig = InvokeLimitConfigDTO()
+            self._InvokeLimitConfig._deserialize(params.get("InvokeLimitConfig"))
+        self._HealthCheckStatus = params.get("HealthCheckStatus")
+        if params.get("HealthCheckConfig") is not None:
+            self._HealthCheckConfig = HealthCheckConfigDTO()
+            self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
+        self._SourceTypeStatus = params.get("SourceTypeStatus")
+        if params.get("SourceTypeConfig") is not None:
+            self._SourceTypeConfig = SourceTypeConfigDTO()
+            self._SourceTypeConfig._deserialize(params.get("SourceTypeConfig"))
+        self._TokenLimitStatus = params.get("TokenLimitStatus")
+        if params.get("TokenLimitConfig") is not None:
+            self._TokenLimitConfig = TokenLimitConfigDTO()
+            self._TokenLimitConfig._deserialize(params.get("TokenLimitConfig"))
+        self._TmsStatus = params.get("TmsStatus")
+        if params.get("TmsConfig") is not None:
+            self._TmsConfig = TmsConfigDTO()
+            self._TmsConfig._deserialize(params.get("TmsConfig"))
+        self._IpWhiteStatus = params.get("IpWhiteStatus")
+        self._IpWhiteList = params.get("IpWhiteList")
+        self._IpBlackStatus = params.get("IpBlackStatus")
+        self._IpBlackList = params.get("IpBlackList")
+        if params.get("PluginConfigs") is not None:
+            self._PluginConfigs = []
+            for item in params.get("PluginConfigs"):
+                obj = PluginConfigDTO()
+                obj._deserialize(item)
+                self._PluginConfigs.append(obj)
+        self._ID = params.get("ID")
+        self._Status = params.get("Status")
+        self._Url = params.get("Url")
+        if params.get("App") is not None:
+            self._App = IDNameVO()
+            self._App._deserialize(params.get("App"))
+        if params.get("Catalogs") is not None:
+            self._Catalogs = []
+            for item in params.get("Catalogs"):
+                obj = IDNameVO()
+                obj._deserialize(item)
+                self._Catalogs.append(obj)
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = IDNameVO()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Logins") is not None:
+            self._Logins = []
+            for item in params.get("Logins"):
+                obj = IDNameVO()
+                obj._deserialize(item)
+                self._Logins.append(obj)
+        self._AuthAppNum = params.get("AuthAppNum")
+        self._CreateTime = params.get("CreateTime")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._AppID = params.get("AppID")
+        self._Uin = params.get("Uin")
+        self._Domain = params.get("Domain")
+        self._OpenMessageLogStatus = params.get("OpenMessageLogStatus")
+        self._CurrPaasIDSubscriptionID = params.get("CurrPaasIDSubscriptionID")
+        self._TargetServiceType = params.get("TargetServiceType")
+        if params.get("SqlTemplate") is not None:
+            self._SqlTemplate = SqlTemplate()
+            self._SqlTemplate._deserialize(params.get("SqlTemplate"))
+        self._TargetHostType = params.get("TargetHostType")
+        self._TargetServiceHostType = params.get("TargetServiceHostType")
+        self._TargetServerGroupID = params.get("TargetServerGroupID")
+        if params.get("TargetServerGroup") is not None:
+            self._TargetServerGroup = TargetServerGroupDTO()
+            self._TargetServerGroup._deserialize(params.get("TargetServerGroup"))
+        self._CustomHttpHost = params.get("CustomHttpHost")
+        self._HttpHostType = params.get("HttpHostType")
+        self._MockStatusCode = params.get("MockStatusCode")
+        self._MockBody = params.get("MockBody")
+        if params.get("MockHeaders") is not None:
+            self._MockHeaders = []
+            for item in params.get("MockHeaders"):
+                obj = FieldValueDTO()
+                obj._deserialize(item)
+                self._MockHeaders.append(obj)
+        self._PathMatchType = params.get("PathMatchType")
+        if params.get("CustomMatch") is not None:
+            self._CustomMatch = CustomMatch()
+            self._CustomMatch._deserialize(params.get("CustomMatch"))
+        self._Timeout = params.get("Timeout")
+        self._McpServerNum = params.get("McpServerNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimpleCondition(AbstractModel):
+    r"""匹配条件请求参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>字段名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Condition: <p>匹配方式: eq 等于;ne 不等于;regex 正则;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Condition: str
+        :param _Value: <p>字段值 或正则表达式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Condition = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>字段名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Condition(self):
+        r"""<p>匹配方式: eq 等于;ne 不等于;regex 正则;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Value(self):
+        r"""<p>字段值 或正则表达式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Condition = params.get("Condition")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceTypeConfigDTO(AbstractModel):
+    r"""SourceTypeConfigDTO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReqSourceType: json xml urlencoded amf0 amf3 hessian1 hessian2
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReqSourceType: str
+        :param _ReqTargetType: json xml urlencoded amf0 amf3 hessian1 hessian2
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReqTargetType: str
+        :param _ResSourceType: json xml urlencoded amf0 amf3 hessian1 hessian2
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResSourceType: str
+        :param _ResTargetType: json xml urlencoded amf0 amf3 hessian1 hessian2
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResTargetType: str
+        """
+        self._ReqSourceType = None
+        self._ReqTargetType = None
+        self._ResSourceType = None
+        self._ResTargetType = None
+
+    @property
+    def ReqSourceType(self):
+        r"""json xml urlencoded amf0 amf3 hessian1 hessian2
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReqSourceType
+
+    @ReqSourceType.setter
+    def ReqSourceType(self, ReqSourceType):
+        self._ReqSourceType = ReqSourceType
+
+    @property
+    def ReqTargetType(self):
+        r"""json xml urlencoded amf0 amf3 hessian1 hessian2
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReqTargetType
+
+    @ReqTargetType.setter
+    def ReqTargetType(self, ReqTargetType):
+        self._ReqTargetType = ReqTargetType
+
+    @property
+    def ResSourceType(self):
+        r"""json xml urlencoded amf0 amf3 hessian1 hessian2
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResSourceType
+
+    @ResSourceType.setter
+    def ResSourceType(self, ResSourceType):
+        self._ResSourceType = ResSourceType
+
+    @property
+    def ResTargetType(self):
+        r"""json xml urlencoded amf0 amf3 hessian1 hessian2
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResTargetType
+
+    @ResTargetType.setter
+    def ResTargetType(self, ResTargetType):
+        self._ResTargetType = ResTargetType
+
+
+    def _deserialize(self, params):
+        self._ReqSourceType = params.get("ReqSourceType")
+        self._ReqTargetType = params.get("ReqTargetType")
+        self._ResSourceType = params.get("ResSourceType")
+        self._ResTargetType = params.get("ResTargetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlTemplate(AbstractModel):
+    r"""SqlTemplate SQL模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbConfigMode: <p>配置方式  script  脚本 wizard 向导</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbConfigMode: str
+        :param _DataSourceID: <p>数据源ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceID: str
+        :param _Sql: <p>Sql代码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sql: str
+        :param _WizardConfig: <p>向导模式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WizardConfig: :class:`tencentcloud.apis.v20240801.models.WizardConfig`
+        """
+        self._DbConfigMode = None
+        self._DataSourceID = None
+        self._Sql = None
+        self._WizardConfig = None
+
+    @property
+    def DbConfigMode(self):
+        r"""<p>配置方式  script  脚本 wizard 向导</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbConfigMode
+
+    @DbConfigMode.setter
+    def DbConfigMode(self, DbConfigMode):
+        self._DbConfigMode = DbConfigMode
+
+    @property
+    def DataSourceID(self):
+        r"""<p>数据源ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataSourceID
+
+    @DataSourceID.setter
+    def DataSourceID(self, DataSourceID):
+        self._DataSourceID = DataSourceID
+
+    @property
+    def Sql(self):
+        r"""<p>Sql代码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def WizardConfig(self):
+        r"""<p>向导模式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.WizardConfig`
+        """
+        return self._WizardConfig
+
+    @WizardConfig.setter
+    def WizardConfig(self, WizardConfig):
+        self._WizardConfig = WizardConfig
+
+
+    def _deserialize(self, params):
+        self._DbConfigMode = params.get("DbConfigMode")
+        self._DataSourceID = params.get("DataSourceID")
+        self._Sql = params.get("Sql")
+        if params.get("WizardConfig") is not None:
+            self._WizardConfig = WizardConfig()
+            self._WizardConfig._deserialize(params.get("WizardConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartEndTime(AbstractModel):
     r"""开始结束时间结构体
 
@@ -10417,6 +13945,134 @@ class TargetModelDTO(AbstractModel):
         self._ID = params.get("ID")
         self._Name = params.get("Name")
         self._Rank = params.get("Rank")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TargetServerGroupDTO(AbstractModel):
+    r"""后端服务组DTO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>后端服务组ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Name: <p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _TargetHosts: <p>目标服务器列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetHosts: list of TargetHostDTO
+        :param _TargetHostType: <p>目标Host类型 0 默认 1 vpc</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetHostType: int
+        :param _ServiceCount: <p>关联的服务数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceCount: int
+        :param _CreateTime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self._ID = None
+        self._Name = None
+        self._TargetHosts = None
+        self._TargetHostType = None
+        self._ServiceCount = None
+        self._CreateTime = None
+
+    @property
+    def ID(self):
+        r"""<p>后端服务组ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TargetHosts(self):
+        r"""<p>目标服务器列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TargetHostDTO
+        """
+        return self._TargetHosts
+
+    @TargetHosts.setter
+    def TargetHosts(self, TargetHosts):
+        self._TargetHosts = TargetHosts
+
+    @property
+    def TargetHostType(self):
+        r"""<p>目标Host类型 0 默认 1 vpc</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetHostType
+
+    @TargetHostType.setter
+    def TargetHostType(self, TargetHostType):
+        self._TargetHostType = TargetHostType
+
+    @property
+    def ServiceCount(self):
+        r"""<p>关联的服务数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ServiceCount
+
+    @ServiceCount.setter
+    def ServiceCount(self, ServiceCount):
+        self._ServiceCount = ServiceCount
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        if params.get("TargetHosts") is not None:
+            self._TargetHosts = []
+            for item in params.get("TargetHosts"):
+                obj = TargetHostDTO()
+                obj._deserialize(item)
+                self._TargetHosts.append(obj)
+        self._TargetHostType = params.get("TargetHostType")
+        self._ServiceCount = params.get("ServiceCount")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10812,6 +14468,199 @@ class ToolConfigVO(AbstractModel):
                 obj = BindMcpSecurityRuleVO()
                 obj._deserialize(item)
                 self._McpSecurityRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VersionDTO(AbstractModel):
+    r"""VersionDTO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: Version版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _TargetPath: 目标路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetPath: str
+        """
+        self._Version = None
+        self._TargetPath = None
+
+    @property
+    def Version(self):
+        r"""Version版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def TargetPath(self):
+        r"""目标路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetPath
+
+    @TargetPath.setter
+    def TargetPath(self, TargetPath):
+        self._TargetPath = TargetPath
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._TargetPath = params.get("TargetPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WizardConfig(AbstractModel):
+    r"""WizardConfig 向导模式配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbTable: <p>表名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbTable: str
+        :param _DbEnablePaging: <p>是否分页</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbEnablePaging: bool
+        :param _DbReqParams: <p>请求参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbReqParams: list of ServiceDatabaseReqParam
+        :param _DbRespParams: <p>响应参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbRespParams: list of ServiceDatabaseRespParam
+        :param _DbOrdParams: <p>排序参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbOrdParams: list of ServiceDatabaseOrderParam
+        :param _DbEnableMappingResp: <p>是否开启出参映射</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbEnableMappingResp: bool
+        """
+        self._DbTable = None
+        self._DbEnablePaging = None
+        self._DbReqParams = None
+        self._DbRespParams = None
+        self._DbOrdParams = None
+        self._DbEnableMappingResp = None
+
+    @property
+    def DbTable(self):
+        r"""<p>表名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbTable
+
+    @DbTable.setter
+    def DbTable(self, DbTable):
+        self._DbTable = DbTable
+
+    @property
+    def DbEnablePaging(self):
+        r"""<p>是否分页</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._DbEnablePaging
+
+    @DbEnablePaging.setter
+    def DbEnablePaging(self, DbEnablePaging):
+        self._DbEnablePaging = DbEnablePaging
+
+    @property
+    def DbReqParams(self):
+        r"""<p>请求参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceDatabaseReqParam
+        """
+        return self._DbReqParams
+
+    @DbReqParams.setter
+    def DbReqParams(self, DbReqParams):
+        self._DbReqParams = DbReqParams
+
+    @property
+    def DbRespParams(self):
+        r"""<p>响应参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceDatabaseRespParam
+        """
+        return self._DbRespParams
+
+    @DbRespParams.setter
+    def DbRespParams(self, DbRespParams):
+        self._DbRespParams = DbRespParams
+
+    @property
+    def DbOrdParams(self):
+        r"""<p>排序参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceDatabaseOrderParam
+        """
+        return self._DbOrdParams
+
+    @DbOrdParams.setter
+    def DbOrdParams(self, DbOrdParams):
+        self._DbOrdParams = DbOrdParams
+
+    @property
+    def DbEnableMappingResp(self):
+        r"""<p>是否开启出参映射</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._DbEnableMappingResp
+
+    @DbEnableMappingResp.setter
+    def DbEnableMappingResp(self, DbEnableMappingResp):
+        self._DbEnableMappingResp = DbEnableMappingResp
+
+
+    def _deserialize(self, params):
+        self._DbTable = params.get("DbTable")
+        self._DbEnablePaging = params.get("DbEnablePaging")
+        if params.get("DbReqParams") is not None:
+            self._DbReqParams = []
+            for item in params.get("DbReqParams"):
+                obj = ServiceDatabaseReqParam()
+                obj._deserialize(item)
+                self._DbReqParams.append(obj)
+        if params.get("DbRespParams") is not None:
+            self._DbRespParams = []
+            for item in params.get("DbRespParams"):
+                obj = ServiceDatabaseRespParam()
+                obj._deserialize(item)
+                self._DbRespParams.append(obj)
+        if params.get("DbOrdParams") is not None:
+            self._DbOrdParams = []
+            for item in params.get("DbOrdParams"):
+                obj = ServiceDatabaseOrderParam()
+                obj._deserialize(item)
+                self._DbOrdParams.append(obj)
+        self._DbEnableMappingResp = params.get("DbEnableMappingResp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -7255,6 +7255,115 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDatabaseAutonomyStatusRequest(AbstractModel):
+    r"""DescribeDatabaseAutonomyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID。</p>
+        :type InstanceId: str
+        :param _Product: <p>服务产品类型。取值：mongodb（云数据库 MongoDB）。</p>
+        :type Product: str
+        :param _Type: <p>自治功能类型。取值：AutoIndexAdvice（索引推荐）。</p>
+        :type Type: str
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._Type = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型。取值：mongodb（云数据库 MongoDB）。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Type(self):
+        r"""<p>自治功能类型。取值：AutoIndexAdvice（索引推荐）。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseAutonomyStatusResponse(AbstractModel):
+    r"""DescribeDatabaseAutonomyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>自治功能开关状态。取值：0（关闭）、1（开启）。</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>自治功能开关状态。取值：0（关闭）、1（开启）。</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDiagDBInstancesRequest(AbstractModel):
     r"""DescribeDiagDBInstances请求参数结构体
 
@@ -21946,6 +22055,130 @@ class UpdateAgentSwitchResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateDatabaseAutonomyStatusRequest(AbstractModel):
+    r"""UpdateDatabaseAutonomyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID。</p>
+        :type InstanceId: str
+        :param _Product: <p>服务产品类型。取值：mongodb（云数据库 MongoDB）。</p>
+        :type Product: str
+        :param _Type: <p>自治功能类型。取值：AutoIndexAdvice（索引推荐）。</p>
+        :type Type: str
+        :param _Status: <p>开关状态。取值：0（关闭）、1（开启）。</p>
+        :type Status: int
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._Type = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型。取值：mongodb（云数据库 MongoDB）。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Type(self):
+        r"""<p>自治功能类型。取值：AutoIndexAdvice（索引推荐）。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        r"""<p>开关状态。取值：0（关闭）、1（开启）。</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDatabaseAutonomyStatusResponse(AbstractModel):
+    r"""UpdateDatabaseAutonomyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>操作结果状态。取值：1（操作成功）。</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>操作结果状态。取值：1（操作成功）。</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 

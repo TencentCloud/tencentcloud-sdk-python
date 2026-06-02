@@ -29443,28 +29443,28 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        :param _InstanceId: <p>实例 ID，可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _LogType: 日志类型。error：错误日志，slowlog：慢日志。
+        :param _LogType: <p>日志类型。error：错误日志，slowlog：慢日志。</p>
         :type LogType: str
-        :param _Status: 投递状态。ON：开启，OFF：关闭。
+        :param _Status: <p>投递状态。ON：开启，OFF：关闭。</p>
         :type Status: str
-        :param _CreateLogset: 是否需要创建日志集。默认为 false。
+        :param _CreateLogset: <p>是否需要创建日志集。默认为 false。</p>
         :type CreateLogset: bool
-        :param _Logset: 需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。
-说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
+        :param _Logset: <p>需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。<br>说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。</p>
         :type Logset: str
-        :param _CreateLogTopic: 是否需要创建日志主题。默认为 false。
+        :param _CreateLogTopic: <p>是否需要创建日志主题。默认为 false。</p>
         :type CreateLogTopic: bool
-        :param _LogTopic: 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。
-说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
+        :param _LogTopic: <p>需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。<br>说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。</p>
         :type LogTopic: str
-        :param _Period: 日志主题有效期，不填写时，默认30天，最大值3600。
+        :param _Period: <p>日志主题有效期，不填写时，默认30天，最大值3600。</p>
         :type Period: int
-        :param _CreateIndex: 创建日志主题时，是否创建索引，默认为 false。
+        :param _CreateIndex: <p>创建日志主题时，是否创建索引，默认为 false。</p>
         :type CreateIndex: bool
-        :param _ClsRegion: CLS 所在地域，不填择默认为 Region 的参数值。
+        :param _ClsRegion: <p>CLS 所在地域，不填择默认为 Region 的参数值。</p>
         :type ClsRegion: str
+        :param _ResourceTags: <p>创建日志集和日志主题的时候可选，最多不能超过10个标签</p>
+        :type ResourceTags: list of TagInfoItem
         """
         self._InstanceId = None
         self._LogType = None
@@ -29476,10 +29476,11 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
         self._Period = None
         self._CreateIndex = None
         self._ClsRegion = None
+        self._ResourceTags = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        r"""<p>实例 ID，可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -29490,7 +29491,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""日志类型。error：错误日志，slowlog：慢日志。
+        r"""<p>日志类型。error：错误日志，slowlog：慢日志。</p>
         :rtype: str
         """
         return self._LogType
@@ -29501,7 +29502,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""投递状态。ON：开启，OFF：关闭。
+        r"""<p>投递状态。ON：开启，OFF：关闭。</p>
         :rtype: str
         """
         return self._Status
@@ -29512,7 +29513,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def CreateLogset(self):
-        r"""是否需要创建日志集。默认为 false。
+        r"""<p>是否需要创建日志集。默认为 false。</p>
         :rtype: bool
         """
         return self._CreateLogset
@@ -29523,8 +29524,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def Logset(self):
-        r"""需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。
-说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
+        r"""<p>需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。<br>说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。</p>
         :rtype: str
         """
         return self._Logset
@@ -29535,7 +29535,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def CreateLogTopic(self):
-        r"""是否需要创建日志主题。默认为 false。
+        r"""<p>是否需要创建日志主题。默认为 false。</p>
         :rtype: bool
         """
         return self._CreateLogTopic
@@ -29546,8 +29546,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def LogTopic(self):
-        r"""需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。
-说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
+        r"""<p>需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。<br>说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。</p>
         :rtype: str
         """
         return self._LogTopic
@@ -29558,7 +29557,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""日志主题有效期，不填写时，默认30天，最大值3600。
+        r"""<p>日志主题有效期，不填写时，默认30天，最大值3600。</p>
         :rtype: int
         """
         return self._Period
@@ -29569,7 +29568,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def CreateIndex(self):
-        r"""创建日志主题时，是否创建索引，默认为 false。
+        r"""<p>创建日志主题时，是否创建索引，默认为 false。</p>
         :rtype: bool
         """
         return self._CreateIndex
@@ -29580,7 +29579,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
 
     @property
     def ClsRegion(self):
-        r"""CLS 所在地域，不填择默认为 Region 的参数值。
+        r"""<p>CLS 所在地域，不填择默认为 Region 的参数值。</p>
         :rtype: str
         """
         return self._ClsRegion
@@ -29588,6 +29587,17 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
     @ClsRegion.setter
     def ClsRegion(self, ClsRegion):
         self._ClsRegion = ClsRegion
+
+    @property
+    def ResourceTags(self):
+        r"""<p>创建日志集和日志主题的时候可选，最多不能超过10个标签</p>
+        :rtype: list of TagInfoItem
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
 
 
     def _deserialize(self, params):
@@ -29601,6 +29611,12 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
         self._Period = params.get("Period")
         self._CreateIndex = params.get("CreateIndex")
         self._ClsRegion = params.get("ClsRegion")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = TagInfoItem()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

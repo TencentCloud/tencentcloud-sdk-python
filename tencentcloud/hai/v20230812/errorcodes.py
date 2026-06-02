@@ -107,6 +107,9 @@ INVALIDPARAMETERVALUE_INVALIDPASSWORD = 'InvalidParameterValue.InvalidPassword'
 # 场景ID格式非法
 INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = 'InvalidParameterValue.InvalidSceneIdMalformed'
 
+# 非法安全类型
+INVALIDPARAMETERVALUE_INVALIDSECURITYTYPE = 'InvalidParameterValue.InvalidSecurityType'
+
 # 服务ID格式错误
 INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = 'InvalidParameterValue.InvalidServiceIdMalformed'
 

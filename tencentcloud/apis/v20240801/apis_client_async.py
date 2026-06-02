@@ -79,6 +79,24 @@ class ApisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAgentAppServices(
+            self,
+            request: models.CreateAgentAppServicesRequest,
+            opts: Dict = None,
+    ) -> models.CreateAgentAppServicesResponse:
+        """
+        应用关联API
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAgentAppServices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAgentAppServicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAgentCredential(
             self,
             request: models.CreateAgentCredentialRequest,
@@ -151,6 +169,24 @@ class ApisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateService(
+            self,
+            request: models.CreateServiceRequest,
+            opts: Dict = None,
+    ) -> models.CreateServiceResponse:
+        """
+        创建服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAgentApp(
             self,
             request: models.DeleteAgentAppRequest,
@@ -200,6 +236,24 @@ class ApisClient(AbstractClient):
         kwargs["action"] = "DeleteAgentAppModelServices"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAgentAppModelServicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAgentAppServices(
+            self,
+            request: models.DeleteAgentAppServicesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAgentAppServicesResponse:
+        """
+        应用API关联解除
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAgentAppServices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAgentAppServicesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -277,6 +331,24 @@ class ApisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteService(
+            self,
+            request: models.DeleteServiceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteServiceResponse:
+        """
+        删除服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAgentApp(
             self,
             request: models.DescribeAgentAppRequest,
@@ -326,6 +398,24 @@ class ApisClient(AbstractClient):
         kwargs["action"] = "DescribeAgentAppModelServices"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAgentAppModelServicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAgentAppServices(
+            self,
+            request: models.DescribeAgentAppServicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAgentAppServicesResponse:
+        """
+        创建app
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAgentAppServices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAgentAppServicesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -493,6 +583,42 @@ class ApisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeService(
+            self,
+            request: models.DescribeServiceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeServiceResponse:
+        """
+        查询服务详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeServices(
+            self,
+            request: models.DescribeServicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeServicesResponse:
+        """
+        查询服务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeServices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeServicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAgentApp(
             self,
             request: models.ModifyAgentAppRequest,
@@ -596,6 +722,24 @@ class ApisClient(AbstractClient):
         kwargs["action"] = "ModifyModelService"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyModelServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyService(
+            self,
+            request: models.ModifyServiceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyServiceResponse:
+        """
+        修改服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

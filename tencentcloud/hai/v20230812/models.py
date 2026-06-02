@@ -783,6 +783,8 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
         :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
         :param _NetworkSetting: <p>网络设置</p>
         :type NetworkSetting: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
+        :param _SecurityType: <p>推理服务安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理服务</li><li>CONFIDENTIAL： 可信推理服务</li></ul>
+        :type SecurityType: str
         """
         self._TemplateId = None
         self._ServiceName = None
@@ -790,6 +792,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
         self._ServiceChargeType = None
         self._HyperParam = None
         self._NetworkSetting = None
+        self._SecurityType = None
 
     @property
     def TemplateId(self):
@@ -857,6 +860,17 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
     def NetworkSetting(self, NetworkSetting):
         self._NetworkSetting = NetworkSetting
 
+    @property
+    def SecurityType(self):
+        r"""<p>推理服务安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理服务</li><li>CONFIDENTIAL： 可信推理服务</li></ul>
+        :rtype: str
+        """
+        return self._SecurityType
+
+    @SecurityType.setter
+    def SecurityType(self, SecurityType):
+        self._SecurityType = SecurityType
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -869,6 +883,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
         if params.get("NetworkSetting") is not None:
             self._NetworkSetting = NetworkSetting()
             self._NetworkSetting._deserialize(params.get("NetworkSetting"))
+        self._SecurityType = params.get("SecurityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2501,11 +2516,11 @@ class DescribeServicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceIds: 服务列表
+        :param _ServiceIds: <p>服务列表</p>
         :type ServiceIds: list of str
-        :param _Limit: 分页大小
+        :param _Limit: <p>分页大小</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
         """
         self._ServiceIds = None
@@ -2514,7 +2529,7 @@ class DescribeServicesRequest(AbstractModel):
 
     @property
     def ServiceIds(self):
-        r"""服务列表
+        r"""<p>服务列表</p>
         :rtype: list of str
         """
         return self._ServiceIds
@@ -2525,7 +2540,7 @@ class DescribeServicesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -2536,7 +2551,7 @@ class DescribeServicesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -2567,9 +2582,9 @@ class DescribeServicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
-        :param _ServiceInfoSet: 服务列表
+        :param _ServiceInfoSet: <p>服务列表</p>
         :type ServiceInfoSet: list of ServiceDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2580,7 +2595,7 @@ class DescribeServicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2591,7 +2606,7 @@ class DescribeServicesResponse(AbstractModel):
 
     @property
     def ServiceInfoSet(self):
-        r"""服务列表
+        r"""<p>服务列表</p>
         :rtype: list of ServiceDetail
         """
         return self._ServiceInfoSet

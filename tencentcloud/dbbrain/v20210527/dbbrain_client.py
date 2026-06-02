@@ -900,6 +900,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDatabaseAutonomyStatus(self, request):
+        r"""查询数据库自治功能的开关状态。当前支持 MongoDB 的索引推荐（AutoIndexAdvice）功能状态查询。
+
+        :param request: Request instance for DescribeDatabaseAutonomyStatus.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDatabaseAutonomyStatusRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDatabaseAutonomyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabaseAutonomyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabaseAutonomyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDiagDBInstances(self, request):
         r"""获取实例信息列表。Region统一选择广州。
 
@@ -1949,6 +1972,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("UpdateAgentSwitch", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAgentSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDatabaseAutonomyStatus(self, request):
+        r"""设置数据库自治功能的开关状态。当前支持 MongoDB 的索引推荐（AutoIndexAdvice）功能的开启或关闭。
+
+        :param request: Request instance for UpdateDatabaseAutonomyStatus.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.UpdateDatabaseAutonomyStatusRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.UpdateDatabaseAutonomyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDatabaseAutonomyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDatabaseAutonomyStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

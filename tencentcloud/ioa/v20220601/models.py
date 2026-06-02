@@ -8531,20 +8531,20 @@ class DescribeLocalAccountsResponse(AbstractModel):
 
 
 class DescribeResourceGrantedAccountGroupsData(AbstractModel):
-    r"""DescribeResourceGrantedAccountsData
+    r"""账号分组授权信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Items:  
+        :param _Items: <p>授权信息</p>
         :type Items: list of GrantedAccountGroupItem
         """
         self._Items = None
 
     @property
     def Items(self):
-        r""" 
+        r"""<p>授权信息</p>
         :rtype: list of GrantedAccountGroupItem
         """
         return self._Items
@@ -8661,9 +8661,9 @@ class DescribeResourceGrantedAccountsData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
-        :param _Items:  
+        :param _Items: <p>授权信息</p>
         :type Items: list of GrantedAccountItem
         """
         self._TotalCount = None
@@ -8671,7 +8671,7 @@ class DescribeResourceGrantedAccountsData(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -8682,7 +8682,7 @@ class DescribeResourceGrantedAccountsData(AbstractModel):
 
     @property
     def Items(self):
-        r""" 
+        r"""<p>授权信息</p>
         :rtype: list of GrantedAccountItem
         """
         return self._Items
@@ -8798,14 +8798,14 @@ class DescribeResourceGrantedVirtualGroupsData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items:  
+        :param _Items: <p>授权信息</p>
         :type Items: list of GrantedVirtualGroupItem
         """
         self._Items = None
 
     @property
     def Items(self):
-        r""" 
+        r"""<p>授权信息</p>
         :rtype: list of GrantedVirtualGroupItem
         """
         return self._Items

@@ -5185,11 +5185,8 @@ class DescribeDBSAvailableRecoveryTimeRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _BackupSetId: <p>备份集ID,值来自 DescribeDBSBackupSets 接口返回</p>
-        :type BackupSetId: int
         """
         self._InstanceId = None
-        self._BackupSetId = None
 
     @property
     def InstanceId(self):
@@ -5202,21 +5199,9 @@ class DescribeDBSAvailableRecoveryTimeRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
-    @property
-    def BackupSetId(self):
-        r"""<p>备份集ID,值来自 DescribeDBSBackupSets 接口返回</p>
-        :rtype: int
-        """
-        return self._BackupSetId
-
-    @BackupSetId.setter
-    def BackupSetId(self, BackupSetId):
-        self._BackupSetId = BackupSetId
-
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._BackupSetId = params.get("BackupSetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -95,6 +95,29 @@ class ApisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAgentAppServices(self, request):
+        r"""应用关联API
+
+        :param request: Request instance for CreateAgentAppServices.
+        :type request: :class:`tencentcloud.apis.v20240801.models.CreateAgentAppServicesRequest`
+        :rtype: :class:`tencentcloud.apis.v20240801.models.CreateAgentAppServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAgentAppServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAgentAppServicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAgentCredential(self, request):
         r"""创建Credential
 
@@ -187,6 +210,29 @@ class ApisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateService(self, request):
+        r"""创建服务
+
+        :param request: Request instance for CreateService.
+        :type request: :class:`tencentcloud.apis.v20240801.models.CreateServiceRequest`
+        :rtype: :class:`tencentcloud.apis.v20240801.models.CreateServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAgentApp(self, request):
         r"""删除app
 
@@ -247,6 +293,29 @@ class ApisClient(AbstractClient):
             body = self.call("DeleteAgentAppModelServices", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAgentAppModelServicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAgentAppServices(self, request):
+        r"""应用API关联解除
+
+        :param request: Request instance for DeleteAgentAppServices.
+        :type request: :class:`tencentcloud.apis.v20240801.models.DeleteAgentAppServicesRequest`
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DeleteAgentAppServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAgentAppServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAgentAppServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -348,6 +417,29 @@ class ApisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteService(self, request):
+        r"""删除服务
+
+        :param request: Request instance for DeleteService.
+        :type request: :class:`tencentcloud.apis.v20240801.models.DeleteServiceRequest`
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DeleteServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAgentApp(self, request):
         r"""查询app详情
 
@@ -408,6 +500,29 @@ class ApisClient(AbstractClient):
             body = self.call("DescribeAgentAppModelServices", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAgentAppModelServicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAgentAppServices(self, request):
+        r"""创建app
+
+        :param request: Request instance for DescribeAgentAppServices.
+        :type request: :class:`tencentcloud.apis.v20240801.models.DescribeAgentAppServicesRequest`
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeAgentAppServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentAppServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAgentAppServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -624,6 +739,52 @@ class ApisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeService(self, request):
+        r"""查询服务详情
+
+        :param request: Request instance for DescribeService.
+        :type request: :class:`tencentcloud.apis.v20240801.models.DescribeServiceRequest`
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeServices(self, request):
+        r"""查询服务列表
+
+        :param request: Request instance for DescribeServices.
+        :type request: :class:`tencentcloud.apis.v20240801.models.DescribeServicesRequest`
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAgentApp(self, request):
         r"""修改app
 
@@ -753,6 +914,29 @@ class ApisClient(AbstractClient):
             body = self.call("ModifyModelService", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyModelServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyService(self, request):
+        r"""修改服务
+
+        :param request: Request instance for ModifyService.
+        :type request: :class:`tencentcloud.apis.v20240801.models.ModifyServiceRequest`
+        :rtype: :class:`tencentcloud.apis.v20240801.models.ModifyServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -616,6 +616,8 @@ class ApigatewayClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeApiAppResponse:
         """
+        历史接口，已经无用户调用
+
         本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
         """
         

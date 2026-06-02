@@ -1907,31 +1907,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RecognizeOnlineTaxiItineraryOCR(self, request):
-        r"""本接口支持网约车行程单关键字段的识别，包括行程起止日期、上车时间、起点、终点、里程、金额等字段。
-
-        默认接口请求频率限制：20次/秒。
-
-        :param request: Request instance for RecognizeOnlineTaxiItineraryOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeOnlineTaxiItineraryOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeOnlineTaxiItineraryOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeOnlineTaxiItineraryOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeOnlineTaxiItineraryOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RecognizeStoreName(self, request):
         r"""本接口用于识别门头照文字识别结果以及对应分类标签信息
         默认接口请求频率限制：1次/秒
@@ -2302,31 +2277,6 @@ class OcrClient(AbstractClient):
             body = self.call("TableOCR", params, headers=headers)
             response = json.loads(body)
             model = models.TableOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def TaxiInvoiceOCR(self, request):
-        r"""本接口支持出租车发票关键字段的识别，包括发票号码、发票代码、金额、日期、上下车时间、里程、车牌号、发票类型及所属地区等字段。
-
-        默认接口请求频率限制：5次/秒。
-
-        :param request: Request instance for TaxiInvoiceOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.TaxiInvoiceOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.TaxiInvoiceOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("TaxiInvoiceOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.TaxiInvoiceOCRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

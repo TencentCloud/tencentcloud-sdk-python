@@ -481,7 +481,7 @@ class IoaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDirectAccountGroupResourcesResponse:
         """
-        列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+        列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeDirectAccountGroupResources
         """
         
         kwargs = {}
