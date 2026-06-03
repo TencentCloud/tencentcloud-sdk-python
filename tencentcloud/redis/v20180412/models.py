@@ -2476,29 +2476,19 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :param _InstanceId: <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _AccountName: 自定义的访问数据库的账号名称。
-- 仅由字母、数字、下划线、中划线组成。
-- 长度不能大于32位。
+        :param _AccountName: <p>自定义的访问数据库的账号名称。</p><ul><li>仅由字母、数字、下划线、中划线组成。</li><li>长度不能大于32位。</li></ul>
         :type AccountName: str
-        :param _AccountPassword: 设置自定义账号的密码。密码复杂度要求如下：
-- 字符个数为[8,64]。
-- 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
-- 不能以"/"开头。
-
+        :param _AccountPassword: <p>设置自定义账号的密码。密码复杂度要求如下：</p><ul><li>字符个数为[8,64]。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的两种。</li><li>不能以&quot;/&quot;开头。</li></ul>
         :type AccountPassword: str
-        :param _ReadonlyPolicy: 指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。
-- master：主节点
-- replication：副本节点
+        :param _ReadonlyPolicy: <p>指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。</p><ul><li>master：主节点</li><li>replication：副本节点</li></ul>
         :type ReadonlyPolicy: list of str
-        :param _Privilege: 账户读写权限，支持选择只读与读写权限。
-- r：只读。
-- rw: 读写。
+        :param _Privilege: <p>账户读写权限，支持选择只读与读写权限。</p><ul><li>r：只读。</li><li>rw: 读写。</li></ul>
         :type Privilege: str
-        :param _Remark: 账号备注描述信息，长度为[0,64] 字节，支持中文。
+        :param _Remark: <p>账号备注描述信息，长度为[0,64] 字节，支持中文。</p>
         :type Remark: str
-        :param _EncryptPassword: 是否加密密码
+        :param _EncryptPassword: <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
         :type EncryptPassword: bool
         """
         self._InstanceId = None
@@ -2511,7 +2501,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        r"""<p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2522,9 +2512,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""自定义的访问数据库的账号名称。
-- 仅由字母、数字、下划线、中划线组成。
-- 长度不能大于32位。
+        r"""<p>自定义的访问数据库的账号名称。</p><ul><li>仅由字母、数字、下划线、中划线组成。</li><li>长度不能大于32位。</li></ul>
         :rtype: str
         """
         return self._AccountName
@@ -2535,11 +2523,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountPassword(self):
-        r"""设置自定义账号的密码。密码复杂度要求如下：
-- 字符个数为[8,64]。
-- 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
-- 不能以"/"开头。
-
+        r"""<p>设置自定义账号的密码。密码复杂度要求如下：</p><ul><li>字符个数为[8,64]。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的两种。</li><li>不能以&quot;/&quot;开头。</li></ul>
         :rtype: str
         """
         return self._AccountPassword
@@ -2550,9 +2534,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def ReadonlyPolicy(self):
-        r"""指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。
-- master：主节点
-- replication：副本节点
+        r"""<p>指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。</p><ul><li>master：主节点</li><li>replication：副本节点</li></ul>
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -2563,9 +2545,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def Privilege(self):
-        r"""账户读写权限，支持选择只读与读写权限。
-- r：只读。
-- rw: 读写。
+        r"""<p>账户读写权限，支持选择只读与读写权限。</p><ul><li>r：只读。</li><li>rw: 读写。</li></ul>
         :rtype: str
         """
         return self._Privilege
@@ -2576,7 +2556,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""账号备注描述信息，长度为[0,64] 字节，支持中文。
+        r"""<p>账号备注描述信息，长度为[0,64] 字节，支持中文。</p>
         :rtype: str
         """
         return self._Remark
@@ -2587,7 +2567,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def EncryptPassword(self):
-        r"""是否加密密码
+        r"""<p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
         :rtype: bool
         """
         return self._EncryptPassword
@@ -2622,7 +2602,7 @@ class CreateInstanceAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID。
+        :param _TaskId: <p>任务ID。</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2632,7 +2612,7 @@ class CreateInstanceAccountResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID。
+        r"""<p>任务ID。</p>
         :rtype: int
         """
         return self._TaskId
@@ -2717,7 +2697,7 @@ class CreateInstancesRequest(AbstractModel):
         :type RedisClusterId: str
         :param _AlarmPolicyList: <p>告警策略 ID 数组。</p><ul><li>请登录<a href="https://console.cloud.tencent.com/monitor/alarm/policy">腾讯云可观测平台-告警管理-策略管理</a>获取告警策略 ID。</li><li>若不配置该参数，则绑定默认告警策略。默认告警策略具体信息，请登录<a href="https://console.cloud.tencent.com/monitor/alarm/policy">腾讯云可观测平台-告警管理-策略管理</a>查看。</li></ul>
         :type AlarmPolicyList: list of str
-        :param _EncryptPassword: <p>是否加密密码</p>
+        :param _EncryptPassword: <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
         :type EncryptPassword: bool
         """
         self._TypeId = None
@@ -3036,7 +3016,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def EncryptPassword(self):
-        r"""<p>是否加密密码</p>
+        r"""<p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
         :rtype: bool
         """
         return self._EncryptPassword
@@ -15594,146 +15574,127 @@ class InstanceSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: 实例名称。
+        :param _InstanceName: <p>实例名称。</p>
         :type InstanceName: str
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: <p>实例 ID。</p>
         :type InstanceId: str
-        :param _Appid: 用户AppId。AppId是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 AppId。
-
+        :param _Appid: <p>用户AppId。AppId是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 AppId。</p>
         :type Appid: int
-        :param _ProjectId: 项目 ID。
+        :param _ProjectId: <p>项目 ID。</p>
         :type ProjectId: int
-        :param _RegionId: 地域 ID。<ul><li>1：广州。</li><li>4：上海。</li><li>5：中国香港。</li><li>7：上海金融。</li> <li>8：北京。</li> <li>9：新加坡。</li> <li>11：深圳金融。</li> <li>15：美西（硅谷）。</li><li>16：成都。</li><li>17：法兰克福。</li><li>18：首尔。</li><li>19：重庆。</li><li>22：美东（弗吉尼亚）。</li><li>23：曼谷。</li><li>25：东京。</li></ul>
+        :param _RegionId: <p>地域 ID。<ul><li>1：广州。</li><li>4：上海。</li><li>5：中国香港。</li><li>7：上海金融。</li> <li>8：北京。</li> <li>9：新加坡。</li> <li>11：深圳金融。</li> <li>15：美西（硅谷）。</li><li>16：成都。</li><li>17：法兰克福。</li><li>18：首尔。</li><li>19：重庆。</li><li>22：美东（弗吉尼亚）。</li><li>23：曼谷。</li><li>25：东京。</li></ul></p>
         :type RegionId: int
-        :param _ZoneId: 区域 ID。
+        :param _ZoneId: <p>区域 ID。</p>
         :type ZoneId: int
-        :param _VpcId: vpc网络 ID，例如75101。
+        :param _VpcId: <p>vpc网络 ID，例如75101。</p>
         :type VpcId: int
-        :param _SubnetId: vpc网络下子网ID，如：46315。
+        :param _SubnetId: <p>vpc网络下子网ID，如：46315。</p>
         :type SubnetId: int
-        :param _Status: 实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul>
+        :param _Status: <p>实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul></p>
         :type Status: int
-        :param _WanIp: 实例 VIP。
+        :param _WanIp: <p>实例 VIP。</p>
         :type WanIp: str
-        :param _Port: 实例端口号。
+        :param _Port: <p>实例端口号。</p>
         :type Port: int
-        :param _Createtime: 实例创建时间。格式如：2020-01-15 10:20:00。
+        :param _Createtime: <p>实例创建时间。格式如：2020-01-15 10:20:00。</p>
         :type Createtime: str
-        :param _Size: 实例内存容量大小。单位：MB，1MB=1024KB。
+        :param _Size: <p>实例内存容量大小。单位：MB，1MB=1024KB。</p>
         :type Size: float
-        :param _SizeUsed: 该字段已废弃。请使用腾讯云可观测平台API 接口 [GetMonitorData](https://cloud.tencent.com/document/product/248/31014) 获取实例已使用的内存容量。
+        :param _SizeUsed: <p>该字段已废弃。请使用腾讯云可观测平台API 接口 <a href="https://cloud.tencent.com/document/product/248/31014">GetMonitorData</a> 获取实例已使用的内存容量。</p>
         :type SizeUsed: float
-        :param _Type: 实例类型。
-- 2：Redis 2.8 内存版（标准架构）。
-- 3：CKV 3.2 内存版（标准架构）。
-- 4：CKV 3.2 内存版（集群架构）。
-- 5：Redis 2.8 内存版（单机）。
-- 6：Redis 4.0 内存版（标准架构）。
-- 7：Redis 4.0 内存版（集群架构）。
-- 8：Redis 5.0 内存版（标准架构）。
-- 9：Redis 5.0 内存版（集群架构）。
-- 15：Redis 6.2 内存版（标准架构）。
-- 16：Redis 6.2 内存版（集群架构）。
-- 17：Redis 7.0 内存版（标准架构）。
-- 18：Redis 7.0 内存版（集群架构）。
-- 200:Memcached 1.6 内存版（集群架构）。
+        :param _Type: <p>实例类型。</p><p>枚举值：</p><ul><li>2： Redis 2.8 内存版（标准架构）。</li><li>3： CKV 3.2 内存版（标准架构）。</li><li>4： CKV 3.2 内存版（集群架构）。</li><li>5： Redis 2.8 内存版（单机）。</li><li>6： Redis 4.0 内存版（标准架构）。</li><li>7： Redis 4.0 内存版（集群架构）。</li><li>8： Redis 5.0 内存版（标准架构）。</li><li>9： Redis 5.0 内存版（集群架构）。</li><li>15： Redis 6.2 内存版（标准架构）。</li><li>16： Redis 6.2 内存版（集群架构）。</li><li>17： Redis 7.0 内存版（标准架构）。</li><li>18： Redis 7.0 内存版（集群架构）。</li><li>19： Valkey 8.0 内存版（标准架构）。</li><li>20： Valkey 8.0 内存版（集群架构）。</li><li>200： Memcached 1.6 内存版（集群架构）。</li></ul>
         :type Type: int
-        :param _AutoRenewFlag: 实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>
+        :param _AutoRenewFlag: <p>实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul></p>
         :type AutoRenewFlag: int
-        :param _DeadlineTime: 包年包月计费实例到期的时间。
+        :param _DeadlineTime: <p>包年包月计费实例到期的时间。</p>
         :type DeadlineTime: str
-        :param _Engine: 引擎：社区版Redis、腾讯云CKV。
+        :param _Engine: <p>引擎：社区版Redis、腾讯云CKV。</p>
         :type Engine: str
-        :param _ProductType: 产品类型。<ul><li>standalone：标准版。</li><li>cluster ：集群版。</li></ul>
+        :param _ProductType: <p>产品类型。<ul><li>standalone：标准版。</li><li>cluster ：集群版。</li></ul></p>
         :type ProductType: str
-        :param _UniqVpcId: vpc网络id，例如vpc-fk33jsf43kgv。
+        :param _UniqVpcId: <p>vpc网络id，例如vpc-fk33jsf43kgv。</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: vpc网络下子网id，例如：subnet-fd3j6l35mm0。
+        :param _UniqSubnetId: <p>vpc网络下子网id，例如：subnet-fd3j6l35mm0。</p>
         :type UniqSubnetId: str
-        :param _BillingMode: 计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+        :param _BillingMode: <p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
         :type BillingMode: int
-        :param _InstanceTitle: 实例运行状态描述：如”实例运行中“。
+        :param _InstanceTitle: <p>实例运行状态描述：如”实例运行中“。</p>
         :type InstanceTitle: str
-        :param _OfflineTime: 已隔离实例默认下线时间。按量计费实例隔离后默认两小时后下线，包年包月默认7天后下线。格式如：2020-02-15 10:20:00。
+        :param _OfflineTime: <p>已隔离实例默认下线时间。按量计费实例隔离后默认两小时后下线，包年包月默认7天后下线。格式如：2020-02-15 10:20:00。</p>
         :type OfflineTime: str
-        :param _SubStatus: 流程中的实例返回的子状态。
-- 0：磁盘读写状态。
-- 1：磁盘超限只读状态。
+        :param _SubStatus: <p>流程中的实例返回的子状态。</p><ul><li>0：磁盘读写状态。</li><li>1：磁盘超限只读状态。</li></ul>
         :type SubStatus: int
-        :param _Tags: 反亲和性标签。
+        :param _Tags: <p>反亲和性标签。</p>
         :type Tags: list of str
-        :param _InstanceNode: 实例节点信息。
+        :param _InstanceNode: <p>实例节点信息。</p>
         :type InstanceNode: list of InstanceNode
-        :param _RedisShardSize: 分片大小。
+        :param _RedisShardSize: <p>分片大小。</p>
         :type RedisShardSize: int
-        :param _RedisShardNum: 分片数量。
+        :param _RedisShardNum: <p>分片数量。</p>
         :type RedisShardNum: int
-        :param _RedisReplicasNum: 副本数量。
+        :param _RedisReplicasNum: <p>副本数量。</p>
         :type RedisReplicasNum: int
-        :param _PriceId: 计费 ID。
+        :param _PriceId: <p>计费 ID。</p>
         :type PriceId: int
-        :param _CloseTime: 实例隔离开始的时间。
+        :param _CloseTime: <p>实例隔离开始的时间。</p>
         :type CloseTime: str
-        :param _SlaveReadWeight: 从节点读取权重。
-- 0：表示关闭副本只读。
-- 100：表示开启副本只读。
+        :param _SlaveReadWeight: <p>从节点读取权重。</p><ul><li>0：表示关闭副本只读。</li><li>100：表示开启副本只读。</li></ul>
         :type SlaveReadWeight: int
-        :param _InstanceTags: 实例关联的标签信息。
+        :param _InstanceTags: <p>实例关联的标签信息。</p>
         :type InstanceTags: list of InstanceTagInfo
-        :param _ProjectName: 项目名称。
+        :param _ProjectName: <p>项目名称。</p>
         :type ProjectName: str
-        :param _NoAuth: 是否为免密实例。<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
+        :param _NoAuth: <p>是否为免密实例。<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul></p>
         :type NoAuth: bool
-        :param _ClientLimit: 客户端连接数。
+        :param _ClientLimit: <p>客户端连接数。</p>
         :type ClientLimit: int
-        :param _DtsStatus: DTS状态（内部参数，用户可忽略）。
+        :param _DtsStatus: <p>DTS状态（内部参数，用户可忽略）。</p>
         :type DtsStatus: int
-        :param _NetLimit: 分片带宽上限，单位MB。
+        :param _NetLimit: <p>分片带宽上限，单位MB。</p>
         :type NetLimit: int
-        :param _PasswordFree: 免密实例标识（内部参数，用户可忽略）。
+        :param _PasswordFree: <p>免密实例标识（内部参数，用户可忽略）。</p>
         :type PasswordFree: int
-        :param _Vip6: 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
+        :param _Vip6: <p>该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。</p>
         :type Vip6: str
-        :param _IPv6: 内部参数，用户可忽略。
+        :param _IPv6: <p>内部参数，用户可忽略。</p>
         :type IPv6: str
-        :param _ReadOnly: 实例只读标识（内部参数，用户可忽略）。
+        :param _ReadOnly: <p>实例只读标识（内部参数，用户可忽略）。</p>
         :type ReadOnly: int
-        :param _RemainBandwidthDuration: 内部参数，用户可忽略。
+        :param _RemainBandwidthDuration: <p>内部参数，用户可忽略。</p>
         :type RemainBandwidthDuration: str
-        :param _DiskSize: Redis实例请忽略该参数。
+        :param _DiskSize: <p>Redis实例请忽略该参数。</p>
         :type DiskSize: int
-        :param _MonitorVersion: 监控版本。<ul><li>1m：1分钟粒度监控。目前该监控粒度已下线，具体信息，请参见[云数据库 Redis 1分钟粒度下线公告](https://cloud.tencent.com/document/product/239/80653)。</li><li>5s：5秒粒度监控。</li></ul>
+        :param _MonitorVersion: <p>监控版本。<ul><li>1m：1分钟粒度监控。目前该监控粒度已下线，具体信息，请参见<a href="https://cloud.tencent.com/document/product/239/80653">云数据库 Redis 1分钟粒度下线公告</a>。</li><li>5s：5秒粒度监控。</li></ul></p>
         :type MonitorVersion: str
-        :param _ClientLimitMin: 客户端最大连接数可设置的最小值。
+        :param _ClientLimitMin: <p>客户端最大连接数可设置的最小值。</p>
         :type ClientLimitMin: int
-        :param _ClientLimitMax: 客户端最大连接数可设置的最大值。
+        :param _ClientLimitMax: <p>客户端最大连接数可设置的最大值。</p>
         :type ClientLimitMax: int
-        :param _NodeSet: 实例的节点详细信息。
-只有多可用区实例会返回。
+        :param _NodeSet: <p>实例的节点详细信息。<br>只有多可用区实例会返回。</p>
         :type NodeSet: list of RedisNodeInfo
-        :param _Region: 实例所在的地域信息，比如ap-guangzhou。
+        :param _Region: <p>实例所在的地域信息，比如ap-guangzhou。</p>
         :type Region: str
-        :param _WanAddress: 外网地址。
+        :param _WanAddress: <p>外网地址。</p>
         :type WanAddress: str
-        :param _PolarisServer: 北极星服务地址，内部使用。
+        :param _PolarisServer: <p>北极星服务地址，内部使用。</p>
         :type PolarisServer: str
-        :param _RedisClusterId: CDC Redis集群ID。
+        :param _RedisClusterId: <p>CDC Redis集群ID。</p>
         :type RedisClusterId: str
-        :param _DedicatedClusterId: CDC 集群ID。
+        :param _DedicatedClusterId: <p>CDC 集群ID。</p>
         :type DedicatedClusterId: str
-        :param _ProductVersion: 产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul>
+        :param _ProductVersion: <p>产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul></p>
         :type ProductVersion: str
-        :param _CurrentProxyVersion: 实例当前Proxy版本。
+        :param _CurrentProxyVersion: <p>实例当前Proxy版本。</p>
         :type CurrentProxyVersion: str
-        :param _CurrentRedisVersion: 实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。
+        :param _CurrentRedisVersion: <p>实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。</p>
         :type CurrentRedisVersion: str
-        :param _UpgradeProxyVersion: 实例可升级Proxy版本。
+        :param _UpgradeProxyVersion: <p>实例可升级Proxy版本。</p>
         :type UpgradeProxyVersion: str
-        :param _UpgradeRedisVersion: 实例可升级Cache小版本。
+        :param _UpgradeRedisVersion: <p>实例可升级Cache小版本。</p>
         :type UpgradeRedisVersion: str
-        :param _BackupMode: 备份模式：- SecondLevelBackup   秒级备份- NormalLevelBackup    普通备份
+        :param _BackupMode: <p>备份模式。</p><ul><li>SecondLevelBackup：秒级备份。</li><li>NormalLevelBackup：普通备份。</li></ul>
         :type BackupMode: str
-        :param _DeleteProtectionSwitch: 删除保护开关，0关闭，1开启
+        :param _DeleteProtectionSwitch: <p>实例销毁保护开关。</p><ul><li>0：关闭。</li><li>1：开启。</li></ul>
         :type DeleteProtectionSwitch: int
         """
         self._InstanceName = None
@@ -15800,7 +15761,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -15811,7 +15772,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。
+        r"""<p>实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15822,8 +15783,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Appid(self):
-        r"""用户AppId。AppId是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 AppId。
-
+        r"""<p>用户AppId。AppId是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 AppId。</p>
         :rtype: int
         """
         return self._Appid
@@ -15834,7 +15794,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目 ID。
+        r"""<p>项目 ID。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -15845,7 +15805,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域 ID。<ul><li>1：广州。</li><li>4：上海。</li><li>5：中国香港。</li><li>7：上海金融。</li> <li>8：北京。</li> <li>9：新加坡。</li> <li>11：深圳金融。</li> <li>15：美西（硅谷）。</li><li>16：成都。</li><li>17：法兰克福。</li><li>18：首尔。</li><li>19：重庆。</li><li>22：美东（弗吉尼亚）。</li><li>23：曼谷。</li><li>25：东京。</li></ul>
+        r"""<p>地域 ID。<ul><li>1：广州。</li><li>4：上海。</li><li>5：中国香港。</li><li>7：上海金融。</li> <li>8：北京。</li> <li>9：新加坡。</li> <li>11：深圳金融。</li> <li>15：美西（硅谷）。</li><li>16：成都。</li><li>17：法兰克福。</li><li>18：首尔。</li><li>19：重庆。</li><li>22：美东（弗吉尼亚）。</li><li>23：曼谷。</li><li>25：东京。</li></ul></p>
         :rtype: int
         """
         return self._RegionId
@@ -15856,7 +15816,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""区域 ID。
+        r"""<p>区域 ID。</p>
         :rtype: int
         """
         return self._ZoneId
@@ -15867,7 +15827,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""vpc网络 ID，例如75101。
+        r"""<p>vpc网络 ID，例如75101。</p>
         :rtype: int
         """
         return self._VpcId
@@ -15878,7 +15838,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""vpc网络下子网ID，如：46315。
+        r"""<p>vpc网络下子网ID，如：46315。</p>
         :rtype: int
         """
         return self._SubnetId
@@ -15889,7 +15849,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul>
+        r"""<p>实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul></p>
         :rtype: int
         """
         return self._Status
@@ -15900,7 +15860,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def WanIp(self):
-        r"""实例 VIP。
+        r"""<p>实例 VIP。</p>
         :rtype: str
         """
         return self._WanIp
@@ -15911,7 +15871,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Port(self):
-        r"""实例端口号。
+        r"""<p>实例端口号。</p>
         :rtype: int
         """
         return self._Port
@@ -15922,7 +15882,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Createtime(self):
-        r"""实例创建时间。格式如：2020-01-15 10:20:00。
+        r"""<p>实例创建时间。格式如：2020-01-15 10:20:00。</p>
         :rtype: str
         """
         return self._Createtime
@@ -15933,7 +15893,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Size(self):
-        r"""实例内存容量大小。单位：MB，1MB=1024KB。
+        r"""<p>实例内存容量大小。单位：MB，1MB=1024KB。</p>
         :rtype: float
         """
         return self._Size
@@ -15946,7 +15906,7 @@ class InstanceSet(AbstractModel):
     def SizeUsed(self):
         warnings.warn("parameter `SizeUsed` is deprecated", DeprecationWarning) 
 
-        r"""该字段已废弃。请使用腾讯云可观测平台API 接口 [GetMonitorData](https://cloud.tencent.com/document/product/248/31014) 获取实例已使用的内存容量。
+        r"""<p>该字段已废弃。请使用腾讯云可观测平台API 接口 <a href="https://cloud.tencent.com/document/product/248/31014">GetMonitorData</a> 获取实例已使用的内存容量。</p>
         :rtype: float
         """
         return self._SizeUsed
@@ -15959,20 +15919,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Type(self):
-        r"""实例类型。
-- 2：Redis 2.8 内存版（标准架构）。
-- 3：CKV 3.2 内存版（标准架构）。
-- 4：CKV 3.2 内存版（集群架构）。
-- 5：Redis 2.8 内存版（单机）。
-- 6：Redis 4.0 内存版（标准架构）。
-- 7：Redis 4.0 内存版（集群架构）。
-- 8：Redis 5.0 内存版（标准架构）。
-- 9：Redis 5.0 内存版（集群架构）。
-- 15：Redis 6.2 内存版（标准架构）。
-- 16：Redis 6.2 内存版（集群架构）。
-- 17：Redis 7.0 内存版（标准架构）。
-- 18：Redis 7.0 内存版（集群架构）。
-- 200:Memcached 1.6 内存版（集群架构）。
+        r"""<p>实例类型。</p><p>枚举值：</p><ul><li>2： Redis 2.8 内存版（标准架构）。</li><li>3： CKV 3.2 内存版（标准架构）。</li><li>4： CKV 3.2 内存版（集群架构）。</li><li>5： Redis 2.8 内存版（单机）。</li><li>6： Redis 4.0 内存版（标准架构）。</li><li>7： Redis 4.0 内存版（集群架构）。</li><li>8： Redis 5.0 内存版（标准架构）。</li><li>9： Redis 5.0 内存版（集群架构）。</li><li>15： Redis 6.2 内存版（标准架构）。</li><li>16： Redis 6.2 内存版（集群架构）。</li><li>17： Redis 7.0 内存版（标准架构）。</li><li>18： Redis 7.0 内存版（集群架构）。</li><li>19： Valkey 8.0 内存版（标准架构）。</li><li>20： Valkey 8.0 内存版（集群架构）。</li><li>200： Memcached 1.6 内存版（集群架构）。</li></ul>
         :rtype: int
         """
         return self._Type
@@ -15983,7 +15930,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>
+        r"""<p>实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul></p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -15994,7 +15941,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def DeadlineTime(self):
-        r"""包年包月计费实例到期的时间。
+        r"""<p>包年包月计费实例到期的时间。</p>
         :rtype: str
         """
         return self._DeadlineTime
@@ -16005,7 +15952,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Engine(self):
-        r"""引擎：社区版Redis、腾讯云CKV。
+        r"""<p>引擎：社区版Redis、腾讯云CKV。</p>
         :rtype: str
         """
         return self._Engine
@@ -16016,7 +15963,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""产品类型。<ul><li>standalone：标准版。</li><li>cluster ：集群版。</li></ul>
+        r"""<p>产品类型。<ul><li>standalone：标准版。</li><li>cluster ：集群版。</li></ul></p>
         :rtype: str
         """
         return self._ProductType
@@ -16027,7 +15974,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""vpc网络id，例如vpc-fk33jsf43kgv。
+        r"""<p>vpc网络id，例如vpc-fk33jsf43kgv。</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -16038,7 +15985,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""vpc网络下子网id，例如：subnet-fd3j6l35mm0。
+        r"""<p>vpc网络下子网id，例如：subnet-fd3j6l35mm0。</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -16049,7 +15996,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def BillingMode(self):
-        r"""计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+        r"""<p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
         :rtype: int
         """
         return self._BillingMode
@@ -16060,7 +16007,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def InstanceTitle(self):
-        r"""实例运行状态描述：如”实例运行中“。
+        r"""<p>实例运行状态描述：如”实例运行中“。</p>
         :rtype: str
         """
         return self._InstanceTitle
@@ -16071,7 +16018,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def OfflineTime(self):
-        r"""已隔离实例默认下线时间。按量计费实例隔离后默认两小时后下线，包年包月默认7天后下线。格式如：2020-02-15 10:20:00。
+        r"""<p>已隔离实例默认下线时间。按量计费实例隔离后默认两小时后下线，包年包月默认7天后下线。格式如：2020-02-15 10:20:00。</p>
         :rtype: str
         """
         return self._OfflineTime
@@ -16082,9 +16029,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def SubStatus(self):
-        r"""流程中的实例返回的子状态。
-- 0：磁盘读写状态。
-- 1：磁盘超限只读状态。
+        r"""<p>流程中的实例返回的子状态。</p><ul><li>0：磁盘读写状态。</li><li>1：磁盘超限只读状态。</li></ul>
         :rtype: int
         """
         return self._SubStatus
@@ -16095,7 +16040,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Tags(self):
-        r"""反亲和性标签。
+        r"""<p>反亲和性标签。</p>
         :rtype: list of str
         """
         return self._Tags
@@ -16106,7 +16051,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def InstanceNode(self):
-        r"""实例节点信息。
+        r"""<p>实例节点信息。</p>
         :rtype: list of InstanceNode
         """
         return self._InstanceNode
@@ -16117,7 +16062,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RedisShardSize(self):
-        r"""分片大小。
+        r"""<p>分片大小。</p>
         :rtype: int
         """
         return self._RedisShardSize
@@ -16128,7 +16073,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RedisShardNum(self):
-        r"""分片数量。
+        r"""<p>分片数量。</p>
         :rtype: int
         """
         return self._RedisShardNum
@@ -16139,7 +16084,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RedisReplicasNum(self):
-        r"""副本数量。
+        r"""<p>副本数量。</p>
         :rtype: int
         """
         return self._RedisReplicasNum
@@ -16150,7 +16095,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def PriceId(self):
-        r"""计费 ID。
+        r"""<p>计费 ID。</p>
         :rtype: int
         """
         return self._PriceId
@@ -16161,7 +16106,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def CloseTime(self):
-        r"""实例隔离开始的时间。
+        r"""<p>实例隔离开始的时间。</p>
         :rtype: str
         """
         return self._CloseTime
@@ -16172,9 +16117,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def SlaveReadWeight(self):
-        r"""从节点读取权重。
-- 0：表示关闭副本只读。
-- 100：表示开启副本只读。
+        r"""<p>从节点读取权重。</p><ul><li>0：表示关闭副本只读。</li><li>100：表示开启副本只读。</li></ul>
         :rtype: int
         """
         return self._SlaveReadWeight
@@ -16185,7 +16128,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def InstanceTags(self):
-        r"""实例关联的标签信息。
+        r"""<p>实例关联的标签信息。</p>
         :rtype: list of InstanceTagInfo
         """
         return self._InstanceTags
@@ -16196,7 +16139,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称。
+        r"""<p>项目名称。</p>
         :rtype: str
         """
         return self._ProjectName
@@ -16207,7 +16150,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def NoAuth(self):
-        r"""是否为免密实例。<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
+        r"""<p>是否为免密实例。<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul></p>
         :rtype: bool
         """
         return self._NoAuth
@@ -16218,7 +16161,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ClientLimit(self):
-        r"""客户端连接数。
+        r"""<p>客户端连接数。</p>
         :rtype: int
         """
         return self._ClientLimit
@@ -16229,7 +16172,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def DtsStatus(self):
-        r"""DTS状态（内部参数，用户可忽略）。
+        r"""<p>DTS状态（内部参数，用户可忽略）。</p>
         :rtype: int
         """
         return self._DtsStatus
@@ -16240,7 +16183,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def NetLimit(self):
-        r"""分片带宽上限，单位MB。
+        r"""<p>分片带宽上限，单位MB。</p>
         :rtype: int
         """
         return self._NetLimit
@@ -16251,7 +16194,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def PasswordFree(self):
-        r"""免密实例标识（内部参数，用户可忽略）。
+        r"""<p>免密实例标识（内部参数，用户可忽略）。</p>
         :rtype: int
         """
         return self._PasswordFree
@@ -16262,7 +16205,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Vip6(self):
-        r"""该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
+        r"""<p>该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。</p>
         :rtype: str
         """
         return self._Vip6
@@ -16273,7 +16216,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def IPv6(self):
-        r"""内部参数，用户可忽略。
+        r"""<p>内部参数，用户可忽略。</p>
         :rtype: str
         """
         return self._IPv6
@@ -16284,7 +16227,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""实例只读标识（内部参数，用户可忽略）。
+        r"""<p>实例只读标识（内部参数，用户可忽略）。</p>
         :rtype: int
         """
         return self._ReadOnly
@@ -16295,7 +16238,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RemainBandwidthDuration(self):
-        r"""内部参数，用户可忽略。
+        r"""<p>内部参数，用户可忽略。</p>
         :rtype: str
         """
         return self._RemainBandwidthDuration
@@ -16306,7 +16249,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""Redis实例请忽略该参数。
+        r"""<p>Redis实例请忽略该参数。</p>
         :rtype: int
         """
         return self._DiskSize
@@ -16317,7 +16260,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def MonitorVersion(self):
-        r"""监控版本。<ul><li>1m：1分钟粒度监控。目前该监控粒度已下线，具体信息，请参见[云数据库 Redis 1分钟粒度下线公告](https://cloud.tencent.com/document/product/239/80653)。</li><li>5s：5秒粒度监控。</li></ul>
+        r"""<p>监控版本。<ul><li>1m：1分钟粒度监控。目前该监控粒度已下线，具体信息，请参见<a href="https://cloud.tencent.com/document/product/239/80653">云数据库 Redis 1分钟粒度下线公告</a>。</li><li>5s：5秒粒度监控。</li></ul></p>
         :rtype: str
         """
         return self._MonitorVersion
@@ -16328,7 +16271,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ClientLimitMin(self):
-        r"""客户端最大连接数可设置的最小值。
+        r"""<p>客户端最大连接数可设置的最小值。</p>
         :rtype: int
         """
         return self._ClientLimitMin
@@ -16339,7 +16282,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ClientLimitMax(self):
-        r"""客户端最大连接数可设置的最大值。
+        r"""<p>客户端最大连接数可设置的最大值。</p>
         :rtype: int
         """
         return self._ClientLimitMax
@@ -16350,8 +16293,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def NodeSet(self):
-        r"""实例的节点详细信息。
-只有多可用区实例会返回。
+        r"""<p>实例的节点详细信息。<br>只有多可用区实例会返回。</p>
         :rtype: list of RedisNodeInfo
         """
         return self._NodeSet
@@ -16362,7 +16304,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Region(self):
-        r"""实例所在的地域信息，比如ap-guangzhou。
+        r"""<p>实例所在的地域信息，比如ap-guangzhou。</p>
         :rtype: str
         """
         return self._Region
@@ -16373,7 +16315,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def WanAddress(self):
-        r"""外网地址。
+        r"""<p>外网地址。</p>
         :rtype: str
         """
         return self._WanAddress
@@ -16384,7 +16326,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def PolarisServer(self):
-        r"""北极星服务地址，内部使用。
+        r"""<p>北极星服务地址，内部使用。</p>
         :rtype: str
         """
         return self._PolarisServer
@@ -16395,7 +16337,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RedisClusterId(self):
-        r"""CDC Redis集群ID。
+        r"""<p>CDC Redis集群ID。</p>
         :rtype: str
         """
         return self._RedisClusterId
@@ -16406,7 +16348,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        r"""CDC 集群ID。
+        r"""<p>CDC 集群ID。</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -16417,7 +16359,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ProductVersion(self):
-        r"""产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul>
+        r"""<p>产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul></p>
         :rtype: str
         """
         return self._ProductVersion
@@ -16428,7 +16370,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def CurrentProxyVersion(self):
-        r"""实例当前Proxy版本。
+        r"""<p>实例当前Proxy版本。</p>
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -16439,7 +16381,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def CurrentRedisVersion(self):
-        r"""实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。
+        r"""<p>实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。</p>
         :rtype: str
         """
         return self._CurrentRedisVersion
@@ -16450,7 +16392,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def UpgradeProxyVersion(self):
-        r"""实例可升级Proxy版本。
+        r"""<p>实例可升级Proxy版本。</p>
         :rtype: str
         """
         return self._UpgradeProxyVersion
@@ -16461,7 +16403,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def UpgradeRedisVersion(self):
-        r"""实例可升级Cache小版本。
+        r"""<p>实例可升级Cache小版本。</p>
         :rtype: str
         """
         return self._UpgradeRedisVersion
@@ -16472,7 +16414,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def BackupMode(self):
-        r"""备份模式：- SecondLevelBackup   秒级备份- NormalLevelBackup    普通备份
+        r"""<p>备份模式。</p><ul><li>SecondLevelBackup：秒级备份。</li><li>NormalLevelBackup：普通备份。</li></ul>
         :rtype: str
         """
         return self._BackupMode
@@ -16483,7 +16425,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def DeleteProtectionSwitch(self):
-        r"""删除保护开关，0关闭，1开启
+        r"""<p>实例销毁保护开关。</p><ul><li>0：关闭。</li><li>1：开启。</li></ul>
         :rtype: int
         """
         return self._DeleteProtectionSwitch
@@ -18705,30 +18647,21 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        :param _InstanceId: <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _AccountName: 指定需修改的账号。
-- root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。
-- 自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。
+        :param _AccountName: <p>指定需修改的账号。</p><ul><li>root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。</li><li>自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。</li></ul>
         :type AccountName: str
-        :param _AccountPassword: 指定所修改账号访问的密码。
+        :param _AccountPassword: <p>指定所修改账号访问的密码。</p>
         :type AccountPassword: str
-        :param _Remark: 账号描述信息
+        :param _Remark: <p>账号描述信息</p>
         :type Remark: str
-        :param _ReadonlyPolicy: 指定所修改账号读写请求路由的策略。
-- master：表示读写请求路由至主节点。
-- replication：表示读写请求路由至从节点。
+        :param _ReadonlyPolicy: <p>指定所修改账号读写请求路由的策略。</p><ul><li>master：表示读写请求路由至主节点。</li><li>replication：表示读写请求路由至从节点。</li></ul>
         :type ReadonlyPolicy: list of str
-        :param _Privilege: 指定所修改账号的读写权限。
-- r：只读。
-- w：只写。
-- rw：读写。
+        :param _Privilege: <p>指定所修改账号的读写权限。</p><ul><li>r：只读。</li><li>w：只写。</li><li>rw：读写。</li></ul>
         :type Privilege: str
-        :param _NoAuth: 指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。
-- true：默认账号（root）设置为免密账号。
-- false：默认账号（root）不设置为免密账号。
+        :param _NoAuth: <p>指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。</p><ul><li>true：默认账号（root）设置为免密账号。</li><li>false：默认账号（root）不设置为免密账号。</li></ul>
         :type NoAuth: bool
-        :param _EncryptPassword: 指定所修改的账号是否加密密码
+        :param _EncryptPassword: <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
         :type EncryptPassword: bool
         """
         self._InstanceId = None
@@ -18742,7 +18675,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        r"""<p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -18753,9 +18686,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""指定需修改的账号。
-- root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。
-- 自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。
+        r"""<p>指定需修改的账号。</p><ul><li>root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。</li><li>自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。</li></ul>
         :rtype: str
         """
         return self._AccountName
@@ -18766,7 +18697,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountPassword(self):
-        r"""指定所修改账号访问的密码。
+        r"""<p>指定所修改账号访问的密码。</p>
         :rtype: str
         """
         return self._AccountPassword
@@ -18777,7 +18708,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""账号描述信息
+        r"""<p>账号描述信息</p>
         :rtype: str
         """
         return self._Remark
@@ -18788,9 +18719,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def ReadonlyPolicy(self):
-        r"""指定所修改账号读写请求路由的策略。
-- master：表示读写请求路由至主节点。
-- replication：表示读写请求路由至从节点。
+        r"""<p>指定所修改账号读写请求路由的策略。</p><ul><li>master：表示读写请求路由至主节点。</li><li>replication：表示读写请求路由至从节点。</li></ul>
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -18801,10 +18730,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def Privilege(self):
-        r"""指定所修改账号的读写权限。
-- r：只读。
-- w：只写。
-- rw：读写。
+        r"""<p>指定所修改账号的读写权限。</p><ul><li>r：只读。</li><li>w：只写。</li><li>rw：读写。</li></ul>
         :rtype: str
         """
         return self._Privilege
@@ -18815,9 +18741,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def NoAuth(self):
-        r"""指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。
-- true：默认账号（root）设置为免密账号。
-- false：默认账号（root）不设置为免密账号。
+        r"""<p>指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。</p><ul><li>true：默认账号（root）设置为免密账号。</li><li>false：默认账号（root）不设置为免密账号。</li></ul>
         :rtype: bool
         """
         return self._NoAuth
@@ -18828,7 +18752,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def EncryptPassword(self):
-        r"""指定所修改的账号是否加密密码
+        r"""<p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
         :rtype: bool
         """
         return self._EncryptPassword
@@ -18864,7 +18788,7 @@ class ModifyInstanceAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID。
+        :param _TaskId: <p>任务ID。</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18874,7 +18798,7 @@ class ModifyInstanceAccountResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID。
+        r"""<p>任务ID。</p>
         :rtype: int
         """
         return self._TaskId

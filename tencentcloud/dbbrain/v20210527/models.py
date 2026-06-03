@@ -20067,20 +20067,23 @@ class SessionItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ip: 访问来源。
+        :param _Ip: <p>访问来源。</p>
         :type Ip: str
-        :param _ActiveConn: 当前访问来源活跃连接数
+        :param _ActiveConn: <p>当前访问来源活跃连接数</p>
         :type ActiveConn: str
-        :param _AllConn: 当前访问来源总连接数
+        :param _AllConn: <p>当前访问来源总连接数</p>
         :type AllConn: int
+        :param _IsInternalIp: <p>是否为内网ip</p>
+        :type IsInternalIp: bool
         """
         self._Ip = None
         self._ActiveConn = None
         self._AllConn = None
+        self._IsInternalIp = None
 
     @property
     def Ip(self):
-        r"""访问来源。
+        r"""<p>访问来源。</p>
         :rtype: str
         """
         return self._Ip
@@ -20091,7 +20094,7 @@ class SessionItem(AbstractModel):
 
     @property
     def ActiveConn(self):
-        r"""当前访问来源活跃连接数
+        r"""<p>当前访问来源活跃连接数</p>
         :rtype: str
         """
         return self._ActiveConn
@@ -20102,7 +20105,7 @@ class SessionItem(AbstractModel):
 
     @property
     def AllConn(self):
-        r"""当前访问来源总连接数
+        r"""<p>当前访问来源总连接数</p>
         :rtype: int
         """
         return self._AllConn
@@ -20111,11 +20114,23 @@ class SessionItem(AbstractModel):
     def AllConn(self, AllConn):
         self._AllConn = AllConn
 
+    @property
+    def IsInternalIp(self):
+        r"""<p>是否为内网ip</p>
+        :rtype: bool
+        """
+        return self._IsInternalIp
+
+    @IsInternalIp.setter
+    def IsInternalIp(self, IsInternalIp):
+        self._IsInternalIp = IsInternalIp
+
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
         self._ActiveConn = params.get("ActiveConn")
         self._AllConn = params.get("AllConn")
+        self._IsInternalIp = params.get("IsInternalIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

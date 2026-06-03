@@ -277,6 +277,60 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMetaAndDataSyncDatahubTask(
+            self,
+            request: models.CreateMetaAndDataSyncDatahubTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetaAndDataSyncDatahubTaskResponse:
+        """
+        连接器实例同步任务-元数据、消息同步
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetaAndDataSyncDatahubTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetaAndDataSyncDatahubTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateMetaDataAndOffsetSyncDatahubTask(
+            self,
+            request: models.CreateMetaDataAndOffsetSyncDatahubTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetaDataAndOffsetSyncDatahubTaskResponse:
+        """
+        连接器实例同步任务-同步元数据、消息数据、消费微点
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetaDataAndOffsetSyncDatahubTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetaDataAndOffsetSyncDatahubTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateMetaSyncDatahubTask(
+            self,
+            request: models.CreateMetaSyncDatahubTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetaSyncDatahubTaskResponse:
+        """
+        连接器实例同步任务-元数据同步
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetaSyncDatahubTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetaSyncDatahubTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePartition(
             self,
             request: models.CreatePartitionRequest,

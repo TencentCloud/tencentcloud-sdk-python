@@ -79,6 +79,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDataTable(
+            self,
+            request: models.CreateDataTableRequest,
+            opts: Dict = None,
+    ) -> models.CreateDataTableResponse:
+        """
+        添加数据表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDataTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDataTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDatasource(
             self,
             request: models.CreateDatasourceRequest,
@@ -542,6 +560,24 @@ class BiClient(AbstractClient):
         kwargs["action"] = "DescribeResourceUserGroupPageList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeResourceUserGroupPageListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSourceFieldList(
+            self,
+            request: models.DescribeSourceFieldListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSourceFieldListResponse:
+        """
+        原始数据表字段接口信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSourceFieldList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSourceFieldListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

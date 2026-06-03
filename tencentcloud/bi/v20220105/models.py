@@ -18,6 +18,335 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApiDatasourceConfig(AbstractModel):
+    r"""API数据源连接配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldsJsonData: API数据源解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldsJsonData: str
+        :param _ConnectionType: 连接类型1:直连 2:抽取
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionType: int
+        :param _FrequencyConfig: 抽取频率配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrequencyConfig: :class:`tencentcloud.bi.v20220105.models.FrequencyConfig`
+        :param _Url: 请求URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _RequestMethod: 1:GET 2:POST
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestMethod: int
+        :param _RequestHeader: 请求头
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestHeader: str
+        :param _RequestParams: 请求参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestParams: str
+        :param _RequestBody: 请求体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestBody: str
+        :param _UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _Password: 密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _AuthorizationType: 1: 无鉴权 2:BASIC_AUTH
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizationType: int
+        :param _TableId: 表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: int
+        :param _JsonPathDbNameMap: 路径DbName映射
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JsonPathDbNameMap: str
+        :param _AuthApi: 鉴权API
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthApi: str
+        :param _AppKey: 应用Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppKey: str
+        :param _AppSecret: 应用密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppSecret: str
+        :param _SecretKey: 数据密钥Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _SecretIv: 数据密钥初始化向量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretIv: str
+        """
+        self._FieldsJsonData = None
+        self._ConnectionType = None
+        self._FrequencyConfig = None
+        self._Url = None
+        self._RequestMethod = None
+        self._RequestHeader = None
+        self._RequestParams = None
+        self._RequestBody = None
+        self._UserName = None
+        self._Password = None
+        self._AuthorizationType = None
+        self._TableId = None
+        self._JsonPathDbNameMap = None
+        self._AuthApi = None
+        self._AppKey = None
+        self._AppSecret = None
+        self._SecretKey = None
+        self._SecretIv = None
+
+    @property
+    def FieldsJsonData(self):
+        r"""API数据源解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldsJsonData
+
+    @FieldsJsonData.setter
+    def FieldsJsonData(self, FieldsJsonData):
+        self._FieldsJsonData = FieldsJsonData
+
+    @property
+    def ConnectionType(self):
+        r"""连接类型1:直连 2:抽取
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ConnectionType
+
+    @ConnectionType.setter
+    def ConnectionType(self, ConnectionType):
+        self._ConnectionType = ConnectionType
+
+    @property
+    def FrequencyConfig(self):
+        r"""抽取频率配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.FrequencyConfig`
+        """
+        return self._FrequencyConfig
+
+    @FrequencyConfig.setter
+    def FrequencyConfig(self, FrequencyConfig):
+        self._FrequencyConfig = FrequencyConfig
+
+    @property
+    def Url(self):
+        r"""请求URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestMethod(self):
+        r"""1:GET 2:POST
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RequestMethod
+
+    @RequestMethod.setter
+    def RequestMethod(self, RequestMethod):
+        self._RequestMethod = RequestMethod
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+    @property
+    def RequestParams(self):
+        r"""请求参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestParams
+
+    @RequestParams.setter
+    def RequestParams(self, RequestParams):
+        self._RequestParams = RequestParams
+
+    @property
+    def RequestBody(self):
+        r"""请求体
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+    @property
+    def UserName(self):
+        r"""用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def AuthorizationType(self):
+        r"""1: 无鉴权 2:BASIC_AUTH
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AuthorizationType
+
+    @AuthorizationType.setter
+    def AuthorizationType(self, AuthorizationType):
+        self._AuthorizationType = AuthorizationType
+
+    @property
+    def TableId(self):
+        r"""表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def JsonPathDbNameMap(self):
+        r"""路径DbName映射
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JsonPathDbNameMap
+
+    @JsonPathDbNameMap.setter
+    def JsonPathDbNameMap(self, JsonPathDbNameMap):
+        self._JsonPathDbNameMap = JsonPathDbNameMap
+
+    @property
+    def AuthApi(self):
+        r"""鉴权API
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AuthApi
+
+    @AuthApi.setter
+    def AuthApi(self, AuthApi):
+        self._AuthApi = AuthApi
+
+    @property
+    def AppKey(self):
+        r"""应用Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def AppSecret(self):
+        r"""应用密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppSecret
+
+    @AppSecret.setter
+    def AppSecret(self, AppSecret):
+        self._AppSecret = AppSecret
+
+    @property
+    def SecretKey(self):
+        r"""数据密钥Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def SecretIv(self):
+        r"""数据密钥初始化向量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretIv
+
+    @SecretIv.setter
+    def SecretIv(self, SecretIv):
+        self._SecretIv = SecretIv
+
+
+    def _deserialize(self, params):
+        self._FieldsJsonData = params.get("FieldsJsonData")
+        self._ConnectionType = params.get("ConnectionType")
+        if params.get("FrequencyConfig") is not None:
+            self._FrequencyConfig = FrequencyConfig()
+            self._FrequencyConfig._deserialize(params.get("FrequencyConfig"))
+        self._Url = params.get("Url")
+        self._RequestMethod = params.get("RequestMethod")
+        self._RequestHeader = params.get("RequestHeader")
+        self._RequestParams = params.get("RequestParams")
+        self._RequestBody = params.get("RequestBody")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._AuthorizationType = params.get("AuthorizationType")
+        self._TableId = params.get("TableId")
+        self._JsonPathDbNameMap = params.get("JsonPathDbNameMap")
+        self._AuthApi = params.get("AuthApi")
+        self._AppKey = params.get("AppKey")
+        self._AppSecret = params.get("AppSecret")
+        self._SecretKey = params.get("SecretKey")
+        self._SecretIv = params.get("SecretIv")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiKeyAuthApplyVO(AbstractModel):
     r"""创建ApiKey接口出参
 
@@ -1100,6 +1429,484 @@ class CreateAuthApiKeyResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = ApiKeyAuthApplyVO()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDataTableRequest(AbstractModel):
+    r"""CreateDataTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+        :type Type: int
+        :param _Name: 数据表名称
+        :type Name: str
+        :param _ProjectId: 无
+        :type ProjectId: int
+        :param _FoldId: 所属文件夹
+        :type FoldId: int
+        :param _DatasourceId: 数据源Id
+        :type DatasourceId: str
+        :param _TableName: 物理表名
+        :type TableName: str
+        :param _Sql: sql语句
+        :type Sql: str
+        :param _ExcelUrl: excel地址
+        :type ExcelUrl: str
+        :param _Fields: 字段配置
+        :type Fields: list of TableField
+        :param _TableNodeType: 多表关联使用: 1:数据源原表,2:本地表,3:Excel表,4:API表
+        :type TableNodeType: int
+        :param _Tables: 多表关联的原始表信息
+        :type Tables: list of JoinSourceTable
+        :param _Joins: 多表关联的关联信息
+        :type Joins: list of JoinRelation
+        :param _ExtInfo: 补充信息，如api数据源信息，腾讯文档接入信息等
+        :type ExtInfo: str
+        :param _AsyncRequest: 是否是异步
+        :type AsyncRequest: bool
+        :param _ParentTranId: 依赖的异步事务id
+        :type ParentTranId: str
+        :param _ApiDatasourceConfig: API数据源配置
+        :type ApiDatasourceConfig: :class:`tencentcloud.bi.v20220105.models.ApiDatasourceConfig`
+        :param _ParamList: 1
+        :type ParamList: list of ParamCreateDTO
+        :param _DlcExtInfo: dlc高级参数
+        :type DlcExtInfo: str
+        :param _QueryDbData: 是否查询数据库
+        :type QueryDbData: str
+        :param _TableComment: 数据表备注
+        :type TableComment: str
+        :param _QueryFieldRemark: 是否查询字段备注
+        :type QueryFieldRemark: int
+        :param _FieldRemarkList: 字段备注列表
+        :type FieldRemarkList: list of FieldRemarkDTO
+        """
+        self._Type = None
+        self._Name = None
+        self._ProjectId = None
+        self._FoldId = None
+        self._DatasourceId = None
+        self._TableName = None
+        self._Sql = None
+        self._ExcelUrl = None
+        self._Fields = None
+        self._TableNodeType = None
+        self._Tables = None
+        self._Joins = None
+        self._ExtInfo = None
+        self._AsyncRequest = None
+        self._ParentTranId = None
+        self._ApiDatasourceConfig = None
+        self._ParamList = None
+        self._DlcExtInfo = None
+        self._QueryDbData = None
+        self._TableComment = None
+        self._QueryFieldRemark = None
+        self._FieldRemarkList = None
+
+    @property
+    def Type(self):
+        r"""后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""数据表名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ProjectId(self):
+        r"""无
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FoldId(self):
+        r"""所属文件夹
+        :rtype: int
+        """
+        return self._FoldId
+
+    @FoldId.setter
+    def FoldId(self, FoldId):
+        self._FoldId = FoldId
+
+    @property
+    def DatasourceId(self):
+        r"""数据源Id
+        :rtype: str
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def TableName(self):
+        r"""物理表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Sql(self):
+        r"""sql语句
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def ExcelUrl(self):
+        r"""excel地址
+        :rtype: str
+        """
+        return self._ExcelUrl
+
+    @ExcelUrl.setter
+    def ExcelUrl(self, ExcelUrl):
+        self._ExcelUrl = ExcelUrl
+
+    @property
+    def Fields(self):
+        r"""字段配置
+        :rtype: list of TableField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def TableNodeType(self):
+        r"""多表关联使用: 1:数据源原表,2:本地表,3:Excel表,4:API表
+        :rtype: int
+        """
+        return self._TableNodeType
+
+    @TableNodeType.setter
+    def TableNodeType(self, TableNodeType):
+        self._TableNodeType = TableNodeType
+
+    @property
+    def Tables(self):
+        r"""多表关联的原始表信息
+        :rtype: list of JoinSourceTable
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def Joins(self):
+        r"""多表关联的关联信息
+        :rtype: list of JoinRelation
+        """
+        return self._Joins
+
+    @Joins.setter
+    def Joins(self, Joins):
+        self._Joins = Joins
+
+    @property
+    def ExtInfo(self):
+        r"""补充信息，如api数据源信息，腾讯文档接入信息等
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def AsyncRequest(self):
+        r"""是否是异步
+        :rtype: bool
+        """
+        return self._AsyncRequest
+
+    @AsyncRequest.setter
+    def AsyncRequest(self, AsyncRequest):
+        self._AsyncRequest = AsyncRequest
+
+    @property
+    def ParentTranId(self):
+        r"""依赖的异步事务id
+        :rtype: str
+        """
+        return self._ParentTranId
+
+    @ParentTranId.setter
+    def ParentTranId(self, ParentTranId):
+        self._ParentTranId = ParentTranId
+
+    @property
+    def ApiDatasourceConfig(self):
+        r"""API数据源配置
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ApiDatasourceConfig`
+        """
+        return self._ApiDatasourceConfig
+
+    @ApiDatasourceConfig.setter
+    def ApiDatasourceConfig(self, ApiDatasourceConfig):
+        self._ApiDatasourceConfig = ApiDatasourceConfig
+
+    @property
+    def ParamList(self):
+        r"""1
+        :rtype: list of ParamCreateDTO
+        """
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
+    @property
+    def DlcExtInfo(self):
+        r"""dlc高级参数
+        :rtype: str
+        """
+        return self._DlcExtInfo
+
+    @DlcExtInfo.setter
+    def DlcExtInfo(self, DlcExtInfo):
+        self._DlcExtInfo = DlcExtInfo
+
+    @property
+    def QueryDbData(self):
+        r"""是否查询数据库
+        :rtype: str
+        """
+        return self._QueryDbData
+
+    @QueryDbData.setter
+    def QueryDbData(self, QueryDbData):
+        self._QueryDbData = QueryDbData
+
+    @property
+    def TableComment(self):
+        r"""数据表备注
+        :rtype: str
+        """
+        return self._TableComment
+
+    @TableComment.setter
+    def TableComment(self, TableComment):
+        self._TableComment = TableComment
+
+    @property
+    def QueryFieldRemark(self):
+        r"""是否查询字段备注
+        :rtype: int
+        """
+        return self._QueryFieldRemark
+
+    @QueryFieldRemark.setter
+    def QueryFieldRemark(self, QueryFieldRemark):
+        self._QueryFieldRemark = QueryFieldRemark
+
+    @property
+    def FieldRemarkList(self):
+        r"""字段备注列表
+        :rtype: list of FieldRemarkDTO
+        """
+        return self._FieldRemarkList
+
+    @FieldRemarkList.setter
+    def FieldRemarkList(self, FieldRemarkList):
+        self._FieldRemarkList = FieldRemarkList
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._ProjectId = params.get("ProjectId")
+        self._FoldId = params.get("FoldId")
+        self._DatasourceId = params.get("DatasourceId")
+        self._TableName = params.get("TableName")
+        self._Sql = params.get("Sql")
+        self._ExcelUrl = params.get("ExcelUrl")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = TableField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        self._TableNodeType = params.get("TableNodeType")
+        if params.get("Tables") is not None:
+            self._Tables = []
+            for item in params.get("Tables"):
+                obj = JoinSourceTable()
+                obj._deserialize(item)
+                self._Tables.append(obj)
+        if params.get("Joins") is not None:
+            self._Joins = []
+            for item in params.get("Joins"):
+                obj = JoinRelation()
+                obj._deserialize(item)
+                self._Joins.append(obj)
+        self._ExtInfo = params.get("ExtInfo")
+        self._AsyncRequest = params.get("AsyncRequest")
+        self._ParentTranId = params.get("ParentTranId")
+        if params.get("ApiDatasourceConfig") is not None:
+            self._ApiDatasourceConfig = ApiDatasourceConfig()
+            self._ApiDatasourceConfig._deserialize(params.get("ApiDatasourceConfig"))
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamCreateDTO()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
+        self._DlcExtInfo = params.get("DlcExtInfo")
+        self._QueryDbData = params.get("QueryDbData")
+        self._TableComment = params.get("TableComment")
+        self._QueryFieldRemark = params.get("QueryFieldRemark")
+        if params.get("FieldRemarkList") is not None:
+            self._FieldRemarkList = []
+            for item in params.get("FieldRemarkList"):
+                obj = FieldRemarkDTO()
+                obj._deserialize(item)
+                self._FieldRemarkList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataTableResponse(AbstractModel):
+    r"""CreateDataTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: 成功返回数据表的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.IdDTO`
+        :param _Extra: 额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: 错误提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        r"""成功返回数据表的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.IdDTO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        r"""额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""错误提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        if params.get("Data") is not None:
+            self._Data = IdDTO()
+            self._Data._deserialize(params.get("Data"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
         self._RequestId = params.get("RequestId")
 
 
@@ -7617,6 +8424,295 @@ class DescribeResourceUserGroupPageListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSourceFieldListRequest(AbstractModel):
+    r"""DescribeSourceFieldList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSourceId: 数据源Id
+        :type DataSourceId: int
+        :param _TableName: 表名
+        :type TableName: str
+        :param _Sql: sql内容
+        :type Sql: str
+        :param _ProjectId: 项目id
+        :type ProjectId: int
+        :param _AsyncRequest: 是否是异步
+        :type AsyncRequest: bool
+        :param _TranId: 异步事务id
+        :type TranId: str
+        :param _ParamList: 11
+        :type ParamList: list of ParamCreateDTO
+        :param _DlcExtInfo: DLC扩展参数
+        :type DlcExtInfo: str
+        :param _QueryDbData: 是否查询数据库
+        :type QueryDbData: str
+        :param _TableId: 数据表 Id
+        :type TableId: str
+        :param _TableType: 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+        :type TableType: int
+        """
+        self._DataSourceId = None
+        self._TableName = None
+        self._Sql = None
+        self._ProjectId = None
+        self._AsyncRequest = None
+        self._TranId = None
+        self._ParamList = None
+        self._DlcExtInfo = None
+        self._QueryDbData = None
+        self._TableId = None
+        self._TableType = None
+
+    @property
+    def DataSourceId(self):
+        r"""数据源Id
+        :rtype: int
+        """
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Sql(self):
+        r"""sql内容
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AsyncRequest(self):
+        r"""是否是异步
+        :rtype: bool
+        """
+        return self._AsyncRequest
+
+    @AsyncRequest.setter
+    def AsyncRequest(self, AsyncRequest):
+        self._AsyncRequest = AsyncRequest
+
+    @property
+    def TranId(self):
+        r"""异步事务id
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def ParamList(self):
+        r"""11
+        :rtype: list of ParamCreateDTO
+        """
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
+    @property
+    def DlcExtInfo(self):
+        r"""DLC扩展参数
+        :rtype: str
+        """
+        return self._DlcExtInfo
+
+    @DlcExtInfo.setter
+    def DlcExtInfo(self, DlcExtInfo):
+        self._DlcExtInfo = DlcExtInfo
+
+    @property
+    def QueryDbData(self):
+        r"""是否查询数据库
+        :rtype: str
+        """
+        return self._QueryDbData
+
+    @QueryDbData.setter
+    def QueryDbData(self, QueryDbData):
+        self._QueryDbData = QueryDbData
+
+    @property
+    def TableId(self):
+        r"""数据表 Id
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TableType(self):
+        r"""后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+        :rtype: int
+        """
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+
+    def _deserialize(self, params):
+        self._DataSourceId = params.get("DataSourceId")
+        self._TableName = params.get("TableName")
+        self._Sql = params.get("Sql")
+        self._ProjectId = params.get("ProjectId")
+        self._AsyncRequest = params.get("AsyncRequest")
+        self._TranId = params.get("TranId")
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamCreateDTO()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
+        self._DlcExtInfo = params.get("DlcExtInfo")
+        self._QueryDbData = params.get("QueryDbData")
+        self._TableId = params.get("TableId")
+        self._TableType = params.get("TableType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSourceFieldListResponse(AbstractModel):
+    r"""DescribeSourceFieldList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: 额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: 表中字段的列表
+        :type Data: :class:`tencentcloud.bi.v20220105.models.TableColumnListData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""表中字段的列表
+        :rtype: :class:`tencentcloud.bi.v20220105.models.TableColumnListData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = TableColumnListData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserGroupInfoRequest(AbstractModel):
     r"""DescribeUserGroupInfo请求参数结构体
 
@@ -9360,6 +10456,120 @@ class EmbedTokenInfo(AbstractModel):
         
 
 
+class EmptyValue(AbstractModel):
+    r"""空值展示样式配置值结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 空值展示样式类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Custom: 空值展示样式类型对应具体的展示字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Custom: str
+        """
+        self._Type = None
+        self._Custom = None
+
+    @property
+    def Type(self):
+        r"""空值展示样式类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Custom(self):
+        r"""空值展示样式类型对应具体的展示字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Custom
+
+    @Custom.setter
+    def Custom(self, Custom):
+        self._Custom = Custom
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Custom = params.get("Custom")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmptyValueConfig(AbstractModel):
+    r"""空值展示样式配置结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Number: 数值类字段空值样式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Number: :class:`tencentcloud.bi.v20220105.models.EmptyValue`
+        :param _String: 字符串字段空置样式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type String: :class:`tencentcloud.bi.v20220105.models.EmptyValue`
+        """
+        self._Number = None
+        self._String = None
+
+    @property
+    def Number(self):
+        r"""数值类字段空值样式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmptyValue`
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def String(self):
+        r"""字符串字段空置样式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmptyValue`
+        """
+        return self._String
+
+    @String.setter
+    def String(self, String):
+        self._String = String
+
+
+    def _deserialize(self, params):
+        if params.get("Number") is not None:
+            self._Number = EmptyValue()
+            self._Number._deserialize(params.get("Number"))
+        if params.get("String") is not None:
+            self._String = EmptyValue()
+            self._String._deserialize(params.get("String"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ErrorInfo(AbstractModel):
     r"""自定义错误信息对象
 
@@ -9715,6 +10925,201 @@ class ExportScreenPageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FieldRemarkDTO(AbstractModel):
+    r"""字段备注信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: 字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldName: str
+        :param _Comment: 字段备注列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: list of str
+        """
+        self._FieldName = None
+        self._Comment = None
+
+    @property
+    def FieldName(self):
+        r"""字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def Comment(self):
+        r"""字段备注列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FrequencyConfig(AbstractModel):
+    r"""定时任务执行频率配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Frequency: 周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Frequency: str
+        :param _Dates: 日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dates: list of int
+        :param _Time: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: str
+        :param _IntervalTime: 间隔时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntervalTime: int
+        :param _IntervalTimeUnit: 1:SECOND,2:MINUTE,3:HOUR,4:DAY
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntervalTimeUnit: int
+        :param _Hours: 小时列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hours: list of int
+        :param _Minute: 分钟列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Minute: list of int
+        """
+        self._Frequency = None
+        self._Dates = None
+        self._Time = None
+        self._IntervalTime = None
+        self._IntervalTimeUnit = None
+        self._Hours = None
+        self._Minute = None
+
+    @property
+    def Frequency(self):
+        r"""周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Frequency
+
+    @Frequency.setter
+    def Frequency(self, Frequency):
+        self._Frequency = Frequency
+
+    @property
+    def Dates(self):
+        r"""日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._Dates
+
+    @Dates.setter
+    def Dates(self, Dates):
+        self._Dates = Dates
+
+    @property
+    def Time(self):
+        r"""时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def IntervalTime(self):
+        r"""间隔时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IntervalTime
+
+    @IntervalTime.setter
+    def IntervalTime(self, IntervalTime):
+        self._IntervalTime = IntervalTime
+
+    @property
+    def IntervalTimeUnit(self):
+        r"""1:SECOND,2:MINUTE,3:HOUR,4:DAY
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IntervalTimeUnit
+
+    @IntervalTimeUnit.setter
+    def IntervalTimeUnit(self, IntervalTimeUnit):
+        self._IntervalTimeUnit = IntervalTimeUnit
+
+    @property
+    def Hours(self):
+        r"""小时列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._Hours
+
+    @Hours.setter
+    def Hours(self, Hours):
+        self._Hours = Hours
+
+    @property
+    def Minute(self):
+        r"""分钟列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._Minute
+
+    @Minute.setter
+    def Minute(self, Minute):
+        self._Minute = Minute
+
+
+    def _deserialize(self, params):
+        self._Frequency = params.get("Frequency")
+        self._Dates = params.get("Dates")
+        self._Time = params.get("Time")
+        self._IntervalTime = params.get("IntervalTime")
+        self._IntervalTimeUnit = params.get("IntervalTimeUnit")
+        self._Hours = params.get("Hours")
+        self._Minute = params.get("Minute")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IdDTO(AbstractModel):
     r"""仅包含id的对象
 
@@ -9819,6 +11224,355 @@ class IdDTO(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._TranId = params.get("TranId")
         self._TranStatus = params.get("TranStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JoinRelation(AbstractModel):
+    r"""多表关联原始表之间的关联信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JoinId: 表关联关系id,前端使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinId: str
+        :param _SourceTableNodeId: 原表节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceTableNodeId: str
+        :param _TargetTableNodeId: 目标表节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTableNodeId: str
+        :param _JoinType: 多表关联的关联类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinType: str
+        :param _Fields: 多表关联的字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fields: list of JoinRelationField
+        """
+        self._JoinId = None
+        self._SourceTableNodeId = None
+        self._TargetTableNodeId = None
+        self._JoinType = None
+        self._Fields = None
+
+    @property
+    def JoinId(self):
+        r"""表关联关系id,前端使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JoinId
+
+    @JoinId.setter
+    def JoinId(self, JoinId):
+        self._JoinId = JoinId
+
+    @property
+    def SourceTableNodeId(self):
+        r"""原表节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceTableNodeId
+
+    @SourceTableNodeId.setter
+    def SourceTableNodeId(self, SourceTableNodeId):
+        self._SourceTableNodeId = SourceTableNodeId
+
+    @property
+    def TargetTableNodeId(self):
+        r"""目标表节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetTableNodeId
+
+    @TargetTableNodeId.setter
+    def TargetTableNodeId(self, TargetTableNodeId):
+        self._TargetTableNodeId = TargetTableNodeId
+
+    @property
+    def JoinType(self):
+        r"""多表关联的关联类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JoinType
+
+    @JoinType.setter
+    def JoinType(self, JoinType):
+        self._JoinType = JoinType
+
+    @property
+    def Fields(self):
+        r"""多表关联的字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of JoinRelationField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+
+    def _deserialize(self, params):
+        self._JoinId = params.get("JoinId")
+        self._SourceTableNodeId = params.get("SourceTableNodeId")
+        self._TargetTableNodeId = params.get("TargetTableNodeId")
+        self._JoinType = params.get("JoinType")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = JoinRelationField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JoinRelationField(AbstractModel):
+    r"""多表关联原始表之间使用的关联字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldJoinId: 字段关联关系id,前端使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldJoinId: str
+        :param _SourceField: 原表字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceField: :class:`tencentcloud.bi.v20220105.models.TableField`
+        :param _TargetField: 目标表字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetField: :class:`tencentcloud.bi.v20220105.models.TableField`
+        """
+        self._FieldJoinId = None
+        self._SourceField = None
+        self._TargetField = None
+
+    @property
+    def FieldJoinId(self):
+        r"""字段关联关系id,前端使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldJoinId
+
+    @FieldJoinId.setter
+    def FieldJoinId(self, FieldJoinId):
+        self._FieldJoinId = FieldJoinId
+
+    @property
+    def SourceField(self):
+        r"""原表字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.TableField`
+        """
+        return self._SourceField
+
+    @SourceField.setter
+    def SourceField(self, SourceField):
+        self._SourceField = SourceField
+
+    @property
+    def TargetField(self):
+        r"""目标表字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.TableField`
+        """
+        return self._TargetField
+
+    @TargetField.setter
+    def TargetField(self, TargetField):
+        self._TargetField = TargetField
+
+
+    def _deserialize(self, params):
+        self._FieldJoinId = params.get("FieldJoinId")
+        if params.get("SourceField") is not None:
+            self._SourceField = TableField()
+            self._SourceField._deserialize(params.get("SourceField"))
+        if params.get("TargetField") is not None:
+            self._TargetField = TableField()
+            self._TargetField._deserialize(params.get("TargetField"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JoinSourceTable(AbstractModel):
+    r"""多表关联原始表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableNodeType: 1:数据源原表,2:本地表,3:Excel表,4:API表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNodeType: int
+        :param _TableNodeId: 原始表节点Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNodeId: str
+        :param _ParentId: 父节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: str
+        :param _TableId: 非必填, 数据源原表没有ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _TableName: 必填,数据源原表用原始表名, 其他类型用BI的逻辑表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _Fields: 原始表需要展示的字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fields: list of TableField
+        :param _DatasourceId: 数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param _TableAlias: 非必填,前端展示的数据源别名,excel建表需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableAlias: str
+        """
+        self._TableNodeType = None
+        self._TableNodeId = None
+        self._ParentId = None
+        self._TableId = None
+        self._TableName = None
+        self._Fields = None
+        self._DatasourceId = None
+        self._TableAlias = None
+
+    @property
+    def TableNodeType(self):
+        r"""1:数据源原表,2:本地表,3:Excel表,4:API表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableNodeType
+
+    @TableNodeType.setter
+    def TableNodeType(self, TableNodeType):
+        self._TableNodeType = TableNodeType
+
+    @property
+    def TableNodeId(self):
+        r"""原始表节点Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableNodeId
+
+    @TableNodeId.setter
+    def TableNodeId(self, TableNodeId):
+        self._TableNodeId = TableNodeId
+
+    @property
+    def ParentId(self):
+        r"""父节点id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def TableId(self):
+        r"""非必填, 数据源原表没有ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TableName(self):
+        r"""必填,数据源原表用原始表名, 其他类型用BI的逻辑表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Fields(self):
+        r"""原始表需要展示的字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TableField
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def DatasourceId(self):
+        r"""数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def TableAlias(self):
+        r"""非必填,前端展示的数据源别名,excel建表需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableAlias
+
+    @TableAlias.setter
+    def TableAlias(self, TableAlias):
+        self._TableAlias = TableAlias
+
+
+    def _deserialize(self, params):
+        self._TableNodeType = params.get("TableNodeType")
+        self._TableNodeId = params.get("TableNodeId")
+        self._ParentId = params.get("ParentId")
+        self._TableId = params.get("TableId")
+        self._TableName = params.get("TableName")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = TableField()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        self._DatasourceId = params.get("DatasourceId")
+        self._TableAlias = params.get("TableAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12701,6 +14455,129 @@ class PageScreenVO(AbstractModel):
         
 
 
+class ParamCreateDTO(AbstractModel):
+    r"""1
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamName: str
+        :param _DefaultValue: 默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        :param _ParamType: 参数类型，string/datetime/number
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamType: str
+        :param _FormatRule: 格式化类型，yyyy-MM-dd HH:mm:ss.SSS（只有时间必填）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormatRule: str
+        :param _ComplexType: 复杂类型，格式化的另一种表达，例如YYYY-MM
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplexType: str
+        :param _Scope: 作用域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scope: str
+        """
+        self._ParamName = None
+        self._DefaultValue = None
+        self._ParamType = None
+        self._FormatRule = None
+        self._ComplexType = None
+        self._Scope = None
+
+    @property
+    def ParamName(self):
+        r"""参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def DefaultValue(self):
+        r"""默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def ParamType(self):
+        r"""参数类型，string/datetime/number
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def FormatRule(self):
+        r"""格式化类型，yyyy-MM-dd HH:mm:ss.SSS（只有时间必填）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FormatRule
+
+    @FormatRule.setter
+    def FormatRule(self, FormatRule):
+        self._FormatRule = FormatRule
+
+    @property
+    def ComplexType(self):
+        r"""复杂类型，格式化的另一种表达，例如YYYY-MM
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComplexType
+
+    @ComplexType.setter
+    def ComplexType(self, ComplexType):
+        self._ComplexType = ComplexType
+
+    @property
+    def Scope(self):
+        r"""作用域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        self._DefaultValue = params.get("DefaultValue")
+        self._ParamType = params.get("ParamType")
+        self._FormatRule = params.get("FormatRule")
+        self._ComplexType = params.get("ComplexType")
+        self._Scope = params.get("Scope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PermissionComponent(AbstractModel):
     r"""商业版本权限单元
 
@@ -14804,6 +16681,903 @@ class RowColumnTagValue(AbstractModel):
         self._Id = params.get("Id")
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableColumn(AbstractModel):
+    r"""表的列数据抽象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbName: 列名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbName: str
+        :param _AliasName: 列的别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasName: str
+        :param _DbType: 列的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbType: str
+        :param _FieldType: 段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldType: str
+        :param _Mark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mark: str
+        :param _ExcelName: excel名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcelName: str
+        :param _DictId: 关联的字典表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DictId: int
+        :param _DictName: 关联的字典表表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DictName: str
+        :param _TableNodeId: 多表关联新增字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNodeId: str
+        :param _TableName: 字段所属的表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _FieldComplexType: 用户设置的带格式的目标复杂格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldComplexType: str
+        :param _FormatRule: 格式规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormatRule: str
+        :param _IsFilter: 数据字段是否过滤空值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFilter: bool
+        :param _CalcType: 计算字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcType: str
+        :param _CalcFormula: 计算字段的公式内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcFormula: str
+        :param _CalcDesc: 计算字段的中文公式内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcDesc: str
+        :param _JsonPathName: Api数据源json路径名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JsonPathName: str
+        :param _Granularity: 地理类型标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Granularity: str
+        :param _GeoJsonId: 自定义地图Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GeoJsonId: int
+        :param _EmptyValueConfig: 空值展示样式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmptyValueConfig: :class:`tencentcloud.bi.v20220105.models.EmptyValueConfig`
+        :param _DbFieldName: 原列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbFieldName: str
+        :param _IsCopyOperation: 是否是复制字段操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCopyOperation: bool
+        :param _IsCopyFromNormal: 是否从普通字段复制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCopyFromNormal: bool
+        """
+        self._DbName = None
+        self._AliasName = None
+        self._DbType = None
+        self._FieldType = None
+        self._Mark = None
+        self._ExcelName = None
+        self._DictId = None
+        self._DictName = None
+        self._TableNodeId = None
+        self._TableName = None
+        self._FieldComplexType = None
+        self._FormatRule = None
+        self._IsFilter = None
+        self._CalcType = None
+        self._CalcFormula = None
+        self._CalcDesc = None
+        self._JsonPathName = None
+        self._Granularity = None
+        self._GeoJsonId = None
+        self._EmptyValueConfig = None
+        self._DbFieldName = None
+        self._IsCopyOperation = None
+        self._IsCopyFromNormal = None
+
+    @property
+    def DbName(self):
+        r"""列名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def AliasName(self):
+        r"""列的别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+    @property
+    def DbType(self):
+        r"""列的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def FieldType(self):
+        r"""段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldType
+
+    @FieldType.setter
+    def FieldType(self, FieldType):
+        self._FieldType = FieldType
+
+    @property
+    def Mark(self):
+        r"""备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mark
+
+    @Mark.setter
+    def Mark(self, Mark):
+        self._Mark = Mark
+
+    @property
+    def ExcelName(self):
+        r"""excel名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExcelName
+
+    @ExcelName.setter
+    def ExcelName(self, ExcelName):
+        self._ExcelName = ExcelName
+
+    @property
+    def DictId(self):
+        r"""关联的字典表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def DictName(self):
+        r"""关联的字典表表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DictName
+
+    @DictName.setter
+    def DictName(self, DictName):
+        self._DictName = DictName
+
+    @property
+    def TableNodeId(self):
+        r"""多表关联新增字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableNodeId
+
+    @TableNodeId.setter
+    def TableNodeId(self, TableNodeId):
+        self._TableNodeId = TableNodeId
+
+    @property
+    def TableName(self):
+        r"""字段所属的表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def FieldComplexType(self):
+        r"""用户设置的带格式的目标复杂格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldComplexType
+
+    @FieldComplexType.setter
+    def FieldComplexType(self, FieldComplexType):
+        self._FieldComplexType = FieldComplexType
+
+    @property
+    def FormatRule(self):
+        r"""格式规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FormatRule
+
+    @FormatRule.setter
+    def FormatRule(self, FormatRule):
+        self._FormatRule = FormatRule
+
+    @property
+    def IsFilter(self):
+        r"""数据字段是否过滤空值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsFilter
+
+    @IsFilter.setter
+    def IsFilter(self, IsFilter):
+        self._IsFilter = IsFilter
+
+    @property
+    def CalcType(self):
+        r"""计算字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CalcType
+
+    @CalcType.setter
+    def CalcType(self, CalcType):
+        self._CalcType = CalcType
+
+    @property
+    def CalcFormula(self):
+        r"""计算字段的公式内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CalcFormula
+
+    @CalcFormula.setter
+    def CalcFormula(self, CalcFormula):
+        self._CalcFormula = CalcFormula
+
+    @property
+    def CalcDesc(self):
+        r"""计算字段的中文公式内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CalcDesc
+
+    @CalcDesc.setter
+    def CalcDesc(self, CalcDesc):
+        self._CalcDesc = CalcDesc
+
+    @property
+    def JsonPathName(self):
+        r"""Api数据源json路径名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JsonPathName
+
+    @JsonPathName.setter
+    def JsonPathName(self, JsonPathName):
+        self._JsonPathName = JsonPathName
+
+    @property
+    def Granularity(self):
+        r"""地理类型标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def GeoJsonId(self):
+        r"""自定义地图Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._GeoJsonId
+
+    @GeoJsonId.setter
+    def GeoJsonId(self, GeoJsonId):
+        self._GeoJsonId = GeoJsonId
+
+    @property
+    def EmptyValueConfig(self):
+        r"""空值展示样式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmptyValueConfig`
+        """
+        return self._EmptyValueConfig
+
+    @EmptyValueConfig.setter
+    def EmptyValueConfig(self, EmptyValueConfig):
+        self._EmptyValueConfig = EmptyValueConfig
+
+    @property
+    def DbFieldName(self):
+        r"""原列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbFieldName
+
+    @DbFieldName.setter
+    def DbFieldName(self, DbFieldName):
+        self._DbFieldName = DbFieldName
+
+    @property
+    def IsCopyOperation(self):
+        r"""是否是复制字段操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsCopyOperation
+
+    @IsCopyOperation.setter
+    def IsCopyOperation(self, IsCopyOperation):
+        self._IsCopyOperation = IsCopyOperation
+
+    @property
+    def IsCopyFromNormal(self):
+        r"""是否从普通字段复制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsCopyFromNormal
+
+    @IsCopyFromNormal.setter
+    def IsCopyFromNormal(self, IsCopyFromNormal):
+        self._IsCopyFromNormal = IsCopyFromNormal
+
+
+    def _deserialize(self, params):
+        self._DbName = params.get("DbName")
+        self._AliasName = params.get("AliasName")
+        self._DbType = params.get("DbType")
+        self._FieldType = params.get("FieldType")
+        self._Mark = params.get("Mark")
+        self._ExcelName = params.get("ExcelName")
+        self._DictId = params.get("DictId")
+        self._DictName = params.get("DictName")
+        self._TableNodeId = params.get("TableNodeId")
+        self._TableName = params.get("TableName")
+        self._FieldComplexType = params.get("FieldComplexType")
+        self._FormatRule = params.get("FormatRule")
+        self._IsFilter = params.get("IsFilter")
+        self._CalcType = params.get("CalcType")
+        self._CalcFormula = params.get("CalcFormula")
+        self._CalcDesc = params.get("CalcDesc")
+        self._JsonPathName = params.get("JsonPathName")
+        self._Granularity = params.get("Granularity")
+        self._GeoJsonId = params.get("GeoJsonId")
+        if params.get("EmptyValueConfig") is not None:
+            self._EmptyValueConfig = EmptyValueConfig()
+            self._EmptyValueConfig._deserialize(params.get("EmptyValueConfig"))
+        self._DbFieldName = params.get("DbFieldName")
+        self._IsCopyOperation = params.get("IsCopyOperation")
+        self._IsCopyFromNormal = params.get("IsCopyFromNormal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableColumnListData(AbstractModel):
+    r"""表的全部列名数据列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 表中的列的列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of TableColumn
+        :param _TranId: 异步事务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param _TranStatus: 异步事务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranStatus: int
+        """
+        self._List = None
+        self._TranId = None
+        self._TranStatus = None
+
+    @property
+    def List(self):
+        r"""表中的列的列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TableColumn
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TranId(self):
+        r"""异步事务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def TranStatus(self):
+        r"""异步事务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TranStatus
+
+    @TranStatus.setter
+    def TranStatus(self, TranStatus):
+        self._TranStatus = TranStatus
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = TableColumn()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TranId = params.get("TranId")
+        self._TranStatus = params.get("TranStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableField(AbstractModel):
+    r"""表字段描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbName: db里的字段column名
+        :type DbName: str
+        :param _AliasName: bi展示名
+        :type AliasName: str
+        :param _DbType: db里的字段类型
+        :type DbType: str
+        :param _FieldType: BI归类后的抽象字段类型,比如字符串,数字,时间
+        :type FieldType: str
+        :param _FieldComplexType: 字段组合计算公式后生成的复杂明细类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldComplexType: str
+        :param _Mark: 字段描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mark: str
+        :param _FormatRule: 字段计算公式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormatRule: str
+        :param _IsFilter: 数据字段是否过滤空值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFilter: bool
+        :param _CalcType: 计算字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcType: str
+        :param _CalcFormula: 计算字段的公式内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcFormula: str
+        :param _CalcDesc: 计算字段的中文公式内容, 前端展示使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcDesc: str
+        :param _DictId: 关联字典表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DictId: int
+        :param _DictName: 关联字典表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DictName: str
+        :param _TableNodeId: 非必填, 多表关联新增字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNodeId: str
+        :param _ExcelName: excel
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcelName: str
+        :param _TableName: 非必填,多表关联新增字段,字段所属的表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _JsonPathName: api数据源路径名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JsonPathName: str
+        :param _Granularity: 地理字段标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Granularity: str
+        :param _GeoJsonId: 地图id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GeoJsonId: int
+        :param _EmptyValueConfig: 空值展示样式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmptyValueConfig: :class:`tencentcloud.bi.v20220105.models.EmptyValueConfig`
+        :param _DbFieldName: 原列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbFieldName: str
+        :param _IsCopyOperation: 是否是复制字段操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCopyOperation: bool
+        :param _IsCopyFromNormal: 是否从普通字段复制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCopyFromNormal: bool
+        """
+        self._DbName = None
+        self._AliasName = None
+        self._DbType = None
+        self._FieldType = None
+        self._FieldComplexType = None
+        self._Mark = None
+        self._FormatRule = None
+        self._IsFilter = None
+        self._CalcType = None
+        self._CalcFormula = None
+        self._CalcDesc = None
+        self._DictId = None
+        self._DictName = None
+        self._TableNodeId = None
+        self._ExcelName = None
+        self._TableName = None
+        self._JsonPathName = None
+        self._Granularity = None
+        self._GeoJsonId = None
+        self._EmptyValueConfig = None
+        self._DbFieldName = None
+        self._IsCopyOperation = None
+        self._IsCopyFromNormal = None
+
+    @property
+    def DbName(self):
+        r"""db里的字段column名
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def AliasName(self):
+        r"""bi展示名
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+    @property
+    def DbType(self):
+        r"""db里的字段类型
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def FieldType(self):
+        r"""BI归类后的抽象字段类型,比如字符串,数字,时间
+        :rtype: str
+        """
+        return self._FieldType
+
+    @FieldType.setter
+    def FieldType(self, FieldType):
+        self._FieldType = FieldType
+
+    @property
+    def FieldComplexType(self):
+        r"""字段组合计算公式后生成的复杂明细类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FieldComplexType
+
+    @FieldComplexType.setter
+    def FieldComplexType(self, FieldComplexType):
+        self._FieldComplexType = FieldComplexType
+
+    @property
+    def Mark(self):
+        r"""字段描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mark
+
+    @Mark.setter
+    def Mark(self, Mark):
+        self._Mark = Mark
+
+    @property
+    def FormatRule(self):
+        r"""字段计算公式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FormatRule
+
+    @FormatRule.setter
+    def FormatRule(self, FormatRule):
+        self._FormatRule = FormatRule
+
+    @property
+    def IsFilter(self):
+        r"""数据字段是否过滤空值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsFilter
+
+    @IsFilter.setter
+    def IsFilter(self, IsFilter):
+        self._IsFilter = IsFilter
+
+    @property
+    def CalcType(self):
+        r"""计算字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CalcType
+
+    @CalcType.setter
+    def CalcType(self, CalcType):
+        self._CalcType = CalcType
+
+    @property
+    def CalcFormula(self):
+        r"""计算字段的公式内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CalcFormula
+
+    @CalcFormula.setter
+    def CalcFormula(self, CalcFormula):
+        self._CalcFormula = CalcFormula
+
+    @property
+    def CalcDesc(self):
+        r"""计算字段的中文公式内容, 前端展示使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CalcDesc
+
+    @CalcDesc.setter
+    def CalcDesc(self, CalcDesc):
+        self._CalcDesc = CalcDesc
+
+    @property
+    def DictId(self):
+        r"""关联字典表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def DictName(self):
+        r"""关联字典表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DictName
+
+    @DictName.setter
+    def DictName(self, DictName):
+        self._DictName = DictName
+
+    @property
+    def TableNodeId(self):
+        r"""非必填, 多表关联新增字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableNodeId
+
+    @TableNodeId.setter
+    def TableNodeId(self, TableNodeId):
+        self._TableNodeId = TableNodeId
+
+    @property
+    def ExcelName(self):
+        r"""excel
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExcelName
+
+    @ExcelName.setter
+    def ExcelName(self, ExcelName):
+        self._ExcelName = ExcelName
+
+    @property
+    def TableName(self):
+        r"""非必填,多表关联新增字段,字段所属的表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def JsonPathName(self):
+        r"""api数据源路径名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JsonPathName
+
+    @JsonPathName.setter
+    def JsonPathName(self, JsonPathName):
+        self._JsonPathName = JsonPathName
+
+    @property
+    def Granularity(self):
+        r"""地理字段标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def GeoJsonId(self):
+        r"""地图id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._GeoJsonId
+
+    @GeoJsonId.setter
+    def GeoJsonId(self, GeoJsonId):
+        self._GeoJsonId = GeoJsonId
+
+    @property
+    def EmptyValueConfig(self):
+        r"""空值展示样式配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmptyValueConfig`
+        """
+        return self._EmptyValueConfig
+
+    @EmptyValueConfig.setter
+    def EmptyValueConfig(self, EmptyValueConfig):
+        self._EmptyValueConfig = EmptyValueConfig
+
+    @property
+    def DbFieldName(self):
+        r"""原列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbFieldName
+
+    @DbFieldName.setter
+    def DbFieldName(self, DbFieldName):
+        self._DbFieldName = DbFieldName
+
+    @property
+    def IsCopyOperation(self):
+        r"""是否是复制字段操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsCopyOperation
+
+    @IsCopyOperation.setter
+    def IsCopyOperation(self, IsCopyOperation):
+        self._IsCopyOperation = IsCopyOperation
+
+    @property
+    def IsCopyFromNormal(self):
+        r"""是否从普通字段复制
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsCopyFromNormal
+
+    @IsCopyFromNormal.setter
+    def IsCopyFromNormal(self, IsCopyFromNormal):
+        self._IsCopyFromNormal = IsCopyFromNormal
+
+
+    def _deserialize(self, params):
+        self._DbName = params.get("DbName")
+        self._AliasName = params.get("AliasName")
+        self._DbType = params.get("DbType")
+        self._FieldType = params.get("FieldType")
+        self._FieldComplexType = params.get("FieldComplexType")
+        self._Mark = params.get("Mark")
+        self._FormatRule = params.get("FormatRule")
+        self._IsFilter = params.get("IsFilter")
+        self._CalcType = params.get("CalcType")
+        self._CalcFormula = params.get("CalcFormula")
+        self._CalcDesc = params.get("CalcDesc")
+        self._DictId = params.get("DictId")
+        self._DictName = params.get("DictName")
+        self._TableNodeId = params.get("TableNodeId")
+        self._ExcelName = params.get("ExcelName")
+        self._TableName = params.get("TableName")
+        self._JsonPathName = params.get("JsonPathName")
+        self._Granularity = params.get("Granularity")
+        self._GeoJsonId = params.get("GeoJsonId")
+        if params.get("EmptyValueConfig") is not None:
+            self._EmptyValueConfig = EmptyValueConfig()
+            self._EmptyValueConfig._deserialize(params.get("EmptyValueConfig"))
+        self._DbFieldName = params.get("DbFieldName")
+        self._IsCopyOperation = params.get("IsCopyOperation")
+        self._IsCopyFromNormal = params.get("IsCopyFromNormal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

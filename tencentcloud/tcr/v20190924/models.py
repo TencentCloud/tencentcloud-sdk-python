@@ -12722,23 +12722,23 @@ class ModifyInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 实例ID
+        :param _RegistryId: <p>实例ID</p>
         :type RegistryId: str
-        :param _RegistryType: 实例的规格,
-基础版：basic
-标准版：standard
-高级版：premium
+        :param _RegistryType: <p>实例的规格,<br>基础版：basic<br>标准版：standard<br>高级版：premium</p>
         :type RegistryType: str
-        :param _DeletionProtection: 实例删除保护，false为关闭
+        :param _DeletionProtection: <p>实例删除保护，false为关闭</p>
         :type DeletionProtection: bool
+        :param _EnableCosVersioning: <p>实例是否开启多版本控制，false为关闭</p>
+        :type EnableCosVersioning: bool
         """
         self._RegistryId = None
         self._RegistryType = None
         self._DeletionProtection = None
+        self._EnableCosVersioning = None
 
     @property
     def RegistryId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._RegistryId
@@ -12749,10 +12749,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def RegistryType(self):
-        r"""实例的规格,
-基础版：basic
-标准版：standard
-高级版：premium
+        r"""<p>实例的规格,<br>基础版：basic<br>标准版：standard<br>高级版：premium</p>
         :rtype: str
         """
         return self._RegistryType
@@ -12763,7 +12760,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""实例删除保护，false为关闭
+        r"""<p>实例删除保护，false为关闭</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -12772,11 +12769,23 @@ class ModifyInstanceRequest(AbstractModel):
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
 
+    @property
+    def EnableCosVersioning(self):
+        r"""<p>实例是否开启多版本控制，false为关闭</p>
+        :rtype: bool
+        """
+        return self._EnableCosVersioning
+
+    @EnableCosVersioning.setter
+    def EnableCosVersioning(self, EnableCosVersioning):
+        self._EnableCosVersioning = EnableCosVersioning
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
         self._RegistryType = params.get("RegistryType")
         self._DeletionProtection = params.get("DeletionProtection")
+        self._EnableCosVersioning = params.get("EnableCosVersioning")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

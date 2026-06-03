@@ -348,6 +348,75 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMetaAndDataSyncDatahubTask(self, request):
+        r"""连接器实例同步任务-元数据、消息同步
+
+        :param request: Request instance for CreateMetaAndDataSyncDatahubTask.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateMetaAndDataSyncDatahubTaskRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateMetaAndDataSyncDatahubTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMetaAndDataSyncDatahubTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMetaAndDataSyncDatahubTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMetaDataAndOffsetSyncDatahubTask(self, request):
+        r"""连接器实例同步任务-同步元数据、消息数据、消费微点
+
+        :param request: Request instance for CreateMetaDataAndOffsetSyncDatahubTask.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateMetaDataAndOffsetSyncDatahubTaskRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateMetaDataAndOffsetSyncDatahubTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMetaDataAndOffsetSyncDatahubTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMetaDataAndOffsetSyncDatahubTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMetaSyncDatahubTask(self, request):
+        r"""连接器实例同步任务-元数据同步
+
+        :param request: Request instance for CreateMetaSyncDatahubTask.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateMetaSyncDatahubTaskRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateMetaSyncDatahubTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMetaSyncDatahubTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMetaSyncDatahubTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePartition(self, request):
         r"""本接口用于增加主题中的分区
 

@@ -5765,6 +5765,8 @@ class AssetRiskItem(AbstractModel):
         :type AssetType: str
         :param _AssetTypeIconURL: <p>资产类型图标</p>
         :type AssetTypeIconURL: str
+        :param _AssetTypeName: <p>资产类型</p>
+        :type AssetTypeName: str
         """
         self._AppId = None
         self._Provider = None
@@ -5784,6 +5786,7 @@ class AssetRiskItem(AbstractModel):
         self._StandardTerms = None
         self._AssetType = None
         self._AssetTypeIconURL = None
+        self._AssetTypeName = None
 
     @property
     def AppId(self):
@@ -5983,6 +5986,17 @@ class AssetRiskItem(AbstractModel):
     def AssetTypeIconURL(self, AssetTypeIconURL):
         self._AssetTypeIconURL = AssetTypeIconURL
 
+    @property
+    def AssetTypeName(self):
+        r"""<p>资产类型</p>
+        :rtype: str
+        """
+        return self._AssetTypeName
+
+    @AssetTypeName.setter
+    def AssetTypeName(self, AssetTypeName):
+        self._AssetTypeName = AssetTypeName
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -6008,6 +6022,7 @@ class AssetRiskItem(AbstractModel):
                 self._StandardTerms.append(obj)
         self._AssetType = params.get("AssetType")
         self._AssetTypeIconURL = params.get("AssetTypeIconURL")
+        self._AssetTypeName = params.get("AssetTypeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24630,15 +24645,15 @@ class DescribeCheckViewRisksRequest(AbstractModel):
         r"""
         :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _Filters: 过滤内容
+        :param _Filters: <p>过滤内容</p>
         :type Filters: list of Filters
-        :param _Limit: 分页大小
+        :param _Limit: <p>分页大小</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Order: 排序类型
+        :param _Order: <p>排序类型</p>
         :type Order: str
-        :param _By: 排序字段
+        :param _By: <p>排序字段</p>
         :type By: str
         """
         self._MemberId = None
@@ -24661,7 +24676,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤内容
+        r"""<p>过滤内容</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -24672,7 +24687,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -24683,7 +24698,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -24694,7 +24709,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序类型
+        r"""<p>排序类型</p>
         :rtype: str
         """
         return self._Order
@@ -24705,7 +24720,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序字段
+        r"""<p>排序字段</p>
         :rtype: str
         """
         return self._By
@@ -24744,14 +24759,16 @@ class DescribeCheckViewRisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 检查视角下风险数量
+        :param _TotalCount: <p>检查视角下风险数量</p>
         :type TotalCount: int
-        :param _CheckViewRiskList: 检查视角下风险列表
+        :param _CheckViewRiskList: <p>检查视角下风险列表</p>
         :type CheckViewRiskList: list of CheckViewRiskItem
-        :param _StandardNameList: 检查视角下cspm规范标签列表
+        :param _StandardNameList: <p>检查视角下cspm规范标签列表</p>
         :type StandardNameList: list of StandardItem
-        :param _AssetTypeList: 资产类型集合
+        :param _AssetTypeList: <p>资产类型集合</p>
         :type AssetTypeList: list of AttributeOptionSet
+        :param _ProviderList: <p>云厂商类型集合</p>
+        :type ProviderList: list of AttributeOptionSet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -24759,11 +24776,12 @@ class DescribeCheckViewRisksResponse(AbstractModel):
         self._CheckViewRiskList = None
         self._StandardNameList = None
         self._AssetTypeList = None
+        self._ProviderList = None
         self._RequestId = None
 
     @property
     def TotalCount(self):
-        r"""检查视角下风险数量
+        r"""<p>检查视角下风险数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -24774,7 +24792,7 @@ class DescribeCheckViewRisksResponse(AbstractModel):
 
     @property
     def CheckViewRiskList(self):
-        r"""检查视角下风险列表
+        r"""<p>检查视角下风险列表</p>
         :rtype: list of CheckViewRiskItem
         """
         return self._CheckViewRiskList
@@ -24785,7 +24803,7 @@ class DescribeCheckViewRisksResponse(AbstractModel):
 
     @property
     def StandardNameList(self):
-        r"""检查视角下cspm规范标签列表
+        r"""<p>检查视角下cspm规范标签列表</p>
         :rtype: list of StandardItem
         """
         return self._StandardNameList
@@ -24796,7 +24814,7 @@ class DescribeCheckViewRisksResponse(AbstractModel):
 
     @property
     def AssetTypeList(self):
-        r"""资产类型集合
+        r"""<p>资产类型集合</p>
         :rtype: list of AttributeOptionSet
         """
         return self._AssetTypeList
@@ -24804,6 +24822,17 @@ class DescribeCheckViewRisksResponse(AbstractModel):
     @AssetTypeList.setter
     def AssetTypeList(self, AssetTypeList):
         self._AssetTypeList = AssetTypeList
+
+    @property
+    def ProviderList(self):
+        r"""<p>云厂商类型集合</p>
+        :rtype: list of AttributeOptionSet
+        """
+        return self._ProviderList
+
+    @ProviderList.setter
+    def ProviderList(self, ProviderList):
+        self._ProviderList = ProviderList
 
     @property
     def RequestId(self):
@@ -24837,6 +24866,12 @@ class DescribeCheckViewRisksResponse(AbstractModel):
                 obj = AttributeOptionSet()
                 obj._deserialize(item)
                 self._AssetTypeList.append(obj)
+        if params.get("ProviderList") is not None:
+            self._ProviderList = []
+            for item in params.get("ProviderList"):
+                obj = AttributeOptionSet()
+                obj._deserialize(item)
+                self._ProviderList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -40612,14 +40647,14 @@ class DescribeRiskRuleDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RiskRuleId: 风险规则ID
+        :param _RiskRuleId: <p>风险规则ID</p>
         :type RiskRuleId: str
         """
         self._RiskRuleId = None
 
     @property
     def RiskRuleId(self):
-        r"""风险规则ID
+        r"""<p>风险规则ID</p>
         :rtype: str
         """
         return self._RiskRuleId
@@ -40648,16 +40683,18 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RiskRuleId: 风险规则ID
+        :param _RiskRuleId: <p>风险规则ID</p>
         :type RiskRuleId: str
-        :param _Provider: 云厂商
+        :param _Provider: <p>云厂商</p>
         :type Provider: str
-        :param _RiskName: 风险名称
+        :param _RiskName: <p>风险名称</p>
         :type RiskName: str
-        :param _RiskInfluence: 风险危害
+        :param _RiskInfluence: <p>风险危害</p>
         :type RiskInfluence: str
-        :param _RiskFixAdvice: 修复指引
+        :param _RiskFixAdvice: <p>修复指引</p>
         :type RiskFixAdvice: str
+        :param _AssetType: <p>资产类型</p>
+        :type AssetType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -40666,11 +40703,12 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
         self._RiskName = None
         self._RiskInfluence = None
         self._RiskFixAdvice = None
+        self._AssetType = None
         self._RequestId = None
 
     @property
     def RiskRuleId(self):
-        r"""风险规则ID
+        r"""<p>风险规则ID</p>
         :rtype: str
         """
         return self._RiskRuleId
@@ -40681,7 +40719,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def Provider(self):
-        r"""云厂商
+        r"""<p>云厂商</p>
         :rtype: str
         """
         return self._Provider
@@ -40692,7 +40730,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def RiskName(self):
-        r"""风险名称
+        r"""<p>风险名称</p>
         :rtype: str
         """
         return self._RiskName
@@ -40703,7 +40741,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def RiskInfluence(self):
-        r"""风险危害
+        r"""<p>风险危害</p>
         :rtype: str
         """
         return self._RiskInfluence
@@ -40714,7 +40752,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
 
     @property
     def RiskFixAdvice(self):
-        r"""修复指引
+        r"""<p>修复指引</p>
         :rtype: str
         """
         return self._RiskFixAdvice
@@ -40722,6 +40760,17 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
     @RiskFixAdvice.setter
     def RiskFixAdvice(self, RiskFixAdvice):
         self._RiskFixAdvice = RiskFixAdvice
+
+    @property
+    def AssetType(self):
+        r"""<p>资产类型</p>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
 
     @property
     def RequestId(self):
@@ -40741,6 +40790,7 @@ class DescribeRiskRuleDetailResponse(AbstractModel):
         self._RiskName = params.get("RiskName")
         self._RiskInfluence = params.get("RiskInfluence")
         self._RiskFixAdvice = params.get("RiskFixAdvice")
+        self._AssetType = params.get("AssetType")
         self._RequestId = params.get("RequestId")
 
 
@@ -61113,6 +61163,8 @@ class RiskDetailItem(AbstractModel):
         :type CheckStatus: str
         :param _AppID: <p>用户AppID</p>
         :type AppID: int
+        :param _AssetType: <p>资产类型</p>
+        :type AssetType: str
         """
         self._CreateTime = None
         self._UpdateTime = None
@@ -61128,6 +61180,7 @@ class RiskDetailItem(AbstractModel):
         self._RiskRuleId = None
         self._CheckStatus = None
         self._AppID = None
+        self._AssetType = None
 
     @property
     def CreateTime(self):
@@ -61283,6 +61336,17 @@ class RiskDetailItem(AbstractModel):
     def AppID(self, AppID):
         self._AppID = AppID
 
+    @property
+    def AssetType(self):
+        r"""<p>资产类型</p>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._CreateTime = params.get("CreateTime")
@@ -61299,6 +61363,7 @@ class RiskDetailItem(AbstractModel):
         self._RiskRuleId = params.get("RiskRuleId")
         self._CheckStatus = params.get("CheckStatus")
         self._AppID = params.get("AppID")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -5881,6 +5881,594 @@ class CreateInstancePreResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMetaAndDataSyncDatahubTaskRequest(AbstractModel):
+    r"""CreateMetaAndDataSyncDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: <p>任务名称</p><p>64字符内</p>
+        :type TaskName: str
+        :param _SourceResourceId: <p>同步源连接</p><p>参数格式：resource-test</p>
+        :type SourceResourceId: str
+        :param _TargetResourceId: <p>同步目标连接</p><p>参数格式：resource-test</p>
+        :type TargetResourceId: str
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of Tag
+        :param _OffsetType: <p>Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp</p><p>枚举值：</p><ul><li>earliest： 最开始位置</li><li>latest： 最新位置</li><li>timestamp： 时间点位置</li></ul>
+        :type OffsetType: str
+        :param _TopicRegularExpression: <p>正则匹配Topic列表</p><p>与TopicList参数二选一</p>
+        :type TopicRegularExpression: str
+        :param _TopicList: <p>多选topic列表</p><p>与TopicRegularExpression参数二选一</p>
+        :type TopicList: list of str
+        :param _Prefix: <p>Topic 前缀</p>
+        :type Prefix: str
+        :param _Separator: <p>Topic前缀分隔符</p><p>仅支持 &quot;.&quot; / &quot;-&quot; / &quot;_&quot;</p>
+        :type Separator: str
+        :param _Description: <p>连接器任务描述</p><p>128字符内</p>
+        :type Description: str
+        """
+        self._TaskName = None
+        self._SourceResourceId = None
+        self._TargetResourceId = None
+        self._Tags = None
+        self._OffsetType = None
+        self._TopicRegularExpression = None
+        self._TopicList = None
+        self._Prefix = None
+        self._Separator = None
+        self._Description = None
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p><p>64字符内</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def SourceResourceId(self):
+        r"""<p>同步源连接</p><p>参数格式：resource-test</p>
+        :rtype: str
+        """
+        return self._SourceResourceId
+
+    @SourceResourceId.setter
+    def SourceResourceId(self, SourceResourceId):
+        self._SourceResourceId = SourceResourceId
+
+    @property
+    def TargetResourceId(self):
+        r"""<p>同步目标连接</p><p>参数格式：resource-test</p>
+        :rtype: str
+        """
+        return self._TargetResourceId
+
+    @TargetResourceId.setter
+    def TargetResourceId(self, TargetResourceId):
+        self._TargetResourceId = TargetResourceId
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def OffsetType(self):
+        r"""<p>Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp</p><p>枚举值：</p><ul><li>earliest： 最开始位置</li><li>latest： 最新位置</li><li>timestamp： 时间点位置</li></ul>
+        :rtype: str
+        """
+        return self._OffsetType
+
+    @OffsetType.setter
+    def OffsetType(self, OffsetType):
+        self._OffsetType = OffsetType
+
+    @property
+    def TopicRegularExpression(self):
+        r"""<p>正则匹配Topic列表</p><p>与TopicList参数二选一</p>
+        :rtype: str
+        """
+        return self._TopicRegularExpression
+
+    @TopicRegularExpression.setter
+    def TopicRegularExpression(self, TopicRegularExpression):
+        self._TopicRegularExpression = TopicRegularExpression
+
+    @property
+    def TopicList(self):
+        r"""<p>多选topic列表</p><p>与TopicRegularExpression参数二选一</p>
+        :rtype: list of str
+        """
+        return self._TopicList
+
+    @TopicList.setter
+    def TopicList(self, TopicList):
+        self._TopicList = TopicList
+
+    @property
+    def Prefix(self):
+        r"""<p>Topic 前缀</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Separator(self):
+        r"""<p>Topic前缀分隔符</p><p>仅支持 &quot;.&quot; / &quot;-&quot; / &quot;_&quot;</p>
+        :rtype: str
+        """
+        return self._Separator
+
+    @Separator.setter
+    def Separator(self, Separator):
+        self._Separator = Separator
+
+    @property
+    def Description(self):
+        r"""<p>连接器任务描述</p><p>128字符内</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._SourceResourceId = params.get("SourceResourceId")
+        self._TargetResourceId = params.get("TargetResourceId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._OffsetType = params.get("OffsetType")
+        self._TopicRegularExpression = params.get("TopicRegularExpression")
+        self._TopicList = params.get("TopicList")
+        self._Prefix = params.get("Prefix")
+        self._Separator = params.get("Separator")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMetaAndDataSyncDatahubTaskResponse(AbstractModel):
+    r"""CreateMetaAndDataSyncDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回结果</p>
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreateDatahubTaskRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMetaDataAndOffsetSyncDatahubTaskRequest(AbstractModel):
+    r"""CreateMetaDataAndOffsetSyncDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: <p>任务名称</p><p>参数格式：task-test</p><p>64字符内</p>
+        :type TaskName: str
+        :param _SourceResourceId: <p>同步源连接</p><p>参数格式：resource-test</p>
+        :type SourceResourceId: str
+        :param _TargetResourceId: <p>同步目标链接</p><p>参数格式：resource-test</p>
+        :type TargetResourceId: str
+        :param _Description: <p>连接器任务描述</p><p>128字符内</p>
+        :type Description: str
+        :param _OffsetType: <p>Offset类型，最开始位置earliest，最新位置latest</p><p>枚举值：</p><ul><li>earliest： 最开始位置</li><li>latest： 最新位置</li></ul>
+        :type OffsetType: str
+        :param _TopicRegularExpression: <p>正则匹配Topic列表</p><p>与TopicList参数二选一</p>
+        :type TopicRegularExpression: str
+        :param _TopicList: <p>多选topic列表</p><p>与TopicRegularExpression参数二选一</p>
+        :type TopicList: list of str
+        :param _Prefix: <p>Topic 前缀</p>
+        :type Prefix: str
+        :param _Separator: <p>Topic前缀分隔符</p><p>仅支持 &quot;.&quot; / &quot;-&quot; / &quot;_&quot;</p>
+        :type Separator: str
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of Tag
+        """
+        self._TaskName = None
+        self._SourceResourceId = None
+        self._TargetResourceId = None
+        self._Description = None
+        self._OffsetType = None
+        self._TopicRegularExpression = None
+        self._TopicList = None
+        self._Prefix = None
+        self._Separator = None
+        self._Tags = None
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p><p>参数格式：task-test</p><p>64字符内</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def SourceResourceId(self):
+        r"""<p>同步源连接</p><p>参数格式：resource-test</p>
+        :rtype: str
+        """
+        return self._SourceResourceId
+
+    @SourceResourceId.setter
+    def SourceResourceId(self, SourceResourceId):
+        self._SourceResourceId = SourceResourceId
+
+    @property
+    def TargetResourceId(self):
+        r"""<p>同步目标链接</p><p>参数格式：resource-test</p>
+        :rtype: str
+        """
+        return self._TargetResourceId
+
+    @TargetResourceId.setter
+    def TargetResourceId(self, TargetResourceId):
+        self._TargetResourceId = TargetResourceId
+
+    @property
+    def Description(self):
+        r"""<p>连接器任务描述</p><p>128字符内</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def OffsetType(self):
+        r"""<p>Offset类型，最开始位置earliest，最新位置latest</p><p>枚举值：</p><ul><li>earliest： 最开始位置</li><li>latest： 最新位置</li></ul>
+        :rtype: str
+        """
+        return self._OffsetType
+
+    @OffsetType.setter
+    def OffsetType(self, OffsetType):
+        self._OffsetType = OffsetType
+
+    @property
+    def TopicRegularExpression(self):
+        r"""<p>正则匹配Topic列表</p><p>与TopicList参数二选一</p>
+        :rtype: str
+        """
+        return self._TopicRegularExpression
+
+    @TopicRegularExpression.setter
+    def TopicRegularExpression(self, TopicRegularExpression):
+        self._TopicRegularExpression = TopicRegularExpression
+
+    @property
+    def TopicList(self):
+        r"""<p>多选topic列表</p><p>与TopicRegularExpression参数二选一</p>
+        :rtype: list of str
+        """
+        return self._TopicList
+
+    @TopicList.setter
+    def TopicList(self, TopicList):
+        self._TopicList = TopicList
+
+    @property
+    def Prefix(self):
+        r"""<p>Topic 前缀</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Separator(self):
+        r"""<p>Topic前缀分隔符</p><p>仅支持 &quot;.&quot; / &quot;-&quot; / &quot;_&quot;</p>
+        :rtype: str
+        """
+        return self._Separator
+
+    @Separator.setter
+    def Separator(self, Separator):
+        self._Separator = Separator
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._SourceResourceId = params.get("SourceResourceId")
+        self._TargetResourceId = params.get("TargetResourceId")
+        self._Description = params.get("Description")
+        self._OffsetType = params.get("OffsetType")
+        self._TopicRegularExpression = params.get("TopicRegularExpression")
+        self._TopicList = params.get("TopicList")
+        self._Prefix = params.get("Prefix")
+        self._Separator = params.get("Separator")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMetaDataAndOffsetSyncDatahubTaskResponse(AbstractModel):
+    r"""CreateMetaDataAndOffsetSyncDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回结果</p>
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreateDatahubTaskRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMetaSyncDatahubTaskRequest(AbstractModel):
+    r"""CreateMetaSyncDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: <p>连接器任务名称</p><p>64字符内</p>
+        :type TaskName: str
+        :param _SourceResourceId: <p>同步源连接</p><p>参数格式：resource-test</p>
+        :type SourceResourceId: str
+        :param _TargetResourceId: <p>同步目标连接</p><p>参数格式：resource-test</p>
+        :type TargetResourceId: str
+        :param _Description: <p>连接器任务描述</p><p>128字符内</p>
+        :type Description: str
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of Tag
+        """
+        self._TaskName = None
+        self._SourceResourceId = None
+        self._TargetResourceId = None
+        self._Description = None
+        self._Tags = None
+
+    @property
+    def TaskName(self):
+        r"""<p>连接器任务名称</p><p>64字符内</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def SourceResourceId(self):
+        r"""<p>同步源连接</p><p>参数格式：resource-test</p>
+        :rtype: str
+        """
+        return self._SourceResourceId
+
+    @SourceResourceId.setter
+    def SourceResourceId(self, SourceResourceId):
+        self._SourceResourceId = SourceResourceId
+
+    @property
+    def TargetResourceId(self):
+        r"""<p>同步目标连接</p><p>参数格式：resource-test</p>
+        :rtype: str
+        """
+        return self._TargetResourceId
+
+    @TargetResourceId.setter
+    def TargetResourceId(self, TargetResourceId):
+        self._TargetResourceId = TargetResourceId
+
+    @property
+    def Description(self):
+        r"""<p>连接器任务描述</p><p>128字符内</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._SourceResourceId = params.get("SourceResourceId")
+        self._TargetResourceId = params.get("TargetResourceId")
+        self._Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMetaSyncDatahubTaskResponse(AbstractModel):
+    r"""CreateMetaSyncDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回结果</p>
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreateDatahubTaskRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePartitionRequest(AbstractModel):
     r"""CreatePartition请求参数结构体
 
@@ -7331,11 +7919,11 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+        :param _InstanceId: <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
         :type InstanceId: str
-        :param _Name: 用户名称
+        :param _Name: <p>用户名称</p>
         :type Name: str
-        :param _Password: 用户密码
+        :param _Password: <p>用户密码</p>
         :type Password: str
         """
         self._InstanceId = None
@@ -7344,7 +7932,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+        r"""<p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7355,7 +7943,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""用户名称
+        r"""<p>用户名称</p>
         :rtype: str
         """
         return self._Name
@@ -7366,7 +7954,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""用户密码
+        r"""<p>用户密码</p>
         :rtype: str
         """
         return self._Password
@@ -7397,7 +7985,7 @@ class CreateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果
+        :param _Result: <p>返回结果</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7407,7 +7995,7 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回结果
+        r"""<p>返回结果</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -13116,17 +13704,17 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SearchWord: 搜索词
+        :param _SearchWord: <p>搜索词</p><p>对Name或TopicName或TopicId字段进行模糊匹配</p>
         :type SearchWord: str
-        :param _Offset: 本次查询的偏移位置，默认为0
+        :param _Offset: <p>本次查询的偏移位置，默认为0</p>
         :type Offset: int
-        :param _Limit: 本次返回结果的最大个数，默认为50，最大值为50
+        :param _Limit: <p>本次返回结果的最大个数</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
         :type Limit: int
-        :param _QueryFromConnectResource: 是否从连接查询topic列表
+        :param _QueryFromConnectResource: <p>是否从连接查询topic列表</p><p>默认值：false</p>
         :type QueryFromConnectResource: bool
-        :param _ConnectResourceId: 连接的ID
+        :param _ConnectResourceId: <p>连接的ID</p>
         :type ConnectResourceId: str
-        :param _TopicRegularExpression: topic资源表达式
+        :param _TopicRegularExpression: <p>topic资源表达式</p>
         :type TopicRegularExpression: str
         """
         self._SearchWord = None
@@ -13138,7 +13726,7 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        r"""搜索词
+        r"""<p>搜索词</p><p>对Name或TopicName或TopicId字段进行模糊匹配</p>
         :rtype: str
         """
         return self._SearchWord
@@ -13149,7 +13737,7 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""本次查询的偏移位置，默认为0
+        r"""<p>本次查询的偏移位置，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -13160,7 +13748,7 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""本次返回结果的最大个数，默认为50，最大值为50
+        r"""<p>本次返回结果的最大个数</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
         :rtype: int
         """
         return self._Limit
@@ -13171,7 +13759,7 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def QueryFromConnectResource(self):
-        r"""是否从连接查询topic列表
+        r"""<p>是否从连接查询topic列表</p><p>默认值：false</p>
         :rtype: bool
         """
         return self._QueryFromConnectResource
@@ -13182,7 +13770,7 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def ConnectResourceId(self):
-        r"""连接的ID
+        r"""<p>连接的ID</p>
         :rtype: str
         """
         return self._ConnectResourceId
@@ -13193,7 +13781,7 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def TopicRegularExpression(self):
-        r"""topic资源表达式
+        r"""<p>topic资源表达式</p>
         :rtype: str
         """
         return self._TopicRegularExpression
@@ -13283,7 +13871,7 @@ class DescribeDatahubTopicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 主题列表
+        :param _Result: <p>主题列表</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13293,7 +13881,7 @@ class DescribeDatahubTopicsResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""主题列表
+        r"""<p>主题列表</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
         """
         return self._Result
@@ -18274,13 +18862,13 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 弹性topic名称
+        :param _Name: <p>弹性topic名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/86863">DescribeDatahubTopics</a></p>
         :type Name: str
-        :param _Partition: 分区id
+        :param _Partition: <p>分区id</p>
         :type Partition: int
-        :param _Offset: 位点信息
+        :param _Offset: <p>位点信息</p>
         :type Offset: int
-        :param _MessageCount: 最大查询条数，最小1，最大100
+        :param _MessageCount: <p>最大查询条数</p><p>取值范围：[1, 100]</p>
         :type MessageCount: int
         """
         self._Name = None
@@ -18290,7 +18878,7 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""弹性topic名称
+        r"""<p>弹性topic名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/86863">DescribeDatahubTopics</a></p>
         :rtype: str
         """
         return self._Name
@@ -18301,7 +18889,7 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     @property
     def Partition(self):
-        r"""分区id
+        r"""<p>分区id</p>
         :rtype: int
         """
         return self._Partition
@@ -18312,7 +18900,7 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""位点信息
+        r"""<p>位点信息</p>
         :rtype: int
         """
         return self._Offset
@@ -18323,7 +18911,7 @@ class FetchLatestDatahubMessageListRequest(AbstractModel):
 
     @property
     def MessageCount(self):
-        r"""最大查询条数，最小1，最大100
+        r"""<p>最大查询条数</p><p>取值范围：[1, 100]</p>
         :rtype: int
         """
         return self._MessageCount
@@ -18355,7 +18943,7 @@ class FetchLatestDatahubMessageListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果。
+        :param _Result: <p>返回结果。</p>
         :type Result: list of ConsumerRecord
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18365,7 +18953,7 @@ class FetchLatestDatahubMessageListResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回结果。
+        r"""<p>返回结果。</p>
         :rtype: list of ConsumerRecord
         """
         return self._Result
@@ -33549,15 +34137,15 @@ class UpgradeBrokerVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: <p>ckafka集群实例Id</p>
         :type InstanceId: str
-        :param _Type: 1.平滑升配.2.垂直升配
+        :param _Type: <p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li></ul>
         :type Type: int
-        :param _SourceVersion: 版本号
+        :param _SourceVersion: <p>版本号</p>
         :type SourceVersion: str
-        :param _TargetVersion: 版本号
+        :param _TargetVersion: <p>版本号</p>
         :type TargetVersion: str
-        :param _DelayTimeStamp: 延迟时间
+        :param _DelayTimeStamp: <p>延迟时间</p>
         :type DelayTimeStamp: str
         """
         self._InstanceId = None
@@ -33568,7 +34156,7 @@ class UpgradeBrokerVersionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka集群实例Id
+        r"""<p>ckafka集群实例Id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -33579,7 +34167,7 @@ class UpgradeBrokerVersionRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""1.平滑升配.2.垂直升配
+        r"""<p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li></ul>
         :rtype: int
         """
         return self._Type
@@ -33590,7 +34178,7 @@ class UpgradeBrokerVersionRequest(AbstractModel):
 
     @property
     def SourceVersion(self):
-        r"""版本号
+        r"""<p>版本号</p>
         :rtype: str
         """
         return self._SourceVersion
@@ -33601,7 +34189,7 @@ class UpgradeBrokerVersionRequest(AbstractModel):
 
     @property
     def TargetVersion(self):
-        r"""版本号
+        r"""<p>版本号</p>
         :rtype: str
         """
         return self._TargetVersion
@@ -33612,7 +34200,7 @@ class UpgradeBrokerVersionRequest(AbstractModel):
 
     @property
     def DelayTimeStamp(self):
-        r"""延迟时间
+        r"""<p>延迟时间</p>
         :rtype: str
         """
         return self._DelayTimeStamp
@@ -33645,7 +34233,7 @@ class UpgradeBrokerVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 升配结果
+        :param _Result: <p>升配结果</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33655,7 +34243,7 @@ class UpgradeBrokerVersionResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""升配结果
+        r"""<p>升配结果</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -33726,13 +34314,13 @@ class User(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户id
+        :param _UserId: <p>用户id</p>
         :type UserId: int
-        :param _Name: 用户名称
+        :param _Name: <p>用户名称</p>
         :type Name: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 最后更新时间
+        :param _UpdateTime: <p>最后更新时间</p>
         :type UpdateTime: str
         """
         self._UserId = None
@@ -33742,7 +34330,7 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户id
+        r"""<p>用户id</p>
         :rtype: int
         """
         return self._UserId
@@ -33753,7 +34341,7 @@ class User(AbstractModel):
 
     @property
     def Name(self):
-        r"""用户名称
+        r"""<p>用户名称</p>
         :rtype: str
         """
         return self._Name
@@ -33764,7 +34352,7 @@ class User(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -33775,7 +34363,7 @@ class User(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""最后更新时间
+        r"""<p>最后更新时间</p>
         :rtype: str
         """
         return self._UpdateTime

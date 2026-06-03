@@ -1328,19 +1328,19 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceType: 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        :param _ServiceType: <p>业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka</p>
         :type ServiceType: str
-        :param _ResourcePrefix: 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        :param _ResourcePrefix: <p>该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId</p>
         :type ResourcePrefix: str
-        :param _ResourceRegion: 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        :param _ResourceRegion: <p>资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填</p>
         :type ResourceRegion: str
-        :param _ResourceIds: 资源唯一标识ID的列表，列表容量不超过20
+        :param _ResourceIds: <p>资源唯一标识ID的列表，列表容量不超过20</p>
         :type ResourceIds: list of str
-        :param _TagKeys: 资源标签键列表，列表容量不超过20
+        :param _TagKeys: <p>资源标签键列表，列表容量不超过20</p>
         :type TagKeys: list of str
-        :param _Limit: 每页大小，默认为 400
+        :param _Limit: <p>每页大小，默认为 400</p>
         :type Limit: int
-        :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :param _Offset: <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :type Offset: int
         """
         self._ServiceType = None
@@ -1353,7 +1353,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        r"""<p>业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka</p>
         :rtype: str
         """
         return self._ServiceType
@@ -1364,7 +1364,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        r"""该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        r"""<p>该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId</p>
         :rtype: str
         """
         return self._ResourcePrefix
@@ -1375,7 +1375,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        r"""资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        r"""<p>资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填</p>
         :rtype: str
         """
         return self._ResourceRegion
@@ -1386,7 +1386,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""资源唯一标识ID的列表，列表容量不超过20
+        r"""<p>资源唯一标识ID的列表，列表容量不超过20</p>
         :rtype: list of str
         """
         return self._ResourceIds
@@ -1397,7 +1397,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        r"""资源标签键列表，列表容量不超过20
+        r"""<p>资源标签键列表，列表容量不超过20</p>
         :rtype: list of str
         """
         return self._TagKeys
@@ -1408,7 +1408,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小，默认为 400
+        r"""<p>每页大小，默认为 400</p>
         :rtype: int
         """
         return self._Limit
@@ -1419,7 +1419,7 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""<p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :rtype: int
         """
         return self._Offset
@@ -1454,13 +1454,13 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 结果总数
+        :param _TotalCount: <p>结果总数</p>
         :type TotalCount: int
-        :param _Offset: 数据位移偏量
+        :param _Offset: <p>数据位移偏量</p>
         :type Offset: int
-        :param _Limit: 每页大小
+        :param _Limit: <p>每页大小</p>
         :type Limit: int
-        :param _Rows: 资源标签
+        :param _Rows: <p>资源标签</p>
         :type Rows: list of ResourceIdTag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1473,7 +1473,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""结果总数
+        r"""<p>结果总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -1484,7 +1484,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据位移偏量
+        r"""<p>数据位移偏量</p>
         :rtype: int
         """
         return self._Offset
@@ -1495,7 +1495,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小
+        r"""<p>每页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -1506,7 +1506,7 @@ class DescribeResourceTagsByTagKeysResponse(AbstractModel):
 
     @property
     def Rows(self):
-        r"""资源标签
+        r"""<p>资源标签</p>
         :rtype: list of ResourceIdTag
         """
         return self._Rows
@@ -1781,21 +1781,21 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagFilters: 标签过滤数组，数量最多6个
+        :param _TagFilters: <p>标签过滤数组，最多支持6组标签。</p>
         :type TagFilters: list of TagFilter
-        :param _CreateUin: 创建标签者uin
+        :param _CreateUin: <p>创建标签者uin</p>
         :type CreateUin: int
-        :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :param _Offset: <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :type Offset: int
-        :param _Limit: 每页大小，默认为 15
+        :param _Limit: <p>每页大小，默认为 15</p>
         :type Limit: int
-        :param _ResourcePrefix: 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        :param _ResourcePrefix: <p>该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填</p>
         :type ResourcePrefix: str
-        :param _ResourceId: 资源唯一标记
+        :param _ResourceId: <p>资源唯一标记</p>
         :type ResourceId: str
-        :param _ResourceRegion: 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        :param _ResourceRegion: <p>资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填</p>
         :type ResourceRegion: str
-        :param _ServiceType: 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        :param _ServiceType: <p>业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka</p>
         :type ServiceType: str
         """
         self._TagFilters = None
@@ -1809,7 +1809,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""标签过滤数组，数量最多6个
+        r"""<p>标签过滤数组，最多支持6组标签。</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -1820,7 +1820,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建标签者uin
+        r"""<p>创建标签者uin</p>
         :rtype: int
         """
         return self._CreateUin
@@ -1831,7 +1831,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""<p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :rtype: int
         """
         return self._Offset
@@ -1842,7 +1842,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小，默认为 15
+        r"""<p>每页大小，默认为 15</p>
         :rtype: int
         """
         return self._Limit
@@ -1853,7 +1853,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        r"""该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        r"""<p>该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填</p>
         :rtype: str
         """
         return self._ResourcePrefix
@@ -1864,7 +1864,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源唯一标记
+        r"""<p>资源唯一标记</p>
         :rtype: str
         """
         return self._ResourceId
@@ -1875,7 +1875,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        r"""资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        r"""<p>资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填</p>
         :rtype: str
         """
         return self._ResourceRegion
@@ -1886,7 +1886,7 @@ class DescribeResourcesByTagsRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        r"""<p>业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka</p>
         :rtype: str
         """
         return self._ServiceType
@@ -1927,13 +1927,13 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 结果总数
+        :param _TotalCount: <p>结果总数</p>
         :type TotalCount: int
-        :param _Offset: 数据位移偏量
+        :param _Offset: <p>数据位移偏量</p>
         :type Offset: int
-        :param _Limit: 每页大小
+        :param _Limit: <p>每页大小</p>
         :type Limit: int
-        :param _Rows: 资源标签
+        :param _Rows: <p>资源标签</p>
         :type Rows: list of ResourceTag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1946,7 +1946,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""结果总数
+        r"""<p>结果总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -1957,7 +1957,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据位移偏量
+        r"""<p>数据位移偏量</p>
         :rtype: int
         """
         return self._Offset
@@ -1968,7 +1968,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小
+        r"""<p>每页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -1979,7 +1979,7 @@ class DescribeResourcesByTagsResponse(AbstractModel):
 
     @property
     def Rows(self):
-        r"""资源标签
+        r"""<p>资源标签</p>
         :rtype: list of ResourceTag
         """
         return self._Rows
@@ -2020,21 +2020,21 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagFilters: 标签过滤数组，数量最多六个
+        :param _TagFilters: <p>标签过滤数组，最多支持6组标签。</p>
         :type TagFilters: list of TagFilter
-        :param _CreateUin: 创建标签者uin
+        :param _CreateUin: <p>创建标签者uin</p>
         :type CreateUin: int
-        :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :param _Offset: <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :type Offset: int
-        :param _Limit: 每页大小，默认为 15
+        :param _Limit: <p>每页大小，默认为 15</p>
         :type Limit: int
-        :param _ResourcePrefix: 该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        :param _ResourcePrefix: <p>该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填</p>
         :type ResourcePrefix: str
-        :param _ResourceId: 资源唯一标记
+        :param _ResourceId: <p>资源唯一标记</p>
         :type ResourceId: str
-        :param _ResourceRegion: 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        :param _ResourceRegion: <p>资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填</p>
         :type ResourceRegion: str
-        :param _ServiceType: 业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        :param _ServiceType: <p>业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka</p>
         :type ServiceType: str
         """
         self._TagFilters = None
@@ -2048,7 +2048,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""标签过滤数组，数量最多六个
+        r"""<p>标签过滤数组，最多支持6组标签。</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -2059,7 +2059,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建标签者uin
+        r"""<p>创建标签者uin</p>
         :rtype: int
         """
         return self._CreateUin
@@ -2070,7 +2070,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""<p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :rtype: int
         """
         return self._Offset
@@ -2081,7 +2081,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小，默认为 15
+        r"""<p>每页大小，默认为 15</p>
         :rtype: int
         """
         return self._Limit
@@ -2092,7 +2092,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def ResourcePrefix(self):
-        r"""该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填
+        r"""<p>该业务类型对应的资源前缀，示例 cvm对应instance、image、volume等。也是资源六段式中的第六段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中资源前缀为ckafkaId。cos存储桶为非必填，其他云资源为必填</p>
         :rtype: str
         """
         return self._ResourcePrefix
@@ -2103,7 +2103,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源唯一标记
+        r"""<p>资源唯一标记</p>
         :rtype: str
         """
         return self._ResourceId
@@ -2114,7 +2114,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        r"""资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+        r"""<p>资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填</p>
         :rtype: str
         """
         return self._ResourceRegion
@@ -2125,7 +2125,7 @@ class DescribeResourcesByTagsUnionRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka
+        r"""<p>业务类型，示例 cvm 。指资源所属业务类型，也是资源六段式中的第三段，例如qcs::ckafka:ap-shanghai:uin/123456789:ckafkaId/ckafka-o85jq584中业务类型为ckafka</p>
         :rtype: str
         """
         return self._ServiceType
@@ -2166,13 +2166,13 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 结果总数
+        :param _TotalCount: <p>结果总数</p>
         :type TotalCount: int
-        :param _Offset: 数据位移偏量
+        :param _Offset: <p>数据位移偏量</p>
         :type Offset: int
-        :param _Limit: 每页大小
+        :param _Limit: <p>每页大小</p>
         :type Limit: int
-        :param _Rows: 资源标签
+        :param _Rows: <p>资源标签</p>
         :type Rows: list of ResourceTag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2185,7 +2185,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""结果总数
+        r"""<p>结果总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2196,7 +2196,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据位移偏量
+        r"""<p>数据位移偏量</p>
         :rtype: int
         """
         return self._Offset
@@ -2207,7 +2207,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小
+        r"""<p>每页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -2218,7 +2218,7 @@ class DescribeResourcesByTagsUnionResponse(AbstractModel):
 
     @property
     def Rows(self):
-        r"""资源标签
+        r"""<p>资源标签</p>
         :rtype: list of ResourceTag
         """
         return self._Rows
@@ -2259,15 +2259,15 @@ class DescribeTagKeysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        :param _CreateUin: <p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
         :type CreateUin: int
-        :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :param _Offset: <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :type Offset: int
-        :param _Limit: 每页大小，默认为 15，最大1000
+        :param _Limit: <p>每页大小，默认为 15，最大1000</p>
         :type Limit: int
-        :param _ShowProject: 是否展现项目。1:展示  0:不展示
+        :param _ShowProject: <p>是否展现项目标签。1:展示 0:不展示。本功能仅供历史客户使用，需提交工单加白主账号后，入参方可有效。</p>
         :type ShowProject: int
-        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :param _Category: <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :type Category: str
         """
         self._CreateUin = None
@@ -2278,7 +2278,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        r"""<p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
         :rtype: int
         """
         return self._CreateUin
@@ -2289,7 +2289,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""<p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :rtype: int
         """
         return self._Offset
@@ -2300,7 +2300,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小，默认为 15，最大1000
+        r"""<p>每页大小，默认为 15，最大1000</p>
         :rtype: int
         """
         return self._Limit
@@ -2311,7 +2311,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def ShowProject(self):
-        r"""是否展现项目。1:展示  0:不展示
+        r"""<p>是否展现项目标签。1:展示 0:不展示。本功能仅供历史客户使用，需提交工单加白主账号后，入参方可有效。</p>
         :rtype: int
         """
         return self._ShowProject
@@ -2322,7 +2322,7 @@ class DescribeTagKeysRequest(AbstractModel):
 
     @property
     def Category(self):
-        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""<p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :rtype: str
         """
         return self._Category
@@ -2355,13 +2355,13 @@ class DescribeTagKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 结果总数
+        :param _TotalCount: <p>结果总数</p>
         :type TotalCount: int
-        :param _Offset: 数据位移偏量
+        :param _Offset: <p>数据位移偏量</p>
         :type Offset: int
-        :param _Limit: 每页大小
+        :param _Limit: <p>每页大小</p>
         :type Limit: int
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2374,7 +2374,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""结果总数
+        r"""<p>结果总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2385,7 +2385,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据位移偏量
+        r"""<p>数据位移偏量</p>
         :rtype: int
         """
         return self._Offset
@@ -2396,7 +2396,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小
+        r"""<p>每页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -2407,7 +2407,7 @@ class DescribeTagKeysResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of str
         """
         return self._Tags
@@ -2818,7 +2818,7 @@ class DescribeTagsRequest(AbstractModel):
         :type CreateUin: int
         :param _TagKeys: <p>标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值</p>
         :type TagKeys: list of str
-        :param _ShowProject: <p>是否展现项目标签。1:展示  0:不展示</p>
+        :param _ShowProject: <p>是否展现项目标签。1:展示 0:不展示。本功能仅供历史客户使用，需提交工单加白主账号后，入参方可有效。</p>
         :type ShowProject: int
         """
         self._TagKey = None
@@ -2897,7 +2897,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def ShowProject(self):
-        r"""<p>是否展现项目标签。1:展示  0:不展示</p>
+        r"""<p>是否展现项目标签。1:展示 0:不展示。本功能仅供历史客户使用，需提交工单加白主账号后，入参方可有效。</p>
         :rtype: int
         """
         return self._ShowProject
@@ -3025,19 +3025,19 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+        :param _TagKey: <p>标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
         :type TagKey: str
-        :param _TagValue: 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+        :param _TagValue: <p>标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
         :type TagValue: str
-        :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :param _Offset: <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :type Offset: int
-        :param _Limit: 每页大小，默认为 15
+        :param _Limit: <p>每页大小，默认为 15</p>
         :type Limit: int
-        :param _CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        :param _CreateUin: <p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
         :type CreateUin: int
-        :param _TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
+        :param _TagKeys: <p>标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值</p>
         :type TagKeys: list of str
-        :param _ShowProject: 是否展现项目标签。1:展示  0:不展示
+        :param _ShowProject: <p>是否展现项目标签。1:展示 0:不展示。本功能仅供历史客户使用，需提交工单加白主账号后，入参方可有效。</p>
         :type ShowProject: int
         """
         self._TagKey = None
@@ -3050,7 +3050,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+        r"""<p>标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
         :rtype: str
         """
         return self._TagKey
@@ -3061,7 +3061,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+        r"""<p>标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
         :rtype: str
         """
         return self._TagValue
@@ -3072,7 +3072,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""<p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :rtype: int
         """
         return self._Offset
@@ -3083,7 +3083,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小，默认为 15
+        r"""<p>每页大小，默认为 15</p>
         :rtype: int
         """
         return self._Limit
@@ -3094,7 +3094,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        r"""<p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
         :rtype: int
         """
         return self._CreateUin
@@ -3105,7 +3105,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        r"""标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
+        r"""<p>标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值</p>
         :rtype: list of str
         """
         return self._TagKeys
@@ -3116,7 +3116,7 @@ class DescribeTagsSeqRequest(AbstractModel):
 
     @property
     def ShowProject(self):
-        r"""是否展现项目标签。1:展示  0:不展示
+        r"""<p>是否展现项目标签。1:展示 0:不展示。本功能仅供历史客户使用，需提交工单加白主账号后，入参方可有效。</p>
         :rtype: int
         """
         return self._ShowProject
@@ -3151,13 +3151,13 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 结果总数
+        :param _TotalCount: <p>结果总数</p>
         :type TotalCount: int
-        :param _Offset: 数据位移偏量
+        :param _Offset: <p>数据位移偏量</p>
         :type Offset: int
-        :param _Limit: 每页大小
+        :param _Limit: <p>每页大小</p>
         :type Limit: int
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of TagWithDelete
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3170,7 +3170,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""结果总数
+        r"""<p>结果总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -3181,7 +3181,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据位移偏量
+        r"""<p>数据位移偏量</p>
         :rtype: int
         """
         return self._Offset
@@ -3192,7 +3192,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小
+        r"""<p>每页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -3203,7 +3203,7 @@ class DescribeTagsSeqResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of TagWithDelete
         """
         return self._Tags
@@ -3435,21 +3435,13 @@ class GetResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceList: 资源六段式列表。腾讯云使用资源六段式描述一个资源。
-例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
-如果传入了此参数会返回所有匹配的资源列表，指定的MaxResults会失效。
-N取值范围：0~9
+        :param _ResourceList: <p>资源六段式列表。腾讯云使用资源六段式描述一个资源。<br>例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。<br>如果传入了此参数会返回所有匹配的资源列表，指定的MaxResults会失效。<br>N取值范围：0~9</p>
         :type ResourceList: list of str
-        :param _TagFilters: 标签键和标签值。
-指定多个标签，会查询同时绑定了该多个标签的资源。
-N取值范围：0~5。
-每个TagFilters中的TagValue最多支持10个
+        :param _TagFilters: <p>标签过滤数组，最多支持6组标签。会查询同时绑定了这多组标签的资源。<br>每组标签中的TagValue最多支持10个。</p>
         :type TagFilters: list of TagFilter
-        :param _PaginationToken: 从上一页的响应中获取的下一页的Token值。
-如果是第一次请求，设置为空。
+        :param _PaginationToken: <p>从上一页的响应中获取的下一页的Token值。<br>如果是第一次请求，设置为空。</p>
         :type PaginationToken: str
-        :param _MaxResults: 每一页返回的数据最大条数，最大200。
-缺省值：50。
+        :param _MaxResults: <p>每一页返回的数据最大条数，最大200。<br>缺省值：50。</p>
         :type MaxResults: int
         """
         self._ResourceList = None
@@ -3459,10 +3451,7 @@ N取值范围：0~5。
 
     @property
     def ResourceList(self):
-        r"""资源六段式列表。腾讯云使用资源六段式描述一个资源。
-例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
-如果传入了此参数会返回所有匹配的资源列表，指定的MaxResults会失效。
-N取值范围：0~9
+        r"""<p>资源六段式列表。腾讯云使用资源六段式描述一个资源。<br>例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。<br>如果传入了此参数会返回所有匹配的资源列表，指定的MaxResults会失效。<br>N取值范围：0~9</p>
         :rtype: list of str
         """
         return self._ResourceList
@@ -3473,10 +3462,7 @@ N取值范围：0~9
 
     @property
     def TagFilters(self):
-        r"""标签键和标签值。
-指定多个标签，会查询同时绑定了该多个标签的资源。
-N取值范围：0~5。
-每个TagFilters中的TagValue最多支持10个
+        r"""<p>标签过滤数组，最多支持6组标签。会查询同时绑定了这多组标签的资源。<br>每组标签中的TagValue最多支持10个。</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -3487,8 +3473,7 @@ N取值范围：0~5。
 
     @property
     def PaginationToken(self):
-        r"""从上一页的响应中获取的下一页的Token值。
-如果是第一次请求，设置为空。
+        r"""<p>从上一页的响应中获取的下一页的Token值。<br>如果是第一次请求，设置为空。</p>
         :rtype: str
         """
         return self._PaginationToken
@@ -3499,8 +3484,7 @@ N取值范围：0~5。
 
     @property
     def MaxResults(self):
-        r"""每一页返回的数据最大条数，最大200。
-缺省值：50。
+        r"""<p>每一页返回的数据最大条数，最大200。<br>缺省值：50。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -3537,9 +3521,9 @@ class GetResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: 获取的下一页的Token值
+        :param _PaginationToken: <p>获取的下一页的Token值</p>
         :type PaginationToken: str
-        :param _ResourceTagMappingList: 资源及关联的标签(键和值)列表
+        :param _ResourceTagMappingList: <p>资源及关联的标签(键和值)列表</p>
         :type ResourceTagMappingList: list of ResourceTagMapping
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3550,7 +3534,7 @@ class GetResourcesResponse(AbstractModel):
 
     @property
     def PaginationToken(self):
-        r"""获取的下一页的Token值
+        r"""<p>获取的下一页的Token值</p>
         :rtype: str
         """
         return self._PaginationToken
@@ -3561,7 +3545,7 @@ class GetResourcesResponse(AbstractModel):
 
     @property
     def ResourceTagMappingList(self):
-        r"""资源及关联的标签(键和值)列表
+        r"""<p>资源及关联的标签(键和值)列表</p>
         :rtype: list of ResourceTagMapping
         """
         return self._ResourceTagMappingList
@@ -3868,11 +3852,11 @@ class GetTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: <p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
+        :param _PaginationToken: <p>从上一页的响应中获取的下一页的Token值。<br>如果是第一次请求，设置为空。</p>
         :type PaginationToken: str
-        :param _MaxResults: <p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
+        :param _MaxResults: <p>每一页返回的数据最大条数，最大1000。<br>缺省值：50。</p>
         :type MaxResults: int
-        :param _TagKeys: <p>标签键。返回所有标签键列表对应的标签。最大长度：20</p>
+        :param _TagKeys: <p>标签键。<br>返回所有标签键列表对应的标签。<br>最大长度：20</p>
         :type TagKeys: list of str
         :param _Category: <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :type Category: str
@@ -3884,7 +3868,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def PaginationToken(self):
-        r"""<p>从上一页的响应中获取的下一页的Token值。如果是第一次请求，设置为空。</p>
+        r"""<p>从上一页的响应中获取的下一页的Token值。<br>如果是第一次请求，设置为空。</p>
         :rtype: str
         """
         return self._PaginationToken
@@ -3895,7 +3879,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""<p>每一页返回的数据最大条数，最大1000。缺省值：50。</p>
+        r"""<p>每一页返回的数据最大条数，最大1000。<br>缺省值：50。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -3906,7 +3890,7 @@ class GetTagsRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        r"""<p>标签键。返回所有标签键列表对应的标签。最大长度：20</p>
+        r"""<p>标签键。<br>返回所有标签键列表对应的标签。<br>最大长度：20</p>
         :rtype: list of str
         """
         return self._TagKeys

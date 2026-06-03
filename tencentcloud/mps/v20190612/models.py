@@ -50277,6 +50277,304 @@ class InputAddress(AbstractModel):
         
 
 
+class LLMDetectionIssue(AbstractModel):
+    r"""LLM 大模型检测发现的单条问题
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tag: <p>问题分类标签。</p>
+        :type Tag: str
+        :param _Description: <p>问题描述。</p>
+        :type Description: str
+        :param _Score: <p>该问题的质量得分，范围 [0, 100]。</p>
+        :type Score: float
+        :param _Confidence: <p>该问题的判断置信度，范围 [0, 100]。</p>
+        :type Confidence: float
+        :param _StartTimeMs: <p>问题起始时间（毫秒）。</p>
+        :type StartTimeMs: int
+        :param _EndTimeMs: <p>问题结束时间（毫秒）</p>
+        :type EndTimeMs: int
+        :param _ExtraData: <p>附加数据（JSON 格式），如严重程度等补充信息。</p>
+        :type ExtraData: str
+        """
+        self._Tag = None
+        self._Description = None
+        self._Score = None
+        self._Confidence = None
+        self._StartTimeMs = None
+        self._EndTimeMs = None
+        self._ExtraData = None
+
+    @property
+    def Tag(self):
+        r"""<p>问题分类标签。</p>
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Description(self):
+        r"""<p>问题描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Score(self):
+        r"""<p>该问题的质量得分，范围 [0, 100]。</p>
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Confidence(self):
+        r"""<p>该问题的判断置信度，范围 [0, 100]。</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeMs(self):
+        r"""<p>问题起始时间（毫秒）。</p>
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def EndTimeMs(self):
+        r"""<p>问题结束时间（毫秒）</p>
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
+
+    @property
+    def ExtraData(self):
+        r"""<p>附加数据（JSON 格式），如严重程度等补充信息。</p>
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+
+    def _deserialize(self, params):
+        self._Tag = params.get("Tag")
+        self._Description = params.get("Description")
+        self._Score = params.get("Score")
+        self._Confidence = params.get("Confidence")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._EndTimeMs = params.get("EndTimeMs")
+        self._ExtraData = params.get("ExtraData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMDetectionReport(AbstractModel):
+    r"""LLM 大模型检测结果报告
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultCount: <p>检测结果数量。</p>
+        :type ResultCount: int
+        :param _ResultSet: <p>各检测项结果列表。</p>
+        :type ResultSet: list of LLMDetectionResultItem
+        """
+        self._ResultCount = None
+        self._ResultSet = None
+
+    @property
+    def ResultCount(self):
+        r"""<p>检测结果数量。</p>
+        :rtype: int
+        """
+        return self._ResultCount
+
+    @ResultCount.setter
+    def ResultCount(self, ResultCount):
+        self._ResultCount = ResultCount
+
+    @property
+    def ResultSet(self):
+        r"""<p>各检测项结果列表。</p>
+        :rtype: list of LLMDetectionResultItem
+        """
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+
+    def _deserialize(self, params):
+        self._ResultCount = params.get("ResultCount")
+        if params.get("ResultSet") is not None:
+            self._ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = LLMDetectionResultItem()
+                obj._deserialize(item)
+                self._ResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMDetectionResultItem(AbstractModel):
+    r"""LLM 大模型单个检测项的聚合结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: <p>检测分类。</p><p>枚举值：</p><ul><li>AIGCQualityCharacteristics： AIGC 质量特征</li></ul>
+        :type Category: str
+        :param _Group: <p>检测分组。</p><p>枚举值：</p><ul><li>AIGCAuthenticity： AIGC 真实性，包括人体合理性、物理合理性、跨帧一致性等</li><li>AIGCTechQuality： AIGC 技术质量，包括画幅、黑边、强行竖屏等</li></ul>
+        :type Group: str
+        :param _Type: <p>检测类型名称。</p><p>枚举值：</p><ul><li>BodyPoseCheck： 人体姿态合理性，属于 AIGCAuthenticity</li><li>BodyDetailCheck： 人体细节合理性，包括手指数、五官对称等，属于 AIGCAuthenticity</li><li>PhysicRulesCheck： 物理规律合理性，包括透视、光影、重力等，属于 AIGCAuthenticity</li><li>ObjectConsistencyCheck： 跨帧物体一致性，属于 AIGCAuthenticity</li><li>FormatCheck： 画幅、黑边、强行竖屏等格式问题，属于 AIGCTechQuality</li></ul>
+        :type Type: str
+        :param _Score: <p>整体质量得分，范围 [0, 100]，越高越好。</p>
+        :type Score: float
+        :param _Confidence: <p>判断置信度，范围 [0, 100]，越高表示越确定。</p>
+        :type Confidence: float
+        :param _IssueSet: <p>检测发现的问题列表，无问题时为空。</p>
+        :type IssueSet: list of LLMDetectionIssue
+        """
+        self._Category = None
+        self._Group = None
+        self._Type = None
+        self._Score = None
+        self._Confidence = None
+        self._IssueSet = None
+
+    @property
+    def Category(self):
+        r"""<p>检测分类。</p><p>枚举值：</p><ul><li>AIGCQualityCharacteristics： AIGC 质量特征</li></ul>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Group(self):
+        r"""<p>检测分组。</p><p>枚举值：</p><ul><li>AIGCAuthenticity： AIGC 真实性，包括人体合理性、物理合理性、跨帧一致性等</li><li>AIGCTechQuality： AIGC 技术质量，包括画幅、黑边、强行竖屏等</li></ul>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Type(self):
+        r"""<p>检测类型名称。</p><p>枚举值：</p><ul><li>BodyPoseCheck： 人体姿态合理性，属于 AIGCAuthenticity</li><li>BodyDetailCheck： 人体细节合理性，包括手指数、五官对称等，属于 AIGCAuthenticity</li><li>PhysicRulesCheck： 物理规律合理性，包括透视、光影、重力等，属于 AIGCAuthenticity</li><li>ObjectConsistencyCheck： 跨帧物体一致性，属于 AIGCAuthenticity</li><li>FormatCheck： 画幅、黑边、强行竖屏等格式问题，属于 AIGCTechQuality</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Score(self):
+        r"""<p>整体质量得分，范围 [0, 100]，越高越好。</p>
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Confidence(self):
+        r"""<p>判断置信度，范围 [0, 100]，越高表示越确定。</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def IssueSet(self):
+        r"""<p>检测发现的问题列表，无问题时为空。</p>
+        :rtype: list of LLMDetectionIssue
+        """
+        return self._IssueSet
+
+    @IssueSet.setter
+    def IssueSet(self, IssueSet):
+        self._IssueSet = IssueSet
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Group = params.get("Group")
+        self._Type = params.get("Type")
+        self._Score = params.get("Score")
+        self._Confidence = params.get("Confidence")
+        if params.get("IssueSet") is not None:
+            self._IssueSet = []
+            for item in params.get("IssueSet"):
+                obj = LLMDetectionIssue()
+                obj._deserialize(item)
+                self._IssueSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LinearAssemblyChannelInfo(AbstractModel):
     r"""线性组装频道信息。
 
@@ -69551,6 +69849,8 @@ class QualityControlData(AbstractModel):
         :type QualityControlResultSet: list of QualityControlResult
         :param _ContainerDiagnoseResultSet: <p>格式诊断检出异常项。</p>
         :type ContainerDiagnoseResultSet: list of ContainerDiagnoseResultItem
+        :param _LLMDetectionReport: <p>LLM大模型AIGC质量检测结果。</p>
+        :type LLMDetectionReport: :class:`tencentcloud.mps.v20190612.models.LLMDetectionReport`
         """
         self._NoAudio = None
         self._NoVideo = None
@@ -69559,6 +69859,7 @@ class QualityControlData(AbstractModel):
         self._AestheticEvaluationScore = None
         self._QualityControlResultSet = None
         self._ContainerDiagnoseResultSet = None
+        self._LLMDetectionReport = None
 
     @property
     def NoAudio(self):
@@ -69637,6 +69938,17 @@ class QualityControlData(AbstractModel):
     def ContainerDiagnoseResultSet(self, ContainerDiagnoseResultSet):
         self._ContainerDiagnoseResultSet = ContainerDiagnoseResultSet
 
+    @property
+    def LLMDetectionReport(self):
+        r"""<p>LLM大模型AIGC质量检测结果。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LLMDetectionReport`
+        """
+        return self._LLMDetectionReport
+
+    @LLMDetectionReport.setter
+    def LLMDetectionReport(self, LLMDetectionReport):
+        self._LLMDetectionReport = LLMDetectionReport
+
 
     def _deserialize(self, params):
         self._NoAudio = params.get("NoAudio")
@@ -69656,6 +69968,9 @@ class QualityControlData(AbstractModel):
                 obj = ContainerDiagnoseResultItem()
                 obj._deserialize(item)
                 self._ContainerDiagnoseResultSet.append(obj)
+        if params.get("LLMDetectionReport") is not None:
+            self._LLMDetectionReport = LLMDetectionReport()
+            self._LLMDetectionReport._deserialize(params.get("LLMDetectionReport"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

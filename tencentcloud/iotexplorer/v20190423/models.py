@@ -44272,119 +44272,20 @@ class VisionSummaryConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OutputLang: 主输出语言，可选值包括：
-- `zh` 中文（默认值）
-- `en` 英语
-- `ja` 日语
-- `ko` 韩文
-- `pt-BR` 葡萄牙语（巴西）
-- `th` 泰语
-- `ms` 马来语
+        :param _OutputLang: <p>主输出语言，可选值包括：</p><ul><li><code>zh</code> 中文（默认值）</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
         :type OutputLang: str
-        :param _AlternativeOutputLang: 次选输出语言，可选值包括：
-- `zh` 中文
-- `en` 英语
-- `ja` 日语
-- `ko` 韩文
-- `pt-BR` 葡萄牙语（巴西）
-- `th` 泰语
-- `ms` 马来语
-
+        :param _AlternativeOutputLang: <p>次选输出语言，可选值包括：</p><ul><li><code>zh</code> 中文</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
         :type AlternativeOutputLang: str
-        :param _MultiCameraLayout: 多摄像头布局定义。可选值包括：
-
-- 单摄（默认值）：`Single`
-
-- 双摄（纵向排列）- 全部画面：`Vertical,Num=2,Index=0;1`
-- 双摄（纵向排列）- 画面1：`Vertical,Num=2,Index=0`
-- 双摄（纵向排列）- 画面2：`Vertical,Num=2,Index=1`
-
-- 三摄（纵向排列）- 全部画面：`Vertical,Num=3,Index=0;1;2`
-- 三摄（纵向排列）- 画面1：`Vertical,Num=3,Index=0`
-- 三摄（纵向排列）- 画面2：`Vertical,Num=3,Index=1`
-- 三摄（纵向排列）- 画面3：`Vertical,Num=3,Index=2`
-- 三摄（纵向排列）- 画面1+2：`Vertical,Num=3,Index=0;1`
-- 三摄（纵向排列）- 画面1+3：`Vertical,Num=3,Index=0;2`
-- 三摄（纵向排列）- 画面2+3：`Vertical,Num=3,Index=1;2`
+        :param _MultiCameraLayout: <p>多摄像头布局定义。可选值包括：</p><ul><li><p>单摄（默认值）：<code>Single</code></p></li><li><p>双摄（纵向排列）- 全部画面：<code>Vertical,Num=2,Index=0;1</code></p></li><li><p>双摄（纵向排列）- 画面1：<code>Vertical,Num=2,Index=0</code></p></li><li><p>双摄（纵向排列）- 画面2：<code>Vertical,Num=2,Index=1</code></p></li><li><p>三摄（纵向排列）- 全部画面：<code>Vertical,Num=3,Index=0;1;2</code></p></li><li><p>三摄（纵向排列）- 画面1：<code>Vertical,Num=3,Index=0</code></p></li><li><p>三摄（纵向排列）- 画面2：<code>Vertical,Num=3,Index=1</code></p></li><li><p>三摄（纵向排列）- 画面3：<code>Vertical,Num=3,Index=2</code></p></li><li><p>三摄（纵向排列）- 画面1+2：<code>Vertical,Num=3,Index=0;1</code></p></li><li><p>三摄（纵向排列）- 画面1+3：<code>Vertical,Num=3,Index=0;2</code></p></li><li><p>三摄（纵向排列）- 画面2+3：<code>Vertical,Num=3,Index=1;2</code></p></li></ul>
         :type MultiCameraLayout: str
-        :param _DetectTypes: 拓展的目标及事件检测类别。可选值包括：
-
-**通用事件标签**
-- `person_enter` 有人进入
-- `vehicle_entering` 车辆进入
-- `vehicle_parking` 车辆停靠
-- `pet` 有宠物
-- `no_signal` 视频画面异常（无信号等）
-
-**看家护院**
-- `person_climbing_fence` 有人翻围墙
-- `door_window_open` 门窗被开启
-- `person_carrying_object` 有人搬运物品
-
-**商铺看管**
-- `person_at_cashier` 有人在收银台
-- `person_taking_goods` 有人拿商品
-- `person_night_moving` 夜间有人移动
-
-**公共及防火安全**
-- `person_stealing` 有人偷盗
-- `crowd` 多人聚集
-- `smoking` 有人吸烟
-- `safety_fire` 明火
-- `safety_smoke` 浓烟
-- `fireworks` 有人燃放烟花爆竹
-- `knife` 有人持刀
-- `gun` 有人持枪
-- `fight` 有人打架
-- `hurt` 有人受伤流血
-
-**养殖看护**
-- `person_feeding_animal` 有人投喂牲畜
-- `animal_lying` 有动物躺地上
-- `animal_wild_intrusion` 野生动物入侵
-
-**果园农田**
-- `person_picking_fruit` 有人采摘果实
-- `person_carrying_bag` 有人携带包裹
-
-**鱼塘看管**
-- `fishing` 有人钓鱼
-- `net_fishing` 有人撒网
-- `person_carrying_fishing_gear` 有人携带渔具
-- `loitering_near_water` 有人岸边逗留
-- `throwing_into_water` 有人投掷物品
-
-**婴儿看护**
-- `baby` 有婴儿
-- `baby_dropping` 婴儿跌落床铺
-- `person_holding_baby` 有人抱起婴儿
-- `baby_rolling` 婴儿翻滚
-- `baby_crying` 婴儿哭闹
-
-**儿童看护**
-- `child` 有小孩
-- `child_falling` 小孩摔倒
-- `child_entering_kitchen` 小孩进入厨房
-- `child_climbing_window` 小孩攀爬室内窗户
-- `child_near_water` 小孩靠近水域
-
-**老人看护**
-- `elderly` 有老人
-- `elderly_falling` 老人摔倒
-- `elderly_eating` 老人用餐
-- `elderly_using_stove` 老人使用灶具
-
-**宠物看护**
-- `pet_eating` 宠物进食
-- `pet_damaging` 宠物损坏家具
-- `pet_barking` 宠物吠叫
-- `pet_scratching_door` 宠物挠门
-	
+        :param _DetectTypes: <p>拓展的目标及事件检测类别。可选值包括：</p><p><strong>通用事件标签</strong></p><ul><li><code>person_enter</code> 有人进入</li><li><code>vehicle_entering</code> 车辆进入</li><li><code>vehicle_parking</code> 车辆停靠</li><li><code>pet</code> 有宠物</li><li><code>no_signal</code> 视频画面异常（无信号等）</li></ul><p><strong>看家护院</strong></p><ul><li><code>person_climbing_fence</code> 有人翻围墙</li><li><code>door_window_open</code> 门窗被开启</li><li><code>person_carrying_object</code> 有人搬运物品</li></ul><p><strong>商铺看管</strong></p><ul><li><code>person_at_cashier</code> 有人在收银台</li><li><code>person_taking_goods</code> 有人拿商品</li><li><code>person_night_moving</code> 夜间有人移动</li></ul><p><strong>公共及防火安全</strong></p><ul><li><code>person_stealing</code> 有人偷盗</li><li><code>crowd</code> 多人聚集</li><li><code>smoking</code> 有人吸烟</li><li><code>safety_fire</code> 明火</li><li><code>safety_smoke</code> 浓烟</li><li><code>fireworks</code> 有人燃放烟花爆竹</li><li><code>knife</code> 有人持刀</li><li><code>gun</code> 有人持枪</li><li><code>fight</code> 有人打架</li><li><code>hurt</code> 有人受伤流血</li></ul><p><strong>养殖看护</strong></p><ul><li><code>person_feeding_animal</code> 有人投喂牲畜</li><li><code>animal_lying</code> 有动物躺地上</li><li><code>animal_wild_intrusion</code> 野生动物入侵</li></ul><p><strong>果园农田</strong></p><ul><li><code>person_picking_fruit</code> 有人采摘果实</li><li><code>person_carrying_bag</code> 有人携带包裹</li></ul><p><strong>鱼塘看管</strong></p><ul><li><code>fishing</code> 有人钓鱼</li><li><code>net_fishing</code> 有人撒网</li><li><code>person_carrying_fishing_gear</code> 有人携带渔具</li><li><code>loitering_near_water</code> 有人岸边逗留</li><li><code>throwing_into_water</code> 有人投掷物品</li></ul><p><strong>婴儿看护</strong></p><ul><li><code>baby</code> 有婴儿</li><li><code>baby_dropping</code> 婴儿跌落床铺</li><li><code>person_holding_baby</code> 有人抱起婴儿</li><li><code>baby_rolling</code> 婴儿翻滚</li><li><code>baby_crying</code> 婴儿哭闹</li></ul><p><strong>儿童看护</strong></p><ul><li><code>child</code> 有小孩</li><li><code>child_falling</code> 小孩摔倒</li><li><code>child_entering_kitchen</code> 小孩进入厨房</li><li><code>child_climbing_window</code> 小孩攀爬室内窗户</li><li><code>child_near_water</code> 小孩靠近水域</li></ul><p><strong>老人看护</strong></p><ul><li><code>elderly</code> 有老人</li><li><code>elderly_falling</code> 老人摔倒</li><li><code>elderly_eating</code> 老人用餐</li><li><code>elderly_using_stove</code> 老人使用灶具</li></ul><p><strong>宠物看护</strong></p><ul><li><code>pet_eating</code> 宠物进食</li><li><code>pet_damaging</code> 宠物损坏家具</li><li><code>pet_barking</code> 宠物吠叫</li><li><code>pet_scratching_door</code> 宠物挠门</li></ul>
         :type DetectTypes: list of str
-        :param _CustomDetectQueries: 自定义检测标签
+        :param _CustomDetectQueries: <p>自定义检测标签</p>
         :type CustomDetectQueries: list of VisionCustomDetectQuery
-        :param _DetectContinuous: 标签持续检测配置
+        :param _DetectContinuous: <p>标签持续检测配置</p>
         :type DetectContinuous: list of SeeDetectContinuousConfig
+        :param _SummaryPrompt: <p>自定义摘要提示词</p>
+        :type SummaryPrompt: str
         """
         self._OutputLang = None
         self._AlternativeOutputLang = None
@@ -44392,17 +44293,11 @@ class VisionSummaryConfig(AbstractModel):
         self._DetectTypes = None
         self._CustomDetectQueries = None
         self._DetectContinuous = None
+        self._SummaryPrompt = None
 
     @property
     def OutputLang(self):
-        r"""主输出语言，可选值包括：
-- `zh` 中文（默认值）
-- `en` 英语
-- `ja` 日语
-- `ko` 韩文
-- `pt-BR` 葡萄牙语（巴西）
-- `th` 泰语
-- `ms` 马来语
+        r"""<p>主输出语言，可选值包括：</p><ul><li><code>zh</code> 中文（默认值）</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
         :rtype: str
         """
         return self._OutputLang
@@ -44413,15 +44308,7 @@ class VisionSummaryConfig(AbstractModel):
 
     @property
     def AlternativeOutputLang(self):
-        r"""次选输出语言，可选值包括：
-- `zh` 中文
-- `en` 英语
-- `ja` 日语
-- `ko` 韩文
-- `pt-BR` 葡萄牙语（巴西）
-- `th` 泰语
-- `ms` 马来语
-
+        r"""<p>次选输出语言，可选值包括：</p><ul><li><code>zh</code> 中文</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
         :rtype: str
         """
         return self._AlternativeOutputLang
@@ -44432,21 +44319,7 @@ class VisionSummaryConfig(AbstractModel):
 
     @property
     def MultiCameraLayout(self):
-        r"""多摄像头布局定义。可选值包括：
-
-- 单摄（默认值）：`Single`
-
-- 双摄（纵向排列）- 全部画面：`Vertical,Num=2,Index=0;1`
-- 双摄（纵向排列）- 画面1：`Vertical,Num=2,Index=0`
-- 双摄（纵向排列）- 画面2：`Vertical,Num=2,Index=1`
-
-- 三摄（纵向排列）- 全部画面：`Vertical,Num=3,Index=0;1;2`
-- 三摄（纵向排列）- 画面1：`Vertical,Num=3,Index=0`
-- 三摄（纵向排列）- 画面2：`Vertical,Num=3,Index=1`
-- 三摄（纵向排列）- 画面3：`Vertical,Num=3,Index=2`
-- 三摄（纵向排列）- 画面1+2：`Vertical,Num=3,Index=0;1`
-- 三摄（纵向排列）- 画面1+3：`Vertical,Num=3,Index=0;2`
-- 三摄（纵向排列）- 画面2+3：`Vertical,Num=3,Index=1;2`
+        r"""<p>多摄像头布局定义。可选值包括：</p><ul><li><p>单摄（默认值）：<code>Single</code></p></li><li><p>双摄（纵向排列）- 全部画面：<code>Vertical,Num=2,Index=0;1</code></p></li><li><p>双摄（纵向排列）- 画面1：<code>Vertical,Num=2,Index=0</code></p></li><li><p>双摄（纵向排列）- 画面2：<code>Vertical,Num=2,Index=1</code></p></li><li><p>三摄（纵向排列）- 全部画面：<code>Vertical,Num=3,Index=0;1;2</code></p></li><li><p>三摄（纵向排列）- 画面1：<code>Vertical,Num=3,Index=0</code></p></li><li><p>三摄（纵向排列）- 画面2：<code>Vertical,Num=3,Index=1</code></p></li><li><p>三摄（纵向排列）- 画面3：<code>Vertical,Num=3,Index=2</code></p></li><li><p>三摄（纵向排列）- 画面1+2：<code>Vertical,Num=3,Index=0;1</code></p></li><li><p>三摄（纵向排列）- 画面1+3：<code>Vertical,Num=3,Index=0;2</code></p></li><li><p>三摄（纵向排列）- 画面2+3：<code>Vertical,Num=3,Index=1;2</code></p></li></ul>
         :rtype: str
         """
         return self._MultiCameraLayout
@@ -44457,79 +44330,7 @@ class VisionSummaryConfig(AbstractModel):
 
     @property
     def DetectTypes(self):
-        r"""拓展的目标及事件检测类别。可选值包括：
-
-**通用事件标签**
-- `person_enter` 有人进入
-- `vehicle_entering` 车辆进入
-- `vehicle_parking` 车辆停靠
-- `pet` 有宠物
-- `no_signal` 视频画面异常（无信号等）
-
-**看家护院**
-- `person_climbing_fence` 有人翻围墙
-- `door_window_open` 门窗被开启
-- `person_carrying_object` 有人搬运物品
-
-**商铺看管**
-- `person_at_cashier` 有人在收银台
-- `person_taking_goods` 有人拿商品
-- `person_night_moving` 夜间有人移动
-
-**公共及防火安全**
-- `person_stealing` 有人偷盗
-- `crowd` 多人聚集
-- `smoking` 有人吸烟
-- `safety_fire` 明火
-- `safety_smoke` 浓烟
-- `fireworks` 有人燃放烟花爆竹
-- `knife` 有人持刀
-- `gun` 有人持枪
-- `fight` 有人打架
-- `hurt` 有人受伤流血
-
-**养殖看护**
-- `person_feeding_animal` 有人投喂牲畜
-- `animal_lying` 有动物躺地上
-- `animal_wild_intrusion` 野生动物入侵
-
-**果园农田**
-- `person_picking_fruit` 有人采摘果实
-- `person_carrying_bag` 有人携带包裹
-
-**鱼塘看管**
-- `fishing` 有人钓鱼
-- `net_fishing` 有人撒网
-- `person_carrying_fishing_gear` 有人携带渔具
-- `loitering_near_water` 有人岸边逗留
-- `throwing_into_water` 有人投掷物品
-
-**婴儿看护**
-- `baby` 有婴儿
-- `baby_dropping` 婴儿跌落床铺
-- `person_holding_baby` 有人抱起婴儿
-- `baby_rolling` 婴儿翻滚
-- `baby_crying` 婴儿哭闹
-
-**儿童看护**
-- `child` 有小孩
-- `child_falling` 小孩摔倒
-- `child_entering_kitchen` 小孩进入厨房
-- `child_climbing_window` 小孩攀爬室内窗户
-- `child_near_water` 小孩靠近水域
-
-**老人看护**
-- `elderly` 有老人
-- `elderly_falling` 老人摔倒
-- `elderly_eating` 老人用餐
-- `elderly_using_stove` 老人使用灶具
-
-**宠物看护**
-- `pet_eating` 宠物进食
-- `pet_damaging` 宠物损坏家具
-- `pet_barking` 宠物吠叫
-- `pet_scratching_door` 宠物挠门
-	
+        r"""<p>拓展的目标及事件检测类别。可选值包括：</p><p><strong>通用事件标签</strong></p><ul><li><code>person_enter</code> 有人进入</li><li><code>vehicle_entering</code> 车辆进入</li><li><code>vehicle_parking</code> 车辆停靠</li><li><code>pet</code> 有宠物</li><li><code>no_signal</code> 视频画面异常（无信号等）</li></ul><p><strong>看家护院</strong></p><ul><li><code>person_climbing_fence</code> 有人翻围墙</li><li><code>door_window_open</code> 门窗被开启</li><li><code>person_carrying_object</code> 有人搬运物品</li></ul><p><strong>商铺看管</strong></p><ul><li><code>person_at_cashier</code> 有人在收银台</li><li><code>person_taking_goods</code> 有人拿商品</li><li><code>person_night_moving</code> 夜间有人移动</li></ul><p><strong>公共及防火安全</strong></p><ul><li><code>person_stealing</code> 有人偷盗</li><li><code>crowd</code> 多人聚集</li><li><code>smoking</code> 有人吸烟</li><li><code>safety_fire</code> 明火</li><li><code>safety_smoke</code> 浓烟</li><li><code>fireworks</code> 有人燃放烟花爆竹</li><li><code>knife</code> 有人持刀</li><li><code>gun</code> 有人持枪</li><li><code>fight</code> 有人打架</li><li><code>hurt</code> 有人受伤流血</li></ul><p><strong>养殖看护</strong></p><ul><li><code>person_feeding_animal</code> 有人投喂牲畜</li><li><code>animal_lying</code> 有动物躺地上</li><li><code>animal_wild_intrusion</code> 野生动物入侵</li></ul><p><strong>果园农田</strong></p><ul><li><code>person_picking_fruit</code> 有人采摘果实</li><li><code>person_carrying_bag</code> 有人携带包裹</li></ul><p><strong>鱼塘看管</strong></p><ul><li><code>fishing</code> 有人钓鱼</li><li><code>net_fishing</code> 有人撒网</li><li><code>person_carrying_fishing_gear</code> 有人携带渔具</li><li><code>loitering_near_water</code> 有人岸边逗留</li><li><code>throwing_into_water</code> 有人投掷物品</li></ul><p><strong>婴儿看护</strong></p><ul><li><code>baby</code> 有婴儿</li><li><code>baby_dropping</code> 婴儿跌落床铺</li><li><code>person_holding_baby</code> 有人抱起婴儿</li><li><code>baby_rolling</code> 婴儿翻滚</li><li><code>baby_crying</code> 婴儿哭闹</li></ul><p><strong>儿童看护</strong></p><ul><li><code>child</code> 有小孩</li><li><code>child_falling</code> 小孩摔倒</li><li><code>child_entering_kitchen</code> 小孩进入厨房</li><li><code>child_climbing_window</code> 小孩攀爬室内窗户</li><li><code>child_near_water</code> 小孩靠近水域</li></ul><p><strong>老人看护</strong></p><ul><li><code>elderly</code> 有老人</li><li><code>elderly_falling</code> 老人摔倒</li><li><code>elderly_eating</code> 老人用餐</li><li><code>elderly_using_stove</code> 老人使用灶具</li></ul><p><strong>宠物看护</strong></p><ul><li><code>pet_eating</code> 宠物进食</li><li><code>pet_damaging</code> 宠物损坏家具</li><li><code>pet_barking</code> 宠物吠叫</li><li><code>pet_scratching_door</code> 宠物挠门</li></ul>
         :rtype: list of str
         """
         return self._DetectTypes
@@ -44540,7 +44341,7 @@ class VisionSummaryConfig(AbstractModel):
 
     @property
     def CustomDetectQueries(self):
-        r"""自定义检测标签
+        r"""<p>自定义检测标签</p>
         :rtype: list of VisionCustomDetectQuery
         """
         return self._CustomDetectQueries
@@ -44551,7 +44352,7 @@ class VisionSummaryConfig(AbstractModel):
 
     @property
     def DetectContinuous(self):
-        r"""标签持续检测配置
+        r"""<p>标签持续检测配置</p>
         :rtype: list of SeeDetectContinuousConfig
         """
         return self._DetectContinuous
@@ -44559,6 +44360,17 @@ class VisionSummaryConfig(AbstractModel):
     @DetectContinuous.setter
     def DetectContinuous(self, DetectContinuous):
         self._DetectContinuous = DetectContinuous
+
+    @property
+    def SummaryPrompt(self):
+        r"""<p>自定义摘要提示词</p>
+        :rtype: str
+        """
+        return self._SummaryPrompt
+
+    @SummaryPrompt.setter
+    def SummaryPrompt(self, SummaryPrompt):
+        self._SummaryPrompt = SummaryPrompt
 
 
     def _deserialize(self, params):
@@ -44578,6 +44390,7 @@ class VisionSummaryConfig(AbstractModel):
                 obj = SeeDetectContinuousConfig()
                 obj._deserialize(item)
                 self._DetectContinuous.append(obj)
+        self._SummaryPrompt = params.get("SummaryPrompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

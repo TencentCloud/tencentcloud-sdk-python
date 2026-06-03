@@ -10820,60 +10820,41 @@ class CreateProxyEndPointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 ID。
+        :param _ClusterId: <p>集群 ID。</p>
         :type ClusterId: str
-        :param _UniqueVpcId: 私有网络 ID，默认与集群私有网络 ID 保持一致。
+        :param _UniqueVpcId: <p>私有网络 ID。</p>
         :type UniqueVpcId: str
-        :param _UniqueSubnetId: 私有网络子网 ID，默认与集群子网 ID 保持一致。
+        :param _UniqueSubnetId: <p>私有网络子网 ID。</p>
         :type UniqueSubnetId: str
-        :param _ConnectionPoolType: 连接池类型：SessionConnectionPool（会话级别连接池）。
+        :param _ConnectionPoolType: <p>连接池类型：SessionConnectionPool（会话级别连接池）。</p>
         :type ConnectionPoolType: str
-        :param _OpenConnectionPool: 是否开启连接池。
-yes：表示开启。
-no：表示不开启。
+        :param _OpenConnectionPool: <p>是否开启连接池。<br>yes：表示开启。<br>no：表示不开启。</p>
         :type OpenConnectionPool: str
-        :param _ConnectionPoolTimeOut: 连接池阈值：单位（秒），可选范围：0 - 300秒。
+        :param _ConnectionPoolTimeOut: <p>连接池阈值：单位（秒），可选范围：0 - 300秒。</p>
         :type ConnectionPoolTimeOut: int
-        :param _SecurityGroupIds: 绑定的安全组 ID 数组。
+        :param _SecurityGroupIds: <p>绑定的安全组 ID 数组。</p>
         :type SecurityGroupIds: list of str
-        :param _Description: 描述说明。
+        :param _Description: <p>描述说明。</p>
         :type Description: str
-        :param _Vip: 想要绑定的 vip 信息，需与 UniqueVpcId 对应。
+        :param _Vip: <p>想要绑定的 vip 信息，需与 UniqueVpcId 对应。</p>
         :type Vip: str
-        :param _WeightMode: 权重模式：
-system：系统分配。
-custom：自定义。
+        :param _WeightMode: <p>权重模式：<br>system：系统分配。<br>custom：自定义。</p>
         :type WeightMode: str
-        :param _AutoAddRo: 是否自动添加只读实例。
-yes：表示自动添加只读实例。
-no：表示不自动添加只读实例。
+        :param _AutoAddRo: <p>是否自动添加只读实例。<br>yes：表示自动添加只读实例。<br>no：表示不自动添加只读实例。</p>
         :type AutoAddRo: str
-        :param _FailOver: 是否开启故障转移。
-yes：表示开启，开启后，当数据库代理出现故障时，连接地址将会路由到主实例。
-no：表示不开启。
-说明：
-仅当 RwType 参数值为 READWRITE 时，才支持设置此项。
+        :param _FailOver: <p>是否开启故障转移。<br>yes：表示开启，开启后，当数据库代理出现故障时，连接地址将会路由到主实例。<br>no：表示不开启。<br>说明：<br>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
         :type FailOver: str
-        :param _ConsistencyType: 一致性类型：
-eventual：最终一致性。
-global：全局一致性。
-session：会话一致性。
-说明：
-仅当 RwType 参数值为 READWRITE 时，才支持设置此项。
+        :param _ConsistencyType: <p>一致性类型：<br>eventual：最终一致性。<br>global：全局一致性。<br>session：会话一致性。<br>说明：<br>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
         :type ConsistencyType: str
-        :param _RwType: 读写属性：
-READWRITE：表示读写分离。当此参数值为 READWRITE 时，才支持设置 FailOver、ConsistencyType 参数。
-READONLY：表示只读。
+        :param _RwType: <p>读写属性：<br>READWRITE：表示读写分离。当此参数值为 READWRITE 时，才支持设置 FailOver、ConsistencyType 参数。<br>READONLY：表示只读。</p>
         :type RwType: str
-        :param _ConsistencyTimeOut: 一致性超时时间。取值范围：0 ~ 1000000（微秒）。设置为0时，表示若只读实例出现延迟导致一致性策略不满足时，请求将一直等待。
+        :param _ConsistencyTimeOut: <p>一致性超时时间。取值范围：0 ~ 1000000（微秒）。设置为0时，表示若只读实例出现延迟导致一致性策略不满足时，请求将一直等待。</p>
         :type ConsistencyTimeOut: int
-        :param _TransSplit: 是否开启事务拆分。开启后，在一个事务中拆分读和写到不同的实例上去执行。
+        :param _TransSplit: <p>是否开启事务拆分。开启后，在一个事务中拆分读和写到不同的实例上去执行。</p>
         :type TransSplit: bool
-        :param _AccessMode: 接入模式：
-nearby：就近访问。
-balance：均衡分配。
+        :param _AccessMode: <p>接入模式：<br>nearby：就近访问。<br>balance：均衡分配。</p>
         :type AccessMode: str
-        :param _InstanceWeights: 实例权重。
+        :param _InstanceWeights: <p>实例权重。</p>
         :type InstanceWeights: list of ProxyInstanceWeight
         """
         self._ClusterId = None
@@ -10897,7 +10878,7 @@ balance：均衡分配。
 
     @property
     def ClusterId(self):
-        r"""集群 ID。
+        r"""<p>集群 ID。</p>
         :rtype: str
         """
         return self._ClusterId
@@ -10908,7 +10889,7 @@ balance：均衡分配。
 
     @property
     def UniqueVpcId(self):
-        r"""私有网络 ID，默认与集群私有网络 ID 保持一致。
+        r"""<p>私有网络 ID。</p>
         :rtype: str
         """
         return self._UniqueVpcId
@@ -10919,7 +10900,7 @@ balance：均衡分配。
 
     @property
     def UniqueSubnetId(self):
-        r"""私有网络子网 ID，默认与集群子网 ID 保持一致。
+        r"""<p>私有网络子网 ID。</p>
         :rtype: str
         """
         return self._UniqueSubnetId
@@ -10930,7 +10911,7 @@ balance：均衡分配。
 
     @property
     def ConnectionPoolType(self):
-        r"""连接池类型：SessionConnectionPool（会话级别连接池）。
+        r"""<p>连接池类型：SessionConnectionPool（会话级别连接池）。</p>
         :rtype: str
         """
         return self._ConnectionPoolType
@@ -10941,9 +10922,7 @@ balance：均衡分配。
 
     @property
     def OpenConnectionPool(self):
-        r"""是否开启连接池。
-yes：表示开启。
-no：表示不开启。
+        r"""<p>是否开启连接池。<br>yes：表示开启。<br>no：表示不开启。</p>
         :rtype: str
         """
         return self._OpenConnectionPool
@@ -10954,7 +10933,7 @@ no：表示不开启。
 
     @property
     def ConnectionPoolTimeOut(self):
-        r"""连接池阈值：单位（秒），可选范围：0 - 300秒。
+        r"""<p>连接池阈值：单位（秒），可选范围：0 - 300秒。</p>
         :rtype: int
         """
         return self._ConnectionPoolTimeOut
@@ -10965,7 +10944,7 @@ no：表示不开启。
 
     @property
     def SecurityGroupIds(self):
-        r"""绑定的安全组 ID 数组。
+        r"""<p>绑定的安全组 ID 数组。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -10976,7 +10955,7 @@ no：表示不开启。
 
     @property
     def Description(self):
-        r"""描述说明。
+        r"""<p>描述说明。</p>
         :rtype: str
         """
         return self._Description
@@ -10987,7 +10966,7 @@ no：表示不开启。
 
     @property
     def Vip(self):
-        r"""想要绑定的 vip 信息，需与 UniqueVpcId 对应。
+        r"""<p>想要绑定的 vip 信息，需与 UniqueVpcId 对应。</p>
         :rtype: str
         """
         return self._Vip
@@ -10998,9 +10977,7 @@ no：表示不开启。
 
     @property
     def WeightMode(self):
-        r"""权重模式：
-system：系统分配。
-custom：自定义。
+        r"""<p>权重模式：<br>system：系统分配。<br>custom：自定义。</p>
         :rtype: str
         """
         return self._WeightMode
@@ -11011,9 +10988,7 @@ custom：自定义。
 
     @property
     def AutoAddRo(self):
-        r"""是否自动添加只读实例。
-yes：表示自动添加只读实例。
-no：表示不自动添加只读实例。
+        r"""<p>是否自动添加只读实例。<br>yes：表示自动添加只读实例。<br>no：表示不自动添加只读实例。</p>
         :rtype: str
         """
         return self._AutoAddRo
@@ -11024,11 +10999,7 @@ no：表示不自动添加只读实例。
 
     @property
     def FailOver(self):
-        r"""是否开启故障转移。
-yes：表示开启，开启后，当数据库代理出现故障时，连接地址将会路由到主实例。
-no：表示不开启。
-说明：
-仅当 RwType 参数值为 READWRITE 时，才支持设置此项。
+        r"""<p>是否开启故障转移。<br>yes：表示开启，开启后，当数据库代理出现故障时，连接地址将会路由到主实例。<br>no：表示不开启。<br>说明：<br>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
         :rtype: str
         """
         return self._FailOver
@@ -11039,12 +11010,7 @@ no：表示不开启。
 
     @property
     def ConsistencyType(self):
-        r"""一致性类型：
-eventual：最终一致性。
-global：全局一致性。
-session：会话一致性。
-说明：
-仅当 RwType 参数值为 READWRITE 时，才支持设置此项。
+        r"""<p>一致性类型：<br>eventual：最终一致性。<br>global：全局一致性。<br>session：会话一致性。<br>说明：<br>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
         :rtype: str
         """
         return self._ConsistencyType
@@ -11055,9 +11021,7 @@ session：会话一致性。
 
     @property
     def RwType(self):
-        r"""读写属性：
-READWRITE：表示读写分离。当此参数值为 READWRITE 时，才支持设置 FailOver、ConsistencyType 参数。
-READONLY：表示只读。
+        r"""<p>读写属性：<br>READWRITE：表示读写分离。当此参数值为 READWRITE 时，才支持设置 FailOver、ConsistencyType 参数。<br>READONLY：表示只读。</p>
         :rtype: str
         """
         return self._RwType
@@ -11068,7 +11032,7 @@ READONLY：表示只读。
 
     @property
     def ConsistencyTimeOut(self):
-        r"""一致性超时时间。取值范围：0 ~ 1000000（微秒）。设置为0时，表示若只读实例出现延迟导致一致性策略不满足时，请求将一直等待。
+        r"""<p>一致性超时时间。取值范围：0 ~ 1000000（微秒）。设置为0时，表示若只读实例出现延迟导致一致性策略不满足时，请求将一直等待。</p>
         :rtype: int
         """
         return self._ConsistencyTimeOut
@@ -11079,7 +11043,7 @@ READONLY：表示只读。
 
     @property
     def TransSplit(self):
-        r"""是否开启事务拆分。开启后，在一个事务中拆分读和写到不同的实例上去执行。
+        r"""<p>是否开启事务拆分。开启后，在一个事务中拆分读和写到不同的实例上去执行。</p>
         :rtype: bool
         """
         return self._TransSplit
@@ -11090,9 +11054,7 @@ READONLY：表示只读。
 
     @property
     def AccessMode(self):
-        r"""接入模式：
-nearby：就近访问。
-balance：均衡分配。
+        r"""<p>接入模式：<br>nearby：就近访问。<br>balance：均衡分配。</p>
         :rtype: str
         """
         return self._AccessMode
@@ -11103,7 +11065,7 @@ balance：均衡分配。
 
     @property
     def InstanceWeights(self):
-        r"""实例权重。
+        r"""<p>实例权重。</p>
         :rtype: list of ProxyInstanceWeight
         """
         return self._InstanceWeights
@@ -11154,11 +11116,11 @@ class CreateProxyEndPointResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步流程 ID。
+        :param _FlowId: <p>异步流程 ID。</p>
         :type FlowId: int
-        :param _TaskId: 异步任务 ID。
+        :param _TaskId: <p>异步任务 ID。</p>
         :type TaskId: int
-        :param _ProxyGroupId: 数据库代理组 ID。
+        :param _ProxyGroupId: <p>数据库代理组 ID。</p>
         :type ProxyGroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11170,7 +11132,7 @@ class CreateProxyEndPointResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""异步流程 ID。
+        r"""<p>异步流程 ID。</p>
         :rtype: int
         """
         return self._FlowId
@@ -11181,7 +11143,7 @@ class CreateProxyEndPointResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务 ID。
+        r"""<p>异步任务 ID。</p>
         :rtype: int
         """
         return self._TaskId
@@ -11192,7 +11154,7 @@ class CreateProxyEndPointResponse(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""数据库代理组 ID。
+        r"""<p>数据库代理组 ID。</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -43791,48 +43753,39 @@ class ModifyProxyRwSplitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID，例如cynosdbmysql-asd123
+        :param _ClusterId: <p>集群ID，例如cynosdbmysql-asd123</p>
         :type ClusterId: str
-        :param _ProxyGroupId: 数据库代理组ID，例如cynosdbmysql-proxy-qwe123
+        :param _ProxyGroupId: <p>数据库代理组ID，例如cynosdbmysql-proxy-qwe123</p>
         :type ProxyGroupId: str
-        :param _ConsistencyType: 一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
+        :param _ConsistencyType: <p>一致性类型；“eventual&quot;-最终一致性, &quot;session&quot;-会话一致性, &quot;global&quot;-全局一致性</p>
         :type ConsistencyType: str
-        :param _ConsistencyTimeOut: 一致性超时时间。
-取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。
+        :param _ConsistencyTimeOut: <p>一致性超时时间。<br>取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。</p>
         :type ConsistencyTimeOut: str
-        :param _WeightMode: 读写权重分配模式；系统自动分配："system"， 自定义："custom"
+        :param _WeightMode: <p>读写权重分配模式；系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
         :type WeightMode: str
-        :param _InstanceWeights: 实例只读权重。
-
+        :param _InstanceWeights: <p>实例只读权重。</p>
         :type InstanceWeights: list of ProxyInstanceWeight
-        :param _FailOver: 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："yes" , "no"
+        :param _FailOver: <p>是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值：&quot;yes&quot; , &quot;no&quot;</p>
         :type FailOver: str
-        :param _AutoAddRo: 是否自动添加只读实例，取值："yes" , "no"
+        :param _AutoAddRo: <p>是否自动添加只读实例，取值：&quot;yes&quot; , &quot;no&quot;</p>
         :type AutoAddRo: str
-        :param _OpenRw: 是否打开读写分离。
-该参数已废弃，请通过RwType设置读写属性。
+        :param _OpenRw: <p>是否打开读写分离。<br>该参数已废弃，请通过RwType设置读写属性。</p>
         :type OpenRw: str
-        :param _RwType: 读写类型：
-READWRITE,READONLY
+        :param _RwType: <p>读写类型：<br>READWRITE,READONLY</p>
         :type RwType: str
-        :param _TransSplit: 事务拆分。
-在一个事务中拆分读和写到不同的实例上去执行。
+        :param _TransSplit: <p>事务拆分。<br>在一个事务中拆分读和写到不同的实例上去执行。</p>
         :type TransSplit: bool
-        :param _AccessMode: 连接模式：
-nearby,balance
+        :param _AccessMode: <p>连接模式：<br>nearby,balance</p>
         :type AccessMode: str
-        :param _OpenConnectionPool: 是否打开连接池：
-yes,no
+        :param _OpenConnectionPool: <p>是否打开连接池：<br>yes,no</p>
         :type OpenConnectionPool: str
-        :param _ConnectionPoolType: 连接池类型：
-SessionConnectionPool
+        :param _ConnectionPoolType: <p>连接池类型：<br>SessionConnectionPool</p>
         :type ConnectionPoolType: str
-        :param _ConnectionPoolTimeOut: 连接池时间。
-可选范围:0~300（秒）
+        :param _ConnectionPoolTimeOut: <p>连接池时间。<br>可选范围:0~300（秒）</p>
         :type ConnectionPoolTimeOut: int
-        :param _ApNodeAsRoNode: 是否将libra节点当作普通RO节点
+        :param _ApNodeAsRoNode: <p>是否将libra节点当作普通RO节点</p>
         :type ApNodeAsRoNode: bool
-        :param _ApQueryToOtherNode: libra节点故障，是否转发给其他节点
+        :param _ApQueryToOtherNode: <p>libra节点故障，是否转发给其他节点</p>
         :type ApQueryToOtherNode: bool
         """
         self._ClusterId = None
@@ -43855,7 +43808,7 @@ SessionConnectionPool
 
     @property
     def ClusterId(self):
-        r"""集群ID，例如cynosdbmysql-asd123
+        r"""<p>集群ID，例如cynosdbmysql-asd123</p>
         :rtype: str
         """
         return self._ClusterId
@@ -43866,7 +43819,7 @@ SessionConnectionPool
 
     @property
     def ProxyGroupId(self):
-        r"""数据库代理组ID，例如cynosdbmysql-proxy-qwe123
+        r"""<p>数据库代理组ID，例如cynosdbmysql-proxy-qwe123</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -43877,7 +43830,7 @@ SessionConnectionPool
 
     @property
     def ConsistencyType(self):
-        r"""一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
+        r"""<p>一致性类型；“eventual&quot;-最终一致性, &quot;session&quot;-会话一致性, &quot;global&quot;-全局一致性</p>
         :rtype: str
         """
         return self._ConsistencyType
@@ -43888,8 +43841,7 @@ SessionConnectionPool
 
     @property
     def ConsistencyTimeOut(self):
-        r"""一致性超时时间。
-取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。
+        r"""<p>一致性超时时间。<br>取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。</p>
         :rtype: str
         """
         return self._ConsistencyTimeOut
@@ -43900,7 +43852,7 @@ SessionConnectionPool
 
     @property
     def WeightMode(self):
-        r"""读写权重分配模式；系统自动分配："system"， 自定义："custom"
+        r"""<p>读写权重分配模式；系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
         :rtype: str
         """
         return self._WeightMode
@@ -43911,8 +43863,7 @@ SessionConnectionPool
 
     @property
     def InstanceWeights(self):
-        r"""实例只读权重。
-
+        r"""<p>实例只读权重。</p>
         :rtype: list of ProxyInstanceWeight
         """
         return self._InstanceWeights
@@ -43923,7 +43874,7 @@ SessionConnectionPool
 
     @property
     def FailOver(self):
-        r"""是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："yes" , "no"
+        r"""<p>是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值：&quot;yes&quot; , &quot;no&quot;</p>
         :rtype: str
         """
         return self._FailOver
@@ -43934,7 +43885,7 @@ SessionConnectionPool
 
     @property
     def AutoAddRo(self):
-        r"""是否自动添加只读实例，取值："yes" , "no"
+        r"""<p>是否自动添加只读实例，取值：&quot;yes&quot; , &quot;no&quot;</p>
         :rtype: str
         """
         return self._AutoAddRo
@@ -43945,8 +43896,7 @@ SessionConnectionPool
 
     @property
     def OpenRw(self):
-        r"""是否打开读写分离。
-该参数已废弃，请通过RwType设置读写属性。
+        r"""<p>是否打开读写分离。<br>该参数已废弃，请通过RwType设置读写属性。</p>
         :rtype: str
         """
         return self._OpenRw
@@ -43957,8 +43907,7 @@ SessionConnectionPool
 
     @property
     def RwType(self):
-        r"""读写类型：
-READWRITE,READONLY
+        r"""<p>读写类型：<br>READWRITE,READONLY</p>
         :rtype: str
         """
         return self._RwType
@@ -43969,8 +43918,7 @@ READWRITE,READONLY
 
     @property
     def TransSplit(self):
-        r"""事务拆分。
-在一个事务中拆分读和写到不同的实例上去执行。
+        r"""<p>事务拆分。<br>在一个事务中拆分读和写到不同的实例上去执行。</p>
         :rtype: bool
         """
         return self._TransSplit
@@ -43981,8 +43929,7 @@ READWRITE,READONLY
 
     @property
     def AccessMode(self):
-        r"""连接模式：
-nearby,balance
+        r"""<p>连接模式：<br>nearby,balance</p>
         :rtype: str
         """
         return self._AccessMode
@@ -43993,8 +43940,7 @@ nearby,balance
 
     @property
     def OpenConnectionPool(self):
-        r"""是否打开连接池：
-yes,no
+        r"""<p>是否打开连接池：<br>yes,no</p>
         :rtype: str
         """
         return self._OpenConnectionPool
@@ -44005,8 +43951,7 @@ yes,no
 
     @property
     def ConnectionPoolType(self):
-        r"""连接池类型：
-SessionConnectionPool
+        r"""<p>连接池类型：<br>SessionConnectionPool</p>
         :rtype: str
         """
         return self._ConnectionPoolType
@@ -44017,8 +43962,7 @@ SessionConnectionPool
 
     @property
     def ConnectionPoolTimeOut(self):
-        r"""连接池时间。
-可选范围:0~300（秒）
+        r"""<p>连接池时间。<br>可选范围:0~300（秒）</p>
         :rtype: int
         """
         return self._ConnectionPoolTimeOut
@@ -44029,7 +43973,7 @@ SessionConnectionPool
 
     @property
     def ApNodeAsRoNode(self):
-        r"""是否将libra节点当作普通RO节点
+        r"""<p>是否将libra节点当作普通RO节点</p>
         :rtype: bool
         """
         return self._ApNodeAsRoNode
@@ -44040,7 +43984,7 @@ SessionConnectionPool
 
     @property
     def ApQueryToOtherNode(self):
-        r"""libra节点故障，是否转发给其他节点
+        r"""<p>libra节点故障，是否转发给其他节点</p>
         :rtype: bool
         """
         return self._ApQueryToOtherNode
@@ -44090,9 +44034,9 @@ class ModifyProxyRwSplitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步FlowId
+        :param _FlowId: <p>异步FlowId</p>
         :type FlowId: int
-        :param _TaskId: 异步任务ID
+        :param _TaskId: <p>异步任务ID</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -44103,7 +44047,7 @@ class ModifyProxyRwSplitResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""异步FlowId
+        r"""<p>异步FlowId</p>
         :rtype: int
         """
         return self._FlowId
@@ -44114,7 +44058,7 @@ class ModifyProxyRwSplitResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID
+        r"""<p>异步任务ID</p>
         :rtype: int
         """
         return self._TaskId
@@ -49557,29 +49501,29 @@ class ProxyGroupRwInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConsistencyType: 一致性类型 eventual-最终一致性,global-全局一致性,session-会话一致性
+        :param _ConsistencyType: <p>一致性类型 eventual-最终一致性,global-全局一致性,session-会话一致性</p>
         :type ConsistencyType: str
-        :param _ConsistencyTimeOut: 一致性超时时间
+        :param _ConsistencyTimeOut: <p>一致性超时时间</p>
         :type ConsistencyTimeOut: int
-        :param _WeightMode: 权重模式 system-系统分配，custom-自定义
+        :param _WeightMode: <p>权重模式 system-系统分配，custom-自定义</p>
         :type WeightMode: str
-        :param _FailOver: 是否开启故障转移
+        :param _FailOver: <p>是否开启故障转移</p>
         :type FailOver: str
-        :param _AutoAddRo: 是否自动添加只读实例，yes-是，no-不自动添加
+        :param _AutoAddRo: <p>是否自动添加只读实例，yes-是，no-不自动添加</p>
         :type AutoAddRo: str
-        :param _InstanceWeights: 实例权重数组
+        :param _InstanceWeights: <p>实例权重数组</p>
         :type InstanceWeights: list of ProxyInstanceWeight
-        :param _OpenRw: 是否开通读写节点，yse-是，no-否
+        :param _OpenRw: <p>是否开通读写节点，yse-是，no-否</p>
         :type OpenRw: str
-        :param _RwType: 读写属性，可选值：READWRITE,READONLY
+        :param _RwType: <p>读写属性，可选值：READWRITE,READONLY</p>
         :type RwType: str
-        :param _TransSplit: 事务拆分
+        :param _TransSplit: <p>事务拆分</p>
         :type TransSplit: bool
-        :param _AccessMode: 连接模式，可选值：balance，nearby
+        :param _AccessMode: <p>连接模式，可选值：balance，nearby</p>
         :type AccessMode: str
-        :param _ApNodeAsRoNode: 是否将libra节点当作普通RO节点
+        :param _ApNodeAsRoNode: <p>是否将libra节点当作普通RO节点</p>
         :type ApNodeAsRoNode: bool
-        :param _ApQueryToOtherNode: libra节点故障，是否转发给其他节点
+        :param _ApQueryToOtherNode: <p>libra节点故障，是否转发给其他节点</p>
         :type ApQueryToOtherNode: bool
         """
         self._ConsistencyType = None
@@ -49597,7 +49541,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def ConsistencyType(self):
-        r"""一致性类型 eventual-最终一致性,global-全局一致性,session-会话一致性
+        r"""<p>一致性类型 eventual-最终一致性,global-全局一致性,session-会话一致性</p>
         :rtype: str
         """
         return self._ConsistencyType
@@ -49608,7 +49552,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def ConsistencyTimeOut(self):
-        r"""一致性超时时间
+        r"""<p>一致性超时时间</p>
         :rtype: int
         """
         return self._ConsistencyTimeOut
@@ -49619,7 +49563,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def WeightMode(self):
-        r"""权重模式 system-系统分配，custom-自定义
+        r"""<p>权重模式 system-系统分配，custom-自定义</p>
         :rtype: str
         """
         return self._WeightMode
@@ -49630,7 +49574,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def FailOver(self):
-        r"""是否开启故障转移
+        r"""<p>是否开启故障转移</p>
         :rtype: str
         """
         return self._FailOver
@@ -49641,7 +49585,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def AutoAddRo(self):
-        r"""是否自动添加只读实例，yes-是，no-不自动添加
+        r"""<p>是否自动添加只读实例，yes-是，no-不自动添加</p>
         :rtype: str
         """
         return self._AutoAddRo
@@ -49652,7 +49596,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def InstanceWeights(self):
-        r"""实例权重数组
+        r"""<p>实例权重数组</p>
         :rtype: list of ProxyInstanceWeight
         """
         return self._InstanceWeights
@@ -49663,7 +49607,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def OpenRw(self):
-        r"""是否开通读写节点，yse-是，no-否
+        r"""<p>是否开通读写节点，yse-是，no-否</p>
         :rtype: str
         """
         return self._OpenRw
@@ -49674,7 +49618,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def RwType(self):
-        r"""读写属性，可选值：READWRITE,READONLY
+        r"""<p>读写属性，可选值：READWRITE,READONLY</p>
         :rtype: str
         """
         return self._RwType
@@ -49685,7 +49629,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def TransSplit(self):
-        r"""事务拆分
+        r"""<p>事务拆分</p>
         :rtype: bool
         """
         return self._TransSplit
@@ -49696,7 +49640,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def AccessMode(self):
-        r"""连接模式，可选值：balance，nearby
+        r"""<p>连接模式，可选值：balance，nearby</p>
         :rtype: str
         """
         return self._AccessMode
@@ -49707,7 +49651,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def ApNodeAsRoNode(self):
-        r"""是否将libra节点当作普通RO节点
+        r"""<p>是否将libra节点当作普通RO节点</p>
         :rtype: bool
         """
         return self._ApNodeAsRoNode
@@ -49718,7 +49662,7 @@ class ProxyGroupRwInfo(AbstractModel):
 
     @property
     def ApQueryToOtherNode(self):
-        r"""libra节点故障，是否转发给其他节点
+        r"""<p>libra节点故障，是否转发给其他节点</p>
         :rtype: bool
         """
         return self._ApQueryToOtherNode

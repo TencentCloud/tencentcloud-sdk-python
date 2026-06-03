@@ -303,7 +303,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourceTagsByTagKeys(self, request):
-        r"""根据标签键获取资源标签
+        r"""根据标签键获取指定资源上的标签值
 
         :param request: Request instance for DescribeResourceTagsByTagKeys.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourceTagsByTagKeysRequest`
@@ -326,7 +326,8 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourcesByTags(self, request):
-        r"""通过标签查询资源列表
+        r"""通过标签查询资源列表，按TagKey取交集。
+        举例：TagFilters 为 [ {"TagKey": "k1", "TagValue":["v1","v2"]}, {"TagKey": "k2", "TagValue":["v3","v4"]} ]。交集查询逻辑：找出资源，其包含标签TagKey=k1且TagValue in (v1, v2)，同时包含标签TagKey=k2且TagValue in (v3, v4)
 
         :param request: Request instance for DescribeResourcesByTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsRequest`
@@ -349,7 +350,8 @@ class TagClient(AbstractClient):
 
 
     def DescribeResourcesByTagsUnion(self, request):
-        r"""通过标签查询资源列表并集
+        r"""通过标签查询资源列表，按TagKey取并集。
+        举例：TagFilters 为 [ {"TagKey": "k1", "TagValue":["v1","v2"]}, {"TagKey": "k2", "TagValue":["v3","v4"]} ]。并集查询逻辑：找出资源，其包含标签TagKey=k1且TagValue in (v1, v2)，或者包含标签TagKey=k2且TagValue in (v3, v4)
 
         :param request: Request instance for DescribeResourcesByTagsUnion.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeResourcesByTagsUnionRequest`
@@ -441,7 +443,8 @@ class TagClient(AbstractClient):
 
 
     def DescribeTags(self, request):
-        r"""用于查询已建立的标签列表。
+        r"""用于获取已建立的标签列表。
+        举例：TagKeys为["k1","k2"], TagValues为["v3","v4"], 查出标签，其标签键tagKey in (k1, k2)，同时标签值tagValue in (v3, v4)
 
         :param request: Request instance for DescribeTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagsRequest`
@@ -464,7 +467,8 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagsSeq(self, request):
-        r"""用于查询已建立的标签列表。
+        r"""用于获取已建立的标签列表。
+        举例：TagKeys为["k1","k2"], TagValues为["v3","v4"], 查出标签，其标签键tagKey in (k1, k2)，同时标签值tagValue in (v3, v4)
 
         :param request: Request instance for DescribeTagsSeq.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagsSeqRequest`
@@ -510,7 +514,7 @@ class TagClient(AbstractClient):
 
 
     def GetResources(self, request):
-        r"""查询绑定了标签的资源列表。
+        r"""查询资源标签列表。
 
         :param request: Request instance for GetResources.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetResourcesRequest`
@@ -580,6 +584,7 @@ class TagClient(AbstractClient):
 
     def GetTags(self, request):
         r"""用于获取已建立的标签列表。
+        举例：TagKeys 为["k1","k2"], TagValues为["v3","v4"], 查出标签，其标签键tagKey in (k1, k2)，同时标签值tagValue in (v3, v4)
 
         :param request: Request instance for GetTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.GetTagsRequest`

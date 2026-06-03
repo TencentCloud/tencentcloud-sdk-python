@@ -1716,6 +1716,156 @@ class DescribeTokenPlanApiKeyUsageDetailRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TeamId: 套餐 ID。可通过DescribeTokenPlanList接口获取。
+        :type TeamId: str
+        :param _From: 起始时间，RFC3339 格式。不传默认为结束时间前 15 分钟。
+        :type From: str
+        :param _To: 结束时间，RFC3339 格式。不传默认为当前时间。
+        :type To: str
+        :param _Sort: 排序方式。取值：asc（升序）、desc（降序），默认为 desc。
+        :type Sort: str
+        :param _Limit: 返回条数，默认为 20，最大值为 100。
+        :type Limit: int
+        :param _Context: 翻页上下文，首次查询不传，后续传入上次返回的 Context，直到 ListOver 为 true。
+        :type Context: str
+        :param _ApiKeyId: 按 API Key ID 精确过滤。最大 128 字符。与 ApiKeyName 至少需传入其一，都传时以 ApiKeyId 为准。可通过 DescribeTokenPlanApiKeyList 接口获取。
+        :type ApiKeyId: str
+        :param _ApiKeyName: 按 API Key 名称模糊过滤。最大 64 字符。与 ApiKeyId 至少需传入其一，都传时以 ApiKeyId 为准。
+        :type ApiKeyName: str
+        :param _ModelName: 按模型 ID (Model ID) 精确过滤。需要按模型名称过滤时传入该字段。
+        :type ModelName: str
+        """
+        self._TeamId = None
+        self._From = None
+        self._To = None
+        self._Sort = None
+        self._Limit = None
+        self._Context = None
+        self._ApiKeyId = None
+        self._ApiKeyName = None
+        self._ModelName = None
+
+    @property
+    def TeamId(self):
+        r"""套餐 ID。可通过DescribeTokenPlanList接口获取。
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
+    @property
+    def From(self):
+        r"""起始时间，RFC3339 格式。不传默认为结束时间前 15 分钟。
+        :rtype: str
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        r"""结束时间，RFC3339 格式。不传默认为当前时间。
+        :rtype: str
+        """
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
+    @property
+    def Sort(self):
+        r"""排序方式。取值：asc（升序）、desc（降序），默认为 desc。
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Limit(self):
+        r"""返回条数，默认为 20，最大值为 100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Context(self):
+        r"""翻页上下文，首次查询不传，后续传入上次返回的 Context，直到 ListOver 为 true。
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ApiKeyId(self):
+        r"""按 API Key ID 精确过滤。最大 128 字符。与 ApiKeyName 至少需传入其一，都传时以 ApiKeyId 为准。可通过 DescribeTokenPlanApiKeyList 接口获取。
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def ApiKeyName(self):
+        r"""按 API Key 名称模糊过滤。最大 64 字符。与 ApiKeyId 至少需传入其一，都传时以 ApiKeyId 为准。
+        :rtype: str
+        """
+        return self._ApiKeyName
+
+    @ApiKeyName.setter
+    def ApiKeyName(self, ApiKeyName):
+        self._ApiKeyName = ApiKeyName
+
+    @property
+    def ModelName(self):
+        r"""按模型 ID (Model ID) 精确过滤。需要按模型名称过滤时传入该字段。
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+
+    def _deserialize(self, params):
+        self._TeamId = params.get("TeamId")
+        self._From = params.get("From")
+        self._To = params.get("To")
+        self._Sort = params.get("Sort")
+        self._Limit = params.get("Limit")
+        self._Context = params.get("Context")
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._ApiKeyName = params.get("ApiKeyName")
+        self._ModelName = params.get("ModelName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeTokenPlanApiKeyUsageDetailResponse(AbstractModel):
     r"""DescribeTokenPlanApiKeyUsageDetail返回参数结构体
@@ -1724,10 +1874,66 @@ class DescribeTokenPlanApiKeyUsageDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Context: 翻页上下文，传入下一次请求的 Context 参数继续翻页。
+        :type Context: str
+        :param _ListOver: 是否已到末尾，为 true 时无需继续翻页。
+        :type ListOver: bool
+        :param _List: 调用明细列表。
+        :type List: list of UsageDetailItem
+        :param _ProductType: 	 套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）
+        :type ProductType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Context = None
+        self._ListOver = None
+        self._List = None
+        self._ProductType = None
         self._RequestId = None
+
+    @property
+    def Context(self):
+        r"""翻页上下文，传入下一次请求的 Context 参数继续翻页。
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ListOver(self):
+        r"""是否已到末尾，为 true 时无需继续翻页。
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def List(self):
+        r"""调用明细列表。
+        :rtype: list of UsageDetailItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def ProductType(self):
+        r"""	 套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
 
     @property
     def RequestId(self):
@@ -1742,6 +1948,15 @@ class DescribeTokenPlanApiKeyUsageDetailResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._ListOver = params.get("ListOver")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = UsageDetailItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._ProductType = params.get("ProductType")
         self._RequestId = params.get("RequestId")
 
 
@@ -4451,6 +4666,253 @@ class UpgradeTokenPlanTeamOrderResponse(AbstractModel):
     def _deserialize(self, params):
         self._BigOrderId = params.get("BigOrderId")
         self._RequestId = params.get("RequestId")
+
+
+class UsageDetailItem(AbstractModel):
+    r"""Token Plan 企业版套餐调用明细项（字段与 CLS 日志对齐）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 主账号 UIN。
+        :type Uin: str
+        :param _ModelName: 模型名称。
+        :type ModelName: str
+        :param _ApiKeyId: APIKey ID。
+        :type ApiKeyId: str
+        :param _ApiKeyName: APIKey 名称。
+        :type ApiKeyName: str
+        :param _RequestId: 请求 ID。
+        :type RequestId: str
+        :param _RequestTime: 请求时间（RFC3339 格式）。
+        :type RequestTime: str
+        :param _InputToken: 输入 token 数。
+        :type InputToken: int
+        :param _CacheToken: 缓存 token 数。
+        :type CacheToken: int
+        :param _OutputToken: 输出 token 数。
+        :type OutputToken: int
+        :param _TotalToken: 总 token 数。
+        :type TotalToken: int
+        :param _InputQuota: 未命中缓存输入消耗额度。单位说明如下：
+- 套餐类型为专业套餐（enterprise），单位取值为积分；
+- 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+        :type InputQuota: str
+        :param _CacheQuota: 缓存消耗额度。单位说明如下：
+- 套餐类型为专业套餐（enterprise），单位取值为积分；
+- 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+        :type CacheQuota: str
+        :param _OutputQuota: 输出消耗额度。单位说明如下：
+- 套餐类型为专业套餐（enterprise），单位取值为积分；
+- 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+        :type OutputQuota: str
+        :param _TotalQuota: 总消耗额度。单位说明如下：
+- 套餐类型为专业套餐（enterprise），单位取值为积分；
+- 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+        :type TotalQuota: str
+        """
+        self._Uin = None
+        self._ModelName = None
+        self._ApiKeyId = None
+        self._ApiKeyName = None
+        self._RequestId = None
+        self._RequestTime = None
+        self._InputToken = None
+        self._CacheToken = None
+        self._OutputToken = None
+        self._TotalToken = None
+        self._InputQuota = None
+        self._CacheQuota = None
+        self._OutputQuota = None
+        self._TotalQuota = None
+
+    @property
+    def Uin(self):
+        r"""主账号 UIN。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ModelName(self):
+        r"""模型名称。
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ApiKeyId(self):
+        r"""APIKey ID。
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def ApiKeyName(self):
+        r"""APIKey 名称。
+        :rtype: str
+        """
+        return self._ApiKeyName
+
+    @ApiKeyName.setter
+    def ApiKeyName(self, ApiKeyName):
+        self._ApiKeyName = ApiKeyName
+
+    @property
+    def RequestId(self):
+        r"""请求 ID。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def RequestTime(self):
+        r"""请求时间（RFC3339 格式）。
+        :rtype: str
+        """
+        return self._RequestTime
+
+    @RequestTime.setter
+    def RequestTime(self, RequestTime):
+        self._RequestTime = RequestTime
+
+    @property
+    def InputToken(self):
+        r"""输入 token 数。
+        :rtype: int
+        """
+        return self._InputToken
+
+    @InputToken.setter
+    def InputToken(self, InputToken):
+        self._InputToken = InputToken
+
+    @property
+    def CacheToken(self):
+        r"""缓存 token 数。
+        :rtype: int
+        """
+        return self._CacheToken
+
+    @CacheToken.setter
+    def CacheToken(self, CacheToken):
+        self._CacheToken = CacheToken
+
+    @property
+    def OutputToken(self):
+        r"""输出 token 数。
+        :rtype: int
+        """
+        return self._OutputToken
+
+    @OutputToken.setter
+    def OutputToken(self, OutputToken):
+        self._OutputToken = OutputToken
+
+    @property
+    def TotalToken(self):
+        r"""总 token 数。
+        :rtype: int
+        """
+        return self._TotalToken
+
+    @TotalToken.setter
+    def TotalToken(self, TotalToken):
+        self._TotalToken = TotalToken
+
+    @property
+    def InputQuota(self):
+        r"""未命中缓存输入消耗额度。单位说明如下：
+- 套餐类型为专业套餐（enterprise），单位取值为积分；
+- 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+        :rtype: str
+        """
+        return self._InputQuota
+
+    @InputQuota.setter
+    def InputQuota(self, InputQuota):
+        self._InputQuota = InputQuota
+
+    @property
+    def CacheQuota(self):
+        r"""缓存消耗额度。单位说明如下：
+- 套餐类型为专业套餐（enterprise），单位取值为积分；
+- 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+        :rtype: str
+        """
+        return self._CacheQuota
+
+    @CacheQuota.setter
+    def CacheQuota(self, CacheQuota):
+        self._CacheQuota = CacheQuota
+
+    @property
+    def OutputQuota(self):
+        r"""输出消耗额度。单位说明如下：
+- 套餐类型为专业套餐（enterprise），单位取值为积分；
+- 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+        :rtype: str
+        """
+        return self._OutputQuota
+
+    @OutputQuota.setter
+    def OutputQuota(self, OutputQuota):
+        self._OutputQuota = OutputQuota
+
+    @property
+    def TotalQuota(self):
+        r"""总消耗额度。单位说明如下：
+- 套餐类型为专业套餐（enterprise），单位取值为积分；
+- 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+        :rtype: str
+        """
+        return self._TotalQuota
+
+    @TotalQuota.setter
+    def TotalQuota(self, TotalQuota):
+        self._TotalQuota = TotalQuota
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._ModelName = params.get("ModelName")
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._ApiKeyName = params.get("ApiKeyName")
+        self._RequestId = params.get("RequestId")
+        self._RequestTime = params.get("RequestTime")
+        self._InputToken = params.get("InputToken")
+        self._CacheToken = params.get("CacheToken")
+        self._OutputToken = params.get("OutputToken")
+        self._TotalToken = params.get("TotalToken")
+        self._InputQuota = params.get("InputQuota")
+        self._CacheQuota = params.get("CacheQuota")
+        self._OutputQuota = params.get("OutputQuota")
+        self._TotalQuota = params.get("TotalQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UsageRankItem(AbstractModel):

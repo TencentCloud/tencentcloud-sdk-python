@@ -1304,6 +1304,243 @@ class ArchiveDynamicFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ArchiveFlowApproverInfo(AbstractModel):
+    r"""归档合同的参与人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApproverName: <p>个人签署人姓名，如果传入，必须是证件上的真实中文名；中文名最长 25 个字符；</p>
+        :type ApproverName: str
+        :param _ApproverType: <p>参与者类型，用于区分个人或企业，可选类型如下:<br><strong>0</strong>：企业<br><strong>1</strong>：个人</p>
+        :type ApproverType: int
+        :param _OrganizationName: <p>企业签署方名称。长度不超过 200 个字符。<br>如果名称中包含英文括号()，请使用中文括号（）代替。<br>如果签署方是企业签署方(approverType = 0 )， 则企业名称必填。</p>
+        :type OrganizationName: str
+        :param _ApproverMobile: <p>签署人手机号，必须是合法手机号。</p>
+        :type ApproverMobile: str
+        :param _ApproverEmail: <p>签署人邮箱， 必须是合法邮箱格式。</p>
+        :type ApproverEmail: str
+        :param _ApproverIdCardType: <p>签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a></p><ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li><li>OTHER_CARD_TYPE 其他证件</li></ul>
+        :type ApproverIdCardType: str
+        :param _ApproverIdCardNumber: <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :type ApproverIdCardNumber: str
+        :param _ApproveTime: <p>当前参与者的签署时间，Unix 秒级时间戳。</p>
+        :type ApproveTime: int
+        """
+        self._ApproverName = None
+        self._ApproverType = None
+        self._OrganizationName = None
+        self._ApproverMobile = None
+        self._ApproverEmail = None
+        self._ApproverIdCardType = None
+        self._ApproverIdCardNumber = None
+        self._ApproveTime = None
+
+    @property
+    def ApproverName(self):
+        r"""<p>个人签署人姓名，如果传入，必须是证件上的真实中文名；中文名最长 25 个字符；</p>
+        :rtype: str
+        """
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproverType(self):
+        r"""<p>参与者类型，用于区分个人或企业，可选类型如下:<br><strong>0</strong>：企业<br><strong>1</strong>：个人</p>
+        :rtype: int
+        """
+        return self._ApproverType
+
+    @ApproverType.setter
+    def ApproverType(self, ApproverType):
+        self._ApproverType = ApproverType
+
+    @property
+    def OrganizationName(self):
+        r"""<p>企业签署方名称。长度不超过 200 个字符。<br>如果名称中包含英文括号()，请使用中文括号（）代替。<br>如果签署方是企业签署方(approverType = 0 )， 则企业名称必填。</p>
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def ApproverMobile(self):
+        r"""<p>签署人手机号，必须是合法手机号。</p>
+        :rtype: str
+        """
+        return self._ApproverMobile
+
+    @ApproverMobile.setter
+    def ApproverMobile(self, ApproverMobile):
+        self._ApproverMobile = ApproverMobile
+
+    @property
+    def ApproverEmail(self):
+        r"""<p>签署人邮箱， 必须是合法邮箱格式。</p>
+        :rtype: str
+        """
+        return self._ApproverEmail
+
+    @ApproverEmail.setter
+    def ApproverEmail(self, ApproverEmail):
+        self._ApproverEmail = ApproverEmail
+
+    @property
+    def ApproverIdCardType(self):
+        r"""<p>签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a></p><ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li><li>OTHER_CARD_TYPE 其他证件</li></ul>
+        :rtype: str
+        """
+        return self._ApproverIdCardType
+
+    @ApproverIdCardType.setter
+    def ApproverIdCardType(self, ApproverIdCardType):
+        self._ApproverIdCardType = ApproverIdCardType
+
+    @property
+    def ApproverIdCardNumber(self):
+        r"""<p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :rtype: str
+        """
+        return self._ApproverIdCardNumber
+
+    @ApproverIdCardNumber.setter
+    def ApproverIdCardNumber(self, ApproverIdCardNumber):
+        self._ApproverIdCardNumber = ApproverIdCardNumber
+
+    @property
+    def ApproveTime(self):
+        r"""<p>当前参与者的签署时间，Unix 秒级时间戳。</p>
+        :rtype: int
+        """
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+
+    def _deserialize(self, params):
+        self._ApproverName = params.get("ApproverName")
+        self._ApproverType = params.get("ApproverType")
+        self._OrganizationName = params.get("OrganizationName")
+        self._ApproverMobile = params.get("ApproverMobile")
+        self._ApproverEmail = params.get("ApproverEmail")
+        self._ApproverIdCardType = params.get("ApproverIdCardType")
+        self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
+        self._ApproveTime = params.get("ApproveTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ArchiveFlowResult(AbstractModel):
+    r"""归档合同结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>归档合同id</p>
+        :type FlowId: str
+        :param _ArchiveFlowStatus: <p>合同处理结果</p><p>枚举值：</p><ul><li>0： 成功</li><li>1： 失败</li></ul>
+        :type ArchiveFlowStatus: int
+        :param _BusinessId: <p>业务自定义id</p>
+        :type BusinessId: str
+        :param _ResourceIdList: <p>资源ID列表</p>
+        :type ResourceIdList: list of str
+        :param _ErrorMessage: <p>错误信息</p>
+        :type ErrorMessage: str
+        """
+        self._FlowId = None
+        self._ArchiveFlowStatus = None
+        self._BusinessId = None
+        self._ResourceIdList = None
+        self._ErrorMessage = None
+
+    @property
+    def FlowId(self):
+        r"""<p>归档合同id</p>
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ArchiveFlowStatus(self):
+        r"""<p>合同处理结果</p><p>枚举值：</p><ul><li>0： 成功</li><li>1： 失败</li></ul>
+        :rtype: int
+        """
+        return self._ArchiveFlowStatus
+
+    @ArchiveFlowStatus.setter
+    def ArchiveFlowStatus(self, ArchiveFlowStatus):
+        self._ArchiveFlowStatus = ArchiveFlowStatus
+
+    @property
+    def BusinessId(self):
+        r"""<p>业务自定义id</p>
+        :rtype: str
+        """
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def ResourceIdList(self):
+        r"""<p>资源ID列表</p>
+        :rtype: list of str
+        """
+        return self._ResourceIdList
+
+    @ResourceIdList.setter
+    def ResourceIdList(self, ResourceIdList):
+        self._ResourceIdList = ResourceIdList
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._ArchiveFlowStatus = params.get("ArchiveFlowStatus")
+        self._BusinessId = params.get("BusinessId")
+        self._ResourceIdList = params.get("ResourceIdList")
+        self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthInfoDetail(AbstractModel):
     r"""企业扩展服务授权列表详情
 
@@ -4760,6 +4997,303 @@ class ContractSummaryInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateArchiveFlow(AbstractModel):
+    r"""创建归档合同信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: <p>合同文件的资源id，使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a> 上传文件返回resourceId，目前一个合同只能支持一个资源ID。</p>
+        :type ResourceIds: list of str
+        :param _FlowName: <p>合同名称，不传时系统会使用合同资源文件名作为合同名称；最终合同名称不能为空；长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
+        :type FlowName: str
+        :param _FlowType: <p>合同类型，自定义文本字符串，长度不能超过200。</p>
+        :type FlowType: str
+        :param _BusinessId: <p>调用方业务系统中的合同业务编号，可以用于外部系统和归档合同做关联，长度不超过 128 字节</p>
+        :type BusinessId: str
+        :param _CreatorName: <p>合同发起方/创建人名称，用于归档合同展示和检索，长度不超过 32 字符</p>
+        :type CreatorName: str
+        :param _ApproverInfo: <p>签署人信息列表，用于记录合同由哪些个人或企业签署，最多 50 个参与者。</p>
+        :type ApproverInfo: list of ArchiveFlowApproverInfo
+        :param _CcInfo: <p>关注人信息列表，用于记录合同关注对象，最多 50 个关注者。</p>
+        :type CcInfo: list of ArchiveFlowApproverInfo
+        :param _UserData: <p>调用方自定义透传数据，可用于保存业务扩展信息，长度不超过 20480 字节。</p>
+        :type UserData: str
+        :param _FlowDescription: <p>合同描述/备注信息，长度不超过 1000 个字符</p>
+        :type FlowDescription: str
+        :param _ApproveTime: <p>合同签署完成时间，Unix 秒级时间戳</p>
+        :type ApproveTime: int
+        :param _CustomCreatedOn: <p>合同发起时间/合同原始创建时间，Unix 秒级时间戳</p>
+        :type CustomCreatedOn: int
+        """
+        self._ResourceIds = None
+        self._FlowName = None
+        self._FlowType = None
+        self._BusinessId = None
+        self._CreatorName = None
+        self._ApproverInfo = None
+        self._CcInfo = None
+        self._UserData = None
+        self._FlowDescription = None
+        self._ApproveTime = None
+        self._CustomCreatedOn = None
+
+    @property
+    def ResourceIds(self):
+        r"""<p>合同文件的资源id，使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a> 上传文件返回resourceId，目前一个合同只能支持一个资源ID。</p>
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def FlowName(self):
+        r"""<p>合同名称，不传时系统会使用合同资源文件名作为合同名称；最终合同名称不能为空；长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
+        :rtype: str
+        """
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowType(self):
+        r"""<p>合同类型，自定义文本字符串，长度不能超过200。</p>
+        :rtype: str
+        """
+        return self._FlowType
+
+    @FlowType.setter
+    def FlowType(self, FlowType):
+        self._FlowType = FlowType
+
+    @property
+    def BusinessId(self):
+        r"""<p>调用方业务系统中的合同业务编号，可以用于外部系统和归档合同做关联，长度不超过 128 字节</p>
+        :rtype: str
+        """
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def CreatorName(self):
+        r"""<p>合同发起方/创建人名称，用于归档合同展示和检索，长度不超过 32 字符</p>
+        :rtype: str
+        """
+        return self._CreatorName
+
+    @CreatorName.setter
+    def CreatorName(self, CreatorName):
+        self._CreatorName = CreatorName
+
+    @property
+    def ApproverInfo(self):
+        r"""<p>签署人信息列表，用于记录合同由哪些个人或企业签署，最多 50 个参与者。</p>
+        :rtype: list of ArchiveFlowApproverInfo
+        """
+        return self._ApproverInfo
+
+    @ApproverInfo.setter
+    def ApproverInfo(self, ApproverInfo):
+        self._ApproverInfo = ApproverInfo
+
+    @property
+    def CcInfo(self):
+        r"""<p>关注人信息列表，用于记录合同关注对象，最多 50 个关注者。</p>
+        :rtype: list of ArchiveFlowApproverInfo
+        """
+        return self._CcInfo
+
+    @CcInfo.setter
+    def CcInfo(self, CcInfo):
+        self._CcInfo = CcInfo
+
+    @property
+    def UserData(self):
+        r"""<p>调用方自定义透传数据，可用于保存业务扩展信息，长度不超过 20480 字节。</p>
+        :rtype: str
+        """
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
+    @property
+    def FlowDescription(self):
+        r"""<p>合同描述/备注信息，长度不超过 1000 个字符</p>
+        :rtype: str
+        """
+        return self._FlowDescription
+
+    @FlowDescription.setter
+    def FlowDescription(self, FlowDescription):
+        self._FlowDescription = FlowDescription
+
+    @property
+    def ApproveTime(self):
+        r"""<p>合同签署完成时间，Unix 秒级时间戳</p>
+        :rtype: int
+        """
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+    @property
+    def CustomCreatedOn(self):
+        r"""<p>合同发起时间/合同原始创建时间，Unix 秒级时间戳</p>
+        :rtype: int
+        """
+        return self._CustomCreatedOn
+
+    @CustomCreatedOn.setter
+    def CustomCreatedOn(self, CustomCreatedOn):
+        self._CustomCreatedOn = CustomCreatedOn
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._FlowName = params.get("FlowName")
+        self._FlowType = params.get("FlowType")
+        self._BusinessId = params.get("BusinessId")
+        self._CreatorName = params.get("CreatorName")
+        if params.get("ApproverInfo") is not None:
+            self._ApproverInfo = []
+            for item in params.get("ApproverInfo"):
+                obj = ArchiveFlowApproverInfo()
+                obj._deserialize(item)
+                self._ApproverInfo.append(obj)
+        if params.get("CcInfo") is not None:
+            self._CcInfo = []
+            for item in params.get("CcInfo"):
+                obj = ArchiveFlowApproverInfo()
+                obj._deserialize(item)
+                self._CcInfo.append(obj)
+        self._UserData = params.get("UserData")
+        self._FlowDescription = params.get("FlowDescription")
+        self._ApproveTime = params.get("ApproveTime")
+        self._CustomCreatedOn = params.get("CustomCreatedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateArchiveFlowTaskRequest(AbstractModel):
+    r"""CreateArchiveFlowTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ArchiveFlows: <p>归档合同列表，一次最多支持50个合同</p>
+        :type ArchiveFlows: list of CreateArchiveFlow
+        """
+        self._Operator = None
+        self._ArchiveFlows = None
+
+    @property
+    def Operator(self):
+        r"""<p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ArchiveFlows(self):
+        r"""<p>归档合同列表，一次最多支持50个合同</p>
+        :rtype: list of CreateArchiveFlow
+        """
+        return self._ArchiveFlows
+
+    @ArchiveFlows.setter
+    def ArchiveFlows(self, ArchiveFlows):
+        self._ArchiveFlows = ArchiveFlows
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("ArchiveFlows") is not None:
+            self._ArchiveFlows = []
+            for item in params.get("ArchiveFlows"):
+                obj = CreateArchiveFlow()
+                obj._deserialize(item)
+                self._ArchiveFlows.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateArchiveFlowTaskResponse(AbstractModel):
+    r"""CreateArchiveFlowTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>归档任务ID，后续使用 <a href="">查询归档任务状态</a>接口获取归档任务执行结果</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>归档任务ID，后续使用 <a href="">查询归档任务状态</a>接口获取归档任务执行结果</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateBatchAdminChangeInvitationsRequest(AbstractModel):
@@ -22820,6 +23354,122 @@ class Department(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeArchiveFlowTaskRequest(AbstractModel):
+    r"""DescribeArchiveFlowTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: <p>任务id，<a href="">创建归档任务</a>时返回</p>
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        r"""<p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id，<a href="">创建归档任务</a>时返回</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeArchiveFlowTaskResponse(AbstractModel):
+    r"""DescribeArchiveFlowTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>0： 待处理</li><li>1： 处理中</li><li>2： 任务完成</li><li>3： 任务完成(存在失败)</li></ul>
+        :type Status: int
+        :param _ArchiveFlowResults: <p>每条合同的处理结果，与创建任务的archive_flows列表顺序一致</p>
+        :type ArchiveFlowResults: list of ArchiveFlowResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ArchiveFlowResults = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>0： 待处理</li><li>1： 处理中</li><li>2： 任务完成</li><li>3： 任务完成(存在失败)</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ArchiveFlowResults(self):
+        r"""<p>每条合同的处理结果，与创建任务的archive_flows列表顺序一致</p>
+        :rtype: list of ArchiveFlowResult
+        """
+        return self._ArchiveFlowResults
+
+    @ArchiveFlowResults.setter
+    def ArchiveFlowResults(self, ArchiveFlowResults):
+        self._ArchiveFlowResults = ArchiveFlowResults
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        if params.get("ArchiveFlowResults") is not None:
+            self._ArchiveFlowResults = []
+            for item in params.get("ArchiveFlowResults"):
+                obj = ArchiveFlowResult()
+                obj._deserialize(item)
+                self._ArchiveFlowResults.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBatchOrganizationRegistrationTasksRequest(AbstractModel):

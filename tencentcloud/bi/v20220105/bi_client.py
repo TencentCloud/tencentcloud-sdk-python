@@ -95,6 +95,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDataTable(self, request):
+        r"""添加数据表
+
+        :param request: Request instance for CreateDataTable.
+        :type request: :class:`tencentcloud.bi.v20220105.models.CreateDataTableRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreateDataTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDatasource(self, request):
         r"""创建数据源
 
@@ -684,6 +707,29 @@ class BiClient(AbstractClient):
             body = self.call("DescribeResourceUserGroupPageList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeResourceUserGroupPageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSourceFieldList(self, request):
+        r"""原始数据表字段接口信息
+
+        :param request: Request instance for DescribeSourceFieldList.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribeSourceFieldListRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeSourceFieldListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSourceFieldList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSourceFieldListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
