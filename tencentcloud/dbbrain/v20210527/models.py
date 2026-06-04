@@ -8633,31 +8633,29 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。<strong>其中 dcdb(即TDSQL MySQL) 的查询入参InstanceId特殊，需要使用 ClusterId + &amp; + InstanceId 来组合代替， 如：<code>tdsqlshard-s1230&amp;shard-abcd</code></strong></p>
         :type InstanceId: str
-        :param _ID: 线程的ID，用于筛选线程列表。
+        :param _ID: <p>线程的ID，用于筛选线程列表。</p>
         :type ID: int
-        :param _User: 线程的操作账号名，用于筛选线程列表。
+        :param _User: <p>线程的操作账号名，用于筛选线程列表。</p>
         :type User: str
-        :param _Host: 线程的操作主机地址，用于筛选线程列表。
+        :param _Host: <p>线程的操作主机地址，用于筛选线程列表。</p>
         :type Host: str
-        :param _DB: 线程的操作数据库，用于筛选线程列表。
+        :param _DB: <p>线程的操作数据库，用于筛选线程列表。</p>
         :type DB: str
-        :param _State: 线程的操作状态。包含以下枚举值：Sending data​-线程正在处理查询结果， ​Sorting result​-线程正在对查询结果进行排序​，Creating tmp table​-线程正在创建临时表，Altering table​-线程正在执行表结构变更，Updating-线程执行更新中。
+        :param _State: <p>线程的操作状态。包含以下枚举值：Sending data​-线程正在处理查询结果， ​Sorting result​-线程正在对查询结果进行排序​，Creating tmp table​-线程正在创建临时表，Altering table​-线程正在执行表结构变更，Updating-线程执行更新中。</p>
         :type State: str
-        :param _Command: 线程的执行类型。包含以下枚举值：Sleep-线程处于空闲状态，Query-线程正在执行一个查询，Connect-从服务器连接到主服务器，Execute-线程正在执行预处理语句。
+        :param _Command: <p>线程的执行类型。包含以下枚举值：Sleep-线程处于空闲状态，Query-线程正在执行一个查询，Connect-从服务器连接到主服务器，Execute-线程正在执行预处理语句。</p>
         :type Command: str
-        :param _Time: 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        :param _Time: <p>线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。</p>
         :type Time: int
-        :param _Info: 线程的操作语句，用于筛选线程列表。
+        :param _Info: <p>线程的操作语句，用于筛选线程列表。</p>
         :type Info: str
-        :param _Limit: 返回数量，默认20。
+        :param _Limit: <p>返回数量，默认20。</p>
         :type Limit: int
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL 默认为"mysql"。
-
-
+        :param _Product: <p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;mariadb&quot;-mariadb;&quot;cynosdb&quot;-TDSQL-C for MySQL ;&quot;dcdb&quot;-TDSQL MySQL 默认为&quot;mysql&quot;。</p>
         :type Product: str
-        :param _StatDimensions: 会话统计的维度信息,可以多个维度。
+        :param _StatDimensions: <p>会话统计的维度信息,可以多个维度。</p>
         :type StatDimensions: list of StatDimension
         """
         self._InstanceId = None
@@ -8675,7 +8673,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。<strong>其中 dcdb(即TDSQL MySQL) 的查询入参InstanceId特殊，需要使用 ClusterId + &amp; + InstanceId 来组合代替， 如：<code>tdsqlshard-s1230&amp;shard-abcd</code></strong></p>
         :rtype: str
         """
         return self._InstanceId
@@ -8686,7 +8684,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""线程的ID，用于筛选线程列表。
+        r"""<p>线程的ID，用于筛选线程列表。</p>
         :rtype: int
         """
         return self._ID
@@ -8697,7 +8695,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def User(self):
-        r"""线程的操作账号名，用于筛选线程列表。
+        r"""<p>线程的操作账号名，用于筛选线程列表。</p>
         :rtype: str
         """
         return self._User
@@ -8708,7 +8706,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""线程的操作主机地址，用于筛选线程列表。
+        r"""<p>线程的操作主机地址，用于筛选线程列表。</p>
         :rtype: str
         """
         return self._Host
@@ -8719,7 +8717,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def DB(self):
-        r"""线程的操作数据库，用于筛选线程列表。
+        r"""<p>线程的操作数据库，用于筛选线程列表。</p>
         :rtype: str
         """
         return self._DB
@@ -8730,7 +8728,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def State(self):
-        r"""线程的操作状态。包含以下枚举值：Sending data​-线程正在处理查询结果， ​Sorting result​-线程正在对查询结果进行排序​，Creating tmp table​-线程正在创建临时表，Altering table​-线程正在执行表结构变更，Updating-线程执行更新中。
+        r"""<p>线程的操作状态。包含以下枚举值：Sending data​-线程正在处理查询结果， ​Sorting result​-线程正在对查询结果进行排序​，Creating tmp table​-线程正在创建临时表，Altering table​-线程正在执行表结构变更，Updating-线程执行更新中。</p>
         :rtype: str
         """
         return self._State
@@ -8741,7 +8739,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Command(self):
-        r"""线程的执行类型。包含以下枚举值：Sleep-线程处于空闲状态，Query-线程正在执行一个查询，Connect-从服务器连接到主服务器，Execute-线程正在执行预处理语句。
+        r"""<p>线程的执行类型。包含以下枚举值：Sleep-线程处于空闲状态，Query-线程正在执行一个查询，Connect-从服务器连接到主服务器，Execute-线程正在执行预处理语句。</p>
         :rtype: str
         """
         return self._Command
@@ -8752,7 +8750,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Time(self):
-        r"""线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        r"""<p>线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。</p>
         :rtype: int
         """
         return self._Time
@@ -8763,7 +8761,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Info(self):
-        r"""线程的操作语句，用于筛选线程列表。
+        r"""<p>线程的操作语句，用于筛选线程列表。</p>
         :rtype: str
         """
         return self._Info
@@ -8774,7 +8772,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20。
+        r"""<p>返回数量，默认20。</p>
         :rtype: int
         """
         return self._Limit
@@ -8785,9 +8783,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"mariadb"-mariadb;"cynosdb"-TDSQL-C for MySQL ;"dcdb"-TDSQL MySQL 默认为"mysql"。
-
-
+        r"""<p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;mariadb&quot;-mariadb;&quot;cynosdb&quot;-TDSQL-C for MySQL ;&quot;dcdb&quot;-TDSQL MySQL 默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -8798,7 +8794,7 @@ class DescribeMySqlProcessListRequest(AbstractModel):
 
     @property
     def StatDimensions(self):
-        r"""会话统计的维度信息,可以多个维度。
+        r"""<p>会话统计的维度信息,可以多个维度。</p>
         :rtype: list of StatDimension
         """
         return self._StatDimensions
@@ -8843,9 +8839,9 @@ class DescribeMySqlProcessListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProcessList: 实时线程列表。
+        :param _ProcessList: <p>实时线程列表。</p>
         :type ProcessList: list of MySqlProcess
-        :param _Statistics: sql会话统计信息。如果请求参数中包含StatDimensions，该参数则可能返回，否则不返回。
+        :param _Statistics: <p>sql会话统计信息。如果请求参数中包含StatDimensions，该参数则可能返回，否则不返回。</p>
         :type Statistics: list of StatisticInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8856,7 +8852,7 @@ class DescribeMySqlProcessListResponse(AbstractModel):
 
     @property
     def ProcessList(self):
-        r"""实时线程列表。
+        r"""<p>实时线程列表。</p>
         :rtype: list of MySqlProcess
         """
         return self._ProcessList
@@ -8867,7 +8863,7 @@ class DescribeMySqlProcessListResponse(AbstractModel):
 
     @property
     def Statistics(self):
-        r"""sql会话统计信息。如果请求参数中包含StatDimensions，该参数则可能返回，否则不返回。
+        r"""<p>sql会话统计信息。如果请求参数中包含StatDimensions，该参数则可能返回，否则不返回。</p>
         :rtype: list of StatisticInfo
         """
         return self._Statistics

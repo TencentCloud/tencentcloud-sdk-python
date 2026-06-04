@@ -2402,6 +2402,85 @@ class CfwNatDnatRule(AbstractModel):
         
 
 
+class CloseClusterNatFwSwitchRequest(AbstractModel):
+    r"""CloseClusterNatFwSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatInsId: NAT防火墙实例ID
+        :type NatInsId: str
+        :param _CcnId: 云联网实例ID
+        :type CcnId: str
+        """
+        self._NatInsId = None
+        self._CcnId = None
+
+    @property
+    def NatInsId(self):
+        r"""NAT防火墙实例ID
+        :rtype: str
+        """
+        return self._NatInsId
+
+    @NatInsId.setter
+    def NatInsId(self, NatInsId):
+        self._NatInsId = NatInsId
+
+    @property
+    def CcnId(self):
+        r"""云联网实例ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+
+    def _deserialize(self, params):
+        self._NatInsId = params.get("NatInsId")
+        self._CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseClusterNatFwSwitchResponse(AbstractModel):
+    r"""CloseClusterNatFwSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ClusterSwitchDetail(AbstractModel):
     r"""集群模式防火墙开关数据详情
 
@@ -10088,6 +10167,175 @@ class DescribeCfwInsStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterNatCcnFwSwitchListRequest(AbstractModel):
+    r"""DescribeClusterNatCcnFwSwitchList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatType: <p>NAT防火墙类型筛选，取值：nat-VPC内防护类型，nat_ccn-CCN集群模式类型，不传则同时查询两种类型</p>
+        :type NatType: str
+        :param _Limit: <p>每页条数，默认100</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量，默认0</p>
+        :type Offset: int
+        :param _Filters: <p>过滤条件列表，支持按Common（通用搜索）、InsObj（实例ID）、ObjName（实例名称）等字段过滤</p>
+        :type Filters: list of CommonFilter
+        """
+        self._NatType = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def NatType(self):
+        r"""<p>NAT防火墙类型筛选，取值：nat-VPC内防护类型，nat_ccn-CCN集群模式类型，不传则同时查询两种类型</p>
+        :rtype: str
+        """
+        return self._NatType
+
+    @NatType.setter
+    def NatType(self, NatType):
+        self._NatType = NatType
+
+    @property
+    def Limit(self):
+        r"""<p>每页条数，默认100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件列表，支持按Common（通用搜索）、InsObj（实例ID）、ObjName（实例名称）等字段过滤</p>
+        :rtype: list of CommonFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._NatType = params.get("NatType")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterNatCcnFwSwitchListResponse(AbstractModel):
+    r"""DescribeClusterNatCcnFwSwitchList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>符合条件的总记录数</p>
+        :type Total: int
+        :param _Data: <p>NAT防火墙开关详情列表</p>
+        :type Data: list of NatFwSwitchDetailS
+        :param _RegionList: <p>地域列表</p>
+        :type RegionList: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RegionList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>符合条件的总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""<p>NAT防火墙开关详情列表</p>
+        :rtype: list of NatFwSwitchDetailS
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RegionList(self):
+        r"""<p>地域列表</p>
+        :rtype: list of FilterDataObject
+        """
+        return self._RegionList
+
+    @RegionList.setter
+    def RegionList(self, RegionList):
+        self._RegionList = RegionList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = NatFwSwitchDetailS()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("RegionList") is not None:
+            self._RegionList = []
+            for item in params.get("RegionList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._RegionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
     r"""DescribeClusterVpcFwSwitchs请求参数结构体
 
@@ -13069,6 +13317,271 @@ class DescribeNatAcRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._AllTotal = params.get("AllTotal")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNatCcnFwSwitchRequest(AbstractModel):
+    r"""DescribeNatCcnFwSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatInsId: <p>NAT防火墙实例ID</p>
+        :type NatInsId: str
+        :param _CcnId: <p>云联网实例ID</p>
+        :type CcnId: str
+        """
+        self._NatInsId = None
+        self._CcnId = None
+
+    @property
+    def NatInsId(self):
+        r"""<p>NAT防火墙实例ID</p>
+        :rtype: str
+        """
+        return self._NatInsId
+
+    @NatInsId.setter
+    def NatInsId(self, NatInsId):
+        self._NatInsId = NatInsId
+
+    @property
+    def CcnId(self):
+        r"""<p>云联网实例ID</p>
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+
+    def _deserialize(self, params):
+        self._NatInsId = params.get("NatInsId")
+        self._CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatCcnFwSwitchResponse(AbstractModel):
+    r"""DescribeNatCcnFwSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SwitchMode: <p>开关接入模式，1-自动接入，2-手动接入</p><p>枚举值：</p><ul><li>1： 自动接入</li><li>2： 手动接入</li></ul>
+        :type SwitchMode: int
+        :param _RoutingMode: <p>引流路由方法，0-多路由表，1-策略路由</p><p>枚举值：</p><ul><li>0： 多路由表</li><li>1： 策略路由</li></ul>
+        :type RoutingMode: int
+        :param _Bypass: <p>Bypass状态，0-关闭，1-开启</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :type Bypass: int
+        :param _CcnId: <p>云联网实例ID</p>
+        :type CcnId: str
+        :param _AccessInstanceList: <p>接入的实例列表</p>
+        :type AccessInstanceList: list of AccessInstanceInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SwitchMode = None
+        self._RoutingMode = None
+        self._Bypass = None
+        self._CcnId = None
+        self._AccessInstanceList = None
+        self._RequestId = None
+
+    @property
+    def SwitchMode(self):
+        r"""<p>开关接入模式，1-自动接入，2-手动接入</p><p>枚举值：</p><ul><li>1： 自动接入</li><li>2： 手动接入</li></ul>
+        :rtype: int
+        """
+        return self._SwitchMode
+
+    @SwitchMode.setter
+    def SwitchMode(self, SwitchMode):
+        self._SwitchMode = SwitchMode
+
+    @property
+    def RoutingMode(self):
+        r"""<p>引流路由方法，0-多路由表，1-策略路由</p><p>枚举值：</p><ul><li>0： 多路由表</li><li>1： 策略路由</li></ul>
+        :rtype: int
+        """
+        return self._RoutingMode
+
+    @RoutingMode.setter
+    def RoutingMode(self, RoutingMode):
+        self._RoutingMode = RoutingMode
+
+    @property
+    def Bypass(self):
+        r"""<p>Bypass状态，0-关闭，1-开启</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :rtype: int
+        """
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        self._Bypass = Bypass
+
+    @property
+    def CcnId(self):
+        r"""<p>云联网实例ID</p>
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def AccessInstanceList(self):
+        r"""<p>接入的实例列表</p>
+        :rtype: list of AccessInstanceInfo
+        """
+        return self._AccessInstanceList
+
+    @AccessInstanceList.setter
+    def AccessInstanceList(self, AccessInstanceList):
+        self._AccessInstanceList = AccessInstanceList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SwitchMode = params.get("SwitchMode")
+        self._RoutingMode = params.get("RoutingMode")
+        self._Bypass = params.get("Bypass")
+        self._CcnId = params.get("CcnId")
+        if params.get("AccessInstanceList") is not None:
+            self._AccessInstanceList = []
+            for item in params.get("AccessInstanceList"):
+                obj = AccessInstanceInfo()
+                obj._deserialize(item)
+                self._AccessInstanceList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNatFwClusterRegionStatusRequest(AbstractModel):
+    r"""DescribeNatFwClusterRegionStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatClusterRegionStatusQueryList: <p>NAT集群防火墙地域状态查询列表</p>
+        :type NatClusterRegionStatusQueryList: list of NatClusterRegionStatusQuery
+        """
+        self._NatClusterRegionStatusQueryList = None
+
+    @property
+    def NatClusterRegionStatusQueryList(self):
+        r"""<p>NAT集群防火墙地域状态查询列表</p>
+        :rtype: list of NatClusterRegionStatusQuery
+        """
+        return self._NatClusterRegionStatusQueryList
+
+    @NatClusterRegionStatusQueryList.setter
+    def NatClusterRegionStatusQueryList(self, NatClusterRegionStatusQueryList):
+        self._NatClusterRegionStatusQueryList = NatClusterRegionStatusQueryList
+
+
+    def _deserialize(self, params):
+        if params.get("NatClusterRegionStatusQueryList") is not None:
+            self._NatClusterRegionStatusQueryList = []
+            for item in params.get("NatClusterRegionStatusQueryList"):
+                obj = NatClusterRegionStatusQuery()
+                obj._deserialize(item)
+                self._NatClusterRegionStatusQueryList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatFwClusterRegionStatusResponse(AbstractModel):
+    r"""DescribeNatFwClusterRegionStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>返回地域数量</p>
+        :type Total: int
+        :param _RegionFwStatus: <p>地域防火墙集群状态列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionFwStatus: list of NatFwClusterRegionStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._RegionFwStatus = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>返回地域数量</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RegionFwStatus(self):
+        r"""<p>地域防火墙集群状态列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NatFwClusterRegionStatus
+        """
+        return self._RegionFwStatus
+
+    @RegionFwStatus.setter
+    def RegionFwStatus(self, RegionFwStatus):
+        self._RegionFwStatus = RegionFwStatus
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("RegionFwStatus") is not None:
+            self._RegionFwStatus = []
+            for item in params.get("RegionFwStatus"):
+                obj = NatFwClusterRegionStatus()
+                obj._deserialize(item)
+                self._RegionFwStatus.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18049,6 +18562,61 @@ class FieldOption(AbstractModel):
         
 
 
+class FilterDataObject(AbstractModel):
+    r"""查询下拉选择选项数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 显示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _Value: 实际值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Text = None
+        self._Value = None
+
+    @property
+    def Text(self):
+        r"""显示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Value(self):
+        r"""实际值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FwCidrInfo(AbstractModel):
     r"""防火墙网段信息
 
@@ -21021,6 +21589,181 @@ class ModifyBlockTopRequest(AbstractModel):
 
 class ModifyBlockTopResponse(AbstractModel):
     r"""ModifyBlockTop返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyClusterFwBypassRequest(AbstractModel):
+    r"""ModifyClusterFwBypass请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FwType: 防火墙类型，"VPC_FW"-VPC防火墙，"NAT_FW"-NAT防火墙
+        :type FwType: str
+        :param _CcnId: 云联网实例ID
+        :type CcnId: str
+        :param _Enable: Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）
+        :type Enable: bool
+        :param _NatInsId: NAT防火墙实例ID，FwType为nat时必填
+        :type NatInsId: str
+        """
+        self._FwType = None
+        self._CcnId = None
+        self._Enable = None
+        self._NatInsId = None
+
+    @property
+    def FwType(self):
+        r"""防火墙类型，"VPC_FW"-VPC防火墙，"NAT_FW"-NAT防火墙
+        :rtype: str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+    @property
+    def CcnId(self):
+        r"""云联网实例ID
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def Enable(self):
+        r"""Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def NatInsId(self):
+        r"""NAT防火墙实例ID，FwType为nat时必填
+        :rtype: str
+        """
+        return self._NatInsId
+
+    @NatInsId.setter
+    def NatInsId(self, NatInsId):
+        self._NatInsId = NatInsId
+
+
+    def _deserialize(self, params):
+        self._FwType = params.get("FwType")
+        self._CcnId = params.get("CcnId")
+        self._Enable = params.get("Enable")
+        self._NatInsId = params.get("NatInsId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterFwBypassResponse(AbstractModel):
+    r"""ModifyClusterFwBypass返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyClusterNatFwSwitchRequest(AbstractModel):
+    r"""ModifyClusterNatFwSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatCcnSwitch: NAT CCN防火墙开关配置
+        :type NatCcnSwitch: :class:`tencentcloud.cfw.v20190904.models.NatCcnSwitchConfig`
+        """
+        self._NatCcnSwitch = None
+
+    @property
+    def NatCcnSwitch(self):
+        r"""NAT CCN防火墙开关配置
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.NatCcnSwitchConfig`
+        """
+        return self._NatCcnSwitch
+
+    @NatCcnSwitch.setter
+    def NatCcnSwitch(self, NatCcnSwitch):
+        self._NatCcnSwitch = NatCcnSwitch
+
+
+    def _deserialize(self, params):
+        if params.get("NatCcnSwitch") is not None:
+            self._NatCcnSwitch = NatCcnSwitchConfig()
+            self._NatCcnSwitch._deserialize(params.get("NatCcnSwitch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterNatFwSwitchResponse(AbstractModel):
+    r"""ModifyClusterNatFwSwitch返回参数结构体
 
     """
 
@@ -24060,6 +24803,122 @@ class NDRAssetServiceStats(AbstractModel):
         
 
 
+class NatCcnSwitchConfig(AbstractModel):
+    r"""NAT CCN防火墙开关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatInsId: <p>NAT防火墙实例ID</p>
+        :type NatInsId: str
+        :param _CcnId: <p>云联网实例ID</p>
+        :type CcnId: str
+        :param _SwitchMode: <p>开关接入模式，1:自动接入，2:手动接入</p>
+        :type SwitchMode: int
+        :param _RoutingMode: <p>引流路由方法，0:多路由表，1:策略路由。自动接入模式仅支持策略路由(1)；手动接入模式支持多路由表(0)和策略路由(1)</p>
+        :type RoutingMode: int
+        :param _AccessInstanceList: <p>接入的实例列表</p>
+        :type AccessInstanceList: list of AccessInstanceInfo
+        :param _LeadVpcCidr: <p>引流VPC的CIDR网段</p>
+        :type LeadVpcCidr: str
+        """
+        self._NatInsId = None
+        self._CcnId = None
+        self._SwitchMode = None
+        self._RoutingMode = None
+        self._AccessInstanceList = None
+        self._LeadVpcCidr = None
+
+    @property
+    def NatInsId(self):
+        r"""<p>NAT防火墙实例ID</p>
+        :rtype: str
+        """
+        return self._NatInsId
+
+    @NatInsId.setter
+    def NatInsId(self, NatInsId):
+        self._NatInsId = NatInsId
+
+    @property
+    def CcnId(self):
+        r"""<p>云联网实例ID</p>
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def SwitchMode(self):
+        r"""<p>开关接入模式，1:自动接入，2:手动接入</p>
+        :rtype: int
+        """
+        return self._SwitchMode
+
+    @SwitchMode.setter
+    def SwitchMode(self, SwitchMode):
+        self._SwitchMode = SwitchMode
+
+    @property
+    def RoutingMode(self):
+        r"""<p>引流路由方法，0:多路由表，1:策略路由。自动接入模式仅支持策略路由(1)；手动接入模式支持多路由表(0)和策略路由(1)</p>
+        :rtype: int
+        """
+        return self._RoutingMode
+
+    @RoutingMode.setter
+    def RoutingMode(self, RoutingMode):
+        self._RoutingMode = RoutingMode
+
+    @property
+    def AccessInstanceList(self):
+        r"""<p>接入的实例列表</p>
+        :rtype: list of AccessInstanceInfo
+        """
+        return self._AccessInstanceList
+
+    @AccessInstanceList.setter
+    def AccessInstanceList(self, AccessInstanceList):
+        self._AccessInstanceList = AccessInstanceList
+
+    @property
+    def LeadVpcCidr(self):
+        r"""<p>引流VPC的CIDR网段</p>
+        :rtype: str
+        """
+        return self._LeadVpcCidr
+
+    @LeadVpcCidr.setter
+    def LeadVpcCidr(self, LeadVpcCidr):
+        self._LeadVpcCidr = LeadVpcCidr
+
+
+    def _deserialize(self, params):
+        self._NatInsId = params.get("NatInsId")
+        self._CcnId = params.get("CcnId")
+        self._SwitchMode = params.get("SwitchMode")
+        self._RoutingMode = params.get("RoutingMode")
+        if params.get("AccessInstanceList") is not None:
+            self._AccessInstanceList = []
+            for item in params.get("AccessInstanceList"):
+                obj = AccessInstanceInfo()
+                obj._deserialize(item)
+                self._AccessInstanceList.append(obj)
+        self._LeadVpcCidr = params.get("LeadVpcCidr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NatClusterInfo(AbstractModel):
     r"""NAT集群模式开关信息
 
@@ -24101,6 +24960,198 @@ class NatClusterInfo(AbstractModel):
     def _deserialize(self, params):
         self._NatInsId = params.get("NatInsId")
         self._NatInsName = params.get("NatInsName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatClusterRegionStatusQuery(AbstractModel):
+    r"""NAT集群防火墙地域部署状态查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CcnId: <p>云联网ID</p>
+        :type CcnId: str
+        :param _NatInsId: <p>NAT网关ID</p>
+        :type NatInsId: str
+        :param _AssetType: <p>资产类型，取值：nat_ccn-CCN+NAT场景，nat-独立NAT场景</p>
+        :type AssetType: str
+        :param _RoutingMode: <p>引流路由方法，0-多路由表模式，1-策略路由模式</p>
+        :type RoutingMode: int
+        """
+        self._CcnId = None
+        self._NatInsId = None
+        self._AssetType = None
+        self._RoutingMode = None
+
+    @property
+    def CcnId(self):
+        r"""<p>云联网ID</p>
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def NatInsId(self):
+        r"""<p>NAT网关ID</p>
+        :rtype: str
+        """
+        return self._NatInsId
+
+    @NatInsId.setter
+    def NatInsId(self, NatInsId):
+        self._NatInsId = NatInsId
+
+    @property
+    def AssetType(self):
+        r"""<p>资产类型，取值：nat_ccn-CCN+NAT场景，nat-独立NAT场景</p>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def RoutingMode(self):
+        r"""<p>引流路由方法，0-多路由表模式，1-策略路由模式</p>
+        :rtype: int
+        """
+        return self._RoutingMode
+
+    @RoutingMode.setter
+    def RoutingMode(self, RoutingMode):
+        self._RoutingMode = RoutingMode
+
+
+    def _deserialize(self, params):
+        self._CcnId = params.get("CcnId")
+        self._NatInsId = params.get("NatInsId")
+        self._AssetType = params.get("AssetType")
+        self._RoutingMode = params.get("RoutingMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatFwClusterRegionStatus(AbstractModel):
+    r"""NAT防火墙引流集群地域状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatInsId: <p>NAT网关ID</p>
+        :type NatInsId: str
+        :param _CcnId: <p>云联网ID</p>
+        :type CcnId: str
+        :param _Region: <p>地域，如 ap-guangzhou</p>
+        :type Region: str
+        :param _Status: <p>地域集群状态，取值：<br>NotDeployed-未部署集群，<br>Deployed-已部署集群但未创建引流网络，<br>DeployedCustomOnly-已部署集群但内网段被覆盖，无法自动选择引流网段，需自定义设置引流网段<br>Auto-已创建引流网络(自动分配CIDR)，<br>Custom-已创建引流网络(自定义CIDR)</p>
+        :type Status: str
+        :param _Cidr: <p>引流网络 CIDR，仅当 Status 为 Auto 或 Custom 时有值</p>
+        :type Cidr: str
+        :param _RoutingMode: <p>引流路由方法，0-多路由表模式，1-策略路由模式</p>
+        :type RoutingMode: int
+        """
+        self._NatInsId = None
+        self._CcnId = None
+        self._Region = None
+        self._Status = None
+        self._Cidr = None
+        self._RoutingMode = None
+
+    @property
+    def NatInsId(self):
+        r"""<p>NAT网关ID</p>
+        :rtype: str
+        """
+        return self._NatInsId
+
+    @NatInsId.setter
+    def NatInsId(self, NatInsId):
+        self._NatInsId = NatInsId
+
+    @property
+    def CcnId(self):
+        r"""<p>云联网ID</p>
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def Region(self):
+        r"""<p>地域，如 ap-guangzhou</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        r"""<p>地域集群状态，取值：<br>NotDeployed-未部署集群，<br>Deployed-已部署集群但未创建引流网络，<br>DeployedCustomOnly-已部署集群但内网段被覆盖，无法自动选择引流网段，需自定义设置引流网段<br>Auto-已创建引流网络(自动分配CIDR)，<br>Custom-已创建引流网络(自定义CIDR)</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Cidr(self):
+        r"""<p>引流网络 CIDR，仅当 Status 为 Auto 或 Custom 时有值</p>
+        :rtype: str
+        """
+        return self._Cidr
+
+    @Cidr.setter
+    def Cidr(self, Cidr):
+        self._Cidr = Cidr
+
+    @property
+    def RoutingMode(self):
+        r"""<p>引流路由方法，0-多路由表模式，1-策略路由模式</p>
+        :rtype: int
+        """
+        return self._RoutingMode
+
+    @RoutingMode.setter
+    def RoutingMode(self, RoutingMode):
+        self._RoutingMode = RoutingMode
+
+
+    def _deserialize(self, params):
+        self._NatInsId = params.get("NatInsId")
+        self._CcnId = params.get("CcnId")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._Cidr = params.get("Cidr")
+        self._RoutingMode = params.get("RoutingMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24329,6 +25380,341 @@ class NatFwInstance(AbstractModel):
         self._FwMode = params.get("FwMode")
         self._Status = params.get("Status")
         self._NatIp = params.get("NatIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NatFwSwitchDetailS(AbstractModel):
+    r"""NAT防火墙开关详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InsObj: <p>NAT实例ID</p>
+        :type InsObj: str
+        :param _ObjName: <p>实例名称</p>
+        :type ObjName: str
+        :param _FwType: <p>防火墙类型</p>
+        :type FwType: str
+        :param _AssetType: <p>资产类型，nat-VPC内防护，nat_ccn-CCN集群模式</p>
+        :type AssetType: str
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _SwitchMode: <p>开关接入模式，1-自动接入，2-手动接入</p>
+        :type SwitchMode: int
+        :param _RoutingMode: <p>引流路由方法，0-多路由表，1-策略路由</p>
+        :type RoutingMode: int
+        :param _Status: <p>开关状态，0-未开启，1-已开启，2-开启中，3-关闭中</p>
+        :type Status: int
+        :param _IpVersion: <p>ip版本，0：ipv4；1：ipv6</p>
+        :type IpVersion: int
+        :param _NonCluster: <p>是否非集群模式，0-集群模式，1-非集群模式</p>
+        :type NonCluster: int
+        :param _IpsAction: <p>入侵防御动作</p>
+        :type IpsAction: int
+        :param _TransEnable: <p>流量监控开关</p>
+        :type TransEnable: int
+        :param _Bypass: <p>Bypass状态，0-关闭，1-开启</p>
+        :type Bypass: int
+        :param _AttachId: <p>关联ID，nat_ccn资产类型时为云联网实例ID, nat资产类型时为空</p>
+        :type AttachId: str
+        :param _AttachName: <p>关联ID的实例名称，nat_ccn资产类型时为云联网名称</p>
+        :type AttachName: str
+        :param _NatVpcId: <p>NAT防火墙所在VPC ID</p>
+        :type NatVpcId: str
+        :param _NatVpcName: <p>NAT防火墙所在VPC的VPC名称</p>
+        :type NatVpcName: str
+        :param _AttachIns: <p>CCN关联实例列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachIns: list of AttachInsInfo
+        :param _Endpoints: <p>终端节点列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endpoints: list of EndpointInfo
+        :param _Progress: <p>防火墙开关操作时的进度状态：</p><p>// 开启 — 自动模式（3步）<br>&quot;AUTO_OPEN_ORCHESTRATING&quot;      // 步骤1: 预编排策略路由<br>&quot;AUTO_OPEN_CREATING_RESOURCES&quot; // 步骤2: 创建引流网络和资源<br>&quot;AUTO_OPEN_PUSHING_ROUTES&quot;     // 步骤3: 创建策略路由</p><p>// 开启 — 手动模式（1步）<br>&quot;MANUAL_OPEN_CREATING_RESOURCES&quot; // 步骤1: 创建引流网络和资源</p><p>// 关闭 — 自动模式（2步）<br>&quot;AUTO_CLOSE_DELETING_ROUTES&quot;    // 步骤1: 删除策略路由<br>&quot;AUTO_CLOSE_DELETING_RESOURCES&quot; // 步骤2: 删除引流网络和资源<br>// 关闭 — 手动模式（1步）<br>&quot;MANUAL_CLOSE_DELETING_RESOURCES&quot; // 步骤1: 删除引流网络和资源</p><p>// 修改 — 自动模式（3步）<br>&quot;AUTO_MODIFY_ORCHESTRATING&quot;   // 步骤1: 预编排策略路由<br>&quot;AUTO_MODIFY_DELETING_ROUTES&quot; // 步骤2: 删除旧策略路由<br>&quot;AUTO_MODIFY_PUSHING_ROUTES&quot;  // 步骤3: 创建新策略路由</p><p>// 修改 — 手动模式（1步，仅 VPC 防火墙存在手动模式修改）<br>&quot;MANUAL_MODIFY_UPDATING_RESOURCES&quot; // 步骤1: 更新引流网络和资源</p>
+        :type Progress: str
+        """
+        self._InsObj = None
+        self._ObjName = None
+        self._FwType = None
+        self._AssetType = None
+        self._Region = None
+        self._SwitchMode = None
+        self._RoutingMode = None
+        self._Status = None
+        self._IpVersion = None
+        self._NonCluster = None
+        self._IpsAction = None
+        self._TransEnable = None
+        self._Bypass = None
+        self._AttachId = None
+        self._AttachName = None
+        self._NatVpcId = None
+        self._NatVpcName = None
+        self._AttachIns = None
+        self._Endpoints = None
+        self._Progress = None
+
+    @property
+    def InsObj(self):
+        r"""<p>NAT实例ID</p>
+        :rtype: str
+        """
+        return self._InsObj
+
+    @InsObj.setter
+    def InsObj(self, InsObj):
+        self._InsObj = InsObj
+
+    @property
+    def ObjName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._ObjName
+
+    @ObjName.setter
+    def ObjName(self, ObjName):
+        self._ObjName = ObjName
+
+    @property
+    def FwType(self):
+        r"""<p>防火墙类型</p>
+        :rtype: str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+    @property
+    def AssetType(self):
+        r"""<p>资产类型，nat-VPC内防护，nat_ccn-CCN集群模式</p>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SwitchMode(self):
+        r"""<p>开关接入模式，1-自动接入，2-手动接入</p>
+        :rtype: int
+        """
+        return self._SwitchMode
+
+    @SwitchMode.setter
+    def SwitchMode(self, SwitchMode):
+        self._SwitchMode = SwitchMode
+
+    @property
+    def RoutingMode(self):
+        r"""<p>引流路由方法，0-多路由表，1-策略路由</p>
+        :rtype: int
+        """
+        return self._RoutingMode
+
+    @RoutingMode.setter
+    def RoutingMode(self, RoutingMode):
+        self._RoutingMode = RoutingMode
+
+    @property
+    def Status(self):
+        r"""<p>开关状态，0-未开启，1-已开启，2-开启中，3-关闭中</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IpVersion(self):
+        r"""<p>ip版本，0：ipv4；1：ipv6</p>
+        :rtype: int
+        """
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+    @property
+    def NonCluster(self):
+        r"""<p>是否非集群模式，0-集群模式，1-非集群模式</p>
+        :rtype: int
+        """
+        return self._NonCluster
+
+    @NonCluster.setter
+    def NonCluster(self, NonCluster):
+        self._NonCluster = NonCluster
+
+    @property
+    def IpsAction(self):
+        r"""<p>入侵防御动作</p>
+        :rtype: int
+        """
+        return self._IpsAction
+
+    @IpsAction.setter
+    def IpsAction(self, IpsAction):
+        self._IpsAction = IpsAction
+
+    @property
+    def TransEnable(self):
+        r"""<p>流量监控开关</p>
+        :rtype: int
+        """
+        return self._TransEnable
+
+    @TransEnable.setter
+    def TransEnable(self, TransEnable):
+        self._TransEnable = TransEnable
+
+    @property
+    def Bypass(self):
+        r"""<p>Bypass状态，0-关闭，1-开启</p>
+        :rtype: int
+        """
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        self._Bypass = Bypass
+
+    @property
+    def AttachId(self):
+        r"""<p>关联ID，nat_ccn资产类型时为云联网实例ID, nat资产类型时为空</p>
+        :rtype: str
+        """
+        return self._AttachId
+
+    @AttachId.setter
+    def AttachId(self, AttachId):
+        self._AttachId = AttachId
+
+    @property
+    def AttachName(self):
+        r"""<p>关联ID的实例名称，nat_ccn资产类型时为云联网名称</p>
+        :rtype: str
+        """
+        return self._AttachName
+
+    @AttachName.setter
+    def AttachName(self, AttachName):
+        self._AttachName = AttachName
+
+    @property
+    def NatVpcId(self):
+        r"""<p>NAT防火墙所在VPC ID</p>
+        :rtype: str
+        """
+        return self._NatVpcId
+
+    @NatVpcId.setter
+    def NatVpcId(self, NatVpcId):
+        self._NatVpcId = NatVpcId
+
+    @property
+    def NatVpcName(self):
+        r"""<p>NAT防火墙所在VPC的VPC名称</p>
+        :rtype: str
+        """
+        return self._NatVpcName
+
+    @NatVpcName.setter
+    def NatVpcName(self, NatVpcName):
+        self._NatVpcName = NatVpcName
+
+    @property
+    def AttachIns(self):
+        r"""<p>CCN关联实例列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AttachInsInfo
+        """
+        return self._AttachIns
+
+    @AttachIns.setter
+    def AttachIns(self, AttachIns):
+        self._AttachIns = AttachIns
+
+    @property
+    def Endpoints(self):
+        r"""<p>终端节点列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EndpointInfo
+        """
+        return self._Endpoints
+
+    @Endpoints.setter
+    def Endpoints(self, Endpoints):
+        self._Endpoints = Endpoints
+
+    @property
+    def Progress(self):
+        r"""<p>防火墙开关操作时的进度状态：</p><p>// 开启 — 自动模式（3步）<br>&quot;AUTO_OPEN_ORCHESTRATING&quot;      // 步骤1: 预编排策略路由<br>&quot;AUTO_OPEN_CREATING_RESOURCES&quot; // 步骤2: 创建引流网络和资源<br>&quot;AUTO_OPEN_PUSHING_ROUTES&quot;     // 步骤3: 创建策略路由</p><p>// 开启 — 手动模式（1步）<br>&quot;MANUAL_OPEN_CREATING_RESOURCES&quot; // 步骤1: 创建引流网络和资源</p><p>// 关闭 — 自动模式（2步）<br>&quot;AUTO_CLOSE_DELETING_ROUTES&quot;    // 步骤1: 删除策略路由<br>&quot;AUTO_CLOSE_DELETING_RESOURCES&quot; // 步骤2: 删除引流网络和资源<br>// 关闭 — 手动模式（1步）<br>&quot;MANUAL_CLOSE_DELETING_RESOURCES&quot; // 步骤1: 删除引流网络和资源</p><p>// 修改 — 自动模式（3步）<br>&quot;AUTO_MODIFY_ORCHESTRATING&quot;   // 步骤1: 预编排策略路由<br>&quot;AUTO_MODIFY_DELETING_ROUTES&quot; // 步骤2: 删除旧策略路由<br>&quot;AUTO_MODIFY_PUSHING_ROUTES&quot;  // 步骤3: 创建新策略路由</p><p>// 修改 — 手动模式（1步，仅 VPC 防火墙存在手动模式修改）<br>&quot;MANUAL_MODIFY_UPDATING_RESOURCES&quot; // 步骤1: 更新引流网络和资源</p>
+        :rtype: str
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._InsObj = params.get("InsObj")
+        self._ObjName = params.get("ObjName")
+        self._FwType = params.get("FwType")
+        self._AssetType = params.get("AssetType")
+        self._Region = params.get("Region")
+        self._SwitchMode = params.get("SwitchMode")
+        self._RoutingMode = params.get("RoutingMode")
+        self._Status = params.get("Status")
+        self._IpVersion = params.get("IpVersion")
+        self._NonCluster = params.get("NonCluster")
+        self._IpsAction = params.get("IpsAction")
+        self._TransEnable = params.get("TransEnable")
+        self._Bypass = params.get("Bypass")
+        self._AttachId = params.get("AttachId")
+        self._AttachName = params.get("AttachName")
+        self._NatVpcId = params.get("NatVpcId")
+        self._NatVpcName = params.get("NatVpcName")
+        if params.get("AttachIns") is not None:
+            self._AttachIns = []
+            for item in params.get("AttachIns"):
+                obj = AttachInsInfo()
+                obj._deserialize(item)
+                self._AttachIns.append(obj)
+        if params.get("Endpoints") is not None:
+            self._Endpoints = []
+            for item in params.get("Endpoints"):
+                obj = EndpointInfo()
+                obj._deserialize(item)
+                self._Endpoints.append(obj)
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25307,6 +26693,72 @@ class NewModeItems(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OpenClusterNatFwSwitchRequest(AbstractModel):
+    r"""OpenClusterNatFwSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatCcnSwitch: NAT CCN防火墙开关配置
+        :type NatCcnSwitch: :class:`tencentcloud.cfw.v20190904.models.NatCcnSwitchConfig`
+        """
+        self._NatCcnSwitch = None
+
+    @property
+    def NatCcnSwitch(self):
+        r"""NAT CCN防火墙开关配置
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.NatCcnSwitchConfig`
+        """
+        return self._NatCcnSwitch
+
+    @NatCcnSwitch.setter
+    def NatCcnSwitch(self, NatCcnSwitch):
+        self._NatCcnSwitch = NatCcnSwitch
+
+
+    def _deserialize(self, params):
+        if params.get("NatCcnSwitch") is not None:
+            self._NatCcnSwitch = NatCcnSwitchConfig()
+            self._NatCcnSwitch._deserialize(params.get("NatCcnSwitch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenClusterNatFwSwitchResponse(AbstractModel):
+    r"""OpenClusterNatFwSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class OperatorFilter(AbstractModel):

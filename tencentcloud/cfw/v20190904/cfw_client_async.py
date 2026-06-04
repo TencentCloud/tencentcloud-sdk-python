@@ -97,6 +97,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseClusterNatFwSwitch(
+            self,
+            request: models.CloseClusterNatFwSwitchRequest,
+            opts: Dict = None,
+    ) -> models.CloseClusterNatFwSwitchResponse:
+        """
+        关闭NAT CCN集群模式防火墙开关
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseClusterNatFwSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseClusterNatFwSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAcRules(
             self,
             request: models.CreateAcRulesRequest,
@@ -783,6 +801,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterNatCcnFwSwitchList(
+            self,
+            request: models.DescribeClusterNatCcnFwSwitchListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterNatCcnFwSwitchListResponse:
+        """
+        查询NAT CCN集群模式防火墙开关列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterNatCcnFwSwitchList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterNatCcnFwSwitchListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterVpcFwSwitchs(
             self,
             request: models.DescribeClusterVpcFwSwitchsRequest,
@@ -1066,6 +1102,42 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeNatAcRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeNatAcRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNatCcnFwSwitch(
+            self,
+            request: models.DescribeNatCcnFwSwitchRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNatCcnFwSwitchResponse:
+        """
+        查询NAT CCN防火墙开关配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNatCcnFwSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNatCcnFwSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNatFwClusterRegionStatus(
+            self,
+            request: models.DescribeNatFwClusterRegionStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNatFwClusterRegionStatusResponse:
+        """
+        查询指定NAT所在地域是否有NAT防火墙引流集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNatFwClusterRegionStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNatFwClusterRegionStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1686,6 +1758,42 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyClusterFwBypass(
+            self,
+            request: models.ModifyClusterFwBypassRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterFwBypassResponse:
+        """
+        修改集群防火墙Bypass状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterFwBypass"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterFwBypassResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyClusterNatFwSwitch(
+            self,
+            request: models.ModifyClusterNatFwSwitchRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterNatFwSwitchResponse:
+        """
+        修改NAT CCN集群模式防火墙开关配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterNatFwSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterNatFwSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyClusterVpcFwSwitch(
             self,
             request: models.ModifyClusterVpcFwSwitchRequest,
@@ -2132,6 +2240,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "ModifyVpcFwSequenceRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyVpcFwSequenceRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenClusterNatFwSwitch(
+            self,
+            request: models.OpenClusterNatFwSwitchRequest,
+            opts: Dict = None,
+    ) -> models.OpenClusterNatFwSwitchResponse:
+        """
+        开启NAT CCN集群模式防火墙开关
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenClusterNatFwSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenClusterNatFwSwitchResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

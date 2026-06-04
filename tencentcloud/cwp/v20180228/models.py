@@ -80114,81 +80114,78 @@ class Machine(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MachineName: 主机名称。
+        :param _MachineName: <p>主机名称。</p>
         :type MachineName: str
-        :param _MachineOs: 主机系统。
+        :param _MachineOs: <p>主机系统。</p>
         :type MachineOs: str
-        :param _MachineStatus: 主机状态。 <li>OFFLINE: 离线 </li> <li>ONLINE: 在线</li> <li>SHUTDOWN: 已关机</li> <li>UNINSTALLED: 未防护</li>	
+        :param _MachineStatus: <p>主机状态。 <li>OFFLINE: 离线 </li> <li>ONLINE: 在线</li> <li>SHUTDOWN: 已关机</li> <li>UNINSTALLED: 未防护</li></p>
         :type MachineStatus: str
-        :param _AgentStatus: ONLINE 防护中; OFFLINE 已离线;UNINStALLED 未安装
+        :param _AgentStatus: <p>ONLINE 防护中; OFFLINE 已离线;UNINStALLED 未安装</p>
         :type AgentStatus: str
-        :param _InstanceStatus: RUNNING 运行中; STOPED 已关机; EXPIRED 待回收	
+        :param _InstanceStatus: <p>RUNNING 运行中; STOPED 已关机; EXPIRED 待回收</p>
         :type InstanceStatus: str
-        :param _Uuid: 主机安全Uuid，若客户端长时间不在线将返回空字符。
+        :param _Uuid: <p>主机安全Uuid，若客户端长时间不在线将返回空字符。</p>
         :type Uuid: str
-        :param _Quuid: CVM或BM机器唯一Uuid。
+        :param _Quuid: <p>CVM或BM机器唯一Uuid。</p>
         :type Quuid: str
-        :param _VulNum: 漏洞数。
+        :param _VulNum: <p>漏洞数。</p>
         :type VulNum: int
-        :param _MachineIp: 主机IP。
+        :param _MachineIp: <p>主机IP。</p>
         :type MachineIp: str
-        :param _IsProVersion: 是否是专业版。
-<li>true： 是</li>
-<li>false：否</li>
+        :param _IsProVersion: <p>是否是专业版。</p><li>true： 是</li><li>false：否</li>
         :type IsProVersion: bool
-        :param _MachineWanIp: 主机外网IP。
+        :param _MachineWanIp: <p>主机外网IP。</p>
         :type MachineWanIp: str
-        :param _PayMode: 主机状态。
-<li>POSTPAY: 表示后付费，即按量计费  </li>
-<li>PREPAY: 表示预付费，即包年包月</li>
+        :param _PayMode: <p>主机状态。</p><li>POSTPAY: 表示后付费，即按量计费  </li><li>PREPAY: 表示预付费，即包年包月</li>
         :type PayMode: str
-        :param _MalwareNum: 木马数。
+        :param _MalwareNum: <p>木马数。</p>
         :type MalwareNum: int
-        :param _Tag: 标签信息
+        :param _Tag: <p>标签信息</p>
         :type Tag: list of MachineTag
-        :param _BaselineNum: 基线风险数。
+        :param _BaselineNum: <p>基线风险数。</p>
         :type BaselineNum: int
-        :param _CyberAttackNum: 网络风险数。
+        :param _CyberAttackNum: <p>网络风险数。</p>
         :type CyberAttackNum: int
-        :param _SecurityStatus: 风险状态。
-<li>SAFE：安全</li>
-<li>RISK：风险</li>
-<li>UNKNOWN：未知</li>
+        :param _SecurityStatus: <p>风险状态。</p><li>SAFE：安全</li><li>RISK：风险</li><li>UNKNOWN：未知</li>
         :type SecurityStatus: str
-        :param _InvasionNum: 入侵事件数
+        :param _InvasionNum: <p>入侵事件数</p>
         :type InvasionNum: int
-        :param _RegionInfo: 地域信息
+        :param _RegionInfo: <p>地域信息</p>
         :type RegionInfo: :class:`tencentcloud.cwp.v20180228.models.RegionInfo`
-        :param _InstanceState: 实例状态 TERMINATED_PRO_VERSION 已销毁
+        :param _InstanceState: <p>实例状态 TERMINATED_PRO_VERSION 已销毁</p>
         :type InstanceState: str
-        :param _LicenseStatus: 防篡改 授权状态 1 授权 0 未授权
+        :param _LicenseStatus: <p>防篡改 授权状态 1 授权 0 未授权</p>
         :type LicenseStatus: int
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _HasAssetScan: 是否有资产扫描接口，0无，1有
+        :param _HasAssetScan: <p>是否有资产扫描接口，0无，1有</p>
         :type HasAssetScan: int
-        :param _MachineType: 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+        :param _MachineType: <p>机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区</p>
         :type MachineType: str
-        :param _KernelVersion: 内核版本
+        :param _KernelVersion: <p>内核版本</p>
         :type KernelVersion: str
-        :param _ProtectType: 防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版
+        :param _ProtectType: <p>防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版</p>
         :type ProtectType: str
-        :param _CloudTags: 云标签信息
+        :param _CloudTags: <p>云标签信息</p>
         :type CloudTags: list of Tags
-        :param _IsAddedOnTheFifteen: 是否15天内新增的主机 0：非15天内新增的主机，1：15天内增加的主机
+        :param _IsAddedOnTheFifteen: <p>是否15天内新增的主机 0：非15天内新增的主机，1：15天内增加的主机</p>
         :type IsAddedOnTheFifteen: int
-        :param _IpList: 主机ip列表
+        :param _IpList: <p>主机ip列表</p>
         :type IpList: str
-        :param _VpcId: 所属网络
+        :param _VpcId: <p>所属网络</p>
         :type VpcId: str
-        :param _MachineExtraInfo: 附加信息
+        :param _MachineExtraInfo: <p>附加信息</p>
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Remark: 备注信息
+        :param _Remark: <p>备注信息</p>
         :type Remark: str
-        :param _AgentVersion: 主机安全agent版本
+        :param _AgentVersion: <p>主机安全agent版本</p>
         :type AgentVersion: str
+        :param _AppId: <p>机器对应APPID</p>
+        :type AppId: int
+        :param _CSIPProtectType: <p>安全中心付费版本</p>
+        :type CSIPProtectType: str
         """
         self._MachineName = None
         self._MachineOs = None
@@ -80224,10 +80221,12 @@ class Machine(AbstractModel):
         self._InstanceId = None
         self._Remark = None
         self._AgentVersion = None
+        self._AppId = None
+        self._CSIPProtectType = None
 
     @property
     def MachineName(self):
-        r"""主机名称。
+        r"""<p>主机名称。</p>
         :rtype: str
         """
         return self._MachineName
@@ -80238,7 +80237,7 @@ class Machine(AbstractModel):
 
     @property
     def MachineOs(self):
-        r"""主机系统。
+        r"""<p>主机系统。</p>
         :rtype: str
         """
         return self._MachineOs
@@ -80249,7 +80248,7 @@ class Machine(AbstractModel):
 
     @property
     def MachineStatus(self):
-        r"""主机状态。 <li>OFFLINE: 离线 </li> <li>ONLINE: 在线</li> <li>SHUTDOWN: 已关机</li> <li>UNINSTALLED: 未防护</li>	
+        r"""<p>主机状态。 <li>OFFLINE: 离线 </li> <li>ONLINE: 在线</li> <li>SHUTDOWN: 已关机</li> <li>UNINSTALLED: 未防护</li></p>
         :rtype: str
         """
         return self._MachineStatus
@@ -80260,7 +80259,7 @@ class Machine(AbstractModel):
 
     @property
     def AgentStatus(self):
-        r"""ONLINE 防护中; OFFLINE 已离线;UNINStALLED 未安装
+        r"""<p>ONLINE 防护中; OFFLINE 已离线;UNINStALLED 未安装</p>
         :rtype: str
         """
         return self._AgentStatus
@@ -80271,7 +80270,7 @@ class Machine(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""RUNNING 运行中; STOPED 已关机; EXPIRED 待回收	
+        r"""<p>RUNNING 运行中; STOPED 已关机; EXPIRED 待回收</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -80282,7 +80281,7 @@ class Machine(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""主机安全Uuid，若客户端长时间不在线将返回空字符。
+        r"""<p>主机安全Uuid，若客户端长时间不在线将返回空字符。</p>
         :rtype: str
         """
         return self._Uuid
@@ -80293,7 +80292,7 @@ class Machine(AbstractModel):
 
     @property
     def Quuid(self):
-        r"""CVM或BM机器唯一Uuid。
+        r"""<p>CVM或BM机器唯一Uuid。</p>
         :rtype: str
         """
         return self._Quuid
@@ -80304,7 +80303,7 @@ class Machine(AbstractModel):
 
     @property
     def VulNum(self):
-        r"""漏洞数。
+        r"""<p>漏洞数。</p>
         :rtype: int
         """
         return self._VulNum
@@ -80315,7 +80314,7 @@ class Machine(AbstractModel):
 
     @property
     def MachineIp(self):
-        r"""主机IP。
+        r"""<p>主机IP。</p>
         :rtype: str
         """
         return self._MachineIp
@@ -80326,9 +80325,7 @@ class Machine(AbstractModel):
 
     @property
     def IsProVersion(self):
-        r"""是否是专业版。
-<li>true： 是</li>
-<li>false：否</li>
+        r"""<p>是否是专业版。</p><li>true： 是</li><li>false：否</li>
         :rtype: bool
         """
         return self._IsProVersion
@@ -80339,7 +80336,7 @@ class Machine(AbstractModel):
 
     @property
     def MachineWanIp(self):
-        r"""主机外网IP。
+        r"""<p>主机外网IP。</p>
         :rtype: str
         """
         return self._MachineWanIp
@@ -80350,9 +80347,7 @@ class Machine(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""主机状态。
-<li>POSTPAY: 表示后付费，即按量计费  </li>
-<li>PREPAY: 表示预付费，即包年包月</li>
+        r"""<p>主机状态。</p><li>POSTPAY: 表示后付费，即按量计费  </li><li>PREPAY: 表示预付费，即包年包月</li>
         :rtype: str
         """
         return self._PayMode
@@ -80363,7 +80358,7 @@ class Machine(AbstractModel):
 
     @property
     def MalwareNum(self):
-        r"""木马数。
+        r"""<p>木马数。</p>
         :rtype: int
         """
         return self._MalwareNum
@@ -80374,7 +80369,7 @@ class Machine(AbstractModel):
 
     @property
     def Tag(self):
-        r"""标签信息
+        r"""<p>标签信息</p>
         :rtype: list of MachineTag
         """
         return self._Tag
@@ -80385,7 +80380,7 @@ class Machine(AbstractModel):
 
     @property
     def BaselineNum(self):
-        r"""基线风险数。
+        r"""<p>基线风险数。</p>
         :rtype: int
         """
         return self._BaselineNum
@@ -80396,7 +80391,7 @@ class Machine(AbstractModel):
 
     @property
     def CyberAttackNum(self):
-        r"""网络风险数。
+        r"""<p>网络风险数。</p>
         :rtype: int
         """
         return self._CyberAttackNum
@@ -80407,10 +80402,7 @@ class Machine(AbstractModel):
 
     @property
     def SecurityStatus(self):
-        r"""风险状态。
-<li>SAFE：安全</li>
-<li>RISK：风险</li>
-<li>UNKNOWN：未知</li>
+        r"""<p>风险状态。</p><li>SAFE：安全</li><li>RISK：风险</li><li>UNKNOWN：未知</li>
         :rtype: str
         """
         return self._SecurityStatus
@@ -80421,7 +80413,7 @@ class Machine(AbstractModel):
 
     @property
     def InvasionNum(self):
-        r"""入侵事件数
+        r"""<p>入侵事件数</p>
         :rtype: int
         """
         return self._InvasionNum
@@ -80432,7 +80424,7 @@ class Machine(AbstractModel):
 
     @property
     def RegionInfo(self):
-        r"""地域信息
+        r"""<p>地域信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.RegionInfo`
         """
         return self._RegionInfo
@@ -80443,7 +80435,7 @@ class Machine(AbstractModel):
 
     @property
     def InstanceState(self):
-        r"""实例状态 TERMINATED_PRO_VERSION 已销毁
+        r"""<p>实例状态 TERMINATED_PRO_VERSION 已销毁</p>
         :rtype: str
         """
         return self._InstanceState
@@ -80454,7 +80446,7 @@ class Machine(AbstractModel):
 
     @property
     def LicenseStatus(self):
-        r"""防篡改 授权状态 1 授权 0 未授权
+        r"""<p>防篡改 授权状态 1 授权 0 未授权</p>
         :rtype: int
         """
         return self._LicenseStatus
@@ -80465,7 +80457,7 @@ class Machine(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -80476,7 +80468,7 @@ class Machine(AbstractModel):
 
     @property
     def HasAssetScan(self):
-        r"""是否有资产扫描接口，0无，1有
+        r"""<p>是否有资产扫描接口，0无，1有</p>
         :rtype: int
         """
         return self._HasAssetScan
@@ -80487,7 +80479,7 @@ class Machine(AbstractModel):
 
     @property
     def MachineType(self):
-        r"""机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+        r"""<p>机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区</p>
         :rtype: str
         """
         return self._MachineType
@@ -80498,7 +80490,7 @@ class Machine(AbstractModel):
 
     @property
     def KernelVersion(self):
-        r"""内核版本
+        r"""<p>内核版本</p>
         :rtype: str
         """
         return self._KernelVersion
@@ -80509,7 +80501,7 @@ class Machine(AbstractModel):
 
     @property
     def ProtectType(self):
-        r"""防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版
+        r"""<p>防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版</p>
         :rtype: str
         """
         return self._ProtectType
@@ -80520,7 +80512,7 @@ class Machine(AbstractModel):
 
     @property
     def CloudTags(self):
-        r"""云标签信息
+        r"""<p>云标签信息</p>
         :rtype: list of Tags
         """
         return self._CloudTags
@@ -80531,7 +80523,7 @@ class Machine(AbstractModel):
 
     @property
     def IsAddedOnTheFifteen(self):
-        r"""是否15天内新增的主机 0：非15天内新增的主机，1：15天内增加的主机
+        r"""<p>是否15天内新增的主机 0：非15天内新增的主机，1：15天内增加的主机</p>
         :rtype: int
         """
         return self._IsAddedOnTheFifteen
@@ -80542,7 +80534,7 @@ class Machine(AbstractModel):
 
     @property
     def IpList(self):
-        r"""主机ip列表
+        r"""<p>主机ip列表</p>
         :rtype: str
         """
         return self._IpList
@@ -80553,7 +80545,7 @@ class Machine(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""所属网络
+        r"""<p>所属网络</p>
         :rtype: str
         """
         return self._VpcId
@@ -80564,7 +80556,7 @@ class Machine(AbstractModel):
 
     @property
     def MachineExtraInfo(self):
-        r"""附加信息
+        r"""<p>附加信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         """
         return self._MachineExtraInfo
@@ -80575,7 +80567,7 @@ class Machine(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -80586,7 +80578,7 @@ class Machine(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
         :rtype: str
         """
         return self._Remark
@@ -80597,7 +80589,7 @@ class Machine(AbstractModel):
 
     @property
     def AgentVersion(self):
-        r"""主机安全agent版本
+        r"""<p>主机安全agent版本</p>
         :rtype: str
         """
         return self._AgentVersion
@@ -80605,6 +80597,28 @@ class Machine(AbstractModel):
     @AgentVersion.setter
     def AgentVersion(self, AgentVersion):
         self._AgentVersion = AgentVersion
+
+    @property
+    def AppId(self):
+        r"""<p>机器对应APPID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CSIPProtectType(self):
+        r"""<p>安全中心付费版本</p>
+        :rtype: str
+        """
+        return self._CSIPProtectType
+
+    @CSIPProtectType.setter
+    def CSIPProtectType(self, CSIPProtectType):
+        self._CSIPProtectType = CSIPProtectType
 
 
     def _deserialize(self, params):
@@ -80656,6 +80670,8 @@ class Machine(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._Remark = params.get("Remark")
         self._AgentVersion = params.get("AgentVersion")
+        self._AppId = params.get("AppId")
+        self._CSIPProtectType = params.get("CSIPProtectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

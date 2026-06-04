@@ -29,6 +29,11 @@ def test_import_acp_v20220105():
     from tencentcloud.acp.v20220105 import models
 
 
+def test_import_adp_v20260520():
+    from tencentcloud.adp.v20260520 import adp_client
+    from tencentcloud.adp.v20260520 import models
+
+
 def test_import_advisor_v20200721():
     from tencentcloud.advisor.v20200721 import advisor_client
     from tencentcloud.advisor.v20200721 import models

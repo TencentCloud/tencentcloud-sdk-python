@@ -1078,7 +1078,7 @@ class InputCreateNameListFront(AbstractModel):
 
 
 class InputCryptoManageMarketingRisk(AbstractModel):
-    r"""全栈式风控引擎入参
+    r"""风险识别RCE入参
 
     """
 

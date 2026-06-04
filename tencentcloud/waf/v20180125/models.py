@@ -54011,26 +54011,29 @@ class QpsData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ElasticBillingDefault: 弹性qps默认值
+        :param _ElasticBillingDefault: <p>弹性qps默认值</p>
         :type ElasticBillingDefault: int
-        :param _ElasticBillingMin: 弹性qps最小值
+        :param _ElasticBillingMin: <p>弹性qps最小值</p>
         :type ElasticBillingMin: int
-        :param _ElasticBillingMax: 弹性qps最大值
+        :param _ElasticBillingMax: <p>弹性qps最大值</p>
         :type ElasticBillingMax: int
-        :param _QPSExtendMax: 业务扩展包最大qps
+        :param _QPSExtendMax: <p>业务扩展包最大qps</p>
         :type QPSExtendMax: int
-        :param _QPSExtendIntlMax: 境外业务扩展包最大qps
+        :param _QPSExtendIntlMax: <p>境外业务扩展包最大qps</p>
         :type QPSExtendIntlMax: int
+        :param _ElasticPrepaidRatio: <p>预付费/后付费QPS扩容比</p>
+        :type ElasticPrepaidRatio: float
         """
         self._ElasticBillingDefault = None
         self._ElasticBillingMin = None
         self._ElasticBillingMax = None
         self._QPSExtendMax = None
         self._QPSExtendIntlMax = None
+        self._ElasticPrepaidRatio = None
 
     @property
     def ElasticBillingDefault(self):
-        r"""弹性qps默认值
+        r"""<p>弹性qps默认值</p>
         :rtype: int
         """
         return self._ElasticBillingDefault
@@ -54041,7 +54044,7 @@ class QpsData(AbstractModel):
 
     @property
     def ElasticBillingMin(self):
-        r"""弹性qps最小值
+        r"""<p>弹性qps最小值</p>
         :rtype: int
         """
         return self._ElasticBillingMin
@@ -54052,7 +54055,7 @@ class QpsData(AbstractModel):
 
     @property
     def ElasticBillingMax(self):
-        r"""弹性qps最大值
+        r"""<p>弹性qps最大值</p>
         :rtype: int
         """
         return self._ElasticBillingMax
@@ -54063,7 +54066,7 @@ class QpsData(AbstractModel):
 
     @property
     def QPSExtendMax(self):
-        r"""业务扩展包最大qps
+        r"""<p>业务扩展包最大qps</p>
         :rtype: int
         """
         return self._QPSExtendMax
@@ -54074,7 +54077,7 @@ class QpsData(AbstractModel):
 
     @property
     def QPSExtendIntlMax(self):
-        r"""境外业务扩展包最大qps
+        r"""<p>境外业务扩展包最大qps</p>
         :rtype: int
         """
         return self._QPSExtendIntlMax
@@ -54083,6 +54086,17 @@ class QpsData(AbstractModel):
     def QPSExtendIntlMax(self, QPSExtendIntlMax):
         self._QPSExtendIntlMax = QPSExtendIntlMax
 
+    @property
+    def ElasticPrepaidRatio(self):
+        r"""<p>预付费/后付费QPS扩容比</p>
+        :rtype: float
+        """
+        return self._ElasticPrepaidRatio
+
+    @ElasticPrepaidRatio.setter
+    def ElasticPrepaidRatio(self, ElasticPrepaidRatio):
+        self._ElasticPrepaidRatio = ElasticPrepaidRatio
+
 
     def _deserialize(self, params):
         self._ElasticBillingDefault = params.get("ElasticBillingDefault")
@@ -54090,6 +54104,7 @@ class QpsData(AbstractModel):
         self._ElasticBillingMax = params.get("ElasticBillingMax")
         self._QPSExtendMax = params.get("QPSExtendMax")
         self._QPSExtendIntlMax = params.get("QPSExtendIntlMax")
+        self._ElasticPrepaidRatio = params.get("ElasticPrepaidRatio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

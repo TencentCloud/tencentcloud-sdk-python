@@ -118,6 +118,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseClusterNatFwSwitch(self, request):
+        r"""关闭NAT CCN集群模式防火墙开关
+
+        :param request: Request instance for CloseClusterNatFwSwitch.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CloseClusterNatFwSwitchRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CloseClusterNatFwSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseClusterNatFwSwitch", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseClusterNatFwSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAcRules(self, request):
         r"""创建访问控制规则
 
@@ -994,6 +1017,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterNatCcnFwSwitchList(self, request):
+        r"""查询NAT CCN集群模式防火墙开关列表
+
+        :param request: Request instance for DescribeClusterNatCcnFwSwitchList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeClusterNatCcnFwSwitchListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeClusterNatCcnFwSwitchListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterNatCcnFwSwitchList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterNatCcnFwSwitchListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterVpcFwSwitchs(self, request):
         r"""查询集群模式Vpc间防火墙开关
 
@@ -1353,6 +1399,52 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeNatAcRule", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNatAcRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeNatCcnFwSwitch(self, request):
+        r"""查询NAT CCN防火墙开关配置
+
+        :param request: Request instance for DescribeNatCcnFwSwitch.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatCcnFwSwitchRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNatCcnFwSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNatCcnFwSwitch", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNatCcnFwSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeNatFwClusterRegionStatus(self, request):
+        r"""查询指定NAT所在地域是否有NAT防火墙引流集群
+
+        :param request: Request instance for DescribeNatFwClusterRegionStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwClusterRegionStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNatFwClusterRegionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNatFwClusterRegionStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNatFwClusterRegionStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2147,6 +2239,52 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterFwBypass(self, request):
+        r"""修改集群防火墙Bypass状态
+
+        :param request: Request instance for ModifyClusterFwBypass.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyClusterFwBypassRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyClusterFwBypassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterFwBypass", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterFwBypassResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterNatFwSwitch(self, request):
+        r"""修改NAT CCN集群模式防火墙开关配置
+
+        :param request: Request instance for ModifyClusterNatFwSwitch.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyClusterNatFwSwitchRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyClusterNatFwSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterNatFwSwitch", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterNatFwSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterVpcFwSwitch(self, request):
         r"""修改集群模式VPC防火墙开关
 
@@ -2714,6 +2852,29 @@ class CfwClient(AbstractClient):
             body = self.call("ModifyVpcFwSequenceRules", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyVpcFwSequenceRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenClusterNatFwSwitch(self, request):
+        r"""开启NAT CCN集群模式防火墙开关
+
+        :param request: Request instance for OpenClusterNatFwSwitch.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.OpenClusterNatFwSwitchRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OpenClusterNatFwSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenClusterNatFwSwitch", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenClusterNatFwSwitchResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
