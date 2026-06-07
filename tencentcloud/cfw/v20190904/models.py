@@ -2155,22 +2155,21 @@ class CfwInsStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CfwInsId: 防火墙实例id
+        :param _CfwInsId: <p>防火墙实例id</p>
         :type CfwInsId: str
-        :param _FwType: 防火墙类型，nat：nat防火墙；ew：vpc间防火墙
+        :param _FwType: <p>防火墙类型，nat：nat防火墙；ew：vpc间防火墙</p>
         :type FwType: str
-        :param _Region: 实例所属地域
+        :param _Region: <p>实例所属地域</p>
         :type Region: str
-        :param _Status: 实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中
+        :param _Status: <p>实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中；BypassTcDrop：丢包触发bypass中</p><p>枚举值：</p><ul><li>Running： 正常运行</li><li>BypassAutoFix： 自动bypass已修复</li><li>Updating： 实例升级中</li><li>Expand： 实例扩容中</li><li>BypassManual： 手动触发bypass中</li><li>BypassAuto： 自动触发bypass中</li><li>BypassTcDrop： 丢包触发bypass中</li></ul>
         :type Status: str
-        :param _EventTime: 事件时间
+        :param _EventTime: <p>事件时间</p>
         :type EventTime: str
-        :param _RecoverTime: 恢复时间
+        :param _RecoverTime: <p>恢复时间</p>
         :type RecoverTime: str
-        :param _CfwInsName: 实例名称
+        :param _CfwInsName: <p>实例名称</p>
         :type CfwInsName: str
-        :param _TrafficMode: Normal: 正常模式
-OnlyRoute: 透明模式
+        :param _TrafficMode: <p>Normal: 正常模式<br>OnlyRoute: 透明模式</p>
         :type TrafficMode: str
         """
         self._CfwInsId = None
@@ -2184,7 +2183,7 @@ OnlyRoute: 透明模式
 
     @property
     def CfwInsId(self):
-        r"""防火墙实例id
+        r"""<p>防火墙实例id</p>
         :rtype: str
         """
         return self._CfwInsId
@@ -2195,7 +2194,7 @@ OnlyRoute: 透明模式
 
     @property
     def FwType(self):
-        r"""防火墙类型，nat：nat防火墙；ew：vpc间防火墙
+        r"""<p>防火墙类型，nat：nat防火墙；ew：vpc间防火墙</p>
         :rtype: str
         """
         return self._FwType
@@ -2206,7 +2205,7 @@ OnlyRoute: 透明模式
 
     @property
     def Region(self):
-        r"""实例所属地域
+        r"""<p>实例所属地域</p>
         :rtype: str
         """
         return self._Region
@@ -2217,7 +2216,7 @@ OnlyRoute: 透明模式
 
     @property
     def Status(self):
-        r"""实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中
+        r"""<p>实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中；BypassTcDrop：丢包触发bypass中</p><p>枚举值：</p><ul><li>Running： 正常运行</li><li>BypassAutoFix： 自动bypass已修复</li><li>Updating： 实例升级中</li><li>Expand： 实例扩容中</li><li>BypassManual： 手动触发bypass中</li><li>BypassAuto： 自动触发bypass中</li><li>BypassTcDrop： 丢包触发bypass中</li></ul>
         :rtype: str
         """
         return self._Status
@@ -2228,7 +2227,7 @@ OnlyRoute: 透明模式
 
     @property
     def EventTime(self):
-        r"""事件时间
+        r"""<p>事件时间</p>
         :rtype: str
         """
         return self._EventTime
@@ -2239,7 +2238,7 @@ OnlyRoute: 透明模式
 
     @property
     def RecoverTime(self):
-        r"""恢复时间
+        r"""<p>恢复时间</p>
         :rtype: str
         """
         return self._RecoverTime
@@ -2250,7 +2249,7 @@ OnlyRoute: 透明模式
 
     @property
     def CfwInsName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._CfwInsName
@@ -2261,8 +2260,7 @@ OnlyRoute: 透明模式
 
     @property
     def TrafficMode(self):
-        r"""Normal: 正常模式
-OnlyRoute: 透明模式
+        r"""<p>Normal: 正常模式<br>OnlyRoute: 透明模式</p>
         :rtype: str
         """
         return self._TrafficMode
@@ -5014,35 +5012,35 @@ class CreateNatRuleItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceContent: 访问源示例： net：IP/CIDR(192.168.0.2)
+        :param _SourceContent: <p>访问源示例： net：IP/CIDR(192.168.0.2)</p>
         :type SourceContent: str
-        :param _SourceType: 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
+        :param _SourceType: <p>访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag</p>
         :type SourceType: str
-        :param _TargetContent: 访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com
+        :param _TargetContent: <p>访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com</p>
         :type TargetContent: str
-        :param _TargetType: 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location
+        :param _TargetType: <p>访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location</p>
         :type TargetType: str
-        :param _Protocol: 协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS
+        :param _Protocol: <p>协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS</p>
         :type Protocol: str
-        :param _RuleAction: 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
+        :param _RuleAction: <p>访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察</p>
         :type RuleAction: str
-        :param _Port: 访问控制策略的端口。取值： -1/-1：全部端口 80：80端口
+        :param _Port: <p>访问控制策略的端口。取值： -1/-1：全部端口 80：80端口</p>
         :type Port: str
-        :param _Direction: 规则方向：1，入站；0，出站
+        :param _Direction: <p>规则方向：1，入站；0，出站</p>
         :type Direction: int
-        :param _OrderIndex: 规则序号
+        :param _OrderIndex: <p>规则序号</p>
         :type OrderIndex: int
-        :param _Enable: 规则状态，true表示启用，false表示禁用
+        :param _Enable: <p>规则状态，true表示启用，false表示禁用</p>
         :type Enable: str
-        :param _Uuid: 规则对应的唯一id，创建规则时无需填写
+        :param _Uuid: <p>规则对应的唯一id，创建规则AddNatAcRule时无需填写；修改规则ModifyNatAcRule时必须填写</p><p>创建规则AddNatAcRule时无需填写；修改规则ModifyNatAcRule时必须填写</p>
         :type Uuid: int
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _ParamTemplateId: 端口协议组ID
+        :param _ParamTemplateId: <p>端口协议组ID</p>
         :type ParamTemplateId: str
-        :param _InternalUuid: 内部id
+        :param _InternalUuid: <p>内部id</p>
         :type InternalUuid: int
-        :param _Scope: 规则生效的范围：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度
+        :param _Scope: <p>规则生效的范围：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度</p>
         :type Scope: str
         """
         self._SourceContent = None
@@ -5063,7 +5061,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def SourceContent(self):
-        r"""访问源示例： net：IP/CIDR(192.168.0.2)
+        r"""<p>访问源示例： net：IP/CIDR(192.168.0.2)</p>
         :rtype: str
         """
         return self._SourceContent
@@ -5074,7 +5072,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
+        r"""<p>访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag</p>
         :rtype: str
         """
         return self._SourceType
@@ -5085,7 +5083,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def TargetContent(self):
-        r"""访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com
+        r"""<p>访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com</p>
         :rtype: str
         """
         return self._TargetContent
@@ -5096,7 +5094,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location
+        r"""<p>访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location</p>
         :rtype: str
         """
         return self._TargetType
@@ -5107,7 +5105,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS
+        r"""<p>协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS</p>
         :rtype: str
         """
         return self._Protocol
@@ -5118,7 +5116,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def RuleAction(self):
-        r"""访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
+        r"""<p>访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察</p>
         :rtype: str
         """
         return self._RuleAction
@@ -5129,7 +5127,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Port(self):
-        r"""访问控制策略的端口。取值： -1/-1：全部端口 80：80端口
+        r"""<p>访问控制策略的端口。取值： -1/-1：全部端口 80：80端口</p>
         :rtype: str
         """
         return self._Port
@@ -5140,7 +5138,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Direction(self):
-        r"""规则方向：1，入站；0，出站
+        r"""<p>规则方向：1，入站；0，出站</p>
         :rtype: int
         """
         return self._Direction
@@ -5151,7 +5149,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def OrderIndex(self):
-        r"""规则序号
+        r"""<p>规则序号</p>
         :rtype: int
         """
         return self._OrderIndex
@@ -5162,7 +5160,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Enable(self):
-        r"""规则状态，true表示启用，false表示禁用
+        r"""<p>规则状态，true表示启用，false表示禁用</p>
         :rtype: str
         """
         return self._Enable
@@ -5173,7 +5171,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""规则对应的唯一id，创建规则时无需填写
+        r"""<p>规则对应的唯一id，创建规则AddNatAcRule时无需填写；修改规则ModifyNatAcRule时必须填写</p><p>创建规则AddNatAcRule时无需填写；修改规则ModifyNatAcRule时必须填写</p>
         :rtype: int
         """
         return self._Uuid
@@ -5184,7 +5182,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -5195,7 +5193,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""端口协议组ID
+        r"""<p>端口协议组ID</p>
         :rtype: str
         """
         return self._ParamTemplateId
@@ -5206,7 +5204,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def InternalUuid(self):
-        r"""内部id
+        r"""<p>内部id</p>
         :rtype: int
         """
         return self._InternalUuid
@@ -5217,7 +5215,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Scope(self):
-        r"""规则生效的范围：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度
+        r"""<p>规则生效的范围：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度</p>
         :rtype: str
         """
         return self._Scope

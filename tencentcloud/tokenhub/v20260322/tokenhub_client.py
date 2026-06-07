@@ -149,6 +149,31 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeModelList(self, request):
+        r"""查询模型列表。
+
+        支持按模型 ID、模型名称、模型能力等条件筛选，支持分页和排序。
+
+        :param request: Request instance for DescribeModelList.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeModelListRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeModelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModelList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModelListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTokenPlan(self, request):
         r"""查询 TokenPlan 套餐详情。
 

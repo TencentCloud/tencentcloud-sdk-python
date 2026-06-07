@@ -56910,13 +56910,13 @@ class SwitchClusterZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群Id
+        :param _ClusterId: <p>集群Id</p>
         :type ClusterId: str
-        :param _OldZone: 当前可用区
+        :param _OldZone: <p>当前可用区</p>
         :type OldZone: str
-        :param _NewZone: 要切换到的可用区
+        :param _NewZone: <p>要切换到的可用区</p>
         :type NewZone: str
-        :param _IsInMaintainPeriod: 维护期间执行-yes,立即执行-no
+        :param _IsInMaintainPeriod: <p>维护期间执行-yes,立即执行-no</p>
         :type IsInMaintainPeriod: str
         """
         self._ClusterId = None
@@ -56926,7 +56926,7 @@ class SwitchClusterZoneRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群Id
+        r"""<p>集群Id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -56937,7 +56937,7 @@ class SwitchClusterZoneRequest(AbstractModel):
 
     @property
     def OldZone(self):
-        r"""当前可用区
+        r"""<p>当前可用区</p>
         :rtype: str
         """
         return self._OldZone
@@ -56948,7 +56948,7 @@ class SwitchClusterZoneRequest(AbstractModel):
 
     @property
     def NewZone(self):
-        r"""要切换到的可用区
+        r"""<p>要切换到的可用区</p>
         :rtype: str
         """
         return self._NewZone
@@ -56959,7 +56959,7 @@ class SwitchClusterZoneRequest(AbstractModel):
 
     @property
     def IsInMaintainPeriod(self):
-        r"""维护期间执行-yes,立即执行-no
+        r"""<p>维护期间执行-yes,立即执行-no</p>
         :rtype: str
         """
         return self._IsInMaintainPeriod
@@ -56991,17 +56991,31 @@ class SwitchClusterZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步FlowId
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: int
+        :param _FlowId: <p>异步FlowId</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._FlowId = None
         self._RequestId = None
 
     @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
     def FlowId(self):
-        r"""异步FlowId
+        r"""<p>异步FlowId</p>
         :rtype: int
         """
         return self._FlowId
@@ -57023,6 +57037,7 @@ class SwitchClusterZoneResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 

@@ -22770,11 +22770,13 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SubAppId: <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: int
         :param _ModelName: <p>模型名称。</p>
         :type ModelName: str
         :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p>
         :type ModelVersion: str
-        :param _SceneType: <p>指定场景，目前支持sfx（音效）。</p>
+        :param _SceneType: <p>指定场景，目前支持sfx（音效）、music（音乐）。</p>
         :type SceneType: str
         :param _Prompt: <p>生成音频的描述</p>
         :type Prompt: str
@@ -22787,6 +22789,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例：<br>{"camera_control":{"type":"simple"}}</p>
         :type AdditionalParameters: str
         """
+        self._SubAppId = None
         self._ModelName = None
         self._ModelVersion = None
         self._SceneType = None
@@ -22795,6 +22798,17 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         self._AudioInfos = None
         self._OutputConfig = None
         self._AdditionalParameters = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
 
     @property
     def ModelName(self):
@@ -22820,7 +22834,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""<p>指定场景，目前支持sfx（音效）。</p>
+        r"""<p>指定场景，目前支持sfx（音效）、music（音乐）。</p>
         :rtype: str
         """
         return self._SceneType
@@ -22886,6 +22900,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
         self._ModelName = params.get("ModelName")
         self._ModelVersion = params.get("ModelVersion")
         self._SceneType = params.get("SceneType")
@@ -34574,12 +34589,15 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         :type SubAppId: int
         :param _APIKey: <p>API Key</p>
         :type APIKey: str
+        :param _APIKeys: <p>API Key</p>
+        :type APIKeys: list of str
         """
         self._StartTime = None
         self._EndTime = None
         self._AigcType = None
         self._SubAppId = None
         self._APIKey = None
+        self._APIKeys = None
 
     @property
     def StartTime(self):
@@ -34636,6 +34654,17 @@ class DescribeAigcUsageDataRequest(AbstractModel):
     def APIKey(self, APIKey):
         self._APIKey = APIKey
 
+    @property
+    def APIKeys(self):
+        r"""<p>API Key</p>
+        :rtype: list of str
+        """
+        return self._APIKeys
+
+    @APIKeys.setter
+    def APIKeys(self, APIKeys):
+        self._APIKeys = APIKeys
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -34643,6 +34672,7 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         self._AigcType = params.get("AigcType")
         self._SubAppId = params.get("SubAppId")
         self._APIKey = params.get("APIKey")
+        self._APIKeys = params.get("APIKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

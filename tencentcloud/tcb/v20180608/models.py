@@ -9860,20 +9860,22 @@ class DescribeUserListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境id
+        :param _EnvId: <p>环境id</p>
         :type EnvId: str
-        :param _PageNo: 页码，从1开始，默认1
+        :param _PageNo: <p>页码，从1开始，默认1</p>
         :type PageNo: int
-        :param _PageSize: 每页数量，默认20，最大100
+        :param _PageSize: <p>每页数量，默认20，最大100</p>
         :type PageSize: int
-        :param _Name: 用户名，模糊查询
+        :param _Name: <p>用户名，模糊查询</p>
         :type Name: str
-        :param _NickName: 用户昵称，模糊查询
+        :param _NickName: <p>用户昵称，模糊查询</p>
         :type NickName: str
-        :param _Phone: 手机号，模糊查询
+        :param _Phone: <p>手机号，模糊查询</p>
         :type Phone: str
-        :param _Email: 邮箱，模糊查询
+        :param _Email: <p>邮箱，模糊查询</p>
         :type Email: str
+        :param _UidList: <p>用户id列表，根据id过滤用户</p>
+        :type UidList: list of str
         """
         self._EnvId = None
         self._PageNo = None
@@ -9882,10 +9884,11 @@ class DescribeUserListRequest(AbstractModel):
         self._NickName = None
         self._Phone = None
         self._Email = None
+        self._UidList = None
 
     @property
     def EnvId(self):
-        r"""环境id
+        r"""<p>环境id</p>
         :rtype: str
         """
         return self._EnvId
@@ -9896,7 +9899,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        r"""页码，从1开始，默认1
+        r"""<p>页码，从1开始，默认1</p>
         :rtype: int
         """
         return self._PageNo
@@ -9907,7 +9910,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量，默认20，最大100
+        r"""<p>每页数量，默认20，最大100</p>
         :rtype: int
         """
         return self._PageSize
@@ -9918,7 +9921,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""用户名，模糊查询
+        r"""<p>用户名，模糊查询</p>
         :rtype: str
         """
         return self._Name
@@ -9929,7 +9932,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def NickName(self):
-        r"""用户昵称，模糊查询
+        r"""<p>用户昵称，模糊查询</p>
         :rtype: str
         """
         return self._NickName
@@ -9940,7 +9943,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def Phone(self):
-        r"""手机号，模糊查询
+        r"""<p>手机号，模糊查询</p>
         :rtype: str
         """
         return self._Phone
@@ -9951,7 +9954,7 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def Email(self):
-        r"""邮箱，模糊查询
+        r"""<p>邮箱，模糊查询</p>
         :rtype: str
         """
         return self._Email
@@ -9959,6 +9962,17 @@ class DescribeUserListRequest(AbstractModel):
     @Email.setter
     def Email(self, Email):
         self._Email = Email
+
+    @property
+    def UidList(self):
+        r"""<p>用户id列表，根据id过滤用户</p>
+        :rtype: list of str
+        """
+        return self._UidList
+
+    @UidList.setter
+    def UidList(self, UidList):
+        self._UidList = UidList
 
 
     def _deserialize(self, params):
@@ -9969,6 +9983,7 @@ class DescribeUserListRequest(AbstractModel):
         self._NickName = params.get("NickName")
         self._Phone = params.get("Phone")
         self._Email = params.get("Email")
+        self._UidList = params.get("UidList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10042,7 +10057,7 @@ class DescribeUserListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 结果返回
+        :param _Data: <p>结果返回</p>
         :type Data: :class:`tencentcloud.tcb.v20180608.models.DescribeUserListResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10052,7 +10067,7 @@ class DescribeUserListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""结果返回
+        r"""<p>结果返回</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeUserListResp`
         """
         return self._Data

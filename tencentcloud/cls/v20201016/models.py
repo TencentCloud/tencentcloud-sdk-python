@@ -31496,6 +31496,55 @@ class GetAlarmLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetClsServiceRequest(AbstractModel):
+    r"""GetClsService请求参数结构体
+
+    """
+
+
+class GetClsServiceResponse(AbstractModel):
+    r"""GetClsService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 账户服务开通状态，0:服务已开通，1:服务未开通
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""账户服务开通状态，0:服务已开通，1:服务未开通
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class GetMetricLabelValuesRequest(AbstractModel):
     r"""GetMetricLabelValues请求参数结构体
 
@@ -44789,6 +44838,40 @@ class OpenClawServiceResponse(AbstractModel):
         self._SessionLogConfigName = params.get("SessionLogConfigName")
         self._TraceTopicId = params.get("TraceTopicId")
         self._TraceTopicName = params.get("TraceTopicName")
+        self._RequestId = params.get("RequestId")
+
+
+class OpenClsServiceRequest(AbstractModel):
+    r"""OpenClsService请求参数结构体
+
+    """
+
+
+class OpenClsServiceResponse(AbstractModel):
+    r"""OpenClsService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

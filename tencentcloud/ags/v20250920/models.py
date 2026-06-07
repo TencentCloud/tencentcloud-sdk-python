@@ -2750,9 +2750,9 @@ class ResourceConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CPU: cpu 资源量
+        :param _CPU: <p>cpu 资源量</p>
         :type CPU: str
-        :param _Memory: 内存资源量
+        :param _Memory: <p>内存资源量</p>
         :type Memory: str
         """
         self._CPU = None
@@ -2760,7 +2760,7 @@ class ResourceConfiguration(AbstractModel):
 
     @property
     def CPU(self):
-        r"""cpu 资源量
+        r"""<p>cpu 资源量</p>
         :rtype: str
         """
         return self._CPU
@@ -2771,7 +2771,7 @@ class ResourceConfiguration(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存资源量
+        r"""<p>内存资源量</p>
         :rtype: str
         """
         return self._Memory

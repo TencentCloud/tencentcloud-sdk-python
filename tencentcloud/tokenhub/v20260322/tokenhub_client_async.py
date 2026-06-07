@@ -123,6 +123,26 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeModelList(
+            self,
+            request: models.DescribeModelListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelListResponse:
+        """
+        查询模型列表。
+
+        支持按模型 ID、模型名称、模型能力等条件筛选，支持分页和排序。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTokenPlan(
             self,
             request: models.DescribeTokenPlanRequest,

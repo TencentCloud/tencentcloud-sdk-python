@@ -999,31 +999,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def HmtResidentPermitOCR(self, request):
-        r"""港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证号、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息识别场景，例如银行开户、用户注册等。
-
-        默认接口请求频率限制：20次/秒。
-
-        :param request: Request instance for HmtResidentPermitOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.HmtResidentPermitOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.HmtResidentPermitOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("HmtResidentPermitOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.HmtResidentPermitOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def IDCardOCR(self, request):
         r"""本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限，识别准确度达到99%以上。
 

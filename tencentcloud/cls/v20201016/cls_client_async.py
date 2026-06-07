@@ -2579,6 +2579,25 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetClsService(
+            self,
+            request: models.GetClsServiceRequest,
+            opts: Dict = None,
+    ) -> models.GetClsServiceResponse:
+        """
+        查询日志服务是否开通
+        API 中 Region 填写任意一个地域均可，建议使用广州(ap-guangzhou)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetClsService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetClsServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetMetricLabelValues(
             self,
             request: models.GetMetricLabelValuesRequest,
@@ -3259,6 +3278,25 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "OpenClawService"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.OpenClawServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenClsService(
+            self,
+            request: models.OpenClsServiceRequest,
+            opts: Dict = None,
+    ) -> models.OpenClsServiceResponse:
+        """
+        开通日志服务
+        API 中 Region 填写任意一个地域均可开通所有地域的 CLS，建议使用广州(ap-guangzhou)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenClsService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenClsServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

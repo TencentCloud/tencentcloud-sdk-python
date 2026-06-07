@@ -838,26 +838,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def HmtResidentPermitOCR(
-            self,
-            request: models.HmtResidentPermitOCRRequest,
-            opts: Dict = None,
-    ) -> models.HmtResidentPermitOCRResponse:
-        """
-        港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证号、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息识别场景，例如银行开户、用户注册等。
-
-        默认接口请求频率限制：20次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "HmtResidentPermitOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.HmtResidentPermitOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def IDCardOCR(
             self,
             request: models.IDCardOCRRequest,

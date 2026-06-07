@@ -3280,6 +3280,30 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetClsService(self, request):
+        r"""查询日志服务是否开通
+        API 中 Region 填写任意一个地域均可，建议使用广州(ap-guangzhou)
+
+        :param request: Request instance for GetClsService.
+        :type request: :class:`tencentcloud.cls.v20201016.models.GetClsServiceRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.GetClsServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetClsService", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetClsServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetMetricLabelValues(self, request):
         r"""获取时序label values列表
 
@@ -4146,6 +4170,30 @@ class ClsClient(AbstractClient):
             body = self.call("OpenClawService", params, headers=headers)
             response = json.loads(body)
             model = models.OpenClawServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenClsService(self, request):
+        r"""开通日志服务
+        API 中 Region 填写任意一个地域均可开通所有地域的 CLS，建议使用广州(ap-guangzhou)
+
+        :param request: Request instance for OpenClsService.
+        :type request: :class:`tencentcloud.cls.v20201016.models.OpenClsServiceRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.OpenClsServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenClsService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenClsServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

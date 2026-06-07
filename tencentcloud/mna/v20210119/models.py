@@ -8292,13 +8292,13 @@ class ReportOrderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderId: 订单编号唯一标识符
+        :param _OrderId: <p>订单编号唯一标识符</p>
         :type OrderId: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: str
-        :param _PackageType: 用量类型
+        :param _PackageType: <p>用量类型</p>
         :type PackageType: str
-        :param _ReportMonth: 上报月份，默认当前月
+        :param _ReportMonth: <p>上报月份，默认当前月</p>
         :type ReportMonth: str
         """
         self._OrderId = None
@@ -8308,7 +8308,7 @@ class ReportOrderRequest(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""订单编号唯一标识符
+        r"""<p>订单编号唯一标识符</p>
         :rtype: str
         """
         return self._OrderId
@@ -8319,7 +8319,7 @@ class ReportOrderRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -8330,7 +8330,7 @@ class ReportOrderRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        r"""用量类型
+        r"""<p>用量类型</p>
         :rtype: str
         """
         return self._PackageType
@@ -8341,7 +8341,7 @@ class ReportOrderRequest(AbstractModel):
 
     @property
     def ReportMonth(self):
-        r"""上报月份，默认当前月
+        r"""<p>上报月份，默认当前月</p>
         :rtype: str
         """
         return self._ReportMonth
@@ -8373,7 +8373,7 @@ class ReportOrderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderInfo: 订单信息
+        :param _OrderInfo: <p>订单信息</p>
         :type OrderInfo: :class:`tencentcloud.mna.v20210119.models.OrderInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8383,7 +8383,7 @@ class ReportOrderResponse(AbstractModel):
 
     @property
     def OrderInfo(self):
-        r"""订单信息
+        r"""<p>订单信息</p>
         :rtype: :class:`tencentcloud.mna.v20210119.models.OrderInfo`
         """
         return self._OrderInfo

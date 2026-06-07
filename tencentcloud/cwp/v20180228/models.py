@@ -20393,14 +20393,14 @@ class DeleteMachineClearHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ids: 需要删除的记录id值,最大长度100个
+        :param _Ids: <p>需要删除的记录id值,最大长度100个</p>
         :type Ids: list of int non-negative
         """
         self._Ids = None
 
     @property
     def Ids(self):
-        r"""需要删除的记录id值,最大长度100个
+        r"""<p>需要删除的记录id值,最大长度100个</p>
         :rtype: list of int non-negative
         """
         return self._Ids
@@ -30820,9 +30820,9 @@ class DescribeBanModeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断
+        :param _Mode: <p>阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断</p>
         :type Mode: str
-        :param _StandardModeConfig: 标准阻断模式的配置
+        :param _StandardModeConfig: <p>标准阻断模式的配置</p>
         :type StandardModeConfig: :class:`tencentcloud.cwp.v20180228.models.StandardModeConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30833,7 +30833,7 @@ class DescribeBanModeResponse(AbstractModel):
 
     @property
     def Mode(self):
-        r"""阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断
+        r"""<p>阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断</p>
         :rtype: str
         """
         return self._Mode
@@ -30844,7 +30844,7 @@ class DescribeBanModeResponse(AbstractModel):
 
     @property
     def StandardModeConfig(self):
-        r"""标准阻断模式的配置
+        r"""<p>标准阻断模式的配置</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.StandardModeConfig`
         """
         return self._StandardModeConfig
@@ -30970,17 +30970,17 @@ class DescribeBanStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: (已废弃) 阻断开关状态: 0 -- 关闭  1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)
+        :param _Status: <p>(已废弃) 阻断开关状态: 0 -- 关闭  1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)</p>
         :type Status: int
-        :param _ShowTips: 是否弹窗提示信息 false: 关闭，true: 开启
+        :param _ShowTips: <p>是否弹窗提示信息 false: 关闭，true: 开启</p>
         :type ShowTips: bool
-        :param _OpenSmartMode: 是否开启智能过白模式
+        :param _OpenSmartMode: <p>是否开启智能过白模式</p>
         :type OpenSmartMode: bool
-        :param _BanBlackIp: 是否开启情报IP阻断
+        :param _BanBlackIp: <p>是否开启情报IP阻断</p>
         :type BanBlackIp: bool
-        :param _BanVulIp: 是否开启漏洞IP阻断
+        :param _BanVulIp: <p>是否开启漏洞IP阻断</p>
         :type BanVulIp: bool
-        :param _BanByRule: 是否开启规则阻断
+        :param _BanByRule: <p>是否开启规则阻断</p>
         :type BanByRule: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30995,7 +30995,7 @@ class DescribeBanStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""(已废弃) 阻断开关状态: 0 -- 关闭  1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)
+        r"""<p>(已废弃) 阻断开关状态: 0 -- 关闭  1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)</p>
         :rtype: int
         """
         return self._Status
@@ -31006,7 +31006,7 @@ class DescribeBanStatusResponse(AbstractModel):
 
     @property
     def ShowTips(self):
-        r"""是否弹窗提示信息 false: 关闭，true: 开启
+        r"""<p>是否弹窗提示信息 false: 关闭，true: 开启</p>
         :rtype: bool
         """
         return self._ShowTips
@@ -31017,7 +31017,7 @@ class DescribeBanStatusResponse(AbstractModel):
 
     @property
     def OpenSmartMode(self):
-        r"""是否开启智能过白模式
+        r"""<p>是否开启智能过白模式</p>
         :rtype: bool
         """
         return self._OpenSmartMode
@@ -31028,7 +31028,7 @@ class DescribeBanStatusResponse(AbstractModel):
 
     @property
     def BanBlackIp(self):
-        r"""是否开启情报IP阻断
+        r"""<p>是否开启情报IP阻断</p>
         :rtype: bool
         """
         return self._BanBlackIp
@@ -31039,7 +31039,7 @@ class DescribeBanStatusResponse(AbstractModel):
 
     @property
     def BanVulIp(self):
-        r"""是否开启漏洞IP阻断
+        r"""<p>是否开启漏洞IP阻断</p>
         :rtype: bool
         """
         return self._BanVulIp
@@ -31050,7 +31050,7 @@ class DescribeBanStatusResponse(AbstractModel):
 
     @property
     def BanByRule(self):
-        r"""是否开启规则阻断
+        r"""<p>是否开启规则阻断</p>
         :rtype: bool
         """
         return self._BanByRule
@@ -36530,7 +36530,7 @@ class DescribeBruteAttackRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 爆破阻断规则列表
+        :param _Rules: <p>爆破阻断规则列表</p>
         :type Rules: list of BruteAttackRuleList
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -36540,7 +36540,7 @@ class DescribeBruteAttackRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        r"""爆破阻断规则列表
+        r"""<p>爆破阻断规则列表</p>
         :rtype: list of BruteAttackRuleList
         """
         return self._Rules
@@ -42765,21 +42765,21 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 是否开启防卸载 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li>
+        :param _Enable: <p>是否开启防卸载 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li></p>
         :type Enable: int
-        :param _Scope: 开启范围 <li>0 自选主机</li> <li>1 全部主机</li>
+        :param _Scope: <p>开启范围 <li>0 自选主机</li> <li>1 全部主机</li></p>
         :type Scope: int
-        :param _IncludeHostCount: 正选主机配置数
+        :param _IncludeHostCount: <p>正选主机配置数</p>
         :type IncludeHostCount: int
-        :param _ExcludeHostCount: 反选主机配置数
+        :param _ExcludeHostCount: <p>反选主机配置数</p>
         :type ExcludeHostCount: int
-        :param _IncludeQuuid: 正选quuid配置列表
+        :param _IncludeQuuid: <p>正选quuid配置列表</p>
         :type IncludeQuuid: list of str
-        :param _ExcludeQuuid: 反选quuid配置列表
+        :param _ExcludeQuuid: <p>反选quuid配置列表</p>
         :type ExcludeQuuid: list of str
-        :param _EnableCount: 已开启机器数
+        :param _EnableCount: <p>已开启机器数</p>
         :type EnableCount: int
-        :param _DisableCount: 未启机器数
+        :param _DisableCount: <p>未启机器数</p>
         :type DisableCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -42796,7 +42796,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def Enable(self):
-        r"""是否开启防卸载 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li>
+        r"""<p>是否开启防卸载 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li></p>
         :rtype: int
         """
         return self._Enable
@@ -42807,7 +42807,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def Scope(self):
-        r"""开启范围 <li>0 自选主机</li> <li>1 全部主机</li>
+        r"""<p>开启范围 <li>0 自选主机</li> <li>1 全部主机</li></p>
         :rtype: int
         """
         return self._Scope
@@ -42818,7 +42818,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def IncludeHostCount(self):
-        r"""正选主机配置数
+        r"""<p>正选主机配置数</p>
         :rtype: int
         """
         return self._IncludeHostCount
@@ -42829,7 +42829,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def ExcludeHostCount(self):
-        r"""反选主机配置数
+        r"""<p>反选主机配置数</p>
         :rtype: int
         """
         return self._ExcludeHostCount
@@ -42840,7 +42840,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def IncludeQuuid(self):
-        r"""正选quuid配置列表
+        r"""<p>正选quuid配置列表</p>
         :rtype: list of str
         """
         return self._IncludeQuuid
@@ -42851,7 +42851,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def ExcludeQuuid(self):
-        r"""反选quuid配置列表
+        r"""<p>反选quuid配置列表</p>
         :rtype: list of str
         """
         return self._ExcludeQuuid
@@ -42862,7 +42862,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def EnableCount(self):
-        r"""已开启机器数
+        r"""<p>已开启机器数</p>
         :rtype: int
         """
         return self._EnableCount
@@ -42873,7 +42873,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def DisableCount(self):
-        r"""未启机器数
+        r"""<p>未启机器数</p>
         :rtype: int
         """
         return self._DisableCount
@@ -42915,13 +42915,13 @@ class DescribeLoginTypeHostRequest(AbstractModel):
         r"""
         :param _Filters: <li>Name - string - 是否必填：否 - 主机名</li> <li>InstanceId - string - 是否必填：否 - 实例ID</li> <li>PublicIp - string - 是否必填：否 - 公网IP</li> <li>PrivateIp - string - 是否必填：否 - 私网IP</li>
         :type Filters: list of Filter
-        :param _Limit: 限制条数,默认10,最大100
+        :param _Limit: <p>限制条数,默认10,最大100</p>
         :type Limit: int
-        :param _Offset: 偏移量,默认0
+        :param _Offset: <p>偏移量,默认0</p>
         :type Offset: int
-        :param _Order: 排序方式: [ASC:升序|DESC:降序]
+        :param _Order: <p>排序方式: [ASC:升序|DESC:降序]</p>
         :type Order: str
-        :param _By: 可选排序列: [Id]
+        :param _By: <p>可选排序列: [Id]</p>
         :type By: str
         """
         self._Filters = None
@@ -42943,7 +42943,7 @@ class DescribeLoginTypeHostRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制条数,默认10,最大100
+        r"""<p>限制条数,默认10,最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -42954,7 +42954,7 @@ class DescribeLoginTypeHostRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量,默认0
+        r"""<p>偏移量,默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -42965,7 +42965,7 @@ class DescribeLoginTypeHostRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式: [ASC:升序|DESC:降序]
+        r"""<p>排序方式: [ASC:升序|DESC:降序]</p>
         :rtype: str
         """
         return self._Order
@@ -42976,7 +42976,7 @@ class DescribeLoginTypeHostRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""可选排序列: [Id]
+        r"""<p>可选排序列: [Id]</p>
         :rtype: str
         """
         return self._By
@@ -43014,9 +43014,9 @@ class DescribeLoginTypeHostResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _List: 主机列表
+        :param _List: <p>主机列表</p>
         :type List: list of ClientSettingHost
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43027,7 +43027,7 @@ class DescribeLoginTypeHostResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -43038,7 +43038,7 @@ class DescribeLoginTypeHostResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""主机列表
+        r"""<p>主机列表</p>
         :rtype: list of ClientSettingHost
         """
         return self._List
@@ -43502,19 +43502,15 @@ class DescribeMachineClearHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 筛选条件
-多个条件筛选时 Keywords,TimeBetween,取交集
-<li> Keywords 实例名称/内网/公网IP</li>
-<li> TimeBetween 时间区间</li>
+        :param _Filters: <p>筛选条件<br>多个条件筛选时 Keywords,TimeBetween,取交集</p><li> Keywords 实例名称/内网/公网IP</li><li> TimeBetween 时间区间</li>
         :type Filters: list of Filters
-        :param _Limit: 限制条数,默认10 ,最大100
+        :param _Limit: <p>限制条数,默认10 ,最大100</p>
         :type Limit: int
-        :param _Offset: 偏移量,默认0
+        :param _Offset: <p>偏移量,默认0</p>
         :type Offset: int
-        :param _Order: 正序, ASC , 倒序 DESC , 默认ASC
+        :param _Order: <p>正序, ASC , 倒序 DESC , 默认ASC</p>
         :type Order: str
-        :param _By: AgentLastOfflineTime 客户端最后离线时间
-AutoClearTime 清理时间
+        :param _By: <p>AgentLastOfflineTime 客户端最后离线时间<br>AutoClearTime 清理时间</p>
         :type By: str
         """
         self._Filters = None
@@ -43525,10 +43521,7 @@ AutoClearTime 清理时间
 
     @property
     def Filters(self):
-        r"""筛选条件
-多个条件筛选时 Keywords,TimeBetween,取交集
-<li> Keywords 实例名称/内网/公网IP</li>
-<li> TimeBetween 时间区间</li>
+        r"""<p>筛选条件<br>多个条件筛选时 Keywords,TimeBetween,取交集</p><li> Keywords 实例名称/内网/公网IP</li><li> TimeBetween 时间区间</li>
         :rtype: list of Filters
         """
         return self._Filters
@@ -43539,7 +43532,7 @@ AutoClearTime 清理时间
 
     @property
     def Limit(self):
-        r"""限制条数,默认10 ,最大100
+        r"""<p>限制条数,默认10 ,最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -43550,7 +43543,7 @@ AutoClearTime 清理时间
 
     @property
     def Offset(self):
-        r"""偏移量,默认0
+        r"""<p>偏移量,默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -43561,7 +43554,7 @@ AutoClearTime 清理时间
 
     @property
     def Order(self):
-        r"""正序, ASC , 倒序 DESC , 默认ASC
+        r"""<p>正序, ASC , 倒序 DESC , 默认ASC</p>
         :rtype: str
         """
         return self._Order
@@ -43572,8 +43565,7 @@ AutoClearTime 清理时间
 
     @property
     def By(self):
-        r"""AgentLastOfflineTime 客户端最后离线时间
-AutoClearTime 清理时间
+        r"""<p>AgentLastOfflineTime 客户端最后离线时间<br>AutoClearTime 清理时间</p>
         :rtype: str
         """
         return self._By
@@ -43611,9 +43603,9 @@ class DescribeMachineClearHistoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总条数
+        :param _TotalCount: <p>总条数</p>
         :type TotalCount: int
-        :param _List: 列表数据
+        :param _List: <p>列表数据</p>
         :type List: list of MachineClearHistory
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43624,7 +43616,7 @@ class DescribeMachineClearHistoryResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -43635,7 +43627,7 @@ class DescribeMachineClearHistoryResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""列表数据
+        r"""<p>列表数据</p>
         :rtype: list of MachineClearHistory
         """
         return self._List
@@ -44951,7 +44943,7 @@ class DescribeMachineOsListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: 操作系统列表
+        :param _List: <p>操作系统列表</p>
         :type List: list of OsName
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -44961,7 +44953,7 @@ class DescribeMachineOsListResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""操作系统列表
+        r"""<p>操作系统列表</p>
         :rtype: list of OsName
         """
         return self._List
@@ -45542,35 +45534,20 @@ class DescribeMachinesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MachineType: 机器所属专区类型 
-CVM 云服务器
-BM 黑石
-ECM 边缘计算
-LH 轻量应用服务器
-Other 混合云专区
+        :param _MachineType: <p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区</p>
         :type MachineType: str
-        :param _MachineRegion: 机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others
+        :param _MachineRegion: <p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others</p>
         :type MachineRegion: str
-        :param _Limit: 返回数量，默认为10，最大值为100。
+        :param _Limit: <p>返回数量，默认为10，最大值为100。</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Filters: 过滤条件。
-<li>Ips - String - 是否必填：否 - 通过ip查询 </li>
-<li>Names - String - 是否必填：否 - 通过实例名查询 </li>
-<li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li>
-<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
-<li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
-<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
-每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li>
-<li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
-<li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
-<li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
-<li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li>
-<li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
+        :param _Filters: <p>过滤条件。</p><li>Ips - String - 是否必填：否 - 通过ip查询 </li><li>Names - String - 是否必填：否 - 通过实例名查询 </li><li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li><li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li><li>Risk - String 是否必填: 否 - 风险主机( yes ) </li><li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li><li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li><li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li><li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li><li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li><li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
         :type Filters: list of Filter
-        :param _ProjectIds: 机器所属业务ID列表
+        :param _ProjectIds: <p>机器所属业务ID列表</p>
         :type ProjectIds: list of int non-negative
+        :param _MachineAppId: <p>机器对应的APPID</p>
+        :type MachineAppId: int
         """
         self._MachineType = None
         self._MachineRegion = None
@@ -45578,15 +45555,11 @@ Other 混合云专区
         self._Offset = None
         self._Filters = None
         self._ProjectIds = None
+        self._MachineAppId = None
 
     @property
     def MachineType(self):
-        r"""机器所属专区类型 
-CVM 云服务器
-BM 黑石
-ECM 边缘计算
-LH 轻量应用服务器
-Other 混合云专区
+        r"""<p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区</p>
         :rtype: str
         """
         return self._MachineType
@@ -45597,7 +45570,7 @@ Other 混合云专区
 
     @property
     def MachineRegion(self):
-        r"""机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others
+        r"""<p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others</p>
         :rtype: str
         """
         return self._MachineRegion
@@ -45608,7 +45581,7 @@ Other 混合云专区
 
     @property
     def Limit(self):
-        r"""返回数量，默认为10，最大值为100。
+        r"""<p>返回数量，默认为10，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -45619,7 +45592,7 @@ Other 混合云专区
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -45630,19 +45603,7 @@ Other 混合云专区
 
     @property
     def Filters(self):
-        r"""过滤条件。
-<li>Ips - String - 是否必填：否 - 通过ip查询 </li>
-<li>Names - String - 是否必填：否 - 通过实例名查询 </li>
-<li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li>
-<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
-<li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
-<li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
-每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li>
-<li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
-<li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
-<li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
-<li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li>
-<li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
+        r"""<p>过滤条件。</p><li>Ips - String - 是否必填：否 - 通过ip查询 </li><li>Names - String - 是否必填：否 - 通过实例名查询 </li><li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li><li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li><li>Risk - String 是否必填: 否 - 风险主机( yes ) </li><li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li><li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li><li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li><li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li><li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li><li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -45653,7 +45614,7 @@ Other 混合云专区
 
     @property
     def ProjectIds(self):
-        r"""机器所属业务ID列表
+        r"""<p>机器所属业务ID列表</p>
         :rtype: list of int non-negative
         """
         return self._ProjectIds
@@ -45661,6 +45622,17 @@ Other 混合云专区
     @ProjectIds.setter
     def ProjectIds(self, ProjectIds):
         self._ProjectIds = ProjectIds
+
+    @property
+    def MachineAppId(self):
+        r"""<p>机器对应的APPID</p>
+        :rtype: int
+        """
+        return self._MachineAppId
+
+    @MachineAppId.setter
+    def MachineAppId(self, MachineAppId):
+        self._MachineAppId = MachineAppId
 
 
     def _deserialize(self, params):
@@ -45675,6 +45647,7 @@ Other 混合云专区
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._ProjectIds = params.get("ProjectIds")
+        self._MachineAppId = params.get("MachineAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45692,9 +45665,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Machines: 主机列表
+        :param _Machines: <p>主机列表</p>
         :type Machines: list of Machine
-        :param _TotalCount: 主机数量
+        :param _TotalCount: <p>主机数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -45705,7 +45678,7 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def Machines(self):
-        r"""主机列表
+        r"""<p>主机列表</p>
         :rtype: list of Machine
         """
         return self._Machines
@@ -45716,7 +45689,7 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""主机数量
+        r"""<p>主机数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -46607,6 +46580,36 @@ class DescribeMalwareTimingScanSettingRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ProductType: <p>产品类型 0-主机安全(默认) 1-安全中心</p>
+        :type ProductType: int
+        """
+        self._ProductType = None
+
+    @property
+    def ProductType(self):
+        r"""<p>产品类型 0-主机安全(默认) 1-安全中心</p>
+        :rtype: int
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+
+    def _deserialize(self, params):
+        self._ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeMalwareTimingScanSettingResponse(AbstractModel):
     r"""DescribeMalwareTimingScanSetting返回参数结构体
@@ -46615,47 +46618,47 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CheckPattern: 检测模式 0 全盘检测  1快速检测
+        :param _CheckPattern: <p>检测模式 0 全盘检测  1快速检测</p>
         :type CheckPattern: int
-        :param _StartTime: 检测周期 开始时间
+        :param _StartTime: <p>检测周期 开始时间</p>
         :type StartTime: str
-        :param _EndTime: 检测周期 超时结束时间
+        :param _EndTime: <p>检测周期 超时结束时间</p>
         :type EndTime: str
-        :param _IsGlobal: 是否全部服务器 1 全部 2 自选
+        :param _IsGlobal: <p>是否全部服务器 1 全部 2 自选</p>
         :type IsGlobal: int
-        :param _QuuidList: 自选服务器时必须 主机quuid的string数组
+        :param _QuuidList: <p>自选服务器时必须 主机quuid的string数组</p>
         :type QuuidList: list of str
-        :param _MonitoringPattern: 监控模式 0 标准 1深度
+        :param _MonitoringPattern: <p>监控模式 0 标准 1深度</p>
         :type MonitoringPattern: int
-        :param _Cycle: 周期 1每天
+        :param _Cycle: <p>周期 1每天</p>
         :type Cycle: int
-        :param _EnableScan: 定时检测开关 0 关闭1 开启
+        :param _EnableScan: <p>定时检测开关 0 关闭1 开启</p>
         :type EnableScan: int
-        :param _Id: 唯一ID
+        :param _Id: <p>唯一ID</p>
         :type Id: int
-        :param _RealTimeMonitoring: 实时监控0 关闭 1开启
+        :param _RealTimeMonitoring: <p>实时监控0 关闭 1开启</p>
         :type RealTimeMonitoring: int
-        :param _AutoIsolation: 是否自动隔离：1-是，0-否
+        :param _AutoIsolation: <p>是否自动隔离：1-是，0-否</p>
         :type AutoIsolation: int
-        :param _ClickTimeout: 一键扫描超时时长，如：1800秒（s）
+        :param _ClickTimeout: <p>一键扫描超时时长，如：1800秒（s）</p>
         :type ClickTimeout: int
-        :param _KillProcess: 是否杀掉进程 1杀掉 0不杀掉 只有开启自动隔离才生效
+        :param _KillProcess: <p>是否杀掉进程 1杀掉 0不杀掉 只有开启自动隔离才生效</p>
         :type KillProcess: int
-        :param _EngineType: 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+        :param _EngineType: <p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
         :type EngineType: int
-        :param _EnableInspiredEngine: 启发引擎 0 关闭 1开启
+        :param _EnableInspiredEngine: <p>启发引擎 0 关闭 1开启</p>
         :type EnableInspiredEngine: int
-        :param _EnableMemShellScan: 是否开启恶意进程查杀[0:未开启,1:开启]
+        :param _EnableMemShellScan: <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
         :type EnableMemShellScan: int
-        :param _ProtectMode: 防护模式 0 标准 1 重保
+        :param _ProtectMode: <p>防护模式 0 标准 1 重保</p>
         :type ProtectMode: int
-        :param _ProtectFileScope: 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+        :param _ProtectFileScope: <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
         :type ProtectFileScope: int
-        :param _DoClean: 执行清理开关 0未开启 1开启
+        :param _DoClean: <p>执行清理开关 0未开启 1开启</p>
         :type DoClean: int
-        :param _QuaraUuids: 自选的隔离主机集合
+        :param _QuaraUuids: <p>自选的隔离主机集合</p>
         :type QuaraUuids: list of str
-        :param _QuaraScope: 用户选择的隔离范围，0：默认全隔离 1：用户自选
+        :param _QuaraScope: <p>用户选择的隔离范围，0：默认全隔离 1：用户自选</p>
         :type QuaraScope: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46685,7 +46688,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def CheckPattern(self):
-        r"""检测模式 0 全盘检测  1快速检测
+        r"""<p>检测模式 0 全盘检测  1快速检测</p>
         :rtype: int
         """
         return self._CheckPattern
@@ -46696,7 +46699,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检测周期 开始时间
+        r"""<p>检测周期 开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -46707,7 +46710,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检测周期 超时结束时间
+        r"""<p>检测周期 超时结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -46718,7 +46721,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def IsGlobal(self):
-        r"""是否全部服务器 1 全部 2 自选
+        r"""<p>是否全部服务器 1 全部 2 自选</p>
         :rtype: int
         """
         return self._IsGlobal
@@ -46729,7 +46732,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def QuuidList(self):
-        r"""自选服务器时必须 主机quuid的string数组
+        r"""<p>自选服务器时必须 主机quuid的string数组</p>
         :rtype: list of str
         """
         return self._QuuidList
@@ -46740,7 +46743,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def MonitoringPattern(self):
-        r"""监控模式 0 标准 1深度
+        r"""<p>监控模式 0 标准 1深度</p>
         :rtype: int
         """
         return self._MonitoringPattern
@@ -46751,7 +46754,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def Cycle(self):
-        r"""周期 1每天
+        r"""<p>周期 1每天</p>
         :rtype: int
         """
         return self._Cycle
@@ -46762,7 +46765,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def EnableScan(self):
-        r"""定时检测开关 0 关闭1 开启
+        r"""<p>定时检测开关 0 关闭1 开启</p>
         :rtype: int
         """
         return self._EnableScan
@@ -46773,7 +46776,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""唯一ID
+        r"""<p>唯一ID</p>
         :rtype: int
         """
         return self._Id
@@ -46784,7 +46787,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def RealTimeMonitoring(self):
-        r"""实时监控0 关闭 1开启
+        r"""<p>实时监控0 关闭 1开启</p>
         :rtype: int
         """
         return self._RealTimeMonitoring
@@ -46795,7 +46798,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def AutoIsolation(self):
-        r"""是否自动隔离：1-是，0-否
+        r"""<p>是否自动隔离：1-是，0-否</p>
         :rtype: int
         """
         return self._AutoIsolation
@@ -46806,7 +46809,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def ClickTimeout(self):
-        r"""一键扫描超时时长，如：1800秒（s）
+        r"""<p>一键扫描超时时长，如：1800秒（s）</p>
         :rtype: int
         """
         return self._ClickTimeout
@@ -46817,7 +46820,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def KillProcess(self):
-        r"""是否杀掉进程 1杀掉 0不杀掉 只有开启自动隔离才生效
+        r"""<p>是否杀掉进程 1杀掉 0不杀掉 只有开启自动隔离才生效</p>
         :rtype: int
         """
         return self._KillProcess
@@ -46828,7 +46831,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+        r"""<p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
         :rtype: int
         """
         return self._EngineType
@@ -46839,7 +46842,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def EnableInspiredEngine(self):
-        r"""启发引擎 0 关闭 1开启
+        r"""<p>启发引擎 0 关闭 1开启</p>
         :rtype: int
         """
         return self._EnableInspiredEngine
@@ -46850,7 +46853,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def EnableMemShellScan(self):
-        r"""是否开启恶意进程查杀[0:未开启,1:开启]
+        r"""<p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
         :rtype: int
         """
         return self._EnableMemShellScan
@@ -46861,7 +46864,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""防护模式 0 标准 1 重保
+        r"""<p>防护模式 0 标准 1 重保</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -46872,7 +46875,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def ProtectFileScope(self):
-        r"""查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+        r"""<p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
         :rtype: int
         """
         return self._ProtectFileScope
@@ -46883,7 +46886,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def DoClean(self):
-        r"""执行清理开关 0未开启 1开启
+        r"""<p>执行清理开关 0未开启 1开启</p>
         :rtype: int
         """
         return self._DoClean
@@ -46894,7 +46897,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def QuaraUuids(self):
-        r"""自选的隔离主机集合
+        r"""<p>自选的隔离主机集合</p>
         :rtype: list of str
         """
         return self._QuaraUuids
@@ -46905,7 +46908,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def QuaraScope(self):
-        r"""用户选择的隔离范围，0：默认全隔离 1：用户自选
+        r"""<p>用户选择的隔离范围，0：默认全隔离 1：用户自选</p>
         :rtype: int
         """
         return self._QuaraScope
@@ -47489,6 +47492,36 @@ class DescribeNetAttackSettingRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ProductType: <p>产品类型 0-主机安全 1-安全中心</p>
+        :type ProductType: int
+        """
+        self._ProductType = None
+
+    @property
+    def ProductType(self):
+        r"""<p>产品类型 0-主机安全 1-安全中心</p>
+        :rtype: int
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+
+    def _deserialize(self, params):
+        self._ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeNetAttackSettingResponse(AbstractModel):
     r"""DescribeNetAttackSetting返回参数结构体
@@ -47497,17 +47530,17 @@ class DescribeNetAttackSettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetAttackEnable: 0 关闭网络攻击检测，1开启网络攻击检测
+        :param _NetAttackEnable: <p>0 关闭网络攻击检测，1开启网络攻击检测</p>
         :type NetAttackEnable: int
-        :param _NetAttackAlarmStatus: 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
+        :param _NetAttackAlarmStatus: <p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
         :type NetAttackAlarmStatus: int
-        :param _Scope: 1 全部旗舰版主机，0 InstanceIds列表主机
+        :param _Scope: <p>1 全部旗舰版主机，0 InstanceIds列表主机</p>
         :type Scope: int
-        :param _InstanceIds: 自选主机
+        :param _InstanceIds: <p>自选主机</p>
         :type InstanceIds: list of str
-        :param _ExcludeInstanceIds: 自选排除主机
+        :param _ExcludeInstanceIds: <p>自选排除主机</p>
         :type ExcludeInstanceIds: list of str
-        :param _AutoInclude: 新增资产自动包含 0 不包含 1包含
+        :param _AutoInclude: <p>新增资产自动包含 0 不包含 1包含</p>
         :type AutoInclude: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47522,7 +47555,7 @@ class DescribeNetAttackSettingResponse(AbstractModel):
 
     @property
     def NetAttackEnable(self):
-        r"""0 关闭网络攻击检测，1开启网络攻击检测
+        r"""<p>0 关闭网络攻击检测，1开启网络攻击检测</p>
         :rtype: int
         """
         return self._NetAttackEnable
@@ -47533,7 +47566,7 @@ class DescribeNetAttackSettingResponse(AbstractModel):
 
     @property
     def NetAttackAlarmStatus(self):
-        r"""0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
+        r"""<p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
         :rtype: int
         """
         return self._NetAttackAlarmStatus
@@ -47544,7 +47577,7 @@ class DescribeNetAttackSettingResponse(AbstractModel):
 
     @property
     def Scope(self):
-        r"""1 全部旗舰版主机，0 InstanceIds列表主机
+        r"""<p>1 全部旗舰版主机，0 InstanceIds列表主机</p>
         :rtype: int
         """
         return self._Scope
@@ -47555,7 +47588,7 @@ class DescribeNetAttackSettingResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""自选主机
+        r"""<p>自选主机</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -47566,7 +47599,7 @@ class DescribeNetAttackSettingResponse(AbstractModel):
 
     @property
     def ExcludeInstanceIds(self):
-        r"""自选排除主机
+        r"""<p>自选排除主机</p>
         :rtype: list of str
         """
         return self._ExcludeInstanceIds
@@ -47577,7 +47610,7 @@ class DescribeNetAttackSettingResponse(AbstractModel):
 
     @property
     def AutoInclude(self):
-        r"""新增资产自动包含 0 不包含 1包含
+        r"""<p>新增资产自动包含 0 不包含 1包含</p>
         :rtype: int
         """
         return self._AutoInclude
@@ -53155,6 +53188,36 @@ class DescribeReverseShellSystemPolicyConfigRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ProductType: <p>产品类型 0-主机安全(默认) 1-安全中心</p>
+        :type ProductType: int
+        """
+        self._ProductType = None
+
+    @property
+    def ProductType(self):
+        r"""<p>产品类型 0-主机安全(默认) 1-安全中心</p>
+        :rtype: int
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+
+    def _deserialize(self, params):
+        self._ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeReverseShellSystemPolicyConfigResponse(AbstractModel):
     r"""DescribeReverseShellSystemPolicyConfig返回参数结构体
@@ -53163,9 +53226,9 @@ class DescribeReverseShellSystemPolicyConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InnerNetAlarmShow: 内网告警展示
+        :param _InnerNetAlarmShow: <p>内网告警展示</p>
         :type InnerNetAlarmShow: bool
-        :param _InnerIPShow: 内网ip展示
+        :param _InnerIPShow: <p>内网ip展示</p>
         :type InnerIPShow: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -53176,7 +53239,7 @@ class DescribeReverseShellSystemPolicyConfigResponse(AbstractModel):
 
     @property
     def InnerNetAlarmShow(self):
-        r"""内网告警展示
+        r"""<p>内网告警展示</p>
         :rtype: bool
         """
         return self._InnerNetAlarmShow
@@ -53187,7 +53250,7 @@ class DescribeReverseShellSystemPolicyConfigResponse(AbstractModel):
 
     @property
     def InnerIPShow(self):
-        r"""内网ip展示
+        r"""<p>内网ip展示</p>
         :rtype: bool
         """
         return self._InnerIPShow
@@ -75637,11 +75700,11 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 过滤键的名称。
+        :param _Name: <p>过滤键的名称。</p>
         :type Name: str
-        :param _Values: 一个或者多个过滤值。
+        :param _Values: <p>一个或者多个过滤值。</p>
         :type Values: list of str
-        :param _ExactMatch: 模糊搜索
+        :param _ExactMatch: <p>模糊搜索</p>
         :type ExactMatch: bool
         """
         self._Name = None
@@ -75650,7 +75713,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""过滤键的名称。
+        r"""<p>过滤键的名称。</p>
         :rtype: str
         """
         return self._Name
@@ -75661,7 +75724,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""一个或者多个过滤值。
+        r"""<p>一个或者多个过滤值。</p>
         :rtype: list of str
         """
         return self._Values
@@ -75672,7 +75735,7 @@ class Filter(AbstractModel):
 
     @property
     def ExactMatch(self):
-        r"""模糊搜索
+        r"""<p>模糊搜索</p>
         :rtype: bool
         """
         return self._ExactMatch
@@ -83666,9 +83729,9 @@ class ModifyBanModeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断
+        :param _Mode: <p>阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断</p>
         :type Mode: str
-        :param _Ttl: 阻断时间，用于标准阻断模式
+        :param _Ttl: <p>阻断时间，用于标准阻断模式</p>
         :type Ttl: int
         """
         self._Mode = None
@@ -83676,7 +83739,7 @@ class ModifyBanModeRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断
+        r"""<p>阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断</p>
         :rtype: str
         """
         return self._Mode
@@ -83687,7 +83750,7 @@ class ModifyBanModeRequest(AbstractModel):
 
     @property
     def Ttl(self):
-        r"""阻断时间，用于标准阻断模式
+        r"""<p>阻断时间，用于标准阻断模式</p>
         :rtype: int
         """
         return self._Ttl
@@ -84608,14 +84671,14 @@ class ModifyBruteAttackRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 暴力破解判断规则
+        :param _Rules: <p>暴力破解判断规则</p>
         :type Rules: list of BruteAttackRule
         """
         self._Rules = None
 
     @property
     def Rules(self):
-        r"""暴力破解判断规则
+        r"""<p>暴力破解判断规则</p>
         :rtype: list of BruteAttackRule
         """
         return self._Rules
@@ -86794,14 +86857,14 @@ class ModifyMachineAutoClearConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClearRule: 清理规则时间, 0 表示关闭, 单位为天, 最大为 30天
+        :param _ClearRule: <p>清理规则时间, 0 表示关闭, 单位为天, 最大为 30天</p>
         :type ClearRule: int
         """
         self._ClearRule = None
 
     @property
     def ClearRule(self):
-        r"""清理规则时间, 0 表示关闭, 单位为天, 最大为 30天
+        r"""<p>清理规则时间, 0 表示关闭, 单位为天, 最大为 30天</p>
         :rtype: int
         """
         return self._ClearRule
@@ -87031,45 +87094,46 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CheckPattern: 检测模式 0 全盘检测  1快速检测
+        :param _CheckPattern: <p>检测模式 0 全盘检测  1快速检测</p>
         :type CheckPattern: int
-        :param _StartTime: 检测周期 开始时间，如：02:00:00
+        :param _StartTime: <p>检测周期 开始时间，如：02:00:00</p>
         :type StartTime: str
-        :param _EndTime: 检测周期 超时结束时间，如：04:00:00
+        :param _EndTime: <p>检测周期 超时结束时间，如：04:00:00</p>
         :type EndTime: str
-        :param _IsGlobal: 是否全部服务器 1 全部 2 自选
+        :param _IsGlobal: <p>是否全部服务器 1 全部 2 自选</p>
         :type IsGlobal: int
-        :param _EnableScan: 定时检测开关 0 关闭 1开启
+        :param _EnableScan: <p>定时检测开关 0 关闭 1开启</p>
         :type EnableScan: int
-        :param _MonitoringPattern: 监控模式 0 标准 1深度
+        :param _MonitoringPattern: <p>监控模式 0 标准 1深度</p>
         :type MonitoringPattern: int
-        :param _Cycle: 扫描周期 默认每天 1
+        :param _Cycle: <p>扫描周期 默认每天 1</p>
         :type Cycle: int
-        :param _RealTimeMonitoring: 实时监控 0 关闭 1开启
+        :param _RealTimeMonitoring: <p>实时监控 0 关闭 1开启</p>
         :type RealTimeMonitoring: int
-        :param _QuuidList: 自选服务器时必须 主机quuid的string数组
+        :param _QuuidList: <p>自选服务器时必须 主机quuid的string数组</p>
         :type QuuidList: list of str
-        :param _AutoIsolation: 是否自动隔离 1隔离 0 不隔离
+        :param _AutoIsolation: <p>是否自动隔离 1隔离 0 不隔离</p>
         :type AutoIsolation: int
-        :param _KillProcess: 是否杀掉进程 1杀掉 0不杀掉
+        :param _KillProcess: <p>是否杀掉进程 1杀掉 0不杀掉</p>
         :type KillProcess: int
-        :param _DoClean: 1 清理, 0 不清理
-<li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
+        :param _DoClean: <p>1 清理, 0 不清理</p><li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
         :type DoClean: int
-        :param _EngineType: 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+        :param _EngineType: <p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
         :type EngineType: int
-        :param _EnableInspiredEngine: 启发引擎开关 0 关闭 1开启
+        :param _EnableInspiredEngine: <p>启发引擎开关 0 关闭 1开启</p>
         :type EnableInspiredEngine: int
-        :param _EnableMemShellScan: 是否开启恶意进程查杀[0:未开启,1:开启]
+        :param _EnableMemShellScan: <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
         :type EnableMemShellScan: int
-        :param _ProtectMode: 防护模式 0 标准 1重保
+        :param _ProtectMode: <p>防护模式 0 标准 1重保</p>
         :type ProtectMode: int
-        :param _ProtectFileScope: 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+        :param _ProtectFileScope: <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
         :type ProtectFileScope: int
-        :param _QuaraUuids: 自选的隔离主机集合
+        :param _QuaraUuids: <p>自选的隔离主机集合</p>
         :type QuaraUuids: list of str
-        :param _QuaraScope: 用户选择的隔离范围，0：默认全隔离 1：用户自选
+        :param _QuaraScope: <p>用户选择的隔离范围，0：默认全隔离 1：用户自选</p>
         :type QuaraScope: int
+        :param _ProductType: <p>产品类型 0-主机安全(默认) 1-安全中心</p>
+        :type ProductType: int
         """
         self._CheckPattern = None
         self._StartTime = None
@@ -87090,10 +87154,11 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._ProtectFileScope = None
         self._QuaraUuids = None
         self._QuaraScope = None
+        self._ProductType = None
 
     @property
     def CheckPattern(self):
-        r"""检测模式 0 全盘检测  1快速检测
+        r"""<p>检测模式 0 全盘检测  1快速检测</p>
         :rtype: int
         """
         return self._CheckPattern
@@ -87104,7 +87169,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检测周期 开始时间，如：02:00:00
+        r"""<p>检测周期 开始时间，如：02:00:00</p>
         :rtype: str
         """
         return self._StartTime
@@ -87115,7 +87180,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检测周期 超时结束时间，如：04:00:00
+        r"""<p>检测周期 超时结束时间，如：04:00:00</p>
         :rtype: str
         """
         return self._EndTime
@@ -87126,7 +87191,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def IsGlobal(self):
-        r"""是否全部服务器 1 全部 2 自选
+        r"""<p>是否全部服务器 1 全部 2 自选</p>
         :rtype: int
         """
         return self._IsGlobal
@@ -87137,7 +87202,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def EnableScan(self):
-        r"""定时检测开关 0 关闭 1开启
+        r"""<p>定时检测开关 0 关闭 1开启</p>
         :rtype: int
         """
         return self._EnableScan
@@ -87148,7 +87213,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def MonitoringPattern(self):
-        r"""监控模式 0 标准 1深度
+        r"""<p>监控模式 0 标准 1深度</p>
         :rtype: int
         """
         return self._MonitoringPattern
@@ -87159,7 +87224,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def Cycle(self):
-        r"""扫描周期 默认每天 1
+        r"""<p>扫描周期 默认每天 1</p>
         :rtype: int
         """
         return self._Cycle
@@ -87170,7 +87235,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def RealTimeMonitoring(self):
-        r"""实时监控 0 关闭 1开启
+        r"""<p>实时监控 0 关闭 1开启</p>
         :rtype: int
         """
         return self._RealTimeMonitoring
@@ -87181,7 +87246,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def QuuidList(self):
-        r"""自选服务器时必须 主机quuid的string数组
+        r"""<p>自选服务器时必须 主机quuid的string数组</p>
         :rtype: list of str
         """
         return self._QuuidList
@@ -87192,7 +87257,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def AutoIsolation(self):
-        r"""是否自动隔离 1隔离 0 不隔离
+        r"""<p>是否自动隔离 1隔离 0 不隔离</p>
         :rtype: int
         """
         return self._AutoIsolation
@@ -87203,7 +87268,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def KillProcess(self):
-        r"""是否杀掉进程 1杀掉 0不杀掉
+        r"""<p>是否杀掉进程 1杀掉 0不杀掉</p>
         :rtype: int
         """
         return self._KillProcess
@@ -87214,8 +87279,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def DoClean(self):
-        r"""1 清理, 0 不清理
-<li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
+        r"""<p>1 清理, 0 不清理</p><li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
         :rtype: int
         """
         return self._DoClean
@@ -87226,7 +87290,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+        r"""<p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
         :rtype: int
         """
         return self._EngineType
@@ -87237,7 +87301,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def EnableInspiredEngine(self):
-        r"""启发引擎开关 0 关闭 1开启
+        r"""<p>启发引擎开关 0 关闭 1开启</p>
         :rtype: int
         """
         return self._EnableInspiredEngine
@@ -87248,7 +87312,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def EnableMemShellScan(self):
-        r"""是否开启恶意进程查杀[0:未开启,1:开启]
+        r"""<p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
         :rtype: int
         """
         return self._EnableMemShellScan
@@ -87259,7 +87323,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""防护模式 0 标准 1重保
+        r"""<p>防护模式 0 标准 1重保</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -87270,7 +87334,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def ProtectFileScope(self):
-        r"""查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+        r"""<p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
         :rtype: int
         """
         return self._ProtectFileScope
@@ -87281,7 +87345,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def QuaraUuids(self):
-        r"""自选的隔离主机集合
+        r"""<p>自选的隔离主机集合</p>
         :rtype: list of str
         """
         return self._QuaraUuids
@@ -87292,7 +87356,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def QuaraScope(self):
-        r"""用户选择的隔离范围，0：默认全隔离 1：用户自选
+        r"""<p>用户选择的隔离范围，0：默认全隔离 1：用户自选</p>
         :rtype: int
         """
         return self._QuaraScope
@@ -87300,6 +87364,17 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
     @QuaraScope.setter
     def QuaraScope(self, QuaraScope):
         self._QuaraScope = QuaraScope
+
+    @property
+    def ProductType(self):
+        r"""<p>产品类型 0-主机安全(默认) 1-安全中心</p>
+        :rtype: int
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
 
 
     def _deserialize(self, params):
@@ -87322,6 +87397,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._ProtectFileScope = params.get("ProtectFileScope")
         self._QuaraUuids = params.get("QuaraUuids")
         self._QuaraScope = params.get("QuaraScope")
+        self._ProductType = params.get("ProductType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -87551,18 +87627,20 @@ class ModifyNetAttackSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetAttackEnable: 0 关闭网络攻击检测，1开启网络攻击检测
+        :param _NetAttackEnable: <p>0 关闭网络攻击检测，1开启网络攻击检测</p>
         :type NetAttackEnable: int
-        :param _NetAttackAlarmStatus: 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
+        :param _NetAttackAlarmStatus: <p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
         :type NetAttackAlarmStatus: int
-        :param _Scope: 1 全部旗舰版主机，0 Quuids列表主机
+        :param _Scope: <p>1 全部旗舰版主机，0 Quuids列表主机</p>
         :type Scope: int
-        :param _InstanceIds: 自选主机
+        :param _InstanceIds: <p>自选主机</p>
         :type InstanceIds: list of str
-        :param _ExcludeInstanceIds: 自选排除的主机
+        :param _ExcludeInstanceIds: <p>自选排除的主机</p>
         :type ExcludeInstanceIds: list of str
-        :param _AutoInclude: 新增资产自动包含 0 不包含 1包含
+        :param _AutoInclude: <p>新增资产自动包含 0 不包含 1包含</p>
         :type AutoInclude: int
+        :param _ProductType: <p>产品类型 0-主机安全 1-安全中心</p>
+        :type ProductType: int
         """
         self._NetAttackEnable = None
         self._NetAttackAlarmStatus = None
@@ -87570,10 +87648,11 @@ class ModifyNetAttackSettingRequest(AbstractModel):
         self._InstanceIds = None
         self._ExcludeInstanceIds = None
         self._AutoInclude = None
+        self._ProductType = None
 
     @property
     def NetAttackEnable(self):
-        r"""0 关闭网络攻击检测，1开启网络攻击检测
+        r"""<p>0 关闭网络攻击检测，1开启网络攻击检测</p>
         :rtype: int
         """
         return self._NetAttackEnable
@@ -87584,7 +87663,7 @@ class ModifyNetAttackSettingRequest(AbstractModel):
 
     @property
     def NetAttackAlarmStatus(self):
-        r"""0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
+        r"""<p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
         :rtype: int
         """
         return self._NetAttackAlarmStatus
@@ -87595,7 +87674,7 @@ class ModifyNetAttackSettingRequest(AbstractModel):
 
     @property
     def Scope(self):
-        r"""1 全部旗舰版主机，0 Quuids列表主机
+        r"""<p>1 全部旗舰版主机，0 Quuids列表主机</p>
         :rtype: int
         """
         return self._Scope
@@ -87606,7 +87685,7 @@ class ModifyNetAttackSettingRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""自选主机
+        r"""<p>自选主机</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -87617,7 +87696,7 @@ class ModifyNetAttackSettingRequest(AbstractModel):
 
     @property
     def ExcludeInstanceIds(self):
-        r"""自选排除的主机
+        r"""<p>自选排除的主机</p>
         :rtype: list of str
         """
         return self._ExcludeInstanceIds
@@ -87628,7 +87707,7 @@ class ModifyNetAttackSettingRequest(AbstractModel):
 
     @property
     def AutoInclude(self):
-        r"""新增资产自动包含 0 不包含 1包含
+        r"""<p>新增资产自动包含 0 不包含 1包含</p>
         :rtype: int
         """
         return self._AutoInclude
@@ -87636,6 +87715,17 @@ class ModifyNetAttackSettingRequest(AbstractModel):
     @AutoInclude.setter
     def AutoInclude(self, AutoInclude):
         self._AutoInclude = AutoInclude
+
+    @property
+    def ProductType(self):
+        r"""<p>产品类型 0-主机安全 1-安全中心</p>
+        :rtype: int
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
 
 
     def _deserialize(self, params):
@@ -87645,6 +87735,7 @@ class ModifyNetAttackSettingRequest(AbstractModel):
         self._InstanceIds = params.get("InstanceIds")
         self._ExcludeInstanceIds = params.get("ExcludeInstanceIds")
         self._AutoInclude = params.get("AutoInclude")
+        self._ProductType = params.get("ProductType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
