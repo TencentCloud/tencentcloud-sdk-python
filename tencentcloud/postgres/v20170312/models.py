@@ -3160,14 +3160,17 @@ class CreateBaseBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :param _DBInstanceId: <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :type DBInstanceId: str
+        :param _BackupMethod: <p>备份方式</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+        :type BackupMethod: str
         """
         self._DBInstanceId = None
+        self._BackupMethod = None
 
     @property
     def DBInstanceId(self):
-        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""<p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -3176,9 +3179,21 @@ class CreateBaseBackupRequest(AbstractModel):
     def DBInstanceId(self, DBInstanceId):
         self._DBInstanceId = DBInstanceId
 
+    @property
+    def BackupMethod(self):
+        r"""<p>备份方式</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+        :rtype: str
+        """
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
 
     def _deserialize(self, params):
         self._DBInstanceId = params.get("DBInstanceId")
+        self._BackupMethod = params.get("BackupMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3196,7 +3211,7 @@ class CreateBaseBackupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BaseBackupId: 数据备份集ID
+        :param _BaseBackupId: <p>数据备份集ID</p>
         :type BaseBackupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3206,7 +3221,7 @@ class CreateBaseBackupResponse(AbstractModel):
 
     @property
     def BaseBackupId(self):
-        r"""数据备份集ID
+        r"""<p>数据备份集ID</p>
         :rtype: str
         """
         return self._BaseBackupId
@@ -16049,22 +16064,24 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :param _DBInstanceId: <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :type DBInstanceId: str
-        :param _MinBackupStartTime: 实例最早开始备份时间
+        :param _MinBackupStartTime: <p>实例最早开始备份时间</p>
         :type MinBackupStartTime: str
-        :param _MaxBackupStartTime: 实例最晚开始备份时间
+        :param _MaxBackupStartTime: <p>实例最晚开始备份时间</p>
         :type MaxBackupStartTime: str
-        :param _BaseBackupRetentionPeriod: 实例备份保留时长，取值范围为7-1830，单位是天
+        :param _BaseBackupRetentionPeriod: <p>实例备份保留时长，取值范围为7-1830，单位是天</p>
         :type BaseBackupRetentionPeriod: int
-        :param _BackupPeriod: 实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
+        :param _BackupPeriod: <p>实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如[&quot;1&quot;,&quot;2&quot;]。</p>
         :type BackupPeriod: list of str
-        :param _LogBackupRetentionPeriod: 实例日志备份保留时长，取值范围为7-1830，单位是天
+        :param _LogBackupRetentionPeriod: <p>实例日志备份保留时长，取值范围为7-1830，单位是天</p>
         :type LogBackupRetentionPeriod: int
-        :param _PlanId: 备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。
+        :param _PlanId: <p>备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。</p>
         :type PlanId: str
-        :param _PlanName: 要修改的备份计划名称。
+        :param _PlanName: <p>要修改的备份计划名称。</p>
         :type PlanName: str
+        :param _BackupMethod: <p>备份方式</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+        :type BackupMethod: str
         """
         self._DBInstanceId = None
         self._MinBackupStartTime = None
@@ -16074,10 +16091,11 @@ class ModifyBackupPlanRequest(AbstractModel):
         self._LogBackupRetentionPeriod = None
         self._PlanId = None
         self._PlanName = None
+        self._BackupMethod = None
 
     @property
     def DBInstanceId(self):
-        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""<p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -16088,7 +16106,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def MinBackupStartTime(self):
-        r"""实例最早开始备份时间
+        r"""<p>实例最早开始备份时间</p>
         :rtype: str
         """
         return self._MinBackupStartTime
@@ -16099,7 +16117,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def MaxBackupStartTime(self):
-        r"""实例最晚开始备份时间
+        r"""<p>实例最晚开始备份时间</p>
         :rtype: str
         """
         return self._MaxBackupStartTime
@@ -16110,7 +16128,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def BaseBackupRetentionPeriod(self):
-        r"""实例备份保留时长，取值范围为7-1830，单位是天
+        r"""<p>实例备份保留时长，取值范围为7-1830，单位是天</p>
         :rtype: int
         """
         return self._BaseBackupRetentionPeriod
@@ -16121,7 +16139,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def BackupPeriod(self):
-        r"""实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
+        r"""<p>实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如[&quot;1&quot;,&quot;2&quot;]。</p>
         :rtype: list of str
         """
         return self._BackupPeriod
@@ -16132,7 +16150,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def LogBackupRetentionPeriod(self):
-        r"""实例日志备份保留时长，取值范围为7-1830，单位是天
+        r"""<p>实例日志备份保留时长，取值范围为7-1830，单位是天</p>
         :rtype: int
         """
         return self._LogBackupRetentionPeriod
@@ -16143,7 +16161,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        r"""备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。
+        r"""<p>备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。</p>
         :rtype: str
         """
         return self._PlanId
@@ -16154,7 +16172,7 @@ class ModifyBackupPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
-        r"""要修改的备份计划名称。
+        r"""<p>要修改的备份计划名称。</p>
         :rtype: str
         """
         return self._PlanName
@@ -16162,6 +16180,17 @@ class ModifyBackupPlanRequest(AbstractModel):
     @PlanName.setter
     def PlanName(self, PlanName):
         self._PlanName = PlanName
+
+    @property
+    def BackupMethod(self):
+        r"""<p>备份方式</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+        :rtype: str
+        """
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
 
 
     def _deserialize(self, params):
@@ -16173,6 +16202,7 @@ class ModifyBackupPlanRequest(AbstractModel):
         self._LogBackupRetentionPeriod = params.get("LogBackupRetentionPeriod")
         self._PlanId = params.get("PlanId")
         self._PlanName = params.get("PlanName")
+        self._BackupMethod = params.get("BackupMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

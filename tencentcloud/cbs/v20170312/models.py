@@ -664,6 +664,51 @@ class AttachRemoteDisksRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>指定待挂载单副本SSD硬盘的CVM实例。</p>
+        :type InstanceId: str
+        :param _RemoteDiskIds: <p>一个或多个待挂载的单副本SSD硬盘ID。</p>
+        :type RemoteDiskIds: list of str
+        """
+        self._InstanceId = None
+        self._RemoteDiskIds = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>指定待挂载单副本SSD硬盘的CVM实例。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RemoteDiskIds(self):
+        r"""<p>一个或多个待挂载的单副本SSD硬盘ID。</p>
+        :rtype: list of str
+        """
+        return self._RemoteDiskIds
+
+    @RemoteDiskIds.setter
+    def RemoteDiskIds(self, RemoteDiskIds):
+        self._RemoteDiskIds = RemoteDiskIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RemoteDiskIds = params.get("RemoteDiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class AttachRemoteDisksResponse(AbstractModel):
     r"""AttachRemoteDisks返回参数结构体
@@ -2242,6 +2287,130 @@ class CreateRemoteDisksRequest(AbstractModel):
     r"""CreateRemoteDisks请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _DiskChargeType: <p>单副本SSD硬盘计费类型。 </p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+        :type DiskChargeType: str
+        :param _DiskSize: <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+        :type DiskSize: int
+        :param _InstanceId: <p>待挂载单副本SSD硬盘的CVM实例ID。</p>
+        :type InstanceId: str
+        :param _Placement: <p>实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。</p>
+        :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        :param _DiskChargePrepaid: <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月单副本SSD硬盘的购买时长、是否设置自动续费等属性。 创建预付费单副本SSD硬盘该参数必传，创建按小时后付费单副本SSD硬盘无需传该参数。</p>
+        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.RemoteDiskChargePrepaid`
+        :param _DiskCount: <p>创建单副本SSD硬盘数量，不传则默认为1。</p>
+        :type DiskCount: int
+        :param _DiskName: <p>单副本SSD的显示名称。</p>
+        :type DiskName: str
+        """
+        self._DiskChargeType = None
+        self._DiskSize = None
+        self._InstanceId = None
+        self._Placement = None
+        self._DiskChargePrepaid = None
+        self._DiskCount = None
+        self._DiskName = None
+
+    @property
+    def DiskChargeType(self):
+        r"""<p>单副本SSD硬盘计费类型。 </p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+        :rtype: str
+        """
+        return self._DiskChargeType
+
+    @DiskChargeType.setter
+    def DiskChargeType(self, DiskChargeType):
+        self._DiskChargeType = DiskChargeType
+
+    @property
+    def DiskSize(self):
+        r"""<p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def InstanceId(self):
+        r"""<p>待挂载单副本SSD硬盘的CVM实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Placement(self):
+        r"""<p>实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。</p>
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        """
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
+    def DiskChargePrepaid(self):
+        r"""<p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月单副本SSD硬盘的购买时长、是否设置自动续费等属性。 创建预付费单副本SSD硬盘该参数必传，创建按小时后付费单副本SSD硬盘无需传该参数。</p>
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.RemoteDiskChargePrepaid`
+        """
+        return self._DiskChargePrepaid
+
+    @DiskChargePrepaid.setter
+    def DiskChargePrepaid(self, DiskChargePrepaid):
+        self._DiskChargePrepaid = DiskChargePrepaid
+
+    @property
+    def DiskCount(self):
+        r"""<p>创建单副本SSD硬盘数量，不传则默认为1。</p>
+        :rtype: int
+        """
+        return self._DiskCount
+
+    @DiskCount.setter
+    def DiskCount(self, DiskCount):
+        self._DiskCount = DiskCount
+
+    @property
+    def DiskName(self):
+        r"""<p>单副本SSD的显示名称。</p>
+        :rtype: str
+        """
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
+
+    def _deserialize(self, params):
+        self._DiskChargeType = params.get("DiskChargeType")
+        self._DiskSize = params.get("DiskSize")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Placement") is not None:
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        if params.get("DiskChargePrepaid") is not None:
+            self._DiskChargePrepaid = RemoteDiskChargePrepaid()
+            self._DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self._DiskCount = params.get("DiskCount")
+        self._DiskName = params.get("DiskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateRemoteDisksResponse(AbstractModel):
@@ -4036,6 +4205,36 @@ class DescribeRemoteDisksDeniedActionsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RemoteDiskIds: <p>单副本SSD硬盘ID列表。每次批量请求单副本SSD硬盘的上限为 100。</p>
+        :type RemoteDiskIds: list of str
+        """
+        self._RemoteDiskIds = None
+
+    @property
+    def RemoteDiskIds(self):
+        r"""<p>单副本SSD硬盘ID列表。每次批量请求单副本SSD硬盘的上限为 100。</p>
+        :rtype: list of str
+        """
+        return self._RemoteDiskIds
+
+    @RemoteDiskIds.setter
+    def RemoteDiskIds(self, RemoteDiskIds):
+        self._RemoteDiskIds = RemoteDiskIds
+
+
+    def _deserialize(self, params):
+        self._RemoteDiskIds = params.get("RemoteDiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeRemoteDisksDeniedActionsResponse(AbstractModel):
     r"""DescribeRemoteDisksDeniedActions返回参数结构体
@@ -4726,6 +4925,66 @@ class DetachRemoteDisksRequest(AbstractModel):
     r"""DetachRemoteDisks请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>指定从特定CVM实例上卸载单副本SSD硬盘。</p>
+        :type InstanceId: str
+        :param _RemoteDiskIds: <p>一个或多个将要卸载的单副本SSD硬盘ID。</p>
+        :type RemoteDiskIds: list of str
+        :param _ForceDetach: <p>强制解挂，内部使用。</p>
+        :type ForceDetach: bool
+        """
+        self._InstanceId = None
+        self._RemoteDiskIds = None
+        self._ForceDetach = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>指定从特定CVM实例上卸载单副本SSD硬盘。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RemoteDiskIds(self):
+        r"""<p>一个或多个将要卸载的单副本SSD硬盘ID。</p>
+        :rtype: list of str
+        """
+        return self._RemoteDiskIds
+
+    @RemoteDiskIds.setter
+    def RemoteDiskIds(self, RemoteDiskIds):
+        self._RemoteDiskIds = RemoteDiskIds
+
+    @property
+    def ForceDetach(self):
+        r"""<p>强制解挂，内部使用。</p>
+        :rtype: bool
+        """
+        return self._ForceDetach
+
+    @ForceDetach.setter
+    def ForceDetach(self, ForceDetach):
+        self._ForceDetach = ForceDetach
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RemoteDiskIds = params.get("RemoteDiskIds")
+        self._ForceDetach = params.get("ForceDetach")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DetachRemoteDisksResponse(AbstractModel):
@@ -6390,6 +6649,83 @@ class InquirePriceCreateRemoteDisksRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _DiskChargeType: <p>单副本SSD硬盘计费类型。</p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+        :type DiskChargeType: str
+        :param _DiskSize: <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+        :type DiskSize: int
+        :param _DiskChargePrepaid: <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。 创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。</p>
+        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.RemoteDiskChargePrepaid`
+        :param _DiskCount: <p>购买单副本SSD硬盘的数量。不填则默认为1。</p>
+        :type DiskCount: int
+        """
+        self._DiskChargeType = None
+        self._DiskSize = None
+        self._DiskChargePrepaid = None
+        self._DiskCount = None
+
+    @property
+    def DiskChargeType(self):
+        r"""<p>单副本SSD硬盘计费类型。</p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+        :rtype: str
+        """
+        return self._DiskChargeType
+
+    @DiskChargeType.setter
+    def DiskChargeType(self, DiskChargeType):
+        self._DiskChargeType = DiskChargeType
+
+    @property
+    def DiskSize(self):
+        r"""<p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskChargePrepaid(self):
+        r"""<p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。 创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。</p>
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.RemoteDiskChargePrepaid`
+        """
+        return self._DiskChargePrepaid
+
+    @DiskChargePrepaid.setter
+    def DiskChargePrepaid(self, DiskChargePrepaid):
+        self._DiskChargePrepaid = DiskChargePrepaid
+
+    @property
+    def DiskCount(self):
+        r"""<p>购买单副本SSD硬盘的数量。不填则默认为1。</p>
+        :rtype: int
+        """
+        return self._DiskCount
+
+    @DiskCount.setter
+    def DiskCount(self, DiskCount):
+        self._DiskCount = DiskCount
+
+
+    def _deserialize(self, params):
+        self._DiskChargeType = params.get("DiskChargeType")
+        self._DiskSize = params.get("DiskSize")
+        if params.get("DiskChargePrepaid") is not None:
+            self._DiskChargePrepaid = RemoteDiskChargePrepaid()
+            self._DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self._DiskCount = params.get("DiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class InquirePriceCreateRemoteDisksResponse(AbstractModel):
     r"""InquirePriceCreateRemoteDisks返回参数结构体
@@ -6615,6 +6951,56 @@ class InquirePriceRenewRemoteDisksRequest(AbstractModel):
     r"""InquirePriceRenewRemoteDisks请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _DiskChargePrepaidSet: <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
+        :type DiskChargePrepaidSet: list of RemoteDiskChargePrepaid
+        :param _RemoteDiskIds: <p>一个或多个单副本SSD硬盘ID。</p>
+        :type RemoteDiskIds: list of str
+        """
+        self._DiskChargePrepaidSet = None
+        self._RemoteDiskIds = None
+
+    @property
+    def DiskChargePrepaidSet(self):
+        r"""<p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
+        :rtype: list of RemoteDiskChargePrepaid
+        """
+        return self._DiskChargePrepaidSet
+
+    @DiskChargePrepaidSet.setter
+    def DiskChargePrepaidSet(self, DiskChargePrepaidSet):
+        self._DiskChargePrepaidSet = DiskChargePrepaidSet
+
+    @property
+    def RemoteDiskIds(self):
+        r"""<p>一个或多个单副本SSD硬盘ID。</p>
+        :rtype: list of str
+        """
+        return self._RemoteDiskIds
+
+    @RemoteDiskIds.setter
+    def RemoteDiskIds(self, RemoteDiskIds):
+        self._RemoteDiskIds = RemoteDiskIds
+
+
+    def _deserialize(self, params):
+        if params.get("DiskChargePrepaidSet") is not None:
+            self._DiskChargePrepaidSet = []
+            for item in params.get("DiskChargePrepaidSet"):
+                obj = RemoteDiskChargePrepaid()
+                obj._deserialize(item)
+                self._DiskChargePrepaidSet.append(obj)
+        self._RemoteDiskIds = params.get("RemoteDiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InquirePriceRenewRemoteDisksResponse(AbstractModel):
@@ -7749,6 +8135,66 @@ class ModifyRemoteDiskAttributesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RemoteDiskIds: <p>一个或多个待操作的单副本SSD硬盘ID。如果传入多个单副本SSD硬盘ID，只支持所有硬盘修改为同一属性。</p>
+        :type RemoteDiskIds: list of str
+        :param _DiskName: <p>新的单副本SSD硬盘名称</p>
+        :type DiskName: str
+        :param _ProjectId: <p>新的单副本SSD硬盘项目ID。</p>
+        :type ProjectId: int
+        """
+        self._RemoteDiskIds = None
+        self._DiskName = None
+        self._ProjectId = None
+
+    @property
+    def RemoteDiskIds(self):
+        r"""<p>一个或多个待操作的单副本SSD硬盘ID。如果传入多个单副本SSD硬盘ID，只支持所有硬盘修改为同一属性。</p>
+        :rtype: list of str
+        """
+        return self._RemoteDiskIds
+
+    @RemoteDiskIds.setter
+    def RemoteDiskIds(self, RemoteDiskIds):
+        self._RemoteDiskIds = RemoteDiskIds
+
+    @property
+    def DiskName(self):
+        r"""<p>新的单副本SSD硬盘名称</p>
+        :rtype: str
+        """
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
+    @property
+    def ProjectId(self):
+        r"""<p>新的单副本SSD硬盘项目ID。</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._RemoteDiskIds = params.get("RemoteDiskIds")
+        self._DiskName = params.get("DiskName")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyRemoteDiskAttributesResponse(AbstractModel):
     r"""ModifyRemoteDiskAttributes返回参数结构体
@@ -8564,6 +9010,84 @@ class Price(AbstractModel):
         
 
 
+class RemoteDiskChargePrepaid(AbstractModel):
+    r"""描述了单副本SSD硬盘的预付费计费模式。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 购买单副本SSD硬盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        :type Period: int
+        :param _CurInstanceDeadline: 需要将单副本SSD硬盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，单副本SSD硬盘会自动按对齐到子机续费后的到期时间续费。
+        :type CurInstanceDeadline: str
+        :param _RenewFlag: 自动续费标识。取值范围：
+<ul>
+  <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+  <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+  <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+</ul>
+默认取值：NOTIFY_AND_MANUAL_RENEW。
+        :type RenewFlag: str
+        """
+        self._Period = None
+        self._CurInstanceDeadline = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        r"""购买单副本SSD硬盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def CurInstanceDeadline(self):
+        r"""需要将单副本SSD硬盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，单副本SSD硬盘会自动按对齐到子机续费后的到期时间续费。
+        :rtype: str
+        """
+        return self._CurInstanceDeadline
+
+    @CurInstanceDeadline.setter
+    def CurInstanceDeadline(self, CurInstanceDeadline):
+        self._CurInstanceDeadline = CurInstanceDeadline
+
+    @property
+    def RenewFlag(self):
+        r"""自动续费标识。取值范围：
+<ul>
+  <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+  <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+  <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+</ul>
+默认取值：NOTIFY_AND_MANUAL_RENEW。
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._CurInstanceDeadline = params.get("CurInstanceDeadline")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RenewDiskRequest(AbstractModel):
     r"""RenewDisk请求参数结构体
 
@@ -8649,6 +9173,53 @@ class RenewRemoteDiskRequest(AbstractModel):
     r"""RenewRemoteDisk请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _DiskChargePrepaid: <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月单副本SSD硬盘的续费时长。 在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时单副本SSD硬盘会按对齐到实例续费后的到期时间来续费。</p>
+        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.RemoteDiskChargePrepaid`
+        :param _RemoteDiskId: <p>单副本SSD硬盘ID。</p>
+        :type RemoteDiskId: str
+        """
+        self._DiskChargePrepaid = None
+        self._RemoteDiskId = None
+
+    @property
+    def DiskChargePrepaid(self):
+        r"""<p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月单副本SSD硬盘的续费时长。 在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时单副本SSD硬盘会按对齐到实例续费后的到期时间来续费。</p>
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.RemoteDiskChargePrepaid`
+        """
+        return self._DiskChargePrepaid
+
+    @DiskChargePrepaid.setter
+    def DiskChargePrepaid(self, DiskChargePrepaid):
+        self._DiskChargePrepaid = DiskChargePrepaid
+
+    @property
+    def RemoteDiskId(self):
+        r"""<p>单副本SSD硬盘ID。</p>
+        :rtype: str
+        """
+        return self._RemoteDiskId
+
+    @RemoteDiskId.setter
+    def RemoteDiskId(self, RemoteDiskId):
+        self._RemoteDiskId = RemoteDiskId
+
+
+    def _deserialize(self, params):
+        if params.get("DiskChargePrepaid") is not None:
+            self._DiskChargePrepaid = RemoteDiskChargePrepaid()
+            self._DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self._RemoteDiskId = params.get("RemoteDiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RenewRemoteDiskResponse(AbstractModel):
@@ -9750,6 +10321,36 @@ class TerminateRemoteDisksRequest(AbstractModel):
     r"""TerminateRemoteDisks请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RemoteDiskIds: <p>一个或多个单副本SSD硬盘ID。</p>
+        :type RemoteDiskIds: list of str
+        """
+        self._RemoteDiskIds = None
+
+    @property
+    def RemoteDiskIds(self):
+        r"""<p>一个或多个单副本SSD硬盘ID。</p>
+        :rtype: list of str
+        """
+        return self._RemoteDiskIds
+
+    @RemoteDiskIds.setter
+    def RemoteDiskIds(self, RemoteDiskIds):
+        self._RemoteDiskIds = RemoteDiskIds
+
+
+    def _deserialize(self, params):
+        self._RemoteDiskIds = params.get("RemoteDiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TerminateRemoteDisksResponse(AbstractModel):

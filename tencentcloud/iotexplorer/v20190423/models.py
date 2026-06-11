@@ -27136,51 +27136,33 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID
+        :param _ProductId: <p>产品ID</p>
         :type ProductId: str
-        :param _DeviceName: 设备名称
+        :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _Query: 自然语言查询
+        :param _Query: <p>自然语言查询</p>
         :type Query: str
-        :param _SummaryLang: 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+        :param _SummaryLang: <p>搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH</p>
         :type SummaryLang: str
-        :param _ChannelId: 通道ID
+        :param _ChannelId: <p>通道ID</p>
         :type ChannelId: int
-        :param _EnableSummary: 是否需要返回总结，默认为True；  开启后会加大接口响应时长
+        :param _EnableSummary: <p>是否需要返回总结，默认为True；  开启后会加大接口响应时长</p>
         :type EnableSummary: bool
-        :param _StartTimeMs: 开始时间。
-
-注：
-1. 单位为毫秒（ms）
-2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）
-3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+        :param _StartTimeMs: <p>开始时间。</p><p>注：</p><ol><li>单位为毫秒（ms）</li><li>如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）</li><li>只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为&quot;过去三天关于猫咪的视频&quot;， 则会将&quot;过去三天忽略&quot;）</li></ol>
         :type StartTimeMs: int
-        :param _EndTimeMs: 结束时间。
-
-注：
-1. 单位为毫秒（ms）
-2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）
-3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+        :param _EndTimeMs: <p>结束时间。</p><p>注：</p><ol><li>单位为毫秒（ms）</li><li>如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）</li><li>只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为&quot;过去三天关于猫咪的视频&quot;， 则会将&quot;过去三天忽略&quot;）</li></ol>
         :type EndTimeMs: int
-        :param _TimeZone: 时区。默认值：Asia/Shanghai
-
-注：
-符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
-
+        :param _TimeZone: <p>时区。默认值：Asia/Shanghai</p><p>注：<br>符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok</p>
         :type TimeZone: str
-        :param _SearchMode: 取值为1表示高级搜索，取值为2表示简单搜索，默认为1
+        :param _SearchMode: <p>取值为1表示高级搜索，取值为2表示简单搜索，默认为1</p>
         :type SearchMode: int
-        :param _Limit: 最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50
+        :param _Limit: <p>最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50</p>
         :type Limit: int
-        :param _VectorSearchRadius: 向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5
+        :param _VectorSearchRadius: <p>向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5</p>
         :type VectorSearchRadius: float
-        :param _VectorSearchTopK: 指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
+        :param _VectorSearchTopK: <p>指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100</p>
         :type VectorSearchTopK: int
-        :param _Order: 搜索结果的排序方式，可选值：
-
-- `CORRELATION`：按相关性（默认）
-- `TIME_ASC`：按时间升序
-- `TIME_DESC`：按时间降序
+        :param _Order: <p>搜索结果的排序方式，可选值：</p><ul><li><code>CORRELATION</code>：按相关性（默认）</li><li><code>TIME_ASC</code>：按时间升序</li><li><code>TIME_DESC</code>：按时间降序</li></ul>
         :type Order: str
         """
         self._ProductId = None
@@ -27200,7 +27182,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        r"""产品ID
+        r"""<p>产品ID</p>
         :rtype: str
         """
         return self._ProductId
@@ -27211,7 +27193,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -27222,7 +27204,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""自然语言查询
+        r"""<p>自然语言查询</p>
         :rtype: str
         """
         return self._Query
@@ -27233,7 +27215,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def SummaryLang(self):
-        r"""搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+        r"""<p>搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH</p>
         :rtype: str
         """
         return self._SummaryLang
@@ -27244,7 +27226,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""通道ID
+        r"""<p>通道ID</p>
         :rtype: int
         """
         return self._ChannelId
@@ -27255,7 +27237,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def EnableSummary(self):
-        r"""是否需要返回总结，默认为True；  开启后会加大接口响应时长
+        r"""<p>是否需要返回总结，默认为True；  开启后会加大接口响应时长</p>
         :rtype: bool
         """
         return self._EnableSummary
@@ -27266,12 +27248,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def StartTimeMs(self):
-        r"""开始时间。
-
-注：
-1. 单位为毫秒（ms）
-2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）
-3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+        r"""<p>开始时间。</p><p>注：</p><ol><li>单位为毫秒（ms）</li><li>如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）</li><li>只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为&quot;过去三天关于猫咪的视频&quot;， 则会将&quot;过去三天忽略&quot;）</li></ol>
         :rtype: int
         """
         return self._StartTimeMs
@@ -27282,12 +27259,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def EndTimeMs(self):
-        r"""结束时间。
-
-注：
-1. 单位为毫秒（ms）
-2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）
-3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+        r"""<p>结束时间。</p><p>注：</p><ol><li>单位为毫秒（ms）</li><li>如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）</li><li>只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为&quot;过去三天关于猫咪的视频&quot;， 则会将&quot;过去三天忽略&quot;）</li></ol>
         :rtype: int
         """
         return self._EndTimeMs
@@ -27298,11 +27270,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        r"""时区。默认值：Asia/Shanghai
-
-注：
-符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
-
+        r"""<p>时区。默认值：Asia/Shanghai</p><p>注：<br>符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok</p>
         :rtype: str
         """
         return self._TimeZone
@@ -27313,7 +27281,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def SearchMode(self):
-        r"""取值为1表示高级搜索，取值为2表示简单搜索，默认为1
+        r"""<p>取值为1表示高级搜索，取值为2表示简单搜索，默认为1</p>
         :rtype: int
         """
         return self._SearchMode
@@ -27324,7 +27292,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50
+        r"""<p>最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50</p>
         :rtype: int
         """
         return self._Limit
@@ -27335,7 +27303,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def VectorSearchRadius(self):
-        r"""向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5
+        r"""<p>向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5</p>
         :rtype: float
         """
         return self._VectorSearchRadius
@@ -27346,7 +27314,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def VectorSearchTopK(self):
-        r"""指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
+        r"""<p>指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100</p>
         :rtype: int
         """
         return self._VectorSearchTopK
@@ -27357,11 +27325,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""搜索结果的排序方式，可选值：
-
-- `CORRELATION`：按相关性（默认）
-- `TIME_ASC`：按时间升序
-- `TIME_DESC`：按时间降序
+        r"""<p>搜索结果的排序方式，可选值：</p><ul><li><code>CORRELATION</code>：按相关性（默认）</li><li><code>TIME_ASC</code>：按时间升序</li><li><code>TIME_DESC</code>：按时间降序</li></ul>
         :rtype: str
         """
         return self._Order
@@ -27403,11 +27367,11 @@ class InvokeAISearchServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Summary: 基于搜索结果的总结
+        :param _Summary: <p>基于搜索结果的总结</p>
         :type Summary: str
-        :param _Targets: 视频结果集
+        :param _Targets: <p>视频结果集</p>
         :type Targets: list of TargetInfo
-        :param _VideoURL: 视频回放URL
+        :param _VideoURL: <p>视频回放URL</p>
         :type VideoURL: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27419,7 +27383,7 @@ class InvokeAISearchServiceResponse(AbstractModel):
 
     @property
     def Summary(self):
-        r"""基于搜索结果的总结
+        r"""<p>基于搜索结果的总结</p>
         :rtype: str
         """
         return self._Summary
@@ -27430,7 +27394,7 @@ class InvokeAISearchServiceResponse(AbstractModel):
 
     @property
     def Targets(self):
-        r"""视频结果集
+        r"""<p>视频结果集</p>
         :rtype: list of TargetInfo
         """
         return self._Targets
@@ -27441,7 +27405,7 @@ class InvokeAISearchServiceResponse(AbstractModel):
 
     @property
     def VideoURL(self):
-        r"""视频回放URL
+        r"""<p>视频回放URL</p>
         :rtype: str
         """
         return self._VideoURL
@@ -41855,23 +41819,23 @@ class TargetInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 视频唯一ID
+        :param _Id: <p>视频唯一ID</p>
         :type Id: str
-        :param _ProductId: 产品ID
+        :param _ProductId: <p>产品ID</p>
         :type ProductId: str
-        :param _DeviceName: 设备名称
+        :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _StartTimeMs: 视频起始时间（毫秒级Unix时间戳）
+        :param _StartTimeMs: <p>视频起始时间（毫秒级Unix时间戳）</p>
         :type StartTimeMs: int
-        :param _EndTimeMs: 视频结束时间（毫秒级Unix时间戳）
+        :param _EndTimeMs: <p>视频结束时间（毫秒级Unix时间戳）</p>
         :type EndTimeMs: int
-        :param _EventId: 用户自定义事件ID，后续扩展使用
+        :param _EventId: <p>用户自定义事件ID，后续扩展使用</p>
         :type EventId: str
-        :param _Summary: 视频内容摘要
+        :param _Summary: <p>视频内容摘要</p>
         :type Summary: str
-        :param _ChannelId: 通道ID
+        :param _ChannelId: <p>通道ID</p>
         :type ChannelId: int
-        :param _Thumbnail: 缩略图路径
+        :param _Thumbnail: <p>缩略图路径</p>
         :type Thumbnail: str
         """
         self._Id = None
@@ -41886,7 +41850,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def Id(self):
-        r"""视频唯一ID
+        r"""<p>视频唯一ID</p>
         :rtype: str
         """
         return self._Id
@@ -41897,7 +41861,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def ProductId(self):
-        r"""产品ID
+        r"""<p>产品ID</p>
         :rtype: str
         """
         return self._ProductId
@@ -41908,7 +41872,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -41919,7 +41883,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def StartTimeMs(self):
-        r"""视频起始时间（毫秒级Unix时间戳）
+        r"""<p>视频起始时间（毫秒级Unix时间戳）</p>
         :rtype: int
         """
         return self._StartTimeMs
@@ -41930,7 +41894,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def EndTimeMs(self):
-        r"""视频结束时间（毫秒级Unix时间戳）
+        r"""<p>视频结束时间（毫秒级Unix时间戳）</p>
         :rtype: int
         """
         return self._EndTimeMs
@@ -41941,7 +41905,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def EventId(self):
-        r"""用户自定义事件ID，后续扩展使用
+        r"""<p>用户自定义事件ID，后续扩展使用</p>
         :rtype: str
         """
         return self._EventId
@@ -41952,7 +41916,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def Summary(self):
-        r"""视频内容摘要
+        r"""<p>视频内容摘要</p>
         :rtype: str
         """
         return self._Summary
@@ -41963,7 +41927,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""通道ID
+        r"""<p>通道ID</p>
         :rtype: int
         """
         return self._ChannelId
@@ -41974,7 +41938,7 @@ class TargetInfo(AbstractModel):
 
     @property
     def Thumbnail(self):
-        r"""缩略图路径
+        r"""<p>缩略图路径</p>
         :rtype: str
         """
         return self._Thumbnail

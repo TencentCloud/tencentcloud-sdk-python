@@ -2721,29 +2721,32 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统唯一 ID
+        :param _FileSystemId: <p>文件系统唯一 ID</p>
         :type FileSystemId: str
-        :param _Type: 生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载
+        :param _Type: <p>生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载</p>
         :type Type: str
-        :param _TaskPath: 需要沉降的路径或文件，仅支持传入1个路径，不允许为空。
-        :type TaskPath: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _DataFlowId: 数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
+        :param _TaskPath: <p>需要沉降的路径或文件，仅支持传入1个路径，不允许为空。</p>
+        :type TaskPath: str
+        :param _DataFlowId: <p>数据流动 ID ，该接口可以通过 DescribeDataFlow 查询</p>
         :type DataFlowId: str
-        :param _IsOverwrite: 	 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false
+        :param _IsOverwrite: <p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false</p>
         :type IsOverwrite: bool
+        :param _ListPath: <p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+        :type ListPath: str
         """
         self._FileSystemId = None
         self._Type = None
-        self._TaskPath = None
         self._TaskName = None
+        self._TaskPath = None
         self._DataFlowId = None
         self._IsOverwrite = None
+        self._ListPath = None
 
     @property
     def FileSystemId(self):
-        r"""文件系统唯一 ID
+        r"""<p>文件系统唯一 ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -2754,7 +2757,7 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载
+        r"""<p>生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载</p>
         :rtype: str
         """
         return self._Type
@@ -2764,19 +2767,8 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
         self._Type = Type
 
     @property
-    def TaskPath(self):
-        r"""需要沉降的路径或文件，仅支持传入1个路径，不允许为空。
-        :rtype: str
-        """
-        return self._TaskPath
-
-    @TaskPath.setter
-    def TaskPath(self, TaskPath):
-        self._TaskPath = TaskPath
-
-    @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -2786,8 +2778,19 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
         self._TaskName = TaskName
 
     @property
+    def TaskPath(self):
+        r"""<p>需要沉降的路径或文件，仅支持传入1个路径，不允许为空。</p>
+        :rtype: str
+        """
+        return self._TaskPath
+
+    @TaskPath.setter
+    def TaskPath(self, TaskPath):
+        self._TaskPath = TaskPath
+
+    @property
     def DataFlowId(self):
-        r"""数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
+        r"""<p>数据流动 ID ，该接口可以通过 DescribeDataFlow 查询</p>
         :rtype: str
         """
         return self._DataFlowId
@@ -2798,7 +2801,7 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
 
     @property
     def IsOverwrite(self):
-        r"""	 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false
+        r"""<p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false</p>
         :rtype: bool
         """
         return self._IsOverwrite
@@ -2807,14 +2810,26 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
     def IsOverwrite(self, IsOverwrite):
         self._IsOverwrite = IsOverwrite
 
+    @property
+    def ListPath(self):
+        r"""<p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+        :rtype: str
+        """
+        return self._ListPath
+
+    @ListPath.setter
+    def ListPath(self, ListPath):
+        self._ListPath = ListPath
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._Type = params.get("Type")
-        self._TaskPath = params.get("TaskPath")
         self._TaskName = params.get("TaskName")
+        self._TaskPath = params.get("TaskPath")
         self._DataFlowId = params.get("DataFlowId")
         self._IsOverwrite = params.get("IsOverwrite")
+        self._ListPath = params.get("ListPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2832,7 +2847,7 @@ class CreateLifecycleDataTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID
+        :param _TaskId: <p>任务 ID</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2842,7 +2857,7 @@ class CreateLifecycleDataTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID
+        r"""<p>任务 ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -8367,58 +8382,46 @@ class LifecycleDataTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
-        :param _TaskStatus: 任务状态.
-init：未执行
-running：执行中，finished：已完成
-,failed：失败
-,stopping：停止中,stopped：已停止
+        :param _TaskStatus: <p>任务状态.<br>init：未执行<br>running：执行中，finished：已完成<br>,failed：失败<br>,stopping：停止中,stopped：已停止</p>
         :type TaskStatus: str
-        :param _CreationTime: 任务创建时间
+        :param _CreationTime: <p>任务创建时间</p>
         :type CreationTime: str
-        :param _FinishTime: 任务结束时间
+        :param _FinishTime: <p>任务结束时间</p>
         :type FinishTime: str
-        :param _FileTotalCount: 文件总数
+        :param _FileTotalCount: <p>文件总数</p>
         :type FileTotalCount: int
-        :param _FileSuccessedCount: 处理成功文件数量
+        :param _FileSuccessedCount: <p>处理成功文件数量</p>
         :type FileSuccessedCount: int
-        :param _FileFailedCount: 当前已经失败的文件数
+        :param _FileFailedCount: <p>当前已经失败的文件数</p>
         :type FileFailedCount: int
-        :param _FileTotalSize: 文件容量，单位Byte
-
-
+        :param _FileTotalSize: <p>文件容量，单位Byte</p>
         :type FileTotalSize: int
-        :param _FileSuccessedSize: 已处理完成的文件容量，单位Byte
-
-
+        :param _FileSuccessedSize: <p>已处理完成的文件容量，单位Byte</p>
         :type FileSuccessedSize: int
-        :param _FileFailedSize: 已处理失败文件容量，单位Byte
-
+        :param _FileFailedSize: <p>已处理失败文件容量，单位Byte</p>
         :type FileFailedSize: int
-        :param _FileTotalList: 总文件列表
+        :param _FileTotalList: <p>总文件列表</p>
         :type FileTotalList: str
-        :param _FileSuccessedList: 成功的文件列表
+        :param _FileSuccessedList: <p>成功的文件列表</p>
         :type FileSuccessedList: str
-        :param _FileFailedList: 失败文件的列表
+        :param _FileFailedList: <p>失败文件的列表</p>
         :type FileFailedList: str
-        :param _FileSystemId: FileSystemId
+        :param _FileSystemId: <p>FileSystemId</p>
         :type FileSystemId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _TaskPath: 任务路径
+        :param _TaskPath: <p>任务路径</p>
         :type TaskPath: str
-        :param _Type: 任务类型,archive:表示沉降任务，restore：表示拉取任务
+        :param _Type: <p>任务类型,archive:表示沉降任务，restore：表示拉取任务</p>
         :type Type: str
-        :param _DataFlowId: 数据流动Id
+        :param _DataFlowId: <p>数据流动Id</p>
         :type DataFlowId: str
-        :param _IsOverwrite: 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
-
-ture：覆盖
-
-false：不覆盖（同时也不会释放热存数据）
-为空时，默认为false
+        :param _IsOverwrite: <p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。</p><p>ture：覆盖</p><p>false：不覆盖（同时也不会释放热存数据）<br>为空时，默认为false</p>
         :type IsOverwrite: bool
+        :param _ListPath: <p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+        :type ListPath: str
         """
         self._TaskId = None
         self._TaskStatus = None
@@ -8439,10 +8442,11 @@ false：不覆盖（同时也不会释放热存数据）
         self._Type = None
         self._DataFlowId = None
         self._IsOverwrite = None
+        self._ListPath = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -8453,11 +8457,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def TaskStatus(self):
-        r"""任务状态.
-init：未执行
-running：执行中，finished：已完成
-,failed：失败
-,stopping：停止中,stopped：已停止
+        r"""<p>任务状态.<br>init：未执行<br>running：执行中，finished：已完成<br>,failed：失败<br>,stopping：停止中,stopped：已停止</p>
         :rtype: str
         """
         return self._TaskStatus
@@ -8468,7 +8468,7 @@ running：执行中，finished：已完成
 
     @property
     def CreationTime(self):
-        r"""任务创建时间
+        r"""<p>任务创建时间</p>
         :rtype: str
         """
         return self._CreationTime
@@ -8479,7 +8479,7 @@ running：执行中，finished：已完成
 
     @property
     def FinishTime(self):
-        r"""任务结束时间
+        r"""<p>任务结束时间</p>
         :rtype: str
         """
         return self._FinishTime
@@ -8490,7 +8490,7 @@ running：执行中，finished：已完成
 
     @property
     def FileTotalCount(self):
-        r"""文件总数
+        r"""<p>文件总数</p>
         :rtype: int
         """
         return self._FileTotalCount
@@ -8501,7 +8501,7 @@ running：执行中，finished：已完成
 
     @property
     def FileSuccessedCount(self):
-        r"""处理成功文件数量
+        r"""<p>处理成功文件数量</p>
         :rtype: int
         """
         return self._FileSuccessedCount
@@ -8512,7 +8512,7 @@ running：执行中，finished：已完成
 
     @property
     def FileFailedCount(self):
-        r"""当前已经失败的文件数
+        r"""<p>当前已经失败的文件数</p>
         :rtype: int
         """
         return self._FileFailedCount
@@ -8523,9 +8523,7 @@ running：执行中，finished：已完成
 
     @property
     def FileTotalSize(self):
-        r"""文件容量，单位Byte
-
-
+        r"""<p>文件容量，单位Byte</p>
         :rtype: int
         """
         return self._FileTotalSize
@@ -8536,9 +8534,7 @@ running：执行中，finished：已完成
 
     @property
     def FileSuccessedSize(self):
-        r"""已处理完成的文件容量，单位Byte
-
-
+        r"""<p>已处理完成的文件容量，单位Byte</p>
         :rtype: int
         """
         return self._FileSuccessedSize
@@ -8549,8 +8545,7 @@ running：执行中，finished：已完成
 
     @property
     def FileFailedSize(self):
-        r"""已处理失败文件容量，单位Byte
-
+        r"""<p>已处理失败文件容量，单位Byte</p>
         :rtype: int
         """
         return self._FileFailedSize
@@ -8561,7 +8556,7 @@ running：执行中，finished：已完成
 
     @property
     def FileTotalList(self):
-        r"""总文件列表
+        r"""<p>总文件列表</p>
         :rtype: str
         """
         return self._FileTotalList
@@ -8572,7 +8567,7 @@ running：执行中，finished：已完成
 
     @property
     def FileSuccessedList(self):
-        r"""成功的文件列表
+        r"""<p>成功的文件列表</p>
         :rtype: str
         """
         return self._FileSuccessedList
@@ -8583,7 +8578,7 @@ running：执行中，finished：已完成
 
     @property
     def FileFailedList(self):
-        r"""失败文件的列表
+        r"""<p>失败文件的列表</p>
         :rtype: str
         """
         return self._FileFailedList
@@ -8594,7 +8589,7 @@ running：执行中，finished：已完成
 
     @property
     def FileSystemId(self):
-        r"""FileSystemId
+        r"""<p>FileSystemId</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -8605,7 +8600,7 @@ running：执行中，finished：已完成
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -8616,7 +8611,7 @@ running：执行中，finished：已完成
 
     @property
     def TaskPath(self):
-        r"""任务路径
+        r"""<p>任务路径</p>
         :rtype: str
         """
         return self._TaskPath
@@ -8627,7 +8622,7 @@ running：执行中，finished：已完成
 
     @property
     def Type(self):
-        r"""任务类型,archive:表示沉降任务，restore：表示拉取任务
+        r"""<p>任务类型,archive:表示沉降任务，restore：表示拉取任务</p>
         :rtype: str
         """
         return self._Type
@@ -8638,7 +8633,7 @@ running：执行中，finished：已完成
 
     @property
     def DataFlowId(self):
-        r"""数据流动Id
+        r"""<p>数据流动Id</p>
         :rtype: str
         """
         return self._DataFlowId
@@ -8649,12 +8644,7 @@ running：执行中，finished：已完成
 
     @property
     def IsOverwrite(self):
-        r"""当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
-
-ture：覆盖
-
-false：不覆盖（同时也不会释放热存数据）
-为空时，默认为false
+        r"""<p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。</p><p>ture：覆盖</p><p>false：不覆盖（同时也不会释放热存数据）<br>为空时，默认为false</p>
         :rtype: bool
         """
         return self._IsOverwrite
@@ -8662,6 +8652,17 @@ false：不覆盖（同时也不会释放热存数据）
     @IsOverwrite.setter
     def IsOverwrite(self, IsOverwrite):
         self._IsOverwrite = IsOverwrite
+
+    @property
+    def ListPath(self):
+        r"""<p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+        :rtype: str
+        """
+        return self._ListPath
+
+    @ListPath.setter
+    def ListPath(self, ListPath):
+        self._ListPath = ListPath
 
 
     def _deserialize(self, params):
@@ -8684,6 +8685,7 @@ false：不覆盖（同时也不会释放热存数据）
         self._Type = params.get("Type")
         self._DataFlowId = params.get("DataFlowId")
         self._IsOverwrite = params.get("IsOverwrite")
+        self._ListPath = params.get("ListPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

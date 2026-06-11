@@ -12663,6 +12663,282 @@ class AiSampleWordInfo(AbstractModel):
         
 
 
+class AiTryOnConfig(AbstractModel):
+    r"""虚拟试穿任务配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>换装模型，取值：</p><ul><li>WAND-tryon-1.0-lite</li><li>WAND-tryon-1.0-flash</li><li>WAND-tryon-1.0-pro</li></ul>
+        :type Model: str
+        :param _Prompt: <p>换装指令。</p><p>为空时使用内置指令。</p>
+        :type Prompt: str
+        :param _Resolution: <p>输出图片分辨率，取值：</p><ul><li>1K</li><li>2K</li><li>4K</li></ul><p>默认值：1K</p>
+        :type Resolution: str
+        """
+        self._Model = None
+        self._Prompt = None
+        self._Resolution = None
+
+    @property
+    def Model(self):
+        r"""<p>换装模型，取值：</p><ul><li>WAND-tryon-1.0-lite</li><li>WAND-tryon-1.0-flash</li><li>WAND-tryon-1.0-pro</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Prompt(self):
+        r"""<p>换装指令。</p><p>为空时使用内置指令。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Resolution(self):
+        r"""<p>输出图片分辨率，取值：</p><ul><li>1K</li><li>2K</li><li>4K</li></ul><p>默认值：1K</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Prompt = params.get("Prompt")
+        self._Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioExtraParam(AbstractModel):
+    r"""Aigc生音频扩展参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: <p>资源id，根据具体需要填写。</p>
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源id，根据具体需要填写。</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioOutputAudioInfo(AbstractModel):
+    r"""Aigc生音频任务，输出的音频信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>音频URl。</p>
+        :type Url: str
+        :param _Duration: <p>音频时长。</p>
+        :type Duration: int
+        """
+        self._Url = None
+        self._Duration = None
+
+    @property
+    def Url(self):
+        r"""<p>音频URl。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Duration(self):
+        r"""<p>音频时长。</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioOutputVideoInfo(AbstractModel):
+    r"""Aigc生音频任务，输出的视频信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>视频URL。</p>
+        :type Url: str
+        :param _Duration: <p>视频时长。</p>
+        :type Duration: int
+        """
+        self._Url = None
+        self._Duration = None
+
+    @property
+    def Url(self):
+        r"""<p>视频URL。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Duration(self):
+        r"""<p>视频时长。</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioReferenceAudioInfo(AbstractModel):
+    r"""参考音频信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioUrl: <p>参考音频URL信息。需外网可访问。</p>
+        :type AudioUrl: str
+        """
+        self._AudioUrl = None
+
+    @property
+    def AudioUrl(self):
+        r"""<p>参考音频URL信息。需外网可访问。</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+
+    def _deserialize(self, params):
+        self._AudioUrl = params.get("AudioUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioReferenceVideoInfo(AbstractModel):
+    r"""用于AIGC视频生成的参考视频素材。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoUrl: <p>参考视频url。需要外网可访问。</p>
+        :type VideoUrl: str
+        """
+        self._VideoUrl = None
+
+    @property
+    def VideoUrl(self):
+        r"""<p>参考视频url。需要外网可访问。</p>
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+
+    def _deserialize(self, params):
+        self._VideoUrl = params.get("VideoUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcImageExtraParam(AbstractModel):
     r"""用于AIGC创作图片时用到的扩展参数信息。
 
@@ -20006,6 +20282,249 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAigcAudioTaskRequest(AbstractModel):
+    r"""CreateAigcAudioTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称。生音乐当前支持的模型: GL、MinimaxMusic。</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：2.0、3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>
+        :type ModelVersion: str
+        :param _SceneType: <p>指定场景生音频。音乐: music。</p>
+        :type SceneType: str
+        :param _Prompt: <p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
+        :type Prompt: str
+        :param _VideoInfos: <p>参考视频信息。仅部分模型支持。</p>
+        :type VideoInfos: list of AigcAudioReferenceVideoInfo
+        :param _AudioInfos: <p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+        :type AudioInfos: list of AigcAudioReferenceAudioInfo
+        :param _OutputAudioFormat: <p>输出音频格式，默认不填。mp3、wav。</p>
+        :type OutputAudioFormat: str
+        :param _StoreCosParam: <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
+        :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        :param _ExtraParameters: <p>用于传入要求的额外参数。</p>
+        :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
+        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p>
+        :type AdditionalParameters: str
+        :param _Operator: <p>接口操作者名称。</p>
+        :type Operator: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+        self._SceneType = None
+        self._Prompt = None
+        self._VideoInfos = None
+        self._AudioInfos = None
+        self._OutputAudioFormat = None
+        self._StoreCosParam = None
+        self._ExtraParameters = None
+        self._AdditionalParameters = None
+        self._Operator = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称。生音乐当前支持的模型: GL、MinimaxMusic。</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：2.0、3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def SceneType(self):
+        r"""<p>指定场景生音频。音乐: music。</p>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def Prompt(self):
+        r"""<p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def VideoInfos(self):
+        r"""<p>参考视频信息。仅部分模型支持。</p>
+        :rtype: list of AigcAudioReferenceVideoInfo
+        """
+        return self._VideoInfos
+
+    @VideoInfos.setter
+    def VideoInfos(self, VideoInfos):
+        self._VideoInfos = VideoInfos
+
+    @property
+    def AudioInfos(self):
+        r"""<p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+        :rtype: list of AigcAudioReferenceAudioInfo
+        """
+        return self._AudioInfos
+
+    @AudioInfos.setter
+    def AudioInfos(self, AudioInfos):
+        self._AudioInfos = AudioInfos
+
+    @property
+    def OutputAudioFormat(self):
+        r"""<p>输出音频格式，默认不填。mp3、wav。</p>
+        :rtype: str
+        """
+        return self._OutputAudioFormat
+
+    @OutputAudioFormat.setter
+    def OutputAudioFormat(self, OutputAudioFormat):
+        self._OutputAudioFormat = OutputAudioFormat
+
+    @property
+    def StoreCosParam(self):
+        r"""<p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        """
+        return self._StoreCosParam
+
+    @StoreCosParam.setter
+    def StoreCosParam(self, StoreCosParam):
+        self._StoreCosParam = StoreCosParam
+
+    @property
+    def ExtraParameters(self):
+        r"""<p>用于传入要求的额外参数。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
+        """
+        return self._ExtraParameters
+
+    @ExtraParameters.setter
+    def ExtraParameters(self, ExtraParameters):
+        self._ExtraParameters = ExtraParameters
+
+    @property
+    def AdditionalParameters(self):
+        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p>
+        :rtype: str
+        """
+        return self._AdditionalParameters
+
+    @AdditionalParameters.setter
+    def AdditionalParameters(self, AdditionalParameters):
+        self._AdditionalParameters = AdditionalParameters
+
+    @property
+    def Operator(self):
+        r"""<p>接口操作者名称。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._SceneType = params.get("SceneType")
+        self._Prompt = params.get("Prompt")
+        if params.get("VideoInfos") is not None:
+            self._VideoInfos = []
+            for item in params.get("VideoInfos"):
+                obj = AigcAudioReferenceVideoInfo()
+                obj._deserialize(item)
+                self._VideoInfos.append(obj)
+        if params.get("AudioInfos") is not None:
+            self._AudioInfos = []
+            for item in params.get("AudioInfos"):
+                obj = AigcAudioReferenceAudioInfo()
+                obj._deserialize(item)
+                self._AudioInfos.append(obj)
+        self._OutputAudioFormat = params.get("OutputAudioFormat")
+        if params.get("StoreCosParam") is not None:
+            self._StoreCosParam = AigcStoreCosParam()
+            self._StoreCosParam._deserialize(params.get("StoreCosParam"))
+        if params.get("ExtraParameters") is not None:
+            self._ExtraParameters = AigcAudioExtraParam()
+            self._ExtraParameters._deserialize(params.get("ExtraParameters"))
+        self._AdditionalParameters = params.get("AdditionalParameters")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcAudioTaskResponse(AbstractModel):
+    r"""CreateAigcAudioTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务创建成功后，返回的任务ID。<br>调用查询接口，轮询获取任务进度及生成结果。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务创建成功后，返回的任务ID。<br>调用查询接口，轮询获取任务进度及生成结果。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcImageTaskRequest(AbstractModel):
     r"""CreateAigcImageTask请求参数结构体
 
@@ -20255,7 +20774,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type ModelName: str
         :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
         :type ModelVersion: str
-        :param _SceneType: <p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li></ol>
+        :param _SceneType: <p>指定场景生成视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li><li>Hunyuan支持: 3d世界模型, 3d_scene；涉及的返回文件非视频。</li></ol>
         :type SceneType: str
         :param _Prompt: <p>生成视频的描述。当未传入图片时，此参数必填。</p>
         :type Prompt: str
@@ -20322,7 +20841,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""<p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li></ol>
+        r"""<p>指定场景生成视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li><li>Hunyuan支持: 3d世界模型, 3d_scene；涉及的返回文件非视频。</li></ol>
         :rtype: str
         """
         return self._SceneType
@@ -30375,6 +30894,140 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
                 obj = AdaptiveDynamicStreamingTemplate()
                 obj._deserialize(item)
                 self._AdaptiveDynamicStreamingTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcAudioTaskRequest(AbstractModel):
+    r"""DescribeAigcAudioTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>创建AIGC生视频任务时，返回的任务ID。</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>创建AIGC生视频任务时，返回的任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcAudioTaskResponse(AbstractModel):
+    r"""DescribeAigcAudioTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务当前状态。 WAIT：等待中， RUN：执行中， FAIL：任务失败， DONE：任务成功。</p>
+        :type Status: str
+        :param _Message: <p>当任务状态为 FAIL时，返回失败信息。</p>
+        :type Message: str
+        :param _AudioInfos: <p>输出的音频信息。</p>
+        :type AudioInfos: list of AigcAudioOutputAudioInfo
+        :param _VideoInfos: <p>输出的视频信息，仅视频配音等场景会输出。</p>
+        :type VideoInfos: list of AigcAudioOutputVideoInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._AudioInfos = None
+        self._VideoInfos = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>任务当前状态。 WAIT：等待中， RUN：执行中， FAIL：任务失败， DONE：任务成功。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""<p>当任务状态为 FAIL时，返回失败信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def AudioInfos(self):
+        r"""<p>输出的音频信息。</p>
+        :rtype: list of AigcAudioOutputAudioInfo
+        """
+        return self._AudioInfos
+
+    @AudioInfos.setter
+    def AudioInfos(self, AudioInfos):
+        self._AudioInfos = AudioInfos
+
+    @property
+    def VideoInfos(self):
+        r"""<p>输出的视频信息，仅视频配音等场景会输出。</p>
+        :rtype: list of AigcAudioOutputVideoInfo
+        """
+        return self._VideoInfos
+
+    @VideoInfos.setter
+    def VideoInfos(self, VideoInfos):
+        self._VideoInfos = VideoInfos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        if params.get("AudioInfos") is not None:
+            self._AudioInfos = []
+            for item in params.get("AudioInfos"):
+                obj = AigcAudioOutputAudioInfo()
+                obj._deserialize(item)
+                self._AudioInfos.append(obj)
+        if params.get("VideoInfos") is not None:
+            self._VideoInfos = []
+            for item in params.get("VideoInfos"):
+                obj = AigcAudioOutputVideoInfo()
+                obj._deserialize(item)
+                self._VideoInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -49769,22 +50422,24 @@ class ImageTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EncodeConfig: 图片编码配置。
+        :param _EncodeConfig: <p>图片编码配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncodeConfig: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
-        :param _EnhanceConfig: 图片增强配置。
+        :param _EnhanceConfig: <p>图片增强配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
-        :param _EraseConfig: 图片擦除配置。
+        :param _EraseConfig: <p>图片擦除配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EraseConfig: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
-        :param _BlindWatermarkConfig: 盲水印配置。
+        :param _BlindWatermarkConfig: <p>盲水印配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkConfig`
-        :param _BeautyConfig: 美颜配置。
+        :param _BeautyConfig: <p>美颜配置。</p>
         :type BeautyConfig: :class:`tencentcloud.mps.v20190612.models.BeautyConfig`
-        :param _TransformConfig: 图片基础转换能力。
+        :param _TransformConfig: <p>图片基础转换能力。</p>
         :type TransformConfig: :class:`tencentcloud.mps.v20190612.models.ImageTransformConfig`
+        :param _AiTryOnConfig: <p>Ai 换装配置。</p>
+        :type AiTryOnConfig: :class:`tencentcloud.mps.v20190612.models.AiTryOnConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
@@ -49792,10 +50447,11 @@ class ImageTaskInput(AbstractModel):
         self._BlindWatermarkConfig = None
         self._BeautyConfig = None
         self._TransformConfig = None
+        self._AiTryOnConfig = None
 
     @property
     def EncodeConfig(self):
-        r"""图片编码配置。
+        r"""<p>图片编码配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
         """
@@ -49807,7 +50463,7 @@ class ImageTaskInput(AbstractModel):
 
     @property
     def EnhanceConfig(self):
-        r"""图片增强配置。
+        r"""<p>图片增强配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
         """
@@ -49819,7 +50475,7 @@ class ImageTaskInput(AbstractModel):
 
     @property
     def EraseConfig(self):
-        r"""图片擦除配置。
+        r"""<p>图片擦除配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
         """
@@ -49831,7 +50487,7 @@ class ImageTaskInput(AbstractModel):
 
     @property
     def BlindWatermarkConfig(self):
-        r"""盲水印配置。
+        r"""<p>盲水印配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkConfig`
         """
@@ -49843,7 +50499,7 @@ class ImageTaskInput(AbstractModel):
 
     @property
     def BeautyConfig(self):
-        r"""美颜配置。
+        r"""<p>美颜配置。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.BeautyConfig`
         """
         return self._BeautyConfig
@@ -49854,7 +50510,7 @@ class ImageTaskInput(AbstractModel):
 
     @property
     def TransformConfig(self):
-        r"""图片基础转换能力。
+        r"""<p>图片基础转换能力。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTransformConfig`
         """
         return self._TransformConfig
@@ -49862,6 +50518,17 @@ class ImageTaskInput(AbstractModel):
     @TransformConfig.setter
     def TransformConfig(self, TransformConfig):
         self._TransformConfig = TransformConfig
+
+    @property
+    def AiTryOnConfig(self):
+        r"""<p>Ai 换装配置。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiTryOnConfig`
+        """
+        return self._AiTryOnConfig
+
+    @AiTryOnConfig.setter
+    def AiTryOnConfig(self, AiTryOnConfig):
+        self._AiTryOnConfig = AiTryOnConfig
 
 
     def _deserialize(self, params):
@@ -49883,6 +50550,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("TransformConfig") is not None:
             self._TransformConfig = ImageTransformConfig()
             self._TransformConfig._deserialize(params.get("TransformConfig"))
+        if params.get("AiTryOnConfig") is not None:
+            self._AiTryOnConfig = AiTryOnConfig()
+            self._AiTryOnConfig._deserialize(params.get("AiTryOnConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -5863,6 +5863,100 @@ class CalculateBackupSaveSecExpiresResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CancelClusterServerlessScalePlanRequest(AbstractModel):
+    r"""CancelClusterServerlessScalePlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _PlanId: 计划ID
+        :type PlanId: int
+        """
+        self._ClusterId = None
+        self._PlanId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def PlanId(self):
+        r"""计划ID
+        :rtype: int
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._PlanId = params.get("PlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelClusterServerlessScalePlanResponse(AbstractModel):
+    r"""CancelClusterServerlessScalePlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CheckCreateLibraDBInstanceRequest(AbstractModel):
     r"""CheckCreateLibraDBInstance请求参数结构体
 
@@ -7251,6 +7345,222 @@ class ClusterParamModifyLog(AbstractModel):
         
 
 
+class ClusterPeriodScalePolicy(AbstractModel):
+    r"""集群周期弹性策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: <p>策略ID</p>
+        :type PolicyId: str
+        :param _InstanceType: <p>实例类型。rw-读写类型，ro-只读类型。</p>
+        :type InstanceType: str
+        :param _MinCpu: <p>弹性下限, 后续废弃, 请使用MinCcu</p>
+        :type MinCpu: float
+        :param _MaxCpu: <p>弹性上限,后续废弃，请使用MaxCcu</p>
+        :type MaxCpu: float
+        :param _ScaleStartTime: <p>弹性开始时间</p>
+        :type ScaleStartTime: str
+        :param _ScaleEndTime: <p>弹性结束时间</p>
+        :type ScaleEndTime: str
+        :param _PolicyStartTime: <p>策略有效起始日期时间</p>
+        :type PolicyStartTime: str
+        :param _PolicyEndTime: <p>策略有效截止日期时间</p>
+        :type PolicyEndTime: str
+        :param _PeriodType: <p>周期类型。day-天， week-星期，month-月</p>
+        :type PeriodType: str
+        :param _PeriodConfig: <p>在周期内的时间配置。对于week，表示星期几；对于month，表示几号。对于day，此参数不生效。</p>
+        :type PeriodConfig: list of int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _Status: <p>策略状态。normal-正常，expired-过期, deleted-删除</p>
+        :type Status: str
+        """
+        self._PolicyId = None
+        self._InstanceType = None
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._ScaleStartTime = None
+        self._ScaleEndTime = None
+        self._PolicyStartTime = None
+        self._PolicyEndTime = None
+        self._PeriodType = None
+        self._PeriodConfig = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Status = None
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型。rw-读写类型，ro-只读类型。</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MinCpu(self):
+        r"""<p>弹性下限, 后续废弃, 请使用MinCcu</p>
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        r"""<p>弹性上限,后续废弃，请使用MaxCcu</p>
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def ScaleStartTime(self):
+        r"""<p>弹性开始时间</p>
+        :rtype: str
+        """
+        return self._ScaleStartTime
+
+    @ScaleStartTime.setter
+    def ScaleStartTime(self, ScaleStartTime):
+        self._ScaleStartTime = ScaleStartTime
+
+    @property
+    def ScaleEndTime(self):
+        r"""<p>弹性结束时间</p>
+        :rtype: str
+        """
+        return self._ScaleEndTime
+
+    @ScaleEndTime.setter
+    def ScaleEndTime(self, ScaleEndTime):
+        self._ScaleEndTime = ScaleEndTime
+
+    @property
+    def PolicyStartTime(self):
+        r"""<p>策略有效起始日期时间</p>
+        :rtype: str
+        """
+        return self._PolicyStartTime
+
+    @PolicyStartTime.setter
+    def PolicyStartTime(self, PolicyStartTime):
+        self._PolicyStartTime = PolicyStartTime
+
+    @property
+    def PolicyEndTime(self):
+        r"""<p>策略有效截止日期时间</p>
+        :rtype: str
+        """
+        return self._PolicyEndTime
+
+    @PolicyEndTime.setter
+    def PolicyEndTime(self, PolicyEndTime):
+        self._PolicyEndTime = PolicyEndTime
+
+    @property
+    def PeriodType(self):
+        r"""<p>周期类型。day-天， week-星期，month-月</p>
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def PeriodConfig(self):
+        r"""<p>在周期内的时间配置。对于week，表示星期几；对于month，表示几号。对于day，此参数不生效。</p>
+        :rtype: list of int
+        """
+        return self._PeriodConfig
+
+    @PeriodConfig.setter
+    def PeriodConfig(self, PeriodConfig):
+        self._PeriodConfig = PeriodConfig
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        r"""<p>策略状态。normal-正常，expired-过期, deleted-删除</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._InstanceType = params.get("InstanceType")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._ScaleStartTime = params.get("ScaleStartTime")
+        self._ScaleEndTime = params.get("ScaleEndTime")
+        self._PolicyStartTime = params.get("PolicyStartTime")
+        self._PolicyEndTime = params.get("PolicyEndTime")
+        self._PeriodType = params.get("PeriodType")
+        self._PeriodConfig = params.get("PeriodConfig")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterReadOnlyValue(AbstractModel):
     r"""集群只读开关列表
 
@@ -7292,6 +7602,286 @@ class ClusterReadOnlyValue(AbstractModel):
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._ReadOnlyValue = params.get("ReadOnlyValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterServerlessScalePlan(AbstractModel):
+    r"""集群Serveless弹性计划
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: <p>计划ID</p>
+        :type PlanId: int
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _ObjectInstance: <p>实例对象。具体是实例id或者类型。比如ro-即集群下的所有只读实例。</p>
+        :type ObjectInstance: str
+        :param _PolicyId: <p>策略ID</p>
+        :type PolicyId: str
+        :param _PolicyType: <p>策略类型</p>
+        :type PolicyType: str
+        :param _SourceMinCpu: <p>原规格下限</p>
+        :type SourceMinCpu: float
+        :param _SourceMaxCpu: <p>原规格上限</p>
+        :type SourceMaxCpu: float
+        :param _TargetMinCpu: <p>原规格下限</p>
+        :type TargetMinCpu: float
+        :param _TargetMaxCpu: <p>原规格上限</p>
+        :type TargetMaxCpu: float
+        :param _Status: <p>计划状态</p>
+        :type Status: str
+        :param _ScaleTaskId: <p>弹性任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleTaskId: int
+        :param _FailReason: <p>失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param _ExpectedStartTime: <p>计划预期开始执行时间</p>
+        :type ExpectedStartTime: str
+        :param _ExpectedEndTime: <p>计划预期结束时间</p>
+        :type ExpectedEndTime: str
+        :param _ResetTaskId: <p>恢复自动弹性任务</p>
+        :type ResetTaskId: int
+        :param _ResetType: <p>恢复自动弹性任务执行方式</p>
+        :type ResetType: str
+        :param _ResetTime: <p>恢复自动弹性任务执行时间</p>
+        :type ResetTime: str
+        """
+        self._PlanId = None
+        self._ClusterId = None
+        self._ObjectInstance = None
+        self._PolicyId = None
+        self._PolicyType = None
+        self._SourceMinCpu = None
+        self._SourceMaxCpu = None
+        self._TargetMinCpu = None
+        self._TargetMaxCpu = None
+        self._Status = None
+        self._ScaleTaskId = None
+        self._FailReason = None
+        self._ExpectedStartTime = None
+        self._ExpectedEndTime = None
+        self._ResetTaskId = None
+        self._ResetType = None
+        self._ResetTime = None
+
+    @property
+    def PlanId(self):
+        r"""<p>计划ID</p>
+        :rtype: int
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ObjectInstance(self):
+        r"""<p>实例对象。具体是实例id或者类型。比如ro-即集群下的所有只读实例。</p>
+        :rtype: str
+        """
+        return self._ObjectInstance
+
+    @ObjectInstance.setter
+    def ObjectInstance(self, ObjectInstance):
+        self._ObjectInstance = ObjectInstance
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyType(self):
+        r"""<p>策略类型</p>
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def SourceMinCpu(self):
+        r"""<p>原规格下限</p>
+        :rtype: float
+        """
+        return self._SourceMinCpu
+
+    @SourceMinCpu.setter
+    def SourceMinCpu(self, SourceMinCpu):
+        self._SourceMinCpu = SourceMinCpu
+
+    @property
+    def SourceMaxCpu(self):
+        r"""<p>原规格上限</p>
+        :rtype: float
+        """
+        return self._SourceMaxCpu
+
+    @SourceMaxCpu.setter
+    def SourceMaxCpu(self, SourceMaxCpu):
+        self._SourceMaxCpu = SourceMaxCpu
+
+    @property
+    def TargetMinCpu(self):
+        r"""<p>原规格下限</p>
+        :rtype: float
+        """
+        return self._TargetMinCpu
+
+    @TargetMinCpu.setter
+    def TargetMinCpu(self, TargetMinCpu):
+        self._TargetMinCpu = TargetMinCpu
+
+    @property
+    def TargetMaxCpu(self):
+        r"""<p>原规格上限</p>
+        :rtype: float
+        """
+        return self._TargetMaxCpu
+
+    @TargetMaxCpu.setter
+    def TargetMaxCpu(self, TargetMaxCpu):
+        self._TargetMaxCpu = TargetMaxCpu
+
+    @property
+    def Status(self):
+        r"""<p>计划状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ScaleTaskId(self):
+        r"""<p>弹性任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScaleTaskId
+
+    @ScaleTaskId.setter
+    def ScaleTaskId(self, ScaleTaskId):
+        self._ScaleTaskId = ScaleTaskId
+
+    @property
+    def FailReason(self):
+        r"""<p>失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def ExpectedStartTime(self):
+        r"""<p>计划预期开始执行时间</p>
+        :rtype: str
+        """
+        return self._ExpectedStartTime
+
+    @ExpectedStartTime.setter
+    def ExpectedStartTime(self, ExpectedStartTime):
+        self._ExpectedStartTime = ExpectedStartTime
+
+    @property
+    def ExpectedEndTime(self):
+        r"""<p>计划预期结束时间</p>
+        :rtype: str
+        """
+        return self._ExpectedEndTime
+
+    @ExpectedEndTime.setter
+    def ExpectedEndTime(self, ExpectedEndTime):
+        self._ExpectedEndTime = ExpectedEndTime
+
+    @property
+    def ResetTaskId(self):
+        r"""<p>恢复自动弹性任务</p>
+        :rtype: int
+        """
+        return self._ResetTaskId
+
+    @ResetTaskId.setter
+    def ResetTaskId(self, ResetTaskId):
+        self._ResetTaskId = ResetTaskId
+
+    @property
+    def ResetType(self):
+        r"""<p>恢复自动弹性任务执行方式</p>
+        :rtype: str
+        """
+        return self._ResetType
+
+    @ResetType.setter
+    def ResetType(self, ResetType):
+        self._ResetType = ResetType
+
+    @property
+    def ResetTime(self):
+        r"""<p>恢复自动弹性任务执行时间</p>
+        :rtype: str
+        """
+        return self._ResetTime
+
+    @ResetTime.setter
+    def ResetTime(self, ResetTime):
+        self._ResetTime = ResetTime
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        self._ClusterId = params.get("ClusterId")
+        self._ObjectInstance = params.get("ObjectInstance")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyType = params.get("PolicyType")
+        self._SourceMinCpu = params.get("SourceMinCpu")
+        self._SourceMaxCpu = params.get("SourceMaxCpu")
+        self._TargetMinCpu = params.get("TargetMinCpu")
+        self._TargetMaxCpu = params.get("TargetMaxCpu")
+        self._Status = params.get("Status")
+        self._ScaleTaskId = params.get("ScaleTaskId")
+        self._FailReason = params.get("FailReason")
+        self._ExpectedStartTime = params.get("ExpectedStartTime")
+        self._ExpectedEndTime = params.get("ExpectedEndTime")
+        self._ResetTaskId = params.get("ResetTaskId")
+        self._ResetType = params.get("ResetType")
+        self._ResetTime = params.get("ResetTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8584,6 +9174,220 @@ class CreateClusterDatabaseResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateClusterPeriodScalePolicyRequest(AbstractModel):
+    r"""CreateClusterPeriodScalePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _InstanceType: <p>实例类型。rw读写，ro-只读</p>
+        :type InstanceType: str
+        :param _ScaleStartTime: <p>当天开始弹性时间。格式是小时:分钟</p>
+        :type ScaleStartTime: str
+        :param _ScaleEndTime: <p>当天结束弹性时间。格式是小时:分钟</p>
+        :type ScaleEndTime: str
+        :param _PolicyStartTime: <p>策略生效的起始日期时间</p>
+        :type PolicyStartTime: str
+        :param _PolicyEndTime: <p>策略生效的截止日期时间</p>
+        :type PolicyEndTime: str
+        :param _PeriodType: <p>周期类型。day-天，week-周，month-月。</p>
+        :type PeriodType: str
+        :param _MinCpu: <p>弹性规格下限</p>
+        :type MinCpu: float
+        :param _MaxCpu: <p>弹性规格上限</p>
+        :type MaxCpu: float
+        :param _PeriodConfig: <p>周期内的时间列表。针对PeriodType=week， 表示星期几，比如[1,3]表示星期一、星期三。同理，对于PeriodType=month，[1,3,10]表示每月的1、3、10号。PeriodType=day则该字段无效。</p>
+        :type PeriodConfig: list of int
+        """
+        self._ClusterId = None
+        self._InstanceType = None
+        self._ScaleStartTime = None
+        self._ScaleEndTime = None
+        self._PolicyStartTime = None
+        self._PolicyEndTime = None
+        self._PeriodType = None
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._PeriodConfig = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型。rw读写，ro-只读</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def ScaleStartTime(self):
+        r"""<p>当天开始弹性时间。格式是小时:分钟</p>
+        :rtype: str
+        """
+        return self._ScaleStartTime
+
+    @ScaleStartTime.setter
+    def ScaleStartTime(self, ScaleStartTime):
+        self._ScaleStartTime = ScaleStartTime
+
+    @property
+    def ScaleEndTime(self):
+        r"""<p>当天结束弹性时间。格式是小时:分钟</p>
+        :rtype: str
+        """
+        return self._ScaleEndTime
+
+    @ScaleEndTime.setter
+    def ScaleEndTime(self, ScaleEndTime):
+        self._ScaleEndTime = ScaleEndTime
+
+    @property
+    def PolicyStartTime(self):
+        r"""<p>策略生效的起始日期时间</p>
+        :rtype: str
+        """
+        return self._PolicyStartTime
+
+    @PolicyStartTime.setter
+    def PolicyStartTime(self, PolicyStartTime):
+        self._PolicyStartTime = PolicyStartTime
+
+    @property
+    def PolicyEndTime(self):
+        r"""<p>策略生效的截止日期时间</p>
+        :rtype: str
+        """
+        return self._PolicyEndTime
+
+    @PolicyEndTime.setter
+    def PolicyEndTime(self, PolicyEndTime):
+        self._PolicyEndTime = PolicyEndTime
+
+    @property
+    def PeriodType(self):
+        r"""<p>周期类型。day-天，week-周，month-月。</p>
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def MinCpu(self):
+        r"""<p>弹性规格下限</p>
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        r"""<p>弹性规格上限</p>
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def PeriodConfig(self):
+        r"""<p>周期内的时间列表。针对PeriodType=week， 表示星期几，比如[1,3]表示星期一、星期三。同理，对于PeriodType=month，[1,3,10]表示每月的1、3、10号。PeriodType=day则该字段无效。</p>
+        :rtype: list of int
+        """
+        return self._PeriodConfig
+
+    @PeriodConfig.setter
+    def PeriodConfig(self, PeriodConfig):
+        self._PeriodConfig = PeriodConfig
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceType = params.get("InstanceType")
+        self._ScaleStartTime = params.get("ScaleStartTime")
+        self._ScaleEndTime = params.get("ScaleEndTime")
+        self._PolicyStartTime = params.get("PolicyStartTime")
+        self._PolicyEndTime = params.get("PolicyEndTime")
+        self._PeriodType = params.get("PeriodType")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._PeriodConfig = params.get("PeriodConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterPeriodScalePolicyResponse(AbstractModel):
+    r"""CreateClusterPeriodScalePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: <p>策略ID</p>
+        :type PolicyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyId = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
         self._RequestId = params.get("RequestId")
 
 
@@ -12652,135 +13456,121 @@ class CynosdbClusterDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _PhysicalZone: 物理可用区
+        :param _PhysicalZone: <p>物理可用区</p>
         :type PhysicalZone: str
-        :param _Status: 状态，支持的值如下：
-- creating：创建中
-- running：运行中
-- isolating：隔离中
-- isolated：已隔离
-- activating：从回收站重新恢复
-- offlining：下线中
-- offlined：已下线
-- deleting：删除中
-- deleted：已删除
+        :param _Status: <p>状态，支持的值如下：</p><ul><li>creating：创建中</li><li>running：运行中</li><li>isolating：隔离中</li><li>isolated：已隔离</li><li>activating：从回收站重新恢复</li><li>offlining：下线中</li><li>offlined：已下线</li><li>deleting：删除中</li><li>deleted：已删除</li></ul>
         :type Status: str
-        :param _StatusDesc: 状态描述
+        :param _StatusDesc: <p>状态描述</p>
         :type StatusDesc: str
-        :param _ServerlessStatus: 当Db类型为SERVERLESS时，serverless集群状态，可选值:
-resume
-resuming
-pause
-pausing
+        :param _ServerlessStatus: <p>当Db类型为SERVERLESS时，serverless集群状态，可选值:<br>resume<br>resuming<br>pause<br>pausing</p>
         :type ServerlessStatus: str
-        :param _StorageId: 存储Id
+        :param _StorageId: <p>存储Id</p>
         :type StorageId: str
-        :param _Storage: 存储大小，单位为G
+        :param _Storage: <p>存储大小，单位为G</p>
         :type Storage: int
-        :param _MaxStorageSize: 最大存储规格，单位为G
+        :param _MaxStorageSize: <p>最大存储规格，单位为G</p>
         :type MaxStorageSize: int
-        :param _MinStorageSize: 最小存储规格，单位为G
+        :param _MinStorageSize: <p>最小存储规格，单位为G</p>
         :type MinStorageSize: int
-        :param _StoragePayMode: 存储付费类型，1为包年包月，0为按量计费
+        :param _StoragePayMode: <p>存储付费类型，1为包年包月，0为按量计费</p>
         :type StoragePayMode: int
-        :param _VpcName: VPC名称
+        :param _VpcName: <p>VPC名称</p>
         :type VpcName: str
-        :param _VpcId: vpc唯一id
+        :param _VpcId: <p>vpc唯一id</p>
         :type VpcId: str
-        :param _SubnetName: 子网名称
+        :param _SubnetName: <p>子网名称</p>
         :type SubnetName: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _Charset: 字符集
+        :param _Charset: <p>字符集</p>
         :type Charset: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _DbType: 数据库类型
+        :param _DbType: <p>数据库类型</p>
         :type DbType: str
-        :param _DbMode: Db类型：<li>NORMAL</li><li>SERVERLESS</li>
+        :param _DbMode: <p>Db类型：<li>NORMAL</li><li>SERVERLESS</li></p>
         :type DbMode: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
-        :param _StorageLimit: 存储空间上限
+        :param _StorageLimit: <p>存储空间上限</p>
         :type StorageLimit: int
-        :param _UsedStorage: 使用容量
+        :param _UsedStorage: <p>使用容量</p>
         :type UsedStorage: int
-        :param _Vip: vip地址
+        :param _Vip: <p>vip地址</p>
         :type Vip: str
-        :param _Vport: vport端口
+        :param _Vport: <p>vport端口</p>
         :type Vport: int
-        :param _RoAddr: 集群只读实例的vip地址和vport端口
+        :param _RoAddr: <p>集群只读实例的vip地址和vport端口</p>
         :type RoAddr: list of Addr
-        :param _Ability: 集群支持的功能
+        :param _Ability: <p>集群支持的功能</p>
         :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
-        :param _CynosVersion: cynos版本
+        :param _CynosVersion: <p>cynos版本</p>
         :type CynosVersion: str
-        :param _BusinessType: 商业类型
+        :param _BusinessType: <p>商业类型</p>
         :type BusinessType: str
-        :param _HasSlaveZone: 是否有从可用区
+        :param _HasSlaveZone: <p>是否有从可用区</p>
         :type HasSlaveZone: str
-        :param _IsFreeze: 是否冻结
+        :param _IsFreeze: <p>是否冻结</p>
         :type IsFreeze: str
-        :param _Tasks: 任务列表
+        :param _Tasks: <p>任务列表</p>
         :type Tasks: list of ObjectTask
-        :param _MasterZone: 主可用区
+        :param _MasterZone: <p>主可用区</p>
         :type MasterZone: str
-        :param _SlaveZones: 从可用区列表
+        :param _SlaveZones: <p>从可用区列表</p>
         :type SlaveZones: list of str
-        :param _InstanceSet: 实例信息
+        :param _InstanceSet: <p>实例信息</p>
         :type InstanceSet: list of ClusterInstanceDetail
-        :param _PayMode: 付费模式
+        :param _PayMode: <p>付费模式</p>
         :type PayMode: int
-        :param _PeriodEndTime: 到期时间
+        :param _PeriodEndTime: <p>到期时间</p>
         :type PeriodEndTime: str
-        :param _ProjectID: 项目id
+        :param _ProjectID: <p>项目id</p>
         :type ProjectID: int
-        :param _ResourceTags: 实例绑定的tag数组信息
+        :param _ResourceTags: <p>实例绑定的tag数组信息</p>
         :type ResourceTags: list of Tag
-        :param _ProxyStatus: Proxy状态
+        :param _ProxyStatus: <p>Proxy状态</p>
         :type ProxyStatus: str
-        :param _LogBin: binlog开关，可选值：ON, OFF
+        :param _LogBin: <p>binlog开关，可选值：ON, OFF</p>
         :type LogBin: str
-        :param _IsSkipTrade: 是否跳过交易
+        :param _IsSkipTrade: <p>是否跳过交易</p>
         :type IsSkipTrade: str
-        :param _PitrType: pitr类型，可选值：normal, redo_pitr
+        :param _PitrType: <p>pitr类型，可选值：normal, redo_pitr</p>
         :type PitrType: str
-        :param _IsOpenPasswordComplexity: 是否打开密码复杂度
+        :param _IsOpenPasswordComplexity: <p>是否打开密码复杂度</p>
         :type IsOpenPasswordComplexity: str
-        :param _NetworkStatus: 网络类型
+        :param _NetworkStatus: <p>网络类型</p>
         :type NetworkStatus: str
-        :param _ResourcePackages: 集群绑定的资源包信息	
+        :param _ResourcePackages: <p>集群绑定的资源包信息</p>
         :type ResourcePackages: list of ResourcePackage
-        :param _RenewFlag: 自动续费标识，1为自动续费，0为到期不续
+        :param _RenewFlag: <p>自动续费标识，1为自动续费，0为到期不续</p>
         :type RenewFlag: int
-        :param _NetworkType: 节点网络类型
+        :param _NetworkType: <p>节点网络类型</p>
         :type NetworkType: str
-        :param _SlaveZoneAttr: 备可用区属性
+        :param _SlaveZoneAttr: <p>备可用区属性</p>
         :type SlaveZoneAttr: list of SlaveZoneAttrItem
-        :param _CynosVersionTag: 版本标签
+        :param _CynosVersionTag: <p>版本标签</p>
         :type CynosVersionTag: str
-        :param _GdnId: 全球数据库网络唯一标识
+        :param _GdnId: <p>全球数据库网络唯一标识</p>
         :type GdnId: str
-        :param _GdnRole: 集群在全球数据网络中的角色。
-主集群- primary
-从集群 - standby
-如为空，该字段无效
+        :param _GdnRole: <p>集群在全球数据网络中的角色。<br>主集群- primary<br>从集群 - standby<br>如为空，该字段无效</p>
         :type GdnRole: str
-        :param _UsedArchiveStorage: 二级存储使用量，单位：G
+        :param _UsedArchiveStorage: <p>二级存储使用量，单位：G</p>
         :type UsedArchiveStorage: int
-        :param _ArchiveStatus: 归档状态，枚举值<li>normal:正常</li><li>archiving:归档中</li><li>resuming:恢复中</li><li>archived :已归档</li>
+        :param _ArchiveStatus: <p>归档状态，枚举值<li>normal:正常</li><li>archiving:归档中</li><li>resuming:恢复中</li><li>archived :已归档</li></p>
         :type ArchiveStatus: str
-        :param _ArchiveProgress: 归档进度，百分比。
+        :param _ArchiveProgress: <p>归档进度，百分比。</p>
         :type ArchiveProgress: int
-        :param _IsOpenTDE: 是否开启透明加密
+        :param _ClusterLevel: <p>集群级别。例如 P0, P1</p>
+        :type ClusterLevel: str
+        :param _IsOpenTDE: <p>是否开启透明加密</p>
         :type IsOpenTDE: bool
         """
         self._ClusterId = None
@@ -12839,11 +13629,12 @@ pausing
         self._UsedArchiveStorage = None
         self._ArchiveStatus = None
         self._ArchiveProgress = None
+        self._ClusterLevel = None
         self._IsOpenTDE = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -12854,7 +13645,7 @@ pausing
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -12865,7 +13656,7 @@ pausing
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -12876,7 +13667,7 @@ pausing
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -12887,7 +13678,7 @@ pausing
 
     @property
     def PhysicalZone(self):
-        r"""物理可用区
+        r"""<p>物理可用区</p>
         :rtype: str
         """
         return self._PhysicalZone
@@ -12898,16 +13689,7 @@ pausing
 
     @property
     def Status(self):
-        r"""状态，支持的值如下：
-- creating：创建中
-- running：运行中
-- isolating：隔离中
-- isolated：已隔离
-- activating：从回收站重新恢复
-- offlining：下线中
-- offlined：已下线
-- deleting：删除中
-- deleted：已删除
+        r"""<p>状态，支持的值如下：</p><ul><li>creating：创建中</li><li>running：运行中</li><li>isolating：隔离中</li><li>isolated：已隔离</li><li>activating：从回收站重新恢复</li><li>offlining：下线中</li><li>offlined：已下线</li><li>deleting：删除中</li><li>deleted：已删除</li></ul>
         :rtype: str
         """
         return self._Status
@@ -12918,7 +13700,7 @@ pausing
 
     @property
     def StatusDesc(self):
-        r"""状态描述
+        r"""<p>状态描述</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -12929,11 +13711,7 @@ pausing
 
     @property
     def ServerlessStatus(self):
-        r"""当Db类型为SERVERLESS时，serverless集群状态，可选值:
-resume
-resuming
-pause
-pausing
+        r"""<p>当Db类型为SERVERLESS时，serverless集群状态，可选值:<br>resume<br>resuming<br>pause<br>pausing</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -12944,7 +13722,7 @@ pausing
 
     @property
     def StorageId(self):
-        r"""存储Id
+        r"""<p>存储Id</p>
         :rtype: str
         """
         return self._StorageId
@@ -12955,7 +13733,7 @@ pausing
 
     @property
     def Storage(self):
-        r"""存储大小，单位为G
+        r"""<p>存储大小，单位为G</p>
         :rtype: int
         """
         return self._Storage
@@ -12966,7 +13744,7 @@ pausing
 
     @property
     def MaxStorageSize(self):
-        r"""最大存储规格，单位为G
+        r"""<p>最大存储规格，单位为G</p>
         :rtype: int
         """
         return self._MaxStorageSize
@@ -12977,7 +13755,7 @@ pausing
 
     @property
     def MinStorageSize(self):
-        r"""最小存储规格，单位为G
+        r"""<p>最小存储规格，单位为G</p>
         :rtype: int
         """
         return self._MinStorageSize
@@ -12988,7 +13766,7 @@ pausing
 
     @property
     def StoragePayMode(self):
-        r"""存储付费类型，1为包年包月，0为按量计费
+        r"""<p>存储付费类型，1为包年包月，0为按量计费</p>
         :rtype: int
         """
         return self._StoragePayMode
@@ -12999,7 +13777,7 @@ pausing
 
     @property
     def VpcName(self):
-        r"""VPC名称
+        r"""<p>VPC名称</p>
         :rtype: str
         """
         return self._VpcName
@@ -13010,7 +13788,7 @@ pausing
 
     @property
     def VpcId(self):
-        r"""vpc唯一id
+        r"""<p>vpc唯一id</p>
         :rtype: str
         """
         return self._VpcId
@@ -13021,7 +13799,7 @@ pausing
 
     @property
     def SubnetName(self):
-        r"""子网名称
+        r"""<p>子网名称</p>
         :rtype: str
         """
         return self._SubnetName
@@ -13032,7 +13810,7 @@ pausing
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -13043,7 +13821,7 @@ pausing
 
     @property
     def Charset(self):
-        r"""字符集
+        r"""<p>字符集</p>
         :rtype: str
         """
         return self._Charset
@@ -13054,7 +13832,7 @@ pausing
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -13065,7 +13843,7 @@ pausing
 
     @property
     def DbType(self):
-        r"""数据库类型
+        r"""<p>数据库类型</p>
         :rtype: str
         """
         return self._DbType
@@ -13076,7 +13854,7 @@ pausing
 
     @property
     def DbMode(self):
-        r"""Db类型：<li>NORMAL</li><li>SERVERLESS</li>
+        r"""<p>Db类型：<li>NORMAL</li><li>SERVERLESS</li></p>
         :rtype: str
         """
         return self._DbMode
@@ -13087,7 +13865,7 @@ pausing
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -13098,7 +13876,7 @@ pausing
 
     @property
     def StorageLimit(self):
-        r"""存储空间上限
+        r"""<p>存储空间上限</p>
         :rtype: int
         """
         return self._StorageLimit
@@ -13109,7 +13887,7 @@ pausing
 
     @property
     def UsedStorage(self):
-        r"""使用容量
+        r"""<p>使用容量</p>
         :rtype: int
         """
         return self._UsedStorage
@@ -13120,7 +13898,7 @@ pausing
 
     @property
     def Vip(self):
-        r"""vip地址
+        r"""<p>vip地址</p>
         :rtype: str
         """
         return self._Vip
@@ -13131,7 +13909,7 @@ pausing
 
     @property
     def Vport(self):
-        r"""vport端口
+        r"""<p>vport端口</p>
         :rtype: int
         """
         return self._Vport
@@ -13142,7 +13920,7 @@ pausing
 
     @property
     def RoAddr(self):
-        r"""集群只读实例的vip地址和vport端口
+        r"""<p>集群只读实例的vip地址和vport端口</p>
         :rtype: list of Addr
         """
         return self._RoAddr
@@ -13153,7 +13931,7 @@ pausing
 
     @property
     def Ability(self):
-        r"""集群支持的功能
+        r"""<p>集群支持的功能</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         """
         return self._Ability
@@ -13164,7 +13942,7 @@ pausing
 
     @property
     def CynosVersion(self):
-        r"""cynos版本
+        r"""<p>cynos版本</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -13175,7 +13953,7 @@ pausing
 
     @property
     def BusinessType(self):
-        r"""商业类型
+        r"""<p>商业类型</p>
         :rtype: str
         """
         return self._BusinessType
@@ -13186,7 +13964,7 @@ pausing
 
     @property
     def HasSlaveZone(self):
-        r"""是否有从可用区
+        r"""<p>是否有从可用区</p>
         :rtype: str
         """
         return self._HasSlaveZone
@@ -13197,7 +13975,7 @@ pausing
 
     @property
     def IsFreeze(self):
-        r"""是否冻结
+        r"""<p>是否冻结</p>
         :rtype: str
         """
         return self._IsFreeze
@@ -13208,7 +13986,7 @@ pausing
 
     @property
     def Tasks(self):
-        r"""任务列表
+        r"""<p>任务列表</p>
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -13219,7 +13997,7 @@ pausing
 
     @property
     def MasterZone(self):
-        r"""主可用区
+        r"""<p>主可用区</p>
         :rtype: str
         """
         return self._MasterZone
@@ -13230,7 +14008,7 @@ pausing
 
     @property
     def SlaveZones(self):
-        r"""从可用区列表
+        r"""<p>从可用区列表</p>
         :rtype: list of str
         """
         return self._SlaveZones
@@ -13241,7 +14019,7 @@ pausing
 
     @property
     def InstanceSet(self):
-        r"""实例信息
+        r"""<p>实例信息</p>
         :rtype: list of ClusterInstanceDetail
         """
         return self._InstanceSet
@@ -13252,7 +14030,7 @@ pausing
 
     @property
     def PayMode(self):
-        r"""付费模式
+        r"""<p>付费模式</p>
         :rtype: int
         """
         return self._PayMode
@@ -13263,7 +14041,7 @@ pausing
 
     @property
     def PeriodEndTime(self):
-        r"""到期时间
+        r"""<p>到期时间</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -13274,7 +14052,7 @@ pausing
 
     @property
     def ProjectID(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: int
         """
         return self._ProjectID
@@ -13285,7 +14063,7 @@ pausing
 
     @property
     def ResourceTags(self):
-        r"""实例绑定的tag数组信息
+        r"""<p>实例绑定的tag数组信息</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -13296,7 +14074,7 @@ pausing
 
     @property
     def ProxyStatus(self):
-        r"""Proxy状态
+        r"""<p>Proxy状态</p>
         :rtype: str
         """
         return self._ProxyStatus
@@ -13307,7 +14085,7 @@ pausing
 
     @property
     def LogBin(self):
-        r"""binlog开关，可选值：ON, OFF
+        r"""<p>binlog开关，可选值：ON, OFF</p>
         :rtype: str
         """
         return self._LogBin
@@ -13318,7 +14096,7 @@ pausing
 
     @property
     def IsSkipTrade(self):
-        r"""是否跳过交易
+        r"""<p>是否跳过交易</p>
         :rtype: str
         """
         return self._IsSkipTrade
@@ -13329,7 +14107,7 @@ pausing
 
     @property
     def PitrType(self):
-        r"""pitr类型，可选值：normal, redo_pitr
+        r"""<p>pitr类型，可选值：normal, redo_pitr</p>
         :rtype: str
         """
         return self._PitrType
@@ -13340,7 +14118,7 @@ pausing
 
     @property
     def IsOpenPasswordComplexity(self):
-        r"""是否打开密码复杂度
+        r"""<p>是否打开密码复杂度</p>
         :rtype: str
         """
         return self._IsOpenPasswordComplexity
@@ -13351,7 +14129,7 @@ pausing
 
     @property
     def NetworkStatus(self):
-        r"""网络类型
+        r"""<p>网络类型</p>
         :rtype: str
         """
         return self._NetworkStatus
@@ -13362,7 +14140,7 @@ pausing
 
     @property
     def ResourcePackages(self):
-        r"""集群绑定的资源包信息	
+        r"""<p>集群绑定的资源包信息</p>
         :rtype: list of ResourcePackage
         """
         return self._ResourcePackages
@@ -13373,7 +14151,7 @@ pausing
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识，1为自动续费，0为到期不续
+        r"""<p>自动续费标识，1为自动续费，0为到期不续</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -13384,7 +14162,7 @@ pausing
 
     @property
     def NetworkType(self):
-        r"""节点网络类型
+        r"""<p>节点网络类型</p>
         :rtype: str
         """
         return self._NetworkType
@@ -13395,7 +14173,7 @@ pausing
 
     @property
     def SlaveZoneAttr(self):
-        r"""备可用区属性
+        r"""<p>备可用区属性</p>
         :rtype: list of SlaveZoneAttrItem
         """
         return self._SlaveZoneAttr
@@ -13406,7 +14184,7 @@ pausing
 
     @property
     def CynosVersionTag(self):
-        r"""版本标签
+        r"""<p>版本标签</p>
         :rtype: str
         """
         return self._CynosVersionTag
@@ -13417,7 +14195,7 @@ pausing
 
     @property
     def GdnId(self):
-        r"""全球数据库网络唯一标识
+        r"""<p>全球数据库网络唯一标识</p>
         :rtype: str
         """
         return self._GdnId
@@ -13428,10 +14206,7 @@ pausing
 
     @property
     def GdnRole(self):
-        r"""集群在全球数据网络中的角色。
-主集群- primary
-从集群 - standby
-如为空，该字段无效
+        r"""<p>集群在全球数据网络中的角色。<br>主集群- primary<br>从集群 - standby<br>如为空，该字段无效</p>
         :rtype: str
         """
         return self._GdnRole
@@ -13442,7 +14217,7 @@ pausing
 
     @property
     def UsedArchiveStorage(self):
-        r"""二级存储使用量，单位：G
+        r"""<p>二级存储使用量，单位：G</p>
         :rtype: int
         """
         return self._UsedArchiveStorage
@@ -13453,7 +14228,7 @@ pausing
 
     @property
     def ArchiveStatus(self):
-        r"""归档状态，枚举值<li>normal:正常</li><li>archiving:归档中</li><li>resuming:恢复中</li><li>archived :已归档</li>
+        r"""<p>归档状态，枚举值<li>normal:正常</li><li>archiving:归档中</li><li>resuming:恢复中</li><li>archived :已归档</li></p>
         :rtype: str
         """
         return self._ArchiveStatus
@@ -13464,7 +14239,7 @@ pausing
 
     @property
     def ArchiveProgress(self):
-        r"""归档进度，百分比。
+        r"""<p>归档进度，百分比。</p>
         :rtype: int
         """
         return self._ArchiveProgress
@@ -13474,8 +14249,19 @@ pausing
         self._ArchiveProgress = ArchiveProgress
 
     @property
+    def ClusterLevel(self):
+        r"""<p>集群级别。例如 P0, P1</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
+    @property
     def IsOpenTDE(self):
-        r"""是否开启透明加密
+        r"""<p>是否开启透明加密</p>
         :rtype: bool
         """
         return self._IsOpenTDE
@@ -13574,6 +14360,7 @@ pausing
         self._UsedArchiveStorage = params.get("UsedArchiveStorage")
         self._ArchiveStatus = params.get("ArchiveStatus")
         self._ArchiveProgress = params.get("ArchiveProgress")
+        self._ClusterLevel = params.get("ClusterLevel")
         self._IsOpenTDE = params.get("IsOpenTDE")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -16972,6 +17759,85 @@ class DeleteClusterDatabaseRequest(AbstractModel):
 
 class DeleteClusterDatabaseResponse(AbstractModel):
     r"""DeleteClusterDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteClusterPeriodScalePolicyRequest(AbstractModel):
+    r"""DeleteClusterPeriodScalePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _PolicyId: 策略ID
+        :type PolicyId: str
+        """
+        self._ClusterId = None
+        self._PolicyId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def PolicyId(self):
+        r"""策略ID
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterPeriodScalePolicyResponse(AbstractModel):
+    r"""DeleteClusterPeriodScalePolicy返回参数结构体
 
     """
 
@@ -22168,6 +23034,90 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterPeriodScalePolicyRequest(AbstractModel):
+    r"""DescribeClusterPeriodScalePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterPeriodScalePolicyResponse(AbstractModel):
+    r"""DescribeClusterPeriodScalePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyList: 集群周期弹性策略列表
+        :type PolicyList: list of ClusterPeriodScalePolicy
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyList = None
+        self._RequestId = None
+
+    @property
+    def PolicyList(self):
+        r"""集群周期弹性策略列表
+        :rtype: list of ClusterPeriodScalePolicy
+        """
+        return self._PolicyList
+
+    @PolicyList.setter
+    def PolicyList(self, PolicyList):
+        self._PolicyList = PolicyList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PolicyList") is not None:
+            self._PolicyList = []
+            for item in params.get("PolicyList"):
+                obj = ClusterPeriodScalePolicy()
+                obj._deserialize(item)
+                self._PolicyList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterReadOnlyRequest(AbstractModel):
     r"""DescribeClusterReadOnly请求参数结构体
 
@@ -22249,6 +23199,210 @@ class DescribeClusterReadOnlyResponse(AbstractModel):
                 obj = ClusterReadOnlyValue()
                 obj._deserialize(item)
                 self._ClusterReadOnlyValues.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterServerlessScalePlansRequest(AbstractModel):
+    r"""DescribeClusterServerlessScalePlans请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _InstanceIds: 实例列表
+        :type InstanceIds: list of str
+        :param _PolicyType: 策略类型. PolicyTypePeriodScale - 周期弹性
+        :type PolicyType: str
+        :param _PlanId: 计划ID
+        :type PlanId: int
+        :param _Limit: 分页数量限制，默认10
+        :type Limit: int
+        :param _Offset: 查询偏移，默认0
+        :type Offset: int
+        :param _ExpectedStartTime: 按计划预期执行时间为条件查询的开始时间点，包含当前时间
+        :type ExpectedStartTime: str
+        :param _ExpectedEndTime: 按计划预期执行时间为条件查询的结束时间点，包含当前时间
+        :type ExpectedEndTime: str
+        """
+        self._ClusterId = None
+        self._InstanceIds = None
+        self._PolicyType = None
+        self._PlanId = None
+        self._Limit = None
+        self._Offset = None
+        self._ExpectedStartTime = None
+        self._ExpectedEndTime = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceIds(self):
+        r"""实例列表
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def PolicyType(self):
+        r"""策略类型. PolicyTypePeriodScale - 周期弹性
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PlanId(self):
+        r"""计划ID
+        :rtype: int
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def Limit(self):
+        r"""分页数量限制，默认10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""查询偏移，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ExpectedStartTime(self):
+        r"""按计划预期执行时间为条件查询的开始时间点，包含当前时间
+        :rtype: str
+        """
+        return self._ExpectedStartTime
+
+    @ExpectedStartTime.setter
+    def ExpectedStartTime(self, ExpectedStartTime):
+        self._ExpectedStartTime = ExpectedStartTime
+
+    @property
+    def ExpectedEndTime(self):
+        r"""按计划预期执行时间为条件查询的结束时间点，包含当前时间
+        :rtype: str
+        """
+        return self._ExpectedEndTime
+
+    @ExpectedEndTime.setter
+    def ExpectedEndTime(self, ExpectedEndTime):
+        self._ExpectedEndTime = ExpectedEndTime
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceIds = params.get("InstanceIds")
+        self._PolicyType = params.get("PolicyType")
+        self._PlanId = params.get("PlanId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ExpectedStartTime = params.get("ExpectedStartTime")
+        self._ExpectedEndTime = params.get("ExpectedEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterServerlessScalePlansResponse(AbstractModel):
+    r"""DescribeClusterServerlessScalePlans返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 计划总数
+        :type TotalCount: int
+        :param _ServerlessScalePlans: 策略列表
+        :type ServerlessScalePlans: list of ClusterServerlessScalePlan
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ServerlessScalePlans = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""计划总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ServerlessScalePlans(self):
+        r"""策略列表
+        :rtype: list of ClusterServerlessScalePlan
+        """
+        return self._ServerlessScalePlans
+
+    @ServerlessScalePlans.setter
+    def ServerlessScalePlans(self, ServerlessScalePlans):
+        self._ServerlessScalePlans = ServerlessScalePlans
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ServerlessScalePlans") is not None:
+            self._ServerlessScalePlans = []
+            for item in params.get("ServerlessScalePlans"):
+                obj = ClusterServerlessScalePlan()
+                obj._deserialize(item)
+                self._ServerlessScalePlans.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23683,22 +24837,23 @@ class DescribeInstanceSpecsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbType: 数据库类型，取值范围: 
-<li> MYSQL </li>
+        :param _DbType: <p>数据库类型，取值范围: </p><li> MYSQL </li>
         :type DbType: str
-        :param _IncludeZoneStocks: 是否需要返回可用区信息
+        :param _IncludeZoneStocks: <p>是否需要返回可用区信息</p>
         :type IncludeZoneStocks: bool
-        :param _DeviceType: 实例机器类型
+        :param _DeviceType: <p>实例机器类型</p>
         :type DeviceType: str
+        :param _ClusterLevel: <p>集群级别，可空。例如 P0, P1</p>
+        :type ClusterLevel: str
         """
         self._DbType = None
         self._IncludeZoneStocks = None
         self._DeviceType = None
+        self._ClusterLevel = None
 
     @property
     def DbType(self):
-        r"""数据库类型，取值范围: 
-<li> MYSQL </li>
+        r"""<p>数据库类型，取值范围: </p><li> MYSQL </li>
         :rtype: str
         """
         return self._DbType
@@ -23709,7 +24864,7 @@ class DescribeInstanceSpecsRequest(AbstractModel):
 
     @property
     def IncludeZoneStocks(self):
-        r"""是否需要返回可用区信息
+        r"""<p>是否需要返回可用区信息</p>
         :rtype: bool
         """
         return self._IncludeZoneStocks
@@ -23720,7 +24875,7 @@ class DescribeInstanceSpecsRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""实例机器类型
+        r"""<p>实例机器类型</p>
         :rtype: str
         """
         return self._DeviceType
@@ -23729,11 +24884,23 @@ class DescribeInstanceSpecsRequest(AbstractModel):
     def DeviceType(self, DeviceType):
         self._DeviceType = DeviceType
 
+    @property
+    def ClusterLevel(self):
+        r"""<p>集群级别，可空。例如 P0, P1</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
 
     def _deserialize(self, params):
         self._DbType = params.get("DbType")
         self._IncludeZoneStocks = params.get("IncludeZoneStocks")
         self._DeviceType = params.get("DeviceType")
+        self._ClusterLevel = params.get("ClusterLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23751,7 +24918,7 @@ class DescribeInstanceSpecsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceSpecSet: 规格信息
+        :param _InstanceSpecSet: <p>规格信息</p>
         :type InstanceSpecSet: list of InstanceSpec
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23761,7 +24928,7 @@ class DescribeInstanceSpecsResponse(AbstractModel):
 
     @property
     def InstanceSpecSet(self):
-        r"""规格信息
+        r"""<p>规格信息</p>
         :rtype: list of InstanceSpec
         """
         return self._InstanceSpecSet
@@ -41293,6 +42460,205 @@ class ModifyClusterPasswordComplexityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterPeriodScalePolicyRequest(AbstractModel):
+    r"""ModifyClusterPeriodScalePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _PolicyId: <p>策略ID</p>
+        :type PolicyId: str
+        :param _ScaleStartTime: <p>当天开始弹性时间。格式是小时:分钟</p>
+        :type ScaleStartTime: str
+        :param _ScaleEndTime: <p>当天结束弹性时间。格式是小时:分钟</p>
+        :type ScaleEndTime: str
+        :param _PolicyStartTime: <p>策略生效的起始日期时间</p>
+        :type PolicyStartTime: str
+        :param _PolicyEndTime: <p>策略生效的截止日期时间</p>
+        :type PolicyEndTime: str
+        :param _PeriodType: <p>周期类型。day-天，week-周，month-月。</p>
+        :type PeriodType: str
+        :param _PeriodConfig: <p>周期内的时间列表。针对PeriodType=week， 表示星期几，比如[1,3]表示星期一、星期三。同理，对于PeriodType=month，[1,3,10]表示每月的1、3、10号。PeriodType=day则该字段无效。</p>
+        :type PeriodConfig: list of int
+        :param _MinCpu: <p>弹性规格下限</p>
+        :type MinCpu: float
+        :param _MaxCpu: <p>弹性规格上限</p>
+        :type MaxCpu: float
+        """
+        self._ClusterId = None
+        self._PolicyId = None
+        self._ScaleStartTime = None
+        self._ScaleEndTime = None
+        self._PolicyStartTime = None
+        self._PolicyEndTime = None
+        self._PeriodType = None
+        self._PeriodConfig = None
+        self._MinCpu = None
+        self._MaxCpu = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def ScaleStartTime(self):
+        r"""<p>当天开始弹性时间。格式是小时:分钟</p>
+        :rtype: str
+        """
+        return self._ScaleStartTime
+
+    @ScaleStartTime.setter
+    def ScaleStartTime(self, ScaleStartTime):
+        self._ScaleStartTime = ScaleStartTime
+
+    @property
+    def ScaleEndTime(self):
+        r"""<p>当天结束弹性时间。格式是小时:分钟</p>
+        :rtype: str
+        """
+        return self._ScaleEndTime
+
+    @ScaleEndTime.setter
+    def ScaleEndTime(self, ScaleEndTime):
+        self._ScaleEndTime = ScaleEndTime
+
+    @property
+    def PolicyStartTime(self):
+        r"""<p>策略生效的起始日期时间</p>
+        :rtype: str
+        """
+        return self._PolicyStartTime
+
+    @PolicyStartTime.setter
+    def PolicyStartTime(self, PolicyStartTime):
+        self._PolicyStartTime = PolicyStartTime
+
+    @property
+    def PolicyEndTime(self):
+        r"""<p>策略生效的截止日期时间</p>
+        :rtype: str
+        """
+        return self._PolicyEndTime
+
+    @PolicyEndTime.setter
+    def PolicyEndTime(self, PolicyEndTime):
+        self._PolicyEndTime = PolicyEndTime
+
+    @property
+    def PeriodType(self):
+        r"""<p>周期类型。day-天，week-周，month-月。</p>
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def PeriodConfig(self):
+        r"""<p>周期内的时间列表。针对PeriodType=week， 表示星期几，比如[1,3]表示星期一、星期三。同理，对于PeriodType=month，[1,3,10]表示每月的1、3、10号。PeriodType=day则该字段无效。</p>
+        :rtype: list of int
+        """
+        return self._PeriodConfig
+
+    @PeriodConfig.setter
+    def PeriodConfig(self, PeriodConfig):
+        self._PeriodConfig = PeriodConfig
+
+    @property
+    def MinCpu(self):
+        r"""<p>弹性规格下限</p>
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        r"""<p>弹性规格上限</p>
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._PolicyId = params.get("PolicyId")
+        self._ScaleStartTime = params.get("ScaleStartTime")
+        self._ScaleEndTime = params.get("ScaleEndTime")
+        self._PolicyStartTime = params.get("PolicyStartTime")
+        self._PolicyEndTime = params.get("PolicyEndTime")
+        self._PeriodType = params.get("PeriodType")
+        self._PeriodConfig = params.get("PeriodConfig")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterPeriodScalePolicyResponse(AbstractModel):
+    r"""ModifyClusterPeriodScalePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyClusterReadOnlyRequest(AbstractModel):
     r"""ModifyClusterReadOnly请求参数结构体
 
@@ -46140,6 +47506,100 @@ class OldAddrInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OpenAIOptimizerRequest(AbstractModel):
+    r"""OpenAIOptimizer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        """
+        self._ClusterId = None
+        self._InstanceId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAIOptimizerResponse(AbstractModel):
+    r"""OpenAIOptimizer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务流id</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务流id</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class OpenAuditServiceRequest(AbstractModel):

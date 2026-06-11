@@ -12636,24 +12636,26 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessCode: 产品名称代码
+        :param _BusinessCode: <p>产品名称代码</p>
         :type BusinessCode: str
-        :param _BusinessCodeName: 产品名称
+        :param _BusinessCodeName: <p>产品名称</p>
         :type BusinessCodeName: str
-        :param _RealTotalCost: 折后总价
+        :param _RealTotalCost: <p>折后总价</p>
         :type RealTotalCost: str
-        :param _Trend: 费用趋势
+        :param _Trend: <p>费用趋势</p>
         :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
-        :param _CashPayAmount: 现金
+        :param _CashPayAmount: <p>现金</p>
         :type CashPayAmount: str
-        :param _IncentivePayAmount: 赠送金
+        :param _IncentivePayAmount: <p>赠送金</p>
         :type IncentivePayAmount: str
-        :param _VoucherPayAmount: 代金券
+        :param _VoucherPayAmount: <p>代金券</p>
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: 分成金
+        :param _TransferPayAmount: <p>分成金</p>
         :type TransferPayAmount: str
-        :param _RegionName: 地域名称（仅在地域汇总总展示）
+        :param _RegionName: <p>地域名称（仅在地域汇总中展示）</p>
         :type RegionName: str
+        :param _LeftRealTotalCost: <p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+        :type LeftRealTotalCost: str
         """
         self._BusinessCode = None
         self._BusinessCodeName = None
@@ -12664,10 +12666,11 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         self._VoucherPayAmount = None
         self._TransferPayAmount = None
         self._RegionName = None
+        self._LeftRealTotalCost = None
 
     @property
     def BusinessCode(self):
-        r"""产品名称代码
+        r"""<p>产品名称代码</p>
         :rtype: str
         """
         return self._BusinessCode
@@ -12678,7 +12681,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        r"""产品名称
+        r"""<p>产品名称</p>
         :rtype: str
         """
         return self._BusinessCodeName
@@ -12689,7 +12692,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        r"""折后总价
+        r"""<p>折后总价</p>
         :rtype: str
         """
         return self._RealTotalCost
@@ -12700,7 +12703,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def Trend(self):
-        r"""费用趋势
+        r"""<p>费用趋势</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         """
         return self._Trend
@@ -12711,7 +12714,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        r"""现金
+        r"""<p>现金</p>
         :rtype: str
         """
         return self._CashPayAmount
@@ -12722,7 +12725,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        r"""赠送金
+        r"""<p>赠送金</p>
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -12733,7 +12736,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        r"""代金券
+        r"""<p>代金券</p>
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -12744,7 +12747,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""分成金
+        r"""<p>分成金</p>
         :rtype: str
         """
         return self._TransferPayAmount
@@ -12755,7 +12758,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""地域名称（仅在地域汇总总展示）
+        r"""<p>地域名称（仅在地域汇总中展示）</p>
         :rtype: str
         """
         return self._RegionName
@@ -12763,6 +12766,17 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
     @RegionName.setter
     def RegionName(self, RegionName):
         self._RegionName = RegionName
+
+    @property
+    def LeftRealTotalCost(self):
+        r"""<p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+        :rtype: str
+        """
+        return self._LeftRealTotalCost
+
+    @LeftRealTotalCost.setter
+    def LeftRealTotalCost(self, LeftRealTotalCost):
+        self._LeftRealTotalCost = LeftRealTotalCost
 
 
     def _deserialize(self, params):
@@ -12777,6 +12791,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._TransferPayAmount = params.get("TransferPayAmount")
         self._RegionName = params.get("RegionName")
+        self._LeftRealTotalCost = params.get("LeftRealTotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12794,24 +12809,26 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
         :type ProjectName: str
-        :param _RealTotalCost: 折后总价
+        :param _RealTotalCost: <p>折后总价</p>
         :type RealTotalCost: str
-        :param _Trend: 趋势
+        :param _Trend: <p>趋势</p>
         :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
-        :param _Business: 产品消耗详情
+        :param _Business: <p>产品消耗详情</p>
         :type Business: list of ConsumptionBusinessSummaryDataItem
-        :param _CashPayAmount: 现金
+        :param _CashPayAmount: <p>现金</p>
         :type CashPayAmount: str
-        :param _IncentivePayAmount: 赠送金
+        :param _IncentivePayAmount: <p>赠送金</p>
         :type IncentivePayAmount: str
-        :param _VoucherPayAmount: 代金券
+        :param _VoucherPayAmount: <p>代金券</p>
         :type VoucherPayAmount: str
-        :param _TransferPayAmount: 分成金
+        :param _TransferPayAmount: <p>分成金</p>
         :type TransferPayAmount: str
+        :param _LeftRealTotalCost: <p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+        :type LeftRealTotalCost: str
         """
         self._ProjectId = None
         self._ProjectName = None
@@ -12822,10 +12839,11 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
         self._IncentivePayAmount = None
         self._VoucherPayAmount = None
         self._TransferPayAmount = None
+        self._LeftRealTotalCost = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -12836,7 +12854,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
         :rtype: str
         """
         return self._ProjectName
@@ -12847,7 +12865,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        r"""折后总价
+        r"""<p>折后总价</p>
         :rtype: str
         """
         return self._RealTotalCost
@@ -12858,7 +12876,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def Trend(self):
-        r"""趋势
+        r"""<p>趋势</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         """
         return self._Trend
@@ -12869,7 +12887,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def Business(self):
-        r"""产品消耗详情
+        r"""<p>产品消耗详情</p>
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Business
@@ -12880,7 +12898,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        r"""现金
+        r"""<p>现金</p>
         :rtype: str
         """
         return self._CashPayAmount
@@ -12891,7 +12909,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        r"""赠送金
+        r"""<p>赠送金</p>
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -12902,7 +12920,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        r"""代金券
+        r"""<p>代金券</p>
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -12913,7 +12931,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""分成金
+        r"""<p>分成金</p>
         :rtype: str
         """
         return self._TransferPayAmount
@@ -12921,6 +12939,17 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
     @TransferPayAmount.setter
     def TransferPayAmount(self, TransferPayAmount):
         self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def LeftRealTotalCost(self):
+        r"""<p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+        :rtype: str
+        """
+        return self._LeftRealTotalCost
+
+    @LeftRealTotalCost.setter
+    def LeftRealTotalCost(self, LeftRealTotalCost):
+        self._LeftRealTotalCost = LeftRealTotalCost
 
 
     def _deserialize(self, params):
@@ -12940,6 +12969,7 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
         self._IncentivePayAmount = params.get("IncentivePayAmount")
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._TransferPayAmount = params.get("TransferPayAmount")
+        self._LeftRealTotalCost = params.get("LeftRealTotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12957,24 +12987,26 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegionId: 地域ID
+        :param _RegionId: <p>地域ID</p>
         :type RegionId: str
-        :param _RegionName: 地域名称
+        :param _RegionName: <p>地域名称</p>
         :type RegionName: str
-        :param _RealTotalCost: 折后总价
+        :param _RealTotalCost: <p>折后总价</p>
         :type RealTotalCost: str
-        :param _Trend: 趋势
+        :param _Trend: <p>趋势</p>
         :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
-        :param _Business: 产品消费详情
+        :param _Business: <p>产品消费详情</p>
         :type Business: list of ConsumptionBusinessSummaryDataItem
-        :param _CashPayAmount: 现金
+        :param _CashPayAmount: <p>现金</p>
         :type CashPayAmount: str
-        :param _VoucherPayAmount: 代金券
+        :param _VoucherPayAmount: <p>代金券</p>
         :type VoucherPayAmount: str
-        :param _IncentivePayAmount: 赠送金
+        :param _IncentivePayAmount: <p>赠送金</p>
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: 分成金
+        :param _TransferPayAmount: <p>分成金</p>
         :type TransferPayAmount: str
+        :param _LeftRealTotalCost: <p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+        :type LeftRealTotalCost: str
         """
         self._RegionId = None
         self._RegionName = None
@@ -12985,10 +13017,11 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
         self._VoucherPayAmount = None
         self._IncentivePayAmount = None
         self._TransferPayAmount = None
+        self._LeftRealTotalCost = None
 
     @property
     def RegionId(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: str
         """
         return self._RegionId
@@ -12999,7 +13032,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""地域名称
+        r"""<p>地域名称</p>
         :rtype: str
         """
         return self._RegionName
@@ -13010,7 +13043,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        r"""折后总价
+        r"""<p>折后总价</p>
         :rtype: str
         """
         return self._RealTotalCost
@@ -13021,7 +13054,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def Trend(self):
-        r"""趋势
+        r"""<p>趋势</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         """
         return self._Trend
@@ -13032,7 +13065,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def Business(self):
-        r"""产品消费详情
+        r"""<p>产品消费详情</p>
         :rtype: list of ConsumptionBusinessSummaryDataItem
         """
         return self._Business
@@ -13043,7 +13076,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        r"""现金
+        r"""<p>现金</p>
         :rtype: str
         """
         return self._CashPayAmount
@@ -13054,7 +13087,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        r"""代金券
+        r"""<p>代金券</p>
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -13065,7 +13098,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        r"""赠送金
+        r"""<p>赠送金</p>
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -13076,7 +13109,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""分成金
+        r"""<p>分成金</p>
         :rtype: str
         """
         return self._TransferPayAmount
@@ -13084,6 +13117,17 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
     @TransferPayAmount.setter
     def TransferPayAmount(self, TransferPayAmount):
         self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def LeftRealTotalCost(self):
+        r"""<p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+        :rtype: str
+        """
+        return self._LeftRealTotalCost
+
+    @LeftRealTotalCost.setter
+    def LeftRealTotalCost(self, LeftRealTotalCost):
+        self._LeftRealTotalCost = LeftRealTotalCost
 
 
     def _deserialize(self, params):
@@ -13103,6 +13147,7 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._IncentivePayAmount = params.get("IncentivePayAmount")
         self._TransferPayAmount = params.get("TransferPayAmount")
+        self._LeftRealTotalCost = params.get("LeftRealTotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13221,86 +13266,88 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID
+        :param _ResourceId: <p>资源ID</p>
         :type ResourceId: str
-        :param _ResourceName: 资源名称
+        :param _ResourceName: <p>资源名称</p>
         :type ResourceName: str
-        :param _RealTotalCost: 折后总价
+        :param _RealTotalCost: <p>折后总价</p>
         :type RealTotalCost: str
-        :param _CashPayAmount: 现金花费
+        :param _CashPayAmount: <p>现金花费</p>
         :type CashPayAmount: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
         :type ProjectName: str
-        :param _RegionId: 地域ID
+        :param _RegionId: <p>地域ID</p>
         :type RegionId: str
-        :param _RegionName: 地域名称
+        :param _RegionName: <p>地域名称</p>
         :type RegionName: str
-        :param _PayMode: 付费模式
+        :param _PayMode: <p>付费模式</p>
         :type PayMode: str
-        :param _PayModeName: 付费模式名称
+        :param _PayModeName: <p>付费模式名称</p>
         :type PayModeName: str
-        :param _BusinessCode: 产品名称代码
+        :param _BusinessCode: <p>产品名称代码</p>
         :type BusinessCode: str
-        :param _BusinessCodeName: 产品名称
+        :param _BusinessCodeName: <p>产品名称</p>
         :type BusinessCodeName: str
-        :param _ConsumptionTypeName: 消耗类型
+        :param _ConsumptionTypeName: <p>消耗类型</p>
         :type ConsumptionTypeName: str
-        :param _RealCost: 折前价
+        :param _RealCost: <p>折前价</p>
         :type RealCost: str
-        :param _FeeBeginTime: 费用起始时间
+        :param _FeeBeginTime: <p>费用起始时间</p>
         :type FeeBeginTime: str
-        :param _FeeEndTime: 费用结束时间
+        :param _FeeEndTime: <p>费用结束时间</p>
         :type FeeEndTime: str
-        :param _DayDiff: 天数
+        :param _DayDiff: <p>天数</p>
         :type DayDiff: str
-        :param _DailyTotalCost: 每日消耗
+        :param _DailyTotalCost: <p>每日消耗</p>
         :type DailyTotalCost: str
-        :param _OrderId: 订单号
+        :param _OrderId: <p>订单号</p>
         :type OrderId: str
-        :param _VoucherPayAmount: 代金券
+        :param _VoucherPayAmount: <p>代金券</p>
         :type VoucherPayAmount: str
-        :param _IncentivePayAmount: 赠送金
+        :param _IncentivePayAmount: <p>赠送金</p>
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: 分成金
+        :param _TransferPayAmount: <p>分成金</p>
         :type TransferPayAmount: str
-        :param _PayerUin: 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        :param _PayerUin: <p>支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识</p>
         :type PayerUin: str
-        :param _OwnerUin: 使用者UIN：实际使用资源的账号 ID
+        :param _OwnerUin: <p>使用者UIN：实际使用资源的账号 ID</p>
         :type OwnerUin: str
-        :param _OperateUin: 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        :param _OperateUin: <p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
         :type OperateUin: str
-        :param _ProductCode: 子产品编码
+        :param _ProductCode: <p>子产品编码</p>
         :type ProductCode: str
-        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        :param _ProductCodeName: <p>子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1</p>
         :type ProductCodeName: str
-        :param _RegionType: 地域类型
+        :param _RegionType: <p>地域类型</p>
         :type RegionType: str
-        :param _RegionTypeName: 地域类型名称
+        :param _RegionTypeName: <p>地域类型名称</p>
         :type RegionTypeName: str
-        :param _Extend1: 扩展字段1
+        :param _Extend1: <p>扩展字段1</p>
         :type Extend1: str
-        :param _Extend2: 扩展字段2
+        :param _Extend2: <p>扩展字段2</p>
         :type Extend2: str
-        :param _Extend3: 扩展字段3
+        :param _Extend3: <p>扩展字段3</p>
         :type Extend3: str
-        :param _Extend4: 扩展字段4
+        :param _Extend4: <p>扩展字段4</p>
         :type Extend4: str
-        :param _Extend5: 扩展字段5
+        :param _Extend5: <p>扩展字段5</p>
         :type Extend5: str
-        :param _InstanceType: 实例类型
+        :param _InstanceType: <p>实例类型</p>
         :type InstanceType: str
-        :param _InstanceTypeName: 实例类型名称
+        :param _InstanceTypeName: <p>实例类型名称</p>
         :type InstanceTypeName: str
-        :param _PayTime: 扣费时间：结算扣费时间
+        :param _PayTime: <p>扣费时间：结算扣费时间</p>
         :type PayTime: str
-        :param _ZoneName: 可用区：资源所属可用区，如广州三区
+        :param _ZoneName: <p>可用区：资源所属可用区，如广州三区</p>
         :type ZoneName: str
-        :param _ComponentConfig: 配置描述
+        :param _ComponentConfig: <p>配置描述</p>
         :type ComponentConfig: str
-        :param _Tags: 标签信息
+        :param _Tags: <p>标签信息</p>
         :type Tags: str
+        :param _LeftRealTotalCost: <p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+        :type LeftRealTotalCost: str
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -13342,10 +13389,11 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self._ZoneName = None
         self._ComponentConfig = None
         self._Tags = None
+        self._LeftRealTotalCost = None
 
     @property
     def ResourceId(self):
-        r"""资源ID
+        r"""<p>资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -13356,7 +13404,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""资源名称
+        r"""<p>资源名称</p>
         :rtype: str
         """
         return self._ResourceName
@@ -13367,7 +13415,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        r"""折后总价
+        r"""<p>折后总价</p>
         :rtype: str
         """
         return self._RealTotalCost
@@ -13378,7 +13426,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        r"""现金花费
+        r"""<p>现金花费</p>
         :rtype: str
         """
         return self._CashPayAmount
@@ -13389,7 +13437,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -13400,7 +13448,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
         :rtype: str
         """
         return self._ProjectName
@@ -13411,7 +13459,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: str
         """
         return self._RegionId
@@ -13422,7 +13470,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""地域名称
+        r"""<p>地域名称</p>
         :rtype: str
         """
         return self._RegionName
@@ -13433,7 +13481,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式
+        r"""<p>付费模式</p>
         :rtype: str
         """
         return self._PayMode
@@ -13444,7 +13492,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""付费模式名称
+        r"""<p>付费模式名称</p>
         :rtype: str
         """
         return self._PayModeName
@@ -13455,7 +13503,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def BusinessCode(self):
-        r"""产品名称代码
+        r"""<p>产品名称代码</p>
         :rtype: str
         """
         return self._BusinessCode
@@ -13466,7 +13514,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        r"""产品名称
+        r"""<p>产品名称</p>
         :rtype: str
         """
         return self._BusinessCodeName
@@ -13477,7 +13525,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ConsumptionTypeName(self):
-        r"""消耗类型
+        r"""<p>消耗类型</p>
         :rtype: str
         """
         return self._ConsumptionTypeName
@@ -13488,7 +13536,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RealCost(self):
-        r"""折前价
+        r"""<p>折前价</p>
         :rtype: str
         """
         return self._RealCost
@@ -13499,7 +13547,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        r"""费用起始时间
+        r"""<p>费用起始时间</p>
         :rtype: str
         """
         return self._FeeBeginTime
@@ -13510,7 +13558,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        r"""费用结束时间
+        r"""<p>费用结束时间</p>
         :rtype: str
         """
         return self._FeeEndTime
@@ -13521,7 +13569,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def DayDiff(self):
-        r"""天数
+        r"""<p>天数</p>
         :rtype: str
         """
         return self._DayDiff
@@ -13532,7 +13580,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def DailyTotalCost(self):
-        r"""每日消耗
+        r"""<p>每日消耗</p>
         :rtype: str
         """
         return self._DailyTotalCost
@@ -13543,7 +13591,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""订单号
+        r"""<p>订单号</p>
         :rtype: str
         """
         return self._OrderId
@@ -13554,7 +13602,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        r"""代金券
+        r"""<p>代金券</p>
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -13565,7 +13613,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        r"""赠送金
+        r"""<p>赠送金</p>
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -13576,7 +13624,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""分成金
+        r"""<p>分成金</p>
         :rtype: str
         """
         return self._TransferPayAmount
@@ -13587,7 +13635,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""<p>支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识</p>
         :rtype: str
         """
         return self._PayerUin
@@ -13598,7 +13646,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""使用者UIN：实际使用资源的账号 ID
+        r"""<p>使用者UIN：实际使用资源的账号 ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -13609,7 +13657,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def OperateUin(self):
-        r"""操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        r"""<p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
         :rtype: str
         """
         return self._OperateUin
@@ -13620,7 +13668,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""子产品编码
+        r"""<p>子产品编码</p>
         :rtype: str
         """
         return self._ProductCode
@@ -13631,7 +13679,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        r"""子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        r"""<p>子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1</p>
         :rtype: str
         """
         return self._ProductCodeName
@@ -13642,7 +13690,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RegionType(self):
-        r"""地域类型
+        r"""<p>地域类型</p>
         :rtype: str
         """
         return self._RegionType
@@ -13653,7 +13701,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def RegionTypeName(self):
-        r"""地域类型名称
+        r"""<p>地域类型名称</p>
         :rtype: str
         """
         return self._RegionTypeName
@@ -13664,7 +13712,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend1(self):
-        r"""扩展字段1
+        r"""<p>扩展字段1</p>
         :rtype: str
         """
         return self._Extend1
@@ -13675,7 +13723,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend2(self):
-        r"""扩展字段2
+        r"""<p>扩展字段2</p>
         :rtype: str
         """
         return self._Extend2
@@ -13686,7 +13734,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend3(self):
-        r"""扩展字段3
+        r"""<p>扩展字段3</p>
         :rtype: str
         """
         return self._Extend3
@@ -13697,7 +13745,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend4(self):
-        r"""扩展字段4
+        r"""<p>扩展字段4</p>
         :rtype: str
         """
         return self._Extend4
@@ -13708,7 +13756,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Extend5(self):
-        r"""扩展字段5
+        r"""<p>扩展字段5</p>
         :rtype: str
         """
         return self._Extend5
@@ -13719,7 +13767,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: str
         """
         return self._InstanceType
@@ -13730,7 +13778,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def InstanceTypeName(self):
-        r"""实例类型名称
+        r"""<p>实例类型名称</p>
         :rtype: str
         """
         return self._InstanceTypeName
@@ -13741,7 +13789,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def PayTime(self):
-        r"""扣费时间：结算扣费时间
+        r"""<p>扣费时间：结算扣费时间</p>
         :rtype: str
         """
         return self._PayTime
@@ -13752,7 +13800,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ZoneName(self):
-        r"""可用区：资源所属可用区，如广州三区
+        r"""<p>可用区：资源所属可用区，如广州三区</p>
         :rtype: str
         """
         return self._ZoneName
@@ -13763,7 +13811,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def ComponentConfig(self):
-        r"""配置描述
+        r"""<p>配置描述</p>
         :rtype: str
         """
         return self._ComponentConfig
@@ -13774,7 +13822,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签信息
+        r"""<p>标签信息</p>
         :rtype: str
         """
         return self._Tags
@@ -13782,6 +13830,17 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def LeftRealTotalCost(self):
+        r"""<p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+        :rtype: str
+        """
+        return self._LeftRealTotalCost
+
+    @LeftRealTotalCost.setter
+    def LeftRealTotalCost(self, LeftRealTotalCost):
+        self._LeftRealTotalCost = LeftRealTotalCost
 
 
     def _deserialize(self, params):
@@ -13825,6 +13884,7 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self._ZoneName = params.get("ZoneName")
         self._ComponentConfig = params.get("ComponentConfig")
         self._Tags = params.get("Tags")
+        self._LeftRealTotalCost = params.get("LeftRealTotalCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

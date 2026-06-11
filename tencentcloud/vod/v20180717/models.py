@@ -10717,6 +10717,77 @@ class AiSampleWordInfo(AbstractModel):
         
 
 
+class AiTryOnConfig(AbstractModel):
+    r"""AI换装配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>换装模型。</p><p>枚举值：</p><ul><li>WAND-tryon-1.0-lite： 轻量档，速度优先。</li><li>WAND-tryon-1.0-flash： 均衡档，兼顾效果与时延。</li><li>WAND-tryon-1.0-pro： 高质量档，效果优先。</li></ul>
+        :type Model: str
+        :param _ClothesFileInfos: <p>输入需要更换的衣物图片列表。支持1-4张图片。</p>
+        :type ClothesFileInfos: list of SceneAigcImageTaskInputFileInfo
+        :param _Prompt: <p>换装指令Prompt。</p>
+        :type Prompt: str
+        """
+        self._Model = None
+        self._ClothesFileInfos = None
+        self._Prompt = None
+
+    @property
+    def Model(self):
+        r"""<p>换装模型。</p><p>枚举值：</p><ul><li>WAND-tryon-1.0-lite： 轻量档，速度优先。</li><li>WAND-tryon-1.0-flash： 均衡档，兼顾效果与时延。</li><li>WAND-tryon-1.0-pro： 高质量档，效果优先。</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def ClothesFileInfos(self):
+        r"""<p>输入需要更换的衣物图片列表。支持1-4张图片。</p>
+        :rtype: list of SceneAigcImageTaskInputFileInfo
+        """
+        return self._ClothesFileInfos
+
+    @ClothesFileInfos.setter
+    def ClothesFileInfos(self, ClothesFileInfos):
+        self._ClothesFileInfos = ClothesFileInfos
+
+    @property
+    def Prompt(self):
+        r"""<p>换装指令Prompt。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("ClothesFileInfos") is not None:
+            self._ClothesFileInfos = []
+            for item in params.get("ClothesFileInfos"):
+                obj = SceneAigcImageTaskInputFileInfo()
+                obj._deserialize(item)
+                self._ClothesFileInfos.append(obj)
+        self._Prompt = params.get("Prompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcAdvancedCustomElementInfo(AbstractModel):
     r"""AIGC 高级自定义主体信息
 
@@ -12046,20 +12117,23 @@ class AigcImageSceneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: <p>AI生图场景类型，可选值：</p><ul><li>change_clothes：常规场景换衣。</li><li>change_clothes_under：特殊场景换衣。</li><li>change_clothes_top_wear：上半身换衣。</li><li>change_clothes_bottom_wear：下半身换衣。</li><li>change_clothes_full_wear：全身换衣。</li><li>product_image：AI生商品图。</li><li>outpainting: AI扩图。</li></ul>
+        :param _Type: <p>AI生图场景类型，可选值：</p><ul><li><code>ai_try_on</code>：AI 换装。</li><li><code>product_image</code>：AI 生商品图。</li><li><code>outpainting</code>: AI 扩图。</li></ul><p>下列 <code>Type</code> 已废弃，后续不再更新：</p><ul><li><code>change_clothes</code></li><li><code>change_clothes_under</code></li><li><code>change_clothes_top_wear</code></li><li><code>change_clothes_bottom_wear</code></li><li><code>change_clothes_full_wear</code></li></ul>
         :type Type: str
-        :param _ChangeClothesConfig: <p>当 Type 下列类型时，则该项为必填，表示AI 换衣生图配置参数：</p><ul><li>change_clothes</li><li>change_clothes_under</li><li>change_clothes_full_wear</li><li>change_clothes_top_wear</li><li>change_clothes_bottom_wear</li></ul>
+        :param _AiTryOnConfig: <p>当 Type 为 ai_try_on 时必填，表示 AI 换装配置参数。</p>
+        :type AiTryOnConfig: :class:`tencentcloud.vod.v20180717.models.AiTryOnConfig`
+        :param _ChangeClothesConfig: <p><strong>已废弃，请使用AiTryOnConfig。</strong>当 Type 下列类型时，则该项为必填，表示AI 换衣生图配置参数：</p><ul><li>change_clothes</li><li>change_clothes_under</li></ul>
         :type ChangeClothesConfig: :class:`tencentcloud.vod.v20180717.models.ChangeClothesConfig`
-        :param _ProductImageConfig: <p>当 Type 为 product_image 时有效，表示AI 生商品图配置参数。</p>
+        :param _ProductImageConfig: <p>当 Type 为 product_image 时必填，表示AI 生商品图配置参数。</p>
         :type ProductImageConfig: :class:`tencentcloud.vod.v20180717.models.ProductImageConfig`
         """
         self._Type = None
+        self._AiTryOnConfig = None
         self._ChangeClothesConfig = None
         self._ProductImageConfig = None
 
     @property
     def Type(self):
-        r"""<p>AI生图场景类型，可选值：</p><ul><li>change_clothes：常规场景换衣。</li><li>change_clothes_under：特殊场景换衣。</li><li>change_clothes_top_wear：上半身换衣。</li><li>change_clothes_bottom_wear：下半身换衣。</li><li>change_clothes_full_wear：全身换衣。</li><li>product_image：AI生商品图。</li><li>outpainting: AI扩图。</li></ul>
+        r"""<p>AI生图场景类型，可选值：</p><ul><li><code>ai_try_on</code>：AI 换装。</li><li><code>product_image</code>：AI 生商品图。</li><li><code>outpainting</code>: AI 扩图。</li></ul><p>下列 <code>Type</code> 已废弃，后续不再更新：</p><ul><li><code>change_clothes</code></li><li><code>change_clothes_under</code></li><li><code>change_clothes_top_wear</code></li><li><code>change_clothes_bottom_wear</code></li><li><code>change_clothes_full_wear</code></li></ul>
         :rtype: str
         """
         return self._Type
@@ -12069,8 +12143,19 @@ class AigcImageSceneInfo(AbstractModel):
         self._Type = Type
 
     @property
+    def AiTryOnConfig(self):
+        r"""<p>当 Type 为 ai_try_on 时必填，表示 AI 换装配置参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AiTryOnConfig`
+        """
+        return self._AiTryOnConfig
+
+    @AiTryOnConfig.setter
+    def AiTryOnConfig(self, AiTryOnConfig):
+        self._AiTryOnConfig = AiTryOnConfig
+
+    @property
     def ChangeClothesConfig(self):
-        r"""<p>当 Type 下列类型时，则该项为必填，表示AI 换衣生图配置参数：</p><ul><li>change_clothes</li><li>change_clothes_under</li><li>change_clothes_full_wear</li><li>change_clothes_top_wear</li><li>change_clothes_bottom_wear</li></ul>
+        r"""<p><strong>已废弃，请使用AiTryOnConfig。</strong>当 Type 下列类型时，则该项为必填，表示AI 换衣生图配置参数：</p><ul><li>change_clothes</li><li>change_clothes_under</li></ul>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ChangeClothesConfig`
         """
         return self._ChangeClothesConfig
@@ -12081,7 +12166,7 @@ class AigcImageSceneInfo(AbstractModel):
 
     @property
     def ProductImageConfig(self):
-        r"""<p>当 Type 为 product_image 时有效，表示AI 生商品图配置参数。</p>
+        r"""<p>当 Type 为 product_image 时必填，表示AI 生商品图配置参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProductImageConfig`
         """
         return self._ProductImageConfig
@@ -12093,6 +12178,9 @@ class AigcImageSceneInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
+        if params.get("AiTryOnConfig") is not None:
+            self._AiTryOnConfig = AiTryOnConfig()
+            self._AiTryOnConfig._deserialize(params.get("AiTryOnConfig"))
         if params.get("ChangeClothesConfig") is not None:
             self._ChangeClothesConfig = ChangeClothesConfig()
             self._ChangeClothesConfig._deserialize(params.get("ChangeClothesConfig"))
@@ -54496,37 +54584,33 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StreamId: 推流直播码。
+        :param _StreamId: <p>推流直播码。</p>
         :type StreamId: str
-        :param _StartTime: 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _StartTime: <p>流剪辑的开始时间，格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type StartTime: str
-        :param _EndTime: 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _EndTime: <p>流剪辑的结束时间，格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type EndTime: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。
+        :param _IsPersistence: <p>是否固化。0 不固化，1 固化。默认不固化。</p>
         :type IsPersistence: int
-        :param _ExpireTime: 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+        :param _ExpireTime: <p>剪辑固化后的视频存储过期时间。格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。</p>
         :type ExpireTime: str
-        :param _Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+        :param _Procedure: <p>剪辑固化后的视频点播任务流处理，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。仅 IsPersistence 为 1 时有效。</p>
         :type Procedure: str
-        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-仅 IsPersistence 为 1 时有效。
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/31772">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>仅 IsPersistence 为 1 时有效。
         :type ClassId: int
-        :param _SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+        :param _SourceContext: <p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。</p>
         :type SourceContext: str
-        :param _SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+        :param _SessionContext: <p>会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，<a href="/document/product/266/9636">任务流状态变更回调</a> 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。</p>
         :type SessionContext: str
-        :param _MetaDataRequired: 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
+        :param _MetaDataRequired: <p>是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。</p>
         :type MetaDataRequired: int
-        :param _Host: 云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**
+        :param _Host: <p>云点播中添加的用于时移播放的域名，必须在云直播已经<a href="https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">关联录制模板和开通时移服务</a>。<strong>如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。</strong></p>
         :type Host: str
-        :param _StreamInfo: 剪辑的直播流信息：
-<li>默认剪辑直播原始流。</li>
-<li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
+        :param _StreamInfo: <p>剪辑的直播流信息：</p><li>默认剪辑直播原始流。</li><li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
         :type StreamInfo: :class:`tencentcloud.vod.v20180717.models.LiveRealTimeClipStreamInfo`
-        :param _ExtInfo: 系统保留字段，请勿填写。
+        :param _ExtInfo: <p>系统保留字段，请勿填写。</p>
         :type ExtInfo: str
         """
         self._StreamId = None
@@ -54546,7 +54630,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def StreamId(self):
-        r"""推流直播码。
+        r"""<p>推流直播码。</p>
         :rtype: str
         """
         return self._StreamId
@@ -54557,7 +54641,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>流剪辑的开始时间，格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :rtype: str
         """
         return self._StartTime
@@ -54568,7 +54652,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>流剪辑的结束时间，格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :rtype: str
         """
         return self._EndTime
@@ -54579,7 +54663,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -54590,7 +54674,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def IsPersistence(self):
-        r"""是否固化。0 不固化，1 固化。默认不固化。
+        r"""<p>是否固化。0 不固化，1 固化。默认不固化。</p>
         :rtype: int
         """
         return self._IsPersistence
@@ -54601,7 +54685,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+        r"""<p>剪辑固化后的视频存储过期时间。格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -54612,7 +54696,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def Procedure(self):
-        r"""剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+        r"""<p>剪辑固化后的视频点播任务流处理，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。仅 IsPersistence 为 1 时有效。</p>
         :rtype: str
         """
         return self._Procedure
@@ -54623,9 +54707,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-仅 IsPersistence 为 1 时有效。
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/31772">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>仅 IsPersistence 为 1 时有效。
         :rtype: int
         """
         return self._ClassId
@@ -54636,7 +54718,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def SourceContext(self):
-        r"""来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+        r"""<p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。</p>
         :rtype: str
         """
         return self._SourceContext
@@ -54647,7 +54729,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+        r"""<p>会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，<a href="/document/product/266/9636">任务流状态变更回调</a> 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -54658,7 +54740,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def MetaDataRequired(self):
-        r"""是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
+        r"""<p>是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。</p>
         :rtype: int
         """
         return self._MetaDataRequired
@@ -54669,7 +54751,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**
+        r"""<p>云点播中添加的用于时移播放的域名，必须在云直播已经<a href="https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">关联录制模板和开通时移服务</a>。<strong>如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。</strong></p>
         :rtype: str
         """
         return self._Host
@@ -54680,9 +54762,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def StreamInfo(self):
-        r"""剪辑的直播流信息：
-<li>默认剪辑直播原始流。</li>
-<li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
+        r"""<p>剪辑的直播流信息：</p><li>默认剪辑直播原始流。</li><li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
         :rtype: :class:`tencentcloud.vod.v20180717.models.LiveRealTimeClipStreamInfo`
         """
         return self._StreamInfo
@@ -54693,7 +54773,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""系统保留字段，请勿填写。
+        r"""<p>系统保留字段，请勿填写。</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -54737,16 +54817,16 @@ class LiveRealTimeClipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 剪辑后的视频播放 URL。
+        :param _Url: <p>剪辑后的视频播放 URL。</p>
         :type Url: str
-        :param _FileId: 剪辑固化后的视频的媒体文件的唯一标识。
+        :param _FileId: <p>剪辑固化后的视频的媒体文件的唯一标识。</p>
         :type FileId: str
-        :param _VodTaskId: 剪辑固化后的视频任务流 ID。
+        :param _VodTaskId: <p>剪辑固化后的视频任务流 ID。</p>
         :type VodTaskId: str
-        :param _MetaData: 剪辑后的视频元信息。
+        :param _MetaData: <p>剪辑后的视频元信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param _SegmentSet: <span id="p_segmentset">剪辑后的视频片段信息。</span>
+        :param _SegmentSet: <p><span id="p_segmentset">剪辑后的视频片段信息。</span></p>
         :type SegmentSet: list of LiveRealTimeClipMediaSegmentInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -54760,7 +54840,7 @@ class LiveRealTimeClipResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""剪辑后的视频播放 URL。
+        r"""<p>剪辑后的视频播放 URL。</p>
         :rtype: str
         """
         return self._Url
@@ -54771,7 +54851,7 @@ class LiveRealTimeClipResponse(AbstractModel):
 
     @property
     def FileId(self):
-        r"""剪辑固化后的视频的媒体文件的唯一标识。
+        r"""<p>剪辑固化后的视频的媒体文件的唯一标识。</p>
         :rtype: str
         """
         return self._FileId
@@ -54782,7 +54862,7 @@ class LiveRealTimeClipResponse(AbstractModel):
 
     @property
     def VodTaskId(self):
-        r"""剪辑固化后的视频任务流 ID。
+        r"""<p>剪辑固化后的视频任务流 ID。</p>
         :rtype: str
         """
         return self._VodTaskId
@@ -54793,7 +54873,7 @@ class LiveRealTimeClipResponse(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""剪辑后的视频元信息。
+        r"""<p>剪辑后的视频元信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
@@ -54805,7 +54885,7 @@ class LiveRealTimeClipResponse(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""<span id="p_segmentset">剪辑后的视频片段信息。</span>
+        r"""<p><span id="p_segmentset">剪辑后的视频片段信息。</span></p>
         :rtype: list of LiveRealTimeClipMediaSegmentInfo
         """
         return self._SegmentSet
@@ -77202,40 +77282,35 @@ class PullUploadRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MediaUrl: 要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。
-支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。请确保媒体 URL 可以访问。
+        :param _MediaUrl: <p>要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。<br>支持的扩展名详见<a href="https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">媒体类型</a>。请确保媒体 URL 可以访问。</p>
         :type MediaUrl: str
-        :param _MediaType: 媒体文件类型（扩展名），支持的类型详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
-如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。
+        :param _MediaType: <p>媒体文件类型（扩展名），支持的类型详见<a href="https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">媒体类型</a>。<br>如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。</p>
         :type MediaType: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _MediaName: 媒体名称。
+        :param _MediaName: <p>媒体名称。</p>
         :type MediaName: str
-        :param _CoverUrl: 要拉取的视频封面 URL。支持的文件格式：gif、jpeg（jpg）、png。
+        :param _CoverUrl: <p>要拉取的视频封面 URL。支持的文件格式：gif、jpeg（jpg）、png。</p>
         :type CoverUrl: str
-        :param _Procedure: 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
+        :param _Procedure: <p>媒体后续任务操作，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。</p>
         :type Procedure: str
-        :param _ExpireTime: 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _ExpireTime: <p>媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type ExpireTime: str
-        :param _StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户：
-<li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li>
-<li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
+        :param _StorageRegion: <p>指定上传园区，仅适用于对上传地域有特殊需求的用户：</p><li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li><li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
         :type StorageRegion: str
-        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过<a href="https://cloud.tencent.com/document/product/266/31772">创建分类</a>接口，创建分类，获得分类 ID。</p>
         :type ClassId: int
-        :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :type TasksPriority: int
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
-        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _ExtInfo: 保留字段，特殊用途时使用。
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p>
         :type ExtInfo: str
-        :param _SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
+        :param _SourceContext: <p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。</p>
         :type SourceContext: str
-        :param _MediaStoragePath: 媒体存储路径，以/开头。
-只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
+        :param _MediaStoragePath: <p>媒体存储路径，以/开头。<br>只有<a href="https://cloud.tencent.com/document/product/266/126825">FileID + Path 模式</a>的子应用可以指定存储路径。</p>
         :type MediaStoragePath: str
         """
         self._MediaUrl = None
@@ -77256,8 +77331,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def MediaUrl(self):
-        r"""要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。
-支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。请确保媒体 URL 可以访问。
+        r"""<p>要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。<br>支持的扩展名详见<a href="https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">媒体类型</a>。请确保媒体 URL 可以访问。</p>
         :rtype: str
         """
         return self._MediaUrl
@@ -77268,8 +77342,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def MediaType(self):
-        r"""媒体文件类型（扩展名），支持的类型详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
-如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。
+        r"""<p>媒体文件类型（扩展名），支持的类型详见<a href="https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">媒体类型</a>。<br>如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。</p>
         :rtype: str
         """
         return self._MediaType
@@ -77280,7 +77353,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -77291,7 +77364,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def MediaName(self):
-        r"""媒体名称。
+        r"""<p>媒体名称。</p>
         :rtype: str
         """
         return self._MediaName
@@ -77302,7 +77375,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def CoverUrl(self):
-        r"""要拉取的视频封面 URL。支持的文件格式：gif、jpeg（jpg）、png。
+        r"""<p>要拉取的视频封面 URL。支持的文件格式：gif、jpeg（jpg）、png。</p>
         :rtype: str
         """
         return self._CoverUrl
@@ -77313,7 +77386,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def Procedure(self):
-        r"""媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
+        r"""<p>媒体后续任务操作，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。</p>
         :rtype: str
         """
         return self._Procedure
@@ -77324,7 +77397,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -77335,9 +77408,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def StorageRegion(self):
-        r"""指定上传园区，仅适用于对上传地域有特殊需求的用户：
-<li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li>
-<li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
+        r"""<p>指定上传园区，仅适用于对上传地域有特殊需求的用户：</p><li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li><li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
         :rtype: str
         """
         return self._StorageRegion
@@ -77348,7 +77419,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过<a href="https://cloud.tencent.com/document/product/266/31772">创建分类</a>接口，创建分类，获得分类 ID。</p>
         :rtype: int
         """
         return self._ClassId
@@ -77359,7 +77430,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
-        r"""任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :rtype: int
         """
         return self._TasksPriority
@@ -77370,7 +77441,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -77381,7 +77452,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -77392,7 +77463,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""保留字段，特殊用途时使用。
+        r"""<p>保留字段，特殊用途时使用。</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -77403,7 +77474,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def SourceContext(self):
-        r"""来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。</p>
         :rtype: str
         """
         return self._SourceContext
@@ -77414,8 +77485,7 @@ class PullUploadRequest(AbstractModel):
 
     @property
     def MediaStoragePath(self):
-        r"""媒体存储路径，以/开头。
-只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
+        r"""<p>媒体存储路径，以/开头。<br>只有<a href="https://cloud.tencent.com/document/product/266/126825">FileID + Path 模式</a>的子应用可以指定存储路径。</p>
         :rtype: str
         """
         return self._MediaStoragePath
@@ -77458,7 +77528,7 @@ class PullUploadResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。
+        :param _TaskId: <p>拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -77468,7 +77538,7 @@ class PullUploadResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。
+        r"""<p>拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。</p>
         :rtype: str
         """
         return self._TaskId
@@ -85743,13 +85813,13 @@ class SceneAigcImageOutputConfig(AbstractModel):
         :type ExpireTime: str
         :param _AspectRatio: <p>指定所生成图片的宽高比。输入格式为 W:H。<br>本字段在以下场景有效：</p><ul><li>生商品图场景，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9</li><li>AI扩图场景。可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9，可以配合 ImageWidth 和 ImageHeight 使用，规则如下： <ol><li>仅指定 AspectRatio 时，根据原图输入进行自适应调整。</li><li>指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。</li><li>当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。</li></ol></li></ul>
         :type AspectRatio: str
-        :param _EncodeConfig: <p>输出图片编码格式参数。<strong>仅AI换衣场景有效。</strong></p>
+        :param _EncodeConfig: <p>输出图片编码格式参数。</p>
         :type EncodeConfig: :class:`tencentcloud.vod.v20180717.models.ImageSceneAigcEncodeConfig`
         :param _ImageWidth: <p>输出图像宽度，<strong>仅AI扩图场景有效</strong>。</p>
         :type ImageWidth: int
         :param _ImageHeight: <p>输出图像高度，<strong>仅AI扩图场景有效</strong>。</p>
         :type ImageHeight: int
-        :param _Resolution: <p>输出分辨率。仅change_clothes、change_clothes_under场景有效。可选值：1K、2K、4K。</p>
+        :param _Resolution: <p>输出分辨率。仅<code>ai_try_on</code>场景有效。可选值：1K、2K、4K。</p>
         :type Resolution: str
         """
         self._StorageMode = None
@@ -85819,7 +85889,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def EncodeConfig(self):
-        r"""<p>输出图片编码格式参数。<strong>仅AI换衣场景有效。</strong></p>
+        r"""<p>输出图片编码格式参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ImageSceneAigcEncodeConfig`
         """
         return self._EncodeConfig
@@ -85852,7 +85922,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""<p>输出分辨率。仅change_clothes、change_clothes_under场景有效。可选值：1K、2K、4K。</p>
+        r"""<p>输出分辨率。仅<code>ai_try_on</code>场景有效。可选值：1K、2K、4K。</p>
         :rtype: str
         """
         return self._Resolution
@@ -88257,33 +88327,31 @@ class SimpleHlsClipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 需要裁剪的腾讯云点播 HLS 视频 URL。
+        :param _Url: <p>需要裁剪的腾讯云点播 HLS 视频 URL。</p>
         :type Url: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _StartTimeOffset: 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。
+        :param _StartTimeOffset: <p>裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。
+        :param _EndTimeOffset: <p>裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。</p>
         :type EndTimeOffset: float
-        :param _IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。
+        :param _IsPersistence: <p>是否固化。0 不固化，1 固化。默认不固化。</p>
         :type IsPersistence: int
-        :param _ExpireTime: 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+        :param _ExpireTime: <p>剪辑固化后的视频存储过期时间。格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。</p>
         :type ExpireTime: str
-        :param _Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+        :param _Procedure: <p>剪辑固化后的视频点播任务流处理，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。仅 IsPersistence 为 1 时有效。</p>
         :type Procedure: str
-        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-仅 IsPersistence 为 1 时有效。
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/31772">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>仅 IsPersistence 为 1 时有效。
         :type ClassId: int
-        :param _SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+        :param _SourceContext: <p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。</p>
         :type SourceContext: str
-        :param _SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+        :param _SessionContext: <p>会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，<a href="/document/product/266/9636">任务流状态变更回调</a> 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。</p>
         :type SessionContext: str
-        :param _Precision: 该字段已废弃。
+        :param _Precision: <p>该字段已废弃。</p>
         :type Precision: str
-        :param _OutputMediaType: 输出视频类型，取值有：<li>hls: 输出 hls 文件。</li>默认取值 hls。
+        :param _OutputMediaType: <p>输出视频类型，取值有：<li>hls: 输出 hls 文件。</li>默认取值 hls。</p>
         :type OutputMediaType: str
-        :param _ExtInfo: 保留字段，特殊用途时使用。 示例值：""
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。 示例值：&quot;&quot;</p>
         :type ExtInfo: str
         """
         self._Url = None
@@ -88302,7 +88370,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""需要裁剪的腾讯云点播 HLS 视频 URL。
+        r"""<p>需要裁剪的腾讯云点播 HLS 视频 URL。</p>
         :rtype: str
         """
         return self._Url
@@ -88313,7 +88381,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -88324,7 +88392,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。
+        r"""<p>裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -88335,7 +88403,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。
+        r"""<p>裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -88346,7 +88414,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def IsPersistence(self):
-        r"""是否固化。0 不固化，1 固化。默认不固化。
+        r"""<p>是否固化。0 不固化，1 固化。默认不固化。</p>
         :rtype: int
         """
         return self._IsPersistence
@@ -88357,7 +88425,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+        r"""<p>剪辑固化后的视频存储过期时间。格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -88368,7 +88436,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def Procedure(self):
-        r"""剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+        r"""<p>剪辑固化后的视频点播任务流处理，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。仅 IsPersistence 为 1 时有效。</p>
         :rtype: str
         """
         return self._Procedure
@@ -88379,9 +88447,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
-仅 IsPersistence 为 1 时有效。
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/31772">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>仅 IsPersistence 为 1 时有效。
         :rtype: int
         """
         return self._ClassId
@@ -88392,7 +88458,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def SourceContext(self):
-        r"""来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+        r"""<p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。</p>
         :rtype: str
         """
         return self._SourceContext
@@ -88403,7 +88469,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+        r"""<p>会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，<a href="/document/product/266/9636">任务流状态变更回调</a> 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -88416,7 +88482,7 @@ class SimpleHlsClipRequest(AbstractModel):
     def Precision(self):
         warnings.warn("parameter `Precision` is deprecated", DeprecationWarning) 
 
-        r"""该字段已废弃。
+        r"""<p>该字段已废弃。</p>
         :rtype: str
         """
         return self._Precision
@@ -88429,7 +88495,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def OutputMediaType(self):
-        r"""输出视频类型，取值有：<li>hls: 输出 hls 文件。</li>默认取值 hls。
+        r"""<p>输出视频类型，取值有：<li>hls: 输出 hls 文件。</li>默认取值 hls。</p>
         :rtype: str
         """
         return self._OutputMediaType
@@ -88440,7 +88506,7 @@ class SimpleHlsClipRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""保留字段，特殊用途时使用。 示例值：""
+        r"""<p>保留字段，特殊用途时使用。 示例值：&quot;&quot;</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -88481,13 +88547,13 @@ class SimpleHlsClipResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 裁剪后的视频地址。
+        :param _Url: <p>裁剪后的视频地址。</p>
         :type Url: str
-        :param _MetaData: 裁剪后的视频元信息。目前`Size`，`Rotate`，`VideoDuration`，`AudioDuration` 几个字段暂时缺省，没有真实数据。
+        :param _MetaData: <p>裁剪后的视频元信息。目前<code>Size</code>，<code>Rotate</code>，<code>VideoDuration</code>，<code>AudioDuration</code> 几个字段暂时缺省，没有真实数据。</p>
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param _FileId: 剪辑固化后的视频的媒体文件的唯一标识。
+        :param _FileId: <p>剪辑固化后的视频的媒体文件的唯一标识。</p>
         :type FileId: str
-        :param _TaskId: 剪辑固化后的视频任务流 ID。
+        :param _TaskId: <p>剪辑固化后的视频任务流 ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -88500,7 +88566,7 @@ class SimpleHlsClipResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""裁剪后的视频地址。
+        r"""<p>裁剪后的视频地址。</p>
         :rtype: str
         """
         return self._Url
@@ -88511,7 +88577,7 @@ class SimpleHlsClipResponse(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""裁剪后的视频元信息。目前`Size`，`Rotate`，`VideoDuration`，`AudioDuration` 几个字段暂时缺省，没有真实数据。
+        r"""<p>裁剪后的视频元信息。目前<code>Size</code>，<code>Rotate</code>，<code>VideoDuration</code>，<code>AudioDuration</code> 几个字段暂时缺省，没有真实数据。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -88522,7 +88588,7 @@ class SimpleHlsClipResponse(AbstractModel):
 
     @property
     def FileId(self):
-        r"""剪辑固化后的视频的媒体文件的唯一标识。
+        r"""<p>剪辑固化后的视频的媒体文件的唯一标识。</p>
         :rtype: str
         """
         return self._FileId
@@ -88533,7 +88599,7 @@ class SimpleHlsClipResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""剪辑固化后的视频任务流 ID。
+        r"""<p>剪辑固化后的视频任务流 ID。</p>
         :rtype: str
         """
         return self._TaskId

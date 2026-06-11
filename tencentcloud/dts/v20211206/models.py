@@ -13246,15 +13246,15 @@ class MigrateDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StepAll: 总步骤数
+        :param _StepAll: <p>总步骤数</p>
         :type StepAll: int
-        :param _StepNow: 当前步骤
+        :param _StepNow: <p>当前步骤</p>
         :type StepNow: int
-        :param _MasterSlaveDistance: 主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
+        :param _MasterSlaveDistance: <p>主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1</p>
         :type MasterSlaveDistance: int
-        :param _SecondsBehindMaster: 主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
+        :param _SecondsBehindMaster: <p>主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1</p>
         :type SecondsBehindMaster: int
-        :param _StepInfo: 步骤信息
+        :param _StepInfo: <p>步骤信息</p>
         :type StepInfo: list of StepDetailInfo
         """
         self._StepAll = None
@@ -13265,7 +13265,7 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def StepAll(self):
-        r"""总步骤数
+        r"""<p>总步骤数</p>
         :rtype: int
         """
         return self._StepAll
@@ -13276,7 +13276,7 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def StepNow(self):
-        r"""当前步骤
+        r"""<p>当前步骤</p>
         :rtype: int
         """
         return self._StepNow
@@ -13287,7 +13287,7 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def MasterSlaveDistance(self):
-        r"""主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
+        r"""<p>主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1</p>
         :rtype: int
         """
         return self._MasterSlaveDistance
@@ -13298,7 +13298,7 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def SecondsBehindMaster(self):
-        r"""主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
+        r"""<p>主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1</p>
         :rtype: int
         """
         return self._SecondsBehindMaster
@@ -13309,7 +13309,7 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def StepInfo(self):
-        r"""步骤信息
+        r"""<p>步骤信息</p>
         :rtype: list of StepDetailInfo
         """
         return self._StepInfo
@@ -16383,11 +16383,11 @@ class ProcessStepTip(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Message: 提示信息
+        :param _Message: <p>提示信息</p>
         :type Message: str
-        :param _Solution: 解决方案
+        :param _Solution: <p>解决方案</p>
         :type Solution: str
-        :param _HelpDoc: 文档提示
+        :param _HelpDoc: <p>文档提示</p>
         :type HelpDoc: str
         """
         self._Message = None
@@ -16396,7 +16396,7 @@ class ProcessStepTip(AbstractModel):
 
     @property
     def Message(self):
-        r"""提示信息
+        r"""<p>提示信息</p>
         :rtype: str
         """
         return self._Message
@@ -16407,7 +16407,7 @@ class ProcessStepTip(AbstractModel):
 
     @property
     def Solution(self):
-        r"""解决方案
+        r"""<p>解决方案</p>
         :rtype: str
         """
         return self._Solution
@@ -16418,7 +16418,7 @@ class ProcessStepTip(AbstractModel):
 
     @property
     def HelpDoc(self):
-        r"""文档提示
+        r"""<p>文档提示</p>
         :rtype: str
         """
         return self._HelpDoc
@@ -18307,23 +18307,25 @@ class StepDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StepNo: 步骤序列
+        :param _StepNo: <p>步骤序列</p>
         :type StepNo: int
-        :param _StepName: 步骤展现名称
+        :param _StepName: <p>步骤展现名称</p>
         :type StepName: str
-        :param _StepId: 步骤英文标识
+        :param _StepId: <p>步骤英文标识</p>
         :type StepId: str
-        :param _Status: 步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted
+        :param _Status: <p>步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted</p>
         :type Status: str
-        :param _StartTime: 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。
+        :param _StartTime: <p>当前步骤开始的时间，格式为&quot;yyyy-mm-dd hh:mm:ss&quot;，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。</p>
         :type StartTime: str
-        :param _StepMessage: 步骤错误信息
+        :param _FinishTime: <p>完成时间</p>
+        :type FinishTime: str
+        :param _StepMessage: <p>步骤错误信息</p>
         :type StepMessage: str
-        :param _Percent: 执行进度
+        :param _Percent: <p>执行进度</p>
         :type Percent: int
-        :param _Errors: 错误信息
+        :param _Errors: <p>错误信息</p>
         :type Errors: list of ProcessStepTip
-        :param _Warnings: 告警提示
+        :param _Warnings: <p>告警提示</p>
         :type Warnings: list of ProcessStepTip
         """
         self._StepNo = None
@@ -18331,6 +18333,7 @@ class StepDetailInfo(AbstractModel):
         self._StepId = None
         self._Status = None
         self._StartTime = None
+        self._FinishTime = None
         self._StepMessage = None
         self._Percent = None
         self._Errors = None
@@ -18338,7 +18341,7 @@ class StepDetailInfo(AbstractModel):
 
     @property
     def StepNo(self):
-        r"""步骤序列
+        r"""<p>步骤序列</p>
         :rtype: int
         """
         return self._StepNo
@@ -18349,7 +18352,7 @@ class StepDetailInfo(AbstractModel):
 
     @property
     def StepName(self):
-        r"""步骤展现名称
+        r"""<p>步骤展现名称</p>
         :rtype: str
         """
         return self._StepName
@@ -18360,7 +18363,7 @@ class StepDetailInfo(AbstractModel):
 
     @property
     def StepId(self):
-        r"""步骤英文标识
+        r"""<p>步骤英文标识</p>
         :rtype: str
         """
         return self._StepId
@@ -18371,7 +18374,7 @@ class StepDetailInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted
+        r"""<p>步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted</p>
         :rtype: str
         """
         return self._Status
@@ -18382,7 +18385,7 @@ class StepDetailInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。
+        r"""<p>当前步骤开始的时间，格式为&quot;yyyy-mm-dd hh:mm:ss&quot;，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。</p>
         :rtype: str
         """
         return self._StartTime
@@ -18392,8 +18395,19 @@ class StepDetailInfo(AbstractModel):
         self._StartTime = StartTime
 
     @property
+    def FinishTime(self):
+        r"""<p>完成时间</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
     def StepMessage(self):
-        r"""步骤错误信息
+        r"""<p>步骤错误信息</p>
         :rtype: str
         """
         return self._StepMessage
@@ -18404,7 +18418,7 @@ class StepDetailInfo(AbstractModel):
 
     @property
     def Percent(self):
-        r"""执行进度
+        r"""<p>执行进度</p>
         :rtype: int
         """
         return self._Percent
@@ -18415,7 +18429,7 @@ class StepDetailInfo(AbstractModel):
 
     @property
     def Errors(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
         :rtype: list of ProcessStepTip
         """
         return self._Errors
@@ -18426,7 +18440,7 @@ class StepDetailInfo(AbstractModel):
 
     @property
     def Warnings(self):
-        r"""告警提示
+        r"""<p>告警提示</p>
         :rtype: list of ProcessStepTip
         """
         return self._Warnings
@@ -18442,6 +18456,7 @@ class StepDetailInfo(AbstractModel):
         self._StepId = params.get("StepId")
         self._Status = params.get("Status")
         self._StartTime = params.get("StartTime")
+        self._FinishTime = params.get("FinishTime")
         self._StepMessage = params.get("StepMessage")
         self._Percent = params.get("Percent")
         if params.get("Errors") is not None:
@@ -18473,23 +18488,25 @@ class StepInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StepNo: 步骤编号
+        :param _StepNo: <p>步骤编号</p>
         :type StepNo: int
-        :param _StepName: 步骤名
+        :param _StepName: <p>步骤名</p>
         :type StepName: str
-        :param _StepId: 步骤标号
+        :param _StepId: <p>步骤标号</p>
         :type StepId: str
-        :param _Status: 当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)
+        :param _Status: <p>当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)</p>
         :type Status: str
-        :param _StartTime: 步骤开始时间，可能为空
+        :param _StartTime: <p>步骤开始时间，可能为空</p>
         :type StartTime: str
-        :param _Errors: 错误信息
+        :param _FinishTime: <p>完成时间</p>
+        :type FinishTime: str
+        :param _Errors: <p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of StepTip
-        :param _Warnings: 警告信息
+        :param _Warnings: <p>警告信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Warnings: list of StepTip
-        :param _Progress: 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
+        :param _Progress: <p>当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度</p>
         :type Progress: int
         """
         self._StepNo = None
@@ -18497,13 +18514,14 @@ class StepInfo(AbstractModel):
         self._StepId = None
         self._Status = None
         self._StartTime = None
+        self._FinishTime = None
         self._Errors = None
         self._Warnings = None
         self._Progress = None
 
     @property
     def StepNo(self):
-        r"""步骤编号
+        r"""<p>步骤编号</p>
         :rtype: int
         """
         return self._StepNo
@@ -18514,7 +18532,7 @@ class StepInfo(AbstractModel):
 
     @property
     def StepName(self):
-        r"""步骤名
+        r"""<p>步骤名</p>
         :rtype: str
         """
         return self._StepName
@@ -18525,7 +18543,7 @@ class StepInfo(AbstractModel):
 
     @property
     def StepId(self):
-        r"""步骤标号
+        r"""<p>步骤标号</p>
         :rtype: str
         """
         return self._StepId
@@ -18536,7 +18554,7 @@ class StepInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)
+        r"""<p>当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)</p>
         :rtype: str
         """
         return self._Status
@@ -18547,7 +18565,7 @@ class StepInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""步骤开始时间，可能为空
+        r"""<p>步骤开始时间，可能为空</p>
         :rtype: str
         """
         return self._StartTime
@@ -18557,8 +18575,19 @@ class StepInfo(AbstractModel):
         self._StartTime = StartTime
 
     @property
+    def FinishTime(self):
+        r"""<p>完成时间</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
     def Errors(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StepTip
         """
@@ -18570,7 +18599,7 @@ class StepInfo(AbstractModel):
 
     @property
     def Warnings(self):
-        r"""警告信息
+        r"""<p>警告信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StepTip
         """
@@ -18582,7 +18611,7 @@ class StepInfo(AbstractModel):
 
     @property
     def Progress(self):
-        r"""当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
+        r"""<p>当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度</p>
         :rtype: int
         """
         return self._Progress
@@ -18598,6 +18627,7 @@ class StepInfo(AbstractModel):
         self._StepId = params.get("StepId")
         self._Status = params.get("Status")
         self._StartTime = params.get("StartTime")
+        self._FinishTime = params.get("FinishTime")
         if params.get("Errors") is not None:
             self._Errors = []
             for item in params.get("Errors"):
@@ -19902,26 +19932,26 @@ class SyncDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StepAll: 总步骤数
+        :param _StepAll: <p>总步骤数</p>
         :type StepAll: int
-        :param _StepNow: 当前步骤
+        :param _StepNow: <p>当前步骤</p>
         :type StepNow: int
-        :param _Progress: 总体进度
+        :param _Progress: <p>总体进度</p>
         :type Progress: int
-        :param _CurrentStepProgress: 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
+        :param _CurrentStepProgress: <p>当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度</p>
         :type CurrentStepProgress: int
-        :param _MasterSlaveDistance: 同步两端数据量差距
+        :param _MasterSlaveDistance: <p>同步两端数据量差距</p>
         :type MasterSlaveDistance: int
-        :param _SecondsBehindMaster: 同步两端时间差距
+        :param _SecondsBehindMaster: <p>同步两端时间差距</p>
         :type SecondsBehindMaster: int
-        :param _Message: 总体描述信息
+        :param _Message: <p>总体描述信息</p>
         :type Message: str
-        :param _StepInfos: 详细步骤信息
+        :param _StepInfos: <p>详细步骤信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfos: list of StepInfo
-        :param _CauseOfCompareDisable: 不能发起内置校验的原因
+        :param _CauseOfCompareDisable: <p>不能发起内置校验的原因</p>
         :type CauseOfCompareDisable: str
-        :param _ErrInfo: 任务的错误和解决方案信息
+        :param _ErrInfo: <p>任务的错误和解决方案信息</p>
         :type ErrInfo: :class:`tencentcloud.dts.v20211206.models.ErrInfo`
         """
         self._StepAll = None
@@ -19937,7 +19967,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def StepAll(self):
-        r"""总步骤数
+        r"""<p>总步骤数</p>
         :rtype: int
         """
         return self._StepAll
@@ -19948,7 +19978,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def StepNow(self):
-        r"""当前步骤
+        r"""<p>当前步骤</p>
         :rtype: int
         """
         return self._StepNow
@@ -19959,7 +19989,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def Progress(self):
-        r"""总体进度
+        r"""<p>总体进度</p>
         :rtype: int
         """
         return self._Progress
@@ -19970,7 +20000,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def CurrentStepProgress(self):
-        r"""当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
+        r"""<p>当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度</p>
         :rtype: int
         """
         return self._CurrentStepProgress
@@ -19981,7 +20011,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def MasterSlaveDistance(self):
-        r"""同步两端数据量差距
+        r"""<p>同步两端数据量差距</p>
         :rtype: int
         """
         return self._MasterSlaveDistance
@@ -19992,7 +20022,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def SecondsBehindMaster(self):
-        r"""同步两端时间差距
+        r"""<p>同步两端时间差距</p>
         :rtype: int
         """
         return self._SecondsBehindMaster
@@ -20003,7 +20033,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def Message(self):
-        r"""总体描述信息
+        r"""<p>总体描述信息</p>
         :rtype: str
         """
         return self._Message
@@ -20014,7 +20044,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def StepInfos(self):
-        r"""详细步骤信息
+        r"""<p>详细步骤信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StepInfo
         """
@@ -20026,7 +20056,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def CauseOfCompareDisable(self):
-        r"""不能发起内置校验的原因
+        r"""<p>不能发起内置校验的原因</p>
         :rtype: str
         """
         return self._CauseOfCompareDisable
@@ -20037,7 +20067,7 @@ class SyncDetailInfo(AbstractModel):
 
     @property
     def ErrInfo(self):
-        r"""任务的错误和解决方案信息
+        r"""<p>任务的错误和解决方案信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.ErrInfo`
         """
         return self._ErrInfo

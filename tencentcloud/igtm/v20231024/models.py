@@ -5212,14 +5212,14 @@ class MainAddressPool(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressPools: 集合中的地址池id与权重，数组
+        :param _AddressPools: <p>集合中的地址池id与权重，数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressPools: list of MainPoolWeight
-        :param _MainAddressPoolId: 地址池集合id
+        :param _MainAddressPoolId: <p>地址池集合id</p>
         :type MainAddressPoolId: int
-        :param _MinSurviveNum: 切换阀值，不能大于主力集合内地址总数
+        :param _MinSurviveNum: <p>切换阈值，不能大于主力集合内地址总数</p>
         :type MinSurviveNum: int
-        :param _TrafficStrategy: 切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重
+        :param _TrafficStrategy: <p>切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重</p>
         :type TrafficStrategy: str
         """
         self._AddressPools = None
@@ -5229,7 +5229,7 @@ class MainAddressPool(AbstractModel):
 
     @property
     def AddressPools(self):
-        r"""集合中的地址池id与权重，数组
+        r"""<p>集合中的地址池id与权重，数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MainPoolWeight
         """
@@ -5241,7 +5241,7 @@ class MainAddressPool(AbstractModel):
 
     @property
     def MainAddressPoolId(self):
-        r"""地址池集合id
+        r"""<p>地址池集合id</p>
         :rtype: int
         """
         return self._MainAddressPoolId
@@ -5252,7 +5252,7 @@ class MainAddressPool(AbstractModel):
 
     @property
     def MinSurviveNum(self):
-        r"""切换阀值，不能大于主力集合内地址总数
+        r"""<p>切换阈值，不能大于主力集合内地址总数</p>
         :rtype: int
         """
         return self._MinSurviveNum
@@ -5263,7 +5263,7 @@ class MainAddressPool(AbstractModel):
 
     @property
     def TrafficStrategy(self):
-        r"""切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重
+        r"""<p>切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重</p>
         :rtype: str
         """
         return self._TrafficStrategy
@@ -5353,26 +5353,29 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PoolId: 地址池id
+        :param _PoolId: <p>地址池id</p>
         :type PoolId: int
-        :param _PoolName: 地址池名称，不允许重复
+        :param _PoolName: <p>地址池名称，不允许重复</p>
         :type PoolName: str
-        :param _TrafficStrategy: 流量策略: WEIGHT负载均衡，ALL解析全部
+        :param _TrafficStrategy: <p>流量策略: WEIGHT负载均衡，ALL解析全部</p>
         :type TrafficStrategy: str
-        :param _MonitorId: 监控器id，当监控器已关联策略时，此字段必传
+        :param _MonitorId: <p>监控器id，当监控器已关联策略时，此字段必传</p>
         :type MonitorId: int
-        :param _AddressSet: 地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。
+        :param _AddressSet: <p>地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。</p>
         :type AddressSet: list of Address
+        :param _KeepResource: <p>是否保留资源</p><p>枚举值：</p><ul><li>false： 全量操作，会有删除逻辑</li><li>true： 不会删除原有资源</li></ul>
+        :type KeepResource: bool
         """
         self._PoolId = None
         self._PoolName = None
         self._TrafficStrategy = None
         self._MonitorId = None
         self._AddressSet = None
+        self._KeepResource = None
 
     @property
     def PoolId(self):
-        r"""地址池id
+        r"""<p>地址池id</p>
         :rtype: int
         """
         return self._PoolId
@@ -5383,7 +5386,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def PoolName(self):
-        r"""地址池名称，不允许重复
+        r"""<p>地址池名称，不允许重复</p>
         :rtype: str
         """
         return self._PoolName
@@ -5394,7 +5397,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def TrafficStrategy(self):
-        r"""流量策略: WEIGHT负载均衡，ALL解析全部
+        r"""<p>流量策略: WEIGHT负载均衡，ALL解析全部</p>
         :rtype: str
         """
         return self._TrafficStrategy
@@ -5405,7 +5408,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def MonitorId(self):
-        r"""监控器id，当监控器已关联策略时，此字段必传
+        r"""<p>监控器id，当监控器已关联策略时，此字段必传</p>
         :rtype: int
         """
         return self._MonitorId
@@ -5416,7 +5419,7 @@ class ModifyAddressPoolRequest(AbstractModel):
 
     @property
     def AddressSet(self):
-        r"""地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。
+        r"""<p>地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。</p>
         :rtype: list of Address
         """
         return self._AddressSet
@@ -5424,6 +5427,17 @@ class ModifyAddressPoolRequest(AbstractModel):
     @AddressSet.setter
     def AddressSet(self, AddressSet):
         self._AddressSet = AddressSet
+
+    @property
+    def KeepResource(self):
+        r"""<p>是否保留资源</p><p>枚举值：</p><ul><li>false： 全量操作，会有删除逻辑</li><li>true： 不会删除原有资源</li></ul>
+        :rtype: bool
+        """
+        return self._KeepResource
+
+    @KeepResource.setter
+    def KeepResource(self, KeepResource):
+        self._KeepResource = KeepResource
 
 
     def _deserialize(self, params):
@@ -5437,6 +5451,7 @@ class ModifyAddressPoolRequest(AbstractModel):
                 obj = Address()
                 obj._deserialize(item)
                 self._AddressSet.append(obj)
+        self._KeepResource = params.get("KeepResource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5454,7 +5469,7 @@ class ModifyAddressPoolResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Msg: 是否修改成功
+        :param _Msg: <p>是否修改成功</p>
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5464,7 +5479,7 @@ class ModifyAddressPoolResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""是否修改成功
+        r"""<p>是否修改成功</p>
         :rtype: str
         """
         return self._Msg
@@ -6023,24 +6038,26 @@ class ModifyStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _StrategyId: 策略id
+        :param _StrategyId: <p>策略id</p>
         :type StrategyId: int
-        :param _Source: 解析线路，需要全量传参
+        :param _Source: <p>解析线路，需要全量传参</p>
         :type Source: list of Source
-        :param _MainAddressPoolSet: 主力地址池集合，需要全量传参
+        :param _MainAddressPoolSet: <p>主力地址池集合，需要全量传参</p>
         :type MainAddressPoolSet: list of MainAddressPool
-        :param _FallbackAddressPoolSet: 兜底地址池集合，需要全量传参
+        :param _FallbackAddressPoolSet: <p>兜底地址池集合，需要全量传参</p>
         :type FallbackAddressPoolSet: list of MainAddressPool
-        :param _StrategyName: 策略名称，不允许重复
+        :param _StrategyName: <p>策略名称，不允许重复</p>
         :type StrategyName: str
-        :param _IsEnabled: 策略开启状态：ENABLED开启；DISABLED关闭
+        :param _IsEnabled: <p>策略开启状态：ENABLED开启；DISABLED关闭</p>
         :type IsEnabled: str
-        :param _KeepDomainRecords: 是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启
+        :param _KeepDomainRecords: <p>是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启</p>
         :type KeepDomainRecords: str
-        :param _SwitchPoolType: 调度模式：AUTO默认；STOP仅暂停不切换
+        :param _SwitchPoolType: <p>调度模式：AUTO默认；STOP仅暂停不切换</p>
         :type SwitchPoolType: str
+        :param _KeepResource: <p>是否保留资源</p><p>枚举值：</p><ul><li>false： 全量操作，会有删除逻辑</li><li>true： 不会删除原有资源</li></ul>
+        :type KeepResource: bool
         """
         self._InstanceId = None
         self._StrategyId = None
@@ -6051,10 +6068,11 @@ class ModifyStrategyRequest(AbstractModel):
         self._IsEnabled = None
         self._KeepDomainRecords = None
         self._SwitchPoolType = None
+        self._KeepResource = None
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6065,7 +6083,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        r"""策略id
+        r"""<p>策略id</p>
         :rtype: int
         """
         return self._StrategyId
@@ -6076,7 +6094,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""解析线路，需要全量传参
+        r"""<p>解析线路，需要全量传参</p>
         :rtype: list of Source
         """
         return self._Source
@@ -6087,7 +6105,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def MainAddressPoolSet(self):
-        r"""主力地址池集合，需要全量传参
+        r"""<p>主力地址池集合，需要全量传参</p>
         :rtype: list of MainAddressPool
         """
         return self._MainAddressPoolSet
@@ -6098,7 +6116,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def FallbackAddressPoolSet(self):
-        r"""兜底地址池集合，需要全量传参
+        r"""<p>兜底地址池集合，需要全量传参</p>
         :rtype: list of MainAddressPool
         """
         return self._FallbackAddressPoolSet
@@ -6109,7 +6127,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def StrategyName(self):
-        r"""策略名称，不允许重复
+        r"""<p>策略名称，不允许重复</p>
         :rtype: str
         """
         return self._StrategyName
@@ -6120,7 +6138,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def IsEnabled(self):
-        r"""策略开启状态：ENABLED开启；DISABLED关闭
+        r"""<p>策略开启状态：ENABLED开启；DISABLED关闭</p>
         :rtype: str
         """
         return self._IsEnabled
@@ -6131,7 +6149,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def KeepDomainRecords(self):
-        r"""是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启
+        r"""<p>是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启</p>
         :rtype: str
         """
         return self._KeepDomainRecords
@@ -6142,7 +6160,7 @@ class ModifyStrategyRequest(AbstractModel):
 
     @property
     def SwitchPoolType(self):
-        r"""调度模式：AUTO默认；STOP仅暂停不切换
+        r"""<p>调度模式：AUTO默认；STOP仅暂停不切换</p>
         :rtype: str
         """
         return self._SwitchPoolType
@@ -6150,6 +6168,17 @@ class ModifyStrategyRequest(AbstractModel):
     @SwitchPoolType.setter
     def SwitchPoolType(self, SwitchPoolType):
         self._SwitchPoolType = SwitchPoolType
+
+    @property
+    def KeepResource(self):
+        r"""<p>是否保留资源</p><p>枚举值：</p><ul><li>false： 全量操作，会有删除逻辑</li><li>true： 不会删除原有资源</li></ul>
+        :rtype: bool
+        """
+        return self._KeepResource
+
+    @KeepResource.setter
+    def KeepResource(self, KeepResource):
+        self._KeepResource = KeepResource
 
 
     def _deserialize(self, params):
@@ -6177,6 +6206,7 @@ class ModifyStrategyRequest(AbstractModel):
         self._IsEnabled = params.get("IsEnabled")
         self._KeepDomainRecords = params.get("KeepDomainRecords")
         self._SwitchPoolType = params.get("SwitchPoolType")
+        self._KeepResource = params.get("KeepResource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6194,7 +6224,7 @@ class ModifyStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Msg: 是否成功
+        :param _Msg: <p>是否成功</p>
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6204,7 +6234,7 @@ class ModifyStrategyResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""是否成功
+        r"""<p>是否成功</p>
         :rtype: str
         """
         return self._Msg

@@ -205,6 +205,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelClusterServerlessScalePlan(
+            self,
+            request: models.CancelClusterServerlessScalePlanRequest,
+            opts: Dict = None,
+    ) -> models.CancelClusterServerlessScalePlanResponse:
+        """
+        取消Serverless集群的弹性计划
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelClusterServerlessScalePlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelClusterServerlessScalePlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckCreateLibraDBInstance(
             self,
             request: models.CheckCreateLibraDBInstanceRequest,
@@ -493,6 +511,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateClusterPeriodScalePolicy(
+            self,
+            request: models.CreateClusterPeriodScalePolicyRequest,
+            opts: Dict = None,
+    ) -> models.CreateClusterPeriodScalePolicyResponse:
+        """
+        创建集群的周期弹性策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateClusterPeriodScalePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateClusterPeriodScalePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateClusters(
             self,
             request: models.CreateClustersRequest,
@@ -776,6 +812,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DeleteClusterDatabase"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteClusterDatabaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteClusterPeriodScalePolicy(
+            self,
+            request: models.DeleteClusterPeriodScalePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteClusterPeriodScalePolicyResponse:
+        """
+        删除周期弹性策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteClusterPeriodScalePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteClusterPeriodScalePolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1393,6 +1447,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterPeriodScalePolicy(
+            self,
+            request: models.DescribeClusterPeriodScalePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterPeriodScalePolicyResponse:
+        """
+        查询集群内所有的周期弹性策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterPeriodScalePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterPeriodScalePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterReadOnly(
             self,
             request: models.DescribeClusterReadOnlyRequest,
@@ -1406,6 +1478,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeClusterReadOnly"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeClusterReadOnlyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterServerlessScalePlans(
+            self,
+            request: models.DescribeClusterServerlessScalePlansRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterServerlessScalePlansResponse:
+        """
+        查询Serverless弹性扩容计划
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterServerlessScalePlans"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterServerlessScalePlansResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2941,6 +3031,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyClusterPeriodScalePolicy(
+            self,
+            request: models.ModifyClusterPeriodScalePolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterPeriodScalePolicyResponse:
+        """
+        更新集群的周期弹性策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterPeriodScalePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterPeriodScalePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyClusterReadOnly(
             self,
             request: models.ModifyClusterReadOnlyRequest,
@@ -3476,6 +3584,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "OfflineLibraDBInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.OfflineLibraDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenAIOptimizer(
+            self,
+            request: models.OpenAIOptimizerRequest,
+            opts: Dict = None,
+    ) -> models.OpenAIOptimizerResponse:
+        """
+        本接口(OpenAIOptimizer)用于开启实例的AI优化器开关。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenAIOptimizer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenAIOptimizerResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

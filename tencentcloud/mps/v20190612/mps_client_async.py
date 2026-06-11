@@ -188,6 +188,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcAudioTask(
+            self,
+            request: models.CreateAigcAudioTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcAudioTaskResponse:
+        """
+        调用该接口，用于创建AI生音频任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcAudioTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcAudioTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcImageTask(
             self,
             request: models.CreateAigcImageTaskRequest,
@@ -1546,6 +1564,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeAdaptiveDynamicStreamingTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAdaptiveDynamicStreamingTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcAudioTask(
+            self,
+            request: models.DescribeAigcAudioTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcAudioTaskResponse:
+        """
+        调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcAudioTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcAudioTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

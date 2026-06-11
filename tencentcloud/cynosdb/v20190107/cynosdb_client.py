@@ -256,6 +256,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelClusterServerlessScalePlan(self, request):
+        r"""取消Serverless集群的弹性计划
+
+        :param request: Request instance for CancelClusterServerlessScalePlan.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CancelClusterServerlessScalePlanRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CancelClusterServerlessScalePlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelClusterServerlessScalePlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelClusterServerlessScalePlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckCreateLibraDBInstance(self, request):
         r"""本接口（CheckCreateLibraDBInstance）用于校验集群是否可以添加只读分析引擎实例
 
@@ -624,6 +647,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateClusterPeriodScalePolicy(self, request):
+        r"""创建集群的周期弹性策略
+
+        :param request: Request instance for CreateClusterPeriodScalePolicy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateClusterPeriodScalePolicyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateClusterPeriodScalePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateClusterPeriodScalePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateClusterPeriodScalePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateClusters(self, request):
         r"""本接口（CreateClusters）用于新购集群。
 
@@ -983,6 +1029,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DeleteClusterDatabase", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteClusterDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteClusterPeriodScalePolicy(self, request):
+        r"""删除周期弹性策略
+
+        :param request: Request instance for DeleteClusterPeriodScalePolicy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteClusterPeriodScalePolicyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteClusterPeriodScalePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteClusterPeriodScalePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteClusterPeriodScalePolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1774,6 +1843,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterPeriodScalePolicy(self, request):
+        r"""查询集群内所有的周期弹性策略
+
+        :param request: Request instance for DescribeClusterPeriodScalePolicy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterPeriodScalePolicyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterPeriodScalePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterPeriodScalePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterPeriodScalePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterReadOnly(self, request):
         r"""本接口（DescribeClusterReadOnly）用于查询集群只读开关。
 
@@ -1788,6 +1880,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeClusterReadOnly", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterReadOnlyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterServerlessScalePlans(self, request):
+        r"""查询Serverless弹性扩容计划
+
+        :param request: Request instance for DescribeClusterServerlessScalePlans.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterServerlessScalePlansRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterServerlessScalePlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterServerlessScalePlans", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterServerlessScalePlansResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3752,6 +3867,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterPeriodScalePolicy(self, request):
+        r"""更新集群的周期弹性策略
+
+        :param request: Request instance for ModifyClusterPeriodScalePolicy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterPeriodScalePolicyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterPeriodScalePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterPeriodScalePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterPeriodScalePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterReadOnly(self, request):
         r"""本接口（ModifyClusterReadOnly）用于修改集群只读开关。
 
@@ -4433,6 +4571,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("OfflineLibraDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.OfflineLibraDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenAIOptimizer(self, request):
+        r"""本接口(OpenAIOptimizer)用于开启实例的AI优化器开关。
+
+        :param request: Request instance for OpenAIOptimizer.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenAIOptimizerRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenAIOptimizerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAIOptimizer", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenAIOptimizerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

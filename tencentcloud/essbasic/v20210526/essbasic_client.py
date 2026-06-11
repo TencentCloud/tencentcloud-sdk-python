@@ -986,7 +986,7 @@ class EssbasicClient(AbstractClient):
 
     def ChannelCreateReleaseFlow(self, request):
         r"""发起解除协议的主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
-        解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/partner/flow_release)。
+        解除协议的模板是官方提供，经过提供法务审核，暂不支持自定义，[点击查看解除协议模板示例](https://qcloudimg.tencent-cloud.cn/raw/279b53002cf178ac89ba2c4f31b2dd8a.pdf)。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/partner/flow_release)。
 
         注意：
         <ul><li><code>原合同必须签署完</code>成后才能发起解除协议。</li>

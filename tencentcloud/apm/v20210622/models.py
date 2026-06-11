@@ -2359,125 +2359,119 @@ class ApmInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统 ID
+        :param _InstanceId: <p>业务系统 ID</p>
         :type InstanceId: str
-        :param _Name: 业务系统名
+        :param _Name: <p>业务系统名</p>
         :type Name: str
-        :param _Description: 业务系统描述信息
+        :param _Description: <p>业务系统描述信息</p>
         :type Description: str
-        :param _Status: 业务系统状态。{
-1: 初始化中; 2: 运行中; 4: 限流}
+        :param _Status: <p>业务系统状态。{<br>1: 初始化中; 2: 运行中; 4: 限流}</p>
         :type Status: int
-        :param _Region: 业务系统所属地域
+        :param _Region: <p>业务系统所属地域</p>
         :type Region: str
-        :param _Tags: 业务系统 Tag 列表
+        :param _Tags: <p>业务系统 Tag 列表</p>
         :type Tags: list of ApmTag
-        :param _AppId: AppID 信息
+        :param _AppId: <p>AppID 信息</p>
         :type AppId: int
-        :param _CreateUin: 创建人 Uin
+        :param _CreateUin: <p>创建人 Uin</p>
         :type CreateUin: str
-        :param _AmountOfUsedStorage: 存储使用量(单位：MB)
+        :param _AmountOfUsedStorage: <p>存储使用量(单位：MB)</p>
         :type AmountOfUsedStorage: float
-        :param _ServiceCount: 该业务系统服务端应用数量
+        :param _ServiceCount: <p>该业务系统服务端应用数量</p>
         :type ServiceCount: int
-        :param _CountOfReportSpanPerDay: 日均上报 Span 数
+        :param _CountOfReportSpanPerDay: <p>日均上报 Span 数</p>
         :type CountOfReportSpanPerDay: int
-        :param _TraceDuration: Trace 数据保存时长（单位：天）
+        :param _TraceDuration: <p>Trace 数据保存时长（单位：天）</p>
         :type TraceDuration: int
-        :param _SpanDailyCounters: 业务系统上报额度
+        :param _SpanDailyCounters: <p>业务系统上报额度</p>
         :type SpanDailyCounters: int
-        :param _BillingInstance: 业务系统是否已开通计费（0=未开通，1=已开通）
+        :param _BillingInstance: <p>业务系统是否已开通计费（0=未开通，1=已开通）</p>
         :type BillingInstance: int
-        :param _ErrRateThreshold: 错误警示线（单位：%）
+        :param _ErrRateThreshold: <p>错误警示线（单位：%）</p>
         :type ErrRateThreshold: int
-        :param _SampleRate: 采样率（单位：%）
+        :param _SampleRate: <p>采样率（单位：%）</p>
         :type SampleRate: int
-        :param _ErrorSample: 是否开启错误采样（0=关, 1=开）
+        :param _ErrorSample: <p>是否开启错误采样（0=关, 1=开）</p>
         :type ErrorSample: int
-        :param _SlowRequestSavedThreshold: 采样慢调用保存阈值（单位：ms）
+        :param _SlowRequestSavedThreshold: <p>采样慢调用保存阈值（单位：ms）</p>
         :type SlowRequestSavedThreshold: int
-        :param _LogRegion: CLS 日志所在地域
+        :param _LogRegion: <p>CLS 日志所在地域</p>
         :type LogRegion: str
-        :param _LogSource: 日志源
+        :param _LogSource: <p>日志源</p>
         :type LogSource: str
-        :param _IsRelatedLog: 日志功能开关（0=关， 1=开）
+        :param _IsRelatedLog: <p>日志功能开关（0=关， 1=开）</p>
         :type IsRelatedLog: int
-        :param _LogTopicID: 日志主题 ID
+        :param _LogTopicID: <p>日志主题 ID</p>
         :type LogTopicID: str
-        :param _ClientCount: 该业务系统客户端应用数量
+        :param _ClientCount: <p>该业务系统客户端应用数量</p>
         :type ClientCount: int
-        :param _TotalCount: 该业务系统最近2天活跃应用数量
+        :param _TotalCount: <p>该业务系统最近2天活跃应用数量</p>
         :type TotalCount: int
-        :param _LogSet: CLS 日志集
+        :param _LogSet: <p>CLS 日志集</p>
         :type LogSet: str
-        :param _MetricDuration: Metric 数据保存时长（单位：天）
+        :param _MetricDuration: <p>Metric 数据保存时长（单位：天）</p>
         :type MetricDuration: int
-        :param _CustomShowTags: 用户自定义展示标签列表
+        :param _CustomShowTags: <p>用户自定义展示标签列表</p>
         :type CustomShowTags: list of str
-        :param _PayMode: 业务系统计费模式（1为预付费，0为按量付费）
+        :param _PayMode: <p>业务系统计费模式（1为预付费，0为按量付费）</p>
         :type PayMode: int
-        :param _PayModeEffective: 业务系统计费模式是否生效
+        :param _PayModeEffective: <p>业务系统计费模式是否生效</p>
         :type PayModeEffective: bool
-        :param _ResponseDurationWarningThreshold: 响应时间警示线（单位：ms）
+        :param _ResponseDurationWarningThreshold: <p>响应时间警示线（单位：ms）</p>
         :type ResponseDurationWarningThreshold: int
-        :param _Free: 是否免费（0=否，1=限额免费，2=完全免费），默认0
+        :param _Free: <p>是否免费（0=否，1=限额免费，2=完全免费），默认0</p>
         :type Free: int
-        :param _DefaultTSF: 是否 TSF 默认业务系统（0=否，1=是）
+        :param _DefaultTSF: <p>是否 TSF 默认业务系统（0=否，1=是）</p>
         :type DefaultTSF: int
-        :param _IsRelatedDashboard: 是否关联 Dashboard（0=关, 1=开）
+        :param _IsRelatedDashboard: <p>是否关联 Dashboard（0=关, 1=开）</p>
         :type IsRelatedDashboard: int
-        :param _DashboardTopicID: 关联的 Dashboard ID
+        :param _DashboardTopicID: <p>关联的 Dashboard ID</p>
         :type DashboardTopicID: str
-        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测（0=关， 1=开）
+        :param _IsInstrumentationVulnerabilityScan: <p>是否开启组件漏洞检测（0=关， 1=开）</p>
         :type IsInstrumentationVulnerabilityScan: int
-        :param _IsSqlInjectionAnalysis: 是否开启 SQL 注入分析（0=关， 1=开）
+        :param _IsSqlInjectionAnalysis: <p>是否开启 SQL 注入分析（0=关， 1=开）</p>
         :type IsSqlInjectionAnalysis: int
-        :param _StopReason: 限流原因。{
-1: 正式版限额;
-2: 试用版限额;
-4: 试用版到期;
-8: 账号欠费
-}
+        :param _StopReason: <p>限流原因。{<br>1: 正式版限额;<br>2: 试用版限额;<br>4: 试用版到期;<br>8: 账号欠费<br>}</p>
         :type StopReason: int
-        :param _IsRemoteCommandExecutionAnalysis: 是否开远程命令执行检测（0=关， 1=开）
+        :param _IsRemoteCommandExecutionAnalysis: <p>是否开远程命令执行检测（0=关， 1=开）</p>
         :type IsRemoteCommandExecutionAnalysis: int
-        :param _IsMemoryHijackingAnalysis: 是否开内存马执行检测（0=关， 1=开）
+        :param _IsMemoryHijackingAnalysis: <p>是否开内存马执行检测（0=关， 1=开）</p>
         :type IsMemoryHijackingAnalysis: int
-        :param _LogIndexType: CLS索引类型(0=全文索引，1=键值索引)
+        :param _LogIndexType: <p>CLS索引类型(0=全文索引，1=键值索引)</p>
         :type LogIndexType: int
-        :param _LogTraceIdKey: traceId的索引key: 当CLS索引类型为键值索引时生效
+        :param _LogTraceIdKey: <p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogTraceIdKey: str
-        :param _IsDeleteAnyFileAnalysis: 是否开启删除任意文件检测（0-关闭，1-开启）
+        :param _IsDeleteAnyFileAnalysis: <p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
         :type IsDeleteAnyFileAnalysis: int
-        :param _IsReadAnyFileAnalysis: 是否开启读取任意文件检测（0-关闭，1-开启）
+        :param _IsReadAnyFileAnalysis: <p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
         :type IsReadAnyFileAnalysis: int
-        :param _IsUploadAnyFileAnalysis: 是否开启上传任意文件检测（0-关闭，1-开启）
+        :param _IsUploadAnyFileAnalysis: <p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
         :type IsUploadAnyFileAnalysis: int
-        :param _IsIncludeAnyFileAnalysis: 是否开启包含任意文件检测（0-关闭，1-开启）
+        :param _IsIncludeAnyFileAnalysis: <p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
         :type IsIncludeAnyFileAnalysis: int
-        :param _IsDirectoryTraversalAnalysis: 是否开启目录遍历检测（0-关闭，1-开启）
+        :param _IsDirectoryTraversalAnalysis: <p>是否开启目录遍历检测（0-关闭，1-开启）</p>
         :type IsDirectoryTraversalAnalysis: int
-        :param _IsTemplateEngineInjectionAnalysis: 是否开启模板引擎注入检测（0-关闭，1-开启）
+        :param _IsTemplateEngineInjectionAnalysis: <p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
         :type IsTemplateEngineInjectionAnalysis: int
-        :param _IsScriptEngineInjectionAnalysis: 是否开启脚本引擎注入检测（0-关闭，1-开启）
+        :param _IsScriptEngineInjectionAnalysis: <p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
         :type IsScriptEngineInjectionAnalysis: int
-        :param _IsExpressionInjectionAnalysis: 是否开启表达式注入检测（0-关闭，1-开启）
+        :param _IsExpressionInjectionAnalysis: <p>是否开启表达式注入检测（0-关闭，1-开启）</p>
         :type IsExpressionInjectionAnalysis: int
-        :param _IsJNDIInjectionAnalysis: 是否开启JNDI注入检测（0-关闭，1-开启）
+        :param _IsJNDIInjectionAnalysis: <p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
         :type IsJNDIInjectionAnalysis: int
-        :param _IsJNIInjectionAnalysis: 是否开启JNI注入检测（0-关闭，1-开启）
+        :param _IsJNIInjectionAnalysis: <p>是否开启JNI注入检测（0-关闭，1-开启）</p>
         :type IsJNIInjectionAnalysis: int
-        :param _IsWebshellBackdoorAnalysis: 是否开启Webshell后门检测（0-关闭，1-开启）
+        :param _IsWebshellBackdoorAnalysis: <p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
         :type IsWebshellBackdoorAnalysis: int
-        :param _IsDeserializationAnalysis: 是否开启反序列化检测（0-关闭，1-开启）
+        :param _IsDeserializationAnalysis: <p>是否开启反序列化检测（0-关闭，1-开启）</p>
         :type IsDeserializationAnalysis: int
-        :param _Token: 业务系统鉴权 token
+        :param _Token: <p>业务系统鉴权 token</p>
         :type Token: str
-        :param _UrlLongSegmentThreshold: URL长分段收敛阈值
+        :param _UrlLongSegmentThreshold: <p>URL长分段收敛阈值</p>
         :type UrlLongSegmentThreshold: int
-        :param _UrlNumberSegmentThreshold: URL数字分段收敛阈值
+        :param _UrlNumberSegmentThreshold: <p>URL数字分段收敛阈值</p>
         :type UrlNumberSegmentThreshold: int
-        :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
+        :param _LogSpanIdKey: <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogSpanIdKey: str
         """
         self._InstanceId = None
@@ -2540,7 +2534,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""业务系统 ID
+        r"""<p>业务系统 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2551,7 +2545,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Name(self):
-        r"""业务系统名
+        r"""<p>业务系统名</p>
         :rtype: str
         """
         return self._Name
@@ -2562,7 +2556,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Description(self):
-        r"""业务系统描述信息
+        r"""<p>业务系统描述信息</p>
         :rtype: str
         """
         return self._Description
@@ -2573,8 +2567,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""业务系统状态。{
-1: 初始化中; 2: 运行中; 4: 限流}
+        r"""<p>业务系统状态。{<br>1: 初始化中; 2: 运行中; 4: 限流}</p>
         :rtype: int
         """
         return self._Status
@@ -2585,7 +2578,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Region(self):
-        r"""业务系统所属地域
+        r"""<p>业务系统所属地域</p>
         :rtype: str
         """
         return self._Region
@@ -2596,7 +2589,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Tags(self):
-        r"""业务系统 Tag 列表
+        r"""<p>业务系统 Tag 列表</p>
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -2607,7 +2600,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def AppId(self):
-        r"""AppID 信息
+        r"""<p>AppID 信息</p>
         :rtype: int
         """
         return self._AppId
@@ -2618,7 +2611,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建人 Uin
+        r"""<p>创建人 Uin</p>
         :rtype: str
         """
         return self._CreateUin
@@ -2629,7 +2622,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def AmountOfUsedStorage(self):
-        r"""存储使用量(单位：MB)
+        r"""<p>存储使用量(单位：MB)</p>
         :rtype: float
         """
         return self._AmountOfUsedStorage
@@ -2640,7 +2633,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ServiceCount(self):
-        r"""该业务系统服务端应用数量
+        r"""<p>该业务系统服务端应用数量</p>
         :rtype: int
         """
         return self._ServiceCount
@@ -2651,7 +2644,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def CountOfReportSpanPerDay(self):
-        r"""日均上报 Span 数
+        r"""<p>日均上报 Span 数</p>
         :rtype: int
         """
         return self._CountOfReportSpanPerDay
@@ -2662,7 +2655,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def TraceDuration(self):
-        r"""Trace 数据保存时长（单位：天）
+        r"""<p>Trace 数据保存时长（单位：天）</p>
         :rtype: int
         """
         return self._TraceDuration
@@ -2673,7 +2666,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        r"""业务系统上报额度
+        r"""<p>业务系统上报额度</p>
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -2684,7 +2677,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def BillingInstance(self):
-        r"""业务系统是否已开通计费（0=未开通，1=已开通）
+        r"""<p>业务系统是否已开通计费（0=未开通，1=已开通）</p>
         :rtype: int
         """
         return self._BillingInstance
@@ -2695,7 +2688,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ErrRateThreshold(self):
-        r"""错误警示线（单位：%）
+        r"""<p>错误警示线（单位：%）</p>
         :rtype: int
         """
         return self._ErrRateThreshold
@@ -2706,7 +2699,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""采样率（单位：%）
+        r"""<p>采样率（单位：%）</p>
         :rtype: int
         """
         return self._SampleRate
@@ -2717,7 +2710,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ErrorSample(self):
-        r"""是否开启错误采样（0=关, 1=开）
+        r"""<p>是否开启错误采样（0=关, 1=开）</p>
         :rtype: int
         """
         return self._ErrorSample
@@ -2728,7 +2721,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def SlowRequestSavedThreshold(self):
-        r"""采样慢调用保存阈值（单位：ms）
+        r"""<p>采样慢调用保存阈值（单位：ms）</p>
         :rtype: int
         """
         return self._SlowRequestSavedThreshold
@@ -2739,7 +2732,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogRegion(self):
-        r"""CLS 日志所在地域
+        r"""<p>CLS 日志所在地域</p>
         :rtype: str
         """
         return self._LogRegion
@@ -2750,7 +2743,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogSource(self):
-        r"""日志源
+        r"""<p>日志源</p>
         :rtype: str
         """
         return self._LogSource
@@ -2761,7 +2754,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        r"""日志功能开关（0=关， 1=开）
+        r"""<p>日志功能开关（0=关， 1=开）</p>
         :rtype: int
         """
         return self._IsRelatedLog
@@ -2772,7 +2765,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogTopicID(self):
-        r"""日志主题 ID
+        r"""<p>日志主题 ID</p>
         :rtype: str
         """
         return self._LogTopicID
@@ -2783,7 +2776,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ClientCount(self):
-        r"""该业务系统客户端应用数量
+        r"""<p>该业务系统客户端应用数量</p>
         :rtype: int
         """
         return self._ClientCount
@@ -2794,7 +2787,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""该业务系统最近2天活跃应用数量
+        r"""<p>该业务系统最近2天活跃应用数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2805,7 +2798,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogSet(self):
-        r"""CLS 日志集
+        r"""<p>CLS 日志集</p>
         :rtype: str
         """
         return self._LogSet
@@ -2816,7 +2809,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def MetricDuration(self):
-        r"""Metric 数据保存时长（单位：天）
+        r"""<p>Metric 数据保存时长（单位：天）</p>
         :rtype: int
         """
         return self._MetricDuration
@@ -2827,7 +2820,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def CustomShowTags(self):
-        r"""用户自定义展示标签列表
+        r"""<p>用户自定义展示标签列表</p>
         :rtype: list of str
         """
         return self._CustomShowTags
@@ -2838,7 +2831,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""业务系统计费模式（1为预付费，0为按量付费）
+        r"""<p>业务系统计费模式（1为预付费，0为按量付费）</p>
         :rtype: int
         """
         return self._PayMode
@@ -2849,7 +2842,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def PayModeEffective(self):
-        r"""业务系统计费模式是否生效
+        r"""<p>业务系统计费模式是否生效</p>
         :rtype: bool
         """
         return self._PayModeEffective
@@ -2860,7 +2853,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def ResponseDurationWarningThreshold(self):
-        r"""响应时间警示线（单位：ms）
+        r"""<p>响应时间警示线（单位：ms）</p>
         :rtype: int
         """
         return self._ResponseDurationWarningThreshold
@@ -2871,7 +2864,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Free(self):
-        r"""是否免费（0=否，1=限额免费，2=完全免费），默认0
+        r"""<p>是否免费（0=否，1=限额免费，2=完全免费），默认0</p>
         :rtype: int
         """
         return self._Free
@@ -2882,7 +2875,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def DefaultTSF(self):
-        r"""是否 TSF 默认业务系统（0=否，1=是）
+        r"""<p>是否 TSF 默认业务系统（0=否，1=是）</p>
         :rtype: int
         """
         return self._DefaultTSF
@@ -2893,7 +2886,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        r"""是否关联 Dashboard（0=关, 1=开）
+        r"""<p>是否关联 Dashboard（0=关, 1=开）</p>
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -2904,7 +2897,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        r"""关联的 Dashboard ID
+        r"""<p>关联的 Dashboard ID</p>
         :rtype: str
         """
         return self._DashboardTopicID
@@ -2915,7 +2908,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        r"""是否开启组件漏洞检测（0=关， 1=开）
+        r"""<p>是否开启组件漏洞检测（0=关， 1=开）</p>
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -2926,7 +2919,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        r"""是否开启 SQL 注入分析（0=关， 1=开）
+        r"""<p>是否开启 SQL 注入分析（0=关， 1=开）</p>
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -2937,12 +2930,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def StopReason(self):
-        r"""限流原因。{
-1: 正式版限额;
-2: 试用版限额;
-4: 试用版到期;
-8: 账号欠费
-}
+        r"""<p>限流原因。{<br>1: 正式版限额;<br>2: 试用版限额;<br>4: 试用版到期;<br>8: 账号欠费<br>}</p>
         :rtype: int
         """
         return self._StopReason
@@ -2953,7 +2941,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsRemoteCommandExecutionAnalysis(self):
-        r"""是否开远程命令执行检测（0=关， 1=开）
+        r"""<p>是否开远程命令执行检测（0=关， 1=开）</p>
         :rtype: int
         """
         return self._IsRemoteCommandExecutionAnalysis
@@ -2964,7 +2952,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsMemoryHijackingAnalysis(self):
-        r"""是否开内存马执行检测（0=关， 1=开）
+        r"""<p>是否开内存马执行检测（0=关， 1=开）</p>
         :rtype: int
         """
         return self._IsMemoryHijackingAnalysis
@@ -2975,7 +2963,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogIndexType(self):
-        r"""CLS索引类型(0=全文索引，1=键值索引)
+        r"""<p>CLS索引类型(0=全文索引，1=键值索引)</p>
         :rtype: int
         """
         return self._LogIndexType
@@ -2986,7 +2974,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogTraceIdKey(self):
-        r"""traceId的索引key: 当CLS索引类型为键值索引时生效
+        r"""<p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
         :rtype: str
         """
         return self._LogTraceIdKey
@@ -2997,7 +2985,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsDeleteAnyFileAnalysis(self):
-        r"""是否开启删除任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsDeleteAnyFileAnalysis
@@ -3008,7 +2996,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsReadAnyFileAnalysis(self):
-        r"""是否开启读取任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsReadAnyFileAnalysis
@@ -3019,7 +3007,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsUploadAnyFileAnalysis(self):
-        r"""是否开启上传任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsUploadAnyFileAnalysis
@@ -3030,7 +3018,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsIncludeAnyFileAnalysis(self):
-        r"""是否开启包含任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsIncludeAnyFileAnalysis
@@ -3041,7 +3029,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsDirectoryTraversalAnalysis(self):
-        r"""是否开启目录遍历检测（0-关闭，1-开启）
+        r"""<p>是否开启目录遍历检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsDirectoryTraversalAnalysis
@@ -3052,7 +3040,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsTemplateEngineInjectionAnalysis(self):
-        r"""是否开启模板引擎注入检测（0-关闭，1-开启）
+        r"""<p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsTemplateEngineInjectionAnalysis
@@ -3063,7 +3051,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsScriptEngineInjectionAnalysis(self):
-        r"""是否开启脚本引擎注入检测（0-关闭，1-开启）
+        r"""<p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsScriptEngineInjectionAnalysis
@@ -3074,7 +3062,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsExpressionInjectionAnalysis(self):
-        r"""是否开启表达式注入检测（0-关闭，1-开启）
+        r"""<p>是否开启表达式注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsExpressionInjectionAnalysis
@@ -3085,7 +3073,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsJNDIInjectionAnalysis(self):
-        r"""是否开启JNDI注入检测（0-关闭，1-开启）
+        r"""<p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsJNDIInjectionAnalysis
@@ -3096,7 +3084,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsJNIInjectionAnalysis(self):
-        r"""是否开启JNI注入检测（0-关闭，1-开启）
+        r"""<p>是否开启JNI注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsJNIInjectionAnalysis
@@ -3107,7 +3095,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsWebshellBackdoorAnalysis(self):
-        r"""是否开启Webshell后门检测（0-关闭，1-开启）
+        r"""<p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsWebshellBackdoorAnalysis
@@ -3118,7 +3106,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def IsDeserializationAnalysis(self):
-        r"""是否开启反序列化检测（0-关闭，1-开启）
+        r"""<p>是否开启反序列化检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsDeserializationAnalysis
@@ -3129,7 +3117,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def Token(self):
-        r"""业务系统鉴权 token
+        r"""<p>业务系统鉴权 token</p>
         :rtype: str
         """
         return self._Token
@@ -3140,7 +3128,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def UrlLongSegmentThreshold(self):
-        r"""URL长分段收敛阈值
+        r"""<p>URL长分段收敛阈值</p>
         :rtype: int
         """
         return self._UrlLongSegmentThreshold
@@ -3151,7 +3139,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def UrlNumberSegmentThreshold(self):
-        r"""URL数字分段收敛阈值
+        r"""<p>URL数字分段收敛阈值</p>
         :rtype: int
         """
         return self._UrlNumberSegmentThreshold
@@ -3162,7 +3150,7 @@ class ApmInstanceDetail(AbstractModel):
 
     @property
     def LogSpanIdKey(self):
-        r"""spanId的索引key: 当CLS索引类型为键值索引时生效
+        r"""<p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :rtype: str
         """
         return self._LogSpanIdKey
@@ -5322,18 +5310,28 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Tags: Tag 列表
+        :param _Tags: <p>Tag 列表</p>
         :type Tags: list of ApmTag
-        :param _InstanceName: 按业务系统名过滤，支持模糊检索
+        :param _InstanceName: <p>按业务系统名过滤，支持模糊检索</p>
         :type InstanceName: str
-        :param _InstanceId: 按业务系统 ID 过滤，支持模糊检索
+        :param _InstanceId: <p>按业务系统 ID 过滤，支持模糊检索</p>
         :type InstanceId: str
-        :param _InstanceIds: 按业务系统 ID 过滤
+        :param _InstanceIds: <p>按业务系统 ID 过滤</p>
         :type InstanceIds: list of str
-        :param _DemoInstanceFlag: 是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）
+        :param _DemoInstanceFlag: <p>是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）</p>
         :type DemoInstanceFlag: int
-        :param _AllRegionsFlag: 是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）
+        :param _AllRegionsFlag: <p>是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）</p>
         :type AllRegionsFlag: int
+        :param _PageIndex: <p>页码，从1开始</p><p>单位：页</p>
+        :type PageIndex: int
+        :param _PageSize: <p>每页数量，默认20，最大100</p><p>单位：个</p>
+        :type PageSize: int
+        :param _Keyword: <p>搜索参数（OR 匹配 Name / InstanceKey）</p>
+        :type Keyword: str
+        :param _OrderDirection: <p>排序类型：ASC | DESC</p>
+        :type OrderDirection: str
+        :param _OrderBy: <p>排序字段：ServiceCount / TotalCount</p>
+        :type OrderBy: str
         """
         self._Tags = None
         self._InstanceName = None
@@ -5341,10 +5339,15 @@ class DescribeApmInstancesRequest(AbstractModel):
         self._InstanceIds = None
         self._DemoInstanceFlag = None
         self._AllRegionsFlag = None
+        self._PageIndex = None
+        self._PageSize = None
+        self._Keyword = None
+        self._OrderDirection = None
+        self._OrderBy = None
 
     @property
     def Tags(self):
-        r"""Tag 列表
+        r"""<p>Tag 列表</p>
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -5355,7 +5358,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""按业务系统名过滤，支持模糊检索
+        r"""<p>按业务系统名过滤，支持模糊检索</p>
         :rtype: str
         """
         return self._InstanceName
@@ -5366,7 +5369,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""按业务系统 ID 过滤，支持模糊检索
+        r"""<p>按业务系统 ID 过滤，支持模糊检索</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5377,7 +5380,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""按业务系统 ID 过滤
+        r"""<p>按业务系统 ID 过滤</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -5388,7 +5391,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def DemoInstanceFlag(self):
-        r"""是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）
+        r"""<p>是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）</p>
         :rtype: int
         """
         return self._DemoInstanceFlag
@@ -5399,7 +5402,7 @@ class DescribeApmInstancesRequest(AbstractModel):
 
     @property
     def AllRegionsFlag(self):
-        r"""是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）
+        r"""<p>是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）</p>
         :rtype: int
         """
         return self._AllRegionsFlag
@@ -5407,6 +5410,61 @@ class DescribeApmInstancesRequest(AbstractModel):
     @AllRegionsFlag.setter
     def AllRegionsFlag(self, AllRegionsFlag):
         self._AllRegionsFlag = AllRegionsFlag
+
+    @property
+    def PageIndex(self):
+        r"""<p>页码，从1开始</p><p>单位：页</p>
+        :rtype: int
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认20，最大100</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        r"""<p>搜索参数（OR 匹配 Name / InstanceKey）</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def OrderDirection(self):
+        r"""<p>排序类型：ASC | DESC</p>
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序字段：ServiceCount / TotalCount</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
 
 
     def _deserialize(self, params):
@@ -5421,6 +5479,11 @@ class DescribeApmInstancesRequest(AbstractModel):
         self._InstanceIds = params.get("InstanceIds")
         self._DemoInstanceFlag = params.get("DemoInstanceFlag")
         self._AllRegionsFlag = params.get("AllRegionsFlag")
+        self._PageIndex = params.get("PageIndex")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
+        self._OrderDirection = params.get("OrderDirection")
+        self._OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5438,17 +5501,26 @@ class DescribeApmInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Instances: APM 业务系统列表
+        :param _Instances: <p>APM 业务系统列表</p>
         :type Instances: list of ApmInstanceDetail
+        :param _TotalCount: <p>总数</p><p>单位：个</p>
+        :type TotalCount: int
+        :param _PageIndex: <p>页码，从1开始 </p><p>单位：页</p>
+        :type PageIndex: int
+        :param _PageSize: <p>每页数量，默认20，最大100</p><p>单位：个</p>
+        :type PageSize: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Instances = None
+        self._TotalCount = None
+        self._PageIndex = None
+        self._PageSize = None
         self._RequestId = None
 
     @property
     def Instances(self):
-        r"""APM 业务系统列表
+        r"""<p>APM 业务系统列表</p>
         :rtype: list of ApmInstanceDetail
         """
         return self._Instances
@@ -5456,6 +5528,39 @@ class DescribeApmInstancesResponse(AbstractModel):
     @Instances.setter
     def Instances(self, Instances):
         self._Instances = Instances
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PageIndex(self):
+        r"""<p>页码，从1开始 </p><p>单位：页</p>
+        :rtype: int
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认20，最大100</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
     @property
     def RequestId(self):
@@ -5476,6 +5581,9 @@ class DescribeApmInstancesResponse(AbstractModel):
                 obj = ApmInstanceDetail()
                 obj._deserialize(item)
                 self._Instances.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._PageIndex = params.get("PageIndex")
+        self._PageSize = params.get("PageSize")
         self._RequestId = params.get("RequestId")
 
 
@@ -7373,44 +7481,36 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统 ID
+        :param _InstanceId: <p>业务系统 ID</p>
         :type InstanceId: str
-        :param _Metrics: 指标列表
+        :param _Metrics: <p>指标列表</p>
         :type Metrics: list of QueryMetricItem
-        :param _StartTime: 开始时间（单位为秒）
+        :param _StartTime: <p>开始时间（单位为秒）</p>
         :type StartTime: int
-        :param _EndTime: 结束时间（单位为秒）
+        :param _EndTime: <p>结束时间（单位为秒）</p>
         :type EndTime: int
-        :param _GroupBy: 聚合维度
+        :param _GroupBy: <p>聚合维度</p>
         :type GroupBy: list of str
-        :param _Filters: 过滤条件
+        :param _Filters: <p>过滤条件</p>
         :type Filters: list of Filter
-        :param _OrFilters: Or 过滤条件
+        :param _OrFilters: <p>Or 过滤条件</p>
         :type OrFilters: list of Filter
-        :param _OrderBy: 排序
-现支持的 Key 有：
-
-- startTime(开始时间)
-- endTime(结束时间)
-- duration(响应时间)
-
-现支持的 Value 有：
-
-- desc(降序排序)
-- asc(升序排序)
+        :param _OrderBy: <p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _BusinessName: 业务名称，控制台用户请填写taw。
+        :param _BusinessName: <p>业务名称，控制台用户请填写taw。</p>
         :type BusinessName: str
-        :param _Type: 特殊处理查询结果
+        :param _Type: <p>特殊处理查询结果</p>
         :type Type: str
-        :param _Limit: 每页大小，默认为1000，合法取值范围为0~1000
+        :param _Limit: <p>每页大小，默认为1000，合法取值范围为0~1000</p>
         :type Limit: int
-        :param _Offset: 分页起始点
+        :param _Offset: <p>分页起始点</p>
         :type Offset: int
-        :param _PageIndex: 页码
+        :param _PageIndex: <p>页码</p>
         :type PageIndex: int
-        :param _PageSize: 页长
+        :param _PageSize: <p>页长</p>
         :type PageSize: int
+        :param _ServiceID: <p>应用Id</p>
+        :type ServiceID: str
         """
         self._InstanceId = None
         self._Metrics = None
@@ -7426,10 +7526,11 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self._Offset = None
         self._PageIndex = None
         self._PageSize = None
+        self._ServiceID = None
 
     @property
     def InstanceId(self):
-        r"""业务系统 ID
+        r"""<p>业务系统 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7440,7 +7541,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Metrics(self):
-        r"""指标列表
+        r"""<p>指标列表</p>
         :rtype: list of QueryMetricItem
         """
         return self._Metrics
@@ -7451,7 +7552,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间（单位为秒）
+        r"""<p>开始时间（单位为秒）</p>
         :rtype: int
         """
         return self._StartTime
@@ -7462,7 +7563,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（单位为秒）
+        r"""<p>结束时间（单位为秒）</p>
         :rtype: int
         """
         return self._EndTime
@@ -7473,7 +7574,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def GroupBy(self):
-        r"""聚合维度
+        r"""<p>聚合维度</p>
         :rtype: list of str
         """
         return self._GroupBy
@@ -7484,7 +7585,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件
+        r"""<p>过滤条件</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -7495,7 +7596,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def OrFilters(self):
-        r"""Or 过滤条件
+        r"""<p>Or 过滤条件</p>
         :rtype: list of Filter
         """
         return self._OrFilters
@@ -7506,17 +7607,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序
-现支持的 Key 有：
-
-- startTime(开始时间)
-- endTime(结束时间)
-- duration(响应时间)
-
-现支持的 Value 有：
-
-- desc(降序排序)
-- asc(升序排序)
+        r"""<p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
         :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         """
         return self._OrderBy
@@ -7527,7 +7618,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def BusinessName(self):
-        r"""业务名称，控制台用户请填写taw。
+        r"""<p>业务名称，控制台用户请填写taw。</p>
         :rtype: str
         """
         return self._BusinessName
@@ -7538,7 +7629,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""特殊处理查询结果
+        r"""<p>特殊处理查询结果</p>
         :rtype: str
         """
         return self._Type
@@ -7549,7 +7640,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小，默认为1000，合法取值范围为0~1000
+        r"""<p>每页大小，默认为1000，合法取值范围为0~1000</p>
         :rtype: int
         """
         return self._Limit
@@ -7560,7 +7651,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页起始点
+        r"""<p>分页起始点</p>
         :rtype: int
         """
         return self._Offset
@@ -7571,7 +7662,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def PageIndex(self):
-        r"""页码
+        r"""<p>页码</p>
         :rtype: int
         """
         return self._PageIndex
@@ -7582,7 +7673,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""页长
+        r"""<p>页长</p>
         :rtype: int
         """
         return self._PageSize
@@ -7590,6 +7681,17 @@ class DescribeMetricRecordsRequest(AbstractModel):
     @PageSize.setter
     def PageSize(self, PageSize):
         self._PageSize = PageSize
+
+    @property
+    def ServiceID(self):
+        r"""<p>应用Id</p>
+        :rtype: str
+        """
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
 
 
     def _deserialize(self, params):
@@ -7624,6 +7726,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._PageIndex = params.get("PageIndex")
         self._PageSize = params.get("PageSize")
+        self._ServiceID = params.get("ServiceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7641,9 +7744,9 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Records: 指标结果集
+        :param _Records: <p>指标结果集</p>
         :type Records: list of ApmMetricRecord
-        :param _TotalCount: 查询指标结果集条数
+        :param _TotalCount: <p>查询指标结果集条数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7654,7 +7757,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
     @property
     def Records(self):
-        r"""指标结果集
+        r"""<p>指标结果集</p>
         :rtype: list of ApmMetricRecord
         """
         return self._Records
@@ -7665,7 +7768,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询指标结果集条数
+        r"""<p>查询指标结果集条数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -8249,40 +8352,42 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统 ID
+        :param _InstanceId: <p>业务系统 ID</p>
         :type InstanceId: str
-        :param _StartTime: 查询开始时间
+        :param _StartTime: <p>查询开始时间</p>
         :type StartTime: int
-        :param _EndTime: 查询结束时间
+        :param _EndTime: <p>查询结束时间</p>
         :type EndTime: int
-        :param _ServiceName: 应用名
+        :param _ServiceName: <p>应用名</p>
         :type ServiceName: str
-        :param _UpLevel: 上游层级
+        :param _UpLevel: <p>上游层级</p>
         :type UpLevel: int
-        :param _ServiceInstance: 应用实例信息
+        :param _ServiceInstance: <p>应用实例信息</p>
         :type ServiceInstance: str
-        :param _DownLevel: 下游层级
+        :param _DownLevel: <p>下游层级</p>
         :type DownLevel: int
-        :param _View: 视角
+        :param _View: <p>视角</p>
         :type View: str
-        :param _Filters: 过滤器
+        :param _Filters: <p>过滤器</p>
         :type Filters: list of Filter
-        :param _Topic: 表示Topic（MQ拓扑图用）
+        :param _Topic: <p>表示Topic（MQ拓扑图用）</p>
         :type Topic: str
-        :param _Selectors: 视图筛选列表
+        :param _Selectors: <p>视图筛选列表</p>
         :type Selectors: :class:`tencentcloud.apm.v20210622.models.Selectors`
-        :param _Id: 视图ID
+        :param _Id: <p>视图ID</p>
         :type Id: str
-        :param _TraceID: TraceID
+        :param _TraceID: <p>TraceID</p>
         :type TraceID: str
-        :param _IsSlowTopFive: 查询top5慢响应节点
+        :param _IsSlowTopFive: <p>查询top5慢响应节点</p>
         :type IsSlowTopFive: bool
-        :param _GetResource: 是否获取资源层信息
+        :param _GetResource: <p>是否获取资源层信息</p>
         :type GetResource: bool
-        :param _Tags: 根据应用标签过滤
+        :param _Tags: <p>根据应用标签过滤</p>
         :type Tags: list of ApmTag
-        :param _Hidden: 不显示的节点类型
+        :param _Hidden: <p>不显示的节点类型</p>
         :type Hidden: :class:`tencentcloud.apm.v20210622.models.Selectors`
+        :param _EnableResourceLink: <p>是否开启云资源关联</p>
+        :type EnableResourceLink: bool
         """
         self._InstanceId = None
         self._StartTime = None
@@ -8301,10 +8406,11 @@ class DescribeTopologyNewRequest(AbstractModel):
         self._GetResource = None
         self._Tags = None
         self._Hidden = None
+        self._EnableResourceLink = None
 
     @property
     def InstanceId(self):
-        r"""业务系统 ID
+        r"""<p>业务系统 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8315,7 +8421,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""查询开始时间
+        r"""<p>查询开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -8326,7 +8432,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""查询结束时间
+        r"""<p>查询结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -8337,7 +8443,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""应用名
+        r"""<p>应用名</p>
         :rtype: str
         """
         return self._ServiceName
@@ -8348,7 +8454,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def UpLevel(self):
-        r"""上游层级
+        r"""<p>上游层级</p>
         :rtype: int
         """
         return self._UpLevel
@@ -8359,7 +8465,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def ServiceInstance(self):
-        r"""应用实例信息
+        r"""<p>应用实例信息</p>
         :rtype: str
         """
         return self._ServiceInstance
@@ -8370,7 +8476,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def DownLevel(self):
-        r"""下游层级
+        r"""<p>下游层级</p>
         :rtype: int
         """
         return self._DownLevel
@@ -8381,7 +8487,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def View(self):
-        r"""视角
+        r"""<p>视角</p>
         :rtype: str
         """
         return self._View
@@ -8392,7 +8498,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤器
+        r"""<p>过滤器</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -8403,7 +8509,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""表示Topic（MQ拓扑图用）
+        r"""<p>表示Topic（MQ拓扑图用）</p>
         :rtype: str
         """
         return self._Topic
@@ -8414,7 +8520,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def Selectors(self):
-        r"""视图筛选列表
+        r"""<p>视图筛选列表</p>
         :rtype: :class:`tencentcloud.apm.v20210622.models.Selectors`
         """
         return self._Selectors
@@ -8425,7 +8531,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""视图ID
+        r"""<p>视图ID</p>
         :rtype: str
         """
         return self._Id
@@ -8436,7 +8542,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def TraceID(self):
-        r"""TraceID
+        r"""<p>TraceID</p>
         :rtype: str
         """
         return self._TraceID
@@ -8447,7 +8553,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def IsSlowTopFive(self):
-        r"""查询top5慢响应节点
+        r"""<p>查询top5慢响应节点</p>
         :rtype: bool
         """
         return self._IsSlowTopFive
@@ -8458,7 +8564,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def GetResource(self):
-        r"""是否获取资源层信息
+        r"""<p>是否获取资源层信息</p>
         :rtype: bool
         """
         return self._GetResource
@@ -8469,7 +8575,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""根据应用标签过滤
+        r"""<p>根据应用标签过滤</p>
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -8480,7 +8586,7 @@ class DescribeTopologyNewRequest(AbstractModel):
 
     @property
     def Hidden(self):
-        r"""不显示的节点类型
+        r"""<p>不显示的节点类型</p>
         :rtype: :class:`tencentcloud.apm.v20210622.models.Selectors`
         """
         return self._Hidden
@@ -8488,6 +8594,17 @@ class DescribeTopologyNewRequest(AbstractModel):
     @Hidden.setter
     def Hidden(self, Hidden):
         self._Hidden = Hidden
+
+    @property
+    def EnableResourceLink(self):
+        r"""<p>是否开启云资源关联</p>
+        :rtype: bool
+        """
+        return self._EnableResourceLink
+
+    @EnableResourceLink.setter
+    def EnableResourceLink(self, EnableResourceLink):
+        self._EnableResourceLink = EnableResourceLink
 
 
     def _deserialize(self, params):
@@ -8522,6 +8639,7 @@ class DescribeTopologyNewRequest(AbstractModel):
         if params.get("Hidden") is not None:
             self._Hidden = Selectors()
             self._Hidden._deserialize(params.get("Hidden"))
+        self._EnableResourceLink = params.get("EnableResourceLink")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8539,17 +8657,20 @@ class DescribeTopologyNewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Nodes: 节点集合
+        :param _Nodes: <p>节点集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nodes: list of TopologyNode
-        :param _Edges: 边集合
+        :param _Edges: <p>边集合</p>
         :type Edges: list of TopologyEdgeNew
-        :param _TopologyModifyFlag: 拓扑图是否有修改
+        :param _TopologyModifyFlag: <p>拓扑图是否有修改</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopologyModifyFlag: int
-        :param _Selectors: 节点数量
+        :param _Selectors: <p>节点数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Selectors: :class:`tencentcloud.apm.v20210622.models.SelectorView`
+        :param _OverviewStats: <p>节点状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OverviewStats: :class:`tencentcloud.apm.v20210622.models.OverviewStats`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8557,11 +8678,12 @@ class DescribeTopologyNewResponse(AbstractModel):
         self._Edges = None
         self._TopologyModifyFlag = None
         self._Selectors = None
+        self._OverviewStats = None
         self._RequestId = None
 
     @property
     def Nodes(self):
-        r"""节点集合
+        r"""<p>节点集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopologyNode
         """
@@ -8573,7 +8695,7 @@ class DescribeTopologyNewResponse(AbstractModel):
 
     @property
     def Edges(self):
-        r"""边集合
+        r"""<p>边集合</p>
         :rtype: list of TopologyEdgeNew
         """
         return self._Edges
@@ -8584,7 +8706,7 @@ class DescribeTopologyNewResponse(AbstractModel):
 
     @property
     def TopologyModifyFlag(self):
-        r"""拓扑图是否有修改
+        r"""<p>拓扑图是否有修改</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8596,7 +8718,7 @@ class DescribeTopologyNewResponse(AbstractModel):
 
     @property
     def Selectors(self):
-        r"""节点数量
+        r"""<p>节点数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apm.v20210622.models.SelectorView`
         """
@@ -8605,6 +8727,18 @@ class DescribeTopologyNewResponse(AbstractModel):
     @Selectors.setter
     def Selectors(self, Selectors):
         self._Selectors = Selectors
+
+    @property
+    def OverviewStats(self):
+        r"""<p>节点状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apm.v20210622.models.OverviewStats`
+        """
+        return self._OverviewStats
+
+    @OverviewStats.setter
+    def OverviewStats(self, OverviewStats):
+        self._OverviewStats = OverviewStats
 
     @property
     def RequestId(self):
@@ -8635,6 +8769,9 @@ class DescribeTopologyNewResponse(AbstractModel):
         if params.get("Selectors") is not None:
             self._Selectors = SelectorView()
             self._Selectors._deserialize(params.get("Selectors"))
+        if params.get("OverviewStats") is not None:
+            self._OverviewStats = OverviewStats()
+            self._OverviewStats._deserialize(params.get("OverviewStats"))
         self._RequestId = params.get("RequestId")
 
 
@@ -11332,6 +11469,138 @@ class OrderBy(AbstractModel):
         
 
 
+class OverviewStats(AbstractModel):
+    r"""拓扑图节点状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceStats: 应用节点状态
+        :type ServiceStats: :class:`tencentcloud.apm.v20210622.models.TopologyNodeStats`
+        :param _DatabaseStats: 数据库节点状态
+        :type DatabaseStats: :class:`tencentcloud.apm.v20210622.models.TopologyNodeStats`
+        :param _MQStats: 消息队列节点状态
+        :type MQStats: :class:`tencentcloud.apm.v20210622.models.TopologyNodeStats`
+        :param _TotalNodes: 节点总数
+        :type TotalNodes: int
+        :param _HealthyNodes: 健康节点总数
+        :type HealthyNodes: int
+        :param _WarningNodes: 警告节点总数
+        :type WarningNodes: int
+        :param _ErrorNodes: 错误节点总数
+        :type ErrorNodes: int
+        """
+        self._ServiceStats = None
+        self._DatabaseStats = None
+        self._MQStats = None
+        self._TotalNodes = None
+        self._HealthyNodes = None
+        self._WarningNodes = None
+        self._ErrorNodes = None
+
+    @property
+    def ServiceStats(self):
+        r"""应用节点状态
+        :rtype: :class:`tencentcloud.apm.v20210622.models.TopologyNodeStats`
+        """
+        return self._ServiceStats
+
+    @ServiceStats.setter
+    def ServiceStats(self, ServiceStats):
+        self._ServiceStats = ServiceStats
+
+    @property
+    def DatabaseStats(self):
+        r"""数据库节点状态
+        :rtype: :class:`tencentcloud.apm.v20210622.models.TopologyNodeStats`
+        """
+        return self._DatabaseStats
+
+    @DatabaseStats.setter
+    def DatabaseStats(self, DatabaseStats):
+        self._DatabaseStats = DatabaseStats
+
+    @property
+    def MQStats(self):
+        r"""消息队列节点状态
+        :rtype: :class:`tencentcloud.apm.v20210622.models.TopologyNodeStats`
+        """
+        return self._MQStats
+
+    @MQStats.setter
+    def MQStats(self, MQStats):
+        self._MQStats = MQStats
+
+    @property
+    def TotalNodes(self):
+        r"""节点总数
+        :rtype: int
+        """
+        return self._TotalNodes
+
+    @TotalNodes.setter
+    def TotalNodes(self, TotalNodes):
+        self._TotalNodes = TotalNodes
+
+    @property
+    def HealthyNodes(self):
+        r"""健康节点总数
+        :rtype: int
+        """
+        return self._HealthyNodes
+
+    @HealthyNodes.setter
+    def HealthyNodes(self, HealthyNodes):
+        self._HealthyNodes = HealthyNodes
+
+    @property
+    def WarningNodes(self):
+        r"""警告节点总数
+        :rtype: int
+        """
+        return self._WarningNodes
+
+    @WarningNodes.setter
+    def WarningNodes(self, WarningNodes):
+        self._WarningNodes = WarningNodes
+
+    @property
+    def ErrorNodes(self):
+        r"""错误节点总数
+        :rtype: int
+        """
+        return self._ErrorNodes
+
+    @ErrorNodes.setter
+    def ErrorNodes(self, ErrorNodes):
+        self._ErrorNodes = ErrorNodes
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceStats") is not None:
+            self._ServiceStats = TopologyNodeStats()
+            self._ServiceStats._deserialize(params.get("ServiceStats"))
+        if params.get("DatabaseStats") is not None:
+            self._DatabaseStats = TopologyNodeStats()
+            self._DatabaseStats._deserialize(params.get("DatabaseStats"))
+        if params.get("MQStats") is not None:
+            self._MQStats = TopologyNodeStats()
+            self._MQStats._deserialize(params.get("MQStats"))
+        self._TotalNodes = params.get("TotalNodes")
+        self._HealthyNodes = params.get("HealthyNodes")
+        self._WarningNodes = params.get("WarningNodes")
+        self._ErrorNodes = params.get("ErrorNodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Position(AbstractModel):
     r"""节点位置信息
 
@@ -12537,6 +12806,8 @@ class TopologyEdgeNew(AbstractModel):
         :type SourceComp: str
         :param _TargetComp: 边上目标节点类型 应用/MQ/DB
         :type TargetComp: str
+        :param _ReqCnt: 组件间调用次数
+        :type ReqCnt: int
         """
         self._Source = None
         self._Id = None
@@ -12551,6 +12822,7 @@ class TopologyEdgeNew(AbstractModel):
         self._SqlErrorRequestCount = None
         self._SourceComp = None
         self._TargetComp = None
+        self._ReqCnt = None
 
     @property
     def Source(self):
@@ -12703,6 +12975,17 @@ class TopologyEdgeNew(AbstractModel):
     def TargetComp(self, TargetComp):
         self._TargetComp = TargetComp
 
+    @property
+    def ReqCnt(self):
+        r"""组件间调用次数
+        :rtype: int
+        """
+        return self._ReqCnt
+
+    @ReqCnt.setter
+    def ReqCnt(self, ReqCnt):
+        self._ReqCnt = ReqCnt
+
 
     def _deserialize(self, params):
         self._Source = params.get("Source")
@@ -12718,6 +13001,7 @@ class TopologyEdgeNew(AbstractModel):
         self._SqlErrorRequestCount = params.get("SqlErrorRequestCount")
         self._SourceComp = params.get("SourceComp")
         self._TargetComp = params.get("TargetComp")
+        self._ReqCnt = params.get("ReqCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12788,6 +13072,10 @@ class TopologyNode(AbstractModel):
         :type ConsumerQps: float
         :param _ServiceId: 应用 ID
         :type ServiceId: str
+        :param _ReqCnt: 调用次数
+        :type ReqCnt: int
+        :param _ConsumerReqCnt: 消息队列消费者视角的调用次数
+        :type ConsumerReqCnt: int
         """
         self._ErrRate = None
         self._Kind = None
@@ -12809,6 +13097,8 @@ class TopologyNode(AbstractModel):
         self._ConsumerErrRate = None
         self._ConsumerQps = None
         self._ServiceId = None
+        self._ReqCnt = None
+        self._ConsumerReqCnt = None
 
     @property
     def ErrRate(self):
@@ -13043,6 +13333,28 @@ class TopologyNode(AbstractModel):
     def ServiceId(self, ServiceId):
         self._ServiceId = ServiceId
 
+    @property
+    def ReqCnt(self):
+        r"""调用次数
+        :rtype: int
+        """
+        return self._ReqCnt
+
+    @ReqCnt.setter
+    def ReqCnt(self, ReqCnt):
+        self._ReqCnt = ReqCnt
+
+    @property
+    def ConsumerReqCnt(self):
+        r"""消息队列消费者视角的调用次数
+        :rtype: int
+        """
+        return self._ConsumerReqCnt
+
+    @ConsumerReqCnt.setter
+    def ConsumerReqCnt(self, ConsumerReqCnt):
+        self._ConsumerReqCnt = ConsumerReqCnt
+
 
     def _deserialize(self, params):
         self._ErrRate = params.get("ErrRate")
@@ -13074,6 +13386,89 @@ class TopologyNode(AbstractModel):
         self._ConsumerErrRate = params.get("ConsumerErrRate")
         self._ConsumerQps = params.get("ConsumerQps")
         self._ServiceId = params.get("ServiceId")
+        self._ReqCnt = params.get("ReqCnt")
+        self._ConsumerReqCnt = params.get("ConsumerReqCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopologyNodeStats(AbstractModel):
+    r"""拓扑图应用节点状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 节点总数
+        :type Total: int
+        :param _Healthy: 健康节点数量
+        :type Healthy: int
+        :param _Warning: 警告节点数量
+        :type Warning: int
+        :param _Error: 异常节点数量
+        :type Error: int
+        """
+        self._Total = None
+        self._Healthy = None
+        self._Warning = None
+        self._Error = None
+
+    @property
+    def Total(self):
+        r"""节点总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Healthy(self):
+        r"""健康节点数量
+        :rtype: int
+        """
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+    @property
+    def Warning(self):
+        r"""警告节点数量
+        :rtype: int
+        """
+        return self._Warning
+
+    @Warning.setter
+    def Warning(self, Warning):
+        self._Warning = Warning
+
+    @property
+    def Error(self):
+        r"""异常节点数量
+        :rtype: int
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Healthy = params.get("Healthy")
+        self._Warning = params.get("Warning")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1117,26 +1117,29 @@ class DeployInferServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceMetaData: 服务元数据信息，如服务名
+        :param _ServiceMetaData: <p>服务元数据信息，如服务名</p>
         :type ServiceMetaData: :class:`tencentcloud.hai.v20230812.models.ServiceMetaData`
-        :param _ComputeInfo: 资源相关信息
+        :param _ComputeInfo: <p>资源相关信息</p>
         :type ComputeInfo: :class:`tencentcloud.hai.v20230812.models.ComputeInfo`
-        :param _DeploymentConfigs: 服务部署信息
+        :param _DeploymentConfigs: <p>服务部署信息</p>
         :type DeploymentConfigs: list of DeploymentConfig
-        :param _HyperParam: 服务超参数配置
+        :param _HyperParam: <p>服务超参数配置</p>
         :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
-        :param _NetworkSetting: 网络设置
+        :param _NetworkSetting: <p>网络设置</p>
         :type NetworkSetting: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
+        :param _SecurityType: <p>安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理</li><li>CONFIDENTIAL： 可信推理</li></ul>
+        :type SecurityType: str
         """
         self._ServiceMetaData = None
         self._ComputeInfo = None
         self._DeploymentConfigs = None
         self._HyperParam = None
         self._NetworkSetting = None
+        self._SecurityType = None
 
     @property
     def ServiceMetaData(self):
-        r"""服务元数据信息，如服务名
+        r"""<p>服务元数据信息，如服务名</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.ServiceMetaData`
         """
         return self._ServiceMetaData
@@ -1147,7 +1150,7 @@ class DeployInferServiceRequest(AbstractModel):
 
     @property
     def ComputeInfo(self):
-        r"""资源相关信息
+        r"""<p>资源相关信息</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.ComputeInfo`
         """
         return self._ComputeInfo
@@ -1158,7 +1161,7 @@ class DeployInferServiceRequest(AbstractModel):
 
     @property
     def DeploymentConfigs(self):
-        r"""服务部署信息
+        r"""<p>服务部署信息</p>
         :rtype: list of DeploymentConfig
         """
         return self._DeploymentConfigs
@@ -1169,7 +1172,7 @@ class DeployInferServiceRequest(AbstractModel):
 
     @property
     def HyperParam(self):
-        r"""服务超参数配置
+        r"""<p>服务超参数配置</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.HyperParam`
         """
         return self._HyperParam
@@ -1180,7 +1183,7 @@ class DeployInferServiceRequest(AbstractModel):
 
     @property
     def NetworkSetting(self):
-        r"""网络设置
+        r"""<p>网络设置</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
         """
         return self._NetworkSetting
@@ -1188,6 +1191,17 @@ class DeployInferServiceRequest(AbstractModel):
     @NetworkSetting.setter
     def NetworkSetting(self, NetworkSetting):
         self._NetworkSetting = NetworkSetting
+
+    @property
+    def SecurityType(self):
+        r"""<p>安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理</li><li>CONFIDENTIAL： 可信推理</li></ul>
+        :rtype: str
+        """
+        return self._SecurityType
+
+    @SecurityType.setter
+    def SecurityType(self, SecurityType):
+        self._SecurityType = SecurityType
 
 
     def _deserialize(self, params):
@@ -1209,6 +1223,7 @@ class DeployInferServiceRequest(AbstractModel):
         if params.get("NetworkSetting") is not None:
             self._NetworkSetting = NetworkSetting()
             self._NetworkSetting._deserialize(params.get("NetworkSetting"))
+        self._SecurityType = params.get("SecurityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1226,7 +1241,7 @@ class DeployInferServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: 服务ID
+        :param _ServiceId: <p>服务ID</p>
         :type ServiceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1236,7 +1251,7 @@ class DeployInferServiceResponse(AbstractModel):
 
     @property
     def ServiceId(self):
-        r"""服务ID
+        r"""<p>服务ID</p>
         :rtype: str
         """
         return self._ServiceId

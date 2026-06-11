@@ -67031,221 +67031,230 @@ class InstanceOpsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _InCharge: 负责人
+        :param _InCharge: <p>负责人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InCharge: str
-        :param _CycleType: 周期类型
+        :param _CycleType: <p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _CurRunDate: 数据时间
+        :param _CurRunDate: <p>数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurRunDate: str
-        :param _NextCurDate: 下一个数据时间
+        :param _NextCurDate: <p>下一个数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCurDate: str
-        :param _RunPriority: 运行优先级
+        :param _RunPriority: <p>运行优先级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunPriority: int
-        :param _TryLimit: 尝试运行次数
+        :param _TryLimit: <p>尝试运行次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TryLimit: int
-        :param _Tries: 当前运行次数
+        :param _Tries: <p>当前运行次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tries: int
-        :param _TotalRunNum: 重跑总次数
+        :param _TotalRunNum: <p>重跑总次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRunNum: int
-        :param _DoFlag: 是否补录
+        :param _DoFlag: <p>是否补录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DoFlag: int
-        :param _RedoFlag: 是否是重跑
+        :param _RedoFlag: <p>是否是重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RedoFlag: int
-        :param _State: 实例状态
+        :param _State: <p>实例状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
-        :param _RuntimeBroker: 运行节点
+        :param _RuntimeBroker: <p>运行节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeBroker: str
-        :param _ErrorDesc: 失败的原因
+        :param _ErrorDesc: <p>失败的原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorDesc: str
-        :param _TaskType: 任务类型
+        :param _TaskType: <p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
-        :param _DependenceFulfillTime: 依赖判断完成时间
+        :param _DependenceFulfillTime: <p>依赖判断完成时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependenceFulfillTime: str
-        :param _FirstDependenceFulfillTime: 首次依赖判断通过时间
+        :param _FirstDependenceFulfillTime: <p>首次依赖判断通过时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstDependenceFulfillTime: str
-        :param _FirstStartTime: 首次启动时间
+        :param _FirstStartTime: <p>首次启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstStartTime: str
-        :param _StartTime: 开始启动时间
+        :param _StartTime: <p>开始启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 运行完成时间
+        :param _EndTime: <p>运行完成时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _CostTime: 耗费时间
+        :param _CostTime: <p>耗费时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CostTime: str
-        :param _CostMillisecond: 耗费时间(ms)
+        :param _CostMillisecond: <p>耗费时间(ms)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CostMillisecond: int
-        :param _MaxCostTime: 最大运行耗时
+        :param _MaxCostTime: <p>最大运行耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxCostTime: int
-        :param _MinCostTime: 最小运行耗时
+        :param _MinCostTime: <p>最小运行耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinCostTime: int
-        :param _AvgCostTime: 平均运行耗时
+        :param _AvgCostTime: <p>平均运行耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvgCostTime: float
-        :param _LastLog: 最近日志
+        :param _LastLog: <p>最近日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastLog: str
-        :param _SchedulerDateTime: 调度时间
+        :param _SchedulerDateTime: <p>调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerDateTime: str
-        :param _LastSchedulerDateTime: 上次调度时间
+        :param _LastSchedulerDateTime: <p>上次调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastSchedulerDateTime: str
-        :param _LastUpdate: 最后更新事件
+        :param _LastUpdate: <p>最后更新事件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdate: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _DependencyRel: 分支，依赖关系 and、or
+        :param _DependencyRel: <p>分支，依赖关系 and、or</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyRel: str
-        :param _ExecutionSpace: 执行空间
+        :param _ExecutionSpace: <p>执行空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionSpace: str
-        :param _IgnoreEvent: 忽略事件
+        :param _IgnoreEvent: <p>忽略事件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreEvent: bool
-        :param _VirtualFlag: 虚拟任务实例
+        :param _VirtualFlag: <p>虚拟任务实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualFlag: bool
-        :param _FolderId: 文件夹ID
+        :param _FolderId: <p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _FolderName: 文件夹名称
+        :param _FolderName: <p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _SonList: 递归实例信息
+        :param _SonList: <p>递归实例信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SonList: str
-        :param _ProductName: 产品业务名称
+        :param _ProductName: <p>产品业务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
-        :param _ResourceGroup: 资源组
+        :param _ResourceGroup: <p>资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroup: str
-        :param _ResourceInstanceId: 资源组指定执行节点
+        :param _ResourceInstanceId: <p>资源组指定执行节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceInstanceId: str
-        :param _YarnQueue: 资源队列
+        :param _YarnQueue: <p>资源队列</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type YarnQueue: str
-        :param _SchedulerDesc: 调度计划
+        :param _SchedulerDesc: <p>调度计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerDesc: str
-        :param _FirstSubmitTime: 最近提交时间
+        :param _FirstSubmitTime: <p>最近提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstSubmitTime: str
-        :param _FirstRunTime: 首次执行时间
+        :param _FirstRunTime: <p>首次执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstRunTime: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _ProjectIdent: 项目标识
+        :param _ProjectIdent: <p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectIdent: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _TenantId: 租户id
+        :param _TenantId: <p>租户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: str
-        :param _InstanceKey: 实例标识
+        :param _InstanceKey: <p>实例标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceKey: str
-        :param _ExecutorGroupId: 资源组id
+        :param _ExecutorGroupId: <p>资源组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupId: str
-        :param _ExecutorGroupName: 资源组名称
+        :param _ExecutorGroupName: <p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
-        :param _RelatedInstanceList: 关联实例信息。
+        :param _RelatedInstanceList: <p>关联实例信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedInstanceList: list of InstanceOpsDto
-        :param _RelatedInstanceSize: 关联实例信息数量，不和RelatedInstanceList强关联。
+        :param _RelatedInstanceSize: <p>关联实例信息数量，不和RelatedInstanceList强关联。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedInstanceSize: int
-        :param _OwnerId: ownerId
+        :param _OwnerId: <p>ownerId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerId: str
-        :param _UserId: 用户id
+        :param _UserId: <p>用户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param _InstanceLifeCycleOpsDto: 实例生命周期
+        :param _InstanceLifeCycleOpsDto: <p>实例生命周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceLifeCycleOpsDto: :class:`tencentcloud.wedata.v20210820.models.InstanceLifeCycleOpsDto`
-        :param _RetryAttempts: 自动重试次数
+        :param _RetryAttempts: <p>自动重试次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryAttempts: int
-        :param _DeletedFatherList: 紧急去除的依赖父实例列表
+        :param _DeletedFatherList: <p>紧急去除的依赖父实例列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeletedFatherList: list of str
-        :param _CirculateInstanceList: 循环依赖关联的实例
+        :param _CirculateInstanceList: <p>循环依赖关联的实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CirculateInstanceList: list of InstanceOpsDto
-        :param _ConcurrentStrategy: 并发策略, 0: 等待并发, 1: kill自身
+        :param _ConcurrentStrategy: <p>并发策略, 0: 等待并发, 1: kill自身</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConcurrentStrategy: int
-        :param _ScheduleRunType: 调度运行方式, 0: 周期调度, 1: 空跑调度
+        :param _ScheduleRunType: <p>调度运行方式, 0: 周期调度, 1: 空跑调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleRunType: int
-        :param _AllowRedoType: 允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+        :param _AllowRedoType: <p>允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑</p>
         :type AllowRedoType: str
-        :param _InstanceCycleType: 实例生命周期
+        :param _InstanceCycleType: <p>实例生命周期</p>
         :type InstanceCycleType: str
-        :param _InstanceSchedulerDesc: 实例执行计划描述
+        :param _InstanceSchedulerDesc: <p>实例执行计划描述</p>
         :type InstanceSchedulerDesc: str
-        :param _Privileges: 当前用户对该实例的权限列表
+        :param _Privileges: <p>当前用户对该实例的权限列表</p>
         :type Privileges: list of str
-        :param _TaskExecutionId: 任务执行id
+        :param _TaskExecutionId: <p>任务执行id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskExecutionId: str
-        :param _DlcTaskId: dlc taskid
+        :param _DlcTaskId: <p>dlc taskid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DlcTaskId: str
-        :param _DlcSparkJobId: dlc jobid
+        :param _DlcSparkJobId: <p>dlc jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DlcSparkJobId: str
-        :param _Ext: 扩展属性
+        :param _Ext: <p>扩展属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.wedata.v20210820.models.StrToStrMap`
-        :param _RelatedEventList: 事件列表
+        :param _RelatedEventList: <p>事件列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelatedEventList: list of EventCaseAuditLogOptDto
+        :param _ProxyTaskId: <p>代理任务ID（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyTaskId: str
+        :param _WorkflowRunName: <p>嵌套工作流名称（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowRunName: str
+        :param _ProxyTaskType: <p>代理任务类型（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyTaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
         """
         self._TaskId = None
         self._TaskName = None
@@ -67320,10 +67329,13 @@ class InstanceOpsDto(AbstractModel):
         self._DlcSparkJobId = None
         self._Ext = None
         self._RelatedEventList = None
+        self._ProxyTaskId = None
+        self._WorkflowRunName = None
+        self._ProxyTaskType = None
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67335,7 +67347,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67347,7 +67359,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67359,7 +67371,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67371,7 +67383,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def InCharge(self):
-        r"""负责人
+        r"""<p>负责人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67383,7 +67395,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def CycleType(self):
-        r"""周期类型
+        r"""<p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67395,7 +67407,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def CurRunDate(self):
-        r"""数据时间
+        r"""<p>数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67407,7 +67419,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def NextCurDate(self):
-        r"""下一个数据时间
+        r"""<p>下一个数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67419,7 +67431,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def RunPriority(self):
-        r"""运行优先级
+        r"""<p>运行优先级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67431,7 +67443,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def TryLimit(self):
-        r"""尝试运行次数
+        r"""<p>尝试运行次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67443,7 +67455,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def Tries(self):
-        r"""当前运行次数
+        r"""<p>当前运行次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67455,7 +67467,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def TotalRunNum(self):
-        r"""重跑总次数
+        r"""<p>重跑总次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67467,7 +67479,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def DoFlag(self):
-        r"""是否补录
+        r"""<p>是否补录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67479,7 +67491,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def RedoFlag(self):
-        r"""是否是重跑
+        r"""<p>是否是重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67491,7 +67503,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def State(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67503,7 +67515,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def RuntimeBroker(self):
-        r"""运行节点
+        r"""<p>运行节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67515,7 +67527,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ErrorDesc(self):
-        r"""失败的原因
+        r"""<p>失败的原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67527,7 +67539,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
         """
@@ -67539,7 +67551,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def DependenceFulfillTime(self):
-        r"""依赖判断完成时间
+        r"""<p>依赖判断完成时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67551,7 +67563,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def FirstDependenceFulfillTime(self):
-        r"""首次依赖判断通过时间
+        r"""<p>首次依赖判断通过时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67563,7 +67575,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def FirstStartTime(self):
-        r"""首次启动时间
+        r"""<p>首次启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67575,7 +67587,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始启动时间
+        r"""<p>开始启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67587,7 +67599,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""运行完成时间
+        r"""<p>运行完成时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67599,7 +67611,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def CostTime(self):
-        r"""耗费时间
+        r"""<p>耗费时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67611,7 +67623,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def CostMillisecond(self):
-        r"""耗费时间(ms)
+        r"""<p>耗费时间(ms)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67623,7 +67635,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def MaxCostTime(self):
-        r"""最大运行耗时
+        r"""<p>最大运行耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67635,7 +67647,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def MinCostTime(self):
-        r"""最小运行耗时
+        r"""<p>最小运行耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67647,7 +67659,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def AvgCostTime(self):
-        r"""平均运行耗时
+        r"""<p>平均运行耗时</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -67659,7 +67671,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def LastLog(self):
-        r"""最近日志
+        r"""<p>最近日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67671,7 +67683,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def SchedulerDateTime(self):
-        r"""调度时间
+        r"""<p>调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67683,7 +67695,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def LastSchedulerDateTime(self):
-        r"""上次调度时间
+        r"""<p>上次调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67695,7 +67707,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def LastUpdate(self):
-        r"""最后更新事件
+        r"""<p>最后更新事件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67707,7 +67719,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67719,7 +67731,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def DependencyRel(self):
-        r"""分支，依赖关系 and、or
+        r"""<p>分支，依赖关系 and、or</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67731,7 +67743,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ExecutionSpace(self):
-        r"""执行空间
+        r"""<p>执行空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67743,7 +67755,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def IgnoreEvent(self):
-        r"""忽略事件
+        r"""<p>忽略事件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -67755,7 +67767,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def VirtualFlag(self):
-        r"""虚拟任务实例
+        r"""<p>虚拟任务实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -67767,7 +67779,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""文件夹ID
+        r"""<p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67779,7 +67791,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def FolderName(self):
-        r"""文件夹名称
+        r"""<p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67791,7 +67803,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def SonList(self):
-        r"""递归实例信息
+        r"""<p>递归实例信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67803,7 +67815,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ProductName(self):
-        r"""产品业务名称
+        r"""<p>产品业务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67815,7 +67827,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ResourceGroup(self):
-        r"""资源组
+        r"""<p>资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67827,7 +67839,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ResourceInstanceId(self):
-        r"""资源组指定执行节点
+        r"""<p>资源组指定执行节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67839,7 +67851,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def YarnQueue(self):
-        r"""资源队列
+        r"""<p>资源队列</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67851,7 +67863,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def SchedulerDesc(self):
-        r"""调度计划
+        r"""<p>调度计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67863,7 +67875,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def FirstSubmitTime(self):
-        r"""最近提交时间
+        r"""<p>最近提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67875,7 +67887,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def FirstRunTime(self):
-        r"""首次执行时间
+        r"""<p>首次执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67887,7 +67899,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67899,7 +67911,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ProjectIdent(self):
-        r"""项目标识
+        r"""<p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67911,7 +67923,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67923,7 +67935,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def TenantId(self):
-        r"""租户id
+        r"""<p>租户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67935,7 +67947,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def InstanceKey(self):
-        r"""实例标识
+        r"""<p>实例标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67947,7 +67959,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ExecutorGroupId(self):
-        r"""资源组id
+        r"""<p>资源组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67959,7 +67971,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ExecutorGroupName(self):
-        r"""资源组名称
+        r"""<p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -67971,7 +67983,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def RelatedInstanceList(self):
-        r"""关联实例信息。
+        r"""<p>关联实例信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceOpsDto
         """
@@ -67983,7 +67995,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def RelatedInstanceSize(self):
-        r"""关联实例信息数量，不和RelatedInstanceList强关联。
+        r"""<p>关联实例信息数量，不和RelatedInstanceList强关联。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -67995,7 +68007,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def OwnerId(self):
-        r"""ownerId
+        r"""<p>ownerId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -68007,7 +68019,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户id
+        r"""<p>用户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -68019,7 +68031,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def InstanceLifeCycleOpsDto(self):
-        r"""实例生命周期
+        r"""<p>实例生命周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.InstanceLifeCycleOpsDto`
         """
@@ -68031,7 +68043,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def RetryAttempts(self):
-        r"""自动重试次数
+        r"""<p>自动重试次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -68043,7 +68055,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def DeletedFatherList(self):
-        r"""紧急去除的依赖父实例列表
+        r"""<p>紧急去除的依赖父实例列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -68055,7 +68067,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def CirculateInstanceList(self):
-        r"""循环依赖关联的实例
+        r"""<p>循环依赖关联的实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceOpsDto
         """
@@ -68067,7 +68079,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ConcurrentStrategy(self):
-        r"""并发策略, 0: 等待并发, 1: kill自身
+        r"""<p>并发策略, 0: 等待并发, 1: kill自身</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -68079,7 +68091,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def ScheduleRunType(self):
-        r"""调度运行方式, 0: 周期调度, 1: 空跑调度
+        r"""<p>调度运行方式, 0: 周期调度, 1: 空跑调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -68091,7 +68103,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def AllowRedoType(self):
-        r"""允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+        r"""<p>允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑</p>
         :rtype: str
         """
         return self._AllowRedoType
@@ -68102,7 +68114,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def InstanceCycleType(self):
-        r"""实例生命周期
+        r"""<p>实例生命周期</p>
         :rtype: str
         """
         return self._InstanceCycleType
@@ -68113,7 +68125,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def InstanceSchedulerDesc(self):
-        r"""实例执行计划描述
+        r"""<p>实例执行计划描述</p>
         :rtype: str
         """
         return self._InstanceSchedulerDesc
@@ -68124,7 +68136,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def Privileges(self):
-        r"""当前用户对该实例的权限列表
+        r"""<p>当前用户对该实例的权限列表</p>
         :rtype: list of str
         """
         return self._Privileges
@@ -68135,7 +68147,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def TaskExecutionId(self):
-        r"""任务执行id
+        r"""<p>任务执行id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -68147,7 +68159,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def DlcTaskId(self):
-        r"""dlc taskid
+        r"""<p>dlc taskid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -68159,7 +68171,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def DlcSparkJobId(self):
-        r"""dlc jobid
+        r"""<p>dlc jobid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -68171,7 +68183,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def Ext(self):
-        r"""扩展属性
+        r"""<p>扩展属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.StrToStrMap`
         """
@@ -68183,7 +68195,7 @@ class InstanceOpsDto(AbstractModel):
 
     @property
     def RelatedEventList(self):
-        r"""事件列表
+        r"""<p>事件列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EventCaseAuditLogOptDto
         """
@@ -68192,6 +68204,42 @@ class InstanceOpsDto(AbstractModel):
     @RelatedEventList.setter
     def RelatedEventList(self, RelatedEventList):
         self._RelatedEventList = RelatedEventList
+
+    @property
+    def ProxyTaskId(self):
+        r"""<p>代理任务ID（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProxyTaskId
+
+    @ProxyTaskId.setter
+    def ProxyTaskId(self, ProxyTaskId):
+        self._ProxyTaskId = ProxyTaskId
+
+    @property
+    def WorkflowRunName(self):
+        r"""<p>嵌套工作流名称（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowRunName
+
+    @WorkflowRunName.setter
+    def WorkflowRunName(self, WorkflowRunName):
+        self._WorkflowRunName = WorkflowRunName
+
+    @property
+    def ProxyTaskType(self):
+        r"""<p>代理任务类型（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        """
+        return self._ProxyTaskType
+
+    @ProxyTaskType.setter
+    def ProxyTaskType(self, ProxyTaskType):
+        self._ProxyTaskType = ProxyTaskType
 
 
     def _deserialize(self, params):
@@ -68289,6 +68337,11 @@ class InstanceOpsDto(AbstractModel):
                 obj = EventCaseAuditLogOptDto()
                 obj._deserialize(item)
                 self._RelatedEventList.append(obj)
+        self._ProxyTaskId = params.get("ProxyTaskId")
+        self._WorkflowRunName = params.get("WorkflowRunName")
+        if params.get("ProxyTaskType") is not None:
+            self._ProxyTaskType = TaskTypeOpsDto()
+            self._ProxyTaskType._deserialize(params.get("ProxyTaskType"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -76088,60 +76141,77 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TriggerId: 运行触发记录ID
+        :param _TriggerId: <p>运行触发记录ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerId: str
-        :param _TriggerName: 用户提交运行时配置的运行名称
+        :param _TriggerName: <p>用户提交运行时配置的运行名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerName: str
-        :param _Remark: 用户提交运行的备注
+        :param _Remark: <p>用户提交运行的备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _DatetimeList: 数据时间列表
+        :param _DatetimeList: <p>数据时间列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatetimeList: list of str
-        :param _TaskCnt: 任务数
+        :param _TaskCnt: <p>任务数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCnt: int
-        :param _InstanceCnt: 实例数
+        :param _InstanceCnt: <p>实例数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCnt: int
-        :param _FinishedInstanceCnt: 已完成的实例数
+        :param _FinishedInstanceCnt: <p>已完成的实例数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedInstanceCnt: int
-        :param _SuccessInstanceCnt: 成功的实例数
+        :param _SuccessInstanceCnt: <p>成功的实例数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessInstanceCnt: int
-        :param _Status: 记录运行状态
- INIT, RUNNING, FINISHED
+        :param _Status: <p>记录运行状态<br> INIT, RUNNING, FINISHED</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _TriggerParams: 用户提交运行时的入参，主要用于前端反显和记录原始提交信息
+        :param _TriggerParams: <p>用户提交运行时的入参，主要用于前端反显和记录原始提交信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerParams: str
-        :param _OwnerUin: 用户主账号ID
+        :param _OwnerUin: <p>用户主账号ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param _UserUin: 用户ID
+        :param _UserUin: <p>用户ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserUin: str
-        :param _UserName: 用户展示名
+        :param _UserName: <p>用户展示名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
-        :param _TenantId: 租户ID
+        :param _TenantId: <p>租户ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _ScheduleTimeZone: 数据实例时间的时区
+        :param _ScheduleTimeZone: <p>数据实例时间的时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
-        :param _TimeType: 时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+        :param _TimeType: <p>时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理</p>
         :type TimeType: str
+        :param _TriggerSource: <p>触发类型</p><p>枚举值：</p><ul><li>SUB_PROCESS_TRIGGER： 由嵌套工作流 SP 任务触发</li><li>SUB_PROCESS_MAKEUP： 由嵌套工作流 SP 任务补录触发</li><li>MANUAL_RUN_BY_USER： 手动触发</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerSource: str
+        :param _TriggerSourceId: <p>触发实例ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerSourceId: str
+        :param _ParentSpTaskId: <p>父嵌套工作流任务 ID。仅 <code>triggerSource</code> 以 <code>SUB_PROCESS_</code> 开头时有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentSpTaskId: str
+        :param _ParentSpInstanceName: <p>父嵌套工作流任务实例名称（即任务名称）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentSpInstanceName: str
+        :param _ParentSpInstanceDataTime: <p>父嵌套工作流任务实例数据时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentSpInstanceDataTime: str
+        :param _ScheduleTimeList: <p>数据时间列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTimeList: list of str
         """
         self._TriggerId = None
         self._TriggerName = None
@@ -76161,10 +76231,16 @@ class ManualTriggerRecordOpsDto(AbstractModel):
         self._CreateTime = None
         self._ScheduleTimeZone = None
         self._TimeType = None
+        self._TriggerSource = None
+        self._TriggerSourceId = None
+        self._ParentSpTaskId = None
+        self._ParentSpInstanceName = None
+        self._ParentSpInstanceDataTime = None
+        self._ScheduleTimeList = None
 
     @property
     def TriggerId(self):
-        r"""运行触发记录ID
+        r"""<p>运行触发记录ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76176,7 +76252,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def TriggerName(self):
-        r"""用户提交运行时配置的运行名称
+        r"""<p>用户提交运行时配置的运行名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76188,7 +76264,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def Remark(self):
-        r"""用户提交运行的备注
+        r"""<p>用户提交运行的备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76200,7 +76276,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def DatetimeList(self):
-        r"""数据时间列表
+        r"""<p>数据时间列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -76212,7 +76288,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def TaskCnt(self):
-        r"""任务数
+        r"""<p>任务数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -76224,7 +76300,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def InstanceCnt(self):
-        r"""实例数
+        r"""<p>实例数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -76236,7 +76312,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def FinishedInstanceCnt(self):
-        r"""已完成的实例数
+        r"""<p>已完成的实例数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -76248,7 +76324,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def SuccessInstanceCnt(self):
-        r"""成功的实例数
+        r"""<p>成功的实例数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -76260,8 +76336,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def Status(self):
-        r"""记录运行状态
- INIT, RUNNING, FINISHED
+        r"""<p>记录运行状态<br> INIT, RUNNING, FINISHED</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76273,7 +76348,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def TriggerParams(self):
-        r"""用户提交运行时的入参，主要用于前端反显和记录原始提交信息
+        r"""<p>用户提交运行时的入参，主要用于前端反显和记录原始提交信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76285,7 +76360,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""用户主账号ID
+        r"""<p>用户主账号ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76297,7 +76372,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def UserUin(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76309,7 +76384,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户展示名
+        r"""<p>用户展示名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76321,7 +76396,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def TenantId(self):
-        r"""租户ID
+        r"""<p>租户ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76333,7 +76408,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76345,7 +76420,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76357,7 +76432,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def ScheduleTimeZone(self):
-        r"""数据实例时间的时区
+        r"""<p>数据实例时间的时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -76369,7 +76444,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
 
     @property
     def TimeType(self):
-        r"""时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+        r"""<p>时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理</p>
         :rtype: str
         """
         return self._TimeType
@@ -76377,6 +76452,78 @@ class ManualTriggerRecordOpsDto(AbstractModel):
     @TimeType.setter
     def TimeType(self, TimeType):
         self._TimeType = TimeType
+
+    @property
+    def TriggerSource(self):
+        r"""<p>触发类型</p><p>枚举值：</p><ul><li>SUB_PROCESS_TRIGGER： 由嵌套工作流 SP 任务触发</li><li>SUB_PROCESS_MAKEUP： 由嵌套工作流 SP 任务补录触发</li><li>MANUAL_RUN_BY_USER： 手动触发</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerSource
+
+    @TriggerSource.setter
+    def TriggerSource(self, TriggerSource):
+        self._TriggerSource = TriggerSource
+
+    @property
+    def TriggerSourceId(self):
+        r"""<p>触发实例ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerSourceId
+
+    @TriggerSourceId.setter
+    def TriggerSourceId(self, TriggerSourceId):
+        self._TriggerSourceId = TriggerSourceId
+
+    @property
+    def ParentSpTaskId(self):
+        r"""<p>父嵌套工作流任务 ID。仅 <code>triggerSource</code> 以 <code>SUB_PROCESS_</code> 开头时有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentSpTaskId
+
+    @ParentSpTaskId.setter
+    def ParentSpTaskId(self, ParentSpTaskId):
+        self._ParentSpTaskId = ParentSpTaskId
+
+    @property
+    def ParentSpInstanceName(self):
+        r"""<p>父嵌套工作流任务实例名称（即任务名称）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentSpInstanceName
+
+    @ParentSpInstanceName.setter
+    def ParentSpInstanceName(self, ParentSpInstanceName):
+        self._ParentSpInstanceName = ParentSpInstanceName
+
+    @property
+    def ParentSpInstanceDataTime(self):
+        r"""<p>父嵌套工作流任务实例数据时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentSpInstanceDataTime
+
+    @ParentSpInstanceDataTime.setter
+    def ParentSpInstanceDataTime(self, ParentSpInstanceDataTime):
+        self._ParentSpInstanceDataTime = ParentSpInstanceDataTime
+
+    @property
+    def ScheduleTimeList(self):
+        r"""<p>数据时间列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ScheduleTimeList
+
+    @ScheduleTimeList.setter
+    def ScheduleTimeList(self, ScheduleTimeList):
+        self._ScheduleTimeList = ScheduleTimeList
 
 
     def _deserialize(self, params):
@@ -76398,6 +76545,12 @@ class ManualTriggerRecordOpsDto(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._TimeType = params.get("TimeType")
+        self._TriggerSource = params.get("TriggerSource")
+        self._TriggerSourceId = params.get("TriggerSourceId")
+        self._ParentSpTaskId = params.get("ParentSpTaskId")
+        self._ParentSpInstanceName = params.get("ParentSpInstanceName")
+        self._ParentSpInstanceDataTime = params.get("ParentSpInstanceDataTime")
+        self._ScheduleTimeList = params.get("ScheduleTimeList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -122706,58 +122859,61 @@ class WorkflowExtOpsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskCount: 任务数量count
+        :param _TaskCount: <p>任务数量count</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCount: int
-        :param _FolderName: 文件名
+        :param _FolderName: <p>文件名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _WorkFlowId: 工作流id
+        :param _WorkFlowId: <p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkFlowId: str
-        :param _Owner: 责任人
+        :param _Owner: <p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Owner: str
-        :param _OwnerId: 责任人userId
+        :param _OwnerId: <p>责任人userId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerId: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _ProjectIdent: 项目标识
+        :param _ProjectIdent: <p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectIdent: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _WorkFlowDesc: 工作流描述
+        :param _WorkFlowDesc: <p>工作流描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkFlowDesc: str
-        :param _WorkFlowName: 工作流名称
+        :param _WorkFlowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkFlowName: str
-        :param _FolderId: 工作流文件id
+        :param _FolderId: <p>工作流文件id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _Status: 工作流状态
+        :param _Status: <p>工作流状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _CreateTime: 工作流创建时间
+        :param _CreateTime: <p>工作流创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _ModifyTime: 最近更新时间
+        :param _ModifyTime: <p>最近更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
-        :param _ModifyUser: 最近更新人
+        :param _ModifyUser: <p>最近更新人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyUser: str
-        :param _WorkflowType: 工作流类型，周期cycle，手动manual
+        :param _WorkflowType: <p>工作流类型，周期cycle，手动manual</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowType: str
-        :param _BundleId: bundle客户端绑定唯一id
+        :param _BundleId: <p>bundle客户端绑定唯一id</p>
         :type BundleId: str
-        :param _BundleInfo: bundle客户端扩展信息，json格式
+        :param _BundleInfo: <p>bundle客户端扩展信息，json格式</p>
         :type BundleInfo: str
+        :param _NestedBySpTaskIds: <p>引用该手动工作流的嵌套工作流任务ID列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NestedBySpTaskIds: list of str
         """
         self._TaskCount = None
         self._FolderName = None
@@ -122777,10 +122933,11 @@ class WorkflowExtOpsDto(AbstractModel):
         self._WorkflowType = None
         self._BundleId = None
         self._BundleInfo = None
+        self._NestedBySpTaskIds = None
 
     @property
     def TaskCount(self):
-        r"""任务数量count
+        r"""<p>任务数量count</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -122792,7 +122949,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def FolderName(self):
-        r"""文件名
+        r"""<p>文件名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122804,7 +122961,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def WorkFlowId(self):
-        r"""工作流id
+        r"""<p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122816,7 +122973,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def Owner(self):
-        r"""责任人
+        r"""<p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122828,7 +122985,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def OwnerId(self):
-        r"""责任人userId
+        r"""<p>责任人userId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122840,7 +122997,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122852,7 +123009,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def ProjectIdent(self):
-        r"""项目标识
+        r"""<p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122864,7 +123021,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122876,7 +123033,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def WorkFlowDesc(self):
-        r"""工作流描述
+        r"""<p>工作流描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122888,7 +123045,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def WorkFlowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122900,7 +123057,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""工作流文件id
+        r"""<p>工作流文件id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122912,7 +123069,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def Status(self):
-        r"""工作流状态
+        r"""<p>工作流状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122924,7 +123081,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""工作流创建时间
+        r"""<p>工作流创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122936,7 +123093,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""最近更新时间
+        r"""<p>最近更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122948,7 +123105,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def ModifyUser(self):
-        r"""最近更新人
+        r"""<p>最近更新人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122960,7 +123117,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def WorkflowType(self):
-        r"""工作流类型，周期cycle，手动manual
+        r"""<p>工作流类型，周期cycle，手动manual</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122972,7 +123129,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""bundle客户端绑定唯一id
+        r"""<p>bundle客户端绑定唯一id</p>
         :rtype: str
         """
         return self._BundleId
@@ -122983,7 +123140,7 @@ class WorkflowExtOpsDto(AbstractModel):
 
     @property
     def BundleInfo(self):
-        r"""bundle客户端扩展信息，json格式
+        r"""<p>bundle客户端扩展信息，json格式</p>
         :rtype: str
         """
         return self._BundleInfo
@@ -122991,6 +123148,18 @@ class WorkflowExtOpsDto(AbstractModel):
     @BundleInfo.setter
     def BundleInfo(self, BundleInfo):
         self._BundleInfo = BundleInfo
+
+    @property
+    def NestedBySpTaskIds(self):
+        r"""<p>引用该手动工作流的嵌套工作流任务ID列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._NestedBySpTaskIds
+
+    @NestedBySpTaskIds.setter
+    def NestedBySpTaskIds(self, NestedBySpTaskIds):
+        self._NestedBySpTaskIds = NestedBySpTaskIds
 
 
     def _deserialize(self, params):
@@ -123012,6 +123181,7 @@ class WorkflowExtOpsDto(AbstractModel):
         self._WorkflowType = params.get("WorkflowType")
         self._BundleId = params.get("BundleId")
         self._BundleInfo = params.get("BundleInfo")
+        self._NestedBySpTaskIds = params.get("NestedBySpTaskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

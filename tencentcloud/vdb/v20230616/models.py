@@ -2399,75 +2399,79 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: <p>实例ID。</p>
         :type InstanceId: str
-        :param _Name: 实例自定义名称。
+        :param _Name: <p>实例自定义名称。</p>
         :type Name: str
-        :param _AppId: 用户APPID。
+        :param _AppId: <p>用户APPID。</p>
         :type AppId: int
-        :param _Region: 地域。
+        :param _Region: <p>地域。</p>
         :type Region: str
-        :param _Zone: 可用区。
+        :param _Zone: <p>可用区。</p>
         :type Zone: str
-        :param _Product: 产品。
+        :param _Product: <p>产品。</p>
         :type Product: str
-        :param _Networks: 网络信息。
+        :param _Networks: <p>网络信息。</p>
         :type Networks: list of Network
-        :param _ShardNum: 分片信息。
+        :param _ShardNum: <p>分片信息。</p>
         :type ShardNum: int
-        :param _ReplicaNum: 副本数。
+        :param _ReplicaNum: <p>副本数。</p>
         :type ReplicaNum: int
-        :param _Cpu: CPU.
+        :param _Cpu: <p>CPU.</p>
         :type Cpu: float
-        :param _Memory: 内存。
+        :param _Memory: <p>内存。</p>
         :type Memory: float
-        :param _Disk: 磁盘。
+        :param _Disk: <p>磁盘。</p>
         :type Disk: int
-        :param _HealthScore: 健康得分。
+        :param _HealthScore: <p>健康得分。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthScore: float
-        :param _Warning: 异常告警。
+        :param _Warning: <p>异常告警。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Warning: int
-        :param _Project: 所属项目。
+        :param _Project: <p>所属项目。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Project: str
-        :param _ResourceTags: 所属标签。
+        :param _ResourceTags: <p>所属标签。</p>
         :type ResourceTags: list of Tag
-        :param _CreatedAt: 创建时间。
+        :param _CreatedAt: <p>创建时间。</p>
         :type CreatedAt: str
-        :param _Status: 资源状态。
+        :param _Status: <p>资源状态。</p>
         :type Status: str
-        :param _EngineName: 引擎名称。
+        :param _EngineName: <p>引擎名称。</p>
         :type EngineName: str
-        :param _EngineVersion: 引擎版本。
+        :param _EngineVersion: <p>引擎版本。</p>
         :type EngineVersion: str
-        :param _ApiVersion: api版本
+        :param _ApiVersion: <p>api版本</p>
         :type ApiVersion: str
-        :param _PayMode: 计费模式。
+        :param _PayMode: <p>计费模式。</p>
         :type PayMode: int
-        :param _Extend: 差异化扩展信息, json格式。
+        :param _Extend: <p>差异化扩展信息, json格式。</p>
         :type Extend: str
-        :param _ExpiredAt: 过期时间。
+        :param _ExpiredAt: <p>过期时间。</p>
         :type ExpiredAt: str
-        :param _IsNoExpired: 是否不过期(永久)。
+        :param _IsNoExpired: <p>是否不过期(永久)。</p>
         :type IsNoExpired: bool
-        :param _ProductType: 产品版本，0-标准版，1-容量增强版
+        :param _ProductType: <p>产品版本，0-标准版，1-容量增强版</p>
         :type ProductType: int
-        :param _InstanceType: 实例类型
+        :param _InstanceType: <p>实例类型</p>
         :type InstanceType: str
-        :param _NodeType: 节点类型
+        :param _NodeType: <p>节点类型</p>
         :type NodeType: str
-        :param _WanAddress: 外网地址。
+        :param _WanAddress: <p>外网地址。</p>
         :type WanAddress: str
-        :param _IsolateAt: 隔离时间
+        :param _IsolateAt: <p>隔离时间</p>
         :type IsolateAt: str
-        :param _AutoRenew: 是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
+        :param _AutoRenew: <p>是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.</p>
         :type AutoRenew: int
-        :param _TaskStatus: 任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+        :param _TaskStatus: <p>任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中</p>
         :type TaskStatus: int
-        :param _SecurityGroupIds: 绑定的安全组id
+        :param _SecurityGroupIds: <p>绑定的安全组id</p>
         :type SecurityGroupIds: list of str
+        :param _UpgradeVersion: <p>可升级版本号</p>
+        :type UpgradeVersion: str
+        :param _IsInternal: <p>是否为内部实例</p>
+        :type IsInternal: bool
         """
         self._InstanceId = None
         self._Name = None
@@ -2502,10 +2506,12 @@ class InstanceInfo(AbstractModel):
         self._AutoRenew = None
         self._TaskStatus = None
         self._SecurityGroupIds = None
+        self._UpgradeVersion = None
+        self._IsInternal = None
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""<p>实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2516,7 +2522,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""实例自定义名称。
+        r"""<p>实例自定义名称。</p>
         :rtype: str
         """
         return self._Name
@@ -2527,7 +2533,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户APPID。
+        r"""<p>用户APPID。</p>
         :rtype: int
         """
         return self._AppId
@@ -2538,7 +2544,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域。
+        r"""<p>地域。</p>
         :rtype: str
         """
         return self._Region
@@ -2549,7 +2555,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区。
+        r"""<p>可用区。</p>
         :rtype: str
         """
         return self._Zone
@@ -2560,7 +2566,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Product(self):
-        r"""产品。
+        r"""<p>产品。</p>
         :rtype: str
         """
         return self._Product
@@ -2571,7 +2577,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Networks(self):
-        r"""网络信息。
+        r"""<p>网络信息。</p>
         :rtype: list of Network
         """
         return self._Networks
@@ -2582,7 +2588,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ShardNum(self):
-        r"""分片信息。
+        r"""<p>分片信息。</p>
         :rtype: int
         """
         return self._ShardNum
@@ -2593,7 +2599,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ReplicaNum(self):
-        r"""副本数。
+        r"""<p>副本数。</p>
         :rtype: int
         """
         return self._ReplicaNum
@@ -2604,7 +2610,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""CPU.
+        r"""<p>CPU.</p>
         :rtype: float
         """
         return self._Cpu
@@ -2615,7 +2621,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存。
+        r"""<p>内存。</p>
         :rtype: float
         """
         return self._Memory
@@ -2626,7 +2632,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Disk(self):
-        r"""磁盘。
+        r"""<p>磁盘。</p>
         :rtype: int
         """
         return self._Disk
@@ -2639,7 +2645,7 @@ class InstanceInfo(AbstractModel):
     def HealthScore(self):
         warnings.warn("parameter `HealthScore` is deprecated", DeprecationWarning) 
 
-        r"""健康得分。
+        r"""<p>健康得分。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -2655,7 +2661,7 @@ class InstanceInfo(AbstractModel):
     def Warning(self):
         warnings.warn("parameter `Warning` is deprecated", DeprecationWarning) 
 
-        r"""异常告警。
+        r"""<p>异常告警。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2671,7 +2677,7 @@ class InstanceInfo(AbstractModel):
     def Project(self):
         warnings.warn("parameter `Project` is deprecated", DeprecationWarning) 
 
-        r"""所属项目。
+        r"""<p>所属项目。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2685,7 +2691,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""所属标签。
+        r"""<p>所属标签。</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -2696,7 +2702,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -2707,7 +2713,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""资源状态。
+        r"""<p>资源状态。</p>
         :rtype: str
         """
         return self._Status
@@ -2718,7 +2724,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineName(self):
-        r"""引擎名称。
+        r"""<p>引擎名称。</p>
         :rtype: str
         """
         return self._EngineName
@@ -2729,7 +2735,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""引擎版本。
+        r"""<p>引擎版本。</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -2740,7 +2746,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ApiVersion(self):
-        r"""api版本
+        r"""<p>api版本</p>
         :rtype: str
         """
         return self._ApiVersion
@@ -2751,7 +2757,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式。
+        r"""<p>计费模式。</p>
         :rtype: int
         """
         return self._PayMode
@@ -2762,7 +2768,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Extend(self):
-        r"""差异化扩展信息, json格式。
+        r"""<p>差异化扩展信息, json格式。</p>
         :rtype: str
         """
         return self._Extend
@@ -2773,7 +2779,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ExpiredAt(self):
-        r"""过期时间。
+        r"""<p>过期时间。</p>
         :rtype: str
         """
         return self._ExpiredAt
@@ -2784,7 +2790,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def IsNoExpired(self):
-        r"""是否不过期(永久)。
+        r"""<p>是否不过期(永久)。</p>
         :rtype: bool
         """
         return self._IsNoExpired
@@ -2795,7 +2801,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""产品版本，0-标准版，1-容量增强版
+        r"""<p>产品版本，0-标准版，1-容量增强版</p>
         :rtype: int
         """
         return self._ProductType
@@ -2806,7 +2812,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: str
         """
         return self._InstanceType
@@ -2817,7 +2823,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""节点类型
+        r"""<p>节点类型</p>
         :rtype: str
         """
         return self._NodeType
@@ -2828,7 +2834,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def WanAddress(self):
-        r"""外网地址。
+        r"""<p>外网地址。</p>
         :rtype: str
         """
         return self._WanAddress
@@ -2839,7 +2845,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def IsolateAt(self):
-        r"""隔离时间
+        r"""<p>隔离时间</p>
         :rtype: str
         """
         return self._IsolateAt
@@ -2850,7 +2856,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AutoRenew(self):
-        r"""是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
+        r"""<p>是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.</p>
         :rtype: int
         """
         return self._AutoRenew
@@ -2861,7 +2867,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+        r"""<p>任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中</p>
         :rtype: int
         """
         return self._TaskStatus
@@ -2872,7 +2878,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""绑定的安全组id
+        r"""<p>绑定的安全组id</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -2880,6 +2886,28 @@ class InstanceInfo(AbstractModel):
     @SecurityGroupIds.setter
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def UpgradeVersion(self):
+        r"""<p>可升级版本号</p>
+        :rtype: str
+        """
+        return self._UpgradeVersion
+
+    @UpgradeVersion.setter
+    def UpgradeVersion(self, UpgradeVersion):
+        self._UpgradeVersion = UpgradeVersion
+
+    @property
+    def IsInternal(self):
+        r"""<p>是否为内部实例</p>
+        :rtype: bool
+        """
+        return self._IsInternal
+
+    @IsInternal.setter
+    def IsInternal(self, IsInternal):
+        self._IsInternal = IsInternal
 
 
     def _deserialize(self, params):
@@ -2926,6 +2954,8 @@ class InstanceInfo(AbstractModel):
         self._AutoRenew = params.get("AutoRenew")
         self._TaskStatus = params.get("TaskStatus")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._UpgradeVersion = params.get("UpgradeVersion")
+        self._IsInternal = params.get("IsInternal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3186,18 +3216,20 @@ class Network(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VpcId(VPC网络下有效)
+        :param _VpcId: <p>VpcId(VPC网络下有效)</p>
         :type VpcId: str
-        :param _SubnetId: 子网Id(VPC网络下有效)。
+        :param _SubnetId: <p>子网Id(VPC网络下有效)。</p>
         :type SubnetId: str
-        :param _Vip: 内网访问IP。
+        :param _Vip: <p>内网访问IP。</p>
         :type Vip: str
-        :param _Port: 内网访问Port。
+        :param _Port: <p>内网访问Port。</p>
         :type Port: int
-        :param _PreserveDuration: 旧 ip 保留时长，单位天
+        :param _PreserveDuration: <p>旧 ip 保留时长，单位天</p>
         :type PreserveDuration: int
-        :param _ExpireTime: 旧 ip 到期时间
+        :param _ExpireTime: <p>旧 ip 到期时间</p>
         :type ExpireTime: str
+        :param _IsSSL: <p>是否是ssl网络</p>
+        :type IsSSL: bool
         """
         self._VpcId = None
         self._SubnetId = None
@@ -3205,10 +3237,11 @@ class Network(AbstractModel):
         self._Port = None
         self._PreserveDuration = None
         self._ExpireTime = None
+        self._IsSSL = None
 
     @property
     def VpcId(self):
-        r"""VpcId(VPC网络下有效)
+        r"""<p>VpcId(VPC网络下有效)</p>
         :rtype: str
         """
         return self._VpcId
@@ -3219,7 +3252,7 @@ class Network(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网Id(VPC网络下有效)。
+        r"""<p>子网Id(VPC网络下有效)。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -3230,7 +3263,7 @@ class Network(AbstractModel):
 
     @property
     def Vip(self):
-        r"""内网访问IP。
+        r"""<p>内网访问IP。</p>
         :rtype: str
         """
         return self._Vip
@@ -3241,7 +3274,7 @@ class Network(AbstractModel):
 
     @property
     def Port(self):
-        r"""内网访问Port。
+        r"""<p>内网访问Port。</p>
         :rtype: int
         """
         return self._Port
@@ -3252,7 +3285,7 @@ class Network(AbstractModel):
 
     @property
     def PreserveDuration(self):
-        r"""旧 ip 保留时长，单位天
+        r"""<p>旧 ip 保留时长，单位天</p>
         :rtype: int
         """
         return self._PreserveDuration
@@ -3263,7 +3296,7 @@ class Network(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""旧 ip 到期时间
+        r"""<p>旧 ip 到期时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -3271,6 +3304,17 @@ class Network(AbstractModel):
     @ExpireTime.setter
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
+
+    @property
+    def IsSSL(self):
+        r"""<p>是否是ssl网络</p>
+        :rtype: bool
+        """
+        return self._IsSSL
+
+    @IsSSL.setter
+    def IsSSL(self, IsSSL):
+        self._IsSSL = IsSSL
 
 
     def _deserialize(self, params):
@@ -3280,6 +3324,7 @@ class Network(AbstractModel):
         self._Port = params.get("Port")
         self._PreserveDuration = params.get("PreserveDuration")
         self._ExpireTime = params.get("ExpireTime")
+        self._IsSSL = params.get("IsSSL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
