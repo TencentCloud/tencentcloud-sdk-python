@@ -1337,6 +1337,52 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApiSecEventDetail(self, request):
+        r"""API安全事件详情查询接口
+
+        :param request: Request instance for DescribeApiSecEventDetail.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiSecEventDetailRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeApiSecEventDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiSecEventDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiSecEventDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApiSecEventList(self, request):
+        r"""api安全事件列表
+
+        :param request: Request instance for DescribeApiSecEventList.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiSecEventListRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeApiSecEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiSecEventList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiSecEventListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApiSecSensitiveRuleList(self, request):
         r"""获取api安全敏感规则列表
 

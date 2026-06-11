@@ -1814,58 +1814,39 @@ class CreateDatasetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatasetName: 数据集名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :param _DatasetName: <p>数据集名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
         :type DatasetName: str
-        :param _DatasetType: 数据集类型:
-TYPE_DATASET_TEXT，文本
-TYPE_DATASET_IMAGE，图片
-TYPE_DATASET_TABLE，表格
-TYPE_DATASET_OTHER，其他
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
+        :param _DatasetType: <p>数据集类型</p><p>枚举值：</p><ul><li>TYPE_DATASET_IMAGE： 图片</li><li>TYPE_DATASET_LLM： 大模型</li><li>TYPE_DATASET_TABLE： 表格</li><li>TYPE_DATASET_OTHER： 其他</li></ul>
         :type DatasetType: str
-        :param _StorageDataPath: 数据源cos路径
+        :param _StorageDataPath: <p>数据源cos路径</p>
         :type StorageDataPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _StorageLabelPath: 数据集标签cos存储路径
+        :param _StorageLabelPath: <p>数据集标签cos存储路径</p>
         :type StorageLabelPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _DatasetTags: 数据集标签
+        :param _DatasetTags: <p>数据集标签</p>
         :type DatasetTags: list of Tag
-        :param _AnnotationStatus: 数据集标注状态:
-STATUS_NON_ANNOTATED，未标注
-STATUS_ANNOTATED，已标注
+        :param _AnnotationStatus: <p>数据集标注状态</p><p>枚举值：</p><ul><li>STATUS_NON_ANNOTATED： 未标注</li><li>STATUS_ANNOTATED： 已标注</li></ul>
         :type AnnotationStatus: str
-        :param _AnnotationType: 标注类型:
-ANNOTATION_TYPE_CLASSIFICATION，图片分类
-ANNOTATION_TYPE_DETECTION，目标检测
-ANNOTATION_TYPE_SEGMENTATION，图片分割
-ANNOTATION_TYPE_TRACKING，目标跟踪
-ANNOTATION_TYPE_OCR，OCR
-ANNOTATION_TYPE_TEXT_CLASSIFICATION，文本分类
+        :param _AnnotationType: <p>标注类型</p><p>枚举值：</p><ul><li>ANNOTATION_TYPE_CLASSIFICATION： 图片分类</li><li>ANNOTATION_TYPE_DETECTION： 目标检测</li><li>ANNOTATION_TYPE_SEGMENTATION： 图片分割</li><li>ANNOTATION_TYPE_TRACKING： 目标跟踪</li><li>ANNOTATION_TYPE_OCR： OCR</li></ul>
         :type AnnotationType: str
-        :param _AnnotationFormat: 标注格式:
-ANNOTATION_FORMAT_TI，TI平台格式
-ANNOTATION_FORMAT_PASCAL，Pascal Voc
-ANNOTATION_FORMAT_COCO，COCO
-ANNOTATION_FORMAT_FILE，文件目录结构
-ANNOTATION_FORMAT_TEXT_TI，文本类型TI平台格式
-ANNOTATION_FORMAT_TXT，文本类型TXT格式
-ANNOTATION_FORMAT_CSV，文本类型CSV格式
-ANNOTATION_FORMAT_JSON，文本类型JSON格式
+        :param _AnnotationFormat: <p>标注格式</p><p>枚举值：</p><ul><li>ANNOTATION_FORMAT_TI： TI-ONE平台格式</li><li>ANNOTATION_FORMAT_PASCAL： Pascal Voc格式</li><li>ANNOTATION_FORMAT_COCO： COCO格式</li><li>ANNOTATION_FORMAT_FILE： 文件目录结构</li></ul>
         :type AnnotationFormat: str
-        :param _SchemaInfos: 表头信息
+        :param _SchemaInfos: <p>表头信息</p>
         :type SchemaInfos: list of SchemaInfo
-        :param _IsSchemaExisted: 数据是否存在表头
+        :param _IsSchemaExisted: <p>数据是否存在表头</p>
         :type IsSchemaExisted: bool
-        :param _ContentType: 导入文件粒度
-TYPE_TEXT_LINE，按行
-TYPE_TEXT_FILE，按文件
+        :param _ContentType: <p>导入文件粒度</p><p>枚举值：</p><ul><li>TYPE_TEXT_LINE： 按行</li><li>TYPE_TEXT_FILE： 按文件</li></ul>
         :type ContentType: str
-        :param _DatasetScene: 数据集建模一级类别。LLM,CV,STRUCTURE,OTHER
+        :param _DatasetScene: <p>数据集建模一级类别</p><p>枚举值：</p><ul><li>LLM： 大模型建模</li><li>CV： 传统CV建模</li><li>STRUCTURE： 大数据建模</li><li>OTHER： 其它</li></ul>
         :type DatasetScene: str
-        :param _SceneTags: 数据集标签。
+        :param _SceneTags: <p>数据集标签。</p>
         :type SceneTags: list of str
-        :param _CFSConfig: 数据集CFS配置。仅支持LLM场景
+        :param _CFSConfig: <p>数据集CFS配置。仅支持LLM场景</p>
         :type CFSConfig: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
         """
         self._DatasetName = None
+        self._TiProjectId = None
         self._DatasetType = None
         self._StorageDataPath = None
         self._StorageLabelPath = None
@@ -1882,7 +1863,7 @@ TYPE_TEXT_FILE，按文件
 
     @property
     def DatasetName(self):
-        r"""数据集名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        r"""<p>数据集名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
         :rtype: str
         """
         return self._DatasetName
@@ -1892,12 +1873,19 @@ TYPE_TEXT_FILE，按文件
         self._DatasetName = DatasetName
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def DatasetType(self):
-        r"""数据集类型:
-TYPE_DATASET_TEXT，文本
-TYPE_DATASET_IMAGE，图片
-TYPE_DATASET_TABLE，表格
-TYPE_DATASET_OTHER，其他
+        r"""<p>数据集类型</p><p>枚举值：</p><ul><li>TYPE_DATASET_IMAGE： 图片</li><li>TYPE_DATASET_LLM： 大模型</li><li>TYPE_DATASET_TABLE： 表格</li><li>TYPE_DATASET_OTHER： 其他</li></ul>
         :rtype: str
         """
         return self._DatasetType
@@ -1908,7 +1896,7 @@ TYPE_DATASET_OTHER，其他
 
     @property
     def StorageDataPath(self):
-        r"""数据源cos路径
+        r"""<p>数据源cos路径</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         """
         return self._StorageDataPath
@@ -1919,7 +1907,7 @@ TYPE_DATASET_OTHER，其他
 
     @property
     def StorageLabelPath(self):
-        r"""数据集标签cos存储路径
+        r"""<p>数据集标签cos存储路径</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         """
         return self._StorageLabelPath
@@ -1930,7 +1918,7 @@ TYPE_DATASET_OTHER，其他
 
     @property
     def DatasetTags(self):
-        r"""数据集标签
+        r"""<p>数据集标签</p>
         :rtype: list of Tag
         """
         return self._DatasetTags
@@ -1941,9 +1929,7 @@ TYPE_DATASET_OTHER，其他
 
     @property
     def AnnotationStatus(self):
-        r"""数据集标注状态:
-STATUS_NON_ANNOTATED，未标注
-STATUS_ANNOTATED，已标注
+        r"""<p>数据集标注状态</p><p>枚举值：</p><ul><li>STATUS_NON_ANNOTATED： 未标注</li><li>STATUS_ANNOTATED： 已标注</li></ul>
         :rtype: str
         """
         return self._AnnotationStatus
@@ -1954,13 +1940,7 @@ STATUS_ANNOTATED，已标注
 
     @property
     def AnnotationType(self):
-        r"""标注类型:
-ANNOTATION_TYPE_CLASSIFICATION，图片分类
-ANNOTATION_TYPE_DETECTION，目标检测
-ANNOTATION_TYPE_SEGMENTATION，图片分割
-ANNOTATION_TYPE_TRACKING，目标跟踪
-ANNOTATION_TYPE_OCR，OCR
-ANNOTATION_TYPE_TEXT_CLASSIFICATION，文本分类
+        r"""<p>标注类型</p><p>枚举值：</p><ul><li>ANNOTATION_TYPE_CLASSIFICATION： 图片分类</li><li>ANNOTATION_TYPE_DETECTION： 目标检测</li><li>ANNOTATION_TYPE_SEGMENTATION： 图片分割</li><li>ANNOTATION_TYPE_TRACKING： 目标跟踪</li><li>ANNOTATION_TYPE_OCR： OCR</li></ul>
         :rtype: str
         """
         return self._AnnotationType
@@ -1971,15 +1951,7 @@ ANNOTATION_TYPE_TEXT_CLASSIFICATION，文本分类
 
     @property
     def AnnotationFormat(self):
-        r"""标注格式:
-ANNOTATION_FORMAT_TI，TI平台格式
-ANNOTATION_FORMAT_PASCAL，Pascal Voc
-ANNOTATION_FORMAT_COCO，COCO
-ANNOTATION_FORMAT_FILE，文件目录结构
-ANNOTATION_FORMAT_TEXT_TI，文本类型TI平台格式
-ANNOTATION_FORMAT_TXT，文本类型TXT格式
-ANNOTATION_FORMAT_CSV，文本类型CSV格式
-ANNOTATION_FORMAT_JSON，文本类型JSON格式
+        r"""<p>标注格式</p><p>枚举值：</p><ul><li>ANNOTATION_FORMAT_TI： TI-ONE平台格式</li><li>ANNOTATION_FORMAT_PASCAL： Pascal Voc格式</li><li>ANNOTATION_FORMAT_COCO： COCO格式</li><li>ANNOTATION_FORMAT_FILE： 文件目录结构</li></ul>
         :rtype: str
         """
         return self._AnnotationFormat
@@ -1990,7 +1962,7 @@ ANNOTATION_FORMAT_JSON，文本类型JSON格式
 
     @property
     def SchemaInfos(self):
-        r"""表头信息
+        r"""<p>表头信息</p>
         :rtype: list of SchemaInfo
         """
         return self._SchemaInfos
@@ -2001,7 +1973,7 @@ ANNOTATION_FORMAT_JSON，文本类型JSON格式
 
     @property
     def IsSchemaExisted(self):
-        r"""数据是否存在表头
+        r"""<p>数据是否存在表头</p>
         :rtype: bool
         """
         return self._IsSchemaExisted
@@ -2012,9 +1984,7 @@ ANNOTATION_FORMAT_JSON，文本类型JSON格式
 
     @property
     def ContentType(self):
-        r"""导入文件粒度
-TYPE_TEXT_LINE，按行
-TYPE_TEXT_FILE，按文件
+        r"""<p>导入文件粒度</p><p>枚举值：</p><ul><li>TYPE_TEXT_LINE： 按行</li><li>TYPE_TEXT_FILE： 按文件</li></ul>
         :rtype: str
         """
         return self._ContentType
@@ -2025,7 +1995,7 @@ TYPE_TEXT_FILE，按文件
 
     @property
     def DatasetScene(self):
-        r"""数据集建模一级类别。LLM,CV,STRUCTURE,OTHER
+        r"""<p>数据集建模一级类别</p><p>枚举值：</p><ul><li>LLM： 大模型建模</li><li>CV： 传统CV建模</li><li>STRUCTURE： 大数据建模</li><li>OTHER： 其它</li></ul>
         :rtype: str
         """
         return self._DatasetScene
@@ -2036,7 +2006,7 @@ TYPE_TEXT_FILE，按文件
 
     @property
     def SceneTags(self):
-        r"""数据集标签。
+        r"""<p>数据集标签。</p>
         :rtype: list of str
         """
         return self._SceneTags
@@ -2047,7 +2017,7 @@ TYPE_TEXT_FILE，按文件
 
     @property
     def CFSConfig(self):
-        r"""数据集CFS配置。仅支持LLM场景
+        r"""<p>数据集CFS配置。仅支持LLM场景</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
         """
         return self._CFSConfig
@@ -2059,6 +2029,7 @@ TYPE_TEXT_FILE，按文件
 
     def _deserialize(self, params):
         self._DatasetName = params.get("DatasetName")
+        self._TiProjectId = params.get("TiProjectId")
         self._DatasetType = params.get("DatasetType")
         if params.get("StorageDataPath") is not None:
             self._StorageDataPath = CosPathInfo()
@@ -2105,7 +2076,7 @@ class CreateDatasetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatasetId: 数据集ID
+        :param _DatasetId: <p>数据集ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasetId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2116,7 +2087,7 @@ class CreateDatasetResponse(AbstractModel):
 
     @property
     def DatasetId(self):
-        r"""数据集ID
+        r"""<p>数据集ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9997,6 +9968,8 @@ class DescribeLogsRequest(AbstractModel):
         r"""
         :param _Service: <p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
         :type Service: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _StartTime: <p>日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时</p>
         :type StartTime: str
         :param _EndTime: <p>日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间</p>
@@ -10019,6 +9992,7 @@ class DescribeLogsRequest(AbstractModel):
         :type Offset: int
         """
         self._Service = None
+        self._TiProjectId = None
         self._StartTime = None
         self._EndTime = None
         self._Limit = None
@@ -10040,6 +10014,17 @@ class DescribeLogsRequest(AbstractModel):
     @Service.setter
     def Service(self, Service):
         self._Service = Service
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def StartTime(self):
@@ -10154,6 +10139,7 @@ class DescribeLogsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
+        self._TiProjectId = params.get("TiProjectId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Limit = params.get("Limit")

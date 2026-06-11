@@ -111,6 +111,24 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AttachRemoteDisks(
+            self,
+            request: models.AttachRemoteDisksRequest,
+            opts: Dict = None,
+    ) -> models.AttachRemoteDisksResponse:
+        """
+        本接口用于挂载一个或多个弹性单副本SSD硬盘到指定的云服务器实例上。仅支持弹性盘类型。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AttachRemoteDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AttachRemoteDisksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindAutoSnapshotPolicy(
             self,
             request: models.BindAutoSnapshotPolicyRequest,
@@ -227,6 +245,24 @@ class CbsClient(AbstractClient):
         kwargs["action"] = "CreateDisks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateDisksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRemoteDisks(
+            self,
+            request: models.CreateRemoteDisksRequest,
+            opts: Dict = None,
+    ) -> models.CreateRemoteDisksResponse:
+        """
+        本接口用于创建弹性单副本SSD硬盘并自动挂载到指定实例。弹性盘在创建时就需要绑定目标实例，计费回调后由CBS自身完成装箱+挂载的全流程。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRemoteDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRemoteDisksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -493,6 +529,60 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRemoteDiskConfigQuota(
+            self,
+            request: models.DescribeRemoteDiskConfigQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRemoteDiskConfigQuotaResponse:
+        """
+        本接口用于查询单副本SSD硬盘机型搭配配额。可根据机型族、机型规格、可用区、付费方式等条件过滤查询结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRemoteDiskConfigQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRemoteDiskConfigQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRemoteDisks(
+            self,
+            request: models.DescribeRemoteDisksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRemoteDisksResponse:
+        """
+        本接口用于查询已购买的单副本SSD硬盘列表。可根据单副本SSD硬盘ID、类型、状态等条件过滤查询结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRemoteDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRemoteDisksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRemoteDisksDeniedActions(
+            self,
+            request: models.DescribeRemoteDisksDeniedActionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRemoteDisksDeniedActionsResponse:
+        """
+        本接口用于查询一个或多个单副本SSD硬盘的操作限制列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRemoteDisksDeniedActions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRemoteDisksDeniedActionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSnapshotGroups(
             self,
             request: models.DescribeSnapshotGroupsRequest,
@@ -591,6 +681,24 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DetachRemoteDisks(
+            self,
+            request: models.DetachRemoteDisksRequest,
+            opts: Dict = None,
+    ) -> models.DetachRemoteDisksResponse:
+        """
+        本接口用于从云服务器实例上卸载一个或多个弹性单副本SSD硬盘。仅支持弹性盘类型。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DetachRemoteDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DetachRemoteDisksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetSnapOverview(
             self,
             request: models.GetSnapOverviewRequest,
@@ -633,6 +741,24 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InquirePriceCreateRemoteDisks(
+            self,
+            request: models.InquirePriceCreateRemoteDisksRequest,
+            opts: Dict = None,
+    ) -> models.InquirePriceCreateRemoteDisksResponse:
+        """
+        该接口用于查询创建弹性单副本SSD硬盘的价格。支持预付费和后付费两种计费类型的询价。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquirePriceCreateRemoteDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquirePriceCreateRemoteDisksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def InquirePriceModifyDiskBackupQuota(
             self,
             request: models.InquirePriceModifyDiskBackupQuotaRequest,
@@ -664,6 +790,24 @@ class CbsClient(AbstractClient):
         kwargs["action"] = "InquirePriceModifyDiskExtraPerformance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.InquirePriceModifyDiskExtraPerformanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InquirePriceRenewRemoteDisks(
+            self,
+            request: models.InquirePriceRenewRemoteDisksRequest,
+            opts: Dict = None,
+    ) -> models.InquirePriceRenewRemoteDisksResponse:
+        """
+        该接口用于查询续费弹性单副本SSD硬盘的价格。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquirePriceRenewRemoteDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquirePriceRenewRemoteDisksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -846,6 +990,24 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyRemoteDiskAttributes(
+            self,
+            request: models.ModifyRemoteDiskAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRemoteDiskAttributesResponse:
+        """
+        本接口用于修改单副本SSD硬盘的属性，包括硬盘名称和项目ID。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRemoteDiskAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRemoteDiskAttributesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifySnapshotAttribute(
             self,
             request: models.ModifySnapshotAttributeRequest,
@@ -912,6 +1074,24 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RenewRemoteDisk(
+            self,
+            request: models.RenewRemoteDiskRequest,
+            opts: Dict = None,
+    ) -> models.RenewRemoteDiskResponse:
+        """
+        该接口用于续费弹性单副本SSD硬盘。用户发起续费下单后，由计费系统完成扣费和到期时间更新。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewRemoteDisk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewRemoteDiskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ResizeDisk(
             self,
             request: models.ResizeDiskRequest,
@@ -928,6 +1108,42 @@ class CbsClient(AbstractClient):
         kwargs["action"] = "ResizeDisk"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ResizeDiskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SwitchParameterCreateRemoteDisks(
+            self,
+            request: models.SwitchParameterCreateRemoteDisksRequest,
+            opts: Dict = None,
+    ) -> models.SwitchParameterCreateRemoteDisksResponse:
+        """
+        该接口用于获取创建弹性单副本SSD硬盘的订单参数，生成的订单参数由前端透传到计费系统用于发货。创建时必须指定云服务器实例。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SwitchParameterCreateRemoteDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SwitchParameterCreateRemoteDisksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SwitchParameterRenewRemoteDisks(
+            self,
+            request: models.SwitchParameterRenewRemoteDisksRequest,
+            opts: Dict = None,
+    ) -> models.SwitchParameterRenewRemoteDisksResponse:
+        """
+        该接口用于获取续费弹性单副本SSD硬盘的订单参数，生成的订单参数由前端透传到计费系统用于续费。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SwitchParameterRenewRemoteDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SwitchParameterRenewRemoteDisksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -950,6 +1166,24 @@ class CbsClient(AbstractClient):
         kwargs["action"] = "TerminateDisks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TerminateDisksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TerminateRemoteDisks(
+            self,
+            request: models.TerminateRemoteDisksRequest,
+            opts: Dict = None,
+    ) -> models.TerminateRemoteDisksResponse:
+        """
+        本接口用于销毁一个或多个弹性单副本SSD硬盘。仅支持弹性盘类型，且要求硬盘处于 INITED 或 UNINIT 状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TerminateRemoteDisks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TerminateRemoteDisksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

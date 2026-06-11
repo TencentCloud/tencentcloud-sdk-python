@@ -3973,6 +3973,177 @@ class ApiDetailSampleHistory(AbstractModel):
         
 
 
+class ApiEvent(AbstractModel):
+    r"""APi事件列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: 事件id
+        :type EventId: str
+        :param _EventType: 事件类型
+        :type EventType: str
+        :param _Level: 事件等级，100,200,300对应低中高
+        :type Level: str
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Mode: 处置状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
+        :type Mode: str
+        :param _StartTime: 发现时间
+        :type StartTime: int
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param _ApiName: 关联的api
+        :type ApiName: str
+        :param _Method: 请求方式
+        :type Method: str
+        :param _Source: 事件来源，custom标识自定义
+        :type Source: str
+        """
+        self._EventId = None
+        self._EventType = None
+        self._Level = None
+        self._Domain = None
+        self._Mode = None
+        self._StartTime = None
+        self._UpdateTime = None
+        self._ApiName = None
+        self._Method = None
+        self._Source = None
+
+    @property
+    def EventId(self):
+        r"""事件id
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def EventType(self):
+        r"""事件类型
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def Level(self):
+        r"""事件等级，100,200,300对应低中高
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Mode(self):
+        r"""处置状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def StartTime(self):
+        r"""发现时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ApiName(self):
+        r"""关联的api
+        :rtype: str
+        """
+        return self._ApiName
+
+    @ApiName.setter
+    def ApiName(self, ApiName):
+        self._ApiName = ApiName
+
+    @property
+    def Method(self):
+        r"""请求方式
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Source(self):
+        r"""事件来源，custom标识自定义
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._EventType = params.get("EventType")
+        self._Level = params.get("Level")
+        self._Domain = params.get("Domain")
+        self._Mode = params.get("Mode")
+        self._StartTime = params.get("StartTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ApiName = params.get("ApiName")
+        self._Method = params.get("Method")
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiGuardContent(AbstractModel):
     r"""guard content
 
@@ -4488,6 +4659,192 @@ class ApiPkg(AbstractModel):
         
 
 
+class ApiSecAttackSource(AbstractModel):
+    r"""api安全攻击源详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcIp: 攻击来源ip
+        :type SrcIp: str
+        :param _EventLevel: 威胁等级
+        :type EventLevel: str
+        :param _BotLabel: BOT标签
+        :type BotLabel: str
+        :param _Timestamp: 变更时间
+        :type Timestamp: int
+        :param _City: 地理位置
+        :type City: str
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EventCount: 关联事件数量
+        :type EventCount: int
+        :param _AttackCount: 攻击数量
+        :type AttackCount: int
+        :param _MissUserName: 缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+        :type MissUserName: str
+        :param _AttackDetail: 当是水平越权和垂直越权时，返回此字段
+        :type AttackDetail: list of str
+        :param _MissPassword: 缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+        :type MissPassword: str
+        """
+        self._SrcIp = None
+        self._EventLevel = None
+        self._BotLabel = None
+        self._Timestamp = None
+        self._City = None
+        self._StartTime = None
+        self._EventCount = None
+        self._AttackCount = None
+        self._MissUserName = None
+        self._AttackDetail = None
+        self._MissPassword = None
+
+    @property
+    def SrcIp(self):
+        r"""攻击来源ip
+        :rtype: str
+        """
+        return self._SrcIp
+
+    @SrcIp.setter
+    def SrcIp(self, SrcIp):
+        self._SrcIp = SrcIp
+
+    @property
+    def EventLevel(self):
+        r"""威胁等级
+        :rtype: str
+        """
+        return self._EventLevel
+
+    @EventLevel.setter
+    def EventLevel(self, EventLevel):
+        self._EventLevel = EventLevel
+
+    @property
+    def BotLabel(self):
+        r"""BOT标签
+        :rtype: str
+        """
+        return self._BotLabel
+
+    @BotLabel.setter
+    def BotLabel(self, BotLabel):
+        self._BotLabel = BotLabel
+
+    @property
+    def Timestamp(self):
+        r"""变更时间
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def City(self):
+        r"""地理位置
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EventCount(self):
+        r"""关联事件数量
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def AttackCount(self):
+        r"""攻击数量
+        :rtype: int
+        """
+        return self._AttackCount
+
+    @AttackCount.setter
+    def AttackCount(self, AttackCount):
+        self._AttackCount = AttackCount
+
+    @property
+    def MissUserName(self):
+        r"""缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+        :rtype: str
+        """
+        return self._MissUserName
+
+    @MissUserName.setter
+    def MissUserName(self, MissUserName):
+        self._MissUserName = MissUserName
+
+    @property
+    def AttackDetail(self):
+        r"""当是水平越权和垂直越权时，返回此字段
+        :rtype: list of str
+        """
+        return self._AttackDetail
+
+    @AttackDetail.setter
+    def AttackDetail(self, AttackDetail):
+        self._AttackDetail = AttackDetail
+
+    @property
+    def MissPassword(self):
+        r"""缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+        :rtype: str
+        """
+        return self._MissPassword
+
+    @MissPassword.setter
+    def MissPassword(self, MissPassword):
+        self._MissPassword = MissPassword
+
+
+    def _deserialize(self, params):
+        self._SrcIp = params.get("SrcIp")
+        self._EventLevel = params.get("EventLevel")
+        self._BotLabel = params.get("BotLabel")
+        self._Timestamp = params.get("Timestamp")
+        self._City = params.get("City")
+        self._StartTime = params.get("StartTime")
+        self._EventCount = params.get("EventCount")
+        self._AttackCount = params.get("AttackCount")
+        self._MissUserName = params.get("MissUserName")
+        self._AttackDetail = params.get("AttackDetail")
+        self._MissPassword = params.get("MissPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiSecCustomEventRule(AbstractModel):
     r"""api安全自定义事件规则结构体
 
@@ -4775,6 +5132,87 @@ class ApiSecCustomSensitiveRule(AbstractModel):
         self._Level = params.get("Level")
         self._MatchCond = params.get("MatchCond")
         self._IsPan = params.get("IsPan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiSecEventChange(AbstractModel):
+    r"""事件变更内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: 变更人
+        :type UserName: str
+        :param _Mode: 变更的状态
+        :type Mode: str
+        :param _Timestamp: 时间戳
+        :type Timestamp: int
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._UserName = None
+        self._Mode = None
+        self._Timestamp = None
+        self._Remark = None
+
+    @property
+    def UserName(self):
+        r"""变更人
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Mode(self):
+        r"""变更的状态
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Timestamp(self):
+        r"""时间戳
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._Mode = params.get("Mode")
+        self._Timestamp = params.get("Timestamp")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19200,6 +19638,370 @@ class DescribeApiListVersionTwoResponse(AbstractModel):
             self._Data = []
             for item in params.get("Data"):
                 obj = ApiAsset()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApiSecEventDetailRequest(AbstractModel):
+    r"""DescribeApiSecEventDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        :param _EventId: <p>API安全事件ID</p>
+        :type EventId: str
+        """
+        self._Domain = None
+        self._EventId = None
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def EventId(self):
+        r"""<p>API安全事件ID</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._EventId = params.get("EventId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApiSecEventDetailResponse(AbstractModel):
+    r"""DescribeApiSecEventDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Description: <p>事件描述信息</p>
+        :type Description: str
+        :param _EventInfo: <p>事件基本信息</p>
+        :type EventInfo: :class:`tencentcloud.waf.v20180125.models.ApiEvent`
+        :param _AttackSource: <p>攻击源详情</p>
+        :type AttackSource: list of ApiSecAttackSource
+        :param _ChangeHistory: <p>变更历史</p>
+        :type ChangeHistory: list of ApiSecEventChange
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Description = None
+        self._EventInfo = None
+        self._AttackSource = None
+        self._ChangeHistory = None
+        self._RequestId = None
+
+    @property
+    def Description(self):
+        r"""<p>事件描述信息</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EventInfo(self):
+        r"""<p>事件基本信息</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiEvent`
+        """
+        return self._EventInfo
+
+    @EventInfo.setter
+    def EventInfo(self, EventInfo):
+        self._EventInfo = EventInfo
+
+    @property
+    def AttackSource(self):
+        r"""<p>攻击源详情</p>
+        :rtype: list of ApiSecAttackSource
+        """
+        return self._AttackSource
+
+    @AttackSource.setter
+    def AttackSource(self, AttackSource):
+        self._AttackSource = AttackSource
+
+    @property
+    def ChangeHistory(self):
+        r"""<p>变更历史</p>
+        :rtype: list of ApiSecEventChange
+        """
+        return self._ChangeHistory
+
+    @ChangeHistory.setter
+    def ChangeHistory(self, ChangeHistory):
+        self._ChangeHistory = ChangeHistory
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Description = params.get("Description")
+        if params.get("EventInfo") is not None:
+            self._EventInfo = ApiEvent()
+            self._EventInfo._deserialize(params.get("EventInfo"))
+        if params.get("AttackSource") is not None:
+            self._AttackSource = []
+            for item in params.get("AttackSource"):
+                obj = ApiSecAttackSource()
+                obj._deserialize(item)
+                self._AttackSource.append(obj)
+        if params.get("ChangeHistory") is not None:
+            self._ChangeHistory = []
+            for item in params.get("ChangeHistory"):
+                obj = ApiSecEventChange()
+                obj._deserialize(item)
+                self._ChangeHistory.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApiSecEventListRequest(AbstractModel):
+    r"""DescribeApiSecEventList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _NeedTotalCount: 是否查询数量，默认不查询，为true则进行查询
+        :type NeedTotalCount: bool
+        :param _Filters: 过滤条件
+        :type Filters: list of ApiDataFilter
+        :param _PageIndex: 查询当前的页
+        :type PageIndex: int
+        :param _PageSize: 每一页显示多少条数据
+        :type PageSize: int
+        :param _Sort: 排序，第一个元素为排序的key，第二个元素为排序规则，其中1 为升序排列，而-1 是用于降序排列
+        :type Sort: list of str
+        :param _StartTs: 查询开始时间
+        :type StartTs: int
+        :param _EndTs: 查询结束时间
+        :type EndTs: int
+        """
+        self._Domain = None
+        self._NeedTotalCount = None
+        self._Filters = None
+        self._PageIndex = None
+        self._PageSize = None
+        self._Sort = None
+        self._StartTs = None
+        self._EndTs = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def NeedTotalCount(self):
+        r"""是否查询数量，默认不查询，为true则进行查询
+        :rtype: bool
+        """
+        return self._NeedTotalCount
+
+    @NeedTotalCount.setter
+    def NeedTotalCount(self, NeedTotalCount):
+        self._NeedTotalCount = NeedTotalCount
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of ApiDataFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def PageIndex(self):
+        r"""查询当前的页
+        :rtype: int
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
+    @property
+    def PageSize(self):
+        r"""每一页显示多少条数据
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Sort(self):
+        r"""排序，第一个元素为排序的key，第二个元素为排序规则，其中1 为升序排列，而-1 是用于降序排列
+        :rtype: list of str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def StartTs(self):
+        r"""查询开始时间
+        :rtype: int
+        """
+        return self._StartTs
+
+    @StartTs.setter
+    def StartTs(self, StartTs):
+        self._StartTs = StartTs
+
+    @property
+    def EndTs(self):
+        r"""查询结束时间
+        :rtype: int
+        """
+        return self._EndTs
+
+    @EndTs.setter
+    def EndTs(self, EndTs):
+        self._EndTs = EndTs
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._NeedTotalCount = params.get("NeedTotalCount")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ApiDataFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._PageIndex = params.get("PageIndex")
+        self._PageSize = params.get("PageSize")
+        self._Sort = params.get("Sort")
+        self._StartTs = params.get("StartTs")
+        self._EndTs = params.get("EndTs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApiSecEventListResponse(AbstractModel):
+    r"""DescribeApiSecEventList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ApiEvent
+        :param _Total: 事件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiEvent
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""事件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ApiEvent()
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._Total = params.get("Total")

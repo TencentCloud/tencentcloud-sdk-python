@@ -15478,6 +15478,100 @@ class ParamType(AbstractModel):
         
 
 
+class PromoteDBInstanceToActiveRequest(AbstractModel):
+    r"""PromoteDBInstanceToActive请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 灾备实例id
+        :type InstanceId: str
+        :param _MasterId: 主实例id
+        :type MasterId: str
+        """
+        self._InstanceId = None
+        self._MasterId = None
+
+    @property
+    def InstanceId(self):
+        r"""灾备实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MasterId(self):
+        r"""主实例id
+        :rtype: str
+        """
+        return self._MasterId
+
+    @MasterId.setter
+    def MasterId(self, MasterId):
+        self._MasterId = MasterId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MasterId = params.get("MasterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromoteDBInstanceToActiveResponse(AbstractModel):
+    r"""PromoteDBInstanceToActive返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 任务id
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""任务id
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class RemoveNodeList(AbstractModel):
     r"""修改实例节点详情。
 
@@ -16986,24 +17080,23 @@ class SetInstanceMaintenanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
-
+        :param _InstanceId: <p>指定实例ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _MaintenanceStart: 维护时间窗开始时间。取值范围为"00:00-23:00"的任意整点或半点，如00:00或00:30。
+        :param _MaintenanceStart: <p>维护时间窗开始时间。取值范围为&quot;00:00-23:00&quot;的任意整点或半点，如00:00或00:30。</p>
         :type MaintenanceStart: str
-        :param _MaintenanceEnd: 维护时间窗结束时间。
-- 取值范围为"00:00-23:00"的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。
-- 结束时间务必是基于开始时间向后的时间。
+        :param _MaintenanceEnd: <p>维护时间窗结束时间。</p><ul><li>取值范围为&quot;00:00-23:00&quot;的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。</li><li>结束时间务必是基于开始时间向后的时间。</li></ul>
         :type MaintenanceEnd: str
+        :param _MaintenanceDays: <p>指定每周内维护时间窗口的具体日期。  格式：请输入 1-7 之间的数字代表周一到周日（例如：1 代表周一），多个日期请用英文逗号 , 分隔。 示例：输入 1,3,5 表示维护窗口周期在每周的周一、周三、周五。 默认值：不设置，则默认为全周期 (1,2,3,4,5,6,7)。</p>
+        :type MaintenanceDays: str
         """
         self._InstanceId = None
         self._MaintenanceStart = None
         self._MaintenanceEnd = None
+        self._MaintenanceDays = None
 
     @property
     def InstanceId(self):
-        r"""指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
-
+        r"""<p>指定实例ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -17014,7 +17107,7 @@ class SetInstanceMaintenanceRequest(AbstractModel):
 
     @property
     def MaintenanceStart(self):
-        r"""维护时间窗开始时间。取值范围为"00:00-23:00"的任意整点或半点，如00:00或00:30。
+        r"""<p>维护时间窗开始时间。取值范围为&quot;00:00-23:00&quot;的任意整点或半点，如00:00或00:30。</p>
         :rtype: str
         """
         return self._MaintenanceStart
@@ -17025,9 +17118,7 @@ class SetInstanceMaintenanceRequest(AbstractModel):
 
     @property
     def MaintenanceEnd(self):
-        r"""维护时间窗结束时间。
-- 取值范围为"00:00-23:00"的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。
-- 结束时间务必是基于开始时间向后的时间。
+        r"""<p>维护时间窗结束时间。</p><ul><li>取值范围为&quot;00:00-23:00&quot;的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。</li><li>结束时间务必是基于开始时间向后的时间。</li></ul>
         :rtype: str
         """
         return self._MaintenanceEnd
@@ -17036,11 +17127,23 @@ class SetInstanceMaintenanceRequest(AbstractModel):
     def MaintenanceEnd(self, MaintenanceEnd):
         self._MaintenanceEnd = MaintenanceEnd
 
+    @property
+    def MaintenanceDays(self):
+        r"""<p>指定每周内维护时间窗口的具体日期。  格式：请输入 1-7 之间的数字代表周一到周日（例如：1 代表周一），多个日期请用英文逗号 , 分隔。 示例：输入 1,3,5 表示维护窗口周期在每周的周一、周三、周五。 默认值：不设置，则默认为全周期 (1,2,3,4,5,6,7)。</p>
+        :rtype: str
+        """
+        return self._MaintenanceDays
+
+    @MaintenanceDays.setter
+    def MaintenanceDays(self, MaintenanceDays):
+        self._MaintenanceDays = MaintenanceDays
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._MaintenanceStart = params.get("MaintenanceStart")
         self._MaintenanceEnd = params.get("MaintenanceEnd")
+        self._MaintenanceDays = params.get("MaintenanceDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

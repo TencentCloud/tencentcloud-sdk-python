@@ -12522,11 +12522,11 @@ class HTTPServiceDomainParam(AbstractModel):
         r"""
         :param _Domain: <p>域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败</p>
         :type Domain: str
-        :param _AccessType: <p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
+        :param _AccessType: <p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li></ul><p>默认值：DIRECT</p>
         :type AccessType: str
-        :param _CertId: <p>证书ID。当前账户下SSL平台的证书ID</p>
+        :param _CertId: <p>证书ID。当前账户下SSL平台的证书ID，无证书无法使用https访问</p>
         :type CertId: str
-        :param _Protocol: <p>协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向</p>
+        :param _Protocol: <p>协议类型</p><p>枚举值：</p><ul><li>HTTP： 仅开启http</li><li>HTTPS： 仅开启https</li><li>HTTP_AND_HTTPS： 同时开启http和https，默认</li><li>HTTP_TO_HTTPS： http重定向成https，需配置证书</li><li>HTTPS_TO_HTTP： https重定向成http，需配置证书</li></ul><p>默认值：HTTP_AND_HTTPS</p>
         :type Protocol: str
         :param _CustomCname: <p>自定义CNAME。对应AccessType: Custom</p>
         :type CustomCname: str
@@ -12559,7 +12559,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""<p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
+        r"""<p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li></ul><p>默认值：DIRECT</p>
         :rtype: str
         """
         return self._AccessType
@@ -12570,7 +12570,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def CertId(self):
-        r"""<p>证书ID。当前账户下SSL平台的证书ID</p>
+        r"""<p>证书ID。当前账户下SSL平台的证书ID，无证书无法使用https访问</p>
         :rtype: str
         """
         return self._CertId
@@ -12581,7 +12581,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""<p>协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向</p>
+        r"""<p>协议类型</p><p>枚举值：</p><ul><li>HTTP： 仅开启http</li><li>HTTPS： 仅开启https</li><li>HTTP_AND_HTTPS： 同时开启http和https，默认</li><li>HTTP_TO_HTTPS： http重定向成https，需配置证书</li><li>HTTPS_TO_HTTP： https重定向成http，需配置证书</li></ul><p>默认值：HTTP_AND_HTTPS</p>
         :rtype: str
         """
         return self._Protocol
@@ -12899,9 +12899,9 @@ class HTTPServiceQPSPerClient(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LimitBy: 客户端维度限频标识。限制当前资源被单个客户端调用的频率，客户端标识支持 用户ID（UserID） 或 客户端 IP（ClientIP）。UserID 包括 云开发用户 ID 或 微信 openid，如果请求无 UserID 信息，则不会限制。
+        :param _LimitBy: <p>客户端维度限频标识。限制当前资源被单个客户端调用的频率，客户端标识支持 用户ID（UserID） 或 客户端 IP（ClientIP）。UserID 包括 云开发用户 ID 或 微信 openid，如果请求无 UserID 信息，则不会限制。</p><p>枚举值：</p><ul><li>UserID： 云开发用户 ID 或 微信 openid</li><li>ClientIP： 客户端ip</li></ul>
         :type LimitBy: str
-        :param _LimitValue: 限制QPS值，每秒请求次数
+        :param _LimitValue: <p>限制QPS值，每秒请求次数</p>
         :type LimitValue: int
         """
         self._LimitBy = None
@@ -12909,7 +12909,7 @@ class HTTPServiceQPSPerClient(AbstractModel):
 
     @property
     def LimitBy(self):
-        r"""客户端维度限频标识。限制当前资源被单个客户端调用的频率，客户端标识支持 用户ID（UserID） 或 客户端 IP（ClientIP）。UserID 包括 云开发用户 ID 或 微信 openid，如果请求无 UserID 信息，则不会限制。
+        r"""<p>客户端维度限频标识。限制当前资源被单个客户端调用的频率，客户端标识支持 用户ID（UserID） 或 客户端 IP（ClientIP）。UserID 包括 云开发用户 ID 或 微信 openid，如果请求无 UserID 信息，则不会限制。</p><p>枚举值：</p><ul><li>UserID： 云开发用户 ID 或 微信 openid</li><li>ClientIP： 客户端ip</li></ul>
         :rtype: str
         """
         return self._LimitBy
@@ -12920,7 +12920,7 @@ class HTTPServiceQPSPerClient(AbstractModel):
 
     @property
     def LimitValue(self):
-        r"""限制QPS值，每秒请求次数
+        r"""<p>限制QPS值，每秒请求次数</p>
         :rtype: int
         """
         return self._LimitValue
@@ -13157,25 +13157,25 @@ class HTTPServiceRouteParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: 路径
+        :param _Path: <p>路径</p>
         :type Path: str
-        :param _UpstreamResourceType: 上游服务类型。创建时必填，修改时可选填。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse
+        :param _UpstreamResourceType: <p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li></ul>
         :type UpstreamResourceType: str
-        :param _UpstreamResourceName: 上游服务名。创建时必填，修改时可选填
+        :param _UpstreamResourceName: <p>上游服务名。创建时必填，修改时可选填</p>
         :type UpstreamResourceName: str
-        :param _PathRewrite: 路径重写
+        :param _PathRewrite: <p>路径重写</p>
         :type PathRewrite: :class:`tencentcloud.tcb.v20180608.models.HTTPServicePathRewrite`
-        :param _EnableSafeDomain: 是否开启安全域名。默认开启
+        :param _EnableSafeDomain: <p>是否开启安全域名。默认开启</p>
         :type EnableSafeDomain: bool
-        :param _EnableAuth: 是否开启身份认证。默认关闭
+        :param _EnableAuth: <p>是否开启身份认证。默认关闭</p>
         :type EnableAuth: bool
-        :param _EnablePathTransmission: 是否开启路径透传。默认关闭
+        :param _EnablePathTransmission: <p>是否开启路径透传。默认关闭</p>
         :type EnablePathTransmission: bool
-        :param _QPSPolicy: QPS限频策略
+        :param _QPSPolicy: <p>QPS限频策略</p>
         :type QPSPolicy: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRouteQPSPolicy`
-        :param _Enable: 是否开启路由
+        :param _Enable: <p>是否开启路由</p>
         :type Enable: bool
-        :param _Extension: 扩展字段，内部包含headers处理等
+        :param _Extension: <p>扩展字段，内部包含headers处理等</p>
         :type Extension: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
         """
         self._Path = None
@@ -13191,7 +13191,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def Path(self):
-        r"""路径
+        r"""<p>路径</p>
         :rtype: str
         """
         return self._Path
@@ -13202,7 +13202,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def UpstreamResourceType(self):
-        r"""上游服务类型。创建时必填，修改时可选填。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse
+        r"""<p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li></ul>
         :rtype: str
         """
         return self._UpstreamResourceType
@@ -13213,7 +13213,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def UpstreamResourceName(self):
-        r"""上游服务名。创建时必填，修改时可选填
+        r"""<p>上游服务名。创建时必填，修改时可选填</p>
         :rtype: str
         """
         return self._UpstreamResourceName
@@ -13224,7 +13224,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def PathRewrite(self):
-        r"""路径重写
+        r"""<p>路径重写</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServicePathRewrite`
         """
         return self._PathRewrite
@@ -13235,7 +13235,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def EnableSafeDomain(self):
-        r"""是否开启安全域名。默认开启
+        r"""<p>是否开启安全域名。默认开启</p>
         :rtype: bool
         """
         return self._EnableSafeDomain
@@ -13246,7 +13246,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def EnableAuth(self):
-        r"""是否开启身份认证。默认关闭
+        r"""<p>是否开启身份认证。默认关闭</p>
         :rtype: bool
         """
         return self._EnableAuth
@@ -13257,7 +13257,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def EnablePathTransmission(self):
-        r"""是否开启路径透传。默认关闭
+        r"""<p>是否开启路径透传。默认关闭</p>
         :rtype: bool
         """
         return self._EnablePathTransmission
@@ -13268,7 +13268,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def QPSPolicy(self):
-        r"""QPS限频策略
+        r"""<p>QPS限频策略</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRouteQPSPolicy`
         """
         return self._QPSPolicy
@@ -13279,7 +13279,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def Enable(self):
-        r"""是否开启路由
+        r"""<p>是否开启路由</p>
         :rtype: bool
         """
         return self._Enable
@@ -13290,7 +13290,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def Extension(self):
-        r"""扩展字段，内部包含headers处理等
+        r"""<p>扩展字段，内部包含headers处理等</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
         """
         return self._Extension

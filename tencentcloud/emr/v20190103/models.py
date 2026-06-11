@@ -4517,12 +4517,15 @@ class ComputeResourceAdvanceParams(AbstractModel):
         :type UserScript: str
         :param _TkeClusterNodePool: <p>节点组Id</p>
         :type TkeClusterNodePool: str
+        :param _NodePoolJoinMode: <p>加入节点池的模式</p><p>枚举值：</p><ul><li>Inherit： 从节点池继承配置</li><li>OnlyJoin： 仅加入节点池，不继承配置</li></ul><p>默认值：Inherit</p>
+        :type NodePoolJoinMode: str
         """
         self._Labels = None
         self._Taints = None
         self._PreStartUserScript = None
         self._UserScript = None
         self._TkeClusterNodePool = None
+        self._NodePoolJoinMode = None
 
     @property
     def Labels(self):
@@ -4581,6 +4584,17 @@ class ComputeResourceAdvanceParams(AbstractModel):
     def TkeClusterNodePool(self, TkeClusterNodePool):
         self._TkeClusterNodePool = TkeClusterNodePool
 
+    @property
+    def NodePoolJoinMode(self):
+        r"""<p>加入节点池的模式</p><p>枚举值：</p><ul><li>Inherit： 从节点池继承配置</li><li>OnlyJoin： 仅加入节点池，不继承配置</li></ul><p>默认值：Inherit</p>
+        :rtype: str
+        """
+        return self._NodePoolJoinMode
+
+    @NodePoolJoinMode.setter
+    def NodePoolJoinMode(self, NodePoolJoinMode):
+        self._NodePoolJoinMode = NodePoolJoinMode
+
 
     def _deserialize(self, params):
         if params.get("Labels") is not None:
@@ -4598,6 +4612,7 @@ class ComputeResourceAdvanceParams(AbstractModel):
         self._PreStartUserScript = params.get("PreStartUserScript")
         self._UserScript = params.get("UserScript")
         self._TkeClusterNodePool = params.get("TkeClusterNodePool")
+        self._NodePoolJoinMode = params.get("NodePoolJoinMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

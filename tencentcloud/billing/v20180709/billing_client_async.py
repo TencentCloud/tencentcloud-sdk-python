@@ -1022,6 +1022,24 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeOrgMemberAccountBalance(
+            self,
+            request: models.DescribeOrgMemberAccountBalanceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOrgMemberAccountBalanceResponse:
+        """
+        批量查询成员可用余额信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOrgMemberAccountBalance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOrgMemberAccountBalanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRenewInstances(
             self,
             request: models.DescribeRenewInstancesRequest,

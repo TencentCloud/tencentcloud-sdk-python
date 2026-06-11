@@ -6552,21 +6552,21 @@ class Volume(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SendDate: 日期
+        :param _SendDate: <p>日期</p>
         :type SendDate: str
-        :param _RequestCount: 邮件请求数量
+        :param _RequestCount: <p>邮件请求数量</p>
         :type RequestCount: int
-        :param _AcceptedCount: 腾讯云通过数量
+        :param _AcceptedCount: <p>腾讯云通过数量</p>
         :type AcceptedCount: int
-        :param _DeliveredCount: 送达数量
+        :param _DeliveredCount: <p>送达数量</p>
         :type DeliveredCount: int
-        :param _OpenedCount: 打开邮件的用户数量，根据收件人去重
+        :param _OpenedCount: <p>打开邮件总次数</p>
         :type OpenedCount: int
-        :param _ClickedCount: 点击了邮件中的链接数量用户数量
+        :param _ClickedCount: <p>点击了邮件中的链接数量用户数量</p>
         :type ClickedCount: int
-        :param _BounceCount: 退信数量
+        :param _BounceCount: <p>退信数量</p>
         :type BounceCount: int
-        :param _UnsubscribeCount: 取消订阅的用户数量
+        :param _UnsubscribeCount: <p>取消订阅的用户数量</p>
         :type UnsubscribeCount: int
         """
         self._SendDate = None
@@ -6580,7 +6580,7 @@ class Volume(AbstractModel):
 
     @property
     def SendDate(self):
-        r"""日期
+        r"""<p>日期</p>
         :rtype: str
         """
         return self._SendDate
@@ -6591,7 +6591,7 @@ class Volume(AbstractModel):
 
     @property
     def RequestCount(self):
-        r"""邮件请求数量
+        r"""<p>邮件请求数量</p>
         :rtype: int
         """
         return self._RequestCount
@@ -6602,7 +6602,7 @@ class Volume(AbstractModel):
 
     @property
     def AcceptedCount(self):
-        r"""腾讯云通过数量
+        r"""<p>腾讯云通过数量</p>
         :rtype: int
         """
         return self._AcceptedCount
@@ -6613,7 +6613,7 @@ class Volume(AbstractModel):
 
     @property
     def DeliveredCount(self):
-        r"""送达数量
+        r"""<p>送达数量</p>
         :rtype: int
         """
         return self._DeliveredCount
@@ -6624,7 +6624,7 @@ class Volume(AbstractModel):
 
     @property
     def OpenedCount(self):
-        r"""打开邮件的用户数量，根据收件人去重
+        r"""<p>打开邮件总次数</p>
         :rtype: int
         """
         return self._OpenedCount
@@ -6635,7 +6635,7 @@ class Volume(AbstractModel):
 
     @property
     def ClickedCount(self):
-        r"""点击了邮件中的链接数量用户数量
+        r"""<p>点击了邮件中的链接数量用户数量</p>
         :rtype: int
         """
         return self._ClickedCount
@@ -6646,7 +6646,7 @@ class Volume(AbstractModel):
 
     @property
     def BounceCount(self):
-        r"""退信数量
+        r"""<p>退信数量</p>
         :rtype: int
         """
         return self._BounceCount
@@ -6657,7 +6657,7 @@ class Volume(AbstractModel):
 
     @property
     def UnsubscribeCount(self):
-        r"""取消订阅的用户数量
+        r"""<p>取消订阅的用户数量</p>
         :rtype: int
         """
         return self._UnsubscribeCount

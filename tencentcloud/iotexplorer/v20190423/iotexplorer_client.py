@@ -486,8 +486,31 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDevicePublishSDPAnswer(self, request):
+        r"""创建设备推流SDP应答，此接口调用前需要先调用CreateDeviceSDPAnswer接口以保证设备处于拉流状态，接口返回是另外一路webrtc推流SDP信息，可以用来进行标准的WHIP推流
+
+        :param request: Request instance for CreateDevicePublishSDPAnswer.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDevicePublishSDPAnswerRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDevicePublishSDPAnswerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDevicePublishSDPAnswer", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDevicePublishSDPAnswerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDeviceSDPAnswer(self, request):
-        r"""创建设备SDP应答
+        r"""创建设备SDP应答，调用此接口后，后台会对传入参数的设备进行拉流，并返回webrtc answer SDP返回，可以进行WHEP协议拉流。
 
         :param request: Request instance for CreateDeviceSDPAnswer.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateDeviceSDPAnswerRequest`
@@ -1075,6 +1098,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DeleteDevice", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDeviceSDP(self, request):
+        r"""删除设备SDP应答，此接口调用是手动结束设备后台推拉流信息，快速响应挂断需求。
+
+        :param request: Request instance for DeleteDeviceSDP.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteDeviceSDPRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteDeviceSDPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeviceSDP", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDeviceSDPResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

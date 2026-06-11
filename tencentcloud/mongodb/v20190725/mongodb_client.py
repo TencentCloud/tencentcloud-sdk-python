@@ -1619,6 +1619,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PromoteDBInstanceToActive(self, request):
+        r"""本接口（PromoteDBInstanceToActive）用于灾备实例转正
+
+        :param request: Request instance for PromoteDBInstanceToActive.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.PromoteDBInstanceToActiveRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.PromoteDBInstanceToActiveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PromoteDBInstanceToActive", params, headers=headers)
+            response = json.loads(body)
+            model = models.PromoteDBInstanceToActiveResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RenameInstance(self, request):
         r"""本接口(RenameInstance)用于修改云数据库实例的名称。
 

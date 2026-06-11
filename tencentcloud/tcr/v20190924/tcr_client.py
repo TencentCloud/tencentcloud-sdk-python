@@ -624,6 +624,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAIModel(self, request):
+        r"""删除指定模型版本（通过 tag 或 digest 引用）。调用 Harbor v2 API 删除 artifact。
+
+        :param request: Request instance for DeleteAIModel.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteAIModelRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteAIModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAIModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAIModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteApplicationTriggerPersonal(self, request):
         r"""用于删除应用更新触发器
 
@@ -1109,6 +1132,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteSkill(self, request):
+        r"""删除指定 Skill
+
+        :param request: Request instance for DeleteSkill.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteSkillRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteSkillResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSkill", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSkillResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteTagRetentionRule(self, request):
         r"""删除版本保留规则
 
@@ -1146,6 +1192,29 @@ class TcrClient(AbstractClient):
             body = self.call("DeleteWebhookTrigger", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteWebhookTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAIModelVersionDetail(self, request):
+        r"""查询模型详情
+
+        :param request: Request instance for DescribeAIModelVersionDetail.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeAIModelVersionDetailRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeAIModelVersionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIModelVersionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIModelVersionDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1937,6 +2006,52 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSkillDetail(self, request):
+        r"""查询单个 Skill 的完整详情
+
+        :param request: Request instance for DescribeSkillDetail.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeSkillDetailRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeSkillDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSkillDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSkillDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSkillDownloadInfo(self, request):
+        r"""返回 Skill 下载链接
+
+        :param request: Request instance for DescribeSkillDownloadInfo.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeSkillDownloadInfoRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeSkillDownloadInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSkillDownloadInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSkillDownloadInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTagRetentionExecution(self, request):
         r"""查询版本保留执行记录
 
@@ -2135,6 +2250,98 @@ class TcrClient(AbstractClient):
             body = self.call("DuplicateImagePersonal", params, headers=headers)
             response = json.loads(body)
             model = models.DuplicateImagePersonalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListAIModelVersions(self, request):
+        r"""查询指定模型仓库的所有版本列表。调用 Harbor v2 API 获取 artifact 列表，从 extra_attrs 提取模型元数据（框架、任务类型、精度等），从 tags 判断是否为推荐版本。
+
+        :param request: Request instance for ListAIModelVersions.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ListAIModelVersionsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ListAIModelVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAIModelVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAIModelVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListAIModels(self, request):
+        r"""查询指定实例下的 AI 模型列表。可按 namespace 和仓库名过滤。每条记录代表一个模型仓库，返回最新版本信息。
+
+        :param request: Request instance for ListAIModels.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ListAIModelsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ListAIModelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAIModels", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAIModelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListSkillVersions(self, request):
+        r"""查询指定 Skill 的版本历史列表
+
+        :param request: Request instance for ListSkillVersions.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ListSkillVersionsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ListSkillVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListSkillVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListSkillVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListSkills(self, request):
+        r"""查询指定实例下的 AI Skill 列表。
+
+        :param request: Request instance for ListSkills.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ListSkillsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ListSkillsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListSkills", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListSkillsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -2875,21 +2875,21 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SrcDatabaseType: 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
+        :param _SrcDatabaseType: <p>源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)tdsqlmysql,keewidb,tdstore</p><p>枚举值：</p><ul><li>mysql： MySQL数据库</li></ul>
         :type SrcDatabaseType: str
-        :param _DstDatabaseType: 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
+        :param _DstDatabaseType: <p>目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)tdsqlmysql,keewidb,tdstore,tendis</p><p>枚举值：</p><ul><li>mysql： MySQL数据库</li></ul>
         :type DstDatabaseType: str
-        :param _SrcRegion: 源实例地域，如：ap-guangzhou
+        :param _SrcRegion: <p>源实例地域，如：ap-guangzhou</p>
         :type SrcRegion: str
-        :param _DstRegion: 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
+        :param _DstRegion: <p>目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。</p>
         :type DstRegion: str
-        :param _InstanceClass: 实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考[计费概述](https://cloud.tencent.com/document/product/571/18736)
+        :param _InstanceClass: <p>实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考<a href="https://cloud.tencent.com/document/product/571/18736">计费概述</a></p>
         :type InstanceClass: str
-        :param _Count: 购买数量，范围为[1,15]，默认为1
+        :param _Count: <p>购买数量，范围为[1,15]，默认为1</p>
         :type Count: int
-        :param _JobName: 迁移服务名称，最大长度128
+        :param _JobName: <p>迁移服务名称，最大长度128</p>
         :type JobName: str
-        :param _Tags: 标签信息
+        :param _Tags: <p>标签信息</p>
         :type Tags: list of TagItem
         """
         self._SrcDatabaseType = None
@@ -2903,7 +2903,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
-        r"""源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
+        r"""<p>源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)tdsqlmysql,keewidb,tdstore</p><p>枚举值：</p><ul><li>mysql： MySQL数据库</li></ul>
         :rtype: str
         """
         return self._SrcDatabaseType
@@ -2914,7 +2914,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
-        r"""目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
+        r"""<p>目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)tdsqlmysql,keewidb,tdstore,tendis</p><p>枚举值：</p><ul><li>mysql： MySQL数据库</li></ul>
         :rtype: str
         """
         return self._DstDatabaseType
@@ -2925,7 +2925,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def SrcRegion(self):
-        r"""源实例地域，如：ap-guangzhou
+        r"""<p>源实例地域，如：ap-guangzhou</p>
         :rtype: str
         """
         return self._SrcRegion
@@ -2936,7 +2936,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def DstRegion(self):
-        r"""目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
+        r"""<p>目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。</p>
         :rtype: str
         """
         return self._DstRegion
@@ -2947,7 +2947,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def InstanceClass(self):
-        r"""实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考[计费概述](https://cloud.tencent.com/document/product/571/18736)
+        r"""<p>实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考<a href="https://cloud.tencent.com/document/product/571/18736">计费概述</a></p>
         :rtype: str
         """
         return self._InstanceClass
@@ -2958,7 +2958,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def Count(self):
-        r"""购买数量，范围为[1,15]，默认为1
+        r"""<p>购买数量，范围为[1,15]，默认为1</p>
         :rtype: int
         """
         return self._Count
@@ -2969,7 +2969,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def JobName(self):
-        r"""迁移服务名称，最大长度128
+        r"""<p>迁移服务名称，最大长度128</p>
         :rtype: str
         """
         return self._JobName
@@ -2980,7 +2980,7 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签信息
+        r"""<p>标签信息</p>
         :rtype: list of TagItem
         """
         return self._Tags
@@ -3021,7 +3021,7 @@ class CreateMigrationServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobIds: 下单成功随机生成的迁移任务id列表，形如：dts-c1f6rs21
+        :param _JobIds: <p>下单成功随机生成的迁移任务id列表，形如：dts-c1f6rs21</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3032,7 +3032,7 @@ class CreateMigrationServiceResponse(AbstractModel):
 
     @property
     def JobIds(self):
-        r"""下单成功随机生成的迁移任务id列表，形如：dts-c1f6rs21
+        r"""<p>下单成功随机生成的迁移任务id列表，形如：dts-c1f6rs21</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

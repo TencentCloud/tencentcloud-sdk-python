@@ -2153,6 +2153,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type FullReplications: int
         :param _InstanceMode: <p>实例模式，normal：标准型；enhanced:加强型</p>
         :type InstanceMode: str
+        :param _SecurityGroupIds: <p>安全组id列表</p>
+        :type SecurityGroupIds: list of str
         """
         self._Zone = None
         self._VpcId = None
@@ -2174,6 +2176,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._Zones = None
         self._FullReplications = None
         self._InstanceMode = None
+        self._SecurityGroupIds = None
 
     @property
     def Zone(self):
@@ -2395,6 +2398,17 @@ class CreateCloneInstanceRequest(AbstractModel):
     def InstanceMode(self, InstanceMode):
         self._InstanceMode = InstanceMode
 
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>安全组id列表</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2422,6 +2436,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._Zones = params.get("Zones")
         self._FullReplications = params.get("FullReplications")
         self._InstanceMode = params.get("InstanceMode")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2561,6 +2576,14 @@ class CreateDBInstancesRequest(AbstractModel):
         :type SQLMode: str
         :param _AutoScaleConfig: <p>svls实例的ccu变配配置</p>
         :type AutoScaleConfig: :class:`tencentcloud.tdmysql.v20211122.models.AutoScalingConfig`
+        :param _SecurityGroupIds: <p>绑定安全组列表</p>
+        :type SecurityGroupIds: list of str
+        :param _UserName: <p>root用户名,当前版本默认为dbaadmin，传值也会重置为dbaadmin</p>
+        :type UserName: str
+        :param _Password: <p>dbaadmin密码</p>
+        :type Password: str
+        :param _EncryptionEnable: <p>是否开启透明加密，0：不开启，1：开启</p>
+        :type EncryptionEnable: int
         """
         self._Zone = None
         self._VpcId = None
@@ -2592,6 +2615,10 @@ class CreateDBInstancesRequest(AbstractModel):
         self._TemplateId = None
         self._SQLMode = None
         self._AutoScaleConfig = None
+        self._SecurityGroupIds = None
+        self._UserName = None
+        self._Password = None
+        self._EncryptionEnable = None
 
     @property
     def Zone(self):
@@ -2923,6 +2950,50 @@ class CreateDBInstancesRequest(AbstractModel):
     def AutoScaleConfig(self, AutoScaleConfig):
         self._AutoScaleConfig = AutoScaleConfig
 
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>绑定安全组列表</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def UserName(self):
+        r"""<p>root用户名,当前版本默认为dbaadmin，传值也会重置为dbaadmin</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""<p>dbaadmin密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptionEnable(self):
+        r"""<p>是否开启透明加密，0：不开启，1：开启</p>
+        :rtype: int
+        """
+        return self._EncryptionEnable
+
+    @EncryptionEnable.setter
+    def EncryptionEnable(self, EncryptionEnable):
+        self._EncryptionEnable = EncryptionEnable
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -2967,6 +3038,10 @@ class CreateDBInstancesRequest(AbstractModel):
         if params.get("AutoScaleConfig") is not None:
             self._AutoScaleConfig = AutoScalingConfig()
             self._AutoScaleConfig._deserialize(params.get("AutoScaleConfig"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._EncryptionEnable = params.get("EncryptionEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3903,6 +3978,10 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         :type AnalysisInstanceInfo: :class:`tencentcloud.tdmysql.v20211122.models.AnalysisInstanceInfo`
         :param _MaintenanceWindow: <p>维护窗口配置</p>
         :type MaintenanceWindow: :class:`tencentcloud.tdmysql.v20211122.models.MaintenanceWindowInfo`
+        :param _EncryptionEnable: <p>是否开启透明加密，0：未开启；1：已开启</p>
+        :type EncryptionEnable: int
+        :param _EncryptionKmsRegion: <p>真实使用的kms地域，用于后续调用kms服务</p>
+        :type EncryptionKmsRegion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3965,6 +4044,8 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._AnalysisRelationInfos = None
         self._AnalysisInstanceInfo = None
         self._MaintenanceWindow = None
+        self._EncryptionEnable = None
+        self._EncryptionKmsRegion = None
         self._RequestId = None
 
     @property
@@ -4622,6 +4703,28 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._MaintenanceWindow = MaintenanceWindow
 
     @property
+    def EncryptionEnable(self):
+        r"""<p>是否开启透明加密，0：未开启；1：已开启</p>
+        :rtype: int
+        """
+        return self._EncryptionEnable
+
+    @EncryptionEnable.setter
+    def EncryptionEnable(self, EncryptionEnable):
+        self._EncryptionEnable = EncryptionEnable
+
+    @property
+    def EncryptionKmsRegion(self):
+        r"""<p>真实使用的kms地域，用于后续调用kms服务</p>
+        :rtype: str
+        """
+        return self._EncryptionKmsRegion
+
+    @EncryptionKmsRegion.setter
+    def EncryptionKmsRegion(self, EncryptionKmsRegion):
+        self._EncryptionKmsRegion = EncryptionKmsRegion
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4719,6 +4822,8 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         if params.get("MaintenanceWindow") is not None:
             self._MaintenanceWindow = MaintenanceWindowInfo()
             self._MaintenanceWindow._deserialize(params.get("MaintenanceWindow"))
+        self._EncryptionEnable = params.get("EncryptionEnable")
+        self._EncryptionKmsRegion = params.get("EncryptionKmsRegion")
         self._RequestId = params.get("RequestId")
 
 
@@ -4729,20 +4834,23 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤参数
+        :param _Filters: <p>过滤参数</p>
         :type Filters: list of InstanceFilter
-        :param _Limit: 最大返回个数，默认为20，上限为100
+        :param _Limit: <p>最大返回个数，默认为20，上限为100</p>
         :type Limit: int
-        :param _Offset: 偏移量，取Limit整数倍
+        :param _Offset: <p>偏移量，取Limit整数倍</p>
         :type Offset: int
+        :param _EngineType: <p>指定查询引擎类型</p><p>枚举值：</p><ul><li>libra： 列存引擎</li></ul>
+        :type EngineType: str
         """
         self._Filters = None
         self._Limit = None
         self._Offset = None
+        self._EngineType = None
 
     @property
     def Filters(self):
-        r"""过滤参数
+        r"""<p>过滤参数</p>
         :rtype: list of InstanceFilter
         """
         return self._Filters
@@ -4753,7 +4861,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""最大返回个数，默认为20，上限为100
+        r"""<p>最大返回个数，默认为20，上限为100</p>
         :rtype: int
         """
         return self._Limit
@@ -4764,7 +4872,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，取Limit整数倍
+        r"""<p>偏移量，取Limit整数倍</p>
         :rtype: int
         """
         return self._Offset
@@ -4772,6 +4880,17 @@ class DescribeDBInstancesRequest(AbstractModel):
     @Offset.setter
     def Offset(self, Offset):
         self._Offset = Offset
+
+    @property
+    def EngineType(self):
+        r"""<p>指定查询引擎类型</p><p>枚举值：</p><ul><li>libra： 列存引擎</li></ul>
+        :rtype: str
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
 
 
     def _deserialize(self, params):
@@ -4783,6 +4902,7 @@ class DescribeDBInstancesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4800,9 +4920,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Instances: 返回实例列表信息
+        :param _Instances: <p>返回实例列表信息</p>
         :type Instances: list of InstanceInfo
-        :param _TotalCount: 满足条件总数量
+        :param _TotalCount: <p>满足条件总数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4813,7 +4933,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        r"""返回实例列表信息
+        r"""<p>返回实例列表信息</p>
         :rtype: list of InstanceInfo
         """
         return self._Instances
@@ -4824,7 +4944,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""满足条件总数量
+        r"""<p>满足条件总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -8044,6 +8164,8 @@ class InstanceInfo(AbstractModel):
         :type AnalysisMode: str
         :param _AnalysisRelationInfos: <p>分析引擎关系信息</p>
         :type AnalysisRelationInfos: list of AnalysisRelationInfo
+        :param _AnalysisInstanceInfo: <p>分析引擎实例信息</p>
+        :type AnalysisInstanceInfo: :class:`tencentcloud.tdmysql.v20211122.models.AnalysisInstanceInfo`
         """
         self._ComputeNodeNum = None
         self._Zone = None
@@ -8107,6 +8229,7 @@ class InstanceInfo(AbstractModel):
         self._AutoScaleConfig = None
         self._AnalysisMode = None
         self._AnalysisRelationInfos = None
+        self._AnalysisInstanceInfo = None
 
     @property
     def ComputeNodeNum(self):
@@ -8866,6 +8989,17 @@ class InstanceInfo(AbstractModel):
     def AnalysisRelationInfos(self, AnalysisRelationInfos):
         self._AnalysisRelationInfos = AnalysisRelationInfos
 
+    @property
+    def AnalysisInstanceInfo(self):
+        r"""<p>分析引擎实例信息</p>
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.AnalysisInstanceInfo`
+        """
+        return self._AnalysisInstanceInfo
+
+    @AnalysisInstanceInfo.setter
+    def AnalysisInstanceInfo(self, AnalysisInstanceInfo):
+        self._AnalysisInstanceInfo = AnalysisInstanceInfo
+
 
     def _deserialize(self, params):
         self._ComputeNodeNum = params.get("ComputeNodeNum")
@@ -8952,6 +9086,9 @@ class InstanceInfo(AbstractModel):
                 obj = AnalysisRelationInfo()
                 obj._deserialize(item)
                 self._AnalysisRelationInfos.append(obj)
+        if params.get("AnalysisInstanceInfo") is not None:
+            self._AnalysisInstanceInfo = AnalysisInstanceInfo()
+            self._AnalysisInstanceInfo._deserialize(params.get("AnalysisInstanceInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -25,24 +25,6 @@ class IssClient(AbstractClient):
     _endpoint = 'iss.tencentcloudapi.com'
     _service = 'iss'
 
-    async def AddAITask(
-            self,
-            request: models.AddAITaskRequest,
-            opts: Dict = None,
-    ) -> models.AddAITaskResponse:
-        """
-        添加AI任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "AddAITask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.AddAITaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def AddOrganization(
             self,
             request: models.AddOrganizationRequest,
@@ -370,24 +352,6 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DeleteAITask(
-            self,
-            request: models.DeleteAITaskRequest,
-            opts: Dict = None,
-    ) -> models.DeleteAITaskResponse:
-        """
-        删除AI任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteAITask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteAITaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteDomain(
             self,
             request: models.DeleteDomainRequest,
@@ -563,42 +527,6 @@ class IssClient(AbstractClient):
         kwargs["action"] = "DeleteUserDevice"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteUserDeviceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeAITask(
-            self,
-            request: models.DescribeAITaskRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAITaskResponse:
-        """
-        获取AI任务详情
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAITask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAITaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeAITaskResult(
-            self,
-            request: models.DescribeAITaskResultRequest,
-            opts: Dict = None,
-    ) -> models.DescribeAITaskResultResponse:
-        """
-        获取AI任务识别结果
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeAITaskResult"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeAITaskResultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1073,24 +1001,6 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ListAITasks(
-            self,
-            request: models.ListAITasksRequest,
-            opts: Dict = None,
-    ) -> models.ListAITasksResponse:
-        """
-        获取AI任务列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ListAITasks"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ListAITasksResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ListDeviceSnapshots(
             self,
             request: models.ListDeviceSnapshotsRequest,
@@ -1464,42 +1374,6 @@ class IssClient(AbstractClient):
         kwargs["action"] = "SetForbidPlayChannels"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetForbidPlayChannelsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def UpdateAITask(
-            self,
-            request: models.UpdateAITaskRequest,
-            opts: Dict = None,
-    ) -> models.UpdateAITaskResponse:
-        """
-        更新AI任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UpdateAITask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UpdateAITaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def UpdateAITaskStatus(
-            self,
-            request: models.UpdateAITaskStatusRequest,
-            opts: Dict = None,
-    ) -> models.UpdateAITaskStatusResponse:
-        """
-        更新 AI 任务状态
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UpdateAITaskStatus"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UpdateAITaskStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

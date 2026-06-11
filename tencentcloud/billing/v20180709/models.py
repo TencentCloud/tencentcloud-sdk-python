@@ -27256,6 +27256,321 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOrgMemberAccountBalanceData(AbstractModel):
+    r"""DescribeOrgMemberAccountBalanceData
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: <p>成员账号Uin</p>
+        :type MemberUin: str
+        :param _MemberName: <p>成员名称</p>
+        :type MemberName: str
+        :param _IsCreditAccount: <p>是否为信用账户</p>
+        :type IsCreditAccount: bool
+        :param _RealBalance: <p>当前真实可用余额</p><p>单位：分</p>
+        :type RealBalance: float
+        :param _CashAccountBalance: <p>现金账户余额</p><p>单位：分</p>
+        :type CashAccountBalance: float
+        :param _CreditAmount: <p>信用额度</p><p>单位：分</p><p>信用额度 = 基础信用额度 + 临时信用额度</p>
+        :type CreditAmount: float
+        :param _TempCredit: <p>临时信用额度</p><p>单位：分</p>
+        :type TempCredit: float
+        :param _BasicCreditAmount: <p>基础信用额度</p><p>单位：分</p>
+        :type BasicCreditAmount: float
+        :param _OweAmount: <p>欠费金额</p><p>单位：分</p>
+        :type OweAmount: float
+        """
+        self._MemberUin = None
+        self._MemberName = None
+        self._IsCreditAccount = None
+        self._RealBalance = None
+        self._CashAccountBalance = None
+        self._CreditAmount = None
+        self._TempCredit = None
+        self._BasicCreditAmount = None
+        self._OweAmount = None
+
+    @property
+    def MemberUin(self):
+        r"""<p>成员账号Uin</p>
+        :rtype: str
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def MemberName(self):
+        r"""<p>成员名称</p>
+        :rtype: str
+        """
+        return self._MemberName
+
+    @MemberName.setter
+    def MemberName(self, MemberName):
+        self._MemberName = MemberName
+
+    @property
+    def IsCreditAccount(self):
+        r"""<p>是否为信用账户</p>
+        :rtype: bool
+        """
+        return self._IsCreditAccount
+
+    @IsCreditAccount.setter
+    def IsCreditAccount(self, IsCreditAccount):
+        self._IsCreditAccount = IsCreditAccount
+
+    @property
+    def RealBalance(self):
+        r"""<p>当前真实可用余额</p><p>单位：分</p>
+        :rtype: float
+        """
+        return self._RealBalance
+
+    @RealBalance.setter
+    def RealBalance(self, RealBalance):
+        self._RealBalance = RealBalance
+
+    @property
+    def CashAccountBalance(self):
+        r"""<p>现金账户余额</p><p>单位：分</p>
+        :rtype: float
+        """
+        return self._CashAccountBalance
+
+    @CashAccountBalance.setter
+    def CashAccountBalance(self, CashAccountBalance):
+        self._CashAccountBalance = CashAccountBalance
+
+    @property
+    def CreditAmount(self):
+        r"""<p>信用额度</p><p>单位：分</p><p>信用额度 = 基础信用额度 + 临时信用额度</p>
+        :rtype: float
+        """
+        return self._CreditAmount
+
+    @CreditAmount.setter
+    def CreditAmount(self, CreditAmount):
+        self._CreditAmount = CreditAmount
+
+    @property
+    def TempCredit(self):
+        r"""<p>临时信用额度</p><p>单位：分</p>
+        :rtype: float
+        """
+        return self._TempCredit
+
+    @TempCredit.setter
+    def TempCredit(self, TempCredit):
+        self._TempCredit = TempCredit
+
+    @property
+    def BasicCreditAmount(self):
+        r"""<p>基础信用额度</p><p>单位：分</p>
+        :rtype: float
+        """
+        return self._BasicCreditAmount
+
+    @BasicCreditAmount.setter
+    def BasicCreditAmount(self, BasicCreditAmount):
+        self._BasicCreditAmount = BasicCreditAmount
+
+    @property
+    def OweAmount(self):
+        r"""<p>欠费金额</p><p>单位：分</p>
+        :rtype: float
+        """
+        return self._OweAmount
+
+    @OweAmount.setter
+    def OweAmount(self, OweAmount):
+        self._OweAmount = OweAmount
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        self._MemberName = params.get("MemberName")
+        self._IsCreditAccount = params.get("IsCreditAccount")
+        self._RealBalance = params.get("RealBalance")
+        self._CashAccountBalance = params.get("CashAccountBalance")
+        self._CreditAmount = params.get("CreditAmount")
+        self._TempCredit = params.get("TempCredit")
+        self._BasicCreditAmount = params.get("BasicCreditAmount")
+        self._OweAmount = params.get("OweAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrgMemberAccountBalanceRequest(AbstractModel):
+    r"""DescribeOrgMemberAccountBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: <p>页码</p><p>默认值：1</p><p>取值范围≥1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>单页大小</p><p>取值范围：[1, 10]</p><p>默认值：10</p>
+        :type PageSize: int
+        :param _MemberUins: <p>成员uin列表</p><p>入参限制：元素必须为纯数字字符串，并且元素个数不能大于10</p><p>为空时返回当前组织内所有成员的账户余额信息，不为空时返回指定成员的账户余额信息</p>
+        :type MemberUins: list of str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._MemberUins = None
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码</p><p>默认值：1</p><p>取值范围≥1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>单页大小</p><p>取值范围：[1, 10]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def MemberUins(self):
+        r"""<p>成员uin列表</p><p>入参限制：元素必须为纯数字字符串，并且元素个数不能大于10</p><p>为空时返回当前组织内所有成员的账户余额信息，不为空时返回指定成员的账户余额信息</p>
+        :rtype: list of str
+        """
+        return self._MemberUins
+
+    @MemberUins.setter
+    def MemberUins(self, MemberUins):
+        self._MemberUins = MemberUins
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._MemberUins = params.get("MemberUins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrgMemberAccountBalanceResponse(AbstractModel):
+    r"""DescribeOrgMemberAccountBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>成员账户余额列表</p>
+        :type Data: list of DescribeOrgMemberAccountBalanceData
+        :param _TotalCount: <p>总记录数</p>
+        :type TotalCount: int
+        :param _PageSize: <p>当前页实际返回数量</p>
+        :type PageSize: int
+        :param _PageNumber: <p>当前页码</p>
+        :type PageNumber: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>成员账户余额列表</p>
+        :rtype: list of DescribeOrgMemberAccountBalanceData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PageSize(self):
+        r"""<p>当前页实际返回数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""<p>当前页码</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DescribeOrgMemberAccountBalanceData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRenewInstancesRequest(AbstractModel):
     r"""DescribeRenewInstances请求参数结构体
 

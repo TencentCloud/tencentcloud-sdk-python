@@ -1528,44 +1528,62 @@ class AppAsset(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 应用资产id
+        :param _Id: <p>应用资产id</p>
         :type Id: int
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _Name: 资产名称
+        :param _Name: <p>资产名称</p>
         :type Name: str
-        :param _DeviceId: 应用服务器id
+        :param _DeviceId: <p>应用服务器id</p>
         :type DeviceId: int
-        :param _DeviceAccountId: 应用服务器账号id
+        :param _DeviceAccountId: <p>应用服务器账号id</p>
         :type DeviceAccountId: int
-        :param _Kind: 应用资产类型。1-web应用
+        :param _Kind: <p>应用资产类型。1-web应用</p>
         :type Kind: int
-        :param _ClientAppPath: 客户端工具路径
+        :param _ClientAppPath: <p>客户端工具路径</p>
         :type ClientAppPath: str
-        :param _ClientAppKind: 客户端工具类型
+        :param _ClientAppKind: <p>客户端工具类型</p>
         :type ClientAppKind: str
-        :param _Url: 应用资产url
+        :param _Url: <p>应用资产url</p>
         :type Url: str
-        :param _BindStatus: 托管状态。0-未托管，1-已托管
+        :param _BindStatus: <p>托管状态</p><p>枚举值：</p><ul><li>0： 未托管</li><li>1： 已托管</li></ul>
         :type BindStatus: int
-        :param _DeviceInstanceId: 应用服务器实例id
+        :param _DeviceInstanceId: <p>应用服务器实例id</p>
         :type DeviceInstanceId: str
-        :param _DeviceName: 应用服务器名称
+        :param _DeviceName: <p>应用服务器名称</p>
         :type DeviceName: str
-        :param _DeviceAccountName: 应用服务器账号名称
+        :param _DeviceAccountName: <p>应用服务器账号名称</p>
         :type DeviceAccountName: str
-        :param _ResourceId: 堡垒机实例id
+        :param _ResourceId: <p>堡垒机实例id</p>
         :type ResourceId: str
-        :param _Resource: 堡垒机实例信息
+        :param _Resource: <p>堡垒机实例信息</p>
         :type Resource: :class:`tencentcloud.bh.v20230418.models.Resource`
-        :param _DomainId: 网络域id
+        :param _DomainId: <p>网络域id</p>
         :type DomainId: str
-        :param _DomainName: 网络域名称
+        :param _DomainName: <p>网络域名称</p>
         :type DomainName: str
-        :param _GroupSet: 资产组信息
+        :param _GroupSet: <p>资产组信息</p>
         :type GroupSet: list of Group
-        :param _Department: 资产所属部门
+        :param _Department: <p>资产所属部门</p>
         :type Department: :class:`tencentcloud.bh.v20230418.models.Department`
+        :param _AccountCount: <p>账号数量</p>
+        :type AccountCount: int
+        :param _AgentInputType: <p>代填类型</p><p>枚举值：</p><ul><li>0： 不支持代填</li><li>1： 元素定位代填</li></ul>
+        :type AgentInputType: int
+        :param _AgentInputSubmit: <p>是否自动提交</p><p>枚举值：</p><ul><li>0： 不自动提交</li><li>1： 自动提交</li></ul>
+        :type AgentInputSubmit: int
+        :param _UserNameType: <p>用户名输入框选择器类型</p><p>枚举值：</p><ul><li>id： html标签id属性</li><li>name： html标签name属性</li><li>selector： css选择器</li><li>xpath： xpath</li></ul>
+        :type UserNameType: str
+        :param _UserNameValue: <p>用户名输入框选择器属性</p>
+        :type UserNameValue: str
+        :param _PasswordType: <p>密码输入框选择器类型</p><p>枚举值：</p><ul><li>id： html标签id属性</li><li>name： html标签name属性</li><li>selector： css选择器</li><li>xpath： xpath</li></ul>
+        :type PasswordType: str
+        :param _PasswordValue: <p>密码输入框选择器属性</p>
+        :type PasswordValue: str
+        :param _SubmitType: <p>提交按钮选择器类型，为空表示不支持自动提交</p><p>枚举值：</p><ul><li>id： html标签id属性</li><li>name： html标签name属性</li><li>selector： css选择器</li><li>xpath： xpath</li></ul>
+        :type SubmitType: str
+        :param _SubmitValue: <p>提交按钮选择器属性值</p>
+        :type SubmitValue: str
         """
         self._Id = None
         self._InstanceId = None
@@ -1586,10 +1604,19 @@ class AppAsset(AbstractModel):
         self._DomainName = None
         self._GroupSet = None
         self._Department = None
+        self._AccountCount = None
+        self._AgentInputType = None
+        self._AgentInputSubmit = None
+        self._UserNameType = None
+        self._UserNameValue = None
+        self._PasswordType = None
+        self._PasswordValue = None
+        self._SubmitType = None
+        self._SubmitValue = None
 
     @property
     def Id(self):
-        r"""应用资产id
+        r"""<p>应用资产id</p>
         :rtype: int
         """
         return self._Id
@@ -1600,7 +1627,7 @@ class AppAsset(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1611,7 +1638,7 @@ class AppAsset(AbstractModel):
 
     @property
     def Name(self):
-        r"""资产名称
+        r"""<p>资产名称</p>
         :rtype: str
         """
         return self._Name
@@ -1622,7 +1649,7 @@ class AppAsset(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""应用服务器id
+        r"""<p>应用服务器id</p>
         :rtype: int
         """
         return self._DeviceId
@@ -1633,7 +1660,7 @@ class AppAsset(AbstractModel):
 
     @property
     def DeviceAccountId(self):
-        r"""应用服务器账号id
+        r"""<p>应用服务器账号id</p>
         :rtype: int
         """
         return self._DeviceAccountId
@@ -1644,7 +1671,7 @@ class AppAsset(AbstractModel):
 
     @property
     def Kind(self):
-        r"""应用资产类型。1-web应用
+        r"""<p>应用资产类型。1-web应用</p>
         :rtype: int
         """
         return self._Kind
@@ -1655,7 +1682,7 @@ class AppAsset(AbstractModel):
 
     @property
     def ClientAppPath(self):
-        r"""客户端工具路径
+        r"""<p>客户端工具路径</p>
         :rtype: str
         """
         return self._ClientAppPath
@@ -1666,7 +1693,7 @@ class AppAsset(AbstractModel):
 
     @property
     def ClientAppKind(self):
-        r"""客户端工具类型
+        r"""<p>客户端工具类型</p>
         :rtype: str
         """
         return self._ClientAppKind
@@ -1677,7 +1704,7 @@ class AppAsset(AbstractModel):
 
     @property
     def Url(self):
-        r"""应用资产url
+        r"""<p>应用资产url</p>
         :rtype: str
         """
         return self._Url
@@ -1688,7 +1715,7 @@ class AppAsset(AbstractModel):
 
     @property
     def BindStatus(self):
-        r"""托管状态。0-未托管，1-已托管
+        r"""<p>托管状态</p><p>枚举值：</p><ul><li>0： 未托管</li><li>1： 已托管</li></ul>
         :rtype: int
         """
         return self._BindStatus
@@ -1699,7 +1726,7 @@ class AppAsset(AbstractModel):
 
     @property
     def DeviceInstanceId(self):
-        r"""应用服务器实例id
+        r"""<p>应用服务器实例id</p>
         :rtype: str
         """
         return self._DeviceInstanceId
@@ -1710,7 +1737,7 @@ class AppAsset(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""应用服务器名称
+        r"""<p>应用服务器名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -1721,7 +1748,7 @@ class AppAsset(AbstractModel):
 
     @property
     def DeviceAccountName(self):
-        r"""应用服务器账号名称
+        r"""<p>应用服务器账号名称</p>
         :rtype: str
         """
         return self._DeviceAccountName
@@ -1732,7 +1759,7 @@ class AppAsset(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""堡垒机实例id
+        r"""<p>堡垒机实例id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -1743,7 +1770,7 @@ class AppAsset(AbstractModel):
 
     @property
     def Resource(self):
-        r"""堡垒机实例信息
+        r"""<p>堡垒机实例信息</p>
         :rtype: :class:`tencentcloud.bh.v20230418.models.Resource`
         """
         return self._Resource
@@ -1754,7 +1781,7 @@ class AppAsset(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""网络域id
+        r"""<p>网络域id</p>
         :rtype: str
         """
         return self._DomainId
@@ -1765,7 +1792,7 @@ class AppAsset(AbstractModel):
 
     @property
     def DomainName(self):
-        r"""网络域名称
+        r"""<p>网络域名称</p>
         :rtype: str
         """
         return self._DomainName
@@ -1776,7 +1803,7 @@ class AppAsset(AbstractModel):
 
     @property
     def GroupSet(self):
-        r"""资产组信息
+        r"""<p>资产组信息</p>
         :rtype: list of Group
         """
         return self._GroupSet
@@ -1787,7 +1814,7 @@ class AppAsset(AbstractModel):
 
     @property
     def Department(self):
-        r"""资产所属部门
+        r"""<p>资产所属部门</p>
         :rtype: :class:`tencentcloud.bh.v20230418.models.Department`
         """
         return self._Department
@@ -1795,6 +1822,105 @@ class AppAsset(AbstractModel):
     @Department.setter
     def Department(self, Department):
         self._Department = Department
+
+    @property
+    def AccountCount(self):
+        r"""<p>账号数量</p>
+        :rtype: int
+        """
+        return self._AccountCount
+
+    @AccountCount.setter
+    def AccountCount(self, AccountCount):
+        self._AccountCount = AccountCount
+
+    @property
+    def AgentInputType(self):
+        r"""<p>代填类型</p><p>枚举值：</p><ul><li>0： 不支持代填</li><li>1： 元素定位代填</li></ul>
+        :rtype: int
+        """
+        return self._AgentInputType
+
+    @AgentInputType.setter
+    def AgentInputType(self, AgentInputType):
+        self._AgentInputType = AgentInputType
+
+    @property
+    def AgentInputSubmit(self):
+        r"""<p>是否自动提交</p><p>枚举值：</p><ul><li>0： 不自动提交</li><li>1： 自动提交</li></ul>
+        :rtype: int
+        """
+        return self._AgentInputSubmit
+
+    @AgentInputSubmit.setter
+    def AgentInputSubmit(self, AgentInputSubmit):
+        self._AgentInputSubmit = AgentInputSubmit
+
+    @property
+    def UserNameType(self):
+        r"""<p>用户名输入框选择器类型</p><p>枚举值：</p><ul><li>id： html标签id属性</li><li>name： html标签name属性</li><li>selector： css选择器</li><li>xpath： xpath</li></ul>
+        :rtype: str
+        """
+        return self._UserNameType
+
+    @UserNameType.setter
+    def UserNameType(self, UserNameType):
+        self._UserNameType = UserNameType
+
+    @property
+    def UserNameValue(self):
+        r"""<p>用户名输入框选择器属性</p>
+        :rtype: str
+        """
+        return self._UserNameValue
+
+    @UserNameValue.setter
+    def UserNameValue(self, UserNameValue):
+        self._UserNameValue = UserNameValue
+
+    @property
+    def PasswordType(self):
+        r"""<p>密码输入框选择器类型</p><p>枚举值：</p><ul><li>id： html标签id属性</li><li>name： html标签name属性</li><li>selector： css选择器</li><li>xpath： xpath</li></ul>
+        :rtype: str
+        """
+        return self._PasswordType
+
+    @PasswordType.setter
+    def PasswordType(self, PasswordType):
+        self._PasswordType = PasswordType
+
+    @property
+    def PasswordValue(self):
+        r"""<p>密码输入框选择器属性</p>
+        :rtype: str
+        """
+        return self._PasswordValue
+
+    @PasswordValue.setter
+    def PasswordValue(self, PasswordValue):
+        self._PasswordValue = PasswordValue
+
+    @property
+    def SubmitType(self):
+        r"""<p>提交按钮选择器类型，为空表示不支持自动提交</p><p>枚举值：</p><ul><li>id： html标签id属性</li><li>name： html标签name属性</li><li>selector： css选择器</li><li>xpath： xpath</li></ul>
+        :rtype: str
+        """
+        return self._SubmitType
+
+    @SubmitType.setter
+    def SubmitType(self, SubmitType):
+        self._SubmitType = SubmitType
+
+    @property
+    def SubmitValue(self):
+        r"""<p>提交按钮选择器属性值</p>
+        :rtype: str
+        """
+        return self._SubmitValue
+
+    @SubmitValue.setter
+    def SubmitValue(self, SubmitValue):
+        self._SubmitValue = SubmitValue
 
 
     def _deserialize(self, params):
@@ -1826,6 +1952,15 @@ class AppAsset(AbstractModel):
         if params.get("Department") is not None:
             self._Department = Department()
             self._Department._deserialize(params.get("Department"))
+        self._AccountCount = params.get("AccountCount")
+        self._AgentInputType = params.get("AgentInputType")
+        self._AgentInputSubmit = params.get("AgentInputSubmit")
+        self._UserNameType = params.get("UserNameType")
+        self._UserNameValue = params.get("UserNameValue")
+        self._PasswordType = params.get("PasswordType")
+        self._PasswordValue = params.get("PasswordValue")
+        self._SubmitType = params.get("SubmitType")
+        self._SubmitValue = params.get("SubmitValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

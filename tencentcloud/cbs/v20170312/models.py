@@ -659,6 +659,40 @@ class AttachDisksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AttachRemoteDisksRequest(AbstractModel):
+    r"""AttachRemoteDisks请求参数结构体
+
+    """
+
+
+class AttachRemoteDisksResponse(AbstractModel):
+    r"""AttachRemoteDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AutoMountConfiguration(AbstractModel):
     r"""描述了新购云硬盘时自动将云硬盘初始化并挂载至云服务器内部的配置。
 
@@ -2201,6 +2235,40 @@ class CreateDisksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DiskIdSet = params.get("DiskIdSet")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRemoteDisksRequest(AbstractModel):
+    r"""CreateRemoteDisks请求参数结构体
+
+    """
+
+
+class CreateRemoteDisksResponse(AbstractModel):
+    r"""CreateRemoteDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3894,6 +3962,178 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRemoteDiskConfigQuotaRequest(AbstractModel):
+    r"""DescribeRemoteDiskConfigQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤条件。支持的过滤条件如下：</p><ul><li>instance-family：按照机型族过滤。</li><li>instance-type：按照机型规格过滤。</li><li>zone：按照可用区过滤。</li><li>instance-charge-type：按照付费方式过滤。取值范围：PREPAID、POSTPAID_BY_HOUR、SPOTPAID、UNDERWRITE。</li></ul>
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。支持的过滤条件如下：</p><ul><li>instance-family：按照机型族过滤。</li><li>instance-type：按照机型规格过滤。</li><li>zone：按照可用区过滤。</li><li>instance-charge-type：按照付费方式过滤。取值范围：PREPAID、POSTPAID_BY_HOUR、SPOTPAID、UNDERWRITE。</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRemoteDiskConfigQuotaResponse(AbstractModel):
+    r"""DescribeRemoteDiskConfigQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRemoteDisksDeniedActionsRequest(AbstractModel):
+    r"""DescribeRemoteDisksDeniedActions请求参数结构体
+
+    """
+
+
+class DescribeRemoteDisksDeniedActionsResponse(AbstractModel):
+    r"""DescribeRemoteDisksDeniedActions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRemoteDisksRequest(AbstractModel):
+    r"""DescribeRemoteDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤条件。此参数不支持与 RemoteDiskIds 同时指定。</p>
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。此参数不支持与 RemoteDiskIds 同时指定。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRemoteDisksResponse(AbstractModel):
+    r"""DescribeRemoteDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSnapshotGroupsRequest(AbstractModel):
     r"""DescribeSnapshotGroups请求参数结构体
 
@@ -4456,6 +4696,40 @@ class DetachDisksRequest(AbstractModel):
 
 class DetachDisksResponse(AbstractModel):
     r"""DetachDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DetachRemoteDisksRequest(AbstractModel):
+    r"""DetachRemoteDisks请求参数结构体
+
+    """
+
+
+class DetachRemoteDisksResponse(AbstractModel):
+    r"""DetachRemoteDisks返回参数结构体
 
     """
 
@@ -6111,6 +6385,40 @@ class InitializeDisksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InquirePriceCreateRemoteDisksRequest(AbstractModel):
+    r"""InquirePriceCreateRemoteDisks请求参数结构体
+
+    """
+
+
+class InquirePriceCreateRemoteDisksResponse(AbstractModel):
+    r"""InquirePriceCreateRemoteDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class InquirePriceModifyDiskBackupQuotaRequest(AbstractModel):
     r"""InquirePriceModifyDiskBackupQuota请求参数结构体
 
@@ -6300,6 +6608,40 @@ class InquirePriceModifyDiskExtraPerformanceResponse(AbstractModel):
         if params.get("DiskPrice") is not None:
             self._DiskPrice = Price()
             self._DiskPrice._deserialize(params.get("DiskPrice"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquirePriceRenewRemoteDisksRequest(AbstractModel):
+    r"""InquirePriceRenewRemoteDisks请求参数结构体
+
+    """
+
+
+class InquirePriceRenewRemoteDisksResponse(AbstractModel):
+    r"""InquirePriceRenewRemoteDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -7402,6 +7744,40 @@ class ModifyDisksRenewFlagResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRemoteDiskAttributesRequest(AbstractModel):
+    r"""ModifyRemoteDiskAttributes请求参数结构体
+
+    """
+
+
+class ModifyRemoteDiskAttributesResponse(AbstractModel):
+    r"""ModifyRemoteDiskAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySnapshotAttributeRequest(AbstractModel):
     r"""ModifySnapshotAttribute请求参数结构体
 
@@ -8269,6 +8645,40 @@ class RenewDiskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RenewRemoteDiskRequest(AbstractModel):
+    r"""RenewRemoteDisk请求参数结构体
+
+    """
+
+
+class RenewRemoteDiskResponse(AbstractModel):
+    r"""RenewRemoteDisk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResizeDiskRequest(AbstractModel):
     r"""ResizeDisk请求参数结构体
 
@@ -8276,9 +8686,9 @@ class ResizeDiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskSize: 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+        :param _DiskSize: <p>云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘<a href="/document/product/362/2353">产品分类</a>的说明。</p>
         :type DiskSize: int
-        :param _DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。该字段仅供单块云硬盘扩容时传入。
+        :param _DiskId: <p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。该字段仅供单块云硬盘扩容时传入。</p>
         :type DiskId: str
         """
         self._DiskSize = None
@@ -8286,7 +8696,7 @@ class ResizeDiskRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+        r"""<p>云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘<a href="/document/product/362/2353">产品分类</a>的说明。</p>
         :rtype: int
         """
         return self._DiskSize
@@ -8297,7 +8707,7 @@ class ResizeDiskRequest(AbstractModel):
 
     @property
     def DiskId(self):
-        r"""云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。该字段仅供单块云硬盘扩容时传入。
+        r"""<p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。该字段仅供单块云硬盘扩容时传入。</p>
         :rtype: str
         """
         return self._DiskId
@@ -8406,71 +8816,52 @@ class Snapshot(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Placement: 快照所在的位置。
+        :param _Placement: <p>快照所在的位置。</p>
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
-        :param _CopyFromRemote: 是否为跨地域复制的快照。取值范围：
-<ul>
-    <li>true：表示为跨地域复制的快照。</li>
-    <li>false：本地域的快照。</li>
-</ul>
+        :param _CopyFromRemote: <p>是否为跨地域复制的快照。取值范围：</p><ul>    <li>true：表示为跨地域复制的快照。</li>    <li>false：本地域的快照。</li></ul>
         :type CopyFromRemote: bool
-        :param _SnapshotState: 快照的状态。取值范围：
-<ul>
-    <li>NORMAL：正常</li>
-    <li>CREATING：创建中</li>
-    <li>ROLLBACKING：回滚中</li>
-    <li>COPYING_FROM_REMOTE：跨地域复制中</li>
-    <li>CHECKING_COPIED：复制校验中</li>
-    <li>TORECYCLE：待回收</li>
-</ul>
+        :param _SnapshotState: <p>快照的状态。取值范围：</p><ul>    <li>NORMAL：正常</li>    <li>CREATING：创建中</li>    <li>ROLLBACKING：回滚中</li>    <li>COPYING_FROM_REMOTE：跨地域复制中</li>    <li>CHECKING_COPIED：复制校验中</li>    <li>TORECYCLE：待回收</li></ul>
         :type SnapshotState: str
-        :param _IsPermanent: 是否为永久快照。取值范围：
-<ul>
-    <li>true：永久快照</li>
-    <li>false：非永久快照</li>
-</ul>
+        :param _IsPermanent: <p>是否为永久快照。取值范围：</p><ul>    <li>true：永久快照</li>    <li>false：非永久快照</li></ul>
         :type IsPermanent: bool
-        :param _SnapshotName: 快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
+        :param _SnapshotName: <p>快照名称，用户自定义的快照别名。调用<a href="/document/product/362/15650">ModifySnapshotAttribute</a>可修改此字段。</p>
         :type SnapshotName: str
-        :param _DeadlineTime: 快照到期时间。如果快照为永久保留，此字段为空。
+        :param _DeadlineTime: <p>快照到期时间。如果快照为永久保留，此字段为空。</p>
         :type DeadlineTime: str
-        :param _Percent: 快照创建进度百分比，快照创建成功后此字段恒为100。
+        :param _Percent: <p>快照创建进度百分比，快照创建成功后此字段恒为100。</p>
         :type Percent: int
-        :param _Images: 快照关联的镜像列表。
+        :param _Images: <p>快照关联的镜像列表。</p>
         :type Images: list of Image
-        :param _ShareReference: 快照当前被共享数。
+        :param _ShareReference: <p>快照当前被共享数。</p>
         :type ShareReference: int
-        :param _SnapshotType: 快照类型，目前该项取值可以为`PRIVATE_SNAPSHOT`（私有快照）或者`SHARED_SNAPSHOT`（共享快照）
+        :param _SnapshotType: <p>快照类型，目前该项取值可以为<code>PRIVATE_SNAPSHOT</code>（私有快照）或者<code>SHARED_SNAPSHOT</code>（共享快照）</p>
         :type SnapshotType: str
-        :param _DiskSize: 创建此快照的云硬盘大小，单位GiB。
+        :param _DiskSize: <p>创建此快照的云硬盘大小，单位GiB。</p>
         :type DiskSize: int
-        :param _DiskId: 创建此快照的云硬盘ID。
+        :param _DiskId: <p>创建此快照的云硬盘ID。</p>
         :type DiskId: str
-        :param _CopyingToRegions: 快照正在跨地域复制的目的地域，若没有则返回`[]`。
+        :param _CopyingToRegions: <p>快照正在跨地域复制的目的地域，若没有则返回<code>[]</code>。</p>
         :type CopyingToRegions: list of str
-        :param _Encrypt: 是否为加密盘创建的快照。取值范围：
-<ul>
-    <li>true：该快照为加密盘创建的</li>
-    <li>false：非加密盘创建的快照</li>
-</ul>
+        :param _Encrypt: <p>是否为加密盘创建的快照。取值范围：</p><ul>    <li>true：该快照为加密盘创建的</li>    <li>false：非加密盘创建的快照</li></ul>
         :type Encrypt: bool
-        :param _CreateTime: 快照的创建时间。
+        :param _CreateTime: <p>快照的创建时间。</p>
         :type CreateTime: str
-        :param _ImageCount: 快照关联的镜像个数。
+        :param _ImageCount: <p>快照关联的镜像个数。</p>
         :type ImageCount: int
-        :param _DiskUsage: 创建此快照的云硬盘类型。取值范围：
-<ul>
-    <li>SYSTEM_DISK：系统盘</li>
-    <li>DATA_DISK：数据盘</li>
-</ul>
-
+        :param _DiskUsage: <p>创建此快照的云硬盘类型。取值范围：</p><ul>    <li>SYSTEM_DISK：系统盘</li>    <li>DATA_DISK：数据盘</li></ul>
         :type DiskUsage: str
-        :param _SnapshotId: 快照ID。
+        :param _SnapshotId: <p>快照ID。</p>
         :type SnapshotId: str
-        :param _TimeStartShare: 快照开始共享的时间。
+        :param _TimeStartShare: <p>快照开始共享的时间。</p>
         :type TimeStartShare: str
-        :param _Tags: 快照绑定的标签列表。
+        :param _Tags: <p>快照绑定的标签列表。</p>
         :type Tags: list of Tag
+        :param _IsLocked: <p>快照是否锁定。取值范围：</p><ul>    <li>true：已锁定</li>    <li>false：未锁定</li></ul>
+        :type IsLocked: bool
+        :param _LatestModifyTime: <p>快照记录的最新修改时间</p>
+        :type LatestModifyTime: str
+        :param _AutoSnapshotPolicyId: <p>自动快照策略ID，仅当该快照由自动快照策略方式创建时才会返回。</p>
+        :type AutoSnapshotPolicyId: str
         """
         self._Placement = None
         self._CopyFromRemote = None
@@ -8492,10 +8883,13 @@ class Snapshot(AbstractModel):
         self._SnapshotId = None
         self._TimeStartShare = None
         self._Tags = None
+        self._IsLocked = None
+        self._LatestModifyTime = None
+        self._AutoSnapshotPolicyId = None
 
     @property
     def Placement(self):
-        r"""快照所在的位置。
+        r"""<p>快照所在的位置。</p>
         :rtype: :class:`tencentcloud.cbs.v20170312.models.Placement`
         """
         return self._Placement
@@ -8506,11 +8900,7 @@ class Snapshot(AbstractModel):
 
     @property
     def CopyFromRemote(self):
-        r"""是否为跨地域复制的快照。取值范围：
-<ul>
-    <li>true：表示为跨地域复制的快照。</li>
-    <li>false：本地域的快照。</li>
-</ul>
+        r"""<p>是否为跨地域复制的快照。取值范围：</p><ul>    <li>true：表示为跨地域复制的快照。</li>    <li>false：本地域的快照。</li></ul>
         :rtype: bool
         """
         return self._CopyFromRemote
@@ -8521,15 +8911,7 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotState(self):
-        r"""快照的状态。取值范围：
-<ul>
-    <li>NORMAL：正常</li>
-    <li>CREATING：创建中</li>
-    <li>ROLLBACKING：回滚中</li>
-    <li>COPYING_FROM_REMOTE：跨地域复制中</li>
-    <li>CHECKING_COPIED：复制校验中</li>
-    <li>TORECYCLE：待回收</li>
-</ul>
+        r"""<p>快照的状态。取值范围：</p><ul>    <li>NORMAL：正常</li>    <li>CREATING：创建中</li>    <li>ROLLBACKING：回滚中</li>    <li>COPYING_FROM_REMOTE：跨地域复制中</li>    <li>CHECKING_COPIED：复制校验中</li>    <li>TORECYCLE：待回收</li></ul>
         :rtype: str
         """
         return self._SnapshotState
@@ -8540,11 +8922,7 @@ class Snapshot(AbstractModel):
 
     @property
     def IsPermanent(self):
-        r"""是否为永久快照。取值范围：
-<ul>
-    <li>true：永久快照</li>
-    <li>false：非永久快照</li>
-</ul>
+        r"""<p>是否为永久快照。取值范围：</p><ul>    <li>true：永久快照</li>    <li>false：非永久快照</li></ul>
         :rtype: bool
         """
         return self._IsPermanent
@@ -8555,7 +8933,7 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotName(self):
-        r"""快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
+        r"""<p>快照名称，用户自定义的快照别名。调用<a href="/document/product/362/15650">ModifySnapshotAttribute</a>可修改此字段。</p>
         :rtype: str
         """
         return self._SnapshotName
@@ -8566,7 +8944,7 @@ class Snapshot(AbstractModel):
 
     @property
     def DeadlineTime(self):
-        r"""快照到期时间。如果快照为永久保留，此字段为空。
+        r"""<p>快照到期时间。如果快照为永久保留，此字段为空。</p>
         :rtype: str
         """
         return self._DeadlineTime
@@ -8577,7 +8955,7 @@ class Snapshot(AbstractModel):
 
     @property
     def Percent(self):
-        r"""快照创建进度百分比，快照创建成功后此字段恒为100。
+        r"""<p>快照创建进度百分比，快照创建成功后此字段恒为100。</p>
         :rtype: int
         """
         return self._Percent
@@ -8588,7 +8966,7 @@ class Snapshot(AbstractModel):
 
     @property
     def Images(self):
-        r"""快照关联的镜像列表。
+        r"""<p>快照关联的镜像列表。</p>
         :rtype: list of Image
         """
         return self._Images
@@ -8599,7 +8977,7 @@ class Snapshot(AbstractModel):
 
     @property
     def ShareReference(self):
-        r"""快照当前被共享数。
+        r"""<p>快照当前被共享数。</p>
         :rtype: int
         """
         return self._ShareReference
@@ -8610,7 +8988,7 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotType(self):
-        r"""快照类型，目前该项取值可以为`PRIVATE_SNAPSHOT`（私有快照）或者`SHARED_SNAPSHOT`（共享快照）
+        r"""<p>快照类型，目前该项取值可以为<code>PRIVATE_SNAPSHOT</code>（私有快照）或者<code>SHARED_SNAPSHOT</code>（共享快照）</p>
         :rtype: str
         """
         return self._SnapshotType
@@ -8621,7 +8999,7 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""创建此快照的云硬盘大小，单位GiB。
+        r"""<p>创建此快照的云硬盘大小，单位GiB。</p>
         :rtype: int
         """
         return self._DiskSize
@@ -8632,7 +9010,7 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskId(self):
-        r"""创建此快照的云硬盘ID。
+        r"""<p>创建此快照的云硬盘ID。</p>
         :rtype: str
         """
         return self._DiskId
@@ -8643,7 +9021,7 @@ class Snapshot(AbstractModel):
 
     @property
     def CopyingToRegions(self):
-        r"""快照正在跨地域复制的目的地域，若没有则返回`[]`。
+        r"""<p>快照正在跨地域复制的目的地域，若没有则返回<code>[]</code>。</p>
         :rtype: list of str
         """
         return self._CopyingToRegions
@@ -8654,11 +9032,7 @@ class Snapshot(AbstractModel):
 
     @property
     def Encrypt(self):
-        r"""是否为加密盘创建的快照。取值范围：
-<ul>
-    <li>true：该快照为加密盘创建的</li>
-    <li>false：非加密盘创建的快照</li>
-</ul>
+        r"""<p>是否为加密盘创建的快照。取值范围：</p><ul>    <li>true：该快照为加密盘创建的</li>    <li>false：非加密盘创建的快照</li></ul>
         :rtype: bool
         """
         return self._Encrypt
@@ -8669,7 +9043,7 @@ class Snapshot(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""快照的创建时间。
+        r"""<p>快照的创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -8680,7 +9054,7 @@ class Snapshot(AbstractModel):
 
     @property
     def ImageCount(self):
-        r"""快照关联的镜像个数。
+        r"""<p>快照关联的镜像个数。</p>
         :rtype: int
         """
         return self._ImageCount
@@ -8691,12 +9065,7 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskUsage(self):
-        r"""创建此快照的云硬盘类型。取值范围：
-<ul>
-    <li>SYSTEM_DISK：系统盘</li>
-    <li>DATA_DISK：数据盘</li>
-</ul>
-
+        r"""<p>创建此快照的云硬盘类型。取值范围：</p><ul>    <li>SYSTEM_DISK：系统盘</li>    <li>DATA_DISK：数据盘</li></ul>
         :rtype: str
         """
         return self._DiskUsage
@@ -8707,7 +9076,7 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotId(self):
-        r"""快照ID。
+        r"""<p>快照ID。</p>
         :rtype: str
         """
         return self._SnapshotId
@@ -8718,7 +9087,7 @@ class Snapshot(AbstractModel):
 
     @property
     def TimeStartShare(self):
-        r"""快照开始共享的时间。
+        r"""<p>快照开始共享的时间。</p>
         :rtype: str
         """
         return self._TimeStartShare
@@ -8729,7 +9098,7 @@ class Snapshot(AbstractModel):
 
     @property
     def Tags(self):
-        r"""快照绑定的标签列表。
+        r"""<p>快照绑定的标签列表。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -8737,6 +9106,39 @@ class Snapshot(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def IsLocked(self):
+        r"""<p>快照是否锁定。取值范围：</p><ul>    <li>true：已锁定</li>    <li>false：未锁定</li></ul>
+        :rtype: bool
+        """
+        return self._IsLocked
+
+    @IsLocked.setter
+    def IsLocked(self, IsLocked):
+        self._IsLocked = IsLocked
+
+    @property
+    def LatestModifyTime(self):
+        r"""<p>快照记录的最新修改时间</p>
+        :rtype: str
+        """
+        return self._LatestModifyTime
+
+    @LatestModifyTime.setter
+    def LatestModifyTime(self, LatestModifyTime):
+        self._LatestModifyTime = LatestModifyTime
+
+    @property
+    def AutoSnapshotPolicyId(self):
+        r"""<p>自动快照策略ID，仅当该快照由自动快照策略方式创建时才会返回。</p>
+        :rtype: str
+        """
+        return self._AutoSnapshotPolicyId
+
+    @AutoSnapshotPolicyId.setter
+    def AutoSnapshotPolicyId(self, AutoSnapshotPolicyId):
+        self._AutoSnapshotPolicyId = AutoSnapshotPolicyId
 
 
     def _deserialize(self, params):
@@ -8772,6 +9174,9 @@ class Snapshot(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IsLocked = params.get("IsLocked")
+        self._LatestModifyTime = params.get("LatestModifyTime")
+        self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9111,6 +9516,106 @@ class SnapshotGroup(AbstractModel):
         
 
 
+class SwitchParameterCreateRemoteDisksRequest(AbstractModel):
+    r"""SwitchParameterCreateRemoteDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Placement: <p>实例所在的位置。通过该参数可以指定实例所属可用区、所属项目等属性。</p>
+        :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        """
+        self._Placement = None
+
+    @property
+    def Placement(self):
+        r"""<p>实例所在的位置。通过该参数可以指定实例所属可用区、所属项目等属性。</p>
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        """
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+
+    def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchParameterCreateRemoteDisksResponse(AbstractModel):
+    r"""SwitchParameterCreateRemoteDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SwitchParameterRenewRemoteDisksRequest(AbstractModel):
+    r"""SwitchParameterRenewRemoteDisks请求参数结构体
+
+    """
+
+
+class SwitchParameterRenewRemoteDisksResponse(AbstractModel):
+    r"""SwitchParameterRenewRemoteDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Tag(AbstractModel):
     r"""标签。
 
@@ -9215,6 +9720,40 @@ class TerminateDisksRequest(AbstractModel):
 
 class TerminateDisksResponse(AbstractModel):
     r"""TerminateDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class TerminateRemoteDisksRequest(AbstractModel):
+    r"""TerminateRemoteDisks请求参数结构体
+
+    """
+
+
+class TerminateRemoteDisksResponse(AbstractModel):
+    r"""TerminateRemoteDisks返回参数结构体
 
     """
 

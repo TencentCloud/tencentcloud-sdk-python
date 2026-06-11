@@ -17765,6 +17765,10 @@ class MarkInfo(AbstractModel):
         :type QuestionImagePositions: list of Positions
         :param _RightAnswer: <p>题目级正确答案（步骤批改时使用，包含完整解题步骤）</p>
         :type RightAnswer: str
+        :param _Subject: <p>学科（如语文、数学、英语）</p>
+        :type Subject: str
+        :param _QuestionType: <p>题型（如选择题、填空题、计算题、应用题、判断题、作文题）</p>
+        :type QuestionType: str
         """
         self._MarkItemTitle = None
         self._AnswerInfos = None
@@ -17772,6 +17776,8 @@ class MarkInfo(AbstractModel):
         self._QuestionPositions = None
         self._QuestionImagePositions = None
         self._RightAnswer = None
+        self._Subject = None
+        self._QuestionType = None
 
     @property
     def MarkItemTitle(self):
@@ -17839,6 +17845,28 @@ class MarkInfo(AbstractModel):
     def RightAnswer(self, RightAnswer):
         self._RightAnswer = RightAnswer
 
+    @property
+    def Subject(self):
+        r"""<p>学科（如语文、数学、英语）</p>
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def QuestionType(self):
+        r"""<p>题型（如选择题、填空题、计算题、应用题、判断题、作文题）</p>
+        :rtype: str
+        """
+        return self._QuestionType
+
+    @QuestionType.setter
+    def QuestionType(self, QuestionType):
+        self._QuestionType = QuestionType
+
 
     def _deserialize(self, params):
         self._MarkItemTitle = params.get("MarkItemTitle")
@@ -17862,6 +17890,8 @@ class MarkInfo(AbstractModel):
                 obj._deserialize(item)
                 self._QuestionImagePositions.append(obj)
         self._RightAnswer = params.get("RightAnswer")
+        self._Subject = params.get("Subject")
+        self._QuestionType = params.get("QuestionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

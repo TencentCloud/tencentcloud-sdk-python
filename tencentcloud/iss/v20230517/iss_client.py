@@ -26,29 +26,6 @@ class IssClient(AbstractClient):
     _service = 'iss'
 
 
-    def AddAITask(self, request):
-        r"""添加AI任务
-
-        :param request: Request instance for AddAITask.
-        :type request: :class:`tencentcloud.iss.v20230517.models.AddAITaskRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.AddAITaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("AddAITask", params, headers=headers)
-            response = json.loads(body)
-            model = models.AddAITaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def AddOrganization(self, request):
         r"""用于新增组织。
 
@@ -466,29 +443,6 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteAITask(self, request):
-        r"""删除AI任务
-
-        :param request: Request instance for DeleteAITask.
-        :type request: :class:`tencentcloud.iss.v20230517.models.DeleteAITaskRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.DeleteAITaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteAITask", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteAITaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteDomain(self, request):
         r"""用于删除域名。
 
@@ -710,52 +664,6 @@ class IssClient(AbstractClient):
             body = self.call("DeleteUserDevice", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteUserDeviceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAITask(self, request):
-        r"""获取AI任务详情
-
-        :param request: Request instance for DescribeAITask.
-        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeAITaskRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeAITaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAITask", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAITaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAITaskResult(self, request):
-        r"""获取AI任务识别结果
-
-        :param request: Request instance for DescribeAITaskResult.
-        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeAITaskResultRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeAITaskResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAITaskResult", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAITaskResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1364,29 +1272,6 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ListAITasks(self, request):
-        r"""获取AI任务列表
-
-        :param request: Request instance for ListAITasks.
-        :type request: :class:`tencentcloud.iss.v20230517.models.ListAITasksRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.ListAITasksResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListAITasks", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListAITasksResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ListDeviceSnapshots(self, request):
         r"""获取设备抓拍结果列表
 
@@ -1861,52 +1746,6 @@ class IssClient(AbstractClient):
             body = self.call("SetForbidPlayChannels", params, headers=headers)
             response = json.loads(body)
             model = models.SetForbidPlayChannelsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpdateAITask(self, request):
-        r"""更新AI任务
-
-        :param request: Request instance for UpdateAITask.
-        :type request: :class:`tencentcloud.iss.v20230517.models.UpdateAITaskRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateAITaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpdateAITask", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpdateAITaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpdateAITaskStatus(self, request):
-        r"""更新 AI 任务状态
-
-        :param request: Request instance for UpdateAITaskStatus.
-        :type request: :class:`tencentcloud.iss.v20230517.models.UpdateAITaskStatusRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateAITaskStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpdateAITaskStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpdateAITaskStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -4333,6 +4333,78 @@ class ConditionsTemp(AbstractModel):
         
 
 
+class CoverStaffInfo(AbstractModel):
+    r"""轮班人员组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CoverStaffIDs: 轮班人员id组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverStaffIDs: list of str
+        :param _CoverStartTime: 轮班开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverStartTime: int
+        :param _CoverEndTime: 轮班结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverEndTime: int
+        """
+        self._CoverStaffIDs = None
+        self._CoverStartTime = None
+        self._CoverEndTime = None
+
+    @property
+    def CoverStaffIDs(self):
+        r"""轮班人员id组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CoverStaffIDs
+
+    @CoverStaffIDs.setter
+    def CoverStaffIDs(self, CoverStaffIDs):
+        self._CoverStaffIDs = CoverStaffIDs
+
+    @property
+    def CoverStartTime(self):
+        r"""轮班开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CoverStartTime
+
+    @CoverStartTime.setter
+    def CoverStartTime(self, CoverStartTime):
+        self._CoverStartTime = CoverStartTime
+
+    @property
+    def CoverEndTime(self):
+        r"""轮班结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CoverEndTime
+
+    @CoverEndTime.setter
+    def CoverEndTime(self, CoverEndTime):
+        self._CoverEndTime = CoverEndTime
+
+
+    def _deserialize(self, params):
+        self._CoverStaffIDs = params.get("CoverStaffIDs")
+        self._CoverStartTime = params.get("CoverStartTime")
+        self._CoverEndTime = params.get("CoverEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAlarmNoticeRequest(AbstractModel):
     r"""CreateAlarmNotice请求参数结构体
 
@@ -6542,6 +6614,250 @@ class CreateGrafanaNotificationChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ChannelId = params.get("ChannelId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateOnCallFormRequest(AbstractModel):
+    r"""CreateOnCallForm请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 固定值，为"monitor"
+        :type Module: str
+        :param _OnCallFormName: 值班表名称
+        :type OnCallFormName: str
+        :param _StaffInfos: 值班人员id组
+        :type StaffInfos: list of StaffInfo
+        :param _RotationType: 轮转类型
+        :type RotationType: str
+        :param _ShiftTime: 换班时间
+        :type ShiftTime: str
+        :param _EffectiveStartTime: 有效期开始时间，单位s
+        :type EffectiveStartTime: int
+        :param _EffectiveEndTime: 有效期结束时间，单位s
+        :type EffectiveEndTime: int
+        :param _TimeZone: 时区(-12 - 12)
+        :type TimeZone: float
+        :param _OnCallFormDesc: 值班表描述
+        :type OnCallFormDesc: str
+        :param _CoverStaffInfos: 轮班信息
+        :type CoverStaffInfos: list of CoverStaffInfo
+        :param _Tags: 模板绑定的标签
+        :type Tags: list of Tag
+        """
+        self._Module = None
+        self._OnCallFormName = None
+        self._StaffInfos = None
+        self._RotationType = None
+        self._ShiftTime = None
+        self._EffectiveStartTime = None
+        self._EffectiveEndTime = None
+        self._TimeZone = None
+        self._OnCallFormDesc = None
+        self._CoverStaffInfos = None
+        self._Tags = None
+
+    @property
+    def Module(self):
+        r"""固定值，为"monitor"
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def OnCallFormName(self):
+        r"""值班表名称
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+    @property
+    def StaffInfos(self):
+        r"""值班人员id组
+        :rtype: list of StaffInfo
+        """
+        return self._StaffInfos
+
+    @StaffInfos.setter
+    def StaffInfos(self, StaffInfos):
+        self._StaffInfos = StaffInfos
+
+    @property
+    def RotationType(self):
+        r"""轮转类型
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def ShiftTime(self):
+        r"""换班时间
+        :rtype: str
+        """
+        return self._ShiftTime
+
+    @ShiftTime.setter
+    def ShiftTime(self, ShiftTime):
+        self._ShiftTime = ShiftTime
+
+    @property
+    def EffectiveStartTime(self):
+        r"""有效期开始时间，单位s
+        :rtype: int
+        """
+        return self._EffectiveStartTime
+
+    @EffectiveStartTime.setter
+    def EffectiveStartTime(self, EffectiveStartTime):
+        self._EffectiveStartTime = EffectiveStartTime
+
+    @property
+    def EffectiveEndTime(self):
+        r"""有效期结束时间，单位s
+        :rtype: int
+        """
+        return self._EffectiveEndTime
+
+    @EffectiveEndTime.setter
+    def EffectiveEndTime(self, EffectiveEndTime):
+        self._EffectiveEndTime = EffectiveEndTime
+
+    @property
+    def TimeZone(self):
+        r"""时区(-12 - 12)
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def OnCallFormDesc(self):
+        r"""值班表描述
+        :rtype: str
+        """
+        return self._OnCallFormDesc
+
+    @OnCallFormDesc.setter
+    def OnCallFormDesc(self, OnCallFormDesc):
+        self._OnCallFormDesc = OnCallFormDesc
+
+    @property
+    def CoverStaffInfos(self):
+        r"""轮班信息
+        :rtype: list of CoverStaffInfo
+        """
+        return self._CoverStaffInfos
+
+    @CoverStaffInfos.setter
+    def CoverStaffInfos(self, CoverStaffInfos):
+        self._CoverStaffInfos = CoverStaffInfos
+
+    @property
+    def Tags(self):
+        r"""模板绑定的标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._OnCallFormName = params.get("OnCallFormName")
+        if params.get("StaffInfos") is not None:
+            self._StaffInfos = []
+            for item in params.get("StaffInfos"):
+                obj = StaffInfo()
+                obj._deserialize(item)
+                self._StaffInfos.append(obj)
+        self._RotationType = params.get("RotationType")
+        self._ShiftTime = params.get("ShiftTime")
+        self._EffectiveStartTime = params.get("EffectiveStartTime")
+        self._EffectiveEndTime = params.get("EffectiveEndTime")
+        self._TimeZone = params.get("TimeZone")
+        self._OnCallFormDesc = params.get("OnCallFormDesc")
+        if params.get("CoverStaffInfos") is not None:
+            self._CoverStaffInfos = []
+            for item in params.get("CoverStaffInfos"):
+                obj = CoverStaffInfo()
+                obj._deserialize(item)
+                self._CoverStaffInfos.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOnCallFormResponse(AbstractModel):
+    r"""CreateOnCallForm返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallFormID: 值班表id
+        :type OnCallFormID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OnCallFormID = None
+        self._RequestId = None
+
+    @property
+    def OnCallFormID(self):
+        r"""值班表id
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OnCallFormID = params.get("OnCallFormID")
         self._RequestId = params.get("RequestId")
 
 
@@ -9294,6 +9610,115 @@ class DeleteGrafanaNotificationChannelResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOnCallFormsRequest(AbstractModel):
+    r"""DeleteOnCallForms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 固定值，为"monitor"
+        :type Module: str
+        :param _OnCallFormIDs: 要删除的值班表id
+        :type OnCallFormIDs: list of str
+        """
+        self._Module = None
+        self._OnCallFormIDs = None
+
+    @property
+    def Module(self):
+        r"""固定值，为"monitor"
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def OnCallFormIDs(self):
+        r"""要删除的值班表id
+        :rtype: list of str
+        """
+        return self._OnCallFormIDs
+
+    @OnCallFormIDs.setter
+    def OnCallFormIDs(self, OnCallFormIDs):
+        self._OnCallFormIDs = OnCallFormIDs
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._OnCallFormIDs = params.get("OnCallFormIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOnCallFormsResponse(AbstractModel):
+    r"""DeleteOnCallForms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedOnCallFormIDs: 失败删除的排班id
+        :type FailedOnCallFormIDs: list of str
+        :param _SuccessOnCallFormIDs: 成功删除的排班id
+        :type SuccessOnCallFormIDs: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedOnCallFormIDs = None
+        self._SuccessOnCallFormIDs = None
+        self._RequestId = None
+
+    @property
+    def FailedOnCallFormIDs(self):
+        r"""失败删除的排班id
+        :rtype: list of str
+        """
+        return self._FailedOnCallFormIDs
+
+    @FailedOnCallFormIDs.setter
+    def FailedOnCallFormIDs(self, FailedOnCallFormIDs):
+        self._FailedOnCallFormIDs = FailedOnCallFormIDs
+
+    @property
+    def SuccessOnCallFormIDs(self):
+        r"""成功删除的排班id
+        :rtype: list of str
+        """
+        return self._SuccessOnCallFormIDs
+
+    @SuccessOnCallFormIDs.setter
+    def SuccessOnCallFormIDs(self, SuccessOnCallFormIDs):
+        self._SuccessOnCallFormIDs = SuccessOnCallFormIDs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FailedOnCallFormIDs = params.get("FailedOnCallFormIDs")
+        self._SuccessOnCallFormIDs = params.get("SuccessOnCallFormIDs")
         self._RequestId = params.get("RequestId")
 
 
@@ -16419,6 +16844,291 @@ class DescribeNotificationContentTemplateSupportsResponse(AbstractModel):
         if params.get("Support") is not None:
             self._Support = NotificationContentTemplateSupport()
             self._Support._deserialize(params.get("Support"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOnCallFormRequest(AbstractModel):
+    r"""DescribeOnCallForm请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 固定值，为"monitor"
+        :type Module: str
+        :param _OnCallFormID: 值班id
+        :type OnCallFormID: str
+        """
+        self._Module = None
+        self._OnCallFormID = None
+
+    @property
+    def Module(self):
+        r"""固定值，为"monitor"
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def OnCallFormID(self):
+        r"""值班id
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._OnCallFormID = params.get("OnCallFormID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOnCallFormResponse(AbstractModel):
+    r"""DescribeOnCallForm返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallForm: 值班详情
+        :type OnCallForm: :class:`tencentcloud.monitor.v20180724.models.OneOnCallForm`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OnCallForm = None
+        self._RequestId = None
+
+    @property
+    def OnCallForm(self):
+        r"""值班详情
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.OneOnCallForm`
+        """
+        return self._OnCallForm
+
+    @OnCallForm.setter
+    def OnCallForm(self, OnCallForm):
+        self._OnCallForm = OnCallForm
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OnCallForm") is not None:
+            self._OnCallForm = OneOnCallForm()
+            self._OnCallForm._deserialize(params.get("OnCallForm"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOnCallFormsRequest(AbstractModel):
+    r"""DescribeOnCallForms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 固定值，为"monitor"
+        :type Module: str
+        :param _Offset: 分页查询起始位
+        :type Offset: int
+        :param _Limit: 分页查询页数
+        :type Limit: int
+        :param _OnCallFormStaffIDs: 支持userId进行检索
+        :type OnCallFormStaffIDs: list of str
+        :param _RotationType: 值班类型
+        :type RotationType: str
+        :param _Order: 排序方式
+        :type Order: str
+        :param _OnCallFormName: 支持id、name进行检索
+        :type OnCallFormName: str
+        """
+        self._Module = None
+        self._Offset = None
+        self._Limit = None
+        self._OnCallFormStaffIDs = None
+        self._RotationType = None
+        self._Order = None
+        self._OnCallFormName = None
+
+    @property
+    def Module(self):
+        r"""固定值，为"monitor"
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def Offset(self):
+        r"""分页查询起始位
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页查询页数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OnCallFormStaffIDs(self):
+        r"""支持userId进行检索
+        :rtype: list of str
+        """
+        return self._OnCallFormStaffIDs
+
+    @OnCallFormStaffIDs.setter
+    def OnCallFormStaffIDs(self, OnCallFormStaffIDs):
+        self._OnCallFormStaffIDs = OnCallFormStaffIDs
+
+    @property
+    def RotationType(self):
+        r"""值班类型
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def Order(self):
+        r"""排序方式
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OnCallFormName(self):
+        r"""支持id、name进行检索
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OnCallFormStaffIDs = params.get("OnCallFormStaffIDs")
+        self._RotationType = params.get("RotationType")
+        self._Order = params.get("Order")
+        self._OnCallFormName = params.get("OnCallFormName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOnCallFormsResponse(AbstractModel):
+    r"""DescribeOnCallForms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallForms: 排班信息
+        :type OnCallForms: list of OnCallForm
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OnCallForms = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def OnCallForms(self):
+        r"""排班信息
+        :rtype: list of OnCallForm
+        """
+        return self._OnCallForms
+
+    @OnCallForms.setter
+    def OnCallForms(self, OnCallForms):
+        self._OnCallForms = OnCallForms
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OnCallForms") is not None:
+            self._OnCallForms = []
+            for item in params.get("OnCallForms"):
+                obj = OnCallForm()
+                obj._deserialize(item)
+                self._OnCallForms.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -32113,6 +32823,425 @@ class NotificationContentTemplateSupportDetail(AbstractModel):
         
 
 
+class OnCallForm(AbstractModel):
+    r"""排班信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallFormID: 排班id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnCallFormID: str
+        :param _OnCallFormName: 排班名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnCallFormName: str
+        :param _OnCallFormDesc: 排班描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnCallFormDesc: str
+        :param _RotationType: 轮值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RotationType: str
+        :param _ShiftTime: 换班时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShiftTime: str
+        :param _EffectiveStartTime: 有效期开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectiveStartTime: int
+        :param _EffectiveEndTime: 有效期结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectiveEndTime: int
+        :param _TimeZone: 时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeZone: float
+        :param _CurrOnCallStaffs: 当前值班人员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrOnCallStaffs: list of str
+        :param _Tags: 模板绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self._OnCallFormID = None
+        self._OnCallFormName = None
+        self._OnCallFormDesc = None
+        self._RotationType = None
+        self._ShiftTime = None
+        self._EffectiveStartTime = None
+        self._EffectiveEndTime = None
+        self._TimeZone = None
+        self._CurrOnCallStaffs = None
+        self._Tags = None
+
+    @property
+    def OnCallFormID(self):
+        r"""排班id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def OnCallFormName(self):
+        r"""排班名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+    @property
+    def OnCallFormDesc(self):
+        r"""排班描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OnCallFormDesc
+
+    @OnCallFormDesc.setter
+    def OnCallFormDesc(self, OnCallFormDesc):
+        self._OnCallFormDesc = OnCallFormDesc
+
+    @property
+    def RotationType(self):
+        r"""轮值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def ShiftTime(self):
+        r"""换班时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ShiftTime
+
+    @ShiftTime.setter
+    def ShiftTime(self, ShiftTime):
+        self._ShiftTime = ShiftTime
+
+    @property
+    def EffectiveStartTime(self):
+        r"""有效期开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EffectiveStartTime
+
+    @EffectiveStartTime.setter
+    def EffectiveStartTime(self, EffectiveStartTime):
+        self._EffectiveStartTime = EffectiveStartTime
+
+    @property
+    def EffectiveEndTime(self):
+        r"""有效期结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EffectiveEndTime
+
+    @EffectiveEndTime.setter
+    def EffectiveEndTime(self, EffectiveEndTime):
+        self._EffectiveEndTime = EffectiveEndTime
+
+    @property
+    def TimeZone(self):
+        r"""时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def CurrOnCallStaffs(self):
+        r"""当前值班人员
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CurrOnCallStaffs
+
+    @CurrOnCallStaffs.setter
+    def CurrOnCallStaffs(self, CurrOnCallStaffs):
+        self._CurrOnCallStaffs = CurrOnCallStaffs
+
+    @property
+    def Tags(self):
+        r"""模板绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._OnCallFormID = params.get("OnCallFormID")
+        self._OnCallFormName = params.get("OnCallFormName")
+        self._OnCallFormDesc = params.get("OnCallFormDesc")
+        self._RotationType = params.get("RotationType")
+        self._ShiftTime = params.get("ShiftTime")
+        self._EffectiveStartTime = params.get("EffectiveStartTime")
+        self._EffectiveEndTime = params.get("EffectiveEndTime")
+        self._TimeZone = params.get("TimeZone")
+        self._CurrOnCallStaffs = params.get("CurrOnCallStaffs")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OneOnCallForm(AbstractModel):
+    r"""排班详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallFormID: 值班id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnCallFormID: str
+        :param _OnCallFormName: 值班名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnCallFormName: str
+        :param _OnCallFormDesc: 值班描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnCallFormDesc: str
+        :param _StaffInfos: 值班人员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaffInfos: list of StaffInfo
+        :param _RotationType: 轮班类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RotationType: str
+        :param _ShiftTime: 换班时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShiftTime: str
+        :param _EffectiveStartTime: 值班有效期开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectiveStartTime: int
+        :param _EffectiveEndTime: 值班有效期结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectiveEndTime: int
+        :param _TimeZone: 时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeZone: float
+        :param _CoverStaffInfos: 替班信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverStaffInfos: list of CoverStaffInfo
+        :param _Tags: 模板绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self._OnCallFormID = None
+        self._OnCallFormName = None
+        self._OnCallFormDesc = None
+        self._StaffInfos = None
+        self._RotationType = None
+        self._ShiftTime = None
+        self._EffectiveStartTime = None
+        self._EffectiveEndTime = None
+        self._TimeZone = None
+        self._CoverStaffInfos = None
+        self._Tags = None
+
+    @property
+    def OnCallFormID(self):
+        r"""值班id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def OnCallFormName(self):
+        r"""值班名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+    @property
+    def OnCallFormDesc(self):
+        r"""值班描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OnCallFormDesc
+
+    @OnCallFormDesc.setter
+    def OnCallFormDesc(self, OnCallFormDesc):
+        self._OnCallFormDesc = OnCallFormDesc
+
+    @property
+    def StaffInfos(self):
+        r"""值班人员
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StaffInfo
+        """
+        return self._StaffInfos
+
+    @StaffInfos.setter
+    def StaffInfos(self, StaffInfos):
+        self._StaffInfos = StaffInfos
+
+    @property
+    def RotationType(self):
+        r"""轮班类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def ShiftTime(self):
+        r"""换班时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ShiftTime
+
+    @ShiftTime.setter
+    def ShiftTime(self, ShiftTime):
+        self._ShiftTime = ShiftTime
+
+    @property
+    def EffectiveStartTime(self):
+        r"""值班有效期开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EffectiveStartTime
+
+    @EffectiveStartTime.setter
+    def EffectiveStartTime(self, EffectiveStartTime):
+        self._EffectiveStartTime = EffectiveStartTime
+
+    @property
+    def EffectiveEndTime(self):
+        r"""值班有效期结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EffectiveEndTime
+
+    @EffectiveEndTime.setter
+    def EffectiveEndTime(self, EffectiveEndTime):
+        self._EffectiveEndTime = EffectiveEndTime
+
+    @property
+    def TimeZone(self):
+        r"""时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def CoverStaffInfos(self):
+        r"""替班信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CoverStaffInfo
+        """
+        return self._CoverStaffInfos
+
+    @CoverStaffInfos.setter
+    def CoverStaffInfos(self, CoverStaffInfos):
+        self._CoverStaffInfos = CoverStaffInfos
+
+    @property
+    def Tags(self):
+        r"""模板绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._OnCallFormID = params.get("OnCallFormID")
+        self._OnCallFormName = params.get("OnCallFormName")
+        self._OnCallFormDesc = params.get("OnCallFormDesc")
+        if params.get("StaffInfos") is not None:
+            self._StaffInfos = []
+            for item in params.get("StaffInfos"):
+                obj = StaffInfo()
+                obj._deserialize(item)
+                self._StaffInfos.append(obj)
+        self._RotationType = params.get("RotationType")
+        self._ShiftTime = params.get("ShiftTime")
+        self._EffectiveStartTime = params.get("EffectiveStartTime")
+        self._EffectiveEndTime = params.get("EffectiveEndTime")
+        self._TimeZone = params.get("TimeZone")
+        if params.get("CoverStaffInfos") is not None:
+            self._CoverStaffInfos = []
+            for item in params.get("CoverStaffInfos"):
+                obj = CoverStaffInfo()
+                obj._deserialize(item)
+                self._CoverStaffInfos.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Operator(AbstractModel):
     r"""维度支持的操作符信息
 
@@ -33041,11 +34170,11 @@ class PrometheusAgentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterType: 集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群
+        :param _ClusterType: <p>集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群</p>
         :type ClusterType: str
-        :param _ClusterId: 集成容器服务中关联的集群ID
+        :param _ClusterId: <p>集成容器服务中关联的集群ID</p>
         :type ClusterId: str
-        :param _Describe: 该参数未使用，不需要填写
+        :param _Describe: <p>该参数未使用，不需要填写</p>
         :type Describe: str
         """
         self._ClusterType = None
@@ -33054,7 +34183,7 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群
+        r"""<p>集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群</p>
         :rtype: str
         """
         return self._ClusterType
@@ -33065,7 +34194,7 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集成容器服务中关联的集群ID
+        r"""<p>集成容器服务中关联的集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -33076,7 +34205,7 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def Describe(self):
-        r"""该参数未使用，不需要填写
+        r"""<p>该参数未使用，不需要填写</p>
         :rtype: str
         """
         return self._Describe
@@ -39324,6 +40453,44 @@ class SingleOrderedDataPoint(AbstractModel):
         
 
 
+class StaffInfo(AbstractModel):
+    r"""值班人员id组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StaffIDs: 值班人员id组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaffIDs: list of str
+        """
+        self._StaffIDs = None
+
+    @property
+    def StaffIDs(self):
+        r"""值班人员id组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._StaffIDs
+
+    @StaffIDs.setter
+    def StaffIDs(self, StaffIDs):
+        self._StaffIDs = StaffIDs
+
+
+    def _deserialize(self, params):
+        self._StaffIDs = params.get("StaffIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncPrometheusTempRequest(AbstractModel):
     r"""SyncPrometheusTemp请求参数结构体
 
@@ -41870,6 +43037,245 @@ class UpdateGrafanaWhiteListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateOnCallFormRequest(AbstractModel):
+    r"""UpdateOnCallForm请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 固定值，为"monitor"
+        :type Module: str
+        :param _OnCallFormID: 值班表id
+        :type OnCallFormID: str
+        :param _OnCallFormName: 值班表名称
+        :type OnCallFormName: str
+        :param _StaffInfos: 值班人员id组
+        :type StaffInfos: list of StaffInfo
+        :param _RotationType: 轮转类型
+        :type RotationType: str
+        :param _ShiftTime: 换班时间
+        :type ShiftTime: str
+        :param _EffectiveStartTime: 有效期开始时间，单位s
+        :type EffectiveStartTime: int
+        :param _EffectiveEndTime: 有效期结束时间，单位s
+        :type EffectiveEndTime: int
+        :param _TimeZone: 时区(-12 - 12)
+        :type TimeZone: float
+        :param _OnCallFormDesc: 值班表描述
+        :type OnCallFormDesc: str
+        :param _CoverStaffInfos: 轮班信息
+        :type CoverStaffInfos: list of CoverStaffInfo
+        """
+        self._Module = None
+        self._OnCallFormID = None
+        self._OnCallFormName = None
+        self._StaffInfos = None
+        self._RotationType = None
+        self._ShiftTime = None
+        self._EffectiveStartTime = None
+        self._EffectiveEndTime = None
+        self._TimeZone = None
+        self._OnCallFormDesc = None
+        self._CoverStaffInfos = None
+
+    @property
+    def Module(self):
+        r"""固定值，为"monitor"
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def OnCallFormID(self):
+        r"""值班表id
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def OnCallFormName(self):
+        r"""值班表名称
+        :rtype: str
+        """
+        return self._OnCallFormName
+
+    @OnCallFormName.setter
+    def OnCallFormName(self, OnCallFormName):
+        self._OnCallFormName = OnCallFormName
+
+    @property
+    def StaffInfos(self):
+        r"""值班人员id组
+        :rtype: list of StaffInfo
+        """
+        return self._StaffInfos
+
+    @StaffInfos.setter
+    def StaffInfos(self, StaffInfos):
+        self._StaffInfos = StaffInfos
+
+    @property
+    def RotationType(self):
+        r"""轮转类型
+        :rtype: str
+        """
+        return self._RotationType
+
+    @RotationType.setter
+    def RotationType(self, RotationType):
+        self._RotationType = RotationType
+
+    @property
+    def ShiftTime(self):
+        r"""换班时间
+        :rtype: str
+        """
+        return self._ShiftTime
+
+    @ShiftTime.setter
+    def ShiftTime(self, ShiftTime):
+        self._ShiftTime = ShiftTime
+
+    @property
+    def EffectiveStartTime(self):
+        r"""有效期开始时间，单位s
+        :rtype: int
+        """
+        return self._EffectiveStartTime
+
+    @EffectiveStartTime.setter
+    def EffectiveStartTime(self, EffectiveStartTime):
+        self._EffectiveStartTime = EffectiveStartTime
+
+    @property
+    def EffectiveEndTime(self):
+        r"""有效期结束时间，单位s
+        :rtype: int
+        """
+        return self._EffectiveEndTime
+
+    @EffectiveEndTime.setter
+    def EffectiveEndTime(self, EffectiveEndTime):
+        self._EffectiveEndTime = EffectiveEndTime
+
+    @property
+    def TimeZone(self):
+        r"""时区(-12 - 12)
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def OnCallFormDesc(self):
+        r"""值班表描述
+        :rtype: str
+        """
+        return self._OnCallFormDesc
+
+    @OnCallFormDesc.setter
+    def OnCallFormDesc(self, OnCallFormDesc):
+        self._OnCallFormDesc = OnCallFormDesc
+
+    @property
+    def CoverStaffInfos(self):
+        r"""轮班信息
+        :rtype: list of CoverStaffInfo
+        """
+        return self._CoverStaffInfos
+
+    @CoverStaffInfos.setter
+    def CoverStaffInfos(self, CoverStaffInfos):
+        self._CoverStaffInfos = CoverStaffInfos
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._OnCallFormID = params.get("OnCallFormID")
+        self._OnCallFormName = params.get("OnCallFormName")
+        if params.get("StaffInfos") is not None:
+            self._StaffInfos = []
+            for item in params.get("StaffInfos"):
+                obj = StaffInfo()
+                obj._deserialize(item)
+                self._StaffInfos.append(obj)
+        self._RotationType = params.get("RotationType")
+        self._ShiftTime = params.get("ShiftTime")
+        self._EffectiveStartTime = params.get("EffectiveStartTime")
+        self._EffectiveEndTime = params.get("EffectiveEndTime")
+        self._TimeZone = params.get("TimeZone")
+        self._OnCallFormDesc = params.get("OnCallFormDesc")
+        if params.get("CoverStaffInfos") is not None:
+            self._CoverStaffInfos = []
+            for item in params.get("CoverStaffInfos"):
+                obj = CoverStaffInfo()
+                obj._deserialize(item)
+                self._CoverStaffInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOnCallFormResponse(AbstractModel):
+    r"""UpdateOnCallForm返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnCallFormID: 值班表id
+        :type OnCallFormID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OnCallFormID = None
+        self._RequestId = None
+
+    @property
+    def OnCallFormID(self):
+        r"""值班表id
+        :rtype: str
+        """
+        return self._OnCallFormID
+
+    @OnCallFormID.setter
+    def OnCallFormID(self, OnCallFormID):
+        self._OnCallFormID = OnCallFormID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OnCallFormID = params.get("OnCallFormID")
         self._RequestId = params.get("RequestId")
 
 

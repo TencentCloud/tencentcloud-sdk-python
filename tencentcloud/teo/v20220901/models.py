@@ -31613,7 +31613,7 @@ class EdgeKVDeleteRequest(AbstractModel):
         :type ZoneId: str
         :param _Namespace: 命名空间名称。
         :type Namespace: str
-        :param _Keys: 键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。删除单个键时传入包含一个元素的数组。
+        :param _Keys: 键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，支持合法 UTF-8 字符。删除单个键时传入包含一个元素的数组。
         :type Keys: list of str
         """
         self._ZoneId = None
@@ -31644,7 +31644,7 @@ class EdgeKVDeleteRequest(AbstractModel):
 
     @property
     def Keys(self):
-        r"""键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。删除单个键时传入包含一个元素的数组。
+        r"""键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，支持合法 UTF-8 字符。删除单个键时传入包含一个元素的数组。
         :rtype: list of str
         """
         return self._Keys
@@ -31707,7 +31707,7 @@ class EdgeKVGetRequest(AbstractModel):
         :type ZoneId: str
         :param _Namespace: 命名空间名称。可通过 DescribeEdgeKVNamespaces 接口获取站点下的命名空间列表。
         :type Namespace: str
-        :param _Keys: 键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。查询单个键时传入包含一个元素的数组。
+        :param _Keys: 键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，支持合法 UTF-8 字符。查询单个键时传入包含一个元素的数组。
         :type Keys: list of str
         """
         self._ZoneId = None
@@ -31738,7 +31738,7 @@ class EdgeKVGetRequest(AbstractModel):
 
     @property
     def Keys(self):
-        r"""键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。查询单个键时传入包含一个元素的数组。
+        r"""键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，支持合法 UTF-8 字符。查询单个键时传入包含一个元素的数组。
         :rtype: list of str
         """
         return self._Keys
@@ -31979,7 +31979,7 @@ class EdgeKVPutRequest(AbstractModel):
         :type ZoneId: str
         :param _Namespace: 命名空间名称。
         :type Namespace: str
-        :param _Key: 键名，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。
+        :param _Key: 键名，长度为 1-512 个字符，支持合法 UTF-8 字符。
         :type Key: str
         :param _Value: 键值。不能为空，最大支持 1 MB。支持存储字符串数据。
         :type Value: str
@@ -32019,7 +32019,7 @@ class EdgeKVPutRequest(AbstractModel):
 
     @property
     def Key(self):
-        r"""键名，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。
+        r"""键名，长度为 1-512 个字符，支持合法 UTF-8 字符。
         :rtype: str
         """
         return self._Key
@@ -38131,7 +38131,7 @@ class KeyValuePair(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 键名。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。
+        :param _Key: 键名。每个键名不能为空，长度为 1-512 个字符，支持合法 UTF-8 字符。
         :type Key: str
         :param _Value: 键值。入参时不能为空，最大支持 1 MB。出参时若键不存在，则返回空字符串。
         :type Value: str
@@ -38144,7 +38144,7 @@ class KeyValuePair(AbstractModel):
 
     @property
     def Key(self):
-        r"""键名。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。
+        r"""键名。每个键名不能为空，长度为 1-512 个字符，支持合法 UTF-8 字符。
         :rtype: str
         """
         return self._Key

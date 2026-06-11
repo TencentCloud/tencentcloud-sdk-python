@@ -3990,7 +3990,7 @@ class CreateListenerRequest(AbstractModel):
         :type SnatEnable: bool
         :param _FullEndPorts: <p>全端口段监听器的结束端口，端口范围：2 - 65535</p>
         :type FullEndPorts: list of int
-        :param _H2cSwitch: <p>内网http监听器开启h2c开关，True（开启）、False（关闭）。<br>默认为关闭。</p>
+        :param _H2cSwitch: <p>内网 HTTP 监听器开启 h2c 开关。<br>True（开启）、False（关闭）。默认为关闭。<br>开启后，监听器仅支持创建后端转发类型为 GRPC 或 GRPCS 的七层规则；创建规则时需在 Rules.N.ForwardType 中显式传入 GRPC 或 GRPCS。</p>
         :type H2cSwitch: bool
         :param _SslCloseSwitch: <p>控制 TCP_SSL 类型的监听器是否移除 SSL 加密层。开启后，监听器将作为普通 TCP 协议运行。 可选值：</p><ul><li>True： 关闭 SSL 功能（协议降级为纯文本 TCP）。</li><li>False（默认）： 保持 SSL 功能开启。</li></ul>
         :type SslCloseSwitch: bool
@@ -4270,7 +4270,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def H2cSwitch(self):
-        r"""<p>内网http监听器开启h2c开关，True（开启）、False（关闭）。<br>默认为关闭。</p>
+        r"""<p>内网 HTTP 监听器开启 h2c 开关。<br>True（开启）、False（关闭）。默认为关闭。<br>开启后，监听器仅支持创建后端转发类型为 GRPC 或 GRPCS 的七层规则；创建规则时需在 Rules.N.ForwardType 中显式传入 GRPC 或 GRPCS。</p>
         :rtype: bool
         """
         return self._H2cSwitch
@@ -4461,7 +4461,7 @@ class CreateLoadBalancerRequest(AbstractModel):
         :type LoadBalancerName: str
         :param _VpcId: <p>负载均衡后端目标设备所属的网络 ID，如vpc-12345678，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a> 接口获取。 不填此参数则默认为DefaultVPC。创建内网负载均衡实例时，此参数必填。</p>
         :type VpcId: str
-        :param _SubnetId: <p>在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填，创建公网IPv4负载均衡实例时，不支持指定该参数。</p>
+        :param _SubnetId: <p>在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。<br>创建内网负载均衡实例，或者创建 IPv6FullChain 版本的负载均衡实例，此参数必填。<br>创建公网IPv4负载均衡实例时，不支持指定该参数。</p>
         :type SubnetId: str
         :param _ProjectId: <p>负载均衡实例所属的项目 ID，默认项目 ID 为0。可以通过 <a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 接口获取。不填此参数则视为默认项目。</p>
         :type ProjectId: int
@@ -4473,7 +4473,7 @@ class CreateLoadBalancerRequest(AbstractModel):
         :type MasterZoneId: str
         :param _ZoneId: <p>仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，可用区 ID 和名称均支持，指定可用区以创建负载均衡实例。如：100001 或 ap-guangzhou-1。</p>
         :type ZoneId: str
-        :param _InternetAccessible: <p>网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
+        :param _InternetAccessible: <p>网络计费模式，其中的最大出带宽，仅对内网属性的性能容量型实例和公网属性的所有实例生效。</p>
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param _VipIsp: <p>仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 <a href="https://cloud.tencent.com/document/api/214/70213">DescribeResources</a>  接口查询一个地域所支持的Isp。</p>
         :type VipIsp: str
@@ -4507,14 +4507,16 @@ class CreateLoadBalancerRequest(AbstractModel):
         :type DynamicVip: bool
         :param _Egress: <p>网络出口</p>
         :type Egress: str
-        :param _LBChargePrepaid: <p>负载均衡实例的预付费相关属性，API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
+        :param _LBChargePrepaid: <p>负载均衡实例的预付费相关属性</p>
         :type LBChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
-        :param _LBChargeType: <p>负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
+        :param _LBChargeType: <p>负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 按量计费</li><li>PREPAID： 包年包月</li></ul>
         :type LBChargeType: str
         :param _AccessLogTopicId: <p>七层访问日志主题ID</p>
         :type AccessLogTopicId: str
         :param _AdvancedRoute: <p>是否开启七层高级路由</p>
         :type AdvancedRoute: bool
+        :param _AvailableZoneAffinityInfo: <p>可用区亲和信息</p>
+        :type AvailableZoneAffinityInfo: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
         """
         self._LoadBalancerType = None
         self._Forward = None
@@ -4547,6 +4549,7 @@ class CreateLoadBalancerRequest(AbstractModel):
         self._LBChargeType = None
         self._AccessLogTopicId = None
         self._AdvancedRoute = None
+        self._AvailableZoneAffinityInfo = None
 
     @property
     def LoadBalancerType(self):
@@ -4594,7 +4597,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""<p>在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填，创建公网IPv4负载均衡实例时，不支持指定该参数。</p>
+        r"""<p>在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。<br>创建内网负载均衡实例，或者创建 IPv6FullChain 版本的负载均衡实例，此参数必填。<br>创建公网IPv4负载均衡实例时，不支持指定该参数。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -4660,7 +4663,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        r"""<p>网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
+        r"""<p>网络计费模式，其中的最大出带宽，仅对内网属性的性能容量型实例和公网属性的所有实例生效。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -4847,7 +4850,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def LBChargePrepaid(self):
-        r"""<p>负载均衡实例的预付费相关属性，API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
+        r"""<p>负载均衡实例的预付费相关属性</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
         """
         return self._LBChargePrepaid
@@ -4858,7 +4861,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def LBChargeType(self):
-        r"""<p>负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a></p>
+        r"""<p>负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 按量计费</li><li>PREPAID： 包年包月</li></ul>
         :rtype: str
         """
         return self._LBChargeType
@@ -4888,6 +4891,17 @@ class CreateLoadBalancerRequest(AbstractModel):
     @AdvancedRoute.setter
     def AdvancedRoute(self, AdvancedRoute):
         self._AdvancedRoute = AdvancedRoute
+
+    @property
+    def AvailableZoneAffinityInfo(self):
+        r"""<p>可用区亲和信息</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AvailableZoneAffinityInfo`
+        """
+        return self._AvailableZoneAffinityInfo
+
+    @AvailableZoneAffinityInfo.setter
+    def AvailableZoneAffinityInfo(self, AvailableZoneAffinityInfo):
+        self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo
 
 
     def _deserialize(self, params):
@@ -4938,6 +4952,9 @@ class CreateLoadBalancerRequest(AbstractModel):
         self._LBChargeType = params.get("LBChargeType")
         self._AccessLogTopicId = params.get("AccessLogTopicId")
         self._AdvancedRoute = params.get("AdvancedRoute")
+        if params.get("AvailableZoneAffinityInfo") is not None:
+            self._AvailableZoneAffinityInfo = AvailableZoneAffinityInfo()
+            self._AvailableZoneAffinityInfo._deserialize(params.get("AvailableZoneAffinityInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

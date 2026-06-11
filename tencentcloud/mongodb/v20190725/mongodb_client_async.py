@@ -1273,6 +1273,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def PromoteDBInstanceToActive(
+            self,
+            request: models.PromoteDBInstanceToActiveRequest,
+            opts: Dict = None,
+    ) -> models.PromoteDBInstanceToActiveResponse:
+        """
+        本接口（PromoteDBInstanceToActive）用于灾备实例转正
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PromoteDBInstanceToActive"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PromoteDBInstanceToActiveResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RenameInstance(
             self,
             request: models.RenameInstanceRequest,

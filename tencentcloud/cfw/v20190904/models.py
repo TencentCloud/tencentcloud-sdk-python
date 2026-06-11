@@ -6462,18 +6462,18 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
         r"""
         :param _DeleteAll: 是否删除全部
         :type DeleteAll: int
+        :param _ShowType: blocklist 封禁列表 whitelist 白名单列表
+        :type ShowType: str
         :param _Rules: 规则列表
         :type Rules: list of BanAndAllowRuleDel
         :param _RuleType: 封禁：1，放通：100，
 主要用于全部删除时区分列表类型
         :type RuleType: int
-        :param _ShowType: blocklist 封禁列表 whitelist 白名单列表
-        :type ShowType: str
         """
         self._DeleteAll = None
+        self._ShowType = None
         self._Rules = None
         self._RuleType = None
-        self._ShowType = None
 
     @property
     def DeleteAll(self):
@@ -6485,6 +6485,17 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
     @DeleteAll.setter
     def DeleteAll(self, DeleteAll):
         self._DeleteAll = DeleteAll
+
+    @property
+    def ShowType(self):
+        r"""blocklist 封禁列表 whitelist 白名单列表
+        :rtype: str
+        """
+        return self._ShowType
+
+    @ShowType.setter
+    def ShowType(self, ShowType):
+        self._ShowType = ShowType
 
     @property
     def Rules(self):
@@ -6509,20 +6520,10 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
     def RuleType(self, RuleType):
         self._RuleType = RuleType
 
-    @property
-    def ShowType(self):
-        r"""blocklist 封禁列表 whitelist 白名单列表
-        :rtype: str
-        """
-        return self._ShowType
-
-    @ShowType.setter
-    def ShowType(self, ShowType):
-        self._ShowType = ShowType
-
 
     def _deserialize(self, params):
         self._DeleteAll = params.get("DeleteAll")
+        self._ShowType = params.get("ShowType")
         if params.get("Rules") is not None:
             self._Rules = []
             for item in params.get("Rules"):
@@ -6530,7 +6531,6 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._RuleType = params.get("RuleType")
-        self._ShowType = params.get("ShowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11735,19 +11735,19 @@ class DescribeFwGroupInstanceInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _Filters: 过滤条件组合
+        :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _StartTime: 检索的起始时间，可不传
+        :param _StartTime: <p>检索的起始时间，可不传</p>
         :type StartTime: str
-        :param _EndTime: 检索的截止时间，可不传
+        :param _EndTime: <p>检索的截止时间，可不传</p>
         :type EndTime: str
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :type Order: str
-        :param _By: 排序所用到的字段
+        :param _By: <p>排序所用到的字段</p>
         :type By: str
         """
         self._Limit = None
@@ -11760,7 +11760,7 @@ class DescribeFwGroupInstanceInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -11771,7 +11771,7 @@ class DescribeFwGroupInstanceInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -11782,7 +11782,7 @@ class DescribeFwGroupInstanceInfoRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合
+        r"""<p>过滤条件组合</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -11793,7 +11793,7 @@ class DescribeFwGroupInstanceInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检索的起始时间，可不传
+        r"""<p>检索的起始时间，可不传</p>
         :rtype: str
         """
         return self._StartTime
@@ -11804,7 +11804,7 @@ class DescribeFwGroupInstanceInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检索的截止时间，可不传
+        r"""<p>检索的截止时间，可不传</p>
         :rtype: str
         """
         return self._EndTime
@@ -11815,7 +11815,7 @@ class DescribeFwGroupInstanceInfoRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :rtype: str
         """
         return self._Order
@@ -11826,7 +11826,7 @@ class DescribeFwGroupInstanceInfoRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段
+        r"""<p>排序所用到的字段</p>
         :rtype: str
         """
         return self._By
@@ -11866,9 +11866,9 @@ class DescribeFwGroupInstanceInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcFwGroupLst: 防火墙(组)详细信息
+        :param _VpcFwGroupLst: <p>防火墙(组)详细信息</p>
         :type VpcFwGroupLst: list of VpcFwGroupInfo
-        :param _Total: 防火墙(组)个数
+        :param _Total: <p>防火墙(组)个数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11879,7 +11879,7 @@ class DescribeFwGroupInstanceInfoResponse(AbstractModel):
 
     @property
     def VpcFwGroupLst(self):
-        r"""防火墙(组)详细信息
+        r"""<p>防火墙(组)详细信息</p>
         :rtype: list of VpcFwGroupInfo
         """
         return self._VpcFwGroupLst
@@ -11890,7 +11890,7 @@ class DescribeFwGroupInstanceInfoResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""防火墙(组)个数
+        r"""<p>防火墙(组)个数</p>
         :rtype: int
         """
         return self._Total
@@ -18372,18 +18372,20 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FwType: nat：nat防火墙，ew：东西向防火墙
+        :param _FwType: <p>nat：nat防火墙，ew：东西向防火墙</p>
         :type FwType: str
-        :param _Width: 带宽值
+        :param _Width: <p>带宽值</p>
         :type Width: int
-        :param _CfwInstance: 防火墙实例id
+        :param _CfwInstance: <p>防火墙实例id</p>
         :type CfwInstance: str
-        :param _ElasticSwitch: 弹性开关 1打开 0 关闭
+        :param _ElasticSwitch: <p>弹性开关 1打开 0 关闭</p>
         :type ElasticSwitch: int
-        :param _ElasticBandwidth: 弹性带宽上限，单位Mbps
+        :param _ElasticBandwidth: <p>弹性带宽上限，单位Mbps</p>
         :type ElasticBandwidth: int
-        :param _Tags: 按量计费标签
+        :param _Tags: <p>按量计费标签</p>
         :type Tags: list of TagInfo
+        :param _ElasticTrafficSwitch: <p>按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :type ElasticTrafficSwitch: int
         """
         self._FwType = None
         self._Width = None
@@ -18391,10 +18393,11 @@ class ExpandCfwVerticalRequest(AbstractModel):
         self._ElasticSwitch = None
         self._ElasticBandwidth = None
         self._Tags = None
+        self._ElasticTrafficSwitch = None
 
     @property
     def FwType(self):
-        r"""nat：nat防火墙，ew：东西向防火墙
+        r"""<p>nat：nat防火墙，ew：东西向防火墙</p>
         :rtype: str
         """
         return self._FwType
@@ -18405,7 +18408,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     @property
     def Width(self):
-        r"""带宽值
+        r"""<p>带宽值</p>
         :rtype: int
         """
         return self._Width
@@ -18416,7 +18419,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        r"""防火墙实例id
+        r"""<p>防火墙实例id</p>
         :rtype: str
         """
         return self._CfwInstance
@@ -18427,7 +18430,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     @property
     def ElasticSwitch(self):
-        r"""弹性开关 1打开 0 关闭
+        r"""<p>弹性开关 1打开 0 关闭</p>
         :rtype: int
         """
         return self._ElasticSwitch
@@ -18438,7 +18441,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     @property
     def ElasticBandwidth(self):
-        r"""弹性带宽上限，单位Mbps
+        r"""<p>弹性带宽上限，单位Mbps</p>
         :rtype: int
         """
         return self._ElasticBandwidth
@@ -18449,7 +18452,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""按量计费标签
+        r"""<p>按量计费标签</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -18457,6 +18460,17 @@ class ExpandCfwVerticalRequest(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def ElasticTrafficSwitch(self):
+        r"""<p>按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ElasticTrafficSwitch
+
+    @ElasticTrafficSwitch.setter
+    def ElasticTrafficSwitch(self, ElasticTrafficSwitch):
+        self._ElasticTrafficSwitch = ElasticTrafficSwitch
 
 
     def _deserialize(self, params):
@@ -18471,6 +18485,7 @@ class ExpandCfwVerticalRequest(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._ElasticTrafficSwitch = params.get("ElasticTrafficSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25730,68 +25745,66 @@ class NatInstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatinsId: nat实例id
+        :param _NatinsId: <p>nat实例id</p>
         :type NatinsId: str
-        :param _NatinsName: nat实例名称
+        :param _NatinsName: <p>nat实例名称</p>
         :type NatinsName: str
-        :param _Region: 实例所在地域
+        :param _Region: <p>实例所在地域</p>
         :type Region: str
-        :param _FwMode: 0: 新增模式，1:接入模式
+        :param _FwMode: <p>0: 新增模式，1:接入模式</p>
         :type FwMode: int
-        :param _BandWidth: 实例带宽大小 Mbps
+        :param _BandWidth: <p>实例带宽大小 Mbps</p>
         :type BandWidth: int
-        :param _InFlowMax: 入向带宽峰值 bps
+        :param _InFlowMax: <p>入向带宽峰值 bps</p>
         :type InFlowMax: int
-        :param _OutFlowMax: 出向带宽峰值 bps
+        :param _OutFlowMax: <p>出向带宽峰值 bps</p>
         :type OutFlowMax: int
-        :param _RegionZh: 地域中文信息
+        :param _RegionZh: <p>地域中文信息</p>
         :type RegionZh: str
-        :param _EipAddress: 公网ip数组
+        :param _EipAddress: <p>公网ip数组</p>
         :type EipAddress: list of str
-        :param _VpcIp: 内外使用ip数组
+        :param _VpcIp: <p>内外使用ip数组</p>
         :type VpcIp: list of str
-        :param _Subnets: 实例关联子网数组
+        :param _Subnets: <p>实例关联子网数组</p>
         :type Subnets: list of str
-        :param _Status: 0 :正常 1：正在初始化
+        :param _Status: <p>0 :正常 1：正在初始化</p>
         :type Status: int
-        :param _RegionDetail: 地域区域信息
+        :param _RegionDetail: <p>地域区域信息</p>
         :type RegionDetail: str
-        :param _ZoneZh: 实例所在可用区
+        :param _ZoneZh: <p>实例所在可用区</p>
         :type ZoneZh: str
-        :param _ZoneZhBak: 实例所在可用区
+        :param _ZoneZhBak: <p>实例所在可用区</p>
         :type ZoneZhBak: str
-        :param _RuleUsed: 已使用规则数
+        :param _RuleUsed: <p>已使用规则数</p>
         :type RuleUsed: int
-        :param _RuleMax: 实例的规则限制最大规格数
+        :param _RuleMax: <p>实例的规则限制最大规格数</p>
         :type RuleMax: int
-        :param _EngineVersion: 实例引擎版本
+        :param _EngineVersion: <p>实例引擎版本</p>
         :type EngineVersion: str
-        :param _UpdateEnable: 引擎是否可升级：0，不可升级；1，可升级
+        :param _UpdateEnable: <p>引擎是否可升级：0，不可升级；1，可升级</p>
         :type UpdateEnable: int
-        :param _NeedProbeEngineUpdate: 是的需要升级引擎 支持 nat拨测 1需要 0不需要
+        :param _NeedProbeEngineUpdate: <p>是的需要升级引擎 支持 nat拨测 1需要 0不需要</p>
         :type NeedProbeEngineUpdate: int
-        :param _TrafficMode: 引擎运行模式，Normal:正常, OnlyRoute:透明模式
+        :param _TrafficMode: <p>引擎运行模式，Normal:正常, OnlyRoute:透明模式</p>
         :type TrafficMode: str
-        :param _Zone: 实例主所在可用区
+        :param _Zone: <p>实例主所在可用区</p>
         :type Zone: str
-        :param _ZoneBak: 实例备所在可用区
+        :param _ZoneBak: <p>实例备所在可用区</p>
         :type ZoneBak: str
-        :param _ReserveTime: 引擎预约升级时间
+        :param _ReserveTime: <p>引擎预约升级时间</p>
         :type ReserveTime: str
-        :param _ReserveVersion: 引擎预约升级版本
+        :param _ReserveVersion: <p>引擎预约升级版本</p>
         :type ReserveVersion: str
-        :param _ReserveVersionState: 引擎预约升级版本状态 stable:稳定版；previewed:预览版
+        :param _ReserveVersionState: <p>引擎预约升级版本状态 stable:稳定版；previewed:预览版</p>
         :type ReserveVersionState: str
-        :param _ElasticSwitch: 弹性开关
-1 打开
-0 关闭
+        :param _ElasticSwitch: <p>弹性开关<br>1 打开<br>0 关闭</p>
         :type ElasticSwitch: int
-        :param _ElasticBandwidth: 弹性带宽，单位Mbps
+        :param _ElasticBandwidth: <p>弹性带宽，单位Mbps</p>
         :type ElasticBandwidth: int
-        :param _IsFirstAfterPay: 是否首次开通按量付费
-1 是
-0 不是
+        :param _IsFirstAfterPay: <p>是否首次开通按量付费<br>1 是<br>0 不是</p>
         :type IsFirstAfterPay: int
+        :param _ElasticTrafficSwitch: <p>按流量弹性开关</p><p>默认值：0</p>
+        :type ElasticTrafficSwitch: int
         """
         self._NatinsId = None
         self._NatinsName = None
@@ -25822,10 +25835,11 @@ class NatInstanceInfo(AbstractModel):
         self._ElasticSwitch = None
         self._ElasticBandwidth = None
         self._IsFirstAfterPay = None
+        self._ElasticTrafficSwitch = None
 
     @property
     def NatinsId(self):
-        r"""nat实例id
+        r"""<p>nat实例id</p>
         :rtype: str
         """
         return self._NatinsId
@@ -25836,7 +25850,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def NatinsName(self):
-        r"""nat实例名称
+        r"""<p>nat实例名称</p>
         :rtype: str
         """
         return self._NatinsName
@@ -25847,7 +25861,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""实例所在地域
+        r"""<p>实例所在地域</p>
         :rtype: str
         """
         return self._Region
@@ -25858,7 +25872,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def FwMode(self):
-        r"""0: 新增模式，1:接入模式
+        r"""<p>0: 新增模式，1:接入模式</p>
         :rtype: int
         """
         return self._FwMode
@@ -25869,7 +25883,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def BandWidth(self):
-        r"""实例带宽大小 Mbps
+        r"""<p>实例带宽大小 Mbps</p>
         :rtype: int
         """
         return self._BandWidth
@@ -25880,7 +25894,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def InFlowMax(self):
-        r"""入向带宽峰值 bps
+        r"""<p>入向带宽峰值 bps</p>
         :rtype: int
         """
         return self._InFlowMax
@@ -25891,7 +25905,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def OutFlowMax(self):
-        r"""出向带宽峰值 bps
+        r"""<p>出向带宽峰值 bps</p>
         :rtype: int
         """
         return self._OutFlowMax
@@ -25902,7 +25916,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def RegionZh(self):
-        r"""地域中文信息
+        r"""<p>地域中文信息</p>
         :rtype: str
         """
         return self._RegionZh
@@ -25913,7 +25927,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def EipAddress(self):
-        r"""公网ip数组
+        r"""<p>公网ip数组</p>
         :rtype: list of str
         """
         return self._EipAddress
@@ -25924,7 +25938,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def VpcIp(self):
-        r"""内外使用ip数组
+        r"""<p>内外使用ip数组</p>
         :rtype: list of str
         """
         return self._VpcIp
@@ -25935,7 +25949,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def Subnets(self):
-        r"""实例关联子网数组
+        r"""<p>实例关联子网数组</p>
         :rtype: list of str
         """
         return self._Subnets
@@ -25946,7 +25960,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""0 :正常 1：正在初始化
+        r"""<p>0 :正常 1：正在初始化</p>
         :rtype: int
         """
         return self._Status
@@ -25957,7 +25971,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def RegionDetail(self):
-        r"""地域区域信息
+        r"""<p>地域区域信息</p>
         :rtype: str
         """
         return self._RegionDetail
@@ -25968,7 +25982,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def ZoneZh(self):
-        r"""实例所在可用区
+        r"""<p>实例所在可用区</p>
         :rtype: str
         """
         return self._ZoneZh
@@ -25979,7 +25993,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def ZoneZhBak(self):
-        r"""实例所在可用区
+        r"""<p>实例所在可用区</p>
         :rtype: str
         """
         return self._ZoneZhBak
@@ -25990,7 +26004,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def RuleUsed(self):
-        r"""已使用规则数
+        r"""<p>已使用规则数</p>
         :rtype: int
         """
         return self._RuleUsed
@@ -26001,7 +26015,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def RuleMax(self):
-        r"""实例的规则限制最大规格数
+        r"""<p>实例的规则限制最大规格数</p>
         :rtype: int
         """
         return self._RuleMax
@@ -26012,7 +26026,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""实例引擎版本
+        r"""<p>实例引擎版本</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -26023,7 +26037,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def UpdateEnable(self):
-        r"""引擎是否可升级：0，不可升级；1，可升级
+        r"""<p>引擎是否可升级：0，不可升级；1，可升级</p>
         :rtype: int
         """
         return self._UpdateEnable
@@ -26034,7 +26048,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def NeedProbeEngineUpdate(self):
-        r"""是的需要升级引擎 支持 nat拨测 1需要 0不需要
+        r"""<p>是的需要升级引擎 支持 nat拨测 1需要 0不需要</p>
         :rtype: int
         """
         return self._NeedProbeEngineUpdate
@@ -26045,7 +26059,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def TrafficMode(self):
-        r"""引擎运行模式，Normal:正常, OnlyRoute:透明模式
+        r"""<p>引擎运行模式，Normal:正常, OnlyRoute:透明模式</p>
         :rtype: str
         """
         return self._TrafficMode
@@ -26056,7 +26070,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""实例主所在可用区
+        r"""<p>实例主所在可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -26067,7 +26081,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def ZoneBak(self):
-        r"""实例备所在可用区
+        r"""<p>实例备所在可用区</p>
         :rtype: str
         """
         return self._ZoneBak
@@ -26078,7 +26092,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def ReserveTime(self):
-        r"""引擎预约升级时间
+        r"""<p>引擎预约升级时间</p>
         :rtype: str
         """
         return self._ReserveTime
@@ -26089,7 +26103,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def ReserveVersion(self):
-        r"""引擎预约升级版本
+        r"""<p>引擎预约升级版本</p>
         :rtype: str
         """
         return self._ReserveVersion
@@ -26100,7 +26114,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def ReserveVersionState(self):
-        r"""引擎预约升级版本状态 stable:稳定版；previewed:预览版
+        r"""<p>引擎预约升级版本状态 stable:稳定版；previewed:预览版</p>
         :rtype: str
         """
         return self._ReserveVersionState
@@ -26111,9 +26125,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def ElasticSwitch(self):
-        r"""弹性开关
-1 打开
-0 关闭
+        r"""<p>弹性开关<br>1 打开<br>0 关闭</p>
         :rtype: int
         """
         return self._ElasticSwitch
@@ -26124,7 +26136,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def ElasticBandwidth(self):
-        r"""弹性带宽，单位Mbps
+        r"""<p>弹性带宽，单位Mbps</p>
         :rtype: int
         """
         return self._ElasticBandwidth
@@ -26135,9 +26147,7 @@ class NatInstanceInfo(AbstractModel):
 
     @property
     def IsFirstAfterPay(self):
-        r"""是否首次开通按量付费
-1 是
-0 不是
+        r"""<p>是否首次开通按量付费<br>1 是<br>0 不是</p>
         :rtype: int
         """
         return self._IsFirstAfterPay
@@ -26145,6 +26155,17 @@ class NatInstanceInfo(AbstractModel):
     @IsFirstAfterPay.setter
     def IsFirstAfterPay(self, IsFirstAfterPay):
         self._IsFirstAfterPay = IsFirstAfterPay
+
+    @property
+    def ElasticTrafficSwitch(self):
+        r"""<p>按流量弹性开关</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ElasticTrafficSwitch
+
+    @ElasticTrafficSwitch.setter
+    def ElasticTrafficSwitch(self, ElasticTrafficSwitch):
+        self._ElasticTrafficSwitch = ElasticTrafficSwitch
 
 
     def _deserialize(self, params):
@@ -26177,6 +26198,7 @@ class NatInstanceInfo(AbstractModel):
         self._ElasticSwitch = params.get("ElasticSwitch")
         self._ElasticBandwidth = params.get("ElasticBandwidth")
         self._IsFirstAfterPay = params.get("IsFirstAfterPay")
+        self._ElasticTrafficSwitch = params.get("ElasticTrafficSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30144,22 +30166,24 @@ class SerialRegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Width: 分配带宽值 单位Mbps
+        :param _Width: <p>分配带宽值 单位Mbps</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
-        :param _ElasticSwitch: 弹性开关
+        :param _ElasticSwitch: <p>弹性开关</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticSwitch: int
-        :param _ElasticBandwidth: 弹性带宽上限，单位Mbps
+        :param _ElasticBandwidth: <p>弹性带宽上限，单位Mbps</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticBandwidth: int
-        :param _InFlowMax: 七天入向峰值带宽，单位bps
+        :param _InFlowMax: <p>七天入向峰值带宽，单位bps</p>
         :type InFlowMax: int
-        :param _OutFlowMax: 七天出向峰值带宽，单位bps
+        :param _OutFlowMax: <p>七天出向峰值带宽，单位bps</p>
         :type OutFlowMax: int
+        :param _ElasticTrafficSwitch: <p>边界按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :type ElasticTrafficSwitch: int
         """
         self._Region = None
         self._Width = None
@@ -30167,10 +30191,11 @@ class SerialRegionInfo(AbstractModel):
         self._ElasticBandwidth = None
         self._InFlowMax = None
         self._OutFlowMax = None
+        self._ElasticTrafficSwitch = None
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -30182,7 +30207,7 @@ class SerialRegionInfo(AbstractModel):
 
     @property
     def Width(self):
-        r"""分配带宽值 单位Mbps
+        r"""<p>分配带宽值 单位Mbps</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -30194,7 +30219,7 @@ class SerialRegionInfo(AbstractModel):
 
     @property
     def ElasticSwitch(self):
-        r"""弹性开关
+        r"""<p>弹性开关</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -30206,7 +30231,7 @@ class SerialRegionInfo(AbstractModel):
 
     @property
     def ElasticBandwidth(self):
-        r"""弹性带宽上限，单位Mbps
+        r"""<p>弹性带宽上限，单位Mbps</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -30218,7 +30243,7 @@ class SerialRegionInfo(AbstractModel):
 
     @property
     def InFlowMax(self):
-        r"""七天入向峰值带宽，单位bps
+        r"""<p>七天入向峰值带宽，单位bps</p>
         :rtype: int
         """
         return self._InFlowMax
@@ -30229,7 +30254,7 @@ class SerialRegionInfo(AbstractModel):
 
     @property
     def OutFlowMax(self):
-        r"""七天出向峰值带宽，单位bps
+        r"""<p>七天出向峰值带宽，单位bps</p>
         :rtype: int
         """
         return self._OutFlowMax
@@ -30237,6 +30262,17 @@ class SerialRegionInfo(AbstractModel):
     @OutFlowMax.setter
     def OutFlowMax(self, OutFlowMax):
         self._OutFlowMax = OutFlowMax
+
+    @property
+    def ElasticTrafficSwitch(self):
+        r"""<p>边界按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ElasticTrafficSwitch
+
+    @ElasticTrafficSwitch.setter
+    def ElasticTrafficSwitch(self, ElasticTrafficSwitch):
+        self._ElasticTrafficSwitch = ElasticTrafficSwitch
 
 
     def _deserialize(self, params):
@@ -30246,6 +30282,7 @@ class SerialRegionInfo(AbstractModel):
         self._ElasticBandwidth = params.get("ElasticBandwidth")
         self._InFlowMax = params.get("InFlowMax")
         self._OutFlowMax = params.get("OutFlowMax")
+        self._ElasticTrafficSwitch = params.get("ElasticTrafficSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32721,68 +32758,68 @@ class VpcFwInstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FwInsName: VPC防火墙实例名称
+        :param _FwInsName: <p>VPC防火墙实例名称</p>
         :type FwInsName: str
-        :param _FwInsId: VPC防火墙实例ID
+        :param _FwInsId: <p>VPC防火墙实例ID</p>
         :type FwInsId: str
-        :param _FwMode: VPC防火墙实例模式 0: 旧VPC模式防火墙 1: CCN模式防火墙
+        :param _FwMode: <p>VPC防火墙实例模式 0: 旧VPC模式防火墙 1: CCN模式防火墙</p>
         :type FwMode: int
-        :param _JoinInsNum: VPC防火墙接入网络实例个数
+        :param _JoinInsNum: <p>VPC防火墙接入网络实例个数</p>
         :type JoinInsNum: int
-        :param _FwSwitchNum: VPC防火墙开关个数
+        :param _FwSwitchNum: <p>VPC防火墙开关个数</p>
         :type FwSwitchNum: int
-        :param _Status: VPC防火墙状态 0:正常 ， 1：创建中 2: 变更中
+        :param _Status: <p>VPC防火墙状态 0:正常 ， 1：创建中 2: 变更中</p>
         :type Status: int
-        :param _Time: VPC防火墙创建时间
+        :param _Time: <p>VPC防火墙创建时间</p>
         :type Time: str
-        :param _CcnId: VPC 相关云联网ID列表
+        :param _CcnId: <p>VPC 相关云联网ID列表</p>
         :type CcnId: list of str
-        :param _CcnName: VPC 相关云联网名称列表
+        :param _CcnName: <p>VPC 相关云联网名称列表</p>
         :type CcnName: list of str
-        :param _PeerConnectionId: VPC 相关对等连接ID列表
+        :param _PeerConnectionId: <p>VPC 相关对等连接ID列表</p>
         :type PeerConnectionId: list of str
-        :param _PeerConnectionName: VPC 相关对等连接名称列表
+        :param _PeerConnectionName: <p>VPC 相关对等连接名称列表</p>
         :type PeerConnectionName: list of str
-        :param _FwCvmLst: VPC防火墙CVM的列表
+        :param _FwCvmLst: <p>VPC防火墙CVM的列表</p>
         :type FwCvmLst: list of VpcFwCvmInsInfo
-        :param _JoinInsLst: VPC防火墙接入网络实例类型列表
+        :param _JoinInsLst: <p>VPC防火墙接入网络实例类型列表</p>
         :type JoinInsLst: list of VpcFwJoinInstanceType
-        :param _FwGateway: 防火墙网关信息
+        :param _FwGateway: <p>防火墙网关信息</p>
         :type FwGateway: list of FwGateway
-        :param _FwGroupId: 防火墙(组)ID
+        :param _FwGroupId: <p>防火墙(组)ID</p>
         :type FwGroupId: str
-        :param _RuleUsed: 已使用规则数
+        :param _RuleUsed: <p>已使用规则数</p>
         :type RuleUsed: int
-        :param _RuleMax: 最大规则数
+        :param _RuleMax: <p>最大规则数</p>
         :type RuleMax: int
-        :param _Width: 防火墙实例带宽
+        :param _Width: <p>防火墙实例带宽</p>
         :type Width: int
-        :param _UserVpcWidth: 用户VPC墙总带宽
+        :param _UserVpcWidth: <p>用户VPC墙总带宽</p>
         :type UserVpcWidth: int
-        :param _JoinInsIdLst: 接入的vpc列表
+        :param _JoinInsIdLst: <p>接入的vpc列表</p>
         :type JoinInsIdLst: list of str
-        :param _FlowMax: 内网间峰值带宽 (单位 bps )
+        :param _FlowMax: <p>内网间峰值带宽 (单位 bps )</p>
         :type FlowMax: int
-        :param _EngineVersion: 实例引擎版本
+        :param _EngineVersion: <p>实例引擎版本</p>
         :type EngineVersion: str
-        :param _UpdateEnable: 引擎是否可升级：0，不可升级；1，可升级
+        :param _UpdateEnable: <p>引擎是否可升级：0，不可升级；1，可升级</p>
         :type UpdateEnable: int
-        :param _TrafficMode: 引擎运行模式，Normal:正常, OnlyRoute:透明模式
+        :param _TrafficMode: <p>引擎运行模式，Normal:正常, OnlyRoute:透明模式</p>
         :type TrafficMode: str
-        :param _ReserveTime: 引擎预约升级时间
+        :param _ReserveTime: <p>引擎预约升级时间</p>
         :type ReserveTime: str
-        :param _ReserveVersion: 预约引擎升级版本
+        :param _ReserveVersion: <p>预约引擎升级版本</p>
         :type ReserveVersion: str
-        :param _ReserveVersionState: 引擎预约升级版本状态
+        :param _ReserveVersionState: <p>引擎预约升级版本状态</p>
         :type ReserveVersionState: str
-        :param _ElasticSwitch: 弹性开关 1打开 0关闭
+        :param _ElasticSwitch: <p>弹性开关 1打开 0关闭</p>
         :type ElasticSwitch: int
-        :param _ElasticBandwidth: 弹性带宽，单位Mbps
+        :param _ElasticBandwidth: <p>弹性带宽，单位Mbps</p>
         :type ElasticBandwidth: int
-        :param _IsFirstAfterPay: 是否首次开通按量付费
-1 是
-0 不是
+        :param _IsFirstAfterPay: <p>是否首次开通按量付费<br>1 是<br>0 不是</p>
         :type IsFirstAfterPay: int
+        :param _ElasticTrafficSwitch: <p>按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :type ElasticTrafficSwitch: int
         """
         self._FwInsName = None
         self._FwInsId = None
@@ -32814,10 +32851,11 @@ class VpcFwInstanceInfo(AbstractModel):
         self._ElasticSwitch = None
         self._ElasticBandwidth = None
         self._IsFirstAfterPay = None
+        self._ElasticTrafficSwitch = None
 
     @property
     def FwInsName(self):
-        r"""VPC防火墙实例名称
+        r"""<p>VPC防火墙实例名称</p>
         :rtype: str
         """
         return self._FwInsName
@@ -32828,7 +32866,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def FwInsId(self):
-        r"""VPC防火墙实例ID
+        r"""<p>VPC防火墙实例ID</p>
         :rtype: str
         """
         return self._FwInsId
@@ -32839,7 +32877,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def FwMode(self):
-        r"""VPC防火墙实例模式 0: 旧VPC模式防火墙 1: CCN模式防火墙
+        r"""<p>VPC防火墙实例模式 0: 旧VPC模式防火墙 1: CCN模式防火墙</p>
         :rtype: int
         """
         return self._FwMode
@@ -32850,7 +32888,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def JoinInsNum(self):
-        r"""VPC防火墙接入网络实例个数
+        r"""<p>VPC防火墙接入网络实例个数</p>
         :rtype: int
         """
         return self._JoinInsNum
@@ -32861,7 +32899,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def FwSwitchNum(self):
-        r"""VPC防火墙开关个数
+        r"""<p>VPC防火墙开关个数</p>
         :rtype: int
         """
         return self._FwSwitchNum
@@ -32872,7 +32910,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""VPC防火墙状态 0:正常 ， 1：创建中 2: 变更中
+        r"""<p>VPC防火墙状态 0:正常 ， 1：创建中 2: 变更中</p>
         :rtype: int
         """
         return self._Status
@@ -32883,7 +32921,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def Time(self):
-        r"""VPC防火墙创建时间
+        r"""<p>VPC防火墙创建时间</p>
         :rtype: str
         """
         return self._Time
@@ -32894,7 +32932,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def CcnId(self):
-        r"""VPC 相关云联网ID列表
+        r"""<p>VPC 相关云联网ID列表</p>
         :rtype: list of str
         """
         return self._CcnId
@@ -32905,7 +32943,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def CcnName(self):
-        r"""VPC 相关云联网名称列表
+        r"""<p>VPC 相关云联网名称列表</p>
         :rtype: list of str
         """
         return self._CcnName
@@ -32916,7 +32954,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def PeerConnectionId(self):
-        r"""VPC 相关对等连接ID列表
+        r"""<p>VPC 相关对等连接ID列表</p>
         :rtype: list of str
         """
         return self._PeerConnectionId
@@ -32927,7 +32965,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def PeerConnectionName(self):
-        r"""VPC 相关对等连接名称列表
+        r"""<p>VPC 相关对等连接名称列表</p>
         :rtype: list of str
         """
         return self._PeerConnectionName
@@ -32938,7 +32976,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def FwCvmLst(self):
-        r"""VPC防火墙CVM的列表
+        r"""<p>VPC防火墙CVM的列表</p>
         :rtype: list of VpcFwCvmInsInfo
         """
         return self._FwCvmLst
@@ -32949,7 +32987,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def JoinInsLst(self):
-        r"""VPC防火墙接入网络实例类型列表
+        r"""<p>VPC防火墙接入网络实例类型列表</p>
         :rtype: list of VpcFwJoinInstanceType
         """
         return self._JoinInsLst
@@ -32960,7 +32998,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def FwGateway(self):
-        r"""防火墙网关信息
+        r"""<p>防火墙网关信息</p>
         :rtype: list of FwGateway
         """
         return self._FwGateway
@@ -32971,7 +33009,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def FwGroupId(self):
-        r"""防火墙(组)ID
+        r"""<p>防火墙(组)ID</p>
         :rtype: str
         """
         return self._FwGroupId
@@ -32982,7 +33020,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def RuleUsed(self):
-        r"""已使用规则数
+        r"""<p>已使用规则数</p>
         :rtype: int
         """
         return self._RuleUsed
@@ -32993,7 +33031,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def RuleMax(self):
-        r"""最大规则数
+        r"""<p>最大规则数</p>
         :rtype: int
         """
         return self._RuleMax
@@ -33004,7 +33042,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def Width(self):
-        r"""防火墙实例带宽
+        r"""<p>防火墙实例带宽</p>
         :rtype: int
         """
         return self._Width
@@ -33015,7 +33053,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def UserVpcWidth(self):
-        r"""用户VPC墙总带宽
+        r"""<p>用户VPC墙总带宽</p>
         :rtype: int
         """
         return self._UserVpcWidth
@@ -33026,7 +33064,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def JoinInsIdLst(self):
-        r"""接入的vpc列表
+        r"""<p>接入的vpc列表</p>
         :rtype: list of str
         """
         return self._JoinInsIdLst
@@ -33037,7 +33075,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def FlowMax(self):
-        r"""内网间峰值带宽 (单位 bps )
+        r"""<p>内网间峰值带宽 (单位 bps )</p>
         :rtype: int
         """
         return self._FlowMax
@@ -33048,7 +33086,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""实例引擎版本
+        r"""<p>实例引擎版本</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -33059,7 +33097,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def UpdateEnable(self):
-        r"""引擎是否可升级：0，不可升级；1，可升级
+        r"""<p>引擎是否可升级：0，不可升级；1，可升级</p>
         :rtype: int
         """
         return self._UpdateEnable
@@ -33070,7 +33108,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def TrafficMode(self):
-        r"""引擎运行模式，Normal:正常, OnlyRoute:透明模式
+        r"""<p>引擎运行模式，Normal:正常, OnlyRoute:透明模式</p>
         :rtype: str
         """
         return self._TrafficMode
@@ -33081,7 +33119,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def ReserveTime(self):
-        r"""引擎预约升级时间
+        r"""<p>引擎预约升级时间</p>
         :rtype: str
         """
         return self._ReserveTime
@@ -33092,7 +33130,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def ReserveVersion(self):
-        r"""预约引擎升级版本
+        r"""<p>预约引擎升级版本</p>
         :rtype: str
         """
         return self._ReserveVersion
@@ -33103,7 +33141,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def ReserveVersionState(self):
-        r"""引擎预约升级版本状态
+        r"""<p>引擎预约升级版本状态</p>
         :rtype: str
         """
         return self._ReserveVersionState
@@ -33114,7 +33152,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def ElasticSwitch(self):
-        r"""弹性开关 1打开 0关闭
+        r"""<p>弹性开关 1打开 0关闭</p>
         :rtype: int
         """
         return self._ElasticSwitch
@@ -33125,7 +33163,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def ElasticBandwidth(self):
-        r"""弹性带宽，单位Mbps
+        r"""<p>弹性带宽，单位Mbps</p>
         :rtype: int
         """
         return self._ElasticBandwidth
@@ -33136,9 +33174,7 @@ class VpcFwInstanceInfo(AbstractModel):
 
     @property
     def IsFirstAfterPay(self):
-        r"""是否首次开通按量付费
-1 是
-0 不是
+        r"""<p>是否首次开通按量付费<br>1 是<br>0 不是</p>
         :rtype: int
         """
         return self._IsFirstAfterPay
@@ -33146,6 +33182,17 @@ class VpcFwInstanceInfo(AbstractModel):
     @IsFirstAfterPay.setter
     def IsFirstAfterPay(self, IsFirstAfterPay):
         self._IsFirstAfterPay = IsFirstAfterPay
+
+    @property
+    def ElasticTrafficSwitch(self):
+        r"""<p>按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ElasticTrafficSwitch
+
+    @ElasticTrafficSwitch.setter
+    def ElasticTrafficSwitch(self, ElasticTrafficSwitch):
+        self._ElasticTrafficSwitch = ElasticTrafficSwitch
 
 
     def _deserialize(self, params):
@@ -33194,6 +33241,7 @@ class VpcFwInstanceInfo(AbstractModel):
         self._ElasticSwitch = params.get("ElasticSwitch")
         self._ElasticBandwidth = params.get("ElasticBandwidth")
         self._IsFirstAfterPay = params.get("IsFirstAfterPay")
+        self._ElasticTrafficSwitch = params.get("ElasticTrafficSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

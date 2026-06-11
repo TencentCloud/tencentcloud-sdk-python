@@ -400,7 +400,7 @@ class Cluster(AbstractModel):
         :type Remark: str
         :param _CreateTime: <p>集群创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: <p>最后一次操作集群的时间</p>
+        :param _UpdateTime: <p>最后一次操作集群的时间</p><p>默认值：-</p>
         :type UpdateTime: str
         :param _CuNum: <p>CU 数量</p>
         :type CuNum: int
@@ -419,7 +419,7 @@ class Cluster(AbstractModel):
         :param _Tags: <p>集群绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _IsolatedTime: <p>集群隔离时间; 没隔离时间，则为 -</p>
+        :param _IsolatedTime: <p>集群隔离时间; 没隔离时间，则为 -</p><p>默认值：-</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedTime: str
         :param _ExpireTime: <p>集群过期时间; 没过期概念，则为 -</p>
@@ -538,6 +538,14 @@ class Cluster(AbstractModel):
         :type ClusterProcessMsg: str
         :param _MaxCuPerJob: <p>单作业最大可配置 CU 数</p>
         :type MaxCuPerJob: int
+        :param _HiveMetastore: <p>元数据服务信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HiveMetastore: :class:`tencentcloud.oceanus.v20190422.models.HiveMetastoreInfo`
+        :param _SecurityGroupIds: <p>安全组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
+        :param _NetEniType: <p>弹性网卡方案，0：POD弹性网卡，1：Node弹性网卡。</p><p>枚举值：</p><ul><li>0： POD弹性网卡</li><li>1： Node弹性网卡</li></ul>
+        :type NetEniType: int
         """
         self._ClusterId = None
         self._Name = None
@@ -599,6 +607,9 @@ class Cluster(AbstractModel):
         self._CdcId = None
         self._ClusterProcessMsg = None
         self._MaxCuPerJob = None
+        self._HiveMetastore = None
+        self._SecurityGroupIds = None
+        self._NetEniType = None
 
     @property
     def ClusterId(self):
@@ -701,7 +712,7 @@ class Cluster(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""<p>最后一次操作集群的时间</p>
+        r"""<p>最后一次操作集群的时间</p><p>默认值：-</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -801,7 +812,7 @@ class Cluster(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        r"""<p>集群隔离时间; 没隔离时间，则为 -</p>
+        r"""<p>集群隔离时间; 没隔离时间，则为 -</p><p>默认值：-</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1296,6 +1307,41 @@ class Cluster(AbstractModel):
     def MaxCuPerJob(self, MaxCuPerJob):
         self._MaxCuPerJob = MaxCuPerJob
 
+    @property
+    def HiveMetastore(self):
+        r"""<p>元数据服务信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.HiveMetastoreInfo`
+        """
+        return self._HiveMetastore
+
+    @HiveMetastore.setter
+    def HiveMetastore(self, HiveMetastore):
+        self._HiveMetastore = HiveMetastore
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>安全组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def NetEniType(self):
+        r"""<p>弹性网卡方案，0：POD弹性网卡，1：Node弹性网卡。</p><p>枚举值：</p><ul><li>0： POD弹性网卡</li><li>1： Node弹性网卡</li></ul>
+        :rtype: int
+        """
+        return self._NetEniType
+
+    @NetEniType.setter
+    def NetEniType(self, NetEniType):
+        self._NetEniType = NetEniType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1404,6 +1450,11 @@ class Cluster(AbstractModel):
         self._CdcId = params.get("CdcId")
         self._ClusterProcessMsg = params.get("ClusterProcessMsg")
         self._MaxCuPerJob = params.get("MaxCuPerJob")
+        if params.get("HiveMetastore") is not None:
+            self._HiveMetastore = HiveMetastoreInfo()
+            self._HiveMetastore._deserialize(params.get("HiveMetastore"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._NetEniType = params.get("NetEniType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9425,6 +9476,224 @@ class HadoopYarnItem(AbstractModel):
         
 
 
+class HiveMetastoreInfo(AbstractModel):
+    r"""HiveMetastoreInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HiveMetastoreSerialId: <p>hms serialId</p>
+        :type HiveMetastoreSerialId: str
+        :param _ClusterGroupSerialId: <p>集群SerialId</p>
+        :type ClusterGroupSerialId: str
+        :param _Status: <p>状态枚举</p><p>枚举值：</p><ul><li>3： 运行中</li><li>1： 初始化中</li><li>2： 部署中</li><li>-2： 已删除</li></ul>
+        :type Status: int
+        :param _Cpu: <p>使用核数</p><p>单位：cu</p>
+        :type Cpu: int
+        :param _MemGB: <p>使用内存资源</p><p>单位：GB</p>
+        :type MemGB: int
+        :param _Replica: <p>副本数</p>
+        :type Replica: int
+        :param _HiveUri: <p>hms 访问uri</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HiveUri: str
+        :param _HiveNamespace: <p>命名空间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HiveNamespace: str
+        :param _CreateTime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _HiveMetastoreWarehouseDir: <p>Warehouse地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HiveMetastoreWarehouseDir: str
+        :param _Config: <p>高级参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: list of Property
+        """
+        self._HiveMetastoreSerialId = None
+        self._ClusterGroupSerialId = None
+        self._Status = None
+        self._Cpu = None
+        self._MemGB = None
+        self._Replica = None
+        self._HiveUri = None
+        self._HiveNamespace = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._HiveMetastoreWarehouseDir = None
+        self._Config = None
+
+    @property
+    def HiveMetastoreSerialId(self):
+        r"""<p>hms serialId</p>
+        :rtype: str
+        """
+        return self._HiveMetastoreSerialId
+
+    @HiveMetastoreSerialId.setter
+    def HiveMetastoreSerialId(self, HiveMetastoreSerialId):
+        self._HiveMetastoreSerialId = HiveMetastoreSerialId
+
+    @property
+    def ClusterGroupSerialId(self):
+        r"""<p>集群SerialId</p>
+        :rtype: str
+        """
+        return self._ClusterGroupSerialId
+
+    @ClusterGroupSerialId.setter
+    def ClusterGroupSerialId(self, ClusterGroupSerialId):
+        self._ClusterGroupSerialId = ClusterGroupSerialId
+
+    @property
+    def Status(self):
+        r"""<p>状态枚举</p><p>枚举值：</p><ul><li>3： 运行中</li><li>1： 初始化中</li><li>2： 部署中</li><li>-2： 已删除</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Cpu(self):
+        r"""<p>使用核数</p><p>单位：cu</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def MemGB(self):
+        r"""<p>使用内存资源</p><p>单位：GB</p>
+        :rtype: int
+        """
+        return self._MemGB
+
+    @MemGB.setter
+    def MemGB(self, MemGB):
+        self._MemGB = MemGB
+
+    @property
+    def Replica(self):
+        r"""<p>副本数</p>
+        :rtype: int
+        """
+        return self._Replica
+
+    @Replica.setter
+    def Replica(self, Replica):
+        self._Replica = Replica
+
+    @property
+    def HiveUri(self):
+        r"""<p>hms 访问uri</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HiveUri
+
+    @HiveUri.setter
+    def HiveUri(self, HiveUri):
+        self._HiveUri = HiveUri
+
+    @property
+    def HiveNamespace(self):
+        r"""<p>命名空间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HiveNamespace
+
+    @HiveNamespace.setter
+    def HiveNamespace(self, HiveNamespace):
+        self._HiveNamespace = HiveNamespace
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def HiveMetastoreWarehouseDir(self):
+        r"""<p>Warehouse地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HiveMetastoreWarehouseDir
+
+    @HiveMetastoreWarehouseDir.setter
+    def HiveMetastoreWarehouseDir(self, HiveMetastoreWarehouseDir):
+        self._HiveMetastoreWarehouseDir = HiveMetastoreWarehouseDir
+
+    @property
+    def Config(self):
+        r"""<p>高级参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Property
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+
+    def _deserialize(self, params):
+        self._HiveMetastoreSerialId = params.get("HiveMetastoreSerialId")
+        self._ClusterGroupSerialId = params.get("ClusterGroupSerialId")
+        self._Status = params.get("Status")
+        self._Cpu = params.get("Cpu")
+        self._MemGB = params.get("MemGB")
+        self._Replica = params.get("Replica")
+        self._HiveUri = params.get("HiveUri")
+        self._HiveNamespace = params.get("HiveNamespace")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._HiveMetastoreWarehouseDir = params.get("HiveMetastoreWarehouseDir")
+        if params.get("Config") is not None:
+            self._Config = []
+            for item in params.get("Config"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Config.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JobConfig(AbstractModel):
     r"""作业配置详情
 
@@ -14829,9 +15098,9 @@ class Setats(AbstractModel):
         :type ImageVersion: str
         :param _WebUIType: <p>类型：0 公网，1 内网</p><p>枚举值：</p><ul><li>0： 公网</li><li>1： 内网</li></ul><p>默认值：0</p>
         :type WebUIType: int
-        :param _Name: <p>setats集群的名字</p>
+        :param _Name: <p>Setats集群名字</p>
         :type Name: str
-        :param _Remark: <p>setats集群注释</p>
+        :param _Remark: <p>Setats集群描述</p>
         :type Remark: str
         """
         self._SetatsSerialId = None
@@ -15055,7 +15324,7 @@ class Setats(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>setats集群的名字</p>
+        r"""<p>Setats集群名字</p>
         :rtype: str
         """
         return self._Name
@@ -15066,7 +15335,7 @@ class Setats(AbstractModel):
 
     @property
     def Remark(self):
-        r"""<p>setats集群注释</p>
+        r"""<p>Setats集群描述</p>
         :rtype: str
         """
         return self._Remark

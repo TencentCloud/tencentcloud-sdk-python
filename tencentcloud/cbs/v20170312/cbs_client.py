@@ -132,6 +132,29 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AttachRemoteDisks(self, request):
+        r"""本接口用于挂载一个或多个弹性单副本SSD硬盘到指定的云服务器实例上。仅支持弹性盘类型。
+
+        :param request: Request instance for AttachRemoteDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.AttachRemoteDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.AttachRemoteDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachRemoteDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachRemoteDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindAutoSnapshotPolicy(self, request):
         r"""本接口（BindAutoSnapshotPolicy）用于绑定云硬盘到指定的定期快照策略。
 
@@ -274,6 +297,29 @@ class CbsClient(AbstractClient):
             body = self.call("CreateDisks", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRemoteDisks(self, request):
+        r"""本接口用于创建弹性单副本SSD硬盘并自动挂载到指定实例。弹性盘在创建时就需要绑定目标实例，计费回调后由CBS自身完成装箱+挂载的全流程。
+
+        :param request: Request instance for CreateRemoteDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.CreateRemoteDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CreateRemoteDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRemoteDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRemoteDisksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -609,6 +655,75 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRemoteDiskConfigQuota(self, request):
+        r"""本接口用于查询单副本SSD硬盘机型搭配配额。可根据机型族、机型规格、可用区、付费方式等条件过滤查询结果。
+
+        :param request: Request instance for DescribeRemoteDiskConfigQuota.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeRemoteDiskConfigQuotaRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeRemoteDiskConfigQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRemoteDiskConfigQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRemoteDiskConfigQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRemoteDisks(self, request):
+        r"""本接口用于查询已购买的单副本SSD硬盘列表。可根据单副本SSD硬盘ID、类型、状态等条件过滤查询结果。
+
+        :param request: Request instance for DescribeRemoteDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeRemoteDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeRemoteDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRemoteDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRemoteDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRemoteDisksDeniedActions(self, request):
+        r"""本接口用于查询一个或多个单副本SSD硬盘的操作限制列表。
+
+        :param request: Request instance for DescribeRemoteDisksDeniedActions.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeRemoteDisksDeniedActionsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeRemoteDisksDeniedActionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRemoteDisksDeniedActions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRemoteDisksDeniedActionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSnapshotGroups(self, request):
         r"""本接口（DescribeSnapshotGroups）用于查询快照组列表。
         * 可以根据快照组ID、快照组状态、快照组关联的快照ID等来查询快照组列表，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
@@ -732,6 +847,29 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DetachRemoteDisks(self, request):
+        r"""本接口用于从云服务器实例上卸载一个或多个弹性单副本SSD硬盘。仅支持弹性盘类型。
+
+        :param request: Request instance for DetachRemoteDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DetachRemoteDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DetachRemoteDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetachRemoteDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetachRemoteDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetSnapOverview(self, request):
         r"""为进一步规范化API命名，该接口决定预下线，新接口命名为：DescribeSnapshotOverview
 
@@ -784,6 +922,29 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquirePriceCreateRemoteDisks(self, request):
+        r"""该接口用于查询创建弹性单副本SSD硬盘的价格。支持预付费和后付费两种计费类型的询价。
+
+        :param request: Request instance for InquirePriceCreateRemoteDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.InquirePriceCreateRemoteDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.InquirePriceCreateRemoteDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceCreateRemoteDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePriceCreateRemoteDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquirePriceModifyDiskBackupQuota(self, request):
         r"""本接口（InquirePricePriceModifyDiskBackupQuota）用于修改云硬盘备份点配额询价。
 
@@ -821,6 +982,29 @@ class CbsClient(AbstractClient):
             body = self.call("InquirePriceModifyDiskExtraPerformance", params, headers=headers)
             response = json.loads(body)
             model = models.InquirePriceModifyDiskExtraPerformanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquirePriceRenewRemoteDisks(self, request):
+        r"""该接口用于查询续费弹性单副本SSD硬盘的价格。
+
+        :param request: Request instance for InquirePriceRenewRemoteDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.InquirePriceRenewRemoteDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.InquirePriceRenewRemoteDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceRenewRemoteDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePriceRenewRemoteDisksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1052,6 +1236,29 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRemoteDiskAttributes(self, request):
+        r"""本接口用于修改单副本SSD硬盘的属性，包括硬盘名称和项目ID。
+
+        :param request: Request instance for ModifyRemoteDiskAttributes.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyRemoteDiskAttributesRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifyRemoteDiskAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRemoteDiskAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRemoteDiskAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySnapshotAttribute(self, request):
         r"""本接口（ModifySnapshotAttribute）用于修改指定快照的属性。
 
@@ -1133,6 +1340,29 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RenewRemoteDisk(self, request):
+        r"""该接口用于续费弹性单副本SSD硬盘。用户发起续费下单后，由计费系统完成扣费和到期时间更新。
+
+        :param request: Request instance for RenewRemoteDisk.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.RenewRemoteDiskRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.RenewRemoteDiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewRemoteDisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewRemoteDiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResizeDisk(self, request):
         r"""本接口（ResizeDisk）用于扩容云硬盘。
 
@@ -1150,6 +1380,52 @@ class CbsClient(AbstractClient):
             body = self.call("ResizeDisk", params, headers=headers)
             response = json.loads(body)
             model = models.ResizeDiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchParameterCreateRemoteDisks(self, request):
+        r"""该接口用于获取创建弹性单副本SSD硬盘的订单参数，生成的订单参数由前端透传到计费系统用于发货。创建时必须指定云服务器实例。
+
+        :param request: Request instance for SwitchParameterCreateRemoteDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.SwitchParameterCreateRemoteDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.SwitchParameterCreateRemoteDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchParameterCreateRemoteDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchParameterCreateRemoteDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchParameterRenewRemoteDisks(self, request):
+        r"""该接口用于获取续费弹性单副本SSD硬盘的订单参数，生成的订单参数由前端透传到计费系统用于续费。
+
+        :param request: Request instance for SwitchParameterRenewRemoteDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.SwitchParameterRenewRemoteDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.SwitchParameterRenewRemoteDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchParameterRenewRemoteDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchParameterRenewRemoteDisksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1177,6 +1453,29 @@ class CbsClient(AbstractClient):
             body = self.call("TerminateDisks", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateRemoteDisks(self, request):
+        r"""本接口用于销毁一个或多个弹性单副本SSD硬盘。仅支持弹性盘类型，且要求硬盘处于 INITED 或 UNINIT 状态。
+
+        :param request: Request instance for TerminateRemoteDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.TerminateRemoteDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.TerminateRemoteDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateRemoteDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateRemoteDisksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

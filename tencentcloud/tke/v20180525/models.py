@@ -33441,6 +33441,8 @@ class Extenders(AbstractModel):
         :type PreemptVerb: str
         :param _NodeCacheCapable: <p>节点缓存能力</p>
         :type NodeCacheCapable: bool
+        :param _Ignorable: <p>extender 是否可忽略</p>
+        :type Ignorable: bool
         """
         self._FilterVerb = None
         self._PrioritizeVerb = None
@@ -33449,6 +33451,7 @@ class Extenders(AbstractModel):
         self._ExtenderClientConfig = None
         self._PreemptVerb = None
         self._NodeCacheCapable = None
+        self._Ignorable = None
 
     @property
     def FilterVerb(self):
@@ -33527,6 +33530,17 @@ class Extenders(AbstractModel):
     def NodeCacheCapable(self, NodeCacheCapable):
         self._NodeCacheCapable = NodeCacheCapable
 
+    @property
+    def Ignorable(self):
+        r"""<p>extender 是否可忽略</p>
+        :rtype: bool
+        """
+        return self._Ignorable
+
+    @Ignorable.setter
+    def Ignorable(self, Ignorable):
+        self._Ignorable = Ignorable
+
 
     def _deserialize(self, params):
         self._FilterVerb = params.get("FilterVerb")
@@ -33543,6 +33557,7 @@ class Extenders(AbstractModel):
             self._ExtenderClientConfig._deserialize(params.get("ExtenderClientConfig"))
         self._PreemptVerb = params.get("PreemptVerb")
         self._NodeCacheCapable = params.get("NodeCacheCapable")
+        self._Ignorable = params.get("Ignorable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -320,25 +320,25 @@ class ChatAIRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionId: 会话ID
+        :param _SessionId: <p>会话ID</p>
         :type SessionId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Question: 问题内容
+        :param _Question: <p>问题内容</p>
         :type Question: str
-        :param _Context: 上下文
+        :param _Context: <p>上下文</p>
         :type Context: str
-        :param _Model: 模型
+        :param _Model: <p>模型</p>
         :type Model: str
-        :param _DeepThinking: 是否深度思考
+        :param _DeepThinking: <p>是否深度思考</p>
         :type DeepThinking: bool
-        :param _DataSourceIds: 数据源id
+        :param _DataSourceIds: <p>数据源id</p>
         :type DataSourceIds: list of str
-        :param _AgentType: agent类型
+        :param _AgentType: <p>agent类型</p>
         :type AgentType: str
-        :param _OldRecordId: 需要重新生成答案的记录ID
+        :param _OldRecordId: <p>需要重新生成答案的记录ID</p>
         :type OldRecordId: str
-        :param _KnowledgeBaseIds: 知识库id列表
+        :param _KnowledgeBaseIds: <p>知识库id列表</p>
         :type KnowledgeBaseIds: list of str
         """
         self._SessionId = None
@@ -354,7 +354,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""会话ID
+        r"""<p>会话ID</p>
         :rtype: str
         """
         return self._SessionId
@@ -365,7 +365,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -376,7 +376,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def Question(self):
-        r"""问题内容
+        r"""<p>问题内容</p>
         :rtype: str
         """
         return self._Question
@@ -387,7 +387,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def Context(self):
-        r"""上下文
+        r"""<p>上下文</p>
         :rtype: str
         """
         return self._Context
@@ -398,7 +398,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""模型
+        r"""<p>模型</p>
         :rtype: str
         """
         return self._Model
@@ -409,7 +409,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def DeepThinking(self):
-        r"""是否深度思考
+        r"""<p>是否深度思考</p>
         :rtype: bool
         """
         return self._DeepThinking
@@ -420,7 +420,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def DataSourceIds(self):
-        r"""数据源id
+        r"""<p>数据源id</p>
         :rtype: list of str
         """
         return self._DataSourceIds
@@ -431,7 +431,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def AgentType(self):
-        r"""agent类型
+        r"""<p>agent类型</p>
         :rtype: str
         """
         return self._AgentType
@@ -442,7 +442,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def OldRecordId(self):
-        r"""需要重新生成答案的记录ID
+        r"""<p>需要重新生成答案的记录ID</p>
         :rtype: str
         """
         return self._OldRecordId
@@ -453,7 +453,7 @@ class ChatAIRequest(AbstractModel):
 
     @property
     def KnowledgeBaseIds(self):
-        r"""知识库id列表
+        r"""<p>知识库id列表</p>
         :rtype: list of str
         """
         return self._KnowledgeBaseIds
@@ -519,23 +519,26 @@ class Chunk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 切片ID
+        :param _Id: <p>切片ID</p>
         :type Id: str
-        :param _Content: 切片内容
+        :param _Content: <p>切片内容</p>
         :type Content: str
-        :param _Size: 切片的字数
+        :param _Size: <p>切片的字数</p>
         :type Size: int
-        :param _Summary: 切片概要
+        :param _Summary: <p>切片概要</p>
         :type Summary: str
+        :param _ChunkSource: <p>分段类型</p><p>枚举值：</p><ul><li>0： 自动分段</li><li>1： 新建分段</li></ul>
+        :type ChunkSource: int
         """
         self._Id = None
         self._Content = None
         self._Size = None
         self._Summary = None
+        self._ChunkSource = None
 
     @property
     def Id(self):
-        r"""切片ID
+        r"""<p>切片ID</p>
         :rtype: str
         """
         return self._Id
@@ -546,7 +549,7 @@ class Chunk(AbstractModel):
 
     @property
     def Content(self):
-        r"""切片内容
+        r"""<p>切片内容</p>
         :rtype: str
         """
         return self._Content
@@ -557,7 +560,7 @@ class Chunk(AbstractModel):
 
     @property
     def Size(self):
-        r"""切片的字数
+        r"""<p>切片的字数</p>
         :rtype: int
         """
         return self._Size
@@ -568,7 +571,7 @@ class Chunk(AbstractModel):
 
     @property
     def Summary(self):
-        r"""切片概要
+        r"""<p>切片概要</p>
         :rtype: str
         """
         return self._Summary
@@ -577,12 +580,24 @@ class Chunk(AbstractModel):
     def Summary(self, Summary):
         self._Summary = Summary
 
+    @property
+    def ChunkSource(self):
+        r"""<p>分段类型</p><p>枚举值：</p><ul><li>0： 自动分段</li><li>1： 新建分段</li></ul>
+        :rtype: int
+        """
+        return self._ChunkSource
+
+    @ChunkSource.setter
+    def ChunkSource(self, ChunkSource):
+        self._ChunkSource = ChunkSource
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Content = params.get("Content")
         self._Size = params.get("Size")
         self._Summary = params.get("Summary")
+        self._ChunkSource = params.get("ChunkSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1278,6 +1293,8 @@ class FileInfo(AbstractModel):
         :type CreateUser: str
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
         :param _ChunkConfig: <p>分片策略</p>
         :type ChunkConfig: :class:`tencentcloud.dataagent.v20250513.models.KnowledgeTaskConfig`
         :param _Source: <p>文件来源0=unknow,1=user_cos,2=local</p>
@@ -1300,6 +1317,7 @@ class FileInfo(AbstractModel):
         self._Status = None
         self._CreateUser = None
         self._CreateTime = None
+        self._UpdateTime = None
         self._ChunkConfig = None
         self._Source = None
         self._FileUrl = None
@@ -1384,6 +1402,17 @@ class FileInfo(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
     @property
     def ChunkConfig(self):
@@ -1471,6 +1500,7 @@ class FileInfo(AbstractModel):
         self._Status = params.get("Status")
         self._CreateUser = params.get("CreateUser")
         self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         if params.get("ChunkConfig") is not None:
             self._ChunkConfig = KnowledgeTaskConfig()
             self._ChunkConfig._deserialize(params.get("ChunkConfig"))
@@ -2245,6 +2275,8 @@ class KnowledgeTaskConfig(AbstractModel):
         :type GenParaSummary: int
         :param _EnableImageUnderstanding: <p>0：不开启图片理解，1：开启图片理解。默认1</p><p>取值范围：[1, 10000]</p><p>默认值：1</p>
         :type EnableImageUnderstanding: int
+        :param _EnableExtractDb: <p>是否开启表格结构化提取</p><p>枚举值：</p><ul><li>0： 不开启表格提取</li><li>1： 开启表格提取</li></ul><p>默认值：1</p>
+        :type EnableExtractDb: int
         """
         self._ChunkType = None
         self._MaxChunkSize = None
@@ -2255,6 +2287,7 @@ class KnowledgeTaskConfig(AbstractModel):
         self._GenDocSummary = None
         self._GenParaSummary = None
         self._EnableImageUnderstanding = None
+        self._EnableExtractDb = None
 
     @property
     def ChunkType(self):
@@ -2356,6 +2389,17 @@ class KnowledgeTaskConfig(AbstractModel):
     def EnableImageUnderstanding(self, EnableImageUnderstanding):
         self._EnableImageUnderstanding = EnableImageUnderstanding
 
+    @property
+    def EnableExtractDb(self):
+        r"""<p>是否开启表格结构化提取</p><p>枚举值：</p><ul><li>0： 不开启表格提取</li><li>1： 开启表格提取</li></ul><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._EnableExtractDb
+
+    @EnableExtractDb.setter
+    def EnableExtractDb(self, EnableExtractDb):
+        self._EnableExtractDb = EnableExtractDb
+
 
     def _deserialize(self, params):
         self._ChunkType = params.get("ChunkType")
@@ -2372,6 +2416,7 @@ class KnowledgeTaskConfig(AbstractModel):
         self._GenDocSummary = params.get("GenDocSummary")
         self._GenParaSummary = params.get("GenParaSummary")
         self._EnableImageUnderstanding = params.get("EnableImageUnderstanding")
+        self._EnableExtractDb = params.get("EnableExtractDb")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2530,26 +2575,29 @@ class ModifyChunkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _FileId: 文件ID
+        :param _FileId: <p>文件ID</p>
         :type FileId: str
-        :param _ChunkId: 切片ID
+        :param _ChunkId: <p>切片ID</p>
         :type ChunkId: str
-        :param _Content: 编辑后的文本
+        :param _Content: <p>编辑后的文本</p>
         :type Content: str
-        :param _KnowledgeBaseId: 知识库id
+        :param _Summary: <p>分段概要</p>
+        :type Summary: str
+        :param _KnowledgeBaseId: <p>知识库id</p>
         :type KnowledgeBaseId: str
         """
         self._InstanceId = None
         self._FileId = None
         self._ChunkId = None
         self._Content = None
+        self._Summary = None
         self._KnowledgeBaseId = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2560,7 +2608,7 @@ class ModifyChunkRequest(AbstractModel):
 
     @property
     def FileId(self):
-        r"""文件ID
+        r"""<p>文件ID</p>
         :rtype: str
         """
         return self._FileId
@@ -2571,7 +2619,7 @@ class ModifyChunkRequest(AbstractModel):
 
     @property
     def ChunkId(self):
-        r"""切片ID
+        r"""<p>切片ID</p>
         :rtype: str
         """
         return self._ChunkId
@@ -2582,7 +2630,7 @@ class ModifyChunkRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""编辑后的文本
+        r"""<p>编辑后的文本</p>
         :rtype: str
         """
         return self._Content
@@ -2592,8 +2640,19 @@ class ModifyChunkRequest(AbstractModel):
         self._Content = Content
 
     @property
+    def Summary(self):
+        r"""<p>分段概要</p>
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
     def KnowledgeBaseId(self):
-        r"""知识库id
+        r"""<p>知识库id</p>
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -2608,6 +2667,7 @@ class ModifyChunkRequest(AbstractModel):
         self._FileId = params.get("FileId")
         self._ChunkId = params.get("ChunkId")
         self._Content = params.get("Content")
+        self._Summary = params.get("Summary")
         self._KnowledgeBaseId = params.get("KnowledgeBaseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2964,11 +3024,11 @@ class QueryChunkListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Page: 表示第一页
+        :param _Page: <p>表示第一页</p>
         :type Page: int
-        :param _PageSize: 默认一页展示 10 条
+        :param _PageSize: <p>默认一页展示 10 条</p>
         :type PageSize: int
-        :param _KnowledgeBaseId: 知识库id
+        :param _KnowledgeBaseId: <p>知识库id</p>
         :type KnowledgeBaseId: str
         """
         self._Page = None
@@ -2977,7 +3037,7 @@ class QueryChunkListRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""表示第一页
+        r"""<p>表示第一页</p>
         :rtype: int
         """
         return self._Page
@@ -2988,7 +3048,7 @@ class QueryChunkListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""默认一页展示 10 条
+        r"""<p>默认一页展示 10 条</p>
         :rtype: int
         """
         return self._PageSize
@@ -2999,7 +3059,7 @@ class QueryChunkListRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        r"""知识库id
+        r"""<p>知识库id</p>
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -3030,20 +3090,26 @@ class QueryChunkListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _Chunks: 分片信息
+        :param _AutoTotal: <p>文档的自动分段数</p>
+        :type AutoTotal: int
+        :param _ManualTotal: <p>文档的手动新建分段数</p>
+        :type ManualTotal: int
+        :param _Chunks: <p>分片信息</p>
         :type Chunks: list of Chunk
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
+        self._AutoTotal = None
+        self._ManualTotal = None
         self._Chunks = None
         self._RequestId = None
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -3053,8 +3119,30 @@ class QueryChunkListResponse(AbstractModel):
         self._Total = Total
 
     @property
+    def AutoTotal(self):
+        r"""<p>文档的自动分段数</p>
+        :rtype: int
+        """
+        return self._AutoTotal
+
+    @AutoTotal.setter
+    def AutoTotal(self, AutoTotal):
+        self._AutoTotal = AutoTotal
+
+    @property
+    def ManualTotal(self):
+        r"""<p>文档的手动新建分段数</p>
+        :rtype: int
+        """
+        return self._ManualTotal
+
+    @ManualTotal.setter
+    def ManualTotal(self, ManualTotal):
+        self._ManualTotal = ManualTotal
+
+    @property
     def Chunks(self):
-        r"""分片信息
+        r"""<p>分片信息</p>
         :rtype: list of Chunk
         """
         return self._Chunks
@@ -3077,6 +3165,8 @@ class QueryChunkListResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Total = params.get("Total")
+        self._AutoTotal = params.get("AutoTotal")
+        self._ManualTotal = params.get("ManualTotal")
         if params.get("Chunks") is not None:
             self._Chunks = []
             for item in params.get("Chunks"):

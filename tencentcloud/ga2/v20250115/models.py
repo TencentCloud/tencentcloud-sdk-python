@@ -648,24 +648,28 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _ForwardingPolicyId: 策略ID。
+        :param _ForwardingPolicyId: <p>策略ID。</p>
         :type ForwardingPolicyId: str
-        :param _RuleConditions: 七层转发规则条件信息。
+        :param _RuleConditions: <p>七层转发规则条件信息。</p>
         :type RuleConditions: list of RuleCondition
-        :param _RuleActions: 七层转发规则行为信息。
+        :param _RuleActions: <p>七层转发规则行为信息。</p>
         :type RuleActions: list of RuleAction
-        :param _OriginHeaders: 回源Header信息。
+        :param _OriginHeaders: <p>回源Header信息。</p>
         :type OriginHeaders: list of OriginHeader
-        :param _EnableOriginSni: 是否开启回源sni。
+        :param _EnableOriginSni: <p>是否开启回源sni。</p>
         :type EnableOriginSni: bool
-        :param _OriginSni: 回源sni。
+        :param _OriginSni: <p>回源sni。</p>
         :type OriginSni: str
-        :param _OriginHost: 回源host。
+        :param _OriginHost: <p>回源host。</p>
         :type OriginHost: str
+        :param _ResponseHeaders: <p>源站响应头</p>
+        :type ResponseHeaders: list of ResponseHeaders
+        :param _HideResponseHeaders: <p>删除源站响应头</p>
+        :type HideResponseHeaders: list of HideResponseHeaders
         """
         self._GlobalAcceleratorId = None
         self._ListenerId = None
@@ -676,10 +680,12 @@ class CreateForwardingRuleRequest(AbstractModel):
         self._EnableOriginSni = None
         self._OriginSni = None
         self._OriginHost = None
+        self._ResponseHeaders = None
+        self._HideResponseHeaders = None
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -690,7 +696,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -701,7 +707,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def ForwardingPolicyId(self):
-        r"""策略ID。
+        r"""<p>策略ID。</p>
         :rtype: str
         """
         return self._ForwardingPolicyId
@@ -712,7 +718,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def RuleConditions(self):
-        r"""七层转发规则条件信息。
+        r"""<p>七层转发规则条件信息。</p>
         :rtype: list of RuleCondition
         """
         return self._RuleConditions
@@ -723,7 +729,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def RuleActions(self):
-        r"""七层转发规则行为信息。
+        r"""<p>七层转发规则行为信息。</p>
         :rtype: list of RuleAction
         """
         return self._RuleActions
@@ -734,7 +740,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginHeaders(self):
-        r"""回源Header信息。
+        r"""<p>回源Header信息。</p>
         :rtype: list of OriginHeader
         """
         return self._OriginHeaders
@@ -745,7 +751,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def EnableOriginSni(self):
-        r"""是否开启回源sni。
+        r"""<p>是否开启回源sni。</p>
         :rtype: bool
         """
         return self._EnableOriginSni
@@ -756,7 +762,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginSni(self):
-        r"""回源sni。
+        r"""<p>回源sni。</p>
         :rtype: str
         """
         return self._OriginSni
@@ -767,7 +773,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginHost(self):
-        r"""回源host。
+        r"""<p>回源host。</p>
         :rtype: str
         """
         return self._OriginHost
@@ -775,6 +781,28 @@ class CreateForwardingRuleRequest(AbstractModel):
     @OriginHost.setter
     def OriginHost(self, OriginHost):
         self._OriginHost = OriginHost
+
+    @property
+    def ResponseHeaders(self):
+        r"""<p>源站响应头</p>
+        :rtype: list of ResponseHeaders
+        """
+        return self._ResponseHeaders
+
+    @ResponseHeaders.setter
+    def ResponseHeaders(self, ResponseHeaders):
+        self._ResponseHeaders = ResponseHeaders
+
+    @property
+    def HideResponseHeaders(self):
+        r"""<p>删除源站响应头</p>
+        :rtype: list of HideResponseHeaders
+        """
+        return self._HideResponseHeaders
+
+    @HideResponseHeaders.setter
+    def HideResponseHeaders(self, HideResponseHeaders):
+        self._HideResponseHeaders = HideResponseHeaders
 
 
     def _deserialize(self, params):
@@ -802,6 +830,18 @@ class CreateForwardingRuleRequest(AbstractModel):
         self._EnableOriginSni = params.get("EnableOriginSni")
         self._OriginSni = params.get("OriginSni")
         self._OriginHost = params.get("OriginHost")
+        if params.get("ResponseHeaders") is not None:
+            self._ResponseHeaders = []
+            for item in params.get("ResponseHeaders"):
+                obj = ResponseHeaders()
+                obj._deserialize(item)
+                self._ResponseHeaders.append(obj)
+        if params.get("HideResponseHeaders") is not None:
+            self._HideResponseHeaders = []
+            for item in params.get("HideResponseHeaders"):
+                obj = HideResponseHeaders()
+                obj._deserialize(item)
+                self._HideResponseHeaders.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -819,9 +859,9 @@ class CreateForwardingRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
-        :param _ForwardingRuleId: 七层转发规则ID。
+        :param _ForwardingRuleId: <p>七层转发规则ID。</p>
         :type ForwardingRuleId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -832,7 +872,7 @@ class CreateForwardingRuleResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -843,7 +883,7 @@ class CreateForwardingRuleResponse(AbstractModel):
 
     @property
     def ForwardingRuleId(self):
-        r"""七层转发规则ID。
+        r"""<p>七层转发规则ID。</p>
         :rtype: str
         """
         return self._ForwardingRuleId
@@ -1081,6 +1121,8 @@ class CreateListenerRequest(AbstractModel):
         :type ServerCertificates: list of str
         :param _ClientCaCertificates: <p>客户端证书。</p>
         :type ClientCaCertificates: list of str
+        :param _HttpVersion: <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
+        :type HttpVersion: str
         """
         self._GlobalAcceleratorId = None
         self._Name = None
@@ -1097,6 +1139,7 @@ class CreateListenerRequest(AbstractModel):
         self._CipherPolicyId = None
         self._ServerCertificates = None
         self._ClientCaCertificates = None
+        self._HttpVersion = None
 
     @property
     def GlobalAcceleratorId(self):
@@ -1263,6 +1306,17 @@ class CreateListenerRequest(AbstractModel):
     def ClientCaCertificates(self, ClientCaCertificates):
         self._ClientCaCertificates = ClientCaCertificates
 
+    @property
+    def HttpVersion(self):
+        r"""<p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
+        :rtype: str
+        """
+        return self._HttpVersion
+
+    @HttpVersion.setter
+    def HttpVersion(self, HttpVersion):
+        self._HttpVersion = HttpVersion
+
 
     def _deserialize(self, params):
         self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
@@ -1282,6 +1336,7 @@ class CreateListenerRequest(AbstractModel):
         self._CipherPolicyId = params.get("CipherPolicyId")
         self._ServerCertificates = params.get("ServerCertificates")
         self._ClientCaCertificates = params.get("ClientCaCertificates")
+        self._HttpVersion = params.get("HttpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3212,6 +3267,8 @@ class EndpointGroupConfiguration(AbstractModel):
         :type IspType: str
         :param _CipherPolicyId: <p>HPPTS加密算法套件</p>
         :type CipherPolicyId: str
+        :param _HttpVersion: <p>HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        :type HttpVersion: str
         """
         self._Name = None
         self._EndpointGroupRegion = None
@@ -3235,6 +3292,7 @@ class EndpointGroupConfiguration(AbstractModel):
         self._PortOverrides = None
         self._IspType = None
         self._CipherPolicyId = None
+        self._HttpVersion = None
 
     @property
     def Name(self):
@@ -3478,6 +3536,17 @@ class EndpointGroupConfiguration(AbstractModel):
     def CipherPolicyId(self, CipherPolicyId):
         self._CipherPolicyId = CipherPolicyId
 
+    @property
+    def HttpVersion(self):
+        r"""<p>HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        :rtype: str
+        """
+        return self._HttpVersion
+
+    @HttpVersion.setter
+    def HttpVersion(self, HttpVersion):
+        self._HttpVersion = HttpVersion
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3512,6 +3581,7 @@ class EndpointGroupConfiguration(AbstractModel):
                 self._PortOverrides.append(obj)
         self._IspType = params.get("IspType")
         self._CipherPolicyId = params.get("CipherPolicyId")
+        self._HttpVersion = params.get("HttpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3585,6 +3655,8 @@ class EndpointGroupConfigurationSet(AbstractModel):
         :type IspType: str
         :param _CipherPolicyId: <p>HPPTS加密算法套件</p>
         :type CipherPolicyId: str
+        :param _HttpVersion: <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        :type HttpVersion: str
         """
         self._GlobalAcceleratorId = None
         self._ListenerId = None
@@ -3614,6 +3686,7 @@ class EndpointGroupConfigurationSet(AbstractModel):
         self._OriginPublicIps = None
         self._IspType = None
         self._CipherPolicyId = None
+        self._HttpVersion = None
 
     @property
     def GlobalAcceleratorId(self):
@@ -3923,6 +3996,17 @@ class EndpointGroupConfigurationSet(AbstractModel):
     def CipherPolicyId(self, CipherPolicyId):
         self._CipherPolicyId = CipherPolicyId
 
+    @property
+    def HttpVersion(self):
+        r"""<p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        :rtype: str
+        """
+        return self._HttpVersion
+
+    @HttpVersion.setter
+    def HttpVersion(self, HttpVersion):
+        self._HttpVersion = HttpVersion
+
 
     def _deserialize(self, params):
         self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
@@ -3963,6 +4047,7 @@ class EndpointGroupConfigurationSet(AbstractModel):
         self._OriginPublicIps = params.get("OriginPublicIps")
         self._IspType = params.get("IspType")
         self._CipherPolicyId = params.get("CipherPolicyId")
+        self._HttpVersion = params.get("HttpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4529,6 +4614,57 @@ class GlobalAcceleratorSet(AbstractModel):
         
 
 
+class HideResponseHeaders(AbstractModel):
+    r"""隐藏Header
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>key</p>
+        :type Key: str
+        :param _Value: <p>value</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>value</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IpAddressInfoSet(AbstractModel):
     r"""加速地域公网IP信息
 
@@ -5070,6 +5206,8 @@ class ModifyEndpointGroupRequest(AbstractModel):
         :type PortOverrides: list of PortOverride
         :param _CipherPolicyId: <p>HPPTS加密算法套件</p>
         :type CipherPolicyId: str
+        :param _HttpVersion: <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        :type HttpVersion: str
         """
         self._GlobalAcceleratorId = None
         self._ListenerId = None
@@ -5094,6 +5232,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
         self._ForwardProtocol = None
         self._PortOverrides = None
         self._CipherPolicyId = None
+        self._HttpVersion = None
 
     @property
     def GlobalAcceleratorId(self):
@@ -5348,6 +5487,17 @@ class ModifyEndpointGroupRequest(AbstractModel):
     def CipherPolicyId(self, CipherPolicyId):
         self._CipherPolicyId = CipherPolicyId
 
+    @property
+    def HttpVersion(self):
+        r"""<p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        :rtype: str
+        """
+        return self._HttpVersion
+
+    @HttpVersion.setter
+    def HttpVersion(self, HttpVersion):
+        self._HttpVersion = HttpVersion
+
 
     def _deserialize(self, params):
         self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
@@ -5383,6 +5533,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PortOverrides.append(obj)
         self._CipherPolicyId = params.get("CipherPolicyId")
+        self._HttpVersion = params.get("HttpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5567,26 +5718,30 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _ForwardingPolicyId: 策略ID。
+        :param _ForwardingPolicyId: <p>策略ID。</p>
         :type ForwardingPolicyId: str
-        :param _ForwardingRuleId: 七层转发规则ID。
+        :param _ForwardingRuleId: <p>七层转发规则ID。</p>
         :type ForwardingRuleId: str
-        :param _RuleConditions: 七层转发规则条件信息。
+        :param _RuleConditions: <p>七层转发规则条件信息。</p>
         :type RuleConditions: list of RuleCondition
-        :param _RuleActions: 七层转发规则行为信息。
+        :param _RuleActions: <p>七层转发规则行为信息。</p>
         :type RuleActions: list of RuleAction
-        :param _OriginHeaders: 回源Header信息。
+        :param _OriginHeaders: <p>回源Header信息。</p>
         :type OriginHeaders: list of OriginHeader
-        :param _EnableOriginSni: 是否开启回源sni。
+        :param _EnableOriginSni: <p>是否开启回源sni。</p>
         :type EnableOriginSni: bool
-        :param _OriginSni: 回源sni。
+        :param _OriginSni: <p>回源sni。</p>
         :type OriginSni: str
-        :param _OriginHost: 回源host。
+        :param _OriginHost: <p>回源host。</p>
         :type OriginHost: str
+        :param _ResponseHeaders: <p>源站响应头</p>
+        :type ResponseHeaders: list of ResponseHeaders
+        :param _HideResponseHeaders: <p>删除源站响应头</p>
+        :type HideResponseHeaders: list of HideResponseHeaders
         """
         self._GlobalAcceleratorId = None
         self._ListenerId = None
@@ -5598,10 +5753,12 @@ class ModifyForwardingRuleRequest(AbstractModel):
         self._EnableOriginSni = None
         self._OriginSni = None
         self._OriginHost = None
+        self._ResponseHeaders = None
+        self._HideResponseHeaders = None
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -5612,7 +5769,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -5623,7 +5780,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def ForwardingPolicyId(self):
-        r"""策略ID。
+        r"""<p>策略ID。</p>
         :rtype: str
         """
         return self._ForwardingPolicyId
@@ -5634,7 +5791,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def ForwardingRuleId(self):
-        r"""七层转发规则ID。
+        r"""<p>七层转发规则ID。</p>
         :rtype: str
         """
         return self._ForwardingRuleId
@@ -5645,7 +5802,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def RuleConditions(self):
-        r"""七层转发规则条件信息。
+        r"""<p>七层转发规则条件信息。</p>
         :rtype: list of RuleCondition
         """
         return self._RuleConditions
@@ -5656,7 +5813,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def RuleActions(self):
-        r"""七层转发规则行为信息。
+        r"""<p>七层转发规则行为信息。</p>
         :rtype: list of RuleAction
         """
         return self._RuleActions
@@ -5667,7 +5824,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginHeaders(self):
-        r"""回源Header信息。
+        r"""<p>回源Header信息。</p>
         :rtype: list of OriginHeader
         """
         return self._OriginHeaders
@@ -5678,7 +5835,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def EnableOriginSni(self):
-        r"""是否开启回源sni。
+        r"""<p>是否开启回源sni。</p>
         :rtype: bool
         """
         return self._EnableOriginSni
@@ -5689,7 +5846,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginSni(self):
-        r"""回源sni。
+        r"""<p>回源sni。</p>
         :rtype: str
         """
         return self._OriginSni
@@ -5700,7 +5857,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginHost(self):
-        r"""回源host。
+        r"""<p>回源host。</p>
         :rtype: str
         """
         return self._OriginHost
@@ -5708,6 +5865,28 @@ class ModifyForwardingRuleRequest(AbstractModel):
     @OriginHost.setter
     def OriginHost(self, OriginHost):
         self._OriginHost = OriginHost
+
+    @property
+    def ResponseHeaders(self):
+        r"""<p>源站响应头</p>
+        :rtype: list of ResponseHeaders
+        """
+        return self._ResponseHeaders
+
+    @ResponseHeaders.setter
+    def ResponseHeaders(self, ResponseHeaders):
+        self._ResponseHeaders = ResponseHeaders
+
+    @property
+    def HideResponseHeaders(self):
+        r"""<p>删除源站响应头</p>
+        :rtype: list of HideResponseHeaders
+        """
+        return self._HideResponseHeaders
+
+    @HideResponseHeaders.setter
+    def HideResponseHeaders(self, HideResponseHeaders):
+        self._HideResponseHeaders = HideResponseHeaders
 
 
     def _deserialize(self, params):
@@ -5736,6 +5915,18 @@ class ModifyForwardingRuleRequest(AbstractModel):
         self._EnableOriginSni = params.get("EnableOriginSni")
         self._OriginSni = params.get("OriginSni")
         self._OriginHost = params.get("OriginHost")
+        if params.get("ResponseHeaders") is not None:
+            self._ResponseHeaders = []
+            for item in params.get("ResponseHeaders"):
+                obj = ResponseHeaders()
+                obj._deserialize(item)
+                self._ResponseHeaders.append(obj)
+        if params.get("HideResponseHeaders") is not None:
+            self._HideResponseHeaders = []
+            for item in params.get("HideResponseHeaders"):
+                obj = HideResponseHeaders()
+                obj._deserialize(item)
+                self._HideResponseHeaders.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5753,7 +5944,7 @@ class ModifyForwardingRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5763,7 +5954,7 @@ class ModifyForwardingRuleResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -6357,6 +6548,57 @@ class PortRanges(AbstractModel):
     def _deserialize(self, params):
         self._FromPort = params.get("FromPort")
         self._ToPort = params.get("ToPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResponseHeaders(AbstractModel):
+    r"""响应Header
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>key</p>
+        :type Key: str
+        :param _Value: <p>value</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>value</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

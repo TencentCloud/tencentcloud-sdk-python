@@ -1051,6 +1051,42 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeApiSecEventDetail(
+            self,
+            request: models.DescribeApiSecEventDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApiSecEventDetailResponse:
+        """
+        API安全事件详情查询接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApiSecEventDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApiSecEventDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApiSecEventList(
+            self,
+            request: models.DescribeApiSecEventListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApiSecEventListResponse:
+        """
+        api安全事件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApiSecEventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApiSecEventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeApiSecSensitiveRuleList(
             self,
             request: models.DescribeApiSecSensitiveRuleListRequest,

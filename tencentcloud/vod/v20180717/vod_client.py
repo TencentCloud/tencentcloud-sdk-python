@@ -2137,6 +2137,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAigcFaceInfoAsync(self, request):
+        r"""该接口用于异步获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+
+        :param request: Request instance for DescribeAigcFaceInfoAsync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcFaceInfoAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcFaceInfoAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAigcUsageData(self, request):
         r"""该接口返回查询时间范围内AIGC的统计信息。
            1. 可以查询最近365天内的AIGC统计数据。

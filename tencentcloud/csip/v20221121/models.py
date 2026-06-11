@@ -416,68 +416,60 @@ class AccessKeyAlarm(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 告警名称
+        :param _Name: <p>告警名称</p>
         :type Name: str
-        :param _Level: 告警等级
-0-无效 1-提示 2-低危 3-中危 4-高危 5-严重
+        :param _Level: <p>告警等级<br>0-无效 1-提示 2-低危 3-中危 4-高危 5-严重</p>
         :type Level: int
-        :param _ID: 告警记录ID
+        :param _ID: <p>告警记录ID</p>
         :type ID: int
-        :param _AlarmRuleID: 告警规则ID
+        :param _AlarmRuleID: <p>告警规则ID</p>
         :type AlarmRuleID: int
-        :param _AlarmType: 告警类型
-0 异常调用
-1 泄漏监测
+        :param _AlarmType: <p>告警类型<br>0 异常调用<br>1 泄漏监测</p>
         :type AlarmType: int
-        :param _AccessKey: 访问密钥
+        :param _AccessKey: <p>访问密钥</p>
         :type AccessKey: str
-        :param _AccessKeyID: 访问密钥ID
+        :param _AccessKeyID: <p>访问密钥ID</p>
         :type AccessKeyID: int
-        :param _AccessKeyRemark: 访问密钥备注
+        :param _AccessKeyRemark: <p>访问密钥备注</p>
         :type AccessKeyRemark: str
-        :param _LastAlarmTime: 最后告警时间
+        :param _LastAlarmTime: <p>最后告警时间</p>
         :type LastAlarmTime: str
-        :param _Status: 告警状态
-0-未处理 1-已处理 2-已忽略
+        :param _Status: <p>告警状态<br>0-未处理 1-已处理 2-已忽略</p>
         :type Status: int
-        :param _Date: 聚合日期
+        :param _Date: <p>聚合日期</p>
         :type Date: str
-        :param _Tag: 告警标签
+        :param _Tag: <p>告警标签</p>
         :type Tag: list of str
-        :param _Uin: 所属主账号Uin
+        :param _Uin: <p>所属主账号Uin</p>
         :type Uin: str
-        :param _Nickname: 所属主账号昵称
+        :param _Nickname: <p>所属主账号昵称</p>
         :type Nickname: str
-        :param _SubUin: 所属子账号Uin
+        :param _SubUin: <p>所属子账号Uin</p>
         :type SubUin: str
-        :param _SubNickname: 所属子账号昵称
+        :param _SubNickname: <p>所属子账号昵称</p>
         :type SubNickname: str
-        :param _Type: 账号类型
-0 主账号AK 1 子账号AK 2 临时密钥
+        :param _Type: <p>账号类型<br>0 主账号AK 1 子账号AK 2 临时密钥</p>
         :type Type: int
-        :param _AppID: 所属appid
+        :param _AppID: <p>所属appid</p>
         :type AppID: int
-        :param _LeakEvidence: 泄漏证据
+        :param _LeakEvidence: <p>泄漏证据</p>
         :type LeakEvidence: list of str
-        :param _IsSupportEditWhiteAccount: 是否支持编辑信任账号
+        :param _IsSupportEditWhiteAccount: <p>是否支持编辑信任账号</p>
         :type IsSupportEditWhiteAccount: bool
-        :param _Evidence: 告警证据
+        :param _Evidence: <p>告警证据</p>
         :type Evidence: str
-        :param _RuleKey: 告警规则标识
+        :param _RuleKey: <p>告警规则标识</p>
         :type RuleKey: str
-        :param _CloudType: 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+        :param _CloudType: <p>云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云</p>
         :type CloudType: int
-        :param _AIStatus: 告警AI分析状态
--1 分析失败
-0 未分析
-1 分析中
-2 分析成功，真实告警
-3 分析成功，可疑告警
+        :param _AIStatus: <p>告警AI分析状态<br>-1 分析失败<br>0 未分析<br>1 分析中<br>2 分析成功，真实告警<br>3 分析成功，可疑告警</p>
         :type AIStatus: int
-        :param _FirstAlarmTimestamp: 首次告警时间戳（秒级）
+        :param _FirstAlarmTimestamp: <p>首次告警时间戳（秒级）</p>
         :type FirstAlarmTimestamp: int
-        :param _LastAlarmTimestamp: 最后告警时间戳（秒级）
+        :param _LastAlarmTimestamp: <p>最后告警时间戳（秒级）</p>
         :type LastAlarmTimestamp: int
+        :param _AIFailedReason: <p>ai分析失败描述，未失败为空字符串</p>
+        :type AIFailedReason: str
         """
         self._Name = None
         self._Level = None
@@ -505,10 +497,11 @@ class AccessKeyAlarm(AbstractModel):
         self._AIStatus = None
         self._FirstAlarmTimestamp = None
         self._LastAlarmTimestamp = None
+        self._AIFailedReason = None
 
     @property
     def Name(self):
-        r"""告警名称
+        r"""<p>告警名称</p>
         :rtype: str
         """
         return self._Name
@@ -519,8 +512,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Level(self):
-        r"""告警等级
-0-无效 1-提示 2-低危 3-中危 4-高危 5-严重
+        r"""<p>告警等级<br>0-无效 1-提示 2-低危 3-中危 4-高危 5-严重</p>
         :rtype: int
         """
         return self._Level
@@ -531,7 +523,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def ID(self):
-        r"""告警记录ID
+        r"""<p>告警记录ID</p>
         :rtype: int
         """
         return self._ID
@@ -542,7 +534,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AlarmRuleID(self):
-        r"""告警规则ID
+        r"""<p>告警规则ID</p>
         :rtype: int
         """
         return self._AlarmRuleID
@@ -553,9 +545,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AlarmType(self):
-        r"""告警类型
-0 异常调用
-1 泄漏监测
+        r"""<p>告警类型<br>0 异常调用<br>1 泄漏监测</p>
         :rtype: int
         """
         return self._AlarmType
@@ -566,7 +556,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AccessKey(self):
-        r"""访问密钥
+        r"""<p>访问密钥</p>
         :rtype: str
         """
         return self._AccessKey
@@ -577,7 +567,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AccessKeyID(self):
-        r"""访问密钥ID
+        r"""<p>访问密钥ID</p>
         :rtype: int
         """
         return self._AccessKeyID
@@ -588,7 +578,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AccessKeyRemark(self):
-        r"""访问密钥备注
+        r"""<p>访问密钥备注</p>
         :rtype: str
         """
         return self._AccessKeyRemark
@@ -599,7 +589,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def LastAlarmTime(self):
-        r"""最后告警时间
+        r"""<p>最后告警时间</p>
         :rtype: str
         """
         return self._LastAlarmTime
@@ -610,8 +600,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Status(self):
-        r"""告警状态
-0-未处理 1-已处理 2-已忽略
+        r"""<p>告警状态<br>0-未处理 1-已处理 2-已忽略</p>
         :rtype: int
         """
         return self._Status
@@ -622,7 +611,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Date(self):
-        r"""聚合日期
+        r"""<p>聚合日期</p>
         :rtype: str
         """
         return self._Date
@@ -633,7 +622,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Tag(self):
-        r"""告警标签
+        r"""<p>告警标签</p>
         :rtype: list of str
         """
         return self._Tag
@@ -644,7 +633,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Uin(self):
-        r"""所属主账号Uin
+        r"""<p>所属主账号Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -655,7 +644,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Nickname(self):
-        r"""所属主账号昵称
+        r"""<p>所属主账号昵称</p>
         :rtype: str
         """
         return self._Nickname
@@ -666,7 +655,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def SubUin(self):
-        r"""所属子账号Uin
+        r"""<p>所属子账号Uin</p>
         :rtype: str
         """
         return self._SubUin
@@ -677,7 +666,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def SubNickname(self):
-        r"""所属子账号昵称
+        r"""<p>所属子账号昵称</p>
         :rtype: str
         """
         return self._SubNickname
@@ -688,8 +677,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Type(self):
-        r"""账号类型
-0 主账号AK 1 子账号AK 2 临时密钥
+        r"""<p>账号类型<br>0 主账号AK 1 子账号AK 2 临时密钥</p>
         :rtype: int
         """
         return self._Type
@@ -700,7 +688,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AppID(self):
-        r"""所属appid
+        r"""<p>所属appid</p>
         :rtype: int
         """
         return self._AppID
@@ -711,7 +699,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def LeakEvidence(self):
-        r"""泄漏证据
+        r"""<p>泄漏证据</p>
         :rtype: list of str
         """
         return self._LeakEvidence
@@ -722,7 +710,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def IsSupportEditWhiteAccount(self):
-        r"""是否支持编辑信任账号
+        r"""<p>是否支持编辑信任账号</p>
         :rtype: bool
         """
         return self._IsSupportEditWhiteAccount
@@ -733,7 +721,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def Evidence(self):
-        r"""告警证据
+        r"""<p>告警证据</p>
         :rtype: str
         """
         return self._Evidence
@@ -744,7 +732,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def RuleKey(self):
-        r"""告警规则标识
+        r"""<p>告警规则标识</p>
         :rtype: str
         """
         return self._RuleKey
@@ -755,7 +743,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def CloudType(self):
-        r"""云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+        r"""<p>云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云</p>
         :rtype: int
         """
         return self._CloudType
@@ -766,12 +754,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def AIStatus(self):
-        r"""告警AI分析状态
--1 分析失败
-0 未分析
-1 分析中
-2 分析成功，真实告警
-3 分析成功，可疑告警
+        r"""<p>告警AI分析状态<br>-1 分析失败<br>0 未分析<br>1 分析中<br>2 分析成功，真实告警<br>3 分析成功，可疑告警</p>
         :rtype: int
         """
         return self._AIStatus
@@ -782,7 +765,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def FirstAlarmTimestamp(self):
-        r"""首次告警时间戳（秒级）
+        r"""<p>首次告警时间戳（秒级）</p>
         :rtype: int
         """
         return self._FirstAlarmTimestamp
@@ -793,7 +776,7 @@ class AccessKeyAlarm(AbstractModel):
 
     @property
     def LastAlarmTimestamp(self):
-        r"""最后告警时间戳（秒级）
+        r"""<p>最后告警时间戳（秒级）</p>
         :rtype: int
         """
         return self._LastAlarmTimestamp
@@ -801,6 +784,17 @@ class AccessKeyAlarm(AbstractModel):
     @LastAlarmTimestamp.setter
     def LastAlarmTimestamp(self, LastAlarmTimestamp):
         self._LastAlarmTimestamp = LastAlarmTimestamp
+
+    @property
+    def AIFailedReason(self):
+        r"""<p>ai分析失败描述，未失败为空字符串</p>
+        :rtype: str
+        """
+        return self._AIFailedReason
+
+    @AIFailedReason.setter
+    def AIFailedReason(self, AIFailedReason):
+        self._AIFailedReason = AIFailedReason
 
 
     def _deserialize(self, params):
@@ -830,6 +824,7 @@ class AccessKeyAlarm(AbstractModel):
         self._AIStatus = params.get("AIStatus")
         self._FirstAlarmTimestamp = params.get("FirstAlarmTimestamp")
         self._LastAlarmTimestamp = params.get("LastAlarmTimestamp")
+        self._AIFailedReason = params.get("AIFailedReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9779,6 +9774,147 @@ class CFGViewCFGRisk(AbstractModel):
         self._CFGDescribe = params.get("CFGDescribe")
         self._CFGFix = params.get("CFGFix")
         self._CFGHelpURL = params.get("CFGHelpURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CICDToken(AbstractModel):
+    r"""CI/CD接入Token
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>ID</p>
+        :type Id: int
+        :param _AppId: <p>appid</p>
+        :type AppId: int
+        :param _Name: <p>CI/CD名称</p>
+        :type Name: str
+        :param _Token: <p>用于接入的Token</p>
+        :type Token: str
+        :param _Period: <p>扫描结果存储时长</p>
+        :type Period: int
+        :param _FileCnt: <p>已扫描文件</p>
+        :type FileCnt: int
+        :param _LastScanStatus: <p>最近扫描状态</p>
+        :type LastScanStatus: str
+        :param _LastScanTime: <p>最近扫描时间</p>
+        :type LastScanTime: str
+        """
+        self._Id = None
+        self._AppId = None
+        self._Name = None
+        self._Token = None
+        self._Period = None
+        self._FileCnt = None
+        self._LastScanStatus = None
+        self._LastScanTime = None
+
+    @property
+    def Id(self):
+        r"""<p>ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>appid</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Name(self):
+        r"""<p>CI/CD名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Token(self):
+        r"""<p>用于接入的Token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def Period(self):
+        r"""<p>扫描结果存储时长</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def FileCnt(self):
+        r"""<p>已扫描文件</p>
+        :rtype: int
+        """
+        return self._FileCnt
+
+    @FileCnt.setter
+    def FileCnt(self, FileCnt):
+        self._FileCnt = FileCnt
+
+    @property
+    def LastScanStatus(self):
+        r"""<p>最近扫描状态</p>
+        :rtype: str
+        """
+        return self._LastScanStatus
+
+    @LastScanStatus.setter
+    def LastScanStatus(self, LastScanStatus):
+        self._LastScanStatus = LastScanStatus
+
+    @property
+    def LastScanTime(self):
+        r"""<p>最近扫描时间</p>
+        :rtype: str
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._Name = params.get("Name")
+        self._Token = params.get("Token")
+        self._Period = params.get("Period")
+        self._FileCnt = params.get("FileCnt")
+        self._LastScanStatus = params.get("LastScanStatus")
+        self._LastScanTime = params.get("LastScanTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18759,6 +18895,275 @@ class CreateDspmWhitelistStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateIaCAccessTokenRequest(AbstractModel):
+    r"""CreateIaCAccessToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>CI/CD名称</p>
+        :type Name: str
+        :param _Period: <p>扫描结果存储时长(30/60/90/120/150/180天)</p>
+        :type Period: int
+        """
+        self._Name = None
+        self._Period = None
+
+    @property
+    def Name(self):
+        r"""<p>CI/CD名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Period(self):
+        r"""<p>扫描结果存储时长(30/60/90/120/150/180天)</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIaCAccessTokenResponse(AbstractModel):
+    r"""CreateIaCAccessToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: <p>接入Token</p>
+        :type Token: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Token = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        r"""<p>接入Token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateIaCFileExportJobRequest(AbstractModel):
+    r"""CreateIaCFileExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Filter = None
+        self._MemberId = None
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIaCFileExportJobResponse(AbstractModel):
+    r"""CreateIaCFileExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: <p>任务ID</p>
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateIaCFileReScanTaskRequest(AbstractModel):
+    r"""CreateIaCFileReScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>文件ID</p>
+        :type Id: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Id = None
+        self._MemberId = None
+
+    @property
+    def Id(self):
+        r"""<p>文件ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIaCFileReScanTaskResponse(AbstractModel):
+    r"""CreateIaCFileReScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRiskCenterScanTaskRequest(AbstractModel):
     r"""CreateRiskCenterScanTask请求参数结构体
 
@@ -21128,6 +21533,134 @@ class DeleteDspmWhitelistStrategyRequest(AbstractModel):
 
 class DeleteDspmWhitelistStrategyResponse(AbstractModel):
     r"""DeleteDspmWhitelistStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteIaCAccessTokenRequest(AbstractModel):
+    r"""DeleteIaCAccessToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>删除ID列表</p>
+        :type Id: list of int non-negative
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>删除ID列表</p>
+        :rtype: list of int non-negative
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIaCAccessTokenResponse(AbstractModel):
+    r"""DeleteIaCAccessToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteIaCFileRequest(AbstractModel):
+    r"""DeleteIaCFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>删除ID列表</p>
+        :type Id: list of int non-negative
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>删除ID列表</p>
+        :rtype: list of int non-negative
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIaCFileResponse(AbstractModel):
+    r"""DeleteIaCFile返回参数结构体
 
     """
 
@@ -36284,6 +36817,511 @@ class DescribeHighBaseLineRiskListResponse(AbstractModel):
                 obj = HighBaseLineRiskItem()
                 obj._deserialize(item)
                 self._HighBaseLineRiskList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIaCFileListRequest(AbstractModel):
+    r"""DescribeIaCFileList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Filter = None
+        self._MemberId = None
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIaCFileListResponse(AbstractModel):
+    r"""DescribeIaCFileList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>列表</p>
+        :type List: list of IaCFile
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>列表</p>
+        :rtype: list of IaCFile
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = IaCFile()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIaCFileOverviewRequest(AbstractModel):
+    r"""DescribeIaCFileOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._MemberId = None
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIaCFileOverviewResponse(AbstractModel):
+    r"""DescribeIaCFileOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalFile: <p>文件数量</p>
+        :type TotalFile: int
+        :param _RiskFile: <p>风险文件数量(1:Dockerfile,2:Terraform,3:KubernetesYaml)</p>
+        :type RiskFile: list of KeyValueInt
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalFile = None
+        self._RiskFile = None
+        self._RequestId = None
+
+    @property
+    def TotalFile(self):
+        r"""<p>文件数量</p>
+        :rtype: int
+        """
+        return self._TotalFile
+
+    @TotalFile.setter
+    def TotalFile(self, TotalFile):
+        self._TotalFile = TotalFile
+
+    @property
+    def RiskFile(self):
+        r"""<p>风险文件数量(1:Dockerfile,2:Terraform,3:KubernetesYaml)</p>
+        :rtype: list of KeyValueInt
+        """
+        return self._RiskFile
+
+    @RiskFile.setter
+    def RiskFile(self, RiskFile):
+        self._RiskFile = RiskFile
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalFile = params.get("TotalFile")
+        if params.get("RiskFile") is not None:
+            self._RiskFile = []
+            for item in params.get("RiskFile"):
+                obj = KeyValueInt()
+                obj._deserialize(item)
+                self._RiskFile.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIaCFileReportRequest(AbstractModel):
+    r"""DescribeIaCFileReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: <p>资产ID</p>
+        :type AssetId: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._AssetId = None
+        self._MemberId = None
+
+    @property
+    def AssetId(self):
+        r"""<p>资产ID</p>
+        :rtype: int
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIaCFileReportResponse(AbstractModel):
+    r"""DescribeIaCFileReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _File: <p>检测文件</p>
+        :type File: str
+        :param _Status: <p>检测状态(0:待扫描,1:检测中,2:已完成,3:检测异常)</p>
+        :type Status: int
+        :param _ScanTime: <p>检测时间</p>
+        :type ScanTime: str
+        :param _Risks: <p>风险列表</p>
+        :type Risks: list of IaCFileRisk
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._File = None
+        self._Status = None
+        self._ScanTime = None
+        self._Risks = None
+        self._RequestId = None
+
+    @property
+    def File(self):
+        r"""<p>检测文件</p>
+        :rtype: str
+        """
+        return self._File
+
+    @File.setter
+    def File(self, File):
+        self._File = File
+
+    @property
+    def Status(self):
+        r"""<p>检测状态(0:待扫描,1:检测中,2:已完成,3:检测异常)</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ScanTime(self):
+        r"""<p>检测时间</p>
+        :rtype: str
+        """
+        return self._ScanTime
+
+    @ScanTime.setter
+    def ScanTime(self, ScanTime):
+        self._ScanTime = ScanTime
+
+    @property
+    def Risks(self):
+        r"""<p>风险列表</p>
+        :rtype: list of IaCFileRisk
+        """
+        return self._Risks
+
+    @Risks.setter
+    def Risks(self, Risks):
+        self._Risks = Risks
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._File = params.get("File")
+        self._Status = params.get("Status")
+        self._ScanTime = params.get("ScanTime")
+        if params.get("Risks") is not None:
+            self._Risks = []
+            for item in params.get("Risks"):
+                obj = IaCFileRisk()
+                obj._deserialize(item)
+                self._Risks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIaCTokenListRequest(AbstractModel):
+    r"""DescribeIaCTokenList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIaCTokenListResponse(AbstractModel):
+    r"""DescribeIaCTokenList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>列表</p>
+        :type List: list of CICDToken
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>列表</p>
+        :rtype: list of CICDToken
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CICDToken()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -54668,6 +55706,308 @@ class HitRules(AbstractModel):
         
 
 
+class IaCFile(AbstractModel):
+    r"""IaC检测文件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>ID</p>
+        :type Id: int
+        :param _AppId: <p>appid</p>
+        :type AppId: int
+        :param _FileId: <p>文件ID</p>
+        :type FileId: str
+        :param _FileName: <p>文件名称</p>
+        :type FileName: str
+        :param _CICDName: <p>CI/CD名称</p>
+        :type CICDName: str
+        :param _FilePath: <p>文件路径</p>
+        :type FilePath: str
+        :param _FileType: <p>文件类型(1:Dockerfile,2:Terraform,3:KubernetesYaml)</p>
+        :type FileType: int
+        :param _RiskTotalCnt: <p>风险总计数量</p>
+        :type RiskTotalCnt: int
+        :param _RiskLevelCnt: <p>风险等级数量(0:低危,1:中危,2:高危,3:严重)</p>
+        :type RiskLevelCnt: list of KeyValueInt
+        :param _ScanTime: <p>扫描时间</p>
+        :type ScanTime: str
+        :param _Status: <p>检测状态(0:待扫描,1:检测中,2:已完成,3:检测异常)</p>
+        :type Status: int
+        :param _FailType: <p>扫描失败类型(0:无失败, 1:检测超时, 2:文件格式解析失败, 3:检测失败)</p>
+        :type FailType: int
+        """
+        self._Id = None
+        self._AppId = None
+        self._FileId = None
+        self._FileName = None
+        self._CICDName = None
+        self._FilePath = None
+        self._FileType = None
+        self._RiskTotalCnt = None
+        self._RiskLevelCnt = None
+        self._ScanTime = None
+        self._Status = None
+        self._FailType = None
+
+    @property
+    def Id(self):
+        r"""<p>ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>appid</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FileId(self):
+        r"""<p>文件ID</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def FileName(self):
+        r"""<p>文件名称</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def CICDName(self):
+        r"""<p>CI/CD名称</p>
+        :rtype: str
+        """
+        return self._CICDName
+
+    @CICDName.setter
+    def CICDName(self, CICDName):
+        self._CICDName = CICDName
+
+    @property
+    def FilePath(self):
+        r"""<p>文件路径</p>
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def FileType(self):
+        r"""<p>文件类型(1:Dockerfile,2:Terraform,3:KubernetesYaml)</p>
+        :rtype: int
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def RiskTotalCnt(self):
+        r"""<p>风险总计数量</p>
+        :rtype: int
+        """
+        return self._RiskTotalCnt
+
+    @RiskTotalCnt.setter
+    def RiskTotalCnt(self, RiskTotalCnt):
+        self._RiskTotalCnt = RiskTotalCnt
+
+    @property
+    def RiskLevelCnt(self):
+        r"""<p>风险等级数量(0:低危,1:中危,2:高危,3:严重)</p>
+        :rtype: list of KeyValueInt
+        """
+        return self._RiskLevelCnt
+
+    @RiskLevelCnt.setter
+    def RiskLevelCnt(self, RiskLevelCnt):
+        self._RiskLevelCnt = RiskLevelCnt
+
+    @property
+    def ScanTime(self):
+        r"""<p>扫描时间</p>
+        :rtype: str
+        """
+        return self._ScanTime
+
+    @ScanTime.setter
+    def ScanTime(self, ScanTime):
+        self._ScanTime = ScanTime
+
+    @property
+    def Status(self):
+        r"""<p>检测状态(0:待扫描,1:检测中,2:已完成,3:检测异常)</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FailType(self):
+        r"""<p>扫描失败类型(0:无失败, 1:检测超时, 2:文件格式解析失败, 3:检测失败)</p>
+        :rtype: int
+        """
+        return self._FailType
+
+    @FailType.setter
+    def FailType(self, FailType):
+        self._FailType = FailType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._FileId = params.get("FileId")
+        self._FileName = params.get("FileName")
+        self._CICDName = params.get("CICDName")
+        self._FilePath = params.get("FilePath")
+        self._FileType = params.get("FileType")
+        self._RiskTotalCnt = params.get("RiskTotalCnt")
+        if params.get("RiskLevelCnt") is not None:
+            self._RiskLevelCnt = []
+            for item in params.get("RiskLevelCnt"):
+                obj = KeyValueInt()
+                obj._deserialize(item)
+                self._RiskLevelCnt.append(obj)
+        self._ScanTime = params.get("ScanTime")
+        self._Status = params.get("Status")
+        self._FailType = params.get("FailType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IaCFileRisk(AbstractModel):
+    r"""IaC检测文件风险
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Level: <p>风险等级(0:低危,1:中危,2:高危,3:严重)</p>
+        :type Level: int
+        :param _Line: <p>风险所在行数</p>
+        :type Line: int
+        :param _RuleName: <p>规则名称</p>
+        :type RuleName: str
+        :param _Description: <p>问题描述</p>
+        :type Description: str
+        :param _Suggestion: <p>修复建议</p>
+        :type Suggestion: str
+        """
+        self._Level = None
+        self._Line = None
+        self._RuleName = None
+        self._Description = None
+        self._Suggestion = None
+
+    @property
+    def Level(self):
+        r"""<p>风险等级(0:低危,1:中危,2:高危,3:严重)</p>
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Line(self):
+        r"""<p>风险所在行数</p>
+        :rtype: int
+        """
+        return self._Line
+
+    @Line.setter
+    def Line(self, Line):
+        self._Line = Line
+
+    @property
+    def RuleName(self):
+        r"""<p>规则名称</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Description(self):
+        r"""<p>问题描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Suggestion(self):
+        r"""<p>修复建议</p>
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+
+    def _deserialize(self, params):
+        self._Level = params.get("Level")
+        self._Line = params.get("Line")
+        self._RuleName = params.get("RuleName")
+        self._Description = params.get("Description")
+        self._Suggestion = params.get("Suggestion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquireInfo(AbstractModel):
     r"""计费项信息
 
@@ -55423,6 +56763,57 @@ class KeyValue(AbstractModel):
     def Value(self):
         r"""值
         :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValueInt(AbstractModel):
+    r"""键值对（整数）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>键</p>
+        :type Key: int
+        :param _Value: <p>值</p>
+        :type Value: int
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>键</p>
+        :rtype: int
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: int
         """
         return self._Value
 
@@ -57430,6 +58821,85 @@ class ModifyDspmWhitelistStrategyRequest(AbstractModel):
 
 class ModifyDspmWhitelistStrategyResponse(AbstractModel):
     r"""ModifyDspmWhitelistStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyIaCTokenPeriodRequest(AbstractModel):
+    r"""ModifyIaCTokenPeriod请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>ID</p>
+        :type Id: int
+        :param _Period: <p>扫描结果存储周期</p>
+        :type Period: int
+        """
+        self._Id = None
+        self._Period = None
+
+    @property
+    def Id(self):
+        r"""<p>ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Period(self):
+        r"""<p>扫描结果存储周期</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIaCTokenPeriodResponse(AbstractModel):
+    r"""ModifyIaCTokenPeriod返回参数结构体
 
     """
 
@@ -64957,42 +66427,44 @@ class SubUserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 主键ID，无业务意义仅作为唯一键
+        :param _ID: <p>主键ID，无业务意义仅作为唯一键</p>
         :type ID: int
-        :param _AppID: 子账号Appid
+        :param _AppID: <p>子账号Appid</p>
         :type AppID: str
-        :param _Uin: 子账号UIn
+        :param _Uin: <p>子账号UIn</p>
         :type Uin: str
-        :param _NickName: 子账号名称
+        :param _NickName: <p>子账号名称</p>
         :type NickName: str
-        :param _OwnerAppID: 主账号Appid
+        :param _OwnerAppID: <p>主账号Appid</p>
         :type OwnerAppID: str
-        :param _OwnerUin: 主账号Uin
+        :param _OwnerUin: <p>主账号Uin</p>
         :type OwnerUin: str
-        :param _OwnerNickName: 主账号名称
+        :param _OwnerNickName: <p>主账号名称</p>
         :type OwnerNickName: str
-        :param _OwnerMemberID: 所属主账号memberId信息
+        :param _OwnerMemberID: <p>所属主账号memberId信息</p>
         :type OwnerMemberID: str
-        :param _CloudType: 账户类型，0为腾讯云账户，1为AWS账户
+        :param _CloudType: <p>账户类型，0为腾讯云账户，1为AWS账户</p>
         :type CloudType: int
-        :param _ServiceCount: 可访问服务数量
+        :param _ServiceCount: <p>可访问服务数量</p>
         :type ServiceCount: int
-        :param _InterfaceCount: 可访问接口数量
+        :param _InterfaceCount: <p>可访问接口数量</p>
         :type InterfaceCount: int
-        :param _AssetCount: 可访问资源数量
+        :param _AssetCount: <p>可访问资源数量</p>
         :type AssetCount: int
-        :param _LogCount: 访问/行为日志数量
+        :param _LogCount: <p>访问/行为日志数量</p>
         :type LogCount: int
-        :param _ConfigRiskCount: 权限配置风险
+        :param _ConfigRiskCount: <p>权限配置风险</p>
         :type ConfigRiskCount: int
-        :param _ActionRiskCount: 危险行为告警
+        :param _ActionRiskCount: <p>危险行为告警</p>
         :type ActionRiskCount: int
-        :param _IsAccessCloudAudit: 是否接入操作审计日志
+        :param _IsAccessCloudAudit: <p>是否接入操作审计日志</p>
         :type IsAccessCloudAudit: bool
-        :param _IsAccessCheck: 是否配置风险的安全体检
+        :param _IsAccessCheck: <p>是否配置风险的安全体检</p>
         :type IsAccessCheck: bool
-        :param _IsAccessUeba: 是否配置用户行为管理策略
+        :param _IsAccessUeba: <p>是否配置用户行为管理策略</p>
         :type IsAccessUeba: bool
+        :param _CreateTime: <p>创建时间（Unix时间戳）</p>
+        :type CreateTime: int
         """
         self._ID = None
         self._AppID = None
@@ -65012,10 +66484,11 @@ class SubUserInfo(AbstractModel):
         self._IsAccessCloudAudit = None
         self._IsAccessCheck = None
         self._IsAccessUeba = None
+        self._CreateTime = None
 
     @property
     def ID(self):
-        r"""主键ID，无业务意义仅作为唯一键
+        r"""<p>主键ID，无业务意义仅作为唯一键</p>
         :rtype: int
         """
         return self._ID
@@ -65026,7 +66499,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def AppID(self):
-        r"""子账号Appid
+        r"""<p>子账号Appid</p>
         :rtype: str
         """
         return self._AppID
@@ -65037,7 +66510,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""子账号UIn
+        r"""<p>子账号UIn</p>
         :rtype: str
         """
         return self._Uin
@@ -65048,7 +66521,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def NickName(self):
-        r"""子账号名称
+        r"""<p>子账号名称</p>
         :rtype: str
         """
         return self._NickName
@@ -65059,7 +66532,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerAppID(self):
-        r"""主账号Appid
+        r"""<p>主账号Appid</p>
         :rtype: str
         """
         return self._OwnerAppID
@@ -65070,7 +66543,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""主账号Uin
+        r"""<p>主账号Uin</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -65081,7 +66554,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerNickName(self):
-        r"""主账号名称
+        r"""<p>主账号名称</p>
         :rtype: str
         """
         return self._OwnerNickName
@@ -65092,7 +66565,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def OwnerMemberID(self):
-        r"""所属主账号memberId信息
+        r"""<p>所属主账号memberId信息</p>
         :rtype: str
         """
         return self._OwnerMemberID
@@ -65103,7 +66576,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def CloudType(self):
-        r"""账户类型，0为腾讯云账户，1为AWS账户
+        r"""<p>账户类型，0为腾讯云账户，1为AWS账户</p>
         :rtype: int
         """
         return self._CloudType
@@ -65114,7 +66587,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ServiceCount(self):
-        r"""可访问服务数量
+        r"""<p>可访问服务数量</p>
         :rtype: int
         """
         return self._ServiceCount
@@ -65125,7 +66598,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def InterfaceCount(self):
-        r"""可访问接口数量
+        r"""<p>可访问接口数量</p>
         :rtype: int
         """
         return self._InterfaceCount
@@ -65136,7 +66609,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def AssetCount(self):
-        r"""可访问资源数量
+        r"""<p>可访问资源数量</p>
         :rtype: int
         """
         return self._AssetCount
@@ -65147,7 +66620,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def LogCount(self):
-        r"""访问/行为日志数量
+        r"""<p>访问/行为日志数量</p>
         :rtype: int
         """
         return self._LogCount
@@ -65158,7 +66631,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ConfigRiskCount(self):
-        r"""权限配置风险
+        r"""<p>权限配置风险</p>
         :rtype: int
         """
         return self._ConfigRiskCount
@@ -65169,7 +66642,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def ActionRiskCount(self):
-        r"""危险行为告警
+        r"""<p>危险行为告警</p>
         :rtype: int
         """
         return self._ActionRiskCount
@@ -65180,7 +66653,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessCloudAudit(self):
-        r"""是否接入操作审计日志
+        r"""<p>是否接入操作审计日志</p>
         :rtype: bool
         """
         return self._IsAccessCloudAudit
@@ -65191,7 +66664,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessCheck(self):
-        r"""是否配置风险的安全体检
+        r"""<p>是否配置风险的安全体检</p>
         :rtype: bool
         """
         return self._IsAccessCheck
@@ -65202,7 +66675,7 @@ class SubUserInfo(AbstractModel):
 
     @property
     def IsAccessUeba(self):
-        r"""是否配置用户行为管理策略
+        r"""<p>是否配置用户行为管理策略</p>
         :rtype: bool
         """
         return self._IsAccessUeba
@@ -65210,6 +66683,17 @@ class SubUserInfo(AbstractModel):
     @IsAccessUeba.setter
     def IsAccessUeba(self, IsAccessUeba):
         self._IsAccessUeba = IsAccessUeba
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（Unix时间戳）</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
 
     def _deserialize(self, params):
@@ -65231,6 +66715,7 @@ class SubUserInfo(AbstractModel):
         self._IsAccessCloudAudit = params.get("IsAccessCloudAudit")
         self._IsAccessCheck = params.get("IsAccessCheck")
         self._IsAccessUeba = params.get("IsAccessUeba")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

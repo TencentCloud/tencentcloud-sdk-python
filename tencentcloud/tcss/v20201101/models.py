@@ -76,22 +76,33 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleMode: <p>策略模式，   RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
-        :type RuleMode: str
         :param _ProcessPath: <p>进程路径</p>
         :type ProcessPath: str
+        :param _RuleMode: <p>策略模式，   RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
+        :type RuleMode: str
+        :param _CmdLine: <p>命令行参数</p>
+        :type CmdLine: str
         :param _RuleId: <p>子策略id</p>
         :type RuleId: str
         :param _RuleLevel: <p>威胁等级，HIGH:高，MIDDLE:中，LOW:低</p>
         :type RuleLevel: str
-        :param _CmdLine: <p>命令行参数</p>
-        :type CmdLine: str
         """
-        self._RuleMode = None
         self._ProcessPath = None
+        self._RuleMode = None
+        self._CmdLine = None
         self._RuleId = None
         self._RuleLevel = None
-        self._CmdLine = None
+
+    @property
+    def ProcessPath(self):
+        r"""<p>进程路径</p>
+        :rtype: str
+        """
+        return self._ProcessPath
+
+    @ProcessPath.setter
+    def ProcessPath(self, ProcessPath):
+        self._ProcessPath = ProcessPath
 
     @property
     def RuleMode(self):
@@ -105,15 +116,15 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
         self._RuleMode = RuleMode
 
     @property
-    def ProcessPath(self):
-        r"""<p>进程路径</p>
+    def CmdLine(self):
+        r"""<p>命令行参数</p>
         :rtype: str
         """
-        return self._ProcessPath
+        return self._CmdLine
 
-    @ProcessPath.setter
-    def ProcessPath(self, ProcessPath):
-        self._ProcessPath = ProcessPath
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
 
     @property
     def RuleId(self):
@@ -137,24 +148,13 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
     def RuleLevel(self, RuleLevel):
         self._RuleLevel = RuleLevel
 
-    @property
-    def CmdLine(self):
-        r"""<p>命令行参数</p>
-        :rtype: str
-        """
-        return self._CmdLine
-
-    @CmdLine.setter
-    def CmdLine(self, CmdLine):
-        self._CmdLine = CmdLine
-
 
     def _deserialize(self, params):
-        self._RuleMode = params.get("RuleMode")
         self._ProcessPath = params.get("ProcessPath")
+        self._RuleMode = params.get("RuleMode")
+        self._CmdLine = params.get("CmdLine")
         self._RuleId = params.get("RuleId")
         self._RuleLevel = params.get("RuleLevel")
-        self._CmdLine = params.get("CmdLine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1055,39 +1055,110 @@ class AbnormalProcessEventTendencyInfo(AbstractModel):
         
 
 
-class AbnormalProcessRuleInfo(AbstractModel):
-    r"""运行时安全，异常进程检测策略
+class AbnormalProcessRuleExtSetItem(AbstractModel):
+    r"""异常进程策略列表扩展项（扁平独立结构体，含子规则内容和执行动作）
 
     """
 
     def __init__(self):
         r"""
-        :param _IsEnable: true:策略启用，false:策略禁用
-        :type IsEnable: bool
-        :param _ImageIds: 生效镜像id，空数组代表全部镜像
-        :type ImageIds: list of str
-        :param _ChildRules: 用户策略的子策略数组
+        :param _ChildRules: 用户自定义策略子规则列表。IsDefault=false时有值
+注意：此字段可能返回 null，表示取不到有效值。
         :type ChildRules: list of AbnormalProcessChildRuleInfo
+        :param _EditUserName: 编辑用户名称
+        :type EditUserName: str
+        :param _EffectImageCount: 策略生效镜像数量
+        :type EffectImageCount: int
+        :param _IsDefault: true: 默认策略，false:自定义策略
+        :type IsDefault: bool
+        :param _IsGlobal: 是否为全部镜像规则。true表示对所有镜像生效
+        :type IsGlobal: bool
+        :param _IsEnable: true: 策略启用，false：策略禁用
+        :type IsEnable: bool
+        :param _RuleActions: 规则组中所有执行动作的去重列表。RULE_MODE_ALERT:告警 RULE_MODE_HOLDUP:拦截
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleActions: list of str
+        :param _RuleId: 策略Id
+        :type RuleId: str
         :param _RuleName: 策略名字
         :type RuleName: str
-        :param _RuleId: 策略id
-        :type RuleId: str
-        :param _SystemChildRules: 系统策略的子策略数组
+        :param _SystemChildRules: 系统策略子规则列表。IsDefault=true时有值
+注意：此字段可能返回 null，表示取不到有效值。
         :type SystemChildRules: list of AbnormalProcessSystemChildRuleInfo
-        :param _IsDefault: 是否是系统默认策略
-        :type IsDefault: bool
+        :param _UpdateTime: 策略更新时间, 存在为空的情况
+        :type UpdateTime: str
         """
-        self._IsEnable = None
-        self._ImageIds = None
         self._ChildRules = None
-        self._RuleName = None
-        self._RuleId = None
-        self._SystemChildRules = None
+        self._EditUserName = None
+        self._EffectImageCount = None
         self._IsDefault = None
+        self._IsGlobal = None
+        self._IsEnable = None
+        self._RuleActions = None
+        self._RuleId = None
+        self._RuleName = None
+        self._SystemChildRules = None
+        self._UpdateTime = None
+
+    @property
+    def ChildRules(self):
+        r"""用户自定义策略子规则列表。IsDefault=false时有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AbnormalProcessChildRuleInfo
+        """
+        return self._ChildRules
+
+    @ChildRules.setter
+    def ChildRules(self, ChildRules):
+        self._ChildRules = ChildRules
+
+    @property
+    def EditUserName(self):
+        r"""编辑用户名称
+        :rtype: str
+        """
+        return self._EditUserName
+
+    @EditUserName.setter
+    def EditUserName(self, EditUserName):
+        self._EditUserName = EditUserName
+
+    @property
+    def EffectImageCount(self):
+        r"""策略生效镜像数量
+        :rtype: int
+        """
+        return self._EffectImageCount
+
+    @EffectImageCount.setter
+    def EffectImageCount(self, EffectImageCount):
+        self._EffectImageCount = EffectImageCount
+
+    @property
+    def IsDefault(self):
+        r"""true: 默认策略，false:自定义策略
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def IsGlobal(self):
+        r"""是否为全部镜像规则。true表示对所有镜像生效
+        :rtype: bool
+        """
+        return self._IsGlobal
+
+    @IsGlobal.setter
+    def IsGlobal(self, IsGlobal):
+        self._IsGlobal = IsGlobal
 
     @property
     def IsEnable(self):
-        r"""true:策略启用，false:策略禁用
+        r"""true: 策略启用，false：策略禁用
         :rtype: bool
         """
         return self._IsEnable
@@ -1097,15 +1168,127 @@ class AbnormalProcessRuleInfo(AbstractModel):
         self._IsEnable = IsEnable
 
     @property
-    def ImageIds(self):
-        r"""生效镜像id，空数组代表全部镜像
+    def RuleActions(self):
+        r"""规则组中所有执行动作的去重列表。RULE_MODE_ALERT:告警 RULE_MODE_HOLDUP:拦截
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
-        return self._ImageIds
+        return self._RuleActions
 
-    @ImageIds.setter
-    def ImageIds(self, ImageIds):
-        self._ImageIds = ImageIds
+    @RuleActions.setter
+    def RuleActions(self, RuleActions):
+        self._RuleActions = RuleActions
+
+    @property
+    def RuleId(self):
+        r"""策略Id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""策略名字
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def SystemChildRules(self):
+        r"""系统策略子规则列表。IsDefault=true时有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AbnormalProcessSystemChildRuleInfo
+        """
+        return self._SystemChildRules
+
+    @SystemChildRules.setter
+    def SystemChildRules(self, SystemChildRules):
+        self._SystemChildRules = SystemChildRules
+
+    @property
+    def UpdateTime(self):
+        r"""策略更新时间, 存在为空的情况
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        if params.get("ChildRules") is not None:
+            self._ChildRules = []
+            for item in params.get("ChildRules"):
+                obj = AbnormalProcessChildRuleInfo()
+                obj._deserialize(item)
+                self._ChildRules.append(obj)
+        self._EditUserName = params.get("EditUserName")
+        self._EffectImageCount = params.get("EffectImageCount")
+        self._IsDefault = params.get("IsDefault")
+        self._IsGlobal = params.get("IsGlobal")
+        self._IsEnable = params.get("IsEnable")
+        self._RuleActions = params.get("RuleActions")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        if params.get("SystemChildRules") is not None:
+            self._SystemChildRules = []
+            for item in params.get("SystemChildRules"):
+                obj = AbnormalProcessSystemChildRuleInfo()
+                obj._deserialize(item)
+                self._SystemChildRules.append(obj)
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AbnormalProcessRuleInfo(AbstractModel):
+    r"""运行时安全，异常进程检测策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChildRules: 用户策略的子策略数组
+        :type ChildRules: list of AbnormalProcessChildRuleInfo
+        :param _ImageIds: 生效镜像id，空数组代表全部镜像
+        :type ImageIds: list of str
+        :param _IsEnable: true:策略启用，false:策略禁用
+        :type IsEnable: bool
+        :param _RuleName: 策略名字
+        :type RuleName: str
+        :param _IsDefault: 是否是系统默认策略
+        :type IsDefault: bool
+        :param _IsGlobal: 是否为全部镜像规则。true表示对所有镜像生效
+        :type IsGlobal: bool
+        :param _RuleId: 策略id
+        :type RuleId: str
+        :param _SystemChildRules: 系统策略的子策略数组
+        :type SystemChildRules: list of AbnormalProcessSystemChildRuleInfo
+        """
+        self._ChildRules = None
+        self._ImageIds = None
+        self._IsEnable = None
+        self._RuleName = None
+        self._IsDefault = None
+        self._IsGlobal = None
+        self._RuleId = None
+        self._SystemChildRules = None
 
     @property
     def ChildRules(self):
@@ -1119,6 +1302,28 @@ class AbnormalProcessRuleInfo(AbstractModel):
         self._ChildRules = ChildRules
 
     @property
+    def ImageIds(self):
+        r"""生效镜像id，空数组代表全部镜像
+        :rtype: list of str
+        """
+        return self._ImageIds
+
+    @ImageIds.setter
+    def ImageIds(self, ImageIds):
+        self._ImageIds = ImageIds
+
+    @property
+    def IsEnable(self):
+        r"""true:策略启用，false:策略禁用
+        :rtype: bool
+        """
+        return self._IsEnable
+
+    @IsEnable.setter
+    def IsEnable(self, IsEnable):
+        self._IsEnable = IsEnable
+
+    @property
     def RuleName(self):
         r"""策略名字
         :rtype: str
@@ -1128,6 +1333,28 @@ class AbnormalProcessRuleInfo(AbstractModel):
     @RuleName.setter
     def RuleName(self, RuleName):
         self._RuleName = RuleName
+
+    @property
+    def IsDefault(self):
+        r"""是否是系统默认策略
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def IsGlobal(self):
+        r"""是否为全部镜像规则。true表示对所有镜像生效
+        :rtype: bool
+        """
+        return self._IsGlobal
+
+    @IsGlobal.setter
+    def IsGlobal(self, IsGlobal):
+        self._IsGlobal = IsGlobal
 
     @property
     def RuleId(self):
@@ -1151,28 +1378,19 @@ class AbnormalProcessRuleInfo(AbstractModel):
     def SystemChildRules(self, SystemChildRules):
         self._SystemChildRules = SystemChildRules
 
-    @property
-    def IsDefault(self):
-        r"""是否是系统默认策略
-        :rtype: bool
-        """
-        return self._IsDefault
-
-    @IsDefault.setter
-    def IsDefault(self, IsDefault):
-        self._IsDefault = IsDefault
-
 
     def _deserialize(self, params):
-        self._IsEnable = params.get("IsEnable")
-        self._ImageIds = params.get("ImageIds")
         if params.get("ChildRules") is not None:
             self._ChildRules = []
             for item in params.get("ChildRules"):
                 obj = AbnormalProcessChildRuleInfo()
                 obj._deserialize(item)
                 self._ChildRules.append(obj)
+        self._ImageIds = params.get("ImageIds")
+        self._IsEnable = params.get("IsEnable")
         self._RuleName = params.get("RuleName")
+        self._IsDefault = params.get("IsDefault")
+        self._IsGlobal = params.get("IsGlobal")
         self._RuleId = params.get("RuleId")
         if params.get("SystemChildRules") is not None:
             self._SystemChildRules = []
@@ -1180,7 +1398,6 @@ class AbnormalProcessRuleInfo(AbstractModel):
                 obj = AbnormalProcessSystemChildRuleInfo()
                 obj._deserialize(item)
                 self._SystemChildRules.append(obj)
-        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1198,10 +1415,10 @@ class AbnormalProcessSystemChildRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 子策略Id
-        :type RuleId: str
         :param _IsEnable: 子策略状态，true为开启，false为关闭
         :type IsEnable: bool
+        :param _RuleId: 子策略Id
+        :type RuleId: str
         :param _RuleMode: 策略模式,  RULE_MODE_RELEASE: 放行
    RULE_MODE_ALERT: 告警
    RULE_MODE_HOLDUP:拦截
@@ -1218,22 +1435,11 @@ ABNORMAL_CHILD_PROC: 敏感服务异常子进程启动
         :param _RuleLevel: 威胁等级，HIGH:高，MIDDLE:中，LOW:低
         :type RuleLevel: str
         """
-        self._RuleId = None
         self._IsEnable = None
+        self._RuleId = None
         self._RuleMode = None
         self._RuleType = None
         self._RuleLevel = None
-
-    @property
-    def RuleId(self):
-        r"""子策略Id
-        :rtype: str
-        """
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
 
     @property
     def IsEnable(self):
@@ -1245,6 +1451,17 @@ ABNORMAL_CHILD_PROC: 敏感服务异常子进程启动
     @IsEnable.setter
     def IsEnable(self, IsEnable):
         self._IsEnable = IsEnable
+
+    @property
+    def RuleId(self):
+        r"""子策略Id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
     @property
     def RuleMode(self):
@@ -1290,8 +1507,8 @@ ABNORMAL_CHILD_PROC: 敏感服务异常子进程启动
 
 
     def _deserialize(self, params):
-        self._RuleId = params.get("RuleId")
         self._IsEnable = params.get("IsEnable")
+        self._RuleId = params.get("RuleId")
         self._RuleMode = params.get("RuleMode")
         self._RuleType = params.get("RuleType")
         self._RuleLevel = params.get("RuleLevel")
@@ -1312,33 +1529,22 @@ class AccessControlChildRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleMode: <p>策略模式,  RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
-        :type RuleMode: str
         :param _ProcessPath: <p>进程路径</p>
         :type ProcessPath: str
+        :param _RuleMode: <p>策略模式,  RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
+        :type RuleMode: str
         :param _TargetFilePath: <p>被访问文件路径，仅仅在访问控制生效</p>
         :type TargetFilePath: str
-        :param _RuleId: <p>子策略id</p>
-        :type RuleId: str
         :param _CmdLine: <p>命令行参数</p>
         :type CmdLine: str
+        :param _RuleId: <p>子策略id</p>
+        :type RuleId: str
         """
-        self._RuleMode = None
         self._ProcessPath = None
+        self._RuleMode = None
         self._TargetFilePath = None
-        self._RuleId = None
         self._CmdLine = None
-
-    @property
-    def RuleMode(self):
-        r"""<p>策略模式,  RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
-        :rtype: str
-        """
-        return self._RuleMode
-
-    @RuleMode.setter
-    def RuleMode(self, RuleMode):
-        self._RuleMode = RuleMode
+        self._RuleId = None
 
     @property
     def ProcessPath(self):
@@ -1352,6 +1558,17 @@ class AccessControlChildRuleInfo(AbstractModel):
         self._ProcessPath = ProcessPath
 
     @property
+    def RuleMode(self):
+        r"""<p>策略模式,  RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
+        :rtype: str
+        """
+        return self._RuleMode
+
+    @RuleMode.setter
+    def RuleMode(self, RuleMode):
+        self._RuleMode = RuleMode
+
+    @property
     def TargetFilePath(self):
         r"""<p>被访问文件路径，仅仅在访问控制生效</p>
         :rtype: str
@@ -1361,17 +1578,6 @@ class AccessControlChildRuleInfo(AbstractModel):
     @TargetFilePath.setter
     def TargetFilePath(self, TargetFilePath):
         self._TargetFilePath = TargetFilePath
-
-    @property
-    def RuleId(self):
-        r"""<p>子策略id</p>
-        :rtype: str
-        """
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
 
     @property
     def CmdLine(self):
@@ -1384,13 +1590,24 @@ class AccessControlChildRuleInfo(AbstractModel):
     def CmdLine(self, CmdLine):
         self._CmdLine = CmdLine
 
+    @property
+    def RuleId(self):
+        r"""<p>子策略id</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
 
     def _deserialize(self, params):
-        self._RuleMode = params.get("RuleMode")
         self._ProcessPath = params.get("ProcessPath")
+        self._RuleMode = params.get("RuleMode")
         self._TargetFilePath = params.get("TargetFilePath")
-        self._RuleId = params.get("RuleId")
         self._CmdLine = params.get("CmdLine")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2135,39 +2352,110 @@ class AccessControlEventInfo(AbstractModel):
         
 
 
-class AccessControlRuleInfo(AbstractModel):
-    r"""容器运行时，访问控制策略信息
+class AccessControlRuleExtSetItem(AbstractModel):
+    r"""文件篡改策略列表扩展项（扁平独立结构体，含子规则内容和执行动作）
 
     """
 
     def __init__(self):
         r"""
-        :param _IsEnable: 开关,true:开启，false:禁用
-        :type IsEnable: bool
-        :param _ImageIds: 生效镜像id，空数组代表全部镜像
-        :type ImageIds: list of str
-        :param _ChildRules: 用户策略的子策略数组
+        :param _ChildRules: 用户自定义策略子规则列表。IsDefault=false时有值
+注意：此字段可能返回 null，表示取不到有效值。
         :type ChildRules: list of AccessControlChildRuleInfo
+        :param _EditUserName: 编辑用户名称
+        :type EditUserName: str
+        :param _EffectImageCount: 策略生效镜像数量
+        :type EffectImageCount: int
+        :param _IsDefault: true: 默认策略，false:自定义策略
+        :type IsDefault: bool
+        :param _IsGlobal: 是否为全部镜像规则。true表示对所有镜像生效
+        :type IsGlobal: bool
+        :param _IsEnable: true: 策略启用，false：策略禁用
+        :type IsEnable: bool
+        :param _RuleActions: 规则组中所有执行动作的去重列表。RULE_MODE_ALERT:告警 RULE_MODE_HOLDUP:拦截
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleActions: list of str
+        :param _RuleId: 策略Id
+        :type RuleId: str
         :param _RuleName: 策略名字
         :type RuleName: str
-        :param _RuleId: 策略id
-        :type RuleId: str
-        :param _SystemChildRules: 系统策略的子策略数组
+        :param _SystemChildRules: 系统策略子规则列表。IsDefault=true时有值
+注意：此字段可能返回 null，表示取不到有效值。
         :type SystemChildRules: list of AccessControlSystemChildRuleInfo
-        :param _IsDefault: 是否是系统默认策略
-        :type IsDefault: bool
+        :param _UpdateTime: 策略更新时间, 存在为空的情况
+        :type UpdateTime: str
         """
-        self._IsEnable = None
-        self._ImageIds = None
         self._ChildRules = None
-        self._RuleName = None
-        self._RuleId = None
-        self._SystemChildRules = None
+        self._EditUserName = None
+        self._EffectImageCount = None
         self._IsDefault = None
+        self._IsGlobal = None
+        self._IsEnable = None
+        self._RuleActions = None
+        self._RuleId = None
+        self._RuleName = None
+        self._SystemChildRules = None
+        self._UpdateTime = None
+
+    @property
+    def ChildRules(self):
+        r"""用户自定义策略子规则列表。IsDefault=false时有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AccessControlChildRuleInfo
+        """
+        return self._ChildRules
+
+    @ChildRules.setter
+    def ChildRules(self, ChildRules):
+        self._ChildRules = ChildRules
+
+    @property
+    def EditUserName(self):
+        r"""编辑用户名称
+        :rtype: str
+        """
+        return self._EditUserName
+
+    @EditUserName.setter
+    def EditUserName(self, EditUserName):
+        self._EditUserName = EditUserName
+
+    @property
+    def EffectImageCount(self):
+        r"""策略生效镜像数量
+        :rtype: int
+        """
+        return self._EffectImageCount
+
+    @EffectImageCount.setter
+    def EffectImageCount(self, EffectImageCount):
+        self._EffectImageCount = EffectImageCount
+
+    @property
+    def IsDefault(self):
+        r"""true: 默认策略，false:自定义策略
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def IsGlobal(self):
+        r"""是否为全部镜像规则。true表示对所有镜像生效
+        :rtype: bool
+        """
+        return self._IsGlobal
+
+    @IsGlobal.setter
+    def IsGlobal(self, IsGlobal):
+        self._IsGlobal = IsGlobal
 
     @property
     def IsEnable(self):
-        r"""开关,true:开启，false:禁用
+        r"""true: 策略启用，false：策略禁用
         :rtype: bool
         """
         return self._IsEnable
@@ -2177,15 +2465,127 @@ class AccessControlRuleInfo(AbstractModel):
         self._IsEnable = IsEnable
 
     @property
-    def ImageIds(self):
-        r"""生效镜像id，空数组代表全部镜像
+    def RuleActions(self):
+        r"""规则组中所有执行动作的去重列表。RULE_MODE_ALERT:告警 RULE_MODE_HOLDUP:拦截
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
-        return self._ImageIds
+        return self._RuleActions
 
-    @ImageIds.setter
-    def ImageIds(self, ImageIds):
-        self._ImageIds = ImageIds
+    @RuleActions.setter
+    def RuleActions(self, RuleActions):
+        self._RuleActions = RuleActions
+
+    @property
+    def RuleId(self):
+        r"""策略Id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""策略名字
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def SystemChildRules(self):
+        r"""系统策略子规则列表。IsDefault=true时有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AccessControlSystemChildRuleInfo
+        """
+        return self._SystemChildRules
+
+    @SystemChildRules.setter
+    def SystemChildRules(self, SystemChildRules):
+        self._SystemChildRules = SystemChildRules
+
+    @property
+    def UpdateTime(self):
+        r"""策略更新时间, 存在为空的情况
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        if params.get("ChildRules") is not None:
+            self._ChildRules = []
+            for item in params.get("ChildRules"):
+                obj = AccessControlChildRuleInfo()
+                obj._deserialize(item)
+                self._ChildRules.append(obj)
+        self._EditUserName = params.get("EditUserName")
+        self._EffectImageCount = params.get("EffectImageCount")
+        self._IsDefault = params.get("IsDefault")
+        self._IsGlobal = params.get("IsGlobal")
+        self._IsEnable = params.get("IsEnable")
+        self._RuleActions = params.get("RuleActions")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        if params.get("SystemChildRules") is not None:
+            self._SystemChildRules = []
+            for item in params.get("SystemChildRules"):
+                obj = AccessControlSystemChildRuleInfo()
+                obj._deserialize(item)
+                self._SystemChildRules.append(obj)
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessControlRuleInfo(AbstractModel):
+    r"""容器运行时，访问控制策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChildRules: 用户策略的子策略数组
+        :type ChildRules: list of AccessControlChildRuleInfo
+        :param _ImageIds: 生效镜像id，空数组代表全部镜像
+        :type ImageIds: list of str
+        :param _IsEnable: 开关,true:开启，false:禁用
+        :type IsEnable: bool
+        :param _RuleName: 策略名字
+        :type RuleName: str
+        :param _IsDefault: 是否是系统默认策略
+        :type IsDefault: bool
+        :param _IsGlobal: true:全部镜像，false:指定镜像。IsGlobal=true时ImageIds返回空数组
+        :type IsGlobal: bool
+        :param _RuleId: 策略id
+        :type RuleId: str
+        :param _SystemChildRules: 系统策略的子策略数组
+        :type SystemChildRules: list of AccessControlSystemChildRuleInfo
+        """
+        self._ChildRules = None
+        self._ImageIds = None
+        self._IsEnable = None
+        self._RuleName = None
+        self._IsDefault = None
+        self._IsGlobal = None
+        self._RuleId = None
+        self._SystemChildRules = None
 
     @property
     def ChildRules(self):
@@ -2199,6 +2599,28 @@ class AccessControlRuleInfo(AbstractModel):
         self._ChildRules = ChildRules
 
     @property
+    def ImageIds(self):
+        r"""生效镜像id，空数组代表全部镜像
+        :rtype: list of str
+        """
+        return self._ImageIds
+
+    @ImageIds.setter
+    def ImageIds(self, ImageIds):
+        self._ImageIds = ImageIds
+
+    @property
+    def IsEnable(self):
+        r"""开关,true:开启，false:禁用
+        :rtype: bool
+        """
+        return self._IsEnable
+
+    @IsEnable.setter
+    def IsEnable(self, IsEnable):
+        self._IsEnable = IsEnable
+
+    @property
     def RuleName(self):
         r"""策略名字
         :rtype: str
@@ -2208,6 +2630,28 @@ class AccessControlRuleInfo(AbstractModel):
     @RuleName.setter
     def RuleName(self, RuleName):
         self._RuleName = RuleName
+
+    @property
+    def IsDefault(self):
+        r"""是否是系统默认策略
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def IsGlobal(self):
+        r"""true:全部镜像，false:指定镜像。IsGlobal=true时ImageIds返回空数组
+        :rtype: bool
+        """
+        return self._IsGlobal
+
+    @IsGlobal.setter
+    def IsGlobal(self, IsGlobal):
+        self._IsGlobal = IsGlobal
 
     @property
     def RuleId(self):
@@ -2231,28 +2675,19 @@ class AccessControlRuleInfo(AbstractModel):
     def SystemChildRules(self, SystemChildRules):
         self._SystemChildRules = SystemChildRules
 
-    @property
-    def IsDefault(self):
-        r"""是否是系统默认策略
-        :rtype: bool
-        """
-        return self._IsDefault
-
-    @IsDefault.setter
-    def IsDefault(self, IsDefault):
-        self._IsDefault = IsDefault
-
 
     def _deserialize(self, params):
-        self._IsEnable = params.get("IsEnable")
-        self._ImageIds = params.get("ImageIds")
         if params.get("ChildRules") is not None:
             self._ChildRules = []
             for item in params.get("ChildRules"):
                 obj = AccessControlChildRuleInfo()
                 obj._deserialize(item)
                 self._ChildRules.append(obj)
+        self._ImageIds = params.get("ImageIds")
+        self._IsEnable = params.get("IsEnable")
         self._RuleName = params.get("RuleName")
+        self._IsDefault = params.get("IsDefault")
+        self._IsGlobal = params.get("IsGlobal")
         self._RuleId = params.get("RuleId")
         if params.get("SystemChildRules") is not None:
             self._SystemChildRules = []
@@ -2260,7 +2695,6 @@ class AccessControlRuleInfo(AbstractModel):
                 obj = AccessControlSystemChildRuleInfo()
                 obj._deserialize(item)
                 self._SystemChildRules.append(obj)
-        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2278,24 +2712,35 @@ class AccessControlSystemChildRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _IsEnable: 子策略状态，true为开启，false为关闭
+        :type IsEnable: bool
         :param _RuleId: 子策略Id
         :type RuleId: str
         :param _RuleMode: 策略模式,  RULE_MODE_RELEASE: 放行
    RULE_MODE_ALERT: 告警
    RULE_MODE_HOLDUP:拦截
         :type RuleMode: str
-        :param _IsEnable: 子策略状态，true为开启，false为关闭
-        :type IsEnable: bool
         :param _RuleType: 子策略检测的入侵行为类型
 CHANGE_CRONTAB：篡改计划任务
 CHANGE_SYS_BIN：篡改系统程序
 CHANGE_USRCFG：篡改用户配置
         :type RuleType: str
         """
+        self._IsEnable = None
         self._RuleId = None
         self._RuleMode = None
-        self._IsEnable = None
         self._RuleType = None
+
+    @property
+    def IsEnable(self):
+        r"""子策略状态，true为开启，false为关闭
+        :rtype: bool
+        """
+        return self._IsEnable
+
+    @IsEnable.setter
+    def IsEnable(self, IsEnable):
+        self._IsEnable = IsEnable
 
     @property
     def RuleId(self):
@@ -2322,17 +2767,6 @@ CHANGE_USRCFG：篡改用户配置
         self._RuleMode = RuleMode
 
     @property
-    def IsEnable(self):
-        r"""子策略状态，true为开启，false为关闭
-        :rtype: bool
-        """
-        return self._IsEnable
-
-    @IsEnable.setter
-    def IsEnable(self, IsEnable):
-        self._IsEnable = IsEnable
-
-    @property
     def RuleType(self):
         r"""子策略检测的入侵行为类型
 CHANGE_CRONTAB：篡改计划任务
@@ -2348,9 +2782,9 @@ CHANGE_USRCFG：篡改用户配置
 
 
     def _deserialize(self, params):
+        self._IsEnable = params.get("IsEnable")
         self._RuleId = params.get("RuleId")
         self._RuleMode = params.get("RuleMode")
-        self._IsEnable = params.get("IsEnable")
         self._RuleType = params.get("RuleType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4962,45 +5396,34 @@ class AssetClusterListItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterID: 集群ID
+        :param _ClusterID: <p>集群ID</p>
         :type ClusterID: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _Status: 集群状态
-CSR_RUNNING: 运行中
-CSR_EXCEPTION:异常
-CSR_DEL:已经删除
+        :param _Status: <p>集群状态<br>CSR_RUNNING: 运行中<br>CSR_EXCEPTION:异常<br>CSR_DEL:已经删除</p>
         :type Status: str
-        :param _BindRuleName: 绑定规则名称
+        :param _BindRuleID: <p>绑定的集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindRuleID: str
+        :param _BindRuleName: <p>绑定规则名称</p>
         :type BindRuleName: str
-        :param _ClusterType: 集群类型:
-CT_TKE:TKE集群;
-CT_USER_CREATE:用户自建集群;
-CT_TKE_SERVERLESS:TKE Serverless集群;
+        :param _ClusterType: <p>集群类型:<br>CT_TKE:TKE集群;<br>CT_USER_CREATE:用户自建集群;<br>CT_TKE_SERVERLESS:TKE Serverless集群;</p>
         :type ClusterType: str
-        :param _ClusterVersion: 集群版本
+        :param _ClusterVersion: <p>集群版本</p>
         :type ClusterVersion: str
-        :param _MemLimit: 内存量
+        :param _MemLimit: <p>内存量</p>
         :type MemLimit: int
-        :param _CpuLimit: cpu
+        :param _CpuLimit: <p>cpu</p>
         :type CpuLimit: int
-        :param _ClusterAuditStatus: 集群审计开关状态：
-已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+        :param _ClusterAuditStatus: <p>集群审计开关状态：<br>已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed</p>
         :type ClusterAuditStatus: str
-        :param _AccessedStatus: 接入状态:
-未接入: AccessedNone
-已防护: AccessedDefended
-未防护: AccessedInstalled
-部分防护: AccessedPartialDefence
-接入异常: AccessedException
-卸载异常: AccessedUninstallException
-接入中: AccessedInstalling
-卸载中: AccessedUninstalling
+        :param _AccessedStatus: <p>接入状态:<br>未接入: AccessedNone<br>已防护: AccessedDefended<br>未防护: AccessedInstalled<br>部分防护: AccessedPartialDefence<br>接入异常: AccessedException<br>卸载异常: AccessedUninstallException<br>接入中: AccessedInstalling<br>卸载中: AccessedUninstalling</p>
         :type AccessedStatus: str
         """
         self._ClusterID = None
         self._ClusterName = None
         self._Status = None
+        self._BindRuleID = None
         self._BindRuleName = None
         self._ClusterType = None
         self._ClusterVersion = None
@@ -5011,7 +5434,7 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
 
     @property
     def ClusterID(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterID
@@ -5022,7 +5445,7 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -5033,10 +5456,7 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
 
     @property
     def Status(self):
-        r"""集群状态
-CSR_RUNNING: 运行中
-CSR_EXCEPTION:异常
-CSR_DEL:已经删除
+        r"""<p>集群状态<br>CSR_RUNNING: 运行中<br>CSR_EXCEPTION:异常<br>CSR_DEL:已经删除</p>
         :rtype: str
         """
         return self._Status
@@ -5046,8 +5466,20 @@ CSR_DEL:已经删除
         self._Status = Status
 
     @property
+    def BindRuleID(self):
+        r"""<p>绑定的集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BindRuleID
+
+    @BindRuleID.setter
+    def BindRuleID(self, BindRuleID):
+        self._BindRuleID = BindRuleID
+
+    @property
     def BindRuleName(self):
-        r"""绑定规则名称
+        r"""<p>绑定规则名称</p>
         :rtype: str
         """
         return self._BindRuleName
@@ -5058,10 +5490,7 @@ CSR_DEL:已经删除
 
     @property
     def ClusterType(self):
-        r"""集群类型:
-CT_TKE:TKE集群;
-CT_USER_CREATE:用户自建集群;
-CT_TKE_SERVERLESS:TKE Serverless集群;
+        r"""<p>集群类型:<br>CT_TKE:TKE集群;<br>CT_USER_CREATE:用户自建集群;<br>CT_TKE_SERVERLESS:TKE Serverless集群;</p>
         :rtype: str
         """
         return self._ClusterType
@@ -5072,7 +5501,7 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
 
     @property
     def ClusterVersion(self):
-        r"""集群版本
+        r"""<p>集群版本</p>
         :rtype: str
         """
         return self._ClusterVersion
@@ -5083,7 +5512,7 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
 
     @property
     def MemLimit(self):
-        r"""内存量
+        r"""<p>内存量</p>
         :rtype: int
         """
         return self._MemLimit
@@ -5094,7 +5523,7 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
 
     @property
     def CpuLimit(self):
-        r"""cpu
+        r"""<p>cpu</p>
         :rtype: int
         """
         return self._CpuLimit
@@ -5105,8 +5534,7 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
 
     @property
     def ClusterAuditStatus(self):
-        r"""集群审计开关状态：
-已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+        r"""<p>集群审计开关状态：<br>已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed</p>
         :rtype: str
         """
         return self._ClusterAuditStatus
@@ -5117,15 +5545,7 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
 
     @property
     def AccessedStatus(self):
-        r"""接入状态:
-未接入: AccessedNone
-已防护: AccessedDefended
-未防护: AccessedInstalled
-部分防护: AccessedPartialDefence
-接入异常: AccessedException
-卸载异常: AccessedUninstallException
-接入中: AccessedInstalling
-卸载中: AccessedUninstalling
+        r"""<p>接入状态:<br>未接入: AccessedNone<br>已防护: AccessedDefended<br>未防护: AccessedInstalled<br>部分防护: AccessedPartialDefence<br>接入异常: AccessedException<br>卸载异常: AccessedUninstallException<br>接入中: AccessedInstalling<br>卸载中: AccessedUninstalling</p>
         :rtype: str
         """
         return self._AccessedStatus
@@ -5139,6 +5559,7 @@ CT_TKE_SERVERLESS:TKE Serverless集群;
         self._ClusterID = params.get("ClusterID")
         self._ClusterName = params.get("ClusterName")
         self._Status = params.get("Status")
+        self._BindRuleID = params.get("BindRuleID")
         self._BindRuleName = params.get("BindRuleName")
         self._ClusterType = params.get("ClusterType")
         self._ClusterVersion = params.get("ClusterVersion")
@@ -12533,32 +12954,32 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 开关
+        :param _Enable: <p>开关</p>
         :type Enable: bool
-        :param _ScanTime: 扫描开始时间
-01:00 时分
+        :param _ScanTime: <p>扫描开始时间<br>01:00 时分</p>
         :type ScanTime: str
-        :param _ScanPeriod: 扫描周期
+        :param _ScanPeriod: <p>扫描周期</p>
         :type ScanPeriod: int
-        :param _ScanVirus: 扫描木马
+        :param _ScanVirus: <p>扫描木马</p>
         :type ScanVirus: bool
-        :param _ScanRisk: 扫描敏感信息
+        :param _ScanRisk: <p>扫描敏感信息</p>
         :type ScanRisk: bool
-        :param _ScanVul: 扫描漏洞
+        :param _ScanVul: <p>扫描漏洞</p>
         :type ScanVul: bool
-        :param _All: 全部镜像
+        :param _All: <p>全部镜像</p>
         :type All: bool
-        :param _Images: 自定义镜像
+        :param _Images: <p>自定义镜像</p>
         :type Images: list of str
-        :param _ContainerRunning: 镜像是否存在运行中的容器
+        :param _ContainerRunning: <p>镜像是否存在运行中的容器</p>
         :type ContainerRunning: bool
-        :param _ScanScope: 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+        :param _ScanScope: <p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 , 3:集群筛选扫描</p><p>取值范围：[0, 3]</p><p>默认值：0</p>
         :type ScanScope: int
-        :param _ScanEndTime: 扫描结束时间
-02:00 时分
+        :param _ScanEndTime: <p>扫描结束时间<br>02:00 时分</p>
         :type ScanEndTime: str
-        :param _ExcludeImages: 排除扫描的镜像
+        :param _ExcludeImages: <p>排除扫描的镜像</p>
         :type ExcludeImages: list of str
+        :param _ClusterIDs: <p>集群id</p>
+        :type ClusterIDs: list of str
         """
         self._Enable = None
         self._ScanTime = None
@@ -12572,10 +12993,11 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
         self._ScanScope = None
         self._ScanEndTime = None
         self._ExcludeImages = None
+        self._ClusterIDs = None
 
     @property
     def Enable(self):
-        r"""开关
+        r"""<p>开关</p>
         :rtype: bool
         """
         return self._Enable
@@ -12586,8 +13008,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def ScanTime(self):
-        r"""扫描开始时间
-01:00 时分
+        r"""<p>扫描开始时间<br>01:00 时分</p>
         :rtype: str
         """
         return self._ScanTime
@@ -12598,7 +13019,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def ScanPeriod(self):
-        r"""扫描周期
+        r"""<p>扫描周期</p>
         :rtype: int
         """
         return self._ScanPeriod
@@ -12609,7 +13030,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def ScanVirus(self):
-        r"""扫描木马
+        r"""<p>扫描木马</p>
         :rtype: bool
         """
         return self._ScanVirus
@@ -12620,7 +13041,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def ScanRisk(self):
-        r"""扫描敏感信息
+        r"""<p>扫描敏感信息</p>
         :rtype: bool
         """
         return self._ScanRisk
@@ -12631,7 +13052,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def ScanVul(self):
-        r"""扫描漏洞
+        r"""<p>扫描漏洞</p>
         :rtype: bool
         """
         return self._ScanVul
@@ -12644,7 +13065,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
     def All(self):
         warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
 
-        r"""全部镜像
+        r"""<p>全部镜像</p>
         :rtype: bool
         """
         return self._All
@@ -12657,7 +13078,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def Images(self):
-        r"""自定义镜像
+        r"""<p>自定义镜像</p>
         :rtype: list of str
         """
         return self._Images
@@ -12668,7 +13089,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def ContainerRunning(self):
-        r"""镜像是否存在运行中的容器
+        r"""<p>镜像是否存在运行中的容器</p>
         :rtype: bool
         """
         return self._ContainerRunning
@@ -12679,7 +13100,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def ScanScope(self):
-        r"""扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+        r"""<p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 , 3:集群筛选扫描</p><p>取值范围：[0, 3]</p><p>默认值：0</p>
         :rtype: int
         """
         return self._ScanScope
@@ -12690,8 +13111,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def ScanEndTime(self):
-        r"""扫描结束时间
-02:00 时分
+        r"""<p>扫描结束时间<br>02:00 时分</p>
         :rtype: str
         """
         return self._ScanEndTime
@@ -12702,7 +13122,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def ExcludeImages(self):
-        r"""排除扫描的镜像
+        r"""<p>排除扫描的镜像</p>
         :rtype: list of str
         """
         return self._ExcludeImages
@@ -12710,6 +13130,17 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
     @ExcludeImages.setter
     def ExcludeImages(self, ExcludeImages):
         self._ExcludeImages = ExcludeImages
+
+    @property
+    def ClusterIDs(self):
+        r"""<p>集群id</p>
+        :rtype: list of str
+        """
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
 
 
     def _deserialize(self, params):
@@ -12725,6 +13156,7 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
         self._ScanScope = params.get("ScanScope")
         self._ScanEndTime = params.get("ScanEndTime")
         self._ExcludeImages = params.get("ExcludeImages")
+        self._ClusterIDs = params.get("ClusterIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12770,28 +13202,30 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _All: 是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+        :param _All: <p>是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
         :type All: bool
-        :param _Images: 需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。
+        :param _Images: <p>需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
         :type Images: list of str
-        :param _ScanVul: 扫描漏洞；漏洞，木马和风险需选其一
+        :param _ScanVul: <p>扫描漏洞；漏洞，木马和风险需选其一</p>
         :type ScanVul: bool
-        :param _ScanVirus: 扫描木马；漏洞，木马和风险需选其一
+        :param _ScanVirus: <p>扫描木马；漏洞，木马和风险需选其一</p>
         :type ScanVirus: bool
-        :param _ScanRisk: 扫描风险；漏洞，木马和风险需选其一
+        :param _ScanRisk: <p>扫描风险；漏洞，木马和风险需选其一</p>
         :type ScanRisk: bool
-        :param _Filters: 根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+        :param _Filters: <p>根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
         :type Filters: list of AssetFilters
-        :param _ExcludeImageIds: 根据过滤条件筛选出镜像，再排除个别镜像
+        :param _ExcludeImageIds: <p>根据过滤条件筛选出镜像，再排除个别镜像</p>
         :type ExcludeImageIds: list of str
-        :param _ContainerRunning: 镜像是否存在运行中的容器
+        :param _ContainerRunning: <p>镜像是否存在运行中的容器</p>
         :type ContainerRunning: bool
-        :param _ScanScope: 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+        :param _ScanScope: <p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 3:集群扫描</p><p>取值范围：[0, 3]</p><p>默认值：0</p>
         :type ScanScope: int
-        :param _Timeout: 任务超时时长单位秒，默认1小时
+        :param _Timeout: <p>任务超时时长单位秒，默认1小时</p>
         :type Timeout: int
-        :param _IsOneClickScanningTask: 一键扫描任务。默认false表示非一键扫描，true一键扫描
+        :param _IsOneClickScanningTask: <p>一键扫描任务。默认false表示非一键扫描，true一键扫描</p>
         :type IsOneClickScanningTask: bool
+        :param _ClusterIDs: <p>集群id</p>
+        :type ClusterIDs: list of str
         """
         self._All = None
         self._Images = None
@@ -12804,12 +13238,13 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
         self._ScanScope = None
         self._Timeout = None
         self._IsOneClickScanningTask = None
+        self._ClusterIDs = None
 
     @property
     def All(self):
         warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
 
-        r"""是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+        r"""<p>是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
         :rtype: bool
         """
         return self._All
@@ -12822,7 +13257,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def Images(self):
-        r"""需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。
+        r"""<p>需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
         :rtype: list of str
         """
         return self._Images
@@ -12833,7 +13268,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def ScanVul(self):
-        r"""扫描漏洞；漏洞，木马和风险需选其一
+        r"""<p>扫描漏洞；漏洞，木马和风险需选其一</p>
         :rtype: bool
         """
         return self._ScanVul
@@ -12844,7 +13279,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def ScanVirus(self):
-        r"""扫描木马；漏洞，木马和风险需选其一
+        r"""<p>扫描木马；漏洞，木马和风险需选其一</p>
         :rtype: bool
         """
         return self._ScanVirus
@@ -12855,7 +13290,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def ScanRisk(self):
-        r"""扫描风险；漏洞，木马和风险需选其一
+        r"""<p>扫描风险；漏洞，木马和风险需选其一</p>
         :rtype: bool
         """
         return self._ScanRisk
@@ -12866,7 +13301,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+        r"""<p>根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
         :rtype: list of AssetFilters
         """
         return self._Filters
@@ -12877,7 +13312,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def ExcludeImageIds(self):
-        r"""根据过滤条件筛选出镜像，再排除个别镜像
+        r"""<p>根据过滤条件筛选出镜像，再排除个别镜像</p>
         :rtype: list of str
         """
         return self._ExcludeImageIds
@@ -12888,7 +13323,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def ContainerRunning(self):
-        r"""镜像是否存在运行中的容器
+        r"""<p>镜像是否存在运行中的容器</p>
         :rtype: bool
         """
         return self._ContainerRunning
@@ -12899,7 +13334,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def ScanScope(self):
-        r"""扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+        r"""<p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 3:集群扫描</p><p>取值范围：[0, 3]</p><p>默认值：0</p>
         :rtype: int
         """
         return self._ScanScope
@@ -12910,7 +13345,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""任务超时时长单位秒，默认1小时
+        r"""<p>任务超时时长单位秒，默认1小时</p>
         :rtype: int
         """
         return self._Timeout
@@ -12921,7 +13356,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     @property
     def IsOneClickScanningTask(self):
-        r"""一键扫描任务。默认false表示非一键扫描，true一键扫描
+        r"""<p>一键扫描任务。默认false表示非一键扫描，true一键扫描</p>
         :rtype: bool
         """
         return self._IsOneClickScanningTask
@@ -12929,6 +13364,17 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
     @IsOneClickScanningTask.setter
     def IsOneClickScanningTask(self, IsOneClickScanningTask):
         self._IsOneClickScanningTask = IsOneClickScanningTask
+
+    @property
+    def ClusterIDs(self):
+        r"""<p>集群id</p>
+        :rtype: list of str
+        """
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
 
 
     def _deserialize(self, params):
@@ -12948,6 +13394,7 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
         self._ScanScope = params.get("ScanScope")
         self._Timeout = params.get("Timeout")
         self._IsOneClickScanningTask = params.get("IsOneClickScanningTask")
+        self._ClusterIDs = params.get("ClusterIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12965,7 +13412,7 @@ class CreateAssetImageScanTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskID: 任务id
+        :param _TaskID: <p>任务id</p>
         :type TaskID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12975,7 +13422,7 @@ class CreateAssetImageScanTaskResponse(AbstractModel):
 
     @property
     def TaskID(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskID
@@ -15131,7 +15578,7 @@ class CreateK8sApiAbnormalRuleInfoRequest(AbstractModel):
         :type RuleInfo: :class:`tencentcloud.tcss.v20201101.models.K8sApiAbnormalRuleInfo`
         :param _CopySrcRuleID: 拷贝规则ID(适用于复制规则场景)
         :type CopySrcRuleID: str
-        :param _EventID: 事件ID(适用于事件加白场景)
+        :param _EventID: 事件ID(已废弃，保留兼容性。事件加白请使用白名单接口 ModifyK8sApiAbnormalWhitelist)
         :type EventID: int
         """
         self._RuleInfo = None
@@ -15162,7 +15609,7 @@ class CreateK8sApiAbnormalRuleInfoRequest(AbstractModel):
 
     @property
     def EventID(self):
-        r"""事件ID(适用于事件加白场景)
+        r"""事件ID(已废弃，保留兼容性。事件加白请使用白名单接口 ModifyK8sApiAbnormalWhitelist)
         :rtype: int
         """
         return self._EventID
@@ -17480,24 +17927,30 @@ class CreateVulScanTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LocalImageScanType: 本地镜像扫描范围类型。ALL:全部本地镜像，NOT_SCAN：全部已授权未扫描本地镜像，IMAGEIDS:自选本地镜像ID
+        :param _LocalImageScanType: <p>本地镜像扫描范围类型</p><p>枚举值：</p><ul><li>ALL： 全部本地镜像</li><li>NOT_SCAN： 全部已授权未扫描本地镜像</li><li>IMAGEIDS： 自选本地镜像ID</li><li>CLUSTER： 集群筛选</li></ul>
         :type LocalImageScanType: str
-        :param _LocalImageIDs: 根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。
+        :param _LocalImageIDs: <p>根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。</p>
         :type LocalImageIDs: list of str
-        :param _RegistryImageScanType: 仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID
+        :param _RegistryImageScanType: <p>仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID</p>
         :type RegistryImageScanType: str
-        :param _RegistryImageIDs: 根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。
+        :param _RegistryImageIDs: <p>根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。</p>
         :type RegistryImageIDs: list of int non-negative
-        :param _LocalTaskID: 本地镜像重新漏洞扫描时的任务ID
+        :param _LocalTaskID: <p>本地镜像重新漏洞扫描时的任务ID</p>
         :type LocalTaskID: int
-        :param _RegistryTaskID: 仓库镜像重新漏洞扫描时的任务ID
+        :param _RegistryTaskID: <p>仓库镜像重新漏洞扫描时的任务ID</p>
         :type RegistryTaskID: int
-        :param _LocalImageContainerRunning: 本地镜像容器运行中
+        :param _LocalImageContainerRunning: <p>本地镜像容器运行中</p>
         :type LocalImageContainerRunning: bool
-        :param _RegistryImageContainerRunning: 仓库镜像容器运行中
+        :param _RegistryImageContainerRunning: <p>仓库镜像容器运行中</p>
         :type RegistryImageContainerRunning: bool
-        :param _IsLatest: 仓库镜像是否是最新
+        :param _IsLatest: <p>仓库镜像是否是最新</p>
         :type IsLatest: bool
+        :param _ExcludeLocalImageIDs: <p>要剔除的本地镜像id</p>
+        :type ExcludeLocalImageIDs: list of str
+        :param _ExcludeRegistryImageIDs: <p>要剔除的仓库镜像id</p>
+        :type ExcludeRegistryImageIDs: list of int non-negative
+        :param _LocalClusterIDs: <p>集群id</p>
+        :type LocalClusterIDs: list of str
         """
         self._LocalImageScanType = None
         self._LocalImageIDs = None
@@ -17508,10 +17961,13 @@ class CreateVulScanTaskRequest(AbstractModel):
         self._LocalImageContainerRunning = None
         self._RegistryImageContainerRunning = None
         self._IsLatest = None
+        self._ExcludeLocalImageIDs = None
+        self._ExcludeRegistryImageIDs = None
+        self._LocalClusterIDs = None
 
     @property
     def LocalImageScanType(self):
-        r"""本地镜像扫描范围类型。ALL:全部本地镜像，NOT_SCAN：全部已授权未扫描本地镜像，IMAGEIDS:自选本地镜像ID
+        r"""<p>本地镜像扫描范围类型</p><p>枚举值：</p><ul><li>ALL： 全部本地镜像</li><li>NOT_SCAN： 全部已授权未扫描本地镜像</li><li>IMAGEIDS： 自选本地镜像ID</li><li>CLUSTER： 集群筛选</li></ul>
         :rtype: str
         """
         return self._LocalImageScanType
@@ -17522,7 +17978,7 @@ class CreateVulScanTaskRequest(AbstractModel):
 
     @property
     def LocalImageIDs(self):
-        r"""根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。
+        r"""<p>根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。</p>
         :rtype: list of str
         """
         return self._LocalImageIDs
@@ -17533,7 +17989,7 @@ class CreateVulScanTaskRequest(AbstractModel):
 
     @property
     def RegistryImageScanType(self):
-        r"""仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID
+        r"""<p>仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID</p>
         :rtype: str
         """
         return self._RegistryImageScanType
@@ -17544,7 +18000,7 @@ class CreateVulScanTaskRequest(AbstractModel):
 
     @property
     def RegistryImageIDs(self):
-        r"""根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。
+        r"""<p>根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。</p>
         :rtype: list of int non-negative
         """
         return self._RegistryImageIDs
@@ -17555,7 +18011,7 @@ class CreateVulScanTaskRequest(AbstractModel):
 
     @property
     def LocalTaskID(self):
-        r"""本地镜像重新漏洞扫描时的任务ID
+        r"""<p>本地镜像重新漏洞扫描时的任务ID</p>
         :rtype: int
         """
         return self._LocalTaskID
@@ -17566,7 +18022,7 @@ class CreateVulScanTaskRequest(AbstractModel):
 
     @property
     def RegistryTaskID(self):
-        r"""仓库镜像重新漏洞扫描时的任务ID
+        r"""<p>仓库镜像重新漏洞扫描时的任务ID</p>
         :rtype: int
         """
         return self._RegistryTaskID
@@ -17577,7 +18033,7 @@ class CreateVulScanTaskRequest(AbstractModel):
 
     @property
     def LocalImageContainerRunning(self):
-        r"""本地镜像容器运行中
+        r"""<p>本地镜像容器运行中</p>
         :rtype: bool
         """
         return self._LocalImageContainerRunning
@@ -17588,7 +18044,7 @@ class CreateVulScanTaskRequest(AbstractModel):
 
     @property
     def RegistryImageContainerRunning(self):
-        r"""仓库镜像容器运行中
+        r"""<p>仓库镜像容器运行中</p>
         :rtype: bool
         """
         return self._RegistryImageContainerRunning
@@ -17599,7 +18055,7 @@ class CreateVulScanTaskRequest(AbstractModel):
 
     @property
     def IsLatest(self):
-        r"""仓库镜像是否是最新
+        r"""<p>仓库镜像是否是最新</p>
         :rtype: bool
         """
         return self._IsLatest
@@ -17607,6 +18063,39 @@ class CreateVulScanTaskRequest(AbstractModel):
     @IsLatest.setter
     def IsLatest(self, IsLatest):
         self._IsLatest = IsLatest
+
+    @property
+    def ExcludeLocalImageIDs(self):
+        r"""<p>要剔除的本地镜像id</p>
+        :rtype: list of str
+        """
+        return self._ExcludeLocalImageIDs
+
+    @ExcludeLocalImageIDs.setter
+    def ExcludeLocalImageIDs(self, ExcludeLocalImageIDs):
+        self._ExcludeLocalImageIDs = ExcludeLocalImageIDs
+
+    @property
+    def ExcludeRegistryImageIDs(self):
+        r"""<p>要剔除的仓库镜像id</p>
+        :rtype: list of int non-negative
+        """
+        return self._ExcludeRegistryImageIDs
+
+    @ExcludeRegistryImageIDs.setter
+    def ExcludeRegistryImageIDs(self, ExcludeRegistryImageIDs):
+        self._ExcludeRegistryImageIDs = ExcludeRegistryImageIDs
+
+    @property
+    def LocalClusterIDs(self):
+        r"""<p>集群id</p>
+        :rtype: list of str
+        """
+        return self._LocalClusterIDs
+
+    @LocalClusterIDs.setter
+    def LocalClusterIDs(self, LocalClusterIDs):
+        self._LocalClusterIDs = LocalClusterIDs
 
 
     def _deserialize(self, params):
@@ -17619,6 +18108,9 @@ class CreateVulScanTaskRequest(AbstractModel):
         self._LocalImageContainerRunning = params.get("LocalImageContainerRunning")
         self._RegistryImageContainerRunning = params.get("RegistryImageContainerRunning")
         self._IsLatest = params.get("IsLatest")
+        self._ExcludeLocalImageIDs = params.get("ExcludeLocalImageIDs")
+        self._ExcludeRegistryImageIDs = params.get("ExcludeRegistryImageIDs")
+        self._LocalClusterIDs = params.get("LocalClusterIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17636,9 +18128,9 @@ class CreateVulScanTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LocalTaskID: 本地镜像重新漏洞扫描时的任务ID
+        :param _LocalTaskID: <p>本地镜像重新漏洞扫描时的任务ID</p>
         :type LocalTaskID: int
-        :param _RegistryTaskID: 仓库镜像重新漏洞扫描时的任务ID
+        :param _RegistryTaskID: <p>仓库镜像重新漏洞扫描时的任务ID</p>
         :type RegistryTaskID: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17649,7 +18141,7 @@ class CreateVulScanTaskResponse(AbstractModel):
 
     @property
     def LocalTaskID(self):
-        r"""本地镜像重新漏洞扫描时的任务ID
+        r"""<p>本地镜像重新漏洞扫描时的任务ID</p>
         :rtype: int
         """
         return self._LocalTaskID
@@ -17660,7 +18152,7 @@ class CreateVulScanTaskResponse(AbstractModel):
 
     @property
     def RegistryTaskID(self):
-        r"""仓库镜像重新漏洞扫描时的任务ID
+        r"""<p>仓库镜像重新漏洞扫描时的任务ID</p>
         :rtype: int
         """
         return self._RegistryTaskID
@@ -19646,30 +20138,19 @@ class DescribeAbnormalProcessRuleDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 策略唯一id
-        :type RuleId: str
         :param _ImageId: 镜像id, 在添加白名单的时候使用
         :type ImageId: str
         :param _Limit: 需要返回的数量，默认为10，最大值为100
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
+        :param _RuleId: 策略唯一id
+        :type RuleId: str
         """
-        self._RuleId = None
         self._ImageId = None
         self._Limit = None
         self._Offset = None
-
-    @property
-    def RuleId(self):
-        r"""策略唯一id
-        :rtype: str
-        """
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
+        self._RuleId = None
 
     @property
     def ImageId(self):
@@ -19704,12 +20185,23 @@ class DescribeAbnormalProcessRuleDetailRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def RuleId(self):
+        r"""策略唯一id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
 
     def _deserialize(self, params):
-        self._RuleId = params.get("RuleId")
         self._ImageId = params.get("ImageId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19772,22 +20264,54 @@ class DescribeAbnormalProcessRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _By: 排序字段
+        :type By: str
+        :param _Filters: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+<li>ImageName- String - 是否必填：否 - 镜像名称，模糊查找绑定了该镜像的规则 </li>
+<li>ImageId- String - 是否必填：否 - 镜像ID，模糊查找绑定了该镜像的规则 </li>
+<li>RuleType- String - 是否必填：否 - 策略类型过滤，取值：system（系统策略）、user（用户策略） </li>
+<li>RuleAction- String - 是否必填：否 - 执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截） </li>
+
+        :type Filters: list of RunTimeFilters
         :param _Limit: 需要返回的数量，默认为10，最大值为100
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Filters: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :type Filters: list of RunTimeFilters
         :param _Order: 升序降序,asc desc
         :type Order: str
-        :param _By: 排序字段
-        :type By: str
         """
+        self._By = None
+        self._Filters = None
         self._Limit = None
         self._Offset = None
-        self._Filters = None
         self._Order = None
-        self._By = None
+
+    @property
+    def By(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Filters(self):
+        r"""过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+<li>ImageName- String - 是否必填：否 - 镜像名称，模糊查找绑定了该镜像的规则 </li>
+<li>ImageId- String - 是否必填：否 - 镜像ID，模糊查找绑定了该镜像的规则 </li>
+<li>RuleType- String - 是否必填：否 - 策略类型过滤，取值：system（系统策略）、user（用户策略） </li>
+<li>RuleAction- String - 是否必填：否 - 执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截） </li>
+
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def Limit(self):
@@ -19812,17 +20336,6 @@ class DescribeAbnormalProcessRulesRequest(AbstractModel):
         self._Offset = Offset
 
     @property
-    def Filters(self):
-        r"""过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :rtype: list of RunTimeFilters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
     def Order(self):
         r"""升序降序,asc desc
         :rtype: str
@@ -19833,29 +20346,18 @@ class DescribeAbnormalProcessRulesRequest(AbstractModel):
     def Order(self, Order):
         self._Order = Order
 
-    @property
-    def By(self):
-        r"""排序字段
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
 
     def _deserialize(self, params):
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
+        self._By = params.get("By")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = RunTimeFilters()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         self._Order = params.get("Order")
-        self._By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19873,27 +20375,32 @@ class DescribeAbnormalProcessRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 事件总数量
-        :type TotalCount: int
+        :param _RuleExtSet: 异常进程策略扩展信息列表（含子规则内容和执行动作）。新前端优先使用此字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExtSet: list of AbnormalProcessRuleExtSetItem
         :param _RuleSet: 异常进程策略信息列表
         :type RuleSet: list of RuleBaseInfo
+        :param _TotalCount: 事件总数量
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._TotalCount = None
+        self._RuleExtSet = None
         self._RuleSet = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
-    def TotalCount(self):
-        r"""事件总数量
-        :rtype: int
+    def RuleExtSet(self):
+        r"""异常进程策略扩展信息列表（含子规则内容和执行动作）。新前端优先使用此字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AbnormalProcessRuleExtSetItem
         """
-        return self._TotalCount
+        return self._RuleExtSet
 
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
+    @RuleExtSet.setter
+    def RuleExtSet(self, RuleExtSet):
+        self._RuleExtSet = RuleExtSet
 
     @property
     def RuleSet(self):
@@ -19905,6 +20412,17 @@ class DescribeAbnormalProcessRulesResponse(AbstractModel):
     @RuleSet.setter
     def RuleSet(self, RuleSet):
         self._RuleSet = RuleSet
+
+    @property
+    def TotalCount(self):
+        r"""事件总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -19919,13 +20437,19 @@ class DescribeAbnormalProcessRulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
+        if params.get("RuleExtSet") is not None:
+            self._RuleExtSet = []
+            for item in params.get("RuleExtSet"):
+                obj = AbnormalProcessRuleExtSetItem()
+                obj._deserialize(item)
+                self._RuleExtSet.append(obj)
         if params.get("RuleSet") is not None:
             self._RuleSet = []
             for item in params.get("RuleSet"):
                 obj = RuleBaseInfo()
                 obj._deserialize(item)
                 self._RuleSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -20470,30 +20994,19 @@ class DescribeAccessControlRuleDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 策略唯一id
-        :type RuleId: str
         :param _ImageId: 镜像id, 仅仅在事件加白的时候使用
         :type ImageId: str
         :param _Limit: 需要返回的数量，默认为10，最大值为100
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
+        :param _RuleId: 策略唯一id
+        :type RuleId: str
         """
-        self._RuleId = None
         self._ImageId = None
         self._Limit = None
         self._Offset = None
-
-    @property
-    def RuleId(self):
-        r"""策略唯一id
-        :rtype: str
-        """
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
+        self._RuleId = None
 
     @property
     def ImageId(self):
@@ -20528,12 +21041,23 @@ class DescribeAccessControlRuleDetailRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def RuleId(self):
+        r"""策略唯一id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
 
     def _deserialize(self, params):
-        self._RuleId = params.get("RuleId")
         self._ImageId = params.get("ImageId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20596,22 +21120,54 @@ class DescribeAccessControlRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _By: 排序字段
+        :type By: str
+        :param _Filters: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+<li>ImageName- String - 是否必填：否 - 镜像名称，模糊查找绑定了该镜像的规则 </li>
+<li>ImageId- String - 是否必填：否 - 镜像ID，模糊查找绑定了该镜像的规则 </li>
+<li>RuleType- String - 是否必填：否 - 策略类型过滤，取值：system（系统策略）、user（用户策略） </li>
+<li>RuleAction- String - 是否必填：否 - 执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截） </li>
+
+        :type Filters: list of RunTimeFilters
         :param _Limit: 需要返回的数量，默认为10，最大值为100
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Filters: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :type Filters: list of RunTimeFilters
         :param _Order: 升序降序,asc desc
         :type Order: str
-        :param _By: 排序字段
-        :type By: str
         """
+        self._By = None
+        self._Filters = None
         self._Limit = None
         self._Offset = None
-        self._Filters = None
         self._Order = None
-        self._By = None
+
+    @property
+    def By(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Filters(self):
+        r"""过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+<li>ImageName- String - 是否必填：否 - 镜像名称，模糊查找绑定了该镜像的规则 </li>
+<li>ImageId- String - 是否必填：否 - 镜像ID，模糊查找绑定了该镜像的规则 </li>
+<li>RuleType- String - 是否必填：否 - 策略类型过滤，取值：system（系统策略）、user（用户策略） </li>
+<li>RuleAction- String - 是否必填：否 - 执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截） </li>
+
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def Limit(self):
@@ -20636,17 +21192,6 @@ class DescribeAccessControlRulesRequest(AbstractModel):
         self._Offset = Offset
 
     @property
-    def Filters(self):
-        r"""过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-        :rtype: list of RunTimeFilters
-        """
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
     def Order(self):
         r"""升序降序,asc desc
         :rtype: str
@@ -20657,29 +21202,18 @@ class DescribeAccessControlRulesRequest(AbstractModel):
     def Order(self, Order):
         self._Order = Order
 
-    @property
-    def By(self):
-        r"""排序字段
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
 
     def _deserialize(self, params):
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
+        self._By = params.get("By")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = RunTimeFilters()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         self._Order = params.get("Order")
-        self._By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20697,27 +21231,32 @@ class DescribeAccessControlRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 事件总数量
-        :type TotalCount: int
+        :param _RuleExtSet: 访问控制策略扩展信息列表（含子规则内容和执行动作）。新前端优先使用此字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExtSet: list of AccessControlRuleExtSetItem
         :param _RuleSet: 访问控制策略信息列表
         :type RuleSet: list of RuleBaseInfo
+        :param _TotalCount: 事件总数量
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._TotalCount = None
+        self._RuleExtSet = None
         self._RuleSet = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
-    def TotalCount(self):
-        r"""事件总数量
-        :rtype: int
+    def RuleExtSet(self):
+        r"""访问控制策略扩展信息列表（含子规则内容和执行动作）。新前端优先使用此字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AccessControlRuleExtSetItem
         """
-        return self._TotalCount
+        return self._RuleExtSet
 
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
+    @RuleExtSet.setter
+    def RuleExtSet(self, RuleExtSet):
+        self._RuleExtSet = RuleExtSet
 
     @property
     def RuleSet(self):
@@ -20729,6 +21268,17 @@ class DescribeAccessControlRulesResponse(AbstractModel):
     @RuleSet.setter
     def RuleSet(self, RuleSet):
         self._RuleSet = RuleSet
+
+    @property
+    def TotalCount(self):
+        r"""事件总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -20743,13 +21293,19 @@ class DescribeAccessControlRulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
+        if params.get("RuleExtSet") is not None:
+            self._RuleExtSet = []
+            for item in params.get("RuleExtSet"):
+                obj = AccessControlRuleExtSetItem()
+                obj._deserialize(item)
+                self._RuleExtSet.append(obj)
         if params.get("RuleSet") is not None:
             self._RuleSet = []
             for item in params.get("RuleSet"):
                 obj = RuleBaseInfo()
                 obj._deserialize(item)
                 self._RuleSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -28067,34 +28623,36 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 开关
+        :param _Enable: <p>开关</p>
         :type Enable: bool
-        :param _ScanTime: 扫描时刻(完整时间;后端按0时区解析时分秒)
+        :param _ScanTime: <p>扫描时刻(完整时间;后端按0时区解析时分秒)</p>
         :type ScanTime: str
-        :param _ScanPeriod: 扫描间隔
+        :param _ScanPeriod: <p>扫描间隔</p>
         :type ScanPeriod: int
-        :param _ScanVirus: 扫描木马
+        :param _ScanVirus: <p>扫描木马</p>
         :type ScanVirus: bool
-        :param _ScanRisk: 扫描敏感信息
+        :param _ScanRisk: <p>扫描敏感信息</p>
         :type ScanRisk: bool
-        :param _ScanVul: 扫描漏洞
+        :param _ScanVul: <p>扫描漏洞</p>
         :type ScanVul: bool
-        :param _All: 扫描全部镜像
+        :param _All: <p>扫描全部镜像</p>
         :type All: bool
-        :param _Images: 自定义扫描镜像
+        :param _Images: <p>自定义扫描镜像</p>
         :type Images: list of str
-        :param _ContainerRunning: 镜像是否存在运行中的容器
+        :param _ContainerRunning: <p>镜像是否存在运行中的容器</p>
         :type ContainerRunning: bool
-        :param _ScanScope: 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+        :param _ScanScope: <p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 3:集群筛选扫描</p>
         :type ScanScope: int
-        :param _ScanEndTime: 扫描结束时间 02:00 时分
+        :param _ScanEndTime: <p>扫描结束时间 02:00 时分</p>
         :type ScanEndTime: str
-        :param _ExcludeImages: 排除的扫描镜像
+        :param _ExcludeImages: <p>排除的扫描镜像</p>
         :type ExcludeImages: list of str
-        :param _LastScanTime: 最后一次扫描时间
+        :param _LastScanTime: <p>最后一次扫描时间</p>
         :type LastScanTime: str
-        :param _ScanResult: 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
+        :param _ScanResult: <p>扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)</p>
         :type ScanResult: str
+        :param _ClusterIDs: <p>集群id</p>
+        :type ClusterIDs: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -28112,11 +28670,12 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ExcludeImages = None
         self._LastScanTime = None
         self._ScanResult = None
+        self._ClusterIDs = None
         self._RequestId = None
 
     @property
     def Enable(self):
-        r"""开关
+        r"""<p>开关</p>
         :rtype: bool
         """
         return self._Enable
@@ -28127,7 +28686,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ScanTime(self):
-        r"""扫描时刻(完整时间;后端按0时区解析时分秒)
+        r"""<p>扫描时刻(完整时间;后端按0时区解析时分秒)</p>
         :rtype: str
         """
         return self._ScanTime
@@ -28138,7 +28697,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ScanPeriod(self):
-        r"""扫描间隔
+        r"""<p>扫描间隔</p>
         :rtype: int
         """
         return self._ScanPeriod
@@ -28149,7 +28708,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ScanVirus(self):
-        r"""扫描木马
+        r"""<p>扫描木马</p>
         :rtype: bool
         """
         return self._ScanVirus
@@ -28160,7 +28719,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ScanRisk(self):
-        r"""扫描敏感信息
+        r"""<p>扫描敏感信息</p>
         :rtype: bool
         """
         return self._ScanRisk
@@ -28171,7 +28730,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ScanVul(self):
-        r"""扫描漏洞
+        r"""<p>扫描漏洞</p>
         :rtype: bool
         """
         return self._ScanVul
@@ -28184,7 +28743,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
     def All(self):
         warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
 
-        r"""扫描全部镜像
+        r"""<p>扫描全部镜像</p>
         :rtype: bool
         """
         return self._All
@@ -28197,7 +28756,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def Images(self):
-        r"""自定义扫描镜像
+        r"""<p>自定义扫描镜像</p>
         :rtype: list of str
         """
         return self._Images
@@ -28208,7 +28767,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ContainerRunning(self):
-        r"""镜像是否存在运行中的容器
+        r"""<p>镜像是否存在运行中的容器</p>
         :rtype: bool
         """
         return self._ContainerRunning
@@ -28219,7 +28778,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ScanScope(self):
-        r"""扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+        r"""<p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 3:集群筛选扫描</p>
         :rtype: int
         """
         return self._ScanScope
@@ -28230,7 +28789,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ScanEndTime(self):
-        r"""扫描结束时间 02:00 时分
+        r"""<p>扫描结束时间 02:00 时分</p>
         :rtype: str
         """
         return self._ScanEndTime
@@ -28241,7 +28800,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ExcludeImages(self):
-        r"""排除的扫描镜像
+        r"""<p>排除的扫描镜像</p>
         :rtype: list of str
         """
         return self._ExcludeImages
@@ -28252,7 +28811,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def LastScanTime(self):
-        r"""最后一次扫描时间
+        r"""<p>最后一次扫描时间</p>
         :rtype: str
         """
         return self._LastScanTime
@@ -28263,7 +28822,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def ScanResult(self):
-        r"""扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
+        r"""<p>扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)</p>
         :rtype: str
         """
         return self._ScanResult
@@ -28271,6 +28830,17 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
     @ScanResult.setter
     def ScanResult(self, ScanResult):
         self._ScanResult = ScanResult
+
+    @property
+    def ClusterIDs(self):
+        r"""<p>集群id</p>
+        :rtype: list of str
+        """
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
 
     @property
     def RequestId(self):
@@ -28299,6 +28869,7 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ExcludeImages = params.get("ExcludeImages")
         self._LastScanTime = params.get("LastScanTime")
         self._ScanResult = params.get("ScanResult")
+        self._ClusterIDs = params.get("ClusterIDs")
         self._RequestId = params.get("RequestId")
 
 
@@ -39266,9 +39837,17 @@ class DescribeK8sApiAbnormalRuleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _By: 排序字段。
+<li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
+<li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
+        :type By: str
         :param _Filters: 过滤条件。
 <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 <li>Status - string  - 是否必填: 否 -状态</li>
+<li>RuleName - string  - 是否必填: 否 -规则名称(模糊查询)</li>
+<li>ClusterName - string  - 是否必填: 否 -集群名称，模糊查找绑定了该集群的规则（含全集群规则）</li>
+<li>ClusterID - string  - 是否必填: 否 -集群ID，模糊查找绑定了该集群的规则（含全集群规则）</li>
+<li>RuleAction - string  - 是否必填: 否 -执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截）</li>
         :type Filters: list of RunTimeFilters
         :param _Limit: 需要返回的数量，默认为10，最大值为100
         :type Limit: int
@@ -39276,22 +39855,35 @@ class DescribeK8sApiAbnormalRuleListRequest(AbstractModel):
         :type Offset: int
         :param _Order: 排序方式
         :type Order: str
-        :param _By: 排序字段。
-<li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
-<li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
-        :type By: str
         """
+        self._By = None
         self._Filters = None
         self._Limit = None
         self._Offset = None
         self._Order = None
-        self._By = None
+
+    @property
+    def By(self):
+        r"""排序字段。
+<li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
+<li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
 
     @property
     def Filters(self):
         r"""过滤条件。
 <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 <li>Status - string  - 是否必填: 否 -状态</li>
+<li>RuleName - string  - 是否必填: 否 -规则名称(模糊查询)</li>
+<li>ClusterName - string  - 是否必填: 否 -集群名称，模糊查找绑定了该集群的规则（含全集群规则）</li>
+<li>ClusterID - string  - 是否必填: 否 -集群ID，模糊查找绑定了该集群的规则（含全集群规则）</li>
+<li>RuleAction - string  - 是否必填: 否 -执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截）</li>
         :rtype: list of RunTimeFilters
         """
         return self._Filters
@@ -39333,21 +39925,9 @@ class DescribeK8sApiAbnormalRuleListRequest(AbstractModel):
     def Order(self, Order):
         self._Order = Order
 
-    @property
-    def By(self):
-        r"""排序字段。
-<li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
-<li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
-        :rtype: str
-        """
-        return self._By
-
-    @By.setter
-    def By(self, By):
-        self._By = By
-
 
     def _deserialize(self, params):
+        self._By = params.get("By")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -39357,7 +39937,6 @@ class DescribeK8sApiAbnormalRuleListRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._Order = params.get("Order")
-        self._By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64362,52 +64941,52 @@ class K8sApiAbnormalRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleName: 规则名称
-        :type RuleName: str
-        :param _Status: 状态
-        :type Status: bool
-        :param _RuleInfoList: 规则信息列表
-        :type RuleInfoList: list of K8sApiAbnormalRuleScopeInfo
+        :param _EffectAllCluster: 是否所有集群生效
+        :type EffectAllCluster: bool
         :param _EffectClusterIDSet: 生效集群IDSet
         :type EffectClusterIDSet: list of str
+        :param _RuleInfoList: 规则信息列表
+        :type RuleInfoList: list of K8sApiAbnormalRuleScopeInfo
+        :param _RuleName: 规则名称
+        :type RuleName: str
         :param _RuleType: 规则类型
 RT_SYSTEM 系统规则
 RT_USER 用户自定义
         :type RuleType: str
-        :param _EffectAllCluster: 是否所有集群生效
-        :type EffectAllCluster: bool
+        :param _Status: 状态
+        :type Status: bool
         :param _RuleID: 规则ID
         :type RuleID: str
         """
-        self._RuleName = None
-        self._Status = None
-        self._RuleInfoList = None
-        self._EffectClusterIDSet = None
-        self._RuleType = None
         self._EffectAllCluster = None
+        self._EffectClusterIDSet = None
+        self._RuleInfoList = None
+        self._RuleName = None
+        self._RuleType = None
+        self._Status = None
         self._RuleID = None
 
     @property
-    def RuleName(self):
-        r"""规则名称
-        :rtype: str
-        """
-        return self._RuleName
-
-    @RuleName.setter
-    def RuleName(self, RuleName):
-        self._RuleName = RuleName
-
-    @property
-    def Status(self):
-        r"""状态
+    def EffectAllCluster(self):
+        r"""是否所有集群生效
         :rtype: bool
         """
-        return self._Status
+        return self._EffectAllCluster
 
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
+    @EffectAllCluster.setter
+    def EffectAllCluster(self, EffectAllCluster):
+        self._EffectAllCluster = EffectAllCluster
+
+    @property
+    def EffectClusterIDSet(self):
+        r"""生效集群IDSet
+        :rtype: list of str
+        """
+        return self._EffectClusterIDSet
+
+    @EffectClusterIDSet.setter
+    def EffectClusterIDSet(self, EffectClusterIDSet):
+        self._EffectClusterIDSet = EffectClusterIDSet
 
     @property
     def RuleInfoList(self):
@@ -64421,15 +65000,15 @@ RT_USER 用户自定义
         self._RuleInfoList = RuleInfoList
 
     @property
-    def EffectClusterIDSet(self):
-        r"""生效集群IDSet
-        :rtype: list of str
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
         """
-        return self._EffectClusterIDSet
+        return self._RuleName
 
-    @EffectClusterIDSet.setter
-    def EffectClusterIDSet(self, EffectClusterIDSet):
-        self._EffectClusterIDSet = EffectClusterIDSet
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
 
     @property
     def RuleType(self):
@@ -64445,15 +65024,15 @@ RT_USER 用户自定义
         self._RuleType = RuleType
 
     @property
-    def EffectAllCluster(self):
-        r"""是否所有集群生效
+    def Status(self):
+        r"""状态
         :rtype: bool
         """
-        return self._EffectAllCluster
+        return self._Status
 
-    @EffectAllCluster.setter
-    def EffectAllCluster(self, EffectAllCluster):
-        self._EffectAllCluster = EffectAllCluster
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def RuleID(self):
@@ -64468,17 +65047,17 @@ RT_USER 用户自定义
 
 
     def _deserialize(self, params):
-        self._RuleName = params.get("RuleName")
-        self._Status = params.get("Status")
+        self._EffectAllCluster = params.get("EffectAllCluster")
+        self._EffectClusterIDSet = params.get("EffectClusterIDSet")
         if params.get("RuleInfoList") is not None:
             self._RuleInfoList = []
             for item in params.get("RuleInfoList"):
                 obj = K8sApiAbnormalRuleScopeInfo()
                 obj._deserialize(item)
                 self._RuleInfoList.append(obj)
-        self._EffectClusterIDSet = params.get("EffectClusterIDSet")
+        self._RuleName = params.get("RuleName")
         self._RuleType = params.get("RuleType")
-        self._EffectAllCluster = params.get("EffectAllCluster")
+        self._Status = params.get("Status")
         self._RuleID = params.get("RuleID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -64497,30 +65076,86 @@ class K8sApiAbnormalRuleListItem(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EffectAllCluster: 是否全部集群生效。true表示全部集群生效，false表示仅指定集群生效
+        :type EffectAllCluster: bool
+        :param _EffectClusterCount: 受影响集群总数
+        :type EffectClusterCount: int
+        :param _OprUin: 编辑账号
+        :type OprUin: str
+        :param _RuleActions: 规则组中所有执行动作的去重列表。当前黑名单仅包含 RULE_MODE_ALERT（告警）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleActions: list of str
         :param _RuleID: 规则ID
         :type RuleID: str
+        :param _RuleInfoList: 子规则内容列表，从 rule_details JSON 反序列化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleInfoList: list of K8sApiAbnormalRuleScopeInfo
         :param _RuleName: 规则名称
         :type RuleName: str
         :param _RuleType: 规则类型
 RT_SYSTEM 系统规则
 RT_USER 用户自定义
         :type RuleType: str
-        :param _EffectClusterCount: 受影响集群总数
-        :type EffectClusterCount: int
-        :param _UpdateTime: 更新时间
-        :type UpdateTime: str
-        :param _OprUin: 编辑账号
-        :type OprUin: str
         :param _Status: 状态
         :type Status: bool
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
         """
+        self._EffectAllCluster = None
+        self._EffectClusterCount = None
+        self._OprUin = None
+        self._RuleActions = None
         self._RuleID = None
+        self._RuleInfoList = None
         self._RuleName = None
         self._RuleType = None
-        self._EffectClusterCount = None
-        self._UpdateTime = None
-        self._OprUin = None
         self._Status = None
+        self._UpdateTime = None
+
+    @property
+    def EffectAllCluster(self):
+        r"""是否全部集群生效。true表示全部集群生效，false表示仅指定集群生效
+        :rtype: bool
+        """
+        return self._EffectAllCluster
+
+    @EffectAllCluster.setter
+    def EffectAllCluster(self, EffectAllCluster):
+        self._EffectAllCluster = EffectAllCluster
+
+    @property
+    def EffectClusterCount(self):
+        r"""受影响集群总数
+        :rtype: int
+        """
+        return self._EffectClusterCount
+
+    @EffectClusterCount.setter
+    def EffectClusterCount(self, EffectClusterCount):
+        self._EffectClusterCount = EffectClusterCount
+
+    @property
+    def OprUin(self):
+        r"""编辑账号
+        :rtype: str
+        """
+        return self._OprUin
+
+    @OprUin.setter
+    def OprUin(self, OprUin):
+        self._OprUin = OprUin
+
+    @property
+    def RuleActions(self):
+        r"""规则组中所有执行动作的去重列表。当前黑名单仅包含 RULE_MODE_ALERT（告警）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._RuleActions
+
+    @RuleActions.setter
+    def RuleActions(self, RuleActions):
+        self._RuleActions = RuleActions
 
     @property
     def RuleID(self):
@@ -64532,6 +65167,18 @@ RT_USER 用户自定义
     @RuleID.setter
     def RuleID(self, RuleID):
         self._RuleID = RuleID
+
+    @property
+    def RuleInfoList(self):
+        r"""子规则内容列表，从 rule_details JSON 反序列化
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of K8sApiAbnormalRuleScopeInfo
+        """
+        return self._RuleInfoList
+
+    @RuleInfoList.setter
+    def RuleInfoList(self, RuleInfoList):
+        self._RuleInfoList = RuleInfoList
 
     @property
     def RuleName(self):
@@ -64558,15 +65205,15 @@ RT_USER 用户自定义
         self._RuleType = RuleType
 
     @property
-    def EffectClusterCount(self):
-        r"""受影响集群总数
-        :rtype: int
+    def Status(self):
+        r"""状态
+        :rtype: bool
         """
-        return self._EffectClusterCount
+        return self._Status
 
-    @EffectClusterCount.setter
-    def EffectClusterCount(self, EffectClusterCount):
-        self._EffectClusterCount = EffectClusterCount
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def UpdateTime(self):
@@ -64579,37 +65226,23 @@ RT_USER 用户自定义
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
-    @property
-    def OprUin(self):
-        r"""编辑账号
-        :rtype: str
-        """
-        return self._OprUin
-
-    @OprUin.setter
-    def OprUin(self, OprUin):
-        self._OprUin = OprUin
-
-    @property
-    def Status(self):
-        r"""状态
-        :rtype: bool
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
 
     def _deserialize(self, params):
+        self._EffectAllCluster = params.get("EffectAllCluster")
+        self._EffectClusterCount = params.get("EffectClusterCount")
+        self._OprUin = params.get("OprUin")
+        self._RuleActions = params.get("RuleActions")
         self._RuleID = params.get("RuleID")
+        if params.get("RuleInfoList") is not None:
+            self._RuleInfoList = []
+            for item in params.get("RuleInfoList"):
+                obj = K8sApiAbnormalRuleScopeInfo()
+                obj._deserialize(item)
+                self._RuleInfoList.append(obj)
         self._RuleName = params.get("RuleName")
         self._RuleType = params.get("RuleType")
-        self._EffectClusterCount = params.get("EffectClusterCount")
-        self._UpdateTime = params.get("UpdateTime")
-        self._OprUin = params.get("OprUin")
         self._Status = params.get("Status")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64627,25 +65260,36 @@ class K8sApiAbnormalRuleScopeInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Action: <p>执行动作。黑名单规则仅支持 RULE_MODE_ALERT（告警），不再支持 RULE_MODE_RELEASE/PASS（放行）。放行请使用白名单接口 ModifyK8sApiAbnormalWhitelist</p>
+        :type Action: str
         :param _Scope: <p>范围<br>系统事件:<br>ANONYMOUS_ACCESS: 匿名访问<br>ABNORMAL_UA_REQ: 异常UA请求<br>ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动<br>GET_CREDENTIALS: 凭据信息获取<br>MOUNT_SENSITIVE_PATH: 敏感路径挂载<br>COMMAND_RUN: 命令执行<br>PRIVILEGE_CONTAINER: 特权容器<br>EXCEPTION_CRONTAB_TASK: 异常定时任务<br>STATICS_POD: 静态pod创建<br>ABNORMAL_CREATE_POD: 异常pod创建<br>USER_DEFINED: 用户自定义</p>
         :type Scope: str
-        :param _Action: <p>动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)</p>
-        :type Action: str
-        :param _RiskLevel: <p>威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示</p>
-        :type RiskLevel: str
-        :param _Status: <p>开关状态(true:开 false:关) 适用于系统规则</p>
-        :type Status: bool
         :param _IsDelete: <p>是否被删除 适用于自定义规则入参</p>
         :type IsDelete: bool
+        :param _RiskLevel: <p>威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示</p>
+        :type RiskLevel: str
         :param _RuleTypeZH: <p>规则类型对应中文</p>
         :type RuleTypeZH: str
+        :param _Status: <p>开关状态(true:开 false:关) 适用于系统规则</p>
+        :type Status: bool
         """
-        self._Scope = None
         self._Action = None
-        self._RiskLevel = None
-        self._Status = None
+        self._Scope = None
         self._IsDelete = None
+        self._RiskLevel = None
         self._RuleTypeZH = None
+        self._Status = None
+
+    @property
+    def Action(self):
+        r"""<p>执行动作。黑名单规则仅支持 RULE_MODE_ALERT（告警），不再支持 RULE_MODE_RELEASE/PASS（放行）。放行请使用白名单接口 ModifyK8sApiAbnormalWhitelist</p>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
 
     @property
     def Scope(self):
@@ -64659,15 +65303,15 @@ class K8sApiAbnormalRuleScopeInfo(AbstractModel):
         self._Scope = Scope
 
     @property
-    def Action(self):
-        r"""<p>动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)</p>
-        :rtype: str
+    def IsDelete(self):
+        r"""<p>是否被删除 适用于自定义规则入参</p>
+        :rtype: bool
         """
-        return self._Action
+        return self._IsDelete
 
-    @Action.setter
-    def Action(self, Action):
-        self._Action = Action
+    @IsDelete.setter
+    def IsDelete(self, IsDelete):
+        self._IsDelete = IsDelete
 
     @property
     def RiskLevel(self):
@@ -64681,28 +65325,6 @@ class K8sApiAbnormalRuleScopeInfo(AbstractModel):
         self._RiskLevel = RiskLevel
 
     @property
-    def Status(self):
-        r"""<p>开关状态(true:开 false:关) 适用于系统规则</p>
-        :rtype: bool
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def IsDelete(self):
-        r"""<p>是否被删除 适用于自定义规则入参</p>
-        :rtype: bool
-        """
-        return self._IsDelete
-
-    @IsDelete.setter
-    def IsDelete(self, IsDelete):
-        self._IsDelete = IsDelete
-
-    @property
     def RuleTypeZH(self):
         r"""<p>规则类型对应中文</p>
         :rtype: str
@@ -64713,14 +65335,25 @@ class K8sApiAbnormalRuleScopeInfo(AbstractModel):
     def RuleTypeZH(self, RuleTypeZH):
         self._RuleTypeZH = RuleTypeZH
 
+    @property
+    def Status(self):
+        r"""<p>开关状态(true:开 false:关) 适用于系统规则</p>
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
-        self._Scope = params.get("Scope")
         self._Action = params.get("Action")
-        self._RiskLevel = params.get("RiskLevel")
-        self._Status = params.get("Status")
+        self._Scope = params.get("Scope")
         self._IsDelete = params.get("IsDelete")
+        self._RiskLevel = params.get("RiskLevel")
         self._RuleTypeZH = params.get("RuleTypeZH")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -74726,83 +75359,31 @@ class RuleBaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsDefault: true: 默认策略，false:自定义策略
-        :type IsDefault: bool
-        :param _EffectImageCount: 策略生效镜像数量
-        :type EffectImageCount: int
-        :param _RuleId: 策略Id
-        :type RuleId: str
-        :param _UpdateTime: 策略更新时间, 存在为空的情况
-        :type UpdateTime: str
-        :param _RuleName: 策略名字
-        :type RuleName: str
         :param _EditUserName: 编辑用户名称
         :type EditUserName: str
+        :param _EffectImageCount: 策略生效镜像数量
+        :type EffectImageCount: int
+        :param _IsDefault: true: 默认策略，false:自定义策略
+        :type IsDefault: bool
+        :param _IsGlobal: 是否为全部镜像规则。true表示对所有镜像生效
+        :type IsGlobal: bool
         :param _IsEnable: true: 策略启用，false：策略禁用
         :type IsEnable: bool
+        :param _RuleId: 策略Id
+        :type RuleId: str
+        :param _RuleName: 策略名字
+        :type RuleName: str
+        :param _UpdateTime: 策略更新时间, 存在为空的情况
+        :type UpdateTime: str
         """
-        self._IsDefault = None
-        self._EffectImageCount = None
-        self._RuleId = None
-        self._UpdateTime = None
-        self._RuleName = None
         self._EditUserName = None
+        self._EffectImageCount = None
+        self._IsDefault = None
+        self._IsGlobal = None
         self._IsEnable = None
-
-    @property
-    def IsDefault(self):
-        r"""true: 默认策略，false:自定义策略
-        :rtype: bool
-        """
-        return self._IsDefault
-
-    @IsDefault.setter
-    def IsDefault(self, IsDefault):
-        self._IsDefault = IsDefault
-
-    @property
-    def EffectImageCount(self):
-        r"""策略生效镜像数量
-        :rtype: int
-        """
-        return self._EffectImageCount
-
-    @EffectImageCount.setter
-    def EffectImageCount(self, EffectImageCount):
-        self._EffectImageCount = EffectImageCount
-
-    @property
-    def RuleId(self):
-        r"""策略Id
-        :rtype: str
-        """
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
-
-    @property
-    def UpdateTime(self):
-        r"""策略更新时间, 存在为空的情况
-        :rtype: str
-        """
-        return self._UpdateTime
-
-    @UpdateTime.setter
-    def UpdateTime(self, UpdateTime):
-        self._UpdateTime = UpdateTime
-
-    @property
-    def RuleName(self):
-        r"""策略名字
-        :rtype: str
-        """
-        return self._RuleName
-
-    @RuleName.setter
-    def RuleName(self, RuleName):
-        self._RuleName = RuleName
+        self._RuleId = None
+        self._RuleName = None
+        self._UpdateTime = None
 
     @property
     def EditUserName(self):
@@ -74816,6 +75397,39 @@ class RuleBaseInfo(AbstractModel):
         self._EditUserName = EditUserName
 
     @property
+    def EffectImageCount(self):
+        r"""策略生效镜像数量
+        :rtype: int
+        """
+        return self._EffectImageCount
+
+    @EffectImageCount.setter
+    def EffectImageCount(self, EffectImageCount):
+        self._EffectImageCount = EffectImageCount
+
+    @property
+    def IsDefault(self):
+        r"""true: 默认策略，false:自定义策略
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def IsGlobal(self):
+        r"""是否为全部镜像规则。true表示对所有镜像生效
+        :rtype: bool
+        """
+        return self._IsGlobal
+
+    @IsGlobal.setter
+    def IsGlobal(self, IsGlobal):
+        self._IsGlobal = IsGlobal
+
+    @property
     def IsEnable(self):
         r"""true: 策略启用，false：策略禁用
         :rtype: bool
@@ -74826,15 +75440,49 @@ class RuleBaseInfo(AbstractModel):
     def IsEnable(self, IsEnable):
         self._IsEnable = IsEnable
 
+    @property
+    def RuleId(self):
+        r"""策略Id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""策略名字
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def UpdateTime(self):
+        r"""策略更新时间, 存在为空的情况
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
-        self._IsDefault = params.get("IsDefault")
-        self._EffectImageCount = params.get("EffectImageCount")
-        self._RuleId = params.get("RuleId")
-        self._UpdateTime = params.get("UpdateTime")
-        self._RuleName = params.get("RuleName")
         self._EditUserName = params.get("EditUserName")
+        self._EffectImageCount = params.get("EffectImageCount")
+        self._IsDefault = params.get("IsDefault")
+        self._IsGlobal = params.get("IsGlobal")
         self._IsEnable = params.get("IsEnable")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

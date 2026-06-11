@@ -28372,44 +28372,46 @@ class PulsarProClusterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群Id。
+        :param _ClusterId: <p>集群Id。</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称。
+        :param _ClusterName: <p>集群名称。</p>
         :type ClusterName: str
-        :param _Remark: 说明信息。
+        :param _Remark: <p>说明信息。</p>
         :type Remark: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _Status: 集群状态，0:创建中，1:正常，2:隔离
+        :param _Status: <p>集群状态，0:创建中，1:正常，2:隔离</p>
         :type Status: int
-        :param _Version: 集群版本
+        :param _Version: <p>集群版本</p>
         :type Version: str
-        :param _NodeDistribution: 节点分布情况
+        :param _NodeDistribution: <p>节点分布情况</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeDistribution: list of InstanceNodeDistribution
-        :param _MaxStorage: 最大储存容量，单位：MB
+        :param _MaxStorage: <p>最大储存容量，单位：MB</p>
         :type MaxStorage: int
-        :param _CanEditRoute: 是否可以修改路由
+        :param _CanEditRoute: <p>是否可以修改路由</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanEditRoute: bool
-        :param _BillingLabelVersion: 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+        :param _BillingLabelVersion: <p>代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingLabelVersion: str
-        :param _ExpireTime: 实例到期时间戳，毫秒级精度。
+        :param _ExpireTime: <p>实例到期时间戳，毫秒级精度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
-        :param _AutoCreateTopicStatus: 是否开启自动创建主题
-true就是开启了，false是关闭
+        :param _AutoCreateTopicStatus: <p>是否开启自动创建主题<br>true就是开启了，false是关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoCreateTopicStatus: bool
-        :param _DefaultPartitionNumber: 自动创建主题的默认分区数，如果没开启就是0
+        :param _DefaultPartitionNumber: <p>自动创建主题的默认分区数，如果没开启就是0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultPartitionNumber: int
-        :param _Tenant: 用户自定义的租户别名，如果没有，会复用专业集群 ID
-
+        :param _Tenant: <p>用户自定义的租户别名，如果没有，会复用专业集群 ID</p>
         :type Tenant: str
-        :param _DeleteProtection: 删除保护开关标识
+        :param _DeleteProtection: <p>删除保护开关标识</p>
         :type DeleteProtection: int
+        :param _ElasticTpsEnabled: <p>是否开启弹性tps</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :type ElasticTpsEnabled: int
+        :param _EncryptionStatus: <p>是否开启数据加密</p><p>枚举值：</p><ul><li>0： 关闭数据加密</li><li>1： 开启数据加密</li></ul>
+        :type EncryptionStatus: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -28426,10 +28428,12 @@ true就是开启了，false是关闭
         self._DefaultPartitionNumber = None
         self._Tenant = None
         self._DeleteProtection = None
+        self._ElasticTpsEnabled = None
+        self._EncryptionStatus = None
 
     @property
     def ClusterId(self):
-        r"""集群Id。
+        r"""<p>集群Id。</p>
         :rtype: str
         """
         return self._ClusterId
@@ -28440,7 +28444,7 @@ true就是开启了，false是关闭
 
     @property
     def ClusterName(self):
-        r"""集群名称。
+        r"""<p>集群名称。</p>
         :rtype: str
         """
         return self._ClusterName
@@ -28451,7 +28455,7 @@ true就是开启了，false是关闭
 
     @property
     def Remark(self):
-        r"""说明信息。
+        r"""<p>说明信息。</p>
         :rtype: str
         """
         return self._Remark
@@ -28462,7 +28466,7 @@ true就是开启了，false是关闭
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -28473,7 +28477,7 @@ true就是开启了，false是关闭
 
     @property
     def Status(self):
-        r"""集群状态，0:创建中，1:正常，2:隔离
+        r"""<p>集群状态，0:创建中，1:正常，2:隔离</p>
         :rtype: int
         """
         return self._Status
@@ -28484,7 +28488,7 @@ true就是开启了，false是关闭
 
     @property
     def Version(self):
-        r"""集群版本
+        r"""<p>集群版本</p>
         :rtype: str
         """
         return self._Version
@@ -28495,7 +28499,7 @@ true就是开启了，false是关闭
 
     @property
     def NodeDistribution(self):
-        r"""节点分布情况
+        r"""<p>节点分布情况</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceNodeDistribution
         """
@@ -28507,7 +28511,7 @@ true就是开启了，false是关闭
 
     @property
     def MaxStorage(self):
-        r"""最大储存容量，单位：MB
+        r"""<p>最大储存容量，单位：MB</p>
         :rtype: int
         """
         return self._MaxStorage
@@ -28518,7 +28522,7 @@ true就是开启了，false是关闭
 
     @property
     def CanEditRoute(self):
-        r"""是否可以修改路由
+        r"""<p>是否可以修改路由</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -28530,7 +28534,7 @@ true就是开启了，false是关闭
 
     @property
     def BillingLabelVersion(self):
-        r"""代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+        r"""<p>代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28542,7 +28546,7 @@ true就是开启了，false是关闭
 
     @property
     def ExpireTime(self):
-        r"""实例到期时间戳，毫秒级精度。
+        r"""<p>实例到期时间戳，毫秒级精度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28554,8 +28558,7 @@ true就是开启了，false是关闭
 
     @property
     def AutoCreateTopicStatus(self):
-        r"""是否开启自动创建主题
-true就是开启了，false是关闭
+        r"""<p>是否开启自动创建主题<br>true就是开启了，false是关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -28567,7 +28570,7 @@ true就是开启了，false是关闭
 
     @property
     def DefaultPartitionNumber(self):
-        r"""自动创建主题的默认分区数，如果没开启就是0
+        r"""<p>自动创建主题的默认分区数，如果没开启就是0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28579,8 +28582,7 @@ true就是开启了，false是关闭
 
     @property
     def Tenant(self):
-        r"""用户自定义的租户别名，如果没有，会复用专业集群 ID
-
+        r"""<p>用户自定义的租户别名，如果没有，会复用专业集群 ID</p>
         :rtype: str
         """
         return self._Tenant
@@ -28591,7 +28593,7 @@ true就是开启了，false是关闭
 
     @property
     def DeleteProtection(self):
-        r"""删除保护开关标识
+        r"""<p>删除保护开关标识</p>
         :rtype: int
         """
         return self._DeleteProtection
@@ -28599,6 +28601,28 @@ true就是开启了，false是关闭
     @DeleteProtection.setter
     def DeleteProtection(self, DeleteProtection):
         self._DeleteProtection = DeleteProtection
+
+    @property
+    def ElasticTpsEnabled(self):
+        r"""<p>是否开启弹性tps</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :rtype: int
+        """
+        return self._ElasticTpsEnabled
+
+    @ElasticTpsEnabled.setter
+    def ElasticTpsEnabled(self, ElasticTpsEnabled):
+        self._ElasticTpsEnabled = ElasticTpsEnabled
+
+    @property
+    def EncryptionStatus(self):
+        r"""<p>是否开启数据加密</p><p>枚举值：</p><ul><li>0： 关闭数据加密</li><li>1： 开启数据加密</li></ul>
+        :rtype: int
+        """
+        return self._EncryptionStatus
+
+    @EncryptionStatus.setter
+    def EncryptionStatus(self, EncryptionStatus):
+        self._EncryptionStatus = EncryptionStatus
 
 
     def _deserialize(self, params):
@@ -28622,6 +28646,8 @@ true就是开启了，false是关闭
         self._DefaultPartitionNumber = params.get("DefaultPartitionNumber")
         self._Tenant = params.get("Tenant")
         self._DeleteProtection = params.get("DeleteProtection")
+        self._ElasticTpsEnabled = params.get("ElasticTpsEnabled")
+        self._EncryptionStatus = params.get("EncryptionStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28639,33 +28665,34 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpecName: 集群规格名称
+        :param _SpecName: <p>集群规格名称</p>
         :type SpecName: str
-        :param _MaxTps: 峰值tps
+        :param _MaxTps: <p>峰值tps</p>
         :type MaxTps: int
-        :param _MaxBandWidth: 峰值带宽。单位：mbps
+        :param _MaxBandWidth: <p>峰值带宽。单位：mbps</p>
         :type MaxBandWidth: int
-        :param _MaxNamespaces: 最大命名空间个数
+        :param _MaxNamespaces: <p>最大命名空间个数</p>
         :type MaxNamespaces: int
-        :param _MaxTopics: 可以创建的最大主题数
+        :param _MaxTopics: <p>可以创建的最大主题数</p>
         :type MaxTopics: int
-        :param _ScalableTps: 规格外弹性TPS
+        :param _ScalableTps: <p>规格外弹性TPS</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalableTps: int
-        :param _MaxPartitions: 32或者128
-当前集群topic的最大分区数
+        :param _MaxPartitions: <p>32或者128<br>当前集群topic的最大分区数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPartitions: int
-        :param _MaxDelayedMessages: 最大延迟消息数量。0代表没有限制	
+        :param _MaxDelayedMessages: <p>最大延迟消息数量。0代表没有限制</p>
         :type MaxDelayedMessages: int
-        :param _MaxTopicsPartitioned: 可以创建的最大主题分区数
+        :param _MaxTopicsPartitioned: <p>可以创建的最大主题分区数</p>
         :type MaxTopicsPartitioned: int
-        :param _BrokerMaxConnections: 单broker最大链接数
+        :param _BrokerMaxConnections: <p>单broker最大链接数</p>
         :type BrokerMaxConnections: int
-        :param _BrokerMaxConnectionsPerIp: 单IP最大链接数
+        :param _BrokerMaxConnectionsPerIp: <p>单IP最大链接数</p>
         :type BrokerMaxConnectionsPerIp: int
-        :param _MaximumElasticStorage: 弹性存储集群最大存储规格；固定存储该值为0
+        :param _MaximumElasticStorage: <p>弹性存储集群最大存储规格；固定存储该值为0</p>
         :type MaximumElasticStorage: int
+        :param _TotalTps: <p>当前集群可使用的全量TPS，包括弹性TPS</p>
+        :type TotalTps: int
         """
         self._SpecName = None
         self._MaxTps = None
@@ -28679,10 +28706,11 @@ class PulsarProClusterSpecInfo(AbstractModel):
         self._BrokerMaxConnections = None
         self._BrokerMaxConnectionsPerIp = None
         self._MaximumElasticStorage = None
+        self._TotalTps = None
 
     @property
     def SpecName(self):
-        r"""集群规格名称
+        r"""<p>集群规格名称</p>
         :rtype: str
         """
         return self._SpecName
@@ -28693,7 +28721,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaxTps(self):
-        r"""峰值tps
+        r"""<p>峰值tps</p>
         :rtype: int
         """
         return self._MaxTps
@@ -28704,7 +28732,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        r"""峰值带宽。单位：mbps
+        r"""<p>峰值带宽。单位：mbps</p>
         :rtype: int
         """
         return self._MaxBandWidth
@@ -28715,7 +28743,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaxNamespaces(self):
-        r"""最大命名空间个数
+        r"""<p>最大命名空间个数</p>
         :rtype: int
         """
         return self._MaxNamespaces
@@ -28726,7 +28754,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaxTopics(self):
-        r"""可以创建的最大主题数
+        r"""<p>可以创建的最大主题数</p>
         :rtype: int
         """
         return self._MaxTopics
@@ -28737,7 +28765,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def ScalableTps(self):
-        r"""规格外弹性TPS
+        r"""<p>规格外弹性TPS</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28749,8 +28777,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaxPartitions(self):
-        r"""32或者128
-当前集群topic的最大分区数
+        r"""<p>32或者128<br>当前集群topic的最大分区数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28762,7 +28789,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaxDelayedMessages(self):
-        r"""最大延迟消息数量。0代表没有限制	
+        r"""<p>最大延迟消息数量。0代表没有限制</p>
         :rtype: int
         """
         return self._MaxDelayedMessages
@@ -28773,7 +28800,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaxTopicsPartitioned(self):
-        r"""可以创建的最大主题分区数
+        r"""<p>可以创建的最大主题分区数</p>
         :rtype: int
         """
         return self._MaxTopicsPartitioned
@@ -28784,7 +28811,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def BrokerMaxConnections(self):
-        r"""单broker最大链接数
+        r"""<p>单broker最大链接数</p>
         :rtype: int
         """
         return self._BrokerMaxConnections
@@ -28795,7 +28822,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def BrokerMaxConnectionsPerIp(self):
-        r"""单IP最大链接数
+        r"""<p>单IP最大链接数</p>
         :rtype: int
         """
         return self._BrokerMaxConnectionsPerIp
@@ -28806,7 +28833,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
     @property
     def MaximumElasticStorage(self):
-        r"""弹性存储集群最大存储规格；固定存储该值为0
+        r"""<p>弹性存储集群最大存储规格；固定存储该值为0</p>
         :rtype: int
         """
         return self._MaximumElasticStorage
@@ -28814,6 +28841,17 @@ class PulsarProClusterSpecInfo(AbstractModel):
     @MaximumElasticStorage.setter
     def MaximumElasticStorage(self, MaximumElasticStorage):
         self._MaximumElasticStorage = MaximumElasticStorage
+
+    @property
+    def TotalTps(self):
+        r"""<p>当前集群可使用的全量TPS，包括弹性TPS</p>
+        :rtype: int
+        """
+        return self._TotalTps
+
+    @TotalTps.setter
+    def TotalTps(self, TotalTps):
+        self._TotalTps = TotalTps
 
 
     def _deserialize(self, params):
@@ -28829,6 +28867,7 @@ class PulsarProClusterSpecInfo(AbstractModel):
         self._BrokerMaxConnections = params.get("BrokerMaxConnections")
         self._BrokerMaxConnectionsPerIp = params.get("BrokerMaxConnectionsPerIp")
         self._MaximumElasticStorage = params.get("MaximumElasticStorage")
+        self._TotalTps = params.get("TotalTps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

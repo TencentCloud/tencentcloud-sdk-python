@@ -385,13 +385,31 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDevicePublishSDPAnswer(
+            self,
+            request: models.CreateDevicePublishSDPAnswerRequest,
+            opts: Dict = None,
+    ) -> models.CreateDevicePublishSDPAnswerResponse:
+        """
+        创建设备推流SDP应答，此接口调用前需要先调用CreateDeviceSDPAnswer接口以保证设备处于拉流状态，接口返回是另外一路webrtc推流SDP信息，可以用来进行标准的WHIP推流
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDevicePublishSDPAnswer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDevicePublishSDPAnswerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDeviceSDPAnswer(
             self,
             request: models.CreateDeviceSDPAnswerRequest,
             opts: Dict = None,
     ) -> models.CreateDeviceSDPAnswerResponse:
         """
-        创建设备SDP应答
+        创建设备SDP应答，调用此接口后，后台会对传入参数的设备进行拉流，并返回webrtc answer SDP返回，可以进行WHEP协议拉流。
         """
         
         kwargs = {}
@@ -848,6 +866,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DeleteDevice"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDeviceSDP(
+            self,
+            request: models.DeleteDeviceSDPRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDeviceSDPResponse:
+        """
+        删除设备SDP应答，此接口调用是手动结束设备后台推拉流信息，快速响应挂断需求。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDeviceSDP"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDeviceSDPResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

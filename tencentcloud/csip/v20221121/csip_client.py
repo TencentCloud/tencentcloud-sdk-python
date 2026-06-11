@@ -463,6 +463,75 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateIaCAccessToken(self, request):
+        r"""创建IaC检测接入Token
+
+        :param request: Request instance for CreateIaCAccessToken.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateIaCAccessTokenRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateIaCAccessTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIaCAccessToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIaCAccessTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateIaCFileExportJob(self, request):
+        r"""创建IaC检测文件导出任务
+
+        :param request: Request instance for CreateIaCFileExportJob.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateIaCFileExportJobRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateIaCFileExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIaCFileExportJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIaCFileExportJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateIaCFileReScanTask(self, request):
+        r"""创建IaC检测文件重新扫描任务
+
+        :param request: Request instance for CreateIaCFileReScanTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateIaCFileReScanTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateIaCFileReScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIaCFileReScanTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIaCFileReScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRiskCenterScanTask(self, request):
         r"""创建风险中心扫描任务
 
@@ -730,6 +799,52 @@ class CsipClient(AbstractClient):
             body = self.call("DeleteDspmWhitelistStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDspmWhitelistStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteIaCAccessToken(self, request):
+        r"""删除IaC检测接入Token
+
+        :param request: Request instance for DeleteIaCAccessToken.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteIaCAccessTokenRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteIaCAccessTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteIaCAccessToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteIaCAccessTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteIaCFile(self, request):
+        r"""删除IaC检测文件
+
+        :param request: Request instance for DeleteIaCFile.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteIaCFileRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteIaCFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteIaCFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteIaCFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3131,6 +3246,98 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIaCFileList(self, request):
+        r"""获取IaC检测文件列表
+
+        :param request: Request instance for DescribeIaCFileList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeIaCFileListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeIaCFileListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIaCFileList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIaCFileListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIaCFileOverview(self, request):
+        r"""获取IaC检测文件概览
+
+        :param request: Request instance for DescribeIaCFileOverview.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeIaCFileOverviewRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeIaCFileOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIaCFileOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIaCFileOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIaCFileReport(self, request):
+        r"""获取IaC检测文件报告
+
+        :param request: Request instance for DescribeIaCFileReport.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeIaCFileReportRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeIaCFileReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIaCFileReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIaCFileReportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIaCTokenList(self, request):
+        r"""获取IaC检测接入Token列表
+
+        :param request: Request instance for DescribeIaCTokenList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeIaCTokenListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeIaCTokenListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIaCTokenList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIaCTokenListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIpInvokeRecord(self, request):
         r"""对象存储异常检测调用记录信息
 
@@ -4686,6 +4893,29 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyDspmWhitelistStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDspmWhitelistStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyIaCTokenPeriod(self, request):
+        r"""修改IaC检测接入Token存储周期
+
+        :param request: Request instance for ModifyIaCTokenPeriod.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyIaCTokenPeriodRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyIaCTokenPeriodResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIaCTokenPeriod", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIaCTokenPeriodResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

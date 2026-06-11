@@ -4272,11 +4272,11 @@ class DescribeRoleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Page: 页码，从1开始
+        :param _Page: <p>页码，从1开始</p>
         :type Page: int
-        :param _Rp: 每页行数，不能大于200
+        :param _Rp: <p>每页行数，不能大于200</p>
         :type Rp: int
-        :param _Tags: 标签筛选
+        :param _Tags: <p>标签筛选</p>
         :type Tags: list of RoleTags
         """
         self._Page = None
@@ -4285,7 +4285,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""页码，从1开始
+        r"""<p>页码，从1开始</p>
         :rtype: int
         """
         return self._Page
@@ -4296,7 +4296,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Rp(self):
-        r"""每页行数，不能大于200
+        r"""<p>每页行数，不能大于200</p>
         :rtype: int
         """
         return self._Rp
@@ -4307,7 +4307,7 @@ class DescribeRoleListRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签筛选
+        r"""<p>标签筛选</p>
         :rtype: list of RoleTags
         """
         return self._Tags
@@ -4343,9 +4343,9 @@ class DescribeRoleListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: 角色详情列表。
+        :param _List: <p>角色详情列表。</p>
         :type List: list of RoleInfo
-        :param _TotalNum: 角色总数
+        :param _TotalNum: <p>角色总数</p>
         :type TotalNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4356,7 +4356,7 @@ class DescribeRoleListResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""角色详情列表。
+        r"""<p>角色详情列表。</p>
         :rtype: list of RoleInfo
         """
         return self._List
@@ -4367,7 +4367,7 @@ class DescribeRoleListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        r"""角色总数
+        r"""<p>角色总数</p>
         :rtype: int
         """
         return self._TotalNum

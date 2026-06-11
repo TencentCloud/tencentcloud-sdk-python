@@ -12233,7 +12233,7 @@ class CommonFlowApprover(AbstractModel):
         :type ApproverName: str
         :param _ApproverMobile: <p>签署人手机号，saas企业签署人，个人签署人必传</p>
         :type ApproverMobile: str
-        :param _ApproverIdCardType: <p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li><li>OTHER_CARD_TYPE : 其他证件</li></ul><p>注: <code>其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
+        :param _ApproverIdCardType: <p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
@@ -12378,7 +12378,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverIdCardType(self):
-        r"""<p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li><li>OTHER_CARD_TYPE : 其他证件</li></ul><p>注: <code>其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
+        r"""<p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :rtype: str
         """
         return self._ApproverIdCardType
@@ -21466,42 +21466,25 @@ class FillApproverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
-
+        :param _RecipientId: <p>签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。</p>
         :type RecipientId: str
-        :param _OpenId: 指定企业经办签署人OpenId
-
-注: `签署人OpenId未实名时，需要传入签署人姓名以及手机号码。`
+        :param _OpenId: <p>指定企业经办签署人OpenId</p><p>注: <code>签署人OpenId未实名时，需要传入签署人姓名以及手机号码。</code></p>
         :type OpenId: str
-        :param _ApproverName: 签署人姓名
+        :param _ApproverName: <p>签署人姓名</p>
         :type ApproverName: str
-        :param _ApproverMobile: 签署人手机号码
+        :param _ApproverMobile: <p>签署人手机号码</p>
         :type ApproverMobile: str
-        :param _OrganizationName: 企业名称
+        :param _OrganizationName: <p>企业名称</p>
         :type OrganizationName: str
-        :param _OrganizationOpenId: 企业OpenId
+        :param _OrganizationOpenId: <p>企业OpenId</p>
         :type OrganizationOpenId: str
-        :param _NotChannelOrganization: 签署企业非渠道子客，默认为false，即表示同一渠道下的企业；如果为true，则目前表示接收方企业为SaaS企业, 为渠道子客时，OrganizationOpenId 必传
+        :param _NotChannelOrganization: <p>签署企业非渠道子客，默认为false，即表示同一渠道下的企业；如果为true，则目前表示接收方企业为SaaS企业, 为渠道子客时，OrganizationOpenId 必传</p>
         :type NotChannelOrganization: bool
-        :param _ApproverIdCardType: 签署方经办人的证件类型，支持以下类型
-<ul><li>ID_CARD 中国大陆居民身份证</li>
-<li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
-<li>OTHER_CARD_TYPE 其他证件</li></ul>
-
-注: `1.其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
-`2.补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
+        :param _ApproverIdCardType: <p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD 中国大陆居民身份证</li><li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>注:补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。</p>
         :type ApproverIdCardType: str
-        :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
-<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-
-注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
+        :param _ApproverIdCardNumber: <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul><p>注：<code>补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。</code></p>
         :type ApproverIdCardNumber: str
-        :param _FlowId: 合同流程ID
-- 补充合同组子合同动态签署人时必传。
-- 补充正常合同，请阅读：<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口</a>接口使用说明
+        :param _FlowId: <p>合同流程ID</p><ul><li>补充合同组子合同动态签署人时必传。</li><li>补充正常合同，请阅读：<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口</a>接口使用说明</li></ul>
         :type FlowId: str
         """
         self._RecipientId = None
@@ -21517,8 +21500,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def RecipientId(self):
-        r"""签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
-
+        r"""<p>签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。</p>
         :rtype: str
         """
         return self._RecipientId
@@ -21529,9 +21511,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def OpenId(self):
-        r"""指定企业经办签署人OpenId
-
-注: `签署人OpenId未实名时，需要传入签署人姓名以及手机号码。`
+        r"""<p>指定企业经办签署人OpenId</p><p>注: <code>签署人OpenId未实名时，需要传入签署人姓名以及手机号码。</code></p>
         :rtype: str
         """
         return self._OpenId
@@ -21542,7 +21522,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def ApproverName(self):
-        r"""签署人姓名
+        r"""<p>签署人姓名</p>
         :rtype: str
         """
         return self._ApproverName
@@ -21553,7 +21533,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def ApproverMobile(self):
-        r"""签署人手机号码
+        r"""<p>签署人手机号码</p>
         :rtype: str
         """
         return self._ApproverMobile
@@ -21564,7 +21544,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        r"""企业名称
+        r"""<p>企业名称</p>
         :rtype: str
         """
         return self._OrganizationName
@@ -21575,7 +21555,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        r"""企业OpenId
+        r"""<p>企业OpenId</p>
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -21586,7 +21566,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def NotChannelOrganization(self):
-        r"""签署企业非渠道子客，默认为false，即表示同一渠道下的企业；如果为true，则目前表示接收方企业为SaaS企业, 为渠道子客时，OrganizationOpenId 必传
+        r"""<p>签署企业非渠道子客，默认为false，即表示同一渠道下的企业；如果为true，则目前表示接收方企业为SaaS企业, 为渠道子客时，OrganizationOpenId 必传</p>
         :rtype: bool
         """
         return self._NotChannelOrganization
@@ -21597,14 +21577,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def ApproverIdCardType(self):
-        r"""签署方经办人的证件类型，支持以下类型
-<ul><li>ID_CARD 中国大陆居民身份证</li>
-<li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
-<li>OTHER_CARD_TYPE 其他证件</li></ul>
-
-注: `1.其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
-`2.补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
+        r"""<p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD 中国大陆居民身份证</li><li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>注:补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。</p>
         :rtype: str
         """
         return self._ApproverIdCardType
@@ -21615,12 +21588,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def ApproverIdCardNumber(self):
-        r"""签署方经办人的证件号码，应符合以下规则
-<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-
-注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
+        r"""<p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul><p>注：<code>补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。</code></p>
         :rtype: str
         """
         return self._ApproverIdCardNumber
@@ -21631,9 +21599,7 @@ class FillApproverInfo(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""合同流程ID
-- 补充合同组子合同动态签署人时必传。
-- 补充正常合同，请阅读：<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口</a>接口使用说明
+        r"""<p>合同流程ID</p><ul><li>补充合同组子合同动态签署人时必传。</li><li>补充正常合同，请阅读：<a href="https://qian.tencent.com/developers/partnerApis/flows/ChannelCreateFlowApprovers/" target="_blank">补充签署人接口</a>接口使用说明</li></ul>
         :rtype: str
         """
         return self._FlowId
@@ -22171,7 +22137,7 @@ class FlowApproverInfo(AbstractModel):
         r"""
         :param _Name: <p>签署方经办人的姓名。<br>经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。</p>
         :type Name: str
-        :param _IdCardType: <p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li><li>OTHER_CARD_TYPE : 其他证件</li></ul><p>注: <code>其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
+        :param _IdCardType: <p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :type IdCardType: str
         :param _IdCardNumber: <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
@@ -22271,7 +22237,7 @@ class FlowApproverInfo(AbstractModel):
 
     @property
     def IdCardType(self):
-        r"""<p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li><li>OTHER_CARD_TYPE : 其他证件</li></ul><p>注: <code>其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
+        r"""<p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
         :rtype: str
         """
         return self._IdCardType

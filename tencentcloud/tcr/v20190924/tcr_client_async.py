@@ -493,6 +493,24 @@ class TcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAIModel(
+            self,
+            request: models.DeleteAIModelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAIModelResponse:
+        """
+        删除指定模型版本（通过 tag 或 digest 引用）。调用 Harbor v2 API 删除 artifact。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAIModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAIModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteApplicationTriggerPersonal(
             self,
             request: models.DeleteApplicationTriggerPersonalRequest,
@@ -873,6 +891,24 @@ class TcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteSkill(
+            self,
+            request: models.DeleteSkillRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSkillResponse:
+        """
+        删除指定 Skill
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteTagRetentionRule(
             self,
             request: models.DeleteTagRetentionRuleRequest,
@@ -904,6 +940,24 @@ class TcrClient(AbstractClient):
         kwargs["action"] = "DeleteWebhookTrigger"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteWebhookTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAIModelVersionDetail(
+            self,
+            request: models.DescribeAIModelVersionDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIModelVersionDetailResponse:
+        """
+        查询模型详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIModelVersionDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIModelVersionDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1521,6 +1575,42 @@ class TcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSkillDetail(
+            self,
+            request: models.DescribeSkillDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillDetailResponse:
+        """
+        查询单个 Skill 的完整详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSkillDownloadInfo(
+            self,
+            request: models.DescribeSkillDownloadInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillDownloadInfoResponse:
+        """
+        返回 Skill 下载链接
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillDownloadInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillDownloadInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTagRetentionExecution(
             self,
             request: models.DescribeTagRetentionExecutionRequest,
@@ -1678,6 +1768,78 @@ class TcrClient(AbstractClient):
         kwargs["action"] = "DuplicateImagePersonal"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DuplicateImagePersonalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListAIModelVersions(
+            self,
+            request: models.ListAIModelVersionsRequest,
+            opts: Dict = None,
+    ) -> models.ListAIModelVersionsResponse:
+        """
+        查询指定模型仓库的所有版本列表。调用 Harbor v2 API 获取 artifact 列表，从 extra_attrs 提取模型元数据（框架、任务类型、精度等），从 tags 判断是否为推荐版本。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListAIModelVersions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListAIModelVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListAIModels(
+            self,
+            request: models.ListAIModelsRequest,
+            opts: Dict = None,
+    ) -> models.ListAIModelsResponse:
+        """
+        查询指定实例下的 AI 模型列表。可按 namespace 和仓库名过滤。每条记录代表一个模型仓库，返回最新版本信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListAIModels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListAIModelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListSkillVersions(
+            self,
+            request: models.ListSkillVersionsRequest,
+            opts: Dict = None,
+    ) -> models.ListSkillVersionsResponse:
+        """
+        查询指定 Skill 的版本历史列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListSkillVersions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListSkillVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListSkills(
+            self,
+            request: models.ListSkillsRequest,
+            opts: Dict = None,
+    ) -> models.ListSkillsResponse:
+        """
+        查询指定实例下的 AI Skill 列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListSkills"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListSkillsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -24191,52 +24191,54 @@ class ScoreInfoV2(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectID: 项目id
+        :param _ProjectID: <p>项目id</p>
         :type ProjectID: int
-        :param _Score: 项目总分
+        :param _Score: <p>项目总分</p>
         :type Score: float
-        :param _ApiPerformanceScore: API性能评分
+        :param _ApiPerformanceScore: <p>API性能评分</p>
         :type ApiPerformanceScore: float
-        :param _ApiAvailableScore: API可用性评分
+        :param _ApiAvailableScore: <p>API可用性评分</p>
         :type ApiAvailableScore: float
-        :param _ApiNum: API调用总数
+        :param _ApiNum: <p>API调用总数</p>
         :type ApiNum: int
-        :param _ApiFail: API失败次数
+        :param _ApiFail: <p>API失败次数</p>
         :type ApiFail: int
-        :param _ApiDuration: API平均持续时间
+        :param _ApiDuration: <p>API平均持续时间</p>
         :type ApiDuration: float
-        :param _PagePerformanceScore: 页面性能评分
+        :param _PagePerformanceScore: <p>页面性能评分</p>
         :type PagePerformanceScore: float
-        :param _PagePv: 页面浏览量
+        :param _PagePv: <p>页面浏览量</p>
         :type PagePv: int
-        :param _PageUv: 独立访客数
+        :param _PageUv: <p>独立访客数</p>
         :type PageUv: int
-        :param _PageError: 页面错误数
+        :param _PageError: <p>页面错误数</p>
         :type PageError: int
-        :param _PageDuration: 首屏时间
+        :param _PageDuration: <p>首屏时间</p>
         :type PageDuration: float
-        :param _PageLCP: 平均 LCP
+        :param _PageLCP: <p>平均 LCP</p>
         :type PageLCP: float
-        :param _PageFID: 平均 FID
+        :param _PageFID: <p>平均 FID</p>
         :type PageFID: float
-        :param _PageCLS: 平均 CLS
+        :param _PageCLS: <p>平均 CLS</p>
         :type PageCLS: float
-        :param _PageFCP: 平均 FCP
+        :param _PageFCP: <p>平均 FCP</p>
         :type PageFCP: float
-        :param _PageINP: 平均 INP
+        :param _PageINP: <p>平均 INP</p>
         :type PageINP: float
-        :param _JsErrorScore: JavaScript错误评分
+        :param _JsErrorScore: <p>JavaScript错误评分</p>
         :type JsErrorScore: float
-        :param _StaticAvailableScore: 静态资源可用性评分
+        :param _StaticAvailableScore: <p>静态资源可用性评分</p>
         :type StaticAvailableScore: float
-        :param _StaticPerformanceScore: 静态资源性能评分
+        :param _StaticPerformanceScore: <p>静态资源性能评分</p>
         :type StaticPerformanceScore: float
-        :param _StaticNum: 静态资源请求总数
+        :param _StaticNum: <p>静态资源请求总数</p>
         :type StaticNum: int
-        :param _StaticFail: 静态资源加载失败数
+        :param _StaticFail: <p>静态资源加载失败数</p>
         :type StaticFail: int
-        :param _StaticDuration: 静态资源加载时间
+        :param _StaticDuration: <p>静态资源加载时间</p>
         :type StaticDuration: float
+        :param _Exclusion: <p>忽略的配置项</p>
+        :type Exclusion: str
         """
         self._ProjectID = None
         self._Score = None
@@ -24261,10 +24263,11 @@ class ScoreInfoV2(AbstractModel):
         self._StaticNum = None
         self._StaticFail = None
         self._StaticDuration = None
+        self._Exclusion = None
 
     @property
     def ProjectID(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: int
         """
         return self._ProjectID
@@ -24275,7 +24278,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def Score(self):
-        r"""项目总分
+        r"""<p>项目总分</p>
         :rtype: float
         """
         return self._Score
@@ -24286,7 +24289,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def ApiPerformanceScore(self):
-        r"""API性能评分
+        r"""<p>API性能评分</p>
         :rtype: float
         """
         return self._ApiPerformanceScore
@@ -24297,7 +24300,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def ApiAvailableScore(self):
-        r"""API可用性评分
+        r"""<p>API可用性评分</p>
         :rtype: float
         """
         return self._ApiAvailableScore
@@ -24308,7 +24311,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def ApiNum(self):
-        r"""API调用总数
+        r"""<p>API调用总数</p>
         :rtype: int
         """
         return self._ApiNum
@@ -24319,7 +24322,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def ApiFail(self):
-        r"""API失败次数
+        r"""<p>API失败次数</p>
         :rtype: int
         """
         return self._ApiFail
@@ -24330,7 +24333,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def ApiDuration(self):
-        r"""API平均持续时间
+        r"""<p>API平均持续时间</p>
         :rtype: float
         """
         return self._ApiDuration
@@ -24341,7 +24344,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PagePerformanceScore(self):
-        r"""页面性能评分
+        r"""<p>页面性能评分</p>
         :rtype: float
         """
         return self._PagePerformanceScore
@@ -24352,7 +24355,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PagePv(self):
-        r"""页面浏览量
+        r"""<p>页面浏览量</p>
         :rtype: int
         """
         return self._PagePv
@@ -24363,7 +24366,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PageUv(self):
-        r"""独立访客数
+        r"""<p>独立访客数</p>
         :rtype: int
         """
         return self._PageUv
@@ -24374,7 +24377,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PageError(self):
-        r"""页面错误数
+        r"""<p>页面错误数</p>
         :rtype: int
         """
         return self._PageError
@@ -24385,7 +24388,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PageDuration(self):
-        r"""首屏时间
+        r"""<p>首屏时间</p>
         :rtype: float
         """
         return self._PageDuration
@@ -24396,7 +24399,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PageLCP(self):
-        r"""平均 LCP
+        r"""<p>平均 LCP</p>
         :rtype: float
         """
         return self._PageLCP
@@ -24407,7 +24410,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PageFID(self):
-        r"""平均 FID
+        r"""<p>平均 FID</p>
         :rtype: float
         """
         return self._PageFID
@@ -24418,7 +24421,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PageCLS(self):
-        r"""平均 CLS
+        r"""<p>平均 CLS</p>
         :rtype: float
         """
         return self._PageCLS
@@ -24429,7 +24432,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PageFCP(self):
-        r"""平均 FCP
+        r"""<p>平均 FCP</p>
         :rtype: float
         """
         return self._PageFCP
@@ -24440,7 +24443,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def PageINP(self):
-        r"""平均 INP
+        r"""<p>平均 INP</p>
         :rtype: float
         """
         return self._PageINP
@@ -24451,7 +24454,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def JsErrorScore(self):
-        r"""JavaScript错误评分
+        r"""<p>JavaScript错误评分</p>
         :rtype: float
         """
         return self._JsErrorScore
@@ -24462,7 +24465,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def StaticAvailableScore(self):
-        r"""静态资源可用性评分
+        r"""<p>静态资源可用性评分</p>
         :rtype: float
         """
         return self._StaticAvailableScore
@@ -24473,7 +24476,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def StaticPerformanceScore(self):
-        r"""静态资源性能评分
+        r"""<p>静态资源性能评分</p>
         :rtype: float
         """
         return self._StaticPerformanceScore
@@ -24484,7 +24487,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def StaticNum(self):
-        r"""静态资源请求总数
+        r"""<p>静态资源请求总数</p>
         :rtype: int
         """
         return self._StaticNum
@@ -24495,7 +24498,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def StaticFail(self):
-        r"""静态资源加载失败数
+        r"""<p>静态资源加载失败数</p>
         :rtype: int
         """
         return self._StaticFail
@@ -24506,7 +24509,7 @@ class ScoreInfoV2(AbstractModel):
 
     @property
     def StaticDuration(self):
-        r"""静态资源加载时间
+        r"""<p>静态资源加载时间</p>
         :rtype: float
         """
         return self._StaticDuration
@@ -24514,6 +24517,17 @@ class ScoreInfoV2(AbstractModel):
     @StaticDuration.setter
     def StaticDuration(self, StaticDuration):
         self._StaticDuration = StaticDuration
+
+    @property
+    def Exclusion(self):
+        r"""<p>忽略的配置项</p>
+        :rtype: str
+        """
+        return self._Exclusion
+
+    @Exclusion.setter
+    def Exclusion(self, Exclusion):
+        self._Exclusion = Exclusion
 
 
     def _deserialize(self, params):
@@ -24540,6 +24554,7 @@ class ScoreInfoV2(AbstractModel):
         self._StaticNum = params.get("StaticNum")
         self._StaticFail = params.get("StaticFail")
         self._StaticDuration = params.get("StaticDuration")
+        self._Exclusion = params.get("Exclusion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

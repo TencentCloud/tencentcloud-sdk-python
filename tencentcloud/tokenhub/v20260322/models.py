@@ -361,9 +361,12 @@ class BindingItem(AbstractModel):
         :type ResourceId: str
         :param _ResourceType: 资源类型。取值：endpoint（服务）、model（模型）。
         :type ResourceType: str
+        :param _Status: 资源状态
+        :type Status: str
         """
         self._ResourceId = None
         self._ResourceType = None
+        self._Status = None
 
     @property
     def ResourceId(self):
@@ -387,10 +390,22 @@ class BindingItem(AbstractModel):
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
 
+    @property
+    def Status(self):
+        r"""资源状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
         self._ResourceType = params.get("ResourceType")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

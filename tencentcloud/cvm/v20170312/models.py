@@ -13081,102 +13081,102 @@ class Instance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Placement: 实例所在的位置。
+        :param _Placement: <p>实例所在的位置。</p>
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
-        :param _InstanceId: 实例`ID`。
+        :param _InstanceId: <p>实例<code>ID</code>。</p>
         :type InstanceId: str
-        :param _InstanceType: 实例机型。
+        :param _InstanceType: <p>实例机型。</p>
         :type InstanceType: str
-        :param _CPU: 实例的CPU核数，单位：核。
+        :param _CPU: <p>实例的CPU核数，单位：核。</p>
         :type CPU: int
-        :param _Memory: 实例内存容量，单位：`GiB`。
+        :param _Memory: <p>实例内存容量，单位：<code>GiB</code>。</p>
         :type Memory: int
-        :param _RestrictState: 实例业务状态。取值范围：<br><li>NORMAL：表示正常状态的实例</li><li>EXPIRED：表示过期的实例</li><li>PROTECTIVELY_ISOLATED：表示被安全隔离的实例。</li>
+        :param _RestrictState: <p>实例业务状态。取值范围：<br><li>NORMAL：表示正常状态的实例</li><li>EXPIRED：表示过期的实例</li><li>PROTECTIVELY_ISOLATED：表示被安全隔离的实例。</li></p>
         :type RestrictState: str
-        :param _InstanceName: 实例名称。
+        :param _InstanceName: <p>实例名称。</p>
         :type InstanceName: str
-        :param _InstanceChargeType: 实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。取值范围：<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>CDHPAID：独享子机（基于专用宿主机创建，宿主机部分的资源不收费）</li><br><li>SPOTPAID：竞价付费</li><br><li>CDCPAID：专用集群付费</li>
+        :param _InstanceChargeType: <p>实例<a href="https://cloud.tencent.com/document/product/213/2180">计费类型</a>。取值范围：<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>CDHPAID：独享子机（基于专用宿主机创建，宿主机部分的资源不收费）</li><br><li>SPOTPAID：竞价付费</li><br><li>CDCPAID：专用集群付费</li></p>
         :type InstanceChargeType: str
-        :param _SystemDisk: 实例系统盘信息。
+        :param _SystemDisk: <p>实例系统盘信息。</p>
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
-        :param _DataDisks: 实例数据盘信息。
+        :param _DataDisks: <p>实例数据盘信息。</p>
         :type DataDisks: list of DataDisk
-        :param _PrivateIpAddresses: 实例主网卡的内网`IP`列表。
+        :param _PrivateIpAddresses: <p>实例主网卡的内网<code>IP</code>列表。</p>
         :type PrivateIpAddresses: list of str
-        :param _PublicIpAddresses: 实例主网卡的公网`IP`列表。
+        :param _PublicIpAddresses: <p>实例主网卡的公网<code>IP</code>列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicIpAddresses: list of str
-        :param _InternetAccessible: 实例带宽信息。
+        :param _InternetAccessible: <p>实例带宽信息。</p>
         :type InternetAccessible: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
-        :param _VirtualPrivateCloud: 实例所属虚拟私有网络信息。
+        :param _VirtualPrivateCloud: <p>实例所属虚拟私有网络信息。</p>
         :type VirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
-        :param _ImageId: 生产实例所使用的镜像`ID`。
+        :param _ImageId: <p>生产实例所使用的镜像<code>ID</code>。</p>
         :type ImageId: str
-        :param _RenewFlag: 自动续费标识。取值范围：<br><li>`NOTIFY_AND_MANUAL_RENEW`：表示通知即将过期，但不自动续费</li><li>`NOTIFY_AND_AUTO_RENEW`：表示通知即将过期，而且自动续费</li><li>`DISABLE_NOTIFY_AND_MANUAL_RENEW`：表示不通知即将过期，也不自动续费。
-</li><li>注意：后付费模式本项为null</li>
+        :param _RenewFlag: <p>自动续费标识。取值范围：<br><li><code>NOTIFY_AND_MANUAL_RENEW</code>：表示通知即将过期，但不自动续费</li><li><code>NOTIFY_AND_AUTO_RENEW</code>：表示通知即将过期，而且自动续费</li><li><code>DISABLE_NOTIFY_AND_MANUAL_RENEW</code>：表示不通知即将过期，也不自动续费。</p></li><li>注意：后付费模式本项为null</li>
         :type RenewFlag: str
-        :param _CreatedTime: 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+        :param _CreatedTime: <p>创建时间。按照<code>ISO8601</code>标准表示，并且使用<code>UTC</code>时间。格式为：<code>YYYY-MM-DDThh:mm:ssZ</code>。</p>
         :type CreatedTime: str
-        :param _ExpiredTime: 到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。注意：后付费模式本项为null
+        :param _ExpiredTime: <p>到期时间。按照<code>ISO8601</code>标准表示，并且使用<code>UTC</code>时间。格式为：<code>YYYY-MM-DDThh:mm:ssZ</code>。注意：后付费模式本项为null</p>
         :type ExpiredTime: str
-        :param _OsName: 操作系统名称。
+        :param _OsName: <p>操作系统名称。</p>
         :type OsName: str
-        :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+        :param _SecurityGroupIds: <p>实例所属安全组。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的sgId字段来获取。</p>
         :type SecurityGroupIds: list of str
-        :param _LoginSettings: 实例登录设置。目前只返回实例所关联的密钥。
+        :param _LoginSettings: <p>实例登录设置。目前只返回实例所关联的密钥。</p>
         :type LoginSettings: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
-        :param _InstanceState: 实例状态。状态类型详见[实例状态表](https://cloud.tencent.com/document/api/213/15753#InstanceStatus)
+        :param _InstanceState: <p>实例状态。状态类型详见<a href="https://cloud.tencent.com/document/api/213/15753#InstanceStatus">实例状态表</a></p>
         :type InstanceState: str
-        :param _Tags: 实例关联的标签列表。
+        :param _Tags: <p>实例关联的标签列表。</p>
         :type Tags: list of Tag
-        :param _StopChargingMode: 实例的关机计费模式。
-取值范围：<br><li>KEEP_CHARGING：关机继续收费</li><li>STOP_CHARGING：关机停止收费</li><li>NOT_APPLICABLE：实例处于非关机状态或者不适用关机停止计费的条件</li>
+        :param _StopChargingMode: <p>实例的关机计费模式。<br>取值范围：<br><li>KEEP_CHARGING：关机继续收费</li><li>STOP_CHARGING：关机停止收费</li><li>NOT_APPLICABLE：实例处于非关机状态或者不适用关机停止计费的条件</li></p>
         :type StopChargingMode: str
-        :param _Uuid: 实例全局唯一ID
+        :param _Uuid: <p>实例全局唯一ID</p>
         :type Uuid: str
-        :param _LatestOperation: 实例的最新操作。例：StopInstances、ResetInstance。
+        :param _LatestOperation: <p>实例的最新操作。例：StopInstances、ResetInstance。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperation: str
-        :param _LatestOperationState: 实例的最新操作状态。取值范围：<br><li>SUCCESS：表示操作成功</li><li>OPERATING：表示操作执行中</li><li>FAILED：表示操作失败</li>
+        :param _LatestOperationState: <p>实例的最新操作状态。取值范围：<br><li>SUCCESS：表示操作成功</li><li>OPERATING：表示操作执行中</li><li>FAILED：表示操作失败</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationState: str
-        :param _LatestOperationRequestId: 实例最新操作的唯一请求 ID。
+        :param _LatestOperationRequestId: <p>实例最新操作的唯一请求 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationRequestId: str
-        :param _DisasterRecoverGroupId: 分散置放群组ID。
+        :param _DisasterRecoverGroupId: <p>分散置放群组ID。</p>
         :type DisasterRecoverGroupId: str
-        :param _IPv6Addresses: 实例的IPv6地址。
+        :param _IPv6Addresses: <p>实例的IPv6地址。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPv6Addresses: list of str
-        :param _CamRoleName: CAM角色名。
+        :param _CamRoleName: <p>CAM角色名。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CamRoleName: str
-        :param _HpcClusterId: 高性能计算集群`ID`。
+        :param _HpcClusterId: <p>高性能计算集群<code>ID</code>。</p>
         :type HpcClusterId: str
-        :param _RdmaIpAddresses: 高性能计算集群`IP`列表。
+        :param _RdmaIpAddresses: <p>高性能计算集群<code>IP</code>列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RdmaIpAddresses: list of str
-        :param _DedicatedClusterId: 实例所在的专用集群`ID`。
+        :param _DedicatedClusterId: <p>实例所在的专用集群<code>ID</code>。</p>
         :type DedicatedClusterId: str
-        :param _IsolatedSource: 实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li>
+        :param _IsolatedSource: <p>实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li></p>
         :type IsolatedSource: str
-        :param _GPUInfo: GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。
+        :param _GPUInfo: <p>GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。</p>
         :type GPUInfo: :class:`tencentcloud.cvm.v20170312.models.GPUInfo`
-        :param _LicenseType: 实例的操作系统许可类型，默认为TencentCloud
+        :param _LicenseType: <p>实例的操作系统许可类型，默认为TencentCloud</p>
         :type LicenseType: str
-        :param _DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>true：表示开启实例保护，不允许通过api接口删除实例</li><li>false：表示关闭实例保护，允许通过api接口删除实例</li><br>默认取值：false。
+        :param _DisableApiTermination: <p>实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>true：表示开启实例保护，不允许通过api接口删除实例</li><li>false：表示关闭实例保护，允许通过api接口删除实例</li><br>默认取值：false。</p>
         :type DisableApiTermination: bool
-        :param _DefaultLoginUser: 默认登录用户。
+        :param _DefaultLoginUser: <p>默认登录用户。</p>
         :type DefaultLoginUser: str
-        :param _DefaultLoginPort: 默认登录端口。
+        :param _DefaultLoginPort: <p>默认登录端口。</p>
         :type DefaultLoginPort: int
-        :param _LatestOperationErrorMsg: 实例的最新操作错误信息。
+        :param _LatestOperationErrorMsg: <p>实例的最新操作错误信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationErrorMsg: str
-        :param _Metadata: 自定义metadata，本参数对应创建 CVM时指定的Metadata 信息。**注：内测中**。
+        :param _Metadata: <p>自定义metadata，本参数对应创建 CVM时指定的Metadata 信息。<strong>注：内测中</strong>。</p>
         :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
-        :param _PublicIPv6Addresses: 实例绑定的公网IPv6地址。
+        :param _PublicIPv6Addresses: <p>实例绑定的公网IPv6地址。</p>
         :type PublicIPv6Addresses: list of str
+        :param _CpuTopology: <p>描述了实例CPU拓扑结构的相关信息。</p>
+        :type CpuTopology: :class:`tencentcloud.cvm.v20170312.models.CpuTopology`
         """
         self._Placement = None
         self._InstanceId = None
@@ -13221,10 +13221,11 @@ class Instance(AbstractModel):
         self._LatestOperationErrorMsg = None
         self._Metadata = None
         self._PublicIPv6Addresses = None
+        self._CpuTopology = None
 
     @property
     def Placement(self):
-        r"""实例所在的位置。
+        r"""<p>实例所在的位置。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
         return self._Placement
@@ -13235,7 +13236,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例`ID`。
+        r"""<p>实例<code>ID</code>。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13246,7 +13247,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例机型。
+        r"""<p>实例机型。</p>
         :rtype: str
         """
         return self._InstanceType
@@ -13257,7 +13258,7 @@ class Instance(AbstractModel):
 
     @property
     def CPU(self):
-        r"""实例的CPU核数，单位：核。
+        r"""<p>实例的CPU核数，单位：核。</p>
         :rtype: int
         """
         return self._CPU
@@ -13268,7 +13269,7 @@ class Instance(AbstractModel):
 
     @property
     def Memory(self):
-        r"""实例内存容量，单位：`GiB`。
+        r"""<p>实例内存容量，单位：<code>GiB</code>。</p>
         :rtype: int
         """
         return self._Memory
@@ -13279,7 +13280,7 @@ class Instance(AbstractModel):
 
     @property
     def RestrictState(self):
-        r"""实例业务状态。取值范围：<br><li>NORMAL：表示正常状态的实例</li><li>EXPIRED：表示过期的实例</li><li>PROTECTIVELY_ISOLATED：表示被安全隔离的实例。</li>
+        r"""<p>实例业务状态。取值范围：<br><li>NORMAL：表示正常状态的实例</li><li>EXPIRED：表示过期的实例</li><li>PROTECTIVELY_ISOLATED：表示被安全隔离的实例。</li></p>
         :rtype: str
         """
         return self._RestrictState
@@ -13290,7 +13291,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -13301,7 +13302,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。取值范围：<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>CDHPAID：独享子机（基于专用宿主机创建，宿主机部分的资源不收费）</li><br><li>SPOTPAID：竞价付费</li><br><li>CDCPAID：专用集群付费</li>
+        r"""<p>实例<a href="https://cloud.tencent.com/document/product/213/2180">计费类型</a>。取值范围：<br><li>PREPAID：预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：按小时后付费</li><br><li>CDHPAID：独享子机（基于专用宿主机创建，宿主机部分的资源不收费）</li><br><li>SPOTPAID：竞价付费</li><br><li>CDCPAID：专用集群付费</li></p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -13312,7 +13313,7 @@ class Instance(AbstractModel):
 
     @property
     def SystemDisk(self):
-        r"""实例系统盘信息。
+        r"""<p>实例系统盘信息。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
         """
         return self._SystemDisk
@@ -13323,7 +13324,7 @@ class Instance(AbstractModel):
 
     @property
     def DataDisks(self):
-        r"""实例数据盘信息。
+        r"""<p>实例数据盘信息。</p>
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -13334,7 +13335,7 @@ class Instance(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
-        r"""实例主网卡的内网`IP`列表。
+        r"""<p>实例主网卡的内网<code>IP</code>列表。</p>
         :rtype: list of str
         """
         return self._PrivateIpAddresses
@@ -13345,7 +13346,7 @@ class Instance(AbstractModel):
 
     @property
     def PublicIpAddresses(self):
-        r"""实例主网卡的公网`IP`列表。
+        r"""<p>实例主网卡的公网<code>IP</code>列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -13357,7 +13358,7 @@ class Instance(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        r"""实例带宽信息。
+        r"""<p>实例带宽信息。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -13368,7 +13369,7 @@ class Instance(AbstractModel):
 
     @property
     def VirtualPrivateCloud(self):
-        r"""实例所属虚拟私有网络信息。
+        r"""<p>实例所属虚拟私有网络信息。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._VirtualPrivateCloud
@@ -13379,7 +13380,7 @@ class Instance(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""生产实例所使用的镜像`ID`。
+        r"""<p>生产实例所使用的镜像<code>ID</code>。</p>
         :rtype: str
         """
         return self._ImageId
@@ -13390,8 +13391,7 @@ class Instance(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识。取值范围：<br><li>`NOTIFY_AND_MANUAL_RENEW`：表示通知即将过期，但不自动续费</li><li>`NOTIFY_AND_AUTO_RENEW`：表示通知即将过期，而且自动续费</li><li>`DISABLE_NOTIFY_AND_MANUAL_RENEW`：表示不通知即将过期，也不自动续费。
-</li><li>注意：后付费模式本项为null</li>
+        r"""<p>自动续费标识。取值范围：<br><li><code>NOTIFY_AND_MANUAL_RENEW</code>：表示通知即将过期，但不自动续费</li><li><code>NOTIFY_AND_AUTO_RENEW</code>：表示通知即将过期，而且自动续费</li><li><code>DISABLE_NOTIFY_AND_MANUAL_RENEW</code>：表示不通知即将过期，也不自动续费。</p></li><li>注意：后付费模式本项为null</li>
         :rtype: str
         """
         return self._RenewFlag
@@ -13402,7 +13402,7 @@ class Instance(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+        r"""<p>创建时间。按照<code>ISO8601</code>标准表示，并且使用<code>UTC</code>时间。格式为：<code>YYYY-MM-DDThh:mm:ssZ</code>。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -13413,7 +13413,7 @@ class Instance(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。注意：后付费模式本项为null
+        r"""<p>到期时间。按照<code>ISO8601</code>标准表示，并且使用<code>UTC</code>时间。格式为：<code>YYYY-MM-DDThh:mm:ssZ</code>。注意：后付费模式本项为null</p>
         :rtype: str
         """
         return self._ExpiredTime
@@ -13424,7 +13424,7 @@ class Instance(AbstractModel):
 
     @property
     def OsName(self):
-        r"""操作系统名称。
+        r"""<p>操作系统名称。</p>
         :rtype: str
         """
         return self._OsName
@@ -13435,7 +13435,7 @@ class Instance(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+        r"""<p>实例所属安全组。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的sgId字段来获取。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -13446,7 +13446,7 @@ class Instance(AbstractModel):
 
     @property
     def LoginSettings(self):
-        r"""实例登录设置。目前只返回实例所关联的密钥。
+        r"""<p>实例登录设置。目前只返回实例所关联的密钥。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.LoginSettings`
         """
         return self._LoginSettings
@@ -13457,7 +13457,7 @@ class Instance(AbstractModel):
 
     @property
     def InstanceState(self):
-        r"""实例状态。状态类型详见[实例状态表](https://cloud.tencent.com/document/api/213/15753#InstanceStatus)
+        r"""<p>实例状态。状态类型详见<a href="https://cloud.tencent.com/document/api/213/15753#InstanceStatus">实例状态表</a></p>
         :rtype: str
         """
         return self._InstanceState
@@ -13468,7 +13468,7 @@ class Instance(AbstractModel):
 
     @property
     def Tags(self):
-        r"""实例关联的标签列表。
+        r"""<p>实例关联的标签列表。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -13479,8 +13479,7 @@ class Instance(AbstractModel):
 
     @property
     def StopChargingMode(self):
-        r"""实例的关机计费模式。
-取值范围：<br><li>KEEP_CHARGING：关机继续收费</li><li>STOP_CHARGING：关机停止收费</li><li>NOT_APPLICABLE：实例处于非关机状态或者不适用关机停止计费的条件</li>
+        r"""<p>实例的关机计费模式。<br>取值范围：<br><li>KEEP_CHARGING：关机继续收费</li><li>STOP_CHARGING：关机停止收费</li><li>NOT_APPLICABLE：实例处于非关机状态或者不适用关机停止计费的条件</li></p>
         :rtype: str
         """
         return self._StopChargingMode
@@ -13491,7 +13490,7 @@ class Instance(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""实例全局唯一ID
+        r"""<p>实例全局唯一ID</p>
         :rtype: str
         """
         return self._Uuid
@@ -13502,7 +13501,7 @@ class Instance(AbstractModel):
 
     @property
     def LatestOperation(self):
-        r"""实例的最新操作。例：StopInstances、ResetInstance。
+        r"""<p>实例的最新操作。例：StopInstances、ResetInstance。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13514,7 +13513,7 @@ class Instance(AbstractModel):
 
     @property
     def LatestOperationState(self):
-        r"""实例的最新操作状态。取值范围：<br><li>SUCCESS：表示操作成功</li><li>OPERATING：表示操作执行中</li><li>FAILED：表示操作失败</li>
+        r"""<p>实例的最新操作状态。取值范围：<br><li>SUCCESS：表示操作成功</li><li>OPERATING：表示操作执行中</li><li>FAILED：表示操作失败</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13526,7 +13525,7 @@ class Instance(AbstractModel):
 
     @property
     def LatestOperationRequestId(self):
-        r"""实例最新操作的唯一请求 ID。
+        r"""<p>实例最新操作的唯一请求 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13538,7 +13537,7 @@ class Instance(AbstractModel):
 
     @property
     def DisasterRecoverGroupId(self):
-        r"""分散置放群组ID。
+        r"""<p>分散置放群组ID。</p>
         :rtype: str
         """
         return self._DisasterRecoverGroupId
@@ -13549,7 +13548,7 @@ class Instance(AbstractModel):
 
     @property
     def IPv6Addresses(self):
-        r"""实例的IPv6地址。
+        r"""<p>实例的IPv6地址。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -13561,7 +13560,7 @@ class Instance(AbstractModel):
 
     @property
     def CamRoleName(self):
-        r"""CAM角色名。
+        r"""<p>CAM角色名。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13573,7 +13572,7 @@ class Instance(AbstractModel):
 
     @property
     def HpcClusterId(self):
-        r"""高性能计算集群`ID`。
+        r"""<p>高性能计算集群<code>ID</code>。</p>
         :rtype: str
         """
         return self._HpcClusterId
@@ -13584,7 +13583,7 @@ class Instance(AbstractModel):
 
     @property
     def RdmaIpAddresses(self):
-        r"""高性能计算集群`IP`列表。
+        r"""<p>高性能计算集群<code>IP</code>列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -13596,7 +13595,7 @@ class Instance(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        r"""实例所在的专用集群`ID`。
+        r"""<p>实例所在的专用集群<code>ID</code>。</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -13607,7 +13606,7 @@ class Instance(AbstractModel):
 
     @property
     def IsolatedSource(self):
-        r"""实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li>
+        r"""<p>实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li></p>
         :rtype: str
         """
         return self._IsolatedSource
@@ -13618,7 +13617,7 @@ class Instance(AbstractModel):
 
     @property
     def GPUInfo(self):
-        r"""GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。
+        r"""<p>GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.GPUInfo`
         """
         return self._GPUInfo
@@ -13629,7 +13628,7 @@ class Instance(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""实例的操作系统许可类型，默认为TencentCloud
+        r"""<p>实例的操作系统许可类型，默认为TencentCloud</p>
         :rtype: str
         """
         return self._LicenseType
@@ -13640,7 +13639,7 @@ class Instance(AbstractModel):
 
     @property
     def DisableApiTermination(self):
-        r"""实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>true：表示开启实例保护，不允许通过api接口删除实例</li><li>false：表示关闭实例保护，允许通过api接口删除实例</li><br>默认取值：false。
+        r"""<p>实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>true：表示开启实例保护，不允许通过api接口删除实例</li><li>false：表示关闭实例保护，允许通过api接口删除实例</li><br>默认取值：false。</p>
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -13651,7 +13650,7 @@ class Instance(AbstractModel):
 
     @property
     def DefaultLoginUser(self):
-        r"""默认登录用户。
+        r"""<p>默认登录用户。</p>
         :rtype: str
         """
         return self._DefaultLoginUser
@@ -13662,7 +13661,7 @@ class Instance(AbstractModel):
 
     @property
     def DefaultLoginPort(self):
-        r"""默认登录端口。
+        r"""<p>默认登录端口。</p>
         :rtype: int
         """
         return self._DefaultLoginPort
@@ -13673,7 +13672,7 @@ class Instance(AbstractModel):
 
     @property
     def LatestOperationErrorMsg(self):
-        r"""实例的最新操作错误信息。
+        r"""<p>实例的最新操作错误信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13685,7 +13684,7 @@ class Instance(AbstractModel):
 
     @property
     def Metadata(self):
-        r"""自定义metadata，本参数对应创建 CVM时指定的Metadata 信息。**注：内测中**。
+        r"""<p>自定义metadata，本参数对应创建 CVM时指定的Metadata 信息。<strong>注：内测中</strong>。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         """
         return self._Metadata
@@ -13696,7 +13695,7 @@ class Instance(AbstractModel):
 
     @property
     def PublicIPv6Addresses(self):
-        r"""实例绑定的公网IPv6地址。
+        r"""<p>实例绑定的公网IPv6地址。</p>
         :rtype: list of str
         """
         return self._PublicIPv6Addresses
@@ -13704,6 +13703,17 @@ class Instance(AbstractModel):
     @PublicIPv6Addresses.setter
     def PublicIPv6Addresses(self, PublicIPv6Addresses):
         self._PublicIPv6Addresses = PublicIPv6Addresses
+
+    @property
+    def CpuTopology(self):
+        r"""<p>描述了实例CPU拓扑结构的相关信息。</p>
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.CpuTopology`
+        """
+        return self._CpuTopology
+
+    @CpuTopology.setter
+    def CpuTopology(self, CpuTopology):
+        self._CpuTopology = CpuTopology
 
 
     def _deserialize(self, params):
@@ -13774,6 +13784,9 @@ class Instance(AbstractModel):
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
         self._PublicIPv6Addresses = params.get("PublicIPv6Addresses")
+        if params.get("CpuTopology") is not None:
+            self._CpuTopology = CpuTopology()
+            self._CpuTopology._deserialize(params.get("CpuTopology"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

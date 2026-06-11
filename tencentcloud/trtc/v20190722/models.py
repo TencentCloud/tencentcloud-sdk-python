@@ -899,21 +899,21 @@ class AsyncTextToSpeechRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Text: 需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符
+        :param _Text: <p>需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符</p>
         :type Text: str
-        :param _Voice: 文本转语音的声音配置
+        :param _Voice: <p>文本转语音的声音配置</p>
         :type Voice: :class:`tencentcloud.trtc.v20190722.models.Voice`
-        :param _SdkAppId: TRTC的SdkAppId
+        :param _SdkAppId: <p>TRTC的SdkAppId</p>
         :type SdkAppId: int
-        :param _AudioFormat: 文本转语音的输出音频的格式
+        :param _AudioFormat: <p>文本转语音的输出音频的格式</p>
         :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
-        :param _Model: TTS的模型，当前固定为：flow_01_turbo
+        :param _Model: <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
         :type Model: str
-        :param _PronunciationDict: 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        :param _PronunciationDict: <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
         :type PronunciationDict: list of PronunciationDict
-        :param _AlignmentMode: 默认为0，0表示不生成字幕，1表示生成字幕
+        :param _AlignmentMode: <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
         :type AlignmentMode: int
-        :param _LanguageCode: 需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）
+        :param _LanguageCode: <p>需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）</p>
         :type LanguageCode: str
         """
         self._Text = None
@@ -927,7 +927,7 @@ class AsyncTextToSpeechRequest(AbstractModel):
 
     @property
     def Text(self):
-        r"""需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符
+        r"""<p>需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符</p>
         :rtype: str
         """
         return self._Text
@@ -938,7 +938,7 @@ class AsyncTextToSpeechRequest(AbstractModel):
 
     @property
     def Voice(self):
-        r"""文本转语音的声音配置
+        r"""<p>文本转语音的声音配置</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.Voice`
         """
         return self._Voice
@@ -949,7 +949,7 @@ class AsyncTextToSpeechRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC的SdkAppId
+        r"""<p>TRTC的SdkAppId</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -960,7 +960,7 @@ class AsyncTextToSpeechRequest(AbstractModel):
 
     @property
     def AudioFormat(self):
-        r"""文本转语音的输出音频的格式
+        r"""<p>文本转语音的输出音频的格式</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
         """
         return self._AudioFormat
@@ -971,7 +971,7 @@ class AsyncTextToSpeechRequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""TTS的模型，当前固定为：flow_01_turbo
+        r"""<p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
         :rtype: str
         """
         return self._Model
@@ -982,7 +982,7 @@ class AsyncTextToSpeechRequest(AbstractModel):
 
     @property
     def PronunciationDict(self):
-        r"""多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        r"""<p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
         :rtype: list of PronunciationDict
         """
         return self._PronunciationDict
@@ -993,7 +993,7 @@ class AsyncTextToSpeechRequest(AbstractModel):
 
     @property
     def AlignmentMode(self):
-        r"""默认为0，0表示不生成字幕，1表示生成字幕
+        r"""<p>默认为0，0表示不生成字幕，1表示生成字幕</p>
         :rtype: int
         """
         return self._AlignmentMode
@@ -1004,7 +1004,7 @@ class AsyncTextToSpeechRequest(AbstractModel):
 
     @property
     def LanguageCode(self):
-        r"""需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）
+        r"""<p>需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）</p>
         :rtype: str
         """
         return self._LanguageCode
@@ -1049,7 +1049,7 @@ class AsyncTextToSpeechResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1059,7 +1059,7 @@ class AsyncTextToSpeechResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -2928,18 +2928,20 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转录的房间所对应的SdkAppId相同。
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转录的房间所对应的SdkAppId相同。</p>
         :type SdkAppId: int
-        :param _RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+        :param _RoomId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。</p>
         :type RoomId: str
-        :param _RoomIdType: 房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+        :param _RoomIdType: <p>房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p>
         :type RoomIdType: int
-        :param _TranscriptionParam: 转录服务加入TRTC房间的参数。
+        :param _TranscriptionParam: <p>转录服务加入TRTC房间的参数。</p>
         :type TranscriptionParam: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParam`
-        :param _AsrParam: 转录服务ASR使用的参数。
+        :param _AsrParam: <p>转录服务ASR使用的参数。</p>
         :type AsrParam: :class:`tencentcloud.trtc.v20190722.models.AsrParam`
-        :param _TranslationParam: 转录服务翻译使用的参数。
+        :param _TranslationParam: <p>转录服务翻译使用的参数。</p>
         :type TranslationParam: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
+        :param _TTSParam: <p>转录服务TTS使用的参数。</p>
+        :type TTSParam: list of TTSParam
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -2947,10 +2949,11 @@ class CreateCloudTranscriptionRequest(AbstractModel):
         self._TranscriptionParam = None
         self._AsrParam = None
         self._TranslationParam = None
+        self._TTSParam = None
 
     @property
     def SdkAppId(self):
-        r"""TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转录的房间所对应的SdkAppId相同。
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转录的房间所对应的SdkAppId相同。</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -2961,7 +2964,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。</p>
         :rtype: str
         """
         return self._RoomId
@@ -2972,7 +2975,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
-        r"""房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+        r"""<p>房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p>
         :rtype: int
         """
         return self._RoomIdType
@@ -2983,7 +2986,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def TranscriptionParam(self):
-        r"""转录服务加入TRTC房间的参数。
+        r"""<p>转录服务加入TRTC房间的参数。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParam`
         """
         return self._TranscriptionParam
@@ -2994,7 +2997,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def AsrParam(self):
-        r"""转录服务ASR使用的参数。
+        r"""<p>转录服务ASR使用的参数。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.AsrParam`
         """
         return self._AsrParam
@@ -3005,7 +3008,7 @@ class CreateCloudTranscriptionRequest(AbstractModel):
 
     @property
     def TranslationParam(self):
-        r"""转录服务翻译使用的参数。
+        r"""<p>转录服务翻译使用的参数。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
         """
         return self._TranslationParam
@@ -3013,6 +3016,17 @@ class CreateCloudTranscriptionRequest(AbstractModel):
     @TranslationParam.setter
     def TranslationParam(self, TranslationParam):
         self._TranslationParam = TranslationParam
+
+    @property
+    def TTSParam(self):
+        r"""<p>转录服务TTS使用的参数。</p>
+        :rtype: list of TTSParam
+        """
+        return self._TTSParam
+
+    @TTSParam.setter
+    def TTSParam(self, TTSParam):
+        self._TTSParam = TTSParam
 
 
     def _deserialize(self, params):
@@ -3028,6 +3042,12 @@ class CreateCloudTranscriptionRequest(AbstractModel):
         if params.get("TranslationParam") is not None:
             self._TranslationParam = TranslationParam()
             self._TranslationParam._deserialize(params.get("TranslationParam"))
+        if params.get("TTSParam") is not None:
+            self._TTSParam = []
+            for item in params.get("TTSParam"):
+                obj = TTSParam()
+                obj._deserialize(item)
+                self._TTSParam.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3045,7 +3065,7 @@ class CreateCloudTranscriptionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 用于唯一标识转录任务，由腾讯云服务端生成，后续查询和停止请求都需要携带TaskID参数。
+        :param _TaskId: <p>用于唯一标识转录任务，由腾讯云服务端生成，后续查询和停止请求都需要携带TaskID参数。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3055,7 +3075,7 @@ class CreateCloudTranscriptionResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""用于唯一标识转录任务，由腾讯云服务端生成，后续查询和停止请求都需要携带TaskID参数。
+        r"""<p>用于唯一标识转录任务，由腾讯云服务端生成，后续查询和停止请求都需要携带TaskID参数。</p>
         :rtype: str
         """
         return self._TaskId
@@ -18071,6 +18091,189 @@ class TTSConfig(AbstractModel):
         
 
 
+class TTSParam(AbstractModel):
+    r"""伴生转录TTS参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>tts模型</p>
+        :type Model: str
+        :param _Language: <p>tts语言，必须在TranslationParam 的TargetLang列表中。</p>
+        :type Language: str
+        :param _TargetUser: <p>需要TTS播报的主播用户，该主播用户必须在订阅白名单里并且不在订阅黑名单里。</p>
+        :type TargetUser: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        :param _TTSRobotUser: <p>TTS 音频回推到房间的机器人用户。</p>
+        :type TTSRobotUser: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        :param _Voice: <p>TTS的声音配置参数。</p>
+        :type Voice: :class:`tencentcloud.trtc.v20190722.models.TTSVoice`
+        """
+        self._Model = None
+        self._Language = None
+        self._TargetUser = None
+        self._TTSRobotUser = None
+        self._Voice = None
+
+    @property
+    def Model(self):
+        r"""<p>tts模型</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Language(self):
+        r"""<p>tts语言，必须在TranslationParam 的TargetLang列表中。</p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def TargetUser(self):
+        r"""<p>需要TTS播报的主播用户，该主播用户必须在订阅白名单里并且不在订阅黑名单里。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        """
+        return self._TargetUser
+
+    @TargetUser.setter
+    def TargetUser(self, TargetUser):
+        self._TargetUser = TargetUser
+
+    @property
+    def TTSRobotUser(self):
+        r"""<p>TTS 音频回推到房间的机器人用户。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        """
+        return self._TTSRobotUser
+
+    @TTSRobotUser.setter
+    def TTSRobotUser(self, TTSRobotUser):
+        self._TTSRobotUser = TTSRobotUser
+
+    @property
+    def Voice(self):
+        r"""<p>TTS的声音配置参数。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TTSVoice`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Language = params.get("Language")
+        if params.get("TargetUser") is not None:
+            self._TargetUser = TranscriptionUserInfoParams()
+            self._TargetUser._deserialize(params.get("TargetUser"))
+        if params.get("TTSRobotUser") is not None:
+            self._TTSRobotUser = TranscriptionUserInfoParams()
+            self._TTSRobotUser._deserialize(params.get("TTSRobotUser"))
+        if params.get("Voice") is not None:
+            self._Voice = TTSVoice()
+            self._Voice._deserialize(params.get("Voice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TTSVoice(AbstractModel):
+    r"""伴生转录TTS的语音参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色 ID。</p>
+        :type VoiceId: str
+        :param _Speed: <p>语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0。</p>
+        :type Speed: float
+        :param _Volume: <p>音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0。</p>
+        :type Volume: float
+        :param _Pitch: <p>音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12]，默认0。</p>
+        :type Pitch: int
+        """
+        self._VoiceId = None
+        self._Speed = None
+        self._Volume = None
+        self._Pitch = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色 ID。</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Speed(self):
+        r"""<p>语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0。</p>
+        :rtype: float
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+    @property
+    def Volume(self):
+        r"""<p>音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0。</p>
+        :rtype: float
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def Pitch(self):
+        r"""<p>音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12]，默认0。</p>
+        :rtype: int
+        """
+        return self._Pitch
+
+    @Pitch.setter
+    def Pitch(self, Pitch):
+        self._Pitch = Pitch
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._Speed = params.get("Speed")
+        self._Volume = params.get("Volume")
+        self._Pitch = params.get("Pitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TencentVod(AbstractModel):
     r"""腾讯云点播相关参数。
 
@@ -18231,6 +18434,57 @@ class TencentVod(AbstractModel):
         
 
 
+class TermPair(AbstractModel):
+    r"""伴生转录术语表词组对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: <p>源术语。</p>
+        :type Source: str
+        :param _Target: <p>目标术语翻译结果。</p>
+        :type Target: str
+        """
+        self._Source = None
+        self._Target = None
+
+    @property
+    def Source(self):
+        r"""<p>源术语。</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Target(self):
+        r"""<p>目标术语翻译结果。</p>
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._Target = params.get("Target")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Terminology(AbstractModel):
     r"""翻译术语
 
@@ -18282,6 +18536,62 @@ class Terminology(AbstractModel):
         
 
 
+class TerminologyItem(AbstractModel):
+    r"""伴生转录术语表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetLang: <p>翻译目标语言。</p>
+        :type TargetLang: str
+        :param _Terminology: <p>翻译目标语言对应的翻译术语配置。</p>
+        :type Terminology: list of TermPair
+        """
+        self._TargetLang = None
+        self._Terminology = None
+
+    @property
+    def TargetLang(self):
+        r"""<p>翻译目标语言。</p>
+        :rtype: str
+        """
+        return self._TargetLang
+
+    @TargetLang.setter
+    def TargetLang(self, TargetLang):
+        self._TargetLang = TargetLang
+
+    @property
+    def Terminology(self):
+        r"""<p>翻译目标语言对应的翻译术语配置。</p>
+        :rtype: list of TermPair
+        """
+        return self._Terminology
+
+    @Terminology.setter
+    def Terminology(self, Terminology):
+        self._Terminology = Terminology
+
+
+    def _deserialize(self, params):
+        self._TargetLang = params.get("TargetLang")
+        if params.get("Terminology") is not None:
+            self._Terminology = []
+            for item in params.get("Terminology"):
+                obj = TermPair()
+                obj._deserialize(item)
+                self._Terminology.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TextToSpeechRequest(AbstractModel):
     r"""TextToSpeech请求参数结构体
 
@@ -18289,32 +18599,26 @@ class TextToSpeechRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Text: 需要转语音的文字内容，长度范围：[1, 255]
+        :param _Text: <p>需要转语音的文字内容，长度范围：[1, 255]</p>
         :type Text: str
-        :param _Voice: 文本转语音的声音配置
+        :param _Voice: <p>文本转语音的声音配置</p>
         :type Voice: :class:`tencentcloud.trtc.v20190722.models.Voice`
-        :param _SdkAppId: TRTC的SdkAppId
+        :param _SdkAppId: <p>TRTC的SdkAppId</p>
         :type SdkAppId: int
-        :param _AudioFormat: 文本转语音的输出音频的格式
+        :param _AudioFormat: <p>文本转语音的输出音频的格式</p>
         :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
-        :param _APIKey: TTS的API密钥
+        :param _APIKey: <p>TTS的API密钥</p>
         :type APIKey: str
-        :param _Model: TTS的模型，当前固定为：flow_01_turbo
+        :param _Model: <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
         :type Model: str
-        :param _Language:  需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：
-- zh（中文）
-- en（英文）
-- yue（粤语）
-- ja（日语）
-- ko（韩语）
-- ar（阿拉伯语）
-- id（印尼语）
-- th（泰语）
+        :param _Language: <p>需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：</p><ul><li>zh（中文）</li><li>en（英文）</li><li>yue（粤语）</li><li>ja（日语）</li><li>ko（韩语）</li><li>ar（阿拉伯语）</li><li>id（印尼语）</li><li>th（泰语）</li></ul>
         :type Language: str
-        :param _PronunciationDict: 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        :param _PronunciationDict: <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
         :type PronunciationDict: list of PronunciationDict
-        :param _AlignmentMode: 默认为0，0表示不生成字幕，1表示生成字幕
+        :param _AlignmentMode: <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
         :type AlignmentMode: int
+        :param _ExtraParams: <p>json字符串，用于拓展用法</p>
+        :type ExtraParams: str
         """
         self._Text = None
         self._Voice = None
@@ -18325,10 +18629,11 @@ class TextToSpeechRequest(AbstractModel):
         self._Language = None
         self._PronunciationDict = None
         self._AlignmentMode = None
+        self._ExtraParams = None
 
     @property
     def Text(self):
-        r"""需要转语音的文字内容，长度范围：[1, 255]
+        r"""<p>需要转语音的文字内容，长度范围：[1, 255]</p>
         :rtype: str
         """
         return self._Text
@@ -18339,7 +18644,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def Voice(self):
-        r"""文本转语音的声音配置
+        r"""<p>文本转语音的声音配置</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.Voice`
         """
         return self._Voice
@@ -18350,7 +18655,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC的SdkAppId
+        r"""<p>TRTC的SdkAppId</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -18361,7 +18666,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def AudioFormat(self):
-        r"""文本转语音的输出音频的格式
+        r"""<p>文本转语音的输出音频的格式</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
         """
         return self._AudioFormat
@@ -18374,7 +18679,7 @@ class TextToSpeechRequest(AbstractModel):
     def APIKey(self):
         warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
 
-        r"""TTS的API密钥
+        r"""<p>TTS的API密钥</p>
         :rtype: str
         """
         return self._APIKey
@@ -18387,7 +18692,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""TTS的模型，当前固定为：flow_01_turbo
+        r"""<p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
         :rtype: str
         """
         return self._Model
@@ -18398,15 +18703,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def Language(self):
-        r""" 需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：
-- zh（中文）
-- en（英文）
-- yue（粤语）
-- ja（日语）
-- ko（韩语）
-- ar（阿拉伯语）
-- id（印尼语）
-- th（泰语）
+        r"""<p>需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：</p><ul><li>zh（中文）</li><li>en（英文）</li><li>yue（粤语）</li><li>ja（日语）</li><li>ko（韩语）</li><li>ar（阿拉伯语）</li><li>id（印尼语）</li><li>th（泰语）</li></ul>
         :rtype: str
         """
         return self._Language
@@ -18417,7 +18714,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def PronunciationDict(self):
-        r"""多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        r"""<p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
         :rtype: list of PronunciationDict
         """
         return self._PronunciationDict
@@ -18428,7 +18725,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def AlignmentMode(self):
-        r"""默认为0，0表示不生成字幕，1表示生成字幕
+        r"""<p>默认为0，0表示不生成字幕，1表示生成字幕</p>
         :rtype: int
         """
         return self._AlignmentMode
@@ -18436,6 +18733,17 @@ class TextToSpeechRequest(AbstractModel):
     @AlignmentMode.setter
     def AlignmentMode(self, AlignmentMode):
         self._AlignmentMode = AlignmentMode
+
+    @property
+    def ExtraParams(self):
+        r"""<p>json字符串，用于拓展用法</p>
+        :rtype: str
+        """
+        return self._ExtraParams
+
+    @ExtraParams.setter
+    def ExtraParams(self, ExtraParams):
+        self._ExtraParams = ExtraParams
 
 
     def _deserialize(self, params):
@@ -18457,6 +18765,7 @@ class TextToSpeechRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PronunciationDict.append(obj)
         self._AlignmentMode = params.get("AlignmentMode")
+        self._ExtraParams = params.get("ExtraParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18474,11 +18783,11 @@ class TextToSpeechResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Audio: Base64编码的音频数据
+        :param _Audio: <p>Base64编码的音频数据</p>
         :type Audio: str
-        :param _Alignments: 字幕对齐数据
+        :param _Alignments: <p>字幕对齐数据</p>
         :type Alignments: list of AlignmentItem
-        :param _TotalDurationMs: 音频时长
+        :param _TotalDurationMs: <p>音频时长</p>
         :type TotalDurationMs: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18490,7 +18799,7 @@ class TextToSpeechResponse(AbstractModel):
 
     @property
     def Audio(self):
-        r"""Base64编码的音频数据
+        r"""<p>Base64编码的音频数据</p>
         :rtype: str
         """
         return self._Audio
@@ -18501,7 +18810,7 @@ class TextToSpeechResponse(AbstractModel):
 
     @property
     def Alignments(self):
-        r"""字幕对齐数据
+        r"""<p>字幕对齐数据</p>
         :rtype: list of AlignmentItem
         """
         return self._Alignments
@@ -18512,7 +18821,7 @@ class TextToSpeechResponse(AbstractModel):
 
     @property
     def TotalDurationMs(self):
-        r"""音频时长
+        r"""<p>音频时长</p>
         :rtype: int
         """
         return self._TotalDurationMs
@@ -18552,33 +18861,26 @@ class TextToSpeechSSERequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Text: 需要转语音的文字内容，长度范围：[1, 255]
+        :param _Text: <p>需要转语音的文字内容，长度范围：[1, 255]</p>
         :type Text: str
-        :param _Voice: 文本转语音的声音配置
+        :param _Voice: <p>文本转语音的声音配置</p>
         :type Voice: :class:`tencentcloud.trtc.v20190722.models.Voice`
-        :param _SdkAppId: TRTC的SdkAppId
+        :param _SdkAppId: <p>TRTC的SdkAppId</p>
         :type SdkAppId: int
-        :param _AudioFormat: 文本转语音的输出音频的格式
+        :param _AudioFormat: <p>文本转语音的输出音频的格式</p>
         :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
-        :param _APIKey: TTS的API密钥
+        :param _APIKey: <p>TTS的API密钥</p>
         :type APIKey: str
-        :param _Model: TTS的模型，当前固定为：flow_01_turbo
+        :param _Model: <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
         :type Model: str
-        :param _Language:  需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：
-- zh（中文）
-- en（英文）
-- yue（粤语）
-- ja（日语）
-- ko（韩语）
-- ar（阿拉伯语）
-- id（印尼语）
-- th（泰语）
-
+        :param _Language: <p>需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：</p><ul><li>zh（中文）</li><li>en（英文）</li><li>yue（粤语）</li><li>ja（日语）</li><li>ko（韩语）</li><li>ar（阿拉伯语）</li><li>id（印尼语）</li><li>th（泰语）</li></ul>
         :type Language: str
-        :param _PronunciationDict: 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        :param _PronunciationDict: <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
         :type PronunciationDict: list of PronunciationDict
-        :param _AlignmentMode: 默认为0，0表示不生成字幕，1表示生成字幕
+        :param _AlignmentMode: <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
         :type AlignmentMode: int
+        :param _ExtraParams: <p>json字符串，用于拓展用法</p>
+        :type ExtraParams: str
         """
         self._Text = None
         self._Voice = None
@@ -18589,10 +18891,11 @@ class TextToSpeechSSERequest(AbstractModel):
         self._Language = None
         self._PronunciationDict = None
         self._AlignmentMode = None
+        self._ExtraParams = None
 
     @property
     def Text(self):
-        r"""需要转语音的文字内容，长度范围：[1, 255]
+        r"""<p>需要转语音的文字内容，长度范围：[1, 255]</p>
         :rtype: str
         """
         return self._Text
@@ -18603,7 +18906,7 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def Voice(self):
-        r"""文本转语音的声音配置
+        r"""<p>文本转语音的声音配置</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.Voice`
         """
         return self._Voice
@@ -18614,7 +18917,7 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC的SdkAppId
+        r"""<p>TRTC的SdkAppId</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -18625,7 +18928,7 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def AudioFormat(self):
-        r"""文本转语音的输出音频的格式
+        r"""<p>文本转语音的输出音频的格式</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
         """
         return self._AudioFormat
@@ -18638,7 +18941,7 @@ class TextToSpeechSSERequest(AbstractModel):
     def APIKey(self):
         warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
 
-        r"""TTS的API密钥
+        r"""<p>TTS的API密钥</p>
         :rtype: str
         """
         return self._APIKey
@@ -18651,7 +18954,7 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""TTS的模型，当前固定为：flow_01_turbo
+        r"""<p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
         :rtype: str
         """
         return self._Model
@@ -18662,16 +18965,7 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def Language(self):
-        r""" 需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：
-- zh（中文）
-- en（英文）
-- yue（粤语）
-- ja（日语）
-- ko（韩语）
-- ar（阿拉伯语）
-- id（印尼语）
-- th（泰语）
-
+        r"""<p>需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：</p><ul><li>zh（中文）</li><li>en（英文）</li><li>yue（粤语）</li><li>ja（日语）</li><li>ko（韩语）</li><li>ar（阿拉伯语）</li><li>id（印尼语）</li><li>th（泰语）</li></ul>
         :rtype: str
         """
         return self._Language
@@ -18682,7 +18976,7 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def PronunciationDict(self):
-        r"""多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        r"""<p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
         :rtype: list of PronunciationDict
         """
         return self._PronunciationDict
@@ -18693,7 +18987,7 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def AlignmentMode(self):
-        r"""默认为0，0表示不生成字幕，1表示生成字幕
+        r"""<p>默认为0，0表示不生成字幕，1表示生成字幕</p>
         :rtype: int
         """
         return self._AlignmentMode
@@ -18701,6 +18995,17 @@ class TextToSpeechSSERequest(AbstractModel):
     @AlignmentMode.setter
     def AlignmentMode(self, AlignmentMode):
         self._AlignmentMode = AlignmentMode
+
+    @property
+    def ExtraParams(self):
+        r"""<p>json字符串，用于拓展用法</p>
+        :rtype: str
+        """
+        return self._ExtraParams
+
+    @ExtraParams.setter
+    def ExtraParams(self, ExtraParams):
+        self._ExtraParams = ExtraParams
 
 
     def _deserialize(self, params):
@@ -18722,6 +19027,7 @@ class TextToSpeechSSERequest(AbstractModel):
                 obj._deserialize(item)
                 self._PronunciationDict.append(obj)
         self._AlignmentMode = params.get("AlignmentMode")
+        self._ExtraParams = params.get("ExtraParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19260,14 +19566,17 @@ class TranslationParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetLang: 翻译的目标语言，示例值["en", "ja"]。目标语种列表[中文 "zh"，英语 "en"，越南语 "vi"，日语 "ja"，韩语 "ko"，印度尼西亚语 "id"，泰语 "th"，葡萄牙语 "pt"，阿拉伯语 "ar"，西班牙语 "es"，法语 "fr"，马来语 "ms"，德语 "de"，意大利语 "it"，俄语 "ru"]。
+        :param _TargetLang: <p>翻译的目标语言，示例值[&quot;en&quot;, &quot;ja&quot;]。目标语种列表[中文 &quot;zh&quot;，英语 &quot;en&quot;，越南语 &quot;vi&quot;，日语 &quot;ja&quot;，韩语 &quot;ko&quot;，印度尼西亚语 &quot;id&quot;，泰语 &quot;th&quot;，葡萄牙语 &quot;pt&quot;，阿拉伯语 &quot;ar&quot;，西班牙语 &quot;es&quot;，法语 &quot;fr&quot;，马来语 &quot;ms&quot;，德语 &quot;de&quot;，意大利语 &quot;it&quot;，俄语 &quot;ru&quot;]。</p>
         :type TargetLang: list of str
+        :param _Terminologies: <p>翻译术语表配置。</p>
+        :type Terminologies: list of TerminologyItem
         """
         self._TargetLang = None
+        self._Terminologies = None
 
     @property
     def TargetLang(self):
-        r"""翻译的目标语言，示例值["en", "ja"]。目标语种列表[中文 "zh"，英语 "en"，越南语 "vi"，日语 "ja"，韩语 "ko"，印度尼西亚语 "id"，泰语 "th"，葡萄牙语 "pt"，阿拉伯语 "ar"，西班牙语 "es"，法语 "fr"，马来语 "ms"，德语 "de"，意大利语 "it"，俄语 "ru"]。
+        r"""<p>翻译的目标语言，示例值[&quot;en&quot;, &quot;ja&quot;]。目标语种列表[中文 &quot;zh&quot;，英语 &quot;en&quot;，越南语 &quot;vi&quot;，日语 &quot;ja&quot;，韩语 &quot;ko&quot;，印度尼西亚语 &quot;id&quot;，泰语 &quot;th&quot;，葡萄牙语 &quot;pt&quot;，阿拉伯语 &quot;ar&quot;，西班牙语 &quot;es&quot;，法语 &quot;fr&quot;，马来语 &quot;ms&quot;，德语 &quot;de&quot;，意大利语 &quot;it&quot;，俄语 &quot;ru&quot;]。</p>
         :rtype: list of str
         """
         return self._TargetLang
@@ -19276,9 +19585,26 @@ class TranslationParam(AbstractModel):
     def TargetLang(self, TargetLang):
         self._TargetLang = TargetLang
 
+    @property
+    def Terminologies(self):
+        r"""<p>翻译术语表配置。</p>
+        :rtype: list of TerminologyItem
+        """
+        return self._Terminologies
+
+    @Terminologies.setter
+    def Terminologies(self, Terminologies):
+        self._Terminologies = Terminologies
+
 
     def _deserialize(self, params):
         self._TargetLang = params.get("TargetLang")
+        if params.get("Terminologies") is not None:
+            self._Terminologies = []
+            for item in params.get("Terminologies"):
+                obj = TerminologyItem()
+                obj._deserialize(item)
+                self._Terminologies.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20629,23 +20955,26 @@ class Voice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VoiceId:  音色 ID，可从音色列表获取，或使用声音克隆生成的自定义音色 ID
+        :param _VoiceId: <p>音色 ID，可从音色列表获取，或使用声音克隆生成的自定义音色 ID</p>
         :type VoiceId: str
-        :param _Speed: 语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0
+        :param _Speed: <p>语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0</p>
         :type Speed: float
-        :param _Volume:  音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0
+        :param _Volume: <p>音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0</p>
         :type Volume: float
-        :param _Pitch:  音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0
+        :param _Pitch: <p>音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0</p>
         :type Pitch: int
+        :param _Emotion: <p>情绪控制，目前仅flow_01_ex模型支持</p><p>枚举值：</p><ul><li>happy： 高兴</li><li>sad： 悲伤</li><li>angry： 愤怒</li><li>fearful： 害怕</li><li>disgusted： 厌恶</li><li>surprised： 惊讶</li><li>calm： 中性</li><li>fluent： 生动</li><li>whisper： 低语</li></ul>
+        :type Emotion: str
         """
         self._VoiceId = None
         self._Speed = None
         self._Volume = None
         self._Pitch = None
+        self._Emotion = None
 
     @property
     def VoiceId(self):
-        r""" 音色 ID，可从音色列表获取，或使用声音克隆生成的自定义音色 ID
+        r"""<p>音色 ID，可从音色列表获取，或使用声音克隆生成的自定义音色 ID</p>
         :rtype: str
         """
         return self._VoiceId
@@ -20656,7 +20985,7 @@ class Voice(AbstractModel):
 
     @property
     def Speed(self):
-        r"""语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0
+        r"""<p>语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0</p>
         :rtype: float
         """
         return self._Speed
@@ -20667,7 +20996,7 @@ class Voice(AbstractModel):
 
     @property
     def Volume(self):
-        r""" 音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0
+        r"""<p>音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0</p>
         :rtype: float
         """
         return self._Volume
@@ -20678,7 +21007,7 @@ class Voice(AbstractModel):
 
     @property
     def Pitch(self):
-        r""" 音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0
+        r"""<p>音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0</p>
         :rtype: int
         """
         return self._Pitch
@@ -20687,12 +21016,24 @@ class Voice(AbstractModel):
     def Pitch(self, Pitch):
         self._Pitch = Pitch
 
+    @property
+    def Emotion(self):
+        r"""<p>情绪控制，目前仅flow_01_ex模型支持</p><p>枚举值：</p><ul><li>happy： 高兴</li><li>sad： 悲伤</li><li>angry： 愤怒</li><li>fearful： 害怕</li><li>disgusted： 厌恶</li><li>surprised： 惊讶</li><li>calm： 中性</li><li>fluent： 生动</li><li>whisper： 低语</li></ul>
+        :rtype: str
+        """
+        return self._Emotion
+
+    @Emotion.setter
+    def Emotion(self, Emotion):
+        self._Emotion = Emotion
+
 
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
         self._Speed = params.get("Speed")
         self._Volume = params.get("Volume")
         self._Pitch = params.get("Pitch")
+        self._Emotion = params.get("Emotion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20710,19 +21051,19 @@ class VoiceCloneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的SdkAppId
+        :param _SdkAppId: <p>TRTC的SdkAppId</p>
         :type SdkAppId: int
-        :param _VoiceName: 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
+        :param _VoiceName: <p>声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位</p>
         :type VoiceName: str
-        :param _PromptAudio: 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间
+        :param _PromptAudio: <p>声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间</p>
         :type PromptAudio: str
-        :param _APIKey: TTS的API密钥
+        :param _APIKey: <p>TTS的API密钥</p>
         :type APIKey: str
-        :param _PromptText: 声音克隆的参考文本，为参考音频对应的文字。
+        :param _PromptText: <p>声音克隆的参考文本，为参考音频对应的文字。</p>
         :type PromptText: str
-        :param _Model: TTS的模型：flow_01_turbo，flow_01_ex
+        :param _Model: <p>TTS的模型：flow_02_turbo，flow_01_ex</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li><li>flow_01_ex： flow_01_ex</li></ul>
         :type Model: str
-        :param _Language: 语言参数，默认为空， 参考： (ISO 639-1) 
+        :param _Language: <p>语言参数，默认为空， 参考： (ISO 639-1)</p>
         :type Language: str
         """
         self._SdkAppId = None
@@ -20735,7 +21076,7 @@ class VoiceCloneRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC的SdkAppId
+        r"""<p>TRTC的SdkAppId</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -20746,7 +21087,7 @@ class VoiceCloneRequest(AbstractModel):
 
     @property
     def VoiceName(self):
-        r"""声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
+        r"""<p>声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位</p>
         :rtype: str
         """
         return self._VoiceName
@@ -20757,7 +21098,7 @@ class VoiceCloneRequest(AbstractModel):
 
     @property
     def PromptAudio(self):
-        r"""声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间
+        r"""<p>声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间</p>
         :rtype: str
         """
         return self._PromptAudio
@@ -20770,7 +21111,7 @@ class VoiceCloneRequest(AbstractModel):
     def APIKey(self):
         warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
 
-        r"""TTS的API密钥
+        r"""<p>TTS的API密钥</p>
         :rtype: str
         """
         return self._APIKey
@@ -20783,7 +21124,7 @@ class VoiceCloneRequest(AbstractModel):
 
     @property
     def PromptText(self):
-        r"""声音克隆的参考文本，为参考音频对应的文字。
+        r"""<p>声音克隆的参考文本，为参考音频对应的文字。</p>
         :rtype: str
         """
         return self._PromptText
@@ -20794,7 +21135,7 @@ class VoiceCloneRequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""TTS的模型：flow_01_turbo，flow_01_ex
+        r"""<p>TTS的模型：flow_02_turbo，flow_01_ex</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li><li>flow_01_ex： flow_01_ex</li></ul>
         :rtype: str
         """
         return self._Model
@@ -20805,7 +21146,7 @@ class VoiceCloneRequest(AbstractModel):
 
     @property
     def Language(self):
-        r"""语言参数，默认为空， 参考： (ISO 639-1) 
+        r"""<p>语言参数，默认为空， 参考： (ISO 639-1)</p>
         :rtype: str
         """
         return self._Language
@@ -20840,7 +21181,7 @@ class VoiceCloneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VoiceId: 克隆出的音色ID，可以用此id进行语音合成
+        :param _VoiceId: <p>克隆出的音色ID，可以用此id进行语音合成</p>
         :type VoiceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20850,7 +21191,7 @@ class VoiceCloneResponse(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""克隆出的音色ID，可以用此id进行语音合成
+        r"""<p>克隆出的音色ID，可以用此id进行语音合成</p>
         :rtype: str
         """
         return self._VoiceId

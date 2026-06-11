@@ -4530,6 +4530,115 @@ class CreateDeviceChannelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDevicePublishSDPAnswerRequest(AbstractModel):
+    r"""CreateDevicePublishSDPAnswer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _SDPOffer: SDP提议
+        :type SDPOffer: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._SDPOffer = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def SDPOffer(self):
+        r"""SDP提议
+        :rtype: str
+        """
+        return self._SDPOffer
+
+    @SDPOffer.setter
+    def SDPOffer(self, SDPOffer):
+        self._SDPOffer = SDPOffer
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._SDPOffer = params.get("SDPOffer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDevicePublishSDPAnswerResponse(AbstractModel):
+    r"""CreateDevicePublishSDPAnswer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SDPAnswer: SDP应答
+        :type SDPAnswer: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SDPAnswer = None
+        self._RequestId = None
+
+    @property
+    def SDPAnswer(self):
+        r"""SDP应答
+        :rtype: str
+        """
+        return self._SDPAnswer
+
+    @SDPAnswer.setter
+    def SDPAnswer(self, SDPAnswer):
+        self._SDPAnswer = SDPAnswer
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SDPAnswer = params.get("SDPAnswer")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDeviceRequest(AbstractModel):
     r"""CreateDevice请求参数结构体
 
@@ -4729,10 +4838,13 @@ class CreateDeviceSDPAnswerRequest(AbstractModel):
         :type DeviceName: str
         :param _SDPOffer: SDP提议
         :type SDPOffer: str
+        :param _RequesterTag: 客户自定义拉流标识
+        :type RequesterTag: str
         """
         self._ProductId = None
         self._DeviceName = None
         self._SDPOffer = None
+        self._RequesterTag = None
 
     @property
     def ProductId(self):
@@ -4767,11 +4879,23 @@ class CreateDeviceSDPAnswerRequest(AbstractModel):
     def SDPOffer(self, SDPOffer):
         self._SDPOffer = SDPOffer
 
+    @property
+    def RequesterTag(self):
+        r"""客户自定义拉流标识
+        :rtype: str
+        """
+        return self._RequesterTag
+
+    @RequesterTag.setter
+    def RequesterTag(self, RequesterTag):
+        self._RequesterTag = RequesterTag
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._SDPOffer = params.get("SDPOffer")
+        self._RequesterTag = params.get("RequesterTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9263,6 +9387,85 @@ class DeleteDeviceResponse(AbstractModel):
     def _deserialize(self, params):
         self._ResultCode = params.get("ResultCode")
         self._ResultMessage = params.get("ResultMessage")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDeviceSDPRequest(AbstractModel):
+    r"""DeleteDeviceSDP请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceSDPResponse(AbstractModel):
+    r"""DeleteDeviceSDP返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

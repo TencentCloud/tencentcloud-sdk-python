@@ -367,6 +367,60 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateIaCAccessToken(
+            self,
+            request: models.CreateIaCAccessTokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateIaCAccessTokenResponse:
+        """
+        创建IaC检测接入Token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateIaCAccessToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateIaCAccessTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateIaCFileExportJob(
+            self,
+            request: models.CreateIaCFileExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateIaCFileExportJobResponse:
+        """
+        创建IaC检测文件导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateIaCFileExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateIaCFileExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateIaCFileReScanTask(
+            self,
+            request: models.CreateIaCFileReScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateIaCFileReScanTaskResponse:
+        """
+        创建IaC检测文件重新扫描任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateIaCFileReScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateIaCFileReScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRiskCenterScanTask(
             self,
             request: models.CreateRiskCenterScanTaskRequest,
@@ -578,6 +632,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteDspmWhitelistStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDspmWhitelistStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteIaCAccessToken(
+            self,
+            request: models.DeleteIaCAccessTokenRequest,
+            opts: Dict = None,
+    ) -> models.DeleteIaCAccessTokenResponse:
+        """
+        删除IaC检测接入Token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteIaCAccessToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteIaCAccessTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteIaCFile(
+            self,
+            request: models.DeleteIaCFileRequest,
+            opts: Dict = None,
+    ) -> models.DeleteIaCFileResponse:
+        """
+        删除IaC检测文件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteIaCFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteIaCFileResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2455,6 +2545,78 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeIaCFileList(
+            self,
+            request: models.DescribeIaCFileListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIaCFileListResponse:
+        """
+        获取IaC检测文件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIaCFileList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIaCFileListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIaCFileOverview(
+            self,
+            request: models.DescribeIaCFileOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIaCFileOverviewResponse:
+        """
+        获取IaC检测文件概览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIaCFileOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIaCFileOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIaCFileReport(
+            self,
+            request: models.DescribeIaCFileReportRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIaCFileReportResponse:
+        """
+        获取IaC检测文件报告
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIaCFileReport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIaCFileReportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIaCTokenList(
+            self,
+            request: models.DescribeIaCTokenListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIaCTokenListResponse:
+        """
+        获取IaC检测接入Token列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIaCTokenList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIaCTokenListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeIpInvokeRecord(
             self,
             request: models.DescribeIpInvokeRecordRequest,
@@ -3674,6 +3836,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyDspmWhitelistStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDspmWhitelistStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyIaCTokenPeriod(
+            self,
+            request: models.ModifyIaCTokenPeriodRequest,
+            opts: Dict = None,
+    ) -> models.ModifyIaCTokenPeriodResponse:
+        """
+        修改IaC检测接入Token存储周期
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyIaCTokenPeriod"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyIaCTokenPeriodResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

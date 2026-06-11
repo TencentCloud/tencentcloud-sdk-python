@@ -1691,6 +1691,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAigcFaceInfoAsync(
+            self,
+            request: models.DescribeAigcFaceInfoAsyncRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcFaceInfoAsyncResponse:
+        """
+        该接口用于异步获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcFaceInfoAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcFaceInfoAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAigcUsageData(
             self,
             request: models.DescribeAigcUsageDataRequest,

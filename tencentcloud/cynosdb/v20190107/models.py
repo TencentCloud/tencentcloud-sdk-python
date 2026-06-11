@@ -10856,6 +10856,8 @@ class CreateProxyEndPointRequest(AbstractModel):
         :type AccessMode: str
         :param _InstanceWeights: <p>实例权重。</p>
         :type InstanceWeights: list of ProxyInstanceWeight
+        :param _LoadBalanceMode: <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+        :type LoadBalanceMode: str
         """
         self._ClusterId = None
         self._UniqueVpcId = None
@@ -10875,6 +10877,7 @@ class CreateProxyEndPointRequest(AbstractModel):
         self._TransSplit = None
         self._AccessMode = None
         self._InstanceWeights = None
+        self._LoadBalanceMode = None
 
     @property
     def ClusterId(self):
@@ -11074,6 +11077,17 @@ class CreateProxyEndPointRequest(AbstractModel):
     def InstanceWeights(self, InstanceWeights):
         self._InstanceWeights = InstanceWeights
 
+    @property
+    def LoadBalanceMode(self):
+        r"""<p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+        :rtype: str
+        """
+        return self._LoadBalanceMode
+
+    @LoadBalanceMode.setter
+    def LoadBalanceMode(self, LoadBalanceMode):
+        self._LoadBalanceMode = LoadBalanceMode
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -11099,6 +11113,7 @@ class CreateProxyEndPointRequest(AbstractModel):
                 obj = ProxyInstanceWeight()
                 obj._deserialize(item)
                 self._InstanceWeights.append(obj)
+        self._LoadBalanceMode = params.get("LoadBalanceMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29550,14 +29565,17 @@ class DescribeServerlessInstanceSpecsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
+        :param _ClusterLevel: <p>集群级别</p>
+        :type ClusterLevel: str
         """
         self._Zone = None
+        self._ClusterLevel = None
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -29566,9 +29584,21 @@ class DescribeServerlessInstanceSpecsRequest(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def ClusterLevel(self):
+        r"""<p>集群级别</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
+        self._ClusterLevel = params.get("ClusterLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29586,7 +29616,7 @@ class DescribeServerlessInstanceSpecsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Specs: Serverless实例可选规格
+        :param _Specs: <p>Serverless实例可选规格</p>
         :type Specs: list of ServerlessSpec
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29596,7 +29626,7 @@ class DescribeServerlessInstanceSpecsResponse(AbstractModel):
 
     @property
     def Specs(self):
-        r"""Serverless实例可选规格
+        r"""<p>Serverless实例可选规格</p>
         :rtype: list of ServerlessSpec
         """
         return self._Specs
@@ -43787,6 +43817,8 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         :type ApNodeAsRoNode: bool
         :param _ApQueryToOtherNode: <p>libra节点故障，是否转发给其他节点</p>
         :type ApQueryToOtherNode: bool
+        :param _LoadBalanceMode: <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+        :type LoadBalanceMode: str
         """
         self._ClusterId = None
         self._ProxyGroupId = None
@@ -43805,6 +43837,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         self._ConnectionPoolTimeOut = None
         self._ApNodeAsRoNode = None
         self._ApQueryToOtherNode = None
+        self._LoadBalanceMode = None
 
     @property
     def ClusterId(self):
@@ -43993,6 +44026,17 @@ class ModifyProxyRwSplitRequest(AbstractModel):
     def ApQueryToOtherNode(self, ApQueryToOtherNode):
         self._ApQueryToOtherNode = ApQueryToOtherNode
 
+    @property
+    def LoadBalanceMode(self):
+        r"""<p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+        :rtype: str
+        """
+        return self._LoadBalanceMode
+
+    @LoadBalanceMode.setter
+    def LoadBalanceMode(self, LoadBalanceMode):
+        self._LoadBalanceMode = LoadBalanceMode
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -44017,6 +44061,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         self._ConnectionPoolTimeOut = params.get("ConnectionPoolTimeOut")
         self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
         self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
+        self._LoadBalanceMode = params.get("LoadBalanceMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49525,6 +49570,8 @@ class ProxyGroupRwInfo(AbstractModel):
         :type ApNodeAsRoNode: bool
         :param _ApQueryToOtherNode: <p>libra节点故障，是否转发给其他节点</p>
         :type ApQueryToOtherNode: bool
+        :param _LoadBalanceMode: <p>自动负载</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+        :type LoadBalanceMode: str
         """
         self._ConsistencyType = None
         self._ConsistencyTimeOut = None
@@ -49538,6 +49585,7 @@ class ProxyGroupRwInfo(AbstractModel):
         self._AccessMode = None
         self._ApNodeAsRoNode = None
         self._ApQueryToOtherNode = None
+        self._LoadBalanceMode = None
 
     @property
     def ConsistencyType(self):
@@ -49671,6 +49719,17 @@ class ProxyGroupRwInfo(AbstractModel):
     def ApQueryToOtherNode(self, ApQueryToOtherNode):
         self._ApQueryToOtherNode = ApQueryToOtherNode
 
+    @property
+    def LoadBalanceMode(self):
+        r"""<p>自动负载</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+        :rtype: str
+        """
+        return self._LoadBalanceMode
+
+    @LoadBalanceMode.setter
+    def LoadBalanceMode(self, LoadBalanceMode):
+        self._LoadBalanceMode = LoadBalanceMode
+
 
     def _deserialize(self, params):
         self._ConsistencyType = params.get("ConsistencyType")
@@ -49690,6 +49749,7 @@ class ProxyGroupRwInfo(AbstractModel):
         self._AccessMode = params.get("AccessMode")
         self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
         self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
+        self._LoadBalanceMode = params.get("LoadBalanceMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

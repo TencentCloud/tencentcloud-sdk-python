@@ -127,14 +127,11 @@ class AddLoginWhiteListsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostLoginWhiteObj: 异地登录白名单实体
+        :param _HostLoginWhiteObj: <p>异地登录白名单实体</p>
         :type HostLoginWhiteObj: :class:`tencentcloud.cwp.v20180228.models.HostLoginWhiteObj`
-        :param _ProcessType: 事件同步处理方式：
-  "" -- 不操作
-  "All" -- 将符合此配置的所有事件记录加白
-  "Id" -- 将EventId对应的事件记录加白
+        :param _ProcessType: <p>事件同步处理方式：<br>  &quot;&quot; -- 不操作<br>  &quot;All&quot; -- 将符合此配置的所有事件记录加白<br>  &quot;Id&quot; -- 将EventId对应的事件记录加白</p>
         :type ProcessType: str
-        :param _EventId: 异地登录事件ID，当ProcessType为Id时此项必填
+        :param _EventId: <p>异地登录事件ID，当ProcessType为Id时此项必填</p>
         :type EventId: int
         """
         self._HostLoginWhiteObj = None
@@ -143,7 +140,7 @@ class AddLoginWhiteListsRequest(AbstractModel):
 
     @property
     def HostLoginWhiteObj(self):
-        r"""异地登录白名单实体
+        r"""<p>异地登录白名单实体</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.HostLoginWhiteObj`
         """
         return self._HostLoginWhiteObj
@@ -154,10 +151,7 @@ class AddLoginWhiteListsRequest(AbstractModel):
 
     @property
     def ProcessType(self):
-        r"""事件同步处理方式：
-  "" -- 不操作
-  "All" -- 将符合此配置的所有事件记录加白
-  "Id" -- 将EventId对应的事件记录加白
+        r"""<p>事件同步处理方式：<br>  &quot;&quot; -- 不操作<br>  &quot;All&quot; -- 将符合此配置的所有事件记录加白<br>  &quot;Id&quot; -- 将EventId对应的事件记录加白</p>
         :rtype: str
         """
         return self._ProcessType
@@ -168,7 +162,7 @@ class AddLoginWhiteListsRequest(AbstractModel):
 
     @property
     def EventId(self):
-        r"""异地登录事件ID，当ProcessType为Id时此项必填
+        r"""<p>异地登录事件ID，当ProcessType为Id时此项必填</p>
         :rtype: int
         """
         return self._EventId
@@ -201,7 +195,7 @@ class AddLoginWhiteListsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DuplicateHosts: 重复添加的提示列表
+        :param _DuplicateHosts: <p>重复添加的提示列表</p>
         :type DuplicateHosts: list of DuplicateHosts
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -211,7 +205,7 @@ class AddLoginWhiteListsResponse(AbstractModel):
 
     @property
     def DuplicateHosts(self):
-        r"""重复添加的提示列表
+        r"""<p>重复添加的提示列表</p>
         :rtype: list of DuplicateHosts
         """
         return self._DuplicateHosts
@@ -20329,14 +20323,14 @@ class DeleteLoginWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ids: 白名单ID (最大 100 条)
+        :param _Ids: <p>白名单ID (最大 100 条)</p>
         :type Ids: list of int non-negative
         """
         self._Ids = None
 
     @property
     def Ids(self):
-        r"""白名单ID (最大 100 条)
+        r"""<p>白名单ID (最大 100 条)</p>
         :rtype: list of int non-negative
         """
         return self._Ids
@@ -43077,11 +43071,11 @@ class DescribeLoginWhiteCombinedListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :param _Limit: <p>需要返回的数量，默认为10，最大值为100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Filters: 过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
+        :param _Filters: <p>过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li></p>
         :type Filters: list of Filter
         """
         self._Limit = None
@@ -43090,7 +43084,7 @@ class DescribeLoginWhiteCombinedListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""需要返回的数量，默认为10，最大值为100
+        r"""<p>需要返回的数量，默认为10，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -43101,7 +43095,7 @@ class DescribeLoginWhiteCombinedListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -43112,7 +43106,7 @@ class DescribeLoginWhiteCombinedListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
+        r"""<p>过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li></p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -43148,9 +43142,9 @@ class DescribeLoginWhiteCombinedListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数量
+        :param _TotalCount: <p>总数量</p>
         :type TotalCount: int
-        :param _LoginWhiteCombinedInfos: 合并后的白名单列表
+        :param _LoginWhiteCombinedInfos: <p>合并后的白名单列表</p>
         :type LoginWhiteCombinedInfos: list of LoginWhiteCombinedInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43161,7 +43155,7 @@ class DescribeLoginWhiteCombinedListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数量
+        r"""<p>总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -43172,7 +43166,7 @@ class DescribeLoginWhiteCombinedListResponse(AbstractModel):
 
     @property
     def LoginWhiteCombinedInfos(self):
-        r"""合并后的白名单列表
+        r"""<p>合并后的白名单列表</p>
         :rtype: list of LoginWhiteCombinedInfo
         """
         return self._LoginWhiteCombinedInfos
@@ -43211,13 +43205,13 @@ class DescribeLoginWhiteHostListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 白名单ID
+        :param _Id: <p>白名单ID</p>
         :type Id: int
-        :param _Limit: 需要返回的数量，最大值为1000
+        :param _Limit: <p>需要返回的数量，最大值为1000</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Filters: 过滤条件 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+        :param _Filters: <p>过滤条件 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li></p>
         :type Filters: list of AssetFilters
         """
         self._Id = None
@@ -43227,7 +43221,7 @@ class DescribeLoginWhiteHostListRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""白名单ID
+        r"""<p>白名单ID</p>
         :rtype: int
         """
         return self._Id
@@ -43238,7 +43232,7 @@ class DescribeLoginWhiteHostListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""需要返回的数量，最大值为1000
+        r"""<p>需要返回的数量，最大值为1000</p>
         :rtype: int
         """
         return self._Limit
@@ -43249,7 +43243,7 @@ class DescribeLoginWhiteHostListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -43260,7 +43254,7 @@ class DescribeLoginWhiteHostListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+        r"""<p>过滤条件 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li></p>
         :rtype: list of AssetFilters
         """
         return self._Filters
@@ -43297,9 +43291,9 @@ class DescribeLoginWhiteHostListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
-        :param _Hosts: 服务器列表
+        :param _Hosts: <p>服务器列表</p>
         :type Hosts: list of HostDesc
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43310,7 +43304,7 @@ class DescribeLoginWhiteHostListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -43321,7 +43315,7 @@ class DescribeLoginWhiteHostListResponse(AbstractModel):
 
     @property
     def Hosts(self):
-        r"""服务器列表
+        r"""<p>服务器列表</p>
         :rtype: list of HostDesc
         """
         return self._Hosts
@@ -43902,45 +43896,45 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MachineCnt: 资产总数
+        :param _MachineCnt: <p>资产总数</p>
         :type MachineCnt: int
-        :param _TencentCloudMachineCnt: 腾讯云服务商机器数
+        :param _TencentCloudMachineCnt: <p>腾讯云服务商机器数</p>
         :type TencentCloudMachineCnt: int
-        :param _AliCloudMachineCnt: 阿里云服务商机器数
+        :param _AliCloudMachineCnt: <p>阿里云服务商机器数</p>
         :type AliCloudMachineCnt: int
-        :param _BaiduCloudMachineCnt: 百度云服务商机器数
+        :param _BaiduCloudMachineCnt: <p>百度云服务商机器数</p>
         :type BaiduCloudMachineCnt: int
-        :param _IDCMachineCnt: IDC机器数
+        :param _IDCMachineCnt: <p>IDC机器数</p>
         :type IDCMachineCnt: int
-        :param _OtherCloudMachineCnt: 其他云服务商机器数
+        :param _OtherCloudMachineCnt: <p>其他云服务商机器数</p>
         :type OtherCloudMachineCnt: int
-        :param _ProtectMachineCnt: 已防护机器数
+        :param _ProtectMachineCnt: <p>已防护机器数</p>
         :type ProtectMachineCnt: int
-        :param _BaseMachineCnt: 已防护基础版机器数
+        :param _BaseMachineCnt: <p>已防护基础版机器数</p>
         :type BaseMachineCnt: int
-        :param _SpecialtyMachineCnt: 已防护专业版机器数
+        :param _SpecialtyMachineCnt: <p>已防护专业版机器数</p>
         :type SpecialtyMachineCnt: int
-        :param _FlagshipMachineCnt: 已防护旗舰版机器数
+        :param _FlagshipMachineCnt: <p>已防护旗舰版机器数</p>
         :type FlagshipMachineCnt: int
-        :param _RiskMachineCnt: 存在风险的机器数
+        :param _RiskMachineCnt: <p>存在风险的机器数</p>
         :type RiskMachineCnt: int
-        :param _CompareYesterdayRiskMachineCnt: 比较昨日风险机器数
+        :param _CompareYesterdayRiskMachineCnt: <p>比较昨日风险机器数</p>
         :type CompareYesterdayRiskMachineCnt: int
-        :param _CompareYesterdayNotProtectMachineCnt: 比较昨日未防护机器数
+        :param _CompareYesterdayNotProtectMachineCnt: <p>比较昨日未防护机器数</p>
         :type CompareYesterdayNotProtectMachineCnt: int
-        :param _CompareYesterdayDeadlineMachineCnt: 比较昨日即将到期的机器数
+        :param _CompareYesterdayDeadlineMachineCnt: <p>比较昨日即将到期的机器数</p>
         :type CompareYesterdayDeadlineMachineCnt: int
-        :param _DeadlineMachineCnt: 即将到期的机器数
+        :param _DeadlineMachineCnt: <p>即将到期的机器数</p>
         :type DeadlineMachineCnt: int
-        :param _NotProtectMachineCnt: 未防护机器数
+        :param _NotProtectMachineCnt: <p>未防护机器数</p>
         :type NotProtectMachineCnt: int
-        :param _LHGeneralDiscountCnt: 已防护轻量机器数（Lighthouse机器）
+        :param _LHGeneralDiscountCnt: <p>已防护轻量机器数（Lighthouse机器）</p>
         :type LHGeneralDiscountCnt: int
-        :param _CompareYesterdayMachineCnt: 比较昨日新增的主机数
+        :param _CompareYesterdayMachineCnt: <p>比较昨日新增的主机数</p>
         :type CompareYesterdayMachineCnt: int
-        :param _MachineDestroyAfterOfflineHours: 自动清理时间,最大720小时,最小0, 默认0 ,0=关闭
+        :param _MachineDestroyAfterOfflineHours: <p>自动清理时间,最大720小时,最小0, 默认0 ,0=关闭</p>
         :type MachineDestroyAfterOfflineHours: int
-        :param _CloudFrom: 云服务器类型数组
+        :param _CloudFrom: <p>云服务器类型数组</p>
         :type CloudFrom: list of CloudFromCnt
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43969,7 +43963,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def MachineCnt(self):
-        r"""资产总数
+        r"""<p>资产总数</p>
         :rtype: int
         """
         return self._MachineCnt
@@ -43982,7 +43976,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
     def TencentCloudMachineCnt(self):
         warnings.warn("parameter `TencentCloudMachineCnt` is deprecated", DeprecationWarning) 
 
-        r"""腾讯云服务商机器数
+        r"""<p>腾讯云服务商机器数</p>
         :rtype: int
         """
         return self._TencentCloudMachineCnt
@@ -43997,7 +43991,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
     def AliCloudMachineCnt(self):
         warnings.warn("parameter `AliCloudMachineCnt` is deprecated", DeprecationWarning) 
 
-        r"""阿里云服务商机器数
+        r"""<p>阿里云服务商机器数</p>
         :rtype: int
         """
         return self._AliCloudMachineCnt
@@ -44012,7 +44006,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
     def BaiduCloudMachineCnt(self):
         warnings.warn("parameter `BaiduCloudMachineCnt` is deprecated", DeprecationWarning) 
 
-        r"""百度云服务商机器数
+        r"""<p>百度云服务商机器数</p>
         :rtype: int
         """
         return self._BaiduCloudMachineCnt
@@ -44027,7 +44021,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
     def IDCMachineCnt(self):
         warnings.warn("parameter `IDCMachineCnt` is deprecated", DeprecationWarning) 
 
-        r"""IDC机器数
+        r"""<p>IDC机器数</p>
         :rtype: int
         """
         return self._IDCMachineCnt
@@ -44042,7 +44036,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
     def OtherCloudMachineCnt(self):
         warnings.warn("parameter `OtherCloudMachineCnt` is deprecated", DeprecationWarning) 
 
-        r"""其他云服务商机器数
+        r"""<p>其他云服务商机器数</p>
         :rtype: int
         """
         return self._OtherCloudMachineCnt
@@ -44055,7 +44049,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def ProtectMachineCnt(self):
-        r"""已防护机器数
+        r"""<p>已防护机器数</p>
         :rtype: int
         """
         return self._ProtectMachineCnt
@@ -44066,7 +44060,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def BaseMachineCnt(self):
-        r"""已防护基础版机器数
+        r"""<p>已防护基础版机器数</p>
         :rtype: int
         """
         return self._BaseMachineCnt
@@ -44077,7 +44071,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def SpecialtyMachineCnt(self):
-        r"""已防护专业版机器数
+        r"""<p>已防护专业版机器数</p>
         :rtype: int
         """
         return self._SpecialtyMachineCnt
@@ -44088,7 +44082,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def FlagshipMachineCnt(self):
-        r"""已防护旗舰版机器数
+        r"""<p>已防护旗舰版机器数</p>
         :rtype: int
         """
         return self._FlagshipMachineCnt
@@ -44099,7 +44093,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def RiskMachineCnt(self):
-        r"""存在风险的机器数
+        r"""<p>存在风险的机器数</p>
         :rtype: int
         """
         return self._RiskMachineCnt
@@ -44110,7 +44104,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def CompareYesterdayRiskMachineCnt(self):
-        r"""比较昨日风险机器数
+        r"""<p>比较昨日风险机器数</p>
         :rtype: int
         """
         return self._CompareYesterdayRiskMachineCnt
@@ -44121,7 +44115,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def CompareYesterdayNotProtectMachineCnt(self):
-        r"""比较昨日未防护机器数
+        r"""<p>比较昨日未防护机器数</p>
         :rtype: int
         """
         return self._CompareYesterdayNotProtectMachineCnt
@@ -44132,7 +44126,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def CompareYesterdayDeadlineMachineCnt(self):
-        r"""比较昨日即将到期的机器数
+        r"""<p>比较昨日即将到期的机器数</p>
         :rtype: int
         """
         return self._CompareYesterdayDeadlineMachineCnt
@@ -44143,7 +44137,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def DeadlineMachineCnt(self):
-        r"""即将到期的机器数
+        r"""<p>即将到期的机器数</p>
         :rtype: int
         """
         return self._DeadlineMachineCnt
@@ -44154,7 +44148,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def NotProtectMachineCnt(self):
-        r"""未防护机器数
+        r"""<p>未防护机器数</p>
         :rtype: int
         """
         return self._NotProtectMachineCnt
@@ -44165,7 +44159,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def LHGeneralDiscountCnt(self):
-        r"""已防护轻量机器数（Lighthouse机器）
+        r"""<p>已防护轻量机器数（Lighthouse机器）</p>
         :rtype: int
         """
         return self._LHGeneralDiscountCnt
@@ -44176,7 +44170,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def CompareYesterdayMachineCnt(self):
-        r"""比较昨日新增的主机数
+        r"""<p>比较昨日新增的主机数</p>
         :rtype: int
         """
         return self._CompareYesterdayMachineCnt
@@ -44187,7 +44181,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def MachineDestroyAfterOfflineHours(self):
-        r"""自动清理时间,最大720小时,最小0, 默认0 ,0=关闭
+        r"""<p>自动清理时间,最大720小时,最小0, 默认0 ,0=关闭</p>
         :rtype: int
         """
         return self._MachineDestroyAfterOfflineHours
@@ -44198,7 +44192,7 @@ class DescribeMachineGeneralResponse(AbstractModel):
 
     @property
     def CloudFrom(self):
-        r"""云服务器类型数组
+        r"""<p>云服务器类型数组</p>
         :rtype: list of CloudFromCnt
         """
         return self._CloudFrom
@@ -73263,14 +73257,14 @@ class ExportTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -73299,20 +73293,23 @@ class ExportTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: PENDING：正在生成下载链接，FINISHED：下载链接已生成，ERROR：网络异常等异常情况
+        :param _Status: <p>PENDING：正在生成下载链接，FINISHED：下载链接已生成，ERROR：网络异常等异常情况</p>
         :type Status: str
-        :param _DownloadUrl: 下载链接
+        :param _DownloadUrl: <p>下载链接</p>
         :type DownloadUrl: str
+        :param _FileName: <p>文件名称</p>
+        :type FileName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._DownloadUrl = None
+        self._FileName = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""PENDING：正在生成下载链接，FINISHED：下载链接已生成，ERROR：网络异常等异常情况
+        r"""<p>PENDING：正在生成下载链接，FINISHED：下载链接已生成，ERROR：网络异常等异常情况</p>
         :rtype: str
         """
         return self._Status
@@ -73323,7 +73320,7 @@ class ExportTasksResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        r"""下载链接
+        r"""<p>下载链接</p>
         :rtype: str
         """
         return self._DownloadUrl
@@ -73331,6 +73328,17 @@ class ExportTasksResponse(AbstractModel):
     @DownloadUrl.setter
     def DownloadUrl(self, DownloadUrl):
         self._DownloadUrl = DownloadUrl
+
+    @property
+    def FileName(self):
+        r"""<p>文件名称</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
 
     @property
     def RequestId(self):
@@ -73347,6 +73355,7 @@ class ExportTasksResponse(AbstractModel):
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._DownloadUrl = params.get("DownloadUrl")
+        self._FileName = params.get("FileName")
         self._RequestId = params.get("RequestId")
 
 
@@ -86663,23 +86672,23 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserName: 白名单用户（多个用户逗号隔开）
+        :param _UserName: <p>白名单用户（多个用户逗号隔开）</p>
         :type UserName: str
-        :param _SrcIp: 更新后记录的白名单维度信息
+        :param _SrcIp: <p>更新后记录的白名单维度信息</p>
         :type SrcIp: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _IsGlobal: 是否对所有服务器生效，0-否，1-是
+        :param _IsGlobal: <p>是否对所有服务器生效，0-否，1-是</p>
         :type IsGlobal: int
-        :param _Id: 白名单ID
+        :param _Id: <p>白名单ID</p>
         :type Id: int
-        :param _Hosts: 服务器列表
+        :param _Hosts: <p>服务器列表</p>
         :type Hosts: list of HostInfo
-        :param _Places: 地域列表
+        :param _Places: <p>地域列表</p>
         :type Places: list of Place
         """
         self._UserName = None
@@ -86694,7 +86703,7 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""白名单用户（多个用户逗号隔开）
+        r"""<p>白名单用户（多个用户逗号隔开）</p>
         :rtype: str
         """
         return self._UserName
@@ -86705,7 +86714,7 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     @property
     def SrcIp(self):
-        r"""更新后记录的白名单维度信息
+        r"""<p>更新后记录的白名单维度信息</p>
         :rtype: str
         """
         return self._SrcIp
@@ -86716,7 +86725,7 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -86727,7 +86736,7 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -86738,7 +86747,7 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -86749,7 +86758,7 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     @property
     def IsGlobal(self):
-        r"""是否对所有服务器生效，0-否，1-是
+        r"""<p>是否对所有服务器生效，0-否，1-是</p>
         :rtype: int
         """
         return self._IsGlobal
@@ -86760,7 +86769,7 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""白名单ID
+        r"""<p>白名单ID</p>
         :rtype: int
         """
         return self._Id
@@ -86771,7 +86780,7 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     @property
     def Hosts(self):
-        r"""服务器列表
+        r"""<p>服务器列表</p>
         :rtype: list of HostInfo
         """
         return self._Hosts
@@ -86782,7 +86791,7 @@ class ModifyLoginWhiteRecordRequest(AbstractModel):
 
     @property
     def Places(self):
-        r"""地域列表
+        r"""<p>地域列表</p>
         :rtype: list of Place
         """
         return self._Places

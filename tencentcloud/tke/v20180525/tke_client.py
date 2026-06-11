@@ -1913,7 +1913,9 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAvailableTKEEdgeVersion(self, request):
-        r"""边缘计算支持版本和k8s版本
+        r"""edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+
+        边缘计算支持版本和k8s版本
 
         :param request: Request instance for DescribeAvailableTKEEdgeVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAvailableTKEEdgeVersionRequest`
@@ -2856,7 +2858,9 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeAvailableExtraArgs(self, request):
-        r"""查询边缘容器集群可用的自定义参数
+        r"""edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+
+        查询边缘容器集群可用的自定义参数
 
         :param request: Request instance for DescribeEdgeAvailableExtraArgs.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeAvailableExtraArgsRequest`
@@ -4167,7 +4171,9 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeExternalKubeconfig(self, request):
-        r"""获取边缘计算外部访问的kubeconfig
+        r"""edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+
+        获取边缘计算外部访问的kubeconfig
 
         :param request: Request instance for DescribeTKEEdgeExternalKubeconfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeExternalKubeconfigRequest`
@@ -4190,7 +4196,9 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeScript(self, request):
-        r"""获取边缘脚本链接，此接口用于添加第三方节点，通过下载脚本从而将节点添加到边缘集群。
+        r"""edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+
+        获取边缘脚本链接，此接口用于添加第三方节点，通过下载脚本从而将节点添加到边缘集群。
 
         :param request: Request instance for DescribeTKEEdgeScript.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeScriptRequest`
