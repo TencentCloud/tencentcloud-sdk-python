@@ -37211,22 +37211,24 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _TriggerName: 触发运行名称
+        :param _TriggerName: <p>触发运行名称</p>
         :type TriggerName: str
-        :param _WorkflowKeyword: 工作流过滤关键字，工作流名称 or 工作流ID
+        :param _WorkflowKeyword: <p>工作流过滤关键字，工作流名称 or 工作流ID</p>
         :type WorkflowKeyword: str
-        :param _Creator: 触发运行提交人过滤，多个提交人用英文逗号分割
+        :param _Creator: <p>触发运行提交人过滤，多个提交人用英文逗号分割</p>
         :type Creator: str
-        :param _TriggerStartTime: 触发提交创建时间过滤，起始时间
+        :param _TriggerStartTime: <p>触发提交创建时间过滤，起始时间</p>
         :type TriggerStartTime: str
-        :param _TriggerEndTime: 触发提交创建时间过滤，结束时间
+        :param _TriggerEndTime: <p>触发提交创建时间过滤，结束时间</p>
         :type TriggerEndTime: str
-        :param _PageNumber: 页码，整型
+        :param _PageNumber: <p>页码，整型</p>
         :type PageNumber: int
-        :param _PageSize: 每页数目，整型
+        :param _PageSize: <p>每页数目，整型</p>
         :type PageSize: int
+        :param _TriggerId: <p>触发ID</p>
+        :type TriggerId: str
         """
         self._ProjectId = None
         self._TriggerName = None
@@ -37236,10 +37238,11 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
         self._TriggerEndTime = None
         self._PageNumber = None
         self._PageSize = None
+        self._TriggerId = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -37250,7 +37253,7 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
 
     @property
     def TriggerName(self):
-        r"""触发运行名称
+        r"""<p>触发运行名称</p>
         :rtype: str
         """
         return self._TriggerName
@@ -37261,7 +37264,7 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
 
     @property
     def WorkflowKeyword(self):
-        r"""工作流过滤关键字，工作流名称 or 工作流ID
+        r"""<p>工作流过滤关键字，工作流名称 or 工作流ID</p>
         :rtype: str
         """
         return self._WorkflowKeyword
@@ -37272,7 +37275,7 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
 
     @property
     def Creator(self):
-        r"""触发运行提交人过滤，多个提交人用英文逗号分割
+        r"""<p>触发运行提交人过滤，多个提交人用英文逗号分割</p>
         :rtype: str
         """
         return self._Creator
@@ -37283,7 +37286,7 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
 
     @property
     def TriggerStartTime(self):
-        r"""触发提交创建时间过滤，起始时间
+        r"""<p>触发提交创建时间过滤，起始时间</p>
         :rtype: str
         """
         return self._TriggerStartTime
@@ -37294,7 +37297,7 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
 
     @property
     def TriggerEndTime(self):
-        r"""触发提交创建时间过滤，结束时间
+        r"""<p>触发提交创建时间过滤，结束时间</p>
         :rtype: str
         """
         return self._TriggerEndTime
@@ -37305,7 +37308,7 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码，整型
+        r"""<p>页码，整型</p>
         :rtype: int
         """
         return self._PageNumber
@@ -37316,7 +37319,7 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数目，整型
+        r"""<p>每页数目，整型</p>
         :rtype: int
         """
         return self._PageSize
@@ -37324,6 +37327,17 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
     @PageSize.setter
     def PageSize(self, PageSize):
         self._PageSize = PageSize
+
+    @property
+    def TriggerId(self):
+        r"""<p>触发ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
 
 
     def _deserialize(self, params):
@@ -37335,6 +37349,7 @@ class DescribeManualTriggerRecordPageRequest(AbstractModel):
         self._TriggerEndTime = params.get("TriggerEndTime")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._TriggerId = params.get("TriggerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37355,7 +37370,7 @@ class DescribeManualTriggerRecordPageResponse(AbstractModel):
         :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestFromSource: str
-        :param _Data: 详情结果
+        :param _Data: <p>详情结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20210820.models.ManualTriggerRecordOpsDtoPage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -37379,7 +37394,7 @@ class DescribeManualTriggerRecordPageResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""详情结果
+        r"""<p>详情结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.ManualTriggerRecordOpsDtoPage`
         """

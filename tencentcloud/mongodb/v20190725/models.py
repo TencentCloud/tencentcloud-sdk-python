@@ -2010,26 +2010,23 @@ class CreateBackupDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :param _InstanceId: <p>实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _BackupMethod: 设置备份方式。
-- 0：逻辑备份。
-- 1：物理备份。
-- 3：快照备份。
-**说明**:
-1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-2. 实例开通存储加密，则备份方式不能为物理备份。
+        :param _BackupMethod: <p>设置备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明</strong>:</li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
         :type BackupMethod: int
-        :param _BackupRemark: 备份备注信息。
+        :param _BackupRemark: <p>备份备注信息。</p>
         :type BackupRemark: str
+        :param _BackupRetentionDays: <p>保存天数，-2-永久保留（不定期保留），-1-跟随长期保留时长，0-按配置天数，1~7300-自定义天数（最长20年）</p><p>单位：天</p>
+        :type BackupRetentionDays: int
         """
         self._InstanceId = None
         self._BackupMethod = None
         self._BackupRemark = None
+        self._BackupRetentionDays = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        r"""<p>实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2040,13 +2037,7 @@ class CreateBackupDBInstanceRequest(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""设置备份方式。
-- 0：逻辑备份。
-- 1：物理备份。
-- 3：快照备份。
-**说明**:
-1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-2. 实例开通存储加密，则备份方式不能为物理备份。
+        r"""<p>设置备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明</strong>:</li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
         :rtype: int
         """
         return self._BackupMethod
@@ -2057,7 +2048,7 @@ class CreateBackupDBInstanceRequest(AbstractModel):
 
     @property
     def BackupRemark(self):
-        r"""备份备注信息。
+        r"""<p>备份备注信息。</p>
         :rtype: str
         """
         return self._BackupRemark
@@ -2066,11 +2057,23 @@ class CreateBackupDBInstanceRequest(AbstractModel):
     def BackupRemark(self, BackupRemark):
         self._BackupRemark = BackupRemark
 
+    @property
+    def BackupRetentionDays(self):
+        r"""<p>保存天数，-2-永久保留（不定期保留），-1-跟随长期保留时长，0-按配置天数，1~7300-自定义天数（最长20年）</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._BackupRetentionDays
+
+    @BackupRetentionDays.setter
+    def BackupRetentionDays(self, BackupRetentionDays):
+        self._BackupRetentionDays = BackupRetentionDays
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._BackupMethod = params.get("BackupMethod")
         self._BackupRemark = params.get("BackupRemark")
+        self._BackupRetentionDays = params.get("BackupRetentionDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2088,7 +2091,7 @@ class CreateBackupDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 查询备份流程的状态。
+        :param _AsyncRequestId: <p>查询备份流程的状态。</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2098,7 +2101,7 @@ class CreateBackupDBInstanceResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""查询备份流程的状态。
+        r"""<p>查询备份流程的状态。</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -3658,6 +3661,145 @@ class CreateLogDownloadTaskResponse(AbstractModel):
     def Status(self):
         r"""任务状态
         :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSlowLogPatternDownloadTaskRequest(AbstractModel):
+    r"""CreateSlowLogPatternDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _StartTime: <p>采集慢日志开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>采集慢日志结束时间</p>
+        :type EndTime: str
+        :param _ThresholdMs: <p>慢日志采集阈值</p>
+        :type ThresholdMs: int
+        :param _Commands: <p>慢日志类型</p>
+        :type Commands: list of str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ThresholdMs = None
+        self._Commands = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""<p>采集慢日志开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>采集慢日志结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ThresholdMs(self):
+        r"""<p>慢日志采集阈值</p>
+        :rtype: int
+        """
+        return self._ThresholdMs
+
+    @ThresholdMs.setter
+    def ThresholdMs(self, ThresholdMs):
+        self._ThresholdMs = ThresholdMs
+
+    @property
+    def Commands(self):
+        r"""<p>慢日志类型</p>
+        :rtype: list of str
+        """
+        return self._Commands
+
+    @Commands.setter
+    def Commands(self, Commands):
+        self._Commands = Commands
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ThresholdMs = params.get("ThresholdMs")
+        self._Commands = params.get("Commands")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSlowLogPatternDownloadTaskResponse(AbstractModel):
+    r"""CreateSlowLogPatternDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>下载任务状态</p>
+        :type Status: list of int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>下载任务状态</p>
+        :rtype: list of int
         """
         return self._Status
 
@@ -6602,6 +6744,136 @@ class DescribeDBInstanceDealResponse(AbstractModel):
         self._DiscountPrice = params.get("DiscountPrice")
         self._Action = params.get("Action")
         self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceLogToCLSRequest(AbstractModel):
+    r"""DescribeDBInstanceLogToCLS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>指定实例ID。例如：cmgo-p8vn****。请登录 MongoDB 控制台在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _CLSRegion: <p>CLS服务所在地域</p>
+        :type CLSRegion: str
+        """
+        self._InstanceId = None
+        self._CLSRegion = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>指定实例ID。例如：cmgo-p8vn****。请登录 MongoDB 控制台在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CLSRegion(self):
+        r"""<p>CLS服务所在地域</p>
+        :rtype: str
+        """
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CLSRegion = params.get("CLSRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceLogToCLSResponse(AbstractModel):
+    r"""DescribeDBInstanceLogToCLS返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorLog: <p>实例错误日志投递配置</p>
+        :type ErrorLog: :class:`tencentcloud.mongodb.v20190725.models.LogToCLSConfig`
+        :param _SlowLog: <p>实例慢日志投递配置</p>
+        :type SlowLog: :class:`tencentcloud.mongodb.v20190725.models.LogToCLSConfig`
+        :param _OperationLog: <p>实例操作日志投递配置</p>
+        :type OperationLog: :class:`tencentcloud.mongodb.v20190725.models.LogToCLSConfig`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorLog = None
+        self._SlowLog = None
+        self._OperationLog = None
+        self._RequestId = None
+
+    @property
+    def ErrorLog(self):
+        r"""<p>实例错误日志投递配置</p>
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.LogToCLSConfig`
+        """
+        return self._ErrorLog
+
+    @ErrorLog.setter
+    def ErrorLog(self, ErrorLog):
+        self._ErrorLog = ErrorLog
+
+    @property
+    def SlowLog(self):
+        r"""<p>实例慢日志投递配置</p>
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.LogToCLSConfig`
+        """
+        return self._SlowLog
+
+    @SlowLog.setter
+    def SlowLog(self, SlowLog):
+        self._SlowLog = SlowLog
+
+    @property
+    def OperationLog(self):
+        r"""<p>实例操作日志投递配置</p>
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.LogToCLSConfig`
+        """
+        return self._OperationLog
+
+    @OperationLog.setter
+    def OperationLog(self, OperationLog):
+        self._OperationLog = OperationLog
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorLog") is not None:
+            self._ErrorLog = LogToCLSConfig()
+            self._ErrorLog._deserialize(params.get("ErrorLog"))
+        if params.get("SlowLog") is not None:
+            self._SlowLog = LogToCLSConfig()
+            self._SlowLog._deserialize(params.get("SlowLog"))
+        if params.get("OperationLog") is not None:
+            self._OperationLog = LogToCLSConfig()
+            self._OperationLog._deserialize(params.get("OperationLog"))
         self._RequestId = params.get("RequestId")
 
 
@@ -10434,6 +10706,40 @@ class FlushInstanceRouterConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IncreaseDBInstanceConnectionLimitRequest(AbstractModel):
+    r"""IncreaseDBInstanceConnectionLimit请求参数结构体
+
+    """
+
+
+class IncreaseDBInstanceConnectionLimitResponse(AbstractModel):
+    r"""IncreaseDBInstanceConnectionLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class InquirePriceCreateDBInstancesRequest(AbstractModel):
     r"""InquirePriceCreateDBInstances请求参数结构体
 
@@ -13421,6 +13727,87 @@ class LogInfo(AbstractModel):
         
 
 
+class LogToCLSConfig(AbstractModel):
+    r"""日志投递CLS配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: <p>CLS服务所在地域</p>
+        :type CLSRegion: str
+        :param _Status: <p>投递状态打开或者关闭</p>
+        :type Status: str
+        :param _LogSetId: <p>CLS日志集ID</p>
+        :type LogSetId: str
+        :param _LogTopicId: <p>日志主题ID</p>
+        :type LogTopicId: str
+        """
+        self._CLSRegion = None
+        self._Status = None
+        self._LogSetId = None
+        self._LogTopicId = None
+
+    @property
+    def CLSRegion(self):
+        r"""<p>CLS服务所在地域</p>
+        :rtype: str
+        """
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+    @property
+    def Status(self):
+        r"""<p>投递状态打开或者关闭</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LogSetId(self):
+        r"""<p>CLS日志集ID</p>
+        :rtype: str
+        """
+        return self._LogSetId
+
+    @LogSetId.setter
+    def LogSetId(self, LogSetId):
+        self._LogSetId = LogSetId
+
+    @property
+    def LogTopicId(self):
+        r"""<p>日志主题ID</p>
+        :rtype: str
+        """
+        return self._LogTopicId
+
+    @LogTopicId.setter
+    def LogTopicId(self, LogTopicId):
+        self._LogTopicId = LogTopicId
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        self._Status = params.get("Status")
+        self._LogSetId = params.get("LogSetId")
+        self._LogTopicId = params.get("LogTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAuditServiceRequest(AbstractModel):
     r"""ModifyAuditService请求参数结构体
 
@@ -13641,6 +14028,175 @@ class ModifyBackupExpireTimeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FailedBackups = params.get("FailedBackups")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceLogToCLSRequest(AbstractModel):
+    r"""ModifyDBInstanceLogToCLS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>指定实例ID。例如：cmgo-p8vn****。请登录 MongoDB 控制台在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _LogType: <p>日志类型。MongoDB-ErrorLog：错误日志，MongoDB-SlowLog：慢日志，MongoDB-OperationLog：操作日志</p>
+        :type LogType: str
+        :param _Status: <p>投递状态。ON：开启，OFF：关闭。</p>
+        :type Status: str
+        :param _CreateLogset: <p>是否需要创建日志集。默认为 false。</p>
+        :type CreateLogset: bool
+        :param _Logset: <p>需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。 说明：1. 当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。2.  当参数 CreateLogset 的值为 true 时，Logset 填日志集命名，例如 my_test，否则需要填日志集 id，例如 6adsaw-****。</p>
+        :type Logset: str
+        :param _CreateLogTopic: <p>是否需要创建日志主题。默认为 false。</p>
+        :type CreateLogTopic: bool
+        :param _LogTopic: <p>需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。 说明：1. 当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。2. 2.  当参数 CreateLogTopic 的值为 true 时，LogTopic 填日志主题命名，例如 my_test，否则需要填日志主题id，例如 6adsaw-****。</p>
+        :type LogTopic: str
+        :param _CLSRegion: <p>CLS 所在地域，不填则默认为 Region 的参数值。</p>
+        :type CLSRegion: str
+        """
+        self._InstanceId = None
+        self._LogType = None
+        self._Status = None
+        self._CreateLogset = None
+        self._Logset = None
+        self._CreateLogTopic = None
+        self._LogTopic = None
+        self._CLSRegion = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>指定实例ID。例如：cmgo-p8vn****。请登录 MongoDB 控制台在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型。MongoDB-ErrorLog：错误日志，MongoDB-SlowLog：慢日志，MongoDB-OperationLog：操作日志</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Status(self):
+        r"""<p>投递状态。ON：开启，OFF：关闭。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateLogset(self):
+        r"""<p>是否需要创建日志集。默认为 false。</p>
+        :rtype: bool
+        """
+        return self._CreateLogset
+
+    @CreateLogset.setter
+    def CreateLogset(self, CreateLogset):
+        self._CreateLogset = CreateLogset
+
+    @property
+    def Logset(self):
+        r"""<p>需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。 说明：1. 当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。2.  当参数 CreateLogset 的值为 true 时，Logset 填日志集命名，例如 my_test，否则需要填日志集 id，例如 6adsaw-****。</p>
+        :rtype: str
+        """
+        return self._Logset
+
+    @Logset.setter
+    def Logset(self, Logset):
+        self._Logset = Logset
+
+    @property
+    def CreateLogTopic(self):
+        r"""<p>是否需要创建日志主题。默认为 false。</p>
+        :rtype: bool
+        """
+        return self._CreateLogTopic
+
+    @CreateLogTopic.setter
+    def CreateLogTopic(self, CreateLogTopic):
+        self._CreateLogTopic = CreateLogTopic
+
+    @property
+    def LogTopic(self):
+        r"""<p>需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。 说明：1. 当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。2. 2.  当参数 CreateLogTopic 的值为 true 时，LogTopic 填日志主题命名，例如 my_test，否则需要填日志主题id，例如 6adsaw-****。</p>
+        :rtype: str
+        """
+        return self._LogTopic
+
+    @LogTopic.setter
+    def LogTopic(self, LogTopic):
+        self._LogTopic = LogTopic
+
+    @property
+    def CLSRegion(self):
+        r"""<p>CLS 所在地域，不填则默认为 Region 的参数值。</p>
+        :rtype: str
+        """
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LogType = params.get("LogType")
+        self._Status = params.get("Status")
+        self._CreateLogset = params.get("CreateLogset")
+        self._Logset = params.get("Logset")
+        self._CreateLogTopic = params.get("CreateLogTopic")
+        self._LogTopic = params.get("LogTopic")
+        self._CLSRegion = params.get("CLSRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceLogToCLSResponse(AbstractModel):
+    r"""ModifyDBInstanceLogToCLS返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

@@ -61,6 +61,24 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AppendKnowledgeTask(
+            self,
+            request: models.AppendKnowledgeTaskRequest,
+            opts: Dict = None,
+    ) -> models.AppendKnowledgeTaskResponse:
+        """
+        追加文件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AppendKnowledgeTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AppendKnowledgeTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ChatAI(
             self,
             request: models.ChatAIRequest,
@@ -326,6 +344,24 @@ class DataagentClient(AbstractClient):
         kwargs["action"] = "QueryChunkList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryChunkListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryKnowledgeTask(
+            self,
+            request: models.QueryKnowledgeTaskRequest,
+            opts: Dict = None,
+    ) -> models.QueryKnowledgeTaskResponse:
+        """
+        查询文件任务状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryKnowledgeTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryKnowledgeTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

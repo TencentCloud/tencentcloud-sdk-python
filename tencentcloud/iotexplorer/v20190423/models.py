@@ -38380,46 +38380,17 @@ class SeeComprehensionConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DetectTypes: 拓展的目标及事件检测类别
+        :param _DetectTypes: <p>拓展的目标及事件检测类别</p>
         :type DetectTypes: list of str
-        :param _EnableSearch: 使该视频 / 图片录入搜索库，后续可进行搜索
+        :param _EnableSearch: <p>使该视频 / 图片录入搜索库，后续可进行搜索</p>
         :type EnableSearch: bool
-        :param _OutputLang: 主输出语言，可选值包括：
-- `zh` 中文（默认值）
-- `en` 英语
-- `ja` 日语
-- `ko` 韩文
-- `pt-BR` 葡萄牙语（巴西）
-- `th` 泰语
-- `ms` 马来语
+        :param _OutputLang: <p>主输出语言，可选值包括：</p><ul><li><code>zh</code> 中文（默认值）</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
         :type OutputLang: str
-        :param _AlternativeOutputLang: 次选输出语言，可选值包括：
-- `zh` 中文
-- `en` 英语
-- `ja` 日语
-- `ko` 韩文
-- `pt-BR` 葡萄牙语（巴西）
-- `th` 泰语
-- `ms` 马来语
-
+        :param _AlternativeOutputLang: <p>次选输出语言，可选值包括：</p><ul><li><code>zh</code> 中文</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
         :type AlternativeOutputLang: str
-        :param _MultiCameraLayout: 多摄像头布局定义。可选值包括：
-
-- 单摄（默认值）：`Single`
-
-- 双摄（纵向排列）- 全部画面：`Vertical,Num=2,Index=0;1`
-- 双摄（纵向排列）- 画面1：`Vertical,Num=2,Index=0`
-- 双摄（纵向排列）- 画面2：`Vertical,Num=2,Index=1`
-
-- 三摄（纵向排列）- 全部画面：`Vertical,Num=3,Index=0;1;2`
-- 三摄（纵向排列）- 画面1：`Vertical,Num=3,Index=0`
-- 三摄（纵向排列）- 画面2：`Vertical,Num=3,Index=1`
-- 三摄（纵向排列）- 画面3：`Vertical,Num=3,Index=2`
-- 三摄（纵向排列）- 画面1+2：`Vertical,Num=3,Index=0;1`
-- 三摄（纵向排列）- 画面1+3：`Vertical,Num=3,Index=0;2`
-- 三摄（纵向排列）- 画面2+3：`Vertical,Num=3,Index=1;2`
+        :param _MultiCameraLayout: <p>多摄像头布局定义。可选值包括：</p><ul><li><p>单摄（默认值）：<code>Single</code></p></li><li><p>双摄（纵向排列）- 全部画面：<code>Vertical,Num=2,Index=0;1</code></p></li><li><p>双摄（纵向排列）- 画面1：<code>Vertical,Num=2,Index=0</code></p></li><li><p>双摄（纵向排列）- 画面2：<code>Vertical,Num=2,Index=1</code></p></li><li><p>三摄（纵向排列）- 全部画面：<code>Vertical,Num=3,Index=0;1;2</code></p></li><li><p>三摄（纵向排列）- 画面1：<code>Vertical,Num=3,Index=0</code></p></li><li><p>三摄（纵向排列）- 画面2：<code>Vertical,Num=3,Index=1</code></p></li><li><p>三摄（纵向排列）- 画面3：<code>Vertical,Num=3,Index=2</code></p></li><li><p>三摄（纵向排列）- 画面1+2：<code>Vertical,Num=3,Index=0;1</code></p></li><li><p>三摄（纵向排列）- 画面1+3：<code>Vertical,Num=3,Index=0;2</code></p></li><li><p>三摄（纵向排列）- 画面2+3：<code>Vertical,Num=3,Index=1;2</code></p></li></ul>
         :type MultiCameraLayout: str
-        :param _MaxDuration: 最大处理的输入视频时长，单位：秒（仅对视频输入生效）
+        :param _MaxDuration: <p>最大处理的输入视频时长，单位：秒（仅对视频输入生效）</p>
         :type MaxDuration: int
         """
         self._DetectTypes = None
@@ -38431,7 +38402,7 @@ class SeeComprehensionConfig(AbstractModel):
 
     @property
     def DetectTypes(self):
-        r"""拓展的目标及事件检测类别
+        r"""<p>拓展的目标及事件检测类别</p>
         :rtype: list of str
         """
         return self._DetectTypes
@@ -38442,7 +38413,7 @@ class SeeComprehensionConfig(AbstractModel):
 
     @property
     def EnableSearch(self):
-        r"""使该视频 / 图片录入搜索库，后续可进行搜索
+        r"""<p>使该视频 / 图片录入搜索库，后续可进行搜索</p>
         :rtype: bool
         """
         return self._EnableSearch
@@ -38453,14 +38424,7 @@ class SeeComprehensionConfig(AbstractModel):
 
     @property
     def OutputLang(self):
-        r"""主输出语言，可选值包括：
-- `zh` 中文（默认值）
-- `en` 英语
-- `ja` 日语
-- `ko` 韩文
-- `pt-BR` 葡萄牙语（巴西）
-- `th` 泰语
-- `ms` 马来语
+        r"""<p>主输出语言，可选值包括：</p><ul><li><code>zh</code> 中文（默认值）</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
         :rtype: str
         """
         return self._OutputLang
@@ -38471,15 +38435,7 @@ class SeeComprehensionConfig(AbstractModel):
 
     @property
     def AlternativeOutputLang(self):
-        r"""次选输出语言，可选值包括：
-- `zh` 中文
-- `en` 英语
-- `ja` 日语
-- `ko` 韩文
-- `pt-BR` 葡萄牙语（巴西）
-- `th` 泰语
-- `ms` 马来语
-
+        r"""<p>次选输出语言，可选值包括：</p><ul><li><code>zh</code> 中文</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
         :rtype: str
         """
         return self._AlternativeOutputLang
@@ -38490,21 +38446,7 @@ class SeeComprehensionConfig(AbstractModel):
 
     @property
     def MultiCameraLayout(self):
-        r"""多摄像头布局定义。可选值包括：
-
-- 单摄（默认值）：`Single`
-
-- 双摄（纵向排列）- 全部画面：`Vertical,Num=2,Index=0;1`
-- 双摄（纵向排列）- 画面1：`Vertical,Num=2,Index=0`
-- 双摄（纵向排列）- 画面2：`Vertical,Num=2,Index=1`
-
-- 三摄（纵向排列）- 全部画面：`Vertical,Num=3,Index=0;1;2`
-- 三摄（纵向排列）- 画面1：`Vertical,Num=3,Index=0`
-- 三摄（纵向排列）- 画面2：`Vertical,Num=3,Index=1`
-- 三摄（纵向排列）- 画面3：`Vertical,Num=3,Index=2`
-- 三摄（纵向排列）- 画面1+2：`Vertical,Num=3,Index=0;1`
-- 三摄（纵向排列）- 画面1+3：`Vertical,Num=3,Index=0;2`
-- 三摄（纵向排列）- 画面2+3：`Vertical,Num=3,Index=1;2`
+        r"""<p>多摄像头布局定义。可选值包括：</p><ul><li><p>单摄（默认值）：<code>Single</code></p></li><li><p>双摄（纵向排列）- 全部画面：<code>Vertical,Num=2,Index=0;1</code></p></li><li><p>双摄（纵向排列）- 画面1：<code>Vertical,Num=2,Index=0</code></p></li><li><p>双摄（纵向排列）- 画面2：<code>Vertical,Num=2,Index=1</code></p></li><li><p>三摄（纵向排列）- 全部画面：<code>Vertical,Num=3,Index=0;1;2</code></p></li><li><p>三摄（纵向排列）- 画面1：<code>Vertical,Num=3,Index=0</code></p></li><li><p>三摄（纵向排列）- 画面2：<code>Vertical,Num=3,Index=1</code></p></li><li><p>三摄（纵向排列）- 画面3：<code>Vertical,Num=3,Index=2</code></p></li><li><p>三摄（纵向排列）- 画面1+2：<code>Vertical,Num=3,Index=0;1</code></p></li><li><p>三摄（纵向排列）- 画面1+3：<code>Vertical,Num=3,Index=0;2</code></p></li><li><p>三摄（纵向排列）- 画面2+3：<code>Vertical,Num=3,Index=1;2</code></p></li></ul>
         :rtype: str
         """
         return self._MultiCameraLayout
@@ -38515,7 +38457,7 @@ class SeeComprehensionConfig(AbstractModel):
 
     @property
     def MaxDuration(self):
-        r"""最大处理的输入视频时长，单位：秒（仅对视频输入生效）
+        r"""<p>最大处理的输入视频时长，单位：秒（仅对视频输入生效）</p>
         :rtype: int
         """
         return self._MaxDuration

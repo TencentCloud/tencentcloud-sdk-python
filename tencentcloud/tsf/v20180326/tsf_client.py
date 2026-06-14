@@ -187,31 +187,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ContinueRunFailedTaskBatch(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        对执行失败的任务批次执行续跑
-
-        :param request: Request instance for ContinueRunFailedTaskBatch.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ContinueRunFailedTaskBatchRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ContinueRunFailedTaskBatchResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ContinueRunFailedTaskBatch", params, headers=headers)
-            response = json.loads(body)
-            model = models.ContinueRunFailedTaskBatchResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateAllGatewayApiAsync(self, request):
         r"""一键导入API分组
 
@@ -810,56 +785,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateTask(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        创建任务
-
-        :param request: Request instance for CreateTask.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateTaskRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateTaskFlow(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        创建工作流
-
-        :param request: Request instance for CreateTaskFlow.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateTaskFlowRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateTaskFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateTaskFlow", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateTaskFlowResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateUnitNamespaces(self, request):
         r"""批量创建单元化命名空间
 
@@ -1358,56 +1283,6 @@ class TsfClient(AbstractClient):
             body = self.call("DeleteRepository", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRepositoryResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteServerlessGroup(self, request):
-        r"""serverless 能力已下线。下线对应接口。
-
-        删除Serverless部署组
-
-        :param request: Request instance for DeleteServerlessGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteServerlessGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteServerlessGroupResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteServerlessGroup", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteServerlessGroupResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteTask(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        删除任务
-
-        :param request: Request instance for DeleteTask.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteTaskRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2286,31 +2161,6 @@ class TsfClient(AbstractClient):
             body = self.call("DescribeFileConfigs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFileConfigsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeFlowLastBatchState(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        查询工作流最新一个批次的状态信息
-
-        :param request: Request instance for DescribeFlowLastBatchState.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeFlowLastBatchStateRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeFlowLastBatchStateResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeFlowLastBatchState", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeFlowLastBatchStateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3493,81 +3343,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeTaskDetail(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        查询任务详情
-
-        :param request: Request instance for DescribeTaskDetail.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskDetailRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskDetailResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTaskDetail", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTaskDetailResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeTaskLastStatus(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        查询任务最近一次执行状态
-
-        :param request: Request instance for DescribeTaskLastStatus.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskLastStatusRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskLastStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTaskLastStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTaskLastStatusResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeTaskRecords(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        翻页查询任务列表
-
-        :param request: Request instance for DescribeTaskRecords.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskRecordsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeTaskRecordsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTaskRecords", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTaskRecordsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeUnitApiUseDetail(self, request):
         r"""查询网关API监控明细数据（仅单元化网关），非单元化网关使用DescribeApiUseDetail
 
@@ -3753,56 +3528,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DisableTask(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停用任务
-
-        :param request: Request instance for DisableTask.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DisableTaskRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DisableTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DisableTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.DisableTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DisableTaskFlow(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停用工作流
-
-        :param request: Request instance for DisableTaskFlow.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DisableTaskFlowRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DisableTaskFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DisableTaskFlow", params, headers=headers)
-            response = json.loads(body)
-            model = models.DisableTaskFlowResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DisableUnitRoute(self, request):
         r"""禁用单元化路由
 
@@ -3941,56 +3666,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def EnableTask(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        启用任务
-
-        :param request: Request instance for EnableTask.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.EnableTaskRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.EnableTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("EnableTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.EnableTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def EnableTaskFlow(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        启用工作流
-
-        :param request: Request instance for EnableTaskFlow.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.EnableTaskFlowRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.EnableTaskFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("EnableTaskFlow", params, headers=headers)
-            response = json.loads(body)
-            model = models.EnableTaskFlowResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def EnableUnitRoute(self, request):
         r"""启用单元化路由
 
@@ -4028,56 +3703,6 @@ class TsfClient(AbstractClient):
             body = self.call("EnableUnitRule", params, headers=headers)
             response = json.loads(body)
             model = models.EnableUnitRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ExecuteTask(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        手动执行一次任务
-
-        :param request: Request instance for ExecuteTask.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ExecuteTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.ExecuteTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ExecuteTaskFlow(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        执行一次工作流
-
-        :param request: Request instance for ExecuteTaskFlow.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskFlowRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ExecuteTaskFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ExecuteTaskFlow", params, headers=headers)
-            response = json.loads(body)
-            model = models.ExecuteTaskFlowResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4386,31 +4011,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ModifyTask(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        修改任务
-
-        :param request: Request instance for ModifyTask.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyTaskRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ModifyUploadInfo(self, request):
         r"""调用该接口和COS的上传接口后，需要调用此接口更新TSF中保存的程序包状态。
         调用此接口完成后，才标志上传包流程结束。
@@ -4474,106 +4074,6 @@ class TsfClient(AbstractClient):
             body = self.call("ReassociateBusinessLogConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ReassociateBusinessLogConfigResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RedoTask(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        重新执行任务
-
-        :param request: Request instance for RedoTask.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.RedoTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RedoTask", params, headers=headers)
-            response = json.loads(body)
-            model = models.RedoTaskResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RedoTaskBatch(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        重新执行任务批次
-
-        :param request: Request instance for RedoTaskBatch.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskBatchRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.RedoTaskBatchResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RedoTaskBatch", params, headers=headers)
-            response = json.loads(body)
-            model = models.RedoTaskBatchResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RedoTaskExecute(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        重新执行在某个节点上执行任务。
-
-        :param request: Request instance for RedoTaskExecute.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskExecuteRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.RedoTaskExecuteResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RedoTaskExecute", params, headers=headers)
-            response = json.loads(body)
-            model = models.RedoTaskExecuteResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RedoTaskFlowBatch(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        重新执行工作流批次
-
-        :param request: Request instance for RedoTaskFlowBatch.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.RedoTaskFlowBatchRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.RedoTaskFlowBatchResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RedoTaskFlowBatch", params, headers=headers)
-            response = json.loads(body)
-            model = models.RedoTaskFlowBatchResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4988,81 +4488,6 @@ class TsfClient(AbstractClient):
             body = self.call("StopGroup", params, headers=headers)
             response = json.loads(body)
             model = models.StopGroupResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def StopTaskBatch(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停止执行中的任务批次， 非运行中的任务不可调用。
-
-        :param request: Request instance for StopTaskBatch.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.StopTaskBatchRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.StopTaskBatchResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StopTaskBatch", params, headers=headers)
-            response = json.loads(body)
-            model = models.StopTaskBatchResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def StopTaskExecute(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停止正在某个节点上执行的任务
-
-        :param request: Request instance for StopTaskExecute.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.StopTaskExecuteRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.StopTaskExecuteResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StopTaskExecute", params, headers=headers)
-            response = json.loads(body)
-            model = models.StopTaskExecuteResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def TerminateTaskFlowBatch(self, request):
-        r"""分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停止一个工作流批次
-
-        :param request: Request instance for TerminateTaskFlowBatch.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.TerminateTaskFlowBatchRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.TerminateTaskFlowBatchResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("TerminateTaskFlowBatch", params, headers=headers)
-            response = json.loads(body)
-            model = models.TerminateTaskFlowBatchResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

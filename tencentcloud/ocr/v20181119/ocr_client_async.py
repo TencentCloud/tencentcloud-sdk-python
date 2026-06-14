@@ -1564,28 +1564,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def RecognizeHealthCodeOCR(
-            self,
-            request: models.RecognizeHealthCodeOCRRequest,
-            opts: Dict = None,
-    ) -> models.RecognizeHealthCodeOCRResponse:
-        """
-        产品规划
-
-        本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖北、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
-
-        默认接口请求频率限制：10次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RecognizeHealthCodeOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RecognizeHealthCodeOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def RecognizeMedicalInvoiceOCR(
             self,
             request: models.RecognizeMedicalInvoiceOCRRequest,
@@ -1681,28 +1659,6 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "RecognizeThaiIDCardOCR"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RecognizeThaiIDCardOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def RecognizeTravelCardOCR(
-            self,
-            request: models.RecognizeTravelCardOCRRequest,
-            opts: Dict = None,
-    ) -> models.RecognizeTravelCardOCRResponse:
-        """
-        产品规划
-
-        本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
-
-        默认接口请求频率限制：20次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RecognizeTravelCardOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RecognizeTravelCardOCRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2031,6 +1987,25 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "VehicleRegCertOCR"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.VehicleRegCertOCRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def VerifyBizLicenseEnterprise3(
+            self,
+            request: models.VerifyBizLicenseEnterprise3Request,
+            opts: Dict = None,
+    ) -> models.VerifyBizLicenseEnterprise3Response:
+        """
+        提供比对核验企业名称、统一社会信用代码、法人姓名一致性的服务，助力快速核验企业资质。
+        注意：核验准确率在99%以上，存在个别特殊情况下核验结果不准确，请选用前知悉。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "VerifyBizLicenseEnterprise3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.VerifyBizLicenseEnterprise3Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

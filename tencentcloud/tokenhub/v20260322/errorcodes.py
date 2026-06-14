@@ -44,6 +44,9 @@ OPERATIONDENIED = 'OperationDenied'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# ResourceNotFound.GlossaryNotFound
+RESOURCENOTFOUND_GLOSSARYNOTFOUND = 'ResourceNotFound.GlossaryNotFound'
+
 # ResourceNotFound.ResourceNotFound
 RESOURCENOTFOUND_RESOURCENOTFOUND = 'ResourceNotFound.ResourceNotFound'
 

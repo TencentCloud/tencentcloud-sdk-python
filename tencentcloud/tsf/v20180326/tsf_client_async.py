@@ -151,26 +151,6 @@ class TsfClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ContinueRunFailedTaskBatch(
-            self,
-            request: models.ContinueRunFailedTaskBatchRequest,
-            opts: Dict = None,
-    ) -> models.ContinueRunFailedTaskBatchResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        对执行失败的任务批次执行续跑
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ContinueRunFailedTaskBatch"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ContinueRunFailedTaskBatchResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateAllGatewayApiAsync(
             self,
             request: models.CreateAllGatewayApiAsyncRequest,
@@ -639,46 +619,6 @@ class TsfClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateTask(
-            self,
-            request: models.CreateTaskRequest,
-            opts: Dict = None,
-    ) -> models.CreateTaskResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        创建任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateTask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateTaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateTaskFlow(
-            self,
-            request: models.CreateTaskFlowRequest,
-            opts: Dict = None,
-    ) -> models.CreateTaskFlowResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        创建工作流
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateTaskFlow"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateTaskFlowResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateUnitNamespaces(
             self,
             request: models.CreateUnitNamespacesRequest,
@@ -1071,46 +1011,6 @@ class TsfClient(AbstractClient):
         kwargs["action"] = "DeleteRepository"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRepositoryResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteServerlessGroup(
-            self,
-            request: models.DeleteServerlessGroupRequest,
-            opts: Dict = None,
-    ) -> models.DeleteServerlessGroupResponse:
-        """
-        serverless 能力已下线。下线对应接口。
-
-        删除Serverless部署组
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteServerlessGroup"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteServerlessGroupResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteTask(
-            self,
-            request: models.DeleteTaskRequest,
-            opts: Dict = None,
-    ) -> models.DeleteTaskResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        删除任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteTask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1799,26 +1699,6 @@ class TsfClient(AbstractClient):
         kwargs["action"] = "DescribeFileConfigs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeFileConfigsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeFlowLastBatchState(
-            self,
-            request: models.DescribeFlowLastBatchStateRequest,
-            opts: Dict = None,
-    ) -> models.DescribeFlowLastBatchStateResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        查询工作流最新一个批次的状态信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeFlowLastBatchState"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeFlowLastBatchStateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2742,66 +2622,6 @@ class TsfClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeTaskDetail(
-            self,
-            request: models.DescribeTaskDetailRequest,
-            opts: Dict = None,
-    ) -> models.DescribeTaskDetailResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        查询任务详情
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeTaskDetail"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeTaskDetailResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeTaskLastStatus(
-            self,
-            request: models.DescribeTaskLastStatusRequest,
-            opts: Dict = None,
-    ) -> models.DescribeTaskLastStatusResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        查询任务最近一次执行状态
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeTaskLastStatus"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeTaskLastStatusResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeTaskRecords(
-            self,
-            request: models.DescribeTaskRecordsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeTaskRecordsResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        翻页查询任务列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeTaskRecords"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeTaskRecordsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeUnitApiUseDetail(
             self,
             request: models.DescribeUnitApiUseDetailRequest,
@@ -2947,46 +2767,6 @@ class TsfClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DisableTask(
-            self,
-            request: models.DisableTaskRequest,
-            opts: Dict = None,
-    ) -> models.DisableTaskResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停用任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DisableTask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DisableTaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DisableTaskFlow(
-            self,
-            request: models.DisableTaskFlowRequest,
-            opts: Dict = None,
-    ) -> models.DisableTaskFlowResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停用工作流
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DisableTaskFlow"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DisableTaskFlowResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DisableUnitRoute(
             self,
             request: models.DisableUnitRouteRequest,
@@ -3095,46 +2875,6 @@ class TsfClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def EnableTask(
-            self,
-            request: models.EnableTaskRequest,
-            opts: Dict = None,
-    ) -> models.EnableTaskResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        启用任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "EnableTask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.EnableTaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def EnableTaskFlow(
-            self,
-            request: models.EnableTaskFlowRequest,
-            opts: Dict = None,
-    ) -> models.EnableTaskFlowResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        启用工作流
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "EnableTaskFlow"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.EnableTaskFlowResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def EnableUnitRoute(
             self,
             request: models.EnableUnitRouteRequest,
@@ -3166,46 +2906,6 @@ class TsfClient(AbstractClient):
         kwargs["action"] = "EnableUnitRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.EnableUnitRuleResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ExecuteTask(
-            self,
-            request: models.ExecuteTaskRequest,
-            opts: Dict = None,
-    ) -> models.ExecuteTaskResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        手动执行一次任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ExecuteTask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ExecuteTaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ExecuteTaskFlow(
-            self,
-            request: models.ExecuteTaskFlowRequest,
-            opts: Dict = None,
-    ) -> models.ExecuteTaskFlowResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        执行一次工作流
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ExecuteTaskFlow"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ExecuteTaskFlowResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3445,26 +3145,6 @@ class TsfClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ModifyTask(
-            self,
-            request: models.ModifyTaskRequest,
-            opts: Dict = None,
-    ) -> models.ModifyTaskResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        修改任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyTask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyTaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ModifyUploadInfo(
             self,
             request: models.ModifyUploadInfoRequest,
@@ -3517,86 +3197,6 @@ class TsfClient(AbstractClient):
         kwargs["action"] = "ReassociateBusinessLogConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ReassociateBusinessLogConfigResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def RedoTask(
-            self,
-            request: models.RedoTaskRequest,
-            opts: Dict = None,
-    ) -> models.RedoTaskResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        重新执行任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RedoTask"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RedoTaskResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def RedoTaskBatch(
-            self,
-            request: models.RedoTaskBatchRequest,
-            opts: Dict = None,
-    ) -> models.RedoTaskBatchResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        重新执行任务批次
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RedoTaskBatch"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RedoTaskBatchResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def RedoTaskExecute(
-            self,
-            request: models.RedoTaskExecuteRequest,
-            opts: Dict = None,
-    ) -> models.RedoTaskExecuteResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        重新执行在某个节点上执行任务。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RedoTaskExecute"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RedoTaskExecuteResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def RedoTaskFlowBatch(
-            self,
-            request: models.RedoTaskFlowBatchRequest,
-            opts: Dict = None,
-    ) -> models.RedoTaskFlowBatchResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        重新执行工作流批次
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RedoTaskFlowBatch"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RedoTaskFlowBatchResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3921,66 +3521,6 @@ class TsfClient(AbstractClient):
         kwargs["action"] = "StopGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopGroupResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def StopTaskBatch(
-            self,
-            request: models.StopTaskBatchRequest,
-            opts: Dict = None,
-    ) -> models.StopTaskBatchResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停止执行中的任务批次， 非运行中的任务不可调用。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "StopTaskBatch"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.StopTaskBatchResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def StopTaskExecute(
-            self,
-            request: models.StopTaskExecuteRequest,
-            opts: Dict = None,
-    ) -> models.StopTaskExecuteResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停止正在某个节点上执行的任务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "StopTaskExecute"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.StopTaskExecuteResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def TerminateTaskFlowBatch(
-            self,
-            request: models.TerminateTaskFlowBatchRequest,
-            opts: Dict = None,
-    ) -> models.TerminateTaskFlowBatchResponse:
-        """
-        分布式任务调度 TCT 已到达 EOMS 节点，进行产品下线处理。退市公告https://cloud.tencent.com/announce/detail/2053
-
-        停止一个工作流批次
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "TerminateTaskFlowBatch"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.TerminateTaskFlowBatchResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

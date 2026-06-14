@@ -257,6 +257,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSlowLogPatternDownloadTask(self, request):
+        r"""创建慢日志统计下载任务
+
+        :param request: Request instance for CreateSlowLogPatternDownloadTask.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateSlowLogPatternDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateSlowLogPatternDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSlowLogPatternDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSlowLogPatternDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccountUser(self, request):
         r"""本接口（DeleteAccountUser）用于删除实例的自定义账号。
 
@@ -616,6 +639,29 @@ class MongodbClient(AbstractClient):
             body = self.call("DescribeDBInstanceDeal", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBInstanceDealResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBInstanceLogToCLS(self, request):
+        r"""获取日志投递的相关配置信息
+
+        :param request: Request instance for DescribeDBInstanceLogToCLS.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceLogToCLSRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceLogToCLSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceLogToCLS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceLogToCLSResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1227,6 +1273,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def IncreaseDBInstanceConnectionLimit(self, request):
+        r"""终止实例流程
+
+        :param request: Request instance for IncreaseDBInstanceConnectionLimit.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.IncreaseDBInstanceConnectionLimitRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.IncreaseDBInstanceConnectionLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IncreaseDBInstanceConnectionLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.IncreaseDBInstanceConnectionLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquirePriceCreateDBInstances(self, request):
         r"""本接口（InquirePriceCreateDBInstances）用于创建数据库实例询价。本接口参数中必须传入region参数，否则无法通过校验。本接口仅允许针对购买限制范围内的实例配置进行询价。
 
@@ -1402,6 +1471,29 @@ class MongodbClient(AbstractClient):
             body = self.call("ModifyBackupExpireTime", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBackupExpireTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceLogToCLS(self, request):
+        r"""开启或关闭MongoDB慢日志、错误日志、操作日志投递CLS
+
+        :param request: Request instance for ModifyDBInstanceLogToCLS.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceLogToCLSRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceLogToCLSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceLogToCLS", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceLogToCLSResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

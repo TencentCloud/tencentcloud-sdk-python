@@ -313,6 +313,201 @@ class AddSceneResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AppendDocument(AbstractModel):
+    r"""追加文件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: <p>文件名称</p>
+        :type FileName: str
+        :param _FileId: <p>文件id</p>
+        :type FileId: str
+        :param _FileUrl: <p>文件url</p>
+        :type FileUrl: str
+        :param _FileSize: <p>文件大小</p>
+        :type FileSize: float
+        """
+        self._FileName = None
+        self._FileId = None
+        self._FileUrl = None
+        self._FileSize = None
+
+    @property
+    def FileName(self):
+        r"""<p>文件名称</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileId(self):
+        r"""<p>文件id</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def FileUrl(self):
+        r"""<p>文件url</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileSize(self):
+        r"""<p>文件大小</p>
+        :rtype: float
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileId = params.get("FileId")
+        self._FileUrl = params.get("FileUrl")
+        self._FileSize = params.get("FileSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppendKnowledgeTaskRequest(AbstractModel):
+    r"""AppendKnowledgeTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _KnowledgeBaseId: <p>知识库id</p>
+        :type KnowledgeBaseId: str
+        :param _FileId: <p>文件id</p>
+        :type FileId: str
+        :param _Documents: <p>追加的文档列表</p>
+        :type Documents: list of AppendDocument
+        """
+        self._InstanceId = None
+        self._KnowledgeBaseId = None
+        self._FileId = None
+        self._Documents = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""<p>知识库id</p>
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def FileId(self):
+        r"""<p>文件id</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Documents(self):
+        r"""<p>追加的文档列表</p>
+        :rtype: list of AppendDocument
+        """
+        return self._Documents
+
+    @Documents.setter
+    def Documents(self, Documents):
+        self._Documents = Documents
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._FileId = params.get("FileId")
+        if params.get("Documents") is not None:
+            self._Documents = []
+            for item in params.get("Documents"):
+                obj = AppendDocument()
+                obj._deserialize(item)
+                self._Documents.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppendKnowledgeTaskResponse(AbstractModel):
+    r"""AppendKnowledgeTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ChatAIRequest(AbstractModel):
     r"""ChatAI请求参数结构体
 
@@ -1510,6 +1705,87 @@ class FileInfo(AbstractModel):
         self._DocumentSummary = params.get("DocumentSummary")
         self._WebUrl = params.get("WebUrl")
         self._Capabilities = params.get("Capabilities")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileTaskStatus(AbstractModel):
+    r"""文件任务状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: <p>文件id</p>
+        :type FileId: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>0： 处理中</li><li>1： 可用</li><li>-1： 错误</li></ul>
+        :type Status: int
+        :param _IsTerminated: <p>是否已拉取过状态</p><p>枚举值：</p><ul><li>0： 未被拉取过状态</li><li>1： 已被拉取过状态</li></ul>
+        :type IsTerminated: int
+        :param _ErrorMsg: <p>错误信息，状态-1时不为空</p>
+        :type ErrorMsg: str
+        """
+        self._FileId = None
+        self._Status = None
+        self._IsTerminated = None
+        self._ErrorMsg = None
+
+    @property
+    def FileId(self):
+        r"""<p>文件id</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>0： 处理中</li><li>1： 可用</li><li>-1： 错误</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsTerminated(self):
+        r"""<p>是否已拉取过状态</p><p>枚举值：</p><ul><li>0： 未被拉取过状态</li><li>1： 已被拉取过状态</li></ul>
+        :rtype: int
+        """
+        return self._IsTerminated
+
+    @IsTerminated.setter
+    def IsTerminated(self, IsTerminated):
+        self._IsTerminated = IsTerminated
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息，状态-1时不为空</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Status = params.get("Status")
+        self._IsTerminated = params.get("IsTerminated")
+        self._ErrorMsg = params.get("ErrorMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3173,6 +3449,120 @@ class QueryChunkListResponse(AbstractModel):
                 obj = Chunk()
                 obj._deserialize(item)
                 self._Chunks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class QueryKnowledgeTaskRequest(AbstractModel):
+    r"""QueryKnowledgeTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _KnowledgeBaseId: <p>知识库id</p>
+        :type KnowledgeBaseId: str
+        :param _FileIds: <p>文件id列表</p>
+        :type FileIds: list of str
+        """
+        self._InstanceId = None
+        self._KnowledgeBaseId = None
+        self._FileIds = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""<p>知识库id</p>
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def FileIds(self):
+        r"""<p>文件id列表</p>
+        :rtype: list of str
+        """
+        return self._FileIds
+
+    @FileIds.setter
+    def FileIds(self, FileIds):
+        self._FileIds = FileIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._FileIds = params.get("FileIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryKnowledgeTaskResponse(AbstractModel):
+    r"""QueryKnowledgeTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileList: <p>文档任务详情对象</p>
+        :type FileList: list of FileTaskStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FileList = None
+        self._RequestId = None
+
+    @property
+    def FileList(self):
+        r"""<p>文档任务详情对象</p>
+        :rtype: list of FileTaskStatus
+        """
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FileList") is not None:
+            self._FileList = []
+            for item in params.get("FileList"):
+                obj = FileTaskStatus()
+                obj._deserialize(item)
+                self._FileList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

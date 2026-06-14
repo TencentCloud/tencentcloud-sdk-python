@@ -25044,252 +25044,6 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class RecognizeHealthCodeOCRRequest(AbstractModel):
-    r"""RecognizeHealthCodeOCR请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :type ImageUrl: str
-        :param _Type: 需要识别的健康码类型列表，为空或不填表示默认为自动识别。
-0:自动识别
-        :type Type: int
-        """
-        self._ImageBase64 = None
-        self._ImageUrl = None
-        self._Type = None
-
-    @property
-    def ImageBase64(self):
-        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :rtype: str
-        """
-        return self._ImageBase64
-
-    @ImageBase64.setter
-    def ImageBase64(self, ImageBase64):
-        self._ImageBase64 = ImageBase64
-
-    @property
-    def ImageUrl(self):
-        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :rtype: str
-        """
-        return self._ImageUrl
-
-    @ImageUrl.setter
-    def ImageUrl(self, ImageUrl):
-        self._ImageUrl = ImageUrl
-
-    @property
-    def Type(self):
-        r"""需要识别的健康码类型列表，为空或不填表示默认为自动识别。
-0:自动识别
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-
-    def _deserialize(self, params):
-        self._ImageBase64 = params.get("ImageBase64")
-        self._ImageUrl = params.get("ImageUrl")
-        self._Type = params.get("Type")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class RecognizeHealthCodeOCRResponse(AbstractModel):
-    r"""RecognizeHealthCodeOCR返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Name: 持码人姓名，如：王*（允许返回空值）
-        :type Name: str
-        :param _IDNumber: 持码人身份证号，如：11**************01（允许返回空值）
-        :type IDNumber: str
-        :param _Time: 健康码更新时间（允许返回空值）
-        :type Time: str
-        :param _Color: 健康码颜色：绿色、黄色、红色（允许返回空值）
-        :type Color: str
-        :param _TestingInterval: 核酸检测间隔时长（允许返回空值）
-        :type TestingInterval: str
-        :param _TestingResult: 核酸检测结果：阴性、阳性、暂无核酸检测记录（允许返回空值）
-        :type TestingResult: str
-        :param _TestingTime: 核酸检测时间（允许返回空值）
-        :type TestingTime: str
-        :param _Vaccination: 疫苗接种信息，返回接种针数或接种情况（允许返回空值）
-        :type Vaccination: str
-        :param _SpotName: 场所名称（允许返回空值）
-        :type SpotName: str
-        :param _VaccinationTime: 疫苗接种时间
-        :type VaccinationTime: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Name = None
-        self._IDNumber = None
-        self._Time = None
-        self._Color = None
-        self._TestingInterval = None
-        self._TestingResult = None
-        self._TestingTime = None
-        self._Vaccination = None
-        self._SpotName = None
-        self._VaccinationTime = None
-        self._RequestId = None
-
-    @property
-    def Name(self):
-        r"""持码人姓名，如：王*（允许返回空值）
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def IDNumber(self):
-        r"""持码人身份证号，如：11**************01（允许返回空值）
-        :rtype: str
-        """
-        return self._IDNumber
-
-    @IDNumber.setter
-    def IDNumber(self, IDNumber):
-        self._IDNumber = IDNumber
-
-    @property
-    def Time(self):
-        r"""健康码更新时间（允许返回空值）
-        :rtype: str
-        """
-        return self._Time
-
-    @Time.setter
-    def Time(self, Time):
-        self._Time = Time
-
-    @property
-    def Color(self):
-        r"""健康码颜色：绿色、黄色、红色（允许返回空值）
-        :rtype: str
-        """
-        return self._Color
-
-    @Color.setter
-    def Color(self, Color):
-        self._Color = Color
-
-    @property
-    def TestingInterval(self):
-        r"""核酸检测间隔时长（允许返回空值）
-        :rtype: str
-        """
-        return self._TestingInterval
-
-    @TestingInterval.setter
-    def TestingInterval(self, TestingInterval):
-        self._TestingInterval = TestingInterval
-
-    @property
-    def TestingResult(self):
-        r"""核酸检测结果：阴性、阳性、暂无核酸检测记录（允许返回空值）
-        :rtype: str
-        """
-        return self._TestingResult
-
-    @TestingResult.setter
-    def TestingResult(self, TestingResult):
-        self._TestingResult = TestingResult
-
-    @property
-    def TestingTime(self):
-        r"""核酸检测时间（允许返回空值）
-        :rtype: str
-        """
-        return self._TestingTime
-
-    @TestingTime.setter
-    def TestingTime(self, TestingTime):
-        self._TestingTime = TestingTime
-
-    @property
-    def Vaccination(self):
-        r"""疫苗接种信息，返回接种针数或接种情况（允许返回空值）
-        :rtype: str
-        """
-        return self._Vaccination
-
-    @Vaccination.setter
-    def Vaccination(self, Vaccination):
-        self._Vaccination = Vaccination
-
-    @property
-    def SpotName(self):
-        r"""场所名称（允许返回空值）
-        :rtype: str
-        """
-        return self._SpotName
-
-    @SpotName.setter
-    def SpotName(self, SpotName):
-        self._SpotName = SpotName
-
-    @property
-    def VaccinationTime(self):
-        r"""疫苗接种时间
-        :rtype: str
-        """
-        return self._VaccinationTime
-
-    @VaccinationTime.setter
-    def VaccinationTime(self, VaccinationTime):
-        self._VaccinationTime = VaccinationTime
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Name = params.get("Name")
-        self._IDNumber = params.get("IDNumber")
-        self._Time = params.get("Time")
-        self._Color = params.get("Color")
-        self._TestingInterval = params.get("TestingInterval")
-        self._TestingResult = params.get("TestingResult")
-        self._TestingTime = params.get("TestingTime")
-        self._Vaccination = params.get("Vaccination")
-        self._SpotName = params.get("SpotName")
-        self._VaccinationTime = params.get("VaccinationTime")
-        self._RequestId = params.get("RequestId")
-
-
 class RecognizeMedicalInvoiceOCRRequest(AbstractModel):
     r"""RecognizeMedicalInvoiceOCR请求参数结构体
 
@@ -26379,160 +26133,6 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._AdvancedInfo = params.get("AdvancedInfo")
         self._CardCount = params.get("CardCount")
-        self._RequestId = params.get("RequestId")
-
-
-class RecognizeTravelCardOCRRequest(AbstractModel):
-    r"""RecognizeTravelCardOCR请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :type ImageUrl: str
-        """
-        self._ImageBase64 = None
-        self._ImageUrl = None
-
-    @property
-    def ImageBase64(self):
-        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :rtype: str
-        """
-        return self._ImageBase64
-
-    @ImageBase64.setter
-    def ImageBase64(self, ImageBase64):
-        self._ImageBase64 = ImageBase64
-
-    @property
-    def ImageUrl(self):
-        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :rtype: str
-        """
-        return self._ImageUrl
-
-    @ImageUrl.setter
-    def ImageUrl(self, ImageUrl):
-        self._ImageUrl = ImageUrl
-
-
-    def _deserialize(self, params):
-        self._ImageBase64 = params.get("ImageBase64")
-        self._ImageUrl = params.get("ImageUrl")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class RecognizeTravelCardOCRResponse(AbstractModel):
-    r"""RecognizeTravelCardOCR返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Time: 行程卡更新时间，格式为：XXXX.XX.XX XX:XX:XX
-        :type Time: str
-        :param _Color: 行程卡颜色：绿色、黄色、红色
-        :type Color: str
-        :param _ReachedCity: 7天内到达或途经的城市（自2022年7月8日起，通信行程卡查询结果的覆盖时间范围由“14天”调整为“7天”）
-        :type ReachedCity: list of str
-        :param _RiskArea: 7天内到达或途径存在中高风险地区的城市（自2022年6月29日起，通信行程卡取消“星号”标记，改字段将返回空值）
-        :type RiskArea: list of str
-        :param _Telephone: 电话号码
-        :type Telephone: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Time = None
-        self._Color = None
-        self._ReachedCity = None
-        self._RiskArea = None
-        self._Telephone = None
-        self._RequestId = None
-
-    @property
-    def Time(self):
-        r"""行程卡更新时间，格式为：XXXX.XX.XX XX:XX:XX
-        :rtype: str
-        """
-        return self._Time
-
-    @Time.setter
-    def Time(self, Time):
-        self._Time = Time
-
-    @property
-    def Color(self):
-        r"""行程卡颜色：绿色、黄色、红色
-        :rtype: str
-        """
-        return self._Color
-
-    @Color.setter
-    def Color(self, Color):
-        self._Color = Color
-
-    @property
-    def ReachedCity(self):
-        r"""7天内到达或途经的城市（自2022年7月8日起，通信行程卡查询结果的覆盖时间范围由“14天”调整为“7天”）
-        :rtype: list of str
-        """
-        return self._ReachedCity
-
-    @ReachedCity.setter
-    def ReachedCity(self, ReachedCity):
-        self._ReachedCity = ReachedCity
-
-    @property
-    def RiskArea(self):
-        r"""7天内到达或途径存在中高风险地区的城市（自2022年6月29日起，通信行程卡取消“星号”标记，改字段将返回空值）
-        :rtype: list of str
-        """
-        return self._RiskArea
-
-    @RiskArea.setter
-    def RiskArea(self, RiskArea):
-        self._RiskArea = RiskArea
-
-    @property
-    def Telephone(self):
-        r"""电话号码
-        :rtype: str
-        """
-        return self._Telephone
-
-    @Telephone.setter
-    def Telephone(self, Telephone):
-        self._Telephone = Telephone
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Time = params.get("Time")
-        self._Color = params.get("Color")
-        self._ReachedCity = params.get("ReachedCity")
-        self._RiskArea = params.get("RiskArea")
-        self._Telephone = params.get("Telephone")
         self._RequestId = params.get("RequestId")
 
 
@@ -40587,6 +40187,160 @@ class VehicleRegCertOCRResponse(AbstractModel):
                 obj = VehicleRegCertInfo()
                 obj._deserialize(item)
                 self._VehicleRegCertInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class VerifyBizLicenseEnterprise3Request(AbstractModel):
+    r"""VerifyBizLicenseEnterprise3请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreditCode: <p>统一社会信用代码</p>
+        :type CreditCode: str
+        :param _EntName: <p>企业名称</p>
+        :type EntName: str
+        :param _LrName: <p>法人代表</p>
+        :type LrName: str
+        :param _VerifyType: <p>核验类型 </p><p>枚举值：</p><ul><li>ENT_2META： 企业名称 、统一社会信用代码</li><li>ENT_3META： 企业名称 、统一社会信用代码 、法人代表名称</li></ul>
+        :type VerifyType: str
+        """
+        self._CreditCode = None
+        self._EntName = None
+        self._LrName = None
+        self._VerifyType = None
+
+    @property
+    def CreditCode(self):
+        r"""<p>统一社会信用代码</p>
+        :rtype: str
+        """
+        return self._CreditCode
+
+    @CreditCode.setter
+    def CreditCode(self, CreditCode):
+        self._CreditCode = CreditCode
+
+    @property
+    def EntName(self):
+        r"""<p>企业名称</p>
+        :rtype: str
+        """
+        return self._EntName
+
+    @EntName.setter
+    def EntName(self, EntName):
+        self._EntName = EntName
+
+    @property
+    def LrName(self):
+        r"""<p>法人代表</p>
+        :rtype: str
+        """
+        return self._LrName
+
+    @LrName.setter
+    def LrName(self, LrName):
+        self._LrName = LrName
+
+    @property
+    def VerifyType(self):
+        r"""<p>核验类型 </p><p>枚举值：</p><ul><li>ENT_2META： 企业名称 、统一社会信用代码</li><li>ENT_3META： 企业名称 、统一社会信用代码 、法人代表名称</li></ul>
+        :rtype: str
+        """
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+
+    def _deserialize(self, params):
+        self._CreditCode = params.get("CreditCode")
+        self._EntName = params.get("EntName")
+        self._LrName = params.get("LrName")
+        self._VerifyType = params.get("VerifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyBizLicenseEnterprise3Response(AbstractModel):
+    r"""VerifyBizLicenseEnterprise3返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: <p>0 成功，计费<br>1 系统异常，不计费<br>2 查询无结果，不计费</p>
+        :type StatusCode: int
+        :param _VerifyResult: <p>验证结果<br>1：三要素完全匹配<br>0：三要素不完全匹配<br>仅StatusCode为0时返回</p>
+        :type VerifyResult: int
+        :param _OperatingStatus: <p>企业状态</p><p>枚举值：</p><ul><li>1： 开业（在营）/ 在营</li><li>2： 迁出 / 非在营</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>7： 撤销登记</li><li>0： 其他</li><li>/： 无法查询</li></ul><p>企业状态  当VerifyType参数为ENT_2META时，可返回：  0-7,  /   当VerifyType参数为ENT_3META时，可返回  1，2</p>
+        :type OperatingStatus: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StatusCode = None
+        self._VerifyResult = None
+        self._OperatingStatus = None
+        self._RequestId = None
+
+    @property
+    def StatusCode(self):
+        r"""<p>0 成功，计费<br>1 系统异常，不计费<br>2 查询无结果，不计费</p>
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def VerifyResult(self):
+        r"""<p>验证结果<br>1：三要素完全匹配<br>0：三要素不完全匹配<br>仅StatusCode为0时返回</p>
+        :rtype: int
+        """
+        return self._VerifyResult
+
+    @VerifyResult.setter
+    def VerifyResult(self, VerifyResult):
+        self._VerifyResult = VerifyResult
+
+    @property
+    def OperatingStatus(self):
+        r"""<p>企业状态</p><p>枚举值：</p><ul><li>1： 开业（在营）/ 在营</li><li>2： 迁出 / 非在营</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>7： 撤销登记</li><li>0： 其他</li><li>/： 无法查询</li></ul><p>企业状态  当VerifyType参数为ENT_2META时，可返回：  0-7,  /   当VerifyType参数为ENT_3META时，可返回  1，2</p>
+        :rtype: str
+        """
+        return self._OperatingStatus
+
+    @OperatingStatus.setter
+    def OperatingStatus(self, OperatingStatus):
+        self._OperatingStatus = OperatingStatus
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._VerifyResult = params.get("VerifyResult")
+        self._OperatingStatus = params.get("OperatingStatus")
         self._RequestId = params.get("RequestId")
 
 

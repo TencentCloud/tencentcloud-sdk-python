@@ -72,6 +72,29 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AppendKnowledgeTask(self, request):
+        r"""追加文件
+
+        :param request: Request instance for AppendKnowledgeTask.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.AppendKnowledgeTaskRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.AppendKnowledgeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AppendKnowledgeTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.AppendKnowledgeTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChatAI(self, request):
         r"""提供DataAgent 产品服务API
 
@@ -403,6 +426,29 @@ class DataagentClient(AbstractClient):
             body = self.call("QueryChunkList", params, headers=headers)
             response = json.loads(body)
             model = models.QueryChunkListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryKnowledgeTask(self, request):
+        r"""查询文件任务状态
+
+        :param request: Request instance for QueryKnowledgeTask.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.QueryKnowledgeTaskRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.QueryKnowledgeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryKnowledgeTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryKnowledgeTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

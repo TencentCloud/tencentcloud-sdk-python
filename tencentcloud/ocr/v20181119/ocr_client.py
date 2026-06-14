@@ -1830,33 +1830,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RecognizeHealthCodeOCR(self, request):
-        r"""产品规划
-
-        本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖北、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
-
-        默认接口请求频率限制：10次/秒。
-
-        :param request: Request instance for RecognizeHealthCodeOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeHealthCodeOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeHealthCodeOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeHealthCodeOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeHealthCodeOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RecognizeMedicalInvoiceOCR(self, request):
         r"""医疗发票识别目前支持全国统一门诊发票、全国统一住院发票、以及部分地方的门诊和住院发票的识别。
 
@@ -1973,33 +1946,6 @@ class OcrClient(AbstractClient):
             body = self.call("RecognizeThaiIDCardOCR", params, headers=headers)
             response = json.loads(body)
             model = models.RecognizeThaiIDCardOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RecognizeTravelCardOCR(self, request):
-        r"""产品规划
-
-        本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
-
-        默认接口请求频率限制：20次/秒。
-
-        :param request: Request instance for RecognizeTravelCardOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeTravelCardOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeTravelCardOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeTravelCardOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeTravelCardOCRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2408,6 +2354,30 @@ class OcrClient(AbstractClient):
             body = self.call("VehicleRegCertOCR", params, headers=headers)
             response = json.loads(body)
             model = models.VehicleRegCertOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VerifyBizLicenseEnterprise3(self, request):
+        r"""提供比对核验企业名称、统一社会信用代码、法人姓名一致性的服务，助力快速核验企业资质。
+        注意：核验准确率在99%以上，存在个别特殊情况下核验结果不准确，请选用前知悉。
+
+        :param request: Request instance for VerifyBizLicenseEnterprise3.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.VerifyBizLicenseEnterprise3Request`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.VerifyBizLicenseEnterprise3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyBizLicenseEnterprise3", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyBizLicenseEnterprise3Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

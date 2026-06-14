@@ -7342,27 +7342,27 @@ class CreateClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+        :param _ClusterType: <p>集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。</p>
         :type ClusterType: str
-        :param _ClusterCIDRSettings: 集群容器网络配置信息
+        :param _ClusterCIDRSettings: <p>集群容器网络配置信息</p>
         :type ClusterCIDRSettings: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`
-        :param _RunInstancesForNode: CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
+        :param _RunInstancesForNode: <p>CVM创建透传参数，json化字符串格式，详见<a href="https://cloud.tencent.com/document/product/213/15730">CVM创建实例</a>接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。</p>
         :type RunInstancesForNode: list of RunInstancesForNode
-        :param _ClusterBasicSettings: 集群的基本配置信息
+        :param _ClusterBasicSettings: <p>集群的基本配置信息</p>
         :type ClusterBasicSettings: :class:`tencentcloud.tke.v20180525.models.ClusterBasicSettings`
-        :param _ClusterAdvancedSettings: 集群高级配置信息
+        :param _ClusterAdvancedSettings: <p>集群高级配置信息</p>
         :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`
-        :param _InstanceAdvancedSettings: 节点高级配置信息
+        :param _InstanceAdvancedSettings: <p>节点高级配置信息</p>
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param _ExistedInstancesForNode: 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100，不支持添加竞价实例。
+        :param _ExistedInstancesForNode: <p>已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过 50，不支持添加竞价实例。</p>
         :type ExistedInstancesForNode: list of ExistedInstancesForNode
-        :param _InstanceDataDiskMountSettings: CVM类型和其对应的数据盘挂载配置信息
+        :param _InstanceDataDiskMountSettings: <p>CVM类型和其对应的数据盘挂载配置信息</p>
         :type InstanceDataDiskMountSettings: list of InstanceDataDiskMountSetting
-        :param _ExtensionAddons: 需要安装的扩展组件信息
+        :param _ExtensionAddons: <p>需要安装的扩展组件信息</p>
         :type ExtensionAddons: list of ExtensionAddon
-        :param _CdcId: 本地专用集群Id
+        :param _CdcId: <p>本地专用集群Id</p>
         :type CdcId: str
-        :param _DisableAddons: 屏蔽安装指定Addon组件，填写相应的AddonName
+        :param _DisableAddons: <p>屏蔽安装指定Addon组件，填写相应的AddonName</p>
         :type DisableAddons: list of str
         """
         self._ClusterType = None
@@ -7379,7 +7379,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+        r"""<p>集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。</p>
         :rtype: str
         """
         return self._ClusterType
@@ -7390,7 +7390,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterCIDRSettings(self):
-        r"""集群容器网络配置信息
+        r"""<p>集群容器网络配置信息</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterCIDRSettings`
         """
         return self._ClusterCIDRSettings
@@ -7401,7 +7401,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def RunInstancesForNode(self):
-        r"""CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
+        r"""<p>CVM创建透传参数，json化字符串格式，详见<a href="https://cloud.tencent.com/document/product/213/15730">CVM创建实例</a>接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。</p>
         :rtype: list of RunInstancesForNode
         """
         return self._RunInstancesForNode
@@ -7412,7 +7412,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterBasicSettings(self):
-        r"""集群的基本配置信息
+        r"""<p>集群的基本配置信息</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterBasicSettings`
         """
         return self._ClusterBasicSettings
@@ -7423,7 +7423,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ClusterAdvancedSettings(self):
-        r"""集群高级配置信息
+        r"""<p>集群高级配置信息</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterAdvancedSettings`
         """
         return self._ClusterAdvancedSettings
@@ -7434,7 +7434,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def InstanceAdvancedSettings(self):
-        r"""节点高级配置信息
+        r"""<p>节点高级配置信息</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         """
         return self._InstanceAdvancedSettings
@@ -7445,7 +7445,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ExistedInstancesForNode(self):
-        r"""已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100，不支持添加竞价实例。
+        r"""<p>已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过 50，不支持添加竞价实例。</p>
         :rtype: list of ExistedInstancesForNode
         """
         return self._ExistedInstancesForNode
@@ -7456,7 +7456,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def InstanceDataDiskMountSettings(self):
-        r"""CVM类型和其对应的数据盘挂载配置信息
+        r"""<p>CVM类型和其对应的数据盘挂载配置信息</p>
         :rtype: list of InstanceDataDiskMountSetting
         """
         return self._InstanceDataDiskMountSettings
@@ -7467,7 +7467,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def ExtensionAddons(self):
-        r"""需要安装的扩展组件信息
+        r"""<p>需要安装的扩展组件信息</p>
         :rtype: list of ExtensionAddon
         """
         return self._ExtensionAddons
@@ -7478,7 +7478,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""本地专用集群Id
+        r"""<p>本地专用集群Id</p>
         :rtype: str
         """
         return self._CdcId
@@ -7489,7 +7489,7 @@ class CreateClusterRequest(AbstractModel):
 
     @property
     def DisableAddons(self):
-        r"""屏蔽安装指定Addon组件，填写相应的AddonName
+        r"""<p>屏蔽安装指定Addon组件，填写相应的AddonName</p>
         :rtype: list of str
         """
         return self._DisableAddons
@@ -7556,7 +7556,7 @@ class CreateClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7566,7 +7566,7 @@ class CreateClusterResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -36325,37 +36325,36 @@ class InstanceAdvancedSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DesiredPodNumber: 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
+        :param _DesiredPodNumber: <p>该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredPodNumber: int
-        :param _GPUArgs: GPU驱动相关参数,相关的GPU参数获取:https://cloud.tencent.com/document/api/213/15715
+        :param _GPUArgs: <p>GPU驱动相关参数,相关的GPU参数获取:https://cloud.tencent.com/document/api/213/15715</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
-        :param _PreStartUserScript: base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
+        :param _PreStartUserScript: <p>base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreStartUserScript: str
-        :param _Taints: 节点污点
+        :param _Taints: <p>节点污点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Taints: list of Taint
-        :param _MountTarget: 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
-注意：多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
+        :param _MountTarget: <p>数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。<br>注意：多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
-        :param _DockerGraphPath: dockerd --graph 指定值。若未指定此参数，将使用内置默认路径 /var/lib/docker 作为存储根目录。
+        :param _DockerGraphPath: <p>dockerd --graph 指定值。若未指定此参数，将使用内置默认路径 /var/lib/docker 作为存储根目录。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DockerGraphPath: str
-        :param _UserScript: base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度
+        :param _UserScript: <p>base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserScript: str
-        :param _Unschedulable: 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
+        :param _Unschedulable: <p>设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.</p>
         :type Unschedulable: int
-        :param _Labels: 节点Label数组
+        :param _Labels: <p>节点Label数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of Label
-        :param _DataDisks: 多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在
+        :param _DataDisks: <p>多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisks: list of DataDisk
-        :param _ExtraArgs: 节点相关的自定义参数信息
+        :param _ExtraArgs: <p>节点相关的自定义参数信息</p>
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         """
         self._DesiredPodNumber = None
@@ -36372,7 +36371,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def DesiredPodNumber(self):
-        r"""该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
+        r"""<p>该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36384,7 +36383,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def GPUArgs(self):
-        r"""GPU驱动相关参数,相关的GPU参数获取:https://cloud.tencent.com/document/api/213/15715
+        r"""<p>GPU驱动相关参数,相关的GPU参数获取:https://cloud.tencent.com/document/api/213/15715</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
         """
@@ -36396,7 +36395,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def PreStartUserScript(self):
-        r"""base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
+        r"""<p>base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36408,7 +36407,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def Taints(self):
-        r"""节点污点
+        r"""<p>节点污点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Taint
         """
@@ -36420,8 +36419,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def MountTarget(self):
-        r"""数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
-注意：多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
+        r"""<p>数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。<br>注意：多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36433,7 +36431,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def DockerGraphPath(self):
-        r"""dockerd --graph 指定值。若未指定此参数，将使用内置默认路径 /var/lib/docker 作为存储根目录。
+        r"""<p>dockerd --graph 指定值。若未指定此参数，将使用内置默认路径 /var/lib/docker 作为存储根目录。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36445,7 +36443,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def UserScript(self):
-        r"""base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度
+        r"""<p>base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36457,7 +36455,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def Unschedulable(self):
-        r"""设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
+        r"""<p>设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.</p>
         :rtype: int
         """
         return self._Unschedulable
@@ -36468,7 +36466,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def Labels(self):
-        r"""节点Label数组
+        r"""<p>节点Label数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Label
         """
@@ -36480,7 +36478,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def DataDisks(self):
-        r"""多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在
+        r"""<p>多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataDisk
         """
@@ -36492,7 +36490,7 @@ class InstanceAdvancedSettings(AbstractModel):
 
     @property
     def ExtraArgs(self):
-        r"""节点相关的自定义参数信息
+        r"""<p>节点相关的自定义参数信息</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         """
         return self._ExtraArgs

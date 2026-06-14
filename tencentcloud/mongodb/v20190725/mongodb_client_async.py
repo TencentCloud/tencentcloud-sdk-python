@@ -206,6 +206,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSlowLogPatternDownloadTask(
+            self,
+            request: models.CreateSlowLogPatternDownloadTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateSlowLogPatternDownloadTaskResponse:
+        """
+        创建慢日志统计下载任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSlowLogPatternDownloadTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSlowLogPatternDownloadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAccountUser(
             self,
             request: models.DeleteAccountUserRequest,
@@ -489,6 +507,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "DescribeDBInstanceDeal"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDBInstanceDealResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBInstanceLogToCLS(
+            self,
+            request: models.DescribeDBInstanceLogToCLSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBInstanceLogToCLSResponse:
+        """
+        获取日志投递的相关配置信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBInstanceLogToCLS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBInstanceLogToCLSResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -966,6 +1002,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def IncreaseDBInstanceConnectionLimit(
+            self,
+            request: models.IncreaseDBInstanceConnectionLimitRequest,
+            opts: Dict = None,
+    ) -> models.IncreaseDBInstanceConnectionLimitResponse:
+        """
+        终止实例流程
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IncreaseDBInstanceConnectionLimit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IncreaseDBInstanceConnectionLimitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def InquirePriceCreateDBInstances(
             self,
             request: models.InquirePriceCreateDBInstancesRequest,
@@ -1105,6 +1159,24 @@ class MongodbClient(AbstractClient):
         kwargs["action"] = "ModifyBackupExpireTime"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyBackupExpireTimeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDBInstanceLogToCLS(
+            self,
+            request: models.ModifyDBInstanceLogToCLSRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBInstanceLogToCLSResponse:
+        """
+        开启或关闭MongoDB慢日志、错误日志、操作日志投递CLS
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBInstanceLogToCLS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBInstanceLogToCLSResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

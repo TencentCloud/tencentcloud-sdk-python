@@ -1917,55 +1917,49 @@ class CreateDatasourceCloudRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceType: 后端提供字典：域类型，1、腾讯云，2、本地
+        :param _ServiceType: <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
         :type ServiceType: str
-        :param _DbType: 驱动
-取值范围：
-MYSQL：MySQL数据库
-PRESTO：PRESTO数据库
-POSTGRE：PostgreSQL数据库
-DLC：DLC数据库
-MSSQL：微软SQL Server数据库
+        :param _DbType: <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
         :type DbType: str
-        :param _Charset: 数据库编码
+        :param _Charset: <p>数据库编码</p>
         :type Charset: str
-        :param _DbUser: 用户名
+        :param _DbUser: <p>用户名</p>
         :type DbUser: str
-        :param _DbPwd: 密码
+        :param _DbPwd: <p>密码</p>
         :type DbPwd: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _SourceName: 数据库别名
+        :param _SourceName: <p>数据库别名</p>
         :type SourceName: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _Vip: 公有云内网ip
+        :param _Vip: <p>公有云内网ip</p>
         :type Vip: str
-        :param _Vport: 公有云内网端口
+        :param _Vport: <p>公有云内网端口</p>
         :type Vport: str
-        :param _VpcId: vpc标识
+        :param _VpcId: <p>vpc标识</p>
         :type VpcId: str
-        :param _UniqVpcId: 统一vpc标识
+        :param _UniqVpcId: <p>统一vpc标识</p>
         :type UniqVpcId: str
-        :param _RegionId: 区域标识（gz,bj)
+        :param _RegionId: <p>区域标识（gz,bj)</p>
         :type RegionId: str
-        :param _ExtraParam: 扩展参数
+        :param _ExtraParam: <p>扩展参数</p>
         :type ExtraParam: str
-        :param _InstanceId: 实例Id
+        :param _InstanceId: <p>实例Id</p>
         :type InstanceId: str
-        :param _ProdDbName: 数据源产品名
+        :param _ProdDbName: <p>数据源产品名</p>
         :type ProdDbName: str
-        :param _DataOrigin: 第三方数据源标识
+        :param _DataOrigin: <p>第三方数据源标识</p>
         :type DataOrigin: str
-        :param _DataOriginProjectId: 第三方项目id
+        :param _DataOriginProjectId: <p>第三方项目id</p>
         :type DataOriginProjectId: str
-        :param _DataOriginDatasourceId: 第三方数据源id
+        :param _DataOriginDatasourceId: <p>第三方数据源id</p>
         :type DataOriginDatasourceId: str
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _Schema: 数据库schema
+        :param _Schema: <p>数据库schema</p>
         :type Schema: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
         """
         self._ServiceType = None
@@ -1993,7 +1987,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ServiceType(self):
-        r"""后端提供字典：域类型，1、腾讯云，2、本地
+        r"""<p>后端提供字典：域类型，1、腾讯云，2、本地</p>
         :rtype: str
         """
         return self._ServiceType
@@ -2004,13 +1998,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbType(self):
-        r"""驱动
-取值范围：
-MYSQL：MySQL数据库
-PRESTO：PRESTO数据库
-POSTGRE：PostgreSQL数据库
-DLC：DLC数据库
-MSSQL：微软SQL Server数据库
+        r"""<p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
         :rtype: str
         """
         return self._DbType
@@ -2021,7 +2009,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Charset(self):
-        r"""数据库编码
+        r"""<p>数据库编码</p>
         :rtype: str
         """
         return self._Charset
@@ -2032,7 +2020,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbUser(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._DbUser
@@ -2043,7 +2031,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbPwd(self):
-        r"""密码
+        r"""<p>密码</p>
         :rtype: str
         """
         return self._DbPwd
@@ -2054,7 +2042,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -2065,7 +2053,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def SourceName(self):
-        r"""数据库别名
+        r"""<p>数据库别名</p>
         :rtype: str
         """
         return self._SourceName
@@ -2076,7 +2064,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -2087,7 +2075,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Vip(self):
-        r"""公有云内网ip
+        r"""<p>公有云内网ip</p>
         :rtype: str
         """
         return self._Vip
@@ -2098,7 +2086,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Vport(self):
-        r"""公有云内网端口
+        r"""<p>公有云内网端口</p>
         :rtype: str
         """
         return self._Vport
@@ -2109,7 +2097,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def VpcId(self):
-        r"""vpc标识
+        r"""<p>vpc标识</p>
         :rtype: str
         """
         return self._VpcId
@@ -2120,7 +2108,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def UniqVpcId(self):
-        r"""统一vpc标识
+        r"""<p>统一vpc标识</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -2131,7 +2119,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def RegionId(self):
-        r"""区域标识（gz,bj)
+        r"""<p>区域标识（gz,bj)</p>
         :rtype: str
         """
         return self._RegionId
@@ -2142,7 +2130,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ExtraParam(self):
-        r"""扩展参数
+        r"""<p>扩展参数</p>
         :rtype: str
         """
         return self._ExtraParam
@@ -2153,7 +2141,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def InstanceId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2164,7 +2152,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ProdDbName(self):
-        r"""数据源产品名
+        r"""<p>数据源产品名</p>
         :rtype: str
         """
         return self._ProdDbName
@@ -2175,7 +2163,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOrigin(self):
-        r"""第三方数据源标识
+        r"""<p>第三方数据源标识</p>
         :rtype: str
         """
         return self._DataOrigin
@@ -2186,7 +2174,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOriginProjectId(self):
-        r"""第三方项目id
+        r"""<p>第三方项目id</p>
         :rtype: str
         """
         return self._DataOriginProjectId
@@ -2197,7 +2185,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOriginDatasourceId(self):
-        r"""第三方数据源id
+        r"""<p>第三方数据源id</p>
         :rtype: str
         """
         return self._DataOriginDatasourceId
@@ -2208,7 +2196,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -2219,7 +2207,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Schema(self):
-        r"""数据库schema
+        r"""<p>数据库schema</p>
         :rtype: str
         """
         return self._Schema
@@ -2230,7 +2218,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -2283,13 +2271,13 @@ class CreateDatasourceCloudResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Data: 成功无
+        :param _Data: <p>成功无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.IdDTO`
-        :param _Extra: 额外信息
+        :param _Extra: <p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Msg: 提示
+        :param _Msg: <p>提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2315,7 +2303,7 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""成功无
+        r"""<p>成功无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bi.v20220105.models.IdDTO`
         """
@@ -2327,7 +2315,7 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""额外信息
+        r"""<p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2339,7 +2327,7 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""提示
+        r"""<p>提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2380,59 +2368,53 @@ class CreateDatasourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbHost: HOST
+        :param _DbHost: <p>HOST</p>
         :type DbHost: str
-        :param _DbPort: 端口
+        :param _DbPort: <p>端口</p>
         :type DbPort: int
-        :param _ServiceType: 后端提供字典：域类型，1、腾讯云，2、本地
+        :param _ServiceType: <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
         :type ServiceType: str
-        :param _DbType: 驱动
-取值范围：
-MYSQL：MySQL数据库
-PRESTO：PRESTO数据库
-POSTGRE：PostgreSQL数据库
-DLC：DLC数据库
-MSSQL：微软SQL Server数据库
+        :param _DbType: <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
         :type DbType: str
-        :param _Charset: 数据库编码
+        :param _Charset: <p>数据库编码</p>
         :type Charset: str
-        :param _DbUser: 用户名
+        :param _DbUser: <p>用户名</p>
         :type DbUser: str
-        :param _DbPwd: 密码
+        :param _DbPwd: <p>密码</p>
         :type DbPwd: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _SourceName: 数据库别名
+        :param _SourceName: <p>数据库别名</p>
         :type SourceName: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: int
-        :param _Catalog: catalog值
+        :param _Catalog: <p>catalog值</p>
         :type Catalog: str
-        :param _DataOrigin: 第三方数据源标识
+        :param _DataOrigin: <p>第三方数据源标识</p>
         :type DataOrigin: str
-        :param _DataOriginProjectId: 第三方项目id
+        :param _DataOriginProjectId: <p>第三方项目id</p>
         :type DataOriginProjectId: str
-        :param _DataOriginDatasourceId: 第三方数据源id
+        :param _DataOriginDatasourceId: <p>第三方数据源id</p>
         :type DataOriginDatasourceId: str
-        :param _ExtraParam: 扩展参数
+        :param _ExtraParam: <p>扩展参数</p>
         :type ExtraParam: str
-        :param _UniqVpcId: 腾讯云私有网络统一标识
+        :param _UniqVpcId: <p>腾讯云私有网络统一标识</p>
         :type UniqVpcId: str
-        :param _Vip: 私有网络ip
+        :param _Vip: <p>私有网络ip</p>
         :type Vip: str
-        :param _Vport: 私有网络端口
+        :param _Vport: <p>私有网络端口</p>
         :type Vport: str
-        :param _VpcId: 腾讯云私有网络标识
+        :param _VpcId: <p>腾讯云私有网络标识</p>
         :type VpcId: str
-        :param _OperationAuthLimit: 操作权限限制
+        :param _OperationAuthLimit: <p>操作权限限制</p>
         :type OperationAuthLimit: list of str
-        :param _UseVPC: 开启vpc
+        :param _UseVPC: <p>开启vpc</p>
         :type UseVPC: bool
-        :param _RegionId: 地域
+        :param _RegionId: <p>地域</p>
         :type RegionId: str
-        :param _Schema: 数据库schema
+        :param _Schema: <p>数据库schema</p>
         :type Schema: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
         """
         self._DbHost = None
@@ -2462,7 +2444,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbHost(self):
-        r"""HOST
+        r"""<p>HOST</p>
         :rtype: str
         """
         return self._DbHost
@@ -2473,7 +2455,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbPort(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: int
         """
         return self._DbPort
@@ -2484,7 +2466,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ServiceType(self):
-        r"""后端提供字典：域类型，1、腾讯云，2、本地
+        r"""<p>后端提供字典：域类型，1、腾讯云，2、本地</p>
         :rtype: str
         """
         return self._ServiceType
@@ -2495,13 +2477,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbType(self):
-        r"""驱动
-取值范围：
-MYSQL：MySQL数据库
-PRESTO：PRESTO数据库
-POSTGRE：PostgreSQL数据库
-DLC：DLC数据库
-MSSQL：微软SQL Server数据库
+        r"""<p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
         :rtype: str
         """
         return self._DbType
@@ -2512,7 +2488,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Charset(self):
-        r"""数据库编码
+        r"""<p>数据库编码</p>
         :rtype: str
         """
         return self._Charset
@@ -2523,7 +2499,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbUser(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._DbUser
@@ -2534,7 +2510,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbPwd(self):
-        r"""密码
+        r"""<p>密码</p>
         :rtype: str
         """
         return self._DbPwd
@@ -2545,7 +2521,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -2556,7 +2532,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def SourceName(self):
-        r"""数据库别名
+        r"""<p>数据库别名</p>
         :rtype: str
         """
         return self._SourceName
@@ -2567,7 +2543,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: int
         """
         return self._ProjectId
@@ -2578,7 +2554,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Catalog(self):
-        r"""catalog值
+        r"""<p>catalog值</p>
         :rtype: str
         """
         return self._Catalog
@@ -2589,7 +2565,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOrigin(self):
-        r"""第三方数据源标识
+        r"""<p>第三方数据源标识</p>
         :rtype: str
         """
         return self._DataOrigin
@@ -2600,7 +2576,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOriginProjectId(self):
-        r"""第三方项目id
+        r"""<p>第三方项目id</p>
         :rtype: str
         """
         return self._DataOriginProjectId
@@ -2611,7 +2587,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOriginDatasourceId(self):
-        r"""第三方数据源id
+        r"""<p>第三方数据源id</p>
         :rtype: str
         """
         return self._DataOriginDatasourceId
@@ -2622,7 +2598,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ExtraParam(self):
-        r"""扩展参数
+        r"""<p>扩展参数</p>
         :rtype: str
         """
         return self._ExtraParam
@@ -2633,7 +2609,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def UniqVpcId(self):
-        r"""腾讯云私有网络统一标识
+        r"""<p>腾讯云私有网络统一标识</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -2644,7 +2620,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Vip(self):
-        r"""私有网络ip
+        r"""<p>私有网络ip</p>
         :rtype: str
         """
         return self._Vip
@@ -2655,7 +2631,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Vport(self):
-        r"""私有网络端口
+        r"""<p>私有网络端口</p>
         :rtype: str
         """
         return self._Vport
@@ -2666,7 +2642,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def VpcId(self):
-        r"""腾讯云私有网络标识
+        r"""<p>腾讯云私有网络标识</p>
         :rtype: str
         """
         return self._VpcId
@@ -2677,7 +2653,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def OperationAuthLimit(self):
-        r"""操作权限限制
+        r"""<p>操作权限限制</p>
         :rtype: list of str
         """
         return self._OperationAuthLimit
@@ -2688,7 +2664,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def UseVPC(self):
-        r"""开启vpc
+        r"""<p>开启vpc</p>
         :rtype: bool
         """
         return self._UseVPC
@@ -2699,7 +2675,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def RegionId(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._RegionId
@@ -2710,7 +2686,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Schema(self):
-        r"""数据库schema
+        r"""<p>数据库schema</p>
         :rtype: str
         """
         return self._Schema
@@ -2721,7 +2697,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -2776,13 +2752,13 @@ class CreateDatasourceResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Data: 数据源id
+        :param _Data: <p>数据源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.IdDTO`
-        :param _Extra: 额外信息
+        :param _Extra: <p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Msg: 提示
+        :param _Msg: <p>提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2808,7 +2784,7 @@ class CreateDatasourceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""数据源id
+        r"""<p>数据源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bi.v20220105.models.IdDTO`
         """
@@ -2820,7 +2796,7 @@ class CreateDatasourceResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""额外信息
+        r"""<p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2832,7 +2808,7 @@ class CreateDatasourceResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""提示
+        r"""<p>提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3271,51 +3247,23 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableId: 页数
+        :param _TableId: <p>页数</p>
         :type TableId: int
-        :param _Mode: 模式。
-取值范围：
-- ALL：全部
-- Specify：指定
-- TAG：标签
-
-默认值：ALL
-示例值：ALL
+        :param _Mode: <p>模式</p><p>枚举值：</p><ul><li>ALL： 全部</li><li>Specify： 指定</li><li>TAG： 标签</li></ul><p>默认值：ALL</p>
         :type Mode: str
-        :param _RoleType: 角色类型。
-取值范围：
-
-- ROLES：按角色
-- Others：其它
-
-默认值：Others
-示例值：Others
+        :param _RoleType: <p>角色类型</p><p>枚举值：</p><ul><li>ROLES： 按角色</li><li>Others： 其它</li></ul><p>默认值：Others</p>
         :type RoleType: str
-        :param _RoleId: 所有页码
+        :param _RoleId: <p>所有页码</p>
         :type RoleId: int
-        :param _RulerInfo: 规则信息
+        :param _RulerInfo: <p>规则信息</p>
         :type RulerInfo: str
-        :param _Type: 类型。
-取值范围：
-
-- ROW：行权限
-- COLUMN：列权限
-
-默认值：ROW
-示例值：ROW
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
         :type Type: str
-        :param _OpenStatus: 开启状态。
-取值范围：
-
-- Open：开启
-- Close：关闭
-
-默认值：Close
-示例值：Close
+        :param _OpenStatus: <p>开启状态</p><p>枚举值：</p><ul><li>Open： 开启</li><li>Close： 关闭</li></ul><p>默认值：Close</p>
         :type OpenStatus: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: int
-        :param _RowColumnConfigList: 行列权限配置
+        :param _RowColumnConfigList: <p>行列权限配置</p>
         :type RowColumnConfigList: list of RowColumnConfig
         """
         self._TableId = None
@@ -3330,7 +3278,7 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def TableId(self):
-        r"""页数
+        r"""<p>页数</p>
         :rtype: int
         """
         return self._TableId
@@ -3341,14 +3289,7 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""模式。
-取值范围：
-- ALL：全部
-- Specify：指定
-- TAG：标签
-
-默认值：ALL
-示例值：ALL
+        r"""<p>模式</p><p>枚举值：</p><ul><li>ALL： 全部</li><li>Specify： 指定</li><li>TAG： 标签</li></ul><p>默认值：ALL</p>
         :rtype: str
         """
         return self._Mode
@@ -3359,14 +3300,7 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def RoleType(self):
-        r"""角色类型。
-取值范围：
-
-- ROLES：按角色
-- Others：其它
-
-默认值：Others
-示例值：Others
+        r"""<p>角色类型</p><p>枚举值：</p><ul><li>ROLES： 按角色</li><li>Others： 其它</li></ul><p>默认值：Others</p>
         :rtype: str
         """
         return self._RoleType
@@ -3377,7 +3311,7 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        r"""所有页码
+        r"""<p>所有页码</p>
         :rtype: int
         """
         return self._RoleId
@@ -3388,7 +3322,7 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def RulerInfo(self):
-        r"""规则信息
+        r"""<p>规则信息</p>
         :rtype: str
         """
         return self._RulerInfo
@@ -3399,14 +3333,7 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型。
-取值范围：
-
-- ROW：行权限
-- COLUMN：列权限
-
-默认值：ROW
-示例值：ROW
+        r"""<p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
         :rtype: str
         """
         return self._Type
@@ -3417,14 +3344,7 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def OpenStatus(self):
-        r"""开启状态。
-取值范围：
-
-- Open：开启
-- Close：关闭
-
-默认值：Close
-示例值：Close
+        r"""<p>开启状态</p><p>枚举值：</p><ul><li>Open： 开启</li><li>Close： 关闭</li></ul><p>默认值：Close</p>
         :rtype: str
         """
         return self._OpenStatus
@@ -3435,7 +3355,7 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: int
         """
         return self._ProjectId
@@ -3446,7 +3366,7 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def RowColumnConfigList(self):
-        r"""行列权限配置
+        r"""<p>行列权限配置</p>
         :rtype: list of RowColumnConfig
         """
         return self._RowColumnConfigList
@@ -3491,13 +3411,13 @@ class CreatePermissionRanksResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Msg: 消息
+        :param _Msg: <p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _Extra: 112
+        :param _Extra: <p>112</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Data: 1
+        :param _Data: <p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3523,7 +3443,7 @@ class CreatePermissionRanksResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""消息
+        r"""<p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3535,7 +3455,7 @@ class CreatePermissionRanksResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""112
+        r"""<p>112</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3547,7 +3467,7 @@ class CreatePermissionRanksResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""1
+        r"""<p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3586,22 +3506,19 @@ class CreateProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 项目名称
+        :param _Name: <p>项目名称</p>
         :type Name: str
-        :param _ColorCode: logo底色
+        :param _ColorCode: <p>logo底色</p>
         :type ColorCode: str
-        :param _Logo: 项目Logo
+        :param _Logo: <p>项目Logo</p>
         :type Logo: str
-        :param _Mark: 备注
+        :param _Mark: <p>备注</p>
         :type Mark: str
-        :param _IsApply: 是否允许用户申请
+        :param _IsApply: <p>是否允许用户申请</p>
         :type IsApply: bool
-        :param _DefaultPanelType: 默认看板
-取值范围：
-1：项目看板 
-2：我的看板
+        :param _DefaultPanelType: <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
         :type DefaultPanelType: int
-        :param _ManagePlatform: 管理平台
+        :param _ManagePlatform: <p>管理平台</p>
         :type ManagePlatform: str
         """
         self._Name = None
@@ -3614,7 +3531,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
         :rtype: str
         """
         return self._Name
@@ -3625,7 +3542,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ColorCode(self):
-        r"""logo底色
+        r"""<p>logo底色</p>
         :rtype: str
         """
         return self._ColorCode
@@ -3636,7 +3553,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Logo(self):
-        r"""项目Logo
+        r"""<p>项目Logo</p>
         :rtype: str
         """
         return self._Logo
@@ -3647,7 +3564,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Mark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Mark
@@ -3658,7 +3575,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def IsApply(self):
-        r"""是否允许用户申请
+        r"""<p>是否允许用户申请</p>
         :rtype: bool
         """
         return self._IsApply
@@ -3669,10 +3586,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def DefaultPanelType(self):
-        r"""默认看板
-取值范围：
-1：项目看板 
-2：我的看板
+        r"""<p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
         :rtype: int
         """
         return self._DefaultPanelType
@@ -3683,7 +3597,7 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def ManagePlatform(self):
-        r"""管理平台
+        r"""<p>管理平台</p>
         :rtype: str
         """
         return self._ManagePlatform
@@ -3721,11 +3635,11 @@ class CreateProjectResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Extra: 额外数据
+        :param _Extra: <p>额外数据</p>
         :type Extra: str
-        :param _Data: 数据
+        :param _Data: <p>数据</p>
         :type Data: :class:`tencentcloud.bi.v20220105.models.Data`
-        :param _Msg: 返回信息
+        :param _Msg: <p>返回信息</p>
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3750,7 +3664,7 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""额外数据
+        r"""<p>额外数据</p>
         :rtype: str
         """
         return self._Extra
@@ -3761,7 +3675,7 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""数据
+        r"""<p>数据</p>
         :rtype: :class:`tencentcloud.bi.v20220105.models.Data`
         """
         return self._Data
@@ -3772,7 +3686,7 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""返回信息
+        r"""<p>返回信息</p>
         :rtype: str
         """
         return self._Msg
@@ -4157,13 +4071,13 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _RoleIdList: 角色ID列表
+        :param _RoleIdList: <p>角色ID列表</p>
         :type RoleIdList: list of int
-        :param _UserList: 用户列表（废弃）
+        :param _UserList: <p>用户列表（废弃）</p>
         :type UserList: list of UserIdAndUserName
-        :param _UserInfoList: 用户列表（新）
+        :param _UserInfoList: <p>用户列表（新）</p>
         :type UserInfoList: list of UserInfo
         """
         self._ProjectId = None
@@ -4173,7 +4087,7 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -4184,7 +4098,7 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     @property
     def RoleIdList(self):
-        r"""角色ID列表
+        r"""<p>角色ID列表</p>
         :rtype: list of int
         """
         return self._RoleIdList
@@ -4197,7 +4111,7 @@ class CreateUserRoleProjectRequest(AbstractModel):
     def UserList(self):
         warnings.warn("parameter `UserList` is deprecated", DeprecationWarning) 
 
-        r"""用户列表（废弃）
+        r"""<p>用户列表（废弃）</p>
         :rtype: list of UserIdAndUserName
         """
         return self._UserList
@@ -4210,7 +4124,7 @@ class CreateUserRoleProjectRequest(AbstractModel):
 
     @property
     def UserInfoList(self):
-        r"""用户列表（新）
+        r"""<p>用户列表（新）</p>
         :rtype: list of UserInfo
         """
         return self._UserInfoList
@@ -4255,13 +4169,13 @@ class CreateUserRoleProjectResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Extra: 扩展
+        :param _Extra: <p>扩展</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Data: 数据
+        :param _Data: <p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.DataId`
-        :param _Msg: 消息
+        :param _Msg: <p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4287,7 +4201,7 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""扩展
+        r"""<p>扩展</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4299,7 +4213,7 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""数据
+        r"""<p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bi.v20220105.models.DataId`
         """
@@ -4311,7 +4225,7 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""消息
+        r"""<p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5699,14 +5613,11 @@ class DeleteProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 项目ID
+        :param _Id: <p>项目ID</p>
         :type Id: int
-        :param _Seed: 随机数
+        :param _Seed: <p>随机数</p>
         :type Seed: str
-        :param _DefaultPanelType: 默认看板
-取值范围：
-1：项目看板 
-2：我的看板
+        :param _DefaultPanelType: <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
         :type DefaultPanelType: int
         """
         self._Id = None
@@ -5715,7 +5626,7 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._Id
@@ -5726,7 +5637,7 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def Seed(self):
-        r"""随机数
+        r"""<p>随机数</p>
         :rtype: str
         """
         return self._Seed
@@ -5737,10 +5648,7 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def DefaultPanelType(self):
-        r"""默认看板
-取值范围：
-1：项目看板 
-2：我的看板
+        r"""<p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
         :rtype: int
         """
         return self._DefaultPanelType
@@ -5774,12 +5682,12 @@ class DeleteProjectResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Extra: ”“
+        :param _Extra: <p>”“</p>
         :type Extra: str
-        :param _Data: ""
+        :param _Data: <p>&quot;&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
-        :param _Msg: ""
+        :param _Msg: <p>&quot;&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5805,7 +5713,7 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""”“
+        r"""<p>”“</p>
         :rtype: str
         """
         return self._Extra
@@ -5816,7 +5724,7 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""""
+        r"""<p>&quot;&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5828,7 +5736,7 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""""
+        r"""<p>&quot;&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7123,39 +7031,17 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableId: 页数
+        :param _TableId: <p>页数</p>
         :type TableId: int
-        :param _Mode: 模式。
-取值范围：
-
-- ALL：全部
-- Specify：指定
-- TAG：标签
-
-默认值：ALL
-示例值：ALL
+        :param _Mode: <p>模式</p><p>枚举值：</p><ul><li>ALL： 全部</li><li>Specify： 指定</li><li>TAG： 标签</li></ul><p>默认值：ALL</p>
         :type Mode: str
-        :param _RoleType: 角色类型。
-取值范围：
-
-- ROLES：按角色
-- Others：其它
-
-默认值：Others
-示例值：Others
+        :param _RoleType: <p>角色类型</p><p>枚举值：</p><ul><li>ROLES： 按角色</li><li>Others： 其它</li></ul><p>默认值：Others</p>
         :type RoleType: str
-        :param _RoleId: 所有页码
+        :param _RoleId: <p>所有页码</p>
         :type RoleId: int
-        :param _Type: 类型。
-取值范围：
-
-- ROW：行权限
-- COLUMN：列权限
-
-默认值：ROW
-示例值：ROW
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
         :type Type: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: int
         """
         self._TableId = None
@@ -7167,7 +7053,7 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     @property
     def TableId(self):
-        r"""页数
+        r"""<p>页数</p>
         :rtype: int
         """
         return self._TableId
@@ -7178,15 +7064,7 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""模式。
-取值范围：
-
-- ALL：全部
-- Specify：指定
-- TAG：标签
-
-默认值：ALL
-示例值：ALL
+        r"""<p>模式</p><p>枚举值：</p><ul><li>ALL： 全部</li><li>Specify： 指定</li><li>TAG： 标签</li></ul><p>默认值：ALL</p>
         :rtype: str
         """
         return self._Mode
@@ -7197,14 +7075,7 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     @property
     def RoleType(self):
-        r"""角色类型。
-取值范围：
-
-- ROLES：按角色
-- Others：其它
-
-默认值：Others
-示例值：Others
+        r"""<p>角色类型</p><p>枚举值：</p><ul><li>ROLES： 按角色</li><li>Others： 其它</li></ul><p>默认值：Others</p>
         :rtype: str
         """
         return self._RoleType
@@ -7215,7 +7086,7 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        r"""所有页码
+        r"""<p>所有页码</p>
         :rtype: int
         """
         return self._RoleId
@@ -7226,14 +7097,7 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型。
-取值范围：
-
-- ROW：行权限
-- COLUMN：列权限
-
-默认值：ROW
-示例值：ROW
+        r"""<p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
         :rtype: str
         """
         return self._Type
@@ -7244,7 +7108,7 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: int
         """
         return self._ProjectId
@@ -7281,13 +7145,13 @@ class DescribePermissionRanksInfoResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Msg: 消息
+        :param _Msg: <p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _Extra: 112
+        :param _Extra: <p>112</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Data: 无
+        :param _Data: <p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.RankInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7313,7 +7177,7 @@ class DescribePermissionRanksInfoResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""消息
+        r"""<p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7325,7 +7189,7 @@ class DescribePermissionRanksInfoResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""112
+        r"""<p>112</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7337,7 +7201,7 @@ class DescribePermissionRanksInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""无
+        r"""<p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bi.v20220105.models.RankInfo`
         """
@@ -7562,18 +7426,11 @@ class DescribePermissionStatusInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableId: 页数
+        :param _TableId: <p>页数</p>
         :type TableId: int
-        :param _Type: 类型。
-取值范围：
-
-- ROW：行权限
-- COLUMN：列权限
-
-默认值：ROW
-示例值：ROW
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
         :type Type: str
-        :param _ProjectId: 1
+        :param _ProjectId: <p>1</p>
         :type ProjectId: str
         """
         self._TableId = None
@@ -7582,7 +7439,7 @@ class DescribePermissionStatusInfoRequest(AbstractModel):
 
     @property
     def TableId(self):
-        r"""页数
+        r"""<p>页数</p>
         :rtype: int
         """
         return self._TableId
@@ -7593,14 +7450,7 @@ class DescribePermissionStatusInfoRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型。
-取值范围：
-
-- ROW：行权限
-- COLUMN：列权限
-
-默认值：ROW
-示例值：ROW
+        r"""<p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
         :rtype: str
         """
         return self._Type
@@ -7611,7 +7461,7 @@ class DescribePermissionStatusInfoRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""1
+        r"""<p>1</p>
         :rtype: str
         """
         return self._ProjectId
@@ -7645,13 +7495,13 @@ class DescribePermissionStatusInfoResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Msg: 消息
+        :param _Msg: <p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _Extra: 112
+        :param _Extra: <p>112</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Data: 1
+        :param _Data: <p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.RowColumnStatus`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7677,7 +7527,7 @@ class DescribePermissionStatusInfoResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""消息
+        r"""<p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7689,7 +7539,7 @@ class DescribePermissionStatusInfoResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""112
+        r"""<p>112</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7701,7 +7551,7 @@ class DescribePermissionStatusInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""1
+        r"""<p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bi.v20220105.models.RowColumnStatus`
         """
@@ -7742,12 +7592,9 @@ class DescribeProjectInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 项目Id
+        :param _Id: <p>项目Id</p>
         :type Id: int
-        :param _DefaultPanelType: 默认看板
-取值范围：
-1：项目看板 
-2：我的看板
+        :param _DefaultPanelType: <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
         :type DefaultPanelType: int
         """
         self._Id = None
@@ -7755,7 +7602,7 @@ class DescribeProjectInfoRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""项目Id
+        r"""<p>项目Id</p>
         :rtype: int
         """
         return self._Id
@@ -7766,10 +7613,7 @@ class DescribeProjectInfoRequest(AbstractModel):
 
     @property
     def DefaultPanelType(self):
-        r"""默认看板
-取值范围：
-1：项目看板 
-2：我的看板
+        r"""<p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
         :rtype: int
         """
         return self._DefaultPanelType
@@ -7802,13 +7646,13 @@ class DescribeProjectInfoResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Extra: ""
+        :param _Extra: <p>&quot;&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Msg: ""
+        :param _Msg: <p>&quot;&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _Data: 项目详情
+        :param _Data: <p>项目详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.Project`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7834,7 +7678,7 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""""
+        r"""<p>&quot;&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7846,7 +7690,7 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""""
+        r"""<p>&quot;&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7858,7 +7702,7 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""项目详情
+        r"""<p>项目详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bi.v20220105.models.Project`
         """
@@ -9405,19 +9249,19 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _AllPage: 无
+        :param _AllPage: <p>无</p>
         :type AllPage: bool
-        :param _PageNo: 无
+        :param _PageNo: <p>无</p>
         :type PageNo: int
-        :param _PageSize: 无
+        :param _PageSize: <p>无</p>
         :type PageSize: int
-        :param _IsFilterPerAuthUser: 是否过滤掉企业管理员
+        :param _IsFilterPerAuthUser: <p>是否过滤掉企业管理员</p>
         :type IsFilterPerAuthUser: bool
-        :param _IsFilterCurrentUser: 是否过滤掉当前用户
+        :param _IsFilterCurrentUser: <p>是否过滤掉当前用户</p>
         :type IsFilterCurrentUser: bool
-        :param _Keyword: 关键字
+        :param _Keyword: <p>关键字</p>
         :type Keyword: str
         """
         self._ProjectId = None
@@ -9430,7 +9274,7 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -9441,7 +9285,7 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def AllPage(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: bool
         """
         return self._AllPage
@@ -9452,7 +9296,7 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: int
         """
         return self._PageNo
@@ -9463,7 +9307,7 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: int
         """
         return self._PageSize
@@ -9474,7 +9318,7 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def IsFilterPerAuthUser(self):
-        r"""是否过滤掉企业管理员
+        r"""<p>是否过滤掉企业管理员</p>
         :rtype: bool
         """
         return self._IsFilterPerAuthUser
@@ -9485,7 +9329,7 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def IsFilterCurrentUser(self):
-        r"""是否过滤掉当前用户
+        r"""<p>是否过滤掉当前用户</p>
         :rtype: bool
         """
         return self._IsFilterCurrentUser
@@ -9496,7 +9340,7 @@ class DescribeUserProjectListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""关键字
+        r"""<p>关键字</p>
         :rtype: str
         """
         return self._Keyword
@@ -9534,13 +9378,13 @@ class DescribeUserProjectListResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Data: 数据
+        :param _Data: <p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.CorpUserListData`
-        :param _Extra: 扩展
+        :param _Extra: <p>扩展</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Msg: 消息
+        :param _Msg: <p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9566,7 +9410,7 @@ class DescribeUserProjectListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""数据
+        r"""<p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bi.v20220105.models.CorpUserListData`
         """
@@ -9578,7 +9422,7 @@ class DescribeUserProjectListResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""扩展
+        r"""<p>扩展</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9590,7 +9434,7 @@ class DescribeUserProjectListResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""消息
+        r"""<p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11127,23 +10971,19 @@ class IdDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 请求id
+        :param _Id: <p>请求id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _AccessKey: key
+        :param _AccessKey: <p>key</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessKey: str
-        :param _ProjectId: id
+        :param _ProjectId: <p>id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
-        :param _TranId: 事务id
+        :param _TranId: <p>事务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
-        :param _TranStatus: 事务状态
-取值范围：
-1: 处理中
-2: 处理成功
-3: 处理失败
+        :param _TranStatus: <p>事务状态</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 处理成功</li><li>3： 处理失败</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranStatus: int
         """
@@ -11155,7 +10995,7 @@ class IdDTO(AbstractModel):
 
     @property
     def Id(self):
-        r"""请求id
+        r"""<p>请求id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11167,7 +11007,7 @@ class IdDTO(AbstractModel):
 
     @property
     def AccessKey(self):
-        r"""key
+        r"""<p>key</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11179,7 +11019,7 @@ class IdDTO(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""id
+        r"""<p>id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11191,7 +11031,7 @@ class IdDTO(AbstractModel):
 
     @property
     def TranId(self):
-        r"""事务id
+        r"""<p>事务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11203,11 +11043,7 @@ class IdDTO(AbstractModel):
 
     @property
     def TranStatus(self):
-        r"""事务状态
-取值范围：
-1: 处理中
-2: 处理成功
-3: 处理失败
+        r"""<p>事务状态</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 处理成功</li><li>3： 处理失败</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11741,57 +11577,51 @@ class ModifyDatasourceCloudRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceType: 后端提供字典：域类型，1、腾讯云，2、本地
+        :param _ServiceType: <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
         :type ServiceType: str
-        :param _DbType: 驱动
-取值范围：
-MYSQL：MySQL数据库
-PRESTO：PRESTO数据库
-POSTGRE：PostgreSQL数据库
-DLC：DLC数据库
-MSSQL：微软SQL Server数据库
+        :param _DbType: <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
         :type DbType: str
-        :param _Charset: 数据库编码
+        :param _Charset: <p>数据库编码</p>
         :type Charset: str
-        :param _DbUser: 用户名
+        :param _DbUser: <p>用户名</p>
         :type DbUser: str
-        :param _DbPwd: 密码
+        :param _DbPwd: <p>密码</p>
         :type DbPwd: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _SourceName: 数据库别名
+        :param _SourceName: <p>数据库别名</p>
         :type SourceName: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _Id: 住键
+        :param _Id: <p>住键</p>
         :type Id: int
-        :param _Vip: 公有云内网ip
+        :param _Vip: <p>公有云内网ip</p>
         :type Vip: str
-        :param _Vport: 公有云内网端口
+        :param _Vport: <p>公有云内网端口</p>
         :type Vport: str
-        :param _VpcId: vpc标识
+        :param _VpcId: <p>vpc标识</p>
         :type VpcId: str
-        :param _UniqVpcId: 统一vpc标识
+        :param _UniqVpcId: <p>统一vpc标识</p>
         :type UniqVpcId: str
-        :param _RegionId: 区域标识（gz,bj)
+        :param _RegionId: <p>区域标识（gz,bj)</p>
         :type RegionId: str
-        :param _ExtraParam: 扩展参数
+        :param _ExtraParam: <p>扩展参数</p>
         :type ExtraParam: str
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _ProdDbName: 数据源产品名
+        :param _ProdDbName: <p>数据源产品名</p>
         :type ProdDbName: str
-        :param _DataOrigin: 第三方数据源标识
+        :param _DataOrigin: <p>第三方数据源标识</p>
         :type DataOrigin: str
-        :param _DataOriginProjectId: 第三方项目id
+        :param _DataOriginProjectId: <p>第三方项目id</p>
         :type DataOriginProjectId: str
-        :param _DataOriginDatasourceId: 第三方数据源id
+        :param _DataOriginDatasourceId: <p>第三方数据源id</p>
         :type DataOriginDatasourceId: str
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _Schema: 数据库schema
+        :param _Schema: <p>数据库schema</p>
         :type Schema: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
         """
         self._ServiceType = None
@@ -11820,7 +11650,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ServiceType(self):
-        r"""后端提供字典：域类型，1、腾讯云，2、本地
+        r"""<p>后端提供字典：域类型，1、腾讯云，2、本地</p>
         :rtype: str
         """
         return self._ServiceType
@@ -11831,13 +11661,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbType(self):
-        r"""驱动
-取值范围：
-MYSQL：MySQL数据库
-PRESTO：PRESTO数据库
-POSTGRE：PostgreSQL数据库
-DLC：DLC数据库
-MSSQL：微软SQL Server数据库
+        r"""<p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
         :rtype: str
         """
         return self._DbType
@@ -11848,7 +11672,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Charset(self):
-        r"""数据库编码
+        r"""<p>数据库编码</p>
         :rtype: str
         """
         return self._Charset
@@ -11859,7 +11683,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbUser(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._DbUser
@@ -11870,7 +11694,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbPwd(self):
-        r"""密码
+        r"""<p>密码</p>
         :rtype: str
         """
         return self._DbPwd
@@ -11881,7 +11705,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -11892,7 +11716,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def SourceName(self):
-        r"""数据库别名
+        r"""<p>数据库别名</p>
         :rtype: str
         """
         return self._SourceName
@@ -11903,7 +11727,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -11914,7 +11738,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Id(self):
-        r"""住键
+        r"""<p>住键</p>
         :rtype: int
         """
         return self._Id
@@ -11925,7 +11749,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Vip(self):
-        r"""公有云内网ip
+        r"""<p>公有云内网ip</p>
         :rtype: str
         """
         return self._Vip
@@ -11936,7 +11760,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Vport(self):
-        r"""公有云内网端口
+        r"""<p>公有云内网端口</p>
         :rtype: str
         """
         return self._Vport
@@ -11947,7 +11771,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def VpcId(self):
-        r"""vpc标识
+        r"""<p>vpc标识</p>
         :rtype: str
         """
         return self._VpcId
@@ -11958,7 +11782,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def UniqVpcId(self):
-        r"""统一vpc标识
+        r"""<p>统一vpc标识</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -11969,7 +11793,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def RegionId(self):
-        r"""区域标识（gz,bj)
+        r"""<p>区域标识（gz,bj)</p>
         :rtype: str
         """
         return self._RegionId
@@ -11980,7 +11804,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ExtraParam(self):
-        r"""扩展参数
+        r"""<p>扩展参数</p>
         :rtype: str
         """
         return self._ExtraParam
@@ -11991,7 +11815,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12002,7 +11826,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ProdDbName(self):
-        r"""数据源产品名
+        r"""<p>数据源产品名</p>
         :rtype: str
         """
         return self._ProdDbName
@@ -12013,7 +11837,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOrigin(self):
-        r"""第三方数据源标识
+        r"""<p>第三方数据源标识</p>
         :rtype: str
         """
         return self._DataOrigin
@@ -12024,7 +11848,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOriginProjectId(self):
-        r"""第三方项目id
+        r"""<p>第三方项目id</p>
         :rtype: str
         """
         return self._DataOriginProjectId
@@ -12035,7 +11859,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOriginDatasourceId(self):
-        r"""第三方数据源id
+        r"""<p>第三方数据源id</p>
         :rtype: str
         """
         return self._DataOriginDatasourceId
@@ -12046,7 +11870,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -12057,7 +11881,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Schema(self):
-        r"""数据库schema
+        r"""<p>数据库schema</p>
         :rtype: str
         """
         return self._Schema
@@ -12068,7 +11892,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -12122,13 +11946,13 @@ class ModifyDatasourceCloudResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Data: 无
+        :param _Data: <p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
-        :param _Extra: 额外信息
+        :param _Extra: <p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Msg: 提示
+        :param _Msg: <p>提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12154,7 +11978,7 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""无
+        r"""<p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12166,7 +11990,7 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""额外信息
+        r"""<p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12178,7 +12002,7 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""提示
+        r"""<p>提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12217,59 +12041,53 @@ class ModifyDatasourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbHost: HOST
+        :param _DbHost: <p>HOST</p>
         :type DbHost: str
-        :param _DbPort: 端口
+        :param _DbPort: <p>端口</p>
         :type DbPort: int
-        :param _ServiceType: 后端提供字典：域类型，1、腾讯云，2、本地
+        :param _ServiceType: <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
         :type ServiceType: str
-        :param _DbType: 驱动
-取值范围：
-MYSQL：MySQL数据库
-PRESTO：PRESTO数据库
-POSTGRE：PostgreSQL数据库
-DLC：DLC数据库
-MSSQL：微软SQL Server数据库
+        :param _DbType: <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
         :type DbType: str
-        :param _Charset: 数据库编码
+        :param _Charset: <p>数据库编码</p>
         :type Charset: str
-        :param _DbUser: 用户名
+        :param _DbUser: <p>用户名</p>
         :type DbUser: str
-        :param _DbPwd: 密码
+        :param _DbPwd: <p>密码</p>
         :type DbPwd: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _SourceName: 数据库别名
+        :param _SourceName: <p>数据库别名</p>
         :type SourceName: str
-        :param _Id: 数据源id
+        :param _Id: <p>数据源id</p>
         :type Id: int
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _Catalog: catalog值
+        :param _Catalog: <p>catalog值</p>
         :type Catalog: str
-        :param _DataOrigin: 第三方数据源标识
+        :param _DataOrigin: <p>第三方数据源标识</p>
         :type DataOrigin: str
-        :param _DataOriginProjectId: 第三方项目id
+        :param _DataOriginProjectId: <p>第三方项目id</p>
         :type DataOriginProjectId: str
-        :param _DataOriginDatasourceId: 第三方数据源id
+        :param _DataOriginDatasourceId: <p>第三方数据源id</p>
         :type DataOriginDatasourceId: str
-        :param _ExtraParam: 扩展参数
+        :param _ExtraParam: <p>扩展参数</p>
         :type ExtraParam: str
-        :param _UniqVpcId: 腾讯云私有网络统一标识
+        :param _UniqVpcId: <p>腾讯云私有网络统一标识</p>
         :type UniqVpcId: str
-        :param _Vip: 私有网络ip
+        :param _Vip: <p>私有网络ip</p>
         :type Vip: str
-        :param _Vport: 私有网络端口
+        :param _Vport: <p>私有网络端口</p>
         :type Vport: str
-        :param _VpcId: 腾讯云私有网络标识
+        :param _VpcId: <p>腾讯云私有网络标识</p>
         :type VpcId: str
-        :param _UseVPC: 开启vpc	
+        :param _UseVPC: <p>开启vpc</p>
         :type UseVPC: bool
-        :param _RegionId: 地域
+        :param _RegionId: <p>地域</p>
         :type RegionId: str
-        :param _Schema: 数据库schema
+        :param _Schema: <p>数据库schema</p>
         :type Schema: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
         """
         self._DbHost = None
@@ -12299,7 +12117,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbHost(self):
-        r"""HOST
+        r"""<p>HOST</p>
         :rtype: str
         """
         return self._DbHost
@@ -12310,7 +12128,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbPort(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: int
         """
         return self._DbPort
@@ -12321,7 +12139,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ServiceType(self):
-        r"""后端提供字典：域类型，1、腾讯云，2、本地
+        r"""<p>后端提供字典：域类型，1、腾讯云，2、本地</p>
         :rtype: str
         """
         return self._ServiceType
@@ -12332,13 +12150,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbType(self):
-        r"""驱动
-取值范围：
-MYSQL：MySQL数据库
-PRESTO：PRESTO数据库
-POSTGRE：PostgreSQL数据库
-DLC：DLC数据库
-MSSQL：微软SQL Server数据库
+        r"""<p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
         :rtype: str
         """
         return self._DbType
@@ -12349,7 +12161,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Charset(self):
-        r"""数据库编码
+        r"""<p>数据库编码</p>
         :rtype: str
         """
         return self._Charset
@@ -12360,7 +12172,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbUser(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._DbUser
@@ -12371,7 +12183,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbPwd(self):
-        r"""密码
+        r"""<p>密码</p>
         :rtype: str
         """
         return self._DbPwd
@@ -12382,7 +12194,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -12393,7 +12205,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def SourceName(self):
-        r"""数据库别名
+        r"""<p>数据库别名</p>
         :rtype: str
         """
         return self._SourceName
@@ -12404,7 +12216,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Id(self):
-        r"""数据源id
+        r"""<p>数据源id</p>
         :rtype: int
         """
         return self._Id
@@ -12415,7 +12227,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -12426,7 +12238,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Catalog(self):
-        r"""catalog值
+        r"""<p>catalog值</p>
         :rtype: str
         """
         return self._Catalog
@@ -12437,7 +12249,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOrigin(self):
-        r"""第三方数据源标识
+        r"""<p>第三方数据源标识</p>
         :rtype: str
         """
         return self._DataOrigin
@@ -12448,7 +12260,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOriginProjectId(self):
-        r"""第三方项目id
+        r"""<p>第三方项目id</p>
         :rtype: str
         """
         return self._DataOriginProjectId
@@ -12459,7 +12271,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DataOriginDatasourceId(self):
-        r"""第三方数据源id
+        r"""<p>第三方数据源id</p>
         :rtype: str
         """
         return self._DataOriginDatasourceId
@@ -12470,7 +12282,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def ExtraParam(self):
-        r"""扩展参数
+        r"""<p>扩展参数</p>
         :rtype: str
         """
         return self._ExtraParam
@@ -12481,7 +12293,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def UniqVpcId(self):
-        r"""腾讯云私有网络统一标识
+        r"""<p>腾讯云私有网络统一标识</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -12492,7 +12304,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Vip(self):
-        r"""私有网络ip
+        r"""<p>私有网络ip</p>
         :rtype: str
         """
         return self._Vip
@@ -12503,7 +12315,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Vport(self):
-        r"""私有网络端口
+        r"""<p>私有网络端口</p>
         :rtype: str
         """
         return self._Vport
@@ -12514,7 +12326,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def VpcId(self):
-        r"""腾讯云私有网络标识
+        r"""<p>腾讯云私有网络标识</p>
         :rtype: str
         """
         return self._VpcId
@@ -12525,7 +12337,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def UseVPC(self):
-        r"""开启vpc	
+        r"""<p>开启vpc</p>
         :rtype: bool
         """
         return self._UseVPC
@@ -12536,7 +12348,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def RegionId(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._RegionId
@@ -12547,7 +12359,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def Schema(self):
-        r"""数据库schema
+        r"""<p>数据库schema</p>
         :rtype: str
         """
         return self._Schema
@@ -12558,7 +12370,7 @@ MSSQL：微软SQL Server数据库
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -12613,13 +12425,13 @@ class ModifyDatasourceResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Data: 无
+        :param _Data: <p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
-        :param _Extra: 额外信息
+        :param _Extra: <p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Msg: 提示
+        :param _Msg: <p>提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12645,7 +12457,7 @@ class ModifyDatasourceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""无
+        r"""<p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12657,7 +12469,7 @@ class ModifyDatasourceResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""额外信息
+        r"""<p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12669,7 +12481,7 @@ class ModifyDatasourceResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""提示
+        r"""<p>提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12708,28 +12520,25 @@ class ModifyProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 项目Id
+        :param _Id: <p>项目Id</p>
         :type Id: int
-        :param _Name: 名字
+        :param _Name: <p>名字</p>
         :type Name: str
-        :param _ColorCode: 颜色值
+        :param _ColorCode: <p>颜色值</p>
         :type ColorCode: str
-        :param _Logo: 图标
+        :param _Logo: <p>图标</p>
         :type Logo: str
-        :param _Mark: 备注
+        :param _Mark: <p>备注</p>
         :type Mark: str
-        :param _IsApply: 可申请
+        :param _IsApply: <p>可申请</p>
         :type IsApply: bool
-        :param _Seed: 种子
+        :param _Seed: <p>种子</p>
         :type Seed: str
-        :param _DefaultPanelType: 默认看板
-取值范围：
-1：项目看板 
-2：我的看板
+        :param _DefaultPanelType: <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
         :type DefaultPanelType: int
-        :param _PanelScope: 2
+        :param _PanelScope: <p>2</p>
         :type PanelScope: str
-        :param _ManagePlatform: 项目管理平台
+        :param _ManagePlatform: <p>项目管理平台</p>
         :type ManagePlatform: str
         """
         self._Id = None
@@ -12745,7 +12554,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""项目Id
+        r"""<p>项目Id</p>
         :rtype: int
         """
         return self._Id
@@ -12756,7 +12565,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名字
+        r"""<p>名字</p>
         :rtype: str
         """
         return self._Name
@@ -12767,7 +12576,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ColorCode(self):
-        r"""颜色值
+        r"""<p>颜色值</p>
         :rtype: str
         """
         return self._ColorCode
@@ -12778,7 +12587,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Logo(self):
-        r"""图标
+        r"""<p>图标</p>
         :rtype: str
         """
         return self._Logo
@@ -12789,7 +12598,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Mark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Mark
@@ -12800,7 +12609,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def IsApply(self):
-        r"""可申请
+        r"""<p>可申请</p>
         :rtype: bool
         """
         return self._IsApply
@@ -12811,7 +12620,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Seed(self):
-        r"""种子
+        r"""<p>种子</p>
         :rtype: str
         """
         return self._Seed
@@ -12822,10 +12631,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def DefaultPanelType(self):
-        r"""默认看板
-取值范围：
-1：项目看板 
-2：我的看板
+        r"""<p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
         :rtype: int
         """
         return self._DefaultPanelType
@@ -12836,7 +12642,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def PanelScope(self):
-        r"""2
+        r"""<p>2</p>
         :rtype: str
         """
         return self._PanelScope
@@ -12847,7 +12653,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ManagePlatform(self):
-        r"""项目管理平台
+        r"""<p>项目管理平台</p>
         :rtype: str
         """
         return self._ManagePlatform
@@ -12888,13 +12694,13 @@ class ModifyProjectResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Extra: 额外信息
+        :param _Extra: <p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Data: 返回数据
+        :param _Data: <p>返回数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
-        :param _Msg: 结果
+        :param _Msg: <p>结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12920,7 +12726,7 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""额外信息
+        r"""<p>额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12932,7 +12738,7 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""返回数据
+        r"""<p>返回数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12944,7 +12750,7 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""结果
+        r"""<p>结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14585,28 +14391,19 @@ class PermissionComponent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModuleId: 权限值
+        :param _ModuleId: <p>权限值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModuleId: str
-        :param _IncludeType: 可用性。
-取值范围：
-
-- usable：可用
-- visible：可见
-- disabled：不可用
-- hidden：隐藏
-
-默认值：disabled
-示例值：disabled
+        :param _IncludeType: <p>可用性</p><p>枚举值：</p><ul><li>usable： 可用</li><li>visible： 可见</li><li>disabled： 不可用</li><li>hidden： 隐藏</li></ul><p>默认值：disabled</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeType: str
-        :param _UpgradeVersionType: 目标升级版本
+        :param _UpgradeVersionType: <p>目标升级版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpgradeVersionType: str
-        :param _Tips: 补充信息
+        :param _Tips: <p>补充信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tips: str
-        :param _TipsKey: 补充信息的key值
+        :param _TipsKey: <p>补充信息的key值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TipsKey: str
         """
@@ -14618,7 +14415,7 @@ class PermissionComponent(AbstractModel):
 
     @property
     def ModuleId(self):
-        r"""权限值
+        r"""<p>权限值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14630,16 +14427,7 @@ class PermissionComponent(AbstractModel):
 
     @property
     def IncludeType(self):
-        r"""可用性。
-取值范围：
-
-- usable：可用
-- visible：可见
-- disabled：不可用
-- hidden：隐藏
-
-默认值：disabled
-示例值：disabled
+        r"""<p>可用性</p><p>枚举值：</p><ul><li>usable： 可用</li><li>visible： 可见</li><li>disabled： 不可用</li><li>hidden： 隐藏</li></ul><p>默认值：disabled</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14651,7 +14439,7 @@ class PermissionComponent(AbstractModel):
 
     @property
     def UpgradeVersionType(self):
-        r"""目标升级版本
+        r"""<p>目标升级版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14663,7 +14451,7 @@ class PermissionComponent(AbstractModel):
 
     @property
     def Tips(self):
-        r"""补充信息
+        r"""<p>补充信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14675,7 +14463,7 @@ class PermissionComponent(AbstractModel):
 
     @property
     def TipsKey(self):
-        r"""补充信息的key值
+        r"""<p>补充信息的key值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15329,22 +15117,13 @@ class ProjectConfigResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModuleId: 配置名称
+        :param _ModuleId: <p>配置名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModuleId: str
-        :param _IncludeType: 配置方式。
-取值范围：
-
-- usable：可用
-- visible：可见
-- disabled：不可用
-- hidden：隐藏
-
-默认值：disabled
-示例值：disabled
+        :param _IncludeType: <p>配置方式</p><p>枚举值：</p><ul><li>usable： 可用</li><li>visible： 可见</li><li>disabled： 不可用</li><li>hidden： 隐藏</li></ul><p>默认值：disabled</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeType: str
-        :param _Params: 额外参数
+        :param _Params: <p>额外参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Params: str
         """
@@ -15354,7 +15133,7 @@ class ProjectConfigResult(AbstractModel):
 
     @property
     def ModuleId(self):
-        r"""配置名称
+        r"""<p>配置名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15366,16 +15145,7 @@ class ProjectConfigResult(AbstractModel):
 
     @property
     def IncludeType(self):
-        r"""配置方式。
-取值范围：
-
-- usable：可用
-- visible：可见
-- disabled：不可用
-- hidden：隐藏
-
-默认值：disabled
-示例值：disabled
+        r"""<p>配置方式</p><p>枚举值：</p><ul><li>usable： 可用</li><li>visible： 可见</li><li>disabled： 不可用</li><li>hidden： 隐藏</li></ul><p>默认值：disabled</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15387,7 +15157,7 @@ class ProjectConfigResult(AbstractModel):
 
     @property
     def Params(self):
-        r"""额外参数
+        r"""<p>额外参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18556,78 +18326,71 @@ class UserIdAndUserName(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户ID
+        :param _UserId: <p>用户ID</p>
         :type UserId: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _CorpId: 企业ID
+        :param _CorpId: <p>企业ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: str
-        :param _Email: 电子邮箱
+        :param _Email: <p>电子邮箱</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
-        :param _LastLogin: 最后一次登录时间
+        :param _LastLogin: <p>最后一次登录时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastLogin: str
-        :param _Status: 用户状态。
-取值范围：
-
-- 1：启用
-- 0：停用
-
-默认值：1
-示例值：1
+        :param _Status: <p>用户状态</p><p>枚举值：</p><ul><li>1： 启用</li><li>0： 停用</li></ul><p>默认值：1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _FirstModify: 首次登录是否修改密码
+        :param _FirstModify: <p>首次登录是否修改密码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstModify: int
-        :param _PhoneNumber: 手机号码
+        :param _PhoneNumber: <p>手机号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneNumber: str
-        :param _AreaCode: 手机区号
+        :param _AreaCode: <p>手机区号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCode: str
-        :param _CreatedUser: 创建人
+        :param _CreatedUser: <p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedUser: str
-        :param _CreatedAt: 创建时间
+        :param _CreatedAt: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param _UpdatedUser: 修改人
+        :param _UpdatedUser: <p>修改人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedUser: str
-        :param _UpdatedAt: 更改时间
+        :param _UpdatedAt: <p>更改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param _GlobalUserName: 系统全局角色
+        :param _GlobalUserName: <p>系统全局角色</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalUserName: str
-        :param _GlobalUserCode: 系统全局角色编码
+        :param _GlobalUserCode: <p>系统全局角色编码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GlobalUserCode: str
-        :param _Mobile: 手机号
+        :param _Mobile: <p>手机号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mobile: str
-        :param _AppId: 1
+        :param _AppId: <p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
-        :param _AppUserId: 1
+        :param _AppUserId: <p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppUserId: str
-        :param _AppUserAliasName: 1
+        :param _AppUserAliasName: <p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppUserAliasName: str
-        :param _AppUserName: 1
+        :param _AppUserName: <p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppUserName: str
-        :param _InValidateAppRange: 1
+        :param _InValidateAppRange: <p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InValidateAppRange: bool
-        :param _EmailActivationStatus: -1 免激活  0 未激活  1 已激活 空代表待绑定
+        :param _EmailActivationStatus: <p>-1 免激活  0 未激活  1 已激活 空代表待绑定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmailActivationStatus: int
-        :param _Id: 1
+        :param _Id: <p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         """
@@ -18657,7 +18420,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: str
         """
         return self._UserId
@@ -18668,7 +18431,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -18679,7 +18442,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def CorpId(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18691,7 +18454,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def Email(self):
-        r"""电子邮箱
+        r"""<p>电子邮箱</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18703,7 +18466,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def LastLogin(self):
-        r"""最后一次登录时间
+        r"""<p>最后一次登录时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18715,14 +18478,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def Status(self):
-        r"""用户状态。
-取值范围：
-
-- 1：启用
-- 0：停用
-
-默认值：1
-示例值：1
+        r"""<p>用户状态</p><p>枚举值：</p><ul><li>1： 启用</li><li>0： 停用</li></ul><p>默认值：1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18734,7 +18490,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def FirstModify(self):
-        r"""首次登录是否修改密码
+        r"""<p>首次登录是否修改密码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18746,7 +18502,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        r"""手机号码
+        r"""<p>手机号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18758,7 +18514,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AreaCode(self):
-        r"""手机区号
+        r"""<p>手机区号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18770,7 +18526,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def CreatedUser(self):
-        r"""创建人
+        r"""<p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18782,7 +18538,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18794,7 +18550,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def UpdatedUser(self):
-        r"""修改人
+        r"""<p>修改人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18806,7 +18562,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""更改时间
+        r"""<p>更改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18818,7 +18574,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def GlobalUserName(self):
-        r"""系统全局角色
+        r"""<p>系统全局角色</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18830,7 +18586,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def GlobalUserCode(self):
-        r"""系统全局角色编码
+        r"""<p>系统全局角色编码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18842,7 +18598,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def Mobile(self):
-        r"""手机号
+        r"""<p>手机号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18854,7 +18610,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AppId(self):
-        r"""1
+        r"""<p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18866,7 +18622,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AppUserId(self):
-        r"""1
+        r"""<p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18878,7 +18634,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AppUserAliasName(self):
-        r"""1
+        r"""<p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18890,7 +18646,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def AppUserName(self):
-        r"""1
+        r"""<p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18902,7 +18658,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def InValidateAppRange(self):
-        r"""1
+        r"""<p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -18914,7 +18670,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def EmailActivationStatus(self):
-        r"""-1 免激活  0 未激活  1 已激活 空代表待绑定
+        r"""<p>-1 免激活  0 未激活  1 已激活 空代表待绑定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18926,7 +18682,7 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def Id(self):
-        r"""1
+        r"""<p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
