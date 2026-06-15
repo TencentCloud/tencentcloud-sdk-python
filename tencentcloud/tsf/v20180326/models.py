@@ -815,6 +815,9 @@ class ApiDetailInfo(AbstractModel):
         :type PathMappingUnsupported: bool
         :param _PathMappingUnsupportedMsg: <p>禁用短路径访问开关原因</p>
         :type PathMappingUnsupportedMsg: str
+        :param _ApiOnlineStatus: <p>API在线状态</p><p>枚举值：</p><ul><li>ONLINE： 在线</li><li>OFFLINE： 离线</li><li>UNKNOWN： 未知</li><li>DELETED： 查询服务治理API不存在</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiOnlineStatus: str
         """
         self._ApiId = None
         self._NamespaceId = None
@@ -844,6 +847,7 @@ class ApiDetailInfo(AbstractModel):
         self._RpcType = None
         self._PathMappingUnsupported = None
         self._PathMappingUnsupportedMsg = None
+        self._ApiOnlineStatus = None
 
     @property
     def ApiId(self):
@@ -1179,6 +1183,18 @@ class ApiDetailInfo(AbstractModel):
     def PathMappingUnsupportedMsg(self, PathMappingUnsupportedMsg):
         self._PathMappingUnsupportedMsg = PathMappingUnsupportedMsg
 
+    @property
+    def ApiOnlineStatus(self):
+        r"""<p>API在线状态</p><p>枚举值：</p><ul><li>ONLINE： 在线</li><li>OFFLINE： 离线</li><li>UNKNOWN： 未知</li><li>DELETED： 查询服务治理API不存在</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApiOnlineStatus
+
+    @ApiOnlineStatus.setter
+    def ApiOnlineStatus(self, ApiOnlineStatus):
+        self._ApiOnlineStatus = ApiOnlineStatus
+
 
     def _deserialize(self, params):
         self._ApiId = params.get("ApiId")
@@ -1209,6 +1225,7 @@ class ApiDetailInfo(AbstractModel):
         self._RpcType = params.get("RpcType")
         self._PathMappingUnsupported = params.get("PathMappingUnsupported")
         self._PathMappingUnsupportedMsg = params.get("PathMappingUnsupportedMsg")
+        self._ApiOnlineStatus = params.get("ApiOnlineStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1831,6 +1848,57 @@ class ApiInfo(AbstractModel):
         self._PathMapping = params.get("PathMapping")
         self._Host = params.get("Host")
         self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiParam(AbstractModel):
+    r"""API 参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Method: <p>接口Method</p>
+        :type Method: str
+        :param _Path: <p>接口Path</p>
+        :type Path: str
+        """
+        self._Method = None
+        self._Path = None
+
+    @property
+    def Method(self):
+        r"""<p>接口Method</p>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Path(self):
+        r"""<p>接口Path</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._Method = params.get("Method")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13384,20 +13452,32 @@ class CreateMicroserviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+        :param _NamespaceId: <p>命名空间ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/649/36096">DescribeSimpleNamespaces</a> 的返回值中的 NamespaceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tsf/resource?tab=namespace">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
         :type NamespaceId: str
-        :param _MicroserviceName: 微服务名称。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+        :param _MicroserviceName: <p>微服务名称。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/36084">DescribeMicroservices</a> 的返回值中的 MicroserviceName 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=service">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/85860">CreateMicroserviceWithDetailResp</a>创建新的微服务。</p>
         :type MicroserviceName: str
-        :param _MicroserviceDesc: 微服务备注信息，最多支持200个字符。
+        :param _MicroserviceDesc: <p>微服务备注信息，最多支持200个字符。</p>
         :type MicroserviceDesc: str
+        :param _ServiceType: <p>服务类型，默认SDK</p><p>枚举值：</p><ul><li>SDK： sdk服务</li><li>MESH_EXTERNAL： mesh外部服务</li></ul>
+        :type ServiceType: str
+        :param _ServiceUrl: <p>域名+端口，或者是纯域名方式，其他的不允许配置，不支持 IP</p>
+        :type ServiceUrl: str
+        :param _Protocol: <p>协议类型</p>
+        :type Protocol: str
+        :param _ServiceDiscovery: <p>服务发现方式</p><p>枚举值：</p><ul><li>DNS： DNS方式</li></ul>
+        :type ServiceDiscovery: str
         """
         self._NamespaceId = None
         self._MicroserviceName = None
         self._MicroserviceDesc = None
+        self._ServiceType = None
+        self._ServiceUrl = None
+        self._Protocol = None
+        self._ServiceDiscovery = None
 
     @property
     def NamespaceId(self):
-        r"""命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+        r"""<p>命名空间ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/649/36096">DescribeSimpleNamespaces</a> 的返回值中的 NamespaceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tsf/resource?tab=namespace">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
         :rtype: str
         """
         return self._NamespaceId
@@ -13408,7 +13488,7 @@ class CreateMicroserviceRequest(AbstractModel):
 
     @property
     def MicroserviceName(self):
-        r"""微服务名称。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+        r"""<p>微服务名称。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/36084">DescribeMicroservices</a> 的返回值中的 MicroserviceName 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=service">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/85860">CreateMicroserviceWithDetailResp</a>创建新的微服务。</p>
         :rtype: str
         """
         return self._MicroserviceName
@@ -13419,7 +13499,7 @@ class CreateMicroserviceRequest(AbstractModel):
 
     @property
     def MicroserviceDesc(self):
-        r"""微服务备注信息，最多支持200个字符。
+        r"""<p>微服务备注信息，最多支持200个字符。</p>
         :rtype: str
         """
         return self._MicroserviceDesc
@@ -13428,11 +13508,59 @@ class CreateMicroserviceRequest(AbstractModel):
     def MicroserviceDesc(self, MicroserviceDesc):
         self._MicroserviceDesc = MicroserviceDesc
 
+    @property
+    def ServiceType(self):
+        r"""<p>服务类型，默认SDK</p><p>枚举值：</p><ul><li>SDK： sdk服务</li><li>MESH_EXTERNAL： mesh外部服务</li></ul>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceUrl(self):
+        r"""<p>域名+端口，或者是纯域名方式，其他的不允许配置，不支持 IP</p>
+        :rtype: str
+        """
+        return self._ServiceUrl
+
+    @ServiceUrl.setter
+    def ServiceUrl(self, ServiceUrl):
+        self._ServiceUrl = ServiceUrl
+
+    @property
+    def Protocol(self):
+        r"""<p>协议类型</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ServiceDiscovery(self):
+        r"""<p>服务发现方式</p><p>枚举值：</p><ul><li>DNS： DNS方式</li></ul>
+        :rtype: str
+        """
+        return self._ServiceDiscovery
+
+    @ServiceDiscovery.setter
+    def ServiceDiscovery(self, ServiceDiscovery):
+        self._ServiceDiscovery = ServiceDiscovery
+
 
     def _deserialize(self, params):
         self._NamespaceId = params.get("NamespaceId")
         self._MicroserviceName = params.get("MicroserviceName")
         self._MicroserviceDesc = params.get("MicroserviceDesc")
+        self._ServiceType = params.get("ServiceType")
+        self._ServiceUrl = params.get("ServiceUrl")
+        self._Protocol = params.get("Protocol")
+        self._ServiceDiscovery = params.get("ServiceDiscovery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13450,9 +13578,7 @@ class CreateMicroserviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 新增结果。
-true：操作成功。
-false：操作失败。
+        :param _Result: <p>新增结果。<br>true：操作成功。<br>false：操作失败。</p>
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13462,9 +13588,7 @@ false：操作失败。
 
     @property
     def Result(self):
-        r"""新增结果。
-true：操作成功。
-false：操作失败。
+        r"""<p>新增结果。<br>true：操作成功。<br>false：操作失败。</p>
         :rtype: bool
         """
         return self._Result
@@ -13497,20 +13621,32 @@ class CreateMicroserviceWithDetailRespRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamespaceId: 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+        :param _NamespaceId: <p>命名空间ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/649/36096">DescribeSimpleNamespaces</a> 的返回值中的 NamespaceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tsf/resource?tab=namespace">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
         :type NamespaceId: str
-        :param _MicroserviceName: 微服务名称，最多支持128个字符。
+        :param _MicroserviceName: <p>微服务名称，最多支持128个字符。</p>
         :type MicroserviceName: str
-        :param _MicroserviceDesc: 微服务描述信息，最多支持200个字符。
+        :param _MicroserviceDesc: <p>微服务描述信息，最多支持200个字符。</p>
         :type MicroserviceDesc: str
+        :param _ServiceType: <p>服务类型，默认SDK</p><p>枚举值：</p><ul><li>SDK： sdk服务</li><li>MESH_EXTERNAL： mesh外部服务</li></ul>
+        :type ServiceType: str
+        :param _ServiceUrl: <p>域名+端口，或者是纯域名方式，其他的不允许配置，不支持 IP</p>
+        :type ServiceUrl: str
+        :param _Protocol: <p>协议类型</p>
+        :type Protocol: str
+        :param _ServiceDiscovery: <p>服务发现方式</p><p>枚举值：</p><ul><li>DNS： DNS方式</li></ul>
+        :type ServiceDiscovery: str
         """
         self._NamespaceId = None
         self._MicroserviceName = None
         self._MicroserviceDesc = None
+        self._ServiceType = None
+        self._ServiceUrl = None
+        self._Protocol = None
+        self._ServiceDiscovery = None
 
     @property
     def NamespaceId(self):
-        r"""命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+        r"""<p>命名空间ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/649/36096">DescribeSimpleNamespaces</a> 的返回值中的 NamespaceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tsf/resource?tab=namespace">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
         :rtype: str
         """
         return self._NamespaceId
@@ -13521,7 +13657,7 @@ class CreateMicroserviceWithDetailRespRequest(AbstractModel):
 
     @property
     def MicroserviceName(self):
-        r"""微服务名称，最多支持128个字符。
+        r"""<p>微服务名称，最多支持128个字符。</p>
         :rtype: str
         """
         return self._MicroserviceName
@@ -13532,7 +13668,7 @@ class CreateMicroserviceWithDetailRespRequest(AbstractModel):
 
     @property
     def MicroserviceDesc(self):
-        r"""微服务描述信息，最多支持200个字符。
+        r"""<p>微服务描述信息，最多支持200个字符。</p>
         :rtype: str
         """
         return self._MicroserviceDesc
@@ -13541,11 +13677,59 @@ class CreateMicroserviceWithDetailRespRequest(AbstractModel):
     def MicroserviceDesc(self, MicroserviceDesc):
         self._MicroserviceDesc = MicroserviceDesc
 
+    @property
+    def ServiceType(self):
+        r"""<p>服务类型，默认SDK</p><p>枚举值：</p><ul><li>SDK： sdk服务</li><li>MESH_EXTERNAL： mesh外部服务</li></ul>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceUrl(self):
+        r"""<p>域名+端口，或者是纯域名方式，其他的不允许配置，不支持 IP</p>
+        :rtype: str
+        """
+        return self._ServiceUrl
+
+    @ServiceUrl.setter
+    def ServiceUrl(self, ServiceUrl):
+        self._ServiceUrl = ServiceUrl
+
+    @property
+    def Protocol(self):
+        r"""<p>协议类型</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ServiceDiscovery(self):
+        r"""<p>服务发现方式</p><p>枚举值：</p><ul><li>DNS： DNS方式</li></ul>
+        :rtype: str
+        """
+        return self._ServiceDiscovery
+
+    @ServiceDiscovery.setter
+    def ServiceDiscovery(self, ServiceDiscovery):
+        self._ServiceDiscovery = ServiceDiscovery
+
 
     def _deserialize(self, params):
         self._NamespaceId = params.get("NamespaceId")
         self._MicroserviceName = params.get("MicroserviceName")
         self._MicroserviceDesc = params.get("MicroserviceDesc")
+        self._ServiceType = params.get("ServiceType")
+        self._ServiceUrl = params.get("ServiceUrl")
+        self._Protocol = params.get("Protocol")
+        self._ServiceDiscovery = params.get("ServiceDiscovery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13563,7 +13747,7 @@ class CreateMicroserviceWithDetailRespResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 微服务ID。
+        :param _Result: <p>微服务ID。</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13573,7 +13757,7 @@ class CreateMicroserviceWithDetailRespResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""微服务ID。
+        r"""<p>微服务ID。</p>
         :rtype: str
         """
         return self._Result
@@ -17494,130 +17678,132 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: <p>应用ID</p>
         :type ApplicationId: str
-        :param _ObservabilityConfig: 可观测配置
+        :param _ObservabilityConfig: <p>可观测配置</p>
         :type ObservabilityConfig: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupObservabilityConfig`
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _GroupId: 部署组ID，分组唯一标识
+        :param _GroupId: <p>部署组ID，分组唯一标识</p>
         :type GroupId: str
-        :param _Envs: 业务容器的环境变量参数
+        :param _Envs: <p>业务容器的环境变量参数</p>
         :type Envs: list of Env
-        :param _VolumeMountInfoList: 业务容器的挂载信息
+        :param _VolumeMountInfoList: <p>业务容器的挂载信息</p>
         :type VolumeMountInfoList: list of VolumeMountInfo
-        :param _LifeCycleHookList: 业务主容器生命周期钩子列表
+        :param _LifeCycleHookList: <p>业务主容器生命周期钩子列表</p>
         :type LifeCycleHookList: list of LifeCycleHook
-        :param _AdditionalContainerList: 附属容器列表
+        :param _AdditionalContainerList: <p>附属容器列表</p>
         :type AdditionalContainerList: list of ContainerInfo
-        :param _VolumeInfoList: 容器卷信息
+        :param _VolumeInfoList: <p>容器卷信息</p>
         :type VolumeInfoList: list of VolumeInfo
-        :param _ServiceSettingList: Service访问配置列表
+        :param _ServiceSettingList: <p>Service访问配置列表</p>
         :type ServiceSettingList: list of ServiceSetting
-        :param _Alias: 备注
+        :param _Alias: <p>备注</p>
         :type Alias: str
-        :param _GroupName: 部署组名称
+        :param _GroupName: <p>部署组名称</p>
         :type GroupName: str
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
-        :param _ContainerKind: 容器类型
+        :param _ContainerKind: <p>容器类型</p>
         :type ContainerKind: str
-        :param _Server: 业务容器的 镜像Server ccr.ccs.tencentyun.com
+        :param _Server: <p>业务容器的 镜像Server ccr.ccs.tencentyun.com</p>
         :type Server: str
-        :param _RepoName: 业务容器的镜像名
+        :param _RepoName: <p>业务容器的镜像名</p>
         :type RepoName: str
-        :param _RepoType: 仓库类型
+        :param _RepoType: <p>仓库类型</p>
         :type RepoType: str
-        :param _TcrRepoInfo: TCR仓库信息
+        :param _TcrRepoInfo: <p>TCR仓库信息</p>
         :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
-        :param _SecretName: 容器访问凭证名称
+        :param _SecretName: <p>容器访问凭证名称</p>
         :type SecretName: str
-        :param _TagName: 业务容器的镜像版本号
+        :param _TagName: <p>业务容器的镜像版本号</p>
         :type TagName: str
-        :param _HealthCheckSettings: 健康检查
+        :param _HealthCheckSettings: <p>健康检查</p>
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
-        :param _CpuRequest: 业务容器的 cpu  request
+        :param _CpuRequest: <p>业务容器的 cpu  request</p>
         :type CpuRequest: str
-        :param _CpuLimit: 业务容器的 cpu limit
+        :param _CpuLimit: <p>业务容器的 cpu limit</p>
         :type CpuLimit: str
-        :param _MemRequest: 业务容器的 mem request
+        :param _MemRequest: <p>业务容器的 mem request</p>
         :type MemRequest: str
-        :param _MemLimit: 业务容器的 mem limit
+        :param _MemLimit: <p>业务容器的 mem limit</p>
         :type MemLimit: str
-        :param _JvmOpts: 业务容器的 jvm 参数
+        :param _JvmOpts: <p>业务容器的 jvm 参数</p>
         :type JvmOpts: str
-        :param _InitContainerEnable: 是否为初始化容器 业务主容器不能为初始化容
+        :param _InitContainerEnable: <p>是否为初始化容器 业务主容器不能为初始化容</p>
         :type InitContainerEnable: bool
-        :param _PrivilegeContainerEnable: 业务主容器是否为特权容器
+        :param _PrivilegeContainerEnable: <p>业务主容器是否为特权容器</p>
         :type PrivilegeContainerEnable: bool
-        :param _RunCommand: 业务主容器运行命令(转base64)
+        :param _RunCommand: <p>业务主容器运行命令(转base64)</p>
         :type RunCommand: str
-        :param _RunArg: 业务主容器运行参数(转base64)
+        :param _RunArg: <p>业务主容器运行参数(转base64)</p>
         :type RunArg: str
-        :param _InstanceNum: 实例数量
+        :param _InstanceNum: <p>实例数量</p>
         :type InstanceNum: int
-        :param _SchedulingStrategy: 调度策略
+        :param _SchedulingStrategy: <p>调度策略</p>
         :type SchedulingStrategy: :class:`tencentcloud.tsf.v20180326.models.SchedulingStrategy`
-        :param _RestartPolicy: 重启策略
+        :param _RestartPolicy: <p>重启策略</p>
         :type RestartPolicy: str
-        :param _ServiceSpecEncode: 服务治理配置
+        :param _ServiceSpecEncode: <p>服务治理配置</p>
         :type ServiceSpecEncode: str
-        :param _IstioMemRequest: istio容器的 mem Request
+        :param _IstioMemRequest: <p>istio容器的 mem Request</p>
         :type IstioMemRequest: str
-        :param _IstioCpuRequest:  istio容器的 cpu Request
+        :param _IstioCpuRequest: <p>istio容器的 cpu Request</p>
         :type IstioCpuRequest: str
-        :param _IstioMemLimit: istio容器的 mem Limit
+        :param _IstioMemLimit: <p>istio容器的 mem Limit</p>
         :type IstioMemLimit: str
-        :param _IstioCpuLimit: istio容器的 cpu Limit
+        :param _IstioCpuLimit: <p>istio容器的 cpu Limit</p>
         :type IstioCpuLimit: str
-        :param _ServiceGovernanceConfig: 服务治理配置
+        :param _ServiceGovernanceConfig: <p>服务治理配置</p>
         :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupServiceGovernanceConfig`
-        :param _AgentMemRequest: agent容器的 mem Request
+        :param _AgentMemRequest: <p>agent容器的 mem Request</p>
         :type AgentMemRequest: str
-        :param _AgentCpuRequest: agent容器的 cpu Request
+        :param _AgentCpuRequest: <p>agent容器的 cpu Request</p>
         :type AgentCpuRequest: str
-        :param _AgentMemLimit: agent容器的 mem Limit
+        :param _AgentMemLimit: <p>agent容器的 mem Limit</p>
         :type AgentMemLimit: str
-        :param _AgentCpuLimit: agent容器的 cpu Limit
+        :param _AgentCpuLimit: <p>agent容器的 cpu Limit</p>
         :type AgentCpuLimit: str
-        :param _UpdateType: 发布策略(0表示快速更新，1表示滚动更新。默认值为0)
+        :param _UpdateType: <p>发布策略(0表示快速更新，1表示滚动更新。默认值为0)</p>
         :type UpdateType: int
-        :param _UpdateIvl: 更新间隔,单位秒
+        :param _UpdateIvl: <p>更新间隔,单位秒</p>
         :type UpdateIvl: int
-        :param _MaxSurge: 对应更新策略和策略配置参数
+        :param _MaxSurge: <p>对应更新策略和策略配置参数</p>
         :type MaxSurge: str
-        :param _MaxUnavailable: 对应更新策略和策略配置参数
+        :param _MaxUnavailable: <p>对应更新策略和策略配置参数</p>
         :type MaxUnavailable: str
-        :param _WarmupSetting: 预热参数配置
+        :param _WarmupSetting: <p>预热参数配置</p>
         :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
-        :param _ConfigTemplateId: 配置模版ID
+        :param _ConfigTemplateId: <p>配置模版ID</p>
         :type ConfigTemplateId: str
-        :param _ConfigTemplateVersion: 配置模版Version
+        :param _ConfigTemplateVersion: <p>配置模版Version</p>
         :type ConfigTemplateVersion: int
-        :param _VolumeClean: 是否清除数据卷信息
+        :param _VolumeClean: <p>是否清除数据卷信息</p>
         :type VolumeClean: bool
-        :param _NamespaceId: 命名空间Id
+        :param _NamespaceId: <p>命名空间Id</p>
         :type NamespaceId: str
-        :param _DeployAgent: 是否部署agent容器
+        :param _DeployAgent: <p>是否部署agent容器</p>
         :type DeployAgent: bool
-        :param _AgentProfileList: javaagent信息: SERVICE_AGENT/OT_AGENT
+        :param _AgentProfileList: <p>javaagent信息: SERVICE_AGENT/OT_AGENT</p>
         :type AgentProfileList: list of AgentProfile
-        :param _ServiceClean: 是否清除Service信息
+        :param _ServiceClean: <p>是否清除Service信息</p>
         :type ServiceClean: bool
-        :param _EnvClean: 是否清除Env信息
+        :param _EnvClean: <p>是否清除Env信息</p>
         :type EnvClean: bool
-        :param _DeployDesc: 本次部署的描述信息
+        :param _DeployDesc: <p>本次部署的描述信息</p>
         :type DeployDesc: str
-        :param _K8sNamespaceName: k8s命名空间名称
+        :param _K8sNamespaceName: <p>k8s命名空间名称</p>
         :type K8sNamespaceName: str
-        :param _StaticIpEnabled: 是否启用静态IP
+        :param _StaticIpEnabled: <p>是否启用静态IP</p>
         :type StaticIpEnabled: bool
-        :param _PodManagementPolicyType: 启动策略[OrderedReady/Parallel]
+        :param _PodManagementPolicyType: <p>启动策略[OrderedReady/Parallel]</p>
         :type PodManagementPolicyType: str
-        :param _Partition: 滚动更新分区序号
+        :param _Partition: <p>滚动更新分区序号</p>
         :type Partition: int
-        :param _IncrementalDeployment: 是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数
+        :param _IncrementalDeployment: <p>是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数</p>
         :type IncrementalDeployment: bool
+        :param _DoNotStart: <p>是否不立即启动</p>
+        :type DoNotStart: bool
         """
         self._ApplicationId = None
         self._ObservabilityConfig = None
@@ -17681,10 +17867,11 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._PodManagementPolicyType = None
         self._Partition = None
         self._IncrementalDeployment = None
+        self._DoNotStart = None
 
     @property
     def ApplicationId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -17695,7 +17882,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def ObservabilityConfig(self):
-        r"""可观测配置
+        r"""<p>可观测配置</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupObservabilityConfig`
         """
         return self._ObservabilityConfig
@@ -17706,7 +17893,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -17717,7 +17904,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""部署组ID，分组唯一标识
+        r"""<p>部署组ID，分组唯一标识</p>
         :rtype: str
         """
         return self._GroupId
@@ -17728,7 +17915,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def Envs(self):
-        r"""业务容器的环境变量参数
+        r"""<p>业务容器的环境变量参数</p>
         :rtype: list of Env
         """
         return self._Envs
@@ -17739,7 +17926,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def VolumeMountInfoList(self):
-        r"""业务容器的挂载信息
+        r"""<p>业务容器的挂载信息</p>
         :rtype: list of VolumeMountInfo
         """
         return self._VolumeMountInfoList
@@ -17750,7 +17937,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def LifeCycleHookList(self):
-        r"""业务主容器生命周期钩子列表
+        r"""<p>业务主容器生命周期钩子列表</p>
         :rtype: list of LifeCycleHook
         """
         return self._LifeCycleHookList
@@ -17761,7 +17948,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def AdditionalContainerList(self):
-        r"""附属容器列表
+        r"""<p>附属容器列表</p>
         :rtype: list of ContainerInfo
         """
         return self._AdditionalContainerList
@@ -17772,7 +17959,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def VolumeInfoList(self):
-        r"""容器卷信息
+        r"""<p>容器卷信息</p>
         :rtype: list of VolumeInfo
         """
         return self._VolumeInfoList
@@ -17783,7 +17970,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def ServiceSettingList(self):
-        r"""Service访问配置列表
+        r"""<p>Service访问配置列表</p>
         :rtype: list of ServiceSetting
         """
         return self._ServiceSettingList
@@ -17794,7 +17981,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def Alias(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Alias
@@ -17805,7 +17992,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""部署组名称
+        r"""<p>部署组名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -17816,7 +18003,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -17827,7 +18014,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def ContainerKind(self):
-        r"""容器类型
+        r"""<p>容器类型</p>
         :rtype: str
         """
         return self._ContainerKind
@@ -17838,7 +18025,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def Server(self):
-        r"""业务容器的 镜像Server ccr.ccs.tencentyun.com
+        r"""<p>业务容器的 镜像Server ccr.ccs.tencentyun.com</p>
         :rtype: str
         """
         return self._Server
@@ -17849,7 +18036,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def RepoName(self):
-        r"""业务容器的镜像名
+        r"""<p>业务容器的镜像名</p>
         :rtype: str
         """
         return self._RepoName
@@ -17860,7 +18047,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def RepoType(self):
-        r"""仓库类型
+        r"""<p>仓库类型</p>
         :rtype: str
         """
         return self._RepoType
@@ -17871,7 +18058,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def TcrRepoInfo(self):
-        r"""TCR仓库信息
+        r"""<p>TCR仓库信息</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
         """
         return self._TcrRepoInfo
@@ -17882,7 +18069,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def SecretName(self):
-        r"""容器访问凭证名称
+        r"""<p>容器访问凭证名称</p>
         :rtype: str
         """
         return self._SecretName
@@ -17893,7 +18080,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def TagName(self):
-        r"""业务容器的镜像版本号
+        r"""<p>业务容器的镜像版本号</p>
         :rtype: str
         """
         return self._TagName
@@ -17904,7 +18091,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def HealthCheckSettings(self):
-        r"""健康检查
+        r"""<p>健康检查</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         """
         return self._HealthCheckSettings
@@ -17915,7 +18102,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def CpuRequest(self):
-        r"""业务容器的 cpu  request
+        r"""<p>业务容器的 cpu  request</p>
         :rtype: str
         """
         return self._CpuRequest
@@ -17926,7 +18113,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def CpuLimit(self):
-        r"""业务容器的 cpu limit
+        r"""<p>业务容器的 cpu limit</p>
         :rtype: str
         """
         return self._CpuLimit
@@ -17937,7 +18124,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def MemRequest(self):
-        r"""业务容器的 mem request
+        r"""<p>业务容器的 mem request</p>
         :rtype: str
         """
         return self._MemRequest
@@ -17948,7 +18135,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def MemLimit(self):
-        r"""业务容器的 mem limit
+        r"""<p>业务容器的 mem limit</p>
         :rtype: str
         """
         return self._MemLimit
@@ -17959,7 +18146,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def JvmOpts(self):
-        r"""业务容器的 jvm 参数
+        r"""<p>业务容器的 jvm 参数</p>
         :rtype: str
         """
         return self._JvmOpts
@@ -17970,7 +18157,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def InitContainerEnable(self):
-        r"""是否为初始化容器 业务主容器不能为初始化容
+        r"""<p>是否为初始化容器 业务主容器不能为初始化容</p>
         :rtype: bool
         """
         return self._InitContainerEnable
@@ -17981,7 +18168,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def PrivilegeContainerEnable(self):
-        r"""业务主容器是否为特权容器
+        r"""<p>业务主容器是否为特权容器</p>
         :rtype: bool
         """
         return self._PrivilegeContainerEnable
@@ -17992,7 +18179,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def RunCommand(self):
-        r"""业务主容器运行命令(转base64)
+        r"""<p>业务主容器运行命令(转base64)</p>
         :rtype: str
         """
         return self._RunCommand
@@ -18003,7 +18190,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def RunArg(self):
-        r"""业务主容器运行参数(转base64)
+        r"""<p>业务主容器运行参数(转base64)</p>
         :rtype: str
         """
         return self._RunArg
@@ -18014,7 +18201,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
-        r"""实例数量
+        r"""<p>实例数量</p>
         :rtype: int
         """
         return self._InstanceNum
@@ -18025,7 +18212,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def SchedulingStrategy(self):
-        r"""调度策略
+        r"""<p>调度策略</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.SchedulingStrategy`
         """
         return self._SchedulingStrategy
@@ -18036,7 +18223,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def RestartPolicy(self):
-        r"""重启策略
+        r"""<p>重启策略</p>
         :rtype: str
         """
         return self._RestartPolicy
@@ -18047,7 +18234,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def ServiceSpecEncode(self):
-        r"""服务治理配置
+        r"""<p>服务治理配置</p>
         :rtype: str
         """
         return self._ServiceSpecEncode
@@ -18058,7 +18245,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def IstioMemRequest(self):
-        r"""istio容器的 mem Request
+        r"""<p>istio容器的 mem Request</p>
         :rtype: str
         """
         return self._IstioMemRequest
@@ -18069,7 +18256,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def IstioCpuRequest(self):
-        r""" istio容器的 cpu Request
+        r"""<p>istio容器的 cpu Request</p>
         :rtype: str
         """
         return self._IstioCpuRequest
@@ -18080,7 +18267,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def IstioMemLimit(self):
-        r"""istio容器的 mem Limit
+        r"""<p>istio容器的 mem Limit</p>
         :rtype: str
         """
         return self._IstioMemLimit
@@ -18091,7 +18278,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def IstioCpuLimit(self):
-        r"""istio容器的 cpu Limit
+        r"""<p>istio容器的 cpu Limit</p>
         :rtype: str
         """
         return self._IstioCpuLimit
@@ -18102,7 +18289,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def ServiceGovernanceConfig(self):
-        r"""服务治理配置
+        r"""<p>服务治理配置</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupServiceGovernanceConfig`
         """
         return self._ServiceGovernanceConfig
@@ -18113,7 +18300,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def AgentMemRequest(self):
-        r"""agent容器的 mem Request
+        r"""<p>agent容器的 mem Request</p>
         :rtype: str
         """
         return self._AgentMemRequest
@@ -18124,7 +18311,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def AgentCpuRequest(self):
-        r"""agent容器的 cpu Request
+        r"""<p>agent容器的 cpu Request</p>
         :rtype: str
         """
         return self._AgentCpuRequest
@@ -18135,7 +18322,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def AgentMemLimit(self):
-        r"""agent容器的 mem Limit
+        r"""<p>agent容器的 mem Limit</p>
         :rtype: str
         """
         return self._AgentMemLimit
@@ -18146,7 +18333,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def AgentCpuLimit(self):
-        r"""agent容器的 cpu Limit
+        r"""<p>agent容器的 cpu Limit</p>
         :rtype: str
         """
         return self._AgentCpuLimit
@@ -18157,7 +18344,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def UpdateType(self):
-        r"""发布策略(0表示快速更新，1表示滚动更新。默认值为0)
+        r"""<p>发布策略(0表示快速更新，1表示滚动更新。默认值为0)</p>
         :rtype: int
         """
         return self._UpdateType
@@ -18168,7 +18355,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def UpdateIvl(self):
-        r"""更新间隔,单位秒
+        r"""<p>更新间隔,单位秒</p>
         :rtype: int
         """
         return self._UpdateIvl
@@ -18179,7 +18366,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def MaxSurge(self):
-        r"""对应更新策略和策略配置参数
+        r"""<p>对应更新策略和策略配置参数</p>
         :rtype: str
         """
         return self._MaxSurge
@@ -18190,7 +18377,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def MaxUnavailable(self):
-        r"""对应更新策略和策略配置参数
+        r"""<p>对应更新策略和策略配置参数</p>
         :rtype: str
         """
         return self._MaxUnavailable
@@ -18201,7 +18388,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def WarmupSetting(self):
-        r"""预热参数配置
+        r"""<p>预热参数配置</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
         """
         return self._WarmupSetting
@@ -18212,7 +18399,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def ConfigTemplateId(self):
-        r"""配置模版ID
+        r"""<p>配置模版ID</p>
         :rtype: str
         """
         return self._ConfigTemplateId
@@ -18223,7 +18410,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def ConfigTemplateVersion(self):
-        r"""配置模版Version
+        r"""<p>配置模版Version</p>
         :rtype: int
         """
         return self._ConfigTemplateVersion
@@ -18234,7 +18421,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def VolumeClean(self):
-        r"""是否清除数据卷信息
+        r"""<p>是否清除数据卷信息</p>
         :rtype: bool
         """
         return self._VolumeClean
@@ -18245,7 +18432,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间Id
+        r"""<p>命名空间Id</p>
         :rtype: str
         """
         return self._NamespaceId
@@ -18256,7 +18443,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def DeployAgent(self):
-        r"""是否部署agent容器
+        r"""<p>是否部署agent容器</p>
         :rtype: bool
         """
         return self._DeployAgent
@@ -18267,7 +18454,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def AgentProfileList(self):
-        r"""javaagent信息: SERVICE_AGENT/OT_AGENT
+        r"""<p>javaagent信息: SERVICE_AGENT/OT_AGENT</p>
         :rtype: list of AgentProfile
         """
         return self._AgentProfileList
@@ -18278,7 +18465,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def ServiceClean(self):
-        r"""是否清除Service信息
+        r"""<p>是否清除Service信息</p>
         :rtype: bool
         """
         return self._ServiceClean
@@ -18289,7 +18476,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def EnvClean(self):
-        r"""是否清除Env信息
+        r"""<p>是否清除Env信息</p>
         :rtype: bool
         """
         return self._EnvClean
@@ -18300,7 +18487,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def DeployDesc(self):
-        r"""本次部署的描述信息
+        r"""<p>本次部署的描述信息</p>
         :rtype: str
         """
         return self._DeployDesc
@@ -18311,7 +18498,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def K8sNamespaceName(self):
-        r"""k8s命名空间名称
+        r"""<p>k8s命名空间名称</p>
         :rtype: str
         """
         return self._K8sNamespaceName
@@ -18322,7 +18509,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def StaticIpEnabled(self):
-        r"""是否启用静态IP
+        r"""<p>是否启用静态IP</p>
         :rtype: bool
         """
         return self._StaticIpEnabled
@@ -18333,7 +18520,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def PodManagementPolicyType(self):
-        r"""启动策略[OrderedReady/Parallel]
+        r"""<p>启动策略[OrderedReady/Parallel]</p>
         :rtype: str
         """
         return self._PodManagementPolicyType
@@ -18344,7 +18531,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def Partition(self):
-        r"""滚动更新分区序号
+        r"""<p>滚动更新分区序号</p>
         :rtype: int
         """
         return self._Partition
@@ -18355,7 +18542,7 @@ class DeployContainerApplicationRequest(AbstractModel):
 
     @property
     def IncrementalDeployment(self):
-        r"""是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数
+        r"""<p>是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数</p>
         :rtype: bool
         """
         return self._IncrementalDeployment
@@ -18363,6 +18550,17 @@ class DeployContainerApplicationRequest(AbstractModel):
     @IncrementalDeployment.setter
     def IncrementalDeployment(self, IncrementalDeployment):
         self._IncrementalDeployment = IncrementalDeployment
+
+    @property
+    def DoNotStart(self):
+        r"""<p>是否不立即启动</p>
+        :rtype: bool
+        """
+        return self._DoNotStart
+
+    @DoNotStart.setter
+    def DoNotStart(self, DoNotStart):
+        self._DoNotStart = DoNotStart
 
 
     def _deserialize(self, params):
@@ -18480,6 +18678,7 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._PodManagementPolicyType = params.get("PodManagementPolicyType")
         self._Partition = params.get("Partition")
         self._IncrementalDeployment = params.get("IncrementalDeployment")
+        self._DoNotStart = params.get("DoNotStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18552,9 +18751,7 @@ class DeployContainerApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 部署容器应用是否成功。
-true：成功。
-false：失败。
+        :param _Result: <p>部署容器应用是否成功。<br>true：成功。<br>false：失败。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.DeployContainerApplicationResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18565,9 +18762,7 @@ false：失败。
 
     @property
     def Result(self):
-        r"""部署容器应用是否成功。
-true：成功。
-false：失败。
+        r"""<p>部署容器应用是否成功。<br>true：成功。<br>false：失败。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.DeployContainerApplicationResp`
         """
@@ -22791,22 +22986,24 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
+        :param _ApplicationId: <p>分组所属【应用ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/36090">DescribeApplications</a>查询已创建的应用列表或登录<a href="https://console.cloud.tencent.com/tsf/app?rid=1">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36094">CreateApplication</a>创建新的应用。</p>
         :type ApplicationId: str
-        :param _SearchWord: 搜索字段，模糊搜索groupName字段
+        :param _SearchWord: <p>搜索字段，模糊搜索groupName字段</p>
         :type SearchWord: str
-        :param _OrderBy: 排序字段，默认为 createTime字段，支持id， name， createTime
+        :param _OrderBy: <p>排序字段，默认为 createTime字段，支持id， name， createTime</p>
         :type OrderBy: str
-        :param _OrderType: 排序方式，默认为1：倒序排序，0：正序，1：倒序
+        :param _OrderType: <p>排序方式，默认为1：倒序排序，0：正序，1：倒序</p>
         :type OrderType: int
-        :param _Offset: 偏移量，取值从0开始
+        :param _Offset: <p>偏移量，取值从0开始</p>
         :type Offset: int
-        :param _Limit: 分页个数，默认为20， 取值应为1~50
+        :param _Limit: <p>分页个数，默认为20， 取值应为1~50</p>
         :type Limit: int
-        :param _ClusterId: 分组所属【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
+        :param _ClusterId: <p>分组所属【集群ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/85857">DescribeClusters</a>查询已创建的集群列表或登录<a href="https://console.cloud.tencent.com/tsf/resource?rid=1&amp;tab=docker">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36049">CreateCluster</a>创建新的集群。</p>
         :type ClusterId: str
-        :param _NamespaceId: 分组所属【命名空间 ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+        :param _NamespaceId: <p>分组所属【命名空间 ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/36096">DescribeSimpleNamespaces</a>查询已创建的命名空间列表或登录<a href="https://console.cloud.tencent.com/tsf/resource?rid=1&amp;tab=namespace">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
         :type NamespaceId: str
+        :param _GroupIdList: <p>部署组ID列表</p>
+        :type GroupIdList: list of str
         """
         self._ApplicationId = None
         self._SearchWord = None
@@ -22816,10 +23013,11 @@ class DescribeContainerGroupsRequest(AbstractModel):
         self._Limit = None
         self._ClusterId = None
         self._NamespaceId = None
+        self._GroupIdList = None
 
     @property
     def ApplicationId(self):
-        r"""分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
+        r"""<p>分组所属【应用ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/36090">DescribeApplications</a>查询已创建的应用列表或登录<a href="https://console.cloud.tencent.com/tsf/app?rid=1">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36094">CreateApplication</a>创建新的应用。</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -22830,7 +23028,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        r"""搜索字段，模糊搜索groupName字段
+        r"""<p>搜索字段，模糊搜索groupName字段</p>
         :rtype: str
         """
         return self._SearchWord
@@ -22841,7 +23039,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序字段，默认为 createTime字段，支持id， name， createTime
+        r"""<p>排序字段，默认为 createTime字段，支持id， name， createTime</p>
         :rtype: str
         """
         return self._OrderBy
@@ -22852,7 +23050,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""排序方式，默认为1：倒序排序，0：正序，1：倒序
+        r"""<p>排序方式，默认为1：倒序排序，0：正序，1：倒序</p>
         :rtype: int
         """
         return self._OrderType
@@ -22863,7 +23061,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，取值从0开始
+        r"""<p>偏移量，取值从0开始</p>
         :rtype: int
         """
         return self._Offset
@@ -22874,7 +23072,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页个数，默认为20， 取值应为1~50
+        r"""<p>分页个数，默认为20， 取值应为1~50</p>
         :rtype: int
         """
         return self._Limit
@@ -22885,7 +23083,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""分组所属【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
+        r"""<p>分组所属【集群ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/85857">DescribeClusters</a>查询已创建的集群列表或登录<a href="https://console.cloud.tencent.com/tsf/resource?rid=1&amp;tab=docker">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36049">CreateCluster</a>创建新的集群。</p>
         :rtype: str
         """
         return self._ClusterId
@@ -22896,7 +23094,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""分组所属【命名空间 ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+        r"""<p>分组所属【命名空间 ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/36096">DescribeSimpleNamespaces</a>查询已创建的命名空间列表或登录<a href="https://console.cloud.tencent.com/tsf/resource?rid=1&amp;tab=namespace">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
         :rtype: str
         """
         return self._NamespaceId
@@ -22904,6 +23102,17 @@ class DescribeContainerGroupsRequest(AbstractModel):
     @NamespaceId.setter
     def NamespaceId(self, NamespaceId):
         self._NamespaceId = NamespaceId
+
+    @property
+    def GroupIdList(self):
+        r"""<p>部署组ID列表</p>
+        :rtype: list of str
+        """
+        return self._GroupIdList
+
+    @GroupIdList.setter
+    def GroupIdList(self, GroupIdList):
+        self._GroupIdList = GroupIdList
 
 
     def _deserialize(self, params):
@@ -22915,6 +23124,7 @@ class DescribeContainerGroupsRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._ClusterId = params.get("ClusterId")
         self._NamespaceId = params.get("NamespaceId")
+        self._GroupIdList = params.get("GroupIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22932,7 +23142,7 @@ class DescribeContainerGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 查询的权限数据对象
+        :param _Result: <p>查询的权限数据对象</p>
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ContainGroupResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22942,7 +23152,7 @@ class DescribeContainerGroupsResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""查询的权限数据对象
+        r"""<p>查询的权限数据对象</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ContainGroupResult`
         """
         return self._Result
@@ -24046,18 +24256,22 @@ class DescribeGatewayApisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 分组ID
+        :param _GroupId: <p>分组ID</p>
         :type GroupId: str
-        :param _Offset: 翻页偏移量
+        :param _Offset: <p>翻页偏移量</p>
         :type Offset: int
-        :param _Limit: 每页的记录数
+        :param _Limit: <p>每页的记录数</p>
         :type Limit: int
-        :param _SearchWord: 搜索关键字，支持 API path
+        :param _SearchWord: <p>搜索关键字，支持 API path</p>
         :type SearchWord: str
-        :param _GatewayDeployGroupId: 部署组ID
+        :param _GatewayDeployGroupId: <p>部署组ID</p>
         :type GatewayDeployGroupId: str
-        :param _ReleaseStatus: 发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)
+        :param _ReleaseStatus: <p>发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)</p>
         :type ReleaseStatus: str
+        :param _ExtendFieldList: <p>返回扩展出参字段名</p>
+        :type ExtendFieldList: list of str
+        :param _ApiOnlineStatus: <p>服务接口状态</p><p>枚举值：</p><ul><li>ONLINE： 在线状态</li><li>OFFLINE： 离线状态</li><li>UNKNOWN： 未知</li><li>DELETED： 查询MS API不存在</li></ul>
+        :type ApiOnlineStatus: str
         """
         self._GroupId = None
         self._Offset = None
@@ -24065,10 +24279,12 @@ class DescribeGatewayApisRequest(AbstractModel):
         self._SearchWord = None
         self._GatewayDeployGroupId = None
         self._ReleaseStatus = None
+        self._ExtendFieldList = None
+        self._ApiOnlineStatus = None
 
     @property
     def GroupId(self):
-        r"""分组ID
+        r"""<p>分组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -24079,7 +24295,7 @@ class DescribeGatewayApisRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""翻页偏移量
+        r"""<p>翻页偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -24090,7 +24306,7 @@ class DescribeGatewayApisRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页的记录数
+        r"""<p>每页的记录数</p>
         :rtype: int
         """
         return self._Limit
@@ -24101,7 +24317,7 @@ class DescribeGatewayApisRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        r"""搜索关键字，支持 API path
+        r"""<p>搜索关键字，支持 API path</p>
         :rtype: str
         """
         return self._SearchWord
@@ -24112,7 +24328,7 @@ class DescribeGatewayApisRequest(AbstractModel):
 
     @property
     def GatewayDeployGroupId(self):
-        r"""部署组ID
+        r"""<p>部署组ID</p>
         :rtype: str
         """
         return self._GatewayDeployGroupId
@@ -24123,7 +24339,7 @@ class DescribeGatewayApisRequest(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        r"""发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)
+        r"""<p>发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)</p>
         :rtype: str
         """
         return self._ReleaseStatus
@@ -24131,6 +24347,28 @@ class DescribeGatewayApisRequest(AbstractModel):
     @ReleaseStatus.setter
     def ReleaseStatus(self, ReleaseStatus):
         self._ReleaseStatus = ReleaseStatus
+
+    @property
+    def ExtendFieldList(self):
+        r"""<p>返回扩展出参字段名</p>
+        :rtype: list of str
+        """
+        return self._ExtendFieldList
+
+    @ExtendFieldList.setter
+    def ExtendFieldList(self, ExtendFieldList):
+        self._ExtendFieldList = ExtendFieldList
+
+    @property
+    def ApiOnlineStatus(self):
+        r"""<p>服务接口状态</p><p>枚举值：</p><ul><li>ONLINE： 在线状态</li><li>OFFLINE： 离线状态</li><li>UNKNOWN： 未知</li><li>DELETED： 查询MS API不存在</li></ul>
+        :rtype: str
+        """
+        return self._ApiOnlineStatus
+
+    @ApiOnlineStatus.setter
+    def ApiOnlineStatus(self, ApiOnlineStatus):
+        self._ApiOnlineStatus = ApiOnlineStatus
 
 
     def _deserialize(self, params):
@@ -24140,6 +24378,8 @@ class DescribeGatewayApisRequest(AbstractModel):
         self._SearchWord = params.get("SearchWord")
         self._GatewayDeployGroupId = params.get("GatewayDeployGroupId")
         self._ReleaseStatus = params.get("ReleaseStatus")
+        self._ExtendFieldList = params.get("ExtendFieldList")
+        self._ApiOnlineStatus = params.get("ApiOnlineStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24157,7 +24397,7 @@ class DescribeGatewayApisResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 翻页结构
+        :param _Result: <p>翻页结构</p>
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageApiDetailInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24167,7 +24407,7 @@ class DescribeGatewayApisResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""翻页结构
+        r"""<p>翻页结构</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfPageApiDetailInfo`
         """
         return self._Result
@@ -27819,23 +28059,26 @@ class DescribeMsApiListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MicroserviceId: 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+        :param _MicroserviceId: <p>微服务ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/36084">DescribeMicroservices</a> 的返回值中的 MicroserviceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=service">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/85860">CreateMicroserviceWithDetailResp</a>创建新的微服务。</p>
         :type MicroserviceId: str
-        :param _SearchWord: 搜索关键字。
+        :param _SearchWord: <p>搜索关键字。</p>
         :type SearchWord: str
-        :param _Limit: 返回数量，默认为20，最大值为50。
+        :param _Limit: <p>返回数量，默认为20，最大值为50。</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
+        :param _BatchApiParamList: <p>批量查询API参数</p>
+        :type BatchApiParamList: list of ApiParam
         """
         self._MicroserviceId = None
         self._SearchWord = None
         self._Limit = None
         self._Offset = None
+        self._BatchApiParamList = None
 
     @property
     def MicroserviceId(self):
-        r"""微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+        r"""<p>微服务ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/36084">DescribeMicroservices</a> 的返回值中的 MicroserviceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=service">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/85860">CreateMicroserviceWithDetailResp</a>创建新的微服务。</p>
         :rtype: str
         """
         return self._MicroserviceId
@@ -27846,7 +28089,7 @@ class DescribeMsApiListRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        r"""搜索关键字。
+        r"""<p>搜索关键字。</p>
         :rtype: str
         """
         return self._SearchWord
@@ -27857,7 +28100,7 @@ class DescribeMsApiListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为50。
+        r"""<p>返回数量，默认为20，最大值为50。</p>
         :rtype: int
         """
         return self._Limit
@@ -27868,7 +28111,7 @@ class DescribeMsApiListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -27877,12 +28120,29 @@ class DescribeMsApiListRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def BatchApiParamList(self):
+        r"""<p>批量查询API参数</p>
+        :rtype: list of ApiParam
+        """
+        return self._BatchApiParamList
+
+    @BatchApiParamList.setter
+    def BatchApiParamList(self, BatchApiParamList):
+        self._BatchApiParamList = BatchApiParamList
+
 
     def _deserialize(self, params):
         self._MicroserviceId = params.get("MicroserviceId")
         self._SearchWord = params.get("SearchWord")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        if params.get("BatchApiParamList") is not None:
+            self._BatchApiParamList = []
+            for item in params.get("BatchApiParamList"):
+                obj = ApiParam()
+                obj._deserialize(item)
+                self._BatchApiParamList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27900,7 +28160,7 @@ class DescribeMsApiListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 微服务API列表。
+        :param _Result: <p>微服务API列表。</p>
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfApiListResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27910,7 +28170,7 @@ class DescribeMsApiListResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""微服务API列表。
+        r"""<p>微服务API列表。</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.TsfApiListResponse`
         """
         return self._Result
@@ -33544,27 +33804,29 @@ class ExclusiveInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CenterType: 配置中心类型[注册中心Registration、配置中心Configuration]
+        :param _CenterType: <p>配置中心类型[注册中心Registration、配置中心Configuration]</p>
         :type CenterType: str
-        :param _InstanceId: 实例id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
+        :param _InstanceId: <p>实例id，通过<a href="https://console.cloud.tencent.com/tse/governance">北极星控制台</a>获取</p>
         :type InstanceId: str
-        :param _InstanceType: 实例类型，例如北极星Polaris
+        :param _InstanceType: <p>实例类型，例如北极星Polaris</p>
         :type InstanceType: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _RegionId: 实例地域id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
+        :param _RegionId: <p>实例地域id，通过<a href="https://console.cloud.tencent.com/tse/governance">北极星控制台</a>获取</p>
         :type RegionId: str
-        :param _InstanceNamespaceId: 实例命名空间ID，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
+        :param _InstanceNamespaceId: <p>实例命名空间ID，通过<a href="https://console.cloud.tencent.com/tse/governance">北极星控制台</a>获取</p>
         :type InstanceNamespaceId: str
-        :param _GroupId: 部署组Id
+        :param _GroupId: <p>部署组Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
+        :param _ApplicationId: <p>文档ID</p>
+        :type ApplicationId: str
         """
         self._CenterType = None
         self._InstanceId = None
@@ -33575,10 +33837,11 @@ class ExclusiveInstance(AbstractModel):
         self._GroupId = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._ApplicationId = None
 
     @property
     def CenterType(self):
-        r"""配置中心类型[注册中心Registration、配置中心Configuration]
+        r"""<p>配置中心类型[注册中心Registration、配置中心Configuration]</p>
         :rtype: str
         """
         return self._CenterType
@@ -33589,7 +33852,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
+        r"""<p>实例id，通过<a href="https://console.cloud.tencent.com/tse/governance">北极星控制台</a>获取</p>
         :rtype: str
         """
         return self._InstanceId
@@ -33600,7 +33863,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型，例如北极星Polaris
+        r"""<p>实例类型，例如北极星Polaris</p>
         :rtype: str
         """
         return self._InstanceType
@@ -33611,7 +33874,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -33622,7 +33885,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""实例地域id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
+        r"""<p>实例地域id，通过<a href="https://console.cloud.tencent.com/tse/governance">北极星控制台</a>获取</p>
         :rtype: str
         """
         return self._RegionId
@@ -33633,7 +33896,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def InstanceNamespaceId(self):
-        r"""实例命名空间ID，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
+        r"""<p>实例命名空间ID，通过<a href="https://console.cloud.tencent.com/tse/governance">北极星控制台</a>获取</p>
         :rtype: str
         """
         return self._InstanceNamespaceId
@@ -33644,7 +33907,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""部署组Id
+        r"""<p>部署组Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33656,7 +33919,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -33668,7 +33931,7 @@ class ExclusiveInstance(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -33677,6 +33940,17 @@ class ExclusiveInstance(AbstractModel):
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def ApplicationId(self):
+        r"""<p>文档ID</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
 
 
     def _deserialize(self, params):
@@ -33689,6 +33963,7 @@ class ExclusiveInstance(AbstractModel):
         self._GroupId = params.get("GroupId")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34933,31 +35208,33 @@ class GatewayPlugin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 网关插件id
+        :param _Id: <p>网关插件id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param _Name: 插件名称
+        :param _Name: <p>插件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Type: 插件类型
+        :param _Type: <p>插件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _Description: 插件描述
+        :param _Description: <p>插件描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
-        :param _UpdatedTime: 更新时间
+        :param _UpdatedTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
-        :param _Status: 发布状态
+        :param _Status: <p>发布状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _DeleteDisabled: 是否禁用删除
+        :param _DeleteDisabled: <p>是否禁用删除</p>
         :type DeleteDisabled: bool
-        :param _DeleteDisabledReason: 禁用原因
+        :param _DeleteDisabledReason: <p>禁用原因</p>
         :type DeleteDisabledReason: str
+        :param _BindDisabled: <p>是否不可绑定</p><p>枚举值：</p><ul><li>true： 禁止绑定</li><li>false： 允许绑定</li></ul>
+        :type BindDisabled: bool
         """
         self._Id = None
         self._Name = None
@@ -34968,10 +35245,11 @@ class GatewayPlugin(AbstractModel):
         self._Status = None
         self._DeleteDisabled = None
         self._DeleteDisabledReason = None
+        self._BindDisabled = None
 
     @property
     def Id(self):
-        r"""网关插件id
+        r"""<p>网关插件id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34983,7 +35261,7 @@ class GatewayPlugin(AbstractModel):
 
     @property
     def Name(self):
-        r"""插件名称
+        r"""<p>插件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34995,7 +35273,7 @@ class GatewayPlugin(AbstractModel):
 
     @property
     def Type(self):
-        r"""插件类型
+        r"""<p>插件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35007,7 +35285,7 @@ class GatewayPlugin(AbstractModel):
 
     @property
     def Description(self):
-        r"""插件描述
+        r"""<p>插件描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35019,7 +35297,7 @@ class GatewayPlugin(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35031,7 +35309,7 @@ class GatewayPlugin(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35043,7 +35321,7 @@ class GatewayPlugin(AbstractModel):
 
     @property
     def Status(self):
-        r"""发布状态
+        r"""<p>发布状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35055,7 +35333,7 @@ class GatewayPlugin(AbstractModel):
 
     @property
     def DeleteDisabled(self):
-        r"""是否禁用删除
+        r"""<p>是否禁用删除</p>
         :rtype: bool
         """
         return self._DeleteDisabled
@@ -35066,7 +35344,7 @@ class GatewayPlugin(AbstractModel):
 
     @property
     def DeleteDisabledReason(self):
-        r"""禁用原因
+        r"""<p>禁用原因</p>
         :rtype: str
         """
         return self._DeleteDisabledReason
@@ -35074,6 +35352,17 @@ class GatewayPlugin(AbstractModel):
     @DeleteDisabledReason.setter
     def DeleteDisabledReason(self, DeleteDisabledReason):
         self._DeleteDisabledReason = DeleteDisabledReason
+
+    @property
+    def BindDisabled(self):
+        r"""<p>是否不可绑定</p><p>枚举值：</p><ul><li>true： 禁止绑定</li><li>false： 允许绑定</li></ul>
+        :rtype: bool
+        """
+        return self._BindDisabled
+
+    @BindDisabled.setter
+    def BindDisabled(self, BindDisabled):
+        self._BindDisabled = BindDisabled
 
 
     def _deserialize(self, params):
@@ -35086,6 +35375,7 @@ class GatewayPlugin(AbstractModel):
         self._Status = params.get("Status")
         self._DeleteDisabled = params.get("DeleteDisabled")
         self._DeleteDisabledReason = params.get("DeleteDisabledReason")
+        self._BindDisabled = params.get("BindDisabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43216,25 +43506,31 @@ class MsApiArray(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: API 请求路径
+        :param _Path: <p>API 请求路径</p>
         :type Path: str
-        :param _Method: 请求方法
+        :param _Method: <p>请求方法</p>
         :type Method: str
-        :param _Description: 方法描述
+        :param _Description: <p>方法描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _Status: API状态 0:离线 1:在线
+        :param _Status: <p>API状态 0:离线 1:在线</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param _ApiId: <p>API ID</p>
+        :type ApiId: str
+        :param _SrcTypeName: <p>API来源</p><p>枚举值：</p><ul><li>FROM_CONSUL： 服务注册</li><li>FROM_MANUAL： 手动录入</li></ul>
+        :type SrcTypeName: str
         """
         self._Path = None
         self._Method = None
         self._Description = None
         self._Status = None
+        self._ApiId = None
+        self._SrcTypeName = None
 
     @property
     def Path(self):
-        r"""API 请求路径
+        r"""<p>API 请求路径</p>
         :rtype: str
         """
         return self._Path
@@ -43245,7 +43541,7 @@ class MsApiArray(AbstractModel):
 
     @property
     def Method(self):
-        r"""请求方法
+        r"""<p>请求方法</p>
         :rtype: str
         """
         return self._Method
@@ -43256,7 +43552,7 @@ class MsApiArray(AbstractModel):
 
     @property
     def Description(self):
-        r"""方法描述
+        r"""<p>方法描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -43268,7 +43564,7 @@ class MsApiArray(AbstractModel):
 
     @property
     def Status(self):
-        r"""API状态 0:离线 1:在线
+        r"""<p>API状态 0:离线 1:在线</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -43278,12 +43574,36 @@ class MsApiArray(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def ApiId(self):
+        r"""<p>API ID</p>
+        :rtype: str
+        """
+        return self._ApiId
+
+    @ApiId.setter
+    def ApiId(self, ApiId):
+        self._ApiId = ApiId
+
+    @property
+    def SrcTypeName(self):
+        r"""<p>API来源</p><p>枚举值：</p><ul><li>FROM_CONSUL： 服务注册</li><li>FROM_MANUAL： 手动录入</li></ul>
+        :rtype: str
+        """
+        return self._SrcTypeName
+
+    @SrcTypeName.setter
+    def SrcTypeName(self, SrcTypeName):
+        self._SrcTypeName = SrcTypeName
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
         self._Method = params.get("Method")
         self._Description = params.get("Description")
         self._Status = params.get("Status")
+        self._ApiId = params.get("ApiId")
+        self._SrcTypeName = params.get("SrcTypeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51279,26 +51599,29 @@ class TsfPageBusinessLogV2(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总条数
+        :param _TotalCount: <p>总条数</p>
         :type TotalCount: int
-        :param _Content: 业务日志列表
+        :param _Content: <p>业务日志列表</p>
         :type Content: list of BusinessLogV2
-        :param _ScrollId: 游标ID
+        :param _ScrollId: <p>游标ID</p>
         :type ScrollId: str
-        :param _Status: 查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
+        :param _Status: <p>查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常</p>
         :type Status: str
-        :param _SearchAfter: 查询es时，使用searchAfter返回的游标
+        :param _SearchAfter: <p>查询es时，使用searchAfter返回的游标</p>
         :type SearchAfter: list of str
+        :param _Compressed: <p>是否压缩</p>
+        :type Compressed: bool
         """
         self._TotalCount = None
         self._Content = None
         self._ScrollId = None
         self._Status = None
         self._SearchAfter = None
+        self._Compressed = None
 
     @property
     def TotalCount(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -51309,7 +51632,7 @@ class TsfPageBusinessLogV2(AbstractModel):
 
     @property
     def Content(self):
-        r"""业务日志列表
+        r"""<p>业务日志列表</p>
         :rtype: list of BusinessLogV2
         """
         return self._Content
@@ -51320,7 +51643,7 @@ class TsfPageBusinessLogV2(AbstractModel):
 
     @property
     def ScrollId(self):
-        r"""游标ID
+        r"""<p>游标ID</p>
         :rtype: str
         """
         return self._ScrollId
@@ -51331,7 +51654,7 @@ class TsfPageBusinessLogV2(AbstractModel):
 
     @property
     def Status(self):
-        r"""查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
+        r"""<p>查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常</p>
         :rtype: str
         """
         return self._Status
@@ -51342,7 +51665,7 @@ class TsfPageBusinessLogV2(AbstractModel):
 
     @property
     def SearchAfter(self):
-        r"""查询es时，使用searchAfter返回的游标
+        r"""<p>查询es时，使用searchAfter返回的游标</p>
         :rtype: list of str
         """
         return self._SearchAfter
@@ -51350,6 +51673,17 @@ class TsfPageBusinessLogV2(AbstractModel):
     @SearchAfter.setter
     def SearchAfter(self, SearchAfter):
         self._SearchAfter = SearchAfter
+
+    @property
+    def Compressed(self):
+        r"""<p>是否压缩</p>
+        :rtype: bool
+        """
+        return self._Compressed
+
+    @Compressed.setter
+    def Compressed(self, Compressed):
+        self._Compressed = Compressed
 
 
     def _deserialize(self, params):
@@ -51363,6 +51697,7 @@ class TsfPageBusinessLogV2(AbstractModel):
         self._ScrollId = params.get("ScrollId")
         self._Status = params.get("Status")
         self._SearchAfter = params.get("SearchAfter")
+        self._Compressed = params.get("Compressed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54270,20 +54605,23 @@ class UpdateHealthCheckSettingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
+        :param _GroupId: <p>部署组ID，可通过调用<a href="https://cloud.tencent.com/document/api/649/36068">DescribeContainerGroups</a>查询已创建的部署组列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/api/649/36075">CreateContainGroup</a>创建新的部署组。</p>
         :type GroupId: str
-        :param _EnableHealthCheck: 是否开启健康检查
+        :param _EnableHealthCheck: <p>是否开启健康检查</p>
         :type EnableHealthCheck: bool
-        :param _HealthCheckSettings: 健康检查配置
+        :param _HealthCheckSettings: <p>健康检查配置</p>
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        :param _LivenessAutoRestart: <p>是否自动重启</p>
+        :type LivenessAutoRestart: bool
         """
         self._GroupId = None
         self._EnableHealthCheck = None
         self._HealthCheckSettings = None
+        self._LivenessAutoRestart = None
 
     @property
     def GroupId(self):
-        r"""部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
+        r"""<p>部署组ID，可通过调用<a href="https://cloud.tencent.com/document/api/649/36068">DescribeContainerGroups</a>查询已创建的部署组列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/api/649/36075">CreateContainGroup</a>创建新的部署组。</p>
         :rtype: str
         """
         return self._GroupId
@@ -54294,7 +54632,7 @@ class UpdateHealthCheckSettingsRequest(AbstractModel):
 
     @property
     def EnableHealthCheck(self):
-        r"""是否开启健康检查
+        r"""<p>是否开启健康检查</p>
         :rtype: bool
         """
         return self._EnableHealthCheck
@@ -54305,7 +54643,7 @@ class UpdateHealthCheckSettingsRequest(AbstractModel):
 
     @property
     def HealthCheckSettings(self):
-        r"""健康检查配置
+        r"""<p>健康检查配置</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         """
         return self._HealthCheckSettings
@@ -54314,6 +54652,17 @@ class UpdateHealthCheckSettingsRequest(AbstractModel):
     def HealthCheckSettings(self, HealthCheckSettings):
         self._HealthCheckSettings = HealthCheckSettings
 
+    @property
+    def LivenessAutoRestart(self):
+        r"""<p>是否自动重启</p>
+        :rtype: bool
+        """
+        return self._LivenessAutoRestart
+
+    @LivenessAutoRestart.setter
+    def LivenessAutoRestart(self, LivenessAutoRestart):
+        self._LivenessAutoRestart = LivenessAutoRestart
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -54321,6 +54670,7 @@ class UpdateHealthCheckSettingsRequest(AbstractModel):
         if params.get("HealthCheckSettings") is not None:
             self._HealthCheckSettings = HealthCheckSettings()
             self._HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+        self._LivenessAutoRestart = params.get("LivenessAutoRestart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54338,9 +54688,7 @@ class UpdateHealthCheckSettingsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 更新健康检查配置操作是否成功。
-true：操作成功。
-false：操作失败。
+        :param _Result: <p>更新健康检查配置操作是否成功。<br>true：操作成功。<br>false：操作失败。</p>
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -54350,9 +54698,7 @@ false：操作失败。
 
     @property
     def Result(self):
-        r"""更新健康检查配置操作是否成功。
-true：操作成功。
-false：操作失败。
+        r"""<p>更新健康检查配置操作是否成功。<br>true：操作成功。<br>false：操作失败。</p>
         :rtype: bool
         """
         return self._Result
@@ -54699,108 +55045,110 @@ class VmGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 部署组ID
+        :param _GroupId: <p>部署组ID</p>
         :type GroupId: str
-        :param _GroupName: 部署组名称
+        :param _GroupName: <p>部署组名称</p>
         :type GroupName: str
-        :param _GroupStatus: 部署组状态
+        :param _GroupStatus: <p>部署组状态</p>
         :type GroupStatus: str
-        :param _PackageId: 程序包ID
+        :param _PackageId: <p>程序包ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageId: str
-        :param _PackageName: 程序包名称
+        :param _PackageName: <p>程序包名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageName: str
-        :param _PackageVersion: 程序包版本号
+        :param _PackageVersion: <p>程序包版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageVersion: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: <p>命名空间ID</p>
         :type NamespaceId: str
-        :param _NamespaceName: 命名空间名称
+        :param _NamespaceName: <p>命名空间名称</p>
         :type NamespaceName: str
-        :param _ApplicationId: 应用ID
+        :param _ApplicationId: <p>应用ID</p>
         :type ApplicationId: str
-        :param _ApplicationName: 应用名称
+        :param _ApplicationName: <p>应用名称</p>
         :type ApplicationName: str
-        :param _InstanceCount: 部署组机器数目
+        :param _InstanceCount: <p>部署组机器数目</p>
         :type InstanceCount: int
-        :param _RunInstanceCount: 部署组运行中机器数目
+        :param _RunInstanceCount: <p>部署组运行中机器数目</p>
         :type RunInstanceCount: int
-        :param _StartupParameters: 部署组启动参数信息
+        :param _StartupParameters: <p>部署组启动参数信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartupParameters: str
-        :param _CreateTime: 部署组创建时间
+        :param _CreateTime: <p>部署组创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 部署组更新时间
+        :param _UpdateTime: <p>部署组更新时间</p>
         :type UpdateTime: str
-        :param _OffInstanceCount: 部署组停止机器数目
+        :param _OffInstanceCount: <p>部署组停止机器数目</p>
         :type OffInstanceCount: int
-        :param _GroupDesc: 部署组描述信息
+        :param _GroupDesc: <p>部署组描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupDesc: str
-        :param _MicroserviceType: 微服务类型
+        :param _MicroserviceType: <p>微服务类型</p>
         :type MicroserviceType: str
-        :param _ApplicationType: 应用类型
+        :param _ApplicationType: <p>应用类型</p>
         :type ApplicationType: str
-        :param _GroupResourceType: 部署组资源类型
+        :param _GroupResourceType: <p>部署组资源类型</p>
         :type GroupResourceType: str
-        :param _UpdatedTime: 部署组更新时间戳
+        :param _UpdatedTime: <p>部署组更新时间戳</p>
         :type UpdatedTime: int
-        :param _DeployDesc: 部署应用描述信息
+        :param _DeployDesc: <p>部署应用描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployDesc: str
-        :param _UpdateType: 滚动发布的更新方式
+        :param _UpdateType: <p>滚动发布的更新方式</p>
         :type UpdateType: int
-        :param _DeployBetaEnable: 发布是否启用beta批次
+        :param _DeployBetaEnable: <p>发布是否启用beta批次</p>
         :type DeployBetaEnable: bool
-        :param _DeployBatch: 滚动发布的批次比例列表
+        :param _DeployBatch: <p>滚动发布的批次比例列表</p>
         :type DeployBatch: list of float
-        :param _DeployExeMode: 滚动发布的批次执行方式
+        :param _DeployExeMode: <p>滚动发布的批次执行方式</p>
         :type DeployExeMode: str
-        :param _DeployWaitTime: 滚动发布的每个批次的等待时间
+        :param _DeployWaitTime: <p>滚动发布的每个批次的等待时间</p>
         :type DeployWaitTime: int
-        :param _EnableHealthCheck: 是否开启了健康检查
+        :param _EnableHealthCheck: <p>是否开启了健康检查</p>
         :type EnableHealthCheck: bool
-        :param _HealthCheckSettings: 健康检查配置
+        :param _HealthCheckSettings: <p>健康检查配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
-        :param _PackageType: 程序包类型
+        :param _PackageType: <p>程序包类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
-        :param _StartScript: 启动脚本 base64编码
+        :param _StartScript: <p>启动脚本 base64编码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartScript: str
-        :param _StopScript: 停止脚本 base64编码
+        :param _StopScript: <p>停止脚本 base64编码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StopScript: str
-        :param _Alias: 部署组备注
+        :param _Alias: <p>部署组备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
-        :param _AgentProfileList: javaagent信息
+        :param _AgentProfileList: <p>javaagent信息</p>
         :type AgentProfileList: list of AgentProfile
-        :param _WarmupSetting: 预热属性配置
+        :param _WarmupSetting: <p>预热属性配置</p>
         :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
-        :param _GatewayConfig: Envoy网关配置
+        :param _GatewayConfig: <p>Envoy网关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayConfig: :class:`tencentcloud.tsf.v20180326.models.GatewayConfig`
-        :param _EnableBatchHealthCheck: 批次是否开启健康检查
+        :param _EnableBatchHealthCheck: <p>批次是否开启健康检查</p>
         :type EnableBatchHealthCheck: bool
-        :param _FilebeatCgroupEnable: 是否开启cgroup控制内存cpu
+        :param _FilebeatCgroupEnable: <p>是否开启cgroup控制内存cpu</p>
         :type FilebeatCgroupEnable: bool
-        :param _FilebeatMaxCpu: filebeat使用cpu上限
+        :param _FilebeatMaxCpu: <p>filebeat使用cpu上限</p>
         :type FilebeatMaxCpu: float
-        :param _FilebeatMaxMem: filebeat使用内存上限
+        :param _FilebeatMaxMem: <p>filebeat使用内存上限</p>
         :type FilebeatMaxMem: int
-        :param _RepositoryId: 仓库ID
+        :param _RepositoryId: <p>仓库ID</p>
         :type RepositoryId: str
-        :param _RepositoryName: 仓库名称
+        :param _RepositoryName: <p>仓库名称</p>
         :type RepositoryName: str
-        :param _RepositoryType: 仓库类型
+        :param _RepositoryType: <p>仓库类型</p>
         :type RepositoryType: str
+        :param _LivenessAutoRestart: <p>是否自动重启</p>
+        :type LivenessAutoRestart: bool
         """
         self._GroupId = None
         self._GroupName = None
@@ -54847,10 +55195,11 @@ class VmGroup(AbstractModel):
         self._RepositoryId = None
         self._RepositoryName = None
         self._RepositoryType = None
+        self._LivenessAutoRestart = None
 
     @property
     def GroupId(self):
-        r"""部署组ID
+        r"""<p>部署组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -54861,7 +55210,7 @@ class VmGroup(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""部署组名称
+        r"""<p>部署组名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -54872,7 +55221,7 @@ class VmGroup(AbstractModel):
 
     @property
     def GroupStatus(self):
-        r"""部署组状态
+        r"""<p>部署组状态</p>
         :rtype: str
         """
         return self._GroupStatus
@@ -54883,7 +55232,7 @@ class VmGroup(AbstractModel):
 
     @property
     def PackageId(self):
-        r"""程序包ID
+        r"""<p>程序包ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54895,7 +55244,7 @@ class VmGroup(AbstractModel):
 
     @property
     def PackageName(self):
-        r"""程序包名称
+        r"""<p>程序包名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54907,7 +55256,7 @@ class VmGroup(AbstractModel):
 
     @property
     def PackageVersion(self):
-        r"""程序包版本号
+        r"""<p>程序包版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54919,7 +55268,7 @@ class VmGroup(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -54930,7 +55279,7 @@ class VmGroup(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -54941,7 +55290,7 @@ class VmGroup(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间ID
+        r"""<p>命名空间ID</p>
         :rtype: str
         """
         return self._NamespaceId
@@ -54952,7 +55301,7 @@ class VmGroup(AbstractModel):
 
     @property
     def NamespaceName(self):
-        r"""命名空间名称
+        r"""<p>命名空间名称</p>
         :rtype: str
         """
         return self._NamespaceName
@@ -54963,7 +55312,7 @@ class VmGroup(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._ApplicationId
@@ -54974,7 +55323,7 @@ class VmGroup(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""应用名称
+        r"""<p>应用名称</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -54985,7 +55334,7 @@ class VmGroup(AbstractModel):
 
     @property
     def InstanceCount(self):
-        r"""部署组机器数目
+        r"""<p>部署组机器数目</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -54996,7 +55345,7 @@ class VmGroup(AbstractModel):
 
     @property
     def RunInstanceCount(self):
-        r"""部署组运行中机器数目
+        r"""<p>部署组运行中机器数目</p>
         :rtype: int
         """
         return self._RunInstanceCount
@@ -55007,7 +55356,7 @@ class VmGroup(AbstractModel):
 
     @property
     def StartupParameters(self):
-        r"""部署组启动参数信息
+        r"""<p>部署组启动参数信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55019,7 +55368,7 @@ class VmGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""部署组创建时间
+        r"""<p>部署组创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -55030,7 +55379,7 @@ class VmGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""部署组更新时间
+        r"""<p>部署组更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -55041,7 +55390,7 @@ class VmGroup(AbstractModel):
 
     @property
     def OffInstanceCount(self):
-        r"""部署组停止机器数目
+        r"""<p>部署组停止机器数目</p>
         :rtype: int
         """
         return self._OffInstanceCount
@@ -55052,7 +55401,7 @@ class VmGroup(AbstractModel):
 
     @property
     def GroupDesc(self):
-        r"""部署组描述信息
+        r"""<p>部署组描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55064,7 +55413,7 @@ class VmGroup(AbstractModel):
 
     @property
     def MicroserviceType(self):
-        r"""微服务类型
+        r"""<p>微服务类型</p>
         :rtype: str
         """
         return self._MicroserviceType
@@ -55075,7 +55424,7 @@ class VmGroup(AbstractModel):
 
     @property
     def ApplicationType(self):
-        r"""应用类型
+        r"""<p>应用类型</p>
         :rtype: str
         """
         return self._ApplicationType
@@ -55086,7 +55435,7 @@ class VmGroup(AbstractModel):
 
     @property
     def GroupResourceType(self):
-        r"""部署组资源类型
+        r"""<p>部署组资源类型</p>
         :rtype: str
         """
         return self._GroupResourceType
@@ -55097,7 +55446,7 @@ class VmGroup(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""部署组更新时间戳
+        r"""<p>部署组更新时间戳</p>
         :rtype: int
         """
         return self._UpdatedTime
@@ -55108,7 +55457,7 @@ class VmGroup(AbstractModel):
 
     @property
     def DeployDesc(self):
-        r"""部署应用描述信息
+        r"""<p>部署应用描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55120,7 +55469,7 @@ class VmGroup(AbstractModel):
 
     @property
     def UpdateType(self):
-        r"""滚动发布的更新方式
+        r"""<p>滚动发布的更新方式</p>
         :rtype: int
         """
         return self._UpdateType
@@ -55131,7 +55480,7 @@ class VmGroup(AbstractModel):
 
     @property
     def DeployBetaEnable(self):
-        r"""发布是否启用beta批次
+        r"""<p>发布是否启用beta批次</p>
         :rtype: bool
         """
         return self._DeployBetaEnable
@@ -55142,7 +55491,7 @@ class VmGroup(AbstractModel):
 
     @property
     def DeployBatch(self):
-        r"""滚动发布的批次比例列表
+        r"""<p>滚动发布的批次比例列表</p>
         :rtype: list of float
         """
         return self._DeployBatch
@@ -55153,7 +55502,7 @@ class VmGroup(AbstractModel):
 
     @property
     def DeployExeMode(self):
-        r"""滚动发布的批次执行方式
+        r"""<p>滚动发布的批次执行方式</p>
         :rtype: str
         """
         return self._DeployExeMode
@@ -55164,7 +55513,7 @@ class VmGroup(AbstractModel):
 
     @property
     def DeployWaitTime(self):
-        r"""滚动发布的每个批次的等待时间
+        r"""<p>滚动发布的每个批次的等待时间</p>
         :rtype: int
         """
         return self._DeployWaitTime
@@ -55175,7 +55524,7 @@ class VmGroup(AbstractModel):
 
     @property
     def EnableHealthCheck(self):
-        r"""是否开启了健康检查
+        r"""<p>是否开启了健康检查</p>
         :rtype: bool
         """
         return self._EnableHealthCheck
@@ -55186,7 +55535,7 @@ class VmGroup(AbstractModel):
 
     @property
     def HealthCheckSettings(self):
-        r"""健康检查配置
+        r"""<p>健康检查配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         """
@@ -55198,7 +55547,7 @@ class VmGroup(AbstractModel):
 
     @property
     def PackageType(self):
-        r"""程序包类型
+        r"""<p>程序包类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55210,7 +55559,7 @@ class VmGroup(AbstractModel):
 
     @property
     def StartScript(self):
-        r"""启动脚本 base64编码
+        r"""<p>启动脚本 base64编码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55222,7 +55571,7 @@ class VmGroup(AbstractModel):
 
     @property
     def StopScript(self):
-        r"""停止脚本 base64编码
+        r"""<p>停止脚本 base64编码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55234,7 +55583,7 @@ class VmGroup(AbstractModel):
 
     @property
     def Alias(self):
-        r"""部署组备注
+        r"""<p>部署组备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55246,7 +55595,7 @@ class VmGroup(AbstractModel):
 
     @property
     def AgentProfileList(self):
-        r"""javaagent信息
+        r"""<p>javaagent信息</p>
         :rtype: list of AgentProfile
         """
         return self._AgentProfileList
@@ -55257,7 +55606,7 @@ class VmGroup(AbstractModel):
 
     @property
     def WarmupSetting(self):
-        r"""预热属性配置
+        r"""<p>预热属性配置</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
         """
         return self._WarmupSetting
@@ -55268,7 +55617,7 @@ class VmGroup(AbstractModel):
 
     @property
     def GatewayConfig(self):
-        r"""Envoy网关配置
+        r"""<p>Envoy网关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tsf.v20180326.models.GatewayConfig`
         """
@@ -55280,7 +55629,7 @@ class VmGroup(AbstractModel):
 
     @property
     def EnableBatchHealthCheck(self):
-        r"""批次是否开启健康检查
+        r"""<p>批次是否开启健康检查</p>
         :rtype: bool
         """
         return self._EnableBatchHealthCheck
@@ -55291,7 +55640,7 @@ class VmGroup(AbstractModel):
 
     @property
     def FilebeatCgroupEnable(self):
-        r"""是否开启cgroup控制内存cpu
+        r"""<p>是否开启cgroup控制内存cpu</p>
         :rtype: bool
         """
         return self._FilebeatCgroupEnable
@@ -55302,7 +55651,7 @@ class VmGroup(AbstractModel):
 
     @property
     def FilebeatMaxCpu(self):
-        r"""filebeat使用cpu上限
+        r"""<p>filebeat使用cpu上限</p>
         :rtype: float
         """
         return self._FilebeatMaxCpu
@@ -55313,7 +55662,7 @@ class VmGroup(AbstractModel):
 
     @property
     def FilebeatMaxMem(self):
-        r"""filebeat使用内存上限
+        r"""<p>filebeat使用内存上限</p>
         :rtype: int
         """
         return self._FilebeatMaxMem
@@ -55324,7 +55673,7 @@ class VmGroup(AbstractModel):
 
     @property
     def RepositoryId(self):
-        r"""仓库ID
+        r"""<p>仓库ID</p>
         :rtype: str
         """
         return self._RepositoryId
@@ -55335,7 +55684,7 @@ class VmGroup(AbstractModel):
 
     @property
     def RepositoryName(self):
-        r"""仓库名称
+        r"""<p>仓库名称</p>
         :rtype: str
         """
         return self._RepositoryName
@@ -55346,7 +55695,7 @@ class VmGroup(AbstractModel):
 
     @property
     def RepositoryType(self):
-        r"""仓库类型
+        r"""<p>仓库类型</p>
         :rtype: str
         """
         return self._RepositoryType
@@ -55354,6 +55703,17 @@ class VmGroup(AbstractModel):
     @RepositoryType.setter
     def RepositoryType(self, RepositoryType):
         self._RepositoryType = RepositoryType
+
+    @property
+    def LivenessAutoRestart(self):
+        r"""<p>是否自动重启</p>
+        :rtype: bool
+        """
+        return self._LivenessAutoRestart
+
+    @LivenessAutoRestart.setter
+    def LivenessAutoRestart(self, LivenessAutoRestart):
+        self._LivenessAutoRestart = LivenessAutoRestart
 
 
     def _deserialize(self, params):
@@ -55413,6 +55773,7 @@ class VmGroup(AbstractModel):
         self._RepositoryId = params.get("RepositoryId")
         self._RepositoryName = params.get("RepositoryName")
         self._RepositoryType = params.get("RepositoryType")
+        self._LivenessAutoRestart = params.get("LivenessAutoRestart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

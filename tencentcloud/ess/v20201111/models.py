@@ -16246,6 +16246,8 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         :type OrganizationIdCardTypeSame: bool
         :param _AuthorizationMethod: <p>指定企业认证的授权方式 支持多选:</p><ul><li><strong>1</strong>: 上传营业执照</li><li><strong>2</strong>: 腾讯云快速认证</li><li><strong>3</strong>: 腾讯商户号授权<font color="red">（仅支持小程序端）</font></li></ul><p>注意：<br>1.如果没有指定，则默认是1,仅有上传营业执照。<br>2.H5 仅支持上传营业执照。</p>
         :type AuthorizationMethod: list of int non-negative
+        :param _HideBizLicense: <p>企业认证页面隐藏上传营业执照<br><img src="https://qcloudimg.tencent-cloud.cn/raw/cf827ce0e2043d8cc85e0735c9cfa3fc.png" alt="image"><br><img src="https://qcloudimg.tencent-cloud.cn/raw/f908cabe71238c78ee8fafc70888a344.png" alt="image"></p>
+        :type HideBizLicense: bool
         """
         self._Operator = None
         self._AuthorizationTypes = None
@@ -16275,6 +16277,7 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         self._OrganizationIdCardType = None
         self._OrganizationIdCardTypeSame = None
         self._AuthorizationMethod = None
+        self._HideBizLicense = None
 
     @property
     def Operator(self):
@@ -16584,6 +16587,17 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
     def AuthorizationMethod(self, AuthorizationMethod):
         self._AuthorizationMethod = AuthorizationMethod
 
+    @property
+    def HideBizLicense(self):
+        r"""<p>企业认证页面隐藏上传营业执照<br><img src="https://qcloudimg.tencent-cloud.cn/raw/cf827ce0e2043d8cc85e0735c9cfa3fc.png" alt="image"><br><img src="https://qcloudimg.tencent-cloud.cn/raw/f908cabe71238c78ee8fafc70888a344.png" alt="image"></p>
+        :rtype: bool
+        """
+        return self._HideBizLicense
+
+    @HideBizLicense.setter
+    def HideBizLicense(self, HideBizLicense):
+        self._HideBizLicense = HideBizLicense
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -16621,6 +16635,7 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         self._OrganizationIdCardType = params.get("OrganizationIdCardType")
         self._OrganizationIdCardTypeSame = params.get("OrganizationIdCardTypeSame")
         self._AuthorizationMethod = params.get("AuthorizationMethod")
+        self._HideBizLicense = params.get("HideBizLicense")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

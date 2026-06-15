@@ -7108,11 +7108,11 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。(备注，dcdb的InstanceId 要求使用 <code>ClusterId&amp;InstanceId</code>代替)</p>
         :type InstanceId: str
-        :param _RangeDays: 时间段天数，截止日期为当日，默认为7天。
+        :param _RangeDays: <p>时间段天数，截止日期为当日，默认为7天。</p>
         :type RangeDays: int
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+        :param _Product: <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;dcdb&quot; -（TDSQL MySQL 版）、&quot;mariadb&quot; -（TDSQL MariaDB 版）默认为&quot;mysql&quot;。</p>
         :type Product: str
         """
         self._InstanceId = None
@@ -7121,7 +7121,7 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。(备注，dcdb的InstanceId 要求使用 <code>ClusterId&amp;InstanceId</code>代替)</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7132,7 +7132,7 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     @property
     def RangeDays(self):
-        r"""时间段天数，截止日期为当日，默认为7天。
+        r"""<p>时间段天数，截止日期为当日，默认为7天。</p>
         :rtype: int
         """
         return self._RangeDays
@@ -7143,7 +7143,7 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+        r"""<p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;dcdb&quot; -（TDSQL MySQL 版）、&quot;mariadb&quot; -（TDSQL MariaDB 版）默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -7174,13 +7174,13 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Growth: 磁盘增长量(MB)。
+        :param _Growth: <p>磁盘增长量(MB)。</p>
         :type Growth: int
-        :param _Remain: 磁盘剩余(MB)。
+        :param _Remain: <p>磁盘剩余(MB)。</p>
         :type Remain: int
-        :param _Total: 磁盘总量(MB)。
+        :param _Total: <p>磁盘总量(MB)。</p>
         :type Total: int
-        :param _AvailableDays: 预计可用天数。
+        :param _AvailableDays: <p>预计可用天数。</p>
         :type AvailableDays: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7193,7 +7193,7 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def Growth(self):
-        r"""磁盘增长量(MB)。
+        r"""<p>磁盘增长量(MB)。</p>
         :rtype: int
         """
         return self._Growth
@@ -7204,7 +7204,7 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def Remain(self):
-        r"""磁盘剩余(MB)。
+        r"""<p>磁盘剩余(MB)。</p>
         :rtype: int
         """
         return self._Remain
@@ -7215,7 +7215,7 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""磁盘总量(MB)。
+        r"""<p>磁盘总量(MB)。</p>
         :rtype: int
         """
         return self._Total
@@ -7226,7 +7226,7 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def AvailableDays(self):
-        r"""预计可用天数。
+        r"""<p>预计可用天数。</p>
         :rtype: int
         """
         return self._AvailableDays

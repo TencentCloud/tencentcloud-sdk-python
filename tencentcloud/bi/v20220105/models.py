@@ -13174,6 +13174,202 @@ class ModifyResourceUserGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyResourceUserRequest(AbstractModel):
+    r"""ModifyResourceUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+        :type ProjectId: int
+        :param _UserId: 用户id
+        :type UserId: str
+        :param _Resource: 资源
+        :type Resource: :class:`tencentcloud.bi.v20220105.models.UserResourceDTO`
+        :param _EntityIds: 实体类
+        :type EntityIds: list of int
+        :param _ResourceType: 资源类型
+        :type ResourceType: str
+        """
+        self._ProjectId = None
+        self._UserId = None
+        self._Resource = None
+        self._EntityIds = None
+        self._ResourceType = None
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UserId(self):
+        r"""用户id
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Resource(self):
+        r"""资源
+        :rtype: :class:`tencentcloud.bi.v20220105.models.UserResourceDTO`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def EntityIds(self):
+        r"""实体类
+        :rtype: list of int
+        """
+        return self._EntityIds
+
+    @EntityIds.setter
+    def EntityIds(self, EntityIds):
+        self._EntityIds = EntityIds
+
+    @property
+    def ResourceType(self):
+        r"""资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._UserId = params.get("UserId")
+        if params.get("Resource") is not None:
+            self._Resource = UserResourceDTO()
+            self._Resource._deserialize(params.get("Resource"))
+        self._EntityIds = params.get("EntityIds")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceUserResponse(AbstractModel):
+    r"""ModifyResourceUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: 扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyUserDetailInfoRequest(AbstractModel):
     r"""ModifyUserDetailInfo请求参数结构体
 

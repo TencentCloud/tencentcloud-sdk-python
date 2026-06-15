@@ -992,6 +992,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyResourceUser(self, request):
+        r"""按用户资源修改
+
+        :param request: Request instance for ModifyResourceUser.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourceUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourceUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyResourceUserGroup(self, request):
         r"""更新用户组权限
 

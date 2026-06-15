@@ -781,6 +781,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyResourceUser(
+            self,
+            request: models.ModifyResourceUserRequest,
+            opts: Dict = None,
+    ) -> models.ModifyResourceUserResponse:
+        """
+        按用户资源修改
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyResourceUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyResourceUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyResourceUserGroup(
             self,
             request: models.ModifyResourceUserGroupRequest,
