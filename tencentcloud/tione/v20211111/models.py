@@ -2429,6 +2429,8 @@ class CreateModelServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _ServiceGroupId: <p>新增版本时需要填写</p>
         :type ServiceGroupId: str
         :param _ServiceGroupName: <p>不超过60个字，仅支持英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以英文、数字开头</p>
@@ -2520,6 +2522,7 @@ class CreateModelServiceRequest(AbstractModel):
         :param _GatewayConfig: <p>网关相关配置</p>
         :type GatewayConfig: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
         """
+        self._TiProjectId = None
         self._ServiceGroupId = None
         self._ServiceGroupName = None
         self._ServiceDescription = None
@@ -2565,6 +2568,17 @@ class CreateModelServiceRequest(AbstractModel):
         self._SchedulingStrategy = None
         self._GatewayLogConfig = None
         self._GatewayConfig = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def ServiceGroupId(self):
@@ -3063,6 +3077,7 @@ class CreateModelServiceRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         self._ServiceGroupId = params.get("ServiceGroupId")
         self._ServiceGroupName = params.get("ServiceGroupName")
         self._ServiceDescription = params.get("ServiceDescription")

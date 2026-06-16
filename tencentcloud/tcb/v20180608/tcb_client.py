@@ -858,6 +858,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudAppList(self, request):
+        r"""查询云应用服务列表信息
+
+        :param request: Request instance for DescribeCloudAppList.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppListRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudAppList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudAppListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudBaseBuildService(self, request):
         r"""获取云托管代码上传url
 
@@ -921,6 +944,52 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeCreateMySQLResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCreateMySQLResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCreditsUsage(self, request):
+        r"""查询资源点模式下的资源点用量
+
+        :param request: Request instance for DescribeCreditsUsage.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCreditsUsageRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCreditsUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCreditsUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCreditsUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCreditsUsageDetail(self, request):
+        r"""查询资源点模式下的资源点用量及原始用量明细
+
+        :param request: Request instance for DescribeCreditsUsageDetail.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCreditsUsageDetailRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCreditsUsageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCreditsUsageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCreditsUsageDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

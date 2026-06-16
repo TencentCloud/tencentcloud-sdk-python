@@ -12086,6 +12086,124 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFlowGroupRemindsRequest(AbstractModel):
+    r"""CreateFlowGroupReminds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _FlowGroupId: <p>合同(流程)组的合同组Id</p>
+        :type FlowGroupId: str
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._FlowGroupId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowGroupId(self):
+        r"""<p>合同(流程)组的合同组Id</p>
+        :rtype: str
+        """
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
+
+    @property
+    def Agent(self):
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowGroupId = params.get("FlowGroupId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlowGroupRemindsResponse(AbstractModel):
+    r"""CreateFlowGroupReminds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RemindFlowGroupRecords: <p>合同组催办接口返回的详细信息。</p>
+        :type RemindFlowGroupRecords: list of RemindFlowGroupRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RemindFlowGroupRecords = None
+        self._RequestId = None
+
+    @property
+    def RemindFlowGroupRecords(self):
+        r"""<p>合同组催办接口返回的详细信息。</p>
+        :rtype: list of RemindFlowGroupRecord
+        """
+        return self._RemindFlowGroupRecords
+
+    @RemindFlowGroupRecords.setter
+    def RemindFlowGroupRecords(self, RemindFlowGroupRecords):
+        self._RemindFlowGroupRecords = RemindFlowGroupRecords
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RemindFlowGroupRecords") is not None:
+            self._RemindFlowGroupRecords = []
+            for item in params.get("RemindFlowGroupRecords"):
+                obj = RemindFlowGroupRecord()
+                obj._deserialize(item)
+                self._RemindFlowGroupRecords.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFlowGroupSignReviewRequest(AbstractModel):
     r"""CreateFlowGroupSignReview请求参数结构体
 
@@ -43668,6 +43786,190 @@ class RemindEmailInfo(AbstractModel):
     def _deserialize(self, params):
         self._SignId = params.get("SignId")
         self._ApproverEmail = params.get("ApproverEmail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemindFlowGroupDetail(AbstractModel):
+    r"""催办合同组下签署人维度详细信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApproverOrder: <p>该签署人在合同中的签署顺序</p>
+        :type ApproverOrder: int
+        :param _SignId: <p>签署人对应的签署id</p>
+        :type SignId: str
+        :param _Status: <p>催办状态</p><p>枚举值：</p><ul><li>0： 成功</li><li>2： 无需催办</li><li>5： 超过次数限制</li></ul>
+        :type Status: int
+        :param _Reason: <p>描述当前催办结果的原因</p>
+        :type Reason: str
+        """
+        self._ApproverOrder = None
+        self._SignId = None
+        self._Status = None
+        self._Reason = None
+
+    @property
+    def ApproverOrder(self):
+        r"""<p>该签署人在合同中的签署顺序</p>
+        :rtype: int
+        """
+        return self._ApproverOrder
+
+    @ApproverOrder.setter
+    def ApproverOrder(self, ApproverOrder):
+        self._ApproverOrder = ApproverOrder
+
+    @property
+    def SignId(self):
+        r"""<p>签署人对应的签署id</p>
+        :rtype: str
+        """
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def Status(self):
+        r"""<p>催办状态</p><p>枚举值：</p><ul><li>0： 成功</li><li>2： 无需催办</li><li>5： 超过次数限制</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Reason(self):
+        r"""<p>描述当前催办结果的原因</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._ApproverOrder = params.get("ApproverOrder")
+        self._SignId = params.get("SignId")
+        self._Status = params.get("Status")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemindFlowGroupRecord(AbstractModel):
+    r"""合同组催办接口返回的详细信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowIds: <p>对应签署人出现的合同列表</p>
+        :type FlowIds: list of str
+        :param _FlowNames: <p>对应签署人出现的合同名</p>
+        :type FlowNames: list of str
+        :param _ApproverName: <p>签署人姓名</p>
+        :type ApproverName: str
+        :param _Mobile: <p>签署人手机号</p>
+        :type Mobile: str
+        :param _RemindMessageList: <p>催办合同组下签署人维度详细信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemindMessageList: list of RemindFlowGroupDetail
+        """
+        self._FlowIds = None
+        self._FlowNames = None
+        self._ApproverName = None
+        self._Mobile = None
+        self._RemindMessageList = None
+
+    @property
+    def FlowIds(self):
+        r"""<p>对应签署人出现的合同列表</p>
+        :rtype: list of str
+        """
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def FlowNames(self):
+        r"""<p>对应签署人出现的合同名</p>
+        :rtype: list of str
+        """
+        return self._FlowNames
+
+    @FlowNames.setter
+    def FlowNames(self, FlowNames):
+        self._FlowNames = FlowNames
+
+    @property
+    def ApproverName(self):
+        r"""<p>签署人姓名</p>
+        :rtype: str
+        """
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def Mobile(self):
+        r"""<p>签署人手机号</p>
+        :rtype: str
+        """
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def RemindMessageList(self):
+        r"""<p>催办合同组下签署人维度详细信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RemindFlowGroupDetail
+        """
+        return self._RemindMessageList
+
+    @RemindMessageList.setter
+    def RemindMessageList(self, RemindMessageList):
+        self._RemindMessageList = RemindMessageList
+
+
+    def _deserialize(self, params):
+        self._FlowIds = params.get("FlowIds")
+        self._FlowNames = params.get("FlowNames")
+        self._ApproverName = params.get("ApproverName")
+        self._Mobile = params.get("Mobile")
+        if params.get("RemindMessageList") is not None:
+            self._RemindMessageList = []
+            for item in params.get("RemindMessageList"):
+                obj = RemindFlowGroupDetail()
+                obj._deserialize(item)
+                self._RemindMessageList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

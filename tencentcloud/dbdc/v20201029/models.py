@@ -18,6 +18,1601 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddNodesToDBCustomClusterRequest(AbstractModel):
+    r"""AddNodesToDBCustomCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _NodeIds: <p>需上架的节点 ID 列表</p>
+        :type NodeIds: list of str
+        :param _ImageId: <p>节点上架后重设的操作系统镜像ID</p><p>取值参考：可通过&quot;DescribeDBCustomImages&quot;接口获取支持的镜像。</p>
+        :type ImageId: str
+        :param _LoginSettings: <p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+        :type LoginSettings: :class:`tencentcloud.dbdc.v20201029.models.LoginSettings`
+        """
+        self._ClusterId = None
+        self._NodeIds = None
+        self._ImageId = None
+        self._LoginSettings = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeIds(self):
+        r"""<p>需上架的节点 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def ImageId(self):
+        r"""<p>节点上架后重设的操作系统镜像ID</p><p>取值参考：可通过&quot;DescribeDBCustomImages&quot;接口获取支持的镜像。</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def LoginSettings(self):
+        r"""<p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.LoginSettings`
+        """
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodeIds = params.get("NodeIds")
+        self._ImageId = params.get("ImageId")
+        if params.get("LoginSettings") is not None:
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddNodesToDBCustomClusterResponse(AbstractModel):
+    r"""AddNodesToDBCustomCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>上架节点的任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>上架节点的任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ApiServerNetwork(AbstractModel):
+    r"""连通 DB Custom 集群 API Server 的网络配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: <p>API Server的访问私有网络ID</p>
+        :type VpcId: str
+        :param _SubnetId: <p>API Server的访问私有网络子网ID</p>
+        :type SubnetId: str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def VpcId(self):
+        r"""<p>API Server的访问私有网络ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>API Server的访问私有网络子网ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckRoleAuthorizedRequest(AbstractModel):
+    r"""CheckRoleAuthorized请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: <p>待检测的角色名字</p>
+        :type RoleName: str
+        """
+        self._RoleName = None
+
+    @property
+    def RoleName(self):
+        r"""<p>待检测的角色名字</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckRoleAuthorizedResponse(AbstractModel):
+    r"""CheckRoleAuthorized返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>角色权限状态</p><p>枚举值：</p><ul><li>AUTHORIZED： 已经创建授权</li><li>NEED_GRANT： 未授权</li><li>ERROR： 报错</li></ul>
+        :type Status: str
+        :param _Message: <p>出错的错误信息</p>
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>角色权限状态</p><p>枚举值：</p><ul><li>AUTHORIZED： 已经创建授权</li><li>NEED_GRANT： 未授权</li><li>ERROR： 报错</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""<p>出错的错误信息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class ContainerNetwork(AbstractModel):
+    r"""联通 DB Custom 集群中容器的网络配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: <p>容器网络的虚拟网络ID</p>
+        :type VpcId: str
+        :param _SubnetIds: <p>容器网络的虚拟网络子网列表</p>
+        :type SubnetIds: list of str
+        """
+        self._VpcId = None
+        self._SubnetIds = None
+
+    @property
+    def VpcId(self):
+        r"""<p>容器网络的虚拟网络ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetIds(self):
+        r"""<p>容器网络的虚拟网络子网列表</p>
+        :rtype: list of str
+        """
+        return self._SubnetIds
+
+    @SubnetIds.setter
+    def SubnetIds(self, SubnetIds):
+        self._SubnetIds = SubnetIds
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetIds = params.get("SubnetIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBCustomClusterRequest(AbstractModel):
+    r"""CreateDBCustomCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContainerNetwork: <p>容器网络，在此集群的所有 POD 与此网络连通</p>
+        :type ContainerNetwork: :class:`tencentcloud.dbdc.v20201029.models.ContainerNetwork`
+        :param _ClusterName: <p>集群名称</p><p>入参限制：最长128个字符，只能为中文，英文，下划线。</p>
+        :type ClusterName: str
+        :param _ApiServerNetwork: <p>集群的API Server的网络信息</p><p>入参限制：必须为此账号下拥有的网络地址，可以与容器网络保持一致。</p>
+        :type ApiServerNetwork: :class:`tencentcloud.dbdc.v20201029.models.ApiServerNetwork`
+        :param _ClusterDescription: <p>集群描述</p>
+        :type ClusterDescription: str
+        :param _Tags: <p>集群标签</p>
+        :type Tags: list of Tag
+        :param _ClientToken: <p>客户端Token</p>
+        :type ClientToken: str
+        """
+        self._ContainerNetwork = None
+        self._ClusterName = None
+        self._ApiServerNetwork = None
+        self._ClusterDescription = None
+        self._Tags = None
+        self._ClientToken = None
+
+    @property
+    def ContainerNetwork(self):
+        r"""<p>容器网络，在此集群的所有 POD 与此网络连通</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ContainerNetwork`
+        """
+        return self._ContainerNetwork
+
+    @ContainerNetwork.setter
+    def ContainerNetwork(self, ContainerNetwork):
+        self._ContainerNetwork = ContainerNetwork
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p><p>入参限制：最长128个字符，只能为中文，英文，下划线。</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ApiServerNetwork(self):
+        r"""<p>集群的API Server的网络信息</p><p>入参限制：必须为此账号下拥有的网络地址，可以与容器网络保持一致。</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ApiServerNetwork`
+        """
+        return self._ApiServerNetwork
+
+    @ApiServerNetwork.setter
+    def ApiServerNetwork(self, ApiServerNetwork):
+        self._ApiServerNetwork = ApiServerNetwork
+
+    @property
+    def ClusterDescription(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._ClusterDescription
+
+    @ClusterDescription.setter
+    def ClusterDescription(self, ClusterDescription):
+        self._ClusterDescription = ClusterDescription
+
+    @property
+    def Tags(self):
+        r"""<p>集群标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ClientToken(self):
+        r"""<p>客户端Token</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        if params.get("ContainerNetwork") is not None:
+            self._ContainerNetwork = ContainerNetwork()
+            self._ContainerNetwork._deserialize(params.get("ContainerNetwork"))
+        self._ClusterName = params.get("ClusterName")
+        if params.get("ApiServerNetwork") is not None:
+            self._ApiServerNetwork = ApiServerNetwork()
+            self._ApiServerNetwork._deserialize(params.get("ApiServerNetwork"))
+        self._ClusterDescription = params.get("ClusterDescription")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBCustomClusterResponse(AbstractModel):
+    r"""CreateDBCustomCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>本次创建的集群ID</p>
+        :type ClusterId: str
+        :param _TaskId: <p>本次创建集群的任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>本次创建的集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TaskId(self):
+        r"""<p>本次创建集群的任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDBCustomNodesRequest(AbstractModel):
+    r"""CreateDBCustomNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: <p>产品支持的可用区</p><p>枚举值：</p><ul><li>ap-shanghai-5： 上海五区</li><li>ap-shanghai-8： 上海八区</li><li>ap-nanjing-3： 南京三区</li></ul>
+        :type Zone: str
+        :param _ImageId: <p>镜像ID</p><p>参数格式：img-xxxxxxx</p><p>入参限制：必须为当前账号下DB Custom 产品拥有的镜像</p><p>取值参考：可通过&quot;DescribeDBCustomImages&quot;接口获取支持的镜像。</p>
+        :type ImageId: str
+        :param _VpcId: <p>为节点打通SSH连接的VPC 网络ID。</p><p>参数格式：vpc-b4zgtest</p><p>入参限制：必须是当前账号下拥有的VPC 网络ID，且不能跨地域。</p><p>取值参考：可通过【查询VPC列表】接口获取：https://cloud.tencent.com/document/product/215/15778</p>
+        :type VpcId: str
+        :param _SubnetId: <p>为节点打通SSH连接的VPC 子网 ID。 </p><p>参数格式：subnet-t13dtest</p><p>入参限制：必须是VPC之下的子网，子网必须与可用区对应。</p><p>取值参考：可通过【查询子网列表】接口获取：https://cloud.tencent.com/document/product/215/15784</p>
+        :type SubnetId: str
+        :param _Period: <p>购买时长(月): 1/2/3/4/5/6/7/8/9/10/11/12/24/36</p><p>取值范围：[1, 36]</p><p>单位：月</p><p>默认值：1</p>
+        :type Period: int
+        :param _NodeType: <p>节点机型</p><p>枚举值：</p><ul><li>DB.AT5.32XLARGE512： 高IO型服务器：128核心512GB内存，8*7180GB本地NvME SSDB。</li><li>DB.AT5.64XLARGE1152： 高IO型服务器：256核心1152GB内存，12*7180GB本地NvME SSDB。</li><li>DB.AT5.128XLARGE2304： 高IO型服务器：512核心2304GB内存，24*7180GB本地NvME SSDB。</li><li>DB.AT5.16XLARGE256： 高IO型服务器：64核心256GB内存，4*7180GB本地NvME SSDB。</li><li>DB.AT5.8XLARGE128： 高IO型服务器：32核心128GB内存，2*7180GB本地NvME SSDB。</li></ul>
+        :type NodeType: str
+        :param _NodeCount: <p>购买的节点数量</p><p>取值范围：[1, 20]</p>
+        :type NodeCount: int
+        :param _LoginSettings: <p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+        :type LoginSettings: :class:`tencentcloud.dbdc.v20201029.models.LoginSettings`
+        :param _AutoRenew: <p>自动续费配置</p><p>枚举值：</p><ul><li>1： 自动续费</li><li>2： 不自动续费</li></ul><p>默认值：不自动续费</p>
+        :type AutoRenew: int
+        :param _NodeName: <p>节点名称</p><p>入参限制：最多128个字符</p>
+        :type NodeName: str
+        :param _AutoVoucher: <p>是否使用代金券自动抵扣</p><p>枚举值：</p><ul><li>1： 使用</li><li>0： 不使用</li></ul><p>默认值：0</p>
+        :type AutoVoucher: int
+        :param _VoucherIds: <p>代金券ID</p><p>入参限制：必须为当前账号下拥有的未抵扣的代金券ID。</p>
+        :type VoucherIds: list of str
+        :param _Tags: <p>标签</p>
+        :type Tags: list of Tag
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
+        :type ClientToken: str
+        """
+        self._Zone = None
+        self._ImageId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Period = None
+        self._NodeType = None
+        self._NodeCount = None
+        self._LoginSettings = None
+        self._AutoRenew = None
+        self._NodeName = None
+        self._AutoVoucher = None
+        self._VoucherIds = None
+        self._Tags = None
+        self._ClientToken = None
+
+    @property
+    def Zone(self):
+        r"""<p>产品支持的可用区</p><p>枚举值：</p><ul><li>ap-shanghai-5： 上海五区</li><li>ap-shanghai-8： 上海八区</li><li>ap-nanjing-3： 南京三区</li></ul>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ImageId(self):
+        r"""<p>镜像ID</p><p>参数格式：img-xxxxxxx</p><p>入参限制：必须为当前账号下DB Custom 产品拥有的镜像</p><p>取值参考：可通过&quot;DescribeDBCustomImages&quot;接口获取支持的镜像。</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def VpcId(self):
+        r"""<p>为节点打通SSH连接的VPC 网络ID。</p><p>参数格式：vpc-b4zgtest</p><p>入参限制：必须是当前账号下拥有的VPC 网络ID，且不能跨地域。</p><p>取值参考：可通过【查询VPC列表】接口获取：https://cloud.tencent.com/document/product/215/15778</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>为节点打通SSH连接的VPC 子网 ID。 </p><p>参数格式：subnet-t13dtest</p><p>入参限制：必须是VPC之下的子网，子网必须与可用区对应。</p><p>取值参考：可通过【查询子网列表】接口获取：https://cloud.tencent.com/document/product/215/15784</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Period(self):
+        r"""<p>购买时长(月): 1/2/3/4/5/6/7/8/9/10/11/12/24/36</p><p>取值范围：[1, 36]</p><p>单位：月</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def NodeType(self):
+        r"""<p>节点机型</p><p>枚举值：</p><ul><li>DB.AT5.32XLARGE512： 高IO型服务器：128核心512GB内存，8*7180GB本地NvME SSDB。</li><li>DB.AT5.64XLARGE1152： 高IO型服务器：256核心1152GB内存，12*7180GB本地NvME SSDB。</li><li>DB.AT5.128XLARGE2304： 高IO型服务器：512核心2304GB内存，24*7180GB本地NvME SSDB。</li><li>DB.AT5.16XLARGE256： 高IO型服务器：64核心256GB内存，4*7180GB本地NvME SSDB。</li><li>DB.AT5.8XLARGE128： 高IO型服务器：32核心128GB内存，2*7180GB本地NvME SSDB。</li></ul>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeCount(self):
+        r"""<p>购买的节点数量</p><p>取值范围：[1, 20]</p>
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def LoginSettings(self):
+        r"""<p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.LoginSettings`
+        """
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
+    @property
+    def AutoRenew(self):
+        r"""<p>自动续费配置</p><p>枚举值：</p><ul><li>1： 自动续费</li><li>2： 不自动续费</li></ul><p>默认值：不自动续费</p>
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def NodeName(self):
+        r"""<p>节点名称</p><p>入参限制：最多128个字符</p>
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def AutoVoucher(self):
+        r"""<p>是否使用代金券自动抵扣</p><p>枚举值：</p><ul><li>1： 使用</li><li>0： 不使用</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def VoucherIds(self):
+        r"""<p>代金券ID</p><p>入参限制：必须为当前账号下拥有的未抵扣的代金券ID。</p>
+        :rtype: list of str
+        """
+        return self._VoucherIds
+
+    @VoucherIds.setter
+    def VoucherIds(self, VoucherIds):
+        self._VoucherIds = VoucherIds
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ClientToken(self):
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._ImageId = params.get("ImageId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Period = params.get("Period")
+        self._NodeType = params.get("NodeType")
+        self._NodeCount = params.get("NodeCount")
+        if params.get("LoginSettings") is not None:
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
+        self._AutoRenew = params.get("AutoRenew")
+        self._NodeName = params.get("NodeName")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._VoucherIds = params.get("VoucherIds")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBCustomNodesResponse(AbstractModel):
+    r"""CreateDBCustomNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeIds: <p>节点ID列表</p>
+        :type NodeIds: list of str
+        :param _TaskId: <p>创建节点的任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodeIds = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def NodeIds(self):
+        r"""<p>节点ID列表</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def TaskId(self):
+        r"""<p>创建节点的任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NodeIds = params.get("NodeIds")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DBCustomCluster(AbstractModel):
+    r"""DB Custom 集群信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        :param _Region: <p>集群支持的地域</p>
+        :type Region: str
+        :param _ClusterLevel: <p>集群规模</p><p>默认值：L500</p>
+        :type ClusterLevel: str
+        :param _ClusterStatus: <p>DB Custom 集群状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li><li>Running： 运行中</li><li>Destroying： 销毁中</li></ul>
+        :type ClusterStatus: str
+        :param _ClusterVersion: <p>集群版本号</p>
+        :type ClusterVersion: str
+        :param _ClusterNodeNum: <p>集群中的节点数量</p><p>单位：台</p>
+        :type ClusterNodeNum: int
+        :param _ClusterDescription: <p>集群描述</p>
+        :type ClusterDescription: str
+        :param _CreatedTime: <p>创建时间</p>
+        :type CreatedTime: str
+        :param _Tags: <p>集群的标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._Region = None
+        self._ClusterLevel = None
+        self._ClusterStatus = None
+        self._ClusterVersion = None
+        self._ClusterNodeNum = None
+        self._ClusterDescription = None
+        self._CreatedTime = None
+        self._Tags = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Region(self):
+        r"""<p>集群支持的地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ClusterLevel(self):
+        r"""<p>集群规模</p><p>默认值：L500</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
+    @property
+    def ClusterStatus(self):
+        r"""<p>DB Custom 集群状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li><li>Running： 运行中</li><li>Destroying： 销毁中</li></ul>
+        :rtype: str
+        """
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def ClusterVersion(self):
+        r"""<p>集群版本号</p>
+        :rtype: str
+        """
+        return self._ClusterVersion
+
+    @ClusterVersion.setter
+    def ClusterVersion(self, ClusterVersion):
+        self._ClusterVersion = ClusterVersion
+
+    @property
+    def ClusterNodeNum(self):
+        r"""<p>集群中的节点数量</p><p>单位：台</p>
+        :rtype: int
+        """
+        return self._ClusterNodeNum
+
+    @ClusterNodeNum.setter
+    def ClusterNodeNum(self, ClusterNodeNum):
+        self._ClusterNodeNum = ClusterNodeNum
+
+    @property
+    def ClusterDescription(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._ClusterDescription
+
+    @ClusterDescription.setter
+    def ClusterDescription(self, ClusterDescription):
+        self._ClusterDescription = ClusterDescription
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Tags(self):
+        r"""<p>集群的标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._Region = params.get("Region")
+        self._ClusterLevel = params.get("ClusterLevel")
+        self._ClusterStatus = params.get("ClusterStatus")
+        self._ClusterVersion = params.get("ClusterVersion")
+        self._ClusterNodeNum = params.get("ClusterNodeNum")
+        self._ClusterDescription = params.get("ClusterDescription")
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBCustomClusterNode(AbstractModel):
+    r"""DB Custom 集群节点信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点ID</p>
+        :type NodeId: str
+        :param _NodeName: <p>节点名称</p>
+        :type NodeName: str
+        :param _LanIP: <p>节点内网IP地址</p>
+        :type LanIP: str
+        :param _SSHEndpoint: <p>节点SSH 访问的Endpoint。格式为IP:Port.</p>
+        :type SSHEndpoint: str
+        :param _Status: <p>节点在集群中的实例状态</p>
+        :type Status: str
+        :param _Zone: <p>节点所属的地域</p>
+        :type Zone: str
+        :param _NodeType: <p>节点类型</p><p>枚举值：</p><ul><li>DB.AT5.32XLARGE512： 高IO型服务器：128核心512GB内存，8*7180GB本地NvME SSDB。</li><li>DB.AT5.64XLARGE1152： 高IO型服务器：256核心1152GB内存，12*7180GB本地NvME SSDB。</li><li>DB.AT5.128XLARGE2304： 高IO型服务器：512核心2304GB内存，24*7180GB本地NvME SSDB。</li><li>DB.AT5.16XLARGE256： 高IO型服务器：64核心256GB内存，4*7180GB本地NvME SSDB。</li><li>DB.AT5.8XLARGE128： 高IO型服务器：32核心128GB内存，2*7180GB本地NvME SSDB。</li></ul>
+        :type NodeType: str
+        """
+        self._NodeId = None
+        self._NodeName = None
+        self._LanIP = None
+        self._SSHEndpoint = None
+        self._Status = None
+        self._Zone = None
+        self._NodeType = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeName(self):
+        r"""<p>节点名称</p>
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def LanIP(self):
+        r"""<p>节点内网IP地址</p>
+        :rtype: str
+        """
+        return self._LanIP
+
+    @LanIP.setter
+    def LanIP(self, LanIP):
+        self._LanIP = LanIP
+
+    @property
+    def SSHEndpoint(self):
+        r"""<p>节点SSH 访问的Endpoint。格式为IP:Port.</p>
+        :rtype: str
+        """
+        return self._SSHEndpoint
+
+    @SSHEndpoint.setter
+    def SSHEndpoint(self, SSHEndpoint):
+        self._SSHEndpoint = SSHEndpoint
+
+    @property
+    def Status(self):
+        r"""<p>节点在集群中的实例状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Zone(self):
+        r"""<p>节点所属的地域</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeType(self):
+        r"""<p>节点类型</p><p>枚举值：</p><ul><li>DB.AT5.32XLARGE512： 高IO型服务器：128核心512GB内存，8*7180GB本地NvME SSDB。</li><li>DB.AT5.64XLARGE1152： 高IO型服务器：256核心1152GB内存，12*7180GB本地NvME SSDB。</li><li>DB.AT5.128XLARGE2304： 高IO型服务器：512核心2304GB内存，24*7180GB本地NvME SSDB。</li><li>DB.AT5.16XLARGE256： 高IO型服务器：64核心256GB内存，4*7180GB本地NvME SSDB。</li><li>DB.AT5.8XLARGE128： 高IO型服务器：32核心128GB内存，2*7180GB本地NvME SSDB。</li></ul>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._NodeName = params.get("NodeName")
+        self._LanIP = params.get("LanIP")
+        self._SSHEndpoint = params.get("SSHEndpoint")
+        self._Status = params.get("Status")
+        self._Zone = params.get("Zone")
+        self._NodeType = params.get("NodeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBCustomImage(AbstractModel):
+    r"""DB Custom 可选的镜像信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: <p>镜像ID</p>
+        :type ImageId: str
+        :param _OsName: <p>操作系统名称</p>
+        :type OsName: str
+        :param _ImageType: <p>镜像类型</p><p>枚举值：</p><ul><li>PUBLIC_IMAGE： 公共镜像 (腾讯云官方镜像)</li><li>PRIVATE_IMAGE： 私有镜像 (客户专属镜像)</li></ul>
+        :type ImageType: str
+        :param _Architecture: <p>操作系统架构</p><p>枚举值：</p><ul><li>x86_64： X86 64位架构</li><li>arm64： ARM 64位机构</li></ul>
+        :type Architecture: str
+        """
+        self._ImageId = None
+        self._OsName = None
+        self._ImageType = None
+        self._Architecture = None
+
+    @property
+    def ImageId(self):
+        r"""<p>镜像ID</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def OsName(self):
+        r"""<p>操作系统名称</p>
+        :rtype: str
+        """
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+    @property
+    def ImageType(self):
+        r"""<p>镜像类型</p><p>枚举值：</p><ul><li>PUBLIC_IMAGE： 公共镜像 (腾讯云官方镜像)</li><li>PRIVATE_IMAGE： 私有镜像 (客户专属镜像)</li></ul>
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def Architecture(self):
+        r"""<p>操作系统架构</p><p>枚举值：</p><ul><li>x86_64： X86 64位架构</li><li>arm64： ARM 64位机构</li></ul>
+        :rtype: str
+        """
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        self._Architecture = Architecture
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._OsName = params.get("OsName")
+        self._ImageType = params.get("ImageType")
+        self._Architecture = params.get("Architecture")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBCustomNode(AbstractModel):
+    r"""DB Custom 节点信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点ID</p>
+        :type NodeId: str
+        :param _NodeName: <p>节点名称</p>
+        :type NodeName: str
+        :param _SSHEndpoint: <p>访问此节点的SSH Endpoint，格式为IP:Port</p>
+        :type SSHEndpoint: str
+        :param _LanIP: <p>节点的内网通信IP地址</p>
+        :type LanIP: str
+        :param _ClusterId: <p>节点所属的集群ID</p>
+        :type ClusterId: str
+        :param _Zone: <p>节点所属的可用区</p>
+        :type Zone: str
+        :param _NodeType: <p>节点类型</p><p>枚举值：</p><ul><li>DB.AT5.32XLARGE512： 高IO型服务器：128核心512GB内存，8*7180GB本地NvME SSDB。</li><li>DB.AT5.64XLARGE1152： 高IO型服务器：256核心1152GB内存，12*7180GB本地NvME SSDB。</li><li>DB.AT5.128XLARGE2304： 高IO型服务器：512核心2304GB内存，24*7180GB本地NvME SSDB。</li><li>DB.AT5.16XLARGE256： 高IO型服务器：64核心256GB内存，4*7180GB本地NvME SSDB。</li><li>DB.AT5.8XLARGE128： 高IO型服务器：32核心128GB内存，2*7180GB本地NvME SSDB。</li></ul>
+        :type NodeType: str
+        :param _CPU: <p>节点CPU大小</p><p>单位：核</p>
+        :type CPU: int
+        :param _Memory: <p>节点内存</p><p>单位：GiB</p>
+        :type Memory: int
+        :param _SystemDisk: <p>系统盘信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemDisk: :class:`tencentcloud.dbdc.v20201029.models.SystemDisk`
+        :param _DataDisks: <p>数据盘信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDisks: list of DataDisk
+        :param _OsName: <p>节点的操作系统名称</p>
+        :type OsName: str
+        :param _ImageId: <p>节点的操作系统镜像ID</p>
+        :type ImageId: str
+        :param _VpcId: <p>节点SSH Endpoint 所属的VPC ID</p>
+        :type VpcId: str
+        :param _SubnetId: <p>节点SSH Endpoint 所属的VPC 子网ID</p>
+        :type SubnetId: str
+        :param _Status: <p>节点状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li><li>Running： 运行中</li><li>Isolating： 隔离中</li><li>Isolated： 已隔离</li><li>Activating： 解除隔离中</li><li>Destroying： 销毁中</li></ul>
+        :type Status: str
+        :param _ChargeType: <p>付费类型</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li></ul>
+        :type ChargeType: str
+        :param _ExpireTime: <p>节点到期时间</p>
+        :type ExpireTime: str
+        :param _CreatedTime: <p>节点创建时间</p>
+        :type CreatedTime: str
+        :param _IsolatedTime: <p>节点隔离时间</p>
+        :type IsolatedTime: str
+        :param _Tags: <p>节点标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _AutoRenew: <p>节点是否自动续费标记</p><p>枚举值：</p><ul><li>1： 自动续费</li><li>0： 不自动续费</li></ul>
+        :type AutoRenew: int
+        :param _SwitchId: <p>交换机ID（已加密）</p>
+        :type SwitchId: str
+        :param _RackId: <p>机架ID（已加密）</p>
+        :type RackId: str
+        :param _HostIp: <p>底层物理机IP（已加密）</p>
+        :type HostIp: str
+        """
+        self._NodeId = None
+        self._NodeName = None
+        self._SSHEndpoint = None
+        self._LanIP = None
+        self._ClusterId = None
+        self._Zone = None
+        self._NodeType = None
+        self._CPU = None
+        self._Memory = None
+        self._SystemDisk = None
+        self._DataDisks = None
+        self._OsName = None
+        self._ImageId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Status = None
+        self._ChargeType = None
+        self._ExpireTime = None
+        self._CreatedTime = None
+        self._IsolatedTime = None
+        self._Tags = None
+        self._AutoRenew = None
+        self._SwitchId = None
+        self._RackId = None
+        self._HostIp = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeName(self):
+        r"""<p>节点名称</p>
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def SSHEndpoint(self):
+        r"""<p>访问此节点的SSH Endpoint，格式为IP:Port</p>
+        :rtype: str
+        """
+        return self._SSHEndpoint
+
+    @SSHEndpoint.setter
+    def SSHEndpoint(self, SSHEndpoint):
+        self._SSHEndpoint = SSHEndpoint
+
+    @property
+    def LanIP(self):
+        r"""<p>节点的内网通信IP地址</p>
+        :rtype: str
+        """
+        return self._LanIP
+
+    @LanIP.setter
+    def LanIP(self, LanIP):
+        self._LanIP = LanIP
+
+    @property
+    def ClusterId(self):
+        r"""<p>节点所属的集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Zone(self):
+        r"""<p>节点所属的可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeType(self):
+        r"""<p>节点类型</p><p>枚举值：</p><ul><li>DB.AT5.32XLARGE512： 高IO型服务器：128核心512GB内存，8*7180GB本地NvME SSDB。</li><li>DB.AT5.64XLARGE1152： 高IO型服务器：256核心1152GB内存，12*7180GB本地NvME SSDB。</li><li>DB.AT5.128XLARGE2304： 高IO型服务器：512核心2304GB内存，24*7180GB本地NvME SSDB。</li><li>DB.AT5.16XLARGE256： 高IO型服务器：64核心256GB内存，4*7180GB本地NvME SSDB。</li><li>DB.AT5.8XLARGE128： 高IO型服务器：32核心128GB内存，2*7180GB本地NvME SSDB。</li></ul>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def CPU(self):
+        r"""<p>节点CPU大小</p><p>单位：核</p>
+        :rtype: int
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        r"""<p>节点内存</p><p>单位：GiB</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def SystemDisk(self):
+        r"""<p>系统盘信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.SystemDisk`
+        """
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisks(self):
+        r"""<p>数据盘信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataDisk
+        """
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
+    @property
+    def OsName(self):
+        r"""<p>节点的操作系统名称</p>
+        :rtype: str
+        """
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+    @property
+    def ImageId(self):
+        r"""<p>节点的操作系统镜像ID</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def VpcId(self):
+        r"""<p>节点SSH Endpoint 所属的VPC ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>节点SSH Endpoint 所属的VPC 子网ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Status(self):
+        r"""<p>节点状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li><li>Running： 运行中</li><li>Isolating： 隔离中</li><li>Isolated： 已隔离</li><li>Activating： 解除隔离中</li><li>Destroying： 销毁中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ChargeType(self):
+        r"""<p>付费类型</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li></ul>
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def ExpireTime(self):
+        r"""<p>节点到期时间</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def CreatedTime(self):
+        r"""<p>节点创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def IsolatedTime(self):
+        r"""<p>节点隔离时间</p>
+        :rtype: str
+        """
+        return self._IsolatedTime
+
+    @IsolatedTime.setter
+    def IsolatedTime(self, IsolatedTime):
+        self._IsolatedTime = IsolatedTime
+
+    @property
+    def Tags(self):
+        r"""<p>节点标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AutoRenew(self):
+        r"""<p>节点是否自动续费标记</p><p>枚举值：</p><ul><li>1： 自动续费</li><li>0： 不自动续费</li></ul>
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def SwitchId(self):
+        r"""<p>交换机ID（已加密）</p>
+        :rtype: str
+        """
+        return self._SwitchId
+
+    @SwitchId.setter
+    def SwitchId(self, SwitchId):
+        self._SwitchId = SwitchId
+
+    @property
+    def RackId(self):
+        r"""<p>机架ID（已加密）</p>
+        :rtype: str
+        """
+        return self._RackId
+
+    @RackId.setter
+    def RackId(self, RackId):
+        self._RackId = RackId
+
+    @property
+    def HostIp(self):
+        r"""<p>底层物理机IP（已加密）</p>
+        :rtype: str
+        """
+        return self._HostIp
+
+    @HostIp.setter
+    def HostIp(self, HostIp):
+        self._HostIp = HostIp
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._NodeName = params.get("NodeName")
+        self._SSHEndpoint = params.get("SSHEndpoint")
+        self._LanIP = params.get("LanIP")
+        self._ClusterId = params.get("ClusterId")
+        self._Zone = params.get("Zone")
+        self._NodeType = params.get("NodeType")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = SystemDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self._DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self._DataDisks.append(obj)
+        self._OsName = params.get("OsName")
+        self._ImageId = params.get("ImageId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Status = params.get("Status")
+        self._ChargeType = params.get("ChargeType")
+        self._ExpireTime = params.get("ExpireTime")
+        self._CreatedTime = params.get("CreatedTime")
+        self._IsolatedTime = params.get("IsolatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._AutoRenew = params.get("AutoRenew")
+        self._SwitchId = params.get("SwitchId")
+        self._RackId = params.get("RackId")
+        self._HostIp = params.get("HostIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DBInstanceDetail(AbstractModel):
     r"""DB实例详情
 
@@ -367,6 +1962,1090 @@ class DBInstanceDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DataDisk(AbstractModel):
+    r"""DB Custom 节点数据盘信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: <p>磁盘类型</p><p>枚举值：</p><ul><li>CLOUD_HSSD： 增强型云硬盘</li><li>LOCAL_NVME： 本地硬盘</li></ul>
+        :type DiskType: str
+        :param _DiskSize: <p>磁盘大小</p><p>单位：GiB</p>
+        :type DiskSize: int
+        :param _DiskName: <p>磁盘名称</p>
+        :type DiskName: str
+        """
+        self._DiskType = None
+        self._DiskSize = None
+        self._DiskName = None
+
+    @property
+    def DiskType(self):
+        r"""<p>磁盘类型</p><p>枚举值：</p><ul><li>CLOUD_HSSD： 增强型云硬盘</li><li>LOCAL_NVME： 本地硬盘</li></ul>
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        r"""<p>磁盘大小</p><p>单位：GiB</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskName(self):
+        r"""<p>磁盘名称</p>
+        :rtype: str
+        """
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskName = params.get("DiskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomClusterDetailRequest(AbstractModel):
+    r"""DescribeDBCustomClusterDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>DB Custom 集群ID</p><p>入参限制：必须为此账号拥有的DB Custom集群</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>DB Custom 集群ID</p><p>入参限制：必须为此账号拥有的DB Custom集群</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomClusterDetailResponse(AbstractModel):
+    r"""DescribeDBCustomClusterDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        :param _ClusterDescription: <p>集群描述</p>
+        :type ClusterDescription: str
+        :param _Region: <p>集群所属地域</p><p>枚举值：</p><ul><li>ap-shanghai： 上海地域</li><li>ap-nanjing： 南京地域</li></ul>
+        :type Region: str
+        :param _ClusterStatus: <p>DB Custom 集群状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li><li>Running： 运行中</li><li>Destroying： 销毁中</li></ul>
+        :type ClusterStatus: str
+        :param _ClusterVersion: <p>集群版本</p><p>枚举值：</p><ul><li>1.34.1： 集群版本1.34.1</li></ul><p>默认值：1.34.1</p>
+        :type ClusterVersion: str
+        :param _ClusterNodeNum: <p>集群下的节点数量</p>
+        :type ClusterNodeNum: int
+        :param _ClusterLevel: <p>集群规模</p>
+        :type ClusterLevel: str
+        :param _CreatedTime: <p>创建时间</p>
+        :type CreatedTime: str
+        :param _Tags: <p>集群标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _ApiServerNetwork: <p>集群的API Server的网络信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiServerNetwork: :class:`tencentcloud.dbdc.v20201029.models.ApiServerNetwork`
+        :param _ContainerNetwork: <p>容器网络，在此集群中的所有Pod将与此网络连通</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerNetwork: :class:`tencentcloud.dbdc.v20201029.models.ContainerNetwork`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._ClusterDescription = None
+        self._Region = None
+        self._ClusterStatus = None
+        self._ClusterVersion = None
+        self._ClusterNodeNum = None
+        self._ClusterLevel = None
+        self._CreatedTime = None
+        self._Tags = None
+        self._ApiServerNetwork = None
+        self._ContainerNetwork = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterDescription(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._ClusterDescription
+
+    @ClusterDescription.setter
+    def ClusterDescription(self, ClusterDescription):
+        self._ClusterDescription = ClusterDescription
+
+    @property
+    def Region(self):
+        r"""<p>集群所属地域</p><p>枚举值：</p><ul><li>ap-shanghai： 上海地域</li><li>ap-nanjing： 南京地域</li></ul>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ClusterStatus(self):
+        r"""<p>DB Custom 集群状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li><li>Running： 运行中</li><li>Destroying： 销毁中</li></ul>
+        :rtype: str
+        """
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def ClusterVersion(self):
+        r"""<p>集群版本</p><p>枚举值：</p><ul><li>1.34.1： 集群版本1.34.1</li></ul><p>默认值：1.34.1</p>
+        :rtype: str
+        """
+        return self._ClusterVersion
+
+    @ClusterVersion.setter
+    def ClusterVersion(self, ClusterVersion):
+        self._ClusterVersion = ClusterVersion
+
+    @property
+    def ClusterNodeNum(self):
+        r"""<p>集群下的节点数量</p>
+        :rtype: int
+        """
+        return self._ClusterNodeNum
+
+    @ClusterNodeNum.setter
+    def ClusterNodeNum(self, ClusterNodeNum):
+        self._ClusterNodeNum = ClusterNodeNum
+
+    @property
+    def ClusterLevel(self):
+        r"""<p>集群规模</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Tags(self):
+        r"""<p>集群标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ApiServerNetwork(self):
+        r"""<p>集群的API Server的网络信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ApiServerNetwork`
+        """
+        return self._ApiServerNetwork
+
+    @ApiServerNetwork.setter
+    def ApiServerNetwork(self, ApiServerNetwork):
+        self._ApiServerNetwork = ApiServerNetwork
+
+    @property
+    def ContainerNetwork(self):
+        r"""<p>容器网络，在此集群中的所有Pod将与此网络连通</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ContainerNetwork`
+        """
+        return self._ContainerNetwork
+
+    @ContainerNetwork.setter
+    def ContainerNetwork(self, ContainerNetwork):
+        self._ContainerNetwork = ContainerNetwork
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterDescription = params.get("ClusterDescription")
+        self._Region = params.get("Region")
+        self._ClusterStatus = params.get("ClusterStatus")
+        self._ClusterVersion = params.get("ClusterVersion")
+        self._ClusterNodeNum = params.get("ClusterNodeNum")
+        self._ClusterLevel = params.get("ClusterLevel")
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("ApiServerNetwork") is not None:
+            self._ApiServerNetwork = ApiServerNetwork()
+            self._ApiServerNetwork._deserialize(params.get("ApiServerNetwork"))
+        if params.get("ContainerNetwork") is not None:
+            self._ContainerNetwork = ContainerNetwork()
+            self._ContainerNetwork._deserialize(params.get("ContainerNetwork"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomClusterKubeconfigRequest(AbstractModel):
+    r"""DescribeDBCustomClusterKubeconfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p><p>入参限制：必须为当前节点拥有的DB Custom 集群</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p><p>入参限制：必须为当前节点拥有的DB Custom 集群</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomClusterKubeconfigResponse(AbstractModel):
+    r"""DescribeDBCustomClusterKubeconfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Kubeconfig: <p>集群APIServer信息</p>
+        :type Kubeconfig: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Kubeconfig = None
+        self._RequestId = None
+
+    @property
+    def Kubeconfig(self):
+        r"""<p>集群APIServer信息</p>
+        :rtype: str
+        """
+        return self._Kubeconfig
+
+    @Kubeconfig.setter
+    def Kubeconfig(self, Kubeconfig):
+        self._Kubeconfig = Kubeconfig
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Kubeconfig = params.get("Kubeconfig")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomClusterNodesRequest(AbstractModel):
+    r"""DescribeDBCustomClusterNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>DB Custom 集群ID</p>
+        :type ClusterId: str
+        :param _Filters: <p>查询筛选条件。支持的条件有：</p><ul><li>node-name：DB Custom 节点名称。</li></ul>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._ClusterId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>DB Custom 集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Filters(self):
+        r"""<p>查询筛选条件。支持的条件有：</p><ul><li>node-name：DB Custom 节点名称。</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomClusterNodesResponse(AbstractModel):
+    r"""DescribeDBCustomClusterNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>集群下总的节点数量</p>
+        :type TotalCount: int
+        :param _NodeSet: <p>分页后节点列表信息</p>
+        :type NodeSet: list of DBCustomClusterNode
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._NodeSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>集群下总的节点数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NodeSet(self):
+        r"""<p>分页后节点列表信息</p>
+        :rtype: list of DBCustomClusterNode
+        """
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("NodeSet") is not None:
+            self._NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = DBCustomClusterNode()
+                obj._deserialize(item)
+                self._NodeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomClustersRequest(AbstractModel):
+    r"""DescribeDBCustomClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: <p>按照一个或者多个 ClusterId 查询。</p><p>入参限制：每次请求的数量上限为100</p>
+        :type ClusterIds: list of str
+        :param _Filters: <p>查询筛选条件。支持的筛选条件包括：</p><ul><li>cluster-name：DB Custom 集群名称，精确匹配。</li><li>cluster-status：DB Custom 集群状态（Creating，Running，Destroying）。</li></ul>
+        :type Filters: list of Filter
+        :param _Tags: <p>根据标签的 Key 和 Value 筛选 DB Custom 集群</p>
+        :type Tags: list of Tag
+        :param _Offset: <p>集群列表分页偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._ClusterIds = None
+        self._Filters = None
+        self._Tags = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterIds(self):
+        r"""<p>按照一个或者多个 ClusterId 查询。</p><p>入参限制：每次请求的数量上限为100</p>
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def Filters(self):
+        r"""<p>查询筛选条件。支持的筛选条件包括：</p><ul><li>cluster-name：DB Custom 集群名称，精确匹配。</li><li>cluster-status：DB Custom 集群状态（Creating，Running，Destroying）。</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Tags(self):
+        r"""<p>根据标签的 Key 和 Value 筛选 DB Custom 集群</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Offset(self):
+        r"""<p>集群列表分页偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomClustersResponse(AbstractModel):
+    r"""DescribeDBCustomClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总集群数量</p>
+        :type TotalCount: int
+        :param _ClusterSet: <p>集群列表信息</p>
+        :type ClusterSet: list of DBCustomCluster
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ClusterSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总集群数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ClusterSet(self):
+        r"""<p>集群列表信息</p>
+        :rtype: list of DBCustomCluster
+        """
+        return self._ClusterSet
+
+    @ClusterSet.setter
+    def ClusterSet(self, ClusterSet):
+        self._ClusterSet = ClusterSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ClusterSet") is not None:
+            self._ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = DBCustomCluster()
+                obj._deserialize(item)
+                self._ClusterSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomImagesRequest(AbstractModel):
+    r"""DescribeDBCustomImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>偏移量</p><p>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomImagesResponse(AbstractModel):
+    r"""DescribeDBCustomImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总镜像数量</p>
+        :type TotalCount: int
+        :param _ImageSet: <p>支持的镜像列表信息</p>
+        :type ImageSet: list of DBCustomImage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ImageSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总镜像数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ImageSet(self):
+        r"""<p>支持的镜像列表信息</p>
+        :rtype: list of DBCustomImage
+        """
+        return self._ImageSet
+
+    @ImageSet.setter
+    def ImageSet(self, ImageSet):
+        self._ImageSet = ImageSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ImageSet") is not None:
+            self._ImageSet = []
+            for item in params.get("ImageSet"):
+                obj = DBCustomImage()
+                obj._deserialize(item)
+                self._ImageSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomNodesRequest(AbstractModel):
+    r"""DescribeDBCustomNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeIds: <p>按照一个或者多个 NodeId 查询。</p><p>入参限制：每次请求的数量上限为100</p>
+        :type NodeIds: list of str
+        :param _Filters: <p>查询筛选条件。支持的筛选条件包括：</p><ul><li>cluster-id：按 DB Custom 集群进行过滤。</li><li>node-name：按 DB Custom 节点名称进行过滤，精确匹配。</li><li>status：按 DB Custom 节点状态进行过滤。（可选值：Creating，Running，Isolating，Isolated，Activating（解除隔离中），Destroying）</li><li>zone：按 DB Custom 节点所在可用区进行过滤。</li></ul>
+        :type Filters: list of Filter
+        :param _Tags: <p>根据标签的 Key 和 Value 筛选 DB Custom 节点</p>
+        :type Tags: list of Tag
+        :param _Offset: <p>分页偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._NodeIds = None
+        self._Filters = None
+        self._Tags = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def NodeIds(self):
+        r"""<p>按照一个或者多个 NodeId 查询。</p><p>入参限制：每次请求的数量上限为100</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def Filters(self):
+        r"""<p>查询筛选条件。支持的筛选条件包括：</p><ul><li>cluster-id：按 DB Custom 集群进行过滤。</li><li>node-name：按 DB Custom 节点名称进行过滤，精确匹配。</li><li>status：按 DB Custom 节点状态进行过滤。（可选值：Creating，Running，Isolating，Isolated，Activating（解除隔离中），Destroying）</li><li>zone：按 DB Custom 节点所在可用区进行过滤。</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Tags(self):
+        r"""<p>根据标签的 Key 和 Value 筛选 DB Custom 节点</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._NodeIds = params.get("NodeIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomNodesResponse(AbstractModel):
+    r"""DescribeDBCustomNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>当前账号下拥有的DB Custom 节点总数</p>
+        :type TotalCount: int
+        :param _NodeSet: <p>当前账号下拥有的DB Custom 节点列表信息</p>
+        :type NodeSet: list of DBCustomNode
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._NodeSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>当前账号下拥有的DB Custom 节点总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NodeSet(self):
+        r"""<p>当前账号下拥有的DB Custom 节点列表信息</p>
+        :rtype: list of DBCustomNode
+        """
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("NodeSet") is not None:
+            self._NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = DBCustomNode()
+                obj._deserialize(item)
+                self._NodeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomTaskStatusRequest(AbstractModel):
+    r"""DescribeDBCustomTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>DB Custom 任务ID</p>
+        :type TaskId: int
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>DB Custom 任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomTaskStatusResponse(AbstractModel):
+    r"""DescribeDBCustomTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务 ID</p><p>枚举值：</p><ul><li>Running： 运行中</li><li>Succeeded： 成功</li><li>Failed： 失败</li></ul>
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>任务 ID</p><p>枚举值：</p><ul><li>Running： 运行中</li><li>Succeeded： 成功</li><li>Failed： 失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDBInstancesRequest(AbstractModel):
@@ -2105,6 +4784,164 @@ class DescribeInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DestroyDBCustomClusterRequest(AbstractModel):
+    r"""DestroyDBCustomCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>待销毁的集群ID</p><p>入参限制：待销毁的集群必须无任何节点在此集群中。</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>待销毁的集群ID</p><p>入参限制：待销毁的集群必须无任何节点在此集群中。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyDBCustomClusterResponse(AbstractModel):
+    r"""DestroyDBCustomCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>销毁集群的任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>销毁集群的任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DestroyDBCustomNodeRequest(AbstractModel):
+    r"""DestroyDBCustomNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>DB Custom 节点ID</p>
+        :type NodeId: str
+        """
+        self._NodeId = None
+
+    @property
+    def NodeId(self):
+        r"""<p>DB Custom 节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyDBCustomNodeResponse(AbstractModel):
+    r"""DestroyDBCustomNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeviceInfo(AbstractModel):
     r"""设备信息
 
@@ -2251,6 +5088,57 @@ class DeviceInfo(AbstractModel):
         self._RestDisk = params.get("RestDisk")
         self._RawDeviceNum = params.get("RawDeviceNum")
         self._InstanceNum = params.get("InstanceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filter(AbstractModel):
+    r"""描述键值对过滤器，用于条件过滤查询。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>筛选条件</p>
+        :type Name: str
+        :param _Values: <p>过滤字段对应的参数值</p>
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""<p>筛选条件</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""<p>过滤字段对应的参数值</p>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3147,6 +6035,334 @@ class InstanceExpand(AbstractModel):
         
 
 
+class IsolateDBCustomNodeRequest(AbstractModel):
+    r"""IsolateDBCustomNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>DB Custom 节点ID</p>
+        :type NodeId: str
+        """
+        self._NodeId = None
+
+    @property
+    def NodeId(self):
+        r"""<p>DB Custom 节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateDBCustomNodeResponse(AbstractModel):
+    r"""IsolateDBCustomNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class LoginSettings(AbstractModel):
+    r"""DB Custom 节点登录相关配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Password: <p>实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下： Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) <code>~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &#39; , . ? / ]中的特殊符号。 Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( )</code> ~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &#39; , . ? /]中的特殊符号。</p>
+        :type Password: str
+        :param _KeyIds: <p>密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口 DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。</p><p>入参限制：当前仅支持设置单个 ID。</p>
+        :type KeyIds: list of str
+        :param _KeepImageLogin: <p>保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为true。</p><p>枚举值：</p><ul><li>true： 表示保持镜像的登录设置</li><li>false： 表示不保持镜像的登录设置</li></ul>
+        :type KeepImageLogin: str
+        """
+        self._Password = None
+        self._KeyIds = None
+        self._KeepImageLogin = None
+
+    @property
+    def Password(self):
+        r"""<p>实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下： Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) <code>~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &#39; , . ? / ]中的特殊符号。 Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( )</code> ~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &#39; , . ? /]中的特殊符号。</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def KeyIds(self):
+        r"""<p>密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口 DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。</p><p>入参限制：当前仅支持设置单个 ID。</p>
+        :rtype: list of str
+        """
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+    @property
+    def KeepImageLogin(self):
+        r"""<p>保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为true。</p><p>枚举值：</p><ul><li>true： 表示保持镜像的登录设置</li><li>false： 表示不保持镜像的登录设置</li></ul>
+        :rtype: str
+        """
+        return self._KeepImageLogin
+
+    @KeepImageLogin.setter
+    def KeepImageLogin(self, KeepImageLogin):
+        self._KeepImageLogin = KeepImageLogin
+
+
+    def _deserialize(self, params):
+        self._Password = params.get("Password")
+        self._KeyIds = params.get("KeyIds")
+        self._KeepImageLogin = params.get("KeepImageLogin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomClusterTagsRequest(AbstractModel):
+    r"""ModifyDBCustomClusterTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>DB Custom 集群ID</p><p>参数格式：dbcc-xxxxxxxx</p>
+        :type ClusterId: str
+        :param _AddTags: <p>为 DB Custom 集群绑定的标签信息</p><p>入参限制：参考标签平台的限制策略</p>
+        :type AddTags: list of Tag
+        :param _DeleteTagKeys: <p>为 DB Custom 集群删除的标签Key</p>
+        :type DeleteTagKeys: list of str
+        """
+        self._ClusterId = None
+        self._AddTags = None
+        self._DeleteTagKeys = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>DB Custom 集群ID</p><p>参数格式：dbcc-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AddTags(self):
+        r"""<p>为 DB Custom 集群绑定的标签信息</p><p>入参限制：参考标签平台的限制策略</p>
+        :rtype: list of Tag
+        """
+        return self._AddTags
+
+    @AddTags.setter
+    def AddTags(self, AddTags):
+        self._AddTags = AddTags
+
+    @property
+    def DeleteTagKeys(self):
+        r"""<p>为 DB Custom 集群删除的标签Key</p>
+        :rtype: list of str
+        """
+        return self._DeleteTagKeys
+
+    @DeleteTagKeys.setter
+    def DeleteTagKeys(self, DeleteTagKeys):
+        self._DeleteTagKeys = DeleteTagKeys
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("AddTags") is not None:
+            self._AddTags = []
+            for item in params.get("AddTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._AddTags.append(obj)
+        self._DeleteTagKeys = params.get("DeleteTagKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomClusterTagsResponse(AbstractModel):
+    r"""ModifyDBCustomClusterTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBCustomNodeTagsRequest(AbstractModel):
+    r"""ModifyDBCustomNodeTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>DB Custom 节点ID</p><p>参数格式：dbcn-0zan5xxk</p>
+        :type NodeId: str
+        :param _AddTags: <p>为节点绑定的标签信息</p><p>入参限制：参考标签侧的限制</p>
+        :type AddTags: list of Tag
+        :param _DeleteTagKeys: <p>需要删除的标签Key</p>
+        :type DeleteTagKeys: list of str
+        """
+        self._NodeId = None
+        self._AddTags = None
+        self._DeleteTagKeys = None
+
+    @property
+    def NodeId(self):
+        r"""<p>DB Custom 节点ID</p><p>参数格式：dbcn-0zan5xxk</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def AddTags(self):
+        r"""<p>为节点绑定的标签信息</p><p>入参限制：参考标签侧的限制</p>
+        :rtype: list of Tag
+        """
+        return self._AddTags
+
+    @AddTags.setter
+    def AddTags(self, AddTags):
+        self._AddTags = AddTags
+
+    @property
+    def DeleteTagKeys(self):
+        r"""<p>需要删除的标签Key</p>
+        :rtype: list of str
+        """
+        return self._DeleteTagKeys
+
+    @DeleteTagKeys.setter
+    def DeleteTagKeys(self, DeleteTagKeys):
+        self._DeleteTagKeys = DeleteTagKeys
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        if params.get("AddTags") is not None:
+            self._AddTags = []
+            for item in params.get("AddTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._AddTags.append(obj)
+        self._DeleteTagKeys = params.get("DeleteTagKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomNodeTagsResponse(AbstractModel):
+    r"""ModifyDBCustomNodeTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceNameRequest(AbstractModel):
     r"""ModifyInstanceName请求参数结构体
 
@@ -3226,6 +6442,224 @@ class ModifyInstanceNameResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RemoveNodesFromDBCustomClusterRequest(AbstractModel):
+    r"""RemoveNodesFromDBCustomCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>DB Custom 集群ID</p>
+        :type ClusterId: str
+        :param _NodeIds: <p>要下架的 DB Custom 节点ID列表</p>
+        :type NodeIds: list of str
+        """
+        self._ClusterId = None
+        self._NodeIds = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>DB Custom 集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeIds(self):
+        r"""<p>要下架的 DB Custom 节点ID列表</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodeIds = params.get("NodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveNodesFromDBCustomClusterResponse(AbstractModel):
+    r"""RemoveNodesFromDBCustomCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class RenewDBCustomNodeRequest(AbstractModel):
+    r"""RenewDBCustomNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点ID</p>
+        :type NodeId: str
+        :param _Period: <p>续费周期</p><p>取值范围：[1, 36]</p><p>单位：月</p><p>默认值：1</p>
+        :type Period: int
+        :param _AutoRenew: <p>是否开启自动续费</p><p>枚举值：</p><ul><li>0： 不自动续费</li><li>1： 自动续费</li></ul><p>默认值：1</p>
+        :type AutoRenew: int
+        :param _AutoVoucher: <p>是否自动使用代金券</p>
+        :type AutoVoucher: int
+        :param _VoucherIds: <p>代金券ID</p>
+        :type VoucherIds: list of str
+        """
+        self._NodeId = None
+        self._Period = None
+        self._AutoRenew = None
+        self._AutoVoucher = None
+        self._VoucherIds = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Period(self):
+        r"""<p>续费周期</p><p>取值范围：[1, 36]</p><p>单位：月</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def AutoRenew(self):
+        r"""<p>是否开启自动续费</p><p>枚举值：</p><ul><li>0： 不自动续费</li><li>1： 自动续费</li></ul><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def AutoVoucher(self):
+        r"""<p>是否自动使用代金券</p>
+        :rtype: int
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def VoucherIds(self):
+        r"""<p>代金券ID</p>
+        :rtype: list of str
+        """
+        return self._VoucherIds
+
+    @VoucherIds.setter
+    def VoucherIds(self, VoucherIds):
+        self._VoucherIds = VoucherIds
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Period = params.get("Period")
+        self._AutoRenew = params.get("AutoRenew")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._VoucherIds = params.get("VoucherIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewDBCustomNodeResponse(AbstractModel):
+    r"""RenewDBCustomNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResourceTag(AbstractModel):
     r"""标签对象，包含tagKey & tagValue
 
@@ -3267,6 +6701,108 @@ class ResourceTag(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SystemDisk(AbstractModel):
+    r"""DB Custom 节点系统盘信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: <p>磁盘类型</p><p>枚举值：</p><ul><li>CLOUD_HSSD： 增强型云硬盘</li></ul>
+        :type DiskType: str
+        :param _DiskSize: <p>磁盘大小</p><p>单位：GiB</p>
+        :type DiskSize: int
+        """
+        self._DiskType = None
+        self._DiskSize = None
+
+    @property
+    def DiskType(self):
+        r"""<p>磁盘类型</p><p>枚举值：</p><ul><li>CLOUD_HSSD： 增强型云硬盘</li></ul>
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        r"""<p>磁盘大小</p><p>单位：GiB</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    r"""标签键值对。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>标签键</p>
+        :type Key: str
+        :param _Value: <p>标签值</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>标签键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>标签值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

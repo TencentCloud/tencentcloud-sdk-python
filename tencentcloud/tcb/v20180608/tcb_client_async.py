@@ -692,6 +692,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudAppList(
+            self,
+            request: models.DescribeCloudAppListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudAppListResponse:
+        """
+        查询云应用服务列表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudAppList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudAppListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudBaseBuildService(
             self,
             request: models.DescribeCloudBaseBuildServiceRequest,
@@ -744,6 +762,42 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeCreateMySQLResult"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCreateMySQLResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCreditsUsage(
+            self,
+            request: models.DescribeCreditsUsageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCreditsUsageResponse:
+        """
+        查询资源点模式下的资源点用量
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCreditsUsage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCreditsUsageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCreditsUsageDetail(
+            self,
+            request: models.DescribeCreditsUsageDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCreditsUsageDetailResponse:
+        """
+        查询资源点模式下的资源点用量及原始用量明细
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCreditsUsageDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCreditsUsageDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

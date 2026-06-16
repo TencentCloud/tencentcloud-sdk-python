@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 请求未授权。请参考 CAM 文档对鉴权的说明。
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
 DRYRUNOPERATION = 'DryRunOperation'
 
@@ -40,6 +43,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # 参数值传入错误。
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
+
+# 参数错误
+INVALIDPARAMETERVALUE_PARAMETERERROR = 'InvalidParameterValue.ParameterError'
 
 # 集群的参数非法。
 INVALIDPARAMETERVALUE_RESOURCEPARAMETERERROR = 'InvalidParameterValue.ResourceParameterError'

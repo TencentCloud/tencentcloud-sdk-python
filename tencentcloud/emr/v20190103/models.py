@@ -31097,30 +31097,33 @@ class NodeResourceSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceType: 规格类型，如S2.MEDIUM8
+        :param _InstanceType: <p>规格类型，如S2.MEDIUM8</p>
         :type InstanceType: str
-        :param _SystemDisk: 系统盘，系统盘个数不超过1块
+        :param _SystemDisk: <p>系统盘，系统盘个数不超过1块</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SystemDisk: list of DiskSpecInfo
-        :param _Tags: 需要绑定的标签列表
+        :param _Tags: <p>需要绑定的标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _DataDisk: 云数据盘，云数据盘总个数不超过15块
+        :param _DataDisk: <p>云数据盘，云数据盘总个数不超过15块</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisk: list of DiskSpecInfo
-        :param _LocalDataDisk: 本地数据盘
+        :param _LocalDataDisk: <p>本地数据盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalDataDisk: list of DiskSpecInfo
+        :param _SoftwareConfig: <p>节点配置信息，目前仅提供给terraform平台校验参数使用</p>
+        :type SoftwareConfig: list of ServiceDeploy
         """
         self._InstanceType = None
         self._SystemDisk = None
         self._Tags = None
         self._DataDisk = None
         self._LocalDataDisk = None
+        self._SoftwareConfig = None
 
     @property
     def InstanceType(self):
-        r"""规格类型，如S2.MEDIUM8
+        r"""<p>规格类型，如S2.MEDIUM8</p>
         :rtype: str
         """
         return self._InstanceType
@@ -31131,7 +31134,7 @@ class NodeResourceSpec(AbstractModel):
 
     @property
     def SystemDisk(self):
-        r"""系统盘，系统盘个数不超过1块
+        r"""<p>系统盘，系统盘个数不超过1块</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiskSpecInfo
         """
@@ -31143,7 +31146,7 @@ class NodeResourceSpec(AbstractModel):
 
     @property
     def Tags(self):
-        r"""需要绑定的标签列表
+        r"""<p>需要绑定的标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -31155,7 +31158,7 @@ class NodeResourceSpec(AbstractModel):
 
     @property
     def DataDisk(self):
-        r"""云数据盘，云数据盘总个数不超过15块
+        r"""<p>云数据盘，云数据盘总个数不超过15块</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiskSpecInfo
         """
@@ -31167,7 +31170,7 @@ class NodeResourceSpec(AbstractModel):
 
     @property
     def LocalDataDisk(self):
-        r"""本地数据盘
+        r"""<p>本地数据盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiskSpecInfo
         """
@@ -31176,6 +31179,17 @@ class NodeResourceSpec(AbstractModel):
     @LocalDataDisk.setter
     def LocalDataDisk(self, LocalDataDisk):
         self._LocalDataDisk = LocalDataDisk
+
+    @property
+    def SoftwareConfig(self):
+        r"""<p>节点配置信息，目前仅提供给terraform平台校验参数使用</p>
+        :rtype: list of ServiceDeploy
+        """
+        return self._SoftwareConfig
+
+    @SoftwareConfig.setter
+    def SoftwareConfig(self, SoftwareConfig):
+        self._SoftwareConfig = SoftwareConfig
 
 
     def _deserialize(self, params):
@@ -31204,6 +31218,12 @@ class NodeResourceSpec(AbstractModel):
                 obj = DiskSpecInfo()
                 obj._deserialize(item)
                 self._LocalDataDisk.append(obj)
+        if params.get("SoftwareConfig") is not None:
+            self._SoftwareConfig = []
+            for item in params.get("SoftwareConfig"):
+                obj = ServiceDeploy()
+                obj._deserialize(item)
+                self._SoftwareConfig.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39941,6 +39961,57 @@ class ServiceBasicRestartInfo(AbstractModel):
                 obj = ComponentBasicRestartInfo()
                 obj._deserialize(item)
                 self._ComponentInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceDeploy(AbstractModel):
+    r"""节点部署配置信息，给tf侧同学使用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SoftwareName: <p>组件名称</p>
+        :type SoftwareName: str
+        :param _Roles: <p>组件下角色名称</p>
+        :type Roles: list of str
+        """
+        self._SoftwareName = None
+        self._Roles = None
+
+    @property
+    def SoftwareName(self):
+        r"""<p>组件名称</p>
+        :rtype: str
+        """
+        return self._SoftwareName
+
+    @SoftwareName.setter
+    def SoftwareName(self, SoftwareName):
+        self._SoftwareName = SoftwareName
+
+    @property
+    def Roles(self):
+        r"""<p>组件下角色名称</p>
+        :rtype: list of str
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+
+    def _deserialize(self, params):
+        self._SoftwareName = params.get("SoftwareName")
+        self._Roles = params.get("Roles")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

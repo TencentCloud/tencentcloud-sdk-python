@@ -533,6 +533,9 @@ RESOURCEINUSE = 'ResourceInUse'
 # 资源不足。
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
+# 申请资源超过用户在当前资源组的最大配额限制
+RESOURCEINSUFFICIENT_QUOTAINSUFFICIENT = 'ResourceInsufficient.QuotaInsufficient'
+
 # SSH端口资源耗尽
 RESOURCEINSUFFICIENT_SSHPORTISCONSUMEDUP = 'ResourceInsufficient.SSHPortIsConsumedUp'
 
