@@ -43784,6 +43784,132 @@ class DetectVideoSubtitleAreaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DetectVideoWatermarkRequest(AbstractModel):
+    r"""DetectVideoWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: <p>输入信息，当前仅支持 URL、COS</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _UserExtPara: <p>扩展参数，默认不填</p>
+        :type UserExtPara: str
+        """
+        self._InputInfo = None
+        self._UserExtPara = None
+
+    @property
+    def InputInfo(self):
+        r"""<p>输入信息，当前仅支持 URL、COS</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def UserExtPara(self):
+        r"""<p>扩展参数，默认不填</p>
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._UserExtPara = params.get("UserExtPara")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectVideoWatermarkResponse(AbstractModel):
+    r"""DetectVideoWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: <p>是否存在水印的置信度</p><p>取值范围：[0, 100]</p>
+        :type Confidence: float
+        :param _HasWatermark: <p>视频中是否存在水印</p>
+        :type HasWatermark: bool
+        :param _Description: <p>关于水印的一些描述性说明</p>
+        :type Description: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Confidence = None
+        self._HasWatermark = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Confidence(self):
+        r"""<p>是否存在水印的置信度</p><p>取值范围：[0, 100]</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def HasWatermark(self):
+        r"""<p>视频中是否存在水印</p>
+        :rtype: bool
+        """
+        return self._HasWatermark
+
+    @HasWatermark.setter
+    def HasWatermark(self, HasWatermark):
+        self._HasWatermark = HasWatermark
+
+    @property
+    def Description(self):
+        r"""<p>关于水印的一些描述性说明</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._HasWatermark = params.get("HasWatermark")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
+
+
 class DiagnoseResult(AbstractModel):
     r"""诊断结果项。
 

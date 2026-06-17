@@ -11890,9 +11890,9 @@ class ScenarioWithJobs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scenario: scecario结果
+        :param _Scenario: <p>Scenario结果</p>
         :type Scenario: :class:`tencentcloud.pts.v20210728.models.Scenario`
-        :param _Jobs: job结果
+        :param _Jobs: <p>job结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Jobs: list of Job
         """
@@ -11901,7 +11901,7 @@ class ScenarioWithJobs(AbstractModel):
 
     @property
     def Scenario(self):
-        r"""scecario结果
+        r"""<p>Scenario结果</p>
         :rtype: :class:`tencentcloud.pts.v20210728.models.Scenario`
         """
         return self._Scenario
@@ -11912,7 +11912,7 @@ class ScenarioWithJobs(AbstractModel):
 
     @property
     def Jobs(self):
-        r"""job结果
+        r"""<p>job结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Job
         """

@@ -1581,7 +1581,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeDNSConfig(self, request):
-        r"""列出 Grafana DNS 配置
+        r"""列出 Grafana DNS 配置。
 
         :param request: Request instance for DescribeDNSConfig.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeDNSConfigRequest`
@@ -1673,7 +1673,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeGrafanaChannels(self, request):
-        r"""列出 Grafana 所有告警通道
+        r"""列出 Grafana 所有告警通道。
 
         :param request: Request instance for DescribeGrafanaChannels.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaChannelsRequest`
@@ -2760,7 +2760,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeSSOAccount(self, request):
-        r"""列出当前grafana实例的所有授权账号
+        r"""列出当前grafana实例的所有授权账号.
 
         :param request: Request instance for DescribeSSOAccount.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeSSOAccountRequest`

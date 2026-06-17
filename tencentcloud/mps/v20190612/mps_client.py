@@ -3558,6 +3558,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DetectVideoWatermark(self, request):
+        r"""快速探测视频文件是否包含水印
+
+        :param request: Request instance for DetectVideoWatermark.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DetectVideoWatermarkRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DetectVideoWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetectVideoWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetectVideoWatermarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableSchedule(self, request):
         r"""禁用自动化触发编排任务。
 

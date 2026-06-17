@@ -257,6 +257,9 @@ INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = 'InvalidParameterValue.Disa
 # 水印文本重复
 INVALIDPARAMETERVALUE_DUPLICATEDTEXTCONTENT = 'InvalidParameterValue.DuplicatedTextContent'
 
+# Duration 参数过大
+INVALIDPARAMETERVALUE_DURATIONTOOLONG = 'InvalidParameterValue.DurationTooLong'
+
 # 模板开启的检测项为空。
 INVALIDPARAMETERVALUE_EMPTYDETECTITEM = 'InvalidParameterValue.EmptyDetectItem'
 

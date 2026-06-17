@@ -1250,7 +1250,7 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDNSConfigResponse:
         """
-        列出 Grafana DNS 配置
+        列出 Grafana DNS 配置。
         """
         
         kwargs = {}
@@ -1322,7 +1322,7 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeGrafanaChannelsResponse:
         """
-        列出 Grafana 所有告警通道
+        列出 Grafana 所有告警通道。
         """
         
         kwargs = {}
@@ -2174,7 +2174,7 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSSOAccountResponse:
         """
-        列出当前grafana实例的所有授权账号
+        列出当前grafana实例的所有授权账号.
         """
         
         kwargs = {}

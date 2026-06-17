@@ -2797,6 +2797,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DetectVideoWatermark(
+            self,
+            request: models.DetectVideoWatermarkRequest,
+            opts: Dict = None,
+    ) -> models.DetectVideoWatermarkResponse:
+        """
+        快速探测视频文件是否包含水印
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DetectVideoWatermark"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DetectVideoWatermarkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DisableSchedule(
             self,
             request: models.DisableScheduleRequest,

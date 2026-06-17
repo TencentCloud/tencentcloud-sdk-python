@@ -6468,17 +6468,17 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :type InstanceId: str
-        :param _ChannelName: 告警通道名称，例如：test
+        :param _ChannelName: <p>告警通道名称，例如：my-channel</p>
         :type ChannelName: str
-        :param _Receivers: 接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
+        :param _Receivers: <p>接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID</p>
         :type Receivers: list of str
-        :param _OrgId: 默认为1，建议使用 OrganizationIds
+        :param _OrgId: <p>默认为1，建议使用 OrganizationIds</p>
         :type OrgId: int
-        :param _ExtraOrgIds: 额外组织 ID 数组，已废弃，请使用 OrganizationIds
+        :param _ExtraOrgIds: <p>额外组织 ID 数组，已废弃，请使用 OrganizationIds</p>
         :type ExtraOrgIds: list of str
-        :param _OrganizationIds: 生效的所有组织 ID 数组，默认为 ["1"]
+        :param _OrganizationIds: <p>生效的所有组织 ID 数组，默认为 [&quot;1&quot;]</p>
         :type OrganizationIds: list of str
         """
         self._InstanceId = None
@@ -6490,7 +6490,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-abcdefgh
+        r"""<p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6501,7 +6501,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelName(self):
-        r"""告警通道名称，例如：test
+        r"""<p>告警通道名称，例如：my-channel</p>
         :rtype: str
         """
         return self._ChannelName
@@ -6512,7 +6512,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def Receivers(self):
-        r"""接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
+        r"""<p>接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID</p>
         :rtype: list of str
         """
         return self._Receivers
@@ -6523,7 +6523,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def OrgId(self):
-        r"""默认为1，建议使用 OrganizationIds
+        r"""<p>默认为1，建议使用 OrganizationIds</p>
         :rtype: int
         """
         return self._OrgId
@@ -6534,7 +6534,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ExtraOrgIds(self):
-        r"""额外组织 ID 数组，已废弃，请使用 OrganizationIds
+        r"""<p>额外组织 ID 数组，已废弃，请使用 OrganizationIds</p>
         :rtype: list of str
         """
         return self._ExtraOrgIds
@@ -6545,7 +6545,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def OrganizationIds(self):
-        r"""生效的所有组织 ID 数组，默认为 ["1"]
+        r"""<p>生效的所有组织 ID 数组，默认为 [&quot;1&quot;]</p>
         :rtype: list of str
         """
         return self._OrganizationIds
@@ -6579,7 +6579,7 @@ class CreateGrafanaNotificationChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelId: 通道 ID
+        :param _ChannelId: <p>通道 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6590,7 +6590,7 @@ class CreateGrafanaNotificationChannelResponse(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""通道 ID
+        r"""<p>通道 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8666,13 +8666,13 @@ class CreateSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :type InstanceId: str
-        :param _UserId: 用户账号 ID ，例如：10000000
+        :param _UserId: <p>用户账号 ID ，例如：10000000</p>
         :type UserId: str
-        :param _Role: 权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)
+        :param _Role: <p>权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)</p>
         :type Role: list of GrafanaAccountRole
-        :param _Notes: 备注
+        :param _Notes: <p>备注</p>
         :type Notes: str
         """
         self._InstanceId = None
@@ -8682,7 +8682,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-abcdefgh
+        r"""<p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8693,7 +8693,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户账号 ID ，例如：10000000
+        r"""<p>用户账号 ID ，例如：10000000</p>
         :rtype: str
         """
         return self._UserId
@@ -8704,7 +8704,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def Role(self):
-        r"""权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)
+        r"""<p>权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)</p>
         :rtype: list of GrafanaAccountRole
         """
         return self._Role
@@ -8715,7 +8715,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def Notes(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Notes
@@ -8752,7 +8752,7 @@ class CreateSSOAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 已添加的用户 UIN
+        :param _UserId: <p>已添加的用户 UIN</p>
         :type UserId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8762,7 +8762,7 @@ class CreateSSOAccountResponse(AbstractModel):
 
     @property
     def UserId(self):
-        r"""已添加的用户 UIN
+        r"""<p>已添加的用户 UIN</p>
         :rtype: str
         """
         return self._UserId
@@ -9541,9 +9541,9 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelIDs: 通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取
+        :param _ChannelIDs: <p>通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取</p>
         :type ChannelIDs: list of str
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :type InstanceId: str
         """
         self._ChannelIDs = None
@@ -9551,7 +9551,7 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def ChannelIDs(self):
-        r"""通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取
+        r"""<p>通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取</p>
         :rtype: list of str
         """
         return self._ChannelIDs
@@ -9562,7 +9562,7 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-abcdefgh
+        r"""<p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15194,14 +15194,14 @@ class DescribeDNSConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-abcdefgh
+        r"""<p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15230,7 +15230,7 @@ class DescribeDNSConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NameServers: DNS 服务器数组
+        :param _NameServers: <p>DNS 服务器数组</p>
         :type NameServers: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15240,7 +15240,7 @@ class DescribeDNSConfigResponse(AbstractModel):
 
     @property
     def NameServers(self):
-        r"""DNS 服务器数组
+        r"""<p>DNS 服务器数组</p>
         :rtype: list of str
         """
         return self._NameServers
@@ -15611,17 +15611,17 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-12345678
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-12345678</p>
         :type InstanceId: str
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Limit: 查询数量
+        :param _Limit: <p>查询数量</p>
         :type Limit: int
-        :param _ChannelName: 告警通道名称，例如：test
+        :param _ChannelName: <p>告警通道名称，例如：test</p>
         :type ChannelName: str
-        :param _ChannelIds: 告警通道 ID，例如：nchannel-abcd1234
+        :param _ChannelIds: <p>告警通道 ID，例如：nchannel-abcd1234</p>
         :type ChannelIds: list of str
-        :param _ChannelState: 告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)
+        :param _ChannelState: <p>告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)</p>
         :type ChannelState: int
         """
         self._InstanceId = None
@@ -15633,7 +15633,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-12345678
+        r"""<p>Grafana 实例 ID，例如：grafana-12345678</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15644,7 +15644,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -15655,7 +15655,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""查询数量
+        r"""<p>查询数量</p>
         :rtype: int
         """
         return self._Limit
@@ -15666,7 +15666,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def ChannelName(self):
-        r"""告警通道名称，例如：test
+        r"""<p>告警通道名称，例如：test</p>
         :rtype: str
         """
         return self._ChannelName
@@ -15677,7 +15677,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def ChannelIds(self):
-        r"""告警通道 ID，例如：nchannel-abcd1234
+        r"""<p>告警通道 ID，例如：nchannel-abcd1234</p>
         :rtype: list of str
         """
         return self._ChannelIds
@@ -15688,7 +15688,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     @property
     def ChannelState(self):
-        r"""告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)
+        r"""<p>告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)</p>
         :rtype: int
         """
         return self._ChannelState
@@ -15722,7 +15722,7 @@ class DescribeGrafanaChannelsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotificationChannelSet: 告警通道数组
+        :param _NotificationChannelSet: <p>告警通道数组</p>
         :type NotificationChannelSet: list of GrafanaChannel
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15732,7 +15732,7 @@ class DescribeGrafanaChannelsResponse(AbstractModel):
 
     @property
     def NotificationChannelSet(self):
-        r"""告警通道数组
+        r"""<p>告警通道数组</p>
         :rtype: list of GrafanaChannel
         """
         return self._NotificationChannelSet
@@ -16127,11 +16127,11 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: <p>实例 ID</p>
         :type InstanceId: str
-        :param _IntegrationId: 集成 ID
+        :param _IntegrationId: <p>集成 ID</p>
         :type IntegrationId: str
-        :param _Kind: 类型
+        :param _Kind: <p>类型</p>
         :type Kind: str
         """
         self._InstanceId = None
@@ -16140,7 +16140,7 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16151,7 +16151,7 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     @property
     def IntegrationId(self):
-        r"""集成 ID
+        r"""<p>集成 ID</p>
         :rtype: str
         """
         return self._IntegrationId
@@ -16162,7 +16162,7 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     @property
     def Kind(self):
-        r"""类型
+        r"""<p>类型</p>
         :rtype: str
         """
         return self._Kind
@@ -16193,7 +16193,7 @@ class DescribeGrafanaIntegrationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IntegrationSet: 集成数组
+        :param _IntegrationSet: <p>集成数组</p>
         :type IntegrationSet: list of GrafanaIntegrationConfig
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16203,7 +16203,7 @@ class DescribeGrafanaIntegrationsResponse(AbstractModel):
 
     @property
     def IntegrationSet(self):
-        r"""集成数组
+        r"""<p>集成数组</p>
         :rtype: list of GrafanaIntegrationConfig
         """
         return self._IntegrationSet
@@ -16241,17 +16241,17 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-12345678
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-12345678</p>
         :type InstanceId: str
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Limit: 查询数量
+        :param _Limit: <p>查询数量</p>
         :type Limit: int
-        :param _ChannelName: 告警通道名称，例如：test
+        :param _ChannelName: <p>告警通道名称，例如：test</p>
         :type ChannelName: str
-        :param _ChannelIDs: 告警通道 ID，例如：nchannel-abcd1234
+        :param _ChannelIDs: <p>告警通道 ID，例如：nchannel-abcd1234</p>
         :type ChannelIDs: list of str
-        :param _ChannelState: 告警通道状态
+        :param _ChannelState: <p>告警通道状态</p>
         :type ChannelState: int
         """
         self._InstanceId = None
@@ -16263,7 +16263,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-12345678
+        r"""<p>Grafana 实例 ID，例如：grafana-12345678</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16274,7 +16274,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -16285,7 +16285,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""查询数量
+        r"""<p>查询数量</p>
         :rtype: int
         """
         return self._Limit
@@ -16296,7 +16296,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def ChannelName(self):
-        r"""告警通道名称，例如：test
+        r"""<p>告警通道名称，例如：test</p>
         :rtype: str
         """
         return self._ChannelName
@@ -16307,7 +16307,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def ChannelIDs(self):
-        r"""告警通道 ID，例如：nchannel-abcd1234
+        r"""<p>告警通道 ID，例如：nchannel-abcd1234</p>
         :rtype: list of str
         """
         return self._ChannelIDs
@@ -16318,7 +16318,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     @property
     def ChannelState(self):
-        r"""告警通道状态
+        r"""<p>告警通道状态</p>
         :rtype: int
         """
         return self._ChannelState
@@ -16352,7 +16352,7 @@ class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotificationChannelSet: 告警通道数组
+        :param _NotificationChannelSet: <p>告警通道数组</p>
         :type NotificationChannelSet: list of GrafanaNotificationChannel
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16362,7 +16362,7 @@ class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
 
     @property
     def NotificationChannelSet(self):
-        r"""告警通道数组
+        r"""<p>告警通道数组</p>
         :rtype: list of GrafanaNotificationChannel
         """
         return self._NotificationChannelSet
@@ -16400,14 +16400,14 @@ class DescribeGrafanaWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-abcdefgh
+        r"""<p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16436,7 +16436,7 @@ class DescribeGrafanaWhiteListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WhiteList: 数组
+        :param _WhiteList: <p>数组</p>
         :type WhiteList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16446,7 +16446,7 @@ class DescribeGrafanaWhiteListResponse(AbstractModel):
 
     @property
     def WhiteList(self):
-        r"""数组
+        r"""<p>数组</p>
         :rtype: list of str
         """
         return self._WhiteList
@@ -25471,9 +25471,9 @@ class DescribeSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :type InstanceId: str
-        :param _UserId: 填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000
+        :param _UserId: <p>填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000</p>
         :type UserId: str
         """
         self._InstanceId = None
@@ -25481,7 +25481,7 @@ class DescribeSSOAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-abcdefgh
+        r"""<p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :rtype: str
         """
         return self._InstanceId
@@ -25492,7 +25492,7 @@ class DescribeSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000
+        r"""<p>填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000</p>
         :rtype: str
         """
         return self._UserId
@@ -25522,7 +25522,7 @@ class DescribeSSOAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountSet: 授权账号列表
+        :param _AccountSet: <p>授权账号列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountSet: list of GrafanaAccountInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -25533,7 +25533,7 @@ class DescribeSSOAccountResponse(AbstractModel):
 
     @property
     def AccountSet(self):
-        r"""授权账号列表
+        r"""<p>授权账号列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GrafanaAccountInfo
         """
@@ -27553,17 +27553,17 @@ class GrafanaChannel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelId: 渠道 ID
+        :param _ChannelId: <p>渠道 ID</p>
         :type ChannelId: str
-        :param _ChannelName: 渠道名
+        :param _ChannelName: <p>渠道名</p>
         :type ChannelName: str
-        :param _Receivers: 告警通道模板 ID 数组
+        :param _Receivers: <p>告警通道模板 ID 数组</p>
         :type Receivers: list of str
-        :param _CreatedAt: 创建时间
+        :param _CreatedAt: <p>创建时间</p>
         :type CreatedAt: str
-        :param _UpdatedAt: 更新时间
+        :param _UpdatedAt: <p>更新时间</p>
         :type UpdatedAt: str
-        :param _OrganizationIds: 告警渠道的所有生效组织
+        :param _OrganizationIds: <p>告警渠道的所有生效组织</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationIds: list of str
         """
@@ -27576,7 +27576,7 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""渠道 ID
+        r"""<p>渠道 ID</p>
         :rtype: str
         """
         return self._ChannelId
@@ -27587,7 +27587,7 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def ChannelName(self):
-        r"""渠道名
+        r"""<p>渠道名</p>
         :rtype: str
         """
         return self._ChannelName
@@ -27598,7 +27598,7 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def Receivers(self):
-        r"""告警通道模板 ID 数组
+        r"""<p>告警通道模板 ID 数组</p>
         :rtype: list of str
         """
         return self._Receivers
@@ -27609,7 +27609,7 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -27620,7 +27620,7 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdatedAt
@@ -27631,7 +27631,7 @@ class GrafanaChannel(AbstractModel):
 
     @property
     def OrganizationIds(self):
-        r"""告警渠道的所有生效组织
+        r"""<p>告警渠道的所有生效组织</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -28239,9 +28239,9 @@ class GrafanaPlugin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PluginId: Grafana 插件 ID
+        :param _PluginId: <p>Grafana 插件 ID</p>
         :type PluginId: str
-        :param _Version: Grafana 插件版本
+        :param _Version: <p>Grafana 插件版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         """
@@ -28250,7 +28250,7 @@ class GrafanaPlugin(AbstractModel):
 
     @property
     def PluginId(self):
-        r"""Grafana 插件 ID
+        r"""<p>Grafana 插件 ID</p>
         :rtype: str
         """
         return self._PluginId
@@ -28261,7 +28261,7 @@ class GrafanaPlugin(AbstractModel):
 
     @property
     def Version(self):
-        r"""Grafana 插件版本
+        r"""<p>Grafana 插件版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31165,9 +31165,9 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
+        :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :type InstanceId: str
-        :param _InstanceName: Grafana 实例名称，例如：test
+        :param _InstanceName: <p>Grafana 实例名称，例如：test</p>
         :type InstanceName: str
         """
         self._InstanceId = None
@@ -31175,7 +31175,7 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Grafana 实例 ID，例如：grafana-abcdefgh
+        r"""<p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :rtype: str
         """
         return self._InstanceId
@@ -31186,7 +31186,7 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Grafana 实例名称，例如：test
+        r"""<p>Grafana 实例名称，例如：test</p>
         :rtype: str
         """
         return self._InstanceName
@@ -42558,9 +42558,9 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: <p>实例 ID</p>
         :type InstanceId: str
-        :param _Config: JSON 编码后的字符串，如 "{"server":{"root_url":"http://custom.domain"}}"
+        :param _Config: <p>JSON 编码后的字符串，如 &quot;{&quot;server&quot;:{&quot;root_url&quot;:&quot;http://custom.domain&quot;}}&quot;</p>
         :type Config: str
         """
         self._InstanceId = None
@@ -42568,7 +42568,7 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -42579,7 +42579,7 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
     @property
     def Config(self):
-        r"""JSON 编码后的字符串，如 "{"server":{"root_url":"http://custom.domain"}}"
+        r"""<p>JSON 编码后的字符串，如 &quot;{&quot;server&quot;:{&quot;root_url&quot;:&quot;http://custom.domain&quot;}}&quot;</p>
         :rtype: str
         """
         return self._Config

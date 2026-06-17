@@ -57,6 +57,10 @@ class ApiKeyDetail(AbstractModel):
         :type IpWhitelist: list of str
         :param _Creator: 当Platform为maas时该字段为空
         :type Creator: str
+        :param _QuotaSet: Token 限额信息多维度列表。未配置限额时不返回该字段。
+        :type QuotaSet: list of QuotaInfo
+        :param _QuotaStatus: Token 限额状态。空字符串表示未配置任何限额包；active 表示已配置且当前可用；inactive 表示已配置但额度耗尽
+        :type QuotaStatus: str
         """
         self._ApiKeyId = None
         self._Name = None
@@ -74,6 +78,8 @@ class ApiKeyDetail(AbstractModel):
         self._BindingItems = None
         self._IpWhitelist = None
         self._Creator = None
+        self._QuotaSet = None
+        self._QuotaStatus = None
 
     @property
     def ApiKeyId(self):
@@ -251,6 +257,28 @@ class ApiKeyDetail(AbstractModel):
     def Creator(self, Creator):
         self._Creator = Creator
 
+    @property
+    def QuotaSet(self):
+        r"""Token 限额信息多维度列表。未配置限额时不返回该字段。
+        :rtype: list of QuotaInfo
+        """
+        return self._QuotaSet
+
+    @QuotaSet.setter
+    def QuotaSet(self, QuotaSet):
+        self._QuotaSet = QuotaSet
+
+    @property
+    def QuotaStatus(self):
+        r"""Token 限额状态。空字符串表示未配置任何限额包；active 表示已配置且当前可用；inactive 表示已配置但额度耗尽
+        :rtype: str
+        """
+        return self._QuotaStatus
+
+    @QuotaStatus.setter
+    def QuotaStatus(self, QuotaStatus):
+        self._QuotaStatus = QuotaStatus
+
 
     def _deserialize(self, params):
         self._ApiKeyId = params.get("ApiKeyId")
@@ -274,6 +302,13 @@ class ApiKeyDetail(AbstractModel):
                 self._BindingItems.append(obj)
         self._IpWhitelist = params.get("IpWhitelist")
         self._Creator = params.get("Creator")
+        if params.get("QuotaSet") is not None:
+            self._QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = QuotaInfo()
+                obj._deserialize(item)
+                self._QuotaSet.append(obj)
+        self._QuotaStatus = params.get("QuotaStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1573,6 +1608,10 @@ class DescribeApiKeyResponse(AbstractModel):
         :type IpWhitelist: list of str
         :param _Creator: 当Platform为maas时该字段为空
         :type Creator: str
+        :param _QuotaSet: Token 限额多维度信息。未配置限额时不返回该字段。
+        :type QuotaSet: list of QuotaInfo
+        :param _QuotaStatus: Token 限额状态。空字符串表示未配置任何限额包；active 表示已配置且当前可用；inactive 表示已配置但额度耗尽
+        :type QuotaStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1592,6 +1631,8 @@ class DescribeApiKeyResponse(AbstractModel):
         self._BindingItems = None
         self._IpWhitelist = None
         self._Creator = None
+        self._QuotaSet = None
+        self._QuotaStatus = None
         self._RequestId = None
 
     @property
@@ -1771,6 +1812,28 @@ class DescribeApiKeyResponse(AbstractModel):
         self._Creator = Creator
 
     @property
+    def QuotaSet(self):
+        r"""Token 限额多维度信息。未配置限额时不返回该字段。
+        :rtype: list of QuotaInfo
+        """
+        return self._QuotaSet
+
+    @QuotaSet.setter
+    def QuotaSet(self, QuotaSet):
+        self._QuotaSet = QuotaSet
+
+    @property
+    def QuotaStatus(self):
+        r"""Token 限额状态。空字符串表示未配置任何限额包；active 表示已配置且当前可用；inactive 表示已配置但额度耗尽
+        :rtype: str
+        """
+        return self._QuotaStatus
+
+    @QuotaStatus.setter
+    def QuotaStatus(self, QuotaStatus):
+        self._QuotaStatus = QuotaStatus
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1804,6 +1867,13 @@ class DescribeApiKeyResponse(AbstractModel):
                 self._BindingItems.append(obj)
         self._IpWhitelist = params.get("IpWhitelist")
         self._Creator = params.get("Creator")
+        if params.get("QuotaSet") is not None:
+            self._QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = QuotaInfo()
+                obj._deserialize(item)
+                self._QuotaSet.append(obj)
+        self._QuotaStatus = params.get("QuotaStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -4333,6 +4403,132 @@ class ModifyTokenPlanApiKeySecretResponse(AbstractModel):
         self._ApiKeyId = params.get("ApiKeyId")
         self._KeyVersion = params.get("KeyVersion")
         self._RequestId = params.get("RequestId")
+
+
+class QuotaInfo(AbstractModel):
+    r"""Token 限额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PkgId: 限额包 ID。
+        :type PkgId: str
+        :param _Status: 限额包状态。取值：1（正常）、3（已耗尽）、4（已销毁）。
+        :type Status: int
+        :param _CycleUnit: 限额周期。取值：d（按日）、m（按月）、lifetime（总额度，不重置）。
+        :type CycleUnit: str
+        :param _CycleCredits: 维度当期限额总量（Token 数）。使用字符串避免大数精度丢失。
+        :type CycleCredits: str
+        :param _CycleUsed: 维度当期已使用量（Token 数）。使用字符串避免大数精度丢失。
+        :type CycleUsed: str
+        :param _StartTime: 限额生效起始时间。
+        :type StartTime: str
+        :param _ExpireTime: 限额过期时间。
+        :type ExpireTime: str
+        """
+        self._PkgId = None
+        self._Status = None
+        self._CycleUnit = None
+        self._CycleCredits = None
+        self._CycleUsed = None
+        self._StartTime = None
+        self._ExpireTime = None
+
+    @property
+    def PkgId(self):
+        r"""限额包 ID。
+        :rtype: str
+        """
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def Status(self):
+        r"""限额包状态。取值：1（正常）、3（已耗尽）、4（已销毁）。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CycleUnit(self):
+        r"""限额周期。取值：d（按日）、m（按月）、lifetime（总额度，不重置）。
+        :rtype: str
+        """
+        return self._CycleUnit
+
+    @CycleUnit.setter
+    def CycleUnit(self, CycleUnit):
+        self._CycleUnit = CycleUnit
+
+    @property
+    def CycleCredits(self):
+        r"""维度当期限额总量（Token 数）。使用字符串避免大数精度丢失。
+        :rtype: str
+        """
+        return self._CycleCredits
+
+    @CycleCredits.setter
+    def CycleCredits(self, CycleCredits):
+        self._CycleCredits = CycleCredits
+
+    @property
+    def CycleUsed(self):
+        r"""维度当期已使用量（Token 数）。使用字符串避免大数精度丢失。
+        :rtype: str
+        """
+        return self._CycleUsed
+
+    @CycleUsed.setter
+    def CycleUsed(self, CycleUsed):
+        self._CycleUsed = CycleUsed
+
+    @property
+    def StartTime(self):
+        r"""限额生效起始时间。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ExpireTime(self):
+        r"""限额过期时间。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._PkgId = params.get("PkgId")
+        self._Status = params.get("Status")
+        self._CycleUnit = params.get("CycleUnit")
+        self._CycleCredits = params.get("CycleCredits")
+        self._CycleUsed = params.get("CycleUsed")
+        self._StartTime = params.get("StartTime")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RenewTokenPlanTeamOrderRequest(AbstractModel):
