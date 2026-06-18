@@ -370,24 +370,6 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DeleteGateway(
-            self,
-            request: models.DeleteGatewayRequest,
-            opts: Dict = None,
-    ) -> models.DeleteGatewayResponse:
-        """
-        用于删除网关。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteGatewayResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteOrganization(
             self,
             request: models.DeleteOrganizationRequest,
@@ -653,78 +635,6 @@ class IssClient(AbstractClient):
         kwargs["action"] = "DescribeGBDeviceAddr"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeGBDeviceAddrResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeGateway(
-            self,
-            request: models.DescribeGatewayRequest,
-            opts: Dict = None,
-    ) -> models.DescribeGatewayResponse:
-        """
-        用于获取网关详情。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeGatewayResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeGatewayMonitor(
-            self,
-            request: models.DescribeGatewayMonitorRequest,
-            opts: Dict = None,
-    ) -> models.DescribeGatewayMonitorResponse:
-        """
-        用于获取网关的数据及流量监控信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeGatewayMonitor"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeGatewayMonitorResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeGatewayProtocol(
-            self,
-            request: models.DescribeGatewayProtocolRequest,
-            opts: Dict = None,
-    ) -> models.DescribeGatewayProtocolResponse:
-        """
-        用于查询网关接入协议。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeGatewayProtocol"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeGatewayProtocolResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeGatewayVersion(
-            self,
-            request: models.DescribeGatewayVersionRequest,
-            opts: Dict = None,
-    ) -> models.DescribeGatewayVersionResponse:
-        """
-        查询网关服务版本
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeGatewayVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeGatewayVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1032,42 +942,6 @@ class IssClient(AbstractClient):
         kwargs["action"] = "ListDevices"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListDevicesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ListGatewayDevices(
-            self,
-            request: models.ListGatewayDevicesRequest,
-            opts: Dict = None,
-    ) -> models.ListGatewayDevicesResponse:
-        """
-        用于查询网关下挂载的设备列表。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ListGatewayDevices"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ListGatewayDevicesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ListGateways(
-            self,
-            request: models.ListGatewaysRequest,
-            opts: Dict = None,
-    ) -> models.ListGatewaysResponse:
-        """
-        用于获取网关列表。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ListGateways"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ListGatewaysResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1415,24 +1289,6 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def UpdateGateway(
-            self,
-            request: models.UpdateGatewayRequest,
-            opts: Dict = None,
-    ) -> models.UpdateGatewayResponse:
-        """
-        用于修改网关信息（支持对网关名称和描述的修改）。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UpdateGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UpdateGatewayResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def UpdateOrganization(
             self,
             request: models.UpdateOrganizationRequest,
@@ -1536,24 +1392,6 @@ class IssClient(AbstractClient):
         kwargs["action"] = "UpdateUserDevice"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateUserDeviceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def UpgradeGateway(
-            self,
-            request: models.UpgradeGatewayRequest,
-            opts: Dict = None,
-    ) -> models.UpgradeGatewayResponse:
-        """
-        用于网关升级（支持对所有待更新的服务一键升级）。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UpgradeGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UpgradeGatewayResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

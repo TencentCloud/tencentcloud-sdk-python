@@ -79,6 +79,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCorpTag(
+            self,
+            request: models.CreateCorpTagRequest,
+            opts: Dict = None,
+    ) -> models.CreateCorpTagResponse:
+        """
+        创建企业标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCorpTag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCorpTagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDataTable(
             self,
             request: models.CreateDataTableRequest,
@@ -182,6 +200,24 @@ class BiClient(AbstractClient):
         kwargs["action"] = "CreateProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateTagTable(
+            self,
+            request: models.CreateTagTableRequest,
+            opts: Dict = None,
+    ) -> models.CreateTagTableResponse:
+        """
+        创建标签表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTagTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTagTableResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -691,6 +727,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EditCorpTag(
+            self,
+            request: models.EditCorpTagRequest,
+            opts: Dict = None,
+    ) -> models.EditCorpTagResponse:
+        """
+        编辑企业标签(异步)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EditCorpTag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EditCorpTagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExportScreenPage(
             self,
             request: models.ExportScreenPageRequest,
@@ -835,6 +889,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyTagTable(
+            self,
+            request: models.ModifyTagTableRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTagTableResponse:
+        """
+        编辑标签表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTagTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTagTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyUserDetailInfo(
             self,
             request: models.ModifyUserDetailInfoRequest,
@@ -902,6 +974,24 @@ class BiClient(AbstractClient):
         kwargs["action"] = "ModifyUserRoleProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyUserRoleProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyUserTag(
+            self,
+            request: models.ModifyUserTagRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserTagResponse:
+        """
+        修改用户标签值
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUserTag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserTagResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

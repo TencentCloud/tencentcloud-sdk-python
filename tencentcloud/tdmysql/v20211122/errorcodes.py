@@ -35,6 +35,9 @@ DRYRUNOPERATION_ADDTAGDRYRUNERROR = 'DryRunOperation.AddTagDryrunError'
 # FailedOperation.AddInstanceInfoFailed
 FAILEDOPERATION_ADDINSTANCEINFOFAILED = 'FailedOperation.AddInstanceInfoFailed'
 
+# FailedOperation.ApplyVipFailed
+FAILEDOPERATION_APPLYVIPFAILED = 'FailedOperation.ApplyVipFailed'
+
 # FailedOperation.AuthNoStrategy
 FAILEDOPERATION_AUTHNOSTRATEGY = 'FailedOperation.AuthNoStrategy'
 
@@ -67,6 +70,12 @@ FAILEDOPERATION_DBQUERYZONEERROR = 'FailedOperation.DBQueryZoneError'
 
 # 更新实例名称数据失败。
 FAILEDOPERATION_DBUPDATEINSTANCEERROR = 'FailedOperation.DBUpdateInstanceError'
+
+# 更新用户数据失败。
+FAILEDOPERATION_DBUPDATEUSERERROR = 'FailedOperation.DBUpdateUserError'
+
+# 更新维护窗口配置失败
+FAILEDOPERATION_DBUPSERTMAINTENANCEWINDOWERROR = 'FailedOperation.DBUpsertMaintenanceWindowError'
 
 # DB数量超出限制。
 FAILEDOPERATION_DBCOUNTLIMITERROR = 'FailedOperation.DbCountLimitError'
@@ -119,14 +128,29 @@ FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = 'FailedOperation.UpdateInstanceInfoFa
 # 更新权限错误。
 FAILEDOPERATION_UPDATEPRIVILEGESERROR = 'FailedOperation.UpdatePrivilegesError'
 
+# FailedOperation.WanStatusAbnormal
+FAILEDOPERATION_WANSTATUSABNORMAL = 'FailedOperation.WanStatusAbnormal'
+
+# InternalError.CheckVipStatusFailed
+INTERNALERROR_CHECKVIPSTATUSFAILED = 'InternalError.CheckVipStatusFailed'
+
 # 数据库访问错误。
 INTERNALERROR_DATABASEACCESSERROR = 'InternalError.DatabaseAccessError'
+
+# InternalError.DbOperationFailed
+INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 
 # 查询数据库对象失败
 INTERNALERROR_DESCRIBEDBOBJECTSERROR = 'InternalError.DescribeDBObjectsError'
 
 # InternalError.GetSecurityGroupDetailFailed
 INTERNALERROR_GETSECURITYGROUPDETAILFAILED = 'InternalError.GetSecurityGroupDetailFailed'
+
+# InternalError.GetSubnetFailed
+INTERNALERROR_GETSUBNETFAILED = 'InternalError.GetSubnetFailed'
+
+# InternalError.GetVpcFailed
+INTERNALERROR_GETVPCFAILED = 'InternalError.GetVpcFailed'
 
 # InternalError.InstanceOperatePermissionError
 INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = 'InternalError.InstanceOperatePermissionError'
@@ -155,6 +179,9 @@ INTERNALERROR_ROUTERNOTFOUND = 'InternalError.RouterNotFound'
 # InternalError.SetSvcLocationFailed
 INTERNALERROR_SETSVCLOCATIONFAILED = 'InternalError.SetSvcLocationFailed'
 
+# InternalError.VpcOperationFailed
+INTERNALERROR_VPCOPERATIONFAILED = 'InternalError.VpcOperationFailed'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
@@ -179,6 +206,15 @@ INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError
 # InvalidParameter.PermissionDenied
 INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
 
+# InvalidParameter.SubnetUnavailable
+INVALIDPARAMETER_SUBNETUNAVAILABLE = 'InvalidParameter.SubnetUnavailable'
+
+# InvalidParameter.VipNotInSubnet
+INVALIDPARAMETER_VIPNOTINSUBNET = 'InvalidParameter.VipNotInSubnet'
+
+# InvalidParameter.VipUsed
+INVALIDPARAMETER_VIPUSED = 'InvalidParameter.VipUsed'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -200,6 +236,9 @@ INVALIDPARAMETERVALUE_CHECKINSTANCEVERSIONERROR = 'InvalidParameterValue.CheckIn
 # 名称校验失败。
 INVALIDPARAMETERVALUE_CHECKNAMEERROR = 'InvalidParameterValue.CheckNameError'
 
+# 密码校验失败。
+INVALIDPARAMETERVALUE_CHECKPASSWDERROR = 'InvalidParameterValue.CheckPasswdError'
+
 # 实例规格校验错误。
 INVALIDPARAMETERVALUE_CHECKSPECERROR = 'InvalidParameterValue.CheckSpecError'
 
@@ -212,8 +251,14 @@ INVALIDPARAMETERVALUE_INSTANCEFILTERKEYERROR = 'InvalidParameterValue.InstanceFi
 # 参数错误。
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 
+# 维护窗口参数校验失败
+INVALIDPARAMETERVALUE_MAINTENANCEWINDOWPARAMERROR = 'InvalidParameterValue.MaintenanceWindowParamError'
+
 # 创建实例副本数不符合规范。
 INVALIDPARAMETERVALUE_NODEREPLICASINVALIDERROR = 'InvalidParameterValue.NodeReplicasInvalidError'
+
+# Vport范围错误。
+INVALIDPARAMETERVALUE_VPORTRANGEERROR = 'InvalidParameterValue.VportRangeError'
 
 # 绑定tag数超限。
 LIMITEXCEEDED_ADDTAGCOUNTERROR = 'LimitExceeded.AddTagCountError'
@@ -256,6 +301,9 @@ OPERATIONDENIED_MANUALBACKUPQUOTAPERDAYEXCEEDEDERR = 'OperationDenied.ManualBack
 
 # 备份数量已经超过配额，不能再创建备份。
 OPERATIONDENIED_MANUALBACKUPSETQUOTAEXCEEDEDERR = 'OperationDenied.ManualBackupSetQuotaExceededErr'
+
+# 重置超级用户密码失败。
+OPERATIONDENIED_RESETUSERPASSWORDERROR = 'OperationDenied.ResetUserPasswordError'
 
 # 实例资源找不到
 RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = 'ResourceNotFound.BizResourceNotFoundError'

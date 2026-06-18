@@ -118,6 +118,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateUsers(self, request):
+        r"""本接口（CreateUsers）用于批量创建用户
+
+        :param request: Request instance for CreateUsers.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.CreateUsersRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.CreateUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDBSBackupSets(self, request):
         r"""删除实例手工备份 DeleteDBSBackupSets
 
@@ -132,6 +155,29 @@ class TdmysqlClient(AbstractClient):
             body = self.call("DeleteDBSBackupSets", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDBSBackupSetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUsers(self, request):
+        r"""本接口（DeleteUsers）用于批量删除用户
+
+        :param request: Request instance for DeleteUsers.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DeleteUsersRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DeleteUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUsersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -463,6 +509,52 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceSSLStatus(self, request):
+        r"""本接口（DescribeInstanceSSLStatus）提供实例SSL状态查询
+
+        :param request: Request instance for DescribeInstanceSSLStatus.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeInstanceSSLStatusRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeInstanceSSLStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceSSLStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceSSLStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMaintenanceWindow(self, request):
+        r"""查询维护时间窗口配置
+
+        :param request: Request instance for DescribeMaintenanceWindow.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeMaintenanceWindowRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeMaintenanceWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMaintenanceWindow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMaintenanceWindowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSaleInfo(self, request):
         r"""本接口（DescribeSaleInfo）提供查询可用售卖地域功能
 
@@ -477,6 +569,29 @@ class TdmysqlClient(AbstractClient):
             body = self.call("DescribeSaleInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSaleInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSlowLogs(self, request):
+        r"""本接口提供查询慢日志功能
+
+        :param request: Request instance for DescribeSlowLogs.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeSlowLogsRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeSlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSlowLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSlowLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -670,6 +785,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBInstanceVPort(self, request):
+        r"""本接口(ModifyDBInstanceVPort)修改实例VPC端口
+
+        :param request: Request instance for ModifyDBInstanceVPort.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyDBInstanceVPortRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ModifyDBInstanceVPortResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceVPort", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceVPortResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBParameters(self, request):
         r"""本接口（ModifyDBParameters）用于修改实例参数。
 
@@ -762,6 +900,75 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceNetwork(self, request):
+        r"""本接口（ModifyInstanceNetwork）用于修改实例所属网络
+
+        :param request: Request instance for ModifyInstanceNetwork.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyInstanceNetworkRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ModifyInstanceNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceNetwork", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceNetworkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceSSLStatus(self, request):
+        r"""本接口（ModifyInstanceSSLStatus）提供开关实例SSL的功能
+
+        :param request: Request instance for ModifyInstanceSSLStatus.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyInstanceSSLStatusRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ModifyInstanceSSLStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceSSLStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceSSLStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMaintenanceWindow(self, request):
+        r"""新增/修改实例维护时间窗口配置
+
+        :param request: Request instance for ModifyMaintenanceWindow.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyMaintenanceWindowRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ModifyMaintenanceWindowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMaintenanceWindow", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMaintenanceWindowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserPrivileges(self, request):
         r"""本接口(ModifyPrivileges)修改用户权限
 
@@ -776,6 +983,29 @@ class TdmysqlClient(AbstractClient):
             body = self.call("ModifyUserPrivileges", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserPrivilegesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetUserPassword(self, request):
+        r"""本接口（ResetUserPassword）提供重置用户密码功能
+
+        :param request: Request instance for ResetUserPassword.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ResetUserPasswordRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ResetUserPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetUserPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetUserPasswordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

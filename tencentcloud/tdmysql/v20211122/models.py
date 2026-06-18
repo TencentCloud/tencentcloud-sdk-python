@@ -3249,6 +3249,150 @@ class CreateDBSBackupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateUsersRequest(AbstractModel):
+    r"""CreateUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _Users: <p>新增用户列表</p>
+        :type Users: list of User
+        :param _Password: <p>未加密密码</p>
+        :type Password: str
+        :param _EncryptedPassword: <p>加密密码</p>
+        :type EncryptedPassword: str
+        :param _Description: <p>用户描述</p>
+        :type Description: str
+        """
+        self._InstanceId = None
+        self._Users = None
+        self._Password = None
+        self._EncryptedPassword = None
+        self._Description = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Users(self):
+        r"""<p>新增用户列表</p>
+        :rtype: list of User
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def Password(self):
+        r"""<p>未加密密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptedPassword(self):
+        r"""<p>加密密码</p>
+        :rtype: str
+        """
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
+    @property
+    def Description(self):
+        r"""<p>用户描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = User()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        self._Password = params.get("Password")
+        self._EncryptedPassword = params.get("EncryptedPassword")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUsersResponse(AbstractModel):
+    r"""CreateUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>任务id</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class DBParamValue(AbstractModel):
     r"""云数据库参数信息。
 
@@ -3809,6 +3953,105 @@ class DeleteDBSBackupSetsResponse(AbstractModel):
         self._Deleted = params.get("Deleted")
         self._IsSuccess = params.get("IsSuccess")
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteUsersRequest(AbstractModel):
+    r"""DeleteUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _Users: <p>批量删除用户列表</p>
+        :type Users: list of User
+        """
+        self._InstanceId = None
+        self._Users = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Users(self):
+        r"""<p>批量删除用户列表</p>
+        :rtype: list of User
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = User()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUsersResponse(AbstractModel):
+    r"""DeleteUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>任务id</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6833,6 +7076,194 @@ class DescribeFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceSSLStatusRequest(AbstractModel):
+    r"""DescribeInstanceSSLStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceSSLStatusResponse(AbstractModel):
+    r"""DescribeInstanceSSLStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SSLStatus: <p>SSL启用状态</p><p>枚举值：</p><ul><li>Enabled： SSL已开启</li><li>Disabled： SSL已关闭</li><li>Enabling： SSL开启中</li><li>Disabling： SSL关闭中</li></ul>
+        :type SSLStatus: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SSLStatus = None
+        self._RequestId = None
+
+    @property
+    def SSLStatus(self):
+        r"""<p>SSL启用状态</p><p>枚举值：</p><ul><li>Enabled： SSL已开启</li><li>Disabled： SSL已关闭</li><li>Enabling： SSL开启中</li><li>Disabling： SSL关闭中</li></ul>
+        :rtype: str
+        """
+        return self._SSLStatus
+
+    @SSLStatus.setter
+    def SSLStatus(self, SSLStatus):
+        self._SSLStatus = SSLStatus
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SSLStatus = params.get("SSLStatus")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMaintenanceWindowRequest(AbstractModel):
+    r"""DescribeMaintenanceWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMaintenanceWindowResponse(AbstractModel):
+    r"""DescribeMaintenanceWindow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _MaintenanceWindow: <p>运维窗口时间范围</p>
+        :type MaintenanceWindow: str
+        :param _WeekDays: <p>运维窗口天数范围</p>
+        :type WeekDays: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._MaintenanceWindow = None
+        self._WeekDays = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MaintenanceWindow(self):
+        r"""<p>运维窗口时间范围</p>
+        :rtype: str
+        """
+        return self._MaintenanceWindow
+
+    @MaintenanceWindow.setter
+    def MaintenanceWindow(self, MaintenanceWindow):
+        self._MaintenanceWindow = MaintenanceWindow
+
+    @property
+    def WeekDays(self):
+        r"""<p>运维窗口天数范围</p>
+        :rtype: list of str
+        """
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MaintenanceWindow = params.get("MaintenanceWindow")
+        self._WeekDays = params.get("WeekDays")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSaleInfoRequest(AbstractModel):
     r"""DescribeSaleInfo请求参数结构体
 
@@ -7328,6 +7759,217 @@ class DescribeSaleZonesInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeSlowLogsRequest(AbstractModel):
+    r"""DescribeSlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _StartTime: 要检索日志的起始时间
+        :type StartTime: str
+        :param _EndTime: 要检索日志的结束时间
+        :type EndTime: str
+        :param _LogFilter: 过滤条件
+        :type LogFilter: list of LogFilter
+        :param _Limit: 单页条数限制
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Order: 排序，可选：ASC，DESC
+        :type Order: str
+        :param _OrderBy: 排序条件，根据业务字段不同，可选排序字段不一样
+        :type OrderBy: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LogFilter = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._OrderBy = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""要检索日志的起始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""要检索日志的结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LogFilter(self):
+        r"""过滤条件
+        :rtype: list of LogFilter
+        """
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
+    @property
+    def Limit(self):
+        r"""单页条数限制
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""排序，可选：ASC，DESC
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        r"""排序条件，根据业务字段不同，可选排序字段不一样
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = LogFilter()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlowLogsResponse(AbstractModel):
+    r"""DescribeSlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 日志总数
+        :type TotalCount: int
+        :param _Items: 日志详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of SlowLogData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""日志总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""日志详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SlowLogData
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SlowLogData()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSpecsRequest(AbstractModel):
@@ -7952,6 +8594,231 @@ class ExpandInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class Explain(AbstractModel):
+    r"""执行计划
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>标识符</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _SelectType: <p>查询类型</p><p>枚举值：</p><ul><li>SIMPLE： 没有子查询和 UNION 的普通查询，单表或普通 JOIN 都是 SIMPLE。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelectType: str
+        :param _Table: <p>表名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Table: str
+        :param _Partitions: <p>分区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: str
+        :param _Type: <p>访问类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _PossibleKeys: <p>可能使用的索引</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PossibleKeys: str
+        :param _Key: <p>实际使用的索引</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _KeyLen: <p>使用的索引长度</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyLen: str
+        :param _Ref: <p>与索引比较的列或常量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ref: str
+        :param _Rows: <p>估算扫描行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: str
+        :param _Filtered: <p>条件过滤后剩余行的估算百分比</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Filtered: str
+        :param _Extra: <p>附加信息，如 Using index、Using filesort 等</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        """
+        self._ID = None
+        self._SelectType = None
+        self._Table = None
+        self._Partitions = None
+        self._Type = None
+        self._PossibleKeys = None
+        self._Key = None
+        self._KeyLen = None
+        self._Ref = None
+        self._Rows = None
+        self._Filtered = None
+        self._Extra = None
+
+    @property
+    def ID(self):
+        r"""<p>标识符</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def SelectType(self):
+        r"""<p>查询类型</p><p>枚举值：</p><ul><li>SIMPLE： 没有子查询和 UNION 的普通查询，单表或普通 JOIN 都是 SIMPLE。</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SelectType
+
+    @SelectType.setter
+    def SelectType(self, SelectType):
+        self._SelectType = SelectType
+
+    @property
+    def Table(self):
+        r"""<p>表名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Partitions(self):
+        r"""<p>分区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Type(self):
+        r"""<p>访问类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PossibleKeys(self):
+        r"""<p>可能使用的索引</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PossibleKeys
+
+    @PossibleKeys.setter
+    def PossibleKeys(self, PossibleKeys):
+        self._PossibleKeys = PossibleKeys
+
+    @property
+    def Key(self):
+        r"""<p>实际使用的索引</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def KeyLen(self):
+        r"""<p>使用的索引长度</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KeyLen
+
+    @KeyLen.setter
+    def KeyLen(self, KeyLen):
+        self._KeyLen = KeyLen
+
+    @property
+    def Ref(self):
+        r"""<p>与索引比较的列或常量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Ref
+
+    @Ref.setter
+    def Ref(self, Ref):
+        self._Ref = Ref
+
+    @property
+    def Rows(self):
+        r"""<p>估算扫描行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def Filtered(self):
+        r"""<p>条件过滤后剩余行的估算百分比</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Filtered
+
+    @Filtered.setter
+    def Filtered(self, Filtered):
+        self._Filtered = Filtered
+
+    @property
+    def Extra(self):
+        r"""<p>附加信息，如 Using index、Using filesort 等</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._SelectType = params.get("SelectType")
+        self._Table = params.get("Table")
+        self._Partitions = params.get("Partitions")
+        self._Type = params.get("Type")
+        self._PossibleKeys = params.get("PossibleKeys")
+        self._Key = params.get("Key")
+        self._KeyLen = params.get("KeyLen")
+        self._Ref = params.get("Ref")
+        self._Rows = params.get("Rows")
+        self._Filtered = params.get("Filtered")
+        self._Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceFilter(AbstractModel):
@@ -9796,6 +10663,124 @@ class LogBackupStatisticsModel(AbstractModel):
         
 
 
+class LogFilter(AbstractModel):
+    r"""慢日志过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 过滤条件名称。
+
+如：sql - SQL命令详情
+
+host – 客户端 IP；
+user – 数据库账户；
+dbName – 数据库名称；
+sqlType - SQL类型；
+errCode - 错误码
+
+execTime - 执行时间
+lockWaitTime - 锁等待时间
+ioWaitTime - IO等待时间
+trxLivingTime - 事务执行时间
+cpuTime- Cpu时间
+
+threadId - 线程ID
+trxId - 事物ID
+checkRows - 扫描行数
+affectRows - 影响行数
+sentRows - 返回行数
+        :type Type: str
+        :param _Compare: 过滤条件匹配类型。支持：
+INC – 包含；     （多个值之前是||的关系）
+EXC – 不包含； （多个值之前是&&的关系）
+EQS – 等于；     （多个值之前是||的关系）
+NEQ – 不等于；（多个值之前是&&的关系）
+
+RG – 范围；
+        :type Compare: str
+        :param _Value: 过滤条件匹配值。当Compare=RG时，例：["1-100","200-300"]
+        :type Value: list of str
+        """
+        self._Type = None
+        self._Compare = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""过滤条件名称。
+
+如：sql - SQL命令详情
+
+host – 客户端 IP；
+user – 数据库账户；
+dbName – 数据库名称；
+sqlType - SQL类型；
+errCode - 错误码
+
+execTime - 执行时间
+lockWaitTime - 锁等待时间
+ioWaitTime - IO等待时间
+trxLivingTime - 事务执行时间
+cpuTime- Cpu时间
+
+threadId - 线程ID
+trxId - 事物ID
+checkRows - 扫描行数
+affectRows - 影响行数
+sentRows - 返回行数
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Compare(self):
+        r"""过滤条件匹配类型。支持：
+INC – 包含；     （多个值之前是||的关系）
+EXC – 不包含； （多个值之前是&&的关系）
+EQS – 等于；     （多个值之前是||的关系）
+NEQ – 不等于；（多个值之前是&&的关系）
+
+RG – 范围；
+        :rtype: str
+        """
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def Value(self):
+        r"""过滤条件匹配值。当Compare=RG时，例：["1-100","200-300"]
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Compare = params.get("Compare")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MaintenanceWindowInfo(AbstractModel):
     r"""维护窗口配置
 
@@ -10017,6 +11002,100 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceVPortRequest(AbstractModel):
+    r"""ModifyDBInstanceVPort请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID，形如：tdsql3-5baee8df。
+        :type InstanceId: str
+        :param _Vport: 新的VPC端口，3308
+        :type Vport: int
+        """
+        self._InstanceId = None
+        self._Vport = None
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID，形如：tdsql3-5baee8df。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Vport(self):
+        r"""新的VPC端口，3308
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Vport = params.get("Vport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceVPortResponse(AbstractModel):
+    r"""ModifyDBInstanceVPort返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 返回异步任务FlowId
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""返回异步任务FlowId
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -10407,6 +11486,333 @@ class ModifyInstanceNameRequest(AbstractModel):
 
 class ModifyInstanceNameResponse(AbstractModel):
     r"""ModifyInstanceName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceNetworkRequest(AbstractModel):
+    r"""ModifyInstanceNetwork请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _VpcId: 希望转到的VPC网络的VpcId
+        :type VpcId: str
+        :param _SubnetId: 希望转到的VPC网络的子网ID
+        :type SubnetId: str
+        :param _VipReleaseDelay: VIP保留时长，单位小时，取值范围（0~168），0表示立即释放，有一分钟释放延迟。不传此参数，默认24小时释放VIP。
+        :type VipReleaseDelay: int
+        :param _Vip: 指定vip变更，不填表示随机vip
+        :type Vip: str
+        """
+        self._InstanceId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._VipReleaseDelay = None
+        self._Vip = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VpcId(self):
+        r"""希望转到的VPC网络的VpcId
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""希望转到的VPC网络的子网ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def VipReleaseDelay(self):
+        r"""VIP保留时长，单位小时，取值范围（0~168），0表示立即释放，有一分钟释放延迟。不传此参数，默认24小时释放VIP。
+        :rtype: int
+        """
+        return self._VipReleaseDelay
+
+    @VipReleaseDelay.setter
+    def VipReleaseDelay(self, VipReleaseDelay):
+        self._VipReleaseDelay = VipReleaseDelay
+
+    @property
+    def Vip(self):
+        r"""指定vip变更，不填表示随机vip
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._VipReleaseDelay = params.get("VipReleaseDelay")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceNetworkResponse(AbstractModel):
+    r"""ModifyInstanceNetwork返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceSSLStatusRequest(AbstractModel):
+    r"""ModifyInstanceSSLStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _Enabled: <p>是否启用SSL</p>
+        :type Enabled: bool
+        """
+        self._InstanceId = None
+        self._Enabled = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用SSL</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceSSLStatusResponse(AbstractModel):
+    r"""ModifyInstanceSSLStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>异步流程ID</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>异步流程ID</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMaintenanceWindowRequest(AbstractModel):
+    r"""ModifyMaintenanceWindow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _StartTime: <p>运维窗口开始时间</p><p>参数格式：hh:mm:ss</p>
+        :type StartTime: str
+        :param _Duration: <p>运维窗口持续时间</p><p>取值范围：[1, 3]</p><p>单位：时</p>
+        :type Duration: int
+        :param _WeekDays: <p>运维窗口日期</p><p>枚举值：</p><ul><li>Monday： 星期一</li><li>Tuesday： 星期二</li><li>Wednesday： 星期三</li><li>Thursday： 星期四</li><li>Friday： 星期五</li><li>Saturday： 星期六</li><li>Sunday： 星期日</li></ul>
+        :type WeekDays: list of str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._Duration = None
+        self._WeekDays = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""<p>运维窗口开始时间</p><p>参数格式：hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Duration(self):
+        r"""<p>运维窗口持续时间</p><p>取值范围：[1, 3]</p><p>单位：时</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def WeekDays(self):
+        r"""<p>运维窗口日期</p><p>枚举值：</p><ul><li>Monday： 星期一</li><li>Tuesday： 星期二</li><li>Wednesday： 星期三</li><li>Thursday： 星期四</li><li>Friday： 星期五</li><li>Saturday： 星期六</li><li>Sunday： 星期日</li></ul>
+        :rtype: list of str
+        """
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._Duration = params.get("Duration")
+        self._WeekDays = params.get("WeekDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMaintenanceWindowResponse(AbstractModel):
+    r"""ModifyMaintenanceWindow返回参数结构体
 
     """
 
@@ -10998,6 +12404,130 @@ class ParamDesc(AbstractModel):
         
 
 
+class ResetUserPasswordRequest(AbstractModel):
+    r"""ResetUserPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Host: 主机IP，IP段以%结尾，表示允许该IP段的所有IP
+        :type Host: str
+        :param _Password: 新密码，要求长度8-32，至少包含英文、数字和符号中的两种
+        :type Password: str
+        :param _EncryptedPassword: 加密密码
+        :type EncryptedPassword: str
+        """
+        self._UserName = None
+        self._InstanceId = None
+        self._Host = None
+        self._Password = None
+        self._EncryptedPassword = None
+
+    @property
+    def UserName(self):
+        r"""用户名
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Host(self):
+        r"""主机IP，IP段以%结尾，表示允许该IP段的所有IP
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Password(self):
+        r"""新密码，要求长度8-32，至少包含英文、数字和符号中的两种
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptedPassword(self):
+        r"""加密密码
+        :rtype: str
+        """
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._InstanceId = params.get("InstanceId")
+        self._Host = params.get("Host")
+        self._Password = params.get("Password")
+        self._EncryptedPassword = params.get("EncryptedPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetUserPasswordResponse(AbstractModel):
+    r"""ResetUserPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResourceTag(AbstractModel):
     r"""tag参数
 
@@ -11401,6 +12931,338 @@ class ServerlessCcu(AbstractModel):
     def _deserialize(self, params):
         self._MinCcu = params.get("MinCcu")
         self._MaxCcu = params.get("MaxCcu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogData(AbstractModel):
+    r"""慢日志信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>Sql的执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: str
+        :param _QueryTime: <p>Sql的执行时长（秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryTime: float
+        :param _SqlText: <p>Sql语句</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlText: str
+        :param _UserHost: <p>客户端地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserHost: str
+        :param _UserName: <p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _Database: <p>数据库名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Database: str
+        :param _LockTime: <p>锁时长（秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockTime: float
+        :param _RowsExamined: <p>扫描行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowsExamined: int
+        :param _RowsSent: <p>结果集行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowsSent: int
+        :param _TransactionId: <p>事物ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransactionId: str
+        :param _RpcTime: <p>rpc耗时</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RpcTime: float
+        :param _StorageRpcTime: <p>与存储节点交互rpc耗时</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageRpcTime: float
+        :param _RpcRetryDelayTime: <p>rpc重试延迟耗时</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RpcRetryDelayTime: float
+        :param _NodeId: <p>node名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: str
+        :param _RpcTrace: <p>rpc 链路追踪</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RpcTrace: str
+        :param _TDStoreLockTime: <p>TDStore锁时长</p><p>单位：秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TDStoreLockTime: float
+        :param _TraceId: <p>全局标识ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceId: str
+        :param _Explain: <p>执行计划</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Explain: list of Explain
+        """
+        self._Timestamp = None
+        self._QueryTime = None
+        self._SqlText = None
+        self._UserHost = None
+        self._UserName = None
+        self._Database = None
+        self._LockTime = None
+        self._RowsExamined = None
+        self._RowsSent = None
+        self._TransactionId = None
+        self._RpcTime = None
+        self._StorageRpcTime = None
+        self._RpcRetryDelayTime = None
+        self._NodeId = None
+        self._RpcTrace = None
+        self._TDStoreLockTime = None
+        self._TraceId = None
+        self._Explain = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>Sql的执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def QueryTime(self):
+        r"""<p>Sql的执行时长（秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._QueryTime
+
+    @QueryTime.setter
+    def QueryTime(self, QueryTime):
+        self._QueryTime = QueryTime
+
+    @property
+    def SqlText(self):
+        r"""<p>Sql语句</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def UserHost(self):
+        r"""<p>客户端地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserHost
+
+    @UserHost.setter
+    def UserHost(self, UserHost):
+        self._UserHost = UserHost
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Database(self):
+        r"""<p>数据库名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def LockTime(self):
+        r"""<p>锁时长（秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._LockTime
+
+    @LockTime.setter
+    def LockTime(self, LockTime):
+        self._LockTime = LockTime
+
+    @property
+    def RowsExamined(self):
+        r"""<p>扫描行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RowsExamined
+
+    @RowsExamined.setter
+    def RowsExamined(self, RowsExamined):
+        self._RowsExamined = RowsExamined
+
+    @property
+    def RowsSent(self):
+        r"""<p>结果集行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RowsSent
+
+    @RowsSent.setter
+    def RowsSent(self, RowsSent):
+        self._RowsSent = RowsSent
+
+    @property
+    def TransactionId(self):
+        r"""<p>事物ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TransactionId
+
+    @TransactionId.setter
+    def TransactionId(self, TransactionId):
+        self._TransactionId = TransactionId
+
+    @property
+    def RpcTime(self):
+        r"""<p>rpc耗时</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._RpcTime
+
+    @RpcTime.setter
+    def RpcTime(self, RpcTime):
+        self._RpcTime = RpcTime
+
+    @property
+    def StorageRpcTime(self):
+        r"""<p>与存储节点交互rpc耗时</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._StorageRpcTime
+
+    @StorageRpcTime.setter
+    def StorageRpcTime(self, StorageRpcTime):
+        self._StorageRpcTime = StorageRpcTime
+
+    @property
+    def RpcRetryDelayTime(self):
+        r"""<p>rpc重试延迟耗时</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._RpcRetryDelayTime
+
+    @RpcRetryDelayTime.setter
+    def RpcRetryDelayTime(self, RpcRetryDelayTime):
+        self._RpcRetryDelayTime = RpcRetryDelayTime
+
+    @property
+    def NodeId(self):
+        r"""<p>node名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def RpcTrace(self):
+        r"""<p>rpc 链路追踪</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RpcTrace
+
+    @RpcTrace.setter
+    def RpcTrace(self, RpcTrace):
+        self._RpcTrace = RpcTrace
+
+    @property
+    def TDStoreLockTime(self):
+        r"""<p>TDStore锁时长</p><p>单位：秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TDStoreLockTime
+
+    @TDStoreLockTime.setter
+    def TDStoreLockTime(self, TDStoreLockTime):
+        self._TDStoreLockTime = TDStoreLockTime
+
+    @property
+    def TraceId(self):
+        r"""<p>全局标识ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def Explain(self):
+        r"""<p>执行计划</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Explain
+        """
+        return self._Explain
+
+    @Explain.setter
+    def Explain(self, Explain):
+        self._Explain = Explain
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._QueryTime = params.get("QueryTime")
+        self._SqlText = params.get("SqlText")
+        self._UserHost = params.get("UserHost")
+        self._UserName = params.get("UserName")
+        self._Database = params.get("Database")
+        self._LockTime = params.get("LockTime")
+        self._RowsExamined = params.get("RowsExamined")
+        self._RowsSent = params.get("RowsSent")
+        self._TransactionId = params.get("TransactionId")
+        self._RpcTime = params.get("RpcTime")
+        self._StorageRpcTime = params.get("StorageRpcTime")
+        self._RpcRetryDelayTime = params.get("RpcRetryDelayTime")
+        self._NodeId = params.get("NodeId")
+        self._RpcTrace = params.get("RpcTrace")
+        self._TDStoreLockTime = params.get("TDStoreLockTime")
+        self._TraceId = params.get("TraceId")
+        if params.get("Explain") is not None:
+            self._Explain = []
+            for item in params.get("Explain"):
+                obj = Explain()
+                obj._deserialize(item)
+                self._Explain.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

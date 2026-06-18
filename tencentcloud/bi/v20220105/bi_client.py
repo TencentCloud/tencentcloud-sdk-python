@@ -95,6 +95,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCorpTag(self, request):
+        r"""创建企业标签
+
+        :param request: Request instance for CreateCorpTag.
+        :type request: :class:`tencentcloud.bi.v20220105.models.CreateCorpTagRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreateCorpTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCorpTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCorpTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDataTable(self, request):
         r"""添加数据表
 
@@ -224,6 +247,29 @@ class BiClient(AbstractClient):
             body = self.call("CreateProject", params, headers=headers)
             response = json.loads(body)
             model = models.CreateProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateTagTable(self, request):
+        r"""创建标签表
+
+        :param request: Request instance for CreateTagTable.
+        :type request: :class:`tencentcloud.bi.v20220105.models.CreateTagTableRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreateTagTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTagTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTagTableResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -877,6 +923,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EditCorpTag(self, request):
+        r"""编辑企业标签(异步)
+
+        :param request: Request instance for EditCorpTag.
+        :type request: :class:`tencentcloud.bi.v20220105.models.EditCorpTagRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EditCorpTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EditCorpTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.EditCorpTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportScreenPage(self, request):
         r"""页面截图导出
 
@@ -1061,6 +1130,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyTagTable(self, request):
+        r"""编辑标签表
+
+        :param request: Request instance for ModifyTagTable.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyTagTableRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyTagTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTagTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTagTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserDetailInfo(self, request):
         r"""修改用户角色信息
 
@@ -1144,6 +1236,29 @@ class BiClient(AbstractClient):
             body = self.call("ModifyUserRoleProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserRoleProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserTag(self, request):
+        r"""修改用户标签值
+
+        :param request: Request instance for ModifyUserTag.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyUserTagRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyUserTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserTagResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

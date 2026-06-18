@@ -185,9 +185,6 @@ INVALIDPARAMETERVALUE_INVALIDEXPIRATIONRANGE = 'InvalidParameterValue.InvalidExp
 # 无效的文件格式
 INVALIDPARAMETERVALUE_INVALIDFILETYPE = 'InvalidParameterValue.InvalidFileType'
 
-# 无效的网关ID，长度或内容不符合规则
-INVALIDPARAMETERVALUE_INVALIDGATEWAYID = 'InvalidParameterValue.InvalidGatewayId'
-
 # 无效的网关接入协议
 INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = 'InvalidParameterValue.InvalidGatewayProtocolType'
 

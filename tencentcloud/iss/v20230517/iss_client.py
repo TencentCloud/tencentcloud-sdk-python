@@ -466,29 +466,6 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteGateway(self, request):
-        r"""用于删除网关。
-
-        :param request: Request instance for DeleteGateway.
-        :type request: :class:`tencentcloud.iss.v20230517.models.DeleteGatewayRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.DeleteGatewayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteGateway", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteGatewayResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteOrganization(self, request):
         r"""用于删除组织。
 
@@ -825,98 +802,6 @@ class IssClient(AbstractClient):
             body = self.call("DescribeGBDeviceAddr", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeGBDeviceAddrResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeGateway(self, request):
-        r"""用于获取网关详情。
-
-        :param request: Request instance for DescribeGateway.
-        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeGateway", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeGatewayResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeGatewayMonitor(self, request):
-        r"""用于获取网关的数据及流量监控信息。
-
-        :param request: Request instance for DescribeGatewayMonitor.
-        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayMonitorRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayMonitorResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeGatewayMonitor", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeGatewayMonitorResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeGatewayProtocol(self, request):
-        r"""用于查询网关接入协议。
-
-        :param request: Request instance for DescribeGatewayProtocol.
-        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayProtocolRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayProtocolResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeGatewayProtocol", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeGatewayProtocolResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeGatewayVersion(self, request):
-        r"""查询网关服务版本
-
-        :param request: Request instance for DescribeGatewayVersion.
-        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayVersionRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeGatewayVersionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeGatewayVersion", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeGatewayVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1309,52 +1194,6 @@ class IssClient(AbstractClient):
             body = self.call("ListDevices", params, headers=headers)
             response = json.loads(body)
             model = models.ListDevicesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListGatewayDevices(self, request):
-        r"""用于查询网关下挂载的设备列表。
-
-        :param request: Request instance for ListGatewayDevices.
-        :type request: :class:`tencentcloud.iss.v20230517.models.ListGatewayDevicesRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.ListGatewayDevicesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListGatewayDevices", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListGatewayDevicesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ListGateways(self, request):
-        r"""用于获取网关列表。
-
-        :param request: Request instance for ListGateways.
-        :type request: :class:`tencentcloud.iss.v20230517.models.ListGatewaysRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.ListGatewaysResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ListGateways", params, headers=headers)
-            response = json.loads(body)
-            model = models.ListGatewaysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1801,29 +1640,6 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def UpdateGateway(self, request):
-        r"""用于修改网关信息（支持对网关名称和描述的修改）。
-
-        :param request: Request instance for UpdateGateway.
-        :type request: :class:`tencentcloud.iss.v20230517.models.UpdateGatewayRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateGatewayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpdateGateway", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpdateGatewayResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def UpdateOrganization(self, request):
         r"""用于修改组织。
 
@@ -1953,29 +1769,6 @@ class IssClient(AbstractClient):
             body = self.call("UpdateUserDevice", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateUserDeviceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpgradeGateway(self, request):
-        r"""用于网关升级（支持对所有待更新的服务一键升级）。
-
-        :param request: Request instance for UpgradeGateway.
-        :type request: :class:`tencentcloud.iss.v20230517.models.UpgradeGatewayRequest`
-        :rtype: :class:`tencentcloud.iss.v20230517.models.UpgradeGatewayResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpgradeGateway", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpgradeGatewayResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

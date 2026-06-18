@@ -2769,9 +2769,13 @@ class ResourceConfiguration(AbstractModel):
         :type CPU: str
         :param _Memory: <p>内存资源量</p>
         :type Memory: str
+        :param _Storage: <p>自定义磁盘大小</p><p>枚举值：</p><ul><li>1Gi： 1Gi</li><li>5Gi： 5Gi</li><li>10Gi： 10Gi</li><li>20Gi： 20Gi</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Storage: str
         """
         self._CPU = None
         self._Memory = None
+        self._Storage = None
 
     @property
     def CPU(self):
@@ -2795,10 +2799,23 @@ class ResourceConfiguration(AbstractModel):
     def Memory(self, Memory):
         self._Memory = Memory
 
+    @property
+    def Storage(self):
+        r"""<p>自定义磁盘大小</p><p>枚举值：</p><ul><li>1Gi： 1Gi</li><li>5Gi： 5Gi</li><li>10Gi： 10Gi</li><li>20Gi： 20Gi</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
 
     def _deserialize(self, params):
         self._CPU = params.get("CPU")
         self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

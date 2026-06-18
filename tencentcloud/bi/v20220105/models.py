@@ -1432,6 +1432,142 @@ class CreateAuthApiKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCorpTagRequest(AbstractModel):
+    r"""CreateCorpTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 标签名
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        r"""标签名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCorpTagResponse(AbstractModel):
+    r"""CreateCorpTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: 扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.DataId`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DataId`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = DataId()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDataTableRequest(AbstractModel):
     r"""CreateDataTable请求参数结构体
 
@@ -3717,6 +3853,225 @@ class CreateProjectResponse(AbstractModel):
             self._Data._deserialize(params.get("Data"))
         self._Msg = params.get("Msg")
         self._RequestId = params.get("RequestId")
+
+
+class CreateTagTableRequest(AbstractModel):
+    r"""CreateTagTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 标签表名
+        :type Name: str
+        :param _AutoImportProjectId: 标签表关联的项目id
+        :type AutoImportProjectId: int
+        :param _AutoImportTableId: 标签表关联的数据表id
+        :type AutoImportTableId: int
+        :param _AutoImportUinField: uin对应字段
+        :type AutoImportUinField: str
+        """
+        self._Name = None
+        self._AutoImportProjectId = None
+        self._AutoImportTableId = None
+        self._AutoImportUinField = None
+
+    @property
+    def Name(self):
+        r"""标签表名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AutoImportProjectId(self):
+        r"""标签表关联的项目id
+        :rtype: int
+        """
+        return self._AutoImportProjectId
+
+    @AutoImportProjectId.setter
+    def AutoImportProjectId(self, AutoImportProjectId):
+        self._AutoImportProjectId = AutoImportProjectId
+
+    @property
+    def AutoImportTableId(self):
+        r"""标签表关联的数据表id
+        :rtype: int
+        """
+        return self._AutoImportTableId
+
+    @AutoImportTableId.setter
+    def AutoImportTableId(self, AutoImportTableId):
+        self._AutoImportTableId = AutoImportTableId
+
+    @property
+    def AutoImportUinField(self):
+        r"""uin对应字段
+        :rtype: str
+        """
+        return self._AutoImportUinField
+
+    @AutoImportUinField.setter
+    def AutoImportUinField(self, AutoImportUinField):
+        self._AutoImportUinField = AutoImportUinField
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AutoImportProjectId = params.get("AutoImportProjectId")
+        self._AutoImportTableId = params.get("AutoImportTableId")
+        self._AutoImportUinField = params.get("AutoImportUinField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTagTableResponse(AbstractModel):
+    r"""CreateTagTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.CreateTagTableVO`
+        :param _Extra: 扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        r"""数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreateTagTableVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        r"""扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        if params.get("Data") is not None:
+            self._Data = CreateTagTableVO()
+            self._Data._deserialize(params.get("Data"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTagTableVO(AbstractModel):
+    r"""创建标签表出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 标签表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""标签表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateUserGroupMemberRequest(AbstractModel):
@@ -9935,6 +10290,319 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EditCorpTagRequest(AbstractModel):
+    r"""EditCorpTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 标签ID
+        :type Id: int
+        :param _Name: 标签名称
+        :type Name: str
+        :param _ImportType: 导入标签的模式(manual/auto)
+        :type ImportType: str
+        :param _AutoImportTagTableId: 自动导入标签表的id
+        :type AutoImportTagTableId: int
+        :param _AutoImportField: 自动导入标签的关联字段
+        :type AutoImportField: str
+        :param _AsyncRequest: 是否异步请求
+        :type AsyncRequest: bool
+        :param _AutoImportTagTableName: 自动导入标签表的表名
+        :type AutoImportTagTableName: str
+        :param _TranId: 事务id
+        :type TranId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._ImportType = None
+        self._AutoImportTagTableId = None
+        self._AutoImportField = None
+        self._AsyncRequest = None
+        self._AutoImportTagTableName = None
+        self._TranId = None
+
+    @property
+    def Id(self):
+        r"""标签ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""标签名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ImportType(self):
+        r"""导入标签的模式(manual/auto)
+        :rtype: str
+        """
+        return self._ImportType
+
+    @ImportType.setter
+    def ImportType(self, ImportType):
+        self._ImportType = ImportType
+
+    @property
+    def AutoImportTagTableId(self):
+        r"""自动导入标签表的id
+        :rtype: int
+        """
+        return self._AutoImportTagTableId
+
+    @AutoImportTagTableId.setter
+    def AutoImportTagTableId(self, AutoImportTagTableId):
+        self._AutoImportTagTableId = AutoImportTagTableId
+
+    @property
+    def AutoImportField(self):
+        r"""自动导入标签的关联字段
+        :rtype: str
+        """
+        return self._AutoImportField
+
+    @AutoImportField.setter
+    def AutoImportField(self, AutoImportField):
+        self._AutoImportField = AutoImportField
+
+    @property
+    def AsyncRequest(self):
+        r"""是否异步请求
+        :rtype: bool
+        """
+        return self._AsyncRequest
+
+    @AsyncRequest.setter
+    def AsyncRequest(self, AsyncRequest):
+        self._AsyncRequest = AsyncRequest
+
+    @property
+    def AutoImportTagTableName(self):
+        r"""自动导入标签表的表名
+        :rtype: str
+        """
+        return self._AutoImportTagTableName
+
+    @AutoImportTagTableName.setter
+    def AutoImportTagTableName(self, AutoImportTagTableName):
+        self._AutoImportTagTableName = AutoImportTagTableName
+
+    @property
+    def TranId(self):
+        r"""事务id
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._ImportType = params.get("ImportType")
+        self._AutoImportTagTableId = params.get("AutoImportTagTableId")
+        self._AutoImportField = params.get("AutoImportField")
+        self._AsyncRequest = params.get("AsyncRequest")
+        self._AutoImportTagTableName = params.get("AutoImportTagTableName")
+        self._TranId = params.get("TranId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EditCorpTagResponse(AbstractModel):
+    r"""EditCorpTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: 扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.EditTagVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EditTagVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = EditTagVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class EditTagVO(AbstractModel):
+    r"""同步标签数据出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranId: 事务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param _TranStatus: 事务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranStatus: int
+        :param _Id: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        """
+        self._TranId = None
+        self._TranStatus = None
+        self._Id = None
+
+    @property
+    def TranId(self):
+        r"""事务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def TranStatus(self):
+        r"""事务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TranStatus
+
+    @TranStatus.setter
+    def TranStatus(self, TranStatus):
+        self._TranStatus = TranStatus
+
+    @property
+    def Id(self):
+        r"""标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._TranId = params.get("TranId")
+        self._TranStatus = params.get("TranStatus")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EmbedTokenInfo(AbstractModel):
     r"""报表嵌出数据结构-强鉴权
 
@@ -13370,6 +14038,240 @@ class ModifyResourceUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyTagTableRequest(AbstractModel):
+    r"""ModifyTagTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 标签表名
+        :type Name: str
+        :param _AutoImportProjectId: 标签表关联的项目id
+        :type AutoImportProjectId: int
+        :param _AutoImportTableId: 标签表关联的数据表id
+        :type AutoImportTableId: int
+        :param _AutoImportUinField: uin对应字段
+        :type AutoImportUinField: str
+        :param _Id: 标签表id
+        :type Id: int
+        """
+        self._Name = None
+        self._AutoImportProjectId = None
+        self._AutoImportTableId = None
+        self._AutoImportUinField = None
+        self._Id = None
+
+    @property
+    def Name(self):
+        r"""标签表名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AutoImportProjectId(self):
+        r"""标签表关联的项目id
+        :rtype: int
+        """
+        return self._AutoImportProjectId
+
+    @AutoImportProjectId.setter
+    def AutoImportProjectId(self, AutoImportProjectId):
+        self._AutoImportProjectId = AutoImportProjectId
+
+    @property
+    def AutoImportTableId(self):
+        r"""标签表关联的数据表id
+        :rtype: int
+        """
+        return self._AutoImportTableId
+
+    @AutoImportTableId.setter
+    def AutoImportTableId(self, AutoImportTableId):
+        self._AutoImportTableId = AutoImportTableId
+
+    @property
+    def AutoImportUinField(self):
+        r"""uin对应字段
+        :rtype: str
+        """
+        return self._AutoImportUinField
+
+    @AutoImportUinField.setter
+    def AutoImportUinField(self, AutoImportUinField):
+        self._AutoImportUinField = AutoImportUinField
+
+    @property
+    def Id(self):
+        r"""标签表id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AutoImportProjectId = params.get("AutoImportProjectId")
+        self._AutoImportTableId = params.get("AutoImportTableId")
+        self._AutoImportUinField = params.get("AutoImportUinField")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTagTableResponse(AbstractModel):
+    r"""ModifyTagTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.ModifyTagTableVO`
+        :param _Extra: 扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        r"""数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyTagTableVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        r"""扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        if params.get("Data") is not None:
+            self._Data = ModifyTagTableVO()
+            self._Data._deserialize(params.get("Data"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTagTableVO(AbstractModel):
+    r"""创建标签表出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 标签表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""标签表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyUserDetailInfoRequest(AbstractModel):
     r"""ModifyUserDetailInfo请求参数结构体
 
@@ -14302,6 +15204,160 @@ class ModifyUserRoleResponse(AbstractModel):
             self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserTagRequest(AbstractModel):
+    r"""ModifyUserTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户ID
+        :type UserId: str
+        :param _TagList: 标签信息
+        :type TagList: list of UserTagInfo
+        """
+        self._UserId = None
+        self._TagList = None
+
+    @property
+    def UserId(self):
+        r"""用户ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TagList(self):
+        r"""标签信息
+        :rtype: list of UserTagInfo
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = UserTagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserTagResponse(AbstractModel):
+    r"""ModifyUserTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Extra: 额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Msg = None
+        self._Extra = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Msg(self):
+        r"""消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Extra(self):
+        r"""额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        r"""数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Msg = params.get("Msg")
+        self._Extra = params.get("Extra")
         self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
@@ -19774,6 +20830,129 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
                 obj = UserGroupDTO()
                 obj._deserialize(item)
                 self._UserGroupList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserTagInfo(AbstractModel):
+    r"""用户标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 标签ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 标签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _IsExternalManage: 是否被托管
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsExternalManage: bool
+        :param _ManagePlatform: 标签托管平台
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagePlatform: str
+        :param _ImportType: 导入类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportType: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Value = None
+        self._IsExternalManage = None
+        self._ManagePlatform = None
+        self._ImportType = None
+
+    @property
+    def Id(self):
+        r"""标签ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""标签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def IsExternalManage(self):
+        r"""是否被托管
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsExternalManage
+
+    @IsExternalManage.setter
+    def IsExternalManage(self, IsExternalManage):
+        self._IsExternalManage = IsExternalManage
+
+    @property
+    def ManagePlatform(self):
+        r"""标签托管平台
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ManagePlatform
+
+    @ManagePlatform.setter
+    def ManagePlatform(self, ManagePlatform):
+        self._ManagePlatform = ManagePlatform
+
+    @property
+    def ImportType(self):
+        r"""导入类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ImportType
+
+    @ImportType.setter
+    def ImportType(self, ImportType):
+        self._ImportType = ImportType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._IsExternalManage = params.get("IsExternalManage")
+        self._ManagePlatform = params.get("ManagePlatform")
+        self._ImportType = params.get("ImportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
