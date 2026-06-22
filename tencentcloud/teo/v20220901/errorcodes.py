@@ -179,6 +179,21 @@ INVALIDPARAMETER_ACCESSREDIRECTREGEXERROR = 'InvalidParameter.AccessRedirectRege
 # 操作频繁，请稍后重试。
 INVALIDPARAMETER_ACTIONINPROGRESS = 'InvalidParameter.ActionInProgress'
 
+# 当前域名不支持同时开启高级回源优化和中国大陆网络优化（国际加速）。
+INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTACCELERATEMAINLAND = 'InvalidParameter.AdvancedOriginRoutingNotSupportAccelerateMainland'
+
+# 前域名回源 IP 白名单套餐不支持高级回源优化
+INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTCURRENTPLANORIGINWHITELIST = 'InvalidParameter.AdvancedOriginRoutingNotSupportCurrentPlanOriginWhitelist'
+
+# 当前域名不支持同时开启高级回源优化和多层架构。
+INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTMULTIPLYLAYER = 'InvalidParameter.AdvancedOriginRoutingNotSupportMultiplyLayer'
+
+# 当前域名不支持同时开启高级回源优化和OC互转。
+INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTOCDIRECTORIGIN = 'InvalidParameter.AdvancedOriginRoutingNotSupportOCDirectOrigin'
+
+# 不支持同时开启高级回源优化和竞速平台。
+INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTRACINGPLATFORM = 'InvalidParameter.AdvancedOriginRoutingNotSupportRacingPlatform'
+
 # 别称域名不支持配无私钥证书。
 INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTKEYLESS = 'InvalidParameter.AliasDomainNotSupportKeyless'
 
@@ -361,6 +376,9 @@ INVALIDPARAMETER_HOSTSTATUSNOTALLOWAPPLYCERTIFICATE = 'InvalidParameter.HostStat
 
 # 参数错误。
 INVALIDPARAMETER_INVALIDACCELERATETYPE = 'InvalidParameter.InvalidAccelerateType'
+
+# 设置的匹配条件不支持高级回源优化操作，请删除相关配置项。
+INVALIDPARAMETER_INVALIDADVANCEDORIGINROUTINGUNSUPPORTED = 'InvalidParameter.InvalidAdvancedOriginRoutingUnsupported'
 
 # 无效的token鉴权。
 INVALIDPARAMETER_INVALIDAUTHENTICATION = 'InvalidParameter.InvalidAuthentication'
@@ -1130,6 +1148,9 @@ OPERATIONDENIED_ACCELERATEMAINLANDMULTIPLYLAYERCONFLICT = 'OperationDenied.Accel
 # 引用源站组的7层域名服务正在部署中，请稍后再编辑。
 OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = 'OperationDenied.AccelerationDomainStatusNotInOnline'
 
+# 当前域名不支持同时开启高级回源优化和跨境专线。
+OPERATIONDENIED_ADVANCEDORIGINROUTINGCONFLICTWITHDCIOVERSEALAN = 'OperationDenied.AdvancedOriginRoutingConflictWithDciOverseaLan'
+
 # 该操作不支持别称域名。
 OPERATIONDENIED_ALIASDOMAINNOTSUPPORT = 'OperationDenied.AliasDomainNotSupport'
 
@@ -1208,6 +1229,9 @@ OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = 'OperationDenied.InvalidAdv
 # 开启高防必须保证站点加速区域是国内。
 OPERATIONDENIED_INVALIDADVANCEDDEFENSEZONEAREA = 'OperationDenied.InvalidAdvancedDefenseZoneArea'
 
+# 套餐包不支持高级回源优化配置。
+OPERATIONDENIED_INVALIDADVANCEDORIGINROUTINGBILLING = 'OperationDenied.InvalidAdvancedOriginRoutingBilling'
+
 # 独立DDoS防护与IPv6冲突，不能同时配置。
 OPERATIONDENIED_IPV6ADVANCEDCONFLICT = 'OperationDenied.Ipv6AdvancedConflict'
 
@@ -1276,6 +1300,9 @@ OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYAREAANDALIASZONENAME = 'Opera
 
 # 无域名接入站点不支持除切换为CNAME接入类型以外的任何修改动作。
 OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYTYPE = 'OperationDenied.NoDomainAccessZoneOnlySupportModifyType'
+
+# 当前高级回源优化功能仅针对白名单用户开放。
+OPERATIONDENIED_NOTINADVANCEDORIGINROUTINGWHITELIST = 'OperationDenied.NotInAdvancedOriginRoutingWhiteList'
 
 # 当前无私钥证书功能仅针对白名单用户开放。
 OPERATIONDENIED_NOTINKEYLESSWHITELIST = 'OperationDenied.NotInKeylessWhiteList'

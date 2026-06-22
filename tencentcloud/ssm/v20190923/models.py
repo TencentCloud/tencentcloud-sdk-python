@@ -1537,6 +1537,10 @@ class DescribeSecretResponse(AbstractModel):
         :type EncryptType: int
         :param _EncryptSwitching: <p>凭据更新状态</p>
         :type EncryptSwitching: bool
+        :param _CreateUinString: <p>创建者 uin 字符串</p>
+        :type CreateUinString: str
+        :param _TargetUinString: <p>所属用户UIN 字符串</p>
+        :type TargetUinString: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1559,6 +1563,8 @@ class DescribeSecretResponse(AbstractModel):
         self._AdditionalConfig = None
         self._EncryptType = None
         self._EncryptSwitching = None
+        self._CreateUinString = None
+        self._TargetUinString = None
         self._RequestId = None
 
     @property
@@ -1771,6 +1777,28 @@ class DescribeSecretResponse(AbstractModel):
         self._EncryptSwitching = EncryptSwitching
 
     @property
+    def CreateUinString(self):
+        r"""<p>创建者 uin 字符串</p>
+        :rtype: str
+        """
+        return self._CreateUinString
+
+    @CreateUinString.setter
+    def CreateUinString(self, CreateUinString):
+        self._CreateUinString = CreateUinString
+
+    @property
+    def TargetUinString(self):
+        r"""<p>所属用户UIN 字符串</p>
+        :rtype: str
+        """
+        return self._TargetUinString
+
+    @TargetUinString.setter
+    def TargetUinString(self, TargetUinString):
+        self._TargetUinString = TargetUinString
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1802,6 +1830,8 @@ class DescribeSecretResponse(AbstractModel):
         self._AdditionalConfig = params.get("AdditionalConfig")
         self._EncryptType = params.get("EncryptType")
         self._EncryptSwitching = params.get("EncryptSwitching")
+        self._CreateUinString = params.get("CreateUinString")
+        self._TargetUinString = params.get("TargetUinString")
         self._RequestId = params.get("RequestId")
 
 
@@ -3526,6 +3556,10 @@ class SecretMetadata(AbstractModel):
         :type EncryptType: int
         :param _EncryptSwitching: <p>凭据密钥加密切换中</p>
         :type EncryptSwitching: bool
+        :param _CreateUinString: <p>创建者 UIN 字符串</p>
+        :type CreateUinString: str
+        :param _TargetUinString: <p>所属者 UIN 字符串</p><p>用以兼容uint64,防止精度丢失</p>
+        :type TargetUinString: str
         """
         self._SecretName = None
         self._Description = None
@@ -3548,6 +3582,8 @@ class SecretMetadata(AbstractModel):
         self._RotationBeginTime = None
         self._EncryptType = None
         self._EncryptSwitching = None
+        self._CreateUinString = None
+        self._TargetUinString = None
 
     @property
     def SecretName(self):
@@ -3780,6 +3816,28 @@ class SecretMetadata(AbstractModel):
     def EncryptSwitching(self, EncryptSwitching):
         self._EncryptSwitching = EncryptSwitching
 
+    @property
+    def CreateUinString(self):
+        r"""<p>创建者 UIN 字符串</p>
+        :rtype: str
+        """
+        return self._CreateUinString
+
+    @CreateUinString.setter
+    def CreateUinString(self, CreateUinString):
+        self._CreateUinString = CreateUinString
+
+    @property
+    def TargetUinString(self):
+        r"""<p>所属者 UIN 字符串</p><p>用以兼容uint64,防止精度丢失</p>
+        :rtype: str
+        """
+        return self._TargetUinString
+
+    @TargetUinString.setter
+    def TargetUinString(self, TargetUinString):
+        self._TargetUinString = TargetUinString
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
@@ -3803,6 +3861,8 @@ class SecretMetadata(AbstractModel):
         self._RotationBeginTime = params.get("RotationBeginTime")
         self._EncryptType = params.get("EncryptType")
         self._EncryptSwitching = params.get("EncryptSwitching")
+        self._CreateUinString = params.get("CreateUinString")
+        self._TargetUinString = params.get("TargetUinString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

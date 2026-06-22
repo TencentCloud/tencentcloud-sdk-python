@@ -1740,6 +1740,42 @@ class AdvancedFilter(AbstractModel):
         
 
 
+class AdvancedOriginRoutingParameters(AbstractModel):
+    r"""高级回源优化配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Direction: <p>回源优化方向，取值有：</p><li>MainlandChinaAndGlobalAdaptive：自适应。域名需同时开启「智能加速」后生效，EdgeOne将根据客户端与源站的实际地理位置，自动匹配最优回源优化方向，无需手动指定。例如 www.example.com 开启「高级回源优化」，但「智能加速」关闭或仅部分匹配条件开启时，「高级回源优化」将不生效。</li>
+        :type Direction: str
+        """
+        self._Direction = None
+
+    @property
+    def Direction(self):
+        r"""<p>回源优化方向，取值有：</p><li>MainlandChinaAndGlobalAdaptive：自适应。域名需同时开启「智能加速」后生效，EdgeOne将根据客户端与源站的实际地理位置，自动匹配最优回源优化方向，无需手动指定。例如 www.example.com 开启「高级回源优化」，但「智能加速」关闭或仅部分匹配条件开启时，「高级回源优化」将不生效。</li>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiRule(AbstractModel):
     r"""AI规则引擎防护
 
@@ -54108,165 +54144,127 @@ class RuleEngineAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。
-<li>Cache：节点缓存 TTL；</li>
-<li>CacheKey：自定义 Cache Key；</li>
-<li>CachePrefresh：缓存预刷新；</li>
-<li>AccessURLRedirect：访问 URL 重定向；</li>
-<li>UpstreamURLRewrite：回源 URL 重写；</li>
-<li>QUIC：QUIC；</li>
-<li>WebSocket：WebSocket；</li>
-<li>Authentication：Token 鉴权；</li>
-<li>MaxAge：浏览器缓存 TTL；</li>
-<li>StatusCodeCache：状态码缓存 TTL；</li>
-<li>OfflineCache：离线缓存；</li>
-<li>SmartRouting：智能加速；</li>
-<li>RangeOriginPull：分片回源 ；</li>
-<li>UpstreamHTTP2：HTTP2 回源；</li>
-<li>HostHeader：Host Header 重写；</li>
-<li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li>
-<li>OriginPullProtocol：回源 HTTPS；</li>
-<li>Compression：智能压缩配置；</li>
-<li>HSTS：HSTS；</li>
-<li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li>
-<li>OCSPStapling：OCSP 装订；</li>
-<li>HTTP2：HTTP2 接入；</li>
-<li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li>
-<li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li>
-<li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li>
-<li>UpstreamRequest：回源请求参数；</li>
-<li>Shield：源站卸载配置；</li>
-<li>TLSConfig：SSL/TLS 安全；</li>
-<li>ModifyOrigin：修改源站；</li>
-<li> SiteFailover：源站故障转移；</li>
-<li>HTTPUpstreamTimeout：七层回源超时配置；</li>
-<li>HttpResponse：HTTP 应答；</li>
-<li>ErrorPage：自定义错误页面；</li>
-<li>ModifyResponseHeader：修改 HTTP 节点响应头；</li>
-<li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
-<li>ResponseSpeedLimit：单连接下载限速；</li>
-<li>SetContentIdentifier：设置内容标识符；</li>
-<li>Vary：Vary 特性配置；</li>
-<li>ContentCompression：内容压缩配置；</li>
-<li>OriginAuthentication：回源鉴权配置。</li>
+        :param _Name: <p>操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。</p><li>Cache：节点缓存 TTL；</li><li>CacheKey：自定义 Cache Key；</li><li>CachePrefresh：缓存预刷新；</li><li>AccessURLRedirect：访问 URL 重定向；</li><li>UpstreamURLRewrite：回源 URL 重写；</li><li>QUIC：QUIC；</li><li>WebSocket：WebSocket；</li><li>Authentication：Token 鉴权；</li><li>MaxAge：浏览器缓存 TTL；</li><li>StatusCodeCache：状态码缓存 TTL；</li><li>OfflineCache：离线缓存；</li><li>SmartRouting：智能加速；</li><li>AdvancedOriginRouting：高级回源优化；</li><li>RangeOriginPull：分片回源 ；</li><li>UpstreamHTTP2：HTTP2 回源；</li><li>HostHeader：Host Header 重写；</li><li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li><li>OriginPullProtocol：回源 HTTPS；</li><li>Compression：智能压缩配置；</li><li>HSTS：HSTS；</li><li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li><li>OCSPStapling：OCSP 装订；</li><li>HTTP2：HTTP2 接入；</li><li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li><li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li><li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li><li>UpstreamRequest：回源请求参数；</li><li>Shield：源站卸载配置；</li><li>TLSConfig：SSL/TLS 安全；</li><li>ModifyOrigin：修改源站；</li><li> SiteFailover：源站故障转移；</li><li>HTTPUpstreamTimeout：七层回源超时配置；</li><li>HttpResponse：HTTP 应答；</li><li>ErrorPage：自定义错误页面；</li><li>ModifyResponseHeader：修改 HTTP 节点响应头；</li><li>ModifyRequestHeader：修改 HTTP 节点请求头；</li><li>ResponseSpeedLimit：单连接下载限速；</li><li>SetContentIdentifier：设置内容标识符；</li><li>Vary：Vary 特性配置；</li><li>ContentCompression：内容压缩配置；</li><li>OriginAuthentication：回源鉴权配置。</li>
         :type Name: str
-        :param _CacheParameters: 节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。
+        :param _CacheParameters: <p>节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheParameters: :class:`tencentcloud.teo.v20220901.models.CacheParameters`
-        :param _CacheKeyParameters: 自定义 Cache Key 配置参数，当 Name 取值为 CacheKey 时，该参数必填。
+        :param _CacheKeyParameters: <p>自定义 Cache Key 配置参数，当 Name 取值为 CacheKey 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheKeyParameters: :class:`tencentcloud.teo.v20220901.models.CacheKeyParameters`
-        :param _CachePrefreshParameters: 缓存预刷新配置参数，当 Name 取值为 CachePrefresh 时，该参数必填。
+        :param _CachePrefreshParameters: <p>缓存预刷新配置参数，当 Name 取值为 CachePrefresh 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CachePrefreshParameters: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
-        :param _AccessURLRedirectParameters: 访问 URL 重定向配置参数，当 Name 取值为 AccessURLRedirect 时，该参数必填。
+        :param _AccessURLRedirectParameters: <p>访问 URL 重定向配置参数，当 Name 取值为 AccessURLRedirect 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessURLRedirectParameters: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectParameters`
-        :param _UpstreamURLRewriteParameters: 回源 URL 重写配置参数，当 Name 取值为 UpstreamURLRewrite 时，该参数必填。
+        :param _UpstreamURLRewriteParameters: <p>回源 URL 重写配置参数，当 Name 取值为 UpstreamURLRewrite 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamURLRewriteParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
-        :param _QUICParameters: QUIC 配置参数，当 Name 取值为 QUIC 时，该参数必填。
+        :param _QUICParameters: <p>QUIC 配置参数，当 Name 取值为 QUIC 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QUICParameters: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
-        :param _WebSocketParameters: WebSocket 配置参数，当 Name 取值为 WebSocket 时，该参数必填。
+        :param _WebSocketParameters: <p>WebSocket 配置参数，当 Name 取值为 WebSocket 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebSocketParameters: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
-        :param _AuthenticationParameters: Token 鉴权配置参数，当 Name 取值为 Authentication 时，该参数必填。
+        :param _AuthenticationParameters: <p>Token 鉴权配置参数，当 Name 取值为 Authentication 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthenticationParameters: :class:`tencentcloud.teo.v20220901.models.AuthenticationParameters`
-        :param _MaxAgeParameters: 浏览器缓存 TTL 配置参数，当 Name 取值为 MaxAge 时，该参数必填。
+        :param _MaxAgeParameters: <p>浏览器缓存 TTL 配置参数，当 Name 取值为 MaxAge 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxAgeParameters: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
-        :param _StatusCodeCacheParameters: 状态码缓存 TTL 配置参数，当 Name 取值为 StatusCodeCache 时，该参数必填。
+        :param _StatusCodeCacheParameters: <p>状态码缓存 TTL 配置参数，当 Name 取值为 StatusCodeCache 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusCodeCacheParameters: :class:`tencentcloud.teo.v20220901.models.StatusCodeCacheParameters`
-        :param _OfflineCacheParameters: 离线缓存配置参数，当 Name 取值为 OfflineCache 时，该参数必填。
+        :param _OfflineCacheParameters: <p>离线缓存配置参数，当 Name 取值为 OfflineCache 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineCacheParameters: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
-        :param _SmartRoutingParameters: 智能加速配置参数，当 Name 取值为 SmartRouting 时，该参数必填。
+        :param _SmartRoutingParameters: <p>智能加速配置参数，当 Name 取值为 SmartRouting 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartRoutingParameters: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
-        :param _RangeOriginPullParameters: 分片回源配置参数，当 Name 取值为 RangeOriginPull 时，该参数必填。
+        :param _AdvancedOriginRoutingParameters: <p>高级回源优化配置参数，当 Name 取值为 AdvancedOriginRouting 时，该参数必填。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedOriginRoutingParameters: :class:`tencentcloud.teo.v20220901.models.AdvancedOriginRoutingParameters`
+        :param _RangeOriginPullParameters: <p>分片回源配置参数，当 Name 取值为 RangeOriginPull 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RangeOriginPullParameters: :class:`tencentcloud.teo.v20220901.models.RangeOriginPullParameters`
-        :param _UpstreamHTTP2Parameters: HTTP2 回源配置参数，当 Name 取值为 UpstreamHTTP2 时，该参数必填。
+        :param _UpstreamHTTP2Parameters: <p>HTTP2 回源配置参数，当 Name 取值为 UpstreamHTTP2 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamHTTP2Parameters: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
-        :param _HostHeaderParameters: Host Header 重写配置参数，当 Name 取值为 HostHeader 时，该参数必填。
+        :param _HostHeaderParameters: <p>Host Header 重写配置参数，当 Name 取值为 HostHeader 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostHeaderParameters: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
-        :param _ForceRedirectHTTPSParameters: 访问协议强制 HTTPS 跳转配置，当 Name 取值为 ForceRedirectHTTPS 时，该参数必填。
+        :param _ForceRedirectHTTPSParameters: <p>访问协议强制 HTTPS 跳转配置，当 Name 取值为 ForceRedirectHTTPS 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForceRedirectHTTPSParameters: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
-        :param _OriginPullProtocolParameters: 回源 HTTPS 配置参数，当 Name 取值为 OriginPullProtocol 时，该参数必填。
+        :param _OriginPullProtocolParameters: <p>回源 HTTPS 配置参数，当 Name 取值为 OriginPullProtocol 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullProtocolParameters: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
-        :param _CompressionParameters: 智能压缩配置，当 Name 取值为 Compression 时，该参数必填。
+        :param _CompressionParameters: <p>智能压缩配置，当 Name 取值为 Compression 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompressionParameters: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
-        :param _HSTSParameters: HSTS 配置参数，当 Name 取值为 HSTS 时，该参数必填。
+        :param _HSTSParameters: <p>HSTS 配置参数，当 Name 取值为 HSTS 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HSTSParameters: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
-        :param _ClientIPHeaderParameters: 存储客户端请求 IP 的头部信息配置，当 Name 取值为 ClientIPHeader 时，该参数必填。
+        :param _ClientIPHeaderParameters: <p>存储客户端请求 IP 的头部信息配置，当 Name 取值为 ClientIPHeader 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIPHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
-        :param _OCSPStaplingParameters: OCSP 装订配置参数，当 Name 取值为 OCSPStapling 时，该参数必填。
+        :param _OCSPStaplingParameters: <p>OCSP 装订配置参数，当 Name 取值为 OCSPStapling 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OCSPStaplingParameters: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
-        :param _HTTP2Parameters: HTTP2 接入配置参数，当 Name 取值为 HTTP2 时，该参数必填。
+        :param _HTTP2Parameters: <p>HTTP2 接入配置参数，当 Name 取值为 HTTP2 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HTTP2Parameters: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
-        :param _PostMaxSizeParameters: POST 请求上传文件流式传输最大限制配置，当 Name 取值为 PostMaxSize 时，该参数必填。
+        :param _PostMaxSizeParameters: <p>POST 请求上传文件流式传输最大限制配置，当 Name 取值为 PostMaxSize 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostMaxSizeParameters: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
-        :param _ClientIPCountryParameters: 回源时携带客户端 IP 所属地域信息配置参数，当 Name 取值为 ClientIPCountry 时，该参数必填。
+        :param _ClientIPCountryParameters: <p>回源时携带客户端 IP 所属地域信息配置参数，当 Name 取值为 ClientIPCountry 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIPCountryParameters: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
-        :param _UpstreamFollowRedirectParameters: 回源跟随重定向参数配置，当 Name 取值为 UpstreamFollowRedirect 时，该参数必填。
+        :param _UpstreamFollowRedirectParameters: <p>回源跟随重定向参数配置，当 Name 取值为 UpstreamFollowRedirect 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamFollowRedirectParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamFollowRedirectParameters`
-        :param _UpstreamRequestParameters: 回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。
+        :param _UpstreamRequestParameters: <p>回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamRequestParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
-        :param _ShieldParameters: 源站卸载配置参数，当 Name 取值为 Shield 时，该参数必填。
+        :param _ShieldParameters: <p>源站卸载配置参数，当 Name 取值为 Shield 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShieldParameters: :class:`tencentcloud.teo.v20220901.models.ShieldParameters`
-        :param _TLSConfigParameters: SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。
+        :param _TLSConfigParameters: <p>SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TLSConfigParameters: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
-        :param _ModifyOriginParameters: 修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。
+        :param _ModifyOriginParameters: <p>修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyOriginParameters: :class:`tencentcloud.teo.v20220901.models.ModifyOriginParameters`
-        :param _SiteFailoverParameters: 源站故障转移配置参数，当 Name 取值为 SiteFailover 时，该参数必填。
+        :param _SiteFailoverParameters: <p>源站故障转移配置参数，当 Name 取值为 SiteFailover 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SiteFailoverParameters: :class:`tencentcloud.teo.v20220901.models.SiteFailoverParameters`
-        :param _HTTPUpstreamTimeoutParameters: 七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。
+        :param _HTTPUpstreamTimeoutParameters: <p>七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HTTPUpstreamTimeoutParameters: :class:`tencentcloud.teo.v20220901.models.HTTPUpstreamTimeoutParameters`
-        :param _HttpResponseParameters: HTTP 应答配置参数，当 Name 取值为 HttpResponse 时，该参数必填。
+        :param _HttpResponseParameters: <p>HTTP 应答配置参数，当 Name 取值为 HttpResponse 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpResponseParameters: :class:`tencentcloud.teo.v20220901.models.HTTPResponseParameters`
-        :param _ErrorPageParameters: 自定义错误页面配置参数，当 Name 取值为 ErrorPage 时，该参数必填。
+        :param _ErrorPageParameters: <p>自定义错误页面配置参数，当 Name 取值为 ErrorPage 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPageParameters: :class:`tencentcloud.teo.v20220901.models.ErrorPageParameters`
-        :param _ModifyResponseHeaderParameters: 修改 HTTP 节点响应头配置参数，当 Name 取值为 ModifyResponseHeader 时，该参数必填。
+        :param _ModifyResponseHeaderParameters: <p>修改 HTTP 节点响应头配置参数，当 Name 取值为 ModifyResponseHeader 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyResponseHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ModifyResponseHeaderParameters`
-        :param _ModifyRequestHeaderParameters: 修改 HTTP 节点请求头配置参数，当 Name 取值为 ModifyRequestHeader 时，该参数必填。
+        :param _ModifyRequestHeaderParameters: <p>修改 HTTP 节点请求头配置参数，当 Name 取值为 ModifyRequestHeader 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyRequestHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ModifyRequestHeaderParameters`
-        :param _ResponseSpeedLimitParameters: 单连接下载限速配置参数，当 Name 取值为 ResponseSpeedLimit 时，该参数必填。
+        :param _ResponseSpeedLimitParameters: <p>单连接下载限速配置参数，当 Name 取值为 ResponseSpeedLimit 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseSpeedLimitParameters: :class:`tencentcloud.teo.v20220901.models.ResponseSpeedLimitParameters`
-        :param _SetContentIdentifierParameters: 内容标识配置参数，当 Name 取值为 SetContentIdentifier 时，该参数必填。
-
+        :param _SetContentIdentifierParameters: <p>内容标识配置参数，当 Name 取值为 SetContentIdentifier 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SetContentIdentifierParameters: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
-        :param _VaryParameters: Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
+        :param _VaryParameters: <p>Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。</p>
         :type VaryParameters: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
-        :param _ContentCompressionParameters: 内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        :param _ContentCompressionParameters: <p>内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。</p>
         :type ContentCompressionParameters: :class:`tencentcloud.teo.v20220901.models.ContentCompressionParameters`
-        :param _OriginAuthenticationParameters: 回源鉴权配置参数，当 Name 取值为 OriginAuthentication 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        :param _OriginAuthenticationParameters: <p>回源鉴权配置参数，当 Name 取值为 OriginAuthentication 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。</p>
         :type OriginAuthenticationParameters: :class:`tencentcloud.teo.v20220901.models.OriginAuthenticationParameters`
         """
         self._Name = None
@@ -54282,6 +54280,7 @@ class RuleEngineAction(AbstractModel):
         self._StatusCodeCacheParameters = None
         self._OfflineCacheParameters = None
         self._SmartRoutingParameters = None
+        self._AdvancedOriginRoutingParameters = None
         self._RangeOriginPullParameters = None
         self._UpstreamHTTP2Parameters = None
         self._HostHeaderParameters = None
@@ -54313,47 +54312,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def Name(self):
-        r"""操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。
-<li>Cache：节点缓存 TTL；</li>
-<li>CacheKey：自定义 Cache Key；</li>
-<li>CachePrefresh：缓存预刷新；</li>
-<li>AccessURLRedirect：访问 URL 重定向；</li>
-<li>UpstreamURLRewrite：回源 URL 重写；</li>
-<li>QUIC：QUIC；</li>
-<li>WebSocket：WebSocket；</li>
-<li>Authentication：Token 鉴权；</li>
-<li>MaxAge：浏览器缓存 TTL；</li>
-<li>StatusCodeCache：状态码缓存 TTL；</li>
-<li>OfflineCache：离线缓存；</li>
-<li>SmartRouting：智能加速；</li>
-<li>RangeOriginPull：分片回源 ；</li>
-<li>UpstreamHTTP2：HTTP2 回源；</li>
-<li>HostHeader：Host Header 重写；</li>
-<li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li>
-<li>OriginPullProtocol：回源 HTTPS；</li>
-<li>Compression：智能压缩配置；</li>
-<li>HSTS：HSTS；</li>
-<li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li>
-<li>OCSPStapling：OCSP 装订；</li>
-<li>HTTP2：HTTP2 接入；</li>
-<li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li>
-<li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li>
-<li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li>
-<li>UpstreamRequest：回源请求参数；</li>
-<li>Shield：源站卸载配置；</li>
-<li>TLSConfig：SSL/TLS 安全；</li>
-<li>ModifyOrigin：修改源站；</li>
-<li> SiteFailover：源站故障转移；</li>
-<li>HTTPUpstreamTimeout：七层回源超时配置；</li>
-<li>HttpResponse：HTTP 应答；</li>
-<li>ErrorPage：自定义错误页面；</li>
-<li>ModifyResponseHeader：修改 HTTP 节点响应头；</li>
-<li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
-<li>ResponseSpeedLimit：单连接下载限速；</li>
-<li>SetContentIdentifier：设置内容标识符；</li>
-<li>Vary：Vary 特性配置；</li>
-<li>ContentCompression：内容压缩配置；</li>
-<li>OriginAuthentication：回源鉴权配置。</li>
+        r"""<p>操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。</p><li>Cache：节点缓存 TTL；</li><li>CacheKey：自定义 Cache Key；</li><li>CachePrefresh：缓存预刷新；</li><li>AccessURLRedirect：访问 URL 重定向；</li><li>UpstreamURLRewrite：回源 URL 重写；</li><li>QUIC：QUIC；</li><li>WebSocket：WebSocket；</li><li>Authentication：Token 鉴权；</li><li>MaxAge：浏览器缓存 TTL；</li><li>StatusCodeCache：状态码缓存 TTL；</li><li>OfflineCache：离线缓存；</li><li>SmartRouting：智能加速；</li><li>AdvancedOriginRouting：高级回源优化；</li><li>RangeOriginPull：分片回源 ；</li><li>UpstreamHTTP2：HTTP2 回源；</li><li>HostHeader：Host Header 重写；</li><li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li><li>OriginPullProtocol：回源 HTTPS；</li><li>Compression：智能压缩配置；</li><li>HSTS：HSTS；</li><li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li><li>OCSPStapling：OCSP 装订；</li><li>HTTP2：HTTP2 接入；</li><li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li><li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li><li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li><li>UpstreamRequest：回源请求参数；</li><li>Shield：源站卸载配置；</li><li>TLSConfig：SSL/TLS 安全；</li><li>ModifyOrigin：修改源站；</li><li> SiteFailover：源站故障转移；</li><li>HTTPUpstreamTimeout：七层回源超时配置；</li><li>HttpResponse：HTTP 应答；</li><li>ErrorPage：自定义错误页面；</li><li>ModifyResponseHeader：修改 HTTP 节点响应头；</li><li>ModifyRequestHeader：修改 HTTP 节点请求头；</li><li>ResponseSpeedLimit：单连接下载限速；</li><li>SetContentIdentifier：设置内容标识符；</li><li>Vary：Vary 特性配置；</li><li>ContentCompression：内容压缩配置；</li><li>OriginAuthentication：回源鉴权配置。</li>
         :rtype: str
         """
         return self._Name
@@ -54364,7 +54323,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def CacheParameters(self):
-        r"""节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。
+        r"""<p>节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.CacheParameters`
         """
@@ -54376,7 +54335,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def CacheKeyParameters(self):
-        r"""自定义 Cache Key 配置参数，当 Name 取值为 CacheKey 时，该参数必填。
+        r"""<p>自定义 Cache Key 配置参数，当 Name 取值为 CacheKey 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyParameters`
         """
@@ -54388,7 +54347,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def CachePrefreshParameters(self):
-        r"""缓存预刷新配置参数，当 Name 取值为 CachePrefresh 时，该参数必填。
+        r"""<p>缓存预刷新配置参数，当 Name 取值为 CachePrefresh 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
         """
@@ -54400,7 +54359,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def AccessURLRedirectParameters(self):
-        r"""访问 URL 重定向配置参数，当 Name 取值为 AccessURLRedirect 时，该参数必填。
+        r"""<p>访问 URL 重定向配置参数，当 Name 取值为 AccessURLRedirect 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectParameters`
         """
@@ -54412,7 +54371,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def UpstreamURLRewriteParameters(self):
-        r"""回源 URL 重写配置参数，当 Name 取值为 UpstreamURLRewrite 时，该参数必填。
+        r"""<p>回源 URL 重写配置参数，当 Name 取值为 UpstreamURLRewrite 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
         """
@@ -54424,7 +54383,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def QUICParameters(self):
-        r"""QUIC 配置参数，当 Name 取值为 QUIC 时，该参数必填。
+        r"""<p>QUIC 配置参数，当 Name 取值为 QUIC 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
         """
@@ -54436,7 +54395,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def WebSocketParameters(self):
-        r"""WebSocket 配置参数，当 Name 取值为 WebSocket 时，该参数必填。
+        r"""<p>WebSocket 配置参数，当 Name 取值为 WebSocket 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
         """
@@ -54448,7 +54407,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def AuthenticationParameters(self):
-        r"""Token 鉴权配置参数，当 Name 取值为 Authentication 时，该参数必填。
+        r"""<p>Token 鉴权配置参数，当 Name 取值为 Authentication 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.AuthenticationParameters`
         """
@@ -54460,7 +54419,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def MaxAgeParameters(self):
-        r"""浏览器缓存 TTL 配置参数，当 Name 取值为 MaxAge 时，该参数必填。
+        r"""<p>浏览器缓存 TTL 配置参数，当 Name 取值为 MaxAge 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
         """
@@ -54472,7 +54431,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def StatusCodeCacheParameters(self):
-        r"""状态码缓存 TTL 配置参数，当 Name 取值为 StatusCodeCache 时，该参数必填。
+        r"""<p>状态码缓存 TTL 配置参数，当 Name 取值为 StatusCodeCache 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.StatusCodeCacheParameters`
         """
@@ -54484,7 +54443,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def OfflineCacheParameters(self):
-        r"""离线缓存配置参数，当 Name 取值为 OfflineCache 时，该参数必填。
+        r"""<p>离线缓存配置参数，当 Name 取值为 OfflineCache 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
         """
@@ -54496,7 +54455,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def SmartRoutingParameters(self):
-        r"""智能加速配置参数，当 Name 取值为 SmartRouting 时，该参数必填。
+        r"""<p>智能加速配置参数，当 Name 取值为 SmartRouting 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
         """
@@ -54507,8 +54466,20 @@ class RuleEngineAction(AbstractModel):
         self._SmartRoutingParameters = SmartRoutingParameters
 
     @property
+    def AdvancedOriginRoutingParameters(self):
+        r"""<p>高级回源优化配置参数，当 Name 取值为 AdvancedOriginRouting 时，该参数必填。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AdvancedOriginRoutingParameters`
+        """
+        return self._AdvancedOriginRoutingParameters
+
+    @AdvancedOriginRoutingParameters.setter
+    def AdvancedOriginRoutingParameters(self, AdvancedOriginRoutingParameters):
+        self._AdvancedOriginRoutingParameters = AdvancedOriginRoutingParameters
+
+    @property
     def RangeOriginPullParameters(self):
-        r"""分片回源配置参数，当 Name 取值为 RangeOriginPull 时，该参数必填。
+        r"""<p>分片回源配置参数，当 Name 取值为 RangeOriginPull 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.RangeOriginPullParameters`
         """
@@ -54520,7 +54491,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def UpstreamHTTP2Parameters(self):
-        r"""HTTP2 回源配置参数，当 Name 取值为 UpstreamHTTP2 时，该参数必填。
+        r"""<p>HTTP2 回源配置参数，当 Name 取值为 UpstreamHTTP2 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
         """
@@ -54532,7 +54503,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def HostHeaderParameters(self):
-        r"""Host Header 重写配置参数，当 Name 取值为 HostHeader 时，该参数必填。
+        r"""<p>Host Header 重写配置参数，当 Name 取值为 HostHeader 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
         """
@@ -54544,7 +54515,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ForceRedirectHTTPSParameters(self):
-        r"""访问协议强制 HTTPS 跳转配置，当 Name 取值为 ForceRedirectHTTPS 时，该参数必填。
+        r"""<p>访问协议强制 HTTPS 跳转配置，当 Name 取值为 ForceRedirectHTTPS 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
         """
@@ -54556,7 +54527,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def OriginPullProtocolParameters(self):
-        r"""回源 HTTPS 配置参数，当 Name 取值为 OriginPullProtocol 时，该参数必填。
+        r"""<p>回源 HTTPS 配置参数，当 Name 取值为 OriginPullProtocol 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPullProtocolParameters`
         """
@@ -54568,7 +54539,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def CompressionParameters(self):
-        r"""智能压缩配置，当 Name 取值为 Compression 时，该参数必填。
+        r"""<p>智能压缩配置，当 Name 取值为 Compression 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
         """
@@ -54580,7 +54551,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def HSTSParameters(self):
-        r"""HSTS 配置参数，当 Name 取值为 HSTS 时，该参数必填。
+        r"""<p>HSTS 配置参数，当 Name 取值为 HSTS 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
         """
@@ -54592,7 +54563,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ClientIPHeaderParameters(self):
-        r"""存储客户端请求 IP 的头部信息配置，当 Name 取值为 ClientIPHeader 时，该参数必填。
+        r"""<p>存储客户端请求 IP 的头部信息配置，当 Name 取值为 ClientIPHeader 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
         """
@@ -54604,7 +54575,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def OCSPStaplingParameters(self):
-        r"""OCSP 装订配置参数，当 Name 取值为 OCSPStapling 时，该参数必填。
+        r"""<p>OCSP 装订配置参数，当 Name 取值为 OCSPStapling 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
         """
@@ -54616,7 +54587,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def HTTP2Parameters(self):
-        r"""HTTP2 接入配置参数，当 Name 取值为 HTTP2 时，该参数必填。
+        r"""<p>HTTP2 接入配置参数，当 Name 取值为 HTTP2 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
         """
@@ -54628,7 +54599,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def PostMaxSizeParameters(self):
-        r"""POST 请求上传文件流式传输最大限制配置，当 Name 取值为 PostMaxSize 时，该参数必填。
+        r"""<p>POST 请求上传文件流式传输最大限制配置，当 Name 取值为 PostMaxSize 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
         """
@@ -54640,7 +54611,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ClientIPCountryParameters(self):
-        r"""回源时携带客户端 IP 所属地域信息配置参数，当 Name 取值为 ClientIPCountry 时，该参数必填。
+        r"""<p>回源时携带客户端 IP 所属地域信息配置参数，当 Name 取值为 ClientIPCountry 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
         """
@@ -54652,7 +54623,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def UpstreamFollowRedirectParameters(self):
-        r"""回源跟随重定向参数配置，当 Name 取值为 UpstreamFollowRedirect 时，该参数必填。
+        r"""<p>回源跟随重定向参数配置，当 Name 取值为 UpstreamFollowRedirect 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamFollowRedirectParameters`
         """
@@ -54664,7 +54635,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def UpstreamRequestParameters(self):
-        r"""回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。
+        r"""<p>回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
         """
@@ -54676,7 +54647,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ShieldParameters(self):
-        r"""源站卸载配置参数，当 Name 取值为 Shield 时，该参数必填。
+        r"""<p>源站卸载配置参数，当 Name 取值为 Shield 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ShieldParameters`
         """
@@ -54688,7 +54659,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def TLSConfigParameters(self):
-        r"""SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。
+        r"""<p>SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
         """
@@ -54700,7 +54671,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ModifyOriginParameters(self):
-        r"""修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。
+        r"""<p>修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyOriginParameters`
         """
@@ -54712,7 +54683,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def SiteFailoverParameters(self):
-        r"""源站故障转移配置参数，当 Name 取值为 SiteFailover 时，该参数必填。
+        r"""<p>源站故障转移配置参数，当 Name 取值为 SiteFailover 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.SiteFailoverParameters`
         """
@@ -54724,7 +54695,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def HTTPUpstreamTimeoutParameters(self):
-        r"""七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。
+        r"""<p>七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.HTTPUpstreamTimeoutParameters`
         """
@@ -54736,7 +54707,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def HttpResponseParameters(self):
-        r"""HTTP 应答配置参数，当 Name 取值为 HttpResponse 时，该参数必填。
+        r"""<p>HTTP 应答配置参数，当 Name 取值为 HttpResponse 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.HTTPResponseParameters`
         """
@@ -54748,7 +54719,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ErrorPageParameters(self):
-        r"""自定义错误页面配置参数，当 Name 取值为 ErrorPage 时，该参数必填。
+        r"""<p>自定义错误页面配置参数，当 Name 取值为 ErrorPage 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ErrorPageParameters`
         """
@@ -54760,7 +54731,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ModifyResponseHeaderParameters(self):
-        r"""修改 HTTP 节点响应头配置参数，当 Name 取值为 ModifyResponseHeader 时，该参数必填。
+        r"""<p>修改 HTTP 节点响应头配置参数，当 Name 取值为 ModifyResponseHeader 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyResponseHeaderParameters`
         """
@@ -54772,7 +54743,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ModifyRequestHeaderParameters(self):
-        r"""修改 HTTP 节点请求头配置参数，当 Name 取值为 ModifyRequestHeader 时，该参数必填。
+        r"""<p>修改 HTTP 节点请求头配置参数，当 Name 取值为 ModifyRequestHeader 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyRequestHeaderParameters`
         """
@@ -54784,7 +54755,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ResponseSpeedLimitParameters(self):
-        r"""单连接下载限速配置参数，当 Name 取值为 ResponseSpeedLimit 时，该参数必填。
+        r"""<p>单连接下载限速配置参数，当 Name 取值为 ResponseSpeedLimit 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.ResponseSpeedLimitParameters`
         """
@@ -54796,8 +54767,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def SetContentIdentifierParameters(self):
-        r"""内容标识配置参数，当 Name 取值为 SetContentIdentifier 时，该参数必填。
-
+        r"""<p>内容标识配置参数，当 Name 取值为 SetContentIdentifier 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
         """
@@ -54809,7 +54779,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def VaryParameters(self):
-        r"""Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
+        r"""<p>Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.VaryParameters`
         """
         return self._VaryParameters
@@ -54820,7 +54790,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def ContentCompressionParameters(self):
-        r"""内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        r"""<p>内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ContentCompressionParameters`
         """
         return self._ContentCompressionParameters
@@ -54831,7 +54801,7 @@ class RuleEngineAction(AbstractModel):
 
     @property
     def OriginAuthenticationParameters(self):
-        r"""回源鉴权配置参数，当 Name 取值为 OriginAuthentication 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+        r"""<p>回源鉴权配置参数，当 Name 取值为 OriginAuthentication 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.OriginAuthenticationParameters`
         """
         return self._OriginAuthenticationParameters
@@ -54879,6 +54849,9 @@ class RuleEngineAction(AbstractModel):
         if params.get("SmartRoutingParameters") is not None:
             self._SmartRoutingParameters = SmartRoutingParameters()
             self._SmartRoutingParameters._deserialize(params.get("SmartRoutingParameters"))
+        if params.get("AdvancedOriginRoutingParameters") is not None:
+            self._AdvancedOriginRoutingParameters = AdvancedOriginRoutingParameters()
+            self._AdvancedOriginRoutingParameters._deserialize(params.get("AdvancedOriginRoutingParameters"))
         if params.get("RangeOriginPullParameters") is not None:
             self._RangeOriginPullParameters = RangeOriginPullParameters()
             self._RangeOriginPullParameters._deserialize(params.get("RangeOriginPullParameters"))

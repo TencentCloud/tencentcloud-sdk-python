@@ -25,18 +25,20 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: <p>实例Id</p>
         :type InstanceId: str
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: <p>Vhost参数</p>
         :type VirtualHost: str
-        :param _Source: 源exchange
+        :param _Source: <p>源exchange</p>
         :type Source: str
-        :param _DestinationType: 目标类型,取值queue或exchange
+        :param _DestinationType: <p>目标类型,取值queue或exchange</p>
         :type DestinationType: str
-        :param _Destination: 目标队列或者交换机
+        :param _Destination: <p>目标队列或者交换机</p>
         :type Destination: str
-        :param _RoutingKey: 绑定key
+        :param _RoutingKey: <p>绑定key</p>
         :type RoutingKey: str
+        :param _Arguments: <p>创建 Header 类型 Exchange 的 Binding 时，可以传入参数。其它类型 Exchange 无需传入</p>
+        :type Arguments: list of RabbitMQServerlessKeyValuePair
         """
         self._InstanceId = None
         self._VirtualHost = None
@@ -44,10 +46,11 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
         self._DestinationType = None
         self._Destination = None
         self._RoutingKey = None
+        self._Arguments = None
 
     @property
     def InstanceId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -58,7 +61,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        r"""Vhost参数
+        r"""<p>Vhost参数</p>
         :rtype: str
         """
         return self._VirtualHost
@@ -69,7 +72,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""源exchange
+        r"""<p>源exchange</p>
         :rtype: str
         """
         return self._Source
@@ -80,7 +83,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def DestinationType(self):
-        r"""目标类型,取值queue或exchange
+        r"""<p>目标类型,取值queue或exchange</p>
         :rtype: str
         """
         return self._DestinationType
@@ -91,7 +94,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def Destination(self):
-        r"""目标队列或者交换机
+        r"""<p>目标队列或者交换机</p>
         :rtype: str
         """
         return self._Destination
@@ -102,7 +105,7 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
 
     @property
     def RoutingKey(self):
-        r"""绑定key
+        r"""<p>绑定key</p>
         :rtype: str
         """
         return self._RoutingKey
@@ -110,6 +113,17 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
     @RoutingKey.setter
     def RoutingKey(self, RoutingKey):
         self._RoutingKey = RoutingKey
+
+    @property
+    def Arguments(self):
+        r"""<p>创建 Header 类型 Exchange 的 Binding 时，可以传入参数。其它类型 Exchange 无需传入</p>
+        :rtype: list of RabbitMQServerlessKeyValuePair
+        """
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
 
 
     def _deserialize(self, params):
@@ -119,6 +133,12 @@ class CreateRabbitMQServerlessBindingRequest(AbstractModel):
         self._DestinationType = params.get("DestinationType")
         self._Destination = params.get("Destination")
         self._RoutingKey = params.get("RoutingKey")
+        if params.get("Arguments") is not None:
+            self._Arguments = []
+            for item in params.get("Arguments"):
+                obj = RabbitMQServerlessKeyValuePair()
+                obj._deserialize(item)
+                self._Arguments.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -136,11 +156,11 @@ class CreateRabbitMQServerlessBindingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 队列名称
+        :param _InstanceId: <p>队列名称</p>
         :type InstanceId: str
-        :param _VirtualHost: vhost参数
+        :param _VirtualHost: <p>vhost参数</p>
         :type VirtualHost: str
-        :param _BindingId: 路由关系Id
+        :param _BindingId: <p>路由关系Id</p>
         :type BindingId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -152,7 +172,7 @@ class CreateRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""队列名称
+        r"""<p>队列名称</p>
         :rtype: str
         """
         return self._InstanceId
@@ -163,7 +183,7 @@ class CreateRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def VirtualHost(self):
-        r"""vhost参数
+        r"""<p>vhost参数</p>
         :rtype: str
         """
         return self._VirtualHost
@@ -174,7 +194,7 @@ class CreateRabbitMQServerlessBindingResponse(AbstractModel):
 
     @property
     def BindingId(self):
-        r"""路由关系Id
+        r"""<p>路由关系Id</p>
         :rtype: int
         """
         return self._BindingId
@@ -3748,26 +3768,21 @@ class DescribeRabbitMQServerlessQueuesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: <p>实例Id</p>
         :type InstanceId: str
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: <p>Vhost参数</p>
         :type VirtualHost: str
-        :param _Offset: 分页Offset
+        :param _Offset: <p>分页Offset</p>
         :type Offset: int
-        :param _Limit: 分页Limit
+        :param _Limit: <p>分页Limit</p>
         :type Limit: int
-        :param _SearchWord: 搜索关键词
+        :param _SearchWord: <p>搜索关键词</p>
         :type SearchWord: str
-        :param _QueueType: 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+        :param _QueueType: <p>队列类型筛选，不填或 &quot;all&quot;：classic 和 quorum 队列；&quot;classic&quot;：筛选 classic 队列；&quot;quorum&quot;：筛选 quorum 队列</p>
         :type QueueType: str
-        :param _SortElement: 排序依据的字段：
-ConsumerNumber - 在线消费者数量；
-MessageHeapCount - 消息堆积数；
-MessageRateInOut - 生产消费速率之和；
-MessageRateIn - 生产速率；
-MessageRateOut - 消费速率；
+        :param _SortElement: <p>排序依据的字段：<br>messages_ready - 消息堆积数；<br>publish - 生产速率；<br>deliver - 消费速率；<br>consumers - 在线消费者数量；</p>
         :type SortElement: str
-        :param _SortOrder: 排序顺序，ascend 或 descend
+        :param _SortOrder: <p>排序顺序，asc 或 desc</p>
         :type SortOrder: str
         """
         self._InstanceId = None
@@ -3781,7 +3796,7 @@ MessageRateOut - 消费速率；
 
     @property
     def InstanceId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3792,7 +3807,7 @@ MessageRateOut - 消费速率；
 
     @property
     def VirtualHost(self):
-        r"""Vhost参数
+        r"""<p>Vhost参数</p>
         :rtype: str
         """
         return self._VirtualHost
@@ -3803,7 +3818,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Offset(self):
-        r"""分页Offset
+        r"""<p>分页Offset</p>
         :rtype: int
         """
         return self._Offset
@@ -3814,7 +3829,7 @@ MessageRateOut - 消费速率；
 
     @property
     def Limit(self):
-        r"""分页Limit
+        r"""<p>分页Limit</p>
         :rtype: int
         """
         return self._Limit
@@ -3825,7 +3840,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SearchWord(self):
-        r"""搜索关键词
+        r"""<p>搜索关键词</p>
         :rtype: str
         """
         return self._SearchWord
@@ -3836,7 +3851,7 @@ MessageRateOut - 消费速率；
 
     @property
     def QueueType(self):
-        r"""队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+        r"""<p>队列类型筛选，不填或 &quot;all&quot;：classic 和 quorum 队列；&quot;classic&quot;：筛选 classic 队列；&quot;quorum&quot;：筛选 quorum 队列</p>
         :rtype: str
         """
         return self._QueueType
@@ -3847,12 +3862,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SortElement(self):
-        r"""排序依据的字段：
-ConsumerNumber - 在线消费者数量；
-MessageHeapCount - 消息堆积数；
-MessageRateInOut - 生产消费速率之和；
-MessageRateIn - 生产速率；
-MessageRateOut - 消费速率；
+        r"""<p>排序依据的字段：<br>messages_ready - 消息堆积数；<br>publish - 生产速率；<br>deliver - 消费速率；<br>consumers - 在线消费者数量；</p>
         :rtype: str
         """
         return self._SortElement
@@ -3863,7 +3873,7 @@ MessageRateOut - 消费速率；
 
     @property
     def SortOrder(self):
-        r"""排序顺序，ascend 或 descend
+        r"""<p>排序顺序，asc 或 desc</p>
         :rtype: str
         """
         return self._SortOrder
@@ -3899,9 +3909,9 @@ class DescribeRabbitMQServerlessQueuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QueueInfoList: 队列列表信息
+        :param _QueueInfoList: <p>队列列表信息</p>
         :type QueueInfoList: list of RabbitMQQueueListInfo
-        :param _TotalCount: 数量
+        :param _TotalCount: <p>数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3912,7 +3922,7 @@ class DescribeRabbitMQServerlessQueuesResponse(AbstractModel):
 
     @property
     def QueueInfoList(self):
-        r"""队列列表信息
+        r"""<p>队列列表信息</p>
         :rtype: list of RabbitMQQueueListInfo
         """
         return self._QueueInfoList
@@ -3923,7 +3933,7 @@ class DescribeRabbitMQServerlessQueuesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""数量
+        r"""<p>数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -5506,24 +5516,26 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BindingId: 路由关系id
+        :param _BindingId: <p>路由关系id</p>
         :type BindingId: int
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: <p>Vhost参数</p>
         :type VirtualHost: str
-        :param _Source: 源exchange名称
+        :param _Source: <p>源exchange名称</p>
         :type Source: str
-        :param _DestinationType: 目标类型,queue或exchange
+        :param _DestinationType: <p>目标类型,queue或exchange</p>
         :type DestinationType: str
-        :param _Destination: 目标资源名称
+        :param _Destination: <p>目标资源名称</p>
         :type Destination: str
-        :param _RoutingKey: 绑定key
+        :param _RoutingKey: <p>绑定key</p>
         :type RoutingKey: str
-        :param _SourceExchangeType: 源exchange类型
+        :param _SourceExchangeType: <p>源exchange类型</p>
         :type SourceExchangeType: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _ModifyTime: 修改时间
+        :param _ModifyTime: <p>修改时间</p>
         :type ModifyTime: str
+        :param _Arguments: <p>绑定参数，header类型的Exchange绑定时，可以传入参数。其它类型 Exchange 无需传入</p>
+        :type Arguments: list of RabbitMQServerlessKeyValuePair
         """
         self._BindingId = None
         self._VirtualHost = None
@@ -5534,10 +5546,11 @@ class RabbitMQBindingListInfo(AbstractModel):
         self._SourceExchangeType = None
         self._CreateTime = None
         self._ModifyTime = None
+        self._Arguments = None
 
     @property
     def BindingId(self):
-        r"""路由关系id
+        r"""<p>路由关系id</p>
         :rtype: int
         """
         return self._BindingId
@@ -5548,7 +5561,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def VirtualHost(self):
-        r"""Vhost参数
+        r"""<p>Vhost参数</p>
         :rtype: str
         """
         return self._VirtualHost
@@ -5559,7 +5572,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""源exchange名称
+        r"""<p>源exchange名称</p>
         :rtype: str
         """
         return self._Source
@@ -5570,7 +5583,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def DestinationType(self):
-        r"""目标类型,queue或exchange
+        r"""<p>目标类型,queue或exchange</p>
         :rtype: str
         """
         return self._DestinationType
@@ -5581,7 +5594,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def Destination(self):
-        r"""目标资源名称
+        r"""<p>目标资源名称</p>
         :rtype: str
         """
         return self._Destination
@@ -5592,7 +5605,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def RoutingKey(self):
-        r"""绑定key
+        r"""<p>绑定key</p>
         :rtype: str
         """
         return self._RoutingKey
@@ -5603,7 +5616,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def SourceExchangeType(self):
-        r"""源exchange类型
+        r"""<p>源exchange类型</p>
         :rtype: str
         """
         return self._SourceExchangeType
@@ -5614,7 +5627,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5625,7 +5638,7 @@ class RabbitMQBindingListInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -5633,6 +5646,17 @@ class RabbitMQBindingListInfo(AbstractModel):
     @ModifyTime.setter
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
+
+    @property
+    def Arguments(self):
+        r"""<p>绑定参数，header类型的Exchange绑定时，可以传入参数。其它类型 Exchange 无需传入</p>
+        :rtype: list of RabbitMQServerlessKeyValuePair
+        """
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
 
 
     def _deserialize(self, params):
@@ -5645,6 +5669,12 @@ class RabbitMQBindingListInfo(AbstractModel):
         self._SourceExchangeType = params.get("SourceExchangeType")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
+        if params.get("Arguments") is not None:
+            self._Arguments = []
+            for item in params.get("Arguments"):
+                obj = RabbitMQServerlessKeyValuePair()
+                obj._deserialize(item)
+                self._Arguments.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7955,6 +7985,57 @@ class RabbitMQServerlessInstance(AbstractModel):
                 obj = RabbitMQServerlessTag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQServerlessKeyValuePair(AbstractModel):
+    r"""键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键
+        :type Key: str
+        :param _Value: 值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

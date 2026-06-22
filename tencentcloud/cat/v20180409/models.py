@@ -1379,23 +1379,17 @@ class DescribeProbeMetricDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AnalyzeTaskType: 分析任务类型，支持以下几种类型：
-AnalyzeTaskType_Network：网络质量
-AnalyzeTaskType_Browse：页面性能
-AnalyzeTaskType_Transport：端口性能
-AnalyzeTaskType_UploadDownload：文件传输
-AnalyzeTaskType_MediaStream：音视频体验
+        :param _AnalyzeTaskType: <p>分析任务类型，支持以下几种类型：<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_UploadDownload：文件传输<br>AnalyzeTaskType_MediaStream：音视频体验</p>
         :type AnalyzeTaskType: str
-        :param _MetricType: 指标类型（counter、gauge以及histogram），指标查询默认传gauge
+        :param _MetricType: <p>指标类型（counter、gauge以及histogram），指标查询默认传gauge</p>
         :type MetricType: str
-        :param _Field: 指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可见https://cloud.tencent.com/document/product/248/87584。
+        :param _Field: <p>指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如：&quot;avg(ping_time)&quot;代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可见https://cloud.tencent.com/document/product/248/87584。</p>
         :type Field: str
-        :param _Filter: 过滤条件可以传单个过滤条件也可以拼接多个参数
+        :param _Filter: <p>过滤条件可以传单个过滤条件也可以拼接多个参数</p>
         :type Filter: str
-        :param _GroupBy: 聚合时间, 1m、1d、30d 等等
+        :param _GroupBy: <p>聚合时间, 1m、1d、30d 等等</p>
         :type GroupBy: str
-        :param _Filters: 多条件过滤，支持多个过滤条件组合查询
-例如：[""host" = 'www.test.com'", "time >= now()-1h"]
+        :param _Filters: <p>多条件过滤，支持多个过滤条件组合查询<br>例如：[&quot;&quot;host&quot; = &#39;www.test.com&#39;&quot;, &quot;time &gt;= now()-1h&quot;]</p>
         :type Filters: list of str
         """
         self._AnalyzeTaskType = None
@@ -1407,12 +1401,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def AnalyzeTaskType(self):
-        r"""分析任务类型，支持以下几种类型：
-AnalyzeTaskType_Network：网络质量
-AnalyzeTaskType_Browse：页面性能
-AnalyzeTaskType_Transport：端口性能
-AnalyzeTaskType_UploadDownload：文件传输
-AnalyzeTaskType_MediaStream：音视频体验
+        r"""<p>分析任务类型，支持以下几种类型：<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_UploadDownload：文件传输<br>AnalyzeTaskType_MediaStream：音视频体验</p>
         :rtype: str
         """
         return self._AnalyzeTaskType
@@ -1423,7 +1412,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def MetricType(self):
-        r"""指标类型（counter、gauge以及histogram），指标查询默认传gauge
+        r"""<p>指标类型（counter、gauge以及histogram），指标查询默认传gauge</p>
         :rtype: str
         """
         return self._MetricType
@@ -1434,7 +1423,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Field(self):
-        r"""指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可见https://cloud.tencent.com/document/product/248/87584。
+        r"""<p>指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如：&quot;avg(ping_time)&quot;代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可见https://cloud.tencent.com/document/product/248/87584。</p>
         :rtype: str
         """
         return self._Field
@@ -1445,7 +1434,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Filter(self):
-        r"""过滤条件可以传单个过滤条件也可以拼接多个参数
+        r"""<p>过滤条件可以传单个过滤条件也可以拼接多个参数</p>
         :rtype: str
         """
         return self._Filter
@@ -1456,7 +1445,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def GroupBy(self):
-        r"""聚合时间, 1m、1d、30d 等等
+        r"""<p>聚合时间, 1m、1d、30d 等等</p>
         :rtype: str
         """
         return self._GroupBy
@@ -1467,8 +1456,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Filters(self):
-        r"""多条件过滤，支持多个过滤条件组合查询
-例如：[""host" = 'www.test.com'", "time >= now()-1h"]
+        r"""<p>多条件过滤，支持多个过滤条件组合查询<br>例如：[&quot;&quot;host&quot; = &#39;www.test.com&#39;&quot;, &quot;time &gt;= now()-1h&quot;]</p>
         :rtype: list of str
         """
         return self._Filters
@@ -1502,7 +1490,7 @@ class DescribeProbeMetricDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MetricSet:  返回指标 JSON 序列化后的字符串，具体如下所示："[{\"name\":\"task_navigate_request_gauge\",\"columns\":[\"time\",\"avg(first_screen_time) / 1000\"],\"values\":[[1641571200,6.756600000000001]],\"tags\":null}]"
+        :param _MetricSet: <p>返回指标 JSON 序列化后的字符串，具体如下所示：&quot;[{"name":"task_navigate_request_gauge","columns":["time","avg(first_screen_time) / 1000"],"values":[[1641571200,6.756600000000001]],"tags":null}]&quot;</p>
         :type MetricSet: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1512,7 +1500,7 @@ class DescribeProbeMetricDataResponse(AbstractModel):
 
     @property
     def MetricSet(self):
-        r""" 返回指标 JSON 序列化后的字符串，具体如下所示："[{\"name\":\"task_navigate_request_gauge\",\"columns\":[\"time\",\"avg(first_screen_time) / 1000\"],\"values\":[[1641571200,6.756600000000001]],\"tags\":null}]"
+        r"""<p>返回指标 JSON 序列化后的字符串，具体如下所示：&quot;[{"name":"task_navigate_request_gauge","columns":["time","avg(first_screen_time) / 1000"],"values":[[1641571200,6.756600000000001]],"tags":null}]&quot;</p>
         :rtype: str
         """
         return self._MetricSet

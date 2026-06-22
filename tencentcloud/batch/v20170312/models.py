@@ -9057,46 +9057,33 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br>
-<li>LOCAL_BASIC：本地硬盘</li>
-<li>LOCAL_SSD：本地SSD硬盘</li>
-<li>CLOUD_BASIC：普通云硬盘</li>
-<li>CLOUD_SSD：SSD云硬盘</li>
-<li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_BSSD：通用型SSD云硬盘</li>
-<li>CLOUD_HSSD：增强型SSD云硬盘</li>
-<li>CLOUD_TSSD：极速型SSD云硬盘</li><br>
-默认取值：当前有库存的硬盘类型。
+        :param _DiskType: <p>系统盘类型。系统盘类型限制详见<a href="https://cloud.tencent.com/document/product/213/4952">存储概述</a>。取值范围：<br></p><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_BSSD：通用型SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li><br>默认取值：当前有库存的硬盘类型。
         :type DiskType: str
-        :param _DiskId: 系统盘ID。
-该参数目前仅用于 [DescribeInstances](https://cloud.tencent.com/document/product/213/15728) 等查询类接口的返回参数，不可用于 [RunInstances](https://cloud.tencent.com/document/product/213/15730) 等写接口的入参。
+        :param _DiskId: <p>系统盘ID。<br>该参数目前仅用于 <a href="https://cloud.tencent.com/document/product/213/15728">DescribeInstances</a> 等查询类接口的返回参数，不可用于 <a href="https://cloud.tencent.com/document/product/213/15730">RunInstances</a> 等写接口的入参。</p>
         :type DiskId: str
-        :param _DiskSize: 系统盘大小，单位：GiB。默认值为 50
+        :param _DiskSize: <p>系统盘大小，单位：GiB。默认值为 50</p>
         :type DiskSize: int
-        :param _CdcId: 所属的独享集群ID。
+        :param _CdcId: <p>所属的独享集群ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
-        :param _DiskName: 磁盘名称，长度不超过128 个字符。
+        :param _DiskName: <p>磁盘名称，长度不超过128 个字符。</p>
         :type DiskName: str
+        :param _Encrypt: <p>系统盘是否加密。取值范围：true：加密false：不加密默认取值：false该参数目前仅用于 RunInstances 接口。当前参数灰度中。</p>
+        :type Encrypt: bool
+        :param _KmsKeyId: <p>自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。该参数目前仅用于 RunInstances 接口。当前参数灰度中。</p>
+        :type KmsKeyId: str
         """
         self._DiskType = None
         self._DiskId = None
         self._DiskSize = None
         self._CdcId = None
         self._DiskName = None
+        self._Encrypt = None
+        self._KmsKeyId = None
 
     @property
     def DiskType(self):
-        r"""系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br>
-<li>LOCAL_BASIC：本地硬盘</li>
-<li>LOCAL_SSD：本地SSD硬盘</li>
-<li>CLOUD_BASIC：普通云硬盘</li>
-<li>CLOUD_SSD：SSD云硬盘</li>
-<li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_BSSD：通用型SSD云硬盘</li>
-<li>CLOUD_HSSD：增强型SSD云硬盘</li>
-<li>CLOUD_TSSD：极速型SSD云硬盘</li><br>
-默认取值：当前有库存的硬盘类型。
+        r"""<p>系统盘类型。系统盘类型限制详见<a href="https://cloud.tencent.com/document/product/213/4952">存储概述</a>。取值范围：<br></p><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_BSSD：通用型SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li><br>默认取值：当前有库存的硬盘类型。
         :rtype: str
         """
         return self._DiskType
@@ -9107,8 +9094,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskId(self):
-        r"""系统盘ID。
-该参数目前仅用于 [DescribeInstances](https://cloud.tencent.com/document/product/213/15728) 等查询类接口的返回参数，不可用于 [RunInstances](https://cloud.tencent.com/document/product/213/15730) 等写接口的入参。
+        r"""<p>系统盘ID。<br>该参数目前仅用于 <a href="https://cloud.tencent.com/document/product/213/15728">DescribeInstances</a> 等查询类接口的返回参数，不可用于 <a href="https://cloud.tencent.com/document/product/213/15730">RunInstances</a> 等写接口的入参。</p>
         :rtype: str
         """
         return self._DiskId
@@ -9119,7 +9105,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""系统盘大小，单位：GiB。默认值为 50
+        r"""<p>系统盘大小，单位：GiB。默认值为 50</p>
         :rtype: int
         """
         return self._DiskSize
@@ -9130,7 +9116,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""所属的独享集群ID。
+        r"""<p>所属的独享集群ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9142,7 +9128,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskName(self):
-        r"""磁盘名称，长度不超过128 个字符。
+        r"""<p>磁盘名称，长度不超过128 个字符。</p>
         :rtype: str
         """
         return self._DiskName
@@ -9151,6 +9137,28 @@ class SystemDisk(AbstractModel):
     def DiskName(self, DiskName):
         self._DiskName = DiskName
 
+    @property
+    def Encrypt(self):
+        r"""<p>系统盘是否加密。取值范围：true：加密false：不加密默认取值：false该参数目前仅用于 RunInstances 接口。当前参数灰度中。</p>
+        :rtype: bool
+        """
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。该参数目前仅用于 RunInstances 接口。当前参数灰度中。</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
@@ -9158,6 +9166,8 @@ class SystemDisk(AbstractModel):
         self._DiskSize = params.get("DiskSize")
         self._CdcId = params.get("CdcId")
         self._DiskName = params.get("DiskName")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

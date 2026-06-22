@@ -74,6 +74,9 @@ FAILEDOPERATION_PGCONNECTERROR = 'FailedOperation.PGConnectError'
 # Execute SQL error.
 FAILEDOPERATION_PGEXECUTESQLERROR = 'FailedOperation.PGExecuteSqlError'
 
+# 套餐包不支持
+FAILEDOPERATION_PACKAGEUNSUPPORTED = 'FailedOperation.PackageUnsupported'
+
 # 查询异常
 FAILEDOPERATION_QUERYERROR = 'FailedOperation.QueryError'
 

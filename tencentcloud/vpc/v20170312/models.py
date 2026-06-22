@@ -7000,28 +7000,32 @@ class CcnPolicyBasedRoutingNextHop(AbstractModel):
 
 
 class CcnPolicyBasedRoutingRule(AbstractModel):
-    r"""查询云联网策略路由匹配规则
+    r"""云联网策略路由匹配规则
 
     """
 
     def __init__(self):
         r"""
-        :param _PolicyBasedRoutingNextHopId: 策略路由下一跳ID
+        :param _PolicyBasedRoutingNextHopId: <p>策略路由下一跳ID</p>
         :type PolicyBasedRoutingNextHopId: str
-        :param _InstanceType: 实例类型[VPC,DIRECTCONNECT,VPNGW]
+        :param _InstanceType: <p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
         :type InstanceType: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _SourceCidrBlock: 源地址CIDR
+        :param _SourceCidrBlock: <p>源地址CIDR</p>
         :type SourceCidrBlock: str
-        :param _DestinationCidrBlock: 目的地址CIDR
+        :param _DestinationCidrBlock: <p>目的地址CIDR</p>
         :type DestinationCidrBlock: str
-        :param _Priority: 优先级
+        :param _Priority: <p>优先级</p>
         :type Priority: int
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _PolicyBasedRoutingRuleId: 策略路由匹配策略ID
+        :param _PolicyBasedRoutingRuleId: <p>策略路由匹配策略ID</p>
         :type PolicyBasedRoutingRuleId: str
+        :param _DestinationInstanceType: <p>目的端实例ID</p><p>枚举值：</p><ul><li>VPC： 私有网络</li></ul>
+        :type DestinationInstanceType: str
+        :param _DestinationInstanceId: <p>目的端实例ID</p>
+        :type DestinationInstanceId: str
         """
         self._PolicyBasedRoutingNextHopId = None
         self._InstanceType = None
@@ -7031,10 +7035,12 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
         self._Priority = None
         self._Description = None
         self._PolicyBasedRoutingRuleId = None
+        self._DestinationInstanceType = None
+        self._DestinationInstanceId = None
 
     @property
     def PolicyBasedRoutingNextHopId(self):
-        r"""策略路由下一跳ID
+        r"""<p>策略路由下一跳ID</p>
         :rtype: str
         """
         return self._PolicyBasedRoutingNextHopId
@@ -7045,7 +7051,7 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型[VPC,DIRECTCONNECT,VPNGW]
+        r"""<p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
         :rtype: str
         """
         return self._InstanceType
@@ -7056,7 +7062,7 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7067,7 +7073,7 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
 
     @property
     def SourceCidrBlock(self):
-        r"""源地址CIDR
+        r"""<p>源地址CIDR</p>
         :rtype: str
         """
         return self._SourceCidrBlock
@@ -7078,7 +7084,7 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
 
     @property
     def DestinationCidrBlock(self):
-        r"""目的地址CIDR
+        r"""<p>目的地址CIDR</p>
         :rtype: str
         """
         return self._DestinationCidrBlock
@@ -7089,7 +7095,7 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""优先级
+        r"""<p>优先级</p>
         :rtype: int
         """
         return self._Priority
@@ -7100,7 +7106,7 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -7111,7 +7117,7 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
 
     @property
     def PolicyBasedRoutingRuleId(self):
-        r"""策略路由匹配策略ID
+        r"""<p>策略路由匹配策略ID</p>
         :rtype: str
         """
         return self._PolicyBasedRoutingRuleId
@@ -7119,6 +7125,28 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
     @PolicyBasedRoutingRuleId.setter
     def PolicyBasedRoutingRuleId(self, PolicyBasedRoutingRuleId):
         self._PolicyBasedRoutingRuleId = PolicyBasedRoutingRuleId
+
+    @property
+    def DestinationInstanceType(self):
+        r"""<p>目的端实例ID</p><p>枚举值：</p><ul><li>VPC： 私有网络</li></ul>
+        :rtype: str
+        """
+        return self._DestinationInstanceType
+
+    @DestinationInstanceType.setter
+    def DestinationInstanceType(self, DestinationInstanceType):
+        self._DestinationInstanceType = DestinationInstanceType
+
+    @property
+    def DestinationInstanceId(self):
+        r"""<p>目的端实例ID</p>
+        :rtype: str
+        """
+        return self._DestinationInstanceId
+
+    @DestinationInstanceId.setter
+    def DestinationInstanceId(self, DestinationInstanceId):
+        self._DestinationInstanceId = DestinationInstanceId
 
 
     def _deserialize(self, params):
@@ -7130,6 +7158,8 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
         self._Priority = params.get("Priority")
         self._Description = params.get("Description")
         self._PolicyBasedRoutingRuleId = params.get("PolicyBasedRoutingRuleId")
+        self._DestinationInstanceType = params.get("DestinationInstanceType")
+        self._DestinationInstanceId = params.get("DestinationInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

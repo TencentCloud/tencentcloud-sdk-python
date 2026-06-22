@@ -8018,10 +8018,24 @@ class DescribeBillingResourceGroupAttachedWorkspacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ResourceGroupId: <p>资源组ID</p>
+        :type ResourceGroupId: str
         :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
         :type TiProjectId: str
         """
+        self._ResourceGroupId = None
         self._TiProjectId = None
+
+    @property
+    def ResourceGroupId(self):
+        r"""<p>资源组ID</p>
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
 
     @property
     def TiProjectId(self):
@@ -8036,6 +8050,7 @@ class DescribeBillingResourceGroupAttachedWorkspacesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
         self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -15596,6 +15611,27 @@ class Instance(AbstractModel):
         :param _ErrMsg: <p>部署失败错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
+        :param _AvailableResource: <p>节点可用资源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableResource: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        :param _InstanceIP: <p>资源组节点的IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIP: str
+        :param _InstanceName: <p>资源组节点的名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _CvmInstanceType: <p>cvm机型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvmInstanceType: str
+        :param _AutoRenew: <p>是否自动续买</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenew: bool
+        :param _Isolated: <p>是否被隔离</p>
+        :type Isolated: bool
+        :param _RepairTaskInfo: <p>维修任务信息</p>
+        :type RepairTaskInfo: :class:`tencentcloud.tione.v20211111.models.RepairTaskInfo`
+        :param _ZoneName: <p>节点可用区名称</p>
+        :type ZoneName: str
         """
         self._InstanceId = None
         self._UsedResource = None
@@ -15611,6 +15647,14 @@ class Instance(AbstractModel):
         self._CvmInstanceId = None
         self._ErrCode = None
         self._ErrMsg = None
+        self._AvailableResource = None
+        self._InstanceIP = None
+        self._InstanceName = None
+        self._CvmInstanceType = None
+        self._AutoRenew = None
+        self._Isolated = None
+        self._RepairTaskInfo = None
+        self._ZoneName = None
 
     @property
     def InstanceId(self):
@@ -15775,6 +15819,99 @@ class Instance(AbstractModel):
     def ErrMsg(self, ErrMsg):
         self._ErrMsg = ErrMsg
 
+    @property
+    def AvailableResource(self):
+        r"""<p>节点可用资源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        """
+        return self._AvailableResource
+
+    @AvailableResource.setter
+    def AvailableResource(self, AvailableResource):
+        self._AvailableResource = AvailableResource
+
+    @property
+    def InstanceIP(self):
+        r"""<p>资源组节点的IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceIP
+
+    @InstanceIP.setter
+    def InstanceIP(self, InstanceIP):
+        self._InstanceIP = InstanceIP
+
+    @property
+    def InstanceName(self):
+        r"""<p>资源组节点的名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def CvmInstanceType(self):
+        r"""<p>cvm机型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CvmInstanceType
+
+    @CvmInstanceType.setter
+    def CvmInstanceType(self, CvmInstanceType):
+        self._CvmInstanceType = CvmInstanceType
+
+    @property
+    def AutoRenew(self):
+        r"""<p>是否自动续买</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def Isolated(self):
+        r"""<p>是否被隔离</p>
+        :rtype: bool
+        """
+        return self._Isolated
+
+    @Isolated.setter
+    def Isolated(self, Isolated):
+        self._Isolated = Isolated
+
+    @property
+    def RepairTaskInfo(self):
+        r"""<p>维修任务信息</p>
+        :rtype: :class:`tencentcloud.tione.v20211111.models.RepairTaskInfo`
+        """
+        return self._RepairTaskInfo
+
+    @RepairTaskInfo.setter
+    def RepairTaskInfo(self, RepairTaskInfo):
+        self._RepairTaskInfo = RepairTaskInfo
+
+    @property
+    def ZoneName(self):
+        r"""<p>节点可用区名称</p>
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -15795,6 +15932,18 @@ class Instance(AbstractModel):
         self._CvmInstanceId = params.get("CvmInstanceId")
         self._ErrCode = params.get("ErrCode")
         self._ErrMsg = params.get("ErrMsg")
+        if params.get("AvailableResource") is not None:
+            self._AvailableResource = ResourceInfo()
+            self._AvailableResource._deserialize(params.get("AvailableResource"))
+        self._InstanceIP = params.get("InstanceIP")
+        self._InstanceName = params.get("InstanceName")
+        self._CvmInstanceType = params.get("CvmInstanceType")
+        self._AutoRenew = params.get("AutoRenew")
+        self._Isolated = params.get("Isolated")
+        if params.get("RepairTaskInfo") is not None:
+            self._RepairTaskInfo = RepairTaskInfo()
+            self._RepairTaskInfo._deserialize(params.get("RepairTaskInfo"))
+        self._ZoneName = params.get("ZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19395,14 +19544,14 @@ class MountConfigureInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkDir: 数据源的相对路径，支持<@subaccount>这样的占位符
+        :param _WorkDir: <p>数据源的相对路径，支持&lt;@subaccount&gt;这样的占位符</p>
         :type WorkDir: str
         """
         self._WorkDir = None
 
     @property
     def WorkDir(self):
-        r"""数据源的相对路径，支持<@subaccount>这样的占位符
+        r"""<p>数据源的相对路径，支持&lt;@subaccount&gt;这样的占位符</p>
         :rtype: str
         """
         return self._WorkDir
@@ -23066,6 +23215,117 @@ class RDMAConfig(AbstractModel):
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RepairTaskInfo(AbstractModel):
+    r"""cvm维修任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>维修任务ID</p>
+        :type TaskId: str
+        :param _TaskTypeId: <p>任务类型ID<br>// - <code>101</code>：实例运行隐患<br>    // - <code>102</code>：实例运行异常<br>    // - <code>103</code>：实例硬盘异常<br>    // - <code>104</code>：实例网络连接异常<br>    // - <code>105</code>：实例运行预警<br>    // - <code>106</code>：实例硬盘预警<br>    // - <code>107</code>：实例维护升级</p>
+        :type TaskTypeId: int
+        :param _TaskTypeName: <p>任务类型中文名</p>
+        :type TaskTypeName: str
+        :param _CreateTime: <p>任务创建时间</p>
+        :type CreateTime: str
+        :param _TaskDetail: <p>任务详情</p>
+        :type TaskDetail: str
+        :param _Product: <p>产品类型，支持取值：<br>    //<br>    // - <code>CVM</code>：云服务器<br>    // - <code>CDH</code>：专用宿主机<br>    // - <code>CPM2.0</code>：裸金属云服务器</p>
+        :type Product: str
+        """
+        self._TaskId = None
+        self._TaskTypeId = None
+        self._TaskTypeName = None
+        self._CreateTime = None
+        self._TaskDetail = None
+        self._Product = None
+
+    @property
+    def TaskId(self):
+        r"""<p>维修任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskTypeId(self):
+        r"""<p>任务类型ID<br>// - <code>101</code>：实例运行隐患<br>    // - <code>102</code>：实例运行异常<br>    // - <code>103</code>：实例硬盘异常<br>    // - <code>104</code>：实例网络连接异常<br>    // - <code>105</code>：实例运行预警<br>    // - <code>106</code>：实例硬盘预警<br>    // - <code>107</code>：实例维护升级</p>
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def TaskTypeName(self):
+        r"""<p>任务类型中文名</p>
+        :rtype: str
+        """
+        return self._TaskTypeName
+
+    @TaskTypeName.setter
+    def TaskTypeName(self, TaskTypeName):
+        self._TaskTypeName = TaskTypeName
+
+    @property
+    def CreateTime(self):
+        r"""<p>任务创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def TaskDetail(self):
+        r"""<p>任务详情</p>
+        :rtype: str
+        """
+        return self._TaskDetail
+
+    @TaskDetail.setter
+    def TaskDetail(self, TaskDetail):
+        self._TaskDetail = TaskDetail
+
+    @property
+    def Product(self):
+        r"""<p>产品类型，支持取值：<br>    //<br>    // - <code>CVM</code>：云服务器<br>    // - <code>CDH</code>：专用宿主机<br>    // - <code>CPM2.0</code>：裸金属云服务器</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._TaskTypeName = params.get("TaskTypeName")
+        self._CreateTime = params.get("CreateTime")
+        self._TaskDetail = params.get("TaskDetail")
+        self._Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

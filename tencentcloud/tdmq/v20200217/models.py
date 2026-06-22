@@ -17491,26 +17491,28 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _EnvironmentId: 命名空间，4.x 通用集群命名空间固定为: tdmq_default
+        :param _EnvironmentId: <p>命名空间，4.x 通用集群命名空间固定为: tdmq_default</p>
         :type EnvironmentId: str
-        :param _TopicName: 主题，查询死信时传groupId
+        :param _TopicName: <p>主题，查询死信时传groupId</p>
         :type TopicName: str
-        :param _MsgId: 消息id
+        :param _MsgId: <p>消息id</p>
         :type MsgId: str
-        :param _PulsarMsgId: pulsar消息id
+        :param _PulsarMsgId: <p>pulsar消息id</p>
         :type PulsarMsgId: str
-        :param _QueryDlqMsg: 查询死信时该值为true，只对Rocketmq有效
+        :param _QueryDlqMsg: <p>查询死信时该值为true，只对Rocketmq有效</p>
         :type QueryDlqMsg: bool
-        :param _QueryDeadLetterMessage: 查询死信时该值为true，只对Rocketmq有效
+        :param _QueryDeadLetterMessage: <p>查询死信时该值为true，只对Rocketmq有效</p>
         :type QueryDeadLetterMessage: bool
-        :param _Offset: 分页Offset
+        :param _Offset: <p>分页Offset</p>
         :type Offset: int
-        :param _Limit: 分页Limit
+        :param _Limit: <p>分页Limit</p>
         :type Limit: int
-        :param _FilterTrackGroup: 根据消费组名称过滤消费详情
+        :param _FilterTrackGroup: <p>根据消费组名称过滤消费详情</p>
         :type FilterTrackGroup: str
+        :param _QueryDelayMessage: <p>查询延迟消息或定时消息时，该值为true</p>
+        :type QueryDelayMessage: bool
         """
         self._ClusterId = None
         self._EnvironmentId = None
@@ -17522,10 +17524,11 @@ class DescribeRocketMQMsgRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._FilterTrackGroup = None
+        self._QueryDelayMessage = None
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -17536,7 +17539,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def EnvironmentId(self):
-        r"""命名空间，4.x 通用集群命名空间固定为: tdmq_default
+        r"""<p>命名空间，4.x 通用集群命名空间固定为: tdmq_default</p>
         :rtype: str
         """
         return self._EnvironmentId
@@ -17547,7 +17550,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""主题，查询死信时传groupId
+        r"""<p>主题，查询死信时传groupId</p>
         :rtype: str
         """
         return self._TopicName
@@ -17558,7 +17561,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def MsgId(self):
-        r"""消息id
+        r"""<p>消息id</p>
         :rtype: str
         """
         return self._MsgId
@@ -17569,7 +17572,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def PulsarMsgId(self):
-        r"""pulsar消息id
+        r"""<p>pulsar消息id</p>
         :rtype: str
         """
         return self._PulsarMsgId
@@ -17582,7 +17585,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
     def QueryDlqMsg(self):
         warnings.warn("parameter `QueryDlqMsg` is deprecated", DeprecationWarning) 
 
-        r"""查询死信时该值为true，只对Rocketmq有效
+        r"""<p>查询死信时该值为true，只对Rocketmq有效</p>
         :rtype: bool
         """
         return self._QueryDlqMsg
@@ -17595,7 +17598,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def QueryDeadLetterMessage(self):
-        r"""查询死信时该值为true，只对Rocketmq有效
+        r"""<p>查询死信时该值为true，只对Rocketmq有效</p>
         :rtype: bool
         """
         return self._QueryDeadLetterMessage
@@ -17606,7 +17609,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页Offset
+        r"""<p>分页Offset</p>
         :rtype: int
         """
         return self._Offset
@@ -17617,7 +17620,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页Limit
+        r"""<p>分页Limit</p>
         :rtype: int
         """
         return self._Limit
@@ -17628,7 +17631,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def FilterTrackGroup(self):
-        r"""根据消费组名称过滤消费详情
+        r"""<p>根据消费组名称过滤消费详情</p>
         :rtype: str
         """
         return self._FilterTrackGroup
@@ -17636,6 +17639,17 @@ class DescribeRocketMQMsgRequest(AbstractModel):
     @FilterTrackGroup.setter
     def FilterTrackGroup(self, FilterTrackGroup):
         self._FilterTrackGroup = FilterTrackGroup
+
+    @property
+    def QueryDelayMessage(self):
+        r"""<p>查询延迟消息或定时消息时，该值为true</p>
+        :rtype: bool
+        """
+        return self._QueryDelayMessage
+
+    @QueryDelayMessage.setter
+    def QueryDelayMessage(self, QueryDelayMessage):
+        self._QueryDelayMessage = QueryDelayMessage
 
 
     def _deserialize(self, params):
@@ -17649,6 +17663,7 @@ class DescribeRocketMQMsgRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._FilterTrackGroup = params.get("FilterTrackGroup")
+        self._QueryDelayMessage = params.get("QueryDelayMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17666,23 +17681,23 @@ class DescribeRocketMQMsgResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Body: 消息体
+        :param _Body: <p>消息体</p>
         :type Body: str
-        :param _Properties: 详情参数
+        :param _Properties: <p>详情参数</p>
         :type Properties: str
-        :param _ProduceTime: 生产时间
+        :param _ProduceTime: <p>生产时间</p>
         :type ProduceTime: str
-        :param _MsgId: 消息id
+        :param _MsgId: <p>消息id</p>
         :type MsgId: str
-        :param _ProducerAddr: 生产者地址
+        :param _ProducerAddr: <p>生产者地址</p>
         :type ProducerAddr: str
-        :param _MessageTracks: 消费组消费情况列表
+        :param _MessageTracks: <p>消费组消费情况列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageTracks: list of RocketMQMessageTrack
-        :param _ShowTopicName: 详情页展示的topic名称
+        :param _ShowTopicName: <p>详情页展示的topic名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShowTopicName: str
-        :param _MessageTracksCount: 消费组消费情况列表总数
+        :param _MessageTracksCount: <p>消费组消费情况列表总数</p>
         :type MessageTracksCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17699,7 +17714,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
 
     @property
     def Body(self):
-        r"""消息体
+        r"""<p>消息体</p>
         :rtype: str
         """
         return self._Body
@@ -17710,7 +17725,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
 
     @property
     def Properties(self):
-        r"""详情参数
+        r"""<p>详情参数</p>
         :rtype: str
         """
         return self._Properties
@@ -17721,7 +17736,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
 
     @property
     def ProduceTime(self):
-        r"""生产时间
+        r"""<p>生产时间</p>
         :rtype: str
         """
         return self._ProduceTime
@@ -17732,7 +17747,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
 
     @property
     def MsgId(self):
-        r"""消息id
+        r"""<p>消息id</p>
         :rtype: str
         """
         return self._MsgId
@@ -17743,7 +17758,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
 
     @property
     def ProducerAddr(self):
-        r"""生产者地址
+        r"""<p>生产者地址</p>
         :rtype: str
         """
         return self._ProducerAddr
@@ -17754,7 +17769,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
 
     @property
     def MessageTracks(self):
-        r"""消费组消费情况列表
+        r"""<p>消费组消费情况列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RocketMQMessageTrack
         """
@@ -17766,7 +17781,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
 
     @property
     def ShowTopicName(self):
-        r"""详情页展示的topic名称
+        r"""<p>详情页展示的topic名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17778,7 +17793,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
 
     @property
     def MessageTracksCount(self):
-        r"""消费组消费情况列表总数
+        r"""<p>消费组消费情况列表总数</p>
         :rtype: int
         """
         return self._MessageTracksCount
@@ -25928,18 +25943,20 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 专享实例ID
+        :param _InstanceId: <p>专享实例ID</p>
         :type InstanceId: str
-        :param _Name: 实例名称
+        :param _Name: <p>实例名称</p>
         :type Name: str
-        :param _Remark: 实例备注信息
+        :param _Remark: <p>实例备注信息</p>
         :type Remark: str
-        :param _MessageRetention: 实例消息保留时间，小时为单位
+        :param _MessageRetention: <p>实例消息保留时间，小时为单位</p>
         :type MessageRetention: int
-        :param _EnableDeletionProtection: 是否开启删除保护
+        :param _EnableDeletionProtection: <p>是否开启删除保护</p>
         :type EnableDeletionProtection: bool
-        :param _SendReceiveRatio: 控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5
+        :param _SendReceiveRatio: <p>控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5</p>
         :type SendReceiveRatio: float
+        :param _AclEnabled: <p>是否开启ACL</p>
+        :type AclEnabled: bool
         """
         self._InstanceId = None
         self._Name = None
@@ -25947,10 +25964,11 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
         self._MessageRetention = None
         self._EnableDeletionProtection = None
         self._SendReceiveRatio = None
+        self._AclEnabled = None
 
     @property
     def InstanceId(self):
-        r"""专享实例ID
+        r"""<p>专享实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -25961,7 +25979,7 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._Name
@@ -25972,7 +25990,7 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""实例备注信息
+        r"""<p>实例备注信息</p>
         :rtype: str
         """
         return self._Remark
@@ -25983,7 +26001,7 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
 
     @property
     def MessageRetention(self):
-        r"""实例消息保留时间，小时为单位
+        r"""<p>实例消息保留时间，小时为单位</p>
         :rtype: int
         """
         return self._MessageRetention
@@ -25994,7 +26012,7 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
 
     @property
     def EnableDeletionProtection(self):
-        r"""是否开启删除保护
+        r"""<p>是否开启删除保护</p>
         :rtype: bool
         """
         return self._EnableDeletionProtection
@@ -26005,7 +26023,7 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
 
     @property
     def SendReceiveRatio(self):
-        r"""控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5
+        r"""<p>控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5</p>
         :rtype: float
         """
         return self._SendReceiveRatio
@@ -26013,6 +26031,17 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
     @SendReceiveRatio.setter
     def SendReceiveRatio(self, SendReceiveRatio):
         self._SendReceiveRatio = SendReceiveRatio
+
+    @property
+    def AclEnabled(self):
+        r"""<p>是否开启ACL</p>
+        :rtype: bool
+        """
+        return self._AclEnabled
+
+    @AclEnabled.setter
+    def AclEnabled(self, AclEnabled):
+        self._AclEnabled = AclEnabled
 
 
     def _deserialize(self, params):
@@ -26022,6 +26051,7 @@ class ModifyRocketMQInstanceRequest(AbstractModel):
         self._MessageRetention = params.get("MessageRetention")
         self._EnableDeletionProtection = params.get("EnableDeletionProtection")
         self._SendReceiveRatio = params.get("SendReceiveRatio")
+        self._AclEnabled = params.get("AclEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33688,89 +33718,92 @@ class RocketMQClusterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _Region: 地域信息
+        :param _Region: <p>地域信息</p>
         :type Region: str
-        :param _CreateTime: 创建时间，毫秒为单位
+        :param _CreateTime: <p>创建时间，毫秒为单位</p>
         :type CreateTime: int
-        :param _Remark: 集群说明信息
+        :param _Remark: <p>集群说明信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _PublicEndPoint: 公网接入地址
+        :param _PublicEndPoint: <p>公网接入地址</p>
         :type PublicEndPoint: str
-        :param _VpcEndPoint: VPC接入地址
+        :param _VpcEndPoint: <p>VPC接入地址</p>
         :type VpcEndPoint: str
-        :param _SupportNamespaceEndpoint: 是否支持命名空间接入点
+        :param _SupportNamespaceEndpoint: <p>是否支持命名空间接入点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportNamespaceEndpoint: bool
-        :param _Vpcs: VPC信息
+        :param _Vpcs: <p>VPC信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vpcs: list of VpcConfig
-        :param _IsVip: 是否为专享实例
+        :param _IsVip: <p>是否为专享实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsVip: bool
-        :param _RocketMQFlag: Rocketmq集群标识
+        :param _RocketMQFlag: <p>Rocketmq集群标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RocketMQFlag: bool
-        :param _Status: 计费状态，1表示正常，2表示已停服，3表示已销毁
+        :param _Status: <p>计费状态，1表示正常，2表示已停服，3表示已销毁</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _IsolateTime: 欠费停服时间，毫秒为单位
+        :param _IsolateTime: <p>欠费停服时间，毫秒为单位</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: int
-        :param _HttpPublicEndpoint: HTTP协议公网接入地址
+        :param _HttpPublicEndpoint: <p>HTTP协议公网接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpPublicEndpoint: str
-        :param _HttpVpcEndpoint: HTTP协议VPC接入地址
+        :param _HttpVpcEndpoint: <p>HTTP协议VPC接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpVpcEndpoint: str
-        :param _InternalEndpoint: TCP内部接入地址
+        :param _InternalEndpoint: <p>TCP内部接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternalEndpoint: str
-        :param _HttpInternalEndpoint: HTTP协议内部接入地址
+        :param _HttpInternalEndpoint: <p>HTTP协议内部接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpInternalEndpoint: str
-        :param _AclEnabled: 是否开启ACL鉴权，专享实例支持关闭
+        :param _AclEnabled: <p>是否开启ACL鉴权，专享实例支持关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AclEnabled: bool
-        :param _PublicClbId: 公网CLB实例ID
+        :param _PublicClbId: <p>公网CLB实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicClbId: str
-        :param _Vip: vip
+        :param _Vip: <p>vip</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
-        :param _VpcId: 所属VPC
+        :param _VpcId: <p>所属VPC</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param _SupportMigration: 是否支持迁移
+        :param _SupportMigration: <p>是否支持迁移</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportMigration: bool
-        :param _InstanceStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
+        :param _InstanceStatus: <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatus: int
-        :param _ZoneId: 集群所属可用区，表明集群归属的可用区
+        :param _ZoneId: <p>集群所属可用区，表明集群归属的可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
-        :param _ZoneIds: 集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
+        :param _ZoneIds: <p>集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIds: list of int
-        :param _IsFrozen: 是否已冻结
+        :param _IsFrozen: <p>是否已冻结</p>
         :type IsFrozen: bool
-        :param _AutoCreateTopicEnabled: 是否开启自动创建主题
+        :param _AutoCreateTopicEnabled: <p>是否开启自动创建主题</p>
         :type AutoCreateTopicEnabled: bool
-        :param _AdminFeatureEnabled: 是否开启集群Admin能力
+        :param _AdminFeatureEnabled: <p>是否开启集群Admin能力</p>
         :type AdminFeatureEnabled: bool
-        :param _AdminAccessKey: Admin AK
+        :param _AdminAccessKey: <p>Admin AK</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdminAccessKey: str
-        :param _AdminSecretKey: Admin SK
+        :param _AdminSecretKey: <p>Admin SK</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdminSecretKey: str
-        :param _EnableDeletionProtection: 是否开启删除保护
+        :param _EnableDeletionProtection: <p>是否开启删除保护</p>
         :type EnableDeletionProtection: bool
+        :param _AutoCreateConsumeGroupEnabled: <p>是否开启自动创建消费组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoCreateConsumeGroupEnabled: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -33803,10 +33836,11 @@ class RocketMQClusterInfo(AbstractModel):
         self._AdminAccessKey = None
         self._AdminSecretKey = None
         self._EnableDeletionProtection = None
+        self._AutoCreateConsumeGroupEnabled = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -33817,7 +33851,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -33828,7 +33862,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域信息
+        r"""<p>地域信息</p>
         :rtype: str
         """
         return self._Region
@@ -33839,7 +33873,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，毫秒为单位
+        r"""<p>创建时间，毫秒为单位</p>
         :rtype: int
         """
         return self._CreateTime
@@ -33850,7 +33884,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def Remark(self):
-        r"""集群说明信息
+        r"""<p>集群说明信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33862,7 +33896,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def PublicEndPoint(self):
-        r"""公网接入地址
+        r"""<p>公网接入地址</p>
         :rtype: str
         """
         return self._PublicEndPoint
@@ -33873,7 +33907,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def VpcEndPoint(self):
-        r"""VPC接入地址
+        r"""<p>VPC接入地址</p>
         :rtype: str
         """
         return self._VpcEndPoint
@@ -33884,7 +33918,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def SupportNamespaceEndpoint(self):
-        r"""是否支持命名空间接入点
+        r"""<p>是否支持命名空间接入点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -33896,7 +33930,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def Vpcs(self):
-        r"""VPC信息
+        r"""<p>VPC信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VpcConfig
         """
@@ -33908,7 +33942,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def IsVip(self):
-        r"""是否为专享实例
+        r"""<p>是否为专享实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -33920,7 +33954,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def RocketMQFlag(self):
-        r"""Rocketmq集群标识
+        r"""<p>Rocketmq集群标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -33932,7 +33966,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""计费状态，1表示正常，2表示已停服，3表示已销毁
+        r"""<p>计费状态，1表示正常，2表示已停服，3表示已销毁</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -33944,7 +33978,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def IsolateTime(self):
-        r"""欠费停服时间，毫秒为单位
+        r"""<p>欠费停服时间，毫秒为单位</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -33956,7 +33990,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def HttpPublicEndpoint(self):
-        r"""HTTP协议公网接入地址
+        r"""<p>HTTP协议公网接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33968,7 +34002,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def HttpVpcEndpoint(self):
-        r"""HTTP协议VPC接入地址
+        r"""<p>HTTP协议VPC接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33980,7 +34014,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def InternalEndpoint(self):
-        r"""TCP内部接入地址
+        r"""<p>TCP内部接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33992,7 +34026,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def HttpInternalEndpoint(self):
-        r"""HTTP协议内部接入地址
+        r"""<p>HTTP协议内部接入地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34004,7 +34038,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def AclEnabled(self):
-        r"""是否开启ACL鉴权，专享实例支持关闭
+        r"""<p>是否开启ACL鉴权，专享实例支持关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -34016,7 +34050,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def PublicClbId(self):
-        r"""公网CLB实例ID
+        r"""<p>公网CLB实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34028,7 +34062,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def Vip(self):
-        r"""vip
+        r"""<p>vip</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34040,7 +34074,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""所属VPC
+        r"""<p>所属VPC</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34052,7 +34086,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def SupportMigration(self):
-        r"""是否支持迁移
+        r"""<p>是否支持迁移</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -34064,7 +34098,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
+        r"""<p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -34076,7 +34110,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""集群所属可用区，表明集群归属的可用区
+        r"""<p>集群所属可用区，表明集群归属的可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -34088,7 +34122,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
+        r"""<p>集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -34100,7 +34134,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def IsFrozen(self):
-        r"""是否已冻结
+        r"""<p>是否已冻结</p>
         :rtype: bool
         """
         return self._IsFrozen
@@ -34111,7 +34145,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def AutoCreateTopicEnabled(self):
-        r"""是否开启自动创建主题
+        r"""<p>是否开启自动创建主题</p>
         :rtype: bool
         """
         return self._AutoCreateTopicEnabled
@@ -34122,7 +34156,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def AdminFeatureEnabled(self):
-        r"""是否开启集群Admin能力
+        r"""<p>是否开启集群Admin能力</p>
         :rtype: bool
         """
         return self._AdminFeatureEnabled
@@ -34133,7 +34167,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def AdminAccessKey(self):
-        r"""Admin AK
+        r"""<p>Admin AK</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34145,7 +34179,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def AdminSecretKey(self):
-        r"""Admin SK
+        r"""<p>Admin SK</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34157,7 +34191,7 @@ class RocketMQClusterInfo(AbstractModel):
 
     @property
     def EnableDeletionProtection(self):
-        r"""是否开启删除保护
+        r"""<p>是否开启删除保护</p>
         :rtype: bool
         """
         return self._EnableDeletionProtection
@@ -34165,6 +34199,18 @@ class RocketMQClusterInfo(AbstractModel):
     @EnableDeletionProtection.setter
     def EnableDeletionProtection(self, EnableDeletionProtection):
         self._EnableDeletionProtection = EnableDeletionProtection
+
+    @property
+    def AutoCreateConsumeGroupEnabled(self):
+        r"""<p>是否开启自动创建消费组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AutoCreateConsumeGroupEnabled
+
+    @AutoCreateConsumeGroupEnabled.setter
+    def AutoCreateConsumeGroupEnabled(self, AutoCreateConsumeGroupEnabled):
+        self._AutoCreateConsumeGroupEnabled = AutoCreateConsumeGroupEnabled
 
 
     def _deserialize(self, params):
@@ -34204,6 +34250,7 @@ class RocketMQClusterInfo(AbstractModel):
         self._AdminAccessKey = params.get("AdminAccessKey")
         self._AdminSecretKey = params.get("AdminSecretKey")
         self._EnableDeletionProtection = params.get("EnableDeletionProtection")
+        self._AutoCreateConsumeGroupEnabled = params.get("AutoCreateConsumeGroupEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36874,43 +36921,43 @@ class RocketMQVipInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InstanceVersion: 实例版本
+        :param _InstanceVersion: <p>实例版本</p>
         :type InstanceVersion: str
-        :param _Status: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
+        :param _Status: <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败</p>
         :type Status: int
-        :param _NodeCount: 节点数量
+        :param _NodeCount: <p>节点数量</p>
         :type NodeCount: int
-        :param _ConfigDisplay: 实例配置规格名称
+        :param _ConfigDisplay: <p>实例配置规格名称</p>
         :type ConfigDisplay: str
-        :param _MaxTps: 峰值TPS
+        :param _MaxTps: <p>峰值TPS</p>
         :type MaxTps: int
-        :param _MaxBandWidth: 峰值带宽，Mbps为单位
+        :param _MaxBandWidth: <p>峰值带宽，Mbps为单位</p>
         :type MaxBandWidth: int
-        :param _MaxStorage: 存储容量，GB为单位
+        :param _MaxStorage: <p>存储容量，GB为单位</p>
         :type MaxStorage: int
-        :param _ExpireTime: 实例到期时间，毫秒为单位
+        :param _ExpireTime: <p>实例到期时间，毫秒为单位</p>
         :type ExpireTime: int
-        :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :param _AutoRenewFlag: <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :type AutoRenewFlag: int
-        :param _PayMode: 0-后付费，1-预付费
+        :param _PayMode: <p>0-后付费，1-预付费</p>
         :type PayMode: int
-        :param _Remark: 备注信息
+        :param _Remark: <p>备注信息</p>
         :type Remark: str
-        :param _SpecName: 实例配置ID
+        :param _SpecName: <p>实例规格</p><p>枚举值：</p><ul><li>rocket-vip-basic-0： 通用集群</li><li>rocket-vip-basic-1： 专享集群-基础型</li><li>rocket-vip-basic-2： 专享集群-标准型</li><li>rocket-vip-basic-3： 专享集群-高阶I型</li><li>rocket-vip-basic-4： 专享集群-高阶II型</li></ul>
         :type SpecName: str
-        :param _MaxRetention: 最大可设置消息保留时间，小时为单位
+        :param _MaxRetention: <p>最大可设置消息保留时间，小时为单位</p>
         :type MaxRetention: int
-        :param _MinRetention: 最小可设置消息保留时间，小时为单位
+        :param _MinRetention: <p>最小可设置消息保留时间，小时为单位</p>
         :type MinRetention: int
-        :param _Retention: 实例消息保留时间，小时为单位
+        :param _Retention: <p>实例消息保留时间，小时为单位</p>
         :type Retention: int
-        :param _AclEnabled: 是否开启ACL鉴权
+        :param _AclEnabled: <p>是否开启ACL鉴权</p>
         :type AclEnabled: bool
-        :param _DestroyTime: 销毁时间
+        :param _DestroyTime: <p>销毁时间</p>
         :type DestroyTime: int
         """
         self._InstanceId = None
@@ -36935,7 +36982,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -36946,7 +36993,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -36957,7 +37004,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        r"""实例版本
+        r"""<p>实例版本</p>
         :rtype: str
         """
         return self._InstanceVersion
@@ -36968,7 +37015,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
+        r"""<p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败</p>
         :rtype: int
         """
         return self._Status
@@ -36979,7 +37026,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""节点数量
+        r"""<p>节点数量</p>
         :rtype: int
         """
         return self._NodeCount
@@ -36990,7 +37037,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def ConfigDisplay(self):
-        r"""实例配置规格名称
+        r"""<p>实例配置规格名称</p>
         :rtype: str
         """
         return self._ConfigDisplay
@@ -37001,7 +37048,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def MaxTps(self):
-        r"""峰值TPS
+        r"""<p>峰值TPS</p>
         :rtype: int
         """
         return self._MaxTps
@@ -37012,7 +37059,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        r"""峰值带宽，Mbps为单位
+        r"""<p>峰值带宽，Mbps为单位</p>
         :rtype: int
         """
         return self._MaxBandWidth
@@ -37023,7 +37070,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def MaxStorage(self):
-        r"""存储容量，GB为单位
+        r"""<p>存储容量，GB为单位</p>
         :rtype: int
         """
         return self._MaxStorage
@@ -37034,7 +37081,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""实例到期时间，毫秒为单位
+        r"""<p>实例到期时间，毫秒为单位</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -37045,7 +37092,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        r"""<p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -37056,7 +37103,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""0-后付费，1-预付费
+        r"""<p>0-后付费，1-预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -37067,7 +37114,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
         :rtype: str
         """
         return self._Remark
@@ -37078,7 +37125,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def SpecName(self):
-        r"""实例配置ID
+        r"""<p>实例规格</p><p>枚举值：</p><ul><li>rocket-vip-basic-0： 通用集群</li><li>rocket-vip-basic-1： 专享集群-基础型</li><li>rocket-vip-basic-2： 专享集群-标准型</li><li>rocket-vip-basic-3： 专享集群-高阶I型</li><li>rocket-vip-basic-4： 专享集群-高阶II型</li></ul>
         :rtype: str
         """
         return self._SpecName
@@ -37089,7 +37136,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def MaxRetention(self):
-        r"""最大可设置消息保留时间，小时为单位
+        r"""<p>最大可设置消息保留时间，小时为单位</p>
         :rtype: int
         """
         return self._MaxRetention
@@ -37100,7 +37147,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def MinRetention(self):
-        r"""最小可设置消息保留时间，小时为单位
+        r"""<p>最小可设置消息保留时间，小时为单位</p>
         :rtype: int
         """
         return self._MinRetention
@@ -37111,7 +37158,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def Retention(self):
-        r"""实例消息保留时间，小时为单位
+        r"""<p>实例消息保留时间，小时为单位</p>
         :rtype: int
         """
         return self._Retention
@@ -37122,7 +37169,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def AclEnabled(self):
-        r"""是否开启ACL鉴权
+        r"""<p>是否开启ACL鉴权</p>
         :rtype: bool
         """
         return self._AclEnabled
@@ -37133,7 +37180,7 @@ class RocketMQVipInstance(AbstractModel):
 
     @property
     def DestroyTime(self):
-        r"""销毁时间
+        r"""<p>销毁时间</p>
         :rtype: int
         """
         return self._DestroyTime

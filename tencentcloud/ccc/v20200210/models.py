@@ -1020,11 +1020,14 @@ class AISpeakEvent(AbstractModel):
         :param _LatencyMetrics: <p>本次响应生成的时延结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatencyMetrics: :class:`tencentcloud.ccc.v20200210.models.AICallLatencyMetrics`
+        :param _TraverseReason: <p>节点跳转的原因，仅画布为灵活模式时有值</p>
+        :type TraverseReason: str
         """
         self._CanBeInterrupted = None
         self._SpokenText = None
         self._SpokenType = None
         self._LatencyMetrics = None
+        self._TraverseReason = None
 
     @property
     def CanBeInterrupted(self):
@@ -1071,6 +1074,17 @@ class AISpeakEvent(AbstractModel):
     def LatencyMetrics(self, LatencyMetrics):
         self._LatencyMetrics = LatencyMetrics
 
+    @property
+    def TraverseReason(self):
+        r"""<p>节点跳转的原因，仅画布为灵活模式时有值</p>
+        :rtype: str
+        """
+        return self._TraverseReason
+
+    @TraverseReason.setter
+    def TraverseReason(self, TraverseReason):
+        self._TraverseReason = TraverseReason
+
 
     def _deserialize(self, params):
         self._CanBeInterrupted = params.get("CanBeInterrupted")
@@ -1079,6 +1093,7 @@ class AISpeakEvent(AbstractModel):
         if params.get("LatencyMetrics") is not None:
             self._LatencyMetrics = AICallLatencyMetrics()
             self._LatencyMetrics._deserialize(params.get("LatencyMetrics"))
+        self._TraverseReason = params.get("TraverseReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
