@@ -3842,21 +3842,21 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 分组ID
+        :param _GroupId: <p>分组ID</p>
         :type GroupId: str
-        :param _BeginTime: 开始查找时间
+        :param _BeginTime: <p>开始查找时间</p>
         :type BeginTime: int
-        :param _EndTime: 截止时间
+        :param _EndTime: <p>截止时间</p>
         :type EndTime: int
-        :param _Type: 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+        :param _Type: <p>流量种类（1：上行流量，2：下行流量， 3: 上下行总和）</p>
         :type Type: int
-        :param _TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
+        :param _TimeGranularity: <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :type TimeGranularity: int
-        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :param _AccessRegion: <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :type AccessRegion: str
-        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :param _GatewayType: <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :type GatewayType: int
-        :param _MpApplicationId: 应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 "-1"
+        :param _MpApplicationId: <p>应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 &quot;-1&quot;</p>
         :type MpApplicationId: str
         """
         self._GroupId = None
@@ -3870,7 +3870,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""分组ID
+        r"""<p>分组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -3881,7 +3881,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""开始查找时间
+        r"""<p>开始查找时间</p>
         :rtype: int
         """
         return self._BeginTime
@@ -3892,7 +3892,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""截止时间
+        r"""<p>截止时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -3903,7 +3903,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+        r"""<p>流量种类（1：上行流量，2：下行流量， 3: 上下行总和）</p>
         :rtype: int
         """
         return self._Type
@@ -3914,7 +3914,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        r"""时间粒度（1：按小时统计，2：按天统计）
+        r"""<p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :rtype: int
         """
         return self._TimeGranularity
@@ -3925,7 +3925,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""<p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :rtype: str
         """
         return self._AccessRegion
@@ -3936,7 +3936,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""<p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :rtype: int
         """
         return self._GatewayType
@@ -3947,7 +3947,7 @@ class GetFlowStatisticByGroupRequest(AbstractModel):
 
     @property
     def MpApplicationId(self):
-        r"""应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 "-1"
+        r"""<p>应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 &quot;-1&quot;</p>
         :rtype: str
         """
         return self._MpApplicationId
@@ -3983,13 +3983,13 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetDetails: 流量详细信息
+        :param _NetDetails: <p>流量详细信息</p>
         :type NetDetails: list of NetDetails
-        :param _MaxValue: 查找时间段流量使用最大值（单位：byte）
+        :param _MaxValue: <p>查找时间段流量使用最大值（单位：byte）</p>
         :type MaxValue: float
-        :param _AvgValue: 查找时间段流量使用平均值（单位：byte）
+        :param _AvgValue: <p>查找时间段流量使用平均值（单位：byte）</p>
         :type AvgValue: float
-        :param _TotalValue: 查找时间段流量使用总量（单位：byte）
+        :param _TotalValue: <p>查找时间段流量使用总量（单位：byte）</p>
         :type TotalValue: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4002,7 +4002,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     @property
     def NetDetails(self):
-        r"""流量详细信息
+        r"""<p>流量详细信息</p>
         :rtype: list of NetDetails
         """
         return self._NetDetails
@@ -4013,7 +4013,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     @property
     def MaxValue(self):
-        r"""查找时间段流量使用最大值（单位：byte）
+        r"""<p>查找时间段流量使用最大值（单位：byte）</p>
         :rtype: float
         """
         return self._MaxValue
@@ -4024,7 +4024,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     @property
     def AvgValue(self):
-        r"""查找时间段流量使用平均值（单位：byte）
+        r"""<p>查找时间段流量使用平均值（单位：byte）</p>
         :rtype: float
         """
         return self._AvgValue
@@ -4035,7 +4035,7 @@ class GetFlowStatisticByGroupResponse(AbstractModel):
 
     @property
     def TotalValue(self):
-        r"""查找时间段流量使用总量（单位：byte）
+        r"""<p>查找时间段流量使用总量（单位：byte）</p>
         :rtype: float
         """
         return self._TotalValue
@@ -4076,21 +4076,21 @@ class GetFlowStatisticByNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceName: 设备名称
+        :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _BeginTime: 开始查找时间
+        :param _BeginTime: <p>开始查找时间</p>
         :type BeginTime: int
-        :param _EndTime: 截止时间
+        :param _EndTime: <p>截止时间</p>
         :type EndTime: int
-        :param _Type: 流量种类（1：上行流量，2：下行流量，3：上下行总和）
+        :param _Type: <p>流量种类（1：上行流量，2：下行流量，3：上下行总和）</p>
         :type Type: int
-        :param _TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
+        :param _TimeGranularity: <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :type TimeGranularity: int
-        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :param _AccessRegion: <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :type AccessRegion: str
-        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :param _GatewayType: <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :type GatewayType: int
-        :param _DeviceList: 设备名列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+        :param _DeviceList: <p>设备名列表，用于查询多设备流量，该字段启用时DeviceId可传&quot;-1&quot;</p>
         :type DeviceList: list of str
         """
         self._DeviceName = None
@@ -4104,7 +4104,7 @@ class GetFlowStatisticByNameRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -4115,7 +4115,7 @@ class GetFlowStatisticByNameRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""开始查找时间
+        r"""<p>开始查找时间</p>
         :rtype: int
         """
         return self._BeginTime
@@ -4126,7 +4126,7 @@ class GetFlowStatisticByNameRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""截止时间
+        r"""<p>截止时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -4137,7 +4137,7 @@ class GetFlowStatisticByNameRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""流量种类（1：上行流量，2：下行流量，3：上下行总和）
+        r"""<p>流量种类（1：上行流量，2：下行流量，3：上下行总和）</p>
         :rtype: int
         """
         return self._Type
@@ -4148,7 +4148,7 @@ class GetFlowStatisticByNameRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        r"""时间粒度（1：按小时统计，2：按天统计）
+        r"""<p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :rtype: int
         """
         return self._TimeGranularity
@@ -4159,7 +4159,7 @@ class GetFlowStatisticByNameRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""<p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :rtype: str
         """
         return self._AccessRegion
@@ -4170,7 +4170,7 @@ class GetFlowStatisticByNameRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""<p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :rtype: int
         """
         return self._GatewayType
@@ -4181,7 +4181,7 @@ class GetFlowStatisticByNameRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        r"""设备名列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+        r"""<p>设备名列表，用于查询多设备流量，该字段启用时DeviceId可传&quot;-1&quot;</p>
         :rtype: list of str
         """
         return self._DeviceList
@@ -4217,13 +4217,13 @@ class GetFlowStatisticByNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetDetails: 流量详细信息
+        :param _NetDetails: <p>流量详细信息</p>
         :type NetDetails: list of NetDetails
-        :param _MaxValue: 查找时间段流量使用最大值（单位：byte）
+        :param _MaxValue: <p>查找时间段流量使用最大值（单位：byte）</p>
         :type MaxValue: float
-        :param _AvgValue: 查找时间段流量使用平均值（单位：byte）
+        :param _AvgValue: <p>查找时间段流量使用平均值（单位：byte）</p>
         :type AvgValue: float
-        :param _TotalValue: 查找时间段流量使用总量（单位：byte）
+        :param _TotalValue: <p>查找时间段流量使用总量（单位：byte）</p>
         :type TotalValue: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4236,7 +4236,7 @@ class GetFlowStatisticByNameResponse(AbstractModel):
 
     @property
     def NetDetails(self):
-        r"""流量详细信息
+        r"""<p>流量详细信息</p>
         :rtype: list of NetDetails
         """
         return self._NetDetails
@@ -4247,7 +4247,7 @@ class GetFlowStatisticByNameResponse(AbstractModel):
 
     @property
     def MaxValue(self):
-        r"""查找时间段流量使用最大值（单位：byte）
+        r"""<p>查找时间段流量使用最大值（单位：byte）</p>
         :rtype: float
         """
         return self._MaxValue
@@ -4258,7 +4258,7 @@ class GetFlowStatisticByNameResponse(AbstractModel):
 
     @property
     def AvgValue(self):
-        r"""查找时间段流量使用平均值（单位：byte）
+        r"""<p>查找时间段流量使用平均值（单位：byte）</p>
         :rtype: float
         """
         return self._AvgValue
@@ -4269,7 +4269,7 @@ class GetFlowStatisticByNameResponse(AbstractModel):
 
     @property
     def TotalValue(self):
-        r"""查找时间段流量使用总量（单位：byte）
+        r"""<p>查找时间段流量使用总量（单位：byte）</p>
         :rtype: float
         """
         return self._TotalValue
@@ -4310,17 +4310,17 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 开始查找时间
+        :param _BeginTime: <p>开始查找时间</p>
         :type BeginTime: int
-        :param _EndTime: 截止时间
+        :param _EndTime: <p>截止时间</p>
         :type EndTime: int
-        :param _Type: 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+        :param _Type: <p>流量种类（1：上行流量，2：下行流量， 3: 上下行总和）</p>
         :type Type: int
-        :param _TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
+        :param _TimeGranularity: <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :type TimeGranularity: int
-        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。 
+        :param _GatewayType: <p>网关类型。0：公有云网关；1：自有网关。</p>
         :type GatewayType: int
-        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :param _AccessRegion: <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :type AccessRegion: str
         """
         self._BeginTime = None
@@ -4332,7 +4332,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""开始查找时间
+        r"""<p>开始查找时间</p>
         :rtype: int
         """
         return self._BeginTime
@@ -4343,7 +4343,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""截止时间
+        r"""<p>截止时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -4354,7 +4354,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+        r"""<p>流量种类（1：上行流量，2：下行流量， 3: 上下行总和）</p>
         :rtype: int
         """
         return self._Type
@@ -4365,7 +4365,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        r"""时间粒度（1：按小时统计，2：按天统计）
+        r"""<p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :rtype: int
         """
         return self._TimeGranularity
@@ -4376,7 +4376,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        r"""网关类型。0：公有云网关；1：自有网关。 
+        r"""<p>网关类型。0：公有云网关；1：自有网关。</p>
         :rtype: int
         """
         return self._GatewayType
@@ -4387,7 +4387,7 @@ class GetFlowStatisticByRegionRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""<p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :rtype: str
         """
         return self._AccessRegion
@@ -4421,13 +4421,13 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetDetails: 流量详细信息
+        :param _NetDetails: <p>流量详细信息</p>
         :type NetDetails: list of NetDetails
-        :param _MaxValue: 查找时间段流量使用最大值（单位：byte）
+        :param _MaxValue: <p>查找时间段流量使用最大值（单位：byte）</p>
         :type MaxValue: float
-        :param _AvgValue: 查找时间段流量使用平均值（单位：byte）
+        :param _AvgValue: <p>查找时间段流量使用平均值（单位：byte）</p>
         :type AvgValue: float
-        :param _TotalValue: 查找时间段流量使用总量（单位：byte）
+        :param _TotalValue: <p>查找时间段流量使用总量（单位：byte）</p>
         :type TotalValue: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4440,7 +4440,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     @property
     def NetDetails(self):
-        r"""流量详细信息
+        r"""<p>流量详细信息</p>
         :rtype: list of NetDetails
         """
         return self._NetDetails
@@ -4451,7 +4451,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     @property
     def MaxValue(self):
-        r"""查找时间段流量使用最大值（单位：byte）
+        r"""<p>查找时间段流量使用最大值（单位：byte）</p>
         :rtype: float
         """
         return self._MaxValue
@@ -4462,7 +4462,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     @property
     def AvgValue(self):
-        r"""查找时间段流量使用平均值（单位：byte）
+        r"""<p>查找时间段流量使用平均值（单位：byte）</p>
         :rtype: float
         """
         return self._AvgValue
@@ -4473,7 +4473,7 @@ class GetFlowStatisticByRegionResponse(AbstractModel):
 
     @property
     def TotalValue(self):
-        r"""查找时间段流量使用总量（单位：byte）
+        r"""<p>查找时间段流量使用总量（单位：byte）</p>
         :rtype: float
         """
         return self._TotalValue
@@ -4514,21 +4514,21 @@ class GetFlowStatisticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceId: 设备ID
+        :param _DeviceId: <p>设备ID</p>
         :type DeviceId: str
-        :param _BeginTime: 开始查找时间
+        :param _BeginTime: <p>开始查找时间</p>
         :type BeginTime: int
-        :param _EndTime: 截止时间
+        :param _EndTime: <p>截止时间</p>
         :type EndTime: int
-        :param _Type: 流量种类（1：上行流量，2：下行流量，3：上下行总和）
+        :param _Type: <p>流量种类（1：上行流量，2：下行流量，3：上下行总和）</p>
         :type Type: int
-        :param _TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
+        :param _TimeGranularity: <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :type TimeGranularity: int
-        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :param _AccessRegion: <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :type AccessRegion: str
-        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :param _GatewayType: <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :type GatewayType: int
-        :param _DeviceList: 设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+        :param _DeviceList: <p>设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传&quot;-1&quot;</p>
         :type DeviceList: list of str
         """
         self._DeviceId = None
@@ -4542,7 +4542,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
         :rtype: str
         """
         return self._DeviceId
@@ -4553,7 +4553,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""开始查找时间
+        r"""<p>开始查找时间</p>
         :rtype: int
         """
         return self._BeginTime
@@ -4564,7 +4564,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""截止时间
+        r"""<p>截止时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -4575,7 +4575,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""流量种类（1：上行流量，2：下行流量，3：上下行总和）
+        r"""<p>流量种类（1：上行流量，2：下行流量，3：上下行总和）</p>
         :rtype: int
         """
         return self._Type
@@ -4586,7 +4586,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        r"""时间粒度（1：按小时统计，2：按天统计）
+        r"""<p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :rtype: int
         """
         return self._TimeGranularity
@@ -4597,7 +4597,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""<p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :rtype: str
         """
         return self._AccessRegion
@@ -4608,7 +4608,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""<p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :rtype: int
         """
         return self._GatewayType
@@ -4619,7 +4619,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        r"""设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+        r"""<p>设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传&quot;-1&quot;</p>
         :rtype: list of str
         """
         return self._DeviceList
@@ -4655,13 +4655,13 @@ class GetFlowStatisticResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetDetails: 流量详细信息
+        :param _NetDetails: <p>流量详细信息</p>
         :type NetDetails: list of NetDetails
-        :param _MaxValue: 查找时间段流量使用最大值（单位：byte）
+        :param _MaxValue: <p>查找时间段流量使用最大值（单位：byte）</p>
         :type MaxValue: float
-        :param _AvgValue: 查找时间段流量使用平均值（单位：byte）
+        :param _AvgValue: <p>查找时间段流量使用平均值（单位：byte）</p>
         :type AvgValue: float
-        :param _TotalValue: 查找时间段流量使用总量（单位：byte）
+        :param _TotalValue: <p>查找时间段流量使用总量（单位：byte）</p>
         :type TotalValue: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4674,7 +4674,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
     @property
     def NetDetails(self):
-        r"""流量详细信息
+        r"""<p>流量详细信息</p>
         :rtype: list of NetDetails
         """
         return self._NetDetails
@@ -4685,7 +4685,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
     @property
     def MaxValue(self):
-        r"""查找时间段流量使用最大值（单位：byte）
+        r"""<p>查找时间段流量使用最大值（单位：byte）</p>
         :rtype: float
         """
         return self._MaxValue
@@ -4696,7 +4696,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
     @property
     def AvgValue(self):
-        r"""查找时间段流量使用平均值（单位：byte）
+        r"""<p>查找时间段流量使用平均值（单位：byte）</p>
         :rtype: float
         """
         return self._AvgValue
@@ -4707,7 +4707,7 @@ class GetFlowStatisticResponse(AbstractModel):
 
     @property
     def TotalValue(self):
-        r"""查找时间段流量使用总量（单位：byte）
+        r"""<p>查找时间段流量使用总量（单位：byte）</p>
         :rtype: float
         """
         return self._TotalValue
@@ -5637,19 +5637,19 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceIds: 设备id列表，单次最多请求10个设备
+        :param _DeviceIds: <p>设备id列表，单次最多请求10个设备</p>
         :type DeviceIds: list of str
-        :param _BeginTime: 1659514436
+        :param _BeginTime: <p>1659514436</p>
         :type BeginTime: int
-        :param _EndTime: 1659515000
+        :param _EndTime: <p>1659515000</p>
         :type EndTime: int
-        :param _Type: 统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）
+        :param _Type: <p>统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）</p>
         :type Type: int
-        :param _TimeGranularity: 统计时间粒度（1：按小时统计，2：按天统计）
+        :param _TimeGranularity: <p>统计时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :type TimeGranularity: int
-        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :param _AccessRegion: <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :type AccessRegion: str
-        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :param _GatewayType: <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :type GatewayType: int
         """
         self._DeviceIds = None
@@ -5662,7 +5662,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
-        r"""设备id列表，单次最多请求10个设备
+        r"""<p>设备id列表，单次最多请求10个设备</p>
         :rtype: list of str
         """
         return self._DeviceIds
@@ -5673,7 +5673,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""1659514436
+        r"""<p>1659514436</p>
         :rtype: int
         """
         return self._BeginTime
@@ -5684,7 +5684,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""1659515000
+        r"""<p>1659515000</p>
         :rtype: int
         """
         return self._EndTime
@@ -5695,7 +5695,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）
+        r"""<p>统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）</p>
         :rtype: int
         """
         return self._Type
@@ -5706,7 +5706,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        r"""统计时间粒度（1：按小时统计，2：按天统计）
+        r"""<p>统计时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :rtype: int
         """
         return self._TimeGranularity
@@ -5717,7 +5717,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""<p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :rtype: str
         """
         return self._AccessRegion
@@ -5728,7 +5728,7 @@ class GetMultiFlowStatisticRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""<p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :rtype: int
         """
         return self._GatewayType
@@ -5763,7 +5763,7 @@ class GetMultiFlowStatisticResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowDetails: 批量设备流量信息
+        :param _FlowDetails: <p>批量设备流量信息</p>
         :type FlowDetails: list of FlowDetails
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5773,7 +5773,7 @@ class GetMultiFlowStatisticResponse(AbstractModel):
 
     @property
     def FlowDetails(self):
-        r"""批量设备流量信息
+        r"""<p>批量设备流量信息</p>
         :rtype: list of FlowDetails
         """
         return self._FlowDetails
@@ -6186,25 +6186,23 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceName: 设备名。若不指定设备，可传"-1"
+        :param _DeviceName: <p>设备名。若不指定设备，可传&quot;-1&quot;</p>
         :type DeviceName: str
-        :param _BeginTime: 统计开始时间，单位：s
+        :param _BeginTime: <p>统计开始时间，单位：s</p>
         :type BeginTime: int
-        :param _EndTime: 统计结束时间，单位：s
+        :param _EndTime: <p>统计结束时间，单位：s</p>
         :type EndTime: int
-        :param _TimeGranularity: 聚合粒度：
-1:按小时统计
-2:按天统计
+        :param _TimeGranularity: <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :type TimeGranularity: int
-        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :param _AccessRegion: <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :type AccessRegion: str
-        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :param _GatewayType: <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :type GatewayType: int
-        :param _DeviceList: 设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传"-1"
+        :param _DeviceList: <p>设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传&quot;-1&quot;</p>
         :type DeviceList: list of str
-        :param _GroupId: 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+        :param _GroupId: <p>设备分组ID，若不指定分组则不传，按分组下载数据时使用</p>
         :type GroupId: str
-        :param _MpApplicationId: 应用ID，若不指定应用不填，按应用下载数据时使用
+        :param _MpApplicationId: <p>应用ID，若不指定应用不填，按应用下载数据时使用</p>
         :type MpApplicationId: str
         """
         self._DeviceName = None
@@ -6219,7 +6217,7 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名。若不指定设备，可传"-1"
+        r"""<p>设备名。若不指定设备，可传&quot;-1&quot;</p>
         :rtype: str
         """
         return self._DeviceName
@@ -6230,7 +6228,7 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""统计开始时间，单位：s
+        r"""<p>统计开始时间，单位：s</p>
         :rtype: int
         """
         return self._BeginTime
@@ -6241,7 +6239,7 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""统计结束时间，单位：s
+        r"""<p>统计结束时间，单位：s</p>
         :rtype: int
         """
         return self._EndTime
@@ -6252,9 +6250,7 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        r"""聚合粒度：
-1:按小时统计
-2:按天统计
+        r"""<p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :rtype: int
         """
         return self._TimeGranularity
@@ -6265,7 +6261,7 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""<p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :rtype: str
         """
         return self._AccessRegion
@@ -6276,7 +6272,7 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""<p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :rtype: int
         """
         return self._GatewayType
@@ -6287,7 +6283,7 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        r"""设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传"-1"
+        r"""<p>设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传&quot;-1&quot;</p>
         :rtype: list of str
         """
         return self._DeviceList
@@ -6298,7 +6294,7 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""设备分组ID，若不指定分组则不传，按分组下载数据时使用
+        r"""<p>设备分组ID，若不指定分组则不传，按分组下载数据时使用</p>
         :rtype: str
         """
         return self._GroupId
@@ -6309,7 +6305,7 @@ class GetStatisticDataByNameRequest(AbstractModel):
 
     @property
     def MpApplicationId(self):
-        r"""应用ID，若不指定应用不填，按应用下载数据时使用
+        r"""<p>应用ID，若不指定应用不填，按应用下载数据时使用</p>
         :rtype: str
         """
         return self._MpApplicationId
@@ -6346,7 +6342,7 @@ class GetStatisticDataByNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FilePath: 文件地址url
+        :param _FilePath: <p>文件地址url</p>
         :type FilePath: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6356,7 +6352,7 @@ class GetStatisticDataByNameResponse(AbstractModel):
 
     @property
     def FilePath(self):
-        r"""文件地址url
+        r"""<p>文件地址url</p>
         :rtype: str
         """
         return self._FilePath
@@ -6389,23 +6385,21 @@ class GetStatisticDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceId: 设备ID。若不指定设备，可传"-1"
+        :param _DeviceId: <p>设备ID。若不指定设备，可传&quot;-1&quot;</p>
         :type DeviceId: str
-        :param _BeginTime: 统计开始时间，单位：s
+        :param _BeginTime: <p>统计开始时间，单位：s</p>
         :type BeginTime: int
-        :param _EndTime: 统计结束时间，单位：s
+        :param _EndTime: <p>统计结束时间，单位：s</p>
         :type EndTime: int
-        :param _TimeGranularity: 聚合粒度：
-1:按小时统计
-2:按天统计
+        :param _TimeGranularity: <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :type TimeGranularity: int
-        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        :param _AccessRegion: <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :type AccessRegion: str
-        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :param _GatewayType: <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :type GatewayType: int
-        :param _DeviceList: 设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传"-1"
+        :param _DeviceList: <p>设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传&quot;-1&quot;</p>
         :type DeviceList: list of str
-        :param _GroupId: 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+        :param _GroupId: <p>设备分组ID，若不指定分组则不传，按分组下载数据时使用</p>
         :type GroupId: str
         """
         self._DeviceId = None
@@ -6419,7 +6413,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备ID。若不指定设备，可传"-1"
+        r"""<p>设备ID。若不指定设备，可传&quot;-1&quot;</p>
         :rtype: str
         """
         return self._DeviceId
@@ -6430,7 +6424,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""统计开始时间，单位：s
+        r"""<p>统计开始时间，单位：s</p>
         :rtype: int
         """
         return self._BeginTime
@@ -6441,7 +6435,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""统计结束时间，单位：s
+        r"""<p>统计结束时间，单位：s</p>
         :rtype: int
         """
         return self._EndTime
@@ -6452,9 +6446,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def TimeGranularity(self):
-        r"""聚合粒度：
-1:按小时统计
-2:按天统计
+        r"""<p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
         :rtype: int
         """
         return self._TimeGranularity
@@ -6465,7 +6457,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def AccessRegion(self):
-        r"""接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+        r"""<p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
         :rtype: str
         """
         return self._AccessRegion
@@ -6476,7 +6468,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def GatewayType(self):
-        r"""网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        r"""<p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
         :rtype: int
         """
         return self._GatewayType
@@ -6487,7 +6479,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def DeviceList(self):
-        r"""设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传"-1"
+        r"""<p>设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传&quot;-1&quot;</p>
         :rtype: list of str
         """
         return self._DeviceList
@@ -6498,7 +6490,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""设备分组ID，若不指定分组则不传，按分组下载数据时使用
+        r"""<p>设备分组ID，若不指定分组则不传，按分组下载数据时使用</p>
         :rtype: str
         """
         return self._GroupId
@@ -6534,7 +6526,7 @@ class GetStatisticDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FilePath: 文件地址url
+        :param _FilePath: <p>文件地址url</p>
         :type FilePath: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6544,7 +6536,7 @@ class GetStatisticDataResponse(AbstractModel):
 
     @property
     def FilePath(self):
-        r"""文件地址url
+        r"""<p>文件地址url</p>
         :rtype: str
         """
         return self._FilePath

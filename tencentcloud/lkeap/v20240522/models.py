@@ -2238,35 +2238,29 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableResultType: Markdown文件中表格返回的形式
-0，表格以MD形式返回
-1，表格以HTML形式返回
-默认为0
+        :param _TableResultType: <p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为0</p>
         :type TableResultType: str
-        :param _MarkdownImageResponseType: Markdown文件中图片返回的形式
-0:markdown中图片以链接形式返回
-1:markdown中图片只返回图片中提取的文本内容
-默认是0
+        :param _MarkdownImageResponseType: <p>Markdown文件中图片返回的形式<br>0:markdown中图片以链接形式返回<br>1:markdown中图片只返回图片中提取的文本内容<br>默认是0</p>
         :type MarkdownImageResponseType: str
-        :param _ReturnPageFormat: Markdown文件中是否包含页码信息
+        :param _ReturnPageFormat: <p>Markdown文件中是否包含页码信息</p>
         :type ReturnPageFormat: bool
-        :param _PageFormat: 自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num>
+        :param _PageFormat: <p>自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num></p>
         :type PageFormat: str
-        :param _IgnoreFailedPage: 是否忽略失败页，返回已成功的页数据
+        :param _IgnoreFailedPage: <p>是否忽略失败页，返回已成功的页数据</p>
         :type IgnoreFailedPage: bool
+        :param _ResultType: <p>智能文档解析返回结果的格式</p><p>枚举值：</p><ul><li>0： 只返回全文MD</li><li>1： 只返回每一页的OCR原始Json</li><li>2： 只返回每一页的MD</li><li>3： 返回全文MD + 每一页的OCR原始Json</li><li>4： 返回全文MD + 每一页的MD</li><li>5： 返回全文md，每一页ocr原始json，每一页md</li></ul><p>默认值：3</p>
+        :type ResultType: str
         """
         self._TableResultType = None
         self._MarkdownImageResponseType = None
         self._ReturnPageFormat = None
         self._PageFormat = None
         self._IgnoreFailedPage = None
+        self._ResultType = None
 
     @property
     def TableResultType(self):
-        r"""Markdown文件中表格返回的形式
-0，表格以MD形式返回
-1，表格以HTML形式返回
-默认为0
+        r"""<p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为0</p>
         :rtype: str
         """
         return self._TableResultType
@@ -2277,10 +2271,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     @property
     def MarkdownImageResponseType(self):
-        r"""Markdown文件中图片返回的形式
-0:markdown中图片以链接形式返回
-1:markdown中图片只返回图片中提取的文本内容
-默认是0
+        r"""<p>Markdown文件中图片返回的形式<br>0:markdown中图片以链接形式返回<br>1:markdown中图片只返回图片中提取的文本内容<br>默认是0</p>
         :rtype: str
         """
         return self._MarkdownImageResponseType
@@ -2291,7 +2282,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     @property
     def ReturnPageFormat(self):
-        r"""Markdown文件中是否包含页码信息
+        r"""<p>Markdown文件中是否包含页码信息</p>
         :rtype: bool
         """
         return self._ReturnPageFormat
@@ -2302,7 +2293,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     @property
     def PageFormat(self):
-        r"""自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num>
+        r"""<p>自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num></p>
         :rtype: str
         """
         return self._PageFormat
@@ -2313,7 +2304,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
 
     @property
     def IgnoreFailedPage(self):
-        r"""是否忽略失败页，返回已成功的页数据
+        r"""<p>是否忽略失败页，返回已成功的页数据</p>
         :rtype: bool
         """
         return self._IgnoreFailedPage
@@ -2322,6 +2313,17 @@ class ReconstructDocumentSSEConfig(AbstractModel):
     def IgnoreFailedPage(self, IgnoreFailedPage):
         self._IgnoreFailedPage = IgnoreFailedPage
 
+    @property
+    def ResultType(self):
+        r"""<p>智能文档解析返回结果的格式</p><p>枚举值：</p><ul><li>0： 只返回全文MD</li><li>1： 只返回每一页的OCR原始Json</li><li>2： 只返回每一页的MD</li><li>3： 返回全文MD + 每一页的OCR原始Json</li><li>4： 返回全文MD + 每一页的MD</li><li>5： 返回全文md，每一页ocr原始json，每一页md</li></ul><p>默认值：3</p>
+        :rtype: str
+        """
+        return self._ResultType
+
+    @ResultType.setter
+    def ResultType(self, ResultType):
+        self._ResultType = ResultType
+
 
     def _deserialize(self, params):
         self._TableResultType = params.get("TableResultType")
@@ -2329,6 +2331,7 @@ class ReconstructDocumentSSEConfig(AbstractModel):
         self._ReturnPageFormat = params.get("ReturnPageFormat")
         self._PageFormat = params.get("PageFormat")
         self._IgnoreFailedPage = params.get("IgnoreFailedPage")
+        self._ResultType = params.get("ResultType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

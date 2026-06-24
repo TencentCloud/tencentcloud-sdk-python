@@ -1361,6 +1361,29 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListAccounts(self, request):
+        r"""查询所有账号列表
+
+        :param request: Request instance for ListAccounts.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListAccountsRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListAttachedGroupPolicies(self, request):
         r"""本接口（ListAttachedGroupPolicies）可用于查询用户组关联的策略列表。
 

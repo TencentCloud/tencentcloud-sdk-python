@@ -40512,21 +40512,23 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _Tags: 集群标签:
-[{"TagKey":"env","TagValue":"dev"}]}]
+        :param _Tags: <p>集群标签:<br>[{&quot;TagKey&quot;:&quot;env&quot;,&quot;TagValue&quot;:&quot;dev&quot;}]}]</p>
         :type Tags: list of Tag
-        :param _SyncSubresource: 是否同步集群内子资源标签
+        :param _SyncSubresource: <p>是否同步集群内子资源标签</p>
         :type SyncSubresource: bool
+        :param _SyncNodePoolTags: <p>是否同步节点池标签</p>
+        :type SyncNodePoolTags: bool
         """
         self._ClusterId = None
         self._Tags = None
         self._SyncSubresource = None
+        self._SyncNodePoolTags = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -40537,8 +40539,7 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""集群标签:
-[{"TagKey":"env","TagValue":"dev"}]}]
+        r"""<p>集群标签:<br>[{&quot;TagKey&quot;:&quot;env&quot;,&quot;TagValue&quot;:&quot;dev&quot;}]}]</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -40549,7 +40550,7 @@ class ModifyClusterTagsRequest(AbstractModel):
 
     @property
     def SyncSubresource(self):
-        r"""是否同步集群内子资源标签
+        r"""<p>是否同步集群内子资源标签</p>
         :rtype: bool
         """
         return self._SyncSubresource
@@ -40557,6 +40558,17 @@ class ModifyClusterTagsRequest(AbstractModel):
     @SyncSubresource.setter
     def SyncSubresource(self, SyncSubresource):
         self._SyncSubresource = SyncSubresource
+
+    @property
+    def SyncNodePoolTags(self):
+        r"""<p>是否同步节点池标签</p>
+        :rtype: bool
+        """
+        return self._SyncNodePoolTags
+
+    @SyncNodePoolTags.setter
+    def SyncNodePoolTags(self, SyncNodePoolTags):
+        self._SyncNodePoolTags = SyncNodePoolTags
 
 
     def _deserialize(self, params):
@@ -40568,6 +40580,7 @@ class ModifyClusterTagsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._SyncSubresource = params.get("SyncSubresource")
+        self._SyncNodePoolTags = params.get("SyncNodePoolTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40585,7 +40598,7 @@ class ModifyClusterTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Tags: 集群标签
+        :param _Tags: <p>集群标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -40596,7 +40609,7 @@ class ModifyClusterTagsResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""集群标签
+        r"""<p>集群标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """

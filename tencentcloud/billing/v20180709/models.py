@@ -14115,30 +14115,34 @@ class CostComponentSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ComponentCodeName: 组件类型名称
+        :param _ComponentCodeName: <p>组件类型名称</p>
         :type ComponentCodeName: str
-        :param _ItemCodeName: 组件名称
+        :param _ItemCodeName: <p>组件名称</p>
         :type ItemCodeName: str
-        :param _SinglePrice: 刊例价
+        :param _SinglePrice: <p>刊例价</p>
         :type SinglePrice: str
-        :param _PriceUnit: 刊例价单位
+        :param _PriceUnit: <p>刊例价单位</p>
         :type PriceUnit: str
-        :param _UsedAmount: 用量
+        :param _UsedAmount: <p>用量</p>
         :type UsedAmount: str
-        :param _UsedAmountUnit: 用量单位
+        :param _UsedAmountUnit: <p>用量单位</p>
         :type UsedAmountUnit: str
-        :param _Cost: 原价
+        :param _Cost: <p>原价</p>
         :type Cost: str
-        :param _Discount: 折扣
+        :param _Discount: <p>折扣</p>
         :type Discount: str
-        :param _RealCost: 折后价
+        :param _RealCost: <p>折后价</p>
         :type RealCost: str
-        :param _VoucherPayAmount: 代金券支付金额
+        :param _VoucherPayAmount: <p>代金券支付金额</p>
         :type VoucherPayAmount: str
-        :param _CashPayAmount: 现金支付金额
+        :param _CashPayAmount: <p>现金支付金额</p>
         :type CashPayAmount: str
-        :param _IncentivePayAmount: 赠送金支付金额
+        :param _IncentivePayAmount: <p>赠送金支付金额</p>
         :type IncentivePayAmount: str
+        :param _ComponentCode: <p>组件类型code</p>
+        :type ComponentCode: str
+        :param _ItemCode: <p>组件名称code</p>
+        :type ItemCode: str
         """
         self._ComponentCodeName = None
         self._ItemCodeName = None
@@ -14152,10 +14156,12 @@ class CostComponentSet(AbstractModel):
         self._VoucherPayAmount = None
         self._CashPayAmount = None
         self._IncentivePayAmount = None
+        self._ComponentCode = None
+        self._ItemCode = None
 
     @property
     def ComponentCodeName(self):
-        r"""组件类型名称
+        r"""<p>组件类型名称</p>
         :rtype: str
         """
         return self._ComponentCodeName
@@ -14166,7 +14172,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def ItemCodeName(self):
-        r"""组件名称
+        r"""<p>组件名称</p>
         :rtype: str
         """
         return self._ItemCodeName
@@ -14177,7 +14183,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def SinglePrice(self):
-        r"""刊例价
+        r"""<p>刊例价</p>
         :rtype: str
         """
         return self._SinglePrice
@@ -14188,7 +14194,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def PriceUnit(self):
-        r"""刊例价单位
+        r"""<p>刊例价单位</p>
         :rtype: str
         """
         return self._PriceUnit
@@ -14199,7 +14205,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def UsedAmount(self):
-        r"""用量
+        r"""<p>用量</p>
         :rtype: str
         """
         return self._UsedAmount
@@ -14210,7 +14216,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def UsedAmountUnit(self):
-        r"""用量单位
+        r"""<p>用量单位</p>
         :rtype: str
         """
         return self._UsedAmountUnit
@@ -14221,7 +14227,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def Cost(self):
-        r"""原价
+        r"""<p>原价</p>
         :rtype: str
         """
         return self._Cost
@@ -14232,7 +14238,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def Discount(self):
-        r"""折扣
+        r"""<p>折扣</p>
         :rtype: str
         """
         return self._Discount
@@ -14243,7 +14249,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def RealCost(self):
-        r"""折后价
+        r"""<p>折后价</p>
         :rtype: str
         """
         return self._RealCost
@@ -14254,7 +14260,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        r"""代金券支付金额
+        r"""<p>代金券支付金额</p>
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -14265,7 +14271,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        r"""现金支付金额
+        r"""<p>现金支付金额</p>
         :rtype: str
         """
         return self._CashPayAmount
@@ -14276,7 +14282,7 @@ class CostComponentSet(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        r"""赠送金支付金额
+        r"""<p>赠送金支付金额</p>
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -14284,6 +14290,28 @@ class CostComponentSet(AbstractModel):
     @IncentivePayAmount.setter
     def IncentivePayAmount(self, IncentivePayAmount):
         self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def ComponentCode(self):
+        r"""<p>组件类型code</p>
+        :rtype: str
+        """
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ItemCode(self):
+        r"""<p>组件名称code</p>
+        :rtype: str
+        """
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
 
 
     def _deserialize(self, params):
@@ -14299,6 +14327,8 @@ class CostComponentSet(AbstractModel):
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._CashPayAmount = params.get("CashPayAmount")
         self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ItemCode = params.get("ItemCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14356,6 +14386,8 @@ class CostDetail(AbstractModel):
         :type OwnerUin: str
         :param _PayTime: <p>扣费时间：结算扣费时间</p>
         :type PayTime: str
+        :param _BusinessCode: <p>产品名称code</p>
+        :type BusinessCode: str
         """
         self._PayerUin = None
         self._BusinessCodeName = None
@@ -14377,6 +14409,7 @@ class CostDetail(AbstractModel):
         self._OperateUin = None
         self._OwnerUin = None
         self._PayTime = None
+        self._BusinessCode = None
 
     @property
     def PayerUin(self):
@@ -14598,6 +14631,17 @@ class CostDetail(AbstractModel):
     def PayTime(self, PayTime):
         self._PayTime = PayTime
 
+    @property
+    def BusinessCode(self):
+        r"""<p>产品名称code</p>
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
 
     def _deserialize(self, params):
         self._PayerUin = params.get("PayerUin")
@@ -14630,6 +14674,7 @@ class CostDetail(AbstractModel):
         self._OperateUin = params.get("OperateUin")
         self._OwnerUin = params.get("OwnerUin")
         self._PayTime = params.get("PayTime")
+        self._BusinessCode = params.get("BusinessCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16668,14 +16713,14 @@ class DescribeAccountBalanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TempCredit: 是否查询临时额度
+        :param _TempCredit: <p>是否查询临时额度</p>
         :type TempCredit: bool
         """
         self._TempCredit = None
 
     @property
     def TempCredit(self):
-        r"""是否查询临时额度
+        r"""<p>是否查询临时额度</p>
         :rtype: bool
         """
         return self._TempCredit
@@ -16704,35 +16749,35 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Balance: 接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分
+        :param _Balance: <p>接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分</p>
         :type Balance: int
-        :param _Uin: 查询的用户Uin
+        :param _Uin: <p>查询的用户Uin</p>
         :type Uin: int
-        :param _RealBalance: 当前真实可用余额,单位 分
+        :param _RealBalance: <p>当前真实可用余额,单位 分。RealBalance=CashAccountBalance+IncomeIntoAccountBalance+PresentAccountBalance-FreezeAmount-OweAmount</p><p>单位：分</p>
         :type RealBalance: float
-        :param _CashAccountBalance: 现金账户余额,单位 分
+        :param _CashAccountBalance: <p>现金账户余额,单位 分</p>
         :type CashAccountBalance: float
-        :param _IncomeIntoAccountBalance: 收益转入账户余额,单位 分
+        :param _IncomeIntoAccountBalance: <p>收益转入账户余额,单位 分</p>
         :type IncomeIntoAccountBalance: float
-        :param _PresentAccountBalance: 赠送账户余额,单位 分
+        :param _PresentAccountBalance: <p>赠送账户余额,单位 分</p>
         :type PresentAccountBalance: float
-        :param _FreezeAmount: 冻结金额,单位 分
+        :param _FreezeAmount: <p>冻结金额,单位 分</p>
         :type FreezeAmount: float
-        :param _OweAmount: 欠费金额,单位 分
+        :param _OweAmount: <p>欠费金额,单位 分</p>
         :type OweAmount: float
-        :param _IsAllowArrears: 是否允许欠费消费
+        :param _IsAllowArrears: <p>是否允许欠费消费</p>
         :type IsAllowArrears: bool
-        :param _IsCreditLimited: 是否限制信用额度
+        :param _IsCreditLimited: <p>是否限制信用额度</p>
         :type IsCreditLimited: bool
-        :param _CreditAmount: 信用额度,单位 分
+        :param _CreditAmount: <p>信用额度,单位 分</p>
         :type CreditAmount: float
-        :param _CreditBalance: 可用信用额度,单位 分
+        :param _CreditBalance: <p>可用信用额度,单位 分。CreditBalance=CashAccountBalance+IncomeIntoAccountBalance+PresentAccountBalance+CreditAmount-OweAmount</p><p>单位：分</p>
         :type CreditBalance: float
-        :param _RealCreditBalance: 真实可用信用额度,单位 分
+        :param _RealCreditBalance: <p>真实可用信用额度,单位 分。RealCreditBalance=CreditBalance-FreezeAmount</p><p>单位：分</p>
         :type RealCreditBalance: float
-        :param _TempCredit: 临时额度，单位 分
+        :param _TempCredit: <p>临时额度，单位 分</p>
         :type TempCredit: float
-        :param _TempAmountInfoList: 临时额度详情
+        :param _TempAmountInfoList: <p>临时额度详情</p>
         :type TempAmountInfoList: list of UinTempAmountModel
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16756,7 +16801,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def Balance(self):
-        r"""接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分
+        r"""<p>接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分</p>
         :rtype: int
         """
         return self._Balance
@@ -16767,7 +16812,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def Uin(self):
-        r"""查询的用户Uin
+        r"""<p>查询的用户Uin</p>
         :rtype: int
         """
         return self._Uin
@@ -16778,7 +16823,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def RealBalance(self):
-        r"""当前真实可用余额,单位 分
+        r"""<p>当前真实可用余额,单位 分。RealBalance=CashAccountBalance+IncomeIntoAccountBalance+PresentAccountBalance-FreezeAmount-OweAmount</p><p>单位：分</p>
         :rtype: float
         """
         return self._RealBalance
@@ -16789,7 +16834,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def CashAccountBalance(self):
-        r"""现金账户余额,单位 分
+        r"""<p>现金账户余额,单位 分</p>
         :rtype: float
         """
         return self._CashAccountBalance
@@ -16800,7 +16845,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def IncomeIntoAccountBalance(self):
-        r"""收益转入账户余额,单位 分
+        r"""<p>收益转入账户余额,单位 分</p>
         :rtype: float
         """
         return self._IncomeIntoAccountBalance
@@ -16811,7 +16856,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def PresentAccountBalance(self):
-        r"""赠送账户余额,单位 分
+        r"""<p>赠送账户余额,单位 分</p>
         :rtype: float
         """
         return self._PresentAccountBalance
@@ -16822,7 +16867,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def FreezeAmount(self):
-        r"""冻结金额,单位 分
+        r"""<p>冻结金额,单位 分</p>
         :rtype: float
         """
         return self._FreezeAmount
@@ -16833,7 +16878,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def OweAmount(self):
-        r"""欠费金额,单位 分
+        r"""<p>欠费金额,单位 分</p>
         :rtype: float
         """
         return self._OweAmount
@@ -16846,7 +16891,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
     def IsAllowArrears(self):
         warnings.warn("parameter `IsAllowArrears` is deprecated", DeprecationWarning) 
 
-        r"""是否允许欠费消费
+        r"""<p>是否允许欠费消费</p>
         :rtype: bool
         """
         return self._IsAllowArrears
@@ -16861,7 +16906,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
     def IsCreditLimited(self):
         warnings.warn("parameter `IsCreditLimited` is deprecated", DeprecationWarning) 
 
-        r"""是否限制信用额度
+        r"""<p>是否限制信用额度</p>
         :rtype: bool
         """
         return self._IsCreditLimited
@@ -16874,7 +16919,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def CreditAmount(self):
-        r"""信用额度,单位 分
+        r"""<p>信用额度,单位 分</p>
         :rtype: float
         """
         return self._CreditAmount
@@ -16885,7 +16930,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def CreditBalance(self):
-        r"""可用信用额度,单位 分
+        r"""<p>可用信用额度,单位 分。CreditBalance=CashAccountBalance+IncomeIntoAccountBalance+PresentAccountBalance+CreditAmount-OweAmount</p><p>单位：分</p>
         :rtype: float
         """
         return self._CreditBalance
@@ -16896,7 +16941,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def RealCreditBalance(self):
-        r"""真实可用信用额度,单位 分
+        r"""<p>真实可用信用额度,单位 分。RealCreditBalance=CreditBalance-FreezeAmount</p><p>单位：分</p>
         :rtype: float
         """
         return self._RealCreditBalance
@@ -16907,7 +16952,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def TempCredit(self):
-        r"""临时额度，单位 分
+        r"""<p>临时额度，单位 分</p>
         :rtype: float
         """
         return self._TempCredit
@@ -16918,7 +16963,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
 
     @property
     def TempAmountInfoList(self):
-        r"""临时额度详情
+        r"""<p>临时额度详情</p>
         :rtype: list of UinTempAmountModel
         """
         return self._TempAmountInfoList

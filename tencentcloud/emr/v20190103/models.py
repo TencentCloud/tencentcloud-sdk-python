@@ -2892,6 +2892,10 @@ class CloudResource(AbstractModel):
         :type PodLabels: list of StringMap
         :param _EnableDefaultRayCluster: <p>是否创建默认raycluster</p>
         :type EnableDefaultRayCluster: bool
+        :param _ImageInfoV2: <p>自定义镜像</p>
+        :type ImageInfoV2: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
+        :param _DynamicInstanceForm: <p>创建动态实例参数</p>
+        :type DynamicInstanceForm: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceForm`
         """
         self._ComponentName = None
         self._PodNumber = None
@@ -2908,6 +2912,8 @@ class CloudResource(AbstractModel):
         self._TopologySpreadConstraints = None
         self._PodLabels = None
         self._EnableDefaultRayCluster = None
+        self._ImageInfoV2 = None
+        self._DynamicInstanceForm = None
 
     @property
     def ComponentName(self):
@@ -3079,6 +3085,28 @@ class CloudResource(AbstractModel):
     def EnableDefaultRayCluster(self, EnableDefaultRayCluster):
         self._EnableDefaultRayCluster = EnableDefaultRayCluster
 
+    @property
+    def ImageInfoV2(self):
+        r"""<p>自定义镜像</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
+        """
+        return self._ImageInfoV2
+
+    @ImageInfoV2.setter
+    def ImageInfoV2(self, ImageInfoV2):
+        self._ImageInfoV2 = ImageInfoV2
+
+    @property
+    def DynamicInstanceForm(self):
+        r"""<p>创建动态实例参数</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceForm`
+        """
+        return self._DynamicInstanceForm
+
+    @DynamicInstanceForm.setter
+    def DynamicInstanceForm(self, DynamicInstanceForm):
+        self._DynamicInstanceForm = DynamicInstanceForm
+
 
     def _deserialize(self, params):
         self._ComponentName = params.get("ComponentName")
@@ -3126,6 +3154,12 @@ class CloudResource(AbstractModel):
                 obj._deserialize(item)
                 self._PodLabels.append(obj)
         self._EnableDefaultRayCluster = params.get("EnableDefaultRayCluster")
+        if params.get("ImageInfoV2") is not None:
+            self._ImageInfoV2 = ImageInfoV2()
+            self._ImageInfoV2._deserialize(params.get("ImageInfoV2"))
+        if params.get("DynamicInstanceForm") is not None:
+            self._DynamicInstanceForm = DynamicInstanceForm()
+            self._DynamicInstanceForm._deserialize(params.get("DynamicInstanceForm"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5257,6 +5291,8 @@ class CreateCloudInstanceRequest(AbstractModel):
         :type SgIP: str
         :param _ContainerExtraConf: <p>额外容器相关配置</p>
         :type ContainerExtraConf: :class:`tencentcloud.emr.v20190103.models.ContainerExtraConf`
+        :param _EnableSparkAppMonitorInfo: <p>spark监控</p>
+        :type EnableSparkAppMonitorInfo: :class:`tencentcloud.emr.v20190103.models.EnableSparkAppMonitorInfo`
         """
         self._InstanceName = None
         self._ClusterClass = None
@@ -5278,6 +5314,7 @@ class CreateCloudInstanceRequest(AbstractModel):
         self._NeedCdbAudit = None
         self._SgIP = None
         self._ContainerExtraConf = None
+        self._EnableSparkAppMonitorInfo = None
 
     @property
     def InstanceName(self):
@@ -5499,6 +5536,17 @@ class CreateCloudInstanceRequest(AbstractModel):
     def ContainerExtraConf(self, ContainerExtraConf):
         self._ContainerExtraConf = ContainerExtraConf
 
+    @property
+    def EnableSparkAppMonitorInfo(self):
+        r"""<p>spark监控</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.EnableSparkAppMonitorInfo`
+        """
+        return self._EnableSparkAppMonitorInfo
+
+    @EnableSparkAppMonitorInfo.setter
+    def EnableSparkAppMonitorInfo(self, EnableSparkAppMonitorInfo):
+        self._EnableSparkAppMonitorInfo = EnableSparkAppMonitorInfo
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5544,6 +5592,9 @@ class CreateCloudInstanceRequest(AbstractModel):
         if params.get("ContainerExtraConf") is not None:
             self._ContainerExtraConf = ContainerExtraConf()
             self._ContainerExtraConf._deserialize(params.get("ContainerExtraConf"))
+        if params.get("EnableSparkAppMonitorInfo") is not None:
+            self._EnableSparkAppMonitorInfo = EnableSparkAppMonitorInfo()
+            self._EnableSparkAppMonitorInfo._deserialize(params.get("EnableSparkAppMonitorInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7406,35 +7457,41 @@ class CustomImage(AbstractModel):
 
 
 class CustomMetaDBInfo(AbstractModel):
-    r"""用户Hive-MetaDB信息
+    r"""用户自定义数据库信息
 
     """
 
     def __init__(self):
         r"""
-        :param _MetaDataJdbcUrl: 自定义MetaDB的JDBC连接，示例: jdbc:mysql://10.10.10.10:3306/dbname
+        :param _MetaDataJdbcUrl: <p>自定义MetaDB的JDBC连接，示例: jdbc:mysql://10.10.10.10:3306/dbname</p>
         :type MetaDataJdbcUrl: str
-        :param _MetaDataUser: 自定义MetaDB用户名
+        :param _MetaDataUser: <p>自定义MetaDB用户名</p>
         :type MetaDataUser: str
-        :param _MetaDataPass: 自定义MetaDB密码
+        :param _MetaDataPass: <p>自定义MetaDB密码</p>
         :type MetaDataPass: str
-        :param _MetaType: hive共享元数据库类型。取值范围：
-<li>EMR_DEFAULT_META：表示集群默认创建</li>
-<li>EMR_EXIST_META：表示集群使用指定EMR-MetaDB。</li>
-<li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
+        :param _MetaType: <p>hive共享元数据库类型。取值范围：</p><li>EMR_DEFAULT_META：表示集群默认创建</li><li>EMR_EXIST_META：表示集群使用指定EMR-MetaDB。</li><li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
         :type MetaType: str
-        :param _UnifyMetaInstanceId: EMR-MetaDB实例
+        :param _UnifyMetaInstanceId: <p>EMR-MetaDB实例</p>
         :type UnifyMetaInstanceId: str
+        :param _Components: <p>组件</p>
+        :type Components: list of str
+        :param _DefaultMetaVersion: <p>metadb版本</p>
+        :type DefaultMetaVersion: str
+        :param _LinkInstanceId: <p>CDBId</p>
+        :type LinkInstanceId: str
         """
         self._MetaDataJdbcUrl = None
         self._MetaDataUser = None
         self._MetaDataPass = None
         self._MetaType = None
         self._UnifyMetaInstanceId = None
+        self._Components = None
+        self._DefaultMetaVersion = None
+        self._LinkInstanceId = None
 
     @property
     def MetaDataJdbcUrl(self):
-        r"""自定义MetaDB的JDBC连接，示例: jdbc:mysql://10.10.10.10:3306/dbname
+        r"""<p>自定义MetaDB的JDBC连接，示例: jdbc:mysql://10.10.10.10:3306/dbname</p>
         :rtype: str
         """
         return self._MetaDataJdbcUrl
@@ -7445,7 +7502,7 @@ class CustomMetaDBInfo(AbstractModel):
 
     @property
     def MetaDataUser(self):
-        r"""自定义MetaDB用户名
+        r"""<p>自定义MetaDB用户名</p>
         :rtype: str
         """
         return self._MetaDataUser
@@ -7456,7 +7513,7 @@ class CustomMetaDBInfo(AbstractModel):
 
     @property
     def MetaDataPass(self):
-        r"""自定义MetaDB密码
+        r"""<p>自定义MetaDB密码</p>
         :rtype: str
         """
         return self._MetaDataPass
@@ -7467,10 +7524,7 @@ class CustomMetaDBInfo(AbstractModel):
 
     @property
     def MetaType(self):
-        r"""hive共享元数据库类型。取值范围：
-<li>EMR_DEFAULT_META：表示集群默认创建</li>
-<li>EMR_EXIST_META：表示集群使用指定EMR-MetaDB。</li>
-<li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
+        r"""<p>hive共享元数据库类型。取值范围：</p><li>EMR_DEFAULT_META：表示集群默认创建</li><li>EMR_EXIST_META：表示集群使用指定EMR-MetaDB。</li><li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
         :rtype: str
         """
         return self._MetaType
@@ -7481,7 +7535,7 @@ class CustomMetaDBInfo(AbstractModel):
 
     @property
     def UnifyMetaInstanceId(self):
-        r"""EMR-MetaDB实例
+        r"""<p>EMR-MetaDB实例</p>
         :rtype: str
         """
         return self._UnifyMetaInstanceId
@@ -7490,6 +7544,39 @@ class CustomMetaDBInfo(AbstractModel):
     def UnifyMetaInstanceId(self, UnifyMetaInstanceId):
         self._UnifyMetaInstanceId = UnifyMetaInstanceId
 
+    @property
+    def Components(self):
+        r"""<p>组件</p>
+        :rtype: list of str
+        """
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
+    def DefaultMetaVersion(self):
+        r"""<p>metadb版本</p>
+        :rtype: str
+        """
+        return self._DefaultMetaVersion
+
+    @DefaultMetaVersion.setter
+    def DefaultMetaVersion(self, DefaultMetaVersion):
+        self._DefaultMetaVersion = DefaultMetaVersion
+
+    @property
+    def LinkInstanceId(self):
+        r"""<p>CDBId</p>
+        :rtype: str
+        """
+        return self._LinkInstanceId
+
+    @LinkInstanceId.setter
+    def LinkInstanceId(self, LinkInstanceId):
+        self._LinkInstanceId = LinkInstanceId
+
 
     def _deserialize(self, params):
         self._MetaDataJdbcUrl = params.get("MetaDataJdbcUrl")
@@ -7497,6 +7584,9 @@ class CustomMetaDBInfo(AbstractModel):
         self._MetaDataPass = params.get("MetaDataPass")
         self._MetaType = params.get("MetaType")
         self._UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
+        self._Components = params.get("Components")
+        self._DefaultMetaVersion = params.get("DefaultMetaVersion")
+        self._LinkInstanceId = params.get("LinkInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8321,8 +8411,10 @@ class DependService(AbstractModel):
     def __init__(self):
         r"""
         :param _ServiceName: 共用组件名
+注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _InstanceId: 共用组件集群
+注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         """
         self._ServiceName = None
@@ -8331,6 +8423,7 @@ class DependService(AbstractModel):
     @property
     def ServiceName(self):
         r"""共用组件名
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ServiceName
@@ -8342,6 +8435,7 @@ class DependService(AbstractModel):
     @property
     def InstanceId(self):
         r"""共用组件集群
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._InstanceId
@@ -9961,6 +10055,8 @@ class DescribeDynamicInstanceDetailResponse(AbstractModel):
         :type PersistentVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolume`
         :param _RayClusterYaml: <p>rayClusterYamlJson</p>
         :type RayClusterYaml: str
+        :param _ImageInfoV2: <p>镜像信息</p>
+        :type ImageInfoV2: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9986,6 +10082,7 @@ class DescribeDynamicInstanceDetailResponse(AbstractModel):
         self._HighAvailability = None
         self._PersistentVolume = None
         self._RayClusterYaml = None
+        self._ImageInfoV2 = None
         self._RequestId = None
 
     @property
@@ -10231,6 +10328,17 @@ class DescribeDynamicInstanceDetailResponse(AbstractModel):
         self._RayClusterYaml = RayClusterYaml
 
     @property
+    def ImageInfoV2(self):
+        r"""<p>镜像信息</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
+        """
+        return self._ImageInfoV2
+
+    @ImageInfoV2.setter
+    def ImageInfoV2(self, ImageInfoV2):
+        self._ImageInfoV2 = ImageInfoV2
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10293,6 +10401,9 @@ class DescribeDynamicInstanceDetailResponse(AbstractModel):
             self._PersistentVolume = PersistentVolume()
             self._PersistentVolume._deserialize(params.get("PersistentVolume"))
         self._RayClusterYaml = params.get("RayClusterYaml")
+        if params.get("ImageInfoV2") is not None:
+            self._ImageInfoV2 = ImageInfoV2()
+            self._ImageInfoV2._deserialize(params.get("ImageInfoV2"))
         self._RequestId = params.get("RequestId")
 
 
@@ -10303,14 +10414,14 @@ class DescribeDynamicInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: emr 集群 id
+        :param _InstanceId: <p>emr 集群 id</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""emr 集群 id
+        r"""<p>emr 集群 id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -10339,17 +10450,20 @@ class DescribeDynamicInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DynamicInstanceList: RayCluster 集群列表
+        :param _DynamicInstanceList: <p>RayCluster 集群列表</p>
         :type DynamicInstanceList: list of RayCluster
+        :param _WebUIInfos: <p>服务访问url</p>
+        :type WebUIInfos: list of WebUIInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DynamicInstanceList = None
+        self._WebUIInfos = None
         self._RequestId = None
 
     @property
     def DynamicInstanceList(self):
-        r"""RayCluster 集群列表
+        r"""<p>RayCluster 集群列表</p>
         :rtype: list of RayCluster
         """
         return self._DynamicInstanceList
@@ -10357,6 +10471,17 @@ class DescribeDynamicInstanceListResponse(AbstractModel):
     @DynamicInstanceList.setter
     def DynamicInstanceList(self, DynamicInstanceList):
         self._DynamicInstanceList = DynamicInstanceList
+
+    @property
+    def WebUIInfos(self):
+        r"""<p>服务访问url</p>
+        :rtype: list of WebUIInfo
+        """
+        return self._WebUIInfos
+
+    @WebUIInfos.setter
+    def WebUIInfos(self, WebUIInfos):
+        self._WebUIInfos = WebUIInfos
 
     @property
     def RequestId(self):
@@ -10377,6 +10502,12 @@ class DescribeDynamicInstanceListResponse(AbstractModel):
                 obj = RayCluster()
                 obj._deserialize(item)
                 self._DynamicInstanceList.append(obj)
+        if params.get("WebUIInfos") is not None:
+            self._WebUIInfos = []
+            for item in params.get("WebUIInfos"):
+                obj = WebUIInfo()
+                obj._deserialize(item)
+                self._WebUIInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18015,37 +18146,58 @@ class DynamicInstanceForm(AbstractModel):
     def __init__(self):
         r"""
         :param _DynamicInstanceName: <p>DynamicInstance名，长度限制1-64字符，只能包含小写字母</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type DynamicInstanceName: str
         :param _Namespace: <p>命名空间</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _SupportHA: <p>是否支持高可用</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type SupportHA: bool
         :param _CustomImage: <p>自定义镜像信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type CustomImage: :class:`tencentcloud.emr.v20190103.models.CustomImage`
         :param _DynamicInstanceGroups: <p>资源组配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type DynamicInstanceGroups: list of DynamicInstanceGroup
         :param _SupportPV: <p>是否支持存储配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type SupportPV: bool
         :param _CBSVolumes: <p>cbs存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type CBSVolumes: list of CBSVolume
         :param _CFSVolumes: <p>cfs存储卷列表，只包含cfs，不包含cfs turbo</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type CFSVolumes: list of CFSVolume
         :param _COSVolumes: <p>cos存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type COSVolumes: list of COSVolume
         :param _VolumeMounts: <p>挂载卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeMounts: list of VolumeMount
         :param _Labels: <p>pod标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TkeLabel
         :param _Tolerations: <p>Tolerations定义</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tolerations: list of Toleration
         :param _Envs: <p>环境变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Envs: list of NameValue
         :param _DependServices: <p>依赖外部组件</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type DependServices: list of DependService
         :param _SupportToken: <p>是否开启token鉴权</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type SupportToken: bool
         :param _CFSTurboVolumes: <p>cfs trubo挂载列表，不包含标准版cfs</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type CFSTurboVolumes: list of CFSTurboVolume
+        :param _ImageInfoV2: <p>自定义镜像</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInfoV2: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
+        :param _GooseFSVolumes: <p>GooseFS盘</p>
+        :type GooseFSVolumes: list of GooseFSVolume
         """
         self._DynamicInstanceName = None
         self._Namespace = None
@@ -18063,10 +18215,13 @@ class DynamicInstanceForm(AbstractModel):
         self._DependServices = None
         self._SupportToken = None
         self._CFSTurboVolumes = None
+        self._ImageInfoV2 = None
+        self._GooseFSVolumes = None
 
     @property
     def DynamicInstanceName(self):
         r"""<p>DynamicInstance名，长度限制1-64字符，只能包含小写字母</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._DynamicInstanceName
@@ -18078,6 +18233,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def Namespace(self):
         r"""<p>命名空间</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Namespace
@@ -18089,6 +18245,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def SupportHA(self):
         r"""<p>是否支持高可用</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SupportHA
@@ -18100,6 +18257,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def CustomImage(self):
         r"""<p>自定义镜像信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.CustomImage`
         """
         return self._CustomImage
@@ -18111,6 +18269,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def DynamicInstanceGroups(self):
         r"""<p>资源组配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DynamicInstanceGroup
         """
         return self._DynamicInstanceGroups
@@ -18122,6 +18281,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def SupportPV(self):
         r"""<p>是否支持存储配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SupportPV
@@ -18133,6 +18293,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def CBSVolumes(self):
         r"""<p>cbs存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CBSVolume
         """
         return self._CBSVolumes
@@ -18144,6 +18305,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def CFSVolumes(self):
         r"""<p>cfs存储卷列表，只包含cfs，不包含cfs turbo</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CFSVolume
         """
         return self._CFSVolumes
@@ -18155,6 +18317,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def COSVolumes(self):
         r"""<p>cos存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of COSVolume
         """
         return self._COSVolumes
@@ -18166,6 +18329,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def VolumeMounts(self):
         r"""<p>挂载卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VolumeMount
         """
         return self._VolumeMounts
@@ -18177,6 +18341,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def Labels(self):
         r"""<p>pod标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TkeLabel
         """
         return self._Labels
@@ -18188,6 +18353,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def Tolerations(self):
         r"""<p>Tolerations定义</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Toleration
         """
         return self._Tolerations
@@ -18199,6 +18365,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def Envs(self):
         r"""<p>环境变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NameValue
         """
         return self._Envs
@@ -18210,6 +18377,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def DependServices(self):
         r"""<p>依赖外部组件</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DependService
         """
         return self._DependServices
@@ -18221,6 +18389,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def SupportToken(self):
         r"""<p>是否开启token鉴权</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SupportToken
@@ -18232,6 +18401,7 @@ class DynamicInstanceForm(AbstractModel):
     @property
     def CFSTurboVolumes(self):
         r"""<p>cfs trubo挂载列表，不包含标准版cfs</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CFSTurboVolume
         """
         return self._CFSTurboVolumes
@@ -18239,6 +18409,29 @@ class DynamicInstanceForm(AbstractModel):
     @CFSTurboVolumes.setter
     def CFSTurboVolumes(self, CFSTurboVolumes):
         self._CFSTurboVolumes = CFSTurboVolumes
+
+    @property
+    def ImageInfoV2(self):
+        r"""<p>自定义镜像</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
+        """
+        return self._ImageInfoV2
+
+    @ImageInfoV2.setter
+    def ImageInfoV2(self, ImageInfoV2):
+        self._ImageInfoV2 = ImageInfoV2
+
+    @property
+    def GooseFSVolumes(self):
+        r"""<p>GooseFS盘</p>
+        :rtype: list of GooseFSVolume
+        """
+        return self._GooseFSVolumes
+
+    @GooseFSVolumes.setter
+    def GooseFSVolumes(self, GooseFSVolumes):
+        self._GooseFSVolumes = GooseFSVolumes
 
 
     def _deserialize(self, params):
@@ -18310,6 +18503,15 @@ class DynamicInstanceForm(AbstractModel):
                 obj = CFSTurboVolume()
                 obj._deserialize(item)
                 self._CFSTurboVolumes.append(obj)
+        if params.get("ImageInfoV2") is not None:
+            self._ImageInfoV2 = ImageInfoV2()
+            self._ImageInfoV2._deserialize(params.get("ImageInfoV2"))
+        if params.get("GooseFSVolumes") is not None:
+            self._GooseFSVolumes = []
+            for item in params.get("GooseFSVolumes"):
+                obj = GooseFSVolume()
+                obj._deserialize(item)
+                self._GooseFSVolumes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18328,47 +18530,74 @@ class DynamicInstanceGroup(AbstractModel):
     def __init__(self):
         r"""
         :param _GroupType: <p>资源组类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupType: str
         :param _GroupName: <p>资源组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
         :param _PodCpu: <p>pod cpu核数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type PodCpu: int
         :param _PodMem: <p>pod mem大小（GB）</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type PodMem: int
         :param _PodGpuType: <p>pod gpu类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type PodGpuType: str
         :param _PodGpu: <p>pod gpu块数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type PodGpu: int
         :param _PodNum: <p>pod个数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type PodNum: int
         :param _MinPodNum: <p>pod弹性最小个数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type MinPodNum: int
         :param _MaxPodNum: <p>pod弹性最大个数，当MaxPodNum &gt; MinPodNum时，默认表示开启弹性扩缩容，将在范围内扩缩容</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxPodNum: int
         :param _SupportPV: <p>是否支持存储配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type SupportPV: bool
         :param _CBSVolumes: <p>cbs存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type CBSVolumes: list of CBSVolume
         :param _CFSVolumes: <p>cfs存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type CFSVolumes: list of CFSVolume
         :param _COSVolumes: <p>cos存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type COSVolumes: list of COSVolume
         :param _VolumeMounts: <p>挂载卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeMounts: list of VolumeMount
         :param _Labels: <p>pod标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TkeLabel
         :param _Tolerations: <p>Tolerations定义</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tolerations: list of Toleration
         :param _Envs: <p>环境变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Envs: list of NameValue
         :param _SchedulingPolicy: <p>节点调度策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulingPolicy: str
         :param _ResourceLabel: <p>资源标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceLabel: str
         :param _PodGpuResourceKey: <p>GPU资源厂商key</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type PodGpuResourceKey: str
         :param _CFSTurboVolumes: <p>CFS Turbo 挂载列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type CFSTurboVolumes: list of CFSTurboVolume
+        :param _GooseFSVolumes: <p>GooseFS盘</p>
+        :type GooseFSVolumes: list of GooseFSVolume
+        :param _PreStartCommand: <p>启动前指令</p>
+        :type PreStartCommand: str
+        :param _RayStartParams: <p>Ray启动前指令</p>
+        :type RayStartParams: str
         """
         self._GroupType = None
         self._GroupName = None
@@ -18391,10 +18620,14 @@ class DynamicInstanceGroup(AbstractModel):
         self._ResourceLabel = None
         self._PodGpuResourceKey = None
         self._CFSTurboVolumes = None
+        self._GooseFSVolumes = None
+        self._PreStartCommand = None
+        self._RayStartParams = None
 
     @property
     def GroupType(self):
         r"""<p>资源组类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupType
@@ -18406,6 +18639,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def GroupName(self):
         r"""<p>资源组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._GroupName
@@ -18417,6 +18651,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def PodCpu(self):
         r"""<p>pod cpu核数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PodCpu
@@ -18428,6 +18663,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def PodMem(self):
         r"""<p>pod mem大小（GB）</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PodMem
@@ -18439,6 +18675,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def PodGpuType(self):
         r"""<p>pod gpu类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PodGpuType
@@ -18450,6 +18687,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def PodGpu(self):
         r"""<p>pod gpu块数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PodGpu
@@ -18461,6 +18699,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def PodNum(self):
         r"""<p>pod个数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._PodNum
@@ -18472,6 +18711,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def MinPodNum(self):
         r"""<p>pod弹性最小个数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MinPodNum
@@ -18483,6 +18723,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def MaxPodNum(self):
         r"""<p>pod弹性最大个数，当MaxPodNum &gt; MinPodNum时，默认表示开启弹性扩缩容，将在范围内扩缩容</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MaxPodNum
@@ -18494,6 +18735,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def SupportPV(self):
         r"""<p>是否支持存储配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._SupportPV
@@ -18505,6 +18747,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def CBSVolumes(self):
         r"""<p>cbs存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CBSVolume
         """
         return self._CBSVolumes
@@ -18516,6 +18759,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def CFSVolumes(self):
         r"""<p>cfs存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CFSVolume
         """
         return self._CFSVolumes
@@ -18527,6 +18771,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def COSVolumes(self):
         r"""<p>cos存储卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of COSVolume
         """
         return self._COSVolumes
@@ -18538,6 +18783,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def VolumeMounts(self):
         r"""<p>挂载卷列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VolumeMount
         """
         return self._VolumeMounts
@@ -18549,6 +18795,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def Labels(self):
         r"""<p>pod标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TkeLabel
         """
         return self._Labels
@@ -18560,6 +18807,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def Tolerations(self):
         r"""<p>Tolerations定义</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Toleration
         """
         return self._Tolerations
@@ -18571,6 +18819,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def Envs(self):
         r"""<p>环境变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NameValue
         """
         return self._Envs
@@ -18582,6 +18831,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def SchedulingPolicy(self):
         r"""<p>节点调度策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._SchedulingPolicy
@@ -18593,6 +18843,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def ResourceLabel(self):
         r"""<p>资源标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceLabel
@@ -18604,6 +18855,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def PodGpuResourceKey(self):
         r"""<p>GPU资源厂商key</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._PodGpuResourceKey
@@ -18615,6 +18867,7 @@ class DynamicInstanceGroup(AbstractModel):
     @property
     def CFSTurboVolumes(self):
         r"""<p>CFS Turbo 挂载列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CFSTurboVolume
         """
         return self._CFSTurboVolumes
@@ -18622,6 +18875,39 @@ class DynamicInstanceGroup(AbstractModel):
     @CFSTurboVolumes.setter
     def CFSTurboVolumes(self, CFSTurboVolumes):
         self._CFSTurboVolumes = CFSTurboVolumes
+
+    @property
+    def GooseFSVolumes(self):
+        r"""<p>GooseFS盘</p>
+        :rtype: list of GooseFSVolume
+        """
+        return self._GooseFSVolumes
+
+    @GooseFSVolumes.setter
+    def GooseFSVolumes(self, GooseFSVolumes):
+        self._GooseFSVolumes = GooseFSVolumes
+
+    @property
+    def PreStartCommand(self):
+        r"""<p>启动前指令</p>
+        :rtype: str
+        """
+        return self._PreStartCommand
+
+    @PreStartCommand.setter
+    def PreStartCommand(self, PreStartCommand):
+        self._PreStartCommand = PreStartCommand
+
+    @property
+    def RayStartParams(self):
+        r"""<p>Ray启动前指令</p>
+        :rtype: str
+        """
+        return self._RayStartParams
+
+    @RayStartParams.setter
+    def RayStartParams(self, RayStartParams):
+        self._RayStartParams = RayStartParams
 
 
     def _deserialize(self, params):
@@ -18686,6 +18972,14 @@ class DynamicInstanceGroup(AbstractModel):
                 obj = CFSTurboVolume()
                 obj._deserialize(item)
                 self._CFSTurboVolumes.append(obj)
+        if params.get("GooseFSVolumes") is not None:
+            self._GooseFSVolumes = []
+            for item in params.get("GooseFSVolumes"):
+                obj = GooseFSVolume()
+                obj._deserialize(item)
+                self._GooseFSVolumes.append(obj)
+        self._PreStartCommand = params.get("PreStartCommand")
+        self._RayStartParams = params.get("RayStartParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18703,39 +18997,42 @@ class DynamicInstanceGroupSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: group 名称
+        :param _Name: <p>group 名称</p>
         :type Name: str
-        :param _PodCount: pod 数量
+        :param _PodCount: <p>pod 数量</p>
         :type PodCount: int
-        :param _MinNodes: 最小节点数
+        :param _MinNodes: <p>最小节点数</p>
         :type MinNodes: int
-        :param _MaxNodes: 最大节点数
+        :param _MaxNodes: <p>最大节点数</p>
         :type MaxNodes: int
-        :param _StorageConfigEnabled:  是否开启存储配置
+        :param _StorageConfigEnabled: <p>是否开启存储配置</p>
         :type StorageConfigEnabled: bool
-        :param _GroupType: headGroup:head;
-workerGroup:worker
+        :param _GroupType: <p>headGroup:head;<br>workerGroup:worker</p>
         :type GroupType: str
-        :param _Cpu: CPU 核数
+        :param _Cpu: <p>CPU 核数</p>
         :type Cpu: int
-        :param _MemSize: 内存(GB)
+        :param _MemSize: <p>内存(GB)</p>
         :type MemSize: int
-        :param _GpuType: GPU类型
+        :param _GpuType: <p>GPU类型</p>
         :type GpuType: str
-        :param _Gpu: GPU核数
+        :param _Gpu: <p>GPU核数</p>
         :type Gpu: int
-        :param _ResourceLabels: 资源标签
+        :param _ResourceLabels: <p>资源标签</p>
         :type ResourceLabels: str
-        :param _Env: 环境变量
+        :param _Env: <p>环境变量</p>
         :type Env: list of NameValue
-        :param _Labels: 标签
+        :param _Labels: <p>标签</p>
         :type Labels: list of NameValue
-        :param _Tolerations: 容忍度
+        :param _Tolerations: <p>容忍度</p>
         :type Tolerations: list of Toleration
-        :param _Scheduler: 调度策略
+        :param _Scheduler: <p>调度策略</p>
         :type Scheduler: str
-        :param _PersistentVolume: 卷目录
+        :param _PersistentVolume: <p>卷目录</p>
         :type PersistentVolume: :class:`tencentcloud.emr.v20190103.models.PersistentVolume`
+        :param _PreStartCommand: <p>前置启动命令</p>
+        :type PreStartCommand: str
+        :param _RayStartParams: <p>RayStart启动参数</p>
+        :type RayStartParams: str
         """
         self._Name = None
         self._PodCount = None
@@ -18753,10 +19050,12 @@ workerGroup:worker
         self._Tolerations = None
         self._Scheduler = None
         self._PersistentVolume = None
+        self._PreStartCommand = None
+        self._RayStartParams = None
 
     @property
     def Name(self):
-        r"""group 名称
+        r"""<p>group 名称</p>
         :rtype: str
         """
         return self._Name
@@ -18767,7 +19066,7 @@ workerGroup:worker
 
     @property
     def PodCount(self):
-        r"""pod 数量
+        r"""<p>pod 数量</p>
         :rtype: int
         """
         return self._PodCount
@@ -18778,7 +19077,7 @@ workerGroup:worker
 
     @property
     def MinNodes(self):
-        r"""最小节点数
+        r"""<p>最小节点数</p>
         :rtype: int
         """
         return self._MinNodes
@@ -18789,7 +19088,7 @@ workerGroup:worker
 
     @property
     def MaxNodes(self):
-        r"""最大节点数
+        r"""<p>最大节点数</p>
         :rtype: int
         """
         return self._MaxNodes
@@ -18800,7 +19099,7 @@ workerGroup:worker
 
     @property
     def StorageConfigEnabled(self):
-        r""" 是否开启存储配置
+        r"""<p>是否开启存储配置</p>
         :rtype: bool
         """
         return self._StorageConfigEnabled
@@ -18811,8 +19110,7 @@ workerGroup:worker
 
     @property
     def GroupType(self):
-        r"""headGroup:head;
-workerGroup:worker
+        r"""<p>headGroup:head;<br>workerGroup:worker</p>
         :rtype: str
         """
         return self._GroupType
@@ -18823,7 +19121,7 @@ workerGroup:worker
 
     @property
     def Cpu(self):
-        r"""CPU 核数
+        r"""<p>CPU 核数</p>
         :rtype: int
         """
         return self._Cpu
@@ -18834,7 +19132,7 @@ workerGroup:worker
 
     @property
     def MemSize(self):
-        r"""内存(GB)
+        r"""<p>内存(GB)</p>
         :rtype: int
         """
         return self._MemSize
@@ -18845,7 +19143,7 @@ workerGroup:worker
 
     @property
     def GpuType(self):
-        r"""GPU类型
+        r"""<p>GPU类型</p>
         :rtype: str
         """
         return self._GpuType
@@ -18856,7 +19154,7 @@ workerGroup:worker
 
     @property
     def Gpu(self):
-        r"""GPU核数
+        r"""<p>GPU核数</p>
         :rtype: int
         """
         return self._Gpu
@@ -18867,7 +19165,7 @@ workerGroup:worker
 
     @property
     def ResourceLabels(self):
-        r"""资源标签
+        r"""<p>资源标签</p>
         :rtype: str
         """
         return self._ResourceLabels
@@ -18878,7 +19176,7 @@ workerGroup:worker
 
     @property
     def Env(self):
-        r"""环境变量
+        r"""<p>环境变量</p>
         :rtype: list of NameValue
         """
         return self._Env
@@ -18889,7 +19187,7 @@ workerGroup:worker
 
     @property
     def Labels(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of NameValue
         """
         return self._Labels
@@ -18900,7 +19198,7 @@ workerGroup:worker
 
     @property
     def Tolerations(self):
-        r"""容忍度
+        r"""<p>容忍度</p>
         :rtype: list of Toleration
         """
         return self._Tolerations
@@ -18911,7 +19209,7 @@ workerGroup:worker
 
     @property
     def Scheduler(self):
-        r"""调度策略
+        r"""<p>调度策略</p>
         :rtype: str
         """
         return self._Scheduler
@@ -18922,7 +19220,7 @@ workerGroup:worker
 
     @property
     def PersistentVolume(self):
-        r"""卷目录
+        r"""<p>卷目录</p>
         :rtype: :class:`tencentcloud.emr.v20190103.models.PersistentVolume`
         """
         return self._PersistentVolume
@@ -18930,6 +19228,28 @@ workerGroup:worker
     @PersistentVolume.setter
     def PersistentVolume(self, PersistentVolume):
         self._PersistentVolume = PersistentVolume
+
+    @property
+    def PreStartCommand(self):
+        r"""<p>前置启动命令</p>
+        :rtype: str
+        """
+        return self._PreStartCommand
+
+    @PreStartCommand.setter
+    def PreStartCommand(self, PreStartCommand):
+        self._PreStartCommand = PreStartCommand
+
+    @property
+    def RayStartParams(self):
+        r"""<p>RayStart启动参数</p>
+        :rtype: str
+        """
+        return self._RayStartParams
+
+    @RayStartParams.setter
+    def RayStartParams(self, RayStartParams):
+        self._RayStartParams = RayStartParams
 
 
     def _deserialize(self, params):
@@ -18966,6 +19286,8 @@ workerGroup:worker
         if params.get("PersistentVolume") is not None:
             self._PersistentVolume = PersistentVolume()
             self._PersistentVolume._deserialize(params.get("PersistentVolume"))
+        self._PreStartCommand = params.get("PreStartCommand")
+        self._RayStartParams = params.get("RayStartParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20446,6 +20768,95 @@ class EmrProductConfigOutter(AbstractModel):
         
 
 
+class EnableSparkAppMonitorInfo(AbstractModel):
+    r"""spark开启app监控 对应的Prometheus
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrometheusInstanceId: <p>实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrometheusInstanceId: str
+        :param _GrafanaInstanceId: <p>grafana实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaInstanceId: str
+        :param _EnableMonitor: <p>开启关闭状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableMonitor: bool
+        :param _GrafanaURL: <p>grafana访问地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaURL: str
+        """
+        self._PrometheusInstanceId = None
+        self._GrafanaInstanceId = None
+        self._EnableMonitor = None
+        self._GrafanaURL = None
+
+    @property
+    def PrometheusInstanceId(self):
+        r"""<p>实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PrometheusInstanceId
+
+    @PrometheusInstanceId.setter
+    def PrometheusInstanceId(self, PrometheusInstanceId):
+        self._PrometheusInstanceId = PrometheusInstanceId
+
+    @property
+    def GrafanaInstanceId(self):
+        r"""<p>grafana实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GrafanaInstanceId
+
+    @GrafanaInstanceId.setter
+    def GrafanaInstanceId(self, GrafanaInstanceId):
+        self._GrafanaInstanceId = GrafanaInstanceId
+
+    @property
+    def EnableMonitor(self):
+        r"""<p>开启关闭状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableMonitor
+
+    @EnableMonitor.setter
+    def EnableMonitor(self, EnableMonitor):
+        self._EnableMonitor = EnableMonitor
+
+    @property
+    def GrafanaURL(self):
+        r"""<p>grafana访问地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GrafanaURL
+
+    @GrafanaURL.setter
+    def GrafanaURL(self, GrafanaURL):
+        self._GrafanaURL = GrafanaURL
+
+
+    def _deserialize(self, params):
+        self._PrometheusInstanceId = params.get("PrometheusInstanceId")
+        self._GrafanaInstanceId = params.get("GrafanaInstanceId")
+        self._EnableMonitor = params.get("EnableMonitor")
+        self._GrafanaURL = params.get("GrafanaURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Execution(AbstractModel):
     r"""执行动作。
 
@@ -20938,6 +21349,147 @@ class FlowParamsDesc(AbstractModel):
     def _deserialize(self, params):
         self._PKey = params.get("PKey")
         self._PValue = params.get("PValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GooseFSVolume(AbstractModel):
+    r"""GooseFSVolume
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeName: <p>存储卷名</p>
+        :type VolumeName: str
+        :param _ClusterId: <p>gooseFS实例ID</p>
+        :type ClusterId: str
+        :param _Namespace: <p>gooseFS 命名空间</p>
+        :type Namespace: str
+        :param _SubPath: <p>在命名空间中的挂载路径</p>
+        :type SubPath: str
+        :param _FuseVersion: <p>FuseVERSION描述</p>
+        :type FuseVersion: str
+        :param _ClientVersion: <p>Client Version描述，例如 GOOSE-1.5.2</p>
+        :type ClientVersion: str
+        :param _MountOptions: <p>默认挂载参数</p>
+        :type MountOptions: str
+        :param _JvmOptions: <p>默认JVM参数</p>
+        :type JvmOptions: str
+        """
+        self._VolumeName = None
+        self._ClusterId = None
+        self._Namespace = None
+        self._SubPath = None
+        self._FuseVersion = None
+        self._ClientVersion = None
+        self._MountOptions = None
+        self._JvmOptions = None
+
+    @property
+    def VolumeName(self):
+        r"""<p>存储卷名</p>
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def ClusterId(self):
+        r"""<p>gooseFS实例ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Namespace(self):
+        r"""<p>gooseFS 命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def SubPath(self):
+        r"""<p>在命名空间中的挂载路径</p>
+        :rtype: str
+        """
+        return self._SubPath
+
+    @SubPath.setter
+    def SubPath(self, SubPath):
+        self._SubPath = SubPath
+
+    @property
+    def FuseVersion(self):
+        r"""<p>FuseVERSION描述</p>
+        :rtype: str
+        """
+        return self._FuseVersion
+
+    @FuseVersion.setter
+    def FuseVersion(self, FuseVersion):
+        self._FuseVersion = FuseVersion
+
+    @property
+    def ClientVersion(self):
+        r"""<p>Client Version描述，例如 GOOSE-1.5.2</p>
+        :rtype: str
+        """
+        return self._ClientVersion
+
+    @ClientVersion.setter
+    def ClientVersion(self, ClientVersion):
+        self._ClientVersion = ClientVersion
+
+    @property
+    def MountOptions(self):
+        r"""<p>默认挂载参数</p>
+        :rtype: str
+        """
+        return self._MountOptions
+
+    @MountOptions.setter
+    def MountOptions(self, MountOptions):
+        self._MountOptions = MountOptions
+
+    @property
+    def JvmOptions(self):
+        r"""<p>默认JVM参数</p>
+        :rtype: str
+        """
+        return self._JvmOptions
+
+    @JvmOptions.setter
+    def JvmOptions(self, JvmOptions):
+        self._JvmOptions = JvmOptions
+
+
+    def _deserialize(self, params):
+        self._VolumeName = params.get("VolumeName")
+        self._ClusterId = params.get("ClusterId")
+        self._Namespace = params.get("Namespace")
+        self._SubPath = params.get("SubPath")
+        self._FuseVersion = params.get("FuseVersion")
+        self._ClientVersion = params.get("ClientVersion")
+        self._MountOptions = params.get("MountOptions")
+        self._JvmOptions = params.get("JvmOptions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21733,6 +22285,224 @@ class ImageInfo(AbstractModel):
         self._ImageVersion = params.get("ImageVersion")
         self._ImagePullPolicy = params.get("ImagePullPolicy")
         self._Image = params.get("Image")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageInfoV2(AbstractModel):
+    r"""EMR on TKE集群组件镜像信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageMode: <p>镜像类型</p><p>枚举值：</p><ul><li>official： 官方镜像</li><li>custom： 自定义镜像</li><li>imageUrl： 镜像地址</li></ul>
+        :type ImageMode: str
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _LegacyCCR: <p>是否是存量镜像</p>
+        :type LegacyCCR: bool
+        :param _FullImageUrl: <p>镜像地址</p>
+        :type FullImageUrl: str
+        :param _MainVersion: <p>版本</p>
+        :type MainVersion: str
+        :param _RegistryUrl: <p>镜像地址域名</p>
+        :type RegistryUrl: str
+        :param _NamespaceName: <p>镜像命名空间</p>
+        :type NamespaceName: str
+        :param _RepoName: <p>镜像仓库名</p>
+        :type RepoName: str
+        :param _Tag: <p>镜像版本标签</p>
+        :type Tag: str
+        :param _Username: <p>用户名</p>
+        :type Username: str
+        :param _Password: <p>密码</p>
+        :type Password: str
+        :param _ImagePullSecret: <p>镜像拉取密钥</p>
+        :type ImagePullSecret: :class:`tencentcloud.emr.v20190103.models.ImagePullSecret`
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        """
+        self._ImageMode = None
+        self._Region = None
+        self._LegacyCCR = None
+        self._FullImageUrl = None
+        self._MainVersion = None
+        self._RegistryUrl = None
+        self._NamespaceName = None
+        self._RepoName = None
+        self._Tag = None
+        self._Username = None
+        self._Password = None
+        self._ImagePullSecret = None
+        self._ImagePullPolicy = None
+
+    @property
+    def ImageMode(self):
+        r"""<p>镜像类型</p><p>枚举值：</p><ul><li>official： 官方镜像</li><li>custom： 自定义镜像</li><li>imageUrl： 镜像地址</li></ul>
+        :rtype: str
+        """
+        return self._ImageMode
+
+    @ImageMode.setter
+    def ImageMode(self, ImageMode):
+        self._ImageMode = ImageMode
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def LegacyCCR(self):
+        r"""<p>是否是存量镜像</p>
+        :rtype: bool
+        """
+        return self._LegacyCCR
+
+    @LegacyCCR.setter
+    def LegacyCCR(self, LegacyCCR):
+        self._LegacyCCR = LegacyCCR
+
+    @property
+    def FullImageUrl(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._FullImageUrl
+
+    @FullImageUrl.setter
+    def FullImageUrl(self, FullImageUrl):
+        self._FullImageUrl = FullImageUrl
+
+    @property
+    def MainVersion(self):
+        r"""<p>版本</p>
+        :rtype: str
+        """
+        return self._MainVersion
+
+    @MainVersion.setter
+    def MainVersion(self, MainVersion):
+        self._MainVersion = MainVersion
+
+    @property
+    def RegistryUrl(self):
+        r"""<p>镜像地址域名</p>
+        :rtype: str
+        """
+        return self._RegistryUrl
+
+    @RegistryUrl.setter
+    def RegistryUrl(self, RegistryUrl):
+        self._RegistryUrl = RegistryUrl
+
+    @property
+    def NamespaceName(self):
+        r"""<p>镜像命名空间</p>
+        :rtype: str
+        """
+        return self._NamespaceName
+
+    @NamespaceName.setter
+    def NamespaceName(self, NamespaceName):
+        self._NamespaceName = NamespaceName
+
+    @property
+    def RepoName(self):
+        r"""<p>镜像仓库名</p>
+        :rtype: str
+        """
+        return self._RepoName
+
+    @RepoName.setter
+    def RepoName(self, RepoName):
+        self._RepoName = RepoName
+
+    @property
+    def Tag(self):
+        r"""<p>镜像版本标签</p>
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Username(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""<p>密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ImagePullSecret(self):
+        r"""<p>镜像拉取密钥</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ImagePullSecret`
+        """
+        return self._ImagePullSecret
+
+    @ImagePullSecret.setter
+    def ImagePullSecret(self, ImagePullSecret):
+        self._ImagePullSecret = ImagePullSecret
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+
+    def _deserialize(self, params):
+        self._ImageMode = params.get("ImageMode")
+        self._Region = params.get("Region")
+        self._LegacyCCR = params.get("LegacyCCR")
+        self._FullImageUrl = params.get("FullImageUrl")
+        self._MainVersion = params.get("MainVersion")
+        self._RegistryUrl = params.get("RegistryUrl")
+        self._NamespaceName = params.get("NamespaceName")
+        self._RepoName = params.get("RepoName")
+        self._Tag = params.get("Tag")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        if params.get("ImagePullSecret") is not None:
+            self._ImagePullSecret = ImagePullSecret()
+            self._ImagePullSecret._deserialize(params.get("ImagePullSecret"))
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26516,6 +27286,12 @@ class ModifyDynamicInstanceForm(AbstractModel):
         :type ModifyDynamicInstanceGroup: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceGroup`
         :param _CFSTurboVolumes: <p>cfs turbo挂载列表，不包含标准版</p>
         :type CFSTurboVolumes: list of CFSTurboVolume
+        :param _CustomImage: <p>自定义镜像</p>
+        :type CustomImage: :class:`tencentcloud.emr.v20190103.models.CustomImage`
+        :param _ImageInfoV2: <p>自定义镜像</p>
+        :type ImageInfoV2: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
+        :param _GooseFSVolumes: <p>GooseFS盘</p>
+        :type GooseFSVolumes: list of GooseFSVolume
         """
         self._ModifyScope = None
         self._AddDynamicInstanceGroup = None
@@ -26531,6 +27307,9 @@ class ModifyDynamicInstanceForm(AbstractModel):
         self._SupportNewToken = None
         self._ModifyDynamicInstanceGroup = None
         self._CFSTurboVolumes = None
+        self._CustomImage = None
+        self._ImageInfoV2 = None
+        self._GooseFSVolumes = None
 
     @property
     def ModifyScope(self):
@@ -26686,6 +27465,39 @@ class ModifyDynamicInstanceForm(AbstractModel):
     def CFSTurboVolumes(self, CFSTurboVolumes):
         self._CFSTurboVolumes = CFSTurboVolumes
 
+    @property
+    def CustomImage(self):
+        r"""<p>自定义镜像</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CustomImage`
+        """
+        return self._CustomImage
+
+    @CustomImage.setter
+    def CustomImage(self, CustomImage):
+        self._CustomImage = CustomImage
+
+    @property
+    def ImageInfoV2(self):
+        r"""<p>自定义镜像</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
+        """
+        return self._ImageInfoV2
+
+    @ImageInfoV2.setter
+    def ImageInfoV2(self, ImageInfoV2):
+        self._ImageInfoV2 = ImageInfoV2
+
+    @property
+    def GooseFSVolumes(self):
+        r"""<p>GooseFS盘</p>
+        :rtype: list of GooseFSVolume
+        """
+        return self._GooseFSVolumes
+
+    @GooseFSVolumes.setter
+    def GooseFSVolumes(self, GooseFSVolumes):
+        self._GooseFSVolumes = GooseFSVolumes
+
 
     def _deserialize(self, params):
         self._ModifyScope = params.get("ModifyScope")
@@ -26751,6 +27563,18 @@ class ModifyDynamicInstanceForm(AbstractModel):
                 obj = CFSTurboVolume()
                 obj._deserialize(item)
                 self._CFSTurboVolumes.append(obj)
+        if params.get("CustomImage") is not None:
+            self._CustomImage = CustomImage()
+            self._CustomImage._deserialize(params.get("CustomImage"))
+        if params.get("ImageInfoV2") is not None:
+            self._ImageInfoV2 = ImageInfoV2()
+            self._ImageInfoV2._deserialize(params.get("ImageInfoV2"))
+        if params.get("GooseFSVolumes") is not None:
+            self._GooseFSVolumes = []
+            for item in params.get("GooseFSVolumes"):
+                obj = GooseFSVolume()
+                obj._deserialize(item)
+                self._GooseFSVolumes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31710,6 +32534,10 @@ class NodeSpecInstanceType(AbstractModel):
         :type QuotaNum: int
         :param _QuotaUnit: <p>配额单位</p>
         :type QuotaUnit: str
+        :param _NeedHpcClusterId: <p>是否需要提供高性能计算集群</p>
+        :type NeedHpcClusterId: bool
+        :param _IsGpuInstance: <p>是否是GPU机型</p>
+        :type IsGpuInstance: bool
         """
         self._InstanceType = None
         self._Cpu = None
@@ -31734,6 +32562,8 @@ class NodeSpecInstanceType(AbstractModel):
         self._GpuDesc = None
         self._QuotaNum = None
         self._QuotaUnit = None
+        self._NeedHpcClusterId = None
+        self._IsGpuInstance = None
 
     @property
     def InstanceType(self):
@@ -31992,6 +32822,28 @@ class NodeSpecInstanceType(AbstractModel):
     def QuotaUnit(self, QuotaUnit):
         self._QuotaUnit = QuotaUnit
 
+    @property
+    def NeedHpcClusterId(self):
+        r"""<p>是否需要提供高性能计算集群</p>
+        :rtype: bool
+        """
+        return self._NeedHpcClusterId
+
+    @NeedHpcClusterId.setter
+    def NeedHpcClusterId(self, NeedHpcClusterId):
+        self._NeedHpcClusterId = NeedHpcClusterId
+
+    @property
+    def IsGpuInstance(self):
+        r"""<p>是否是GPU机型</p>
+        :rtype: bool
+        """
+        return self._IsGpuInstance
+
+    @IsGpuInstance.setter
+    def IsGpuInstance(self, IsGpuInstance):
+        self._IsGpuInstance = IsGpuInstance
+
 
     def _deserialize(self, params):
         self._InstanceType = params.get("InstanceType")
@@ -32032,6 +32884,8 @@ class NodeSpecInstanceType(AbstractModel):
         self._GpuDesc = params.get("GpuDesc")
         self._QuotaNum = params.get("QuotaNum")
         self._QuotaUnit = params.get("QuotaUnit")
+        self._NeedHpcClusterId = params.get("NeedHpcClusterId")
+        self._IsGpuInstance = params.get("IsGpuInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33071,6 +33925,8 @@ class PersistentVolume(AbstractModel):
         :type StorageVolumeDetail: list of StorageVolumeDetail
         :param _CFSTurboVolumes: <p>cfs trubo存储卷</p>
         :type CFSTurboVolumes: list of CFSTurboVolume
+        :param _GooseFSVolumes: <p>goosefs volume挂载信息</p>
+        :type GooseFSVolumes: list of GooseFSVolume
         """
         self._CBSVolumes = None
         self._CFSVolumes = None
@@ -33079,6 +33935,7 @@ class PersistentVolume(AbstractModel):
         self._VolumeMounts = None
         self._StorageVolumeDetail = None
         self._CFSTurboVolumes = None
+        self._GooseFSVolumes = None
 
     @property
     def CBSVolumes(self):
@@ -33157,6 +34014,17 @@ class PersistentVolume(AbstractModel):
     def CFSTurboVolumes(self, CFSTurboVolumes):
         self._CFSTurboVolumes = CFSTurboVolumes
 
+    @property
+    def GooseFSVolumes(self):
+        r"""<p>goosefs volume挂载信息</p>
+        :rtype: list of GooseFSVolume
+        """
+        return self._GooseFSVolumes
+
+    @GooseFSVolumes.setter
+    def GooseFSVolumes(self, GooseFSVolumes):
+        self._GooseFSVolumes = GooseFSVolumes
+
 
     def _deserialize(self, params):
         if params.get("CBSVolumes") is not None:
@@ -33196,6 +34064,12 @@ class PersistentVolume(AbstractModel):
                 obj = CFSTurboVolume()
                 obj._deserialize(item)
                 self._CFSTurboVolumes.append(obj)
+        if params.get("GooseFSVolumes") is not None:
+            self._GooseFSVolumes = []
+            for item in params.get("GooseFSVolumes"):
+                obj = GooseFSVolume()
+                obj._deserialize(item)
+                self._GooseFSVolumes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35846,6 +36720,8 @@ class RayCluster(AbstractModel):
         :type SubmitType: int
         :param _DashboardUrl: <p>head访问地址,也是dashboard地址</p>
         :type DashboardUrl: str
+        :param _Namespace: <p>命名空间</p>
+        :type Namespace: str
         """
         self._RayClusterName = None
         self._RayClusterId = None
@@ -35854,6 +36730,7 @@ class RayCluster(AbstractModel):
         self._RedisCount = None
         self._SubmitType = None
         self._DashboardUrl = None
+        self._Namespace = None
 
     @property
     def RayClusterName(self):
@@ -35932,6 +36809,17 @@ class RayCluster(AbstractModel):
     def DashboardUrl(self, DashboardUrl):
         self._DashboardUrl = DashboardUrl
 
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
 
     def _deserialize(self, params):
         self._RayClusterName = params.get("RayClusterName")
@@ -35941,6 +36829,7 @@ class RayCluster(AbstractModel):
         self._RedisCount = params.get("RedisCount")
         self._SubmitType = params.get("SubmitType")
         self._DashboardUrl = params.get("DashboardUrl")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45253,6 +46142,78 @@ class VolumeSetting(AbstractModel):
         if params.get("HostPath") is not None:
             self._HostPath = HostPathVolumeSource()
             self._HostPath._deserialize(params.get("HostPath"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebUIInfo(AbstractModel):
+    r"""WebUI访问信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>访问地址，可能为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _WebUIStatus: <p>WebUI状态包括：<br>-1表示当前服务没有WebUI；<br>0表示当前服务有WebUI，但是没有安装KNOX服务；<br>1表示当前服务有WebUI并安装有KNOX服务，但是KNOX没有开启公网访问；<br>2表示，当前服务有WebUI，安装有KNOX服务且已开启公网访问。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebUIStatus: int
+        :param _ServiceName: <p>服务名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        """
+        self._Url = None
+        self._WebUIStatus = None
+        self._ServiceName = None
+
+    @property
+    def Url(self):
+        r"""<p>访问地址，可能为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def WebUIStatus(self):
+        r"""<p>WebUI状态包括：<br>-1表示当前服务没有WebUI；<br>0表示当前服务有WebUI，但是没有安装KNOX服务；<br>1表示当前服务有WebUI并安装有KNOX服务，但是KNOX没有开启公网访问；<br>2表示，当前服务有WebUI，安装有KNOX服务且已开启公网访问。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WebUIStatus
+
+    @WebUIStatus.setter
+    def WebUIStatus(self, WebUIStatus):
+        self._WebUIStatus = WebUIStatus
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._WebUIStatus = params.get("WebUIStatus")
+        self._ServiceName = params.get("ServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1061,14 +1061,14 @@ class QueryHunyuan3DPartJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID。
+        :param _JobId: <p>任务ID。</p>
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""任务ID。
+        r"""<p>任务ID。</p>
         :rtype: str
         """
         return self._JobId
@@ -1097,14 +1097,16 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。
+        :param _Status: <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。</p>
         :type Status: str
-        :param _ErrorCode: 错误码。
+        :param _ErrorCode: <p>错误码。</p>
         :type ErrorCode: str
-        :param _ErrorMessage: 错误信息。
+        :param _ErrorMessage: <p>错误信息。</p>
         :type ErrorMessage: str
-        :param _ResultFile3Ds: 生成文件的URL地址，有效期1天。
+        :param _ResultFile3Ds: <p>生成文件的URL地址，有效期1天。</p>
         :type ResultFile3Ds: list of File3D
+        :param _PartSegmentationInfo: <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+        :type PartSegmentationInfo: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1112,11 +1114,12 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
         self._ErrorCode = None
         self._ErrorMessage = None
         self._ResultFile3Ds = None
+        self._PartSegmentationInfo = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。
+        r"""<p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。</p>
         :rtype: str
         """
         return self._Status
@@ -1127,7 +1130,7 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""错误码。
+        r"""<p>错误码。</p>
         :rtype: str
         """
         return self._ErrorCode
@@ -1138,7 +1141,7 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""错误信息。
+        r"""<p>错误信息。</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -1149,7 +1152,7 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
 
     @property
     def ResultFile3Ds(self):
-        r"""生成文件的URL地址，有效期1天。
+        r"""<p>生成文件的URL地址，有效期1天。</p>
         :rtype: list of File3D
         """
         return self._ResultFile3Ds
@@ -1157,6 +1160,17 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
     @ResultFile3Ds.setter
     def ResultFile3Ds(self, ResultFile3Ds):
         self._ResultFile3Ds = ResultFile3Ds
+
+    @property
+    def PartSegmentationInfo(self):
+        r"""<p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+        :rtype: str
+        """
+        return self._PartSegmentationInfo
+
+    @PartSegmentationInfo.setter
+    def PartSegmentationInfo(self, PartSegmentationInfo):
+        self._PartSegmentationInfo = PartSegmentationInfo
 
     @property
     def RequestId(self):
@@ -1180,6 +1194,7 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
                 obj = File3D()
                 obj._deserialize(item)
                 self._ResultFile3Ds.append(obj)
+        self._PartSegmentationInfo = params.get("PartSegmentationInfo")
         self._RequestId = params.get("RequestId")
 
 
@@ -1578,9 +1593,15 @@ class SubmitHunyuan3DPartJobRequest(AbstractModel):
         :type File: :class:`tencentcloud.ai3d.v20250513.models.InputFile3D`
         :param _Model: <p>组件生成模型版本，默认为1.5</p><p>枚举值：</p><ul><li>1.5： 1.5模型</li></ul><p>默认值：1.5</p>
         :type Model: str
+        :param _PartSegmentationInfo: <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+        :type PartSegmentationInfo: str
+        :param _EnableStagedGeneration: <p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+        :type EnableStagedGeneration: bool
         """
         self._File = None
         self._Model = None
+        self._PartSegmentationInfo = None
+        self._EnableStagedGeneration = None
 
     @property
     def File(self):
@@ -1604,12 +1625,36 @@ class SubmitHunyuan3DPartJobRequest(AbstractModel):
     def Model(self, Model):
         self._Model = Model
 
+    @property
+    def PartSegmentationInfo(self):
+        r"""<p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+        :rtype: str
+        """
+        return self._PartSegmentationInfo
+
+    @PartSegmentationInfo.setter
+    def PartSegmentationInfo(self, PartSegmentationInfo):
+        self._PartSegmentationInfo = PartSegmentationInfo
+
+    @property
+    def EnableStagedGeneration(self):
+        r"""<p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+        :rtype: bool
+        """
+        return self._EnableStagedGeneration
+
+    @EnableStagedGeneration.setter
+    def EnableStagedGeneration(self, EnableStagedGeneration):
+        self._EnableStagedGeneration = EnableStagedGeneration
+
 
     def _deserialize(self, params):
         if params.get("File") is not None:
             self._File = InputFile3D()
             self._File._deserialize(params.get("File"))
         self._Model = params.get("Model")
+        self._PartSegmentationInfo = params.get("PartSegmentationInfo")
+        self._EnableStagedGeneration = params.get("EnableStagedGeneration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

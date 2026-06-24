@@ -104,84 +104,68 @@ class CreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 私有网络 ID。
+        :param _VpcId: <p>私有网络 ID。</p>
         :type VpcId: str
-        :param _SubnetId: 私有网络 VPC 的子网 ID。
+        :param _SubnetId: <p>私有网络 VPC 的子网 ID。</p>
         :type SubnetId: str
-        :param _PayMode: 指定实例计费方式。
-- 0：按量付费。
-- 1：包年包月。
+        :param _PayMode: <p>指定实例计费方式。</p><ul><li>0：按量付费。</li><li>1：包年包月。</li></ul>
         :type PayMode: int
-        :param _InstanceName: 设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。
+        :param _InstanceName: <p>设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。</p>
         :type InstanceName: str
-        :param _SecurityGroupIds: 安全组 ID。
+        :param _SecurityGroupIds: <p>安全组 ID。</p>
         :type SecurityGroupIds: list of str
-        :param _PayPeriod: 若计费方式为包年包月，指定包年包月续费的时长。
-- 单位：月。
-- 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+        :param _PayPeriod: <p>若计费方式为包年包月，指定包年包月续费的时长。</p><ul><li>单位：月。</li><li>取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。</li></ul>
         :type PayPeriod: int
-        :param _AutoRenew: 若为包年包月计费，需指定是否开启自动续费。
-- 0：不开启自动续费。
-- 1：开启自动续费。
+        :param _AutoRenew: <p>若为包年包月计费，需指定是否开启自动续费。</p><ul><li>0：不开启自动续费。</li><li>1：开启自动续费。</li></ul>
         :type AutoRenew: int
-        :param _Params: 实例额外参数，通过json提交。
+        :param _Params: <p>实例额外参数，通过json提交。</p>
         :type Params: str
-        :param _ResourceTags: 以数组形式列出标签信息。
+        :param _ResourceTags: <p>以数组形式列出标签信息。</p>
         :type ResourceTags: list of Tag
-        :param _Project: 指定实例所属项目 ID。
+        :param _Project: <p>指定实例所属项目 ID。</p>
         :type Project: str
-        :param _ProductType: 产品版本，0-标准版，1-容量增强版
+        :param _ProductType: <p>产品版本，0-标准版，1-容量增强版</p>
         :type ProductType: int
-        :param _InstanceType: 实例类型。
-- base：免费测试版。
-- single：单机版。
-- cluster：高可用版。
+        :param _InstanceType: <p>实例类型。</p><ul><li>base：免费测试版。</li><li>single：单机版。</li><li>cluster：高可用版。</li></ul>
         :type InstanceType: str
-        :param _Mode: 实例类型为高可用版，需指定可用区选项。
-- two：两可用区。
-- three：三可用区。
+        :param _Mode: <p>实例类型为高可用版，需指定可用区选项。</p><ul><li>two：两可用区。</li><li>three：三可用区。</li></ul>
         :type Mode: str
-        :param _GoodsNum: 购买实例数量。
+        :param _GoodsNum: <p>购买实例数量。</p>
         :type GoodsNum: int
-        :param _NetworkType: 网络类型。
-VPC或TCS
+        :param _NetworkType: <p>网络类型。<br>VPC或TCS</p>
         :type NetworkType: str
-        :param _TemplateId: 实例所应用的参数模板 ID。
+        :param _TemplateId: <p>实例所应用的参数模板 ID。</p>
         :type TemplateId: str
-        :param _Components: 组件具体设置列表。
+        :param _Components: <p>组件具体设置列表。</p>
         :type Components: list of CreateInstancesComponent
-        :param _Zone: 实例类型为高可用版，通过该参数指定主可用区。
+        :param _Zone: <p>实例类型为高可用版，通过该参数指定主可用区。</p>
         :type Zone: str
-        :param _SlaveZones: 实例类型为高可用版，通过该参数指定备可用区。
+        :param _SlaveZones: <p>实例类型为高可用版，通过该参数指定备可用区。</p>
         :type SlaveZones: list of str
-        :param _IsNoExpired: 是否长期有效
+        :param _IsNoExpired: <p>是否长期有效</p>
         :type IsNoExpired: bool
-        :param _EngineName: 引擎名称，业务自定义。
+        :param _EngineName: <p>引擎名称，业务自定义。</p>
         :type EngineName: str
-        :param _EngineVersion: 引擎版本，业务自定义。
+        :param _EngineVersion: <p>引擎版本，业务自定义。</p>
         :type EngineVersion: str
-        :param _Brief: 实例描述。
+        :param _Brief: <p>实例描述。</p>
         :type Brief: str
-        :param _Chief: 负责人信息。
+        :param _Chief: <p>负责人信息。</p>
         :type Chief: str
-        :param _DBA: DBA人员信息
+        :param _DBA: <p>DBA人员信息</p>
         :type DBA: str
-        :param _NodeType: 指定实例的节点类型。具体信息，请参见[选择节点类型](https://cloud.tencent.com/document/product/1709/113399)。
-- compute：计费型。
-- normal：标准型。
-- store：存储型。
+        :param _NodeType: <p>指定实例的节点类型。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">选择节点类型</a>。</p><ul><li>compute：计费型。</li><li>normal：标准型。</li><li>store：存储型。</li></ul>
         :type NodeType: str
-        :param _Cpu: 指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
-- 计算型： 1、2、4、8、16、24、32。
-- 标准型： 1、2、4、8、12、16。
-- 存储型： 1、2、4、6、8。
+        :param _Cpu: <p>指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。</p><ul><li>计算型： 1、2、4、8、16、24、32。</li><li>标准型： 1、2、4、8、12、16。</li><li>存储型： 1、2、4、6、8。</li></ul>
         :type Cpu: int
-        :param _Memory: 指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :param _Memory: <p>指定实例所需的内存大小。单位：GB。选择具体规格，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
         :type Memory: int
-        :param _DiskSize: 指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :param _DiskSize: <p>指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
         :type DiskSize: int
-        :param _WorkerNodeNum: 指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        :param _WorkerNodeNum: <p>指定实例所需配置的节点数量。选择方法，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
         :type WorkerNodeNum: int
+        :param _EnableEncryption: <p>是否开启磁盘数据存储加密（仅 CBS 数据盘生效，需落在 VECTORDB_DISK_ENCRYPT_REGION 白名单地域，默认 false 不开启）</p><p>默认值：true</p>
+        :type EnableEncryption: bool
         """
         self._VpcId = None
         self._SubnetId = None
@@ -213,10 +197,11 @@ VPC或TCS
         self._Memory = None
         self._DiskSize = None
         self._WorkerNodeNum = None
+        self._EnableEncryption = None
 
     @property
     def VpcId(self):
-        r"""私有网络 ID。
+        r"""<p>私有网络 ID。</p>
         :rtype: str
         """
         return self._VpcId
@@ -227,7 +212,7 @@ VPC或TCS
 
     @property
     def SubnetId(self):
-        r"""私有网络 VPC 的子网 ID。
+        r"""<p>私有网络 VPC 的子网 ID。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -238,9 +223,7 @@ VPC或TCS
 
     @property
     def PayMode(self):
-        r"""指定实例计费方式。
-- 0：按量付费。
-- 1：包年包月。
+        r"""<p>指定实例计费方式。</p><ul><li>0：按量付费。</li><li>1：包年包月。</li></ul>
         :rtype: int
         """
         return self._PayMode
@@ -251,7 +234,7 @@ VPC或TCS
 
     @property
     def InstanceName(self):
-        r"""设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。
+        r"""<p>设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -262,7 +245,7 @@ VPC或TCS
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组 ID。
+        r"""<p>安全组 ID。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -273,9 +256,7 @@ VPC或TCS
 
     @property
     def PayPeriod(self):
-        r"""若计费方式为包年包月，指定包年包月续费的时长。
-- 单位：月。
-- 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+        r"""<p>若计费方式为包年包月，指定包年包月续费的时长。</p><ul><li>单位：月。</li><li>取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。</li></ul>
         :rtype: int
         """
         return self._PayPeriod
@@ -286,9 +267,7 @@ VPC或TCS
 
     @property
     def AutoRenew(self):
-        r"""若为包年包月计费，需指定是否开启自动续费。
-- 0：不开启自动续费。
-- 1：开启自动续费。
+        r"""<p>若为包年包月计费，需指定是否开启自动续费。</p><ul><li>0：不开启自动续费。</li><li>1：开启自动续费。</li></ul>
         :rtype: int
         """
         return self._AutoRenew
@@ -299,7 +278,7 @@ VPC或TCS
 
     @property
     def Params(self):
-        r"""实例额外参数，通过json提交。
+        r"""<p>实例额外参数，通过json提交。</p>
         :rtype: str
         """
         return self._Params
@@ -310,7 +289,7 @@ VPC或TCS
 
     @property
     def ResourceTags(self):
-        r"""以数组形式列出标签信息。
+        r"""<p>以数组形式列出标签信息。</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -323,7 +302,7 @@ VPC或TCS
     def Project(self):
         warnings.warn("parameter `Project` is deprecated", DeprecationWarning) 
 
-        r"""指定实例所属项目 ID。
+        r"""<p>指定实例所属项目 ID。</p>
         :rtype: str
         """
         return self._Project
@@ -336,7 +315,7 @@ VPC或TCS
 
     @property
     def ProductType(self):
-        r"""产品版本，0-标准版，1-容量增强版
+        r"""<p>产品版本，0-标准版，1-容量增强版</p>
         :rtype: int
         """
         return self._ProductType
@@ -347,10 +326,7 @@ VPC或TCS
 
     @property
     def InstanceType(self):
-        r"""实例类型。
-- base：免费测试版。
-- single：单机版。
-- cluster：高可用版。
+        r"""<p>实例类型。</p><ul><li>base：免费测试版。</li><li>single：单机版。</li><li>cluster：高可用版。</li></ul>
         :rtype: str
         """
         return self._InstanceType
@@ -361,9 +337,7 @@ VPC或TCS
 
     @property
     def Mode(self):
-        r"""实例类型为高可用版，需指定可用区选项。
-- two：两可用区。
-- three：三可用区。
+        r"""<p>实例类型为高可用版，需指定可用区选项。</p><ul><li>two：两可用区。</li><li>three：三可用区。</li></ul>
         :rtype: str
         """
         return self._Mode
@@ -374,7 +348,7 @@ VPC或TCS
 
     @property
     def GoodsNum(self):
-        r"""购买实例数量。
+        r"""<p>购买实例数量。</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -387,8 +361,7 @@ VPC或TCS
     def NetworkType(self):
         warnings.warn("parameter `NetworkType` is deprecated", DeprecationWarning) 
 
-        r"""网络类型。
-VPC或TCS
+        r"""<p>网络类型。<br>VPC或TCS</p>
         :rtype: str
         """
         return self._NetworkType
@@ -403,7 +376,7 @@ VPC或TCS
     def TemplateId(self):
         warnings.warn("parameter `TemplateId` is deprecated", DeprecationWarning) 
 
-        r"""实例所应用的参数模板 ID。
+        r"""<p>实例所应用的参数模板 ID。</p>
         :rtype: str
         """
         return self._TemplateId
@@ -418,7 +391,7 @@ VPC或TCS
     def Components(self):
         warnings.warn("parameter `Components` is deprecated", DeprecationWarning) 
 
-        r"""组件具体设置列表。
+        r"""<p>组件具体设置列表。</p>
         :rtype: list of CreateInstancesComponent
         """
         return self._Components
@@ -433,7 +406,7 @@ VPC或TCS
     def Zone(self):
         warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
 
-        r"""实例类型为高可用版，通过该参数指定主可用区。
+        r"""<p>实例类型为高可用版，通过该参数指定主可用区。</p>
         :rtype: str
         """
         return self._Zone
@@ -448,7 +421,7 @@ VPC或TCS
     def SlaveZones(self):
         warnings.warn("parameter `SlaveZones` is deprecated", DeprecationWarning) 
 
-        r"""实例类型为高可用版，通过该参数指定备可用区。
+        r"""<p>实例类型为高可用版，通过该参数指定备可用区。</p>
         :rtype: list of str
         """
         return self._SlaveZones
@@ -463,7 +436,7 @@ VPC或TCS
     def IsNoExpired(self):
         warnings.warn("parameter `IsNoExpired` is deprecated", DeprecationWarning) 
 
-        r"""是否长期有效
+        r"""<p>是否长期有效</p>
         :rtype: bool
         """
         return self._IsNoExpired
@@ -478,7 +451,7 @@ VPC或TCS
     def EngineName(self):
         warnings.warn("parameter `EngineName` is deprecated", DeprecationWarning) 
 
-        r"""引擎名称，业务自定义。
+        r"""<p>引擎名称，业务自定义。</p>
         :rtype: str
         """
         return self._EngineName
@@ -493,7 +466,7 @@ VPC或TCS
     def EngineVersion(self):
         warnings.warn("parameter `EngineVersion` is deprecated", DeprecationWarning) 
 
-        r"""引擎版本，业务自定义。
+        r"""<p>引擎版本，业务自定义。</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -508,7 +481,7 @@ VPC或TCS
     def Brief(self):
         warnings.warn("parameter `Brief` is deprecated", DeprecationWarning) 
 
-        r"""实例描述。
+        r"""<p>实例描述。</p>
         :rtype: str
         """
         return self._Brief
@@ -523,7 +496,7 @@ VPC或TCS
     def Chief(self):
         warnings.warn("parameter `Chief` is deprecated", DeprecationWarning) 
 
-        r"""负责人信息。
+        r"""<p>负责人信息。</p>
         :rtype: str
         """
         return self._Chief
@@ -538,7 +511,7 @@ VPC或TCS
     def DBA(self):
         warnings.warn("parameter `DBA` is deprecated", DeprecationWarning) 
 
-        r"""DBA人员信息
+        r"""<p>DBA人员信息</p>
         :rtype: str
         """
         return self._DBA
@@ -553,10 +526,7 @@ VPC或TCS
     def NodeType(self):
         warnings.warn("parameter `NodeType` is deprecated", DeprecationWarning) 
 
-        r"""指定实例的节点类型。具体信息，请参见[选择节点类型](https://cloud.tencent.com/document/product/1709/113399)。
-- compute：计费型。
-- normal：标准型。
-- store：存储型。
+        r"""<p>指定实例的节点类型。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">选择节点类型</a>。</p><ul><li>compute：计费型。</li><li>normal：标准型。</li><li>store：存储型。</li></ul>
         :rtype: str
         """
         return self._NodeType
@@ -569,10 +539,7 @@ VPC或TCS
 
     @property
     def Cpu(self):
-        r"""指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
-- 计算型： 1、2、4、8、16、24、32。
-- 标准型： 1、2、4、8、12、16。
-- 存储型： 1、2、4、6、8。
+        r"""<p>指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。</p><ul><li>计算型： 1、2、4、8、16、24、32。</li><li>标准型： 1、2、4、8、12、16。</li><li>存储型： 1、2、4、6、8。</li></ul>
         :rtype: int
         """
         return self._Cpu
@@ -583,7 +550,7 @@ VPC或TCS
 
     @property
     def Memory(self):
-        r"""指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        r"""<p>指定实例所需的内存大小。单位：GB。选择具体规格，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
         :rtype: int
         """
         return self._Memory
@@ -594,7 +561,7 @@ VPC或TCS
 
     @property
     def DiskSize(self):
-        r"""指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        r"""<p>指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
         :rtype: int
         """
         return self._DiskSize
@@ -605,7 +572,7 @@ VPC或TCS
 
     @property
     def WorkerNodeNum(self):
-        r"""指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+        r"""<p>指定实例所需配置的节点数量。选择方法，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
         :rtype: int
         """
         return self._WorkerNodeNum
@@ -613,6 +580,17 @@ VPC或TCS
     @WorkerNodeNum.setter
     def WorkerNodeNum(self, WorkerNodeNum):
         self._WorkerNodeNum = WorkerNodeNum
+
+    @property
+    def EnableEncryption(self):
+        r"""<p>是否开启磁盘数据存储加密（仅 CBS 数据盘生效，需落在 VECTORDB_DISK_ENCRYPT_REGION 白名单地域，默认 false 不开启）</p><p>默认值：true</p>
+        :rtype: bool
+        """
+        return self._EnableEncryption
+
+    @EnableEncryption.setter
+    def EnableEncryption(self, EnableEncryption):
+        self._EnableEncryption = EnableEncryption
 
 
     def _deserialize(self, params):
@@ -656,6 +634,7 @@ VPC或TCS
         self._Memory = params.get("Memory")
         self._DiskSize = params.get("DiskSize")
         self._WorkerNodeNum = params.get("WorkerNodeNum")
+        self._EnableEncryption = params.get("EnableEncryption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -673,7 +652,7 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例 ID。
+        :param _InstanceIds: <p>实例 ID。</p>
         :type InstanceIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -683,7 +662,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""实例 ID。
+        r"""<p>实例 ID。</p>
         :rtype: list of str
         """
         return self._InstanceIds

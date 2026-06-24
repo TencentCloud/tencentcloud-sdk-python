@@ -1207,25 +1207,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def RecognizeContainerOCR(
-            self,
-            request: models.RecognizeContainerOCRRequest,
-            opts: Dict = None,
-    ) -> models.RecognizeContainerOCRResponse:
-        """
-        本接口支持集装箱箱门信息识别，识别字段包括集装箱箱号、类型、总重量、有效承重、容量、自身重量，具备集装箱箱号、类型不完整或者不清晰的告警功能。
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RecognizeContainerOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RecognizeContainerOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def RecognizeEncryptedIDCardOCR(
             self,
             request: models.RecognizeEncryptedIDCardOCRRequest,

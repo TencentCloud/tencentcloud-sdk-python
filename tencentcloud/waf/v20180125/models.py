@@ -27034,7 +27034,7 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
+        :param _ServiceId: <p>服务id，使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
         :type ServiceId: str
         :param _Type: <p>流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填</p>
         :type Type: int
@@ -27042,7 +27042,7 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         :type InstanceId: str
         :param _Content: <p>要审核的内容</p>
         :type Content: str
-        :param _ChatId: <p>对话的id</p>
+        :param _ChatId: <p>一问一答的对话的id</p>
         :type ChatId: str
         :param _UserId: <p>标识用户的id，限速使用，不填，则限速会不生效</p>
         :type UserId: str
@@ -27054,6 +27054,10 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         :type ToolName: str
         :param _ToolArgs: <p>tool_call 场景工具参数</p>
         :type ToolArgs: str
+        :param _SessionId: <p>多轮对话的id</p>
+        :type SessionId: str
+        :param _IntentContent: <p>意图检测请求内容</p>
+        :type IntentContent: :class:`tencentcloud.waf.v20180125.models.IntentContent`
         """
         self._ServiceId = None
         self._Type = None
@@ -27065,10 +27069,12 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         self._ImageEncode = None
         self._ToolName = None
         self._ToolArgs = None
+        self._SessionId = None
+        self._IntentContent = None
 
     @property
     def ServiceId(self):
-        r"""<p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
+        r"""<p>服务id，使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
         :rtype: str
         """
         return self._ServiceId
@@ -27112,7 +27118,7 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
 
     @property
     def ChatId(self):
-        r"""<p>对话的id</p>
+        r"""<p>一问一答的对话的id</p>
         :rtype: str
         """
         return self._ChatId
@@ -27176,6 +27182,28 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
     def ToolArgs(self, ToolArgs):
         self._ToolArgs = ToolArgs
 
+    @property
+    def SessionId(self):
+        r"""<p>多轮对话的id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def IntentContent(self):
+        r"""<p>意图检测请求内容</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.IntentContent`
+        """
+        return self._IntentContent
+
+    @IntentContent.setter
+    def IntentContent(self, IntentContent):
+        self._IntentContent = IntentContent
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -27188,6 +27216,10 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         self._ImageEncode = params.get("ImageEncode")
         self._ToolName = params.get("ToolName")
         self._ToolArgs = params.get("ToolArgs")
+        self._SessionId = params.get("SessionId")
+        if params.get("IntentContent") is not None:
+            self._IntentContent = IntentContent()
+            self._IntentContent._deserialize(params.get("IntentContent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39827,6 +39859,78 @@ class InstanceInfo(AbstractModel):
         
 
 
+class IntentContent(AbstractModel):
+    r"""大模型意图检测的请求内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentTrace: <p>agent的轨迹内容，参考用例</p>
+        :type AgentTrace: str
+        """
+        self._AgentTrace = None
+
+    @property
+    def AgentTrace(self):
+        r"""<p>agent的轨迹内容，参考用例</p>
+        :rtype: str
+        """
+        return self._AgentTrace
+
+    @AgentTrace.setter
+    def AgentTrace(self, AgentTrace):
+        self._AgentTrace = AgentTrace
+
+
+    def _deserialize(self, params):
+        self._AgentTrace = params.get("AgentTrace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentDetectResult(AbstractModel):
+    r"""大模型安全意图检测响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsUnSafe: <p>是否恶意意图</p><p>枚举值：</p><ul><li>1： 恶意</li><li>0： 正常</li></ul>
+        :type IsUnSafe: int
+        """
+        self._IsUnSafe = None
+
+    @property
+    def IsUnSafe(self):
+        r"""<p>是否恶意意图</p><p>枚举值：</p><ul><li>1： 恶意</li><li>0： 正常</li></ul>
+        :rtype: int
+        """
+        return self._IsUnSafe
+
+    @IsUnSafe.setter
+    def IsUnSafe(self, IsUnSafe):
+        self._IsUnSafe = IsUnSafe
+
+
+    def _deserialize(self, params):
+        self._IsUnSafe = params.get("IsUnSafe")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IpAccessControlData(AbstractModel):
     r"""数据封装
 
@@ -40676,6 +40780,8 @@ class LLMDetectResult(AbstractModel):
         :type MsgID: str
         :param _ToolCallResult: <p>toolcall的检测结果</p>
         :type ToolCallResult: :class:`tencentcloud.waf.v20180125.models.ToolCallResult`
+        :param _IntentDetectResult: <p>意图检测结果</p>
+        :type IntentDetectResult: :class:`tencentcloud.waf.v20180125.models.IntentDetectResult`
         """
         self._SensitiveResult = None
         self._KeyWordsResult = None
@@ -40688,6 +40794,7 @@ class LLMDetectResult(AbstractModel):
         self._ImageResult = None
         self._MsgID = None
         self._ToolCallResult = None
+        self._IntentDetectResult = None
 
     @property
     def SensitiveResult(self):
@@ -40810,6 +40917,17 @@ class LLMDetectResult(AbstractModel):
     def ToolCallResult(self, ToolCallResult):
         self._ToolCallResult = ToolCallResult
 
+    @property
+    def IntentDetectResult(self):
+        r"""<p>意图检测结果</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.IntentDetectResult`
+        """
+        return self._IntentDetectResult
+
+    @IntentDetectResult.setter
+    def IntentDetectResult(self, IntentDetectResult):
+        self._IntentDetectResult = IntentDetectResult
+
 
     def _deserialize(self, params):
         if params.get("SensitiveResult") is not None:
@@ -40842,6 +40960,9 @@ class LLMDetectResult(AbstractModel):
         if params.get("ToolCallResult") is not None:
             self._ToolCallResult = ToolCallResult()
             self._ToolCallResult._deserialize(params.get("ToolCallResult"))
+        if params.get("IntentDetectResult") is not None:
+            self._IntentDetectResult = IntentDetectResult()
+            self._IntentDetectResult._deserialize(params.get("IntentDetectResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

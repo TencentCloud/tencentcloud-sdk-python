@@ -7683,6 +7683,321 @@ class ListAccessKeysResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListAccountsRequest(AbstractModel):
+    r"""ListAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxItems: <p>返回结果的条数，当返回结果达到 MaxItems 限制被截断时，返回参数IsTruncated将等于true。</p><p>取值范围：[1, 100]</p>
+        :type MaxItems: int
+        :param _Marker: <p>当请求的返回结果被截断时，可以使用Marker获取从当前截断位置之后的内容。</p>
+        :type Marker: str
+        :param _UserType: <p>用户类型</p><p>枚举值：</p><ul><li>Owner： 主账号</li><li>SubUser： 普通子用户</li><li>CICUser： CIC 子用户</li><li>WechatCorpUser： 企业微信子用户</li><li>AgentIdentity： AgentIdentity子用户</li><li>Collaborator： 协作者</li><li>MessageReceiver： 消息接收者</li></ul>
+        :type UserType: str
+        """
+        self._MaxItems = None
+        self._Marker = None
+        self._UserType = None
+
+    @property
+    def MaxItems(self):
+        r"""<p>返回结果的条数，当返回结果达到 MaxItems 限制被截断时，返回参数IsTruncated将等于true。</p><p>取值范围：[1, 100]</p>
+        :rtype: int
+        """
+        return self._MaxItems
+
+    @MaxItems.setter
+    def MaxItems(self, MaxItems):
+        self._MaxItems = MaxItems
+
+    @property
+    def Marker(self):
+        r"""<p>当请求的返回结果被截断时，可以使用Marker获取从当前截断位置之后的内容。</p>
+        :rtype: str
+        """
+        return self._Marker
+
+    @Marker.setter
+    def Marker(self, Marker):
+        self._Marker = Marker
+
+    @property
+    def UserType(self):
+        r"""<p>用户类型</p><p>枚举值：</p><ul><li>Owner： 主账号</li><li>SubUser： 普通子用户</li><li>CICUser： CIC 子用户</li><li>WechatCorpUser： 企业微信子用户</li><li>AgentIdentity： AgentIdentity子用户</li><li>Collaborator： 协作者</li><li>MessageReceiver： 消息接收者</li></ul>
+        :rtype: str
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+
+    def _deserialize(self, params):
+        self._MaxItems = params.get("MaxItems")
+        self._Marker = params.get("Marker")
+        self._UserType = params.get("UserType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAccountsResponse(AbstractModel):
+    r"""ListAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Users: <p>子账号列表。</p>
+        :type Users: list of ListAllUser
+        :param _Marker: <p>当IsTruncated为true时才有此字段，当返回true时，需要继续调用此接口，并且使用Marker获取截断后的内容 。</p>
+        :type Marker: str
+        :param _IsTruncated: <p>请求返回结果是否被截断。</p>
+        :type IsTruncated: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Users = None
+        self._Marker = None
+        self._IsTruncated = None
+        self._RequestId = None
+
+    @property
+    def Users(self):
+        r"""<p>子账号列表。</p>
+        :rtype: list of ListAllUser
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def Marker(self):
+        r"""<p>当IsTruncated为true时才有此字段，当返回true时，需要继续调用此接口，并且使用Marker获取截断后的内容 。</p>
+        :rtype: str
+        """
+        return self._Marker
+
+    @Marker.setter
+    def Marker(self, Marker):
+        self._Marker = Marker
+
+    @property
+    def IsTruncated(self):
+        r"""<p>请求返回结果是否被截断。</p>
+        :rtype: bool
+        """
+        return self._IsTruncated
+
+    @IsTruncated.setter
+    def IsTruncated(self, IsTruncated):
+        self._IsTruncated = IsTruncated
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = ListAllUser()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        self._Marker = params.get("Marker")
+        self._IsTruncated = params.get("IsTruncated")
+        self._RequestId = params.get("RequestId")
+
+
+class ListAllUser(AbstractModel):
+    r"""账号详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: <p>子账号账号ID。</p>
+        :type Uin: int
+        :param _Name: <p>子账号用户名。</p>
+        :type Name: str
+        :param _Uid: <p>子账号 UID。</p>
+        :type Uid: int
+        :param _Remark: <p>子账号备注。</p>
+        :type Remark: str
+        :param _ConsoleLogin: <p>子账号能否登录控制台。</p>
+        :type ConsoleLogin: int
+        :param _PhoneNum: <p>手机号。</p>
+        :type PhoneNum: str
+        :param _CountryCode: <p>区号。</p>
+        :type CountryCode: str
+        :param _Email: <p>邮箱。</p>
+        :type Email: str
+        :param _CreateTime: <p>创建时间。</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type CreateTime: str
+        :param _UserType: <p>账号类型</p><p>枚举值：</p><ul><li>Owner： 主账号</li><li>SubUser： 子用户</li><li>CICUser： CIC 用户</li><li>WechatCorpUser： 企业微信子用户</li><li>AgentIdentity： AgentIdentity用户</li><li>Collaborator： 协作者</li><li>MessageReceiver： 消息接收者</li><li>Unknown： 未知</li></ul>
+        :type UserType: str
+        """
+        self._Uin = None
+        self._Name = None
+        self._Uid = None
+        self._Remark = None
+        self._ConsoleLogin = None
+        self._PhoneNum = None
+        self._CountryCode = None
+        self._Email = None
+        self._CreateTime = None
+        self._UserType = None
+
+    @property
+    def Uin(self):
+        r"""<p>子账号账号ID。</p>
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        r"""<p>子账号用户名。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Uid(self):
+        r"""<p>子账号 UID。</p>
+        :rtype: int
+        """
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Remark(self):
+        r"""<p>子账号备注。</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConsoleLogin(self):
+        r"""<p>子账号能否登录控制台。</p>
+        :rtype: int
+        """
+        return self._ConsoleLogin
+
+    @ConsoleLogin.setter
+    def ConsoleLogin(self, ConsoleLogin):
+        self._ConsoleLogin = ConsoleLogin
+
+    @property
+    def PhoneNum(self):
+        r"""<p>手机号。</p>
+        :rtype: str
+        """
+        return self._PhoneNum
+
+    @PhoneNum.setter
+    def PhoneNum(self, PhoneNum):
+        self._PhoneNum = PhoneNum
+
+    @property
+    def CountryCode(self):
+        r"""<p>区号。</p>
+        :rtype: str
+        """
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def Email(self):
+        r"""<p>邮箱。</p>
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间。</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UserType(self):
+        r"""<p>账号类型</p><p>枚举值：</p><ul><li>Owner： 主账号</li><li>SubUser： 子用户</li><li>CICUser： CIC 用户</li><li>WechatCorpUser： 企业微信子用户</li><li>AgentIdentity： AgentIdentity用户</li><li>Collaborator： 协作者</li><li>MessageReceiver： 消息接收者</li><li>Unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Uid = params.get("Uid")
+        self._Remark = params.get("Remark")
+        self._ConsoleLogin = params.get("ConsoleLogin")
+        self._PhoneNum = params.get("PhoneNum")
+        self._CountryCode = params.get("CountryCode")
+        self._Email = params.get("Email")
+        self._CreateTime = params.get("CreateTime")
+        self._UserType = params.get("UserType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListAttachedGroupPoliciesRequest(AbstractModel):
     r"""ListAttachedGroupPolicies请求参数结构体
 

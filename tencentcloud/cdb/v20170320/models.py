@@ -7359,47 +7359,45 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyGroupId: 代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+        :param _ProxyGroupId: <p>代理组 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/90585">DescribeCdbProxyInfo</a> 接口获取。</p>
         :type ProxyGroupId: str
-        :param _WeightMode: 权重分配模式，
-系统自动分配："system"， 自定义："custom"
+        :param _WeightMode: <p>权重分配模式，<br>系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
         :type WeightMode: str
-        :param _IsKickOut: 是否开启延迟剔除，取值："true" | "false"
+        :param _IsKickOut: <p>是否开启延迟剔除，取值：&quot;true&quot; | &quot;false&quot;</p>
         :type IsKickOut: bool
-        :param _MinCount: 最小保留数量，最小取值：0
+        :param _MinCount: <p>最小保留数量，最小取值：0</p>
         :type MinCount: int
-        :param _MaxDelay: 延迟剔除阈值，最小取值：1，范围：1 - 10000，整数。
+        :param _MaxDelay: <p>延迟剔除阈值，最小取值：1，范围：1 - 10000，整数。</p>
         :type MaxDelay: int
-        :param _FailOver: 是否开启故障转移，取值："true" | "false"
+        :param _FailOver: <p>是否开启故障转移，取值：&quot;true&quot; | &quot;false&quot;</p>
         :type FailOver: bool
-        :param _AutoAddRo: 是否自动添加RO，取值："true" | "false"
+        :param _AutoAddRo: <p>是否自动添加RO，取值：&quot;true&quot; | &quot;false&quot;</p>
         :type AutoAddRo: bool
-        :param _ReadOnly: 是否是只读，取值："true" | "false"
+        :param _ReadOnly: <p>是否是只读，取值：&quot;true&quot; | &quot;false&quot;</p>
         :type ReadOnly: bool
-        :param _TransSplit: 是否开启事务分离，取值："true" | "false"
+        :param _TransSplit: <p>是否开启事务分离，取值：&quot;true&quot; | &quot;false&quot;</p>
         :type TransSplit: bool
-        :param _ProxyAllocation: 读写权重分配
+        :param _ProxyAllocation: <p>读写权重分配</p>
         :type ProxyAllocation: list of ProxyAllocation
-        :param _UniqVpcId: 私有网络 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        :param _UniqVpcId: <p>私有网络 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: 私有子网 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        :param _UniqSubnetId: <p>私有子网 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :type UniqSubnetId: str
-        :param _ConnectionPool: 是否开启连接池。默认关闭。
-注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
+        :param _ConnectionPool: <p>是否开启连接池。默认关闭。<br>注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。</p>
         :type ConnectionPool: bool
-        :param _Desc: 描述
+        :param _Desc: <p>描述</p>
         :type Desc: str
-        :param _Vip: IP 地址。不填则默认为所选 VPC 下支持的随机一个 IP。
+        :param _Vip: <p>IP 地址。不填则默认为所选 VPC 下支持的随机一个 IP。</p>
         :type Vip: str
-        :param _VPort: 端口。默认值3306。
+        :param _VPort: <p>端口。默认值3306。</p>
         :type VPort: int
-        :param _SecurityGroup: 安全组
+        :param _SecurityGroup: <p>安全组</p>
         :type SecurityGroup: list of str
-        :param _ConnectionPoolType: 连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool 为 true 时生效。默认值：connection。
+        :param _ConnectionPoolType: <p>连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool 为 true 时生效。默认值：connection。</p>
         :type ConnectionPoolType: str
-        :param _AutoLoadBalance: 是否开启自适应负载均衡。默认关闭。
+        :param _AutoLoadBalance: <p>是否开启自适应负载均衡。默认关闭。</p>
         :type AutoLoadBalance: bool
-        :param _AccessMode: 接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。
+        :param _AccessMode: <p>接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。</p>
         :type AccessMode: str
         """
         self._ProxyGroupId = None
@@ -7425,7 +7423,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+        r"""<p>代理组 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/90585">DescribeCdbProxyInfo</a> 接口获取。</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -7436,8 +7434,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def WeightMode(self):
-        r"""权重分配模式，
-系统自动分配："system"， 自定义："custom"
+        r"""<p>权重分配模式，<br>系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
         :rtype: str
         """
         return self._WeightMode
@@ -7448,7 +7445,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def IsKickOut(self):
-        r"""是否开启延迟剔除，取值："true" | "false"
+        r"""<p>是否开启延迟剔除，取值：&quot;true&quot; | &quot;false&quot;</p>
         :rtype: bool
         """
         return self._IsKickOut
@@ -7459,7 +7456,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def MinCount(self):
-        r"""最小保留数量，最小取值：0
+        r"""<p>最小保留数量，最小取值：0</p>
         :rtype: int
         """
         return self._MinCount
@@ -7470,7 +7467,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def MaxDelay(self):
-        r"""延迟剔除阈值，最小取值：1，范围：1 - 10000，整数。
+        r"""<p>延迟剔除阈值，最小取值：1，范围：1 - 10000，整数。</p>
         :rtype: int
         """
         return self._MaxDelay
@@ -7481,7 +7478,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def FailOver(self):
-        r"""是否开启故障转移，取值："true" | "false"
+        r"""<p>是否开启故障转移，取值：&quot;true&quot; | &quot;false&quot;</p>
         :rtype: bool
         """
         return self._FailOver
@@ -7492,7 +7489,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AutoAddRo(self):
-        r"""是否自动添加RO，取值："true" | "false"
+        r"""<p>是否自动添加RO，取值：&quot;true&quot; | &quot;false&quot;</p>
         :rtype: bool
         """
         return self._AutoAddRo
@@ -7503,7 +7500,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""是否是只读，取值："true" | "false"
+        r"""<p>是否是只读，取值：&quot;true&quot; | &quot;false&quot;</p>
         :rtype: bool
         """
         return self._ReadOnly
@@ -7514,7 +7511,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def TransSplit(self):
-        r"""是否开启事务分离，取值："true" | "false"
+        r"""<p>是否开启事务分离，取值：&quot;true&quot; | &quot;false&quot;</p>
         :rtype: bool
         """
         return self._TransSplit
@@ -7525,7 +7522,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ProxyAllocation(self):
-        r"""读写权重分配
+        r"""<p>读写权重分配</p>
         :rtype: list of ProxyAllocation
         """
         return self._ProxyAllocation
@@ -7536,7 +7533,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""私有网络 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        r"""<p>私有网络 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -7547,7 +7544,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""私有子网 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        r"""<p>私有子网 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -7558,8 +7555,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ConnectionPool(self):
-        r"""是否开启连接池。默认关闭。
-注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
+        r"""<p>是否开启连接池。默认关闭。<br>注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。</p>
         :rtype: bool
         """
         return self._ConnectionPool
@@ -7570,7 +7566,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def Desc(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Desc
@@ -7581,7 +7577,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def Vip(self):
-        r"""IP 地址。不填则默认为所选 VPC 下支持的随机一个 IP。
+        r"""<p>IP 地址。不填则默认为所选 VPC 下支持的随机一个 IP。</p>
         :rtype: str
         """
         return self._Vip
@@ -7592,7 +7588,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def VPort(self):
-        r"""端口。默认值3306。
+        r"""<p>端口。默认值3306。</p>
         :rtype: int
         """
         return self._VPort
@@ -7603,7 +7599,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def SecurityGroup(self):
-        r"""安全组
+        r"""<p>安全组</p>
         :rtype: list of str
         """
         return self._SecurityGroup
@@ -7614,7 +7610,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def ConnectionPoolType(self):
-        r"""连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool 为 true 时生效。默认值：connection。
+        r"""<p>连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool 为 true 时生效。默认值：connection。</p>
         :rtype: str
         """
         return self._ConnectionPoolType
@@ -7625,7 +7621,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AutoLoadBalance(self):
-        r"""是否开启自适应负载均衡。默认关闭。
+        r"""<p>是否开启自适应负载均衡。默认关闭。</p>
         :rtype: bool
         """
         return self._AutoLoadBalance
@@ -7636,7 +7632,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AccessMode(self):
-        r"""接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。
+        r"""<p>接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。</p>
         :rtype: str
         """
         return self._AccessMode
@@ -7689,7 +7685,7 @@ class CreateCdbProxyAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务ID
+        :param _AsyncRequestId: <p>异步任务ID</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7699,7 +7695,7 @@ class CreateCdbProxyAddressResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务ID
+        r"""<p>异步任务ID</p>
         :rtype: str
         """
         return self._AsyncRequestId

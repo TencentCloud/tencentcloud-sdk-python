@@ -4551,6 +4551,8 @@ class ProbeConfig(AbstractModel):
         :type SuccessThreshold: int
         :param _FailureThreshold: <p>探测失败后，Kubernetes的重试次数</p>
         :type FailureThreshold: int
+        :param _TcpSocket: <p>TCP Socket请求进行健康检查</p>
+        :type TcpSocket: :class:`tencentcloud.hai.v20230812.models.TcpSocketConfig`
         """
         self._HttpGet = None
         self._InitialDelaySeconds = None
@@ -4558,6 +4560,7 @@ class ProbeConfig(AbstractModel):
         self._TimeoutSeconds = None
         self._SuccessThreshold = None
         self._FailureThreshold = None
+        self._TcpSocket = None
 
     @property
     def HttpGet(self):
@@ -4625,6 +4628,17 @@ class ProbeConfig(AbstractModel):
     def FailureThreshold(self, FailureThreshold):
         self._FailureThreshold = FailureThreshold
 
+    @property
+    def TcpSocket(self):
+        r"""<p>TCP Socket请求进行健康检查</p>
+        :rtype: :class:`tencentcloud.hai.v20230812.models.TcpSocketConfig`
+        """
+        return self._TcpSocket
+
+    @TcpSocket.setter
+    def TcpSocket(self, TcpSocket):
+        self._TcpSocket = TcpSocket
+
 
     def _deserialize(self, params):
         if params.get("HttpGet") is not None:
@@ -4635,6 +4649,9 @@ class ProbeConfig(AbstractModel):
         self._TimeoutSeconds = params.get("TimeoutSeconds")
         self._SuccessThreshold = params.get("SuccessThreshold")
         self._FailureThreshold = params.get("FailureThreshold")
+        if params.get("TcpSocket") is not None:
+            self._TcpSocket = TcpSocketConfig()
+            self._TcpSocket._deserialize(params.get("TcpSocket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5856,6 +5873,42 @@ class SystemDisk(AbstractModel):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
         self._DiskName = params.get("DiskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TcpSocketConfig(AbstractModel):
+    r"""推理服务TcpSocket的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Port: 
+        :type Port: int
+        """
+        self._Port = None
+
+    @property
+    def Port(self):
+        r"""
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

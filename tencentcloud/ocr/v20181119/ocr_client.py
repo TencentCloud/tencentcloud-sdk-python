@@ -1448,30 +1448,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RecognizeContainerOCR(self, request):
-        r"""本接口支持集装箱箱门信息识别，识别字段包括集装箱箱号、类型、总重量、有效承重、容量、自身重量，具备集装箱箱号、类型不完整或者不清晰的告警功能。
-        默认接口请求频率限制：5次/秒。
-
-        :param request: Request instance for RecognizeContainerOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeContainerOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeContainerOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeContainerOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeContainerOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RecognizeEncryptedIDCardOCR(self, request):
         r"""身份证识别（安全加密版）接口实现了数据加密传输，能够有效防止个人身份证隐私信息不被窃取泄露。
 
