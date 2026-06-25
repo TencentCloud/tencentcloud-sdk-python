@@ -308,6 +308,12 @@ INVALIDPARAMETER_VOLUME = 'InvalidParameter.Volume'
 # RoomId值错误。
 INVALIDPARAMETERVALUE_ROOMID = 'InvalidParameterValue.RoomId'
 
+# 并发数量受限
+LIMITEXCEEDED_CONCURRENCYLIMIT = 'LimitExceeded.ConcurrencyLimit'
+
+# 克隆超过最大数量
+LIMITEXCEEDED_VOICECLONEMAXNUMLIMIT = 'LimitExceeded.VoiceCloneMaxNumLimit'
+
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 

@@ -2872,6 +2872,8 @@ class CreateInstanceRequest(AbstractModel):
         :type DiskEnhance: int
         :param _EnableDiagnose: <p>是否开启智能巡检</p>
         :type EnableDiagnose: bool
+        :param _EnableCosBackup: <p>是否开启自动备份</p>
+        :type EnableCosBackup: bool
         :param _CdcId: <p>cdcId，使用cdc子网时传递</p>
         :type CdcId: str
         :param _DisasterRecoverGroupAffinity: <p>置放群组亲和度，范围[0,10]，0表示不开启</p>
@@ -2925,6 +2927,7 @@ class CreateInstanceRequest(AbstractModel):
         self._EnableHybridStorage = None
         self._DiskEnhance = None
         self._EnableDiagnose = None
+        self._EnableCosBackup = None
         self._CdcId = None
         self._DisasterRecoverGroupAffinity = None
         self._SubProductCode = None
@@ -3310,6 +3313,17 @@ class CreateInstanceRequest(AbstractModel):
         self._EnableDiagnose = EnableDiagnose
 
     @property
+    def EnableCosBackup(self):
+        r"""<p>是否开启自动备份</p>
+        :rtype: bool
+        """
+        return self._EnableCosBackup
+
+    @EnableCosBackup.setter
+    def EnableCosBackup(self, EnableCosBackup):
+        self._EnableCosBackup = EnableCosBackup
+
+    @property
     def CdcId(self):
         r"""<p>cdcId，使用cdc子网时传递</p>
         :rtype: str
@@ -3463,6 +3477,7 @@ class CreateInstanceRequest(AbstractModel):
         self._EnableHybridStorage = params.get("EnableHybridStorage")
         self._DiskEnhance = params.get("DiskEnhance")
         self._EnableDiagnose = params.get("EnableDiagnose")
+        self._EnableCosBackup = params.get("EnableCosBackup")
         self._CdcId = params.get("CdcId")
         self._DisasterRecoverGroupAffinity = params.get("DisasterRecoverGroupAffinity")
         self._SubProductCode = params.get("SubProductCode")

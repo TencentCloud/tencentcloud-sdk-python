@@ -1015,6 +1015,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetUsersPassword(self, request):
+        r"""本接口（ResetUsersPassword）用于批量重置用户密码
+
+        :param request: Request instance for ResetUsersPassword.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ResetUsersPasswordRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ResetUsersPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetUsersPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetUsersPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RestartDBInstances(self, request):
         r"""本接口（RestartDBInstances）用于重启数据库实例
 

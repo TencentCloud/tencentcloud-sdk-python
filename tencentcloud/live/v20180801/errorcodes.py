@@ -701,6 +701,9 @@ RESOURCENOTFOUND_STOPSERVICE = 'ResourceNotFound.StopService'
 # TaskId 不存在。
 RESOURCENOTFOUND_TASKID = 'ResourceNotFound.TaskId'
 
+# 任务不存在
+RESOURCENOTFOUND_TASKNOTFOUND = 'ResourceNotFound.TaskNotFound'
+
 # 用户主动停服。
 RESOURCENOTFOUND_USERDISABLESERVICE = 'ResourceNotFound.UserDisableService'
 

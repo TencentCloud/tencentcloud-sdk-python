@@ -532,23 +532,40 @@ class AlignmentItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeBeginMs: 字幕对应的时间起点
+        :param _Text: <p>字幕文本</p>
+        :type Text: str
+        :param _TimeBeginMs: <p>字幕对应的时间起点</p>
         :type TimeBeginMs: int
-        :param _TimeEndMs: 字幕对应的时间尾点
+        :param _TimeEndMs: <p>字幕对应的时间尾点</p>
         :type TimeEndMs: int
-        :param _TextBegin: 字幕对应的文本索引起点
+        :param _TextBegin: <p>字幕对应的文本索引起点</p>
         :type TextBegin: int
-        :param _TextEnd: 字幕对应的文本索引尾点
+        :param _TextEnd: <p>字幕对应的文本索引尾点</p>
         :type TextEnd: int
+        :param _Words: <p>词级别时间戳</p>
+        :type Words: list of WordItem
         """
+        self._Text = None
         self._TimeBeginMs = None
         self._TimeEndMs = None
         self._TextBegin = None
         self._TextEnd = None
+        self._Words = None
+
+    @property
+    def Text(self):
+        r"""<p>字幕文本</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
 
     @property
     def TimeBeginMs(self):
-        r"""字幕对应的时间起点
+        r"""<p>字幕对应的时间起点</p>
         :rtype: int
         """
         return self._TimeBeginMs
@@ -559,7 +576,7 @@ class AlignmentItem(AbstractModel):
 
     @property
     def TimeEndMs(self):
-        r"""字幕对应的时间尾点
+        r"""<p>字幕对应的时间尾点</p>
         :rtype: int
         """
         return self._TimeEndMs
@@ -570,7 +587,7 @@ class AlignmentItem(AbstractModel):
 
     @property
     def TextBegin(self):
-        r"""字幕对应的文本索引起点
+        r"""<p>字幕对应的文本索引起点</p>
         :rtype: int
         """
         return self._TextBegin
@@ -581,7 +598,7 @@ class AlignmentItem(AbstractModel):
 
     @property
     def TextEnd(self):
-        r"""字幕对应的文本索引尾点
+        r"""<p>字幕对应的文本索引尾点</p>
         :rtype: int
         """
         return self._TextEnd
@@ -590,12 +607,30 @@ class AlignmentItem(AbstractModel):
     def TextEnd(self, TextEnd):
         self._TextEnd = TextEnd
 
+    @property
+    def Words(self):
+        r"""<p>词级别时间戳</p>
+        :rtype: list of WordItem
+        """
+        return self._Words
+
+    @Words.setter
+    def Words(self, Words):
+        self._Words = Words
+
 
     def _deserialize(self, params):
+        self._Text = params.get("Text")
         self._TimeBeginMs = params.get("TimeBeginMs")
         self._TimeEndMs = params.get("TimeEndMs")
         self._TextBegin = params.get("TextBegin")
         self._TextEnd = params.get("TextEnd")
+        if params.get("Words") is not None:
+            self._Words = []
+            for item in params.get("Words"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self._Words.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9719,55 +9754,36 @@ class McuLayout(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserMediaStream: 用户媒体流参数。不填时腾讯云后台按照上行主播的进房顺序自动填充。
+        :param _UserMediaStream: <p>用户媒体流参数。不填时腾讯云后台按照上行主播的进房顺序自动填充。</p>
         :type UserMediaStream: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
-        :param _ImageWidth: 子画面在输出时的宽度，单位为像素值，不填默认为0。
+        :param _ImageWidth: <p>子画面在输出时的宽度，单位为像素值，不填默认为0。</p>
         :type ImageWidth: int
-        :param _ImageHeight: 子画面在输出时的高度，单位为像素值，不填默认为0。
+        :param _ImageHeight: <p>子画面在输出时的高度，单位为像素值，不填默认为0。</p>
         :type ImageHeight: int
-        :param _LocationX: 子画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+        :param _LocationX: <p>子画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。</p>
         :type LocationX: int
-        :param _LocationY: 子画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+        :param _LocationY: <p>子画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。</p>
         :type LocationY: int
-        :param _ZOrder: 子画面在输出时的层级，不填默认为0。
+        :param _ZOrder: <p>子画面在输出时的层级，不填默认为0。</p>
         :type ZOrder: int
-        :param _RenderMode: 子画面在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底。不填默认为0。
+        :param _RenderMode: <p>子画面在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底。不填默认为0。</p>
         :type RenderMode: int
-        :param _BackGroundColor: 【此参数配置无效，暂不支持】子画面的背景颜色，常用的颜色有：
-红色：0xcc0033。
-黄色：0xcc9900。
-绿色：0xcccc33。
-蓝色：0x99CCFF。
-黑色：0x000000。
-白色：0xFFFFFF。
-灰色：0x999999。
+        :param _BackGroundColor: <p>【此参数配置无效，暂不支持】子画面的背景颜色，常用的颜色有：<br>红色：0xcc0033。<br>黄色：0xcc9900。<br>绿色：0xcccc33。<br>蓝色：0x99CCFF。<br>黑色：0x000000。<br>白色：0xFFFFFF。<br>灰色：0x999999。</p>
         :type BackGroundColor: str
-        :param _BackgroundImageUrl: 子画面的占位图片url，填写该参数，当用户关闭摄像头或未进入TRTC房间时，会在布局位置填充为指定图片。若指定图片与布局位置尺寸比例不一致，则会对图片进行拉伸处理，优先级高于BackGroundColor。支持png、jpg、jpeg、bmp、gif、webm格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。
-注：
-1，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，占位图片将不会生效。
-2，url可支持字符集：【'0-9','a-z','A-Z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|'】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，占位图片将不会生效。
+        :param _BackgroundImageUrl: <p>子画面的占位图片url，填写该参数，当用户关闭摄像头或未进入TRTC房间时，会在布局位置填充为指定图片。若指定图片与布局位置尺寸比例不一致，则会对图片进行拉伸处理，优先级高于BackGroundColor。支持png、jpg、jpeg、bmp、gif、webm格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。<br>注：<br>1，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，占位图片将不会生效。<br>2，url可支持字符集：【&#39;0-9&#39;,&#39;a-z&#39;,&#39;A-Z&#39;,&#39;-&#39;, &#39;.&#39;, &#39;_&#39;, &#39;~&#39;, &#39;:&#39;, &#39;/&#39;, &#39;?&#39;, &#39;#&#39;, &#39;[&#39;, &#39;]&#39;,&#39;@&#39;, &#39;!&#39;, &#39;&amp;&#39;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;+&#39;, &#39;,&#39;, &#39;%&#39;, &#39;=&#39;, &#39;;&#39;, &#39;|&#39;】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，占位图片将不会生效。</p>
         :type BackgroundImageUrl: str
-        :param _CustomCrop: 客户自定义裁剪，针对原始输入流裁剪
+        :param _CustomCrop: <p>客户自定义裁剪，针对原始输入流裁剪</p>
         :type CustomCrop: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
-        :param _BackgroundRenderMode: 子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩，4为自定义渲染。不填默认为3。
+        :param _BackgroundRenderMode: <p>子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩，4为自定义渲染。不填默认为3。</p>
         :type BackgroundRenderMode: int
-        :param _TransparentUrl: 子画面的透明模版url，指向一张包含透明通道的模板图片。填写该参数，后台混流时会提取该模板图片的透明通道，将其缩放作为目标画面的透明通道，再和其他画面进行混合。您可以通过透明模版实现目标画面的半透明效果和任意形状裁剪（如圆角、星形、心形等）。 支持png格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。
-注：
-1，模板图片宽高比应接近目标画面宽高比，以避免缩放适配目标画面时出现模板效果变形；2，透明模版只有RenderMode为0（裁剪）时才生效；3，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，透明模板将不会生效。
-2，url可支持字符集：【'0-9','a-z','A-Z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|'】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，透明模版将不会生效。
+        :param _TransparentUrl: <p>子画面的透明模版url，指向一张包含透明通道的模板图片。填写该参数，后台混流时会提取该模板图片的透明通道，将其缩放作为目标画面的透明通道，再和其他画面进行混合。您可以通过透明模版实现目标画面的半透明效果和任意形状裁剪（如圆角、星形、心形等）。 支持png格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。<br>注：<br>1，模板图片宽高比应接近目标画面宽高比，以避免缩放适配目标画面时出现模板效果变形；2，透明模版只有RenderMode为0（裁剪）时才生效；3，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，透明模板将不会生效。<br>2，url可支持字符集：【&#39;0-9&#39;,&#39;a-z&#39;,&#39;A-Z&#39;,&#39;-&#39;, &#39;.&#39;, &#39;_&#39;, &#39;~&#39;, &#39;:&#39;, &#39;/&#39;, &#39;?&#39;, &#39;#&#39;, &#39;[&#39;, &#39;]&#39;,&#39;@&#39;, &#39;!&#39;, &#39;&amp;&#39;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;+&#39;, &#39;,&#39;, &#39;%&#39;, &#39;=&#39;, &#39;;&#39;, &#39;|&#39;】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，透明模版将不会生效。</p>
         :type TransparentUrl: str
-        :param _BackgroundCustomRender: 子背景图的自定义渲染参数，当BackgroundRenderMode为4时必须配置。
+        :param _BackgroundCustomRender: <p>子背景图的自定义渲染参数，当BackgroundRenderMode为4时必须配置。</p>
         :type BackgroundCustomRender: :class:`tencentcloud.trtc.v20190722.models.McuBackgroundCustomRender`
-        :param _BackGroundColorMode: 子背景色生效模式，默认值为0表示均不生效。
-bit0:占位图缩放是否生效。
-bit1:上行流缩放是否生效。
-您可以将相应bit位置1启动生效，例如：
-0(00)表示子背景色不生效。
-1(01)表示子背景色只在占位图缩放时生效。
-2(10)表示子背景色只在上行流缩放时生效。
-3(11)表示子背景色在占位图缩放和上行流缩放时均生效。
-
+        :param _BackGroundColorMode: <p>子背景色生效模式，默认值为0表示均不生效。<br>bit0:占位图缩放是否生效。<br>bit1:上行流缩放是否生效。<br>您可以将相应bit位置1启动生效，例如：<br>0(00)表示子背景色不生效。<br>1(01)表示子背景色只在占位图缩放时生效。<br>2(10)表示子背景色只在上行流缩放时生效。<br>3(11)表示子背景色在占位图缩放和上行流缩放时均生效。</p>
         :type BackGroundColorMode: int
+        :param _EnableStreamSEI: <p>是否保留上行SEI，1：保留 0：不保留</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+        :type EnableStreamSEI: int
         """
         self._UserMediaStream = None
         self._ImageWidth = None
@@ -9783,10 +9799,11 @@ bit1:上行流缩放是否生效。
         self._TransparentUrl = None
         self._BackgroundCustomRender = None
         self._BackGroundColorMode = None
+        self._EnableStreamSEI = None
 
     @property
     def UserMediaStream(self):
-        r"""用户媒体流参数。不填时腾讯云后台按照上行主播的进房顺序自动填充。
+        r"""<p>用户媒体流参数。不填时腾讯云后台按照上行主播的进房顺序自动填充。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
         """
         return self._UserMediaStream
@@ -9797,7 +9814,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def ImageWidth(self):
-        r"""子画面在输出时的宽度，单位为像素值，不填默认为0。
+        r"""<p>子画面在输出时的宽度，单位为像素值，不填默认为0。</p>
         :rtype: int
         """
         return self._ImageWidth
@@ -9808,7 +9825,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def ImageHeight(self):
-        r"""子画面在输出时的高度，单位为像素值，不填默认为0。
+        r"""<p>子画面在输出时的高度，单位为像素值，不填默认为0。</p>
         :rtype: int
         """
         return self._ImageHeight
@@ -9819,7 +9836,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def LocationX(self):
-        r"""子画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+        r"""<p>子画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。</p>
         :rtype: int
         """
         return self._LocationX
@@ -9830,7 +9847,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def LocationY(self):
-        r"""子画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+        r"""<p>子画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。</p>
         :rtype: int
         """
         return self._LocationY
@@ -9841,7 +9858,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def ZOrder(self):
-        r"""子画面在输出时的层级，不填默认为0。
+        r"""<p>子画面在输出时的层级，不填默认为0。</p>
         :rtype: int
         """
         return self._ZOrder
@@ -9852,7 +9869,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def RenderMode(self):
-        r"""子画面在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底。不填默认为0。
+        r"""<p>子画面在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底。不填默认为0。</p>
         :rtype: int
         """
         return self._RenderMode
@@ -9863,14 +9880,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackGroundColor(self):
-        r"""【此参数配置无效，暂不支持】子画面的背景颜色，常用的颜色有：
-红色：0xcc0033。
-黄色：0xcc9900。
-绿色：0xcccc33。
-蓝色：0x99CCFF。
-黑色：0x000000。
-白色：0xFFFFFF。
-灰色：0x999999。
+        r"""<p>【此参数配置无效，暂不支持】子画面的背景颜色，常用的颜色有：<br>红色：0xcc0033。<br>黄色：0xcc9900。<br>绿色：0xcccc33。<br>蓝色：0x99CCFF。<br>黑色：0x000000。<br>白色：0xFFFFFF。<br>灰色：0x999999。</p>
         :rtype: str
         """
         return self._BackGroundColor
@@ -9881,10 +9891,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackgroundImageUrl(self):
-        r"""子画面的占位图片url，填写该参数，当用户关闭摄像头或未进入TRTC房间时，会在布局位置填充为指定图片。若指定图片与布局位置尺寸比例不一致，则会对图片进行拉伸处理，优先级高于BackGroundColor。支持png、jpg、jpeg、bmp、gif、webm格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。
-注：
-1，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，占位图片将不会生效。
-2，url可支持字符集：【'0-9','a-z','A-Z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|'】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，占位图片将不会生效。
+        r"""<p>子画面的占位图片url，填写该参数，当用户关闭摄像头或未进入TRTC房间时，会在布局位置填充为指定图片。若指定图片与布局位置尺寸比例不一致，则会对图片进行拉伸处理，优先级高于BackGroundColor。支持png、jpg、jpeg、bmp、gif、webm格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。<br>注：<br>1，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，占位图片将不会生效。<br>2，url可支持字符集：【&#39;0-9&#39;,&#39;a-z&#39;,&#39;A-Z&#39;,&#39;-&#39;, &#39;.&#39;, &#39;_&#39;, &#39;~&#39;, &#39;:&#39;, &#39;/&#39;, &#39;?&#39;, &#39;#&#39;, &#39;[&#39;, &#39;]&#39;,&#39;@&#39;, &#39;!&#39;, &#39;&amp;&#39;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;+&#39;, &#39;,&#39;, &#39;%&#39;, &#39;=&#39;, &#39;;&#39;, &#39;|&#39;】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，占位图片将不会生效。</p>
         :rtype: str
         """
         return self._BackgroundImageUrl
@@ -9895,7 +9902,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def CustomCrop(self):
-        r"""客户自定义裁剪，针对原始输入流裁剪
+        r"""<p>客户自定义裁剪，针对原始输入流裁剪</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
         """
         return self._CustomCrop
@@ -9906,7 +9913,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackgroundRenderMode(self):
-        r"""子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩，4为自定义渲染。不填默认为3。
+        r"""<p>子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩，4为自定义渲染。不填默认为3。</p>
         :rtype: int
         """
         return self._BackgroundRenderMode
@@ -9917,10 +9924,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def TransparentUrl(self):
-        r"""子画面的透明模版url，指向一张包含透明通道的模板图片。填写该参数，后台混流时会提取该模板图片的透明通道，将其缩放作为目标画面的透明通道，再和其他画面进行混合。您可以通过透明模版实现目标画面的半透明效果和任意形状裁剪（如圆角、星形、心形等）。 支持png格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。
-注：
-1，模板图片宽高比应接近目标画面宽高比，以避免缩放适配目标画面时出现模板效果变形；2，透明模版只有RenderMode为0（裁剪）时才生效；3，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，透明模板将不会生效。
-2，url可支持字符集：【'0-9','a-z','A-Z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|'】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，透明模版将不会生效。
+        r"""<p>子画面的透明模版url，指向一张包含透明通道的模板图片。填写该参数，后台混流时会提取该模板图片的透明通道，将其缩放作为目标画面的透明通道，再和其他画面进行混合。您可以通过透明模版实现目标画面的半透明效果和任意形状裁剪（如圆角、星形、心形等）。 支持png格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。<br>注：<br>1，模板图片宽高比应接近目标画面宽高比，以避免缩放适配目标画面时出现模板效果变形；2，透明模版只有RenderMode为0（裁剪）时才生效；3，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，透明模板将不会生效。<br>2，url可支持字符集：【&#39;0-9&#39;,&#39;a-z&#39;,&#39;A-Z&#39;,&#39;-&#39;, &#39;.&#39;, &#39;_&#39;, &#39;~&#39;, &#39;:&#39;, &#39;/&#39;, &#39;?&#39;, &#39;#&#39;, &#39;[&#39;, &#39;]&#39;,&#39;@&#39;, &#39;!&#39;, &#39;&amp;&#39;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;+&#39;, &#39;,&#39;, &#39;%&#39;, &#39;=&#39;, &#39;;&#39;, &#39;|&#39;】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，透明模版将不会生效。</p>
         :rtype: str
         """
         return self._TransparentUrl
@@ -9931,7 +9935,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackgroundCustomRender(self):
-        r"""子背景图的自定义渲染参数，当BackgroundRenderMode为4时必须配置。
+        r"""<p>子背景图的自定义渲染参数，当BackgroundRenderMode为4时必须配置。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuBackgroundCustomRender`
         """
         return self._BackgroundCustomRender
@@ -9942,15 +9946,7 @@ bit1:上行流缩放是否生效。
 
     @property
     def BackGroundColorMode(self):
-        r"""子背景色生效模式，默认值为0表示均不生效。
-bit0:占位图缩放是否生效。
-bit1:上行流缩放是否生效。
-您可以将相应bit位置1启动生效，例如：
-0(00)表示子背景色不生效。
-1(01)表示子背景色只在占位图缩放时生效。
-2(10)表示子背景色只在上行流缩放时生效。
-3(11)表示子背景色在占位图缩放和上行流缩放时均生效。
-
+        r"""<p>子背景色生效模式，默认值为0表示均不生效。<br>bit0:占位图缩放是否生效。<br>bit1:上行流缩放是否生效。<br>您可以将相应bit位置1启动生效，例如：<br>0(00)表示子背景色不生效。<br>1(01)表示子背景色只在占位图缩放时生效。<br>2(10)表示子背景色只在上行流缩放时生效。<br>3(11)表示子背景色在占位图缩放和上行流缩放时均生效。</p>
         :rtype: int
         """
         return self._BackGroundColorMode
@@ -9958,6 +9954,17 @@ bit1:上行流缩放是否生效。
     @BackGroundColorMode.setter
     def BackGroundColorMode(self, BackGroundColorMode):
         self._BackGroundColorMode = BackGroundColorMode
+
+    @property
+    def EnableStreamSEI(self):
+        r"""<p>是否保留上行SEI，1：保留 0：不保留</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._EnableStreamSEI
+
+    @EnableStreamSEI.setter
+    def EnableStreamSEI(self, EnableStreamSEI):
+        self._EnableStreamSEI = EnableStreamSEI
 
 
     def _deserialize(self, params):
@@ -9981,6 +9988,7 @@ bit1:上行流缩放是否生效。
             self._BackgroundCustomRender = McuBackgroundCustomRender()
             self._BackgroundCustomRender._deserialize(params.get("BackgroundCustomRender"))
         self._BackGroundColorMode = params.get("BackGroundColorMode")
+        self._EnableStreamSEI = params.get("EnableStreamSEI")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9998,26 +10006,29 @@ class McuLayoutParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MixLayoutMode: 布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。最多支持混入16路音视频流，如果用户只上行音频，也会被算作一路；自定义布局中，如果子画面只设置占位图，也被算作一路。
+        :param _MixLayoutMode: <p>布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。最多支持混入16路音视频流，如果用户只上行音频，也会被算作一路；自定义布局中，如果子画面只设置占位图，也被算作一路。</p>
         :type MixLayoutMode: int
-        :param _PureAudioHoldPlaceMode: 纯音频上行是否占布局位置，只在动态布局中有效。0表示纯音频不占布局位置，1表示纯音频占布局位置，不填默认为0。
+        :param _PureAudioHoldPlaceMode: <p>纯音频上行是否占布局位置，只在动态布局中有效。0表示纯音频不占布局位置，1表示纯音频占布局位置，不填默认为0。</p>
         :type PureAudioHoldPlaceMode: int
-        :param _MixLayoutList: 自定义模板中有效，指定用户视频在混合画面中的位置，最多支持设置16个输入流。
+        :param _MixLayoutList: <p>自定义模板中有效，指定用户视频在混合画面中的位置，最多支持设置16个输入流。</p>
         :type MixLayoutList: list of McuLayout
-        :param _MaxVideoUser: 指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。
+        :param _MaxVideoUser: <p>指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。</p>
         :type MaxVideoUser: :class:`tencentcloud.trtc.v20190722.models.MaxVideoUser`
-        :param _RenderMode: 屏幕分享模板、悬浮模板、九宫格模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底
+        :param _RenderMode: <p>屏幕分享模板、悬浮模板、九宫格模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底</p>
         :type RenderMode: int
+        :param _EnableStreamSEI: <p>是否保留上行sei，1：保留 0：不保留，只对动态布局生效，自定义布局不生效</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+        :type EnableStreamSEI: int
         """
         self._MixLayoutMode = None
         self._PureAudioHoldPlaceMode = None
         self._MixLayoutList = None
         self._MaxVideoUser = None
         self._RenderMode = None
+        self._EnableStreamSEI = None
 
     @property
     def MixLayoutMode(self):
-        r"""布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。最多支持混入16路音视频流，如果用户只上行音频，也会被算作一路；自定义布局中，如果子画面只设置占位图，也被算作一路。
+        r"""<p>布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。最多支持混入16路音视频流，如果用户只上行音频，也会被算作一路；自定义布局中，如果子画面只设置占位图，也被算作一路。</p>
         :rtype: int
         """
         return self._MixLayoutMode
@@ -10028,7 +10039,7 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def PureAudioHoldPlaceMode(self):
-        r"""纯音频上行是否占布局位置，只在动态布局中有效。0表示纯音频不占布局位置，1表示纯音频占布局位置，不填默认为0。
+        r"""<p>纯音频上行是否占布局位置，只在动态布局中有效。0表示纯音频不占布局位置，1表示纯音频占布局位置，不填默认为0。</p>
         :rtype: int
         """
         return self._PureAudioHoldPlaceMode
@@ -10039,7 +10050,7 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MixLayoutList(self):
-        r"""自定义模板中有效，指定用户视频在混合画面中的位置，最多支持设置16个输入流。
+        r"""<p>自定义模板中有效，指定用户视频在混合画面中的位置，最多支持设置16个输入流。</p>
         :rtype: list of McuLayout
         """
         return self._MixLayoutList
@@ -10050,7 +10061,7 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MaxVideoUser(self):
-        r"""指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。
+        r"""<p>指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.MaxVideoUser`
         """
         return self._MaxVideoUser
@@ -10061,7 +10072,7 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def RenderMode(self):
-        r"""屏幕分享模板、悬浮模板、九宫格模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底
+        r"""<p>屏幕分享模板、悬浮模板、九宫格模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底</p>
         :rtype: int
         """
         return self._RenderMode
@@ -10069,6 +10080,17 @@ class McuLayoutParams(AbstractModel):
     @RenderMode.setter
     def RenderMode(self, RenderMode):
         self._RenderMode = RenderMode
+
+    @property
+    def EnableStreamSEI(self):
+        r"""<p>是否保留上行sei，1：保留 0：不保留，只对动态布局生效，自定义布局不生效</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._EnableStreamSEI
+
+    @EnableStreamSEI.setter
+    def EnableStreamSEI(self, EnableStreamSEI):
+        self._EnableStreamSEI = EnableStreamSEI
 
 
     def _deserialize(self, params):
@@ -10084,6 +10106,7 @@ class McuLayoutParams(AbstractModel):
             self._MaxVideoUser = MaxVideoUser()
             self._MaxVideoUser._deserialize(params.get("MaxVideoUser"))
         self._RenderMode = params.get("RenderMode")
+        self._EnableStreamSEI = params.get("EnableStreamSEI")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18569,7 +18592,7 @@ class TextToSpeechRequest(AbstractModel):
         :type Language: str
         :param _PronunciationDict: <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
         :type PronunciationDict: list of PronunciationDict
-        :param _AlignmentMode: <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
+        :param _AlignmentMode: <p>字幕级别</p><p>枚举值：</p><ul><li>0： 无字幕</li><li>1： 句子级别字幕</li><li>2： 词级别字幕，目前只有flow_01_ex支持词级别字幕</li></ul><p>默认值：0</p>
         :type AlignmentMode: int
         :param _ExtraParams: <p>json字符串，用于拓展用法</p>
         :type ExtraParams: str
@@ -18679,7 +18702,7 @@ class TextToSpeechRequest(AbstractModel):
 
     @property
     def AlignmentMode(self):
-        r"""<p>默认为0，0表示不生成字幕，1表示生成字幕</p>
+        r"""<p>字幕级别</p><p>枚举值：</p><ul><li>0： 无字幕</li><li>1： 句子级别字幕</li><li>2： 词级别字幕，目前只有flow_01_ex支持词级别字幕</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._AlignmentMode
@@ -18831,7 +18854,7 @@ class TextToSpeechSSERequest(AbstractModel):
         :type Language: str
         :param _PronunciationDict: <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
         :type PronunciationDict: list of PronunciationDict
-        :param _AlignmentMode: <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
+        :param _AlignmentMode: <p>字幕级别</p><p>枚举值：</p><ul><li>0： 无字幕</li><li>1： 句子级别字幕</li><li>2： 词级别字幕，目前只有flow_01_ex支持</li></ul><p>默认值：0</p>
         :type AlignmentMode: int
         :param _ExtraParams: <p>json字符串，用于拓展用法</p>
         :type ExtraParams: str
@@ -18941,7 +18964,7 @@ class TextToSpeechSSERequest(AbstractModel):
 
     @property
     def AlignmentMode(self):
-        r"""<p>默认为0，0表示不生成字幕，1表示生成字幕</p>
+        r"""<p>字幕级别</p><p>枚举值：</p><ul><li>0： 无字幕</li><li>1： 句子级别字幕</li><li>2： 词级别字幕，目前只有flow_01_ex支持</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._AlignmentMode
@@ -21964,6 +21987,102 @@ Hls 格式录制此参数不生效。
         self._Height = params.get("Height")
         self._Format = params.get("Format")
         self._MaxMediaFileDuration = params.get("MaxMediaFileDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WordItem(AbstractModel):
+    r"""词级别对齐信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Word: <p>词对应的文本</p>
+        :type Word: str
+        :param _TimeBeginMs: <p>词对应的时间起点</p>
+        :type TimeBeginMs: int
+        :param _TimeEndMs: <p>词对应的时间尾点</p>
+        :type TimeEndMs: int
+        :param _WordBegin: <p>词的索引起点</p>
+        :type WordBegin: int
+        :param _WordEnd: <p>词的索引尾点</p>
+        :type WordEnd: int
+        """
+        self._Word = None
+        self._TimeBeginMs = None
+        self._TimeEndMs = None
+        self._WordBegin = None
+        self._WordEnd = None
+
+    @property
+    def Word(self):
+        r"""<p>词对应的文本</p>
+        :rtype: str
+        """
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def TimeBeginMs(self):
+        r"""<p>词对应的时间起点</p>
+        :rtype: int
+        """
+        return self._TimeBeginMs
+
+    @TimeBeginMs.setter
+    def TimeBeginMs(self, TimeBeginMs):
+        self._TimeBeginMs = TimeBeginMs
+
+    @property
+    def TimeEndMs(self):
+        r"""<p>词对应的时间尾点</p>
+        :rtype: int
+        """
+        return self._TimeEndMs
+
+    @TimeEndMs.setter
+    def TimeEndMs(self, TimeEndMs):
+        self._TimeEndMs = TimeEndMs
+
+    @property
+    def WordBegin(self):
+        r"""<p>词的索引起点</p>
+        :rtype: int
+        """
+        return self._WordBegin
+
+    @WordBegin.setter
+    def WordBegin(self, WordBegin):
+        self._WordBegin = WordBegin
+
+    @property
+    def WordEnd(self):
+        r"""<p>词的索引尾点</p>
+        :rtype: int
+        """
+        return self._WordEnd
+
+    @WordEnd.setter
+    def WordEnd(self, WordEnd):
+        self._WordEnd = WordEnd
+
+
+    def _deserialize(self, params):
+        self._Word = params.get("Word")
+        self._TimeBeginMs = params.get("TimeBeginMs")
+        self._TimeEndMs = params.get("TimeEndMs")
+        self._WordBegin = params.get("WordBegin")
+        self._WordEnd = params.get("WordEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

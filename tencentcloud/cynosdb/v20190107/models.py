@@ -51611,21 +51611,21 @@ class ProxyZone(AbstractModel):
 
 
 class QueryFilter(AbstractModel):
-    r"""查询过滤器
+    r"""查询过滤器。用于 DescribeClusterAndInstances 接口的过滤条件。
 
     """
 
     def __init__(self):
         r"""
-        :param _Values: 搜索字符串
+        :param _Values: 字段值列表，与 Names 一一对应。InstanceId/ClusterId 为精确匹配，InstanceName 默认模糊匹配
         :type Values: list of str
-        :param _Names: 搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
+        :param _Names: 搜索字段名称列表，仅支持以下 3 个字段（不区分大小写，多个值为 OR 关系）：ClusterId（按集群 ID 过滤，精确匹配）、InstanceId（按实例 ID 反查所属集群）、InstanceName（按实例名称反查所属集群，默认 LIKE 模糊匹配，ExactMatch=true 时精确匹配）。InstanceId 与 InstanceName 同时传入时取交集（AND 语义）。
         :type Names: list of str
-        :param _ExactMatch: 是否精确匹配
+        :param _ExactMatch: 是否精确匹配。仅对 InstanceName 生效：true 精确匹配，false（默认）LIKE 模糊匹配。
         :type ExactMatch: bool
-        :param _Name: 搜索字段
+        :param _Name: 搜索字段名称（单个字段模式，与 Names 二选一）。支持：ClusterId、InstanceId、InstanceName
         :type Name: str
-        :param _Operator: 操作符
+        :param _Operator: 操作符（预留字段，当前未启用）。可选值：>、>=、!=、=、<、<=
         :type Operator: str
         """
         self._Values = None
@@ -51636,7 +51636,7 @@ class QueryFilter(AbstractModel):
 
     @property
     def Values(self):
-        r"""搜索字符串
+        r"""字段值列表，与 Names 一一对应。InstanceId/ClusterId 为精确匹配，InstanceName 默认模糊匹配
         :rtype: list of str
         """
         return self._Values
@@ -51647,7 +51647,7 @@ class QueryFilter(AbstractModel):
 
     @property
     def Names(self):
-        r"""搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
+        r"""搜索字段名称列表，仅支持以下 3 个字段（不区分大小写，多个值为 OR 关系）：ClusterId（按集群 ID 过滤，精确匹配）、InstanceId（按实例 ID 反查所属集群）、InstanceName（按实例名称反查所属集群，默认 LIKE 模糊匹配，ExactMatch=true 时精确匹配）。InstanceId 与 InstanceName 同时传入时取交集（AND 语义）。
         :rtype: list of str
         """
         return self._Names
@@ -51658,7 +51658,7 @@ class QueryFilter(AbstractModel):
 
     @property
     def ExactMatch(self):
-        r"""是否精确匹配
+        r"""是否精确匹配。仅对 InstanceName 生效：true 精确匹配，false（默认）LIKE 模糊匹配。
         :rtype: bool
         """
         return self._ExactMatch
@@ -51669,7 +51669,7 @@ class QueryFilter(AbstractModel):
 
     @property
     def Name(self):
-        r"""搜索字段
+        r"""搜索字段名称（单个字段模式，与 Names 二选一）。支持：ClusterId、InstanceId、InstanceName
         :rtype: str
         """
         return self._Name
@@ -51682,7 +51682,7 @@ class QueryFilter(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""操作符
+        r"""操作符（预留字段，当前未启用）。可选值：>、>=、!=、=、<、<=
         :rtype: str
         """
         return self._Operator

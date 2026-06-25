@@ -545,6 +545,8 @@ class CreateNativeNodePoolParam(AbstractModel):
         :type EnableAutoscaling: bool
         :param _Replicas: <p>期望节点数</p>
         :type Replicas: int
+        :param _GPUConfigs: <p>机型和GPU配置相关信息</p>
+        :type GPUConfigs: list of GPUConfig
         :param _InternetAccessible: <p>公网带宽设置</p>
         :type InternetAccessible: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
         :param _DataDisks: <p>原生节点池数据盘列表</p>
@@ -577,6 +579,7 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._RuntimeRootDir = None
         self._EnableAutoscaling = None
         self._Replicas = None
+        self._GPUConfigs = None
         self._InternetAccessible = None
         self._DataDisks = None
         self._QGPUEnable = None
@@ -773,6 +776,17 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._Replicas = Replicas
 
     @property
+    def GPUConfigs(self):
+        r"""<p>机型和GPU配置相关信息</p>
+        :rtype: list of GPUConfig
+        """
+        return self._GPUConfigs
+
+    @GPUConfigs.setter
+    def GPUConfigs(self, GPUConfigs):
+        self._GPUConfigs = GPUConfigs
+
+    @property
     def InternetAccessible(self):
         r"""<p>公网带宽设置</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.InternetAccessible`
@@ -880,6 +894,12 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._RuntimeRootDir = params.get("RuntimeRootDir")
         self._EnableAutoscaling = params.get("EnableAutoscaling")
         self._Replicas = params.get("Replicas")
+        if params.get("GPUConfigs") is not None:
+            self._GPUConfigs = []
+            for item in params.get("GPUConfigs"):
+                obj = GPUConfig()
+                obj._deserialize(item)
+                self._GPUConfigs.append(obj)
         if params.get("InternetAccessible") is not None:
             self._InternetAccessible = InternetAccessible()
             self._InternetAccessible._deserialize(params.get("InternetAccessible"))
@@ -2705,6 +2725,40 @@ class DescribeHealthCheckTemplateResponse(AbstractModel):
         if params.get("HealthCheckTemplate") is not None:
             self._HealthCheckTemplate = HealthCheckTemplate()
             self._HealthCheckTemplate._deserialize(params.get("HealthCheckTemplate"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNodePoolsElasticityStrengthRequest(AbstractModel):
+    r"""DescribeNodePoolsElasticityStrength请求参数结构体
+
+    """
+
+
+class DescribeNodePoolsElasticityStrengthResponse(AbstractModel):
+    r"""DescribeNodePoolsElasticityStrength返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

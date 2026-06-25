@@ -409,6 +409,11 @@ def test_import_cms_v20190321():
     from tencentcloud.cms.v20190321 import models
 
 
+def test_import_cngw_v20230418():
+    from tencentcloud.cngw.v20230418 import cngw_client
+    from tencentcloud.cngw.v20230418 import models
+
+
 def test_import_config_v20220802():
     from tencentcloud.config.v20220802 import config_client
     from tencentcloud.config.v20220802 import models

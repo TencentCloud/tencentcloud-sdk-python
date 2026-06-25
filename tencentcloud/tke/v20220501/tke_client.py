@@ -325,6 +325,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNodePoolsElasticityStrength(self, request):
+        r"""查询节点池健康度相关信息
+
+        :param request: Request instance for DescribeNodePoolsElasticityStrength.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DescribeNodePoolsElasticityStrengthRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DescribeNodePoolsElasticityStrengthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodePoolsElasticityStrength", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNodePoolsElasticityStrengthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeZoneInstanceConfigInfos(self, request):
         r"""查询原生节点机型配置
 

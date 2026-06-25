@@ -5506,18 +5506,22 @@ class CreateUserDirectoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirId: 目录id
+        :param _DirId: <p>目录id</p>
         :type DirId: int
-        :param _DirName: 目录名称
+        :param _DirName: <p>目录名称</p>
         :type DirName: str
-        :param _UserOrgSet: ioa分组信息
+        :param _UserOrgSet: <p>ioa分组信息</p>
         :type UserOrgSet: list of UserOrg
-        :param _Source: ioa关联用户源类型
+        :param _Source: <p>ioa关联用户源类型</p>
         :type Source: int
-        :param _SourceName: ioa关联用户源名称
+        :param _SourceName: <p>ioa关联用户源名称</p>
         :type SourceName: str
-        :param _UserCount: 目录包含用户数
+        :param _UserCount: <p>目录包含用户数</p>
         :type UserCount: int
+        :param _AutoSync: <p>是否开启自动同步</p>
+        :type AutoSync: bool
+        :param _SyncCron: <p>同步周期（5段式 crontab 表达式）</p>
+        :type SyncCron: str
         """
         self._DirId = None
         self._DirName = None
@@ -5525,10 +5529,12 @@ class CreateUserDirectoryRequest(AbstractModel):
         self._Source = None
         self._SourceName = None
         self._UserCount = None
+        self._AutoSync = None
+        self._SyncCron = None
 
     @property
     def DirId(self):
-        r"""目录id
+        r"""<p>目录id</p>
         :rtype: int
         """
         return self._DirId
@@ -5539,7 +5545,7 @@ class CreateUserDirectoryRequest(AbstractModel):
 
     @property
     def DirName(self):
-        r"""目录名称
+        r"""<p>目录名称</p>
         :rtype: str
         """
         return self._DirName
@@ -5550,7 +5556,7 @@ class CreateUserDirectoryRequest(AbstractModel):
 
     @property
     def UserOrgSet(self):
-        r"""ioa分组信息
+        r"""<p>ioa分组信息</p>
         :rtype: list of UserOrg
         """
         return self._UserOrgSet
@@ -5561,7 +5567,7 @@ class CreateUserDirectoryRequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""ioa关联用户源类型
+        r"""<p>ioa关联用户源类型</p>
         :rtype: int
         """
         return self._Source
@@ -5572,7 +5578,7 @@ class CreateUserDirectoryRequest(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""ioa关联用户源名称
+        r"""<p>ioa关联用户源名称</p>
         :rtype: str
         """
         return self._SourceName
@@ -5583,7 +5589,7 @@ class CreateUserDirectoryRequest(AbstractModel):
 
     @property
     def UserCount(self):
-        r"""目录包含用户数
+        r"""<p>目录包含用户数</p>
         :rtype: int
         """
         return self._UserCount
@@ -5591,6 +5597,28 @@ class CreateUserDirectoryRequest(AbstractModel):
     @UserCount.setter
     def UserCount(self, UserCount):
         self._UserCount = UserCount
+
+    @property
+    def AutoSync(self):
+        r"""<p>是否开启自动同步</p>
+        :rtype: bool
+        """
+        return self._AutoSync
+
+    @AutoSync.setter
+    def AutoSync(self, AutoSync):
+        self._AutoSync = AutoSync
+
+    @property
+    def SyncCron(self):
+        r"""<p>同步周期（5段式 crontab 表达式）</p>
+        :rtype: str
+        """
+        return self._SyncCron
+
+    @SyncCron.setter
+    def SyncCron(self, SyncCron):
+        self._SyncCron = SyncCron
 
 
     def _deserialize(self, params):
@@ -5605,6 +5633,8 @@ class CreateUserDirectoryRequest(AbstractModel):
         self._Source = params.get("Source")
         self._SourceName = params.get("SourceName")
         self._UserCount = params.get("UserCount")
+        self._AutoSync = params.get("AutoSync")
+        self._SyncCron = params.get("SyncCron")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5622,7 +5652,7 @@ class CreateUserDirectoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 目录Id
+        :param _Id: <p>目录Id</p>
         :type Id: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5632,7 +5662,7 @@ class CreateUserDirectoryResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""目录Id
+        r"""<p>目录Id</p>
         :rtype: int
         """
         return self._Id
@@ -11048,9 +11078,9 @@ class DescribeUserDirectoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 分页大小
+        :param _Limit: <p>分页大小</p>
         :type Limit: int
-        :param _Offset: 分页偏移
+        :param _Offset: <p>分页偏移</p>
         :type Offset: int
         """
         self._Limit = None
@@ -11058,7 +11088,7 @@ class DescribeUserDirectoryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -11069,7 +11099,7 @@ class DescribeUserDirectoryRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移
+        r"""<p>分页偏移</p>
         :rtype: int
         """
         return self._Offset
@@ -11099,9 +11129,9 @@ class DescribeUserDirectoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserDirSet: 用户目录集
+        :param _UserDirSet: <p>用户目录集</p>
         :type UserDirSet: list of UserDirectory
-        :param _TotalCount: 用户目录集总数
+        :param _TotalCount: <p>用户目录集总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11112,7 +11142,7 @@ class DescribeUserDirectoryResponse(AbstractModel):
 
     @property
     def UserDirSet(self):
-        r"""用户目录集
+        r"""<p>用户目录集</p>
         :rtype: list of UserDirectory
         """
         return self._UserDirSet
@@ -11123,7 +11153,7 @@ class DescribeUserDirectoryResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""用户目录集总数
+        r"""<p>用户目录集总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -13744,26 +13774,29 @@ class IOAUserGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrgId: ioa用户组织id
+        :param _OrgId: <p>ioa用户组织id</p>
         :type OrgId: int
-        :param _OrgName: ioa用户组织名称
+        :param _OrgName: <p>ioa用户组织名称</p>
         :type OrgName: str
-        :param _OrgIdPath: ioa用户组织id路径	
+        :param _OrgIdPath: <p>ioa用户组织id路径</p>
         :type OrgIdPath: str
-        :param _OrgNamePath: ioa用户组织名称路径	
+        :param _OrgNamePath: <p>ioa用户组织名称路径</p>
         :type OrgNamePath: str
-        :param _Source: ioa关联用户源类型
+        :param _Source: <p>ioa关联用户源类型</p>
         :type Source: int
+        :param _UserDirName: <p>用户所属目录</p>
+        :type UserDirName: str
         """
         self._OrgId = None
         self._OrgName = None
         self._OrgIdPath = None
         self._OrgNamePath = None
         self._Source = None
+        self._UserDirName = None
 
     @property
     def OrgId(self):
-        r"""ioa用户组织id
+        r"""<p>ioa用户组织id</p>
         :rtype: int
         """
         return self._OrgId
@@ -13774,7 +13807,7 @@ class IOAUserGroup(AbstractModel):
 
     @property
     def OrgName(self):
-        r"""ioa用户组织名称
+        r"""<p>ioa用户组织名称</p>
         :rtype: str
         """
         return self._OrgName
@@ -13785,7 +13818,7 @@ class IOAUserGroup(AbstractModel):
 
     @property
     def OrgIdPath(self):
-        r"""ioa用户组织id路径	
+        r"""<p>ioa用户组织id路径</p>
         :rtype: str
         """
         return self._OrgIdPath
@@ -13796,7 +13829,7 @@ class IOAUserGroup(AbstractModel):
 
     @property
     def OrgNamePath(self):
-        r"""ioa用户组织名称路径	
+        r"""<p>ioa用户组织名称路径</p>
         :rtype: str
         """
         return self._OrgNamePath
@@ -13807,7 +13840,7 @@ class IOAUserGroup(AbstractModel):
 
     @property
     def Source(self):
-        r"""ioa关联用户源类型
+        r"""<p>ioa关联用户源类型</p>
         :rtype: int
         """
         return self._Source
@@ -13816,6 +13849,17 @@ class IOAUserGroup(AbstractModel):
     def Source(self, Source):
         self._Source = Source
 
+    @property
+    def UserDirName(self):
+        r"""<p>用户所属目录</p>
+        :rtype: str
+        """
+        return self._UserDirName
+
+    @UserDirName.setter
+    def UserDirName(self, UserDirName):
+        self._UserDirName = UserDirName
+
 
     def _deserialize(self, params):
         self._OrgId = params.get("OrgId")
@@ -13823,6 +13867,7 @@ class IOAUserGroup(AbstractModel):
         self._OrgIdPath = params.get("OrgIdPath")
         self._OrgNamePath = params.get("OrgNamePath")
         self._Source = params.get("Source")
+        self._UserDirName = params.get("UserDirName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17037,17 +17082,23 @@ class ModifyUserDirectoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 目录id
+        :param _Id: <p>目录id</p>
         :type Id: int
-        :param _UserOrgSet: ioa分组信息
+        :param _UserOrgSet: <p>ioa分组信息</p>
         :type UserOrgSet: list of UserOrg
+        :param _AutoSync: <p>是否开启自动同步</p>
+        :type AutoSync: bool
+        :param _SyncCron: <p>同步周期（5段式 crontab 表达式）</p>
+        :type SyncCron: str
         """
         self._Id = None
         self._UserOrgSet = None
+        self._AutoSync = None
+        self._SyncCron = None
 
     @property
     def Id(self):
-        r"""目录id
+        r"""<p>目录id</p>
         :rtype: int
         """
         return self._Id
@@ -17058,7 +17109,7 @@ class ModifyUserDirectoryRequest(AbstractModel):
 
     @property
     def UserOrgSet(self):
-        r"""ioa分组信息
+        r"""<p>ioa分组信息</p>
         :rtype: list of UserOrg
         """
         return self._UserOrgSet
@@ -17066,6 +17117,28 @@ class ModifyUserDirectoryRequest(AbstractModel):
     @UserOrgSet.setter
     def UserOrgSet(self, UserOrgSet):
         self._UserOrgSet = UserOrgSet
+
+    @property
+    def AutoSync(self):
+        r"""<p>是否开启自动同步</p>
+        :rtype: bool
+        """
+        return self._AutoSync
+
+    @AutoSync.setter
+    def AutoSync(self, AutoSync):
+        self._AutoSync = AutoSync
+
+    @property
+    def SyncCron(self):
+        r"""<p>同步周期（5段式 crontab 表达式）</p>
+        :rtype: str
+        """
+        return self._SyncCron
+
+    @SyncCron.setter
+    def SyncCron(self, SyncCron):
+        self._SyncCron = SyncCron
 
 
     def _deserialize(self, params):
@@ -17076,6 +17149,8 @@ class ModifyUserDirectoryRequest(AbstractModel):
                 obj = UserOrg()
                 obj._deserialize(item)
                 self._UserOrgSet.append(obj)
+        self._AutoSync = params.get("AutoSync")
+        self._SyncCron = params.get("SyncCron")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24262,22 +24337,28 @@ class UserDirectory(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 目录id
+        :param _Id: <p>目录id</p>
         :type Id: int
-        :param _DirId: ioa目录id
+        :param _DirId: <p>ioa目录id</p>
         :type DirId: int
-        :param _DirName: ioa目录名称
+        :param _DirName: <p>ioa目录名称</p>
         :type DirName: str
-        :param _Source: ioa关联用户源类型
+        :param _Source: <p>ioa关联用户源类型</p>
         :type Source: int
-        :param _SourceName: ioa关联用户源名称
+        :param _SourceName: <p>ioa关联用户源名称</p>
         :type SourceName: str
-        :param _UserTotal: 目录包含用户数
+        :param _UserTotal: <p>目录包含用户数</p>
         :type UserTotal: int
-        :param _CreateTime: 目录接入时间
+        :param _CreateTime: <p>目录接入时间</p>
         :type CreateTime: str
-        :param _UserOrgSet: 目录下的组织细节信息
+        :param _UserOrgSet: <p>目录下的组织细节信息</p>
         :type UserOrgSet: list of UserOrg
+        :param _AutoSync: <p>是否开启自动同步</p>
+        :type AutoSync: bool
+        :param _SyncCron: <p>同步周期（5段式 crontab 表达式）</p>
+        :type SyncCron: str
+        :param _NextSyncTime: <p>下次同步时间</p><p>参数格式：2026-06-05T11:30:00+08:00</p>
+        :type NextSyncTime: str
         """
         self._Id = None
         self._DirId = None
@@ -24287,10 +24368,13 @@ class UserDirectory(AbstractModel):
         self._UserTotal = None
         self._CreateTime = None
         self._UserOrgSet = None
+        self._AutoSync = None
+        self._SyncCron = None
+        self._NextSyncTime = None
 
     @property
     def Id(self):
-        r"""目录id
+        r"""<p>目录id</p>
         :rtype: int
         """
         return self._Id
@@ -24301,7 +24385,7 @@ class UserDirectory(AbstractModel):
 
     @property
     def DirId(self):
-        r"""ioa目录id
+        r"""<p>ioa目录id</p>
         :rtype: int
         """
         return self._DirId
@@ -24312,7 +24396,7 @@ class UserDirectory(AbstractModel):
 
     @property
     def DirName(self):
-        r"""ioa目录名称
+        r"""<p>ioa目录名称</p>
         :rtype: str
         """
         return self._DirName
@@ -24323,7 +24407,7 @@ class UserDirectory(AbstractModel):
 
     @property
     def Source(self):
-        r"""ioa关联用户源类型
+        r"""<p>ioa关联用户源类型</p>
         :rtype: int
         """
         return self._Source
@@ -24334,7 +24418,7 @@ class UserDirectory(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""ioa关联用户源名称
+        r"""<p>ioa关联用户源名称</p>
         :rtype: str
         """
         return self._SourceName
@@ -24345,7 +24429,7 @@ class UserDirectory(AbstractModel):
 
     @property
     def UserTotal(self):
-        r"""目录包含用户数
+        r"""<p>目录包含用户数</p>
         :rtype: int
         """
         return self._UserTotal
@@ -24356,7 +24440,7 @@ class UserDirectory(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""目录接入时间
+        r"""<p>目录接入时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -24367,7 +24451,7 @@ class UserDirectory(AbstractModel):
 
     @property
     def UserOrgSet(self):
-        r"""目录下的组织细节信息
+        r"""<p>目录下的组织细节信息</p>
         :rtype: list of UserOrg
         """
         return self._UserOrgSet
@@ -24375,6 +24459,39 @@ class UserDirectory(AbstractModel):
     @UserOrgSet.setter
     def UserOrgSet(self, UserOrgSet):
         self._UserOrgSet = UserOrgSet
+
+    @property
+    def AutoSync(self):
+        r"""<p>是否开启自动同步</p>
+        :rtype: bool
+        """
+        return self._AutoSync
+
+    @AutoSync.setter
+    def AutoSync(self, AutoSync):
+        self._AutoSync = AutoSync
+
+    @property
+    def SyncCron(self):
+        r"""<p>同步周期（5段式 crontab 表达式）</p>
+        :rtype: str
+        """
+        return self._SyncCron
+
+    @SyncCron.setter
+    def SyncCron(self, SyncCron):
+        self._SyncCron = SyncCron
+
+    @property
+    def NextSyncTime(self):
+        r"""<p>下次同步时间</p><p>参数格式：2026-06-05T11:30:00+08:00</p>
+        :rtype: str
+        """
+        return self._NextSyncTime
+
+    @NextSyncTime.setter
+    def NextSyncTime(self, NextSyncTime):
+        self._NextSyncTime = NextSyncTime
 
 
     def _deserialize(self, params):
@@ -24391,6 +24508,9 @@ class UserDirectory(AbstractModel):
                 obj = UserOrg()
                 obj._deserialize(item)
                 self._UserOrgSet.append(obj)
+        self._AutoSync = params.get("AutoSync")
+        self._SyncCron = params.get("SyncCron")
+        self._NextSyncTime = params.get("NextSyncTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24408,26 +24528,29 @@ class UserOrg(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrgId: ioa用户组织id
+        :param _OrgId: <p>ioa用户组织id</p>
         :type OrgId: int
-        :param _OrgName: ioa用户组织名称
+        :param _OrgName: <p>ioa用户组织名称</p>
         :type OrgName: str
-        :param _OrgIdPath: ioa用户组织id路径
+        :param _OrgIdPath: <p>ioa用户组织id路径</p>
         :type OrgIdPath: str
-        :param _OrgNamePath: ioa用户组织名称路径
+        :param _OrgNamePath: <p>ioa用户组织名称路径</p>
         :type OrgNamePath: str
-        :param _UserTotal: ioa用户组织id下的用户数
+        :param _UserTotal: <p>ioa用户组织id下的用户数</p>
         :type UserTotal: int
+        :param _BindGroupIds: <p>组织绑定的用户组 id 列表</p>
+        :type BindGroupIds: list of int non-negative
         """
         self._OrgId = None
         self._OrgName = None
         self._OrgIdPath = None
         self._OrgNamePath = None
         self._UserTotal = None
+        self._BindGroupIds = None
 
     @property
     def OrgId(self):
-        r"""ioa用户组织id
+        r"""<p>ioa用户组织id</p>
         :rtype: int
         """
         return self._OrgId
@@ -24438,7 +24561,7 @@ class UserOrg(AbstractModel):
 
     @property
     def OrgName(self):
-        r"""ioa用户组织名称
+        r"""<p>ioa用户组织名称</p>
         :rtype: str
         """
         return self._OrgName
@@ -24449,7 +24572,7 @@ class UserOrg(AbstractModel):
 
     @property
     def OrgIdPath(self):
-        r"""ioa用户组织id路径
+        r"""<p>ioa用户组织id路径</p>
         :rtype: str
         """
         return self._OrgIdPath
@@ -24460,7 +24583,7 @@ class UserOrg(AbstractModel):
 
     @property
     def OrgNamePath(self):
-        r"""ioa用户组织名称路径
+        r"""<p>ioa用户组织名称路径</p>
         :rtype: str
         """
         return self._OrgNamePath
@@ -24471,7 +24594,7 @@ class UserOrg(AbstractModel):
 
     @property
     def UserTotal(self):
-        r"""ioa用户组织id下的用户数
+        r"""<p>ioa用户组织id下的用户数</p>
         :rtype: int
         """
         return self._UserTotal
@@ -24480,6 +24603,17 @@ class UserOrg(AbstractModel):
     def UserTotal(self, UserTotal):
         self._UserTotal = UserTotal
 
+    @property
+    def BindGroupIds(self):
+        r"""<p>组织绑定的用户组 id 列表</p>
+        :rtype: list of int non-negative
+        """
+        return self._BindGroupIds
+
+    @BindGroupIds.setter
+    def BindGroupIds(self, BindGroupIds):
+        self._BindGroupIds = BindGroupIds
+
 
     def _deserialize(self, params):
         self._OrgId = params.get("OrgId")
@@ -24487,6 +24621,7 @@ class UserOrg(AbstractModel):
         self._OrgIdPath = params.get("OrgIdPath")
         self._OrgNamePath = params.get("OrgNamePath")
         self._UserTotal = params.get("UserTotal")
+        self._BindGroupIds = params.get("BindGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

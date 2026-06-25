@@ -610,26 +610,6 @@ class ApigatewayClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeApiApp(
-            self,
-            request: models.DescribeApiAppRequest,
-            opts: Dict = None,
-    ) -> models.DescribeApiAppResponse:
-        """
-        历史接口，已经无用户调用
-
-        本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeApiApp"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeApiAppResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeApiAppBindApisStatus(
             self,
             request: models.DescribeApiAppBindApisStatusRequest,
@@ -746,7 +726,7 @@ class ApigatewayClient(AbstractClient):
     ) -> models.DescribeApiKeysStatusResponse:
         """
         本接口（DescribeApiKeysStatus）用于查询密钥列表。
-        当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息。
+        当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息1。
         """
         
         kwargs = {}

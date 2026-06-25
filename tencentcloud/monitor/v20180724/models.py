@@ -9268,18 +9268,15 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: <p>实例 ID</p>
         :type InstanceId: str
-        :param _Kind: 类型(可通过 DescribeExporterIntegrations获取)
+        :param _Kind: <p>类型(可通过 DescribeExporterIntegrations获取)</p>
         :type Kind: str
-        :param _Name: 名字
+        :param _Name: <p>名字</p>
         :type Name: str
-        :param _KubeType: Kubernetes 集群类型，取值如下：
-<li> 1= 容器集群(TKE) </li>
-<li> 2=弹性集群(EKS) </li>
-<li> 3= Prometheus管理的弹性集群(MEKS) </li>
+        :param _KubeType: <p>Kubernetes 集群类型，取值如下：</p><li> 1= 容器集群(TKE) </li><li> 2=弹性集群(EKS) </li><li> 3= Prometheus管理的弹性集群(MEKS) </li>
         :type KubeType: int
-        :param _ClusterId: 集群 ID，可不填
+        :param _ClusterId: <p>集群 ID，可不填</p>
         :type ClusterId: str
         """
         self._InstanceId = None
@@ -9290,7 +9287,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -9301,7 +9298,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def Kind(self):
-        r"""类型(可通过 DescribeExporterIntegrations获取)
+        r"""<p>类型(可通过 DescribeExporterIntegrations获取)</p>
         :rtype: str
         """
         return self._Kind
@@ -9312,7 +9309,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名字
+        r"""<p>名字</p>
         :rtype: str
         """
         return self._Name
@@ -9323,10 +9320,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def KubeType(self):
-        r"""Kubernetes 集群类型，取值如下：
-<li> 1= 容器集群(TKE) </li>
-<li> 2=弹性集群(EKS) </li>
-<li> 3= Prometheus管理的弹性集群(MEKS) </li>
+        r"""<p>Kubernetes 集群类型，取值如下：</p><li> 1= 容器集群(TKE) </li><li> 2=弹性集群(EKS) </li><li> 3= Prometheus管理的弹性集群(MEKS) </li>
         :rtype: int
         """
         return self._KubeType
@@ -9337,7 +9331,7 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群 ID，可不填
+        r"""<p>集群 ID，可不填</p>
         :rtype: str
         """
         return self._ClusterId

@@ -25,6 +25,24 @@ class ClbClient(AbstractClient):
     _endpoint = 'clb.tencentcloudapi.com'
     _service = 'clb'
 
+    async def AssociateBudget(
+            self,
+            request: models.AssociateBudgetRequest,
+            opts: Dict = None,
+    ) -> models.AssociateBudgetResponse:
+        """
+        将Budget关联到企业型模型路由实例或企业型实例下的Key。资源已关联其他Budget时，本次请求会替换为新的Budget。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssociateBudget"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssociateBudgetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AssociateCustomizedConfig(
             self,
             request: models.AssociateCustomizedConfigRequest,
@@ -195,6 +213,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBudget(
+            self,
+            request: models.CreateBudgetRequest,
+            opts: Dict = None,
+    ) -> models.CreateBudgetResponse:
+        """
+        创建Budget对象。可在创建时通过Resources同时关联已存在的企业型模型路由实例或企业型实例下的Key。创建请求提交后，可通过DescribeBudgets查询状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBudget"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBudgetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateClsLogSet(
             self,
             request: models.CreateClsLogSetRequest,
@@ -208,6 +244,42 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "CreateClsLogSet"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateClsLogSetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateKey(
+            self,
+            request: models.CreateKeyRequest,
+            opts: Dict = None,
+    ) -> models.CreateKeyResponse:
+        """
+        创建 API Key
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateKeys(
+            self,
+            request: models.CreateKeysRequest,
+            opts: Dict = None,
+    ) -> models.CreateKeysResponse:
+        """
+        批量创建Key
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateKeys"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateKeysResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -271,6 +343,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateModelRouter(
+            self,
+            request: models.CreateModelRouterRequest,
+            opts: Dict = None,
+    ) -> models.CreateModelRouterResponse:
+        """
+        创建模型路由实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateModelRouter"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateModelRouterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRule(
             self,
             request: models.CreateRuleRequest,
@@ -321,6 +411,60 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "CreateTopic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateUserGroup(
+            self,
+            request: models.CreateUserGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateUserGroupResponse:
+        """
+        在指定模型路由实例下创建一个用户组。用户组是介于模型路由实例与 Key 之间的一层可选分组，可为组内 Key 统一配置模型白名单，并通过关联 Budget 统一管理额度。创建为异步操作，接口会同步返回用户组ID，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询创建进度。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateUserGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateUserGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteBudgets(
+            self,
+            request: models.DeleteBudgetsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBudgetsResponse:
+        """
+        删除Budget对象。Budget存在任何关联资源时不允许删除，需要先调用DisassociateBudget解除关联。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBudgets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBudgetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteKeys(
+            self,
+            request: models.DeleteKeysRequest,
+            opts: Dict = None,
+    ) -> models.DeleteKeysResponse:
+        """
+        批量删除 API Key。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteKeys"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteKeysResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -402,6 +546,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteModelRouters(
+            self,
+            request: models.DeleteModelRoutersRequest,
+            opts: Dict = None,
+    ) -> models.DeleteModelRoutersResponse:
+        """
+        删除模型路由实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteModelRouters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteModelRoutersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteRewrite(
             self,
             request: models.DeleteRewriteRequest,
@@ -453,6 +615,24 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "DeleteTargetGroups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteTargetGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteUserGroups(
+            self,
+            request: models.DeleteUserGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteUserGroupsResponse:
+        """
+        批量删除用户组。组内若仍存在 Key，将拒绝删除（错误码 ResourceInUse），需先将 Key 移出或迁移到其他组。删除为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteUserGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteUserGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -543,6 +723,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAsyncJobs(
+            self,
+            request: models.DescribeAsyncJobsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAsyncJobsResponse:
+        """
+        查询异步任务信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAsyncJobs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAsyncJobsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBlockIPList(
             self,
             request: models.DescribeBlockIPListRequest,
@@ -574,6 +772,42 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "DescribeBlockIPTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBlockIPTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBudgetAssociations(
+            self,
+            request: models.DescribeBudgetAssociationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBudgetAssociationsResponse:
+        """
+        查询指定Budget关联的资源列表。支持按资源类型过滤。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBudgetAssociations"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBudgetAssociationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBudgets(
+            self,
+            request: models.DescribeBudgetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBudgetsResponse:
+        """
+        查询Budget列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBudgets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBudgetsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -921,6 +1155,60 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeModelRouterDetail(
+            self,
+            request: models.DescribeModelRouterDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelRouterDetailResponse:
+        """
+        查询模型路由详细信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelRouterDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelRouterDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelRouterQuota(
+            self,
+            request: models.DescribeModelRouterQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelRouterQuotaResponse:
+        """
+        查询用户配额信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelRouterQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelRouterQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelRouters(
+            self,
+            request: models.DescribeModelRoutersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelRoutersResponse:
+        """
+        查询模型路由列表页
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelRouters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelRoutersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeQuota(
             self,
             request: models.DescribeQuotaRequest,
@@ -1101,6 +1389,42 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeUserGroups(
+            self,
+            request: models.DescribeUserGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserGroupsResponse:
+        """
+        查询指定模型路由实例下的用户组列表或详情，支持按ID、名称、状态、标签过滤及分页。真实用户组按名称字典序升序返回；返回列表末尾恒追加一个「未分组」虚拟分组（UserGroupId 固定为 ugrp-ungrouped、UserGroupName 固定为 ungrouped），它并非用户真实创建的用户组，而是代表该实例下所有未归属任何用户组的 Key（其 KeyCount 为无组 Key 数，不计入 TotalCount，不可修改或删除）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DisassociateBudget(
+            self,
+            request: models.DisassociateBudgetRequest,
+            opts: Dict = None,
+    ) -> models.DisassociateBudgetResponse:
+        """
+        解除Budget与模型路由实例或Key的关联。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisassociateBudget"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisassociateBudgetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DisassociateCustomizedConfig(
             self,
             request: models.DisassociateCustomizedConfigRequest,
@@ -1268,6 +1592,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyBudgetAttributes(
+            self,
+            request: models.ModifyBudgetAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBudgetAttributesResponse:
+        """
+        修改Budget属性。BudgetResetAt不支持作为入参设置。修改请求提交后，可通过DescribeBudgets查询状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBudgetAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBudgetAttributesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDomain(
             self,
             request: models.ModifyDomainRequest,
@@ -1321,6 +1663,60 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "ModifyFunctionTargets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyFunctionTargetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyKeyAttributes(
+            self,
+            request: models.ModifyKeyAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyKeyAttributesResponse:
+        """
+        修改 API Key 的属性
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyKeyAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyKeyAttributesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyKeysBlockStatus(
+            self,
+            request: models.ModifyKeysBlockStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyKeysBlockStatusResponse:
+        """
+        禁用/启用Key
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyKeysBlockStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyKeysBlockStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyKeysUserGroup(
+            self,
+            request: models.ModifyKeysUserGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyKeysUserGroupResponse:
+        """
+        批量变更 Key 的用户组归属：UserGroupId 传真实用户组ID表示批量入组/跨组移动，传 ugrp-ungrouped 表示批量移出到未分组。变更为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyKeysUserGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyKeysUserGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1417,6 +1813,24 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "ModifyLoadBalancersProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyLoadBalancersProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyModelRouterAttributes(
+            self,
+            request: models.ModifyModelRouterAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyModelRouterAttributesResponse:
+        """
+        修改模型路由属性。支持修改实例名称、限速配置、路由配置，以及替换企业型实例 HTTPS 服务端点绑定的证书（CertId）。每次调用至少传入一个待修改的属性字段，未传入的字段保持原值不变。其中证书替换在请求内同步完成，成功返回即已生效；其余属性修改异步生效，可通过 DescribeModelRouterDetail 接口查询修改结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyModelRouterAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyModelRouterAttributesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1530,6 +1944,42 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "ModifyTargetWeight"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyTargetWeightResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyUserGroupAttributes(
+            self,
+            request: models.ModifyUserGroupAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserGroupAttributesResponse:
+        """
+        修改用户组的名称、模型白名单或关联预算。仅修改传入的字段；其中数组类字段（Models）传入即整体覆盖。BudgetId 传入即关联/替换该组预算（不支持解绑，解绑用 DisassociateBudget）。修改为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUserGroupAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserGroupAttributesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RegenerateKeys(
+            self,
+            request: models.RegenerateKeysRequest,
+            opts: Dict = None,
+    ) -> models.RegenerateKeysResponse:
+        """
+        批量重新生成Key
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RegenerateKeys"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RegenerateKeysResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

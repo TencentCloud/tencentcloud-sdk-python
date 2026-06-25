@@ -893,6 +893,12 @@ UNSUPPORTEDOPERATION_MANAGEMENTSYSTEMERROR = 'UnsupportedOperation.ManagementSys
 # 成员账户欠费。
 UNSUPPORTEDOPERATION_MEMBERACCOUNTARREARS = 'UnsupportedOperation.MemberAccountArrears'
 
+# 成员存在身份中心权限部署信息。
+UNSUPPORTEDOPERATION_MEMBERACCOUNTEXISTCICROLECONFIG = 'UnsupportedOperation.MemberAccountExistCICRoleConfig'
+
+# 成员存在身份中心CAM用户同步信息。
+UNSUPPORTEDOPERATION_MEMBERACCOUNTEXISTCICUSERCONFIG = 'UnsupportedOperation.MemberAccountExistCICUserConfig'
+
 # 成员账号存在资源，不允许删除。
 UNSUPPORTEDOPERATION_MEMBERACCOUNTEXISTRESOURCE = 'UnsupportedOperation.MemberAccountExistResource'
 

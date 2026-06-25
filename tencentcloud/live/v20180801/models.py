@@ -15583,6 +15583,10 @@ class DescribeAIGCTaskStatusResponse(AbstractModel):
         :type TaskResultCode: int
         :param _TaskResultMsg: <p>任务返回错误信息</p>
         :type TaskResultMsg: str
+        :param _RequestBody: <p>请求参数</p>
+        :type RequestBody: str
+        :param _TaskType: <p>任务类型</p>
+        :type TaskType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15594,6 +15598,8 @@ class DescribeAIGCTaskStatusResponse(AbstractModel):
         self._FinishedTime = None
         self._TaskResultCode = None
         self._TaskResultMsg = None
+        self._RequestBody = None
+        self._TaskType = None
         self._RequestId = None
 
     @property
@@ -15686,6 +15692,28 @@ class DescribeAIGCTaskStatusResponse(AbstractModel):
         self._TaskResultMsg = TaskResultMsg
 
     @property
+    def RequestBody(self):
+        r"""<p>请求参数</p>
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -15706,6 +15734,8 @@ class DescribeAIGCTaskStatusResponse(AbstractModel):
         self._FinishedTime = params.get("FinishedTime")
         self._TaskResultCode = params.get("TaskResultCode")
         self._TaskResultMsg = params.get("TaskResultMsg")
+        self._RequestBody = params.get("RequestBody")
+        self._TaskType = params.get("TaskType")
         self._RequestId = params.get("RequestId")
 
 

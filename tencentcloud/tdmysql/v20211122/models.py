@@ -12404,6 +12404,87 @@ class ParamDesc(AbstractModel):
         
 
 
+class ResetUserPasswordInfo(AbstractModel):
+    r"""重置密码的用户类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: <p>用户名</p>
+        :type UserName: str
+        :param _Host: <p>host</p>
+        :type Host: str
+        :param _Password: <p>明文密码</p>
+        :type Password: str
+        :param _EncryptedPassword: <p>加密密码</p>
+        :type EncryptedPassword: str
+        """
+        self._UserName = None
+        self._Host = None
+        self._Password = None
+        self._EncryptedPassword = None
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Host(self):
+        r"""<p>host</p>
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Password(self):
+        r"""<p>明文密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptedPassword(self):
+        r"""<p>加密密码</p>
+        :rtype: str
+        """
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._Host = params.get("Host")
+        self._Password = params.get("Password")
+        self._EncryptedPassword = params.get("EncryptedPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetUserPasswordRequest(AbstractModel):
     r"""ResetUserPassword请求参数结构体
 
@@ -12525,6 +12606,105 @@ class ResetUserPasswordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetUsersPasswordRequest(AbstractModel):
+    r"""ResetUsersPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _Users: <p>重置用户密码列表</p>
+        :type Users: list of ResetUserPasswordInfo
+        """
+        self._InstanceId = None
+        self._Users = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Users(self):
+        r"""<p>重置用户密码列表</p>
+        :rtype: list of ResetUserPasswordInfo
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = ResetUserPasswordInfo()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetUsersPasswordResponse(AbstractModel):
+    r"""ResetUsersPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>任务id</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

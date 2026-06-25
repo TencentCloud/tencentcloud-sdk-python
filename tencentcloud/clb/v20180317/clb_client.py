@@ -26,6 +26,29 @@ class ClbClient(AbstractClient):
     _service = 'clb'
 
 
+    def AssociateBudget(self, request):
+        r"""将Budget关联到企业型模型路由实例或企业型实例下的Key。资源已关联其他Budget时，本次请求会替换为新的Budget。
+
+        :param request: Request instance for AssociateBudget.
+        :type request: :class:`tencentcloud.clb.v20180317.models.AssociateBudgetRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.AssociateBudgetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateBudget", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssociateBudgetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AssociateCustomizedConfig(self, request):
         r"""关联配置到server或location，根据配置类型关联到server或location。准备下线，请使用SetCustomizedConfigForLoadBalancer。
 
@@ -236,6 +259,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBudget(self, request):
+        r"""创建Budget对象。可在创建时通过Resources同时关联已存在的企业型模型路由实例或企业型实例下的Key。创建请求提交后，可通过DescribeBudgets查询状态。
+
+        :param request: Request instance for CreateBudget.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateBudgetRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateBudgetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBudget", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBudgetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateClsLogSet(self, request):
         r"""创建CLB专有日志集，此日志集用于存储CLB的日志。
 
@@ -250,6 +296,52 @@ class ClbClient(AbstractClient):
             body = self.call("CreateClsLogSet", params, headers=headers)
             response = json.loads(body)
             model = models.CreateClsLogSetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateKey(self, request):
+        r"""创建 API Key
+
+        :param request: Request instance for CreateKey.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateKeyRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateKeys(self, request):
+        r"""批量创建Key
+
+        :param request: Request instance for CreateKeys.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateKeysRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateKeysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -332,6 +424,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateModelRouter(self, request):
+        r"""创建模型路由实例
+
+        :param request: Request instance for CreateModelRouter.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateModelRouterRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateModelRouterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateModelRouter", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateModelRouterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRule(self, request):
         r"""CreateRule 接口用于在一个已存在的负载均衡七层监听器下创建转发规则，七层监听器中，后端服务必须绑定到规则上而非监听器上。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
@@ -393,6 +508,75 @@ class ClbClient(AbstractClient):
             body = self.call("CreateTopic", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateUserGroup(self, request):
+        r"""在指定模型路由实例下创建一个用户组。用户组是介于模型路由实例与 Key 之间的一层可选分组，可为组内 Key 统一配置模型白名单，并通过关联 Budget 统一管理额度。创建为异步操作，接口会同步返回用户组ID，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询创建进度。
+
+        :param request: Request instance for CreateUserGroup.
+        :type request: :class:`tencentcloud.clb.v20180317.models.CreateUserGroupRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CreateUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteBudgets(self, request):
+        r"""删除Budget对象。Budget存在任何关联资源时不允许删除，需要先调用DisassociateBudget解除关联。
+
+        :param request: Request instance for DeleteBudgets.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteBudgetsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteBudgetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBudgets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBudgetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteKeys(self, request):
+        r"""批量删除 API Key。
+
+        :param request: Request instance for DeleteKeys.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteKeysRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteKeysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -498,6 +682,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteModelRouters(self, request):
+        r"""删除模型路由实例
+
+        :param request: Request instance for DeleteModelRouters.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteModelRoutersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteModelRoutersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteModelRouters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteModelRoutersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteRewrite(self, request):
         r"""DeleteRewrite 接口支持删除指定转发规则之间的重定向关系。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
@@ -560,6 +767,29 @@ class ClbClient(AbstractClient):
             body = self.call("DeleteTargetGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTargetGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUserGroups(self, request):
+        r"""批量删除用户组。组内若仍存在 Key，将拒绝删除（错误码 ResourceInUse），需先将 Key 移出或迁移到其他组。删除为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+
+        :param request: Request instance for DeleteUserGroups.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DeleteUserGroupsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DeleteUserGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -674,6 +904,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAsyncJobs(self, request):
+        r"""查询异步任务信息
+
+        :param request: Request instance for DescribeAsyncJobs.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeAsyncJobsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeAsyncJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAsyncJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAsyncJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBlockIPList(self, request):
         r"""查询一个负载均衡所封禁的IP列表（黑名单）。（接口灰度中，如需使用请提工单）
 
@@ -711,6 +964,52 @@ class ClbClient(AbstractClient):
             body = self.call("DescribeBlockIPTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBlockIPTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBudgetAssociations(self, request):
+        r"""查询指定Budget关联的资源列表。支持按资源类型过滤。
+
+        :param request: Request instance for DescribeBudgetAssociations.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBudgetAssociationsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeBudgetAssociationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBudgetAssociations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBudgetAssociationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBudgets(self, request):
+        r"""查询Budget列表。
+
+        :param request: Request instance for DescribeBudgets.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeBudgetsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeBudgetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBudgets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBudgetsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1157,6 +1456,75 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeModelRouterDetail(self, request):
+        r"""查询模型路由详细信息
+
+        :param request: Request instance for DescribeModelRouterDetail.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeModelRouterDetailRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeModelRouterDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModelRouterDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModelRouterDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeModelRouterQuota(self, request):
+        r"""查询用户配额信息
+
+        :param request: Request instance for DescribeModelRouterQuota.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeModelRouterQuotaRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeModelRouterQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModelRouterQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModelRouterQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeModelRouters(self, request):
+        r"""查询模型路由列表页
+
+        :param request: Request instance for DescribeModelRouters.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeModelRoutersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeModelRoutersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModelRouters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModelRoutersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeQuota(self, request):
         r"""查询用户当前地域下的各项配额
 
@@ -1387,6 +1755,52 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserGroups(self, request):
+        r"""查询指定模型路由实例下的用户组列表或详情，支持按ID、名称、状态、标签过滤及分页。真实用户组按名称字典序升序返回；返回列表末尾恒追加一个「未分组」虚拟分组（UserGroupId 固定为 ugrp-ungrouped、UserGroupName 固定为 ungrouped），它并非用户真实创建的用户组，而是代表该实例下所有未归属任何用户组的 Key（其 KeyCount 为无组 Key 数，不计入 TotalCount，不可修改或删除）。
+
+        :param request: Request instance for DescribeUserGroups.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeUserGroupsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeUserGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisassociateBudget(self, request):
+        r"""解除Budget与模型路由实例或Key的关联。
+
+        :param request: Request instance for DisassociateBudget.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DisassociateBudgetRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DisassociateBudgetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateBudget", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisassociateBudgetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisassociateCustomizedConfig(self, request):
         r"""去关联个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
 
@@ -1599,6 +2013,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBudgetAttributes(self, request):
+        r"""修改Budget属性。BudgetResetAt不支持作为入参设置。修改请求提交后，可通过DescribeBudgets查询状态。
+
+        :param request: Request instance for ModifyBudgetAttributes.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyBudgetAttributesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyBudgetAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBudgetAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBudgetAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDomain(self, request):
         r"""ModifyDomain接口用来修改负载均衡七层监听器下的域名。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
@@ -1663,6 +2100,75 @@ class ClbClient(AbstractClient):
             body = self.call("ModifyFunctionTargets", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyFunctionTargetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyKeyAttributes(self, request):
+        r"""修改 API Key 的属性
+
+        :param request: Request instance for ModifyKeyAttributes.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyKeyAttributesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyKeyAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKeyAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKeyAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyKeysBlockStatus(self, request):
+        r"""禁用/启用Key
+
+        :param request: Request instance for ModifyKeysBlockStatus.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyKeysBlockStatusRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyKeysBlockStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKeysBlockStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKeysBlockStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyKeysUserGroup(self, request):
+        r"""批量变更 Key 的用户组归属：UserGroupId 传真实用户组ID表示批量入组/跨组移动，传 ugrp-ungrouped 表示批量移出到未分组。变更为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+
+        :param request: Request instance for ModifyKeysUserGroup.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyKeysUserGroupRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyKeysUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKeysUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKeysUserGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1784,6 +2290,29 @@ class ClbClient(AbstractClient):
             body = self.call("ModifyLoadBalancersProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLoadBalancersProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyModelRouterAttributes(self, request):
+        r"""修改模型路由属性。支持修改实例名称、限速配置、路由配置，以及替换企业型实例 HTTPS 服务端点绑定的证书（CertId）。每次调用至少传入一个待修改的属性字段，未传入的字段保持原值不变。其中证书替换在请求内同步完成，成功返回即已生效；其余属性修改异步生效，可通过 DescribeModelRouterDetail 接口查询修改结果。
+
+        :param request: Request instance for ModifyModelRouterAttributes.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyModelRouterAttributesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyModelRouterAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyModelRouterAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyModelRouterAttributesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1927,6 +2456,52 @@ class ClbClient(AbstractClient):
             body = self.call("ModifyTargetWeight", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTargetWeightResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserGroupAttributes(self, request):
+        r"""修改用户组的名称、模型白名单或关联预算。仅修改传入的字段；其中数组类字段（Models）传入即整体覆盖。BudgetId 传入即关联/替换该组预算（不支持解绑，解绑用 DisassociateBudget）。修改为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+
+        :param request: Request instance for ModifyUserGroupAttributes.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyUserGroupAttributesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyUserGroupAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserGroupAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserGroupAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RegenerateKeys(self, request):
+        r"""批量重新生成Key
+
+        :param request: Request instance for RegenerateKeys.
+        :type request: :class:`tencentcloud.clb.v20180317.models.RegenerateKeysRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RegenerateKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RegenerateKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.RegenerateKeysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

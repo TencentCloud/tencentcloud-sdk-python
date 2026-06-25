@@ -17197,17 +17197,20 @@ class ModifyEnvRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境ID
+        :param _EnvId: <p>环境ID</p>
         :type EnvId: str
-        :param _Alias: 环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+        :param _Alias: <p>环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
         :type Alias: str
+        :param _CustomQps: <p>按量计费QPS上限，大于套餐配额时生效。-1表示关闭QPS按量计费。</p>
+        :type CustomQps: int
         """
         self._EnvId = None
         self._Alias = None
+        self._CustomQps = None
 
     @property
     def EnvId(self):
-        r"""环境ID
+        r"""<p>环境ID</p>
         :rtype: str
         """
         return self._EnvId
@@ -17218,7 +17221,7 @@ class ModifyEnvRequest(AbstractModel):
 
     @property
     def Alias(self):
-        r"""环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+        r"""<p>环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
         :rtype: str
         """
         return self._Alias
@@ -17227,10 +17230,22 @@ class ModifyEnvRequest(AbstractModel):
     def Alias(self, Alias):
         self._Alias = Alias
 
+    @property
+    def CustomQps(self):
+        r"""<p>按量计费QPS上限，大于套餐配额时生效。-1表示关闭QPS按量计费。</p>
+        :rtype: int
+        """
+        return self._CustomQps
+
+    @CustomQps.setter
+    def CustomQps(self, CustomQps):
+        self._CustomQps = CustomQps
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
         self._Alias = params.get("Alias")
+        self._CustomQps = params.get("CustomQps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

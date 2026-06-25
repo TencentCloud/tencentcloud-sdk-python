@@ -771,31 +771,6 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeApiApp(self, request):
-        r"""历史接口，已经无用户调用
-
-        本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
-
-        :param request: Request instance for DescribeApiApp.
-        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppRequest`
-        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiAppResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeApiApp", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeApiAppResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeApiAppBindApisStatus(self, request):
         r"""本接口（DescribeApiAppBindApisStatus）查询应用绑定的Api列表。
 
@@ -937,7 +912,7 @@ class ApigatewayClient(AbstractClient):
 
     def DescribeApiKeysStatus(self, request):
         r"""本接口（DescribeApiKeysStatus）用于查询密钥列表。
-        当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息。
+        当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息1。
 
         :param request: Request instance for DescribeApiKeysStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiKeysStatusRequest`

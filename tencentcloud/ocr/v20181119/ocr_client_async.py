@@ -1067,6 +1067,28 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def MultimodalDocParse(
+            self,
+            request: models.MultimodalDocParseRequest,
+            opts: Dict = None,
+    ) -> models.MultimodalDocParseResponse:
+        """
+        本接口支持解析多种类型的文档文件（PDF、Word、PPT、Excel、Markdown、TXT、图片、WPS），返回解析后的结果文件下载地址（zip压缩包，包含markdown、json和图片）。
+
+        支持的文件大小：PDF/Word/PPT支持150M且300页以内、Excel支持10M以内、TXT支持10M以内、图片文件支持70M以内。
+
+        默认接口请求频率限制：5 并发。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "MultimodalDocParse"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.MultimodalDocParseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def PassportOCR(
             self,
             request: models.PassportOCRRequest,

@@ -6712,81 +6712,82 @@ class BillDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        :param _BusinessCodeName: <p>产品名称：用户所采购的各类云产品，例如：云服务器 CVM</p>
         :type BusinessCodeName: str
-        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        :param _ProductCodeName: <p>子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1</p>
         :type ProductCodeName: str
-        :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
+        :param _PayModeName: <p>计费模式：资源的计费模式，区分为包年包月和按量计费</p>
         :type PayModeName: str
-        :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        :param _ProjectName: <p>项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目</p>
         :type ProjectName: str
-        :param _RegionName: 地域：资源所属地域，如华南地区（广州）
+        :param _RegionName: <p>地域：资源所属地域，如华南地区（广州）</p>
         :type RegionName: str
-        :param _ZoneName: 可用区：资源所属可用区，如广州三区
+        :param _ZoneName: <p>可用区：资源所属可用区，如广州三区</p>
         :type ZoneName: str
-        :param _ResourceId: 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        :param _ResourceId: <p>资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID</p>
         :type ResourceId: str
-        :param _ResourceName: 资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+        :param _ResourceName: <p>资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空</p>
         :type ResourceName: str
-        :param _ActionTypeName: 交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
+        :param _ActionTypeName: <p>交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型</p>
         :type ActionTypeName: str
-        :param _OrderId: 订单ID：包年包月计费模式下对应子订单号。后付费计费模式下账单费用不存在订单概念，可忽略此参数。
-
+        :param _OrderId: <p>订单ID：包年包月计费模式下对应子订单号。后付费计费模式下账单费用不存在订单概念，可忽略此参数。</p>
         :type OrderId: str
-        :param _BillId: 交易ID：结算扣费单号
+        :param _BillId: <p>交易ID：结算扣费单号</p>
         :type BillId: str
-        :param _PayTime: 扣费时间：结算扣费时间
+        :param _PayTime: <p>扣费时间：结算扣费时间</p>
         :type PayTime: str
-        :param _FeeBeginTime: 开始使用时间：产品服务开始使用时间
+        :param _FeeBeginTime: <p>开始使用时间：产品服务开始使用时间</p>
         :type FeeBeginTime: str
-        :param _FeeEndTime: 结束使用时间：产品服务结束使用时间
+        :param _FeeEndTime: <p>结束使用时间：产品服务结束使用时间</p>
         :type FeeEndTime: str
-        :param _ComponentSet: 组件列表
+        :param _ComponentSet: <p>组件列表</p>
         :type ComponentSet: list of BillDetailComponent
-        :param _PayerUin: 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        :param _PayerUin: <p>支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识</p>
         :type PayerUin: str
-        :param _OwnerUin: 使用者UIN：实际使用资源的账号 ID
+        :param _OwnerUin: <p>使用者UIN：实际使用资源的账号 ID</p>
         :type OwnerUin: str
-        :param _OperateUin: 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        :param _OperateUin: <p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
         :type OperateUin: str
-        :param _Tags: 标签信息
+        :param _Tags: <p>标签信息</p>
         :type Tags: list of BillTagInfo
-        :param _BusinessCode: 产品编码
+        :param _BusinessCode: <p>产品编码</p>
         :type BusinessCode: str
-        :param _ProductCode: 子产品编码
+        :param _ProductCode: <p>子产品编码</p>
         :type ProductCode: str
-        :param _ActionType: 交易类型编码
+        :param _ActionType: <p>交易类型编码</p>
         :type ActionType: str
-        :param _RegionId: 地域ID
+        :param _RegionId: <p>地域ID</p>
         :type RegionId: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _PriceInfo: 价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+        :param _PriceInfo: <p>价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息</p>
         :type PriceInfo: list of str
-        :param _AssociatedOrder: 关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
+        :param _AssociatedOrder: <p>关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号</p>
         :type AssociatedOrder: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
-        :param _Formula: 计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+        :param _Formula: <p>计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配</p>
         :type Formula: str
-        :param _FormulaUrl: 计费规则：各产品详细的计费规则官网说明链接
+        :param _FormulaUrl: <p>计费规则：各产品详细的计费规则官网说明链接</p>
         :type FormulaUrl: str
-        :param _BillDay: 账单归属日
+        :param _BillDay: <p>账单归属日</p>
         :type BillDay: str
-        :param _BillMonth: 账单归属月
+        :param _BillMonth: <p>账单归属月</p>
         :type BillMonth: str
-        :param _Id: 账单记录ID
+        :param _Id: <p>账单记录ID</p>
         :type Id: str
-        :param _RegionType: 国内国际编码
+        :param _RegionType: <p>国内国际编码</p>
         :type RegionType: str
-        :param _RegionTypeName: 国内国际：资源所属区域类型（国内、国际）
+        :param _RegionTypeName: <p>国内国际：资源所属区域类型（国内、国际）</p>
         :type RegionTypeName: str
-        :param _ReserveDetail: 备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
+        :param _ReserveDetail: <p>备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息</p>
         :type ReserveDetail: str
-        :param _DiscountObject: 优惠对象
+        :param _DiscountObject: <p>优惠对象</p>
         :type DiscountObject: str
-        :param _DiscountType: 优惠类型
+        :param _DiscountType: <p>优惠类型</p>
         :type DiscountType: str
-        :param _DiscountContent: 优惠内容
+        :param _DiscountContent: <p>优惠内容</p>
         :type DiscountContent: str
+        :param _ExtendField: <p>资源扩展信息：体现资源维度的扩展信息，与L2账单的扩展字段信息保持一致。</p>
+        :type ExtendField: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -6825,10 +6826,11 @@ class BillDetail(AbstractModel):
         self._DiscountObject = None
         self._DiscountType = None
         self._DiscountContent = None
+        self._ExtendField = None
 
     @property
     def BusinessCodeName(self):
-        r"""产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        r"""<p>产品名称：用户所采购的各类云产品，例如：云服务器 CVM</p>
         :rtype: str
         """
         return self._BusinessCodeName
@@ -6839,7 +6841,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        r"""子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        r"""<p>子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1</p>
         :rtype: str
         """
         return self._ProductCodeName
@@ -6850,7 +6852,7 @@ class BillDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""<p>计费模式：资源的计费模式，区分为包年包月和按量计费</p>
         :rtype: str
         """
         return self._PayModeName
@@ -6861,7 +6863,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""<p>项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目</p>
         :rtype: str
         """
         return self._ProjectName
@@ -6872,7 +6874,7 @@ class BillDetail(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""地域：资源所属地域，如华南地区（广州）
+        r"""<p>地域：资源所属地域，如华南地区（广州）</p>
         :rtype: str
         """
         return self._RegionName
@@ -6883,7 +6885,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        r"""可用区：资源所属可用区，如广州三区
+        r"""<p>可用区：资源所属可用区，如广州三区</p>
         :rtype: str
         """
         return self._ZoneName
@@ -6894,7 +6896,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        r"""<p>资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -6905,7 +6907,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+        r"""<p>资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空</p>
         :rtype: str
         """
         return self._ResourceName
@@ -6916,7 +6918,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
+        r"""<p>交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型</p>
         :rtype: str
         """
         return self._ActionTypeName
@@ -6927,8 +6929,7 @@ class BillDetail(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""订单ID：包年包月计费模式下对应子订单号。后付费计费模式下账单费用不存在订单概念，可忽略此参数。
-
+        r"""<p>订单ID：包年包月计费模式下对应子订单号。后付费计费模式下账单费用不存在订单概念，可忽略此参数。</p>
         :rtype: str
         """
         return self._OrderId
@@ -6939,7 +6940,7 @@ class BillDetail(AbstractModel):
 
     @property
     def BillId(self):
-        r"""交易ID：结算扣费单号
+        r"""<p>交易ID：结算扣费单号</p>
         :rtype: str
         """
         return self._BillId
@@ -6950,7 +6951,7 @@ class BillDetail(AbstractModel):
 
     @property
     def PayTime(self):
-        r"""扣费时间：结算扣费时间
+        r"""<p>扣费时间：结算扣费时间</p>
         :rtype: str
         """
         return self._PayTime
@@ -6961,7 +6962,7 @@ class BillDetail(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        r"""开始使用时间：产品服务开始使用时间
+        r"""<p>开始使用时间：产品服务开始使用时间</p>
         :rtype: str
         """
         return self._FeeBeginTime
@@ -6972,7 +6973,7 @@ class BillDetail(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        r"""结束使用时间：产品服务结束使用时间
+        r"""<p>结束使用时间：产品服务结束使用时间</p>
         :rtype: str
         """
         return self._FeeEndTime
@@ -6983,7 +6984,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ComponentSet(self):
-        r"""组件列表
+        r"""<p>组件列表</p>
         :rtype: list of BillDetailComponent
         """
         return self._ComponentSet
@@ -6994,7 +6995,7 @@ class BillDetail(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""<p>支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识</p>
         :rtype: str
         """
         return self._PayerUin
@@ -7005,7 +7006,7 @@ class BillDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""使用者UIN：实际使用资源的账号 ID
+        r"""<p>使用者UIN：实际使用资源的账号 ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -7016,7 +7017,7 @@ class BillDetail(AbstractModel):
 
     @property
     def OperateUin(self):
-        r"""操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        r"""<p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
         :rtype: str
         """
         return self._OperateUin
@@ -7027,7 +7028,7 @@ class BillDetail(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签信息
+        r"""<p>标签信息</p>
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -7038,7 +7039,7 @@ class BillDetail(AbstractModel):
 
     @property
     def BusinessCode(self):
-        r"""产品编码
+        r"""<p>产品编码</p>
         :rtype: str
         """
         return self._BusinessCode
@@ -7049,7 +7050,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""子产品编码
+        r"""<p>子产品编码</p>
         :rtype: str
         """
         return self._ProductCode
@@ -7060,7 +7061,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""交易类型编码
+        r"""<p>交易类型编码</p>
         :rtype: str
         """
         return self._ActionType
@@ -7071,7 +7072,7 @@ class BillDetail(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: str
         """
         return self._RegionId
@@ -7082,7 +7083,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -7093,7 +7094,7 @@ class BillDetail(AbstractModel):
 
     @property
     def PriceInfo(self):
-        r"""价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+        r"""<p>价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息</p>
         :rtype: list of str
         """
         return self._PriceInfo
@@ -7104,7 +7105,7 @@ class BillDetail(AbstractModel):
 
     @property
     def AssociatedOrder(self):
-        r"""关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
+        r"""<p>关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
         """
         return self._AssociatedOrder
@@ -7115,7 +7116,7 @@ class BillDetail(AbstractModel):
 
     @property
     def Formula(self):
-        r"""计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+        r"""<p>计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配</p>
         :rtype: str
         """
         return self._Formula
@@ -7126,7 +7127,7 @@ class BillDetail(AbstractModel):
 
     @property
     def FormulaUrl(self):
-        r"""计费规则：各产品详细的计费规则官网说明链接
+        r"""<p>计费规则：各产品详细的计费规则官网说明链接</p>
         :rtype: str
         """
         return self._FormulaUrl
@@ -7137,7 +7138,7 @@ class BillDetail(AbstractModel):
 
     @property
     def BillDay(self):
-        r"""账单归属日
+        r"""<p>账单归属日</p>
         :rtype: str
         """
         return self._BillDay
@@ -7148,7 +7149,7 @@ class BillDetail(AbstractModel):
 
     @property
     def BillMonth(self):
-        r"""账单归属月
+        r"""<p>账单归属月</p>
         :rtype: str
         """
         return self._BillMonth
@@ -7159,7 +7160,7 @@ class BillDetail(AbstractModel):
 
     @property
     def Id(self):
-        r"""账单记录ID
+        r"""<p>账单记录ID</p>
         :rtype: str
         """
         return self._Id
@@ -7170,7 +7171,7 @@ class BillDetail(AbstractModel):
 
     @property
     def RegionType(self):
-        r"""国内国际编码
+        r"""<p>国内国际编码</p>
         :rtype: str
         """
         return self._RegionType
@@ -7181,7 +7182,7 @@ class BillDetail(AbstractModel):
 
     @property
     def RegionTypeName(self):
-        r"""国内国际：资源所属区域类型（国内、国际）
+        r"""<p>国内国际：资源所属区域类型（国内、国际）</p>
         :rtype: str
         """
         return self._RegionTypeName
@@ -7192,7 +7193,7 @@ class BillDetail(AbstractModel):
 
     @property
     def ReserveDetail(self):
-        r"""备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
+        r"""<p>备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息</p>
         :rtype: str
         """
         return self._ReserveDetail
@@ -7203,7 +7204,7 @@ class BillDetail(AbstractModel):
 
     @property
     def DiscountObject(self):
-        r"""优惠对象
+        r"""<p>优惠对象</p>
         :rtype: str
         """
         return self._DiscountObject
@@ -7214,7 +7215,7 @@ class BillDetail(AbstractModel):
 
     @property
     def DiscountType(self):
-        r"""优惠类型
+        r"""<p>优惠类型</p>
         :rtype: str
         """
         return self._DiscountType
@@ -7225,7 +7226,7 @@ class BillDetail(AbstractModel):
 
     @property
     def DiscountContent(self):
-        r"""优惠内容
+        r"""<p>优惠内容</p>
         :rtype: str
         """
         return self._DiscountContent
@@ -7233,6 +7234,17 @@ class BillDetail(AbstractModel):
     @DiscountContent.setter
     def DiscountContent(self, DiscountContent):
         self._DiscountContent = DiscountContent
+
+    @property
+    def ExtendField(self):
+        r"""<p>资源扩展信息：体现资源维度的扩展信息，与L2账单的扩展字段信息保持一致。</p>
+        :rtype: str
+        """
+        return self._ExtendField
+
+    @ExtendField.setter
+    def ExtendField(self, ExtendField):
+        self._ExtendField = ExtendField
 
 
     def _deserialize(self, params):
@@ -7285,6 +7297,7 @@ class BillDetail(AbstractModel):
         self._DiscountObject = params.get("DiscountObject")
         self._DiscountType = params.get("DiscountType")
         self._DiscountContent = params.get("DiscountContent")
+        self._ExtendField = params.get("ExtendField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

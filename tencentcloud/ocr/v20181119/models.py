@@ -8649,23 +8649,29 @@ class ExtractDocAgentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: <p>图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type ImageUrl: str
-        :param _ItemNames: 自定义抽取需要的字段名称、字段类型、字段提示词。
+        :param _ItemNames: <p>自定义抽取需要的字段名称、字段类型、字段提示词。</p>
         :type ItemNames: list of ItemNames
-        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。
+        :param _PdfPageNumber: <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。</p>
         :type PdfPageNumber: int
+        :param _EnableCoord: <p>是否需要返回坐标</p><p>默认值：false</p>
+        :type EnableCoord: bool
+        :param _EnableAudit: <p>是否需要开启审核逻辑(支持对字段配置比对内容和比对的语意规则)</p><p>默认值：false</p>
+        :type EnableAudit: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
         self._ItemNames = None
         self._PdfPageNumber = None
+        self._EnableCoord = None
+        self._EnableAudit = None
 
     @property
     def ImageBase64(self):
-        r"""图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -8676,7 +8682,7 @@ class ExtractDocAgentRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""<p>图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -8687,7 +8693,7 @@ class ExtractDocAgentRequest(AbstractModel):
 
     @property
     def ItemNames(self):
-        r"""自定义抽取需要的字段名称、字段类型、字段提示词。
+        r"""<p>自定义抽取需要的字段名称、字段类型、字段提示词。</p>
         :rtype: list of ItemNames
         """
         return self._ItemNames
@@ -8698,7 +8704,7 @@ class ExtractDocAgentRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。
+        r"""<p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。</p>
         :rtype: int
         """
         return self._PdfPageNumber
@@ -8706,6 +8712,28 @@ class ExtractDocAgentRequest(AbstractModel):
     @PdfPageNumber.setter
     def PdfPageNumber(self, PdfPageNumber):
         self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def EnableCoord(self):
+        r"""<p>是否需要返回坐标</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableCoord
+
+    @EnableCoord.setter
+    def EnableCoord(self, EnableCoord):
+        self._EnableCoord = EnableCoord
+
+    @property
+    def EnableAudit(self):
+        r"""<p>是否需要开启审核逻辑(支持对字段配置比对内容和比对的语意规则)</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableAudit
+
+    @EnableAudit.setter
+    def EnableAudit(self, EnableAudit):
+        self._EnableAudit = EnableAudit
 
 
     def _deserialize(self, params):
@@ -8718,6 +8746,8 @@ class ExtractDocAgentRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ItemNames.append(obj)
         self._PdfPageNumber = params.get("PdfPageNumber")
+        self._EnableCoord = params.get("EnableCoord")
+        self._EnableAudit = params.get("EnableAudit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8735,13 +8765,13 @@ class ExtractDocAgentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :param _Angle: <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
         :type Angle: float
-        :param _StructuralList: 配置结构化文本信息。
+        :param _StructuralList: <p>配置结构化文本信息。</p>
         :type StructuralList: list of GroupInfo
-        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :param _ErrorCode: <p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :type ErrorCode: str
-        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :param _ErrorMessage: <p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :type ErrorMessage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8754,7 +8784,7 @@ class ExtractDocAgentResponse(AbstractModel):
 
     @property
     def Angle(self):
-        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        r"""<p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
         :rtype: float
         """
         return self._Angle
@@ -8765,7 +8795,7 @@ class ExtractDocAgentResponse(AbstractModel):
 
     @property
     def StructuralList(self):
-        r"""配置结构化文本信息。
+        r"""<p>配置结构化文本信息。</p>
         :rtype: list of GroupInfo
         """
         return self._StructuralList
@@ -8776,7 +8806,7 @@ class ExtractDocAgentResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        r"""<p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :rtype: str
         """
         return self._ErrorCode
@@ -8787,7 +8817,7 @@ class ExtractDocAgentResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        r"""<p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -19414,6 +19444,145 @@ class MotorVehicleSaleInvoice(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class MultimodalDocParseRequest(AbstractModel):
+    r"""MultimodalDocParse请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileUrl: <p>文件的 Url 地址，支持FileType参数对应的文件格式及大小。文件下载时间不超过3秒。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+        :type FileUrl: str
+        :param _FileType: <p>支持解析的文件类型。</p><p>1：PDF 文档；</p><p>2：Word 文档（.doc / .docx）；</p><p>3：PPT 演示文稿（.ppt / .pptx）；</p><p>4：Excel 表格（.xls / .xlsx）；</p><p>5：Markdown 文档（.md）；</p><p>6：纯文本文件（.txt）；</p><p>7：图片文件（.png / .jpg / .jpeg 等）；</p><p>8：WPS 文档；</p><p>0：未知文件类型。</p><p></p><p>支持的文件大小：</p><p>PDF/WORD/PPT支持150M且300页以内、EXCEL支持10M以内、TXT支持10M以内、图片文件支持70M以内。</p><p></p><p>默认值：1</p>
+        :type FileType: int
+        :param _ResultType: <p>输出格式。</p><p>1：json格式</p><p>2：markdown格式</p><p>3：xml格式</p><p>9：json+markdown+xml格式</p><p></p><p>默认值：9</p>
+        :type ResultType: int
+        :param _EnableSubImg: <p>是否支持子图解析。</p><p></p><p>默认值：false</p>
+        :type EnableSubImg: bool
+        :param _PageRange: <p>需要识别的页码范围，单次调用最多支持300页。</p><p>参数格式：1-10</p>
+        :type PageRange: str
+        """
+        self._FileUrl = None
+        self._FileType = None
+        self._ResultType = None
+        self._EnableSubImg = None
+        self._PageRange = None
+
+    @property
+    def FileUrl(self):
+        r"""<p>文件的 Url 地址，支持FileType参数对应的文件格式及大小。文件下载时间不超过3秒。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileType(self):
+        r"""<p>支持解析的文件类型。</p><p>1：PDF 文档；</p><p>2：Word 文档（.doc / .docx）；</p><p>3：PPT 演示文稿（.ppt / .pptx）；</p><p>4：Excel 表格（.xls / .xlsx）；</p><p>5：Markdown 文档（.md）；</p><p>6：纯文本文件（.txt）；</p><p>7：图片文件（.png / .jpg / .jpeg 等）；</p><p>8：WPS 文档；</p><p>0：未知文件类型。</p><p></p><p>支持的文件大小：</p><p>PDF/WORD/PPT支持150M且300页以内、EXCEL支持10M以内、TXT支持10M以内、图片文件支持70M以内。</p><p></p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def ResultType(self):
+        r"""<p>输出格式。</p><p>1：json格式</p><p>2：markdown格式</p><p>3：xml格式</p><p>9：json+markdown+xml格式</p><p></p><p>默认值：9</p>
+        :rtype: int
+        """
+        return self._ResultType
+
+    @ResultType.setter
+    def ResultType(self, ResultType):
+        self._ResultType = ResultType
+
+    @property
+    def EnableSubImg(self):
+        r"""<p>是否支持子图解析。</p><p></p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableSubImg
+
+    @EnableSubImg.setter
+    def EnableSubImg(self, EnableSubImg):
+        self._EnableSubImg = EnableSubImg
+
+    @property
+    def PageRange(self):
+        r"""<p>需要识别的页码范围，单次调用最多支持300页。</p><p>参数格式：1-10</p>
+        :rtype: str
+        """
+        return self._PageRange
+
+    @PageRange.setter
+    def PageRange(self, PageRange):
+        self._PageRange = PageRange
+
+
+    def _deserialize(self, params):
+        self._FileUrl = params.get("FileUrl")
+        self._FileType = params.get("FileType")
+        self._ResultType = params.get("ResultType")
+        self._EnableSubImg = params.get("EnableSubImg")
+        self._PageRange = params.get("PageRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultimodalDocParseResponse(AbstractModel):
+    r"""MultimodalDocParse返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultUrl: <p>结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟。压缩包内包含*.md、*.json以及images文件夹。</p>
+        :type ResultUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultUrl = None
+        self._RequestId = None
+
+    @property
+    def ResultUrl(self):
+        r"""<p>结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟。压缩包内包含*.md、*.json以及images文件夹。</p>
+        :rtype: str
+        """
+        return self._ResultUrl
+
+    @ResultUrl.setter
+    def ResultUrl(self, ResultUrl):
+        self._ResultUrl = ResultUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultUrl = params.get("ResultUrl")
+        self._RequestId = params.get("RequestId")
 
 
 class NonTaxIncomeBill(AbstractModel):

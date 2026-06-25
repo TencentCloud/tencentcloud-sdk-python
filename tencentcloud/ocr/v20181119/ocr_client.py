@@ -1273,6 +1273,33 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def MultimodalDocParse(self, request):
+        r"""本接口支持解析多种类型的文档文件（PDF、Word、PPT、Excel、Markdown、TXT、图片、WPS），返回解析后的结果文件下载地址（zip压缩包，包含markdown、json和图片）。
+
+        支持的文件大小：PDF/Word/PPT支持150M且300页以内、Excel支持10M以内、TXT支持10M以内、图片文件支持70M以内。
+
+        默认接口请求频率限制：5 并发。
+
+        :param request: Request instance for MultimodalDocParse.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.MultimodalDocParseRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.MultimodalDocParseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("MultimodalDocParse", params, headers=headers)
+            response = json.loads(body)
+            model = models.MultimodalDocParseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def PassportOCR(self, request):
         r"""<b>此接口为护照识别（中国大陆地区护照）的旧版本服务，不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/37657">护照识别（多国多地区护照）</a>。</b>
 

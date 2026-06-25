@@ -259,6 +259,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNodePoolsElasticityStrength(
+            self,
+            request: models.DescribeNodePoolsElasticityStrengthRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNodePoolsElasticityStrengthResponse:
+        """
+        查询节点池健康度相关信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNodePoolsElasticityStrength"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNodePoolsElasticityStrengthResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeZoneInstanceConfigInfos(
             self,
             request: models.DescribeZoneInstanceConfigInfosRequest,

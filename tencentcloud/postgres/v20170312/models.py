@@ -1329,33 +1329,36 @@ class BackupPlan(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupPeriod: 备份周期
+        :param _BackupPeriod: <p>备份周期</p>
         :type BackupPeriod: str
-        :param _BaseBackupRetentionPeriod: 数据备份保留时长。单位：天
+        :param _BaseBackupRetentionPeriod: <p>数据备份保留时长。单位：天</p>
         :type BaseBackupRetentionPeriod: int
-        :param _MinBackupStartTime: 开始备份的最早时间
+        :param _MinBackupStartTime: <p>开始备份的最早时间</p>
         :type MinBackupStartTime: str
-        :param _MaxBackupStartTime: 开始备份的最晚时间
+        :param _MaxBackupStartTime: <p>开始备份的最晚时间</p>
         :type MaxBackupStartTime: str
-        :param _PlanId: 备份计划ID
+        :param _BackupMethod: <p>备份类型</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+        :type BackupMethod: str
+        :param _PlanId: <p>备份计划ID</p>
         :type PlanId: str
-        :param _PlanName: 备份计划自定义名称。
+        :param _PlanName: <p>备份计划自定义名称。</p>
         :type PlanName: str
-        :param _LogBackupRetentionPeriod: 日志备份保留时长。单位：天
+        :param _LogBackupRetentionPeriod: <p>日志备份保留时长。单位：天</p>
         :type LogBackupRetentionPeriod: int
-        :param _CreatedTime: 创建时间。
+        :param _CreatedTime: <p>创建时间。</p>
         :type CreatedTime: str
-        :param _UpdatedTime: 最近一次的修改时间。
+        :param _UpdatedTime: <p>最近一次的修改时间。</p>
         :type UpdatedTime: str
-        :param _PlanType: 备份计划类型。系统默认创建的为default，自定义的为custom。
+        :param _PlanType: <p>备份计划类型。系统默认创建的为default，自定义的为custom。</p>
         :type PlanType: str
-        :param _BackupPeriodType: 备份周期类型。当前支持week、month。
+        :param _BackupPeriodType: <p>备份周期类型。当前支持week、month。</p>
         :type BackupPeriodType: str
         """
         self._BackupPeriod = None
         self._BaseBackupRetentionPeriod = None
         self._MinBackupStartTime = None
         self._MaxBackupStartTime = None
+        self._BackupMethod = None
         self._PlanId = None
         self._PlanName = None
         self._LogBackupRetentionPeriod = None
@@ -1366,7 +1369,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def BackupPeriod(self):
-        r"""备份周期
+        r"""<p>备份周期</p>
         :rtype: str
         """
         return self._BackupPeriod
@@ -1377,7 +1380,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def BaseBackupRetentionPeriod(self):
-        r"""数据备份保留时长。单位：天
+        r"""<p>数据备份保留时长。单位：天</p>
         :rtype: int
         """
         return self._BaseBackupRetentionPeriod
@@ -1388,7 +1391,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def MinBackupStartTime(self):
-        r"""开始备份的最早时间
+        r"""<p>开始备份的最早时间</p>
         :rtype: str
         """
         return self._MinBackupStartTime
@@ -1399,7 +1402,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def MaxBackupStartTime(self):
-        r"""开始备份的最晚时间
+        r"""<p>开始备份的最晚时间</p>
         :rtype: str
         """
         return self._MaxBackupStartTime
@@ -1409,8 +1412,19 @@ class BackupPlan(AbstractModel):
         self._MaxBackupStartTime = MaxBackupStartTime
 
     @property
+    def BackupMethod(self):
+        r"""<p>备份类型</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+        :rtype: str
+        """
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
+    @property
     def PlanId(self):
-        r"""备份计划ID
+        r"""<p>备份计划ID</p>
         :rtype: str
         """
         return self._PlanId
@@ -1421,7 +1435,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def PlanName(self):
-        r"""备份计划自定义名称。
+        r"""<p>备份计划自定义名称。</p>
         :rtype: str
         """
         return self._PlanName
@@ -1432,7 +1446,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def LogBackupRetentionPeriod(self):
-        r"""日志备份保留时长。单位：天
+        r"""<p>日志备份保留时长。单位：天</p>
         :rtype: int
         """
         return self._LogBackupRetentionPeriod
@@ -1443,7 +1457,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -1454,7 +1468,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""最近一次的修改时间。
+        r"""<p>最近一次的修改时间。</p>
         :rtype: str
         """
         return self._UpdatedTime
@@ -1465,7 +1479,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def PlanType(self):
-        r"""备份计划类型。系统默认创建的为default，自定义的为custom。
+        r"""<p>备份计划类型。系统默认创建的为default，自定义的为custom。</p>
         :rtype: str
         """
         return self._PlanType
@@ -1476,7 +1490,7 @@ class BackupPlan(AbstractModel):
 
     @property
     def BackupPeriodType(self):
-        r"""备份周期类型。当前支持week、month。
+        r"""<p>备份周期类型。当前支持week、month。</p>
         :rtype: str
         """
         return self._BackupPeriodType
@@ -1491,6 +1505,7 @@ class BackupPlan(AbstractModel):
         self._BaseBackupRetentionPeriod = params.get("BaseBackupRetentionPeriod")
         self._MinBackupStartTime = params.get("MinBackupStartTime")
         self._MaxBackupStartTime = params.get("MaxBackupStartTime")
+        self._BackupMethod = params.get("BackupMethod")
         self._PlanId = params.get("PlanId")
         self._PlanName = params.get("PlanName")
         self._LogBackupRetentionPeriod = params.get("LogBackupRetentionPeriod")

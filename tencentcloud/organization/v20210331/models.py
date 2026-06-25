@@ -15287,24 +15287,28 @@ class NotAllowReason(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsCreateMember: 是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
+        :param _IsCreateMember: <p>是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除</p>
         :type IsCreateMember: bool
-        :param _DeletionPermission: 成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除
+        :param _DeletionPermission: <p>成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除</p>
         :type DeletionPermission: bool
-        :param _IsAssignManager: 是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除
+        :param _IsAssignManager: <p>是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除</p>
         :type IsAssignManager: bool
-        :param _IsAuthManager: 是否主体管理员。true-是、false-否；成员是主体管理员不允许删除
+        :param _IsAuthManager: <p>是否主体管理员。true-是、false-否；成员是主体管理员不允许删除</p>
         :type IsAuthManager: bool
-        :param _IsShareManager: 是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除
+        :param _IsShareManager: <p>是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除</p>
         :type IsShareManager: bool
-        :param _OperateProcess: 成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除
+        :param _OperateProcess: <p>成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除</p>
         :type OperateProcess: bool
-        :param _BillingPermission: 是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除
+        :param _BillingPermission: <p>是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除</p>
         :type BillingPermission: bool
-        :param _ExistResources: 存在的资源列表。账号存在资源时不允许删除
+        :param _ExistResources: <p>存在的资源列表。账号存在资源时不允许删除</p>
         :type ExistResources: list of str
-        :param _DetectFailedResources: 检测失败的资源列表。账号有资源检测失败时不允许删除。
+        :param _DetectFailedResources: <p>检测失败的资源列表。账号有资源检测失败时不允许删除。</p>
         :type DetectFailedResources: list of str
+        :param _CICRoleConfig: <p>是否部署身份中心权限。部署权限不允许删除</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type CICRoleConfig: bool
+        :param _CICUserConfig: <p>是否同步身份中心用户。同步用户不允许删除</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type CICUserConfig: bool
         """
         self._IsCreateMember = None
         self._DeletionPermission = None
@@ -15315,10 +15319,12 @@ class NotAllowReason(AbstractModel):
         self._BillingPermission = None
         self._ExistResources = None
         self._DetectFailedResources = None
+        self._CICRoleConfig = None
+        self._CICUserConfig = None
 
     @property
     def IsCreateMember(self):
-        r"""是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
+        r"""<p>是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除</p>
         :rtype: bool
         """
         return self._IsCreateMember
@@ -15329,7 +15335,7 @@ class NotAllowReason(AbstractModel):
 
     @property
     def DeletionPermission(self):
-        r"""成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除
+        r"""<p>成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除</p>
         :rtype: bool
         """
         return self._DeletionPermission
@@ -15340,7 +15346,7 @@ class NotAllowReason(AbstractModel):
 
     @property
     def IsAssignManager(self):
-        r"""是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除
+        r"""<p>是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除</p>
         :rtype: bool
         """
         return self._IsAssignManager
@@ -15351,7 +15357,7 @@ class NotAllowReason(AbstractModel):
 
     @property
     def IsAuthManager(self):
-        r"""是否主体管理员。true-是、false-否；成员是主体管理员不允许删除
+        r"""<p>是否主体管理员。true-是、false-否；成员是主体管理员不允许删除</p>
         :rtype: bool
         """
         return self._IsAuthManager
@@ -15362,7 +15368,7 @@ class NotAllowReason(AbstractModel):
 
     @property
     def IsShareManager(self):
-        r"""是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除
+        r"""<p>是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除</p>
         :rtype: bool
         """
         return self._IsShareManager
@@ -15373,7 +15379,7 @@ class NotAllowReason(AbstractModel):
 
     @property
     def OperateProcess(self):
-        r"""成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除
+        r"""<p>成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除</p>
         :rtype: bool
         """
         return self._OperateProcess
@@ -15384,7 +15390,7 @@ class NotAllowReason(AbstractModel):
 
     @property
     def BillingPermission(self):
-        r"""是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除
+        r"""<p>是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除</p>
         :rtype: bool
         """
         return self._BillingPermission
@@ -15395,7 +15401,7 @@ class NotAllowReason(AbstractModel):
 
     @property
     def ExistResources(self):
-        r"""存在的资源列表。账号存在资源时不允许删除
+        r"""<p>存在的资源列表。账号存在资源时不允许删除</p>
         :rtype: list of str
         """
         return self._ExistResources
@@ -15406,7 +15412,7 @@ class NotAllowReason(AbstractModel):
 
     @property
     def DetectFailedResources(self):
-        r"""检测失败的资源列表。账号有资源检测失败时不允许删除。
+        r"""<p>检测失败的资源列表。账号有资源检测失败时不允许删除。</p>
         :rtype: list of str
         """
         return self._DetectFailedResources
@@ -15414,6 +15420,28 @@ class NotAllowReason(AbstractModel):
     @DetectFailedResources.setter
     def DetectFailedResources(self, DetectFailedResources):
         self._DetectFailedResources = DetectFailedResources
+
+    @property
+    def CICRoleConfig(self):
+        r"""<p>是否部署身份中心权限。部署权限不允许删除</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._CICRoleConfig
+
+    @CICRoleConfig.setter
+    def CICRoleConfig(self, CICRoleConfig):
+        self._CICRoleConfig = CICRoleConfig
+
+    @property
+    def CICUserConfig(self):
+        r"""<p>是否同步身份中心用户。同步用户不允许删除</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._CICUserConfig
+
+    @CICUserConfig.setter
+    def CICUserConfig(self, CICUserConfig):
+        self._CICUserConfig = CICUserConfig
 
 
     def _deserialize(self, params):
@@ -15426,6 +15454,8 @@ class NotAllowReason(AbstractModel):
         self._BillingPermission = params.get("BillingPermission")
         self._ExistResources = params.get("ExistResources")
         self._DetectFailedResources = params.get("DetectFailedResources")
+        self._CICRoleConfig = params.get("CICRoleConfig")
+        self._CICUserConfig = params.get("CICUserConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
