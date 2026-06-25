@@ -12927,15 +12927,15 @@ class KafkaOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataType: 投递到kafka的数据类型，如Avro,Json,canal-pb,canal-json,debezium
+        :param _DataType: <p>投递到kafka的数据类型，如Avro,Json,canal-pb,canal-json,debezium</p>
         :type DataType: str
-        :param _TopicType: 同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)
+        :param _TopicType: <p>同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)</p>
         :type TopicType: str
-        :param _DDLTopicName: 用于存储ddl的topic
+        :param _DDLTopicName: <p>用于存储ddl的topic</p>
         :type DDLTopicName: str
-        :param _TopicRules: 单topic和自定义topic的描述
+        :param _TopicRules: <p>单topic和自定义topic的描述</p>
         :type TopicRules: list of TopicRule
-        :param _DataOption: 其他附加信息，对于特定数据类型可设置额外参数，比如针对Canal兼容的功能支持："canalOfficialFormat":"on"表示打开Canal兼容功能，默认不带。
+        :param _DataOption: <p>其他附加信息，对于特定数据类型可设置额外参数。比如针对Canal兼容的功能支持：&quot;canalOfficialFormat&quot;:&quot;on&quot;表示打开Canal兼容功能，默认不带。针对大消息跳过的功能支持：&quot;skipLargeMessage&quot;:&quot;on&quot;表示开启跳过大消息，默认不带；开启时需同时设置&quot;maxMessageSizeMB&quot;为1~100的正整数字符串，表示最大消息大小阈值（MB），超过该大小的消息将被跳过，默认不带。</p>
         :type DataOption: list of KeyValuePairOption
         """
         self._DataType = None
@@ -12946,7 +12946,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def DataType(self):
-        r"""投递到kafka的数据类型，如Avro,Json,canal-pb,canal-json,debezium
+        r"""<p>投递到kafka的数据类型，如Avro,Json,canal-pb,canal-json,debezium</p>
         :rtype: str
         """
         return self._DataType
@@ -12957,7 +12957,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def TopicType(self):
-        r"""同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)
+        r"""<p>同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)</p>
         :rtype: str
         """
         return self._TopicType
@@ -12968,7 +12968,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def DDLTopicName(self):
-        r"""用于存储ddl的topic
+        r"""<p>用于存储ddl的topic</p>
         :rtype: str
         """
         return self._DDLTopicName
@@ -12979,7 +12979,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def TopicRules(self):
-        r"""单topic和自定义topic的描述
+        r"""<p>单topic和自定义topic的描述</p>
         :rtype: list of TopicRule
         """
         return self._TopicRules
@@ -12990,7 +12990,7 @@ class KafkaOption(AbstractModel):
 
     @property
     def DataOption(self):
-        r"""其他附加信息，对于特定数据类型可设置额外参数，比如针对Canal兼容的功能支持："canalOfficialFormat":"on"表示打开Canal兼容功能，默认不带。
+        r"""<p>其他附加信息，对于特定数据类型可设置额外参数。比如针对Canal兼容的功能支持：&quot;canalOfficialFormat&quot;:&quot;on&quot;表示打开Canal兼容功能，默认不带。针对大消息跳过的功能支持：&quot;skipLargeMessage&quot;:&quot;on&quot;表示开启跳过大消息，默认不带；开启时需同时设置&quot;maxMessageSizeMB&quot;为1~100的正整数字符串，表示最大消息大小阈值（MB），超过该大小的消息将被跳过，默认不带。</p>
         :rtype: list of KeyValuePairOption
         """
         return self._DataOption

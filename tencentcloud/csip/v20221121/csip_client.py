@@ -1337,6 +1337,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCWPMachineDetail(self, request):
+        r"""主机详情
+
+        :param request: Request instance for DescribeCWPMachineDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCWPMachineDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCWPMachineDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCWPMachineDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCWPMachineDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCWPMachines(self, request):
+        r"""主机列表
+
+        :param request: Request instance for DescribeCWPMachines.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCWPMachinesRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCWPMachinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCWPMachines", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCWPMachinesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCallRecord(self, request):
         r"""获取调用记录列表
 
@@ -4916,6 +4962,29 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyIaCTokenPeriod", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyIaCTokenPeriodResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMachineRemark(self, request):
+        r"""修改主机资产备注信息
+
+        :param request: Request instance for ModifyMachineRemark.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyMachineRemarkRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyMachineRemarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMachineRemark", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMachineRemarkResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

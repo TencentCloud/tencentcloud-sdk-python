@@ -25,12 +25,9 @@ class Account(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _User: 账号名，可输入1 - 32个字符。
+        :param _User: <p>账号名，可输入1 - 32个字符。</p>
         :type User: str
-        :param _Host: 账号的主机。
-说明：
-1. IP 形式，支持填入%。
-2. 多个主机以分隔符分隔，分隔符支持;,|换行符和空格。
+        :param _Host: <p>账号的主机。</p><p>IP 形式，支持填入%。</p>
         :type Host: str
         """
         self._User = None
@@ -38,7 +35,7 @@ class Account(AbstractModel):
 
     @property
     def User(self):
-        r"""账号名，可输入1 - 32个字符。
+        r"""<p>账号名，可输入1 - 32个字符。</p>
         :rtype: str
         """
         return self._User
@@ -49,10 +46,7 @@ class Account(AbstractModel):
 
     @property
     def Host(self):
-        r"""账号的主机。
-说明：
-1. IP 形式，支持填入%。
-2. 多个主机以分隔符分隔，分隔符支持;,|换行符和空格。
+        r"""<p>账号的主机。</p><p>IP 形式，支持填入%。</p>
         :rtype: str
         """
         return self._Host
@@ -6455,19 +6449,15 @@ class CreateAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
-        :param _Accounts: 云数据库账号。
+        :param _Accounts: <p>云数据库账号。</p>
         :type Accounts: list of Account
-        :param _Password: 新账户的密码。
-说明：
-1. 在8 ～ 64位字符数以内（推荐12位以上）。
-2. 至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&=!@#$%^*().|。
-3. 不能包含非法字符。
+        :param _Password: <p>新账户的密码。<br>说明：</p><ol><li>在8 ～ 64位字符数以内（推荐12位以上）。</li><li>至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&amp;=!@#$%^*().|。</li><li>不能包含非法字符。</li></ol>
         :type Password: str
-        :param _Description: 备注信息。最多支持输入255个字符。
+        :param _Description: <p>备注信息。最多支持输入255个字符。</p>
         :type Description: str
-        :param _MaxUserConnections: 新账户最大可用连接数，默认值为10240，最大可设置值为10240。
+        :param _MaxUserConnections: <p>新账户最大可用连接数，默认值为10240，最大可设置值为10240。</p>
         :type MaxUserConnections: int
         """
         self._InstanceId = None
@@ -6478,7 +6468,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6489,7 +6479,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""云数据库账号。
+        r"""<p>云数据库账号。</p>
         :rtype: list of Account
         """
         return self._Accounts
@@ -6500,11 +6490,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""新账户的密码。
-说明：
-1. 在8 ～ 64位字符数以内（推荐12位以上）。
-2. 至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&=!@#$%^*().|。
-3. 不能包含非法字符。
+        r"""<p>新账户的密码。<br>说明：</p><ol><li>在8 ～ 64位字符数以内（推荐12位以上）。</li><li>至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&amp;=!@#$%^*().|。</li><li>不能包含非法字符。</li></ol>
         :rtype: str
         """
         return self._Password
@@ -6515,7 +6501,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""备注信息。最多支持输入255个字符。
+        r"""<p>备注信息。最多支持输入255个字符。</p>
         :rtype: str
         """
         return self._Description
@@ -6526,7 +6512,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def MaxUserConnections(self):
-        r"""新账户最大可用连接数，默认值为10240，最大可设置值为10240。
+        r"""<p>新账户最大可用连接数，默认值为10240，最大可设置值为10240。</p>
         :rtype: int
         """
         return self._MaxUserConnections
@@ -6564,7 +6550,7 @@ class CreateAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        :param _AsyncRequestId: <p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6574,7 +6560,7 @@ class CreateAccountsResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        r"""<p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :rtype: str
         """
         return self._AsyncRequestId

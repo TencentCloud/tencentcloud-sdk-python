@@ -5387,7 +5387,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type InstanceName: str
         :param _ZoneId: <p>可用区。当购买多可用区实例时，当前参数为主可用区。  <a href="https://cloud.tencent.com/document/product/597/55246">查看可用区</a></p>
         :type ZoneId: int
-        :param _Period: <p>预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m</p>
+        :param _Period: <p>预付费购买时长，例如 &quot;1m&quot;,就是一个月,取值范围 1m~36m</p>
         :type Period: str
         :param _InstanceType: <p>国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。</p>
         :type InstanceType: int
@@ -5403,7 +5403,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type RenewFlag: int
         :param _KafkaVersion: <p>CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。</p>
         :type KafkaVersion: str
-        :param _SpecificationsType: <p>实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"</p>
+        :param _SpecificationsType: <p>实例类型: [标准版实例]填写 &quot;standard&quot; (默认), [专业版实例]填写 &quot;profession&quot;,[高级版实例]填写&quot;premium&quot;</p>
         :type SpecificationsType: str
         :param _DiskSize: <p>磁盘大小，如果跟控制台规格配比不相符，则无法创建成功。默认取值为500，步长设置为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562</p>
         :type DiskSize: int
@@ -5413,7 +5413,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type Partition: int
         :param _Tags: <p>标签</p>
         :type Tags: list of Tag
-        :param _DiskType: <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"</p>
+        :param _DiskType: <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认为 &quot;CLOUD_BASIC&quot;</p>
         :type DiskType: str
         :param _MultiZoneFlag: <p>是否创建跨可用区实例，当前参数为 true 时，zoneIds必填</p>
         :type MultiZoneFlag: bool
@@ -5429,6 +5429,8 @@ class CreateInstancePreRequest(AbstractModel):
         :type ElasticBandwidthSwitch: int
         :param _CustomSSLCertId: <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
         :type CustomSSLCertId: str
+        :param _StoreQuantityType: <p>弹性存储开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :type StoreQuantityType: int
         """
         self._InstanceName = None
         self._ZoneId = None
@@ -5453,6 +5455,7 @@ class CreateInstancePreRequest(AbstractModel):
         self._AutoVoucher = None
         self._ElasticBandwidthSwitch = None
         self._CustomSSLCertId = None
+        self._StoreQuantityType = None
 
     @property
     def InstanceName(self):
@@ -5478,7 +5481,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""<p>预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m</p>
+        r"""<p>预付费购买时长，例如 &quot;1m&quot;,就是一个月,取值范围 1m~36m</p>
         :rtype: str
         """
         return self._Period
@@ -5566,7 +5569,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
-        r"""<p>实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"</p>
+        r"""<p>实例类型: [标准版实例]填写 &quot;standard&quot; (默认), [专业版实例]填写 &quot;profession&quot;,[高级版实例]填写&quot;premium&quot;</p>
         :rtype: str
         """
         return self._SpecificationsType
@@ -5621,7 +5624,7 @@ class CreateInstancePreRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""<p>专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"</p>
+        r"""<p>专业版/高级版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认为 &quot;CLOUD_BASIC&quot;</p>
         :rtype: str
         """
         return self._DiskType
@@ -5707,6 +5710,17 @@ class CreateInstancePreRequest(AbstractModel):
     def CustomSSLCertId(self, CustomSSLCertId):
         self._CustomSSLCertId = CustomSSLCertId
 
+    @property
+    def StoreQuantityType(self):
+        r"""<p>弹性存储开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._StoreQuantityType
+
+    @StoreQuantityType.setter
+    def StoreQuantityType(self, StoreQuantityType):
+        self._StoreQuantityType = StoreQuantityType
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5737,6 +5751,7 @@ class CreateInstancePreRequest(AbstractModel):
         self._AutoVoucher = params.get("AutoVoucher")
         self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
         self._CustomSSLCertId = params.get("CustomSSLCertId")
+        self._StoreQuantityType = params.get("StoreQuantityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6629,6 +6644,8 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type ElasticBandwidthSwitch: int
         :param _CustomSSLCertId: <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
         :type CustomSSLCertId: str
+        :param _StoreQuantityType: <p>弹性存储开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :type StoreQuantityType: int
         """
         self._VpcId = None
         self._SubnetId = None
@@ -6651,6 +6668,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         self._Tags = None
         self._ElasticBandwidthSwitch = None
         self._CustomSSLCertId = None
+        self._StoreQuantityType = None
 
     @property
     def VpcId(self):
@@ -6883,6 +6901,17 @@ class CreatePostPaidInstanceRequest(AbstractModel):
     def CustomSSLCertId(self, CustomSSLCertId):
         self._CustomSSLCertId = CustomSSLCertId
 
+    @property
+    def StoreQuantityType(self):
+        r"""<p>弹性存储开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._StoreQuantityType
+
+    @StoreQuantityType.setter
+    def StoreQuantityType(self, StoreQuantityType):
+        self._StoreQuantityType = StoreQuantityType
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -6911,6 +6940,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
                 self._Tags.append(obj)
         self._ElasticBandwidthSwitch = params.get("ElasticBandwidthSwitch")
         self._CustomSSLCertId = params.get("CustomSSLCertId")
+        self._StoreQuantityType = params.get("StoreQuantityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27538,30 +27568,32 @@ class MqttParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Topics: 需要同步的MQTT Topic列表, CSV格式
+        :param _Topics: <p>需要同步的MQTT Topic列表, CSV格式</p>
         :type Topics: str
-        :param _CleanSession: 用于控制会话的持久性。cleanSession 为true时，连接时会创建一个全新的会话。 cleanSession = false时，连接时会恢复之前的会话。
+        :param _CleanSession: <p>用于控制会话的持久性。cleanSession 为true时，连接时会创建一个全新的会话。 cleanSession = false时，连接时会恢复之前的会话。</p>
         :type CleanSession: bool
-        :param _Resource: MQTT instance-id
+        :param _Resource: <p>MQTT instance-id</p>
         :type Resource: str
-        :param _Ip: MQTT实例VIP
+        :param _Ip: <p>MQTT实例VIP</p>
         :type Ip: str
-        :param _Port: MQTT VIP 端口
+        :param _Port: <p>MQTT VIP 端口</p>
         :type Port: int
-        :param _UserName: MQTT实例用户名
+        :param _UserName: <p>MQTT实例用户名</p>
         :type UserName: str
-        :param _Password: MQTT实例内账户密码
+        :param _Password: <p>MQTT实例内账户密码</p>
         :type Password: str
-        :param _Qos: QoS
+        :param _Qos: <p>QoS</p>
         :type Qos: int
-        :param _MaxTasks: tasks.max 订阅Topic的并发Task个数, 默认为1; 当设置大于1时, 使用Shared Subscription
+        :param _MaxTasks: <p>tasks.max 订阅Topic的并发Task个数, 默认为1; 当设置大于1时, 使用Shared Subscription</p>
         :type MaxTasks: int
-        :param _ServiceVip: MQTT 实例的Service VIP
+        :param _ServiceVip: <p>MQTT 实例的Service VIP</p>
         :type ServiceVip: str
-        :param _UniqVpcId: MQTT实例的VPC ID
+        :param _UniqVpcId: <p>MQTT实例的VPC ID</p>
         :type UniqVpcId: str
-        :param _SelfBuilt: 是否为自建集群, MQTT只支持非自建集群
+        :param _SelfBuilt: <p>是否为自建集群, MQTT只支持非自建集群</p>
         :type SelfBuilt: bool
+        :param _SqlFilter: <p>MQTT消息过滤sql语句</p>
+        :type SqlFilter: str
         """
         self._Topics = None
         self._CleanSession = None
@@ -27575,10 +27607,11 @@ class MqttParam(AbstractModel):
         self._ServiceVip = None
         self._UniqVpcId = None
         self._SelfBuilt = None
+        self._SqlFilter = None
 
     @property
     def Topics(self):
-        r"""需要同步的MQTT Topic列表, CSV格式
+        r"""<p>需要同步的MQTT Topic列表, CSV格式</p>
         :rtype: str
         """
         return self._Topics
@@ -27589,7 +27622,7 @@ class MqttParam(AbstractModel):
 
     @property
     def CleanSession(self):
-        r"""用于控制会话的持久性。cleanSession 为true时，连接时会创建一个全新的会话。 cleanSession = false时，连接时会恢复之前的会话。
+        r"""<p>用于控制会话的持久性。cleanSession 为true时，连接时会创建一个全新的会话。 cleanSession = false时，连接时会恢复之前的会话。</p>
         :rtype: bool
         """
         return self._CleanSession
@@ -27600,7 +27633,7 @@ class MqttParam(AbstractModel):
 
     @property
     def Resource(self):
-        r"""MQTT instance-id
+        r"""<p>MQTT instance-id</p>
         :rtype: str
         """
         return self._Resource
@@ -27611,7 +27644,7 @@ class MqttParam(AbstractModel):
 
     @property
     def Ip(self):
-        r"""MQTT实例VIP
+        r"""<p>MQTT实例VIP</p>
         :rtype: str
         """
         return self._Ip
@@ -27622,7 +27655,7 @@ class MqttParam(AbstractModel):
 
     @property
     def Port(self):
-        r"""MQTT VIP 端口
+        r"""<p>MQTT VIP 端口</p>
         :rtype: int
         """
         return self._Port
@@ -27633,7 +27666,7 @@ class MqttParam(AbstractModel):
 
     @property
     def UserName(self):
-        r"""MQTT实例用户名
+        r"""<p>MQTT实例用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -27644,7 +27677,7 @@ class MqttParam(AbstractModel):
 
     @property
     def Password(self):
-        r"""MQTT实例内账户密码
+        r"""<p>MQTT实例内账户密码</p>
         :rtype: str
         """
         return self._Password
@@ -27655,7 +27688,7 @@ class MqttParam(AbstractModel):
 
     @property
     def Qos(self):
-        r"""QoS
+        r"""<p>QoS</p>
         :rtype: int
         """
         return self._Qos
@@ -27666,7 +27699,7 @@ class MqttParam(AbstractModel):
 
     @property
     def MaxTasks(self):
-        r"""tasks.max 订阅Topic的并发Task个数, 默认为1; 当设置大于1时, 使用Shared Subscription
+        r"""<p>tasks.max 订阅Topic的并发Task个数, 默认为1; 当设置大于1时, 使用Shared Subscription</p>
         :rtype: int
         """
         return self._MaxTasks
@@ -27677,7 +27710,7 @@ class MqttParam(AbstractModel):
 
     @property
     def ServiceVip(self):
-        r"""MQTT 实例的Service VIP
+        r"""<p>MQTT 实例的Service VIP</p>
         :rtype: str
         """
         return self._ServiceVip
@@ -27688,7 +27721,7 @@ class MqttParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""MQTT实例的VPC ID
+        r"""<p>MQTT实例的VPC ID</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -27699,7 +27732,7 @@ class MqttParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
-        r"""是否为自建集群, MQTT只支持非自建集群
+        r"""<p>是否为自建集群, MQTT只支持非自建集群</p>
         :rtype: bool
         """
         return self._SelfBuilt
@@ -27707,6 +27740,17 @@ class MqttParam(AbstractModel):
     @SelfBuilt.setter
     def SelfBuilt(self, SelfBuilt):
         self._SelfBuilt = SelfBuilt
+
+    @property
+    def SqlFilter(self):
+        r"""<p>MQTT消息过滤sql语句</p>
+        :rtype: str
+        """
+        return self._SqlFilter
+
+    @SqlFilter.setter
+    def SqlFilter(self, SqlFilter):
+        self._SqlFilter = SqlFilter
 
 
     def _deserialize(self, params):
@@ -27722,6 +27766,7 @@ class MqttParam(AbstractModel):
         self._ServiceVip = params.get("ServiceVip")
         self._UniqVpcId = params.get("UniqVpcId")
         self._SelfBuilt = params.get("SelfBuilt")
+        self._SqlFilter = params.get("SqlFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

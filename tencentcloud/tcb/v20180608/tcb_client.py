@@ -1100,6 +1100,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEnvPlans(self, request):
+        r"""获取可售卖的新套餐列表，含详情，如果传了PackageId，则只获取指定套餐详情
+
+        :param request: Request instance for DescribeEnvPlans.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvPlansRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvPlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvPlans", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnvPlansResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEnvs(self, request):
         r"""获取环境列表，含环境下的各个资源信息。尤其是各资源的唯一标识，是请求各资源的关键参数
 

@@ -6079,6 +6079,87 @@ class AssetTag(AbstractModel):
         
 
 
+class AssetTagModifyAssetItem(AbstractModel):
+    r"""操作资产标签资产信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppID: <p>appid</p>
+        :type AppID: int
+        :param _AssetType: <p>资产类型</p>
+        :type AssetType: str
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _Provider: <p>云厂商</p>
+        :type Provider: str
+        """
+        self._AppID = None
+        self._AssetType = None
+        self._InstanceID = None
+        self._Provider = None
+
+    @property
+    def AppID(self):
+        r"""<p>appid</p>
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def AssetType(self):
+        r"""<p>资产类型</p>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Provider(self):
+        r"""<p>云厂商</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+
+    def _deserialize(self, params):
+        self._AppID = params.get("AppID")
+        self._AssetType = params.get("AssetType")
+        self._InstanceID = params.get("InstanceID")
+        self._Provider = params.get("Provider")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetViewCFGRisk(AbstractModel):
     r"""资产视角配置风险
 
@@ -11989,6 +12070,87 @@ class CommandPluginState(AbstractModel):
 
     def _deserialize(self, params):
         self._InstallStatus = params.get("InstallStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerEnvInfo(AbstractModel):
+    r"""容器环境信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeType: <p>节点类型</p>
+        :type NodeType: str
+        :param _DockerVersion: <p>docker版本</p>
+        :type DockerVersion: str
+        :param _ContainerdVersion: <p>containerd版本</p>
+        :type ContainerdVersion: str
+        :param _FileSystemType: <p>文件系统类型</p>
+        :type FileSystemType: str
+        """
+        self._NodeType = None
+        self._DockerVersion = None
+        self._ContainerdVersion = None
+        self._FileSystemType = None
+
+    @property
+    def NodeType(self):
+        r"""<p>节点类型</p>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def DockerVersion(self):
+        r"""<p>docker版本</p>
+        :rtype: str
+        """
+        return self._DockerVersion
+
+    @DockerVersion.setter
+    def DockerVersion(self, DockerVersion):
+        self._DockerVersion = DockerVersion
+
+    @property
+    def ContainerdVersion(self):
+        r"""<p>containerd版本</p>
+        :rtype: str
+        """
+        return self._ContainerdVersion
+
+    @ContainerdVersion.setter
+    def ContainerdVersion(self, ContainerdVersion):
+        self._ContainerdVersion = ContainerdVersion
+
+    @property
+    def FileSystemType(self):
+        r"""<p>文件系统类型</p>
+        :rtype: str
+        """
+        return self._FileSystemType
+
+    @FileSystemType.setter
+    def FileSystemType(self, FileSystemType):
+        self._FileSystemType = FileSystemType
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._DockerVersion = params.get("DockerVersion")
+        self._ContainerdVersion = params.get("ContainerdVersion")
+        self._FileSystemType = params.get("FileSystemType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24990,6 +25152,263 @@ class DescribeCVMAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._ProtectStatusList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCWPMachineDetailRequest(AbstractModel):
+    r"""DescribeCWPMachineDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._InstanceId = None
+        self._MemberId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCWPMachineDetailResponse(AbstractModel):
+    r"""DescribeCWPMachineDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MachineDetail: <p>主机详情</p>
+        :type MachineDetail: :class:`tencentcloud.csip.v20221121.models.MachineDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MachineDetail = None
+        self._RequestId = None
+
+    @property
+    def MachineDetail(self):
+        r"""<p>主机详情</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.MachineDetail`
+        """
+        return self._MachineDetail
+
+    @MachineDetail.setter
+    def MachineDetail(self, MachineDetail):
+        self._MachineDetail = MachineDetail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MachineDetail") is not None:
+            self._MachineDetail = MachineDetail()
+            self._MachineDetail._deserialize(params.get("MachineDetail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCWPMachinesRequest(AbstractModel):
+    r"""DescribeCWPMachines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>一、主表字段筛选（需要指定 OperatorType）<br>MachineName：主机名称，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;test-server&quot;]<br>MachineIp：内网IP，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;10.0.0.1&quot;]<br>MachineWanIp：外网IP，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;1.2.3.4&quot;]<br>InstanceID：实例ID，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;ins-xxxxx&quot;]<br>MachineStatus / InstanceStatus：实例状态，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;RUNNING&quot;]，可选值：RUNNING/STOPPED/EXPIRED<br>MachineOs：操作系统类型，支持 OperatorType 7(IN)，Values示例：[&quot;1&quot;]，值为数字编码，见下方OsType说明<br>VpcId：VPC ID，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;vpc-xxxxx&quot;]<br>CloudFromEnum：云服务商，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;0&quot;]，值为数字编码，见下方CloudFrom说明<br>Region ：地域，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;ap-guangzhou&quot;]<br>AppId：账号AppId，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;1234567890&quot;]<br>ProjectId：项目ID，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;0&quot;]</p><p>二、预筛选字段（不需要指定 OperatorType）<br>AgentStatus：Agent状态，单选，Values示例：[&quot;ONLINE&quot;]，可选值：ONLINE/OFFLINE/UNINSTALL<br>ProtectType：防护类型（综合），Values示例：[&quot;ULTIMATE&quot;]，可选值：BASIC/PRO/ULTIMATE/NONE<br>CsipProtectType：CSIP防护类型，Values示例：[&quot;ULTIMATE&quot;]，可选值：BASIC/PRO/ULTIMATE/NONE<br>CloudTags：云标签，Values示例：[&quot;tagKey$tagValue&quot;]，格式：tagKey$tagValue 或 tagKey（只匹配key），最多5个值<br>Tags：资产标签，Values示例：[&quot;123&quot;]，值为标签ID<br>ExposedStatus：暴露状态，单选，Values示例：[&quot;EXPOSED&quot;]，可选值：NOT_APPLICABLE/EXPOSED/UNEXPOSED</p><p>三、特殊筛选字段（不需要指定 OperatorType）<br>NetworkType：网络类型，单选，Values示例：[&quot;1&quot;]，1=VPC网络, 2=基础网络, 3=非腾讯云网络<br>MachineType：机器类型，可多选，Values示例：[&quot;CVM&quot;]，可选值：CVM/BM/ECM/LH/EKS-NATIVE/ECS/EC2/VMS<br>Common：通用搜索，单选，Values示例：[&quot;关键词&quot;]，同时对内网IP、外网IP、主机名称、实例ID做模糊匹配</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _NeedTatStatus: <p>是否需要tat状态信息</p>
+        :type NeedTatStatus: bool
+        :param _MoreInformation: <p>是否需要额外信息，如安全中心标签、腾讯云标签</p>
+        :type MoreInformation: bool
+        :param _NeedContainerInfo: <p>是否需要容器信息，如容器数、核数、容器防护状态</p>
+        :type NeedContainerInfo: bool
+        """
+        self._MemberId = None
+        self._Filter = None
+        self._NeedTatStatus = None
+        self._MoreInformation = None
+        self._NeedContainerInfo = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>一、主表字段筛选（需要指定 OperatorType）<br>MachineName：主机名称，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;test-server&quot;]<br>MachineIp：内网IP，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;10.0.0.1&quot;]<br>MachineWanIp：外网IP，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;1.2.3.4&quot;]<br>InstanceID：实例ID，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;ins-xxxxx&quot;]<br>MachineStatus / InstanceStatus：实例状态，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;RUNNING&quot;]，可选值：RUNNING/STOPPED/EXPIRED<br>MachineOs：操作系统类型，支持 OperatorType 7(IN)，Values示例：[&quot;1&quot;]，值为数字编码，见下方OsType说明<br>VpcId：VPC ID，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;vpc-xxxxx&quot;]<br>CloudFromEnum：云服务商，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;0&quot;]，值为数字编码，见下方CloudFrom说明<br>Region ：地域，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;ap-guangzhou&quot;]<br>AppId：账号AppId，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;1234567890&quot;]<br>ProjectId：项目ID，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;0&quot;]</p><p>二、预筛选字段（不需要指定 OperatorType）<br>AgentStatus：Agent状态，单选，Values示例：[&quot;ONLINE&quot;]，可选值：ONLINE/OFFLINE/UNINSTALL<br>ProtectType：防护类型（综合），Values示例：[&quot;ULTIMATE&quot;]，可选值：BASIC/PRO/ULTIMATE/NONE<br>CsipProtectType：CSIP防护类型，Values示例：[&quot;ULTIMATE&quot;]，可选值：BASIC/PRO/ULTIMATE/NONE<br>CloudTags：云标签，Values示例：[&quot;tagKey$tagValue&quot;]，格式：tagKey$tagValue 或 tagKey（只匹配key），最多5个值<br>Tags：资产标签，Values示例：[&quot;123&quot;]，值为标签ID<br>ExposedStatus：暴露状态，单选，Values示例：[&quot;EXPOSED&quot;]，可选值：NOT_APPLICABLE/EXPOSED/UNEXPOSED</p><p>三、特殊筛选字段（不需要指定 OperatorType）<br>NetworkType：网络类型，单选，Values示例：[&quot;1&quot;]，1=VPC网络, 2=基础网络, 3=非腾讯云网络<br>MachineType：机器类型，可多选，Values示例：[&quot;CVM&quot;]，可选值：CVM/BM/ECM/LH/EKS-NATIVE/ECS/EC2/VMS<br>Common：通用搜索，单选，Values示例：[&quot;关键词&quot;]，同时对内网IP、外网IP、主机名称、实例ID做模糊匹配</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def NeedTatStatus(self):
+        r"""<p>是否需要tat状态信息</p>
+        :rtype: bool
+        """
+        return self._NeedTatStatus
+
+    @NeedTatStatus.setter
+    def NeedTatStatus(self, NeedTatStatus):
+        self._NeedTatStatus = NeedTatStatus
+
+    @property
+    def MoreInformation(self):
+        r"""<p>是否需要额外信息，如安全中心标签、腾讯云标签</p>
+        :rtype: bool
+        """
+        return self._MoreInformation
+
+    @MoreInformation.setter
+    def MoreInformation(self, MoreInformation):
+        self._MoreInformation = MoreInformation
+
+    @property
+    def NeedContainerInfo(self):
+        r"""<p>是否需要容器信息，如容器数、核数、容器防护状态</p>
+        :rtype: bool
+        """
+        return self._NeedContainerInfo
+
+    @NeedContainerInfo.setter
+    def NeedContainerInfo(self, NeedContainerInfo):
+        self._NeedContainerInfo = NeedContainerInfo
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._NeedTatStatus = params.get("NeedTatStatus")
+        self._MoreInformation = params.get("MoreInformation")
+        self._NeedContainerInfo = params.get("NeedContainerInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCWPMachinesResponse(AbstractModel):
+    r"""DescribeCWPMachines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Machines: <p>主机列表</p>
+        :type Machines: list of Machine
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Machines = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Machines(self):
+        r"""<p>主机列表</p>
+        :rtype: list of Machine
+        """
+        return self._Machines
+
+    @Machines.setter
+    def Machines(self, Machines):
+        self._Machines = Machines
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Machines") is not None:
+            self._Machines = []
+            for item in params.get("Machines"):
+                obj = Machine()
+                obj._deserialize(item)
+                self._Machines.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -45716,6 +46135,117 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DiskPartitionInfo(AbstractModel):
+    r"""磁盘分区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>分区名称</p>
+        :type Name: str
+        :param _Path: <p>挂载路径</p>
+        :type Path: str
+        :param _Percent: <p>使用百分比</p>
+        :type Percent: float
+        :param _Size: <p>分区大小(MB)</p>
+        :type Size: int
+        :param _Type: <p>分区类型</p>
+        :type Type: str
+        :param _Used: <p>已使用(MB)</p>
+        :type Used: int
+        """
+        self._Name = None
+        self._Path = None
+        self._Percent = None
+        self._Size = None
+        self._Type = None
+        self._Used = None
+
+    @property
+    def Name(self):
+        r"""<p>分区名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        r"""<p>挂载路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Percent(self):
+        r"""<p>使用百分比</p>
+        :rtype: float
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def Size(self):
+        r"""<p>分区大小(MB)</p>
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Type(self):
+        r"""<p>分区类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Used(self):
+        r"""<p>已使用(MB)</p>
+        :rtype: int
+        """
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._Percent = params.get("Percent")
+        self._Size = params.get("Size")
+        self._Type = params.get("Type")
+        self._Used = params.get("Used")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DomainAssetVO(AbstractModel):
     r"""域名资产
 
@@ -56901,6 +57431,1459 @@ class Location(AbstractModel):
         
 
 
+class Machine(AbstractModel):
+    r"""主机列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentStatus: <p>Agent状态，取值：ONLINE-在线，OFFLINE-离线，UNINSTALL-未安装</p>
+        :type AgentStatus: str
+        :param _AgentVersion: <p>Agent版本</p>
+        :type AgentVersion: str
+        :param _AppId: <p>账号AppId</p>
+        :type AppId: int
+        :param _CloudFromEnum: <p>云服务商</p>
+        :type CloudFromEnum: str
+        :param _CloudTags: <p>云标签列表</p>
+        :type CloudTags: list of Tag
+        :param _CsipProtectType: <p>CSIP防护类型，取值：BASIC-基础版，PRO-专业版，ULTIMATE-旗舰版</p>
+        :type CsipProtectType: str
+        :param _ExposedStatus: <p>暴露状态</p>
+        :type ExposedStatus: str
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _InstanceStatus: <p>实例状态，取值：RUNNING-运行中，STOPPED-已关机，EXPIRED-待回收</p>
+        :type InstanceStatus: str
+        :param _IpList: <p>网卡IP列表</p>
+        :type IpList: list of str
+        :param _IsNew: <p>是否为新增主机（15天内新增）</p>
+        :type IsNew: bool
+        :param _KernelVersion: <p>内核版本</p>
+        :type KernelVersion: str
+        :param _LatestOfflineTime: <p>最近一次离线时间（Unix时间戳）</p>
+        :type LatestOfflineTime: int
+        :param _MachineIp: <p>内网IP</p>
+        :type MachineIp: str
+        :param _MachineName: <p>主机名称</p>
+        :type MachineName: str
+        :param _MachineOs: <p>操作系统</p>
+        :type MachineOs: str
+        :param _MachineWanIp: <p>外网IP</p>
+        :type MachineWanIp: str
+        :param _PayMode: <p>付费模式，取值：PREPAID-预付费，POSTPAID-后付费</p>
+        :type PayMode: str
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: int
+        :param _ProtectType: <p>防护类型，取值：NONE-无防护，BASIC-基础版，PRO-专业版，ULTIMATE-旗舰版，PRO_LH-轻量版</p>
+        :type ProtectType: str
+        :param _Quuid: <p>主机唯一标识</p>
+        :type Quuid: str
+        :param _RegionInfo: <p>地域信息</p>
+        :type RegionInfo: :class:`tencentcloud.csip.v20221121.models.RegionInfo`
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _TagItems: <p>资产标签列表</p>
+        :type TagItems: list of MiniTagItem
+        :param _TagModifyInfo: <p>标签修改信息</p>
+        :type TagModifyInfo: :class:`tencentcloud.csip.v20221121.models.AssetTagModifyAssetItem`
+        :param _TatStatus: <p>TAT状态，取值：ONLINE-在线，OFFLINE-离线</p>
+        :type TatStatus: str
+        :param _Uuid: <p>Agent唯一标识</p>
+        :type Uuid: str
+        :param _VpcId: <p>VPC ID</p>
+        :type VpcId: str
+        :param _NodeType: <p>主机节点类型</p><p>枚举值：</p><ul><li>NONE： 主机节点</li><li>CLUSTER： 集群节点</li><li>CONTAINER： 容器节点</li></ul>
+        :type NodeType: str
+        :param _ContainerDefendStatus: <p>容器防护状态</p><p>枚举值：</p><ul><li>Enabled： 开启防护</li><li>Disabled： 关闭防护</li><li>Unknown： 未知</li></ul>
+        :type ContainerDefendStatus: str
+        :param _ContainerCount: <p>容器数量</p>
+        :type ContainerCount: int
+        :param _CpuCoreCount: <p>核数</p>
+        :type CpuCoreCount: int
+        """
+        self._AgentStatus = None
+        self._AgentVersion = None
+        self._AppId = None
+        self._CloudFromEnum = None
+        self._CloudTags = None
+        self._CsipProtectType = None
+        self._ExposedStatus = None
+        self._InstanceID = None
+        self._InstanceStatus = None
+        self._IpList = None
+        self._IsNew = None
+        self._KernelVersion = None
+        self._LatestOfflineTime = None
+        self._MachineIp = None
+        self._MachineName = None
+        self._MachineOs = None
+        self._MachineWanIp = None
+        self._PayMode = None
+        self._ProjectId = None
+        self._ProtectType = None
+        self._Quuid = None
+        self._RegionInfo = None
+        self._Remark = None
+        self._TagItems = None
+        self._TagModifyInfo = None
+        self._TatStatus = None
+        self._Uuid = None
+        self._VpcId = None
+        self._NodeType = None
+        self._ContainerDefendStatus = None
+        self._ContainerCount = None
+        self._CpuCoreCount = None
+
+    @property
+    def AgentStatus(self):
+        r"""<p>Agent状态，取值：ONLINE-在线，OFFLINE-离线，UNINSTALL-未安装</p>
+        :rtype: str
+        """
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def AgentVersion(self):
+        r"""<p>Agent版本</p>
+        :rtype: str
+        """
+        return self._AgentVersion
+
+    @AgentVersion.setter
+    def AgentVersion(self, AgentVersion):
+        self._AgentVersion = AgentVersion
+
+    @property
+    def AppId(self):
+        r"""<p>账号AppId</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CloudFromEnum(self):
+        r"""<p>云服务商</p>
+        :rtype: str
+        """
+        return self._CloudFromEnum
+
+    @CloudFromEnum.setter
+    def CloudFromEnum(self, CloudFromEnum):
+        self._CloudFromEnum = CloudFromEnum
+
+    @property
+    def CloudTags(self):
+        r"""<p>云标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._CloudTags
+
+    @CloudTags.setter
+    def CloudTags(self, CloudTags):
+        self._CloudTags = CloudTags
+
+    @property
+    def CsipProtectType(self):
+        r"""<p>CSIP防护类型，取值：BASIC-基础版，PRO-专业版，ULTIMATE-旗舰版</p>
+        :rtype: str
+        """
+        return self._CsipProtectType
+
+    @CsipProtectType.setter
+    def CsipProtectType(self, CsipProtectType):
+        self._CsipProtectType = CsipProtectType
+
+    @property
+    def ExposedStatus(self):
+        r"""<p>暴露状态</p>
+        :rtype: str
+        """
+        return self._ExposedStatus
+
+    @ExposedStatus.setter
+    def ExposedStatus(self, ExposedStatus):
+        self._ExposedStatus = ExposedStatus
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def InstanceStatus(self):
+        r"""<p>实例状态，取值：RUNNING-运行中，STOPPED-已关机，EXPIRED-待回收</p>
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def IpList(self):
+        r"""<p>网卡IP列表</p>
+        :rtype: list of str
+        """
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+    @property
+    def IsNew(self):
+        r"""<p>是否为新增主机（15天内新增）</p>
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def KernelVersion(self):
+        r"""<p>内核版本</p>
+        :rtype: str
+        """
+        return self._KernelVersion
+
+    @KernelVersion.setter
+    def KernelVersion(self, KernelVersion):
+        self._KernelVersion = KernelVersion
+
+    @property
+    def LatestOfflineTime(self):
+        r"""<p>最近一次离线时间（Unix时间戳）</p>
+        :rtype: int
+        """
+        return self._LatestOfflineTime
+
+    @LatestOfflineTime.setter
+    def LatestOfflineTime(self, LatestOfflineTime):
+        self._LatestOfflineTime = LatestOfflineTime
+
+    @property
+    def MachineIp(self):
+        r"""<p>内网IP</p>
+        :rtype: str
+        """
+        return self._MachineIp
+
+    @MachineIp.setter
+    def MachineIp(self, MachineIp):
+        self._MachineIp = MachineIp
+
+    @property
+    def MachineName(self):
+        r"""<p>主机名称</p>
+        :rtype: str
+        """
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def MachineOs(self):
+        r"""<p>操作系统</p>
+        :rtype: str
+        """
+        return self._MachineOs
+
+    @MachineOs.setter
+    def MachineOs(self, MachineOs):
+        self._MachineOs = MachineOs
+
+    @property
+    def MachineWanIp(self):
+        r"""<p>外网IP</p>
+        :rtype: str
+        """
+        return self._MachineWanIp
+
+    @MachineWanIp.setter
+    def MachineWanIp(self, MachineWanIp):
+        self._MachineWanIp = MachineWanIp
+
+    @property
+    def PayMode(self):
+        r"""<p>付费模式，取值：PREPAID-预付费，POSTPAID-后付费</p>
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProtectType(self):
+        r"""<p>防护类型，取值：NONE-无防护，BASIC-基础版，PRO-专业版，ULTIMATE-旗舰版，PRO_LH-轻量版</p>
+        :rtype: str
+        """
+        return self._ProtectType
+
+    @ProtectType.setter
+    def ProtectType(self, ProtectType):
+        self._ProtectType = ProtectType
+
+    @property
+    def Quuid(self):
+        r"""<p>主机唯一标识</p>
+        :rtype: str
+        """
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def RegionInfo(self):
+        r"""<p>地域信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RegionInfo`
+        """
+        return self._RegionInfo
+
+    @RegionInfo.setter
+    def RegionInfo(self, RegionInfo):
+        self._RegionInfo = RegionInfo
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def TagItems(self):
+        r"""<p>资产标签列表</p>
+        :rtype: list of MiniTagItem
+        """
+        return self._TagItems
+
+    @TagItems.setter
+    def TagItems(self, TagItems):
+        self._TagItems = TagItems
+
+    @property
+    def TagModifyInfo(self):
+        r"""<p>标签修改信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AssetTagModifyAssetItem`
+        """
+        return self._TagModifyInfo
+
+    @TagModifyInfo.setter
+    def TagModifyInfo(self, TagModifyInfo):
+        self._TagModifyInfo = TagModifyInfo
+
+    @property
+    def TatStatus(self):
+        r"""<p>TAT状态，取值：ONLINE-在线，OFFLINE-离线</p>
+        :rtype: str
+        """
+        return self._TatStatus
+
+    @TatStatus.setter
+    def TatStatus(self, TatStatus):
+        self._TatStatus = TatStatus
+
+    @property
+    def Uuid(self):
+        r"""<p>Agent唯一标识</p>
+        :rtype: str
+        """
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def NodeType(self):
+        r"""<p>主机节点类型</p><p>枚举值：</p><ul><li>NONE： 主机节点</li><li>CLUSTER： 集群节点</li><li>CONTAINER： 容器节点</li></ul>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ContainerDefendStatus(self):
+        r"""<p>容器防护状态</p><p>枚举值：</p><ul><li>Enabled： 开启防护</li><li>Disabled： 关闭防护</li><li>Unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._ContainerDefendStatus
+
+    @ContainerDefendStatus.setter
+    def ContainerDefendStatus(self, ContainerDefendStatus):
+        self._ContainerDefendStatus = ContainerDefendStatus
+
+    @property
+    def ContainerCount(self):
+        r"""<p>容器数量</p>
+        :rtype: int
+        """
+        return self._ContainerCount
+
+    @ContainerCount.setter
+    def ContainerCount(self, ContainerCount):
+        self._ContainerCount = ContainerCount
+
+    @property
+    def CpuCoreCount(self):
+        r"""<p>核数</p>
+        :rtype: int
+        """
+        return self._CpuCoreCount
+
+    @CpuCoreCount.setter
+    def CpuCoreCount(self, CpuCoreCount):
+        self._CpuCoreCount = CpuCoreCount
+
+
+    def _deserialize(self, params):
+        self._AgentStatus = params.get("AgentStatus")
+        self._AgentVersion = params.get("AgentVersion")
+        self._AppId = params.get("AppId")
+        self._CloudFromEnum = params.get("CloudFromEnum")
+        if params.get("CloudTags") is not None:
+            self._CloudTags = []
+            for item in params.get("CloudTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._CloudTags.append(obj)
+        self._CsipProtectType = params.get("CsipProtectType")
+        self._ExposedStatus = params.get("ExposedStatus")
+        self._InstanceID = params.get("InstanceID")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._IpList = params.get("IpList")
+        self._IsNew = params.get("IsNew")
+        self._KernelVersion = params.get("KernelVersion")
+        self._LatestOfflineTime = params.get("LatestOfflineTime")
+        self._MachineIp = params.get("MachineIp")
+        self._MachineName = params.get("MachineName")
+        self._MachineOs = params.get("MachineOs")
+        self._MachineWanIp = params.get("MachineWanIp")
+        self._PayMode = params.get("PayMode")
+        self._ProjectId = params.get("ProjectId")
+        self._ProtectType = params.get("ProtectType")
+        self._Quuid = params.get("Quuid")
+        if params.get("RegionInfo") is not None:
+            self._RegionInfo = RegionInfo()
+            self._RegionInfo._deserialize(params.get("RegionInfo"))
+        self._Remark = params.get("Remark")
+        if params.get("TagItems") is not None:
+            self._TagItems = []
+            for item in params.get("TagItems"):
+                obj = MiniTagItem()
+                obj._deserialize(item)
+                self._TagItems.append(obj)
+        if params.get("TagModifyInfo") is not None:
+            self._TagModifyInfo = AssetTagModifyAssetItem()
+            self._TagModifyInfo._deserialize(params.get("TagModifyInfo"))
+        self._TatStatus = params.get("TatStatus")
+        self._Uuid = params.get("Uuid")
+        self._VpcId = params.get("VpcId")
+        self._NodeType = params.get("NodeType")
+        self._ContainerDefendStatus = params.get("ContainerDefendStatus")
+        self._ContainerCount = params.get("ContainerCount")
+        self._CpuCoreCount = params.get("CpuCoreCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MachineDetail(AbstractModel):
+    r"""主机列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentStatus: <p>Agent状态</p>
+        :type AgentStatus: str
+        :param _AgentVersion: <p>Agent版本</p>
+        :type AgentVersion: str
+        :param _AppId: <p>账号AppId</p>
+        :type AppId: int
+        :param _AssetTypeName: <p>资产类型名称</p>
+        :type AssetTypeName: str
+        :param _BootTime: <p>系统启动时间（Unix时间戳）</p>
+        :type BootTime: int
+        :param _BuyTime: <p>购买时间（Unix时间戳）</p>
+        :type BuyTime: int
+        :param _CloudFromEnum: <p>云服务商</p>
+        :type CloudFromEnum: str
+        :param _CloudTags: <p>云标签列表</p>
+        :type CloudTags: list of Tags
+        :param _CoreVersion: <p>内核版本</p>
+        :type CoreVersion: str
+        :param _Cpu: <p>CPU信息</p>
+        :type Cpu: str
+        :param _CpuLoad: <p>CPU负载</p>
+        :type CpuLoad: str
+        :param _CpuSize: <p>CPU核数</p>
+        :type CpuSize: int
+        :param _DeviceVersion: <p>设备型号</p>
+        :type DeviceVersion: str
+        :param _Disks: <p>磁盘分区信息</p>
+        :type Disks: list of DiskPartitionInfo
+        :param _EndTime: <p>到期时间（Unix时间戳）</p>
+        :type EndTime: int
+        :param _ExposedStatus: <p>暴露状态</p>
+        :type ExposedStatus: str
+        :param _InstallTime: <p>安装时间（Unix时间戳）</p>
+        :type InstallTime: int
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _InstanceStatus: <p>实例状态</p>
+        :type InstanceStatus: str
+        :param _KernelVersion: <p>内核版本</p>
+        :type KernelVersion: str
+        :param _LatestLiveTime: <p>最近一次在线时间（Unix时间戳）</p>
+        :type LatestLiveTime: int
+        :param _LatestOfflineTime: <p>最近一次离线时间（Unix时间戳）</p>
+        :type LatestOfflineTime: int
+        :param _MachineIp: <p>内网IP</p>
+        :type MachineIp: str
+        :param _MachineName: <p>主机名称</p>
+        :type MachineName: str
+        :param _MachineOs: <p>操作系统（云采集）</p>
+        :type MachineOs: str
+        :param _MachineStatus: <p>主机状态</p>
+        :type MachineStatus: str
+        :param _MachineWanIp: <p>外网IP</p>
+        :type MachineWanIp: str
+        :param _MemSize: <p>内存大小(MB)</p>
+        :type MemSize: int
+        :param _MemoryLoad: <p>内存使用率</p>
+        :type MemoryLoad: str
+        :param _NetCards: <p>网卡信息</p>
+        :type NetCards: list of NetworkCardInfo
+        :param _OsByAgent: <p>操作系统（端采集）</p>
+        :type OsByAgent: str
+        :param _PayMode: <p>付费模式</p>
+        :type PayMode: str
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: int
+        :param _ProtectDays: <p>已防护天数</p>
+        :type ProtectDays: int
+        :param _ProtectType: <p>防护类型</p>
+        :type ProtectType: str
+        :param _Quuid: <p>主机唯一标识</p>
+        :type Quuid: str
+        :param _RegionInfo: <p>地域信息</p>
+        :type RegionInfo: :class:`tencentcloud.csip.v20221121.models.RegionInfo`
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _SerialNumber: <p>序列号</p>
+        :type SerialNumber: str
+        :param _TagItems: <p>资产标签列表</p>
+        :type TagItems: list of MiniTagItem
+        :param _TagModifyInfo: <p>标签修改信息</p>
+        :type TagModifyInfo: :class:`tencentcloud.csip.v20221121.models.AssetTagModifyAssetItem`
+        :param _Uuid: <p>Agent唯一标识</p>
+        :type Uuid: str
+        :param _VpcCidrBlock: <p>VPC CIDR</p>
+        :type VpcCidrBlock: str
+        :param _VpcId: <p>VPC ID</p>
+        :type VpcId: str
+        :param _VpcName: <p>VPC名称</p>
+        :type VpcName: str
+        :param _NodeType: <p>主机节点类型</p><p>枚举值：</p><ul><li>NONE： 主机节点</li><li>CLUSTER： 集群节点</li><li>CONTAINER： 容器节点</li></ul>
+        :type NodeType: str
+        :param _ContainerDefendStatus: <p>容器防护状态</p><p>枚举值：</p><ul><li>Enabled： 开启防护</li><li>Disabled： 关闭防护</li><li>Unknown： 未知</li></ul>
+        :type ContainerDefendStatus: str
+        :param _ClusterCaMd5: <p>集群签证md5</p>
+        :type ClusterCaMd5: str
+        :param _ContainerEnvInfo: <p>容器环境信息</p>
+        :type ContainerEnvInfo: :class:`tencentcloud.csip.v20221121.models.ContainerEnvInfo`
+        :param _ClusterId: <p>集群id</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        """
+        self._AgentStatus = None
+        self._AgentVersion = None
+        self._AppId = None
+        self._AssetTypeName = None
+        self._BootTime = None
+        self._BuyTime = None
+        self._CloudFromEnum = None
+        self._CloudTags = None
+        self._CoreVersion = None
+        self._Cpu = None
+        self._CpuLoad = None
+        self._CpuSize = None
+        self._DeviceVersion = None
+        self._Disks = None
+        self._EndTime = None
+        self._ExposedStatus = None
+        self._InstallTime = None
+        self._InstanceID = None
+        self._InstanceStatus = None
+        self._KernelVersion = None
+        self._LatestLiveTime = None
+        self._LatestOfflineTime = None
+        self._MachineIp = None
+        self._MachineName = None
+        self._MachineOs = None
+        self._MachineStatus = None
+        self._MachineWanIp = None
+        self._MemSize = None
+        self._MemoryLoad = None
+        self._NetCards = None
+        self._OsByAgent = None
+        self._PayMode = None
+        self._ProjectId = None
+        self._ProtectDays = None
+        self._ProtectType = None
+        self._Quuid = None
+        self._RegionInfo = None
+        self._Remark = None
+        self._SerialNumber = None
+        self._TagItems = None
+        self._TagModifyInfo = None
+        self._Uuid = None
+        self._VpcCidrBlock = None
+        self._VpcId = None
+        self._VpcName = None
+        self._NodeType = None
+        self._ContainerDefendStatus = None
+        self._ClusterCaMd5 = None
+        self._ContainerEnvInfo = None
+        self._ClusterId = None
+        self._ClusterName = None
+
+    @property
+    def AgentStatus(self):
+        r"""<p>Agent状态</p>
+        :rtype: str
+        """
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def AgentVersion(self):
+        r"""<p>Agent版本</p>
+        :rtype: str
+        """
+        return self._AgentVersion
+
+    @AgentVersion.setter
+    def AgentVersion(self, AgentVersion):
+        self._AgentVersion = AgentVersion
+
+    @property
+    def AppId(self):
+        r"""<p>账号AppId</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AssetTypeName(self):
+        r"""<p>资产类型名称</p>
+        :rtype: str
+        """
+        return self._AssetTypeName
+
+    @AssetTypeName.setter
+    def AssetTypeName(self, AssetTypeName):
+        self._AssetTypeName = AssetTypeName
+
+    @property
+    def BootTime(self):
+        r"""<p>系统启动时间（Unix时间戳）</p>
+        :rtype: int
+        """
+        return self._BootTime
+
+    @BootTime.setter
+    def BootTime(self, BootTime):
+        self._BootTime = BootTime
+
+    @property
+    def BuyTime(self):
+        r"""<p>购买时间（Unix时间戳）</p>
+        :rtype: int
+        """
+        return self._BuyTime
+
+    @BuyTime.setter
+    def BuyTime(self, BuyTime):
+        self._BuyTime = BuyTime
+
+    @property
+    def CloudFromEnum(self):
+        r"""<p>云服务商</p>
+        :rtype: str
+        """
+        return self._CloudFromEnum
+
+    @CloudFromEnum.setter
+    def CloudFromEnum(self, CloudFromEnum):
+        self._CloudFromEnum = CloudFromEnum
+
+    @property
+    def CloudTags(self):
+        r"""<p>云标签列表</p>
+        :rtype: list of Tags
+        """
+        return self._CloudTags
+
+    @CloudTags.setter
+    def CloudTags(self, CloudTags):
+        self._CloudTags = CloudTags
+
+    @property
+    def CoreVersion(self):
+        r"""<p>内核版本</p>
+        :rtype: str
+        """
+        return self._CoreVersion
+
+    @CoreVersion.setter
+    def CoreVersion(self, CoreVersion):
+        self._CoreVersion = CoreVersion
+
+    @property
+    def Cpu(self):
+        r"""<p>CPU信息</p>
+        :rtype: str
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def CpuLoad(self):
+        r"""<p>CPU负载</p>
+        :rtype: str
+        """
+        return self._CpuLoad
+
+    @CpuLoad.setter
+    def CpuLoad(self, CpuLoad):
+        self._CpuLoad = CpuLoad
+
+    @property
+    def CpuSize(self):
+        r"""<p>CPU核数</p>
+        :rtype: int
+        """
+        return self._CpuSize
+
+    @CpuSize.setter
+    def CpuSize(self, CpuSize):
+        self._CpuSize = CpuSize
+
+    @property
+    def DeviceVersion(self):
+        r"""<p>设备型号</p>
+        :rtype: str
+        """
+        return self._DeviceVersion
+
+    @DeviceVersion.setter
+    def DeviceVersion(self, DeviceVersion):
+        self._DeviceVersion = DeviceVersion
+
+    @property
+    def Disks(self):
+        r"""<p>磁盘分区信息</p>
+        :rtype: list of DiskPartitionInfo
+        """
+        return self._Disks
+
+    @Disks.setter
+    def Disks(self, Disks):
+        self._Disks = Disks
+
+    @property
+    def EndTime(self):
+        r"""<p>到期时间（Unix时间戳）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ExposedStatus(self):
+        r"""<p>暴露状态</p>
+        :rtype: str
+        """
+        return self._ExposedStatus
+
+    @ExposedStatus.setter
+    def ExposedStatus(self, ExposedStatus):
+        self._ExposedStatus = ExposedStatus
+
+    @property
+    def InstallTime(self):
+        r"""<p>安装时间（Unix时间戳）</p>
+        :rtype: int
+        """
+        return self._InstallTime
+
+    @InstallTime.setter
+    def InstallTime(self, InstallTime):
+        self._InstallTime = InstallTime
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def InstanceStatus(self):
+        r"""<p>实例状态</p>
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def KernelVersion(self):
+        r"""<p>内核版本</p>
+        :rtype: str
+        """
+        return self._KernelVersion
+
+    @KernelVersion.setter
+    def KernelVersion(self, KernelVersion):
+        self._KernelVersion = KernelVersion
+
+    @property
+    def LatestLiveTime(self):
+        r"""<p>最近一次在线时间（Unix时间戳）</p>
+        :rtype: int
+        """
+        return self._LatestLiveTime
+
+    @LatestLiveTime.setter
+    def LatestLiveTime(self, LatestLiveTime):
+        self._LatestLiveTime = LatestLiveTime
+
+    @property
+    def LatestOfflineTime(self):
+        r"""<p>最近一次离线时间（Unix时间戳）</p>
+        :rtype: int
+        """
+        return self._LatestOfflineTime
+
+    @LatestOfflineTime.setter
+    def LatestOfflineTime(self, LatestOfflineTime):
+        self._LatestOfflineTime = LatestOfflineTime
+
+    @property
+    def MachineIp(self):
+        r"""<p>内网IP</p>
+        :rtype: str
+        """
+        return self._MachineIp
+
+    @MachineIp.setter
+    def MachineIp(self, MachineIp):
+        self._MachineIp = MachineIp
+
+    @property
+    def MachineName(self):
+        r"""<p>主机名称</p>
+        :rtype: str
+        """
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def MachineOs(self):
+        r"""<p>操作系统（云采集）</p>
+        :rtype: str
+        """
+        return self._MachineOs
+
+    @MachineOs.setter
+    def MachineOs(self, MachineOs):
+        self._MachineOs = MachineOs
+
+    @property
+    def MachineStatus(self):
+        r"""<p>主机状态</p>
+        :rtype: str
+        """
+        return self._MachineStatus
+
+    @MachineStatus.setter
+    def MachineStatus(self, MachineStatus):
+        self._MachineStatus = MachineStatus
+
+    @property
+    def MachineWanIp(self):
+        r"""<p>外网IP</p>
+        :rtype: str
+        """
+        return self._MachineWanIp
+
+    @MachineWanIp.setter
+    def MachineWanIp(self, MachineWanIp):
+        self._MachineWanIp = MachineWanIp
+
+    @property
+    def MemSize(self):
+        r"""<p>内存大小(MB)</p>
+        :rtype: int
+        """
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def MemoryLoad(self):
+        r"""<p>内存使用率</p>
+        :rtype: str
+        """
+        return self._MemoryLoad
+
+    @MemoryLoad.setter
+    def MemoryLoad(self, MemoryLoad):
+        self._MemoryLoad = MemoryLoad
+
+    @property
+    def NetCards(self):
+        r"""<p>网卡信息</p>
+        :rtype: list of NetworkCardInfo
+        """
+        return self._NetCards
+
+    @NetCards.setter
+    def NetCards(self, NetCards):
+        self._NetCards = NetCards
+
+    @property
+    def OsByAgent(self):
+        r"""<p>操作系统（端采集）</p>
+        :rtype: str
+        """
+        return self._OsByAgent
+
+    @OsByAgent.setter
+    def OsByAgent(self, OsByAgent):
+        self._OsByAgent = OsByAgent
+
+    @property
+    def PayMode(self):
+        r"""<p>付费模式</p>
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProtectDays(self):
+        r"""<p>已防护天数</p>
+        :rtype: int
+        """
+        return self._ProtectDays
+
+    @ProtectDays.setter
+    def ProtectDays(self, ProtectDays):
+        self._ProtectDays = ProtectDays
+
+    @property
+    def ProtectType(self):
+        r"""<p>防护类型</p>
+        :rtype: str
+        """
+        return self._ProtectType
+
+    @ProtectType.setter
+    def ProtectType(self, ProtectType):
+        self._ProtectType = ProtectType
+
+    @property
+    def Quuid(self):
+        r"""<p>主机唯一标识</p>
+        :rtype: str
+        """
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def RegionInfo(self):
+        r"""<p>地域信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RegionInfo`
+        """
+        return self._RegionInfo
+
+    @RegionInfo.setter
+    def RegionInfo(self, RegionInfo):
+        self._RegionInfo = RegionInfo
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def SerialNumber(self):
+        r"""<p>序列号</p>
+        :rtype: str
+        """
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def TagItems(self):
+        r"""<p>资产标签列表</p>
+        :rtype: list of MiniTagItem
+        """
+        return self._TagItems
+
+    @TagItems.setter
+    def TagItems(self, TagItems):
+        self._TagItems = TagItems
+
+    @property
+    def TagModifyInfo(self):
+        r"""<p>标签修改信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AssetTagModifyAssetItem`
+        """
+        return self._TagModifyInfo
+
+    @TagModifyInfo.setter
+    def TagModifyInfo(self, TagModifyInfo):
+        self._TagModifyInfo = TagModifyInfo
+
+    @property
+    def Uuid(self):
+        r"""<p>Agent唯一标识</p>
+        :rtype: str
+        """
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def VpcCidrBlock(self):
+        r"""<p>VPC CIDR</p>
+        :rtype: str
+        """
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""<p>VPC名称</p>
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def NodeType(self):
+        r"""<p>主机节点类型</p><p>枚举值：</p><ul><li>NONE： 主机节点</li><li>CLUSTER： 集群节点</li><li>CONTAINER： 容器节点</li></ul>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ContainerDefendStatus(self):
+        r"""<p>容器防护状态</p><p>枚举值：</p><ul><li>Enabled： 开启防护</li><li>Disabled： 关闭防护</li><li>Unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._ContainerDefendStatus
+
+    @ContainerDefendStatus.setter
+    def ContainerDefendStatus(self, ContainerDefendStatus):
+        self._ContainerDefendStatus = ContainerDefendStatus
+
+    @property
+    def ClusterCaMd5(self):
+        r"""<p>集群签证md5</p>
+        :rtype: str
+        """
+        return self._ClusterCaMd5
+
+    @ClusterCaMd5.setter
+    def ClusterCaMd5(self, ClusterCaMd5):
+        self._ClusterCaMd5 = ClusterCaMd5
+
+    @property
+    def ContainerEnvInfo(self):
+        r"""<p>容器环境信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ContainerEnvInfo`
+        """
+        return self._ContainerEnvInfo
+
+    @ContainerEnvInfo.setter
+    def ContainerEnvInfo(self, ContainerEnvInfo):
+        self._ContainerEnvInfo = ContainerEnvInfo
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+
+    def _deserialize(self, params):
+        self._AgentStatus = params.get("AgentStatus")
+        self._AgentVersion = params.get("AgentVersion")
+        self._AppId = params.get("AppId")
+        self._AssetTypeName = params.get("AssetTypeName")
+        self._BootTime = params.get("BootTime")
+        self._BuyTime = params.get("BuyTime")
+        self._CloudFromEnum = params.get("CloudFromEnum")
+        if params.get("CloudTags") is not None:
+            self._CloudTags = []
+            for item in params.get("CloudTags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._CloudTags.append(obj)
+        self._CoreVersion = params.get("CoreVersion")
+        self._Cpu = params.get("Cpu")
+        self._CpuLoad = params.get("CpuLoad")
+        self._CpuSize = params.get("CpuSize")
+        self._DeviceVersion = params.get("DeviceVersion")
+        if params.get("Disks") is not None:
+            self._Disks = []
+            for item in params.get("Disks"):
+                obj = DiskPartitionInfo()
+                obj._deserialize(item)
+                self._Disks.append(obj)
+        self._EndTime = params.get("EndTime")
+        self._ExposedStatus = params.get("ExposedStatus")
+        self._InstallTime = params.get("InstallTime")
+        self._InstanceID = params.get("InstanceID")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._KernelVersion = params.get("KernelVersion")
+        self._LatestLiveTime = params.get("LatestLiveTime")
+        self._LatestOfflineTime = params.get("LatestOfflineTime")
+        self._MachineIp = params.get("MachineIp")
+        self._MachineName = params.get("MachineName")
+        self._MachineOs = params.get("MachineOs")
+        self._MachineStatus = params.get("MachineStatus")
+        self._MachineWanIp = params.get("MachineWanIp")
+        self._MemSize = params.get("MemSize")
+        self._MemoryLoad = params.get("MemoryLoad")
+        if params.get("NetCards") is not None:
+            self._NetCards = []
+            for item in params.get("NetCards"):
+                obj = NetworkCardInfo()
+                obj._deserialize(item)
+                self._NetCards.append(obj)
+        self._OsByAgent = params.get("OsByAgent")
+        self._PayMode = params.get("PayMode")
+        self._ProjectId = params.get("ProjectId")
+        self._ProtectDays = params.get("ProtectDays")
+        self._ProtectType = params.get("ProtectType")
+        self._Quuid = params.get("Quuid")
+        if params.get("RegionInfo") is not None:
+            self._RegionInfo = RegionInfo()
+            self._RegionInfo._deserialize(params.get("RegionInfo"))
+        self._Remark = params.get("Remark")
+        self._SerialNumber = params.get("SerialNumber")
+        if params.get("TagItems") is not None:
+            self._TagItems = []
+            for item in params.get("TagItems"):
+                obj = MiniTagItem()
+                obj._deserialize(item)
+                self._TagItems.append(obj)
+        if params.get("TagModifyInfo") is not None:
+            self._TagModifyInfo = AssetTagModifyAssetItem()
+            self._TagModifyInfo._deserialize(params.get("TagModifyInfo"))
+        self._Uuid = params.get("Uuid")
+        self._VpcCidrBlock = params.get("VpcCidrBlock")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._NodeType = params.get("NodeType")
+        self._ContainerDefendStatus = params.get("ContainerDefendStatus")
+        self._ClusterCaMd5 = params.get("ClusterCaMd5")
+        if params.get("ContainerEnvInfo") is not None:
+            self._ContainerEnvInfo = ContainerEnvInfo()
+            self._ContainerEnvInfo._deserialize(params.get("ContainerEnvInfo"))
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MiniTagItem(AbstractModel):
+    r"""简要的资产标签元素
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Color: <p>标签颜色</p>
+        :type Color: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _ID: <p>标签ID</p>
+        :type ID: int
+        :param _TagKey: <p>标签键</p>
+        :type TagKey: str
+        :param _TagValue: <p>标签值</p>
+        :type TagValue: str
+        :param _TagKeyEn: <p>标签键英文</p>
+        :type TagKeyEn: str
+        :param _TagValueEn: <p>标签值英文</p>
+        :type TagValueEn: str
+        """
+        self._Color = None
+        self._Description = None
+        self._ID = None
+        self._TagKey = None
+        self._TagValue = None
+        self._TagKeyEn = None
+        self._TagValueEn = None
+
+    @property
+    def Color(self):
+        r"""<p>标签颜色</p>
+        :rtype: str
+        """
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ID(self):
+        r"""<p>标签ID</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def TagKey(self):
+        r"""<p>标签键</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>标签值</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+    @property
+    def TagKeyEn(self):
+        r"""<p>标签键英文</p>
+        :rtype: str
+        """
+        return self._TagKeyEn
+
+    @TagKeyEn.setter
+    def TagKeyEn(self, TagKeyEn):
+        self._TagKeyEn = TagKeyEn
+
+    @property
+    def TagValueEn(self):
+        r"""<p>标签值英文</p>
+        :rtype: str
+        """
+        return self._TagValueEn
+
+    @TagValueEn.setter
+    def TagValueEn(self, TagValueEn):
+        self._TagValueEn = TagValueEn
+
+
+    def _deserialize(self, params):
+        self._Color = params.get("Color")
+        self._Description = params.get("Description")
+        self._ID = params.get("ID")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        self._TagKeyEn = params.get("TagKeyEn")
+        self._TagValueEn = params.get("TagValueEn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAlarmRiskStatusRequest(AbstractModel):
     r"""ModifyAlarmRiskStatus请求参数结构体
 
@@ -58926,6 +60909,100 @@ class ModifyIaCTokenPeriodResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMachineRemarkRequest(AbstractModel):
+    r"""ModifyMachineRemark请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _Remark: <p>备注信息</p>
+        :type Remark: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._InstanceId = None
+        self._Remark = None
+        self._MemberId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Remark(self):
+        r"""<p>备注信息</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Remark = params.get("Remark")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMachineRemarkResponse(AbstractModel):
+    r"""ModifyMachineRemark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOrganizationAccountStatusRequest(AbstractModel):
     r"""ModifyOrganizationAccountStatus请求参数结构体
 
@@ -60009,6 +62086,117 @@ class NICAsset(AbstractModel):
         self._Nick = params.get("Nick")
         self._IsCore = params.get("IsCore")
         self._IsNewAsset = params.get("IsNewAsset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkCardInfo(AbstractModel):
+    r"""网卡信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DnsServer: <p>DNS服务器</p>
+        :type DnsServer: str
+        :param _Gateway: <p>网关</p>
+        :type Gateway: str
+        :param _Ip: <p>IP地址</p>
+        :type Ip: str
+        :param _Ipv6: <p>IPv6地址</p>
+        :type Ipv6: str
+        :param _Mac: <p>MAC地址</p>
+        :type Mac: str
+        :param _Name: <p>网卡名称</p>
+        :type Name: str
+        """
+        self._DnsServer = None
+        self._Gateway = None
+        self._Ip = None
+        self._Ipv6 = None
+        self._Mac = None
+        self._Name = None
+
+    @property
+    def DnsServer(self):
+        r"""<p>DNS服务器</p>
+        :rtype: str
+        """
+        return self._DnsServer
+
+    @DnsServer.setter
+    def DnsServer(self, DnsServer):
+        self._DnsServer = DnsServer
+
+    @property
+    def Gateway(self):
+        r"""<p>网关</p>
+        :rtype: str
+        """
+        return self._Gateway
+
+    @Gateway.setter
+    def Gateway(self, Gateway):
+        self._Gateway = Gateway
+
+    @property
+    def Ip(self):
+        r"""<p>IP地址</p>
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Ipv6(self):
+        r"""<p>IPv6地址</p>
+        :rtype: str
+        """
+        return self._Ipv6
+
+    @Ipv6.setter
+    def Ipv6(self, Ipv6):
+        self._Ipv6 = Ipv6
+
+    @property
+    def Mac(self):
+        r"""<p>MAC地址</p>
+        :rtype: str
+        """
+        return self._Mac
+
+    @Mac.setter
+    def Mac(self, Mac):
+        self._Mac = Mac
+
+    @property
+    def Name(self):
+        r"""<p>网卡名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._DnsServer = params.get("DnsServer")
+        self._Gateway = params.get("Gateway")
+        self._Ip = params.get("Ip")
+        self._Ipv6 = params.get("Ipv6")
+        self._Mac = params.get("Mac")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61610,6 +63798,102 @@ class RegionConfig(AbstractModel):
         self._IsSupportNat = params.get("IsSupportNat")
         self._RegionArea = params.get("RegionArea")
         self._RegionNameEN = params.get("RegionNameEN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegionInfo(AbstractModel):
+    r"""地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _RegionCode: <p>地域编码</p>
+        :type RegionCode: str
+        :param _RegionId: <p>地域ID</p>
+        :type RegionId: int
+        :param _RegionName: <p>地域名称</p>
+        :type RegionName: str
+        :param _RegionNameEn: <p>地域英文名称</p>
+        :type RegionNameEn: str
+        """
+        self._Region = None
+        self._RegionCode = None
+        self._RegionId = None
+        self._RegionName = None
+        self._RegionNameEn = None
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionCode(self):
+        r"""<p>地域编码</p>
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def RegionId(self):
+        r"""<p>地域ID</p>
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        r"""<p>地域名称</p>
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def RegionNameEn(self):
+        r"""<p>地域英文名称</p>
+        :rtype: str
+        """
+        return self._RegionNameEn
+
+    @RegionNameEn.setter
+    def RegionNameEn(self, RegionNameEn):
+        self._RegionNameEn = RegionNameEn
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._RegionCode = params.get("RegionCode")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._RegionNameEn = params.get("RegionNameEn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

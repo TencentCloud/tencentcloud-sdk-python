@@ -8815,35 +8815,35 @@ class LifecycleRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageType: 数据转储后的存储类型。其中：InfrequentAccess：低频介质存储；ColdStorage：冷存储。
+        :param _StorageType: <p>数据转储后的存储类型。其中：InfrequentAccess：低频介质存储；ColdStorage：冷存储。</p>
         :type StorageType: str
-        :param _FileType: 数据转储文件类型。其中，BIG_FILE：超大文件；STD_FILE：普通文件；SMALL_FILE：小文件；ALL：所有文件。
+        :param _FileType: <p>数据转储文件类型。其中，BIG_FILE：超大文件；STD_FILE：普通文件；SMALL_FILE：小文件；ALL：所有文件。</p>
         :type FileType: str
-        :param _Action: 数据转储行为。其中，Archive：沉降；Noarchive：不沉降。
+        :param _Action: <p>数据转储行为。其中，Archive：沉降；Noarchive：不沉降。</p>
         :type Action: str
-        :param _Interval: 数据转储触发时间。由“DEFAULT_ATIME_”与“数字”组成，单位为天。当 Action 为 Noarchive，请保持为空。
+        :param _Interval: <p>数据转储触发时间。由“DEFAULT_ATIME_”与“数字”组成，单位为天。当 Action 为 Noarchive，请保持为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Interval: str
-        :param _FileMaxSize: 数据转储文件最大规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
+        :param _FileMaxSize: <p>数据转储文件最大规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileMaxSize: str
-        :param _FileMinSize: 数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
+        :param _FileMinSize: <p>数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileMinSize: str
-        :param _PolicyType: 策略类型
+        :param _PolicyType: <p>策略类型</p>
         :type PolicyType: str
-        :param _ExpireThreshold: 阈值范围[10-90]
+        :param _ExpireThreshold: <p>阈值范围[10-90]</p>
         :type ExpireThreshold: int
-        :param _TargetThreshold: 阈值范围[10-90]
+        :param _TargetThreshold: <p>阈值范围[10-90]</p>
         :type TargetThreshold: int
-        :param _IsOverwrite: 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
-
-ture：覆盖
-
-false：不覆盖（同时也不会释放热存数据）
-
-为空时，默认为false
+        :param _IsOverwrite: <p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。</p><p>ture：覆盖</p><p>false：不覆盖（同时也不会释放热存数据）</p><p>为空时，默认为false</p>
         :type IsOverwrite: bool
+        :param _IsCreateRealTimeSync: <p>新建文件是否近实时同步至 S3。true：近实时同步（30 秒内）/ false：基于策略配置时间同步。默认 false。仅当 StorageType=ExternalStorage 时生效</p>
+        :type IsCreateRealTimeSync: bool
+        :param _IsModifyRealTimeSync: <p>修改文件是否近实时同步至 S3。true：近实时同步（30 秒内）/ false：基于策略配置时间同步。默认 false。仅当 StorageType=ExternalStorage 时生效。与 IsOverwrite 独立</p>
+        :type IsModifyRealTimeSync: bool
+        :param _IsSyncDelete: <p>删除文件是否同步至 S3。true：同步删除（30 秒内）/ false：不同步删除。默认 false。为 true 时要求目标 COS Bucket 已开启多版本。仅当 StorageType=ExternalStorage 时生效</p>
+        :type IsSyncDelete: bool
         """
         self._StorageType = None
         self._FileType = None
@@ -8855,10 +8855,13 @@ false：不覆盖（同时也不会释放热存数据）
         self._ExpireThreshold = None
         self._TargetThreshold = None
         self._IsOverwrite = None
+        self._IsCreateRealTimeSync = None
+        self._IsModifyRealTimeSync = None
+        self._IsSyncDelete = None
 
     @property
     def StorageType(self):
-        r"""数据转储后的存储类型。其中：InfrequentAccess：低频介质存储；ColdStorage：冷存储。
+        r"""<p>数据转储后的存储类型。其中：InfrequentAccess：低频介质存储；ColdStorage：冷存储。</p>
         :rtype: str
         """
         return self._StorageType
@@ -8869,7 +8872,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def FileType(self):
-        r"""数据转储文件类型。其中，BIG_FILE：超大文件；STD_FILE：普通文件；SMALL_FILE：小文件；ALL：所有文件。
+        r"""<p>数据转储文件类型。其中，BIG_FILE：超大文件；STD_FILE：普通文件；SMALL_FILE：小文件；ALL：所有文件。</p>
         :rtype: str
         """
         return self._FileType
@@ -8880,7 +8883,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def Action(self):
-        r"""数据转储行为。其中，Archive：沉降；Noarchive：不沉降。
+        r"""<p>数据转储行为。其中，Archive：沉降；Noarchive：不沉降。</p>
         :rtype: str
         """
         return self._Action
@@ -8891,7 +8894,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def Interval(self):
-        r"""数据转储触发时间。由“DEFAULT_ATIME_”与“数字”组成，单位为天。当 Action 为 Noarchive，请保持为空。
+        r"""<p>数据转储触发时间。由“DEFAULT_ATIME_”与“数字”组成，单位为天。当 Action 为 Noarchive，请保持为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8903,7 +8906,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def FileMaxSize(self):
-        r"""数据转储文件最大规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
+        r"""<p>数据转储文件最大规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8915,7 +8918,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def FileMinSize(self):
-        r"""数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
+        r"""<p>数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8927,7 +8930,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def PolicyType(self):
-        r"""策略类型
+        r"""<p>策略类型</p>
         :rtype: str
         """
         return self._PolicyType
@@ -8938,7 +8941,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def ExpireThreshold(self):
-        r"""阈值范围[10-90]
+        r"""<p>阈值范围[10-90]</p>
         :rtype: int
         """
         return self._ExpireThreshold
@@ -8949,7 +8952,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def TargetThreshold(self):
-        r"""阈值范围[10-90]
+        r"""<p>阈值范围[10-90]</p>
         :rtype: int
         """
         return self._TargetThreshold
@@ -8960,13 +8963,7 @@ false：不覆盖（同时也不会释放热存数据）
 
     @property
     def IsOverwrite(self):
-        r"""当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
-
-ture：覆盖
-
-false：不覆盖（同时也不会释放热存数据）
-
-为空时，默认为false
+        r"""<p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。</p><p>ture：覆盖</p><p>false：不覆盖（同时也不会释放热存数据）</p><p>为空时，默认为false</p>
         :rtype: bool
         """
         return self._IsOverwrite
@@ -8974,6 +8971,39 @@ false：不覆盖（同时也不会释放热存数据）
     @IsOverwrite.setter
     def IsOverwrite(self, IsOverwrite):
         self._IsOverwrite = IsOverwrite
+
+    @property
+    def IsCreateRealTimeSync(self):
+        r"""<p>新建文件是否近实时同步至 S3。true：近实时同步（30 秒内）/ false：基于策略配置时间同步。默认 false。仅当 StorageType=ExternalStorage 时生效</p>
+        :rtype: bool
+        """
+        return self._IsCreateRealTimeSync
+
+    @IsCreateRealTimeSync.setter
+    def IsCreateRealTimeSync(self, IsCreateRealTimeSync):
+        self._IsCreateRealTimeSync = IsCreateRealTimeSync
+
+    @property
+    def IsModifyRealTimeSync(self):
+        r"""<p>修改文件是否近实时同步至 S3。true：近实时同步（30 秒内）/ false：基于策略配置时间同步。默认 false。仅当 StorageType=ExternalStorage 时生效。与 IsOverwrite 独立</p>
+        :rtype: bool
+        """
+        return self._IsModifyRealTimeSync
+
+    @IsModifyRealTimeSync.setter
+    def IsModifyRealTimeSync(self, IsModifyRealTimeSync):
+        self._IsModifyRealTimeSync = IsModifyRealTimeSync
+
+    @property
+    def IsSyncDelete(self):
+        r"""<p>删除文件是否同步至 S3。true：同步删除（30 秒内）/ false：不同步删除。默认 false。为 true 时要求目标 COS Bucket 已开启多版本。仅当 StorageType=ExternalStorage 时生效</p>
+        :rtype: bool
+        """
+        return self._IsSyncDelete
+
+    @IsSyncDelete.setter
+    def IsSyncDelete(self, IsSyncDelete):
+        self._IsSyncDelete = IsSyncDelete
 
 
     def _deserialize(self, params):
@@ -8987,6 +9017,9 @@ false：不覆盖（同时也不会释放热存数据）
         self._ExpireThreshold = params.get("ExpireThreshold")
         self._TargetThreshold = params.get("TargetThreshold")
         self._IsOverwrite = params.get("IsOverwrite")
+        self._IsCreateRealTimeSync = params.get("IsCreateRealTimeSync")
+        self._IsModifyRealTimeSync = params.get("IsModifyRealTimeSync")
+        self._IsSyncDelete = params.get("IsSyncDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

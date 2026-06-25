@@ -529,6 +529,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBAuditLogTopSqls(
+            self,
+            request: models.DescribeDBAuditLogTopSqlsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBAuditLogTopSqlsResponse:
+        """
+        按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBAuditLogTopSqls"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBAuditLogTopSqlsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBAutonomyAction(
             self,
             request: models.DescribeDBAutonomyActionRequest,

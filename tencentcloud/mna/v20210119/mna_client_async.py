@@ -475,6 +475,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetGatewayList(
+            self,
+            request: models.GetGatewayListRequest,
+            opts: Dict = None,
+    ) -> models.GetGatewayListResponse:
+        """
+        支持网关列表查询。包含网关名称、创建时间和网关状态（正常/异常）。支持基于网关名称的查询。默认按照创建时间倒序排列。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetGatewayList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetGatewayListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetGroupDetail(
             self,
             request: models.GetGroupDetailRequest,

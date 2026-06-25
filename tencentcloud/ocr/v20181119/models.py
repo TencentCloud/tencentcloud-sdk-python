@@ -15272,19 +15272,22 @@ class ItemInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: key信息组
+        :param _Key: <p>key信息组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: :class:`tencentcloud.ocr.v20181119.models.Key`
-        :param _Value: Value信息组
+        :param _Value: <p>Value信息组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.ocr.v20181119.models.Value`
+        :param _AuditResult: <p>返回这个字段是否比对审核通过</p><p>默认值：false</p>
+        :type AuditResult: bool
         """
         self._Key = None
         self._Value = None
+        self._AuditResult = None
 
     @property
     def Key(self):
-        r"""key信息组
+        r"""<p>key信息组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Key`
         """
@@ -15296,7 +15299,7 @@ class ItemInfo(AbstractModel):
 
     @property
     def Value(self):
-        r"""Value信息组
+        r"""<p>Value信息组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Value`
         """
@@ -15306,6 +15309,17 @@ class ItemInfo(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
+    @property
+    def AuditResult(self):
+        r"""<p>返回这个字段是否比对审核通过</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._AuditResult
+
+    @AuditResult.setter
+    def AuditResult(self, AuditResult):
+        self._AuditResult = AuditResult
+
 
     def _deserialize(self, params):
         if params.get("Key") is not None:
@@ -15314,6 +15328,7 @@ class ItemInfo(AbstractModel):
         if params.get("Value") is not None:
             self._Value = Value()
             self._Value._deserialize(params.get("Value"))
+        self._AuditResult = params.get("AuditResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15331,22 +15346,26 @@ class ItemNames(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyName: 自定义抽取功能需返回的字段名称。
+        :param _KeyName: <p>自定义抽取功能需返回的字段名称。</p>
         :type KeyName: str
-        :param _KeyType: 默认 0；0表示kv对  1表示 表格字段。
-
+        :param _KeyType: <p>默认 0；0表示kv对  1表示 表格字段。</p>
         :type KeyType: int
-        :param _KeyPrompt: 抽取字段的描述内容。
-
+        :param _KeyPrompt: <p>抽取字段的描述内容。</p>
         :type KeyPrompt: str
+        :param _KeyExpectedValue: <p>自定义字段对应期望的值内容（这个一般需要对字段审核比对才需要输入）。</p>
+        :type KeyExpectedValue: str
+        :param _KeyAuditPrompt: <p>自定义字段审核比对的规则prompt。</p><p>比如keyname是姓名，KeyExpectedValue 张三，KeyAuditPrompt设置为“字符需要完全匹配则审核返回正确”/“字符匹配90%就审核返回正确”</p>
+        :type KeyAuditPrompt: str
         """
         self._KeyName = None
         self._KeyType = None
         self._KeyPrompt = None
+        self._KeyExpectedValue = None
+        self._KeyAuditPrompt = None
 
     @property
     def KeyName(self):
-        r"""自定义抽取功能需返回的字段名称。
+        r"""<p>自定义抽取功能需返回的字段名称。</p>
         :rtype: str
         """
         return self._KeyName
@@ -15357,8 +15376,7 @@ class ItemNames(AbstractModel):
 
     @property
     def KeyType(self):
-        r"""默认 0；0表示kv对  1表示 表格字段。
-
+        r"""<p>默认 0；0表示kv对  1表示 表格字段。</p>
         :rtype: int
         """
         return self._KeyType
@@ -15369,8 +15387,7 @@ class ItemNames(AbstractModel):
 
     @property
     def KeyPrompt(self):
-        r"""抽取字段的描述内容。
-
+        r"""<p>抽取字段的描述内容。</p>
         :rtype: str
         """
         return self._KeyPrompt
@@ -15379,11 +15396,35 @@ class ItemNames(AbstractModel):
     def KeyPrompt(self, KeyPrompt):
         self._KeyPrompt = KeyPrompt
 
+    @property
+    def KeyExpectedValue(self):
+        r"""<p>自定义字段对应期望的值内容（这个一般需要对字段审核比对才需要输入）。</p>
+        :rtype: str
+        """
+        return self._KeyExpectedValue
+
+    @KeyExpectedValue.setter
+    def KeyExpectedValue(self, KeyExpectedValue):
+        self._KeyExpectedValue = KeyExpectedValue
+
+    @property
+    def KeyAuditPrompt(self):
+        r"""<p>自定义字段审核比对的规则prompt。</p><p>比如keyname是姓名，KeyExpectedValue 张三，KeyAuditPrompt设置为“字符需要完全匹配则审核返回正确”/“字符匹配90%就审核返回正确”</p>
+        :rtype: str
+        """
+        return self._KeyAuditPrompt
+
+    @KeyAuditPrompt.setter
+    def KeyAuditPrompt(self, KeyAuditPrompt):
+        self._KeyAuditPrompt = KeyAuditPrompt
+
 
     def _deserialize(self, params):
         self._KeyName = params.get("KeyName")
         self._KeyType = params.get("KeyType")
         self._KeyPrompt = params.get("KeyPrompt")
+        self._KeyExpectedValue = params.get("KeyExpectedValue")
+        self._KeyAuditPrompt = params.get("KeyAuditPrompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

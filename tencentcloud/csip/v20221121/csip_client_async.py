@@ -1051,6 +1051,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCWPMachineDetail(
+            self,
+            request: models.DescribeCWPMachineDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCWPMachineDetailResponse:
+        """
+        主机详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCWPMachineDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCWPMachineDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCWPMachines(
+            self,
+            request: models.DescribeCWPMachinesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCWPMachinesResponse:
+        """
+        主机列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCWPMachines"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCWPMachinesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCallRecord(
             self,
             request: models.DescribeCallRecordRequest,
@@ -3854,6 +3890,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyIaCTokenPeriod"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyIaCTokenPeriodResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyMachineRemark(
+            self,
+            request: models.ModifyMachineRemarkRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMachineRemarkResponse:
+        """
+        修改主机资产备注信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMachineRemark"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMachineRemarkResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

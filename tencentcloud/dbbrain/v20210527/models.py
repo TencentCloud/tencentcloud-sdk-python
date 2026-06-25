@@ -5383,6 +5383,285 @@ class DescribeAuditLogFilesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBAuditLogTopSqlsRequest(AbstractModel):
+    r"""DescribeDBAuditLogTopSqls请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>开始时间，如“2019-09-10 12:13:14”。</p>
+        :type StartTime: str
+        :param _EndTime: <p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
+        :type EndTime: str
+        :param _Product: <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，默认为&quot;mysql&quot;。</p>
+        :type Product: str
+        :param _InstanceId: <p>实例 ID 。</p>
+        :type InstanceId: str
+        :param _OrderBy: <p>排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。</p>
+        :type OrderBy: str
+        :param _OrderByDirection: <p>排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。</p>
+        :type OrderByDirection: str
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量，默认为0。</p>
+        :type Offset: int
+        :param _TableName: <p>表名</p>
+        :type TableName: str
+        :param _Hosts: <p>Hosts名</p>
+        :type Hosts: list of str
+        :param _SqlCodes: <p>sql codes</p>
+        :type SqlCodes: list of str
+        :param _SqlSample: <p>sql语句</p>
+        :type SqlSample: str
+        :param _Users: <p>用户名列表</p>
+        :type Users: list of str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+        self._InstanceId = None
+        self._OrderBy = None
+        self._OrderByDirection = None
+        self._Limit = None
+        self._Offset = None
+        self._TableName = None
+        self._Hosts = None
+        self._SqlCodes = None
+        self._SqlSample = None
+        self._Users = None
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，如“2019-09-10 12:13:14”。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，默认为&quot;mysql&quot;。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID 。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByDirection(self):
+        r"""<p>排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。</p>
+        :rtype: str
+        """
+        return self._OrderByDirection
+
+    @OrderByDirection.setter
+    def OrderByDirection(self, OrderByDirection):
+        self._OrderByDirection = OrderByDirection
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认为20，最大值为100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def TableName(self):
+        r"""<p>表名</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Hosts(self):
+        r"""<p>Hosts名</p>
+        :rtype: list of str
+        """
+        return self._Hosts
+
+    @Hosts.setter
+    def Hosts(self, Hosts):
+        self._Hosts = Hosts
+
+    @property
+    def SqlCodes(self):
+        r"""<p>sql codes</p>
+        :rtype: list of str
+        """
+        return self._SqlCodes
+
+    @SqlCodes.setter
+    def SqlCodes(self, SqlCodes):
+        self._SqlCodes = SqlCodes
+
+    @property
+    def SqlSample(self):
+        r"""<p>sql语句</p>
+        :rtype: str
+        """
+        return self._SqlSample
+
+    @SqlSample.setter
+    def SqlSample(self, SqlSample):
+        self._SqlSample = SqlSample
+
+    @property
+    def Users(self):
+        r"""<p>用户名列表</p>
+        :rtype: list of str
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByDirection = params.get("OrderByDirection")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._TableName = params.get("TableName")
+        self._Hosts = params.get("Hosts")
+        self._SqlCodes = params.get("SqlCodes")
+        self._SqlSample = params.get("SqlSample")
+        self._Users = params.get("Users")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBAuditLogTopSqlsResponse(AbstractModel):
+    r"""DescribeDBAuditLogTopSqls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的记录总数。</p>
+        :type TotalCount: int
+        :param _TopSqls: <p>top sql 列表</p>
+        :type TopSqls: list of TopSqlTpl
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TopSqls = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的记录总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TopSqls(self):
+        r"""<p>top sql 列表</p>
+        :rtype: list of TopSqlTpl
+        """
+        return self._TopSqls
+
+    @TopSqls.setter
+    def TopSqls(self, TopSqls):
+        self._TopSqls = TopSqls
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TopSqls") is not None:
+            self._TopSqls = []
+            for item in params.get("TopSqls"):
+                obj = TopSqlTpl()
+                obj._deserialize(item)
+                self._TopSqls.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBAutonomyActionRequest(AbstractModel):
     r"""DescribeDBAutonomyAction请求参数结构体
 
@@ -21965,6 +22244,589 @@ class TopHotKeys(AbstractModel):
         self._InstanceNodeId = params.get("InstanceNodeId")
         self._Key = params.get("Key")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopSqlTpl(AbstractModel):
+    r"""审计日志TopSql
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecTimes: <p>执行次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecTimes: int
+        :param _SqlTemplateId: <p>SQL模板Id，数据类型Long。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlTemplateId: str
+        :param _AffectRowsMin: <p>最小影响行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectRowsMin: int
+        :param _SqlTemplate: <p>sql模板</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlTemplate: str
+        :param _TableName: <p>表名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _AffectRowsMax: <p>最大影响行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectRowsMax: int
+        :param _SqlType: <p>sql类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlType: str
+        :param _AffectRows: <p>影响行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectRows: int
+        :param _DB: <p>DB名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DB: str
+        :param _LockWaitTimeMin: <p>最小锁等待时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockWaitTimeMin: float
+        :param _CpuTime: <p>cpu时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuTime: float
+        :param _IoWaitTimeMax: <p>最大io等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IoWaitTimeMax: float
+        :param _LockWaitTimeMax: <p>最大锁等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockWaitTimeMax: float
+        :param _CheckRowsMin: <p>最小检查行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckRowsMin: int
+        :param _CheckRows: <p>检查行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckRows: int
+        :param _CpuTimeMax: <p>最大cpu时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuTimeMax: float
+        :param _IoWaitTimeMin: <p>最小io等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IoWaitTimeMin: int
+        :param _LatencyMax: <p>最大执行时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatencyMax: float
+        :param _IoWaitTime: <p>io等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IoWaitTime: float
+        :param _CheckRowsMax: <p>最大检查行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckRowsMax: int
+        :param _CpuTimeMin: <p>最小cpu时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuTimeMin: float
+        :param _SqlText: <p>sql详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlText: str
+        :param _LockWaitTime: <p>锁等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockWaitTime: float
+        :param _LatencyMin: <p>最小执行时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatencyMin: float
+        :param _Latency: <p>执行时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Latency: float
+        :param _QueryTimeRatio: <p>queryTime 占比，单位%</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryTimeRatio: str
+        :param _CheckRowsAvg: <p>平均扫描行数</p>
+        :type CheckRowsAvg: int
+        :param _CpuTimeAvg: <p>平均cpu时间</p>
+        :type CpuTimeAvg: float
+        :param _IoWaitTimeAvg: <p>平均io等待时间</p>
+        :type IoWaitTimeAvg: float
+        :param _LatencyAvg: <p>平均执行时间</p>
+        :type LatencyAvg: float
+        :param _LockWaitTimeAvg: <p>平均锁等待时长</p>
+        :type LockWaitTimeAvg: float
+        :param _SentRows: <p>发送行数</p>
+        :type SentRows: int
+        :param _SentRowsAvg: <p>平均发送行数</p>
+        :type SentRowsAvg: int
+        :param _AffectRowsAvg: <p>平均影响行数</p>
+        :type AffectRowsAvg: int
+        """
+        self._ExecTimes = None
+        self._SqlTemplateId = None
+        self._AffectRowsMin = None
+        self._SqlTemplate = None
+        self._TableName = None
+        self._AffectRowsMax = None
+        self._SqlType = None
+        self._AffectRows = None
+        self._DB = None
+        self._LockWaitTimeMin = None
+        self._CpuTime = None
+        self._IoWaitTimeMax = None
+        self._LockWaitTimeMax = None
+        self._CheckRowsMin = None
+        self._CheckRows = None
+        self._CpuTimeMax = None
+        self._IoWaitTimeMin = None
+        self._LatencyMax = None
+        self._IoWaitTime = None
+        self._CheckRowsMax = None
+        self._CpuTimeMin = None
+        self._SqlText = None
+        self._LockWaitTime = None
+        self._LatencyMin = None
+        self._Latency = None
+        self._QueryTimeRatio = None
+        self._CheckRowsAvg = None
+        self._CpuTimeAvg = None
+        self._IoWaitTimeAvg = None
+        self._LatencyAvg = None
+        self._LockWaitTimeAvg = None
+        self._SentRows = None
+        self._SentRowsAvg = None
+        self._AffectRowsAvg = None
+
+    @property
+    def ExecTimes(self):
+        r"""<p>执行次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecTimes
+
+    @ExecTimes.setter
+    def ExecTimes(self, ExecTimes):
+        self._ExecTimes = ExecTimes
+
+    @property
+    def SqlTemplateId(self):
+        r"""<p>SQL模板Id，数据类型Long。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlTemplateId
+
+    @SqlTemplateId.setter
+    def SqlTemplateId(self, SqlTemplateId):
+        self._SqlTemplateId = SqlTemplateId
+
+    @property
+    def AffectRowsMin(self):
+        r"""<p>最小影响行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AffectRowsMin
+
+    @AffectRowsMin.setter
+    def AffectRowsMin(self, AffectRowsMin):
+        self._AffectRowsMin = AffectRowsMin
+
+    @property
+    def SqlTemplate(self):
+        r"""<p>sql模板</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlTemplate
+
+    @SqlTemplate.setter
+    def SqlTemplate(self, SqlTemplate):
+        self._SqlTemplate = SqlTemplate
+
+    @property
+    def TableName(self):
+        r"""<p>表名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def AffectRowsMax(self):
+        r"""<p>最大影响行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AffectRowsMax
+
+    @AffectRowsMax.setter
+    def AffectRowsMax(self, AffectRowsMax):
+        self._AffectRowsMax = AffectRowsMax
+
+    @property
+    def SqlType(self):
+        r"""<p>sql类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def AffectRows(self):
+        r"""<p>影响行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def DB(self):
+        r"""<p>DB名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def LockWaitTimeMin(self):
+        r"""<p>最小锁等待时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._LockWaitTimeMin
+
+    @LockWaitTimeMin.setter
+    def LockWaitTimeMin(self, LockWaitTimeMin):
+        self._LockWaitTimeMin = LockWaitTimeMin
+
+    @property
+    def CpuTime(self):
+        r"""<p>cpu时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._CpuTime
+
+    @CpuTime.setter
+    def CpuTime(self, CpuTime):
+        self._CpuTime = CpuTime
+
+    @property
+    def IoWaitTimeMax(self):
+        r"""<p>最大io等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._IoWaitTimeMax
+
+    @IoWaitTimeMax.setter
+    def IoWaitTimeMax(self, IoWaitTimeMax):
+        self._IoWaitTimeMax = IoWaitTimeMax
+
+    @property
+    def LockWaitTimeMax(self):
+        r"""<p>最大锁等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._LockWaitTimeMax
+
+    @LockWaitTimeMax.setter
+    def LockWaitTimeMax(self, LockWaitTimeMax):
+        self._LockWaitTimeMax = LockWaitTimeMax
+
+    @property
+    def CheckRowsMin(self):
+        r"""<p>最小检查行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CheckRowsMin
+
+    @CheckRowsMin.setter
+    def CheckRowsMin(self, CheckRowsMin):
+        self._CheckRowsMin = CheckRowsMin
+
+    @property
+    def CheckRows(self):
+        r"""<p>检查行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CheckRows
+
+    @CheckRows.setter
+    def CheckRows(self, CheckRows):
+        self._CheckRows = CheckRows
+
+    @property
+    def CpuTimeMax(self):
+        r"""<p>最大cpu时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._CpuTimeMax
+
+    @CpuTimeMax.setter
+    def CpuTimeMax(self, CpuTimeMax):
+        self._CpuTimeMax = CpuTimeMax
+
+    @property
+    def IoWaitTimeMin(self):
+        r"""<p>最小io等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IoWaitTimeMin
+
+    @IoWaitTimeMin.setter
+    def IoWaitTimeMin(self, IoWaitTimeMin):
+        self._IoWaitTimeMin = IoWaitTimeMin
+
+    @property
+    def LatencyMax(self):
+        r"""<p>最大执行时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._LatencyMax
+
+    @LatencyMax.setter
+    def LatencyMax(self, LatencyMax):
+        self._LatencyMax = LatencyMax
+
+    @property
+    def IoWaitTime(self):
+        r"""<p>io等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._IoWaitTime
+
+    @IoWaitTime.setter
+    def IoWaitTime(self, IoWaitTime):
+        self._IoWaitTime = IoWaitTime
+
+    @property
+    def CheckRowsMax(self):
+        r"""<p>最大检查行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CheckRowsMax
+
+    @CheckRowsMax.setter
+    def CheckRowsMax(self, CheckRowsMax):
+        self._CheckRowsMax = CheckRowsMax
+
+    @property
+    def CpuTimeMin(self):
+        r"""<p>最小cpu时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._CpuTimeMin
+
+    @CpuTimeMin.setter
+    def CpuTimeMin(self, CpuTimeMin):
+        self._CpuTimeMin = CpuTimeMin
+
+    @property
+    def SqlText(self):
+        r"""<p>sql详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def LockWaitTime(self):
+        r"""<p>锁等待时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._LockWaitTime
+
+    @LockWaitTime.setter
+    def LockWaitTime(self, LockWaitTime):
+        self._LockWaitTime = LockWaitTime
+
+    @property
+    def LatencyMin(self):
+        r"""<p>最小执行时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._LatencyMin
+
+    @LatencyMin.setter
+    def LatencyMin(self, LatencyMin):
+        self._LatencyMin = LatencyMin
+
+    @property
+    def Latency(self):
+        r"""<p>执行时间，单位秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Latency
+
+    @Latency.setter
+    def Latency(self, Latency):
+        self._Latency = Latency
+
+    @property
+    def QueryTimeRatio(self):
+        r"""<p>queryTime 占比，单位%</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueryTimeRatio
+
+    @QueryTimeRatio.setter
+    def QueryTimeRatio(self, QueryTimeRatio):
+        self._QueryTimeRatio = QueryTimeRatio
+
+    @property
+    def CheckRowsAvg(self):
+        r"""<p>平均扫描行数</p>
+        :rtype: int
+        """
+        return self._CheckRowsAvg
+
+    @CheckRowsAvg.setter
+    def CheckRowsAvg(self, CheckRowsAvg):
+        self._CheckRowsAvg = CheckRowsAvg
+
+    @property
+    def CpuTimeAvg(self):
+        r"""<p>平均cpu时间</p>
+        :rtype: float
+        """
+        return self._CpuTimeAvg
+
+    @CpuTimeAvg.setter
+    def CpuTimeAvg(self, CpuTimeAvg):
+        self._CpuTimeAvg = CpuTimeAvg
+
+    @property
+    def IoWaitTimeAvg(self):
+        r"""<p>平均io等待时间</p>
+        :rtype: float
+        """
+        return self._IoWaitTimeAvg
+
+    @IoWaitTimeAvg.setter
+    def IoWaitTimeAvg(self, IoWaitTimeAvg):
+        self._IoWaitTimeAvg = IoWaitTimeAvg
+
+    @property
+    def LatencyAvg(self):
+        r"""<p>平均执行时间</p>
+        :rtype: float
+        """
+        return self._LatencyAvg
+
+    @LatencyAvg.setter
+    def LatencyAvg(self, LatencyAvg):
+        self._LatencyAvg = LatencyAvg
+
+    @property
+    def LockWaitTimeAvg(self):
+        r"""<p>平均锁等待时长</p>
+        :rtype: float
+        """
+        return self._LockWaitTimeAvg
+
+    @LockWaitTimeAvg.setter
+    def LockWaitTimeAvg(self, LockWaitTimeAvg):
+        self._LockWaitTimeAvg = LockWaitTimeAvg
+
+    @property
+    def SentRows(self):
+        r"""<p>发送行数</p>
+        :rtype: int
+        """
+        return self._SentRows
+
+    @SentRows.setter
+    def SentRows(self, SentRows):
+        self._SentRows = SentRows
+
+    @property
+    def SentRowsAvg(self):
+        r"""<p>平均发送行数</p>
+        :rtype: int
+        """
+        return self._SentRowsAvg
+
+    @SentRowsAvg.setter
+    def SentRowsAvg(self, SentRowsAvg):
+        self._SentRowsAvg = SentRowsAvg
+
+    @property
+    def AffectRowsAvg(self):
+        r"""<p>平均影响行数</p>
+        :rtype: int
+        """
+        return self._AffectRowsAvg
+
+    @AffectRowsAvg.setter
+    def AffectRowsAvg(self, AffectRowsAvg):
+        self._AffectRowsAvg = AffectRowsAvg
+
+
+    def _deserialize(self, params):
+        self._ExecTimes = params.get("ExecTimes")
+        self._SqlTemplateId = params.get("SqlTemplateId")
+        self._AffectRowsMin = params.get("AffectRowsMin")
+        self._SqlTemplate = params.get("SqlTemplate")
+        self._TableName = params.get("TableName")
+        self._AffectRowsMax = params.get("AffectRowsMax")
+        self._SqlType = params.get("SqlType")
+        self._AffectRows = params.get("AffectRows")
+        self._DB = params.get("DB")
+        self._LockWaitTimeMin = params.get("LockWaitTimeMin")
+        self._CpuTime = params.get("CpuTime")
+        self._IoWaitTimeMax = params.get("IoWaitTimeMax")
+        self._LockWaitTimeMax = params.get("LockWaitTimeMax")
+        self._CheckRowsMin = params.get("CheckRowsMin")
+        self._CheckRows = params.get("CheckRows")
+        self._CpuTimeMax = params.get("CpuTimeMax")
+        self._IoWaitTimeMin = params.get("IoWaitTimeMin")
+        self._LatencyMax = params.get("LatencyMax")
+        self._IoWaitTime = params.get("IoWaitTime")
+        self._CheckRowsMax = params.get("CheckRowsMax")
+        self._CpuTimeMin = params.get("CpuTimeMin")
+        self._SqlText = params.get("SqlText")
+        self._LockWaitTime = params.get("LockWaitTime")
+        self._LatencyMin = params.get("LatencyMin")
+        self._Latency = params.get("Latency")
+        self._QueryTimeRatio = params.get("QueryTimeRatio")
+        self._CheckRowsAvg = params.get("CheckRowsAvg")
+        self._CpuTimeAvg = params.get("CpuTimeAvg")
+        self._IoWaitTimeAvg = params.get("IoWaitTimeAvg")
+        self._LatencyAvg = params.get("LatencyAvg")
+        self._LockWaitTimeAvg = params.get("LockWaitTimeAvg")
+        self._SentRows = params.get("SentRows")
+        self._SentRowsAvg = params.get("SentRowsAvg")
+        self._AffectRowsAvg = params.get("AffectRowsAvg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

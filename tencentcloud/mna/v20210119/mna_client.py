@@ -601,6 +601,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetGatewayList(self, request):
+        r"""支持网关列表查询。包含网关名称、创建时间和网关状态（正常/异常）。支持基于网关名称的查询。默认按照创建时间倒序排列。
+
+        :param request: Request instance for GetGatewayList.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetGatewayListRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetGatewayListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetGatewayList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetGatewayListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetGroupDetail(self, request):
         r"""查看分组详细信息
 

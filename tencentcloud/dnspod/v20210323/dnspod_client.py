@@ -904,6 +904,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDomainLogFilterFile(self, request):
+        r"""获取域名操作日志导出文件下载地址
+
+        :param request: Request instance for DescribeDomainLogFilterFile.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainLogFilterFileRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainLogFilterFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainLogFilterFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainLogFilterFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDomainLogList(self, request):
         r"""获取域名日志
 

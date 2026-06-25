@@ -2746,6 +2746,102 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         
 
 
+class GatewayInfo(AbstractModel):
+    r"""网关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关ID</p>
+        :type GatewayId: str
+        :param _GatewayName: <p>网关名称</p>
+        :type GatewayName: str
+        :param _CreateTime: <p>创建时间，单位：秒</p>
+        :type CreateTime: int
+        :param _Status: <p>网关状态。0：正常，1：异常</p>
+        :type Status: int
+        :param _InstanceSize: <p>网关实例数</p>
+        :type InstanceSize: int
+        """
+        self._GatewayId = None
+        self._GatewayName = None
+        self._CreateTime = None
+        self._Status = None
+        self._InstanceSize = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayName(self):
+        r"""<p>网关名称</p>
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，单位：秒</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        r"""<p>网关状态。0：正常，1：异常</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceSize(self):
+        r"""<p>网关实例数</p>
+        :rtype: int
+        """
+        return self._InstanceSize
+
+    @InstanceSize.setter
+    def InstanceSize(self, InstanceSize):
+        self._InstanceSize = InstanceSize
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayName = params.get("GatewayName")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._InstanceSize = params.get("InstanceSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetActiveDeviceCountRequest(AbstractModel):
     r"""GetActiveDeviceCount请求参数结构体
 
@@ -4738,6 +4834,135 @@ class GetFlowStatisticResponse(AbstractModel):
         self._MaxValue = params.get("MaxValue")
         self._AvgValue = params.get("AvgValue")
         self._TotalValue = params.get("TotalValue")
+        self._RequestId = params.get("RequestId")
+
+
+class GetGatewayListRequest(AbstractModel):
+    r"""GetGatewayList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页码，从1开始
+        :type PageNumber: int
+        :param _PageSize: 每页个数
+        :type PageSize: int
+        :param _GatewayName: 网关名称
+        :type GatewayName: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._GatewayName = None
+
+    @property
+    def PageNumber(self):
+        r"""页码，从1开始
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页个数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def GatewayName(self):
+        r"""网关名称
+        :rtype: str
+        """
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._GatewayName = params.get("GatewayName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetGatewayListResponse(AbstractModel):
+    r"""GetGatewayList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayList: 网关列表
+        :type GatewayList: list of GatewayInfo
+        :param _Total: 总个数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GatewayList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def GatewayList(self):
+        r"""网关列表
+        :rtype: list of GatewayInfo
+        """
+        return self._GatewayList
+
+    @GatewayList.setter
+    def GatewayList(self, GatewayList):
+        self._GatewayList = GatewayList
+
+    @property
+    def Total(self):
+        r"""总个数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GatewayList") is not None:
+            self._GatewayList = []
+            for item in params.get("GatewayList"):
+                obj = GatewayInfo()
+                obj._deserialize(item)
+                self._GatewayList.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 

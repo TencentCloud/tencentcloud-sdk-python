@@ -884,6 +884,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEnvPlans(
+            self,
+            request: models.DescribeEnvPlansRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEnvPlansResponse:
+        """
+        获取可售卖的新套餐列表，含详情，如果传了PackageId，则只获取指定套餐详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEnvPlans"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEnvPlansResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEnvs(
             self,
             request: models.DescribeEnvsRequest,

@@ -1688,54 +1688,54 @@ class CloneInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定待克隆的源实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :param _InstanceId: <p>指定待克隆的源实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _GoodsNum: 单次克隆实例的数量。
-- 包年包月每次购买最大数量为100。
-- 按量计费每次购买最大数量为30。
+        :param _GoodsNum: <p>单次克隆实例的数量。</p><ul><li>包年包月每次购买最大数量为100。</li><li>按量计费每次购买最大数量为30。</li></ul>
         :type GoodsNum: int
-        :param _ZoneId: 克隆实例所属的可用区ID。当前所支持的可用区 ID，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106) 。
+        :param _ZoneId: <p>克隆实例所属的可用区ID。当前所支持的可用区 ID，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a> 。</p>
         :type ZoneId: int
-        :param _BillingMode: 付费方式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+        :param _BillingMode: <p>付费方式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
         :type BillingMode: int
-        :param _Period: 购买实例时长。<ul><li>单位：月。</li><li>付费方式选择包年包月计费时，取值范围为[1,2,3,4,5,6,7,8,9,10,11,12,24,36,48,60]。</li><li>付费方式选择按量计费时，设置为1。</li></ul>
+        :param _Period: <p>购买实例时长。<ul><li>单位：月。</li><li>付费方式选择包年包月计费时，取值范围为[1,2,3,4,5,6,7,8,9,10,11,12,24,36,48,60]。</li><li>付费方式选择按量计费时，设置为1。</li></ul></p>
         :type Period: int
-        :param _SecurityGroupIdList: 安全组ID。请通过 [DescribeInstanceSecurityGroup](https://cloud.tencent.com/document/product/239/34447) 接口获取实例的安全组 ID。
+        :param _SecurityGroupIdList: <p>安全组ID。请通过 <a href="https://cloud.tencent.com/document/product/239/34447">DescribeInstanceSecurityGroup</a> 接口获取实例的安全组 ID。</p>
         :type SecurityGroupIdList: list of str
-        :param _BackupId: 克隆实例使用的备份ID。请通过接口[DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011)获取备份ID。
+        :param _BackupId: <p>克隆实例使用的备份ID。请通过接口<a href="https://cloud.tencent.com/document/product/239/20011">DescribeInstanceBackups</a>获取备份ID。</p>
         :type BackupId: str
-        :param _NoAuth: 配置克隆实例是否支持免密访问。开启 SSL 与外网均不支持免密访问。<ul><li>true：免密实例，</li><li>false：非免密实例。默认为非免密实例。</li></ul>
+        :param _NoAuth: <p>配置克隆实例是否支持免密访问。开启 SSL 与外网均不支持免密访问。<ul><li>true：免密实例，</li><li>false：非免密实例。默认为非免密实例。</li></ul></p>
         :type NoAuth: bool
-        :param _VpcId: 配置克隆实例的私有网络ID。如果未配置该参数，默认选择基础网络。
+        :param _VpcId: <p>配置克隆实例的私有网络ID。如果未配置该参数，默认选择基础网络。</p>
         :type VpcId: str
-        :param _SubnetId: 配置克隆实例所属私有网络的子网。基础网络时该参数无需配置。
+        :param _SubnetId: <p>配置克隆实例所属私有网络的子网。基础网络时该参数无需配置。</p>
         :type SubnetId: str
-        :param _InstanceName: 克隆实例的名称。<br>仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。</br>
+        :param _InstanceName: <p>克隆实例的名称。<br>仅支持长度小于60的中文、英文或者数字，短划线&quot;-&quot;、下划线&quot;_&quot;。<br></p>
         :type InstanceName: str
-        :param _Password: 克隆实例的访问密码。<ul><li>当输入参数<b>NoAuth</b>为<b>true</b>时，可不设置该参数。</li><li>当实例为Redis2.8、4.0和5.0时，其密码格式为：8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头；</li><li>当实例为CKV 3.2时，其密码格式为：8-30个字符，必须包含字母和数字，且不包含其他字符。</li></ul>
+        :param _Password: <p>克隆实例的访问密码。<ul><li>当输入参数<b>NoAuth</b>为<b>true</b>时，可不设置该参数。</li><li>当实例为Redis2.8、4.0和5.0时，其密码格式为：8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种，不能以&quot;/&quot;开头；</li><li>当实例为CKV 3.2时，其密码格式为：8-30个字符，必须包含字母和数字，且不包含其他字符。</li></ul></p>
         :type Password: str
-        :param _AutoRenew: 自动续费标识。<ul><li>0：默认状态，手动续费。</li><li>1：自动续费。</li><li>2：不自动续费，到期自动隔离。</li></ul>
+        :param _AutoRenew: <p>自动续费标识。<ul><li>0：默认状态，手动续费。</li><li>1：自动续费。</li><li>2：不自动续费，到期自动隔离。</li></ul></p>
         :type AutoRenew: int
-        :param _VPort: 用户自定义的端口，默认为6379，取值范围[1024,65535]。
+        :param _VPort: <p>用户自定义的端口，默认为6379，取值范围[1024,65535]。</p>
         :type VPort: int
-        :param _NodeSet: 实例的节点信息。<ul><li>目前支持配置节点的类型（主节点或者副本节点），及其节点的可用区信息。具体信息，请参见[RedisNodeInfo](https://cloud.tencent.com/document/product/239/20022#RedisNodeInfo)。</li><li>单可用区部署可不配置该参数。</li></ul>
+        :param _NodeSet: <p>实例的节点信息。<ul><li>目前支持配置节点的类型（主节点或者副本节点），及其节点的可用区信息。具体信息，请参见<a href="https://cloud.tencent.com/document/product/239/20022#RedisNodeInfo">RedisNodeInfo</a>。</li><li>单可用区部署可不配置该参数。</li></ul></p>
         :type NodeSet: list of RedisNodeInfo
-        :param _ProjectId: 项目 ID。登录[Redis 控制台](https://console.cloud.tencent.com/redis#/)，可在右上角的<b>账号中心</b> > <b>项目管理</b>中查找项目ID。
+        :param _ProjectId: <p>项目 ID。登录<a href="https://console.cloud.tencent.com/redis#/">Redis 控制台</a>，可在右上角的<b>账号中心</b> &gt; <b>项目管理</b>中查找项目ID。</p>
         :type ProjectId: int
-        :param _ResourceTags: 克隆实例需绑定的标签。
+        :param _ResourceTags: <p>克隆实例需绑定的标签。</p>
         :type ResourceTags: list of ResourceTag
-        :param _TemplateId: 指定克隆实例相关的参数模板 ID。
-- 若不配置该参数，则系统会依据所选择的兼容版本及架构，自动适配对应的默认模板。
-- 请通过[DescribeParamTemplates](https://cloud.tencent.com/document/product/239/58750)接口，查询实例的参数模板列表，获取模板 ID 编号。
+        :param _TemplateId: <p>指定克隆实例相关的参数模板 ID。</p><ul><li>若不配置该参数，则系统会依据所选择的兼容版本及架构，自动适配对应的默认模板。</li><li>请通过<a href="https://cloud.tencent.com/document/product/239/58750">DescribeParamTemplates</a>接口，查询实例的参数模板列表，获取模板 ID 编号。</li></ul>
         :type TemplateId: str
-        :param _AlarmPolicyList: 指定克隆实例的告警策略 ID。请登录[腾讯云可观测平台控制台](https://console.cloud.tencent.com/monitor/alarm2/policy)，在 <b>告警管理</b> > <b>策略管理</b>页面获取策略 ID 信息。
+        :param _AlarmPolicyList: <p>指定克隆实例的告警策略 ID。请登录<a href="https://console.cloud.tencent.com/monitor/alarm2/policy">腾讯云可观测平台控制台</a>，在 <b>告警管理</b> &gt; <b>策略管理</b>页面获取策略 ID 信息。</p>
         :type AlarmPolicyList: list of str
-        :param _CloneTime: 克隆指定恢复数据的时间。
-仅支持已开通秒级备份的实例
-
+        :param _CloneTime: <p>克隆指定恢复数据的时间。<br>仅支持已开通秒级备份的实例</p>
         :type CloneTime: str
-        :param _EncryptPassword: 是否加密密码
+        :param _EncryptPassword: <p>是否加密密码</p>
         :type EncryptPassword: bool
+        :param _PasswordPolicy: <p>实例密码复杂度策略</p><p>入参限制：未传或 Enabled=false 视为不启用，按默认规则校验</p>
+        :type PasswordPolicy: :class:`tencentcloud.redis.v20180412.models.PasswordPolicy`
+        :param _EnableSSL: <p>是否开启 SSL 加密传输。</p><p>枚举值：</p><ul><li>true： 开启。</li><li>false： 关闭（默认值）。</li></ul><p>默认值：false</p>
+        :type EnableSSL: bool
+        :param _SSLBindPrivateIPv4: <p>开启 SSL 时，是否将实例的内网 IPv4 地址写入证书的域名别名（SAN）中。仅在 EnableSSL 为 true 时生效。</p><p>枚举值：</p><ul><li>true： 允许使用内网 IP 进行 SSL 证书校验。</li><li>false： 不添加证书的 SAN 扩展信息。</li></ul><p>默认值：false</p>
+        :type SSLBindPrivateIPv4: bool
         """
         self._InstanceId = None
         self._GoodsNum = None
@@ -1758,10 +1758,13 @@ class CloneInstancesRequest(AbstractModel):
         self._AlarmPolicyList = None
         self._CloneTime = None
         self._EncryptPassword = None
+        self._PasswordPolicy = None
+        self._EnableSSL = None
+        self._SSLBindPrivateIPv4 = None
 
     @property
     def InstanceId(self):
-        r"""指定待克隆的源实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        r"""<p>指定待克隆的源实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1772,9 +1775,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""单次克隆实例的数量。
-- 包年包月每次购买最大数量为100。
-- 按量计费每次购买最大数量为30。
+        r"""<p>单次克隆实例的数量。</p><ul><li>包年包月每次购买最大数量为100。</li><li>按量计费每次购买最大数量为30。</li></ul>
         :rtype: int
         """
         return self._GoodsNum
@@ -1785,7 +1786,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""克隆实例所属的可用区ID。当前所支持的可用区 ID，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106) 。
+        r"""<p>克隆实例所属的可用区ID。当前所支持的可用区 ID，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a> 。</p>
         :rtype: int
         """
         return self._ZoneId
@@ -1796,7 +1797,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def BillingMode(self):
-        r"""付费方式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+        r"""<p>付费方式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
         :rtype: int
         """
         return self._BillingMode
@@ -1807,7 +1808,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""购买实例时长。<ul><li>单位：月。</li><li>付费方式选择包年包月计费时，取值范围为[1,2,3,4,5,6,7,8,9,10,11,12,24,36,48,60]。</li><li>付费方式选择按量计费时，设置为1。</li></ul>
+        r"""<p>购买实例时长。<ul><li>单位：月。</li><li>付费方式选择包年包月计费时，取值范围为[1,2,3,4,5,6,7,8,9,10,11,12,24,36,48,60]。</li><li>付费方式选择按量计费时，设置为1。</li></ul></p>
         :rtype: int
         """
         return self._Period
@@ -1818,7 +1819,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupIdList(self):
-        r"""安全组ID。请通过 [DescribeInstanceSecurityGroup](https://cloud.tencent.com/document/product/239/34447) 接口获取实例的安全组 ID。
+        r"""<p>安全组ID。请通过 <a href="https://cloud.tencent.com/document/product/239/34447">DescribeInstanceSecurityGroup</a> 接口获取实例的安全组 ID。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIdList
@@ -1829,7 +1830,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""克隆实例使用的备份ID。请通过接口[DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011)获取备份ID。
+        r"""<p>克隆实例使用的备份ID。请通过接口<a href="https://cloud.tencent.com/document/product/239/20011">DescribeInstanceBackups</a>获取备份ID。</p>
         :rtype: str
         """
         return self._BackupId
@@ -1840,7 +1841,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def NoAuth(self):
-        r"""配置克隆实例是否支持免密访问。开启 SSL 与外网均不支持免密访问。<ul><li>true：免密实例，</li><li>false：非免密实例。默认为非免密实例。</li></ul>
+        r"""<p>配置克隆实例是否支持免密访问。开启 SSL 与外网均不支持免密访问。<ul><li>true：免密实例，</li><li>false：非免密实例。默认为非免密实例。</li></ul></p>
         :rtype: bool
         """
         return self._NoAuth
@@ -1851,7 +1852,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""配置克隆实例的私有网络ID。如果未配置该参数，默认选择基础网络。
+        r"""<p>配置克隆实例的私有网络ID。如果未配置该参数，默认选择基础网络。</p>
         :rtype: str
         """
         return self._VpcId
@@ -1862,7 +1863,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""配置克隆实例所属私有网络的子网。基础网络时该参数无需配置。
+        r"""<p>配置克隆实例所属私有网络的子网。基础网络时该参数无需配置。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -1873,7 +1874,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""克隆实例的名称。<br>仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。</br>
+        r"""<p>克隆实例的名称。<br>仅支持长度小于60的中文、英文或者数字，短划线&quot;-&quot;、下划线&quot;_&quot;。<br></p>
         :rtype: str
         """
         return self._InstanceName
@@ -1884,7 +1885,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""克隆实例的访问密码。<ul><li>当输入参数<b>NoAuth</b>为<b>true</b>时，可不设置该参数。</li><li>当实例为Redis2.8、4.0和5.0时，其密码格式为：8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头；</li><li>当实例为CKV 3.2时，其密码格式为：8-30个字符，必须包含字母和数字，且不包含其他字符。</li></ul>
+        r"""<p>克隆实例的访问密码。<ul><li>当输入参数<b>NoAuth</b>为<b>true</b>时，可不设置该参数。</li><li>当实例为Redis2.8、4.0和5.0时，其密码格式为：8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种，不能以&quot;/&quot;开头；</li><li>当实例为CKV 3.2时，其密码格式为：8-30个字符，必须包含字母和数字，且不包含其他字符。</li></ul></p>
         :rtype: str
         """
         return self._Password
@@ -1895,7 +1896,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        r"""自动续费标识。<ul><li>0：默认状态，手动续费。</li><li>1：自动续费。</li><li>2：不自动续费，到期自动隔离。</li></ul>
+        r"""<p>自动续费标识。<ul><li>0：默认状态，手动续费。</li><li>1：自动续费。</li><li>2：不自动续费，到期自动隔离。</li></ul></p>
         :rtype: int
         """
         return self._AutoRenew
@@ -1906,7 +1907,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def VPort(self):
-        r"""用户自定义的端口，默认为6379，取值范围[1024,65535]。
+        r"""<p>用户自定义的端口，默认为6379，取值范围[1024,65535]。</p>
         :rtype: int
         """
         return self._VPort
@@ -1917,7 +1918,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def NodeSet(self):
-        r"""实例的节点信息。<ul><li>目前支持配置节点的类型（主节点或者副本节点），及其节点的可用区信息。具体信息，请参见[RedisNodeInfo](https://cloud.tencent.com/document/product/239/20022#RedisNodeInfo)。</li><li>单可用区部署可不配置该参数。</li></ul>
+        r"""<p>实例的节点信息。<ul><li>目前支持配置节点的类型（主节点或者副本节点），及其节点的可用区信息。具体信息，请参见<a href="https://cloud.tencent.com/document/product/239/20022#RedisNodeInfo">RedisNodeInfo</a>。</li><li>单可用区部署可不配置该参数。</li></ul></p>
         :rtype: list of RedisNodeInfo
         """
         return self._NodeSet
@@ -1928,7 +1929,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目 ID。登录[Redis 控制台](https://console.cloud.tencent.com/redis#/)，可在右上角的<b>账号中心</b> > <b>项目管理</b>中查找项目ID。
+        r"""<p>项目 ID。登录<a href="https://console.cloud.tencent.com/redis#/">Redis 控制台</a>，可在右上角的<b>账号中心</b> &gt; <b>项目管理</b>中查找项目ID。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -1939,7 +1940,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""克隆实例需绑定的标签。
+        r"""<p>克隆实例需绑定的标签。</p>
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -1950,9 +1951,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""指定克隆实例相关的参数模板 ID。
-- 若不配置该参数，则系统会依据所选择的兼容版本及架构，自动适配对应的默认模板。
-- 请通过[DescribeParamTemplates](https://cloud.tencent.com/document/product/239/58750)接口，查询实例的参数模板列表，获取模板 ID 编号。
+        r"""<p>指定克隆实例相关的参数模板 ID。</p><ul><li>若不配置该参数，则系统会依据所选择的兼容版本及架构，自动适配对应的默认模板。</li><li>请通过<a href="https://cloud.tencent.com/document/product/239/58750">DescribeParamTemplates</a>接口，查询实例的参数模板列表，获取模板 ID 编号。</li></ul>
         :rtype: str
         """
         return self._TemplateId
@@ -1963,7 +1962,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def AlarmPolicyList(self):
-        r"""指定克隆实例的告警策略 ID。请登录[腾讯云可观测平台控制台](https://console.cloud.tencent.com/monitor/alarm2/policy)，在 <b>告警管理</b> > <b>策略管理</b>页面获取策略 ID 信息。
+        r"""<p>指定克隆实例的告警策略 ID。请登录<a href="https://console.cloud.tencent.com/monitor/alarm2/policy">腾讯云可观测平台控制台</a>，在 <b>告警管理</b> &gt; <b>策略管理</b>页面获取策略 ID 信息。</p>
         :rtype: list of str
         """
         return self._AlarmPolicyList
@@ -1974,9 +1973,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def CloneTime(self):
-        r"""克隆指定恢复数据的时间。
-仅支持已开通秒级备份的实例
-
+        r"""<p>克隆指定恢复数据的时间。<br>仅支持已开通秒级备份的实例</p>
         :rtype: str
         """
         return self._CloneTime
@@ -1987,7 +1984,7 @@ class CloneInstancesRequest(AbstractModel):
 
     @property
     def EncryptPassword(self):
-        r"""是否加密密码
+        r"""<p>是否加密密码</p>
         :rtype: bool
         """
         return self._EncryptPassword
@@ -1995,6 +1992,39 @@ class CloneInstancesRequest(AbstractModel):
     @EncryptPassword.setter
     def EncryptPassword(self, EncryptPassword):
         self._EncryptPassword = EncryptPassword
+
+    @property
+    def PasswordPolicy(self):
+        r"""<p>实例密码复杂度策略</p><p>入参限制：未传或 Enabled=false 视为不启用，按默认规则校验</p>
+        :rtype: :class:`tencentcloud.redis.v20180412.models.PasswordPolicy`
+        """
+        return self._PasswordPolicy
+
+    @PasswordPolicy.setter
+    def PasswordPolicy(self, PasswordPolicy):
+        self._PasswordPolicy = PasswordPolicy
+
+    @property
+    def EnableSSL(self):
+        r"""<p>是否开启 SSL 加密传输。</p><p>枚举值：</p><ul><li>true： 开启。</li><li>false： 关闭（默认值）。</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableSSL
+
+    @EnableSSL.setter
+    def EnableSSL(self, EnableSSL):
+        self._EnableSSL = EnableSSL
+
+    @property
+    def SSLBindPrivateIPv4(self):
+        r"""<p>开启 SSL 时，是否将实例的内网 IPv4 地址写入证书的域名别名（SAN）中。仅在 EnableSSL 为 true 时生效。</p><p>枚举值：</p><ul><li>true： 允许使用内网 IP 进行 SSL 证书校验。</li><li>false： 不添加证书的 SAN 扩展信息。</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._SSLBindPrivateIPv4
+
+    @SSLBindPrivateIPv4.setter
+    def SSLBindPrivateIPv4(self, SSLBindPrivateIPv4):
+        self._SSLBindPrivateIPv4 = SSLBindPrivateIPv4
 
 
     def _deserialize(self, params):
@@ -2029,6 +2059,11 @@ class CloneInstancesRequest(AbstractModel):
         self._AlarmPolicyList = params.get("AlarmPolicyList")
         self._CloneTime = params.get("CloneTime")
         self._EncryptPassword = params.get("EncryptPassword")
+        if params.get("PasswordPolicy") is not None:
+            self._PasswordPolicy = PasswordPolicy()
+            self._PasswordPolicy._deserialize(params.get("PasswordPolicy"))
+        self._EnableSSL = params.get("EnableSSL")
+        self._SSLBindPrivateIPv4 = params.get("SSLBindPrivateIPv4")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2046,11 +2081,11 @@ class CloneInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealId: 交易的ID。
+        :param _DealId: <p>交易的ID。</p>
         :type DealId: str
-        :param _InstanceIds: 克隆实例的 ID。
+        :param _InstanceIds: <p>克隆实例的 ID。</p>
         :type InstanceIds: list of str
-        :param _DealName: 订单号。
+        :param _DealName: <p>订单号。</p>
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2064,7 +2099,7 @@ class CloneInstancesResponse(AbstractModel):
     def DealId(self):
         warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
 
-        r"""交易的ID。
+        r"""<p>交易的ID。</p>
         :rtype: str
         """
         return self._DealId
@@ -2077,7 +2112,7 @@ class CloneInstancesResponse(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""克隆实例的 ID。
+        r"""<p>克隆实例的 ID。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2088,7 +2123,7 @@ class CloneInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号。
+        r"""<p>订单号。</p>
         :rtype: str
         """
         return self._DealName
@@ -11025,14 +11060,14 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        :param _InstanceId: <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis/instance/list">Redis 控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        r"""<p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis/instance/list">Redis 控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -11061,22 +11096,20 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertDownloadUrl: SSL 证书下载地址。
+        :param _CertDownloadUrl: <p>SSL 证书下载地址。</p>
         :type CertDownloadUrl: str
-        :param _UrlExpiredTime: 证书下载链接到期时间。
+        :param _UrlExpiredTime: <p>证书下载链接到期时间。</p>
         :type UrlExpiredTime: str
-        :param _SSLConfig: 标识实例开启 SSL 功能。
-- true：开启 。
-- false：关闭。
+        :param _SSLConfig: <p>标识实例开启 SSL 功能。</p><ul><li>true：开启 。</li><li>false：关闭。</li></ul>
         :type SSLConfig: bool
-        :param _FeatureSupport: 标识实例是否支持 SSL特性。
-- true：支持。
-- false：不支持。
+        :param _FeatureSupport: <p>标识实例是否支持 SSL特性。</p><ul><li>true：支持。</li><li>false：不支持。</li></ul>
         :type FeatureSupport: bool
-        :param _Status: 说明配置 SSL 的状态。
-- 1: 配置中。
-- 2：配置成功。
+        :param _Status: <p>说明配置 SSL 的状态。</p><ul><li>1: 配置中。</li><li>2：配置成功。</li></ul>
         :type Status: int
+        :param _AddressType: <p>地址类型</p><p>枚举值：</p><ul><li>0： 不限</li><li>1： 内网IPv4</li><li>2： 内网IPv6</li><li>3： 外网</li><li>-1： 未指定</li></ul>
+        :type AddressType: int
+        :param _EncryptAddress: <p>当前加密连接地址</p>
+        :type EncryptAddress: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11085,11 +11118,13 @@ class DescribeSSLStatusResponse(AbstractModel):
         self._SSLConfig = None
         self._FeatureSupport = None
         self._Status = None
+        self._AddressType = None
+        self._EncryptAddress = None
         self._RequestId = None
 
     @property
     def CertDownloadUrl(self):
-        r"""SSL 证书下载地址。
+        r"""<p>SSL 证书下载地址。</p>
         :rtype: str
         """
         return self._CertDownloadUrl
@@ -11100,7 +11135,7 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     @property
     def UrlExpiredTime(self):
-        r"""证书下载链接到期时间。
+        r"""<p>证书下载链接到期时间。</p>
         :rtype: str
         """
         return self._UrlExpiredTime
@@ -11111,9 +11146,7 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     @property
     def SSLConfig(self):
-        r"""标识实例开启 SSL 功能。
-- true：开启 。
-- false：关闭。
+        r"""<p>标识实例开启 SSL 功能。</p><ul><li>true：开启 。</li><li>false：关闭。</li></ul>
         :rtype: bool
         """
         return self._SSLConfig
@@ -11124,9 +11157,7 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     @property
     def FeatureSupport(self):
-        r"""标识实例是否支持 SSL特性。
-- true：支持。
-- false：不支持。
+        r"""<p>标识实例是否支持 SSL特性。</p><ul><li>true：支持。</li><li>false：不支持。</li></ul>
         :rtype: bool
         """
         return self._FeatureSupport
@@ -11137,9 +11168,7 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""说明配置 SSL 的状态。
-- 1: 配置中。
-- 2：配置成功。
+        r"""<p>说明配置 SSL 的状态。</p><ul><li>1: 配置中。</li><li>2：配置成功。</li></ul>
         :rtype: int
         """
         return self._Status
@@ -11147,6 +11176,28 @@ class DescribeSSLStatusResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def AddressType(self):
+        r"""<p>地址类型</p><p>枚举值：</p><ul><li>0： 不限</li><li>1： 内网IPv4</li><li>2： 内网IPv6</li><li>3： 外网</li><li>-1： 未指定</li></ul>
+        :rtype: int
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+    @property
+    def EncryptAddress(self):
+        r"""<p>当前加密连接地址</p>
+        :rtype: str
+        """
+        return self._EncryptAddress
+
+    @EncryptAddress.setter
+    def EncryptAddress(self, EncryptAddress):
+        self._EncryptAddress = EncryptAddress
 
     @property
     def RequestId(self):
@@ -11166,6 +11217,8 @@ class DescribeSSLStatusResponse(AbstractModel):
         self._SSLConfig = params.get("SSLConfig")
         self._FeatureSupport = params.get("FeatureSupport")
         self._Status = params.get("Status")
+        self._AddressType = params.get("AddressType")
+        self._EncryptAddress = params.get("EncryptAddress")
         self._RequestId = params.get("RequestId")
 
 
@@ -20911,14 +20964,17 @@ class OpenSSLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        :param _InstanceId: <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
+        :param _AddressType: <p>SSL地址类型。</p><p>枚举值：</p><ul><li>0： 不限。</li><li>1： 内网IPv4。</li><li>2： 内网IPv6。</li><li>3： 外网。</li><li>-1： 未指定。</li></ul><p>默认值：0</p>
+        :type AddressType: int
         """
         self._InstanceId = None
+        self._AddressType = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        r"""<p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -20927,9 +20983,21 @@ class OpenSSLRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def AddressType(self):
+        r"""<p>SSL地址类型。</p><p>枚举值：</p><ul><li>0： 不限。</li><li>1： 内网IPv4。</li><li>2： 内网IPv6。</li><li>3： 外网。</li><li>-1： 未指定。</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._AddressType = params.get("AddressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20947,7 +21015,7 @@ class OpenSSLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID。
+        :param _TaskId: <p>任务ID。</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20957,7 +21025,7 @@ class OpenSSLResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID。
+        r"""<p>任务ID。</p>
         :rtype: int
         """
         return self._TaskId
@@ -21375,6 +21443,102 @@ class ParameterDetail(AbstractModel):
         self._Max = params.get("Max")
         self._Min = params.get("Min")
         self._EnumValue = params.get("EnumValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PasswordPolicy(AbstractModel):
+    r"""Redis实例级密码复杂度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用实例级密码复杂度策略。</p><ul><li>true：开启。所有密码变动（创建/重置）必须通过下方定义的复杂度校验。</li><li>false：关闭。不进行复杂度过滤。</li></ul><p>默认值：false</p>
+        :type Enabled: bool
+        :param _MinLetterCount: <p>大小写字母最小字符数。</p><ul><li>取值范围：[1,16]。</li><li>默认值：1。</li></ul>
+        :type MinLetterCount: int
+        :param _MinDigitCount: <p>数字字符的最小字符数。</p><ul><li>取值范围：[1,16]。</li><li>默认值：1。</li></ul>
+        :type MinDigitCount: int
+        :param _MinSpecialCount: <p>特殊字符最小字符数。</p><ul><li>取值范围：[1,16]。</li><li>默认值：1。</li></ul>
+        :type MinSpecialCount: int
+        :param _MinLength: <p>密码的最小总长度（字符数）。</p><ul><li>取值范围：[8, 64]。</li><li>默认值：8。</li><li>约束限制：密码的最小总长度必须大于或等于 MinLetterCount 、MinDigitCount 与 MinSpecialCount 三个参数之和。</li></ul>
+        :type MinLength: int
+        """
+        self._Enabled = None
+        self._MinLetterCount = None
+        self._MinDigitCount = None
+        self._MinSpecialCount = None
+        self._MinLength = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用实例级密码复杂度策略。</p><ul><li>true：开启。所有密码变动（创建/重置）必须通过下方定义的复杂度校验。</li><li>false：关闭。不进行复杂度过滤。</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def MinLetterCount(self):
+        r"""<p>大小写字母最小字符数。</p><ul><li>取值范围：[1,16]。</li><li>默认值：1。</li></ul>
+        :rtype: int
+        """
+        return self._MinLetterCount
+
+    @MinLetterCount.setter
+    def MinLetterCount(self, MinLetterCount):
+        self._MinLetterCount = MinLetterCount
+
+    @property
+    def MinDigitCount(self):
+        r"""<p>数字字符的最小字符数。</p><ul><li>取值范围：[1,16]。</li><li>默认值：1。</li></ul>
+        :rtype: int
+        """
+        return self._MinDigitCount
+
+    @MinDigitCount.setter
+    def MinDigitCount(self, MinDigitCount):
+        self._MinDigitCount = MinDigitCount
+
+    @property
+    def MinSpecialCount(self):
+        r"""<p>特殊字符最小字符数。</p><ul><li>取值范围：[1,16]。</li><li>默认值：1。</li></ul>
+        :rtype: int
+        """
+        return self._MinSpecialCount
+
+    @MinSpecialCount.setter
+    def MinSpecialCount(self, MinSpecialCount):
+        self._MinSpecialCount = MinSpecialCount
+
+    @property
+    def MinLength(self):
+        r"""<p>密码的最小总长度（字符数）。</p><ul><li>取值范围：[8, 64]。</li><li>默认值：8。</li><li>约束限制：密码的最小总长度必须大于或等于 MinLetterCount 、MinDigitCount 与 MinSpecialCount 三个参数之和。</li></ul>
+        :rtype: int
+        """
+        return self._MinLength
+
+    @MinLength.setter
+    def MinLength(self, MinLength):
+        self._MinLength = MinLength
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._MinLetterCount = params.get("MinLetterCount")
+        self._MinDigitCount = params.get("MinDigitCount")
+        self._MinSpecialCount = params.get("MinSpecialCount")
+        self._MinLength = params.get("MinLength")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

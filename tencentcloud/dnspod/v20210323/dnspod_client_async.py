@@ -713,6 +713,24 @@ class DnspodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDomainLogFilterFile(
+            self,
+            request: models.DescribeDomainLogFilterFileRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDomainLogFilterFileResponse:
+        """
+        获取域名操作日志导出文件下载地址
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDomainLogFilterFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDomainLogFilterFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDomainLogList(
             self,
             request: models.DescribeDomainLogListRequest,

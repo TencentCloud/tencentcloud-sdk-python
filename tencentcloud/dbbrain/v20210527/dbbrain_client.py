@@ -670,6 +670,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBAuditLogTopSqls(self, request):
+        r"""按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
+
+        :param request: Request instance for DescribeDBAuditLogTopSqls.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAuditLogTopSqlsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAuditLogTopSqlsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBAuditLogTopSqls", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBAuditLogTopSqlsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBAutonomyAction(self, request):
         r"""自治中心-查询自治事件任务详情。
 

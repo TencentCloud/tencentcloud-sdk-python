@@ -8316,6 +8316,90 @@ class DescribeEnvLimitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEnvPlansRequest(AbstractModel):
+    r"""DescribeEnvPlans请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageId: <p>套餐英文标识，不指定则返回所有可售卖套餐</p><p>枚举值：</p><ul><li>baas_integration： 集成版</li><li>baas_personal： 个人版</li><li>baas_pf_standard： 标准版</li><li>baas_pf_enterprise： 企业版</li><li>baas_pf_enterprise_senior： 企业高级版</li></ul>
+        :type PackageId: str
+        """
+        self._PackageId = None
+
+    @property
+    def PackageId(self):
+        r"""<p>套餐英文标识，不指定则返回所有可售卖套餐</p><p>枚举值：</p><ul><li>baas_integration： 集成版</li><li>baas_personal： 个人版</li><li>baas_pf_standard： 标准版</li><li>baas_pf_enterprise： 企业版</li><li>baas_pf_enterprise_senior： 企业高级版</li></ul>
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+
+    def _deserialize(self, params):
+        self._PackageId = params.get("PackageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvPlansResponse(AbstractModel):
+    r"""DescribeEnvPlans返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanList: <p>云开发新套餐详情</p>
+        :type PlanList: list of PlanInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PlanList = None
+        self._RequestId = None
+
+    @property
+    def PlanList(self):
+        r"""<p>云开发新套餐详情</p>
+        :rtype: list of PlanInfo
+        """
+        return self._PlanList
+
+    @PlanList.setter
+    def PlanList(self, PlanList):
+        self._PlanList = PlanList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PlanList") is not None:
+            self._PlanList = []
+            for item in params.get("PlanList"):
+                obj = PlanInfo()
+                obj._deserialize(item)
+                self._PlanList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEnvsRequest(AbstractModel):
     r"""DescribeEnvs请求参数结构体
 
@@ -19154,6 +19238,117 @@ class PermissionInfo(AbstractModel):
         self._AclTag = params.get("AclTag")
         self._EnvId = params.get("EnvId")
         self._Rule = params.get("Rule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlanInfo(AbstractModel):
+    r"""套餐信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageId: <p>套餐标识</p>
+        :type PackageId: str
+        :param _PackageTitle: <p>套餐中文名称</p>
+        :type PackageTitle: str
+        :param _PackageDescription: <p>套餐描述</p>
+        :type PackageDescription: str
+        :param _UnitPrice: <p>单位原价</p>
+        :type UnitPrice: str
+        :param _PackageType: <p>套餐类型</p>
+        :type PackageType: str
+        :param _ResourceLimit: <p>json格式化用户资源限制</p>
+        :type ResourceLimit: str
+        """
+        self._PackageId = None
+        self._PackageTitle = None
+        self._PackageDescription = None
+        self._UnitPrice = None
+        self._PackageType = None
+        self._ResourceLimit = None
+
+    @property
+    def PackageId(self):
+        r"""<p>套餐标识</p>
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def PackageTitle(self):
+        r"""<p>套餐中文名称</p>
+        :rtype: str
+        """
+        return self._PackageTitle
+
+    @PackageTitle.setter
+    def PackageTitle(self, PackageTitle):
+        self._PackageTitle = PackageTitle
+
+    @property
+    def PackageDescription(self):
+        r"""<p>套餐描述</p>
+        :rtype: str
+        """
+        return self._PackageDescription
+
+    @PackageDescription.setter
+    def PackageDescription(self, PackageDescription):
+        self._PackageDescription = PackageDescription
+
+    @property
+    def UnitPrice(self):
+        r"""<p>单位原价</p>
+        :rtype: str
+        """
+        return self._UnitPrice
+
+    @UnitPrice.setter
+    def UnitPrice(self, UnitPrice):
+        self._UnitPrice = UnitPrice
+
+    @property
+    def PackageType(self):
+        r"""<p>套餐类型</p>
+        :rtype: str
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def ResourceLimit(self):
+        r"""<p>json格式化用户资源限制</p>
+        :rtype: str
+        """
+        return self._ResourceLimit
+
+    @ResourceLimit.setter
+    def ResourceLimit(self, ResourceLimit):
+        self._ResourceLimit = ResourceLimit
+
+
+    def _deserialize(self, params):
+        self._PackageId = params.get("PackageId")
+        self._PackageTitle = params.get("PackageTitle")
+        self._PackageDescription = params.get("PackageDescription")
+        self._UnitPrice = params.get("UnitPrice")
+        self._PackageType = params.get("PackageType")
+        self._ResourceLimit = params.get("ResourceLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

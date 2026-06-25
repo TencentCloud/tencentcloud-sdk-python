@@ -35114,59 +35114,36 @@ class FlowGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-该名称还将用于合同签署完成后的下载文件名。
+        :param _FlowName: <p>合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。<br>该名称还将用于合同签署完成后的下载文件名。</p>
         :type FlowName: str
-        :param _Approvers: 签署流程参与者信息，最大限制50方
-注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。
+        :param _Approvers: <p>签署流程参与者信息，最大限制50方<br>注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。</p>
         :type Approvers: list of ApproverInfo
-        :param _FileIds: 文件资源ID，通过多文件上传[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获得，为32位字符串。
-注：此字段定义为数组，但仅支持单个文件
+        :param _FileIds: <p>文件资源ID，通过多文件上传<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">UploadFiles</a>接口获得，为32位字符串。<br>注：此字段定义为数组，但仅支持单个文件</p>
         :type FileIds: list of str
-        :param _TemplateId: 合同模板ID，为32位字符串。
-建议开发者保存此模板ID，后续用此模板发起合同流程需要此参数。
-可登录腾讯电子签控制台，在 "模板"->"模板中心"->"列表展示设置"选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。
+        :param _TemplateId: <p>合同模板ID，为32位字符串。<br>建议开发者保存此模板ID，后续用此模板发起合同流程需要此参数。<br>可登录腾讯电子签控制台，在 &quot;模板&quot;-&gt;&quot;模板中心&quot;-&gt;&quot;列表展示设置&quot;选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。</p>
         :type TemplateId: str
-        :param _FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+        :param _FlowType: <p>签署流程的类型(如销售合同/入职合同等)，最大长度200个字符</p>
         :type FlowType: str
-        :param _FlowDescription: 签署流程描述,最大长度1000个字符
+        :param _FlowDescription: <p>签署流程描述,最大长度1000个字符</p>
         :type FlowDescription: str
-        :param _Deadline: 签署流程的签署截止时间。
-
-值为unix时间戳,精确到秒,不传默认为当前时间一年后
-示例值：1604912664
+        :param _Deadline: <p>签署流程的签署截止时间。</p><p>值为unix时间戳,精确到秒,不传默认为当前时间一年后<br>示例值：1604912664</p>
         :type Deadline: int
-        :param _CallbackUrl: 合同（流程）的回调地址
+        :param _CallbackUrl: <p>合同（流程）的回调地址</p>
         :type CallbackUrl: str
-        :param _UserData: 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。
-在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
-回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        :param _UserData: <p>调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。<br>在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。<br>回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。</p>
         :type UserData: str
-        :param _Unordered: 发送类型：
-true：无序签
-false：有序签
-注：默认为false（有序签），请和模板中的配置保持一致
-示例值：true
+        :param _Unordered: <p>发送类型：<br>true：无序签<br>false：有序签<br>注：默认为false（有序签），请和模板中的配置保持一致<br>示例值：true</p>
         :type Unordered: bool
-        :param _Components: 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
-<ul><li>单行文本控件</li>
-<li>多行文本控件</li>
-<li>勾选框控件</li>
-<li>数字控件</li>
-<li>图片控件</li>
-<li>动态表格等填写控件</li></ul>
+        :param _Components: <p>模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体</p><ul><li>单行文本控件</li><li>多行文本控件</li><li>勾选框控件</li><li>数字控件</li><li>图片控件</li><li>动态表格等填写控件</li></ul>
         :type Components: list of Component
-        :param _NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
-若设置为true，审核结果需通过接口 [CreateFlowSignReview](https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview) 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
-
-注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
-示例值：true
+        :param _NeedSignReview: <p>发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。<br>若设置为true，审核结果需通过接口 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview">CreateFlowSignReview</a> 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。</p><p>注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。<br>示例值：true</p>
         :type NeedSignReview: bool
-        :param _AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
-
+        :param _AutoSignScene: <p>个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN</p>
         :type AutoSignScene: str
-        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :param _FlowDisplayType: <p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:<img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p>
         :type FlowDisplayType: int
+        :param _CcInfos: <p>抄送人信息</p>
+        :type CcInfos: list of CcInfo
         """
         self._FlowName = None
         self._Approvers = None
@@ -35182,11 +35159,11 @@ false：有序签
         self._NeedSignReview = None
         self._AutoSignScene = None
         self._FlowDisplayType = None
+        self._CcInfos = None
 
     @property
     def FlowName(self):
-        r"""合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-该名称还将用于合同签署完成后的下载文件名。
+        r"""<p>合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。<br>该名称还将用于合同签署完成后的下载文件名。</p>
         :rtype: str
         """
         return self._FlowName
@@ -35197,8 +35174,7 @@ false：有序签
 
     @property
     def Approvers(self):
-        r"""签署流程参与者信息，最大限制50方
-注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。
+        r"""<p>签署流程参与者信息，最大限制50方<br>注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。</p>
         :rtype: list of ApproverInfo
         """
         return self._Approvers
@@ -35209,8 +35185,7 @@ false：有序签
 
     @property
     def FileIds(self):
-        r"""文件资源ID，通过多文件上传[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获得，为32位字符串。
-注：此字段定义为数组，但仅支持单个文件
+        r"""<p>文件资源ID，通过多文件上传<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">UploadFiles</a>接口获得，为32位字符串。<br>注：此字段定义为数组，但仅支持单个文件</p>
         :rtype: list of str
         """
         return self._FileIds
@@ -35221,9 +35196,7 @@ false：有序签
 
     @property
     def TemplateId(self):
-        r"""合同模板ID，为32位字符串。
-建议开发者保存此模板ID，后续用此模板发起合同流程需要此参数。
-可登录腾讯电子签控制台，在 "模板"->"模板中心"->"列表展示设置"选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。
+        r"""<p>合同模板ID，为32位字符串。<br>建议开发者保存此模板ID，后续用此模板发起合同流程需要此参数。<br>可登录腾讯电子签控制台，在 &quot;模板&quot;-&gt;&quot;模板中心&quot;-&gt;&quot;列表展示设置&quot;选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。</p>
         :rtype: str
         """
         return self._TemplateId
@@ -35234,7 +35207,7 @@ false：有序签
 
     @property
     def FlowType(self):
-        r"""签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+        r"""<p>签署流程的类型(如销售合同/入职合同等)，最大长度200个字符</p>
         :rtype: str
         """
         return self._FlowType
@@ -35245,7 +35218,7 @@ false：有序签
 
     @property
     def FlowDescription(self):
-        r"""签署流程描述,最大长度1000个字符
+        r"""<p>签署流程描述,最大长度1000个字符</p>
         :rtype: str
         """
         return self._FlowDescription
@@ -35256,10 +35229,7 @@ false：有序签
 
     @property
     def Deadline(self):
-        r"""签署流程的签署截止时间。
-
-值为unix时间戳,精确到秒,不传默认为当前时间一年后
-示例值：1604912664
+        r"""<p>签署流程的签署截止时间。</p><p>值为unix时间戳,精确到秒,不传默认为当前时间一年后<br>示例值：1604912664</p>
         :rtype: int
         """
         return self._Deadline
@@ -35272,7 +35242,7 @@ false：有序签
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        r"""合同（流程）的回调地址
+        r"""<p>合同（流程）的回调地址</p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -35285,9 +35255,7 @@ false：有序签
 
     @property
     def UserData(self):
-        r"""调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。
-在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
-回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        r"""<p>调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。<br>在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。<br>回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。</p>
         :rtype: str
         """
         return self._UserData
@@ -35298,11 +35266,7 @@ false：有序签
 
     @property
     def Unordered(self):
-        r"""发送类型：
-true：无序签
-false：有序签
-注：默认为false（有序签），请和模板中的配置保持一致
-示例值：true
+        r"""<p>发送类型：<br>true：无序签<br>false：有序签<br>注：默认为false（有序签），请和模板中的配置保持一致<br>示例值：true</p>
         :rtype: bool
         """
         return self._Unordered
@@ -35313,13 +35277,7 @@ false：有序签
 
     @property
     def Components(self):
-        r"""模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
-<ul><li>单行文本控件</li>
-<li>多行文本控件</li>
-<li>勾选框控件</li>
-<li>数字控件</li>
-<li>图片控件</li>
-<li>动态表格等填写控件</li></ul>
+        r"""<p>模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体</p><ul><li>单行文本控件</li><li>多行文本控件</li><li>勾选框控件</li><li>数字控件</li><li>图片控件</li><li>动态表格等填写控件</li></ul>
         :rtype: list of Component
         """
         return self._Components
@@ -35330,11 +35288,7 @@ false：有序签
 
     @property
     def NeedSignReview(self):
-        r"""发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
-若设置为true，审核结果需通过接口 [CreateFlowSignReview](https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview) 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
-
-注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
-示例值：true
+        r"""<p>发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。<br>若设置为true，审核结果需通过接口 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview">CreateFlowSignReview</a> 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。</p><p>注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。<br>示例值：true</p>
         :rtype: bool
         """
         return self._NeedSignReview
@@ -35345,8 +35299,7 @@ false：有序签
 
     @property
     def AutoSignScene(self):
-        r"""个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
-
+        r"""<p>个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN</p>
         :rtype: str
         """
         return self._AutoSignScene
@@ -35357,7 +35310,7 @@ false：有序签
 
     @property
     def FlowDisplayType(self):
-        r"""在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        r"""<p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:<img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p>
         :rtype: int
         """
         return self._FlowDisplayType
@@ -35365,6 +35318,17 @@ false：有序签
     @FlowDisplayType.setter
     def FlowDisplayType(self, FlowDisplayType):
         self._FlowDisplayType = FlowDisplayType
+
+    @property
+    def CcInfos(self):
+        r"""<p>抄送人信息</p>
+        :rtype: list of CcInfo
+        """
+        return self._CcInfos
+
+    @CcInfos.setter
+    def CcInfos(self, CcInfos):
+        self._CcInfos = CcInfos
 
 
     def _deserialize(self, params):
@@ -35392,6 +35356,12 @@ false：有序签
         self._NeedSignReview = params.get("NeedSignReview")
         self._AutoSignScene = params.get("AutoSignScene")
         self._FlowDisplayType = params.get("FlowDisplayType")
+        if params.get("CcInfos") is not None:
+            self._CcInfos = []
+            for item in params.get("CcInfos"):
+                obj = CcInfo()
+                obj._deserialize(item)
+                self._CcInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
