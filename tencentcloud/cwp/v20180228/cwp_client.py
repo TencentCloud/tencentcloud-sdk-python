@@ -49,6 +49,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddVulIgnoreRule(self, request):
+        r"""添加漏洞忽略规则
+
+        :param request: Request instance for AddVulIgnoreRule.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.AddVulIgnoreRuleRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.AddVulIgnoreRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddVulIgnoreRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddVulIgnoreRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChangeRuleEventsIgnoreStatus(self, request):
         r"""根据检测项id或事件id批量忽略事件或取消忽略
 

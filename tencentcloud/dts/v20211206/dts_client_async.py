@@ -462,6 +462,24 @@ class DtsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMigrateGtidCompareReport(
+            self,
+            request: models.DescribeMigrateGtidCompareReportRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMigrateGtidCompareReportResponse:
+        """
+        gtid校验
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMigrateGtidCompareReport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMigrateGtidCompareReportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMigrationCheckJob(
             self,
             request: models.DescribeMigrationCheckJobRequest,
@@ -679,6 +697,24 @@ class DtsClient(AbstractClient):
         kwargs["action"] = "DescribeSyncCompareTasks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSyncCompareTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSyncGtidCompareReport(
+            self,
+            request: models.DescribeSyncGtidCompareReportRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSyncGtidCompareReportResponse:
+        """
+        gtid校验
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSyncGtidCompareReport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSyncGtidCompareReportResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

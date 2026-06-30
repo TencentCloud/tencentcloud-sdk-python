@@ -71,9 +71,6 @@ FAILEDOPERATION_DBQUERYZONEERROR = 'FailedOperation.DBQueryZoneError'
 # 更新实例名称数据失败。
 FAILEDOPERATION_DBUPDATEINSTANCEERROR = 'FailedOperation.DBUpdateInstanceError'
 
-# 更新用户数据失败。
-FAILEDOPERATION_DBUPDATEUSERERROR = 'FailedOperation.DBUpdateUserError'
-
 # 更新维护窗口配置失败
 FAILEDOPERATION_DBUPSERTMAINTENANCEWINDOWERROR = 'FailedOperation.DBUpsertMaintenanceWindowError'
 
@@ -236,9 +233,6 @@ INVALIDPARAMETERVALUE_CHECKINSTANCEVERSIONERROR = 'InvalidParameterValue.CheckIn
 # 名称校验失败。
 INVALIDPARAMETERVALUE_CHECKNAMEERROR = 'InvalidParameterValue.CheckNameError'
 
-# 密码校验失败。
-INVALIDPARAMETERVALUE_CHECKPASSWDERROR = 'InvalidParameterValue.CheckPasswdError'
-
 # 实例规格校验错误。
 INVALIDPARAMETERVALUE_CHECKSPECERROR = 'InvalidParameterValue.CheckSpecError'
 
@@ -301,9 +295,6 @@ OPERATIONDENIED_MANUALBACKUPQUOTAPERDAYEXCEEDEDERR = 'OperationDenied.ManualBack
 
 # 备份数量已经超过配额，不能再创建备份。
 OPERATIONDENIED_MANUALBACKUPSETQUOTAEXCEEDEDERR = 'OperationDenied.ManualBackupSetQuotaExceededErr'
-
-# 重置超级用户密码失败。
-OPERATIONDENIED_RESETUSERPASSWORDERROR = 'OperationDenied.ResetUserPasswordError'
 
 # 实例资源找不到
 RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = 'ResourceNotFound.BizResourceNotFoundError'

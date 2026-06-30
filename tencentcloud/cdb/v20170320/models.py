@@ -76,21 +76,21 @@ class AccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Notes: 账号备注信息
+        :param _Notes: <p>账号备注信息</p>
         :type Notes: str
-        :param _Host: 账号的域名
+        :param _Host: <p>账号的域名</p>
         :type Host: str
-        :param _User: 账号的名称
+        :param _User: <p>账号的名称</p>
         :type User: str
-        :param _ModifyTime: 账号信息修改时间
+        :param _ModifyTime: <p>账号信息修改时间</p>
         :type ModifyTime: str
-        :param _ModifyPasswordTime: 修改密码的时间
+        :param _ModifyPasswordTime: <p>修改密码的时间</p>
         :type ModifyPasswordTime: str
-        :param _CreateTime: 该值已废弃
+        :param _CreateTime: <p>该值已废弃</p>
         :type CreateTime: str
-        :param _MaxUserConnections: 用户最大可用实例连接数
+        :param _MaxUserConnections: <p>用户最大可用实例连接数</p>
         :type MaxUserConnections: int
-        :param _OpenCam: 用户账号是否开启了密码轮转
+        :param _OpenCam: <p>用户账号是否开启了密码轮转</p>
         :type OpenCam: bool
         """
         self._Notes = None
@@ -104,7 +104,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def Notes(self):
-        r"""账号备注信息
+        r"""<p>账号备注信息</p>
         :rtype: str
         """
         return self._Notes
@@ -115,7 +115,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def Host(self):
-        r"""账号的域名
+        r"""<p>账号的域名</p>
         :rtype: str
         """
         return self._Host
@@ -126,7 +126,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def User(self):
-        r"""账号的名称
+        r"""<p>账号的名称</p>
         :rtype: str
         """
         return self._User
@@ -137,7 +137,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""账号信息修改时间
+        r"""<p>账号信息修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -148,7 +148,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def ModifyPasswordTime(self):
-        r"""修改密码的时间
+        r"""<p>修改密码的时间</p>
         :rtype: str
         """
         return self._ModifyPasswordTime
@@ -161,7 +161,7 @@ class AccountInfo(AbstractModel):
     def CreateTime(self):
         warnings.warn("parameter `CreateTime` is deprecated", DeprecationWarning) 
 
-        r"""该值已废弃
+        r"""<p>该值已废弃</p>
         :rtype: str
         """
         return self._CreateTime
@@ -174,7 +174,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def MaxUserConnections(self):
-        r"""用户最大可用实例连接数
+        r"""<p>用户最大可用实例连接数</p>
         :rtype: int
         """
         return self._MaxUserConnections
@@ -185,7 +185,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def OpenCam(self):
-        r"""用户账号是否开启了密码轮转
+        r"""<p>用户账号是否开启了密码轮转</p>
         :rtype: bool
         """
         return self._OpenCam

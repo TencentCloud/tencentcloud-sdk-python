@@ -1362,6 +1362,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNDRAssetIdentificationCursorList(self, request):
+        r"""DescribeNDRAssetIdentificationCursorList - 游标获取NDR资产识别结果列表
+
+        :param request: Request instance for DescribeNDRAssetIdentificationCursorList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNDRAssetIdentificationCursorListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNDRAssetIdentificationCursorListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNDRAssetIdentificationCursorList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNDRAssetIdentificationCursorListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNDRAssetIdentificationList(self, request):
         r"""DescribeNDRAssetIdentificationList - 获取NDR资产识别结果列表
 

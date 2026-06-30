@@ -561,6 +561,7 @@ class AgentModelConfig(AbstractModel):
         :param _InstructionsWordsLimit: <p>指令长度字符限制</p>
         :type InstructionsWordsLimit: int
         :param _ModelParameters: <p>模型参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ModelParameters: :class:`tencentcloud.adp.v20260520.models.ModelParams`
         """
         self._ModelId = None
@@ -616,6 +617,7 @@ class AgentModelConfig(AbstractModel):
     @property
     def ModelParameters(self):
         r"""<p>模型参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.ModelParams`
         """
         return self._ModelParameters
@@ -971,9 +973,24 @@ class AgentProfile(AbstractModel):
         :type Name: str
         :param _IconUrl: <p>图标URL</p>
         :type IconUrl: str
+        :param _Role: <p>Agent 角色：0=主 / 1=子</p>
+        :type Role: int
+        :param _Description: <p>Agent 描述</p>
+        :type Description: str
+        :param _AppName: <p>应用名称</p>
+        :type AppName: str
+        :param _Developer: <p>开发者</p>
+        :type Developer: str
+        :param _ParentAgentId: <p>主AgentId，只读，不可通过修改接口进行变更</p>
+        :type ParentAgentId: str
         """
         self._Name = None
         self._IconUrl = None
+        self._Role = None
+        self._Description = None
+        self._AppName = None
+        self._Developer = None
+        self._ParentAgentId = None
 
     @property
     def Name(self):
@@ -997,10 +1014,70 @@ class AgentProfile(AbstractModel):
     def IconUrl(self, IconUrl):
         self._IconUrl = IconUrl
 
+    @property
+    def Role(self):
+        r"""<p>Agent 角色：0=主 / 1=子</p>
+        :rtype: int
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Description(self):
+        r"""<p>Agent 描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AppName(self):
+        r"""<p>应用名称</p>
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def Developer(self):
+        r"""<p>开发者</p>
+        :rtype: str
+        """
+        return self._Developer
+
+    @Developer.setter
+    def Developer(self, Developer):
+        self._Developer = Developer
+
+    @property
+    def ParentAgentId(self):
+        r"""<p>主AgentId，只读，不可通过修改接口进行变更</p>
+        :rtype: str
+        """
+        return self._ParentAgentId
+
+    @ParentAgentId.setter
+    def ParentAgentId(self, ParentAgentId):
+        self._ParentAgentId = ParentAgentId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._IconUrl = params.get("IconUrl")
+        self._Role = params.get("Role")
+        self._Description = params.get("Description")
+        self._AppName = params.get("AppName")
+        self._Developer = params.get("Developer")
+        self._ParentAgentId = params.get("ParentAgentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2236,6 +2313,124 @@ class AgentUserInputValue(AbstractModel):
         
 
 
+class ApiKeyAuthConfig(AbstractModel):
+    r"""ApiKey鉴权配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyLocation: 密钥位置 HEADER/QUERY
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | Header鉴权 |
+| 1 | Query鉴权 |
+        :type KeyLocation: int
+        :param _KeyParamName: 密钥参数名
+        :type KeyParamName: str
+        :param _KeyParamValue: 密钥参数值
+        :type KeyParamValue: str
+        """
+        self._KeyLocation = None
+        self._KeyParamName = None
+        self._KeyParamValue = None
+
+    @property
+    def KeyLocation(self):
+        r"""密钥位置 HEADER/QUERY
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | Header鉴权 |
+| 1 | Query鉴权 |
+        :rtype: int
+        """
+        return self._KeyLocation
+
+    @KeyLocation.setter
+    def KeyLocation(self, KeyLocation):
+        self._KeyLocation = KeyLocation
+
+    @property
+    def KeyParamName(self):
+        r"""密钥参数名
+        :rtype: str
+        """
+        return self._KeyParamName
+
+    @KeyParamName.setter
+    def KeyParamName(self, KeyParamName):
+        self._KeyParamName = KeyParamName
+
+    @property
+    def KeyParamValue(self):
+        r"""密钥参数值
+        :rtype: str
+        """
+        return self._KeyParamValue
+
+    @KeyParamValue.setter
+    def KeyParamValue(self, KeyParamValue):
+        self._KeyParamValue = KeyParamValue
+
+
+    def _deserialize(self, params):
+        self._KeyLocation = params.get("KeyLocation")
+        self._KeyParamName = params.get("KeyParamName")
+        self._KeyParamValue = params.get("KeyParamValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiPluginConfig(AbstractModel):
+    r"""API插件配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthConfig: 授权配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthConfig: :class:`tencentcloud.adp.v20260520.models.AuthConfig`
+        """
+        self._AuthConfig = None
+
+    @property
+    def AuthConfig(self):
+        r"""授权配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AuthConfig`
+        """
+        return self._AuthConfig
+
+    @AuthConfig.setter
+    def AuthConfig(self, AuthConfig):
+        self._AuthConfig = AuthConfig
+
+
+    def _deserialize(self, params):
+        if params.get("AuthConfig") is not None:
+            self._AuthConfig = AuthConfig()
+            self._AuthConfig._deserialize(params.get("AuthConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiToolConfig(AbstractModel):
     r"""ApiToolConfig
 
@@ -2243,76 +2438,38 @@ class ApiToolConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExternalApiUrl: API插件支持对外调用的工具URL
-        :type ExternalApiUrl: str
-        :param _Method: 请求method
-        :type Method: str
-        :param _Url: 请求的url
-        :type Url: str
-        :param _Body: body参数
+        :param _Body: <p>请求体参数</p>
         :type Body: list of RequestParam
-        :param _Example: 示例
+        :param _Example: <p>示例</p>
         :type Example: :class:`tencentcloud.adp.v20260520.models.ToolExample`
-        :param _Header: Header信息
+        :param _ExternalApiUrl: <p>API插件外部调用地址</p>
+        :type ExternalApiUrl: str
+        :param _Header: <p>Header</p>
         :type Header: list of RequestParam
-        :param _Outputs: 输出参数
+        :param _Method: <p>请求方式</p>
+        :type Method: str
+        :param _Outputs: <p>输出</p>
         :type Outputs: list of ResponseParam
-        :param _Query: query参数
+        :param _Query: <p>查询参数</p>
         :type Query: list of RequestParam
-        :param _StreamMode: 流式模式
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 非流式 |
-| 1 | 流式 |
+        :param _StreamMode: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>STREAM_MODE_UNARY</td><td>0</td><td>非流式</td></tr><tr><td>STREAM_MODE_STREAMING</td><td>1</td><td>流式</td></tr></tbody></table>
         :type StreamMode: int
+        :param _Url: <p>地址</p>
+        :type Url: str
         """
-        self._ExternalApiUrl = None
-        self._Method = None
-        self._Url = None
         self._Body = None
         self._Example = None
+        self._ExternalApiUrl = None
         self._Header = None
+        self._Method = None
         self._Outputs = None
         self._Query = None
         self._StreamMode = None
-
-    @property
-    def ExternalApiUrl(self):
-        r"""API插件支持对外调用的工具URL
-        :rtype: str
-        """
-        return self._ExternalApiUrl
-
-    @ExternalApiUrl.setter
-    def ExternalApiUrl(self, ExternalApiUrl):
-        self._ExternalApiUrl = ExternalApiUrl
-
-    @property
-    def Method(self):
-        r"""请求method
-        :rtype: str
-        """
-        return self._Method
-
-    @Method.setter
-    def Method(self, Method):
-        self._Method = Method
-
-    @property
-    def Url(self):
-        r"""请求的url
-        :rtype: str
-        """
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
+        self._Url = None
 
     @property
     def Body(self):
-        r"""body参数
+        r"""<p>请求体参数</p>
         :rtype: list of RequestParam
         """
         return self._Body
@@ -2323,7 +2480,7 @@ class ApiToolConfig(AbstractModel):
 
     @property
     def Example(self):
-        r"""示例
+        r"""<p>示例</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.ToolExample`
         """
         return self._Example
@@ -2333,8 +2490,19 @@ class ApiToolConfig(AbstractModel):
         self._Example = Example
 
     @property
+    def ExternalApiUrl(self):
+        r"""<p>API插件外部调用地址</p>
+        :rtype: str
+        """
+        return self._ExternalApiUrl
+
+    @ExternalApiUrl.setter
+    def ExternalApiUrl(self, ExternalApiUrl):
+        self._ExternalApiUrl = ExternalApiUrl
+
+    @property
     def Header(self):
-        r"""Header信息
+        r"""<p>Header</p>
         :rtype: list of RequestParam
         """
         return self._Header
@@ -2344,8 +2512,19 @@ class ApiToolConfig(AbstractModel):
         self._Header = Header
 
     @property
+    def Method(self):
+        r"""<p>请求方式</p>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
     def Outputs(self):
-        r"""输出参数
+        r"""<p>输出</p>
         :rtype: list of ResponseParam
         """
         return self._Outputs
@@ -2356,7 +2535,7 @@ class ApiToolConfig(AbstractModel):
 
     @property
     def Query(self):
-        r"""query参数
+        r"""<p>查询参数</p>
         :rtype: list of RequestParam
         """
         return self._Query
@@ -2367,12 +2546,7 @@ class ApiToolConfig(AbstractModel):
 
     @property
     def StreamMode(self):
-        r"""流式模式
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 非流式 |
-| 1 | 流式 |
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>STREAM_MODE_UNARY</td><td>0</td><td>非流式</td></tr><tr><td>STREAM_MODE_STREAMING</td><td>1</td><td>流式</td></tr></tbody></table>
         :rtype: int
         """
         return self._StreamMode
@@ -2381,11 +2555,19 @@ class ApiToolConfig(AbstractModel):
     def StreamMode(self, StreamMode):
         self._StreamMode = StreamMode
 
+    @property
+    def Url(self):
+        r"""<p>地址</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
 
     def _deserialize(self, params):
-        self._ExternalApiUrl = params.get("ExternalApiUrl")
-        self._Method = params.get("Method")
-        self._Url = params.get("Url")
         if params.get("Body") is not None:
             self._Body = []
             for item in params.get("Body"):
@@ -2395,12 +2577,14 @@ class ApiToolConfig(AbstractModel):
         if params.get("Example") is not None:
             self._Example = ToolExample()
             self._Example._deserialize(params.get("Example"))
+        self._ExternalApiUrl = params.get("ExternalApiUrl")
         if params.get("Header") is not None:
             self._Header = []
             for item in params.get("Header"):
                 obj = RequestParam()
                 obj._deserialize(item)
                 self._Header.append(obj)
+        self._Method = params.get("Method")
         if params.get("Outputs") is not None:
             self._Outputs = []
             for item in params.get("Outputs"):
@@ -2414,6 +2598,7 @@ class ApiToolConfig(AbstractModel):
                 obj._deserialize(item)
                 self._Query.append(obj)
         self._StreamMode = params.get("StreamMode")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2449,8 +2634,8 @@ class App(AbstractModel):
         :param _Status: 状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: :class:`tencentcloud.adp.v20260520.models.AppStatusInfo`
-        :param _SharedKnowledgeList: 应用引用的共享知识库列表
-        :type SharedKnowledgeList: list of AppSharedKnowledgeInfo
+        :param _SharedKbList: 应用引用的共享知识库列表
+        :type SharedKbList: list of AppSharedKbInfo
         """
         self._AuxiliaryInfo = None
         self._Config = None
@@ -2458,7 +2643,7 @@ class App(AbstractModel):
         self._SecretInfo = None
         self._ShareUrlInfo = None
         self._Status = None
-        self._SharedKnowledgeList = None
+        self._SharedKbList = None
 
     @property
     def AuxiliaryInfo(self):
@@ -2533,15 +2718,15 @@ class App(AbstractModel):
         self._Status = Status
 
     @property
-    def SharedKnowledgeList(self):
+    def SharedKbList(self):
         r"""应用引用的共享知识库列表
-        :rtype: list of AppSharedKnowledgeInfo
+        :rtype: list of AppSharedKbInfo
         """
-        return self._SharedKnowledgeList
+        return self._SharedKbList
 
-    @SharedKnowledgeList.setter
-    def SharedKnowledgeList(self, SharedKnowledgeList):
-        self._SharedKnowledgeList = SharedKnowledgeList
+    @SharedKbList.setter
+    def SharedKbList(self, SharedKbList):
+        self._SharedKbList = SharedKbList
 
 
     def _deserialize(self, params):
@@ -2563,12 +2748,12 @@ class App(AbstractModel):
         if params.get("Status") is not None:
             self._Status = AppStatusInfo()
             self._Status._deserialize(params.get("Status"))
-        if params.get("SharedKnowledgeList") is not None:
-            self._SharedKnowledgeList = []
-            for item in params.get("SharedKnowledgeList"):
-                obj = AppSharedKnowledgeInfo()
+        if params.get("SharedKbList") is not None:
+            self._SharedKbList = []
+            for item in params.get("SharedKbList"):
+                obj = AppSharedKbInfo()
                 obj._deserialize(item)
-                self._SharedKnowledgeList.append(obj)
+                self._SharedKbList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2724,15 +2909,11 @@ class AppAuxiliaryInfo(AbstractModel):
         :param _SubStatus: 子状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubStatus: :class:`tencentcloud.adp.v20260520.models.AppSubStatusInfo`
-        :param _TemplatePublish: 模版中心同步信息(私有化独有)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TemplatePublish: :class:`tencentcloud.adp.v20260520.models.TemplatePublishInfo`
         """
         self._Appeal = None
         self._SearchResourceStatus = None
         self._SpecialStatusInfo = None
         self._SubStatus = None
-        self._TemplatePublish = None
 
     @property
     def Appeal(self):
@@ -2782,18 +2963,6 @@ class AppAuxiliaryInfo(AbstractModel):
     def SubStatus(self, SubStatus):
         self._SubStatus = SubStatus
 
-    @property
-    def TemplatePublish(self):
-        r"""模版中心同步信息(私有化独有)
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.adp.v20260520.models.TemplatePublishInfo`
-        """
-        return self._TemplatePublish
-
-    @TemplatePublish.setter
-    def TemplatePublish(self, TemplatePublish):
-        self._TemplatePublish = TemplatePublish
-
 
     def _deserialize(self, params):
         if params.get("Appeal") is not None:
@@ -2808,9 +2977,6 @@ class AppAuxiliaryInfo(AbstractModel):
         if params.get("SubStatus") is not None:
             self._SubStatus = AppSubStatusInfo()
             self._SubStatus._deserialize(params.get("SubStatus"))
-        if params.get("TemplatePublish") is not None:
-            self._TemplatePublish = TemplatePublishInfo()
-            self._TemplatePublish._deserialize(params.get("TemplatePublish"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3358,9 +3524,13 @@ class AppModeConfig(AbstractModel):
         :param _SingleWorkflowConfig: 单工作流配置(单工作流模式)
 注意：此字段可能返回 null，表示取不到有效值。
         :type SingleWorkflowConfig: :class:`tencentcloud.adp.v20260520.models.SingleWorkflowConfig`
+        :param _ClawAgentConfig: ClawAgent配置(ClawAgent模式)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClawAgentConfig: :class:`tencentcloud.adp.v20260520.models.ClawAgentConfig`
         """
         self._MultiAgentConfig = None
         self._SingleWorkflowConfig = None
+        self._ClawAgentConfig = None
 
     @property
     def MultiAgentConfig(self):
@@ -3386,6 +3556,18 @@ class AppModeConfig(AbstractModel):
     def SingleWorkflowConfig(self, SingleWorkflowConfig):
         self._SingleWorkflowConfig = SingleWorkflowConfig
 
+    @property
+    def ClawAgentConfig(self):
+        r"""ClawAgent配置(ClawAgent模式)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ClawAgentConfig`
+        """
+        return self._ClawAgentConfig
+
+    @ClawAgentConfig.setter
+    def ClawAgentConfig(self, ClawAgentConfig):
+        self._ClawAgentConfig = ClawAgentConfig
+
 
     def _deserialize(self, params):
         if params.get("MultiAgentConfig") is not None:
@@ -3394,6 +3576,9 @@ class AppModeConfig(AbstractModel):
         if params.get("SingleWorkflowConfig") is not None:
             self._SingleWorkflowConfig = SingleWorkflowConfig()
             self._SingleWorkflowConfig._deserialize(params.get("SingleWorkflowConfig"))
+        if params.get("ClawAgentConfig") is not None:
+            self._ClawAgentConfig = ClawAgentConfig()
+            self._ClawAgentConfig._deserialize(params.get("ClawAgentConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3669,6 +3854,42 @@ class AppOperation(AbstractModel):
         
 
 
+class AppPluginConfig(AbstractModel):
+    r"""应用插件配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 基于发布应用创建插件的应用ID
+        :type AppId: str
+        """
+        self._AppId = None
+
+    @property
+    def AppId(self):
+        r"""基于发布应用创建插件的应用ID
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppSecretInfo(AbstractModel):
     r"""应用密钥信息
 
@@ -3897,47 +4118,47 @@ class AppShareWhitelistItem(AbstractModel):
         
 
 
-class AppSharedKnowledgeInfo(AbstractModel):
+class AppSharedKbInfo(AbstractModel):
     r"""应用引用的共享知识库简要信息(查询时仅返回ID和名称)
 
     """
 
     def __init__(self):
         r"""
-        :param _KnowledgeId: 共享知识库ID
-        :type KnowledgeId: str
-        :param _KnowledgeName: 共享知识库名称
-        :type KnowledgeName: str
+        :param _KbId: 共享知识库ID
+        :type KbId: str
+        :param _KbName: 共享知识库名称
+        :type KbName: str
         """
-        self._KnowledgeId = None
-        self._KnowledgeName = None
+        self._KbId = None
+        self._KbName = None
 
     @property
-    def KnowledgeId(self):
+    def KbId(self):
         r"""共享知识库ID
         :rtype: str
         """
-        return self._KnowledgeId
+        return self._KbId
 
-    @KnowledgeId.setter
-    def KnowledgeId(self, KnowledgeId):
-        self._KnowledgeId = KnowledgeId
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
 
     @property
-    def KnowledgeName(self):
+    def KbName(self):
         r"""共享知识库名称
         :rtype: str
         """
-        return self._KnowledgeName
+        return self._KbName
 
-    @KnowledgeName.setter
-    def KnowledgeName(self, KnowledgeName):
-        self._KnowledgeName = KnowledgeName
+    @KbName.setter
+    def KbName(self, KbName):
+        self._KbName = KbName
 
 
     def _deserialize(self, params):
-        self._KnowledgeId = params.get("KnowledgeId")
-        self._KnowledgeName = params.get("KnowledgeName")
+        self._KbId = params.get("KbId")
+        self._KbName = params.get("KbName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4210,9 +4431,9 @@ class AppToolConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Inputs: 输入参数
+        :param _Inputs: <p>输入参数</p>
         :type Inputs: list of RequestParam
-        :param _Outputs: 输出参数
+        :param _Outputs: <p>输出参数</p>
         :type Outputs: list of ResponseParam
         """
         self._Inputs = None
@@ -4220,7 +4441,7 @@ class AppToolConfig(AbstractModel):
 
     @property
     def Inputs(self):
-        r"""输入参数
+        r"""<p>输入参数</p>
         :rtype: list of RequestParam
         """
         return self._Inputs
@@ -4231,7 +4452,7 @@ class AppToolConfig(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""输出参数
+        r"""<p>输出参数</p>
         :rtype: list of ResponseParam
         """
         return self._Outputs
@@ -4477,6 +4698,99 @@ class AppealingStatus(AbstractModel):
         
 
 
+class AuthConfig(AbstractModel):
+    r"""插件授权配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthType: <p>授权方式。</p><p>枚举值：</p><ul><li>0：无鉴权</li><li>1：API Key 鉴权</li><li>2：CAM 授权</li><li>3：OAuth 2.0 授权</li></ul>
+        :type AuthType: int
+        :param _ApiKeyAuthConfig: API Key授权配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiKeyAuthConfig: :class:`tencentcloud.adp.v20260520.models.ApiKeyAuthConfig`
+        :param _CamAuthConfig: CAM授权配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CamAuthConfig: :class:`tencentcloud.adp.v20260520.models.CamAuthConfig`
+        :param _OAuthConfig: OAuth2.0授权配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OAuthConfig: :class:`tencentcloud.adp.v20260520.models.OAuthConfig`
+        """
+        self._AuthType = None
+        self._ApiKeyAuthConfig = None
+        self._CamAuthConfig = None
+        self._OAuthConfig = None
+
+    @property
+    def AuthType(self):
+        r"""<p>授权方式。</p><p>枚举值：</p><ul><li>0：无鉴权</li><li>1：API Key 鉴权</li><li>2：CAM 授权</li><li>3：OAuth 2.0 授权</li></ul>
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def ApiKeyAuthConfig(self):
+        r"""API Key授权配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ApiKeyAuthConfig`
+        """
+        return self._ApiKeyAuthConfig
+
+    @ApiKeyAuthConfig.setter
+    def ApiKeyAuthConfig(self, ApiKeyAuthConfig):
+        self._ApiKeyAuthConfig = ApiKeyAuthConfig
+
+    @property
+    def CamAuthConfig(self):
+        r"""CAM授权配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CamAuthConfig`
+        """
+        return self._CamAuthConfig
+
+    @CamAuthConfig.setter
+    def CamAuthConfig(self, CamAuthConfig):
+        self._CamAuthConfig = CamAuthConfig
+
+    @property
+    def OAuthConfig(self):
+        r"""OAuth2.0授权配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.OAuthConfig`
+        """
+        return self._OAuthConfig
+
+    @OAuthConfig.setter
+    def OAuthConfig(self, OAuthConfig):
+        self._OAuthConfig = OAuthConfig
+
+
+    def _deserialize(self, params):
+        self._AuthType = params.get("AuthType")
+        if params.get("ApiKeyAuthConfig") is not None:
+            self._ApiKeyAuthConfig = ApiKeyAuthConfig()
+            self._ApiKeyAuthConfig._deserialize(params.get("ApiKeyAuthConfig"))
+        if params.get("CamAuthConfig") is not None:
+            self._CamAuthConfig = CamAuthConfig()
+            self._CamAuthConfig._deserialize(params.get("CamAuthConfig"))
+        if params.get("OAuthConfig") is not None:
+            self._OAuthConfig = OAuthConfig()
+            self._OAuthConfig._deserialize(params.get("OAuthConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackgroundImage(AbstractModel):
     r"""BackgroundImage 背景图片配置
 
@@ -4573,6 +4887,292 @@ class BackgroundImage(AbstractModel):
         
 
 
+class BasicBilling(AbstractModel):
+    r"""BasicBilling
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingUnit: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>UNKNOW</td><td>0</td><td></td></tr><tr><td>TOKEN</td><td>1</td><td>按token</td></tr><tr><td>PAGE_COUNT</td><td>2</td><td>按页数</td></tr><tr><td>TIMES</td><td>3</td><td>按次数</td></tr><tr><td>TIMES_THOUSAND</td><td>4</td><td>按千次数</td></tr><tr><td>SECOND</td><td>5</td><td>按时长</td></tr><tr><td>CHARACTER</td><td>6</td><td>按字符数</td></tr><tr><td>CHARACTER_THOUSAND</td><td>7</td><td>按千字符数</td></tr><tr><td>SHEET</td><td>8</td><td>按张</td></tr><tr><td>NUMBER</td><td>9</td><td>按个数</td></tr></tbody></table>
+        :type BillingUnit: int
+        :param _CashPrice: <p>现金价格</p><p>单位：元</p>
+        :type CashPrice: float
+        :param _PuPrice: <p>PU价格</p><p>单位：pu</p>
+        :type PuPrice: float
+        """
+        self._BillingUnit = None
+        self._CashPrice = None
+        self._PuPrice = None
+
+    @property
+    def BillingUnit(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>UNKNOW</td><td>0</td><td></td></tr><tr><td>TOKEN</td><td>1</td><td>按token</td></tr><tr><td>PAGE_COUNT</td><td>2</td><td>按页数</td></tr><tr><td>TIMES</td><td>3</td><td>按次数</td></tr><tr><td>TIMES_THOUSAND</td><td>4</td><td>按千次数</td></tr><tr><td>SECOND</td><td>5</td><td>按时长</td></tr><tr><td>CHARACTER</td><td>6</td><td>按字符数</td></tr><tr><td>CHARACTER_THOUSAND</td><td>7</td><td>按千字符数</td></tr><tr><td>SHEET</td><td>8</td><td>按张</td></tr><tr><td>NUMBER</td><td>9</td><td>按个数</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._BillingUnit
+
+    @BillingUnit.setter
+    def BillingUnit(self, BillingUnit):
+        self._BillingUnit = BillingUnit
+
+    @property
+    def CashPrice(self):
+        r"""<p>现金价格</p><p>单位：元</p>
+        :rtype: float
+        """
+        return self._CashPrice
+
+    @CashPrice.setter
+    def CashPrice(self, CashPrice):
+        self._CashPrice = CashPrice
+
+    @property
+    def PuPrice(self):
+        r"""<p>PU价格</p><p>单位：pu</p>
+        :rtype: float
+        """
+        return self._PuPrice
+
+    @PuPrice.setter
+    def PuPrice(self, PuPrice):
+        self._PuPrice = PuPrice
+
+
+    def _deserialize(self, params):
+        self._BillingUnit = params.get("BillingUnit")
+        self._CashPrice = params.get("CashPrice")
+        self._PuPrice = params.get("PuPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillingAttribute(AbstractModel):
+    r"""BillingAttribute
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>属性名称</p>
+        :type Name: str
+        :param _Value: <p>属性值</p>
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>属性名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>属性值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CamAuthConfig(AbstractModel):
+    r"""CAM授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 角色名称
+        :type RoleName: str
+        :param _KeyLocation: 密钥位置 HEADER/QUERY
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | 头鉴权 |
+| 1 | 请求信息鉴权 |
+        :type KeyLocation: int
+        :param _SecretIdName: SecretId字段名称
+        :type SecretIdName: str
+        :param _SecretKeyName: SecretKey字段名称
+        :type SecretKeyName: str
+        """
+        self._RoleName = None
+        self._KeyLocation = None
+        self._SecretIdName = None
+        self._SecretKeyName = None
+
+    @property
+    def RoleName(self):
+        r"""角色名称
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def KeyLocation(self):
+        r"""密钥位置 HEADER/QUERY
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | 头鉴权 |
+| 1 | 请求信息鉴权 |
+        :rtype: int
+        """
+        return self._KeyLocation
+
+    @KeyLocation.setter
+    def KeyLocation(self, KeyLocation):
+        self._KeyLocation = KeyLocation
+
+    @property
+    def SecretIdName(self):
+        r"""SecretId字段名称
+        :rtype: str
+        """
+        return self._SecretIdName
+
+    @SecretIdName.setter
+    def SecretIdName(self, SecretIdName):
+        self._SecretIdName = SecretIdName
+
+    @property
+    def SecretKeyName(self):
+        r"""SecretKey字段名称
+        :rtype: str
+        """
+        return self._SecretKeyName
+
+    @SecretKeyName.setter
+    def SecretKeyName(self, SecretKeyName):
+        self._SecretKeyName = SecretKeyName
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._KeyLocation = params.get("KeyLocation")
+        self._SecretIdName = params.get("SecretIdName")
+        self._SecretKeyName = params.get("SecretKeyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClawAgentConfig(AbstractModel):
+    r"""ClawAgent配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomConfig: 调用方自定义配置(控制C端用户在对话时可动态传入哪些自定义配置)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomConfig: :class:`tencentcloud.adp.v20260520.models.ClawAgentCustomConfig`
+        """
+        self._CustomConfig = None
+
+    @property
+    def CustomConfig(self):
+        r"""调用方自定义配置(控制C端用户在对话时可动态传入哪些自定义配置)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ClawAgentCustomConfig`
+        """
+        return self._CustomConfig
+
+    @CustomConfig.setter
+    def CustomConfig(self, CustomConfig):
+        self._CustomConfig = CustomConfig
+
+
+    def _deserialize(self, params):
+        if params.get("CustomConfig") is not None:
+            self._CustomConfig = ClawAgentCustomConfig()
+            self._CustomConfig._deserialize(params.get("CustomConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClawAgentCustomConfig(AbstractModel):
+    r"""ClawAgent调用方自定义配置开关集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否允许C端用户在对话时动态传入自定义Agent配置</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否允许C端用户在对话时动态传入自定义Agent配置</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CodeToolConfig(AbstractModel):
     r"""CodeToolConfig
 
@@ -4580,13 +5180,13 @@ class CodeToolConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: 代码
+        :param _Code: <p>代码</p>
         :type Code: str
-        :param _Example: 示例
+        :param _Example: <p>示例</p>
         :type Example: :class:`tencentcloud.adp.v20260520.models.ToolExample`
-        :param _Inputs: 输入参数
+        :param _Inputs: <p>输入参数</p>
         :type Inputs: list of RequestParam
-        :param _Outputs: 输出参数
+        :param _Outputs: <p>输出参数</p>
         :type Outputs: list of ResponseParam
         """
         self._Code = None
@@ -4596,7 +5196,7 @@ class CodeToolConfig(AbstractModel):
 
     @property
     def Code(self):
-        r"""代码
+        r"""<p>代码</p>
         :rtype: str
         """
         return self._Code
@@ -4607,7 +5207,7 @@ class CodeToolConfig(AbstractModel):
 
     @property
     def Example(self):
-        r"""示例
+        r"""<p>示例</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.ToolExample`
         """
         return self._Example
@@ -4618,7 +5218,7 @@ class CodeToolConfig(AbstractModel):
 
     @property
     def Inputs(self):
-        r"""输入参数
+        r"""<p>输入参数</p>
         :rtype: list of RequestParam
         """
         return self._Inputs
@@ -4629,7 +5229,7 @@ class CodeToolConfig(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""输出参数
+        r"""<p>输出参数</p>
         :rtype: list of ResponseParam
         """
         return self._Outputs
@@ -4666,6 +5266,133 @@ class CodeToolConfig(AbstractModel):
         
 
 
+class ComplexBilling(AbstractModel):
+    r"""ComplexBilling
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplexList: <p>复合计费列表</p>
+        :type ComplexList: list of ComplexBillingItem
+        """
+        self._ComplexList = None
+
+    @property
+    def ComplexList(self):
+        r"""<p>复合计费列表</p>
+        :rtype: list of ComplexBillingItem
+        """
+        return self._ComplexList
+
+    @ComplexList.setter
+    def ComplexList(self, ComplexList):
+        self._ComplexList = ComplexList
+
+
+    def _deserialize(self, params):
+        if params.get("ComplexList") is not None:
+            self._ComplexList = []
+            for item in params.get("ComplexList"):
+                obj = ComplexBillingItem()
+                obj._deserialize(item)
+                self._ComplexList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexBillingItem(AbstractModel):
+    r"""ComplexBillingItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingAttributeList: <p>复合计费维度信息</p>
+        :type BillingAttributeList: list of BillingAttribute
+        :param _BillingUnit: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>UNKNOW</td><td>0</td><td></td></tr><tr><td>TOKEN</td><td>1</td><td>按token</td></tr><tr><td>PAGE_COUNT</td><td>2</td><td>按页数</td></tr><tr><td>TIMES</td><td>3</td><td>按次数</td></tr><tr><td>TIMES_THOUSAND</td><td>4</td><td>按千次数</td></tr><tr><td>SECOND</td><td>5</td><td>按时长</td></tr><tr><td>CHARACTER</td><td>6</td><td>按字符数</td></tr><tr><td>CHARACTER_THOUSAND</td><td>7</td><td>按千字符数</td></tr><tr><td>SHEET</td><td>8</td><td>按张</td></tr><tr><td>NUMBER</td><td>9</td><td>按个数</td></tr></tbody></table>
+        :type BillingUnit: int
+        :param _CashPrice: <p>现金价格</p><p>单位：元</p>
+        :type CashPrice: float
+        :param _PuPrice: <p>pu价格</p><p>单位：pu</p>
+        :type PuPrice: float
+        """
+        self._BillingAttributeList = None
+        self._BillingUnit = None
+        self._CashPrice = None
+        self._PuPrice = None
+
+    @property
+    def BillingAttributeList(self):
+        r"""<p>复合计费维度信息</p>
+        :rtype: list of BillingAttribute
+        """
+        return self._BillingAttributeList
+
+    @BillingAttributeList.setter
+    def BillingAttributeList(self, BillingAttributeList):
+        self._BillingAttributeList = BillingAttributeList
+
+    @property
+    def BillingUnit(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>UNKNOW</td><td>0</td><td></td></tr><tr><td>TOKEN</td><td>1</td><td>按token</td></tr><tr><td>PAGE_COUNT</td><td>2</td><td>按页数</td></tr><tr><td>TIMES</td><td>3</td><td>按次数</td></tr><tr><td>TIMES_THOUSAND</td><td>4</td><td>按千次数</td></tr><tr><td>SECOND</td><td>5</td><td>按时长</td></tr><tr><td>CHARACTER</td><td>6</td><td>按字符数</td></tr><tr><td>CHARACTER_THOUSAND</td><td>7</td><td>按千字符数</td></tr><tr><td>SHEET</td><td>8</td><td>按张</td></tr><tr><td>NUMBER</td><td>9</td><td>按个数</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._BillingUnit
+
+    @BillingUnit.setter
+    def BillingUnit(self, BillingUnit):
+        self._BillingUnit = BillingUnit
+
+    @property
+    def CashPrice(self):
+        r"""<p>现金价格</p><p>单位：元</p>
+        :rtype: float
+        """
+        return self._CashPrice
+
+    @CashPrice.setter
+    def CashPrice(self, CashPrice):
+        self._CashPrice = CashPrice
+
+    @property
+    def PuPrice(self):
+        r"""<p>pu价格</p><p>单位：pu</p>
+        :rtype: float
+        """
+        return self._PuPrice
+
+    @PuPrice.setter
+    def PuPrice(self, PuPrice):
+        self._PuPrice = PuPrice
+
+
+    def _deserialize(self, params):
+        if params.get("BillingAttributeList") is not None:
+            self._BillingAttributeList = []
+            for item in params.get("BillingAttributeList"):
+                obj = BillingAttribute()
+                obj._deserialize(item)
+                self._BillingAttributeList.append(obj)
+        self._BillingUnit = params.get("BillingUnit")
+        self._CashPrice = params.get("CashPrice")
+        self._PuPrice = params.get("PuPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Conversation(AbstractModel):
     r"""Conversation 会话信息
 
@@ -4683,8 +5410,10 @@ class Conversation(AbstractModel):
         :type Type: int
         :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _Title: 会话标题
+        :param _Title: <p>会话标题</p>
         :type Title: str
+        :param _AgentId: <p>会话使用的用户端 AgentId</p>
+        :type AgentId: str
         """
         self._AppId = None
         self._ConversationId = None
@@ -4692,6 +5421,7 @@ class Conversation(AbstractModel):
         self._Type = None
         self._UpdateTime = None
         self._Title = None
+        self._AgentId = None
 
     @property
     def AppId(self):
@@ -4750,7 +5480,7 @@ class Conversation(AbstractModel):
 
     @property
     def Title(self):
-        r"""会话标题
+        r"""<p>会话标题</p>
         :rtype: str
         """
         return self._Title
@@ -4758,6 +5488,17 @@ class Conversation(AbstractModel):
     @Title.setter
     def Title(self, Title):
         self._Title = Title
+
+    @property
+    def AgentId(self):
+        r"""<p>会话使用的用户端 AgentId</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
 
 
     def _deserialize(self, params):
@@ -4767,6 +5508,7 @@ class Conversation(AbstractModel):
         self._Type = params.get("Type")
         self._UpdateTime = params.get("UpdateTime")
         self._Title = params.get("Title")
+        self._AgentId = params.get("AgentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5813,9 +6555,12 @@ class CreateAgentRequest(AbstractModel):
         :type AppId: str
         :param _Agent: <p>Agent 配置</p>
         :type Agent: :class:`tencentcloud.adp.v20260520.models.AgentSpec`
+        :param _Kind: <p>Agent 类型，区分 B 端配置态 Agent 与 C 端用户态 Agent</p><p>枚举值：</p><ul><li>0： 配置端Agent</li><li>1： 用户态 Agent</li></ul>
+        :type Kind: int
         """
         self._AppId = None
         self._Agent = None
+        self._Kind = None
 
     @property
     def AppId(self):
@@ -5839,12 +6584,24 @@ class CreateAgentRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def Kind(self):
+        r"""<p>Agent 类型，区分 B 端配置态 Agent 与 C 端用户态 Agent</p><p>枚举值：</p><ul><li>0： 配置端Agent</li><li>1： 用户态 Agent</li></ul>
+        :rtype: int
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
         if params.get("Agent") is not None:
             self._Agent = AgentSpec()
             self._Agent._deserialize(params.get("Agent"))
+        self._Kind = params.get("Kind")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5862,7 +6619,7 @@ class CreateAgentResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AgentId: Agent Id
+        :param _AgentId: <p>Agent Id</p>
         :type AgentId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5872,7 +6629,7 @@ class CreateAgentResponse(AbstractModel):
 
     @property
     def AgentId(self):
-        r"""Agent Id
+        r"""<p>Agent Id</p>
         :rtype: str
         """
         return self._AgentId
@@ -6058,6 +6815,8 @@ class CreateConversationRequest(AbstractModel):
         :type ShareCode: str
         :param _UserId: <p>Type=CONVERSATION_TYPE_API 时必填，访客ID</p>
         :type UserId: str
+        :param _AgentId: <p>用户端 AgnetId，当Claw模式开启了“允许在对话中动态修改配置”时可用</p>
+        :type AgentId: str
         """
         self._Type = None
         self._AppId = None
@@ -6066,6 +6825,7 @@ class CreateConversationRequest(AbstractModel):
         self._LoginUin = None
         self._ShareCode = None
         self._UserId = None
+        self._AgentId = None
 
     @property
     def Type(self):
@@ -6144,6 +6904,17 @@ class CreateConversationRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def AgentId(self):
+        r"""<p>用户端 AgnetId，当Claw模式开启了“允许在对话中动态修改配置”时可用</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -6153,6 +6924,7 @@ class CreateConversationRequest(AbstractModel):
         self._LoginUin = params.get("LoginUin")
         self._ShareCode = params.get("ShareCode")
         self._UserId = params.get("UserId")
+        self._AgentId = params.get("AgentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7567,7 +8339,7 @@ class DescribeAppRequest(AbstractModel):
         :type AppId: str
         :param _Domain: 应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域
         :type Domain: int
-        :param _FieldMask: 字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKnowledgeList(应用引用的共享知识库列表)
+        :param _FieldMask: 字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表)
         :type FieldMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         :param _StatusType: 特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态
         :type StatusType: int
@@ -7601,7 +8373,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def FieldMask(self):
-        r"""字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKnowledgeList(应用引用的共享知识库列表)
+        r"""字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表)
         :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         return self._FieldMask
@@ -7875,6 +8647,8 @@ class DescribeConversationListRequest(AbstractModel):
         :type ShareCode: str
         :param _UserId: <p>Type=CONVERSATION_TYPE_API 时必填，访客ID</p>
         :type UserId: str
+        :param _AgentId: <p>用户端 AgentId，当需要查询基于用户端 AgentId 创建的会话时使用</p>
+        :type AgentId: str
         """
         self._Type = None
         self._AppId = None
@@ -7886,6 +8660,7 @@ class DescribeConversationListRequest(AbstractModel):
         self._Offset = None
         self._ShareCode = None
         self._UserId = None
+        self._AgentId = None
 
     @property
     def Type(self):
@@ -7997,6 +8772,17 @@ class DescribeConversationListRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def AgentId(self):
+        r"""<p>用户端 AgentId，当需要查询基于用户端 AgentId 创建的会话时使用</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -8009,6 +8795,7 @@ class DescribeConversationListRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._ShareCode = params.get("ShareCode")
         self._UserId = params.get("UserId")
+        self._AgentId = params.get("AgentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8547,8 +9334,10 @@ class DescribeConversationResponse(AbstractModel):
         :param _Workspace: <p>工作空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Workspace: :class:`tencentcloud.adp.v20260520.models.ConversationWorkspace`
-        :param _Title: 会话标题
+        :param _Title: <p>会话标题</p>
         :type Title: str
+        :param _AgentId: <p>会话使用的用户端 AgentId</p>
+        :type AgentId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8559,6 +9348,7 @@ class DescribeConversationResponse(AbstractModel):
         self._UpdateTime = None
         self._Workspace = None
         self._Title = None
+        self._AgentId = None
         self._RequestId = None
 
     @property
@@ -8630,7 +9420,7 @@ class DescribeConversationResponse(AbstractModel):
 
     @property
     def Title(self):
-        r"""会话标题
+        r"""<p>会话标题</p>
         :rtype: str
         """
         return self._Title
@@ -8638,6 +9428,17 @@ class DescribeConversationResponse(AbstractModel):
     @Title.setter
     def Title(self, Title):
         self._Title = Title
+
+    @property
+    def AgentId(self):
+        r"""<p>会话使用的用户端 AgentId</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
 
     @property
     def RequestId(self):
@@ -8661,6 +9462,7 @@ class DescribeConversationResponse(AbstractModel):
             self._Workspace = ConversationWorkspace()
             self._Workspace._deserialize(params.get("Workspace"))
         self._Title = params.get("Title")
+        self._AgentId = params.get("AgentId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8767,17 +9569,29 @@ class DescribeModelListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelScene: 模型场景。1-标准生成, 2-标准思考, 3-Agent思考, 4-多模态理解, 5-多模态问答, 6-改写, 7-长期记忆, 8-自然语言转SQL, 9-AI优化, 10-实时文件解析, 11-文件解析, 12-GraphRAG, 13-OpenClaw, 14-多模态Embedding, 15-Rerank, 16-文本Embedding, 17-Widget, 18-Claw模式, 19-工作流代码生成, 20-工作流大模型节点, 21-工作流节点专用向量化, 22-工作流参数提取, 23-工作流大模型知识问答, 24-工作流标签提取, 25-工作流意图识别, 26-工作流选项卡, 27-工作流逻辑判断, 28-文档生成问答, 29-知识库Schema
+        :param _ModelScene: <p>模型场景。0-不区分场景, 1-标准生成, 2-标准思考, 3-Agent思考, 4-多模态理解, 5-多模态问答, 6-改写, 7-长期记忆, 8-自然语言转SQL, 9-AI优化, 10-实时文件解析, 11-文件解析, 12-GraphRAG, 13-OpenClaw, 14-多模态Embedding, 15-Rerank, 16-文本Embedding, 17-Widget, 18-Claw模式, 19-工作流代码生成, 20-工作流大模型节点, 21-工作流节点专用向量化, 22-工作流参数提取, 23-工作流大模型知识问答, 24-工作流标签提取, 25-工作流意图识别, 26-工作流选项卡, 27-工作流逻辑判断, 28-文档生成问答, 29-知识库Schema</p><p>枚举值：</p><ul><li>0： 不区分场景</li><li>1： 标准生成</li><li>2： 标准思考</li><li>3： Agent思考</li><li>4： 多模态理解</li><li>5： 多模态问答</li><li>6： 改写</li><li>7： 长期记忆</li><li>8： 自然语言转SQL</li><li>9： AI优化</li><li>10： 实时文件解析</li><li>11： 文件解析</li><li>12： GraphRAG</li><li>13： OpenClaw</li><li>14： 多模态Embedding</li><li>15： Rerank</li><li>16： 文本Embedding</li><li>17： Widget</li><li>18： Claw模式</li><li>19： 工作流代码生成</li><li>20： 工作流大模型节点</li><li>21： 工作流节点专用向量化</li><li>22： 工作流参数提取</li><li>23： 工作流大模型知识问答</li><li>24： 工作流标签提取</li><li>25： 工作流意图识别</li><li>26： 工作流选项卡</li><li>27： 工作流逻辑判断</li><li>28： 文档生成问答</li><li>29： 知识库Schema</li></ul>
         :type ModelScene: int
-        :param _SpaceId: 空间ID
+        :param _SpaceId: <p>空间ID</p>
         :type SpaceId: str
+        :param _Query: <p>关键词模糊搜索</p>
+        :type Query: str
+        :param _PageNumber: <p>页码。从0开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认20，最大100</p>
+        :type PageSize: int
+        :param _FilterList: <p>过滤条件(多个 Filter 之间为 AND, 同一 Filter 多 Values 为 OR)<br>DeveloperName： 模型作者名称<br>ProviderName： 模型提供商名称<br>ProviderType：模型提供商类型</p>
+        :type FilterList: list of Filter
         """
         self._ModelScene = None
         self._SpaceId = None
+        self._Query = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._FilterList = None
 
     @property
     def ModelScene(self):
-        r"""模型场景。1-标准生成, 2-标准思考, 3-Agent思考, 4-多模态理解, 5-多模态问答, 6-改写, 7-长期记忆, 8-自然语言转SQL, 9-AI优化, 10-实时文件解析, 11-文件解析, 12-GraphRAG, 13-OpenClaw, 14-多模态Embedding, 15-Rerank, 16-文本Embedding, 17-Widget, 18-Claw模式, 19-工作流代码生成, 20-工作流大模型节点, 21-工作流节点专用向量化, 22-工作流参数提取, 23-工作流大模型知识问答, 24-工作流标签提取, 25-工作流意图识别, 26-工作流选项卡, 27-工作流逻辑判断, 28-文档生成问答, 29-知识库Schema
+        r"""<p>模型场景。0-不区分场景, 1-标准生成, 2-标准思考, 3-Agent思考, 4-多模态理解, 5-多模态问答, 6-改写, 7-长期记忆, 8-自然语言转SQL, 9-AI优化, 10-实时文件解析, 11-文件解析, 12-GraphRAG, 13-OpenClaw, 14-多模态Embedding, 15-Rerank, 16-文本Embedding, 17-Widget, 18-Claw模式, 19-工作流代码生成, 20-工作流大模型节点, 21-工作流节点专用向量化, 22-工作流参数提取, 23-工作流大模型知识问答, 24-工作流标签提取, 25-工作流意图识别, 26-工作流选项卡, 27-工作流逻辑判断, 28-文档生成问答, 29-知识库Schema</p><p>枚举值：</p><ul><li>0： 不区分场景</li><li>1： 标准生成</li><li>2： 标准思考</li><li>3： Agent思考</li><li>4： 多模态理解</li><li>5： 多模态问答</li><li>6： 改写</li><li>7： 长期记忆</li><li>8： 自然语言转SQL</li><li>9： AI优化</li><li>10： 实时文件解析</li><li>11： 文件解析</li><li>12： GraphRAG</li><li>13： OpenClaw</li><li>14： 多模态Embedding</li><li>15： Rerank</li><li>16： 文本Embedding</li><li>17： Widget</li><li>18： Claw模式</li><li>19： 工作流代码生成</li><li>20： 工作流大模型节点</li><li>21： 工作流节点专用向量化</li><li>22： 工作流参数提取</li><li>23： 工作流大模型知识问答</li><li>24： 工作流标签提取</li><li>25： 工作流意图识别</li><li>26： 工作流选项卡</li><li>27： 工作流逻辑判断</li><li>28： 文档生成问答</li><li>29： 知识库Schema</li></ul>
         :rtype: int
         """
         return self._ModelScene
@@ -8788,7 +9602,7 @@ class DescribeModelListRequest(AbstractModel):
 
     @property
     def SpaceId(self):
-        r"""空间ID
+        r"""<p>空间ID</p>
         :rtype: str
         """
         return self._SpaceId
@@ -8797,10 +9611,63 @@ class DescribeModelListRequest(AbstractModel):
     def SpaceId(self, SpaceId):
         self._SpaceId = SpaceId
 
+    @property
+    def Query(self):
+        r"""<p>关键词模糊搜索</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码。从0开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认20，最大100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤条件(多个 Filter 之间为 AND, 同一 Filter 多 Values 为 OR)<br>DeveloperName： 模型作者名称<br>ProviderName： 模型提供商名称<br>ProviderType：模型提供商类型</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
 
     def _deserialize(self, params):
         self._ModelScene = params.get("ModelScene")
         self._SpaceId = params.get("SpaceId")
+        self._Query = params.get("Query")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8818,17 +9685,20 @@ class DescribeModelListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelList: 模型列表
+        :param _ModelList: <p>模型列表</p>
         :type ModelList: list of Model
+        :param _TotalCount: <p>模型总数</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ModelList = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
     def ModelList(self):
-        r"""模型列表
+        r"""<p>模型列表</p>
         :rtype: list of Model
         """
         return self._ModelList
@@ -8836,6 +9706,17 @@ class DescribeModelListResponse(AbstractModel):
     @ModelList.setter
     def ModelList(self, ModelList):
         self._ModelList = ModelList
+
+    @property
+    def TotalCount(self):
+        r"""<p>模型总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -8856,6 +9737,7 @@ class DescribeModelListResponse(AbstractModel):
                 obj = Model()
                 obj._deserialize(item)
                 self._ModelList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -8866,17 +9748,20 @@ class DescribePluginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PluginId: 插件id
+        :param _PluginId: <p>插件id</p>
         :type PluginId: str
-        :param _SpaceId: 当前空间id
+        :param _SpaceId: <p>当前空间id</p>
         :type SpaceId: str
+        :param _FieldMask: <p>获取指定字段</p>
+        :type FieldMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         self._PluginId = None
         self._SpaceId = None
+        self._FieldMask = None
 
     @property
     def PluginId(self):
-        r"""插件id
+        r"""<p>插件id</p>
         :rtype: str
         """
         return self._PluginId
@@ -8887,7 +9772,7 @@ class DescribePluginRequest(AbstractModel):
 
     @property
     def SpaceId(self):
-        r"""当前空间id
+        r"""<p>当前空间id</p>
         :rtype: str
         """
         return self._SpaceId
@@ -8896,10 +9781,24 @@ class DescribePluginRequest(AbstractModel):
     def SpaceId(self, SpaceId):
         self._SpaceId = SpaceId
 
+    @property
+    def FieldMask(self):
+        r"""<p>获取指定字段</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._FieldMask
+
+    @FieldMask.setter
+    def FieldMask(self, FieldMask):
+        self._FieldMask = FieldMask
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
         self._SpaceId = params.get("SpaceId")
+        if params.get("FieldMask") is not None:
+            self._FieldMask = FieldMask()
+            self._FieldMask._deserialize(params.get("FieldMask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8917,7 +9816,7 @@ class DescribePluginResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Plugin: 插件详情
+        :param _Plugin: <p>插件详情</p>
         :type Plugin: :class:`tencentcloud.adp.v20260520.models.Plugin`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8927,7 +9826,7 @@ class DescribePluginResponse(AbstractModel):
 
     @property
     def Plugin(self):
-        r"""插件详情
+        r"""<p>插件详情</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.Plugin`
         """
         return self._Plugin
@@ -8966,17 +9865,9 @@ class DescribePluginSummaryListRequest(AbstractModel):
         :type SpaceId: str
         :param _FilterList: 过滤条件列表 支持：PluginKind、CategoryKey、PluginSource、PluginId、PluginClass、BillingType
         :type FilterList: list of Filter
-        :param _IsFavoriteOnly: true-筛选收藏的插件，false不过滤
+        :param _IsFavoriteOnly: <p>是否只返回已收藏插件。取 true 时，仅返回当前用户已收藏的插件；取 false 或不传时不按收藏状态过滤。</p>
         :type IsFavoriteOnly: bool
-        :param _Module: module
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 所有模块 |
-| 1 | agent模式模块 |
-| 2 | 工作流模块 |
-| 3 | 企业员工助理模块 |
+        :param _Module: <p>插件展示场景。不传或取 0 时不限定场景。</p><p>枚举值：</p><ul><li>0：不限定场景</li><li>1：Agent 模式</li><li>2：工作流</li><li>3：智能工作台</li></ul>
         :type Module: int
         :param _PageNumber: 页码 从0开始
         :type PageNumber: int
@@ -8984,14 +9875,7 @@ class DescribePluginSummaryListRequest(AbstractModel):
         :type PageSize: int
         :param _Query: 查询内容 模糊匹配：插件名称/插件描述/工具名称/工具描述
         :type Query: str
-        :param _SortType: 排序类型，仅搜索场景有效
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 未指定，使用默认行为 |
-| 1 | 按相关性排序 |
-| 2 | 按更新时间排序 |
+        :param _SortType: <p>排序方式。</p><p>枚举值：</p><ul><li>0：未指定，默认排序</li><li>1：按相关性排序</li><li>2：按更新时间排序</li><li>3：默认排序</li><li>4：按热度排序</li></ul>
         :type SortType: int
         """
         self._SpaceId = None
@@ -9027,7 +9911,7 @@ class DescribePluginSummaryListRequest(AbstractModel):
 
     @property
     def IsFavoriteOnly(self):
-        r"""true-筛选收藏的插件，false不过滤
+        r"""<p>是否只返回已收藏插件。取 true 时，仅返回当前用户已收藏的插件；取 false 或不传时不按收藏状态过滤。</p>
         :rtype: bool
         """
         return self._IsFavoriteOnly
@@ -9038,15 +9922,7 @@ class DescribePluginSummaryListRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""module
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 所有模块 |
-| 1 | agent模式模块 |
-| 2 | 工作流模块 |
-| 3 | 企业员工助理模块 |
+        r"""<p>插件展示场景。不传或取 0 时不限定场景。</p><p>枚举值：</p><ul><li>0：不限定场景</li><li>1：Agent 模式</li><li>2：工作流</li><li>3：智能工作台</li></ul>
         :rtype: int
         """
         return self._Module
@@ -9090,14 +9966,7 @@ class DescribePluginSummaryListRequest(AbstractModel):
 
     @property
     def SortType(self):
-        r"""排序类型，仅搜索场景有效
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 未指定，使用默认行为 |
-| 1 | 按相关性排序 |
-| 2 | 按更新时间排序 |
+        r"""<p>排序方式。</p><p>枚举值：</p><ul><li>0：未指定，默认排序</li><li>1：按相关性排序</li><li>2：按更新时间排序</li><li>3：默认排序</li><li>4：按热度排序</li></ul>
         :rtype: int
         """
         return self._SortType
@@ -9484,7 +10353,24 @@ class DescribeSkillSummaryListRequest(AbstractModel):
         :type SpaceId: str
         :param _FavoriteOnly: 仅查询当前用户收藏的 Skill
         :type FavoriteOnly: bool
-        :param _FilterList: 过滤条件(多个Filter之间为AND关系,同一Filter的多个Values为OR关系): - SkillIdList: Skill ID列表,字符串数组,精确匹配 - ProviderType: Skill 提供方类型,枚举值数组,精确匹配 (SKILL_PROVIDER_TYPE_OFFICIAL=1/SKILL_PROVIDER_TYPE_THIRD_PARTY=2/SKILL_PROVIDER_TYPE_CUSTOM=3/SKILL_PROVIDER_TYPE_CUSTOM_SHARED=4) - CategoryKey: 分类标识,字符串数组,精确匹配 - AnalysisStatus: 安全检测状态,枚举值数组,精确匹配 (SKILL_ANALYSIS_PENDING=0/SKILL_ANALYSIS_RUNNING=1/SKILL_ANALYSIS_AVAILABLE=2/SKILL_ANALYSIS_UNAVAILABLE=3/SKILL_ANALYSIS_FAILED=4) - RiskLevel: 风险等级,枚举值数组,精确匹配 (SKILL_RISK_NONE=0/SKILL_RISK_LOW=1/SKILL_RISK_MEDIUM=2/SKILL_RISK_HIGH=3) - ShareStatus: 共享状态,枚举值数组,精确匹配,仅在ProviderType包含SKILL_PROVIDER_TYPE_CUSTOM/SKILL_PROVIDER_TYPE_CUSTOM_SHARED时生效 (SHARE_STATUS_UNSHARED=0/SHARE_STATUS_SHARED=1/SHARE_STATUS_APPROVING=2)
+        :param _FilterList:    过滤条件(多个Filter之间为AND关系,同一Filter的多个Values为OR关系):
+   - SkillIdList: Skill ID列表,字符串数组,精确匹配
+   - ProviderType: Skill 提供方类型,枚举值数组,精确匹配
+     (SKILL_PROVIDER_TYPE_OFFICIAL=1/SKILL_PROVIDER_TYPE_THIRD_PARTY=2/SKILL_PROVIDER_TYPE_CUSTOM=3/SKILL_PROVIDER_TYPE_CUSTOM_SHARED=4)
+   - CategoryKey: 分类标识,字符串数组,精确匹配
+   - AnalysisStatus: 安全检测状态,枚举值数组,精确匹配
+     (SKILL_ANALYSIS_PENDING=0/SKILL_ANALYSIS_RUNNING=1/SKILL_ANALYSIS_AVAILABLE=2/SKILL_ANALYSIS_UNAVAILABLE=3/SKILL_ANALYSIS_FAILED=4)
+   - RiskLevel: 风险等级,枚举值数组,精确匹配
+     (SKILL_RISK_NONE=0/SKILL_RISK_LOW=1/SKILL_RISK_MEDIUM=2/SKILL_RISK_HIGH=3)
+- SkillStatus: Skill 维度发布状态,枚举值数组,精确匹配,多值之间 OR;仅在 Perspective=EDITOR/ALL 时有实际意义
+(SKILL_STATUS_INITIALIZED=0/SKILL_STATUS_AUDITING=1/SKILL_STATUS_PENDING_RELEASE=2/SKILL_STATUS_RELEASED=3)
+   - ShareStatus: 共享状态,枚举值数组,精确匹配,仅在ProviderType包含SKILL_PROVIDER_TYPE_CUSTOM/SKILL_PROVIDER_TYPE_CUSTOM_SHARED时生效
+     (SHARE_STATUS_UNSHARED=0/SHARE_STATUS_SHARED=1/SHARE_STATUS_APPROVING=2)
+   - Perspective: 视角枚举,字符串单值,Values 长度必须为 1,多值视为非法;仅在 ProviderType=SKILL_PROVIDER_TYPE_CUSTOM 时生效;不传默认 USER
+     (USER=使用者视角,仅返回仅有使用权限的 Skill / EDITOR=编辑者视角,仅返回有编辑权限的 Skill / ALL=全量视角,返回有任一权限位的 Skill)
+  - Creator: 创建者过滤,字符串单值,Values 长度必须为 1,多值视为非法;仅在 ProviderType=SKILL_PROVIDER_TYPE_CUSTOM 时生效
+   当前仅支持占位符 "$self",表示仅返回当前调用者创建的 Skill
+   后续如需扩展为指定身份,再在此处追加约定
         :type FilterList: list of Filter
         :param _PageNumber: 页码，从 0 开始
         :type PageNumber: int
@@ -9524,7 +10410,24 @@ class DescribeSkillSummaryListRequest(AbstractModel):
 
     @property
     def FilterList(self):
-        r"""过滤条件(多个Filter之间为AND关系,同一Filter的多个Values为OR关系): - SkillIdList: Skill ID列表,字符串数组,精确匹配 - ProviderType: Skill 提供方类型,枚举值数组,精确匹配 (SKILL_PROVIDER_TYPE_OFFICIAL=1/SKILL_PROVIDER_TYPE_THIRD_PARTY=2/SKILL_PROVIDER_TYPE_CUSTOM=3/SKILL_PROVIDER_TYPE_CUSTOM_SHARED=4) - CategoryKey: 分类标识,字符串数组,精确匹配 - AnalysisStatus: 安全检测状态,枚举值数组,精确匹配 (SKILL_ANALYSIS_PENDING=0/SKILL_ANALYSIS_RUNNING=1/SKILL_ANALYSIS_AVAILABLE=2/SKILL_ANALYSIS_UNAVAILABLE=3/SKILL_ANALYSIS_FAILED=4) - RiskLevel: 风险等级,枚举值数组,精确匹配 (SKILL_RISK_NONE=0/SKILL_RISK_LOW=1/SKILL_RISK_MEDIUM=2/SKILL_RISK_HIGH=3) - ShareStatus: 共享状态,枚举值数组,精确匹配,仅在ProviderType包含SKILL_PROVIDER_TYPE_CUSTOM/SKILL_PROVIDER_TYPE_CUSTOM_SHARED时生效 (SHARE_STATUS_UNSHARED=0/SHARE_STATUS_SHARED=1/SHARE_STATUS_APPROVING=2)
+        r"""   过滤条件(多个Filter之间为AND关系,同一Filter的多个Values为OR关系):
+   - SkillIdList: Skill ID列表,字符串数组,精确匹配
+   - ProviderType: Skill 提供方类型,枚举值数组,精确匹配
+     (SKILL_PROVIDER_TYPE_OFFICIAL=1/SKILL_PROVIDER_TYPE_THIRD_PARTY=2/SKILL_PROVIDER_TYPE_CUSTOM=3/SKILL_PROVIDER_TYPE_CUSTOM_SHARED=4)
+   - CategoryKey: 分类标识,字符串数组,精确匹配
+   - AnalysisStatus: 安全检测状态,枚举值数组,精确匹配
+     (SKILL_ANALYSIS_PENDING=0/SKILL_ANALYSIS_RUNNING=1/SKILL_ANALYSIS_AVAILABLE=2/SKILL_ANALYSIS_UNAVAILABLE=3/SKILL_ANALYSIS_FAILED=4)
+   - RiskLevel: 风险等级,枚举值数组,精确匹配
+     (SKILL_RISK_NONE=0/SKILL_RISK_LOW=1/SKILL_RISK_MEDIUM=2/SKILL_RISK_HIGH=3)
+- SkillStatus: Skill 维度发布状态,枚举值数组,精确匹配,多值之间 OR;仅在 Perspective=EDITOR/ALL 时有实际意义
+(SKILL_STATUS_INITIALIZED=0/SKILL_STATUS_AUDITING=1/SKILL_STATUS_PENDING_RELEASE=2/SKILL_STATUS_RELEASED=3)
+   - ShareStatus: 共享状态,枚举值数组,精确匹配,仅在ProviderType包含SKILL_PROVIDER_TYPE_CUSTOM/SKILL_PROVIDER_TYPE_CUSTOM_SHARED时生效
+     (SHARE_STATUS_UNSHARED=0/SHARE_STATUS_SHARED=1/SHARE_STATUS_APPROVING=2)
+   - Perspective: 视角枚举,字符串单值,Values 长度必须为 1,多值视为非法;仅在 ProviderType=SKILL_PROVIDER_TYPE_CUSTOM 时生效;不传默认 USER
+     (USER=使用者视角,仅返回仅有使用权限的 Skill / EDITOR=编辑者视角,仅返回有编辑权限的 Skill / ALL=全量视角,返回有任一权限位的 Skill)
+  - Creator: 创建者过滤,字符串单值,Values 长度必须为 1,多值视为非法;仅在 ProviderType=SKILL_PROVIDER_TYPE_CUSTOM 时生效
+   当前仅支持占位符 "$self",表示仅返回当前调用者创建的 Skill
+   后续如需扩展为指定身份,再在此处追加约定
         :rtype: list of Filter
         """
         return self._FilterList
@@ -10221,6 +11124,102 @@ class DigitalHumanConfig(AbstractModel):
         
 
 
+class DuplexBilling(AbstractModel):
+    r"""DuplexBilling
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingUnit: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>UNKNOW</td><td>0</td><td></td></tr><tr><td>TOKEN</td><td>1</td><td>按token</td></tr><tr><td>PAGE_COUNT</td><td>2</td><td>按页数</td></tr><tr><td>TIMES</td><td>3</td><td>按次数</td></tr><tr><td>TIMES_THOUSAND</td><td>4</td><td>按千次数</td></tr><tr><td>SECOND</td><td>5</td><td>按时长</td></tr><tr><td>CHARACTER</td><td>6</td><td>按字符数</td></tr><tr><td>CHARACTER_THOUSAND</td><td>7</td><td>按千字符数</td></tr><tr><td>SHEET</td><td>8</td><td>按张</td></tr><tr><td>NUMBER</td><td>9</td><td>按个数</td></tr></tbody></table>
+        :type BillingUnit: int
+        :param _InputCashPrice: <p>输入现金价格</p><p>单位：元</p>
+        :type InputCashPrice: float
+        :param _InputPuPrice: <p>输入pu价格</p><p>单位：pu</p>
+        :type InputPuPrice: float
+        :param _OutputCashPrice: <p>输出现金价格</p><p>单位：元</p>
+        :type OutputCashPrice: float
+        :param _OutputPuPrice: <p>输出pu价格</p><p>单位：pu</p>
+        :type OutputPuPrice: float
+        """
+        self._BillingUnit = None
+        self._InputCashPrice = None
+        self._InputPuPrice = None
+        self._OutputCashPrice = None
+        self._OutputPuPrice = None
+
+    @property
+    def BillingUnit(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>UNKNOW</td><td>0</td><td></td></tr><tr><td>TOKEN</td><td>1</td><td>按token</td></tr><tr><td>PAGE_COUNT</td><td>2</td><td>按页数</td></tr><tr><td>TIMES</td><td>3</td><td>按次数</td></tr><tr><td>TIMES_THOUSAND</td><td>4</td><td>按千次数</td></tr><tr><td>SECOND</td><td>5</td><td>按时长</td></tr><tr><td>CHARACTER</td><td>6</td><td>按字符数</td></tr><tr><td>CHARACTER_THOUSAND</td><td>7</td><td>按千字符数</td></tr><tr><td>SHEET</td><td>8</td><td>按张</td></tr><tr><td>NUMBER</td><td>9</td><td>按个数</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._BillingUnit
+
+    @BillingUnit.setter
+    def BillingUnit(self, BillingUnit):
+        self._BillingUnit = BillingUnit
+
+    @property
+    def InputCashPrice(self):
+        r"""<p>输入现金价格</p><p>单位：元</p>
+        :rtype: float
+        """
+        return self._InputCashPrice
+
+    @InputCashPrice.setter
+    def InputCashPrice(self, InputCashPrice):
+        self._InputCashPrice = InputCashPrice
+
+    @property
+    def InputPuPrice(self):
+        r"""<p>输入pu价格</p><p>单位：pu</p>
+        :rtype: float
+        """
+        return self._InputPuPrice
+
+    @InputPuPrice.setter
+    def InputPuPrice(self, InputPuPrice):
+        self._InputPuPrice = InputPuPrice
+
+    @property
+    def OutputCashPrice(self):
+        r"""<p>输出现金价格</p><p>单位：元</p>
+        :rtype: float
+        """
+        return self._OutputCashPrice
+
+    @OutputCashPrice.setter
+    def OutputCashPrice(self, OutputCashPrice):
+        self._OutputCashPrice = OutputCashPrice
+
+    @property
+    def OutputPuPrice(self):
+        r"""<p>输出pu价格</p><p>单位：pu</p>
+        :rtype: float
+        """
+        return self._OutputPuPrice
+
+    @OutputPuPrice.setter
+    def OutputPuPrice(self, OutputPuPrice):
+        self._OutputPuPrice = OutputPuPrice
+
+
+    def _deserialize(self, params):
+        self._BillingUnit = params.get("BillingUnit")
+        self._InputCashPrice = params.get("InputCashPrice")
+        self._InputPuPrice = params.get("InputPuPrice")
+        self._OutputCashPrice = params.get("OutputCashPrice")
+        self._OutputPuPrice = params.get("OutputPuPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FieldMask(AbstractModel):
     r"""FieldMask
 
@@ -10228,14 +11227,14 @@ class FieldMask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Paths: paths
+        :param _Paths: <p>参数名称</p><p>参数格式：需要获取的指定字段路径</p>
         :type Paths: list of str
         """
         self._Paths = None
 
     @property
     def Paths(self):
-        r"""paths
+        r"""<p>参数名称</p><p>参数格式：需要获取的指定字段路径</p>
         :rtype: list of str
         """
         return self._Paths
@@ -10425,23 +11424,26 @@ class FileParseModel(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r"""Filter
+    r"""列表通用过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 value_list 为 OR 关系）
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 检索名称
+        :param _Name: 过滤字段名
         :type Name: str
-        :param _ValueList: 检索值
+        :param _Operator: 操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
+        :type Operator: int
+        :param _ValueList: 过滤值数组
         :type ValueList: list of str
         """
         self._Name = None
+        self._Operator = None
         self._ValueList = None
 
     @property
     def Name(self):
-        r"""检索名称
+        r"""过滤字段名
         :rtype: str
         """
         return self._Name
@@ -10451,8 +11453,19 @@ class Filter(AbstractModel):
         self._Name = Name
 
     @property
+    def Operator(self):
+        r"""操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
+        :rtype: int
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
     def ValueList(self):
-        r"""检索值
+        r"""过滤值数组
         :rtype: list of str
         """
         return self._ValueList
@@ -10464,6 +11477,7 @@ class Filter(AbstractModel):
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        self._Operator = params.get("Operator")
         self._ValueList = params.get("ValueList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10602,6 +11616,159 @@ class IntentAchievementInfo(AbstractModel):
         
 
 
+class MCPPluginConfig(AbstractModel):
+    r"""MCP插件配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExternalMCPServerUrl: <p>MCP插件外部访问地址</p>
+        :type ExternalMCPServerUrl: str
+        :param _MCPServerUrl: <p>MCP server地址</p>
+        :type MCPServerUrl: str
+        :param _MCPTransport: <p>MCP传输类型: SSE/Streamable<br>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | SSE + HTTP 模式 |<br>| 1 | Streamable HTTP 模式 |</p>
+        :type MCPTransport: int
+        :param _PluginHeader: <p>MCP插件的header参数</p>
+        :type PluginHeader: list of PluginParam
+        :param _PluginQuery: <p>MCP插件的query参数</p>
+        :type PluginQuery: list of PluginParam
+        :param _SSEReadTimeout: <p>SSE长连接超时时间，单位秒</p>
+        :type SSEReadTimeout: int
+        :param _Timeout: <p>请求超时时间，单位秒</p>
+        :type Timeout: int
+        :param _AuthConfig: <p>授权信息</p>
+        :type AuthConfig: :class:`tencentcloud.adp.v20260520.models.AuthConfig`
+        """
+        self._ExternalMCPServerUrl = None
+        self._MCPServerUrl = None
+        self._MCPTransport = None
+        self._PluginHeader = None
+        self._PluginQuery = None
+        self._SSEReadTimeout = None
+        self._Timeout = None
+        self._AuthConfig = None
+
+    @property
+    def ExternalMCPServerUrl(self):
+        r"""<p>MCP插件外部访问地址</p>
+        :rtype: str
+        """
+        return self._ExternalMCPServerUrl
+
+    @ExternalMCPServerUrl.setter
+    def ExternalMCPServerUrl(self, ExternalMCPServerUrl):
+        self._ExternalMCPServerUrl = ExternalMCPServerUrl
+
+    @property
+    def MCPServerUrl(self):
+        r"""<p>MCP server地址</p>
+        :rtype: str
+        """
+        return self._MCPServerUrl
+
+    @MCPServerUrl.setter
+    def MCPServerUrl(self, MCPServerUrl):
+        self._MCPServerUrl = MCPServerUrl
+
+    @property
+    def MCPTransport(self):
+        r"""<p>MCP传输类型: SSE/Streamable<br>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | SSE + HTTP 模式 |<br>| 1 | Streamable HTTP 模式 |</p>
+        :rtype: int
+        """
+        return self._MCPTransport
+
+    @MCPTransport.setter
+    def MCPTransport(self, MCPTransport):
+        self._MCPTransport = MCPTransport
+
+    @property
+    def PluginHeader(self):
+        r"""<p>MCP插件的header参数</p>
+        :rtype: list of PluginParam
+        """
+        return self._PluginHeader
+
+    @PluginHeader.setter
+    def PluginHeader(self, PluginHeader):
+        self._PluginHeader = PluginHeader
+
+    @property
+    def PluginQuery(self):
+        r"""<p>MCP插件的query参数</p>
+        :rtype: list of PluginParam
+        """
+        return self._PluginQuery
+
+    @PluginQuery.setter
+    def PluginQuery(self, PluginQuery):
+        self._PluginQuery = PluginQuery
+
+    @property
+    def SSEReadTimeout(self):
+        r"""<p>SSE长连接超时时间，单位秒</p>
+        :rtype: int
+        """
+        return self._SSEReadTimeout
+
+    @SSEReadTimeout.setter
+    def SSEReadTimeout(self, SSEReadTimeout):
+        self._SSEReadTimeout = SSEReadTimeout
+
+    @property
+    def Timeout(self):
+        r"""<p>请求超时时间，单位秒</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def AuthConfig(self):
+        r"""<p>授权信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AuthConfig`
+        """
+        return self._AuthConfig
+
+    @AuthConfig.setter
+    def AuthConfig(self, AuthConfig):
+        self._AuthConfig = AuthConfig
+
+
+    def _deserialize(self, params):
+        self._ExternalMCPServerUrl = params.get("ExternalMCPServerUrl")
+        self._MCPServerUrl = params.get("MCPServerUrl")
+        self._MCPTransport = params.get("MCPTransport")
+        if params.get("PluginHeader") is not None:
+            self._PluginHeader = []
+            for item in params.get("PluginHeader"):
+                obj = PluginParam()
+                obj._deserialize(item)
+                self._PluginHeader.append(obj)
+        if params.get("PluginQuery") is not None:
+            self._PluginQuery = []
+            for item in params.get("PluginQuery"):
+                obj = PluginParam()
+                obj._deserialize(item)
+                self._PluginQuery.append(obj)
+        self._SSEReadTimeout = params.get("SSEReadTimeout")
+        self._Timeout = params.get("Timeout")
+        if params.get("AuthConfig") is not None:
+            self._AuthConfig = AuthConfig()
+            self._AuthConfig._deserialize(params.get("AuthConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MCPToolConfig(AbstractModel):
     r"""MCPToolConfig
 
@@ -10609,9 +11776,9 @@ class MCPToolConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Inputs: 输入参数
+        :param _Inputs: <p>输入参数</p>
         :type Inputs: list of RequestParam
-        :param _Outputs: 输出参数
+        :param _Outputs: <p>输出参数</p>
         :type Outputs: list of ResponseParam
         """
         self._Inputs = None
@@ -10619,7 +11786,7 @@ class MCPToolConfig(AbstractModel):
 
     @property
     def Inputs(self):
-        r"""输入参数
+        r"""<p>输入参数</p>
         :rtype: list of RequestParam
         """
         return self._Inputs
@@ -10630,7 +11797,7 @@ class MCPToolConfig(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""输出参数
+        r"""<p>输出参数</p>
         :rtype: list of ResponseParam
         """
         return self._Outputs
@@ -10670,26 +11837,28 @@ class Model(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BadgeList: 模型徽章列表
+        :param _BadgeList: <p>模型徽章列表</p>
         :type BadgeList: list of ModelBadge
-        :param _LimitInfo: 模型限制信息
+        :param _LimitInfo: <p>模型限制信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LimitInfo: :class:`tencentcloud.adp.v20260520.models.ModelLimit`
-        :param _ModelBasic: 模型基本信息
+        :param _ModelBasic: <p>模型基本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelBasic: :class:`tencentcloud.adp.v20260520.models.ModelBasic`
-        :param _ParameterList: 模型超参配置
+        :param _ParameterList: <p>模型超参配置</p>
         :type ParameterList: list of ModelParameter
-        :param _PropertyList: 模型属性配置
+        :param _PropertyList: <p>模型属性配置</p>
         :type PropertyList: list of ModelProperty
-        :param _ProviderInfo: 模型提供商信息
+        :param _ProviderInfo: <p>模型提供商信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProviderInfo: :class:`tencentcloud.adp.v20260520.models.ModelProviderBasic`
-        :param _StatusInfo: 模型状态信息
+        :param _StatusInfo: <p>模型状态信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusInfo: :class:`tencentcloud.adp.v20260520.models.ModelStatus`
-        :param _TagList: 模型标签列表
+        :param _TagList: <p>模型标签列表</p>
         :type TagList: list of str
+        :param _DeveloperInfo: <p>模型作者信息</p>
+        :type DeveloperInfo: :class:`tencentcloud.adp.v20260520.models.ModelDeveloperBasic`
         """
         self._BadgeList = None
         self._LimitInfo = None
@@ -10699,10 +11868,11 @@ class Model(AbstractModel):
         self._ProviderInfo = None
         self._StatusInfo = None
         self._TagList = None
+        self._DeveloperInfo = None
 
     @property
     def BadgeList(self):
-        r"""模型徽章列表
+        r"""<p>模型徽章列表</p>
         :rtype: list of ModelBadge
         """
         return self._BadgeList
@@ -10713,7 +11883,7 @@ class Model(AbstractModel):
 
     @property
     def LimitInfo(self):
-        r"""模型限制信息
+        r"""<p>模型限制信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.ModelLimit`
         """
@@ -10725,7 +11895,7 @@ class Model(AbstractModel):
 
     @property
     def ModelBasic(self):
-        r"""模型基本信息
+        r"""<p>模型基本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.ModelBasic`
         """
@@ -10737,7 +11907,7 @@ class Model(AbstractModel):
 
     @property
     def ParameterList(self):
-        r"""模型超参配置
+        r"""<p>模型超参配置</p>
         :rtype: list of ModelParameter
         """
         return self._ParameterList
@@ -10748,7 +11918,7 @@ class Model(AbstractModel):
 
     @property
     def PropertyList(self):
-        r"""模型属性配置
+        r"""<p>模型属性配置</p>
         :rtype: list of ModelProperty
         """
         return self._PropertyList
@@ -10759,7 +11929,7 @@ class Model(AbstractModel):
 
     @property
     def ProviderInfo(self):
-        r"""模型提供商信息
+        r"""<p>模型提供商信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.ModelProviderBasic`
         """
@@ -10771,7 +11941,7 @@ class Model(AbstractModel):
 
     @property
     def StatusInfo(self):
-        r"""模型状态信息
+        r"""<p>模型状态信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.ModelStatus`
         """
@@ -10783,7 +11953,7 @@ class Model(AbstractModel):
 
     @property
     def TagList(self):
-        r"""模型标签列表
+        r"""<p>模型标签列表</p>
         :rtype: list of str
         """
         return self._TagList
@@ -10791,6 +11961,17 @@ class Model(AbstractModel):
     @TagList.setter
     def TagList(self, TagList):
         self._TagList = TagList
+
+    @property
+    def DeveloperInfo(self):
+        r"""<p>模型作者信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModelDeveloperBasic`
+        """
+        return self._DeveloperInfo
+
+    @DeveloperInfo.setter
+    def DeveloperInfo(self, DeveloperInfo):
+        self._DeveloperInfo = DeveloperInfo
 
 
     def _deserialize(self, params):
@@ -10825,6 +12006,9 @@ class Model(AbstractModel):
             self._StatusInfo = ModelStatus()
             self._StatusInfo._deserialize(params.get("StatusInfo"))
         self._TagList = params.get("TagList")
+        if params.get("DeveloperInfo") is not None:
+            self._DeveloperInfo = ModelDeveloperBasic()
+            self._DeveloperInfo._deserialize(params.get("DeveloperInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11023,7 +12207,7 @@ class ModelDetailInfo(AbstractModel):
         :type Alias: str
         :param _HistoryLimit: 历史对话条数限制
         :type HistoryLimit: int
-        :param _ModelId: 模型唯一ID
+        :param _ModelId: 模型唯一 ID
         :type ModelId: str
         :param _ModelParams: 模型参数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11058,7 +12242,7 @@ class ModelDetailInfo(AbstractModel):
 
     @property
     def ModelId(self):
-        r"""模型唯一ID
+        r"""模型唯一 ID
         :rtype: str
         """
         return self._ModelId
@@ -11087,6 +12271,57 @@ class ModelDetailInfo(AbstractModel):
         if params.get("ModelParams") is not None:
             self._ModelParams = ModelParams()
             self._ModelParams._deserialize(params.get("ModelParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelDeveloperBasic(AbstractModel):
+    r"""模型作者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>作者标识</p>
+        :type Name: str
+        :param _Alias: <p>作者显示名称</p>
+        :type Alias: str
+        """
+        self._Name = None
+        self._Alias = None
+
+    @property
+    def Name(self):
+        r"""<p>作者标识</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Alias(self):
+        r"""<p>作者显示名称</p>
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11172,7 +12407,7 @@ class ModelParameter(AbstractModel):
         r"""
         :param _DefaultValue: 默认值
         :type DefaultValue: str
-        :param _EnumValueList: 枚举值列表（仅枚举类型有效）
+        :param _EnumValueList: 可选值列表
         :type EnumValueList: list of str
         :param _MaxValue: 最大值（仅数值类型有效）
         :type MaxValue: float
@@ -11180,7 +12415,7 @@ class ModelParameter(AbstractModel):
         :type MinValue: float
         :param _Name: 超参名称
         :type Name: str
-        :param _Type: 超参类型。1-浮点数, 2-整数, 3-字符串, 4-枚举
+        :param _Type: 超参类型。1-浮点数, 2-整数, 3-字符串
         :type Type: int
         """
         self._DefaultValue = None
@@ -11203,7 +12438,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def EnumValueList(self):
-        r"""枚举值列表（仅枚举类型有效）
+        r"""可选值列表
         :rtype: list of str
         """
         return self._EnumValueList
@@ -11247,7 +12482,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Type(self):
-        r"""超参类型。1-浮点数, 2-整数, 3-字符串, 4-枚举
+        r"""超参类型。1-浮点数, 2-整数, 3-字符串
         :rtype: int
         """
         return self._Type
@@ -11283,10 +12518,6 @@ class ModelParams(AbstractModel):
         r"""
         :param _DeepThinking: 是否开启深度思考
         :type DeepThinking: str
-        :param _ReasoningEffort: 深度思考效果
-        :type ReasoningEffort: str
-        :param _ReplyFormat: 输出格式  text、json_object
-        :type ReplyFormat: str
         :param _FrequencyPenalty: 频率惩罚
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrequencyPenalty: float
@@ -11296,9 +12527,13 @@ class ModelParams(AbstractModel):
         :param _PresencePenalty: 存在惩罚
 注意：此字段可能返回 null，表示取不到有效值。
         :type PresencePenalty: float
+        :param _ReasoningEffort: 深度思考效果
+        :type ReasoningEffort: str
         :param _RepetitionPenalty: 重复惩罚
 注意：此字段可能返回 null，表示取不到有效值。
         :type RepetitionPenalty: float
+        :param _ReplyFormat: 输出格式（text、json_object）
+        :type ReplyFormat: str
         :param _Seed: seed 随机种子
 注意：此字段可能返回 null，表示取不到有效值。
         :type Seed: int
@@ -11312,12 +12547,12 @@ class ModelParams(AbstractModel):
         :type TopP: float
         """
         self._DeepThinking = None
-        self._ReasoningEffort = None
-        self._ReplyFormat = None
         self._FrequencyPenalty = None
         self._MaxTokens = None
         self._PresencePenalty = None
+        self._ReasoningEffort = None
         self._RepetitionPenalty = None
+        self._ReplyFormat = None
         self._Seed = None
         self._StopSequenceList = None
         self._Temperature = None
@@ -11333,28 +12568,6 @@ class ModelParams(AbstractModel):
     @DeepThinking.setter
     def DeepThinking(self, DeepThinking):
         self._DeepThinking = DeepThinking
-
-    @property
-    def ReasoningEffort(self):
-        r"""深度思考效果
-        :rtype: str
-        """
-        return self._ReasoningEffort
-
-    @ReasoningEffort.setter
-    def ReasoningEffort(self, ReasoningEffort):
-        self._ReasoningEffort = ReasoningEffort
-
-    @property
-    def ReplyFormat(self):
-        r"""输出格式  text、json_object
-        :rtype: str
-        """
-        return self._ReplyFormat
-
-    @ReplyFormat.setter
-    def ReplyFormat(self, ReplyFormat):
-        self._ReplyFormat = ReplyFormat
 
     @property
     def FrequencyPenalty(self):
@@ -11393,6 +12606,17 @@ class ModelParams(AbstractModel):
         self._PresencePenalty = PresencePenalty
 
     @property
+    def ReasoningEffort(self):
+        r"""深度思考效果
+        :rtype: str
+        """
+        return self._ReasoningEffort
+
+    @ReasoningEffort.setter
+    def ReasoningEffort(self, ReasoningEffort):
+        self._ReasoningEffort = ReasoningEffort
+
+    @property
     def RepetitionPenalty(self):
         r"""重复惩罚
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11403,6 +12627,17 @@ class ModelParams(AbstractModel):
     @RepetitionPenalty.setter
     def RepetitionPenalty(self, RepetitionPenalty):
         self._RepetitionPenalty = RepetitionPenalty
+
+    @property
+    def ReplyFormat(self):
+        r"""输出格式（text、json_object）
+        :rtype: str
+        """
+        return self._ReplyFormat
+
+    @ReplyFormat.setter
+    def ReplyFormat(self, ReplyFormat):
+        self._ReplyFormat = ReplyFormat
 
     @property
     def Seed(self):
@@ -11454,12 +12689,12 @@ class ModelParams(AbstractModel):
 
     def _deserialize(self, params):
         self._DeepThinking = params.get("DeepThinking")
-        self._ReasoningEffort = params.get("ReasoningEffort")
-        self._ReplyFormat = params.get("ReplyFormat")
         self._FrequencyPenalty = params.get("FrequencyPenalty")
         self._MaxTokens = params.get("MaxTokens")
         self._PresencePenalty = params.get("PresencePenalty")
+        self._ReasoningEffort = params.get("ReasoningEffort")
         self._RepetitionPenalty = params.get("RepetitionPenalty")
+        self._ReplyFormat = params.get("ReplyFormat")
         self._Seed = params.get("Seed")
         self._StopSequenceList = params.get("StopSequenceList")
         self._Temperature = params.get("Temperature")
@@ -11670,7 +12905,7 @@ class ModifyAgentRequest(AbstractModel):
         :type AgentId: str
         :param _Agent: <p>修改后的Agent的信息</p>
         :type Agent: :class:`tencentcloud.adp.v20260520.models.AgentSpec`
-        :param _UpdateMask: <p>需要更新的字段路径，如 [&quot;instructions&quot;, &quot;model&quot;, &quot;tool_list&quot;, &quot;plugin_list&quot;, &quot;skill_list&quot;, &quot;advanced_config&quot;]</p>
+        :param _UpdateMask: <p>需要更新的字段路径，如 ["Profile.Name", "Profile.IconUrl", "Instructions", "Model", "ToolList", "PluginList", "SkillList", "AdvancedConfig"]</p>
         :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         self._AppId = None
@@ -11713,7 +12948,7 @@ class ModifyAgentRequest(AbstractModel):
 
     @property
     def UpdateMask(self):
-        r"""<p>需要更新的字段路径，如 [&quot;instructions&quot;, &quot;model&quot;, &quot;tool_list&quot;, &quot;plugin_list&quot;, &quot;skill_list&quot;, &quot;advanced_config&quot;]</p>
+        r"""<p>需要更新的字段路径，如 ["Profile.Name", "Profile.IconUrl", "Instructions", "Model", "ToolList", "PluginList", "SkillList", "AdvancedConfig"]</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         return self._UpdateMask
@@ -11791,10 +13026,10 @@ class ModifyAppRequest(AbstractModel):
         :type Name: str
         :param _ShareConfig: 分享配置
         :type ShareConfig: :class:`tencentcloud.adp.v20260520.models.AppShareAccessControl`
-        :param _SharedKnowledgeIdList: 引用的共享知识库ID列表(全量覆盖)
-        :type SharedKnowledgeIdList: list of str
+        :param _SharedKbIdList: 引用的共享知识库ID列表(全量覆盖)
+        :type SharedKbIdList: list of str
         :param _UpdateMask: 字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：
-【顶层】Name, Avatar, Description, AppMode, ShareConfig, SharedKnowledgeIdList
+【顶层】Name, Avatar, Description, AppMode, ShareConfig, SharedKbIdList
 【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList
 【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel
 【WebSearch】Config.WebSearch
@@ -11813,7 +13048,7 @@ class ModifyAppRequest(AbstractModel):
         self._Description = None
         self._Name = None
         self._ShareConfig = None
-        self._SharedKnowledgeIdList = None
+        self._SharedKbIdList = None
         self._UpdateMask = None
 
     @property
@@ -11894,20 +13129,20 @@ class ModifyAppRequest(AbstractModel):
         self._ShareConfig = ShareConfig
 
     @property
-    def SharedKnowledgeIdList(self):
+    def SharedKbIdList(self):
         r"""引用的共享知识库ID列表(全量覆盖)
         :rtype: list of str
         """
-        return self._SharedKnowledgeIdList
+        return self._SharedKbIdList
 
-    @SharedKnowledgeIdList.setter
-    def SharedKnowledgeIdList(self, SharedKnowledgeIdList):
-        self._SharedKnowledgeIdList = SharedKnowledgeIdList
+    @SharedKbIdList.setter
+    def SharedKbIdList(self, SharedKbIdList):
+        self._SharedKbIdList = SharedKbIdList
 
     @property
     def UpdateMask(self):
         r"""字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：
-【顶层】Name, Avatar, Description, AppMode, ShareConfig, SharedKnowledgeIdList
+【顶层】Name, Avatar, Description, AppMode, ShareConfig, SharedKbIdList
 【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList
 【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel
 【WebSearch】Config.WebSearch
@@ -11938,7 +13173,7 @@ class ModifyAppRequest(AbstractModel):
         if params.get("ShareConfig") is not None:
             self._ShareConfig = AppShareAccessControl()
             self._ShareConfig._deserialize(params.get("ShareConfig"))
-        self._SharedKnowledgeIdList = params.get("SharedKnowledgeIdList")
+        self._SharedKbIdList = params.get("SharedKbIdList")
         if params.get("UpdateMask") is not None:
             self._UpdateMask = FieldMask()
             self._UpdateMask._deserialize(params.get("UpdateMask"))
@@ -12207,7 +13442,7 @@ class ModifySpaceRequest(AbstractModel):
         :type Description: str
         :param _SpaceId: 空间id
         :type SpaceId: str
-        :param _FieldMask: 指定需要更新的字段，支持name和description
+        :param _FieldMask: 指定需要更新的字段，支持Name和Description
         :type FieldMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         self._Name = None
@@ -12250,7 +13485,7 @@ class ModifySpaceRequest(AbstractModel):
 
     @property
     def FieldMask(self):
-        r"""指定需要更新的字段，支持name和description
+        r"""指定需要更新的字段，支持Name和Description
         :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         return self._FieldMask
@@ -12506,6 +13741,102 @@ class MultiModalUnderstandingModel(AbstractModel):
         
 
 
+class OAuthConfig(AbstractModel):
+    r"""OAuth2.0授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthorizationUrl: OAuth服务方授权页url地址
+        :type AuthorizationUrl: str
+        :param _ClientId: 客户端ID
+        :type ClientId: str
+        :param _ClientSecret: 客户端密钥
+        :type ClientSecret: str
+        :param _ScopeList: 请求授权的数据范围
+        :type ScopeList: list of str
+        :param _TokenUrl: 获取access token的url地址
+        :type TokenUrl: str
+        """
+        self._AuthorizationUrl = None
+        self._ClientId = None
+        self._ClientSecret = None
+        self._ScopeList = None
+        self._TokenUrl = None
+
+    @property
+    def AuthorizationUrl(self):
+        r"""OAuth服务方授权页url地址
+        :rtype: str
+        """
+        return self._AuthorizationUrl
+
+    @AuthorizationUrl.setter
+    def AuthorizationUrl(self, AuthorizationUrl):
+        self._AuthorizationUrl = AuthorizationUrl
+
+    @property
+    def ClientId(self):
+        r"""客户端ID
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientSecret(self):
+        r"""客户端密钥
+        :rtype: str
+        """
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+    @property
+    def ScopeList(self):
+        r"""请求授权的数据范围
+        :rtype: list of str
+        """
+        return self._ScopeList
+
+    @ScopeList.setter
+    def ScopeList(self, ScopeList):
+        self._ScopeList = ScopeList
+
+    @property
+    def TokenUrl(self):
+        r"""获取access token的url地址
+        :rtype: str
+        """
+        return self._TokenUrl
+
+    @TokenUrl.setter
+    def TokenUrl(self, TokenUrl):
+        self._TokenUrl = TokenUrl
+
+
+    def _deserialize(self, params):
+        self._AuthorizationUrl = params.get("AuthorizationUrl")
+        self._ClientId = params.get("ClientId")
+        self._ClientSecret = params.get("ClientSecret")
+        self._ScopeList = params.get("ScopeList")
+        self._TokenUrl = params.get("TokenUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Plugin(AbstractModel):
     r"""插件详情
 
@@ -12513,6 +13844,9 @@ class Plugin(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Config: 插件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
         :param _CreateTime: 创建时间，unix时间戳
         :type CreateTime: str
         :param _Operation: 插件运营管理信息
@@ -12534,6 +13868,7 @@ class Plugin(AbstractModel):
         :param _UserState: 用户维度的插件状态信息
         :type UserState: :class:`tencentcloud.adp.v20260520.models.PluginUserState`
         """
+        self._Config = None
         self._CreateTime = None
         self._Operation = None
         self._PluginId = None
@@ -12544,6 +13879,18 @@ class Plugin(AbstractModel):
         self._ToolList = None
         self._UpdateTime = None
         self._UserState = None
+
+    @property
+    def Config(self):
+        r"""插件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
 
     @property
     def CreateTime(self):
@@ -12657,6 +14004,9 @@ class Plugin(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Config") is not None:
+            self._Config = PluginConfig()
+            self._Config._deserialize(params.get("Config"))
         self._CreateTime = params.get("CreateTime")
         if params.get("Operation") is not None:
             self._Operation = PluginOperation()
@@ -12690,6 +14040,84 @@ class Plugin(AbstractModel):
         
 
 
+class PluginConfig(AbstractModel):
+    r"""插件配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiPluginConfig: API插件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiPluginConfig: :class:`tencentcloud.adp.v20260520.models.ApiPluginConfig`
+        :param _AppPluginConfig: 应用插件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppPluginConfig: :class:`tencentcloud.adp.v20260520.models.AppPluginConfig`
+        :param _MCPPluginConfig: mcp插件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MCPPluginConfig: :class:`tencentcloud.adp.v20260520.models.MCPPluginConfig`
+        """
+        self._ApiPluginConfig = None
+        self._AppPluginConfig = None
+        self._MCPPluginConfig = None
+
+    @property
+    def ApiPluginConfig(self):
+        r"""API插件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ApiPluginConfig`
+        """
+        return self._ApiPluginConfig
+
+    @ApiPluginConfig.setter
+    def ApiPluginConfig(self, ApiPluginConfig):
+        self._ApiPluginConfig = ApiPluginConfig
+
+    @property
+    def AppPluginConfig(self):
+        r"""应用插件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppPluginConfig`
+        """
+        return self._AppPluginConfig
+
+    @AppPluginConfig.setter
+    def AppPluginConfig(self, AppPluginConfig):
+        self._AppPluginConfig = AppPluginConfig
+
+    @property
+    def MCPPluginConfig(self):
+        r"""mcp插件配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MCPPluginConfig`
+        """
+        return self._MCPPluginConfig
+
+    @MCPPluginConfig.setter
+    def MCPPluginConfig(self, MCPPluginConfig):
+        self._MCPPluginConfig = MCPPluginConfig
+
+
+    def _deserialize(self, params):
+        if params.get("ApiPluginConfig") is not None:
+            self._ApiPluginConfig = ApiPluginConfig()
+            self._ApiPluginConfig._deserialize(params.get("ApiPluginConfig"))
+        if params.get("AppPluginConfig") is not None:
+            self._AppPluginConfig = AppPluginConfig()
+            self._AppPluginConfig._deserialize(params.get("AppPluginConfig"))
+        if params.get("MCPPluginConfig") is not None:
+            self._MCPPluginConfig = MCPPluginConfig()
+            self._MCPPluginConfig._deserialize(params.get("MCPPluginConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PluginOperation(AbstractModel):
     r"""PluginOperation
 
@@ -12699,13 +14127,7 @@ class PluginOperation(AbstractModel):
         r"""
         :param _AllowExternalAccess: 是否允许外部调用
         :type AllowExternalAccess: bool
-        :param _BillingType: 计费类型
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 免费 |
-| 1 | 限时免费 |
-| 2 | 官方收费 |
+        :param _BillingType: <p>计费类型。</p><p>枚举值：</p><ul><li>0：免费</li><li>1：公测</li><li>2：官方收费</li></ul>
         :type BillingType: int
         :param _CategoryKey: 插件分类标识
         :type CategoryKey: str
@@ -12733,13 +14155,7 @@ class PluginOperation(AbstractModel):
 
     @property
     def BillingType(self):
-        r"""计费类型
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 免费 |
-| 1 | 限时免费 |
-| 2 | 官方收费 |
+        r"""<p>计费类型。</p><p>枚举值：</p><ul><li>0：免费</li><li>1：公测</li><li>2：官方收费</li></ul>
         :rtype: int
         """
         return self._BillingType
@@ -12798,6 +14214,87 @@ class PluginOperation(AbstractModel):
         
 
 
+class PluginParam(AbstractModel):
+    r"""MCP插件参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsGlobalHidden: 参数配置是否隐藏不可见
+        :type IsGlobalHidden: bool
+        :param _IsRequired: 参数是否必填
+        :type IsRequired: bool
+        :param _Name: 参数名称
+        :type Name: str
+        :param _Value: 参数值
+        :type Value: str
+        """
+        self._IsGlobalHidden = None
+        self._IsRequired = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def IsGlobalHidden(self):
+        r"""参数配置是否隐藏不可见
+        :rtype: bool
+        """
+        return self._IsGlobalHidden
+
+    @IsGlobalHidden.setter
+    def IsGlobalHidden(self, IsGlobalHidden):
+        self._IsGlobalHidden = IsGlobalHidden
+
+    @property
+    def IsRequired(self):
+        r"""参数是否必填
+        :rtype: bool
+        """
+        return self._IsRequired
+
+    @IsRequired.setter
+    def IsRequired(self, IsRequired):
+        self._IsRequired = IsRequired
+
+    @property
+    def Name(self):
+        r"""参数名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""参数值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._IsGlobalHidden = params.get("IsGlobalHidden")
+        self._IsRequired = params.get("IsRequired")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PluginProfile(AbstractModel):
     r"""PluginProfile
 
@@ -12813,29 +14310,11 @@ class PluginProfile(AbstractModel):
         :type IconUrl: str
         :param _Name: 插件名称
         :type Name: str
-        :param _PluginClass: 插件产品分类
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 普通插件 |
-| 1 | 连接器类插件 |
+        :param _PluginClass: <p>插件产品分类</p><p>枚举值：</p><ul><li>0：普通插件</li><li>1：连接器类插件</li></ul>
         :type PluginClass: int
-        :param _PluginKind: 插件类型
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | API接口 |
-| 1 | 代码 |
-| 2 | MCP |
-| 3 | 应用 |
+        :param _PluginKind: <p>插件类型</p><p>枚举值：</p><ul><li>0：API接口</li><li>1：代码</li><li>2：MCP</li><li>3：应用</li></ul>
         :type PluginKind: int
-        :param _PluginSource: 插件来源
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 自定义插件 |
-| 1 | 官方插件 |
-| 2 | 第三方插件 |
+        :param _PluginSource: <p>插件来源</p><p>枚举值：</p><ul><li>0：自定义插件</li><li>1：官方插件</li><li>2：第三方插件</li></ul>
         :type PluginSource: int
         """
         self._Author = None
@@ -12892,12 +14371,7 @@ class PluginProfile(AbstractModel):
 
     @property
     def PluginClass(self):
-        r"""插件产品分类
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 普通插件 |
-| 1 | 连接器类插件 |
+        r"""<p>插件产品分类</p><p>枚举值：</p><ul><li>0：普通插件</li><li>1：连接器类插件</li></ul>
         :rtype: int
         """
         return self._PluginClass
@@ -12908,14 +14382,7 @@ class PluginProfile(AbstractModel):
 
     @property
     def PluginKind(self):
-        r"""插件类型
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | API接口 |
-| 1 | 代码 |
-| 2 | MCP |
-| 3 | 应用 |
+        r"""<p>插件类型</p><p>枚举值：</p><ul><li>0：API接口</li><li>1：代码</li><li>2：MCP</li><li>3：应用</li></ul>
         :rtype: int
         """
         return self._PluginKind
@@ -12926,13 +14393,7 @@ class PluginProfile(AbstractModel):
 
     @property
     def PluginSource(self):
-        r"""插件来源
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 自定义插件 |
-| 1 | 官方插件 |
-| 2 | 第三方插件 |
+        r"""<p>插件来源</p><p>枚举值：</p><ul><li>0：自定义插件</li><li>1：官方插件</li><li>2：第三方插件</li></ul>
         :rtype: int
         """
         return self._PluginSource
@@ -13018,18 +14479,20 @@ class PluginSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operation: 插件运营管理信息
+        :param _Operation: <p>插件运营管理信息</p>
         :type Operation: :class:`tencentcloud.adp.v20260520.models.PluginOperation`
-        :param _PluginId: 插件id
+        :param _PluginId: <p>插件id</p>
         :type PluginId: str
-        :param _Profile: 插件基础信息
+        :param _Profile: <p>插件基础信息</p>
         :type Profile: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
-        :param _Statistics: 插件统计信息
+        :param _Statistics: <p>插件统计信息</p>
         :type Statistics: :class:`tencentcloud.adp.v20260520.models.PluginStatistics`
         :param _Status: <p>插件状态，1:可用，2:不可用 </p><p>枚举值：</p><ul><li>1： 可用</li><li>2： 不可用</li></ul>
         :type Status: int
-        :param _UserState: 用户维度的插件状态信息
+        :param _UserState: <p>用户维度的插件状态信息</p>
         :type UserState: :class:`tencentcloud.adp.v20260520.models.PluginUserState`
+        :param _Config: <p>插件配置信息</p>
+        :type Config: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
         """
         self._Operation = None
         self._PluginId = None
@@ -13037,10 +14500,11 @@ class PluginSummary(AbstractModel):
         self._Statistics = None
         self._Status = None
         self._UserState = None
+        self._Config = None
 
     @property
     def Operation(self):
-        r"""插件运营管理信息
+        r"""<p>插件运营管理信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginOperation`
         """
         return self._Operation
@@ -13051,7 +14515,7 @@ class PluginSummary(AbstractModel):
 
     @property
     def PluginId(self):
-        r"""插件id
+        r"""<p>插件id</p>
         :rtype: str
         """
         return self._PluginId
@@ -13062,7 +14526,7 @@ class PluginSummary(AbstractModel):
 
     @property
     def Profile(self):
-        r"""插件基础信息
+        r"""<p>插件基础信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
         """
         return self._Profile
@@ -13073,7 +14537,7 @@ class PluginSummary(AbstractModel):
 
     @property
     def Statistics(self):
-        r"""插件统计信息
+        r"""<p>插件统计信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginStatistics`
         """
         return self._Statistics
@@ -13095,7 +14559,7 @@ class PluginSummary(AbstractModel):
 
     @property
     def UserState(self):
-        r"""用户维度的插件状态信息
+        r"""<p>用户维度的插件状态信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginUserState`
         """
         return self._UserState
@@ -13103,6 +14567,17 @@ class PluginSummary(AbstractModel):
     @UserState.setter
     def UserState(self, UserState):
         self._UserState = UserState
+
+    @property
+    def Config(self):
+        r"""<p>插件配置信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
 
 
     def _deserialize(self, params):
@@ -13120,6 +14595,9 @@ class PluginSummary(AbstractModel):
         if params.get("UserState") is not None:
             self._UserState = PluginUserState()
             self._UserState._deserialize(params.get("UserState"))
+        if params.get("Config") is not None:
+            self._Config = PluginConfig()
+            self._Config._deserialize(params.get("Config"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13141,13 +14619,7 @@ class PluginUserState(AbstractModel):
         :type IsFavorite: bool
         :param _IsInWhiteList: 是否在插件白名单内
         :type IsInWhiteList: bool
-        :param _WhiteListType: 白名单类型
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 非白名单插件，全量开放 |
-| 1 | 在白名单里 |
-| 2 | 不在白名单里，需要提交申请 |
+        :param _WhiteListType: <p>白名单类型，用于表示当前用户是否可直接使用该插件。</p><p>枚举值：</p><ul><li>0：非白名单插件，全量开放</li><li>1：当前用户在白名单内</li><li>2：当前用户不在白名单内，需提交申请</li></ul>
         :type WhiteListType: int
         """
         self._IsFavorite = None
@@ -13178,13 +14650,7 @@ class PluginUserState(AbstractModel):
 
     @property
     def WhiteListType(self):
-        r"""白名单类型
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 非白名单插件，全量开放 |
-| 1 | 在白名单里 |
-| 2 | 不在白名单里，需要提交申请 |
+        r"""<p>白名单类型，用于表示当前用户是否可直接使用该插件。</p><p>枚举值：</p><ul><li>0：非白名单插件，全量开放</li><li>1：当前用户在白名单内</li><li>2：当前用户不在白名单内，需提交申请</li></ul>
         :rtype: int
         """
         return self._WhiteListType
@@ -13561,61 +15027,55 @@ class ReleaseSummary(AbstractModel):
 
 
 class RequestParam(AbstractModel):
-    r"""定义工具的请求参数
+    r"""RequestParam
 
     """
 
     def __init__(self):
         r"""
-        :param _DefaultValue: 默认值
-        :type DefaultValue: str
-        :param _Description: 参数描述
-        :type Description: str
-        :param _IsGlobalHidden: 全局隐藏不可见（区别于Agent场景的agent_hidden），true-全局隐藏不可见，false-可见
-        :type IsGlobalHidden: bool
-        :param _IsRequired: 是否必选
-        :type IsRequired: bool
-        :param _Name: 参数名称
-        :type Name: str
-        :param _Type: 参数类型
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 默认值是string，如果不填就按string处理 |
-| 1 |  |
-| 2 |  |
-| 3 |  |
-| 4 |  |
-| 5 |  |
-| 6 |  |
-| 7 |  |
-| 8 |  |
-| 9 |  |
-| 20 |  |
-| 99 | 空值 |
-| 100 | 未指定类型，用于类型为OneOf和AnyOf的场景 |
-        :type Type: int
-        :param _AnyOf: AnyOf类型的参数
+        :param _AnyOf: <p>AnyOf类型的参数</p>
         :type AnyOf: list of RequestParam
-        :param _OneOf: OneOf类型的参数
+        :param _DefaultValue: <p>默认值</p>
+        :type DefaultValue: str
+        :param _Description: <p>参数描述</p>
+        :type Description: str
+        :param _IsGlobalHidden: <p>全局隐藏不可见（区别于Agent场景的agent_hidden），true-全局隐藏不可见，false-可见</p>
+        :type IsGlobalHidden: bool
+        :param _IsRequired: <p>是否必选</p>
+        :type IsRequired: bool
+        :param _Name: <p>参数名称</p>
+        :type Name: str
+        :param _OneOf: <p>OneOf类型的参数</p>
         :type OneOf: list of RequestParam
-        :param _SubParams: 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+        :param _SubParams: <p>子参数,ParamType 是OBJECT 或 ARRAY&lt;&gt;类型有用</p>
         :type SubParams: list of RequestParam
+        :param _Type: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>PARAM_TYPE_STRING</td><td>0</td><td>字符串</td></tr><tr><td>PARAM_TYPE_INT</td><td>1</td><td>整数</td></tr><tr><td>PARAM_TYPE_FLOAT</td><td>2</td><td>浮点数</td></tr><tr><td>PARAM_TYPE_BOOL</td><td>3</td><td>布尔值</td></tr><tr><td>PARAM_TYPE_OBJECT</td><td>4</td><td>对象</td></tr><tr><td>PARAM_TYPE_ARRAY_STRING</td><td>5</td><td>字符串数组</td></tr><tr><td>PARAM_TYPE_ARRAY_INT</td><td>6</td><td>整数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_FLOAT</td><td>7</td><td>浮点数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_BOOL</td><td>8</td><td>布尔值数组</td></tr><tr><td>PARAM_TYPE_ARRAY_OBJECT</td><td>9</td><td>对象数组</td></tr><tr><td>PARAM_TYPE_ARRAY_ARRAY</td><td>20</td><td>数组嵌套</td></tr><tr><td>PARAM_TYPE_NULL</td><td>99</td><td>空值</td></tr><tr><td>PARAM_TYPE_UNSPECIFIED</td><td>100</td><td>未指定类型，用于OneOf和AnyOf场景</td></tr></tbody></table>
+        :type Type: int
         """
+        self._AnyOf = None
         self._DefaultValue = None
         self._Description = None
         self._IsGlobalHidden = None
         self._IsRequired = None
         self._Name = None
-        self._Type = None
-        self._AnyOf = None
         self._OneOf = None
         self._SubParams = None
+        self._Type = None
+
+    @property
+    def AnyOf(self):
+        r"""<p>AnyOf类型的参数</p>
+        :rtype: list of RequestParam
+        """
+        return self._AnyOf
+
+    @AnyOf.setter
+    def AnyOf(self, AnyOf):
+        self._AnyOf = AnyOf
 
     @property
     def DefaultValue(self):
-        r"""默认值
+        r"""<p>默认值</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -13626,7 +15086,7 @@ class RequestParam(AbstractModel):
 
     @property
     def Description(self):
-        r"""参数描述
+        r"""<p>参数描述</p>
         :rtype: str
         """
         return self._Description
@@ -13637,7 +15097,7 @@ class RequestParam(AbstractModel):
 
     @property
     def IsGlobalHidden(self):
-        r"""全局隐藏不可见（区别于Agent场景的agent_hidden），true-全局隐藏不可见，false-可见
+        r"""<p>全局隐藏不可见（区别于Agent场景的agent_hidden），true-全局隐藏不可见，false-可见</p>
         :rtype: bool
         """
         return self._IsGlobalHidden
@@ -13648,7 +15108,7 @@ class RequestParam(AbstractModel):
 
     @property
     def IsRequired(self):
-        r"""是否必选
+        r"""<p>是否必选</p>
         :rtype: bool
         """
         return self._IsRequired
@@ -13659,7 +15119,7 @@ class RequestParam(AbstractModel):
 
     @property
     def Name(self):
-        r"""参数名称
+        r"""<p>参数名称</p>
         :rtype: str
         """
         return self._Name
@@ -13669,47 +15129,8 @@ class RequestParam(AbstractModel):
         self._Name = Name
 
     @property
-    def Type(self):
-        r"""参数类型
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 默认值是string，如果不填就按string处理 |
-| 1 |  |
-| 2 |  |
-| 3 |  |
-| 4 |  |
-| 5 |  |
-| 6 |  |
-| 7 |  |
-| 8 |  |
-| 9 |  |
-| 20 |  |
-| 99 | 空值 |
-| 100 | 未指定类型，用于类型为OneOf和AnyOf的场景 |
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def AnyOf(self):
-        r"""AnyOf类型的参数
-        :rtype: list of RequestParam
-        """
-        return self._AnyOf
-
-    @AnyOf.setter
-    def AnyOf(self, AnyOf):
-        self._AnyOf = AnyOf
-
-    @property
     def OneOf(self):
-        r"""OneOf类型的参数
+        r"""<p>OneOf类型的参数</p>
         :rtype: list of RequestParam
         """
         return self._OneOf
@@ -13720,7 +15141,7 @@ class RequestParam(AbstractModel):
 
     @property
     def SubParams(self):
-        r"""子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+        r"""<p>子参数,ParamType 是OBJECT 或 ARRAY&lt;&gt;类型有用</p>
         :rtype: list of RequestParam
         """
         return self._SubParams
@@ -13729,20 +15150,30 @@ class RequestParam(AbstractModel):
     def SubParams(self, SubParams):
         self._SubParams = SubParams
 
+    @property
+    def Type(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>PARAM_TYPE_STRING</td><td>0</td><td>字符串</td></tr><tr><td>PARAM_TYPE_INT</td><td>1</td><td>整数</td></tr><tr><td>PARAM_TYPE_FLOAT</td><td>2</td><td>浮点数</td></tr><tr><td>PARAM_TYPE_BOOL</td><td>3</td><td>布尔值</td></tr><tr><td>PARAM_TYPE_OBJECT</td><td>4</td><td>对象</td></tr><tr><td>PARAM_TYPE_ARRAY_STRING</td><td>5</td><td>字符串数组</td></tr><tr><td>PARAM_TYPE_ARRAY_INT</td><td>6</td><td>整数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_FLOAT</td><td>7</td><td>浮点数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_BOOL</td><td>8</td><td>布尔值数组</td></tr><tr><td>PARAM_TYPE_ARRAY_OBJECT</td><td>9</td><td>对象数组</td></tr><tr><td>PARAM_TYPE_ARRAY_ARRAY</td><td>20</td><td>数组嵌套</td></tr><tr><td>PARAM_TYPE_NULL</td><td>99</td><td>空值</td></tr><tr><td>PARAM_TYPE_UNSPECIFIED</td><td>100</td><td>未指定类型，用于OneOf和AnyOf场景</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
-        self._DefaultValue = params.get("DefaultValue")
-        self._Description = params.get("Description")
-        self._IsGlobalHidden = params.get("IsGlobalHidden")
-        self._IsRequired = params.get("IsRequired")
-        self._Name = params.get("Name")
-        self._Type = params.get("Type")
         if params.get("AnyOf") is not None:
             self._AnyOf = []
             for item in params.get("AnyOf"):
                 obj = RequestParam()
                 obj._deserialize(item)
                 self._AnyOf.append(obj)
+        self._DefaultValue = params.get("DefaultValue")
+        self._Description = params.get("Description")
+        self._IsGlobalHidden = params.get("IsGlobalHidden")
+        self._IsRequired = params.get("IsRequired")
+        self._Name = params.get("Name")
         if params.get("OneOf") is not None:
             self._OneOf = []
             for item in params.get("OneOf"):
@@ -13755,6 +15186,7 @@ class RequestParam(AbstractModel):
                 obj = RequestParam()
                 obj._deserialize(item)
                 self._SubParams.append(obj)
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13920,54 +15352,32 @@ class ResetConversationResponse(AbstractModel):
 
 
 class ResponseParam(AbstractModel):
-    r"""定义工具的回复参数
+    r"""ResponseParam
 
     """
 
     def __init__(self):
         r"""
-        :param _Description: 变量描述
+        :param _Description: <p>变量描述</p>
         :type Description: str
-        :param _Name: 参数名称
+        :param _Name: <p>参数名称</p>
         :type Name: str
-        :param _Type: 参数类型
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 默认值是string，如果不填就按string处理 |
-| 1 |  |
-| 2 |  |
-| 3 |  |
-| 4 |  |
-| 5 |  |
-| 6 |  |
-| 7 |  |
-| 8 |  |
-| 9 |  |
-| 20 |  |
-| 99 | 空值 |
-| 100 | 未指定类型，用于类型为OneOf和AnyOf的场景 |
-        :type Type: int
-        :param _RenderMode: 
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 覆盖（全量替换） |
-| 1 | 增量追加 |
+        :param _RenderMode: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>OUTPUT_RENDER_REPLACE</td><td>0</td><td>覆盖（全量替换）</td></tr><tr><td>OUTPUT_RENDER_APPEND</td><td>1</td><td>增量追加</td></tr></tbody></table>
         :type RenderMode: int
-        :param _SubParams: 只对 OBJECT 或 ARRAY_OBJECT 类型有用
+        :param _SubParams: <p>只对 OBJECT 或 ARRAY_OBJECT 类型有用</p>
         :type SubParams: list of ResponseParam
+        :param _Type: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>PARAM_TYPE_STRING</td><td>0</td><td>字符串</td></tr><tr><td>PARAM_TYPE_INT</td><td>1</td><td>整数</td></tr><tr><td>PARAM_TYPE_FLOAT</td><td>2</td><td>浮点数</td></tr><tr><td>PARAM_TYPE_BOOL</td><td>3</td><td>布尔值</td></tr><tr><td>PARAM_TYPE_OBJECT</td><td>4</td><td>对象</td></tr><tr><td>PARAM_TYPE_ARRAY_STRING</td><td>5</td><td>字符串数组</td></tr><tr><td>PARAM_TYPE_ARRAY_INT</td><td>6</td><td>整数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_FLOAT</td><td>7</td><td>浮点数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_BOOL</td><td>8</td><td>布尔值数组</td></tr><tr><td>PARAM_TYPE_ARRAY_OBJECT</td><td>9</td><td>对象数组</td></tr><tr><td>PARAM_TYPE_ARRAY_ARRAY</td><td>20</td><td>数组嵌套</td></tr><tr><td>PARAM_TYPE_NULL</td><td>99</td><td>空值</td></tr><tr><td>PARAM_TYPE_UNSPECIFIED</td><td>100</td><td>未指定类型，用于OneOf和AnyOf场景</td></tr></tbody></table>
+        :type Type: int
         """
         self._Description = None
         self._Name = None
-        self._Type = None
         self._RenderMode = None
         self._SubParams = None
+        self._Type = None
 
     @property
     def Description(self):
-        r"""变量描述
+        r"""<p>变量描述</p>
         :rtype: str
         """
         return self._Description
@@ -13978,7 +15388,7 @@ class ResponseParam(AbstractModel):
 
     @property
     def Name(self):
-        r"""参数名称
+        r"""<p>参数名称</p>
         :rtype: str
         """
         return self._Name
@@ -13988,41 +15398,8 @@ class ResponseParam(AbstractModel):
         self._Name = Name
 
     @property
-    def Type(self):
-        r"""参数类型
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 默认值是string，如果不填就按string处理 |
-| 1 |  |
-| 2 |  |
-| 3 |  |
-| 4 |  |
-| 5 |  |
-| 6 |  |
-| 7 |  |
-| 8 |  |
-| 9 |  |
-| 20 |  |
-| 99 | 空值 |
-| 100 | 未指定类型，用于类型为OneOf和AnyOf的场景 |
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
     def RenderMode(self):
-        r"""
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 覆盖（全量替换） |
-| 1 | 增量追加 |
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>OUTPUT_RENDER_REPLACE</td><td>0</td><td>覆盖（全量替换）</td></tr><tr><td>OUTPUT_RENDER_APPEND</td><td>1</td><td>增量追加</td></tr></tbody></table>
         :rtype: int
         """
         return self._RenderMode
@@ -14033,7 +15410,7 @@ class ResponseParam(AbstractModel):
 
     @property
     def SubParams(self):
-        r"""只对 OBJECT 或 ARRAY_OBJECT 类型有用
+        r"""<p>只对 OBJECT 或 ARRAY_OBJECT 类型有用</p>
         :rtype: list of ResponseParam
         """
         return self._SubParams
@@ -14042,11 +15419,21 @@ class ResponseParam(AbstractModel):
     def SubParams(self, SubParams):
         self._SubParams = SubParams
 
+    @property
+    def Type(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>PARAM_TYPE_STRING</td><td>0</td><td>字符串</td></tr><tr><td>PARAM_TYPE_INT</td><td>1</td><td>整数</td></tr><tr><td>PARAM_TYPE_FLOAT</td><td>2</td><td>浮点数</td></tr><tr><td>PARAM_TYPE_BOOL</td><td>3</td><td>布尔值</td></tr><tr><td>PARAM_TYPE_OBJECT</td><td>4</td><td>对象</td></tr><tr><td>PARAM_TYPE_ARRAY_STRING</td><td>5</td><td>字符串数组</td></tr><tr><td>PARAM_TYPE_ARRAY_INT</td><td>6</td><td>整数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_FLOAT</td><td>7</td><td>浮点数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_BOOL</td><td>8</td><td>布尔值数组</td></tr><tr><td>PARAM_TYPE_ARRAY_OBJECT</td><td>9</td><td>对象数组</td></tr><tr><td>PARAM_TYPE_ARRAY_ARRAY</td><td>20</td><td>数组嵌套</td></tr><tr><td>PARAM_TYPE_NULL</td><td>99</td><td>空值</td></tr><tr><td>PARAM_TYPE_UNSPECIFIED</td><td>100</td><td>未指定类型，用于OneOf和AnyOf场景</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Description = params.get("Description")
         self._Name = params.get("Name")
-        self._Type = params.get("Type")
         self._RenderMode = params.get("RenderMode")
         if params.get("SubParams") is not None:
             self._SubParams = []
@@ -14054,6 +15441,7 @@ class ResponseParam(AbstractModel):
                 obj = ResponseParam()
                 obj._deserialize(item)
                 self._SubParams.append(obj)
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14733,6 +16121,117 @@ class SkillClassification(AbstractModel):
         
 
 
+class SkillNotice(AbstractModel):
+    r"""Skill 异常通知。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Level: 通知级别
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | 占位 |
+| 1 | 成功，字符串面："success" |
+| 2 | 警告，字符串面："warning" |
+| 3 | 错误，字符串面："error" |
+        :type Level: int
+        :param _NoticeContent: 文案（i18n 后字符串）
+        :type NoticeContent: str
+        :param _TriggerVersionId: 触发本通知的 Skill 版本ID
+        :type TriggerVersionId: str
+        :param _Type: 通知类型 
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | 占位 |
+| 1 | 发布失败 |
+| 2 | 共享审批被拒 |
+        :type Type: int
+        """
+        self._Level = None
+        self._NoticeContent = None
+        self._TriggerVersionId = None
+        self._Type = None
+
+    @property
+    def Level(self):
+        r"""通知级别
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | 占位 |
+| 1 | 成功，字符串面："success" |
+| 2 | 警告，字符串面："warning" |
+| 3 | 错误，字符串面："error" |
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def NoticeContent(self):
+        r"""文案（i18n 后字符串）
+        :rtype: str
+        """
+        return self._NoticeContent
+
+    @NoticeContent.setter
+    def NoticeContent(self, NoticeContent):
+        self._NoticeContent = NoticeContent
+
+    @property
+    def TriggerVersionId(self):
+        r"""触发本通知的 Skill 版本ID
+        :rtype: str
+        """
+        return self._TriggerVersionId
+
+    @TriggerVersionId.setter
+    def TriggerVersionId(self, TriggerVersionId):
+        self._TriggerVersionId = TriggerVersionId
+
+    @property
+    def Type(self):
+        r"""通知类型 
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | 占位 |
+| 1 | 发布失败 |
+| 2 | 共享审批被拒 |
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Level = params.get("Level")
+        self._NoticeContent = params.get("NoticeContent")
+        self._TriggerVersionId = params.get("TriggerVersionId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkillProfile(AbstractModel):
     r"""SkillProfile Skill 基础展示信息。
 
@@ -15019,15 +16518,32 @@ class SkillSummary(AbstractModel):
         :type Profile: :class:`tencentcloud.adp.v20260520.models.SkillProfile`
         :param _SkillId: Skill ID
         :type SkillId: str
+        :param _NoticeList: Skill 异常通知列表
+        :type NoticeList: list of SkillNotice
+        :param _PermissionIdList: 当前用户对该 Skill 的资源操作权限位列表；内置/共享 Skill 固定为空数组
+        :type PermissionIdList: list of str
         :param _ShareList: 共享信息；可能有两条，一条是已共享的，一条是审核中的
         :type ShareList: list of SkillShare
+        :param _SkillStatus: Skill状态 
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | 初始化（无任何已发布版本，且最新版本处于 INITIALIZED/UNRELEASED） |
+| 1 | 安全检测中（无任何已发布版本，且最新版本处于 AUDITING） |
+| 2 | 待发布（无任何已发布版本，且最新版本处于 PENDING_RELEASE） |
+| 3 | 已发布（存在任一 RELEASED 版本，吸收态） |
+        :type SkillStatus: int
         """
         self._ClassificationInfo = None
         self._CurrentVersionInfo = None
         self._IsFavorite = None
         self._Profile = None
         self._SkillId = None
+        self._NoticeList = None
+        self._PermissionIdList = None
         self._ShareList = None
+        self._SkillStatus = None
 
     @property
     def ClassificationInfo(self):
@@ -15088,6 +16604,28 @@ class SkillSummary(AbstractModel):
         self._SkillId = SkillId
 
     @property
+    def NoticeList(self):
+        r"""Skill 异常通知列表
+        :rtype: list of SkillNotice
+        """
+        return self._NoticeList
+
+    @NoticeList.setter
+    def NoticeList(self, NoticeList):
+        self._NoticeList = NoticeList
+
+    @property
+    def PermissionIdList(self):
+        r"""当前用户对该 Skill 的资源操作权限位列表；内置/共享 Skill 固定为空数组
+        :rtype: list of str
+        """
+        return self._PermissionIdList
+
+    @PermissionIdList.setter
+    def PermissionIdList(self, PermissionIdList):
+        self._PermissionIdList = PermissionIdList
+
+    @property
     def ShareList(self):
         r"""共享信息；可能有两条，一条是已共享的，一条是审核中的
         :rtype: list of SkillShare
@@ -15097,6 +16635,25 @@ class SkillSummary(AbstractModel):
     @ShareList.setter
     def ShareList(self, ShareList):
         self._ShareList = ShareList
+
+    @property
+    def SkillStatus(self):
+        r"""Skill状态 
+
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 | 初始化（无任何已发布版本，且最新版本处于 INITIALIZED/UNRELEASED） |
+| 1 | 安全检测中（无任何已发布版本，且最新版本处于 AUDITING） |
+| 2 | 待发布（无任何已发布版本，且最新版本处于 PENDING_RELEASE） |
+| 3 | 已发布（存在任一 RELEASED 版本，吸收态） |
+        :rtype: int
+        """
+        return self._SkillStatus
+
+    @SkillStatus.setter
+    def SkillStatus(self, SkillStatus):
+        self._SkillStatus = SkillStatus
 
 
     def _deserialize(self, params):
@@ -15111,12 +16668,20 @@ class SkillSummary(AbstractModel):
             self._Profile = SkillProfile()
             self._Profile._deserialize(params.get("Profile"))
         self._SkillId = params.get("SkillId")
+        if params.get("NoticeList") is not None:
+            self._NoticeList = []
+            for item in params.get("NoticeList"):
+                obj = SkillNotice()
+                obj._deserialize(item)
+                self._NoticeList.append(obj)
+        self._PermissionIdList = params.get("PermissionIdList")
         if params.get("ShareList") is not None:
             self._ShareList = []
             for item in params.get("ShareList"):
                 obj = SkillShare()
                 obj._deserialize(item)
                 self._ShareList.append(obj)
+        self._SkillStatus = params.get("SkillStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15141,10 +16706,34 @@ class SkillVersion(AbstractModel):
         :type Version: str
         :param _VersionId: 当前生效版本ID
         :type VersionId: str
+        :param _VersionStatus:     Skill 版本发布流程状态：
+      - 0 INITIALIZED      初始化（版本初始态）
+      - 1 AUDITING         审核中（f_analysis_status ∈ {PENDING, RUNNING}）
+      - 2 PENDING_RELEASE  待发布（低/中风险，等用户确认上架）
+      - 3 RELEASED         已发布
+      - 4 UNRELEASED       未发布（HIGH / UNAVAILABLE / FAILED / 用户放弃，含历史"不通过"语义）
+    与 SkillAnalysisStatus 解耦：前者是用户视角发布生命周期，后者是安全检测阶段。
+        :type VersionStatus: int
+        :param _SkillMd5: Skill包的md5信息
+        :type SkillMd5: str
+        :param _SkillUrl: 版本包地址
+        :type SkillUrl: str
+        :param _CreateTime: 版本创建时间（Unix秒）
+        :type CreateTime: str
+        :param _SkillMarkdownUrl: skill md文档
+        :type SkillMarkdownUrl: str
+        :param _UpdateDesc: 版本变更说明
+        :type UpdateDesc: str
         """
         self._AnalysisInfo = None
         self._Version = None
         self._VersionId = None
+        self._VersionStatus = None
+        self._SkillMd5 = None
+        self._SkillUrl = None
+        self._CreateTime = None
+        self._SkillMarkdownUrl = None
+        self._UpdateDesc = None
 
     @property
     def AnalysisInfo(self):
@@ -15180,6 +16769,78 @@ class SkillVersion(AbstractModel):
     def VersionId(self, VersionId):
         self._VersionId = VersionId
 
+    @property
+    def VersionStatus(self):
+        r"""    Skill 版本发布流程状态：
+      - 0 INITIALIZED      初始化（版本初始态）
+      - 1 AUDITING         审核中（f_analysis_status ∈ {PENDING, RUNNING}）
+      - 2 PENDING_RELEASE  待发布（低/中风险，等用户确认上架）
+      - 3 RELEASED         已发布
+      - 4 UNRELEASED       未发布（HIGH / UNAVAILABLE / FAILED / 用户放弃，含历史"不通过"语义）
+    与 SkillAnalysisStatus 解耦：前者是用户视角发布生命周期，后者是安全检测阶段。
+        :rtype: int
+        """
+        return self._VersionStatus
+
+    @VersionStatus.setter
+    def VersionStatus(self, VersionStatus):
+        self._VersionStatus = VersionStatus
+
+    @property
+    def SkillMd5(self):
+        r"""Skill包的md5信息
+        :rtype: str
+        """
+        return self._SkillMd5
+
+    @SkillMd5.setter
+    def SkillMd5(self, SkillMd5):
+        self._SkillMd5 = SkillMd5
+
+    @property
+    def SkillUrl(self):
+        r"""版本包地址
+        :rtype: str
+        """
+        return self._SkillUrl
+
+    @SkillUrl.setter
+    def SkillUrl(self, SkillUrl):
+        self._SkillUrl = SkillUrl
+
+    @property
+    def CreateTime(self):
+        r"""版本创建时间（Unix秒）
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SkillMarkdownUrl(self):
+        r"""skill md文档
+        :rtype: str
+        """
+        return self._SkillMarkdownUrl
+
+    @SkillMarkdownUrl.setter
+    def SkillMarkdownUrl(self, SkillMarkdownUrl):
+        self._SkillMarkdownUrl = SkillMarkdownUrl
+
+    @property
+    def UpdateDesc(self):
+        r"""版本变更说明
+        :rtype: str
+        """
+        return self._UpdateDesc
+
+    @UpdateDesc.setter
+    def UpdateDesc(self, UpdateDesc):
+        self._UpdateDesc = UpdateDesc
+
 
     def _deserialize(self, params):
         if params.get("AnalysisInfo") is not None:
@@ -15187,6 +16848,12 @@ class SkillVersion(AbstractModel):
             self._AnalysisInfo._deserialize(params.get("AnalysisInfo"))
         self._Version = params.get("Version")
         self._VersionId = params.get("VersionId")
+        self._VersionStatus = params.get("VersionStatus")
+        self._SkillMd5 = params.get("SkillMd5")
+        self._SkillUrl = params.get("SkillUrl")
+        self._CreateTime = params.get("CreateTime")
+        self._SkillMarkdownUrl = params.get("SkillMarkdownUrl")
+        self._UpdateDesc = params.get("UpdateDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15431,42 +17098,6 @@ class SystemVariable(AbstractModel):
         
 
 
-class TemplatePublishInfo(AbstractModel):
-    r"""模版中心同步信息(私有化独有 - 公有云/SaaS 版本忽略此字段)
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IsPublished: 是否已同步到模版中心
-        :type IsPublished: bool
-        """
-        self._IsPublished = None
-
-    @property
-    def IsPublished(self):
-        r"""是否已同步到模版中心
-        :rtype: bool
-        """
-        return self._IsPublished
-
-    @IsPublished.setter
-    def IsPublished(self, IsPublished):
-        self._IsPublished = IsPublished
-
-
-    def _deserialize(self, params):
-        self._IsPublished = params.get("IsPublished")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ThinkModel(AbstractModel):
     r"""思考模型配置
 
@@ -15508,85 +17139,44 @@ class ThinkModel(AbstractModel):
 
 
 class Tool(AbstractModel):
-    r"""插件的工具信息
+    r"""Tool
 
     """
 
     def __init__(self):
         r"""
-        :param _Description: 工具描述信息
-        :type Description: str
-        :param _Name: 工具名称
-        :type Name: str
-        :param _PluginId: 插件id
-        :type PluginId: str
-        :param _ToolId: 工具id
-        :type ToolId: str
-        :param _Billing: 工具计费信息
+        :param _Billing: <p>工具计费信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Billing: :class:`tencentcloud.adp.v20260520.models.ToolBilling`
-        :param _CallCount: 工具调用次数
+        :param _CallCount: <p>工具调用次数</p><p>单位：次数</p>
         :type CallCount: int
-        :param _ToolAccessMode: <p>工具访问模式</p><p>枚举值：</p><ul><li>0： 未指定</li><li>1： READ_ONLY</li><li>2： WRITE_DELETE</li></ul>
+        :param _Description: <p>工具描述信息</p>
+        :type Description: str
+        :param _Name: <p>工具名称</p>
+        :type Name: str
+        :param _PluginId: <p>插件ID</p>
+        :type PluginId: str
+        :param _ToolAccessMode: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TOOL_ACCESS_MODE_UNKNOWN</td><td>0</td><td>未指定</td></tr><tr><td>TOOL_ACCESS_MODE_READ_ONLY</td><td>1</td><td>只读</td></tr><tr><td>TOOL_ACCESS_MODE_WRITE_DELETE</td><td>2</td><td>写/删除</td></tr></tbody></table>
         :type ToolAccessMode: int
-        :param _ToolConfig: 工具配置
+        :param _ToolConfig: <p>工具配置信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ToolConfig: :class:`tencentcloud.adp.v20260520.models.ToolConfig`
+        :param _ToolId: <p>工具ID</p>
+        :type ToolId: str
         """
+        self._Billing = None
+        self._CallCount = None
         self._Description = None
         self._Name = None
         self._PluginId = None
-        self._ToolId = None
-        self._Billing = None
-        self._CallCount = None
         self._ToolAccessMode = None
         self._ToolConfig = None
-
-    @property
-    def Description(self):
-        r"""工具描述信息
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def Name(self):
-        r"""工具名称
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def PluginId(self):
-        r"""插件id
-        :rtype: str
-        """
-        return self._PluginId
-
-    @PluginId.setter
-    def PluginId(self, PluginId):
-        self._PluginId = PluginId
-
-    @property
-    def ToolId(self):
-        r"""工具id
-        :rtype: str
-        """
-        return self._ToolId
-
-    @ToolId.setter
-    def ToolId(self, ToolId):
-        self._ToolId = ToolId
+        self._ToolId = None
 
     @property
     def Billing(self):
-        r"""工具计费信息
+        r"""<p>工具计费信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.ToolBilling`
         """
         return self._Billing
@@ -15597,7 +17187,7 @@ class Tool(AbstractModel):
 
     @property
     def CallCount(self):
-        r"""工具调用次数
+        r"""<p>工具调用次数</p><p>单位：次数</p>
         :rtype: int
         """
         return self._CallCount
@@ -15607,8 +17197,41 @@ class Tool(AbstractModel):
         self._CallCount = CallCount
 
     @property
+    def Description(self):
+        r"""<p>工具描述信息</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        r"""<p>工具名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PluginId(self):
+        r"""<p>插件ID</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
     def ToolAccessMode(self):
-        r"""<p>工具访问模式</p><p>枚举值：</p><ul><li>0： 未指定</li><li>1： READ_ONLY</li><li>2： WRITE_DELETE</li></ul>
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TOOL_ACCESS_MODE_UNKNOWN</td><td>0</td><td>未指定</td></tr><tr><td>TOOL_ACCESS_MODE_READ_ONLY</td><td>1</td><td>只读</td></tr><tr><td>TOOL_ACCESS_MODE_WRITE_DELETE</td><td>2</td><td>写/删除</td></tr></tbody></table>
         :rtype: int
         """
         return self._ToolAccessMode
@@ -15619,7 +17242,8 @@ class Tool(AbstractModel):
 
     @property
     def ToolConfig(self):
-        r"""工具配置
+        r"""<p>工具配置信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.ToolConfig`
         """
         return self._ToolConfig
@@ -15628,20 +17252,31 @@ class Tool(AbstractModel):
     def ToolConfig(self, ToolConfig):
         self._ToolConfig = ToolConfig
 
+    @property
+    def ToolId(self):
+        r"""<p>工具ID</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
 
     def _deserialize(self, params):
-        self._Description = params.get("Description")
-        self._Name = params.get("Name")
-        self._PluginId = params.get("PluginId")
-        self._ToolId = params.get("ToolId")
         if params.get("Billing") is not None:
             self._Billing = ToolBilling()
             self._Billing._deserialize(params.get("Billing"))
         self._CallCount = params.get("CallCount")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._PluginId = params.get("PluginId")
         self._ToolAccessMode = params.get("ToolAccessMode")
         if params.get("ToolConfig") is not None:
             self._ToolConfig = ToolConfig()
             self._ToolConfig._deserialize(params.get("ToolConfig"))
+        self._ToolId = params.get("ToolId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15659,28 +17294,34 @@ class ToolBilling(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BillingType: 计费类型
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 免费 |
-| 1 | 限时免费 |
-| 2 | 官方收费 |
-| 3 | 官方收费(存量老用户限时免费) |
+        :param _BasicBilling: <p>基础计费信息</p>
+        :type BasicBilling: :class:`tencentcloud.adp.v20260520.models.BasicBilling`
+        :param _BillingType: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>BILLING_TYPE_FREE</td><td>0</td><td>免费</td></tr><tr><td>BILLING_TYPE_LIMITED_FREE</td><td>1</td><td>限时免费</td></tr><tr><td>BILLING_TYPE_OFFICIAL_PAID</td><td>2</td><td>官方收费</td></tr><tr><td>BILLING_TYPE_OFFICIAL_PAID_OLD_FREE</td><td>3</td><td>官方收费（新/升级用户收费，存量老用户限时免费）</td></tr></tbody></table>
         :type BillingType: int
+        :param _ComplexBilling: <p>复合类型计费信息</p>
+        :type ComplexBilling: :class:`tencentcloud.adp.v20260520.models.ComplexBilling`
+        :param _DuplexBilling: <p>双向计费信息</p>
+        :type DuplexBilling: :class:`tencentcloud.adp.v20260520.models.DuplexBilling`
         """
+        self._BasicBilling = None
         self._BillingType = None
+        self._ComplexBilling = None
+        self._DuplexBilling = None
+
+    @property
+    def BasicBilling(self):
+        r"""<p>基础计费信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.BasicBilling`
+        """
+        return self._BasicBilling
+
+    @BasicBilling.setter
+    def BasicBilling(self, BasicBilling):
+        self._BasicBilling = BasicBilling
 
     @property
     def BillingType(self):
-        r"""计费类型
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 免费 |
-| 1 | 限时免费 |
-| 2 | 官方收费 |
-| 3 | 官方收费(存量老用户限时免费) |
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>BILLING_TYPE_FREE</td><td>0</td><td>免费</td></tr><tr><td>BILLING_TYPE_LIMITED_FREE</td><td>1</td><td>限时免费</td></tr><tr><td>BILLING_TYPE_OFFICIAL_PAID</td><td>2</td><td>官方收费</td></tr><tr><td>BILLING_TYPE_OFFICIAL_PAID_OLD_FREE</td><td>3</td><td>官方收费（新/升级用户收费，存量老用户限时免费）</td></tr></tbody></table>
         :rtype: int
         """
         return self._BillingType
@@ -15689,9 +17330,40 @@ class ToolBilling(AbstractModel):
     def BillingType(self, BillingType):
         self._BillingType = BillingType
 
+    @property
+    def ComplexBilling(self):
+        r"""<p>复合类型计费信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ComplexBilling`
+        """
+        return self._ComplexBilling
+
+    @ComplexBilling.setter
+    def ComplexBilling(self, ComplexBilling):
+        self._ComplexBilling = ComplexBilling
+
+    @property
+    def DuplexBilling(self):
+        r"""<p>双向计费信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DuplexBilling`
+        """
+        return self._DuplexBilling
+
+    @DuplexBilling.setter
+    def DuplexBilling(self, DuplexBilling):
+        self._DuplexBilling = DuplexBilling
+
 
     def _deserialize(self, params):
+        if params.get("BasicBilling") is not None:
+            self._BasicBilling = BasicBilling()
+            self._BasicBilling._deserialize(params.get("BasicBilling"))
         self._BillingType = params.get("BillingType")
+        if params.get("ComplexBilling") is not None:
+            self._ComplexBilling = ComplexBilling()
+            self._ComplexBilling._deserialize(params.get("ComplexBilling"))
+        if params.get("DuplexBilling") is not None:
+            self._DuplexBilling = DuplexBilling()
+            self._DuplexBilling._deserialize(params.get("DuplexBilling"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15709,17 +17381,13 @@ class ToolConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApiToolConfig: API插件工具配置
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ApiToolConfig: <p>API工具配置信息</p>
         :type ApiToolConfig: :class:`tencentcloud.adp.v20260520.models.ApiToolConfig`
-        :param _AppToolConfig: 应用插件工具配置
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _AppToolConfig: <p>应用配置信息</p>
         :type AppToolConfig: :class:`tencentcloud.adp.v20260520.models.AppToolConfig`
-        :param _CodeToolConfig: 代码插件工具配置
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _CodeToolConfig: <p>代码工具配置信息</p>
         :type CodeToolConfig: :class:`tencentcloud.adp.v20260520.models.CodeToolConfig`
-        :param _MCPToolConfig: mcp插件工具配置
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _MCPToolConfig: <p>MCP工具配置信息</p>
         :type MCPToolConfig: :class:`tencentcloud.adp.v20260520.models.MCPToolConfig`
         """
         self._ApiToolConfig = None
@@ -15729,8 +17397,7 @@ class ToolConfig(AbstractModel):
 
     @property
     def ApiToolConfig(self):
-        r"""API插件工具配置
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""<p>API工具配置信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.ApiToolConfig`
         """
         return self._ApiToolConfig
@@ -15741,8 +17408,7 @@ class ToolConfig(AbstractModel):
 
     @property
     def AppToolConfig(self):
-        r"""应用插件工具配置
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""<p>应用配置信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.AppToolConfig`
         """
         return self._AppToolConfig
@@ -15753,8 +17419,7 @@ class ToolConfig(AbstractModel):
 
     @property
     def CodeToolConfig(self):
-        r"""代码插件工具配置
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""<p>代码工具配置信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.CodeToolConfig`
         """
         return self._CodeToolConfig
@@ -15765,8 +17430,7 @@ class ToolConfig(AbstractModel):
 
     @property
     def MCPToolConfig(self):
-        r"""mcp插件工具配置
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""<p>MCP工具配置信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.MCPToolConfig`
         """
         return self._MCPToolConfig
@@ -15806,9 +17470,9 @@ class ToolExample(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Request: 请求示例，json字符串
+        :param _Request: <p>请求参数</p>
         :type Request: str
-        :param _Response: 回复示例，json字符串
+        :param _Response: <p>响应参数</p>
         :type Response: str
         """
         self._Request = None
@@ -15816,7 +17480,7 @@ class ToolExample(AbstractModel):
 
     @property
     def Request(self):
-        r"""请求示例，json字符串
+        r"""<p>请求参数</p>
         :rtype: str
         """
         return self._Request
@@ -15827,7 +17491,7 @@ class ToolExample(AbstractModel):
 
     @property
     def Response(self):
-        r"""回复示例，json字符串
+        r"""<p>响应参数</p>
         :rtype: str
         """
         return self._Response

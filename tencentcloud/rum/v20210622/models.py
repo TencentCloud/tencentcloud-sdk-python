@@ -18761,20 +18761,23 @@ class DescribeReleaseFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectID: 项目 id
+        :param _ProjectID: <p>项目 id</p>
         :type ProjectID: int
-        :param _FileVersion: 文件版本
+        :param _FileVersion: <p>文件版本</p>
         :type FileVersion: str
-        :param _FileName: 查询过滤条件（根据sourcemap的文件名模糊匹配）
+        :param _FileName: <p>查询过滤条件（根据sourcemap的文件名模糊匹配）</p>
         :type FileName: str
+        :param _IgnoreDefaultTimeRange: <p>false/不传=保留「最近 3 个月」约束（旧行为）；true=绕过时间窗口</p>
+        :type IgnoreDefaultTimeRange: bool
         """
         self._ProjectID = None
         self._FileVersion = None
         self._FileName = None
+        self._IgnoreDefaultTimeRange = None
 
     @property
     def ProjectID(self):
-        r"""项目 id
+        r"""<p>项目 id</p>
         :rtype: int
         """
         return self._ProjectID
@@ -18785,7 +18788,7 @@ class DescribeReleaseFilesRequest(AbstractModel):
 
     @property
     def FileVersion(self):
-        r"""文件版本
+        r"""<p>文件版本</p>
         :rtype: str
         """
         return self._FileVersion
@@ -18796,7 +18799,7 @@ class DescribeReleaseFilesRequest(AbstractModel):
 
     @property
     def FileName(self):
-        r"""查询过滤条件（根据sourcemap的文件名模糊匹配）
+        r"""<p>查询过滤条件（根据sourcemap的文件名模糊匹配）</p>
         :rtype: str
         """
         return self._FileName
@@ -18805,11 +18808,23 @@ class DescribeReleaseFilesRequest(AbstractModel):
     def FileName(self, FileName):
         self._FileName = FileName
 
+    @property
+    def IgnoreDefaultTimeRange(self):
+        r"""<p>false/不传=保留「最近 3 个月」约束（旧行为）；true=绕过时间窗口</p>
+        :rtype: bool
+        """
+        return self._IgnoreDefaultTimeRange
+
+    @IgnoreDefaultTimeRange.setter
+    def IgnoreDefaultTimeRange(self, IgnoreDefaultTimeRange):
+        self._IgnoreDefaultTimeRange = IgnoreDefaultTimeRange
+
 
     def _deserialize(self, params):
         self._ProjectID = params.get("ProjectID")
         self._FileVersion = params.get("FileVersion")
         self._FileName = params.get("FileName")
+        self._IgnoreDefaultTimeRange = params.get("IgnoreDefaultTimeRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18827,7 +18842,7 @@ class DescribeReleaseFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Files: 文件信息列表
+        :param _Files: <p>文件信息列表</p>
         :type Files: list of ReleaseFile
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18837,7 +18852,7 @@ class DescribeReleaseFilesResponse(AbstractModel):
 
     @property
     def Files(self):
-        r"""文件信息列表
+        r"""<p>文件信息列表</p>
         :rtype: list of ReleaseFile
         """
         return self._Files
@@ -22859,26 +22874,29 @@ class ReleaseFile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Version: 文件版本
+        :param _Version: <p>文件版本</p>
         :type Version: str
-        :param _FileKey: 文件唯一 key
+        :param _FileKey: <p>文件唯一 key</p>
         :type FileKey: str
-        :param _FileName: 文件名
+        :param _FileName: <p>文件名</p>
         :type FileName: str
-        :param _FileHash: 文件哈希值
+        :param _FileHash: <p>文件哈希值</p>
         :type FileHash: str
-        :param _ID: 文件 id
+        :param _ID: <p>文件 id</p>
         :type ID: int
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
         """
         self._Version = None
         self._FileKey = None
         self._FileName = None
         self._FileHash = None
         self._ID = None
+        self._CreatedAt = None
 
     @property
     def Version(self):
-        r"""文件版本
+        r"""<p>文件版本</p>
         :rtype: str
         """
         return self._Version
@@ -22889,7 +22907,7 @@ class ReleaseFile(AbstractModel):
 
     @property
     def FileKey(self):
-        r"""文件唯一 key
+        r"""<p>文件唯一 key</p>
         :rtype: str
         """
         return self._FileKey
@@ -22900,7 +22918,7 @@ class ReleaseFile(AbstractModel):
 
     @property
     def FileName(self):
-        r"""文件名
+        r"""<p>文件名</p>
         :rtype: str
         """
         return self._FileName
@@ -22911,7 +22929,7 @@ class ReleaseFile(AbstractModel):
 
     @property
     def FileHash(self):
-        r"""文件哈希值
+        r"""<p>文件哈希值</p>
         :rtype: str
         """
         return self._FileHash
@@ -22922,7 +22940,7 @@ class ReleaseFile(AbstractModel):
 
     @property
     def ID(self):
-        r"""文件 id
+        r"""<p>文件 id</p>
         :rtype: int
         """
         return self._ID
@@ -22931,6 +22949,17 @@ class ReleaseFile(AbstractModel):
     def ID(self, ID):
         self._ID = ID
 
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
 
     def _deserialize(self, params):
         self._Version = params.get("Version")
@@ -22938,6 +22967,7 @@ class ReleaseFile(AbstractModel):
         self._FileName = params.get("FileName")
         self._FileHash = params.get("FileHash")
         self._ID = params.get("ID")
+        self._CreatedAt = params.get("CreatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

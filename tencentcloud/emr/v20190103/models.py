@@ -25038,6 +25038,8 @@ class InstallSoftwareRequest(AbstractModel):
         :type NeedCdbAudit: int
         :param _ContainerExtraConf: <p>额外容器相关配置</p>
         :type ContainerExtraConf: :class:`tencentcloud.emr.v20190103.models.ContainerExtraConf`
+        :param _CheckServiceDeployInfo: <p>是否强制检查自定义组件的合理性，目前仅提供给tf侧使用</p>
+        :type CheckServiceDeployInfo: bool
         """
         self._InstanceId = None
         self._SoftInfo = None
@@ -25052,6 +25054,7 @@ class InstallSoftwareRequest(AbstractModel):
         self._DefaultMetaVersion = None
         self._NeedCdbAudit = None
         self._ContainerExtraConf = None
+        self._CheckServiceDeployInfo = None
 
     @property
     def InstanceId(self):
@@ -25196,6 +25199,17 @@ class InstallSoftwareRequest(AbstractModel):
     def ContainerExtraConf(self, ContainerExtraConf):
         self._ContainerExtraConf = ContainerExtraConf
 
+    @property
+    def CheckServiceDeployInfo(self):
+        r"""<p>是否强制检查自定义组件的合理性，目前仅提供给tf侧使用</p>
+        :rtype: bool
+        """
+        return self._CheckServiceDeployInfo
+
+    @CheckServiceDeployInfo.setter
+    def CheckServiceDeployInfo(self, CheckServiceDeployInfo):
+        self._CheckServiceDeployInfo = CheckServiceDeployInfo
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -25235,6 +25249,7 @@ class InstallSoftwareRequest(AbstractModel):
         if params.get("ContainerExtraConf") is not None:
             self._ContainerExtraConf = ContainerExtraConf()
             self._ContainerExtraConf._deserialize(params.get("ContainerExtraConf"))
+        self._CheckServiceDeployInfo = params.get("CheckServiceDeployInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

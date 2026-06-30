@@ -72927,18 +72927,30 @@ class TrafficQosPolicySet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :param _CcnId: <p>CCN实例ID。形如：ccn-f49l6u0z。</p>
         :type CcnId: str
-        :param _QosId: qos id。
+        :param _QosId: <p>qos id。</p>
         :type QosId: int
-        :param _QosPolicyDescription: 描述。
+        :param _QosPolicyDescription: <p>描述。</p>
         :type QosPolicyDescription: str
-        :param _QosPolicyName: 名称。
+        :param _QosPolicyName: <p>名称。</p>
         :type QosPolicyName: str
-        :param _Bandwidth: 带宽。
+        :param _Bandwidth: <p>带宽。</p>
         :type Bandwidth: int
-        :param _QosPolicyId: 流量调度策略ID。
+        :param _QosPolicyId: <p>流量调度策略ID。</p>
         :type QosPolicyId: str
+        :param _QosLevel: <p>服务等级信息</p>
+        :type QosLevel: str
+        :param _ServiceLevel: <p>服务等级信息</p>
+        :type ServiceLevel: str
+        :param _RegionFlowControlId: <p>带宽ID</p><p>参数格式：fcr-xxx</p>
+        :type RegionFlowControlId: str
+        :param _LocalRegion: <p>源地域</p><p>参数格式：ap-xxx</p>
+        :type LocalRegion: str
+        :param _RemoteRegion: <p>目的地域</p><p>参数格式：ap-xxx</p>
+        :type RemoteRegion: str
+        :param _TrafficMatchPolicyId: <p>流量匹配策略ID</p>
+        :type TrafficMatchPolicyId: str
         """
         self._CcnId = None
         self._QosId = None
@@ -72946,10 +72958,16 @@ class TrafficQosPolicySet(AbstractModel):
         self._QosPolicyName = None
         self._Bandwidth = None
         self._QosPolicyId = None
+        self._QosLevel = None
+        self._ServiceLevel = None
+        self._RegionFlowControlId = None
+        self._LocalRegion = None
+        self._RemoteRegion = None
+        self._TrafficMatchPolicyId = None
 
     @property
     def CcnId(self):
-        r"""CCN实例ID。形如：ccn-f49l6u0z。
+        r"""<p>CCN实例ID。形如：ccn-f49l6u0z。</p>
         :rtype: str
         """
         return self._CcnId
@@ -72960,7 +72978,7 @@ class TrafficQosPolicySet(AbstractModel):
 
     @property
     def QosId(self):
-        r"""qos id。
+        r"""<p>qos id。</p>
         :rtype: int
         """
         return self._QosId
@@ -72971,7 +72989,7 @@ class TrafficQosPolicySet(AbstractModel):
 
     @property
     def QosPolicyDescription(self):
-        r"""描述。
+        r"""<p>描述。</p>
         :rtype: str
         """
         return self._QosPolicyDescription
@@ -72982,7 +73000,7 @@ class TrafficQosPolicySet(AbstractModel):
 
     @property
     def QosPolicyName(self):
-        r"""名称。
+        r"""<p>名称。</p>
         :rtype: str
         """
         return self._QosPolicyName
@@ -72993,7 +73011,7 @@ class TrafficQosPolicySet(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""带宽。
+        r"""<p>带宽。</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -73004,7 +73022,7 @@ class TrafficQosPolicySet(AbstractModel):
 
     @property
     def QosPolicyId(self):
-        r"""流量调度策略ID。
+        r"""<p>流量调度策略ID。</p>
         :rtype: str
         """
         return self._QosPolicyId
@@ -73012,6 +73030,72 @@ class TrafficQosPolicySet(AbstractModel):
     @QosPolicyId.setter
     def QosPolicyId(self, QosPolicyId):
         self._QosPolicyId = QosPolicyId
+
+    @property
+    def QosLevel(self):
+        r"""<p>服务等级信息</p>
+        :rtype: str
+        """
+        return self._QosLevel
+
+    @QosLevel.setter
+    def QosLevel(self, QosLevel):
+        self._QosLevel = QosLevel
+
+    @property
+    def ServiceLevel(self):
+        r"""<p>服务等级信息</p>
+        :rtype: str
+        """
+        return self._ServiceLevel
+
+    @ServiceLevel.setter
+    def ServiceLevel(self, ServiceLevel):
+        self._ServiceLevel = ServiceLevel
+
+    @property
+    def RegionFlowControlId(self):
+        r"""<p>带宽ID</p><p>参数格式：fcr-xxx</p>
+        :rtype: str
+        """
+        return self._RegionFlowControlId
+
+    @RegionFlowControlId.setter
+    def RegionFlowControlId(self, RegionFlowControlId):
+        self._RegionFlowControlId = RegionFlowControlId
+
+    @property
+    def LocalRegion(self):
+        r"""<p>源地域</p><p>参数格式：ap-xxx</p>
+        :rtype: str
+        """
+        return self._LocalRegion
+
+    @LocalRegion.setter
+    def LocalRegion(self, LocalRegion):
+        self._LocalRegion = LocalRegion
+
+    @property
+    def RemoteRegion(self):
+        r"""<p>目的地域</p><p>参数格式：ap-xxx</p>
+        :rtype: str
+        """
+        return self._RemoteRegion
+
+    @RemoteRegion.setter
+    def RemoteRegion(self, RemoteRegion):
+        self._RemoteRegion = RemoteRegion
+
+    @property
+    def TrafficMatchPolicyId(self):
+        r"""<p>流量匹配策略ID</p>
+        :rtype: str
+        """
+        return self._TrafficMatchPolicyId
+
+    @TrafficMatchPolicyId.setter
+    def TrafficMatchPolicyId(self, TrafficMatchPolicyId):
+        self._TrafficMatchPolicyId = TrafficMatchPolicyId
 
 
     def _deserialize(self, params):
@@ -73021,6 +73105,12 @@ class TrafficQosPolicySet(AbstractModel):
         self._QosPolicyName = params.get("QosPolicyName")
         self._Bandwidth = params.get("Bandwidth")
         self._QosPolicyId = params.get("QosPolicyId")
+        self._QosLevel = params.get("QosLevel")
+        self._ServiceLevel = params.get("ServiceLevel")
+        self._RegionFlowControlId = params.get("RegionFlowControlId")
+        self._LocalRegion = params.get("LocalRegion")
+        self._RemoteRegion = params.get("RemoteRegion")
+        self._TrafficMatchPolicyId = params.get("TrafficMatchPolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

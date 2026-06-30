@@ -1119,11 +1119,11 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EmailIdentity: 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
+        :param _EmailIdentity: <p>您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。</p>
         :type EmailIdentity: str
-        :param _DKIMOption: 生成的dkim密钥长度。0:1024，1:2048
+        :param _DKIMOption: <p>生成的dkim密钥长度。0:1024，1:2048</p>
         :type DKIMOption: int
-        :param _TagList: tag 标签
+        :param _TagList: <p>tag 标签</p>
         :type TagList: list of TagList
         """
         self._EmailIdentity = None
@@ -1132,7 +1132,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
-        r"""您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
+        r"""<p>您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。</p>
         :rtype: str
         """
         return self._EmailIdentity
@@ -1143,7 +1143,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def DKIMOption(self):
-        r"""生成的dkim密钥长度。0:1024，1:2048
+        r"""<p>生成的dkim密钥长度。0:1024，1:2048</p>
         :rtype: int
         """
         return self._DKIMOption
@@ -1154,7 +1154,7 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""tag 标签
+        r"""<p>tag 标签</p>
         :rtype: list of TagList
         """
         return self._TagList
@@ -1190,23 +1190,26 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityType: 验证类型。固定值：DOMAIN
+        :param _IdentityType: <p>验证类型。固定值：DOMAIN</p>
         :type IdentityType: str
-        :param _VerifiedForSendingStatus: 是否已通过验证
+        :param _VerifiedForSendingStatus: <p>是否已通过验证</p>
         :type VerifiedForSendingStatus: bool
-        :param _Attributes: 需要配置的DNS信息
+        :param _Attributes: <p>需要配置的DNS信息</p>
         :type Attributes: list of DNSAttributes
+        :param _DKIMOption: <p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+        :type DKIMOption: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IdentityType = None
         self._VerifiedForSendingStatus = None
         self._Attributes = None
+        self._DKIMOption = None
         self._RequestId = None
 
     @property
     def IdentityType(self):
-        r"""验证类型。固定值：DOMAIN
+        r"""<p>验证类型。固定值：DOMAIN</p>
         :rtype: str
         """
         return self._IdentityType
@@ -1217,7 +1220,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        r"""是否已通过验证
+        r"""<p>是否已通过验证</p>
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -1228,7 +1231,7 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        r"""需要配置的DNS信息
+        r"""<p>需要配置的DNS信息</p>
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -1236,6 +1239,17 @@ class CreateEmailIdentityResponse(AbstractModel):
     @Attributes.setter
     def Attributes(self, Attributes):
         self._Attributes = Attributes
+
+    @property
+    def DKIMOption(self):
+        r"""<p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
 
     @property
     def RequestId(self):
@@ -1258,6 +1272,7 @@ class CreateEmailIdentityResponse(AbstractModel):
                 obj = DNSAttributes()
                 obj._deserialize(item)
                 self._Attributes.append(obj)
+        self._DKIMOption = params.get("DKIMOption")
         self._RequestId = params.get("RequestId")
 
 
@@ -2381,20 +2396,22 @@ class EmailIdentity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityName: 发信域名
+        :param _IdentityName: <p>发信域名</p>
         :type IdentityName: str
-        :param _IdentityType: 验证类型，固定为DOMAIN
+        :param _IdentityType: <p>验证类型，固定为DOMAIN</p>
         :type IdentityType: str
-        :param _SendingEnabled: 是否已通过验证
+        :param _SendingEnabled: <p>是否已通过验证</p>
         :type SendingEnabled: bool
-        :param _CurrentReputationLevel: 当前信誉等级
+        :param _CurrentReputationLevel: <p>当前信誉等级</p>
         :type CurrentReputationLevel: int
-        :param _DailyQuota: 当日最高发信量
+        :param _DailyQuota: <p>当日最高发信量</p>
         :type DailyQuota: int
-        :param _SendIp: 域名配置的独立ip
+        :param _SendIp: <p>域名配置的独立ip</p>
         :type SendIp: list of str
-        :param _TagList: tag 标签
+        :param _TagList: <p>tag 标签</p>
         :type TagList: list of TagList
+        :param _DKIMOption: <p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul><p>默认值：0</p>
+        :type DKIMOption: int
         """
         self._IdentityName = None
         self._IdentityType = None
@@ -2403,10 +2420,11 @@ class EmailIdentity(AbstractModel):
         self._DailyQuota = None
         self._SendIp = None
         self._TagList = None
+        self._DKIMOption = None
 
     @property
     def IdentityName(self):
-        r"""发信域名
+        r"""<p>发信域名</p>
         :rtype: str
         """
         return self._IdentityName
@@ -2417,7 +2435,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def IdentityType(self):
-        r"""验证类型，固定为DOMAIN
+        r"""<p>验证类型，固定为DOMAIN</p>
         :rtype: str
         """
         return self._IdentityType
@@ -2428,7 +2446,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def SendingEnabled(self):
-        r"""是否已通过验证
+        r"""<p>是否已通过验证</p>
         :rtype: bool
         """
         return self._SendingEnabled
@@ -2439,7 +2457,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def CurrentReputationLevel(self):
-        r"""当前信誉等级
+        r"""<p>当前信誉等级</p>
         :rtype: int
         """
         return self._CurrentReputationLevel
@@ -2450,7 +2468,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def DailyQuota(self):
-        r"""当日最高发信量
+        r"""<p>当日最高发信量</p>
         :rtype: int
         """
         return self._DailyQuota
@@ -2461,7 +2479,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def SendIp(self):
-        r"""域名配置的独立ip
+        r"""<p>域名配置的独立ip</p>
         :rtype: list of str
         """
         return self._SendIp
@@ -2472,7 +2490,7 @@ class EmailIdentity(AbstractModel):
 
     @property
     def TagList(self):
-        r"""tag 标签
+        r"""<p>tag 标签</p>
         :rtype: list of TagList
         """
         return self._TagList
@@ -2480,6 +2498,17 @@ class EmailIdentity(AbstractModel):
     @TagList.setter
     def TagList(self, TagList):
         self._TagList = TagList
+
+    @property
+    def DKIMOption(self):
+        r"""<p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
 
 
     def _deserialize(self, params):
@@ -2495,6 +2524,7 @@ class EmailIdentity(AbstractModel):
                 obj = TagList()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        self._DKIMOption = params.get("DKIMOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2812,14 +2842,14 @@ class GetEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EmailIdentity: 发信域名
+        :param _EmailIdentity: <p>发信域名</p>
         :type EmailIdentity: str
         """
         self._EmailIdentity = None
 
     @property
     def EmailIdentity(self):
-        r"""发信域名
+        r"""<p>发信域名</p>
         :rtype: str
         """
         return self._EmailIdentity
@@ -2848,23 +2878,26 @@ class GetEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityType: 验证类型。固定值：DOMAIN
+        :param _IdentityType: <p>验证类型。固定值：DOMAIN</p>
         :type IdentityType: str
-        :param _VerifiedForSendingStatus: 是否已通过验证
+        :param _VerifiedForSendingStatus: <p>是否已通过验证</p>
         :type VerifiedForSendingStatus: bool
-        :param _Attributes: DNS配置详情
+        :param _Attributes: <p>DNS配置详情</p>
         :type Attributes: list of DNSAttributes
+        :param _DKIMOption: <p>dkim密钥长度</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： both</li></ul>
+        :type DKIMOption: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IdentityType = None
         self._VerifiedForSendingStatus = None
         self._Attributes = None
+        self._DKIMOption = None
         self._RequestId = None
 
     @property
     def IdentityType(self):
-        r"""验证类型。固定值：DOMAIN
+        r"""<p>验证类型。固定值：DOMAIN</p>
         :rtype: str
         """
         return self._IdentityType
@@ -2875,7 +2908,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        r"""是否已通过验证
+        r"""<p>是否已通过验证</p>
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -2886,7 +2919,7 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        r"""DNS配置详情
+        r"""<p>DNS配置详情</p>
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -2894,6 +2927,17 @@ class GetEmailIdentityResponse(AbstractModel):
     @Attributes.setter
     def Attributes(self, Attributes):
         self._Attributes = Attributes
+
+    @property
+    def DKIMOption(self):
+        r"""<p>dkim密钥长度</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： both</li></ul>
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
 
     @property
     def RequestId(self):
@@ -2916,6 +2960,7 @@ class GetEmailIdentityResponse(AbstractModel):
                 obj = DNSAttributes()
                 obj._deserialize(item)
                 self._Attributes.append(obj)
+        self._DKIMOption = params.get("DKIMOption")
         self._RequestId = params.get("RequestId")
 
 
@@ -6263,14 +6308,20 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EmailIdentity: 请求验证的域名
+        :param _EmailIdentity: <p>请求验证的域名</p>
         :type EmailIdentity: str
+        :param _NewAPI: <p>匹分控制台新老API</p>
+        :type NewAPI: bool
+        :param _DKIMOption: <p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+        :type DKIMOption: int
         """
         self._EmailIdentity = None
+        self._NewAPI = None
+        self._DKIMOption = None
 
     @property
     def EmailIdentity(self):
-        r"""请求验证的域名
+        r"""<p>请求验证的域名</p>
         :rtype: str
         """
         return self._EmailIdentity
@@ -6279,9 +6330,33 @@ class UpdateEmailIdentityRequest(AbstractModel):
     def EmailIdentity(self, EmailIdentity):
         self._EmailIdentity = EmailIdentity
 
+    @property
+    def NewAPI(self):
+        r"""<p>匹分控制台新老API</p>
+        :rtype: bool
+        """
+        return self._NewAPI
+
+    @NewAPI.setter
+    def NewAPI(self, NewAPI):
+        self._NewAPI = NewAPI
+
+    @property
+    def DKIMOption(self):
+        r"""<p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
+
 
     def _deserialize(self, params):
         self._EmailIdentity = params.get("EmailIdentity")
+        self._NewAPI = params.get("NewAPI")
+        self._DKIMOption = params.get("DKIMOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6299,23 +6374,26 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityType: 验证类型。固定值：DOMAIN
+        :param _IdentityType: <p>验证类型。固定值：DOMAIN</p>
         :type IdentityType: str
-        :param _VerifiedForSendingStatus: 是否已通过验证
+        :param _VerifiedForSendingStatus: <p>是否已通过验证</p>
         :type VerifiedForSendingStatus: bool
-        :param _Attributes: 需要配置的DNS信息
+        :param _Attributes: <p>需要配置的DNS信息</p>
         :type Attributes: list of DNSAttributes
+        :param _DKIMOption: <p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+        :type DKIMOption: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IdentityType = None
         self._VerifiedForSendingStatus = None
         self._Attributes = None
+        self._DKIMOption = None
         self._RequestId = None
 
     @property
     def IdentityType(self):
-        r"""验证类型。固定值：DOMAIN
+        r"""<p>验证类型。固定值：DOMAIN</p>
         :rtype: str
         """
         return self._IdentityType
@@ -6326,7 +6404,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
-        r"""是否已通过验证
+        r"""<p>是否已通过验证</p>
         :rtype: bool
         """
         return self._VerifiedForSendingStatus
@@ -6337,7 +6415,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
-        r"""需要配置的DNS信息
+        r"""<p>需要配置的DNS信息</p>
         :rtype: list of DNSAttributes
         """
         return self._Attributes
@@ -6345,6 +6423,17 @@ class UpdateEmailIdentityResponse(AbstractModel):
     @Attributes.setter
     def Attributes(self, Attributes):
         self._Attributes = Attributes
+
+    @property
+    def DKIMOption(self):
+        r"""<p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+        :rtype: int
+        """
+        return self._DKIMOption
+
+    @DKIMOption.setter
+    def DKIMOption(self, DKIMOption):
+        self._DKIMOption = DKIMOption
 
     @property
     def RequestId(self):
@@ -6367,6 +6456,7 @@ class UpdateEmailIdentityResponse(AbstractModel):
                 obj = DNSAttributes()
                 obj._deserialize(item)
                 self._Attributes.append(obj)
+        self._DKIMOption = params.get("DKIMOption")
         self._RequestId = params.get("RequestId")
 
 

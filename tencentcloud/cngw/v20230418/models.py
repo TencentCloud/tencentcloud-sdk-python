@@ -2951,6 +2951,239 @@ class AddCloudNativeAPIGatewayConsumerGroupAuthResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddCloudNativeAPIGatewayConsumerInGroupRequest(AbstractModel):
+    r"""AddCloudNativeAPIGatewayConsumerInGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例id
+        :type GatewayId: str
+        :param _ConsumerGroupId: <p>消费者组 ID（以 cg- 开头）。</p>
+        :type ConsumerGroupId: str
+        :param _ConsumerIds: <p>消费者 ID 列表，长度 1-10。</p>
+        :type ConsumerIds: list of str
+        """
+        self._GatewayId = None
+        self._ConsumerGroupId = None
+        self._ConsumerIds = None
+
+    @property
+    def GatewayId(self):
+        r"""网关实例id
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ConsumerGroupId(self):
+        r"""<p>消费者组 ID（以 cg- 开头）。</p>
+        :rtype: str
+        """
+        return self._ConsumerGroupId
+
+    @ConsumerGroupId.setter
+    def ConsumerGroupId(self, ConsumerGroupId):
+        self._ConsumerGroupId = ConsumerGroupId
+
+    @property
+    def ConsumerIds(self):
+        r"""<p>消费者 ID 列表，长度 1-10。</p>
+        :rtype: list of str
+        """
+        return self._ConsumerIds
+
+    @ConsumerIds.setter
+    def ConsumerIds(self, ConsumerIds):
+        self._ConsumerIds = ConsumerIds
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ConsumerGroupId = params.get("ConsumerGroupId")
+        self._ConsumerIds = params.get("ConsumerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCloudNativeAPIGatewayConsumerInGroupResponse(AbstractModel):
+    r"""AddCloudNativeAPIGatewayConsumerInGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>是否成功。</p>
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>是否成功。</p>
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class BindCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
+    r"""BindCloudNativeAPIGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例id
+        :type GatewayId: str
+        :param _ResourceType: 资源类型
+        :type ResourceType: str
+        :param _ResourceIds: 资源ID，当前最多支持一个
+        :type ResourceIds: list of str
+        :param _SecretKeyId: 密钥id
+        :type SecretKeyId: str
+        """
+        self._GatewayId = None
+        self._ResourceType = None
+        self._ResourceIds = None
+        self._SecretKeyId = None
+
+    @property
+    def GatewayId(self):
+        r"""网关实例id
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceIds(self):
+        r"""资源ID，当前最多支持一个
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def SecretKeyId(self):
+        r"""密钥id
+        :rtype: str
+        """
+        return self._SecretKeyId
+
+    @SecretKeyId.setter
+    def SecretKeyId(self, SecretKeyId):
+        self._SecretKeyId = SecretKeyId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceIds = params.get("ResourceIds")
+        self._SecretKeyId = params.get("SecretKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindCloudNativeAPIGatewaySecretKeyResponse(AbstractModel):
+    r"""BindCloudNativeAPIGatewaySecretKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 结果
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""结果
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CNAPIGwConsumer(AbstractModel):
     r"""消费者结构
 
@@ -11414,6 +11647,209 @@ class RemoveCloudNativeAPIGatewayConsumerGroupAuthRequest(AbstractModel):
 
 class RemoveCloudNativeAPIGatewayConsumerGroupAuthResponse(AbstractModel):
     r"""RemoveCloudNativeAPIGatewayConsumerGroupAuth返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RemoveCloudNativeAPIGatewayConsumerInGroupRequest(AbstractModel):
+    r"""RemoveCloudNativeAPIGatewayConsumerInGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例id
+        :type GatewayId: str
+        :param _ConsumerGroupId: <p>消费者组 ID（以 cg- 开头）。</p>
+        :type ConsumerGroupId: str
+        :param _ConsumerIds: <p>消费者 ID 列表，长度 1-10。</p>
+        :type ConsumerIds: list of str
+        """
+        self._GatewayId = None
+        self._ConsumerGroupId = None
+        self._ConsumerIds = None
+
+    @property
+    def GatewayId(self):
+        r"""网关实例id
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ConsumerGroupId(self):
+        r"""<p>消费者组 ID（以 cg- 开头）。</p>
+        :rtype: str
+        """
+        return self._ConsumerGroupId
+
+    @ConsumerGroupId.setter
+    def ConsumerGroupId(self, ConsumerGroupId):
+        self._ConsumerGroupId = ConsumerGroupId
+
+    @property
+    def ConsumerIds(self):
+        r"""<p>消费者 ID 列表，长度 1-10。</p>
+        :rtype: list of str
+        """
+        return self._ConsumerIds
+
+    @ConsumerIds.setter
+    def ConsumerIds(self, ConsumerIds):
+        self._ConsumerIds = ConsumerIds
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ConsumerGroupId = params.get("ConsumerGroupId")
+        self._ConsumerIds = params.get("ConsumerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveCloudNativeAPIGatewayConsumerInGroupResponse(AbstractModel):
+    r"""RemoveCloudNativeAPIGatewayConsumerInGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UnbindCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
+    r"""UnbindCloudNativeAPIGatewaySecretKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例id
+        :type GatewayId: str
+        :param _ResourceType: 资源类型
+        :type ResourceType: str
+        :param _ResourceIds: 资源ID，当前最多支持一个
+        :type ResourceIds: list of str
+        :param _SecretKeyId: 密钥id
+        :type SecretKeyId: str
+        """
+        self._GatewayId = None
+        self._ResourceType = None
+        self._ResourceIds = None
+        self._SecretKeyId = None
+
+    @property
+    def GatewayId(self):
+        r"""网关实例id
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceIds(self):
+        r"""资源ID，当前最多支持一个
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def SecretKeyId(self):
+        r"""密钥id
+        :rtype: str
+        """
+        return self._SecretKeyId
+
+    @SecretKeyId.setter
+    def SecretKeyId(self, SecretKeyId):
+        self._SecretKeyId = SecretKeyId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceIds = params.get("ResourceIds")
+        self._SecretKeyId = params.get("SecretKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindCloudNativeAPIGatewaySecretKeyResponse(AbstractModel):
+    r"""UnbindCloudNativeAPIGatewaySecretKey返回参数结构体
 
     """
 

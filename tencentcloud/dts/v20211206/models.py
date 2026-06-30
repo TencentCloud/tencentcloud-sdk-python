@@ -6551,6 +6551,165 @@ class DescribeMigrateDBInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMigrateGtidCompareReportRequest(AbstractModel):
+    r"""DescribeMigrateGtidCompareReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务id
+        :type JobId: str
+        :param _CompareTaskId: 创建的校验任务id
+        :type CompareTaskId: str
+        :param _NeedDiffDetail: 是否需要展示不一致详情
+        :type NeedDiffDetail: bool
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+        self._NeedDiffDetail = None
+
+    @property
+    def JobId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""创建的校验任务id
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def NeedDiffDetail(self):
+        r"""是否需要展示不一致详情
+        :rtype: bool
+        """
+        return self._NeedDiffDetail
+
+    @NeedDiffDetail.setter
+    def NeedDiffDetail(self, NeedDiffDetail):
+        self._NeedDiffDetail = NeedDiffDetail
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._NeedDiffDetail = params.get("NeedDiffDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMigrateGtidCompareReportResponse(AbstractModel):
+    r"""DescribeMigrateGtidCompareReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Conclusion: 校验结论
+        :type Conclusion: str
+        :param _Status: 校验状态
+        :type Status: str
+        :param _Type: 校验类型
+        :type Type: str
+        :param _Detail: 不一致详情
+        :type Detail: list of DifferenceDetails
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Conclusion = None
+        self._Status = None
+        self._Type = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def Conclusion(self):
+        r"""校验结论
+        :rtype: str
+        """
+        return self._Conclusion
+
+    @Conclusion.setter
+    def Conclusion(self, Conclusion):
+        self._Conclusion = Conclusion
+
+    @property
+    def Status(self):
+        r"""校验状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""校验类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Detail(self):
+        r"""不一致详情
+        :rtype: list of DifferenceDetails
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Conclusion = params.get("Conclusion")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = DifferenceDetails()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMigrationCheckJobRequest(AbstractModel):
     r"""DescribeMigrationCheckJob请求参数结构体
 
@@ -9443,6 +9602,165 @@ class DescribeSyncCompareTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSyncGtidCompareReportRequest(AbstractModel):
+    r"""DescribeSyncGtidCompareReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 任务id
+        :type JobId: str
+        :param _CompareTaskId: 创建的校验任务id
+        :type CompareTaskId: str
+        :param _NeedDiffDetail: 是否需要展示不一致详情
+        :type NeedDiffDetail: bool
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+        self._NeedDiffDetail = None
+
+    @property
+    def JobId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""创建的校验任务id
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def NeedDiffDetail(self):
+        r"""是否需要展示不一致详情
+        :rtype: bool
+        """
+        return self._NeedDiffDetail
+
+    @NeedDiffDetail.setter
+    def NeedDiffDetail(self, NeedDiffDetail):
+        self._NeedDiffDetail = NeedDiffDetail
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._NeedDiffDetail = params.get("NeedDiffDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSyncGtidCompareReportResponse(AbstractModel):
+    r"""DescribeSyncGtidCompareReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Conclusion: 校验结论
+        :type Conclusion: str
+        :param _Status: 校验状态
+        :type Status: str
+        :param _Type: 校验类型
+        :type Type: str
+        :param _Detail: 不一致详情
+        :type Detail: list of DifferenceDetails
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Conclusion = None
+        self._Status = None
+        self._Type = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def Conclusion(self):
+        r"""校验结论
+        :rtype: str
+        """
+        return self._Conclusion
+
+    @Conclusion.setter
+    def Conclusion(self, Conclusion):
+        self._Conclusion = Conclusion
+
+    @property
+    def Status(self):
+        r"""校验状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""校验类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Detail(self):
+        r"""不一致详情
+        :rtype: list of DifferenceDetails
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Conclusion = params.get("Conclusion")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = DifferenceDetails()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSyncJobsRequest(AbstractModel):
     r"""DescribeSyncJobs请求参数结构体
 
@@ -10575,6 +10893,162 @@ class DifferenceDetail(AbstractModel):
                 obj = DifferenceItem()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DifferenceDetails(AbstractModel):
+    r"""校验得出的不一致详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 校验结果
+        :type Result: str
+        :param _SrcGtidSets: 源库gtid set
+        :type SrcGtidSets: str
+        :param _DstGtidSets: 目标库gtid set
+        :type DstGtidSets: str
+        :param _DiffSrc: 源库差异的gtid set
+        :type DiffSrc: str
+        :param _DiffSrcTables: 源库中不一致的表
+        :type DiffSrcTables: list of str
+        :param _DiffDst: 目标库差异的gtid set
+        :type DiffDst: str
+        :param _CompareTimestamp: 校验结束时间
+        :type CompareTimestamp: str
+        :param _DiffSrcTablesNeedSync: 同步范围内的不一致表
+        :type DiffSrcTablesNeedSync: list of str
+        :param _DiffSrcIsNeedSync: 同步范围内是否存在不一致的表
+        :type DiffSrcIsNeedSync: bool
+        """
+        self._Result = None
+        self._SrcGtidSets = None
+        self._DstGtidSets = None
+        self._DiffSrc = None
+        self._DiffSrcTables = None
+        self._DiffDst = None
+        self._CompareTimestamp = None
+        self._DiffSrcTablesNeedSync = None
+        self._DiffSrcIsNeedSync = None
+
+    @property
+    def Result(self):
+        r"""校验结果
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def SrcGtidSets(self):
+        r"""源库gtid set
+        :rtype: str
+        """
+        return self._SrcGtidSets
+
+    @SrcGtidSets.setter
+    def SrcGtidSets(self, SrcGtidSets):
+        self._SrcGtidSets = SrcGtidSets
+
+    @property
+    def DstGtidSets(self):
+        r"""目标库gtid set
+        :rtype: str
+        """
+        return self._DstGtidSets
+
+    @DstGtidSets.setter
+    def DstGtidSets(self, DstGtidSets):
+        self._DstGtidSets = DstGtidSets
+
+    @property
+    def DiffSrc(self):
+        r"""源库差异的gtid set
+        :rtype: str
+        """
+        return self._DiffSrc
+
+    @DiffSrc.setter
+    def DiffSrc(self, DiffSrc):
+        self._DiffSrc = DiffSrc
+
+    @property
+    def DiffSrcTables(self):
+        r"""源库中不一致的表
+        :rtype: list of str
+        """
+        return self._DiffSrcTables
+
+    @DiffSrcTables.setter
+    def DiffSrcTables(self, DiffSrcTables):
+        self._DiffSrcTables = DiffSrcTables
+
+    @property
+    def DiffDst(self):
+        r"""目标库差异的gtid set
+        :rtype: str
+        """
+        return self._DiffDst
+
+    @DiffDst.setter
+    def DiffDst(self, DiffDst):
+        self._DiffDst = DiffDst
+
+    @property
+    def CompareTimestamp(self):
+        r"""校验结束时间
+        :rtype: str
+        """
+        return self._CompareTimestamp
+
+    @CompareTimestamp.setter
+    def CompareTimestamp(self, CompareTimestamp):
+        self._CompareTimestamp = CompareTimestamp
+
+    @property
+    def DiffSrcTablesNeedSync(self):
+        r"""同步范围内的不一致表
+        :rtype: list of str
+        """
+        return self._DiffSrcTablesNeedSync
+
+    @DiffSrcTablesNeedSync.setter
+    def DiffSrcTablesNeedSync(self, DiffSrcTablesNeedSync):
+        self._DiffSrcTablesNeedSync = DiffSrcTablesNeedSync
+
+    @property
+    def DiffSrcIsNeedSync(self):
+        r"""同步范围内是否存在不一致的表
+        :rtype: bool
+        """
+        return self._DiffSrcIsNeedSync
+
+    @DiffSrcIsNeedSync.setter
+    def DiffSrcIsNeedSync(self, DiffSrcIsNeedSync):
+        self._DiffSrcIsNeedSync = DiffSrcIsNeedSync
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._SrcGtidSets = params.get("SrcGtidSets")
+        self._DstGtidSets = params.get("DstGtidSets")
+        self._DiffSrc = params.get("DiffSrc")
+        self._DiffSrcTables = params.get("DiffSrcTables")
+        self._DiffDst = params.get("DiffDst")
+        self._CompareTimestamp = params.get("CompareTimestamp")
+        self._DiffSrcTablesNeedSync = params.get("DiffSrcTablesNeedSync")
+        self._DiffSrcIsNeedSync = params.get("DiffSrcIsNeedSync")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

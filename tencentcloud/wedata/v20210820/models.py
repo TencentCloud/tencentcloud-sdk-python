@@ -5599,22 +5599,24 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Tasks: 任务信息
+        :param _Tasks: <p>任务信息</p>
         :type Tasks: list of BatchCreateTaskVersionDTO
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _AutoRun: 是否自动运行
+        :param _AutoRun: <p>是否自动运行</p>
         :type AutoRun: bool
-        :param _AlarmWays: 告警方式:email-邮件;sms-短信;wecom-企业微信
+        :param _AlarmWays: <p>告警方式:email-邮件;sms-短信;wecom-企业微信</p>
         :type AlarmWays: str
-        :param _AlarmRecipientTypes: 告警对象:1-项目管理员，2-任务责任人
+        :param _AlarmRecipientTypes: <p>告警对象:1-项目管理员，2-任务责任人</p>
         :type AlarmRecipientTypes: str
-        :param _NeedCheckParentSubmitted: 是否需要校验父任务已经提交到调度
+        :param _NeedCheckParentSubmitted: <p>是否需要校验父任务已经提交到调度</p>
         :type NeedCheckParentSubmitted: bool
-        :param _EnableMakeUp: 是否需要补录中间实例
+        :param _EnableMakeUp: <p>是否需要补录中间实例</p>
         :type EnableMakeUp: bool
-        :param _AssignApprovalList: 指定审批人列表
+        :param _AssignApprovalList: <p>指定审批人列表</p>
         :type AssignApprovalList: list of str
+        :param _PerTaskMissingInstanceStrategy: <p>任务缺失实例处理策略</p><p>MAKEUP:补录缺失的实例;FORCE_SUCCESS:将缺失的实例置成功;SKIP:不处理，忽略缺失的实例</p>
+        :type PerTaskMissingInstanceStrategy: list of TaskMissingInstanceStrategy
         """
         self._Tasks = None
         self._ProjectId = None
@@ -5624,10 +5626,11 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
         self._NeedCheckParentSubmitted = None
         self._EnableMakeUp = None
         self._AssignApprovalList = None
+        self._PerTaskMissingInstanceStrategy = None
 
     @property
     def Tasks(self):
-        r"""任务信息
+        r"""<p>任务信息</p>
         :rtype: list of BatchCreateTaskVersionDTO
         """
         return self._Tasks
@@ -5638,7 +5641,7 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -5649,7 +5652,7 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
 
     @property
     def AutoRun(self):
-        r"""是否自动运行
+        r"""<p>是否自动运行</p>
         :rtype: bool
         """
         return self._AutoRun
@@ -5660,7 +5663,7 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
 
     @property
     def AlarmWays(self):
-        r"""告警方式:email-邮件;sms-短信;wecom-企业微信
+        r"""<p>告警方式:email-邮件;sms-短信;wecom-企业微信</p>
         :rtype: str
         """
         return self._AlarmWays
@@ -5671,7 +5674,7 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
 
     @property
     def AlarmRecipientTypes(self):
-        r"""告警对象:1-项目管理员，2-任务责任人
+        r"""<p>告警对象:1-项目管理员，2-任务责任人</p>
         :rtype: str
         """
         return self._AlarmRecipientTypes
@@ -5682,7 +5685,7 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
 
     @property
     def NeedCheckParentSubmitted(self):
-        r"""是否需要校验父任务已经提交到调度
+        r"""<p>是否需要校验父任务已经提交到调度</p>
         :rtype: bool
         """
         return self._NeedCheckParentSubmitted
@@ -5693,7 +5696,7 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
 
     @property
     def EnableMakeUp(self):
-        r"""是否需要补录中间实例
+        r"""<p>是否需要补录中间实例</p>
         :rtype: bool
         """
         return self._EnableMakeUp
@@ -5704,7 +5707,7 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
 
     @property
     def AssignApprovalList(self):
-        r"""指定审批人列表
+        r"""<p>指定审批人列表</p>
         :rtype: list of str
         """
         return self._AssignApprovalList
@@ -5712,6 +5715,17 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
     @AssignApprovalList.setter
     def AssignApprovalList(self, AssignApprovalList):
         self._AssignApprovalList = AssignApprovalList
+
+    @property
+    def PerTaskMissingInstanceStrategy(self):
+        r"""<p>任务缺失实例处理策略</p><p>MAKEUP:补录缺失的实例;FORCE_SUCCESS:将缺失的实例置成功;SKIP:不处理，忽略缺失的实例</p>
+        :rtype: list of TaskMissingInstanceStrategy
+        """
+        return self._PerTaskMissingInstanceStrategy
+
+    @PerTaskMissingInstanceStrategy.setter
+    def PerTaskMissingInstanceStrategy(self, PerTaskMissingInstanceStrategy):
+        self._PerTaskMissingInstanceStrategy = PerTaskMissingInstanceStrategy
 
 
     def _deserialize(self, params):
@@ -5728,6 +5742,12 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
         self._NeedCheckParentSubmitted = params.get("NeedCheckParentSubmitted")
         self._EnableMakeUp = params.get("EnableMakeUp")
         self._AssignApprovalList = params.get("AssignApprovalList")
+        if params.get("PerTaskMissingInstanceStrategy") is not None:
+            self._PerTaskMissingInstanceStrategy = []
+            for item in params.get("PerTaskMissingInstanceStrategy"):
+                obj = TaskMissingInstanceStrategy()
+                obj._deserialize(item)
+                self._PerTaskMissingInstanceStrategy.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5745,7 +5765,7 @@ class BatchCreateTaskVersionAsyncResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 批量操作返回
+        :param _Data: <p>批量操作返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20210820.models.BatchTaskOperateNew`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5756,7 +5776,7 @@ class BatchCreateTaskVersionAsyncResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""批量操作返回
+        r"""<p>批量操作返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchTaskOperateNew`
         """
@@ -12443,7 +12463,7 @@ class CommitRuleGroupTaskRequest(AbstractModel):
         r"""
         :param _RuleGroupId: 规则组ID
         :type RuleGroupId: int
-        :param _TriggerType: 触发类型 1.手动触发 2.调度事中触发 3.周期调度触发
+        :param _TriggerType: 触发类型：1-手动触发，2-调度事件触发，3-周期调度触发
         :type TriggerType: int
         :param _ExecRuleConfig: 规则配置列表
         :type ExecRuleConfig: list of RuleConfig
@@ -12451,7 +12471,7 @@ class CommitRuleGroupTaskRequest(AbstractModel):
         :type ExecConfig: :class:`tencentcloud.wedata.v20210820.models.RuleExecConfig`
         :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param _EngineType: 该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        :param _EngineType: 执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
         :type EngineType: str
         """
         self._RuleGroupId = None
@@ -12474,7 +12494,7 @@ class CommitRuleGroupTaskRequest(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""触发类型 1.手动触发 2.调度事中触发 3.周期调度触发
+        r"""触发类型：1-手动触发，2-调度事件触发，3-周期调度触发
         :rtype: int
         """
         return self._TriggerType
@@ -12518,7 +12538,7 @@ class CommitRuleGroupTaskRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        r"""执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
         :rtype: str
         """
         return self._EngineType
@@ -12898,10 +12918,10 @@ class CompareResultItem(AbstractModel):
         :param _Operator: 比较操作类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
-        :param _CompareType: 比较类型
+        :param _CompareType: 比较类型：1-固定值, 2-波动值, 3-数值范围比较, 4-枚举范围比较, 5-不用比较, 6-字段数据相关性, 7-公平性
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareType: int
-        :param _ValueComputeType: 值比较类型
+        :param _ValueComputeType: 值比较类型：1-绝对值, 2-上升, 3-下降, 4-范围内, 5-范围外, 6-公平率, 7-公平差
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValueComputeType: int
         """
@@ -12962,7 +12982,7 @@ class CompareResultItem(AbstractModel):
 
     @property
     def CompareType(self):
-        r"""比较类型
+        r"""比较类型：1-固定值, 2-波动值, 3-数值范围比较, 4-枚举范围比较, 5-不用比较, 6-字段数据相关性, 7-公平性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12974,7 +12994,7 @@ class CompareResultItem(AbstractModel):
 
     @property
     def ValueComputeType(self):
-        r"""值比较类型
+        r"""值比较类型：1-绝对值, 2-上升, 3-下降, 4-范围内, 5-范围外, 6-公平率, 7-公平差
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16532,15 +16552,15 @@ class CreateRuleRequest(AbstractModel):
         :type TableId: str
         :param _RuleTemplateId: 规则模板列表
         :type RuleTemplateId: int
-        :param _Type: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        :param _Type: 规则类型：1-系统模版，2-自定义模版，3-自定义SQL
         :type Type: int
-        :param _QualityDim: 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+        :param _QualityDim: 质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
         :type QualityDim: int
         :param _SourceObjectDataTypeName: 源字段详细类型，int、string
         :type SourceObjectDataTypeName: str
         :param _SourceObjectValue: 源字段名称
         :type SourceObjectValue: str
-        :param _ConditionType: 检测范围 1.全表   2.条件扫描
+        :param _ConditionType: 检测范围类型：1-全表，2-条件扫描
         :type ConditionType: int
         :param _ConditionExpression: 条件扫描WHERE条件表达式
         :type ConditionExpression: str
@@ -16548,7 +16568,7 @@ class CreateRuleRequest(AbstractModel):
         :type CustomSql: str
         :param _CompareRule: 报警触发条件
         :type CompareRule: :class:`tencentcloud.wedata.v20210820.models.CompareRule`
-        :param _AlarmLevel: 报警触发级别 1.低, 2.中, 3.高
+        :param _AlarmLevel: 告警级别：1-低，2-中，3-高
         :type AlarmLevel: int
         :param _Description: 规则描述
         :type Description: str
@@ -16568,7 +16588,7 @@ class CreateRuleRequest(AbstractModel):
         :type FieldConfig: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
         :param _TargetObjectValue: 目标字段名称  CITY
         :type TargetObjectValue: str
-        :param _SourceEngineTypes: 该规则支持的执行引擎列表
+        :param _SourceEngineTypes: 执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :type SourceEngineTypes: list of int non-negative
         """
         self._ProjectId = None
@@ -16653,7 +16673,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        r"""规则类型：1-系统模版，2-自定义模版，3-自定义SQL
         :rtype: int
         """
         return self._Type
@@ -16664,7 +16684,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def QualityDim(self):
-        r"""规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+        r"""质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
         :rtype: int
         """
         return self._QualityDim
@@ -16697,7 +16717,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def ConditionType(self):
-        r"""检测范围 1.全表   2.条件扫描
+        r"""检测范围类型：1-全表，2-条件扫描
         :rtype: int
         """
         return self._ConditionType
@@ -16741,7 +16761,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def AlarmLevel(self):
-        r"""报警触发级别 1.低, 2.中, 3.高
+        r"""告警级别：1-低，2-中，3-高
         :rtype: int
         """
         return self._AlarmLevel
@@ -16851,7 +16871,7 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def SourceEngineTypes(self):
-        r"""该规则支持的执行引擎列表
+        r"""执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :rtype: list of int non-negative
         """
         return self._SourceEngineTypes
@@ -16954,17 +16974,17 @@ class CreateRuleTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 模板类型  1.系统模板   2.自定义模板
+        :param _Type: 模版类型：1-系统模版，2-用户自定义模版
         :type Type: int
         :param _Name: 模板名称
         :type Name: str
-        :param _QualityDim: 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
+        :param _QualityDim: 质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
         :type QualityDim: int
-        :param _SourceObjectType: 源端数据对象类型 1.常量  2.离线表级   2.离线字段级
+        :param _SourceObjectType: 源数据对象类型：1-常量，2-离线表级，3-离线字段级别
         :type SourceObjectType: int
         :param _Description: 模板描述
         :type Description: str
-        :param _SourceEngineTypes: 源端对应的引擎类型
+        :param _SourceEngineTypes: 执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :type SourceEngineTypes: list of int non-negative
         :param _MultiSourceFlag: 是否关联其它库表
         :type MultiSourceFlag: bool
@@ -16988,7 +17008,7 @@ class CreateRuleTemplateRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""模板类型  1.系统模板   2.自定义模板
+        r"""模版类型：1-系统模版，2-用户自定义模版
         :rtype: int
         """
         return self._Type
@@ -17010,7 +17030,7 @@ class CreateRuleTemplateRequest(AbstractModel):
 
     @property
     def QualityDim(self):
-        r"""质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
+        r"""质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
         :rtype: int
         """
         return self._QualityDim
@@ -17021,7 +17041,7 @@ class CreateRuleTemplateRequest(AbstractModel):
 
     @property
     def SourceObjectType(self):
-        r"""源端数据对象类型 1.常量  2.离线表级   2.离线字段级
+        r"""源数据对象类型：1-常量，2-离线表级，3-离线字段级别
         :rtype: int
         """
         return self._SourceObjectType
@@ -17043,7 +17063,7 @@ class CreateRuleTemplateRequest(AbstractModel):
 
     @property
     def SourceEngineTypes(self):
-        r"""源端对应的引擎类型
+        r"""执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :rtype: list of int non-negative
         """
         return self._SourceEngineTypes
@@ -29230,52 +29250,55 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApiName: 服务Api名称
+        :param _ApiName: <p>服务Api名称</p>
         :type ApiName: str
-        :param _PathUrl: 服务请求Path
+        :param _PathUrl: <p>服务请求Path</p>
         :type PathUrl: str
-        :param _OwnerName: 服务责任人名称
+        :param _OwnerName: <p>服务责任人名称</p>
         :type OwnerName: str
-        :param _RequestType: 服务请求方式
+        :param _RequestType: <p>服务请求方式</p>
         :type RequestType: str
-        :param _ApiTagNames: 服务标签名称集合
+        :param _ApiTagNames: <p>服务标签名称集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiTagNames: str
-        :param _ApiDescription: 服务描述
+        :param _ApiDescription: <p>服务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiDescription: str
-        :param _RequestExample: 服务请求返回示例
+        :param _RequestExample: <p>服务请求返回示例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestExample: str
-        :param _RequestSuccess: 服务请求成功返回示例
+        :param _RequestSuccess: <p>服务请求成功返回示例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestSuccess: str
-        :param _RequestError: 服务请求失败返回示例
+        :param _RequestError: <p>服务请求失败返回示例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestError: str
-        :param _RequestParam: 服务请求参数列表
+        :param _RequestParam: <p>服务请求参数列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestParam: list of DataServiceRequestParam
-        :param _ResponseParam: 服务响应参数列表
+        :param _ResponseParam: <p>服务响应参数列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseParam: list of DataServiceResponseParam
-        :param _MaxAllowQps: 最大qps
+        :param _MaxAllowQps: <p>最大qps</p>
         :type MaxAllowQps: int
-        :param _MaxAllowPageSize: 最大记录数
+        :param _MaxAllowPageSize: <p>最大记录数</p>
         :type MaxAllowPageSize: int
-        :param _TimeoutPeriod: 超时时间，单位ms
+        :param _TimeoutPeriod: <p>超时时间，单位ms</p>
         :type TimeoutPeriod: int
-        :param _ApiId: ApiId
+        :param _ApiId: <p>ApiId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiId: str
-        :param _AuthType: 0:免认证 1:应用认证
+        :param _AuthType: <p>认证方式</p><p>枚举值：</p><ul><li>0： 免认证</li><li>1： 应用认证</li><li>2： OAuth2.0认证</li></ul>
         :type AuthType: int
-        :param _GatewayApiUrl: 请求地址
+        :param _GatewayApiUrl: <p>请求地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayApiUrl: str
-        :param _ApiStatus: 服务Api状态 1:已上线  3:已下线
+        :param _ApiStatus: <p>服务Api状态 1:已上线  3:已下线</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiStatus: int
+        :param _EnablePage: <p>是否开启分页</p><p>枚举值：</p><ul><li>0： 开启分页</li><li>1： 未开启</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnablePage: int
         """
         self._ApiName = None
         self._PathUrl = None
@@ -29295,10 +29318,11 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
         self._AuthType = None
         self._GatewayApiUrl = None
         self._ApiStatus = None
+        self._EnablePage = None
 
     @property
     def ApiName(self):
-        r"""服务Api名称
+        r"""<p>服务Api名称</p>
         :rtype: str
         """
         return self._ApiName
@@ -29309,7 +29333,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def PathUrl(self):
-        r"""服务请求Path
+        r"""<p>服务请求Path</p>
         :rtype: str
         """
         return self._PathUrl
@@ -29320,7 +29344,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def OwnerName(self):
-        r"""服务责任人名称
+        r"""<p>服务责任人名称</p>
         :rtype: str
         """
         return self._OwnerName
@@ -29331,7 +29355,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def RequestType(self):
-        r"""服务请求方式
+        r"""<p>服务请求方式</p>
         :rtype: str
         """
         return self._RequestType
@@ -29342,7 +29366,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def ApiTagNames(self):
-        r"""服务标签名称集合
+        r"""<p>服务标签名称集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29354,7 +29378,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def ApiDescription(self):
-        r"""服务描述
+        r"""<p>服务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29366,7 +29390,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def RequestExample(self):
-        r"""服务请求返回示例
+        r"""<p>服务请求返回示例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29378,7 +29402,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def RequestSuccess(self):
-        r"""服务请求成功返回示例
+        r"""<p>服务请求成功返回示例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29390,7 +29414,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def RequestError(self):
-        r"""服务请求失败返回示例
+        r"""<p>服务请求失败返回示例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29402,7 +29426,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def RequestParam(self):
-        r"""服务请求参数列表
+        r"""<p>服务请求参数列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataServiceRequestParam
         """
@@ -29414,7 +29438,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def ResponseParam(self):
-        r"""服务响应参数列表
+        r"""<p>服务响应参数列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DataServiceResponseParam
         """
@@ -29426,7 +29450,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def MaxAllowQps(self):
-        r"""最大qps
+        r"""<p>最大qps</p>
         :rtype: int
         """
         return self._MaxAllowQps
@@ -29437,7 +29461,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def MaxAllowPageSize(self):
-        r"""最大记录数
+        r"""<p>最大记录数</p>
         :rtype: int
         """
         return self._MaxAllowPageSize
@@ -29448,7 +29472,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def TimeoutPeriod(self):
-        r"""超时时间，单位ms
+        r"""<p>超时时间，单位ms</p>
         :rtype: int
         """
         return self._TimeoutPeriod
@@ -29459,7 +29483,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def ApiId(self):
-        r"""ApiId
+        r"""<p>ApiId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29471,7 +29495,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""0:免认证 1:应用认证
+        r"""<p>认证方式</p><p>枚举值：</p><ul><li>0： 免认证</li><li>1： 应用认证</li><li>2： OAuth2.0认证</li></ul>
         :rtype: int
         """
         return self._AuthType
@@ -29482,7 +29506,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def GatewayApiUrl(self):
-        r"""请求地址
+        r"""<p>请求地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29494,7 +29518,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
 
     @property
     def ApiStatus(self):
-        r"""服务Api状态 1:已上线  3:已下线
+        r"""<p>服务Api状态 1:已上线  3:已下线</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -29503,6 +29527,18 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
     @ApiStatus.setter
     def ApiStatus(self, ApiStatus):
         self._ApiStatus = ApiStatus
+
+    @property
+    def EnablePage(self):
+        r"""<p>是否开启分页</p><p>枚举值：</p><ul><li>0： 开启分页</li><li>1： 未开启</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EnablePage
+
+    @EnablePage.setter
+    def EnablePage(self, EnablePage):
+        self._EnablePage = EnablePage
 
 
     def _deserialize(self, params):
@@ -29534,6 +29570,7 @@ class DescribeDataServicePublishedApiDetailResp(AbstractModel):
         self._AuthType = params.get("AuthType")
         self._GatewayApiUrl = params.get("GatewayApiUrl")
         self._ApiStatus = params.get("ApiStatus")
+        self._EnablePage = params.get("EnablePage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43966,13 +44003,13 @@ class DescribeRuleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 模板类型 1.系统模板 2.自定义模板
+        :param _Type: 模版类型：1-系统模版，2-用户自定义模版
         :type Type: int
-        :param _SourceObjectType: 1.常量 2.离线表级 2.离线字段级
+        :param _SourceObjectType: 源数据对象类型：1-常量，2-离线表级，3-离线字段级别
         :type SourceObjectType: int
         :param _ProjectId: 项目Id
         :type ProjectId: str
-        :param _SourceEngineTypes: 源端对应的引擎类型
+        :param _SourceEngineTypes: 执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :type SourceEngineTypes: list of int non-negative
         """
         self._Type = None
@@ -43982,7 +44019,7 @@ class DescribeRuleTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""模板类型 1.系统模板 2.自定义模板
+        r"""模版类型：1-系统模版，2-用户自定义模版
         :rtype: int
         """
         return self._Type
@@ -43993,7 +44030,7 @@ class DescribeRuleTemplatesRequest(AbstractModel):
 
     @property
     def SourceObjectType(self):
-        r"""1.常量 2.离线表级 2.离线字段级
+        r"""源数据对象类型：1-常量，2-离线表级，3-离线字段级别
         :rtype: int
         """
         return self._SourceObjectType
@@ -44015,7 +44052,7 @@ class DescribeRuleTemplatesRequest(AbstractModel):
 
     @property
     def SourceEngineTypes(self):
-        r"""源端对应的引擎类型
+        r"""执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :rtype: list of int non-negative
         """
         return self._SourceEngineTypes
@@ -44254,7 +44291,7 @@ class DescribeRulesRequest(AbstractModel):
         :type ProjectId: str
         :param _RuleGroupId: 规则组id
         :type RuleGroupId: int
-        :param _EngineType: 该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        :param _EngineType: 执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
         :type EngineType: str
         """
         self._ProjectId = None
@@ -44285,7 +44322,7 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        r"""执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
         :rtype: str
         """
         return self._EngineType
@@ -45822,26 +45859,28 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
-        :param _JobId: 作业ID
+        :param _JobId: <p>作业ID</p>
         :type JobId: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: int
-        :param _Container: container名字
+        :param _Container: <p>container名字</p>
         :type Container: str
-        :param _Limit: 条数
+        :param _Limit: <p>条数</p>
         :type Limit: int
-        :param _OrderType: 排序类型 desc asc
+        :param _OrderType: <p>排序类型 desc asc</p>
         :type OrderType: str
-        :param _RunningOrderId: 作业运行的实例ID
+        :param _RunningOrderId: <p>作业运行的实例ID</p>
         :type RunningOrderId: int
-        :param _Keyword: 关键字
+        :param _Keyword: <p>关键字</p>
         :type Keyword: str
+        :param _JobType: <p>任务类型，不传时按 <code>INTEGRATION</code> 处理 </p><p>枚举值：</p><ul><li>INTEGRATION： 集成任务</li><li>VALIDATE： 对账任务</li></ul>
+        :type JobType: str
         """
         self._ProjectId = None
         self._TaskId = None
@@ -45853,10 +45892,11 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
         self._OrderType = None
         self._RunningOrderId = None
         self._Keyword = None
+        self._JobType = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -45867,7 +45907,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -45878,7 +45918,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""作业ID
+        r"""<p>作业ID</p>
         :rtype: str
         """
         return self._JobId
@@ -45889,7 +45929,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -45900,7 +45940,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -45911,7 +45951,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     @property
     def Container(self):
-        r"""container名字
+        r"""<p>container名字</p>
         :rtype: str
         """
         return self._Container
@@ -45922,7 +45962,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""条数
+        r"""<p>条数</p>
         :rtype: int
         """
         return self._Limit
@@ -45933,7 +45973,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""排序类型 desc asc
+        r"""<p>排序类型 desc asc</p>
         :rtype: str
         """
         return self._OrderType
@@ -45944,7 +45984,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     @property
     def RunningOrderId(self):
-        r"""作业运行的实例ID
+        r"""<p>作业运行的实例ID</p>
         :rtype: int
         """
         return self._RunningOrderId
@@ -45955,7 +45995,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""关键字
+        r"""<p>关键字</p>
         :rtype: str
         """
         return self._Keyword
@@ -45963,6 +46003,17 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
     @Keyword.setter
     def Keyword(self, Keyword):
         self._Keyword = Keyword
+
+    @property
+    def JobType(self):
+        r"""<p>任务类型，不传时按 <code>INTEGRATION</code> 处理 </p><p>枚举值：</p><ul><li>INTEGRATION： 集成任务</li><li>VALIDATE： 对账任务</li></ul>
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
 
 
     def _deserialize(self, params):
@@ -45976,6 +46027,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
         self._OrderType = params.get("OrderType")
         self._RunningOrderId = params.get("RunningOrderId")
         self._Keyword = params.get("Keyword")
+        self._JobType = params.get("JobType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45993,10 +46045,10 @@ class DescribeStreamTaskLogListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListOver: 是否是全量
+        :param _ListOver: <p>是否是全量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListOver: bool
-        :param _LogContentList: 日志集合
+        :param _LogContentList: <p>日志集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogContentList: list of LogContentInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -46008,7 +46060,7 @@ class DescribeStreamTaskLogListResponse(AbstractModel):
 
     @property
     def ListOver(self):
-        r"""是否是全量
+        r"""<p>是否是全量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -46020,7 +46072,7 @@ class DescribeStreamTaskLogListResponse(AbstractModel):
 
     @property
     def LogContentList(self):
-        r"""日志集合
+        r"""<p>日志集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogContentInfo
         """
@@ -75089,121 +75141,126 @@ class MakePlanOpsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlanId: 补录计划ID
+        :param _PlanId: <p>补录计划ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlanId: str
-        :param _MakeName: 补录计划名称
+        :param _MakeName: <p>补录计划名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MakeName: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _CheckParent: 补录是否检查父任务状态
+        :param _CheckParent: <p>补录是否检查父任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckParent: bool
-        :param _SameSelfDependType: 是否使用任务原有自依赖配置
+        :param _SameSelfDependType: <p>是否使用任务原有自依赖配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SameSelfDependType: bool
-        :param _ParallelNum: 并行度，在SameSelfDependType为false时生效
+        :param _ParallelNum: <p>并行度，在SameSelfDependType为false时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParallelNum: int
-        :param _SameCycle: 补录实例生成周期是否修改
+        :param _SameCycle: <p>补录实例生成周期是否修改</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SameCycle: bool
-        :param _SourceTaskCycle: 调度周期转换方式-原始周期类型
+        :param _SourceTaskCycle: <p>调度周期转换方式-原始周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceTaskCycle: str
-        :param _TargetTaskCycle: 调度周期转换方式-目标周期类型
+        :param _TargetTaskCycle: <p>调度周期转换方式-目标周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetTaskCycle: str
-        :param _TargetTaskAction: 调度周期转换方式-目标周期类型指定时间
+        :param _TargetTaskAction: <p>调度周期转换方式-目标周期类型指定时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetTaskAction: int
-        :param _MapParamList: 补录实例自定义参数
+        :param _MapParamList: <p>补录实例自定义参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MapParamList: list of StrToStrMap
-        :param _MakeExtList: 补录扩展属性
+        :param _MakeExtList: <p>补录扩展属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MakeExtList: list of StrToStrMap
-        :param _CreatorId: 创建人ID
+        :param _CreatorId: <p>创建人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorId: str
-        :param _Creator: 创建人
+        :param _Creator: <p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creator: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _TaskIdList: 补录任务ID集合
+        :param _TaskIdList: <p>补录任务ID集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskIdList: list of str
-        :param _MakeDatetimeList: 补录计划日期范围
+        :param _MakeDatetimeList: <p>补录计划日期范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MakeDatetimeList: list of CreateMakeDatetimeInfo
-        :param _Remark: 补录计划说明
+        :param _Remark: <p>补录计划说明</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _SchedulerResourceGroup: 补录指定的调度资源组（ID）
+        :param _SchedulerResourceGroup: <p>补录指定的调度资源组（ID）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerResourceGroup: str
-        :param _SchedulerResourceGroupName: 补录指定的调度资源组名称
+        :param _SchedulerResourceGroupName: <p>补录指定的调度资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerResourceGroupName: str
-        :param _IntegrationResourceGroup: 补录指定的集成资源组（ID）
+        :param _IntegrationResourceGroup: <p>补录指定的集成资源组（ID）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntegrationResourceGroup: str
-        :param _IntegrationResourceGroupName: 补录指定的集成资源组名称
+        :param _IntegrationResourceGroupName: <p>补录指定的集成资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntegrationResourceGroupName: str
-        :param _TaskCount: 补录计划任务数量
+        :param _TaskCount: <p>补录计划任务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCount: int
-        :param _CompletePercent: 补录计划实例完成百分数
+        :param _CompletePercent: <p>补录计划实例完成百分数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompletePercent: int
-        :param _SuccessPercent: 补录计划实例成功百分数
+        :param _SuccessPercent: <p>补录计划实例成功百分数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessPercent: int
-        :param _CheckParentType: 补录检查父任务类型。取值范围：
-<li> NONE: 全部不检查 </li>
-<li> ALL: 检查全部上游父任务 </li>
-<li> MAKE_SCOPE: 只在（当前补录计划）选中任务中检查 </li>
+        :param _CheckParentType: <p>补录检查父任务类型。取值范围：</p><li> NONE: 全部不检查 </li><li> ALL: 检查全部上游父任务 </li><li> MAKE_SCOPE: 只在（当前补录计划）选中任务中检查 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckParentType: str
-        :param _SameSelfWorkflowDependType: 是否和原任务保持相同工作流自依赖属性
+        :param _SameSelfWorkflowDependType: <p>是否和原任务保持相同工作流自依赖属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SameSelfWorkflowDependType: bool
-        :param _SelfWorkflowDependency: 工作流自依赖类型
+        :param _SelfWorkflowDependency: <p>工作流自依赖类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfWorkflowDependency: str
-        :param _MakeDataTimeOrder: 补录时间顺序
-NORMAL： 正常
-ORDER ： 按照实例时间顺序执行
-REVERSE： 实例数据时间逆序
+        :param _MakeDataTimeOrder: <p>补录时间顺序<br>NORMAL： 正常<br>ORDER ： 按照实例时间顺序执行<br>REVERSE： 实例数据时间逆序</p>
         :type MakeDataTimeOrder: str
-        :param _ScheduleTimeZone: 补录时间范围的时区
+        :param _ScheduleTimeZone: <p>补录时间范围的时区</p>
         :type ScheduleTimeZone: str
-        :param _AppParam: 执行应用参数
+        :param _AppParam: <p>执行应用参数</p>
         :type AppParam: str
-        :param _TimeType: 补录计划时间范围的类型： 
-DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
+        :param _TimeType: <p>补录计划时间范围的类型：<br>DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间</p>
         :type TimeType: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _FailurePercent: 失败百分比
+        :param _FailurePercent: <p>失败百分比</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailurePercent: int
-        :param _AlarmRule: 补录计划的告警规则
+        :param _AlarmRule: <p>补录计划的告警规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmRule: :class:`tencentcloud.wedata.v20210820.models.MakePlanAlarmRule`
-        :param _RunType: 运行类型
+        :param _RunType: <p>运行类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunType: int
-        :param _RunDateTime: 定时运行时间
+        :param _RunDateTime: <p>定时运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunDateTime: str
+        :param _RunScheduleTimeZone: <p>定时补录计划 或者 指定时间段补录 执行时间点的时区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunScheduleTimeZone: str
+        :param _RunScheduleRangeStartTime: <p>指定时间段补录开始时间</p><p>参数格式：00:00 - 23:59</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunScheduleRangeStartTime: str
+        :param _RunScheduleRangeEndTime: <p>指定时间段补录结束时间</p><p>参数格式：00:00 - 23:59</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunScheduleRangeEndTime: str
+        :param _RunScheduleRangeWeekDays: <p>指定时间段补录生效日，星期一到星期日，1-7</p><p>枚举值：</p><ul><li>星期一： 1</li><li>星期二： 2</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunScheduleRangeWeekDays: list of int
         """
         self._PlanId = None
         self._MakeName = None
@@ -75243,10 +75300,14 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
         self._AlarmRule = None
         self._RunType = None
         self._RunDateTime = None
+        self._RunScheduleTimeZone = None
+        self._RunScheduleRangeStartTime = None
+        self._RunScheduleRangeEndTime = None
+        self._RunScheduleRangeWeekDays = None
 
     @property
     def PlanId(self):
-        r"""补录计划ID
+        r"""<p>补录计划ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75258,7 +75319,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def MakeName(self):
-        r"""补录计划名称
+        r"""<p>补录计划名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75270,7 +75331,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75282,7 +75343,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def CheckParent(self):
-        r"""补录是否检查父任务状态
+        r"""<p>补录是否检查父任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -75294,7 +75355,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def SameSelfDependType(self):
-        r"""是否使用任务原有自依赖配置
+        r"""<p>是否使用任务原有自依赖配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -75306,7 +75367,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def ParallelNum(self):
-        r"""并行度，在SameSelfDependType为false时生效
+        r"""<p>并行度，在SameSelfDependType为false时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -75318,7 +75379,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def SameCycle(self):
-        r"""补录实例生成周期是否修改
+        r"""<p>补录实例生成周期是否修改</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -75330,7 +75391,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def SourceTaskCycle(self):
-        r"""调度周期转换方式-原始周期类型
+        r"""<p>调度周期转换方式-原始周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75342,7 +75403,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def TargetTaskCycle(self):
-        r"""调度周期转换方式-目标周期类型
+        r"""<p>调度周期转换方式-目标周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75354,7 +75415,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def TargetTaskAction(self):
-        r"""调度周期转换方式-目标周期类型指定时间
+        r"""<p>调度周期转换方式-目标周期类型指定时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -75366,7 +75427,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def MapParamList(self):
-        r"""补录实例自定义参数
+        r"""<p>补录实例自定义参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StrToStrMap
         """
@@ -75378,7 +75439,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def MakeExtList(self):
-        r"""补录扩展属性
+        r"""<p>补录扩展属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StrToStrMap
         """
@@ -75390,7 +75451,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def CreatorId(self):
-        r"""创建人ID
+        r"""<p>创建人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75402,7 +75463,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def Creator(self):
-        r"""创建人
+        r"""<p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75414,7 +75475,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75426,7 +75487,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def TaskIdList(self):
-        r"""补录任务ID集合
+        r"""<p>补录任务ID集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -75438,7 +75499,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def MakeDatetimeList(self):
-        r"""补录计划日期范围
+        r"""<p>补录计划日期范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CreateMakeDatetimeInfo
         """
@@ -75450,7 +75511,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def Remark(self):
-        r"""补录计划说明
+        r"""<p>补录计划说明</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75462,7 +75523,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def SchedulerResourceGroup(self):
-        r"""补录指定的调度资源组（ID）
+        r"""<p>补录指定的调度资源组（ID）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75474,7 +75535,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def SchedulerResourceGroupName(self):
-        r"""补录指定的调度资源组名称
+        r"""<p>补录指定的调度资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75486,7 +75547,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def IntegrationResourceGroup(self):
-        r"""补录指定的集成资源组（ID）
+        r"""<p>补录指定的集成资源组（ID）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75498,7 +75559,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def IntegrationResourceGroupName(self):
-        r"""补录指定的集成资源组名称
+        r"""<p>补录指定的集成资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75510,7 +75571,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def TaskCount(self):
-        r"""补录计划任务数量
+        r"""<p>补录计划任务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -75522,7 +75583,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def CompletePercent(self):
-        r"""补录计划实例完成百分数
+        r"""<p>补录计划实例完成百分数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -75534,7 +75595,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def SuccessPercent(self):
-        r"""补录计划实例成功百分数
+        r"""<p>补录计划实例成功百分数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -75546,10 +75607,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def CheckParentType(self):
-        r"""补录检查父任务类型。取值范围：
-<li> NONE: 全部不检查 </li>
-<li> ALL: 检查全部上游父任务 </li>
-<li> MAKE_SCOPE: 只在（当前补录计划）选中任务中检查 </li>
+        r"""<p>补录检查父任务类型。取值范围：</p><li> NONE: 全部不检查 </li><li> ALL: 检查全部上游父任务 </li><li> MAKE_SCOPE: 只在（当前补录计划）选中任务中检查 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75561,7 +75619,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def SameSelfWorkflowDependType(self):
-        r"""是否和原任务保持相同工作流自依赖属性
+        r"""<p>是否和原任务保持相同工作流自依赖属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -75573,7 +75631,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def SelfWorkflowDependency(self):
-        r"""工作流自依赖类型
+        r"""<p>工作流自依赖类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75585,10 +75643,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def MakeDataTimeOrder(self):
-        r"""补录时间顺序
-NORMAL： 正常
-ORDER ： 按照实例时间顺序执行
-REVERSE： 实例数据时间逆序
+        r"""<p>补录时间顺序<br>NORMAL： 正常<br>ORDER ： 按照实例时间顺序执行<br>REVERSE： 实例数据时间逆序</p>
         :rtype: str
         """
         return self._MakeDataTimeOrder
@@ -75599,7 +75654,7 @@ REVERSE： 实例数据时间逆序
 
     @property
     def ScheduleTimeZone(self):
-        r"""补录时间范围的时区
+        r"""<p>补录时间范围的时区</p>
         :rtype: str
         """
         return self._ScheduleTimeZone
@@ -75610,7 +75665,7 @@ REVERSE： 实例数据时间逆序
 
     @property
     def AppParam(self):
-        r"""执行应用参数
+        r"""<p>执行应用参数</p>
         :rtype: str
         """
         return self._AppParam
@@ -75621,8 +75676,7 @@ REVERSE： 实例数据时间逆序
 
     @property
     def TimeType(self):
-        r"""补录计划时间范围的类型： 
-DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
+        r"""<p>补录计划时间范围的类型：<br>DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间</p>
         :rtype: str
         """
         return self._TimeType
@@ -75633,7 +75687,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -75644,7 +75698,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -75655,7 +75709,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def FailurePercent(self):
-        r"""失败百分比
+        r"""<p>失败百分比</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -75667,7 +75721,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def AlarmRule(self):
-        r"""补录计划的告警规则
+        r"""<p>补录计划的告警规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.MakePlanAlarmRule`
         """
@@ -75679,7 +75733,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def RunType(self):
-        r"""运行类型
+        r"""<p>运行类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -75691,7 +75745,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
 
     @property
     def RunDateTime(self):
-        r"""定时运行时间
+        r"""<p>定时运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -75700,6 +75754,54 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
     @RunDateTime.setter
     def RunDateTime(self, RunDateTime):
         self._RunDateTime = RunDateTime
+
+    @property
+    def RunScheduleTimeZone(self):
+        r"""<p>定时补录计划 或者 指定时间段补录 执行时间点的时区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunScheduleTimeZone
+
+    @RunScheduleTimeZone.setter
+    def RunScheduleTimeZone(self, RunScheduleTimeZone):
+        self._RunScheduleTimeZone = RunScheduleTimeZone
+
+    @property
+    def RunScheduleRangeStartTime(self):
+        r"""<p>指定时间段补录开始时间</p><p>参数格式：00:00 - 23:59</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunScheduleRangeStartTime
+
+    @RunScheduleRangeStartTime.setter
+    def RunScheduleRangeStartTime(self, RunScheduleRangeStartTime):
+        self._RunScheduleRangeStartTime = RunScheduleRangeStartTime
+
+    @property
+    def RunScheduleRangeEndTime(self):
+        r"""<p>指定时间段补录结束时间</p><p>参数格式：00:00 - 23:59</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RunScheduleRangeEndTime
+
+    @RunScheduleRangeEndTime.setter
+    def RunScheduleRangeEndTime(self, RunScheduleRangeEndTime):
+        self._RunScheduleRangeEndTime = RunScheduleRangeEndTime
+
+    @property
+    def RunScheduleRangeWeekDays(self):
+        r"""<p>指定时间段补录生效日，星期一到星期日，1-7</p><p>枚举值：</p><ul><li>星期一： 1</li><li>星期二： 2</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._RunScheduleRangeWeekDays
+
+    @RunScheduleRangeWeekDays.setter
+    def RunScheduleRangeWeekDays(self, RunScheduleRangeWeekDays):
+        self._RunScheduleRangeWeekDays = RunScheduleRangeWeekDays
 
 
     def _deserialize(self, params):
@@ -75758,6 +75860,10 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
             self._AlarmRule._deserialize(params.get("AlarmRule"))
         self._RunType = params.get("RunType")
         self._RunDateTime = params.get("RunDateTime")
+        self._RunScheduleTimeZone = params.get("RunScheduleTimeZone")
+        self._RunScheduleRangeStartTime = params.get("RunScheduleRangeStartTime")
+        self._RunScheduleRangeEndTime = params.get("RunScheduleRangeEndTime")
+        self._RunScheduleRangeWeekDays = params.get("RunScheduleRangeWeekDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -77431,7 +77537,7 @@ class ModifyExecStrategyRequest(AbstractModel):
         r"""
         :param _RuleGroupId: 规则组ID
         :type RuleGroupId: int
-        :param _MonitorType: 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+        :param _MonitorType: 监控类型：1-未配置，2-关联生产调度，3-离线周期检测
         :type MonitorType: int
         :param _ExecQueue: 计算队列
         :type ExecQueue: str
@@ -77447,12 +77553,7 @@ class ModifyExecStrategyRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 离线周期模式下,生效日期-结束时间
         :type EndTime: str
-        :param _CycleType: 离线周期模式下,调度周期 
-MINUTE_CYCLE:I,
-HOUR_CYCLE:H,
-DAY_CYCLE:D,
-WEEK_CYCLE:W,
-MONTH_CYCLE:M
+        :param _CycleType: 周期类型：MINUTE-分钟，HOUR-小时，DAY-天，WEEK-周，MONTH-月，YEAR-年
         :type CycleType: str
         :param _CycleStep: 离线周期模式下,调度步长
         :type CycleStep: int
@@ -77466,9 +77567,9 @@ MONTH_CYCLE:M
         :type DatasourceId: str
         :param _TableId: 数据表Id
         :type TableId: str
-        :param _ExecEngineType: 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        :param _ExecEngineType: 执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
         :type ExecEngineType: str
-        :param _TriggerTypes: 触发场景
+        :param _TriggerTypes: 触发类型数组：1-手动触发，2-调度事件触发，3-周期调度触发
         :type TriggerTypes: list of str
         """
         self._RuleGroupId = None
@@ -77503,7 +77604,7 @@ MONTH_CYCLE:M
 
     @property
     def MonitorType(self):
-        r"""监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+        r"""监控类型：1-未配置，2-关联生产调度，3-离线周期检测
         :rtype: int
         """
         return self._MonitorType
@@ -77591,12 +77692,7 @@ MONTH_CYCLE:M
 
     @property
     def CycleType(self):
-        r"""离线周期模式下,调度周期 
-MINUTE_CYCLE:I,
-HOUR_CYCLE:H,
-DAY_CYCLE:D,
-WEEK_CYCLE:W,
-MONTH_CYCLE:M
+        r"""周期类型：MINUTE-分钟，HOUR-小时，DAY-天，WEEK-周，MONTH-月，YEAR-年
         :rtype: str
         """
         return self._CycleType
@@ -77673,7 +77769,7 @@ MONTH_CYCLE:M
 
     @property
     def ExecEngineType(self):
-        r"""运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        r"""执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
         :rtype: str
         """
         return self._ExecEngineType
@@ -77684,7 +77780,7 @@ MONTH_CYCLE:M
 
     @property
     def TriggerTypes(self):
-        r"""触发场景
+        r"""触发类型数组：1-手动触发，2-调度事件触发，3-周期调度触发
         :rtype: list of str
         """
         return self._TriggerTypes
@@ -78038,7 +78134,7 @@ class ModifyMonitorStatusRequest(AbstractModel):
         :type ProjectId: str
         :param _RuleGroupId: 规则组ID
         :type RuleGroupId: int
-        :param _MonitorStatus: 监控开关状态
+        :param _MonitorStatus: 监控是否开启：0-关闭，1-开启
         :type MonitorStatus: bool
         """
         self._ProjectId = None
@@ -78069,7 +78165,7 @@ class ModifyMonitorStatusRequest(AbstractModel):
 
     @property
     def MonitorStatus(self):
-        r"""监控开关状态
+        r"""监控是否开启：0-关闭，1-开启
         :rtype: bool
         """
         return self._MonitorStatus
@@ -78365,7 +78461,7 @@ class ModifyRuleGroupSubscriptionRequest(AbstractModel):
         :type RuleGroupId: int
         :param _Receivers: 订阅人信息
         :type Receivers: list of SubscribeReceiver
-        :param _SubscribeType: 订阅类型
+        :param _SubscribeType: 订阅方式：1-邮件，2-短信，3-微信，4-语音，5-企微，6-HTTP连接，7-飞书群，8-钉钉群
         :type SubscribeType: list of int non-negative
         :param _ProjectId: 项目ID
         :type ProjectId: str
@@ -78411,7 +78507,7 @@ class ModifyRuleGroupSubscriptionRequest(AbstractModel):
 
     @property
     def SubscribeType(self):
-        r"""订阅类型
+        r"""订阅方式：1-邮件，2-短信，3-微信，4-语音，5-企微，6-HTTP连接，7-飞书群，8-钉钉群
         :rtype: list of int non-negative
         """
         return self._SubscribeType
@@ -78569,15 +78665,15 @@ class ModifyRuleRequest(AbstractModel):
         :type TableId: str
         :param _RuleTemplateId: 规则模板ID
         :type RuleTemplateId: int
-        :param _Type: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        :param _Type: 规则类型：1-系统模版，2-自定义模版，3-自定义SQL
         :type Type: int
-        :param _QualityDim: 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+        :param _QualityDim: 质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
         :type QualityDim: int
         :param _SourceObjectDataTypeName: 源字段详细类型，int、string
         :type SourceObjectDataTypeName: str
         :param _SourceObjectValue: 源字段名称
         :type SourceObjectValue: str
-        :param _ConditionType: 检测范围 1.全表   2.条件扫描
+        :param _ConditionType: 检测范围类型：1-全表，2-条件扫描
         :type ConditionType: int
         :param _ConditionExpression: 条件扫描WHERE条件表达式
         :type ConditionExpression: str
@@ -78585,7 +78681,7 @@ class ModifyRuleRequest(AbstractModel):
         :type CustomSql: str
         :param _CompareRule: 报警触发条件
         :type CompareRule: :class:`tencentcloud.wedata.v20210820.models.CompareRule`
-        :param _AlarmLevel: 报警触发级别 1.低, 2.中, 3.高
+        :param _AlarmLevel: 告警级别：1-低，2-中，3-高
         :type AlarmLevel: int
         :param _Description: 规则描述
         :type Description: str
@@ -78601,7 +78697,7 @@ class ModifyRuleRequest(AbstractModel):
         :type FieldConfig: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
         :param _TargetObjectValue: 目标字段名称  CITY
         :type TargetObjectValue: str
-        :param _SourceEngineTypes: 该规则适配的执行引擎
+        :param _SourceEngineTypes: 执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :type SourceEngineTypes: list of int non-negative
         :param _TargetDatabaseName: 目标库名
         :type TargetDatabaseName: str
@@ -78711,7 +78807,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        r"""规则类型：1-系统模版，2-自定义模版，3-自定义SQL
         :rtype: int
         """
         return self._Type
@@ -78722,7 +78818,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def QualityDim(self):
-        r"""规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+        r"""质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
         :rtype: int
         """
         return self._QualityDim
@@ -78755,7 +78851,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def ConditionType(self):
-        r"""检测范围 1.全表   2.条件扫描
+        r"""检测范围类型：1-全表，2-条件扫描
         :rtype: int
         """
         return self._ConditionType
@@ -78799,7 +78895,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def AlarmLevel(self):
-        r"""报警触发级别 1.低, 2.中, 3.高
+        r"""告警级别：1-低，2-中，3-高
         :rtype: int
         """
         return self._AlarmLevel
@@ -78887,7 +78983,7 @@ class ModifyRuleRequest(AbstractModel):
 
     @property
     def SourceEngineTypes(self):
-        r"""该规则适配的执行引擎
+        r"""执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :rtype: list of int non-negative
         """
         return self._SourceEngineTypes
@@ -79049,17 +79145,17 @@ class ModifyRuleTemplateRequest(AbstractModel):
         r"""
         :param _TemplateId: 模板ID
         :type TemplateId: int
-        :param _Type: 模板类型  1.系统模板   2.自定义模板
+        :param _Type: 模版类型：1-系统模版，2-用户自定义模版
         :type Type: int
         :param _Name: 模板名称
         :type Name: str
-        :param _QualityDim: 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
+        :param _QualityDim: 质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
         :type QualityDim: int
-        :param _SourceObjectType: 源端数据对象类型 1.常量  2.离线表级   2.离线字段级
+        :param _SourceObjectType: 源数据对象类型：1-常量，2-离线表级，3-离线字段级别
         :type SourceObjectType: int
         :param _Description: 描述
         :type Description: str
-        :param _SourceEngineTypes: 源端对应的引擎类型
+        :param _SourceEngineTypes: 执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :type SourceEngineTypes: list of int non-negative
         :param _MultiSourceFlag: 是否关联其它库表
         :type MultiSourceFlag: bool
@@ -79095,7 +79191,7 @@ class ModifyRuleTemplateRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""模板类型  1.系统模板   2.自定义模板
+        r"""模版类型：1-系统模版，2-用户自定义模版
         :rtype: int
         """
         return self._Type
@@ -79117,7 +79213,7 @@ class ModifyRuleTemplateRequest(AbstractModel):
 
     @property
     def QualityDim(self):
-        r"""质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
+        r"""质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
         :rtype: int
         """
         return self._QualityDim
@@ -79128,7 +79224,7 @@ class ModifyRuleTemplateRequest(AbstractModel):
 
     @property
     def SourceObjectType(self):
-        r"""源端数据对象类型 1.常量  2.离线表级   2.离线字段级
+        r"""源数据对象类型：1-常量，2-离线表级，3-离线字段级别
         :rtype: int
         """
         return self._SourceObjectType
@@ -79150,7 +79246,7 @@ class ModifyRuleTemplateRequest(AbstractModel):
 
     @property
     def SourceEngineTypes(self):
-        r"""源端对应的引擎类型
+        r"""执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
         :rtype: list of int non-negative
         """
         return self._SourceEngineTypes
@@ -91595,7 +91691,7 @@ class Rule(AbstractModel):
         :param _Name: 规则名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Type: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        :param _Type: 规则类型：1-系统模版，2-自定义模版，3-自定义SQL
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _RuleTemplateId: 规则模板Id
@@ -91604,10 +91700,10 @@ class Rule(AbstractModel):
         :param _RuleTemplateContent: 规则模板概述
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplateContent: str
-        :param _QualityDim: 规则所属质量维度 1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+        :param _QualityDim: 质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityDim: int
-        :param _SourceObjectType: 规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+        :param _SourceObjectType: 源数据对象类型：1-常量，2-离线表级，3-离线字段级别
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceObjectType: int
         :param _SourceObjectDataType: 规则适用的源数据对象类型（1：数值，2：字符串）
@@ -91619,7 +91715,7 @@ class Rule(AbstractModel):
         :param _SourceObjectValue: 源字段名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceObjectValue: str
-        :param _ConditionType: 检测范围 1.全表, 2.条件扫描
+        :param _ConditionType: 检测范围类型：1-全表，2-条件扫描
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionType: int
         :param _ConditionExpression: 条件扫描WHERE条件表达式
@@ -91631,7 +91727,7 @@ class Rule(AbstractModel):
         :param _CompareRule: 报警触发条件
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareRule: :class:`tencentcloud.wedata.v20210820.models.CompareRule`
-        :param _AlarmLevel: 报警触发级别 1.低, 2.中, 3.高
+        :param _AlarmLevel: 告警级别：1-低，2-中，3-高
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
         :param _Description: 规则描述
@@ -91673,10 +91769,10 @@ class Rule(AbstractModel):
         :param _SubQualityDim: 模版子维度：0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubQualityDim: int
-        :param _TargetObjectType: 规则适用的目标数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+        :param _TargetObjectType: 目标数据对象类型：1-常量，2-离线表级，3-离线字段级别
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetObjectType: int
-        :param _TargetObjectDataType: 规则适用的目标数据对象类型（1：数值，2：字符串）
+        :param _TargetObjectDataType: 目标字段数据类型：1-数值，2-字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetObjectDataType: int
         :param _TargetObjectDataTypeName: 目标字段详细类型，INT、STRING
@@ -91685,7 +91781,7 @@ class Rule(AbstractModel):
         :param _TargetObjectValue: 目标字段名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetObjectValue: str
-        :param _SourceEngineTypes: 源端对应的引擎类型
+        :param _SourceEngineTypes: 执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceEngineTypes: list of int non-negative
         :param _TableName: 表名称
@@ -91709,7 +91805,7 @@ class Rule(AbstractModel):
         :param _DatabaseId: 数据库 id
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseId: str
-        :param _MonitorStatus: 监控是否开启.0false,1true
+        :param _MonitorStatus: 监控是否开启：0-关闭，1-开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorStatus: int
         :param _TriggerCondition: 触发条件
@@ -91718,7 +91814,7 @@ class Rule(AbstractModel):
         :param _DsEnvType: 0或者未返回或者null：未定义，1：生产，2：开发
 注意：此字段可能返回 null，表示取不到有效值。
         :type DsEnvType: int
-        :param _DatasourceType: 数据源类型
+        :param _DatasourceType: 数据源类型：2-HIVE(EMR-Hive)，3-DLC，5-TCHouse-P，6-ICEBERG(EMR-Iceberg)，7-DORIS，8-TCHouse-D，9-EMR-StarRocks，11-TCHouse-X
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: int
         :param _SchemaName: 模式名称
@@ -91745,7 +91841,7 @@ class Rule(AbstractModel):
         :param _FailMsg: 失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailMsg: str
-        :param _GroupType: 任务类型
+        :param _GroupType: 任务类型（同MonitorType）：1-未配置，2-关联生产调度，3-离线周期检测
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupType: str
         :param _AspectTaskId: 编排任务id
@@ -91867,7 +91963,7 @@ class Rule(AbstractModel):
 
     @property
     def Type(self):
-        r"""规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        r"""规则类型：1-系统模版，2-自定义模版，3-自定义SQL
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -91903,7 +91999,7 @@ class Rule(AbstractModel):
 
     @property
     def QualityDim(self):
-        r"""规则所属质量维度 1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+        r"""质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -91915,7 +92011,7 @@ class Rule(AbstractModel):
 
     @property
     def SourceObjectType(self):
-        r"""规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+        r"""源数据对象类型：1-常量，2-离线表级，3-离线字段级别
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -91963,7 +92059,7 @@ class Rule(AbstractModel):
 
     @property
     def ConditionType(self):
-        r"""检测范围 1.全表, 2.条件扫描
+        r"""检测范围类型：1-全表，2-条件扫描
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -92011,7 +92107,7 @@ class Rule(AbstractModel):
 
     @property
     def AlarmLevel(self):
-        r"""报警触发级别 1.低, 2.中, 3.高
+        r"""告警级别：1-低，2-中，3-高
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -92179,7 +92275,7 @@ class Rule(AbstractModel):
 
     @property
     def TargetObjectType(self):
-        r"""规则适用的目标数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+        r"""目标数据对象类型：1-常量，2-离线表级，3-离线字段级别
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -92191,7 +92287,7 @@ class Rule(AbstractModel):
 
     @property
     def TargetObjectDataType(self):
-        r"""规则适用的目标数据对象类型（1：数值，2：字符串）
+        r"""目标字段数据类型：1-数值，2-字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -92227,7 +92323,7 @@ class Rule(AbstractModel):
 
     @property
     def SourceEngineTypes(self):
-        r"""源端对应的引擎类型
+        r"""执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
@@ -92323,7 +92419,7 @@ class Rule(AbstractModel):
 
     @property
     def MonitorStatus(self):
-        r"""监控是否开启.0false,1true
+        r"""监控是否开启：0-关闭，1-开启
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -92359,7 +92455,7 @@ class Rule(AbstractModel):
 
     @property
     def DatasourceType(self):
-        r"""数据源类型
+        r"""数据源类型：2-HIVE(EMR-Hive)，3-DLC，5-TCHouse-P，6-ICEBERG(EMR-Iceberg)，7-DORIS，8-TCHouse-D，9-EMR-StarRocks，11-TCHouse-X
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -92467,7 +92563,7 @@ class Rule(AbstractModel):
 
     @property
     def GroupType(self):
-        r"""任务类型
+        r"""任务类型（同MonitorType）：1-未配置，2-关联生产调度，3-离线周期检测
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93021,114 +93117,116 @@ class RuleExecResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleExecId: 规则执行ID
+        :param _RuleExecId: <p>规则执行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleExecId: int
-        :param _RuleGroupExecId: 规则组执行ID
+        :param _RuleGroupExecId: <p>规则组执行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupExecId: int
-        :param _RuleGroupId: 规则组ID
+        :param _RuleGroupId: <p>规则组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupId: int
-        :param _RuleId: 规则ID
+        :param _RuleId: <p>规则ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
-        :param _RuleType: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        :param _RuleType: <p>规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: int
-        :param _SourceObjectDataTypeName: 源字段详细类型，int string
+        :param _SourceObjectDataTypeName: <p>源字段详细类型，int string</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceObjectDataTypeName: str
-        :param _SourceObjectValue: 源字段名称
+        :param _SourceObjectValue: <p>源字段名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceObjectValue: str
-        :param _ConditionExpression: 条件扫描WHERE条件表达式
+        :param _ConditionExpression: <p>条件扫描WHERE条件表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionExpression: str
-        :param _ExecResultStatus: 检测结果（1:检测通过，2：触发规则，3：检测失败）
+        :param _ExecResultStatus: <p>检测结果（1:检测通过，2：触发规则，3：检测失败）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecResultStatus: int
-        :param _TriggerResult: 触发结果，告警发送成功, 阻断任务成功
+        :param _TriggerResult: <p>触发结果，告警发送成功, 阻断任务成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerResult: str
-        :param _CompareResult: 对比结果
+        :param _CompareResult: <p>对比结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareResult: :class:`tencentcloud.wedata.v20210820.models.CompareResult`
-        :param _TemplateName: 模版名称
+        :param _TemplateName: <p>模版名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
-        :param _QualityDim: 质量维度
+        :param _QualityDim: <p>质量维度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityDim: int
-        :param _TargetDBTableName: 目标表-库表名称
+        :param _TargetDBTableName: <p>目标表-库表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetDBTableName: str
-        :param _TargetObjectValue: 目标表-字段名称
+        :param _TargetObjectValue: <p>目标表-字段名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetObjectValue: str
-        :param _TargetObjectDataType: 目标表-字段类型
+        :param _TargetObjectDataType: <p>目标表-字段类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetObjectDataType: str
-        :param _FieldConfig: 自定义模版sql表达式参数
+        :param _FieldConfig: <p>自定义模版sql表达式参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FieldConfig: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
-        :param _RelConditionExpr: 源字段与目标字段关联条件on表达式
+        :param _RelConditionExpr: <p>源字段与目标字段关联条件on表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelConditionExpr: str
-        :param _StartTime: 执行时间
+        :param _StartTime: <p>执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _AlarmLevel: 1/2/3:低/中/高
+        :param _AlarmLevel: <p>1/2/3:低/中/高</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
-        :param _TriggerCondition: 触发条件
+        :param _TriggerCondition: <p>触发条件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerCondition: str
-        :param _RuleGroupName: 任务名称
+        :param _RuleGroupName: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupName: str
-        :param _DatasourceId: 数据源ID
+        :param _DatasourceId: <p>数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceId: str
-        :param _DatasourceName: 数据源名称
+        :param _DatasourceName: <p>数据源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceName: str
-        :param _DatabaseName: 数据库名称
+        :param _DatabaseName: <p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
-        :param _SchemaName: 模式名称
+        :param _SchemaName: <p>模式名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
-        :param _TableName: 表名称
+        :param _TableName: <p>表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param _RuleGroupExist: 判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+        :param _RuleGroupExist: <p>判断是否屏蔽监控 0.屏蔽 1.不屏蔽</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupExist: int
-        :param _DatasourceType: 数据源类型
+        :param _DatasourceType: <p>数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: int
-        :param _RuleGroupTableId: 数据表id
+        :param _RuleGroupTableId: <p>数据表id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupTableId: int
-        :param _MonitorType: 监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测
+        :param _MonitorType: <p>监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorType: int
-        :param _FinishTime: 执行结束时间
+        :param _FinishTime: <p>执行结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
-        :param _GroupType: 任务类型
+        :param _GroupType: <p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupType: str
-        :param _AspectTaskId: 编排任务id
+        :param _AspectTaskId: <p>编排任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AspectTaskId: str
-        :param _CatalogName: 目录
+        :param _CatalogName: <p>目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogName: str
+        :param _RuleExecStatus: <p>规则执行状态</p><p>枚举值：</p><ul><li>0： 初始状态</li><li>1： 运行中</li><li>2： 运行成功</li><li>3： 运行失败</li><li>4： 被杀死</li></ul>
+        :type RuleExecStatus: int
         """
         self._RuleExecId = None
         self._RuleGroupExecId = None
@@ -93166,10 +93264,11 @@ class RuleExecResult(AbstractModel):
         self._GroupType = None
         self._AspectTaskId = None
         self._CatalogName = None
+        self._RuleExecStatus = None
 
     @property
     def RuleExecId(self):
-        r"""规则执行ID
+        r"""<p>规则执行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93181,7 +93280,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def RuleGroupExecId(self):
-        r"""规则组执行ID
+        r"""<p>规则组执行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93193,7 +93292,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def RuleGroupId(self):
-        r"""规则组ID
+        r"""<p>规则组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93205,7 +93304,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93217,7 +93316,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93229,7 +93328,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def RuleType(self):
-        r"""规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        r"""<p>规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93241,7 +93340,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def SourceObjectDataTypeName(self):
-        r"""源字段详细类型，int string
+        r"""<p>源字段详细类型，int string</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93253,7 +93352,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def SourceObjectValue(self):
-        r"""源字段名称
+        r"""<p>源字段名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93265,7 +93364,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def ConditionExpression(self):
-        r"""条件扫描WHERE条件表达式
+        r"""<p>条件扫描WHERE条件表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93277,7 +93376,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def ExecResultStatus(self):
-        r"""检测结果（1:检测通过，2：触发规则，3：检测失败）
+        r"""<p>检测结果（1:检测通过，2：触发规则，3：检测失败）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93289,7 +93388,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def TriggerResult(self):
-        r"""触发结果，告警发送成功, 阻断任务成功
+        r"""<p>触发结果，告警发送成功, 阻断任务成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93301,7 +93400,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def CompareResult(self):
-        r"""对比结果
+        r"""<p>对比结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.CompareResult`
         """
@@ -93313,7 +93412,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模版名称
+        r"""<p>模版名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93325,7 +93424,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def QualityDim(self):
-        r"""质量维度
+        r"""<p>质量维度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93337,7 +93436,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def TargetDBTableName(self):
-        r"""目标表-库表名称
+        r"""<p>目标表-库表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93349,7 +93448,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def TargetObjectValue(self):
-        r"""目标表-字段名称
+        r"""<p>目标表-字段名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93361,7 +93460,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def TargetObjectDataType(self):
-        r"""目标表-字段类型
+        r"""<p>目标表-字段类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93373,7 +93472,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def FieldConfig(self):
-        r"""自定义模版sql表达式参数
+        r"""<p>自定义模版sql表达式参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
         """
@@ -93385,7 +93484,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def RelConditionExpr(self):
-        r"""源字段与目标字段关联条件on表达式
+        r"""<p>源字段与目标字段关联条件on表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93397,7 +93496,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""执行时间
+        r"""<p>执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93409,7 +93508,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def AlarmLevel(self):
-        r"""1/2/3:低/中/高
+        r"""<p>1/2/3:低/中/高</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93421,7 +93520,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def TriggerCondition(self):
-        r"""触发条件
+        r"""<p>触发条件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93433,7 +93532,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def RuleGroupName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93445,7 +93544,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def DatasourceId(self):
-        r"""数据源ID
+        r"""<p>数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93457,7 +93556,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def DatasourceName(self):
-        r"""数据源名称
+        r"""<p>数据源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93469,7 +93568,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93481,7 +93580,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""模式名称
+        r"""<p>模式名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93493,7 +93592,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名称
+        r"""<p>表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93505,7 +93604,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def RuleGroupExist(self):
-        r"""判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+        r"""<p>判断是否屏蔽监控 0.屏蔽 1.不屏蔽</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93517,7 +93616,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def DatasourceType(self):
-        r"""数据源类型
+        r"""<p>数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93529,7 +93628,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def RuleGroupTableId(self):
-        r"""数据表id
+        r"""<p>数据表id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93541,7 +93640,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def MonitorType(self):
-        r"""监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测
+        r"""<p>监控方式 1.未配置, 2.关联生产调度, 3.离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -93553,7 +93652,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""执行结束时间
+        r"""<p>执行结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93565,7 +93664,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def GroupType(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93577,7 +93676,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def AspectTaskId(self):
-        r"""编排任务id
+        r"""<p>编排任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93589,7 +93688,7 @@ class RuleExecResult(AbstractModel):
 
     @property
     def CatalogName(self):
-        r"""目录
+        r"""<p>目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -93598,6 +93697,17 @@ class RuleExecResult(AbstractModel):
     @CatalogName.setter
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
+
+    @property
+    def RuleExecStatus(self):
+        r"""<p>规则执行状态</p><p>枚举值：</p><ul><li>0： 初始状态</li><li>1： 运行中</li><li>2： 运行成功</li><li>3： 运行失败</li><li>4： 被杀死</li></ul>
+        :rtype: int
+        """
+        return self._RuleExecStatus
+
+    @RuleExecStatus.setter
+    def RuleExecStatus(self, RuleExecStatus):
+        self._RuleExecStatus = RuleExecStatus
 
 
     def _deserialize(self, params):
@@ -93641,6 +93751,7 @@ class RuleExecResult(AbstractModel):
         self._GroupType = params.get("GroupType")
         self._AspectTaskId = params.get("AspectTaskId")
         self._CatalogName = params.get("CatalogName")
+        self._RuleExecStatus = params.get("RuleExecStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -93685,7 +93796,7 @@ class RuleExecResultDetail(AbstractModel):
         :param _TableOwnerUserId: 表负责人userId
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableOwnerUserId: int
-        :param _DatasourceType: 2.HIVE 3.DLC
+        :param _DatasourceType: 数据源类型：2-HIVE(EMR-Hive)，3-DLC，5-TCHouse-P，6-ICEBERG(EMR-Iceberg)，7-DORIS，8-TCHouse-D，9-EMR-StarRocks，11-TCHouse-X
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: int
         :param _ClusterDeployType: 集群部署类型，CVM/TKE
@@ -93814,7 +93925,7 @@ class RuleExecResultDetail(AbstractModel):
 
     @property
     def DatasourceType(self):
-        r"""2.HIVE 3.DLC
+        r"""数据源类型：2-HIVE(EMR-Hive)，3-DLC，5-TCHouse-P，6-ICEBERG(EMR-Iceberg)，7-DORIS，8-TCHouse-D，9-EMR-StarRocks，11-TCHouse-X
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -94268,105 +94379,111 @@ class RuleGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleGroupId: 规则组Id
+        :param _RuleGroupId: <p>规则组Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupId: int
-        :param _DatasourceId: 数据源Id
+        :param _DatasourceId: <p>数据源Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceId: str
-        :param _DatasourceName: 数据源名称
+        :param _DatasourceName: <p>数据源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceName: str
-        :param _DatasourceType: 数据源类型
+        :param _DatasourceType: <p>数据源类型：2-HIVE(EMR-Hive)，3-DLC，5-TCHouse-P，6-ICEBERG(EMR-Iceberg)，7-DORIS，8-TCHouse-D，9-EMR-StarRocks，11-TCHouse-X</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: int
-        :param _MonitorType: 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+        :param _MonitorType: <p>监控类型：1-未配置，2-关联生产调度，3-离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorType: int
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _TableName: 关联数据表名称
+        :param _TableName: <p>关联数据表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param _TableId: 关联数据表Id
+        :param _TableId: <p>关联数据表Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableId: str
-        :param _TableOwnerName: 关联数据表负责人
+        :param _TableOwnerName: <p>关联数据表负责人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableOwnerName: str
-        :param _ExecStrategy: 执行策略
+        :param _ExecStrategy: <p>执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecStrategy: :class:`tencentcloud.wedata.v20210820.models.RuleGroupExecStrategy`
-        :param _Subscription: 执行策略
+        :param _Subscription: <p>执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Subscription: :class:`tencentcloud.wedata.v20210820.models.RuleGroupSubscribe`
-        :param _DatabaseId: 数据库id
+        :param _DatabaseId: <p>数据库id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseId: str
-        :param _DatabaseName: 数据库名称
+        :param _DatabaseName: <p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
-        :param _SchemaName: 模式名称
+        :param _SchemaName: <p>模式名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
-        :param _Permission: 是否有权限
+        :param _Permission: <p>是否有权限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Permission: bool
-        :param _RuleCount: 已经配置的规则数量
+        :param _RuleCount: <p>已经配置的规则数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleCount: int
-        :param _MonitorStatus: 监控状态
+        :param _MonitorStatus: <p>监控是否开启：0-关闭，1-开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorStatus: bool
-        :param _TableOwnerUserId: 表负责人UserId
+        :param _TableOwnerUserId: <p>表负责人UserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableOwnerUserId: int
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _StrategyConfig: 是否已配置执行策略
+        :param _StrategyConfig: <p>是否已配置执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyConfig: bool
-        :param _SubscribeConfig: 是否已配置执行策略
+        :param _SubscribeConfig: <p>是否已配置执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeConfig: bool
-        :param _DsEnvType: 数据源环境：0或者未返回.未定义，1.生产 2.开发
+        :param _DsEnvType: <p>数据源环境：0或者未返回.未定义，1.生产 2.开发</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DsEnvType: int
-        :param _ClusterDeployType: EMR集群部署方式：CVM/TKE
+        :param _ClusterDeployType: <p>EMR集群部署方式：CVM/TKE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterDeployType: str
-        :param _Name: 任务名称
+        :param _Name: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _ExecDetail: 执行详情
+        :param _ExecDetail: <p>执行详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecDetail: str
-        :param _PipelineTaskCount: 事中关联任务数量
+        :param _PipelineTaskCount: <p>事中关联任务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PipelineTaskCount: int
-        :param _EnableRuleCount: 有效规则数
+        :param _EnableRuleCount: <p>有效规则数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableRuleCount: int
-        :param _Description: 任务描述
+        :param _Description: <p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _CreateUserName: 监控创建人
+        :param _CreateUserName: <p>监控创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserName: str
-        :param _GroupType: 任务类型
+        :param _GroupType: <p>任务类型（同MonitorType）：1-未配置，2-关联生产调度，3-离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupType: str
-        :param _AspectTaskId: 任务id
+        :param _AspectTaskId: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AspectTaskId: str
-        :param _CatalogName: catalog名称
+        :param _CatalogName: <p>catalog名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogName: str
+        :param _InChargeId: <p>负责人ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeId: str
+        :param _InChargeName: <p>负责人名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeName: str
         """
         self._RuleGroupId = None
         self._DatasourceId = None
@@ -94401,10 +94518,12 @@ class RuleGroup(AbstractModel):
         self._GroupType = None
         self._AspectTaskId = None
         self._CatalogName = None
+        self._InChargeId = None
+        self._InChargeName = None
 
     @property
     def RuleGroupId(self):
-        r"""规则组Id
+        r"""<p>规则组Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -94416,7 +94535,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def DatasourceId(self):
-        r"""数据源Id
+        r"""<p>数据源Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94428,7 +94547,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def DatasourceName(self):
-        r"""数据源名称
+        r"""<p>数据源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94440,7 +94559,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def DatasourceType(self):
-        r"""数据源类型
+        r"""<p>数据源类型：2-HIVE(EMR-Hive)，3-DLC，5-TCHouse-P，6-ICEBERG(EMR-Iceberg)，7-DORIS，8-TCHouse-D，9-EMR-StarRocks，11-TCHouse-X</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -94452,7 +94571,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def MonitorType(self):
-        r"""监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+        r"""<p>监控类型：1-未配置，2-关联生产调度，3-离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -94464,7 +94583,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94476,7 +94595,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def TableName(self):
-        r"""关联数据表名称
+        r"""<p>关联数据表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94488,7 +94607,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def TableId(self):
-        r"""关联数据表Id
+        r"""<p>关联数据表Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94500,7 +94619,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def TableOwnerName(self):
-        r"""关联数据表负责人
+        r"""<p>关联数据表负责人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94512,7 +94631,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def ExecStrategy(self):
-        r"""执行策略
+        r"""<p>执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.RuleGroupExecStrategy`
         """
@@ -94524,7 +94643,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def Subscription(self):
-        r"""执行策略
+        r"""<p>执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.RuleGroupSubscribe`
         """
@@ -94536,7 +94655,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def DatabaseId(self):
-        r"""数据库id
+        r"""<p>数据库id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94548,7 +94667,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94560,7 +94679,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""模式名称
+        r"""<p>模式名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94572,7 +94691,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def Permission(self):
-        r"""是否有权限
+        r"""<p>是否有权限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -94584,7 +94703,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def RuleCount(self):
-        r"""已经配置的规则数量
+        r"""<p>已经配置的规则数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -94596,7 +94715,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def MonitorStatus(self):
-        r"""监控状态
+        r"""<p>监控是否开启：0-关闭，1-开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -94608,7 +94727,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def TableOwnerUserId(self):
-        r"""表负责人UserId
+        r"""<p>表负责人UserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -94620,7 +94739,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94632,7 +94751,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94644,7 +94763,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def StrategyConfig(self):
-        r"""是否已配置执行策略
+        r"""<p>是否已配置执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -94656,7 +94775,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def SubscribeConfig(self):
-        r"""是否已配置执行策略
+        r"""<p>是否已配置执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -94668,7 +94787,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def DsEnvType(self):
-        r"""数据源环境：0或者未返回.未定义，1.生产 2.开发
+        r"""<p>数据源环境：0或者未返回.未定义，1.生产 2.开发</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -94680,7 +94799,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def ClusterDeployType(self):
-        r"""EMR集群部署方式：CVM/TKE
+        r"""<p>EMR集群部署方式：CVM/TKE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94692,7 +94811,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94704,7 +94823,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def ExecDetail(self):
-        r"""执行详情
+        r"""<p>执行详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94716,7 +94835,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def PipelineTaskCount(self):
-        r"""事中关联任务数量
+        r"""<p>事中关联任务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -94728,7 +94847,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def EnableRuleCount(self):
-        r"""有效规则数
+        r"""<p>有效规则数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -94740,7 +94859,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述
+        r"""<p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94752,7 +94871,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def CreateUserName(self):
-        r"""监控创建人
+        r"""<p>监控创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94764,7 +94883,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def GroupType(self):
-        r"""任务类型
+        r"""<p>任务类型（同MonitorType）：1-未配置，2-关联生产调度，3-离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94776,7 +94895,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def AspectTaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94788,7 +94907,7 @@ class RuleGroup(AbstractModel):
 
     @property
     def CatalogName(self):
-        r"""catalog名称
+        r"""<p>catalog名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -94797,6 +94916,30 @@ class RuleGroup(AbstractModel):
     @CatalogName.setter
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
+
+    @property
+    def InChargeId(self):
+        r"""<p>负责人ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InChargeId
+
+    @InChargeId.setter
+    def InChargeId(self, InChargeId):
+        self._InChargeId = InChargeId
+
+    @property
+    def InChargeName(self):
+        r"""<p>负责人名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InChargeName
+
+    @InChargeName.setter
+    def InChargeName(self, InChargeName):
+        self._InChargeName = InChargeName
 
 
     def _deserialize(self, params):
@@ -94837,6 +94980,8 @@ class RuleGroup(AbstractModel):
         self._GroupType = params.get("GroupType")
         self._AspectTaskId = params.get("AspectTaskId")
         self._CatalogName = params.get("CatalogName")
+        self._InChargeId = params.get("InChargeId")
+        self._InChargeName = params.get("InChargeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -95248,7 +95393,7 @@ class RuleGroupExecResult(AbstractModel):
         :param _RuleGroupId: 规则组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupId: int
-        :param _TriggerType: 执行触发类型（1：手动触发， 2：调度事中触发，3：周期调度触发）
+        :param _TriggerType: 触发类型：1-手动触发，2-调度事件触发，3-周期调度触发
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: int
         :param _ExecTime: 执行时间 yyyy-MM-dd HH:mm:ss
@@ -95284,7 +95429,7 @@ class RuleGroupExecResult(AbstractModel):
         :param _ExecDetail: 执行详情，调度计划或者关联生产任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecDetail: str
-        :param _EngineType: 实际执行引擎
+        :param _EngineType: 执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineType: str
         :param _RuleExecResultVOList: 规则执行结果
@@ -95382,7 +95527,7 @@ class RuleGroupExecResult(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""执行触发类型（1：手动触发， 2：调度事中触发，3：周期调度触发）
+        r"""触发类型：1-手动触发，2-调度事件触发，3-周期调度触发
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -95526,7 +95671,7 @@ class RuleGroupExecResult(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""实际执行引擎
+        r"""执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -95804,90 +95949,93 @@ class RuleGroupExecStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleGroupId: 规则组Id
+        :param _RuleGroupId: <p>规则组Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupId: int
-        :param _MonitorType: 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+        :param _MonitorType: 监控类型：1-未配置，2-关联生产调度，3-离线周期检测
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorType: int
-        :param _ExecQueue: 计算队列
+        :param _ExecQueue: <p>计算队列</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecQueue: str
-        :param _ExecutorGroupId: 执行资源组ID
+        :param _ExecutorGroupId: <p>执行资源组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupId: str
-        :param _ExecutorGroupName: 执行资源组名称
+        :param _ExecutorGroupName: <p>执行资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
-        :param _Tasks: 关联的生产调度任务列表
+        :param _Tasks: <p>关联的生产调度任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of ProdSchedulerTask
-        :param _StartTime: 周期开始时间
+        :param _StartTime: <p>周期开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 周期结束时间
+        :param _EndTime: <p>周期结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _CycleType: 调度周期类型
+        :param _CycleType: 周期类型：MINUTE-分钟，HOUR-小时，DAY-天，WEEK-周，MONTH-月，YEAR-年
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _DelayTime: 延迟调度时间
+        :param _DelayTime: <p>延迟调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DelayTime: int
-        :param _CycleStep: 间隔
+        :param _CycleStep: <p>间隔</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleStep: int
-        :param _TaskAction: 时间指定
+        :param _TaskAction: <p>时间指定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAction: str
-        :param _ExecEngineType: 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        :param _ExecEngineType: 执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecEngineType: str
-        :param _ExecPlan: 执行计划
+        :param _ExecPlan: <p>执行计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecPlan: str
-        :param _RuleId: 规则id
+        :param _RuleId: <p>规则id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
-        :param _TriggerTypes: 触发类型
+        :param _TriggerTypes: 触发类型数组：1-手动触发，2-调度事件触发，3-周期调度触发
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerTypes: list of str
-        :param _DlcGroupName: DLC资源组
+        :param _DlcGroupName: <p>DLC资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DlcGroupName: str
-        :param _RuleGroupName: 任务名称
+        :param _RuleGroupName: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupName: str
-        :param _DatabaseName: 数据库名称
+        :param _DatabaseName: <p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
-        :param _SchemaName: schema名称
+        :param _SchemaName: <p>schema名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
-        :param _TableName: 表名称
+        :param _TableName: <p>表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param _DatasourceId: 数据源id
+        :param _DatasourceId: <p>数据源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceId: str
-        :param _Description: 任务描述
+        :param _Description: <p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _ScheduleTimeZone: 时区
+        :param _ScheduleTimeZone: <p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
-        :param _GroupConfig: 任务监控参数
+        :param _GroupConfig: <p>任务监控参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupConfig: :class:`tencentcloud.wedata.v20210820.models.RuleGroupConfig`
-        :param _EngineParam: 引擎参数
+        :param _EngineParam: <p>引擎参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineParam: str
-        :param _CatalogName: catalog名称
+        :param _CatalogName: <p>catalog名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogName: str
+        :param _ExecFailBlock: <p>执行失败是否阻塞下游</p><p>枚举值：</p><ul><li>0： 失败不阻塞（默认）</li><li>1： 失败阻塞</li></ul><p>默认值：0</p><p>仅作用于“关联生产调度”类型的质量监控</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecFailBlock: int
         """
         self._RuleGroupId = None
         self._MonitorType = None
@@ -95917,10 +96065,11 @@ class RuleGroupExecStrategy(AbstractModel):
         self._GroupConfig = None
         self._EngineParam = None
         self._CatalogName = None
+        self._ExecFailBlock = None
 
     @property
     def RuleGroupId(self):
-        r"""规则组Id
+        r"""<p>规则组Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -95932,7 +96081,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def MonitorType(self):
-        r"""监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+        r"""监控类型：1-未配置，2-关联生产调度，3-离线周期检测
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -95944,7 +96093,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def ExecQueue(self):
-        r"""计算队列
+        r"""<p>计算队列</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -95956,7 +96105,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def ExecutorGroupId(self):
-        r"""执行资源组ID
+        r"""<p>执行资源组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -95968,7 +96117,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def ExecutorGroupName(self):
-        r"""执行资源组名称
+        r"""<p>执行资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -95980,7 +96129,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""关联的生产调度任务列表
+        r"""<p>关联的生产调度任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProdSchedulerTask
         """
@@ -95992,7 +96141,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""周期开始时间
+        r"""<p>周期开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96004,7 +96153,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""周期结束时间
+        r"""<p>周期结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96016,7 +96165,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def CycleType(self):
-        r"""调度周期类型
+        r"""周期类型：MINUTE-分钟，HOUR-小时，DAY-天，WEEK-周，MONTH-月，YEAR-年
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96028,7 +96177,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""延迟调度时间
+        r"""<p>延迟调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -96040,7 +96189,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def CycleStep(self):
-        r"""间隔
+        r"""<p>间隔</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -96052,7 +96201,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def TaskAction(self):
-        r"""时间指定
+        r"""<p>时间指定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96064,7 +96213,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def ExecEngineType(self):
-        r"""运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        r"""执行引擎类型，可选值：MYSQL, HIVE, SPARK, LIVY, DLC, GBASE, CDW_PG, TCHouse-P, DORIS, TCHouse-D
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96076,7 +96225,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def ExecPlan(self):
-        r"""执行计划
+        r"""<p>执行计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96088,7 +96237,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则id
+        r"""<p>规则id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -96100,7 +96249,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96112,7 +96261,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def TriggerTypes(self):
-        r"""触发类型
+        r"""触发类型数组：1-手动触发，2-调度事件触发，3-周期调度触发
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -96124,7 +96273,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def DlcGroupName(self):
-        r"""DLC资源组
+        r"""<p>DLC资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96136,7 +96285,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def RuleGroupName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96148,7 +96297,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96160,7 +96309,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""schema名称
+        r"""<p>schema名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96172,7 +96321,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名称
+        r"""<p>表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96184,7 +96333,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def DatasourceId(self):
-        r"""数据源id
+        r"""<p>数据源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96196,7 +96345,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述
+        r"""<p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96208,7 +96357,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def ScheduleTimeZone(self):
-        r"""时区
+        r"""<p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96220,7 +96369,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def GroupConfig(self):
-        r"""任务监控参数
+        r"""<p>任务监控参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.RuleGroupConfig`
         """
@@ -96232,7 +96381,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def EngineParam(self):
-        r"""引擎参数
+        r"""<p>引擎参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96244,7 +96393,7 @@ class RuleGroupExecStrategy(AbstractModel):
 
     @property
     def CatalogName(self):
-        r"""catalog名称
+        r"""<p>catalog名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -96253,6 +96402,18 @@ class RuleGroupExecStrategy(AbstractModel):
     @CatalogName.setter
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
+
+    @property
+    def ExecFailBlock(self):
+        r"""<p>执行失败是否阻塞下游</p><p>枚举值：</p><ul><li>0： 失败不阻塞（默认）</li><li>1： 失败阻塞</li></ul><p>默认值：0</p><p>仅作用于“关联生产调度”类型的质量监控</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecFailBlock
+
+    @ExecFailBlock.setter
+    def ExecFailBlock(self, ExecFailBlock):
+        self._ExecFailBlock = ExecFailBlock
 
 
     def _deserialize(self, params):
@@ -96291,6 +96452,7 @@ class RuleGroupExecStrategy(AbstractModel):
             self._GroupConfig._deserialize(params.get("GroupConfig"))
         self._EngineParam = params.get("EngineParam")
         self._CatalogName = params.get("CatalogName")
+        self._ExecFailBlock = params.get("ExecFailBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -96599,7 +96761,7 @@ class RuleGroupSubscribe(AbstractModel):
         :param _Receivers: 订阅接收人列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Receivers: list of SubscribeReceiver
-        :param _SubscribeType: 订阅方式 1.邮件email  2.短信sms
+        :param _SubscribeType: 订阅方式：1-邮件，2-短信，3-微信，4-语音，5-企微，6-HTTP连接，7-飞书群，8-钉钉群
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeType: list of int non-negative
         :param _WebHooks: 群机器人配置的webhook信息
@@ -96649,7 +96811,7 @@ class RuleGroupSubscribe(AbstractModel):
 
     @property
     def SubscribeType(self):
-        r"""订阅方式 1.邮件email  2.短信sms
+        r"""订阅方式：1-邮件，2-短信，3-微信，4-语音，5-企微，6-HTTP连接，7-飞书群，8-钉钉群
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
@@ -97084,19 +97246,19 @@ class RuleTemplate(AbstractModel):
         :type Name: str
         :param _Description: 规则模版描述
         :type Description: str
-        :param _Type: 模版类型（1：系统模版，2：自定义）
+        :param _Type: 模版类型：1-系统模版，2-用户自定义模版
         :type Type: int
-        :param _SourceObjectType: 规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+        :param _SourceObjectType: 源数据对象类型：1-常量，2-离线表级，3-离线字段级别
         :type SourceObjectType: int
         :param _SourceObjectDataType: 规则适用的源数据对象类型（1：数值，2：字符串）
         :type SourceObjectDataType: int
         :param _SourceContent: 规则模版源侧内容，区分引擎，JSON 结构
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceContent: str
-        :param _SourceEngineTypes: 源数据适用类型
+        :param _SourceEngineTypes: 执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceEngineTypes: list of int non-negative
-        :param _QualityDim: 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+        :param _QualityDim: 质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityDim: int
         :param _CompareType: 规则支持的比较方式类型（1：固定值比较，大于、小于，大于等于等 2：波动值比较，绝对值、上升、下降）
@@ -97193,7 +97355,7 @@ class RuleTemplate(AbstractModel):
 
     @property
     def Type(self):
-        r"""模版类型（1：系统模版，2：自定义）
+        r"""模版类型：1-系统模版，2-用户自定义模版
         :rtype: int
         """
         return self._Type
@@ -97204,7 +97366,7 @@ class RuleTemplate(AbstractModel):
 
     @property
     def SourceObjectType(self):
-        r"""规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+        r"""源数据对象类型：1-常量，2-离线表级，3-离线字段级别
         :rtype: int
         """
         return self._SourceObjectType
@@ -97238,7 +97400,7 @@ class RuleTemplate(AbstractModel):
 
     @property
     def SourceEngineTypes(self):
-        r"""源数据适用类型
+        r"""执行引擎多选（位运算数组）：2-HIVE，4-SPARK，8-LIVY，16-DLC，64-TCHouse-P，128-DORIS，256-TCHouse-D，512-EMR-StarRocks，1024-TCHouse-X
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
@@ -97250,7 +97412,7 @@ class RuleTemplate(AbstractModel):
 
     @property
     def QualityDim(self):
-        r"""规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+        r"""质量维度：1-准确性，2-唯一性，3-完整性，4-一致性，5-及时性，6-有效性
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -113784,6 +113946,57 @@ class TaskLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self._LogContentList.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class TaskMissingInstanceStrategy(AbstractModel):
+    r"""单任务的缺失实例处理策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _MissingInstanceStrategy: <p>缺失实例处理策略</p>
+        :type MissingInstanceStrategy: str
+        """
+        self._TaskId = None
+        self._MissingInstanceStrategy = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MissingInstanceStrategy(self):
+        r"""<p>缺失实例处理策略</p>
+        :rtype: str
+        """
+        return self._MissingInstanceStrategy
+
+    @MissingInstanceStrategy.setter
+    def MissingInstanceStrategy(self, MissingInstanceStrategy):
+        self._MissingInstanceStrategy = MissingInstanceStrategy
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._MissingInstanceStrategy = params.get("MissingInstanceStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TaskOpsDto(AbstractModel):

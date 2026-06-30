@@ -2719,6 +2719,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskDetail(self, request):
+        r"""该接口（DescribeTaskDetail）用于查询历史任务详情
+
+        :param request: Request instance for DescribeTaskDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskList(self, request):
         r"""该接口（DescribleTasks）用于查询任务列表
 

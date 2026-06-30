@@ -49,6 +49,52 @@ class CngwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddCloudNativeAPIGatewayConsumerInGroup(self, request):
+        r"""将消费者添加到消费者组。
+
+        :param request: Request instance for AddCloudNativeAPIGatewayConsumerInGroup.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.AddCloudNativeAPIGatewayConsumerInGroupRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AddCloudNativeAPIGatewayConsumerInGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCloudNativeAPIGatewayConsumerInGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCloudNativeAPIGatewayConsumerInGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BindCloudNativeAPIGatewaySecretKey(self, request):
+        r"""添加密钥与资源的引用关系接口
+
+        :param request: Request instance for BindCloudNativeAPIGatewaySecretKey.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.BindCloudNativeAPIGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.BindCloudNativeAPIGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindCloudNativeAPIGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindCloudNativeAPIGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudNativeAPIGatewayConsumer(self, request):
         r"""创建AI网关消费者。
 
@@ -1052,6 +1098,52 @@ class CngwClient(AbstractClient):
             body = self.call("RemoveCloudNativeAPIGatewayConsumerGroupAuth", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveCloudNativeAPIGatewayConsumerGroupAuthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RemoveCloudNativeAPIGatewayConsumerInGroup(self, request):
+        r"""将消费者从消费者组移除。
+
+        :param request: Request instance for RemoveCloudNativeAPIGatewayConsumerInGroup.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.RemoveCloudNativeAPIGatewayConsumerInGroupRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.RemoveCloudNativeAPIGatewayConsumerInGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveCloudNativeAPIGatewayConsumerInGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveCloudNativeAPIGatewayConsumerInGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindCloudNativeAPIGatewaySecretKey(self, request):
+        r"""解绑密钥
+
+        :param request: Request instance for UnbindCloudNativeAPIGatewaySecretKey.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.UnbindCloudNativeAPIGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.UnbindCloudNativeAPIGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindCloudNativeAPIGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindCloudNativeAPIGatewaySecretKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

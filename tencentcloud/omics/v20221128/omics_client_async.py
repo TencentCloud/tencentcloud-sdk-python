@@ -385,6 +385,24 @@ class OmicsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetRunJobLog(
+            self,
+            request: models.GetRunJobLogRequest,
+            opts: Dict = None,
+    ) -> models.GetRunJobLogResponse:
+        """
+        获取任务详情文件。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRunJobLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRunJobLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetRunMetadataFile(
             self,
             request: models.GetRunMetadataFileRequest,

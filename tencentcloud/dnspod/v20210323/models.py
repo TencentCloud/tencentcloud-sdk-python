@@ -1235,35 +1235,21 @@ class CreateDealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealType: 询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）
+        :param _DealType: <p>询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）</p>
         :type DealType: int
-        :param _GoodsType: 商品类型，1 域名套餐 2 增值服务
+        :param _GoodsType: <p>商品类型，1 域名套餐 2 增值服务</p>
         :type GoodsType: int
-        :param _GoodsChildType: 套餐类型：
-DP_PLUS：专业版
-DP_EXPERT：企业版
-DP_ULTRA：尊享版
-
-增值服务类型
-LB：负载均衡
-URL：URL转发
-DMONITOR_TASKS：D监控任务数
-DMONITOR_IP：D监控备用 IP 数
-CUSTOMLINE：自定义线路数
+        :param _GoodsChildType: <p>套餐类型 或 增值服务类型</p><p>枚举值：</p><ul><li>DP_PLUS： 专业版</li><li>DP_EXPERT： 企业版</li><li>DP_ULTRA： 尊享版</li><li>LB： 负载均衡</li><li>URL： URL转发</li><li>DMONITOR_TASKS： D监控任务数</li><li>DMONITOR_IP： D监控备用 IP 数</li><li>CUSTOMLINE： 自定义线路数</li></ul><p>升级场景，需传入当前域名绑定的套餐类型</p>
         :type GoodsChildType: str
-        :param _GoodsNum: 增值服务购买数量，如果是域名套餐固定为1，如果是增值服务则按以下规则：
-负载均衡、D监控任务数、D监控备用 IP 数、自定义线路数、URL 转发（必须是5的正整数倍，如 5、10、15 等）
+        :param _GoodsNum: <p>增值服务购买数量，如果是域名套餐固定为1，如果是增值服务则按以下规则：<br>负载均衡、D监控任务数、D监控备用 IP 数、自定义线路数、URL 转发（必须是5的正整数倍，如 5、10、15 等）</p>
         :type GoodsNum: int
-        :param _AutoRenew: 是否开启自动续费，1 开启，2 不开启（增值服务暂不支持自动续费），默认值为 2 不开启
+        :param _AutoRenew: <p>是否开启自动续费，1 开启，2 不开启（增值服务暂不支持自动续费），默认值为 2 不开启</p>
         :type AutoRenew: int
-        :param _Domain: 需要绑定套餐的域名，如 dnspod.cn，如果是续费或升级，domain 参数必须要传，新购可不传。
+        :param _Domain: <p>需要绑定套餐的域名，如 dnspod.cn，如果是续费或升级，domain 参数必须要传，新购可不传。</p>
         :type Domain: str
-        :param _TimeSpan: 套餐时长：
-1. 套餐以月为单位（按月只能是 3、6 还有 12 的倍数），套餐例如购买一年则传12，最大120 。（续费最低一年）
-2. 升级套餐时不需要传。
-3. 增值服务的时长单位为年，买一年传1（增值服务新购按年只能是 1，增值服务续费最大为 10）
+        :param _TimeSpan: <p>套餐时长：</p><ol><li>套餐以月为单位（按月只能是 3、6 还有 12 的倍数），套餐例如购买一年则传12，最大120 。（续费最低一年）</li><li>升级套餐时不需要传。</li><li>增值服务的时长单位为年，买一年传1（增值服务新购按年只能是 1，增值服务续费最大为 10）</li></ol>
         :type TimeSpan: int
-        :param _NewPackageType: 套餐类型，需要升级到的套餐类型，只有升级时需要。
+        :param _NewPackageType: <p>套餐类型，需要升级到的套餐类型，只有升级时需要。</p>
         :type NewPackageType: str
         """
         self._DealType = None
@@ -1277,7 +1263,7 @@ CUSTOMLINE：自定义线路数
 
     @property
     def DealType(self):
-        r"""询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）
+        r"""<p>询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）</p>
         :rtype: int
         """
         return self._DealType
@@ -1288,7 +1274,7 @@ CUSTOMLINE：自定义线路数
 
     @property
     def GoodsType(self):
-        r"""商品类型，1 域名套餐 2 增值服务
+        r"""<p>商品类型，1 域名套餐 2 增值服务</p>
         :rtype: int
         """
         return self._GoodsType
@@ -1299,17 +1285,7 @@ CUSTOMLINE：自定义线路数
 
     @property
     def GoodsChildType(self):
-        r"""套餐类型：
-DP_PLUS：专业版
-DP_EXPERT：企业版
-DP_ULTRA：尊享版
-
-增值服务类型
-LB：负载均衡
-URL：URL转发
-DMONITOR_TASKS：D监控任务数
-DMONITOR_IP：D监控备用 IP 数
-CUSTOMLINE：自定义线路数
+        r"""<p>套餐类型 或 增值服务类型</p><p>枚举值：</p><ul><li>DP_PLUS： 专业版</li><li>DP_EXPERT： 企业版</li><li>DP_ULTRA： 尊享版</li><li>LB： 负载均衡</li><li>URL： URL转发</li><li>DMONITOR_TASKS： D监控任务数</li><li>DMONITOR_IP： D监控备用 IP 数</li><li>CUSTOMLINE： 自定义线路数</li></ul><p>升级场景，需传入当前域名绑定的套餐类型</p>
         :rtype: str
         """
         return self._GoodsChildType
@@ -1320,8 +1296,7 @@ CUSTOMLINE：自定义线路数
 
     @property
     def GoodsNum(self):
-        r"""增值服务购买数量，如果是域名套餐固定为1，如果是增值服务则按以下规则：
-负载均衡、D监控任务数、D监控备用 IP 数、自定义线路数、URL 转发（必须是5的正整数倍，如 5、10、15 等）
+        r"""<p>增值服务购买数量，如果是域名套餐固定为1，如果是增值服务则按以下规则：<br>负载均衡、D监控任务数、D监控备用 IP 数、自定义线路数、URL 转发（必须是5的正整数倍，如 5、10、15 等）</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -1332,7 +1307,7 @@ CUSTOMLINE：自定义线路数
 
     @property
     def AutoRenew(self):
-        r"""是否开启自动续费，1 开启，2 不开启（增值服务暂不支持自动续费），默认值为 2 不开启
+        r"""<p>是否开启自动续费，1 开启，2 不开启（增值服务暂不支持自动续费），默认值为 2 不开启</p>
         :rtype: int
         """
         return self._AutoRenew
@@ -1343,7 +1318,7 @@ CUSTOMLINE：自定义线路数
 
     @property
     def Domain(self):
-        r"""需要绑定套餐的域名，如 dnspod.cn，如果是续费或升级，domain 参数必须要传，新购可不传。
+        r"""<p>需要绑定套餐的域名，如 dnspod.cn，如果是续费或升级，domain 参数必须要传，新购可不传。</p>
         :rtype: str
         """
         return self._Domain
@@ -1354,10 +1329,7 @@ CUSTOMLINE：自定义线路数
 
     @property
     def TimeSpan(self):
-        r"""套餐时长：
-1. 套餐以月为单位（按月只能是 3、6 还有 12 的倍数），套餐例如购买一年则传12，最大120 。（续费最低一年）
-2. 升级套餐时不需要传。
-3. 增值服务的时长单位为年，买一年传1（增值服务新购按年只能是 1，增值服务续费最大为 10）
+        r"""<p>套餐时长：</p><ol><li>套餐以月为单位（按月只能是 3、6 还有 12 的倍数），套餐例如购买一年则传12，最大120 。（续费最低一年）</li><li>升级套餐时不需要传。</li><li>增值服务的时长单位为年，买一年传1（增值服务新购按年只能是 1，增值服务续费最大为 10）</li></ol>
         :rtype: int
         """
         return self._TimeSpan
@@ -1368,7 +1340,7 @@ CUSTOMLINE：自定义线路数
 
     @property
     def NewPackageType(self):
-        r"""套餐类型，需要升级到的套餐类型，只有升级时需要。
+        r"""<p>套餐类型，需要升级到的套餐类型，只有升级时需要。</p>
         :rtype: str
         """
         return self._NewPackageType
@@ -1404,9 +1376,9 @@ class CreateDealResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BigDealId: 大订单号，一个大订单号下可以有多个子订单，说明是同一次下单
+        :param _BigDealId: <p>大订单号，一个大订单号下可以有多个子订单，说明是同一次下单</p>
         :type BigDealId: str
-        :param _DealList: 子订单列表
+        :param _DealList: <p>子订单列表</p>
         :type DealList: list of Deals
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1417,7 +1389,7 @@ class CreateDealResponse(AbstractModel):
 
     @property
     def BigDealId(self):
-        r"""大订单号，一个大订单号下可以有多个子订单，说明是同一次下单
+        r"""<p>大订单号，一个大订单号下可以有多个子订单，说明是同一次下单</p>
         :rtype: str
         """
         return self._BigDealId
@@ -1428,7 +1400,7 @@ class CreateDealResponse(AbstractModel):
 
     @property
     def DealList(self):
-        r"""子订单列表
+        r"""<p>子订单列表</p>
         :rtype: list of Deals
         """
         return self._DealList

@@ -1820,6 +1820,26 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePrometheusCreateInstanceQuota(
+            self,
+            request: models.DescribePrometheusCreateInstanceQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribePrometheusCreateInstanceQuotaResponse:
+        """
+        查询Prometheus实例创建配额
+
+        配额不分地域，可从任意支持地域请求
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePrometheusCreateInstanceQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePrometheusCreateInstanceQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePrometheusGlobalConfig(
             self,
             request: models.DescribePrometheusGlobalConfigRequest,

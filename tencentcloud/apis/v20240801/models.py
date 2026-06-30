@@ -2488,6 +2488,8 @@ class CreateModelServiceRequest(AbstractModel):
         :type FallbackModels: list of TargetModelDTO
         :param _ModelProtocol: <p>模型协议</p>
         :type ModelProtocol: str
+        :param _RawCustomModelProtocolConfig: <p>自定义模型协议配置</p>
+        :type RawCustomModelProtocolConfig: str
         """
         self._InstanceID = None
         self._Name = None
@@ -2516,6 +2518,7 @@ class CreateModelServiceRequest(AbstractModel):
         self._FallbackStatus = None
         self._FallbackModels = None
         self._ModelProtocol = None
+        self._RawCustomModelProtocolConfig = None
 
     @property
     def InstanceID(self):
@@ -2814,6 +2817,17 @@ class CreateModelServiceRequest(AbstractModel):
     def ModelProtocol(self, ModelProtocol):
         self._ModelProtocol = ModelProtocol
 
+    @property
+    def RawCustomModelProtocolConfig(self):
+        r"""<p>自定义模型协议配置</p>
+        :rtype: str
+        """
+        return self._RawCustomModelProtocolConfig
+
+    @RawCustomModelProtocolConfig.setter
+    def RawCustomModelProtocolConfig(self, RawCustomModelProtocolConfig):
+        self._RawCustomModelProtocolConfig = RawCustomModelProtocolConfig
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -2868,6 +2882,7 @@ class CreateModelServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._FallbackModels.append(obj)
         self._ModelProtocol = params.get("ModelProtocol")
+        self._RawCustomModelProtocolConfig = params.get("RawCustomModelProtocolConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7095,6 +7110,8 @@ class DescribeModelServiceResponseVO(AbstractModel):
         :param _ModelProtocol: <p>模型类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelProtocol: str
+        :param _RawCustomModelProtocolConfig: <p>自定义模型协议配置</p>
+        :type RawCustomModelProtocolConfig: str
         """
         self._AppID = None
         self._Uin = None
@@ -7133,6 +7150,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
         self._FallbackStatus = None
         self._FallbackModels = None
         self._ModelProtocol = None
+        self._RawCustomModelProtocolConfig = None
 
     @property
     def AppID(self):
@@ -7556,6 +7574,17 @@ class DescribeModelServiceResponseVO(AbstractModel):
     def ModelProtocol(self, ModelProtocol):
         self._ModelProtocol = ModelProtocol
 
+    @property
+    def RawCustomModelProtocolConfig(self):
+        r"""<p>自定义模型协议配置</p>
+        :rtype: str
+        """
+        return self._RawCustomModelProtocolConfig
+
+    @RawCustomModelProtocolConfig.setter
+    def RawCustomModelProtocolConfig(self, RawCustomModelProtocolConfig):
+        self._RawCustomModelProtocolConfig = RawCustomModelProtocolConfig
+
 
     def _deserialize(self, params):
         self._AppID = params.get("AppID")
@@ -7620,6 +7649,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
                 obj._deserialize(item)
                 self._FallbackModels.append(obj)
         self._ModelProtocol = params.get("ModelProtocol")
+        self._RawCustomModelProtocolConfig = params.get("RawCustomModelProtocolConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10623,6 +10653,8 @@ class ModifyModelServiceRequest(AbstractModel):
         :type FallbackModels: list of TargetModelDTO
         :param _ModelProtocol: <p>模型类型</p>
         :type ModelProtocol: str
+        :param _RawCustomModelProtocolConfig: <p>自定义模型协议配置</p>
+        :type RawCustomModelProtocolConfig: str
         """
         self._InstanceID = None
         self._ID = None
@@ -10651,6 +10683,7 @@ class ModifyModelServiceRequest(AbstractModel):
         self._FallbackStatus = None
         self._FallbackModels = None
         self._ModelProtocol = None
+        self._RawCustomModelProtocolConfig = None
 
     @property
     def InstanceID(self):
@@ -10949,6 +10982,17 @@ class ModifyModelServiceRequest(AbstractModel):
     def ModelProtocol(self, ModelProtocol):
         self._ModelProtocol = ModelProtocol
 
+    @property
+    def RawCustomModelProtocolConfig(self):
+        r"""<p>自定义模型协议配置</p>
+        :rtype: str
+        """
+        return self._RawCustomModelProtocolConfig
+
+    @RawCustomModelProtocolConfig.setter
+    def RawCustomModelProtocolConfig(self, RawCustomModelProtocolConfig):
+        self._RawCustomModelProtocolConfig = RawCustomModelProtocolConfig
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -11003,6 +11047,7 @@ class ModifyModelServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._FallbackModels.append(obj)
         self._ModelProtocol = params.get("ModelProtocol")
+        self._RawCustomModelProtocolConfig = params.get("RawCustomModelProtocolConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

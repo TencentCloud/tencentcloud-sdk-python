@@ -886,13 +886,13 @@ class CreateNoticeContentTmplRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TmplName: 模板名称
+        :param _TmplName: <p>模板名称</p>
         :type TmplName: str
-        :param _MonitorType: 监控类型
+        :param _MonitorType: <p>监控类型</p>
         :type MonitorType: str
-        :param _TmplContents: 模板内容
+        :param _TmplContents: <p>模板内容</p>
         :type TmplContents: :class:`tencentcloud.monitor.v20230616.models.NoticeContentTmplItem`
-        :param _TmplLanguage: 模板语言 en/zh
+        :param _TmplLanguage: <p>模板语言 en/zh</p>
         :type TmplLanguage: str
         """
         self._TmplName = None
@@ -902,7 +902,7 @@ class CreateNoticeContentTmplRequest(AbstractModel):
 
     @property
     def TmplName(self):
-        r"""模板名称
+        r"""<p>模板名称</p>
         :rtype: str
         """
         return self._TmplName
@@ -913,7 +913,7 @@ class CreateNoticeContentTmplRequest(AbstractModel):
 
     @property
     def MonitorType(self):
-        r"""监控类型
+        r"""<p>监控类型</p>
         :rtype: str
         """
         return self._MonitorType
@@ -924,7 +924,7 @@ class CreateNoticeContentTmplRequest(AbstractModel):
 
     @property
     def TmplContents(self):
-        r"""模板内容
+        r"""<p>模板内容</p>
         :rtype: :class:`tencentcloud.monitor.v20230616.models.NoticeContentTmplItem`
         """
         return self._TmplContents
@@ -935,7 +935,7 @@ class CreateNoticeContentTmplRequest(AbstractModel):
 
     @property
     def TmplLanguage(self):
-        r"""模板语言 en/zh
+        r"""<p>模板语言 en/zh</p>
         :rtype: str
         """
         return self._TmplLanguage
@@ -969,7 +969,7 @@ class CreateNoticeContentTmplResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TmplID: 自定义内容模板ID
+        :param _TmplID: <p>自定义内容模板ID</p>
         :type TmplID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -979,7 +979,7 @@ class CreateNoticeContentTmplResponse(AbstractModel):
 
     @property
     def TmplID(self):
-        r"""自定义内容模板ID
+        r"""<p>自定义内容模板ID</p>
         :rtype: str
         """
         return self._TmplID
@@ -1012,14 +1012,14 @@ class DeleteNoticeContentTmplsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TmplIDs: 要删除的模板id
+        :param _TmplIDs: <p>要删除的模板id</p>
         :type TmplIDs: list of str
         """
         self._TmplIDs = None
 
     @property
     def TmplIDs(self):
-        r"""要删除的模板id
+        r"""<p>要删除的模板id</p>
         :rtype: list of str
         """
         return self._TmplIDs
@@ -2257,30 +2257,30 @@ class NoticeContentTmpl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TmplID: 自定义通知内容模板id，唯一id
+        :param _TmplID: <p>自定义通知内容模板id，唯一id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmplID: str
-        :param _TmplName: 自定义通知内容模板名
+        :param _TmplName: <p>自定义通知内容模板名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmplName: str
-        :param _TmplContents: 通知内容
+        :param _TmplContents: <p>通知内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmplContents: :class:`tencentcloud.monitor.v20230616.models.NoticeContentTmplItem`
-        :param _CreateTime: Unix时间戳，秒
+        :param _CreateTime: <p>Unix时间戳，秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
-        :param _UpdateTime: Unix时间戳，秒
+        :param _UpdateTime: <p>Unix时间戳，秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
-        :param _LastModifier: 最后修改人
+        :param _LastModifier: <p>最后修改人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifier: str
-        :param _Creator: 创建人
+        :param _Creator: <p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creator: str
-        :param _MonitorType: 监控类型
+        :param _MonitorType: <p>监控类型</p>
         :type MonitorType: str
-        :param _TmplLanguage: 模板语言 en/zh
+        :param _TmplLanguage: <p>模板语言 en/zh</p>
         :type TmplLanguage: str
         """
         self._TmplID = None
@@ -2295,7 +2295,7 @@ class NoticeContentTmpl(AbstractModel):
 
     @property
     def TmplID(self):
-        r"""自定义通知内容模板id，唯一id
+        r"""<p>自定义通知内容模板id，唯一id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2307,7 +2307,7 @@ class NoticeContentTmpl(AbstractModel):
 
     @property
     def TmplName(self):
-        r"""自定义通知内容模板名
+        r"""<p>自定义通知内容模板名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2319,7 +2319,7 @@ class NoticeContentTmpl(AbstractModel):
 
     @property
     def TmplContents(self):
-        r"""通知内容
+        r"""<p>通知内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.monitor.v20230616.models.NoticeContentTmplItem`
         """
@@ -2331,7 +2331,7 @@ class NoticeContentTmpl(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""Unix时间戳，秒
+        r"""<p>Unix时间戳，秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2343,7 +2343,7 @@ class NoticeContentTmpl(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""Unix时间戳，秒
+        r"""<p>Unix时间戳，秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2355,7 +2355,7 @@ class NoticeContentTmpl(AbstractModel):
 
     @property
     def LastModifier(self):
-        r"""最后修改人
+        r"""<p>最后修改人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2367,7 +2367,7 @@ class NoticeContentTmpl(AbstractModel):
 
     @property
     def Creator(self):
-        r"""创建人
+        r"""<p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2379,7 +2379,7 @@ class NoticeContentTmpl(AbstractModel):
 
     @property
     def MonitorType(self):
-        r"""监控类型
+        r"""<p>监控类型</p>
         :rtype: str
         """
         return self._MonitorType
@@ -2390,7 +2390,7 @@ class NoticeContentTmpl(AbstractModel):
 
     @property
     def TmplLanguage(self):
-        r"""模板语言 en/zh
+        r"""<p>模板语言 en/zh</p>
         :rtype: str
         """
         return self._TmplLanguage

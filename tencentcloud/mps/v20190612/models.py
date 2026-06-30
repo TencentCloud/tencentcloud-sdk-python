@@ -6930,6 +6930,157 @@ class AiParagraphInfo(AbstractModel):
         
 
 
+class AiPosterSuiteConfig(AbstractModel):
+    r"""智能套图配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: <p>出图模式</p><p>枚举值：</p><ul><li>auto： 全自动模式。此模式下支持CustomVariables传入。</li><li>modify： 修改模式。此模式下需要在AddOnParameter.ExtPrompt字段提供对应描述。此模式下禁止CustomVariables传入。</li></ul><p>默认值：auto</p>
+        :type Mode: str
+        :param _Definition: <p>电商平台视觉模板id</p><p>如需个性化定制视觉模板，请提交工单。</p>
+        :type Definition: int
+        :param _Recipe: <p>子图配置。</p>
+        :type Recipe: list of RecipeItem
+        :param _Language: <p>子图文案语言。</p><p>枚举值：</p><ul><li>zh-CN： 简体中文</li><li>en-US： 美式英语</li></ul><p>默认值：zh-CN</p><p>如需支持更多语言输出，请提交工单。</p>
+        :type Language: str
+        :param _PanelRatio: <p>子图比例。</p><p>枚举值：</p><ul><li>1:1： 1:1</li><li>3:4： 3:4</li><li>4:3： 4:3</li><li>9:16： 9:16</li><li>16:9： 16:9</li></ul><p>默认值：1:1</p>
+        :type PanelRatio: str
+        :param _PanelResolution: <p>子图分辨率</p><p>枚举值：</p><ul><li>720： 720</li><li>1K： 1K</li><li>2K： 2K</li><li>4K： 4K</li></ul><p>默认值：1K</p>
+        :type PanelResolution: str
+        :param _CustomVariables: <p>用户自定义变量。</p>
+        :type CustomVariables: list of CustomVariable
+        :param _Model: <p>模型名称。</p><p>枚举值：</p><ul><li>WAND-suite-1.0-flash： WAND-suite-1.0-flash</li></ul>
+        :type Model: str
+        """
+        self._Mode = None
+        self._Definition = None
+        self._Recipe = None
+        self._Language = None
+        self._PanelRatio = None
+        self._PanelResolution = None
+        self._CustomVariables = None
+        self._Model = None
+
+    @property
+    def Mode(self):
+        r"""<p>出图模式</p><p>枚举值：</p><ul><li>auto： 全自动模式。此模式下支持CustomVariables传入。</li><li>modify： 修改模式。此模式下需要在AddOnParameter.ExtPrompt字段提供对应描述。此模式下禁止CustomVariables传入。</li></ul><p>默认值：auto</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Definition(self):
+        r"""<p>电商平台视觉模板id</p><p>如需个性化定制视觉模板，请提交工单。</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Recipe(self):
+        r"""<p>子图配置。</p>
+        :rtype: list of RecipeItem
+        """
+        return self._Recipe
+
+    @Recipe.setter
+    def Recipe(self, Recipe):
+        self._Recipe = Recipe
+
+    @property
+    def Language(self):
+        r"""<p>子图文案语言。</p><p>枚举值：</p><ul><li>zh-CN： 简体中文</li><li>en-US： 美式英语</li></ul><p>默认值：zh-CN</p><p>如需支持更多语言输出，请提交工单。</p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def PanelRatio(self):
+        r"""<p>子图比例。</p><p>枚举值：</p><ul><li>1:1： 1:1</li><li>3:4： 3:4</li><li>4:3： 4:3</li><li>9:16： 9:16</li><li>16:9： 16:9</li></ul><p>默认值：1:1</p>
+        :rtype: str
+        """
+        return self._PanelRatio
+
+    @PanelRatio.setter
+    def PanelRatio(self, PanelRatio):
+        self._PanelRatio = PanelRatio
+
+    @property
+    def PanelResolution(self):
+        r"""<p>子图分辨率</p><p>枚举值：</p><ul><li>720： 720</li><li>1K： 1K</li><li>2K： 2K</li><li>4K： 4K</li></ul><p>默认值：1K</p>
+        :rtype: str
+        """
+        return self._PanelResolution
+
+    @PanelResolution.setter
+    def PanelResolution(self, PanelResolution):
+        self._PanelResolution = PanelResolution
+
+    @property
+    def CustomVariables(self):
+        r"""<p>用户自定义变量。</p>
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def Model(self):
+        r"""<p>模型名称。</p><p>枚举值：</p><ul><li>WAND-suite-1.0-flash： WAND-suite-1.0-flash</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Definition = params.get("Definition")
+        if params.get("Recipe") is not None:
+            self._Recipe = []
+            for item in params.get("Recipe"):
+                obj = RecipeItem()
+                obj._deserialize(item)
+                self._Recipe.append(obj)
+        self._Language = params.get("Language")
+        self._PanelRatio = params.get("PanelRatio")
+        self._PanelResolution = params.get("PanelResolution")
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiQualityControlTaskInput(AbstractModel):
     r"""媒体质检输入参数类型
 
@@ -27929,6 +28080,57 @@ class CreateWorkflowResponse(AbstractModel):
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
         self._RequestId = params.get("RequestId")
+
+
+class CustomVariable(AbstractModel):
+    r"""自定义描述变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>用户自定义变量类型。</p><p>参数格式：PascalCase格式。</p><p>不能为UserPrompt。默认平台模板未适配自定义内容，如需适配需提交工单。</p>
+        :type Type: str
+        :param _Description: <p>自定义变量描述。</p>
+        :type Description: str
+        """
+        self._Type = None
+        self._Description = None
+
+    @property
+    def Type(self):
+        r"""<p>用户自定义变量类型。</p><p>参数格式：PascalCase格式。</p><p>不能为UserPrompt。默认平台模板未适配自定义内容，如需适配需提交工单。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        r"""<p>自定义变量描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DashManifestInfo(AbstractModel):
@@ -50566,6 +50768,8 @@ class ImageTaskInput(AbstractModel):
         :type TransformConfig: :class:`tencentcloud.mps.v20190612.models.ImageTransformConfig`
         :param _AiTryOnConfig: <p>Ai 换装配置。</p>
         :type AiTryOnConfig: :class:`tencentcloud.mps.v20190612.models.AiTryOnConfig`
+        :param _AiPosterSuiteConfig: <p>Ai套图配置。</p>
+        :type AiPosterSuiteConfig: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
@@ -50574,6 +50778,7 @@ class ImageTaskInput(AbstractModel):
         self._BeautyConfig = None
         self._TransformConfig = None
         self._AiTryOnConfig = None
+        self._AiPosterSuiteConfig = None
 
     @property
     def EncodeConfig(self):
@@ -50656,6 +50861,17 @@ class ImageTaskInput(AbstractModel):
     def AiTryOnConfig(self, AiTryOnConfig):
         self._AiTryOnConfig = AiTryOnConfig
 
+    @property
+    def AiPosterSuiteConfig(self):
+        r"""<p>Ai套图配置。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
+        """
+        return self._AiPosterSuiteConfig
+
+    @AiPosterSuiteConfig.setter
+    def AiPosterSuiteConfig(self, AiPosterSuiteConfig):
+        self._AiPosterSuiteConfig = AiPosterSuiteConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -50679,6 +50895,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("AiTryOnConfig") is not None:
             self._AiTryOnConfig = AiTryOnConfig()
             self._AiTryOnConfig._deserialize(params.get("AiTryOnConfig"))
+        if params.get("AiPosterSuiteConfig") is not None:
+            self._AiPosterSuiteConfig = AiPosterSuiteConfig()
+            self._AiPosterSuiteConfig._deserialize(params.get("AiPosterSuiteConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72511,6 +72730,57 @@ class RawWatermarkParameter(AbstractModel):
         if params.get("ImageTemplate") is not None:
             self._ImageTemplate = RawImageWatermarkInput()
             self._ImageTemplate._deserialize(params.get("ImageTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecipeItem(AbstractModel):
+    r"""套图图片信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Theme: <p>子图类型</p><p>枚举值：</p><ul><li>hero： 商品主图</li><li>detail： 商品细节图</li><li>selling： 核心卖点图</li><li>atmosphere： 场景氛围图</li><li>angles： 多角度图</li><li>scene： 使用场景图</li></ul>
+        :type Theme: str
+        :param _Num: <p>对应子图数量。</p><p>取值范围：[1, 4]</p><p>单位：张</p><p>单种子图最多4张，子图总数必须在4-12张范围内。</p>
+        :type Num: int
+        """
+        self._Theme = None
+        self._Num = None
+
+    @property
+    def Theme(self):
+        r"""<p>子图类型</p><p>枚举值：</p><ul><li>hero： 商品主图</li><li>detail： 商品细节图</li><li>selling： 核心卖点图</li><li>atmosphere： 场景氛围图</li><li>angles： 多角度图</li><li>scene： 使用场景图</li></ul>
+        :rtype: str
+        """
+        return self._Theme
+
+    @Theme.setter
+    def Theme(self, Theme):
+        self._Theme = Theme
+
+    @property
+    def Num(self):
+        r"""<p>对应子图数量。</p><p>取值范围：[1, 4]</p><p>单位：张</p><p>单种子图最多4张，子图总数必须在4-12张范围内。</p>
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+
+    def _deserialize(self, params):
+        self._Theme = params.get("Theme")
+        self._Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

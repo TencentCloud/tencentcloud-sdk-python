@@ -1071,6 +1071,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNDRAssetIdentificationCursorList(
+            self,
+            request: models.DescribeNDRAssetIdentificationCursorListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNDRAssetIdentificationCursorListResponse:
+        """
+        DescribeNDRAssetIdentificationCursorList - 游标获取NDR资产识别结果列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNDRAssetIdentificationCursorList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNDRAssetIdentificationCursorListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNDRAssetIdentificationList(
             self,
             request: models.DescribeNDRAssetIdentificationListRequest,

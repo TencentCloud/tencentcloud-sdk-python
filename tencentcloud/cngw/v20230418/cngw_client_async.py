@@ -43,6 +43,42 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddCloudNativeAPIGatewayConsumerInGroup(
+            self,
+            request: models.AddCloudNativeAPIGatewayConsumerInGroupRequest,
+            opts: Dict = None,
+    ) -> models.AddCloudNativeAPIGatewayConsumerInGroupResponse:
+        """
+        将消费者添加到消费者组。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddCloudNativeAPIGatewayConsumerInGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddCloudNativeAPIGatewayConsumerInGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BindCloudNativeAPIGatewaySecretKey(
+            self,
+            request: models.BindCloudNativeAPIGatewaySecretKeyRequest,
+            opts: Dict = None,
+    ) -> models.BindCloudNativeAPIGatewaySecretKeyResponse:
+        """
+        添加密钥与资源的引用关系接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindCloudNativeAPIGatewaySecretKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindCloudNativeAPIGatewaySecretKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCloudNativeAPIGatewayConsumer(
             self,
             request: models.CreateCloudNativeAPIGatewayConsumerRequest,
@@ -830,6 +866,42 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "RemoveCloudNativeAPIGatewayConsumerGroupAuth"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RemoveCloudNativeAPIGatewayConsumerGroupAuthResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveCloudNativeAPIGatewayConsumerInGroup(
+            self,
+            request: models.RemoveCloudNativeAPIGatewayConsumerInGroupRequest,
+            opts: Dict = None,
+    ) -> models.RemoveCloudNativeAPIGatewayConsumerInGroupResponse:
+        """
+        将消费者从消费者组移除。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveCloudNativeAPIGatewayConsumerInGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveCloudNativeAPIGatewayConsumerInGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnbindCloudNativeAPIGatewaySecretKey(
+            self,
+            request: models.UnbindCloudNativeAPIGatewaySecretKeyRequest,
+            opts: Dict = None,
+    ) -> models.UnbindCloudNativeAPIGatewaySecretKeyResponse:
+        """
+        解绑密钥
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnbindCloudNativeAPIGatewaySecretKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnbindCloudNativeAPIGatewaySecretKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

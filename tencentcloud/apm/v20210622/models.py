@@ -457,6 +457,14 @@ class ApmAppConfig(AbstractModel):
         :type ResponseDurationWarningThreshold: int
         :param _UseDefaultFuseConfig: <p>是否默认使用探针自带熔断阈值</p>
         :type UseDefaultFuseConfig: bool
+        :param _AnalysisAutoEnable: <p>是否开启自动分析</p>
+        :type AnalysisAutoEnable: bool
+        :param _EnableHeadSampler: <p>头采样开关</p>
+        :type EnableHeadSampler: bool
+        :param _HeadSamplerType: <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随父类型</li></ul>
+        :type HeadSamplerType: str
+        :param _HeadSamplerArg: <p>采样阈值，100等于关闭采样，0表示全采样</p>
+        :type HeadSamplerArg: int
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -520,6 +528,10 @@ class ApmAppConfig(AbstractModel):
         self._ErrRateThreshold = None
         self._ResponseDurationWarningThreshold = None
         self._UseDefaultFuseConfig = None
+        self._AnalysisAutoEnable = None
+        self._EnableHeadSampler = None
+        self._HeadSamplerType = None
+        self._HeadSamplerArg = None
 
     @property
     def InstanceKey(self):
@@ -1226,6 +1238,50 @@ class ApmAppConfig(AbstractModel):
     def UseDefaultFuseConfig(self, UseDefaultFuseConfig):
         self._UseDefaultFuseConfig = UseDefaultFuseConfig
 
+    @property
+    def AnalysisAutoEnable(self):
+        r"""<p>是否开启自动分析</p>
+        :rtype: bool
+        """
+        return self._AnalysisAutoEnable
+
+    @AnalysisAutoEnable.setter
+    def AnalysisAutoEnable(self, AnalysisAutoEnable):
+        self._AnalysisAutoEnable = AnalysisAutoEnable
+
+    @property
+    def EnableHeadSampler(self):
+        r"""<p>头采样开关</p>
+        :rtype: bool
+        """
+        return self._EnableHeadSampler
+
+    @EnableHeadSampler.setter
+    def EnableHeadSampler(self, EnableHeadSampler):
+        self._EnableHeadSampler = EnableHeadSampler
+
+    @property
+    def HeadSamplerType(self):
+        r"""<p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随父类型</li></ul>
+        :rtype: str
+        """
+        return self._HeadSamplerType
+
+    @HeadSamplerType.setter
+    def HeadSamplerType(self, HeadSamplerType):
+        self._HeadSamplerType = HeadSamplerType
+
+    @property
+    def HeadSamplerArg(self):
+        r"""<p>采样阈值，100等于关闭采样，0表示全采样</p>
+        :rtype: int
+        """
+        return self._HeadSamplerArg
+
+    @HeadSamplerArg.setter
+    def HeadSamplerArg(self, HeadSamplerArg):
+        self._HeadSamplerArg = HeadSamplerArg
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1304,6 +1360,10 @@ class ApmAppConfig(AbstractModel):
         self._ErrRateThreshold = params.get("ErrRateThreshold")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         self._UseDefaultFuseConfig = params.get("UseDefaultFuseConfig")
+        self._AnalysisAutoEnable = params.get("AnalysisAutoEnable")
+        self._EnableHeadSampler = params.get("EnableHeadSampler")
+        self._HeadSamplerType = params.get("HeadSamplerType")
+        self._HeadSamplerArg = params.get("HeadSamplerArg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9184,6 +9244,12 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         :type ResponseDurationWarningThreshold: int
         :param _UseDefaultFuseConfig: <p>是否使用探针默认熔断阈值</p>
         :type UseDefaultFuseConfig: bool
+        :param _EnableHeadSampler: <p>是否开启探针头采样</p>
+        :type EnableHeadSampler: bool
+        :param _HeadSamplerType: <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul>
+        :type HeadSamplerType: str
+        :param _HeadSamplerArg: <p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p>
+        :type HeadSamplerArg: int
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -9244,6 +9310,9 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._ErrRateThreshold = None
         self._ResponseDurationWarningThreshold = None
         self._UseDefaultFuseConfig = None
+        self._EnableHeadSampler = None
+        self._HeadSamplerType = None
+        self._HeadSamplerArg = None
 
     @property
     def InstanceId(self):
@@ -9894,6 +9963,39 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     def UseDefaultFuseConfig(self, UseDefaultFuseConfig):
         self._UseDefaultFuseConfig = UseDefaultFuseConfig
 
+    @property
+    def EnableHeadSampler(self):
+        r"""<p>是否开启探针头采样</p>
+        :rtype: bool
+        """
+        return self._EnableHeadSampler
+
+    @EnableHeadSampler.setter
+    def EnableHeadSampler(self, EnableHeadSampler):
+        self._EnableHeadSampler = EnableHeadSampler
+
+    @property
+    def HeadSamplerType(self):
+        r"""<p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul>
+        :rtype: str
+        """
+        return self._HeadSamplerType
+
+    @HeadSamplerType.setter
+    def HeadSamplerType(self, HeadSamplerType):
+        self._HeadSamplerType = HeadSamplerType
+
+    @property
+    def HeadSamplerArg(self):
+        r"""<p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p>
+        :rtype: int
+        """
+        return self._HeadSamplerArg
+
+    @HeadSamplerArg.setter
+    def HeadSamplerArg(self, HeadSamplerArg):
+        self._HeadSamplerArg = HeadSamplerArg
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9969,6 +10071,9 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._ErrRateThreshold = params.get("ErrRateThreshold")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         self._UseDefaultFuseConfig = params.get("UseDefaultFuseConfig")
+        self._EnableHeadSampler = params.get("EnableHeadSampler")
+        self._HeadSamplerType = params.get("HeadSamplerType")
+        self._HeadSamplerArg = params.get("HeadSamplerArg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

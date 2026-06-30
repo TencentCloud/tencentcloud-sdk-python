@@ -73,7 +73,9 @@ class VtcClient(AbstractClient):
 
 
     def SubmitVideoTranslateJob(self, request):
-        r"""###### 支持音色种别列表
+        r"""视频转译业务整体下线
+
+        ###### 支持音色种别列表
         | 音色名称                 | 性别 | 目标语言         | 音色ID |
         | ------------------------ | ---- | ---------------- | ------ |
         | Florian Multilingual     | 男 | 德语(德国)       | 701001 |

@@ -19645,6 +19645,18 @@ class UserIdAndUserName(AbstractModel):
         :param _Id: <p>1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
+        :param _LarkAppId: <p>飞书应用ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LarkAppId: str
+        :param _LarkUserId: <p>飞书UserId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LarkUserId: str
+        :param _LarkOpenId: <p>飞书OpenId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LarkOpenId: str
+        :param _LarkUserName: <p>飞书UserName</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LarkUserName: str
         """
         self._UserId = None
         self._UserName = None
@@ -19669,6 +19681,10 @@ class UserIdAndUserName(AbstractModel):
         self._InValidateAppRange = None
         self._EmailActivationStatus = None
         self._Id = None
+        self._LarkAppId = None
+        self._LarkUserId = None
+        self._LarkOpenId = None
+        self._LarkUserName = None
 
     @property
     def UserId(self):
@@ -19944,6 +19960,54 @@ class UserIdAndUserName(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def LarkAppId(self):
+        r"""<p>飞书应用ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LarkAppId
+
+    @LarkAppId.setter
+    def LarkAppId(self, LarkAppId):
+        self._LarkAppId = LarkAppId
+
+    @property
+    def LarkUserId(self):
+        r"""<p>飞书UserId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LarkUserId
+
+    @LarkUserId.setter
+    def LarkUserId(self, LarkUserId):
+        self._LarkUserId = LarkUserId
+
+    @property
+    def LarkOpenId(self):
+        r"""<p>飞书OpenId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LarkOpenId
+
+    @LarkOpenId.setter
+    def LarkOpenId(self, LarkOpenId):
+        self._LarkOpenId = LarkOpenId
+
+    @property
+    def LarkUserName(self):
+        r"""<p>飞书UserName</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LarkUserName
+
+    @LarkUserName.setter
+    def LarkUserName(self, LarkUserName):
+        self._LarkUserName = LarkUserName
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -19969,6 +20033,10 @@ class UserIdAndUserName(AbstractModel):
         self._InValidateAppRange = params.get("InValidateAppRange")
         self._EmailActivationStatus = params.get("EmailActivationStatus")
         self._Id = params.get("Id")
+        self._LarkAppId = params.get("LarkAppId")
+        self._LarkUserId = params.get("LarkUserId")
+        self._LarkOpenId = params.get("LarkOpenId")
+        self._LarkUserName = params.get("LarkUserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19986,25 +20054,28 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户ID
+        :param _UserId: <p>用户ID</p>
         :type UserId: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _Email: 邮箱
+        :param _Email: <p>邮箱</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
-        :param _PhoneNumber: 手机号
+        :param _PhoneNumber: <p>手机号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneNumber: str
-        :param _AreaCode: 手机号区号
+        :param _AreaCode: <p>手机号区号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCode: str
-        :param _AppUserId: 企微账号id
+        :param _AppUserId: <p>企微账号id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppUserId: str
-        :param _AppUserName: 企微账号名称
+        :param _AppUserName: <p>企微账号名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppUserName: str
+        :param _LarkOpenId: <p>飞书OpenId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LarkOpenId: str
         """
         self._UserId = None
         self._UserName = None
@@ -20013,10 +20084,11 @@ class UserInfo(AbstractModel):
         self._AreaCode = None
         self._AppUserId = None
         self._AppUserName = None
+        self._LarkOpenId = None
 
     @property
     def UserId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: str
         """
         return self._UserId
@@ -20027,7 +20099,7 @@ class UserInfo(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -20038,7 +20110,7 @@ class UserInfo(AbstractModel):
 
     @property
     def Email(self):
-        r"""邮箱
+        r"""<p>邮箱</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20050,7 +20122,7 @@ class UserInfo(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        r"""手机号
+        r"""<p>手机号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20062,7 +20134,7 @@ class UserInfo(AbstractModel):
 
     @property
     def AreaCode(self):
-        r"""手机号区号
+        r"""<p>手机号区号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20074,7 +20146,7 @@ class UserInfo(AbstractModel):
 
     @property
     def AppUserId(self):
-        r"""企微账号id
+        r"""<p>企微账号id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20086,7 +20158,7 @@ class UserInfo(AbstractModel):
 
     @property
     def AppUserName(self):
-        r"""企微账号名称
+        r"""<p>企微账号名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20095,6 +20167,18 @@ class UserInfo(AbstractModel):
     @AppUserName.setter
     def AppUserName(self, AppUserName):
         self._AppUserName = AppUserName
+
+    @property
+    def LarkOpenId(self):
+        r"""<p>飞书OpenId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LarkOpenId
+
+    @LarkOpenId.setter
+    def LarkOpenId(self, LarkOpenId):
+        self._LarkOpenId = LarkOpenId
 
 
     def _deserialize(self, params):
@@ -20105,6 +20189,7 @@ class UserInfo(AbstractModel):
         self._AreaCode = params.get("AreaCode")
         self._AppUserId = params.get("AppUserId")
         self._AppUserName = params.get("AppUserName")
+        self._LarkOpenId = params.get("LarkOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

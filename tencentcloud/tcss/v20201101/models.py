@@ -26434,14 +26434,14 @@ class DescribeAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 仓库唯一id
+        :param _RegistryId: <p>仓库唯一id</p>
         :type RegistryId: int
         """
         self._RegistryId = None
 
     @property
     def RegistryId(self):
-        r"""仓库唯一id
+        r"""<p>仓库唯一id</p>
         :rtype: int
         """
         return self._RegistryId
@@ -26470,37 +26470,37 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 仓库名
+        :param _Name: <p>仓库名</p>
         :type Name: str
-        :param _Username: 用户名
+        :param _Username: <p>用户名</p>
         :type Username: str
-        :param _Password: 密码
+        :param _Password: <p>密码</p>
         :type Password: str
-        :param _Url: 仓库url
+        :param _Url: <p>仓库url</p>
         :type Url: str
-        :param _RegistryType: 仓库类型，列表：harbor
+        :param _RegistryType: <p>仓库类型，列表：harbor</p>
         :type RegistryType: str
-        :param _RegistryVersion: 仓库版本
+        :param _RegistryVersion: <p>仓库版本</p>
         :type RegistryVersion: str
-        :param _NetType: 网络类型，列表：public（公网）,private（私网）
+        :param _NetType: <p>网络类型，列表：public（公网）,private（私网）</p>
         :type NetType: str
-        :param _RegistryRegion: 区域，列表:default（默认）
+        :param _RegistryRegion: <p>区域，列表:default（默认）</p>
         :type RegistryRegion: str
-        :param _SpeedLimit: 限速
+        :param _SpeedLimit: <p>限速</p>
         :type SpeedLimit: int
-        :param _Insecure: 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
+        :param _Insecure: <p>安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1</p>
         :type Insecure: int
-        :param _ConnDetectDetail: 联通性检测结果详情
+        :param _ConnDetectDetail: <p>联通性检测结果详情</p>
         :type ConnDetectDetail: list of RegistryConnDetectResult
-        :param _InstanceID: tcr情况下instance_id
+        :param _InstanceID: <p>tcr情况下instance_id</p>
         :type InstanceID: str
-        :param _SyncMode: 同步方式，0全量同步，1增量同步
+        :param _SyncMode: <p>同步方式，0全量同步，1增量同步</p>
         :type SyncMode: int
-        :param _NeedScan: 是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
+        :param _NeedScan: <p>是否自动授权&amp;扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像</p>
         :type NeedScan: bool
-        :param _WebhookUrl: webhook接入地址
+        :param _WebhookUrl: <p>webhook接入地址</p>
         :type WebhookUrl: str
-        :param _WebhookToken: webhook接入token	
+        :param _WebhookToken: <p>webhook接入token</p>
         :type WebhookToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26525,7 +26525,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""仓库名
+        r"""<p>仓库名</p>
         :rtype: str
         """
         return self._Name
@@ -26536,7 +26536,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def Username(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._Username
@@ -26547,7 +26547,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def Password(self):
-        r"""密码
+        r"""<p>密码</p>
         :rtype: str
         """
         return self._Password
@@ -26558,7 +26558,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""仓库url
+        r"""<p>仓库url</p>
         :rtype: str
         """
         return self._Url
@@ -26569,7 +26569,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def RegistryType(self):
-        r"""仓库类型，列表：harbor
+        r"""<p>仓库类型，列表：harbor</p>
         :rtype: str
         """
         return self._RegistryType
@@ -26580,7 +26580,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def RegistryVersion(self):
-        r"""仓库版本
+        r"""<p>仓库版本</p>
         :rtype: str
         """
         return self._RegistryVersion
@@ -26591,7 +26591,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def NetType(self):
-        r"""网络类型，列表：public（公网）,private（私网）
+        r"""<p>网络类型，列表：public（公网）,private（私网）</p>
         :rtype: str
         """
         return self._NetType
@@ -26602,7 +26602,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def RegistryRegion(self):
-        r"""区域，列表:default（默认）
+        r"""<p>区域，列表:default（默认）</p>
         :rtype: str
         """
         return self._RegistryRegion
@@ -26613,7 +26613,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def SpeedLimit(self):
-        r"""限速
+        r"""<p>限速</p>
         :rtype: int
         """
         return self._SpeedLimit
@@ -26624,7 +26624,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def Insecure(self):
-        r"""安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
+        r"""<p>安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1</p>
         :rtype: int
         """
         return self._Insecure
@@ -26635,7 +26635,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def ConnDetectDetail(self):
-        r"""联通性检测结果详情
+        r"""<p>联通性检测结果详情</p>
         :rtype: list of RegistryConnDetectResult
         """
         return self._ConnDetectDetail
@@ -26646,7 +26646,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""tcr情况下instance_id
+        r"""<p>tcr情况下instance_id</p>
         :rtype: str
         """
         return self._InstanceID
@@ -26657,7 +26657,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def SyncMode(self):
-        r"""同步方式，0全量同步，1增量同步
+        r"""<p>同步方式，0全量同步，1增量同步</p>
         :rtype: int
         """
         return self._SyncMode
@@ -26668,7 +26668,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def NeedScan(self):
-        r"""是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
+        r"""<p>是否自动授权&amp;扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像</p>
         :rtype: bool
         """
         return self._NeedScan
@@ -26679,7 +26679,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def WebhookUrl(self):
-        r"""webhook接入地址
+        r"""<p>webhook接入地址</p>
         :rtype: str
         """
         return self._WebhookUrl
@@ -26690,7 +26690,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def WebhookToken(self):
-        r"""webhook接入token	
+        r"""<p>webhook接入token</p>
         :rtype: str
         """
         return self._WebhookToken
@@ -72828,14 +72828,14 @@ class RemoveAssetImageRegistryRegistryDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 仓库唯一id
+        :param _RegistryId: <p>仓库唯一id</p>
         :type RegistryId: int
         """
         self._RegistryId = None
 
     @property
     def RegistryId(self):
-        r"""仓库唯一id
+        r"""<p>仓库唯一id</p>
         :rtype: int
         """
         return self._RegistryId

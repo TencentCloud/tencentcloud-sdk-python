@@ -10288,20 +10288,22 @@ class LoginActionFlag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Phone: 0: 非安全手机校验 1: 安全手机校验。
+        :param _Phone: <p>0: 非安全手机校验 1: 安全手机校验。</p>
         :type Phone: int
-        :param _Token: 0: 非硬token校验 1: 硬token校验。
+        :param _Token: <p>0: 非硬token校验 1: 硬token校验。</p>
         :type Token: int
-        :param _Stoken: 0: 非软token校验 1: 软token校验
+        :param _Stoken: <p>0: 非软token校验 1: 软token校验</p>
         :type Stoken: int
-        :param _Wechat: 0: 非微信校验 1: 微信校验
+        :param _Wechat: <p>0: 非微信校验 1: 微信校验</p>
         :type Wechat: int
-        :param _Custom: 0: 非自定义校验 1: 自定义校验
+        :param _Custom: <p>0: 非自定义校验 1: 自定义校验</p>
         :type Custom: int
-        :param _Mail: 0: 非邮箱校验 1: 邮箱校验
+        :param _Mail: <p>0: 非邮箱校验 1: 邮箱校验</p>
         :type Mail: int
-        :param _U2FToken: 0: 非u2f硬件token 1: u2f硬件token
+        :param _U2FToken: <p>0: 非u2f硬件token 1: u2f硬件token</p>
         :type U2FToken: int
+        :param _Passkey: <p>0: 非passkey 校验 1: passkey校验</p>
+        :type Passkey: int
         """
         self._Phone = None
         self._Token = None
@@ -10310,10 +10312,11 @@ class LoginActionFlag(AbstractModel):
         self._Custom = None
         self._Mail = None
         self._U2FToken = None
+        self._Passkey = None
 
     @property
     def Phone(self):
-        r"""0: 非安全手机校验 1: 安全手机校验。
+        r"""<p>0: 非安全手机校验 1: 安全手机校验。</p>
         :rtype: int
         """
         return self._Phone
@@ -10324,7 +10327,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Token(self):
-        r"""0: 非硬token校验 1: 硬token校验。
+        r"""<p>0: 非硬token校验 1: 硬token校验。</p>
         :rtype: int
         """
         return self._Token
@@ -10335,7 +10338,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Stoken(self):
-        r"""0: 非软token校验 1: 软token校验
+        r"""<p>0: 非软token校验 1: 软token校验</p>
         :rtype: int
         """
         return self._Stoken
@@ -10346,7 +10349,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Wechat(self):
-        r"""0: 非微信校验 1: 微信校验
+        r"""<p>0: 非微信校验 1: 微信校验</p>
         :rtype: int
         """
         return self._Wechat
@@ -10357,7 +10360,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Custom(self):
-        r"""0: 非自定义校验 1: 自定义校验
+        r"""<p>0: 非自定义校验 1: 自定义校验</p>
         :rtype: int
         """
         return self._Custom
@@ -10368,7 +10371,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def Mail(self):
-        r"""0: 非邮箱校验 1: 邮箱校验
+        r"""<p>0: 非邮箱校验 1: 邮箱校验</p>
         :rtype: int
         """
         return self._Mail
@@ -10379,7 +10382,7 @@ class LoginActionFlag(AbstractModel):
 
     @property
     def U2FToken(self):
-        r"""0: 非u2f硬件token 1: u2f硬件token
+        r"""<p>0: 非u2f硬件token 1: u2f硬件token</p>
         :rtype: int
         """
         return self._U2FToken
@@ -10387,6 +10390,17 @@ class LoginActionFlag(AbstractModel):
     @U2FToken.setter
     def U2FToken(self, U2FToken):
         self._U2FToken = U2FToken
+
+    @property
+    def Passkey(self):
+        r"""<p>0: 非passkey 校验 1: passkey校验</p>
+        :rtype: int
+        """
+        return self._Passkey
+
+    @Passkey.setter
+    def Passkey(self, Passkey):
+        self._Passkey = Passkey
 
 
     def _deserialize(self, params):
@@ -10397,6 +10411,7 @@ class LoginActionFlag(AbstractModel):
         self._Custom = params.get("Custom")
         self._Mail = params.get("Mail")
         self._U2FToken = params.get("U2FToken")
+        self._Passkey = params.get("Passkey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

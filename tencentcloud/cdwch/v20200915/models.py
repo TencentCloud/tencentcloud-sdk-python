@@ -809,9 +809,9 @@ class Charge(AbstractModel):
         r"""
         :param _ChargeType: 计费类型，“PREPAID” 预付费，“POSTPAID_BY_HOUR” 后付费
         :type ChargeType: str
-        :param _RenewFlag: PREPAID需要传递，是否自动续费，1表示自动续费开启
+        :param _RenewFlag: ChargeType为PREPAID时，必传，表示是否自动续费，1表示自动续费开启
         :type RenewFlag: int
-        :param _TimeSpan: 预付费需要传递，计费时间长度，多少个月
+        :param _TimeSpan: ChargeType为PREPAID时，必传，表示计费时间长度，多少个月
         :type TimeSpan: int
         """
         self._ChargeType = None
@@ -831,7 +831,7 @@ class Charge(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""PREPAID需要传递，是否自动续费，1表示自动续费开启
+        r"""ChargeType为PREPAID时，必传，表示是否自动续费，1表示自动续费开启
         :rtype: int
         """
         return self._RenewFlag
@@ -842,7 +842,7 @@ class Charge(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""预付费需要传递，计费时间长度，多少个月
+        r"""ChargeType为PREPAID时，必传，表示计费时间长度，多少个月
         :rtype: int
         """
         return self._TimeSpan
@@ -1624,41 +1624,42 @@ class CreateInstanceNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _HaFlag: 是否高可用
+        :param _HaFlag: <p>是否高可用</p>
         :type HaFlag: bool
-        :param _UserVPCId: 私有网络
+        :param _UserVPCId: <p>私有网络</p>
         :type UserVPCId: str
-        :param _UserSubnetId: 子网
+        :param _UserSubnetId: <p>子网</p>
         :type UserSubnetId: str
-        :param _ProductVersion: 系统版本
+        :param _ProductVersion: <p>系统版本</p>
         :type ProductVersion: str
-        :param _ChargeProperties: 计费方式
+        :param _ChargeProperties: <p>计费方式</p>
         :type ChargeProperties: :class:`tencentcloud.cdwch.v20200915.models.Charge`
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _DataSpec: 数据节点
-SpecName从DescribeSpec接口中返回的DataSpec.Name获取
+        :param _DataSpec: <p>数据节点<br>SpecName从DescribeSpec接口中返回的DataSpec.Name获取</p>
         :type DataSpec: :class:`tencentcloud.cdwch.v20200915.models.NodeSpec`
-        :param _Tags: 标签列表（废弃）
+        :param _Tags: <p>标签列表（废弃）</p>
         :type Tags: :class:`tencentcloud.cdwch.v20200915.models.Tag`
-        :param _ClsLogSetId: 日志主题ID
+        :param _ClsLogSetId: <p>日志主题ID</p>
         :type ClsLogSetId: str
-        :param _CosBucketName: COS桶名称
+        :param _CosBucketName: <p>COS桶名称</p>
         :type CosBucketName: str
-        :param _MountDiskType: 是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。
+        :param _MountDiskType: <p>是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。</p>
         :type MountDiskType: int
-        :param _HAZk: 是否是ZK高可用
+        :param _HAZk: <p>是否是ZK高可用</p>
         :type HAZk: bool
-        :param _CommonSpec: ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取
+        :param _CommonSpec: <p>ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取</p>
         :type CommonSpec: :class:`tencentcloud.cdwch.v20200915.models.NodeSpec`
-        :param _TagItems: 标签列表
+        :param _TagItems: <p>标签列表</p>
         :type TagItems: list of Tag
-        :param _SecondaryZoneInfo: 副可用区信息
+        :param _SecondaryZoneInfo: <p>副可用区信息</p>
         :type SecondaryZoneInfo: list of SecondaryZoneInfo
-        :param _CkDefaultUserPwd: default账号登陆实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符
+        :param _CkDefaultUserPwd: <p>default账号登录实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符</p>
         :type CkDefaultUserPwd: str
+        :param _ClusterType: <p>集群类型</p>
+        :type ClusterType: str
         """
         self._Zone = None
         self._HaFlag = None
@@ -1677,10 +1678,11 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
         self._TagItems = None
         self._SecondaryZoneInfo = None
         self._CkDefaultUserPwd = None
+        self._ClusterType = None
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -1691,7 +1693,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def HaFlag(self):
-        r"""是否高可用
+        r"""<p>是否高可用</p>
         :rtype: bool
         """
         return self._HaFlag
@@ -1702,7 +1704,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def UserVPCId(self):
-        r"""私有网络
+        r"""<p>私有网络</p>
         :rtype: str
         """
         return self._UserVPCId
@@ -1713,7 +1715,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def UserSubnetId(self):
-        r"""子网
+        r"""<p>子网</p>
         :rtype: str
         """
         return self._UserSubnetId
@@ -1724,7 +1726,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def ProductVersion(self):
-        r"""系统版本
+        r"""<p>系统版本</p>
         :rtype: str
         """
         return self._ProductVersion
@@ -1735,7 +1737,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def ChargeProperties(self):
-        r"""计费方式
+        r"""<p>计费方式</p>
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.Charge`
         """
         return self._ChargeProperties
@@ -1746,7 +1748,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -1757,8 +1759,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def DataSpec(self):
-        r"""数据节点
-SpecName从DescribeSpec接口中返回的DataSpec.Name获取
+        r"""<p>数据节点<br>SpecName从DescribeSpec接口中返回的DataSpec.Name获取</p>
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.NodeSpec`
         """
         return self._DataSpec
@@ -1771,7 +1772,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
     def Tags(self):
         warnings.warn("parameter `Tags` is deprecated", DeprecationWarning) 
 
-        r"""标签列表（废弃）
+        r"""<p>标签列表（废弃）</p>
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.Tag`
         """
         return self._Tags
@@ -1784,7 +1785,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def ClsLogSetId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._ClsLogSetId
@@ -1795,7 +1796,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def CosBucketName(self):
-        r"""COS桶名称
+        r"""<p>COS桶名称</p>
         :rtype: str
         """
         return self._CosBucketName
@@ -1806,7 +1807,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def MountDiskType(self):
-        r"""是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。
+        r"""<p>是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。</p>
         :rtype: int
         """
         return self._MountDiskType
@@ -1817,7 +1818,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def HAZk(self):
-        r"""是否是ZK高可用
+        r"""<p>是否是ZK高可用</p>
         :rtype: bool
         """
         return self._HAZk
@@ -1828,7 +1829,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def CommonSpec(self):
-        r"""ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取
+        r"""<p>ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取</p>
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.NodeSpec`
         """
         return self._CommonSpec
@@ -1839,7 +1840,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def TagItems(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._TagItems
@@ -1850,7 +1851,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def SecondaryZoneInfo(self):
-        r"""副可用区信息
+        r"""<p>副可用区信息</p>
         :rtype: list of SecondaryZoneInfo
         """
         return self._SecondaryZoneInfo
@@ -1861,7 +1862,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
 
     @property
     def CkDefaultUserPwd(self):
-        r"""default账号登陆实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符
+        r"""<p>default账号登录实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符</p>
         :rtype: str
         """
         return self._CkDefaultUserPwd
@@ -1869,6 +1870,17 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
     @CkDefaultUserPwd.setter
     def CkDefaultUserPwd(self, CkDefaultUserPwd):
         self._CkDefaultUserPwd = CkDefaultUserPwd
+
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型</p>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
 
 
     def _deserialize(self, params):
@@ -1907,6 +1919,7 @@ SpecName从DescribeSpec接口中返回的DataSpec.Name获取
                 obj._deserialize(item)
                 self._SecondaryZoneInfo.append(obj)
         self._CkDefaultUserPwd = params.get("CkDefaultUserPwd")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1924,11 +1937,11 @@ class CreateInstanceNewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程ID
+        :param _FlowId: <p>流程ID</p>
         :type FlowId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _ErrorMsg: 错误信息
+        :param _ErrorMsg: <p>错误信息</p>
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1940,7 +1953,7 @@ class CreateInstanceNewResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""流程ID
+        r"""<p>流程ID</p>
         :rtype: str
         """
         return self._FlowId
@@ -1951,7 +1964,7 @@ class CreateInstanceNewResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1962,7 +1975,7 @@ class CreateInstanceNewResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
         :rtype: str
         """
         return self._ErrorMsg

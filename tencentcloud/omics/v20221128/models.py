@@ -4299,6 +4299,145 @@ class GetRunCallsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetRunJobLogRequest(AbstractModel):
+    r"""GetRunJobLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunUuid: <p>任务Uuid。</p>
+        :type RunUuid: str
+        :param _JobId: <p>子任务id</p>
+        :type JobId: str
+        :param _LogType: <p>日志类型</p><p>枚举值：</p><ul><li>stdout： 标准输出</li><li>stderr： 标准错误</li></ul>
+        :type LogType: str
+        :param _ProjectId: <p>项目ID。<br>（不填使用指定地域下的默认项目）</p>
+        :type ProjectId: str
+        :param _Path: <p>子任务路径，无子任务可填空</p>
+        :type Path: str
+        """
+        self._RunUuid = None
+        self._JobId = None
+        self._LogType = None
+        self._ProjectId = None
+        self._Path = None
+
+    @property
+    def RunUuid(self):
+        r"""<p>任务Uuid。</p>
+        :rtype: str
+        """
+        return self._RunUuid
+
+    @RunUuid.setter
+    def RunUuid(self, RunUuid):
+        self._RunUuid = RunUuid
+
+    @property
+    def JobId(self):
+        r"""<p>子任务id</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型</p><p>枚举值：</p><ul><li>stdout： 标准输出</li><li>stderr： 标准错误</li></ul>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID。<br>（不填使用指定地域下的默认项目）</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Path(self):
+        r"""<p>子任务路径，无子任务可填空</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._RunUuid = params.get("RunUuid")
+        self._JobId = params.get("JobId")
+        self._LogType = params.get("LogType")
+        self._ProjectId = params.get("ProjectId")
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRunJobLogResponse(AbstractModel):
+    r"""GetRunJobLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>日志内容</p>
+        :type Content: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def Content(self):
+        r"""<p>日志内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._RequestId = params.get("RequestId")
+
+
 class GetRunMetadataFileRequest(AbstractModel):
     r"""GetRunMetadataFile请求参数结构体
 

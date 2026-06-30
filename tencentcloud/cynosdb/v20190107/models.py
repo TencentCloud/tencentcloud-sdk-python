@@ -2161,6 +2161,8 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def Zone(self):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         r"""可用区
         :rtype: str
         """
@@ -2168,6 +2170,8 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @Zone.setter
     def Zone(self, Zone):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         self._Zone = Zone
 
 
@@ -32213,6 +32217,8 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def Zone(self):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         r"""可用区。
 说明：请正确输入集群所在的主可用区，若输入非集群所在的主可用区可能显示调用成功，但实际执行会失败。
         :rtype: str
@@ -32221,6 +32227,8 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @Zone.setter
     def Zone(self, Zone):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         self._Zone = Zone
 
 

@@ -920,13 +920,13 @@ class CreateEventBusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusName: 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
+        :param _EventBusName: <p>事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符</p>
         :type EventBusName: str
-        :param _Description: 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+        :param _Description: <p>事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符</p>
         :type Description: str
-        :param _SaveDays: EB存储时长
+        :param _SaveDays: <p>事件存储时长</p><p>单位：day</p>
         :type SaveDays: int
-        :param _EnableStore: EB是否开启存储
+        :param _EnableStore: <p>是否开启事件存储</p>
         :type EnableStore: bool
         """
         self._EventBusName = None
@@ -936,7 +936,7 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def EventBusName(self):
-        r"""事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
+        r"""<p>事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符</p>
         :rtype: str
         """
         return self._EventBusName
@@ -947,7 +947,7 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+        r"""<p>事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符</p>
         :rtype: str
         """
         return self._Description
@@ -958,7 +958,7 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def SaveDays(self):
-        r"""EB存储时长
+        r"""<p>事件存储时长</p><p>单位：day</p>
         :rtype: int
         """
         return self._SaveDays
@@ -969,7 +969,7 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def EnableStore(self):
-        r"""EB是否开启存储
+        r"""<p>是否开启事件存储</p>
         :rtype: bool
         """
         return self._EnableStore
@@ -1001,7 +1001,7 @@ class CreateEventBusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1011,7 +1011,7 @@ class CreateEventBusResponse(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -2019,19 +2019,19 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 起始时间
+        :param _StartTime: <p>起始时间</p>
         :type StartTime: int
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _GroupField: 聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
+        :param _GroupField: <p>聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)</p>
         :type GroupField: str
-        :param _Page: 页数
+        :param _Page: <p>页数</p>
         :type Page: int
-        :param _Limit: 每页数据大小
+        :param _Limit: <p>每页数据大小</p>
         :type Limit: int
-        :param _Filter: 筛选条件
+        :param _Filter: <p>筛选条件</p>
         :type Filter: list of LogFilter
         """
         self._StartTime = None
@@ -2044,7 +2044,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始时间
+        r"""<p>起始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -2055,7 +2055,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -2066,7 +2066,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -2077,7 +2077,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def GroupField(self):
-        r"""聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
+        r"""<p>聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)</p>
         :rtype: str
         """
         return self._GroupField
@@ -2088,7 +2088,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""页数
+        r"""<p>页数</p>
         :rtype: int
         """
         return self._Page
@@ -2099,7 +2099,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页数据大小
+        r"""<p>每页数据大小</p>
         :rtype: int
         """
         return self._Limit
@@ -2110,7 +2110,7 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""筛选条件
+        r"""<p>筛选条件</p>
         :rtype: list of LogFilter
         """
         return self._Filter
@@ -2150,7 +2150,7 @@ class DescribeLogTagValueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Results: 事件查询维度值结果
+        :param _Results: <p>事件查询维度值结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2161,7 +2161,7 @@ class DescribeLogTagValueResponse(AbstractModel):
 
     @property
     def Results(self):
-        r"""事件查询维度值结果
+        r"""<p>事件查询维度值结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2195,22 +2195,22 @@ class ESTargetParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetMode: 网络连接类型
+        :param _NetMode: <p>网络连接类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetMode: str
-        :param _IndexPrefix: 索引前缀
+        :param _IndexPrefix: <p>索引前缀</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexPrefix: str
-        :param _RotationInterval: es日志轮换粒度
+        :param _RotationInterval: <p>es日志轮换粒度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RotationInterval: str
-        :param _OutputMode: DTS事件配置
+        :param _OutputMode: <p>DTS事件配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputMode: str
-        :param _IndexSuffixMode: DTS索引配置
+        :param _IndexSuffixMode: <p>DTS索引配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexSuffixMode: str
-        :param _IndexTemplateType: es模版类型
+        :param _IndexTemplateType: <p>es模版类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexTemplateType: str
         """
@@ -2223,7 +2223,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def NetMode(self):
-        r"""网络连接类型
+        r"""<p>网络连接类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2235,7 +2235,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def IndexPrefix(self):
-        r"""索引前缀
+        r"""<p>索引前缀</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2247,7 +2247,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def RotationInterval(self):
-        r"""es日志轮换粒度
+        r"""<p>es日志轮换粒度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2259,7 +2259,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def OutputMode(self):
-        r"""DTS事件配置
+        r"""<p>DTS事件配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2271,7 +2271,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def IndexSuffixMode(self):
-        r"""DTS索引配置
+        r"""<p>DTS索引配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2283,7 +2283,7 @@ class ESTargetParams(AbstractModel):
 
     @property
     def IndexTemplateType(self):
-        r"""es模版类型
+        r"""<p>es模版类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2812,14 +2812,14 @@ class GetEventBusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
         """
         self._EventBusId = None
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -2848,34 +2848,34 @@ class GetEventBusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModTime: 更新时间
+        :param _ModTime: <p>更新时间</p>
         :type ModTime: str
-        :param _Description: 事件集描述
+        :param _Description: <p>事件集描述</p>
         :type Description: str
-        :param _ClsTopicId: 日志主题ID
+        :param _ClsTopicId: <p>日志主题ID</p>
         :type ClsTopicId: str
-        :param _AddTime: 创建时间
+        :param _AddTime: <p>创建时间</p>
         :type AddTime: str
-        :param _ClsLogsetId: 日志集ID
+        :param _ClsLogsetId: <p>日志集ID</p>
         :type ClsLogsetId: str
-        :param _EventBusName: 事件集名称
+        :param _EventBusName: <p>事件集名称</p>
         :type EventBusName: str
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _Type: （已废弃）事件集类型
+        :param _Type: <p>事件集类型</p><p>枚举值：</p><ul><li>Cloud： 云服务事件集</li><li>Platform： 平台事件集</li><li>Custom： 自定义事件集</li></ul>
         :type Type: str
-        :param _PayMode: 计费模式
+        :param _PayMode: <p>计费模式</p>
         :type PayMode: str
-        :param _SaveDays: EB日志存储时长
+        :param _SaveDays: <p>EB日志存储时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SaveDays: int
-        :param _LogTopicId: EB日志主题ID
+        :param _LogTopicId: <p>EB日志主题ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogTopicId: str
-        :param _EnableStore: 是否开启存储
+        :param _EnableStore: <p>是否开启存储</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableStore: bool
-        :param _LinkMode: 消息序列，是否有序
+        :param _LinkMode: <p>消息序列，是否有序</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LinkMode: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2898,7 +2898,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def ModTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._ModTime
@@ -2909,7 +2909,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""事件集描述
+        r"""<p>事件集描述</p>
         :rtype: str
         """
         return self._Description
@@ -2920,7 +2920,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def ClsTopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._ClsTopicId
@@ -2931,7 +2931,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def AddTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._AddTime
@@ -2942,7 +2942,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def ClsLogsetId(self):
-        r"""日志集ID
+        r"""<p>日志集ID</p>
         :rtype: str
         """
         return self._ClsLogsetId
@@ -2953,7 +2953,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def EventBusName(self):
-        r"""事件集名称
+        r"""<p>事件集名称</p>
         :rtype: str
         """
         return self._EventBusName
@@ -2964,7 +2964,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -2975,7 +2975,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""（已废弃）事件集类型
+        r"""<p>事件集类型</p><p>枚举值：</p><ul><li>Cloud： 云服务事件集</li><li>Platform： 平台事件集</li><li>Custom： 自定义事件集</li></ul>
         :rtype: str
         """
         return self._Type
@@ -2986,7 +2986,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式
+        r"""<p>计费模式</p>
         :rtype: str
         """
         return self._PayMode
@@ -2997,7 +2997,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def SaveDays(self):
-        r"""EB日志存储时长
+        r"""<p>EB日志存储时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3009,7 +3009,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def LogTopicId(self):
-        r"""EB日志主题ID
+        r"""<p>EB日志主题ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3021,7 +3021,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def EnableStore(self):
-        r"""是否开启存储
+        r"""<p>是否开启存储</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -3033,7 +3033,7 @@ class GetEventBusResponse(AbstractModel):
 
     @property
     def LinkMode(self):
-        r"""消息序列，是否有序
+        r"""<p>消息序列，是否有序</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3079,14 +3079,14 @@ class GetPlatformEventTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventType: 平台产品事件类型
+        :param _EventType: <p>平台产品事件类型</p>
         :type EventType: str
         """
         self._EventType = None
 
     @property
     def EventType(self):
-        r"""平台产品事件类型
+        r"""<p>平台产品事件类型</p>
         :rtype: str
         """
         return self._EventType
@@ -3115,7 +3115,7 @@ class GetPlatformEventTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventTemplate: 平台产品事件模板
+        :param _EventTemplate: <p>平台产品事件模板</p>
         :type EventTemplate: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3125,7 +3125,7 @@ class GetPlatformEventTemplateResponse(AbstractModel):
 
     @property
     def EventTemplate(self):
-        r"""平台产品事件模板
+        r"""<p>平台产品事件模板</p>
         :rtype: str
         """
         return self._EventTemplate
@@ -3158,9 +3158,9 @@ class GetRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _RuleId: 事件规则ID
+        :param _RuleId: <p>事件规则ID</p>
         :type RuleId: str
         """
         self._EventBusId = None
@@ -3168,7 +3168,7 @@ class GetRuleRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -3179,7 +3179,7 @@ class GetRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""事件规则ID
+        r"""<p>事件规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -3209,23 +3209,23 @@ class GetRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusId: 事件集id
+        :param _EventBusId: <p>事件集id</p>
         :type EventBusId: str
-        :param _RuleId: 事件规则id
+        :param _RuleId: <p>事件规则id</p>
         :type RuleId: str
-        :param _RuleName: 事件规则名称
+        :param _RuleName: <p>事件规则名称</p>
         :type RuleName: str
-        :param _Status: 事件规则状态
+        :param _Status: <p>事件规则状态</p>
         :type Status: str
-        :param _Enable: 使能开关
+        :param _Enable: <p>使能开关</p>
         :type Enable: bool
-        :param _Description: 事件规则描述
+        :param _Description: <p>事件规则描述</p>
         :type Description: str
-        :param _EventPattern: 事件模式
+        :param _EventPattern: <p>事件模式</p>
         :type EventPattern: str
-        :param _AddTime: 创建时间
+        :param _AddTime: <p>创建时间</p>
         :type AddTime: str
-        :param _ModTime: 更新时间
+        :param _ModTime: <p>更新时间</p>
         :type ModTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3243,7 +3243,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集id
+        r"""<p>事件集id</p>
         :rtype: str
         """
         return self._EventBusId
@@ -3254,7 +3254,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""事件规则id
+        r"""<p>事件规则id</p>
         :rtype: str
         """
         return self._RuleId
@@ -3265,7 +3265,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""事件规则名称
+        r"""<p>事件规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -3276,7 +3276,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""事件规则状态
+        r"""<p>事件规则状态</p>
         :rtype: str
         """
         return self._Status
@@ -3287,7 +3287,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def Enable(self):
-        r"""使能开关
+        r"""<p>使能开关</p>
         :rtype: bool
         """
         return self._Enable
@@ -3298,7 +3298,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""事件规则描述
+        r"""<p>事件规则描述</p>
         :rtype: str
         """
         return self._Description
@@ -3309,7 +3309,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def EventPattern(self):
-        r"""事件模式
+        r"""<p>事件模式</p>
         :rtype: str
         """
         return self._EventPattern
@@ -3320,7 +3320,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def AddTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._AddTime
@@ -3331,7 +3331,7 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def ModTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._ModTime
@@ -4190,17 +4190,17 @@ class ListTargetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _RuleId: 事件规则ID
+        :param _RuleId: <p>事件规则ID</p>
         :type RuleId: str
-        :param _OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+        :param _OrderBy: <p>根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）</p>
         :type OrderBy: str
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，默认为0。
+        :param _Offset: <p>分页偏移量，默认为0。</p>
         :type Offset: int
-        :param _Order: 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+        :param _Order: <p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
         :type Order: str
         """
         self._EventBusId = None
@@ -4212,7 +4212,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -4223,7 +4223,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""事件规则ID
+        r"""<p>事件规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -4234,7 +4234,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+        r"""<p>根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）</p>
         :rtype: str
         """
         return self._OrderBy
@@ -4245,7 +4245,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -4256,7 +4256,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认为0。
+        r"""<p>分页偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -4267,7 +4267,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+        r"""<p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
         :rtype: str
         """
         return self._Order
@@ -4301,9 +4301,9 @@ class ListTargetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 目标总数
+        :param _TotalCount: <p>目标总数</p>
         :type TotalCount: int
-        :param _Targets: 目标信息
+        :param _Targets: <p>目标信息</p>
         :type Targets: list of Target
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4314,7 +4314,7 @@ class ListTargetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""目标总数
+        r"""<p>目标总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -4325,7 +4325,7 @@ class ListTargetsResponse(AbstractModel):
 
     @property
     def Targets(self):
-        r"""目标信息
+        r"""<p>目标信息</p>
         :rtype: list of Target
         """
         return self._Targets
@@ -4601,10 +4601,10 @@ class PlatformEventDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventName: 事件名称
+        :param _EventName: <p>事件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventName: str
-        :param _EventType: 事件类型
+        :param _EventType: <p>事件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventType: str
         """
@@ -4613,7 +4613,7 @@ class PlatformEventDetail(AbstractModel):
 
     @property
     def EventName(self):
-        r"""事件名称
+        r"""<p>事件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4625,7 +4625,7 @@ class PlatformEventDetail(AbstractModel):
 
     @property
     def EventType(self):
-        r"""事件类型
+        r"""<p>事件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4656,10 +4656,10 @@ class PlatformEventSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventName: 平台事件名称
+        :param _EventName: <p>平台事件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventName: str
-        :param _EventPattern: 平台事件匹配规则
+        :param _EventPattern: <p>平台事件匹配规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventPattern: str
         """
@@ -4668,7 +4668,7 @@ class PlatformEventSummary(AbstractModel):
 
     @property
     def EventName(self):
-        r"""平台事件名称
+        r"""<p>平台事件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4680,7 +4680,7 @@ class PlatformEventSummary(AbstractModel):
 
     @property
     def EventPattern(self):
-        r"""平台事件匹配规则
+        r"""<p>平台事件匹配规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4711,9 +4711,9 @@ class PlatformProduct(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductName: 平台产品名称
+        :param _ProductName: <p>平台产品名称</p>
         :type ProductName: str
-        :param _ProductType: 平台产品类型
+        :param _ProductType: <p>平台产品类型</p>
         :type ProductType: str
         """
         self._ProductName = None
@@ -4721,7 +4721,7 @@ class PlatformProduct(AbstractModel):
 
     @property
     def ProductName(self):
-        r"""平台产品名称
+        r"""<p>平台产品名称</p>
         :rtype: str
         """
         return self._ProductName
@@ -4732,7 +4732,7 @@ class PlatformProduct(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""平台产品类型
+        r"""<p>平台产品类型</p>
         :rtype: str
         """
         return self._ProductType
@@ -5235,21 +5235,21 @@ class SearchLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 起始时间unix 毫秒时间戳
+        :param _StartTime: <p>起始时间unix 毫秒时间戳</p>
         :type StartTime: int
-        :param _EndTime: 结束时间unix 毫秒时间戳
+        :param _EndTime: <p>结束时间unix 毫秒时间戳</p>
         :type EndTime: int
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _Page: 页码
+        :param _Page: <p>页码</p>
         :type Page: int
-        :param _Limit: 每页数据大小
+        :param _Limit: <p>每页数据大小</p>
         :type Limit: int
-        :param _Filter: 事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
+        :param _Filter: <p>事件查询筛选条件；示例如下：[{&quot;key&quot;:&quot;host&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;106.53.106.243&quot;},{&quot;type&quot;:&quot;AND&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;region&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>guangzhou</em>&quot;},{&quot;key&quot;:&quot;type&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;cvm:ErrorEvent:GuestReboot&quot;}]},{&quot;type&quot;:&quot;OR&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;field1&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>access</em>&quot;},{&quot;key&quot;:&quot;field2&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;custom&quot;}]}]</p>
         :type Filter: list of LogFilter
-        :param _OrderFields: 事件查询结果排序，["timestamp","subject"]
+        :param _OrderFields: <p>事件查询结果排序，[&quot;timestamp&quot;,&quot;subject&quot;]</p>
         :type OrderFields: list of str
-        :param _OrderBy: 排序方式，asc 从旧到新，desc 从新到旧
+        :param _OrderBy: <p>排序方式，asc 从旧到新，desc 从新到旧</p>
         :type OrderBy: str
         """
         self._StartTime = None
@@ -5263,7 +5263,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始时间unix 毫秒时间戳
+        r"""<p>起始时间unix 毫秒时间戳</p>
         :rtype: int
         """
         return self._StartTime
@@ -5274,7 +5274,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间unix 毫秒时间戳
+        r"""<p>结束时间unix 毫秒时间戳</p>
         :rtype: int
         """
         return self._EndTime
@@ -5285,7 +5285,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -5296,7 +5296,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""页码
+        r"""<p>页码</p>
         :rtype: int
         """
         return self._Page
@@ -5307,7 +5307,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页数据大小
+        r"""<p>每页数据大小</p>
         :rtype: int
         """
         return self._Limit
@@ -5318,7 +5318,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
+        r"""<p>事件查询筛选条件；示例如下：[{&quot;key&quot;:&quot;host&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;106.53.106.243&quot;},{&quot;type&quot;:&quot;AND&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;region&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>guangzhou</em>&quot;},{&quot;key&quot;:&quot;type&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;cvm:ErrorEvent:GuestReboot&quot;}]},{&quot;type&quot;:&quot;OR&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;field1&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>access</em>&quot;},{&quot;key&quot;:&quot;field2&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;custom&quot;}]}]</p>
         :rtype: list of LogFilter
         """
         return self._Filter
@@ -5329,7 +5329,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def OrderFields(self):
-        r"""事件查询结果排序，["timestamp","subject"]
+        r"""<p>事件查询结果排序，[&quot;timestamp&quot;,&quot;subject&quot;]</p>
         :rtype: list of str
         """
         return self._OrderFields
@@ -5340,7 +5340,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序方式，asc 从旧到新，desc 从新到旧
+        r"""<p>排序方式，asc 从旧到新，desc 从新到旧</p>
         :rtype: str
         """
         return self._OrderBy
@@ -5381,16 +5381,16 @@ class SearchLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 事件总数
+        :param _Total: <p>事件总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _Limit: 每页事件条数
+        :param _Limit: <p>每页事件条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
-        :param _Page: 页码
+        :param _Page: <p>页码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
-        :param _Results: 事件查询结果
+        :param _Results: <p>事件查询结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of SearchLogResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5404,7 +5404,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""事件总数
+        r"""<p>事件总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5416,7 +5416,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页事件条数
+        r"""<p>每页事件条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5428,7 +5428,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Page(self):
-        r"""页码
+        r"""<p>页码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5440,7 +5440,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Results(self):
-        r"""事件查询结果
+        r"""<p>事件查询结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SearchLogResult
         """
@@ -5482,28 +5482,28 @@ class SearchLogResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: 单条日志上报时间
+        :param _Timestamp: <p>单条日志上报时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
-        :param _Message: 日志内容详情
+        :param _Message: <p>日志内容详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param _Source: 事件来源
+        :param _Source: <p>事件来源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
-        :param _Type: 事件类型
+        :param _Type: <p>事件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _RuleIds: 事件匹配规则
+        :param _RuleIds: <p>事件匹配规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleIds: str
-        :param _Subject: 实例ID
+        :param _Subject: <p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Subject: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Status: 事件状态
+        :param _Status: <p>事件状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         """
@@ -5518,7 +5518,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""单条日志上报时间
+        r"""<p>单条日志上报时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5530,7 +5530,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""日志内容详情
+        r"""<p>日志内容详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5542,7 +5542,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Source(self):
-        r"""事件来源
+        r"""<p>事件来源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5554,7 +5554,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Type(self):
-        r"""事件类型
+        r"""<p>事件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5566,7 +5566,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def RuleIds(self):
-        r"""事件匹配规则
+        r"""<p>事件匹配规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5578,7 +5578,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Subject(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5590,7 +5590,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5602,7 +5602,7 @@ class SearchLogResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""事件状态
+        r"""<p>事件状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5639,10 +5639,10 @@ class TDMQParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterType: 集群类型
+        :param _ClusterType: <p>集群类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: str
-        :param _ClusterEndPoint: 集群支撑网接入点
+        :param _ClusterEndPoint: <p>集群支撑网接入点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterEndPoint: str
         """
@@ -5651,7 +5651,7 @@ class TDMQParams(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型
+        r"""<p>集群类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5663,7 +5663,7 @@ class TDMQParams(AbstractModel):
 
     @property
     def ClusterEndPoint(self):
-        r"""集群支撑网接入点
+        r"""<p>集群支撑网接入点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5745,23 +5745,23 @@ class Target(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 目标类型
+        :param _Type: <p>目标类型</p>
         :type Type: str
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _TargetId: 目标ID
+        :param _TargetId: <p>目标ID</p>
         :type TargetId: str
-        :param _TargetDescription: 目标描述
+        :param _TargetDescription: <p>目标描述</p>
         :type TargetDescription: :class:`tencentcloud.eb.v20210416.models.TargetDescription`
-        :param _RuleId: 事件规则ID
+        :param _RuleId: <p>事件规则ID</p>
         :type RuleId: str
-        :param _EnableBatchDelivery: 开启批量投递使能
+        :param _EnableBatchDelivery: <p>开启批量投递使能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableBatchDelivery: bool
-        :param _BatchTimeout: 批量投递最长等待时间
+        :param _BatchTimeout: <p>批量投递最长等待时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchTimeout: int
-        :param _BatchEventCount: 批量投递最大事件条数
+        :param _BatchEventCount: <p>批量投递最大事件条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchEventCount: int
         """
@@ -5776,7 +5776,7 @@ class Target(AbstractModel):
 
     @property
     def Type(self):
-        r"""目标类型
+        r"""<p>目标类型</p>
         :rtype: str
         """
         return self._Type
@@ -5787,7 +5787,7 @@ class Target(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -5798,7 +5798,7 @@ class Target(AbstractModel):
 
     @property
     def TargetId(self):
-        r"""目标ID
+        r"""<p>目标ID</p>
         :rtype: str
         """
         return self._TargetId
@@ -5809,7 +5809,7 @@ class Target(AbstractModel):
 
     @property
     def TargetDescription(self):
-        r"""目标描述
+        r"""<p>目标描述</p>
         :rtype: :class:`tencentcloud.eb.v20210416.models.TargetDescription`
         """
         return self._TargetDescription
@@ -5820,7 +5820,7 @@ class Target(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""事件规则ID
+        r"""<p>事件规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -5831,7 +5831,7 @@ class Target(AbstractModel):
 
     @property
     def EnableBatchDelivery(self):
-        r"""开启批量投递使能
+        r"""<p>开启批量投递使能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5843,7 +5843,7 @@ class Target(AbstractModel):
 
     @property
     def BatchTimeout(self):
-        r"""批量投递最长等待时间
+        r"""<p>批量投递最长等待时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5855,7 +5855,7 @@ class Target(AbstractModel):
 
     @property
     def BatchEventCount(self):
-        r"""批量投递最大事件条数
+        r"""<p>批量投递最大事件条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6330,17 +6330,17 @@ class UpdateEventBusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _Description: 事件集描述，不限字符类型，200字符描述以内
+        :param _Description: <p>事件集描述，不限字符类型，200字符描述以内</p>
         :type Description: str
-        :param _EventBusName: 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+        :param _EventBusName: <p>事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符</p>
         :type EventBusName: str
-        :param _SaveDays: EB日志存储时长
+        :param _SaveDays: <p>事件存储时长</p><p>单位：day</p>
         :type SaveDays: int
-        :param _LogTopicId: EB日志主题ID
+        :param _LogTopicId: <p>事件存储主题ID</p>
         :type LogTopicId: str
-        :param _EnableStore: 是否开启存储
+        :param _EnableStore: <p>是否开启存储</p>
         :type EnableStore: bool
         """
         self._EventBusId = None
@@ -6352,7 +6352,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -6363,7 +6363,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""事件集描述，不限字符类型，200字符描述以内
+        r"""<p>事件集描述，不限字符类型，200字符描述以内</p>
         :rtype: str
         """
         return self._Description
@@ -6374,7 +6374,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def EventBusName(self):
-        r"""事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+        r"""<p>事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符</p>
         :rtype: str
         """
         return self._EventBusName
@@ -6385,7 +6385,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def SaveDays(self):
-        r"""EB日志存储时长
+        r"""<p>事件存储时长</p><p>单位：day</p>
         :rtype: int
         """
         return self._SaveDays
@@ -6396,7 +6396,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def LogTopicId(self):
-        r"""EB日志主题ID
+        r"""<p>事件存储主题ID</p>
         :rtype: str
         """
         return self._LogTopicId
@@ -6407,7 +6407,7 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def EnableStore(self):
-        r"""是否开启存储
+        r"""<p>是否开启存储</p>
         :rtype: bool
         """
         return self._EnableStore

@@ -2123,7 +2123,9 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQMigratingTopicList(self, request):
-        r"""查询Topic迁移状态列表，源集群和目标集群客户端数量信息需要配合DescribeRocketMQSmoothMigrationTaskTopicInsNum接口查询
+        r"""历史接口，对应接口已迁移到trocket
+
+        查询Topic迁移状态列表，源集群和目标集群客户端数量信息需要配合DescribeRocketMQSmoothMigrationTaskTopicInsNum接口查询
 
         :param request: Request instance for DescribeRocketMQMigratingTopicList.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMigratingTopicListRequest`
@@ -2314,7 +2316,9 @@ class TdmqClient(AbstractClient):
 
 
     def DescribeRocketMQSmoothMigrationTask(self, request):
-        r"""用于获取RocketMQ平滑迁移任务详情
+        r"""历史接口，对应接口已迁移到trocket
+
+        用于获取RocketMQ平滑迁移任务详情
 
         :param request: Request instance for DescribeRocketMQSmoothMigrationTask.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSmoothMigrationTaskRequest`
@@ -2713,7 +2717,9 @@ class TdmqClient(AbstractClient):
 
 
     def ImportRocketMQConsumerGroups(self, request):
-        r"""输入迁移任务id和要导入的Group，导入后台
+        r"""历史接口，对应接口已迁移到trocket
+
+        输入迁移任务id和要导入的Group，导入后台
 
         :param request: Request instance for ImportRocketMQConsumerGroups.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ImportRocketMQConsumerGroupsRequest`
@@ -2736,7 +2742,9 @@ class TdmqClient(AbstractClient):
 
 
     def ImportRocketMQTopics(self, request):
-        r"""导入topic列表
+        r"""历史接口，对应接口已迁移到trocket
+
+        导入topic列表
 
         :param request: Request instance for ImportRocketMQTopics.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ImportRocketMQTopicsRequest`

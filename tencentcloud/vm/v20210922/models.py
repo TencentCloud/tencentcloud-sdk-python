@@ -1165,6 +1165,42 @@ class CreateVideoModerationTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DecodeParams(AbstractModel):
+    r"""视频解码参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageFrequency: <p>视频截帧参数</p><p>取值范围：[0, 30]</p>
+        :type ImageFrequency: int
+        """
+        self._ImageFrequency = None
+
+    @property
+    def ImageFrequency(self):
+        r"""<p>视频截帧参数</p><p>取值范围：[0, 30]</p>
+        :rtype: int
+        """
+        return self._ImageFrequency
+
+    @ImageFrequency.setter
+    def ImageFrequency(self, ImageFrequency):
+        self._ImageFrequency = ImageFrequency
+
+
+    def _deserialize(self, params):
+        self._ImageFrequency = params.get("ImageFrequency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeTaskDetailRequest(AbstractModel):
     r"""DescribeTaskDetail请求参数结构体
 
@@ -2610,12 +2646,15 @@ class InputInfo(AbstractModel):
         :type ImageUrlList: list of str
         :param _TextContent: <p>大模型审核场景下，base64编码的审核要求内容</p>
         :type TextContent: str
+        :param _Title: <p>文章标题</p>
+        :type Title: str
         """
         self._Type = None
         self._Url = None
         self._BucketInfo = None
         self._ImageUrlList = None
         self._TextContent = None
+        self._Title = None
 
     @property
     def Type(self):
@@ -2673,6 +2712,17 @@ class InputInfo(AbstractModel):
     def TextContent(self, TextContent):
         self._TextContent = TextContent
 
+    @property
+    def Title(self):
+        r"""<p>文章标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2680,6 +2730,7 @@ class InputInfo(AbstractModel):
         self._BucketInfo = params.get("BucketInfo")
         self._ImageUrlList = params.get("ImageUrlList")
         self._TextContent = params.get("TextContent")
+        self._Title = params.get("Title")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3367,12 +3418,15 @@ class StorageInfo(AbstractModel):
         :type ImageUrlList: list of str
         :param _TextContent: <p>大模型审核场景下，base64编码的审核要求内容</p>
         :type TextContent: str
+        :param _Title: <p>文章标题</p>
+        :type Title: str
         """
         self._Type = None
         self._Url = None
         self._BucketInfo = None
         self._ImageUrlList = None
         self._TextContent = None
+        self._Title = None
 
     @property
     def Type(self):
@@ -3429,6 +3483,17 @@ class StorageInfo(AbstractModel):
     def TextContent(self, TextContent):
         self._TextContent = TextContent
 
+    @property
+    def Title(self):
+        r"""<p>文章标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -3438,6 +3503,7 @@ class StorageInfo(AbstractModel):
             self._BucketInfo._deserialize(params.get("BucketInfo"))
         self._ImageUrlList = params.get("ImageUrlList")
         self._TextContent = params.get("TextContent")
+        self._Title = params.get("Title")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3831,20 +3897,23 @@ class TaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataId: 数据ID
+        :param _DataId: <p>数据ID</p>
         :type DataId: str
-        :param _Name: 任务名
+        :param _Name: <p>任务名</p>
         :type Name: str
-        :param _Input: 任务输入
+        :param _Input: <p>任务输入</p>
         :type Input: :class:`tencentcloud.vm.v20210922.models.StorageInfo`
+        :param _DecodeParams: <p>视频解码参数</p>
+        :type DecodeParams: :class:`tencentcloud.vm.v20210922.models.DecodeParams`
         """
         self._DataId = None
         self._Name = None
         self._Input = None
+        self._DecodeParams = None
 
     @property
     def DataId(self):
-        r"""数据ID
+        r"""<p>数据ID</p>
         :rtype: str
         """
         return self._DataId
@@ -3855,7 +3924,7 @@ class TaskInput(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名
+        r"""<p>任务名</p>
         :rtype: str
         """
         return self._Name
@@ -3866,7 +3935,7 @@ class TaskInput(AbstractModel):
 
     @property
     def Input(self):
-        r"""任务输入
+        r"""<p>任务输入</p>
         :rtype: :class:`tencentcloud.vm.v20210922.models.StorageInfo`
         """
         return self._Input
@@ -3875,6 +3944,17 @@ class TaskInput(AbstractModel):
     def Input(self, Input):
         self._Input = Input
 
+    @property
+    def DecodeParams(self):
+        r"""<p>视频解码参数</p>
+        :rtype: :class:`tencentcloud.vm.v20210922.models.DecodeParams`
+        """
+        return self._DecodeParams
+
+    @DecodeParams.setter
+    def DecodeParams(self, DecodeParams):
+        self._DecodeParams = DecodeParams
+
 
     def _deserialize(self, params):
         self._DataId = params.get("DataId")
@@ -3882,6 +3962,9 @@ class TaskInput(AbstractModel):
         if params.get("Input") is not None:
             self._Input = StorageInfo()
             self._Input._deserialize(params.get("Input"))
+        if params.get("DecodeParams") is not None:
+            self._DecodeParams = DecodeParams()
+            self._DecodeParams._deserialize(params.get("DecodeParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -12770,6 +12770,155 @@ class DescribeLogsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNDRAssetIdentificationCursorListRequest(AbstractModel):
+    r"""DescribeNDRAssetIdentificationCursorList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>每页条数</p>
+        :type Limit: int
+        :param _Cursor: <p>分页游标</p><p>前一页返回的NextCursor</p>
+        :type Cursor: str
+        :param _Filters: <p>查询过滤条件，多个条件之间为AND的关系</p>
+        :type Filters: list of OperatorFilter
+        """
+        self._Limit = None
+        self._Cursor = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""<p>每页条数</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Cursor(self):
+        r"""<p>分页游标</p><p>前一页返回的NextCursor</p>
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def Filters(self):
+        r"""<p>查询过滤条件，多个条件之间为AND的关系</p>
+        :rtype: list of OperatorFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Cursor = params.get("Cursor")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = OperatorFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNDRAssetIdentificationCursorListResponse(AbstractModel):
+    r"""DescribeNDRAssetIdentificationCursorList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>查询结果列表</p>
+        :type Data: list of NDRAssetServiceInfo
+        :param _NextCursor: <p>下一页游标</p>
+        :type NextCursor: str
+        :param _HasMore: <p>是否存在更多数据</p>
+        :type HasMore: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._NextCursor = None
+        self._HasMore = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>查询结果列表</p>
+        :rtype: list of NDRAssetServiceInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def NextCursor(self):
+        r"""<p>下一页游标</p>
+        :rtype: str
+        """
+        return self._NextCursor
+
+    @NextCursor.setter
+    def NextCursor(self, NextCursor):
+        self._NextCursor = NextCursor
+
+    @property
+    def HasMore(self):
+        r"""<p>是否存在更多数据</p>
+        :rtype: bool
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = NDRAssetServiceInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._NextCursor = params.get("NextCursor")
+        self._HasMore = params.get("HasMore")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNDRAssetIdentificationListRequest(AbstractModel):
     r"""DescribeNDRAssetIdentificationList请求参数结构体
 

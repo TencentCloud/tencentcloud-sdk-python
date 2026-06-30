@@ -89,6 +89,9 @@ INTERNALERROR_LOCKERROR = 'InternalError.LockError'
 # 用户余额不足。
 INTERNALERROR_NOTENOUGHMONEYERROR = 'InternalError.NotEnoughMoneyError'
 
+# 解析binlog失败
+INTERNALERROR_PARSEBINLOGERROR = 'InternalError.ParseBinlogError'
+
 # 通信协议错误。
 INTERNALERROR_PROTOCOLERROR = 'InternalError.ProtocolError'
 

@@ -43,6 +43,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddVulIgnoreRule(
+            self,
+            request: models.AddVulIgnoreRuleRequest,
+            opts: Dict = None,
+    ) -> models.AddVulIgnoreRuleResponse:
+        """
+        添加漏洞忽略规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddVulIgnoreRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddVulIgnoreRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ChangeRuleEventsIgnoreStatus(
             self,
             request: models.ChangeRuleEventsIgnoreStatusRequest,

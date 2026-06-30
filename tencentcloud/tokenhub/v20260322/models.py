@@ -3333,25 +3333,21 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Dimension: 统计维度。取值：apikey（按 APIKey 统计）、endpoint（按接入点统计）、model（按模型统计）。
+        :param _Dimension: <p>统计维度。取值：apikey（按 APIKey 统计）、endpoint（按接入点统计）、model（按模型统计）。</p>
         :type Dimension: str
-        :param _StartTime: 起始时间（闭区间），RFC3339 格式。
+        :param _StartTime: <p>起始时间（闭区间），RFC3339 格式。</p>
         :type StartTime: str
-        :param _EndTime: 结束时间（开区间），RFC3339 格式。与 StartTime 的跨度最大 90 天。
+        :param _EndTime: <p>结束时间（开区间），RFC3339 格式。与 StartTime 的跨度最大 90 天。</p>
         :type EndTime: str
-        :param _MetricType: 指标族切换字段。本期支持 tokens（累计 Token 用量，statistics=sum）；传其他值将返回 InvalidParameter。空字符串或不传时默认 tokens。接口预留 MetricType 字段以支持后续指标族扩展。
+        :param _MetricType: <p>指标族切换字段。</p><ul><li>tokens（默认）：Token 消耗图（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search【待上线】：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>其他值返回 InvalidParameter。</li></ul><p>枚举值：</p><ul><li>tokens： tokens</li></ul>
         :type MetricType: str
-        :param _Target: 维度过滤值。空字符串表示查询全部对象，非空时仅查询指定单个对象（如指定 APIKey ID）。最大 256 字符。
+        :param _Target: <p>维度过滤值。空字符串表示查询全部对象，非空时仅查询指定单个对象（如指定 APIKey ID）。最大 256 字符。</p>
         :type Target: str
-        :param _Period: 统计粒度（秒）。取值：60、300、3600、86400。必须不小于跨度对应下限：跨度 ≤ 1 天 → 60；1 ~ 5 天 → 300；5 ~ 10 天 → 3600；> 10 天 → 86400。仅 ShowAll=false 时使用。
+        :param _Period: <p>统计粒度（秒）。取值：60、300、3600、86400。必须不小于跨度对应下限：跨度 ≤ 1 天 → 60；1 ~ 5 天 → 300；5 ~ 10 天 → 3600；&gt; 10 天 → 86400。仅 ShowAll=false 时使用。</p>
         :type Period: int
-        :param _Offset: 翻页起点，从 0 起，默认 0。ShowAll=true 时忽略。页大小固定为 10。
+        :param _Offset: <p>翻页起点，从 0 起，默认 0。ShowAll=true 时忽略。页大小固定为 10。</p>
         :type Offset: int
-        :param _ShowAll: 是否返回全量结果。
-- false（默认）：按 Offset 分页返回 TopList（每页 10 条），每个对象包含
-  Series 时序点用于绘制曲线。
-- true：忽略 Offset，返回全量对象列表，不返回 Series（CSV 导出场景）。
-
+        :param _ShowAll: <p>是否返回全量结果。</p><ul><li>false（默认）：按 Offset 分页返回 TopList（每页 10 条），每个对象包含<br>Series 时序点用于绘制曲线。</li><li>true：忽略 Offset，返回全量对象列表，不返回 Series（CSV 导出场景）。</li></ul>
         :type ShowAll: bool
         """
         self._Dimension = None
@@ -3365,7 +3361,7 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        r"""统计维度。取值：apikey（按 APIKey 统计）、endpoint（按接入点统计）、model（按模型统计）。
+        r"""<p>统计维度。取值：apikey（按 APIKey 统计）、endpoint（按接入点统计）、model（按模型统计）。</p>
         :rtype: str
         """
         return self._Dimension
@@ -3376,7 +3372,7 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始时间（闭区间），RFC3339 格式。
+        r"""<p>起始时间（闭区间），RFC3339 格式。</p>
         :rtype: str
         """
         return self._StartTime
@@ -3387,7 +3383,7 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（开区间），RFC3339 格式。与 StartTime 的跨度最大 90 天。
+        r"""<p>结束时间（开区间），RFC3339 格式。与 StartTime 的跨度最大 90 天。</p>
         :rtype: str
         """
         return self._EndTime
@@ -3398,7 +3394,7 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     @property
     def MetricType(self):
-        r"""指标族切换字段。本期支持 tokens（累计 Token 用量，statistics=sum）；传其他值将返回 InvalidParameter。空字符串或不传时默认 tokens。接口预留 MetricType 字段以支持后续指标族扩展。
+        r"""<p>指标族切换字段。</p><ul><li>tokens（默认）：Token 消耗图（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search【待上线】：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>其他值返回 InvalidParameter。</li></ul><p>枚举值：</p><ul><li>tokens： tokens</li></ul>
         :rtype: str
         """
         return self._MetricType
@@ -3409,7 +3405,7 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     @property
     def Target(self):
-        r"""维度过滤值。空字符串表示查询全部对象，非空时仅查询指定单个对象（如指定 APIKey ID）。最大 256 字符。
+        r"""<p>维度过滤值。空字符串表示查询全部对象，非空时仅查询指定单个对象（如指定 APIKey ID）。最大 256 字符。</p>
         :rtype: str
         """
         return self._Target
@@ -3420,7 +3416,7 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""统计粒度（秒）。取值：60、300、3600、86400。必须不小于跨度对应下限：跨度 ≤ 1 天 → 60；1 ~ 5 天 → 300；5 ~ 10 天 → 3600；> 10 天 → 86400。仅 ShowAll=false 时使用。
+        r"""<p>统计粒度（秒）。取值：60、300、3600、86400。必须不小于跨度对应下限：跨度 ≤ 1 天 → 60；1 ~ 5 天 → 300；5 ~ 10 天 → 3600；&gt; 10 天 → 86400。仅 ShowAll=false 时使用。</p>
         :rtype: int
         """
         return self._Period
@@ -3431,7 +3427,7 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""翻页起点，从 0 起，默认 0。ShowAll=true 时忽略。页大小固定为 10。
+        r"""<p>翻页起点，从 0 起，默认 0。ShowAll=true 时忽略。页大小固定为 10。</p>
         :rtype: int
         """
         return self._Offset
@@ -3442,11 +3438,7 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     @property
     def ShowAll(self):
-        r"""是否返回全量结果。
-- false（默认）：按 Offset 分页返回 TopList（每页 10 条），每个对象包含
-  Series 时序点用于绘制曲线。
-- true：忽略 Offset，返回全量对象列表，不返回 Series（CSV 导出场景）。
-
+        r"""<p>是否返回全量结果。</p><ul><li>false（默认）：按 Offset 分页返回 TopList（每页 10 条），每个对象包含<br>Series 时序点用于绘制曲线。</li><li>true：忽略 Offset，返回全量对象列表，不返回 Series（CSV 导出场景）。</li></ul>
         :rtype: bool
         """
         return self._ShowAll
@@ -3482,33 +3474,33 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Dimension: 回填请求的统计维度。
+        :param _Dimension: <p>回填请求的统计维度。</p>
         :type Dimension: str
-        :param _MetricType: 回填请求的指标族（本期固定为 tokens）。前端按本字段切换图表渲染逻辑。
+        :param _MetricType: <p>回填请求的指标族：tokens / search 。</p>
         :type MetricType: str
-        :param _MetricKeys: 本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，顺序固定为 [Total, Input, Output]。本期为 [TotalToken, InputTotalToken, OutputTotalToken]。前端可遍历此列表渲染图表，无需硬编码 key 名。
+        :param _MetricKeys: <p>本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，按MetricType 区分：tokens=[Total,Input,Output,Cache]、search=[SearchRequestCount,SearchCount]</p>
         :type MetricKeys: list of str
-        :param _ViewName: 视图（数据来源）
+        :param _ViewName: <p>视图（数据来源）</p>
         :type ViewName: str
-        :param _Period: 回填请求的统计粒度（秒）。ShowAll=true 时为 0。
+        :param _Period: <p>回填请求的统计粒度（秒）。ShowAll=true 时为 0。</p>
         :type Period: int
-        :param _StartTime: 回填请求的起始时间。
+        :param _StartTime: <p>回填请求的起始时间。</p>
         :type StartTime: str
-        :param _EndTime: 回填请求的结束时间。
+        :param _EndTime: <p>回填请求的结束时间。</p>
         :type EndTime: str
-        :param _Total: 全量对象数。
+        :param _Total: <p>全量对象数。</p>
         :type Total: int
-        :param _Offset: 回填请求的翻页起点。ShowAll=true 时为 0。
+        :param _Offset: <p>回填请求的翻页起点。ShowAll=true 时为 0。</p>
         :type Offset: int
-        :param _Limit: 页大小，恒为 10。ShowAll=true 时为 Total。
+        :param _Limit: <p>页大小，恒为 10。ShowAll=true 时为 Total。</p>
         :type Limit: int
-        :param _Timestamps: Series 数组对应的时间戳序列（Unix 秒）。ShowAll=true 时为空数组。
+        :param _Timestamps: <p>Series 数组对应的时间戳序列（Unix 秒）。ShowAll=true 时为空数组。</p>
         :type Timestamps: list of int
-        :param _TopList: 对象排行列表，按主指标（`MetricKeys[0]`，本期为 TotalToken）降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。
+        :param _TopList: <p>对象排行列表，按<code>MetricKeys[0]</code>降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。</p>
         :type TopList: list of UsageRankItem
-        :param _PageStats: 分页统计结果
+        :param _PageStats: <p>分页统计结果</p>
         :type PageStats: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
-        :param _TotalStats: 总统计结果
+        :param _TotalStats: <p>总统计结果</p>
         :type TotalStats: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3531,7 +3523,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def Dimension(self):
-        r"""回填请求的统计维度。
+        r"""<p>回填请求的统计维度。</p>
         :rtype: str
         """
         return self._Dimension
@@ -3542,7 +3534,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def MetricType(self):
-        r"""回填请求的指标族（本期固定为 tokens）。前端按本字段切换图表渲染逻辑。
+        r"""<p>回填请求的指标族：tokens / search 。</p>
         :rtype: str
         """
         return self._MetricType
@@ -3553,7 +3545,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def MetricKeys(self):
-        r"""本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，顺序固定为 [Total, Input, Output]。本期为 [TotalToken, InputTotalToken, OutputTotalToken]。前端可遍历此列表渲染图表，无需硬编码 key 名。
+        r"""<p>本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，按MetricType 区分：tokens=[Total,Input,Output,Cache]、search=[SearchRequestCount,SearchCount]</p>
         :rtype: list of str
         """
         return self._MetricKeys
@@ -3564,7 +3556,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def ViewName(self):
-        r"""视图（数据来源）
+        r"""<p>视图（数据来源）</p>
         :rtype: str
         """
         return self._ViewName
@@ -3575,7 +3567,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def Period(self):
-        r"""回填请求的统计粒度（秒）。ShowAll=true 时为 0。
+        r"""<p>回填请求的统计粒度（秒）。ShowAll=true 时为 0。</p>
         :rtype: int
         """
         return self._Period
@@ -3586,7 +3578,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""回填请求的起始时间。
+        r"""<p>回填请求的起始时间。</p>
         :rtype: str
         """
         return self._StartTime
@@ -3597,7 +3589,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""回填请求的结束时间。
+        r"""<p>回填请求的结束时间。</p>
         :rtype: str
         """
         return self._EndTime
@@ -3608,7 +3600,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""全量对象数。
+        r"""<p>全量对象数。</p>
         :rtype: int
         """
         return self._Total
@@ -3619,7 +3611,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""回填请求的翻页起点。ShowAll=true 时为 0。
+        r"""<p>回填请求的翻页起点。ShowAll=true 时为 0。</p>
         :rtype: int
         """
         return self._Offset
@@ -3630,7 +3622,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""页大小，恒为 10。ShowAll=true 时为 Total。
+        r"""<p>页大小，恒为 10。ShowAll=true 时为 Total。</p>
         :rtype: int
         """
         return self._Limit
@@ -3641,7 +3633,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def Timestamps(self):
-        r"""Series 数组对应的时间戳序列（Unix 秒）。ShowAll=true 时为空数组。
+        r"""<p>Series 数组对应的时间戳序列（Unix 秒）。ShowAll=true 时为空数组。</p>
         :rtype: list of int
         """
         return self._Timestamps
@@ -3652,7 +3644,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def TopList(self):
-        r"""对象排行列表，按主指标（`MetricKeys[0]`，本期为 TotalToken）降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。
+        r"""<p>对象排行列表，按<code>MetricKeys[0]</code>降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。</p>
         :rtype: list of UsageRankItem
         """
         return self._TopList
@@ -3663,7 +3655,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def PageStats(self):
-        r"""分页统计结果
+        r"""<p>分页统计结果</p>
         :rtype: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
         """
         return self._PageStats
@@ -3674,7 +3666,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def TotalStats(self):
-        r"""总统计结果
+        r"""<p>总统计结果</p>
         :rtype: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
         """
         return self._TotalStats
@@ -6486,20 +6478,29 @@ class UsageSeries(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalToken: 总 token 数用量时间周期内的 JSON 字符串形式，如 `"[12,null,15]"`。
+        :param _TotalToken: <p>[tokens 族]总 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
         :type TotalToken: str
-        :param _InputTotalToken: 输入 token 数用量时间周期内的 JSON 字符串形式，如 `"[7,null,9]"`。
+        :param _InputTotalToken: <p>[tokens 族]输入 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[7,null,9]&quot;</code>。</p>
         :type InputTotalToken: str
-        :param _OutputTotalToken: 输出 token 数用量时间周期内的 JSON 字符串形式，如 `"[5,null,6]"`。
+        :param _OutputTotalToken: <p>[tokens 族]输出 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[5,null,6]&quot;</code>。</p>
         :type OutputTotalToken: str
+        :param _CacheTotalToken: <p>[tokens 族]读缓存 token 数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
+        :type CacheTotalToken: str
+        :param _SearchRequestCount: <p>[search 族] 搜索请求数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
+        :type SearchRequestCount: str
+        :param _SearchCount: <p>[search 族] 搜索引擎调用次数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
+        :type SearchCount: str
         """
         self._TotalToken = None
         self._InputTotalToken = None
         self._OutputTotalToken = None
+        self._CacheTotalToken = None
+        self._SearchRequestCount = None
+        self._SearchCount = None
 
     @property
     def TotalToken(self):
-        r"""总 token 数用量时间周期内的 JSON 字符串形式，如 `"[12,null,15]"`。
+        r"""<p>[tokens 族]总 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
         :rtype: str
         """
         return self._TotalToken
@@ -6510,7 +6511,7 @@ class UsageSeries(AbstractModel):
 
     @property
     def InputTotalToken(self):
-        r"""输入 token 数用量时间周期内的 JSON 字符串形式，如 `"[7,null,9]"`。
+        r"""<p>[tokens 族]输入 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[7,null,9]&quot;</code>。</p>
         :rtype: str
         """
         return self._InputTotalToken
@@ -6521,7 +6522,7 @@ class UsageSeries(AbstractModel):
 
     @property
     def OutputTotalToken(self):
-        r"""输出 token 数用量时间周期内的 JSON 字符串形式，如 `"[5,null,6]"`。
+        r"""<p>[tokens 族]输出 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[5,null,6]&quot;</code>。</p>
         :rtype: str
         """
         return self._OutputTotalToken
@@ -6530,11 +6531,47 @@ class UsageSeries(AbstractModel):
     def OutputTotalToken(self, OutputTotalToken):
         self._OutputTotalToken = OutputTotalToken
 
+    @property
+    def CacheTotalToken(self):
+        r"""<p>[tokens 族]读缓存 token 数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
+        :rtype: str
+        """
+        return self._CacheTotalToken
+
+    @CacheTotalToken.setter
+    def CacheTotalToken(self, CacheTotalToken):
+        self._CacheTotalToken = CacheTotalToken
+
+    @property
+    def SearchRequestCount(self):
+        r"""<p>[search 族] 搜索请求数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
+        :rtype: str
+        """
+        return self._SearchRequestCount
+
+    @SearchRequestCount.setter
+    def SearchRequestCount(self, SearchRequestCount):
+        self._SearchRequestCount = SearchRequestCount
+
+    @property
+    def SearchCount(self):
+        r"""<p>[search 族] 搜索引擎调用次数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
+        :rtype: str
+        """
+        return self._SearchCount
+
+    @SearchCount.setter
+    def SearchCount(self, SearchCount):
+        self._SearchCount = SearchCount
+
 
     def _deserialize(self, params):
         self._TotalToken = params.get("TotalToken")
         self._InputTotalToken = params.get("InputTotalToken")
         self._OutputTotalToken = params.get("OutputTotalToken")
+        self._CacheTotalToken = params.get("CacheTotalToken")
+        self._SearchRequestCount = params.get("SearchRequestCount")
+        self._SearchCount = params.get("SearchCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6546,26 +6583,35 @@ class UsageSeries(AbstractModel):
 
 
 class UsageStats(AbstractModel):
-    r"""时间周期内的统计聚合值（按 metric key 索引）。本期返回 tokens 族（statistics=sum）的累计 Token 用量；具体包含哪些 key、顺序如何，参见响应顶层 `MetricKeys` 字段。接口预留 MetricType 字段以支持后续指标族扩展，本期仅支持 tokens。
+    r"""时间周期内的统计聚合值（按 metric key 索引）。声明 tokens / search 两族字段都在本 schema 中，按 MetricKeys 实际返回取值，参见响应顶层 `MetricKeys` 字段。
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalToken: 时间周期内的累计总 token 数。
+        :param _TotalToken: <p>[tokens 族] 时间周期内的累计总 token 数。</p>
         :type TotalToken: int
-        :param _InputTotalToken: 时间周期内的累计输入 token 数。
+        :param _InputTotalToken: <p>[tokens 族] 时间周期内的累计输入 token 数。</p>
         :type InputTotalToken: int
-        :param _OutputTotalToken: 时间周期内的累计输出 token 数。
+        :param _OutputTotalToken: <p>[tokens 族] 时间周期内的累计输出 token 数。</p>
         :type OutputTotalToken: int
+        :param _CacheTotalToken: <p>[tokens 族] 时间周期内的累计读缓存 token 数（命中缓存部分）</p>
+        :type CacheTotalToken: int
+        :param _SearchRequestCount: <p>[search 族] 整段累计联网搜索请求数</p>
+        :type SearchRequestCount: int
+        :param _SearchCount: <p>[search 族] 整段累计搜索引擎调用次数</p>
+        :type SearchCount: int
         """
         self._TotalToken = None
         self._InputTotalToken = None
         self._OutputTotalToken = None
+        self._CacheTotalToken = None
+        self._SearchRequestCount = None
+        self._SearchCount = None
 
     @property
     def TotalToken(self):
-        r"""时间周期内的累计总 token 数。
+        r"""<p>[tokens 族] 时间周期内的累计总 token 数。</p>
         :rtype: int
         """
         return self._TotalToken
@@ -6576,7 +6622,7 @@ class UsageStats(AbstractModel):
 
     @property
     def InputTotalToken(self):
-        r"""时间周期内的累计输入 token 数。
+        r"""<p>[tokens 族] 时间周期内的累计输入 token 数。</p>
         :rtype: int
         """
         return self._InputTotalToken
@@ -6587,7 +6633,7 @@ class UsageStats(AbstractModel):
 
     @property
     def OutputTotalToken(self):
-        r"""时间周期内的累计输出 token 数。
+        r"""<p>[tokens 族] 时间周期内的累计输出 token 数。</p>
         :rtype: int
         """
         return self._OutputTotalToken
@@ -6596,11 +6642,47 @@ class UsageStats(AbstractModel):
     def OutputTotalToken(self, OutputTotalToken):
         self._OutputTotalToken = OutputTotalToken
 
+    @property
+    def CacheTotalToken(self):
+        r"""<p>[tokens 族] 时间周期内的累计读缓存 token 数（命中缓存部分）</p>
+        :rtype: int
+        """
+        return self._CacheTotalToken
+
+    @CacheTotalToken.setter
+    def CacheTotalToken(self, CacheTotalToken):
+        self._CacheTotalToken = CacheTotalToken
+
+    @property
+    def SearchRequestCount(self):
+        r"""<p>[search 族] 整段累计联网搜索请求数</p>
+        :rtype: int
+        """
+        return self._SearchRequestCount
+
+    @SearchRequestCount.setter
+    def SearchRequestCount(self, SearchRequestCount):
+        self._SearchRequestCount = SearchRequestCount
+
+    @property
+    def SearchCount(self):
+        r"""<p>[search 族] 整段累计搜索引擎调用次数</p>
+        :rtype: int
+        """
+        return self._SearchCount
+
+    @SearchCount.setter
+    def SearchCount(self, SearchCount):
+        self._SearchCount = SearchCount
+
 
     def _deserialize(self, params):
         self._TotalToken = params.get("TotalToken")
         self._InputTotalToken = params.get("InputTotalToken")
         self._OutputTotalToken = params.get("OutputTotalToken")
+        self._CacheTotalToken = params.get("CacheTotalToken")
+        self._SearchRequestCount = params.get("SearchRequestCount")
+        self._SearchCount = params.get("SearchCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

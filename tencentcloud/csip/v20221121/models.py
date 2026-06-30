@@ -24620,6 +24620,616 @@ class DescribeCFWAssetStatisticsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCLSLogIndexV3Request(AbstractModel):
+    r"""DescribeCLSLogIndexV3请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of LogCLSFilter
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Limit: <p>limit限制</p>
+        :type Limit: int
+        :param _Offset: <p>offset</p>
+        :type Offset: int
+        """
+        self._Filters = None
+        self._MemberId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of LogCLSFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Limit(self):
+        r"""<p>limit限制</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>offset</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = LogCLSFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._MemberId = params.get("MemberId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCLSLogIndexV3Response(AbstractModel):
+    r"""DescribeCLSLogIndexV3返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicIndexInfos: <p>主题信息</p>
+        :type TopicIndexInfos: list of LogTopicIndexInfo
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TopicIndexInfos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TopicIndexInfos(self):
+        r"""<p>主题信息</p>
+        :rtype: list of LogTopicIndexInfo
+        """
+        return self._TopicIndexInfos
+
+    @TopicIndexInfos.setter
+    def TopicIndexInfos(self, TopicIndexInfos):
+        self._TopicIndexInfos = TopicIndexInfos
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TopicIndexInfos") is not None:
+            self._TopicIndexInfos = []
+            for item in params.get("TopicIndexInfos"):
+                obj = LogTopicIndexInfo()
+                obj._deserialize(item)
+                self._TopicIndexInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCLSLogListV3Request(AbstractModel):
+    r"""DescribeCLSLogListV3请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _From: <p>开始时间</p>
+        :type From: int
+        :param _To: <p>结束时间</p>
+        :type To: int
+        :param _Query: <p>查询条件</p>
+        :type Query: str
+        :param _SyntaxRule: <p>语法</p>
+        :type SyntaxRule: int
+        :param _Topics: <p>主题</p>
+        :type Topics: list of LogContextInfo
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Sort: <p>排序</p>
+        :type Sort: str
+        :param _Limit: <p>limit</p>
+        :type Limit: int
+        :param _Offset: <p>offset</p>
+        :type Offset: int
+        :param _SamplingRate: <p>采样</p>
+        :type SamplingRate: float
+        :param _HighLight: <p>是否高亮</p>
+        :type HighLight: bool
+        :param _UseNewAnalysis: <p>是否采用新分析</p>
+        :type UseNewAnalysis: bool
+        :param _QueryOptimize: <p>查询优化</p>
+        :type QueryOptimize: int
+        :param _TopicId: <p>主题id</p>
+        :type TopicId: str
+        :param _Context: <p>上下文信息</p>
+        :type Context: str
+        :param _SubQueryTypes: <p>查询类型</p>
+        :type SubQueryTypes: list of str
+        """
+        self._From = None
+        self._To = None
+        self._Query = None
+        self._SyntaxRule = None
+        self._Topics = None
+        self._MemberId = None
+        self._Sort = None
+        self._Limit = None
+        self._Offset = None
+        self._SamplingRate = None
+        self._HighLight = None
+        self._UseNewAnalysis = None
+        self._QueryOptimize = None
+        self._TopicId = None
+        self._Context = None
+        self._SubQueryTypes = None
+
+    @property
+    def From(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
+    @property
+    def Query(self):
+        r"""<p>查询条件</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SyntaxRule(self):
+        r"""<p>语法</p>
+        :rtype: int
+        """
+        return self._SyntaxRule
+
+    @SyntaxRule.setter
+    def SyntaxRule(self, SyntaxRule):
+        self._SyntaxRule = SyntaxRule
+
+    @property
+    def Topics(self):
+        r"""<p>主题</p>
+        :rtype: list of LogContextInfo
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Sort(self):
+        r"""<p>排序</p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Limit(self):
+        r"""<p>limit</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>offset</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SamplingRate(self):
+        r"""<p>采样</p>
+        :rtype: float
+        """
+        return self._SamplingRate
+
+    @SamplingRate.setter
+    def SamplingRate(self, SamplingRate):
+        self._SamplingRate = SamplingRate
+
+    @property
+    def HighLight(self):
+        r"""<p>是否高亮</p>
+        :rtype: bool
+        """
+        return self._HighLight
+
+    @HighLight.setter
+    def HighLight(self, HighLight):
+        self._HighLight = HighLight
+
+    @property
+    def UseNewAnalysis(self):
+        r"""<p>是否采用新分析</p>
+        :rtype: bool
+        """
+        return self._UseNewAnalysis
+
+    @UseNewAnalysis.setter
+    def UseNewAnalysis(self, UseNewAnalysis):
+        self._UseNewAnalysis = UseNewAnalysis
+
+    @property
+    def QueryOptimize(self):
+        r"""<p>查询优化</p>
+        :rtype: int
+        """
+        return self._QueryOptimize
+
+    @QueryOptimize.setter
+    def QueryOptimize(self, QueryOptimize):
+        self._QueryOptimize = QueryOptimize
+
+    @property
+    def TopicId(self):
+        r"""<p>主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Context(self):
+        r"""<p>上下文信息</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def SubQueryTypes(self):
+        r"""<p>查询类型</p>
+        :rtype: list of str
+        """
+        return self._SubQueryTypes
+
+    @SubQueryTypes.setter
+    def SubQueryTypes(self, SubQueryTypes):
+        self._SubQueryTypes = SubQueryTypes
+
+
+    def _deserialize(self, params):
+        self._From = params.get("From")
+        self._To = params.get("To")
+        self._Query = params.get("Query")
+        self._SyntaxRule = params.get("SyntaxRule")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = LogContextInfo()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        self._MemberId = params.get("MemberId")
+        self._Sort = params.get("Sort")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._SamplingRate = params.get("SamplingRate")
+        self._HighLight = params.get("HighLight")
+        self._UseNewAnalysis = params.get("UseNewAnalysis")
+        self._QueryOptimize = params.get("QueryOptimize")
+        self._TopicId = params.get("TopicId")
+        self._Context = params.get("Context")
+        self._SubQueryTypes = params.get("SubQueryTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCLSLogListV3Response(AbstractModel):
+    r"""DescribeCLSLogListV3返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Context: <p>上下文</p>
+        :type Context: str
+        :param _ListOver: <p>listover</p>
+        :type ListOver: bool
+        :param _Analysis: <p>是否采用分析</p>
+        :type Analysis: bool
+        :param _Results: <p>结果</p>
+        :type Results: list of LogSearchResult
+        :param _ColNames: <p>列名</p>
+        :type ColNames: list of str
+        :param _AnalysisResults: <p>分析结果</p>
+        :type AnalysisResults: list of LogItems
+        :param _AnalysisRecords: <p>分析记录</p>
+        :type AnalysisRecords: list of str
+        :param _Columns: <p>列名</p>
+        :type Columns: list of LogColumn
+        :param _SamplingRate: <p>采样</p>
+        :type SamplingRate: float
+        :param _Topics: <p>主题信息</p>
+        :type Topics: :class:`tencentcloud.csip.v20221121.models.LogSearchTopics`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Context = None
+        self._ListOver = None
+        self._Analysis = None
+        self._Results = None
+        self._ColNames = None
+        self._AnalysisResults = None
+        self._AnalysisRecords = None
+        self._Columns = None
+        self._SamplingRate = None
+        self._Topics = None
+        self._RequestId = None
+
+    @property
+    def Context(self):
+        r"""<p>上下文</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ListOver(self):
+        r"""<p>listover</p>
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def Analysis(self):
+        r"""<p>是否采用分析</p>
+        :rtype: bool
+        """
+        return self._Analysis
+
+    @Analysis.setter
+    def Analysis(self, Analysis):
+        self._Analysis = Analysis
+
+    @property
+    def Results(self):
+        r"""<p>结果</p>
+        :rtype: list of LogSearchResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def ColNames(self):
+        r"""<p>列名</p>
+        :rtype: list of str
+        """
+        return self._ColNames
+
+    @ColNames.setter
+    def ColNames(self, ColNames):
+        self._ColNames = ColNames
+
+    @property
+    def AnalysisResults(self):
+        r"""<p>分析结果</p>
+        :rtype: list of LogItems
+        """
+        return self._AnalysisResults
+
+    @AnalysisResults.setter
+    def AnalysisResults(self, AnalysisResults):
+        self._AnalysisResults = AnalysisResults
+
+    @property
+    def AnalysisRecords(self):
+        r"""<p>分析记录</p>
+        :rtype: list of str
+        """
+        return self._AnalysisRecords
+
+    @AnalysisRecords.setter
+    def AnalysisRecords(self, AnalysisRecords):
+        self._AnalysisRecords = AnalysisRecords
+
+    @property
+    def Columns(self):
+        r"""<p>列名</p>
+        :rtype: list of LogColumn
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def SamplingRate(self):
+        r"""<p>采样</p>
+        :rtype: float
+        """
+        return self._SamplingRate
+
+    @SamplingRate.setter
+    def SamplingRate(self, SamplingRate):
+        self._SamplingRate = SamplingRate
+
+    @property
+    def Topics(self):
+        r"""<p>主题信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.LogSearchTopics`
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._ListOver = params.get("ListOver")
+        self._Analysis = params.get("Analysis")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = LogSearchResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._ColNames = params.get("ColNames")
+        if params.get("AnalysisResults") is not None:
+            self._AnalysisResults = []
+            for item in params.get("AnalysisResults"):
+                obj = LogItems()
+                obj._deserialize(item)
+                self._AnalysisResults.append(obj)
+        self._AnalysisRecords = params.get("AnalysisRecords")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = LogColumn()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        self._SamplingRate = params.get("SamplingRate")
+        if params.get("Topics") is not None:
+            self._Topics = LogSearchTopics()
+            self._Topics._deserialize(params.get("Topics"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCSIPRiskStatisticsRequest(AbstractModel):
     r"""DescribeCSIPRiskStatistics请求参数结构体
 
@@ -38571,6 +39181,213 @@ class DescribeNICAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._AppIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNotifyAssetConfigRequest(AbstractModel):
+    r"""DescribeNotifyAssetConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Modules: <p>模块名</p>
+        :type Modules: list of str
+        """
+        self._Modules = None
+
+    @property
+    def Modules(self):
+        r"""<p>模块名</p>
+        :rtype: list of str
+        """
+        return self._Modules
+
+    @Modules.setter
+    def Modules(self, Modules):
+        self._Modules = Modules
+
+
+    def _deserialize(self, params):
+        self._Modules = params.get("Modules")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNotifyAssetConfigResponse(AbstractModel):
+    r"""DescribeNotifyAssetConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>资产范围配置</p>
+        :type Items: list of NotifyAssetConfigItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""<p>资产范围配置</p>
+        :rtype: list of NotifyAssetConfigItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = NotifyAssetConfigItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNotifySettingAlertRequest(AbstractModel):
+    r"""DescribeNotifySettingAlert请求参数结构体
+
+    """
+
+
+class DescribeNotifySettingAlertResponse(AbstractModel):
+    r"""DescribeNotifySettingAlert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Settings: <p>通知配置</p>
+        :type Settings: list of NotifySetting
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Settings = None
+        self._RequestId = None
+
+    @property
+    def Settings(self):
+        r"""<p>通知配置</p>
+        :rtype: list of NotifySetting
+        """
+        return self._Settings
+
+    @Settings.setter
+    def Settings(self, Settings):
+        self._Settings = Settings
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Settings") is not None:
+            self._Settings = []
+            for item in params.get("Settings"):
+                obj = NotifySetting()
+                obj._deserialize(item)
+                self._Settings.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNotifySettingRequest(AbstractModel):
+    r"""DescribeNotifySetting请求参数结构体
+
+    """
+
+
+class DescribeNotifySettingResponse(AbstractModel):
+    r"""DescribeNotifySetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>通知设置列表</p>
+        :type List: list of NotifySetting
+        :param _MemberId: <p>成员账号Id</p>
+        :type MemberId: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._MemberId = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>通知设置列表</p>
+        :rtype: list of NotifySetting
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def MemberId(self):
+        r"""<p>成员账号Id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = NotifySetting()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._MemberId = params.get("MemberId")
         self._RequestId = params.get("RequestId")
 
 
@@ -57431,6 +58248,1210 @@ class Location(AbstractModel):
         
 
 
+class LogCLSFilter(AbstractModel):
+    r"""日志过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>键</p>
+        :type Key: str
+        :param _Values: <p>值</p>
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        r"""<p>键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        r"""<p>值</p>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogColumn(AbstractModel):
+    r"""日志列信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Type: <p>类型</p>
+        :type Type: str
+        """
+        self._Name = None
+        self._Type = None
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogContextInfo(AbstractModel):
+    r"""日志检索上下文信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>主题id</p>
+        :type TopicId: str
+        :param _Context: <p>上下文</p>
+        :type Context: str
+        """
+        self._TopicId = None
+        self._Context = None
+
+    @property
+    def TopicId(self):
+        r"""<p>主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Context(self):
+        r"""<p>上下文</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogDynamicIndex(AbstractModel):
+    r"""日志动态索引信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>状态</p>
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogFullTextInfo(AbstractModel):
+    r"""日志全文索引信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaseSensitive: <p>大小写敏感</p>
+        :type CaseSensitive: bool
+        :param _Tokenizer: <p>token</p>
+        :type Tokenizer: str
+        :param _ContainZH: <p>包含中文</p>
+        :type ContainZH: bool
+        """
+        self._CaseSensitive = None
+        self._Tokenizer = None
+        self._ContainZH = None
+
+    @property
+    def CaseSensitive(self):
+        r"""<p>大小写敏感</p>
+        :rtype: bool
+        """
+        return self._CaseSensitive
+
+    @CaseSensitive.setter
+    def CaseSensitive(self, CaseSensitive):
+        self._CaseSensitive = CaseSensitive
+
+    @property
+    def Tokenizer(self):
+        r"""<p>token</p>
+        :rtype: str
+        """
+        return self._Tokenizer
+
+    @Tokenizer.setter
+    def Tokenizer(self, Tokenizer):
+        self._Tokenizer = Tokenizer
+
+    @property
+    def ContainZH(self):
+        r"""<p>包含中文</p>
+        :rtype: bool
+        """
+        return self._ContainZH
+
+    @ContainZH.setter
+    def ContainZH(self, ContainZH):
+        self._ContainZH = ContainZH
+
+
+    def _deserialize(self, params):
+        self._CaseSensitive = params.get("CaseSensitive")
+        self._Tokenizer = params.get("Tokenizer")
+        self._ContainZH = params.get("ContainZH")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogHighLightItem(AbstractModel):
+    r"""日志高亮信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>键</p>
+        :type Key: str
+        :param _Values: <p>值</p>
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        r"""<p>键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        r"""<p>值</p>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogIndexRuleInfo(AbstractModel):
+    r"""日志索引规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullText: <p>全文索引</p>
+        :type FullText: :class:`tencentcloud.csip.v20221121.models.LogFullTextInfo`
+        :param _KeyValue: <p>键值索引</p>
+        :type KeyValue: :class:`tencentcloud.csip.v20221121.models.LogRuleKeyValueInfo`
+        :param _Tag: <p>标签</p>
+        :type Tag: :class:`tencentcloud.csip.v20221121.models.LogRuleKeyValueInfo`
+        :param _DynamicIndex: <p>动态索引</p>
+        :type DynamicIndex: :class:`tencentcloud.csip.v20221121.models.LogDynamicIndex`
+        """
+        self._FullText = None
+        self._KeyValue = None
+        self._Tag = None
+        self._DynamicIndex = None
+
+    @property
+    def FullText(self):
+        r"""<p>全文索引</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.LogFullTextInfo`
+        """
+        return self._FullText
+
+    @FullText.setter
+    def FullText(self, FullText):
+        self._FullText = FullText
+
+    @property
+    def KeyValue(self):
+        r"""<p>键值索引</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.LogRuleKeyValueInfo`
+        """
+        return self._KeyValue
+
+    @KeyValue.setter
+    def KeyValue(self, KeyValue):
+        self._KeyValue = KeyValue
+
+    @property
+    def Tag(self):
+        r"""<p>标签</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.LogRuleKeyValueInfo`
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def DynamicIndex(self):
+        r"""<p>动态索引</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.LogDynamicIndex`
+        """
+        return self._DynamicIndex
+
+    @DynamicIndex.setter
+    def DynamicIndex(self, DynamicIndex):
+        self._DynamicIndex = DynamicIndex
+
+
+    def _deserialize(self, params):
+        if params.get("FullText") is not None:
+            self._FullText = LogFullTextInfo()
+            self._FullText._deserialize(params.get("FullText"))
+        if params.get("KeyValue") is not None:
+            self._KeyValue = LogRuleKeyValueInfo()
+            self._KeyValue._deserialize(params.get("KeyValue"))
+        if params.get("Tag") is not None:
+            self._Tag = LogRuleKeyValueInfo()
+            self._Tag._deserialize(params.get("Tag"))
+        if params.get("DynamicIndex") is not None:
+            self._DynamicIndex = LogDynamicIndex()
+            self._DynamicIndex._deserialize(params.get("DynamicIndex"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogItem(AbstractModel):
+    r"""日志条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>键</p>
+        :type Key: str
+        :param _Value: <p>值</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogItems(AbstractModel):
+    r"""日志条目列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数值</p>
+        :type Data: list of LogItem
+        """
+        self._Data = None
+
+    @property
+    def Data(self):
+        r"""<p>数值</p>
+        :rtype: list of LogItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = LogItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogKeyValueInfo(AbstractModel):
+    r"""日志键值索引详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>键</p>
+        :type Key: str
+        :param _Value: <p>值</p>
+        :type Value: :class:`tencentcloud.csip.v20221121.models.LogValueInfo`
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.LogValueInfo`
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        if params.get("Value") is not None:
+            self._Value = LogValueInfo()
+            self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogRuleKeyValueInfo(AbstractModel):
+    r"""日志键值索引规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaseSensitive: <p>大小写敏感</p>
+        :type CaseSensitive: bool
+        :param _KeyValues: <p>键值索引信息</p>
+        :type KeyValues: list of LogKeyValueInfo
+        """
+        self._CaseSensitive = None
+        self._KeyValues = None
+
+    @property
+    def CaseSensitive(self):
+        r"""<p>大小写敏感</p>
+        :rtype: bool
+        """
+        return self._CaseSensitive
+
+    @CaseSensitive.setter
+    def CaseSensitive(self, CaseSensitive):
+        self._CaseSensitive = CaseSensitive
+
+    @property
+    def KeyValues(self):
+        r"""<p>键值索引信息</p>
+        :rtype: list of LogKeyValueInfo
+        """
+        return self._KeyValues
+
+    @KeyValues.setter
+    def KeyValues(self, KeyValues):
+        self._KeyValues = KeyValues
+
+
+    def _deserialize(self, params):
+        self._CaseSensitive = params.get("CaseSensitive")
+        if params.get("KeyValues") is not None:
+            self._KeyValues = []
+            for item in params.get("KeyValues"):
+                obj = LogKeyValueInfo()
+                obj._deserialize(item)
+                self._KeyValues.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogSearchErrors(AbstractModel):
+    r"""日志检索错误信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>主题</p>
+        :type TopicId: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _ErrorCodeStr: <p>错误信息</p>
+        :type ErrorCodeStr: str
+        """
+        self._TopicId = None
+        self._ErrorMsg = None
+        self._ErrorCodeStr = None
+
+    @property
+    def TopicId(self):
+        r"""<p>主题</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def ErrorCodeStr(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorCodeStr
+
+    @ErrorCodeStr.setter
+    def ErrorCodeStr(self, ErrorCodeStr):
+        self._ErrorCodeStr = ErrorCodeStr
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._ErrorCodeStr = params.get("ErrorCodeStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogSearchInfos(AbstractModel):
+    r"""日志检索信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>主题</p>
+        :type TopicId: str
+        :param _Period: <p>时间间隔</p>
+        :type Period: int
+        :param _Context: <p>上下文</p>
+        :type Context: str
+        """
+        self._TopicId = None
+        self._Period = None
+        self._Context = None
+
+    @property
+    def TopicId(self):
+        r"""<p>主题</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Period(self):
+        r"""<p>时间间隔</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Context(self):
+        r"""<p>上下文</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Period = params.get("Period")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogSearchResult(AbstractModel):
+    r"""日志检索结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: <p>时间</p>
+        :type Time: int
+        :param _TopicId: <p>主题</p>
+        :type TopicId: str
+        :param _TopicName: <p>主题名</p>
+        :type TopicName: str
+        :param _Source: <p>源</p>
+        :type Source: str
+        :param _FileName: <p>文件名</p>
+        :type FileName: str
+        :param _PkgId: <p>pkgid</p>
+        :type PkgId: str
+        :param _PkgLogId: <p>pkglogid</p>
+        :type PkgLogId: str
+        :param _LogJson: <p>json数据</p>
+        :type LogJson: str
+        :param _HostName: <p>主机名</p>
+        :type HostName: str
+        :param _RawLog: <p>log信息</p>
+        :type RawLog: str
+        :param _IndexStatus: <p>索引状态</p>
+        :type IndexStatus: str
+        :param _HighLights: <p>高亮信息</p>
+        :type HighLights: list of LogHighLightItem
+        """
+        self._Time = None
+        self._TopicId = None
+        self._TopicName = None
+        self._Source = None
+        self._FileName = None
+        self._PkgId = None
+        self._PkgLogId = None
+        self._LogJson = None
+        self._HostName = None
+        self._RawLog = None
+        self._IndexStatus = None
+        self._HighLights = None
+
+    @property
+    def Time(self):
+        r"""<p>时间</p>
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def TopicId(self):
+        r"""<p>主题</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""<p>主题名</p>
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Source(self):
+        r"""<p>源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def FileName(self):
+        r"""<p>文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def PkgId(self):
+        r"""<p>pkgid</p>
+        :rtype: str
+        """
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def PkgLogId(self):
+        r"""<p>pkglogid</p>
+        :rtype: str
+        """
+        return self._PkgLogId
+
+    @PkgLogId.setter
+    def PkgLogId(self, PkgLogId):
+        self._PkgLogId = PkgLogId
+
+    @property
+    def LogJson(self):
+        r"""<p>json数据</p>
+        :rtype: str
+        """
+        return self._LogJson
+
+    @LogJson.setter
+    def LogJson(self, LogJson):
+        self._LogJson = LogJson
+
+    @property
+    def HostName(self):
+        r"""<p>主机名</p>
+        :rtype: str
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def RawLog(self):
+        r"""<p>log信息</p>
+        :rtype: str
+        """
+        return self._RawLog
+
+    @RawLog.setter
+    def RawLog(self, RawLog):
+        self._RawLog = RawLog
+
+    @property
+    def IndexStatus(self):
+        r"""<p>索引状态</p>
+        :rtype: str
+        """
+        return self._IndexStatus
+
+    @IndexStatus.setter
+    def IndexStatus(self, IndexStatus):
+        self._IndexStatus = IndexStatus
+
+    @property
+    def HighLights(self):
+        r"""<p>高亮信息</p>
+        :rtype: list of LogHighLightItem
+        """
+        return self._HighLights
+
+    @HighLights.setter
+    def HighLights(self, HighLights):
+        self._HighLights = HighLights
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._Source = params.get("Source")
+        self._FileName = params.get("FileName")
+        self._PkgId = params.get("PkgId")
+        self._PkgLogId = params.get("PkgLogId")
+        self._LogJson = params.get("LogJson")
+        self._HostName = params.get("HostName")
+        self._RawLog = params.get("RawLog")
+        self._IndexStatus = params.get("IndexStatus")
+        if params.get("HighLights") is not None:
+            self._HighLights = []
+            for item in params.get("HighLights"):
+                obj = LogHighLightItem()
+                obj._deserialize(item)
+                self._HighLights.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogSearchTopics(AbstractModel):
+    r"""日志检索主题信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Errors: <p>错误信息</p>
+        :type Errors: list of LogSearchErrors
+        :param _Infos: <p>正常信息</p>
+        :type Infos: list of LogSearchInfos
+        """
+        self._Errors = None
+        self._Infos = None
+
+    @property
+    def Errors(self):
+        r"""<p>错误信息</p>
+        :rtype: list of LogSearchErrors
+        """
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def Infos(self):
+        r"""<p>正常信息</p>
+        :rtype: list of LogSearchInfos
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+
+    def _deserialize(self, params):
+        if params.get("Errors") is not None:
+            self._Errors = []
+            for item in params.get("Errors"):
+                obj = LogSearchErrors()
+                obj._deserialize(item)
+                self._Errors.append(obj)
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = LogSearchInfos()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogTopicIndexInfo(AbstractModel):
+    r"""日志主题索性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>主题</p>
+        :type TopicId: str
+        :param _Status: <p>状态</p>
+        :type Status: bool
+        :param _Rule: <p>规则</p>
+        :type Rule: :class:`tencentcloud.csip.v20221121.models.LogIndexRuleInfo`
+        :param _ModifyTime: <p>修改时间</p>
+        :type ModifyTime: str
+        :param _IncludeInternalFields: <p>是否包含</p>
+        :type IncludeInternalFields: bool
+        :param _MetadataFlag: <p>元数据标签</p>
+        :type MetadataFlag: int
+        """
+        self._TopicId = None
+        self._Status = None
+        self._Rule = None
+        self._ModifyTime = None
+        self._IncludeInternalFields = None
+        self._MetadataFlag = None
+
+    @property
+    def TopicId(self):
+        r"""<p>主题</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Rule(self):
+        r"""<p>规则</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.LogIndexRuleInfo`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def ModifyTime(self):
+        r"""<p>修改时间</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def IncludeInternalFields(self):
+        r"""<p>是否包含</p>
+        :rtype: bool
+        """
+        return self._IncludeInternalFields
+
+    @IncludeInternalFields.setter
+    def IncludeInternalFields(self, IncludeInternalFields):
+        self._IncludeInternalFields = IncludeInternalFields
+
+    @property
+    def MetadataFlag(self):
+        r"""<p>元数据标签</p>
+        :rtype: int
+        """
+        return self._MetadataFlag
+
+    @MetadataFlag.setter
+    def MetadataFlag(self, MetadataFlag):
+        self._MetadataFlag = MetadataFlag
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Status = params.get("Status")
+        if params.get("Rule") is not None:
+            self._Rule = LogIndexRuleInfo()
+            self._Rule._deserialize(params.get("Rule"))
+        self._ModifyTime = params.get("ModifyTime")
+        self._IncludeInternalFields = params.get("IncludeInternalFields")
+        self._MetadataFlag = params.get("MetadataFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogValueInfo(AbstractModel):
+    r"""日志索引值描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>类型</p>
+        :type Type: str
+        :param _Tokenizer: <p>标签</p>
+        :type Tokenizer: str
+        :param _SqlFlag: <p>sql标签</p>
+        :type SqlFlag: bool
+        :param _ContainZH: <p>包含中文</p>
+        :type ContainZH: bool
+        :param _Alias: <p>别名</p>
+        :type Alias: str
+        """
+        self._Type = None
+        self._Tokenizer = None
+        self._SqlFlag = None
+        self._ContainZH = None
+        self._Alias = None
+
+    @property
+    def Type(self):
+        r"""<p>类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Tokenizer(self):
+        r"""<p>标签</p>
+        :rtype: str
+        """
+        return self._Tokenizer
+
+    @Tokenizer.setter
+    def Tokenizer(self, Tokenizer):
+        self._Tokenizer = Tokenizer
+
+    @property
+    def SqlFlag(self):
+        r"""<p>sql标签</p>
+        :rtype: bool
+        """
+        return self._SqlFlag
+
+    @SqlFlag.setter
+    def SqlFlag(self, SqlFlag):
+        self._SqlFlag = SqlFlag
+
+    @property
+    def ContainZH(self):
+        r"""<p>包含中文</p>
+        :rtype: bool
+        """
+        return self._ContainZH
+
+    @ContainZH.setter
+    def ContainZH(self, ContainZH):
+        self._ContainZH = ContainZH
+
+    @property
+    def Alias(self):
+        r"""<p>别名</p>
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Tokenizer = params.get("Tokenizer")
+        self._SqlFlag = params.get("SqlFlag")
+        self._ContainZH = params.get("ContainZH")
+        self._Alias = params.get("Alias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Machine(AbstractModel):
     r"""主机列表
 
@@ -61003,6 +63024,283 @@ class ModifyMachineRemarkResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyNotifyAssetConfigRequest(AbstractModel):
+    r"""ModifyNotifyAssetConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>资产范围配置</p>
+        :type Items: list of NotifyAssetConfigItem
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        r"""<p>资产范围配置</p>
+        :rtype: list of NotifyAssetConfigItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = NotifyAssetConfigItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNotifyAssetConfigResponse(AbstractModel):
+    r"""ModifyNotifyAssetConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNotifySettingAlertRequest(AbstractModel):
+    r"""ModifyNotifySettingAlert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Settings: <p>通知配置</p>
+        :type Settings: list of NotifySetting
+        """
+        self._Settings = None
+
+    @property
+    def Settings(self):
+        r"""<p>通知配置</p>
+        :rtype: list of NotifySetting
+        """
+        return self._Settings
+
+    @Settings.setter
+    def Settings(self, Settings):
+        self._Settings = Settings
+
+
+    def _deserialize(self, params):
+        if params.get("Settings") is not None:
+            self._Settings = []
+            for item in params.get("Settings"):
+                obj = NotifySetting()
+                obj._deserialize(item)
+                self._Settings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNotifySettingAlertResponse(AbstractModel):
+    r"""ModifyNotifySettingAlert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNotifySettingRequest(AbstractModel):
+    r"""ModifyNotifySetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: <p>通知模块</p><p>枚举值：</p><ul><li>AkSk： 云API风险治理</li><li>Alert： 告警中心</li><li>Agent： 客户端</li></ul>
+        :type Module: str
+        :param _Mode: <p>通知设置模式</p><p>枚举值：</p><ul><li>0： 标准模式</li><li>1： 高级模式</li></ul>
+        :type Mode: int
+        :param _Status: <p>通知状态</p><p>枚举值：</p><ul><li>0： 通知关闭</li><li>1： 通知开启</li></ul>
+        :type Status: int
+        :param _BeginTime: <p>通知开始时间</p><p>参数格式：hh:mm:ss</p>
+        :type BeginTime: str
+        :param _EndTime: <p>通知结束时间</p><p>参数格式：hh:mm:ss</p>
+        :type EndTime: str
+        :param _Option: <p>通知选项</p><p>枚举值：</p><ul><li>CRITICAL： 告警等级：严重</li><li>HIGH： 告警等级：高危</li><li>MEDIUM： 告警等级：中危</li><li>LOW： 告警等级：低危</li><li>INFO： 告警等级：提醒</li><li>AGENT_UNINSTALL： 客户端卸载</li><li>AGENT_OFFLINE： 客户端离线</li></ul>
+        :type Option: list of str
+        """
+        self._Module = None
+        self._Mode = None
+        self._Status = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Option = None
+
+    @property
+    def Module(self):
+        r"""<p>通知模块</p><p>枚举值：</p><ul><li>AkSk： 云API风险治理</li><li>Alert： 告警中心</li><li>Agent： 客户端</li></ul>
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def Mode(self):
+        r"""<p>通知设置模式</p><p>枚举值：</p><ul><li>0： 标准模式</li><li>1： 高级模式</li></ul>
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Status(self):
+        r"""<p>通知状态</p><p>枚举值：</p><ul><li>0： 通知关闭</li><li>1： 通知开启</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BeginTime(self):
+        r"""<p>通知开始时间</p><p>参数格式：hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""<p>通知结束时间</p><p>参数格式：hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Option(self):
+        r"""<p>通知选项</p><p>枚举值：</p><ul><li>CRITICAL： 告警等级：严重</li><li>HIGH： 告警等级：高危</li><li>MEDIUM： 告警等级：中危</li><li>LOW： 告警等级：低危</li><li>INFO： 告警等级：提醒</li><li>AGENT_UNINSTALL： 客户端卸载</li><li>AGENT_OFFLINE： 客户端离线</li></ul>
+        :rtype: list of str
+        """
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._Mode = params.get("Mode")
+        self._Status = params.get("Status")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Option = params.get("Option")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNotifySettingResponse(AbstractModel):
+    r"""ModifyNotifySetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOrganizationAccountStatusRequest(AbstractModel):
     r"""ModifyOrganizationAccountStatus请求参数结构体
 
@@ -62338,6 +64636,303 @@ class NewAlertKey(AbstractModel):
         self._Key = params.get("Key")
         self._Date = params.get("Date")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NotifyAssetConfigItem(AbstractModel):
+    r"""通知资产范围配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: <p>模块名</p>
+        :type Module: str
+        :param _SubModule: <p>子模块</p>
+        :type SubModule: str
+        :param _AssetRange: <p>资产范围</p><p>枚举值：</p><ul><li>0： 无含义</li><li>1： 全部</li><li>2： 自选</li><li>3： 按标签</li></ul>
+        :type AssetRange: int
+        :param _InstanceIds: <p>选中的实例ID</p>
+        :type InstanceIds: list of str
+        :param _ExcludedInstanceIds: <p>剔除的实例ID</p>
+        :type ExcludedInstanceIds: list of str
+        :param _TagIds: <p>标签ID</p>
+        :type TagIds: list of int
+        :param _CloudTags: <p>云标签</p>
+        :type CloudTags: list of str
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        """
+        self._Module = None
+        self._SubModule = None
+        self._AssetRange = None
+        self._InstanceIds = None
+        self._ExcludedInstanceIds = None
+        self._TagIds = None
+        self._CloudTags = None
+        self._TotalCount = None
+
+    @property
+    def Module(self):
+        r"""<p>模块名</p>
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def SubModule(self):
+        r"""<p>子模块</p>
+        :rtype: str
+        """
+        return self._SubModule
+
+    @SubModule.setter
+    def SubModule(self, SubModule):
+        self._SubModule = SubModule
+
+    @property
+    def AssetRange(self):
+        r"""<p>资产范围</p><p>枚举值：</p><ul><li>0： 无含义</li><li>1： 全部</li><li>2： 自选</li><li>3： 按标签</li></ul>
+        :rtype: int
+        """
+        return self._AssetRange
+
+    @AssetRange.setter
+    def AssetRange(self, AssetRange):
+        self._AssetRange = AssetRange
+
+    @property
+    def InstanceIds(self):
+        r"""<p>选中的实例ID</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def ExcludedInstanceIds(self):
+        r"""<p>剔除的实例ID</p>
+        :rtype: list of str
+        """
+        return self._ExcludedInstanceIds
+
+    @ExcludedInstanceIds.setter
+    def ExcludedInstanceIds(self, ExcludedInstanceIds):
+        self._ExcludedInstanceIds = ExcludedInstanceIds
+
+    @property
+    def TagIds(self):
+        r"""<p>标签ID</p>
+        :rtype: list of int
+        """
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
+    @property
+    def CloudTags(self):
+        r"""<p>云标签</p>
+        :rtype: list of str
+        """
+        return self._CloudTags
+
+    @CloudTags.setter
+    def CloudTags(self, CloudTags):
+        self._CloudTags = CloudTags
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._SubModule = params.get("SubModule")
+        self._AssetRange = params.get("AssetRange")
+        self._InstanceIds = params.get("InstanceIds")
+        self._ExcludedInstanceIds = params.get("ExcludedInstanceIds")
+        self._TagIds = params.get("TagIds")
+        self._CloudTags = params.get("CloudTags")
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NotifySetting(AbstractModel):
+    r"""通知设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: <p>通知模块</p><p>枚举值：</p><ul><li>AkSk： 云API风险治理</li><li>Alert： 告警中心</li><li>Agent： 客户端</li></ul>
+        :type Module: str
+        :param _Mode: <p>通知设置模式</p><p>枚举值：</p><ul><li>0： 标准模式</li><li>1： 高级模式</li></ul>
+        :type Mode: int
+        :param _Status: <p>通知状态</p><p>枚举值：</p><ul><li>0： 通知关闭</li><li>1： 通知开启</li></ul>
+        :type Status: int
+        :param _BeginTime: <p>通知开始时间</p><p>参数格式：hh:mm:ss</p>
+        :type BeginTime: str
+        :param _EndTime: <p>通知结束时间</p><p>参数格式：hh:mm:ss</p>
+        :type EndTime: str
+        :param _AssetRange: <p>资产范围</p><p>枚举值：</p><ul><li>1： 全部主机</li><li>2： 自选主机</li><li>3： 按标签选择</li></ul>
+        :type AssetRange: int
+        :param _Option: <p>通知选项</p><p>枚举值：</p><ul><li>CRITICAL： 告警等级：严重</li><li>HIGH： 告警等级：高危</li><li>MEDIUM： 告警等级：中危</li><li>LOW： 告警等级：低危</li><li>INFO： 告警等级：提醒</li><li>AGENT_UNINSTALL： 客户端卸载</li><li>AGENT_OFFLINE： 客户端离线</li></ul>
+        :type Option: list of str
+        :param _SubModule: <p>通知模块（二级模块）</p>
+        :type SubModule: str
+        :param _Item: <p>处置状态等</p>
+        :type Item: list of str
+        """
+        self._Module = None
+        self._Mode = None
+        self._Status = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._AssetRange = None
+        self._Option = None
+        self._SubModule = None
+        self._Item = None
+
+    @property
+    def Module(self):
+        r"""<p>通知模块</p><p>枚举值：</p><ul><li>AkSk： 云API风险治理</li><li>Alert： 告警中心</li><li>Agent： 客户端</li></ul>
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def Mode(self):
+        r"""<p>通知设置模式</p><p>枚举值：</p><ul><li>0： 标准模式</li><li>1： 高级模式</li></ul>
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Status(self):
+        r"""<p>通知状态</p><p>枚举值：</p><ul><li>0： 通知关闭</li><li>1： 通知开启</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BeginTime(self):
+        r"""<p>通知开始时间</p><p>参数格式：hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""<p>通知结束时间</p><p>参数格式：hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AssetRange(self):
+        r"""<p>资产范围</p><p>枚举值：</p><ul><li>1： 全部主机</li><li>2： 自选主机</li><li>3： 按标签选择</li></ul>
+        :rtype: int
+        """
+        return self._AssetRange
+
+    @AssetRange.setter
+    def AssetRange(self, AssetRange):
+        self._AssetRange = AssetRange
+
+    @property
+    def Option(self):
+        r"""<p>通知选项</p><p>枚举值：</p><ul><li>CRITICAL： 告警等级：严重</li><li>HIGH： 告警等级：高危</li><li>MEDIUM： 告警等级：中危</li><li>LOW： 告警等级：低危</li><li>INFO： 告警等级：提醒</li><li>AGENT_UNINSTALL： 客户端卸载</li><li>AGENT_OFFLINE： 客户端离线</li></ul>
+        :rtype: list of str
+        """
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
+    @property
+    def SubModule(self):
+        r"""<p>通知模块（二级模块）</p>
+        :rtype: str
+        """
+        return self._SubModule
+
+    @SubModule.setter
+    def SubModule(self, SubModule):
+        self._SubModule = SubModule
+
+    @property
+    def Item(self):
+        r"""<p>处置状态等</p>
+        :rtype: list of str
+        """
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._Mode = params.get("Mode")
+        self._Status = params.get("Status")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._AssetRange = params.get("AssetRange")
+        self._Option = params.get("Option")
+        self._SubModule = params.get("SubModule")
+        self._Item = params.get("Item")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

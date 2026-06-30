@@ -2316,6 +2316,31 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePrometheusCreateInstanceQuota(self, request):
+        r"""查询Prometheus实例创建配额
+
+        配额不分地域，可从任意支持地域请求
+
+        :param request: Request instance for DescribePrometheusCreateInstanceQuota.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusCreateInstanceQuotaRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusCreateInstanceQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusCreateInstanceQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusCreateInstanceQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePrometheusGlobalConfig(self, request):
         r"""获得实例级别抓取配置
 

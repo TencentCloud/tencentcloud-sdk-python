@@ -2133,6 +2133,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTaskDetail(
+            self,
+            request: models.DescribeTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTaskDetailResponse:
+        """
+        该接口（DescribeTaskDetail）用于查询历史任务详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTaskList(
             self,
             request: models.DescribeTaskListRequest,

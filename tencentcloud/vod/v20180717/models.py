@@ -53691,6 +53691,115 @@ class JustInTimeTranscodeTemplate(AbstractModel):
         
 
 
+class KnowledgeAnalysisInfo(AbstractModel):
+    r"""知识库媒体分析信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>大模型解析模板号</p>
+        :type Definition: int
+        :param _AnalysisResults: <p>大模型解析结果</p>
+        :type AnalysisResults: list of KnowledgeAnalysisResult
+        """
+        self._Definition = None
+        self._AnalysisResults = None
+
+    @property
+    def Definition(self):
+        r"""<p>大模型解析模板号</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def AnalysisResults(self):
+        r"""<p>大模型解析结果</p>
+        :rtype: list of KnowledgeAnalysisResult
+        """
+        return self._AnalysisResults
+
+    @AnalysisResults.setter
+    def AnalysisResults(self, AnalysisResults):
+        self._AnalysisResults = AnalysisResults
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("AnalysisResults") is not None:
+            self._AnalysisResults = []
+            for item in params.get("AnalysisResults"):
+                obj = KnowledgeAnalysisResult()
+                obj._deserialize(item)
+                self._AnalysisResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeAnalysisResult(AbstractModel):
+    r"""知识库媒体分析结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: <p>处理任务类型</p><p>枚举值：</p><ul><li>AiAnalysis.DescriptionTask： 智能摘要任务</li><li>AiAnalysis.VideoComprehensionTask： 视频理解任务</li><li>SmartSubtitle.AsrFullTextTask： 智能语音全文识别任务</li></ul>
+        :type TaskType: str
+        :param _File: <p>任务输出文件集合</p>
+        :type File: :class:`tencentcloud.vod.v20180717.models.MPSOutputFileInfo`
+        """
+        self._TaskType = None
+        self._File = None
+
+    @property
+    def TaskType(self):
+        r"""<p>处理任务类型</p><p>枚举值：</p><ul><li>AiAnalysis.DescriptionTask： 智能摘要任务</li><li>AiAnalysis.VideoComprehensionTask： 视频理解任务</li><li>SmartSubtitle.AsrFullTextTask： 智能语音全文识别任务</li></ul>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def File(self):
+        r"""<p>任务输出文件集合</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSOutputFileInfo`
+        """
+        return self._File
+
+    @File.setter
+    def File(self, File):
+        self._File = File
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        if params.get("File") is not None:
+            self._File = MPSOutputFileInfo()
+            self._File._deserialize(params.get("File"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KnowledgeBasesInfo(AbstractModel):
     r"""媒资智能知识库信息
 
@@ -53700,8 +53809,11 @@ class KnowledgeBasesInfo(AbstractModel):
         r"""
         :param _Bases: <p>当前媒资当导入的知识库列表</p>
         :type Bases: list of str
+        :param _KnowledgeAnalysisInfos: <p>知识库中媒体分析信息</p>
+        :type KnowledgeAnalysisInfos: list of KnowledgeAnalysisInfo
         """
         self._Bases = None
+        self._KnowledgeAnalysisInfos = None
 
     @property
     def Bases(self):
@@ -53714,9 +53826,26 @@ class KnowledgeBasesInfo(AbstractModel):
     def Bases(self, Bases):
         self._Bases = Bases
 
+    @property
+    def KnowledgeAnalysisInfos(self):
+        r"""<p>知识库中媒体分析信息</p>
+        :rtype: list of KnowledgeAnalysisInfo
+        """
+        return self._KnowledgeAnalysisInfos
+
+    @KnowledgeAnalysisInfos.setter
+    def KnowledgeAnalysisInfos(self, KnowledgeAnalysisInfos):
+        self._KnowledgeAnalysisInfos = KnowledgeAnalysisInfos
+
 
     def _deserialize(self, params):
         self._Bases = params.get("Bases")
+        if params.get("KnowledgeAnalysisInfos") is not None:
+            self._KnowledgeAnalysisInfos = []
+            for item in params.get("KnowledgeAnalysisInfos"):
+                obj = KnowledgeAnalysisInfo()
+                obj._deserialize(item)
+                self._KnowledgeAnalysisInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

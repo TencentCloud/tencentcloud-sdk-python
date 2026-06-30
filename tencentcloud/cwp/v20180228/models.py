@@ -236,6 +236,75 @@ class AddLoginWhiteListsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddVulIgnoreRuleRequest(AbstractModel):
+    r"""AddVulIgnoreRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleDetailList: 忽略规则集合
+        :type RuleDetailList: list of VulIgnoreRule
+        """
+        self._RuleDetailList = None
+
+    @property
+    def RuleDetailList(self):
+        r"""忽略规则集合
+        :rtype: list of VulIgnoreRule
+        """
+        return self._RuleDetailList
+
+    @RuleDetailList.setter
+    def RuleDetailList(self, RuleDetailList):
+        self._RuleDetailList = RuleDetailList
+
+
+    def _deserialize(self, params):
+        if params.get("RuleDetailList") is not None:
+            self._RuleDetailList = []
+            for item in params.get("RuleDetailList"):
+                obj = VulIgnoreRule()
+                obj._deserialize(item)
+                self._RuleDetailList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddVulIgnoreRuleResponse(AbstractModel):
+    r"""AddVulIgnoreRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AlarmInfo(AbstractModel):
     r"""节点关联的告警信息
 
@@ -113384,6 +113453,179 @@ class VulHostTopInfo(AbstractModel):
                 self._VulLevelList.append(obj)
         self._Quuid = params.get("Quuid")
         self._Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulIgnoreRule(AbstractModel):
+    r"""漏洞忽略规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulID: 漏洞规则ID
+        :type VulID: int
+        :param _AssetScopeType: <li>0:全部主机</li>
+<li>1:自选主机</li>
+        :type AssetScopeType: int
+        :param _IncludeQuuidList: 自选主机情况下自选主机quuid列表
+        :type IncludeQuuidList: list of str
+        :param _ExcludeQuuidList: 全部主机情况下排出的主机
+        :type ExcludeQuuidList: list of str
+        :param _Remark: 忽略的原因
+        :type Remark: str
+        :param _ConfigHostCount: 配置主机数
+        :type ConfigHostCount: int
+        :param _AffectedHostCount: 实际受影响主机数
+        :type AffectedHostCount: int
+        :param _VulName: 漏洞名字
+        :type VulName: str
+        :param _RuleID: 忽略规则ID
+        :type RuleID: int
+        :param _ModifyTime: 最近更新时间
+        :type ModifyTime: str
+        """
+        self._VulID = None
+        self._AssetScopeType = None
+        self._IncludeQuuidList = None
+        self._ExcludeQuuidList = None
+        self._Remark = None
+        self._ConfigHostCount = None
+        self._AffectedHostCount = None
+        self._VulName = None
+        self._RuleID = None
+        self._ModifyTime = None
+
+    @property
+    def VulID(self):
+        r"""漏洞规则ID
+        :rtype: int
+        """
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
+
+    @property
+    def AssetScopeType(self):
+        r"""<li>0:全部主机</li>
+<li>1:自选主机</li>
+        :rtype: int
+        """
+        return self._AssetScopeType
+
+    @AssetScopeType.setter
+    def AssetScopeType(self, AssetScopeType):
+        self._AssetScopeType = AssetScopeType
+
+    @property
+    def IncludeQuuidList(self):
+        r"""自选主机情况下自选主机quuid列表
+        :rtype: list of str
+        """
+        return self._IncludeQuuidList
+
+    @IncludeQuuidList.setter
+    def IncludeQuuidList(self, IncludeQuuidList):
+        self._IncludeQuuidList = IncludeQuuidList
+
+    @property
+    def ExcludeQuuidList(self):
+        r"""全部主机情况下排出的主机
+        :rtype: list of str
+        """
+        return self._ExcludeQuuidList
+
+    @ExcludeQuuidList.setter
+    def ExcludeQuuidList(self, ExcludeQuuidList):
+        self._ExcludeQuuidList = ExcludeQuuidList
+
+    @property
+    def Remark(self):
+        r"""忽略的原因
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConfigHostCount(self):
+        r"""配置主机数
+        :rtype: int
+        """
+        return self._ConfigHostCount
+
+    @ConfigHostCount.setter
+    def ConfigHostCount(self, ConfigHostCount):
+        self._ConfigHostCount = ConfigHostCount
+
+    @property
+    def AffectedHostCount(self):
+        r"""实际受影响主机数
+        :rtype: int
+        """
+        return self._AffectedHostCount
+
+    @AffectedHostCount.setter
+    def AffectedHostCount(self, AffectedHostCount):
+        self._AffectedHostCount = AffectedHostCount
+
+    @property
+    def VulName(self):
+        r"""漏洞名字
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def RuleID(self):
+        r"""忽略规则ID
+        :rtype: int
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def ModifyTime(self):
+        r"""最近更新时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._VulID = params.get("VulID")
+        self._AssetScopeType = params.get("AssetScopeType")
+        self._IncludeQuuidList = params.get("IncludeQuuidList")
+        self._ExcludeQuuidList = params.get("ExcludeQuuidList")
+        self._Remark = params.get("Remark")
+        self._ConfigHostCount = params.get("ConfigHostCount")
+        self._AffectedHostCount = params.get("AffectedHostCount")
+        self._VulName = params.get("VulName")
+        self._RuleID = params.get("RuleID")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

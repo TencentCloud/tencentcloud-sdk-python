@@ -486,6 +486,29 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetRunJobLog(self, request):
+        r"""获取任务详情文件。
+
+        :param request: Request instance for GetRunJobLog.
+        :type request: :class:`tencentcloud.omics.v20221128.models.GetRunJobLogRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.GetRunJobLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRunJobLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRunJobLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetRunMetadataFile(self, request):
         r"""获取任务详情文件。
 

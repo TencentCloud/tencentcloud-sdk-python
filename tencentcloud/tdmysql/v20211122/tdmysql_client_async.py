@@ -781,24 +781,6 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ResetUserPassword(
-            self,
-            request: models.ResetUserPasswordRequest,
-            opts: Dict = None,
-    ) -> models.ResetUserPasswordResponse:
-        """
-        本接口（ResetUserPassword）提供重置用户密码功能
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ResetUserPassword"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ResetUserPasswordResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ResetUsersPassword(
             self,
             request: models.ResetUsersPasswordRequest,

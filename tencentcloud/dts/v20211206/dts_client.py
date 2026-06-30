@@ -583,6 +583,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMigrateGtidCompareReport(self, request):
+        r"""gtid校验
+
+        :param request: Request instance for DescribeMigrateGtidCompareReport.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeMigrateGtidCompareReportRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeMigrateGtidCompareReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMigrateGtidCompareReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMigrateGtidCompareReportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMigrationCheckJob(self, request):
         r"""本接口用于创建校验后,获取校验的结果. 能查询到当前校验的状态和进度.
         若通过校验, 则可调用'StartMigrateJob' 开始迁移.
@@ -856,6 +879,29 @@ class DtsClient(AbstractClient):
             body = self.call("DescribeSyncCompareTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSyncCompareTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSyncGtidCompareReport(self, request):
+        r"""gtid校验
+
+        :param request: Request instance for DescribeSyncGtidCompareReport.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSyncGtidCompareReportRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeSyncGtidCompareReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSyncGtidCompareReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSyncGtidCompareReportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

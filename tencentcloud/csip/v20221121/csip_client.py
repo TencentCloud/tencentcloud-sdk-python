@@ -1268,6 +1268,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCLSLogIndexV3(self, request):
+        r"""获取日志索引信息
+
+        :param request: Request instance for DescribeCLSLogIndexV3.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCLSLogIndexV3Request`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCLSLogIndexV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCLSLogIndexV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCLSLogIndexV3Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCLSLogListV3(self, request):
+        r"""日志分析检索接口v3
+
+        :param request: Request instance for DescribeCLSLogListV3.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCLSLogListV3Request`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCLSLogListV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCLSLogListV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCLSLogListV3Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCSIPRiskStatistics(self, request):
         r"""获取风险中心风险概况示例
 
@@ -3522,6 +3568,75 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNotifyAssetConfig(self, request):
+        r"""获取通知资产范围配置
+
+        :param request: Request instance for DescribeNotifyAssetConfig.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeNotifyAssetConfigRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeNotifyAssetConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotifyAssetConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotifyAssetConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeNotifySetting(self, request):
+        r"""获取通知设置
+
+        :param request: Request instance for DescribeNotifySetting.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeNotifySettingRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeNotifySettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotifySetting", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotifySettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeNotifySettingAlert(self, request):
+        r"""获取告警中心通知高级配置
+
+        :param request: Request instance for DescribeNotifySettingAlert.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeNotifySettingAlertRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeNotifySettingAlertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotifySettingAlert", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotifySettingAlertResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOrganizationInfo(self, request):
         r"""查询集团账号详情
 
@@ -4985,6 +5100,75 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyMachineRemark", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMachineRemarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyNotifyAssetConfig(self, request):
+        r"""修改通知资产范围配置
+
+        :param request: Request instance for ModifyNotifyAssetConfig.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyNotifyAssetConfigRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyNotifyAssetConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNotifyAssetConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNotifyAssetConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyNotifySetting(self, request):
+        r"""修改通知设置
+
+        :param request: Request instance for ModifyNotifySetting.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyNotifySettingRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyNotifySettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNotifySetting", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNotifySettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyNotifySettingAlert(self, request):
+        r"""修改告警中心通知高级配置
+
+        :param request: Request instance for ModifyNotifySettingAlert.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyNotifySettingAlertRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyNotifySettingAlertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNotifySettingAlert", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNotifySettingAlertResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -997,6 +997,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCLSLogIndexV3(
+            self,
+            request: models.DescribeCLSLogIndexV3Request,
+            opts: Dict = None,
+    ) -> models.DescribeCLSLogIndexV3Response:
+        """
+        获取日志索引信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCLSLogIndexV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCLSLogIndexV3Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCLSLogListV3(
+            self,
+            request: models.DescribeCLSLogListV3Request,
+            opts: Dict = None,
+    ) -> models.DescribeCLSLogListV3Response:
+        """
+        日志分析检索接口v3
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCLSLogListV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCLSLogListV3Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCSIPRiskStatistics(
             self,
             request: models.DescribeCSIPRiskStatisticsRequest,
@@ -2761,6 +2797,60 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNotifyAssetConfig(
+            self,
+            request: models.DescribeNotifyAssetConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNotifyAssetConfigResponse:
+        """
+        获取通知资产范围配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNotifyAssetConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNotifyAssetConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNotifySetting(
+            self,
+            request: models.DescribeNotifySettingRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNotifySettingResponse:
+        """
+        获取通知设置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNotifySetting"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNotifySettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNotifySettingAlert(
+            self,
+            request: models.DescribeNotifySettingAlertRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNotifySettingAlertResponse:
+        """
+        获取告警中心通知高级配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNotifySettingAlert"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNotifySettingAlertResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeOrganizationInfo(
             self,
             request: models.DescribeOrganizationInfoRequest,
@@ -3908,6 +3998,60 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyMachineRemark"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyMachineRemarkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyNotifyAssetConfig(
+            self,
+            request: models.ModifyNotifyAssetConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNotifyAssetConfigResponse:
+        """
+        修改通知资产范围配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNotifyAssetConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNotifyAssetConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyNotifySetting(
+            self,
+            request: models.ModifyNotifySettingRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNotifySettingResponse:
+        """
+        修改通知设置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNotifySetting"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNotifySettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyNotifySettingAlert(
+            self,
+            request: models.ModifyNotifySettingAlertRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNotifySettingAlertResponse:
+        """
+        修改告警中心通知高级配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNotifySettingAlert"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNotifySettingAlertResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
