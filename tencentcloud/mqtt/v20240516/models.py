@@ -1461,6 +1461,16 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
         :type Header: list of HeaderItem
         :param _Body: 转发请求body
         :type Body: list of BodyItem
+        :param _IncludingUserProperties: 连接UserProperty作为Header转发，默认false
+        :type IncludingUserProperties: bool
+        :param _VpcSvcId: vpcsvcId
+HTTP认证需要通过vpc网络访问时需要配置
+        :type VpcSvcId: str
+        :param _NetworkType: 网络连接类型
+vpc：vpc网络
+public：公网
+通过vpc网络连接需要设置VpcSvcId参数
+        :type NetworkType: str
         """
         self._InstanceId = None
         self._Endpoint = None
@@ -1472,6 +1482,9 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
         self._ReadTimeout = None
         self._Header = None
         self._Body = None
+        self._IncludingUserProperties = None
+        self._VpcSvcId = None
+        self._NetworkType = None
 
     @property
     def InstanceId(self):
@@ -1583,6 +1596,43 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
     def Body(self, Body):
         self._Body = Body
 
+    @property
+    def IncludingUserProperties(self):
+        r"""连接UserProperty作为Header转发，默认false
+        :rtype: bool
+        """
+        return self._IncludingUserProperties
+
+    @IncludingUserProperties.setter
+    def IncludingUserProperties(self, IncludingUserProperties):
+        self._IncludingUserProperties = IncludingUserProperties
+
+    @property
+    def VpcSvcId(self):
+        r"""vpcsvcId
+HTTP认证需要通过vpc网络访问时需要配置
+        :rtype: str
+        """
+        return self._VpcSvcId
+
+    @VpcSvcId.setter
+    def VpcSvcId(self, VpcSvcId):
+        self._VpcSvcId = VpcSvcId
+
+    @property
+    def NetworkType(self):
+        r"""网络连接类型
+vpc：vpc网络
+public：公网
+通过vpc网络连接需要设置VpcSvcId参数
+        :rtype: str
+        """
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1605,6 +1655,9 @@ class CreateHttpAuthenticatorRequest(AbstractModel):
                 obj = BodyItem()
                 obj._deserialize(item)
                 self._Body.append(obj)
+        self._IncludingUserProperties = params.get("IncludingUserProperties")
+        self._VpcSvcId = params.get("VpcSvcId")
+        self._NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4335,10 +4388,19 @@ class DescribeClientListRequest(AbstractModel):
         :type ClientId: str
         :param _Number: 客户端数量限制,最大1024，默认1024
         :type Number: str
+        :param _OnlineStatus: 0:查询在线和离线客户端（默认值）
+1:查询在线客户端
+2:查询离线客户端
+        :type OnlineStatus: int
+        :param _MaxTimestamp: 在线连接：表示最后的连接时间
+离线连接：表示最后的断开连接时间
+        :type MaxTimestamp: int
         """
         self._InstanceId = None
         self._ClientId = None
         self._Number = None
+        self._OnlineStatus = None
+        self._MaxTimestamp = None
 
     @property
     def InstanceId(self):
@@ -4373,11 +4435,38 @@ class DescribeClientListRequest(AbstractModel):
     def Number(self, Number):
         self._Number = Number
 
+    @property
+    def OnlineStatus(self):
+        r"""0:查询在线和离线客户端（默认值）
+1:查询在线客户端
+2:查询离线客户端
+        :rtype: int
+        """
+        return self._OnlineStatus
+
+    @OnlineStatus.setter
+    def OnlineStatus(self, OnlineStatus):
+        self._OnlineStatus = OnlineStatus
+
+    @property
+    def MaxTimestamp(self):
+        r"""在线连接：表示最后的连接时间
+离线连接：表示最后的断开连接时间
+        :rtype: int
+        """
+        return self._MaxTimestamp
+
+    @MaxTimestamp.setter
+    def MaxTimestamp(self, MaxTimestamp):
+        self._MaxTimestamp = MaxTimestamp
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ClientId = params.get("ClientId")
         self._Number = params.get("Number")
+        self._OnlineStatus = params.get("OnlineStatus")
+        self._MaxTimestamp = params.get("MaxTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5497,17 +5586,13 @@ class DescribeInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 查询条件列表,支持以下字段
-InstanceName：集群名模糊搜索
-InstanceId：集群id精确搜索
-InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）
-注意：配置TagFilters时该查询条件不生效。
+        :param _Filters: <p>查询条件列表,支持以下字段<br>InstanceName：集群名模糊搜索<br>InstanceId：集群id精确搜索<br>InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）<br>PayMode：付费模式搜索（PREPAID-包年包月，POSTPAID-按小时计费）<br>ExpiredBefore：按过期时间过滤：仅筛选包年包月（PREPAID）集群<br>注意：配置TagFilters时该查询条件不生效。</p>
         :type Filters: list of Filter
-        :param _Offset: 查询起始位置，默认0
+        :param _Offset: <p>查询起始位置，默认0</p>
         :type Offset: int
-        :param _Limit: 查询结果限制数量，默认20，最大100
+        :param _Limit: <p>查询结果限制数量，默认20，最大100</p>
         :type Limit: int
-        :param _TagFilters: 标签过滤器
+        :param _TagFilters: <p>标签过滤器</p>
         :type TagFilters: list of TagFilter
         """
         self._Filters = None
@@ -5517,11 +5602,7 @@ InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，M
 
     @property
     def Filters(self):
-        r"""查询条件列表,支持以下字段
-InstanceName：集群名模糊搜索
-InstanceId：集群id精确搜索
-InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）
-注意：配置TagFilters时该查询条件不生效。
+        r"""<p>查询条件列表,支持以下字段<br>InstanceName：集群名模糊搜索<br>InstanceId：集群id精确搜索<br>InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）<br>PayMode：付费模式搜索（PREPAID-包年包月，POSTPAID-按小时计费）<br>ExpiredBefore：按过期时间过滤：仅筛选包年包月（PREPAID）集群<br>注意：配置TagFilters时该查询条件不生效。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -5532,7 +5613,7 @@ InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，M
 
     @property
     def Offset(self):
-        r"""查询起始位置，默认0
+        r"""<p>查询起始位置，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -5543,7 +5624,7 @@ InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，M
 
     @property
     def Limit(self):
-        r"""查询结果限制数量，默认20，最大100
+        r"""<p>查询结果限制数量，默认20，最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -5554,7 +5635,7 @@ InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，M
 
     @property
     def TagFilters(self):
-        r"""标签过滤器
+        r"""<p>标签过滤器</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -5596,9 +5677,9 @@ class DescribeInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 查询总数
+        :param _TotalCount: <p>查询总数</p>
         :type TotalCount: int
-        :param _Data: 实例列表
+        :param _Data: <p>实例列表</p>
         :type Data: list of MQTTInstanceItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5609,7 +5690,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询总数
+        r"""<p>查询总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -5620,7 +5701,7 @@ class DescribeInstanceListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""实例列表
+        r"""<p>实例列表</p>
         :rtype: list of MQTTInstanceItem
         """
         return self._Data
@@ -5767,6 +5848,12 @@ class DescribeInstanceResponse(AbstractModel):
         :type MessageEnrichmentRuleLimit: int
         :param _BlockRuleLimit: <p>封禁规则最大数量</p>
         :type BlockRuleLimit: int
+        :param _DeleteProtect: <p>删除保护开关</p>
+        :type DeleteProtect: bool
+        :param _EventDialect: <p>集群客户端事件格式</p><p>枚举值：</p><ul><li>V1： 详见官网文档</li><li>V2： 详见官网文档</li><li>V3： 详见官网文档</li></ul><p>默认值：V3</p>
+        :type EventDialect: str
+        :param _HashMessagePolicy: <p>消息HASH策略</p><p>枚举值：</p><ul><li>TOPIC_NAME： 按主题名</li><li>CLIENT_ID： 按客户端ID</li></ul><p>默认值：TOPIC_NAME</p>
+        :type HashMessagePolicy: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5806,6 +5893,9 @@ class DescribeInstanceResponse(AbstractModel):
         self._TransportLayerSecurity = None
         self._MessageEnrichmentRuleLimit = None
         self._BlockRuleLimit = None
+        self._DeleteProtect = None
+        self._EventDialect = None
+        self._HashMessagePolicy = None
         self._RequestId = None
 
     @property
@@ -6209,6 +6299,39 @@ class DescribeInstanceResponse(AbstractModel):
         self._BlockRuleLimit = BlockRuleLimit
 
     @property
+    def DeleteProtect(self):
+        r"""<p>删除保护开关</p>
+        :rtype: bool
+        """
+        return self._DeleteProtect
+
+    @DeleteProtect.setter
+    def DeleteProtect(self, DeleteProtect):
+        self._DeleteProtect = DeleteProtect
+
+    @property
+    def EventDialect(self):
+        r"""<p>集群客户端事件格式</p><p>枚举值：</p><ul><li>V1： 详见官网文档</li><li>V2： 详见官网文档</li><li>V3： 详见官网文档</li></ul><p>默认值：V3</p>
+        :rtype: str
+        """
+        return self._EventDialect
+
+    @EventDialect.setter
+    def EventDialect(self, EventDialect):
+        self._EventDialect = EventDialect
+
+    @property
+    def HashMessagePolicy(self):
+        r"""<p>消息HASH策略</p><p>枚举值：</p><ul><li>TOPIC_NAME： 按主题名</li><li>CLIENT_ID： 按客户端ID</li></ul><p>默认值：TOPIC_NAME</p>
+        :rtype: str
+        """
+        return self._HashMessagePolicy
+
+    @HashMessagePolicy.setter
+    def HashMessagePolicy(self, HashMessagePolicy):
+        self._HashMessagePolicy = HashMessagePolicy
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6257,6 +6380,9 @@ class DescribeInstanceResponse(AbstractModel):
         self._TransportLayerSecurity = params.get("TransportLayerSecurity")
         self._MessageEnrichmentRuleLimit = params.get("MessageEnrichmentRuleLimit")
         self._BlockRuleLimit = params.get("BlockRuleLimit")
+        self._DeleteProtect = params.get("DeleteProtect")
+        self._EventDialect = params.get("EventDialect")
+        self._HashMessagePolicy = params.get("HashMessagePolicy")
         self._RequestId = params.get("RequestId")
 
 
@@ -8644,9 +8770,12 @@ class KickOutClientRequest(AbstractModel):
         :type InstanceId: str
         :param _ClientId: 客户端id
         :type ClientId: str
+        :param _DeleteSession: 是否清理session，默认false
+        :type DeleteSession: bool
         """
         self._InstanceId = None
         self._ClientId = None
+        self._DeleteSession = None
 
     @property
     def InstanceId(self):
@@ -8670,10 +8799,22 @@ class KickOutClientRequest(AbstractModel):
     def ClientId(self, ClientId):
         self._ClientId = ClientId
 
+    @property
+    def DeleteSession(self):
+        r"""是否清理session，默认false
+        :rtype: bool
+        """
+        return self._DeleteSession
+
+    @DeleteSession.setter
+    def DeleteSession(self, DeleteSession):
+        self._DeleteSession = DeleteSession
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ClientId = params.get("ClientId")
+        self._DeleteSession = params.get("DeleteSession")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8904,6 +9045,10 @@ class MQTTClientInfo(AbstractModel):
         :type DisconnectTime: int
         :param _MQTTClientSubscriptions: 客户端的订阅列表
         :type MQTTClientSubscriptions: list of MQTTClientSubscription
+        :param _CleanSession: clean-session标志，在客户端使用mqtt5协议时，该字段即clean-start
+        :type CleanSession: bool
+        :param _ExpireIntervalInSeconds: MQTT5协议：expireIntervalInSeconds
+        :type ExpireIntervalInSeconds: int
         """
         self._ClientId = None
         self._ClientAddress = None
@@ -8914,6 +9059,8 @@ class MQTTClientInfo(AbstractModel):
         self._ConnectTime = None
         self._DisconnectTime = None
         self._MQTTClientSubscriptions = None
+        self._CleanSession = None
+        self._ExpireIntervalInSeconds = None
 
     @property
     def ClientId(self):
@@ -9017,6 +9164,28 @@ class MQTTClientInfo(AbstractModel):
     def MQTTClientSubscriptions(self, MQTTClientSubscriptions):
         self._MQTTClientSubscriptions = MQTTClientSubscriptions
 
+    @property
+    def CleanSession(self):
+        r"""clean-session标志，在客户端使用mqtt5协议时，该字段即clean-start
+        :rtype: bool
+        """
+        return self._CleanSession
+
+    @CleanSession.setter
+    def CleanSession(self, CleanSession):
+        self._CleanSession = CleanSession
+
+    @property
+    def ExpireIntervalInSeconds(self):
+        r"""MQTT5协议：expireIntervalInSeconds
+        :rtype: int
+        """
+        return self._ExpireIntervalInSeconds
+
+    @ExpireIntervalInSeconds.setter
+    def ExpireIntervalInSeconds(self, ExpireIntervalInSeconds):
+        self._ExpireIntervalInSeconds = ExpireIntervalInSeconds
+
 
     def _deserialize(self, params):
         self._ClientId = params.get("ClientId")
@@ -9033,6 +9202,8 @@ class MQTTClientInfo(AbstractModel):
                 obj = MQTTClientSubscription()
                 obj._deserialize(item)
                 self._MQTTClientSubscriptions.append(obj)
+        self._CleanSession = params.get("CleanSession")
+        self._ExpireIntervalInSeconds = params.get("ExpireIntervalInSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9345,6 +9516,8 @@ DELETING，删除中
         :type AutoSubscriptionPolicyLimit: int
         :param _MaxTopicFilterPerAutoSubscriptionPolicy: 单条自动订阅规则TopicFilter数限制
         :type MaxTopicFilterPerAutoSubscriptionPolicy: int
+        :param _DeleteProtect: 集群删除保护开关
+        :type DeleteProtect: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -9370,6 +9543,7 @@ DELETING，删除中
         self._MaxTopicFilterPerSharedSubscriptionGroup = None
         self._AutoSubscriptionPolicyLimit = None
         self._MaxTopicFilterPerAutoSubscriptionPolicy = None
+        self._DeleteProtect = None
 
     @property
     def InstanceId(self):
@@ -9618,6 +9792,8 @@ DELETING，删除中
 
     @property
     def MaxTopicFilterPerSharedSubscriptionGroup(self):
+        warnings.warn("parameter `MaxTopicFilterPerSharedSubscriptionGroup` is deprecated", DeprecationWarning) 
+
         r"""单个共享订阅组TopicFilter数限制
         :rtype: int
         """
@@ -9625,6 +9801,8 @@ DELETING，删除中
 
     @MaxTopicFilterPerSharedSubscriptionGroup.setter
     def MaxTopicFilterPerSharedSubscriptionGroup(self, MaxTopicFilterPerSharedSubscriptionGroup):
+        warnings.warn("parameter `MaxTopicFilterPerSharedSubscriptionGroup` is deprecated", DeprecationWarning) 
+
         self._MaxTopicFilterPerSharedSubscriptionGroup = MaxTopicFilterPerSharedSubscriptionGroup
 
     @property
@@ -9648,6 +9826,17 @@ DELETING，删除中
     @MaxTopicFilterPerAutoSubscriptionPolicy.setter
     def MaxTopicFilterPerAutoSubscriptionPolicy(self, MaxTopicFilterPerAutoSubscriptionPolicy):
         self._MaxTopicFilterPerAutoSubscriptionPolicy = MaxTopicFilterPerAutoSubscriptionPolicy
+
+    @property
+    def DeleteProtect(self):
+        r"""集群删除保护开关
+        :rtype: bool
+        """
+        return self._DeleteProtect
+
+    @DeleteProtect.setter
+    def DeleteProtect(self, DeleteProtect):
+        self._DeleteProtect = DeleteProtect
 
 
     def _deserialize(self, params):
@@ -9675,6 +9864,7 @@ DELETING，删除中
         self._MaxTopicFilterPerSharedSubscriptionGroup = params.get("MaxTopicFilterPerSharedSubscriptionGroup")
         self._AutoSubscriptionPolicyLimit = params.get("AutoSubscriptionPolicyLimit")
         self._MaxTopicFilterPerAutoSubscriptionPolicy = params.get("MaxTopicFilterPerAutoSubscriptionPolicy")
+        self._DeleteProtect = params.get("DeleteProtect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

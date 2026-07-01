@@ -787,7 +787,7 @@ class IoaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyVirtualDeviceGroupsResponse:
         """
-        终端自定义分组增减终端，私有化调用path为：/capi/Assets/Device/ModifyVirtualDeviceGroups
+        终端自定义分组批量增减终端，私有化调用path为：/capi/Assets/Device/ModifyVirtualDeviceGroups
         """
         
         kwargs = {}

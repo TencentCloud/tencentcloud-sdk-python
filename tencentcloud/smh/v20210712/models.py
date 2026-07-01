@@ -1373,55 +1373,60 @@ class LibraryExtension(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsFileLibrary: true 为文件类型媒体库，可存储任何类型文件；false 为媒体类型媒体库，仅可存储照片和视频类型文件。默认为 false。在媒体库创建后不能修改。
+        :param _IsFileLibrary: <p>true 为文件类型媒体库，可存储任何类型文件；false 为媒体类型媒体库，仅可存储照片和视频类型文件。默认为 false。在媒体库创建后不能修改。</p>
         :type IsFileLibrary: bool
-        :param _IsMultiSpace: true 为多租户空间媒体库，可创建多个租户空间；false 为单租户空间媒体库，不能创建租户空间，仅可使用默认的单一租户空间。默认为 false。在媒体库创建后不能修改。
+        :param _IsMultiSpace: <p>true 为多租户空间媒体库，可创建多个租户空间；false 为单租户空间媒体库，不能创建租户空间，仅可使用默认的单一租户空间。默认为 false。在媒体库创建后不能修改。</p>
         :type IsMultiSpace: bool
-        :param _CosStorageClass: 保存至 COS 对象存储的文件的存储类型，仅支持 STANDARD、STANDARD_IA、INTELLIGENT_TIERING、MAZ_STANDARD、MAZ_STANDARD_IA 和 MAZ_INTELLIGENT_TIERING，默认为 STANDARD，当使用多 AZ 存储桶时将自动使用 MAZ_ 开头的用于多 AZ 的存储类型，否则自动使用非 MAZ_ 开头的用于非多 AZ 的存储类型。当指定智能分层存储 INTELLIGENT_TIERING 或 MAZ_INTELLIGENT_TIERING 时，需要事先为存储桶开启智能分层存储，否则将返回失败。在媒体库创建后不能修改。
+        :param _CosStorageClass: <p>保存至 COS 对象存储的文件的存储类型，仅支持 STANDARD、STANDARD_IA、INTELLIGENT_TIERING、MAZ_STANDARD、MAZ_STANDARD_IA 和 MAZ_INTELLIGENT_TIERING，默认为 STANDARD，当使用多 AZ 存储桶时将自动使用 MAZ_ 开头的用于多 AZ 的存储类型，否则自动使用非 MAZ_ 开头的用于非多 AZ 的存储类型。当指定智能分层存储 INTELLIGENT_TIERING 或 MAZ_INTELLIGENT_TIERING 时，需要事先为存储桶开启智能分层存储，否则将返回失败。在媒体库创建后不能修改。</p>
         :type CosStorageClass: str
-        :param _UseRecycleBin: 是否开启回收站功能。默认为 false。
+        :param _UseRecycleBin: <p>是否开启回收站功能。默认为 false。</p>
         :type UseRecycleBin: bool
-        :param _AutoRemoveRecycledDays: 当开启回收站时，自动删除回收站项目的天数，不能超过 1095（3 年），指定为 0 则不自动删除，默认为 0。当未开启回收站时，该属性为 null。
+        :param _AutoRemoveRecycledDays: <p>当开启回收站时，自动删除回收站项目的天数，不能超过 1095（3 年），指定为 0 则不自动删除，默认为 0。当未开启回收站时，该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRemoveRecycledDays: int
-        :param _EnableSearch: 是否启用文件路径搜索功能。默认为 false。
+        :param _EnableSearch: <p>是否启用文件路径搜索功能。默认为 false。</p>
         :type EnableSearch: bool
-        :param _DenyOnQuotaLessThanUsage: 设置媒体库或租户空间配额且配额小于已使用存储量时，是否拒绝设置请求。默认为 false。
+        :param _DenyOnQuotaLessThanUsage: <p>设置媒体库或租户空间配额且配额小于已使用存储量时，是否拒绝设置请求。默认为 false。</p>
         :type DenyOnQuotaLessThanUsage: bool
-        :param _EnableFileHistory: 是否开启历史版本。默认为 false。
+        :param _EnableFileHistory: <p>是否开启历史版本。默认为 false。</p>
         :type EnableFileHistory: bool
-        :param _FileHistoryCount: 当开启历史版本时，指定单个文件保留的历史版本的数量上限，取值范围为 1 到 999。当未开启历史版本时，该属性可能为 null。
+        :param _FileHistoryCount: <p>当开启历史版本时，指定单个文件保留的历史版本的数量上限，取值范围为 1 到 999。当未开启历史版本时，该属性可能为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileHistoryCount: int
-        :param _FileHistoryExpireDay: 当开启历史版本时，指定历史版本保留的最长天数，取值范围为 0 到 999，当指定为 0 时代表永久保留。当未开启历史版本时，该属性可能为 null。
+        :param _FileHistoryExpireDay: <p>当开启历史版本时，指定历史版本保留的最长天数，取值范围为 0 到 999，当指定为 0 时代表永久保留。当未开启历史版本时，该属性可能为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileHistoryExpireDay: int
-        :param _MaxDirFileNameLength: 目录或文件名的最长长度，不能超过 255，默认为 255。修改该参数不会影响存量目录或文件名，即如果将该字段的值改小，已经存在的长度超过目标值的目录或文件名不会发生变化。
+        :param _MaxDirFileNameLength: <p>目录或文件名的最长长度，不能超过 255，默认为 255。修改该参数不会影响存量目录或文件名，即如果将该字段的值改小，已经存在的长度超过目标值的目录或文件名不会发生变化。</p>
         :type MaxDirFileNameLength: int
-        :param _IsPublicRead: 是否开启公有读，开启后读操作无需使用访问令牌，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。
+        :param _IsPublicRead: <p>是否开启公有读，开启后读操作无需使用访问令牌，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPublicRead: bool
-        :param _IsMultiAlbum: 媒体类型媒体库是否开启多相簿，开启后可创建一级目录（即相簿）且媒体文件只能保存在各相簿中，否则不能创建相簿且媒体文件只能保存在根目录。默认为 false。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。在媒体库创建后不能修改。
+        :param _IsMultiAlbum: <p>媒体类型媒体库是否开启多相簿，开启后可创建一级目录（即相簿）且媒体文件只能保存在各相簿中，否则不能创建相簿且媒体文件只能保存在根目录。默认为 false。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。在媒体库创建后不能修改。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsMultiAlbum: bool
-        :param _AllowPhoto: 媒体类型媒体库是否允许上传照片，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+        :param _AllowPhoto: <p>媒体类型媒体库是否允许上传照片，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowPhoto: bool
-        :param _AllowPhotoExtName: 当媒体类型媒体库允许上传照片时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+        :param _AllowPhotoExtName: <p>当媒体类型媒体库允许上传照片时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowPhotoExtName: list of str
-        :param _AllowVideo: 媒体类型媒体库是否允许上传视频，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+        :param _AllowVideo: <p>媒体类型媒体库是否允许上传视频，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowVideo: bool
-        :param _AllowVideoExtName: 当媒体类型媒体库允许上传视频时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+        :param _AllowVideoExtName: <p>当媒体类型媒体库允许上传视频时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowVideoExtName: list of str
-        :param _AllowFileExtName: 指定文件类型媒体库允许的文件扩展名，默认为空数组，此时允许上传所有类型文件。仅单租户空间文件类型媒体库支持该属性，否则该属性为 null。
+        :param _AllowFileExtName: <p>指定文件类型媒体库允许的文件扩展名，默认为空数组，此时允许上传所有类型文件。仅单租户空间文件类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowFileExtName: list of str
-        :param _RecognizeSensitiveContent: 照片上传时是否进行敏感内容鉴定，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。
+        :param _RecognizeSensitiveContent: <p>照片上传时是否进行敏感内容鉴定，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecognizeSensitiveContent: bool
+        :param _EnableQuota: <p>是否开启媒体库配额</p><p>默认值：false</p><p>创建媒体库指定，创建后不允许修改</p>
+        :type EnableQuota: bool
+        :param _LibraryQuota: <p>媒体库配额，单位：字节</p><p>取值范围：[1, 9223372036854775807]</p><p>创建媒体库时，开启媒体库配额情况下，此参数必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibraryQuota: int
         """
         self._IsFileLibrary = None
         self._IsMultiSpace = None
@@ -1442,10 +1447,12 @@ class LibraryExtension(AbstractModel):
         self._AllowVideoExtName = None
         self._AllowFileExtName = None
         self._RecognizeSensitiveContent = None
+        self._EnableQuota = None
+        self._LibraryQuota = None
 
     @property
     def IsFileLibrary(self):
-        r"""true 为文件类型媒体库，可存储任何类型文件；false 为媒体类型媒体库，仅可存储照片和视频类型文件。默认为 false。在媒体库创建后不能修改。
+        r"""<p>true 为文件类型媒体库，可存储任何类型文件；false 为媒体类型媒体库，仅可存储照片和视频类型文件。默认为 false。在媒体库创建后不能修改。</p>
         :rtype: bool
         """
         return self._IsFileLibrary
@@ -1456,7 +1463,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def IsMultiSpace(self):
-        r"""true 为多租户空间媒体库，可创建多个租户空间；false 为单租户空间媒体库，不能创建租户空间，仅可使用默认的单一租户空间。默认为 false。在媒体库创建后不能修改。
+        r"""<p>true 为多租户空间媒体库，可创建多个租户空间；false 为单租户空间媒体库，不能创建租户空间，仅可使用默认的单一租户空间。默认为 false。在媒体库创建后不能修改。</p>
         :rtype: bool
         """
         return self._IsMultiSpace
@@ -1467,7 +1474,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def CosStorageClass(self):
-        r"""保存至 COS 对象存储的文件的存储类型，仅支持 STANDARD、STANDARD_IA、INTELLIGENT_TIERING、MAZ_STANDARD、MAZ_STANDARD_IA 和 MAZ_INTELLIGENT_TIERING，默认为 STANDARD，当使用多 AZ 存储桶时将自动使用 MAZ_ 开头的用于多 AZ 的存储类型，否则自动使用非 MAZ_ 开头的用于非多 AZ 的存储类型。当指定智能分层存储 INTELLIGENT_TIERING 或 MAZ_INTELLIGENT_TIERING 时，需要事先为存储桶开启智能分层存储，否则将返回失败。在媒体库创建后不能修改。
+        r"""<p>保存至 COS 对象存储的文件的存储类型，仅支持 STANDARD、STANDARD_IA、INTELLIGENT_TIERING、MAZ_STANDARD、MAZ_STANDARD_IA 和 MAZ_INTELLIGENT_TIERING，默认为 STANDARD，当使用多 AZ 存储桶时将自动使用 MAZ_ 开头的用于多 AZ 的存储类型，否则自动使用非 MAZ_ 开头的用于非多 AZ 的存储类型。当指定智能分层存储 INTELLIGENT_TIERING 或 MAZ_INTELLIGENT_TIERING 时，需要事先为存储桶开启智能分层存储，否则将返回失败。在媒体库创建后不能修改。</p>
         :rtype: str
         """
         return self._CosStorageClass
@@ -1478,7 +1485,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def UseRecycleBin(self):
-        r"""是否开启回收站功能。默认为 false。
+        r"""<p>是否开启回收站功能。默认为 false。</p>
         :rtype: bool
         """
         return self._UseRecycleBin
@@ -1489,7 +1496,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AutoRemoveRecycledDays(self):
-        r"""当开启回收站时，自动删除回收站项目的天数，不能超过 1095（3 年），指定为 0 则不自动删除，默认为 0。当未开启回收站时，该属性为 null。
+        r"""<p>当开启回收站时，自动删除回收站项目的天数，不能超过 1095（3 年），指定为 0 则不自动删除，默认为 0。当未开启回收站时，该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1501,7 +1508,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def EnableSearch(self):
-        r"""是否启用文件路径搜索功能。默认为 false。
+        r"""<p>是否启用文件路径搜索功能。默认为 false。</p>
         :rtype: bool
         """
         return self._EnableSearch
@@ -1512,7 +1519,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def DenyOnQuotaLessThanUsage(self):
-        r"""设置媒体库或租户空间配额且配额小于已使用存储量时，是否拒绝设置请求。默认为 false。
+        r"""<p>设置媒体库或租户空间配额且配额小于已使用存储量时，是否拒绝设置请求。默认为 false。</p>
         :rtype: bool
         """
         return self._DenyOnQuotaLessThanUsage
@@ -1523,7 +1530,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def EnableFileHistory(self):
-        r"""是否开启历史版本。默认为 false。
+        r"""<p>是否开启历史版本。默认为 false。</p>
         :rtype: bool
         """
         return self._EnableFileHistory
@@ -1534,7 +1541,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def FileHistoryCount(self):
-        r"""当开启历史版本时，指定单个文件保留的历史版本的数量上限，取值范围为 1 到 999。当未开启历史版本时，该属性可能为 null。
+        r"""<p>当开启历史版本时，指定单个文件保留的历史版本的数量上限，取值范围为 1 到 999。当未开启历史版本时，该属性可能为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1546,7 +1553,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def FileHistoryExpireDay(self):
-        r"""当开启历史版本时，指定历史版本保留的最长天数，取值范围为 0 到 999，当指定为 0 时代表永久保留。当未开启历史版本时，该属性可能为 null。
+        r"""<p>当开启历史版本时，指定历史版本保留的最长天数，取值范围为 0 到 999，当指定为 0 时代表永久保留。当未开启历史版本时，该属性可能为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1558,7 +1565,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def MaxDirFileNameLength(self):
-        r"""目录或文件名的最长长度，不能超过 255，默认为 255。修改该参数不会影响存量目录或文件名，即如果将该字段的值改小，已经存在的长度超过目标值的目录或文件名不会发生变化。
+        r"""<p>目录或文件名的最长长度，不能超过 255，默认为 255。修改该参数不会影响存量目录或文件名，即如果将该字段的值改小，已经存在的长度超过目标值的目录或文件名不会发生变化。</p>
         :rtype: int
         """
         return self._MaxDirFileNameLength
@@ -1569,7 +1576,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def IsPublicRead(self):
-        r"""是否开启公有读，开启后读操作无需使用访问令牌，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。
+        r"""<p>是否开启公有读，开启后读操作无需使用访问令牌，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1581,7 +1588,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def IsMultiAlbum(self):
-        r"""媒体类型媒体库是否开启多相簿，开启后可创建一级目录（即相簿）且媒体文件只能保存在各相簿中，否则不能创建相簿且媒体文件只能保存在根目录。默认为 false。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。在媒体库创建后不能修改。
+        r"""<p>媒体类型媒体库是否开启多相簿，开启后可创建一级目录（即相簿）且媒体文件只能保存在各相簿中，否则不能创建相簿且媒体文件只能保存在根目录。默认为 false。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。在媒体库创建后不能修改。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1593,7 +1600,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowPhoto(self):
-        r"""媒体类型媒体库是否允许上传照片，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+        r"""<p>媒体类型媒体库是否允许上传照片，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1605,7 +1612,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowPhotoExtName(self):
-        r"""当媒体类型媒体库允许上传照片时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+        r"""<p>当媒体类型媒体库允许上传照片时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1617,7 +1624,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowVideo(self):
-        r"""媒体类型媒体库是否允许上传视频，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+        r"""<p>媒体类型媒体库是否允许上传视频，默认为 true。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1629,7 +1636,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowVideoExtName(self):
-        r"""当媒体类型媒体库允许上传视频时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。
+        r"""<p>当媒体类型媒体库允许上传视频时，指定允许的扩展名，默认为空数组，此时将根据文件扩展名对应的 MIME 类型自动判断。仅单租户空间媒体类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1641,7 +1648,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def AllowFileExtName(self):
-        r"""指定文件类型媒体库允许的文件扩展名，默认为空数组，此时允许上传所有类型文件。仅单租户空间文件类型媒体库支持该属性，否则该属性为 null。
+        r"""<p>指定文件类型媒体库允许的文件扩展名，默认为空数组，此时允许上传所有类型文件。仅单租户空间文件类型媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1653,7 +1660,7 @@ class LibraryExtension(AbstractModel):
 
     @property
     def RecognizeSensitiveContent(self):
-        r"""照片上传时是否进行敏感内容鉴定，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。
+        r"""<p>照片上传时是否进行敏感内容鉴定，默认为 false。仅单租户空间媒体库支持该属性，否则该属性为 null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1662,6 +1669,29 @@ class LibraryExtension(AbstractModel):
     @RecognizeSensitiveContent.setter
     def RecognizeSensitiveContent(self, RecognizeSensitiveContent):
         self._RecognizeSensitiveContent = RecognizeSensitiveContent
+
+    @property
+    def EnableQuota(self):
+        r"""<p>是否开启媒体库配额</p><p>默认值：false</p><p>创建媒体库指定，创建后不允许修改</p>
+        :rtype: bool
+        """
+        return self._EnableQuota
+
+    @EnableQuota.setter
+    def EnableQuota(self, EnableQuota):
+        self._EnableQuota = EnableQuota
+
+    @property
+    def LibraryQuota(self):
+        r"""<p>媒体库配额，单位：字节</p><p>取值范围：[1, 9223372036854775807]</p><p>创建媒体库时，开启媒体库配额情况下，此参数必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LibraryQuota
+
+    @LibraryQuota.setter
+    def LibraryQuota(self, LibraryQuota):
+        self._LibraryQuota = LibraryQuota
 
 
     def _deserialize(self, params):
@@ -1684,6 +1714,8 @@ class LibraryExtension(AbstractModel):
         self._AllowVideoExtName = params.get("AllowVideoExtName")
         self._AllowFileExtName = params.get("AllowFileExtName")
         self._RecognizeSensitiveContent = params.get("RecognizeSensitiveContent")
+        self._EnableQuota = params.get("EnableQuota")
+        self._LibraryQuota = params.get("LibraryQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

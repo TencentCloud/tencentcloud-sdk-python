@@ -8337,6 +8337,57 @@ class AssetViewWeakPassRisk(AbstractModel):
         
 
 
+class AttackStageCount(AbstractModel):
+    r"""EDR-攻击阶段对应数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttackStage: <p>攻击阶段</p>
+        :type AttackStage: str
+        :param _Count: <p>策略数量</p>
+        :type Count: int
+        """
+        self._AttackStage = None
+        self._Count = None
+
+    @property
+    def AttackStage(self):
+        r"""<p>攻击阶段</p>
+        :rtype: str
+        """
+        return self._AttackStage
+
+    @AttackStage.setter
+    def AttackStage(self, AttackStage):
+        self._AttackStage = AttackStage
+
+    @property
+    def Count(self):
+        r"""<p>策略数量</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._AttackStage = params.get("AttackStage")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttributeOptionSet(AbstractModel):
     r"""通用的下拉框列表
 
@@ -9996,6 +10047,87 @@ class CICDToken(AbstractModel):
         self._FileCnt = params.get("FileCnt")
         self._LastScanStatus = params.get("LastScanStatus")
         self._LastScanTime = params.get("LastScanTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CSIPTag(AbstractModel):
+    r"""安全中心标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagColor: <p>标签颜色</p>
+        :type TagColor: str
+        :param _TagID: <p>标签ID</p>
+        :type TagID: int
+        :param _TagKey: <p>标签键（根据语言环境返回中文或英文）</p>
+        :type TagKey: str
+        :param _TagValue: <p>标签值（根据语言环境返回中文或英文）</p>
+        :type TagValue: str
+        """
+        self._TagColor = None
+        self._TagID = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagColor(self):
+        r"""<p>标签颜色</p>
+        :rtype: str
+        """
+        return self._TagColor
+
+    @TagColor.setter
+    def TagColor(self, TagColor):
+        self._TagColor = TagColor
+
+    @property
+    def TagID(self):
+        r"""<p>标签ID</p>
+        :rtype: int
+        """
+        return self._TagID
+
+    @TagID.setter
+    def TagID(self, TagID):
+        self._TagID = TagID
+
+    @property
+    def TagKey(self):
+        r"""<p>标签键（根据语言环境返回中文或英文）</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>标签值（根据语言环境返回中文或英文）</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagColor = params.get("TagColor")
+        self._TagID = params.get("TagID")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22046,6 +22178,190 @@ class DescribeAIAgentAssetListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._AssetList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAILinkSettingRequest(AbstractModel):
+    r"""DescribeAILinkSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAILinkSettingResponse(AbstractModel):
+    r"""DescribeAILinkSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AILinkEnable: <p>0 关闭AI-Link智链引擎，1 开启AI-Link智链引擎</p>
+        :type AILinkEnable: int
+        :param _RuleScopeDeep: <p>深度模式 0-关闭 1-开启</p>
+        :type RuleScopeDeep: int
+        :param _RuleScopeBalanced: <p>均衡模式 0-关闭 1-开启</p>
+        :type RuleScopeBalanced: int
+        :param _RuleScopePrecise: <p>精准模式 0-关闭 1-开启</p>
+        :type RuleScopePrecise: int
+        :param _Scope: <p>1 全部专业/旗舰版主机，0 Quuids列表主机</p>
+        :type Scope: int
+        :param _Quuids: <p>自选主机Quuid列表</p>
+        :type Quuids: list of str
+        :param _ExcludeQuuids: <p>排除主机Quuid列表</p>
+        :type ExcludeQuuids: list of str
+        :param _AutoInclude: <p>新增资产自动包含 0 不包含 1包含</p>
+        :type AutoInclude: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AILinkEnable = None
+        self._RuleScopeDeep = None
+        self._RuleScopeBalanced = None
+        self._RuleScopePrecise = None
+        self._Scope = None
+        self._Quuids = None
+        self._ExcludeQuuids = None
+        self._AutoInclude = None
+        self._RequestId = None
+
+    @property
+    def AILinkEnable(self):
+        r"""<p>0 关闭AI-Link智链引擎，1 开启AI-Link智链引擎</p>
+        :rtype: int
+        """
+        return self._AILinkEnable
+
+    @AILinkEnable.setter
+    def AILinkEnable(self, AILinkEnable):
+        self._AILinkEnable = AILinkEnable
+
+    @property
+    def RuleScopeDeep(self):
+        r"""<p>深度模式 0-关闭 1-开启</p>
+        :rtype: int
+        """
+        return self._RuleScopeDeep
+
+    @RuleScopeDeep.setter
+    def RuleScopeDeep(self, RuleScopeDeep):
+        self._RuleScopeDeep = RuleScopeDeep
+
+    @property
+    def RuleScopeBalanced(self):
+        r"""<p>均衡模式 0-关闭 1-开启</p>
+        :rtype: int
+        """
+        return self._RuleScopeBalanced
+
+    @RuleScopeBalanced.setter
+    def RuleScopeBalanced(self, RuleScopeBalanced):
+        self._RuleScopeBalanced = RuleScopeBalanced
+
+    @property
+    def RuleScopePrecise(self):
+        r"""<p>精准模式 0-关闭 1-开启</p>
+        :rtype: int
+        """
+        return self._RuleScopePrecise
+
+    @RuleScopePrecise.setter
+    def RuleScopePrecise(self, RuleScopePrecise):
+        self._RuleScopePrecise = RuleScopePrecise
+
+    @property
+    def Scope(self):
+        r"""<p>1 全部专业/旗舰版主机，0 Quuids列表主机</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Quuids(self):
+        r"""<p>自选主机Quuid列表</p>
+        :rtype: list of str
+        """
+        return self._Quuids
+
+    @Quuids.setter
+    def Quuids(self, Quuids):
+        self._Quuids = Quuids
+
+    @property
+    def ExcludeQuuids(self):
+        r"""<p>排除主机Quuid列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludeQuuids
+
+    @ExcludeQuuids.setter
+    def ExcludeQuuids(self, ExcludeQuuids):
+        self._ExcludeQuuids = ExcludeQuuids
+
+    @property
+    def AutoInclude(self):
+        r"""<p>新增资产自动包含 0 不包含 1包含</p>
+        :rtype: int
+        """
+        return self._AutoInclude
+
+    @AutoInclude.setter
+    def AutoInclude(self, AutoInclude):
+        self._AutoInclude = AutoInclude
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AILinkEnable = params.get("AILinkEnable")
+        self._RuleScopeDeep = params.get("RuleScopeDeep")
+        self._RuleScopeBalanced = params.get("RuleScopeBalanced")
+        self._RuleScopePrecise = params.get("RuleScopePrecise")
+        self._Scope = params.get("Scope")
+        self._Quuids = params.get("Quuids")
+        self._ExcludeQuuids = params.get("ExcludeQuuids")
+        self._AutoInclude = params.get("AutoInclude")
         self._RequestId = params.get("RequestId")
 
 
@@ -37042,6 +37358,542 @@ class DescribeDspmWhitelistStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEDRRuleListRequest(AbstractModel):
+    r"""DescribeEDRRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>PolicyType - int - 是否必填：否 - 策略类型<br>PolicyName - string - 是否必填：否 - 策略名称<br>Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)<br>PolicyAction- int - 是否必填：否 - 策略动作<br>IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :type Filters: list of EDRFilter
+        :param _Limit: <p>限制条数,默认10,最大100</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量,默认0</p>
+        :type Offset: int
+        :param _Order: <p>排序方式: [ASC:升序|DESC:降序]</p>
+        :type Order: str
+        :param _By: <p>可选排序列: [ModifyTime]</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>PolicyType - int - 是否必填：否 - 策略类型<br>PolicyName - string - 是否必填：否 - 策略名称<br>Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)<br>PolicyAction- int - 是否必填：否 - 策略动作<br>IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>限制条数,默认10,最大100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量,默认0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方式: [ASC:升序|DESC:降序]</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>可选排序列: [ModifyTime]</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEDRRuleListResponse(AbstractModel):
+    r"""DescribeEDRRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _List: <p>列表</p>
+        :type List: list of EDRRule
+        :param _AttackStageCounts: <p>攻击阶段对应的策略数量</p>
+        :type AttackStageCounts: list of AttackStageCount
+        :param _DetectTypeCounts: <p>检测方式对应的策略数量</p>
+        :type DetectTypeCounts: list of DetectTypeCount
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._AttackStageCounts = None
+        self._DetectTypeCounts = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>列表</p>
+        :rtype: list of EDRRule
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def AttackStageCounts(self):
+        r"""<p>攻击阶段对应的策略数量</p>
+        :rtype: list of AttackStageCount
+        """
+        return self._AttackStageCounts
+
+    @AttackStageCounts.setter
+    def AttackStageCounts(self, AttackStageCounts):
+        self._AttackStageCounts = AttackStageCounts
+
+    @property
+    def DetectTypeCounts(self):
+        r"""<p>检测方式对应的策略数量</p>
+        :rtype: list of DetectTypeCount
+        """
+        return self._DetectTypeCounts
+
+    @DetectTypeCounts.setter
+    def DetectTypeCounts(self, DetectTypeCounts):
+        self._DetectTypeCounts = DetectTypeCounts
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = EDRRule()
+                obj._deserialize(item)
+                self._List.append(obj)
+        if params.get("AttackStageCounts") is not None:
+            self._AttackStageCounts = []
+            for item in params.get("AttackStageCounts"):
+                obj = AttackStageCount()
+                obj._deserialize(item)
+                self._AttackStageCounts.append(obj)
+        if params.get("DetectTypeCounts") is not None:
+            self._DetectTypeCounts = []
+            for item in params.get("DetectTypeCounts"):
+                obj = DetectTypeCount()
+                obj._deserialize(item)
+                self._DetectTypeCounts.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEdrAlertInfoRequest(AbstractModel):
+    r"""DescribeEdrAlertInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Target: <p>告警定位信息（含跨账号AppID）</p>
+        :type Target: :class:`tencentcloud.csip.v20221121.models.EdrAlertTarget`
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Target = None
+        self._MemberId = None
+
+    @property
+    def Target(self):
+        r"""<p>告警定位信息（含跨账号AppID）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.EdrAlertTarget`
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Target") is not None:
+            self._Target = EdrAlertTarget()
+            self._Target._deserialize(params.get("Target"))
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrAlertInfoResponse(AbstractModel):
+    r"""DescribeEdrAlertInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Alert: <p>告警详情</p>
+        :type Alert: :class:`tencentcloud.csip.v20221121.models.EdrAlertDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Alert = None
+        self._RequestId = None
+
+    @property
+    def Alert(self):
+        r"""<p>告警详情</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.EdrAlertDetail`
+        """
+        return self._Alert
+
+    @Alert.setter
+    def Alert(self, Alert):
+        self._Alert = Alert
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Alert") is not None:
+            self._Alert = EdrAlertDetail()
+            self._Alert._deserialize(params.get("Alert"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEdrAlertListRequest(AbstractModel):
+    r"""DescribeEdrAlertList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :type Filters: list of EDRFilter
+        :param _Limit: <p>限制条数,默认10,最大100</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量,默认0</p>
+        :type Offset: int
+        :param _Order: <p>排序方式: [ASC:升序|DESC:降序]</p>
+        :type Order: str
+        :param _By: <p>可选排序列: [LatestDetectTime]</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>限制条数,默认10,最大100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量,默认0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方式: [ASC:升序|DESC:降序]</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>可选排序列: [LatestDetectTime]</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrAlertListResponse(AbstractModel):
+    r"""DescribeEdrAlertList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _List: <p>列表</p>
+        :type List: list of EdrAlertItem
+        :param _AttackStageCounts: <p>攻击阶段对应的策略数量</p>
+        :type AttackStageCounts: list of AttackStageCount
+        :param _AlertCategoryCounts: <p>告警大类统计（随筛选变化，排除 AlertCategory filter）</p>
+        :type AlertCategoryCounts: list of EdrAlertCategoryCount
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._AttackStageCounts = None
+        self._AlertCategoryCounts = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>列表</p>
+        :rtype: list of EdrAlertItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def AttackStageCounts(self):
+        r"""<p>攻击阶段对应的策略数量</p>
+        :rtype: list of AttackStageCount
+        """
+        return self._AttackStageCounts
+
+    @AttackStageCounts.setter
+    def AttackStageCounts(self, AttackStageCounts):
+        self._AttackStageCounts = AttackStageCounts
+
+    @property
+    def AlertCategoryCounts(self):
+        r"""<p>告警大类统计（随筛选变化，排除 AlertCategory filter）</p>
+        :rtype: list of EdrAlertCategoryCount
+        """
+        return self._AlertCategoryCounts
+
+    @AlertCategoryCounts.setter
+    def AlertCategoryCounts(self, AlertCategoryCounts):
+        self._AlertCategoryCounts = AlertCategoryCounts
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = EdrAlertItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        if params.get("AttackStageCounts") is not None:
+            self._AttackStageCounts = []
+            for item in params.get("AttackStageCounts"):
+                obj = AttackStageCount()
+                obj._deserialize(item)
+                self._AttackStageCounts.append(obj)
+        if params.get("AlertCategoryCounts") is not None:
+            self._AlertCategoryCounts = []
+            for item in params.get("AlertCategoryCounts"):
+                obj = EdrAlertCategoryCount()
+                obj._deserialize(item)
+                self._AlertCategoryCounts.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExposeAssetCategoryRequest(AbstractModel):
     r"""DescribeExposeAssetCategory请求参数结构体
 
@@ -46952,6 +47804,57 @@ class DescribeVulViewVulRiskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DetectTypeCount(AbstractModel):
+    r"""EDR-检测方式对应策略数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetectType: <p>检测方式，0：主机检测，1：网络检测</p>
+        :type DetectType: int
+        :param _Count: <p>策略数量</p>
+        :type Count: int
+        """
+        self._DetectType = None
+        self._Count = None
+
+    @property
+    def DetectType(self):
+        r"""<p>检测方式，0：主机检测，1：网络检测</p>
+        :rtype: int
+        """
+        return self._DetectType
+
+    @DetectType.setter
+    def DetectType(self, DetectType):
+        self._DetectType = DetectType
+
+    @property
+    def Count(self):
+        r"""<p>策略数量</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._DetectType = params.get("DetectType")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DiskPartitionInfo(AbstractModel):
     r"""磁盘分区信息
 
@@ -47664,6 +48567,72 @@ class DomainAssetVO(AbstractModel):
         self._VerifyTXTRecord = params.get("VerifyTXTRecord")
         self._VerifyStatus = params.get("VerifyStatus")
         self._BotAccessCount = params.get("BotAccessCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DomainInfo(AbstractModel):
+    r"""反查域名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        :param _AnalysisTime: <p>分析时间</p>
+        :type AnalysisTime: str
+        :param _Tags: <p>标签</p>
+        :type Tags: list of str
+        """
+        self._Domain = None
+        self._AnalysisTime = None
+        self._Tags = None
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def AnalysisTime(self):
+        r"""<p>分析时间</p>
+        :rtype: str
+        """
+        return self._AnalysisTime
+
+    @AnalysisTime.setter
+    def AnalysisTime(self, AnalysisTime):
+        self._AnalysisTime = AnalysisTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._AnalysisTime = params.get("AnalysisTime")
+        self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55138,6 +56107,2030 @@ class DspmWhitelistStrategy(AbstractModel):
         
 
 
+class EDRFilter(AbstractModel):
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+
+    若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+    若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+
+    * 最多只能有5个Filter
+    * 同一个Filter存在多个Values，Values值数量最多不能超过5个。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>过滤键的名称。</p>
+        :type Name: str
+        :param _Values: <p>一个或者多个过滤值。</p>
+        :type Values: list of str
+        :param _ExactMatch: <p>模糊搜索</p>
+        :type ExactMatch: bool
+        """
+        self._Name = None
+        self._Values = None
+        self._ExactMatch = None
+
+    @property
+    def Name(self):
+        r"""<p>过滤键的名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""<p>一个或者多个过滤值。</p>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ExactMatch(self):
+        r"""<p>模糊搜索</p>
+        :rtype: bool
+        """
+        return self._ExactMatch
+
+    @ExactMatch.setter
+    def ExactMatch(self, ExactMatch):
+        self._ExactMatch = ExactMatch
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EDRRule(AbstractModel):
+    r"""EDR-策略内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: <p>策略ID</p>
+        :type RuleID: str
+        :param _RuleType: <p>策略类型，0-系统策略/System Rule, 1-自定义策略/Custom Rule</p>
+        :type RuleType: int
+        :param _Name: <p>策略名称</p>
+        :type Name: str
+        :param _Description: <p>策略描述</p>
+        :type Description: str
+        :param _ContentType: <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+        :type ContentType: str
+        :param _Action: <p>执行动作 / Action: 0-告警/Alert, 1-放行/Allow, 2-告警并拦截/Alert and Block</p>
+        :type Action: int
+        :param _Level: <p>告警等级 / Alert Level: 0-无/None, 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
+        :type Level: int
+        :param _DetectMode: <p>检测模式 / Detect Mode: 0-精准/Precise, 1-均衡/Balanced, 2-深度/Deep</p>
+        :type DetectMode: int
+        :param _DetectType: <p>检测方式 / Detect Type: 0-主机检测/Host Detection, 1-网络检测/Network Detection</p>
+        :type DetectType: int
+        :param _AttackStage: <p>攻击阶段</p>
+        :type AttackStage: str
+        :param _CWPScope: <p>主机生效资产范围 / Effective Scope: 0-指定主机/Specified Hosts, 1-全部主机/All Hosts, 2-专业版/Professional, 3-旗舰版/Flagship, 4-专业版+旗舰版/Professional+Flagship</p>
+        :type CWPScope: int
+        :param _QUUIDS: <p>主机运行时的自选主机</p>
+        :type QUUIDS: list of str
+        :param _Status: <p>状态 / Status: 0-开启/Enabled, 1-关闭/Disabled</p>
+        :type Status: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>修改时间</p>
+        :type ModifyTime: str
+        :param _SupportBlock: <p>是否支持拦截 / Support Block: 0-不支持/Not Supported, 1-支持/Supported</p>
+        :type SupportBlock: int
+        :param _Md5List: <p>MD5列表,ContentType=md5 时填充</p>
+        :type Md5List: list of str
+        :param _FileName: <p>文件名列表,ContentType=custom_file 时填充</p>
+        :type FileName: list of str
+        :param _FileDirectory: <p>文件目录列表,ContentType=custom_file 时填充</p>
+        :type FileDirectory: list of str
+        :param _Domains: <p>域名列表,ContentType=dns 时填充</p>
+        :type Domains: list of str
+        :param _OutboundIP: <p>出站IP列表,ContentType=ip_outbound 时填充</p>
+        :type OutboundIP: list of str
+        :param _InboundIP: <p>入站IP列表,ContentType=ip_inbound 时填充</p>
+        :type InboundIP: list of str
+        :param _CmdLineRules: <p>命令行规则,ContentType=cmdline 时填充</p>
+        :type CmdLineRules: :class:`tencentcloud.csip.v20221121.models.RuleContentCmdLine`
+        :param _TCSSScope: <p>容器生效镜像范围 / Container Image Scope: 0-指定镜像/Specified Images, 1-全部镜像/All Images</p>
+        :type TCSSScope: int
+        :param _ImageIDs: <p>生效镜像ID列表 / Image IDs (when TCSSScope=0)</p>
+        :type ImageIDs: list of str
+        :param _ImageNamesRegex: <p>镜像名正则表达式 / Image Names Regex</p>
+        :type ImageNamesRegex: str
+        :param _Confidence: <p>置信度 / Confidence: 0-低/Low, 1-中/Medium, 2-高/High</p>
+        :type Confidence: int
+        :param _ExcludeQUUIDS: <p>排除的主机列表 / Excluded Host QUUIDS</p>
+        :type ExcludeQUUIDS: list of str
+        :param _ExcludeImageIDs: <p>排除的镜像ID列表 / Excluded Image IDs</p>
+        :type ExcludeImageIDs: list of str
+        :param _ProcessNetworkRules: <p>进程网络规则 / Process network rules</p>
+        :type ProcessNetworkRules: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessNetwork`
+        :param _AppID: <p>策略对应APPID</p>
+        :type AppID: int
+        :param _InstanceIDs: <p>自选实例ID范围</p>
+        :type InstanceIDs: list of str
+        :param _ExcludeInstanceIDs: <p>排除实例ID</p>
+        :type ExcludeInstanceIDs: list of str
+        """
+        self._RuleID = None
+        self._RuleType = None
+        self._Name = None
+        self._Description = None
+        self._ContentType = None
+        self._Action = None
+        self._Level = None
+        self._DetectMode = None
+        self._DetectType = None
+        self._AttackStage = None
+        self._CWPScope = None
+        self._QUUIDS = None
+        self._Status = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._SupportBlock = None
+        self._Md5List = None
+        self._FileName = None
+        self._FileDirectory = None
+        self._Domains = None
+        self._OutboundIP = None
+        self._InboundIP = None
+        self._CmdLineRules = None
+        self._TCSSScope = None
+        self._ImageIDs = None
+        self._ImageNamesRegex = None
+        self._Confidence = None
+        self._ExcludeQUUIDS = None
+        self._ExcludeImageIDs = None
+        self._ProcessNetworkRules = None
+        self._AppID = None
+        self._InstanceIDs = None
+        self._ExcludeInstanceIDs = None
+
+    @property
+    def RuleID(self):
+        r"""<p>策略ID</p>
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RuleType(self):
+        r"""<p>策略类型，0-系统策略/System Rule, 1-自定义策略/Custom Rule</p>
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Name(self):
+        r"""<p>策略名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ContentType(self):
+        r"""<p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Action(self):
+        r"""<p>执行动作 / Action: 0-告警/Alert, 1-放行/Allow, 2-告警并拦截/Alert and Block</p>
+        :rtype: int
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Level(self):
+        r"""<p>告警等级 / Alert Level: 0-无/None, 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def DetectMode(self):
+        r"""<p>检测模式 / Detect Mode: 0-精准/Precise, 1-均衡/Balanced, 2-深度/Deep</p>
+        :rtype: int
+        """
+        return self._DetectMode
+
+    @DetectMode.setter
+    def DetectMode(self, DetectMode):
+        self._DetectMode = DetectMode
+
+    @property
+    def DetectType(self):
+        r"""<p>检测方式 / Detect Type: 0-主机检测/Host Detection, 1-网络检测/Network Detection</p>
+        :rtype: int
+        """
+        return self._DetectType
+
+    @DetectType.setter
+    def DetectType(self, DetectType):
+        self._DetectType = DetectType
+
+    @property
+    def AttackStage(self):
+        r"""<p>攻击阶段</p>
+        :rtype: str
+        """
+        return self._AttackStage
+
+    @AttackStage.setter
+    def AttackStage(self, AttackStage):
+        self._AttackStage = AttackStage
+
+    @property
+    def CWPScope(self):
+        r"""<p>主机生效资产范围 / Effective Scope: 0-指定主机/Specified Hosts, 1-全部主机/All Hosts, 2-专业版/Professional, 3-旗舰版/Flagship, 4-专业版+旗舰版/Professional+Flagship</p>
+        :rtype: int
+        """
+        return self._CWPScope
+
+    @CWPScope.setter
+    def CWPScope(self, CWPScope):
+        self._CWPScope = CWPScope
+
+    @property
+    def QUUIDS(self):
+        r"""<p>主机运行时的自选主机</p>
+        :rtype: list of str
+        """
+        return self._QUUIDS
+
+    @QUUIDS.setter
+    def QUUIDS(self, QUUIDS):
+        self._QUUIDS = QUUIDS
+
+    @property
+    def Status(self):
+        r"""<p>状态 / Status: 0-开启/Enabled, 1-关闭/Disabled</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>修改时间</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def SupportBlock(self):
+        r"""<p>是否支持拦截 / Support Block: 0-不支持/Not Supported, 1-支持/Supported</p>
+        :rtype: int
+        """
+        return self._SupportBlock
+
+    @SupportBlock.setter
+    def SupportBlock(self, SupportBlock):
+        self._SupportBlock = SupportBlock
+
+    @property
+    def Md5List(self):
+        r"""<p>MD5列表,ContentType=md5 时填充</p>
+        :rtype: list of str
+        """
+        return self._Md5List
+
+    @Md5List.setter
+    def Md5List(self, Md5List):
+        self._Md5List = Md5List
+
+    @property
+    def FileName(self):
+        r"""<p>文件名列表,ContentType=custom_file 时填充</p>
+        :rtype: list of str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileDirectory(self):
+        r"""<p>文件目录列表,ContentType=custom_file 时填充</p>
+        :rtype: list of str
+        """
+        return self._FileDirectory
+
+    @FileDirectory.setter
+    def FileDirectory(self, FileDirectory):
+        self._FileDirectory = FileDirectory
+
+    @property
+    def Domains(self):
+        r"""<p>域名列表,ContentType=dns 时填充</p>
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def OutboundIP(self):
+        r"""<p>出站IP列表,ContentType=ip_outbound 时填充</p>
+        :rtype: list of str
+        """
+        return self._OutboundIP
+
+    @OutboundIP.setter
+    def OutboundIP(self, OutboundIP):
+        self._OutboundIP = OutboundIP
+
+    @property
+    def InboundIP(self):
+        r"""<p>入站IP列表,ContentType=ip_inbound 时填充</p>
+        :rtype: list of str
+        """
+        return self._InboundIP
+
+    @InboundIP.setter
+    def InboundIP(self, InboundIP):
+        self._InboundIP = InboundIP
+
+    @property
+    def CmdLineRules(self):
+        r"""<p>命令行规则,ContentType=cmdline 时填充</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentCmdLine`
+        """
+        return self._CmdLineRules
+
+    @CmdLineRules.setter
+    def CmdLineRules(self, CmdLineRules):
+        self._CmdLineRules = CmdLineRules
+
+    @property
+    def TCSSScope(self):
+        r"""<p>容器生效镜像范围 / Container Image Scope: 0-指定镜像/Specified Images, 1-全部镜像/All Images</p>
+        :rtype: int
+        """
+        return self._TCSSScope
+
+    @TCSSScope.setter
+    def TCSSScope(self, TCSSScope):
+        self._TCSSScope = TCSSScope
+
+    @property
+    def ImageIDs(self):
+        r"""<p>生效镜像ID列表 / Image IDs (when TCSSScope=0)</p>
+        :rtype: list of str
+        """
+        return self._ImageIDs
+
+    @ImageIDs.setter
+    def ImageIDs(self, ImageIDs):
+        self._ImageIDs = ImageIDs
+
+    @property
+    def ImageNamesRegex(self):
+        r"""<p>镜像名正则表达式 / Image Names Regex</p>
+        :rtype: str
+        """
+        return self._ImageNamesRegex
+
+    @ImageNamesRegex.setter
+    def ImageNamesRegex(self, ImageNamesRegex):
+        self._ImageNamesRegex = ImageNamesRegex
+
+    @property
+    def Confidence(self):
+        r"""<p>置信度 / Confidence: 0-低/Low, 1-中/Medium, 2-高/High</p>
+        :rtype: int
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def ExcludeQUUIDS(self):
+        r"""<p>排除的主机列表 / Excluded Host QUUIDS</p>
+        :rtype: list of str
+        """
+        return self._ExcludeQUUIDS
+
+    @ExcludeQUUIDS.setter
+    def ExcludeQUUIDS(self, ExcludeQUUIDS):
+        self._ExcludeQUUIDS = ExcludeQUUIDS
+
+    @property
+    def ExcludeImageIDs(self):
+        r"""<p>排除的镜像ID列表 / Excluded Image IDs</p>
+        :rtype: list of str
+        """
+        return self._ExcludeImageIDs
+
+    @ExcludeImageIDs.setter
+    def ExcludeImageIDs(self, ExcludeImageIDs):
+        self._ExcludeImageIDs = ExcludeImageIDs
+
+    @property
+    def ProcessNetworkRules(self):
+        r"""<p>进程网络规则 / Process network rules</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessNetwork`
+        """
+        return self._ProcessNetworkRules
+
+    @ProcessNetworkRules.setter
+    def ProcessNetworkRules(self, ProcessNetworkRules):
+        self._ProcessNetworkRules = ProcessNetworkRules
+
+    @property
+    def AppID(self):
+        r"""<p>策略对应APPID</p>
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def InstanceIDs(self):
+        r"""<p>自选实例ID范围</p>
+        :rtype: list of str
+        """
+        return self._InstanceIDs
+
+    @InstanceIDs.setter
+    def InstanceIDs(self, InstanceIDs):
+        self._InstanceIDs = InstanceIDs
+
+    @property
+    def ExcludeInstanceIDs(self):
+        r"""<p>排除实例ID</p>
+        :rtype: list of str
+        """
+        return self._ExcludeInstanceIDs
+
+    @ExcludeInstanceIDs.setter
+    def ExcludeInstanceIDs(self, ExcludeInstanceIDs):
+        self._ExcludeInstanceIDs = ExcludeInstanceIDs
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        self._RuleType = params.get("RuleType")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ContentType = params.get("ContentType")
+        self._Action = params.get("Action")
+        self._Level = params.get("Level")
+        self._DetectMode = params.get("DetectMode")
+        self._DetectType = params.get("DetectType")
+        self._AttackStage = params.get("AttackStage")
+        self._CWPScope = params.get("CWPScope")
+        self._QUUIDS = params.get("QUUIDS")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._SupportBlock = params.get("SupportBlock")
+        self._Md5List = params.get("Md5List")
+        self._FileName = params.get("FileName")
+        self._FileDirectory = params.get("FileDirectory")
+        self._Domains = params.get("Domains")
+        self._OutboundIP = params.get("OutboundIP")
+        self._InboundIP = params.get("InboundIP")
+        if params.get("CmdLineRules") is not None:
+            self._CmdLineRules = RuleContentCmdLine()
+            self._CmdLineRules._deserialize(params.get("CmdLineRules"))
+        self._TCSSScope = params.get("TCSSScope")
+        self._ImageIDs = params.get("ImageIDs")
+        self._ImageNamesRegex = params.get("ImageNamesRegex")
+        self._Confidence = params.get("Confidence")
+        self._ExcludeQUUIDS = params.get("ExcludeQUUIDS")
+        self._ExcludeImageIDs = params.get("ExcludeImageIDs")
+        if params.get("ProcessNetworkRules") is not None:
+            self._ProcessNetworkRules = RuleContentProcessNetwork()
+            self._ProcessNetworkRules._deserialize(params.get("ProcessNetworkRules"))
+        self._AppID = params.get("AppID")
+        self._InstanceIDs = params.get("InstanceIDs")
+        self._ExcludeInstanceIDs = params.get("ExcludeInstanceIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdrAlertCategoryCount(AbstractModel):
+    r"""EDR告警大类对应的告警数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlertCategory: <p>告警大类</p>
+        :type AlertCategory: str
+        :param _Count: <p>告警数量</p>
+        :type Count: int
+        """
+        self._AlertCategory = None
+        self._Count = None
+
+    @property
+    def AlertCategory(self):
+        r"""<p>告警大类</p>
+        :rtype: str
+        """
+        return self._AlertCategory
+
+    @AlertCategory.setter
+    def AlertCategory(self, AlertCategory):
+        self._AlertCategory = AlertCategory
+
+    @property
+    def Count(self):
+        r"""<p>告警数量</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._AlertCategory = params.get("AlertCategory")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdrAlertDetail(AbstractModel):
+    r"""EDR告警详情（含content JSON + 资产/情报富化字段）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>主键ID</p>
+        :type Id: int
+        :param _AppId: <p>租户ID</p>
+        :type AppId: int
+        :param _AlertId: <p>告警唯一标识</p>
+        :type AlertId: str
+        :param _AlertCategory: <p>告警大类（英文枚举：VIRUS_TROJAN/ABNORMAL_LOGIN/HOST_BEHAVIOR/NETWORK_BEHAVIOR/LINK_ENGINE）</p>
+        :type AlertCategory: str
+        :param _AlertSubType: <p>告警子类型（英文枚举：MALWARE_FILE/MALWARE_PROCESS/RISK_LOGIN/BRUTE_FORCE/DNS/BASH/PRIV_ESCALATION/REVERSE_SHELL/NET_ATTACK/VUL_DEFENCE/MEMORY_SHELL_INJECT/MEMORY_SHELL_SCAN/MULTI_BEHAVIOR_ATTACK）</p>
+        :type AlertSubType: str
+        :param _RuleId: <p>关联规则ID</p>
+        :type RuleId: str
+        :param _RuleType: <p>规则类型: 0-系统规则 1-用户自定义</p>
+        :type RuleType: int
+        :param _Level: <p>告警等级（英文枚举：CRITICAL/HIGH/MEDIUM/LOW/INFO）</p>
+        :type Level: str
+        :param _Status: <p>处理状态（英文枚举：PENDING/PROCESSED/WHITELISTED/ISOLATED/CLEANED/IGNORED/ISOLATING/RESTORING/BLOCKED/DELETED）</p>
+        :type Status: str
+        :param _AttackStage: <p>ATT&amp;CK攻击阶段</p>
+        :type AttackStage: str
+        :param _DetectMode: <p>检测模式（英文枚举：PRECISE/BALANCED/DEEP）</p>
+        :type DetectMode: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _Quuid: <p>主机UUID</p>
+        :type Quuid: str
+        :param _EventCount: <p>聚合事件数</p>
+        :type EventCount: int
+        :param _IsProVersion: <p>是否付费版</p>
+        :type IsProVersion: int
+        :param _AlertSource: <p>告警来源（英文枚举：HOST/CONTAINER/K8S/CSIP）</p>
+        :type AlertSource: str
+        :param _ImageId: <p>容器镜像ID（保留字段，恒为空串）</p>
+        :type ImageId: str
+        :param _ContainerId: <p>容器ID（保留字段，恒为空串）</p>
+        :type ContainerId: str
+        :param _ClusterId: <p>集群ID（保留字段，恒为空串）</p>
+        :type ClusterId: str
+        :param _FirstDetectTime: <p>首次发现时间</p>
+        :type FirstDetectTime: str
+        :param _LatestDetectTime: <p>最近发现时间</p>
+        :type LatestDetectTime: str
+        :param _RuleName: <p>规则名称（规则富化）</p>
+        :type RuleName: str
+        :param _ContentType: <p>内容类型: md5/cmdline/dns/ip_inbound/ip_outbound/custom_file/process_network</p>
+        :type ContentType: str
+        :param _InstanceName: <p>实例名（资产富化）</p>
+        :type InstanceName: str
+        :param _PublicIp: <p>公网IP（资产富化）</p>
+        :type PublicIp: str
+        :param _PrivateIp: <p>内网IP（资产富化）</p>
+        :type PrivateIp: str
+        :param _Content: <p>告警详情JSON字符串（前端通过JSON.parse解析，空值为&quot;{}&quot;）</p>
+        :type Content: str
+        :param _AlertName: <p>告警名称（子类型中英文名）</p>
+        :type AlertName: str
+        :param _CSIPTags: <p>安全中心标签</p>
+        :type CSIPTags: list of CSIPTag
+        :param _HarmDesc: <p>危害描述（统一字段，合并原各子类型独立字段）</p>
+        :type HarmDesc: str
+        :param _SuggestScheme: <p>修复建议（统一字段）</p>
+        :type SuggestScheme: str
+        :param _HarmDescSource: <p>数据来源: vuldb/vdc/intel/default</p>
+        :type HarmDescSource: str
+        :param _ThreatTags: <p>统一威胁情报标签（按子类型路由不同情报源）</p>
+        :type ThreatTags: list of str
+        :param _BashCmdDecoded: <p>Base64解码后的命令（高危命令子类型独有）</p>
+        :type BashCmdDecoded: str
+        :param _NetVulName: <p>漏洞名称（网络攻击子类型独有）</p>
+        :type NetVulName: str
+        :param _NetCVEId: <p>CVE编号（网络攻击子类型独有）</p>
+        :type NetCVEId: str
+        :param _NetAbnormalAction: <p>异常行为（网络攻击子类型独有）</p>
+        :type NetAbnormalAction: str
+        :param _IPIntel: <p>IP情报信息（为空时不返回）</p>
+        :type IPIntel: :class:`tencentcloud.csip.v20221121.models.IPIntelInfo`
+        :param _MultiBehaviorDetectionMode: <p>多行为攻击规则类型分类: sequence/threshold/command</p>
+        :type MultiBehaviorDetectionMode: str
+        :param _SourceDesc: <p>告警来源描述（按子类型派生，描述哪个引擎/规则检出）</p>
+        :type SourceDesc: str
+        :param _ModifyTime: <p>处理时间参数格式：2026-05-26 19:45:48</p>
+        :type ModifyTime: str
+        :param _IntelSource: <p>情报富化结果来源（标识本次详情是否成功命中外部情报）；取值 &quot;VDC&quot; / &quot;IPAnalysis&quot; / &quot;BreakingTI&quot; / 空串</p>
+        :type IntelSource: str
+        :param _Verdict: <p>综合研判，中英文已翻译，中：恶意/安全/未知；英：Malicious/Safe/Unknown</p>
+        :type Verdict: str
+        :param _VerdictBasis: <p>研判依据</p>
+        :type VerdictBasis: str
+        :param _VirusName: <p>病毒名称</p>
+        :type VirusName: str
+        :param _VirusFamily: <p>病毒家族</p>
+        :type VirusFamily: str
+        :param _NetResponsePayload: <p>NetResponsePayload 响应数据包（base64 编码后的字符串）</p>
+        :type NetResponsePayload: str
+        :param _NetSvcPs: <p>服务进程信息（base64 编码后的 JSON 字符串）</p>
+        :type NetSvcPs: str
+        """
+        self._Id = None
+        self._AppId = None
+        self._AlertId = None
+        self._AlertCategory = None
+        self._AlertSubType = None
+        self._RuleId = None
+        self._RuleType = None
+        self._Level = None
+        self._Status = None
+        self._AttackStage = None
+        self._DetectMode = None
+        self._InstanceId = None
+        self._Quuid = None
+        self._EventCount = None
+        self._IsProVersion = None
+        self._AlertSource = None
+        self._ImageId = None
+        self._ContainerId = None
+        self._ClusterId = None
+        self._FirstDetectTime = None
+        self._LatestDetectTime = None
+        self._RuleName = None
+        self._ContentType = None
+        self._InstanceName = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._Content = None
+        self._AlertName = None
+        self._CSIPTags = None
+        self._HarmDesc = None
+        self._SuggestScheme = None
+        self._HarmDescSource = None
+        self._ThreatTags = None
+        self._BashCmdDecoded = None
+        self._NetVulName = None
+        self._NetCVEId = None
+        self._NetAbnormalAction = None
+        self._IPIntel = None
+        self._MultiBehaviorDetectionMode = None
+        self._SourceDesc = None
+        self._ModifyTime = None
+        self._IntelSource = None
+        self._Verdict = None
+        self._VerdictBasis = None
+        self._VirusName = None
+        self._VirusFamily = None
+        self._NetResponsePayload = None
+        self._NetSvcPs = None
+
+    @property
+    def Id(self):
+        r"""<p>主键ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>租户ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AlertId(self):
+        r"""<p>告警唯一标识</p>
+        :rtype: str
+        """
+        return self._AlertId
+
+    @AlertId.setter
+    def AlertId(self, AlertId):
+        self._AlertId = AlertId
+
+    @property
+    def AlertCategory(self):
+        r"""<p>告警大类（英文枚举：VIRUS_TROJAN/ABNORMAL_LOGIN/HOST_BEHAVIOR/NETWORK_BEHAVIOR/LINK_ENGINE）</p>
+        :rtype: str
+        """
+        return self._AlertCategory
+
+    @AlertCategory.setter
+    def AlertCategory(self, AlertCategory):
+        self._AlertCategory = AlertCategory
+
+    @property
+    def AlertSubType(self):
+        r"""<p>告警子类型（英文枚举：MALWARE_FILE/MALWARE_PROCESS/RISK_LOGIN/BRUTE_FORCE/DNS/BASH/PRIV_ESCALATION/REVERSE_SHELL/NET_ATTACK/VUL_DEFENCE/MEMORY_SHELL_INJECT/MEMORY_SHELL_SCAN/MULTI_BEHAVIOR_ATTACK）</p>
+        :rtype: str
+        """
+        return self._AlertSubType
+
+    @AlertSubType.setter
+    def AlertSubType(self, AlertSubType):
+        self._AlertSubType = AlertSubType
+
+    @property
+    def RuleId(self):
+        r"""<p>关联规则ID</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleType(self):
+        r"""<p>规则类型: 0-系统规则 1-用户自定义</p>
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Level(self):
+        r"""<p>告警等级（英文枚举：CRITICAL/HIGH/MEDIUM/LOW/INFO）</p>
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Status(self):
+        r"""<p>处理状态（英文枚举：PENDING/PROCESSED/WHITELISTED/ISOLATED/CLEANED/IGNORED/ISOLATING/RESTORING/BLOCKED/DELETED）</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AttackStage(self):
+        r"""<p>ATT&amp;CK攻击阶段</p>
+        :rtype: str
+        """
+        return self._AttackStage
+
+    @AttackStage.setter
+    def AttackStage(self, AttackStage):
+        self._AttackStage = AttackStage
+
+    @property
+    def DetectMode(self):
+        r"""<p>检测模式（英文枚举：PRECISE/BALANCED/DEEP）</p>
+        :rtype: str
+        """
+        return self._DetectMode
+
+    @DetectMode.setter
+    def DetectMode(self, DetectMode):
+        self._DetectMode = DetectMode
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Quuid(self):
+        r"""<p>主机UUID</p>
+        :rtype: str
+        """
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def EventCount(self):
+        r"""<p>聚合事件数</p>
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def IsProVersion(self):
+        r"""<p>是否付费版</p>
+        :rtype: int
+        """
+        return self._IsProVersion
+
+    @IsProVersion.setter
+    def IsProVersion(self, IsProVersion):
+        self._IsProVersion = IsProVersion
+
+    @property
+    def AlertSource(self):
+        r"""<p>告警来源（英文枚举：HOST/CONTAINER/K8S/CSIP）</p>
+        :rtype: str
+        """
+        return self._AlertSource
+
+    @AlertSource.setter
+    def AlertSource(self, AlertSource):
+        self._AlertSource = AlertSource
+
+    @property
+    def ImageId(self):
+        r"""<p>容器镜像ID（保留字段，恒为空串）</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ContainerId(self):
+        r"""<p>容器ID（保留字段，恒为空串）</p>
+        :rtype: str
+        """
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID（保留字段，恒为空串）</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def FirstDetectTime(self):
+        r"""<p>首次发现时间</p>
+        :rtype: str
+        """
+        return self._FirstDetectTime
+
+    @FirstDetectTime.setter
+    def FirstDetectTime(self, FirstDetectTime):
+        self._FirstDetectTime = FirstDetectTime
+
+    @property
+    def LatestDetectTime(self):
+        r"""<p>最近发现时间</p>
+        :rtype: str
+        """
+        return self._LatestDetectTime
+
+    @LatestDetectTime.setter
+    def LatestDetectTime(self, LatestDetectTime):
+        self._LatestDetectTime = LatestDetectTime
+
+    @property
+    def RuleName(self):
+        r"""<p>规则名称（规则富化）</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def ContentType(self):
+        r"""<p>内容类型: md5/cmdline/dns/ip_inbound/ip_outbound/custom_file/process_network</p>
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名（资产富化）</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PublicIp(self):
+        r"""<p>公网IP（资产富化）</p>
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        r"""<p>内网IP（资产富化）</p>
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def Content(self):
+        r"""<p>告警详情JSON字符串（前端通过JSON.parse解析，空值为&quot;{}&quot;）</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def AlertName(self):
+        r"""<p>告警名称（子类型中英文名）</p>
+        :rtype: str
+        """
+        return self._AlertName
+
+    @AlertName.setter
+    def AlertName(self, AlertName):
+        self._AlertName = AlertName
+
+    @property
+    def CSIPTags(self):
+        r"""<p>安全中心标签</p>
+        :rtype: list of CSIPTag
+        """
+        return self._CSIPTags
+
+    @CSIPTags.setter
+    def CSIPTags(self, CSIPTags):
+        self._CSIPTags = CSIPTags
+
+    @property
+    def HarmDesc(self):
+        r"""<p>危害描述（统一字段，合并原各子类型独立字段）</p>
+        :rtype: str
+        """
+        return self._HarmDesc
+
+    @HarmDesc.setter
+    def HarmDesc(self, HarmDesc):
+        self._HarmDesc = HarmDesc
+
+    @property
+    def SuggestScheme(self):
+        r"""<p>修复建议（统一字段）</p>
+        :rtype: str
+        """
+        return self._SuggestScheme
+
+    @SuggestScheme.setter
+    def SuggestScheme(self, SuggestScheme):
+        self._SuggestScheme = SuggestScheme
+
+    @property
+    def HarmDescSource(self):
+        r"""<p>数据来源: vuldb/vdc/intel/default</p>
+        :rtype: str
+        """
+        return self._HarmDescSource
+
+    @HarmDescSource.setter
+    def HarmDescSource(self, HarmDescSource):
+        self._HarmDescSource = HarmDescSource
+
+    @property
+    def ThreatTags(self):
+        r"""<p>统一威胁情报标签（按子类型路由不同情报源）</p>
+        :rtype: list of str
+        """
+        return self._ThreatTags
+
+    @ThreatTags.setter
+    def ThreatTags(self, ThreatTags):
+        self._ThreatTags = ThreatTags
+
+    @property
+    def BashCmdDecoded(self):
+        r"""<p>Base64解码后的命令（高危命令子类型独有）</p>
+        :rtype: str
+        """
+        return self._BashCmdDecoded
+
+    @BashCmdDecoded.setter
+    def BashCmdDecoded(self, BashCmdDecoded):
+        self._BashCmdDecoded = BashCmdDecoded
+
+    @property
+    def NetVulName(self):
+        r"""<p>漏洞名称（网络攻击子类型独有）</p>
+        :rtype: str
+        """
+        return self._NetVulName
+
+    @NetVulName.setter
+    def NetVulName(self, NetVulName):
+        self._NetVulName = NetVulName
+
+    @property
+    def NetCVEId(self):
+        r"""<p>CVE编号（网络攻击子类型独有）</p>
+        :rtype: str
+        """
+        return self._NetCVEId
+
+    @NetCVEId.setter
+    def NetCVEId(self, NetCVEId):
+        self._NetCVEId = NetCVEId
+
+    @property
+    def NetAbnormalAction(self):
+        r"""<p>异常行为（网络攻击子类型独有）</p>
+        :rtype: str
+        """
+        return self._NetAbnormalAction
+
+    @NetAbnormalAction.setter
+    def NetAbnormalAction(self, NetAbnormalAction):
+        self._NetAbnormalAction = NetAbnormalAction
+
+    @property
+    def IPIntel(self):
+        r"""<p>IP情报信息（为空时不返回）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.IPIntelInfo`
+        """
+        return self._IPIntel
+
+    @IPIntel.setter
+    def IPIntel(self, IPIntel):
+        self._IPIntel = IPIntel
+
+    @property
+    def MultiBehaviorDetectionMode(self):
+        r"""<p>多行为攻击规则类型分类: sequence/threshold/command</p>
+        :rtype: str
+        """
+        return self._MultiBehaviorDetectionMode
+
+    @MultiBehaviorDetectionMode.setter
+    def MultiBehaviorDetectionMode(self, MultiBehaviorDetectionMode):
+        self._MultiBehaviorDetectionMode = MultiBehaviorDetectionMode
+
+    @property
+    def SourceDesc(self):
+        r"""<p>告警来源描述（按子类型派生，描述哪个引擎/规则检出）</p>
+        :rtype: str
+        """
+        return self._SourceDesc
+
+    @SourceDesc.setter
+    def SourceDesc(self, SourceDesc):
+        self._SourceDesc = SourceDesc
+
+    @property
+    def ModifyTime(self):
+        r"""<p>处理时间参数格式：2026-05-26 19:45:48</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def IntelSource(self):
+        r"""<p>情报富化结果来源（标识本次详情是否成功命中外部情报）；取值 &quot;VDC&quot; / &quot;IPAnalysis&quot; / &quot;BreakingTI&quot; / 空串</p>
+        :rtype: str
+        """
+        return self._IntelSource
+
+    @IntelSource.setter
+    def IntelSource(self, IntelSource):
+        self._IntelSource = IntelSource
+
+    @property
+    def Verdict(self):
+        r"""<p>综合研判，中英文已翻译，中：恶意/安全/未知；英：Malicious/Safe/Unknown</p>
+        :rtype: str
+        """
+        return self._Verdict
+
+    @Verdict.setter
+    def Verdict(self, Verdict):
+        self._Verdict = Verdict
+
+    @property
+    def VerdictBasis(self):
+        r"""<p>研判依据</p>
+        :rtype: str
+        """
+        return self._VerdictBasis
+
+    @VerdictBasis.setter
+    def VerdictBasis(self, VerdictBasis):
+        self._VerdictBasis = VerdictBasis
+
+    @property
+    def VirusName(self):
+        r"""<p>病毒名称</p>
+        :rtype: str
+        """
+        return self._VirusName
+
+    @VirusName.setter
+    def VirusName(self, VirusName):
+        self._VirusName = VirusName
+
+    @property
+    def VirusFamily(self):
+        r"""<p>病毒家族</p>
+        :rtype: str
+        """
+        return self._VirusFamily
+
+    @VirusFamily.setter
+    def VirusFamily(self, VirusFamily):
+        self._VirusFamily = VirusFamily
+
+    @property
+    def NetResponsePayload(self):
+        r"""<p>NetResponsePayload 响应数据包（base64 编码后的字符串）</p>
+        :rtype: str
+        """
+        return self._NetResponsePayload
+
+    @NetResponsePayload.setter
+    def NetResponsePayload(self, NetResponsePayload):
+        self._NetResponsePayload = NetResponsePayload
+
+    @property
+    def NetSvcPs(self):
+        r"""<p>服务进程信息（base64 编码后的 JSON 字符串）</p>
+        :rtype: str
+        """
+        return self._NetSvcPs
+
+    @NetSvcPs.setter
+    def NetSvcPs(self, NetSvcPs):
+        self._NetSvcPs = NetSvcPs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._AlertId = params.get("AlertId")
+        self._AlertCategory = params.get("AlertCategory")
+        self._AlertSubType = params.get("AlertSubType")
+        self._RuleId = params.get("RuleId")
+        self._RuleType = params.get("RuleType")
+        self._Level = params.get("Level")
+        self._Status = params.get("Status")
+        self._AttackStage = params.get("AttackStage")
+        self._DetectMode = params.get("DetectMode")
+        self._InstanceId = params.get("InstanceId")
+        self._Quuid = params.get("Quuid")
+        self._EventCount = params.get("EventCount")
+        self._IsProVersion = params.get("IsProVersion")
+        self._AlertSource = params.get("AlertSource")
+        self._ImageId = params.get("ImageId")
+        self._ContainerId = params.get("ContainerId")
+        self._ClusterId = params.get("ClusterId")
+        self._FirstDetectTime = params.get("FirstDetectTime")
+        self._LatestDetectTime = params.get("LatestDetectTime")
+        self._RuleName = params.get("RuleName")
+        self._ContentType = params.get("ContentType")
+        self._InstanceName = params.get("InstanceName")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._Content = params.get("Content")
+        self._AlertName = params.get("AlertName")
+        if params.get("CSIPTags") is not None:
+            self._CSIPTags = []
+            for item in params.get("CSIPTags"):
+                obj = CSIPTag()
+                obj._deserialize(item)
+                self._CSIPTags.append(obj)
+        self._HarmDesc = params.get("HarmDesc")
+        self._SuggestScheme = params.get("SuggestScheme")
+        self._HarmDescSource = params.get("HarmDescSource")
+        self._ThreatTags = params.get("ThreatTags")
+        self._BashCmdDecoded = params.get("BashCmdDecoded")
+        self._NetVulName = params.get("NetVulName")
+        self._NetCVEId = params.get("NetCVEId")
+        self._NetAbnormalAction = params.get("NetAbnormalAction")
+        if params.get("IPIntel") is not None:
+            self._IPIntel = IPIntelInfo()
+            self._IPIntel._deserialize(params.get("IPIntel"))
+        self._MultiBehaviorDetectionMode = params.get("MultiBehaviorDetectionMode")
+        self._SourceDesc = params.get("SourceDesc")
+        self._ModifyTime = params.get("ModifyTime")
+        self._IntelSource = params.get("IntelSource")
+        self._Verdict = params.get("Verdict")
+        self._VerdictBasis = params.get("VerdictBasis")
+        self._VirusName = params.get("VirusName")
+        self._VirusFamily = params.get("VirusFamily")
+        self._NetResponsePayload = params.get("NetResponsePayload")
+        self._NetSvcPs = params.get("NetSvcPs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdrAlertItem(AbstractModel):
+    r"""EDR告警列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>告警表id</p>
+        :type Id: int
+        :param _AppId: <p>APPID</p>
+        :type AppId: int
+        :param _AlertId: <p>告警ID</p>
+        :type AlertId: str
+        :param _AlertCategory: <p>告警大类</p>
+        :type AlertCategory: str
+        :param _AlertSubType: <p>告警子类</p>
+        :type AlertSubType: str
+        :param _RuleId: <p>策略ID</p>
+        :type RuleId: str
+        :param _RuleType: <p>策略类型</p>
+        :type RuleType: int
+        :param _Level: <p>告警等级</p>
+        :type Level: str
+        :param _Status: <p>告警状态</p>
+        :type Status: str
+        :param _AttackStage: <p>攻击阶段</p>
+        :type AttackStage: str
+        :param _DetectMode: <p>检测模式</p>
+        :type DetectMode: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _Quuid: <p>QUUID</p>
+        :type Quuid: str
+        :param _IsProVersion: <p>是否付费</p>
+        :type IsProVersion: int
+        :param _AlertSource: <p>告警来源</p>
+        :type AlertSource: str
+        :param _ImageId: <p>镜像ID</p>
+        :type ImageId: str
+        :param _ContainerId: <p>容器id</p>
+        :type ContainerId: str
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _EventCount: <p>告警数量</p>
+        :type EventCount: int
+        :param _FirstDetectTime: <p>最初发现时间</p>
+        :type FirstDetectTime: str
+        :param _LatestDetectTime: <p>最近发现时间</p>
+        :type LatestDetectTime: str
+        :param _RuleName: <p>规则名</p>
+        :type RuleName: str
+        :param _ContentType: <p>策略类型</p>
+        :type ContentType: str
+        :param _InstanceName: <p>实例名</p>
+        :type InstanceName: str
+        :param _PublicIp: <p>公共IP</p>
+        :type PublicIp: str
+        :param _PrivateIp: <p>内网IP</p>
+        :type PrivateIp: str
+        :param _RaspOpen: <p>该机器是否开启应用防护</p>
+        :type RaspOpen: bool
+        """
+        self._Id = None
+        self._AppId = None
+        self._AlertId = None
+        self._AlertCategory = None
+        self._AlertSubType = None
+        self._RuleId = None
+        self._RuleType = None
+        self._Level = None
+        self._Status = None
+        self._AttackStage = None
+        self._DetectMode = None
+        self._InstanceId = None
+        self._Quuid = None
+        self._IsProVersion = None
+        self._AlertSource = None
+        self._ImageId = None
+        self._ContainerId = None
+        self._ClusterId = None
+        self._EventCount = None
+        self._FirstDetectTime = None
+        self._LatestDetectTime = None
+        self._RuleName = None
+        self._ContentType = None
+        self._InstanceName = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._RaspOpen = None
+
+    @property
+    def Id(self):
+        r"""<p>告警表id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>APPID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AlertId(self):
+        r"""<p>告警ID</p>
+        :rtype: str
+        """
+        return self._AlertId
+
+    @AlertId.setter
+    def AlertId(self, AlertId):
+        self._AlertId = AlertId
+
+    @property
+    def AlertCategory(self):
+        r"""<p>告警大类</p>
+        :rtype: str
+        """
+        return self._AlertCategory
+
+    @AlertCategory.setter
+    def AlertCategory(self, AlertCategory):
+        self._AlertCategory = AlertCategory
+
+    @property
+    def AlertSubType(self):
+        r"""<p>告警子类</p>
+        :rtype: str
+        """
+        return self._AlertSubType
+
+    @AlertSubType.setter
+    def AlertSubType(self, AlertSubType):
+        self._AlertSubType = AlertSubType
+
+    @property
+    def RuleId(self):
+        r"""<p>策略ID</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleType(self):
+        r"""<p>策略类型</p>
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Level(self):
+        r"""<p>告警等级</p>
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Status(self):
+        r"""<p>告警状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AttackStage(self):
+        r"""<p>攻击阶段</p>
+        :rtype: str
+        """
+        return self._AttackStage
+
+    @AttackStage.setter
+    def AttackStage(self, AttackStage):
+        self._AttackStage = AttackStage
+
+    @property
+    def DetectMode(self):
+        r"""<p>检测模式</p>
+        :rtype: str
+        """
+        return self._DetectMode
+
+    @DetectMode.setter
+    def DetectMode(self, DetectMode):
+        self._DetectMode = DetectMode
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Quuid(self):
+        r"""<p>QUUID</p>
+        :rtype: str
+        """
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def IsProVersion(self):
+        r"""<p>是否付费</p>
+        :rtype: int
+        """
+        return self._IsProVersion
+
+    @IsProVersion.setter
+    def IsProVersion(self, IsProVersion):
+        self._IsProVersion = IsProVersion
+
+    @property
+    def AlertSource(self):
+        r"""<p>告警来源</p>
+        :rtype: str
+        """
+        return self._AlertSource
+
+    @AlertSource.setter
+    def AlertSource(self, AlertSource):
+        self._AlertSource = AlertSource
+
+    @property
+    def ImageId(self):
+        r"""<p>镜像ID</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ContainerId(self):
+        r"""<p>容器id</p>
+        :rtype: str
+        """
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def EventCount(self):
+        r"""<p>告警数量</p>
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def FirstDetectTime(self):
+        r"""<p>最初发现时间</p>
+        :rtype: str
+        """
+        return self._FirstDetectTime
+
+    @FirstDetectTime.setter
+    def FirstDetectTime(self, FirstDetectTime):
+        self._FirstDetectTime = FirstDetectTime
+
+    @property
+    def LatestDetectTime(self):
+        r"""<p>最近发现时间</p>
+        :rtype: str
+        """
+        return self._LatestDetectTime
+
+    @LatestDetectTime.setter
+    def LatestDetectTime(self, LatestDetectTime):
+        self._LatestDetectTime = LatestDetectTime
+
+    @property
+    def RuleName(self):
+        r"""<p>规则名</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def ContentType(self):
+        r"""<p>策略类型</p>
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PublicIp(self):
+        r"""<p>公共IP</p>
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        r"""<p>内网IP</p>
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def RaspOpen(self):
+        r"""<p>该机器是否开启应用防护</p>
+        :rtype: bool
+        """
+        return self._RaspOpen
+
+    @RaspOpen.setter
+    def RaspOpen(self, RaspOpen):
+        self._RaspOpen = RaspOpen
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._AlertId = params.get("AlertId")
+        self._AlertCategory = params.get("AlertCategory")
+        self._AlertSubType = params.get("AlertSubType")
+        self._RuleId = params.get("RuleId")
+        self._RuleType = params.get("RuleType")
+        self._Level = params.get("Level")
+        self._Status = params.get("Status")
+        self._AttackStage = params.get("AttackStage")
+        self._DetectMode = params.get("DetectMode")
+        self._InstanceId = params.get("InstanceId")
+        self._Quuid = params.get("Quuid")
+        self._IsProVersion = params.get("IsProVersion")
+        self._AlertSource = params.get("AlertSource")
+        self._ImageId = params.get("ImageId")
+        self._ContainerId = params.get("ContainerId")
+        self._ClusterId = params.get("ClusterId")
+        self._EventCount = params.get("EventCount")
+        self._FirstDetectTime = params.get("FirstDetectTime")
+        self._LatestDetectTime = params.get("LatestDetectTime")
+        self._RuleName = params.get("RuleName")
+        self._ContentType = params.get("ContentType")
+        self._InstanceName = params.get("InstanceName")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._RaspOpen = params.get("RaspOpen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdrAlertTarget(AbstractModel):
+    r"""EDR告警定位信息（ID + AlertID + AppID 三元组）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>告警主键ID</p>
+        :type Id: int
+        :param _AppId: <p>告警所属账号ID（跨账号，前端必传）</p>
+        :type AppId: int
+        :param _AlertId: <p>告警唯一标识</p>
+        :type AlertId: str
+        :param _Quuid: <p>主机UUID（可选，由列表带回透传）</p>
+        :type Quuid: str
+        :param _InstanceId: <p>实例ID（可选，由列表带回透传，用于安全中心标签富化）</p>
+        :type InstanceId: str
+        :param _AlertSubType: <p>告警子类型</p>
+        :type AlertSubType: str
+        """
+        self._Id = None
+        self._AppId = None
+        self._AlertId = None
+        self._Quuid = None
+        self._InstanceId = None
+        self._AlertSubType = None
+
+    @property
+    def Id(self):
+        r"""<p>告警主键ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>告警所属账号ID（跨账号，前端必传）</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AlertId(self):
+        r"""<p>告警唯一标识</p>
+        :rtype: str
+        """
+        return self._AlertId
+
+    @AlertId.setter
+    def AlertId(self, AlertId):
+        self._AlertId = AlertId
+
+    @property
+    def Quuid(self):
+        r"""<p>主机UUID（可选，由列表带回透传）</p>
+        :rtype: str
+        """
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID（可选，由列表带回透传，用于安全中心标签富化）</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AlertSubType(self):
+        r"""<p>告警子类型</p>
+        :rtype: str
+        """
+        return self._AlertSubType
+
+    @AlertSubType.setter
+    def AlertSubType(self, AlertSubType):
+        self._AlertSubType = AlertSubType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._AlertId = params.get("AlertId")
+        self._Quuid = params.get("Quuid")
+        self._InstanceId = params.get("InstanceId")
+        self._AlertSubType = params.get("AlertSubType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdrAlertTargetForIgnore(AbstractModel):
+    r"""EDR告警定位信息，用于永久忽略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>告警主键ID</p>
+        :type Id: int
+        :param _AppId: <p>告警所属账号ID（跨账号，前端必传）</p>
+        :type AppId: int
+        :param _AlertId: <p>告警唯一标识</p>
+        :type AlertId: str
+        :param _Quuid: <p>主机UUID（可选）</p>
+        :type Quuid: str
+        :param _InstanceId: <p>实例ID（可选，用于白名单写入）</p>
+        :type InstanceId: str
+        """
+        self._Id = None
+        self._AppId = None
+        self._AlertId = None
+        self._Quuid = None
+        self._InstanceId = None
+
+    @property
+    def Id(self):
+        r"""<p>告警主键ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>告警所属账号ID（跨账号，前端必传）</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AlertId(self):
+        r"""<p>告警唯一标识</p>
+        :rtype: str
+        """
+        return self._AlertId
+
+    @AlertId.setter
+    def AlertId(self, AlertId):
+        self._AlertId = AlertId
+
+    @property
+    def Quuid(self):
+        r"""<p>主机UUID（可选）</p>
+        :rtype: str
+        """
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID（可选，用于白名单写入）</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._AlertId = params.get("AlertId")
+        self._Quuid = params.get("Quuid")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Element(AbstractModel):
     r"""统计条目
 
@@ -57053,6 +60046,137 @@ class HitRules(AbstractModel):
         
 
 
+class IPIntelInfo(AbstractModel):
+    r"""IP威胁情报信息（通过TIX IPAnalysis接口获取）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tags: <p>情报标签（如常规木马、漏洞软件、窃密木马）</p>
+        :type Tags: list of str
+        :param _Basis: <p>研判依据</p>
+        :type Basis: str
+        :param _ISP: <p>所属运营商</p>
+        :type ISP: str
+        :param _Location: <p>地理位置</p>
+        :type Location: str
+        :param _Characteristic: <p>家族团伙</p>
+        :type Characteristic: str
+        :param _Purpose: <p>IP画像</p>
+        :type Purpose: str
+        :param _Referer: <p>反查域名列表</p>
+        :type Referer: list of DomainInfo
+        """
+        self._Tags = None
+        self._Basis = None
+        self._ISP = None
+        self._Location = None
+        self._Characteristic = None
+        self._Purpose = None
+        self._Referer = None
+
+    @property
+    def Tags(self):
+        r"""<p>情报标签（如常规木马、漏洞软件、窃密木马）</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Basis(self):
+        r"""<p>研判依据</p>
+        :rtype: str
+        """
+        return self._Basis
+
+    @Basis.setter
+    def Basis(self, Basis):
+        self._Basis = Basis
+
+    @property
+    def ISP(self):
+        r"""<p>所属运营商</p>
+        :rtype: str
+        """
+        return self._ISP
+
+    @ISP.setter
+    def ISP(self, ISP):
+        self._ISP = ISP
+
+    @property
+    def Location(self):
+        r"""<p>地理位置</p>
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Characteristic(self):
+        r"""<p>家族团伙</p>
+        :rtype: str
+        """
+        return self._Characteristic
+
+    @Characteristic.setter
+    def Characteristic(self, Characteristic):
+        self._Characteristic = Characteristic
+
+    @property
+    def Purpose(self):
+        r"""<p>IP画像</p>
+        :rtype: str
+        """
+        return self._Purpose
+
+    @Purpose.setter
+    def Purpose(self, Purpose):
+        self._Purpose = Purpose
+
+    @property
+    def Referer(self):
+        r"""<p>反查域名列表</p>
+        :rtype: list of DomainInfo
+        """
+        return self._Referer
+
+    @Referer.setter
+    def Referer(self, Referer):
+        self._Referer = Referer
+
+
+    def _deserialize(self, params):
+        self._Tags = params.get("Tags")
+        self._Basis = params.get("Basis")
+        self._ISP = params.get("ISP")
+        self._Location = params.get("Location")
+        self._Characteristic = params.get("Characteristic")
+        self._Purpose = params.get("Purpose")
+        if params.get("Referer") is not None:
+            self._Referer = []
+            for item in params.get("Referer"):
+                obj = DomainInfo()
+                obj._deserialize(item)
+                self._Referer.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IaCFile(AbstractModel):
     r"""IaC检测文件
 
@@ -57396,6 +60520,57 @@ class InquireInfo(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceIDWithAppIdItem(AbstractModel):
+    r"""instance_id和对应的appid账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>APPID</p>
+        :type AppId: int
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        """
+        self._AppId = None
+        self._InstanceID = None
+
+    @property
+    def AppId(self):
+        r"""<p>APPID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._InstanceID = params.get("InstanceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60905,6 +64080,190 @@ class MiniTagItem(AbstractModel):
         
 
 
+class ModifyAILinkSettingRequest(AbstractModel):
+    r"""ModifyAILinkSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AILinkEnable: <p>0 关闭AI-Link智链引擎，1 开启AI-Link智链引擎</p>
+        :type AILinkEnable: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _RuleScopeDeep: <p>深度模式 0-关闭 1-开启</p>
+        :type RuleScopeDeep: int
+        :param _RuleScopeBalanced: <p>均衡模式 0-关闭 1-开启</p>
+        :type RuleScopeBalanced: int
+        :param _RuleScopePrecise: <p>精准模式 0-关闭 1-开启</p>
+        :type RuleScopePrecise: int
+        :param _Scope: <p>1 全部专业/旗舰版主机，0 自选主机列表</p>
+        :type Scope: int
+        :param _Quuids: <p>自选主机Quuid列表（Scope=0时必填）</p>
+        :type Quuids: list of str
+        :param _ExcludeQuuids: <p>排除主机Quuid列表（Scope=1时生效）</p>
+        :type ExcludeQuuids: list of str
+        :param _AutoInclude: <p>新增资产自动包含 0 不包含 1包含</p>
+        :type AutoInclude: int
+        """
+        self._AILinkEnable = None
+        self._MemberId = None
+        self._RuleScopeDeep = None
+        self._RuleScopeBalanced = None
+        self._RuleScopePrecise = None
+        self._Scope = None
+        self._Quuids = None
+        self._ExcludeQuuids = None
+        self._AutoInclude = None
+
+    @property
+    def AILinkEnable(self):
+        r"""<p>0 关闭AI-Link智链引擎，1 开启AI-Link智链引擎</p>
+        :rtype: int
+        """
+        return self._AILinkEnable
+
+    @AILinkEnable.setter
+    def AILinkEnable(self, AILinkEnable):
+        self._AILinkEnable = AILinkEnable
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def RuleScopeDeep(self):
+        r"""<p>深度模式 0-关闭 1-开启</p>
+        :rtype: int
+        """
+        return self._RuleScopeDeep
+
+    @RuleScopeDeep.setter
+    def RuleScopeDeep(self, RuleScopeDeep):
+        self._RuleScopeDeep = RuleScopeDeep
+
+    @property
+    def RuleScopeBalanced(self):
+        r"""<p>均衡模式 0-关闭 1-开启</p>
+        :rtype: int
+        """
+        return self._RuleScopeBalanced
+
+    @RuleScopeBalanced.setter
+    def RuleScopeBalanced(self, RuleScopeBalanced):
+        self._RuleScopeBalanced = RuleScopeBalanced
+
+    @property
+    def RuleScopePrecise(self):
+        r"""<p>精准模式 0-关闭 1-开启</p>
+        :rtype: int
+        """
+        return self._RuleScopePrecise
+
+    @RuleScopePrecise.setter
+    def RuleScopePrecise(self, RuleScopePrecise):
+        self._RuleScopePrecise = RuleScopePrecise
+
+    @property
+    def Scope(self):
+        r"""<p>1 全部专业/旗舰版主机，0 自选主机列表</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Quuids(self):
+        r"""<p>自选主机Quuid列表（Scope=0时必填）</p>
+        :rtype: list of str
+        """
+        return self._Quuids
+
+    @Quuids.setter
+    def Quuids(self, Quuids):
+        self._Quuids = Quuids
+
+    @property
+    def ExcludeQuuids(self):
+        r"""<p>排除主机Quuid列表（Scope=1时生效）</p>
+        :rtype: list of str
+        """
+        return self._ExcludeQuuids
+
+    @ExcludeQuuids.setter
+    def ExcludeQuuids(self, ExcludeQuuids):
+        self._ExcludeQuuids = ExcludeQuuids
+
+    @property
+    def AutoInclude(self):
+        r"""<p>新增资产自动包含 0 不包含 1包含</p>
+        :rtype: int
+        """
+        return self._AutoInclude
+
+    @AutoInclude.setter
+    def AutoInclude(self, AutoInclude):
+        self._AutoInclude = AutoInclude
+
+
+    def _deserialize(self, params):
+        self._AILinkEnable = params.get("AILinkEnable")
+        self._MemberId = params.get("MemberId")
+        self._RuleScopeDeep = params.get("RuleScopeDeep")
+        self._RuleScopeBalanced = params.get("RuleScopeBalanced")
+        self._RuleScopePrecise = params.get("RuleScopePrecise")
+        self._Scope = params.get("Scope")
+        self._Quuids = params.get("Quuids")
+        self._ExcludeQuuids = params.get("ExcludeQuuids")
+        self._AutoInclude = params.get("AutoInclude")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAILinkSettingResponse(AbstractModel):
+    r"""ModifyAILinkSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAlarmRiskStatusRequest(AbstractModel):
     r"""ModifyAlarmRiskStatus请求参数结构体
 
@@ -62848,6 +66207,575 @@ class ModifyDspmWhitelistStrategyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEDRRuleRequest(AbstractModel):
+    r"""ModifyEDRRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleType: <p>策略类型 / Rule Type: 0-系统策略/System Rule, 1-自定义策略/Custom Rule</p>
+        :type RuleType: int
+        :param _AlertAction: <p>执行动作 / Action: 0-告警/Alert, 1-放行/Allow, 2-告警并拦截/Alert and Block</p>
+        :type AlertAction: int
+        :param _CWPScope: <p>生效资产 / Effective Scope: 0-指定主机/Specified Hosts, 1-全部主机/All Hosts, 2-专业版/Professional, 3-旗舰版/Flagship, 4-专业版+旗舰版/Professional+Flagship     QUUIDS        []string json:&quot;QUUIDS&quot;                                      // 主机列表 / Host QUUIDS (when Scope=0)</p>
+        :type CWPScope: int
+        :param _TCSSScope: <p>容器生效镜像范围 / Container Image Scope: 0-指定镜像/Specified Images, 1-全部镜像/All Images</p>
+        :type TCSSScope: int
+        :param _Status: <p>开关 / Status: 0-开启/Enabled, 1-关闭/Disabled</p>
+        :type Status: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Name: <p>策略名称</p>
+        :type Name: str
+        :param _ContentType: <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+        :type ContentType: str
+        :param _Level: <p>告警等级 / Alert Level: 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
+        :type Level: int
+        :param _DetectMode: <p>检测模式 / Detect Mode: 0-精准/Precise, 1-均衡/Balanced, 2-深度/Deep</p>
+        :type DetectMode: int
+        :param _AttackStage: <p>攻击阶段</p>
+        :type AttackStage: str
+        :param _RuleID: <p>策略</p>
+        :type RuleID: str
+        :param _Description: <p>策略描述</p>
+        :type Description: str
+        :param _DealOldEvents: <p>处理历史告警 / Handle Old Events: 0-否/No, 1-是/Yes</p>
+        :type DealOldEvents: int
+        :param _Md5List: <p>ContentType=md5 时传入的 MD5 列表</p>
+        :type Md5List: list of str
+        :param _FileName: <p>ContentType=custom_file 时传入的文件名列表(Base64编码)</p>
+        :type FileName: list of str
+        :param _FileDirectory: <p>ContentType=custom_file 时传入的文件目录列表(Base64编码)</p>
+        :type FileDirectory: list of str
+        :param _CmdLineRules: <p>ContentType=cmdline 时传入的命令行规则，Process/PProcess/AProcess 的 Exe/Cmdline 字段需要 Base64 编码</p>
+        :type CmdLineRules: :class:`tencentcloud.csip.v20221121.models.RuleContentCmdLine`
+        :param _Domains: <p>ContentType=dns 时传入的域名列表(Base64编码)</p>
+        :type Domains: list of str
+        :param _OutboundIP: <p>ContentType=ip_outbound 时传入的出站IP列表(Base64编码)</p>
+        :type OutboundIP: list of str
+        :param _InboundIP: <p>ContentType=ip_inbound 时传入的入站IP列表(Base64编码)</p>
+        :type InboundIP: list of str
+        :param _ImageIDs: <p>镜像ID列表 / Image IDs (when TCSSScope=0)</p>
+        :type ImageIDs: list of str
+        :param _ProcessNetworkRules: <p>ContentType=process_network 时传入的进程网络规则</p>
+        :type ProcessNetworkRules: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessNetwork`
+        :param _TargetAppIDs: <p>选择的多账号的APPID</p>
+        :type TargetAppIDs: list of int non-negative
+        :param _Target: <p>告警的加白目标机器信息</p>
+        :type Target: :class:`tencentcloud.csip.v20221121.models.EdrAlertTarget`
+        :param _InstanceIDsWithAppId: <p>自选资产对应的实例ID和APPID</p>
+        :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _ExcludeInstanceIDsWithAppId: <p>全选资产排除的实例ID和APPID</p>
+        :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        """
+        self._RuleType = None
+        self._AlertAction = None
+        self._CWPScope = None
+        self._TCSSScope = None
+        self._Status = None
+        self._MemberId = None
+        self._Name = None
+        self._ContentType = None
+        self._Level = None
+        self._DetectMode = None
+        self._AttackStage = None
+        self._RuleID = None
+        self._Description = None
+        self._DealOldEvents = None
+        self._Md5List = None
+        self._FileName = None
+        self._FileDirectory = None
+        self._CmdLineRules = None
+        self._Domains = None
+        self._OutboundIP = None
+        self._InboundIP = None
+        self._ImageIDs = None
+        self._ProcessNetworkRules = None
+        self._TargetAppIDs = None
+        self._Target = None
+        self._InstanceIDsWithAppId = None
+        self._ExcludeInstanceIDsWithAppId = None
+
+    @property
+    def RuleType(self):
+        r"""<p>策略类型 / Rule Type: 0-系统策略/System Rule, 1-自定义策略/Custom Rule</p>
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def AlertAction(self):
+        r"""<p>执行动作 / Action: 0-告警/Alert, 1-放行/Allow, 2-告警并拦截/Alert and Block</p>
+        :rtype: int
+        """
+        return self._AlertAction
+
+    @AlertAction.setter
+    def AlertAction(self, AlertAction):
+        self._AlertAction = AlertAction
+
+    @property
+    def CWPScope(self):
+        r"""<p>生效资产 / Effective Scope: 0-指定主机/Specified Hosts, 1-全部主机/All Hosts, 2-专业版/Professional, 3-旗舰版/Flagship, 4-专业版+旗舰版/Professional+Flagship     QUUIDS        []string json:&quot;QUUIDS&quot;                                      // 主机列表 / Host QUUIDS (when Scope=0)</p>
+        :rtype: int
+        """
+        return self._CWPScope
+
+    @CWPScope.setter
+    def CWPScope(self, CWPScope):
+        self._CWPScope = CWPScope
+
+    @property
+    def TCSSScope(self):
+        r"""<p>容器生效镜像范围 / Container Image Scope: 0-指定镜像/Specified Images, 1-全部镜像/All Images</p>
+        :rtype: int
+        """
+        return self._TCSSScope
+
+    @TCSSScope.setter
+    def TCSSScope(self, TCSSScope):
+        self._TCSSScope = TCSSScope
+
+    @property
+    def Status(self):
+        r"""<p>开关 / Status: 0-开启/Enabled, 1-关闭/Disabled</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Name(self):
+        r"""<p>策略名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContentType(self):
+        r"""<p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Level(self):
+        r"""<p>告警等级 / Alert Level: 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def DetectMode(self):
+        r"""<p>检测模式 / Detect Mode: 0-精准/Precise, 1-均衡/Balanced, 2-深度/Deep</p>
+        :rtype: int
+        """
+        return self._DetectMode
+
+    @DetectMode.setter
+    def DetectMode(self, DetectMode):
+        self._DetectMode = DetectMode
+
+    @property
+    def AttackStage(self):
+        r"""<p>攻击阶段</p>
+        :rtype: str
+        """
+        return self._AttackStage
+
+    @AttackStage.setter
+    def AttackStage(self, AttackStage):
+        self._AttackStage = AttackStage
+
+    @property
+    def RuleID(self):
+        r"""<p>策略</p>
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DealOldEvents(self):
+        r"""<p>处理历史告警 / Handle Old Events: 0-否/No, 1-是/Yes</p>
+        :rtype: int
+        """
+        return self._DealOldEvents
+
+    @DealOldEvents.setter
+    def DealOldEvents(self, DealOldEvents):
+        self._DealOldEvents = DealOldEvents
+
+    @property
+    def Md5List(self):
+        r"""<p>ContentType=md5 时传入的 MD5 列表</p>
+        :rtype: list of str
+        """
+        return self._Md5List
+
+    @Md5List.setter
+    def Md5List(self, Md5List):
+        self._Md5List = Md5List
+
+    @property
+    def FileName(self):
+        r"""<p>ContentType=custom_file 时传入的文件名列表(Base64编码)</p>
+        :rtype: list of str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileDirectory(self):
+        r"""<p>ContentType=custom_file 时传入的文件目录列表(Base64编码)</p>
+        :rtype: list of str
+        """
+        return self._FileDirectory
+
+    @FileDirectory.setter
+    def FileDirectory(self, FileDirectory):
+        self._FileDirectory = FileDirectory
+
+    @property
+    def CmdLineRules(self):
+        r"""<p>ContentType=cmdline 时传入的命令行规则，Process/PProcess/AProcess 的 Exe/Cmdline 字段需要 Base64 编码</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentCmdLine`
+        """
+        return self._CmdLineRules
+
+    @CmdLineRules.setter
+    def CmdLineRules(self, CmdLineRules):
+        self._CmdLineRules = CmdLineRules
+
+    @property
+    def Domains(self):
+        r"""<p>ContentType=dns 时传入的域名列表(Base64编码)</p>
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def OutboundIP(self):
+        r"""<p>ContentType=ip_outbound 时传入的出站IP列表(Base64编码)</p>
+        :rtype: list of str
+        """
+        return self._OutboundIP
+
+    @OutboundIP.setter
+    def OutboundIP(self, OutboundIP):
+        self._OutboundIP = OutboundIP
+
+    @property
+    def InboundIP(self):
+        r"""<p>ContentType=ip_inbound 时传入的入站IP列表(Base64编码)</p>
+        :rtype: list of str
+        """
+        return self._InboundIP
+
+    @InboundIP.setter
+    def InboundIP(self, InboundIP):
+        self._InboundIP = InboundIP
+
+    @property
+    def ImageIDs(self):
+        r"""<p>镜像ID列表 / Image IDs (when TCSSScope=0)</p>
+        :rtype: list of str
+        """
+        return self._ImageIDs
+
+    @ImageIDs.setter
+    def ImageIDs(self, ImageIDs):
+        self._ImageIDs = ImageIDs
+
+    @property
+    def ProcessNetworkRules(self):
+        r"""<p>ContentType=process_network 时传入的进程网络规则</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessNetwork`
+        """
+        return self._ProcessNetworkRules
+
+    @ProcessNetworkRules.setter
+    def ProcessNetworkRules(self, ProcessNetworkRules):
+        self._ProcessNetworkRules = ProcessNetworkRules
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>选择的多账号的APPID</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def Target(self):
+        r"""<p>告警的加白目标机器信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.EdrAlertTarget`
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def InstanceIDsWithAppId(self):
+        r"""<p>自选资产对应的实例ID和APPID</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._InstanceIDsWithAppId
+
+    @InstanceIDsWithAppId.setter
+    def InstanceIDsWithAppId(self, InstanceIDsWithAppId):
+        self._InstanceIDsWithAppId = InstanceIDsWithAppId
+
+    @property
+    def ExcludeInstanceIDsWithAppId(self):
+        r"""<p>全选资产排除的实例ID和APPID</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._ExcludeInstanceIDsWithAppId
+
+    @ExcludeInstanceIDsWithAppId.setter
+    def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
+        self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
+
+
+    def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        self._AlertAction = params.get("AlertAction")
+        self._CWPScope = params.get("CWPScope")
+        self._TCSSScope = params.get("TCSSScope")
+        self._Status = params.get("Status")
+        self._MemberId = params.get("MemberId")
+        self._Name = params.get("Name")
+        self._ContentType = params.get("ContentType")
+        self._Level = params.get("Level")
+        self._DetectMode = params.get("DetectMode")
+        self._AttackStage = params.get("AttackStage")
+        self._RuleID = params.get("RuleID")
+        self._Description = params.get("Description")
+        self._DealOldEvents = params.get("DealOldEvents")
+        self._Md5List = params.get("Md5List")
+        self._FileName = params.get("FileName")
+        self._FileDirectory = params.get("FileDirectory")
+        if params.get("CmdLineRules") is not None:
+            self._CmdLineRules = RuleContentCmdLine()
+            self._CmdLineRules._deserialize(params.get("CmdLineRules"))
+        self._Domains = params.get("Domains")
+        self._OutboundIP = params.get("OutboundIP")
+        self._InboundIP = params.get("InboundIP")
+        self._ImageIDs = params.get("ImageIDs")
+        if params.get("ProcessNetworkRules") is not None:
+            self._ProcessNetworkRules = RuleContentProcessNetwork()
+            self._ProcessNetworkRules._deserialize(params.get("ProcessNetworkRules"))
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        if params.get("Target") is not None:
+            self._Target = EdrAlertTarget()
+            self._Target._deserialize(params.get("Target"))
+        if params.get("InstanceIDsWithAppId") is not None:
+            self._InstanceIDsWithAppId = []
+            for item in params.get("InstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._InstanceIDsWithAppId.append(obj)
+        if params.get("ExcludeInstanceIDsWithAppId") is not None:
+            self._ExcludeInstanceIDsWithAppId = []
+            for item in params.get("ExcludeInstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeInstanceIDsWithAppId.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEDRRuleResponse(AbstractModel):
+    r"""ModifyEDRRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEdrAlertPermanentIgnoreRequest(AbstractModel):
+    r"""ModifyEdrAlertPermanentIgnore请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Targets: <p>告警定位列表（支持跨账号），最多500条</p>
+        :type Targets: list of EdrAlertTargetForIgnore
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Targets = None
+        self._MemberId = None
+
+    @property
+    def Targets(self):
+        r"""<p>告警定位列表（支持跨账号），最多500条</p>
+        :rtype: list of EdrAlertTargetForIgnore
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = EdrAlertTargetForIgnore()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEdrAlertPermanentIgnoreResponse(AbstractModel):
+    r"""ModifyEdrAlertPermanentIgnore返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IgnoredCount: <p>成功忽略的告警数</p>
+        :type IgnoredCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IgnoredCount = None
+        self._RequestId = None
+
+    @property
+    def IgnoredCount(self):
+        r"""<p>成功忽略的告警数</p>
+        :rtype: int
+        """
+        return self._IgnoredCount
+
+    @IgnoredCount.setter
+    def IgnoredCount(self, IgnoredCount):
+        self._IgnoredCount = IgnoredCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IgnoredCount = params.get("IgnoredCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -68396,6 +72324,214 @@ class RoleInfo(AbstractModel):
                 self._FromLogAnalysisData.append(obj)
         self._ContainerName = params.get("ContainerName")
         self._ContainerID = params.get("ContainerID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleContentCmdLine(AbstractModel):
+    r"""EDR命令行规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Process: <p>进程命令行信息</p>
+        :type Process: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        :param _ParentProcess: <p>父进程命令行信息</p>
+        :type ParentProcess: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        :param _AncestorProcess: <p>祖先进程命令行信息</p>
+        :type AncestorProcess: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        self._Process = None
+        self._ParentProcess = None
+        self._AncestorProcess = None
+
+    @property
+    def Process(self):
+        r"""<p>进程命令行信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def ParentProcess(self):
+        r"""<p>父进程命令行信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        return self._ParentProcess
+
+    @ParentProcess.setter
+    def ParentProcess(self, ParentProcess):
+        self._ParentProcess = ParentProcess
+
+    @property
+    def AncestorProcess(self):
+        r"""<p>祖先进程命令行信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        return self._AncestorProcess
+
+    @AncestorProcess.setter
+    def AncestorProcess(self, AncestorProcess):
+        self._AncestorProcess = AncestorProcess
+
+
+    def _deserialize(self, params):
+        if params.get("Process") is not None:
+            self._Process = RuleContentProcessInfo()
+            self._Process._deserialize(params.get("Process"))
+        if params.get("ParentProcess") is not None:
+            self._ParentProcess = RuleContentProcessInfo()
+            self._ParentProcess._deserialize(params.get("ParentProcess"))
+        if params.get("AncestorProcess") is not None:
+            self._AncestorProcess = RuleContentProcessInfo()
+            self._AncestorProcess._deserialize(params.get("AncestorProcess"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleContentProcessInfo(AbstractModel):
+    r"""EDR命令行规则单规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Exe: <p>进程文件路径</p>
+        :type Exe: str
+        :param _CmdLine: <p>进程命令行</p>
+        :type CmdLine: str
+        """
+        self._Exe = None
+        self._CmdLine = None
+
+    @property
+    def Exe(self):
+        r"""<p>进程文件路径</p>
+        :rtype: str
+        """
+        return self._Exe
+
+    @Exe.setter
+    def Exe(self, Exe):
+        self._Exe = Exe
+
+    @property
+    def CmdLine(self):
+        r"""<p>进程命令行</p>
+        :rtype: str
+        """
+        return self._CmdLine
+
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
+
+
+    def _deserialize(self, params):
+        self._Exe = params.get("Exe")
+        self._CmdLine = params.get("CmdLine")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleContentProcessNetwork(AbstractModel):
+    r"""定义进程网络规则内容结构，用于反弹Shell白名单场景，支持进程匹配 + IP/端口过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Process: <p>当前进程</p>
+        :type Process: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        :param _DstIP: <p>目标IP（必填）: 支持单个IP/IP范围/CIDR, 支持IPv4和IPv6</p>
+        :type DstIP: str
+        :param _ParentProcess: <p>父进程</p>
+        :type ParentProcess: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        :param _DstPorts: <p>目标端口列表（可选）: 支持1-65535, 为空表示不限端口</p>
+        :type DstPorts: list of int non-negative
+        """
+        self._Process = None
+        self._DstIP = None
+        self._ParentProcess = None
+        self._DstPorts = None
+
+    @property
+    def Process(self):
+        r"""<p>当前进程</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def DstIP(self):
+        r"""<p>目标IP（必填）: 支持单个IP/IP范围/CIDR, 支持IPv4和IPv6</p>
+        :rtype: str
+        """
+        return self._DstIP
+
+    @DstIP.setter
+    def DstIP(self, DstIP):
+        self._DstIP = DstIP
+
+    @property
+    def ParentProcess(self):
+        r"""<p>父进程</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        return self._ParentProcess
+
+    @ParentProcess.setter
+    def ParentProcess(self, ParentProcess):
+        self._ParentProcess = ParentProcess
+
+    @property
+    def DstPorts(self):
+        r"""<p>目标端口列表（可选）: 支持1-65535, 为空表示不限端口</p>
+        :rtype: list of int non-negative
+        """
+        return self._DstPorts
+
+    @DstPorts.setter
+    def DstPorts(self, DstPorts):
+        self._DstPorts = DstPorts
+
+
+    def _deserialize(self, params):
+        if params.get("Process") is not None:
+            self._Process = RuleContentProcessInfo()
+            self._Process._deserialize(params.get("Process"))
+        self._DstIP = params.get("DstIP")
+        if params.get("ParentProcess") is not None:
+            self._ParentProcess = RuleContentProcessInfo()
+            self._ParentProcess._deserialize(params.get("ParentProcess"))
+        self._DstPorts = params.get("DstPorts")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

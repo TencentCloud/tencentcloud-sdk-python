@@ -310,6 +310,28 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcQuota(
+            self,
+            request: models.CreateAigcQuotaRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcQuotaResponse:
+        """
+        用于创建并启用 AIGC 配额配置，配额用量从启用配额功能时开始累计，达到限额后将无法继续使用 AIGC 功能。
+
+        如果删除配额后重新启用，用量将清零并重新计算。
+
+        由于AGC内客生成为异步任务，无法获取实时用量数据，因此配额限制存在一定误差，无法实现与设置额度完全精准的控制。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcSubject(
             self,
             request: models.CreateAigcSubjectRequest,
@@ -1083,6 +1105,26 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAigcQuota(
+            self,
+            request: models.DeleteAigcQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAigcQuotaResponse:
+        """
+        用于删除 AIGC 配额配置，删除后，将不再限制 AIGC 任务的发起。
+
+        如果删除配额后重新启用，用量将清零并重新计算。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAigcQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAigcQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAnimatedGraphicsTemplate(
             self,
             request: models.DeleteAnimatedGraphicsTemplateRequest,
@@ -1704,6 +1746,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeAigcFaceInfoAsync"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAigcFaceInfoAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcQuotas(
+            self,
+            request: models.DescribeAigcQuotasRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcQuotasResponse:
+        """
+        用于查询 AIGC 配额配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcQuotas"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcQuotasResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3176,6 +3236,26 @@ class VodClient(AbstractClient):
         kwargs["action"] = "ModifyAdaptiveDynamicStreamingTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAdaptiveDynamicStreamingTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAigcQuota(
+            self,
+            request: models.ModifyAigcQuotaRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAigcQuotaResponse:
+        """
+        用于编辑 AIGC 配额配置，配额用量从启用配额功能时开始累计，达到限额后将无法继续使用 AIGC 功能。
+
+        由于AGC内客生成为异步任务，无法获取实时用量数据，因此配额限制存在一定误差，无法实现与设置额度完全精准的控制。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAigcQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAigcQuotaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

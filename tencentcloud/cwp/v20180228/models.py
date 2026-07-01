@@ -42828,7 +42828,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: <p>是否开启防卸载 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li></p>
+        :param _Enable: <p>是否开启扫码登录 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li></p>
         :type Enable: int
         :param _Scope: <p>开启范围 <li>0 自选主机</li> <li>1 全部主机</li></p>
         :type Scope: int
@@ -42859,7 +42859,7 @@ class DescribeLoginTypeGlobalConfResponse(AbstractModel):
 
     @property
     def Enable(self):
-        r"""<p>是否开启防卸载 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li></p>
+        r"""<p>是否开启扫码登录 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li></p>
         :rtype: int
         """
         return self._Enable

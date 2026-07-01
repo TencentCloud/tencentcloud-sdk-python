@@ -2248,7 +2248,7 @@ class WedataClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ListSQLFolderContentsResponse:
         """
-        查询数据探索文件夹树，包括文件夹下的脚本
+        查询SQL文件夹树，包括文件夹下的脚本
         """
         
         kwargs = {}

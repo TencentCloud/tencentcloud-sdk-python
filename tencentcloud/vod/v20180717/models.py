@@ -12845,6 +12845,87 @@ class AigcImageTaskOutputFileInfo(AbstractModel):
         
 
 
+class AigcQuotaItem(AbstractModel):
+    r"""AIGC 配额
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuotaType: <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :type QuotaType: str
+        :param _ApiToken: <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :type ApiToken: str
+        :param _QuotaLimit: <p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+        :type QuotaLimit: int
+        :param _Usage: <p>已经使用的用量数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+        :type Usage: int
+        """
+        self._QuotaType = None
+        self._ApiToken = None
+        self._QuotaLimit = None
+        self._Usage = None
+
+    @property
+    def QuotaType(self):
+        r"""<p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def ApiToken(self):
+        r"""<p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def Usage(self):
+        r"""<p>已经使用的用量数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+        :rtype: int
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+
+    def _deserialize(self, params):
+        self._QuotaType = params.get("QuotaType")
+        self._ApiToken = params.get("ApiToken")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._Usage = params.get("Usage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcUsageDataItem(AbstractModel):
     r"""AIGC 统计数据
 
@@ -23963,6 +24044,115 @@ class CreateAigcImageTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAigcQuotaRequest(AbstractModel):
+    r"""CreateAigcQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+        :type SubAppId: int
+        :param _QuotaType: <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :type QuotaType: str
+        :param _QuotaLimit: <p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+        :type QuotaLimit: int
+        :param _ApiToken: <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :type ApiToken: str
+        """
+        self._SubAppId = None
+        self._QuotaType = None
+        self._QuotaLimit = None
+        self._ApiToken = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def QuotaType(self):
+        r"""<p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def ApiToken(self):
+        r"""<p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._QuotaType = params.get("QuotaType")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._ApiToken = params.get("ApiToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcQuotaResponse(AbstractModel):
+    r"""CreateAigcQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcSubjectInput(AbstractModel):
     r"""创建主体输入信息。
 
@@ -31706,6 +31896,100 @@ class DeleteAigcApiTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAigcQuotaRequest(AbstractModel):
+    r"""DeleteAigcQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+        :type SubAppId: int
+        :param _QuotaType: <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :type QuotaType: str
+        :param _ApiToken: <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :type ApiToken: str
+        """
+        self._SubAppId = None
+        self._QuotaType = None
+        self._ApiToken = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def QuotaType(self):
+        r"""<p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def ApiToken(self):
+        r"""<p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._QuotaType = params.get("QuotaType")
+        self._ApiToken = params.get("ApiToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAigcQuotaResponse(AbstractModel):
+    r"""DeleteAigcQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
     r"""DeleteAnimatedGraphicsTemplate请求参数结构体
 
@@ -35058,6 +35342,165 @@ class DescribeAigcFaceInfoResponse(AbstractModel):
                 obj = AigcFaceInfo()
                 obj._deserialize(item)
                 self._FaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcQuotasRequest(AbstractModel):
+    r"""DescribeAigcQuotas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+        :type SubAppId: int
+        :param _QuotaType: <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :type QuotaType: str
+        :param _ApiToken: <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :type ApiToken: str
+        :param _Limit: <p>分页返回的记录条数，将返回第 Offset 到第 Offset+Limit-1 条。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :type Limit: int
+        :param _Offset: <p>分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。</p><p>默认值：0</p>
+        :type Offset: int
+        """
+        self._SubAppId = None
+        self._QuotaType = None
+        self._ApiToken = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def QuotaType(self):
+        r"""<p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def ApiToken(self):
+        r"""<p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+    @property
+    def Limit(self):
+        r"""<p>分页返回的记录条数，将返回第 Offset 到第 Offset+Limit-1 条。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._QuotaType = params.get("QuotaType")
+        self._ApiToken = params.get("ApiToken")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcQuotasResponse(AbstractModel):
+    r"""DescribeAigcQuotas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuotaSet: <p>配额列表</p>
+        :type QuotaSet: list of AigcQuotaItem
+        :param _TotalCount: <p>总条数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QuotaSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def QuotaSet(self):
+        r"""<p>配额列表</p>
+        :rtype: list of AigcQuotaItem
+        """
+        return self._QuotaSet
+
+    @QuotaSet.setter
+    def QuotaSet(self, QuotaSet):
+        self._QuotaSet = QuotaSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>总条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaSet") is not None:
+            self._QuotaSet = []
+            for item in params.get("QuotaSet"):
+                obj = AigcQuotaItem()
+                obj._deserialize(item)
+                self._QuotaSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -65311,6 +65754,115 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
 class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
     r"""ModifyAdaptiveDynamicStreamingTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAigcQuotaRequest(AbstractModel):
+    r"""ModifyAigcQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+        :type SubAppId: int
+        :param _QuotaType: <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :type QuotaType: str
+        :param _QuotaLimit: <p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+        :type QuotaLimit: int
+        :param _ApiToken: <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :type ApiToken: str
+        """
+        self._SubAppId = None
+        self._QuotaType = None
+        self._QuotaLimit = None
+        self._ApiToken = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def QuotaType(self):
+        r"""<p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def ApiToken(self):
+        r"""<p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._QuotaType = params.get("QuotaType")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._ApiToken = params.get("ApiToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAigcQuotaResponse(AbstractModel):
+    r"""ModifyAigcQuota返回参数结构体
 
     """
 

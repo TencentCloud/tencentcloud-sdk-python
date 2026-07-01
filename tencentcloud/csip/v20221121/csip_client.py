@@ -900,6 +900,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAILinkSetting(self, request):
+        r"""查询AI-Link智链引擎配置
+
+        :param request: Request instance for DescribeAILinkSetting.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAILinkSettingRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAILinkSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAILinkSetting", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAILinkSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAKAnalysisDetail(self, request):
         r"""访问密钥告警记录AI分析结果详情
 
@@ -3223,6 +3246,75 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEDRRuleList(self, request):
+        r"""获取EDR策略列表
+
+        :param request: Request instance for DescribeEDRRuleList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeEDRRuleListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeEDRRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEDRRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEDRRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEdrAlertInfo(self, request):
+        r"""获取EDR告警详情，包含告警内容JSON、资产富化、情报富化等完整信息
+
+        :param request: Request instance for DescribeEdrAlertInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeEdrAlertInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeEdrAlertInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdrAlertInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEdrAlertInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEdrAlertList(self, request):
+        r"""获取EDR告警列表
+
+        :param request: Request instance for DescribeEdrAlertList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeEdrAlertListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeEdrAlertListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdrAlertList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEdrAlertListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExposeAssetCategory(self, request):
         r"""云边界分析资产分类
 
@@ -4649,6 +4741,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAILinkSetting(self, request):
+        r"""修改AI-Link智链引擎配置
+
+        :param request: Request instance for ModifyAILinkSetting.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyAILinkSettingRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyAILinkSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAILinkSetting", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAILinkSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAlarmRiskStatus(self, request):
         r"""修改或者更改处置状态
 
@@ -5054,6 +5169,52 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyDspmWhitelistStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDspmWhitelistStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyEDRRule(self, request):
+        r"""编辑或者创建EDR策略
+
+        :param request: Request instance for ModifyEDRRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyEDRRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyEDRRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEDRRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyEDRRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyEdrAlertPermanentIgnore(self, request):
+        r"""永久忽略EDR多行为告警，将告警对应的主机+规则加入AI-Link永久忽略白名单，后续同类告警将自动丢弃
+
+        :param request: Request instance for ModifyEdrAlertPermanentIgnore.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyEdrAlertPermanentIgnoreRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyEdrAlertPermanentIgnoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEdrAlertPermanentIgnore", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyEdrAlertPermanentIgnoreResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

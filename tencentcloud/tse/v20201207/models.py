@@ -20429,11 +20429,11 @@ class DescribeCloudNativeAPIGatewaysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 返回数量，默认为 20，最大值为 100。
+        :param _Limit: <p>返回数量，默认为 20，最大值为 100。</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为 0。
+        :param _Offset: <p>偏移量，默认为 0。</p>
         :type Offset: int
-        :param _Filters: 请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选
+        :param _Filters: <p>请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选</p>
         :type Filters: list of Filter
         """
         self._Limit = None
@@ -20442,7 +20442,7 @@ class DescribeCloudNativeAPIGatewaysRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为 20，最大值为 100。
+        r"""<p>返回数量，默认为 20，最大值为 100。</p>
         :rtype: int
         """
         return self._Limit
@@ -20453,7 +20453,7 @@ class DescribeCloudNativeAPIGatewaysRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为 0。
+        r"""<p>偏移量，默认为 0。</p>
         :rtype: int
         """
         return self._Offset
@@ -20464,7 +20464,7 @@ class DescribeCloudNativeAPIGatewaysRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选
+        r"""<p>请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -20500,7 +20500,7 @@ class DescribeCloudNativeAPIGatewaysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 获取云原生API网关实例列表响应结果。
+        :param _Result: <p>获取云原生API网关实例列表响应结果。</p>
         :type Result: :class:`tencentcloud.tse.v20201207.models.ListCloudNativeAPIGatewayResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20510,7 +20510,7 @@ class DescribeCloudNativeAPIGatewaysResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""获取云原生API网关实例列表响应结果。
+        r"""<p>获取云原生API网关实例列表响应结果。</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.ListCloudNativeAPIGatewayResult`
         """
         return self._Result

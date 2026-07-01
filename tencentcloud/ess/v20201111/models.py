@@ -6662,7 +6662,7 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         :type CacheApproverInfo: bool
         :param _CanBatchReject: <p>是否允许此链接中签署方批量拒签。<br> <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul></p><p>注：<code>当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。</code></p>
         :type CanBatchReject: bool
-        :param _PresetApproverInfo: <p>预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。</p>
+        :param _PresetApproverInfo: <p>预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。若为个人动态签署方，支持预设姓名、证件、手机号。若为企业员工动态签署方，仅支持预设企业名称。</p>
         :type PresetApproverInfo: :class:`tencentcloud.ess.v20201111.models.PresetApproverInfo`
         :param _CanSkipReadFlow: <p>是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：<code>1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 若批量签署的合同中第一份待签署合同所选择的印章或者签名无法完全覆盖后续合同要求，或者当前签署人没有指定印章使用权限，则无法使用此功能，会自动退化为逐份确认。</code></p>
         :type CanSkipReadFlow: bool
@@ -6843,7 +6843,7 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
 
     @property
     def PresetApproverInfo(self):
-        r"""<p>预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。</p>
+        r"""<p>预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。若为个人动态签署方，支持预设姓名、证件、手机号。若为企业员工动态签署方，仅支持预设企业名称。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.PresetApproverInfo`
         """
         return self._PresetApproverInfo
@@ -41905,29 +41905,26 @@ class PresetApproverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 预设参与方姓名。
+        :param _Name: <p>预设参与方姓名。</p>
         :type Name: str
-        :param _Mobile: 预设参与方手机号。
+        :param _Mobile: <p>预设参与方手机号。</p>
         :type Mobile: str
-        :param _IdCardNumber: 预设参与方证件号，需要和IdCardType同时传入。
-
-证件号码，应符合以下规则
-<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
+        :param _IdCardNumber: <p>预设参与方证件号，需要和IdCardType同时传入。</p><p>证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
         :type IdCardNumber: str
-        :param _IdCardType: 预设参与方的证件类型，需要与IdCardNumber同时传入。
-
-证件类型，支持以下类型
-<ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
+        :param _IdCardType: <p>预设参与方的证件类型，需要与IdCardNumber同时传入。</p><p>证件类型，支持以下类型</p><ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
         :type IdCardType: str
+        :param _OrganizationName: <p>企业用户动态签署方场景指定预设企业名称。</p><p><code>注意：1. 若为企业动态签署方场景，此参数必须要指定。2. 企业动态签署方场景暂不支持指定姓名证件手机号等参数，仅支持指定企业名称。</code></p>
+        :type OrganizationName: str
         """
         self._Name = None
         self._Mobile = None
         self._IdCardNumber = None
         self._IdCardType = None
+        self._OrganizationName = None
 
     @property
     def Name(self):
-        r"""预设参与方姓名。
+        r"""<p>预设参与方姓名。</p>
         :rtype: str
         """
         return self._Name
@@ -41938,7 +41935,7 @@ class PresetApproverInfo(AbstractModel):
 
     @property
     def Mobile(self):
-        r"""预设参与方手机号。
+        r"""<p>预设参与方手机号。</p>
         :rtype: str
         """
         return self._Mobile
@@ -41949,10 +41946,7 @@ class PresetApproverInfo(AbstractModel):
 
     @property
     def IdCardNumber(self):
-        r"""预设参与方证件号，需要和IdCardType同时传入。
-
-证件号码，应符合以下规则
-<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
+        r"""<p>预设参与方证件号，需要和IdCardType同时传入。</p><p>证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
         :rtype: str
         """
         return self._IdCardNumber
@@ -41963,10 +41957,7 @@ class PresetApproverInfo(AbstractModel):
 
     @property
     def IdCardType(self):
-        r"""预设参与方的证件类型，需要与IdCardNumber同时传入。
-
-证件类型，支持以下类型
-<ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
+        r"""<p>预设参与方的证件类型，需要与IdCardNumber同时传入。</p><p>证件类型，支持以下类型</p><ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
         :rtype: str
         """
         return self._IdCardType
@@ -41975,12 +41966,24 @@ class PresetApproverInfo(AbstractModel):
     def IdCardType(self, IdCardType):
         self._IdCardType = IdCardType
 
+    @property
+    def OrganizationName(self):
+        r"""<p>企业用户动态签署方场景指定预设企业名称。</p><p><code>注意：1. 若为企业动态签署方场景，此参数必须要指定。2. 企业动态签署方场景暂不支持指定姓名证件手机号等参数，仅支持指定企业名称。</code></p>
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Mobile = params.get("Mobile")
         self._IdCardNumber = params.get("IdCardNumber")
         self._IdCardType = params.get("IdCardType")
+        self._OrganizationName = params.get("OrganizationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3868,7 +3868,7 @@ class CwpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLoginTypeGlobalConfResponse:
         """
-        获取防卸载全局配置
+        获取扫码登录全局配置
         """
         
         kwargs = {}

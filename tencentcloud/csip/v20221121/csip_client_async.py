@@ -709,6 +709,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAILinkSetting(
+            self,
+            request: models.DescribeAILinkSettingRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAILinkSettingResponse:
+        """
+        查询AI-Link智链引擎配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAILinkSetting"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAILinkSettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAKAnalysisDetail(
             self,
             request: models.DescribeAKAnalysisDetailRequest,
@@ -2527,6 +2545,60 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEDRRuleList(
+            self,
+            request: models.DescribeEDRRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEDRRuleListResponse:
+        """
+        获取EDR策略列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEDRRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEDRRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEdrAlertInfo(
+            self,
+            request: models.DescribeEdrAlertInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrAlertInfoResponse:
+        """
+        获取EDR告警详情，包含告警内容JSON、资产富化、情报富化等完整信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrAlertInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrAlertInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEdrAlertList(
+            self,
+            request: models.DescribeEdrAlertListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrAlertListResponse:
+        """
+        获取EDR告警列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrAlertList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrAlertListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeExposeAssetCategory(
             self,
             request: models.DescribeExposeAssetCategoryRequest,
@@ -3643,6 +3715,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyAILinkSetting(
+            self,
+            request: models.ModifyAILinkSettingRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAILinkSettingResponse:
+        """
+        修改AI-Link智链引擎配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAILinkSetting"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAILinkSettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAlarmRiskStatus(
             self,
             request: models.ModifyAlarmRiskStatusRequest,
@@ -3962,6 +4052,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyDspmWhitelistStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDspmWhitelistStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyEDRRule(
+            self,
+            request: models.ModifyEDRRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEDRRuleResponse:
+        """
+        编辑或者创建EDR策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEDRRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEDRRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyEdrAlertPermanentIgnore(
+            self,
+            request: models.ModifyEdrAlertPermanentIgnoreRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEdrAlertPermanentIgnoreResponse:
+        """
+        永久忽略EDR多行为告警，将告警对应的主机+规则加入AI-Link永久忽略白名单，后续同类告警将自动丢弃
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEdrAlertPermanentIgnore"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEdrAlertPermanentIgnoreResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

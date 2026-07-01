@@ -383,13 +383,13 @@ class CreateEndpointGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _EndpointGroupType: 终端节点组类型。支持VIRTUAL，DEFAULT。
+        :param _EndpointGroupType: <p>终端节点组类型。</p><p>枚举值：</p><ul><li>VIRTUAL： 自定义终端节点组</li><li>DEFAULT： 默认终端节点组</li></ul>
         :type EndpointGroupType: str
-        :param _EndpointGroupConfiguration: 终端节点组配置。
+        :param _EndpointGroupConfiguration: <p>终端节点组配置。</p>
         :type EndpointGroupConfiguration: :class:`tencentcloud.ga2.v20250115.models.EndpointGroupConfiguration`
         """
         self._GlobalAcceleratorId = None
@@ -399,7 +399,7 @@ class CreateEndpointGroupRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -410,7 +410,7 @@ class CreateEndpointGroupRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -421,7 +421,7 @@ class CreateEndpointGroupRequest(AbstractModel):
 
     @property
     def EndpointGroupType(self):
-        r"""终端节点组类型。支持VIRTUAL，DEFAULT。
+        r"""<p>终端节点组类型。</p><p>枚举值：</p><ul><li>VIRTUAL： 自定义终端节点组</li><li>DEFAULT： 默认终端节点组</li></ul>
         :rtype: str
         """
         return self._EndpointGroupType
@@ -432,7 +432,7 @@ class CreateEndpointGroupRequest(AbstractModel):
 
     @property
     def EndpointGroupConfiguration(self):
-        r"""终端节点组配置。
+        r"""<p>终端节点组配置。</p>
         :rtype: :class:`tencentcloud.ga2.v20250115.models.EndpointGroupConfiguration`
         """
         return self._EndpointGroupConfiguration
@@ -466,9 +466,9 @@ class CreateEndpointGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID。
+        :param _TaskId: <p>任务ID。</p>
         :type TaskId: str
-        :param _EndpointGroupId: 终端节点组实例ID。
+        :param _EndpointGroupId: <p>终端节点组实例ID。</p>
         :type EndpointGroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -479,7 +479,7 @@ class CreateEndpointGroupResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID。
+        r"""<p>任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -490,7 +490,7 @@ class CreateEndpointGroupResponse(AbstractModel):
 
     @property
     def EndpointGroupId(self):
-        r"""终端节点组实例ID。
+        r"""<p>终端节点组实例ID。</p>
         :rtype: str
         """
         return self._EndpointGroupId
@@ -524,11 +524,11 @@ class CreateForwardingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _Host: 域名。
+        :param _Host: <p>域名。</p><p>参数格式：格式，必须满足正则表达式：^(<a href="?:[a-z0-9-]{0,61}[a-z0-9]">a-z0-9</a>?.)+[a-z]{2,}$</p><p>入参限制：长度范围是1-80。</p>
         :type Host: str
         """
         self._GlobalAcceleratorId = None
@@ -537,7 +537,7 @@ class CreateForwardingPolicyRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -548,7 +548,7 @@ class CreateForwardingPolicyRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -559,7 +559,7 @@ class CreateForwardingPolicyRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""域名。
+        r"""<p>域名。</p><p>参数格式：格式，必须满足正则表达式：^(<a href="?:[a-z0-9-]{0,61}[a-z0-9]">a-z0-9</a>?.)+[a-z]{2,}$</p><p>入参限制：长度范围是1-80。</p>
         :rtype: str
         """
         return self._Host
@@ -590,9 +590,9 @@ class CreateForwardingPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
-        :param _ForwardingPolicyId: 七层转发策略ID。
+        :param _ForwardingPolicyId: <p>七层转发策略ID。</p>
         :type ForwardingPolicyId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -603,7 +603,7 @@ class CreateForwardingPolicyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -614,7 +614,7 @@ class CreateForwardingPolicyResponse(AbstractModel):
 
     @property
     def ForwardingPolicyId(self):
-        r"""七层转发策略ID。
+        r"""<p>七层转发策略ID。</p>
         :rtype: str
         """
         return self._ForwardingPolicyId
@@ -654,21 +654,21 @@ class CreateForwardingRuleRequest(AbstractModel):
         :type ListenerId: str
         :param _ForwardingPolicyId: <p>策略ID。</p>
         :type ForwardingPolicyId: str
-        :param _RuleConditions: <p>七层转发规则条件信息。</p>
+        :param _RuleConditions: <p>七层转发规则条件信息。</p><p>数组长度最大不能超过1。</p>
         :type RuleConditions: list of RuleCondition
-        :param _RuleActions: <p>七层转发规则行为信息。</p>
+        :param _RuleActions: <p>七层转发规则行为信息。</p><p>数组长度最大不能超过1。</p>
         :type RuleActions: list of RuleAction
-        :param _OriginHeaders: <p>回源Header信息。</p>
+        :param _OriginHeaders: <p>回源Header信息。</p><p>数组长度最大不能超过5。当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
         :type OriginHeaders: list of OriginHeader
-        :param _EnableOriginSni: <p>是否开启回源sni。</p>
+        :param _EnableOriginSni: <p>是否开启回源sni。</p><p>默认值：False</p><p>当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
         :type EnableOriginSni: bool
-        :param _OriginSni: <p>回源sni。</p>
+        :param _OriginSni: <p>回源sni。</p><p>入参限制：长度不能超过80。</p><p>当EnableOriginSni为True时，此字段必传。当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
         :type OriginSni: str
-        :param _OriginHost: <p>回源host。</p>
+        :param _OriginHost: <p>回源host。</p><p>入参限制：长度不超过80。</p><p>当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
         :type OriginHost: str
-        :param _ResponseHeaders: <p>源站响应头</p>
+        :param _ResponseHeaders: <p>源站响应头</p><p>数组长度不超过5。可以传空数组，代表清空配置。</p>
         :type ResponseHeaders: list of ResponseHeaders
-        :param _HideResponseHeaders: <p>删除源站响应头</p>
+        :param _HideResponseHeaders: <p>删除源站响应头</p><p>数组长度不超过5。可以传空数组，代表清空配置。</p>
         :type HideResponseHeaders: list of HideResponseHeaders
         """
         self._GlobalAcceleratorId = None
@@ -718,7 +718,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def RuleConditions(self):
-        r"""<p>七层转发规则条件信息。</p>
+        r"""<p>七层转发规则条件信息。</p><p>数组长度最大不能超过1。</p>
         :rtype: list of RuleCondition
         """
         return self._RuleConditions
@@ -729,7 +729,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def RuleActions(self):
-        r"""<p>七层转发规则行为信息。</p>
+        r"""<p>七层转发规则行为信息。</p><p>数组长度最大不能超过1。</p>
         :rtype: list of RuleAction
         """
         return self._RuleActions
@@ -740,7 +740,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginHeaders(self):
-        r"""<p>回源Header信息。</p>
+        r"""<p>回源Header信息。</p><p>数组长度最大不能超过5。当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
         :rtype: list of OriginHeader
         """
         return self._OriginHeaders
@@ -751,7 +751,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def EnableOriginSni(self):
-        r"""<p>是否开启回源sni。</p>
+        r"""<p>是否开启回源sni。</p><p>默认值：False</p><p>当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
         :rtype: bool
         """
         return self._EnableOriginSni
@@ -762,7 +762,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginSni(self):
-        r"""<p>回源sni。</p>
+        r"""<p>回源sni。</p><p>入参限制：长度不能超过80。</p><p>当EnableOriginSni为True时，此字段必传。当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
         :rtype: str
         """
         return self._OriginSni
@@ -773,7 +773,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginHost(self):
-        r"""<p>回源host。</p>
+        r"""<p>回源host。</p><p>入参限制：长度不超过80。</p><p>当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
         :rtype: str
         """
         return self._OriginHost
@@ -784,7 +784,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def ResponseHeaders(self):
-        r"""<p>源站响应头</p>
+        r"""<p>源站响应头</p><p>数组长度不超过5。可以传空数组，代表清空配置。</p>
         :rtype: list of ResponseHeaders
         """
         return self._ResponseHeaders
@@ -795,7 +795,7 @@ class CreateForwardingRuleRequest(AbstractModel):
 
     @property
     def HideResponseHeaders(self):
-        r"""<p>删除源站响应头</p>
+        r"""<p>删除源站响应头</p><p>数组长度不超过5。可以传空数组，代表清空配置。</p>
         :rtype: list of HideResponseHeaders
         """
         return self._HideResponseHeaders
@@ -1099,27 +1099,27 @@ class CreateListenerRequest(AbstractModel):
         :type PortRanges: :class:`tencentcloud.ga2.v20250115.models.PortRanges`
         :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
         :type Description: str
-        :param _ListenerType: <p>监听类型，默认为智能路由。</p>
+        :param _ListenerType: <p>监听类型，默认为智能路由。</p><p>枚举值：</p><ul><li>Standard： 智能路由。</li></ul>
         :type ListenerType: str
-        :param _Protocol: <p>协议，默认为TCP。</p>
+        :param _Protocol: <p>协议，默认为TCP。支持配置&#39;TCP&#39;, &#39;UDP&#39;, &#39;HTTP&#39;, &#39;HTTPS&#39;。</p>
         :type Protocol: str
-        :param _IdleTimeout: <p>连接空闲等待时间。</p>
+        :param _IdleTimeout: <p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，默认值为15，支持范围为1-60；<br>2、TCP监听器，默认值为900，支持范围为10-900；<br>3、UDP监听器，默认值为20，支持范围为10-20；</p>
         :type IdleTimeout: int
-        :param _GetRealIpType: <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;。</p>
+        :param _GetRealIpType: <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
         :type GetRealIpType: str
-        :param _ClientAffinity: <p>是否开启会话保持。</p>
+        :param _ClientAffinity: <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul>
         :type ClientAffinity: str
-        :param _RequestTimeout: <p>请求超时时间。</p>
+        :param _RequestTimeout: <p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>默认值：60</p><p>当HTTPS监听器时才可配置此参数。</p>
         :type RequestTimeout: int
         :param _XForwardedForRealIp: <p>是否打开七层获取源IP方式。</p>
         :type XForwardedForRealIp: bool
-        :param _CertificationType: <p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
+        :param _CertificationType: <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>U： 单向。</li></ul><p>HTTPS监听器，此字段必传。</p>
         :type CertificationType: str
-        :param _CipherPolicyId: <p>加密算法套件。</p>
+        :param _CipherPolicyId: <p>加密算法套件。支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p>
         :type CipherPolicyId: str
-        :param _ServerCertificates: <p>服务器证书。</p>
+        :param _ServerCertificates: <p>服务器证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
         :type ServerCertificates: list of str
-        :param _ClientCaCertificates: <p>客户端证书。</p>
+        :param _ClientCaCertificates: <p>客户端证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
         :type ClientCaCertificates: list of str
         :param _HttpVersion: <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
         :type HttpVersion: str
@@ -1187,7 +1187,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def ListenerType(self):
-        r"""<p>监听类型，默认为智能路由。</p>
+        r"""<p>监听类型，默认为智能路由。</p><p>枚举值：</p><ul><li>Standard： 智能路由。</li></ul>
         :rtype: str
         """
         return self._ListenerType
@@ -1198,7 +1198,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""<p>协议，默认为TCP。</p>
+        r"""<p>协议，默认为TCP。支持配置&#39;TCP&#39;, &#39;UDP&#39;, &#39;HTTP&#39;, &#39;HTTPS&#39;。</p>
         :rtype: str
         """
         return self._Protocol
@@ -1209,7 +1209,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def IdleTimeout(self):
-        r"""<p>连接空闲等待时间。</p>
+        r"""<p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，默认值为15，支持范围为1-60；<br>2、TCP监听器，默认值为900，支持范围为10-900；<br>3、UDP监听器，默认值为20，支持范围为10-20；</p>
         :rtype: int
         """
         return self._IdleTimeout
@@ -1220,7 +1220,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def GetRealIpType(self):
-        r"""<p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;。</p>
+        r"""<p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
         :rtype: str
         """
         return self._GetRealIpType
@@ -1231,7 +1231,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def ClientAffinity(self):
-        r"""<p>是否开启会话保持。</p>
+        r"""<p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul>
         :rtype: str
         """
         return self._ClientAffinity
@@ -1242,7 +1242,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def RequestTimeout(self):
-        r"""<p>请求超时时间。</p>
+        r"""<p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>默认值：60</p><p>当HTTPS监听器时才可配置此参数。</p>
         :rtype: int
         """
         return self._RequestTimeout
@@ -1264,7 +1264,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def CertificationType(self):
-        r"""<p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
+        r"""<p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>U： 单向。</li></ul><p>HTTPS监听器，此字段必传。</p>
         :rtype: str
         """
         return self._CertificationType
@@ -1275,7 +1275,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def CipherPolicyId(self):
-        r"""<p>加密算法套件。</p>
+        r"""<p>加密算法套件。支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p>
         :rtype: str
         """
         return self._CipherPolicyId
@@ -1286,7 +1286,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def ServerCertificates(self):
-        r"""<p>服务器证书。</p>
+        r"""<p>服务器证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
         :rtype: list of str
         """
         return self._ServerCertificates
@@ -1297,7 +1297,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def ClientCaCertificates(self):
-        r"""<p>客户端证书。</p>
+        r"""<p>客户端证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
         :rtype: list of str
         """
         return self._ClientCaCertificates
@@ -2780,11 +2780,11 @@ class DescribeGlobalAcceleratorsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
         :type Limit: int
-        :param _Filters: 过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li>
+        :param _Filters: <p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li></p>
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -2793,7 +2793,7 @@ class DescribeGlobalAcceleratorsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -2804,7 +2804,7 @@ class DescribeGlobalAcceleratorsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
         :rtype: int
         """
         return self._Limit
@@ -2815,7 +2815,7 @@ class DescribeGlobalAcceleratorsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li>
+        r"""<p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li></p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -2851,9 +2851,9 @@ class DescribeGlobalAcceleratorsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorSet: 符合条件的全球加速实例。
+        :param _GlobalAcceleratorSet: <p>符合条件的全球加速实例。</p>
         :type GlobalAcceleratorSet: list of GlobalAcceleratorSet
-        :param _TotalCount: 符合条件的实例个数。
+        :param _TotalCount: <p>符合条件的实例个数。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2864,7 +2864,7 @@ class DescribeGlobalAcceleratorsResponse(AbstractModel):
 
     @property
     def GlobalAcceleratorSet(self):
-        r"""符合条件的全球加速实例。
+        r"""<p>符合条件的全球加速实例。</p>
         :rtype: list of GlobalAcceleratorSet
         """
         return self._GlobalAcceleratorSet
@@ -2875,7 +2875,7 @@ class DescribeGlobalAcceleratorsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例个数。
+        r"""<p>符合条件的实例个数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -3223,51 +3223,51 @@ class EndpointGroupConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>名称，最大长度不能超过60个字节。</p>
+        :param _Name: <p>终端节点组名称。</p><p>最大长度不能超过128个字节。必须以字母（a-z, A-Z）或中文字符开头。</p>
         :type Name: str
-        :param _EndpointGroupRegion: <p>地域。</p>
+        :param _EndpointGroupRegion: <p>终端节点组所在地域。</p>
         :type EndpointGroupRegion: str
         :param _EndpointConfigurations: <p>终端节点配置。</p>
         :type EndpointConfigurations: list of EndpointConfigurations
-        :param _CheckType: <p>检查协议。支持&#39;TCP&#39;, &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p>
+        :param _CheckType: <p>检查协议。支持配置&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>枚举值：</p><ul><li>TCP： 当终端节点组所在监听器协议是TCP时，可以选择检查协议为TCP。</li><li>HTTP： 当终端节点组所在监听器协议是HTTP或HTTPS时，可以选择检查协议为HTTP。</li><li>PING： 当终端节点组所在监听器协议是UDP时，可以选择检查协议为PING。</li><li>CUSTOM： 当终端节点组所在监听器协议是UDP或TCP时，可以选择检查协议为CUSTOM。</li></ul><p>当开启健康检查时此字段必传。</p>
         :type CheckType: str
-        :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
+        :param _Description: <p>描述信息。</p><p>默认值：默认值为空，代表不配置描述信息。</p><p>最大长度不能超过100个字节。</p>
         :type Description: str
-        :param _CheckPort: <p>检查端口。</p>
+        :param _CheckPort: <p>检查端口。</p><p>入参限制：范围是1-65535。</p><p>当CheckType为CUSTOM时候，此字段必传。</p>
         :type CheckPort: str
-        :param _ContextType: <p>检查内容。</p>
+        :param _ContextType: <p>检查内容。支持配置&#39;TEXT&#39;。</p><p>枚举值：</p><ul><li>TEXT： 文本内容。</li></ul><p>当CheckType为CUSTOM时候，此字段必传。</p>
         :type ContextType: str
-        :param _CheckSendContext: <p>检查请求。</p>
+        :param _CheckSendContext: <p>检查请求。</p><p>入参限制：字节长度要在1-500范围内。</p><p>当CheckType为CUSTOM时候，此字段必传。</p>
         :type CheckSendContext: str
-        :param _CheckRecvContext: <p>检查返回结果。</p>
+        :param _CheckRecvContext: <p>检查返回结果。</p><p>入参限制：字节长度要在1-500范围内。</p><p>当CheckType为CUSTOM时候，此字段必传。</p>
         :type CheckRecvContext: str
-        :param _EnableHealthCheck: <p>是否开启健康检查。</p>
+        :param _EnableHealthCheck: <p>是否开启健康检查。</p><p>默认值：False</p>
         :type EnableHealthCheck: bool
-        :param _ConnectTimeout: <p>响应超时时间。</p>
+        :param _ConnectTimeout: <p>响应超时时间。</p><p>取值范围：[1, 100]</p><p>默认值：2</p><p>开启健康检查时，此字段必传。</p>
         :type ConnectTimeout: int
-        :param _HealthCheckInterval: <p>健康检查间隔。</p>
+        :param _HealthCheckInterval: <p>健康检查间隔。</p><p>取值范围：[5, 300]</p><p>默认值：30</p><p>开启健康检查，此字段必传。</p>
         :type HealthCheckInterval: int
-        :param _UnhealthyThreshold: <p>不健康阀值。</p>
+        :param _UnhealthyThreshold: <p>不健康阀值。</p><p>取值范围：[1, 10]</p><p>默认值：3</p><p>开启健康检查，此字段必传。</p>
         :type UnhealthyThreshold: int
-        :param _HealthyThreshold: <p>健康阈值。</p>
+        :param _HealthyThreshold: <p>健康阈值。</p><p>取值范围：[1, 10]</p><p>默认值：3</p><p>开启健康检查，此字段必传。</p>
         :type HealthyThreshold: int
-        :param _ForwardProtocol: <p>回源协议。</p>
+        :param _ForwardProtocol: <p>回源协议。支持配置&#39;HTTP&#39;, &#39;HTTPS&#39;。</p><p>枚举值：</p><ul><li>HTTP： HTTP回源；当终端节点组所在监听器协议是HTTP或HTTPS时可以配置HTTP。</li><li>HTTPS： HTTPS回源；当终端节点组所在监听器协议是HTTPS时可以配置HTTPS。</li></ul><p>当终端节点组所在监听器协议为HTTP或HTTPS时候，此字段必传。</p>
         :type ForwardProtocol: str
-        :param _CheckDomain: <p>检查域名。</p>
+        :param _CheckDomain: <p>检查域名。</p><p>入参限制：字节长度范围是3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :type CheckDomain: str
-        :param _CheckPath: <p>检查URL。</p>
+        :param _CheckPath: <p>检查URL。</p><p>参数格式：必须满足正则：^[a-zA-Z0-9_.\-\/]{1,80}$</p><p>当CheckType是HTTP时，此字段必传。</p>
         :type CheckPath: str
-        :param _CheckMethod: <p>请求方式。</p>
+        :param _CheckMethod: <p>请求方式。支持配置&#39;GET&#39;, &#39;HEAD&#39;。</p><p>枚举值：</p><ul><li>GET： 请求方式为GET。</li><li>HEAD： 请求方式为HEAD。</li></ul><p>当CheckType是HTTP时，此字段必传。</p>
         :type CheckMethod: str
-        :param _StatusMask: <p>状态检测码。</p>
+        :param _StatusMask: <p>状态检测码。支持配置&#39;http_2xx&#39;, &#39;http_3xx&#39;, &#39;http_4xx&#39;, &#39;http_5xx&#39;。</p><p>枚举值：</p><ul><li>http_2xx： 2开头的http code。</li><li>http_3xx： 3开头的http code。</li><li>http_4xx： 4开头的http code。</li><li>http_5xx： 5开头的http code。</li></ul><p>当CheckType是HTTP时，此字段必传。</p>
         :type StatusMask: list of str
-        :param _PortOverrides: <p>端口映射。</p>
+        :param _PortOverrides: <p>端口映射。</p><p>入参限制：七层支持1个端口映射，四层支持最多30个端口映射。</p>
         :type PortOverrides: list of PortOverride
-        :param _IspType: <p>运用商类型。</p>
+        :param _IspType: <p>运营商类型。支持配置&#39;CMCC&#39;, &#39;CTCC&#39;, &#39;CUCC&#39;。</p><p>枚举值：</p><ul><li>CMCC： 中国移动</li><li>CUCC： 中国联通</li><li>CTCC： 中国电信</li></ul><p>当终端节点组地域为三网地域时，此字段必传。</p>
         :type IspType: str
-        :param _CipherPolicyId: <p>HPPTS加密算法套件</p>
+        :param _CipherPolicyId: <p>HPPTS加密算法套件；支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;；</p><p>枚举值：</p><ul><li>tls_policy_1.0-2： 加密算法套件。</li><li>tls_policy_1.1-2： 加密算法套件。</li><li>tls_policy_1.2： 加密算法套件。</li><li>tls_policy_1.2_strict： 加密算法套件。</li><li>tls_policy_1.2_strict-1.3： 加密算法套件。</li></ul><p>当回源协议为HTTPS，此字段必传。</p>
         :type CipherPolicyId: str
-        :param _HttpVersion: <p>HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        :param _HttpVersion: <p>回源协议。支持配置&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;。</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul><p>当回源协议为HTTPS时，此字段必传。</p>
         :type HttpVersion: str
         """
         self._Name = None
@@ -3296,7 +3296,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称，最大长度不能超过60个字节。</p>
+        r"""<p>终端节点组名称。</p><p>最大长度不能超过128个字节。必须以字母（a-z, A-Z）或中文字符开头。</p>
         :rtype: str
         """
         return self._Name
@@ -3307,7 +3307,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def EndpointGroupRegion(self):
-        r"""<p>地域。</p>
+        r"""<p>终端节点组所在地域。</p>
         :rtype: str
         """
         return self._EndpointGroupRegion
@@ -3329,7 +3329,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def CheckType(self):
-        r"""<p>检查协议。支持&#39;TCP&#39;, &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p>
+        r"""<p>检查协议。支持配置&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>枚举值：</p><ul><li>TCP： 当终端节点组所在监听器协议是TCP时，可以选择检查协议为TCP。</li><li>HTTP： 当终端节点组所在监听器协议是HTTP或HTTPS时，可以选择检查协议为HTTP。</li><li>PING： 当终端节点组所在监听器协议是UDP时，可以选择检查协议为PING。</li><li>CUSTOM： 当终端节点组所在监听器协议是UDP或TCP时，可以选择检查协议为CUSTOM。</li></ul><p>当开启健康检查时此字段必传。</p>
         :rtype: str
         """
         return self._CheckType
@@ -3340,7 +3340,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>描述信息，最大长度不能超过100个字节。</p>
+        r"""<p>描述信息。</p><p>默认值：默认值为空，代表不配置描述信息。</p><p>最大长度不能超过100个字节。</p>
         :rtype: str
         """
         return self._Description
@@ -3351,7 +3351,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def CheckPort(self):
-        r"""<p>检查端口。</p>
+        r"""<p>检查端口。</p><p>入参限制：范围是1-65535。</p><p>当CheckType为CUSTOM时候，此字段必传。</p>
         :rtype: str
         """
         return self._CheckPort
@@ -3362,7 +3362,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def ContextType(self):
-        r"""<p>检查内容。</p>
+        r"""<p>检查内容。支持配置&#39;TEXT&#39;。</p><p>枚举值：</p><ul><li>TEXT： 文本内容。</li></ul><p>当CheckType为CUSTOM时候，此字段必传。</p>
         :rtype: str
         """
         return self._ContextType
@@ -3373,7 +3373,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def CheckSendContext(self):
-        r"""<p>检查请求。</p>
+        r"""<p>检查请求。</p><p>入参限制：字节长度要在1-500范围内。</p><p>当CheckType为CUSTOM时候，此字段必传。</p>
         :rtype: str
         """
         return self._CheckSendContext
@@ -3384,7 +3384,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def CheckRecvContext(self):
-        r"""<p>检查返回结果。</p>
+        r"""<p>检查返回结果。</p><p>入参限制：字节长度要在1-500范围内。</p><p>当CheckType为CUSTOM时候，此字段必传。</p>
         :rtype: str
         """
         return self._CheckRecvContext
@@ -3395,7 +3395,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def EnableHealthCheck(self):
-        r"""<p>是否开启健康检查。</p>
+        r"""<p>是否开启健康检查。</p><p>默认值：False</p>
         :rtype: bool
         """
         return self._EnableHealthCheck
@@ -3406,7 +3406,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        r"""<p>响应超时时间。</p>
+        r"""<p>响应超时时间。</p><p>取值范围：[1, 100]</p><p>默认值：2</p><p>开启健康检查时，此字段必传。</p>
         :rtype: int
         """
         return self._ConnectTimeout
@@ -3417,7 +3417,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def HealthCheckInterval(self):
-        r"""<p>健康检查间隔。</p>
+        r"""<p>健康检查间隔。</p><p>取值范围：[5, 300]</p><p>默认值：30</p><p>开启健康检查，此字段必传。</p>
         :rtype: int
         """
         return self._HealthCheckInterval
@@ -3428,7 +3428,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def UnhealthyThreshold(self):
-        r"""<p>不健康阀值。</p>
+        r"""<p>不健康阀值。</p><p>取值范围：[1, 10]</p><p>默认值：3</p><p>开启健康检查，此字段必传。</p>
         :rtype: int
         """
         return self._UnhealthyThreshold
@@ -3439,7 +3439,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def HealthyThreshold(self):
-        r"""<p>健康阈值。</p>
+        r"""<p>健康阈值。</p><p>取值范围：[1, 10]</p><p>默认值：3</p><p>开启健康检查，此字段必传。</p>
         :rtype: int
         """
         return self._HealthyThreshold
@@ -3450,7 +3450,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def ForwardProtocol(self):
-        r"""<p>回源协议。</p>
+        r"""<p>回源协议。支持配置&#39;HTTP&#39;, &#39;HTTPS&#39;。</p><p>枚举值：</p><ul><li>HTTP： HTTP回源；当终端节点组所在监听器协议是HTTP或HTTPS时可以配置HTTP。</li><li>HTTPS： HTTPS回源；当终端节点组所在监听器协议是HTTPS时可以配置HTTPS。</li></ul><p>当终端节点组所在监听器协议为HTTP或HTTPS时候，此字段必传。</p>
         :rtype: str
         """
         return self._ForwardProtocol
@@ -3461,7 +3461,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def CheckDomain(self):
-        r"""<p>检查域名。</p>
+        r"""<p>检查域名。</p><p>入参限制：字节长度范围是3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :rtype: str
         """
         return self._CheckDomain
@@ -3472,7 +3472,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def CheckPath(self):
-        r"""<p>检查URL。</p>
+        r"""<p>检查URL。</p><p>参数格式：必须满足正则：^[a-zA-Z0-9_.\-\/]{1,80}$</p><p>当CheckType是HTTP时，此字段必传。</p>
         :rtype: str
         """
         return self._CheckPath
@@ -3483,7 +3483,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def CheckMethod(self):
-        r"""<p>请求方式。</p>
+        r"""<p>请求方式。支持配置&#39;GET&#39;, &#39;HEAD&#39;。</p><p>枚举值：</p><ul><li>GET： 请求方式为GET。</li><li>HEAD： 请求方式为HEAD。</li></ul><p>当CheckType是HTTP时，此字段必传。</p>
         :rtype: str
         """
         return self._CheckMethod
@@ -3494,7 +3494,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def StatusMask(self):
-        r"""<p>状态检测码。</p>
+        r"""<p>状态检测码。支持配置&#39;http_2xx&#39;, &#39;http_3xx&#39;, &#39;http_4xx&#39;, &#39;http_5xx&#39;。</p><p>枚举值：</p><ul><li>http_2xx： 2开头的http code。</li><li>http_3xx： 3开头的http code。</li><li>http_4xx： 4开头的http code。</li><li>http_5xx： 5开头的http code。</li></ul><p>当CheckType是HTTP时，此字段必传。</p>
         :rtype: list of str
         """
         return self._StatusMask
@@ -3505,7 +3505,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def PortOverrides(self):
-        r"""<p>端口映射。</p>
+        r"""<p>端口映射。</p><p>入参限制：七层支持1个端口映射，四层支持最多30个端口映射。</p>
         :rtype: list of PortOverride
         """
         return self._PortOverrides
@@ -3516,7 +3516,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def IspType(self):
-        r"""<p>运用商类型。</p>
+        r"""<p>运营商类型。支持配置&#39;CMCC&#39;, &#39;CTCC&#39;, &#39;CUCC&#39;。</p><p>枚举值：</p><ul><li>CMCC： 中国移动</li><li>CUCC： 中国联通</li><li>CTCC： 中国电信</li></ul><p>当终端节点组地域为三网地域时，此字段必传。</p>
         :rtype: str
         """
         return self._IspType
@@ -3527,7 +3527,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def CipherPolicyId(self):
-        r"""<p>HPPTS加密算法套件</p>
+        r"""<p>HPPTS加密算法套件；支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;；</p><p>枚举值：</p><ul><li>tls_policy_1.0-2： 加密算法套件。</li><li>tls_policy_1.1-2： 加密算法套件。</li><li>tls_policy_1.2： 加密算法套件。</li><li>tls_policy_1.2_strict： 加密算法套件。</li><li>tls_policy_1.2_strict-1.3： 加密算法套件。</li></ul><p>当回源协议为HTTPS，此字段必传。</p>
         :rtype: str
         """
         return self._CipherPolicyId
@@ -3538,7 +3538,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def HttpVersion(self):
-        r"""<p>HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        r"""<p>回源协议。支持配置&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;。</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul><p>当回源协议为HTTPS时，此字段必传。</p>
         :rtype: str
         """
         return self._HttpVersion
@@ -4621,9 +4621,9 @@ class HideResponseHeaders(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: <p>key</p>
+        :param _Key: <p>key</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
         :type Key: str
-        :param _Value: <p>value</p>
+        :param _Value: <p>value</p><p>当前传&#39;&#39;值即可。</p>
         :type Value: str
         """
         self._Key = None
@@ -4631,7 +4631,7 @@ class HideResponseHeaders(AbstractModel):
 
     @property
     def Key(self):
-        r"""<p>key</p>
+        r"""<p>key</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
         :rtype: str
         """
         return self._Key
@@ -4642,7 +4642,7 @@ class HideResponseHeaders(AbstractModel):
 
     @property
     def Value(self):
-        r"""<p>value</p>
+        r"""<p>value</p><p>当前传&#39;&#39;值即可。</p>
         :rtype: str
         """
         return self._Value
@@ -5168,43 +5168,43 @@ class ModifyEndpointGroupRequest(AbstractModel):
         :type EndpointGroupId: str
         :param _EndpointConfigurations: <p>终端节点配置。</p>
         :type EndpointConfigurations: list of EndpointConfigurations
-        :param _Name: <p>名称，最大长度不能超过60个字节。</p>
+        :param _Name: <p>名称。</p><p>入参限制：最大长度不能超过128个字节。</p><p>以大小写字母或中文开头。</p>
         :type Name: str
-        :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
+        :param _Description: <p>描述信息。</p><p>入参限制：最大长度不能超过100个字节。</p>
         :type Description: str
         :param _EnableHealthCheck: <p>是否开启健康检查。</p>
         :type EnableHealthCheck: bool
-        :param _ConnectTimeout: <p>响应超时时间。</p>
+        :param _ConnectTimeout: <p>响应超时时间。</p><p>取值范围：[1, 100]</p><p>当开启健康检查时候，此参数必传。</p>
         :type ConnectTimeout: int
-        :param _HealthCheckInterval: <p>健康检查间隔。</p>
+        :param _HealthCheckInterval: <p>健康检查间隔。</p><p>取值范围：[5, 300]</p><p>当开启健康检查时，此参数必传。</p>
         :type HealthCheckInterval: int
-        :param _UnhealthyThreshold: <p>不健康阀值。</p>
+        :param _UnhealthyThreshold: <p>不健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
         :type UnhealthyThreshold: int
-        :param _HealthyThreshold: <p>健康阀值。</p>
+        :param _HealthyThreshold: <p>健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
         :type HealthyThreshold: int
-        :param _CheckType: <p>检查协议。</p>
+        :param _CheckType: <p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。<br>2、当监听器是UDP时，可以选PING+CUSTOM。<br>3、当监听器是HTTP或HTTPS时，可以选HTTP。</p>
         :type CheckType: str
-        :param _CheckPort: <p>检查端口。</p>
+        :param _CheckPort: <p>检查端口。</p><p>取值范围：[1, 65535]</p><p>当CheckType是CUSTOM时，此字段必传。</p>
         :type CheckPort: int
-        :param _ContextType: <p>检查内容。</p>
+        :param _ContextType: <p>检查内容。</p><p>入参限制：仅支持TEXT。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
         :type ContextType: str
-        :param _CheckSendContext: <p>检查请求。</p>
+        :param _CheckSendContext: <p>检查请求。</p><p>入参限制：长度范围在1-500。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
         :type CheckSendContext: str
-        :param _CheckRecvContext: <p>检查返回结果。</p>
+        :param _CheckRecvContext: <p>检查返回结果。</p><p>入参限制：长度范围在1-500。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
         :type CheckRecvContext: str
-        :param _CheckDomain: <p>检查域名。</p>
+        :param _CheckDomain: <p>检查域名。</p><p>入参限制：长度范围在3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :type CheckDomain: str
-        :param _CheckPath: <p>检查URL。</p>
+        :param _CheckPath: <p>检查URL。</p><p>入参限制：长度范围在3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :type CheckPath: str
-        :param _CheckMethod: <p>请求方式。</p>
+        :param _CheckMethod: <p>请求方式。</p><p>入参限制：支持填写 &#39;GET&#39;, &#39;HEAD&#39;。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :type CheckMethod: str
-        :param _StatusMask: <p>状态检测码。</p>
+        :param _StatusMask: <p>状态检测码。</p><p>入参限制：支持选择&#39;http_2xx&#39;, &#39;http_3xx&#39;, &#39;http_4xx&#39;, &#39;http_5xx&#39;。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :type StatusMask: list of str
-        :param _ForwardProtocol: <p>回源协议。</p>
+        :param _ForwardProtocol: <p>回源协议。</p><p>入参限制：支持选择：&#39;HTTP&#39;, &#39;HTTPS&#39;。</p><p>当监听器协议是HTTP时只能配置HTTP，是HTTPS时能配HTTP或HTTPS。</p>
         :type ForwardProtocol: str
-        :param _PortOverrides: <p>端口映射。</p>
+        :param _PortOverrides: <p>端口映射。</p><p>当监听器协议是HTTP或HTTPS支持配置一对。当监听器协议是UDP或TCP支持配置最多30对。</p>
         :type PortOverrides: list of PortOverride
-        :param _CipherPolicyId: <p>HPPTS加密算法套件</p>
+        :param _CipherPolicyId: <p>HPPTS加密算法套件</p><p>入参限制：支持选择&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>当监听器协议是HTTPS时，才支持修改此参数。</p>
         :type CipherPolicyId: str
         :param _HttpVersion: <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
         :type HttpVersion: str
@@ -5280,7 +5280,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称，最大长度不能超过60个字节。</p>
+        r"""<p>名称。</p><p>入参限制：最大长度不能超过128个字节。</p><p>以大小写字母或中文开头。</p>
         :rtype: str
         """
         return self._Name
@@ -5291,7 +5291,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>描述信息，最大长度不能超过100个字节。</p>
+        r"""<p>描述信息。</p><p>入参限制：最大长度不能超过100个字节。</p>
         :rtype: str
         """
         return self._Description
@@ -5313,7 +5313,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def ConnectTimeout(self):
-        r"""<p>响应超时时间。</p>
+        r"""<p>响应超时时间。</p><p>取值范围：[1, 100]</p><p>当开启健康检查时候，此参数必传。</p>
         :rtype: int
         """
         return self._ConnectTimeout
@@ -5324,7 +5324,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def HealthCheckInterval(self):
-        r"""<p>健康检查间隔。</p>
+        r"""<p>健康检查间隔。</p><p>取值范围：[5, 300]</p><p>当开启健康检查时，此参数必传。</p>
         :rtype: int
         """
         return self._HealthCheckInterval
@@ -5335,7 +5335,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def UnhealthyThreshold(self):
-        r"""<p>不健康阀值。</p>
+        r"""<p>不健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
         :rtype: int
         """
         return self._UnhealthyThreshold
@@ -5346,7 +5346,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def HealthyThreshold(self):
-        r"""<p>健康阀值。</p>
+        r"""<p>健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
         :rtype: int
         """
         return self._HealthyThreshold
@@ -5357,7 +5357,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def CheckType(self):
-        r"""<p>检查协议。</p>
+        r"""<p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。<br>2、当监听器是UDP时，可以选PING+CUSTOM。<br>3、当监听器是HTTP或HTTPS时，可以选HTTP。</p>
         :rtype: str
         """
         return self._CheckType
@@ -5368,7 +5368,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def CheckPort(self):
-        r"""<p>检查端口。</p>
+        r"""<p>检查端口。</p><p>取值范围：[1, 65535]</p><p>当CheckType是CUSTOM时，此字段必传。</p>
         :rtype: int
         """
         return self._CheckPort
@@ -5379,7 +5379,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def ContextType(self):
-        r"""<p>检查内容。</p>
+        r"""<p>检查内容。</p><p>入参限制：仅支持TEXT。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
         :rtype: str
         """
         return self._ContextType
@@ -5390,7 +5390,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def CheckSendContext(self):
-        r"""<p>检查请求。</p>
+        r"""<p>检查请求。</p><p>入参限制：长度范围在1-500。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
         :rtype: str
         """
         return self._CheckSendContext
@@ -5401,7 +5401,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def CheckRecvContext(self):
-        r"""<p>检查返回结果。</p>
+        r"""<p>检查返回结果。</p><p>入参限制：长度范围在1-500。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
         :rtype: str
         """
         return self._CheckRecvContext
@@ -5412,7 +5412,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def CheckDomain(self):
-        r"""<p>检查域名。</p>
+        r"""<p>检查域名。</p><p>入参限制：长度范围在3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :rtype: str
         """
         return self._CheckDomain
@@ -5423,7 +5423,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def CheckPath(self):
-        r"""<p>检查URL。</p>
+        r"""<p>检查URL。</p><p>入参限制：长度范围在3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :rtype: str
         """
         return self._CheckPath
@@ -5434,7 +5434,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def CheckMethod(self):
-        r"""<p>请求方式。</p>
+        r"""<p>请求方式。</p><p>入参限制：支持填写 &#39;GET&#39;, &#39;HEAD&#39;。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :rtype: str
         """
         return self._CheckMethod
@@ -5445,7 +5445,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def StatusMask(self):
-        r"""<p>状态检测码。</p>
+        r"""<p>状态检测码。</p><p>入参限制：支持选择&#39;http_2xx&#39;, &#39;http_3xx&#39;, &#39;http_4xx&#39;, &#39;http_5xx&#39;。</p><p>当CheckType是HTTP时，此字段必传。</p>
         :rtype: list of str
         """
         return self._StatusMask
@@ -5456,7 +5456,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def ForwardProtocol(self):
-        r"""<p>回源协议。</p>
+        r"""<p>回源协议。</p><p>入参限制：支持选择：&#39;HTTP&#39;, &#39;HTTPS&#39;。</p><p>当监听器协议是HTTP时只能配置HTTP，是HTTPS时能配HTTP或HTTPS。</p>
         :rtype: str
         """
         return self._ForwardProtocol
@@ -5467,7 +5467,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def PortOverrides(self):
-        r"""<p>端口映射。</p>
+        r"""<p>端口映射。</p><p>当监听器协议是HTTP或HTTPS支持配置一对。当监听器协议是UDP或TCP支持配置最多30对。</p>
         :rtype: list of PortOverride
         """
         return self._PortOverrides
@@ -5478,7 +5478,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def CipherPolicyId(self):
-        r"""<p>HPPTS加密算法套件</p>
+        r"""<p>HPPTS加密算法套件</p><p>入参限制：支持选择&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>当监听器协议是HTTPS时，才支持修改此参数。</p>
         :rtype: str
         """
         return self._CipherPolicyId
@@ -5594,13 +5594,13 @@ class ModifyForwardingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _ForwardingPolicyId: 策略ID。
+        :param _ForwardingPolicyId: <p>策略ID。</p>
         :type ForwardingPolicyId: str
-        :param _Host: 域名。
+        :param _Host: <p>域名。</p><p>入参限制：长度范围在1-80。</p><p>格式必须满足正则表达式：^(<a href="?:[a-z0-9-]{0,61}[a-z0-9]">a-z0-9</a>?.)+[a-z]{2,}$</p>
         :type Host: str
         """
         self._GlobalAcceleratorId = None
@@ -5610,7 +5610,7 @@ class ModifyForwardingPolicyRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -5621,7 +5621,7 @@ class ModifyForwardingPolicyRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -5632,7 +5632,7 @@ class ModifyForwardingPolicyRequest(AbstractModel):
 
     @property
     def ForwardingPolicyId(self):
-        r"""策略ID。
+        r"""<p>策略ID。</p>
         :rtype: str
         """
         return self._ForwardingPolicyId
@@ -5643,7 +5643,7 @@ class ModifyForwardingPolicyRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""域名。
+        r"""<p>域名。</p><p>入参限制：长度范围在1-80。</p><p>格式必须满足正则表达式：^(<a href="?:[a-z0-9-]{0,61}[a-z0-9]">a-z0-9</a>?.)+[a-z]{2,}$</p>
         :rtype: str
         """
         return self._Host
@@ -5675,7 +5675,7 @@ class ModifyForwardingPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5685,7 +5685,7 @@ class ModifyForwardingPolicyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -5726,21 +5726,21 @@ class ModifyForwardingRuleRequest(AbstractModel):
         :type ForwardingPolicyId: str
         :param _ForwardingRuleId: <p>七层转发规则ID。</p>
         :type ForwardingRuleId: str
-        :param _RuleConditions: <p>七层转发规则条件信息。</p>
+        :param _RuleConditions: <p>七层转发规则条件信息。</p><p>入参限制：数组长度不能超过1。</p>
         :type RuleConditions: list of RuleCondition
-        :param _RuleActions: <p>七层转发规则行为信息。</p>
+        :param _RuleActions: <p>七层转发规则行为信息。</p><p>入参限制：数组长度不能超过1。</p>
         :type RuleActions: list of RuleAction
-        :param _OriginHeaders: <p>回源Header信息。</p>
+        :param _OriginHeaders: <p>回源Header信息。</p><p>入参限制：数组长度在1-5。</p>
         :type OriginHeaders: list of OriginHeader
         :param _EnableOriginSni: <p>是否开启回源sni。</p>
         :type EnableOriginSni: bool
-        :param _OriginSni: <p>回源sni。</p>
+        :param _OriginSni: <p>回源sni。</p><p>入参限制：长度不能超过80。</p><p>当开启回源sni时，此字段必传。</p>
         :type OriginSni: str
-        :param _OriginHost: <p>回源host。</p>
+        :param _OriginHost: <p>回源host。</p><p>入参限制：长度不能超过80。</p><p>当开启回源sni时，此字段必传。</p>
         :type OriginHost: str
-        :param _ResponseHeaders: <p>源站响应头</p>
+        :param _ResponseHeaders: <p>源站响应头</p><p>入参限制：数组长度不能超过5。</p>
         :type ResponseHeaders: list of ResponseHeaders
-        :param _HideResponseHeaders: <p>删除源站响应头</p>
+        :param _HideResponseHeaders: <p>删除源站响应头</p><p>入参限制：数组长度不能超过5。</p>
         :type HideResponseHeaders: list of HideResponseHeaders
         """
         self._GlobalAcceleratorId = None
@@ -5802,7 +5802,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def RuleConditions(self):
-        r"""<p>七层转发规则条件信息。</p>
+        r"""<p>七层转发规则条件信息。</p><p>入参限制：数组长度不能超过1。</p>
         :rtype: list of RuleCondition
         """
         return self._RuleConditions
@@ -5813,7 +5813,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def RuleActions(self):
-        r"""<p>七层转发规则行为信息。</p>
+        r"""<p>七层转发规则行为信息。</p><p>入参限制：数组长度不能超过1。</p>
         :rtype: list of RuleAction
         """
         return self._RuleActions
@@ -5824,7 +5824,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginHeaders(self):
-        r"""<p>回源Header信息。</p>
+        r"""<p>回源Header信息。</p><p>入参限制：数组长度在1-5。</p>
         :rtype: list of OriginHeader
         """
         return self._OriginHeaders
@@ -5846,7 +5846,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginSni(self):
-        r"""<p>回源sni。</p>
+        r"""<p>回源sni。</p><p>入参限制：长度不能超过80。</p><p>当开启回源sni时，此字段必传。</p>
         :rtype: str
         """
         return self._OriginSni
@@ -5857,7 +5857,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def OriginHost(self):
-        r"""<p>回源host。</p>
+        r"""<p>回源host。</p><p>入参限制：长度不能超过80。</p><p>当开启回源sni时，此字段必传。</p>
         :rtype: str
         """
         return self._OriginHost
@@ -5868,7 +5868,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def ResponseHeaders(self):
-        r"""<p>源站响应头</p>
+        r"""<p>源站响应头</p><p>入参限制：数组长度不能超过5。</p>
         :rtype: list of ResponseHeaders
         """
         return self._ResponseHeaders
@@ -5879,7 +5879,7 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
     @property
     def HideResponseHeaders(self):
-        r"""<p>删除源站响应头</p>
+        r"""<p>删除源站响应头</p><p>入参限制：数组长度不能超过5。</p>
         :rtype: list of HideResponseHeaders
         """
         return self._HideResponseHeaders
@@ -5987,15 +5987,15 @@ class ModifyGlobalAcceleratorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _Name: 名称，最大长度不能超过60个字节。
+        :param _Name: <p>名称，最大长度不能超过60个字节。</p>
         :type Name: str
-        :param _Description: 描述信息，最大长度不能超过100个字节。
+        :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
         :type Description: str
-        :param _CrossBorderType: 跨境类型。
+        :param _CrossBorderType: <p>跨境类型。</p><p>枚举值：</p><ul><li>HighQuality： 精品跨境。</li><li>Unicom： 联通跨境。</li></ul>
         :type CrossBorderType: str
-        :param _CrossBorderPromiseFlag: 代表是否跨境服务承诺。
+        :param _CrossBorderPromiseFlag: <p>代表是否填写跨境服务承诺书。</p><p>当CrossBorderType传入时，此字段必须填ture，代表填写跨境承诺书。</p>
         :type CrossBorderPromiseFlag: bool
         """
         self._GlobalAcceleratorId = None
@@ -6006,7 +6006,7 @@ class ModifyGlobalAcceleratorRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -6017,7 +6017,7 @@ class ModifyGlobalAcceleratorRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称，最大长度不能超过60个字节。
+        r"""<p>名称，最大长度不能超过60个字节。</p>
         :rtype: str
         """
         return self._Name
@@ -6028,7 +6028,7 @@ class ModifyGlobalAcceleratorRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息，最大长度不能超过100个字节。
+        r"""<p>描述信息，最大长度不能超过100个字节。</p>
         :rtype: str
         """
         return self._Description
@@ -6039,7 +6039,7 @@ class ModifyGlobalAcceleratorRequest(AbstractModel):
 
     @property
     def CrossBorderType(self):
-        r"""跨境类型。
+        r"""<p>跨境类型。</p><p>枚举值：</p><ul><li>HighQuality： 精品跨境。</li><li>Unicom： 联通跨境。</li></ul>
         :rtype: str
         """
         return self._CrossBorderType
@@ -6050,7 +6050,7 @@ class ModifyGlobalAcceleratorRequest(AbstractModel):
 
     @property
     def CrossBorderPromiseFlag(self):
-        r"""代表是否跨境服务承诺。
+        r"""<p>代表是否填写跨境服务承诺书。</p><p>当CrossBorderType传入时，此字段必须填ture，代表填写跨境承诺书。</p>
         :rtype: bool
         """
         return self._CrossBorderPromiseFlag
@@ -6083,7 +6083,7 @@ class ModifyGlobalAcceleratorResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6093,7 +6093,7 @@ class ModifyGlobalAcceleratorResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -6134,25 +6134,25 @@ class ModifyListenerRequest(AbstractModel):
         :type Name: str
         :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
         :type Description: str
-        :param _IdleTimeout: <p>连接空闲等待时间。</p>
+        :param _IdleTimeout: <p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，支持范围为1-60；2、TCP监听器，支持范围为10-900；3、UDP监听器，支持范围为10-20；</p>
         :type IdleTimeout: int
-        :param _ClientAffinity: <p>是否开启会话保持。</p>
+        :param _ClientAffinity: <p>是否开启会话保持。</p><p>枚举值：</p><ul><li>Open： 打开。</li><li>Close： 关闭。</li></ul><p>TCP/UDP监听器支持修改此参数。</p>
         :type ClientAffinity: str
-        :param _ClientAffinityTime: <p>会话保持时间。</p>
+        :param _ClientAffinityTime: <p>会话保持时间。</p><p>取值范围：[60, 3600]</p>
         :type ClientAffinityTime: int
-        :param _RequestTimeout: <p>请求超时时间。</p>
+        :param _RequestTimeout: <p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>HTTPS监听器才支持此参数修改。</p>
         :type RequestTimeout: int
-        :param _XForwardedForRealIp: <p>是否打开七层获取源IP方式。</p>
+        :param _XForwardedForRealIp: <p>是否打开七层获取源IP方式。</p><p>HTTPS/HTTP监听器才支持此参数修改。</p>
         :type XForwardedForRealIp: bool
-        :param _CertificationType: <p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
+        :param _CertificationType: <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>MUTUAL： 单向。</li></ul><p>HTTPS/HTTP监听器才支持修改此参数。</p>
         :type CertificationType: str
-        :param _CipherPolicyId: <p>加密算法套件。</p>
+        :param _CipherPolicyId: <p>加密算法套件。</p><p>入参限制：支持选择tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>HTTPS监听器才支持此参数修改。</p>
         :type CipherPolicyId: str
-        :param _ServerCertificates: <p>服务器证书。</p>
+        :param _ServerCertificates: <p>服务器证书。</p><p>HTTPS监听器才支持此参数修改。</p>
         :type ServerCertificates: list of str
-        :param _ClientCaCertificates: <p>客户端证书。</p>
+        :param _ClientCaCertificates: <p>客户端证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
         :type ClientCaCertificates: list of str
-        :param _GetRealIpType: <p>四层获取源IP方式。</p>
+        :param _GetRealIpType: <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
         :type GetRealIpType: str
         """
         self._GlobalAcceleratorId = None
@@ -6216,7 +6216,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def IdleTimeout(self):
-        r"""<p>连接空闲等待时间。</p>
+        r"""<p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，支持范围为1-60；2、TCP监听器，支持范围为10-900；3、UDP监听器，支持范围为10-20；</p>
         :rtype: int
         """
         return self._IdleTimeout
@@ -6227,7 +6227,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ClientAffinity(self):
-        r"""<p>是否开启会话保持。</p>
+        r"""<p>是否开启会话保持。</p><p>枚举值：</p><ul><li>Open： 打开。</li><li>Close： 关闭。</li></ul><p>TCP/UDP监听器支持修改此参数。</p>
         :rtype: str
         """
         return self._ClientAffinity
@@ -6238,7 +6238,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ClientAffinityTime(self):
-        r"""<p>会话保持时间。</p>
+        r"""<p>会话保持时间。</p><p>取值范围：[60, 3600]</p>
         :rtype: int
         """
         return self._ClientAffinityTime
@@ -6249,7 +6249,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def RequestTimeout(self):
-        r"""<p>请求超时时间。</p>
+        r"""<p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>HTTPS监听器才支持此参数修改。</p>
         :rtype: int
         """
         return self._RequestTimeout
@@ -6260,7 +6260,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def XForwardedForRealIp(self):
-        r"""<p>是否打开七层获取源IP方式。</p>
+        r"""<p>是否打开七层获取源IP方式。</p><p>HTTPS/HTTP监听器才支持此参数修改。</p>
         :rtype: bool
         """
         return self._XForwardedForRealIp
@@ -6271,7 +6271,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def CertificationType(self):
-        r"""<p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
+        r"""<p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>MUTUAL： 单向。</li></ul><p>HTTPS/HTTP监听器才支持修改此参数。</p>
         :rtype: str
         """
         return self._CertificationType
@@ -6282,7 +6282,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def CipherPolicyId(self):
-        r"""<p>加密算法套件。</p>
+        r"""<p>加密算法套件。</p><p>入参限制：支持选择tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>HTTPS监听器才支持此参数修改。</p>
         :rtype: str
         """
         return self._CipherPolicyId
@@ -6293,7 +6293,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ServerCertificates(self):
-        r"""<p>服务器证书。</p>
+        r"""<p>服务器证书。</p><p>HTTPS监听器才支持此参数修改。</p>
         :rtype: list of str
         """
         return self._ServerCertificates
@@ -6304,7 +6304,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ClientCaCertificates(self):
-        r"""<p>客户端证书。</p>
+        r"""<p>客户端证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
         :rtype: list of str
         """
         return self._ClientCaCertificates
@@ -6315,7 +6315,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def GetRealIpType(self):
-        r"""<p>四层获取源IP方式。</p>
+        r"""<p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
         :rtype: str
         """
         return self._GetRealIpType
@@ -6400,10 +6400,10 @@ class OriginHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 键。
+        :param _Key: <p>键。</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
-        :param _Value: 值。
+        :param _Value: <p>值。</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
@@ -6412,7 +6412,7 @@ class OriginHeader(AbstractModel):
 
     @property
     def Key(self):
-        r"""键。
+        r"""<p>键。</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6424,7 +6424,7 @@ class OriginHeader(AbstractModel):
 
     @property
     def Value(self):
-        r"""值。
+        r"""<p>值。</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6565,9 +6565,9 @@ class ResponseHeaders(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: <p>key</p>
+        :param _Key: <p>key</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
         :type Key: str
-        :param _Value: <p>value</p>
+        :param _Value: <p>value</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
         :type Value: str
         """
         self._Key = None
@@ -6575,7 +6575,7 @@ class ResponseHeaders(AbstractModel):
 
     @property
     def Key(self):
-        r"""<p>key</p>
+        r"""<p>key</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
         :rtype: str
         """
         return self._Key
@@ -6586,7 +6586,7 @@ class ResponseHeaders(AbstractModel):
 
     @property
     def Value(self):
-        r"""<p>value</p>
+        r"""<p>value</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
         :rtype: str
         """
         return self._Value
@@ -6616,10 +6616,10 @@ class RuleAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleActionType: 七层转发规则行为类型
+        :param _RuleActionType: <p>七层转发规则行为类型</p><p>枚举值：</p><ul><li>ForwardGroup： 转发策略为转发至终端节点组。</li><li>Drop： 转发策略为丢弃。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleActionType: str
-        :param _RuleActionValue: 七层转发规则行为值
+        :param _RuleActionValue: <p>七层转发规则行为值</p><p>当RuleActionType是Drop时，此字段不用传；当RuleActionType是ForwardGroup时，此字段必传，需要填写的是自定义终端节点组ID， 不支持配置默认终端节点组。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleActionValue: str
         """
@@ -6628,7 +6628,7 @@ class RuleAction(AbstractModel):
 
     @property
     def RuleActionType(self):
-        r"""七层转发规则行为类型
+        r"""<p>七层转发规则行为类型</p><p>枚举值：</p><ul><li>ForwardGroup： 转发策略为转发至终端节点组。</li><li>Drop： 转发策略为丢弃。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6640,7 +6640,7 @@ class RuleAction(AbstractModel):
 
     @property
     def RuleActionValue(self):
-        r"""七层转发规则行为值
+        r"""<p>七层转发规则行为值</p><p>当RuleActionType是Drop时，此字段不用传；当RuleActionType是ForwardGroup时，此字段必传，需要填写的是自定义终端节点组ID， 不支持配置默认终端节点组。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6671,10 +6671,10 @@ class RuleCondition(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleConditionType: 七层转发规则条件类型
+        :param _RuleConditionType: <p>七层转发规则条件类型</p><p>枚举值：</p><ul><li>Path： Path</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleConditionType: str
-        :param _RuleConditionValue: 七层转发规则条件值
+        :param _RuleConditionValue: <p>七层转发规则条件值</p><p>参数格式：格式必须满足正则表达：^[a-zA-Z0-9_.-/]{1,80}$</p><p>数组长度不能超过1。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleConditionValue: list of str
         """
@@ -6683,7 +6683,7 @@ class RuleCondition(AbstractModel):
 
     @property
     def RuleConditionType(self):
-        r"""七层转发规则条件类型
+        r"""<p>七层转发规则条件类型</p><p>枚举值：</p><ul><li>Path： Path</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6695,7 +6695,7 @@ class RuleCondition(AbstractModel):
 
     @property
     def RuleConditionValue(self):
-        r"""七层转发规则条件值
+        r"""<p>七层转发规则条件值</p><p>参数格式：格式必须满足正则表达：^[a-zA-Z0-9_.-/]{1,80}$</p><p>数组长度不能超过1。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

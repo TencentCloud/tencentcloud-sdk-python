@@ -26,6 +26,29 @@ class AdpClient(AbstractClient):
     _service = 'adp'
 
 
+    def CopyAgentFromApp(self, request):
+        r"""创建Agent
+
+        :param request: Request instance for CopyAgentFromApp.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CopyAgentFromAppRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CopyAgentFromAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CopyAgentFromApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CopyAgentFromAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CopyApp(self, request):
         r"""复制应用
 

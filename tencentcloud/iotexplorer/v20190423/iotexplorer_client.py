@@ -831,6 +831,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTWeSeeDirectUploadCredential(self, request):
+        r"""创建 TWeSee COS 直传凭据。调用方获取临时密钥后，可将视频 / 图片上传到返回的 StoragePath 前缀下；对象上传成功后由 COS 事件触发 TWeSee 任务创建。
+
+        :param request: Request instance for CreateTWeSeeDirectUploadCredential.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeeDirectUploadCredentialRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeeDirectUploadCredentialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTWeSeeDirectUploadCredential", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTWeSeeDirectUploadCredentialResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTWeSeePostPaidService(self, request):
         r"""开通 TWeSee 后付费服务
 

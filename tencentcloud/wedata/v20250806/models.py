@@ -2325,42 +2325,45 @@ class CodeFile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CodeFileId: 脚本ID
+        :param _CodeFileId: <p>脚本ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeFileId: str
-        :param _CodeFileName: 脚本名称
+        :param _CodeFileName: <p>脚本名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeFileName: str
-        :param _OwnerUin: 脚本所有者 uin
+        :param _OwnerUin: <p>脚本所有者 uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param _CodeFileConfig: 脚本配置
+        :param _CodeFileConfig: <p>脚本配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeFileConfig: :class:`tencentcloud.wedata.v20250806.models.CodeFileConfig`
-        :param _CodeFileContent: 脚本内容
+        :param _CodeFileContent: <p>脚本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeFileContent: str
-        :param _UpdateUserUin: 最近一次操作人
+        :param _UpdateUserUin: <p>最近一次操作人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUserUin: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _UpdateTime: 更新时间 yyyy-MM-dd hh:mm:ss
+        :param _UpdateTime: <p>更新时间 yyyy-MM-dd hh:mm:ss</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _CreateTime: 创建时间 yyyy-MM-dd hh:mm:ss
+        :param _CreateTime: <p>创建时间 yyyy-MM-dd hh:mm:ss</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _AccessScope: 权限范围：SHARED, PRIVATE
+        :param _AccessScope: <p>权限范围：SHARED, PRIVATE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessScope: str
-        :param _Path: 节点全路径，/aaa/bbb/ccc.ipynb，由各个节点的名称组成
+        :param _Path: <p>节点全路径，/aaa/bbb/ccc.ipynb，由各个节点的名称组成</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param _ParentFolderPath: 父文件夹路径
+        :param _ParentFolderPath: <p>父文件夹路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentFolderPath: str
+        :param _VersionId: <p>返回保存后的versionId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: str
         """
         self._CodeFileId = None
         self._CodeFileName = None
@@ -2374,10 +2377,11 @@ class CodeFile(AbstractModel):
         self._AccessScope = None
         self._Path = None
         self._ParentFolderPath = None
+        self._VersionId = None
 
     @property
     def CodeFileId(self):
-        r"""脚本ID
+        r"""<p>脚本ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2389,7 +2393,7 @@ class CodeFile(AbstractModel):
 
     @property
     def CodeFileName(self):
-        r"""脚本名称
+        r"""<p>脚本名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2401,7 +2405,7 @@ class CodeFile(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""脚本所有者 uin
+        r"""<p>脚本所有者 uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2413,7 +2417,7 @@ class CodeFile(AbstractModel):
 
     @property
     def CodeFileConfig(self):
-        r"""脚本配置
+        r"""<p>脚本配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20250806.models.CodeFileConfig`
         """
@@ -2425,7 +2429,7 @@ class CodeFile(AbstractModel):
 
     @property
     def CodeFileContent(self):
-        r"""脚本内容
+        r"""<p>脚本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2437,7 +2441,7 @@ class CodeFile(AbstractModel):
 
     @property
     def UpdateUserUin(self):
-        r"""最近一次操作人
+        r"""<p>最近一次操作人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2449,7 +2453,7 @@ class CodeFile(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2461,7 +2465,7 @@ class CodeFile(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间 yyyy-MM-dd hh:mm:ss
+        r"""<p>更新时间 yyyy-MM-dd hh:mm:ss</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2473,7 +2477,7 @@ class CodeFile(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间 yyyy-MM-dd hh:mm:ss
+        r"""<p>创建时间 yyyy-MM-dd hh:mm:ss</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2485,7 +2489,7 @@ class CodeFile(AbstractModel):
 
     @property
     def AccessScope(self):
-        r"""权限范围：SHARED, PRIVATE
+        r"""<p>权限范围：SHARED, PRIVATE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2497,7 +2501,7 @@ class CodeFile(AbstractModel):
 
     @property
     def Path(self):
-        r"""节点全路径，/aaa/bbb/ccc.ipynb，由各个节点的名称组成
+        r"""<p>节点全路径，/aaa/bbb/ccc.ipynb，由各个节点的名称组成</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2509,7 +2513,7 @@ class CodeFile(AbstractModel):
 
     @property
     def ParentFolderPath(self):
-        r"""父文件夹路径
+        r"""<p>父文件夹路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2518,6 +2522,18 @@ class CodeFile(AbstractModel):
     @ParentFolderPath.setter
     def ParentFolderPath(self, ParentFolderPath):
         self._ParentFolderPath = ParentFolderPath
+
+    @property
+    def VersionId(self):
+        r"""<p>返回保存后的versionId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
 
 
     def _deserialize(self, params):
@@ -2535,6 +2551,7 @@ class CodeFile(AbstractModel):
         self._AccessScope = params.get("AccessScope")
         self._Path = params.get("Path")
         self._ParentFolderPath = params.get("ParentFolderPath")
+        self._VersionId = params.get("VersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3525,6 +3542,112 @@ class CompareQualityResultItem(AbstractModel):
         
 
 
+class ComputeConfigMapping(AbstractModel):
+    r"""存算配置映射列表，对应页面“存算引擎配置”
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskTypeId: <p>任务类型ID</p><p>枚举值：</p><ul><li>32： DLC_SQL</li><li>46： DLC_SPARK</li><li>50： DLC_PYSPARK</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeId: int
+        :param _ComputeConfigItem: <p>存算配置项。当前支持：COMPUTE_ENGINE、DLC_ENGINE_RESOURCE_GROUP</p><p>枚举值：</p><ul><li>COMPUTE_ENGINE： DLC 标准计算引擎</li><li>DLC_ENGINE_RESOURCE_GROUP：  DLC 标准引擎资源组</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeConfigItem: str
+        :param _TaskIds: <p>指定任务列表，非空时表示任务级覆盖，当前仅支持 DLC_SQL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskIds: list of str
+        :param _SourceValue: <p>ComputeConfigItem=COMPUTE_ENGINE 时表示原引擎名；ComputeConfigItem=DLC_ENGINE_RESOURCE_GROUP 时表示原 DLC 标准引擎资源组名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceValue: str
+        :param _TargetValue: <p>ComputeConfigItem=COMPUTE_ENGINE 时表示目标引擎名；ComputeConfigItem=DLC_ENGINE_RESOURCE_GROUP 时表示目标 DLC 标准引擎资源组名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetValue: str
+        """
+        self._TaskTypeId = None
+        self._ComputeConfigItem = None
+        self._TaskIds = None
+        self._SourceValue = None
+        self._TargetValue = None
+
+    @property
+    def TaskTypeId(self):
+        r"""<p>任务类型ID</p><p>枚举值：</p><ul><li>32： DLC_SQL</li><li>46： DLC_SPARK</li><li>50： DLC_PYSPARK</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def ComputeConfigItem(self):
+        r"""<p>存算配置项。当前支持：COMPUTE_ENGINE、DLC_ENGINE_RESOURCE_GROUP</p><p>枚举值：</p><ul><li>COMPUTE_ENGINE： DLC 标准计算引擎</li><li>DLC_ENGINE_RESOURCE_GROUP：  DLC 标准引擎资源组</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComputeConfigItem
+
+    @ComputeConfigItem.setter
+    def ComputeConfigItem(self, ComputeConfigItem):
+        self._ComputeConfigItem = ComputeConfigItem
+
+    @property
+    def TaskIds(self):
+        r"""<p>指定任务列表，非空时表示任务级覆盖，当前仅支持 DLC_SQL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def SourceValue(self):
+        r"""<p>ComputeConfigItem=COMPUTE_ENGINE 时表示原引擎名；ComputeConfigItem=DLC_ENGINE_RESOURCE_GROUP 时表示原 DLC 标准引擎资源组名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceValue
+
+    @SourceValue.setter
+    def SourceValue(self, SourceValue):
+        self._SourceValue = SourceValue
+
+    @property
+    def TargetValue(self):
+        r"""<p>ComputeConfigItem=COMPUTE_ENGINE 时表示目标引擎名；ComputeConfigItem=DLC_ENGINE_RESOURCE_GROUP 时表示目标 DLC 标准引擎资源组名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetValue
+
+    @TargetValue.setter
+    def TargetValue(self, TargetValue):
+        self._TargetValue = TargetValue
+
+
+    def _deserialize(self, params):
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._ComputeConfigItem = params.get("ComputeConfigItem")
+        self._TaskIds = params.get("TaskIds")
+        self._SourceValue = params.get("SourceValue")
+        self._TargetValue = params.get("TargetValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAlarmRuleData(AbstractModel):
     r"""创建告警规则响应结果
 
@@ -3926,43 +4049,36 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 所属项目Id
+        :param _ProjectId: <p>所属项目Id</p>
         :type ProjectId: str
-        :param _TaskIds: 补录任务集合
+        :param _TaskIds: <p>补录任务集合</p>
         :type TaskIds: list of str
-        :param _DataBackfillRangeList: 补录任务的数据时间配置
+        :param _DataBackfillRangeList: <p>补录任务的数据时间配置</p>
         :type DataBackfillRangeList: list of DataBackfillRange
-        :param _TimeZone: 时区，默认UTC+8
+        :param _TimeZone: <p>时区，默认UTC+8</p>
         :type TimeZone: str
-        :param _DataBackfillPlanName: 数据补录计划名称，不填则由系统随机生成一串字符
+        :param _DataBackfillPlanName: <p>数据补录计划名称，不填则由系统随机生成一串字符</p>
         :type DataBackfillPlanName: str
-        :param _CheckParentType: 检查父任务类型，取值范围：- NONE-全部不检查- ALL-检查全部上游父任务- MAKE_SCOPE-只在（当前补录计划）选中任务中检查,默认NONE不检查
+        :param _CheckParentType: <p>检查父任务类型，取值范围：- NONE-全部不检查- ALL-检查全部上游父任务- MAKE_SCOPE-只在（当前补录计划）选中任务中检查,默认NONE不检查</p>
         :type CheckParentType: str
-        :param _SkipEventListening: 补录是否忽略事件依赖,默认true
+        :param _SkipEventListening: <p>补录是否忽略事件依赖,默认true</p>
         :type SkipEventListening: bool
-        :param _RedefineSelfWorkflowDependency: 自定义的工作流自依赖，yes或者no；如果不配置，则使用工作流原有自依赖
+        :param _RedefineSelfWorkflowDependency: <p>自定义的工作流自依赖，yes或者no；如果不配置，则使用工作流原有自依赖</p>
         :type RedefineSelfWorkflowDependency: str
-        :param _RedefineParallelNum: 自定义实例运行并发度, 如果不配置，则使用任务原有自依赖
+        :param _RedefineParallelNum: <p>自定义实例运行并发度, 如果不配置，则使用任务原有自依赖</p>
         :type RedefineParallelNum: int
-        :param _SchedulerResourceGroupId: 调度资源组id，为空则表示使用任务原有调度执行资源组
+        :param _SchedulerResourceGroupId: <p>调度资源组id，为空则表示使用任务原有调度执行资源组</p>
         :type SchedulerResourceGroupId: str
-        :param _IntegrationResourceGroupId: 集成任务资源组id，为空则表示使用任务原有调度执行资源组
+        :param _IntegrationResourceGroupId: <p>集成任务资源组id，为空则表示使用任务原有调度执行资源组</p>
         :type IntegrationResourceGroupId: str
-        :param _RedefineParamList: 自定义参数，可以重新指定任务的参数，方便补录实例执行新的逻辑
+        :param _RedefineParamList: <p>自定义参数，可以重新指定任务的参数，方便补录实例执行新的逻辑</p>
         :type RedefineParamList: list of KVPair
-        :param _DataTimeOrder: 补录是实例数据时间顺序，生效必须满足2个条件:
-1. 必须同周期任务
-2. 优先按依赖关系执行，无依赖关系影响的情况下按配置执行顺序执行
- 
-可选值
-- NORMAL: 不设置
-- ORDER: 顺序
-- REVERSE: 逆序
-不设置默认为NORMAL
+        :param _DataTimeOrder: <p>补录是实例数据时间顺序，生效必须满足2个条件:</p><ol><li>必须同周期任务</li><li>优先按依赖关系执行，无依赖关系影响的情况下按配置执行顺序执行</li></ol><p>可选值</p><ul><li>NORMAL: 不设置</li><li>ORDER: 顺序</li><li>REVERSE: 逆序<br>不设置默认为NORMAL</li></ul>
         :type DataTimeOrder: str
-        :param _RedefineCycleType: 补录实例重新生成周期，如果设置会重新指定补录任务实例的生成周期，目前只会将天实例转换成每月1号生成的实例
-* MONTH_CYCLE: 月
+        :param _RedefineCycleType: <p>补录实例重新生成周期，如果设置会重新指定补录任务实例的生成周期，目前只会将天实例转换成每月1号生成的实例</p><ul><li>MONTH_CYCLE: 月</li></ul>
         :type RedefineCycleType: str
+        :param _ComputeConfigMappings: <p>存算配置映射列表，对应页面“存算引擎配置”</p>
+        :type ComputeConfigMappings: list of ComputeConfigMapping
         """
         self._ProjectId = None
         self._TaskIds = None
@@ -3978,10 +4094,11 @@ class CreateDataBackfillPlanRequest(AbstractModel):
         self._RedefineParamList = None
         self._DataTimeOrder = None
         self._RedefineCycleType = None
+        self._ComputeConfigMappings = None
 
     @property
     def ProjectId(self):
-        r"""所属项目Id
+        r"""<p>所属项目Id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -3992,7 +4109,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def TaskIds(self):
-        r"""补录任务集合
+        r"""<p>补录任务集合</p>
         :rtype: list of str
         """
         return self._TaskIds
@@ -4003,7 +4120,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def DataBackfillRangeList(self):
-        r"""补录任务的数据时间配置
+        r"""<p>补录任务的数据时间配置</p>
         :rtype: list of DataBackfillRange
         """
         return self._DataBackfillRangeList
@@ -4014,7 +4131,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        r"""时区，默认UTC+8
+        r"""<p>时区，默认UTC+8</p>
         :rtype: str
         """
         return self._TimeZone
@@ -4025,7 +4142,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def DataBackfillPlanName(self):
-        r"""数据补录计划名称，不填则由系统随机生成一串字符
+        r"""<p>数据补录计划名称，不填则由系统随机生成一串字符</p>
         :rtype: str
         """
         return self._DataBackfillPlanName
@@ -4036,7 +4153,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def CheckParentType(self):
-        r"""检查父任务类型，取值范围：- NONE-全部不检查- ALL-检查全部上游父任务- MAKE_SCOPE-只在（当前补录计划）选中任务中检查,默认NONE不检查
+        r"""<p>检查父任务类型，取值范围：- NONE-全部不检查- ALL-检查全部上游父任务- MAKE_SCOPE-只在（当前补录计划）选中任务中检查,默认NONE不检查</p>
         :rtype: str
         """
         return self._CheckParentType
@@ -4047,7 +4164,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def SkipEventListening(self):
-        r"""补录是否忽略事件依赖,默认true
+        r"""<p>补录是否忽略事件依赖,默认true</p>
         :rtype: bool
         """
         return self._SkipEventListening
@@ -4058,7 +4175,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def RedefineSelfWorkflowDependency(self):
-        r"""自定义的工作流自依赖，yes或者no；如果不配置，则使用工作流原有自依赖
+        r"""<p>自定义的工作流自依赖，yes或者no；如果不配置，则使用工作流原有自依赖</p>
         :rtype: str
         """
         return self._RedefineSelfWorkflowDependency
@@ -4069,7 +4186,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def RedefineParallelNum(self):
-        r"""自定义实例运行并发度, 如果不配置，则使用任务原有自依赖
+        r"""<p>自定义实例运行并发度, 如果不配置，则使用任务原有自依赖</p>
         :rtype: int
         """
         return self._RedefineParallelNum
@@ -4080,7 +4197,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def SchedulerResourceGroupId(self):
-        r"""调度资源组id，为空则表示使用任务原有调度执行资源组
+        r"""<p>调度资源组id，为空则表示使用任务原有调度执行资源组</p>
         :rtype: str
         """
         return self._SchedulerResourceGroupId
@@ -4091,7 +4208,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def IntegrationResourceGroupId(self):
-        r"""集成任务资源组id，为空则表示使用任务原有调度执行资源组
+        r"""<p>集成任务资源组id，为空则表示使用任务原有调度执行资源组</p>
         :rtype: str
         """
         return self._IntegrationResourceGroupId
@@ -4102,7 +4219,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def RedefineParamList(self):
-        r"""自定义参数，可以重新指定任务的参数，方便补录实例执行新的逻辑
+        r"""<p>自定义参数，可以重新指定任务的参数，方便补录实例执行新的逻辑</p>
         :rtype: list of KVPair
         """
         return self._RedefineParamList
@@ -4113,15 +4230,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def DataTimeOrder(self):
-        r"""补录是实例数据时间顺序，生效必须满足2个条件:
-1. 必须同周期任务
-2. 优先按依赖关系执行，无依赖关系影响的情况下按配置执行顺序执行
- 
-可选值
-- NORMAL: 不设置
-- ORDER: 顺序
-- REVERSE: 逆序
-不设置默认为NORMAL
+        r"""<p>补录是实例数据时间顺序，生效必须满足2个条件:</p><ol><li>必须同周期任务</li><li>优先按依赖关系执行，无依赖关系影响的情况下按配置执行顺序执行</li></ol><p>可选值</p><ul><li>NORMAL: 不设置</li><li>ORDER: 顺序</li><li>REVERSE: 逆序<br>不设置默认为NORMAL</li></ul>
         :rtype: str
         """
         return self._DataTimeOrder
@@ -4132,8 +4241,7 @@ class CreateDataBackfillPlanRequest(AbstractModel):
 
     @property
     def RedefineCycleType(self):
-        r"""补录实例重新生成周期，如果设置会重新指定补录任务实例的生成周期，目前只会将天实例转换成每月1号生成的实例
-* MONTH_CYCLE: 月
+        r"""<p>补录实例重新生成周期，如果设置会重新指定补录任务实例的生成周期，目前只会将天实例转换成每月1号生成的实例</p><ul><li>MONTH_CYCLE: 月</li></ul>
         :rtype: str
         """
         return self._RedefineCycleType
@@ -4141,6 +4249,17 @@ class CreateDataBackfillPlanRequest(AbstractModel):
     @RedefineCycleType.setter
     def RedefineCycleType(self, RedefineCycleType):
         self._RedefineCycleType = RedefineCycleType
+
+    @property
+    def ComputeConfigMappings(self):
+        r"""<p>存算配置映射列表，对应页面“存算引擎配置”</p>
+        :rtype: list of ComputeConfigMapping
+        """
+        return self._ComputeConfigMappings
+
+    @ComputeConfigMappings.setter
+    def ComputeConfigMappings(self, ComputeConfigMappings):
+        self._ComputeConfigMappings = ComputeConfigMappings
 
 
     def _deserialize(self, params):
@@ -4168,6 +4287,12 @@ class CreateDataBackfillPlanRequest(AbstractModel):
                 self._RedefineParamList.append(obj)
         self._DataTimeOrder = params.get("DataTimeOrder")
         self._RedefineCycleType = params.get("RedefineCycleType")
+        if params.get("ComputeConfigMappings") is not None:
+            self._ComputeConfigMappings = []
+            for item in params.get("ComputeConfigMappings"):
+                obj = ComputeConfigMapping()
+                obj._deserialize(item)
+                self._ComputeConfigMappings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4185,7 +4310,7 @@ class CreateDataBackfillPlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 数据补录计划创建结果
+        :param _Data: <p>数据补录计划创建结果</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.CreateDataReplenishmentPlan`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4195,7 +4320,7 @@ class CreateDataBackfillPlanResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""数据补录计划创建结果
+        r"""<p>数据补录计划创建结果</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateDataReplenishmentPlan`
         """
         return self._Data
@@ -8235,6 +8360,10 @@ class CreateTriggerWorkflowRequest(AbstractModel):
         :type GeneralTaskParams: list of WorkflowGeneralTaskParam
         :param _TriggerWorkflowRunConfiguration: <p>工作流调度运行配置</p>
         :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
+        :param _SchedulerStatus: <p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的Trigger状态可不配置，如果配置，内容会被该值覆盖</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
+        :type SchedulerStatus: str
+        :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        :type TriggerMode: str
         """
         self._ProjectId = None
         self._WorkflowName = None
@@ -8247,6 +8376,8 @@ class CreateTriggerWorkflowRequest(AbstractModel):
         self._BundleInfo = None
         self._GeneralTaskParams = None
         self._TriggerWorkflowRunConfiguration = None
+        self._SchedulerStatus = None
+        self._TriggerMode = None
 
     @property
     def ProjectId(self):
@@ -8369,6 +8500,28 @@ class CreateTriggerWorkflowRequest(AbstractModel):
     def TriggerWorkflowRunConfiguration(self, TriggerWorkflowRunConfiguration):
         self._TriggerWorkflowRunConfiguration = TriggerWorkflowRunConfiguration
 
+    @property
+    def SchedulerStatus(self):
+        r"""<p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的Trigger状态可不配置，如果配置，内容会被该值覆盖</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
+        :rtype: str
+        """
+        return self._SchedulerStatus
+
+    @SchedulerStatus.setter
+    def SchedulerStatus(self, SchedulerStatus):
+        self._SchedulerStatus = SchedulerStatus
+
+    @property
+    def TriggerMode(self):
+        r"""<p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        :rtype: str
+        """
+        return self._TriggerMode
+
+    @TriggerMode.setter
+    def TriggerMode(self, TriggerMode):
+        self._TriggerMode = TriggerMode
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -8399,6 +8552,8 @@ class CreateTriggerWorkflowRequest(AbstractModel):
         if params.get("TriggerWorkflowRunConfiguration") is not None:
             self._TriggerWorkflowRunConfiguration = WorkflowRunConfig()
             self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
+        self._SchedulerStatus = params.get("SchedulerStatus")
+        self._TriggerMode = params.get("TriggerMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30413,28 +30568,29 @@ class ListTaskVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
-        :param _TaskVersionType: 保存版本：SAVE
-提交版本：SUBMIT
-默认为SAVE
+        :param _TaskVersionType: <p>保存版本：SAVE<br>提交版本：SUBMIT<br>默认为SAVE</p>
         :type TaskVersionType: str
-        :param _PageNumber: 请求的数据页数。默认值为1，取值大于等于1。
+        :param _PageNumber: <p>请求的数据页数。默认值为1，取值大于等于1。</p>
         :type PageNumber: int
-        :param _PageSize: 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+        :param _PageSize: <p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。</p>
         :type PageSize: int
+        :param _UsedVersion: <p>是否为使用版本</p>
+        :type UsedVersion: bool
         """
         self._ProjectId = None
         self._TaskId = None
         self._TaskVersionType = None
         self._PageNumber = None
         self._PageSize = None
+        self._UsedVersion = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -30445,7 +30601,7 @@ class ListTaskVersionsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -30456,9 +30612,7 @@ class ListTaskVersionsRequest(AbstractModel):
 
     @property
     def TaskVersionType(self):
-        r"""保存版本：SAVE
-提交版本：SUBMIT
-默认为SAVE
+        r"""<p>保存版本：SAVE<br>提交版本：SUBMIT<br>默认为SAVE</p>
         :rtype: str
         """
         return self._TaskVersionType
@@ -30469,7 +30623,7 @@ class ListTaskVersionsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""请求的数据页数。默认值为1，取值大于等于1。
+        r"""<p>请求的数据页数。默认值为1，取值大于等于1。</p>
         :rtype: int
         """
         return self._PageNumber
@@ -30480,7 +30634,7 @@ class ListTaskVersionsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。
+        r"""<p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200。</p>
         :rtype: int
         """
         return self._PageSize
@@ -30489,6 +30643,17 @@ class ListTaskVersionsRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def UsedVersion(self):
+        r"""<p>是否为使用版本</p>
+        :rtype: bool
+        """
+        return self._UsedVersion
+
+    @UsedVersion.setter
+    def UsedVersion(self, UsedVersion):
+        self._UsedVersion = UsedVersion
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -30496,6 +30661,7 @@ class ListTaskVersionsRequest(AbstractModel):
         self._TaskVersionType = params.get("TaskVersionType")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._UsedVersion = params.get("UsedVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30513,7 +30679,7 @@ class ListTaskVersionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 版本列表
+        :param _Data: <p>版本列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20250806.models.ListTaskVersions`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -30524,7 +30690,7 @@ class ListTaskVersionsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""版本列表
+        r"""<p>版本列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTaskVersions`
         """
@@ -38370,6 +38536,14 @@ class QualityProdSchedulerTask(AbstractModel):
         :param _InChargeNameList: 负责人name
 注意：此字段可能返回 null，表示取不到有效值。
         :type InChargeNameList: list of str
+        :param _TaskStatus: 生产调度任务状态，参考调度任务侧状态信息，“DELETED”状态为质量侧单独加的，查不到任务时认为任务“DELETED”
+'Y': '调度中',
+'F': '已下线',
+'O': '已暂停',
+'INVALID': '已失效',
+'DELETED': '已删除' 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: str
         """
         self._WorkflowId = None
         self._TaskId = None
@@ -38379,6 +38553,7 @@ class QualityProdSchedulerTask(AbstractModel):
         self._ScheduleTimeZone = None
         self._InChargeIdList = None
         self._InChargeNameList = None
+        self._TaskStatus = None
 
     @property
     def WorkflowId(self):
@@ -38476,6 +38651,23 @@ class QualityProdSchedulerTask(AbstractModel):
     def InChargeNameList(self, InChargeNameList):
         self._InChargeNameList = InChargeNameList
 
+    @property
+    def TaskStatus(self):
+        r"""生产调度任务状态，参考调度任务侧状态信息，“DELETED”状态为质量侧单独加的，查不到任务时认为任务“DELETED”
+'Y': '调度中',
+'F': '已下线',
+'O': '已暂停',
+'INVALID': '已失效',
+'DELETED': '已删除' 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
 
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
@@ -38486,6 +38678,7 @@ class QualityProdSchedulerTask(AbstractModel):
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._InChargeIdList = params.get("InChargeIdList")
         self._InChargeNameList = params.get("InChargeNameList")
+        self._TaskStatus = params.get("TaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39749,6 +39942,9 @@ class QualityRuleExecResult(AbstractModel):
         :param _CatalogName: 数据目录
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogName: str
+        :param _RuleExecStatus: 规则执行状态（0：初始状态，1：运行中，2：运行成功，3：运行失败，4：被杀死）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExecStatus: int
         """
         self._RuleExecId = None
         self._RuleGroupExecId = None
@@ -39786,6 +39982,7 @@ class QualityRuleExecResult(AbstractModel):
         self._GroupType = None
         self._AspectTaskId = None
         self._CatalogName = None
+        self._RuleExecStatus = None
 
     @property
     def RuleExecId(self):
@@ -40219,6 +40416,18 @@ class QualityRuleExecResult(AbstractModel):
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
 
+    @property
+    def RuleExecStatus(self):
+        r"""规则执行状态（0：初始状态，1：运行中，2：运行成功，3：运行失败，4：被杀死）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RuleExecStatus
+
+    @RuleExecStatus.setter
+    def RuleExecStatus(self, RuleExecStatus):
+        self._RuleExecStatus = RuleExecStatus
+
 
     def _deserialize(self, params):
         self._RuleExecId = params.get("RuleExecId")
@@ -40261,6 +40470,7 @@ class QualityRuleExecResult(AbstractModel):
         self._GroupType = params.get("GroupType")
         self._AspectTaskId = params.get("AspectTaskId")
         self._CatalogName = params.get("CatalogName")
+        self._RuleExecStatus = params.get("RuleExecStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40343,105 +40553,111 @@ class QualityRuleGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleGroupId: 规则组Id
+        :param _RuleGroupId: <p>规则组Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupId: int
-        :param _DatasourceId: 数据源Id
+        :param _DatasourceId: <p>数据源Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceId: str
-        :param _DatasourceName: 数据源名称
+        :param _DatasourceName: <p>数据源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceName: str
-        :param _DatasourceType: 数据源类型
+        :param _DatasourceType: <p>数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: int
-        :param _MonitorType: 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+        :param _MonitorType: <p>监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorType: int
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _TableName: 关联数据表名称
+        :param _TableName: <p>关联数据表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param _TableId: 关联数据表Id
+        :param _TableId: <p>关联数据表Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableId: str
-        :param _TableOwnerName: 关联数据表负责人
+        :param _TableOwnerName: <p>关联数据表负责人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableOwnerName: str
-        :param _ExecStrategy: 执行策略
+        :param _ExecStrategy: <p>执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecStrategy: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupExecStrategy`
-        :param _Subscription: 订阅信息
+        :param _Subscription: <p>订阅信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Subscription: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupSubscribe`
-        :param _DatabaseId: 数据库id
+        :param _DatabaseId: <p>数据库id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseId: str
-        :param _DatabaseName: 数据库名称
+        :param _DatabaseName: <p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
-        :param _SchemaName: 模式名称
+        :param _SchemaName: <p>模式名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
-        :param _Permission: 是否有权限
+        :param _Permission: <p>是否有权限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Permission: bool
-        :param _RuleCount: 已经配置的规则数量
+        :param _RuleCount: <p>已经配置的规则数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleCount: int
-        :param _MonitorStatus: 监控状态
+        :param _MonitorStatus: <p>监控状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorStatus: bool
-        :param _TableOwnerUserId: 表负责人UserId
+        :param _TableOwnerUserId: <p>表负责人UserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableOwnerUserId: int
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _StrategyConfig: 是否已配置执行策略
+        :param _StrategyConfig: <p>是否已配置执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyConfig: bool
-        :param _SubscribeConfig: 是否已配置执行策略
+        :param _SubscribeConfig: <p>是否已配置执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeConfig: bool
-        :param _DsEnvType: 数据源环境：0或者未返回.未定义，1.生产 2.开发
+        :param _DsEnvType: <p>数据源环境：0或者未返回.未定义，1.生产 2.开发</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DsEnvType: int
-        :param _ClusterDeployType: EMR集群部署方式：CVM/TKE
+        :param _ClusterDeployType: <p>EMR集群部署方式：CVM/TKE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterDeployType: str
-        :param _Name: 任务名称
+        :param _Name: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _ExecDetail: 执行详情
+        :param _ExecDetail: <p>执行详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecDetail: str
-        :param _PipelineTaskCount: 事中关联任务数量
+        :param _PipelineTaskCount: <p>事中关联任务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PipelineTaskCount: int
-        :param _EnableRuleCount: 有效规则数
+        :param _EnableRuleCount: <p>有效规则数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableRuleCount: int
-        :param _Description: 任务描述
+        :param _Description: <p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _CreateUserName: 监控创建人
+        :param _CreateUserName: <p>监控创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserName: str
-        :param _GroupType: 任务类型
+        :param _GroupType: <p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupType: str
-        :param _AspectTaskId: 任务id
+        :param _AspectTaskId: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AspectTaskId: str
-        :param _CatalogName: 数据目录名称
+        :param _CatalogName: <p>数据目录名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogName: str
+        :param _InChargeId: <p>负责人ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeId: str
+        :param _InChargeName: <p>负责人名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeName: str
         """
         self._RuleGroupId = None
         self._DatasourceId = None
@@ -40476,10 +40692,12 @@ class QualityRuleGroup(AbstractModel):
         self._GroupType = None
         self._AspectTaskId = None
         self._CatalogName = None
+        self._InChargeId = None
+        self._InChargeName = None
 
     @property
     def RuleGroupId(self):
-        r"""规则组Id
+        r"""<p>规则组Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40491,7 +40709,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def DatasourceId(self):
-        r"""数据源Id
+        r"""<p>数据源Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40503,7 +40721,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def DatasourceName(self):
-        r"""数据源名称
+        r"""<p>数据源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40515,7 +40733,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def DatasourceType(self):
-        r"""数据源类型
+        r"""<p>数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40527,7 +40745,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def MonitorType(self):
-        r"""监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+        r"""<p>监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40539,7 +40757,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40551,7 +40769,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def TableName(self):
-        r"""关联数据表名称
+        r"""<p>关联数据表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40563,7 +40781,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def TableId(self):
-        r"""关联数据表Id
+        r"""<p>关联数据表Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40575,7 +40793,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def TableOwnerName(self):
-        r"""关联数据表负责人
+        r"""<p>关联数据表负责人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40587,7 +40805,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def ExecStrategy(self):
-        r"""执行策略
+        r"""<p>执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupExecStrategy`
         """
@@ -40599,7 +40817,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def Subscription(self):
-        r"""订阅信息
+        r"""<p>订阅信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupSubscribe`
         """
@@ -40611,7 +40829,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def DatabaseId(self):
-        r"""数据库id
+        r"""<p>数据库id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40623,7 +40841,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40635,7 +40853,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""模式名称
+        r"""<p>模式名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40647,7 +40865,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def Permission(self):
-        r"""是否有权限
+        r"""<p>是否有权限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -40659,7 +40877,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def RuleCount(self):
-        r"""已经配置的规则数量
+        r"""<p>已经配置的规则数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40671,7 +40889,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def MonitorStatus(self):
-        r"""监控状态
+        r"""<p>监控状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -40683,7 +40901,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def TableOwnerUserId(self):
-        r"""表负责人UserId
+        r"""<p>表负责人UserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40695,7 +40913,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40707,7 +40925,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40719,7 +40937,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def StrategyConfig(self):
-        r"""是否已配置执行策略
+        r"""<p>是否已配置执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -40731,7 +40949,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def SubscribeConfig(self):
-        r"""是否已配置执行策略
+        r"""<p>是否已配置执行策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -40743,7 +40961,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def DsEnvType(self):
-        r"""数据源环境：0或者未返回.未定义，1.生产 2.开发
+        r"""<p>数据源环境：0或者未返回.未定义，1.生产 2.开发</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40755,7 +40973,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def ClusterDeployType(self):
-        r"""EMR集群部署方式：CVM/TKE
+        r"""<p>EMR集群部署方式：CVM/TKE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40767,7 +40985,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40779,7 +40997,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def ExecDetail(self):
-        r"""执行详情
+        r"""<p>执行详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40791,7 +41009,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def PipelineTaskCount(self):
-        r"""事中关联任务数量
+        r"""<p>事中关联任务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40803,7 +41021,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def EnableRuleCount(self):
-        r"""有效规则数
+        r"""<p>有效规则数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40815,7 +41033,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述
+        r"""<p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40827,7 +41045,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def CreateUserName(self):
-        r"""监控创建人
+        r"""<p>监控创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40839,7 +41057,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def GroupType(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40851,7 +41069,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def AspectTaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40863,7 +41081,7 @@ class QualityRuleGroup(AbstractModel):
 
     @property
     def CatalogName(self):
-        r"""数据目录名称
+        r"""<p>数据目录名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -40872,6 +41090,30 @@ class QualityRuleGroup(AbstractModel):
     @CatalogName.setter
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
+
+    @property
+    def InChargeId(self):
+        r"""<p>负责人ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InChargeId
+
+    @InChargeId.setter
+    def InChargeId(self, InChargeId):
+        self._InChargeId = InChargeId
+
+    @property
+    def InChargeName(self):
+        r"""<p>负责人名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InChargeName
+
+    @InChargeName.setter
+    def InChargeName(self, InChargeName):
+        self._InChargeName = InChargeName
 
 
     def _deserialize(self, params):
@@ -40912,6 +41154,8 @@ class QualityRuleGroup(AbstractModel):
         self._GroupType = params.get("GroupType")
         self._AspectTaskId = params.get("AspectTaskId")
         self._CatalogName = params.get("CatalogName")
+        self._InChargeId = params.get("InChargeId")
+        self._InChargeName = params.get("InChargeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41283,108 +41527,93 @@ class QualityRuleGroupExecStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MonitorType: 监控类型 2.关联生产调度, 3.离线周期检测
+        :param _MonitorType: <p>监控类型 2.关联生产调度, 3.离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorType: int
-        :param _ExecutorGroupId: 执行资源组ID
+        :param _ExecutorGroupId: <p>执行资源组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupId: str
-        :param _RuleGroupName: 监控任务名称
+        :param _RuleGroupName: <p>监控任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupName: str
-        :param _DatabaseName: 数据库名称
+        :param _DatabaseName: <p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
-        :param _DatasourceId: 数据源id
+        :param _DatasourceId: <p>数据源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceId: str
-        :param _TableName: 表名称
+        :param _TableName: <p>表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param _RuleGroupId: 监控任务的Id，编辑更新监控任务时必填
+        :param _RuleGroupId: <p>监控任务的Id，编辑更新监控任务时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleGroupId: int
-        :param _ExecQueue: 计算队列，数据源为HIVE、ICEBERG、DLC时必填，数据源为DLC时，该字段填写DLC数据引擎名称
+        :param _ExecQueue: <p>计算队列，数据源为HIVE、ICEBERG、DLC时必填，数据源为DLC时，该字段填写DLC数据引擎名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecQueue: str
-        :param _ExecutorGroupName: 执行资源组名称
+        :param _ExecutorGroupName: <p>执行资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
-        :param _Tasks: 关联的生产调度任务列表，MonitorType=2时必填
+        :param _Tasks: <p>关联的生产调度任务列表，MonitorType=2时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of QualityProdSchedulerTask
-        :param _StartTime: 周期开始时间，MonitorType=3时必填
+        :param _StartTime: <p>周期开始时间，MonitorType=3时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 周期结束时间，MonitorType=3时必填
+        :param _EndTime: <p>周期结束时间，MonitorType=3时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _CycleType: 调度周期类型，MonitorType=3时必填，具体可填值参考：
-I：按分钟调度
-H：按小时调度
-D：按天调度
-W：按周调度
-M：按月调度
+        :param _CycleType: <p>调度周期类型，MonitorType=3时必填，具体可填值参考：<br>I：按分钟调度<br>H：按小时调度<br>D：按天调度<br>W：按周调度<br>M：按月调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _DelayTime: 延迟调度时间，MonitorType=3时必填，主要用于调度周期为天/周/月的任务，
-计量单位为分钟，比如天任务需要延迟到02:00执行，则该字段值为120，表示延迟2小时（120分钟）
-对于小时/分钟任务，该字段无意义，填固定值0，否则字段校验不通过
+        :param _DelayTime: <p>延迟调度时间，MonitorType=3时必填，主要用于调度周期为天/周/月的任务，<br>计量单位为分钟，比如天任务需要延迟到02:00执行，则该字段值为120，表示延迟2小时（120分钟）<br>对于小时/分钟任务，该字段无意义，填固定值0，否则字段校验不通过</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DelayTime: int
-        :param _CycleStep: 间隔，MonitorType=3时必填，表示周期任务间隔时间
-周/月/天任务可选：1
-分钟任务可选：10，20，30
-小时任务可选：1，2，3，4，6，8，12
+        :param _CycleStep: <p>间隔，MonitorType=3时必填，表示周期任务间隔时间<br>周/月/天任务可选：1<br>分钟任务可选：10，20，30<br>小时任务可选：1，2，3，4，6，8，12</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleStep: int
-        :param _TaskAction: 时间指定，主要用于调度周期为周/月的任务
-调度周期为周时：含义为指定周几运行，可选多个，英文逗号隔开
-可填1,2...7，依次代表周日，周一...周六，例如填“1,2”，表示周日、周一执行；
-
-调度周期为月时，含义为指定每月的几号运行，可选多个，英文逗号隔开
-可填1,2,...,31，依次代表1号，2号...31号，例如填“1,2”，表示每月的1号、2号执行
+        :param _TaskAction: <p>时间指定，主要用于调度周期为周/月的任务<br>调度周期为周时：含义为指定周几运行，可选多个，英文逗号隔开<br>可填1,2...7，依次代表周日，周一...周六，例如填“1,2”，表示周日、周一执行；</p><p>调度周期为月时，含义为指定每月的几号运行，可选多个，英文逗号隔开<br>可填1,2,...,31，依次代表1号，2号...31号，例如填“1,2”，表示每月的1号、2号执行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAction: str
-        :param _ExecEngineType: 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        :param _ExecEngineType: <p>运行的执行引擎，不传时会请求该数据源下默认的执行引擎</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecEngineType: str
-        :param _ExecPlan: 执行计划
+        :param _ExecPlan: <p>执行计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecPlan: str
-        :param _RuleId: 规则id
+        :param _RuleId: <p>规则id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
-        :param _TriggerTypes: 触发类型，主要用于“关联生产调度”（MonitorType=2）的监控任务，可选值：
-CYCLE：周期调度
-MAKE_UP：补录
-RERUN：重跑
+        :param _TriggerTypes: <p>触发类型，主要用于“关联生产调度”（MonitorType=2）的监控任务，可选值：<br>CYCLE：周期调度<br>MAKE_UP：补录<br>RERUN：重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerTypes: list of str
-        :param _DlcGroupName: 数据源为DLC时，对应DLC资源组，根据ExecQueue中填的DLC引擎名称，选择对应引擎下的资源组
+        :param _DlcGroupName: <p>数据源为DLC时，对应DLC资源组，根据ExecQueue中填的DLC引擎名称，选择对应引擎下的资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DlcGroupName: str
-        :param _SchemaName: schema名称
+        :param _SchemaName: <p>schema名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
-        :param _Description: 任务描述
+        :param _Description: <p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _ScheduleTimeZone: 时区，默认为UTC+8
+        :param _ScheduleTimeZone: <p>时区，默认为UTC+8</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
-        :param _GroupConfig: 任务监控参数
+        :param _GroupConfig: <p>任务监控参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupConfig: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupConfig`
-        :param _EngineParam: 引擎参数
+        :param _EngineParam: <p>引擎参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineParam: str
-        :param _CatalogName: 数据目录名称，不填默认为DataLakeCatalog（更新质量监控时该参数无效）
+        :param _CatalogName: <p>数据目录名称，不填默认为DataLakeCatalog（更新质量监控时该参数无效）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogName: str
+        :param _ExecFailBlock: <p>执行失败是否阻塞下游</p><p>枚举值：</p><ul><li>0： 失败不阻塞（默认）</li><li>1： 失败阻塞</li></ul><p>默认值：0</p><p>仅作用于“关联生产调度”类型的质量监控</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecFailBlock: int
         """
         self._MonitorType = None
         self._ExecutorGroupId = None
@@ -41414,10 +41643,11 @@ RERUN：重跑
         self._GroupConfig = None
         self._EngineParam = None
         self._CatalogName = None
+        self._ExecFailBlock = None
 
     @property
     def MonitorType(self):
-        r"""监控类型 2.关联生产调度, 3.离线周期检测
+        r"""<p>监控类型 2.关联生产调度, 3.离线周期检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -41429,7 +41659,7 @@ RERUN：重跑
 
     @property
     def ExecutorGroupId(self):
-        r"""执行资源组ID
+        r"""<p>执行资源组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41441,7 +41671,7 @@ RERUN：重跑
 
     @property
     def RuleGroupName(self):
-        r"""监控任务名称
+        r"""<p>监控任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41453,7 +41683,7 @@ RERUN：重跑
 
     @property
     def DatabaseName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41465,7 +41695,7 @@ RERUN：重跑
 
     @property
     def DatasourceId(self):
-        r"""数据源id
+        r"""<p>数据源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41477,7 +41707,7 @@ RERUN：重跑
 
     @property
     def TableName(self):
-        r"""表名称
+        r"""<p>表名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41489,7 +41719,7 @@ RERUN：重跑
 
     @property
     def RuleGroupId(self):
-        r"""监控任务的Id，编辑更新监控任务时必填
+        r"""<p>监控任务的Id，编辑更新监控任务时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -41501,7 +41731,7 @@ RERUN：重跑
 
     @property
     def ExecQueue(self):
-        r"""计算队列，数据源为HIVE、ICEBERG、DLC时必填，数据源为DLC时，该字段填写DLC数据引擎名称
+        r"""<p>计算队列，数据源为HIVE、ICEBERG、DLC时必填，数据源为DLC时，该字段填写DLC数据引擎名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41513,7 +41743,7 @@ RERUN：重跑
 
     @property
     def ExecutorGroupName(self):
-        r"""执行资源组名称
+        r"""<p>执行资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41525,7 +41755,7 @@ RERUN：重跑
 
     @property
     def Tasks(self):
-        r"""关联的生产调度任务列表，MonitorType=2时必填
+        r"""<p>关联的生产调度任务列表，MonitorType=2时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityProdSchedulerTask
         """
@@ -41537,7 +41767,7 @@ RERUN：重跑
 
     @property
     def StartTime(self):
-        r"""周期开始时间，MonitorType=3时必填
+        r"""<p>周期开始时间，MonitorType=3时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41549,7 +41779,7 @@ RERUN：重跑
 
     @property
     def EndTime(self):
-        r"""周期结束时间，MonitorType=3时必填
+        r"""<p>周期结束时间，MonitorType=3时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41561,12 +41791,7 @@ RERUN：重跑
 
     @property
     def CycleType(self):
-        r"""调度周期类型，MonitorType=3时必填，具体可填值参考：
-I：按分钟调度
-H：按小时调度
-D：按天调度
-W：按周调度
-M：按月调度
+        r"""<p>调度周期类型，MonitorType=3时必填，具体可填值参考：<br>I：按分钟调度<br>H：按小时调度<br>D：按天调度<br>W：按周调度<br>M：按月调度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41578,9 +41803,7 @@ M：按月调度
 
     @property
     def DelayTime(self):
-        r"""延迟调度时间，MonitorType=3时必填，主要用于调度周期为天/周/月的任务，
-计量单位为分钟，比如天任务需要延迟到02:00执行，则该字段值为120，表示延迟2小时（120分钟）
-对于小时/分钟任务，该字段无意义，填固定值0，否则字段校验不通过
+        r"""<p>延迟调度时间，MonitorType=3时必填，主要用于调度周期为天/周/月的任务，<br>计量单位为分钟，比如天任务需要延迟到02:00执行，则该字段值为120，表示延迟2小时（120分钟）<br>对于小时/分钟任务，该字段无意义，填固定值0，否则字段校验不通过</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -41592,10 +41815,7 @@ M：按月调度
 
     @property
     def CycleStep(self):
-        r"""间隔，MonitorType=3时必填，表示周期任务间隔时间
-周/月/天任务可选：1
-分钟任务可选：10，20，30
-小时任务可选：1，2，3，4，6，8，12
+        r"""<p>间隔，MonitorType=3时必填，表示周期任务间隔时间<br>周/月/天任务可选：1<br>分钟任务可选：10，20，30<br>小时任务可选：1，2，3，4，6，8，12</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -41607,12 +41827,7 @@ M：按月调度
 
     @property
     def TaskAction(self):
-        r"""时间指定，主要用于调度周期为周/月的任务
-调度周期为周时：含义为指定周几运行，可选多个，英文逗号隔开
-可填1,2...7，依次代表周日，周一...周六，例如填“1,2”，表示周日、周一执行；
-
-调度周期为月时，含义为指定每月的几号运行，可选多个，英文逗号隔开
-可填1,2,...,31，依次代表1号，2号...31号，例如填“1,2”，表示每月的1号、2号执行
+        r"""<p>时间指定，主要用于调度周期为周/月的任务<br>调度周期为周时：含义为指定周几运行，可选多个，英文逗号隔开<br>可填1,2...7，依次代表周日，周一...周六，例如填“1,2”，表示周日、周一执行；</p><p>调度周期为月时，含义为指定每月的几号运行，可选多个，英文逗号隔开<br>可填1,2,...,31，依次代表1号，2号...31号，例如填“1,2”，表示每月的1号、2号执行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41624,7 +41839,7 @@ M：按月调度
 
     @property
     def ExecEngineType(self):
-        r"""运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        r"""<p>运行的执行引擎，不传时会请求该数据源下默认的执行引擎</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41636,7 +41851,7 @@ M：按月调度
 
     @property
     def ExecPlan(self):
-        r"""执行计划
+        r"""<p>执行计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41648,7 +41863,7 @@ M：按月调度
 
     @property
     def RuleId(self):
-        r"""规则id
+        r"""<p>规则id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -41660,7 +41875,7 @@ M：按月调度
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41672,10 +41887,7 @@ M：按月调度
 
     @property
     def TriggerTypes(self):
-        r"""触发类型，主要用于“关联生产调度”（MonitorType=2）的监控任务，可选值：
-CYCLE：周期调度
-MAKE_UP：补录
-RERUN：重跑
+        r"""<p>触发类型，主要用于“关联生产调度”（MonitorType=2）的监控任务，可选值：<br>CYCLE：周期调度<br>MAKE_UP：补录<br>RERUN：重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -41687,7 +41899,7 @@ RERUN：重跑
 
     @property
     def DlcGroupName(self):
-        r"""数据源为DLC时，对应DLC资源组，根据ExecQueue中填的DLC引擎名称，选择对应引擎下的资源组
+        r"""<p>数据源为DLC时，对应DLC资源组，根据ExecQueue中填的DLC引擎名称，选择对应引擎下的资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41699,7 +41911,7 @@ RERUN：重跑
 
     @property
     def SchemaName(self):
-        r"""schema名称
+        r"""<p>schema名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41711,7 +41923,7 @@ RERUN：重跑
 
     @property
     def Description(self):
-        r"""任务描述
+        r"""<p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41723,7 +41935,7 @@ RERUN：重跑
 
     @property
     def ScheduleTimeZone(self):
-        r"""时区，默认为UTC+8
+        r"""<p>时区，默认为UTC+8</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41735,7 +41947,7 @@ RERUN：重跑
 
     @property
     def GroupConfig(self):
-        r"""任务监控参数
+        r"""<p>任务监控参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20250806.models.QualityRuleGroupConfig`
         """
@@ -41747,7 +41959,7 @@ RERUN：重跑
 
     @property
     def EngineParam(self):
-        r"""引擎参数
+        r"""<p>引擎参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41759,7 +41971,7 @@ RERUN：重跑
 
     @property
     def CatalogName(self):
-        r"""数据目录名称，不填默认为DataLakeCatalog（更新质量监控时该参数无效）
+        r"""<p>数据目录名称，不填默认为DataLakeCatalog（更新质量监控时该参数无效）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41768,6 +41980,18 @@ RERUN：重跑
     @CatalogName.setter
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
+
+    @property
+    def ExecFailBlock(self):
+        r"""<p>执行失败是否阻塞下游</p><p>枚举值：</p><ul><li>0： 失败不阻塞（默认）</li><li>1： 失败阻塞</li></ul><p>默认值：0</p><p>仅作用于“关联生产调度”类型的质量监控</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecFailBlock
+
+    @ExecFailBlock.setter
+    def ExecFailBlock(self, ExecFailBlock):
+        self._ExecFailBlock = ExecFailBlock
 
 
     def _deserialize(self, params):
@@ -41806,6 +42030,7 @@ RERUN：重跑
             self._GroupConfig._deserialize(params.get("GroupConfig"))
         self._EngineParam = params.get("EngineParam")
         self._CatalogName = params.get("CatalogName")
+        self._ExecFailBlock = params.get("ExecFailBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53244,30 +53469,33 @@ class TaskVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreateTime: 保存时间
+        :param _CreateTime: <p>保存时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _VersionNum: 版本号
+        :param _VersionNum: <p>版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionNum: str
-        :param _CreateUserUin: 创建人
+        :param _CreateUserUin: <p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserUin: str
-        :param _VersionId: 保存版本id
+        :param _VersionId: <p>保存版本id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: str
-        :param _VersionRemark: 版本描述信息
+        :param _VersionRemark: <p>版本描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionRemark: str
-        :param _ApproveStatus: 审批状态（只有提交版本有）
+        :param _ApproveStatus: <p>审批状态（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveStatus: str
-        :param _Status: 生产状态（只有提交版本有）
+        :param _Status: <p>生产状态（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _ApproveUserUin: 审批人（只有提交版本有）
+        :param _ApproveUserUin: <p>审批人（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveUserUin: str
+        :param _UsedVersion: <p>是否为使用版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedVersion: bool
         """
         self._CreateTime = None
         self._VersionNum = None
@@ -53277,10 +53505,11 @@ class TaskVersion(AbstractModel):
         self._ApproveStatus = None
         self._Status = None
         self._ApproveUserUin = None
+        self._UsedVersion = None
 
     @property
     def CreateTime(self):
-        r"""保存时间
+        r"""<p>保存时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53292,7 +53521,7 @@ class TaskVersion(AbstractModel):
 
     @property
     def VersionNum(self):
-        r"""版本号
+        r"""<p>版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53304,7 +53533,7 @@ class TaskVersion(AbstractModel):
 
     @property
     def CreateUserUin(self):
-        r"""创建人
+        r"""<p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53316,7 +53545,7 @@ class TaskVersion(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""保存版本id
+        r"""<p>保存版本id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53328,7 +53557,7 @@ class TaskVersion(AbstractModel):
 
     @property
     def VersionRemark(self):
-        r"""版本描述信息
+        r"""<p>版本描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53340,7 +53569,7 @@ class TaskVersion(AbstractModel):
 
     @property
     def ApproveStatus(self):
-        r"""审批状态（只有提交版本有）
+        r"""<p>审批状态（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53352,7 +53581,7 @@ class TaskVersion(AbstractModel):
 
     @property
     def Status(self):
-        r"""生产状态（只有提交版本有）
+        r"""<p>生产状态（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53364,7 +53593,7 @@ class TaskVersion(AbstractModel):
 
     @property
     def ApproveUserUin(self):
-        r"""审批人（只有提交版本有）
+        r"""<p>审批人（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -53373,6 +53602,18 @@ class TaskVersion(AbstractModel):
     @ApproveUserUin.setter
     def ApproveUserUin(self, ApproveUserUin):
         self._ApproveUserUin = ApproveUserUin
+
+    @property
+    def UsedVersion(self):
+        r"""<p>是否为使用版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._UsedVersion
+
+    @UsedVersion.setter
+    def UsedVersion(self, UsedVersion):
+        self._UsedVersion = UsedVersion
 
 
     def _deserialize(self, params):
@@ -53384,6 +53625,7 @@ class TaskVersion(AbstractModel):
         self._ApproveStatus = params.get("ApproveStatus")
         self._Status = params.get("Status")
         self._ApproveUserUin = params.get("ApproveUserUin")
+        self._UsedVersion = params.get("UsedVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56694,30 +56936,33 @@ class TriggerTaskVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreateTime: 保存时间
+        :param _CreateTime: <p>保存时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _VersionNum: 版本号
+        :param _VersionNum: <p>版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionNum: str
-        :param _CreateUserUin: 创建人
+        :param _CreateUserUin: <p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserUin: str
-        :param _VersionId: 保存版本id
+        :param _VersionId: <p>保存版本id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: str
-        :param _VersionRemark: 版本描述信息
+        :param _VersionRemark: <p>版本描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionRemark: str
-        :param _ApproveStatus: 审批状态（只有提交版本有）
+        :param _ApproveStatus: <p>审批状态（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveStatus: str
-        :param _Status: 生产状态（只有提交版本有）
+        :param _Status: <p>生产状态（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _ApproveUserUin: 审批人（只有提交版本有）
+        :param _ApproveUserUin: <p>审批人（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveUserUin: str
+        :param _UsedVersion: <p>是否生产态使用版本，保存版本没有该字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedVersion: bool
         """
         self._CreateTime = None
         self._VersionNum = None
@@ -56727,10 +56972,11 @@ class TriggerTaskVersion(AbstractModel):
         self._ApproveStatus = None
         self._Status = None
         self._ApproveUserUin = None
+        self._UsedVersion = None
 
     @property
     def CreateTime(self):
-        r"""保存时间
+        r"""<p>保存时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56742,7 +56988,7 @@ class TriggerTaskVersion(AbstractModel):
 
     @property
     def VersionNum(self):
-        r"""版本号
+        r"""<p>版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56754,7 +57000,7 @@ class TriggerTaskVersion(AbstractModel):
 
     @property
     def CreateUserUin(self):
-        r"""创建人
+        r"""<p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56766,7 +57012,7 @@ class TriggerTaskVersion(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""保存版本id
+        r"""<p>保存版本id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56778,7 +57024,7 @@ class TriggerTaskVersion(AbstractModel):
 
     @property
     def VersionRemark(self):
-        r"""版本描述信息
+        r"""<p>版本描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56790,7 +57036,7 @@ class TriggerTaskVersion(AbstractModel):
 
     @property
     def ApproveStatus(self):
-        r"""审批状态（只有提交版本有）
+        r"""<p>审批状态（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56802,7 +57048,7 @@ class TriggerTaskVersion(AbstractModel):
 
     @property
     def Status(self):
-        r"""生产状态（只有提交版本有）
+        r"""<p>生产状态（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56814,7 +57060,7 @@ class TriggerTaskVersion(AbstractModel):
 
     @property
     def ApproveUserUin(self):
-        r"""审批人（只有提交版本有）
+        r"""<p>审批人（只有提交版本有）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56823,6 +57069,18 @@ class TriggerTaskVersion(AbstractModel):
     @ApproveUserUin.setter
     def ApproveUserUin(self, ApproveUserUin):
         self._ApproveUserUin = ApproveUserUin
+
+    @property
+    def UsedVersion(self):
+        r"""<p>是否生产态使用版本，保存版本没有该字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._UsedVersion
+
+    @UsedVersion.setter
+    def UsedVersion(self, UsedVersion):
+        self._UsedVersion = UsedVersion
 
 
     def _deserialize(self, params):
@@ -56834,6 +57092,7 @@ class TriggerTaskVersion(AbstractModel):
         self._ApproveStatus = params.get("ApproveStatus")
         self._Status = params.get("Status")
         self._ApproveUserUin = params.get("ApproveUserUin")
+        self._UsedVersion = params.get("UsedVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57254,6 +57513,9 @@ class TriggerWorkflowDetail(AbstractModel):
         :param _TriggerWorkflowRunConfiguration: <p>工作流运行参数配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
+        :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER 。这里配置之后，内部的触发方式可不填，否则需要保持一致</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerMode: str
         """
         self._WorkflowName = None
         self._OwnerUin = None
@@ -57267,6 +57529,7 @@ class TriggerWorkflowDetail(AbstractModel):
         self._GeneralTaskParams = None
         self._SchedulerStatus = None
         self._TriggerWorkflowRunConfiguration = None
+        self._TriggerMode = None
 
     @property
     def WorkflowName(self):
@@ -57412,6 +57675,18 @@ class TriggerWorkflowDetail(AbstractModel):
     def TriggerWorkflowRunConfiguration(self, TriggerWorkflowRunConfiguration):
         self._TriggerWorkflowRunConfiguration = TriggerWorkflowRunConfiguration
 
+    @property
+    def TriggerMode(self):
+        r"""<p>触发方式：定时触发：TIME_TRIGGER 。这里配置之后，内部的触发方式可不填，否则需要保持一致</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerMode
+
+    @TriggerMode.setter
+    def TriggerMode(self, TriggerMode):
+        self._TriggerMode = TriggerMode
+
 
     def _deserialize(self, params):
         self._WorkflowName = params.get("WorkflowName")
@@ -57443,6 +57718,7 @@ class TriggerWorkflowDetail(AbstractModel):
         if params.get("TriggerWorkflowRunConfiguration") is not None:
             self._TriggerWorkflowRunConfiguration = WorkflowRunConfig()
             self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
+        self._TriggerMode = params.get("TriggerMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58490,11 +58766,14 @@ class UpdateCodeFileRequest(AbstractModel):
         :type CodeFileConfig: :class:`tencentcloud.wedata.v20250806.models.CodeFileConfig`
         :param _CodeFileContent: 代码文件内容
         :type CodeFileContent: str
+        :param _SubmitAction: 
+        :type SubmitAction: bool
         """
         self._ProjectId = None
         self._CodeFileId = None
         self._CodeFileConfig = None
         self._CodeFileContent = None
+        self._SubmitAction = None
 
     @property
     def ProjectId(self):
@@ -58540,6 +58819,17 @@ class UpdateCodeFileRequest(AbstractModel):
     def CodeFileContent(self, CodeFileContent):
         self._CodeFileContent = CodeFileContent
 
+    @property
+    def SubmitAction(self):
+        r"""
+        :rtype: bool
+        """
+        return self._SubmitAction
+
+    @SubmitAction.setter
+    def SubmitAction(self, SubmitAction):
+        self._SubmitAction = SubmitAction
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -58548,6 +58838,7 @@ class UpdateCodeFileRequest(AbstractModel):
             self._CodeFileConfig = CodeFileConfig()
             self._CodeFileConfig._deserialize(params.get("CodeFileConfig"))
         self._CodeFileContent = params.get("CodeFileContent")
+        self._SubmitAction = params.get("SubmitAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61847,6 +62138,10 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
         :type GeneralTaskParams: list of WorkflowGeneralTaskParam
         :param _TriggerWorkflowRunConfiguration: <p>工作流运行参数配置</p>
         :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
+        :param _SchedulerStatus: <p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的Trigger状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
+        :type SchedulerStatus: str
+        :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        :type TriggerMode: str
         """
         self._WorkflowName = None
         self._OwnerUin = None
@@ -61857,6 +62152,8 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
         self._BundleInfo = None
         self._GeneralTaskParams = None
         self._TriggerWorkflowRunConfiguration = None
+        self._SchedulerStatus = None
+        self._TriggerMode = None
 
     @property
     def WorkflowName(self):
@@ -61957,6 +62254,28 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
     def TriggerWorkflowRunConfiguration(self, TriggerWorkflowRunConfiguration):
         self._TriggerWorkflowRunConfiguration = TriggerWorkflowRunConfiguration
 
+    @property
+    def SchedulerStatus(self):
+        r"""<p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的Trigger状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
+        :rtype: str
+        """
+        return self._SchedulerStatus
+
+    @SchedulerStatus.setter
+    def SchedulerStatus(self, SchedulerStatus):
+        self._SchedulerStatus = SchedulerStatus
+
+    @property
+    def TriggerMode(self):
+        r"""<p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        :rtype: str
+        """
+        return self._TriggerMode
+
+    @TriggerMode.setter
+    def TriggerMode(self, TriggerMode):
+        self._TriggerMode = TriggerMode
+
 
     def _deserialize(self, params):
         self._WorkflowName = params.get("WorkflowName")
@@ -61985,6 +62304,8 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
         if params.get("TriggerWorkflowRunConfiguration") is not None:
             self._TriggerWorkflowRunConfiguration = WorkflowRunConfig()
             self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
+        self._SchedulerStatus = params.get("SchedulerStatus")
+        self._TriggerMode = params.get("TriggerMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62138,28 +62459,32 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
         :type WorkflowName: str
-        :param _OwnerUin: 责任人ID
+        :param _OwnerUin: <p>责任人ID</p>
         :type OwnerUin: str
-        :param _WorkflowDesc: 备注
+        :param _WorkflowDesc: <p>备注</p>
         :type WorkflowDesc: str
-        :param _WorkflowParams: 工作流参数列表
+        :param _WorkflowParams: <p>工作流参数列表</p>
         :type WorkflowParams: list of ParamInfo
-        :param _TriggerWorkflowSchedulerConfigurations: 统一调度参数
+        :param _TriggerWorkflowSchedulerConfigurations: <p>统一调度参数</p>
         :type TriggerWorkflowSchedulerConfigurations: list of WorkflowTriggerConfig
-        :param _BundleId: BundleId项
+        :param _BundleId: <p>BundleId项</p>
         :type BundleId: str
-        :param _BundleInfo: Bundle信息
+        :param _BundleInfo: <p>Bundle信息</p>
         :type BundleInfo: str
-        :param _GeneralTaskParams: 通用参数配置
+        :param _GeneralTaskParams: <p>通用参数配置</p>
         :type GeneralTaskParams: list of WorkflowGeneralTaskParam
-        :param _TriggerWorkflowRunConfiguration: 
+        :param _TriggerWorkflowRunConfiguration: <p>调度运行配置</p>
         :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
+        :param _SchedulerStatus: <p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的SchedulerStatus可不配置，如果配置，内容会被改值覆盖。</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
+        :type SchedulerStatus: str
+        :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        :type TriggerMode: str
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -62172,10 +62497,12 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
         self._BundleInfo = None
         self._GeneralTaskParams = None
         self._TriggerWorkflowRunConfiguration = None
+        self._SchedulerStatus = None
+        self._TriggerMode = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -62186,7 +62513,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
         :rtype: str
         """
         return self._WorkflowId
@@ -62197,7 +62524,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
         :rtype: str
         """
         return self._WorkflowName
@@ -62208,7 +62535,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""责任人ID
+        r"""<p>责任人ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -62219,7 +62546,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowDesc(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._WorkflowDesc
@@ -62230,7 +62557,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowParams(self):
-        r"""工作流参数列表
+        r"""<p>工作流参数列表</p>
         :rtype: list of ParamInfo
         """
         return self._WorkflowParams
@@ -62241,7 +62568,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def TriggerWorkflowSchedulerConfigurations(self):
-        r"""统一调度参数
+        r"""<p>统一调度参数</p>
         :rtype: list of WorkflowTriggerConfig
         """
         return self._TriggerWorkflowSchedulerConfigurations
@@ -62252,7 +62579,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""BundleId项
+        r"""<p>BundleId项</p>
         :rtype: str
         """
         return self._BundleId
@@ -62263,7 +62590,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def BundleInfo(self):
-        r"""Bundle信息
+        r"""<p>Bundle信息</p>
         :rtype: str
         """
         return self._BundleInfo
@@ -62274,7 +62601,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def GeneralTaskParams(self):
-        r"""通用参数配置
+        r"""<p>通用参数配置</p>
         :rtype: list of WorkflowGeneralTaskParam
         """
         return self._GeneralTaskParams
@@ -62285,7 +62612,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def TriggerWorkflowRunConfiguration(self):
-        r"""
+        r"""<p>调度运行配置</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
         """
         return self._TriggerWorkflowRunConfiguration
@@ -62293,6 +62620,28 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
     @TriggerWorkflowRunConfiguration.setter
     def TriggerWorkflowRunConfiguration(self, TriggerWorkflowRunConfiguration):
         self._TriggerWorkflowRunConfiguration = TriggerWorkflowRunConfiguration
+
+    @property
+    def SchedulerStatus(self):
+        r"""<p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的SchedulerStatus可不配置，如果配置，内容会被改值覆盖。</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
+        :rtype: str
+        """
+        return self._SchedulerStatus
+
+    @SchedulerStatus.setter
+    def SchedulerStatus(self, SchedulerStatus):
+        self._SchedulerStatus = SchedulerStatus
+
+    @property
+    def TriggerMode(self):
+        r"""<p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        :rtype: str
+        """
+        return self._TriggerMode
+
+    @TriggerMode.setter
+    def TriggerMode(self, TriggerMode):
+        self._TriggerMode = TriggerMode
 
 
     def _deserialize(self, params):
@@ -62324,6 +62673,8 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
         if params.get("TriggerWorkflowRunConfiguration") is not None:
             self._TriggerWorkflowRunConfiguration = WorkflowRunConfig()
             self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
+        self._SchedulerStatus = params.get("SchedulerStatus")
+        self._TriggerMode = params.get("TriggerMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62341,7 +62692,7 @@ class UpdateTriggerWorkflowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: true代表成功，false代表失败
+        :param _Data: <p>true代表成功，false代表失败</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -62351,7 +62702,7 @@ class UpdateTriggerWorkflowResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""true代表成功，false代表失败
+        r"""<p>true代表成功，false代表失败</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowResult`
         """
         return self._Data
@@ -64489,58 +64840,43 @@ class WorkflowTriggerConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TriggerMode: 触发方式，
-- 定时触发：TIME_TRIGGER
-- 持续运行：CONTINUE_RUN
-- 文件到达：FILE_ARRIVAL
-
-注意：
-- TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；
-- FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；
+        :param _TriggerMode: <p>触发方式，非必填，外部结构的TriggerMode字段优先级比当前字段高</p><ul><li>定时触发：TIME_TRIGGER</li><li>持续运行：CONTINUE_RUN（暂不支持）</li><li>文件到达：FILE_ARRIVAL（暂不支持）</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；</li></ul><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMode: str
-        :param _ExtraInfo: WorkflowTriggerConfig转换成Json格式，对账使用
+        :param _ExtraInfo: <p>WorkflowTriggerConfig转换成Json格式，对账使用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: str
-        :param _ScheduleTimeZone: 调度时区
+        :param _ScheduleTimeZone: <p>调度时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
-        :param _StartTime: 调度生效时间
+        :param _StartTime: <p>调度生效时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 调度结束时间
+        :param _EndTime: <p>调度结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _ConfigMode: 配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION
+        :param _ConfigMode: <p>配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigMode: str
-        :param _CycleType: 周期类型：支持的类型为
-ONEOFF_CYCLE: 一次性
-YEAR_CYCLE: 年
-MONTH_CYCLE: 月
-WEEK_CYCLE: 周
-DAY_CYCLE: 天
-HOUR_CYCLE: 小时
-MINUTE_CYCLE: 分钟
-CRONTAB_CYCLE: crontab表达式类型
+        :param _CycleType: <p>周期类型：支持的类型为<br>ONEOFF_CYCLE: 一次性<br>YEAR_CYCLE: 年<br>MONTH_CYCLE: 月<br>WEEK_CYCLE: 周<br>DAY_CYCLE: 天<br>HOUR_CYCLE: 小时<br>MINUTE_CYCLE: 分钟<br>CRONTAB_CYCLE: crontab表达式类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _CrontabExpression: cron表达式
+        :param _CrontabExpression: <p>cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrontabExpression: str
-        :param _TriggerId: triggerId, uuid
+        :param _TriggerId: <p>triggerId, uuid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerId: str
-        :param _FileArrivalPath: 文件到达模式下	存储系统中的监听路径
+        :param _FileArrivalPath: <p>文件到达模式下    存储系统中的监听路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileArrivalPath: str
-        :param _TriggerMinimumIntervalSecond: 文件到达模式下	触发最短间隔时间（单位：秒）
+        :param _TriggerMinimumIntervalSecond: <p>文件到达模式下    触发最短间隔时间（单位：秒）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMinimumIntervalSecond: int
-        :param _TriggerWaitTimeSecond: 文件到达模式下	触发等待时间（单位：秒）
+        :param _TriggerWaitTimeSecond: <p>文件到达模式下    触发等待时间（单位：秒）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerWaitTimeSecond: int
-        :param _SchedulerStatus: Trigger 状态 启动ACTIVE，暂停PAUSED
+        :param _SchedulerStatus: <p>Trigger 状态 启动ACTIVE，暂停PAUSED。外部的TriggerStatus优先级大于当前值</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerStatus: str
         """
@@ -64560,14 +64896,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def TriggerMode(self):
-        r"""触发方式，
-- 定时触发：TIME_TRIGGER
-- 持续运行：CONTINUE_RUN
-- 文件到达：FILE_ARRIVAL
-
-注意：
-- TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；
-- FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；
+        r"""<p>触发方式，非必填，外部结构的TriggerMode字段优先级比当前字段高</p><ul><li>定时触发：TIME_TRIGGER</li><li>持续运行：CONTINUE_RUN（暂不支持）</li><li>文件到达：FILE_ARRIVAL（暂不支持）</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；</li></ul><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64579,7 +64908,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ExtraInfo(self):
-        r"""WorkflowTriggerConfig转换成Json格式，对账使用
+        r"""<p>WorkflowTriggerConfig转换成Json格式，对账使用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64591,7 +64920,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ScheduleTimeZone(self):
-        r"""调度时区
+        r"""<p>调度时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64603,7 +64932,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def StartTime(self):
-        r"""调度生效时间
+        r"""<p>调度生效时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64615,7 +64944,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def EndTime(self):
-        r"""调度结束时间
+        r"""<p>调度结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64627,7 +64956,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ConfigMode(self):
-        r"""配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION
+        r"""<p>配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64639,15 +64968,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CycleType(self):
-        r"""周期类型：支持的类型为
-ONEOFF_CYCLE: 一次性
-YEAR_CYCLE: 年
-MONTH_CYCLE: 月
-WEEK_CYCLE: 周
-DAY_CYCLE: 天
-HOUR_CYCLE: 小时
-MINUTE_CYCLE: 分钟
-CRONTAB_CYCLE: crontab表达式类型
+        r"""<p>周期类型：支持的类型为<br>ONEOFF_CYCLE: 一次性<br>YEAR_CYCLE: 年<br>MONTH_CYCLE: 月<br>WEEK_CYCLE: 周<br>DAY_CYCLE: 天<br>HOUR_CYCLE: 小时<br>MINUTE_CYCLE: 分钟<br>CRONTAB_CYCLE: crontab表达式类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64659,7 +64980,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CrontabExpression(self):
-        r"""cron表达式
+        r"""<p>cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64671,7 +64992,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def TriggerId(self):
-        r"""triggerId, uuid
+        r"""<p>triggerId, uuid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64683,7 +65004,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def FileArrivalPath(self):
-        r"""文件到达模式下	存储系统中的监听路径
+        r"""<p>文件到达模式下    存储系统中的监听路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64695,7 +65016,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def TriggerMinimumIntervalSecond(self):
-        r"""文件到达模式下	触发最短间隔时间（单位：秒）
+        r"""<p>文件到达模式下    触发最短间隔时间（单位：秒）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -64707,7 +65028,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def TriggerWaitTimeSecond(self):
-        r"""文件到达模式下	触发等待时间（单位：秒）
+        r"""<p>文件到达模式下    触发等待时间（单位：秒）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -64719,7 +65040,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def SchedulerStatus(self):
-        r"""Trigger 状态 启动ACTIVE，暂停PAUSED
+        r"""<p>Trigger 状态 启动ACTIVE，暂停PAUSED。外部的TriggerStatus优先级大于当前值</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

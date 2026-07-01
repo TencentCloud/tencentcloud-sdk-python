@@ -5159,32 +5159,19 @@ class GetEidTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MerchantId: EID商户ID。
-- 商户ID通过人脸核身控制台[自助接入](https://console.cloud.tencent.com/faceid/access)申请。
-- 商户ID与您通过腾讯云人脸核身控制台完成自助接入时所使用的腾讯云账号绑定。
-- 必须使用申请该商户ID时登录的腾讯云账号所对应的腾讯云API密钥调用该接口。
+        :param _MerchantId: <p>EID商户ID。</p><ul><li>商户ID通过人脸核身控制台<a href="https://console.cloud.tencent.com/faceid/access">自助接入</a>申请。</li><li>商户ID与您通过腾讯云人脸核身控制台完成自助接入时所使用的腾讯云账号绑定。</li><li>必须使用申请该商户ID时登录的腾讯云账号所对应的腾讯云API密钥调用该接口。</li></ul>
         :type MerchantId: str
-        :param _IdCard: 身份标识。
-- 未使用OCR服务时，必须传入。
-- 规则：a-z，A-Z，0-9组合。
-- 最长长度32位。
+        :param _IdCard: <p>身份标识。</p><ul><li>未使用OCR服务时，必须传入。</li><li>规则：a-z，A-Z，0-9组合。</li><li>最长长度32位。</li></ul>
         :type IdCard: str
-        :param _Name: 姓名。
-- 未使用OCR服务时，必须传入。
-- 最长长度32位。
-- 中文请使用UTF-8编码。
+        :param _Name: <p>姓名。</p><ul><li>未使用OCR服务时，必须传入。</li><li>最长长度32位。</li><li>中文请使用UTF-8编码。</li></ul>
         :type Name: str
-        :param _Extra: 透传字段，在获取验证结果时返回。
-- 最长长度1024位。
+        :param _Extra: <p>透传字段，在获取验证结果时返回。</p><ul><li>最长长度1024位。</li></ul>
         :type Extra: str
-        :param _Config: 小程序模式配置，包括如何传入姓名身份证的配置，以及是否使用意愿核身。
+        :param _Config: <p>小程序模式配置，包括如何传入姓名身份证的配置，以及是否使用意愿核身。</p>
         :type Config: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenConfig`
-        :param _RedirectUrl: 用户从Url中进入核身认证结束后重定向的回调链接地址。
-- 最长长度1024位。
-- EidToken会在该链接的query参数中。
+        :param _RedirectUrl: <p>用户从Url中进入核身认证结束后重定向的回调链接地址。</p><ul><li>最长长度1024位。</li><li>EidToken会在该链接的query参数中。</li></ul>
         :type RedirectUrl: str
-        :param _Encryption: 敏感数据加密信息。
-- 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._MerchantId = None
@@ -5197,10 +5184,7 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def MerchantId(self):
-        r"""EID商户ID。
-- 商户ID通过人脸核身控制台[自助接入](https://console.cloud.tencent.com/faceid/access)申请。
-- 商户ID与您通过腾讯云人脸核身控制台完成自助接入时所使用的腾讯云账号绑定。
-- 必须使用申请该商户ID时登录的腾讯云账号所对应的腾讯云API密钥调用该接口。
+        r"""<p>EID商户ID。</p><ul><li>商户ID通过人脸核身控制台<a href="https://console.cloud.tencent.com/faceid/access">自助接入</a>申请。</li><li>商户ID与您通过腾讯云人脸核身控制台完成自助接入时所使用的腾讯云账号绑定。</li><li>必须使用申请该商户ID时登录的腾讯云账号所对应的腾讯云API密钥调用该接口。</li></ul>
         :rtype: str
         """
         return self._MerchantId
@@ -5211,10 +5195,7 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def IdCard(self):
-        r"""身份标识。
-- 未使用OCR服务时，必须传入。
-- 规则：a-z，A-Z，0-9组合。
-- 最长长度32位。
+        r"""<p>身份标识。</p><ul><li>未使用OCR服务时，必须传入。</li><li>规则：a-z，A-Z，0-9组合。</li><li>最长长度32位。</li></ul>
         :rtype: str
         """
         return self._IdCard
@@ -5225,10 +5206,7 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""姓名。
-- 未使用OCR服务时，必须传入。
-- 最长长度32位。
-- 中文请使用UTF-8编码。
+        r"""<p>姓名。</p><ul><li>未使用OCR服务时，必须传入。</li><li>最长长度32位。</li><li>中文请使用UTF-8编码。</li></ul>
         :rtype: str
         """
         return self._Name
@@ -5239,8 +5217,7 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def Extra(self):
-        r"""透传字段，在获取验证结果时返回。
-- 最长长度1024位。
+        r"""<p>透传字段，在获取验证结果时返回。</p><ul><li>最长长度1024位。</li></ul>
         :rtype: str
         """
         return self._Extra
@@ -5251,7 +5228,7 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def Config(self):
-        r"""小程序模式配置，包括如何传入姓名身份证的配置，以及是否使用意愿核身。
+        r"""<p>小程序模式配置，包括如何传入姓名身份证的配置，以及是否使用意愿核身。</p>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenConfig`
         """
         return self._Config
@@ -5262,9 +5239,7 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def RedirectUrl(self):
-        r"""用户从Url中进入核身认证结束后重定向的回调链接地址。
-- 最长长度1024位。
-- EidToken会在该链接的query参数中。
+        r"""<p>用户从Url中进入核身认证结束后重定向的回调链接地址。</p><ul><li>最长长度1024位。</li><li>EidToken会在该链接的query参数中。</li></ul>
         :rtype: str
         """
         return self._RedirectUrl
@@ -5275,8 +5250,7 @@ class GetEidTokenRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。
-- 对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""<p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -5315,12 +5289,9 @@ class GetEidTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EidToken: 一次核身流程的标识。
-- 有效时间为600秒。
-- 完成核身后，可用该标识获取验证结果信息。
+        :param _EidToken: <p>一次核身流程的标识。</p><ul><li>有效时间为600秒。</li><li>完成核身后，可用该标识获取验证结果信息。</li></ul>
         :type EidToken: str
-        :param _Url: 发起核身流程的URL。
-- 用于H5场景核身。
+        :param _Url: <p>发起核身流程的URL。</p><ul><li>用于H5场景核身。</li></ul>
         :type Url: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5331,9 +5302,7 @@ class GetEidTokenResponse(AbstractModel):
 
     @property
     def EidToken(self):
-        r"""一次核身流程的标识。
-- 有效时间为600秒。
-- 完成核身后，可用该标识获取验证结果信息。
+        r"""<p>一次核身流程的标识。</p><ul><li>有效时间为600秒。</li><li>完成核身后，可用该标识获取验证结果信息。</li></ul>
         :rtype: str
         """
         return self._EidToken
@@ -5344,8 +5313,7 @@ class GetEidTokenResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""发起核身流程的URL。
-- 用于H5场景核身。
+        r"""<p>发起核身流程的URL。</p><ul><li>用于H5场景核身。</li></ul>
         :rtype: str
         """
         return self._Url

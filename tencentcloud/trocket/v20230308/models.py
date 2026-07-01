@@ -6743,6 +6743,165 @@ class DescribeTopicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTopicStatsRequest(AbstractModel):
+    r"""DescribeTopicStats请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :type Topic: str
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _GroupId: <p>消费组ID，可通过DescribeConsumerGroupList接口返回的ConsumerGroup字段或控制台查询</p>
+        :type GroupId: str
+        :param _Offset: 查询起始位置，默认为0。
+        :type Offset: int
+        :param _Limit: 查询结果限制数量，默认20。
+        :type Limit: int
+        """
+        self._Topic = None
+        self._InstanceId = None
+        self._GroupId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Topic(self):
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupId(self):
+        r"""<p>消费组ID，可通过DescribeConsumerGroupList接口返回的ConsumerGroup字段或控制台查询</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Offset(self):
+        r"""查询起始位置，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""查询结果限制数量，默认20。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._InstanceId = params.get("InstanceId")
+        self._GroupId = params.get("GroupId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicStatsResponse(AbstractModel):
+    r"""DescribeTopicStats返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _Data: <p>队列级别的消费详情</p>
+        :type Data: list of TopicStatsDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""<p>队列级别的消费详情</p>
+        :rtype: list of TopicStatsDetail
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TopicStatsDetail()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DetailedRolePerm(AbstractModel):
     r"""Topic&Group维度的权限配置
 
@@ -12600,6 +12759,129 @@ class TopicStageChangeResult(AbstractModel):
         self._TopicName = params.get("TopicName")
         self._Success = params.get("Success")
         self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicStatsDetail(AbstractModel):
+    r"""主题队列级别的消费详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BrokerName: <p>Broker节点名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerName: str
+        :param _QueueId: <p>队列编号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueId: int
+        :param _BrokerOffset: <p>生产消息位点</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerOffset: int
+        :param _CommitOffset: <p>最新消费位点</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommitOffset: int
+        :param _MessageCount: <p>堆积总数</p><p>单位：条</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageCount: int
+        :param _LastUpdateTimestamp: <p>最后消费时间</p><p>单位：毫秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTimestamp: int
+        """
+        self._BrokerName = None
+        self._QueueId = None
+        self._BrokerOffset = None
+        self._CommitOffset = None
+        self._MessageCount = None
+        self._LastUpdateTimestamp = None
+
+    @property
+    def BrokerName(self):
+        r"""<p>Broker节点名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BrokerName
+
+    @BrokerName.setter
+    def BrokerName(self, BrokerName):
+        self._BrokerName = BrokerName
+
+    @property
+    def QueueId(self):
+        r"""<p>队列编号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._QueueId
+
+    @QueueId.setter
+    def QueueId(self, QueueId):
+        self._QueueId = QueueId
+
+    @property
+    def BrokerOffset(self):
+        r"""<p>生产消息位点</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BrokerOffset
+
+    @BrokerOffset.setter
+    def BrokerOffset(self, BrokerOffset):
+        self._BrokerOffset = BrokerOffset
+
+    @property
+    def CommitOffset(self):
+        r"""<p>最新消费位点</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CommitOffset
+
+    @CommitOffset.setter
+    def CommitOffset(self, CommitOffset):
+        self._CommitOffset = CommitOffset
+
+    @property
+    def MessageCount(self):
+        r"""<p>堆积总数</p><p>单位：条</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MessageCount
+
+    @MessageCount.setter
+    def MessageCount(self, MessageCount):
+        self._MessageCount = MessageCount
+
+    @property
+    def LastUpdateTimestamp(self):
+        r"""<p>最后消费时间</p><p>单位：毫秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LastUpdateTimestamp
+
+    @LastUpdateTimestamp.setter
+    def LastUpdateTimestamp(self, LastUpdateTimestamp):
+        self._LastUpdateTimestamp = LastUpdateTimestamp
+
+
+    def _deserialize(self, params):
+        self._BrokerName = params.get("BrokerName")
+        self._QueueId = params.get("QueueId")
+        self._BrokerOffset = params.get("BrokerOffset")
+        self._CommitOffset = params.get("CommitOffset")
+        self._MessageCount = params.get("MessageCount")
+        self._LastUpdateTimestamp = params.get("LastUpdateTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -934,6 +934,30 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTopicStats(self, request):
+        r"""获取主题队列级别的消费详情
+        当前 API 适用集群：5.x 铂金版集群
+
+        :param request: Request instance for DescribeTopicStats.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicStatsRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicStatsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopicStats", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopicStatsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DoHealthCheckOnMigratingTopic(self, request):
         r"""检查迁移中的主题是否处于正常状态，只有处于正常状态的主题，才可以进入下一个迁移阶段
 

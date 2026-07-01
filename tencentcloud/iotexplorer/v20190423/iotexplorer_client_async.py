@@ -655,6 +655,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTWeSeeDirectUploadCredential(
+            self,
+            request: models.CreateTWeSeeDirectUploadCredentialRequest,
+            opts: Dict = None,
+    ) -> models.CreateTWeSeeDirectUploadCredentialResponse:
+        """
+        创建 TWeSee COS 直传凭据。调用方获取临时密钥后，可将视频 / 图片上传到返回的 StoragePath 前缀下；对象上传成功后由 COS 事件触发 TWeSee 任务创建。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTWeSeeDirectUploadCredential"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTWeSeeDirectUploadCredentialResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTWeSeePostPaidService(
             self,
             request: models.CreateTWeSeePostPaidServiceRequest,

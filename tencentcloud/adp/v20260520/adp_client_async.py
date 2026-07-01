@@ -25,6 +25,24 @@ class AdpClient(AbstractClient):
     _endpoint = 'adp.tencentcloudapi.com'
     _service = 'adp'
 
+    async def CopyAgentFromApp(
+            self,
+            request: models.CopyAgentFromAppRequest,
+            opts: Dict = None,
+    ) -> models.CopyAgentFromAppResponse:
+        """
+        创建Agent
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CopyAgentFromApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CopyAgentFromAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CopyApp(
             self,
             request: models.CopyAppRequest,

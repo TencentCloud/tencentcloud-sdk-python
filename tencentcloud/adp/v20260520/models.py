@@ -6450,6 +6450,115 @@ class ConversationWorkspace(AbstractModel):
         
 
 
+class CopyAgentFromAppRequest(AbstractModel):
+    r"""CopyAgentFromApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用Id</p>
+        :type AppId: str
+        :param _TargetAppId: <p>目标应用ID，kind=0时需传入</p>
+        :type TargetAppId: str
+        :param _Kind: <p>Agent 类型，区分 B 端配置态 Agent 与 C 端用户态 Agent</p><p>枚举值：</p><ul><li>0：  配置端Agent </li><li>1：  用户态 Agent</li></ul>
+        :type Kind: int
+        """
+        self._AppId = None
+        self._TargetAppId = None
+        self._Kind = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用Id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TargetAppId(self):
+        r"""<p>目标应用ID，kind=0时需传入</p>
+        :rtype: str
+        """
+        return self._TargetAppId
+
+    @TargetAppId.setter
+    def TargetAppId(self, TargetAppId):
+        self._TargetAppId = TargetAppId
+
+    @property
+    def Kind(self):
+        r"""<p>Agent 类型，区分 B 端配置态 Agent 与 C 端用户态 Agent</p><p>枚举值：</p><ul><li>0：  配置端Agent </li><li>1：  用户态 Agent</li></ul>
+        :rtype: int
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TargetAppId = params.get("TargetAppId")
+        self._Kind = params.get("Kind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyAgentFromAppResponse(AbstractModel):
+    r"""CopyAgentFromApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParentAgentId: <p>主 Agent Id</p>
+        :type ParentAgentId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ParentAgentId = None
+        self._RequestId = None
+
+    @property
+    def ParentAgentId(self):
+        r"""<p>主 Agent Id</p>
+        :rtype: str
+        """
+        return self._ParentAgentId
+
+    @ParentAgentId.setter
+    def ParentAgentId(self, ParentAgentId):
+        self._ParentAgentId = ParentAgentId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ParentAgentId = params.get("ParentAgentId")
+        self._RequestId = params.get("RequestId")
+
+
 class CopyAppRequest(AbstractModel):
     r"""CopyApp请求参数结构体
 

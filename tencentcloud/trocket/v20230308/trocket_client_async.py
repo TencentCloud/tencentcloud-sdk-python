@@ -763,6 +763,25 @@ class TrocketClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTopicStats(
+            self,
+            request: models.DescribeTopicStatsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopicStatsResponse:
+        """
+        获取主题队列级别的消费详情
+        当前 API 适用集群：5.x 铂金版集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopicStats"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopicStatsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DoHealthCheckOnMigratingTopic(
             self,
             request: models.DoHealthCheckOnMigratingTopicRequest,

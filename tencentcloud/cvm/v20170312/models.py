@@ -13158,6 +13158,8 @@ class Instance(AbstractModel):
         :type DedicatedClusterId: str
         :param _IsolatedSource: <p>实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li></p>
         :type IsolatedSource: str
+        :param _DisasterRecoverGroupIds: <p>置放群组列表(目前仅支持一个)</p>
+        :type DisasterRecoverGroupIds: list of str
         :param _GPUInfo: <p>GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。</p>
         :type GPUInfo: :class:`tencentcloud.cvm.v20170312.models.GPUInfo`
         :param _LicenseType: <p>实例的操作系统许可类型，默认为TencentCloud</p>
@@ -13213,6 +13215,7 @@ class Instance(AbstractModel):
         self._RdmaIpAddresses = None
         self._DedicatedClusterId = None
         self._IsolatedSource = None
+        self._DisasterRecoverGroupIds = None
         self._GPUInfo = None
         self._LicenseType = None
         self._DisableApiTermination = None
@@ -13537,6 +13540,8 @@ class Instance(AbstractModel):
 
     @property
     def DisasterRecoverGroupId(self):
+        warnings.warn("parameter `DisasterRecoverGroupId` is deprecated", DeprecationWarning) 
+
         r"""<p>分散置放群组ID。</p>
         :rtype: str
         """
@@ -13544,6 +13549,8 @@ class Instance(AbstractModel):
 
     @DisasterRecoverGroupId.setter
     def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
+        warnings.warn("parameter `DisasterRecoverGroupId` is deprecated", DeprecationWarning) 
+
         self._DisasterRecoverGroupId = DisasterRecoverGroupId
 
     @property
@@ -13614,6 +13621,17 @@ class Instance(AbstractModel):
     @IsolatedSource.setter
     def IsolatedSource(self, IsolatedSource):
         self._IsolatedSource = IsolatedSource
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        r"""<p>置放群组列表(目前仅支持一个)</p>
+        :rtype: list of str
+        """
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
 
     @property
     def GPUInfo(self):
@@ -13772,6 +13790,7 @@ class Instance(AbstractModel):
         self._RdmaIpAddresses = params.get("RdmaIpAddresses")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._IsolatedSource = params.get("IsolatedSource")
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         if params.get("GPUInfo") is not None:
             self._GPUInfo = GPUInfo()
             self._GPUInfo._deserialize(params.get("GPUInfo"))
@@ -17628,20 +17647,26 @@ class ModifyInstancesDisasterRecoverGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 一个或多个待操作的实例ID。可通过[ DescribeInstances ](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100
+        :param _InstanceIds: <p>一个或多个待操作的实例ID。可通过<a href="https://cloud.tencent.com/document/api/213/15728"> DescribeInstances </a>接口返回值中的<code>InstanceId</code>获取。每次请求批量实例的上限为100</p>
         :type InstanceIds: list of str
-        :param _DisasterRecoverGroupId: 分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取
+        :param _DisasterRecoverGroupId: <p>分散置放群组ID，可使用<a href="https://cloud.tencent.com/document/api/213/17810">DescribeDisasterRecoverGroups</a>接口获取</p>
         :type DisasterRecoverGroupId: str
-        :param _Force: 是否强制更换实例宿主机。取值范围：<br><li>true：表示允许实例更换宿主机，允许重启实例。本地盘子机不支持指定此参数。</li><br><li>false：不允许实例更换宿主机，只在当前宿主机上加入置放群组。这可能导致更换置放群组失败。</li><br><br>默认取值：false
+        :param _Force: <p>是否强制更换实例宿主机。取值范围：<br><li>true：表示允许实例更换宿主机，允许重启实例。本地盘子机不支持指定此参数。</li><br><li>false：不允许实例更换宿主机，只在当前宿主机上加入置放群组。这可能导致更换置放群组失败。</li><br><br>默认取值：false</p>
         :type Force: bool
+        :param _DisasterRecoverGroupIds: <p>置放群组id列表(目前仅支持指定一个)</p>
+        :type DisasterRecoverGroupIds: list of str
+        :param _PartitionNumber: <p>分区置放群组的分区Id，取值范围：1-10，具体取决于所选置放群组的分区数量，如果选中的置放群组是分区置放群组，该值不传默认随机(该功能灰度中)</p>
+        :type PartitionNumber: int
         """
         self._InstanceIds = None
         self._DisasterRecoverGroupId = None
         self._Force = None
+        self._DisasterRecoverGroupIds = None
+        self._PartitionNumber = None
 
     @property
     def InstanceIds(self):
-        r"""一个或多个待操作的实例ID。可通过[ DescribeInstances ](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100
+        r"""<p>一个或多个待操作的实例ID。可通过<a href="https://cloud.tencent.com/document/api/213/15728"> DescribeInstances </a>接口返回值中的<code>InstanceId</code>获取。每次请求批量实例的上限为100</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -17652,18 +17677,22 @@ class ModifyInstancesDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def DisasterRecoverGroupId(self):
-        r"""分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取
+        warnings.warn("parameter `DisasterRecoverGroupId` is deprecated", DeprecationWarning) 
+
+        r"""<p>分散置放群组ID，可使用<a href="https://cloud.tencent.com/document/api/213/17810">DescribeDisasterRecoverGroups</a>接口获取</p>
         :rtype: str
         """
         return self._DisasterRecoverGroupId
 
     @DisasterRecoverGroupId.setter
     def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
+        warnings.warn("parameter `DisasterRecoverGroupId` is deprecated", DeprecationWarning) 
+
         self._DisasterRecoverGroupId = DisasterRecoverGroupId
 
     @property
     def Force(self):
-        r"""是否强制更换实例宿主机。取值范围：<br><li>true：表示允许实例更换宿主机，允许重启实例。本地盘子机不支持指定此参数。</li><br><li>false：不允许实例更换宿主机，只在当前宿主机上加入置放群组。这可能导致更换置放群组失败。</li><br><br>默认取值：false
+        r"""<p>是否强制更换实例宿主机。取值范围：<br><li>true：表示允许实例更换宿主机，允许重启实例。本地盘子机不支持指定此参数。</li><br><li>false：不允许实例更换宿主机，只在当前宿主机上加入置放群组。这可能导致更换置放群组失败。</li><br><br>默认取值：false</p>
         :rtype: bool
         """
         return self._Force
@@ -17672,11 +17701,35 @@ class ModifyInstancesDisasterRecoverGroupRequest(AbstractModel):
     def Force(self, Force):
         self._Force = Force
 
+    @property
+    def DisasterRecoverGroupIds(self):
+        r"""<p>置放群组id列表(目前仅支持指定一个)</p>
+        :rtype: list of str
+        """
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+    @property
+    def PartitionNumber(self):
+        r"""<p>分区置放群组的分区Id，取值范围：1-10，具体取决于所选置放群组的分区数量，如果选中的置放群组是分区置放群组，该值不传默认随机(该功能灰度中)</p>
+        :rtype: int
+        """
+        return self._PartitionNumber
+
+    @PartitionNumber.setter
+    def PartitionNumber(self, PartitionNumber):
+        self._PartitionNumber = PartitionNumber
+
 
     def _deserialize(self, params):
         self._InstanceIds = params.get("InstanceIds")
         self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
         self._Force = params.get("Force")
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self._PartitionNumber = params.get("PartitionNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2859,7 +2859,7 @@ class WedataClient(AbstractClient):
 
 
     def ListSQLFolderContents(self, request):
-        r"""查询数据探索文件夹树，包括文件夹下的脚本
+        r"""查询SQL文件夹树，包括文件夹下的脚本
 
         :param request: Request instance for ListSQLFolderContents.
         :type request: :class:`tencentcloud.wedata.v20250806.models.ListSQLFolderContentsRequest`

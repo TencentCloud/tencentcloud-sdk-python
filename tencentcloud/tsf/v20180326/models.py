@@ -17804,6 +17804,8 @@ class DeployContainerApplicationRequest(AbstractModel):
         :type IncrementalDeployment: bool
         :param _DoNotStart: <p>是否不立即启动</p>
         :type DoNotStart: bool
+        :param _ImagePullSecretList: <p>镜像Secret列表</p>
+        :type ImagePullSecretList: list of str
         """
         self._ApplicationId = None
         self._ObservabilityConfig = None
@@ -17868,6 +17870,7 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._Partition = None
         self._IncrementalDeployment = None
         self._DoNotStart = None
+        self._ImagePullSecretList = None
 
     @property
     def ApplicationId(self):
@@ -18562,6 +18565,17 @@ class DeployContainerApplicationRequest(AbstractModel):
     def DoNotStart(self, DoNotStart):
         self._DoNotStart = DoNotStart
 
+    @property
+    def ImagePullSecretList(self):
+        r"""<p>镜像Secret列表</p>
+        :rtype: list of str
+        """
+        return self._ImagePullSecretList
+
+    @ImagePullSecretList.setter
+    def ImagePullSecretList(self, ImagePullSecretList):
+        self._ImagePullSecretList = ImagePullSecretList
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -18679,6 +18693,7 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._Partition = params.get("Partition")
         self._IncrementalDeployment = params.get("IncrementalDeployment")
         self._DoNotStart = params.get("DoNotStart")
+        self._ImagePullSecretList = params.get("ImagePullSecretList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

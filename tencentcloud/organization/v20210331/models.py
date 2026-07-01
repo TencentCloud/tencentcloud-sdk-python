@@ -436,20 +436,22 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 空间 ID
+        :param _ZoneId: <p>空间 ID</p>
         :type ZoneId: str
-        :param _RoleConfigurationId: 权限配置 ID
+        :param _RoleConfigurationId: <p>权限配置 ID</p>
         :type RoleConfigurationId: str
-        :param _RolePolicyType: 权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 
+        :param _RolePolicyType: <p>权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。</p>
         :type RolePolicyType: str
-        :param _RolePolicyNames: 权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。
+        :param _RolePolicyNames: <p>权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。</p>
         :type RolePolicyNames: list of str
-        :param _RolePolicies: 添加的系统策略详情。
+        :param _RolePolicies: <p>添加的系统策略详情。</p>
         :type RolePolicies: list of PolicyDetail
-        :param _CustomPolicyDocument: 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
+        :param _CustomPolicyDocument: <p>自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。</p>
         :type CustomPolicyDocument: str
-        :param _CustomPolicyDocuments: 自定义策略内容列表（跟RolePolicyNames一一对应）
+        :param _CustomPolicyDocuments: <p>自定义策略内容列表（跟RolePolicyNames一一对应）</p>
         :type CustomPolicyDocuments: list of str
+        :param _PolicyType: <p>是否公共策略</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 不是</li></ul><p>默认值：1</p>
+        :type PolicyType: int
         """
         self._ZoneId = None
         self._RoleConfigurationId = None
@@ -458,10 +460,11 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
         self._RolePolicies = None
         self._CustomPolicyDocument = None
         self._CustomPolicyDocuments = None
+        self._PolicyType = None
 
     @property
     def ZoneId(self):
-        r"""空间 ID
+        r"""<p>空间 ID</p>
         :rtype: str
         """
         return self._ZoneId
@@ -472,7 +475,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
-        r"""权限配置 ID
+        r"""<p>权限配置 ID</p>
         :rtype: str
         """
         return self._RoleConfigurationId
@@ -483,7 +486,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyType(self):
-        r"""权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 
+        r"""<p>权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。</p>
         :rtype: str
         """
         return self._RolePolicyType
@@ -494,7 +497,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyNames(self):
-        r"""权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。
+        r"""<p>权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。</p>
         :rtype: list of str
         """
         return self._RolePolicyNames
@@ -505,7 +508,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicies(self):
-        r"""添加的系统策略详情。
+        r"""<p>添加的系统策略详情。</p>
         :rtype: list of PolicyDetail
         """
         return self._RolePolicies
@@ -516,7 +519,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def CustomPolicyDocument(self):
-        r"""自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
+        r"""<p>自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。</p>
         :rtype: str
         """
         return self._CustomPolicyDocument
@@ -527,7 +530,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def CustomPolicyDocuments(self):
-        r"""自定义策略内容列表（跟RolePolicyNames一一对应）
+        r"""<p>自定义策略内容列表（跟RolePolicyNames一一对应）</p>
         :rtype: list of str
         """
         return self._CustomPolicyDocuments
@@ -535,6 +538,17 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
     @CustomPolicyDocuments.setter
     def CustomPolicyDocuments(self, CustomPolicyDocuments):
         self._CustomPolicyDocuments = CustomPolicyDocuments
+
+    @property
+    def PolicyType(self):
+        r"""<p>是否公共策略</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 不是</li></ul><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
 
 
     def _deserialize(self, params):
@@ -550,6 +564,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
                 self._RolePolicies.append(obj)
         self._CustomPolicyDocument = params.get("CustomPolicyDocument")
         self._CustomPolicyDocuments = params.get("CustomPolicyDocuments")
+        self._PolicyType = params.get("PolicyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

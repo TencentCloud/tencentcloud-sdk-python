@@ -74166,19 +74166,19 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrafficMirrorId: 流量镜像实例ID
+        :param _TrafficMirrorId: <p>流量镜像实例ID</p>
         :type TrafficMirrorId: str
-        :param _Direction: 流量镜像采集方向
+        :param _Direction: <p>流量镜像采集方向</p>
         :type Direction: str
-        :param _CollectorSrcs: 流量镜像采集对象
+        :param _CollectorSrcs: <p>流量镜像采集对象</p>
         :type CollectorSrcs: list of str
-        :param _NatId: 流量镜像需要过滤的natgw实例
+        :param _NatId: <p>流量镜像需要过滤的natgw实例</p>
         :type NatId: str
-        :param _CollectorNormalFilters: 流量镜像需要过滤的五元组规则
+        :param _CollectorNormalFilters: <p>流量镜像需要过滤的五元组规则</p>
         :type CollectorNormalFilters: list of TrafficMirrorFilter
-        :param _IngressFilterRules: 流量镜像入站过滤规则。
+        :param _IngressFilterRules: <p>流量镜像入站过滤规则。</p>
         :type IngressFilterRules: list of TrafficMirrorFilter
-        :param _EgressFilterRules: 流量镜像出站过滤规则。
+        :param _EgressFilterRules: <p>流量镜像出站过滤规则。</p>
         :type EgressFilterRules: list of TrafficMirrorFilter
         """
         self._TrafficMirrorId = None
@@ -74191,7 +74191,7 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
 
     @property
     def TrafficMirrorId(self):
-        r"""流量镜像实例ID
+        r"""<p>流量镜像实例ID</p>
         :rtype: str
         """
         return self._TrafficMirrorId
@@ -74202,7 +74202,7 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
 
     @property
     def Direction(self):
-        r"""流量镜像采集方向
+        r"""<p>流量镜像采集方向</p>
         :rtype: str
         """
         return self._Direction
@@ -74213,7 +74213,7 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
 
     @property
     def CollectorSrcs(self):
-        r"""流量镜像采集对象
+        r"""<p>流量镜像采集对象</p>
         :rtype: list of str
         """
         return self._CollectorSrcs
@@ -74224,7 +74224,7 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
 
     @property
     def NatId(self):
-        r"""流量镜像需要过滤的natgw实例
+        r"""<p>流量镜像需要过滤的natgw实例</p>
         :rtype: str
         """
         return self._NatId
@@ -74235,7 +74235,7 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
 
     @property
     def CollectorNormalFilters(self):
-        r"""流量镜像需要过滤的五元组规则
+        r"""<p>流量镜像需要过滤的五元组规则</p>
         :rtype: list of TrafficMirrorFilter
         """
         return self._CollectorNormalFilters
@@ -74246,7 +74246,7 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
 
     @property
     def IngressFilterRules(self):
-        r"""流量镜像入站过滤规则。
+        r"""<p>流量镜像入站过滤规则。</p>
         :rtype: list of TrafficMirrorFilter
         """
         return self._IngressFilterRules
@@ -74257,7 +74257,7 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
 
     @property
     def EgressFilterRules(self):
-        r"""流量镜像出站过滤规则。
+        r"""<p>流量镜像出站过滤规则。</p>
         :rtype: list of TrafficMirrorFilter
         """
         return self._EgressFilterRules

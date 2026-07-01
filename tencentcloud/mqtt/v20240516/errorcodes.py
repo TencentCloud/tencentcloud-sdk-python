@@ -23,6 +23,9 @@ FAILEDOPERATION_CALLTRADE = 'FailedOperation.CallTrade'
 # FailedOperation.CertificateVerificationFailed
 FAILEDOPERATION_CERTIFICATEVERIFICATIONFAILED = 'FailedOperation.CertificateVerificationFailed'
 
+# 集群已打开删除保护开关。
+FAILEDOPERATION_DELETEPROTECT = 'FailedOperation.DeleteProtect'
+
 # 策略优先级重复
 FAILEDOPERATION_DUPLICATEAUTHORIZATIONIDORPRIORITY = 'FailedOperation.DuplicateAuthorizationIdOrPriority'
 

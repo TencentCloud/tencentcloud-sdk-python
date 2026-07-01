@@ -9181,69 +9181,67 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: int
-        :param _Type: allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
+        :param _Type: <p>allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等</p>
         :type Type: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
-        :param _ID: 项目ID
+        :param _ID: <p>项目ID</p>
         :type ID: int
-        :param _ExtSecond: 自定义2
+        :param _ExtSecond: <p>自定义2</p>
         :type ExtSecond: str
-        :param _Engine: 浏览器引擎
+        :param _Engine: <p>浏览器引擎</p>
         :type Engine: str
-        :param _Isp: 运营商
+        :param _Isp: <p>运营商</p>
         :type Isp: str
-        :param _From: 来源页面
+        :param _From: <p>来源页面， 可多选，用 “,” 隔开的 String</p>
         :type From: str
-        :param _Level: 日志等级
+        :param _Level: <p>日志等级</p>
         :type Level: str
-        :param _Brand: 品牌
+        :param _Brand: <p>品牌</p>
         :type Brand: str
-        :param _Area: 地区
+        :param _Area: <p>地区</p>
         :type Area: str
-        :param _VersionNum: 版本
+        :param _VersionNum: <p>版本</p>
         :type VersionNum: str
-        :param _Platform: 平台
+        :param _Platform: <p>平台</p>
         :type Platform: str
-        :param _ExtThird: 自定义3
+        :param _ExtThird: <p>自定义3</p>
         :type ExtThird: str
-        :param _ExtFirst: 自定义1
+        :param _ExtFirst: <p>自定义1</p>
         :type ExtFirst: str
-        :param _NetType: 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知
+        :param _NetType: <p>网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知</p>
         :type NetType: str
-        :param _Device: 机型
+        :param _Device: <p>机型</p>
         :type Device: str
-        :param _IsAbroad: 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+        :param _IsAbroad: <p>显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。</p>
         :type IsAbroad: str
-        :param _Os: 操作系统
+        :param _Os: <p>操作系统</p>
         :type Os: str
-        :param _Browser: 浏览器
+        :param _Browser: <p>浏览器</p>
         :type Browser: str
-        :param _Env: 环境
+        :param _Env: <p>环境</p>
         :type Env: str
-        :param _GroupByType: group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
- 5:1d
+        :param _GroupByType: <p>group by 参数值枚举1:1m  2:5m  3:30m  4:1h<br> 5:1d</p>
         :type GroupByType: int
-        :param _IsNewData: 1: 查询智研
-0: 走旧逻辑，已下线，勿使用
+        :param _IsNewData: <p>1: 查询智研<br>0: 走旧逻辑，已下线，勿使用</p>
         :type IsNewData: int
-        :param _ExtFourth: 自定义4
+        :param _ExtFourth: <p>自定义4</p>
         :type ExtFourth: str
-        :param _ExtFifth: 自定义5
+        :param _ExtFifth: <p>自定义5</p>
         :type ExtFifth: str
-        :param _ExtSixth: 自定义6
+        :param _ExtSixth: <p>自定义6</p>
         :type ExtSixth: str
-        :param _ExtSeventh: 自定义7
+        :param _ExtSeventh: <p>自定义7</p>
         :type ExtSeventh: str
-        :param _ExtEighth: 自定义8
+        :param _ExtEighth: <p>自定义8</p>
         :type ExtEighth: str
-        :param _ExtNinth: 自定义9
+        :param _ExtNinth: <p>自定义9</p>
         :type ExtNinth: str
-        :param _ExtTenth: 自定义10
+        :param _ExtTenth: <p>自定义10</p>
         :type ExtTenth: str
-        :param _Granularity: 时间段
+        :param _Granularity: <p>时间段</p>
         :type Granularity: str
         """
         self._StartTime = None
@@ -9280,7 +9278,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -9291,7 +9289,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
+        r"""<p>allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等</p>
         :rtype: str
         """
         return self._Type
@@ -9302,7 +9300,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -9313,7 +9311,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ID
@@ -9324,7 +9322,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtSecond(self):
-        r"""自定义2
+        r"""<p>自定义2</p>
         :rtype: str
         """
         return self._ExtSecond
@@ -9335,7 +9333,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Engine(self):
-        r"""浏览器引擎
+        r"""<p>浏览器引擎</p>
         :rtype: str
         """
         return self._Engine
@@ -9346,7 +9344,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Isp(self):
-        r"""运营商
+        r"""<p>运营商</p>
         :rtype: str
         """
         return self._Isp
@@ -9357,7 +9355,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def From(self):
-        r"""来源页面
+        r"""<p>来源页面， 可多选，用 “,” 隔开的 String</p>
         :rtype: str
         """
         return self._From
@@ -9368,7 +9366,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Level(self):
-        r"""日志等级
+        r"""<p>日志等级</p>
         :rtype: str
         """
         return self._Level
@@ -9379,7 +9377,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Brand(self):
-        r"""品牌
+        r"""<p>品牌</p>
         :rtype: str
         """
         return self._Brand
@@ -9390,7 +9388,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Area(self):
-        r"""地区
+        r"""<p>地区</p>
         :rtype: str
         """
         return self._Area
@@ -9401,7 +9399,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def VersionNum(self):
-        r"""版本
+        r"""<p>版本</p>
         :rtype: str
         """
         return self._VersionNum
@@ -9412,7 +9410,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Platform(self):
-        r"""平台
+        r"""<p>平台</p>
         :rtype: str
         """
         return self._Platform
@@ -9423,7 +9421,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtThird(self):
-        r"""自定义3
+        r"""<p>自定义3</p>
         :rtype: str
         """
         return self._ExtThird
@@ -9434,7 +9432,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtFirst(self):
-        r"""自定义1
+        r"""<p>自定义1</p>
         :rtype: str
         """
         return self._ExtFirst
@@ -9445,7 +9443,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def NetType(self):
-        r"""网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知
+        r"""<p>网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知</p>
         :rtype: str
         """
         return self._NetType
@@ -9456,7 +9454,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Device(self):
-        r"""机型
+        r"""<p>机型</p>
         :rtype: str
         """
         return self._Device
@@ -9467,7 +9465,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def IsAbroad(self):
-        r"""显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+        r"""<p>显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。</p>
         :rtype: str
         """
         return self._IsAbroad
@@ -9478,7 +9476,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Os(self):
-        r"""操作系统
+        r"""<p>操作系统</p>
         :rtype: str
         """
         return self._Os
@@ -9489,7 +9487,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Browser(self):
-        r"""浏览器
+        r"""<p>浏览器</p>
         :rtype: str
         """
         return self._Browser
@@ -9500,7 +9498,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Env(self):
-        r"""环境
+        r"""<p>环境</p>
         :rtype: str
         """
         return self._Env
@@ -9511,8 +9509,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def GroupByType(self):
-        r"""group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
- 5:1d
+        r"""<p>group by 参数值枚举1:1m  2:5m  3:30m  4:1h<br> 5:1d</p>
         :rtype: int
         """
         return self._GroupByType
@@ -9523,8 +9520,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def IsNewData(self):
-        r"""1: 查询智研
-0: 走旧逻辑，已下线，勿使用
+        r"""<p>1: 查询智研<br>0: 走旧逻辑，已下线，勿使用</p>
         :rtype: int
         """
         return self._IsNewData
@@ -9535,7 +9531,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtFourth(self):
-        r"""自定义4
+        r"""<p>自定义4</p>
         :rtype: str
         """
         return self._ExtFourth
@@ -9546,7 +9542,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtFifth(self):
-        r"""自定义5
+        r"""<p>自定义5</p>
         :rtype: str
         """
         return self._ExtFifth
@@ -9557,7 +9553,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtSixth(self):
-        r"""自定义6
+        r"""<p>自定义6</p>
         :rtype: str
         """
         return self._ExtSixth
@@ -9568,7 +9564,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtSeventh(self):
-        r"""自定义7
+        r"""<p>自定义7</p>
         :rtype: str
         """
         return self._ExtSeventh
@@ -9579,7 +9575,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtEighth(self):
-        r"""自定义8
+        r"""<p>自定义8</p>
         :rtype: str
         """
         return self._ExtEighth
@@ -9590,7 +9586,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtNinth(self):
-        r"""自定义9
+        r"""<p>自定义9</p>
         :rtype: str
         """
         return self._ExtNinth
@@ -9601,7 +9597,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def ExtTenth(self):
-        r"""自定义10
+        r"""<p>自定义10</p>
         :rtype: str
         """
         return self._ExtTenth
@@ -9612,7 +9608,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Granularity(self):
-        r"""时间段
+        r"""<p>时间段</p>
         :rtype: str
         """
         return self._Granularity
@@ -9671,7 +9667,7 @@ class DescribeDataPvUrlStatisticsV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回值
+        :param _Result: <p>返回值</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9681,7 +9677,7 @@ class DescribeDataPvUrlStatisticsV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回值
+        r"""<p>返回值</p>
         :rtype: str
         """
         return self._Result

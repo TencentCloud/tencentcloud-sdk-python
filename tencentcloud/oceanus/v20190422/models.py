@@ -546,6 +546,12 @@ class Cluster(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _NetEniType: <p>弹性网卡方案，0：POD弹性网卡，1：Node弹性网卡。</p><p>枚举值：</p><ul><li>0： POD弹性网卡</li><li>1： Node弹性网卡</li></ul>
         :type NetEniType: int
+        :param _ClusterBuckets: <p>桶列表信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterBuckets: list of ClusterBucketInfo
+        :param _IsolationPolicyVersion: <p>集群隔离时间，0为7天，1为15天</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolationPolicyVersion: int
         """
         self._ClusterId = None
         self._Name = None
@@ -610,6 +616,8 @@ class Cluster(AbstractModel):
         self._HiveMetastore = None
         self._SecurityGroupIds = None
         self._NetEniType = None
+        self._ClusterBuckets = None
+        self._IsolationPolicyVersion = None
 
     @property
     def ClusterId(self):
@@ -1342,6 +1350,30 @@ class Cluster(AbstractModel):
     def NetEniType(self, NetEniType):
         self._NetEniType = NetEniType
 
+    @property
+    def ClusterBuckets(self):
+        r"""<p>桶列表信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ClusterBucketInfo
+        """
+        return self._ClusterBuckets
+
+    @ClusterBuckets.setter
+    def ClusterBuckets(self, ClusterBuckets):
+        self._ClusterBuckets = ClusterBuckets
+
+    @property
+    def IsolationPolicyVersion(self):
+        r"""<p>集群隔离时间，0为7天，1为15天</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsolationPolicyVersion
+
+    @IsolationPolicyVersion.setter
+    def IsolationPolicyVersion(self, IsolationPolicyVersion):
+        self._IsolationPolicyVersion = IsolationPolicyVersion
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1455,6 +1487,219 @@ class Cluster(AbstractModel):
             self._HiveMetastore._deserialize(params.get("HiveMetastore"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._NetEniType = params.get("NetEniType")
+        if params.get("ClusterBuckets") is not None:
+            self._ClusterBuckets = []
+            for item in params.get("ClusterBuckets"):
+                obj = ClusterBucketInfo()
+                obj._deserialize(item)
+                self._ClusterBuckets.append(obj)
+        self._IsolationPolicyVersion = params.get("IsolationPolicyVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterBucketInfo(AbstractModel):
+    r"""ClusterBucketInfo 结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialId: <p>桶唯一id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialId: str
+        :param _ClusterId: <p>集群id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: int
+        :param _Bucket: <p>桶名字</p>
+        :type Bucket: str
+        :param _BucketType: <p>桶类型</p><p>枚举值：</p><ul><li>0： 普通桶</li><li>1： 加速桶</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketType: int
+        :param _AuthMode: <p>鉴权类型</p><p>枚举值：</p><ul><li>0： 不鉴权</li><li>1： 鉴权</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthMode: int
+        :param _IsDefault: <p>是否默认属性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: int
+        :param _Status: <p>桶状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>0： 禁用</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _JobCount: <p>作业数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobCount: int
+        :param _Region: <p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _CreateTime: <p>创建时间</p><p>参数格式：yyyy-MM-dd HH:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p><p>参数格式：yyyy-MM-dd HH:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self._SerialId = None
+        self._ClusterId = None
+        self._Bucket = None
+        self._BucketType = None
+        self._AuthMode = None
+        self._IsDefault = None
+        self._Status = None
+        self._JobCount = None
+        self._Region = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def SerialId(self):
+        r"""<p>桶唯一id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Bucket(self):
+        r"""<p>桶名字</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def BucketType(self):
+        r"""<p>桶类型</p><p>枚举值：</p><ul><li>0： 普通桶</li><li>1： 加速桶</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BucketType
+
+    @BucketType.setter
+    def BucketType(self, BucketType):
+        self._BucketType = BucketType
+
+    @property
+    def AuthMode(self):
+        r"""<p>鉴权类型</p><p>枚举值：</p><ul><li>0： 不鉴权</li><li>1： 鉴权</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AuthMode
+
+    @AuthMode.setter
+    def AuthMode(self, AuthMode):
+        self._AuthMode = AuthMode
+
+    @property
+    def IsDefault(self):
+        r"""<p>是否默认属性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def Status(self):
+        r"""<p>桶状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>0： 禁用</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def JobCount(self):
+        r"""<p>作业数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._JobCount
+
+    @JobCount.setter
+    def JobCount(self, JobCount):
+        self._JobCount = JobCount
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：yyyy-MM-dd HH:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>参数格式：yyyy-MM-dd HH:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._SerialId = params.get("SerialId")
+        self._ClusterId = params.get("ClusterId")
+        self._Bucket = params.get("Bucket")
+        self._BucketType = params.get("BucketType")
+        self._AuthMode = params.get("AuthMode")
+        self._IsDefault = params.get("IsDefault")
+        self._Status = params.get("Status")
+        self._JobCount = params.get("JobCount")
+        self._Region = params.get("Region")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3140,12 +3385,18 @@ class CreateJobConfigRequest(AbstractModel):
         :type UseOldSystemConnector: int
         :param _ProgramArgsAfterGzip: <p>压缩参数</p>
         :type ProgramArgsAfterGzip: str
-        :param _CheckpointTimeoutSecond: <p>checkpoint 超时时间</p>
+        :param _CheckpointTimeoutSecond: <p>checkpoint 超时时间</p><p>单位：秒</p>
         :type CheckpointTimeoutSecond: int
-        :param _CheckpointIntervalSecond: <p>checkpoint 间隔时间</p>
+        :param _CheckpointIntervalSecond: <p>checkpoint 间隔时间</p><p>单位：秒</p>
         :type CheckpointIntervalSecond: int
         :param _VariableReplaceMode: <p>变量替换模式</p><p>枚举值：</p><ul><li>0： 表变量替换</li><li>1： SQL全局变量替换</li></ul><p>默认值：1</p>
         :type VariableReplaceMode: int
+        :param _OperatorName: <p>user</p>
+        :type OperatorName: str
+        :param _ConfigScope: <p>配置更新范围 0=全量(默认) 1=仅开发 2=仅运维</p>
+        :type ConfigScope: int
+        :param _StateCOSBucket: <p>状态桶名字</p>
+        :type StateCOSBucket: str
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -3186,6 +3437,9 @@ class CreateJobConfigRequest(AbstractModel):
         self._CheckpointTimeoutSecond = None
         self._CheckpointIntervalSecond = None
         self._VariableReplaceMode = None
+        self._OperatorName = None
+        self._ConfigScope = None
+        self._StateCOSBucket = None
 
     @property
     def JobId(self):
@@ -3585,7 +3839,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def CheckpointTimeoutSecond(self):
-        r"""<p>checkpoint 超时时间</p>
+        r"""<p>checkpoint 超时时间</p><p>单位：秒</p>
         :rtype: int
         """
         return self._CheckpointTimeoutSecond
@@ -3596,7 +3850,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def CheckpointIntervalSecond(self):
-        r"""<p>checkpoint 间隔时间</p>
+        r"""<p>checkpoint 间隔时间</p><p>单位：秒</p>
         :rtype: int
         """
         return self._CheckpointIntervalSecond
@@ -3615,6 +3869,39 @@ class CreateJobConfigRequest(AbstractModel):
     @VariableReplaceMode.setter
     def VariableReplaceMode(self, VariableReplaceMode):
         self._VariableReplaceMode = VariableReplaceMode
+
+    @property
+    def OperatorName(self):
+        r"""<p>user</p>
+        :rtype: str
+        """
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
+
+    @property
+    def ConfigScope(self):
+        r"""<p>配置更新范围 0=全量(默认) 1=仅开发 2=仅运维</p>
+        :rtype: int
+        """
+        return self._ConfigScope
+
+    @ConfigScope.setter
+    def ConfigScope(self, ConfigScope):
+        self._ConfigScope = ConfigScope
+
+    @property
+    def StateCOSBucket(self):
+        r"""<p>状态桶名字</p>
+        :rtype: str
+        """
+        return self._StateCOSBucket
+
+    @StateCOSBucket.setter
+    def StateCOSBucket(self, StateCOSBucket):
+        self._StateCOSBucket = StateCOSBucket
 
 
     def _deserialize(self, params):
@@ -3678,6 +3965,9 @@ class CreateJobConfigRequest(AbstractModel):
         self._CheckpointTimeoutSecond = params.get("CheckpointTimeoutSecond")
         self._CheckpointIntervalSecond = params.get("CheckpointIntervalSecond")
         self._VariableReplaceMode = params.get("VariableReplaceMode")
+        self._OperatorName = params.get("OperatorName")
+        self._ConfigScope = params.get("ConfigScope")
+        self._StateCOSBucket = params.get("StateCOSBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4746,20 +5036,23 @@ class DeleteJobConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: <p>作业ID</p>
         :type JobId: str
-        :param _JobConfigVersions: 作业配置版本数组
+        :param _JobConfigVersions: <p>作业配置版本数组</p>
         :type JobConfigVersions: list of int
-        :param _WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
         :type WorkSpaceId: str
+        :param _ConfigScope: <p>配置更新范围 0=全量(默认) 1=仅开发 2=仅运维</p><p>取值范围：[0, 2]</p>
+        :type ConfigScope: int
         """
         self._JobId = None
         self._JobConfigVersions = None
         self._WorkSpaceId = None
+        self._ConfigScope = None
 
     @property
     def JobId(self):
-        r"""作业ID
+        r"""<p>作业ID</p>
         :rtype: str
         """
         return self._JobId
@@ -4770,7 +5063,7 @@ class DeleteJobConfigsRequest(AbstractModel):
 
     @property
     def JobConfigVersions(self):
-        r"""作业配置版本数组
+        r"""<p>作业配置版本数组</p>
         :rtype: list of int
         """
         return self._JobConfigVersions
@@ -4781,7 +5074,7 @@ class DeleteJobConfigsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 SerialId
+        r"""<p>工作空间 SerialId</p>
         :rtype: str
         """
         return self._WorkSpaceId
@@ -4790,11 +5083,23 @@ class DeleteJobConfigsRequest(AbstractModel):
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
 
+    @property
+    def ConfigScope(self):
+        r"""<p>配置更新范围 0=全量(默认) 1=仅开发 2=仅运维</p><p>取值范围：[0, 2]</p>
+        :rtype: int
+        """
+        return self._ConfigScope
+
+    @ConfigScope.setter
+    def ConfigScope(self, ConfigScope):
+        self._ConfigScope = ConfigScope
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._JobConfigVersions = params.get("JobConfigVersions")
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._ConfigScope = params.get("ConfigScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7618,9 +7923,12 @@ class DescribeTreeJobsRequest(AbstractModel):
         :type Filters: list of Filter
         :param _WorkSpaceId: <p>工作空间 Serialid</p>
         :type WorkSpaceId: str
+        :param _FlatMode: <p>返回形式</p><p>枚举值：</p><ul><li>0： 树形结构</li><li>1： 平铺结构</li></ul>
+        :type FlatMode: int
         """
         self._Filters = None
         self._WorkSpaceId = None
+        self._FlatMode = None
 
     @property
     def Filters(self):
@@ -7644,6 +7952,17 @@ class DescribeTreeJobsRequest(AbstractModel):
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
 
+    @property
+    def FlatMode(self):
+        r"""<p>返回形式</p><p>枚举值：</p><ul><li>0： 树形结构</li><li>1： 平铺结构</li></ul>
+        :rtype: int
+        """
+        return self._FlatMode
+
+    @FlatMode.setter
+    def FlatMode(self, FlatMode):
+        self._FlatMode = FlatMode
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -7653,6 +7972,7 @@ class DescribeTreeJobsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._FlatMode = params.get("FlatMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9814,12 +10134,18 @@ class JobConfig(AbstractModel):
         :param _JobConfigItem: <p>运行中配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobConfigItem: :class:`tencentcloud.oceanus.v20190422.models.JobConfig`
-        :param _CheckpointTimeoutSecond: <p>checkpoint 超时时间</p>
+        :param _CheckpointTimeoutSecond: <p>checkpoint 超时时间</p><p>单位：秒</p>
         :type CheckpointTimeoutSecond: int
-        :param _CheckpointIntervalSecond: <p>checkpoint 间隔时间</p>
+        :param _CheckpointIntervalSecond: <p>checkpoint 间隔时间</p><p>单位：秒</p>
         :type CheckpointIntervalSecond: int
         :param _VariableReplaceMode: <p>变量替换模式</p><p>枚举值：</p><ul><li>0： 表变量替换</li><li>1： 全局SQL变量替换</li></ul><p>默认值：0</p>
         :type VariableReplaceMode: int
+        :param _StateCOSBucket: <p>快照桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StateCOSBucket: str
+        :param _LogCOSBucket: <p>日志桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogCOSBucket: str
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -9863,6 +10189,8 @@ class JobConfig(AbstractModel):
         self._CheckpointTimeoutSecond = None
         self._CheckpointIntervalSecond = None
         self._VariableReplaceMode = None
+        self._StateCOSBucket = None
+        self._LogCOSBucket = None
 
     @property
     def JobId(self):
@@ -10330,7 +10658,7 @@ class JobConfig(AbstractModel):
 
     @property
     def CheckpointTimeoutSecond(self):
-        r"""<p>checkpoint 超时时间</p>
+        r"""<p>checkpoint 超时时间</p><p>单位：秒</p>
         :rtype: int
         """
         return self._CheckpointTimeoutSecond
@@ -10341,7 +10669,7 @@ class JobConfig(AbstractModel):
 
     @property
     def CheckpointIntervalSecond(self):
-        r"""<p>checkpoint 间隔时间</p>
+        r"""<p>checkpoint 间隔时间</p><p>单位：秒</p>
         :rtype: int
         """
         return self._CheckpointIntervalSecond
@@ -10360,6 +10688,30 @@ class JobConfig(AbstractModel):
     @VariableReplaceMode.setter
     def VariableReplaceMode(self, VariableReplaceMode):
         self._VariableReplaceMode = VariableReplaceMode
+
+    @property
+    def StateCOSBucket(self):
+        r"""<p>快照桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StateCOSBucket
+
+    @StateCOSBucket.setter
+    def StateCOSBucket(self, StateCOSBucket):
+        self._StateCOSBucket = StateCOSBucket
+
+    @property
+    def LogCOSBucket(self):
+        r"""<p>日志桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogCOSBucket
+
+    @LogCOSBucket.setter
+    def LogCOSBucket(self, LogCOSBucket):
+        self._LogCOSBucket = LogCOSBucket
 
 
     def _deserialize(self, params):
@@ -10428,6 +10780,8 @@ class JobConfig(AbstractModel):
         self._CheckpointTimeoutSecond = params.get("CheckpointTimeoutSecond")
         self._CheckpointIntervalSecond = params.get("CheckpointIntervalSecond")
         self._VariableReplaceMode = params.get("VariableReplaceMode")
+        self._StateCOSBucket = params.get("StateCOSBucket")
+        self._LogCOSBucket = params.get("LogCOSBucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10930,134 +11284,145 @@ class JobV1(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: <p>作业ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
-        :param _AppId: 用户AppId
+        :param _AppId: <p>用户AppId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
-        :param _OwnerUin: 用户UIN
+        :param _OwnerUin: <p>用户UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param _CreatorUin: 创建者UIN
+        :param _CreatorUin: <p>创建者UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: str
-        :param _Name: 作业名字
+        :param _Name: <p>作业名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _JobType: 作业类型，1：sql作业，2：Jar作业
+        :param _JobType: <p>作业类型，1：sql作业，2：Jar作业</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobType: int
-        :param _Status: 作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障
+        :param _Status: <p>作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _CreateTime: 作业创建时间
+        :param _CreateTime: <p>作业创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _StartTime: 作业启动时间
+        :param _StartTime: <p>作业启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _StopTime: 作业停止时间
+        :param _StopTime: <p>作业停止时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StopTime: str
-        :param _UpdateTime: 作业更新时间
+        :param _UpdateTime: <p>作业更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _TotalRunMillis: 作业累计运行时间
+        :param _TotalRunMillis: <p>作业累计运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRunMillis: int
-        :param _Remark: 备注信息
+        :param _Remark: <p>备注信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _LastOpResult: 操作错误提示信息
+        :param _LastOpResult: <p>操作错误提示信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastOpResult: str
-        :param _ClusterName: 集群名字
+        :param _ClusterName: <p>集群名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
-        :param _LatestJobConfigVersion: 最新配置版本号，包括已经删除的版本
+        :param _LatestJobConfigVersion: <p>最新配置版本号，包括已经删除的版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestJobConfigVersion: int
-        :param _LatestValidJobConfigVersion: 最新的版本号，不包括已经删除的版本号
+        :param _LatestValidJobConfigVersion: <p>最新的版本号，不包括已经删除的版本号</p>
         :type LatestValidJobConfigVersion: int
-        :param _PublishedJobConfigVersion: 已发布的配置版本
+        :param _PublishedJobConfigVersion: <p>已发布的配置版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublishedJobConfigVersion: int
-        :param _RunningCuNum: 运行的CU数量
+        :param _RunningCuNum: <p>运行的CU数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCuNum: int
-        :param _CuMem: 作业内存规格
+        :param _CuMem: <p>作业内存规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CuMem: int
-        :param _StatusDesc: 作业状态描述
+        :param _StatusDesc: <p>作业状态描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
-        :param _CurrentRunMillis: 运行状态时表示单次运行时间
+        :param _CurrentRunMillis: <p>运行状态时表示单次运行时间</p><p>单位：毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentRunMillis: int
-        :param _ClusterId: 作业所在的集群ID
+        :param _ClusterId: <p>作业所在的集群ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param _WebUIUrl: 作业管理WEB UI 入口
+        :param _WebUIUrl: <p>作业管理WEB UI 入口</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebUIUrl: str
-        :param _SchedulerType: 作业所在集群类型
+        :param _SchedulerType: <p>作业所在集群类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerType: int
-        :param _ClusterStatus: 作业所在集群状态
+        :param _ClusterStatus: <p>作业所在集群状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: int
-        :param _RunningCu: 细粒度下的运行的CU数量
+        :param _RunningCu: <p>细粒度下的运行的CU数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCu: float
-        :param _FlinkVersion: 作业运行的 Flink 版本
+        :param _FlinkVersion: <p>作业运行的 Flink 版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlinkVersion: str
-        :param _WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkSpaceId: str
-        :param _WorkSpaceName: 工作空间名称
+        :param _WorkSpaceName: <p>工作空间名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkSpaceName: str
-        :param _Tags: 作业标签
+        :param _Tags: <p>作业标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _EventInfo: 作业异常事件信息	
+        :param _EventInfo: <p>作业异常事件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventInfo: :class:`tencentcloud.oceanus.v20190422.models.JobEventInfo`
-        :param _Description: 描述信息
+        :param _Description: <p>描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _ScalingType: 0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
-
+        :param _ScalingType: <p>0:代表没开启调优任务，1:开启智能调优，2:代表定时调优</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingType: int
-        :param _RunningCpu: 使用CPU数目
+        :param _RunningCpu: <p>使用CPU数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCpu: float
-        :param _RunningMem: 使用内存数量
+        :param _RunningMem: <p>使用内存数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningMem: float
-        :param _OpenJobDefaultAlarm: 是否开了默认告警
+        :param _OpenJobDefaultAlarm: <p>是否开了默认告警</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenJobDefaultAlarm: int
-        :param _ProgressDesc: 操作中描述
+        :param _ProgressDesc: <p>操作中描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressDesc: str
-        :param _ContinueAlarm: 停止持续告警
+        :param _ContinueAlarm: <p>停止持续告警</p>
         :type ContinueAlarm: int
-        :param _RestartCount: 作业重启次数
+        :param _RestartCount: <p>作业重启次数</p>
         :type RestartCount: int
-        :param _ExpectJobDefaultAlarmStatus: 期望是开启默认告警
+        :param _ExpectJobDefaultAlarmStatus: <p>期望是开启默认告警</p>
         :type ExpectJobDefaultAlarmStatus: int
-        :param _JdkVersion: jdk版本
+        :param _JdkVersion: <p>jdk版本</p>
         :type JdkVersion: str
+        :param _StateCOSBucket: <p>状态桶名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StateCOSBucket: str
+        :param _NewStateCOSBucket: <p>新的状态桶名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewStateCOSBucket: str
+        :param _StateCOSBucketType: <p>同类型</p><p>枚举值：</p><ul><li>0： 普通桶</li><li>1： 加速桶</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StateCOSBucketType: int
+        :param _NewStateCOSBucketType: <p>新的桶类型</p><p>枚举值：</p><ul><li>0： 普通桶</li><li>1： 加速桶</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewStateCOSBucketType: int
         """
         self._JobId = None
         self._Region = None
@@ -11103,10 +11468,14 @@ class JobV1(AbstractModel):
         self._RestartCount = None
         self._ExpectJobDefaultAlarmStatus = None
         self._JdkVersion = None
+        self._StateCOSBucket = None
+        self._NewStateCOSBucket = None
+        self._StateCOSBucketType = None
+        self._NewStateCOSBucketType = None
 
     @property
     def JobId(self):
-        r"""作业ID
+        r"""<p>作业ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11118,7 +11487,7 @@ class JobV1(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11130,7 +11499,7 @@ class JobV1(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11142,7 +11511,7 @@ class JobV1(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户AppId
+        r"""<p>用户AppId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11154,7 +11523,7 @@ class JobV1(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""用户UIN
+        r"""<p>用户UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11166,7 +11535,7 @@ class JobV1(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建者UIN
+        r"""<p>创建者UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11178,7 +11547,7 @@ class JobV1(AbstractModel):
 
     @property
     def Name(self):
-        r"""作业名字
+        r"""<p>作业名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11190,7 +11559,7 @@ class JobV1(AbstractModel):
 
     @property
     def JobType(self):
-        r"""作业类型，1：sql作业，2：Jar作业
+        r"""<p>作业类型，1：sql作业，2：Jar作业</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11202,7 +11571,7 @@ class JobV1(AbstractModel):
 
     @property
     def Status(self):
-        r"""作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障
+        r"""<p>作业状态，1：未初始化，2：未发布，3：操作中，4：运行中，5：停止，6：暂停，-1：故障</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11214,7 +11583,7 @@ class JobV1(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""作业创建时间
+        r"""<p>作业创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11226,7 +11595,7 @@ class JobV1(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""作业启动时间
+        r"""<p>作业启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11238,7 +11607,7 @@ class JobV1(AbstractModel):
 
     @property
     def StopTime(self):
-        r"""作业停止时间
+        r"""<p>作业停止时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11250,7 +11619,7 @@ class JobV1(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""作业更新时间
+        r"""<p>作业更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11262,7 +11631,7 @@ class JobV1(AbstractModel):
 
     @property
     def TotalRunMillis(self):
-        r"""作业累计运行时间
+        r"""<p>作业累计运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11274,7 +11643,7 @@ class JobV1(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11286,7 +11655,7 @@ class JobV1(AbstractModel):
 
     @property
     def LastOpResult(self):
-        r"""操作错误提示信息
+        r"""<p>操作错误提示信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11298,7 +11667,7 @@ class JobV1(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名字
+        r"""<p>集群名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11310,7 +11679,7 @@ class JobV1(AbstractModel):
 
     @property
     def LatestJobConfigVersion(self):
-        r"""最新配置版本号，包括已经删除的版本
+        r"""<p>最新配置版本号，包括已经删除的版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11322,7 +11691,7 @@ class JobV1(AbstractModel):
 
     @property
     def LatestValidJobConfigVersion(self):
-        r"""最新的版本号，不包括已经删除的版本号
+        r"""<p>最新的版本号，不包括已经删除的版本号</p>
         :rtype: int
         """
         return self._LatestValidJobConfigVersion
@@ -11333,7 +11702,7 @@ class JobV1(AbstractModel):
 
     @property
     def PublishedJobConfigVersion(self):
-        r"""已发布的配置版本
+        r"""<p>已发布的配置版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11345,7 +11714,7 @@ class JobV1(AbstractModel):
 
     @property
     def RunningCuNum(self):
-        r"""运行的CU数量
+        r"""<p>运行的CU数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11357,7 +11726,7 @@ class JobV1(AbstractModel):
 
     @property
     def CuMem(self):
-        r"""作业内存规格
+        r"""<p>作业内存规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11369,7 +11738,7 @@ class JobV1(AbstractModel):
 
     @property
     def StatusDesc(self):
-        r"""作业状态描述
+        r"""<p>作业状态描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11381,7 +11750,7 @@ class JobV1(AbstractModel):
 
     @property
     def CurrentRunMillis(self):
-        r"""运行状态时表示单次运行时间
+        r"""<p>运行状态时表示单次运行时间</p><p>单位：毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11393,7 +11762,7 @@ class JobV1(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""作业所在的集群ID
+        r"""<p>作业所在的集群ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11405,7 +11774,7 @@ class JobV1(AbstractModel):
 
     @property
     def WebUIUrl(self):
-        r"""作业管理WEB UI 入口
+        r"""<p>作业管理WEB UI 入口</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11417,7 +11786,7 @@ class JobV1(AbstractModel):
 
     @property
     def SchedulerType(self):
-        r"""作业所在集群类型
+        r"""<p>作业所在集群类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11429,7 +11798,7 @@ class JobV1(AbstractModel):
 
     @property
     def ClusterStatus(self):
-        r"""作业所在集群状态
+        r"""<p>作业所在集群状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11441,7 +11810,7 @@ class JobV1(AbstractModel):
 
     @property
     def RunningCu(self):
-        r"""细粒度下的运行的CU数量
+        r"""<p>细粒度下的运行的CU数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -11453,7 +11822,7 @@ class JobV1(AbstractModel):
 
     @property
     def FlinkVersion(self):
-        r"""作业运行的 Flink 版本
+        r"""<p>作业运行的 Flink 版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11465,7 +11834,7 @@ class JobV1(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 SerialId
+        r"""<p>工作空间 SerialId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11477,7 +11846,7 @@ class JobV1(AbstractModel):
 
     @property
     def WorkSpaceName(self):
-        r"""工作空间名称
+        r"""<p>工作空间名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11489,7 +11858,7 @@ class JobV1(AbstractModel):
 
     @property
     def Tags(self):
-        r"""作业标签
+        r"""<p>作业标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -11501,7 +11870,7 @@ class JobV1(AbstractModel):
 
     @property
     def EventInfo(self):
-        r"""作业异常事件信息	
+        r"""<p>作业异常事件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.JobEventInfo`
         """
@@ -11513,7 +11882,7 @@ class JobV1(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息
+        r"""<p>描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11525,8 +11894,7 @@ class JobV1(AbstractModel):
 
     @property
     def ScalingType(self):
-        r"""0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
-
+        r"""<p>0:代表没开启调优任务，1:开启智能调优，2:代表定时调优</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11538,7 +11906,7 @@ class JobV1(AbstractModel):
 
     @property
     def RunningCpu(self):
-        r"""使用CPU数目
+        r"""<p>使用CPU数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -11550,7 +11918,7 @@ class JobV1(AbstractModel):
 
     @property
     def RunningMem(self):
-        r"""使用内存数量
+        r"""<p>使用内存数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -11562,7 +11930,7 @@ class JobV1(AbstractModel):
 
     @property
     def OpenJobDefaultAlarm(self):
-        r"""是否开了默认告警
+        r"""<p>是否开了默认告警</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11574,7 +11942,7 @@ class JobV1(AbstractModel):
 
     @property
     def ProgressDesc(self):
-        r"""操作中描述
+        r"""<p>操作中描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11586,7 +11954,7 @@ class JobV1(AbstractModel):
 
     @property
     def ContinueAlarm(self):
-        r"""停止持续告警
+        r"""<p>停止持续告警</p>
         :rtype: int
         """
         return self._ContinueAlarm
@@ -11597,7 +11965,7 @@ class JobV1(AbstractModel):
 
     @property
     def RestartCount(self):
-        r"""作业重启次数
+        r"""<p>作业重启次数</p>
         :rtype: int
         """
         return self._RestartCount
@@ -11608,7 +11976,7 @@ class JobV1(AbstractModel):
 
     @property
     def ExpectJobDefaultAlarmStatus(self):
-        r"""期望是开启默认告警
+        r"""<p>期望是开启默认告警</p>
         :rtype: int
         """
         return self._ExpectJobDefaultAlarmStatus
@@ -11619,7 +11987,7 @@ class JobV1(AbstractModel):
 
     @property
     def JdkVersion(self):
-        r"""jdk版本
+        r"""<p>jdk版本</p>
         :rtype: str
         """
         return self._JdkVersion
@@ -11627,6 +11995,54 @@ class JobV1(AbstractModel):
     @JdkVersion.setter
     def JdkVersion(self, JdkVersion):
         self._JdkVersion = JdkVersion
+
+    @property
+    def StateCOSBucket(self):
+        r"""<p>状态桶名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StateCOSBucket
+
+    @StateCOSBucket.setter
+    def StateCOSBucket(self, StateCOSBucket):
+        self._StateCOSBucket = StateCOSBucket
+
+    @property
+    def NewStateCOSBucket(self):
+        r"""<p>新的状态桶名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NewStateCOSBucket
+
+    @NewStateCOSBucket.setter
+    def NewStateCOSBucket(self, NewStateCOSBucket):
+        self._NewStateCOSBucket = NewStateCOSBucket
+
+    @property
+    def StateCOSBucketType(self):
+        r"""<p>同类型</p><p>枚举值：</p><ul><li>0： 普通桶</li><li>1： 加速桶</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StateCOSBucketType
+
+    @StateCOSBucketType.setter
+    def StateCOSBucketType(self, StateCOSBucketType):
+        self._StateCOSBucketType = StateCOSBucketType
+
+    @property
+    def NewStateCOSBucketType(self):
+        r"""<p>新的桶类型</p><p>枚举值：</p><ul><li>0： 普通桶</li><li>1： 加速桶</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NewStateCOSBucketType
+
+    @NewStateCOSBucketType.setter
+    def NewStateCOSBucketType(self, NewStateCOSBucketType):
+        self._NewStateCOSBucketType = NewStateCOSBucketType
 
 
     def _deserialize(self, params):
@@ -11681,6 +12097,10 @@ class JobV1(AbstractModel):
         self._RestartCount = params.get("RestartCount")
         self._ExpectJobDefaultAlarmStatus = params.get("ExpectJobDefaultAlarmStatus")
         self._JdkVersion = params.get("JdkVersion")
+        self._StateCOSBucket = params.get("StateCOSBucket")
+        self._NewStateCOSBucket = params.get("NewStateCOSBucket")
+        self._StateCOSBucketType = params.get("StateCOSBucketType")
+        self._NewStateCOSBucketType = params.get("NewStateCOSBucketType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14704,48 +15124,56 @@ class Savepoint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键
+        :param _Id: <p>主键</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _VersionId: 版本号
+        :param _VersionId: <p>版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionId: int
-        :param _Status: 状态 1: Active; 2: Expired; 3: InProgress; 4: Failed; 5: Timeout
+        :param _Status: <p>状态 1: Active; 2: Expired; 3: InProgress; 4: Failed; 5: Timeout</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
-        :param _Path: 路径
+        :param _Path: <p>路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param _Size: 大小
+        :param _Size: <p>大小</p><p>单位：Byte</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
-        :param _RecordType: 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+        :param _RecordType: <p>快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordType: int
-        :param _JobRuntimeId: 运行作业实例的顺序 ID
+        :param _JobRuntimeId: <p>运行作业实例的顺序 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobRuntimeId: int
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _Timeout: 固定超时时间
+        :param _Timeout: <p>固定超时时间</p><p>单位：毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
-        :param _SerialId: 快照 serialId
+        :param _SerialId: <p>快照 serialId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SerialId: str
-        :param _TimeConsuming: 耗时
+        :param _TimeConsuming: <p>耗时</p><p>单位：毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeConsuming: int
-        :param _PathStatus: 快照路径状态 1：可用；2：不可用；
+        :param _PathStatus: <p>快照路径状态 1：可用；2：不可用；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PathStatus: int
+        :param _FlinkVersion: <p>Flink版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlinkVersion: str
+        :param _IsIncremental: <p>CheckPoint是否增量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsIncremental: str
+        :param _CheckpointSize: <p>checkpoint 大小</p><p>单位：Byte</p>
+        :type CheckpointSize: int
         """
         self._Id = None
         self._VersionId = None
@@ -14761,10 +15189,13 @@ class Savepoint(AbstractModel):
         self._SerialId = None
         self._TimeConsuming = None
         self._PathStatus = None
+        self._FlinkVersion = None
+        self._IsIncremental = None
+        self._CheckpointSize = None
 
     @property
     def Id(self):
-        r"""主键
+        r"""<p>主键</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14776,7 +15207,7 @@ class Savepoint(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""版本号
+        r"""<p>版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14788,7 +15219,7 @@ class Savepoint(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态 1: Active; 2: Expired; 3: InProgress; 4: Failed; 5: Timeout
+        r"""<p>状态 1: Active; 2: Expired; 3: InProgress; 4: Failed; 5: Timeout</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14800,7 +15231,7 @@ class Savepoint(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14812,7 +15243,7 @@ class Savepoint(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14824,7 +15255,7 @@ class Savepoint(AbstractModel):
 
     @property
     def Path(self):
-        r"""路径
+        r"""<p>路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14836,7 +15267,7 @@ class Savepoint(AbstractModel):
 
     @property
     def Size(self):
-        r"""大小
+        r"""<p>大小</p><p>单位：Byte</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14848,7 +15279,7 @@ class Savepoint(AbstractModel):
 
     @property
     def RecordType(self):
-        r"""快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+        r"""<p>快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14860,7 +15291,7 @@ class Savepoint(AbstractModel):
 
     @property
     def JobRuntimeId(self):
-        r"""运行作业实例的顺序 ID
+        r"""<p>运行作业实例的顺序 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14872,7 +15303,7 @@ class Savepoint(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14884,7 +15315,7 @@ class Savepoint(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""固定超时时间
+        r"""<p>固定超时时间</p><p>单位：毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14896,7 +15327,7 @@ class Savepoint(AbstractModel):
 
     @property
     def SerialId(self):
-        r"""快照 serialId
+        r"""<p>快照 serialId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14908,7 +15339,7 @@ class Savepoint(AbstractModel):
 
     @property
     def TimeConsuming(self):
-        r"""耗时
+        r"""<p>耗时</p><p>单位：毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14920,7 +15351,7 @@ class Savepoint(AbstractModel):
 
     @property
     def PathStatus(self):
-        r"""快照路径状态 1：可用；2：不可用；
+        r"""<p>快照路径状态 1：可用；2：不可用；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14929,6 +15360,41 @@ class Savepoint(AbstractModel):
     @PathStatus.setter
     def PathStatus(self, PathStatus):
         self._PathStatus = PathStatus
+
+    @property
+    def FlinkVersion(self):
+        r"""<p>Flink版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
+    @property
+    def IsIncremental(self):
+        r"""<p>CheckPoint是否增量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IsIncremental
+
+    @IsIncremental.setter
+    def IsIncremental(self, IsIncremental):
+        self._IsIncremental = IsIncremental
+
+    @property
+    def CheckpointSize(self):
+        r"""<p>checkpoint 大小</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._CheckpointSize
+
+    @CheckpointSize.setter
+    def CheckpointSize(self, CheckpointSize):
+        self._CheckpointSize = CheckpointSize
 
 
     def _deserialize(self, params):
@@ -14946,6 +15412,9 @@ class Savepoint(AbstractModel):
         self._SerialId = params.get("SerialId")
         self._TimeConsuming = params.get("TimeConsuming")
         self._PathStatus = params.get("PathStatus")
+        self._FlinkVersion = params.get("FlinkVersion")
+        self._IsIncremental = params.get("IsIncremental")
+        self._CheckpointSize = params.get("CheckpointSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15102,6 +15571,8 @@ class Setats(AbstractModel):
         :type Name: str
         :param _Remark: <p>Setats集群描述</p>
         :type Remark: str
+        :param _IsolationPolicyVersion: <p>集群隔离时间，0为7天，1为15天</p>
+        :type IsolationPolicyVersion: int
         """
         self._SetatsSerialId = None
         self._Status = None
@@ -15122,6 +15593,7 @@ class Setats(AbstractModel):
         self._WebUIType = None
         self._Name = None
         self._Remark = None
+        self._IsolationPolicyVersion = None
 
     @property
     def SetatsSerialId(self):
@@ -15344,6 +15816,17 @@ class Setats(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def IsolationPolicyVersion(self):
+        r"""<p>集群隔离时间，0为7天，1为15天</p>
+        :rtype: int
+        """
+        return self._IsolationPolicyVersion
+
+    @IsolationPolicyVersion.setter
+    def IsolationPolicyVersion(self, IsolationPolicyVersion):
+        self._IsolationPolicyVersion = IsolationPolicyVersion
+
 
     def _deserialize(self, params):
         self._SetatsSerialId = params.get("SetatsSerialId")
@@ -15376,6 +15859,7 @@ class Setats(AbstractModel):
         self._WebUIType = params.get("WebUIType")
         self._Name = params.get("Name")
         self._Remark = params.get("Remark")
+        self._IsolationPolicyVersion = params.get("IsolationPolicyVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16700,36 +17184,37 @@ class TreeJobSets(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业Id
+        :param _JobId: <p>作业Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param _Name: 作业名
+        :param _Name: <p>作业名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _JobType: 作业类型
+        :param _JobType: <p>作业类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobType: int
-        :param _RunningCu: 作业占用资源
+        :param _RunningCu: <p>作业占用资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCu: float
-        :param _Status: 作业状态 启动或者停止或者暂停
+        :param _Status: <p>作业状态 启动或者停止或者暂停</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _ScalingType: 0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
-
+        :param _ScalingType: <p>0:代表没开启调优任务，1:开启智能调优，2:代表定时调优</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalingType: int
-        :param _RunningCpu: RunningCpu
+        :param _RunningCpu: <p>RunningCpu</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCpu: float
-        :param _RunningMem: RunningMem
+        :param _RunningMem: <p>RunningMem</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningMem: float
-        :param _DecodeSqlCode: sql
+        :param _DecodeSqlCode: <p>sql</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DecodeSqlCode: str
-        :param _PublishedJobConfigId: 发布版本配置id
+        :param _PublishedJobConfigId: <p>发布版本配置id</p>
         :type PublishedJobConfigId: int
+        :param _FolderPath: <p>完整的文件夹路径，仅在平铺模式下返回</p>
+        :type FolderPath: str
         """
         self._JobId = None
         self._Name = None
@@ -16741,10 +17226,11 @@ class TreeJobSets(AbstractModel):
         self._RunningMem = None
         self._DecodeSqlCode = None
         self._PublishedJobConfigId = None
+        self._FolderPath = None
 
     @property
     def JobId(self):
-        r"""作业Id
+        r"""<p>作业Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16756,7 +17242,7 @@ class TreeJobSets(AbstractModel):
 
     @property
     def Name(self):
-        r"""作业名
+        r"""<p>作业名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16768,7 +17254,7 @@ class TreeJobSets(AbstractModel):
 
     @property
     def JobType(self):
-        r"""作业类型
+        r"""<p>作业类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16780,7 +17266,7 @@ class TreeJobSets(AbstractModel):
 
     @property
     def RunningCu(self):
-        r"""作业占用资源
+        r"""<p>作业占用资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -16792,7 +17278,7 @@ class TreeJobSets(AbstractModel):
 
     @property
     def Status(self):
-        r"""作业状态 启动或者停止或者暂停
+        r"""<p>作业状态 启动或者停止或者暂停</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16804,8 +17290,7 @@ class TreeJobSets(AbstractModel):
 
     @property
     def ScalingType(self):
-        r"""0:代表没开启调优任务，1:开启智能调优，2:代表定时调优
-
+        r"""<p>0:代表没开启调优任务，1:开启智能调优，2:代表定时调优</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16817,7 +17302,7 @@ class TreeJobSets(AbstractModel):
 
     @property
     def RunningCpu(self):
-        r"""RunningCpu
+        r"""<p>RunningCpu</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -16829,7 +17314,7 @@ class TreeJobSets(AbstractModel):
 
     @property
     def RunningMem(self):
-        r"""RunningMem
+        r"""<p>RunningMem</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -16841,7 +17326,7 @@ class TreeJobSets(AbstractModel):
 
     @property
     def DecodeSqlCode(self):
-        r"""sql
+        r"""<p>sql</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16853,7 +17338,7 @@ class TreeJobSets(AbstractModel):
 
     @property
     def PublishedJobConfigId(self):
-        r"""发布版本配置id
+        r"""<p>发布版本配置id</p>
         :rtype: int
         """
         return self._PublishedJobConfigId
@@ -16861,6 +17346,17 @@ class TreeJobSets(AbstractModel):
     @PublishedJobConfigId.setter
     def PublishedJobConfigId(self, PublishedJobConfigId):
         self._PublishedJobConfigId = PublishedJobConfigId
+
+    @property
+    def FolderPath(self):
+        r"""<p>完整的文件夹路径，仅在平铺模式下返回</p>
+        :rtype: str
+        """
+        return self._FolderPath
+
+    @FolderPath.setter
+    def FolderPath(self, FolderPath):
+        self._FolderPath = FolderPath
 
 
     def _deserialize(self, params):
@@ -16874,6 +17370,7 @@ class TreeJobSets(AbstractModel):
         self._RunningMem = params.get("RunningMem")
         self._DecodeSqlCode = params.get("DecodeSqlCode")
         self._PublishedJobConfigId = params.get("PublishedJobConfigId")
+        self._FolderPath = params.get("FolderPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -49865,14 +49865,17 @@ class ImageProcessPrompt(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Prompt: 图片处理相关的prompt。
+        :param _Prompt: <p>图片处理相关的prompt。</p>
         :type Prompt: str
+        :param _Role: <p>prompt 对应的 role。</p>
+        :type Role: str
         """
         self._Prompt = None
+        self._Role = None
 
     @property
     def Prompt(self):
-        r"""图片处理相关的prompt。
+        r"""<p>图片处理相关的prompt。</p>
         :rtype: str
         """
         return self._Prompt
@@ -49881,9 +49884,21 @@ class ImageProcessPrompt(AbstractModel):
     def Prompt(self, Prompt):
         self._Prompt = Prompt
 
+    @property
+    def Role(self):
+        r"""<p>prompt 对应的 role。</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
+        self._Role = params.get("Role")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

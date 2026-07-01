@@ -4929,7 +4929,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeLoginTypeGlobalConf(self, request):
-        r"""获取防卸载全局配置
+        r"""获取扫码登录全局配置
 
         :param request: Request instance for DescribeLoginTypeGlobalConf.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLoginTypeGlobalConfRequest`

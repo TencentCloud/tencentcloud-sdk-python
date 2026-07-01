@@ -6916,6 +6916,327 @@ class CreateTWeSeeCallbackResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTWeSeeDirectUploadCredentialRequest(AbstractModel):
+    r"""CreateTWeSeeDirectUploadCredential请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p><p>非 IoT 设备可传 <code>default</code></p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名称</p>
+        :type DeviceName: str
+        :param _ServiceType: <p>算法类型</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解（支持视频文件或多帧图片）</li><li>IMG_COMP： 图片理解（单帧图片）</li></ul>
+        :type ServiceType: str
+        :param _ChannelId: <p>通道 ID</p><p>默认值：0</p>
+        :type ChannelId: int
+        :param _CallbackId: <p>回调目标 ID</p>
+        :type CallbackId: str
+        :param _ComprehensionConfig: <p>视觉理解配置项</p>
+        :type ComprehensionConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionConfig`
+        :param _CustomId: <p>自定义事件 ID，会透传到任务元数据与回调中</p>
+        :type CustomId: str
+        :param _DurationSeconds: <p>临时密钥有效期，单位：秒。默认 300 秒，取值范围 5 到 86400。</p>
+        :type DurationSeconds: int
+        :param _MaxInvokeCount: <p>该直传凭据最多可触发的分析次数</p><p>取值范围：[1, 10000]</p><p>默认值：1</p>
+        :type MaxInvokeCount: int
+        :param _StorageRegion: <p>上传 COS 存储桶所在地域。不填时使用默认地域。</p>
+        :type StorageRegion: str
+        :param _UploadMethod: <p>上传方式</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
+        :type UploadMethod: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+        self._ChannelId = None
+        self._CallbackId = None
+        self._ComprehensionConfig = None
+        self._CustomId = None
+        self._DurationSeconds = None
+        self._MaxInvokeCount = None
+        self._StorageRegion = None
+        self._UploadMethod = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p><p>非 IoT 设备可传 <code>default</code></p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        r"""<p>算法类型</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解（支持视频文件或多帧图片）</li><li>IMG_COMP： 图片理解（单帧图片）</li></ul>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def CallbackId(self):
+        r"""<p>回调目标 ID</p>
+        :rtype: str
+        """
+        return self._CallbackId
+
+    @CallbackId.setter
+    def CallbackId(self, CallbackId):
+        self._CallbackId = CallbackId
+
+    @property
+    def ComprehensionConfig(self):
+        r"""<p>视觉理解配置项</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionConfig`
+        """
+        return self._ComprehensionConfig
+
+    @ComprehensionConfig.setter
+    def ComprehensionConfig(self, ComprehensionConfig):
+        self._ComprehensionConfig = ComprehensionConfig
+
+    @property
+    def CustomId(self):
+        r"""<p>自定义事件 ID，会透传到任务元数据与回调中</p>
+        :rtype: str
+        """
+        return self._CustomId
+
+    @CustomId.setter
+    def CustomId(self, CustomId):
+        self._CustomId = CustomId
+
+    @property
+    def DurationSeconds(self):
+        r"""<p>临时密钥有效期，单位：秒。默认 300 秒，取值范围 5 到 86400。</p>
+        :rtype: int
+        """
+        return self._DurationSeconds
+
+    @DurationSeconds.setter
+    def DurationSeconds(self, DurationSeconds):
+        self._DurationSeconds = DurationSeconds
+
+    @property
+    def MaxInvokeCount(self):
+        r"""<p>该直传凭据最多可触发的分析次数</p><p>取值范围：[1, 10000]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._MaxInvokeCount
+
+    @MaxInvokeCount.setter
+    def MaxInvokeCount(self, MaxInvokeCount):
+        self._MaxInvokeCount = MaxInvokeCount
+
+    @property
+    def StorageRegion(self):
+        r"""<p>上传 COS 存储桶所在地域。不填时使用默认地域。</p>
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def UploadMethod(self):
+        r"""<p>上传方式</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
+        :rtype: str
+        """
+        return self._UploadMethod
+
+    @UploadMethod.setter
+    def UploadMethod(self, UploadMethod):
+        self._UploadMethod = UploadMethod
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        self._ChannelId = params.get("ChannelId")
+        self._CallbackId = params.get("CallbackId")
+        if params.get("ComprehensionConfig") is not None:
+            self._ComprehensionConfig = SeeComprehensionConfig()
+            self._ComprehensionConfig._deserialize(params.get("ComprehensionConfig"))
+        self._CustomId = params.get("CustomId")
+        self._DurationSeconds = params.get("DurationSeconds")
+        self._MaxInvokeCount = params.get("MaxInvokeCount")
+        self._StorageRegion = params.get("StorageRegion")
+        self._UploadMethod = params.get("UploadMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTWeSeeDirectUploadCredentialResponse(AbstractModel):
+    r"""CreateTWeSeeDirectUploadCredential返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExpiredTime: <p>访问 COS 的临时密钥过期时间（秒级 UNIX 时间戳）</p>
+        :type ExpiredTime: int
+        :param _SecretId: <p>访问 COS 的临时密钥 SecretId</p>
+        :type SecretId: str
+        :param _SecretKey: <p>访问 COS 的临时密钥 SecretKey</p>
+        :type SecretKey: str
+        :param _StorageBucket: <p>COS 存储桶名称</p>
+        :type StorageBucket: str
+        :param _StoragePath: <p>COS 对象 Key 前缀。返回的临时凭据仅允许上传到此前缀下，格式为 Direct/{Uin}/{SessionId}/。</p>
+        :type StoragePath: str
+        :param _StorageRegion: <p>COS 存储桶所在地域</p>
+        :type StorageRegion: str
+        :param _Token: <p>访问 COS 的临时密钥 Token</p>
+        :type Token: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExpiredTime = None
+        self._SecretId = None
+        self._SecretKey = None
+        self._StorageBucket = None
+        self._StoragePath = None
+        self._StorageRegion = None
+        self._Token = None
+        self._RequestId = None
+
+    @property
+    def ExpiredTime(self):
+        r"""<p>访问 COS 的临时密钥过期时间（秒级 UNIX 时间戳）</p>
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def SecretId(self):
+        r"""<p>访问 COS 的临时密钥 SecretId</p>
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        r"""<p>访问 COS 的临时密钥 SecretKey</p>
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def StorageBucket(self):
+        r"""<p>COS 存储桶名称</p>
+        :rtype: str
+        """
+        return self._StorageBucket
+
+    @StorageBucket.setter
+    def StorageBucket(self, StorageBucket):
+        self._StorageBucket = StorageBucket
+
+    @property
+    def StoragePath(self):
+        r"""<p>COS 对象 Key 前缀。返回的临时凭据仅允许上传到此前缀下，格式为 Direct/{Uin}/{SessionId}/。</p>
+        :rtype: str
+        """
+        return self._StoragePath
+
+    @StoragePath.setter
+    def StoragePath(self, StoragePath):
+        self._StoragePath = StoragePath
+
+    @property
+    def StorageRegion(self):
+        r"""<p>COS 存储桶所在地域</p>
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def Token(self):
+        r"""<p>访问 COS 的临时密钥 Token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._StorageBucket = params.get("StorageBucket")
+        self._StoragePath = params.get("StoragePath")
+        self._StorageRegion = params.get("StorageRegion")
+        self._Token = params.get("Token")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTWeSeePostPaidServiceRequest(AbstractModel):
     r"""CreateTWeSeePostPaidService请求参数结构体
 
@@ -27164,6 +27485,8 @@ class InvokeAISearchServiceRequest(AbstractModel):
         :type VectorSearchTopK: int
         :param _Order: <p>搜索结果的排序方式，可选值：</p><ul><li><code>CORRELATION</code>：按相关性（默认）</li><li><code>TIME_ASC</code>：按时间升序</li><li><code>TIME_DESC</code>：按时间降序</li></ul>
         :type Order: str
+        :param _WithTaskInfo: <p>是否输出原始任务信息</p>
+        :type WithTaskInfo: bool
         """
         self._ProductId = None
         self._DeviceName = None
@@ -27179,6 +27502,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
         self._VectorSearchRadius = None
         self._VectorSearchTopK = None
         self._Order = None
+        self._WithTaskInfo = None
 
     @property
     def ProductId(self):
@@ -27334,6 +27658,17 @@ class InvokeAISearchServiceRequest(AbstractModel):
     def Order(self, Order):
         self._Order = Order
 
+    @property
+    def WithTaskInfo(self):
+        r"""<p>是否输出原始任务信息</p>
+        :rtype: bool
+        """
+        return self._WithTaskInfo
+
+    @WithTaskInfo.setter
+    def WithTaskInfo(self, WithTaskInfo):
+        self._WithTaskInfo = WithTaskInfo
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -27350,6 +27685,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
         self._VectorSearchRadius = params.get("VectorSearchRadius")
         self._VectorSearchTopK = params.get("VectorSearchTopK")
         self._Order = params.get("Order")
+        self._WithTaskInfo = params.get("WithTaskInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2035,14 +2035,14 @@ class CloseConfigRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 规则ID
+        :param _RuleId: <p>规则ID</p>
         :type RuleId: str
         """
         self._RuleId = None
 
     @property
     def RuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -4019,14 +4019,14 @@ class DeleteCompliancePackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompliancePackId: 合规包ID
+        :param _CompliancePackId: <p>合规包ID</p>
         :type CompliancePackId: str
         """
         self._CompliancePackId = None
 
     @property
     def CompliancePackId(self):
-        r"""合规包ID
+        r"""<p>合规包ID</p>
         :rtype: str
         """
         return self._CompliancePackId
@@ -4083,14 +4083,14 @@ class DeleteConfigRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 规则ID
+        :param _RuleId: <p>规则ID</p>
         :type RuleId: str
         """
         self._RuleId = None
 
     @property
     def RuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -6221,9 +6221,9 @@ class DetachConfigRuleToCompliancePackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompliancePackId: 合规包ID
+        :param _CompliancePackId: <p>合规包ID</p>
         :type CompliancePackId: str
-        :param _ConfigRuleId: 规则ID
+        :param _ConfigRuleId: <p>规则ID</p>
         :type ConfigRuleId: str
         """
         self._CompliancePackId = None
@@ -6231,7 +6231,7 @@ class DetachConfigRuleToCompliancePackRequest(AbstractModel):
 
     @property
     def CompliancePackId(self):
-        r"""合规包ID
+        r"""<p>合规包ID</p>
         :rtype: str
         """
         return self._CompliancePackId
@@ -6242,7 +6242,7 @@ class DetachConfigRuleToCompliancePackRequest(AbstractModel):
 
     @property
     def ConfigRuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: str
         """
         return self._ConfigRuleId
@@ -7507,17 +7507,17 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MaxResults: 每页显示数量
+        :param _MaxResults: <p>每页显示数量</p>
         :type MaxResults: int
-        :param _AccountGroupId: 账号组ID
+        :param _AccountGroupId: <p>账号组ID</p>
         :type AccountGroupId: str
-        :param _Filters: resourceName：资源名  resourceId ：资源ID resourceType：资源类型
+        :param _Filters: <p>resourceName：资源名  resourceId ：资源ID resourceType：资源类型</p>
         :type Filters: list of Filter
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
         :type Tags: list of Tag
-        :param _NextToken: 下一页token
+        :param _NextToken: <p>下一页token</p>
         :type NextToken: str
-        :param _OrderType: 排序方式 asc、desc
+        :param _OrderType: <p>排序方式 asc、desc</p>
         :type OrderType: str
         """
         self._MaxResults = None
@@ -7529,7 +7529,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""每页显示数量
+        r"""<p>每页显示数量</p>
         :rtype: int
         """
         return self._MaxResults
@@ -7540,7 +7540,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        r"""账号组ID
+        r"""<p>账号组ID</p>
         :rtype: str
         """
         return self._AccountGroupId
@@ -7551,7 +7551,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""resourceName：资源名  resourceId ：资源ID resourceType：资源类型
+        r"""<p>resourceName：资源名  resourceId ：资源ID resourceType：资源类型</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -7562,7 +7562,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -7573,7 +7573,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""下一页token
+        r"""<p>下一页token</p>
         :rtype: str
         """
         return self._NextToken
@@ -7584,7 +7584,7 @@ class ListAggregateDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""排序方式 asc、desc
+        r"""<p>排序方式 asc、desc</p>
         :rtype: str
         """
         return self._OrderType
@@ -7628,21 +7628,24 @@ class ListAggregateDiscoveredResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items: 详情
+        :param _Items: <p>详情</p>
         :type Items: list of AggregateResourceInfo
-        :param _NextToken: 下一页
+        :param _NextToken: <p>下一页</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
+        :param _Count: <p>总数</p>
+        :type Count: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
         self._NextToken = None
+        self._Count = None
         self._RequestId = None
 
     @property
     def Items(self):
-        r"""详情
+        r"""<p>详情</p>
         :rtype: list of AggregateResourceInfo
         """
         return self._Items
@@ -7653,7 +7656,7 @@ class ListAggregateDiscoveredResourcesResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""下一页
+        r"""<p>下一页</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7662,6 +7665,17 @@ class ListAggregateDiscoveredResourcesResponse(AbstractModel):
     @NextToken.setter
     def NextToken(self, NextToken):
         self._NextToken = NextToken
+
+    @property
+    def Count(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
     @property
     def RequestId(self):
@@ -7683,6 +7697,7 @@ class ListAggregateDiscoveredResourcesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._NextToken = params.get("NextToken")
+        self._Count = params.get("Count")
         self._RequestId = params.get("RequestId")
 
 
@@ -7921,24 +7936,22 @@ class ListCompliancePacksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量
+        :param _Limit: <p>数量</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _CompliancePackName: 合规包名称
+        :param _CompliancePackName: <p>合规包名称</p>
         :type CompliancePackName: str
-        :param _RiskLevel: 风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        :param _RiskLevel: <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :type RiskLevel: list of int non-negative
-        :param _Status: 合规包状态 ACTIVE、NO_ACTIVE
+        :param _Status: <p>合规包状态 ACTIVE、NO_ACTIVE</p>
         :type Status: str
-        :param _ComplianceResult: 评估状态合规： 'COMPLIANT'
-不合规： 'NON_COMPLIANT'
+        :param _ComplianceResult: <p>评估状态合规： &#39;COMPLIANT&#39;<br>不合规： &#39;NON_COMPLIANT&#39;</p>
         :type ComplianceResult: list of str
-        :param _OrderType: 排序类型, 倒序：desc，顺序：asc
+        :param _OrderType: <p>排序类型, 倒序：desc，顺序：asc</p>
         :type OrderType: str
+        :param _IncludeCompliancePackRuleResult: <p>包含合规包规则统计信息</p><p>枚举值：</p><ul><li>1： 是</li></ul>
+        :type IncludeCompliancePackRuleResult: str
         """
         self._Limit = None
         self._Offset = None
@@ -7947,10 +7960,11 @@ class ListCompliancePacksRequest(AbstractModel):
         self._Status = None
         self._ComplianceResult = None
         self._OrderType = None
+        self._IncludeCompliancePackRuleResult = None
 
     @property
     def Limit(self):
-        r"""数量
+        r"""<p>数量</p>
         :rtype: int
         """
         return self._Limit
@@ -7961,7 +7975,7 @@ class ListCompliancePacksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -7972,7 +7986,7 @@ class ListCompliancePacksRequest(AbstractModel):
 
     @property
     def CompliancePackName(self):
-        r"""合规包名称
+        r"""<p>合规包名称</p>
         :rtype: str
         """
         return self._CompliancePackName
@@ -7983,10 +7997,7 @@ class ListCompliancePacksRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        r"""<p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :rtype: list of int non-negative
         """
         return self._RiskLevel
@@ -7997,7 +8008,7 @@ class ListCompliancePacksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""合规包状态 ACTIVE、NO_ACTIVE
+        r"""<p>合规包状态 ACTIVE、NO_ACTIVE</p>
         :rtype: str
         """
         return self._Status
@@ -8008,8 +8019,7 @@ class ListCompliancePacksRequest(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        r"""评估状态合规： 'COMPLIANT'
-不合规： 'NON_COMPLIANT'
+        r"""<p>评估状态合规： &#39;COMPLIANT&#39;<br>不合规： &#39;NON_COMPLIANT&#39;</p>
         :rtype: list of str
         """
         return self._ComplianceResult
@@ -8020,7 +8030,7 @@ class ListCompliancePacksRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""排序类型, 倒序：desc，顺序：asc
+        r"""<p>排序类型, 倒序：desc，顺序：asc</p>
         :rtype: str
         """
         return self._OrderType
@@ -8028,6 +8038,17 @@ class ListCompliancePacksRequest(AbstractModel):
     @OrderType.setter
     def OrderType(self, OrderType):
         self._OrderType = OrderType
+
+    @property
+    def IncludeCompliancePackRuleResult(self):
+        r"""<p>包含合规包规则统计信息</p><p>枚举值：</p><ul><li>1： 是</li></ul>
+        :rtype: str
+        """
+        return self._IncludeCompliancePackRuleResult
+
+    @IncludeCompliancePackRuleResult.setter
+    def IncludeCompliancePackRuleResult(self, IncludeCompliancePackRuleResult):
+        self._IncludeCompliancePackRuleResult = IncludeCompliancePackRuleResult
 
 
     def _deserialize(self, params):
@@ -8038,6 +8059,7 @@ class ListCompliancePacksRequest(AbstractModel):
         self._Status = params.get("Status")
         self._ComplianceResult = params.get("ComplianceResult")
         self._OrderType = params.get("OrderType")
+        self._IncludeCompliancePackRuleResult = params.get("IncludeCompliancePackRuleResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8055,9 +8077,9 @@ class ListCompliancePacksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _Items: 详情
+        :param _Items: <p>详情</p>
         :type Items: list of ConfigCompliancePack
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8068,7 +8090,7 @@ class ListCompliancePacksResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -8079,7 +8101,7 @@ class ListCompliancePacksResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""详情
+        r"""<p>详情</p>
         :rtype: list of ConfigCompliancePack
         """
         return self._Items
@@ -8490,15 +8512,15 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MaxResults: 每页显示数量
+        :param _MaxResults: <p>每页显示数量</p>
         :type MaxResults: int
-        :param _Filters: resourceName：资源名  resourceId ：资源ID
+        :param _Filters: <p>resourceName：资源名  resourceId ：资源ID</p>
         :type Filters: list of Filter
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
         :type Tags: list of Tag
-        :param _NextToken: 下一页token
+        :param _NextToken: <p>下一页token</p>
         :type NextToken: str
-        :param _OrderType: 排序方式 asc、desc
+        :param _OrderType: <p>排序方式 asc、desc</p>
         :type OrderType: str
         """
         self._MaxResults = None
@@ -8509,7 +8531,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""每页显示数量
+        r"""<p>每页显示数量</p>
         :rtype: int
         """
         return self._MaxResults
@@ -8520,7 +8542,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""resourceName：资源名  resourceId ：资源ID
+        r"""<p>resourceName：资源名  resourceId ：资源ID</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -8531,7 +8553,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -8542,7 +8564,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""下一页token
+        r"""<p>下一页token</p>
         :rtype: str
         """
         return self._NextToken
@@ -8553,7 +8575,7 @@ class ListDiscoveredResourcesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""排序方式 asc、desc
+        r"""<p>排序方式 asc、desc</p>
         :rtype: str
         """
         return self._OrderType
@@ -8596,21 +8618,24 @@ class ListDiscoveredResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items: 详情
+        :param _Items: <p>详情</p>
         :type Items: list of ResourceListInfo
-        :param _NextToken: 下一页
+        :param _NextToken: <p>下一页</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextToken: str
+        :param _Count: <p>总数</p>
+        :type Count: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
         self._NextToken = None
+        self._Count = None
         self._RequestId = None
 
     @property
     def Items(self):
-        r"""详情
+        r"""<p>详情</p>
         :rtype: list of ResourceListInfo
         """
         return self._Items
@@ -8621,7 +8646,7 @@ class ListDiscoveredResourcesResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""下一页
+        r"""<p>下一页</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8630,6 +8655,17 @@ class ListDiscoveredResourcesResponse(AbstractModel):
     @NextToken.setter
     def NextToken(self, NextToken):
         self._NextToken = NextToken
+
+    @property
+    def Count(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
     @property
     def RequestId(self):
@@ -8651,6 +8687,7 @@ class ListDiscoveredResourcesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._NextToken = params.get("NextToken")
+        self._Count = params.get("Count")
         self._RequestId = params.get("RequestId")
 
 
@@ -9348,14 +9385,14 @@ class OpenConfigRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 规则ID
+        :param _RuleId: <p>规则ID</p>
         :type RuleId: str
         """
         self._RuleId = None
 
     @property
     def RuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -11545,15 +11582,15 @@ class UpdateCompliancePackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompliancePackName: 合规包名称
+        :param _CompliancePackName: <p>合规包名称</p>
         :type CompliancePackName: str
-        :param _RiskLevel: 风险等级
+        :param _RiskLevel: <p>风险等级</p>
         :type RiskLevel: int
-        :param _CompliancePackId: 合规包ID
+        :param _CompliancePackId: <p>合规包ID</p>
         :type CompliancePackId: str
-        :param _ConfigRules: 合规包规则
+        :param _ConfigRules: <p>合规包规则</p>
         :type ConfigRules: list of CompliancePackRule
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
         """
         self._CompliancePackName = None
@@ -11564,7 +11601,7 @@ class UpdateCompliancePackRequest(AbstractModel):
 
     @property
     def CompliancePackName(self):
-        r"""合规包名称
+        r"""<p>合规包名称</p>
         :rtype: str
         """
         return self._CompliancePackName
@@ -11575,7 +11612,7 @@ class UpdateCompliancePackRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
+        r"""<p>风险等级</p>
         :rtype: int
         """
         return self._RiskLevel
@@ -11586,7 +11623,7 @@ class UpdateCompliancePackRequest(AbstractModel):
 
     @property
     def CompliancePackId(self):
-        r"""合规包ID
+        r"""<p>合规包ID</p>
         :rtype: str
         """
         return self._CompliancePackId
@@ -11597,7 +11634,7 @@ class UpdateCompliancePackRequest(AbstractModel):
 
     @property
     def ConfigRules(self):
-        r"""合规包规则
+        r"""<p>合规包规则</p>
         :rtype: list of CompliancePackRule
         """
         return self._ConfigRules
@@ -11608,7 +11645,7 @@ class UpdateCompliancePackRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -11674,10 +11711,9 @@ class UpdateCompliancePackStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompliancePackId: 合规包ID
+        :param _CompliancePackId: <p>合规包ID</p>
         :type CompliancePackId: str
-        :param _Status: ACTIVE：启用
-UN_ACTIVE ：停用
+        :param _Status: <p>ACTIVE：启用<br>UN_ACTIVE ：停用</p>
         :type Status: str
         """
         self._CompliancePackId = None
@@ -11685,7 +11721,7 @@ UN_ACTIVE ：停用
 
     @property
     def CompliancePackId(self):
-        r"""合规包ID
+        r"""<p>合规包ID</p>
         :rtype: str
         """
         return self._CompliancePackId
@@ -11696,8 +11732,7 @@ UN_ACTIVE ：停用
 
     @property
     def Status(self):
-        r"""ACTIVE：启用
-UN_ACTIVE ：停用
+        r"""<p>ACTIVE：启用<br>UN_ACTIVE ：停用</p>
         :rtype: str
         """
         return self._Status
@@ -11964,27 +11999,23 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TriggerType: 触发类型，最多支持两种
+        :param _TriggerType: <p>触发类型，最多支持两种</p>
         :type TriggerType: list of TriggerType
-        :param _RiskLevel: 风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        :param _RiskLevel: <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :type RiskLevel: int
-        :param _RuleId: 规则ID
+        :param _RuleId: <p>规则ID</p>
         :type RuleId: str
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
         :type RuleName: str
-        :param _InputParameter: 入参
+        :param _InputParameter: <p>入参</p>
         :type InputParameter: list of InputParameter
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _RegionsScope: 规则评估地域范围，规则仅对指定地域中的资源生效。
-支持的地域范围config:ListResourceRegions返回的地域
+        :param _RegionsScope: <p>规则评估地域范围，规则仅对指定地域中的资源生效。<br>支持的地域范围config:ListResourceRegions返回的地域</p>
         :type RegionsScope: list of str
-        :param _TagsScope: 规则评估标签范围，规则仅对绑定指定标签的资源生效。
+        :param _TagsScope: <p>规则评估标签范围，规则仅对绑定指定标签的资源生效。</p>
         :type TagsScope: list of Tag
-        :param _ExcludeResourceIdsScope: 规则对指定资源ID无效，即不对该资源执行评估。
+        :param _ExcludeResourceIdsScope: <p>规则对指定资源ID无效，即不对该资源执行评估。</p>
         :type ExcludeResourceIdsScope: list of str
         """
         self._TriggerType = None
@@ -11999,7 +12030,7 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""触发类型，最多支持两种
+        r"""<p>触发类型，最多支持两种</p>
         :rtype: list of TriggerType
         """
         return self._TriggerType
@@ -12010,10 +12041,7 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        r"""<p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :rtype: int
         """
         return self._RiskLevel
@@ -12024,7 +12052,7 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -12035,7 +12063,7 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -12046,7 +12074,7 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     @property
     def InputParameter(self):
-        r"""入参
+        r"""<p>入参</p>
         :rtype: list of InputParameter
         """
         return self._InputParameter
@@ -12057,7 +12085,7 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -12068,8 +12096,7 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     @property
     def RegionsScope(self):
-        r"""规则评估地域范围，规则仅对指定地域中的资源生效。
-支持的地域范围config:ListResourceRegions返回的地域
+        r"""<p>规则评估地域范围，规则仅对指定地域中的资源生效。<br>支持的地域范围config:ListResourceRegions返回的地域</p>
         :rtype: list of str
         """
         return self._RegionsScope
@@ -12080,7 +12107,7 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     @property
     def TagsScope(self):
-        r"""规则评估标签范围，规则仅对绑定指定标签的资源生效。
+        r"""<p>规则评估标签范围，规则仅对绑定指定标签的资源生效。</p>
         :rtype: list of Tag
         """
         return self._TagsScope
@@ -12091,7 +12118,7 @@ class UpdateConfigRuleRequest(AbstractModel):
 
     @property
     def ExcludeResourceIdsScope(self):
-        r"""规则对指定资源ID无效，即不对该资源执行评估。
+        r"""<p>规则对指定资源ID无效，即不对该资源执行评估。</p>
         :rtype: list of str
         """
         return self._ExcludeResourceIdsScope

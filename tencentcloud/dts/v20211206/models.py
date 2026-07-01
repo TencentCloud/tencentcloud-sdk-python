@@ -13838,6 +13838,8 @@ class MigrateOption(AbstractModel):
         :type ExtraAttr: list of KeyValuePairOption
         :param _MigrateWay: <p>pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)</p>
         :type MigrateWay: str
+        :param _RateLimit: <p>迁移配置阶段限速相关参数</p>
+        :type RateLimit: :class:`tencentcloud.dts.v20211206.models.RateLimit`
         """
         self._DatabaseTable = None
         self._MigrateType = None
@@ -13847,6 +13849,7 @@ class MigrateOption(AbstractModel):
         self._IsDstReadOnly = None
         self._ExtraAttr = None
         self._MigrateWay = None
+        self._RateLimit = None
 
     @property
     def DatabaseTable(self):
@@ -13937,6 +13940,17 @@ class MigrateOption(AbstractModel):
     def MigrateWay(self, MigrateWay):
         self._MigrateWay = MigrateWay
 
+    @property
+    def RateLimit(self):
+        r"""<p>迁移配置阶段限速相关参数</p>
+        :rtype: :class:`tencentcloud.dts.v20211206.models.RateLimit`
+        """
+        return self._RateLimit
+
+    @RateLimit.setter
+    def RateLimit(self, RateLimit):
+        self._RateLimit = RateLimit
+
 
     def _deserialize(self, params):
         if params.get("DatabaseTable") is not None:
@@ -13956,6 +13970,9 @@ class MigrateOption(AbstractModel):
                 obj._deserialize(item)
                 self._ExtraAttr.append(obj)
         self._MigrateWay = params.get("MigrateWay")
+        if params.get("RateLimit") is not None:
+            self._RateLimit = RateLimit()
+            self._RateLimit._deserialize(params.get("RateLimit"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16906,6 +16923,102 @@ class ProcessStepTip(AbstractModel):
         self._Message = params.get("Message")
         self._Solution = params.get("Solution")
         self._HelpDoc = params.get("HelpDoc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimit(AbstractModel):
+    r"""数据迁移限速配置对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DumpThread: <p>全量导出线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
+        :type DumpThread: int
+        :param _DumpRps: <p>全量导出Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
+        :type DumpRps: int
+        :param _LoadThread: <p>全量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
+        :type LoadThread: int
+        :param _LoadRps: <p>全量导入Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
+        :type LoadRps: int
+        :param _SinkerThread: <p>增量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为128</p>
+        :type SinkerThread: int
+        """
+        self._DumpThread = None
+        self._DumpRps = None
+        self._LoadThread = None
+        self._LoadRps = None
+        self._SinkerThread = None
+
+    @property
+    def DumpThread(self):
+        r"""<p>全量导出线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
+        :rtype: int
+        """
+        return self._DumpThread
+
+    @DumpThread.setter
+    def DumpThread(self, DumpThread):
+        self._DumpThread = DumpThread
+
+    @property
+    def DumpRps(self):
+        r"""<p>全量导出Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
+        :rtype: int
+        """
+        return self._DumpRps
+
+    @DumpRps.setter
+    def DumpRps(self, DumpRps):
+        self._DumpRps = DumpRps
+
+    @property
+    def LoadThread(self):
+        r"""<p>全量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
+        :rtype: int
+        """
+        return self._LoadThread
+
+    @LoadThread.setter
+    def LoadThread(self, LoadThread):
+        self._LoadThread = LoadThread
+
+    @property
+    def LoadRps(self):
+        r"""<p>全量导入Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
+        :rtype: int
+        """
+        return self._LoadRps
+
+    @LoadRps.setter
+    def LoadRps(self, LoadRps):
+        self._LoadRps = LoadRps
+
+    @property
+    def SinkerThread(self):
+        r"""<p>增量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为128</p>
+        :rtype: int
+        """
+        return self._SinkerThread
+
+    @SinkerThread.setter
+    def SinkerThread(self, SinkerThread):
+        self._SinkerThread = SinkerThread
+
+
+    def _deserialize(self, params):
+        self._DumpThread = params.get("DumpThread")
+        self._DumpRps = params.get("DumpRps")
+        self._LoadThread = params.get("LoadThread")
+        self._LoadRps = params.get("LoadRps")
+        self._SinkerThread = params.get("SinkerThread")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

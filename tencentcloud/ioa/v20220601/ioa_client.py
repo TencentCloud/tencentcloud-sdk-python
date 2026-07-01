@@ -993,7 +993,7 @@ class IoaClient(AbstractClient):
 
 
     def ModifyVirtualDeviceGroups(self, request):
-        r"""终端自定义分组增减终端，私有化调用path为：/capi/Assets/Device/ModifyVirtualDeviceGroups
+        r"""终端自定义分组批量增减终端，私有化调用path为：/capi/Assets/Device/ModifyVirtualDeviceGroups
 
         :param request: Request instance for ModifyVirtualDeviceGroups.
         :type request: :class:`tencentcloud.ioa.v20220601.models.ModifyVirtualDeviceGroupsRequest`
