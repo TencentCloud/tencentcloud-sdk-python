@@ -205,6 +205,47 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExecuteAgentApi(self, request):
+        r"""执行datateam相关的命令行请求
+
+        :param request: Request instance for ExecuteAgentApi.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.ExecuteAgentApiRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.ExecuteAgentApiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExecuteAgentApi", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExecuteAgentApiResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExecuteAgentApiV1(self, request):
+        r"""执行datateam相关的命令行请求
+
+        :param request: Request instance for ExecuteAgentApiV1.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.ExecuteAgentApiV1Request`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.ExecuteAgentApiV1Response`
+
+        """
+        try:
+            params = request._serialize()
+            return self._call_and_deserialize("ExecuteAgentApiV1", params, models.ExecuteAgentApiV1Response, headers=request.headers)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetJobsByKnowledgeBaseId(self, request):
         r"""根据知识库id查询jobs 列表
 

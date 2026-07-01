@@ -67514,6 +67514,8 @@ class RiskDetailItem(AbstractModel):
         :type AppID: int
         :param _AssetType: <p>资产类型</p>
         :type AssetType: str
+        :param _Reason: <p>风险忽略原因</p>
+        :type Reason: str
         """
         self._CreateTime = None
         self._UpdateTime = None
@@ -67530,6 +67532,7 @@ class RiskDetailItem(AbstractModel):
         self._CheckStatus = None
         self._AppID = None
         self._AssetType = None
+        self._Reason = None
 
     @property
     def CreateTime(self):
@@ -67696,6 +67699,17 @@ class RiskDetailItem(AbstractModel):
     def AssetType(self, AssetType):
         self._AssetType = AssetType
 
+    @property
+    def Reason(self):
+        r"""<p>风险忽略原因</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
 
     def _deserialize(self, params):
         self._CreateTime = params.get("CreateTime")
@@ -67713,6 +67727,7 @@ class RiskDetailItem(AbstractModel):
         self._CheckStatus = params.get("CheckStatus")
         self._AppID = params.get("AppID")
         self._AssetType = params.get("AssetType")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

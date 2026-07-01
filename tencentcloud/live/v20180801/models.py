@@ -12820,9 +12820,12 @@ class CreateVideoRedrawTaskRequest(AbstractModel):
         :type Input: :class:`tencentcloud.live.v20180801.models.VideoRedrawInput`
         :param _CosInfo: <p>用户自定义cos信息</p>
         :type CosInfo: :class:`tencentcloud.live.v20180801.models.VideoRedrawCosInfo`
+        :param _TaskInfo: <p>转绘任务参数</p>
+        :type TaskInfo: :class:`tencentcloud.live.v20180801.models.VideoRedrawTaskInfo`
         """
         self._Input = None
         self._CosInfo = None
+        self._TaskInfo = None
 
     @property
     def Input(self):
@@ -12846,6 +12849,17 @@ class CreateVideoRedrawTaskRequest(AbstractModel):
     def CosInfo(self, CosInfo):
         self._CosInfo = CosInfo
 
+    @property
+    def TaskInfo(self):
+        r"""<p>转绘任务参数</p>
+        :rtype: :class:`tencentcloud.live.v20180801.models.VideoRedrawTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
 
     def _deserialize(self, params):
         if params.get("Input") is not None:
@@ -12854,6 +12868,9 @@ class CreateVideoRedrawTaskRequest(AbstractModel):
         if params.get("CosInfo") is not None:
             self._CosInfo = VideoRedrawCosInfo()
             self._CosInfo._deserialize(params.get("CosInfo"))
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = VideoRedrawTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46979,6 +46996,42 @@ class VideoRedrawInput(AbstractModel):
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoRedrawTaskInfo(AbstractModel):
+    r"""Aigc 转绘、替换等任务参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Style: <p>转绘视频风格，如动漫、赛博朋克、水墨等</p>
+        :type Style: str
+        """
+        self._Style = None
+
+    @property
+    def Style(self):
+        r"""<p>转绘视频风格，如动漫、赛博朋克、水墨等</p>
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+
+    def _deserialize(self, params):
+        self._Style = params.get("Style")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

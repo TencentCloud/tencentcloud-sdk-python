@@ -17316,13 +17316,13 @@ class CreateBuyBindTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 订单号
+        :param _DealName: <p>订单号</p>
         :type DealName: str
-        :param _LicenseType: 可选参数: 1专业版-包年包月 , 2 旗舰版-包年包月
+        :param _LicenseType: <p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
         :type LicenseType: int
-        :param _QuuidList: 机器列表
+        :param _QuuidList: <p>机器列表</p>
         :type QuuidList: list of str
-        :param _IsAll: 是否全选机器
+        :param _IsAll: <p>是否全选机器</p>
         :type IsAll: bool
         """
         self._DealName = None
@@ -17332,7 +17332,7 @@ class CreateBuyBindTaskRequest(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号
+        r"""<p>订单号</p>
         :rtype: str
         """
         return self._DealName
@@ -17343,7 +17343,7 @@ class CreateBuyBindTaskRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""可选参数: 1专业版-包年包月 , 2 旗舰版-包年包月
+        r"""<p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
         :rtype: int
         """
         return self._LicenseType
@@ -17354,7 +17354,7 @@ class CreateBuyBindTaskRequest(AbstractModel):
 
     @property
     def QuuidList(self):
-        r"""机器列表
+        r"""<p>机器列表</p>
         :rtype: list of str
         """
         return self._QuuidList
@@ -17365,7 +17365,7 @@ class CreateBuyBindTaskRequest(AbstractModel):
 
     @property
     def IsAll(self):
-        r"""是否全选机器
+        r"""<p>是否全选机器</p>
         :rtype: bool
         """
         return self._IsAll
@@ -48968,14 +48968,14 @@ class DescribeProVersionStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uuid: 主机安全客户端UUID、填写"all"表示所有主机。
+        :param _Uuid: <p>主机安全客户端UUID、填写&quot;all&quot;表示所有主机。</p>
         :type Uuid: str
         """
         self._Uuid = None
 
     @property
     def Uuid(self):
-        r"""主机安全客户端UUID、填写"all"表示所有主机。
+        r"""<p>主机安全客户端UUID、填写&quot;all&quot;表示所有主机。</p>
         :rtype: str
         """
         return self._Uuid
@@ -49004,10 +49004,24 @@ class DescribeProVersionStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Status: <p>开通状态。</p><li>UNOPENED：未开通专业版</li><li>OPENED：已开通专业版</li>
+        :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Status = None
         self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>开通状态。</p><li>UNOPENED：未开通专业版</li><li>OPENED：已开通专业版</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def RequestId(self):
@@ -49022,6 +49036,7 @@ class DescribeProVersionStatusResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -52676,10 +52691,24 @@ class DescribeRecommendedProtectCpuResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Number: <p>推荐购买数</p>
+        :type Number: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Number = None
         self._RequestId = None
+
+    @property
+    def Number(self):
+        r"""<p>推荐购买数</p>
+        :rtype: int
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
 
     @property
     def RequestId(self):
@@ -52694,6 +52723,7 @@ class DescribeRecommendedProtectCpuResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Number = params.get("Number")
         self._RequestId = params.get("RequestId")
 
 
@@ -54316,10 +54346,122 @@ class DescribeSafeInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Context: <p>文本内容</p>
+        :type Context: str
+        :param _Title: <p>标题</p>
+        :type Title: str
+        :param _Url: <p>超链接地址</p>
+        :type Url: str
+        :param _EffectHostCount: <p>受影响机器数</p>
+        :type EffectHostCount: int
+        :param _EventName: <p>受影响事件名称</p>
+        :type EventName: str
+        :param _EventCategory: <p>受影响事件类型 0 无 1 木马 2 漏洞 3基线</p>
+        :type EventCategory: int
+        :param _IsShow: <p>是否展示通知</p>
+        :type IsShow: bool
+        :param _Id: <p>Id值</p>
+        :type Id: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Context = None
+        self._Title = None
+        self._Url = None
+        self._EffectHostCount = None
+        self._EventName = None
+        self._EventCategory = None
+        self._IsShow = None
+        self._Id = None
         self._RequestId = None
+
+    @property
+    def Context(self):
+        r"""<p>文本内容</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Title(self):
+        r"""<p>标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Url(self):
+        r"""<p>超链接地址</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def EffectHostCount(self):
+        r"""<p>受影响机器数</p>
+        :rtype: int
+        """
+        return self._EffectHostCount
+
+    @EffectHostCount.setter
+    def EffectHostCount(self, EffectHostCount):
+        self._EffectHostCount = EffectHostCount
+
+    @property
+    def EventName(self):
+        r"""<p>受影响事件名称</p>
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventCategory(self):
+        r"""<p>受影响事件类型 0 无 1 木马 2 漏洞 3基线</p>
+        :rtype: int
+        """
+        return self._EventCategory
+
+    @EventCategory.setter
+    def EventCategory(self, EventCategory):
+        self._EventCategory = EventCategory
+
+    @property
+    def IsShow(self):
+        r"""<p>是否展示通知</p>
+        :rtype: bool
+        """
+        return self._IsShow
+
+    @IsShow.setter
+    def IsShow(self, IsShow):
+        self._IsShow = IsShow
+
+    @property
+    def Id(self):
+        r"""<p>Id值</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def RequestId(self):
@@ -54334,6 +54476,14 @@ class DescribeSafeInfoResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._Title = params.get("Title")
+        self._Url = params.get("Url")
+        self._EffectHostCount = params.get("EffectHostCount")
+        self._EventName = params.get("EventName")
+        self._EventCategory = params.get("EventCategory")
+        self._IsShow = params.get("IsShow")
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 
@@ -58702,10 +58852,234 @@ class DescribeTrialReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _IsShow: <p>是否展示</p>
+        :type IsShow: bool
+        :param _AddMachineCnt: <p>新增机器数</p>
+        :type AddMachineCnt: int
+        :param _BaselineRiskCnt: <p>基线风险数(检测项)</p>
+        :type BaselineRiskCnt: int
+        :param _VulCnt: <p>漏洞数</p>
+        :type VulCnt: int
+        :param _MalwareAlarmCnt: <p>木马告警成功数</p>
+        :type MalwareAlarmCnt: int
+        :param _BruteAlarmCnt: <p>爆破告警成功数</p>
+        :type BruteAlarmCnt: int
+        :param _AutoIsolateMalwareCnt: <p>自动隔离木马数(成功)</p>
+        :type AutoIsolateMalwareCnt: int
+        :param _AutoBlockBruteCnt: <p>自动阻断数(成功)</p>
+        :type AutoBlockBruteCnt: int
+        :param _AutoDefenceCnt: <p>自动防御漏洞数(成功)</p>
+        :type AutoDefenceCnt: int
+        :param _AutoVulFixCnt: <p>漏洞自动修复数</p>
+        :type AutoVulFixCnt: int
+        :param _JavaShellCnt: <p>java内存码告警数</p>
+        :type JavaShellCnt: int
+        :param _FileTamperCnt: <p>核心文件监控告警数</p>
+        :type FileTamperCnt: int
+        :param _EventCnt: <p>事件调查数</p>
+        :type EventCnt: int
+        :param _DnsCnt: <p>恶意请求事件数</p>
+        :type DnsCnt: int
+        :param _BashCnt: <p>高危命令事件数</p>
+        :type BashCnt: int
+        :param _CloudFrom: <p>云服务器厂商类型</p>
+        :type CloudFrom: list of CloudFromCnt
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._IsShow = None
+        self._AddMachineCnt = None
+        self._BaselineRiskCnt = None
+        self._VulCnt = None
+        self._MalwareAlarmCnt = None
+        self._BruteAlarmCnt = None
+        self._AutoIsolateMalwareCnt = None
+        self._AutoBlockBruteCnt = None
+        self._AutoDefenceCnt = None
+        self._AutoVulFixCnt = None
+        self._JavaShellCnt = None
+        self._FileTamperCnt = None
+        self._EventCnt = None
+        self._DnsCnt = None
+        self._BashCnt = None
+        self._CloudFrom = None
         self._RequestId = None
+
+    @property
+    def IsShow(self):
+        r"""<p>是否展示</p>
+        :rtype: bool
+        """
+        return self._IsShow
+
+    @IsShow.setter
+    def IsShow(self, IsShow):
+        self._IsShow = IsShow
+
+    @property
+    def AddMachineCnt(self):
+        r"""<p>新增机器数</p>
+        :rtype: int
+        """
+        return self._AddMachineCnt
+
+    @AddMachineCnt.setter
+    def AddMachineCnt(self, AddMachineCnt):
+        self._AddMachineCnt = AddMachineCnt
+
+    @property
+    def BaselineRiskCnt(self):
+        r"""<p>基线风险数(检测项)</p>
+        :rtype: int
+        """
+        return self._BaselineRiskCnt
+
+    @BaselineRiskCnt.setter
+    def BaselineRiskCnt(self, BaselineRiskCnt):
+        self._BaselineRiskCnt = BaselineRiskCnt
+
+    @property
+    def VulCnt(self):
+        r"""<p>漏洞数</p>
+        :rtype: int
+        """
+        return self._VulCnt
+
+    @VulCnt.setter
+    def VulCnt(self, VulCnt):
+        self._VulCnt = VulCnt
+
+    @property
+    def MalwareAlarmCnt(self):
+        r"""<p>木马告警成功数</p>
+        :rtype: int
+        """
+        return self._MalwareAlarmCnt
+
+    @MalwareAlarmCnt.setter
+    def MalwareAlarmCnt(self, MalwareAlarmCnt):
+        self._MalwareAlarmCnt = MalwareAlarmCnt
+
+    @property
+    def BruteAlarmCnt(self):
+        r"""<p>爆破告警成功数</p>
+        :rtype: int
+        """
+        return self._BruteAlarmCnt
+
+    @BruteAlarmCnt.setter
+    def BruteAlarmCnt(self, BruteAlarmCnt):
+        self._BruteAlarmCnt = BruteAlarmCnt
+
+    @property
+    def AutoIsolateMalwareCnt(self):
+        r"""<p>自动隔离木马数(成功)</p>
+        :rtype: int
+        """
+        return self._AutoIsolateMalwareCnt
+
+    @AutoIsolateMalwareCnt.setter
+    def AutoIsolateMalwareCnt(self, AutoIsolateMalwareCnt):
+        self._AutoIsolateMalwareCnt = AutoIsolateMalwareCnt
+
+    @property
+    def AutoBlockBruteCnt(self):
+        r"""<p>自动阻断数(成功)</p>
+        :rtype: int
+        """
+        return self._AutoBlockBruteCnt
+
+    @AutoBlockBruteCnt.setter
+    def AutoBlockBruteCnt(self, AutoBlockBruteCnt):
+        self._AutoBlockBruteCnt = AutoBlockBruteCnt
+
+    @property
+    def AutoDefenceCnt(self):
+        r"""<p>自动防御漏洞数(成功)</p>
+        :rtype: int
+        """
+        return self._AutoDefenceCnt
+
+    @AutoDefenceCnt.setter
+    def AutoDefenceCnt(self, AutoDefenceCnt):
+        self._AutoDefenceCnt = AutoDefenceCnt
+
+    @property
+    def AutoVulFixCnt(self):
+        r"""<p>漏洞自动修复数</p>
+        :rtype: int
+        """
+        return self._AutoVulFixCnt
+
+    @AutoVulFixCnt.setter
+    def AutoVulFixCnt(self, AutoVulFixCnt):
+        self._AutoVulFixCnt = AutoVulFixCnt
+
+    @property
+    def JavaShellCnt(self):
+        r"""<p>java内存码告警数</p>
+        :rtype: int
+        """
+        return self._JavaShellCnt
+
+    @JavaShellCnt.setter
+    def JavaShellCnt(self, JavaShellCnt):
+        self._JavaShellCnt = JavaShellCnt
+
+    @property
+    def FileTamperCnt(self):
+        r"""<p>核心文件监控告警数</p>
+        :rtype: int
+        """
+        return self._FileTamperCnt
+
+    @FileTamperCnt.setter
+    def FileTamperCnt(self, FileTamperCnt):
+        self._FileTamperCnt = FileTamperCnt
+
+    @property
+    def EventCnt(self):
+        r"""<p>事件调查数</p>
+        :rtype: int
+        """
+        return self._EventCnt
+
+    @EventCnt.setter
+    def EventCnt(self, EventCnt):
+        self._EventCnt = EventCnt
+
+    @property
+    def DnsCnt(self):
+        r"""<p>恶意请求事件数</p>
+        :rtype: int
+        """
+        return self._DnsCnt
+
+    @DnsCnt.setter
+    def DnsCnt(self, DnsCnt):
+        self._DnsCnt = DnsCnt
+
+    @property
+    def BashCnt(self):
+        r"""<p>高危命令事件数</p>
+        :rtype: int
+        """
+        return self._BashCnt
+
+    @BashCnt.setter
+    def BashCnt(self, BashCnt):
+        self._BashCnt = BashCnt
+
+    @property
+    def CloudFrom(self):
+        r"""<p>云服务器厂商类型</p>
+        :rtype: list of CloudFromCnt
+        """
+        return self._CloudFrom
+
+    @CloudFrom.setter
+    def CloudFrom(self, CloudFrom):
+        self._CloudFrom = CloudFrom
 
     @property
     def RequestId(self):
@@ -58720,6 +59094,27 @@ class DescribeTrialReportResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._IsShow = params.get("IsShow")
+        self._AddMachineCnt = params.get("AddMachineCnt")
+        self._BaselineRiskCnt = params.get("BaselineRiskCnt")
+        self._VulCnt = params.get("VulCnt")
+        self._MalwareAlarmCnt = params.get("MalwareAlarmCnt")
+        self._BruteAlarmCnt = params.get("BruteAlarmCnt")
+        self._AutoIsolateMalwareCnt = params.get("AutoIsolateMalwareCnt")
+        self._AutoBlockBruteCnt = params.get("AutoBlockBruteCnt")
+        self._AutoDefenceCnt = params.get("AutoDefenceCnt")
+        self._AutoVulFixCnt = params.get("AutoVulFixCnt")
+        self._JavaShellCnt = params.get("JavaShellCnt")
+        self._FileTamperCnt = params.get("FileTamperCnt")
+        self._EventCnt = params.get("EventCnt")
+        self._DnsCnt = params.get("DnsCnt")
+        self._BashCnt = params.get("BashCnt")
+        if params.get("CloudFrom") is not None:
+            self._CloudFrom = []
+            for item in params.get("CloudFrom"):
+                obj = CloudFromCnt()
+                obj._deserialize(item)
+                self._CloudFrom.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -85487,13 +85882,13 @@ class ModifyLicenseBindsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID
+        :param _ResourceId: <p>资源ID</p>
         :type ResourceId: str
-        :param _LicenseType: 授权类型
+        :param _LicenseType: <p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
         :type LicenseType: int
-        :param _IsAll: 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+        :param _IsAll: <p>是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)</p>
         :type IsAll: bool
-        :param _QuuidList: 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000
+        :param _QuuidList: <p>需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000</p>
         :type QuuidList: list of str
         """
         self._ResourceId = None
@@ -85503,7 +85898,7 @@ class ModifyLicenseBindsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID
+        r"""<p>资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -85514,7 +85909,7 @@ class ModifyLicenseBindsRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""授权类型
+        r"""<p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
         :rtype: int
         """
         return self._LicenseType
@@ -85525,7 +85920,7 @@ class ModifyLicenseBindsRequest(AbstractModel):
 
     @property
     def IsAll(self):
-        r"""是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+        r"""<p>是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)</p>
         :rtype: bool
         """
         return self._IsAll
@@ -85536,7 +85931,7 @@ class ModifyLicenseBindsRequest(AbstractModel):
 
     @property
     def QuuidList(self):
-        r"""需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000
+        r"""<p>需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000</p>
         :rtype: list of str
         """
         return self._QuuidList
@@ -85568,7 +85963,7 @@ class ModifyLicenseBindsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -85578,7 +85973,7 @@ class ModifyLicenseBindsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: int
         """
         return self._TaskId
@@ -85750,18 +86145,13 @@ class ModifyLicenseUnBindsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID
+        :param _ResourceId: <p>资源ID</p>
         :type ResourceId: str
-        :param _LicenseType: 授权类型
-- 0 按量付费-专业版
-- 1 包年包月-专业版
-- 2 包年包月-旗舰版
-- 3 包年包月-轻量版
+        :param _LicenseType: <p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
         :type LicenseType: int
-        :param _IsAll: 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+        :param _IsAll: <p>是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)</p>
         :type IsAll: bool
-        :param _QuuidList: 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.
-最大长度=100
+        :param _QuuidList: <p>需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.<br>最大长度=100</p>
         :type QuuidList: list of str
         """
         self._ResourceId = None
@@ -85771,7 +86161,7 @@ class ModifyLicenseUnBindsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID
+        r"""<p>资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -85782,11 +86172,7 @@ class ModifyLicenseUnBindsRequest(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""授权类型
-- 0 按量付费-专业版
-- 1 包年包月-专业版
-- 2 包年包月-旗舰版
-- 3 包年包月-轻量版
+        r"""<p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
         :rtype: int
         """
         return self._LicenseType
@@ -85797,7 +86183,7 @@ class ModifyLicenseUnBindsRequest(AbstractModel):
 
     @property
     def IsAll(self):
-        r"""是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+        r"""<p>是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)</p>
         :rtype: bool
         """
         return self._IsAll
@@ -85808,8 +86194,7 @@ class ModifyLicenseUnBindsRequest(AbstractModel):
 
     @property
     def QuuidList(self):
-        r"""需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.
-最大长度=100
+        r"""<p>需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.<br>最大长度=100</p>
         :rtype: list of str
         """
         return self._QuuidList
@@ -85841,7 +86226,7 @@ class ModifyLicenseUnBindsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrMsg: 只有解绑失败的才有该值.
+        :param _ErrMsg: <p>只有解绑失败的才有该值.</p>
         :type ErrMsg: list of LicenseUnBindRsp
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -85851,7 +86236,7 @@ class ModifyLicenseUnBindsResponse(AbstractModel):
 
     @property
     def ErrMsg(self):
-        r"""只有解绑失败的才有该值.
+        r"""<p>只有解绑失败的才有该值.</p>
         :rtype: list of LicenseUnBindRsp
         """
         return self._ErrMsg

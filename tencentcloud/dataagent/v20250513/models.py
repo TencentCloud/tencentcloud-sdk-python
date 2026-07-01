@@ -1467,6 +1467,224 @@ class ExampleQA(AbstractModel):
         
 
 
+class ExecuteAgentApiRequest(AbstractModel):
+    r"""ExecuteAgentApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestPath: <p>参数路径</p>
+        :type RequestPath: str
+        :param _RequestData: <p>参数值</p>
+        :type RequestData: str
+        :param _RequestType: <p>post还是get</p><p>枚举值：</p><ul><li>post： post请求</li><li>get： get请求</li></ul>
+        :type RequestType: str
+        """
+        self._RequestPath = None
+        self._RequestData = None
+        self._RequestType = None
+
+    @property
+    def RequestPath(self):
+        r"""<p>参数路径</p>
+        :rtype: str
+        """
+        return self._RequestPath
+
+    @RequestPath.setter
+    def RequestPath(self, RequestPath):
+        self._RequestPath = RequestPath
+
+    @property
+    def RequestData(self):
+        r"""<p>参数值</p>
+        :rtype: str
+        """
+        return self._RequestData
+
+    @RequestData.setter
+    def RequestData(self, RequestData):
+        self._RequestData = RequestData
+
+    @property
+    def RequestType(self):
+        r"""<p>post还是get</p><p>枚举值：</p><ul><li>post： post请求</li><li>get： get请求</li></ul>
+        :rtype: str
+        """
+        return self._RequestType
+
+    @RequestType.setter
+    def RequestType(self, RequestType):
+        self._RequestType = RequestType
+
+
+    def _deserialize(self, params):
+        self._RequestPath = params.get("RequestPath")
+        self._RequestData = params.get("RequestData")
+        self._RequestType = params.get("RequestType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecuteAgentApiResponse(AbstractModel):
+    r"""ExecuteAgentApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestPath: <p>请求路径</p>
+        :type RequestPath: str
+        :param _AgentData: <p>返回的具体指</p>
+        :type AgentData: str
+        :param _ErrorMsg: <p>错误码信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestPath = None
+        self._AgentData = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def RequestPath(self):
+        r"""<p>请求路径</p>
+        :rtype: str
+        """
+        return self._RequestPath
+
+    @RequestPath.setter
+    def RequestPath(self, RequestPath):
+        self._RequestPath = RequestPath
+
+    @property
+    def AgentData(self):
+        r"""<p>返回的具体指</p>
+        :rtype: str
+        """
+        return self._AgentData
+
+    @AgentData.setter
+    def AgentData(self, AgentData):
+        self._AgentData = AgentData
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误码信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestPath = params.get("RequestPath")
+        self._AgentData = params.get("AgentData")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ExecuteAgentApiV1Request(AbstractModel):
+    r"""ExecuteAgentApiV1请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestPath: <p>参数路径</p>
+        :type RequestPath: str
+        :param _RequestType: <p>post还是get</p><p>枚举值：</p><ul><li>post： post请求</li><li>get： get请求</li></ul>
+        :type RequestType: str
+        """
+        self._RequestPath = None
+        self._RequestType = None
+
+    @property
+    def RequestPath(self):
+        r"""<p>参数路径</p>
+        :rtype: str
+        """
+        return self._RequestPath
+
+    @RequestPath.setter
+    def RequestPath(self, RequestPath):
+        self._RequestPath = RequestPath
+
+    @property
+    def RequestType(self):
+        r"""<p>post还是get</p><p>枚举值：</p><ul><li>post： post请求</li><li>get： get请求</li></ul>
+        :rtype: str
+        """
+        return self._RequestType
+
+    @RequestType.setter
+    def RequestType(self, RequestType):
+        self._RequestType = RequestType
+
+
+    def _deserialize(self, params):
+        self._RequestPath = params.get("RequestPath")
+        self._RequestType = params.get("RequestType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecuteAgentApiV1Response(AbstractModel):
+    r"""ExecuteAgentApiV1返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class FileInfo(AbstractModel):
     r"""知识库文件信息
 

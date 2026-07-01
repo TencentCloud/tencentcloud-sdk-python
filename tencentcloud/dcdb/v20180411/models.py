@@ -170,20 +170,23 @@ class AddShardConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShardCount: 新增分片的数量
+        :param _ShardCount: <p>新增分片的数量</p>
         :type ShardCount: int
-        :param _ShardMemory: 分片内存大小，单位 GB
+        :param _ShardMemory: <p>分片内存大小，单位 GB</p>
         :type ShardMemory: int
-        :param _ShardStorage: 分片存储大小，单位 GB
+        :param _ShardStorage: <p>分片存储大小，单位 GB</p>
         :type ShardStorage: int
+        :param _DcnInsShardConfigs: <p>DCN实例的规格</p>
+        :type DcnInsShardConfigs: list of DcnInsShardConfig
         """
         self._ShardCount = None
         self._ShardMemory = None
         self._ShardStorage = None
+        self._DcnInsShardConfigs = None
 
     @property
     def ShardCount(self):
-        r"""新增分片的数量
+        r"""<p>新增分片的数量</p>
         :rtype: int
         """
         return self._ShardCount
@@ -194,7 +197,7 @@ class AddShardConfig(AbstractModel):
 
     @property
     def ShardMemory(self):
-        r"""分片内存大小，单位 GB
+        r"""<p>分片内存大小，单位 GB</p>
         :rtype: int
         """
         return self._ShardMemory
@@ -205,7 +208,7 @@ class AddShardConfig(AbstractModel):
 
     @property
     def ShardStorage(self):
-        r"""分片存储大小，单位 GB
+        r"""<p>分片存储大小，单位 GB</p>
         :rtype: int
         """
         return self._ShardStorage
@@ -214,11 +217,28 @@ class AddShardConfig(AbstractModel):
     def ShardStorage(self, ShardStorage):
         self._ShardStorage = ShardStorage
 
+    @property
+    def DcnInsShardConfigs(self):
+        r"""<p>DCN实例的规格</p>
+        :rtype: list of DcnInsShardConfig
+        """
+        return self._DcnInsShardConfigs
+
+    @DcnInsShardConfigs.setter
+    def DcnInsShardConfigs(self, DcnInsShardConfigs):
+        self._DcnInsShardConfigs = DcnInsShardConfigs
+
 
     def _deserialize(self, params):
         self._ShardCount = params.get("ShardCount")
         self._ShardMemory = params.get("ShardMemory")
         self._ShardStorage = params.get("ShardStorage")
+        if params.get("DcnInsShardConfigs") is not None:
+            self._DcnInsShardConfigs = []
+            for item in params.get("DcnInsShardConfigs"):
+                obj = DcnInsShardConfig()
+                obj._deserialize(item)
+                self._DcnInsShardConfigs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5544,6 +5564,72 @@ class DcnDetailItem(AbstractModel):
         self._PolarisServiceStatusDesc = params.get("PolarisServiceStatusDesc")
         self._PolarisRegion = params.get("PolarisRegion")
         self._IsDcnSwitchSupported = params.get("IsDcnSwitchSupported")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DcnInsShardConfig(AbstractModel):
+    r"""DCN实例添加分片时对端实例期望添加的分片规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _Memory: <p>内存大小</p>
+        :type Memory: int
+        :param _Storage: <p>磁盘大小</p>
+        :type Storage: int
+        """
+        self._InstanceId = None
+        self._Memory = None
+        self._Storage = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Memory(self):
+        r"""<p>内存大小</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        r"""<p>磁盘大小</p>
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

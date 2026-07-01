@@ -15689,26 +15689,29 @@ class SingleWorkflowConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncWorkflow: 是否开启异步工作流
+        :param _AsyncWorkflow: <p>是否开启异步工作流</p>
         :type AsyncWorkflow: bool
-        :param _Status: 状态 发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 PUBLISHED_FAIL:发布失败；DRAFT：待调试)
+        :param _Status: <p>状态 发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 PUBLISHED_FAIL:发布失败；DRAFT：待调试)</p>
         :type Status: str
-        :param _WorkflowDescription: 工作流描述
+        :param _WorkflowDescription: <p>工作流描述</p>
         :type WorkflowDescription: str
-        :param _WorkflowId: 工作流Id
+        :param _WorkflowId: <p>工作流Id</p>
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
         :type WorkflowName: str
+        :param _Enabled: <p>工作流是否启用</p>
+        :type Enabled: bool
         """
         self._AsyncWorkflow = None
         self._Status = None
         self._WorkflowDescription = None
         self._WorkflowId = None
         self._WorkflowName = None
+        self._Enabled = None
 
     @property
     def AsyncWorkflow(self):
-        r"""是否开启异步工作流
+        r"""<p>是否开启异步工作流</p>
         :rtype: bool
         """
         return self._AsyncWorkflow
@@ -15719,7 +15722,7 @@ class SingleWorkflowConfig(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态 发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 PUBLISHED_FAIL:发布失败；DRAFT：待调试)
+        r"""<p>状态 发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 PUBLISHED_FAIL:发布失败；DRAFT：待调试)</p>
         :rtype: str
         """
         return self._Status
@@ -15730,7 +15733,7 @@ class SingleWorkflowConfig(AbstractModel):
 
     @property
     def WorkflowDescription(self):
-        r"""工作流描述
+        r"""<p>工作流描述</p>
         :rtype: str
         """
         return self._WorkflowDescription
@@ -15741,7 +15744,7 @@ class SingleWorkflowConfig(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流Id
+        r"""<p>工作流Id</p>
         :rtype: str
         """
         return self._WorkflowId
@@ -15752,7 +15755,7 @@ class SingleWorkflowConfig(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
         :rtype: str
         """
         return self._WorkflowName
@@ -15761,6 +15764,17 @@ class SingleWorkflowConfig(AbstractModel):
     def WorkflowName(self, WorkflowName):
         self._WorkflowName = WorkflowName
 
+    @property
+    def Enabled(self):
+        r"""<p>工作流是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
 
     def _deserialize(self, params):
         self._AsyncWorkflow = params.get("AsyncWorkflow")
@@ -15768,6 +15782,7 @@ class SingleWorkflowConfig(AbstractModel):
         self._WorkflowDescription = params.get("WorkflowDescription")
         self._WorkflowId = params.get("WorkflowId")
         self._WorkflowName = params.get("WorkflowName")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

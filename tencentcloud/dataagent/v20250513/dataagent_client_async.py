@@ -169,6 +169,42 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExecuteAgentApi(
+            self,
+            request: models.ExecuteAgentApiRequest,
+            opts: Dict = None,
+    ) -> models.ExecuteAgentApiResponse:
+        """
+        执行datateam相关的命令行请求
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExecuteAgentApi"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExecuteAgentApiResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExecuteAgentApiV1(
+            self,
+            request: models.ExecuteAgentApiV1Request,
+            opts: Dict = None,
+    ) -> models.ExecuteAgentApiV1Response:
+        """
+        执行datateam相关的命令行请求
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExecuteAgentApiV1"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExecuteAgentApiV1Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetJobsByKnowledgeBaseId(
             self,
             request: models.GetJobsByKnowledgeBaseIdRequest,

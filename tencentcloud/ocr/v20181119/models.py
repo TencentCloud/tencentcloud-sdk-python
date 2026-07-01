@@ -21968,9 +21968,9 @@ class QrcodeOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG、PDF格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
         :type ImageUrl: str
         """
         self._ImageBase64 = None
@@ -21978,7 +21978,7 @@ class QrcodeOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -21989,7 +21989,7 @@ class QrcodeOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""<p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG、PDF格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -22019,9 +22019,9 @@ class QrcodeOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CodeResults: 二维码/条形码识别结果信息，具体内容请点击左侧链接。
+        :param _CodeResults: <p>二维码/条形码识别结果信息，具体内容请点击左侧链接。</p>
         :type CodeResults: list of QrcodeResultsInfo
-        :param _ImgSize: 图片大小，具体内容请点击左侧链接。
+        :param _ImgSize: <p>图片大小，具体内容请点击左侧链接。</p>
         :type ImgSize: :class:`tencentcloud.ocr.v20181119.models.QrcodeImgSize`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22032,7 +22032,7 @@ class QrcodeOCRResponse(AbstractModel):
 
     @property
     def CodeResults(self):
-        r"""二维码/条形码识别结果信息，具体内容请点击左侧链接。
+        r"""<p>二维码/条形码识别结果信息，具体内容请点击左侧链接。</p>
         :rtype: list of QrcodeResultsInfo
         """
         return self._CodeResults
@@ -22043,7 +22043,7 @@ class QrcodeOCRResponse(AbstractModel):
 
     @property
     def ImgSize(self):
-        r"""图片大小，具体内容请点击左侧链接。
+        r"""<p>图片大小，具体内容请点击左侧链接。</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.QrcodeImgSize`
         """
         return self._ImgSize

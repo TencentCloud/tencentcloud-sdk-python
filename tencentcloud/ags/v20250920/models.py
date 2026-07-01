@@ -618,7 +618,7 @@ class CreateSandboxToolRequest(AbstractModel):
         r"""
         :param _ToolName: <p>沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一</p>
         :type ToolName: str
-        :param _ToolType: <p>沙箱工具类型，目前支持：browser、code-interpreter、custom</p>
+        :param _ToolType: <p>沙箱工具类型，目前支持：browser、code-interpreter、custom等</p><p>枚举值：</p><ul><li>browser： browser</li><li>code-interpreter： code-interpreter</li><li>mobile： mobile</li><li>osworld： osworld</li><li>custom： custom</li><li>swebench： swebench</li><li>aio： aio</li><li>android-world： android-world</li><li>waa： waa</li></ul>
         :type ToolType: str
         :param _NetworkConfiguration: <p>网络配置</p>
         :type NetworkConfiguration: :class:`tencentcloud.ags.v20250920.models.NetworkConfiguration`
@@ -667,7 +667,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def ToolType(self):
-        r"""<p>沙箱工具类型，目前支持：browser、code-interpreter、custom</p>
+        r"""<p>沙箱工具类型，目前支持：browser、code-interpreter、custom等</p><p>枚举值：</p><ul><li>browser： browser</li><li>code-interpreter： code-interpreter</li><li>mobile： mobile</li><li>osworld： osworld</li><li>custom： custom</li><li>swebench： swebench</li><li>aio： aio</li><li>android-world： android-world</li><li>waa： waa</li></ul>
         :rtype: str
         """
         return self._ToolType

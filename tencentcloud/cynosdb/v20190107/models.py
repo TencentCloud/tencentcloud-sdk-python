@@ -50722,24 +50722,28 @@ class ProxyGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyGroupId: 数据库代理组ID
+        :param _ProxyGroupId: <p>数据库代理组ID</p>
         :type ProxyGroupId: str
-        :param _ProxyNodeCount: 数据库代理组节点个数
+        :param _ProxyNodeCount: <p>数据库代理组节点个数</p>
         :type ProxyNodeCount: int
-        :param _Status: 数据库代理组状态
+        :param _Status: <p>数据库代理组状态</p>
         :type Status: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _CurrentProxyVersion: 当前代理版本
+        :param _CurrentProxyVersion: <p>当前代理版本</p>
         :type CurrentProxyVersion: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _AppId: 用户AppId
+        :param _AppId: <p>用户AppId</p>
         :type AppId: int
-        :param _OpenRw: 读写节点开通数据库代理
+        :param _OpenRw: <p>读写节点开通数据库代理</p>
         :type OpenRw: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
         """
         self._ProxyGroupId = None
         self._ProxyNodeCount = None
@@ -50750,10 +50754,12 @@ class ProxyGroup(AbstractModel):
         self._ClusterId = None
         self._AppId = None
         self._OpenRw = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def ProxyGroupId(self):
-        r"""数据库代理组ID
+        r"""<p>数据库代理组ID</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -50764,7 +50770,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def ProxyNodeCount(self):
-        r"""数据库代理组节点个数
+        r"""<p>数据库代理组节点个数</p>
         :rtype: int
         """
         return self._ProxyNodeCount
@@ -50775,7 +50781,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def Status(self):
-        r"""数据库代理组状态
+        r"""<p>数据库代理组状态</p>
         :rtype: str
         """
         return self._Status
@@ -50786,7 +50792,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -50797,7 +50803,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -50808,7 +50814,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def CurrentProxyVersion(self):
-        r"""当前代理版本
+        r"""<p>当前代理版本</p>
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -50819,7 +50825,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -50830,7 +50836,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户AppId
+        r"""<p>用户AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -50841,7 +50847,7 @@ class ProxyGroup(AbstractModel):
 
     @property
     def OpenRw(self):
-        r"""读写节点开通数据库代理
+        r"""<p>读写节点开通数据库代理</p>
         :rtype: str
         """
         return self._OpenRw
@@ -50849,6 +50855,28 @@ class ProxyGroup(AbstractModel):
     @OpenRw.setter
     def OpenRw(self, OpenRw):
         self._OpenRw = OpenRw
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
@@ -50861,6 +50889,8 @@ class ProxyGroup(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._AppId = params.get("AppId")
         self._OpenRw = params.get("OpenRw")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51286,28 +51316,32 @@ class ProxyNodeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyNodeId: 数据库代理节点ID
+        :param _ProxyNodeId: <p>数据库代理节点ID</p>
         :type ProxyNodeId: str
-        :param _ProxyNodeConnections: 节点当前连接数, DescribeProxyNodes接口此字段值不返回
+        :param _ProxyNodeConnections: <p>节点当前连接数, DescribeProxyNodes接口此字段值不返回</p>
         :type ProxyNodeConnections: int
-        :param _Cpu: 数据库代理节点cpu
+        :param _Cpu: <p>数据库代理节点cpu</p>
         :type Cpu: int
-        :param _Mem: 数据库代理节点内存
+        :param _Mem: <p>数据库代理节点内存</p>
         :type Mem: int
-        :param _Status: 数据库代理节点状态
+        :param _Status: <p>数据库代理节点状态</p>
         :type Status: str
-        :param _ProxyGroupId: 数据库代理组ID
+        :param _ProxyGroupId: <p>数据库代理组ID</p>
         :type ProxyGroupId: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _AppId: 用户AppID
+        :param _AppId: <p>用户AppID</p>
         :type AppId: int
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _OssProxyNodeName: 数据库代理节点名字
+        :param _OssProxyNodeName: <p>数据库代理节点名字</p>
         :type OssProxyNodeName: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
         """
         self._ProxyNodeId = None
         self._ProxyNodeConnections = None
@@ -51320,10 +51354,12 @@ class ProxyNodeInfo(AbstractModel):
         self._Region = None
         self._Zone = None
         self._OssProxyNodeName = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def ProxyNodeId(self):
-        r"""数据库代理节点ID
+        r"""<p>数据库代理节点ID</p>
         :rtype: str
         """
         return self._ProxyNodeId
@@ -51334,7 +51370,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def ProxyNodeConnections(self):
-        r"""节点当前连接数, DescribeProxyNodes接口此字段值不返回
+        r"""<p>节点当前连接数, DescribeProxyNodes接口此字段值不返回</p>
         :rtype: int
         """
         return self._ProxyNodeConnections
@@ -51345,7 +51381,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""数据库代理节点cpu
+        r"""<p>数据库代理节点cpu</p>
         :rtype: int
         """
         return self._Cpu
@@ -51356,7 +51392,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Mem(self):
-        r"""数据库代理节点内存
+        r"""<p>数据库代理节点内存</p>
         :rtype: int
         """
         return self._Mem
@@ -51367,7 +51403,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""数据库代理节点状态
+        r"""<p>数据库代理节点状态</p>
         :rtype: str
         """
         return self._Status
@@ -51378,7 +51414,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""数据库代理组ID
+        r"""<p>数据库代理组ID</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -51389,7 +51425,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -51400,7 +51436,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户AppID
+        r"""<p>用户AppID</p>
         :rtype: int
         """
         return self._AppId
@@ -51411,7 +51447,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -51422,7 +51458,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -51433,7 +51469,7 @@ class ProxyNodeInfo(AbstractModel):
 
     @property
     def OssProxyNodeName(self):
-        r"""数据库代理节点名字
+        r"""<p>数据库代理节点名字</p>
         :rtype: str
         """
         return self._OssProxyNodeName
@@ -51441,6 +51477,28 @@ class ProxyNodeInfo(AbstractModel):
     @OssProxyNodeName.setter
     def OssProxyNodeName(self, OssProxyNodeName):
         self._OssProxyNodeName = OssProxyNodeName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
@@ -51455,6 +51513,8 @@ class ProxyNodeInfo(AbstractModel):
         self._Region = params.get("Region")
         self._Zone = params.get("Zone")
         self._OssProxyNodeName = params.get("OssProxyNodeName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

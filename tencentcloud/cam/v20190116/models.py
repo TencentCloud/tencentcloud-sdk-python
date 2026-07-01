@@ -2075,26 +2075,29 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityUrl: 身份提供商URL
+        :param _IdentityUrl: <p>身份提供商URL</p>
         :type IdentityUrl: str
-        :param _ClientId: 客户端ID
+        :param _ClientId: <p>客户端ID</p>
         :type ClientId: list of str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _IdentityKey: 签名公钥，需要base64
+        :param _IdentityKey: <p>签名公钥，需要base64</p>
         :type IdentityKey: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
+        :param _AutoRotateKey: <p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :type AutoRotateKey: int
         """
         self._IdentityUrl = None
         self._ClientId = None
         self._Name = None
         self._IdentityKey = None
         self._Description = None
+        self._AutoRotateKey = None
 
     @property
     def IdentityUrl(self):
-        r"""身份提供商URL
+        r"""<p>身份提供商URL</p>
         :rtype: str
         """
         return self._IdentityUrl
@@ -2105,7 +2108,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        r"""客户端ID
+        r"""<p>客户端ID</p>
         :rtype: list of str
         """
         return self._ClientId
@@ -2116,7 +2119,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -2127,7 +2130,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityKey(self):
-        r"""签名公钥，需要base64
+        r"""<p>签名公钥，需要base64</p>
         :rtype: str
         """
         return self._IdentityKey
@@ -2138,7 +2141,7 @@ class CreateOIDCConfigRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -2147,6 +2150,17 @@ class CreateOIDCConfigRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def AutoRotateKey(self):
+        r"""<p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._AutoRotateKey
+
+    @AutoRotateKey.setter
+    def AutoRotateKey(self, AutoRotateKey):
+        self._AutoRotateKey = AutoRotateKey
+
 
     def _deserialize(self, params):
         self._IdentityUrl = params.get("IdentityUrl")
@@ -2154,6 +2168,7 @@ class CreateOIDCConfigRequest(AbstractModel):
         self._Name = params.get("Name")
         self._IdentityKey = params.get("IdentityKey")
         self._Description = params.get("Description")
+        self._AutoRotateKey = params.get("AutoRotateKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4103,14 +4118,14 @@ class DescribeOIDCConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
         """
         self._Name = None
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -4139,20 +4154,22 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProviderType: 身份提供商类型 11角色身份提供商
+        :param _ProviderType: <p>身份提供商类型 11角色身份提供商</p>
         :type ProviderType: int
-        :param _IdentityUrl: 身份提供商URL
+        :param _IdentityUrl: <p>身份提供商URL</p>
         :type IdentityUrl: str
-        :param _IdentityKey: 签名公钥
+        :param _IdentityKey: <p>签名公钥</p>
         :type IdentityKey: str
-        :param _ClientId: 客户端id
+        :param _ClientId: <p>客户端id</p>
         :type ClientId: list of str
-        :param _Status: 状态：0:未设置，11:已开启，2:已禁用
+        :param _Status: <p>状态：0:未设置，11:已开启，2:已禁用</p>
         :type Status: int
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
+        :param _AutoRotateKey: <p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :type AutoRotateKey: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4163,11 +4180,12 @@ class DescribeOIDCConfigResponse(AbstractModel):
         self._Status = None
         self._Description = None
         self._Name = None
+        self._AutoRotateKey = None
         self._RequestId = None
 
     @property
     def ProviderType(self):
-        r"""身份提供商类型 11角色身份提供商
+        r"""<p>身份提供商类型 11角色身份提供商</p>
         :rtype: int
         """
         return self._ProviderType
@@ -4178,7 +4196,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def IdentityUrl(self):
-        r"""身份提供商URL
+        r"""<p>身份提供商URL</p>
         :rtype: str
         """
         return self._IdentityUrl
@@ -4189,7 +4207,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def IdentityKey(self):
-        r"""签名公钥
+        r"""<p>签名公钥</p>
         :rtype: str
         """
         return self._IdentityKey
@@ -4200,7 +4218,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def ClientId(self):
-        r"""客户端id
+        r"""<p>客户端id</p>
         :rtype: list of str
         """
         return self._ClientId
@@ -4211,7 +4229,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态：0:未设置，11:已开启，2:已禁用
+        r"""<p>状态：0:未设置，11:已开启，2:已禁用</p>
         :rtype: int
         """
         return self._Status
@@ -4222,7 +4240,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -4233,7 +4251,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -4241,6 +4259,17 @@ class DescribeOIDCConfigResponse(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def AutoRotateKey(self):
+        r"""<p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._AutoRotateKey
+
+    @AutoRotateKey.setter
+    def AutoRotateKey(self, AutoRotateKey):
+        self._AutoRotateKey = AutoRotateKey
 
     @property
     def RequestId(self):
@@ -4262,6 +4291,7 @@ class DescribeOIDCConfigResponse(AbstractModel):
         self._Status = params.get("Status")
         self._Description = params.get("Description")
         self._Name = params.get("Name")
+        self._AutoRotateKey = params.get("AutoRotateKey")
         self._RequestId = params.get("RequestId")
 
 
@@ -13146,26 +13176,29 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdentityUrl: 身份提供商URL
+        :param _IdentityUrl: <p>身份提供商URL</p>
         :type IdentityUrl: str
-        :param _ClientId: 客户端ID
+        :param _ClientId: <p>客户端ID</p>
         :type ClientId: list of str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _IdentityKey: 签名公钥，需要base64
+        :param _IdentityKey: <p>签名公钥，需要base64</p>
         :type IdentityKey: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
+        :param _AutoRotateKey: <p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :type AutoRotateKey: int
         """
         self._IdentityUrl = None
         self._ClientId = None
         self._Name = None
         self._IdentityKey = None
         self._Description = None
+        self._AutoRotateKey = None
 
     @property
     def IdentityUrl(self):
-        r"""身份提供商URL
+        r"""<p>身份提供商URL</p>
         :rtype: str
         """
         return self._IdentityUrl
@@ -13176,7 +13209,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        r"""客户端ID
+        r"""<p>客户端ID</p>
         :rtype: list of str
         """
         return self._ClientId
@@ -13187,7 +13220,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -13198,7 +13231,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     @property
     def IdentityKey(self):
-        r"""签名公钥，需要base64
+        r"""<p>签名公钥，需要base64</p>
         :rtype: str
         """
         return self._IdentityKey
@@ -13209,7 +13242,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -13218,6 +13251,17 @@ class UpdateOIDCConfigRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def AutoRotateKey(self):
+        r"""<p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._AutoRotateKey
+
+    @AutoRotateKey.setter
+    def AutoRotateKey(self, AutoRotateKey):
+        self._AutoRotateKey = AutoRotateKey
+
 
     def _deserialize(self, params):
         self._IdentityUrl = params.get("IdentityUrl")
@@ -13225,6 +13269,7 @@ class UpdateOIDCConfigRequest(AbstractModel):
         self._Name = params.get("Name")
         self._IdentityKey = params.get("IdentityKey")
         self._Description = params.get("Description")
+        self._AutoRotateKey = params.get("AutoRotateKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
