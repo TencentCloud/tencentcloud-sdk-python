@@ -605,6 +605,72 @@ class ConsumerClient(AbstractModel):
         
 
 
+class ConsumerLabel(AbstractModel):
+    r"""消费组标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: <p>标签</p>
+        :type Label: str
+        :param _State: <p>标签状态</p><p>枚举值：</p><ul><li>ACTIVE： 生效中</li><li>DELETING： 删除中</li><li>UNKNOWN： 未知</li></ul>
+        :type State: str
+        :param _UpdatedAt: <p>更新时间</p><p>单位：毫秒(ms)</p>
+        :type UpdatedAt: int
+        """
+        self._Label = None
+        self._State = None
+        self._UpdatedAt = None
+
+    @property
+    def Label(self):
+        r"""<p>标签</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def State(self):
+        r"""<p>标签状态</p><p>枚举值：</p><ul><li>ACTIVE： 生效中</li><li>DELETING： 删除中</li><li>UNKNOWN： 未知</li></ul>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间</p><p>单位：毫秒(ms)</p>
+        :rtype: int
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._State = params.get("State")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateConsumerGroupRequest(AbstractModel):
     r"""CreateConsumerGroup请求参数结构体
 
@@ -823,6 +889,145 @@ class CreateConsumerGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ConsumerGroup = params.get("ConsumerGroup")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateConsumerLabelRequest(AbstractModel):
+    r"""CreateConsumerLabel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Label: <p>标签</p>
+        :type Label: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        """
+        self._InstanceId = None
+        self._Label = None
+        self._Group = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Label(self):
+        r"""<p>标签</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Label = params.get("Label")
+        self._Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerLabelResponse(AbstractModel):
+    r"""CreateConsumerLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID</p>
+        :type InstanceId: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        :param _Label: <p>标签</p>
+        :type Label: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Group = None
+        self._Label = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Label(self):
+        r"""<p>标签</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        self._Label = params.get("Label")
         self._RequestId = params.get("RequestId")
 
 
@@ -1819,6 +2024,194 @@ class DeleteConsumerGroupRequest(AbstractModel):
 
 class DeleteConsumerGroupResponse(AbstractModel):
     r"""DeleteConsumerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteConsumerLabelRequest(AbstractModel):
+    r"""DeleteConsumerLabel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        :param _Label: <p>标签</p>
+        :type Label: str
+        """
+        self._InstanceId = None
+        self._Group = None
+        self._Label = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Label(self):
+        r"""<p>标签</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsumerLabelResponse(AbstractModel):
+    r"""DeleteConsumerLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteConsumerRouteConfigRequest(AbstractModel):
+    r"""DeleteConsumerRouteConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :type Topic: str
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        """
+        self._Topic = None
+        self._InstanceId = None
+        self._Group = None
+
+    @property
+    def Topic(self):
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsumerRouteConfigResponse(AbstractModel):
+    r"""DeleteConsumerRouteConfig返回参数结构体
 
     """
 
@@ -2980,6 +3373,231 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeConsumerLabelListRequest(AbstractModel):
+    r"""DescribeConsumerLabelList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        """
+        self._InstanceId = None
+        self._Group = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerLabelListResponse(AbstractModel):
+    r"""DescribeConsumerLabelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _Labels: <p>标签列表</p>
+        :type Labels: list of ConsumerLabel
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Labels = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Labels(self):
+        r"""<p>标签列表</p>
+        :rtype: list of ConsumerLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = ConsumerLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerLabelRequest(AbstractModel):
+    r"""DescribeConsumerLabel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        :param _Label: <p>标签</p>
+        :type Label: str
+        """
+        self._InstanceId = None
+        self._Group = None
+        self._Label = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Label(self):
+        r"""<p>标签</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerLabelResponse(AbstractModel):
+    r"""DescribeConsumerLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: <p>标签详情</p>
+        :type Label: :class:`tencentcloud.trocket.v20230308.models.ConsumerLabel`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Label = None
+        self._RequestId = None
+
+    @property
+    def Label(self):
+        r"""<p>标签详情</p>
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ConsumerLabel`
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Label") is not None:
+            self._Label = ConsumerLabel()
+            self._Label._deserialize(params.get("Label"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeConsumerLagRequest(AbstractModel):
     r"""DescribeConsumerLag请求参数结构体
 
@@ -3101,6 +3719,279 @@ class DescribeConsumerLagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ConsumerLag = params.get("ConsumerLag")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerRouteConfigRequest(AbstractModel):
+    r"""DescribeConsumerRouteConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :type Topic: str
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        """
+        self._Topic = None
+        self._InstanceId = None
+        self._Group = None
+
+    @property
+    def Topic(self):
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerRouteConfigResponse(AbstractModel):
+    r"""DescribeConsumerRouteConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: <p>版本号</p>
+        :type Version: int
+        :param _Rules: <p>路由规格</p>
+        :type Rules: list of RouteRule
+        :param _CutTimestamp: <p>切流时间戳</p>
+        :type CutTimestamp: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Version = None
+        self._Rules = None
+        self._CutTimestamp = None
+        self._RequestId = None
+
+    @property
+    def Version(self):
+        r"""<p>版本号</p>
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Rules(self):
+        r"""<p>路由规格</p>
+        :rtype: list of RouteRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def CutTimestamp(self):
+        r"""<p>切流时间戳</p>
+        :rtype: int
+        """
+        return self._CutTimestamp
+
+    @CutTimestamp.setter
+    def CutTimestamp(self, CutTimestamp):
+        self._CutTimestamp = CutTimestamp
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RouteRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._CutTimestamp = params.get("CutTimestamp")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerRouteVersionListRequest(AbstractModel):
+    r"""DescribeConsumerRouteVersionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :type Topic: str
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        """
+        self._Topic = None
+        self._InstanceId = None
+        self._Group = None
+
+    @property
+    def Topic(self):
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerRouteVersionListResponse(AbstractModel):
+    r"""DescribeConsumerRouteVersionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _Versions: <p>版本列表</p>
+        :type Versions: list of RouteRuleVersion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Versions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Versions(self):
+        r"""<p>版本列表</p>
+        :rtype: list of RouteRuleVersion
+        """
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Versions") is not None:
+            self._Versions = []
+            for item in params.get("Versions"):
+                obj = RouteRuleVersion()
+                obj._deserialize(item)
+                self._Versions.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10572,6 +11463,180 @@ PLATINUM，铂金版
         
 
 
+class PutConsumerRouteConfigRequest(AbstractModel):
+    r"""PutConsumerRouteConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :type Topic: str
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        :param _Rules: <p>路由规则</p>
+        :type Rules: list of RouteRule
+        """
+        self._Topic = None
+        self._InstanceId = None
+        self._Group = None
+        self._Rules = None
+
+    @property
+    def Topic(self):
+        r"""主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Rules(self):
+        r"""<p>路由规则</p>
+        :rtype: list of RouteRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RouteRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PutConsumerRouteConfigResponse(AbstractModel):
+    r"""PutConsumerRouteConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID</p>
+        :type InstanceId: str
+        :param _Topic: <p>主题</p>
+        :type Topic: str
+        :param _Group: <p>消费组</p>
+        :type Group: str
+        :param _Version: <p>版本号</p>
+        :type Version: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._Group = None
+        self._Version = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        r"""<p>主题</p>
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Group(self):
+        r"""<p>消费组</p>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Version(self):
+        r"""<p>版本号</p>
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._Group = params.get("Group")
+        self._Version = params.get("Version")
+        self._RequestId = params.get("RequestId")
+
+
 class RemoveMigratingTopicRequest(AbstractModel):
     r"""RemoveMigratingTopic请求参数结构体
 
@@ -11219,6 +12284,143 @@ class RollbackMigratingTopicStageResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RouteRule(AbstractModel):
+    r"""消费组路由规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MatchCondition: <p>路由匹配条件</p>
+        :type MatchCondition: str
+        :param _TargetConsumerLabel: <p>标签</p>
+        :type TargetConsumerLabel: str
+        """
+        self._MatchCondition = None
+        self._TargetConsumerLabel = None
+
+    @property
+    def MatchCondition(self):
+        r"""<p>路由匹配条件</p>
+        :rtype: str
+        """
+        return self._MatchCondition
+
+    @MatchCondition.setter
+    def MatchCondition(self, MatchCondition):
+        self._MatchCondition = MatchCondition
+
+    @property
+    def TargetConsumerLabel(self):
+        r"""<p>标签</p>
+        :rtype: str
+        """
+        return self._TargetConsumerLabel
+
+    @TargetConsumerLabel.setter
+    def TargetConsumerLabel(self, TargetConsumerLabel):
+        self._TargetConsumerLabel = TargetConsumerLabel
+
+
+    def _deserialize(self, params):
+        self._MatchCondition = params.get("MatchCondition")
+        self._TargetConsumerLabel = params.get("TargetConsumerLabel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouteRuleVersion(AbstractModel):
+    r"""路由规则版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: <p>版本号</p>
+        :type Version: int
+        :param _CutTimestamp: <p>切流时间戳</p><p>单位：毫秒（ms）</p>
+        :type CutTimestamp: int
+        :param _UpdatedAt: <p>更新时间戳</p><p>单位：毫秒（ms）</p>
+        :type UpdatedAt: int
+        :param _Rules: <p>路由规则列表</p>
+        :type Rules: list of RouteRule
+        """
+        self._Version = None
+        self._CutTimestamp = None
+        self._UpdatedAt = None
+        self._Rules = None
+
+    @property
+    def Version(self):
+        r"""<p>版本号</p>
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def CutTimestamp(self):
+        r"""<p>切流时间戳</p><p>单位：毫秒（ms）</p>
+        :rtype: int
+        """
+        return self._CutTimestamp
+
+    @CutTimestamp.setter
+    def CutTimestamp(self, CutTimestamp):
+        self._CutTimestamp = CutTimestamp
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间戳</p><p>单位：毫秒（ms）</p>
+        :rtype: int
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def Rules(self):
+        r"""<p>路由规则列表</p>
+        :rtype: list of RouteRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._CutTimestamp = params.get("CutTimestamp")
+        self._UpdatedAt = params.get("UpdatedAt")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RouteRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SendMessageRequest(AbstractModel):

@@ -2154,29 +2154,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RollbackPGUserMigrations(self, request):
-        r"""本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
-
-        :param request: Request instance for RollbackPGUserMigrations.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.RollbackPGUserMigrationsRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.RollbackPGUserMigrationsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RollbackPGUserMigrations", params, headers=headers)
-            response = json.loads(body)
-            model = models.RollbackPGUserMigrationsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RunCommands(self, request):
         r"""本接口（RunCommands）用于执行文档型数据库命令。
 

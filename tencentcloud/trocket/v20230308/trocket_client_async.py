@@ -62,6 +62,24 @@ class TrocketClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateConsumerLabel(
+            self,
+            request: models.CreateConsumerLabelRequest,
+            opts: Dict = None,
+    ) -> models.CreateConsumerLabelResponse:
+        """
+        创建消费组灰度标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateConsumerLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateConsumerLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateInstance(
             self,
             request: models.CreateInstanceRequest,
@@ -151,6 +169,42 @@ class TrocketClient(AbstractClient):
         kwargs["action"] = "DeleteConsumerGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteConsumerGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteConsumerLabel(
+            self,
+            request: models.DeleteConsumerLabelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteConsumerLabelResponse:
+        """
+        删除消费组灰度标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteConsumerLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteConsumerLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteConsumerRouteConfig(
+            self,
+            request: models.DeleteConsumerRouteConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteConsumerRouteConfigResponse:
+        """
+        删除消费组灰度路由配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteConsumerRouteConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteConsumerRouteConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -318,6 +372,42 @@ class TrocketClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeConsumerLabel(
+            self,
+            request: models.DescribeConsumerLabelRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerLabelResponse:
+        """
+        查询消费组某个灰度标签详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumerLabelList(
+            self,
+            request: models.DescribeConsumerLabelListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerLabelListResponse:
+        """
+        查询消费组下灰度标签列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerLabelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerLabelListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeConsumerLag(
             self,
             request: models.DescribeConsumerLagRequest,
@@ -332,6 +422,42 @@ class TrocketClient(AbstractClient):
         kwargs["action"] = "DescribeConsumerLag"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeConsumerLagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumerRouteConfig(
+            self,
+            request: models.DescribeConsumerRouteConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerRouteConfigResponse:
+        """
+        查询消费组当前生效的灰度路由配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerRouteConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerRouteConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumerRouteVersionList(
+            self,
+            request: models.DescribeConsumerRouteVersionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumerRouteVersionListResponse:
+        """
+        查询消费组灰度路由配置版本列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumerRouteVersionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumerRouteVersionListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -925,6 +1051,24 @@ class TrocketClient(AbstractClient):
         kwargs["action"] = "ModifyTopic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyTopicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def PutConsumerRouteConfig(
+            self,
+            request: models.PutConsumerRouteConfigRequest,
+            opts: Dict = None,
+    ) -> models.PutConsumerRouteConfigResponse:
+        """
+        写入消费组灰度路由配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PutConsumerRouteConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PutConsumerRouteConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

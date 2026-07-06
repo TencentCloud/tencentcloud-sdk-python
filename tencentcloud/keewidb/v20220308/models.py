@@ -704,11 +704,11 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TypeId: <p>产品版本。14：极速版。</p>
+        :param _TypeId: <p>实例版本类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
         :type TypeId: int
-        :param _UniqVpcId: <p>私有网络唯一ID。请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
+        :param _UniqVpcId: <p>私有网络唯一ID。<br>请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: <p>私有网络所属子网唯一ID。请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
+        :param _UniqSubnetId: <p>私有网络所属子网唯一ID。<br>请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
         :type UniqSubnetId: str
         :param _BillingMode: <p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
         :type BillingMode: int
@@ -720,17 +720,17 @@ class CreateInstancesRequest(AbstractModel):
         :type ShardNum: int
         :param _ReplicasNum: <p>副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。</p>
         :type ReplicasNum: int
-        :param _MachineMemory: <p>实例内存容量，单位：GB。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+        :param _MachineMemory: <p>实例内存容量，单位：GB。<br>极速版内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p><p>单位：GB</p>
         :type MachineMemory: int
         :param _ZoneId: <p>实例所属的可用区ID。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
         :type ZoneId: int
         :param _ZoneName: <p>实例所属的可用区名称。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
         :type ZoneName: str
-        :param _InstanceName: <p>创建实例的名称。仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。</p>
+        :param _InstanceName: <p>创建实例的名称。<br>仅支持长度小于60的中文、英文或者数字，短划线&quot;-&quot;、下划线&quot;_&quot;。</p>
         :type InstanceName: str
         :param _NoAuth: <p>指明创建的实例是否需要支持免密访问。<ul><li>true：免密实例。</li><li>false：非免密实例，默认为非免密实例。此时，需要设置访问密码。</li></ul></p>
         :type NoAuth: bool
-        :param _Password: <p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul></p>
+        :param _Password: <p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li></p><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul>
         :type Password: str
         :param _VPort: <p>自定义端口。默认为6379，范围[1024,65535]。</p>
         :type VPort: int
@@ -740,11 +740,11 @@ class CreateInstancesRequest(AbstractModel):
         :type SecurityGroupIdList: list of str
         :param _ResourceTags: <p>给实例绑定标签。</p>
         :type ResourceTags: list of ResourceTag
-        :param _MemSize: <p>极速版，单分片持久化内存容量。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>单位：GB。
+        :param _MemSize: <p>极速版，单分片持久化内存容量。<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p><p>单位：GB。</p>
         :type MemSize: int
-        :param _DiskSize: <p>每个分片硬盘的容量。单位：GB。每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+        :param _DiskSize: <p>每个分片硬盘的容量。单位：GB。<br>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :type DiskSize: int
-        :param _MachineCpu: <p>计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+        :param _MachineCpu: <p>计算 CPU 核数。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :type MachineCpu: int
         :param _ProjectId: <p>项目id，取值以用户账户&gt;用户账户相关接口查询&gt;项目列表返回的projectId为准。</p>
         :type ProjectId: int
@@ -777,7 +777,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def TypeId(self):
-        r"""<p>产品版本。14：极速版。</p>
+        r"""<p>实例版本类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
         :rtype: int
         """
         return self._TypeId
@@ -788,7 +788,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""<p>私有网络唯一ID。请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
+        r"""<p>私有网络唯一ID。<br>请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -799,7 +799,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""<p>私有网络所属子网唯一ID。请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
+        r"""<p>私有网络所属子网唯一ID。<br>请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -865,7 +865,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def MachineMemory(self):
-        r"""<p>实例内存容量，单位：GB。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+        r"""<p>实例内存容量，单位：GB。<br>极速版内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p><p>单位：GB</p>
         :rtype: int
         """
         return self._MachineMemory
@@ -898,7 +898,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""<p>创建实例的名称。仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。</p>
+        r"""<p>创建实例的名称。<br>仅支持长度小于60的中文、英文或者数字，短划线&quot;-&quot;、下划线&quot;_&quot;。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -920,7 +920,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""<p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul></p>
+        r"""<p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li></p><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul>
         :rtype: str
         """
         return self._Password
@@ -975,7 +975,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def MemSize(self):
-        r"""<p>极速版，单分片持久化内存容量。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>单位：GB。
+        r"""<p>极速版，单分片持久化内存容量。<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p><p>单位：GB。</p>
         :rtype: int
         """
         return self._MemSize
@@ -986,7 +986,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""<p>每个分片硬盘的容量。单位：GB。每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+        r"""<p>每个分片硬盘的容量。单位：GB。<br>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :rtype: int
         """
         return self._DiskSize
@@ -997,7 +997,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def MachineCpu(self):
-        r"""<p>计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+        r"""<p>计算 CPU 核数。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
         :rtype: int
         """
         return self._MachineCpu
@@ -1079,7 +1079,7 @@ class CreateInstancesResponse(AbstractModel):
         :type DealId: str
         :param _InstanceIds: <p>实例 ID 。</p>
         :type InstanceIds: list of str
-        :param _DealName: <p>订单号。    </p>
+        :param _DealName: <p>订单号。</p>
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1117,7 +1117,7 @@ class CreateInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""<p>订单号。    </p>
+        r"""<p>订单号。</p>
         :rtype: str
         """
         return self._DealName
@@ -2627,50 +2627,49 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页输出的实例列表的大小，即每页输出的实例数量，默认值20，取值范围为[1,1000]。
+        :param _Limit: <p>每页输出的实例列表的大小，即每页输出的实例数量，默认值20，取值范围为[1,1000]。</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，取Limit整数倍。
-计算公式为offset=limit*(页码-1)。例如 limit=10，第1页offset就为0，第2页offset就为10，依次类推。
+        :param _Offset: <p>分页偏移量，取Limit整数倍。<br>计算公式为offset=limit*(页码-1)。例如 limit=10，第1页offset就为0，第2页offset就为10，依次类推。</p>
         :type Offset: int
-        :param _InstanceId: 实例 ID，如：kee-6ubh****。
+        :param _InstanceId: <p>实例 ID，如：kee-6ubh****。</p>
         :type InstanceId: str
-        :param _OrderBy: 排序依据。枚举范围如下所示。 <ul><li>projectId：实例按照项目ID排序。</li><li>createtime：实例按照创建时间排序。</li><li>instancename：实例按照实例名称排序。</li><li>type：实例按照类型排序。</li><li>curDeadline：实例按照到期时间排序。</li></ul>
+        :param _OrderBy: <p>排序依据。枚举范围如下所示。 <ul><li>projectId：实例按照项目ID排序。</li><li>createtime：实例按照创建时间排序。</li><li>instancename：实例按照实例名称排序。</li><li>type：实例按照类型排序。</li><li>curDeadline：实例按照到期时间排序。</li></ul></p>
         :type OrderBy: str
-        :param _OrderType: 排序方式。<ul><li>1：倒序。默认为倒序。</li><li>0：顺序。</li></ul>
+        :param _OrderType: <p>排序方式。<ul><li>1：倒序。默认为倒序。</li><li>0：顺序。</li></ul></p>
         :type OrderType: int
-        :param _VpcIds: 私有网络ID数组。数组下标从0开始，如果不传则默认选择基础网络，如：47525
+        :param _VpcIds: <p>私有网络ID数组。数组下标从0开始，如果不传则默认选择基础网络，如：47525</p>
         :type VpcIds: list of str
-        :param _SubnetIds: 子网ID数组，数组下标从0开始，如：56854
+        :param _SubnetIds: <p>子网ID数组，数组下标从0开始，如：56854</p>
         :type SubnetIds: list of str
-        :param _ProjectIds: 项目ID 组成的数组，数组下标从0开始
+        :param _ProjectIds: <p>项目ID 组成的数组，数组下标从0开始</p>
         :type ProjectIds: list of int
-        :param _SearchKey: 查找关键字，可输入实例的ID或者实例名称。
+        :param _SearchKey: <p>查找关键字，可输入实例的ID或者实例名称。</p>
         :type SearchKey: str
-        :param _InstanceName: 实例名称。
+        :param _InstanceName: <p>实例名称。</p>
         :type InstanceName: str
-        :param _UniqVpcIds: 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
+        :param _UniqVpcIds: <p>私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk</p>
         :type UniqVpcIds: list of str
-        :param _UniqSubnetIds: 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
+        :param _UniqSubnetIds: <p>子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2</p>
         :type UniqSubnetIds: list of str
-        :param _Status: 实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
+        :param _Status: <p>实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul></p>
         :type Status: list of int
-        :param _AutoRenew: 续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。
+        :param _AutoRenew: <p>续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。</p>
         :type AutoRenew: list of int
-        :param _BillingMode: 计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
+        :param _BillingMode: <p>计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul></p>
         :type BillingMode: str
-        :param _Type: 实例类型。<ul><li>13：标准版。</li><li>14：集群版。</li></ul>
+        :param _Type: <p>实例类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
         :type Type: int
-        :param _SearchKeys: 搜索关键词：支持实例 ID、实例名称、私有网络IP地址。
+        :param _SearchKeys: <p>搜索关键词：支持实例 ID、实例名称、私有网络IP地址。</p>
         :type SearchKeys: list of str
-        :param _TypeList: 内部参数，用户可忽略。
+        :param _TypeList: <p>内部参数，用户可忽略。</p>
         :type TypeList: list of int
-        :param _MonitorVersion: 内部参数，用户可忽略。
+        :param _MonitorVersion: <p>内部参数，用户可忽略。</p>
         :type MonitorVersion: str
-        :param _InstanceTags: 废弃字段。请使用TagList传参。
+        :param _InstanceTags: <p>废弃字段。请使用TagList传参。</p>
         :type InstanceTags: :class:`tencentcloud.keewidb.v20220308.models.InstanceTagInfo`
-        :param _TagKeys: 根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。
+        :param _TagKeys: <p>根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。</p>
         :type TagKeys: list of str
-        :param _TagList: 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+        :param _TagList: <p>根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。</p>
         :type TagList: list of InstanceTagInfo
         """
         self._Limit = None
@@ -2698,7 +2697,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页输出的实例列表的大小，即每页输出的实例数量，默认值20，取值范围为[1,1000]。
+        r"""<p>每页输出的实例列表的大小，即每页输出的实例数量，默认值20，取值范围为[1,1000]。</p>
         :rtype: int
         """
         return self._Limit
@@ -2709,8 +2708,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，取Limit整数倍。
-计算公式为offset=limit*(页码-1)。例如 limit=10，第1页offset就为0，第2页offset就为10，依次类推。
+        r"""<p>分页偏移量，取Limit整数倍。<br>计算公式为offset=limit*(页码-1)。例如 limit=10，第1页offset就为0，第2页offset就为10，依次类推。</p>
         :rtype: int
         """
         return self._Offset
@@ -2721,7 +2719,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，如：kee-6ubh****。
+        r"""<p>实例 ID，如：kee-6ubh****。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2732,7 +2730,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序依据。枚举范围如下所示。 <ul><li>projectId：实例按照项目ID排序。</li><li>createtime：实例按照创建时间排序。</li><li>instancename：实例按照实例名称排序。</li><li>type：实例按照类型排序。</li><li>curDeadline：实例按照到期时间排序。</li></ul>
+        r"""<p>排序依据。枚举范围如下所示。 <ul><li>projectId：实例按照项目ID排序。</li><li>createtime：实例按照创建时间排序。</li><li>instancename：实例按照实例名称排序。</li><li>type：实例按照类型排序。</li><li>curDeadline：实例按照到期时间排序。</li></ul></p>
         :rtype: str
         """
         return self._OrderBy
@@ -2743,7 +2741,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""排序方式。<ul><li>1：倒序。默认为倒序。</li><li>0：顺序。</li></ul>
+        r"""<p>排序方式。<ul><li>1：倒序。默认为倒序。</li><li>0：顺序。</li></ul></p>
         :rtype: int
         """
         return self._OrderType
@@ -2754,7 +2752,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def VpcIds(self):
-        r"""私有网络ID数组。数组下标从0开始，如果不传则默认选择基础网络，如：47525
+        r"""<p>私有网络ID数组。数组下标从0开始，如果不传则默认选择基础网络，如：47525</p>
         :rtype: list of str
         """
         return self._VpcIds
@@ -2765,7 +2763,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网ID数组，数组下标从0开始，如：56854
+        r"""<p>子网ID数组，数组下标从0开始，如：56854</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -2776,7 +2774,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
-        r"""项目ID 组成的数组，数组下标从0开始
+        r"""<p>项目ID 组成的数组，数组下标从0开始</p>
         :rtype: list of int
         """
         return self._ProjectIds
@@ -2787,7 +2785,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        r"""查找关键字，可输入实例的ID或者实例名称。
+        r"""<p>查找关键字，可输入实例的ID或者实例名称。</p>
         :rtype: str
         """
         return self._SearchKey
@@ -2798,7 +2796,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -2809,7 +2807,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def UniqVpcIds(self):
-        r"""私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
+        r"""<p>私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk</p>
         :rtype: list of str
         """
         return self._UniqVpcIds
@@ -2820,7 +2818,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def UniqSubnetIds(self):
-        r"""子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
+        r"""<p>子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2</p>
         :rtype: list of str
         """
         return self._UniqSubnetIds
@@ -2831,7 +2829,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
+        r"""<p>实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul></p>
         :rtype: list of int
         """
         return self._Status
@@ -2842,7 +2840,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        r"""续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。
+        r"""<p>续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。</p>
         :rtype: list of int
         """
         return self._AutoRenew
@@ -2853,7 +2851,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def BillingMode(self):
-        r"""计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
+        r"""<p>计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul></p>
         :rtype: str
         """
         return self._BillingMode
@@ -2864,7 +2862,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""实例类型。<ul><li>13：标准版。</li><li>14：集群版。</li></ul>
+        r"""<p>实例类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
         :rtype: int
         """
         return self._Type
@@ -2875,7 +2873,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SearchKeys(self):
-        r"""搜索关键词：支持实例 ID、实例名称、私有网络IP地址。
+        r"""<p>搜索关键词：支持实例 ID、实例名称、私有网络IP地址。</p>
         :rtype: list of str
         """
         return self._SearchKeys
@@ -2886,7 +2884,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TypeList(self):
-        r"""内部参数，用户可忽略。
+        r"""<p>内部参数，用户可忽略。</p>
         :rtype: list of int
         """
         return self._TypeList
@@ -2897,7 +2895,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def MonitorVersion(self):
-        r"""内部参数，用户可忽略。
+        r"""<p>内部参数，用户可忽略。</p>
         :rtype: str
         """
         return self._MonitorVersion
@@ -2910,7 +2908,7 @@ class DescribeInstancesRequest(AbstractModel):
     def InstanceTags(self):
         warnings.warn("parameter `InstanceTags` is deprecated", DeprecationWarning) 
 
-        r"""废弃字段。请使用TagList传参。
+        r"""<p>废弃字段。请使用TagList传参。</p>
         :rtype: :class:`tencentcloud.keewidb.v20220308.models.InstanceTagInfo`
         """
         return self._InstanceTags
@@ -2923,7 +2921,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        r"""根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。
+        r"""<p>根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。</p>
         :rtype: list of str
         """
         return self._TagKeys
@@ -2934,7 +2932,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+        r"""<p>根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。</p>
         :rtype: list of InstanceTagInfo
         """
         return self._TagList
@@ -2991,9 +2989,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 实例数
+        :param _TotalCount: <p>实例数</p>
         :type TotalCount: int
-        :param _InstanceSet: 实例详细信息列表
+        :param _InstanceSet: <p>实例详细信息列表</p>
         :type InstanceSet: list of InstanceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3004,7 +3002,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""实例数
+        r"""<p>实例数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -3015,7 +3013,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        r"""实例详细信息列表
+        r"""<p>实例详细信息列表</p>
         :rtype: list of InstanceInfo
         """
         return self._InstanceSet
@@ -4622,109 +4620,109 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: 实例名称。
+        :param _InstanceName: <p>实例名称。</p>
         :type InstanceName: str
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: <p>实例 ID。</p>
         :type InstanceId: str
-        :param _Appid: 用户的Appid。
+        :param _Appid: <p>用户的Appid。</p>
         :type Appid: int
-        :param _ProjectId: 项目 ID。
+        :param _ProjectId: <p>项目 ID。</p>
         :type ProjectId: int
-        :param _RegionId: 地域ID。<ul><li>1：广州。</li><li>4：上海。</li><li>8：北京。</li></ul>
+        :param _RegionId: <p>地域ID。<ul><li>1：广州。</li><li>4：上海。</li><li>8：北京。</li></ul></p>
         :type RegionId: int
-        :param _ZoneId: 可用区 ID。
+        :param _ZoneId: <p>可用区 ID。</p>
         :type ZoneId: int
-        :param _VpcId: VPC 网络 ID， 如：75101。该参数当前暂保留，可忽略。
+        :param _VpcId: <p>VPC 网络 ID， 如：75101。该参数当前暂保留，可忽略。</p>
         :type VpcId: int
-        :param _Status: 实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul>
+        :param _Status: <p>实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul></p>
         :type Status: int
-        :param _SubnetId: VPC 网络下子网 ID， 如：46315。该参数当前暂保留，可忽略。
+        :param _SubnetId: <p>VPC 网络下子网 ID， 如：46315。该参数当前暂保留，可忽略。</p>
         :type SubnetId: int
-        :param _WanIp: 实例 VIP。
+        :param _WanIp: <p>实例 VIP。</p>
         :type WanIp: str
-        :param _Port: 实例端口号。
+        :param _Port: <p>实例端口号。</p>
         :type Port: int
-        :param _Createtime: 实例创建时间。
+        :param _Createtime: <p>实例创建时间。</p>
         :type Createtime: str
-        :param _Size: 实例持久内存总容量大小，单位：MB。
+        :param _Size: <p>实例持久内存总容量大小，单位：MB。</p>
         :type Size: float
-        :param _Type: 实例类型。<ul><li>13：标准版。</li><li>14：集群版。</li></ul>
+        :param _Type: <p>实例类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
         :type Type: int
-        :param _AutoRenewFlag: 实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>
+        :param _AutoRenewFlag: <p>实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul></p>
         :type AutoRenewFlag: int
-        :param _DeadlineTime: 实例到期时间。
+        :param _DeadlineTime: <p>实例到期时间。</p>
         :type DeadlineTime: str
-        :param _Engine: 存储引擎。
+        :param _Engine: <p>存储引擎。</p>
         :type Engine: str
-        :param _ProductType: 产品类型。<ul><li>standalone ：标准版。</li><li>cluster ：集群版。</li></ul>
+        :param _ProductType: <p>产品类型。<ul><li>standalone ：标准版。</li><li>cluster ：集群版。</li></ul></p>
         :type ProductType: str
-        :param _UniqVpcId: VPC 网络 ID， 如：vpc-fk33jsf4****。
+        :param _UniqVpcId: <p>VPC 网络 ID， 如：vpc-fk33jsf4****。</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: VPC 网络下子网 ID，如：subnet-fd3j6l3****。
+        :param _UniqSubnetId: <p>VPC 网络下子网 ID，如：subnet-fd3j6l3****。</p>
         :type UniqSubnetId: str
-        :param _BillingMode: 计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+        :param _BillingMode: <p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
         :type BillingMode: int
-        :param _InstanceTitle: 实例运行状态描述：如”实例运行中“。
+        :param _InstanceTitle: <p>实例运行状态描述：如”实例运行中“。</p>
         :type InstanceTitle: str
-        :param _OfflineTime: 计划下线时间。
+        :param _OfflineTime: <p>计划下线时间。</p>
         :type OfflineTime: str
-        :param _SubStatus: 流程中的实例，返回子状态。
+        :param _SubStatus: <p>流程中的实例，返回子状态。</p>
         :type SubStatus: int
-        :param _Tags: 反亲和性标签
+        :param _Tags: <p>反亲和性标签</p>
         :type Tags: list of str
-        :param _RedisShardSize: 分片大小。
+        :param _RedisShardSize: <p>分片大小。</p>
         :type RedisShardSize: int
-        :param _RedisShardNum: 分片数量。
+        :param _RedisShardNum: <p>分片数量。</p>
         :type RedisShardNum: int
-        :param _RedisReplicasNum: 副本数量。
+        :param _RedisReplicasNum: <p>副本数量。</p>
         :type RedisReplicasNum: int
-        :param _PriceId: 计费 ID。
+        :param _PriceId: <p>计费 ID。</p>
         :type PriceId: int
-        :param _CloseTime: 隔离时间。
+        :param _CloseTime: <p>隔离时间。</p>
         :type CloseTime: str
-        :param _SlaveReadWeight: 从节点读取权重。
+        :param _SlaveReadWeight: <p>从节点读取权重。</p>
         :type SlaveReadWeight: int
-        :param _InstanceTags: 实例关联的标签信息。
+        :param _InstanceTags: <p>实例关联的标签信息。</p>
         :type InstanceTags: list of InstanceTagInfo
-        :param _ProjectName: 项目名称。
+        :param _ProjectName: <p>项目名称。</p>
         :type ProjectName: str
-        :param _NoAuth: 是否为免密实例；<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
+        :param _NoAuth: <p>是否为免密实例；<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul></p>
         :type NoAuth: bool
-        :param _ClientLimit: 客户端连接数。
+        :param _ClientLimit: <p>客户端连接数。</p>
         :type ClientLimit: int
-        :param _DtsStatus: DTS状态（内部参数，用户可忽略）。
+        :param _DtsStatus: <p>DTS状态（内部参数，用户可忽略）。</p>
         :type DtsStatus: int
-        :param _NetLimit: 分片带宽上限，单位 MB。
+        :param _NetLimit: <p>分片带宽上限，单位 MB。</p>
         :type NetLimit: int
-        :param _PasswordFree: 免密实例标识（内部参数，用户可忽略）。
+        :param _PasswordFree: <p>免密实例标识（内部参数，用户可忽略）。</p>
         :type PasswordFree: int
-        :param _ReadOnly: 实例只读标识（内部参数，用户可忽略）。
+        :param _ReadOnly: <p>实例只读标识（内部参数，用户可忽略）。</p>
         :type ReadOnly: int
-        :param _Vip6: 内部参数，用户可忽略。
+        :param _Vip6: <p>内部参数，用户可忽略。</p>
         :type Vip6: str
-        :param _RemainBandwidthDuration: 内部参数，用户可忽略。
+        :param _RemainBandwidthDuration: <p>内部参数，用户可忽略。</p>
         :type RemainBandwidthDuration: str
-        :param _DiskSize: 实例的磁盘容量大小。
+        :param _DiskSize: <p>实例的磁盘容量大小。</p>
         :type DiskSize: int
-        :param _MonitorVersion: 监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul>
+        :param _MonitorVersion: <p>监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul></p>
         :type MonitorVersion: str
-        :param _ClientLimitMin: 客户端最大连接数可设置的最小值。
+        :param _ClientLimitMin: <p>客户端最大连接数可设置的最小值。</p>
         :type ClientLimitMin: int
-        :param _ClientLimitMax: 客户端最大连接数可设置的最大值。
+        :param _ClientLimitMax: <p>客户端最大连接数可设置的最大值。</p>
         :type ClientLimitMax: int
-        :param _NodeSet: 实例的节点详细信息。
+        :param _NodeSet: <p>实例的节点详细信息。</p>
         :type NodeSet: list of NodeInfo
-        :param _Region: 实例所在的地域信息，比如ap-guangzhou。
+        :param _Region: <p>实例所在的地域信息，比如ap-guangzhou。</p>
         :type Region: str
-        :param _MachineMemory: 实例内存容量，单位：GB。KeeWiDB 内存容量
+        :param _MachineMemory: <p>实例内存容量，单位：GB。KeeWiDB 内存容量</p>
         :type MachineMemory: int
-        :param _DiskShardSize: 单分片磁盘大小，单位：MB
+        :param _DiskShardSize: <p>单分片磁盘大小，单位：MB</p>
         :type DiskShardSize: int
-        :param _DiskShardNum: 3
+        :param _DiskShardNum: <p>分片数量</p>
         :type DiskShardNum: int
-        :param _DiskReplicasNum: 1
+        :param _DiskReplicasNum: <p>副本数量</p>
         :type DiskReplicasNum: int
-        :param _Compression: 数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul>
+        :param _Compression: <p>数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul></p>
         :type Compression: str
         """
         self._InstanceName = None
@@ -4782,7 +4780,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -4793,7 +4791,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。
+        r"""<p>实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4804,7 +4802,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Appid(self):
-        r"""用户的Appid。
+        r"""<p>用户的Appid。</p>
         :rtype: int
         """
         return self._Appid
@@ -4815,7 +4813,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目 ID。
+        r"""<p>项目 ID。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -4826,7 +4824,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域ID。<ul><li>1：广州。</li><li>4：上海。</li><li>8：北京。</li></ul>
+        r"""<p>地域ID。<ul><li>1：广州。</li><li>4：上海。</li><li>8：北京。</li></ul></p>
         :rtype: int
         """
         return self._RegionId
@@ -4837,7 +4835,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""可用区 ID。
+        r"""<p>可用区 ID。</p>
         :rtype: int
         """
         return self._ZoneId
@@ -4848,7 +4846,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC 网络 ID， 如：75101。该参数当前暂保留，可忽略。
+        r"""<p>VPC 网络 ID， 如：75101。该参数当前暂保留，可忽略。</p>
         :rtype: int
         """
         return self._VpcId
@@ -4859,7 +4857,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul>
+        r"""<p>实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul></p>
         :rtype: int
         """
         return self._Status
@@ -4870,7 +4868,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""VPC 网络下子网 ID， 如：46315。该参数当前暂保留，可忽略。
+        r"""<p>VPC 网络下子网 ID， 如：46315。该参数当前暂保留，可忽略。</p>
         :rtype: int
         """
         return self._SubnetId
@@ -4881,7 +4879,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def WanIp(self):
-        r"""实例 VIP。
+        r"""<p>实例 VIP。</p>
         :rtype: str
         """
         return self._WanIp
@@ -4892,7 +4890,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Port(self):
-        r"""实例端口号。
+        r"""<p>实例端口号。</p>
         :rtype: int
         """
         return self._Port
@@ -4903,7 +4901,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Createtime(self):
-        r"""实例创建时间。
+        r"""<p>实例创建时间。</p>
         :rtype: str
         """
         return self._Createtime
@@ -4914,7 +4912,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Size(self):
-        r"""实例持久内存总容量大小，单位：MB。
+        r"""<p>实例持久内存总容量大小，单位：MB。</p>
         :rtype: float
         """
         return self._Size
@@ -4925,7 +4923,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""实例类型。<ul><li>13：标准版。</li><li>14：集群版。</li></ul>
+        r"""<p>实例类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
         :rtype: int
         """
         return self._Type
@@ -4936,7 +4934,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>
+        r"""<p>实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul></p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -4947,7 +4945,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeadlineTime(self):
-        r"""实例到期时间。
+        r"""<p>实例到期时间。</p>
         :rtype: str
         """
         return self._DeadlineTime
@@ -4958,7 +4956,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Engine(self):
-        r"""存储引擎。
+        r"""<p>存储引擎。</p>
         :rtype: str
         """
         return self._Engine
@@ -4969,7 +4967,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""产品类型。<ul><li>standalone ：标准版。</li><li>cluster ：集群版。</li></ul>
+        r"""<p>产品类型。<ul><li>standalone ：标准版。</li><li>cluster ：集群版。</li></ul></p>
         :rtype: str
         """
         return self._ProductType
@@ -4980,7 +4978,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""VPC 网络 ID， 如：vpc-fk33jsf4****。
+        r"""<p>VPC 网络 ID， 如：vpc-fk33jsf4****。</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -4991,7 +4989,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""VPC 网络下子网 ID，如：subnet-fd3j6l3****。
+        r"""<p>VPC 网络下子网 ID，如：subnet-fd3j6l3****。</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -5002,7 +5000,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BillingMode(self):
-        r"""计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+        r"""<p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
         :rtype: int
         """
         return self._BillingMode
@@ -5013,7 +5011,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceTitle(self):
-        r"""实例运行状态描述：如”实例运行中“。
+        r"""<p>实例运行状态描述：如”实例运行中“。</p>
         :rtype: str
         """
         return self._InstanceTitle
@@ -5024,7 +5022,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def OfflineTime(self):
-        r"""计划下线时间。
+        r"""<p>计划下线时间。</p>
         :rtype: str
         """
         return self._OfflineTime
@@ -5035,7 +5033,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SubStatus(self):
-        r"""流程中的实例，返回子状态。
+        r"""<p>流程中的实例，返回子状态。</p>
         :rtype: int
         """
         return self._SubStatus
@@ -5046,7 +5044,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""反亲和性标签
+        r"""<p>反亲和性标签</p>
         :rtype: list of str
         """
         return self._Tags
@@ -5057,7 +5055,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RedisShardSize(self):
-        r"""分片大小。
+        r"""<p>分片大小。</p>
         :rtype: int
         """
         return self._RedisShardSize
@@ -5068,7 +5066,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RedisShardNum(self):
-        r"""分片数量。
+        r"""<p>分片数量。</p>
         :rtype: int
         """
         return self._RedisShardNum
@@ -5079,7 +5077,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RedisReplicasNum(self):
-        r"""副本数量。
+        r"""<p>副本数量。</p>
         :rtype: int
         """
         return self._RedisReplicasNum
@@ -5090,7 +5088,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def PriceId(self):
-        r"""计费 ID。
+        r"""<p>计费 ID。</p>
         :rtype: int
         """
         return self._PriceId
@@ -5101,7 +5099,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CloseTime(self):
-        r"""隔离时间。
+        r"""<p>隔离时间。</p>
         :rtype: str
         """
         return self._CloseTime
@@ -5112,7 +5110,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SlaveReadWeight(self):
-        r"""从节点读取权重。
+        r"""<p>从节点读取权重。</p>
         :rtype: int
         """
         return self._SlaveReadWeight
@@ -5123,7 +5121,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceTags(self):
-        r"""实例关联的标签信息。
+        r"""<p>实例关联的标签信息。</p>
         :rtype: list of InstanceTagInfo
         """
         return self._InstanceTags
@@ -5134,7 +5132,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称。
+        r"""<p>项目名称。</p>
         :rtype: str
         """
         return self._ProjectName
@@ -5145,7 +5143,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def NoAuth(self):
-        r"""是否为免密实例；<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
+        r"""<p>是否为免密实例；<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul></p>
         :rtype: bool
         """
         return self._NoAuth
@@ -5156,7 +5154,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ClientLimit(self):
-        r"""客户端连接数。
+        r"""<p>客户端连接数。</p>
         :rtype: int
         """
         return self._ClientLimit
@@ -5167,7 +5165,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DtsStatus(self):
-        r"""DTS状态（内部参数，用户可忽略）。
+        r"""<p>DTS状态（内部参数，用户可忽略）。</p>
         :rtype: int
         """
         return self._DtsStatus
@@ -5178,7 +5176,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def NetLimit(self):
-        r"""分片带宽上限，单位 MB。
+        r"""<p>分片带宽上限，单位 MB。</p>
         :rtype: int
         """
         return self._NetLimit
@@ -5189,7 +5187,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def PasswordFree(self):
-        r"""免密实例标识（内部参数，用户可忽略）。
+        r"""<p>免密实例标识（内部参数，用户可忽略）。</p>
         :rtype: int
         """
         return self._PasswordFree
@@ -5200,7 +5198,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""实例只读标识（内部参数，用户可忽略）。
+        r"""<p>实例只读标识（内部参数，用户可忽略）。</p>
         :rtype: int
         """
         return self._ReadOnly
@@ -5211,7 +5209,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Vip6(self):
-        r"""内部参数，用户可忽略。
+        r"""<p>内部参数，用户可忽略。</p>
         :rtype: str
         """
         return self._Vip6
@@ -5222,7 +5220,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RemainBandwidthDuration(self):
-        r"""内部参数，用户可忽略。
+        r"""<p>内部参数，用户可忽略。</p>
         :rtype: str
         """
         return self._RemainBandwidthDuration
@@ -5233,7 +5231,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""实例的磁盘容量大小。
+        r"""<p>实例的磁盘容量大小。</p>
         :rtype: int
         """
         return self._DiskSize
@@ -5244,7 +5242,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MonitorVersion(self):
-        r"""监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul>
+        r"""<p>监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul></p>
         :rtype: str
         """
         return self._MonitorVersion
@@ -5255,7 +5253,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ClientLimitMin(self):
-        r"""客户端最大连接数可设置的最小值。
+        r"""<p>客户端最大连接数可设置的最小值。</p>
         :rtype: int
         """
         return self._ClientLimitMin
@@ -5266,7 +5264,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ClientLimitMax(self):
-        r"""客户端最大连接数可设置的最大值。
+        r"""<p>客户端最大连接数可设置的最大值。</p>
         :rtype: int
         """
         return self._ClientLimitMax
@@ -5277,7 +5275,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def NodeSet(self):
-        r"""实例的节点详细信息。
+        r"""<p>实例的节点详细信息。</p>
         :rtype: list of NodeInfo
         """
         return self._NodeSet
@@ -5288,7 +5286,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""实例所在的地域信息，比如ap-guangzhou。
+        r"""<p>实例所在的地域信息，比如ap-guangzhou。</p>
         :rtype: str
         """
         return self._Region
@@ -5299,7 +5297,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MachineMemory(self):
-        r"""实例内存容量，单位：GB。KeeWiDB 内存容量
+        r"""<p>实例内存容量，单位：GB。KeeWiDB 内存容量</p>
         :rtype: int
         """
         return self._MachineMemory
@@ -5310,7 +5308,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DiskShardSize(self):
-        r"""单分片磁盘大小，单位：MB
+        r"""<p>单分片磁盘大小，单位：MB</p>
         :rtype: int
         """
         return self._DiskShardSize
@@ -5321,7 +5319,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DiskShardNum(self):
-        r"""3
+        r"""<p>分片数量</p>
         :rtype: int
         """
         return self._DiskShardNum
@@ -5332,7 +5330,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DiskReplicasNum(self):
-        r"""1
+        r"""<p>副本数量</p>
         :rtype: int
         """
         return self._DiskReplicasNum
@@ -5343,7 +5341,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Compression(self):
-        r"""数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul>
+        r"""<p>数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul></p>
         :rtype: str
         """
         return self._Compression
@@ -5749,9 +5747,12 @@ class InstanceNodeInfo(AbstractModel):
         :type NodeId: str
         :param _NodeRole: 节点角色
         :type NodeRole: str
+        :param _ZoneId: 可用区ID
+        :type ZoneId: int
         """
         self._NodeId = None
         self._NodeRole = None
+        self._ZoneId = None
 
     @property
     def NodeId(self):
@@ -5775,10 +5776,22 @@ class InstanceNodeInfo(AbstractModel):
     def NodeRole(self, NodeRole):
         self._NodeRole = NodeRole
 
+    @property
+    def ZoneId(self):
+        r"""可用区ID
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
         self._NodeRole = params.get("NodeRole")
+        self._ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7611,8 +7624,11 @@ class ProxyNodeInfo(AbstractModel):
         r"""
         :param _NodeId: 节点ID
         :type NodeId: str
+        :param _ZoneId: 可用区ID
+        :type ZoneId: int
         """
         self._NodeId = None
+        self._ZoneId = None
 
     @property
     def NodeId(self):
@@ -7625,9 +7641,21 @@ class ProxyNodeInfo(AbstractModel):
     def NodeId(self, NodeId):
         self._NodeId = NodeId
 
+    @property
+    def ZoneId(self):
+        r"""可用区ID
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
+        self._ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

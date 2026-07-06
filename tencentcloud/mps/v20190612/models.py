@@ -20575,7 +20575,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         r"""
         :param _ModelName: <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic。</p>
         :type ModelName: str
-        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：2.0、3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>
         :type ModelVersion: str
         :param _SceneType: <p>指定场景生音频。音乐: music。</p>
         :type SceneType: str
@@ -20621,7 +20621,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：2.0、3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -20830,6 +20830,8 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type EnhancePrompt: bool
         :param _ImageInfos: <p>用于传入参考的资源图片信息，默认支持传入一张图片。</p><p>支持多图输入的模型：</p><ol><li>Kling 2.1，可支持最多 4 张图片输入作为资源图。</li><li>Kling 3.0-Omni，可支持最多 10 张图片输入作为资源图。</li><li>Kling O1，可支持最多 10 张图片输入作为资源图。</li><li>Vidu q2，可支持最多 7 张图片输入作为资源图。</li><li>Hunyuan 3.0，可支持最多 3 张图片输入作为资源图。</li><li>MJ v7，可支持最多 3 张图片输入作为资源图。</li></ol><p>注意：</p><ol><li>推荐图片小于7M，各模型限制不同。</li><li>图片格式支持：jpeg, png, webp。</li></ol>
         :type ImageInfos: list of AigcImageInfo
+        :param _OutputImageCount: <p>指定图片输出张数。目前默认支持输出 1 张。</p>
+        :type OutputImageCount: int
         :param _ExtraParameters: <p>用于传入模型要求的额外参数。</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
         :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 </p><ol><li>Hunyuan 3.0，支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。</li><li>Qwen 0925，支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。</li></ol><p>示例： {"size":"1024x1024"}。</p>
@@ -20846,6 +20848,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._NegativePrompt = None
         self._EnhancePrompt = None
         self._ImageInfos = None
+        self._OutputImageCount = None
         self._ExtraParameters = None
         self._AdditionalParameters = None
         self._StoreCosParam = None
@@ -20929,6 +20932,17 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._ImageInfos = ImageInfos
 
     @property
+    def OutputImageCount(self):
+        r"""<p>指定图片输出张数。目前默认支持输出 1 张。</p>
+        :rtype: int
+        """
+        return self._OutputImageCount
+
+    @OutputImageCount.setter
+    def OutputImageCount(self, OutputImageCount):
+        self._OutputImageCount = OutputImageCount
+
+    @property
     def ExtraParameters(self):
         r"""<p>用于传入模型要求的额外参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
@@ -20986,6 +21000,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
                 obj = AigcImageInfo()
                 obj._deserialize(item)
                 self._ImageInfos.append(obj)
+        self._OutputImageCount = params.get("OutputImageCount")
         if params.get("ExtraParameters") is not None:
             self._ExtraParameters = AigcImageExtraParam()
             self._ExtraParameters._deserialize(params.get("ExtraParameters"))

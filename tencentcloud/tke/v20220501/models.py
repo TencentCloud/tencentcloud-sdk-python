@@ -4919,21 +4919,24 @@ class MachineSetScaling(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MinReplicas: 节点池最小副本数
+        :param _MinReplicas: <p>节点池最小副本数</p>
         :type MinReplicas: int
-        :param _MaxReplicas: 节点池最大副本数
+        :param _MaxReplicas: <p>节点池最大副本数</p>
         :type MaxReplicas: int
-        :param _CreatePolicy: 节点池扩容策略。ZoneEquality：多可用区打散；ZonePriority：首选可用区优先；
+        :param _CreatePolicy: <p>节点池扩容策略。ZoneEquality：多可用区打散；ZonePriority：首选可用区优先；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatePolicy: str
+        :param _ScaleDownMode: <p>扩缩容模式</p><p>枚举值：</p><ul><li>ShutdownAndDelete： 释放模式，默认</li><li>Shutdown： 停机模式，关机不计费</li></ul><p>默认值：ShutdownAndDelete</p>
+        :type ScaleDownMode: str
         """
         self._MinReplicas = None
         self._MaxReplicas = None
         self._CreatePolicy = None
+        self._ScaleDownMode = None
 
     @property
     def MinReplicas(self):
-        r"""节点池最小副本数
+        r"""<p>节点池最小副本数</p>
         :rtype: int
         """
         return self._MinReplicas
@@ -4944,7 +4947,7 @@ class MachineSetScaling(AbstractModel):
 
     @property
     def MaxReplicas(self):
-        r"""节点池最大副本数
+        r"""<p>节点池最大副本数</p>
         :rtype: int
         """
         return self._MaxReplicas
@@ -4955,7 +4958,7 @@ class MachineSetScaling(AbstractModel):
 
     @property
     def CreatePolicy(self):
-        r"""节点池扩容策略。ZoneEquality：多可用区打散；ZonePriority：首选可用区优先；
+        r"""<p>节点池扩容策略。ZoneEquality：多可用区打散；ZonePriority：首选可用区优先；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4965,11 +4968,23 @@ class MachineSetScaling(AbstractModel):
     def CreatePolicy(self, CreatePolicy):
         self._CreatePolicy = CreatePolicy
 
+    @property
+    def ScaleDownMode(self):
+        r"""<p>扩缩容模式</p><p>枚举值：</p><ul><li>ShutdownAndDelete： 释放模式，默认</li><li>Shutdown： 停机模式，关机不计费</li></ul><p>默认值：ShutdownAndDelete</p>
+        :rtype: str
+        """
+        return self._ScaleDownMode
+
+    @ScaleDownMode.setter
+    def ScaleDownMode(self, ScaleDownMode):
+        self._ScaleDownMode = ScaleDownMode
+
 
     def _deserialize(self, params):
         self._MinReplicas = params.get("MinReplicas")
         self._MaxReplicas = params.get("MaxReplicas")
         self._CreatePolicy = params.get("CreatePolicy")
+        self._ScaleDownMode = params.get("ScaleDownMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5239,6 +5254,10 @@ class ModifyClusterMachineRequest(AbstractModel):
         :type SecurityGroupIDs: list of str
         :param _InstanceChargePrepaid: <p>节点预付费信息</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
+        :param _InstanceChargeType: <p>节点计费类型变更</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li></ul>
+        :type InstanceChargeType: str
+        :param _ModifyPortableDataDisk: <p>是否同时切换弹性数据云盘计费模式。取值范围：  true：表示切换弹性数据云盘计费模式 false：表示不切换弹性数据云盘计费模式 默认取值：true。</p><p>默认值：true</p>
+        :type ModifyPortableDataDisk: bool
         """
         self._ClusterId = None
         self._MachineNames = None
@@ -5246,6 +5265,8 @@ class ModifyClusterMachineRequest(AbstractModel):
         self._SystemDisk = None
         self._SecurityGroupIDs = None
         self._InstanceChargePrepaid = None
+        self._InstanceChargeType = None
+        self._ModifyPortableDataDisk = None
 
     @property
     def ClusterId(self):
@@ -5313,6 +5334,28 @@ class ModifyClusterMachineRequest(AbstractModel):
     def InstanceChargePrepaid(self, InstanceChargePrepaid):
         self._InstanceChargePrepaid = InstanceChargePrepaid
 
+    @property
+    def InstanceChargeType(self):
+        r"""<p>节点计费类型变更</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li></ul>
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def ModifyPortableDataDisk(self):
+        r"""<p>是否同时切换弹性数据云盘计费模式。取值范围：  true：表示切换弹性数据云盘计费模式 false：表示不切换弹性数据云盘计费模式 默认取值：true。</p><p>默认值：true</p>
+        :rtype: bool
+        """
+        return self._ModifyPortableDataDisk
+
+    @ModifyPortableDataDisk.setter
+    def ModifyPortableDataDisk(self, ModifyPortableDataDisk):
+        self._ModifyPortableDataDisk = ModifyPortableDataDisk
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5325,6 +5368,8 @@ class ModifyClusterMachineRequest(AbstractModel):
         if params.get("InstanceChargePrepaid") is not None:
             self._InstanceChargePrepaid = InstanceChargePrepaid()
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._ModifyPortableDataDisk = params.get("ModifyPortableDataDisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7288,13 +7333,13 @@ class RuntimeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuntimeType: 运行时类型
+        :param _RuntimeType: <p>运行时类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeType: str
-        :param _RuntimeVersion: 运行时版本
+        :param _RuntimeVersion: <p>运行时版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeVersion: str
-        :param _RuntimeRootDir: 运行时根目录
+        :param _RuntimeRootDir: <p>运行时根目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeRootDir: str
         """
@@ -7304,7 +7349,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeType(self):
-        r"""运行时类型
+        r"""<p>运行时类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7316,7 +7361,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        r"""运行时版本
+        r"""<p>运行时版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7328,7 +7373,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeRootDir(self):
-        r"""运行时根目录
+        r"""<p>运行时根目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

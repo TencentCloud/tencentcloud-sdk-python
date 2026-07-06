@@ -73,6 +73,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateConsumerLabel(self, request):
+        r"""创建消费组灰度标签
+
+        :param request: Request instance for CreateConsumerLabel.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.CreateConsumerLabelRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.CreateConsumerLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConsumerLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConsumerLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInstance(self, request):
         r"""创建 RocketMQ 5.x 集群。
         当前 API 适用集群：5.x 集群。创建 4.x 专享/通用集群的接口文档见 [CreateRocketMQVipInstance](https://cloud.tencent.com/document/product/1179/95721)。
@@ -183,6 +206,52 @@ class TrocketClient(AbstractClient):
             body = self.call("DeleteConsumerGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteConsumerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteConsumerLabel(self, request):
+        r"""删除消费组灰度标签
+
+        :param request: Request instance for DeleteConsumerLabel.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteConsumerLabelRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DeleteConsumerLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConsumerLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteConsumerLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteConsumerRouteConfig(self, request):
+        r"""删除消费组灰度路由配置
+
+        :param request: Request instance for DeleteConsumerRouteConfig.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteConsumerRouteConfigRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DeleteConsumerRouteConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConsumerRouteConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteConsumerRouteConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -394,6 +463,52 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConsumerLabel(self, request):
+        r"""查询消费组某个灰度标签详情
+
+        :param request: Request instance for DescribeConsumerLabel.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerLabelRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConsumerLabelList(self, request):
+        r"""查询消费组下灰度标签列表
+
+        :param request: Request instance for DescribeConsumerLabelList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerLabelListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerLabelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerLabelList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerLabelListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeConsumerLag(self, request):
         r"""查询指定消费组堆积数。
         当前 API 适用集群：4.x 集群和 5.x 集群。
@@ -409,6 +524,52 @@ class TrocketClient(AbstractClient):
             body = self.call("DescribeConsumerLag", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConsumerLagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConsumerRouteConfig(self, request):
+        r"""查询消费组当前生效的灰度路由配置
+
+        :param request: Request instance for DescribeConsumerRouteConfig.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerRouteConfigRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerRouteConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerRouteConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerRouteConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConsumerRouteVersionList(self, request):
+        r"""查询消费组灰度路由配置版本列表
+
+        :param request: Request instance for DescribeConsumerRouteVersionList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerRouteVersionListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerRouteVersionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerRouteVersionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerRouteVersionListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1137,6 +1298,29 @@ class TrocketClient(AbstractClient):
             body = self.call("ModifyTopic", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PutConsumerRouteConfig(self, request):
+        r"""写入消费组灰度路由配置
+
+        :param request: Request instance for PutConsumerRouteConfig.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.PutConsumerRouteConfigRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.PutConsumerRouteConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PutConsumerRouteConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.PutConsumerRouteConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

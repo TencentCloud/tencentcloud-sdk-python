@@ -1718,24 +1718,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def RollbackPGUserMigrations(
-            self,
-            request: models.RollbackPGUserMigrationsRequest,
-            opts: Dict = None,
-    ) -> models.RollbackPGUserMigrationsResponse:
-        """
-        本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "RollbackPGUserMigrations"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.RollbackPGUserMigrationsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def RunCommands(
             self,
             request: models.RunCommandsRequest,

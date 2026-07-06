@@ -51545,9 +51545,9 @@ class RuntimeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuntimeType: 运行时类型，支持的类型有 docker、containerd
+        :param _RuntimeType: <p>运行时类型，支持的类型有 docker、containerd</p>
         :type RuntimeType: str
-        :param _RuntimeVersion: 运行时版本，参考：https://cloud.tencent.com/document/api/457/105241
+        :param _RuntimeVersion: <p>运行时版本，参考：https://cloud.tencent.com/document/api/457/105241</p>
         :type RuntimeVersion: str
         """
         self._RuntimeType = None
@@ -51555,7 +51555,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeType(self):
-        r"""运行时类型，支持的类型有 docker、containerd
+        r"""<p>运行时类型，支持的类型有 docker、containerd</p>
         :rtype: str
         """
         return self._RuntimeType
@@ -51566,7 +51566,7 @@ class RuntimeConfig(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        r"""运行时版本，参考：https://cloud.tencent.com/document/api/457/105241
+        r"""<p>运行时版本，参考：https://cloud.tencent.com/document/api/457/105241</p>
         :rtype: str
         """
         return self._RuntimeVersion

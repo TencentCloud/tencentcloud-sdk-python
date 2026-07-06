@@ -2886,6 +2886,8 @@ class GetEmailIdentityResponse(AbstractModel):
         :type Attributes: list of DNSAttributes
         :param _DKIMOption: <p>dkim密钥长度</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： both</li></ul>
         :type DKIMOption: int
+        :param _TagList: <p>tag 标签</p>
+        :type TagList: list of TagList
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2893,6 +2895,7 @@ class GetEmailIdentityResponse(AbstractModel):
         self._VerifiedForSendingStatus = None
         self._Attributes = None
         self._DKIMOption = None
+        self._TagList = None
         self._RequestId = None
 
     @property
@@ -2940,6 +2943,17 @@ class GetEmailIdentityResponse(AbstractModel):
         self._DKIMOption = DKIMOption
 
     @property
+    def TagList(self):
+        r"""<p>tag 标签</p>
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2961,6 +2975,12 @@ class GetEmailIdentityResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Attributes.append(obj)
         self._DKIMOption = params.get("DKIMOption")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

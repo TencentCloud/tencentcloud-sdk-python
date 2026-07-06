@@ -2225,6 +2225,111 @@ class DescribeModelListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ModelIds: <p>模型 ID 列表。最多支持 10 个，不支持重复。</p>
+        :type ModelIds: list of str
+        :param _ModelNames: <p>模型名称列表。最多支持 10 个，不支持重复。</p>
+        :type ModelNames: list of str
+        :param _ModelTypes: <p>模型类型列表，筛选指定类型的模型。最多支持 10 个，不支持重复。取值：Text（文本）、Vision（视觉）、Multimodal（多模态）、Speech（语音）、Embedding（向量）。</p>
+        :type ModelTypes: list of str
+        :param _Tags: <p>模型标签</p>
+        :type Tags: list of str
+        :param _Limit: <p>返回数量，默认为 20，最大值为 100。</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量，默认为 0。</p>
+        :type Offset: int
+        """
+        self._ModelIds = None
+        self._ModelNames = None
+        self._ModelTypes = None
+        self._Tags = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ModelIds(self):
+        r"""<p>模型 ID 列表。最多支持 10 个，不支持重复。</p>
+        :rtype: list of str
+        """
+        return self._ModelIds
+
+    @ModelIds.setter
+    def ModelIds(self, ModelIds):
+        self._ModelIds = ModelIds
+
+    @property
+    def ModelNames(self):
+        r"""<p>模型名称列表。最多支持 10 个，不支持重复。</p>
+        :rtype: list of str
+        """
+        return self._ModelNames
+
+    @ModelNames.setter
+    def ModelNames(self, ModelNames):
+        self._ModelNames = ModelNames
+
+    @property
+    def ModelTypes(self):
+        r"""<p>模型类型列表，筛选指定类型的模型。最多支持 10 个，不支持重复。取值：Text（文本）、Vision（视觉）、Multimodal（多模态）、Speech（语音）、Embedding（向量）。</p>
+        :rtype: list of str
+        """
+        return self._ModelTypes
+
+    @ModelTypes.setter
+    def ModelTypes(self, ModelTypes):
+        self._ModelTypes = ModelTypes
+
+    @property
+    def Tags(self):
+        r"""<p>模型标签</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认为 20，最大值为 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ModelIds = params.get("ModelIds")
+        self._ModelNames = params.get("ModelNames")
+        self._ModelTypes = params.get("ModelTypes")
+        self._Tags = params.get("Tags")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeModelListResponse(AbstractModel):
     r"""DescribeModelList返回参数结构体

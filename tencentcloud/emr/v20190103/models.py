@@ -1088,36 +1088,38 @@ class AutoScaleRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StrategyName: 扩缩容规则名。
+        :param _StrategyName: <p>扩缩容规则名。</p>
         :type StrategyName: str
-        :param _ScaleAction: "SCALE_OUT"和"SCALE_IN"，分别表示扩容和缩容。
+        :param _ScaleAction: <p>&quot;SCALE_OUT&quot;和&quot;SCALE_IN&quot;，分别表示扩容和缩容。</p>
         :type ScaleAction: str
-        :param _ActionStatus: 取值为"SUCCESS","FAILED","PART_SUCCESS","IN_PROCESS"，分别表示成功、失败、部分成功和流程中。
+        :param _ActionStatus: <p>取值为&quot;SUCCESS&quot;,&quot;FAILED&quot;,&quot;PART_SUCCESS&quot;,&quot;IN_PROCESS&quot;，分别表示成功、失败、部分成功和流程中。</p>
         :type ActionStatus: str
-        :param _ActionTime: 流程触发时间。
+        :param _ActionTime: <p>流程触发时间。</p>
         :type ActionTime: str
-        :param _ScaleInfo: 扩缩容相关描述信息。
+        :param _ScaleInfo: <p>扩缩容相关描述信息。</p>
         :type ScaleInfo: str
-        :param _ExpectScaleNum: 只在ScaleAction为SCALE_OUT时有效。
+        :param _ExpectScaleNum: <p>只在ScaleAction为SCALE_OUT时有效。</p>
         :type ExpectScaleNum: int
-        :param _EndTime: 流程结束时间。
+        :param _EndTime: <p>流程结束时间。</p>
         :type EndTime: str
-        :param _StrategyType: 策略类型，按负载或者按时间，1表示负载伸缩，2表示时间伸缩
+        :param _StrategyType: <p>策略类型，按负载或者按时间，1表示负载伸缩，2表示时间伸缩</p>
         :type StrategyType: int
-        :param _SpecInfo: 扩容时所使用规格信息。
+        :param _SpecInfo: <p>扩容时所使用规格信息。</p>
         :type SpecInfo: str
-        :param _CompensateFlag: 补偿扩容，0表示不开启，1表示开启
+        :param _CompensateFlag: <p>补偿扩容，0表示不开启，1表示开启</p>
         :type CompensateFlag: int
-        :param _CompensateCount: 补偿次数
+        :param _CompensateCount: <p>补偿次数</p>
         :type CompensateCount: int
-        :param _RetryCount: 重试次数
+        :param _RetryCount: <p>重试次数</p>
         :type RetryCount: int
-        :param _RetryInfo: 重试信息
+        :param _RetryInfo: <p>重试信息</p>
         :type RetryInfo: str
-        :param _RetryEnReason: 重试英文描述
+        :param _RetryEnReason: <p>重试英文描述</p>
         :type RetryEnReason: str
-        :param _RetryReason: 重试描述
+        :param _RetryReason: <p>重试描述</p>
         :type RetryReason: str
+        :param _ShortageClass: <p>缺失分类</p>
+        :type ShortageClass: int
         """
         self._StrategyName = None
         self._ScaleAction = None
@@ -1134,10 +1136,11 @@ class AutoScaleRecord(AbstractModel):
         self._RetryInfo = None
         self._RetryEnReason = None
         self._RetryReason = None
+        self._ShortageClass = None
 
     @property
     def StrategyName(self):
-        r"""扩缩容规则名。
+        r"""<p>扩缩容规则名。</p>
         :rtype: str
         """
         return self._StrategyName
@@ -1148,7 +1151,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def ScaleAction(self):
-        r""""SCALE_OUT"和"SCALE_IN"，分别表示扩容和缩容。
+        r"""<p>&quot;SCALE_OUT&quot;和&quot;SCALE_IN&quot;，分别表示扩容和缩容。</p>
         :rtype: str
         """
         return self._ScaleAction
@@ -1159,7 +1162,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def ActionStatus(self):
-        r"""取值为"SUCCESS","FAILED","PART_SUCCESS","IN_PROCESS"，分别表示成功、失败、部分成功和流程中。
+        r"""<p>取值为&quot;SUCCESS&quot;,&quot;FAILED&quot;,&quot;PART_SUCCESS&quot;,&quot;IN_PROCESS&quot;，分别表示成功、失败、部分成功和流程中。</p>
         :rtype: str
         """
         return self._ActionStatus
@@ -1170,7 +1173,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def ActionTime(self):
-        r"""流程触发时间。
+        r"""<p>流程触发时间。</p>
         :rtype: str
         """
         return self._ActionTime
@@ -1181,7 +1184,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def ScaleInfo(self):
-        r"""扩缩容相关描述信息。
+        r"""<p>扩缩容相关描述信息。</p>
         :rtype: str
         """
         return self._ScaleInfo
@@ -1192,7 +1195,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def ExpectScaleNum(self):
-        r"""只在ScaleAction为SCALE_OUT时有效。
+        r"""<p>只在ScaleAction为SCALE_OUT时有效。</p>
         :rtype: int
         """
         return self._ExpectScaleNum
@@ -1203,7 +1206,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""流程结束时间。
+        r"""<p>流程结束时间。</p>
         :rtype: str
         """
         return self._EndTime
@@ -1214,7 +1217,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def StrategyType(self):
-        r"""策略类型，按负载或者按时间，1表示负载伸缩，2表示时间伸缩
+        r"""<p>策略类型，按负载或者按时间，1表示负载伸缩，2表示时间伸缩</p>
         :rtype: int
         """
         return self._StrategyType
@@ -1225,7 +1228,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def SpecInfo(self):
-        r"""扩容时所使用规格信息。
+        r"""<p>扩容时所使用规格信息。</p>
         :rtype: str
         """
         return self._SpecInfo
@@ -1236,7 +1239,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def CompensateFlag(self):
-        r"""补偿扩容，0表示不开启，1表示开启
+        r"""<p>补偿扩容，0表示不开启，1表示开启</p>
         :rtype: int
         """
         return self._CompensateFlag
@@ -1247,7 +1250,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def CompensateCount(self):
-        r"""补偿次数
+        r"""<p>补偿次数</p>
         :rtype: int
         """
         return self._CompensateCount
@@ -1258,7 +1261,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def RetryCount(self):
-        r"""重试次数
+        r"""<p>重试次数</p>
         :rtype: int
         """
         return self._RetryCount
@@ -1269,7 +1272,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def RetryInfo(self):
-        r"""重试信息
+        r"""<p>重试信息</p>
         :rtype: str
         """
         return self._RetryInfo
@@ -1280,7 +1283,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def RetryEnReason(self):
-        r"""重试英文描述
+        r"""<p>重试英文描述</p>
         :rtype: str
         """
         return self._RetryEnReason
@@ -1291,7 +1294,7 @@ class AutoScaleRecord(AbstractModel):
 
     @property
     def RetryReason(self):
-        r"""重试描述
+        r"""<p>重试描述</p>
         :rtype: str
         """
         return self._RetryReason
@@ -1299,6 +1302,17 @@ class AutoScaleRecord(AbstractModel):
     @RetryReason.setter
     def RetryReason(self, RetryReason):
         self._RetryReason = RetryReason
+
+    @property
+    def ShortageClass(self):
+        r"""<p>缺失分类</p>
+        :rtype: int
+        """
+        return self._ShortageClass
+
+    @ShortageClass.setter
+    def ShortageClass(self, ShortageClass):
+        self._ShortageClass = ShortageClass
 
 
     def _deserialize(self, params):
@@ -1317,6 +1331,7 @@ class AutoScaleRecord(AbstractModel):
         self._RetryInfo = params.get("RetryInfo")
         self._RetryEnReason = params.get("RetryEnReason")
         self._RetryReason = params.get("RetryReason")
+        self._ShortageClass = params.get("ShortageClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3309,134 +3324,112 @@ class ClusterInstancesInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: ID号
+        :param _Id: <p>ID号</p>
         :type Id: int
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _Ftitle: 标题
+        :param _Ftitle: <p>标题</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ftitle: str
-        :param _ClusterName: 集群名
+        :param _ClusterName: <p>集群名</p>
         :type ClusterName: str
-        :param _RegionId: 地域ID
+        :param _RegionId: <p>地域ID</p>
         :type RegionId: int
-        :param _ZoneId: 地区ID
+        :param _ZoneId: <p>地区ID</p>
         :type ZoneId: int
-        :param _AppId: 用户APPID
+        :param _AppId: <p>用户APPID</p>
         :type AppId: int
-        :param _Uin: 用户UIN
+        :param _Uin: <p>用户UIN</p>
         :type Uin: str
-        :param _ProjectId: 项目Id
+        :param _ProjectId: <p>项目Id</p>
         :type ProjectId: int
-        :param _VpcId: 集群VPCID
+        :param _VpcId: <p>集群VPCID</p>
         :type VpcId: int
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: int
-        :param _Status: 实例的状态码。取值范围：
-<li>2：表示集群运行中。</li>
-<li>3：表示集群创建中。</li>
-<li>4：表示集群扩容中。</li>
-<li>5：表示集群增加router节点中。</li>
-<li>6：表示集群安装组件中。</li>
-<li>7：表示集群执行命令中。</li>
-<li>8：表示重启服务中。</li>
-<li>9：表示进入维护中。</li>
-<li>10：表示服务暂停中。</li>
-<li>11：表示退出维护中。</li>
-<li>12：表示退出暂停中。</li>
-<li>13：表示配置下发中。</li>
-<li>14：表示销毁集群中。</li>
-<li>15：表示销毁core节点中。</li>
-<li>16：销毁task节点中。</li>
-<li>17：表示销毁router节点中。</li>
-<li>18：表示更改webproxy密码中。</li>
-<li>19：表示集群隔离中。</li>
-<li>20：表示集群冲正中。</li>
-<li>21：表示集群回收中。</li>
-<li>22：表示变配等待中。</li>
-<li>23：表示集群已隔离。</li>
-<li>24：表示缩容节点中。</li>
-<li>33：表示集群等待退费中。</li>
-<li>34：表示集群已退费。</li>
-<li>301：表示创建失败。</li>
-<li>302：表示扩容失败。</li>
+        :param _Status: <p>实例的状态码。取值范围：</p><li>2：表示集群运行中。</li><li>3：表示集群创建中。</li><li>4：表示集群扩容中。</li><li>5：表示集群增加router节点中。</li><li>6：表示集群安装组件中。</li><li>7：表示集群执行命令中。</li><li>8：表示重启服务中。</li><li>9：表示进入维护中。</li><li>10：表示服务暂停中。</li><li>11：表示退出维护中。</li><li>12：表示退出暂停中。</li><li>13：表示配置下发中。</li><li>14：表示销毁集群中。</li><li>15：表示销毁core节点中。</li><li>16：销毁task节点中。</li><li>17：表示销毁router节点中。</li><li>18：表示更改webproxy密码中。</li><li>19：表示集群隔离中。</li><li>20：表示集群冲正中。</li><li>21：表示集群回收中。</li><li>22：表示变配等待中。</li><li>23：表示集群已隔离。</li><li>24：表示缩容节点中。</li><li>33：表示集群等待退费中。</li><li>34：表示集群已退费。</li><li>301：表示创建失败。</li><li>302：表示扩容失败。</li>
         :type Status: int
-        :param _AddTime: 添加时间
+        :param _AddTime: <p>添加时间</p>
         :type AddTime: str
-        :param _RunTime: 已经运行时间
+        :param _RunTime: <p>已经运行时间</p>
         :type RunTime: str
-        :param _Config: 集群产品配置信息
+        :param _Config: <p>集群产品配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Config: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`
-        :param _MasterIp: 主节点外网IP
+        :param _MasterIp: <p>主节点外网IP</p>
         :type MasterIp: str
-        :param _EmrVersion: EMR版本
+        :param _EmrVersion: <p>EMR版本</p>
         :type EmrVersion: str
-        :param _ChargeType: 收费类型
+        :param _ChargeType: <p>收费类型</p>
         :type ChargeType: int
-        :param _TradeVersion: 交易版本
+        :param _TradeVersion: <p>交易版本</p>
         :type TradeVersion: int
-        :param _ResourceOrderId: 资源订单ID
+        :param _ResourceOrderId: <p>资源订单ID</p>
         :type ResourceOrderId: int
-        :param _IsTradeCluster: 是否计费集群
+        :param _IsTradeCluster: <p>是否计费集群</p>
         :type IsTradeCluster: int
-        :param _AlarmInfo: 集群错误状态告警信息
+        :param _AlarmInfo: <p>集群错误状态告警信息</p>
         :type AlarmInfo: str
-        :param _IsWoodpeckerCluster: 是否采用新架构
+        :param _IsWoodpeckerCluster: <p>是否采用新架构</p>
         :type IsWoodpeckerCluster: int
-        :param _MetaDb: 元数据库信息
+        :param _MetaDb: <p>元数据库信息</p>
         :type MetaDb: str
-        :param _Tags: 标签信息
+        :param _Tags: <p>标签信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _HiveMetaDb: Hive元数据信息
+        :param _HiveMetaDb: <p>Hive元数据信息</p>
         :type HiveMetaDb: str
-        :param _ServiceClass: 集群类型:EMR,CLICKHOUSE,DRUID
+        :param _ServiceClass: <p>集群类型:EMR,CLICKHOUSE,DRUID</p>
         :type ServiceClass: str
-        :param _AliasInfo: 集群所有节点的别名序列化
+        :param _AliasInfo: <p>集群所有节点的别名序列化</p>
         :type AliasInfo: str
-        :param _ProductId: 集群版本Id
+        :param _ProductId: <p>集群版本Id</p>
         :type ProductId: int
-        :param _Zone: 地区ID
+        :param _Zone: <p>地区ID</p>
         :type Zone: str
-        :param _SceneName: 场景名称
+        :param _SceneName: <p>场景名称</p>
         :type SceneName: str
-        :param _SceneServiceClass: 场景化集群类型
+        :param _SceneServiceClass: <p>场景化集群类型</p>
         :type SceneServiceClass: str
-        :param _SceneEmrVersion: 场景化EMR版本
+        :param _SceneEmrVersion: <p>场景化EMR版本</p>
         :type SceneEmrVersion: str
-        :param _DisplayName: 场景化集群类型
+        :param _DisplayName: <p>场景化集群类型</p>
         :type DisplayName: str
-        :param _VpcName: vpc name
+        :param _VpcName: <p>vpc name</p>
         :type VpcName: str
-        :param _SubnetName: subnet name
+        :param _SubnetName: <p>subnet name</p>
         :type SubnetName: str
-        :param _ClusterExternalServiceInfo: 集群依赖关系
+        :param _ClusterExternalServiceInfo: <p>集群依赖关系</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterExternalServiceInfo: list of ClusterExternalServiceInfo
-        :param _UniqVpcId: 集群vpcid 字符串类型
+        :param _UniqVpcId: <p>集群vpcid 字符串类型</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: 子网id 字符串类型
+        :param _UniqSubnetId: <p>子网id 字符串类型</p>
         :type UniqSubnetId: str
-        :param _TopologyInfoList: 节点信息
+        :param _TopologyInfoList: <p>节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopologyInfoList: list of TopologyInfo
-        :param _IsMultiZoneCluster: 是否是跨AZ集群
+        :param _IsMultiZoneCluster: <p>是否是跨AZ集群</p>
         :type IsMultiZoneCluster: bool
-        :param _IsCvmReplace: 是否开通异常节点自动补偿
+        :param _IsCvmReplace: <p>是否开通异常节点自动补偿</p>
         :type IsCvmReplace: bool
-        :param _ClusterTitle: 标题
+        :param _ClusterTitle: <p>标题</p>
         :type ClusterTitle: str
-        :param _ConfigDetail: 集群产品配置信息
+        :param _ConfigDetail: <p>集群产品配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigDetail: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigDetail`
-        :param _BindFileSystemNum: 集群绑定的文件系统数
+        :param _BindFileSystemNum: <p>集群绑定的文件系统数</p>
         :type BindFileSystemNum: int
-        :param _ClusterRelationInfoList: rss集群的绑定列表
+        :param _ClusterRelationInfoList: <p>rss集群的绑定列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterRelationInfoList: list of ClusterRelationMeta
-        :param _RedisId: Redis信息
+        :param _RedisId: <p>Redis信息</p>
         :type RedisId: str
+        :param _IsIOHungSelfRecovery: <p>是否开启IO故障自愈</p>
+        :type IsIOHungSelfRecovery: bool
+        :param _MetaDBGroupInfo: <p>元数据信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaDBGroupInfo: list of CustomMetaDBInfo
         """
         self._Id = None
         self._ClusterId = None
@@ -3485,10 +3478,12 @@ class ClusterInstancesInfo(AbstractModel):
         self._BindFileSystemNum = None
         self._ClusterRelationInfoList = None
         self._RedisId = None
+        self._IsIOHungSelfRecovery = None
+        self._MetaDBGroupInfo = None
 
     @property
     def Id(self):
-        r"""ID号
+        r"""<p>ID号</p>
         :rtype: int
         """
         return self._Id
@@ -3499,7 +3494,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -3512,7 +3507,7 @@ class ClusterInstancesInfo(AbstractModel):
     def Ftitle(self):
         warnings.warn("parameter `Ftitle` is deprecated", DeprecationWarning) 
 
-        r"""标题
+        r"""<p>标题</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3526,7 +3521,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名
+        r"""<p>集群名</p>
         :rtype: str
         """
         return self._ClusterName
@@ -3537,7 +3532,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: int
         """
         return self._RegionId
@@ -3548,7 +3543,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""地区ID
+        r"""<p>地区ID</p>
         :rtype: int
         """
         return self._ZoneId
@@ -3559,7 +3554,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户APPID
+        r"""<p>用户APPID</p>
         :rtype: int
         """
         return self._AppId
@@ -3570,7 +3565,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""用户UIN
+        r"""<p>用户UIN</p>
         :rtype: str
         """
         return self._Uin
@@ -3581,7 +3576,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目Id
+        r"""<p>项目Id</p>
         :rtype: int
         """
         return self._ProjectId
@@ -3592,7 +3587,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""集群VPCID
+        r"""<p>集群VPCID</p>
         :rtype: int
         """
         return self._VpcId
@@ -3603,7 +3598,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: int
         """
         return self._SubnetId
@@ -3614,34 +3609,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例的状态码。取值范围：
-<li>2：表示集群运行中。</li>
-<li>3：表示集群创建中。</li>
-<li>4：表示集群扩容中。</li>
-<li>5：表示集群增加router节点中。</li>
-<li>6：表示集群安装组件中。</li>
-<li>7：表示集群执行命令中。</li>
-<li>8：表示重启服务中。</li>
-<li>9：表示进入维护中。</li>
-<li>10：表示服务暂停中。</li>
-<li>11：表示退出维护中。</li>
-<li>12：表示退出暂停中。</li>
-<li>13：表示配置下发中。</li>
-<li>14：表示销毁集群中。</li>
-<li>15：表示销毁core节点中。</li>
-<li>16：销毁task节点中。</li>
-<li>17：表示销毁router节点中。</li>
-<li>18：表示更改webproxy密码中。</li>
-<li>19：表示集群隔离中。</li>
-<li>20：表示集群冲正中。</li>
-<li>21：表示集群回收中。</li>
-<li>22：表示变配等待中。</li>
-<li>23：表示集群已隔离。</li>
-<li>24：表示缩容节点中。</li>
-<li>33：表示集群等待退费中。</li>
-<li>34：表示集群已退费。</li>
-<li>301：表示创建失败。</li>
-<li>302：表示扩容失败。</li>
+        r"""<p>实例的状态码。取值范围：</p><li>2：表示集群运行中。</li><li>3：表示集群创建中。</li><li>4：表示集群扩容中。</li><li>5：表示集群增加router节点中。</li><li>6：表示集群安装组件中。</li><li>7：表示集群执行命令中。</li><li>8：表示重启服务中。</li><li>9：表示进入维护中。</li><li>10：表示服务暂停中。</li><li>11：表示退出维护中。</li><li>12：表示退出暂停中。</li><li>13：表示配置下发中。</li><li>14：表示销毁集群中。</li><li>15：表示销毁core节点中。</li><li>16：销毁task节点中。</li><li>17：表示销毁router节点中。</li><li>18：表示更改webproxy密码中。</li><li>19：表示集群隔离中。</li><li>20：表示集群冲正中。</li><li>21：表示集群回收中。</li><li>22：表示变配等待中。</li><li>23：表示集群已隔离。</li><li>24：表示缩容节点中。</li><li>33：表示集群等待退费中。</li><li>34：表示集群已退费。</li><li>301：表示创建失败。</li><li>302：表示扩容失败。</li>
         :rtype: int
         """
         return self._Status
@@ -3652,7 +3620,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def AddTime(self):
-        r"""添加时间
+        r"""<p>添加时间</p>
         :rtype: str
         """
         return self._AddTime
@@ -3663,7 +3631,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def RunTime(self):
-        r"""已经运行时间
+        r"""<p>已经运行时间</p>
         :rtype: str
         """
         return self._RunTime
@@ -3676,7 +3644,7 @@ class ClusterInstancesInfo(AbstractModel):
     def Config(self):
         warnings.warn("parameter `Config` is deprecated", DeprecationWarning) 
 
-        r"""集群产品配置信息
+        r"""<p>集群产品配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`
         """
@@ -3690,7 +3658,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def MasterIp(self):
-        r"""主节点外网IP
+        r"""<p>主节点外网IP</p>
         :rtype: str
         """
         return self._MasterIp
@@ -3701,7 +3669,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def EmrVersion(self):
-        r"""EMR版本
+        r"""<p>EMR版本</p>
         :rtype: str
         """
         return self._EmrVersion
@@ -3712,7 +3680,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ChargeType(self):
-        r"""收费类型
+        r"""<p>收费类型</p>
         :rtype: int
         """
         return self._ChargeType
@@ -3723,7 +3691,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def TradeVersion(self):
-        r"""交易版本
+        r"""<p>交易版本</p>
         :rtype: int
         """
         return self._TradeVersion
@@ -3734,7 +3702,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ResourceOrderId(self):
-        r"""资源订单ID
+        r"""<p>资源订单ID</p>
         :rtype: int
         """
         return self._ResourceOrderId
@@ -3745,7 +3713,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def IsTradeCluster(self):
-        r"""是否计费集群
+        r"""<p>是否计费集群</p>
         :rtype: int
         """
         return self._IsTradeCluster
@@ -3756,7 +3724,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def AlarmInfo(self):
-        r"""集群错误状态告警信息
+        r"""<p>集群错误状态告警信息</p>
         :rtype: str
         """
         return self._AlarmInfo
@@ -3767,7 +3735,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def IsWoodpeckerCluster(self):
-        r"""是否采用新架构
+        r"""<p>是否采用新架构</p>
         :rtype: int
         """
         return self._IsWoodpeckerCluster
@@ -3778,7 +3746,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def MetaDb(self):
-        r"""元数据库信息
+        r"""<p>元数据库信息</p>
         :rtype: str
         """
         return self._MetaDb
@@ -3789,7 +3757,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签信息
+        r"""<p>标签信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -3801,7 +3769,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def HiveMetaDb(self):
-        r"""Hive元数据信息
+        r"""<p>Hive元数据信息</p>
         :rtype: str
         """
         return self._HiveMetaDb
@@ -3812,7 +3780,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ServiceClass(self):
-        r"""集群类型:EMR,CLICKHOUSE,DRUID
+        r"""<p>集群类型:EMR,CLICKHOUSE,DRUID</p>
         :rtype: str
         """
         return self._ServiceClass
@@ -3823,7 +3791,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def AliasInfo(self):
-        r"""集群所有节点的别名序列化
+        r"""<p>集群所有节点的别名序列化</p>
         :rtype: str
         """
         return self._AliasInfo
@@ -3834,7 +3802,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ProductId(self):
-        r"""集群版本Id
+        r"""<p>集群版本Id</p>
         :rtype: int
         """
         return self._ProductId
@@ -3845,7 +3813,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""地区ID
+        r"""<p>地区ID</p>
         :rtype: str
         """
         return self._Zone
@@ -3856,7 +3824,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def SceneName(self):
-        r"""场景名称
+        r"""<p>场景名称</p>
         :rtype: str
         """
         return self._SceneName
@@ -3867,7 +3835,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def SceneServiceClass(self):
-        r"""场景化集群类型
+        r"""<p>场景化集群类型</p>
         :rtype: str
         """
         return self._SceneServiceClass
@@ -3878,7 +3846,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def SceneEmrVersion(self):
-        r"""场景化EMR版本
+        r"""<p>场景化EMR版本</p>
         :rtype: str
         """
         return self._SceneEmrVersion
@@ -3889,7 +3857,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def DisplayName(self):
-        r"""场景化集群类型
+        r"""<p>场景化集群类型</p>
         :rtype: str
         """
         return self._DisplayName
@@ -3900,7 +3868,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""vpc name
+        r"""<p>vpc name</p>
         :rtype: str
         """
         return self._VpcName
@@ -3911,7 +3879,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""subnet name
+        r"""<p>subnet name</p>
         :rtype: str
         """
         return self._SubnetName
@@ -3922,7 +3890,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ClusterExternalServiceInfo(self):
-        r"""集群依赖关系
+        r"""<p>集群依赖关系</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClusterExternalServiceInfo
         """
@@ -3934,7 +3902,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""集群vpcid 字符串类型
+        r"""<p>集群vpcid 字符串类型</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -3945,7 +3913,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""子网id 字符串类型
+        r"""<p>子网id 字符串类型</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -3956,7 +3924,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def TopologyInfoList(self):
-        r"""节点信息
+        r"""<p>节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopologyInfo
         """
@@ -3968,7 +3936,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def IsMultiZoneCluster(self):
-        r"""是否是跨AZ集群
+        r"""<p>是否是跨AZ集群</p>
         :rtype: bool
         """
         return self._IsMultiZoneCluster
@@ -3979,7 +3947,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def IsCvmReplace(self):
-        r"""是否开通异常节点自动补偿
+        r"""<p>是否开通异常节点自动补偿</p>
         :rtype: bool
         """
         return self._IsCvmReplace
@@ -3990,7 +3958,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ClusterTitle(self):
-        r"""标题
+        r"""<p>标题</p>
         :rtype: str
         """
         return self._ClusterTitle
@@ -4001,7 +3969,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ConfigDetail(self):
-        r"""集群产品配置信息
+        r"""<p>集群产品配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigDetail`
         """
@@ -4013,7 +3981,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def BindFileSystemNum(self):
-        r"""集群绑定的文件系统数
+        r"""<p>集群绑定的文件系统数</p>
         :rtype: int
         """
         return self._BindFileSystemNum
@@ -4024,7 +3992,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def ClusterRelationInfoList(self):
-        r"""rss集群的绑定列表
+        r"""<p>rss集群的绑定列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClusterRelationMeta
         """
@@ -4036,7 +4004,7 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def RedisId(self):
-        r"""Redis信息
+        r"""<p>Redis信息</p>
         :rtype: str
         """
         return self._RedisId
@@ -4044,6 +4012,29 @@ class ClusterInstancesInfo(AbstractModel):
     @RedisId.setter
     def RedisId(self, RedisId):
         self._RedisId = RedisId
+
+    @property
+    def IsIOHungSelfRecovery(self):
+        r"""<p>是否开启IO故障自愈</p>
+        :rtype: bool
+        """
+        return self._IsIOHungSelfRecovery
+
+    @IsIOHungSelfRecovery.setter
+    def IsIOHungSelfRecovery(self, IsIOHungSelfRecovery):
+        self._IsIOHungSelfRecovery = IsIOHungSelfRecovery
+
+    @property
+    def MetaDBGroupInfo(self):
+        r"""<p>元数据信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomMetaDBInfo
+        """
+        return self._MetaDBGroupInfo
+
+    @MetaDBGroupInfo.setter
+    def MetaDBGroupInfo(self, MetaDBGroupInfo):
+        self._MetaDBGroupInfo = MetaDBGroupInfo
 
 
     def _deserialize(self, params):
@@ -4118,6 +4109,13 @@ class ClusterInstancesInfo(AbstractModel):
                 obj._deserialize(item)
                 self._ClusterRelationInfoList.append(obj)
         self._RedisId = params.get("RedisId")
+        self._IsIOHungSelfRecovery = params.get("IsIOHungSelfRecovery")
+        if params.get("MetaDBGroupInfo") is not None:
+            self._MetaDBGroupInfo = []
+            for item in params.get("MetaDBGroupInfo"):
+                obj = CustomMetaDBInfo()
+                obj._deserialize(item)
+                self._MetaDBGroupInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17903,6 +17901,177 @@ class DiskGroup(AbstractModel):
         
 
 
+class DiskHealthIssue(AbstractModel):
+    r"""磁盘
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskId: <p>磁盘id</p>
+        :type DiskId: str
+        :param _MountDir: <p>挂载的目录</p>
+        :type MountDir: str
+        :param _DeviceName: <p>设备路径</p>
+        :type DeviceName: str
+        :param _CheckType: <p>异常类型</p>
+        :type CheckType: int
+        :param _Severity: <p>优先级</p>
+        :type Severity: int
+        :param _State: <p>状态</p>
+        :type State: int
+        :param _DetectSource: <p>探测来源</p>
+        :type DetectSource: str
+        :param _FirstDetectTime: <p>第一次探测时间</p>
+        :type FirstDetectTime: str
+        :param _LastDetectTime: <p>最新探测时间</p>
+        :type LastDetectTime: str
+        :param _DetectDetail: <p>探测信息</p>
+        :type DetectDetail: str
+        """
+        self._DiskId = None
+        self._MountDir = None
+        self._DeviceName = None
+        self._CheckType = None
+        self._Severity = None
+        self._State = None
+        self._DetectSource = None
+        self._FirstDetectTime = None
+        self._LastDetectTime = None
+        self._DetectDetail = None
+
+    @property
+    def DiskId(self):
+        r"""<p>磁盘id</p>
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def MountDir(self):
+        r"""<p>挂载的目录</p>
+        :rtype: str
+        """
+        return self._MountDir
+
+    @MountDir.setter
+    def MountDir(self, MountDir):
+        self._MountDir = MountDir
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备路径</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def CheckType(self):
+        r"""<p>异常类型</p>
+        :rtype: int
+        """
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def Severity(self):
+        r"""<p>优先级</p>
+        :rtype: int
+        """
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
+
+    @property
+    def State(self):
+        r"""<p>状态</p>
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def DetectSource(self):
+        r"""<p>探测来源</p>
+        :rtype: str
+        """
+        return self._DetectSource
+
+    @DetectSource.setter
+    def DetectSource(self, DetectSource):
+        self._DetectSource = DetectSource
+
+    @property
+    def FirstDetectTime(self):
+        r"""<p>第一次探测时间</p>
+        :rtype: str
+        """
+        return self._FirstDetectTime
+
+    @FirstDetectTime.setter
+    def FirstDetectTime(self, FirstDetectTime):
+        self._FirstDetectTime = FirstDetectTime
+
+    @property
+    def LastDetectTime(self):
+        r"""<p>最新探测时间</p>
+        :rtype: str
+        """
+        return self._LastDetectTime
+
+    @LastDetectTime.setter
+    def LastDetectTime(self, LastDetectTime):
+        self._LastDetectTime = LastDetectTime
+
+    @property
+    def DetectDetail(self):
+        r"""<p>探测信息</p>
+        :rtype: str
+        """
+        return self._DetectDetail
+
+    @DetectDetail.setter
+    def DetectDetail(self, DetectDetail):
+        self._DetectDetail = DetectDetail
+
+
+    def _deserialize(self, params):
+        self._DiskId = params.get("DiskId")
+        self._MountDir = params.get("MountDir")
+        self._DeviceName = params.get("DeviceName")
+        self._CheckType = params.get("CheckType")
+        self._Severity = params.get("Severity")
+        self._State = params.get("State")
+        self._DetectSource = params.get("DetectSource")
+        self._FirstDetectTime = params.get("FirstDetectTime")
+        self._LastDetectTime = params.get("LastDetectTime")
+        self._DetectDetail = params.get("DetectDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DiskSpec(AbstractModel):
     r"""磁盘描述。
 
@@ -23226,56 +23395,46 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeUnit: 购买实例的时间单位。取值范围：
-<li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
+        :param _TimeUnit: <p>购买实例的时间单位。取值范围：</p><li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li><li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
         :type TimeUnit: str
-        :param _TimeSpan: 购买实例的时长。结合TimeUnit一起使用。
-<li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
-<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
+        :param _TimeSpan: <p>购买实例的时长。结合TimeUnit一起使用。</p><li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li><li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
-        :param _Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
+        :param _Currency: <p>货币种类。取值范围：</p><li>CNY：表示人民币。</li>
         :type Currency: str
-        :param _PayMode: 实例计费模式。取值范围：
-<li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
+        :param _PayMode: <p>实例计费模式。取值范围：</p><li>0：表示按量计费。</li><li>1：表示包年包月。</li>
         :type PayMode: int
-        :param _SupportHA: 是否开启节点高可用。取值范围：
-<li>0：表示不开启节点高可用。</li>
-<li>1：表示开启节点高可用。</li>
+        :param _SupportHA: <p>是否开启节点高可用。取值范围：</p><li>0：表示不开启节点高可用。</li><li>1：表示开启节点高可用。x07</li>
         :type SupportHA: int
-        :param _Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：<li>ProductId为2(EMR-V2.0.1)的时候，必选组件包括：hdfs-2.7.3,yarn-2.7.3,zookeeper-3.4.9,knox-1.2.0</li><li>ProductId为16(EMR-V2.3.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.5.5,knox-1.2.0</li><li>ProductId为20(EMR-V2.5.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为30(EMR-V2.6.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为38(EMR-V2.7.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为57(EMR-V2.8.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为7(EMR-V3.0.0)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.4.9,knox-1.2.0</li><li>ProductId为25(EMR-V3.1.0)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为31(EMR-V3.1.1)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为28(EMR-V3.2.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为33(EMR-V3.2.1)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为34(EMR-V3.3.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为37(EMR-V3.4.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为44(EMR-V3.5.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为53(EMR-V3.6.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为58(EMR-V3.6.1)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.46,knox-1.6.1</li><li>ProductId为47(EMR-V4.0.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li>
+        :param _Software: <p>部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：<li>ProductId为2(EMR-V2.0.1)的时候，必选组件包括：hdfs-2.7.3,yarn-2.7.3,zookeeper-3.4.9,knox-1.2.0</li><li>ProductId为16(EMR-V2.3.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.5.5,knox-1.2.0</li><li>ProductId为20(EMR-V2.5.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为30(EMR-V2.6.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为38(EMR-V2.7.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为57(EMR-V2.8.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为7(EMR-V3.0.0)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.4.9,knox-1.2.0</li><li>ProductId为25(EMR-V3.1.0)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为31(EMR-V3.1.1)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为28(EMR-V3.2.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为33(EMR-V3.2.1)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为34(EMR-V3.3.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为37(EMR-V3.4.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为44(EMR-V3.5.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为53(EMR-V3.6.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为58(EMR-V3.6.1)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.46,knox-1.6.1</li><li>ProductId为47(EMR-V4.0.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li></p>
         :type Software: list of str
-        :param _ResourceSpec: 询价的节点规格。
+        :param _ResourceSpec: <p>询价的节点规格。</p>
         :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
-        :param _Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+        :param _Placement: <p>实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。</p>
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
-        :param _VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
+        :param _VPCSettings: <p>私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。</p>
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
-        :param _MetaType: hive共享元数据库类型。取值范围：
-<li>EMR_NEW_META：表示集群默认创建</li>
-<li>EMR_EXIT_METE：表示集群使用指定EMR-MetaDB。</li>
-<li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
+        :param _MetaType: <p>hive共享元数据库类型。取值范围：</p><li>EMR_NEW_META：表示集群默认创建</li><li>EMR_EXIT_METE：表示集群使用指定EMR-MetaDB。</li><li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
         :type MetaType: str
-        :param _UnifyMetaInstanceId: EMR-MetaDB实例
+        :param _UnifyMetaInstanceId: <p>EMR-MetaDB实例</p>
         :type UnifyMetaInstanceId: str
-        :param _MetaDBInfo: 自定义MetaDB信息
+        :param _MetaDBInfo: <p>自定义MetaDB信息</p>
         :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
-        :param _ProductId: 产品ID，不同产品ID表示不同的EMR产品版本。取值范围：<li>2：表示EMR-V2.0.1</li><li>16：表示EMR-V2.3.0</li><li>20：表示EMR-V2.5.0</li><li>30：表示EMR-V2.6.0</li><li>38：表示EMR-V2.7.0</li><li>57：表示EMR-V2.8.0</li><li>7：表示EMR-V3.0.0</li><li>25：表示EMR-V3.1.0</li><li>31：表示EMR-V3.1.1</li><li>28：表示EMR-V3.2.0</li><li>33：表示EMR-V3.2.1</li><li>34：表示EMR-V3.3.0</li><li>37：表示EMR-V3.4.0</li><li>44：表示EMR-V3.5.0</li><li>53：表示EMR-V3.6.0</li><li>58：表示EMR-V3.6.1</li><li>47：表示EMR-V4.0.0</li>
+        :param _ProductId: <p>产品ID，不同产品ID表示不同的EMR产品版本。取值范围：<li>2：表示EMR-V2.0.1</li><li>16：表示EMR-V2.3.0</li><li>20：表示EMR-V2.5.0</li><li>30：表示EMR-V2.6.0</li><li>38：表示EMR-V2.7.0</li><li>57：表示EMR-V2.8.0</li><li>7：表示EMR-V3.0.0</li><li>25：表示EMR-V3.1.0</li><li>31：表示EMR-V3.1.1</li><li>28：表示EMR-V3.2.0</li><li>33：表示EMR-V3.2.1</li><li>34：表示EMR-V3.3.0</li><li>37：表示EMR-V3.4.0</li><li>44：表示EMR-V3.5.0</li><li>53：表示EMR-V3.6.0</li><li>58：表示EMR-V3.6.1</li><li>47：表示EMR-V4.0.0</li></p>
         :type ProductId: int
-        :param _SceneName: 场景化取值：Hadoop-Kudu，Hadoop-Zookeeper，Hadoop-Presto，Hadoop-Hbase
+        :param _SceneName: <p>场景化取值：Hadoop-Kudu，Hadoop-Zookeeper，Hadoop-Presto，Hadoop-Hbase</p>
         :type SceneName: str
-        :param _ExternalService: 共用组件信息
+        :param _ExternalService: <p>共用组件信息</p>
         :type ExternalService: list of ExternalService
-        :param _VersionID: 当前默认值为0，跨AZ特性支持后为1
+        :param _VersionID: <p>当前默认值为0，跨AZ特性支持后为1</p>
         :type VersionID: int
-        :param _MultiZoneSettings: 可用区的规格信息
+        :param _MultiZoneSettings: <p>可用区的规格信息</p>
         :type MultiZoneSettings: list of MultiZoneSetting
-        :param _DefaultMetaVersion: 数据库版本
+        :param _DefaultMetaVersion: <p>数据库版本</p>
         :type DefaultMetaVersion: str
-        :param _NeedCdbAudit: 0:不开通审计；1:开通审计
+        :param _NeedCdbAudit: <p>0:不开通审计；1:开通审计</p>
         :type NeedCdbAudit: int
+        :param _MetaDBGroupInfo: <p>自定义db数据</p>
+        :type MetaDBGroupInfo: list of CustomMetaDBInfo
         """
         self._TimeUnit = None
         self._TimeSpan = None
@@ -23296,12 +23455,11 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
         self._MultiZoneSettings = None
         self._DefaultMetaVersion = None
         self._NeedCdbAudit = None
+        self._MetaDBGroupInfo = None
 
     @property
     def TimeUnit(self):
-        r"""购买实例的时间单位。取值范围：
-<li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
+        r"""<p>购买实例的时间单位。取值范围：</p><li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li><li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
         :rtype: str
         """
         return self._TimeUnit
@@ -23312,9 +23470,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""购买实例的时长。结合TimeUnit一起使用。
-<li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
-<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
+        r"""<p>购买实例的时长。结合TimeUnit一起使用。</p><li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li><li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :rtype: int
         """
         return self._TimeSpan
@@ -23325,8 +23481,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def Currency(self):
-        r"""货币种类。取值范围：
-<li>CNY：表示人民币。</li>
+        r"""<p>货币种类。取值范围：</p><li>CNY：表示人民币。</li>
         :rtype: str
         """
         return self._Currency
@@ -23337,9 +23492,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""实例计费模式。取值范围：
-<li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
+        r"""<p>实例计费模式。取值范围：</p><li>0：表示按量计费。</li><li>1：表示包年包月。</li>
         :rtype: int
         """
         return self._PayMode
@@ -23350,9 +23503,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def SupportHA(self):
-        r"""是否开启节点高可用。取值范围：
-<li>0：表示不开启节点高可用。</li>
-<li>1：表示开启节点高可用。</li>
+        r"""<p>是否开启节点高可用。取值范围：</p><li>0：表示不开启节点高可用。</li><li>1：表示开启节点高可用。x07</li>
         :rtype: int
         """
         return self._SupportHA
@@ -23363,7 +23514,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def Software(self):
-        r"""部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：<li>ProductId为2(EMR-V2.0.1)的时候，必选组件包括：hdfs-2.7.3,yarn-2.7.3,zookeeper-3.4.9,knox-1.2.0</li><li>ProductId为16(EMR-V2.3.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.5.5,knox-1.2.0</li><li>ProductId为20(EMR-V2.5.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为30(EMR-V2.6.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为38(EMR-V2.7.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为57(EMR-V2.8.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为7(EMR-V3.0.0)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.4.9,knox-1.2.0</li><li>ProductId为25(EMR-V3.1.0)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为31(EMR-V3.1.1)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为28(EMR-V3.2.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为33(EMR-V3.2.1)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为34(EMR-V3.3.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为37(EMR-V3.4.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为44(EMR-V3.5.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为53(EMR-V3.6.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为58(EMR-V3.6.1)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.46,knox-1.6.1</li><li>ProductId为47(EMR-V4.0.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li>
+        r"""<p>部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）需要选择不同的必选组件：<li>ProductId为2(EMR-V2.0.1)的时候，必选组件包括：hdfs-2.7.3,yarn-2.7.3,zookeeper-3.4.9,knox-1.2.0</li><li>ProductId为16(EMR-V2.3.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.5.5,knox-1.2.0</li><li>ProductId为20(EMR-V2.5.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为30(EMR-V2.6.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为38(EMR-V2.7.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为57(EMR-V2.8.0)的时候，必选组件包括：hdfs-2.8.5,yarn-2.8.5,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为7(EMR-V3.0.0)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.4.9,knox-1.2.0</li><li>ProductId为25(EMR-V3.1.0)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为31(EMR-V3.1.1)的时候，必选组件包括：hdfs-3.1.2,yarn-3.1.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为28(EMR-V3.2.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,knox-1.2.0</li><li>ProductId为33(EMR-V3.2.1)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为34(EMR-V3.3.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.1,openldap-2.4.44,knox-1.2.0</li><li>ProductId为37(EMR-V3.4.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为44(EMR-V3.5.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为53(EMR-V3.6.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li><li>ProductId为58(EMR-V3.6.1)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.46,knox-1.6.1</li><li>ProductId为47(EMR-V4.0.0)的时候，必选组件包括：hdfs-3.2.2,yarn-3.2.2,zookeeper-3.6.3,openldap-2.4.44,knox-1.6.1</li></p>
         :rtype: list of str
         """
         return self._Software
@@ -23374,7 +23525,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def ResourceSpec(self):
-        r"""询价的节点规格。
+        r"""<p>询价的节点规格。</p>
         :rtype: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         """
         return self._ResourceSpec
@@ -23385,7 +23536,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def Placement(self):
-        r"""实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+        r"""<p>实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。</p>
         :rtype: :class:`tencentcloud.emr.v20190103.models.Placement`
         """
         return self._Placement
@@ -23396,7 +23547,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def VPCSettings(self):
-        r"""私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
+        r"""<p>私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。</p>
         :rtype: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
         """
         return self._VPCSettings
@@ -23407,10 +23558,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        r"""hive共享元数据库类型。取值范围：
-<li>EMR_NEW_META：表示集群默认创建</li>
-<li>EMR_EXIT_METE：表示集群使用指定EMR-MetaDB。</li>
-<li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
+        r"""<p>hive共享元数据库类型。取值范围：</p><li>EMR_NEW_META：表示集群默认创建</li><li>EMR_EXIT_METE：表示集群使用指定EMR-MetaDB。</li><li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
         :rtype: str
         """
         return self._MetaType
@@ -23421,7 +23569,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def UnifyMetaInstanceId(self):
-        r"""EMR-MetaDB实例
+        r"""<p>EMR-MetaDB实例</p>
         :rtype: str
         """
         return self._UnifyMetaInstanceId
@@ -23432,7 +23580,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def MetaDBInfo(self):
-        r"""自定义MetaDB信息
+        r"""<p>自定义MetaDB信息</p>
         :rtype: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
         """
         return self._MetaDBInfo
@@ -23443,7 +23591,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        r"""产品ID，不同产品ID表示不同的EMR产品版本。取值范围：<li>2：表示EMR-V2.0.1</li><li>16：表示EMR-V2.3.0</li><li>20：表示EMR-V2.5.0</li><li>30：表示EMR-V2.6.0</li><li>38：表示EMR-V2.7.0</li><li>57：表示EMR-V2.8.0</li><li>7：表示EMR-V3.0.0</li><li>25：表示EMR-V3.1.0</li><li>31：表示EMR-V3.1.1</li><li>28：表示EMR-V3.2.0</li><li>33：表示EMR-V3.2.1</li><li>34：表示EMR-V3.3.0</li><li>37：表示EMR-V3.4.0</li><li>44：表示EMR-V3.5.0</li><li>53：表示EMR-V3.6.0</li><li>58：表示EMR-V3.6.1</li><li>47：表示EMR-V4.0.0</li>
+        r"""<p>产品ID，不同产品ID表示不同的EMR产品版本。取值范围：<li>2：表示EMR-V2.0.1</li><li>16：表示EMR-V2.3.0</li><li>20：表示EMR-V2.5.0</li><li>30：表示EMR-V2.6.0</li><li>38：表示EMR-V2.7.0</li><li>57：表示EMR-V2.8.0</li><li>7：表示EMR-V3.0.0</li><li>25：表示EMR-V3.1.0</li><li>31：表示EMR-V3.1.1</li><li>28：表示EMR-V3.2.0</li><li>33：表示EMR-V3.2.1</li><li>34：表示EMR-V3.3.0</li><li>37：表示EMR-V3.4.0</li><li>44：表示EMR-V3.5.0</li><li>53：表示EMR-V3.6.0</li><li>58：表示EMR-V3.6.1</li><li>47：表示EMR-V4.0.0</li></p>
         :rtype: int
         """
         return self._ProductId
@@ -23454,7 +23602,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def SceneName(self):
-        r"""场景化取值：Hadoop-Kudu，Hadoop-Zookeeper，Hadoop-Presto，Hadoop-Hbase
+        r"""<p>场景化取值：Hadoop-Kudu，Hadoop-Zookeeper，Hadoop-Presto，Hadoop-Hbase</p>
         :rtype: str
         """
         return self._SceneName
@@ -23465,7 +23613,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def ExternalService(self):
-        r"""共用组件信息
+        r"""<p>共用组件信息</p>
         :rtype: list of ExternalService
         """
         return self._ExternalService
@@ -23476,7 +23624,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def VersionID(self):
-        r"""当前默认值为0，跨AZ特性支持后为1
+        r"""<p>当前默认值为0，跨AZ特性支持后为1</p>
         :rtype: int
         """
         return self._VersionID
@@ -23487,7 +23635,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def MultiZoneSettings(self):
-        r"""可用区的规格信息
+        r"""<p>可用区的规格信息</p>
         :rtype: list of MultiZoneSetting
         """
         return self._MultiZoneSettings
@@ -23498,7 +23646,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def DefaultMetaVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DefaultMetaVersion
@@ -23509,7 +23657,7 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     @property
     def NeedCdbAudit(self):
-        r"""0:不开通审计；1:开通审计
+        r"""<p>0:不开通审计；1:开通审计</p>
         :rtype: int
         """
         return self._NeedCdbAudit
@@ -23517,6 +23665,17 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
     @NeedCdbAudit.setter
     def NeedCdbAudit(self, NeedCdbAudit):
         self._NeedCdbAudit = NeedCdbAudit
+
+    @property
+    def MetaDBGroupInfo(self):
+        r"""<p>自定义db数据</p>
+        :rtype: list of CustomMetaDBInfo
+        """
+        return self._MetaDBGroupInfo
+
+    @MetaDBGroupInfo.setter
+    def MetaDBGroupInfo(self, MetaDBGroupInfo):
+        self._MetaDBGroupInfo = MetaDBGroupInfo
 
 
     def _deserialize(self, params):
@@ -23557,6 +23716,12 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
                 self._MultiZoneSettings.append(obj)
         self._DefaultMetaVersion = params.get("DefaultMetaVersion")
         self._NeedCdbAudit = params.get("NeedCdbAudit")
+        if params.get("MetaDBGroupInfo") is not None:
+            self._MetaDBGroupInfo = []
+            for item in params.get("MetaDBGroupInfo"):
+                obj = CustomMetaDBInfo()
+                obj._deserialize(item)
+                self._MetaDBGroupInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23574,17 +23739,15 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginalCost: 原价，单位为元。
+        :param _OriginalCost: <p>原价，单位为元。</p>
         :type OriginalCost: float
-        :param _DiscountCost: 折扣价，单位为元。
+        :param _DiscountCost: <p>折扣价，单位为元。</p>
         :type DiscountCost: float
-        :param _TimeUnit: 购买实例的时间单位。取值范围：
-<li>s：表示秒。</li>
-<li>m：表示月份。</li>
+        :param _TimeUnit: <p>购买实例的时间单位。取值范围：</p><li>s：表示秒。</li><li>m：表示月份。</li>
         :type TimeUnit: str
-        :param _TimeSpan: 购买实例的时长。
+        :param _TimeSpan: <p>购买实例的时长。</p>
         :type TimeSpan: int
-        :param _PriceList: 价格清单
+        :param _PriceList: <p>价格清单</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PriceList: list of ZoneDetailPriceResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23599,7 +23762,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     @property
     def OriginalCost(self):
-        r"""原价，单位为元。
+        r"""<p>原价，单位为元。</p>
         :rtype: float
         """
         return self._OriginalCost
@@ -23610,7 +23773,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     @property
     def DiscountCost(self):
-        r"""折扣价，单位为元。
+        r"""<p>折扣价，单位为元。</p>
         :rtype: float
         """
         return self._DiscountCost
@@ -23621,9 +23784,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""购买实例的时间单位。取值范围：
-<li>s：表示秒。</li>
-<li>m：表示月份。</li>
+        r"""<p>购买实例的时间单位。取值范围：</p><li>s：表示秒。</li><li>m：表示月份。</li>
         :rtype: str
         """
         return self._TimeUnit
@@ -23634,7 +23795,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""购买实例的时长。
+        r"""<p>购买实例的时长。</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -23645,7 +23806,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     @property
     def PriceList(self):
-        r"""价格清单
+        r"""<p>价格清单</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ZoneDetailPriceResult
         """
@@ -25040,6 +25201,8 @@ class InstallSoftwareRequest(AbstractModel):
         :type ContainerExtraConf: :class:`tencentcloud.emr.v20190103.models.ContainerExtraConf`
         :param _CheckServiceDeployInfo: <p>是否强制检查自定义组件的合理性，目前仅提供给tf侧使用</p>
         :type CheckServiceDeployInfo: bool
+        :param _MetaDBGroupInfo: <p>自定义metadb信息</p>
+        :type MetaDBGroupInfo: list of CustomMetaDBInfo
         """
         self._InstanceId = None
         self._SoftInfo = None
@@ -25055,6 +25218,7 @@ class InstallSoftwareRequest(AbstractModel):
         self._NeedCdbAudit = None
         self._ContainerExtraConf = None
         self._CheckServiceDeployInfo = None
+        self._MetaDBGroupInfo = None
 
     @property
     def InstanceId(self):
@@ -25210,6 +25374,17 @@ class InstallSoftwareRequest(AbstractModel):
     def CheckServiceDeployInfo(self, CheckServiceDeployInfo):
         self._CheckServiceDeployInfo = CheckServiceDeployInfo
 
+    @property
+    def MetaDBGroupInfo(self):
+        r"""<p>自定义metadb信息</p>
+        :rtype: list of CustomMetaDBInfo
+        """
+        return self._MetaDBGroupInfo
+
+    @MetaDBGroupInfo.setter
+    def MetaDBGroupInfo(self, MetaDBGroupInfo):
+        self._MetaDBGroupInfo = MetaDBGroupInfo
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -25250,6 +25425,12 @@ class InstallSoftwareRequest(AbstractModel):
             self._ContainerExtraConf = ContainerExtraConf()
             self._ContainerExtraConf._deserialize(params.get("ContainerExtraConf"))
         self._CheckServiceDeployInfo = params.get("CheckServiceDeployInfo")
+        if params.get("MetaDBGroupInfo") is not None:
+            self._MetaDBGroupInfo = []
+            for item in params.get("MetaDBGroupInfo"):
+                obj = CustomMetaDBInfo()
+                obj._deserialize(item)
+                self._MetaDBGroupInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30613,133 +30794,132 @@ class NodeHardwareInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 用户APPID
+        :param _AppId: <p>用户APPID</p>
         :type AppId: int
-        :param _SerialNo: 序列号
+        :param _SerialNo: <p>序列号</p>
         :type SerialNo: str
-        :param _OrderNo: 机器实例ID
+        :param _OrderNo: <p>机器实例ID</p>
         :type OrderNo: str
-        :param _WanIp: master节点绑定外网IP
+        :param _WanIp: <p>master节点绑定外网IP</p>
         :type WanIp: str
-        :param _Flag: 节点类型。0:common节点；1:master节点
-；2:core节点；3:task节点
+        :param _Flag: <p>节点类型。0:common节点；1:master节点<br>；2:core节点；3:task节点</p>
         :type Flag: int
-        :param _Spec: 节点规格
+        :param _Spec: <p>节点规格</p>
         :type Spec: str
-        :param _CpuNum: 节点核数
+        :param _CpuNum: <p>节点核数</p>
         :type CpuNum: int
-        :param _MemSize: 节点内存,单位b
+        :param _MemSize: <p>节点内存,单位b</p>
         :type MemSize: int
-        :param _MemDesc: 节点内存描述，单位GB
+        :param _MemDesc: <p>节点内存描述，单位GB</p>
         :type MemDesc: str
-        :param _RegionId: 节点所在region
+        :param _RegionId: <p>节点所在region</p>
         :type RegionId: int
-        :param _ZoneId: 节点所在Zone
+        :param _ZoneId: <p>节点所在Zone</p>
         :type ZoneId: int
-        :param _ApplyTime: 申请时间
+        :param _ApplyTime: <p>申请时间</p>
         :type ApplyTime: str
-        :param _FreeTime: 释放时间
+        :param _FreeTime: <p>释放时间</p>
         :type FreeTime: str
-        :param _DiskSize: 硬盘大小
+        :param _DiskSize: <p>硬盘大小</p>
         :type DiskSize: str
-        :param _NameTag: 节点描述
+        :param _NameTag: <p>节点描述</p>
         :type NameTag: str
-        :param _Services: 节点部署服务
+        :param _Services: <p>节点部署服务</p>
         :type Services: str
-        :param _StorageType: 磁盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
-
+        :param _StorageType: <p>磁盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘</p>
         :type StorageType: int
-        :param _RootSize: 系统盘大小，单位GB
+        :param _RootSize: <p>系统盘大小，单位GB</p>
         :type RootSize: int
-        :param _ChargeType: 付费类型，0：按量计费；1：包年包月
+        :param _ChargeType: <p>付费类型，0：按量计费；1：包年包月</p>
         :type ChargeType: int
-        :param _CdbIp: 数据库IP
+        :param _CdbIp: <p>数据库IP</p>
         :type CdbIp: str
-        :param _CdbPort: 数据库端口
+        :param _CdbPort: <p>数据库端口</p>
         :type CdbPort: int
-        :param _HwDiskSize: 硬盘容量,单位b
+        :param _HwDiskSize: <p>硬盘容量,单位b</p>
         :type HwDiskSize: int
-        :param _HwDiskSizeDesc: 硬盘容量描述
+        :param _HwDiskSizeDesc: <p>硬盘容量描述</p>
         :type HwDiskSizeDesc: str
-        :param _HwMemSize: 内存容量，单位b
+        :param _HwMemSize: <p>内存容量，单位b</p>
         :type HwMemSize: int
-        :param _HwMemSizeDesc: 内存容量描述
+        :param _HwMemSizeDesc: <p>内存容量描述</p>
         :type HwMemSizeDesc: str
-        :param _ExpireTime: 过期时间
+        :param _ExpireTime: <p>过期时间</p>
         :type ExpireTime: str
-        :param _EmrResourceId: 节点资源ID
+        :param _EmrResourceId: <p>节点资源ID</p>
         :type EmrResourceId: str
-        :param _IsAutoRenew: 续费标志
+        :param _IsAutoRenew: <p>续费标志</p>
         :type IsAutoRenew: int
-        :param _DeviceClass: 设备标识
+        :param _DeviceClass: <p>设备标识</p>
         :type DeviceClass: str
-        :param _Mutable: 支持变配
+        :param _Mutable: <p>支持变配</p>
         :type Mutable: int
-        :param _MCMultiDisk: 多云盘
+        :param _MCMultiDisk: <p>多云盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MCMultiDisk: list of MultiDiskMC
-        :param _CdbNodeInfo: 数据库信息
+        :param _CdbNodeInfo: <p>数据库信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdbNodeInfo: :class:`tencentcloud.emr.v20190103.models.CdbInfo`
-        :param _Ip: 内网IP
+        :param _Ip: <p>内网IP</p>
         :type Ip: str
-        :param _Destroyable: 此节点是否可销毁，1可销毁，0不可销毁
+        :param _Destroyable: <p>此节点是否可销毁，1可销毁，0不可销毁</p>
         :type Destroyable: int
-        :param _Tags: 节点绑定的标签
+        :param _Tags: <p>节点绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _AutoFlag: 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
+        :param _AutoFlag: <p>是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。</p>
         :type AutoFlag: int
-        :param _HardwareResourceType: 资源类型, host/pod
+        :param _HardwareResourceType: <p>资源类型, host/pod</p>
         :type HardwareResourceType: str
-        :param _IsDynamicSpec: 是否浮动规格，1是，0否
+        :param _IsDynamicSpec: <p>是否浮动规格，1是，0否</p>
         :type IsDynamicSpec: int
-        :param _DynamicPodSpec: 浮动规格值json字符串
+        :param _DynamicPodSpec: <p>浮动规格值json字符串</p>
         :type DynamicPodSpec: str
-        :param _SupportModifyPayMode: 是否支持变更计费类型 1是，0否
+        :param _SupportModifyPayMode: <p>是否支持变更计费类型 1是，0否</p>
         :type SupportModifyPayMode: int
-        :param _RootStorageType: 系统盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
-
+        :param _RootStorageType: <p>系统盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘</p>
         :type RootStorageType: int
-        :param _Zone: 可用区信息
+        :param _Zone: <p>可用区信息</p>
         :type Zone: str
-        :param _SubnetInfo: 子网
+        :param _SubnetInfo: <p>子网</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetInfo: :class:`tencentcloud.emr.v20190103.models.SubnetInfo`
-        :param _Clients: 客户端
+        :param _Clients: <p>客户端</p>
         :type Clients: str
-        :param _CurrentTime: 系统当前时间
+        :param _CurrentTime: <p>系统当前时间</p>
         :type CurrentTime: str
-        :param _IsFederation: 是否用于联邦 ,1是，0否
+        :param _IsFederation: <p>是否用于联邦 ,1是，0否</p>
         :type IsFederation: int
-        :param _DeviceName: 设备名称
+        :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _ServiceClient: 服务
+        :param _ServiceClient: <p>服务</p>
         :type ServiceClient: str
-        :param _DisableApiTermination: 该实例是否开启实例保护，true为开启 false为关闭
+        :param _DisableApiTermination: <p>该实例是否开启实例保护，true为开启 false为关闭</p>
         :type DisableApiTermination: bool
-        :param _TradeVersion: 0表示老计费，1表示新计费
+        :param _TradeVersion: <p>0表示老计费，1表示新计费</p>
         :type TradeVersion: int
-        :param _ServicesStatus: 各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止
+        :param _ServicesStatus: <p>各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止</p>
         :type ServicesStatus: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _SharedClusterId: 共享集群id
+        :param _SharedClusterId: <p>共享集群id</p>
         :type SharedClusterId: str
-        :param _SharedClusterIdDesc: 共享集群id描述
+        :param _SharedClusterIdDesc: <p>共享集群id描述</p>
         :type SharedClusterIdDesc: str
-        :param _TimingResource: 是否是定时销毁资源
+        :param _TimingResource: <p>是否是定时销毁资源</p>
         :type TimingResource: bool
-        :param _TkeClusterId: 资源类型（HardwareResourceType）为pod时，对应的TKE集群id
+        :param _TkeClusterId: <p>资源类型（HardwareResourceType）为pod时，对应的TKE集群id</p>
         :type TkeClusterId: str
-        :param _ConfigurableServices: 新挂磁盘时可支持配置的服务名称列表
+        :param _ConfigurableServices: <p>新挂磁盘时可支持配置的服务名称列表</p>
         :type ConfigurableServices: list of str
-        :param _NodeMark: 节点标注信息，目前只提供给tf平台使用
+        :param _NodeMark: <p>节点标注信息，目前只提供给tf平台使用</p>
         :type NodeMark: str
-        :param _UnderwriteSetAutoRenew: 包销资源是否支持设置自动续费
+        :param _UnderwriteSetAutoRenew: <p>包销资源是否支持设置自动续费</p>
         :type UnderwriteSetAutoRenew: bool
-        :param _GpuDesc: Gpu信息
+        :param _GpuDesc: <p>Gpu信息</p>
         :type GpuDesc: str
+        :param _DiskHealthIssues: <p>磁盘问题描述</p>
+        :type DiskHealthIssues: list of DiskHealthIssue
         """
         self._AppId = None
         self._SerialNo = None
@@ -30801,10 +30981,11 @@ class NodeHardwareInfo(AbstractModel):
         self._NodeMark = None
         self._UnderwriteSetAutoRenew = None
         self._GpuDesc = None
+        self._DiskHealthIssues = None
 
     @property
     def AppId(self):
-        r"""用户APPID
+        r"""<p>用户APPID</p>
         :rtype: int
         """
         return self._AppId
@@ -30815,7 +30996,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def SerialNo(self):
-        r"""序列号
+        r"""<p>序列号</p>
         :rtype: str
         """
         return self._SerialNo
@@ -30826,7 +31007,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def OrderNo(self):
-        r"""机器实例ID
+        r"""<p>机器实例ID</p>
         :rtype: str
         """
         return self._OrderNo
@@ -30837,7 +31018,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def WanIp(self):
-        r"""master节点绑定外网IP
+        r"""<p>master节点绑定外网IP</p>
         :rtype: str
         """
         return self._WanIp
@@ -30848,8 +31029,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Flag(self):
-        r"""节点类型。0:common节点；1:master节点
-；2:core节点；3:task节点
+        r"""<p>节点类型。0:common节点；1:master节点<br>；2:core节点；3:task节点</p>
         :rtype: int
         """
         return self._Flag
@@ -30860,7 +31040,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Spec(self):
-        r"""节点规格
+        r"""<p>节点规格</p>
         :rtype: str
         """
         return self._Spec
@@ -30871,7 +31051,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def CpuNum(self):
-        r"""节点核数
+        r"""<p>节点核数</p>
         :rtype: int
         """
         return self._CpuNum
@@ -30882,7 +31062,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def MemSize(self):
-        r"""节点内存,单位b
+        r"""<p>节点内存,单位b</p>
         :rtype: int
         """
         return self._MemSize
@@ -30893,7 +31073,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def MemDesc(self):
-        r"""节点内存描述，单位GB
+        r"""<p>节点内存描述，单位GB</p>
         :rtype: str
         """
         return self._MemDesc
@@ -30904,7 +31084,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""节点所在region
+        r"""<p>节点所在region</p>
         :rtype: int
         """
         return self._RegionId
@@ -30915,7 +31095,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""节点所在Zone
+        r"""<p>节点所在Zone</p>
         :rtype: int
         """
         return self._ZoneId
@@ -30926,7 +31106,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def ApplyTime(self):
-        r"""申请时间
+        r"""<p>申请时间</p>
         :rtype: str
         """
         return self._ApplyTime
@@ -30937,7 +31117,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def FreeTime(self):
-        r"""释放时间
+        r"""<p>释放时间</p>
         :rtype: str
         """
         return self._FreeTime
@@ -30948,7 +31128,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""硬盘大小
+        r"""<p>硬盘大小</p>
         :rtype: str
         """
         return self._DiskSize
@@ -30959,7 +31139,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def NameTag(self):
-        r"""节点描述
+        r"""<p>节点描述</p>
         :rtype: str
         """
         return self._NameTag
@@ -30970,7 +31150,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Services(self):
-        r"""节点部署服务
+        r"""<p>节点部署服务</p>
         :rtype: str
         """
         return self._Services
@@ -30981,8 +31161,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""磁盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
-
+        r"""<p>磁盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘</p>
         :rtype: int
         """
         return self._StorageType
@@ -30993,7 +31172,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def RootSize(self):
-        r"""系统盘大小，单位GB
+        r"""<p>系统盘大小，单位GB</p>
         :rtype: int
         """
         return self._RootSize
@@ -31004,7 +31183,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def ChargeType(self):
-        r"""付费类型，0：按量计费；1：包年包月
+        r"""<p>付费类型，0：按量计费；1：包年包月</p>
         :rtype: int
         """
         return self._ChargeType
@@ -31015,7 +31194,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def CdbIp(self):
-        r"""数据库IP
+        r"""<p>数据库IP</p>
         :rtype: str
         """
         return self._CdbIp
@@ -31026,7 +31205,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def CdbPort(self):
-        r"""数据库端口
+        r"""<p>数据库端口</p>
         :rtype: int
         """
         return self._CdbPort
@@ -31037,7 +31216,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def HwDiskSize(self):
-        r"""硬盘容量,单位b
+        r"""<p>硬盘容量,单位b</p>
         :rtype: int
         """
         return self._HwDiskSize
@@ -31048,7 +31227,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def HwDiskSizeDesc(self):
-        r"""硬盘容量描述
+        r"""<p>硬盘容量描述</p>
         :rtype: str
         """
         return self._HwDiskSizeDesc
@@ -31059,7 +31238,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def HwMemSize(self):
-        r"""内存容量，单位b
+        r"""<p>内存容量，单位b</p>
         :rtype: int
         """
         return self._HwMemSize
@@ -31070,7 +31249,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def HwMemSizeDesc(self):
-        r"""内存容量描述
+        r"""<p>内存容量描述</p>
         :rtype: str
         """
         return self._HwMemSizeDesc
@@ -31081,7 +31260,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -31092,7 +31271,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def EmrResourceId(self):
-        r"""节点资源ID
+        r"""<p>节点资源ID</p>
         :rtype: str
         """
         return self._EmrResourceId
@@ -31103,7 +31282,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def IsAutoRenew(self):
-        r"""续费标志
+        r"""<p>续费标志</p>
         :rtype: int
         """
         return self._IsAutoRenew
@@ -31114,7 +31293,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def DeviceClass(self):
-        r"""设备标识
+        r"""<p>设备标识</p>
         :rtype: str
         """
         return self._DeviceClass
@@ -31125,7 +31304,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Mutable(self):
-        r"""支持变配
+        r"""<p>支持变配</p>
         :rtype: int
         """
         return self._Mutable
@@ -31136,7 +31315,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def MCMultiDisk(self):
-        r"""多云盘
+        r"""<p>多云盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of MultiDiskMC
         """
@@ -31148,7 +31327,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def CdbNodeInfo(self):
-        r"""数据库信息
+        r"""<p>数据库信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.CdbInfo`
         """
@@ -31160,7 +31339,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Ip(self):
-        r"""内网IP
+        r"""<p>内网IP</p>
         :rtype: str
         """
         return self._Ip
@@ -31171,7 +31350,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Destroyable(self):
-        r"""此节点是否可销毁，1可销毁，0不可销毁
+        r"""<p>此节点是否可销毁，1可销毁，0不可销毁</p>
         :rtype: int
         """
         return self._Destroyable
@@ -31182,7 +31361,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""节点绑定的标签
+        r"""<p>节点绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -31194,7 +31373,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def AutoFlag(self):
-        r"""是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
+        r"""<p>是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。</p>
         :rtype: int
         """
         return self._AutoFlag
@@ -31205,7 +31384,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def HardwareResourceType(self):
-        r"""资源类型, host/pod
+        r"""<p>资源类型, host/pod</p>
         :rtype: str
         """
         return self._HardwareResourceType
@@ -31216,7 +31395,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def IsDynamicSpec(self):
-        r"""是否浮动规格，1是，0否
+        r"""<p>是否浮动规格，1是，0否</p>
         :rtype: int
         """
         return self._IsDynamicSpec
@@ -31227,7 +31406,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def DynamicPodSpec(self):
-        r"""浮动规格值json字符串
+        r"""<p>浮动规格值json字符串</p>
         :rtype: str
         """
         return self._DynamicPodSpec
@@ -31238,7 +31417,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def SupportModifyPayMode(self):
-        r"""是否支持变更计费类型 1是，0否
+        r"""<p>是否支持变更计费类型 1是，0否</p>
         :rtype: int
         """
         return self._SupportModifyPayMode
@@ -31249,8 +31428,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def RootStorageType(self):
-        r"""系统盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
-
+        r"""<p>系统盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘</p>
         :rtype: int
         """
         return self._RootStorageType
@@ -31261,7 +31439,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区信息
+        r"""<p>可用区信息</p>
         :rtype: str
         """
         return self._Zone
@@ -31272,7 +31450,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def SubnetInfo(self):
-        r"""子网
+        r"""<p>子网</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.SubnetInfo`
         """
@@ -31284,7 +31462,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Clients(self):
-        r"""客户端
+        r"""<p>客户端</p>
         :rtype: str
         """
         return self._Clients
@@ -31295,7 +31473,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def CurrentTime(self):
-        r"""系统当前时间
+        r"""<p>系统当前时间</p>
         :rtype: str
         """
         return self._CurrentTime
@@ -31306,7 +31484,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def IsFederation(self):
-        r"""是否用于联邦 ,1是，0否
+        r"""<p>是否用于联邦 ,1是，0否</p>
         :rtype: int
         """
         return self._IsFederation
@@ -31317,7 +31495,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -31328,7 +31506,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def ServiceClient(self):
-        r"""服务
+        r"""<p>服务</p>
         :rtype: str
         """
         return self._ServiceClient
@@ -31339,7 +31517,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def DisableApiTermination(self):
-        r"""该实例是否开启实例保护，true为开启 false为关闭
+        r"""<p>该实例是否开启实例保护，true为开启 false为关闭</p>
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -31350,7 +31528,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def TradeVersion(self):
-        r"""0表示老计费，1表示新计费
+        r"""<p>0表示老计费，1表示新计费</p>
         :rtype: int
         """
         return self._TradeVersion
@@ -31361,7 +31539,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def ServicesStatus(self):
-        r"""各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止
+        r"""<p>各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止</p>
         :rtype: str
         """
         return self._ServicesStatus
@@ -31372,7 +31550,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -31383,7 +31561,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def SharedClusterId(self):
-        r"""共享集群id
+        r"""<p>共享集群id</p>
         :rtype: str
         """
         return self._SharedClusterId
@@ -31394,7 +31572,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def SharedClusterIdDesc(self):
-        r"""共享集群id描述
+        r"""<p>共享集群id描述</p>
         :rtype: str
         """
         return self._SharedClusterIdDesc
@@ -31405,7 +31583,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def TimingResource(self):
-        r"""是否是定时销毁资源
+        r"""<p>是否是定时销毁资源</p>
         :rtype: bool
         """
         return self._TimingResource
@@ -31416,7 +31594,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def TkeClusterId(self):
-        r"""资源类型（HardwareResourceType）为pod时，对应的TKE集群id
+        r"""<p>资源类型（HardwareResourceType）为pod时，对应的TKE集群id</p>
         :rtype: str
         """
         return self._TkeClusterId
@@ -31427,7 +31605,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def ConfigurableServices(self):
-        r"""新挂磁盘时可支持配置的服务名称列表
+        r"""<p>新挂磁盘时可支持配置的服务名称列表</p>
         :rtype: list of str
         """
         return self._ConfigurableServices
@@ -31438,7 +31616,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def NodeMark(self):
-        r"""节点标注信息，目前只提供给tf平台使用
+        r"""<p>节点标注信息，目前只提供给tf平台使用</p>
         :rtype: str
         """
         return self._NodeMark
@@ -31449,7 +31627,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def UnderwriteSetAutoRenew(self):
-        r"""包销资源是否支持设置自动续费
+        r"""<p>包销资源是否支持设置自动续费</p>
         :rtype: bool
         """
         return self._UnderwriteSetAutoRenew
@@ -31460,7 +31638,7 @@ class NodeHardwareInfo(AbstractModel):
 
     @property
     def GpuDesc(self):
-        r"""Gpu信息
+        r"""<p>Gpu信息</p>
         :rtype: str
         """
         return self._GpuDesc
@@ -31468,6 +31646,17 @@ class NodeHardwareInfo(AbstractModel):
     @GpuDesc.setter
     def GpuDesc(self, GpuDesc):
         self._GpuDesc = GpuDesc
+
+    @property
+    def DiskHealthIssues(self):
+        r"""<p>磁盘问题描述</p>
+        :rtype: list of DiskHealthIssue
+        """
+        return self._DiskHealthIssues
+
+    @DiskHealthIssues.setter
+    def DiskHealthIssues(self, DiskHealthIssues):
+        self._DiskHealthIssues = DiskHealthIssues
 
 
     def _deserialize(self, params):
@@ -31545,6 +31734,12 @@ class NodeHardwareInfo(AbstractModel):
         self._NodeMark = params.get("NodeMark")
         self._UnderwriteSetAutoRenew = params.get("UnderwriteSetAutoRenew")
         self._GpuDesc = params.get("GpuDesc")
+        if params.get("DiskHealthIssues") is not None:
+            self._DiskHealthIssues = []
+            for item in params.get("DiskHealthIssues"):
+                obj = DiskHealthIssue()
+                obj._deserialize(item)
+                self._DiskHealthIssues.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

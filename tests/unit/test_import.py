@@ -649,6 +649,11 @@ def test_import_ft_v20200304():
     from tencentcloud.ft.v20200304 import models
 
 
+def test_import_fwm_v20250611():
+    from tencentcloud.fwm.v20250611 import fwm_client
+    from tencentcloud.fwm.v20250611 import models
+
+
 def test_import_ga2_v20250115():
     from tencentcloud.ga2.v20250115 import ga2_client
     from tencentcloud.ga2.v20250115 import models
