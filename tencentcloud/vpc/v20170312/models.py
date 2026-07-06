@@ -10098,6 +10098,8 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :type TimeSpan: int
         :param _Egress: 网络出口，默认值：center_egress1，其它可选值：center_egress2、center_egress3。
         :type Egress: str
+        :param _DesignatedZone: 仅用于申请特殊可用区带宽包，如：TEZ/EZ边缘可用区，CDZ专属可用区。具体可选可用区信息，请参考[DescribeDesignatedZones](https://cloud.tencent.com/document/product/215/128830)接口查询结果。
+        :type DesignatedZone: str
         """
         self._NetworkType = None
         self._ChargeType = None
@@ -10108,6 +10110,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
         self._Protocol = None
         self._TimeSpan = None
         self._Egress = None
+        self._DesignatedZone = None
 
     @property
     def NetworkType(self):
@@ -10221,6 +10224,17 @@ class CreateBandwidthPackageRequest(AbstractModel):
     def Egress(self, Egress):
         self._Egress = Egress
 
+    @property
+    def DesignatedZone(self):
+        r"""仅用于申请特殊可用区带宽包，如：TEZ/EZ边缘可用区，CDZ专属可用区。具体可选可用区信息，请参考[DescribeDesignatedZones](https://cloud.tencent.com/document/product/215/128830)接口查询结果。
+        :rtype: str
+        """
+        return self._DesignatedZone
+
+    @DesignatedZone.setter
+    def DesignatedZone(self, DesignatedZone):
+        self._DesignatedZone = DesignatedZone
+
 
     def _deserialize(self, params):
         self._NetworkType = params.get("NetworkType")
@@ -10237,6 +10251,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
         self._Protocol = params.get("Protocol")
         self._TimeSpan = params.get("TimeSpan")
         self._Egress = params.get("Egress")
+        self._DesignatedZone = params.get("DesignatedZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34366,25 +34381,13 @@ class DescribeReserveIpAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReserveIpIds: 内网保留IP唯一ID 列表
+        :param _ReserveIpIds: <p>内网保留IP唯一ID 列表</p>
         :type ReserveIpIds: list of str
-        :param _Filters: 过滤条件，参数不支持同时指定ReserveIpIds和Filters。
-
-reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。
-vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
-subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
-address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。
-ip-type - String - （过滤条件）业务类型 ipType，0。
-name - String - （过滤条件）名称。
-state - String - （过滤条件）状态，可选值：Bind， UnBind。
-resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。
-tag-key - String -（过滤条件）按照标签键进行过滤。
-tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
-
+        :param _Filters: <p>过滤条件，参数不支持同时指定ReserveIpIds和Filters。</p><p>reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。<br>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。<br>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。<br>reserve-address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。<br>ip-type - String - （过滤条件）业务类型 ipType，0。<br>name - String - （过滤条件）名称。<br>state - String - （过滤条件）状态，可选值：Bind， UnBind。<br>resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。<br>tag-key - String -（过滤条件）按照标签键进行过滤。<br>tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</p>
         :type Filters: list of Filter
-        :param _Offset: 偏移量。
+        :param _Offset: <p>偏移量。</p>
         :type Offset: int
-        :param _Limit: 请求对象个数。
+        :param _Limit: <p>请求对象个数。</p>
         :type Limit: int
         """
         self._ReserveIpIds = None
@@ -34394,7 +34397,7 @@ tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 ta
 
     @property
     def ReserveIpIds(self):
-        r"""内网保留IP唯一ID 列表
+        r"""<p>内网保留IP唯一ID 列表</p>
         :rtype: list of str
         """
         return self._ReserveIpIds
@@ -34405,19 +34408,7 @@ tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 ta
 
     @property
     def Filters(self):
-        r"""过滤条件，参数不支持同时指定ReserveIpIds和Filters。
-
-reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。
-vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
-subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
-address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。
-ip-type - String - （过滤条件）业务类型 ipType，0。
-name - String - （过滤条件）名称。
-state - String - （过滤条件）状态，可选值：Bind， UnBind。
-resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。
-tag-key - String -（过滤条件）按照标签键进行过滤。
-tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
-
+        r"""<p>过滤条件，参数不支持同时指定ReserveIpIds和Filters。</p><p>reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。<br>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。<br>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。<br>reserve-address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。<br>ip-type - String - （过滤条件）业务类型 ipType，0。<br>name - String - （过滤条件）名称。<br>state - String - （过滤条件）状态，可选值：Bind， UnBind。<br>resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。<br>tag-key - String -（过滤条件）按照标签键进行过滤。<br>tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -34428,7 +34419,7 @@ tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 ta
 
     @property
     def Offset(self):
-        r"""偏移量。
+        r"""<p>偏移量。</p>
         :rtype: int
         """
         return self._Offset
@@ -34439,7 +34430,7 @@ tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 ta
 
     @property
     def Limit(self):
-        r"""请求对象个数。
+        r"""<p>请求对象个数。</p>
         :rtype: int
         """
         return self._Limit
@@ -34476,9 +34467,9 @@ class DescribeReserveIpAddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReserveIpAddressSet: 内网保留 IP返回信息。
+        :param _ReserveIpAddressSet: <p>内网保留 IP返回信息。</p>
         :type ReserveIpAddressSet: list of ReserveIpAddressInfo
-        :param _TotalCount: 返回内网保留IP的个数。
+        :param _TotalCount: <p>返回内网保留IP的个数。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -34489,7 +34480,7 @@ class DescribeReserveIpAddressesResponse(AbstractModel):
 
     @property
     def ReserveIpAddressSet(self):
-        r"""内网保留 IP返回信息。
+        r"""<p>内网保留 IP返回信息。</p>
         :rtype: list of ReserveIpAddressInfo
         """
         return self._ReserveIpAddressSet
@@ -34500,7 +34491,7 @@ class DescribeReserveIpAddressesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""返回内网保留IP的个数。
+        r"""<p>返回内网保留IP的个数。</p>
         :rtype: int
         """
         return self._TotalCount

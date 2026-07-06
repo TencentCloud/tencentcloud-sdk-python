@@ -2359,9 +2359,9 @@ class DeleteDedicatedClusterImageCacheRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DedicatedClusterId: 集群id
+        :param _DedicatedClusterId: <p>集群id</p>
         :type DedicatedClusterId: str
-        :param _ImageId: 镜像id
+        :param _ImageId: <p>镜像id</p>
         :type ImageId: str
         """
         self._DedicatedClusterId = None
@@ -2369,7 +2369,7 @@ class DeleteDedicatedClusterImageCacheRequest(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -2380,7 +2380,7 @@ class DeleteDedicatedClusterImageCacheRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""镜像id
+        r"""<p>镜像id</p>
         :rtype: str
         """
         return self._ImageId

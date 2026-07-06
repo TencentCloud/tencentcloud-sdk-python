@@ -1340,7 +1340,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeLogs(self, request):
-        r"""日志审计日志查询
+        r"""请使用 [日志分析SearchLog接口](https://cloud.tencent.com/document/product/1132/118363)
 
         :param request: Request instance for DescribeLogs.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeLogsRequest`
@@ -1629,6 +1629,52 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeNatFwVpcDnsLst", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNatFwVpcDnsLstResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOfflineExportTask(self, request):
+        r"""获取日志离线导出任务列表
+
+        :param request: Request instance for DescribeOfflineExportTask.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeOfflineExportTaskRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeOfflineExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOfflineExportTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOfflineExportTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOfflineExportTemporaryCredentials(self, request):
+        r"""获取日志离线导出任务文件下载临时凭证
+
+        :param request: Request instance for DescribeOfflineExportTemporaryCredentials.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeOfflineExportTemporaryCredentialsRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeOfflineExportTemporaryCredentialsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOfflineExportTemporaryCredentials", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOfflineExportTemporaryCredentialsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1997,6 +2043,29 @@ class CfwClient(AbstractClient):
             body = self.call("ExpandCfwVertical", params, headers=headers)
             response = json.loads(body)
             model = models.ExpandCfwVerticalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExportLogsOffline(self, request):
+        r"""日志审计日志离线导出
+
+        :param request: Request instance for ExportLogsOffline.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ExportLogsOfflineRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ExportLogsOfflineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportLogsOffline", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportLogsOfflineResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2990,6 +3059,29 @@ class CfwClient(AbstractClient):
             body = self.call("RemoveNatAcRule", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveNatAcRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RemoveOfflineExportTask(self, request):
+        r"""删除日志离线导出任务
+
+        :param request: Request instance for RemoveOfflineExportTask.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveOfflineExportTaskRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.RemoveOfflineExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveOfflineExportTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveOfflineExportTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

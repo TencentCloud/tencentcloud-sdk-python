@@ -2288,55 +2288,46 @@ class DetectDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReqTime: 请求时间戳。
+        :param _ReqTime: <p>请求时间戳。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReqTime: str
-        :param _Seq: 本次活体一比一请求的唯一标记。
+        :param _Seq: <p>本次活体一比一请求的唯一标记。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Seq: str
-        :param _Idcard: 参与本次活体一比一的身份证号。
+        :param _Idcard: <p>参与本次活体一比一的身份证号。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Idcard: str
-        :param _Name: 参与本次活体一比一的姓名。
+        :param _Name: <p>参与本次活体一比一的姓名。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Sim: 本次活体一比一的相似度。
+        :param _Sim: <p>本次活体一比一的相似度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sim: str
-        :param _IsNeedCharge: 本次活体一比一是否收费
+        :param _IsNeedCharge: <p>本次活体一比一是否收费</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNeedCharge: bool
-        :param _Errcode: 本次活体一比一最终结果。0为成功
+        :param _Errcode: <p>本次活体一比一最终结果。0为成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Errcode: int
-        :param _Errmsg: 本次活体一比一最终结果描述。（仅描述用，文案更新时不会通知。）
+        :param _Errmsg: <p>本次活体一比一最终结果描述。（仅描述用，文案更新时不会通知。）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Errmsg: str
-        :param _Livestatus: 本次活体结果。0为成功
+        :param _Livestatus: <p>本次活体结果。0为成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Livestatus: int
-        :param _Livemsg: 本次活体结果描述。（仅描述用，文案更新时不会通知。）
+        :param _Livemsg: <p>本次活体结果描述。（仅描述用，文案更新时不会通知。）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Livemsg: str
-        :param _Comparestatus: 本次一比一结果。0为成功
+        :param _Comparestatus: <p>本次一比一结果。0为成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comparestatus: int
-        :param _Comparemsg: 本次一比一结果描述。（仅描述用，文案更新时不会通知。）
+        :param _Comparemsg: <p>本次一比一结果描述。（仅描述用，文案更新时不会通知。）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comparemsg: str
-        :param _CompareLibType: 比对库源类型。包括：
-公安商业库；
-业务方自有库（用户上传照片、客户的混合库、混合部署库）；
-二次验证库；
-人工审核库；
+        :param _CompareLibType: <p>比对库源类型。包括：商业库；业务方自有库（用户上传照片、客户的混合库、混合部署库）；二次验证库；人工审核库；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareLibType: str
-        :param _LivenessMode: 枚举活体检测类型：
-0：未知
-1：数字活体
-2：动作活体
-3：静默活体
-4：一闪活体（动作+光线）
+        :param _LivenessMode: <p>枚举活体检测类型：<br>0：未知<br>1：数字活体<br>2：动作活体<br>3：静默活体<br>4：一闪活体（动作+光线）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessMode: int
         """
@@ -2357,7 +2348,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def ReqTime(self):
-        r"""请求时间戳。
+        r"""<p>请求时间戳。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2369,7 +2360,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Seq(self):
-        r"""本次活体一比一请求的唯一标记。
+        r"""<p>本次活体一比一请求的唯一标记。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2381,7 +2372,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Idcard(self):
-        r"""参与本次活体一比一的身份证号。
+        r"""<p>参与本次活体一比一的身份证号。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2393,7 +2384,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Name(self):
-        r"""参与本次活体一比一的姓名。
+        r"""<p>参与本次活体一比一的姓名。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2405,7 +2396,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Sim(self):
-        r"""本次活体一比一的相似度。
+        r"""<p>本次活体一比一的相似度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2417,7 +2408,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def IsNeedCharge(self):
-        r"""本次活体一比一是否收费
+        r"""<p>本次活体一比一是否收费</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -2429,7 +2420,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Errcode(self):
-        r"""本次活体一比一最终结果。0为成功
+        r"""<p>本次活体一比一最终结果。0为成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2441,7 +2432,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Errmsg(self):
-        r"""本次活体一比一最终结果描述。（仅描述用，文案更新时不会通知。）
+        r"""<p>本次活体一比一最终结果描述。（仅描述用，文案更新时不会通知。）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2453,7 +2444,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Livestatus(self):
-        r"""本次活体结果。0为成功
+        r"""<p>本次活体结果。0为成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2465,7 +2456,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Livemsg(self):
-        r"""本次活体结果描述。（仅描述用，文案更新时不会通知。）
+        r"""<p>本次活体结果描述。（仅描述用，文案更新时不会通知。）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2477,7 +2468,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Comparestatus(self):
-        r"""本次一比一结果。0为成功
+        r"""<p>本次一比一结果。0为成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2489,7 +2480,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def Comparemsg(self):
-        r"""本次一比一结果描述。（仅描述用，文案更新时不会通知。）
+        r"""<p>本次一比一结果描述。（仅描述用，文案更新时不会通知。）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2501,11 +2492,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def CompareLibType(self):
-        r"""比对库源类型。包括：
-公安商业库；
-业务方自有库（用户上传照片、客户的混合库、混合部署库）；
-二次验证库；
-人工审核库；
+        r"""<p>比对库源类型。包括：商业库；业务方自有库（用户上传照片、客户的混合库、混合部署库）；二次验证库；人工审核库；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2517,12 +2504,7 @@ class DetectDetail(AbstractModel):
 
     @property
     def LivenessMode(self):
-        r"""枚举活体检测类型：
-0：未知
-1：数字活体
-2：动作活体
-3：静默活体
-4：一闪活体（动作+光线）
+        r"""<p>枚举活体检测类型：<br>0：未知<br>1：数字活体<br>2：动作活体<br>3：静默活体<br>4：一闪活体（动作+光线）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

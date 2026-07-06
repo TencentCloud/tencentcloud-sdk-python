@@ -1809,11 +1809,20 @@ class CreateMemoryPlusSpaceRequest(AbstractModel):
         :type ResourceTags: list of ResourceTag
         :param _GoodsNum: <p>单次批量创建 Memory 实例的数量。取值范围为 1-50。</p>
         :type GoodsNum: int
+        :param _PayMode: <p>计费模式。</p><p>枚举值：</p><ul><li>0： 按量计费。</li><li>1： 包年包月。</li></ul>
+        :type PayMode: int
+        :param _PayPeriod: <p>包年包月周期</p>
+        :type PayPeriod: int
+        :param _AutoRenew: <p>是否自动续费</p>
+        :type AutoRenew: int
         """
         self._Name = None
         self._Description = None
         self._ResourceTags = None
         self._GoodsNum = None
+        self._PayMode = None
+        self._PayPeriod = None
+        self._AutoRenew = None
 
     @property
     def Name(self):
@@ -1859,6 +1868,39 @@ class CreateMemoryPlusSpaceRequest(AbstractModel):
     def GoodsNum(self, GoodsNum):
         self._GoodsNum = GoodsNum
 
+    @property
+    def PayMode(self):
+        r"""<p>计费模式。</p><p>枚举值：</p><ul><li>0： 按量计费。</li><li>1： 包年包月。</li></ul>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayPeriod(self):
+        r"""<p>包年包月周期</p>
+        :rtype: int
+        """
+        return self._PayPeriod
+
+    @PayPeriod.setter
+    def PayPeriod(self, PayPeriod):
+        self._PayPeriod = PayPeriod
+
+    @property
+    def AutoRenew(self):
+        r"""<p>是否自动续费</p>
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1870,6 +1912,9 @@ class CreateMemoryPlusSpaceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
         self._GoodsNum = params.get("GoodsNum")
+        self._PayMode = params.get("PayMode")
+        self._PayPeriod = params.get("PayPeriod")
+        self._AutoRenew = params.get("AutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3575,6 +3620,8 @@ class DescribeMemoryPlusSpaceResponse(AbstractModel):
         :type Status: int
         :param _PayMode: <p>Memory 实例计费模式。</p><ul><li>-1：免费体验。</li><li>0：包年包月。</li><li>1：按量计费。</li></ul>
         :type PayMode: int
+        :param _AutoRenew: <p>是否自动续费</p><p>枚举值：</p><ul><li>0： 不自动续费</li><li>1： 自动续费</li></ul>
+        :type AutoRenew: int
         :param _Version: <p>Memory 版本信息：v1。</p>
         :type Version: str
         :param _MemoryUsage: <p>Memory 当前已写入的记忆条数。</p>
@@ -3608,6 +3655,7 @@ class DescribeMemoryPlusSpaceResponse(AbstractModel):
         self._ResourceTags = None
         self._Status = None
         self._PayMode = None
+        self._AutoRenew = None
         self._Version = None
         self._MemoryUsage = None
         self._MemoryLimit = None
@@ -3708,6 +3756,17 @@ class DescribeMemoryPlusSpaceResponse(AbstractModel):
     @PayMode.setter
     def PayMode(self, PayMode):
         self._PayMode = PayMode
+
+    @property
+    def AutoRenew(self):
+        r"""<p>是否自动续费</p><p>枚举值：</p><ul><li>0： 不自动续费</li><li>1： 自动续费</li></ul>
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
 
     @property
     def Version(self):
@@ -3856,6 +3915,7 @@ class DescribeMemoryPlusSpaceResponse(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Status = params.get("Status")
         self._PayMode = params.get("PayMode")
+        self._AutoRenew = params.get("AutoRenew")
         self._Version = params.get("Version")
         self._MemoryUsage = params.get("MemoryUsage")
         self._MemoryLimit = params.get("MemoryLimit")
@@ -5277,8 +5337,11 @@ class RecoverMemoryPlusSpaceRequest(AbstractModel):
         r"""
         :param _SpaceIds: <p>指定需要恢复的 Memory 实例 ID 列表。</p>
         :type SpaceIds: list of str
+        :param _PayPeriod: <p>包年包月续费周期</p><p>单位：月</p>
+        :type PayPeriod: int
         """
         self._SpaceIds = None
+        self._PayPeriod = None
 
     @property
     def SpaceIds(self):
@@ -5291,9 +5354,21 @@ class RecoverMemoryPlusSpaceRequest(AbstractModel):
     def SpaceIds(self, SpaceIds):
         self._SpaceIds = SpaceIds
 
+    @property
+    def PayPeriod(self):
+        r"""<p>包年包月续费周期</p><p>单位：月</p>
+        :rtype: int
+        """
+        return self._PayPeriod
+
+    @PayPeriod.setter
+    def PayPeriod(self, PayPeriod):
+        self._PayPeriod = PayPeriod
+
 
     def _deserialize(self, params):
         self._SpaceIds = params.get("SpaceIds")
+        self._PayPeriod = params.get("PayPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -115,6 +115,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePlugin(
+            self,
+            request: models.CreatePluginRequest,
+            opts: Dict = None,
+    ) -> models.CreatePluginResponse:
+        """
+        获取插件详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePlugin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRelease(
             self,
             request: models.CreateReleaseRequest,
@@ -128,6 +146,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "CreateRelease"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateReleaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSkill(
+            self,
+            request: models.CreateSkillRequest,
+            opts: Dict = None,
+    ) -> models.CreateSkillResponse:
+        """
+        创建skill
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSkillShare(
+            self,
+            request: models.CreateSkillShareRequest,
+            opts: Dict = None,
+    ) -> models.CreateSkillShareResponse:
+        """
+        提交自定义Skill至企业级共享审批（两段式：提交→审批→回调创建共享任务）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSkillShare"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSkillShareResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -205,6 +259,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAgent(
+            self,
+            request: models.DeleteAgentRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAgentResponse:
+        """
+        删除Agent
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteApp(
             self,
             request: models.DeleteAppRequest,
@@ -236,6 +308,60 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DeleteConversation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePlugin(
+            self,
+            request: models.DeletePluginRequest,
+            opts: Dict = None,
+    ) -> models.DeletePluginResponse:
+        """
+        修改插件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePlugin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSkill(
+            self,
+            request: models.DeleteSkillRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSkillResponse:
+        """
+        删除自定义 Skill  鉴权：创建者 ∨ (编辑权限 ∧ 删除权限） 拒绝场景：非 Custom 类型 / 已共享 / 安全检测中 / 上架审批中 / 下架审批中
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSkillShare(
+            self,
+            request: models.DeleteSkillShareRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSkillShareResponse:
+        """
+        提交共享 Skill 下架审批（v2，两段式：提交→审批→回调下架共享 Skill） 鉴权：删除权 拒绝场景：未共享 / 上架审批中 / 下架审批中
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSkillShare"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSkillShareResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -308,6 +434,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribeAgentReleasePreviewList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAgentReleasePreviewListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAgentSummaryList(
+            self,
+            request: models.DescribeAgentSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAgentSummaryListResponse:
+        """
+        查询 Agent 摘要信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAgentSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAgentSummaryListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -529,6 +673,42 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSkillDetail(
+            self,
+            request: models.DescribeSkillDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillDetailResponse:
+        """
+        查询skill详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSkillReferenceList(
+            self,
+            request: models.DescribeSkillReferenceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillReferenceListResponse:
+        """
+        查询某个 Skill 被引用的详情列表（按 SkillRefType 分组：OpenClaw / cloud agent / 企业助手 agent） 鉴权：同 DescribeSkillDetail（能看该 Skill 即可查）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillReferenceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillReferenceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSkillSummaryList(
             self,
             request: models.DescribeSkillSummaryListRequest,
@@ -619,6 +799,42 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def FavoritePlugin(
+            self,
+            request: models.FavoritePluginRequest,
+            opts: Dict = None,
+    ) -> models.FavoritePluginResponse:
+        """
+        收藏插件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "FavoritePlugin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.FavoritePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def FavoriteSkill(
+            self,
+            request: models.FavoriteSkillRequest,
+            opts: Dict = None,
+    ) -> models.FavoriteSkillResponse:
+        """
+        收藏skill
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "FavoriteSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.FavoriteSkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAgent(
             self,
             request: models.ModifyAgentRequest,
@@ -673,6 +889,42 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyPlugin(
+            self,
+            request: models.ModifyPluginRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPluginResponse:
+        """
+        修改插件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPlugin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySkill(
+            self,
+            request: models.ModifySkillRequest,
+            opts: Dict = None,
+    ) -> models.ModifySkillResponse:
+        """
+        Skill修改
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifySpace(
             self,
             request: models.ModifySpaceRequest,
@@ -704,6 +956,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "ModifyVariable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyVariableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ReleaseSkill(
+            self,
+            request: models.ReleaseSkillRequest,
+            opts: Dict = None,
+    ) -> models.ReleaseSkillResponse:
+        """
+        上架skill
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReleaseSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReleaseSkillResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -758,6 +1028,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "RollbackRelease"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RollbackReleaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnfavoritePlugin(
+            self,
+            request: models.UnfavoritePluginRequest,
+            opts: Dict = None,
+    ) -> models.UnfavoritePluginResponse:
+        """
+        取消收藏插件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnfavoritePlugin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnfavoritePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnfavoriteSkill(
+            self,
+            request: models.UnfavoriteSkillRequest,
+            opts: Dict = None,
+    ) -> models.UnfavoriteSkillResponse:
+        """
+        取消收藏skill
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnfavoriteSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnfavoriteSkillResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

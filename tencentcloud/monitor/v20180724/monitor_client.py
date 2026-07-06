@@ -2110,7 +2110,9 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeProductEventList(self, request):
-        r"""分页获取产品事件的列表
+        r"""已不再使用
+
+        分页获取产品事件的列表
 
         :param request: Request instance for DescribeProductEventList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeProductEventListRequest`

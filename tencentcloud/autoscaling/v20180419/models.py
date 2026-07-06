@@ -12776,15 +12776,13 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: 伸缩组ID。可以通过以下方式获取可用的伸缩组ID： 
-<li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
-<li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
+        :param _AutoScalingGroupId: <p>伸缩组ID。可以通过以下方式获取可用的伸缩组ID： </p><li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li><li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
         :type AutoScalingGroupId: str
-        :param _RefreshSettings: 刷新设置。
+        :param _RefreshSettings: <p>刷新设置。</p>
         :type RefreshSettings: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
-        :param _OriginRefreshActivityId: 原始刷新活动 ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 OriginRefreshActivityId 获取原始刷新活动ID。
+        :param _OriginRefreshActivityId: <p>原始刷新活动 ID。可以通过调用接口 <a href="https://cloud.tencent.com/document/api/377/99175">DescribeRefreshActivities</a> ，取返回信息中的 OriginRefreshActivityId 获取原始刷新活动ID。</p>
         :type OriginRefreshActivityId: str
-        :param _RefreshMode: 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+        :param _RefreshMode: <p>刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。</p>
         :type RefreshMode: str
         """
         self._AutoScalingGroupId = None
@@ -12794,9 +12792,7 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        r"""伸缩组ID。可以通过以下方式获取可用的伸缩组ID： 
-<li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
-<li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
+        r"""<p>伸缩组ID。可以通过以下方式获取可用的伸缩组ID： </p><li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li><li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -12807,7 +12803,7 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshSettings(self):
-        r"""刷新设置。
+        r"""<p>刷新设置。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
         """
         return self._RefreshSettings
@@ -12818,7 +12814,7 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def OriginRefreshActivityId(self):
-        r"""原始刷新活动 ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 OriginRefreshActivityId 获取原始刷新活动ID。
+        r"""<p>原始刷新活动 ID。可以通过调用接口 <a href="https://cloud.tencent.com/document/api/377/99175">DescribeRefreshActivities</a> ，取返回信息中的 OriginRefreshActivityId 获取原始刷新活动ID。</p>
         :rtype: str
         """
         return self._OriginRefreshActivityId
@@ -12829,7 +12825,7 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshMode(self):
-        r"""刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+        r"""<p>刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。</p>
         :rtype: str
         """
         return self._RefreshMode
@@ -12863,7 +12859,7 @@ class RollbackInstanceRefreshResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RefreshActivityId: 刷新活动 ID。
+        :param _RefreshActivityId: <p>刷新活动 ID。</p>
         :type RefreshActivityId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12873,7 +12869,7 @@ class RollbackInstanceRefreshResponse(AbstractModel):
 
     @property
     def RefreshActivityId(self):
-        r"""刷新活动 ID。
+        r"""<p>刷新活动 ID。</p>
         :rtype: str
         """
         return self._RefreshActivityId

@@ -29285,9 +29285,9 @@ class DisableClusterAuditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _DeleteLogSetAndTopic: 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+        :param _DeleteLogSetAndTopic: <p>取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除</p>
         :type DeleteLogSetAndTopic: bool
         """
         self._ClusterId = None
@@ -29295,7 +29295,7 @@ class DisableClusterAuditRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -29306,7 +29306,7 @@ class DisableClusterAuditRequest(AbstractModel):
 
     @property
     def DeleteLogSetAndTopic(self):
-        r"""取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+        r"""<p>取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除</p>
         :rtype: bool
         """
         return self._DeleteLogSetAndTopic
@@ -29601,17 +29601,20 @@ class DisableEventPersistenceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _DeleteLogSetAndTopic: 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+        :param _DeleteLogSetAndTopic: <p>取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除</p>
         :type DeleteLogSetAndTopic: bool
+        :param _ClusterType: <p>集群类型 tke/eks</p><p>默认值：tke</p>
+        :type ClusterType: str
         """
         self._ClusterId = None
         self._DeleteLogSetAndTopic = None
+        self._ClusterType = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -29622,7 +29625,7 @@ class DisableEventPersistenceRequest(AbstractModel):
 
     @property
     def DeleteLogSetAndTopic(self):
-        r"""取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+        r"""<p>取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除</p>
         :rtype: bool
         """
         return self._DeleteLogSetAndTopic
@@ -29631,10 +29634,22 @@ class DisableEventPersistenceRequest(AbstractModel):
     def DeleteLogSetAndTopic(self, DeleteLogSetAndTopic):
         self._DeleteLogSetAndTopic = DeleteLogSetAndTopic
 
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型 tke/eks</p><p>默认值：tke</p>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._DeleteLogSetAndTopic = params.get("DeleteLogSetAndTopic")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31766,23 +31781,26 @@ class EnableClusterAuditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _LogsetId: CLS日志集ID，可以通过cls接口或者控制台获取
+        :param _LogsetId: <p>CLS日志集ID，可以通过cls接口或者控制台获取</p>
         :type LogsetId: str
-        :param _TopicId: CLS日志主题ID，可以通过cls接口或者控制台获取
+        :param _TopicId: <p>CLS日志主题ID，可以通过cls接口或者控制台获取</p>
         :type TopicId: str
-        :param _TopicRegion: topic所在region，默认为集群当前region
+        :param _TopicRegion: <p>topic所在region，默认为集群当前region</p>
         :type TopicRegion: str
+        :param _ClusterType: <p>集群类型 tke/eks</p><p>默认值：tke</p>
+        :type ClusterType: str
         """
         self._ClusterId = None
         self._LogsetId = None
         self._TopicId = None
         self._TopicRegion = None
+        self._ClusterType = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -31793,7 +31811,7 @@ class EnableClusterAuditRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""CLS日志集ID，可以通过cls接口或者控制台获取
+        r"""<p>CLS日志集ID，可以通过cls接口或者控制台获取</p>
         :rtype: str
         """
         return self._LogsetId
@@ -31804,7 +31822,7 @@ class EnableClusterAuditRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""CLS日志主题ID，可以通过cls接口或者控制台获取
+        r"""<p>CLS日志主题ID，可以通过cls接口或者控制台获取</p>
         :rtype: str
         """
         return self._TopicId
@@ -31815,7 +31833,7 @@ class EnableClusterAuditRequest(AbstractModel):
 
     @property
     def TopicRegion(self):
-        r"""topic所在region，默认为集群当前region
+        r"""<p>topic所在region，默认为集群当前region</p>
         :rtype: str
         """
         return self._TopicRegion
@@ -31824,12 +31842,24 @@ class EnableClusterAuditRequest(AbstractModel):
     def TopicRegion(self, TopicRegion):
         self._TopicRegion = TopicRegion
 
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型 tke/eks</p><p>默认值：tke</p>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._LogsetId = params.get("LogsetId")
         self._TopicId = params.get("TopicId")
         self._TopicRegion = params.get("TopicRegion")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32228,23 +32258,26 @@ class EnableEventPersistenceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _LogsetId: cls服务的logsetID，通过cls接口或者控制台获取
+        :param _LogsetId: <p>cls服务的logsetID，通过cls接口或者控制台获取</p>
         :type LogsetId: str
-        :param _TopicId: cls服务的topicID，通过cls接口或者控制台获取
+        :param _TopicId: <p>cls服务的topicID，通过cls接口或者控制台获取</p>
         :type TopicId: str
-        :param _TopicRegion: topic所在地域，默认为集群所在地域
+        :param _TopicRegion: <p>topic所在地域，默认为集群所在地域</p>
         :type TopicRegion: str
+        :param _ClusterType: <p>集群类型 tke/eks</p><p>默认值：tke</p>
+        :type ClusterType: str
         """
         self._ClusterId = None
         self._LogsetId = None
         self._TopicId = None
         self._TopicRegion = None
+        self._ClusterType = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -32255,7 +32288,7 @@ class EnableEventPersistenceRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""cls服务的logsetID，通过cls接口或者控制台获取
+        r"""<p>cls服务的logsetID，通过cls接口或者控制台获取</p>
         :rtype: str
         """
         return self._LogsetId
@@ -32266,7 +32299,7 @@ class EnableEventPersistenceRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""cls服务的topicID，通过cls接口或者控制台获取
+        r"""<p>cls服务的topicID，通过cls接口或者控制台获取</p>
         :rtype: str
         """
         return self._TopicId
@@ -32277,7 +32310,7 @@ class EnableEventPersistenceRequest(AbstractModel):
 
     @property
     def TopicRegion(self):
-        r"""topic所在地域，默认为集群所在地域
+        r"""<p>topic所在地域，默认为集群所在地域</p>
         :rtype: str
         """
         return self._TopicRegion
@@ -32286,12 +32319,24 @@ class EnableEventPersistenceRequest(AbstractModel):
     def TopicRegion(self, TopicRegion):
         self._TopicRegion = TopicRegion
 
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型 tke/eks</p><p>默认值：tke</p>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._LogsetId = params.get("LogsetId")
         self._TopicId = params.get("TopicId")
         self._TopicRegion = params.get("TopicRegion")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50986,6 +51031,40 @@ class RollbackClusterReleaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RotateClusterTokenRequest(AbstractModel):
+    r"""RotateClusterToken请求参数结构体
+
+    """
+
+
+class RotateClusterTokenResponse(AbstractModel):
+    r"""RotateClusterToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RouteInfo(AbstractModel):
     r"""集群路由对象
 
@@ -54309,14 +54388,17 @@ class UninstallLogAgentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
+        :param _ClusterType: <p>集群类型tke/eks</p><p>默认值：tke</p>
+        :type ClusterType: str
         """
         self._ClusterId = None
+        self._ClusterType = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -54325,9 +54407,21 @@ class UninstallLogAgentRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型tke/eks</p><p>默认值：tke</p>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

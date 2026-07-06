@@ -360,6 +360,7 @@ class EssbasicClient(AbstractClient):
         适用场景1：已经上传了一个word文件，希望将该word文件转换成pdf文件后发起合同
         适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
         转换文件是一个耗时操作，若想查看转换任务是否完成，可以通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">查询转换任务状态</a>接口获取任务状态。<br />
+        <font color="red">此接口于 2026 年 12月 31 日下线</font>，请使用新接口: <a href="https://qian.tencent.com/developers/partnerApis/files/CreateFileConvertTask" target="_blank">查询文件转换任务状态（CreateFileConvertTask）</a><br />
         注:
         1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
         2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
@@ -1569,6 +1570,7 @@ class EssbasicClient(AbstractClient):
         前提条件：已调用 <a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
 
         适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源ID。<br />
+        <font color="red">此接口于 2026 年 12月 31 日下线</font>，请使用新接口: <a href="https://qian.tencent.com/developers/partnerApis/files/DescribeFileConvertTask" target="_blank">查询文件转换任务状态（DescribeFileConvertTask）</a><br />
         注：
         1. `大文件转换所需的时间可能会比较长。`
         2. `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
@@ -2080,6 +2082,37 @@ class EssbasicClient(AbstractClient):
             body = self.call("CreateEmployeeQualificationSealQrCode", params, headers=headers)
             response = json.loads(body)
             model = models.CreateEmployeeQualificationSealQrCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateFileConvertTask(self, request):
+        r"""此接口（CreateFileConvertTask）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
+        <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换服务（ChannelCreateConvertTaskApi）</a><br />
+        前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。
+        适用场景1：已经上传了一个word文件，希望将该word文件转换成pdf文件后发起合同
+        适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
+        转换文件是一个耗时操作，若想查看转换任务是否完成，可以通过<a href="https://qian.tencent.com/developers/partnerApis/files/DescribeFileConvertTask" target="_blank">查询转换任务状态</a>接口获取任务状态。<br />
+        注:
+        1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
+        2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
+
+        :param request: Request instance for CreateFileConvertTask.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateFileConvertTaskRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreateFileConvertTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFileConvertTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFileConvertTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2726,6 +2759,36 @@ class EssbasicClient(AbstractClient):
             body = self.call("DescribeExtendedServiceAuthInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeExtendedServiceAuthInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFileConvertTask(self, request):
+        r"""此接口（DescribeFileConvertTask）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/partnerApis/files/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
+        <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">查询转换任务状态（ChannelGetTaskResultApi）</a><br />
+        前提条件：已调用 <a href="https://qian.tencent.com/developers/partnerApis/files/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
+
+        适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源ID。<br />
+        注：
+        1. `大文件转换所需的时间可能会比较长。`
+        2. `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
+
+        :param request: Request instance for DescribeFileConvertTask.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeFileConvertTaskRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeFileConvertTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFileConvertTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFileConvertTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

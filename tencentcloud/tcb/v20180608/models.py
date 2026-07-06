@@ -636,9 +636,15 @@ class AllocateEnvRequest(AbstractModel):
         :type AllocateId: str
         :param _ExternalAppId: <p>客户平台的应用标识，如果没有则不传</p>
         :type ExternalAppId: str
+        :param _ExternalTag: <p>自定义标签</p><p>参数格式：逗号分隔的 key=value 对，key/value 仅允许字母、数字、下划线。k1=v1,k2=v2</p>
+        :type ExternalTag: str
+        :param _RequireFunction: <p>是否需要云函数</p><p>默认值：false</p>
+        :type RequireFunction: bool
         """
         self._AllocateId = None
         self._ExternalAppId = None
+        self._ExternalTag = None
+        self._RequireFunction = None
 
     @property
     def AllocateId(self):
@@ -662,10 +668,34 @@ class AllocateEnvRequest(AbstractModel):
     def ExternalAppId(self, ExternalAppId):
         self._ExternalAppId = ExternalAppId
 
+    @property
+    def ExternalTag(self):
+        r"""<p>自定义标签</p><p>参数格式：逗号分隔的 key=value 对，key/value 仅允许字母、数字、下划线。k1=v1,k2=v2</p>
+        :rtype: str
+        """
+        return self._ExternalTag
+
+    @ExternalTag.setter
+    def ExternalTag(self, ExternalTag):
+        self._ExternalTag = ExternalTag
+
+    @property
+    def RequireFunction(self):
+        r"""<p>是否需要云函数</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._RequireFunction
+
+    @RequireFunction.setter
+    def RequireFunction(self, RequireFunction):
+        self._RequireFunction = RequireFunction
+
 
     def _deserialize(self, params):
         self._AllocateId = params.get("AllocateId")
         self._ExternalAppId = params.get("ExternalAppId")
+        self._ExternalTag = params.get("ExternalTag")
+        self._RequireFunction = params.get("RequireFunction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

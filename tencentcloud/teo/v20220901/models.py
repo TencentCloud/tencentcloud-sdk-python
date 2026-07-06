@@ -28043,33 +28043,19 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间。
+        :param _StartTime: <p>开始时间。</p>
         :type StartTime: str
-        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+        :param _EndTime: <p>结束时间。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 31 天。</p>
         :type EndTime: str
-        :param _MetricNames: 指标列表，取值有:
-<li>l7Flow_outFlux: L7 EdgeOne 响应流量，单位：Byte；</li>
-<li>l7Flow_inFlux: L7 客户端请求流量，单位：Byte；</li>
-<li>l7Flow_flux: L7 访问总流量（EdgeOne 响应+客户端请求），单位：Byte；</li>
-<li>l7Flow_outBandwidth: L7 EdgeOne 响应带宽，单位：bps；</li>
-<li>l7Flow_inBandwidth：L7 客户端请求带宽，单位：bps；</li>
-<li>l7Flow_bandwidth：L7 访问总带宽（EdgeOne 响应+客户端请求），单位：bps；</li>
-<li>l7Flow_request: L7 访问请求数，单位：次；</li>
-<li> l7Flow_avgResponseTime: L7 访问平均响应耗时，单位：ms；</li>
-<li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms。</li>
+        :param _MetricNames: <p>指标列表，取值有:</p><li>l7Flow_outFlux: L7 EdgeOne 响应流量，单位：Byte；</li><li>l7Flow_inFlux: L7 客户端请求流量，单位：Byte；</li><li>l7Flow_flux: L7 访问总流量（EdgeOne 响应+客户端请求），单位：Byte；</li><li>l7Flow_outBandwidth: L7 EdgeOne 响应带宽，单位：bps；</li><li>l7Flow_inBandwidth：L7 客户端请求带宽，单位：bps；</li><li>l7Flow_bandwidth：L7 访问总带宽（EdgeOne 响应+客户端请求），单位：bps；</li><li>l7Flow_request: L7 访问请求数，单位：次；</li><li> l7Flow_avgResponseTime: L7 访问平均响应耗时，单位：ms；</li><li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms；</li><li>l7Flow_requestRate: L7 访问请求速率，单位：qps。</li>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+        :param _ZoneIds: <p>站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：<a href="https://cloud.tencent.com/document/product/1552/104902">【腾讯云 EdgeOne】云 API 变更通知</a>。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 <code>*</code> 代替，查询账号级别数据需具备本接口全部站点资源权限。</p>
         :type ZoneIds: list of str
-        :param _Interval: 查询时间粒度，取值有：
-<li>min: 1分钟；</li>
-<li>5min: 5分钟；</li>
-<li>hour: 1小时；</li>
-<li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+        :param _Interval: <p>查询时间粒度。</p><p>枚举值：</p><ul><li>min： 1分钟</li><li>5min： 5分钟</li><li>hour： 1小时</li><li>day： 1天</li></ul><p>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。</p>
         :type Interval: str
-        :param _Filters: 筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
-如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
+        :param _Filters: <p>筛选数据时使用的过滤条件，取值参考 <a href="https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945">指标分析筛选条件说明</a> 中针对 L7 访问流量、带宽、请求数的可用筛选项。<br>如需限定站点或内容标识符，请在 <code>ZoneIds.N</code> 参数中另行传入对应的值。</p>
         :type Filters: list of QueryCondition
-        :param _Area: 数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
+        :param _Area: <p>数据归属地区。该参数已废弃。请在 <code>Filters.country</code> 中按客户端地域过滤数据。</p>
         :type Area: str
         """
         self._StartTime = None
@@ -28082,7 +28068,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间。
+        r"""<p>开始时间。</p>
         :rtype: str
         """
         return self._StartTime
@@ -28093,7 +28079,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+        r"""<p>结束时间。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 31 天。</p>
         :rtype: str
         """
         return self._EndTime
@@ -28104,16 +28090,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        r"""指标列表，取值有:
-<li>l7Flow_outFlux: L7 EdgeOne 响应流量，单位：Byte；</li>
-<li>l7Flow_inFlux: L7 客户端请求流量，单位：Byte；</li>
-<li>l7Flow_flux: L7 访问总流量（EdgeOne 响应+客户端请求），单位：Byte；</li>
-<li>l7Flow_outBandwidth: L7 EdgeOne 响应带宽，单位：bps；</li>
-<li>l7Flow_inBandwidth：L7 客户端请求带宽，单位：bps；</li>
-<li>l7Flow_bandwidth：L7 访问总带宽（EdgeOne 响应+客户端请求），单位：bps；</li>
-<li>l7Flow_request: L7 访问请求数，单位：次；</li>
-<li> l7Flow_avgResponseTime: L7 访问平均响应耗时，单位：ms；</li>
-<li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms。</li>
+        r"""<p>指标列表，取值有:</p><li>l7Flow_outFlux: L7 EdgeOne 响应流量，单位：Byte；</li><li>l7Flow_inFlux: L7 客户端请求流量，单位：Byte；</li><li>l7Flow_flux: L7 访问总流量（EdgeOne 响应+客户端请求），单位：Byte；</li><li>l7Flow_outBandwidth: L7 EdgeOne 响应带宽，单位：bps；</li><li>l7Flow_inBandwidth：L7 客户端请求带宽，单位：bps；</li><li>l7Flow_bandwidth：L7 访问总带宽（EdgeOne 响应+客户端请求），单位：bps；</li><li>l7Flow_request: L7 访问请求数，单位：次；</li><li> l7Flow_avgResponseTime: L7 访问平均响应耗时，单位：ms；</li><li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms；</li><li>l7Flow_requestRate: L7 访问请求速率，单位：qps。</li>
         :rtype: list of str
         """
         return self._MetricNames
@@ -28124,7 +28101,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+        r"""<p>站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：<a href="https://cloud.tencent.com/document/product/1552/104902">【腾讯云 EdgeOne】云 API 变更通知</a>。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 <code>*</code> 代替，查询账号级别数据需具备本接口全部站点资源权限。</p>
         :rtype: list of str
         """
         return self._ZoneIds
@@ -28135,11 +28112,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        r"""查询时间粒度，取值有：
-<li>min: 1分钟；</li>
-<li>5min: 5分钟；</li>
-<li>hour: 1小时；</li>
-<li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。
+        r"""<p>查询时间粒度。</p><p>枚举值：</p><ul><li>min： 1分钟</li><li>5min： 5分钟</li><li>hour： 1小时</li><li>day： 1天</li></ul><p>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。</p>
         :rtype: str
         """
         return self._Interval
@@ -28150,8 +28123,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""筛选数据时使用的过滤条件，取值参考 [指标分析筛选条件说明](https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945) 中针对 L7 访问流量、带宽、请求数的可用筛选项。
-如需限定站点或内容标识符，请在 `ZoneIds.N` 参数中另行传入对应的值。
+        r"""<p>筛选数据时使用的过滤条件，取值参考 <a href="https://cloud.tencent.com/document/product/1552/98219#1aaf1150-55a4-4b4d-b103-3a8317ac7945">指标分析筛选条件说明</a> 中针对 L7 访问流量、带宽、请求数的可用筛选项。<br>如需限定站点或内容标识符，请在 <code>ZoneIds.N</code> 参数中另行传入对应的值。</p>
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -28162,7 +28134,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Area(self):
-        r"""数据归属地区。该参数已废弃。请在 `Filters.country` 中按客户端地域过滤数据。
+        r"""<p>数据归属地区。该参数已废弃。请在 <code>Filters.country</code> 中按客户端地域过滤数据。</p>
         :rtype: str
         """
         return self._Area
@@ -28202,9 +28174,9 @@ class DescribeTimingL7AnalysisDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 查询结果的总条数。
+        :param _TotalCount: <p>查询结果的总条数。</p>
         :type TotalCount: int
-        :param _Data: 时序流量数据列表。
+        :param _Data: <p>七层时序流量数据列表。<br>对于不同的查询指标，根据指标值类型的不同，会从不同的参数返回时序数据。<br>目前存在的值类型有以下两种：</p><ul>  <li><strong>Integer</strong>：<code>Integer</code> 值类型的指标将从 <code>Data.N.TypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：    <ul>      <li><code>l7Flow_outFlux</code>：L7 EdgeOne 响应流量，单位：Byte；</li>      <li><code>l7Flow_inFlux</code>：L7 客户端请求流量，单位：Byte；</li>      <li><code>l7Flow_flux</code>：L7 访问总流量（EdgeOne 响应+客户端请求），单位：Byte；</li>      <li><code>l7Flow_outBandwidth</code>：L7 EdgeOne 响应带宽，单位：bps；</li>      <li><code>l7Flow_inBandwidth</code>：L7 客户端请求带宽，单位：bps；</li>      <li><code>l7Flow_bandwidth</code>：L7 访问总带宽（EdgeOne 响应+客户端请求），单位：bps；</li>      <li><code>l7Flow_request</code>：L7 访问请求数，单位：次；</li>      <li><code>l7Flow_avgResponseTime</code>：L7 访问平均响应耗时，单位：ms；</li>      <li><code>l7Flow_avgFirstByteResponseTime</code>：L7 访问平均首字节响应耗时，单位：ms。</li>    </ul>  </li>  <li><strong>Float</strong>：<code>Float</code> 值类型的指标将从 <code>Data.N.FloatTypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：    <ul>      <li><code>l7Flow_requestRate</code>：L7 访问请求速率，单位：qps。</li>    </ul>  </li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of TimingDataRecord
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -28216,7 +28188,7 @@ class DescribeTimingL7AnalysisDataResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询结果的总条数。
+        r"""<p>查询结果的总条数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -28227,7 +28199,7 @@ class DescribeTimingL7AnalysisDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""时序流量数据列表。
+        r"""<p>七层时序流量数据列表。<br>对于不同的查询指标，根据指标值类型的不同，会从不同的参数返回时序数据。<br>目前存在的值类型有以下两种：</p><ul>  <li><strong>Integer</strong>：<code>Integer</code> 值类型的指标将从 <code>Data.N.TypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：    <ul>      <li><code>l7Flow_outFlux</code>：L7 EdgeOne 响应流量，单位：Byte；</li>      <li><code>l7Flow_inFlux</code>：L7 客户端请求流量，单位：Byte；</li>      <li><code>l7Flow_flux</code>：L7 访问总流量（EdgeOne 响应+客户端请求），单位：Byte；</li>      <li><code>l7Flow_outBandwidth</code>：L7 EdgeOne 响应带宽，单位：bps；</li>      <li><code>l7Flow_inBandwidth</code>：L7 客户端请求带宽，单位：bps；</li>      <li><code>l7Flow_bandwidth</code>：L7 访问总带宽（EdgeOne 响应+客户端请求），单位：bps；</li>      <li><code>l7Flow_request</code>：L7 访问请求数，单位：次；</li>      <li><code>l7Flow_avgResponseTime</code>：L7 访问平均响应耗时，单位：ms；</li>      <li><code>l7Flow_avgFirstByteResponseTime</code>：L7 访问平均首字节响应耗时，单位：ms。</li>    </ul>  </li>  <li><strong>Float</strong>：<code>Float</code> 值类型的指标将从 <code>Data.N.FloatTypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：    <ul>      <li><code>l7Flow_requestRate</code>：L7 访问请求速率，单位：qps。</li>    </ul>  </li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TimingDataRecord
         """

@@ -6178,18 +6178,22 @@ class DescribeJobEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业的 ID
+        :param _JobId: <p>作业的 ID</p>
         :type JobId: str
-        :param _StartTimestamp: 筛选条件：起始 Unix 时间戳（秒）
+        :param _StartTimestamp: <p>筛选条件：起始 Unix 时间戳（秒）</p>
         :type StartTimestamp: int
-        :param _EndTimestamp: 筛选条件：结束 Unix 时间戳（秒）
+        :param _EndTimestamp: <p>筛选条件：结束 Unix 时间戳（秒）</p>
         :type EndTimestamp: int
-        :param _Types: 事件类型。如果不传则返回所有类型的数据
+        :param _Types: <p>事件类型。如果不传则返回所有类型的数据</p>
         :type Types: list of str
-        :param _RunningOrderIds: 运行实例 ID 数组
+        :param _RunningOrderIds: <p>运行实例 ID 数组</p>
         :type RunningOrderIds: list of int non-negative
-        :param _WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
         :type WorkSpaceId: str
+        :param _Limit: <p>返回条数</p>
+        :type Limit: int
+        :param _Offset: <p>起始偏移个数</p>
+        :type Offset: int
         """
         self._JobId = None
         self._StartTimestamp = None
@@ -6197,10 +6201,12 @@ class DescribeJobEventsRequest(AbstractModel):
         self._Types = None
         self._RunningOrderIds = None
         self._WorkSpaceId = None
+        self._Limit = None
+        self._Offset = None
 
     @property
     def JobId(self):
-        r"""作业的 ID
+        r"""<p>作业的 ID</p>
         :rtype: str
         """
         return self._JobId
@@ -6211,7 +6217,7 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        r"""筛选条件：起始 Unix 时间戳（秒）
+        r"""<p>筛选条件：起始 Unix 时间戳（秒）</p>
         :rtype: int
         """
         return self._StartTimestamp
@@ -6222,7 +6228,7 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def EndTimestamp(self):
-        r"""筛选条件：结束 Unix 时间戳（秒）
+        r"""<p>筛选条件：结束 Unix 时间戳（秒）</p>
         :rtype: int
         """
         return self._EndTimestamp
@@ -6233,7 +6239,7 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def Types(self):
-        r"""事件类型。如果不传则返回所有类型的数据
+        r"""<p>事件类型。如果不传则返回所有类型的数据</p>
         :rtype: list of str
         """
         return self._Types
@@ -6244,7 +6250,7 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def RunningOrderIds(self):
-        r"""运行实例 ID 数组
+        r"""<p>运行实例 ID 数组</p>
         :rtype: list of int non-negative
         """
         return self._RunningOrderIds
@@ -6255,7 +6261,7 @@ class DescribeJobEventsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 SerialId
+        r"""<p>工作空间 SerialId</p>
         :rtype: str
         """
         return self._WorkSpaceId
@@ -6263,6 +6269,28 @@ class DescribeJobEventsRequest(AbstractModel):
     @WorkSpaceId.setter
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def Limit(self):
+        r"""<p>返回条数</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>起始偏移个数</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
@@ -6272,6 +6300,8 @@ class DescribeJobEventsRequest(AbstractModel):
         self._Types = params.get("Types")
         self._RunningOrderIds = params.get("RunningOrderIds")
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6289,16 +6319,16 @@ class DescribeJobEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Events: 该作业指定范围内的事件列表
+        :param _Events: <p>该作业指定范围内的事件列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of JobEvent
-        :param _RunningOrderIds: 该作业指定范围内运行实例 ID 数组，仅当入参没有传入 RunningOrderIds 参数时才会返回。倒序输出
+        :param _RunningOrderIds: <p>该作业指定范围内运行实例 ID 数组，仅当入参没有传入 RunningOrderIds 参数时才会返回。倒序输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningOrderIds: list of int non-negative
-        :param _TotalCount: 事件的总数
+        :param _TotalCount: <p>事件的总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _Versions: 实例对应的版本
+        :param _Versions: <p>实例对应的版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Versions: list of int non-negative
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6312,7 +6342,7 @@ class DescribeJobEventsResponse(AbstractModel):
 
     @property
     def Events(self):
-        r"""该作业指定范围内的事件列表
+        r"""<p>该作业指定范围内的事件列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of JobEvent
         """
@@ -6324,7 +6354,7 @@ class DescribeJobEventsResponse(AbstractModel):
 
     @property
     def RunningOrderIds(self):
-        r"""该作业指定范围内运行实例 ID 数组，仅当入参没有传入 RunningOrderIds 参数时才会返回。倒序输出
+        r"""<p>该作业指定范围内运行实例 ID 数组，仅当入参没有传入 RunningOrderIds 参数时才会返回。倒序输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
@@ -6336,7 +6366,7 @@ class DescribeJobEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""事件的总数
+        r"""<p>事件的总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6348,7 +6378,7 @@ class DescribeJobEventsResponse(AbstractModel):
 
     @property
     def Versions(self):
-        r"""实例对应的版本
+        r"""<p>实例对应的版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
@@ -10799,21 +10829,25 @@ class JobEvent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 内部定义的事件类型
+        :param _Type: <p>内部定义的事件类型</p>
         :type Type: str
-        :param _Description: 事件类型的说明文字
+        :param _Description: <p>事件类型的说明文字</p>
         :type Description: str
-        :param _Timestamp: 事件发生的 Unix 时间戳（秒）
+        :param _Timestamp: <p>事件发生的 Unix 时间戳（秒）</p>
         :type Timestamp: int
-        :param _RunningOrderId: 事件发生时的运行 ID
+        :param _RunningOrderId: <p>事件发生时的运行 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningOrderId: int
-        :param _Message: 事件的一些可选说明
+        :param _Message: <p>事件的一些可选说明</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param _SolutionLink: 异常事件的排查手册链接
+        :param _SolutionLink: <p>异常事件的排查手册链接</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SolutionLink: str
+        :param _CauseAnalysis: <p>异常事件原因分析</p>
+        :type CauseAnalysis: str
+        :param _Solution: <p>异常事件处理的参考方案</p>
+        :type Solution: str
         """
         self._Type = None
         self._Description = None
@@ -10821,10 +10855,12 @@ class JobEvent(AbstractModel):
         self._RunningOrderId = None
         self._Message = None
         self._SolutionLink = None
+        self._CauseAnalysis = None
+        self._Solution = None
 
     @property
     def Type(self):
-        r"""内部定义的事件类型
+        r"""<p>内部定义的事件类型</p>
         :rtype: str
         """
         return self._Type
@@ -10835,7 +10871,7 @@ class JobEvent(AbstractModel):
 
     @property
     def Description(self):
-        r"""事件类型的说明文字
+        r"""<p>事件类型的说明文字</p>
         :rtype: str
         """
         return self._Description
@@ -10846,7 +10882,7 @@ class JobEvent(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""事件发生的 Unix 时间戳（秒）
+        r"""<p>事件发生的 Unix 时间戳（秒）</p>
         :rtype: int
         """
         return self._Timestamp
@@ -10857,7 +10893,7 @@ class JobEvent(AbstractModel):
 
     @property
     def RunningOrderId(self):
-        r"""事件发生时的运行 ID
+        r"""<p>事件发生时的运行 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10869,7 +10905,7 @@ class JobEvent(AbstractModel):
 
     @property
     def Message(self):
-        r"""事件的一些可选说明
+        r"""<p>事件的一些可选说明</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10881,7 +10917,7 @@ class JobEvent(AbstractModel):
 
     @property
     def SolutionLink(self):
-        r"""异常事件的排查手册链接
+        r"""<p>异常事件的排查手册链接</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10891,6 +10927,28 @@ class JobEvent(AbstractModel):
     def SolutionLink(self, SolutionLink):
         self._SolutionLink = SolutionLink
 
+    @property
+    def CauseAnalysis(self):
+        r"""<p>异常事件原因分析</p>
+        :rtype: str
+        """
+        return self._CauseAnalysis
+
+    @CauseAnalysis.setter
+    def CauseAnalysis(self, CauseAnalysis):
+        self._CauseAnalysis = CauseAnalysis
+
+    @property
+    def Solution(self):
+        r"""<p>异常事件处理的参考方案</p>
+        :rtype: str
+        """
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -10899,6 +10957,8 @@ class JobEvent(AbstractModel):
         self._RunningOrderId = params.get("RunningOrderId")
         self._Message = params.get("Message")
         self._SolutionLink = params.get("SolutionLink")
+        self._CauseAnalysis = params.get("CauseAnalysis")
+        self._Solution = params.get("Solution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

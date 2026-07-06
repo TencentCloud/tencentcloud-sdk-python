@@ -889,20 +889,22 @@ class ClientNodeAttribute(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClientNodeIp: 客户端节点IP
+        :param _ClientNodeIp: <p>客户端节点IP</p>
         :type ClientNodeIp: str
-        :param _Status: 客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)
+        :param _Status: <p>客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)</p>
         :type Status: str
-        :param _ClientType: 客户端节点类型，extend(扩展节点)，manager(管理节点)
+        :param _ClientType: <p>客户端节点类型，extend(扩展节点)，manager(管理节点)</p>
         :type ClientType: str
-        :param _VpcId: 节点所属vpcid	
+        :param _VpcId: <p>节点所属vpcid</p>
         :type VpcId: str
-        :param _SubnetId: 节点所属子网id
+        :param _SubnetId: <p>节点所属子网id</p>
         :type SubnetId: str
-        :param _InstanceId: cvmId
+        :param _InstanceId: <p>cvmId</p>
         :type InstanceId: str
-        :param _MountPoint: 自定义挂载点
+        :param _MountPoint: <p>自定义挂载点</p>
         :type MountPoint: str
+        :param _ClusterId: <p>客户端集群id</p>
+        :type ClusterId: str
         """
         self._ClientNodeIp = None
         self._Status = None
@@ -911,10 +913,11 @@ class ClientNodeAttribute(AbstractModel):
         self._SubnetId = None
         self._InstanceId = None
         self._MountPoint = None
+        self._ClusterId = None
 
     @property
     def ClientNodeIp(self):
-        r"""客户端节点IP
+        r"""<p>客户端节点IP</p>
         :rtype: str
         """
         return self._ClientNodeIp
@@ -925,7 +928,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def Status(self):
-        r"""客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)
+        r"""<p>客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)</p>
         :rtype: str
         """
         return self._Status
@@ -936,7 +939,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def ClientType(self):
-        r"""客户端节点类型，extend(扩展节点)，manager(管理节点)
+        r"""<p>客户端节点类型，extend(扩展节点)，manager(管理节点)</p>
         :rtype: str
         """
         return self._ClientType
@@ -947,7 +950,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""节点所属vpcid	
+        r"""<p>节点所属vpcid</p>
         :rtype: str
         """
         return self._VpcId
@@ -958,7 +961,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""节点所属子网id
+        r"""<p>节点所属子网id</p>
         :rtype: str
         """
         return self._SubnetId
@@ -969,7 +972,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""cvmId
+        r"""<p>cvmId</p>
         :rtype: str
         """
         return self._InstanceId
@@ -980,7 +983,7 @@ class ClientNodeAttribute(AbstractModel):
 
     @property
     def MountPoint(self):
-        r"""自定义挂载点
+        r"""<p>自定义挂载点</p>
         :rtype: str
         """
         return self._MountPoint
@@ -988,6 +991,17 @@ class ClientNodeAttribute(AbstractModel):
     @MountPoint.setter
     def MountPoint(self, MountPoint):
         self._MountPoint = MountPoint
+
+    @property
+    def ClusterId(self):
+        r"""<p>客户端集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
@@ -998,6 +1012,7 @@ class ClientNodeAttribute(AbstractModel):
         self._SubnetId = params.get("SubnetId")
         self._InstanceId = params.get("InstanceId")
         self._MountPoint = params.get("MountPoint")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1157,38 +1172,47 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
+        :param _TaskType: <p>数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)</p>
         :type TaskType: str
-        :param _Bucket: COS存储桶名
+        :param _Bucket: <p>COS存储桶名</p>
         :type Bucket: str
-        :param _FileSystemId: 文件系统ID
+        :param _FileSystemId: <p>文件系统ID</p>
         :type FileSystemId: str
-        :param _TaskPath: 对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
+        :param _TaskPath: <p>对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据</p>
         :type TaskPath: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _RepositoryType: 数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
+        :param _IsTaskPathAbsolute: <p>任务路径是否表示绝对路径（暂时仅支持沉降使用）</p>
+        :type IsTaskPathAbsolute: bool
+        :param _RepositoryType: <p>数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载</p>
         :type RepositoryType: str
-        :param _TextLocation: 文件列表下载地址，以http开头
+        :param _TextLocation: <p>文件列表下载地址，以http开头</p>
         :type TextLocation: str
-        :param _EnableDataFlowSubPath: 是否开启自定义路径(暂时仅供预热使用)
+        :param _EnableDataFlowSubPath: <p>是否开启自定义路径(暂时仅供预热使用)</p>
         :type EnableDataFlowSubPath: bool
-        :param _DataFlowSubPath: 自定义路径(暂时仅供预热使用)
+        :param _DataFlowSubPath: <p>自定义路径(暂时仅供预热使用)</p>
         :type DataFlowSubPath: str
+        :param _EnableCustomDestPath: <p>是否开启自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
+        :type EnableCustomDestPath: bool
+        :param _CustomDestPath: <p>自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
+        :type CustomDestPath: str
         """
         self._TaskType = None
         self._Bucket = None
         self._FileSystemId = None
         self._TaskPath = None
         self._TaskName = None
+        self._IsTaskPathAbsolute = None
         self._RepositoryType = None
         self._TextLocation = None
         self._EnableDataFlowSubPath = None
         self._DataFlowSubPath = None
+        self._EnableCustomDestPath = None
+        self._CustomDestPath = None
 
     @property
     def TaskType(self):
-        r"""数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
+        r"""<p>数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)</p>
         :rtype: str
         """
         return self._TaskType
@@ -1199,7 +1223,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""COS存储桶名
+        r"""<p>COS存储桶名</p>
         :rtype: str
         """
         return self._Bucket
@@ -1210,7 +1234,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统ID
+        r"""<p>文件系统ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -1221,7 +1245,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def TaskPath(self):
-        r"""对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
+        r"""<p>对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据</p>
         :rtype: str
         """
         return self._TaskPath
@@ -1232,7 +1256,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -1242,8 +1266,19 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
         self._TaskName = TaskName
 
     @property
+    def IsTaskPathAbsolute(self):
+        r"""<p>任务路径是否表示绝对路径（暂时仅支持沉降使用）</p>
+        :rtype: bool
+        """
+        return self._IsTaskPathAbsolute
+
+    @IsTaskPathAbsolute.setter
+    def IsTaskPathAbsolute(self, IsTaskPathAbsolute):
+        self._IsTaskPathAbsolute = IsTaskPathAbsolute
+
+    @property
     def RepositoryType(self):
-        r"""数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
+        r"""<p>数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载</p>
         :rtype: str
         """
         return self._RepositoryType
@@ -1254,7 +1289,7 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def TextLocation(self):
-        r"""文件列表下载地址，以http开头
+        r"""<p>文件列表下载地址，以http开头</p>
         :rtype: str
         """
         return self._TextLocation
@@ -1265,25 +1300,55 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
 
     @property
     def EnableDataFlowSubPath(self):
-        r"""是否开启自定义路径(暂时仅供预热使用)
+        warnings.warn("parameter `EnableDataFlowSubPath` is deprecated", DeprecationWarning) 
+
+        r"""<p>是否开启自定义路径(暂时仅供预热使用)</p>
         :rtype: bool
         """
         return self._EnableDataFlowSubPath
 
     @EnableDataFlowSubPath.setter
     def EnableDataFlowSubPath(self, EnableDataFlowSubPath):
+        warnings.warn("parameter `EnableDataFlowSubPath` is deprecated", DeprecationWarning) 
+
         self._EnableDataFlowSubPath = EnableDataFlowSubPath
 
     @property
     def DataFlowSubPath(self):
-        r"""自定义路径(暂时仅供预热使用)
+        warnings.warn("parameter `DataFlowSubPath` is deprecated", DeprecationWarning) 
+
+        r"""<p>自定义路径(暂时仅供预热使用)</p>
         :rtype: str
         """
         return self._DataFlowSubPath
 
     @DataFlowSubPath.setter
     def DataFlowSubPath(self, DataFlowSubPath):
+        warnings.warn("parameter `DataFlowSubPath` is deprecated", DeprecationWarning) 
+
         self._DataFlowSubPath = DataFlowSubPath
+
+    @property
+    def EnableCustomDestPath(self):
+        r"""<p>是否开启自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
+        :rtype: bool
+        """
+        return self._EnableCustomDestPath
+
+    @EnableCustomDestPath.setter
+    def EnableCustomDestPath(self, EnableCustomDestPath):
+        self._EnableCustomDestPath = EnableCustomDestPath
+
+    @property
+    def CustomDestPath(self):
+        r"""<p>自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
+        :rtype: str
+        """
+        return self._CustomDestPath
+
+    @CustomDestPath.setter
+    def CustomDestPath(self, CustomDestPath):
+        self._CustomDestPath = CustomDestPath
 
 
     def _deserialize(self, params):
@@ -1292,10 +1357,13 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
         self._FileSystemId = params.get("FileSystemId")
         self._TaskPath = params.get("TaskPath")
         self._TaskName = params.get("TaskName")
+        self._IsTaskPathAbsolute = params.get("IsTaskPathAbsolute")
         self._RepositoryType = params.get("RepositoryType")
         self._TextLocation = params.get("TextLocation")
         self._EnableDataFlowSubPath = params.get("EnableDataFlowSubPath")
         self._DataFlowSubPath = params.get("DataFlowSubPath")
+        self._EnableCustomDestPath = params.get("EnableCustomDestPath")
+        self._CustomDestPath = params.get("CustomDestPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1313,7 +1381,7 @@ class CreateDataRepositoryTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1323,7 +1391,7 @@ class CreateDataRepositoryTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId

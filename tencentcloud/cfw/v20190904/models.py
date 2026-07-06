@@ -605,17 +605,17 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 创建规则数据
+        :param _Data: <p>创建规则数据</p>
         :type Data: list of SecurityGroupRule
-        :param _Type: 添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后
+        :param _Type: <p>添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后</p>
         :type Type: int
-        :param _ClientToken: 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        :param _ClientToken: <p>保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。</p>
         :type ClientToken: str
-        :param _IsDelay: （IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发
+        :param _IsDelay: <p>（IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发</p>
         :type IsDelay: int
-        :param _From: 来源 默认空 覆盖导入是 batch_import_cover
+        :param _From: <p>来源 默认空 覆盖导入是 batch_import_cover</p>
         :type From: str
-        :param _IsUseId: 是否复用rule id，1为是，默认不需要
+        :param _IsUseId: <p>是否复用rule id，1为是，默认不需要</p>
         :type IsUseId: int
         """
         self._Data = None
@@ -627,7 +627,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def Data(self):
-        r"""创建规则数据
+        r"""<p>创建规则数据</p>
         :rtype: list of SecurityGroupRule
         """
         return self._Data
@@ -638,7 +638,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后
+        r"""<p>添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后</p>
         :rtype: int
         """
         return self._Type
@@ -649,7 +649,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        r"""<p>保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -660,7 +660,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def IsDelay(self):
-        r"""（IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发
+        r"""<p>（IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发</p>
         :rtype: int
         """
         return self._IsDelay
@@ -671,7 +671,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def From(self):
-        r"""来源 默认空 覆盖导入是 batch_import_cover
+        r"""<p>来源 默认空 覆盖导入是 batch_import_cover</p>
         :rtype: str
         """
         return self._From
@@ -682,7 +682,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def IsUseId(self):
-        r"""是否复用rule id，1为是，默认不需要
+        r"""<p>是否复用rule id，1为是，默认不需要</p>
         :rtype: int
         """
         return self._IsUseId
@@ -721,9 +721,9 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 状态值，0：添加成功，非0：添加失败
+        :param _Status: <p>状态值，0：添加成功，非0：添加失败</p>
         :type Status: int
-        :param _Rules: 添加成功的规则详情
+        :param _Rules: <p>添加成功的规则详情</p>
         :type Rules: list of SecurityGroupSimplifyRule
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -734,7 +734,7 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态值，0：添加成功，非0：添加失败
+        r"""<p>状态值，0：添加成功，非0：添加失败</p>
         :rtype: int
         """
         return self._Status
@@ -745,7 +745,7 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        r"""添加成功的规则详情
+        r"""<p>添加成功的规则详情</p>
         :rtype: list of SecurityGroupSimplifyRule
         """
         return self._Rules
@@ -2479,6 +2479,192 @@ class CloseClusterNatFwSwitchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ClusterFwPreAccessCheckResult(AbstractModel):
+    r"""预接入检查结果，序列化后写入 cfw_gwlb_lead_switch.check_result 列
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 检查状态，0：进行中，1：通过，2：失败
+        :type Status: int
+        :param _CurrentStage: 当前/最后所处检查项。Status=1（通过）时为 done，Status=2（失败）时为失败的检查项 key，Status=0（进行中）时为正在执行的检查项 key
+        :type CurrentStage: str
+        :param _Stages: 逐条检查项结果列表，按执行顺序追加
+        :type Stages: list of ClusterFwPreAccessCheckStage
+        :param _PolicyRouteReport: 策略路由配额核算报告，仅在 Status=1（通过）时非空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyRouteReport: :class:`tencentcloud.cfw.v20190904.models.PolicyRoutePreCheckReport`
+        :param _UpdateTime: 最近一次更新时间，格式：YYYY-MM-DD HH:MM:SS
+        :type UpdateTime: str
+        """
+        self._Status = None
+        self._CurrentStage = None
+        self._Stages = None
+        self._PolicyRouteReport = None
+        self._UpdateTime = None
+
+    @property
+    def Status(self):
+        r"""检查状态，0：进行中，1：通过，2：失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CurrentStage(self):
+        r"""当前/最后所处检查项。Status=1（通过）时为 done，Status=2（失败）时为失败的检查项 key，Status=0（进行中）时为正在执行的检查项 key
+        :rtype: str
+        """
+        return self._CurrentStage
+
+    @CurrentStage.setter
+    def CurrentStage(self, CurrentStage):
+        self._CurrentStage = CurrentStage
+
+    @property
+    def Stages(self):
+        r"""逐条检查项结果列表，按执行顺序追加
+        :rtype: list of ClusterFwPreAccessCheckStage
+        """
+        return self._Stages
+
+    @Stages.setter
+    def Stages(self, Stages):
+        self._Stages = Stages
+
+    @property
+    def PolicyRouteReport(self):
+        r"""策略路由配额核算报告，仅在 Status=1（通过）时非空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.PolicyRoutePreCheckReport`
+        """
+        return self._PolicyRouteReport
+
+    @PolicyRouteReport.setter
+    def PolicyRouteReport(self, PolicyRouteReport):
+        self._PolicyRouteReport = PolicyRouteReport
+
+    @property
+    def UpdateTime(self):
+        r"""最近一次更新时间，格式：YYYY-MM-DD HH:MM:SS
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._CurrentStage = params.get("CurrentStage")
+        if params.get("Stages") is not None:
+            self._Stages = []
+            for item in params.get("Stages"):
+                obj = ClusterFwPreAccessCheckStage()
+                obj._deserialize(item)
+                self._Stages.append(obj)
+        if params.get("PolicyRouteReport") is not None:
+            self._PolicyRouteReport = PolicyRoutePreCheckReport()
+            self._PolicyRouteReport._deserialize(params.get("PolicyRouteReport"))
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterFwPreAccessCheckStage(AbstractModel):
+    r"""单个阶段的实时检查状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Stage: 检查项 key，与发起检查接口返回的 CheckItems[].Stage 一一对应
+        :type Stage: str
+        :param _Status: 该检查项状态，0：进行中，1：通过，2：失败
+        :type Status: int
+        :param _ErrorCode: 失败时的错误码（仅 Status=2 时有值）
+        :type ErrorCode: str
+        :param _ErrorMessage: 失败时的具体错误信息（仅 Status=2 时有值）
+        :type ErrorMessage: str
+        """
+        self._Stage = None
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+
+    @property
+    def Stage(self):
+        r"""检查项 key，与发起检查接口返回的 CheckItems[].Stage 一一对应
+        :rtype: str
+        """
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
+    def Status(self):
+        r"""该检查项状态，0：进行中，1：通过，2：失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        r"""失败时的错误码（仅 Status=2 时有值）
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""失败时的具体错误信息（仅 Status=2 时有值）
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._Stage = params.get("Stage")
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterSwitchDetail(AbstractModel):
     r"""集群模式防火墙开关数据详情
 
@@ -2528,6 +2714,8 @@ class ClusterSwitchDetail(AbstractModel):
         :type Bypass: int
         :param _Progress: <p>防火墙开关操作时的进度状态：</p><p>// 开启 — 自动模式（3步）<br>&quot;AUTO_OPEN_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_OPEN_CREATING_RESOURCES&quot; // 步骤2: 创建引流网络和资源<br>&quot;AUTO_OPEN_PUSHING_ROUTES&quot; // 步骤3: 创建策略路由</p><p>// 开启 — 手动模式（1步）<br>&quot;MANUAL_OPEN_CREATING_RESOURCES&quot; // 步骤1: 创建引流网络和资源</p><p>// 关闭 — 自动模式（2步）<br>&quot;AUTO_CLOSE_DELETING_ROUTES&quot; // 步骤1: 删除策略路由<br>&quot;AUTO_CLOSE_DELETING_RESOURCES&quot; // 步骤2: 删除引流网络和资源<br>// 关闭 — 手动模式（1步）<br>&quot;MANUAL_CLOSE_DELETING_RESOURCES&quot; // 步骤1: 删除引流网络和资源</p><p>// 修改 — 自动模式（3步）<br>&quot;AUTO_MODIFY_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_MODIFY_DELETING_ROUTES&quot; // 步骤2: 删除旧策略路由<br>&quot;AUTO_MODIFY_PUSHING_ROUTES&quot; // 步骤3: 创建新策略路由</p><p>// 修改 — 手动模式（1步，仅 VPC 防火墙存在手动模式修改）<br>&quot;MANUAL_MODIFY_UPDATING_RESOURCES&quot; // 步骤1: 更新引流网络和资源</p>
         :type Progress: str
+        :param _CheckResult: <p>预检查项的结果</p>
+        :type CheckResult: :class:`tencentcloud.cfw.v20190904.models.ClusterFwPreAccessCheckResult`
         """
         self._InsObj = None
         self._ObjName = None
@@ -2549,6 +2737,7 @@ class ClusterSwitchDetail(AbstractModel):
         self._PeerStatus = None
         self._Bypass = None
         self._Progress = None
+        self._CheckResult = None
 
     @property
     def InsObj(self):
@@ -2772,6 +2961,17 @@ class ClusterSwitchDetail(AbstractModel):
     def Progress(self, Progress):
         self._Progress = Progress
 
+    @property
+    def CheckResult(self):
+        r"""<p>预检查项的结果</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ClusterFwPreAccessCheckResult`
+        """
+        return self._CheckResult
+
+    @CheckResult.setter
+    def CheckResult(self, CheckResult):
+        self._CheckResult = CheckResult
+
 
     def _deserialize(self, params):
         self._InsObj = params.get("InsObj")
@@ -2804,6 +3004,9 @@ class ClusterSwitchDetail(AbstractModel):
         self._PeerStatus = params.get("PeerStatus")
         self._Bypass = params.get("Bypass")
         self._Progress = params.get("Progress")
+        if params.get("CheckResult") is not None:
+            self._CheckResult = ClusterFwPreAccessCheckResult()
+            self._CheckResult._deserialize(params.get("CheckResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12252,6 +12455,51 @@ class DescribeLogStorageStatisticRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>开始时间</p><p>参数格式：2026-07-01 15:02:01</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p><p>参数格式：2026-07-01 15:02:01</p>
+        :type EndTime: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p><p>参数格式：2026-07-01 15:02:01</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p><p>参数格式：2026-07-01 15:02:01</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeLogStorageStatisticResponse(AbstractModel):
     r"""DescribeLogStorageStatistic返回参数结构体
@@ -12260,39 +12508,39 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnCode: 返回状态码 0 成功 非0不成功
+        :param _ReturnCode: <p>返回状态码 0 成功 非0不成功</p>
         :type ReturnCode: int
-        :param _ReturnMsg: 返回信息  success 成功 其他 不成功
+        :param _ReturnMsg: <p>返回信息  success 成功 其他 不成功</p>
         :type ReturnMsg: str
-        :param _UsedSize: 已使用存储量，单位B
+        :param _UsedSize: <p>已使用存储量，单位B</p>
         :type UsedSize: int
-        :param _TotalSize: 配额存储总量，单位B
+        :param _TotalSize: <p>配额存储总量，单位B</p>
         :type TotalSize: int
-        :param _StorageDay: 存储天数
+        :param _StorageDay: <p>存储天数</p>
         :type StorageDay: int
-        :param _AclSize: 访问控制日志存储量，单位B
+        :param _AclSize: <p>访问控制日志存储量，单位B</p>
         :type AclSize: int
-        :param _IdsSize: 入侵防御日志存储量，单位B
+        :param _IdsSize: <p>入侵防御日志存储量，单位B</p>
         :type IdsSize: int
-        :param _NetFlowSize: 流量日志存储量，单位B
+        :param _NetFlowSize: <p>流量日志存储量，单位B</p>
         :type NetFlowSize: int
-        :param _OperateSize: 操作日志存储量，单位B
+        :param _OperateSize: <p>操作日志存储量，单位B</p>
         :type OperateSize: int
-        :param _LeftSize: 剩余存储量，单位B
+        :param _LeftSize: <p>剩余存储量，单位B</p>
         :type LeftSize: int
-        :param _PayMode: 计费模式，0后付费，1预付费
+        :param _PayMode: <p>计费模式，0后付费，1预付费</p>
         :type PayMode: int
-        :param _TimeHistogram: 每日增加日志存储量柱状图
+        :param _TimeHistogram: <p>每日增加日志存储量柱状图</p>
         :type TimeHistogram: list of StorageHistogram
-        :param _TimeHistogramShow: 柱形图格式数据
+        :param _TimeHistogramShow: <p>柱形图格式数据</p>
         :type TimeHistogramShow: :class:`tencentcloud.cfw.v20190904.models.StorageHistogramShow`
-        :param _ArrearsStopWriting: 后付费模式存储状态，0正常，1欠费停止写入
+        :param _ArrearsStopWriting: <p>后付费模式存储状态，0正常，1欠费停止写入</p>
         :type ArrearsStopWriting: int
-        :param _NDRNetFlowSize: NDR流量日志存储量，单位B
+        :param _NDRNetFlowSize: <p>NDR流量日志存储量，单位B</p>
         :type NDRNetFlowSize: int
-        :param _NDRRiskSize: NDR风险日志存储量，单位B
+        :param _NDRRiskSize: <p>NDR风险日志存储量，单位B</p>
         :type NDRRiskSize: int
-        :param _NDRStorageDay: NDR日志存储天数
+        :param _NDRStorageDay: <p>NDR日志存储天数</p>
         :type NDRStorageDay: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12318,7 +12566,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""返回状态码 0 成功 非0不成功
+        r"""<p>返回状态码 0 成功 非0不成功</p>
         :rtype: int
         """
         return self._ReturnCode
@@ -12329,7 +12577,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""返回信息  success 成功 其他 不成功
+        r"""<p>返回信息  success 成功 其他 不成功</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -12340,7 +12588,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def UsedSize(self):
-        r"""已使用存储量，单位B
+        r"""<p>已使用存储量，单位B</p>
         :rtype: int
         """
         return self._UsedSize
@@ -12351,7 +12599,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def TotalSize(self):
-        r"""配额存储总量，单位B
+        r"""<p>配额存储总量，单位B</p>
         :rtype: int
         """
         return self._TotalSize
@@ -12362,7 +12610,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def StorageDay(self):
-        r"""存储天数
+        r"""<p>存储天数</p>
         :rtype: int
         """
         return self._StorageDay
@@ -12373,7 +12621,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def AclSize(self):
-        r"""访问控制日志存储量，单位B
+        r"""<p>访问控制日志存储量，单位B</p>
         :rtype: int
         """
         return self._AclSize
@@ -12384,7 +12632,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def IdsSize(self):
-        r"""入侵防御日志存储量，单位B
+        r"""<p>入侵防御日志存储量，单位B</p>
         :rtype: int
         """
         return self._IdsSize
@@ -12395,7 +12643,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def NetFlowSize(self):
-        r"""流量日志存储量，单位B
+        r"""<p>流量日志存储量，单位B</p>
         :rtype: int
         """
         return self._NetFlowSize
@@ -12406,7 +12654,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def OperateSize(self):
-        r"""操作日志存储量，单位B
+        r"""<p>操作日志存储量，单位B</p>
         :rtype: int
         """
         return self._OperateSize
@@ -12417,7 +12665,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def LeftSize(self):
-        r"""剩余存储量，单位B
+        r"""<p>剩余存储量，单位B</p>
         :rtype: int
         """
         return self._LeftSize
@@ -12428,7 +12676,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式，0后付费，1预付费
+        r"""<p>计费模式，0后付费，1预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -12439,7 +12687,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def TimeHistogram(self):
-        r"""每日增加日志存储量柱状图
+        r"""<p>每日增加日志存储量柱状图</p>
         :rtype: list of StorageHistogram
         """
         return self._TimeHistogram
@@ -12450,7 +12698,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def TimeHistogramShow(self):
-        r"""柱形图格式数据
+        r"""<p>柱形图格式数据</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.StorageHistogramShow`
         """
         return self._TimeHistogramShow
@@ -12461,7 +12709,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def ArrearsStopWriting(self):
-        r"""后付费模式存储状态，0正常，1欠费停止写入
+        r"""<p>后付费模式存储状态，0正常，1欠费停止写入</p>
         :rtype: int
         """
         return self._ArrearsStopWriting
@@ -12472,7 +12720,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def NDRNetFlowSize(self):
-        r"""NDR流量日志存储量，单位B
+        r"""<p>NDR流量日志存储量，单位B</p>
         :rtype: int
         """
         return self._NDRNetFlowSize
@@ -12483,7 +12731,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def NDRRiskSize(self):
-        r"""NDR风险日志存储量，单位B
+        r"""<p>NDR风险日志存储量，单位B</p>
         :rtype: int
         """
         return self._NDRRiskSize
@@ -12494,7 +12742,7 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
 
     @property
     def NDRStorageDay(self):
-        r"""NDR日志存储天数
+        r"""<p>NDR日志存储天数</p>
         :rtype: int
         """
         return self._NDRStorageDay
@@ -14746,6 +14994,304 @@ class DescribeNatFwVpcDnsLstResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOfflineExportTaskRequest(AbstractModel):
+    r"""DescribeOfflineExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>分页参数</p>
+        :type Limit: int
+        :param _Offset: <p>分页参数</p>
+        :type Offset: int
+        :param _TaskName: <p>任务ID/任务名称</p>
+        :type TaskName: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._TaskName = None
+
+    @property
+    def Limit(self):
+        r"""<p>分页参数</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页参数</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def TaskName(self):
+        r"""<p>任务ID/任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOfflineExportTaskResponse(AbstractModel):
+    r"""DescribeOfflineExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: <p>返回状态码 0 成功 非0不成功</p>
+        :type ReturnCode: int
+        :param _ReturnMsg: <p>返回信息  success 成功 其他 不成功</p>
+        :type ReturnMsg: str
+        :param _Data: <p>离线导出任务列表</p>
+        :type Data: list of OfflineExportTask
+        :param _Total: <p>任务数量</p>
+        :type Total: int
+        :param _ExportRemainQuota: <p>剩余导出文件配额，单位B</p>
+        :type ExportRemainQuota: int
+        :param _ExportQuota: <p>导出文件配额，单位B</p>
+        :type ExportQuota: int
+        :param _ExportLimit: <p>导出数据限制</p>
+        :type ExportLimit: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._Data = None
+        self._Total = None
+        self._ExportRemainQuota = None
+        self._ExportQuota = None
+        self._ExportLimit = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        r"""<p>返回状态码 0 成功 非0不成功</p>
+        :rtype: int
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        r"""<p>返回信息  success 成功 其他 不成功</p>
+        :rtype: str
+        """
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def Data(self):
+        r"""<p>离线导出任务列表</p>
+        :rtype: list of OfflineExportTask
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""<p>任务数量</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ExportRemainQuota(self):
+        r"""<p>剩余导出文件配额，单位B</p>
+        :rtype: int
+        """
+        return self._ExportRemainQuota
+
+    @ExportRemainQuota.setter
+    def ExportRemainQuota(self, ExportRemainQuota):
+        self._ExportRemainQuota = ExportRemainQuota
+
+    @property
+    def ExportQuota(self):
+        r"""<p>导出文件配额，单位B</p>
+        :rtype: int
+        """
+        return self._ExportQuota
+
+    @ExportQuota.setter
+    def ExportQuota(self, ExportQuota):
+        self._ExportQuota = ExportQuota
+
+    @property
+    def ExportLimit(self):
+        r"""<p>导出数据限制</p>
+        :rtype: int
+        """
+        return self._ExportLimit
+
+    @ExportLimit.setter
+    def ExportLimit(self, ExportLimit):
+        self._ExportLimit = ExportLimit
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = OfflineExportTask()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._ExportRemainQuota = params.get("ExportRemainQuota")
+        self._ExportQuota = params.get("ExportQuota")
+        self._ExportLimit = params.get("ExportLimit")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOfflineExportTemporaryCredentialsRequest(AbstractModel):
+    r"""DescribeOfflineExportTemporaryCredentials请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOfflineExportTemporaryCredentialsResponse(AbstractModel):
+    r"""DescribeOfflineExportTemporaryCredentials返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: <p>返回状态码 0 成功 非0不成功</p>
+        :type ReturnCode: int
+        :param _ReturnMsg: <p>返回信息  success 成功 其他 不成功</p>
+        :type ReturnMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        r"""<p>返回状态码 0 成功 非0不成功</p>
+        :rtype: int
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        r"""<p>返回信息  success 成功 其他 不成功</p>
+        :rtype: str
+        """
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResourceGroupNewRequest(AbstractModel):
     r"""DescribeResourceGroupNew请求参数结构体
 
@@ -15380,21 +15926,31 @@ class DescribeSerialRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SerialRegionLst: 串行地域带宽分配
+        :param _SerialRegionLst: <p>串行地域带宽分配</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SerialRegionLst: list of SerialRegionInfo
-        :param _UnUsedWidth: 剩余可分配通用带宽 单位M
+        :param _UnUsedWidth: <p>剩余可分配通用带宽 单位M</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnUsedWidth: int
-        :param _UnUsedQuota: 可配置实例个数
+        :param _UnUsedQuota: <p>可配置实例个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnUsedQuota: int
-        :param _BypassWidth: 旁路带宽数据
+        :param _BypassWidth: <p>旁路带宽数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BypassWidth: int
-        :param _SendBypassWidth: 赠送的旁路带宽数据
+        :param _SendBypassWidth: <p>赠送的旁路带宽数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SendBypassWidth: int
+        :param _EdgeWidth: <p>互联网边界防火墙总带宽</p>
+        :type EdgeWidth: int
+        :param _EdgeElasticSwitch: <p>互联网边界弹性开关</p>
+        :type EdgeElasticSwitch: int
+        :param _EdgeElasticBandwidth: <p>互联网边界弹性带宽值</p>
+        :type EdgeElasticBandwidth: int
+        :param _EdgeElasticBandwidthLimit: <p>互联网边界弹性带宽上限</p>
+        :type EdgeElasticBandwidthLimit: int
+        :param _EdgeElasticTrafficSwitch: <p>互联网边界防火墙计量开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 打开</li></ul>
+        :type EdgeElasticTrafficSwitch: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15403,11 +15959,16 @@ class DescribeSerialRegionResponse(AbstractModel):
         self._UnUsedQuota = None
         self._BypassWidth = None
         self._SendBypassWidth = None
+        self._EdgeWidth = None
+        self._EdgeElasticSwitch = None
+        self._EdgeElasticBandwidth = None
+        self._EdgeElasticBandwidthLimit = None
+        self._EdgeElasticTrafficSwitch = None
         self._RequestId = None
 
     @property
     def SerialRegionLst(self):
-        r"""串行地域带宽分配
+        r"""<p>串行地域带宽分配</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SerialRegionInfo
         """
@@ -15419,7 +15980,7 @@ class DescribeSerialRegionResponse(AbstractModel):
 
     @property
     def UnUsedWidth(self):
-        r"""剩余可分配通用带宽 单位M
+        r"""<p>剩余可分配通用带宽 单位M</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15431,7 +15992,7 @@ class DescribeSerialRegionResponse(AbstractModel):
 
     @property
     def UnUsedQuota(self):
-        r"""可配置实例个数
+        r"""<p>可配置实例个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15443,7 +16004,7 @@ class DescribeSerialRegionResponse(AbstractModel):
 
     @property
     def BypassWidth(self):
-        r"""旁路带宽数据
+        r"""<p>旁路带宽数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15455,7 +16016,7 @@ class DescribeSerialRegionResponse(AbstractModel):
 
     @property
     def SendBypassWidth(self):
-        r"""赠送的旁路带宽数据
+        r"""<p>赠送的旁路带宽数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15464,6 +16025,61 @@ class DescribeSerialRegionResponse(AbstractModel):
     @SendBypassWidth.setter
     def SendBypassWidth(self, SendBypassWidth):
         self._SendBypassWidth = SendBypassWidth
+
+    @property
+    def EdgeWidth(self):
+        r"""<p>互联网边界防火墙总带宽</p>
+        :rtype: int
+        """
+        return self._EdgeWidth
+
+    @EdgeWidth.setter
+    def EdgeWidth(self, EdgeWidth):
+        self._EdgeWidth = EdgeWidth
+
+    @property
+    def EdgeElasticSwitch(self):
+        r"""<p>互联网边界弹性开关</p>
+        :rtype: int
+        """
+        return self._EdgeElasticSwitch
+
+    @EdgeElasticSwitch.setter
+    def EdgeElasticSwitch(self, EdgeElasticSwitch):
+        self._EdgeElasticSwitch = EdgeElasticSwitch
+
+    @property
+    def EdgeElasticBandwidth(self):
+        r"""<p>互联网边界弹性带宽值</p>
+        :rtype: int
+        """
+        return self._EdgeElasticBandwidth
+
+    @EdgeElasticBandwidth.setter
+    def EdgeElasticBandwidth(self, EdgeElasticBandwidth):
+        self._EdgeElasticBandwidth = EdgeElasticBandwidth
+
+    @property
+    def EdgeElasticBandwidthLimit(self):
+        r"""<p>互联网边界弹性带宽上限</p>
+        :rtype: int
+        """
+        return self._EdgeElasticBandwidthLimit
+
+    @EdgeElasticBandwidthLimit.setter
+    def EdgeElasticBandwidthLimit(self, EdgeElasticBandwidthLimit):
+        self._EdgeElasticBandwidthLimit = EdgeElasticBandwidthLimit
+
+    @property
+    def EdgeElasticTrafficSwitch(self):
+        r"""<p>互联网边界防火墙计量开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 打开</li></ul>
+        :rtype: int
+        """
+        return self._EdgeElasticTrafficSwitch
+
+    @EdgeElasticTrafficSwitch.setter
+    def EdgeElasticTrafficSwitch(self, EdgeElasticTrafficSwitch):
+        self._EdgeElasticTrafficSwitch = EdgeElasticTrafficSwitch
 
     @property
     def RequestId(self):
@@ -15488,6 +16104,11 @@ class DescribeSerialRegionResponse(AbstractModel):
         self._UnUsedQuota = params.get("UnUsedQuota")
         self._BypassWidth = params.get("BypassWidth")
         self._SendBypassWidth = params.get("SendBypassWidth")
+        self._EdgeWidth = params.get("EdgeWidth")
+        self._EdgeElasticSwitch = params.get("EdgeElasticSwitch")
+        self._EdgeElasticBandwidth = params.get("EdgeElasticBandwidth")
+        self._EdgeElasticBandwidthLimit = params.get("EdgeElasticBandwidthLimit")
+        self._EdgeElasticTrafficSwitch = params.get("EdgeElasticTrafficSwitch")
         self._RequestId = params.get("RequestId")
 
 
@@ -18673,6 +19294,300 @@ class ExpandCfwVerticalResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExportLogsOfflineRequest(AbstractModel):
+    r"""ExportLogsOffline请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: <p>日志类型标识</p><p>枚举值：</p><ul><li>cfw_netflow_border： 流量日志-互联网边界</li><li>cfw_netflow_vpc： 流量日志-VPC边界</li><li>cfw_netflow_nat： 流量日志-NAT边界</li><li>cfw_rule_acl： 访问控制-互联网边界</li><li>cfw_rule_vpc_acl： 访问控制-VPC边界</li><li>cfw_rule_nat_acl： 访问控制-NAT边界</li><li>cfw_rule_threatinfo： 入侵防御-入侵防御</li><li>cfw_netflow_nta： 全流量检测与响应-流量分析</li><li>cfw_ndr_subject_risk： 全流量检测与响应-流量风险</li><li>cfw_ndr_ai_audit： 全流量检测与响应-AI流量风险</li><li>operate_log_all： 操作日志</li></ul>
+        :type Index: str
+        :param _StartTime: <p>筛选开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>筛选结束时间</p>
+        :type EndTime: str
+        :param _TaskName: <p>任务名称</p>
+        :type TaskName: str
+        :param _DataFormat: <p>数据格式</p><p>枚举值：</p><ul><li>.json： JSON格式</li><li>.csv： CSV格式</li></ul>
+        :type DataFormat: str
+        :param _CompressionFormat: <p>压缩方式，.zip、.tar.gz、.tar.zst、.tar.lz4、传空不压缩</p>
+        :type CompressionFormat: str
+        :param _Order: <p>日志排序，desc时间降序，asc时间升序</p>
+        :type Order: str
+        :param _Length: <p>日志数量，传0按单次上限导出</p>
+        :type Length: int
+        :param _Filters: <p>过滤条件组合</p>
+        :type Filters: list of CommonFilter
+        :param _BucketName: <p>COS存储桶名称</p>
+        :type BucketName: str
+        :param _BucketRegion: <p>COS存储桶地域</p>
+        :type BucketRegion: str
+        :param _StorageDays: <p>文件过期时长，1一天，7七天，-1永久</p>
+        :type StorageDays: int
+        :param _Query: <p>日志分析查询语句，Query和Filters不能同时使用，在一次请求中有且只能选择一个</p>
+        :type Query: str
+        :param _TaskType: <p>导出任务类型，LogAnalysis日志分析导出，LogSearch日志审计导出</p>
+        :type TaskType: str
+        """
+        self._Index = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskName = None
+        self._DataFormat = None
+        self._CompressionFormat = None
+        self._Order = None
+        self._Length = None
+        self._Filters = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._StorageDays = None
+        self._Query = None
+        self._TaskType = None
+
+    @property
+    def Index(self):
+        r"""<p>日志类型标识</p><p>枚举值：</p><ul><li>cfw_netflow_border： 流量日志-互联网边界</li><li>cfw_netflow_vpc： 流量日志-VPC边界</li><li>cfw_netflow_nat： 流量日志-NAT边界</li><li>cfw_rule_acl： 访问控制-互联网边界</li><li>cfw_rule_vpc_acl： 访问控制-VPC边界</li><li>cfw_rule_nat_acl： 访问控制-NAT边界</li><li>cfw_rule_threatinfo： 入侵防御-入侵防御</li><li>cfw_netflow_nta： 全流量检测与响应-流量分析</li><li>cfw_ndr_subject_risk： 全流量检测与响应-流量风险</li><li>cfw_ndr_ai_audit： 全流量检测与响应-AI流量风险</li><li>operate_log_all： 操作日志</li></ul>
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def StartTime(self):
+        r"""<p>筛选开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>筛选结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def DataFormat(self):
+        r"""<p>数据格式</p><p>枚举值：</p><ul><li>.json： JSON格式</li><li>.csv： CSV格式</li></ul>
+        :rtype: str
+        """
+        return self._DataFormat
+
+    @DataFormat.setter
+    def DataFormat(self, DataFormat):
+        self._DataFormat = DataFormat
+
+    @property
+    def CompressionFormat(self):
+        r"""<p>压缩方式，.zip、.tar.gz、.tar.zst、.tar.lz4、传空不压缩</p>
+        :rtype: str
+        """
+        return self._CompressionFormat
+
+    @CompressionFormat.setter
+    def CompressionFormat(self, CompressionFormat):
+        self._CompressionFormat = CompressionFormat
+
+    @property
+    def Order(self):
+        r"""<p>日志排序，desc时间降序，asc时间升序</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Length(self):
+        r"""<p>日志数量，传0按单次上限导出</p>
+        :rtype: int
+        """
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件组合</p>
+        :rtype: list of CommonFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def BucketName(self):
+        r"""<p>COS存储桶名称</p>
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        r"""<p>COS存储桶地域</p>
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def StorageDays(self):
+        r"""<p>文件过期时长，1一天，7七天，-1永久</p>
+        :rtype: int
+        """
+        return self._StorageDays
+
+    @StorageDays.setter
+    def StorageDays(self, StorageDays):
+        self._StorageDays = StorageDays
+
+    @property
+    def Query(self):
+        r"""<p>日志分析查询语句，Query和Filters不能同时使用，在一次请求中有且只能选择一个</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def TaskType(self):
+        r"""<p>导出任务类型，LogAnalysis日志分析导出，LogSearch日志审计导出</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskName = params.get("TaskName")
+        self._DataFormat = params.get("DataFormat")
+        self._CompressionFormat = params.get("CompressionFormat")
+        self._Order = params.get("Order")
+        self._Length = params.get("Length")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._StorageDays = params.get("StorageDays")
+        self._Query = params.get("Query")
+        self._TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportLogsOfflineResponse(AbstractModel):
+    r"""ExportLogsOffline返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: <p>返回状态码 0 成功 非0不成功</p>
+        :type ReturnCode: int
+        :param _ReturnMsg: <p>返回信息  success 成功 其他 不成功</p>
+        :type ReturnMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        r"""<p>返回状态码 0 成功 非0不成功</p>
+        :rtype: int
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        r"""<p>返回信息  success 成功 其他 不成功</p>
+        :rtype: str
+        """
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class FieldOption(AbstractModel):
     r"""字段可选项枚举值
 
@@ -21384,26 +22299,29 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleType: 1封禁列表 2 放通列表
+        :param _RuleType: <p>1封禁列表 2 放通列表</p>
         :type RuleType: int
-        :param _IOC: IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空
+        :param _IOC: <p>IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空</p>
         :type IOC: list of IocListData
-        :param _IocAction: 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
+        :param _IocAction: <p>可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效</p>
         :type IocAction: str
-        :param _StartTime: 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
+        :param _StartTime: <p>时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填</p>
         :type StartTime: str
-        :param _EndTime: 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime
+        :param _EndTime: <p>时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime</p>
         :type EndTime: str
+        :param _IsFromWeChat: <p>是否来自微信</p><p>取值范围：[0, 1]</p>
+        :type IsFromWeChat: int
         """
         self._RuleType = None
         self._IOC = None
         self._IocAction = None
         self._StartTime = None
         self._EndTime = None
+        self._IsFromWeChat = None
 
     @property
     def RuleType(self):
-        r"""1封禁列表 2 放通列表
+        r"""<p>1封禁列表 2 放通列表</p>
         :rtype: int
         """
         return self._RuleType
@@ -21414,7 +22332,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     @property
     def IOC(self):
-        r"""IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空
+        r"""<p>IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空</p>
         :rtype: list of IocListData
         """
         return self._IOC
@@ -21425,7 +22343,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     @property
     def IocAction(self):
-        r"""可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
+        r"""<p>可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效</p>
         :rtype: str
         """
         return self._IocAction
@@ -21436,7 +22354,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
+        r"""<p>时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填</p>
         :rtype: str
         """
         return self._StartTime
@@ -21447,7 +22365,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime
+        r"""<p>时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime</p>
         :rtype: str
         """
         return self._EndTime
@@ -21455,6 +22373,17 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
     @EndTime.setter
     def EndTime(self, EndTime):
         self._EndTime = EndTime
+
+    @property
+    def IsFromWeChat(self):
+        r"""<p>是否来自微信</p><p>取值范围：[0, 1]</p>
+        :rtype: int
+        """
+        return self._IsFromWeChat
+
+    @IsFromWeChat.setter
+    def IsFromWeChat(self, IsFromWeChat):
+        self._IsFromWeChat = IsFromWeChat
 
 
     def _deserialize(self, params):
@@ -21468,6 +22397,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
         self._IocAction = params.get("IocAction")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._IsFromWeChat = params.get("IsFromWeChat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21485,9 +22415,9 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnMsg: 接口返回信息
+        :param _ReturnMsg: <p>接口返回信息</p>
         :type ReturnMsg: str
-        :param _ReturnCode: 接口返回错误码，0请求成功  非0失败
+        :param _ReturnCode: <p>接口返回错误码，0请求成功  非0失败</p>
         :type ReturnCode: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21498,7 +22428,7 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""接口返回信息
+        r"""<p>接口返回信息</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -21509,7 +22439,7 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""接口返回错误码，0请求成功  非0失败
+        r"""<p>接口返回错误码，0请求成功  非0失败</p>
         :rtype: int
         """
         return self._ReturnCode
@@ -21893,14 +22823,14 @@ class ModifyClusterNatFwSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatCcnSwitch: NAT CCN防火墙开关配置
+        :param _NatCcnSwitch: <p>NAT CCN防火墙开关配置</p>
         :type NatCcnSwitch: :class:`tencentcloud.cfw.v20190904.models.NatCcnSwitchConfig`
         """
         self._NatCcnSwitch = None
 
     @property
     def NatCcnSwitch(self):
-        r"""NAT CCN防火墙开关配置
+        r"""<p>NAT CCN防火墙开关配置</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.NatCcnSwitchConfig`
         """
         return self._NatCcnSwitch
@@ -25601,6 +26531,8 @@ class NatFwSwitchDetailS(AbstractModel):
         :type Endpoints: list of EndpointInfo
         :param _Progress: <p>防火墙开关操作时的进度状态：</p><p>// 开启 — 自动模式（3步）<br>&quot;AUTO_OPEN_ORCHESTRATING&quot;      // 步骤1: 预编排策略路由<br>&quot;AUTO_OPEN_CREATING_RESOURCES&quot; // 步骤2: 创建引流网络和资源<br>&quot;AUTO_OPEN_PUSHING_ROUTES&quot;     // 步骤3: 创建策略路由</p><p>// 开启 — 手动模式（1步）<br>&quot;MANUAL_OPEN_CREATING_RESOURCES&quot; // 步骤1: 创建引流网络和资源</p><p>// 关闭 — 自动模式（2步）<br>&quot;AUTO_CLOSE_DELETING_ROUTES&quot;    // 步骤1: 删除策略路由<br>&quot;AUTO_CLOSE_DELETING_RESOURCES&quot; // 步骤2: 删除引流网络和资源<br>// 关闭 — 手动模式（1步）<br>&quot;MANUAL_CLOSE_DELETING_RESOURCES&quot; // 步骤1: 删除引流网络和资源</p><p>// 修改 — 自动模式（3步）<br>&quot;AUTO_MODIFY_ORCHESTRATING&quot;   // 步骤1: 预编排策略路由<br>&quot;AUTO_MODIFY_DELETING_ROUTES&quot; // 步骤2: 删除旧策略路由<br>&quot;AUTO_MODIFY_PUSHING_ROUTES&quot;  // 步骤3: 创建新策略路由</p><p>// 修改 — 手动模式（1步，仅 VPC 防火墙存在手动模式修改）<br>&quot;MANUAL_MODIFY_UPDATING_RESOURCES&quot; // 步骤1: 更新引流网络和资源</p>
         :type Progress: str
+        :param _CheckResult: <p>预接入检查结果</p>
+        :type CheckResult: :class:`tencentcloud.cfw.v20190904.models.ClusterFwPreAccessCheckResult`
         """
         self._InsObj = None
         self._ObjName = None
@@ -25622,6 +26554,7 @@ class NatFwSwitchDetailS(AbstractModel):
         self._AttachIns = None
         self._Endpoints = None
         self._Progress = None
+        self._CheckResult = None
 
     @property
     def InsObj(self):
@@ -25845,6 +26778,17 @@ class NatFwSwitchDetailS(AbstractModel):
     def Progress(self, Progress):
         self._Progress = Progress
 
+    @property
+    def CheckResult(self):
+        r"""<p>预接入检查结果</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ClusterFwPreAccessCheckResult`
+        """
+        return self._CheckResult
+
+    @CheckResult.setter
+    def CheckResult(self, CheckResult):
+        self._CheckResult = CheckResult
+
 
     def _deserialize(self, params):
         self._InsObj = params.get("InsObj")
@@ -25877,6 +26821,9 @@ class NatFwSwitchDetailS(AbstractModel):
                 obj._deserialize(item)
                 self._Endpoints.append(obj)
         self._Progress = params.get("Progress")
+        if params.get("CheckResult") is not None:
+            self._CheckResult = ClusterFwPreAccessCheckResult()
+            self._CheckResult._deserialize(params.get("CheckResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26864,6 +27811,166 @@ class NewModeItems(AbstractModel):
         
 
 
+class OfflineExportTask(AbstractModel):
+    r"""离线导出任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _DataLength: 日志总数
+        :type DataLength: int
+        :param _Status: 任务状态，0等待下载，1下载中，2下载完成，3下载失败，4文件过期
+        :type Status: int
+        :param _ExpireTime: 文件过期时间
+        :type ExpireTime: str
+        :param _Progress: 下载进度
+        :type Progress: float
+        :param _ErrorInfo: 导出失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: str
+        :param _UseUserCos: 是否使用Cos
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseUserCos: int
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._CreateTime = None
+        self._DataLength = None
+        self._Status = None
+        self._ExpireTime = None
+        self._Progress = None
+        self._ErrorInfo = None
+        self._UseUserCos = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DataLength(self):
+        r"""日志总数
+        :rtype: int
+        """
+        return self._DataLength
+
+    @DataLength.setter
+    def DataLength(self, DataLength):
+        self._DataLength = DataLength
+
+    @property
+    def Status(self):
+        r"""任务状态，0等待下载，1下载中，2下载完成，3下载失败，4文件过期
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExpireTime(self):
+        r"""文件过期时间
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Progress(self):
+        r"""下载进度
+        :rtype: float
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def ErrorInfo(self):
+        r"""导出失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def UseUserCos(self):
+        r"""是否使用Cos
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UseUserCos
+
+    @UseUserCos.setter
+    def UseUserCos(self, UseUserCos):
+        self._UseUserCos = UseUserCos
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._CreateTime = params.get("CreateTime")
+        self._DataLength = params.get("DataLength")
+        self._Status = params.get("Status")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Progress = params.get("Progress")
+        self._ErrorInfo = params.get("ErrorInfo")
+        self._UseUserCos = params.get("UseUserCos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OpenClusterNatFwSwitchRequest(AbstractModel):
     r"""OpenClusterNatFwSwitch请求参数结构体
 
@@ -27010,6 +28117,147 @@ class OperatorFilter(AbstractModel):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
         self._OperatorType = params.get("OperatorType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyRoutePreCheckReport(AbstractModel):
+    r"""策略路由预编排配额报告
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NextHopCount: 本次编排生成的下一跳数量
+        :type NextHopCount: int
+        :param _NextHopLimit: 下一跳上限
+        :type NextHopLimit: int
+        :param _MatchRuleCount: 本次编排生成的匹配规则数
+        :type MatchRuleCount: int
+        :param _MatchRuleLimit: 匹配规则上限
+        :type MatchRuleLimit: int
+        :param _CloudExistingRuleCount: 云上已有匹配规则数（其他防火墙类型占用）
+        :type CloudExistingRuleCount: int
+        :param _CloudExistingNextHopCount: 云上已有下一跳数（其他防火墙类型占用）
+        :type CloudExistingNextHopCount: int
+        :param _AvailableRuleQuota: 可用匹配规则配额 = MatchRuleLimit - CloudExistingRuleCount - MatchRuleCount
+        :type AvailableRuleQuota: int
+        :param _AvailableNextHopQuota: 可用下一跳配额 = NextHopLimit - CloudExistingNextHopCount - NextHopCount
+        :type AvailableNextHopQuota: int
+        """
+        self._NextHopCount = None
+        self._NextHopLimit = None
+        self._MatchRuleCount = None
+        self._MatchRuleLimit = None
+        self._CloudExistingRuleCount = None
+        self._CloudExistingNextHopCount = None
+        self._AvailableRuleQuota = None
+        self._AvailableNextHopQuota = None
+
+    @property
+    def NextHopCount(self):
+        r"""本次编排生成的下一跳数量
+        :rtype: int
+        """
+        return self._NextHopCount
+
+    @NextHopCount.setter
+    def NextHopCount(self, NextHopCount):
+        self._NextHopCount = NextHopCount
+
+    @property
+    def NextHopLimit(self):
+        r"""下一跳上限
+        :rtype: int
+        """
+        return self._NextHopLimit
+
+    @NextHopLimit.setter
+    def NextHopLimit(self, NextHopLimit):
+        self._NextHopLimit = NextHopLimit
+
+    @property
+    def MatchRuleCount(self):
+        r"""本次编排生成的匹配规则数
+        :rtype: int
+        """
+        return self._MatchRuleCount
+
+    @MatchRuleCount.setter
+    def MatchRuleCount(self, MatchRuleCount):
+        self._MatchRuleCount = MatchRuleCount
+
+    @property
+    def MatchRuleLimit(self):
+        r"""匹配规则上限
+        :rtype: int
+        """
+        return self._MatchRuleLimit
+
+    @MatchRuleLimit.setter
+    def MatchRuleLimit(self, MatchRuleLimit):
+        self._MatchRuleLimit = MatchRuleLimit
+
+    @property
+    def CloudExistingRuleCount(self):
+        r"""云上已有匹配规则数（其他防火墙类型占用）
+        :rtype: int
+        """
+        return self._CloudExistingRuleCount
+
+    @CloudExistingRuleCount.setter
+    def CloudExistingRuleCount(self, CloudExistingRuleCount):
+        self._CloudExistingRuleCount = CloudExistingRuleCount
+
+    @property
+    def CloudExistingNextHopCount(self):
+        r"""云上已有下一跳数（其他防火墙类型占用）
+        :rtype: int
+        """
+        return self._CloudExistingNextHopCount
+
+    @CloudExistingNextHopCount.setter
+    def CloudExistingNextHopCount(self, CloudExistingNextHopCount):
+        self._CloudExistingNextHopCount = CloudExistingNextHopCount
+
+    @property
+    def AvailableRuleQuota(self):
+        r"""可用匹配规则配额 = MatchRuleLimit - CloudExistingRuleCount - MatchRuleCount
+        :rtype: int
+        """
+        return self._AvailableRuleQuota
+
+    @AvailableRuleQuota.setter
+    def AvailableRuleQuota(self, AvailableRuleQuota):
+        self._AvailableRuleQuota = AvailableRuleQuota
+
+    @property
+    def AvailableNextHopQuota(self):
+        r"""可用下一跳配额 = NextHopLimit - CloudExistingNextHopCount - NextHopCount
+        :rtype: int
+        """
+        return self._AvailableNextHopQuota
+
+    @AvailableNextHopQuota.setter
+    def AvailableNextHopQuota(self, AvailableNextHopQuota):
+        self._AvailableNextHopQuota = AvailableNextHopQuota
+
+
+    def _deserialize(self, params):
+        self._NextHopCount = params.get("NextHopCount")
+        self._NextHopLimit = params.get("NextHopLimit")
+        self._MatchRuleCount = params.get("MatchRuleCount")
+        self._MatchRuleLimit = params.get("MatchRuleLimit")
+        self._CloudExistingRuleCount = params.get("CloudExistingRuleCount")
+        self._CloudExistingNextHopCount = params.get("CloudExistingNextHopCount")
+        self._AvailableRuleQuota = params.get("AvailableRuleQuota")
+        self._AvailableNextHopQuota = params.get("AvailableNextHopQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27561,6 +28809,115 @@ class RemoveNatAcRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RuleUuid = params.get("RuleUuid")
+        self._RequestId = params.get("RequestId")
+
+
+class RemoveOfflineExportTaskRequest(AbstractModel):
+    r"""RemoveOfflineExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _KeepFile: 是否保留文件，1保留，非1删除
+        :type KeepFile: int
+        """
+        self._TaskId = None
+        self._KeepFile = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def KeepFile(self):
+        r"""是否保留文件，1保留，非1删除
+        :rtype: int
+        """
+        return self._KeepFile
+
+    @KeepFile.setter
+    def KeepFile(self, KeepFile):
+        self._KeepFile = KeepFile
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._KeepFile = params.get("KeepFile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveOfflineExportTaskResponse(AbstractModel):
+    r"""RemoveOfflineExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: 返回状态码 0 成功 非0不成功
+        :type ReturnCode: int
+        :param _ReturnMsg: 返回信息  success 成功 其他 不成功
+        :type ReturnMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        r"""返回状态码 0 成功 非0不成功
+        :rtype: int
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        r"""返回信息  success 成功 其他 不成功
+        :rtype: str
+        """
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -28371,82 +29728,29 @@ class SearchLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _From: 要检索分析的日志的起始时间，Unix时间戳（毫秒）
+        :param _From: <p>要检索分析的日志的起始时间，Unix时间戳（毫秒）</p>
         :type From: int
-        :param _To: 要检索分析的日志的结束时间，Unix时间戳（毫秒）
+        :param _To: <p>要检索分析的日志的结束时间，Unix时间戳（毫秒）</p>
         :type To: int
-        :param _Query: 检索分析语句，最大长度为12KB
-语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
-使用*或空字符串可查询所有日志
+        :param _Query: <p>检索分析语句，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句<br>使用*或空字符串可查询所有日志</p>
         :type Query: str
-        :param _SyntaxRule: 检索语法规则，默认值为0，推荐使用1 。
-
-- 0：Lucene语法
-- 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
-
-详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+        :param _SyntaxRule: <p>检索语法规则，默认值为0，推荐使用1 。</p><ul><li>0：Lucene语法</li><li>1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。</li></ul><p>详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a></p>
         :type SyntaxRule: int
-        :param _TopicId: - 要检索分析的日志主题ID，仅能指定一个日志主题。
-- 如需同时检索多个日志主题，请使用Topics参数。
-- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
-各日志主题ID如下
-访问控制-互联网边界 cfw_rule_acl
-访问控制-NAT边界 cfw_rule_nat_acl
-访问控制-VPC边界 cfw_rule_vpc_acl
-访问控制-DNS开关 cfw_rule_dns_acl
-入侵防御 cfw_rule_threatinfo
-全流量检测与响应日志-流量分析 cfw_netflow_nta
-全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo
-零信任运维-数据库登录 cfw_operate_db
-零信任运维-服务器访问 operate_remote_om
-零信任运维-Web服务访问 operate_web_access
-零信任运维-行为审计 remoteom_commands
-流量日志-互联网边界 cfw_netflow_border
-流量日志-NAT边界 cfw_netflow_nat
-流量日志-VPC边界 cfw_netflow_vpc
-流量日志-DNS开关 cfw_netflow_dns
-流量日志-内网流量 cfw_netflow_fl
-操作日志 operate_log_all
+        :param _TopicId: <ul><li>要检索分析的日志主题ID，仅能指定一个日志主题。</li><li>如需同时检索多个日志主题，请使用Topics参数。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。<br>各日志主题ID如下<br>访问控制-互联网边界 cfw_rule_acl<br>访问控制-NAT边界 cfw_rule_nat_acl<br>访问控制-VPC边界 cfw_rule_vpc_acl<br>访问控制-DNS开关 cfw_rule_dns_acl<br>入侵防御 cfw_rule_threatinfo<br>全流量检测与响应日志-流量分析 cfw_netflow_nta<br>全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo<br>零信任运维-数据库登录 cfw_operate_db<br>零信任运维-服务器访问 operate_remote_om<br>零信任运维-Web服务访问 operate_web_access<br>零信任运维-行为审计 remoteom_commands<br>流量日志-互联网边界 cfw_netflow_border<br>流量日志-NAT边界 cfw_netflow_nat<br>流量日志-VPC边界 cfw_netflow_vpc<br>流量日志-DNS开关 cfw_netflow_dns<br>流量日志-内网流量 cfw_netflow_fl<br>操作日志 operate_log_all</li></ul>
         :type TopicId: str
-        :param _Topics: - 要检索分析的日志主题列表，最大支持50个日志主题。
-- 检索单个日志主题时请使用TopicId。
-- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+        :param _Topics: <ul><li>要检索分析的日志主题列表，最大支持50个日志主题。</li><li>检索单个日志主题时请使用TopicId。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。</li></ul>
         :type Topics: list of MultiTopicSearchInformation
-        :param _Sort: 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-注意：
-* 仅当检索分析语句(Query)不包含SQL时有效
-* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+        :param _Sort: <p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a></li></ul>
         :type Sort: str
-        :param _Limit: 表示单次查询返回的原始日志条数，默认为100，最大值为1000。
-注意：
-* 仅当检索分析语句(Query)不包含SQL时有效
-* SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-
-可通过两种方式获取后续更多日志：
-* Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
-* Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+        :param _Limit: <p>表示单次查询返回的原始日志条数，默认为100，最大值为1000。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul><p>可通过两种方式获取后续更多日志：</p><ul><li>Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志</li><li>Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制</li></ul>
         :type Limit: int
-        :param _Offset: 查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
-注意：
-* 仅当检索分析语句(Query)不包含SQL时有效
-* 不能与Context参数同时使用
-* 仅适用于单日志主题检索
+        :param _Offset: <p>查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>不能与Context参数同时使用</li><li>仅适用于单日志主题检索</li></ul>
         :type Offset: int
-        :param _Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
-注意：
-* 透传该参数时，请勿修改除该参数外的其它参数
-* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
-* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        :param _Context: <p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。<br>注意：</p><ul><li>透传该参数时，请勿修改除该参数外的其它参数</li><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li><li>仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul>
         :type Context: str
-        :param _SamplingRate: 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
-0：自动采样;
-0～1：按指定采样率采样，例如0.02;
-1：不采样，即精确分析
-默认值为1
+        :param _SamplingRate: <p>执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。<br>0：自动采样;<br>0～1：按指定采样率采样，例如0.02;<br>1：不采样，即精确分析<br>默认值为1</p>
         :type SamplingRate: float
-        :param _UseNewAnalysis: 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
-为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
-两种返回方式在编码格式上有少量区别，建议使用true
+        :param _UseNewAnalysis: <p>为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效<br>为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效<br>两种返回方式在编码格式上有少量区别，建议使用true</p>
         :type UseNewAnalysis: bool
         """
         self._From = None
@@ -28464,7 +29768,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def From(self):
-        r"""要检索分析的日志的起始时间，Unix时间戳（毫秒）
+        r"""<p>要检索分析的日志的起始时间，Unix时间戳（毫秒）</p>
         :rtype: int
         """
         return self._From
@@ -28475,7 +29779,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def To(self):
-        r"""要检索分析的日志的结束时间，Unix时间戳（毫秒）
+        r"""<p>要检索分析的日志的结束时间，Unix时间戳（毫秒）</p>
         :rtype: int
         """
         return self._To
@@ -28486,9 +29790,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""检索分析语句，最大长度为12KB
-语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
-使用*或空字符串可查询所有日志
+        r"""<p>检索分析语句，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句<br>使用*或空字符串可查询所有日志</p>
         :rtype: str
         """
         return self._Query
@@ -28499,12 +29801,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
-        r"""检索语法规则，默认值为0，推荐使用1 。
-
-- 0：Lucene语法
-- 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
-
-详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+        r"""<p>检索语法规则，默认值为0，推荐使用1 。</p><ul><li>0：Lucene语法</li><li>1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。</li></ul><p>详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a></p>
         :rtype: int
         """
         return self._SyntaxRule
@@ -28515,27 +29812,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""- 要检索分析的日志主题ID，仅能指定一个日志主题。
-- 如需同时检索多个日志主题，请使用Topics参数。
-- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
-各日志主题ID如下
-访问控制-互联网边界 cfw_rule_acl
-访问控制-NAT边界 cfw_rule_nat_acl
-访问控制-VPC边界 cfw_rule_vpc_acl
-访问控制-DNS开关 cfw_rule_dns_acl
-入侵防御 cfw_rule_threatinfo
-全流量检测与响应日志-流量分析 cfw_netflow_nta
-全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo
-零信任运维-数据库登录 cfw_operate_db
-零信任运维-服务器访问 operate_remote_om
-零信任运维-Web服务访问 operate_web_access
-零信任运维-行为审计 remoteom_commands
-流量日志-互联网边界 cfw_netflow_border
-流量日志-NAT边界 cfw_netflow_nat
-流量日志-VPC边界 cfw_netflow_vpc
-流量日志-DNS开关 cfw_netflow_dns
-流量日志-内网流量 cfw_netflow_fl
-操作日志 operate_log_all
+        r"""<ul><li>要检索分析的日志主题ID，仅能指定一个日志主题。</li><li>如需同时检索多个日志主题，请使用Topics参数。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。<br>各日志主题ID如下<br>访问控制-互联网边界 cfw_rule_acl<br>访问控制-NAT边界 cfw_rule_nat_acl<br>访问控制-VPC边界 cfw_rule_vpc_acl<br>访问控制-DNS开关 cfw_rule_dns_acl<br>入侵防御 cfw_rule_threatinfo<br>全流量检测与响应日志-流量分析 cfw_netflow_nta<br>全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo<br>零信任运维-数据库登录 cfw_operate_db<br>零信任运维-服务器访问 operate_remote_om<br>零信任运维-Web服务访问 operate_web_access<br>零信任运维-行为审计 remoteom_commands<br>流量日志-互联网边界 cfw_netflow_border<br>流量日志-NAT边界 cfw_netflow_nat<br>流量日志-VPC边界 cfw_netflow_vpc<br>流量日志-DNS开关 cfw_netflow_dns<br>流量日志-内网流量 cfw_netflow_fl<br>操作日志 operate_log_all</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -28546,9 +29823,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Topics(self):
-        r"""- 要检索分析的日志主题列表，最大支持50个日志主题。
-- 检索单个日志主题时请使用TopicId。
-- TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+        r"""<ul><li>要检索分析的日志主题列表，最大支持50个日志主题。</li><li>检索单个日志主题时请使用TopicId。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。</li></ul>
         :rtype: list of MultiTopicSearchInformation
         """
         return self._Topics
@@ -28559,10 +29834,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Sort(self):
-        r"""原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-注意：
-* 仅当检索分析语句(Query)不包含SQL时有效
-* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+        r"""<p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a></li></ul>
         :rtype: str
         """
         return self._Sort
@@ -28573,14 +29845,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""表示单次查询返回的原始日志条数，默认为100，最大值为1000。
-注意：
-* 仅当检索分析语句(Query)不包含SQL时有效
-* SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-
-可通过两种方式获取后续更多日志：
-* Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
-* Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+        r"""<p>表示单次查询返回的原始日志条数，默认为100，最大值为1000。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul><p>可通过两种方式获取后续更多日志：</p><ul><li>Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志</li><li>Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制</li></ul>
         :rtype: int
         """
         return self._Limit
@@ -28591,11 +29856,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
-注意：
-* 仅当检索分析语句(Query)不包含SQL时有效
-* 不能与Context参数同时使用
-* 仅适用于单日志主题检索
+        r"""<p>查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>不能与Context参数同时使用</li><li>仅适用于单日志主题检索</li></ul>
         :rtype: int
         """
         return self._Offset
@@ -28606,11 +29867,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Context(self):
-        r"""透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
-注意：
-* 透传该参数时，请勿修改除该参数外的其它参数
-* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
-* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        r"""<p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。<br>注意：</p><ul><li>透传该参数时，请勿修改除该参数外的其它参数</li><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li><li>仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul>
         :rtype: str
         """
         return self._Context
@@ -28621,11 +29878,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def SamplingRate(self):
-        r"""执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
-0：自动采样;
-0～1：按指定采样率采样，例如0.02;
-1：不采样，即精确分析
-默认值为1
+        r"""<p>执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。<br>0：自动采样;<br>0～1：按指定采样率采样，例如0.02;<br>1：不采样，即精确分析<br>默认值为1</p>
         :rtype: float
         """
         return self._SamplingRate
@@ -28636,9 +29889,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def UseNewAnalysis(self):
-        r"""为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
-为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
-两种返回方式在编码格式上有少量区别，建议使用true
+        r"""<p>为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效<br>为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效<br>两种返回方式在编码格式上有少量区别，建议使用true</p>
         :rtype: bool
         """
         return self._UseNewAnalysis
@@ -28683,38 +29934,31 @@ class SearchLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Context: 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
-注意：
-* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+        :param _Context: <p>透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。<br>注意：</p><ul><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li></ul>
         :type Context: str
-        :param _ListOver: 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
-注意：仅当检索分析语句(Query)不包含SQL时有效
+        :param _ListOver: <p>符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志<br>注意：仅当检索分析语句(Query)不包含SQL时有效</p>
         :type ListOver: bool
-        :param _Analysis: 返回的是否为统计分析（即SQL）结果
+        :param _Analysis: <p>返回的是否为统计分析（即SQL）结果</p>
         :type Analysis: bool
-        :param _Results: 匹配检索条件的原始日志
+        :param _Results: <p>匹配检索条件的原始日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of LogInfo
-        :param _ColNames: 日志统计分析结果的列名
-当UseNewAnalysis为false时生效
+        :param _ColNames: <p>日志统计分析结果的列名<br>当UseNewAnalysis为false时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColNames: list of str
-        :param _AnalysisResults: 日志统计分析结果
-当UseNewAnalysis为false时生效
+        :param _AnalysisResults: <p>日志统计分析结果<br>当UseNewAnalysis为false时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisResults: list of LogItems
-        :param _AnalysisRecords: 日志统计分析结果
-当UseNewAnalysis为true时生效
+        :param _AnalysisRecords: <p>日志统计分析结果<br>当UseNewAnalysis为true时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisRecords: list of str
-        :param _Columns: 日志统计分析结果的列属性
-当UseNewAnalysis为true时生效
+        :param _Columns: <p>日志统计分析结果的列属性<br>当UseNewAnalysis为true时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of Column
-        :param _SamplingRate: 本次统计分析使用的采样率
+        :param _SamplingRate: <p>本次统计分析使用的采样率</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SamplingRate: float
-        :param _Topics: 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+        :param _Topics: <p>使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Topics: :class:`tencentcloud.cfw.v20190904.models.SearchLogTopics`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -28734,9 +29978,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Context(self):
-        r"""透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
-注意：
-* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+        r"""<p>透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。<br>注意：</p><ul><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li></ul>
         :rtype: str
         """
         return self._Context
@@ -28747,8 +29989,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def ListOver(self):
-        r"""符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
-注意：仅当检索分析语句(Query)不包含SQL时有效
+        r"""<p>符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志<br>注意：仅当检索分析语句(Query)不包含SQL时有效</p>
         :rtype: bool
         """
         return self._ListOver
@@ -28759,7 +30000,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Analysis(self):
-        r"""返回的是否为统计分析（即SQL）结果
+        r"""<p>返回的是否为统计分析（即SQL）结果</p>
         :rtype: bool
         """
         return self._Analysis
@@ -28770,7 +30011,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Results(self):
-        r"""匹配检索条件的原始日志
+        r"""<p>匹配检索条件的原始日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogInfo
         """
@@ -28782,8 +30023,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def ColNames(self):
-        r"""日志统计分析结果的列名
-当UseNewAnalysis为false时生效
+        r"""<p>日志统计分析结果的列名<br>当UseNewAnalysis为false时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -28795,8 +30035,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def AnalysisResults(self):
-        r"""日志统计分析结果
-当UseNewAnalysis为false时生效
+        r"""<p>日志统计分析结果<br>当UseNewAnalysis为false时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogItems
         """
@@ -28808,8 +30047,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def AnalysisRecords(self):
-        r"""日志统计分析结果
-当UseNewAnalysis为true时生效
+        r"""<p>日志统计分析结果<br>当UseNewAnalysis为true时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -28821,8 +30059,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Columns(self):
-        r"""日志统计分析结果的列属性
-当UseNewAnalysis为true时生效
+        r"""<p>日志统计分析结果的列属性<br>当UseNewAnalysis为true时生效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Column
         """
@@ -28834,7 +30071,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def SamplingRate(self):
-        r"""本次统计分析使用的采样率
+        r"""<p>本次统计分析使用的采样率</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -28846,7 +30083,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Topics(self):
-        r"""使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+        r"""<p>使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cfw.v20190904.models.SearchLogTopics`
         """
@@ -32110,14 +33347,14 @@ class UpdateCheckCcnNonDirectFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网ID
+        :param _CcnId: <p>云联网ID</p>
         :type CcnId: str
         """
         self._CcnId = None
 
     @property
     def CcnId(self):
-        r"""云联网ID
+        r"""<p>云联网ID</p>
         :rtype: str
         """
         return self._CcnId
@@ -32146,9 +33383,7 @@ class UpdateCheckCcnNonDirectFlagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Message: 检测更新状态
-"Checked"：重新检测完成
-"Checking": 正在重新检测中，请稍后刷新状态查看
+        :param _Message: <p>检测更新状态<br>&quot;Checked&quot;：重新检测完成<br>&quot;Checking&quot;: 正在重新检测中，请稍后刷新状态查看</p>
         :type Message: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32158,9 +33393,7 @@ class UpdateCheckCcnNonDirectFlagResponse(AbstractModel):
 
     @property
     def Message(self):
-        r"""检测更新状态
-"Checked"：重新检测完成
-"Checking": 正在重新检测中，请稍后刷新状态查看
+        r"""<p>检测更新状态<br>&quot;Checked&quot;：重新检测完成<br>&quot;Checking&quot;: 正在重新检测中，请稍后刷新状态查看</p>
         :rtype: str
         """
         return self._Message
@@ -32193,14 +33426,14 @@ class UpdateClusterVpcFwRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnSwitch: ccn防火墙开关配置信息
+        :param _CcnSwitch: <p>ccn防火墙开关配置信息</p>
         :type CcnSwitch: :class:`tencentcloud.cfw.v20190904.models.CcnSwitchInfo`
         """
         self._CcnSwitch = None
 
     @property
     def CcnSwitch(self):
-        r"""ccn防火墙开关配置信息
+        r"""<p>ccn防火墙开关配置信息</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.CcnSwitchInfo`
         """
         return self._CcnSwitch

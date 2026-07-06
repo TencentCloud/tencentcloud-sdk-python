@@ -5807,6 +5807,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RotateClusterToken(self, request):
+        r"""轮转集群的token
+
+        :param request: Request instance for RotateClusterToken.
+        :type request: :class:`tencentcloud.tke.v20180525.models.RotateClusterTokenRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.RotateClusterTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RotateClusterToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.RotateClusterTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunPrometheusInstance(self, request):
         r"""初始化TMP实例，开启集成中心时调用
 

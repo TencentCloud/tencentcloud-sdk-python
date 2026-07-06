@@ -10997,6 +10997,8 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
         :type Header: list of HeaderItem
         :param _Body: 请求body
         :type Body: list of BodyItem
+        :param _IncludingUserProperties: 连接UserProperty作为Header转发，默认false
+        :type IncludingUserProperties: bool
         """
         self._InstanceId = None
         self._Endpoint = None
@@ -11008,6 +11010,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
         self._Method = None
         self._Header = None
         self._Body = None
+        self._IncludingUserProperties = None
 
     @property
     def InstanceId(self):
@@ -11119,6 +11122,17 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
     def Body(self, Body):
         self._Body = Body
 
+    @property
+    def IncludingUserProperties(self):
+        r"""连接UserProperty作为Header转发，默认false
+        :rtype: bool
+        """
+        return self._IncludingUserProperties
+
+    @IncludingUserProperties.setter
+    def IncludingUserProperties(self, IncludingUserProperties):
+        self._IncludingUserProperties = IncludingUserProperties
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11141,6 +11155,7 @@ class ModifyHttpAuthenticatorRequest(AbstractModel):
                 obj = BodyItem()
                 obj._deserialize(item)
                 self._Body.append(obj)
+        self._IncludingUserProperties = params.get("IncludingUserProperties")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

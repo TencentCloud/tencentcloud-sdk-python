@@ -14966,14 +14966,11 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
-
+        :param _InstanceId: <p>指定实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _InstanceParams: 指定需修改的参数名及值。当前所支持的参数名及对应取值范围，请通过 [DescribeInstanceParams ](https://cloud.tencent.com/document/product/240/65903)获取。
+        :param _InstanceParams: <p>指定需修改的参数名及值。当前所支持的参数名及对应取值范围，请通过 <a href="https://cloud.tencent.com/document/product/240/65903">DescribeInstanceParams </a>获取。</p>
         :type InstanceParams: list of ModifyMongoDBParamType
-        :param _ModifyType: 操作类型，包括：
-- IMMEDIATELY：立即调整。
-- DELAY：延迟调整。可选字段，不配置该参数则默认为立即调整。
+        :param _ModifyType: <p>操作类型，包括：</p><ul><li>IMMEDIATELY：立即调整。</li><li>DELAY：延迟调整。可选字段，不配置该参数则默认为立即调整。</li></ul>
         :type ModifyType: str
         """
         self._InstanceId = None
@@ -14982,8 +14979,7 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""指定实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
-
+        r"""<p>指定实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -14994,7 +14990,7 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     @property
     def InstanceParams(self):
-        r"""指定需修改的参数名及值。当前所支持的参数名及对应取值范围，请通过 [DescribeInstanceParams ](https://cloud.tencent.com/document/product/240/65903)获取。
+        r"""<p>指定需修改的参数名及值。当前所支持的参数名及对应取值范围，请通过 <a href="https://cloud.tencent.com/document/product/240/65903">DescribeInstanceParams </a>获取。</p>
         :rtype: list of ModifyMongoDBParamType
         """
         return self._InstanceParams
@@ -15005,9 +15001,7 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     @property
     def ModifyType(self):
-        r"""操作类型，包括：
-- IMMEDIATELY：立即调整。
-- DELAY：延迟调整。可选字段，不配置该参数则默认为立即调整。
+        r"""<p>操作类型，包括：</p><ul><li>IMMEDIATELY：立即调整。</li><li>DELAY：延迟调整。可选字段，不配置该参数则默认为立即调整。</li></ul>
         :rtype: str
         """
         return self._ModifyType
@@ -15043,12 +15037,9 @@ class ModifyInstanceParamsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Changed: 修改参数配置是否生效。
-- true：参数修改后的值已生效。
-- false：执行失败。
-
+        :param _Changed: <p>修改参数配置是否生效。</p><ul><li>true：参数修改后的值已生效。</li><li>false：执行失败。</li></ul>
         :type Changed: bool
-        :param _TaskId: 该参数暂时无意义(兼容前端保留)。
+        :param _TaskId: <p>该参数暂时无意义(兼容前端保留)。</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15059,10 +15050,7 @@ class ModifyInstanceParamsResponse(AbstractModel):
 
     @property
     def Changed(self):
-        r"""修改参数配置是否生效。
-- true：参数修改后的值已生效。
-- false：执行失败。
-
+        r"""<p>修改参数配置是否生效。</p><ul><li>true：参数修改后的值已生效。</li><li>false：执行失败。</li></ul>
         :rtype: bool
         """
         return self._Changed
@@ -15073,7 +15061,7 @@ class ModifyInstanceParamsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""该参数暂时无意义(兼容前端保留)。
+        r"""<p>该参数暂时无意义(兼容前端保留)。</p>
         :rtype: int
         """
         return self._TaskId

@@ -1664,6 +1664,8 @@ class MonitorClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeProductEventListResponse:
         """
+        已不再使用
+
         分页获取产品事件的列表
         """
         

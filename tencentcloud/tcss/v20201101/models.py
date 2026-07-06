@@ -7121,86 +7121,77 @@ class ClusterInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名字
+        :param _ClusterCAMD5: <p>集群ca证书md5值</p>
+        :type ClusterCAMD5: str
+        :param _ClusterName: <p>集群名字</p>
         :type ClusterName: str
-        :param _ClusterVersion: 集群版本
+        :param _ClusterVersion: <p>集群版本</p>
         :type ClusterVersion: str
-        :param _ClusterOs: 集群操作系统
+        :param _ClusterOs: <p>集群操作系统</p>
         :type ClusterOs: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: <p>集群类型</p>
         :type ClusterType: str
-        :param _ClusterNodeNum: 集群节点数
+        :param _ClusterNodeNum: <p>集群节点数</p>
         :type ClusterNodeNum: int
-        :param _Region: 集群区域
+        :param _Region: <p>集群区域</p>
         :type Region: str
-        :param _DefenderStatus: 防护状态: 
-已防护: Defended 
-未防护: UnDefended
-部分防护: PartDefened
+        :param _DefenderStatus: <p>防护状态:<br>已防护: Defended<br>未防护: UnDefended<br>部分防护: PartDefened</p>
         :type DefenderStatus: str
-        :param _ClusterStatus: 集群状态
+        :param _ClusterStatus: <p>集群状态</p>
         :type ClusterStatus: str
-        :param _ClusterSubStatus: 集群运行子状态
+        :param _ClusterSubStatus: <p>集群运行子状态</p>
         :type ClusterSubStatus: str
-        :param _ClusterCheckMode: 集群的检测模式，为Cluster_Normal或者Cluster_Actived.
+        :param _ClusterCheckMode: <p>集群的检测模式，为Cluster_Normal或者Cluster_Actived.</p>
         :type ClusterCheckMode: str
-        :param _ClusterAutoCheck: 是否自动定期检测
+        :param _ClusterAutoCheck: <p>是否自动定期检测</p>
         :type ClusterAutoCheck: bool
-        :param _DefenderErrorReason: 防护容器部署失败原因，为UserDaemonSetNotReady时,和UnreadyNodeNum转成"N个节点防御容器为就绪"，其他错误直接展示
+        :param _DefenderErrorReason: <p>防护容器部署失败原因，为UserDaemonSetNotReady时,和UnreadyNodeNum转成&quot;N个节点防御容器为就绪&quot;，其他错误直接展示</p>
         :type DefenderErrorReason: str
-        :param _UnreadyNodeNum: 防御容器没有ready状态的节点数量
+        :param _UnreadyNodeNum: <p>防御容器没有ready状态的节点数量</p>
         :type UnreadyNodeNum: int
-        :param _SeriousRiskCount: 严重风险检查项的数量
+        :param _SeriousRiskCount: <p>严重风险检查项的数量</p>
         :type SeriousRiskCount: int
-        :param _HighRiskCount: 高风险检查项的数量
+        :param _HighRiskCount: <p>高风险检查项的数量</p>
         :type HighRiskCount: int
-        :param _MiddleRiskCount: 中风险检查项的数量
+        :param _MiddleRiskCount: <p>中风险检查项的数量</p>
         :type MiddleRiskCount: int
-        :param _HintRiskCount: 提示风险检查项的数量
+        :param _HintRiskCount: <p>提示风险检查项的数量</p>
         :type HintRiskCount: int
-        :param _CheckFailReason: 检查失败原因
+        :param _CheckFailReason: <p>检查失败原因</p>
         :type CheckFailReason: str
-        :param _CheckStatus: 检查状态,为Task_Running, NoRisk, HasRisk, Uncheck, Task_Error
+        :param _CheckStatus: <p>检查状态,为Task_Running, NoRisk, HasRisk, Uncheck, Task_Error</p>
         :type CheckStatus: str
-        :param _TaskCreateTime: 任务创建时间,检查时间
+        :param _TaskCreateTime: <p>任务创建时间,检查时间</p>
         :type TaskCreateTime: str
-        :param _AccessedStatus: 接入状态:
-未接入: AccessedNone
-已防护: AccessedDefended
-未防护: AccessedInstalled
-部分防护: AccessedPartialDefence
-接入异常: AccessedException
-卸载异常: AccessedUninstallException
-接入中: AccessedInstalling
-卸载中: AccessedUninstalling
+        :param _AccessedStatus: <p>接入状态:<br>未接入: AccessedNone<br>已防护: AccessedDefended<br>未防护: AccessedInstalled<br>部分防护: AccessedPartialDefence<br>接入异常: AccessedException<br>卸载异常: AccessedUninstallException<br>接入中: AccessedInstalling<br>卸载中: AccessedUninstalling</p>
         :type AccessedStatus: str
-        :param _AccessedSubStatus: 接入失败原因
+        :param _AccessedSubStatus: <p>接入失败原因</p>
         :type AccessedSubStatus: str
-        :param _AccessedErrorReason: 接入/卸载失败原因
+        :param _AccessedErrorReason: <p>接入/卸载失败原因</p>
         :type AccessedErrorReason: str
-        :param _NodeCount: 节点总数
+        :param _NodeCount: <p>节点总数</p>
         :type NodeCount: int
-        :param _OffLineNodeCount: 离线节点数
+        :param _OffLineNodeCount: <p>离线节点数</p>
         :type OffLineNodeCount: int
-        :param _UnInstallAgentNodeCount: 未安装agent节点数
+        :param _UnInstallAgentNodeCount: <p>未安装agent节点数</p>
         :type UnInstallAgentNodeCount: int
-        :param _ChargeCoresCnt: 计费核数(弹性计费核数+普通计费核数)
+        :param _ChargeCoresCnt: <p>计费核数(弹性计费核数+普通计费核数)</p>
         :type ChargeCoresCnt: int
-        :param _MasterAddresses: master 地址列表
+        :param _MasterAddresses: <p>master 地址列表</p>
         :type MasterAddresses: list of str
-        :param _CoresCnt: 核数
+        :param _CoresCnt: <p>核数</p>
         :type CoresCnt: int
-        :param _ClusterAuditStatus: 集群审计开关状态：
-已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+        :param _ClusterAuditStatus: <p>集群审计开关状态：<br>已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed</p>
         :type ClusterAuditStatus: str
-        :param _ClusterAuditFailedInfo: 集群审计开关失败信息
+        :param _ClusterAuditFailedInfo: <p>集群审计开关失败信息</p>
         :type ClusterAuditFailedInfo: str
-        :param _OwnerName: 所有者名称
+        :param _OwnerName: <p>所有者名称</p>
         :type OwnerName: str
         """
         self._ClusterId = None
+        self._ClusterCAMD5 = None
         self._ClusterName = None
         self._ClusterVersion = None
         self._ClusterOs = None
@@ -7236,7 +7227,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -7246,8 +7237,19 @@ class ClusterInfoItem(AbstractModel):
         self._ClusterId = ClusterId
 
     @property
+    def ClusterCAMD5(self):
+        r"""<p>集群ca证书md5值</p>
+        :rtype: str
+        """
+        return self._ClusterCAMD5
+
+    @ClusterCAMD5.setter
+    def ClusterCAMD5(self, ClusterCAMD5):
+        self._ClusterCAMD5 = ClusterCAMD5
+
+    @property
     def ClusterName(self):
-        r"""集群名字
+        r"""<p>集群名字</p>
         :rtype: str
         """
         return self._ClusterName
@@ -7258,7 +7260,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterVersion(self):
-        r"""集群版本
+        r"""<p>集群版本</p>
         :rtype: str
         """
         return self._ClusterVersion
@@ -7269,7 +7271,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterOs(self):
-        r"""集群操作系统
+        r"""<p>集群操作系统</p>
         :rtype: str
         """
         return self._ClusterOs
@@ -7280,7 +7282,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型
+        r"""<p>集群类型</p>
         :rtype: str
         """
         return self._ClusterType
@@ -7291,7 +7293,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterNodeNum(self):
-        r"""集群节点数
+        r"""<p>集群节点数</p>
         :rtype: int
         """
         return self._ClusterNodeNum
@@ -7302,7 +7304,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def Region(self):
-        r"""集群区域
+        r"""<p>集群区域</p>
         :rtype: str
         """
         return self._Region
@@ -7313,10 +7315,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def DefenderStatus(self):
-        r"""防护状态: 
-已防护: Defended 
-未防护: UnDefended
-部分防护: PartDefened
+        r"""<p>防护状态:<br>已防护: Defended<br>未防护: UnDefended<br>部分防护: PartDefened</p>
         :rtype: str
         """
         return self._DefenderStatus
@@ -7327,7 +7326,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterStatus(self):
-        r"""集群状态
+        r"""<p>集群状态</p>
         :rtype: str
         """
         return self._ClusterStatus
@@ -7338,7 +7337,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterSubStatus(self):
-        r"""集群运行子状态
+        r"""<p>集群运行子状态</p>
         :rtype: str
         """
         return self._ClusterSubStatus
@@ -7349,7 +7348,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterCheckMode(self):
-        r"""集群的检测模式，为Cluster_Normal或者Cluster_Actived.
+        r"""<p>集群的检测模式，为Cluster_Normal或者Cluster_Actived.</p>
         :rtype: str
         """
         return self._ClusterCheckMode
@@ -7360,7 +7359,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterAutoCheck(self):
-        r"""是否自动定期检测
+        r"""<p>是否自动定期检测</p>
         :rtype: bool
         """
         return self._ClusterAutoCheck
@@ -7371,7 +7370,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def DefenderErrorReason(self):
-        r"""防护容器部署失败原因，为UserDaemonSetNotReady时,和UnreadyNodeNum转成"N个节点防御容器为就绪"，其他错误直接展示
+        r"""<p>防护容器部署失败原因，为UserDaemonSetNotReady时,和UnreadyNodeNum转成&quot;N个节点防御容器为就绪&quot;，其他错误直接展示</p>
         :rtype: str
         """
         return self._DefenderErrorReason
@@ -7382,7 +7381,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def UnreadyNodeNum(self):
-        r"""防御容器没有ready状态的节点数量
+        r"""<p>防御容器没有ready状态的节点数量</p>
         :rtype: int
         """
         return self._UnreadyNodeNum
@@ -7393,7 +7392,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def SeriousRiskCount(self):
-        r"""严重风险检查项的数量
+        r"""<p>严重风险检查项的数量</p>
         :rtype: int
         """
         return self._SeriousRiskCount
@@ -7404,7 +7403,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def HighRiskCount(self):
-        r"""高风险检查项的数量
+        r"""<p>高风险检查项的数量</p>
         :rtype: int
         """
         return self._HighRiskCount
@@ -7415,7 +7414,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def MiddleRiskCount(self):
-        r"""中风险检查项的数量
+        r"""<p>中风险检查项的数量</p>
         :rtype: int
         """
         return self._MiddleRiskCount
@@ -7426,7 +7425,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def HintRiskCount(self):
-        r"""提示风险检查项的数量
+        r"""<p>提示风险检查项的数量</p>
         :rtype: int
         """
         return self._HintRiskCount
@@ -7437,7 +7436,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def CheckFailReason(self):
-        r"""检查失败原因
+        r"""<p>检查失败原因</p>
         :rtype: str
         """
         return self._CheckFailReason
@@ -7448,7 +7447,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def CheckStatus(self):
-        r"""检查状态,为Task_Running, NoRisk, HasRisk, Uncheck, Task_Error
+        r"""<p>检查状态,为Task_Running, NoRisk, HasRisk, Uncheck, Task_Error</p>
         :rtype: str
         """
         return self._CheckStatus
@@ -7459,7 +7458,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def TaskCreateTime(self):
-        r"""任务创建时间,检查时间
+        r"""<p>任务创建时间,检查时间</p>
         :rtype: str
         """
         return self._TaskCreateTime
@@ -7470,15 +7469,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def AccessedStatus(self):
-        r"""接入状态:
-未接入: AccessedNone
-已防护: AccessedDefended
-未防护: AccessedInstalled
-部分防护: AccessedPartialDefence
-接入异常: AccessedException
-卸载异常: AccessedUninstallException
-接入中: AccessedInstalling
-卸载中: AccessedUninstalling
+        r"""<p>接入状态:<br>未接入: AccessedNone<br>已防护: AccessedDefended<br>未防护: AccessedInstalled<br>部分防护: AccessedPartialDefence<br>接入异常: AccessedException<br>卸载异常: AccessedUninstallException<br>接入中: AccessedInstalling<br>卸载中: AccessedUninstalling</p>
         :rtype: str
         """
         return self._AccessedStatus
@@ -7489,7 +7480,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def AccessedSubStatus(self):
-        r"""接入失败原因
+        r"""<p>接入失败原因</p>
         :rtype: str
         """
         return self._AccessedSubStatus
@@ -7500,7 +7491,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def AccessedErrorReason(self):
-        r"""接入/卸载失败原因
+        r"""<p>接入/卸载失败原因</p>
         :rtype: str
         """
         return self._AccessedErrorReason
@@ -7511,7 +7502,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""节点总数
+        r"""<p>节点总数</p>
         :rtype: int
         """
         return self._NodeCount
@@ -7522,7 +7513,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def OffLineNodeCount(self):
-        r"""离线节点数
+        r"""<p>离线节点数</p>
         :rtype: int
         """
         return self._OffLineNodeCount
@@ -7533,7 +7524,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def UnInstallAgentNodeCount(self):
-        r"""未安装agent节点数
+        r"""<p>未安装agent节点数</p>
         :rtype: int
         """
         return self._UnInstallAgentNodeCount
@@ -7544,7 +7535,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ChargeCoresCnt(self):
-        r"""计费核数(弹性计费核数+普通计费核数)
+        r"""<p>计费核数(弹性计费核数+普通计费核数)</p>
         :rtype: int
         """
         return self._ChargeCoresCnt
@@ -7555,7 +7546,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def MasterAddresses(self):
-        r"""master 地址列表
+        r"""<p>master 地址列表</p>
         :rtype: list of str
         """
         return self._MasterAddresses
@@ -7566,7 +7557,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def CoresCnt(self):
-        r"""核数
+        r"""<p>核数</p>
         :rtype: int
         """
         return self._CoresCnt
@@ -7577,8 +7568,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterAuditStatus(self):
-        r"""集群审计开关状态：
-已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+        r"""<p>集群审计开关状态：<br>已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed</p>
         :rtype: str
         """
         return self._ClusterAuditStatus
@@ -7589,7 +7579,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def ClusterAuditFailedInfo(self):
-        r"""集群审计开关失败信息
+        r"""<p>集群审计开关失败信息</p>
         :rtype: str
         """
         return self._ClusterAuditFailedInfo
@@ -7600,7 +7590,7 @@ class ClusterInfoItem(AbstractModel):
 
     @property
     def OwnerName(self):
-        r"""所有者名称
+        r"""<p>所有者名称</p>
         :rtype: str
         """
         return self._OwnerName
@@ -7612,6 +7602,7 @@ class ClusterInfoItem(AbstractModel):
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
+        self._ClusterCAMD5 = params.get("ClusterCAMD5")
         self._ClusterName = params.get("ClusterName")
         self._ClusterVersion = params.get("ClusterVersion")
         self._ClusterOs = params.get("ClusterOs")
@@ -43065,49 +43056,50 @@ class DescribePurchaseStateInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _State: 0：可申请试用可购买；1：只可购买(含试用审核不通过和试用过期)；2：试用生效中；3：专业版生效中；4：专业版过期
+        :param _State: <p>0：可申请试用可购买；1：只可购买(含试用审核不通过和试用过期)；2：试用生效中；3：专业版生效中；4：专业版过期</p>
         :type State: int
-        :param _AllCoresCnt: 总资源核数 = 总防护核数 + 未防护核数
+        :param _AllCoresCnt: <p>总资源核数 = 总防护核数 + 未防护核数</p>
         :type AllCoresCnt: int
-        :param _CoresCnt: 总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数
+        :param _CoresCnt: <p>总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数</p>
         :type CoresCnt: int
-        :param _UndefendCoresCnt: 未防护核数(未开启防护资源核数)
+        :param _UndefendCoresCnt: <p>未防护核数(未开启防护资源核数)</p>
         :type UndefendCoresCnt: int
-        :param _AuthorizedCoresCnt: 已购买核数
+        :param _AuthorizedCoresCnt: <p>已购买核数</p>
         :type AuthorizedCoresCnt: int
-        :param _GivenAuthorizedCoresCnt: 试用赠送专业版核心数
+        :param _GivenAuthorizedCoresCnt: <p>试用赠送专业版核心数</p>
         :type GivenAuthorizedCoresCnt: int
-        :param _CurrentFlexibleCoresCnt: 当前弹性计费核数数量
+        :param _CurrentFlexibleCoresCnt: <p>当前弹性计费核数数量</p>
         :type CurrentFlexibleCoresCnt: int
-        :param _ImageCnt: 镜像数
+        :param _ImageCnt: <p>镜像数</p>
         :type ImageCnt: int
-        :param _AuthorizedImageCnt: 已授权镜像数
+        :param _AuthorizedImageCnt: <p>已授权镜像数</p>
         :type AuthorizedImageCnt: int
-        :param _ExpirationTime: 过期时间
+        :param _ExpirationTime: <p>过期时间</p>
         :type ExpirationTime: str
-        :param _PurchasedAuthorizedCnt: 已购买镜像授权数
+        :param _PurchasedAuthorizedCnt: <p>已购买镜像授权数</p>
         :type PurchasedAuthorizedCnt: int
-        :param _AutomaticRenewal: 0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :param _AutomaticRenewal: <p>0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :type AutomaticRenewal: int
-        :param _GivenAuthorizedCnt: 试用期间赠送镜像授权数，可能会过期
+        :param _GivenAuthorizedCnt: <p>试用期间赠送镜像授权数，可能会过期</p>
         :type GivenAuthorizedCnt: int
-        :param _BeginTime: 起始时间
+        :param _BeginTime: <p>起始时间</p>
         :type BeginTime: str
-        :param _SubState: 子状态(具体意义依据State字段而定)
-State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
+        :param _SubState: <p>子状态(具体意义依据State字段而定)<br>State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)</p>
         :type SubState: str
-        :param _InquireKey: 计费key
+        :param _InquireKey: <p>计费key</p>
         :type InquireKey: str
-        :param _DefendPolicy: 防护策略
+        :param _DefendPolicy: <p>防护策略</p>
         :type DefendPolicy: str
-        :param _FlexibleCoresLimit: 弹性计费核数上限
+        :param _FlexibleCoresLimit: <p>弹性计费核数上限</p>
         :type FlexibleCoresLimit: int
-        :param _DefendClusterCoresCnt: 已防护集群核数
+        :param _DefendClusterCoresCnt: <p>已防护集群核数</p>
         :type DefendClusterCoresCnt: int
-        :param _DefendHostCoresCnt: 已防护主机核数
+        :param _DefendHostCoresCnt: <p>已防护主机核数</p>
         :type DefendHostCoresCnt: int
-        :param _TrialCoresCnt: 试用的专业版核数
+        :param _TrialCoresCnt: <p>试用的专业版核数</p>
         :type TrialCoresCnt: int
+        :param _NoContainerCoresCnt: <p>无容器核数</p>
+        :type NoContainerCoresCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -43132,11 +43124,12 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._DefendClusterCoresCnt = None
         self._DefendHostCoresCnt = None
         self._TrialCoresCnt = None
+        self._NoContainerCoresCnt = None
         self._RequestId = None
 
     @property
     def State(self):
-        r"""0：可申请试用可购买；1：只可购买(含试用审核不通过和试用过期)；2：试用生效中；3：专业版生效中；4：专业版过期
+        r"""<p>0：可申请试用可购买；1：只可购买(含试用审核不通过和试用过期)；2：试用生效中；3：专业版生效中；4：专业版过期</p>
         :rtype: int
         """
         return self._State
@@ -43147,7 +43140,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def AllCoresCnt(self):
-        r"""总资源核数 = 总防护核数 + 未防护核数
+        r"""<p>总资源核数 = 总防护核数 + 未防护核数</p>
         :rtype: int
         """
         return self._AllCoresCnt
@@ -43158,7 +43151,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def CoresCnt(self):
-        r"""总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数
+        r"""<p>总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数</p>
         :rtype: int
         """
         return self._CoresCnt
@@ -43169,7 +43162,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def UndefendCoresCnt(self):
-        r"""未防护核数(未开启防护资源核数)
+        r"""<p>未防护核数(未开启防护资源核数)</p>
         :rtype: int
         """
         return self._UndefendCoresCnt
@@ -43180,7 +43173,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def AuthorizedCoresCnt(self):
-        r"""已购买核数
+        r"""<p>已购买核数</p>
         :rtype: int
         """
         return self._AuthorizedCoresCnt
@@ -43191,7 +43184,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def GivenAuthorizedCoresCnt(self):
-        r"""试用赠送专业版核心数
+        r"""<p>试用赠送专业版核心数</p>
         :rtype: int
         """
         return self._GivenAuthorizedCoresCnt
@@ -43202,7 +43195,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def CurrentFlexibleCoresCnt(self):
-        r"""当前弹性计费核数数量
+        r"""<p>当前弹性计费核数数量</p>
         :rtype: int
         """
         return self._CurrentFlexibleCoresCnt
@@ -43213,7 +43206,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def ImageCnt(self):
-        r"""镜像数
+        r"""<p>镜像数</p>
         :rtype: int
         """
         return self._ImageCnt
@@ -43224,7 +43217,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def AuthorizedImageCnt(self):
-        r"""已授权镜像数
+        r"""<p>已授权镜像数</p>
         :rtype: int
         """
         return self._AuthorizedImageCnt
@@ -43235,7 +43228,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def ExpirationTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: str
         """
         return self._ExpirationTime
@@ -43246,7 +43239,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def PurchasedAuthorizedCnt(self):
-        r"""已购买镜像授权数
+        r"""<p>已购买镜像授权数</p>
         :rtype: int
         """
         return self._PurchasedAuthorizedCnt
@@ -43257,7 +43250,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def AutomaticRenewal(self):
-        r"""0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        r"""<p>0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :rtype: int
         """
         return self._AutomaticRenewal
@@ -43268,7 +43261,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def GivenAuthorizedCnt(self):
-        r"""试用期间赠送镜像授权数，可能会过期
+        r"""<p>试用期间赠送镜像授权数，可能会过期</p>
         :rtype: int
         """
         return self._GivenAuthorizedCnt
@@ -43279,7 +43272,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def BeginTime(self):
-        r"""起始时间
+        r"""<p>起始时间</p>
         :rtype: str
         """
         return self._BeginTime
@@ -43290,8 +43283,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def SubState(self):
-        r"""子状态(具体意义依据State字段而定)
-State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
+        r"""<p>子状态(具体意义依据State字段而定)<br>State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)</p>
         :rtype: str
         """
         return self._SubState
@@ -43302,7 +43294,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def InquireKey(self):
-        r"""计费key
+        r"""<p>计费key</p>
         :rtype: str
         """
         return self._InquireKey
@@ -43313,7 +43305,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def DefendPolicy(self):
-        r"""防护策略
+        r"""<p>防护策略</p>
         :rtype: str
         """
         return self._DefendPolicy
@@ -43324,7 +43316,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def FlexibleCoresLimit(self):
-        r"""弹性计费核数上限
+        r"""<p>弹性计费核数上限</p>
         :rtype: int
         """
         return self._FlexibleCoresLimit
@@ -43335,7 +43327,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def DefendClusterCoresCnt(self):
-        r"""已防护集群核数
+        r"""<p>已防护集群核数</p>
         :rtype: int
         """
         return self._DefendClusterCoresCnt
@@ -43346,7 +43338,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def DefendHostCoresCnt(self):
-        r"""已防护主机核数
+        r"""<p>已防护主机核数</p>
         :rtype: int
         """
         return self._DefendHostCoresCnt
@@ -43357,7 +43349,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 
     @property
     def TrialCoresCnt(self):
-        r"""试用的专业版核数
+        r"""<p>试用的专业版核数</p>
         :rtype: int
         """
         return self._TrialCoresCnt
@@ -43365,6 +43357,17 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
     @TrialCoresCnt.setter
     def TrialCoresCnt(self, TrialCoresCnt):
         self._TrialCoresCnt = TrialCoresCnt
+
+    @property
+    def NoContainerCoresCnt(self):
+        r"""<p>无容器核数</p>
+        :rtype: int
+        """
+        return self._NoContainerCoresCnt
+
+    @NoContainerCoresCnt.setter
+    def NoContainerCoresCnt(self, NoContainerCoresCnt):
+        self._NoContainerCoresCnt = NoContainerCoresCnt
 
     @property
     def RequestId(self):
@@ -43400,6 +43403,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._DefendClusterCoresCnt = params.get("DefendClusterCoresCnt")
         self._DefendHostCoresCnt = params.get("DefendHostCoresCnt")
         self._TrialCoresCnt = params.get("TrialCoresCnt")
+        self._NoContainerCoresCnt = params.get("NoContainerCoresCnt")
         self._RequestId = params.get("RequestId")
 
 

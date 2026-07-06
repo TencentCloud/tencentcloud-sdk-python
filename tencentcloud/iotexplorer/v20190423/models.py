@@ -38732,6 +38732,8 @@ class SeeComprehensionConfig(AbstractModel):
         :type MaxDuration: int
         :param _EnableKeywords: <p>是否生成关键词</p><p>默认值：false</p>
         :type EnableKeywords: bool
+        :param _SummaryPrompt: <p>自定义摘要提示词</p>
+        :type SummaryPrompt: str
         """
         self._DetectTypes = None
         self._EnableSearch = None
@@ -38741,6 +38743,7 @@ class SeeComprehensionConfig(AbstractModel):
         self._CustomDetectQueries = None
         self._MaxDuration = None
         self._EnableKeywords = None
+        self._SummaryPrompt = None
 
     @property
     def DetectTypes(self):
@@ -38830,6 +38833,17 @@ class SeeComprehensionConfig(AbstractModel):
     def EnableKeywords(self, EnableKeywords):
         self._EnableKeywords = EnableKeywords
 
+    @property
+    def SummaryPrompt(self):
+        r"""<p>自定义摘要提示词</p>
+        :rtype: str
+        """
+        return self._SummaryPrompt
+
+    @SummaryPrompt.setter
+    def SummaryPrompt(self, SummaryPrompt):
+        self._SummaryPrompt = SummaryPrompt
+
 
     def _deserialize(self, params):
         self._DetectTypes = params.get("DetectTypes")
@@ -38845,6 +38859,7 @@ class SeeComprehensionConfig(AbstractModel):
                 self._CustomDetectQueries.append(obj)
         self._MaxDuration = params.get("MaxDuration")
         self._EnableKeywords = params.get("EnableKeywords")
+        self._SummaryPrompt = params.get("SummaryPrompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

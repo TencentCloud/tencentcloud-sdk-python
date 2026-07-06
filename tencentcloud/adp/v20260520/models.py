@@ -1624,6 +1624,76 @@ class AgentSpec(AbstractModel):
         
 
 
+class AgentSummary(AbstractModel):
+    r"""Agent摘要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>AgentId</p>
+        :type AgentId: str
+        :param _Profile: <p>Agent 身份画像</p>
+        :type Profile: :class:`tencentcloud.adp.v20260520.models.AgentProfile`
+        :param _AdvancedConfig: <p>高级设置;scope=0 时返回</p>
+        :type AdvancedConfig: :class:`tencentcloud.adp.v20260520.models.AgentAdvancedConfig`
+        """
+        self._AgentId = None
+        self._Profile = None
+        self._AdvancedConfig = None
+
+    @property
+    def AgentId(self):
+        r"""<p>AgentId</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Profile(self):
+        r"""<p>Agent 身份画像</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AgentProfile`
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def AdvancedConfig(self):
+        r"""<p>高级设置;scope=0 时返回</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AgentAdvancedConfig`
+        """
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        if params.get("Profile") is not None:
+            self._Profile = AgentProfile()
+            self._Profile._deserialize(params.get("Profile"))
+        if params.get("AdvancedConfig") is not None:
+            self._AdvancedConfig = AgentAdvancedConfig()
+            self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentSystemVariable(AbstractModel):
     r"""系统参数
 
@@ -7087,6 +7157,136 @@ class CreateConversationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePluginRequest(AbstractModel):
+    r"""CreatePlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Profile: <p>插件基础资料</p>
+        :type Profile: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
+        :param _Config: <p>插件类型配置</p>
+        :type Config: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        :param _SpaceId: <p>当前空间id</p>
+        :type SpaceId: str
+        :param _ToolList: <p>插件的工具列表</p>
+        :type ToolList: :class:`tencentcloud.adp.v20260520.models.Tool`
+        """
+        self._Profile = None
+        self._Config = None
+        self._SpaceId = None
+        self._ToolList = None
+
+    @property
+    def Profile(self):
+        r"""<p>插件基础资料</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Config(self):
+        r"""<p>插件类型配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def SpaceId(self):
+        r"""<p>当前空间id</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def ToolList(self):
+        r"""<p>插件的工具列表</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Tool`
+        """
+        return self._ToolList
+
+    @ToolList.setter
+    def ToolList(self, ToolList):
+        self._ToolList = ToolList
+
+
+    def _deserialize(self, params):
+        if params.get("Profile") is not None:
+            self._Profile = PluginProfile()
+            self._Profile._deserialize(params.get("Profile"))
+        if params.get("Config") is not None:
+            self._Config = PluginConfig()
+            self._Config._deserialize(params.get("Config"))
+        self._SpaceId = params.get("SpaceId")
+        if params.get("ToolList") is not None:
+            self._ToolList = Tool()
+            self._ToolList._deserialize(params.get("ToolList"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePluginResponse(AbstractModel):
+    r"""CreatePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>插件id</p>
+        :type PluginId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PluginId = None
+        self._RequestId = None
+
+    @property
+    def PluginId(self):
+        r"""<p>插件id</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateReleaseRequest(AbstractModel):
     r"""CreateRelease请求参数结构体
 
@@ -7238,6 +7438,344 @@ class CreateReleaseResponse(AbstractModel):
     def _deserialize(self, params):
         self._NeedApproval = params.get("NeedApproval")
         self._ReleaseId = params.get("ReleaseId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSkillRequest(AbstractModel):
+    r"""CreateSkill请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateType: <p>Skill 创建方式，必填；仅允许</p><p>枚举值：</p><ul><li>1： FILE_UPLOAD（文件上传）</li><li>3： AIGC（AIGC生成）</li></ul>
+        :type CreateType: int
+        :param _FileUrl: <p>skill包文件地址（zip）；FILE_UPLOAD / AIGC 均必填</p>
+        :type FileUrl: str
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _DisplayDescription: <p>skill展示描述</p>
+        :type DisplayDescription: str
+        :param _DisplayName: <p>skill展示名称</p>
+        :type DisplayName: str
+        :param _IconUrl: <p>图标地址</p>
+        :type IconUrl: str
+        :param _Name: <p>skill业务唯一标识名（同企业下唯一）；未传时从skill包解析</p>
+        :type Name: str
+        :param _SkillVersion: <p>版本号</p>
+        :type SkillVersion: str
+        :param _UpdateDescription: <p>版本变更说明</p>
+        :type UpdateDescription: str
+        """
+        self._CreateType = None
+        self._FileUrl = None
+        self._SpaceId = None
+        self._DisplayDescription = None
+        self._DisplayName = None
+        self._IconUrl = None
+        self._Name = None
+        self._SkillVersion = None
+        self._UpdateDescription = None
+
+    @property
+    def CreateType(self):
+        r"""<p>Skill 创建方式，必填；仅允许</p><p>枚举值：</p><ul><li>1： FILE_UPLOAD（文件上传）</li><li>3： AIGC（AIGC生成）</li></ul>
+        :rtype: int
+        """
+        return self._CreateType
+
+    @CreateType.setter
+    def CreateType(self, CreateType):
+        self._CreateType = CreateType
+
+    @property
+    def FileUrl(self):
+        r"""<p>skill包文件地址（zip）；FILE_UPLOAD / AIGC 均必填</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def DisplayDescription(self):
+        r"""<p>skill展示描述</p>
+        :rtype: str
+        """
+        return self._DisplayDescription
+
+    @DisplayDescription.setter
+    def DisplayDescription(self, DisplayDescription):
+        self._DisplayDescription = DisplayDescription
+
+    @property
+    def DisplayName(self):
+        r"""<p>skill展示名称</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def IconUrl(self):
+        r"""<p>图标地址</p>
+        :rtype: str
+        """
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def Name(self):
+        r"""<p>skill业务唯一标识名（同企业下唯一）；未传时从skill包解析</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SkillVersion(self):
+        r"""<p>版本号</p>
+        :rtype: str
+        """
+        return self._SkillVersion
+
+    @SkillVersion.setter
+    def SkillVersion(self, SkillVersion):
+        self._SkillVersion = SkillVersion
+
+    @property
+    def UpdateDescription(self):
+        r"""<p>版本变更说明</p>
+        :rtype: str
+        """
+        return self._UpdateDescription
+
+    @UpdateDescription.setter
+    def UpdateDescription(self, UpdateDescription):
+        self._UpdateDescription = UpdateDescription
+
+
+    def _deserialize(self, params):
+        self._CreateType = params.get("CreateType")
+        self._FileUrl = params.get("FileUrl")
+        self._SpaceId = params.get("SpaceId")
+        self._DisplayDescription = params.get("DisplayDescription")
+        self._DisplayName = params.get("DisplayName")
+        self._IconUrl = params.get("IconUrl")
+        self._Name = params.get("Name")
+        self._SkillVersion = params.get("SkillVersion")
+        self._UpdateDescription = params.get("UpdateDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSkillResponse(AbstractModel):
+    r"""CreateSkill返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>创建成功后的skillID</p>
+        :type SkillId: str
+        :param _VersionId: <p>创建成功后的版本ID</p>
+        :type VersionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SkillId = None
+        self._VersionId = None
+        self._RequestId = None
+
+    @property
+    def SkillId(self):
+        r"""<p>创建成功后的skillID</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def VersionId(self):
+        r"""<p>创建成功后的版本ID</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._VersionId = params.get("VersionId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSkillShareRequest(AbstractModel):
+    r"""CreateSkillShare请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyRemark: <p>必填，申请备注（弹窗&quot;申请备注&quot;）</p>
+        :type ApplyRemark: str
+        :param _SkillId: <p>必填，原skill_id</p>
+        :type SkillId: str
+        :param _SpaceId: <p>空间ID，必填</p>
+        :type SpaceId: str
+        :param _VersionId: <p>必填，被共享的版本id（必须高于已共享版本）</p>
+        :type VersionId: str
+        """
+        self._ApplyRemark = None
+        self._SkillId = None
+        self._SpaceId = None
+        self._VersionId = None
+
+    @property
+    def ApplyRemark(self):
+        r"""<p>必填，申请备注（弹窗&quot;申请备注&quot;）</p>
+        :rtype: str
+        """
+        return self._ApplyRemark
+
+    @ApplyRemark.setter
+    def ApplyRemark(self, ApplyRemark):
+        self._ApplyRemark = ApplyRemark
+
+    @property
+    def SkillId(self):
+        r"""<p>必填，原skill_id</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID，必填</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def VersionId(self):
+        r"""<p>必填，被共享的版本id（必须高于已共享版本）</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+
+    def _deserialize(self, params):
+        self._ApplyRemark = params.get("ApplyRemark")
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        self._VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSkillShareResponse(AbstractModel):
+    r"""CreateSkillShare返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NeedApproval: <p>是否走了审批流（false表示无需审批已直接创建共享任务）</p>
+        :type NeedApproval: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NeedApproval = None
+        self._RequestId = None
+
+    @property
+    def NeedApproval(self):
+        r"""<p>是否走了审批流（false表示无需审批已直接创建共享任务）</p>
+        :rtype: bool
+        """
+        return self._NeedApproval
+
+    @NeedApproval.setter
+    def NeedApproval(self, NeedApproval):
+        self._NeedApproval = NeedApproval
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NeedApproval = params.get("NeedApproval")
         self._RequestId = params.get("RequestId")
 
 
@@ -7816,6 +8354,100 @@ class CreateWorkspaceCredentialResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAgentRequest(AbstractModel):
+    r"""DeleteAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用Id</p>
+        :type AppId: str
+        :param _AgentId: <p>待删除AgentId</p>
+        :type AgentId: str
+        :param _CollaborationMode: 协作模式；0-Claw模式；1-Multi-Agent模式
+        :type CollaborationMode: int
+        """
+        self._AppId = None
+        self._AgentId = None
+        self._CollaborationMode = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用Id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AgentId(self):
+        r"""<p>待删除AgentId</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def CollaborationMode(self):
+        r"""协作模式；0-Claw模式；1-Multi-Agent模式
+        :rtype: int
+        """
+        return self._CollaborationMode
+
+    @CollaborationMode.setter
+    def CollaborationMode(self, CollaborationMode):
+        self._CollaborationMode = CollaborationMode
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AgentId = params.get("AgentId")
+        self._CollaborationMode = params.get("CollaborationMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAgentResponse(AbstractModel):
+    r"""DeleteAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAppRequest(AbstractModel):
     r"""DeleteApp请求参数结构体
 
@@ -8016,6 +8648,273 @@ class DeleteConversationResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePluginRequest(AbstractModel):
+    r"""DeletePlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>插件id</p>
+        :type PluginId: str
+        """
+        self._PluginId = None
+
+    @property
+    def PluginId(self):
+        r"""<p>插件id</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePluginResponse(AbstractModel):
+    r"""DeletePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSkillRequest(AbstractModel):
+    r"""DeleteSkill请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>Skill ID，必填</p>
+        :type SkillId: str
+        :param _SpaceId: <p>空间ID，必填</p>
+        :type SpaceId: str
+        """
+        self._SkillId = None
+        self._SpaceId = None
+
+    @property
+    def SkillId(self):
+        r"""<p>Skill ID，必填</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID，必填</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSkillResponse(AbstractModel):
+    r"""DeleteSkill返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSkillShareRequest(AbstractModel):
+    r"""DeleteSkillShare请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyRemark: <p>申请备注，必填（弹窗&quot;申请备注&quot;）</p>
+        :type ApplyRemark: str
+        :param _SkillId: <p>原 Skill ID，必填（前端无须感知 _shared 后缀）</p>
+        :type SkillId: str
+        :param _SpaceId: <p>空间ID，必填</p>
+        :type SpaceId: str
+        :param _VersionId: <p>原版本 ID，必填（与 CreateSkillShare 上架时传的同一 version_id）</p>
+        :type VersionId: str
+        """
+        self._ApplyRemark = None
+        self._SkillId = None
+        self._SpaceId = None
+        self._VersionId = None
+
+    @property
+    def ApplyRemark(self):
+        r"""<p>申请备注，必填（弹窗&quot;申请备注&quot;）</p>
+        :rtype: str
+        """
+        return self._ApplyRemark
+
+    @ApplyRemark.setter
+    def ApplyRemark(self, ApplyRemark):
+        self._ApplyRemark = ApplyRemark
+
+    @property
+    def SkillId(self):
+        r"""<p>原 Skill ID，必填（前端无须感知 _shared 后缀）</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID，必填</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def VersionId(self):
+        r"""<p>原版本 ID，必填（与 CreateSkillShare 上架时传的同一 version_id）</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+
+    def _deserialize(self, params):
+        self._ApplyRemark = params.get("ApplyRemark")
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        self._VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSkillShareResponse(AbstractModel):
+    r"""DeleteSkillShare返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NeedApproval: <p>是否走审批流（false 表示无需审批已直接执行下架）</p>
+        :type NeedApproval: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NeedApproval = None
+        self._RequestId = None
+
+    @property
+    def NeedApproval(self):
+        r"""<p>是否走审批流（false 表示无需审批已直接执行下架）</p>
+        :rtype: bool
+        """
+        return self._NeedApproval
+
+    @NeedApproval.setter
+    def NeedApproval(self, NeedApproval):
+        self._NeedApproval = NeedApproval
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NeedApproval = params.get("NeedApproval")
         self._RequestId = params.get("RequestId")
 
 
@@ -8434,6 +9333,170 @@ class DescribeAgentReleasePreviewListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ReleaseList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAgentSummaryListRequest(AbstractModel):
+    r"""DescribeAgentSummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scope: <p>查询范围；0-单应用查询；1-跨应用查询</p>
+        :type Scope: int
+        :param _AppId: <p>应用Id，Scope=0 时为目标应用ID（必填）；scope=1 时无需填写</p>
+        :type AppId: str
+        :param _FilterList: <p>过滤条件（name: "SearchWord", "SpaceId", "AgentSource", "AppId"）</p>
+        :type FilterList: list of Filter
+        :param _PageSize: <p>每页数目</p>
+        :type PageSize: int
+        :param _PageNumber: <p>页码</p>
+        :type PageNumber: int
+        """
+        self._Scope = None
+        self._AppId = None
+        self._FilterList = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def Scope(self):
+        r"""<p>查询范围；0-单应用查询；1-跨应用查询</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def AppId(self):
+        r"""<p>应用Id，Scope=0 时为目标应用ID（必填）；scope=1 时无需填写</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤条件（name: "SearchWord", "SpaceId", "AgentSource", "AppId"）</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数目</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        self._Scope = params.get("Scope")
+        self._AppId = params.get("AppId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentSummaryListResponse(AbstractModel):
+    r"""DescribeAgentSummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _AgentList: <p>Agent摘要信息</p>
+        :type AgentList: list of AgentSummary
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AgentList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AgentList(self):
+        r"""<p>Agent摘要信息</p>
+        :rtype: list of AgentSummary
+        """
+        return self._AgentList
+
+    @AgentList.setter
+    def AgentList(self, AgentList):
+        self._AgentList = AgentList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AgentList") is not None:
+            self._AgentList = []
+            for item in params.get("AgentList"):
+                obj = AgentSummary()
+                obj._deserialize(item)
+                self._AgentList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10451,6 +11514,221 @@ class DescribeSkillCategoryListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSkillDetailRequest(AbstractModel):
+    r"""DescribeSkillDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: skillID
+        :type SkillId: str
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _VersionFilterList: 版本过滤条件(多个Filter之间为AND关系,同一Filter的多个Values为OR关系): - Perspective: 视角枚举,字符串单值,Values 长度必须为 1,多值视为非法;仅作用于详情返回的 version_list 裁剪,不决定接口本身可见性;不传默认 USER (USER=使用者视角,version_list 仅返回已上线版本 / EDITOR=编辑者视角,version_list 返回全部存活版本 / ALL=全量视角,同 EDITOR)
+        :type VersionFilterList: list of Filter
+        """
+        self._SkillId = None
+        self._SpaceId = None
+        self._VersionFilterList = None
+
+    @property
+    def SkillId(self):
+        r"""skillID
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def VersionFilterList(self):
+        r"""版本过滤条件(多个Filter之间为AND关系,同一Filter的多个Values为OR关系): - Perspective: 视角枚举,字符串单值,Values 长度必须为 1,多值视为非法;仅作用于详情返回的 version_list 裁剪,不决定接口本身可见性;不传默认 USER (USER=使用者视角,version_list 仅返回已上线版本 / EDITOR=编辑者视角,version_list 返回全部存活版本 / ALL=全量视角,同 EDITOR)
+        :rtype: list of Filter
+        """
+        return self._VersionFilterList
+
+    @VersionFilterList.setter
+    def VersionFilterList(self, VersionFilterList):
+        self._VersionFilterList = VersionFilterList
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        if params.get("VersionFilterList") is not None:
+            self._VersionFilterList = []
+            for item in params.get("VersionFilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._VersionFilterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSkillDetailResponse(AbstractModel):
+    r"""DescribeSkillDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillDetail: skill详情
+        :type SkillDetail: :class:`tencentcloud.adp.v20260520.models.SkillDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SkillDetail = None
+        self._RequestId = None
+
+    @property
+    def SkillDetail(self):
+        r"""skill详情
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SkillDetail`
+        """
+        return self._SkillDetail
+
+    @SkillDetail.setter
+    def SkillDetail(self, SkillDetail):
+        self._SkillDetail = SkillDetail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SkillDetail") is not None:
+            self._SkillDetail = SkillDetail()
+            self._SkillDetail._deserialize(params.get("SkillDetail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSkillReferenceListRequest(AbstractModel):
+    r"""DescribeSkillReferenceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>Skill ID，必填</p>
+        :type SkillId: str
+        :param _SpaceId: <p>空间ID，必填</p>
+        :type SpaceId: str
+        """
+        self._SkillId = None
+        self._SpaceId = None
+
+    @property
+    def SkillId(self):
+        r"""<p>Skill ID，必填</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID，必填</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSkillReferenceListResponse(AbstractModel):
+    r"""DescribeSkillReferenceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReferenceList: <p>按 SkillRefType 分组的引用汇总：某类型 total_count = 0 时不入组（不返回空占位） 本期同时落 OPENCLAW / AGENT / CORP_ASSISTANT 三路</p>
+        :type ReferenceList: list of SkillReferenceGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReferenceList = None
+        self._RequestId = None
+
+    @property
+    def ReferenceList(self):
+        r"""<p>按 SkillRefType 分组的引用汇总：某类型 total_count = 0 时不入组（不返回空占位） 本期同时落 OPENCLAW / AGENT / CORP_ASSISTANT 三路</p>
+        :rtype: list of SkillReferenceGroup
+        """
+        return self._ReferenceList
+
+    @ReferenceList.setter
+    def ReferenceList(self, ReferenceList):
+        self._ReferenceList = ReferenceList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ReferenceList") is not None:
+            self._ReferenceList = []
+            for item in params.get("ReferenceList"):
+                obj = SkillReferenceGroup()
+                obj._deserialize(item)
+                self._ReferenceList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSkillSummaryListRequest(AbstractModel):
     r"""DescribeSkillSummaryList请求参数结构体
 
@@ -11327,6 +12605,164 @@ class DuplexBilling(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class FavoritePluginRequest(AbstractModel):
+    r"""FavoritePlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>插件id</p>
+        :type PluginId: str
+        :param _SpaceId: <p>当前空间id</p>
+        :type SpaceId: str
+        """
+        self._PluginId = None
+        self._SpaceId = None
+
+    @property
+    def PluginId(self):
+        r"""<p>插件id</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def SpaceId(self):
+        r"""<p>当前空间id</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FavoritePluginResponse(AbstractModel):
+    r"""FavoritePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class FavoriteSkillRequest(AbstractModel):
+    r"""FavoriteSkill请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>SkillId</p>
+        :type SkillId: str
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        """
+        self._SkillId = None
+        self._SpaceId = None
+
+    @property
+    def SkillId(self):
+        r"""<p>SkillId</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FavoriteSkillResponse(AbstractModel):
+    r"""FavoriteSkill返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class FieldMask(AbstractModel):
@@ -13538,6 +14974,325 @@ class ModifyConversationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPluginRequest(AbstractModel):
+    r"""ModifyPlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>插件id</p>
+        :type PluginId: str
+        :param _PluginVersion: <p>插件版本号</p>
+        :type PluginVersion: int
+        :param _Profile: <p>插件基础资料</p>
+        :type Profile: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
+        :param _Config: <p>插件类型配置</p>
+        :type Config: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        :param _UpdateMask: <p>指定需要更新的字段，避免全量覆盖</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        :param _ToolList: <p>插件的工具列表，mcp插件不传</p>
+        :type ToolList: list of Tool
+        """
+        self._PluginId = None
+        self._PluginVersion = None
+        self._Profile = None
+        self._Config = None
+        self._UpdateMask = None
+        self._ToolList = None
+
+    @property
+    def PluginId(self):
+        r"""<p>插件id</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def PluginVersion(self):
+        r"""<p>插件版本号</p>
+        :rtype: int
+        """
+        return self._PluginVersion
+
+    @PluginVersion.setter
+    def PluginVersion(self, PluginVersion):
+        self._PluginVersion = PluginVersion
+
+    @property
+    def Profile(self):
+        r"""<p>插件基础资料</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Config(self):
+        r"""<p>插件类型配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def UpdateMask(self):
+        r"""<p>指定需要更新的字段，避免全量覆盖</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+    @property
+    def ToolList(self):
+        r"""<p>插件的工具列表，mcp插件不传</p>
+        :rtype: list of Tool
+        """
+        return self._ToolList
+
+    @ToolList.setter
+    def ToolList(self, ToolList):
+        self._ToolList = ToolList
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._PluginVersion = params.get("PluginVersion")
+        if params.get("Profile") is not None:
+            self._Profile = PluginProfile()
+            self._Profile._deserialize(params.get("Profile"))
+        if params.get("Config") is not None:
+            self._Config = PluginConfig()
+            self._Config._deserialize(params.get("Config"))
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        if params.get("ToolList") is not None:
+            self._ToolList = []
+            for item in params.get("ToolList"):
+                obj = Tool()
+                obj._deserialize(item)
+                self._ToolList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPluginResponse(AbstractModel):
+    r"""ModifyPlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySkillRequest(AbstractModel):
+    r"""ModifySkill请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>SkillId</p>
+        :type SkillId: str
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _DisplayDescription: <p>skill描述</p>
+        :type DisplayDescription: str
+        :param _DisplayName: <p>skill名称</p>
+        :type DisplayName: str
+        :param _FileUrl: <p>skill包文件地址（zip）；传入则触发新版本生成，需与SkillVersion、UpdateDescription配套传入</p>
+        :type FileUrl: str
+        :param _IconUrl: <p>图标地址</p>
+        :type IconUrl: str
+        :param _SkillVersion: <p>skill版本号（与FileUrl配套传入）</p>
+        :type SkillVersion: str
+        :param _UpdateDescription: <p>版本变更说明（与FileUrl配套传入）</p>
+        :type UpdateDescription: str
+        """
+        self._SkillId = None
+        self._SpaceId = None
+        self._DisplayDescription = None
+        self._DisplayName = None
+        self._FileUrl = None
+        self._IconUrl = None
+        self._SkillVersion = None
+        self._UpdateDescription = None
+
+    @property
+    def SkillId(self):
+        r"""<p>SkillId</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def DisplayDescription(self):
+        r"""<p>skill描述</p>
+        :rtype: str
+        """
+        return self._DisplayDescription
+
+    @DisplayDescription.setter
+    def DisplayDescription(self, DisplayDescription):
+        self._DisplayDescription = DisplayDescription
+
+    @property
+    def DisplayName(self):
+        r"""<p>skill名称</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def FileUrl(self):
+        r"""<p>skill包文件地址（zip）；传入则触发新版本生成，需与SkillVersion、UpdateDescription配套传入</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def IconUrl(self):
+        r"""<p>图标地址</p>
+        :rtype: str
+        """
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def SkillVersion(self):
+        r"""<p>skill版本号（与FileUrl配套传入）</p>
+        :rtype: str
+        """
+        return self._SkillVersion
+
+    @SkillVersion.setter
+    def SkillVersion(self, SkillVersion):
+        self._SkillVersion = SkillVersion
+
+    @property
+    def UpdateDescription(self):
+        r"""<p>版本变更说明（与FileUrl配套传入）</p>
+        :rtype: str
+        """
+        return self._UpdateDescription
+
+    @UpdateDescription.setter
+    def UpdateDescription(self, UpdateDescription):
+        self._UpdateDescription = UpdateDescription
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        self._DisplayDescription = params.get("DisplayDescription")
+        self._DisplayName = params.get("DisplayName")
+        self._FileUrl = params.get("FileUrl")
+        self._IconUrl = params.get("IconUrl")
+        self._SkillVersion = params.get("SkillVersion")
+        self._UpdateDescription = params.get("UpdateDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySkillResponse(AbstractModel):
+    r"""ModifySkill返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySpaceRequest(AbstractModel):
     r"""ModifySpace请求参数结构体
 
@@ -15024,6 +16779,100 @@ class ReleaseRecord(AbstractModel):
         
 
 
+class ReleaseSkillRequest(AbstractModel):
+    r"""ReleaseSkill请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>SkillId</p>
+        :type SkillId: str
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _VersionId: <p>版本ID</p>
+        :type VersionId: str
+        """
+        self._SkillId = None
+        self._SpaceId = None
+        self._VersionId = None
+
+    @property
+    def SkillId(self):
+        r"""<p>SkillId</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def VersionId(self):
+        r"""<p>版本ID</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        self._VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseSkillResponse(AbstractModel):
+    r"""ReleaseSkill返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ReleaseSummary(AbstractModel):
     r"""发布摘要信息
 
@@ -16245,6 +18094,84 @@ class SkillClassification(AbstractModel):
         
 
 
+class SkillDetail(AbstractModel):
+    r"""skill详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReferenceSummaryList: 调用情况摘要
+        :type ReferenceSummaryList: list of SkillReferenceSummary
+        :param _SkillSummary: Skill 摘要
+        :type SkillSummary: :class:`tencentcloud.adp.v20260520.models.SkillSummary`
+        :param _VersionList: 版本列表
+        :type VersionList: list of SkillVersion
+        """
+        self._ReferenceSummaryList = None
+        self._SkillSummary = None
+        self._VersionList = None
+
+    @property
+    def ReferenceSummaryList(self):
+        r"""调用情况摘要
+        :rtype: list of SkillReferenceSummary
+        """
+        return self._ReferenceSummaryList
+
+    @ReferenceSummaryList.setter
+    def ReferenceSummaryList(self, ReferenceSummaryList):
+        self._ReferenceSummaryList = ReferenceSummaryList
+
+    @property
+    def SkillSummary(self):
+        r"""Skill 摘要
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SkillSummary`
+        """
+        return self._SkillSummary
+
+    @SkillSummary.setter
+    def SkillSummary(self, SkillSummary):
+        self._SkillSummary = SkillSummary
+
+    @property
+    def VersionList(self):
+        r"""版本列表
+        :rtype: list of SkillVersion
+        """
+        return self._VersionList
+
+    @VersionList.setter
+    def VersionList(self, VersionList):
+        self._VersionList = VersionList
+
+
+    def _deserialize(self, params):
+        if params.get("ReferenceSummaryList") is not None:
+            self._ReferenceSummaryList = []
+            for item in params.get("ReferenceSummaryList"):
+                obj = SkillReferenceSummary()
+                obj._deserialize(item)
+                self._ReferenceSummaryList.append(obj)
+        if params.get("SkillSummary") is not None:
+            self._SkillSummary = SkillSummary()
+            self._SkillSummary._deserialize(params.get("SkillSummary"))
+        if params.get("VersionList") is not None:
+            self._VersionList = []
+            for item in params.get("VersionList"):
+                obj = SkillVersion()
+                obj._deserialize(item)
+                self._VersionList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkillNotice(AbstractModel):
     r"""Skill 异常通知。
 
@@ -16487,6 +18414,188 @@ class SkillProfile(AbstractModel):
         self._IconUrl = params.get("IconUrl")
         self._Name = params.get("Name")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillReferenceGroup(AbstractModel):
+    r"""同一 SkillRefType 下的引用分组（含总数 + 引用详情列表）。 total_count 始终以未过滤的原始总量为准；reference_summary_list 受二次鉴权开关影响。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReferenceSummaryList: <p>该类型下的引用详情列表</p>
+        :type ReferenceSummaryList: list of SkillReferenceSummary
+        :param _ReferenceType: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SKILL_REF_UNKNOWN</td><td>0</td><td>占位</td></tr><tr><td>SKILL_REF_OPENCLAW</td><td>1</td><td>openclaw</td></tr><tr><td>SKILL_REF_AGENT</td><td>2</td><td>agent</td></tr><tr><td>SKILL_REF_CORP_ASSISTANT</td><td>3</td><td>企业助手</td></tr></tbody></table>
+        :type ReferenceType: int
+        :param _TotalCount: <p>该类型下的引用总数</p>
+        :type TotalCount: int
+        """
+        self._ReferenceSummaryList = None
+        self._ReferenceType = None
+        self._TotalCount = None
+
+    @property
+    def ReferenceSummaryList(self):
+        r"""<p>该类型下的引用详情列表</p>
+        :rtype: list of SkillReferenceSummary
+        """
+        return self._ReferenceSummaryList
+
+    @ReferenceSummaryList.setter
+    def ReferenceSummaryList(self, ReferenceSummaryList):
+        self._ReferenceSummaryList = ReferenceSummaryList
+
+    @property
+    def ReferenceType(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SKILL_REF_UNKNOWN</td><td>0</td><td>占位</td></tr><tr><td>SKILL_REF_OPENCLAW</td><td>1</td><td>openclaw</td></tr><tr><td>SKILL_REF_AGENT</td><td>2</td><td>agent</td></tr><tr><td>SKILL_REF_CORP_ASSISTANT</td><td>3</td><td>企业助手</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+    @property
+    def TotalCount(self):
+        r"""<p>该类型下的引用总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("ReferenceSummaryList") is not None:
+            self._ReferenceSummaryList = []
+            for item in params.get("ReferenceSummaryList"):
+                obj = SkillReferenceSummary()
+                obj._deserialize(item)
+                self._ReferenceSummaryList.append(obj)
+        self._ReferenceType = params.get("ReferenceType")
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillReferenceSummary(AbstractModel):
+    r"""引用摘要（用于详情页展示，对应DB t_skill_reference）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReferenceId: <p>关联ID</p>
+        :type ReferenceId: str
+        :param _ReferenceName: <p>关联名称</p>
+        :type ReferenceName: str
+        :param _ReferenceType: <p>关联类型</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | 占位 |<br>| 1 | ClawPro |<br>| 2 | agent |</p>
+        :type ReferenceType: int
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        :param _SpaceName: <p>空间名称</p>
+        :type SpaceName: str
+        :param _Owner: <p>Reference实例拥有者</p>
+        :type Owner: str
+        """
+        self._ReferenceId = None
+        self._ReferenceName = None
+        self._ReferenceType = None
+        self._SpaceId = None
+        self._SpaceName = None
+        self._Owner = None
+
+    @property
+    def ReferenceId(self):
+        r"""<p>关联ID</p>
+        :rtype: str
+        """
+        return self._ReferenceId
+
+    @ReferenceId.setter
+    def ReferenceId(self, ReferenceId):
+        self._ReferenceId = ReferenceId
+
+    @property
+    def ReferenceName(self):
+        r"""<p>关联名称</p>
+        :rtype: str
+        """
+        return self._ReferenceName
+
+    @ReferenceName.setter
+    def ReferenceName(self, ReferenceName):
+        self._ReferenceName = ReferenceName
+
+    @property
+    def ReferenceType(self):
+        r"""<p>关联类型</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | 占位 |<br>| 1 | ClawPro |<br>| 2 | agent |</p>
+        :rtype: int
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def SpaceName(self):
+        r"""<p>空间名称</p>
+        :rtype: str
+        """
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
+
+    @property
+    def Owner(self):
+        r"""<p>Reference实例拥有者</p>
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+
+    def _deserialize(self, params):
+        self._ReferenceId = params.get("ReferenceId")
+        self._ReferenceName = params.get("ReferenceName")
+        self._ReferenceType = params.get("ReferenceType")
+        self._SpaceId = params.get("SpaceId")
+        self._SpaceName = params.get("SpaceName")
+        self._Owner = params.get("Owner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17636,6 +19745,164 @@ class ToolExample(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnfavoritePluginRequest(AbstractModel):
+    r"""UnfavoritePlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>插件id</p>
+        :type PluginId: str
+        :param _SpaceId: <p>当前空间id</p>
+        :type SpaceId: str
+        """
+        self._PluginId = None
+        self._SpaceId = None
+
+    @property
+    def PluginId(self):
+        r"""<p>插件id</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def SpaceId(self):
+        r"""<p>当前空间id</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnfavoritePluginResponse(AbstractModel):
+    r"""UnfavoritePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UnfavoriteSkillRequest(AbstractModel):
+    r"""UnfavoriteSkill请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>SkillId</p>
+        :type SkillId: str
+        :param _SpaceId: <p>空间ID</p>
+        :type SpaceId: str
+        """
+        self._SkillId = None
+        self._SpaceId = None
+
+    @property
+    def SkillId(self):
+        r"""<p>SkillId</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnfavoriteSkillResponse(AbstractModel):
+    r"""UnfavoriteSkill返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Variable(AbstractModel):

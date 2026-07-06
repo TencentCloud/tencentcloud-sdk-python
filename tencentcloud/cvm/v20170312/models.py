@@ -1999,26 +1999,32 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 分散置放群组名称，长度1-60个字符，支持中、英文。
+        :param _Name: <p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
         :type Name: str
-        :param _Type: 分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
+        :param _Type: <p>分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li></p>
         :type Type: str
-        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。</p>
         :type ClientToken: str
-        :param _Affinity: 置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
+        :param _Affinity: <p>置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1</p>
         :type Affinity: int
-        :param _TagSpecification: 标签描述列表。通过指定该参数可以绑定标签到置放群组。
+        :param _Strategy: <p>置放群组类型，当前支持两种，分散置放群组和分区置放群组(灰度中)，取值范围：PARTITION：分区置放群组，SPREAD：分散置放群组，不传该值默认是分散置放群组。</p>
+        :type Strategy: str
+        :param _PartitionCount: <p>分区置放群组的分区数量，取值范围：2-30，当置放群组类型是分区置放群组时传入(分区置放群组功能灰度中)。</p>
+        :type PartitionCount: int
+        :param _TagSpecification: <p>标签描述列表。通过指定该参数可以绑定标签到置放群组。</p>
         :type TagSpecification: list of TagSpecification
         """
         self._Name = None
         self._Type = None
         self._ClientToken = None
         self._Affinity = None
+        self._Strategy = None
+        self._PartitionCount = None
         self._TagSpecification = None
 
     @property
     def Name(self):
-        r"""分散置放群组名称，长度1-60个字符，支持中、英文。
+        r"""<p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
         :rtype: str
         """
         return self._Name
@@ -2029,7 +2035,7 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
+        r"""<p>分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li></p>
         :rtype: str
         """
         return self._Type
@@ -2040,7 +2046,7 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -2051,7 +2057,7 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
 
     @property
     def Affinity(self):
-        r"""置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
+        r"""<p>置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1</p>
         :rtype: int
         """
         return self._Affinity
@@ -2061,8 +2067,30 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
         self._Affinity = Affinity
 
     @property
+    def Strategy(self):
+        r"""<p>置放群组类型，当前支持两种，分散置放群组和分区置放群组(灰度中)，取值范围：PARTITION：分区置放群组，SPREAD：分散置放群组，不传该值默认是分散置放群组。</p>
+        :rtype: str
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def PartitionCount(self):
+        r"""<p>分区置放群组的分区数量，取值范围：2-30，当置放群组类型是分区置放群组时传入(分区置放群组功能灰度中)。</p>
+        :rtype: int
+        """
+        return self._PartitionCount
+
+    @PartitionCount.setter
+    def PartitionCount(self, PartitionCount):
+        self._PartitionCount = PartitionCount
+
+    @property
     def TagSpecification(self):
-        r"""标签描述列表。通过指定该参数可以绑定标签到置放群组。
+        r"""<p>标签描述列表。通过指定该参数可以绑定标签到置放群组。</p>
         :rtype: list of TagSpecification
         """
         return self._TagSpecification
@@ -2077,6 +2105,8 @@ class CreateDisasterRecoverGroupRequest(AbstractModel):
         self._Type = params.get("Type")
         self._ClientToken = params.get("ClientToken")
         self._Affinity = params.get("Affinity")
+        self._Strategy = params.get("Strategy")
+        self._PartitionCount = params.get("PartitionCount")
         if params.get("TagSpecification") is not None:
             self._TagSpecification = []
             for item in params.get("TagSpecification"):
@@ -2100,18 +2130,22 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisasterRecoverGroupId: 分散置放群组ID列表。
+        :param _DisasterRecoverGroupId: <p>分散置放群组ID列表。</p>
         :type DisasterRecoverGroupId: str
-        :param _Type: 分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
+        :param _Type: <p>分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li></p>
         :type Type: str
-        :param _Name: 分散置放群组名称，长度1-60个字符，支持中、英文。
+        :param _Name: <p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
         :type Name: str
-        :param _CvmQuotaTotal: 置放群组内可容纳的云服务器数量。
+        :param _CvmQuotaTotal: <p>置放群组内可容纳的云服务器数量。</p>
         :type CvmQuotaTotal: int
-        :param _CurrentNum: 置放群组内已有的云服务器数量。
+        :param _CurrentNum: <p>置放群组内已有的云服务器数量。</p>
         :type CurrentNum: int
-        :param _CreateTime: 分散置放群组创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        :param _CreateTime: <p>分散置放群组创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。</p>
         :type CreateTime: str
+        :param _Strategy: <p>置放群组类型，当前支持两种，分散置放群组和分区置放群组(功能灰度中)，取值范围：PARTITION：分区置放群组，SPREAD：分散置放群组，默认是分散置放群组。</p>
+        :type Strategy: str
+        :param _PartitionCount: <p>分区置放群组的分区数量，取值范围：2-30，当置放群组类型是分区置放群组时，才有该值(分区置放群组功能灰度中)。</p>
+        :type PartitionCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2121,11 +2155,13 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
         self._CvmQuotaTotal = None
         self._CurrentNum = None
         self._CreateTime = None
+        self._Strategy = None
+        self._PartitionCount = None
         self._RequestId = None
 
     @property
     def DisasterRecoverGroupId(self):
-        r"""分散置放群组ID列表。
+        r"""<p>分散置放群组ID列表。</p>
         :rtype: str
         """
         return self._DisasterRecoverGroupId
@@ -2136,7 +2172,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
+        r"""<p>分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li></p>
         :rtype: str
         """
         return self._Type
@@ -2147,7 +2183,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""分散置放群组名称，长度1-60个字符，支持中、英文。
+        r"""<p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
         :rtype: str
         """
         return self._Name
@@ -2158,7 +2194,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def CvmQuotaTotal(self):
-        r"""置放群组内可容纳的云服务器数量。
+        r"""<p>置放群组内可容纳的云服务器数量。</p>
         :rtype: int
         """
         return self._CvmQuotaTotal
@@ -2169,7 +2205,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def CurrentNum(self):
-        r"""置放群组内已有的云服务器数量。
+        r"""<p>置放群组内已有的云服务器数量。</p>
         :rtype: int
         """
         return self._CurrentNum
@@ -2180,7 +2216,7 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""分散置放群组创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+        r"""<p>分散置放群组创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2188,6 +2224,28 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def Strategy(self):
+        r"""<p>置放群组类型，当前支持两种，分散置放群组和分区置放群组(功能灰度中)，取值范围：PARTITION：分区置放群组，SPREAD：分散置放群组，默认是分散置放群组。</p>
+        :rtype: str
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def PartitionCount(self):
+        r"""<p>分区置放群组的分区数量，取值范围：2-30，当置放群组类型是分区置放群组时，才有该值(分区置放群组功能灰度中)。</p>
+        :rtype: int
+        """
+        return self._PartitionCount
+
+    @PartitionCount.setter
+    def PartitionCount(self, PartitionCount):
+        self._PartitionCount = PartitionCount
 
     @property
     def RequestId(self):
@@ -2208,6 +2266,8 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
         self._CvmQuotaTotal = params.get("CvmQuotaTotal")
         self._CurrentNum = params.get("CurrentNum")
         self._CreateTime = params.get("CreateTime")
+        self._Strategy = params.get("Strategy")
+        self._PartitionCount = params.get("PartitionCount")
         self._RequestId = params.get("RequestId")
 
 

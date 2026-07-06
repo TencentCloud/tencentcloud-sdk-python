@@ -1059,7 +1059,7 @@ class CfwClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLogsResponse:
         """
-        日志审计日志查询
+        请使用 [日志分析SearchLog接口](https://cloud.tencent.com/document/product/1132/118363)
         """
         
         kwargs = {}
@@ -1282,6 +1282,42 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeNatFwVpcDnsLst"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeNatFwVpcDnsLstResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeOfflineExportTask(
+            self,
+            request: models.DescribeOfflineExportTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOfflineExportTaskResponse:
+        """
+        获取日志离线导出任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOfflineExportTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOfflineExportTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeOfflineExportTemporaryCredentials(
+            self,
+            request: models.DescribeOfflineExportTemporaryCredentialsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOfflineExportTemporaryCredentialsResponse:
+        """
+        获取日志离线导出任务文件下载临时凭证
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOfflineExportTemporaryCredentials"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOfflineExportTemporaryCredentialsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1570,6 +1606,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "ExpandCfwVertical"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExpandCfwVerticalResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportLogsOffline(
+            self,
+            request: models.ExportLogsOfflineRequest,
+            opts: Dict = None,
+    ) -> models.ExportLogsOfflineResponse:
+        """
+        日志审计日志离线导出
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportLogsOffline"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportLogsOfflineResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2348,6 +2402,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "RemoveNatAcRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RemoveNatAcRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveOfflineExportTask(
+            self,
+            request: models.RemoveOfflineExportTaskRequest,
+            opts: Dict = None,
+    ) -> models.RemoveOfflineExportTaskResponse:
+        """
+        删除日志离线导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveOfflineExportTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveOfflineExportTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -642,20 +642,24 @@ class CompareDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Difference: 数据不一致的表详情
+        :param _Difference: <p>数据不一致的表详情</p>
         :type Difference: :class:`tencentcloud.dts.v20211206.models.DifferenceDetail`
-        :param _Skipped: 跳过校验的表详情
+        :param _Skipped: <p>跳过校验的表详情</p>
         :type Skipped: :class:`tencentcloud.dts.v20211206.models.SkippedDetail`
-        :param _DifferenceAdvancedObjects: 数据库不一致的详情，mongodb业务用到
+        :param _DifferenceAdvancedObjects: <p>数据库不一致的详情，mongodb业务用到</p>
         :type DifferenceAdvancedObjects: :class:`tencentcloud.dts.v20211206.models.DifferenceAdvancedObjectsDetail`
-        :param _DifferenceData: 数据不一致的详情，mongodb业务用到
+        :param _DifferenceData: <p>数据不一致的详情，mongodb业务用到</p>
         :type DifferenceData: :class:`tencentcloud.dts.v20211206.models.DifferenceDataDetail`
-        :param _DifferenceRow: 数据行不一致的详情，mongodb业务用到
+        :param _DifferenceRow: <p>数据行不一致的详情，mongodb业务用到</p>
         :type DifferenceRow: :class:`tencentcloud.dts.v20211206.models.DifferenceRowDetail`
-        :param _DifferenceSchema: 表结构不一致详情，pg用
+        :param _DifferenceSchema: <p>表结构不一致详情，pg用</p>
         :type DifferenceSchema: :class:`tencentcloud.dts.v20211206.models.DifferenceSchemaDetail`
-        :param _DifferenceOwner: 对象owner不一致详情，pg用
+        :param _DifferenceOwner: <p>对象owner不一致详情，pg用</p>
         :type DifferenceOwner: :class:`tencentcloud.dts.v20211206.models.DifferenceOwnerDetail`
+        :param _FullProgress: <p>全量阶段表的校验进度。该字段后续逐步取代Difference</p>
+        :type FullProgress: :class:`tencentcloud.dts.v20211206.models.CompareTableInfo`
+        :param _IncDifference: <p>增量阶段表的校验进度</p>
+        :type IncDifference: :class:`tencentcloud.dts.v20211206.models.CompareTableInfo`
         """
         self._Difference = None
         self._Skipped = None
@@ -664,10 +668,12 @@ class CompareDetailInfo(AbstractModel):
         self._DifferenceRow = None
         self._DifferenceSchema = None
         self._DifferenceOwner = None
+        self._FullProgress = None
+        self._IncDifference = None
 
     @property
     def Difference(self):
-        r"""数据不一致的表详情
+        r"""<p>数据不一致的表详情</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceDetail`
         """
         return self._Difference
@@ -678,7 +684,7 @@ class CompareDetailInfo(AbstractModel):
 
     @property
     def Skipped(self):
-        r"""跳过校验的表详情
+        r"""<p>跳过校验的表详情</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.SkippedDetail`
         """
         return self._Skipped
@@ -689,7 +695,7 @@ class CompareDetailInfo(AbstractModel):
 
     @property
     def DifferenceAdvancedObjects(self):
-        r"""数据库不一致的详情，mongodb业务用到
+        r"""<p>数据库不一致的详情，mongodb业务用到</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceAdvancedObjectsDetail`
         """
         return self._DifferenceAdvancedObjects
@@ -700,7 +706,7 @@ class CompareDetailInfo(AbstractModel):
 
     @property
     def DifferenceData(self):
-        r"""数据不一致的详情，mongodb业务用到
+        r"""<p>数据不一致的详情，mongodb业务用到</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceDataDetail`
         """
         return self._DifferenceData
@@ -711,7 +717,7 @@ class CompareDetailInfo(AbstractModel):
 
     @property
     def DifferenceRow(self):
-        r"""数据行不一致的详情，mongodb业务用到
+        r"""<p>数据行不一致的详情，mongodb业务用到</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceRowDetail`
         """
         return self._DifferenceRow
@@ -722,7 +728,7 @@ class CompareDetailInfo(AbstractModel):
 
     @property
     def DifferenceSchema(self):
-        r"""表结构不一致详情，pg用
+        r"""<p>表结构不一致详情，pg用</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceSchemaDetail`
         """
         return self._DifferenceSchema
@@ -733,7 +739,7 @@ class CompareDetailInfo(AbstractModel):
 
     @property
     def DifferenceOwner(self):
-        r"""对象owner不一致详情，pg用
+        r"""<p>对象owner不一致详情，pg用</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceOwnerDetail`
         """
         return self._DifferenceOwner
@@ -741,6 +747,28 @@ class CompareDetailInfo(AbstractModel):
     @DifferenceOwner.setter
     def DifferenceOwner(self, DifferenceOwner):
         self._DifferenceOwner = DifferenceOwner
+
+    @property
+    def FullProgress(self):
+        r"""<p>全量阶段表的校验进度。该字段后续逐步取代Difference</p>
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareTableInfo`
+        """
+        return self._FullProgress
+
+    @FullProgress.setter
+    def FullProgress(self, FullProgress):
+        self._FullProgress = FullProgress
+
+    @property
+    def IncDifference(self):
+        r"""<p>增量阶段表的校验进度</p>
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareTableInfo`
+        """
+        return self._IncDifference
+
+    @IncDifference.setter
+    def IncDifference(self, IncDifference):
+        self._IncDifference = IncDifference
 
 
     def _deserialize(self, params):
@@ -765,6 +793,12 @@ class CompareDetailInfo(AbstractModel):
         if params.get("DifferenceOwner") is not None:
             self._DifferenceOwner = DifferenceOwnerDetail()
             self._DifferenceOwner._deserialize(params.get("DifferenceOwner"))
+        if params.get("FullProgress") is not None:
+            self._FullProgress = CompareTableInfo()
+            self._FullProgress._deserialize(params.get("FullProgress"))
+        if params.get("IncDifference") is not None:
+            self._IncDifference = CompareTableInfo()
+            self._IncDifference._deserialize(params.get("IncDifference"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1114,6 +1148,64 @@ class CompareOptions(AbstractModel):
         
 
 
+class CompareTableInfo(AbstractModel):
+    r"""不一致的表的校验结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 不一致表的数量
+        :type TotalCount: int
+        :param _Items: 不一致的表的校验结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of CompareTableResult
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""不一致表的数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""不一致的表的校验结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CompareTableResult
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = CompareTableResult()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CompareTableItem(AbstractModel):
     r"""用于一致性校验的表配置
 
@@ -1205,6 +1297,207 @@ class CompareTableItem(AbstractModel):
                 self._Columns.append(obj)
         self._FilterCondition = params.get("FilterCondition")
         self._FilterTimeZone = params.get("FilterTimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareTableResult(AbstractModel):
+    r"""不一致的表的校验结果详情。增量和全量都是这个结构，某些字段对增量没有意义，可以忽略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Db: 库名
+        :type Db: str
+        :param _Schema: schema名
+        :type Schema: str
+        :param _Table: 表名
+        :type Table: str
+        :param _Conclusion: 校验结果
+        :type Conclusion: str
+        :param _Status: 校验状态。仅全量阶段有意义
+        :type Status: str
+        :param _Progress: 校验进度。仅全量阶段有意义
+        :type Progress: int
+        :param _RowCount: 不一致行数
+        :type RowCount: int
+        :param _StartedAt: 该表开始校验的时间
+        :type StartedAt: str
+        :param _FinishedAt: 该表校验结束的时间
+        :type FinishedAt: str
+        :param _ExpectedAt: 预计该表校验结束的时间
+        :type ExpectedAt: str
+        :param _SrcItem: 源端行数，如果是行数校验此值有意义
+        :type SrcItem: str
+        :param _DstItem: 目标端行数，如果是行数校验此值有意义
+        :type DstItem: str
+        """
+        self._Db = None
+        self._Schema = None
+        self._Table = None
+        self._Conclusion = None
+        self._Status = None
+        self._Progress = None
+        self._RowCount = None
+        self._StartedAt = None
+        self._FinishedAt = None
+        self._ExpectedAt = None
+        self._SrcItem = None
+        self._DstItem = None
+
+    @property
+    def Db(self):
+        r"""库名
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Schema(self):
+        r"""schema名
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def Table(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Conclusion(self):
+        r"""校验结果
+        :rtype: str
+        """
+        return self._Conclusion
+
+    @Conclusion.setter
+    def Conclusion(self, Conclusion):
+        self._Conclusion = Conclusion
+
+    @property
+    def Status(self):
+        r"""校验状态。仅全量阶段有意义
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        r"""校验进度。仅全量阶段有意义
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def RowCount(self):
+        r"""不一致行数
+        :rtype: int
+        """
+        return self._RowCount
+
+    @RowCount.setter
+    def RowCount(self, RowCount):
+        self._RowCount = RowCount
+
+    @property
+    def StartedAt(self):
+        r"""该表开始校验的时间
+        :rtype: str
+        """
+        return self._StartedAt
+
+    @StartedAt.setter
+    def StartedAt(self, StartedAt):
+        self._StartedAt = StartedAt
+
+    @property
+    def FinishedAt(self):
+        r"""该表校验结束的时间
+        :rtype: str
+        """
+        return self._FinishedAt
+
+    @FinishedAt.setter
+    def FinishedAt(self, FinishedAt):
+        self._FinishedAt = FinishedAt
+
+    @property
+    def ExpectedAt(self):
+        r"""预计该表校验结束的时间
+        :rtype: str
+        """
+        return self._ExpectedAt
+
+    @ExpectedAt.setter
+    def ExpectedAt(self, ExpectedAt):
+        self._ExpectedAt = ExpectedAt
+
+    @property
+    def SrcItem(self):
+        r"""源端行数，如果是行数校验此值有意义
+        :rtype: str
+        """
+        return self._SrcItem
+
+    @SrcItem.setter
+    def SrcItem(self, SrcItem):
+        self._SrcItem = SrcItem
+
+    @property
+    def DstItem(self):
+        r"""目标端行数，如果是行数校验此值有意义
+        :rtype: str
+        """
+        return self._DstItem
+
+    @DstItem.setter
+    def DstItem(self, DstItem):
+        self._DstItem = DstItem
+
+
+    def _deserialize(self, params):
+        self._Db = params.get("Db")
+        self._Schema = params.get("Schema")
+        self._Table = params.get("Table")
+        self._Conclusion = params.get("Conclusion")
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        self._RowCount = params.get("RowCount")
+        self._StartedAt = params.get("StartedAt")
+        self._FinishedAt = params.get("FinishedAt")
+        self._ExpectedAt = params.get("ExpectedAt")
+        self._SrcItem = params.get("SrcItem")
+        self._DstItem = params.get("DstItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5801,25 +6094,25 @@ class DescribeCompareReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+        :param _JobId: <p>迁移任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :type JobId: str
-        :param _CompareTaskId: 校验任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+        :param _CompareTaskId: <p>校验任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :type CompareTaskId: str
-        :param _DifferenceLimit: 校验不一致结果的 limit
+        :param _DifferenceLimit: <p>校验不一致结果的 limit</p>
         :type DifferenceLimit: int
-        :param _DifferenceOffset: 不一致的 Offset
+        :param _DifferenceOffset: <p>不一致的 Offset</p>
         :type DifferenceOffset: int
-        :param _DifferenceDB: 搜索条件，不一致的库名
+        :param _DifferenceDB: <p>搜索条件，不一致的库名</p>
         :type DifferenceDB: str
-        :param _DifferenceTable: 搜索条件，不一致的表名
+        :param _DifferenceTable: <p>搜索条件，不一致的表名</p>
         :type DifferenceTable: str
-        :param _SkippedLimit: 未校验的 Limit
+        :param _SkippedLimit: <p>未校验的 Limit</p>
         :type SkippedLimit: int
-        :param _SkippedOffset: 未校验的 Offset
+        :param _SkippedOffset: <p>未校验的 Offset</p>
         :type SkippedOffset: int
-        :param _SkippedDB: 搜索条件，未校验的库名
+        :param _SkippedDB: <p>搜索条件，未校验的库名</p>
         :type SkippedDB: str
-        :param _SkippedTable: 搜索条件，未校验的表名
+        :param _SkippedTable: <p>搜索条件，未校验的表名</p>
         :type SkippedTable: str
         """
         self._JobId = None
@@ -5835,7 +6128,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+        r"""<p>迁移任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._JobId
@@ -5846,7 +6139,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""校验任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+        r"""<p>校验任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._CompareTaskId
@@ -5857,7 +6150,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceLimit(self):
-        r"""校验不一致结果的 limit
+        r"""<p>校验不一致结果的 limit</p>
         :rtype: int
         """
         return self._DifferenceLimit
@@ -5868,7 +6161,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceOffset(self):
-        r"""不一致的 Offset
+        r"""<p>不一致的 Offset</p>
         :rtype: int
         """
         return self._DifferenceOffset
@@ -5879,7 +6172,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceDB(self):
-        r"""搜索条件，不一致的库名
+        r"""<p>搜索条件，不一致的库名</p>
         :rtype: str
         """
         return self._DifferenceDB
@@ -5890,7 +6183,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceTable(self):
-        r"""搜索条件，不一致的表名
+        r"""<p>搜索条件，不一致的表名</p>
         :rtype: str
         """
         return self._DifferenceTable
@@ -5901,7 +6194,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedLimit(self):
-        r"""未校验的 Limit
+        r"""<p>未校验的 Limit</p>
         :rtype: int
         """
         return self._SkippedLimit
@@ -5912,7 +6205,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedOffset(self):
-        r"""未校验的 Offset
+        r"""<p>未校验的 Offset</p>
         :rtype: int
         """
         return self._SkippedOffset
@@ -5923,7 +6216,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedDB(self):
-        r"""搜索条件，未校验的库名
+        r"""<p>搜索条件，未校验的库名</p>
         :rtype: str
         """
         return self._SkippedDB
@@ -5934,7 +6227,7 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedTable(self):
-        r"""搜索条件，未校验的表名
+        r"""<p>搜索条件，未校验的表名</p>
         :rtype: str
         """
         return self._SkippedTable
@@ -5972,9 +6265,9 @@ class DescribeCompareReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Abstract: 一致性校验摘要信息
+        :param _Abstract: <p>一致性校验摘要信息</p>
         :type Abstract: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
-        :param _Detail: 一致性校验详细信息
+        :param _Detail: <p>一致性校验详细信息</p>
         :type Detail: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5985,7 +6278,7 @@ class DescribeCompareReportResponse(AbstractModel):
 
     @property
     def Abstract(self):
-        r"""一致性校验摘要信息
+        r"""<p>一致性校验摘要信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
         """
         return self._Abstract
@@ -5996,7 +6289,7 @@ class DescribeCompareReportResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""一致性校验详细信息
+        r"""<p>一致性校验详细信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
         """
         return self._Detail
@@ -9192,25 +9485,25 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务 Id
+        :param _JobId: <p>任务 Id</p>
         :type JobId: str
-        :param _CompareTaskId: 校验任务 Id
+        :param _CompareTaskId: <p>校验任务 Id</p>
         :type CompareTaskId: str
-        :param _DifferenceLimit: 校验不一致结果的 limit
+        :param _DifferenceLimit: <p>校验不一致结果的 limit</p>
         :type DifferenceLimit: int
-        :param _DifferenceOffset: 不一致的 Offset
+        :param _DifferenceOffset: <p>不一致的 Offset</p>
         :type DifferenceOffset: int
-        :param _DifferenceDB: 搜索条件，不一致的库名
+        :param _DifferenceDB: <p>搜索条件，不一致的库名</p>
         :type DifferenceDB: str
-        :param _DifferenceTable: 搜索条件，不一致的表名
+        :param _DifferenceTable: <p>搜索条件，不一致的表名</p>
         :type DifferenceTable: str
-        :param _SkippedLimit: 未校验的 Limit
+        :param _SkippedLimit: <p>未校验的 Limit</p>
         :type SkippedLimit: int
-        :param _SkippedOffset: 未校验的 Offset
+        :param _SkippedOffset: <p>未校验的 Offset</p>
         :type SkippedOffset: int
-        :param _SkippedDB: 搜索条件，未校验的库名
+        :param _SkippedDB: <p>搜索条件，未校验的库名</p>
         :type SkippedDB: str
-        :param _SkippedTable: 搜索条件，未校验的表名
+        :param _SkippedTable: <p>搜索条件，未校验的表名</p>
         :type SkippedTable: str
         """
         self._JobId = None
@@ -9226,7 +9519,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务 Id
+        r"""<p>任务 Id</p>
         :rtype: str
         """
         return self._JobId
@@ -9237,7 +9530,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""校验任务 Id
+        r"""<p>校验任务 Id</p>
         :rtype: str
         """
         return self._CompareTaskId
@@ -9248,7 +9541,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceLimit(self):
-        r"""校验不一致结果的 limit
+        r"""<p>校验不一致结果的 limit</p>
         :rtype: int
         """
         return self._DifferenceLimit
@@ -9259,7 +9552,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceOffset(self):
-        r"""不一致的 Offset
+        r"""<p>不一致的 Offset</p>
         :rtype: int
         """
         return self._DifferenceOffset
@@ -9270,7 +9563,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceDB(self):
-        r"""搜索条件，不一致的库名
+        r"""<p>搜索条件，不一致的库名</p>
         :rtype: str
         """
         return self._DifferenceDB
@@ -9281,7 +9574,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceTable(self):
-        r"""搜索条件，不一致的表名
+        r"""<p>搜索条件，不一致的表名</p>
         :rtype: str
         """
         return self._DifferenceTable
@@ -9292,7 +9585,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def SkippedLimit(self):
-        r"""未校验的 Limit
+        r"""<p>未校验的 Limit</p>
         :rtype: int
         """
         return self._SkippedLimit
@@ -9303,7 +9596,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def SkippedOffset(self):
-        r"""未校验的 Offset
+        r"""<p>未校验的 Offset</p>
         :rtype: int
         """
         return self._SkippedOffset
@@ -9314,7 +9607,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def SkippedDB(self):
-        r"""搜索条件，未校验的库名
+        r"""<p>搜索条件，未校验的库名</p>
         :rtype: str
         """
         return self._SkippedDB
@@ -9325,7 +9618,7 @@ class DescribeSyncCompareReportRequest(AbstractModel):
 
     @property
     def SkippedTable(self):
-        r"""搜索条件，未校验的表名
+        r"""<p>搜索条件，未校验的表名</p>
         :rtype: str
         """
         return self._SkippedTable
@@ -9363,13 +9656,13 @@ class DescribeSyncCompareReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Abstract: 一致性校验摘要信息
+        :param _Abstract: <p>一致性校验摘要信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Abstract: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
-        :param _Detail: 一致性校验详细信息
+        :param _Detail: <p>一致性校验详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
-        :param _IncAbstract: 增量校验阶段的摘要
+        :param _IncAbstract: <p>增量校验阶段的摘要</p>
         :type IncAbstract: :class:`tencentcloud.dts.v20211206.models.IncCompareAbstractInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9381,7 +9674,7 @@ class DescribeSyncCompareReportResponse(AbstractModel):
 
     @property
     def Abstract(self):
-        r"""一致性校验摘要信息
+        r"""<p>一致性校验摘要信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
         """
@@ -9393,7 +9686,7 @@ class DescribeSyncCompareReportResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""一致性校验详细信息
+        r"""<p>一致性校验详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
         """
@@ -9405,7 +9698,7 @@ class DescribeSyncCompareReportResponse(AbstractModel):
 
     @property
     def IncAbstract(self):
-        r"""增量校验阶段的摘要
+        r"""<p>增量校验阶段的摘要</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.IncCompareAbstractInfo`
         """
         return self._IncAbstract

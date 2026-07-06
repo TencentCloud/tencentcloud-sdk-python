@@ -5068,44 +5068,43 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 模块名，这里填“monitor”
+        :param _Module: <p>模块名，这里填“monitor”</p>
         :type Module: str
-        :param _Name: 屏蔽策略名称
+        :param _Name: <p>屏蔽策略名称</p>
         :type Name: str
-        :param _MonitorType: 监控类型
+        :param _MonitorType: <p>监控类型</p>
         :type MonitorType: str
-        :param _NameSpace: 命名空间即策略类型
+        :param _NameSpace: <p>命名空间即策略类型</p>
         :type NameSpace: str
-        :param _ShieldTimeType: 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+        :param _ShieldTimeType: <p>屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽</p>
         :type ShieldTimeType: str
-        :param _ShieldObject: 屏蔽对象
+        :param _ShieldObject: <p>屏蔽对象</p>
         :type ShieldObject: list of str
-        :param _ShieldMetric: 屏蔽指标 为空则为全部指标
+        :param _ShieldMetric: <p>屏蔽指标 为空则为全部指标</p>
         :type ShieldMetric: list of str
-        :param _StartTime: 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+        :param _StartTime: <p>开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0</p>
         :type StartTime: int
-        :param _EndTime: 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+        :param _EndTime: <p>结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0</p>
         :type EndTime: int
-        :param _LoopStartDate: 循环开始日期 2022/04/01 缺省:0
+        :param _LoopStartDate: <p>循环开始日期 2022/04/01 缺省:0</p>
         :type LoopStartDate: int
-        :param _LoopEndDate: 循环结束日期 2022/04/05 缺省:0
+        :param _LoopEndDate: <p>循环结束日期 2022/04/05 缺省:0</p>
         :type LoopEndDate: int
-        :param _ShieldPolicyId: 需要屏蔽的策略ID
+        :param _ShieldPolicyId: <p>需要屏蔽的策略ID</p>
         :type ShieldPolicyId: str
-        :param _ShieldAlarmLevel: 需要屏蔽的告警等级，取值范围Warn,Remind,Serious
+        :param _ShieldAlarmLevel: <p>需要屏蔽的告警等级，取值范围Warn,Remind,Serious</p>
         :type ShieldAlarmLevel: list of str
-        :param _VersionTag: 屏蔽类型，为OBJNAME是老版本实例名屏蔽，为POLICY是新版本维度匹配
+        :param _VersionTag: <p>屏蔽类型，为OBJNAME是实例屏蔽，为POLICY是策略屏蔽</p>
         :type VersionTag: str
-        :param _Description: 屏蔽规则的描述
+        :param _Description: <p>屏蔽规则的描述</p>
         :type Description: str
-        :param _TimeZone:  时区，东八区+8，西八区减8，以此类推
-
+        :param _TimeZone: <p>时区，东八区+8，西八区减8，以此类推</p>
         :type TimeZone: float
-        :param _ShieldEvent: 屏蔽事件 为空则为全部指标
+        :param _ShieldEvent: <p>屏蔽事件 为空则为全部指标</p>
         :type ShieldEvent: list of str
-        :param _ShieldMetricFlag: 是否对指标屏蔽 1=是 0=否
+        :param _ShieldMetricFlag: <p>是否对指标屏蔽 1=是 0=否</p>
         :type ShieldMetricFlag: int
-        :param _ShieldEventFlag: 是否对事件屏蔽 1=是 0=否
+        :param _ShieldEventFlag: <p>是否对事件屏蔽 1=是 0=否</p>
         :type ShieldEventFlag: int
         """
         self._Module = None
@@ -5130,7 +5129,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""模块名，这里填“monitor”
+        r"""<p>模块名，这里填“monitor”</p>
         :rtype: str
         """
         return self._Module
@@ -5141,7 +5140,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""屏蔽策略名称
+        r"""<p>屏蔽策略名称</p>
         :rtype: str
         """
         return self._Name
@@ -5152,7 +5151,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def MonitorType(self):
-        r"""监控类型
+        r"""<p>监控类型</p>
         :rtype: str
         """
         return self._MonitorType
@@ -5163,7 +5162,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def NameSpace(self):
-        r"""命名空间即策略类型
+        r"""<p>命名空间即策略类型</p>
         :rtype: str
         """
         return self._NameSpace
@@ -5174,7 +5173,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def ShieldTimeType(self):
-        r"""屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+        r"""<p>屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽</p>
         :rtype: str
         """
         return self._ShieldTimeType
@@ -5185,7 +5184,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def ShieldObject(self):
-        r"""屏蔽对象
+        r"""<p>屏蔽对象</p>
         :rtype: list of str
         """
         return self._ShieldObject
@@ -5196,7 +5195,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def ShieldMetric(self):
-        r"""屏蔽指标 为空则为全部指标
+        r"""<p>屏蔽指标 为空则为全部指标</p>
         :rtype: list of str
         """
         return self._ShieldMetric
@@ -5207,7 +5206,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+        r"""<p>开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0</p>
         :rtype: int
         """
         return self._StartTime
@@ -5218,7 +5217,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+        r"""<p>结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0</p>
         :rtype: int
         """
         return self._EndTime
@@ -5229,7 +5228,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def LoopStartDate(self):
-        r"""循环开始日期 2022/04/01 缺省:0
+        r"""<p>循环开始日期 2022/04/01 缺省:0</p>
         :rtype: int
         """
         return self._LoopStartDate
@@ -5240,7 +5239,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def LoopEndDate(self):
-        r"""循环结束日期 2022/04/05 缺省:0
+        r"""<p>循环结束日期 2022/04/05 缺省:0</p>
         :rtype: int
         """
         return self._LoopEndDate
@@ -5251,7 +5250,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def ShieldPolicyId(self):
-        r"""需要屏蔽的策略ID
+        r"""<p>需要屏蔽的策略ID</p>
         :rtype: str
         """
         return self._ShieldPolicyId
@@ -5262,7 +5261,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def ShieldAlarmLevel(self):
-        r"""需要屏蔽的告警等级，取值范围Warn,Remind,Serious
+        r"""<p>需要屏蔽的告警等级，取值范围Warn,Remind,Serious</p>
         :rtype: list of str
         """
         return self._ShieldAlarmLevel
@@ -5273,7 +5272,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def VersionTag(self):
-        r"""屏蔽类型，为OBJNAME是老版本实例名屏蔽，为POLICY是新版本维度匹配
+        r"""<p>屏蔽类型，为OBJNAME是实例屏蔽，为POLICY是策略屏蔽</p>
         :rtype: str
         """
         return self._VersionTag
@@ -5284,7 +5283,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""屏蔽规则的描述
+        r"""<p>屏蔽规则的描述</p>
         :rtype: str
         """
         return self._Description
@@ -5295,8 +5294,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        r""" 时区，东八区+8，西八区减8，以此类推
-
+        r"""<p>时区，东八区+8，西八区减8，以此类推</p>
         :rtype: float
         """
         return self._TimeZone
@@ -5307,7 +5305,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def ShieldEvent(self):
-        r"""屏蔽事件 为空则为全部指标
+        r"""<p>屏蔽事件 为空则为全部指标</p>
         :rtype: list of str
         """
         return self._ShieldEvent
@@ -5318,7 +5316,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def ShieldMetricFlag(self):
-        r"""是否对指标屏蔽 1=是 0=否
+        r"""<p>是否对指标屏蔽 1=是 0=否</p>
         :rtype: int
         """
         return self._ShieldMetricFlag
@@ -5329,7 +5327,7 @@ class CreateAlarmShieldRequest(AbstractModel):
 
     @property
     def ShieldEventFlag(self):
-        r"""是否对事件屏蔽 1=是 0=否
+        r"""<p>是否对事件屏蔽 1=是 0=否</p>
         :rtype: int
         """
         return self._ShieldEventFlag
@@ -5376,7 +5374,7 @@ class CreateAlarmShieldResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ShieldId: 屏蔽规则的Id
+        :param _ShieldId: <p>屏蔽规则的Id</p>
         :type ShieldId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5386,7 +5384,7 @@ class CreateAlarmShieldResponse(AbstractModel):
 
     @property
     def ShieldId(self):
-        r"""屏蔽规则的Id
+        r"""<p>屏蔽规则的Id</p>
         :rtype: str
         """
         return self._ShieldId

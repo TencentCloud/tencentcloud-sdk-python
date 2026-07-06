@@ -12673,6 +12673,9 @@ class InstanceInfo(AbstractModel):
         :type TagList: list of TagInfo
         :param _LicenseType: <p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum</p>
         :type LicenseType: str
+        :param _RealLicenseType: <p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li><li>enterprise：企业版</li>默认值platinum</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealLicenseType: str
         :param _EnableHotWarmMode: <p>是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableHotWarmMode: bool
@@ -12831,7 +12834,7 @@ class InstanceInfo(AbstractModel):
         :param _DisasterRecoverGroupAffinity: <p>置放群组相关参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisasterRecoverGroupAffinity: int
-        :param _SubProductCode: <p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
+        :param _SubProductCode: <p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，AI搜索增强版：&quot;sp_es_aisearch&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductCode: str
         :param _CosBucketStorageSize: <p>存算分离cos用量，单位M</p>
@@ -12863,6 +12866,12 @@ class InstanceInfo(AbstractModel):
         :type MayDestroyPoint: str
         :param _DelayDestroyInterval: <p>延迟销毁的时间</p><p>单位：天</p>
         :type DelayDestroyInterval: int
+        :param _EnableAutoReplace: <p>开启异常节点自动替换，0关闭，1开启</p>
+        :type EnableAutoReplace: int
+        :param _OpenMTLS: <p>开启mtls，0关闭，1开启</p>
+        :type OpenMTLS: int
+        :param _ServerCertSource: <p>证书类型</p>
+        :type ServerCertSource: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -12899,6 +12908,7 @@ class InstanceInfo(AbstractModel):
         self._AllowCosBackup = None
         self._TagList = None
         self._LicenseType = None
+        self._RealLicenseType = None
         self._EnableHotWarmMode = None
         self._WarmNodeType = None
         self._WarmNodeNum = None
@@ -12965,6 +12975,9 @@ class InstanceInfo(AbstractModel):
         self._RecycleLockEnabled = None
         self._MayDestroyPoint = None
         self._DelayDestroyInterval = None
+        self._EnableAutoReplace = None
+        self._OpenMTLS = None
+        self._ServerCertSource = None
 
     @property
     def InstanceId(self):
@@ -13350,6 +13363,18 @@ class InstanceInfo(AbstractModel):
     @LicenseType.setter
     def LicenseType(self, LicenseType):
         self._LicenseType = LicenseType
+
+    @property
+    def RealLicenseType(self):
+        r"""<p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li><li>enterprise：企业版</li>默认值platinum</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RealLicenseType
+
+    @RealLicenseType.setter
+    def RealLicenseType(self, RealLicenseType):
+        self._RealLicenseType = RealLicenseType
 
     @property
     def EnableHotWarmMode(self):
@@ -13988,7 +14013,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SubProductCode(self):
-        r"""<p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
+        r"""<p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，AI搜索增强版：&quot;sp_es_aisearch&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14135,6 +14160,39 @@ class InstanceInfo(AbstractModel):
     def DelayDestroyInterval(self, DelayDestroyInterval):
         self._DelayDestroyInterval = DelayDestroyInterval
 
+    @property
+    def EnableAutoReplace(self):
+        r"""<p>开启异常节点自动替换，0关闭，1开启</p>
+        :rtype: int
+        """
+        return self._EnableAutoReplace
+
+    @EnableAutoReplace.setter
+    def EnableAutoReplace(self, EnableAutoReplace):
+        self._EnableAutoReplace = EnableAutoReplace
+
+    @property
+    def OpenMTLS(self):
+        r"""<p>开启mtls，0关闭，1开启</p>
+        :rtype: int
+        """
+        return self._OpenMTLS
+
+    @OpenMTLS.setter
+    def OpenMTLS(self, OpenMTLS):
+        self._OpenMTLS = OpenMTLS
+
+    @property
+    def ServerCertSource(self):
+        r"""<p>证书类型</p>
+        :rtype: str
+        """
+        return self._ServerCertSource
+
+    @ServerCertSource.setter
+    def ServerCertSource(self, ServerCertSource):
+        self._ServerCertSource = ServerCertSource
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14185,6 +14243,7 @@ class InstanceInfo(AbstractModel):
                 obj._deserialize(item)
                 self._TagList.append(obj)
         self._LicenseType = params.get("LicenseType")
+        self._RealLicenseType = params.get("RealLicenseType")
         self._EnableHotWarmMode = params.get("EnableHotWarmMode")
         self._WarmNodeType = params.get("WarmNodeType")
         self._WarmNodeNum = params.get("WarmNodeNum")
@@ -14286,6 +14345,9 @@ class InstanceInfo(AbstractModel):
         self._RecycleLockEnabled = params.get("RecycleLockEnabled")
         self._MayDestroyPoint = params.get("MayDestroyPoint")
         self._DelayDestroyInterval = params.get("DelayDestroyInterval")
+        self._EnableAutoReplace = params.get("EnableAutoReplace")
+        self._OpenMTLS = params.get("OpenMTLS")
+        self._ServerCertSource = params.get("ServerCertSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

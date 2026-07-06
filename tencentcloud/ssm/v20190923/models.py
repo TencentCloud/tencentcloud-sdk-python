@@ -2447,27 +2447,28 @@ class GetServiceStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceEnabled: true表示服务已开通，false 表示服务尚未开通。
+        :param _ServiceEnabled: <p>true表示服务已开通，false 表示服务尚未开通。</p>
         :type ServiceEnabled: bool
-        :param _InvalidType: 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。
+        :param _InvalidType: <p>服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。</p>
         :type InvalidType: int
-        :param _AccessKeyEscrowEnabled: true表示用户已经可以使用密钥安全托管功能，
-false表示用户暂时不能使用密钥安全托管功能。
+        :param _AccessKeyEscrowEnabled: <p>true表示用户已经可以使用密钥安全托管功能，<br>false表示用户暂时不能使用密钥安全托管功能。</p>
         :type AccessKeyEscrowEnabled: bool
-        :param _ExpireTime: 过期时间
+        :param _ExpireTime: <p>过期时间</p>
         :type ExpireTime: str
-        :param _QPSLimit: 计算性能限制
+        :param _QPSLimit: <p>计算性能限制</p>
         :type QPSLimit: int
-        :param _SecretLimit: 凭据个数限制
+        :param _SecretLimit: <p>凭据个数限制</p>
         :type SecretLimit: int
-        :param _PayModel: 付费模式
+        :param _PayModel: <p>付费模式</p>
         :type PayModel: str
-        :param _RenewFlag: 自动续费标识，0:手动续费 1:自动续费 2:到期不续
+        :param _RenewFlag: <p>自动续费标识，0:手动续费 1:自动续费 2:到期不续</p>
         :type RenewFlag: int
-        :param _ResourceId: 资源id
+        :param _ResourceId: <p>资源id</p>
         :type ResourceId: str
-        :param _TotalCount: 已托管凭据个数
+        :param _TotalCount: <p>已托管凭据个数</p>
         :type TotalCount: int
+        :param _ResourceRegion: <p>预付费购买 SSM 资源的地域 ID</p>
+        :type ResourceRegion: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2481,11 +2482,12 @@ false表示用户暂时不能使用密钥安全托管功能。
         self._RenewFlag = None
         self._ResourceId = None
         self._TotalCount = None
+        self._ResourceRegion = None
         self._RequestId = None
 
     @property
     def ServiceEnabled(self):
-        r"""true表示服务已开通，false 表示服务尚未开通。
+        r"""<p>true表示服务已开通，false 表示服务尚未开通。</p>
         :rtype: bool
         """
         return self._ServiceEnabled
@@ -2496,7 +2498,7 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def InvalidType(self):
-        r"""服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。
+        r"""<p>服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。</p>
         :rtype: int
         """
         return self._InvalidType
@@ -2507,8 +2509,7 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def AccessKeyEscrowEnabled(self):
-        r"""true表示用户已经可以使用密钥安全托管功能，
-false表示用户暂时不能使用密钥安全托管功能。
+        r"""<p>true表示用户已经可以使用密钥安全托管功能，<br>false表示用户暂时不能使用密钥安全托管功能。</p>
         :rtype: bool
         """
         return self._AccessKeyEscrowEnabled
@@ -2519,7 +2520,7 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def ExpireTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -2530,7 +2531,7 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def QPSLimit(self):
-        r"""计算性能限制
+        r"""<p>计算性能限制</p>
         :rtype: int
         """
         return self._QPSLimit
@@ -2541,7 +2542,7 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def SecretLimit(self):
-        r"""凭据个数限制
+        r"""<p>凭据个数限制</p>
         :rtype: int
         """
         return self._SecretLimit
@@ -2552,7 +2553,7 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def PayModel(self):
-        r"""付费模式
+        r"""<p>付费模式</p>
         :rtype: str
         """
         return self._PayModel
@@ -2563,7 +2564,7 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识，0:手动续费 1:自动续费 2:到期不续
+        r"""<p>自动续费标识，0:手动续费 1:自动续费 2:到期不续</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -2574,7 +2575,7 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def ResourceId(self):
-        r"""资源id
+        r"""<p>资源id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -2585,7 +2586,7 @@ false表示用户暂时不能使用密钥安全托管功能。
 
     @property
     def TotalCount(self):
-        r"""已托管凭据个数
+        r"""<p>已托管凭据个数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2593,6 +2594,17 @@ false表示用户暂时不能使用密钥安全托管功能。
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def ResourceRegion(self):
+        r"""<p>预付费购买 SSM 资源的地域 ID</p>
+        :rtype: int
+        """
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
 
     @property
     def RequestId(self):
@@ -2617,6 +2629,7 @@ false表示用户暂时不能使用密钥安全托管功能。
         self._RenewFlag = params.get("RenewFlag")
         self._ResourceId = params.get("ResourceId")
         self._TotalCount = params.get("TotalCount")
+        self._ResourceRegion = params.get("ResourceRegion")
         self._RequestId = params.get("RequestId")
 
 

@@ -1499,47 +1499,40 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 转自适应码流模板 ID。
+        :param _Definition: <p>转自适应码流模板 ID。</p>
         :type Definition: int
-        :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        :param _WatermarkSet: <p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _BlindWatermark: 数字水印参数	
+        :param _BlindWatermark: <p>数字水印参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlindWatermark: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
-        :param _OutputStorage: 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
+        :param _OutputStorage: <p>转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。
-若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
-相对路径示例：
-<li>文件名_{变量名}.{format}</li>
-<li>文件名.{format}</li>
-绝对路径示例：
-<li>/自定义路径/文件名_{变量名}.{format}</li>
-如果不填，则默认为相对路径：{inputName}_adaptiveDynamicStreaming_{definition}.{format}。
+        :param _OutputObjectPath: <p>转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li>如果不填，则默认为相对路径：{inputName}_adaptiveDynamicStreaming_{definition}.{format}。
         :type OutputObjectPath: str
-        :param _SubStreamObjectName: 转自适应码流后，子流文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`。
+        :param _SubStreamObjectName: <p>转自适应码流后，子流文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：<code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}</code>。</p>
         :type SubStreamObjectName: str
-        :param _SegmentObjectName: 转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`。
+        :param _SegmentObjectName: <p>转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：<code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}</code>。</p>
         :type SegmentObjectName: str
-        :param _AddOnSubtitles: 外挂字幕功能，指定要插入的字幕文件。
+        :param _AddOnSubtitles: <p>外挂字幕功能，指定要插入的字幕文件。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddOnSubtitles: list of AddOnSubtitle
-        :param _DrmInfo: Drm信息。
+        :param _DrmInfo: <p>Drm信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
-        :param _DefinitionType: 自适应转码模板类型：
-Common：音视频类型
-PureAudio：纯音频类型
+        :param _DefinitionType: <p>自适应转码模板类型：<br>Common：音视频类型<br>PureAudio：纯音频类型</p>
         :type DefinitionType: str
-        :param _SubtitleTemplate: 硬字幕（压制字幕）功能，指定字幕来源、字体大小、位置等字幕参数。
+        :param _SubtitleTemplate: <p>硬字幕（压制字幕）功能，指定字幕来源、字体大小、位置等字幕参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
-        :param _StdExtInfo: 转码参数扩展字段
+        :param _StdExtInfo: <p>转码参数扩展字段</p>
         :type StdExtInfo: str
-        :param _KeyPTSList: 指定pts时间的帧设为关键帧，并切片。单位毫秒（允许相对偏差<=1ms）。当同时指定gop和切片时长时，会共同作用。注意需开启RawPts，保持帧率随源，并确保传入的pts时间在源中是有对应帧的。
+        :param _KeyPTSList: <p>指定pts时间的帧设为关键帧，并切片。单位毫秒（允许相对偏差&lt;=1ms）。当同时指定gop和切片时长时，会共同作用。注意需开启RawPts，保持帧率随源，并确保传入的pts时间在源中是有对应帧的。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyPTSList: list of int
+        :param _AddOnAudios: <p>外挂音频功能，指定要插入的音频文件。</p>
+        :type AddOnAudios: list of AddOnAudio
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1554,10 +1547,11 @@ PureAudio：纯音频类型
         self._SubtitleTemplate = None
         self._StdExtInfo = None
         self._KeyPTSList = None
+        self._AddOnAudios = None
 
     @property
     def Definition(self):
-        r"""转自适应码流模板 ID。
+        r"""<p>转自适应码流模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -1568,7 +1562,7 @@ PureAudio：纯音频类型
 
     @property
     def WatermarkSet(self):
-        r"""水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        r"""<p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
         :rtype: list of WatermarkInput
         """
         return self._WatermarkSet
@@ -1579,7 +1573,7 @@ PureAudio：纯音频类型
 
     @property
     def BlindWatermark(self):
-        r"""数字水印参数	
+        r"""<p>数字水印参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.BlindWatermarkInput`
         """
@@ -1591,7 +1585,7 @@ PureAudio：纯音频类型
 
     @property
     def OutputStorage(self):
-        r"""转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
+        r"""<p>转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -1603,14 +1597,7 @@ PureAudio：纯音频类型
 
     @property
     def OutputObjectPath(self):
-        r"""转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。
-若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
-相对路径示例：
-<li>文件名_{变量名}.{format}</li>
-<li>文件名.{format}</li>
-绝对路径示例：
-<li>/自定义路径/文件名_{变量名}.{format}</li>
-如果不填，则默认为相对路径：{inputName}_adaptiveDynamicStreaming_{definition}.{format}。
+        r"""<p>转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li>如果不填，则默认为相对路径：{inputName}_adaptiveDynamicStreaming_{definition}.{format}。
         :rtype: str
         """
         return self._OutputObjectPath
@@ -1621,7 +1608,7 @@ PureAudio：纯音频类型
 
     @property
     def SubStreamObjectName(self):
-        r"""转自适应码流后，子流文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`。
+        r"""<p>转自适应码流后，子流文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：<code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}</code>。</p>
         :rtype: str
         """
         return self._SubStreamObjectName
@@ -1632,7 +1619,7 @@ PureAudio：纯音频类型
 
     @property
     def SegmentObjectName(self):
-        r"""转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`。
+        r"""<p>转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：<code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}</code>。</p>
         :rtype: str
         """
         return self._SegmentObjectName
@@ -1643,7 +1630,7 @@ PureAudio：纯音频类型
 
     @property
     def AddOnSubtitles(self):
-        r"""外挂字幕功能，指定要插入的字幕文件。
+        r"""<p>外挂字幕功能，指定要插入的字幕文件。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AddOnSubtitle
         """
@@ -1655,7 +1642,7 @@ PureAudio：纯音频类型
 
     @property
     def DrmInfo(self):
-        r"""Drm信息。
+        r"""<p>Drm信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
@@ -1667,9 +1654,7 @@ PureAudio：纯音频类型
 
     @property
     def DefinitionType(self):
-        r"""自适应转码模板类型：
-Common：音视频类型
-PureAudio：纯音频类型
+        r"""<p>自适应转码模板类型：<br>Common：音视频类型<br>PureAudio：纯音频类型</p>
         :rtype: str
         """
         return self._DefinitionType
@@ -1680,7 +1665,7 @@ PureAudio：纯音频类型
 
     @property
     def SubtitleTemplate(self):
-        r"""硬字幕（压制字幕）功能，指定字幕来源、字体大小、位置等字幕参数。
+        r"""<p>硬字幕（压制字幕）功能，指定字幕来源、字体大小、位置等字幕参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
@@ -1692,7 +1677,7 @@ PureAudio：纯音频类型
 
     @property
     def StdExtInfo(self):
-        r"""转码参数扩展字段
+        r"""<p>转码参数扩展字段</p>
         :rtype: str
         """
         return self._StdExtInfo
@@ -1703,7 +1688,7 @@ PureAudio：纯音频类型
 
     @property
     def KeyPTSList(self):
-        r"""指定pts时间的帧设为关键帧，并切片。单位毫秒（允许相对偏差<=1ms）。当同时指定gop和切片时长时，会共同作用。注意需开启RawPts，保持帧率随源，并确保传入的pts时间在源中是有对应帧的。
+        r"""<p>指定pts时间的帧设为关键帧，并切片。单位毫秒（允许相对偏差&lt;=1ms）。当同时指定gop和切片时长时，会共同作用。注意需开启RawPts，保持帧率随源，并确保传入的pts时间在源中是有对应帧的。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -1712,6 +1697,17 @@ PureAudio：纯音频类型
     @KeyPTSList.setter
     def KeyPTSList(self, KeyPTSList):
         self._KeyPTSList = KeyPTSList
+
+    @property
+    def AddOnAudios(self):
+        r"""<p>外挂音频功能，指定要插入的音频文件。</p>
+        :rtype: list of AddOnAudio
+        """
+        return self._AddOnAudios
+
+    @AddOnAudios.setter
+    def AddOnAudios(self, AddOnAudios):
+        self._AddOnAudios = AddOnAudios
 
 
     def _deserialize(self, params):
@@ -1746,6 +1742,12 @@ PureAudio：纯音频类型
             self._SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
         self._StdExtInfo = params.get("StdExtInfo")
         self._KeyPTSList = params.get("KeyPTSList")
+        if params.get("AddOnAudios") is not None:
+            self._AddOnAudios = []
+            for item in params.get("AddOnAudios"):
+                obj = AddOnAudio()
+                obj._deserialize(item)
+                self._AddOnAudios.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2180,6 +2182,89 @@ class AddBlindWatermarkConfig(AbstractModel):
         
 
 
+class AddOnAudio(AbstractModel):
+    r"""外挂音频。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: <p>音频文件输入信息。注意：（1）音频流的编码格式支持：aac、ac3、eac3、flac、opus和mp3；（2）当转自适应码流模板中设置的切片类型为ts的时候，音频流的编码格式不能为flac。</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _AudioName: <p>音轨名称，如：中文、English。注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。</p>
+        :type AudioName: str
+        :param _AudioLanguage: <p>音轨语言，如：chi、eng，遵循 ISO 639-2</p>
+        :type AudioLanguage: str
+        :param _DefaultTrack: <p>默认音频轨道。为true时指定当前音频为默认音频轨道，最多可指定1条默认音频轨道。</p><p>默认值：false</p>
+        :type DefaultTrack: bool
+        """
+        self._InputInfo = None
+        self._AudioName = None
+        self._AudioLanguage = None
+        self._DefaultTrack = None
+
+    @property
+    def InputInfo(self):
+        r"""<p>音频文件输入信息。注意：（1）音频流的编码格式支持：aac、ac3、eac3、flac、opus和mp3；（2）当转自适应码流模板中设置的切片类型为ts的时候，音频流的编码格式不能为flac。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def AudioName(self):
+        r"""<p>音轨名称，如：中文、English。注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。</p>
+        :rtype: str
+        """
+        return self._AudioName
+
+    @AudioName.setter
+    def AudioName(self, AudioName):
+        self._AudioName = AudioName
+
+    @property
+    def AudioLanguage(self):
+        r"""<p>音轨语言，如：chi、eng，遵循 ISO 639-2</p>
+        :rtype: str
+        """
+        return self._AudioLanguage
+
+    @AudioLanguage.setter
+    def AudioLanguage(self, AudioLanguage):
+        self._AudioLanguage = AudioLanguage
+
+    @property
+    def DefaultTrack(self):
+        r"""<p>默认音频轨道。为true时指定当前音频为默认音频轨道，最多可指定1条默认音频轨道。</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._DefaultTrack
+
+    @DefaultTrack.setter
+    def DefaultTrack(self, DefaultTrack):
+        self._DefaultTrack = DefaultTrack
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._AudioName = params.get("AudioName")
+        self._AudioLanguage = params.get("AudioLanguage")
+        self._DefaultTrack = params.get("DefaultTrack")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddOnImageInput(AbstractModel):
     r"""图片处理编排中使用的输入参数。
 
@@ -2318,38 +2403,32 @@ class AddOnSubtitle(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 插入形式，可选值：
-<li>subtitle-stream：插入字幕轨道</li>
-<li>close-caption-708：CEA-708字幕编码到SEI帧</li>
-<li>close-caption-608：CEA-608字幕编码到SEI帧</li>
+        :param _Type: <p>插入形式，可选值：</p><li>subtitle-stream：插入字幕轨道</li><li>close-caption-708：CEA-708字幕编码到SEI帧</li><li>close-caption-608：CEA-608字幕编码到SEI帧</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _Subtitle: 字幕文件。
+        :param _Subtitle: <p>字幕文件。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Subtitle: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _SubtitleName: 字幕名称	。
-注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。
+        :param _SubtitleName: <p>字幕名称    。<br>注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleName: str
-        :param _OutputFormat: 字幕输出格式。取值{"WebVTT","TTML"}。
-默认值："WebVTT"
+        :param _SubtitleLanguage: <p>字幕语言，比如：eng</p>
+        :type SubtitleLanguage: str
+        :param _OutputFormat: <p>字幕输出格式。取值{&quot;WebVTT&quot;,&quot;TTML&quot;}。<br>默认值：&quot;WebVTT&quot;</p>
         :type OutputFormat: str
-        :param _DefaultTrack: 默认字幕轨道。为true时指定当前字幕为默认字幕轨道，最多可指定1条默认字幕轨道。
-默认值：false
+        :param _DefaultTrack: <p>默认字幕轨道。为true时指定当前字幕为默认字幕轨道，最多可指定1条默认字幕轨道。<br>默认值：false</p>
         :type DefaultTrack: bool
         """
         self._Type = None
         self._Subtitle = None
         self._SubtitleName = None
+        self._SubtitleLanguage = None
         self._OutputFormat = None
         self._DefaultTrack = None
 
     @property
     def Type(self):
-        r"""插入形式，可选值：
-<li>subtitle-stream：插入字幕轨道</li>
-<li>close-caption-708：CEA-708字幕编码到SEI帧</li>
-<li>close-caption-608：CEA-608字幕编码到SEI帧</li>
+        r"""<p>插入形式，可选值：</p><li>subtitle-stream：插入字幕轨道</li><li>close-caption-708：CEA-708字幕编码到SEI帧</li><li>close-caption-608：CEA-608字幕编码到SEI帧</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2361,7 +2440,7 @@ class AddOnSubtitle(AbstractModel):
 
     @property
     def Subtitle(self):
-        r"""字幕文件。
+        r"""<p>字幕文件。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
@@ -2373,8 +2452,7 @@ class AddOnSubtitle(AbstractModel):
 
     @property
     def SubtitleName(self):
-        r"""字幕名称	。
-注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。
+        r"""<p>字幕名称    。<br>注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2385,9 +2463,19 @@ class AddOnSubtitle(AbstractModel):
         self._SubtitleName = SubtitleName
 
     @property
+    def SubtitleLanguage(self):
+        r"""<p>字幕语言，比如：eng</p>
+        :rtype: str
+        """
+        return self._SubtitleLanguage
+
+    @SubtitleLanguage.setter
+    def SubtitleLanguage(self, SubtitleLanguage):
+        self._SubtitleLanguage = SubtitleLanguage
+
+    @property
     def OutputFormat(self):
-        r"""字幕输出格式。取值{"WebVTT","TTML"}。
-默认值："WebVTT"
+        r"""<p>字幕输出格式。取值{&quot;WebVTT&quot;,&quot;TTML&quot;}。<br>默认值：&quot;WebVTT&quot;</p>
         :rtype: str
         """
         return self._OutputFormat
@@ -2398,8 +2486,7 @@ class AddOnSubtitle(AbstractModel):
 
     @property
     def DefaultTrack(self):
-        r"""默认字幕轨道。为true时指定当前字幕为默认字幕轨道，最多可指定1条默认字幕轨道。
-默认值：false
+        r"""<p>默认字幕轨道。为true时指定当前字幕为默认字幕轨道，最多可指定1条默认字幕轨道。<br>默认值：false</p>
         :rtype: bool
         """
         return self._DefaultTrack
@@ -2415,6 +2502,7 @@ class AddOnSubtitle(AbstractModel):
             self._Subtitle = MediaInputInfo()
             self._Subtitle._deserialize(params.get("Subtitle"))
         self._SubtitleName = params.get("SubtitleName")
+        self._SubtitleLanguage = params.get("SubtitleLanguage")
         self._OutputFormat = params.get("OutputFormat")
         self._DefaultTrack = params.get("DefaultTrack")
         memeber_set = set(params.keys())
@@ -15053,12 +15141,21 @@ class AudioTemplateInfo(AbstractModel):
         :param _TrackChannelInfo: <p>合并音轨信息。<br>注意：此字段只是自适应转码生效，</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrackChannelInfo: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
+        :param _AudioLanguage: <p>音频轨道语言，比如：chi、eng  注意：（1）遵循 ISO 639-2；（2）仅适用于自适应码流模板；（3）值为 source 表示保留源language</p>
+        :type AudioLanguage: str
+        :param _AudioName: <p>音频轨道名称，比如：中文、English  注意：（1）仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符；（2）仅适用于自适应码流模板；（3）值为source表示保留源name</p>
+        :type AudioName: str
+        :param _DefaultTrack: <p>默认音频轨道。为true时指定当前音轨为默认音轨轨道，最多可指定1条默认轨道。  </p><p>默认值：false</p>
+        :type DefaultTrack: bool
         """
         self._Codec = None
         self._Bitrate = None
         self._SampleRate = None
         self._AudioChannel = None
         self._TrackChannelInfo = None
+        self._AudioLanguage = None
+        self._AudioName = None
+        self._DefaultTrack = None
 
     @property
     def Codec(self):
@@ -15116,6 +15213,39 @@ class AudioTemplateInfo(AbstractModel):
     def TrackChannelInfo(self, TrackChannelInfo):
         self._TrackChannelInfo = TrackChannelInfo
 
+    @property
+    def AudioLanguage(self):
+        r"""<p>音频轨道语言，比如：chi、eng  注意：（1）遵循 ISO 639-2；（2）仅适用于自适应码流模板；（3）值为 source 表示保留源language</p>
+        :rtype: str
+        """
+        return self._AudioLanguage
+
+    @AudioLanguage.setter
+    def AudioLanguage(self, AudioLanguage):
+        self._AudioLanguage = AudioLanguage
+
+    @property
+    def AudioName(self):
+        r"""<p>音频轨道名称，比如：中文、English  注意：（1）仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符；（2）仅适用于自适应码流模板；（3）值为source表示保留源name</p>
+        :rtype: str
+        """
+        return self._AudioName
+
+    @AudioName.setter
+    def AudioName(self, AudioName):
+        self._AudioName = AudioName
+
+    @property
+    def DefaultTrack(self):
+        r"""<p>默认音频轨道。为true时指定当前音轨为默认音轨轨道，最多可指定1条默认轨道。  </p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._DefaultTrack
+
+    @DefaultTrack.setter
+    def DefaultTrack(self, DefaultTrack):
+        self._DefaultTrack = DefaultTrack
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -15125,6 +15255,9 @@ class AudioTemplateInfo(AbstractModel):
         if params.get("TrackChannelInfo") is not None:
             self._TrackChannelInfo = AudioTrackChannelInfo()
             self._TrackChannelInfo._deserialize(params.get("TrackChannelInfo"))
+        self._AudioLanguage = params.get("AudioLanguage")
+        self._AudioName = params.get("AudioName")
+        self._DefaultTrack = params.get("DefaultTrack")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

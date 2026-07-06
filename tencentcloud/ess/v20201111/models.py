@@ -9680,6 +9680,149 @@ class CreateExtendedServiceAuthInfosResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFileConvertTaskRequest(AbstractModel):
+    r"""CreateFileConvertTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>需要进行转换的资源文件类型<br>支持的文件类型如下：</p><p>枚举值：</p><ul><li>doc： doc</li><li>docx： docx</li><li>xls： xls</li><li>xlsx： xlsx</li><li>jpg： jpg</li><li>jpeg： jpeg</li><li>png： png</li><li>html： html</li><li>bmp： bmp</li></ul>
+        :type ResourceType: str
+        :param _ResourceName: <p>需要进行转换操作的文件资源名称，带资源后缀名。</p><p>注:  <code>资源名称长度限制为256个字符</code></p>
+        :type ResourceName: str
+        :param _ResourceId: <p>需要进行转换操作的文件资源Id，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源Id。</p><p>注:  <code>目前，此接口仅支持单个文件进行转换。</code></p>
+        :type ResourceId: str
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._ResourceType = None
+        self._ResourceName = None
+        self._ResourceId = None
+        self._Operator = None
+        self._Agent = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>需要进行转换的资源文件类型<br>支持的文件类型如下：</p><p>枚举值：</p><ul><li>doc： doc</li><li>docx： docx</li><li>xls： xls</li><li>xlsx： xlsx</li><li>jpg： jpg</li><li>jpeg： jpeg</li><li>png： png</li><li>html： html</li><li>bmp： bmp</li></ul>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceName(self):
+        r"""<p>需要进行转换操作的文件资源名称，带资源后缀名。</p><p>注:  <code>资源名称长度限制为256个字符</code></p>
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceId(self):
+        r"""<p>需要进行转换操作的文件资源Id，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源Id。</p><p>注:  <code>目前，此接口仅支持单个文件进行转换。</code></p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Operator(self):
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceId = params.get("ResourceId")
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFileConvertTaskResponse(AbstractModel):
+    r"""CreateFileConvertTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>接口返回的文件转换任务Id，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi" target="_blank">查询转换任务状态</a>获取转换任务的状态和转换后的文件资源Id。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>接口返回的文件转换任务Id，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi" target="_blank">查询转换任务状态</a>获取转换任务的状态和转换后的文件资源Id。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFileCounterSignRequest(AbstractModel):
     r"""CreateFileCounterSign请求参数结构体
 
@@ -18451,58 +18594,35 @@ class CreatePreparedPersonalEsignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserName: 个人用户姓名
+        :param _UserName: <p>个人用户姓名</p>
         :type UserName: str
-        :param _IdCardNumber: 证件号码，应符合以下规则
-<ul><li> 中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :param _IdCardNumber: <p>证件号码，应符合以下规则</p><ul><li> 中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
-        :param _SealName: 印章名称，长度1-50个字。
+        :param _SealName: <p>印章名称，长度1-50个字。</p>
         :type SealName: str
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _IdCardType: 证件类型，支持以下类型
-<ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同 中国大陆居民身份证)</li></ul>
+        :param _IdCardType: <p>证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同 中国大陆居民身份证)</li></ul>
         :type IdCardType: str
-        :param _SealImage: 该字段已不再使用
+        :param _SealImage: <p>该字段已不再使用</p>
         :type SealImage: str
-        :param _SealImageCompress: 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+        :param _SealImageCompress: <p>是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。</p>
         :type SealImageCompress: bool
-        :param _Mobile: 手机号码；当需要开通自动签时，该参数必传
+        :param _Mobile: <p>手机号码；当需要开通自动签时，该参数必传</p>
         :type Mobile: str
-        :param _EnableAutoSign: 该字段已不再使用
+        :param _EnableAutoSign: <p>该字段已不再使用</p>
         :type EnableAutoSign: bool
-        :param _SealColor: 印章颜色（参数ProcessSeal=true时生效）
-默认值：BLACK黑色
-取值: 
-BLACK 黑色,
-RED 红色,
-BLUE 蓝色。
+        :param _SealColor: <p>印章颜色（参数ProcessSeal=true时生效）<br>默认值：BLACK黑色<br>取值:<br>BLACK 黑色,<br>RED 红色,<br>BLUE 蓝色。</p>
         :type SealColor: str
-        :param _ProcessSeal: 是否处理印章，默认不做印章处理。
-取值如下：
-<ul>
-<li>false：不做任何处理；</li>
-<li>true：做透明化处理和颜色增强。</li>
-</ul>
+        :param _ProcessSeal: <p>是否处理印章，默认不做印章处理。<br>取值如下：</p><ul><li>false：不做任何处理；</li><li>true：做透明化处理和颜色增强。</li></ul>
         :type ProcessSeal: bool
-        :param _FileId: 印章图片文件 id
-取值：
-填写的FileId通过UploadFiles接口上传文件获取。
+        :param _FileId: <p>印章图片文件 id<br>取值：<br>填写的FileId通过UploadFiles接口上传文件获取。</p>
         :type FileId: str
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+        :param _LicenseType: <p>设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减</p>
         :type LicenseType: int
-        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-
-注: `不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN`
+        :param _SceneKey: <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul><p>注: <code>不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN</code></p>
         :type SceneKey: str
         """
         self._UserName = None
@@ -18523,7 +18643,7 @@ BLUE 蓝色。
 
     @property
     def UserName(self):
-        r"""个人用户姓名
+        r"""<p>个人用户姓名</p>
         :rtype: str
         """
         return self._UserName
@@ -18534,10 +18654,7 @@ BLUE 蓝色。
 
     @property
     def IdCardNumber(self):
-        r"""证件号码，应符合以下规则
-<ul><li> 中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        r"""<p>证件号码，应符合以下规则</p><ul><li> 中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._IdCardNumber
@@ -18548,7 +18665,7 @@ BLUE 蓝色。
 
     @property
     def SealName(self):
-        r"""印章名称，长度1-50个字。
+        r"""<p>印章名称，长度1-50个字。</p>
         :rtype: str
         """
         return self._SealName
@@ -18559,8 +18676,7 @@ BLUE 蓝色。
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -18571,10 +18687,7 @@ BLUE 蓝色。
 
     @property
     def IdCardType(self):
-        r"""证件类型，支持以下类型
-<ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同 中国大陆居民身份证)</li></ul>
+        r"""<p>证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同 中国大陆居民身份证)</li></ul>
         :rtype: str
         """
         return self._IdCardType
@@ -18587,7 +18700,7 @@ BLUE 蓝色。
     def SealImage(self):
         warnings.warn("parameter `SealImage` is deprecated", DeprecationWarning) 
 
-        r"""该字段已不再使用
+        r"""<p>该字段已不再使用</p>
         :rtype: str
         """
         return self._SealImage
@@ -18600,7 +18713,7 @@ BLUE 蓝色。
 
     @property
     def SealImageCompress(self):
-        r"""是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+        r"""<p>是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。</p>
         :rtype: bool
         """
         return self._SealImageCompress
@@ -18611,7 +18724,7 @@ BLUE 蓝色。
 
     @property
     def Mobile(self):
-        r"""手机号码；当需要开通自动签时，该参数必传
+        r"""<p>手机号码；当需要开通自动签时，该参数必传</p>
         :rtype: str
         """
         return self._Mobile
@@ -18622,23 +18735,22 @@ BLUE 蓝色。
 
     @property
     def EnableAutoSign(self):
-        r"""该字段已不再使用
+        warnings.warn("parameter `EnableAutoSign` is deprecated", DeprecationWarning) 
+
+        r"""<p>该字段已不再使用</p>
         :rtype: bool
         """
         return self._EnableAutoSign
 
     @EnableAutoSign.setter
     def EnableAutoSign(self, EnableAutoSign):
+        warnings.warn("parameter `EnableAutoSign` is deprecated", DeprecationWarning) 
+
         self._EnableAutoSign = EnableAutoSign
 
     @property
     def SealColor(self):
-        r"""印章颜色（参数ProcessSeal=true时生效）
-默认值：BLACK黑色
-取值: 
-BLACK 黑色,
-RED 红色,
-BLUE 蓝色。
+        r"""<p>印章颜色（参数ProcessSeal=true时生效）<br>默认值：BLACK黑色<br>取值:<br>BLACK 黑色,<br>RED 红色,<br>BLUE 蓝色。</p>
         :rtype: str
         """
         return self._SealColor
@@ -18649,12 +18761,7 @@ BLUE 蓝色。
 
     @property
     def ProcessSeal(self):
-        r"""是否处理印章，默认不做印章处理。
-取值如下：
-<ul>
-<li>false：不做任何处理；</li>
-<li>true：做透明化处理和颜色增强。</li>
-</ul>
+        r"""<p>是否处理印章，默认不做印章处理。<br>取值如下：</p><ul><li>false：不做任何处理；</li><li>true：做透明化处理和颜色增强。</li></ul>
         :rtype: bool
         """
         return self._ProcessSeal
@@ -18665,9 +18772,7 @@ BLUE 蓝色。
 
     @property
     def FileId(self):
-        r"""印章图片文件 id
-取值：
-填写的FileId通过UploadFiles接口上传文件获取。
+        r"""<p>印章图片文件 id<br>取值：<br>填写的FileId通过UploadFiles接口上传文件获取。</p>
         :rtype: str
         """
         return self._FileId
@@ -18678,8 +18783,7 @@ BLUE 蓝色。
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -18690,7 +18794,7 @@ BLUE 蓝色。
 
     @property
     def LicenseType(self):
-        r"""设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+        r"""<p>设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减</p>
         :rtype: int
         """
         return self._LicenseType
@@ -18701,10 +18805,7 @@ BLUE 蓝色。
 
     @property
     def SceneKey(self):
-        r"""自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
-
-注: `不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN`
+        r"""<p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul><p>注: <code>不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN</code></p>
         :rtype: str
         """
         return self._SceneKey
@@ -18751,8 +18852,7 @@ class CreatePreparedPersonalEsignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SealId: 导入生成的印章ID，为32位字符串。
-建议开发者保存此印章ID，开头实名认证后，通过此 ID查询导入的印章。
+        :param _SealId: <p>导入生成的印章ID，为32位字符串。<br>建议开发者保存此印章ID，开头实名认证后，通过此 ID查询导入的印章。</p>
         :type SealId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18762,8 +18862,7 @@ class CreatePreparedPersonalEsignResponse(AbstractModel):
 
     @property
     def SealId(self):
-        r"""导入生成的印章ID，为32位字符串。
-建议开发者保存此印章ID，开头实名认证后，通过此 ID查询导入的印章。
+        r"""<p>导入生成的印章ID，为32位字符串。<br>建议开发者保存此印章ID，开头实名认证后，通过此 ID查询导入的印章。</p>
         :rtype: str
         """
         return self._SealId
@@ -26288,6 +26387,164 @@ class DescribeExtendedServiceAuthInfosResponse(AbstractModel):
                 obj = ExtendAuthInfo()
                 obj._deserialize(item)
                 self._AuthInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFileConvertTaskRequest(AbstractModel):
+    r"""DescribeFileConvertTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>得到的转换任务id</p>
+        :type TaskId: str
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._TaskId = None
+        self._Operator = None
+        self._Agent = None
+
+    @property
+    def TaskId(self):
+        r"""<p>转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>得到的转换任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Operator(self):
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileConvertTaskResponse(AbstractModel):
+    r"""DescribeFileConvertTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务Id</p>
+        :type TaskId: str
+        :param _TaskStatus: <p>任务状态，需要关注的状态</p><p>枚举值：</p><ul><li>0： NeedTranform - 任务已提交</li><li>4： Processing - 文档转换中</li><li>8： TaskEnd - 任务处理完成</li><li>-2： DownloadFailed - 下载失败</li><li>-6： ProcessFailed - 转换失败</li><li>-13： ProcessTimeout - 转换文件超时</li></ul>
+        :type TaskStatus: int
+        :param _TaskMessage: <p>状态描述，需要关注的状态</p><ul><li> **NeedTranform** : 任务已提交</li><li> **Processing** : 文档转换中</li><li> **TaskEnd** : 任务处理完成</li><li> **DownloadFailed** : 下载失败</li><li> **ProcessFailed** : 转换失败</li><li> **ProcessTimeout** : 转换文件超时</li></ul>
+        :type TaskMessage: str
+        :param _ResourceId: <p>资源Id（即FileId），用于<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles">用PDF文件创建签署流程</a></p>
+        :type ResourceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskStatus = None
+        self._TaskMessage = None
+        self._ResourceId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务Id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskStatus(self):
+        r"""<p>任务状态，需要关注的状态</p><p>枚举值：</p><ul><li>0： NeedTranform - 任务已提交</li><li>4： Processing - 文档转换中</li><li>8： TaskEnd - 任务处理完成</li><li>-2： DownloadFailed - 下载失败</li><li>-6： ProcessFailed - 转换失败</li><li>-13： ProcessTimeout - 转换文件超时</li></ul>
+        :rtype: int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def TaskMessage(self):
+        r"""<p>状态描述，需要关注的状态</p><ul><li> **NeedTranform** : 任务已提交</li><li> **Processing** : 文档转换中</li><li> **TaskEnd** : 任务处理完成</li><li> **DownloadFailed** : 下载失败</li><li> **ProcessFailed** : 转换失败</li><li> **ProcessTimeout** : 转换文件超时</li></ul>
+        :rtype: str
+        """
+        return self._TaskMessage
+
+    @TaskMessage.setter
+    def TaskMessage(self, TaskMessage):
+        self._TaskMessage = TaskMessage
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源Id（即FileId），用于<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles">用PDF文件创建签署流程</a></p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._TaskMessage = params.get("TaskMessage")
+        self._ResourceId = params.get("ResourceId")
         self._RequestId = params.get("RequestId")
 
 

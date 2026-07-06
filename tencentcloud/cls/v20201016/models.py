@@ -13416,32 +13416,36 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SrcTopicId: 源日志主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _SrcTopicId: <p>源日志主题ID- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :type SrcTopicId: str
-        :param _Name: 任务名称，0~255字符
+        :param _Name: <p>任务名称，0~255字符</p>
         :type Name: str
-        :param _EnableFlag: 任务启动状态.  1开启,  2关闭
+        :param _EnableFlag: <p>任务启动状态.  1开启,  2关闭</p>
         :type EnableFlag: int
-        :param _DstResource: 定时SQL分析目标日志主题
+        :param _DstResource: <p>定时SQL分析目标日志主题</p>
         :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
-        :param _ScheduledSqlContent: 查询语句
+        :param _ScheduledSqlContent: <p>查询语句</p>
         :type ScheduledSqlContent: str
-        :param _ProcessStartTime: 调度开始时间,Unix时间戳，单位ms
+        :param _ProcessStartTime: <p>调度开始时间,Unix时间戳，单位ms</p>
         :type ProcessStartTime: int
-        :param _ProcessType: 调度类型，1:持续运行 2:指定时间范围
+        :param _ProcessType: <p>调度类型，1:持续运行 2:指定时间范围</p>
         :type ProcessType: int
-        :param _ProcessPeriod: 调度周期(分钟)，1~1440分钟
+        :param _ProcessPeriod: <p>调度周期(分钟)，1~1440分钟</p>
         :type ProcessPeriod: int
-        :param _ProcessTimeWindow: 单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。 
+        :param _ProcessTimeWindow: <p>单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。</p>
         :type ProcessTimeWindow: str
-        :param _ProcessDelay: 执行延迟(秒)，0~120秒，默认60秒
+        :param _ProcessDelay: <p>执行延迟(秒)，0~120秒，默认60秒</p>
         :type ProcessDelay: int
-        :param _SrcTopicRegion: 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
+        :param _SrcTopicRegion: <p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
         :type SrcTopicRegion: str
-        :param _ProcessEndTime: 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
+        :param _ProcessEndTime: <p>调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms</p>
         :type ProcessEndTime: int
-        :param _SyntaxRule: 查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+        :param _SyntaxRule: <p>查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法</p>
         :type SyntaxRule: int
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :type HasServicesLog: int
+        :param _FullQuery: <p>全文检索标记。1：关闭，2：打开。默认：1</p>
+        :type FullQuery: int
         """
         self._SrcTopicId = None
         self._Name = None
@@ -13456,10 +13460,12 @@ class CreateScheduledSqlRequest(AbstractModel):
         self._SrcTopicRegion = None
         self._ProcessEndTime = None
         self._SyntaxRule = None
+        self._HasServicesLog = None
+        self._FullQuery = None
 
     @property
     def SrcTopicId(self):
-        r"""源日志主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>源日志主题ID- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
         :rtype: str
         """
         return self._SrcTopicId
@@ -13470,7 +13476,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名称，0~255字符
+        r"""<p>任务名称，0~255字符</p>
         :rtype: str
         """
         return self._Name
@@ -13481,7 +13487,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def EnableFlag(self):
-        r"""任务启动状态.  1开启,  2关闭
+        r"""<p>任务启动状态.  1开启,  2关闭</p>
         :rtype: int
         """
         return self._EnableFlag
@@ -13492,7 +13498,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def DstResource(self):
-        r"""定时SQL分析目标日志主题
+        r"""<p>定时SQL分析目标日志主题</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
         """
         return self._DstResource
@@ -13503,7 +13509,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ScheduledSqlContent(self):
-        r"""查询语句
+        r"""<p>查询语句</p>
         :rtype: str
         """
         return self._ScheduledSqlContent
@@ -13514,7 +13520,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessStartTime(self):
-        r"""调度开始时间,Unix时间戳，单位ms
+        r"""<p>调度开始时间,Unix时间戳，单位ms</p>
         :rtype: int
         """
         return self._ProcessStartTime
@@ -13525,7 +13531,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessType(self):
-        r"""调度类型，1:持续运行 2:指定时间范围
+        r"""<p>调度类型，1:持续运行 2:指定时间范围</p>
         :rtype: int
         """
         return self._ProcessType
@@ -13536,7 +13542,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessPeriod(self):
-        r"""调度周期(分钟)，1~1440分钟
+        r"""<p>调度周期(分钟)，1~1440分钟</p>
         :rtype: int
         """
         return self._ProcessPeriod
@@ -13547,7 +13553,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessTimeWindow(self):
-        r"""单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。 
+        r"""<p>单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。</p>
         :rtype: str
         """
         return self._ProcessTimeWindow
@@ -13558,7 +13564,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessDelay(self):
-        r"""执行延迟(秒)，0~120秒，默认60秒
+        r"""<p>执行延迟(秒)，0~120秒，默认60秒</p>
         :rtype: int
         """
         return self._ProcessDelay
@@ -13569,7 +13575,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
-        r"""源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
+        r"""<p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
         :rtype: str
         """
         return self._SrcTopicRegion
@@ -13580,7 +13586,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessEndTime(self):
-        r"""调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
+        r"""<p>调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms</p>
         :rtype: int
         """
         return self._ProcessEndTime
@@ -13591,7 +13597,7 @@ class CreateScheduledSqlRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
-        r"""查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+        r"""<p>查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法</p>
         :rtype: int
         """
         return self._SyntaxRule
@@ -13599,6 +13605,28 @@ class CreateScheduledSqlRequest(AbstractModel):
     @SyntaxRule.setter
     def SyntaxRule(self, SyntaxRule):
         self._SyntaxRule = SyntaxRule
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def FullQuery(self):
+        r"""<p>全文检索标记。1：关闭，2：打开。默认：1</p>
+        :rtype: int
+        """
+        return self._FullQuery
+
+    @FullQuery.setter
+    def FullQuery(self, FullQuery):
+        self._FullQuery = FullQuery
 
 
     def _deserialize(self, params):
@@ -13617,6 +13645,8 @@ class CreateScheduledSqlRequest(AbstractModel):
         self._SrcTopicRegion = params.get("SrcTopicRegion")
         self._ProcessEndTime = params.get("ProcessEndTime")
         self._SyntaxRule = params.get("SyntaxRule")
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._FullQuery = params.get("FullQuery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13634,7 +13664,7 @@ class CreateScheduledSqlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13644,7 +13674,7 @@ class CreateScheduledSqlResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -41645,28 +41675,32 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
+        :param _TaskId: <p>任务ID，通过<a href="https://cloud.tencent.com/document/product/614/95519">获取定时SQL分析任务列表</a>获取</p>
         :type TaskId: str
-        :param _SrcTopicId: 源日志主题，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
+        :param _SrcTopicId: <p>源日志主题，通过<a href="https://cloud.tencent.com/document/product/614/95519">获取定时SQL分析任务列表</a>获取</p>
         :type SrcTopicId: str
-        :param _EnableFlag: 任务启动状态.   1开启,  2关闭
+        :param _EnableFlag: <p>任务启动状态.   1开启,  2关闭</p>
         :type EnableFlag: int
-        :param _DstResource: 定时SQL分析的目标日志主题
+        :param _DstResource: <p>定时SQL分析的目标日志主题</p>
         :type DstResource: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
-        :param _ScheduledSqlContent: 查询语句
+        :param _ScheduledSqlContent: <p>查询语句</p>
         :type ScheduledSqlContent: str
-        :param _ProcessPeriod: 调度周期(分钟)，1~1440分钟
+        :param _ProcessPeriod: <p>调度周期(分钟)，1~1440分钟</p>
         :type ProcessPeriod: int
-        :param _ProcessTimeWindow: 单次查询的时间窗口. 例子中为近15分钟
+        :param _ProcessTimeWindow: <p>单次查询的时间窗口. 例子中为近15分钟</p>
         :type ProcessTimeWindow: str
-        :param _ProcessDelay: 执行延迟(秒)，0~120秒，默认60秒
+        :param _ProcessDelay: <p>执行延迟(秒)，0~120秒，默认60秒</p>
         :type ProcessDelay: int
-        :param _SrcTopicRegion: 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
+        :param _SrcTopicRegion: <p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
         :type SrcTopicRegion: str
-        :param _Name: 任务名称，0~255字符
+        :param _Name: <p>任务名称，0~255字符</p>
         :type Name: str
-        :param _SyntaxRule: 语法规则。 默认值为0。 0：Lucene语法，1：CQL语法
+        :param _SyntaxRule: <p>语法规则。 默认值为0。 0：Lucene语法，1：CQL语法</p>
         :type SyntaxRule: int
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :type HasServicesLog: int
+        :param _FullQuery: <p>全文检索查询标记。1：关闭，2：打开。</p>
+        :type FullQuery: int
         """
         self._TaskId = None
         self._SrcTopicId = None
@@ -41679,10 +41713,12 @@ class ModifyScheduledSqlRequest(AbstractModel):
         self._SrcTopicRegion = None
         self._Name = None
         self._SyntaxRule = None
+        self._HasServicesLog = None
+        self._FullQuery = None
 
     @property
     def TaskId(self):
-        r"""任务ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
+        r"""<p>任务ID，通过<a href="https://cloud.tencent.com/document/product/614/95519">获取定时SQL分析任务列表</a>获取</p>
         :rtype: str
         """
         return self._TaskId
@@ -41693,7 +41729,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicId(self):
-        r"""源日志主题，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
+        r"""<p>源日志主题，通过<a href="https://cloud.tencent.com/document/product/614/95519">获取定时SQL分析任务列表</a>获取</p>
         :rtype: str
         """
         return self._SrcTopicId
@@ -41704,7 +41740,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def EnableFlag(self):
-        r"""任务启动状态.   1开启,  2关闭
+        r"""<p>任务启动状态.   1开启,  2关闭</p>
         :rtype: int
         """
         return self._EnableFlag
@@ -41715,7 +41751,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def DstResource(self):
-        r"""定时SQL分析的目标日志主题
+        r"""<p>定时SQL分析的目标日志主题</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.ScheduledSqlResouceInfo`
         """
         return self._DstResource
@@ -41726,7 +41762,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ScheduledSqlContent(self):
-        r"""查询语句
+        r"""<p>查询语句</p>
         :rtype: str
         """
         return self._ScheduledSqlContent
@@ -41737,7 +41773,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessPeriod(self):
-        r"""调度周期(分钟)，1~1440分钟
+        r"""<p>调度周期(分钟)，1~1440分钟</p>
         :rtype: int
         """
         return self._ProcessPeriod
@@ -41748,7 +41784,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessTimeWindow(self):
-        r"""单次查询的时间窗口. 例子中为近15分钟
+        r"""<p>单次查询的时间窗口. 例子中为近15分钟</p>
         :rtype: str
         """
         return self._ProcessTimeWindow
@@ -41759,7 +41795,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def ProcessDelay(self):
-        r"""执行延迟(秒)，0~120秒，默认60秒
+        r"""<p>执行延迟(秒)，0~120秒，默认60秒</p>
         :rtype: int
         """
         return self._ProcessDelay
@@ -41770,7 +41806,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SrcTopicRegion(self):
-        r"""源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
+        r"""<p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
         :rtype: str
         """
         return self._SrcTopicRegion
@@ -41781,7 +41817,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名称，0~255字符
+        r"""<p>任务名称，0~255字符</p>
         :rtype: str
         """
         return self._Name
@@ -41792,7 +41828,7 @@ class ModifyScheduledSqlRequest(AbstractModel):
 
     @property
     def SyntaxRule(self):
-        r"""语法规则。 默认值为0。 0：Lucene语法，1：CQL语法
+        r"""<p>语法规则。 默认值为0。 0：Lucene语法，1：CQL语法</p>
         :rtype: int
         """
         return self._SyntaxRule
@@ -41800,6 +41836,28 @@ class ModifyScheduledSqlRequest(AbstractModel):
     @SyntaxRule.setter
     def SyntaxRule(self, SyntaxRule):
         self._SyntaxRule = SyntaxRule
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def FullQuery(self):
+        r"""<p>全文检索查询标记。1：关闭，2：打开。</p>
+        :rtype: int
+        """
+        return self._FullQuery
+
+    @FullQuery.setter
+    def FullQuery(self, FullQuery):
+        self._FullQuery = FullQuery
 
 
     def _deserialize(self, params):
@@ -41816,6 +41874,8 @@ class ModifyScheduledSqlRequest(AbstractModel):
         self._SrcTopicRegion = params.get("SrcTopicRegion")
         self._Name = params.get("Name")
         self._SyntaxRule = params.get("SyntaxRule")
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._FullQuery = params.get("FullQuery")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

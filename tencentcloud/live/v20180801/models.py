@@ -30397,43 +30397,29 @@ class DomainInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 直播域名。
+        :param _Name: <p>直播域名。</p>
         :type Name: str
-        :param _Type: 域名类型:
-0: 推流。
-1: 播放。
+        :param _Type: <p>域名类型:<br>0: 推流。<br>1: 播放。</p>
         :type Type: int
-        :param _Status: 域名状态:
-0: 停用。
-1: 启用。
+        :param _Status: <p>域名状态:<br>0: 停用。<br>1: 启用。</p>
         :type Status: int
-        :param _CreateTime: 添加时间。
-注：此字段为北京时间（UTC+8时区）。
+        :param _CreateTime: <p>添加时间。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :type CreateTime: str
-        :param _BCName: 是否有 CName 到固定规则域名:
-0: 否。
-1: 是。
+        :param _BCName: <p>是否有 CName 到固定规则域名:<br>0: 否。<br>1: 是。</p>
         :type BCName: int
-        :param _TargetDomain: cname 对应的域名。
+        :param _TargetDomain: <p>cname 对应的域名。</p>
         :type TargetDomain: str
-        :param _PlayType: 播放区域，只在 Type=1 时该参数有意义。
-1: 国内。
-2: 全球。
-3: 海外。
+        :param _PlayType: <p>播放区域，只在 Type=1 时该参数有意义。<br>1: 国内。<br>2: 全球。<br>3: 海外。</p>
         :type PlayType: int
-        :param _IsDelayLive: 是否慢直播:
-0: 普通直播。
-1: 慢直播。
+        :param _IsDelayLive: <p>是否慢直播:<br>0: 普通直播。<br>1: 慢直播。</p>
         :type IsDelayLive: int
-        :param _CurrentCName: 当前客户使用的 cname 信息。
+        :param _CurrentCName: <p>当前客户使用的 cname 信息。</p>
         :type CurrentCName: str
-        :param _RentTag: 失效参数，可忽略。
+        :param _RentTag: <p>失效参数，可忽略。</p>
         :type RentTag: int
-        :param _RentExpireTime: 失效参数，可忽略。
-注：此字段为北京时间（UTC+8时区）。
+        :param _RentExpireTime: <p>失效参数，可忽略。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :type RentExpireTime: str
-        :param _IsMiniProgramLive: 0: 标准直播。
-1: 小程序直播。
+        :param _IsMiniProgramLive: <p>0: 标准直播。<br>1: 小程序直播。</p>
         :type IsMiniProgramLive: int
         """
         self._Name = None
@@ -30451,7 +30437,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""直播域名。
+        r"""<p>直播域名。</p>
         :rtype: str
         """
         return self._Name
@@ -30462,9 +30448,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""域名类型:
-0: 推流。
-1: 播放。
+        r"""<p>域名类型:<br>0: 推流。<br>1: 播放。</p>
         :rtype: int
         """
         return self._Type
@@ -30475,9 +30459,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""域名状态:
-0: 停用。
-1: 启用。
+        r"""<p>域名状态:<br>0: 停用。<br>1: 启用。</p>
         :rtype: int
         """
         return self._Status
@@ -30488,8 +30470,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""添加时间。
-注：此字段为北京时间（UTC+8时区）。
+        r"""<p>添加时间。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -30500,9 +30481,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def BCName(self):
-        r"""是否有 CName 到固定规则域名:
-0: 否。
-1: 是。
+        r"""<p>是否有 CName 到固定规则域名:<br>0: 否。<br>1: 是。</p>
         :rtype: int
         """
         return self._BCName
@@ -30513,7 +30492,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def TargetDomain(self):
-        r"""cname 对应的域名。
+        r"""<p>cname 对应的域名。</p>
         :rtype: str
         """
         return self._TargetDomain
@@ -30524,10 +30503,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def PlayType(self):
-        r"""播放区域，只在 Type=1 时该参数有意义。
-1: 国内。
-2: 全球。
-3: 海外。
+        r"""<p>播放区域，只在 Type=1 时该参数有意义。<br>1: 国内。<br>2: 全球。<br>3: 海外。</p>
         :rtype: int
         """
         return self._PlayType
@@ -30538,9 +30514,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsDelayLive(self):
-        r"""是否慢直播:
-0: 普通直播。
-1: 慢直播。
+        r"""<p>是否慢直播:<br>0: 普通直播。<br>1: 慢直播。</p>
         :rtype: int
         """
         return self._IsDelayLive
@@ -30551,7 +30525,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def CurrentCName(self):
-        r"""当前客户使用的 cname 信息。
+        r"""<p>当前客户使用的 cname 信息。</p>
         :rtype: str
         """
         return self._CurrentCName
@@ -30562,7 +30536,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def RentTag(self):
-        r"""失效参数，可忽略。
+        r"""<p>失效参数，可忽略。</p>
         :rtype: int
         """
         return self._RentTag
@@ -30573,8 +30547,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def RentExpireTime(self):
-        r"""失效参数，可忽略。
-注：此字段为北京时间（UTC+8时区）。
+        r"""<p>失效参数，可忽略。<br>注：此字段为北京时间（UTC+8时区）。</p>
         :rtype: str
         """
         return self._RentExpireTime
@@ -30585,8 +30558,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsMiniProgramLive(self):
-        r"""0: 标准直播。
-1: 小程序直播。
+        r"""<p>0: 标准直播。<br>1: 小程序直播。</p>
         :rtype: int
         """
         return self._IsMiniProgramLive

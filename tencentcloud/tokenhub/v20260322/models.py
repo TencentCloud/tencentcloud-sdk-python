@@ -2233,10 +2233,38 @@ class DescribeModelListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ModelSet: <p>模型列表。</p>
+        :type ModelSet: list of Model
+        :param _TotalCount: <p>符合条件的模型总数。</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ModelSet = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def ModelSet(self):
+        r"""<p>模型列表。</p>
+        :rtype: list of Model
+        """
+        return self._ModelSet
+
+    @ModelSet.setter
+    def ModelSet(self, ModelSet):
+        self._ModelSet = ModelSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的模型总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -2251,6 +2279,13 @@ class DescribeModelListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ModelSet") is not None:
+            self._ModelSet = []
+            for item in params.get("ModelSet"):
+                obj = Model()
+                obj._deserialize(item)
+                self._ModelSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -3962,6 +3997,842 @@ class GlossaryItem(AbstractModel):
         self._Target = params.get("Target")
         self._CreatedTime = params.get("CreatedTime")
         self._UpdatedTime = params.get("UpdatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Model(AbstractModel):
+    r"""模型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _ModelId: <p>模型 ID。</p>
+        :type ModelId: str
+        :param _DisplayName: <p>模型显示名称。</p>
+        :type DisplayName: str
+        :param _Description: <p>模型描述。</p>
+        :type Description: str
+        :param _Summary: <p>模型概要。</p>
+        :type Summary: str
+        :param _ModelType: <p>模型类型。取值：Text（文本）、Vision（视觉）、Multimodal（多模态）、Speech（语音）、Embedding（向量）。</p><p>枚举值：</p><ul><li>Text： 语言模型</li><li>Vision： 视觉模型</li><li>Multimodal： 多模态模型</li></ul>
+        :type ModelType: str
+        :param _Brand: <p>模型品牌。</p>
+        :type Brand: str
+        :param _ModelImage: <p>模型图标。</p>
+        :type ModelImage: :class:`tencentcloud.tokenhub.v20260322.models.ModelImage`
+        :param _Provider: <p>模型供应商。</p>
+        :type Provider: str
+        :param _Status: <p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li></ul>
+        :type Status: str
+        :param _Tags: <p>标签列表。</p>
+        :type Tags: list of str
+        :param _ModelChargingInfo: <p>计费信息列表。</p>
+        :type ModelChargingInfo: list of ModelChargingInfo
+        :param _ModelSpec: <p>模型规格。</p>
+        :type ModelSpec: :class:`tencentcloud.tokenhub.v20260322.models.ModelSpec`
+        :param _ReleaseAt: <p>发布时间。</p>
+        :type ReleaseAt: str
+        :param _RecommendWeight: <p>推荐顺序，值越小排序越靠前。</p>
+        :type RecommendWeight: int
+        :param _ModelAccessInfo: <p>模型访问信息。包含模型在各站点和地域的可用性配置。为空时表示未配置地域信息，模型不可用。</p>
+        :type ModelAccessInfo: :class:`tencentcloud.tokenhub.v20260322.models.ModelAccessInfo`
+        :param _FreeTrialInfo: <p>体验包信息。</p>
+        :type FreeTrialInfo: :class:`tencentcloud.tokenhub.v20260322.models.ModelFreeTrialInfo`
+        :param _OfflineAt: <p>模型下线时间，Status=pre-offline 时，会配置模型下线时间</p>
+        :type OfflineAt: str
+        """
+        self._ModelName = None
+        self._ModelId = None
+        self._DisplayName = None
+        self._Description = None
+        self._Summary = None
+        self._ModelType = None
+        self._Brand = None
+        self._ModelImage = None
+        self._Provider = None
+        self._Status = None
+        self._Tags = None
+        self._ModelChargingInfo = None
+        self._ModelSpec = None
+        self._ReleaseAt = None
+        self._RecommendWeight = None
+        self._ModelAccessInfo = None
+        self._FreeTrialInfo = None
+        self._OfflineAt = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelId(self):
+        r"""<p>模型 ID。</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def DisplayName(self):
+        r"""<p>模型显示名称。</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        r"""<p>模型描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Summary(self):
+        r"""<p>模型概要。</p>
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def ModelType(self):
+        r"""<p>模型类型。取值：Text（文本）、Vision（视觉）、Multimodal（多模态）、Speech（语音）、Embedding（向量）。</p><p>枚举值：</p><ul><li>Text： 语言模型</li><li>Vision： 视觉模型</li><li>Multimodal： 多模态模型</li></ul>
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
+    @property
+    def Brand(self):
+        r"""<p>模型品牌。</p>
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def ModelImage(self):
+        r"""<p>模型图标。</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModelImage`
+        """
+        return self._ModelImage
+
+    @ModelImage.setter
+    def ModelImage(self, ModelImage):
+        self._ModelImage = ModelImage
+
+    @property
+    def Provider(self):
+        r"""<p>模型供应商。</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Status(self):
+        r"""<p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表。</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ModelChargingInfo(self):
+        r"""<p>计费信息列表。</p>
+        :rtype: list of ModelChargingInfo
+        """
+        return self._ModelChargingInfo
+
+    @ModelChargingInfo.setter
+    def ModelChargingInfo(self, ModelChargingInfo):
+        self._ModelChargingInfo = ModelChargingInfo
+
+    @property
+    def ModelSpec(self):
+        r"""<p>模型规格。</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModelSpec`
+        """
+        return self._ModelSpec
+
+    @ModelSpec.setter
+    def ModelSpec(self, ModelSpec):
+        self._ModelSpec = ModelSpec
+
+    @property
+    def ReleaseAt(self):
+        r"""<p>发布时间。</p>
+        :rtype: str
+        """
+        return self._ReleaseAt
+
+    @ReleaseAt.setter
+    def ReleaseAt(self, ReleaseAt):
+        self._ReleaseAt = ReleaseAt
+
+    @property
+    def RecommendWeight(self):
+        r"""<p>推荐顺序，值越小排序越靠前。</p>
+        :rtype: int
+        """
+        return self._RecommendWeight
+
+    @RecommendWeight.setter
+    def RecommendWeight(self, RecommendWeight):
+        self._RecommendWeight = RecommendWeight
+
+    @property
+    def ModelAccessInfo(self):
+        r"""<p>模型访问信息。包含模型在各站点和地域的可用性配置。为空时表示未配置地域信息，模型不可用。</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModelAccessInfo`
+        """
+        return self._ModelAccessInfo
+
+    @ModelAccessInfo.setter
+    def ModelAccessInfo(self, ModelAccessInfo):
+        self._ModelAccessInfo = ModelAccessInfo
+
+    @property
+    def FreeTrialInfo(self):
+        r"""<p>体验包信息。</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModelFreeTrialInfo`
+        """
+        return self._FreeTrialInfo
+
+    @FreeTrialInfo.setter
+    def FreeTrialInfo(self, FreeTrialInfo):
+        self._FreeTrialInfo = FreeTrialInfo
+
+    @property
+    def OfflineAt(self):
+        r"""<p>模型下线时间，Status=pre-offline 时，会配置模型下线时间</p>
+        :rtype: str
+        """
+        return self._OfflineAt
+
+    @OfflineAt.setter
+    def OfflineAt(self, OfflineAt):
+        self._OfflineAt = OfflineAt
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelId = params.get("ModelId")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._Summary = params.get("Summary")
+        self._ModelType = params.get("ModelType")
+        self._Brand = params.get("Brand")
+        if params.get("ModelImage") is not None:
+            self._ModelImage = ModelImage()
+            self._ModelImage._deserialize(params.get("ModelImage"))
+        self._Provider = params.get("Provider")
+        self._Status = params.get("Status")
+        self._Tags = params.get("Tags")
+        if params.get("ModelChargingInfo") is not None:
+            self._ModelChargingInfo = []
+            for item in params.get("ModelChargingInfo"):
+                obj = ModelChargingInfo()
+                obj._deserialize(item)
+                self._ModelChargingInfo.append(obj)
+        if params.get("ModelSpec") is not None:
+            self._ModelSpec = ModelSpec()
+            self._ModelSpec._deserialize(params.get("ModelSpec"))
+        self._ReleaseAt = params.get("ReleaseAt")
+        self._RecommendWeight = params.get("RecommendWeight")
+        if params.get("ModelAccessInfo") is not None:
+            self._ModelAccessInfo = ModelAccessInfo()
+            self._ModelAccessInfo._deserialize(params.get("ModelAccessInfo"))
+        if params.get("FreeTrialInfo") is not None:
+            self._FreeTrialInfo = ModelFreeTrialInfo()
+            self._FreeTrialInfo._deserialize(params.get("FreeTrialInfo"))
+        self._OfflineAt = params.get("OfflineAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelAccessInfo(AbstractModel):
+    r"""模型访问信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelSiteRegions: 各站点的地域可用性列表。为空时表示未配置地域信息，模型不可用。
+        :type ModelSiteRegions: list of ModelSiteRegion
+        """
+        self._ModelSiteRegions = None
+
+    @property
+    def ModelSiteRegions(self):
+        r"""各站点的地域可用性列表。为空时表示未配置地域信息，模型不可用。
+        :rtype: list of ModelSiteRegion
+        """
+        return self._ModelSiteRegions
+
+    @ModelSiteRegions.setter
+    def ModelSiteRegions(self, ModelSiteRegions):
+        self._ModelSiteRegions = ModelSiteRegions
+
+
+    def _deserialize(self, params):
+        if params.get("ModelSiteRegions") is not None:
+            self._ModelSiteRegions = []
+            for item in params.get("ModelSiteRegions"):
+                obj = ModelSiteRegion()
+                obj._deserialize(item)
+                self._ModelSiteRegions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChargingInfo(AbstractModel):
+    r"""模型计费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 计费类型。取值：Uniform（统一计费）、Tiered（阶梯计费）。
+        :type Type: str
+        :param _Name: 计费名称，阶梯计费时表示区间标识，统一计费为空。
+        :type Name: str
+        :param _Scenario: 计费场景，用于区分同一产品不同功能的计费。
+        :type Scenario: str
+        :param _ChargingItems: 计费条目列表，顺序即前端展示顺序。
+        :type ChargingItems: list of ModelChargingItem
+        :param _ChargeUnit: 计费单位。取值：TOKEN（词元）、COUNT（次）、CREDIT（积分）、PICTURE（张）。
+        :type ChargeUnit: str
+        :param _Reference: 计费参考链接。
+        :type Reference: str
+        """
+        self._Type = None
+        self._Name = None
+        self._Scenario = None
+        self._ChargingItems = None
+        self._ChargeUnit = None
+        self._Reference = None
+
+    @property
+    def Type(self):
+        r"""计费类型。取值：Uniform（统一计费）、Tiered（阶梯计费）。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""计费名称，阶梯计费时表示区间标识，统一计费为空。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Scenario(self):
+        r"""计费场景，用于区分同一产品不同功能的计费。
+        :rtype: str
+        """
+        return self._Scenario
+
+    @Scenario.setter
+    def Scenario(self, Scenario):
+        self._Scenario = Scenario
+
+    @property
+    def ChargingItems(self):
+        r"""计费条目列表，顺序即前端展示顺序。
+        :rtype: list of ModelChargingItem
+        """
+        return self._ChargingItems
+
+    @ChargingItems.setter
+    def ChargingItems(self, ChargingItems):
+        self._ChargingItems = ChargingItems
+
+    @property
+    def ChargeUnit(self):
+        r"""计费单位。取值：TOKEN（词元）、COUNT（次）、CREDIT（积分）、PICTURE（张）。
+        :rtype: str
+        """
+        return self._ChargeUnit
+
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
+
+    @property
+    def Reference(self):
+        r"""计费参考链接。
+        :rtype: str
+        """
+        return self._Reference
+
+    @Reference.setter
+    def Reference(self, Reference):
+        self._Reference = Reference
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Scenario = params.get("Scenario")
+        if params.get("ChargingItems") is not None:
+            self._ChargingItems = []
+            for item in params.get("ChargingItems"):
+                obj = ModelChargingItem()
+                obj._deserialize(item)
+                self._ChargingItems.append(obj)
+        self._ChargeUnit = params.get("ChargeUnit")
+        self._Reference = params.get("Reference")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChargingItem(AbstractModel):
+    r"""计费条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PriceName: 价格维度标识。取值：Input（输入）、Output（输出）、Cache（缓存命中）、Thinking（思考）、BatchInput（批量输入）、BatchOutput（批量输出）、BatchCache（批量缓存命中）、ImageInput（输入图片）、ImageOutput（输出图片）、Search（搜索调用）。
+        :type PriceName: str
+        :param _DisplayName: 价格维度展示名，后端直接提供当前语言文本（如 输入、Input），前端无需翻译。
+        :type DisplayName: str
+        :param _Price: 价格数值。
+        :type Price: str
+        :param _PriceUnit: 价格单位，后端直接提供当前语言文本（如 元/百万tokens、元/张、积分/次）。
+        :type PriceUnit: str
+        """
+        self._PriceName = None
+        self._DisplayName = None
+        self._Price = None
+        self._PriceUnit = None
+
+    @property
+    def PriceName(self):
+        r"""价格维度标识。取值：Input（输入）、Output（输出）、Cache（缓存命中）、Thinking（思考）、BatchInput（批量输入）、BatchOutput（批量输出）、BatchCache（批量缓存命中）、ImageInput（输入图片）、ImageOutput（输出图片）、Search（搜索调用）。
+        :rtype: str
+        """
+        return self._PriceName
+
+    @PriceName.setter
+    def PriceName(self, PriceName):
+        self._PriceName = PriceName
+
+    @property
+    def DisplayName(self):
+        r"""价格维度展示名，后端直接提供当前语言文本（如 输入、Input），前端无需翻译。
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Price(self):
+        r"""价格数值。
+        :rtype: str
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def PriceUnit(self):
+        r"""价格单位，后端直接提供当前语言文本（如 元/百万tokens、元/张、积分/次）。
+        :rtype: str
+        """
+        return self._PriceUnit
+
+    @PriceUnit.setter
+    def PriceUnit(self, PriceUnit):
+        self._PriceUnit = PriceUnit
+
+
+    def _deserialize(self, params):
+        self._PriceName = params.get("PriceName")
+        self._DisplayName = params.get("DisplayName")
+        self._Price = params.get("Price")
+        self._PriceUnit = params.get("PriceUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelFreeTrialInfo(AbstractModel):
+    r"""模型体验包信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecommendWeight: 推荐顺序，值越小排序越靠前。为空表示使用模型默认权重。
+        :type RecommendWeight: int
+        :param _CapacitySize: 体验包容量大小。
+        :type CapacitySize: int
+        :param _Unit: 容量单位。取值：token。
+        :type Unit: str
+        :param _ValidityDays: 有效期天数（如90天）。为空表示不限期。
+        :type ValidityDays: int
+        """
+        self._RecommendWeight = None
+        self._CapacitySize = None
+        self._Unit = None
+        self._ValidityDays = None
+
+    @property
+    def RecommendWeight(self):
+        r"""推荐顺序，值越小排序越靠前。为空表示使用模型默认权重。
+        :rtype: int
+        """
+        return self._RecommendWeight
+
+    @RecommendWeight.setter
+    def RecommendWeight(self, RecommendWeight):
+        self._RecommendWeight = RecommendWeight
+
+    @property
+    def CapacitySize(self):
+        r"""体验包容量大小。
+        :rtype: int
+        """
+        return self._CapacitySize
+
+    @CapacitySize.setter
+    def CapacitySize(self, CapacitySize):
+        self._CapacitySize = CapacitySize
+
+    @property
+    def Unit(self):
+        r"""容量单位。取值：token。
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def ValidityDays(self):
+        r"""有效期天数（如90天）。为空表示不限期。
+        :rtype: int
+        """
+        return self._ValidityDays
+
+    @ValidityDays.setter
+    def ValidityDays(self, ValidityDays):
+        self._ValidityDays = ValidityDays
+
+
+    def _deserialize(self, params):
+        self._RecommendWeight = params.get("RecommendWeight")
+        self._CapacitySize = params.get("CapacitySize")
+        self._Unit = params.get("Unit")
+        self._ValidityDays = params.get("ValidityDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelImage(AbstractModel):
+    r"""模型图标信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 图标 URL。
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        r"""图标 URL。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelSiteRegion(AbstractModel):
+    r"""模型上线的站点、地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Site: 站点标识。取值：domestic（国内站）、international（国际站）。
+        :type Site: str
+        :param _Regions: 该站点下可用的地域列表，遵循腾讯云标准地域编码（如 ap-guangzhou、ap-beijing、ap-singapore、na-siliconvalley 等）。为空数组时表示该站点无可用地域。
+        :type Regions: list of str
+        """
+        self._Site = None
+        self._Regions = None
+
+    @property
+    def Site(self):
+        r"""站点标识。取值：domestic（国内站）、international（国际站）。
+        :rtype: str
+        """
+        return self._Site
+
+    @Site.setter
+    def Site(self, Site):
+        self._Site = Site
+
+    @property
+    def Regions(self):
+        r"""该站点下可用的地域列表，遵循腾讯云标准地域编码（如 ap-guangzhou、ap-beijing、ap-singapore、na-siliconvalley 等）。为空数组时表示该站点无可用地域。
+        :rtype: list of str
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+
+    def _deserialize(self, params):
+        self._Site = params.get("Site")
+        self._Regions = params.get("Regions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelSpec(AbstractModel):
+    r"""模型规格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TPM: 每分钟处理 Token 数（Tokens Per Minute）。
+        :type TPM: str
+        :param _QPM: 每分钟请求数（Queries Per Minute）。
+        :type QPM: str
+        :param _MaxInputToken: 最大输入 Token 长度。
+        :type MaxInputToken: str
+        :param _MaxOutputToken: 最大输出 Token 长度。
+        :type MaxOutputToken: str
+        :param _ContextLength: 上下文窗口长度。
+        :type ContextLength: str
+        :param _Concurrency: 并发数。
+        :type Concurrency: str
+        :param _InputDescription: 输入要求描述。
+        :type InputDescription: str
+        """
+        self._TPM = None
+        self._QPM = None
+        self._MaxInputToken = None
+        self._MaxOutputToken = None
+        self._ContextLength = None
+        self._Concurrency = None
+        self._InputDescription = None
+
+    @property
+    def TPM(self):
+        r"""每分钟处理 Token 数（Tokens Per Minute）。
+        :rtype: str
+        """
+        return self._TPM
+
+    @TPM.setter
+    def TPM(self, TPM):
+        self._TPM = TPM
+
+    @property
+    def QPM(self):
+        r"""每分钟请求数（Queries Per Minute）。
+        :rtype: str
+        """
+        return self._QPM
+
+    @QPM.setter
+    def QPM(self, QPM):
+        self._QPM = QPM
+
+    @property
+    def MaxInputToken(self):
+        r"""最大输入 Token 长度。
+        :rtype: str
+        """
+        return self._MaxInputToken
+
+    @MaxInputToken.setter
+    def MaxInputToken(self, MaxInputToken):
+        self._MaxInputToken = MaxInputToken
+
+    @property
+    def MaxOutputToken(self):
+        r"""最大输出 Token 长度。
+        :rtype: str
+        """
+        return self._MaxOutputToken
+
+    @MaxOutputToken.setter
+    def MaxOutputToken(self, MaxOutputToken):
+        self._MaxOutputToken = MaxOutputToken
+
+    @property
+    def ContextLength(self):
+        r"""上下文窗口长度。
+        :rtype: str
+        """
+        return self._ContextLength
+
+    @ContextLength.setter
+    def ContextLength(self, ContextLength):
+        self._ContextLength = ContextLength
+
+    @property
+    def Concurrency(self):
+        r"""并发数。
+        :rtype: str
+        """
+        return self._Concurrency
+
+    @Concurrency.setter
+    def Concurrency(self, Concurrency):
+        self._Concurrency = Concurrency
+
+    @property
+    def InputDescription(self):
+        r"""输入要求描述。
+        :rtype: str
+        """
+        return self._InputDescription
+
+    @InputDescription.setter
+    def InputDescription(self, InputDescription):
+        self._InputDescription = InputDescription
+
+
+    def _deserialize(self, params):
+        self._TPM = params.get("TPM")
+        self._QPM = params.get("QPM")
+        self._MaxInputToken = params.get("MaxInputToken")
+        self._MaxOutputToken = params.get("MaxOutputToken")
+        self._ContextLength = params.get("ContextLength")
+        self._Concurrency = params.get("Concurrency")
+        self._InputDescription = params.get("InputDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

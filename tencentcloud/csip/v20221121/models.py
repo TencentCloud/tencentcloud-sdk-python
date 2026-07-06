@@ -32537,11 +32537,11 @@ class DescribeDspmAssetDatabaseListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetId: 资产实例id
+        :param _AssetId: <p>资产实例id</p>
         :type AssetId: str
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _Filter: 筛选项
+        :param _Filter: <p>筛选项</p>
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         self._AssetId = None
@@ -32550,7 +32550,7 @@ class DescribeDspmAssetDatabaseListRequest(AbstractModel):
 
     @property
     def AssetId(self):
-        r"""资产实例id
+        r"""<p>资产实例id</p>
         :rtype: str
         """
         return self._AssetId
@@ -32561,7 +32561,7 @@ class DescribeDspmAssetDatabaseListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -32572,7 +32572,7 @@ class DescribeDspmAssetDatabaseListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""筛选项
+        r"""<p>筛选项</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -32605,9 +32605,9 @@ class DescribeDspmAssetDatabaseListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
-        :param _DataSet: 结果集
+        :param _DataSet: <p>结果集</p>
         :type DataSet: list of DspmAssetDatabaseInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32618,7 +32618,7 @@ class DescribeDspmAssetDatabaseListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -32629,7 +32629,7 @@ class DescribeDspmAssetDatabaseListResponse(AbstractModel):
 
     @property
     def DataSet(self):
-        r"""结果集
+        r"""<p>结果集</p>
         :rtype: list of DspmAssetDatabaseInfo
         """
         return self._DataSet
@@ -32753,7 +32753,7 @@ class DescribeDspmAssetFieldListRequest(AbstractModel):
         :type DbName: str
         :param _TableName: 表名
         :type TableName: str
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filter: 筛选项
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -32799,7 +32799,7 @@ class DescribeDspmAssetFieldListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -33422,7 +33422,7 @@ class DescribeDspmAssetTableListRequest(AbstractModel):
         :type AssetId: str
         :param _DbName: 数据库名称
         :type DbName: str
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filter: 筛选项
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -33456,7 +33456,7 @@ class DescribeDspmAssetTableListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -34068,17 +34068,20 @@ class DescribeDspmDictionaryListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DictType: 字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）
+        :param _DictType: <p>字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）</p>
         :type DictType: str
-        :param _Filters: 筛选条件
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>筛选条件</p>
         :type Filters: list of WhereFilter
         """
         self._DictType = None
+        self._MemberId = None
         self._Filters = None
 
     @property
     def DictType(self):
-        r"""字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）
+        r"""<p>字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）</p>
         :rtype: str
         """
         return self._DictType
@@ -34088,8 +34091,19 @@ class DescribeDspmDictionaryListRequest(AbstractModel):
         self._DictType = DictType
 
     @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
     def Filters(self):
-        r"""筛选条件
+        r"""<p>筛选条件</p>
         :rtype: list of WhereFilter
         """
         return self._Filters
@@ -34101,6 +34115,7 @@ class DescribeDspmDictionaryListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._DictType = params.get("DictType")
+        self._MemberId = params.get("MemberId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -34124,7 +34139,7 @@ class DescribeDspmDictionaryListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataSet: 结果集
+        :param _DataSet: <p>结果集</p>
         :type DataSet: list of DspmDictionary
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -34134,7 +34149,7 @@ class DescribeDspmDictionaryListResponse(AbstractModel):
 
     @property
     def DataSet(self):
-        r"""结果集
+        r"""<p>结果集</p>
         :rtype: list of DspmDictionary
         """
         return self._DataSet
@@ -35320,14 +35335,14 @@ class DescribeDspmPayInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         """
         self._MemberId = None
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -36918,14 +36933,17 @@ class DescribeDspmStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
+        :param _AssetType: <p>按照资产类型过滤</p><p>枚举值：</p><ul><li>cdb： cdb</li><li>mariadb： mariadb</li><li>cynosdb： cynosdb</li></ul><p>默认值：默认值为空，即不按照资产类型过滤，返回所有资产信息</p>
+        :type AssetType: list of str
         """
         self._MemberId = None
+        self._AssetType = None
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -36934,9 +36952,21 @@ class DescribeDspmStatisticsRequest(AbstractModel):
     def MemberId(self, MemberId):
         self._MemberId = MemberId
 
+    @property
+    def AssetType(self):
+        r"""<p>按照资产类型过滤</p><p>枚举值：</p><ul><li>cdb： cdb</li><li>mariadb： mariadb</li><li>cynosdb： cynosdb</li></ul><p>默认值：默认值为空，即不按照资产类型过滤，返回所有资产信息</p>
+        :rtype: list of str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
 
     def _deserialize(self, params):
         self._MemberId = params.get("MemberId")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36954,15 +36984,15 @@ class DescribeDspmStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetCount: 资产统计信息
+        :param _AssetCount: <p>资产统计信息</p>
         :type AssetCount: :class:`tencentcloud.csip.v20221121.models.DspmAssetCount`
-        :param _IpCount: 访问Ip统计信息
+        :param _IpCount: <p>访问Ip统计信息</p>
         :type IpCount: :class:`tencentcloud.csip.v20221121.models.DspmIpCount`
-        :param _UserCount: 用户账号统计信息
+        :param _UserCount: <p>用户账号统计信息</p>
         :type UserCount: :class:`tencentcloud.csip.v20221121.models.DspmAccountCount`
-        :param _RiskCount: 风险统计信息
+        :param _RiskCount: <p>风险统计信息</p>
         :type RiskCount: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
-        :param _AnalyseAssetStatusCount: 资产安全分析统计信息
+        :param _AnalyseAssetStatusCount: <p>资产安全分析统计信息</p>
         :type AnalyseAssetStatusCount: :class:`tencentcloud.csip.v20221121.models.DspmSecurityAnalyseStatusCount`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -36976,7 +37006,7 @@ class DescribeDspmStatisticsResponse(AbstractModel):
 
     @property
     def AssetCount(self):
-        r"""资产统计信息
+        r"""<p>资产统计信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmAssetCount`
         """
         return self._AssetCount
@@ -36987,7 +37017,7 @@ class DescribeDspmStatisticsResponse(AbstractModel):
 
     @property
     def IpCount(self):
-        r"""访问Ip统计信息
+        r"""<p>访问Ip统计信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmIpCount`
         """
         return self._IpCount
@@ -36998,7 +37028,7 @@ class DescribeDspmStatisticsResponse(AbstractModel):
 
     @property
     def UserCount(self):
-        r"""用户账号统计信息
+        r"""<p>用户账号统计信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmAccountCount`
         """
         return self._UserCount
@@ -37009,7 +37039,7 @@ class DescribeDspmStatisticsResponse(AbstractModel):
 
     @property
     def RiskCount(self):
-        r"""风险统计信息
+        r"""<p>风险统计信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
         """
         return self._RiskCount
@@ -37020,7 +37050,7 @@ class DescribeDspmStatisticsResponse(AbstractModel):
 
     @property
     def AnalyseAssetStatusCount(self):
-        r"""资产安全分析统计信息
+        r"""<p>资产安全分析统计信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmSecurityAnalyseStatusCount`
         """
         return self._AnalyseAssetStatusCount
@@ -46451,7 +46481,7 @@ class DescribeUserDspmInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filter: 过滤条件
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -46461,7 +46491,7 @@ class DescribeUserDspmInfoListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -50858,26 +50888,28 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+        :param _Status: <p>识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败</p>
         :type Status: int
-        :param _StatusInfo: 识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+        :param _StatusInfo: <p>识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败</p>
         :type StatusInfo: str
-        :param _Progress: 识别进度
+        :param _Progress: <p>识别进度</p>
         :type Progress: float
-        :param _LatestScanTime: 最近扫描时间
+        :param _LatestScanTime: <p>最近扫描时间</p>
         :type LatestScanTime: str
-        :param _ErrorInfo: 识别失败信息
+        :param _ErrorInfo: <p>识别失败信息</p>
         :type ErrorInfo: str
-        :param _DbCount: 数据库数量
+        :param _DbCount: <p>数据库数量</p>
         :type DbCount: int
-        :param _CategoryIds: 分类id集合
+        :param _CategoryIds: <p>分类id集合</p>
         :type CategoryIds: list of int non-negative
-        :param _CategoryNames: 分类名称集合
+        :param _CategoryNames: <p>分类名称集合</p>
         :type CategoryNames: list of str
-        :param _TaskConfig: 扫描任务配置
+        :param _TaskConfig: <p>扫描任务配置</p>
         :type TaskConfig: :class:`tencentcloud.csip.v20221121.models.DspmSensitiveScanTaskConfig`
-        :param _CategoryDetails: 识别结果分类详情
+        :param _CategoryDetails: <p>识别结果分类详情</p>
         :type CategoryDetails: list of DspmIdentifyCategoryDetail
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
         """
         self._Status = None
         self._StatusInfo = None
@@ -50889,10 +50921,11 @@ class DspmAssetDataScanDetail(AbstractModel):
         self._CategoryNames = None
         self._TaskConfig = None
         self._CategoryDetails = None
+        self._TaskId = None
 
     @property
     def Status(self):
-        r"""识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+        r"""<p>识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败</p>
         :rtype: int
         """
         return self._Status
@@ -50903,7 +50936,7 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     @property
     def StatusInfo(self):
-        r"""识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+        r"""<p>识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败</p>
         :rtype: str
         """
         return self._StatusInfo
@@ -50914,7 +50947,7 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     @property
     def Progress(self):
-        r"""识别进度
+        r"""<p>识别进度</p>
         :rtype: float
         """
         return self._Progress
@@ -50925,7 +50958,7 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     @property
     def LatestScanTime(self):
-        r"""最近扫描时间
+        r"""<p>最近扫描时间</p>
         :rtype: str
         """
         return self._LatestScanTime
@@ -50936,7 +50969,7 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     @property
     def ErrorInfo(self):
-        r"""识别失败信息
+        r"""<p>识别失败信息</p>
         :rtype: str
         """
         return self._ErrorInfo
@@ -50947,7 +50980,7 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     @property
     def DbCount(self):
-        r"""数据库数量
+        r"""<p>数据库数量</p>
         :rtype: int
         """
         return self._DbCount
@@ -50958,7 +50991,7 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     @property
     def CategoryIds(self):
-        r"""分类id集合
+        r"""<p>分类id集合</p>
         :rtype: list of int non-negative
         """
         return self._CategoryIds
@@ -50969,7 +51002,7 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     @property
     def CategoryNames(self):
-        r"""分类名称集合
+        r"""<p>分类名称集合</p>
         :rtype: list of str
         """
         return self._CategoryNames
@@ -50980,7 +51013,7 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     @property
     def TaskConfig(self):
-        r"""扫描任务配置
+        r"""<p>扫描任务配置</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmSensitiveScanTaskConfig`
         """
         return self._TaskConfig
@@ -50991,7 +51024,7 @@ class DspmAssetDataScanDetail(AbstractModel):
 
     @property
     def CategoryDetails(self):
-        r"""识别结果分类详情
+        r"""<p>识别结果分类详情</p>
         :rtype: list of DspmIdentifyCategoryDetail
         """
         return self._CategoryDetails
@@ -50999,6 +51032,17 @@ class DspmAssetDataScanDetail(AbstractModel):
     @CategoryDetails.setter
     def CategoryDetails(self, CategoryDetails):
         self._CategoryDetails = CategoryDetails
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
 
     def _deserialize(self, params):
@@ -51019,6 +51063,7 @@ class DspmAssetDataScanDetail(AbstractModel):
                 obj = DspmIdentifyCategoryDetail()
                 obj._deserialize(item)
                 self._CategoryDetails.append(obj)
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51036,23 +51081,23 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetId: 资产实例id
+        :param _AssetId: <p>资产实例id</p>
         :type AssetId: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _TableCount: 总表数
+        :param _TableCount: <p>总表数</p>
         :type TableCount: int
-        :param _SensitiveTableCount: 敏感表数
+        :param _SensitiveTableCount: <p>敏感表数</p>
         :type SensitiveTableCount: int
-        :param _RuleIds: 数据项id集合
+        :param _RuleIds: <p>数据项id集合</p>
         :type RuleIds: list of int non-negative
-        :param _RuleNames: 数据项名称集合
+        :param _RuleNames: <p>数据项名称集合</p>
         :type RuleNames: list of str
-        :param _CategoryIds: 分类id集合
+        :param _CategoryIds: <p>分类id集合</p>
         :type CategoryIds: list of int non-negative
-        :param _CategoryNames: 分类名称集合
+        :param _CategoryNames: <p>分类名称集合</p>
         :type CategoryNames: list of str
-        :param _CategoryDetails: 分类详情
+        :param _CategoryDetails: <p>分类详情</p>
         :type CategoryDetails: list of DspmIdentifyCategoryDetail
         """
         self._AssetId = None
@@ -51067,7 +51112,7 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     @property
     def AssetId(self):
-        r"""资产实例id
+        r"""<p>资产实例id</p>
         :rtype: str
         """
         return self._AssetId
@@ -51078,7 +51123,7 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -51089,7 +51134,7 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     @property
     def TableCount(self):
-        r"""总表数
+        r"""<p>总表数</p>
         :rtype: int
         """
         return self._TableCount
@@ -51100,7 +51145,7 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     @property
     def SensitiveTableCount(self):
-        r"""敏感表数
+        r"""<p>敏感表数</p>
         :rtype: int
         """
         return self._SensitiveTableCount
@@ -51111,7 +51156,7 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     @property
     def RuleIds(self):
-        r"""数据项id集合
+        r"""<p>数据项id集合</p>
         :rtype: list of int non-negative
         """
         return self._RuleIds
@@ -51122,7 +51167,7 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     @property
     def RuleNames(self):
-        r"""数据项名称集合
+        r"""<p>数据项名称集合</p>
         :rtype: list of str
         """
         return self._RuleNames
@@ -51133,7 +51178,7 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     @property
     def CategoryIds(self):
-        r"""分类id集合
+        r"""<p>分类id集合</p>
         :rtype: list of int non-negative
         """
         return self._CategoryIds
@@ -51144,7 +51189,7 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     @property
     def CategoryNames(self):
-        r"""分类名称集合
+        r"""<p>分类名称集合</p>
         :rtype: list of str
         """
         return self._CategoryNames
@@ -51155,7 +51200,7 @@ class DspmAssetDatabaseInfo(AbstractModel):
 
     @property
     def CategoryDetails(self):
-        r"""分类详情
+        r"""<p>分类详情</p>
         :rtype: list of DspmIdentifyCategoryDetail
         """
         return self._CategoryDetails
@@ -52306,6 +52351,8 @@ None 暂无异常
         :type AccountOptSupported: int
         :param _InstanceType: 实例类型
         :type InstanceType: int
+        :param _ClusterType: 集群类型（MongoDB），与云接口 DescribeDBInstances 的 ClusterType 一致：0-副本集 1-分片；非 MongoDB 资产固定 0
+        :type ClusterType: int
         :param _IdentifyScanSupported: 是否支持敏感数据识别。0 不支持；1 支持
         :type IdentifyScanSupported: int
         """
@@ -52342,6 +52389,7 @@ None 暂无异常
         self._OperationErrorMsg = None
         self._AccountOptSupported = None
         self._InstanceType = None
+        self._ClusterType = None
         self._IdentifyScanSupported = None
 
     @property
@@ -52714,6 +52762,17 @@ None 暂无异常
         self._InstanceType = InstanceType
 
     @property
+    def ClusterType(self):
+        r"""集群类型（MongoDB），与云接口 DescribeDBInstances 的 ClusterType 一致：0-副本集 1-分片；非 MongoDB 资产固定 0
+        :rtype: int
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
     def IdentifyScanSupported(self):
         r"""是否支持敏感数据识别。0 不支持；1 支持
         :rtype: int
@@ -52768,6 +52827,7 @@ None 暂无异常
         self._OperationErrorMsg = params.get("OperationErrorMsg")
         self._AccountOptSupported = params.get("AccountOptSupported")
         self._InstanceType = params.get("InstanceType")
+        self._ClusterType = params.get("ClusterType")
         self._IdentifyScanSupported = params.get("IdentifyScanSupported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -53598,15 +53658,15 @@ class DspmIdentifyRuleDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 数据项id
+        :param _RuleId: <p>数据项id</p>
         :type RuleId: int
-        :param _RuleName: 数据项名称
+        :param _RuleName: <p>数据项名称</p>
         :type RuleName: str
-        :param _LevelId: 敏感级别id
+        :param _LevelId: <p>敏感级别id</p>
         :type LevelId: int
-        :param _LevelName: 敏感级别名称
+        :param _LevelName: <p>敏感级别名称</p>
         :type LevelName: str
-        :param _LevelScore: 敏感程度
+        :param _LevelScore: <p>敏感程度</p>
         :type LevelScore: int
         """
         self._RuleId = None
@@ -53617,7 +53677,7 @@ class DspmIdentifyRuleDetail(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""数据项id
+        r"""<p>数据项id</p>
         :rtype: int
         """
         return self._RuleId
@@ -53628,7 +53688,7 @@ class DspmIdentifyRuleDetail(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""数据项名称
+        r"""<p>数据项名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -53639,7 +53699,7 @@ class DspmIdentifyRuleDetail(AbstractModel):
 
     @property
     def LevelId(self):
-        r"""敏感级别id
+        r"""<p>敏感级别id</p>
         :rtype: int
         """
         return self._LevelId
@@ -53650,7 +53710,7 @@ class DspmIdentifyRuleDetail(AbstractModel):
 
     @property
     def LevelName(self):
-        r"""敏感级别名称
+        r"""<p>敏感级别名称</p>
         :rtype: str
         """
         return self._LevelName
@@ -53661,7 +53721,7 @@ class DspmIdentifyRuleDetail(AbstractModel):
 
     @property
     def LevelScore(self):
-        r"""敏感程度
+        r"""<p>敏感程度</p>
         :rtype: int
         """
         return self._LevelScore
@@ -63955,25 +64015,25 @@ class MachineDetail(AbstractModel):
 
 
 class MiniTagItem(AbstractModel):
-    r"""简要的资产标签元素
+    r"""简要的资产标签元素，CSIP 内部使用。
 
     """
 
     def __init__(self):
         r"""
-        :param _Color: <p>标签颜色</p>
+        :param _Color: 标签展示颜色。
         :type Color: str
-        :param _Description: <p>描述</p>
+        :param _Description: 标签描述。
         :type Description: str
-        :param _ID: <p>标签ID</p>
+        :param _ID: 标签 ID。
         :type ID: int
-        :param _TagKey: <p>标签键</p>
+        :param _TagKey: 标签键（中文）。
         :type TagKey: str
-        :param _TagValue: <p>标签值</p>
+        :param _TagValue: 标签值（中文）。
         :type TagValue: str
-        :param _TagKeyEn: <p>标签键英文</p>
+        :param _TagKeyEn: 标签键（英文）。
         :type TagKeyEn: str
-        :param _TagValueEn: <p>标签值英文</p>
+        :param _TagValueEn: 标签值（英文）。
         :type TagValueEn: str
         """
         self._Color = None
@@ -63986,7 +64046,7 @@ class MiniTagItem(AbstractModel):
 
     @property
     def Color(self):
-        r"""<p>标签颜色</p>
+        r"""标签展示颜色。
         :rtype: str
         """
         return self._Color
@@ -63997,7 +64057,7 @@ class MiniTagItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>描述</p>
+        r"""标签描述。
         :rtype: str
         """
         return self._Description
@@ -64008,7 +64068,7 @@ class MiniTagItem(AbstractModel):
 
     @property
     def ID(self):
-        r"""<p>标签ID</p>
+        r"""标签 ID。
         :rtype: int
         """
         return self._ID
@@ -64019,7 +64079,7 @@ class MiniTagItem(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""<p>标签键</p>
+        r"""标签键（中文）。
         :rtype: str
         """
         return self._TagKey
@@ -64030,7 +64090,7 @@ class MiniTagItem(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""<p>标签值</p>
+        r"""标签值（中文）。
         :rtype: str
         """
         return self._TagValue
@@ -64041,7 +64101,7 @@ class MiniTagItem(AbstractModel):
 
     @property
     def TagKeyEn(self):
-        r"""<p>标签键英文</p>
+        r"""标签键（英文）。
         :rtype: str
         """
         return self._TagKeyEn
@@ -64052,7 +64112,7 @@ class MiniTagItem(AbstractModel):
 
     @property
     def TagValueEn(self):
-        r"""<p>标签值英文</p>
+        r"""标签值（英文）。
         :rtype: str
         """
         return self._TagValueEn
@@ -65049,7 +65109,7 @@ class ModifyDspmAssetDataScanTaskRequest(AbstractModel):
         :type IsAgreeAuth: bool
         :param _IsRunAtOnce: 是否立即执行
         :type IsRunAtOnce: bool
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _ScheduleConfig: 调度周期配置
         :type ScheduleConfig: :class:`tencentcloud.csip.v20221121.models.DspmScheduleConfig`
@@ -65107,7 +65167,7 @@ class ModifyDspmAssetDataScanTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -76264,15 +76324,15 @@ class TableField(AbstractModel):
 
 
 class Tag(AbstractModel):
-    r"""标签
+    r"""云上原生标签键值对。
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 标签名称
+        :param _Name: 标签键。
         :type Name: str
-        :param _Value: 标签内容
+        :param _Value: 标签值。
         :type Value: str
         """
         self._Name = None
@@ -76280,7 +76340,7 @@ class Tag(AbstractModel):
 
     @property
     def Name(self):
-        r"""标签名称
+        r"""标签键。
         :rtype: str
         """
         return self._Name
@@ -76291,7 +76351,7 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
-        r"""标签内容
+        r"""标签值。
         :rtype: str
         """
         return self._Value

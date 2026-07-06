@@ -80,6 +80,9 @@ INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = 'InvalidParameterValue.Parameters
 # 工作空间实例查找失败
 INVALIDPARAMETERVALUE_SPACEIDNOTFOUND = 'InvalidParameterValue.SpaceIdNotFound'
 
+# 工作空间规格不可用
+INVALIDPARAMETERVALUE_SPACETYPENOTAVAILABLE = 'InvalidParameterValue.SpaceTypeNotAvailable'
+
 # Task dependencies unfeasible, please check.
 INVALIDPARAMETERVALUE_TASKDEPENDENCIESUNFEASIBLE = 'InvalidParameterValue.TaskDependenciesUnfeasible'
 

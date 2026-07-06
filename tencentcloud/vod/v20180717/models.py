@@ -12926,6 +12926,338 @@ class AigcQuotaItem(AbstractModel):
         
 
 
+class AigcTextDetail(AbstractModel):
+    r"""AIGC生文明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: <p>每页条数</p>
+        :type PageSize: int
+        :param _ScrollToken: <p>上一页响应中返回的 scroll_token,用于翻下一页</p>
+        :type ScrollToken: str
+        :param _Data: <p>生文详细数据</p>
+        :type Data: list of AigcTextDetailData
+        """
+        self._PageSize = None
+        self._ScrollToken = None
+        self._Data = None
+
+    @property
+    def PageSize(self):
+        r"""<p>每页条数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ScrollToken(self):
+        r"""<p>上一页响应中返回的 scroll_token,用于翻下一页</p>
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def Data(self):
+        r"""<p>生文详细数据</p>
+        :rtype: list of AigcTextDetailData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._ScrollToken = params.get("ScrollToken")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AigcTextDetailData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcTextDetailData(AbstractModel):
+    r"""Aigc生文明细数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>请求开始时间(RFC3339)</p>
+        :type Timestamp: str
+        :param _ReqId: <p>网关层请求 ID</p>
+        :type ReqId: str
+        :param _ChatId: <p>后端模型返回的对话 ID</p>
+        :type ChatId: str
+        :param _StatusCode: <p>返回给客户端的 HTTP 状态码</p>
+        :type StatusCode: int
+        :param _Model: <p>模型名</p>
+        :type Model: str
+        :param _SubAppId: <p>应用ID</p>
+        :type SubAppId: int
+        :param _ApiKey: <p>脱敏后的 api_key:前 8 位 + ****(长度 ≤ 8 时原样返回)</p>
+        :type ApiKey: str
+        :param _Stream: <p>是否流式返回</p>
+        :type Stream: bool
+        :param _InputTokens: <p>输入 token 数</p>
+        :type InputTokens: int
+        :param _OutputTokens: <p>输出 token 数</p>
+        :type OutputTokens: int
+        :param _CacheInputTokens: <p>命中 prompt 缓存的 token 数</p>
+        :type CacheInputTokens: int
+        :param _TotalTokens: <p>总 token 数</p>
+        :type TotalTokens: int
+        :param _TPS: <p>生成阶段的tokens/秒</p>
+        :type TPS: float
+        :param _TTFT: <p>首字延迟(Time To First Token)</p><p>单位：秒</p>
+        :type TTFT: float
+        :param _Total: <p>端到端总耗时</p><p>单位：秒</p>
+        :type Total: float
+        :param _ApiType: <p>入口协议:completions / responses / anthropic</p>
+        :type ApiType: str
+        """
+        self._Timestamp = None
+        self._ReqId = None
+        self._ChatId = None
+        self._StatusCode = None
+        self._Model = None
+        self._SubAppId = None
+        self._ApiKey = None
+        self._Stream = None
+        self._InputTokens = None
+        self._OutputTokens = None
+        self._CacheInputTokens = None
+        self._TotalTokens = None
+        self._TPS = None
+        self._TTFT = None
+        self._Total = None
+        self._ApiType = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>请求开始时间(RFC3339)</p>
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def ReqId(self):
+        r"""<p>网关层请求 ID</p>
+        :rtype: str
+        """
+        return self._ReqId
+
+    @ReqId.setter
+    def ReqId(self, ReqId):
+        self._ReqId = ReqId
+
+    @property
+    def ChatId(self):
+        r"""<p>后端模型返回的对话 ID</p>
+        :rtype: str
+        """
+        return self._ChatId
+
+    @ChatId.setter
+    def ChatId(self, ChatId):
+        self._ChatId = ChatId
+
+    @property
+    def StatusCode(self):
+        r"""<p>返回给客户端的 HTTP 状态码</p>
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def Model(self):
+        r"""<p>模型名</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def SubAppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ApiKey(self):
+        r"""<p>脱敏后的 api_key:前 8 位 + ****(长度 ≤ 8 时原样返回)</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def Stream(self):
+        r"""<p>是否流式返回</p>
+        :rtype: bool
+        """
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+    @property
+    def InputTokens(self):
+        r"""<p>输入 token 数</p>
+        :rtype: int
+        """
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def OutputTokens(self):
+        r"""<p>输出 token 数</p>
+        :rtype: int
+        """
+        return self._OutputTokens
+
+    @OutputTokens.setter
+    def OutputTokens(self, OutputTokens):
+        self._OutputTokens = OutputTokens
+
+    @property
+    def CacheInputTokens(self):
+        r"""<p>命中 prompt 缓存的 token 数</p>
+        :rtype: int
+        """
+        return self._CacheInputTokens
+
+    @CacheInputTokens.setter
+    def CacheInputTokens(self, CacheInputTokens):
+        self._CacheInputTokens = CacheInputTokens
+
+    @property
+    def TotalTokens(self):
+        r"""<p>总 token 数</p>
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def TPS(self):
+        r"""<p>生成阶段的tokens/秒</p>
+        :rtype: float
+        """
+        return self._TPS
+
+    @TPS.setter
+    def TPS(self, TPS):
+        self._TPS = TPS
+
+    @property
+    def TTFT(self):
+        r"""<p>首字延迟(Time To First Token)</p><p>单位：秒</p>
+        :rtype: float
+        """
+        return self._TTFT
+
+    @TTFT.setter
+    def TTFT(self, TTFT):
+        self._TTFT = TTFT
+
+    @property
+    def Total(self):
+        r"""<p>端到端总耗时</p><p>单位：秒</p>
+        :rtype: float
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ApiType(self):
+        r"""<p>入口协议:completions / responses / anthropic</p>
+        :rtype: str
+        """
+        return self._ApiType
+
+    @ApiType.setter
+    def ApiType(self, ApiType):
+        self._ApiType = ApiType
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._ReqId = params.get("ReqId")
+        self._ChatId = params.get("ChatId")
+        self._StatusCode = params.get("StatusCode")
+        self._Model = params.get("Model")
+        self._SubAppId = params.get("SubAppId")
+        self._ApiKey = params.get("ApiKey")
+        self._Stream = params.get("Stream")
+        self._InputTokens = params.get("InputTokens")
+        self._OutputTokens = params.get("OutputTokens")
+        self._CacheInputTokens = params.get("CacheInputTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        self._TPS = params.get("TPS")
+        self._TTFT = params.get("TTFT")
+        self._Total = params.get("Total")
+        self._ApiType = params.get("ApiType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcUsageDataItem(AbstractModel):
     r"""AIGC 统计数据
 
@@ -35515,7 +35847,7 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: <p>结束日期，需大于等于起始日期。使用 <a href="https://cloud.tencent.com/document/product/266/11732#52">ISO 日期格式</a>。</p>
         :type EndTime: str
-        :param _AigcType: <p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li></ul>
+        :param _AigcType: <p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li><li>TextDetail： 文本详细记录</li></ul>
         :type AigcType: str
         :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
@@ -35523,6 +35855,12 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         :type APIKey: str
         :param _APIKeys: <p>API Key</p>
         :type APIKeys: list of str
+        :param _ScrollToken: <p>查询游标</p>
+        :type ScrollToken: str
+        :param _PageSize: <p>每页大小，最大 200，超出会被截断为 200</p>
+        :type PageSize: int
+        :param _ReqId: <p>生文RequestId，当AigcType为TextDetail时有效。</p>
+        :type ReqId: str
         """
         self._StartTime = None
         self._EndTime = None
@@ -35530,6 +35868,9 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         self._SubAppId = None
         self._APIKey = None
         self._APIKeys = None
+        self._ScrollToken = None
+        self._PageSize = None
+        self._ReqId = None
 
     @property
     def StartTime(self):
@@ -35555,7 +35896,7 @@ class DescribeAigcUsageDataRequest(AbstractModel):
 
     @property
     def AigcType(self):
-        r"""<p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li></ul>
+        r"""<p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li><li>TextDetail： 文本详细记录</li></ul>
         :rtype: str
         """
         return self._AigcType
@@ -35597,6 +35938,39 @@ class DescribeAigcUsageDataRequest(AbstractModel):
     def APIKeys(self, APIKeys):
         self._APIKeys = APIKeys
 
+    @property
+    def ScrollToken(self):
+        r"""<p>查询游标</p>
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小，最大 200，超出会被截断为 200</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ReqId(self):
+        r"""<p>生文RequestId，当AigcType为TextDetail时有效。</p>
+        :rtype: str
+        """
+        return self._ReqId
+
+    @ReqId.setter
+    def ReqId(self, ReqId):
+        self._ReqId = ReqId
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -35605,6 +35979,9 @@ class DescribeAigcUsageDataRequest(AbstractModel):
         self._SubAppId = params.get("SubAppId")
         self._APIKey = params.get("APIKey")
         self._APIKeys = params.get("APIKeys")
+        self._ScrollToken = params.get("ScrollToken")
+        self._PageSize = params.get("PageSize")
+        self._ReqId = params.get("ReqId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35624,10 +36001,14 @@ class DescribeAigcUsageDataResponse(AbstractModel):
         r"""
         :param _AigcUsageDataSet: <p>AIGC统计数据。</p>
         :type AigcUsageDataSet: list of AigcUsageDataItem
+        :param _AigcTextDetails: <p>生文详细日志</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AigcTextDetails: :class:`tencentcloud.vod.v20180717.models.AigcTextDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AigcUsageDataSet = None
+        self._AigcTextDetails = None
         self._RequestId = None
 
     @property
@@ -35640,6 +36021,18 @@ class DescribeAigcUsageDataResponse(AbstractModel):
     @AigcUsageDataSet.setter
     def AigcUsageDataSet(self, AigcUsageDataSet):
         self._AigcUsageDataSet = AigcUsageDataSet
+
+    @property
+    def AigcTextDetails(self):
+        r"""<p>生文详细日志</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcTextDetail`
+        """
+        return self._AigcTextDetails
+
+    @AigcTextDetails.setter
+    def AigcTextDetails(self, AigcTextDetails):
+        self._AigcTextDetails = AigcTextDetails
 
     @property
     def RequestId(self):
@@ -35660,6 +36053,9 @@ class DescribeAigcUsageDataResponse(AbstractModel):
                 obj = AigcUsageDataItem()
                 obj._deserialize(item)
                 self._AigcUsageDataSet.append(obj)
+        if params.get("AigcTextDetails") is not None:
+            self._AigcTextDetails = AigcTextDetail()
+            self._AigcTextDetails._deserialize(params.get("AigcTextDetails"))
         self._RequestId = params.get("RequestId")
 
 

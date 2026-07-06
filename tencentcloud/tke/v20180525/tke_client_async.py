@@ -4551,6 +4551,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RotateClusterToken(
+            self,
+            request: models.RotateClusterTokenRequest,
+            opts: Dict = None,
+    ) -> models.RotateClusterTokenResponse:
+        """
+        轮转集群的token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RotateClusterToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RotateClusterTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RunPrometheusInstance(
             self,
             request: models.RunPrometheusInstanceRequest,
