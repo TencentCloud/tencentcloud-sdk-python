@@ -64,6 +64,11 @@ def test_import_aiart_v20221229():
     from tencentcloud.aiart.v20221229 import models
 
 
+def test_import_alb_v20251030():
+    from tencentcloud.alb.v20251030 import alb_client
+    from tencentcloud.alb.v20251030 import models
+
+
 def test_import_ame_v20190916():
     from tencentcloud.ame.v20190916 import ame_client
     from tencentcloud.ame.v20190916 import models

@@ -18064,6 +18064,117 @@ class CreateDspmAssetAccessTopologyExportJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDspmAssetIdentifyInfoExportJobRequest(AbstractModel):
+    r"""CreateDspmAssetIdentifyInfoExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: <p>资产实例id</p>
+        :type AssetId: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>过滤器</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._AssetId = None
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def AssetId(self):
+        r"""<p>资产实例id</p>
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>过滤器</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmAssetIdentifyInfoExportJobResponse(AbstractModel):
+    r"""CreateDspmAssetIdentifyInfoExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: <p>任务ID</p>
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDspmAssetsExportJobRequest(AbstractModel):
     r"""CreateDspmAssetsExportJob请求参数结构体
 
@@ -18674,6 +18785,586 @@ class CreateDspmExportTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDspmIdentifyCategoryRequest(AbstractModel):
+    r"""CreateDspmIdentifyCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>分类名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Name = None
+        self._MemberId = None
+
+    @property
+    def Name(self):
+        r"""<p>分类名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmIdentifyCategoryResponse(AbstractModel):
+    r"""CreateDspmIdentifyCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>分类ID</p>
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmIdentifyComplianceCategoryRelationRequest(AbstractModel):
+    r"""CreateDspmIdentifyComplianceCategoryRelation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceId: <p>识别模板ID</p>
+        :type ComplianceId: int
+        :param _CategoryId: <p>分类ID</p>
+        :type CategoryId: int
+        :param _ParentCategoryId: <p>父分类ID</p>
+        :type ParentCategoryId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._ComplianceId = None
+        self._CategoryId = None
+        self._ParentCategoryId = None
+        self._MemberId = None
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def ParentCategoryId(self):
+        r"""<p>父分类ID</p>
+        :rtype: int
+        """
+        return self._ParentCategoryId
+
+    @ParentCategoryId.setter
+    def ParentCategoryId(self, ParentCategoryId):
+        self._ParentCategoryId = ParentCategoryId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ComplianceId = params.get("ComplianceId")
+        self._CategoryId = params.get("CategoryId")
+        self._ParentCategoryId = params.get("ParentCategoryId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmIdentifyComplianceCategoryRelationResponse(AbstractModel):
+    r"""CreateDspmIdentifyComplianceCategoryRelation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmIdentifyComplianceGroupCopyRequest(AbstractModel):
+    r"""CreateDspmIdentifyComplianceGroupCopy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FromId: <p>来源模板ID</p>
+        :type FromId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Name: <p>模板名称</p>
+        :type Name: str
+        :param _Description: <p>模板描述</p>
+        :type Description: str
+        """
+        self._FromId = None
+        self._MemberId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def FromId(self):
+        r"""<p>来源模板ID</p>
+        :rtype: int
+        """
+        return self._FromId
+
+    @FromId.setter
+    def FromId(self, FromId):
+        self._FromId = FromId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Name(self):
+        r"""<p>模板名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>模板描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._FromId = params.get("FromId")
+        self._MemberId = params.get("MemberId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmIdentifyComplianceGroupCopyResponse(AbstractModel):
+    r"""CreateDspmIdentifyComplianceGroupCopy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>模板ID</p>
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>模板ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmIdentifyComplianceGroupRequest(AbstractModel):
+    r"""CreateDspmIdentifyComplianceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>级别名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _LevelGroupId: <p>级别组ID</p>
+        :type LevelGroupId: int
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+        :type Status: int
+        """
+        self._Name = None
+        self._MemberId = None
+        self._Description = None
+        self._LevelGroupId = None
+        self._Status = None
+
+    @property
+    def Name(self):
+        r"""<p>级别名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LevelGroupId(self):
+        r"""<p>级别组ID</p>
+        :rtype: int
+        """
+        return self._LevelGroupId
+
+    @LevelGroupId.setter
+    def LevelGroupId(self, LevelGroupId):
+        self._LevelGroupId = LevelGroupId
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        self._Description = params.get("Description")
+        self._LevelGroupId = params.get("LevelGroupId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmIdentifyComplianceGroupResponse(AbstractModel):
+    r"""CreateDspmIdentifyComplianceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>识别模板ID</p>
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmIdentifyComplianceRuleRelationRequest(AbstractModel):
+    r"""CreateDspmIdentifyComplianceRuleRelation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceId: <p>识别模板ID</p>
+        :type ComplianceId: int
+        :param _CategoryId: <p>分类ID</p>
+        :type CategoryId: int
+        :param _Rules: <p>无</p>
+        :type Rules: list of DspmIdentifyCategoryRuleRelateItem
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._ComplianceId = None
+        self._CategoryId = None
+        self._Rules = None
+        self._MemberId = None
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def Rules(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyCategoryRuleRelateItem
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ComplianceId = params.get("ComplianceId")
+        self._CategoryId = params.get("CategoryId")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = DspmIdentifyCategoryRuleRelateItem()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmIdentifyComplianceRuleRelationResponse(AbstractModel):
+    r"""CreateDspmIdentifyComplianceRuleRelation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDspmIdentifyInfoListExportJobRequest(AbstractModel):
     r"""CreateDspmIdentifyInfoListExportJob请求参数结构体
 
@@ -18767,6 +19458,289 @@ class CreateDspmIdentifyInfoListExportJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmIdentifyLevelGroupRequest(AbstractModel):
+    r"""CreateDspmIdentifyLevelGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>分级组名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _LevelItems: <p>无</p>
+        :type LevelItems: list of DspmAddIdentifyLevelItem
+        """
+        self._Name = None
+        self._MemberId = None
+        self._Description = None
+        self._LevelItems = None
+
+    @property
+    def Name(self):
+        r"""<p>分级组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LevelItems(self):
+        r"""<p>无</p>
+        :rtype: list of DspmAddIdentifyLevelItem
+        """
+        return self._LevelItems
+
+    @LevelItems.setter
+    def LevelItems(self, LevelItems):
+        self._LevelItems = LevelItems
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        self._Description = params.get("Description")
+        if params.get("LevelItems") is not None:
+            self._LevelItems = []
+            for item in params.get("LevelItems"):
+                obj = DspmAddIdentifyLevelItem()
+                obj._deserialize(item)
+                self._LevelItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmIdentifyLevelGroupResponse(AbstractModel):
+    r"""CreateDspmIdentifyLevelGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>分级组ID</p>
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>分级组ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmIdentifyRuleRequest(AbstractModel):
+    r"""CreateDspmIdentifyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>数据项名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Description: <p>数据项描述</p>
+        :type Description: str
+        :param _Status: <p>数据项启用状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+        :type Status: int
+        :param _StructuredRule: <p>结构化规则</p>
+        :type StructuredRule: str
+        :param _UnStructuredRule: <p>非结构化规则</p>
+        :type UnStructuredRule: str
+        """
+        self._Name = None
+        self._MemberId = None
+        self._Description = None
+        self._Status = None
+        self._StructuredRule = None
+        self._UnStructuredRule = None
+
+    @property
+    def Name(self):
+        r"""<p>数据项名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Description(self):
+        r"""<p>数据项描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>数据项启用状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StructuredRule(self):
+        r"""<p>结构化规则</p>
+        :rtype: str
+        """
+        return self._StructuredRule
+
+    @StructuredRule.setter
+    def StructuredRule(self, StructuredRule):
+        self._StructuredRule = StructuredRule
+
+    @property
+    def UnStructuredRule(self):
+        r"""<p>非结构化规则</p>
+        :rtype: str
+        """
+        return self._UnStructuredRule
+
+    @UnStructuredRule.setter
+    def UnStructuredRule(self, UnStructuredRule):
+        self._UnStructuredRule = UnStructuredRule
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._StructuredRule = params.get("StructuredRule")
+        self._UnStructuredRule = params.get("UnStructuredRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmIdentifyRuleResponse(AbstractModel):
+    r"""CreateDspmIdentifyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据项id</p>
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>数据项id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 
@@ -21605,6 +22579,525 @@ class DeleteDspmExportTaskRequest(AbstractModel):
 
 class DeleteDspmExportTaskResponse(AbstractModel):
     r"""DeleteDspmExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmIdentifyCategoryRequest(AbstractModel):
+    r"""DeleteDspmIdentifyCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: <p>分类ID集合</p>
+        :type Ids: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Ids = None
+        self._MemberId = None
+
+    @property
+    def Ids(self):
+        r"""<p>分类ID集合</p>
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmIdentifyCategoryResponse(AbstractModel):
+    r"""DeleteDspmIdentifyCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmIdentifyComplianceCategoryRelationRequest(AbstractModel):
+    r"""DeleteDspmIdentifyComplianceCategoryRelation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceId: <p>识别模板ID</p>
+        :type ComplianceId: int
+        :param _CategoryId: <p>分类ID</p>
+        :type CategoryId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._ComplianceId = None
+        self._CategoryId = None
+        self._MemberId = None
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ComplianceId = params.get("ComplianceId")
+        self._CategoryId = params.get("CategoryId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmIdentifyComplianceCategoryRelationResponse(AbstractModel):
+    r"""DeleteDspmIdentifyComplianceCategoryRelation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmIdentifyComplianceGroupRequest(AbstractModel):
+    r"""DeleteDspmIdentifyComplianceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: <p>识别模板ID集合</p>
+        :type Ids: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Ids = None
+        self._MemberId = None
+
+    @property
+    def Ids(self):
+        r"""<p>识别模板ID集合</p>
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmIdentifyComplianceGroupResponse(AbstractModel):
+    r"""DeleteDspmIdentifyComplianceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmIdentifyComplianceRuleRelationRequest(AbstractModel):
+    r"""DeleteDspmIdentifyComplianceRuleRelation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceId: <p>识别模板ID</p>
+        :type ComplianceId: int
+        :param _CategoryId: <p>分类ID</p>
+        :type CategoryId: int
+        :param _RuleIds: <p>数据项ID集合</p>
+        :type RuleIds: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._ComplianceId = None
+        self._CategoryId = None
+        self._RuleIds = None
+        self._MemberId = None
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def RuleIds(self):
+        r"""<p>数据项ID集合</p>
+        :rtype: list of int non-negative
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ComplianceId = params.get("ComplianceId")
+        self._CategoryId = params.get("CategoryId")
+        self._RuleIds = params.get("RuleIds")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmIdentifyComplianceRuleRelationResponse(AbstractModel):
+    r"""DeleteDspmIdentifyComplianceRuleRelation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmIdentifyLevelGroupRequest(AbstractModel):
+    r"""DeleteDspmIdentifyLevelGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: <p>级别组id</p>
+        :type Ids: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Ids = None
+        self._MemberId = None
+
+    @property
+    def Ids(self):
+        r"""<p>级别组id</p>
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmIdentifyLevelGroupResponse(AbstractModel):
+    r"""DeleteDspmIdentifyLevelGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmIdentifyRuleRequest(AbstractModel):
+    r"""DeleteDspmIdentifyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: <p>数据项id</p>
+        :type Ids: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Ids = None
+        self._MemberId = None
+
+    @property
+    def Ids(self):
+        r"""<p>数据项id</p>
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmIdentifyRuleResponse(AbstractModel):
+    r"""DeleteDspmIdentifyRule返回参数结构体
 
     """
 
@@ -29532,6 +31025,140 @@ class DescribeCosIpInvokeRecordFileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCosObjectScanTaskRequest(AbstractModel):
+    r"""DescribeCosObjectScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: <p>1: 敏感数据识别 2:恶意文件扫描</p>
+        :type TaskType: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _BucketSet: <p>存储桶列表</p>
+        :type BucketSet: list of str
+        """
+        self._TaskType = None
+        self._MemberId = None
+        self._BucketSet = None
+
+    @property
+    def TaskType(self):
+        r"""<p>1: 敏感数据识别 2:恶意文件扫描</p>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def BucketSet(self):
+        r"""<p>存储桶列表</p>
+        :rtype: list of str
+        """
+        return self._BucketSet
+
+    @BucketSet.setter
+    def BucketSet(self, BucketSet):
+        self._BucketSet = BucketSet
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._MemberId = params.get("MemberId")
+        self._BucketSet = params.get("BucketSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosObjectScanTaskResponse(AbstractModel):
+    r"""DescribeCosObjectScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketTaskIdSet: <p>存储桶任务详情</p>
+        :type BucketTaskIdSet: list of CosBucketTaskInfo
+        :param _MemberTaskIdSet: <p>appid维度任务列表</p>
+        :type MemberTaskIdSet: list of CosAssetSyncTaskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BucketTaskIdSet = None
+        self._MemberTaskIdSet = None
+        self._RequestId = None
+
+    @property
+    def BucketTaskIdSet(self):
+        r"""<p>存储桶任务详情</p>
+        :rtype: list of CosBucketTaskInfo
+        """
+        return self._BucketTaskIdSet
+
+    @BucketTaskIdSet.setter
+    def BucketTaskIdSet(self, BucketTaskIdSet):
+        self._BucketTaskIdSet = BucketTaskIdSet
+
+    @property
+    def MemberTaskIdSet(self):
+        r"""<p>appid维度任务列表</p>
+        :rtype: list of CosAssetSyncTaskInfo
+        """
+        return self._MemberTaskIdSet
+
+    @MemberTaskIdSet.setter
+    def MemberTaskIdSet(self, MemberTaskIdSet):
+        self._MemberTaskIdSet = MemberTaskIdSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BucketTaskIdSet") is not None:
+            self._BucketTaskIdSet = []
+            for item in params.get("BucketTaskIdSet"):
+                obj = CosBucketTaskInfo()
+                obj._deserialize(item)
+                self._BucketTaskIdSet.append(obj)
+        if params.get("MemberTaskIdSet") is not None:
+            self._MemberTaskIdSet = []
+            for item in params.get("MemberTaskIdSet"):
+                obj = CosAssetSyncTaskInfo()
+                obj._deserialize(item)
+                self._MemberTaskIdSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCosOverviewRequest(AbstractModel):
     r"""DescribeCosOverview请求参数结构体
 
@@ -32901,6 +34528,291 @@ class DescribeDspmAssetFieldListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDspmAssetFieldSamplesRequest(AbstractModel):
+    r"""DescribeDspmAssetFieldSamples请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: <p>资产实例ID</p>
+        :type AssetId: str
+        :param _DbName: <p>数据库名</p>
+        :type DbName: str
+        :param _TableName: <p>表名</p>
+        :type TableName: str
+        :param _FieldName: <p>字段名</p>
+        :type FieldName: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _SchemaName: <p>schema名</p>
+        :type SchemaName: str
+        """
+        self._AssetId = None
+        self._DbName = None
+        self._TableName = None
+        self._FieldName = None
+        self._MemberId = None
+        self._SchemaName = None
+
+    @property
+    def AssetId(self):
+        r"""<p>资产实例ID</p>
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def DbName(self):
+        r"""<p>数据库名</p>
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def TableName(self):
+        r"""<p>表名</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def FieldName(self):
+        r"""<p>字段名</p>
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema名</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._DbName = params.get("DbName")
+        self._TableName = params.get("TableName")
+        self._FieldName = params.get("FieldName")
+        self._MemberId = params.get("MemberId")
+        self._SchemaName = params.get("SchemaName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetFieldSamplesResponse(AbstractModel):
+    r"""DescribeDspmAssetFieldSamples返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSet: <p>无</p>
+        :type DataSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def DataSet(self):
+        r"""<p>无</p>
+        :rtype: list of str
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataSet = params.get("DataSet")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetIdentifyInfoListRequest(AbstractModel):
+    r"""DescribeDspmAssetIdentifyInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>筛选项</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _ComplianceId: <p>识别模板id</p>
+        :type ComplianceId: int
+        """
+        self._MemberId = None
+        self._Filter = None
+        self._ComplianceId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>筛选项</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板id</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._ComplianceId = params.get("ComplianceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetIdentifyInfoListResponse(AbstractModel):
+    r"""DescribeDspmAssetIdentifyInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _DataSet: <p>结果集</p>
+        :type DataSet: list of DspmAssetIdentifyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""<p>结果集</p>
+        :rtype: list of DspmAssetIdentifyInfo
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmAssetIdentifyInfo()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDspmAssetIdsRequest(AbstractModel):
     r"""DescribeDspmAssetIds请求参数结构体
 
@@ -34324,6 +36236,747 @@ class DescribeDspmExportTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDspmIdentifyCategoryListRequest(AbstractModel):
+    r"""DescribeDspmIdentifyCategoryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyCategoryListResponse(AbstractModel):
+    r"""DescribeDspmIdentifyCategoryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p><p>单位：数量</p>
+        :type TotalCount: int
+        :param _DataSet: <p>无</p>
+        :type DataSet: list of DspmIdentifyCategoryItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p><p>单位：数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyCategoryItem
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmIdentifyCategoryItem()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyComplianceCategoryRuleListRequest(AbstractModel):
+    r"""DescribeDspmIdentifyComplianceCategoryRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceId: <p>识别模板ID</p>
+        :type ComplianceId: int
+        :param _CategoryId: <p>分类ID</p>
+        :type CategoryId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._ComplianceId = None
+        self._CategoryId = None
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._ComplianceId = params.get("ComplianceId")
+        self._CategoryId = params.get("CategoryId")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyComplianceCategoryRuleListResponse(AbstractModel):
+    r"""DescribeDspmIdentifyComplianceCategoryRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p><p>单位：数量</p>
+        :type TotalCount: int
+        :param _DataSet: <p>无</p>
+        :type DataSet: list of DspmIdentifyCategoryRuleRelateDetailItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p><p>单位：数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyCategoryRuleRelateDetailItem
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmIdentifyCategoryRuleRelateDetailItem()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyComplianceGroupDetailRequest(AbstractModel):
+    r"""DescribeDspmIdentifyComplianceGroupDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Id: <p>识别模板ID</p>
+        :type Id: int
+        """
+        self._MemberId = None
+        self._Id = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Id(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyComplianceGroupDetailResponse(AbstractModel):
+    r"""DescribeDspmIdentifyComplianceGroupDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>识别模板ID</p>
+        :type Id: int
+        :param _Name: <p>识别模板名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Type: <p>模板类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :type Type: int
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+        :type Status: int
+        :param _LevelGroupId: <p>关联级别组ID</p>
+        :type LevelGroupId: int
+        :param _Detail: <p>无</p>
+        :type Detail: list of DspmIdentifyComplianceCategoryRelation
+        :param _LevelGroupName: <p>关联级别组名称</p>
+        :type LevelGroupName: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>修改时间</p>
+        :type ModifyTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._Status = None
+        self._LevelGroupId = None
+        self._Detail = None
+        self._LevelGroupName = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>识别模板名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""<p>模板类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LevelGroupId(self):
+        r"""<p>关联级别组ID</p>
+        :rtype: int
+        """
+        return self._LevelGroupId
+
+    @LevelGroupId.setter
+    def LevelGroupId(self, LevelGroupId):
+        self._LevelGroupId = LevelGroupId
+
+    @property
+    def Detail(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyComplianceCategoryRelation
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def LevelGroupName(self):
+        r"""<p>关联级别组名称</p>
+        :rtype: str
+        """
+        return self._LevelGroupName
+
+    @LevelGroupName.setter
+    def LevelGroupName(self, LevelGroupName):
+        self._LevelGroupName = LevelGroupName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>修改时间</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._LevelGroupId = params.get("LevelGroupId")
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = DspmIdentifyComplianceCategoryRelation()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._LevelGroupName = params.get("LevelGroupName")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyComplianceGroupListRequest(AbstractModel):
+    r"""DescribeDspmIdentifyComplianceGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyComplianceGroupListResponse(AbstractModel):
+    r"""DescribeDspmIdentifyComplianceGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p><p>单位：数量</p>
+        :type TotalCount: int
+        :param _DataSet: <p>无</p>
+        :type DataSet: list of DspmIdentifyComplianceItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p><p>单位：数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyComplianceItem
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmIdentifyComplianceItem()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyDistributionStatisticsRequest(AbstractModel):
+    r"""DescribeDspmIdentifyDistributionStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatType: <p>统计类型</p><p>枚举值：</p><ul><li>FieldTop5Asset： 识别字段Top5</li><li>FieldCategoryDistribution： 识别字段分类分布</li><li>FieldLevelDistribution： 识别字段级别分布</li><li>AssetDistribution： 识别资产分布</li></ul>
+        :type StatType: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _AssetType: <p>资产类型</p><p>枚举值：</p><ul><li>cdb： 云数据库MySQL</li><li>mariadb： 云数据库MariaDB</li></ul>
+        :type AssetType: str
+        :param _ComplianceId: <p>识别模板id</p>
+        :type ComplianceId: int
+        """
+        self._StatType = None
+        self._MemberId = None
+        self._AssetType = None
+        self._ComplianceId = None
+
+    @property
+    def StatType(self):
+        r"""<p>统计类型</p><p>枚举值：</p><ul><li>FieldTop5Asset： 识别字段Top5</li><li>FieldCategoryDistribution： 识别字段分类分布</li><li>FieldLevelDistribution： 识别字段级别分布</li><li>AssetDistribution： 识别资产分布</li></ul>
+        :rtype: str
+        """
+        return self._StatType
+
+    @StatType.setter
+    def StatType(self, StatType):
+        self._StatType = StatType
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AssetType(self):
+        r"""<p>资产类型</p><p>枚举值：</p><ul><li>cdb： 云数据库MySQL</li><li>mariadb： 云数据库MariaDB</li></ul>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板id</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+
+    def _deserialize(self, params):
+        self._StatType = params.get("StatType")
+        self._MemberId = params.get("MemberId")
+        self._AssetType = params.get("AssetType")
+        self._ComplianceId = params.get("ComplianceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyDistributionStatisticsResponse(AbstractModel):
+    r"""DescribeDspmIdentifyDistributionStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSet: <p>结果</p>
+        :type DataSet: list of DspmStatisticsItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def DataSet(self):
+        r"""<p>结果</p>
+        :rtype: list of DspmStatisticsItem
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmStatisticsItem()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDspmIdentifyIdListRequest(AbstractModel):
     r"""DescribeDspmIdentifyIdList请求参数结构体
 
@@ -34716,6 +37369,581 @@ class DescribeDspmIdentifyInfoResponse(AbstractModel):
         self._ApproveHistoryCount = params.get("ApproveHistoryCount")
         self._AssetCount = params.get("AssetCount")
         self._UinAccountCount = params.get("UinAccountCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyLevelGroupListRequest(AbstractModel):
+    r"""DescribeDspmIdentifyLevelGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyLevelGroupListResponse(AbstractModel):
+    r"""DescribeDspmIdentifyLevelGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p><p>单位：数量</p>
+        :type TotalCount: int
+        :param _DataSet: <p>无</p>
+        :type DataSet: list of DspmIdentifyLevelGroupItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p><p>单位：数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyLevelGroupItem
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmIdentifyLevelGroupItem()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyRuleDetailRequest(AbstractModel):
+    r"""DescribeDspmIdentifyRuleDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据项id</p>
+        :type Id: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Id = None
+        self._MemberId = None
+
+    @property
+    def Id(self):
+        r"""<p>数据项id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyRuleDetailResponse(AbstractModel):
+    r"""DescribeDspmIdentifyRuleDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据项id</p>
+        :type Id: int
+        :param _Name: <p>数据项名称</p>
+        :type Name: str
+        :param _Description: <p>数据项描述</p>
+        :type Description: str
+        :param _Status: <p>数据项是否启用</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul><p>默认值：0</p>
+        :type Status: int
+        :param _Type: <p>数据项类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :type Type: int
+        :param _StructuredRule: <p>结构化规则</p>
+        :type StructuredRule: str
+        :param _UnStructuredRule: <p>非结构化规则</p>
+        :type UnStructuredRule: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Status = None
+        self._Type = None
+        self._StructuredRule = None
+        self._UnStructuredRule = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>数据项id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>数据项名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>数据项描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>数据项是否启用</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""<p>数据项类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StructuredRule(self):
+        r"""<p>结构化规则</p>
+        :rtype: str
+        """
+        return self._StructuredRule
+
+    @StructuredRule.setter
+    def StructuredRule(self, StructuredRule):
+        self._StructuredRule = StructuredRule
+
+    @property
+    def UnStructuredRule(self):
+        r"""<p>非结构化规则</p>
+        :rtype: str
+        """
+        return self._UnStructuredRule
+
+    @UnStructuredRule.setter
+    def UnStructuredRule(self, UnStructuredRule):
+        self._UnStructuredRule = UnStructuredRule
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._StructuredRule = params.get("StructuredRule")
+        self._UnStructuredRule = params.get("UnStructuredRule")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyRuleListRequest(AbstractModel):
+    r"""DescribeDspmIdentifyRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>筛选项</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>筛选项</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyRuleListResponse(AbstractModel):
+    r"""DescribeDspmIdentifyRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p><p>单位：数量</p>
+        :type TotalCount: int
+        :param _DataSet: <p>结果</p>
+        :type DataSet: list of DspmIdentifyRuleItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p><p>单位：数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""<p>结果</p>
+        :rtype: list of DspmIdentifyRuleItem
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmIdentifyRuleItem()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyRuleTestResultRequest(AbstractModel):
+    r"""DescribeDspmIdentifyRuleTestResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleType: <p>规则类型</p><p>枚举值：</p><ul><li>structured： 结构化规则</li><li>unstructrued： 非结构化规则</li></ul>
+        :type RuleType: str
+        :param _RuleContent: <p>规则内容</p>
+        :type RuleContent: str
+        :param _RuleId: <p>数据项id</p>
+        :type RuleId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _StructuredTestContent: <p>结构化测试内容</p>
+        :type StructuredTestContent: list of DspmIdentifyRuleStructuredTestItem
+        :param _UnStructuredTestContent: <p>非结构化测试内容</p>
+        :type UnStructuredTestContent: str
+        """
+        self._RuleType = None
+        self._RuleContent = None
+        self._RuleId = None
+        self._MemberId = None
+        self._StructuredTestContent = None
+        self._UnStructuredTestContent = None
+
+    @property
+    def RuleType(self):
+        r"""<p>规则类型</p><p>枚举值：</p><ul><li>structured： 结构化规则</li><li>unstructrued： 非结构化规则</li></ul>
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def RuleContent(self):
+        r"""<p>规则内容</p>
+        :rtype: str
+        """
+        return self._RuleContent
+
+    @RuleContent.setter
+    def RuleContent(self, RuleContent):
+        self._RuleContent = RuleContent
+
+    @property
+    def RuleId(self):
+        r"""<p>数据项id</p>
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def StructuredTestContent(self):
+        r"""<p>结构化测试内容</p>
+        :rtype: list of DspmIdentifyRuleStructuredTestItem
+        """
+        return self._StructuredTestContent
+
+    @StructuredTestContent.setter
+    def StructuredTestContent(self, StructuredTestContent):
+        self._StructuredTestContent = StructuredTestContent
+
+    @property
+    def UnStructuredTestContent(self):
+        r"""<p>非结构化测试内容</p>
+        :rtype: str
+        """
+        return self._UnStructuredTestContent
+
+    @UnStructuredTestContent.setter
+    def UnStructuredTestContent(self, UnStructuredTestContent):
+        self._UnStructuredTestContent = UnStructuredTestContent
+
+
+    def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        self._RuleContent = params.get("RuleContent")
+        self._RuleId = params.get("RuleId")
+        self._MemberId = params.get("MemberId")
+        if params.get("StructuredTestContent") is not None:
+            self._StructuredTestContent = []
+            for item in params.get("StructuredTestContent"):
+                obj = DspmIdentifyRuleStructuredTestItem()
+                obj._deserialize(item)
+                self._StructuredTestContent.append(obj)
+        self._UnStructuredTestContent = params.get("UnStructuredTestContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyRuleTestResultResponse(AbstractModel):
+    r"""DescribeDspmIdentifyRuleTestResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsMatch: <p>是否匹配成功</p><p>枚举值：</p><ul><li>true： 匹配成功</li><li>false： 匹配失败</li></ul>
+        :type IsMatch: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsMatch = None
+        self._RequestId = None
+
+    @property
+    def IsMatch(self):
+        r"""<p>是否匹配成功</p><p>枚举值：</p><ul><li>true： 匹配成功</li><li>false： 匹配失败</li></ul>
+        :rtype: bool
+        """
+        return self._IsMatch
+
+    @IsMatch.setter
+    def IsMatch(self, IsMatch):
+        self._IsMatch = IsMatch
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsMatch = params.get("IsMatch")
         self._RequestId = params.get("RequestId")
 
 
@@ -49082,6 +52310,57 @@ class DspmAccountCount(AbstractModel):
         
 
 
+class DspmAddIdentifyLevelItem(AbstractModel):
+    r"""dspm数据识别级别信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LevelName: <p>级别名称</p>
+        :type LevelName: str
+        :param _LevelScore: <p>级别敏感程度</p><p>单位：分数</p>
+        :type LevelScore: int
+        """
+        self._LevelName = None
+        self._LevelScore = None
+
+    @property
+    def LevelName(self):
+        r"""<p>级别名称</p>
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def LevelScore(self):
+        r"""<p>级别敏感程度</p><p>单位：分数</p>
+        :rtype: int
+        """
+        return self._LevelScore
+
+    @LevelScore.setter
+    def LevelScore(self, LevelScore):
+        self._LevelScore = LevelScore
+
+
+    def _deserialize(self, params):
+        self._LevelName = params.get("LevelName")
+        self._LevelScore = params.get("LevelScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DspmApplyOrder(AbstractModel):
     r"""申请单信息
 
@@ -51426,6 +54705,338 @@ class DspmAssetFieldInfo(AbstractModel):
         
 
 
+class DspmAssetIdentifyInfo(AbstractModel):
+    r"""dspm资产数据识别统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: <p>资产实例id</p>
+        :type AssetId: str
+        :param _AssetName: <p>资产名称</p>
+        :type AssetName: str
+        :param _AssetType: <p>资产类型</p><p>枚举值：</p><ul><li>cdb： MySQL</li><li>mariadb： MariaDB</li><li>mongodb： MongoDB</li></ul>
+        :type AssetType: str
+        :param _DetectedDbCount: <p>已检出数据库数量</p>
+        :type DetectedDbCount: int
+        :param _DetectedTableCount: <p>已检出表数量</p>
+        :type DetectedTableCount: int
+        :param _RuleIds: <p>数据项id集合</p>
+        :type RuleIds: list of int non-negative
+        :param _RuleNames: <p>数据项名称集合</p>
+        :type RuleNames: list of str
+        :param _CategoryIds: <p>分类id集合</p>
+        :type CategoryIds: list of int non-negative
+        :param _CategoryNames: <p>分类名称集合</p>
+        :type CategoryNames: list of str
+        :param _LevelId: <p>最高级别ID</p>
+        :type LevelId: int
+        :param _LevelName: <p>最高级别名称</p>
+        :type LevelName: str
+        :param _LevelScore: <p>级别敏感程度</p>
+        :type LevelScore: int
+        :param _DetectedTime: <p>检出时间</p>
+        :type DetectedTime: str
+        :param _CategoryDetails: <p>分类详情</p>
+        :type CategoryDetails: list of DspmIdentifyCategoryDetail
+        :param _AppId: <p>APPID</p>
+        :type AppId: int
+        :param _NickName: <p>账号名称</p>
+        :type NickName: str
+        :param _Uin: <p>账号ID</p>
+        :type Uin: str
+        """
+        self._AssetId = None
+        self._AssetName = None
+        self._AssetType = None
+        self._DetectedDbCount = None
+        self._DetectedTableCount = None
+        self._RuleIds = None
+        self._RuleNames = None
+        self._CategoryIds = None
+        self._CategoryNames = None
+        self._LevelId = None
+        self._LevelName = None
+        self._LevelScore = None
+        self._DetectedTime = None
+        self._CategoryDetails = None
+        self._AppId = None
+        self._NickName = None
+        self._Uin = None
+
+    @property
+    def AssetId(self):
+        r"""<p>资产实例id</p>
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetName(self):
+        r"""<p>资产名称</p>
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetType(self):
+        r"""<p>资产类型</p><p>枚举值：</p><ul><li>cdb： MySQL</li><li>mariadb： MariaDB</li><li>mongodb： MongoDB</li></ul>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def DetectedDbCount(self):
+        r"""<p>已检出数据库数量</p>
+        :rtype: int
+        """
+        return self._DetectedDbCount
+
+    @DetectedDbCount.setter
+    def DetectedDbCount(self, DetectedDbCount):
+        self._DetectedDbCount = DetectedDbCount
+
+    @property
+    def DetectedTableCount(self):
+        r"""<p>已检出表数量</p>
+        :rtype: int
+        """
+        return self._DetectedTableCount
+
+    @DetectedTableCount.setter
+    def DetectedTableCount(self, DetectedTableCount):
+        self._DetectedTableCount = DetectedTableCount
+
+    @property
+    def RuleIds(self):
+        r"""<p>数据项id集合</p>
+        :rtype: list of int non-negative
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def RuleNames(self):
+        r"""<p>数据项名称集合</p>
+        :rtype: list of str
+        """
+        return self._RuleNames
+
+    @RuleNames.setter
+    def RuleNames(self, RuleNames):
+        self._RuleNames = RuleNames
+
+    @property
+    def CategoryIds(self):
+        r"""<p>分类id集合</p>
+        :rtype: list of int non-negative
+        """
+        return self._CategoryIds
+
+    @CategoryIds.setter
+    def CategoryIds(self, CategoryIds):
+        self._CategoryIds = CategoryIds
+
+    @property
+    def CategoryNames(self):
+        r"""<p>分类名称集合</p>
+        :rtype: list of str
+        """
+        return self._CategoryNames
+
+    @CategoryNames.setter
+    def CategoryNames(self, CategoryNames):
+        self._CategoryNames = CategoryNames
+
+    @property
+    def LevelId(self):
+        r"""<p>最高级别ID</p>
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+    @property
+    def LevelName(self):
+        r"""<p>最高级别名称</p>
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def LevelScore(self):
+        r"""<p>级别敏感程度</p>
+        :rtype: int
+        """
+        return self._LevelScore
+
+    @LevelScore.setter
+    def LevelScore(self, LevelScore):
+        self._LevelScore = LevelScore
+
+    @property
+    def DetectedTime(self):
+        r"""<p>检出时间</p>
+        :rtype: str
+        """
+        return self._DetectedTime
+
+    @DetectedTime.setter
+    def DetectedTime(self, DetectedTime):
+        self._DetectedTime = DetectedTime
+
+    @property
+    def CategoryDetails(self):
+        r"""<p>分类详情</p>
+        :rtype: list of DspmIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+    @property
+    def AppId(self):
+        r"""<p>APPID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""<p>账号名称</p>
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""<p>账号ID</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._AssetName = params.get("AssetName")
+        self._AssetType = params.get("AssetType")
+        self._DetectedDbCount = params.get("DetectedDbCount")
+        self._DetectedTableCount = params.get("DetectedTableCount")
+        self._RuleIds = params.get("RuleIds")
+        self._RuleNames = params.get("RuleNames")
+        self._CategoryIds = params.get("CategoryIds")
+        self._CategoryNames = params.get("CategoryNames")
+        self._LevelId = params.get("LevelId")
+        self._LevelName = params.get("LevelName")
+        self._LevelScore = params.get("LevelScore")
+        self._DetectedTime = params.get("DetectedTime")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = DspmIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetIdentifyTaskStatus(AbstractModel):
+    r"""dspm数据识别任务状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>0： 未识别</li><li>1： 识别中</li><li>2： 识别终止</li><li>3： 识别成功</li><li>4： 识别失败</li><li>5： 暂停</li></ul>
+        :type Status: int
+        """
+        self._TaskId = None
+        self._Status = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>0： 未识别</li><li>1： 识别中</li><li>2： 识别终止</li><li>3： 识别成功</li><li>4： 识别失败</li><li>5： 暂停</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DspmAssetInstance(AbstractModel):
     r"""Dspm资产实例
 
@@ -53189,6 +56800,687 @@ class DspmIdentifyCategoryDetail(AbstractModel):
         
 
 
+class DspmIdentifyCategoryItem(AbstractModel):
+    r"""dspm数据识别分类列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>分类ID</p>
+        :type Id: int
+        :param _Name: <p>分类名称</p>
+        :type Name: str
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :type Type: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _ComplianceRelations: <p>无</p>
+        :type ComplianceRelations: list of DspmIdentifyRefComplianceInfo
+        """
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._UpdateTime = None
+        self._ComplianceRelations = None
+
+    @property
+    def Id(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>分类名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ComplianceRelations(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyRefComplianceInfo
+        """
+        return self._ComplianceRelations
+
+    @ComplianceRelations.setter
+    def ComplianceRelations(self, ComplianceRelations):
+        self._ComplianceRelations = ComplianceRelations
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("ComplianceRelations") is not None:
+            self._ComplianceRelations = []
+            for item in params.get("ComplianceRelations"):
+                obj = DspmIdentifyRefComplianceInfo()
+                obj._deserialize(item)
+                self._ComplianceRelations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyCategoryRuleRelateDetailItem(AbstractModel):
+    r"""dspm数据识别分类数据项关联详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceId: <p>识别模板ID</p>
+        :type ComplianceId: int
+        :param _CategoryId: <p>分类ID</p>
+        :type CategoryId: int
+        :param _RuleId: <p>数据项ID</p>
+        :type RuleId: int
+        :param _RuleName: <p>数据项名称</p>
+        :type RuleName: str
+        :param _LevelId: <p>级别ID</p>
+        :type LevelId: int
+        :param _LevelName: <p>级别名称</p>
+        :type LevelName: str
+        """
+        self._ComplianceId = None
+        self._CategoryId = None
+        self._RuleId = None
+        self._RuleName = None
+        self._LevelId = None
+        self._LevelName = None
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def RuleId(self):
+        r"""<p>数据项ID</p>
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""<p>数据项名称</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def LevelId(self):
+        r"""<p>级别ID</p>
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+    @property
+    def LevelName(self):
+        r"""<p>级别名称</p>
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+
+    def _deserialize(self, params):
+        self._ComplianceId = params.get("ComplianceId")
+        self._CategoryId = params.get("CategoryId")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._LevelId = params.get("LevelId")
+        self._LevelName = params.get("LevelName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyCategoryRuleRelateItem(AbstractModel):
+    r"""dspm数据识别分类和数据项关联关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>数据项ID</p>
+        :type RuleId: int
+        :param _LevelId: <p>级别ID</p>
+        :type LevelId: int
+        """
+        self._RuleId = None
+        self._LevelId = None
+
+    @property
+    def RuleId(self):
+        r"""<p>数据项ID</p>
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def LevelId(self):
+        r"""<p>级别ID</p>
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._LevelId = params.get("LevelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyComplianceCategoryRelation(AbstractModel):
+    r"""dspm数据识别模板分类关联关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>分类ID</p>
+        :type CategoryId: int
+        :param _CategoryName: <p>分类名称</p>
+        :type CategoryName: str
+        :param _CategoryParentId: <p>父分类ID</p>
+        :type CategoryParentId: str
+        :param _IsLeaf: <p>是否叶子节点</p>
+        :type IsLeaf: bool
+        :param _CategoryType: <p>分类类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :type CategoryType: int
+        :param _CategoryGrade: <p>分类层级</p><p>单位：层</p>
+        :type CategoryGrade: int
+        :param _RuleRelations: <p>无</p>
+        :type RuleRelations: list of DspmIdentifyComplianceRuleRelation
+        :param _Children: <p>无</p>
+        :type Children: list of DspmIdentifyComplianceCategoryRelation
+        """
+        self._CategoryId = None
+        self._CategoryName = None
+        self._CategoryParentId = None
+        self._IsLeaf = None
+        self._CategoryType = None
+        self._CategoryGrade = None
+        self._RuleRelations = None
+        self._Children = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CategoryName(self):
+        r"""<p>分类名称</p>
+        :rtype: str
+        """
+        return self._CategoryName
+
+    @CategoryName.setter
+    def CategoryName(self, CategoryName):
+        self._CategoryName = CategoryName
+
+    @property
+    def CategoryParentId(self):
+        r"""<p>父分类ID</p>
+        :rtype: str
+        """
+        return self._CategoryParentId
+
+    @CategoryParentId.setter
+    def CategoryParentId(self, CategoryParentId):
+        self._CategoryParentId = CategoryParentId
+
+    @property
+    def IsLeaf(self):
+        r"""<p>是否叶子节点</p>
+        :rtype: bool
+        """
+        return self._IsLeaf
+
+    @IsLeaf.setter
+    def IsLeaf(self, IsLeaf):
+        self._IsLeaf = IsLeaf
+
+    @property
+    def CategoryType(self):
+        r"""<p>分类类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :rtype: int
+        """
+        return self._CategoryType
+
+    @CategoryType.setter
+    def CategoryType(self, CategoryType):
+        self._CategoryType = CategoryType
+
+    @property
+    def CategoryGrade(self):
+        r"""<p>分类层级</p><p>单位：层</p>
+        :rtype: int
+        """
+        return self._CategoryGrade
+
+    @CategoryGrade.setter
+    def CategoryGrade(self, CategoryGrade):
+        self._CategoryGrade = CategoryGrade
+
+    @property
+    def RuleRelations(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyComplianceRuleRelation
+        """
+        return self._RuleRelations
+
+    @RuleRelations.setter
+    def RuleRelations(self, RuleRelations):
+        self._RuleRelations = RuleRelations
+
+    @property
+    def Children(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyComplianceCategoryRelation
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._CategoryName = params.get("CategoryName")
+        self._CategoryParentId = params.get("CategoryParentId")
+        self._IsLeaf = params.get("IsLeaf")
+        self._CategoryType = params.get("CategoryType")
+        self._CategoryGrade = params.get("CategoryGrade")
+        if params.get("RuleRelations") is not None:
+            self._RuleRelations = []
+            for item in params.get("RuleRelations"):
+                obj = DspmIdentifyComplianceRuleRelation()
+                obj._deserialize(item)
+                self._RuleRelations.append(obj)
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = DspmIdentifyComplianceCategoryRelation()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyComplianceItem(AbstractModel):
+    r"""dspm分类分级模板列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>识别模板ID</p>
+        :type Id: int
+        :param _Name: <p>识别模板名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Status: <p>启用状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+        :type Status: int
+        :param _Type: <p>模板类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :type Type: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _ApplyStatus: <p>应用状态</p><p>枚举值：</p><ul><li>0： 未应用</li><li>1： 应用中</li></ul>
+        :type ApplyStatus: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Status = None
+        self._Type = None
+        self._UpdateTime = None
+        self._ApplyStatus = None
+
+    @property
+    def Id(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>识别模板名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>启用状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""<p>模板类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ApplyStatus(self):
+        r"""<p>应用状态</p><p>枚举值：</p><ul><li>0： 未应用</li><li>1： 应用中</li></ul>
+        :rtype: int
+        """
+        return self._ApplyStatus
+
+    @ApplyStatus.setter
+    def ApplyStatus(self, ApplyStatus):
+        self._ApplyStatus = ApplyStatus
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ApplyStatus = params.get("ApplyStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyComplianceRuleRelation(AbstractModel):
+    r"""dspm数据识别模板数据项关联关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>数据项ID</p>
+        :type RuleId: int
+        :param _RuleName: <p>数据项名称</p>
+        :type RuleName: str
+        :param _LevelId: <p>级别ID</p>
+        :type LevelId: int
+        :param _LevelName: <p>级别名称</p>
+        :type LevelName: str
+        :param _LevelScore: <p>级别程度</p><p>单位：分数</p>
+        :type LevelScore: int
+        :param _StructuredStatus: <p>结构化规则状态</p><p>枚举值：</p><ul><li>0： 未配置</li><li>1： 已配置</li></ul>
+        :type StructuredStatus: int
+        :param _UnStructuredStatus: <p>非结构化规则状态</p><p>枚举值：</p><ul><li>0： 未配置</li><li>1： 已配置</li></ul>
+        :type UnStructuredStatus: int
+        :param _Status: <p>数据项开启状态</p><p>枚举值：</p><ul><li>0： 未开启</li><li>1： 已开启</li></ul>
+        :type Status: int
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._LevelId = None
+        self._LevelName = None
+        self._LevelScore = None
+        self._StructuredStatus = None
+        self._UnStructuredStatus = None
+        self._Status = None
+
+    @property
+    def RuleId(self):
+        r"""<p>数据项ID</p>
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""<p>数据项名称</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def LevelId(self):
+        r"""<p>级别ID</p>
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+    @property
+    def LevelName(self):
+        r"""<p>级别名称</p>
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def LevelScore(self):
+        r"""<p>级别程度</p><p>单位：分数</p>
+        :rtype: int
+        """
+        return self._LevelScore
+
+    @LevelScore.setter
+    def LevelScore(self, LevelScore):
+        self._LevelScore = LevelScore
+
+    @property
+    def StructuredStatus(self):
+        r"""<p>结构化规则状态</p><p>枚举值：</p><ul><li>0： 未配置</li><li>1： 已配置</li></ul>
+        :rtype: int
+        """
+        return self._StructuredStatus
+
+    @StructuredStatus.setter
+    def StructuredStatus(self, StructuredStatus):
+        self._StructuredStatus = StructuredStatus
+
+    @property
+    def UnStructuredStatus(self):
+        r"""<p>非结构化规则状态</p><p>枚举值：</p><ul><li>0： 未配置</li><li>1： 已配置</li></ul>
+        :rtype: int
+        """
+        return self._UnStructuredStatus
+
+    @UnStructuredStatus.setter
+    def UnStructuredStatus(self, UnStructuredStatus):
+        self._UnStructuredStatus = UnStructuredStatus
+
+    @property
+    def Status(self):
+        r"""<p>数据项开启状态</p><p>枚举值：</p><ul><li>0： 未开启</li><li>1： 已开启</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._LevelId = params.get("LevelId")
+        self._LevelName = params.get("LevelName")
+        self._LevelScore = params.get("LevelScore")
+        self._StructuredStatus = params.get("StructuredStatus")
+        self._UnStructuredStatus = params.get("UnStructuredStatus")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DspmIdentifyCount(AbstractModel):
     r"""Dspm身份统计信息
 
@@ -53651,6 +57943,274 @@ class DspmIdentifyInfoItem(AbstractModel):
         
 
 
+class DspmIdentifyLevelGroupItem(AbstractModel):
+    r"""dspm数据识别分级组列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>级别组id</p>
+        :type Id: int
+        :param _Name: <p>级别组名称</p>
+        :type Name: str
+        :param _Description: <p>级别组描述</p>
+        :type Description: str
+        :param _Type: <p>级别组类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :type Type: int
+        :param _LevelItems: <p>级别信息</p>
+        :type LevelItems: list of DspmIdentifyLevelItem
+        :param _UpdateTime: <p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type UpdateTime: str
+        :param _ComplianceRelations: <p>无</p>
+        :type ComplianceRelations: list of DspmIdentifyRefComplianceInfo
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._LevelItems = None
+        self._UpdateTime = None
+        self._ComplianceRelations = None
+
+    @property
+    def Id(self):
+        r"""<p>级别组id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>级别组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>级别组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""<p>级别组类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LevelItems(self):
+        r"""<p>级别信息</p>
+        :rtype: list of DspmIdentifyLevelItem
+        """
+        return self._LevelItems
+
+    @LevelItems.setter
+    def LevelItems(self, LevelItems):
+        self._LevelItems = LevelItems
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ComplianceRelations(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyRefComplianceInfo
+        """
+        return self._ComplianceRelations
+
+    @ComplianceRelations.setter
+    def ComplianceRelations(self, ComplianceRelations):
+        self._ComplianceRelations = ComplianceRelations
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        if params.get("LevelItems") is not None:
+            self._LevelItems = []
+            for item in params.get("LevelItems"):
+                obj = DspmIdentifyLevelItem()
+                obj._deserialize(item)
+                self._LevelItems.append(obj)
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("ComplianceRelations") is not None:
+            self._ComplianceRelations = []
+            for item in params.get("ComplianceRelations"):
+                obj = DspmIdentifyRefComplianceInfo()
+                obj._deserialize(item)
+                self._ComplianceRelations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyLevelItem(AbstractModel):
+    r"""dspm数据识别级别信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LevelName: <p>级别名称</p>
+        :type LevelName: str
+        :param _LevelScore: <p>级别风险程度（从低到高）</p><p>取值范围：[1, 10]</p><p>单位：程度</p>
+        :type LevelScore: int
+        :param _LevelId: <p>级别id</p>
+        :type LevelId: int
+        """
+        self._LevelName = None
+        self._LevelScore = None
+        self._LevelId = None
+
+    @property
+    def LevelName(self):
+        r"""<p>级别名称</p>
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def LevelScore(self):
+        r"""<p>级别风险程度（从低到高）</p><p>取值范围：[1, 10]</p><p>单位：程度</p>
+        :rtype: int
+        """
+        return self._LevelScore
+
+    @LevelScore.setter
+    def LevelScore(self, LevelScore):
+        self._LevelScore = LevelScore
+
+    @property
+    def LevelId(self):
+        r"""<p>级别id</p>
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+
+    def _deserialize(self, params):
+        self._LevelName = params.get("LevelName")
+        self._LevelScore = params.get("LevelScore")
+        self._LevelId = params.get("LevelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyRefComplianceInfo(AbstractModel):
+    r"""dspm关联识别模板信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceId: <p>识别模板ID</p>
+        :type ComplianceId: int
+        :param _ComplianceName: <p>识别模板名称</p>
+        :type ComplianceName: str
+        :param _ComplianceType: <p>识别模板类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :type ComplianceType: int
+        """
+        self._ComplianceId = None
+        self._ComplianceName = None
+        self._ComplianceType = None
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+    @property
+    def ComplianceName(self):
+        r"""<p>识别模板名称</p>
+        :rtype: str
+        """
+        return self._ComplianceName
+
+    @ComplianceName.setter
+    def ComplianceName(self, ComplianceName):
+        self._ComplianceName = ComplianceName
+
+    @property
+    def ComplianceType(self):
+        r"""<p>识别模板类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :rtype: int
+        """
+        return self._ComplianceType
+
+    @ComplianceType.setter
+    def ComplianceType(self, ComplianceType):
+        self._ComplianceType = ComplianceType
+
+
+    def _deserialize(self, params):
+        self._ComplianceId = params.get("ComplianceId")
+        self._ComplianceName = params.get("ComplianceName")
+        self._ComplianceType = params.get("ComplianceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DspmIdentifyRuleDetail(AbstractModel):
     r"""dspm数据项详情
 
@@ -53737,6 +58297,218 @@ class DspmIdentifyRuleDetail(AbstractModel):
         self._LevelId = params.get("LevelId")
         self._LevelName = params.get("LevelName")
         self._LevelScore = params.get("LevelScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyRuleItem(AbstractModel):
+    r"""dspm分类分级数据项列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据项id</p>
+        :type Id: int
+        :param _Name: <p>数据项名称</p>
+        :type Name: str
+        :param _Description: <p>数据项描述</p>
+        :type Description: str
+        :param _Status: <p>数据项是否启用</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :type Status: int
+        :param _Type: <p>数据项类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :type Type: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _StructuredStatus: <p>结构化规则配置状态</p>
+        :type StructuredStatus: bool
+        :param _UnStructuredStatus: <p>非结构化规则配置状态</p>
+        :type UnStructuredStatus: bool
+        :param _ComplianceRelations: <p>无</p>
+        :type ComplianceRelations: list of DspmIdentifyRefComplianceInfo
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Status = None
+        self._Type = None
+        self._UpdateTime = None
+        self._StructuredStatus = None
+        self._UnStructuredStatus = None
+        self._ComplianceRelations = None
+
+    @property
+    def Id(self):
+        r"""<p>数据项id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>数据项名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>数据项描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>数据项是否启用</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""<p>数据项类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def StructuredStatus(self):
+        r"""<p>结构化规则配置状态</p>
+        :rtype: bool
+        """
+        return self._StructuredStatus
+
+    @StructuredStatus.setter
+    def StructuredStatus(self, StructuredStatus):
+        self._StructuredStatus = StructuredStatus
+
+    @property
+    def UnStructuredStatus(self):
+        r"""<p>非结构化规则配置状态</p>
+        :rtype: bool
+        """
+        return self._UnStructuredStatus
+
+    @UnStructuredStatus.setter
+    def UnStructuredStatus(self, UnStructuredStatus):
+        self._UnStructuredStatus = UnStructuredStatus
+
+    @property
+    def ComplianceRelations(self):
+        r"""<p>无</p>
+        :rtype: list of DspmIdentifyRefComplianceInfo
+        """
+        return self._ComplianceRelations
+
+    @ComplianceRelations.setter
+    def ComplianceRelations(self, ComplianceRelations):
+        self._ComplianceRelations = ComplianceRelations
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._UpdateTime = params.get("UpdateTime")
+        self._StructuredStatus = params.get("StructuredStatus")
+        self._UnStructuredStatus = params.get("UnStructuredStatus")
+        if params.get("ComplianceRelations") is not None:
+            self._ComplianceRelations = []
+            for item in params.get("ComplianceRelations"):
+                obj = DspmIdentifyRefComplianceInfo()
+                obj._deserialize(item)
+                self._ComplianceRelations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyRuleStructuredTestItem(AbstractModel):
+    r"""dspm结构化数据项测试
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>参数名</p>
+        :type Name: str
+        :param _Value: <p>参数类型</p>
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>参数名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>参数类型</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55678,6 +60450,72 @@ class DspmSensitiveScanTaskConfig(AbstractModel):
             self._ScheduleConfig = DspmScheduleConfig()
             self._ScheduleConfig._deserialize(params.get("ScheduleConfig"))
         self._IsRunAtOnce = params.get("IsRunAtOnce")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmStatisticsItem(AbstractModel):
+    r"""dspm统计项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>统计项名称</p>
+        :type Name: str
+        :param _Value: <p>统计值</p>
+        :type Value: int
+        :param _Desc: <p>描述</p>
+        :type Desc: str
+        """
+        self._Name = None
+        self._Value = None
+        self._Desc = None
+
+    @property
+    def Name(self):
+        r"""<p>统计项名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>统计值</p>
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Desc(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64522,6 +69360,179 @@ class ModifyCosAuditMonitorAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCosAuditObjectIdentifyStatusRequest(AbstractModel):
+    r"""ModifyCosAuditObjectIdentifyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: <p>资源id</p>
+        :type ResourceId: str
+        :param _TextIdentifyStatus: <p>文本识别状态</p>
+        :type TextIdentifyStatus: int
+        :param _ImageIdentifyStatus: <p>图片识别状态</p>
+        :type ImageIdentifyStatus: int
+        """
+        self._ResourceId = None
+        self._TextIdentifyStatus = None
+        self._ImageIdentifyStatus = None
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源id</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def TextIdentifyStatus(self):
+        r"""<p>文本识别状态</p>
+        :rtype: int
+        """
+        return self._TextIdentifyStatus
+
+    @TextIdentifyStatus.setter
+    def TextIdentifyStatus(self, TextIdentifyStatus):
+        self._TextIdentifyStatus = TextIdentifyStatus
+
+    @property
+    def ImageIdentifyStatus(self):
+        r"""<p>图片识别状态</p>
+        :rtype: int
+        """
+        return self._ImageIdentifyStatus
+
+    @ImageIdentifyStatus.setter
+    def ImageIdentifyStatus(self, ImageIdentifyStatus):
+        self._ImageIdentifyStatus = ImageIdentifyStatus
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._TextIdentifyStatus = params.get("TextIdentifyStatus")
+        self._ImageIdentifyStatus = params.get("ImageIdentifyStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosAuditObjectIdentifyStatusResponse(AbstractModel):
+    r"""ModifyCosAuditObjectIdentifyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCosAuditObjectSampleRateRequest(AbstractModel):
+    r"""ModifyCosAuditObjectSampleRate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketIdSet: <p>存储桶资产id集合</p>
+        :type BucketIdSet: list of int non-negative
+        :param _SampleRateSet: <p>采样率集合</p>
+        :type SampleRateSet: list of float
+        """
+        self._BucketIdSet = None
+        self._SampleRateSet = None
+
+    @property
+    def BucketIdSet(self):
+        r"""<p>存储桶资产id集合</p>
+        :rtype: list of int non-negative
+        """
+        return self._BucketIdSet
+
+    @BucketIdSet.setter
+    def BucketIdSet(self, BucketIdSet):
+        self._BucketIdSet = BucketIdSet
+
+    @property
+    def SampleRateSet(self):
+        r"""<p>采样率集合</p>
+        :rtype: list of float
+        """
+        return self._SampleRateSet
+
+    @SampleRateSet.setter
+    def SampleRateSet(self, SampleRateSet):
+        self._SampleRateSet = SampleRateSet
+
+
+    def _deserialize(self, params):
+        self._BucketIdSet = params.get("BucketIdSet")
+        self._SampleRateSet = params.get("SampleRateSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosAuditObjectSampleRateResponse(AbstractModel):
+    r"""ModifyCosAuditObjectSampleRate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCosMarkInfoRequest(AbstractModel):
     r"""ModifyCosMarkInfo请求参数结构体
 
@@ -64694,6 +69705,85 @@ class ModifyDspmAccessRecordRequest(AbstractModel):
 
 class ModifyDspmAccessRecordResponse(AbstractModel):
     r"""ModifyDspmAccessRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmApplyingIdentifyComplianceGroupRequest(AbstractModel):
+    r"""ModifyDspmApplyingIdentifyComplianceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceId: <p>识别模板id</p>
+        :type ComplianceId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._ComplianceId = None
+        self._MemberId = None
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板id</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ComplianceId = params.get("ComplianceId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmApplyingIdentifyComplianceGroupResponse(AbstractModel):
+    r"""ModifyDspmApplyingIdentifyComplianceGroup返回参数结构体
 
     """
 
@@ -65250,6 +70340,120 @@ class ModifyDspmAssetDataScanTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDspmAssetDataScanTaskStatusRequest(AbstractModel):
+    r"""ModifyDspmAssetDataScanTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: <p>任务ID</p>
+        :type TaskIds: list of int non-negative
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>1： 识别中</li><li>2： 识别终止</li><li>3： 识别成功</li><li>4： 识别失败</li><li>5： 暂停</li><li>0： 未识别</li></ul>
+        :type Status: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._TaskIds = None
+        self._Status = None
+        self._MemberId = None
+
+    @property
+    def TaskIds(self):
+        r"""<p>任务ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>1： 识别中</li><li>2： 识别终止</li><li>3： 识别成功</li><li>4： 识别失败</li><li>5： 暂停</li><li>0： 未识别</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        self._Status = params.get("Status")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmAssetDataScanTaskStatusResponse(AbstractModel):
+    r"""ModifyDspmAssetDataScanTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSet: <p>无</p>
+        :type DataSet: list of DspmAssetIdentifyTaskStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def DataSet(self):
+        r"""<p>无</p>
+        :rtype: list of DspmAssetIdentifyTaskStatus
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmAssetIdentifyTaskStatus()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDspmAssetLogDeliverySwitchRequest(AbstractModel):
     r"""ModifyDspmAssetLogDeliverySwitch请求参数结构体
 
@@ -65567,6 +70771,427 @@ class ModifyDspmBackupSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDspmIdentifyCategoryRequest(AbstractModel):
+    r"""ModifyDspmIdentifyCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>分类ID</p>
+        :type Id: int
+        :param _Name: <p>分类名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Id = None
+        self._Name = None
+        self._MemberId = None
+
+    @property
+    def Id(self):
+        r"""<p>分类ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>分类名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIdentifyCategoryResponse(AbstractModel):
+    r"""ModifyDspmIdentifyCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmIdentifyComplianceGroupRequest(AbstractModel):
+    r"""ModifyDspmIdentifyComplianceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>识别模板ID</p>
+        :type Id: int
+        :param _Name: <p>识别模板名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+        :type Status: int
+        """
+        self._Id = None
+        self._Name = None
+        self._MemberId = None
+        self._Description = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>识别模板名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIdentifyComplianceGroupResponse(AbstractModel):
+    r"""ModifyDspmIdentifyComplianceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmIdentifyComplianceGroupStatusRequest(AbstractModel):
+    r"""ModifyDspmIdentifyComplianceGroupStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>识别模板ID</p>
+        :type Id: int
+        :param _Status: <p>启用状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+        :type Status: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Id = None
+        self._Status = None
+        self._MemberId = None
+
+    @property
+    def Id(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        r"""<p>启用状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIdentifyComplianceGroupStatusResponse(AbstractModel):
+    r"""ModifyDspmIdentifyComplianceGroupStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmIdentifyComplianceRuleLevelInfoRequest(AbstractModel):
+    r"""ModifyDspmIdentifyComplianceRuleLevelInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceId: <p>识别模板ID</p>
+        :type ComplianceId: int
+        :param _RuleId: <p>数据项id</p>
+        :type RuleId: int
+        :param _LevelId: <p>级别项id</p>
+        :type LevelId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._ComplianceId = None
+        self._RuleId = None
+        self._LevelId = None
+        self._MemberId = None
+
+    @property
+    def ComplianceId(self):
+        r"""<p>识别模板ID</p>
+        :rtype: int
+        """
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
+    @property
+    def RuleId(self):
+        r"""<p>数据项id</p>
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def LevelId(self):
+        r"""<p>级别项id</p>
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ComplianceId = params.get("ComplianceId")
+        self._RuleId = params.get("RuleId")
+        self._LevelId = params.get("LevelId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIdentifyComplianceRuleLevelInfoResponse(AbstractModel):
+    r"""ModifyDspmIdentifyComplianceRuleLevelInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDspmIdentifyInfoRequest(AbstractModel):
     r"""ModifyDspmIdentifyInfo请求参数结构体
 
@@ -65620,6 +71245,492 @@ class ModifyDspmIdentifyInfoRequest(AbstractModel):
 
 class ModifyDspmIdentifyInfoResponse(AbstractModel):
     r"""ModifyDspmIdentifyInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmIdentifyLevelGroupRequest(AbstractModel):
+    r"""ModifyDspmIdentifyLevelGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>级别组id</p>
+        :type Id: int
+        :param _Name: <p>级别组名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Description: <p>级别组描述</p>
+        :type Description: str
+        :param _LevelItems: <p>级别信息</p>
+        :type LevelItems: list of DspmIdentifyLevelItem
+        """
+        self._Id = None
+        self._Name = None
+        self._MemberId = None
+        self._Description = None
+        self._LevelItems = None
+
+    @property
+    def Id(self):
+        r"""<p>级别组id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>级别组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Description(self):
+        r"""<p>级别组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LevelItems(self):
+        r"""<p>级别信息</p>
+        :rtype: list of DspmIdentifyLevelItem
+        """
+        return self._LevelItems
+
+    @LevelItems.setter
+    def LevelItems(self, LevelItems):
+        self._LevelItems = LevelItems
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        self._Description = params.get("Description")
+        if params.get("LevelItems") is not None:
+            self._LevelItems = []
+            for item in params.get("LevelItems"):
+                obj = DspmIdentifyLevelItem()
+                obj._deserialize(item)
+                self._LevelItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIdentifyLevelGroupResponse(AbstractModel):
+    r"""ModifyDspmIdentifyLevelGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmIdentifyLevelItemRequest(AbstractModel):
+    r"""ModifyDspmIdentifyLevelItem请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>级别组id</p>
+        :type Id: int
+        :param _Name: <p>级别组名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _LevelScore: <p>敏感程度分</p><p>取值范围：[1, 10]</p><p>单位：敏感程度</p>
+        :type LevelScore: int
+        """
+        self._Id = None
+        self._Name = None
+        self._MemberId = None
+        self._LevelScore = None
+
+    @property
+    def Id(self):
+        r"""<p>级别组id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>级别组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def LevelScore(self):
+        r"""<p>敏感程度分</p><p>取值范围：[1, 10]</p><p>单位：敏感程度</p>
+        :rtype: int
+        """
+        return self._LevelScore
+
+    @LevelScore.setter
+    def LevelScore(self, LevelScore):
+        self._LevelScore = LevelScore
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        self._LevelScore = params.get("LevelScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIdentifyLevelItemResponse(AbstractModel):
+    r"""ModifyDspmIdentifyLevelItem返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmIdentifyRuleRequest(AbstractModel):
+    r"""ModifyDspmIdentifyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据项id</p>
+        :type Id: int
+        :param _Name: <p>数据项名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Description: <p>数据项描述</p>
+        :type Description: str
+        :param _Status: <p>数据项启用状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+        :type Status: int
+        :param _StructuredRule: <p>结构化规则</p>
+        :type StructuredRule: str
+        :param _UnStructuredRule: <p>非结构化规则</p>
+        :type UnStructuredRule: str
+        """
+        self._Id = None
+        self._Name = None
+        self._MemberId = None
+        self._Description = None
+        self._Status = None
+        self._StructuredRule = None
+        self._UnStructuredRule = None
+
+    @property
+    def Id(self):
+        r"""<p>数据项id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>数据项名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Description(self):
+        r"""<p>数据项描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>数据项启用状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StructuredRule(self):
+        r"""<p>结构化规则</p>
+        :rtype: str
+        """
+        return self._StructuredRule
+
+    @StructuredRule.setter
+    def StructuredRule(self, StructuredRule):
+        self._StructuredRule = StructuredRule
+
+    @property
+    def UnStructuredRule(self):
+        r"""<p>非结构化规则</p>
+        :rtype: str
+        """
+        return self._UnStructuredRule
+
+    @UnStructuredRule.setter
+    def UnStructuredRule(self, UnStructuredRule):
+        self._UnStructuredRule = UnStructuredRule
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._StructuredRule = params.get("StructuredRule")
+        self._UnStructuredRule = params.get("UnStructuredRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIdentifyRuleResponse(AbstractModel):
+    r"""ModifyDspmIdentifyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmIdentifyRuleStatusRequest(AbstractModel):
+    r"""ModifyDspmIdentifyRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: <p>数据项id</p>
+        :type Ids: list of int non-negative
+        :param _Status: <p>数据项状态</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :type Status: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Ids = None
+        self._Status = None
+        self._MemberId = None
+
+    @property
+    def Ids(self):
+        r"""<p>数据项id</p>
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Status(self):
+        r"""<p>数据项状态</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._Status = params.get("Status")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIdentifyRuleStatusResponse(AbstractModel):
+    r"""ModifyDspmIdentifyRuleStatus返回参数结构体
 
     """
 

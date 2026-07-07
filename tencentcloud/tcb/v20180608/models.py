@@ -19419,14 +19419,11 @@ class PostgreSQLInfo(AbstractModel):
         :type Status: int
         :param _Region: <p>地域</p>
         :type Region: str
-        :param _Version: <p>数据库引擎版本</p>
-        :type Version: str
         """
         self._Name = None
         self._InstanceName = None
         self._Status = None
         self._Region = None
-        self._Version = None
 
     @property
     def Name(self):
@@ -19472,24 +19469,12 @@ class PostgreSQLInfo(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
-    @property
-    def Version(self):
-        r"""<p>数据库引擎版本</p>
-        :rtype: str
-        """
-        return self._Version
-
-    @Version.setter
-    def Version(self, Version):
-        self._Version = Version
-
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._InstanceName = params.get("InstanceName")
         self._Status = params.get("Status")
         self._Region = params.get("Region")
-        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -52,27 +52,3 @@ class TmtClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def TextTranslate(self, request):
-        r"""腾讯翻译为合作伙伴提供文本翻译、文档翻译、交互翻译、AI同传等多种机器翻译服务，具有toB多行业解决方案。作为WMT世界机器翻译大赛冠军，翻译准确度值得信赖，其中，交互翻译能力是业界领先技术；腾讯同传是AI同传业界标杆。<br />
-        提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
-
-        :param request: Request instance for TextTranslate.
-        :type request: :class:`tencentcloud.tmt.v20180321.models.TextTranslateRequest`
-        :rtype: :class:`tencentcloud.tmt.v20180321.models.TextTranslateResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("TextTranslate", params, headers=headers)
-            response = json.loads(body)
-            model = models.TextTranslateResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))

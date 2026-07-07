@@ -7922,28 +7922,26 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        :param _SceneKey: <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _AutoSignConfig: 自动签开通配置信息, 包括开通的人员的信息等
+        :param _AutoSignConfig: <p>自动签开通配置信息, 包括开通的人员的信息等</p>
         :type AutoSignConfig: :class:`tencentcloud.essbasic.v20210526.models.AutoSignConfig`
-        :param _UrlType: 生成的链接类型：
-<ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li>
-<li> **H5SIGN** : 生成H5端开通链接</li></ul>
+        :param _UrlType: <p>生成的链接类型：</p><ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li><li> **H5SIGN** : 生成H5端开通链接</li></ul>
         :type UrlType: str
-        :param _NotifyType: 是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+        :param _NotifyType: <p>是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li><strong>SMS</strong> :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul></p>
         :type NotifyType: str
-        :param _NotifyAddress: 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
+        :param _NotifyAddress: <p>如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项</p>
         :type NotifyAddress: str
-        :param _ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+        :param _ExpiredTime: <p>链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。<code>如果不传，默认过期时间为当前时间往后7天。</code></p>
         :type ExpiredTime: int
-        :param _UserData: 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。 
+        :param _UserData: <p>调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。</p>
         :type UserData: str
+        :param _EndPoint: <p>要跳转的链接类型<ul><li> <strong>HTTP</strong>：跳转电子签小程序或者H5的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链</li><li><strong>HTTP_SHORT_URL</strong>：跳转电子签小程序或者H5的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li><strong>APP</strong>： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型，注意：仅UrlType为空，即获取小程序端开通链接时有效</li></ul></p>
+        :type EndPoint: str
         """
         self._Agent = None
         self._SceneKey = None
@@ -7954,10 +7952,11 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
         self._NotifyAddress = None
         self._ExpiredTime = None
         self._UserData = None
+        self._EndPoint = None
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -7968,8 +7967,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        r"""<p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
         return self._SceneKey
@@ -7980,8 +7978,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -7992,7 +7989,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def AutoSignConfig(self):
-        r"""自动签开通配置信息, 包括开通的人员的信息等
+        r"""<p>自动签开通配置信息, 包括开通的人员的信息等</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.AutoSignConfig`
         """
         return self._AutoSignConfig
@@ -8003,9 +8000,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def UrlType(self):
-        r"""生成的链接类型：
-<ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li>
-<li> **H5SIGN** : 生成H5端开通链接</li></ul>
+        r"""<p>生成的链接类型：</p><ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li><li> **H5SIGN** : 生成H5端开通链接</li></ul>
         :rtype: str
         """
         return self._UrlType
@@ -8016,7 +8011,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def NotifyType(self):
-        r"""是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+        r"""<p>是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li><strong>SMS</strong> :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul></p>
         :rtype: str
         """
         return self._NotifyType
@@ -8027,7 +8022,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def NotifyAddress(self):
-        r"""如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
+        r"""<p>如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项</p>
         :rtype: str
         """
         return self._NotifyAddress
@@ -8038,7 +8033,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+        r"""<p>链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。<code>如果不传，默认过期时间为当前时间往后7天。</code></p>
         :rtype: int
         """
         return self._ExpiredTime
@@ -8049,7 +8044,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def UserData(self):
-        r"""调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。 
+        r"""<p>调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。</p>
         :rtype: str
         """
         return self._UserData
@@ -8057,6 +8052,17 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
     @UserData.setter
     def UserData(self, UserData):
         self._UserData = UserData
+
+    @property
+    def EndPoint(self):
+        r"""<p>要跳转的链接类型<ul><li> <strong>HTTP</strong>：跳转电子签小程序或者H5的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链</li><li><strong>HTTP_SHORT_URL</strong>：跳转电子签小程序或者H5的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li><strong>APP</strong>： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型，注意：仅UrlType为空，即获取小程序端开通链接时有效</li></ul></p>
+        :rtype: str
+        """
+        return self._EndPoint
+
+    @EndPoint.setter
+    def EndPoint(self, EndPoint):
+        self._EndPoint = EndPoint
 
 
     def _deserialize(self, params):
@@ -8075,6 +8081,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
         self._NotifyAddress = params.get("NotifyAddress")
         self._ExpiredTime = params.get("ExpiredTime")
         self._UserData = params.get("UserData")
+        self._EndPoint = params.get("EndPoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8092,27 +8099,17 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+        :param _Url: <p>个人用户自动签的开通链接, 短链或者长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
         :type Url: str
-        :param _AppId: 腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
-
-注: `如果获取的是H5链接, 则不会返回此值`
+        :param _AppId: <p>腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用</p><p>注: <code>如果获取的是H5链接, 则不会返回此值</code></p>
         :type AppId: str
-        :param _AppOriginalId: 腾讯电子签小程序的原始 Id,  ，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
-
-注: `如果获取的是H5链接, 则不会返回此值`
+        :param _AppOriginalId: <p>腾讯电子签小程序的原始 Id,  ，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用</p><p>注: <code>如果获取的是H5链接, 则不会返回此值</code></p>
         :type AppOriginalId: str
-        :param _Path: 腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
-
-注: `如果获取的是H5链接, 则不会返回此值`
+        :param _Path: <p>腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用</p><p>注: <code>如果获取的是H5链接, 则不会返回此值</code></p>
         :type Path: str
-        :param _QrCode: base64 格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
-
-注: `如果获取的是H5链接, 则不会返回此二维码图片`
+        :param _QrCode: <p>base64 格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。</p><p>注: <code>如果获取的是H5链接, 则不会返回此二维码图片</code></p>
         :type QrCode: str
-        :param _UrlType: 返回的链接类型
-<ul><li> 空: 默认小程序端链接</li>
-<li> **H5SIGN** : h5端链接</li></ul>
+        :param _UrlType: <p>返回的链接类型</p><ul><li> 空: 默认小程序端链接</li><li> **H5SIGN** : h5端链接</li></ul>
         :type UrlType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8127,7 +8124,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+        r"""<p>个人用户自动签的开通链接, 短链或者长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
         :rtype: str
         """
         return self._Url
@@ -8138,9 +8135,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def AppId(self):
-        r"""腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
-
-注: `如果获取的是H5链接, 则不会返回此值`
+        r"""<p>腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用</p><p>注: <code>如果获取的是H5链接, 则不会返回此值</code></p>
         :rtype: str
         """
         return self._AppId
@@ -8151,9 +8146,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def AppOriginalId(self):
-        r"""腾讯电子签小程序的原始 Id,  ，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
-
-注: `如果获取的是H5链接, 则不会返回此值`
+        r"""<p>腾讯电子签小程序的原始 Id,  ，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用</p><p>注: <code>如果获取的是H5链接, 则不会返回此值</code></p>
         :rtype: str
         """
         return self._AppOriginalId
@@ -8164,9 +8157,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def Path(self):
-        r"""腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
-
-注: `如果获取的是H5链接, 则不会返回此值`
+        r"""<p>腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用</p><p>注: <code>如果获取的是H5链接, 则不会返回此值</code></p>
         :rtype: str
         """
         return self._Path
@@ -8177,9 +8168,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def QrCode(self):
-        r"""base64 格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
-
-注: `如果获取的是H5链接, 则不会返回此二维码图片`
+        r"""<p>base64 格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。</p><p>注: <code>如果获取的是H5链接, 则不会返回此二维码图片</code></p>
         :rtype: str
         """
         return self._QrCode
@@ -8190,9 +8179,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     @property
     def UrlType(self):
-        r"""返回的链接类型
-<ul><li> 空: 默认小程序端链接</li>
-<li> **H5SIGN** : h5端链接</li></ul>
+        r"""<p>返回的链接类型</p><ul><li> 空: 默认小程序端链接</li><li> **H5SIGN** : h5端链接</li></ul>
         :rtype: str
         """
         return self._UrlType
@@ -8230,28 +8217,29 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 渠道应用相关信息。
+        :param _Agent: <p>渠道应用相关信息。</p>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        :param _SceneKey: <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
-        :param _UserInfo: 自动签开通个人用户信息，包括名字，身份证等。
+        :param _UserInfo: <p>自动签开通个人用户信息，包括名字，身份证等。</p>
         :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+        :param _ExpiredTime: <p>链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。<code>如果不传，默认过期时间为当前时间往后7天。</code></p>
         :type ExpiredTime: int
+        :param _EndPoint: <p>要跳转的链接类型<ul><li> <strong>HTTP</strong>：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链</li><li><strong>HTTP_SHORT_URL</strong>：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li><strong>APP</strong>： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li></ul></p>
+        :type EndPoint: str
         """
         self._Agent = None
         self._SceneKey = None
         self._UserInfo = None
         self._Operator = None
         self._ExpiredTime = None
+        self._EndPoint = None
 
     @property
     def Agent(self):
-        r"""渠道应用相关信息。
+        r"""<p>渠道应用相关信息。</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -8262,8 +8250,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        r"""<p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
         return self._SceneKey
@@ -8274,7 +8261,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def UserInfo(self):
-        r"""自动签开通个人用户信息，包括名字，身份证等。
+        r"""<p>自动签开通个人用户信息，包括名字，身份证等。</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -8285,8 +8272,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -8297,7 +8283,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+        r"""<p>链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。<code>如果不传，默认过期时间为当前时间往后7天。</code></p>
         :rtype: int
         """
         return self._ExpiredTime
@@ -8305,6 +8291,17 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
     @ExpiredTime.setter
     def ExpiredTime(self, ExpiredTime):
         self._ExpiredTime = ExpiredTime
+
+    @property
+    def EndPoint(self):
+        r"""<p>要跳转的链接类型<ul><li> <strong>HTTP</strong>：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链</li><li><strong>HTTP_SHORT_URL</strong>：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li><strong>APP</strong>： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li></ul></p>
+        :rtype: str
+        """
+        return self._EndPoint
+
+    @EndPoint.setter
+    def EndPoint(self, EndPoint):
+        self._EndPoint = EndPoint
 
 
     def _deserialize(self, params):
@@ -8319,6 +8316,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
         self._ExpiredTime = params.get("ExpiredTime")
+        self._EndPoint = params.get("EndPoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8336,15 +8334,15 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        :param _AppId: <p>腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
         :type AppId: str
-        :param _AppOriginalId: 腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        :param _AppOriginalId: <p>腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
         :type AppOriginalId: str
-        :param _Url: 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+        :param _Url: <p>个人用户自动签的开通链接, 短链或者长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
         :type Url: str
-        :param _Path: 腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        :param _Path: <p>腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
         :type Path: str
-        :param _QrCode: base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
+        :param _QrCode: <p>base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。</p>
         :type QrCode: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8358,7 +8356,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def AppId(self):
-        r"""腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        r"""<p>腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
         :rtype: str
         """
         return self._AppId
@@ -8369,7 +8367,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def AppOriginalId(self):
-        r"""腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        r"""<p>腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
         :rtype: str
         """
         return self._AppOriginalId
@@ -8380,7 +8378,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+        r"""<p>个人用户自动签的开通链接, 短链或者长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
         :rtype: str
         """
         return self._Url
@@ -8391,7 +8389,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def Path(self):
-        r"""腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        r"""<p>腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
         :rtype: str
         """
         return self._Path
@@ -8402,7 +8400,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def QrCode(self):
-        r"""base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
+        r"""<p>base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。</p>
         :rtype: str
         """
         return self._QrCode
@@ -31130,11 +31128,14 @@ class UploadFilesRequest(AbstractModel):
         :type FileInfos: list of UploadFile
         :param _Operator: <p>操作者的信息</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _Deadline: <p>文件的截止有效期，最长有效期是当前时间后的一年。如果超过截止有效期则文件会失效。此功能是白名单功能，如需使用，请联系电子签开通</p><p>如果没有传入，则默认过期时间是上传时间加10分钟</p>
+        :type Deadline: int
         """
         self._Agent = None
         self._BusinessType = None
         self._FileInfos = None
         self._Operator = None
+        self._Deadline = None
 
     @property
     def Agent(self):
@@ -31184,6 +31185,17 @@ class UploadFilesRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def Deadline(self):
+        r"""<p>文件的截止有效期，最长有效期是当前时间后的一年。如果超过截止有效期则文件会失效。此功能是白名单功能，如需使用，请联系电子签开通</p><p>如果没有传入，则默认过期时间是上传时间加10分钟</p>
+        :rtype: int
+        """
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -31199,6 +31211,7 @@ class UploadFilesRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._Deadline = params.get("Deadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31222,12 +31235,15 @@ class UploadFilesResponse(AbstractModel):
         :type FileIds: list of str
         :param _FileUrls: <p>对应上传文件的下载链接，过期时间5分钟</p>
         :type FileUrls: list of str
+        :param _Deadline: <p>文件的截止有效期，如果超过截止有效期则文件Id会失效，无法再进行使用</p><p>默认过期时间是上传时间加10分钟</p>
+        :type Deadline: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._FileIds = None
         self._FileUrls = None
+        self._Deadline = None
         self._RequestId = None
 
     @property
@@ -31264,6 +31280,17 @@ class UploadFilesResponse(AbstractModel):
         self._FileUrls = FileUrls
 
     @property
+    def Deadline(self):
+        r"""<p>文件的截止有效期，如果超过截止有效期则文件Id会失效，无法再进行使用</p><p>默认过期时间是上传时间加10分钟</p>
+        :rtype: int
+        """
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -31279,6 +31306,7 @@ class UploadFilesResponse(AbstractModel):
         self._TotalCount = params.get("TotalCount")
         self._FileIds = params.get("FileIds")
         self._FileUrls = params.get("FileUrls")
+        self._Deadline = params.get("Deadline")
         self._RequestId = params.get("RequestId")
 
 

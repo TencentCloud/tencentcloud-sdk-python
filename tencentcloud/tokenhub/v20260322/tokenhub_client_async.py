@@ -25,6 +25,26 @@ class TokenhubClient(AbstractClient):
     _endpoint = 'tokenhub.tencentcloudapi.com'
     _service = 'tokenhub'
 
+    async def CreateApiKey(
+            self,
+            request: models.CreateApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.CreateApiKeyResponse:
+        """
+        创建 API 密钥。
+
+        创建一个新的 API 密钥，创建成功后返回 API 密钥 ID。需指定平台类型、绑定方式和初始状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateApiKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateGlossary(
             self,
             request: models.CreateGlossaryRequest,
@@ -100,6 +120,24 @@ class TokenhubClient(AbstractClient):
         kwargs["action"] = "CreateTokenPlanTeamOrderAndBuy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateTokenPlanTeamOrderAndBuyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteApiKey(
+            self,
+            request: models.DeleteApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteApiKeyResponse:
+        """
+        删除指定的 API 密钥，同时清理关联的模型绑定关系。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteApiKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -408,6 +446,44 @@ class TokenhubClient(AbstractClient):
         kwargs["action"] = "DescribeUsageRankList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeUsageRankListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyApiKeyInfo(
+            self,
+            request: models.ModifyApiKeyInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyApiKeyInfoResponse:
+        """
+        更新 API 密钥信息。
+
+        更新 API 密钥的备注信息、 IP 白名单和 Token 限额（修改限额推荐使用QuotaDesired参数）。所有可选参数不传表示不修改。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyApiKeyInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyApiKeyInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyApiKeyStatus(
+            self,
+            request: models.ModifyApiKeyStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyApiKeyStatusResponse:
+        """
+        更新 API 密钥的启用或禁用状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyApiKeyStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyApiKeyStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

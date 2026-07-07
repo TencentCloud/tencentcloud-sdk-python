@@ -1181,6 +1181,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePresetImageList(self, request):
+        r"""该接口用于查询内置镜像列表
+
+        :param request: Request instance for DescribePresetImageList.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribePresetImageListRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribePresetImageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePresetImageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePresetImageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePublicAlgoVersionList(self, request):
         r"""公共算法版本列表
 

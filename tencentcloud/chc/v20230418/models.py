@@ -361,6 +361,57 @@ class ConfirmCommonServiceWorkOrderResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ContactCollectInfo(AbstractModel):
+    r"""归集业务联系人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContactName: 业务联系人姓名
+        :type ContactName: str
+        :param _ContactPhone: 联系人电话
+        :type ContactPhone: str
+        """
+        self._ContactName = None
+        self._ContactPhone = None
+
+    @property
+    def ContactName(self):
+        r"""业务联系人姓名
+        :rtype: str
+        """
+        return self._ContactName
+
+    @ContactName.setter
+    def ContactName(self, ContactName):
+        self._ContactName = ContactName
+
+    @property
+    def ContactPhone(self):
+        r"""联系人电话
+        :rtype: str
+        """
+        return self._ContactPhone
+
+    @ContactPhone.setter
+    def ContactPhone(self, ContactPhone):
+        self._ContactPhone = ContactPhone
+
+
+    def _deserialize(self, params):
+        self._ContactName = params.get("ContactName")
+        self._ContactPhone = params.get("ContactPhone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCommonServiceWorkOrderRequest(AbstractModel):
     r"""CreateCommonServiceWorkOrder请求参数结构体
 
@@ -5259,6 +5310,274 @@ class DescribeResourceUsageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWorkOrderCarCollectListRequest(AbstractModel):
+    r"""DescribeWorkOrderCarCollectList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤条件，支持 car-number（车牌号模糊匹配）、driver-name（驾驶员姓名模糊匹配）</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>偏移量，默认为0</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，默认为20，最大值为100</p>
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，支持 car-number（车牌号模糊匹配）、driver-name（驾驶员姓名模糊匹配）</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认为20，最大值为100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkOrderCarCollectListResponse(AbstractModel):
+    r"""DescribeWorkOrderCarCollectList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的记录总数</p>
+        :type TotalCount: int
+        :param _CarSet: <p>归集车辆信息列表</p>
+        :type CarSet: list of PersonnelVisitCar
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._CarSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的记录总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CarSet(self):
+        r"""<p>归集车辆信息列表</p>
+        :rtype: list of PersonnelVisitCar
+        """
+        return self._CarSet
+
+    @CarSet.setter
+    def CarSet(self, CarSet):
+        self._CarSet = CarSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("CarSet") is not None:
+            self._CarSet = []
+            for item in params.get("CarSet"):
+                obj = PersonnelVisitCar()
+                obj._deserialize(item)
+                self._CarSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWorkOrderContactCollectListRequest(AbstractModel):
+    r"""DescribeWorkOrderContactCollectList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤条件，支持 contact-name（联系人姓名模糊匹配）、contact-phone（联系人电话模糊匹配）</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>偏移量，默认为0</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，默认为20，最大值为100</p>
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，支持 contact-name（联系人姓名模糊匹配）、contact-phone（联系人电话模糊匹配）</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认为20，最大值为100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkOrderContactCollectListResponse(AbstractModel):
+    r"""DescribeWorkOrderContactCollectList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的记录总数</p>
+        :type TotalCount: int
+        :param _ContactSet: <p>归集业务联系人信息列表</p>
+        :type ContactSet: list of ContactCollectInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ContactSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的记录总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ContactSet(self):
+        r"""<p>归集业务联系人信息列表</p>
+        :rtype: list of ContactCollectInfo
+        """
+        return self._ContactSet
+
+    @ContactSet.setter
+    def ContactSet(self, ContactSet):
+        self._ContactSet = ContactSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ContactSet") is not None:
+            self._ContactSet = []
+            for item in params.get("ContactSet"):
+                obj = ContactCollectInfo()
+                obj._deserialize(item)
+                self._ContactSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeWorkOrderListRequest(AbstractModel):
     r"""DescribeWorkOrderList请求参数结构体
 
@@ -5405,6 +5724,140 @@ class DescribeWorkOrderListResponse(AbstractModel):
                 obj = WorkOrderData()
                 obj._deserialize(item)
                 self._WorkOrderSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWorkOrderPersonnelCollectListRequest(AbstractModel):
+    r"""DescribeWorkOrderPersonnelCollectList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤条件，支持 personnel-name（姓名模糊匹配）、personnel-tel-number（手机号模糊匹配）</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>偏移量，默认为0</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，默认为20，最大值为100</p>
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，支持 personnel-name（姓名模糊匹配）、personnel-tel-number（手机号模糊匹配）</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认为20，最大值为100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkOrderPersonnelCollectListResponse(AbstractModel):
+    r"""DescribeWorkOrderPersonnelCollectList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的记录总数</p>
+        :type TotalCount: int
+        :param _PersonnelSet: <p>归集人员信息列表</p>
+        :type PersonnelSet: list of Personnel
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PersonnelSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的记录总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PersonnelSet(self):
+        r"""<p>归集人员信息列表</p>
+        :rtype: list of Personnel
+        """
+        return self._PersonnelSet
+
+    @PersonnelSet.setter
+    def PersonnelSet(self, PersonnelSet):
+        self._PersonnelSet = PersonnelSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PersonnelSet") is not None:
+            self._PersonnelSet = []
+            for item in params.get("PersonnelSet"):
+                obj = Personnel()
+                obj._deserialize(item)
+                self._PersonnelSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

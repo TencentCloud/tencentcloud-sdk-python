@@ -785,6 +785,52 @@ class ChcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWorkOrderCarCollectList(self, request):
+        r"""查询工单归集的车辆信息列表，支持按车牌号、驾驶员姓名模糊搜索
+
+        :param request: Request instance for DescribeWorkOrderCarCollectList.
+        :type request: :class:`tencentcloud.chc.v20230418.models.DescribeWorkOrderCarCollectListRequest`
+        :rtype: :class:`tencentcloud.chc.v20230418.models.DescribeWorkOrderCarCollectListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkOrderCarCollectList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkOrderCarCollectListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkOrderContactCollectList(self, request):
+        r"""查询工单归集的业务联系人信息列表，支持按姓名、电话模糊搜索
+
+        :param request: Request instance for DescribeWorkOrderContactCollectList.
+        :type request: :class:`tencentcloud.chc.v20230418.models.DescribeWorkOrderContactCollectListRequest`
+        :rtype: :class:`tencentcloud.chc.v20230418.models.DescribeWorkOrderContactCollectListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkOrderContactCollectList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkOrderContactCollectListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeWorkOrderList(self, request):
         r"""查询工单列表
 
@@ -799,6 +845,29 @@ class ChcClient(AbstractClient):
             body = self.call("DescribeWorkOrderList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWorkOrderListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkOrderPersonnelCollectList(self, request):
+        r"""查询工单归集的人员信息列表，支持按姓名、手机号模糊搜索
+
+        :param request: Request instance for DescribeWorkOrderPersonnelCollectList.
+        :type request: :class:`tencentcloud.chc.v20230418.models.DescribeWorkOrderPersonnelCollectListRequest`
+        :rtype: :class:`tencentcloud.chc.v20230418.models.DescribeWorkOrderPersonnelCollectListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkOrderPersonnelCollectList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkOrderPersonnelCollectListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

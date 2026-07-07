@@ -1177,6 +1177,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBackupOverview(
+            self,
+            request: models.DescribeBackupOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackupOverviewResponse:
+        """
+        本接口（DescribeBackupOverview）用于查询备份用量总览。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackupOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackupOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBinlogConfig(
             self,
             request: models.DescribeBinlogConfigRequest,

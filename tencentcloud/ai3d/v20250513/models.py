@@ -2671,6 +2671,10 @@ class SubmitTextureTo3DJobRequest(AbstractModel):
         :type Image: :class:`tencentcloud.ai3d.v20250513.models.Image`
         :param _EnablePBR: <p>是否开启 PBR材质生成，默认 false。</p>
         :type EnablePBR: bool
+        :param _EnableKeepUV: <p>是否保持模型UV，开启后模型布线纹理均不改变，UV布线不跟纹理进行改变，默认false</p>
+        :type EnableKeepUV: bool
+        :param _TextureSize: <p>仅支持正方形贴图，分辨率区间为720～4096，默认为4096</p>
+        :type TextureSize: int
         """
         self._File3D = None
         self._Model = None
@@ -2678,6 +2682,8 @@ class SubmitTextureTo3DJobRequest(AbstractModel):
         self._Prompt = None
         self._Image = None
         self._EnablePBR = None
+        self._EnableKeepUV = None
+        self._TextureSize = None
 
     @property
     def File3D(self):
@@ -2745,6 +2751,28 @@ class SubmitTextureTo3DJobRequest(AbstractModel):
     def EnablePBR(self, EnablePBR):
         self._EnablePBR = EnablePBR
 
+    @property
+    def EnableKeepUV(self):
+        r"""<p>是否保持模型UV，开启后模型布线纹理均不改变，UV布线不跟纹理进行改变，默认false</p>
+        :rtype: bool
+        """
+        return self._EnableKeepUV
+
+    @EnableKeepUV.setter
+    def EnableKeepUV(self, EnableKeepUV):
+        self._EnableKeepUV = EnableKeepUV
+
+    @property
+    def TextureSize(self):
+        r"""<p>仅支持正方形贴图，分辨率区间为720～4096，默认为4096</p>
+        :rtype: int
+        """
+        return self._TextureSize
+
+    @TextureSize.setter
+    def TextureSize(self, TextureSize):
+        self._TextureSize = TextureSize
+
 
     def _deserialize(self, params):
         if params.get("File3D") is not None:
@@ -2762,6 +2790,8 @@ class SubmitTextureTo3DJobRequest(AbstractModel):
             self._Image = Image()
             self._Image._deserialize(params.get("Image"))
         self._EnablePBR = params.get("EnablePBR")
+        self._EnableKeepUV = params.get("EnableKeepUV")
+        self._TextureSize = params.get("TextureSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

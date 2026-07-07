@@ -930,6 +930,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePresetImageList(
+            self,
+            request: models.DescribePresetImageListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePresetImageListResponse:
+        """
+        该接口用于查询内置镜像列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePresetImageList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePresetImageListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePublicAlgoVersionList(
             self,
             request: models.DescribePublicAlgoVersionListRequest,

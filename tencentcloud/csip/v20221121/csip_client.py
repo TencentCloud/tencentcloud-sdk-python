@@ -325,6 +325,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDspmAssetIdentifyInfoExportJob(self, request):
+        r"""创建Dspm资产列表导出任务
+
+        :param request: Request instance for CreateDspmAssetIdentifyInfoExportJob.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmAssetIdentifyInfoExportJobRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmAssetIdentifyInfoExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmAssetIdentifyInfoExportJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmAssetIdentifyInfoExportJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDspmAssetsExportJob(self, request):
         r"""创建Dspm资产列表导出任务
 
@@ -371,6 +394,121 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDspmIdentifyCategory(self, request):
+        r"""创建dspm数据识别分类
+
+        :param request: Request instance for CreateDspmIdentifyCategory.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyCategoryRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmIdentifyCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmIdentifyCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDspmIdentifyComplianceCategoryRelation(self, request):
+        r"""创建dspm数据识别模板分类关联
+
+        :param request: Request instance for CreateDspmIdentifyComplianceCategoryRelation.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyComplianceCategoryRelationRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyComplianceCategoryRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmIdentifyComplianceCategoryRelation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmIdentifyComplianceCategoryRelationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDspmIdentifyComplianceGroup(self, request):
+        r"""创建dspm数据识别模板
+
+        :param request: Request instance for CreateDspmIdentifyComplianceGroup.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyComplianceGroupRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyComplianceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmIdentifyComplianceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmIdentifyComplianceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDspmIdentifyComplianceGroupCopy(self, request):
+        r"""复制dspm数据识别模板
+
+        :param request: Request instance for CreateDspmIdentifyComplianceGroupCopy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyComplianceGroupCopyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyComplianceGroupCopyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmIdentifyComplianceGroupCopy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmIdentifyComplianceGroupCopyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDspmIdentifyComplianceRuleRelation(self, request):
+        r"""创建dspm数据识别模板数据项关联
+
+        :param request: Request instance for CreateDspmIdentifyComplianceRuleRelation.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyComplianceRuleRelationRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyComplianceRuleRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmIdentifyComplianceRuleRelation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmIdentifyComplianceRuleRelationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDspmIdentifyInfoListExportJob(self, request):
         r"""创建Dspm身份列表导出任务
 
@@ -385,6 +523,52 @@ class CsipClient(AbstractClient):
             body = self.call("CreateDspmIdentifyInfoListExportJob", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDspmIdentifyInfoListExportJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDspmIdentifyLevelGroup(self, request):
+        r"""创建dspm数据识别分级组
+
+        :param request: Request instance for CreateDspmIdentifyLevelGroup.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyLevelGroupRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyLevelGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmIdentifyLevelGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmIdentifyLevelGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDspmIdentifyRule(self, request):
+        r"""创建dspm数据识别数据项
+
+        :param request: Request instance for CreateDspmIdentifyRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmIdentifyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmIdentifyRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmIdentifyRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -730,6 +914,144 @@ class CsipClient(AbstractClient):
             body = self.call("DeleteDspmExportTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDspmExportTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDspmIdentifyCategory(self, request):
+        r"""删除dspm数据识别分类
+
+        :param request: Request instance for DeleteDspmIdentifyCategory.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyCategoryRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmIdentifyCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmIdentifyCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDspmIdentifyComplianceCategoryRelation(self, request):
+        r"""删除dspm数据识别模板分类关联
+
+        :param request: Request instance for DeleteDspmIdentifyComplianceCategoryRelation.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyComplianceCategoryRelationRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyComplianceCategoryRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmIdentifyComplianceCategoryRelation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmIdentifyComplianceCategoryRelationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDspmIdentifyComplianceGroup(self, request):
+        r"""删除dspm数据识别模板
+
+        :param request: Request instance for DeleteDspmIdentifyComplianceGroup.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyComplianceGroupRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyComplianceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmIdentifyComplianceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmIdentifyComplianceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDspmIdentifyComplianceRuleRelation(self, request):
+        r"""删除dspm数据识别模板数据项关联
+
+        :param request: Request instance for DeleteDspmIdentifyComplianceRuleRelation.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyComplianceRuleRelationRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyComplianceRuleRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmIdentifyComplianceRuleRelation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmIdentifyComplianceRuleRelationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDspmIdentifyLevelGroup(self, request):
+        r"""删除dspm数据识别分级组
+
+        :param request: Request instance for DeleteDspmIdentifyLevelGroup.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyLevelGroupRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyLevelGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmIdentifyLevelGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmIdentifyLevelGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDspmIdentifyRule(self, request):
+        r"""删除dspm数据识别数据项
+
+        :param request: Request instance for DeleteDspmIdentifyRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmIdentifyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmIdentifyRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmIdentifyRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2004,6 +2326,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCosObjectScanTask(self, request):
+        r"""查询cos风险文件扫描任务
+
+        :param request: Request instance for DescribeCosObjectScanTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCosObjectScanTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCosObjectScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosObjectScanTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosObjectScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCosOverview(self, request):
         r"""cos概览信息
 
@@ -2625,6 +2970,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDspmAssetFieldSamples(self, request):
+        r"""查询dspm资产字段样本值
+
+        :param request: Request instance for DescribeDspmAssetFieldSamples.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmAssetFieldSamplesRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmAssetFieldSamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmAssetFieldSamples", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmAssetFieldSamplesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmAssetIdentifyInfoList(self, request):
+        r"""查询dspm资产数据识别信息列表
+
+        :param request: Request instance for DescribeDspmAssetIdentifyInfoList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmAssetIdentifyInfoListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmAssetIdentifyInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmAssetIdentifyInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmAssetIdentifyInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDspmAssetIds(self, request):
         r"""查询Dspm资产id列表
 
@@ -2855,6 +3246,121 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDspmIdentifyCategoryList(self, request):
+        r"""查询dspm数据识别分类列表
+
+        :param request: Request instance for DescribeDspmIdentifyCategoryList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyCategoryListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyCategoryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmIdentifyCategoryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmIdentifyCategoryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmIdentifyComplianceCategoryRuleList(self, request):
+        r"""查询dspm数据识别模板分类关联数据项列表
+
+        :param request: Request instance for DescribeDspmIdentifyComplianceCategoryRuleList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyComplianceCategoryRuleListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyComplianceCategoryRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmIdentifyComplianceCategoryRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmIdentifyComplianceCategoryRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmIdentifyComplianceGroupDetail(self, request):
+        r"""查询dspm识别模板详情
+
+        :param request: Request instance for DescribeDspmIdentifyComplianceGroupDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyComplianceGroupDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyComplianceGroupDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmIdentifyComplianceGroupDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmIdentifyComplianceGroupDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmIdentifyComplianceGroupList(self, request):
+        r"""查询dspm数据识别模板列表
+
+        :param request: Request instance for DescribeDspmIdentifyComplianceGroupList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyComplianceGroupListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyComplianceGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmIdentifyComplianceGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmIdentifyComplianceGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmIdentifyDistributionStatistics(self, request):
+        r"""查询dspm数据识别分布统计
+
+        :param request: Request instance for DescribeDspmIdentifyDistributionStatistics.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyDistributionStatisticsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyDistributionStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmIdentifyDistributionStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmIdentifyDistributionStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDspmIdentifyIdList(self, request):
         r"""查询Dspm身份id列表
 
@@ -2915,6 +3421,98 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeDspmIdentifyInfoList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDspmIdentifyInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmIdentifyLevelGroupList(self, request):
+        r"""查询dspm数据识别分级组列表
+
+        :param request: Request instance for DescribeDspmIdentifyLevelGroupList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyLevelGroupListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyLevelGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmIdentifyLevelGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmIdentifyLevelGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmIdentifyRuleDetail(self, request):
+        r"""查询dspm数据识别数据项详情
+
+        :param request: Request instance for DescribeDspmIdentifyRuleDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyRuleDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyRuleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmIdentifyRuleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmIdentifyRuleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmIdentifyRuleList(self, request):
+        r"""查询dspm数据识别数据项列表
+
+        :param request: Request instance for DescribeDspmIdentifyRuleList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyRuleListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmIdentifyRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmIdentifyRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmIdentifyRuleTestResult(self, request):
+        r"""查询dspm数据识别数据项验证结果
+
+        :param request: Request instance for DescribeDspmIdentifyRuleTestResult.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyRuleTestResultRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmIdentifyRuleTestResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmIdentifyRuleTestResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmIdentifyRuleTestResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4810,6 +5408,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCosAuditObjectIdentifyStatus(self, request):
+        r"""修改对象存储识别开关
+
+        :param request: Request instance for ModifyCosAuditObjectIdentifyStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditObjectIdentifyStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditObjectIdentifyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCosAuditObjectIdentifyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCosAuditObjectIdentifyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCosAuditObjectSampleRate(self, request):
+        r"""设置对象存储扫描采样率
+
+        :param request: Request instance for ModifyCosAuditObjectSampleRate.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditObjectSampleRateRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditObjectSampleRateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCosAuditObjectSampleRate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCosAuditObjectSampleRateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCosMarkInfo(self, request):
         r"""修改对象存储备注
 
@@ -4847,6 +5491,29 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyDspmAccessRecord", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDspmAccessRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmApplyingIdentifyComplianceGroup(self, request):
+        r"""修改dspm当前应用的数据识别模板
+
+        :param request: Request instance for ModifyDspmApplyingIdentifyComplianceGroup.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmApplyingIdentifyComplianceGroupRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmApplyingIdentifyComplianceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmApplyingIdentifyComplianceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmApplyingIdentifyComplianceGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4948,6 +5615,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDspmAssetDataScanTaskStatus(self, request):
+        r"""修改Dspm资产数据扫描任务状态
+
+        :param request: Request instance for ModifyDspmAssetDataScanTaskStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmAssetDataScanTaskStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmAssetDataScanTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmAssetDataScanTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmAssetDataScanTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDspmAssetLogDeliverySwitch(self, request):
         r"""修改Dspm资产日志投递开关
 
@@ -5017,6 +5707,98 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDspmIdentifyCategory(self, request):
+        r"""修改dspm数据识别分类
+
+        :param request: Request instance for ModifyDspmIdentifyCategory.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyCategoryRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmIdentifyCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmIdentifyCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmIdentifyComplianceGroup(self, request):
+        r"""修改dspm数据识别模板
+
+        :param request: Request instance for ModifyDspmIdentifyComplianceGroup.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyComplianceGroupRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyComplianceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmIdentifyComplianceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmIdentifyComplianceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmIdentifyComplianceGroupStatus(self, request):
+        r"""修改dspm数据识别模板状态
+
+        :param request: Request instance for ModifyDspmIdentifyComplianceGroupStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyComplianceGroupStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyComplianceGroupStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmIdentifyComplianceGroupStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmIdentifyComplianceGroupStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmIdentifyComplianceRuleLevelInfo(self, request):
+        r"""修改dspm数据识别模板数据项关联级别信息
+
+        :param request: Request instance for ModifyDspmIdentifyComplianceRuleLevelInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyComplianceRuleLevelInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyComplianceRuleLevelInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmIdentifyComplianceRuleLevelInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmIdentifyComplianceRuleLevelInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDspmIdentifyInfo(self, request):
         r"""修改Dspm身份信息
 
@@ -5031,6 +5813,98 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyDspmIdentifyInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDspmIdentifyInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmIdentifyLevelGroup(self, request):
+        r"""修改dspm数据识别分级组
+
+        :param request: Request instance for ModifyDspmIdentifyLevelGroup.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyLevelGroupRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyLevelGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmIdentifyLevelGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmIdentifyLevelGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmIdentifyLevelItem(self, request):
+        r"""修改dspm数据识别分级信息
+
+        :param request: Request instance for ModifyDspmIdentifyLevelItem.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyLevelItemRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyLevelItemResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmIdentifyLevelItem", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmIdentifyLevelItemResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmIdentifyRule(self, request):
+        r"""修改dspm数据识别数据项
+
+        :param request: Request instance for ModifyDspmIdentifyRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmIdentifyRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmIdentifyRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmIdentifyRuleStatus(self, request):
+        r"""修改dspm数据识别数据项状态
+
+        :param request: Request instance for ModifyDspmIdentifyRuleStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyRuleStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmIdentifyRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmIdentifyRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmIdentifyRuleStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

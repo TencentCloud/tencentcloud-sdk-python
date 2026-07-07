@@ -26,6 +26,31 @@ class TokenhubClient(AbstractClient):
     _service = 'tokenhub'
 
 
+    def CreateApiKey(self, request):
+        r"""创建 API 密钥。
+
+        创建一个新的 API 密钥，创建成功后返回 API 密钥 ID。需指定平台类型、绑定方式和初始状态。
+
+        :param request: Request instance for CreateApiKey.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.CreateApiKeyRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.CreateApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateApiKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGlossary(self, request):
         r"""创建术语库。
 
@@ -117,6 +142,29 @@ class TokenhubClient(AbstractClient):
             body = self.call("CreateTokenPlanTeamOrderAndBuy", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTokenPlanTeamOrderAndBuyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteApiKey(self, request):
+        r"""删除指定的 API 密钥，同时清理关联的模型绑定关系。
+
+        :param request: Request instance for DeleteApiKey.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DeleteApiKeyRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DeleteApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteApiKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -500,6 +548,54 @@ class TokenhubClient(AbstractClient):
             body = self.call("DescribeUsageRankList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUsageRankListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApiKeyInfo(self, request):
+        r"""更新 API 密钥信息。
+
+        更新 API 密钥的备注信息、 IP 白名单和 Token 限额（修改限额推荐使用QuotaDesired参数）。所有可选参数不传表示不修改。
+
+        :param request: Request instance for ModifyApiKeyInfo.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyInfoRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApiKeyInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApiKeyInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApiKeyStatus(self, request):
+        r"""更新 API 密钥的启用或禁用状态。
+
+        :param request: Request instance for ModifyApiKeyStatus.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyStatusRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApiKeyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApiKeyStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

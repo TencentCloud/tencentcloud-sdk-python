@@ -619,6 +619,42 @@ class ChcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeWorkOrderCarCollectList(
+            self,
+            request: models.DescribeWorkOrderCarCollectListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWorkOrderCarCollectListResponse:
+        """
+        查询工单归集的车辆信息列表，支持按车牌号、驾驶员姓名模糊搜索
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWorkOrderCarCollectList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWorkOrderCarCollectListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWorkOrderContactCollectList(
+            self,
+            request: models.DescribeWorkOrderContactCollectListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWorkOrderContactCollectListResponse:
+        """
+        查询工单归集的业务联系人信息列表，支持按姓名、电话模糊搜索
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWorkOrderContactCollectList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWorkOrderContactCollectListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeWorkOrderList(
             self,
             request: models.DescribeWorkOrderListRequest,
@@ -632,6 +668,24 @@ class ChcClient(AbstractClient):
         kwargs["action"] = "DescribeWorkOrderList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeWorkOrderListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWorkOrderPersonnelCollectList(
+            self,
+            request: models.DescribeWorkOrderPersonnelCollectListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWorkOrderPersonnelCollectListResponse:
+        """
+        查询工单归集的人员信息列表，支持按姓名、手机号模糊搜索
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWorkOrderPersonnelCollectList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWorkOrderPersonnelCollectListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

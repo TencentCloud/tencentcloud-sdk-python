@@ -8041,9 +8041,9 @@ class DeleteGroupsSTDRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群名称
+        :param _InstanceId: <p>集群名称</p>
         :type InstanceId: str
-        :param _GroupNames: 用户组名称数组
+        :param _GroupNames: <p>用户组名称数组</p>
         :type GroupNames: list of str
         """
         self._InstanceId = None
@@ -8051,7 +8051,7 @@ class DeleteGroupsSTDRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8062,7 +8062,7 @@ class DeleteGroupsSTDRequest(AbstractModel):
 
     @property
     def GroupNames(self):
-        r"""用户组名称数组
+        r"""<p>用户组名称数组</p>
         :rtype: list of str
         """
         return self._GroupNames
@@ -8092,17 +8092,20 @@ class DeleteGroupsSTDResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 删除返回结果
+        :param _Data: <p>删除返回结果</p>
         :type Data: list of ResultItem
+        :param _FlowId: <p>流程id</p>
+        :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._FlowId = None
         self._RequestId = None
 
     @property
     def Data(self):
-        r"""删除返回结果
+        r"""<p>删除返回结果</p>
         :rtype: list of ResultItem
         """
         return self._Data
@@ -8110,6 +8113,17 @@ class DeleteGroupsSTDResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def FlowId(self):
+        r"""<p>流程id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
     @property
     def RequestId(self):
@@ -8130,6 +8144,7 @@ class DeleteGroupsSTDResponse(AbstractModel):
                 obj = ResultItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8264,17 +8279,17 @@ class DeleteUserManagerUserListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例ID
+        :param _InstanceId: <p>集群实例ID</p>
         :type InstanceId: str
-        :param _UserNameList: 集群用户名列表
+        :param _UserNameList: <p>集群用户名列表</p>
         :type UserNameList: list of str
-        :param _TkeClusterId: tke/eks集群id，容器集群传
+        :param _TkeClusterId: <p>tke/eks集群id，容器集群传</p>
         :type TkeClusterId: str
-        :param _DisplayStrategy: 默认空，容器版传"native"
+        :param _DisplayStrategy: <p>默认空，容器版传&quot;native&quot;</p>
         :type DisplayStrategy: str
-        :param _UserGroupList: 用户组
+        :param _UserGroupList: <p>用户组</p>
         :type UserGroupList: list of UserAndGroup
-        :param _DeleteHomeDir: 是否删除家目录，只针对cvm集群
+        :param _DeleteHomeDir: <p>是否删除家目录，只针对cvm集群</p>
         :type DeleteHomeDir: bool
         """
         self._InstanceId = None
@@ -8286,7 +8301,7 @@ class DeleteUserManagerUserListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群实例ID
+        r"""<p>集群实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8297,7 +8312,7 @@ class DeleteUserManagerUserListRequest(AbstractModel):
 
     @property
     def UserNameList(self):
-        r"""集群用户名列表
+        r"""<p>集群用户名列表</p>
         :rtype: list of str
         """
         return self._UserNameList
@@ -8308,7 +8323,7 @@ class DeleteUserManagerUserListRequest(AbstractModel):
 
     @property
     def TkeClusterId(self):
-        r"""tke/eks集群id，容器集群传
+        r"""<p>tke/eks集群id，容器集群传</p>
         :rtype: str
         """
         return self._TkeClusterId
@@ -8319,7 +8334,7 @@ class DeleteUserManagerUserListRequest(AbstractModel):
 
     @property
     def DisplayStrategy(self):
-        r"""默认空，容器版传"native"
+        r"""<p>默认空，容器版传&quot;native&quot;</p>
         :rtype: str
         """
         return self._DisplayStrategy
@@ -8330,7 +8345,7 @@ class DeleteUserManagerUserListRequest(AbstractModel):
 
     @property
     def UserGroupList(self):
-        r"""用户组
+        r"""<p>用户组</p>
         :rtype: list of UserAndGroup
         """
         return self._UserGroupList
@@ -8341,7 +8356,7 @@ class DeleteUserManagerUserListRequest(AbstractModel):
 
     @property
     def DeleteHomeDir(self):
-        r"""是否删除家目录，只针对cvm集群
+        r"""<p>是否删除家目录，只针对cvm集群</p>
         :rtype: bool
         """
         return self._DeleteHomeDir
@@ -8380,10 +8395,24 @@ class DeleteUserManagerUserListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FlowId: <p>流程id</p>
+        :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FlowId = None
         self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>流程id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
     @property
     def RequestId(self):
@@ -8398,6 +8427,7 @@ class DeleteUserManagerUserListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -29542,15 +29572,15 @@ class ModifyUserGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群字符串ID
+        :param _InstanceId: <p>集群字符串ID</p>
         :type InstanceId: str
-        :param _Users: 用户信息列表
+        :param _Users: <p>用户信息列表</p>
         :type Users: list of str
-        :param _UserGroup: 用户主组，cvm集群为必填参数，tke集群选填
+        :param _UserGroup: <p>用户主组，cvm集群为必填参数，tke集群选填</p>
         :type UserGroup: str
-        :param _Groups: 用户副组
+        :param _Groups: <p>用户副组</p>
         :type Groups: list of str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
         """
         self._InstanceId = None
@@ -29561,7 +29591,7 @@ class ModifyUserGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群字符串ID
+        r"""<p>集群字符串ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -29572,7 +29602,7 @@ class ModifyUserGroupRequest(AbstractModel):
 
     @property
     def Users(self):
-        r"""用户信息列表
+        r"""<p>用户信息列表</p>
         :rtype: list of str
         """
         return self._Users
@@ -29583,7 +29613,7 @@ class ModifyUserGroupRequest(AbstractModel):
 
     @property
     def UserGroup(self):
-        r"""用户主组，cvm集群为必填参数，tke集群选填
+        r"""<p>用户主组，cvm集群为必填参数，tke集群选填</p>
         :rtype: str
         """
         return self._UserGroup
@@ -29594,7 +29624,7 @@ class ModifyUserGroupRequest(AbstractModel):
 
     @property
     def Groups(self):
-        r"""用户副组
+        r"""<p>用户副组</p>
         :rtype: list of str
         """
         return self._Groups
@@ -29605,7 +29635,7 @@ class ModifyUserGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -29638,10 +29668,24 @@ class ModifyUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FlowId: <p>流程id</p>
+        :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FlowId = None
         self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>流程id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
     @property
     def RequestId(self):
@@ -29656,6 +29700,7 @@ class ModifyUserGroupResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -29666,13 +29711,13 @@ class ModifyUserManagerPwdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例ID
+        :param _InstanceId: <p>集群实例ID</p>
         :type InstanceId: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _PassWord: 密码
+        :param _PassWord: <p>密码</p>
         :type PassWord: str
-        :param _SyncPwd: 是否同步密码
+        :param _SyncPwd: <p>是否同步密码</p>
         :type SyncPwd: bool
         """
         self._InstanceId = None
@@ -29682,7 +29727,7 @@ class ModifyUserManagerPwdRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群实例ID
+        r"""<p>集群实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -29693,7 +29738,7 @@ class ModifyUserManagerPwdRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -29704,7 +29749,7 @@ class ModifyUserManagerPwdRequest(AbstractModel):
 
     @property
     def PassWord(self):
-        r"""密码
+        r"""<p>密码</p>
         :rtype: str
         """
         return self._PassWord
@@ -29715,7 +29760,7 @@ class ModifyUserManagerPwdRequest(AbstractModel):
 
     @property
     def SyncPwd(self):
-        r"""是否同步密码
+        r"""<p>是否同步密码</p>
         :rtype: bool
         """
         return self._SyncPwd
@@ -29747,10 +29792,24 @@ class ModifyUserManagerPwdResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FlowId: <p>流程id</p>
+        :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FlowId = None
         self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>流程id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
     @property
     def RequestId(self):
@@ -29765,6 +29824,7 @@ class ModifyUserManagerPwdResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -29775,23 +29835,15 @@ class ModifyUsersOfGroupSTDRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群名称
+        :param _InstanceId: <p>集群名称</p>
         :type InstanceId: str
-        :param _Group: 用户组名
+        :param _Group: <p>用户组名</p>
         :type Group: str
-        :param _Users: 用户列表
+        :param _Users: <p>用户列表</p>
         :type Users: list of str
-        :param _Description: 用户组描述
+        :param _Description: <p>用户组描述</p>
         :type Description: str
-        :param _OperateAction: 枚举类, ADD, DELETE, SYNC
-
-
-枚举类说明:
-- ADD: 新增的批量用户, 多次新增相同的用户不会报错
-- DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错
-- SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组
-默认为SYNC
-
+        :param _OperateAction: <p>枚举类, ADD, DELETE, SYNC</p><p>枚举类说明:</p><ul><li>ADD: 新增的批量用户, 多次新增相同的用户不会报错</li><li>DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错</li><li>SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组<br>默认为SYNC</li></ul>
         :type OperateAction: str
         """
         self._InstanceId = None
@@ -29802,7 +29854,7 @@ class ModifyUsersOfGroupSTDRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._InstanceId
@@ -29813,7 +29865,7 @@ class ModifyUsersOfGroupSTDRequest(AbstractModel):
 
     @property
     def Group(self):
-        r"""用户组名
+        r"""<p>用户组名</p>
         :rtype: str
         """
         return self._Group
@@ -29824,7 +29876,7 @@ class ModifyUsersOfGroupSTDRequest(AbstractModel):
 
     @property
     def Users(self):
-        r"""用户列表
+        r"""<p>用户列表</p>
         :rtype: list of str
         """
         return self._Users
@@ -29835,7 +29887,7 @@ class ModifyUsersOfGroupSTDRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""用户组描述
+        r"""<p>用户组描述</p>
         :rtype: str
         """
         return self._Description
@@ -29846,15 +29898,7 @@ class ModifyUsersOfGroupSTDRequest(AbstractModel):
 
     @property
     def OperateAction(self):
-        r"""枚举类, ADD, DELETE, SYNC
-
-
-枚举类说明:
-- ADD: 新增的批量用户, 多次新增相同的用户不会报错
-- DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错
-- SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组
-默认为SYNC
-
+        r"""<p>枚举类, ADD, DELETE, SYNC</p><p>枚举类说明:</p><ul><li>ADD: 新增的批量用户, 多次新增相同的用户不会报错</li><li>DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错</li><li>SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组<br>默认为SYNC</li></ul>
         :rtype: str
         """
         return self._OperateAction
@@ -29887,17 +29931,20 @@ class ModifyUsersOfGroupSTDResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 是否修改成功
+        :param _Data: <p>是否修改成功</p>
         :type Data: bool
+        :param _FlowId: <p>流程id</p>
+        :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._FlowId = None
         self._RequestId = None
 
     @property
     def Data(self):
-        r"""是否修改成功
+        r"""<p>是否修改成功</p>
         :rtype: bool
         """
         return self._Data
@@ -29905,6 +29952,17 @@ class ModifyUsersOfGroupSTDResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def FlowId(self):
+        r"""<p>流程id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
     @property
     def RequestId(self):
@@ -29920,6 +29978,7 @@ class ModifyUsersOfGroupSTDResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

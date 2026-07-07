@@ -4177,6 +4177,72 @@ class BackupRegionAndIds(AbstractModel):
         
 
 
+class BackupVolumeInfo(AbstractModel):
+    r"""备份使用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupVolume: 备份使用量
+        :type BackupVolume: float
+        :param _BackupType: 备份类型
+        :type BackupType: str
+        :param _BackupMethod: 备份方式
+        :type BackupMethod: str
+        """
+        self._BackupVolume = None
+        self._BackupType = None
+        self._BackupMethod = None
+
+    @property
+    def BackupVolume(self):
+        r"""备份使用量
+        :rtype: float
+        """
+        return self._BackupVolume
+
+    @BackupVolume.setter
+    def BackupVolume(self, BackupVolume):
+        self._BackupVolume = BackupVolume
+
+    @property
+    def BackupType(self):
+        r"""备份类型
+        :rtype: str
+        """
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def BackupMethod(self):
+        r"""备份方式
+        :rtype: str
+        """
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
+
+    def _deserialize(self, params):
+        self._BackupVolume = params.get("BackupVolume")
+        self._BackupType = params.get("BackupType")
+        self._BackupMethod = params.get("BackupMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillingResourceInfo(AbstractModel):
     r"""计费资源信息
 
@@ -20903,6 +20969,260 @@ class DescribeBackupListResponse(AbstractModel):
                 obj = BackupFileInfo()
                 obj._deserialize(item)
                 self._BackupList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackupOverviewRequest(AbstractModel):
+    r"""DescribeBackupOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupOverviewResponse(AbstractModel):
+    r"""DescribeBackupOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupTotalVolume: 备份总容量
+        :type BackupTotalVolume: float
+        :param _BackupSnapshotVolume: 备份快照容量
+        :type BackupSnapshotVolume: float
+        :param _BackupLogicVolume: 备份逻辑容量
+        :type BackupLogicVolume: float
+        :param _LogTotalVolume: 日志总容量
+        :type LogTotalVolume: float
+        :param _LogBinlogVolume: 日志binlog容量
+        :type LogBinlogVolume: float
+        :param _LogRedoLogVolume: 日志redolog容量
+        :type LogRedoLogVolume: float
+        :param _CrossTotalVolume: 跨地域备份总容量
+        :type CrossTotalVolume: float
+        :param _CrossRegionBackupVolume: 跨地域备份容量
+        :type CrossRegionBackupVolume: float
+        :param _CrossRegionLogVolume: 跨地域日志容量
+        :type CrossRegionLogVolume: float
+        :param _BackupVolumeInfos: 备份容量详情
+        :type BackupVolumeInfos: list of BackupVolumeInfo
+        :param _CrossRegionBackupVolumeInfos: 跨地域备份容量详情
+        :type CrossRegionBackupVolumeInfos: list of BackupVolumeInfo
+        :param _CrossRegions: 跨地域信息
+        :type CrossRegions: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupTotalVolume = None
+        self._BackupSnapshotVolume = None
+        self._BackupLogicVolume = None
+        self._LogTotalVolume = None
+        self._LogBinlogVolume = None
+        self._LogRedoLogVolume = None
+        self._CrossTotalVolume = None
+        self._CrossRegionBackupVolume = None
+        self._CrossRegionLogVolume = None
+        self._BackupVolumeInfos = None
+        self._CrossRegionBackupVolumeInfos = None
+        self._CrossRegions = None
+        self._RequestId = None
+
+    @property
+    def BackupTotalVolume(self):
+        r"""备份总容量
+        :rtype: float
+        """
+        return self._BackupTotalVolume
+
+    @BackupTotalVolume.setter
+    def BackupTotalVolume(self, BackupTotalVolume):
+        self._BackupTotalVolume = BackupTotalVolume
+
+    @property
+    def BackupSnapshotVolume(self):
+        r"""备份快照容量
+        :rtype: float
+        """
+        return self._BackupSnapshotVolume
+
+    @BackupSnapshotVolume.setter
+    def BackupSnapshotVolume(self, BackupSnapshotVolume):
+        self._BackupSnapshotVolume = BackupSnapshotVolume
+
+    @property
+    def BackupLogicVolume(self):
+        r"""备份逻辑容量
+        :rtype: float
+        """
+        return self._BackupLogicVolume
+
+    @BackupLogicVolume.setter
+    def BackupLogicVolume(self, BackupLogicVolume):
+        self._BackupLogicVolume = BackupLogicVolume
+
+    @property
+    def LogTotalVolume(self):
+        r"""日志总容量
+        :rtype: float
+        """
+        return self._LogTotalVolume
+
+    @LogTotalVolume.setter
+    def LogTotalVolume(self, LogTotalVolume):
+        self._LogTotalVolume = LogTotalVolume
+
+    @property
+    def LogBinlogVolume(self):
+        r"""日志binlog容量
+        :rtype: float
+        """
+        return self._LogBinlogVolume
+
+    @LogBinlogVolume.setter
+    def LogBinlogVolume(self, LogBinlogVolume):
+        self._LogBinlogVolume = LogBinlogVolume
+
+    @property
+    def LogRedoLogVolume(self):
+        r"""日志redolog容量
+        :rtype: float
+        """
+        return self._LogRedoLogVolume
+
+    @LogRedoLogVolume.setter
+    def LogRedoLogVolume(self, LogRedoLogVolume):
+        self._LogRedoLogVolume = LogRedoLogVolume
+
+    @property
+    def CrossTotalVolume(self):
+        r"""跨地域备份总容量
+        :rtype: float
+        """
+        return self._CrossTotalVolume
+
+    @CrossTotalVolume.setter
+    def CrossTotalVolume(self, CrossTotalVolume):
+        self._CrossTotalVolume = CrossTotalVolume
+
+    @property
+    def CrossRegionBackupVolume(self):
+        r"""跨地域备份容量
+        :rtype: float
+        """
+        return self._CrossRegionBackupVolume
+
+    @CrossRegionBackupVolume.setter
+    def CrossRegionBackupVolume(self, CrossRegionBackupVolume):
+        self._CrossRegionBackupVolume = CrossRegionBackupVolume
+
+    @property
+    def CrossRegionLogVolume(self):
+        r"""跨地域日志容量
+        :rtype: float
+        """
+        return self._CrossRegionLogVolume
+
+    @CrossRegionLogVolume.setter
+    def CrossRegionLogVolume(self, CrossRegionLogVolume):
+        self._CrossRegionLogVolume = CrossRegionLogVolume
+
+    @property
+    def BackupVolumeInfos(self):
+        r"""备份容量详情
+        :rtype: list of BackupVolumeInfo
+        """
+        return self._BackupVolumeInfos
+
+    @BackupVolumeInfos.setter
+    def BackupVolumeInfos(self, BackupVolumeInfos):
+        self._BackupVolumeInfos = BackupVolumeInfos
+
+    @property
+    def CrossRegionBackupVolumeInfos(self):
+        r"""跨地域备份容量详情
+        :rtype: list of BackupVolumeInfo
+        """
+        return self._CrossRegionBackupVolumeInfos
+
+    @CrossRegionBackupVolumeInfos.setter
+    def CrossRegionBackupVolumeInfos(self, CrossRegionBackupVolumeInfos):
+        self._CrossRegionBackupVolumeInfos = CrossRegionBackupVolumeInfos
+
+    @property
+    def CrossRegions(self):
+        r"""跨地域信息
+        :rtype: list of str
+        """
+        return self._CrossRegions
+
+    @CrossRegions.setter
+    def CrossRegions(self, CrossRegions):
+        self._CrossRegions = CrossRegions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupTotalVolume = params.get("BackupTotalVolume")
+        self._BackupSnapshotVolume = params.get("BackupSnapshotVolume")
+        self._BackupLogicVolume = params.get("BackupLogicVolume")
+        self._LogTotalVolume = params.get("LogTotalVolume")
+        self._LogBinlogVolume = params.get("LogBinlogVolume")
+        self._LogRedoLogVolume = params.get("LogRedoLogVolume")
+        self._CrossTotalVolume = params.get("CrossTotalVolume")
+        self._CrossRegionBackupVolume = params.get("CrossRegionBackupVolume")
+        self._CrossRegionLogVolume = params.get("CrossRegionLogVolume")
+        if params.get("BackupVolumeInfos") is not None:
+            self._BackupVolumeInfos = []
+            for item in params.get("BackupVolumeInfos"):
+                obj = BackupVolumeInfo()
+                obj._deserialize(item)
+                self._BackupVolumeInfos.append(obj)
+        if params.get("CrossRegionBackupVolumeInfos") is not None:
+            self._CrossRegionBackupVolumeInfos = []
+            for item in params.get("CrossRegionBackupVolumeInfos"):
+                obj = BackupVolumeInfo()
+                obj._deserialize(item)
+                self._CrossRegionBackupVolumeInfos.append(obj)
+        self._CrossRegions = params.get("CrossRegions")
         self._RequestId = params.get("RequestId")
 
 

@@ -9577,13 +9577,13 @@ class ListPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rp: 每页数量，默认值是 20，必须大于 0 且小于或等于 200
+        :param _Rp: <p>每页数量，默认值是 20，必须大于 0 且小于或等于 200</p>
         :type Rp: int
-        :param _Page: 页码，默认值是 1，从 1开始，不能大于 200
+        :param _Page: <p>页码，默认值是 1，从 1开始，不能大于 200</p>
         :type Page: int
-        :param _Scope: 可取值 'All'、'QCS' 和 'Local'，'All' 获取所有策略，'QCS' 只获取预设策略，'Local' 只获取自定义策略，默认取 'All'
+        :param _Scope: <p>可取值 &#39;All&#39;、&#39;QCS&#39; 和 &#39;Local&#39;，&#39;All&#39; 获取所有策略，&#39;QCS&#39; 只获取预设策略，&#39;Local&#39; 只获取自定义策略，默认取 &#39;All&#39;</p>
         :type Scope: str
-        :param _Keyword: 按策略名匹配
+        :param _Keyword: <p>按策略名匹配</p>
         :type Keyword: str
         """
         self._Rp = None
@@ -9593,7 +9593,7 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Rp(self):
-        r"""每页数量，默认值是 20，必须大于 0 且小于或等于 200
+        r"""<p>每页数量，默认值是 20，必须大于 0 且小于或等于 200</p>
         :rtype: int
         """
         return self._Rp
@@ -9604,7 +9604,7 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""页码，默认值是 1，从 1开始，不能大于 200
+        r"""<p>页码，默认值是 1，从 1开始，不能大于 200</p>
         :rtype: int
         """
         return self._Page
@@ -9615,7 +9615,7 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Scope(self):
-        r"""可取值 'All'、'QCS' 和 'Local'，'All' 获取所有策略，'QCS' 只获取预设策略，'Local' 只获取自定义策略，默认取 'All'
+        r"""<p>可取值 &#39;All&#39;、&#39;QCS&#39; 和 &#39;Local&#39;，&#39;All&#39; 获取所有策略，&#39;QCS&#39; 只获取预设策略，&#39;Local&#39; 只获取自定义策略，默认取 &#39;All&#39;</p>
         :rtype: str
         """
         return self._Scope
@@ -9626,7 +9626,7 @@ class ListPoliciesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""按策略名匹配
+        r"""<p>按策略名匹配</p>
         :rtype: str
         """
         return self._Keyword
@@ -9658,20 +9658,11 @@ class ListPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalNum: 策略总数
+        :param _TotalNum: <p>策略总数</p>
         :type TotalNum: int
-        :param _List: 策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中： 
-policyId：策略 id 
-policyName：策略名
-addTime：策略创建时间
-type：1 表示自定义策略，2 表示预设策略 
-description：策略描述 
-createMode：1 表示按业务权限创建的策略，其他值表示可以查看策略语法和通过策略语法更新策略
-Attachments: 关联的用户数
-ServiceType: 策略关联的产品
-IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
+        :param _List: <p>策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中：<br>policyId：策略 id<br>policyName：策略名<br>addTime：策略创建时间<br>type：1 表示自定义策略，2 表示预设策略<br>description：策略描述<br>createMode：1 表示按业务权限创建的策略，其他值表示可以查看策略语法和通过策略语法更新策略<br>Attachments: 关联的用户数<br>ServiceType: 策略关联的产品<br>IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略</p>
         :type List: list of StrategyInfo
-        :param _ServiceTypeList: 保留字段
+        :param _ServiceTypeList: <p>保留字段</p>
         :type ServiceTypeList: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9683,7 +9674,7 @@ IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0
 
     @property
     def TotalNum(self):
-        r"""策略总数
+        r"""<p>策略总数</p>
         :rtype: int
         """
         return self._TotalNum
@@ -9694,16 +9685,7 @@ IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0
 
     @property
     def List(self):
-        r"""策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中： 
-policyId：策略 id 
-policyName：策略名
-addTime：策略创建时间
-type：1 表示自定义策略，2 表示预设策略 
-description：策略描述 
-createMode：1 表示按业务权限创建的策略，其他值表示可以查看策略语法和通过策略语法更新策略
-Attachments: 关联的用户数
-ServiceType: 策略关联的产品
-IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
+        r"""<p>策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中：<br>policyId：策略 id<br>policyName：策略名<br>addTime：策略创建时间<br>type：1 表示自定义策略，2 表示预设策略<br>description：策略描述<br>createMode：1 表示按业务权限创建的策略，其他值表示可以查看策略语法和通过策略语法更新策略<br>Attachments: 关联的用户数<br>ServiceType: 策略关联的产品<br>IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略</p>
         :rtype: list of StrategyInfo
         """
         return self._List
@@ -9714,7 +9696,7 @@ IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0
 
     @property
     def ServiceTypeList(self):
-        r"""保留字段
+        r"""<p>保留字段</p>
         :rtype: list of str
         """
         return self._ServiceTypeList
@@ -12050,47 +12032,49 @@ class StrategyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyId: 策略ID。
+        :param _PolicyId: <p>策略ID。</p>
         :type PolicyId: int
-        :param _PolicyName: 策略名称。
+        :param _PolicyName: <p>策略名称。</p>
         :type PolicyName: str
-        :param _AddTime: 策略创建时间。
+        :param _AddTime: <p>策略创建时间。</p>
         :type AddTime: str
-        :param _Type: 策略类型。1 表示自定义策略，2 表示预设策略。
+        :param _Type: <p>策略类型。1 表示自定义策略，2 表示预设策略。</p>
         :type Type: int
-        :param _Description: 策略描述。
+        :param _Description: <p>策略描述。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _CreateMode: 创建来源，1 通过控制台创建, 2 通过策略语法创建。
+        :param _CreateMode: <p>创建来源，1 通过控制台创建, 2 通过策略语法创建。</p>
         :type CreateMode: int
-        :param _Attachments: 关联的用户数
+        :param _Attachments: <p>关联的用户数</p>
         :type Attachments: int
-        :param _ServiceType: 策略关联的产品
+        :param _ServiceType: <p>策略关联的产品</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceType: str
-        :param _IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
+        :param _IsAttached: <p>当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAttached: int
-        :param _Deactived: 是否已下线
+        :param _Deactived: <p>是否已下线</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deactived: int
-        :param _DeactivedDetail: 已下线产品列表
+        :param _DeactivedDetail: <p>已下线产品列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeactivedDetail: list of str
-        :param _IsServiceLinkedPolicy: 是否是服务相关角色策略
+        :param _IsServiceLinkedPolicy: <p>是否是服务相关角色策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsServiceLinkedPolicy: int
-        :param _AttachEntityCount: 关联策略实体数
+        :param _AttachEntityCount: <p>关联策略实体数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachEntityCount: int
-        :param _AttachEntityBoundaryCount: 关联权限边界实体数
+        :param _AttachEntityBoundaryCount: <p>关联权限边界实体数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachEntityBoundaryCount: int
-        :param _UpdateTime: 最后编辑时间
+        :param _UpdateTime: <p>最后编辑时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
+        :param _PermissionLevel: <p>权限级别</p><p>枚举值：</p><ul><li>Global： 全局权限</li><li>Finance： 财务权限</li><li>CloudProduct： 云产品权限</li></ul>
+        :type PermissionLevel: str
         """
         self._PolicyId = None
         self._PolicyName = None
@@ -12108,10 +12092,11 @@ class StrategyInfo(AbstractModel):
         self._AttachEntityBoundaryCount = None
         self._UpdateTime = None
         self._Tags = None
+        self._PermissionLevel = None
 
     @property
     def PolicyId(self):
-        r"""策略ID。
+        r"""<p>策略ID。</p>
         :rtype: int
         """
         return self._PolicyId
@@ -12122,7 +12107,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def PolicyName(self):
-        r"""策略名称。
+        r"""<p>策略名称。</p>
         :rtype: str
         """
         return self._PolicyName
@@ -12133,7 +12118,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def AddTime(self):
-        r"""策略创建时间。
+        r"""<p>策略创建时间。</p>
         :rtype: str
         """
         return self._AddTime
@@ -12144,7 +12129,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""策略类型。1 表示自定义策略，2 表示预设策略。
+        r"""<p>策略类型。1 表示自定义策略，2 表示预设策略。</p>
         :rtype: int
         """
         return self._Type
@@ -12155,7 +12140,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""策略描述。
+        r"""<p>策略描述。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12167,7 +12152,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def CreateMode(self):
-        r"""创建来源，1 通过控制台创建, 2 通过策略语法创建。
+        r"""<p>创建来源，1 通过控制台创建, 2 通过策略语法创建。</p>
         :rtype: int
         """
         return self._CreateMode
@@ -12178,7 +12163,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def Attachments(self):
-        r"""关联的用户数
+        r"""<p>关联的用户数</p>
         :rtype: int
         """
         return self._Attachments
@@ -12189,7 +12174,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""策略关联的产品
+        r"""<p>策略关联的产品</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12201,7 +12186,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def IsAttached(self):
-        r"""当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
+        r"""<p>当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12213,7 +12198,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def Deactived(self):
-        r"""是否已下线
+        r"""<p>是否已下线</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12225,7 +12210,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def DeactivedDetail(self):
-        r"""已下线产品列表
+        r"""<p>已下线产品列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -12237,7 +12222,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def IsServiceLinkedPolicy(self):
-        r"""是否是服务相关角色策略
+        r"""<p>是否是服务相关角色策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12249,7 +12234,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def AttachEntityCount(self):
-        r"""关联策略实体数
+        r"""<p>关联策略实体数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12261,7 +12246,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def AttachEntityBoundaryCount(self):
-        r"""关联权限边界实体数
+        r"""<p>关联权限边界实体数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12273,7 +12258,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""最后编辑时间
+        r"""<p>最后编辑时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12285,7 +12270,7 @@ class StrategyInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -12293,6 +12278,17 @@ class StrategyInfo(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def PermissionLevel(self):
+        r"""<p>权限级别</p><p>枚举值：</p><ul><li>Global： 全局权限</li><li>Finance： 财务权限</li><li>CloudProduct： 云产品权限</li></ul>
+        :rtype: str
+        """
+        return self._PermissionLevel
+
+    @PermissionLevel.setter
+    def PermissionLevel(self, PermissionLevel):
+        self._PermissionLevel = PermissionLevel
 
 
     def _deserialize(self, params):
@@ -12317,6 +12313,7 @@ class StrategyInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._PermissionLevel = params.get("PermissionLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

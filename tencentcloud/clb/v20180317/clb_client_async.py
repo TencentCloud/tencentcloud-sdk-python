@@ -25,6 +25,42 @@ class ClbClient(AbstractClient):
     _endpoint = 'clb.tencentcloudapi.com'
     _service = 'clb'
 
+    async def AddModelKey(
+            self,
+            request: models.AddModelKeyRequest,
+            opts: Dict = None,
+    ) -> models.AddModelKeyResponse:
+        """
+        给 BYOK 模型添加 Key
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddModelKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddModelKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddModelRewrite(
+            self,
+            request: models.AddModelRewriteRequest,
+            opts: Dict = None,
+    ) -> models.AddModelRewriteResponse:
+        """
+        为模型路由实例新增或覆盖一条模型重写规则（Model Rewrite）。当 SourceModel 已存在重写规则时，本次请求会用新的 TargetModel 覆盖原值（覆盖语义）。该接口为异步接口。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddModelRewrite"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddModelRewriteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AssociateBudget(
             self,
             request: models.AssociateBudgetRequest,
@@ -56,6 +92,46 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "AssociateCustomizedConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.AssociateCustomizedConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AssociateModelRouterGuardrails(
+            self,
+            request: models.AssociateModelRouterGuardrailsRequest,
+            opts: Dict = None,
+    ) -> models.AssociateModelRouterGuardrailsResponse:
+        """
+        为指定模型路由实例关联 Guardrails 防护。当前支持关联腾讯云 WAF LLM SDK 接入配置，关联成功后，模型路由转发的请求会按照绑定的 WAF 防护配置进行安全检测。
+
+        本接口为异步接口。接口返回成功表示请求已受理，可使用返回的 RequestId 调用 DescribeAsyncJobs 查询任务执行结果；防护配置生效后，可调用 DescribeModelRouterGuardrails 查询当前关联。
+
+        当前每个模型路由实例最多关联 1 个 Guardrail。如需替换已关联的防护配置，请调用 ModifyModelRouterGuardrails。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssociateModelRouterGuardrails"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssociateModelRouterGuardrailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AssociateModelsToModelRouter(
+            self,
+            request: models.AssociateModelsToModelRouterRequest,
+            opts: Dict = None,
+    ) -> models.AssociateModelsToModelRouterResponse:
+        """
+        将模型关联到模型路由实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssociateModelsToModelRouter"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssociateModelsToModelRouterResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -175,6 +251,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ChatCompletions(
+            self,
+            request: models.ChatCompletionsRequest,
+            opts: Dict = None,
+    ) -> models.ChatCompletionsResponse:
+        """
+        聊天测试，发送聊天请求验证模型连通性。用户传入 ApiKey 和 Model，支持自定义消息和额外参数、支持多模态附件。stream 强制关闭，max_tokens 上限 100。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ChatCompletions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ChatCompletionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CloneLoadBalancer(
             self,
             request: models.CloneLoadBalancerRequest,
@@ -213,13 +307,31 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBYOKNetwork(
+            self,
+            request: models.CreateBYOKNetworkRequest,
+            opts: Dict = None,
+    ) -> models.CreateBYOKNetworkResponse:
+        """
+        初始化 BYOK VPC 网络资源。PrivateCustom 场景的 Phase 1：创建 BYOK 模型主表记录并提交 VPC 网络初始化异步任务（申请 IP、创建 LBNAT、绑定 SNAT 等）。完成后需调用 CreateModel 传入返回的 ServiceProviderId 完成业务资源创建。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBYOKNetwork"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBYOKNetworkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateBudget(
             self,
             request: models.CreateBudgetRequest,
             opts: Dict = None,
     ) -> models.CreateBudgetResponse:
         """
-        创建Budget对象。可在创建时通过Resources同时关联已存在的企业型模型路由实例或企业型实例下的Key。创建请求提交后，可通过DescribeBudgets查询状态。
+        创建Budget对象。BudgetConfigs最多支持1d、7d、30d三个刷新周期各一个；BudgetResetAt不支持作为入参设置，由系统自动维护。可在创建时通过Resources同时关联已存在的企业型模型路由实例或企业型实例下的Key。创建请求提交后，可通过DescribeBudgets查询状态。
         """
         
         kwargs = {}
@@ -244,6 +356,24 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "CreateClsLogSet"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateClsLogSetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateIntentRouter(
+            self,
+            request: models.CreateIntentRouterRequest,
+            opts: Dict = None,
+    ) -> models.CreateIntentRouterResponse:
+        """
+        为模型路由实例创建一个意图路由（Intent Router）。意图路由是独立资源，请求匹配model=<RouteName>时将通过配置的分层进行路由。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateIntentRouter"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateIntentRouterResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -343,6 +473,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateModel(
+            self,
+            request: models.CreateModelRequest,
+            opts: Dict = None,
+    ) -> models.CreateModelResponse:
+        """
+        创建 BYOK 模型
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateModelRouter(
             self,
             request: models.CreateModelRouterRequest,
@@ -356,6 +504,24 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "CreateModelRouter"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateModelRouterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateModelRouterResourcePackage(
+            self,
+            request: models.CreateModelRouterResourcePackageRequest,
+            opts: Dict = None,
+    ) -> models.CreateModelRouterResourcePackageResponse:
+        """
+        创建模型路由资源包
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateModelRouterResourcePackage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateModelRouterResourcePackageResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -452,6 +618,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteIntentRouter(
+            self,
+            request: models.DeleteIntentRouterRequest,
+            opts: Dict = None,
+    ) -> models.DeleteIntentRouterResponse:
+        """
+        删除模型路由实例下的一个意图路由（Intent Router）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteIntentRouter"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteIntentRouterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteKeys(
             self,
             request: models.DeleteKeysRequest,
@@ -541,6 +725,24 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "DeleteLoadBalancerSnatIps"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteLoadBalancerSnatIpsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteModel(
+            self,
+            request: models.DeleteModelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteModelResponse:
+        """
+        删除 BYOK 模型
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteModelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -667,6 +869,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeregisterModelsFromServiceProvider(
+            self,
+            request: models.DeregisterModelsFromServiceProviderRequest,
+            opts: Dict = None,
+    ) -> models.DeregisterModelsFromServiceProviderResponse:
+        """
+        将模型关联到模型路由实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeregisterModelsFromServiceProvider"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeregisterModelsFromServiceProviderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeregisterTargetGroupInstances(
             self,
             request: models.DeregisterTargetGroupInstancesRequest,
@@ -718,6 +938,24 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "DeregisterTargetsFromClassicalLB"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeregisterTargetsFromClassicalLBResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAssociatedModelAvailability(
+            self,
+            request: models.DescribeAssociatedModelAvailabilityRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAssociatedModelAvailabilityResponse:
+        """
+        查询实例下关联模型的可用性
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAssociatedModelAvailability"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAssociatedModelAvailabilityResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1011,6 +1249,60 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeIntentRouterTiers(
+            self,
+            request: models.DescribeIntentRouterTiersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIntentRouterTiersResponse:
+        """
+        查询平台维护的 IntentRouter Tier 字典。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIntentRouterTiers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIntentRouterTiersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIntentRouters(
+            self,
+            request: models.DescribeIntentRoutersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIntentRoutersResponse:
+        """
+        查询模型路由实例下的意图路由（Intent Router）列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIntentRouters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIntentRoutersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKeys(
+            self,
+            request: models.DescribeKeysRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKeysResponse:
+        """
+        查询指定实例的 API Key 列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKeys"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKeysResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLBListeners(
             self,
             request: models.DescribeLBListenersRequest,
@@ -1155,6 +1447,96 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeModelAliases(
+            self,
+            request: models.DescribeModelAliasesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelAliasesResponse:
+        """
+        查询当前用户 BYOK 中已经配置过的模型别名列表，按 Provider 和 ModelAliasName 去重。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelAliases"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelAliasesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelAssociations(
+            self,
+            request: models.DescribeModelAssociationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelAssociationsResponse:
+        """
+        查询实例关联的模型列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelAssociations"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelAssociationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelKeys(
+            self,
+            request: models.DescribeModelKeysRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelKeysResponse:
+        """
+        查询 BYOK 模型列表及 Key 信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelKeys"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelKeysResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelNames(
+            self,
+            request: models.DescribeModelNamesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelNamesResponse:
+        """
+        查询模型标识聚合列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelNames"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelNamesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelRewrite(
+            self,
+            request: models.DescribeModelRewriteRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelRewriteResponse:
+        """
+        查询模型路由实例上的全部模型重写规则（Model Rewrite），或按 SourceModel 精确过滤后的单条规则。该接口为同步只读接口。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelRewrite"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelRewriteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeModelRouterDetail(
             self,
             request: models.DescribeModelRouterDetailRequest,
@@ -1173,6 +1555,44 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeModelRouterGuardrails(
+            self,
+            request: models.DescribeModelRouterGuardrailsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelRouterGuardrailsResponse:
+        """
+        查询模型路由实例当前已关联的 Guardrails 防护配置。
+
+        本接口为同步只读接口，不触发状态变更。AssociateModelRouterGuardrails、DisassociateModelRouterGuardrails 和 ModifyModelRouterGuardrails 为异步受理接口；如需确认变更任务是否执行成功，请优先使用写接口返回的 RequestId 调用 DescribeAsyncJobs 查询任务状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelRouterGuardrails"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelRouterGuardrailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelRouterLogs(
+            self,
+            request: models.DescribeModelRouterLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelRouterLogsResponse:
+        """
+        查询实例的使用日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelRouterLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelRouterLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeModelRouterQuota(
             self,
             request: models.DescribeModelRouterQuotaRequest,
@@ -1186,6 +1606,42 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "DescribeModelRouterQuota"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeModelRouterQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelRouterResourcePackageDeduction(
+            self,
+            request: models.DescribeModelRouterResourcePackageDeductionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelRouterResourcePackageDeductionResponse:
+        """
+        查询模型路由资源包抵扣明细
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelRouterResourcePackageDeduction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelRouterResourcePackageDeductionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelRouterResourcePackages(
+            self,
+            request: models.DescribeModelRouterResourcePackagesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelRouterResourcePackagesResponse:
+        """
+        查询模型路由资源包
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelRouterResourcePackages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelRouterResourcePackagesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1258,6 +1714,42 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "DescribeRewrite"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRewriteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeServiceProviderHealthStatus(
+            self,
+            request: models.DescribeServiceProviderHealthStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeServiceProviderHealthStatusResponse:
+        """
+        查询BYOK健康检查信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeServiceProviderHealthStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeServiceProviderHealthStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSupportedProviders(
+            self,
+            request: models.DescribeSupportedProvidersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSupportedProvidersResponse:
+        """
+        查询平台支持的 Provider 列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSupportedProviders"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSupportedProvidersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1389,6 +1881,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeUpperModels(
+            self,
+            request: models.DescribeUpperModelsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUpperModelsResponse:
+        """
+        查询上游 Provider 支持的模型列表。通过代理转发用户提供的 ApiBase 和 ApiKey 到上游 Provider 的模型列表端点，返回可用的模型名称列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUpperModels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUpperModelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUserGroups(
             self,
             request: models.DescribeUserGroupsRequest,
@@ -1443,6 +1953,46 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DisassociateModelRouterGuardrails(
+            self,
+            request: models.DisassociateModelRouterGuardrailsRequest,
+            opts: Dict = None,
+    ) -> models.DisassociateModelRouterGuardrailsResponse:
+        """
+        解除模型路由实例与 Guardrails 防护配置的关联。解除后，模型路由不再使用指定的 Guardrail 防护配置。
+
+        本接口为异步接口。接口返回成功表示请求已受理，可使用返回的 RequestId 调用 DescribeAsyncJobs 查询任务执行结果；解除完成后，可调用 DescribeModelRouterGuardrails 查询当前关联。
+
+        本接口通过 GuardrailId 定位要解除的防护配置。GuardrailId 可通过 DescribeModelRouterGuardrails 获取。若传入的 GuardrailId 当前未关联到该模型路由实例，接口按幂等成功处理。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisassociateModelRouterGuardrails"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisassociateModelRouterGuardrailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DisassociateModelsFromModelRouter(
+            self,
+            request: models.DisassociateModelsFromModelRouterRequest,
+            opts: Dict = None,
+    ) -> models.DisassociateModelsFromModelRouterResponse:
+        """
+        将模型从模型路由实例解除关联
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisassociateModelsFromModelRouter"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisassociateModelsFromModelRouterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DisassociateTargetGroups(
             self,
             request: models.DisassociateTargetGroupsRequest,
@@ -1458,6 +2008,42 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "DisassociateTargetGroups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DisassociateTargetGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InquirePriceCreateModelRouterResourcePackage(
+            self,
+            request: models.InquirePriceCreateModelRouterResourcePackageRequest,
+            opts: Dict = None,
+    ) -> models.InquirePriceCreateModelRouterResourcePackageResponse:
+        """
+        查询创建模型路由资源包的价格。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquirePriceCreateModelRouterResourcePackage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquirePriceCreateModelRouterResourcePackageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InquirePriceRefundModelRouterResourcePackage(
+            self,
+            request: models.InquirePriceRefundModelRouterResourcePackageRequest,
+            opts: Dict = None,
+    ) -> models.InquirePriceRefundModelRouterResourcePackageResponse:
+        """
+        查询退还模型路由资源包的价格。非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquirePriceRefundModelRouterResourcePackage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquirePriceRefundModelRouterResourcePackageResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1598,7 +2184,7 @@ class ClbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyBudgetAttributesResponse:
         """
-        修改Budget属性。BudgetResetAt不支持作为入参设置。修改请求提交后，可通过DescribeBudgets查询状态。
+        修改Budget属性。BudgetConfigs最多支持1d、7d、30d三个刷新周期各一个；BudgetResetAt不支持作为入参设置，由系统自动维护。修改请求提交后，可通过DescribeBudgets查询状态。
         """
         
         kwargs = {}
@@ -1663,6 +2249,25 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "ModifyFunctionTargets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyFunctionTargetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyIntentRouterAttribute(
+            self,
+            request: models.ModifyIntentRouterAttributeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyIntentRouterAttributeResponse:
+        """
+        修改意图路由（Intent Router）的属性，支持修改路由名称（RouteName）和分层配置（Tiers）。
+        RouteName和Tiers均为选填，至少传入一个。Tiers为全量替换（非增量）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyIntentRouterAttribute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyIntentRouterAttributeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1818,6 +2423,42 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyModelAliasAttributes(
+            self,
+            request: models.ModifyModelAliasAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyModelAliasAttributesResponse:
+        """
+        批量修改模型别名属性。本期支持批量修改模型别名的 Coefficient 配置。接口为异步接口，提交成功后返回 RequestId。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyModelAliasAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyModelAliasAttributesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyModelAttributes(
+            self,
+            request: models.ModifyModelAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyModelAttributesResponse:
+        """
+        修改BYOK的属性，包含：自定义名字
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyModelAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyModelAttributesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyModelRouterAttributes(
             self,
             request: models.ModifyModelRouterAttributesRequest,
@@ -1831,6 +2472,46 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "ModifyModelRouterAttributes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyModelRouterAttributesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyModelRouterGuardrails(
+            self,
+            request: models.ModifyModelRouterGuardrailsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyModelRouterGuardrailsResponse:
+        """
+        修改模型路由实例已关联的 Guardrail 防护配置。调用时需要指定已有的 GuardrailId，并在 Type 为 WAF 时传入 InstanceId 和 ServiceId；InputCheckDepth 为选填字段，未传时沿用当前已关联 Guardrail 的取值。修改成功后，GuardrailId 保持不变。
+
+        本接口为异步接口。接口返回成功表示请求已受理，可使用返回的 RequestId 调用 DescribeAsyncJobs 查询任务执行结果；修改完成后，可调用 DescribeModelRouterGuardrails 查询最新防护配置。
+
+        当前每个模型路由实例最多关联 1 个 Guardrail。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyModelRouterGuardrails"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyModelRouterGuardrailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyModelRouterSecurityGroups(
+            self,
+            request: models.ModifyModelRouterSecurityGroupsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyModelRouterSecurityGroupsResponse:
+        """
+        修改模型路由实例关联的安全组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyModelRouterSecurityGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyModelRouterSecurityGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1850,6 +2531,24 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "ModifyRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyServiceProviderModelAttributes(
+            self,
+            request: models.ModifyServiceProviderModelAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyServiceProviderModelAttributesResponse:
+        """
+        修改byok实例下指定模型的属性。该接口为异步接口，可使用DescribeAsyncJobs根据requestId查询异步任务的进度。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyServiceProviderModelAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyServiceProviderModelAttributesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1967,6 +2666,24 @@ class ClbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RefundModelRouterResourcePackage(
+            self,
+            request: models.RefundModelRouterResourcePackageRequest,
+            opts: Dict = None,
+    ) -> models.RefundModelRouterResourcePackageResponse:
+        """
+        退还模型路由资源包，非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RefundModelRouterResourcePackage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RefundModelRouterResourcePackageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RegenerateKeys(
             self,
             request: models.RegenerateKeysRequest,
@@ -2009,6 +2726,24 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "RegisterFunctionTargets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RegisterFunctionTargetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RegisterModelsToServiceProvider(
+            self,
+            request: models.RegisterModelsToServiceProviderRequest,
+            opts: Dict = None,
+    ) -> models.RegisterModelsToServiceProviderResponse:
+        """
+        将模型关联到模型路由实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RegisterModelsToServiceProvider"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RegisterModelsToServiceProviderResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2065,6 +2800,42 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "RegisterTargetsWithClassicalLB"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RegisterTargetsWithClassicalLBResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveModelKey(
+            self,
+            request: models.RemoveModelKeyRequest,
+            opts: Dict = None,
+    ) -> models.RemoveModelKeyResponse:
+        """
+        删除 BYOK 模型下的指定 Key
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveModelKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveModelKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveModelRewrite(
+            self,
+            request: models.RemoveModelRewriteRequest,
+            opts: Dict = None,
+    ) -> models.RemoveModelRewriteResponse:
+        """
+        删除模型路由实例上的一条模型重写规则（按 SourceModel 定位）。该接口为幂等接口：当指定的 SourceModel 不存在重写规则时，请求默认成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveModelRewrite"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveModelRewriteResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2197,6 +2968,42 @@ class ClbClient(AbstractClient):
         kwargs["action"] = "SetSecurityGroupForLoadbalancers"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetSecurityGroupForLoadbalancersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TestModelInputModalities(
+            self,
+            request: models.TestModelInputModalitiesRequest,
+            opts: Dict = None,
+    ) -> models.TestModelInputModalitiesResponse:
+        """
+        探测模型支持的输入多模态能力。可在创建byok实例勾选模型支持的多模态能力列表、编辑byok实例下模型支持的多模态能力列表时探测。探测完成可根据探测结果一键录入多模态能力列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TestModelInputModalities"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TestModelInputModalitiesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TestServiceProviderConnection(
+            self,
+            request: models.TestServiceProviderConnectionRequest,
+            opts: Dict = None,
+    ) -> models.TestServiceProviderConnectionResponse:
+        """
+        BYOK健康检查
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TestServiceProviderConnection"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TestServiceProviderConnectionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

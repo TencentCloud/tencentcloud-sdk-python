@@ -18,6 +18,199 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddModelKeyRequest(AbstractModel):
+    r"""AddModelKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderId: <p>服务提供商ID</p>
+        :type ServiceProviderId: str
+        :param _Keys: <p>Key 列表，至少 1 个，最多 10 个</p>
+        :type Keys: list of KeyItem
+        """
+        self._ServiceProviderId = None
+        self._Keys = None
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>服务提供商ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def Keys(self):
+        r"""<p>Key 列表，至少 1 个，最多 10 个</p>
+        :rtype: list of KeyItem
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        if params.get("Keys") is not None:
+            self._Keys = []
+            for item in params.get("Keys"):
+                obj = KeyItem()
+                obj._deserialize(item)
+                self._Keys.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddModelKeyResponse(AbstractModel):
+    r"""AddModelKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyIds: <p>生成的 Key ID 列表</p>
+        :type KeyIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KeyIds = None
+        self._RequestId = None
+
+    @property
+    def KeyIds(self):
+        r"""<p>生成的 Key ID 列表</p>
+        :rtype: list of str
+        """
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KeyIds = params.get("KeyIds")
+        self._RequestId = params.get("RequestId")
+
+
+class AddModelRewriteRequest(AbstractModel):
+    r"""AddModelRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例 ID。</p>
+        :type ModelRouterId: str
+        :param _SourceModel: <p>源模型名（重写规则的 key）。</p><p>长度 1-255 字符；支持特殊值 <code>default</code> 表示兜底规则（命中所有未显式列出的源模型）。</p><p>不允许使用 <code>IntentRouter/</code> 前缀（大小写不敏感），即 IntentRouter 不能作为 source。</p>
+        :type SourceModel: str
+        :param _TargetModel: <p>目标模型名（重写规则的 value）。</p><p>长度 1-255 字符；必须是已关联到该模型路由实例的模型（含 IntentRouter/* 也需先通过 AssociateModels 关联）。</p><p>不允许使用 <code>default</code>；不允许与 SourceModel 相同（大小写不敏感）。</p>
+        :type TargetModel: str
+        """
+        self._ModelRouterId = None
+        self._SourceModel = None
+        self._TargetModel = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例 ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def SourceModel(self):
+        r"""<p>源模型名（重写规则的 key）。</p><p>长度 1-255 字符；支持特殊值 <code>default</code> 表示兜底规则（命中所有未显式列出的源模型）。</p><p>不允许使用 <code>IntentRouter/</code> 前缀（大小写不敏感），即 IntentRouter 不能作为 source。</p>
+        :rtype: str
+        """
+        return self._SourceModel
+
+    @SourceModel.setter
+    def SourceModel(self, SourceModel):
+        self._SourceModel = SourceModel
+
+    @property
+    def TargetModel(self):
+        r"""<p>目标模型名（重写规则的 value）。</p><p>长度 1-255 字符；必须是已关联到该模型路由实例的模型（含 IntentRouter/* 也需先通过 AssociateModels 关联）。</p><p>不允许使用 <code>default</code>；不允许与 SourceModel 相同（大小写不敏感）。</p>
+        :rtype: str
+        """
+        return self._TargetModel
+
+    @TargetModel.setter
+    def TargetModel(self, TargetModel):
+        self._TargetModel = TargetModel
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._SourceModel = params.get("SourceModel")
+        self._TargetModel = params.get("TargetModel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddModelRewriteResponse(AbstractModel):
+    r"""AddModelRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AssociateBudgetRequest(AbstractModel):
     r"""AssociateBudget请求参数结构体
 
@@ -186,6 +379,255 @@ class AssociateCustomizedConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AssociateGuardrailConfig(AbstractModel):
+    r"""模型路由待关联 Guardrail 防护配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>Guardrail 防护类型。</p><p>枚举值：</p><ul><li>WAF：使用腾讯云 WAF LLM SDK 接入配置对模型路由请求进行安全防护。</li></ul><p>当前仅支持 WAF；不传时默认为 WAF。</p>
+        :type Type: str
+        :param _InstanceId: <p>关联的腾讯云 WAF 实例 ID。</p><p>当 Type 为 WAF 时必填。接口会校验该 WAF 实例存在且属于当前账号。</p>
+        :type InstanceId: str
+        :param _ServiceId: <p>WAF LLM SDK 接入服务 ID。</p><p>该字段对应 WAF LLM SDK 接入配置中的服务标识，用于指定模型路由请求要绑定的 WAF 防护配置。当 Type 为 WAF 时必填。接口会校验该服务配置存在于指定的 WAF 实例下。</p>
+        :type ServiceId: str
+        :param _InputCheckDepth: <p>最大检测对话轮数。</p><p>当 Type 为 WAF 时选填；未传时默认取值为 5。若传入，取值必须为正整数。</p>
+        :type InputCheckDepth: int
+        """
+        self._Type = None
+        self._InstanceId = None
+        self._ServiceId = None
+        self._InputCheckDepth = None
+
+    @property
+    def Type(self):
+        r"""<p>Guardrail 防护类型。</p><p>枚举值：</p><ul><li>WAF：使用腾讯云 WAF LLM SDK 接入配置对模型路由请求进行安全防护。</li></ul><p>当前仅支持 WAF；不传时默认为 WAF。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InstanceId(self):
+        r"""<p>关联的腾讯云 WAF 实例 ID。</p><p>当 Type 为 WAF 时必填。接口会校验该 WAF 实例存在且属于当前账号。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceId(self):
+        r"""<p>WAF LLM SDK 接入服务 ID。</p><p>该字段对应 WAF LLM SDK 接入配置中的服务标识，用于指定模型路由请求要绑定的 WAF 防护配置。当 Type 为 WAF 时必填。接口会校验该服务配置存在于指定的 WAF 实例下。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def InputCheckDepth(self):
+        r"""<p>最大检测对话轮数。</p><p>当 Type 为 WAF 时选填；未传时默认取值为 5。若传入，取值必须为正整数。</p>
+        :rtype: int
+        """
+        return self._InputCheckDepth
+
+    @InputCheckDepth.setter
+    def InputCheckDepth(self, InputCheckDepth):
+        self._InputCheckDepth = InputCheckDepth
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceId = params.get("ServiceId")
+        self._InputCheckDepth = params.get("InputCheckDepth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateModelRouterGuardrailsRequest(AbstractModel):
+    r"""AssociateModelRouterGuardrails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Guardrails: <p>待关联的 Guardrail 防护配置列表。</p><p>当前最多支持 1 个元素。每个元素必须填写 InstanceId、ServiceId；Type 和 InputCheckDepth 为选填，不传时分别使用默认值 WAF 和 5。本结构不包含 GuardrailId，关联成功后由系统生成。</p>
+        :type Guardrails: list of AssociateGuardrailConfig
+        :param _ModelRouterId: <p>模型路由实例 ID。</p>
+        :type ModelRouterId: str
+        """
+        self._Guardrails = None
+        self._ModelRouterId = None
+
+    @property
+    def Guardrails(self):
+        r"""<p>待关联的 Guardrail 防护配置列表。</p><p>当前最多支持 1 个元素。每个元素必须填写 InstanceId、ServiceId；Type 和 InputCheckDepth 为选填，不传时分别使用默认值 WAF 和 5。本结构不包含 GuardrailId，关联成功后由系统生成。</p>
+        :rtype: list of AssociateGuardrailConfig
+        """
+        return self._Guardrails
+
+    @Guardrails.setter
+    def Guardrails(self, Guardrails):
+        self._Guardrails = Guardrails
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例 ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+
+    def _deserialize(self, params):
+        if params.get("Guardrails") is not None:
+            self._Guardrails = []
+            for item in params.get("Guardrails"):
+                obj = AssociateGuardrailConfig()
+                obj._deserialize(item)
+                self._Guardrails.append(obj)
+        self._ModelRouterId = params.get("ModelRouterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateModelRouterGuardrailsResponse(AbstractModel):
+    r"""AssociateModelRouterGuardrails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AssociateModelsToModelRouterRequest(AbstractModel):
+    r"""AssociateModelsToModelRouter请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID</p>
+        :type ModelRouterId: str
+        :param _Models: <p>需要关联的模型信息</p>
+        :type Models: list of ModelRouterModel
+        """
+        self._ModelRouterId = None
+        self._Models = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def Models(self):
+        r"""<p>需要关联的模型信息</p>
+        :rtype: list of ModelRouterModel
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = ModelRouterModel()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateModelsToModelRouterResponse(AbstractModel):
+    r"""AssociateModelsToModelRouter返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AssociateTargetGroupsRequest(AbstractModel):
     r"""AssociateTargetGroups请求参数结构体
 
@@ -257,6 +699,42 @@ class AssociateTargetGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class AssociatedModelRouterItem(AbstractModel):
+    r"""关联的模型路由实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID</p>
+        :type ModelRouterId: str
+        """
+        self._ModelRouterId = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AssociationItem(AbstractModel):
@@ -1750,17 +2228,23 @@ class BudgetAssociation(AbstractModel):
         :type KeyId: str
         :param _ModelRouterId: <p>模型路由实例ID。</p><p>当Type为ModelRouter时表示关联资源本身；当Type为Key时表示Key所属实例。</p>
         :type ModelRouterId: str
-        :param _Type: <p>关联资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul>
-        :type Type: str
+        :param _ResourceName: <p>资源对象的名称。</p>
+        :type ResourceName: str
         :param _Status: <p>关联关系的状态</p><p>枚举值：</p><ul><li>Active： 已生效</li><li>Configuring： 配置中</li><li>ConfigureFailed： 配置失败</li></ul>
         :type Status: str
+        :param _Type: <p>关联资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li><li>UserGroup：用户组</li></ul>
+        :type Type: str
+        :param _UserGroupId: <p>关联的用户组id</p>
+        :type UserGroupId: str
         """
         self._BudgetId = None
         self._CreatedTime = None
         self._KeyId = None
         self._ModelRouterId = None
-        self._Type = None
+        self._ResourceName = None
         self._Status = None
+        self._Type = None
+        self._UserGroupId = None
 
     @property
     def BudgetId(self):
@@ -1808,15 +2292,15 @@ class BudgetAssociation(AbstractModel):
         self._ModelRouterId = ModelRouterId
 
     @property
-    def Type(self):
-        r"""<p>关联资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul>
+    def ResourceName(self):
+        r"""<p>资源对象的名称。</p>
         :rtype: str
         """
-        return self._Type
+        return self._ResourceName
 
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
 
     @property
     def Status(self):
@@ -1829,14 +2313,38 @@ class BudgetAssociation(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def Type(self):
+        r"""<p>关联资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li><li>UserGroup：用户组</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UserGroupId(self):
+        r"""<p>关联的用户组id</p>
+        :rtype: str
+        """
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
 
     def _deserialize(self, params):
         self._BudgetId = params.get("BudgetId")
         self._CreatedTime = params.get("CreatedTime")
         self._KeyId = params.get("KeyId")
         self._ModelRouterId = params.get("ModelRouterId")
-        self._Type = params.get("Type")
+        self._ResourceName = params.get("ResourceName")
         self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._UserGroupId = params.get("UserGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2616,6 +3124,180 @@ class CertificateOutput(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ChatCompletionsRequest(AbstractModel):
+    r"""ChatCompletions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKey: <p>virtual key，用于向代理网关鉴权</p>
+        :type ApiKey: str
+        :param _Attachments: <p>多模态附件列表</p>
+        :type Attachments: list of MultiModalityAttachments
+        :param _ChatContent: <p>聊天内容</p>
+        :type ChatContent: str
+        :param _Model: <p>模型名称，配置的模型标识</p><p>示例：gpt-4o、deepseek-chat</p>
+        :type Model: str
+        :param _ModelRouterId: <p>模型路由实例ID</p>
+        :type ModelRouterId: str
+        :param _RequestPath: <p>请求路径</p><p>默认值：/v1/chat/completions</p>
+        :type RequestPath: str
+        """
+        self._ApiKey = None
+        self._Attachments = None
+        self._ChatContent = None
+        self._Model = None
+        self._ModelRouterId = None
+        self._RequestPath = None
+
+    @property
+    def ApiKey(self):
+        r"""<p>virtual key，用于向代理网关鉴权</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def Attachments(self):
+        r"""<p>多模态附件列表</p>
+        :rtype: list of MultiModalityAttachments
+        """
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
+    @property
+    def ChatContent(self):
+        r"""<p>聊天内容</p>
+        :rtype: str
+        """
+        return self._ChatContent
+
+    @ChatContent.setter
+    def ChatContent(self, ChatContent):
+        self._ChatContent = ChatContent
+
+    @property
+    def Model(self):
+        r"""<p>模型名称，配置的模型标识</p><p>示例：gpt-4o、deepseek-chat</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def RequestPath(self):
+        r"""<p>请求路径</p><p>默认值：/v1/chat/completions</p>
+        :rtype: str
+        """
+        return self._RequestPath
+
+    @RequestPath.setter
+    def RequestPath(self, RequestPath):
+        self._RequestPath = RequestPath
+
+
+    def _deserialize(self, params):
+        self._ApiKey = params.get("ApiKey")
+        if params.get("Attachments") is not None:
+            self._Attachments = []
+            for item in params.get("Attachments"):
+                obj = MultiModalityAttachments()
+                obj._deserialize(item)
+                self._Attachments.append(obj)
+        self._ChatContent = params.get("ChatContent")
+        self._Model = params.get("Model")
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._RequestPath = params.get("RequestPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChatCompletionsResponse(AbstractModel):
+    r"""ChatCompletions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChatResponseMessage: <p>聊天的返回信息</p>
+        :type ChatResponseMessage: str
+        :param _ErrorInChat: <p>聊天请求发送过程中的失败信息</p>
+        :type ErrorInChat: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChatResponseMessage = None
+        self._ErrorInChat = None
+        self._RequestId = None
+
+    @property
+    def ChatResponseMessage(self):
+        r"""<p>聊天的返回信息</p>
+        :rtype: str
+        """
+        return self._ChatResponseMessage
+
+    @ChatResponseMessage.setter
+    def ChatResponseMessage(self, ChatResponseMessage):
+        self._ChatResponseMessage = ChatResponseMessage
+
+    @property
+    def ErrorInChat(self):
+        r"""<p>聊天请求发送过程中的失败信息</p>
+        :rtype: str
+        """
+        return self._ErrorInChat
+
+    @ErrorInChat.setter
+    def ErrorInChat(self, ErrorInChat):
+        self._ErrorInChat = ErrorInChat
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChatResponseMessage = params.get("ChatResponseMessage")
+        self._ErrorInChat = params.get("ErrorInChat")
+        self._RequestId = params.get("RequestId")
 
 
 class ClassicalHealth(AbstractModel):
@@ -4341,6 +5023,72 @@ class ClustersZone(AbstractModel):
         
 
 
+class Coefficient(AbstractModel):
+    r"""ModelAlias 积分系数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputCachedCoefficient: <p>缓存命中输入积分系数。</p><p>用于 provider prompt cache 命中的输入 token。</p><p>取值范围：[0, 5000]</p><p>默认值：3</p>
+        :type InputCachedCoefficient: float
+        :param _InputCoefficient: <p>输入积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：25</p>
+        :type InputCoefficient: float
+        :param _OutputCoefficient: <p>输出积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：100</p>
+        :type OutputCoefficient: float
+        """
+        self._InputCachedCoefficient = None
+        self._InputCoefficient = None
+        self._OutputCoefficient = None
+
+    @property
+    def InputCachedCoefficient(self):
+        r"""<p>缓存命中输入积分系数。</p><p>用于 provider prompt cache 命中的输入 token。</p><p>取值范围：[0, 5000]</p><p>默认值：3</p>
+        :rtype: float
+        """
+        return self._InputCachedCoefficient
+
+    @InputCachedCoefficient.setter
+    def InputCachedCoefficient(self, InputCachedCoefficient):
+        self._InputCachedCoefficient = InputCachedCoefficient
+
+    @property
+    def InputCoefficient(self):
+        r"""<p>输入积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：25</p>
+        :rtype: float
+        """
+        return self._InputCoefficient
+
+    @InputCoefficient.setter
+    def InputCoefficient(self, InputCoefficient):
+        self._InputCoefficient = InputCoefficient
+
+    @property
+    def OutputCoefficient(self):
+        r"""<p>输出积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：100</p>
+        :rtype: float
+        """
+        return self._OutputCoefficient
+
+    @OutputCoefficient.setter
+    def OutputCoefficient(self, OutputCoefficient):
+        self._OutputCoefficient = OutputCoefficient
+
+
+    def _deserialize(self, params):
+        self._InputCachedCoefficient = params.get("InputCachedCoefficient")
+        self._InputCoefficient = params.get("InputCoefficient")
+        self._OutputCoefficient = params.get("OutputCoefficient")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigListItem(AbstractModel):
     r"""配置内容
 
@@ -4456,6 +5204,120 @@ class ConfigListItem(AbstractModel):
         
 
 
+class CreateBYOKNetworkRequest(AbstractModel):
+    r"""CreateBYOKNetwork请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubnetId: <p>子网 ID</p><p>参数格式：subnet-xxxxxxxx</p>
+        :type SubnetId: str
+        :param _VpcId: <p>VPC 实例 ID</p><p>参数格式：vpc-xxxxxxxx</p>
+        :type VpcId: str
+        :param _ServiceProviderName: <p>BYOK 的自定义名字</p><p>入参限制：1～256个字符，可选</p>
+        :type ServiceProviderName: str
+        :param _Tags: <p>标签</p>
+        :type Tags: list of TagInfo
+        """
+        self._SubnetId = None
+        self._VpcId = None
+        self._ServiceProviderName = None
+        self._Tags = None
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网 ID</p><p>参数格式：subnet-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC 实例 ID</p><p>参数格式：vpc-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def ServiceProviderName(self):
+        r"""<p>BYOK 的自定义名字</p><p>入参限制：1～256个字符，可选</p>
+        :rtype: str
+        """
+        return self._ServiceProviderName
+
+    @ServiceProviderName.setter
+    def ServiceProviderName(self, ServiceProviderName):
+        self._ServiceProviderName = ServiceProviderName
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._SubnetId = params.get("SubnetId")
+        self._VpcId = params.get("VpcId")
+        self._ServiceProviderName = params.get("ServiceProviderName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBYOKNetworkResponse(AbstractModel):
+    r"""CreateBYOKNetwork返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBudgetRequest(AbstractModel):
     r"""CreateBudget请求参数结构体
 
@@ -4463,9 +5325,9 @@ class CreateBudgetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BudgetConfigs: <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+        :param _BudgetConfigs: <p>预算配置数组。</p><p>数组长度最大为3，最多可同时配置1d、7d、30d三个刷新周期，且每种刷新周期只能出现一次。BudgetResetAt不支持作为入参设置，系统会按配置的刷新周期自动维护刷新时间。</p>
         :type BudgetConfigs: list of BudgetConfigInput
-        :param _BudgetName: <p>Budget名称。</p><p>不传默认为空字符串。</p>
+        :param _BudgetName: <p>Budget名称。</p><p>不传默认为 '-'。</p>
         :type BudgetName: str
         :param _RateLimitConfig: <p>Budget限速配置。</p>
         :type RateLimitConfig: :class:`tencentcloud.clb.v20180317.models.RateLimitConfigForBudget`
@@ -4479,7 +5341,7 @@ class CreateBudgetRequest(AbstractModel):
 
     @property
     def BudgetConfigs(self):
-        r"""<p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+        r"""<p>预算配置数组。</p><p>数组长度最大为3，最多可同时配置1d、7d、30d三个刷新周期，且每种刷新周期只能出现一次。BudgetResetAt不支持作为入参设置，系统会按配置的刷新周期自动维护刷新时间。</p>
         :rtype: list of BudgetConfigInput
         """
         return self._BudgetConfigs
@@ -4490,7 +5352,7 @@ class CreateBudgetRequest(AbstractModel):
 
     @property
     def BudgetName(self):
-        r"""<p>Budget名称。</p><p>不传默认为空字符串。</p>
+        r"""<p>Budget名称。</p><p>不传默认为 '-'。</p>
         :rtype: str
         """
         return self._BudgetName
@@ -4702,6 +5564,135 @@ class CreateClsLogSetResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateIntentRouterRequest(AbstractModel):
+    r"""CreateIntentRouter请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID。</p>
+        :type ModelRouterId: str
+        :param _RouteName: <p>路由名称，用作LiteLLM的model_name。</p><p>必须以"IntentRouter/"为前缀，后缀仅支持字母、数字、连字符和下划线，后缀长度1-128个字符。</p>
+        :type RouteName: str
+        :param _Tiers: <p>Tier配置列表。</p><p>每个Tier至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+        :type Tiers: list of TierItem
+        :param _RouterDescribe: <p>意图路由描述。</p>
+        :type RouterDescribe: str
+        """
+        self._ModelRouterId = None
+        self._RouteName = None
+        self._Tiers = None
+        self._RouterDescribe = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def RouteName(self):
+        r"""<p>路由名称，用作LiteLLM的model_name。</p><p>必须以"IntentRouter/"为前缀，后缀仅支持字母、数字、连字符和下划线，后缀长度1-128个字符。</p>
+        :rtype: str
+        """
+        return self._RouteName
+
+    @RouteName.setter
+    def RouteName(self, RouteName):
+        self._RouteName = RouteName
+
+    @property
+    def Tiers(self):
+        r"""<p>Tier配置列表。</p><p>每个Tier至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+        :rtype: list of TierItem
+        """
+        return self._Tiers
+
+    @Tiers.setter
+    def Tiers(self, Tiers):
+        self._Tiers = Tiers
+
+    @property
+    def RouterDescribe(self):
+        r"""<p>意图路由描述。</p>
+        :rtype: str
+        """
+        return self._RouterDescribe
+
+    @RouterDescribe.setter
+    def RouterDescribe(self, RouterDescribe):
+        self._RouterDescribe = RouterDescribe
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._RouteName = params.get("RouteName")
+        if params.get("Tiers") is not None:
+            self._Tiers = []
+            for item in params.get("Tiers"):
+                obj = TierItem()
+                obj._deserialize(item)
+                self._Tiers.append(obj)
+        self._RouterDescribe = params.get("RouterDescribe")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIntentRouterResponse(AbstractModel):
+    r"""CreateIntentRouter返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IntentRouterId: <p>创建的意图路由ID（ir-xxx格式）。</p>
+        :type IntentRouterId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IntentRouterId = None
+        self._RequestId = None
+
+    @property
+    def IntentRouterId(self):
+        r"""<p>创建的意图路由ID（ir-xxx格式）。</p>
+        :rtype: str
+        """
+        return self._IntentRouterId
+
+    @IntentRouterId.setter
+    def IntentRouterId(self, IntentRouterId):
+        self._IntentRouterId = IntentRouterId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IntentRouterId = params.get("IntentRouterId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6252,6 +7243,295 @@ class CreateLoadBalancerSnatIpsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateModelRequest(AbstractModel):
+    r"""CreateModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessType: <p>接入类型：PublicBYOK/PublicCustom/PrivateCustom</p>
+        :type AccessType: str
+        :param _ModelProvider: <p>模型提供商</p>
+        :type ModelProvider: str
+        :param _ModelIds: <p>通用模型标识列表</p>
+        :type ModelIds: list of ModelItem
+        :param _Keys: <p>Key 列表</p>
+        :type Keys: list of KeyItem
+        :param _ServiceProviderId: <p>BYOK ID(在自定义模型时在部署网络后必须填写)</p>
+        :type ServiceProviderId: str
+        :param _ServiceProviderName: <p>服务供应商(创建BYOK自定义名称)。</p>
+        :type ServiceProviderName: str
+        :param _Protocol: <p>模型协议</p>
+        :type Protocol: str
+        :param _ApiBase: <p>API Base URL</p>
+        :type ApiBase: str
+        :param _VpcId: <p>VPC ID</p>
+        :type VpcId: str
+        :param _SubnetId: <p>子网 ID</p>
+        :type SubnetId: str
+        :param _HostHeader: <p>转发请求时添加的Host请求头</p>
+        :type HostHeader: str
+        :param _Tags: <p>标签信息</p>
+        :type Tags: list of TagInfo
+        :param _VerifySSL: <p>是否校验服务提供商的SSL证书</p>
+        :type VerifySSL: bool
+        """
+        self._AccessType = None
+        self._ModelProvider = None
+        self._ModelIds = None
+        self._Keys = None
+        self._ServiceProviderId = None
+        self._ServiceProviderName = None
+        self._Protocol = None
+        self._ApiBase = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._HostHeader = None
+        self._Tags = None
+        self._VerifySSL = None
+
+    @property
+    def AccessType(self):
+        r"""<p>接入类型：PublicBYOK/PublicCustom/PrivateCustom</p>
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def ModelProvider(self):
+        r"""<p>模型提供商</p>
+        :rtype: str
+        """
+        return self._ModelProvider
+
+    @ModelProvider.setter
+    def ModelProvider(self, ModelProvider):
+        self._ModelProvider = ModelProvider
+
+    @property
+    def ModelIds(self):
+        r"""<p>通用模型标识列表</p>
+        :rtype: list of ModelItem
+        """
+        return self._ModelIds
+
+    @ModelIds.setter
+    def ModelIds(self, ModelIds):
+        self._ModelIds = ModelIds
+
+    @property
+    def Keys(self):
+        r"""<p>Key 列表</p>
+        :rtype: list of KeyItem
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK ID(在自定义模型时在部署网络后必须填写)</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def ServiceProviderName(self):
+        r"""<p>服务供应商(创建BYOK自定义名称)。</p>
+        :rtype: str
+        """
+        return self._ServiceProviderName
+
+    @ServiceProviderName.setter
+    def ServiceProviderName(self, ServiceProviderName):
+        self._ServiceProviderName = ServiceProviderName
+
+    @property
+    def Protocol(self):
+        r"""<p>模型协议</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ApiBase(self):
+        r"""<p>API Base URL</p>
+        :rtype: str
+        """
+        return self._ApiBase
+
+    @ApiBase.setter
+    def ApiBase(self, ApiBase):
+        self._ApiBase = ApiBase
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网 ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def HostHeader(self):
+        r"""<p>转发请求时添加的Host请求头</p>
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
+    @property
+    def Tags(self):
+        r"""<p>标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def VerifySSL(self):
+        r"""<p>是否校验服务提供商的SSL证书</p>
+        :rtype: bool
+        """
+        return self._VerifySSL
+
+    @VerifySSL.setter
+    def VerifySSL(self, VerifySSL):
+        self._VerifySSL = VerifySSL
+
+
+    def _deserialize(self, params):
+        self._AccessType = params.get("AccessType")
+        self._ModelProvider = params.get("ModelProvider")
+        if params.get("ModelIds") is not None:
+            self._ModelIds = []
+            for item in params.get("ModelIds"):
+                obj = ModelItem()
+                obj._deserialize(item)
+                self._ModelIds.append(obj)
+        if params.get("Keys") is not None:
+            self._Keys = []
+            for item in params.get("Keys"):
+                obj = KeyItem()
+                obj._deserialize(item)
+                self._Keys.append(obj)
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._ServiceProviderName = params.get("ServiceProviderName")
+        self._Protocol = params.get("Protocol")
+        self._ApiBase = params.get("ApiBase")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._HostHeader = params.get("HostHeader")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._VerifySSL = params.get("VerifySSL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModelResponse(AbstractModel):
+    r"""CreateModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderId: <p>服务供应商ID</p>
+        :type ServiceProviderId: str
+        :param _KeyIds: <p>生成的 Key ID 列表</p>
+        :type KeyIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServiceProviderId = None
+        self._KeyIds = None
+        self._RequestId = None
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>服务供应商ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def KeyIds(self):
+        r"""<p>生成的 Key ID 列表</p>
+        :rtype: list of str
+        """
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._KeyIds = params.get("KeyIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateModelRouterRequest(AbstractModel):
     r"""CreateModelRouter请求参数结构体
 
@@ -6261,44 +7541,44 @@ class CreateModelRouterRequest(AbstractModel):
         r"""
         :param _ModelRouterType: <p>模型路由类型</p><p>枚举值：</p><ul><li>Shared： 共享型</li><li>Enterprise： 企业级</li></ul>
         :type ModelRouterType: str
-        :param _ModelRouterName: <p>模型路由实例名称</p><p>默认值：-</p>
-        :type ModelRouterName: str
-        :param _Schema: <p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
-        :type Schema: str
-        :param _Port: <p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
-        :type Port: int
-        :param _CertId: <p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
-        :type CertId: str
-        :param _NetworkType: <p>网络类型</p><p>枚举值：</p><ul><li>Internet： 公网</li><li>Intranet： 内网</li></ul>
-        :type NetworkType: str
-        :param _VpcId: <p>模型路由实例所属VPC的ID</p>
-        :type VpcId: str
-        :param _SubnetId: <p>模型路由实例所属子网的ID</p>
-        :type SubnetId: str
         :param _BudgetId: <p>关联的积分预算ID</p>
         :type BudgetId: str
+        :param _CertId: <p>证书ID</p><p>入参限制：当Schema为HTTPS时，该参数必传</p>
+        :type CertId: str
+        :param _ClusterInfo: <p>集群信息</p>
+        :type ClusterInfo: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
+        :param _ModelRouterName: <p>模型路由实例名称</p><p>默认值：-</p>
+        :type ModelRouterName: str
+        :param _NetworkType: <p>网络类型</p><p>枚举值：</p><ul><li>Internet： 公网</li><li>Intranet： 内网</li></ul>
+        :type NetworkType: str
+        :param _Port: <p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
+        :type Port: int
         :param _RateLimitConfig: <p>限速配置</p>
         :type RateLimitConfig: :class:`tencentcloud.clb.v20180317.models.RateLimitConfigForModelRouter`
         :param _RouterSetting: <p>路由配置</p>
         :type RouterSetting: :class:`tencentcloud.clb.v20180317.models.RouterSettingWithoutFallBack`
+        :param _Schema: <p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
+        :type Schema: str
+        :param _SubnetId: <p>模型路由实例所属子网的ID</p>
+        :type SubnetId: str
         :param _Tags: <p>标签</p>
         :type Tags: list of TagInfo
-        :param _ClusterInfo: <p>集群信息</p>
-        :type ClusterInfo: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
+        :param _VpcId: <p>模型路由实例所属VPC的ID</p>
+        :type VpcId: str
         """
         self._ModelRouterType = None
-        self._ModelRouterName = None
-        self._Schema = None
-        self._Port = None
-        self._CertId = None
-        self._NetworkType = None
-        self._VpcId = None
-        self._SubnetId = None
         self._BudgetId = None
+        self._CertId = None
+        self._ClusterInfo = None
+        self._ModelRouterName = None
+        self._NetworkType = None
+        self._Port = None
         self._RateLimitConfig = None
         self._RouterSetting = None
+        self._Schema = None
+        self._SubnetId = None
         self._Tags = None
-        self._ClusterInfo = None
+        self._VpcId = None
 
     @property
     def ModelRouterType(self):
@@ -6312,6 +7592,39 @@ class CreateModelRouterRequest(AbstractModel):
         self._ModelRouterType = ModelRouterType
 
     @property
+    def BudgetId(self):
+        r"""<p>关联的积分预算ID</p>
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def CertId(self):
+        r"""<p>证书ID</p><p>入参限制：当Schema为HTTPS时，该参数必传</p>
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def ClusterInfo(self):
+        r"""<p>集群信息</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
+        """
+        return self._ClusterInfo
+
+    @ClusterInfo.setter
+    def ClusterInfo(self, ClusterInfo):
+        self._ClusterInfo = ClusterInfo
+
+    @property
     def ModelRouterName(self):
         r"""<p>模型路由实例名称</p><p>默认值：-</p>
         :rtype: str
@@ -6321,39 +7634,6 @@ class CreateModelRouterRequest(AbstractModel):
     @ModelRouterName.setter
     def ModelRouterName(self, ModelRouterName):
         self._ModelRouterName = ModelRouterName
-
-    @property
-    def Schema(self):
-        r"""<p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
-        :rtype: str
-        """
-        return self._Schema
-
-    @Schema.setter
-    def Schema(self, Schema):
-        self._Schema = Schema
-
-    @property
-    def Port(self):
-        r"""<p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
-        :rtype: int
-        """
-        return self._Port
-
-    @Port.setter
-    def Port(self, Port):
-        self._Port = Port
-
-    @property
-    def CertId(self):
-        r"""<p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
-        :rtype: str
-        """
-        return self._CertId
-
-    @CertId.setter
-    def CertId(self, CertId):
-        self._CertId = CertId
 
     @property
     def NetworkType(self):
@@ -6367,37 +7647,15 @@ class CreateModelRouterRequest(AbstractModel):
         self._NetworkType = NetworkType
 
     @property
-    def VpcId(self):
-        r"""<p>模型路由实例所属VPC的ID</p>
-        :rtype: str
+    def Port(self):
+        r"""<p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
+        :rtype: int
         """
-        return self._VpcId
+        return self._Port
 
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
-
-    @property
-    def SubnetId(self):
-        r"""<p>模型路由实例所属子网的ID</p>
-        :rtype: str
-        """
-        return self._SubnetId
-
-    @SubnetId.setter
-    def SubnetId(self, SubnetId):
-        self._SubnetId = SubnetId
-
-    @property
-    def BudgetId(self):
-        r"""<p>关联的积分预算ID</p>
-        :rtype: str
-        """
-        return self._BudgetId
-
-    @BudgetId.setter
-    def BudgetId(self, BudgetId):
-        self._BudgetId = BudgetId
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
     @property
     def RateLimitConfig(self):
@@ -6422,6 +7680,28 @@ class CreateModelRouterRequest(AbstractModel):
         self._RouterSetting = RouterSetting
 
     @property
+    def Schema(self):
+        r"""<p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def SubnetId(self):
+        r"""<p>模型路由实例所属子网的ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
     def Tags(self):
         r"""<p>标签</p>
         :rtype: list of TagInfo
@@ -6433,42 +7713,42 @@ class CreateModelRouterRequest(AbstractModel):
         self._Tags = Tags
 
     @property
-    def ClusterInfo(self):
-        r"""<p>集群信息</p>
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
+    def VpcId(self):
+        r"""<p>模型路由实例所属VPC的ID</p>
+        :rtype: str
         """
-        return self._ClusterInfo
+        return self._VpcId
 
-    @ClusterInfo.setter
-    def ClusterInfo(self, ClusterInfo):
-        self._ClusterInfo = ClusterInfo
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
 
 
     def _deserialize(self, params):
         self._ModelRouterType = params.get("ModelRouterType")
-        self._ModelRouterName = params.get("ModelRouterName")
-        self._Schema = params.get("Schema")
-        self._Port = params.get("Port")
-        self._CertId = params.get("CertId")
-        self._NetworkType = params.get("NetworkType")
-        self._VpcId = params.get("VpcId")
-        self._SubnetId = params.get("SubnetId")
         self._BudgetId = params.get("BudgetId")
+        self._CertId = params.get("CertId")
+        if params.get("ClusterInfo") is not None:
+            self._ClusterInfo = ClusterInfo()
+            self._ClusterInfo._deserialize(params.get("ClusterInfo"))
+        self._ModelRouterName = params.get("ModelRouterName")
+        self._NetworkType = params.get("NetworkType")
+        self._Port = params.get("Port")
         if params.get("RateLimitConfig") is not None:
             self._RateLimitConfig = RateLimitConfigForModelRouter()
             self._RateLimitConfig._deserialize(params.get("RateLimitConfig"))
         if params.get("RouterSetting") is not None:
             self._RouterSetting = RouterSettingWithoutFallBack()
             self._RouterSetting._deserialize(params.get("RouterSetting"))
+        self._Schema = params.get("Schema")
+        self._SubnetId = params.get("SubnetId")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self._Tags.append(obj)
-        if params.get("ClusterInfo") is not None:
-            self._ClusterInfo = ClusterInfo()
-            self._ClusterInfo._deserialize(params.get("ClusterInfo"))
+        self._VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6477,6 +7757,130 @@ class CreateModelRouterRequest(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateModelRouterResourcePackageRequest(AbstractModel):
+    r"""CreateModelRouterResourcePackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackageAmount: <p>模型路由资源包容量</p><p>取值范围：[1000, 10000000]</p><p>单次购买的模型路由资源包容量下限为1000，上限为10000000</p>
+        :type ModelRouterResourcePackageAmount: int
+        :param _AutoPurchaseFlag: <p>是否自动续订。</p><p>0:不自动续订, 1:用尽到期续订</p>
+        :type AutoPurchaseFlag: int
+        :param _AutoVoucher: <p>该笔订单是否自动选择代金券</p><p>默认值：false（不自动选择代金券）</p><p>true时会为本笔订单自动匹配满足条件、最优惠的代金券</p>
+        :type AutoVoucher: bool
+        """
+        self._ModelRouterResourcePackageAmount = None
+        self._AutoPurchaseFlag = None
+        self._AutoVoucher = None
+
+    @property
+    def ModelRouterResourcePackageAmount(self):
+        r"""<p>模型路由资源包容量</p><p>取值范围：[1000, 10000000]</p><p>单次购买的模型路由资源包容量下限为1000，上限为10000000</p>
+        :rtype: int
+        """
+        return self._ModelRouterResourcePackageAmount
+
+    @ModelRouterResourcePackageAmount.setter
+    def ModelRouterResourcePackageAmount(self, ModelRouterResourcePackageAmount):
+        self._ModelRouterResourcePackageAmount = ModelRouterResourcePackageAmount
+
+    @property
+    def AutoPurchaseFlag(self):
+        r"""<p>是否自动续订。</p><p>0:不自动续订, 1:用尽到期续订</p>
+        :rtype: int
+        """
+        return self._AutoPurchaseFlag
+
+    @AutoPurchaseFlag.setter
+    def AutoPurchaseFlag(self, AutoPurchaseFlag):
+        self._AutoPurchaseFlag = AutoPurchaseFlag
+
+    @property
+    def AutoVoucher(self):
+        r"""<p>该笔订单是否自动选择代金券</p><p>默认值：false（不自动选择代金券）</p><p>true时会为本笔订单自动匹配满足条件、最优惠的代金券</p>
+        :rtype: bool
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+
+    def _deserialize(self, params):
+        self._ModelRouterResourcePackageAmount = params.get("ModelRouterResourcePackageAmount")
+        self._AutoPurchaseFlag = params.get("AutoPurchaseFlag")
+        self._AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModelRouterResourcePackageResponse(AbstractModel):
+    r"""CreateModelRouterResourcePackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackageIds: <p>模型路由资源包Id</p>
+        :type ModelRouterResourcePackageIds: list of str
+        :param _DealName: <p>订单号</p>
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelRouterResourcePackageIds = None
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def ModelRouterResourcePackageIds(self):
+        r"""<p>模型路由资源包Id</p>
+        :rtype: list of str
+        """
+        return self._ModelRouterResourcePackageIds
+
+    @ModelRouterResourcePackageIds.setter
+    def ModelRouterResourcePackageIds(self, ModelRouterResourcePackageIds):
+        self._ModelRouterResourcePackageIds = ModelRouterResourcePackageIds
+
+    @property
+    def DealName(self):
+        r"""<p>订单号</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ModelRouterResourcePackageIds = params.get("ModelRouterResourcePackageIds")
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateModelRouterResponse(AbstractModel):
@@ -7612,6 +9016,85 @@ class DeleteBudgetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteIntentRouterRequest(AbstractModel):
+    r"""DeleteIntentRouter请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID。</p>
+        :type ModelRouterId: str
+        :param _IntentRouterId: <p>意图路由ID（ir-xxx格式）。</p>
+        :type IntentRouterId: str
+        """
+        self._ModelRouterId = None
+        self._IntentRouterId = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def IntentRouterId(self):
+        r"""<p>意图路由ID（ir-xxx格式）。</p>
+        :rtype: str
+        """
+        return self._IntentRouterId
+
+    @IntentRouterId.setter
+    def IntentRouterId(self, IntentRouterId):
+        self._IntentRouterId = IntentRouterId
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._IntentRouterId = params.get("IntentRouterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIntentRouterResponse(AbstractModel):
+    r"""DeleteIntentRouter返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteKeysRequest(AbstractModel):
     r"""DeleteKeys请求参数结构体
 
@@ -7991,6 +9474,70 @@ class DeleteLoadBalancerSnatIpsRequest(AbstractModel):
 
 class DeleteLoadBalancerSnatIpsResponse(AbstractModel):
     r"""DeleteLoadBalancerSnatIps返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteModelRequest(AbstractModel):
+    r"""DeleteModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderIds: <p>服务提供商ID列表</p>
+        :type ServiceProviderIds: list of str
+        """
+        self._ServiceProviderIds = None
+
+    @property
+    def ServiceProviderIds(self):
+        r"""<p>服务提供商ID列表</p>
+        :rtype: list of str
+        """
+        return self._ServiceProviderIds
+
+    @ServiceProviderIds.setter
+    def ServiceProviderIds(self, ServiceProviderIds):
+        self._ServiceProviderIds = ServiceProviderIds
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderIds = params.get("ServiceProviderIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteModelResponse(AbstractModel):
+    r"""DeleteModel返回参数结构体
 
     """
 
@@ -8621,6 +10168,85 @@ class DeregisterFunctionTargetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeregisterModelsFromServiceProviderRequest(AbstractModel):
+    r"""DeregisterModelsFromServiceProvider请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderId: <p>BYOK的ID</p>
+        :type ServiceProviderId: str
+        :param _ModelAliases: <p>模型别名列表</p>
+        :type ModelAliases: list of str
+        """
+        self._ServiceProviderId = None
+        self._ModelAliases = None
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK的ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def ModelAliases(self):
+        r"""<p>模型别名列表</p>
+        :rtype: list of str
+        """
+        return self._ModelAliases
+
+    @ModelAliases.setter
+    def ModelAliases(self, ModelAliases):
+        self._ModelAliases = ModelAliases
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._ModelAliases = params.get("ModelAliases")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeregisterModelsFromServiceProviderResponse(AbstractModel):
+    r"""DeregisterModelsFromServiceProvider返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeregisterTargetGroupInstancesRequest(AbstractModel):
     r"""DeregisterTargetGroupInstances请求参数结构体
 
@@ -8927,6 +10553,105 @@ class DeregisterTargetsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAssociatedModelAvailabilityRequest(AbstractModel):
+    r"""DescribeAssociatedModelAvailability请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由ID</p>
+        :type ModelRouterId: str
+        :param _Models: <p>模型列表</p>
+        :type Models: list of str
+        """
+        self._ModelRouterId = None
+        self._Models = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def Models(self):
+        r"""<p>模型列表</p>
+        :rtype: list of str
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._Models = params.get("Models")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssociatedModelAvailabilityResponse(AbstractModel):
+    r"""DescribeAssociatedModelAvailability返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelAvailability: <p>模型可用性列表</p>
+        :type ModelAvailability: list of ModelAvailability
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelAvailability = None
+        self._RequestId = None
+
+    @property
+    def ModelAvailability(self):
+        r"""<p>模型可用性列表</p>
+        :rtype: list of ModelAvailability
+        """
+        return self._ModelAvailability
+
+    @ModelAvailability.setter
+    def ModelAvailability(self, ModelAvailability):
+        self._ModelAvailability = ModelAvailability
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelAvailability") is not None:
+            self._ModelAvailability = []
+            for item in params.get("ModelAvailability"):
+                obj = ModelAvailability()
+                obj._deserialize(item)
+                self._ModelAvailability.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9321,17 +11046,17 @@ class DescribeBudgetAssociationsRequest(AbstractModel):
         r"""
         :param _BudgetId: <p>Budget ID。</p><p>一次只允许查询一个Budget。</p>
         :type BudgetId: str
-        :param _Type: <p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
-        :type Type: str
-        :param _Offset: <p>本次查询偏移量</p>
-        :type Offset: int
         :param _Limit: <p>本次查询限制的数量</p>
         :type Limit: int
+        :param _Offset: <p>本次查询偏移量</p>
+        :type Offset: int
+        :param _Type: <p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
+        :type Type: str
         """
         self._BudgetId = None
-        self._Type = None
-        self._Offset = None
         self._Limit = None
+        self._Offset = None
+        self._Type = None
 
     @property
     def BudgetId(self):
@@ -9345,15 +11070,15 @@ class DescribeBudgetAssociationsRequest(AbstractModel):
         self._BudgetId = BudgetId
 
     @property
-    def Type(self):
-        r"""<p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
-        :rtype: str
+    def Limit(self):
+        r"""<p>本次查询限制的数量</p>
+        :rtype: int
         """
-        return self._Type
+        return self._Limit
 
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
     @property
     def Offset(self):
@@ -9367,22 +11092,22 @@ class DescribeBudgetAssociationsRequest(AbstractModel):
         self._Offset = Offset
 
     @property
-    def Limit(self):
-        r"""<p>本次查询限制的数量</p>
-        :rtype: int
+    def Type(self):
+        r"""<p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
+        :rtype: str
         """
-        return self._Limit
+        return self._Type
 
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
         self._BudgetId = params.get("BudgetId")
-        self._Type = params.get("Type")
-        self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10988,6 +12713,353 @@ class DescribeIdleLoadBalancersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIntentRouterTiersRequest(AbstractModel):
+    r"""DescribeIntentRouterTiers请求参数结构体
+
+    """
+
+
+class DescribeIntentRouterTiersResponse(AbstractModel):
+    r"""DescribeIntentRouterTiers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TierSet: <p>Tier 字典列表（按 tier_id 升序排列）</p>
+        :type TierSet: list of IntentRouterTierDictItem
+        :param _TotalCount: <p>Tier 总条数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TierSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TierSet(self):
+        r"""<p>Tier 字典列表（按 tier_id 升序排列）</p>
+        :rtype: list of IntentRouterTierDictItem
+        """
+        return self._TierSet
+
+    @TierSet.setter
+    def TierSet(self, TierSet):
+        self._TierSet = TierSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>Tier 总条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TierSet") is not None:
+            self._TierSet = []
+            for item in params.get("TierSet"):
+                obj = IntentRouterTierDictItem()
+                obj._deserialize(item)
+                self._TierSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIntentRoutersRequest(AbstractModel):
+    r"""DescribeIntentRouters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID。</p>
+        :type ModelRouterId: str
+        :param _IntentRouterIds: <p>意图路由ID列表</p>
+        :type IntentRouterIds: list of str
+        """
+        self._ModelRouterId = None
+        self._IntentRouterIds = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def IntentRouterIds(self):
+        r"""<p>意图路由ID列表</p>
+        :rtype: list of str
+        """
+        return self._IntentRouterIds
+
+    @IntentRouterIds.setter
+    def IntentRouterIds(self, IntentRouterIds):
+        self._IntentRouterIds = IntentRouterIds
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._IntentRouterIds = params.get("IntentRouterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIntentRoutersResponse(AbstractModel):
+    r"""DescribeIntentRouters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IntentRouterSet: <p>意图路由列表。</p>
+        :type IntentRouterSet: list of IntentRouterItem
+        :param _TotalCount: <p>意图路由总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IntentRouterSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def IntentRouterSet(self):
+        r"""<p>意图路由列表。</p>
+        :rtype: list of IntentRouterItem
+        """
+        return self._IntentRouterSet
+
+    @IntentRouterSet.setter
+    def IntentRouterSet(self, IntentRouterSet):
+        self._IntentRouterSet = IntentRouterSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>意图路由总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("IntentRouterSet") is not None:
+            self._IntentRouterSet = []
+            for item in params.get("IntentRouterSet"):
+                obj = IntentRouterItem()
+                obj._deserialize(item)
+                self._IntentRouterSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKeysRequest(AbstractModel):
+    r"""DescribeKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID</p>
+        :type ModelRouterId: str
+        :param _Filters: <p>过滤列表</p><p>支持：KeyName、BudgetId、tag-key、tag:&lt;tag-key&gt;。</p>
+        :type Filters: list of Filter
+        :param _KeyIds: <p>API Key的ID列表</p>
+        :type KeyIds: list of str
+        :param _Limit: <p>本次查询限制的数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        :param _Offset: <p>本次查询偏移量</p>
+        :type Offset: int
+        """
+        self._ModelRouterId = None
+        self._Filters = None
+        self._KeyIds = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤列表</p><p>支持：KeyName、BudgetId、tag-key、tag:&lt;tag-key&gt;。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def KeyIds(self):
+        r"""<p>API Key的ID列表</p>
+        :rtype: list of str
+        """
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+    @property
+    def Limit(self):
+        r"""<p>本次查询限制的数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>本次查询偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._KeyIds = params.get("KeyIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKeysResponse(AbstractModel):
+    r"""DescribeKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Keys: <p>API Key列表</p>
+        :type Keys: list of KeyInfo
+        :param _TotalCount: <p>符合条件的总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Keys = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Keys(self):
+        r"""<p>API Key列表</p>
+        :rtype: list of KeyInfo
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Keys") is not None:
+            self._Keys = []
+            for item in params.get("Keys"):
+                obj = KeyInfo()
+                obj._deserialize(item)
+                self._Keys.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLBListenersRequest(AbstractModel):
     r"""DescribeLBListeners请求参数结构体
 
@@ -12330,6 +14402,696 @@ class DescribeLoadBalancersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeModelAliasesRequest(AbstractModel):
+    r"""DescribeModelAliases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤条件</p><p>支持的过滤键：</p><ul><li>ModelAliasName：按模型别名过滤。</li></ul>
+        :type Filters: list of Filter
+        :param _Limit: <p>每页数量，取值范围：[1, 100]，默认值：20。</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量，默认值：0。</p>
+        :type Offset: int
+        :param _Sort: <p>排序条件。支持按 InputCoefficient、InputCachedCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 3 个排序条件，排序字段不可重复。</p>
+        :type Sort: list of Sort
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Sort = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p><p>支持的过滤键：</p><ul><li>ModelAliasName：按模型别名过滤。</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量，取值范围：[1, 100]，默认值：20。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认值：0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Sort(self):
+        r"""<p>排序条件。支持按 InputCoefficient、InputCachedCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 3 个排序条件，排序字段不可重复。</p>
+        :rtype: list of Sort
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Sort") is not None:
+            self._Sort = []
+            for item in params.get("Sort"):
+                obj = Sort()
+                obj._deserialize(item)
+                self._Sort.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelAliasesResponse(AbstractModel):
+    r"""DescribeModelAliases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelAliasSet: <p>模型别名列表。</p>
+        :type ModelAliasSet: list of ModelAlias
+        :param _TotalCount: <p>符合条件的总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelAliasSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ModelAliasSet(self):
+        r"""<p>模型别名列表。</p>
+        :rtype: list of ModelAlias
+        """
+        return self._ModelAliasSet
+
+    @ModelAliasSet.setter
+    def ModelAliasSet(self, ModelAliasSet):
+        self._ModelAliasSet = ModelAliasSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelAliasSet") is not None:
+            self._ModelAliasSet = []
+            for item in params.get("ModelAliasSet"):
+                obj = ModelAlias()
+                obj._deserialize(item)
+                self._ModelAliasSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelAssociationsRequest(AbstractModel):
+    r"""DescribeModelAssociations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID</p>
+        :type ModelRouterId: str
+        :param _Limit: <p>翻页限制</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        :param _Offset: <p>翻页偏移量</p><p>默认值：0</p>
+        :type Offset: int
+        """
+        self._ModelRouterId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def Limit(self):
+        r"""<p>翻页限制</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>翻页偏移量</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelAssociationsResponse(AbstractModel):
+    r"""DescribeModelAssociations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelAssociationSet: <p>模型路由实例与模型的关联关系集合</p>
+        :type ModelAssociationSet: list of ModelAssociation
+        :param _ModelRouterId: <p>模型路由实例ID</p>
+        :type ModelRouterId: str
+        :param _TotalCount: <p>符合条件的总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelAssociationSet = None
+        self._ModelRouterId = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ModelAssociationSet(self):
+        r"""<p>模型路由实例与模型的关联关系集合</p>
+        :rtype: list of ModelAssociation
+        """
+        return self._ModelAssociationSet
+
+    @ModelAssociationSet.setter
+    def ModelAssociationSet(self, ModelAssociationSet):
+        self._ModelAssociationSet = ModelAssociationSet
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelAssociationSet") is not None:
+            self._ModelAssociationSet = []
+            for item in params.get("ModelAssociationSet"):
+                obj = ModelAssociation()
+                obj._deserialize(item)
+                self._ModelAssociationSet.append(obj)
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelKeysRequest(AbstractModel):
+    r"""DescribeModelKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessType: <p>接入类型过滤：PublicBYOK/PublicCustom/PrivateCustom</p>
+        :type AccessType: str
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _Limit: <p>返回数量限制</p>
+        :type Limit: int
+        :param _Offset: <p>翻页启始索引</p>
+        :type Offset: int
+        :param _ServiceProviderIds: <p>服务提供商ID</p>
+        :type ServiceProviderIds: list of str
+        """
+        self._AccessType = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._ServiceProviderIds = None
+
+    @property
+    def AccessType(self):
+        r"""<p>接入类型过滤：PublicBYOK/PublicCustom/PrivateCustom</p>
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量限制</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>翻页启始索引</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ServiceProviderIds(self):
+        r"""<p>服务提供商ID</p>
+        :rtype: list of str
+        """
+        return self._ServiceProviderIds
+
+    @ServiceProviderIds.setter
+    def ServiceProviderIds(self, ServiceProviderIds):
+        self._ServiceProviderIds = ServiceProviderIds
+
+
+    def _deserialize(self, params):
+        self._AccessType = params.get("AccessType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ServiceProviderIds = params.get("ServiceProviderIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelKeysResponse(AbstractModel):
+    r"""DescribeModelKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Models: <p>模型列表（含 Key 信息）</p>
+        :type Models: list of ModelKeyInfoItem
+        :param _TotalCount: <p>模型总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Models = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Models(self):
+        r"""<p>模型列表（含 Key 信息）</p>
+        :rtype: list of ModelKeyInfoItem
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def TotalCount(self):
+        r"""<p>模型总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = ModelKeyInfoItem()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelNamesRequest(AbstractModel):
+    r"""DescribeModelNames请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页偏移量（&gt;=0）</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量（1-100）</p>
+        :type Limit: int
+        :param _VpcId: <p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
+        :type VpcId: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._VpcId = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量（&gt;=0）</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量（1-100）</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def VpcId(self):
+        r"""<p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelNamesResponse(AbstractModel):
+    r"""DescribeModelNames返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelNames: <p>模型标识聚合列表</p>
+        :type ModelNames: list of ModelNameAggregatedItem
+        :param _TotalCount: <p>聚合后的模型标识总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelNames = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ModelNames(self):
+        r"""<p>模型标识聚合列表</p>
+        :rtype: list of ModelNameAggregatedItem
+        """
+        return self._ModelNames
+
+    @ModelNames.setter
+    def ModelNames(self, ModelNames):
+        self._ModelNames = ModelNames
+
+    @property
+    def TotalCount(self):
+        r"""<p>聚合后的模型标识总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelNames") is not None:
+            self._ModelNames = []
+            for item in params.get("ModelNames"):
+                obj = ModelNameAggregatedItem()
+                obj._deserialize(item)
+                self._ModelNames.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelRewriteRequest(AbstractModel):
+    r"""DescribeModelRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例 ID。</p>
+        :type ModelRouterId: str
+        :param _SourceModel: <p>选填，按源模型名精确过滤（大小写敏感）。</p><p>长度 1-255 字符；不传则返回该实例的全部重写规则；命中至多 1 条；未命中返回空列表（不报错）。</p>
+        :type SourceModel: str
+        """
+        self._ModelRouterId = None
+        self._SourceModel = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例 ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def SourceModel(self):
+        r"""<p>选填，按源模型名精确过滤（大小写敏感）。</p><p>长度 1-255 字符；不传则返回该实例的全部重写规则；命中至多 1 条；未命中返回空列表（不报错）。</p>
+        :rtype: str
+        """
+        return self._SourceModel
+
+    @SourceModel.setter
+    def SourceModel(self, SourceModel):
+        self._SourceModel = SourceModel
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._SourceModel = params.get("SourceModel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelRewriteResponse(AbstractModel):
+    r"""DescribeModelRewrite返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rewrites: <p>重写规则列表，按 SourceModel 字典序排序。无规则或过滤未命中时为空数组。</p>
+        :type Rewrites: list of RewriteItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rewrites = None
+        self._RequestId = None
+
+    @property
+    def Rewrites(self):
+        r"""<p>重写规则列表，按 SourceModel 字典序排序。无规则或过滤未命中时为空数组。</p>
+        :rtype: list of RewriteItem
+        """
+        return self._Rewrites
+
+    @Rewrites.setter
+    def Rewrites(self, Rewrites):
+        self._Rewrites = Rewrites
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rewrites") is not None:
+            self._Rewrites = []
+            for item in params.get("Rewrites"):
+                obj = RewriteItem()
+                obj._deserialize(item)
+                self._Rewrites.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeModelRouterDetailRequest(AbstractModel):
     r"""DescribeModelRouterDetail请求参数结构体
 
@@ -12408,6 +15170,309 @@ class DescribeModelRouterDetailResponse(AbstractModel):
         if params.get("ModelRouter") is not None:
             self._ModelRouter = ModelRouterDetail()
             self._ModelRouter._deserialize(params.get("ModelRouter"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelRouterGuardrailsRequest(AbstractModel):
+    r"""DescribeModelRouterGuardrails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例 ID。</p>
+        :type ModelRouterId: str
+        """
+        self._ModelRouterId = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例 ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelRouterGuardrailsResponse(AbstractModel):
+    r"""DescribeModelRouterGuardrails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Guardrails: <p>当前已关联的 Guardrail 防护配置列表。</p><p>当前最多返回 1 个元素。</p>
+        :type Guardrails: list of GuardrailConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Guardrails = None
+        self._RequestId = None
+
+    @property
+    def Guardrails(self):
+        r"""<p>当前已关联的 Guardrail 防护配置列表。</p><p>当前最多返回 1 个元素。</p>
+        :rtype: list of GuardrailConfig
+        """
+        return self._Guardrails
+
+    @Guardrails.setter
+    def Guardrails(self, Guardrails):
+        self._Guardrails = Guardrails
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Guardrails") is not None:
+            self._Guardrails = []
+            for item in params.get("Guardrails"):
+                obj = GuardrailConfig()
+                obj._deserialize(item)
+                self._Guardrails.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelRouterLogsRequest(AbstractModel):
+    r"""DescribeModelRouterLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID</p>
+        :type ModelRouterId: str
+        :param _KeyId: <p>Key的ID</p>
+        :type KeyId: str
+        :param _Model: <p>模型名称</p>
+        :type Model: str
+        :param _Status: <p>请求状态</p>
+        :type Status: str
+        :param _StartTime: <p>开始时间，与EndTime需要同时传入、开始时间不得早于24小时前，默认仅查询近5分钟日志</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间，与StartTime需要同时传入、开始时间不得早于24小时前，默认仅查询近5分钟日志</p>
+        :type EndTime: str
+        :param _NextToken: <p>游标NextToken</p>
+        :type NextToken: str
+        :param _MaxResults: <p>本次查询最大数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type MaxResults: int
+        """
+        self._ModelRouterId = None
+        self._KeyId = None
+        self._Model = None
+        self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+        self._NextToken = None
+        self._MaxResults = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def KeyId(self):
+        r"""<p>Key的ID</p>
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def Model(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Status(self):
+        r"""<p>请求状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，与EndTime需要同时传入、开始时间不得早于24小时前，默认仅查询近5分钟日志</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，与StartTime需要同时传入、开始时间不得早于24小时前，默认仅查询近5分钟日志</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NextToken(self):
+        r"""<p>游标NextToken</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def MaxResults(self):
+        r"""<p>本次查询最大数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._KeyId = params.get("KeyId")
+        self._Model = params.get("Model")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._NextToken = params.get("NextToken")
+        self._MaxResults = params.get("MaxResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelRouterLogsResponse(AbstractModel):
+    r"""DescribeModelRouterLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Logs: <p>日志列表</p>
+        :type Logs: list of ModelRouterLog
+        :param _TotalCount: <p>满足条件的数量</p>
+        :type TotalCount: int
+        :param _NextToken: <p>游标NextToken</p>
+        :type NextToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Logs = None
+        self._TotalCount = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def Logs(self):
+        r"""<p>日志列表</p>
+        :rtype: list of ModelRouterLog
+        """
+        return self._Logs
+
+    @Logs.setter
+    def Logs(self, Logs):
+        self._Logs = Logs
+
+    @property
+    def TotalCount(self):
+        r"""<p>满足条件的数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NextToken(self):
+        r"""<p>游标NextToken</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Logs") is not None:
+            self._Logs = []
+            for item in params.get("Logs"):
+                obj = ModelRouterLog()
+                obj._deserialize(item)
+                self._Logs.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._NextToken = params.get("NextToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -12522,6 +15587,374 @@ class DescribeModelRouterQuotaResponse(AbstractModel):
                 obj = ModelRouterQuota()
                 obj._deserialize(item)
                 self._Quotas.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelRouterResourcePackageDeductionRequest(AbstractModel):
+    r"""DescribeModelRouterResourcePackageDeduction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeductionTimeBegin: <p>抵扣起始时间</p>
+        :type DeductionTimeBegin: str
+        :param _DeductionTimeEnd: <p>抵扣截止时间</p>
+        :type DeductionTimeEnd: str
+        :param _ModelRouterResourcePackageId: <p>模型路由资源包Id</p>
+        :type ModelRouterResourcePackageId: str
+        :param _Limit: <p>返回的数量</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        :param _Offset: <p>数据偏移量</p><p>默认值：0</p>
+        :type Offset: int
+        :param _SortBy: <p>排序方式：asc，desc</p>
+        :type SortBy: str
+        """
+        self._DeductionTimeBegin = None
+        self._DeductionTimeEnd = None
+        self._ModelRouterResourcePackageId = None
+        self._Limit = None
+        self._Offset = None
+        self._SortBy = None
+
+    @property
+    def DeductionTimeBegin(self):
+        r"""<p>抵扣起始时间</p>
+        :rtype: str
+        """
+        return self._DeductionTimeBegin
+
+    @DeductionTimeBegin.setter
+    def DeductionTimeBegin(self, DeductionTimeBegin):
+        self._DeductionTimeBegin = DeductionTimeBegin
+
+    @property
+    def DeductionTimeEnd(self):
+        r"""<p>抵扣截止时间</p>
+        :rtype: str
+        """
+        return self._DeductionTimeEnd
+
+    @DeductionTimeEnd.setter
+    def DeductionTimeEnd(self, DeductionTimeEnd):
+        self._DeductionTimeEnd = DeductionTimeEnd
+
+    @property
+    def ModelRouterResourcePackageId(self):
+        r"""<p>模型路由资源包Id</p>
+        :rtype: str
+        """
+        return self._ModelRouterResourcePackageId
+
+    @ModelRouterResourcePackageId.setter
+    def ModelRouterResourcePackageId(self, ModelRouterResourcePackageId):
+        self._ModelRouterResourcePackageId = ModelRouterResourcePackageId
+
+    @property
+    def Limit(self):
+        r"""<p>返回的数量</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>数据偏移量</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SortBy(self):
+        r"""<p>排序方式：asc，desc</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+
+    def _deserialize(self, params):
+        self._DeductionTimeBegin = params.get("DeductionTimeBegin")
+        self._DeductionTimeEnd = params.get("DeductionTimeEnd")
+        self._ModelRouterResourcePackageId = params.get("ModelRouterResourcePackageId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._SortBy = params.get("SortBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelRouterResourcePackageDeductionResponse(AbstractModel):
+    r"""DescribeModelRouterResourcePackageDeduction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackageDeductionSet: <p>模型路由资源包抵扣信息</p>
+        :type ModelRouterResourcePackageDeductionSet: list of ModelRouterResourcePackageDeduction
+        :param _TotalCount: <p>符合查询条件的详情信息总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelRouterResourcePackageDeductionSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ModelRouterResourcePackageDeductionSet(self):
+        r"""<p>模型路由资源包抵扣信息</p>
+        :rtype: list of ModelRouterResourcePackageDeduction
+        """
+        return self._ModelRouterResourcePackageDeductionSet
+
+    @ModelRouterResourcePackageDeductionSet.setter
+    def ModelRouterResourcePackageDeductionSet(self, ModelRouterResourcePackageDeductionSet):
+        self._ModelRouterResourcePackageDeductionSet = ModelRouterResourcePackageDeductionSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合查询条件的详情信息总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelRouterResourcePackageDeductionSet") is not None:
+            self._ModelRouterResourcePackageDeductionSet = []
+            for item in params.get("ModelRouterResourcePackageDeductionSet"):
+                obj = ModelRouterResourcePackageDeduction()
+                obj._deserialize(item)
+                self._ModelRouterResourcePackageDeductionSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelRouterResourcePackagesRequest(AbstractModel):
+    r"""DescribeModelRouterResourcePackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackageIds: <p>模型路由资源包Id。</p>
+        :type ModelRouterResourcePackageIds: list of str
+        :param _Offset: <p>数据偏移量。</p><p>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>返回的数量，最大值为100。</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        :param _OrderBy: <p>排序参数，支持以下字段：&quot;buyTime&quot;, &quot;startTime&quot;, &quot;endTime&quot;</p>
+        :type OrderBy: str
+        :param _SortBy: <p>排序方式：asc，desc，默认asc</p>
+        :type SortBy: str
+        :param _Filters: <p>查询的过滤条件。</p><p>每次请求的Filters的上限为10，Filter.Values的上限为100。 Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下： status - Integer - 是否必填：否 - 状态：0-有效 1-已退款 2-已过期 3-已用完。 effect_time_start - String - 是否必填：否 - 生效起始时间,YYYY-MM-DD HH:MM:SS格式。 effect_time_end - String - 是否必填：否 - 生效截止时间。 expire_time_start - String - 是否必填：否 - 失效起始时间。 expire_time_end - String - 是否必填：否 - 失效截止时间。</p>
+        :type Filters: list of Filter
+        """
+        self._ModelRouterResourcePackageIds = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderBy = None
+        self._SortBy = None
+        self._Filters = None
+
+    @property
+    def ModelRouterResourcePackageIds(self):
+        r"""<p>模型路由资源包Id。</p>
+        :rtype: list of str
+        """
+        return self._ModelRouterResourcePackageIds
+
+    @ModelRouterResourcePackageIds.setter
+    def ModelRouterResourcePackageIds(self, ModelRouterResourcePackageIds):
+        self._ModelRouterResourcePackageIds = ModelRouterResourcePackageIds
+
+    @property
+    def Offset(self):
+        r"""<p>数据偏移量。</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回的数量，最大值为100。</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序参数，支持以下字段：&quot;buyTime&quot;, &quot;startTime&quot;, &quot;endTime&quot;</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def SortBy(self):
+        r"""<p>排序方式：asc，desc，默认asc</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Filters(self):
+        r"""<p>查询的过滤条件。</p><p>每次请求的Filters的上限为10，Filter.Values的上限为100。 Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下： status - Integer - 是否必填：否 - 状态：0-有效 1-已退款 2-已过期 3-已用完。 effect_time_start - String - 是否必填：否 - 生效起始时间,YYYY-MM-DD HH:MM:SS格式。 effect_time_end - String - 是否必填：否 - 生效截止时间。 expire_time_start - String - 是否必填：否 - 失效起始时间。 expire_time_end - String - 是否必填：否 - 失效截止时间。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ModelRouterResourcePackageIds = params.get("ModelRouterResourcePackageIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderBy = params.get("OrderBy")
+        self._SortBy = params.get("SortBy")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelRouterResourcePackagesResponse(AbstractModel):
+    r"""DescribeModelRouterResourcePackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackageSet: <p>模型路由资源包信息</p>
+        :type ModelRouterResourcePackageSet: list of ModelRouterPackage
+        :param _TotalCount: <p>符合查询条件的模型路由资源包数量</p>
+        :type TotalCount: int
+        :param _TotalDosage: <p>资源包的剩余总量</p>
+        :type TotalDosage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelRouterResourcePackageSet = None
+        self._TotalCount = None
+        self._TotalDosage = None
+        self._RequestId = None
+
+    @property
+    def ModelRouterResourcePackageSet(self):
+        r"""<p>模型路由资源包信息</p>
+        :rtype: list of ModelRouterPackage
+        """
+        return self._ModelRouterResourcePackageSet
+
+    @ModelRouterResourcePackageSet.setter
+    def ModelRouterResourcePackageSet(self, ModelRouterResourcePackageSet):
+        self._ModelRouterResourcePackageSet = ModelRouterResourcePackageSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合查询条件的模型路由资源包数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalDosage(self):
+        r"""<p>资源包的剩余总量</p>
+        :rtype: int
+        """
+        return self._TotalDosage
+
+    @TotalDosage.setter
+    def TotalDosage(self, TotalDosage):
+        self._TotalDosage = TotalDosage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelRouterResourcePackageSet") is not None:
+            self._ModelRouterResourcePackageSet = []
+            for item in params.get("ModelRouterResourcePackageSet"):
+                obj = ModelRouterPackage()
+                obj._deserialize(item)
+                self._ModelRouterResourcePackageSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._TotalDosage = params.get("TotalDosage")
         self._RequestId = params.get("RequestId")
 
 
@@ -13001,6 +16434,204 @@ class DescribeRewriteResponse(AbstractModel):
                 obj = RuleOutput()
                 obj._deserialize(item)
                 self._RewriteSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeServiceProviderHealthStatusRequest(AbstractModel):
+    r"""DescribeServiceProviderHealthStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderId: <p>BYOK的ID</p>
+        :type ServiceProviderId: str
+        :param _Limit: <p>本次查询的限制数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        :param _Offset: <p>本次查询翻页的偏移量</p>
+        :type Offset: int
+        """
+        self._ServiceProviderId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK的ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def Limit(self):
+        r"""<p>本次查询的限制数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>本次查询翻页的偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceProviderHealthStatusResponse(AbstractModel):
+    r"""DescribeServiceProviderHealthStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckResults: <p>健康检查的结果</p>
+        :type HealthCheckResults: list of ModelHealthCheckResults
+        :param _TotalCount: <p>本次请求总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HealthCheckResults = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def HealthCheckResults(self):
+        r"""<p>健康检查的结果</p>
+        :rtype: list of ModelHealthCheckResults
+        """
+        return self._HealthCheckResults
+
+    @HealthCheckResults.setter
+    def HealthCheckResults(self, HealthCheckResults):
+        self._HealthCheckResults = HealthCheckResults
+
+    @property
+    def TotalCount(self):
+        r"""<p>本次请求总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HealthCheckResults") is not None:
+            self._HealthCheckResults = []
+            for item in params.get("HealthCheckResults"):
+                obj = ModelHealthCheckResults()
+                obj._deserialize(item)
+                self._HealthCheckResults.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSupportedProvidersRequest(AbstractModel):
+    r"""DescribeSupportedProviders请求参数结构体
+
+    """
+
+
+class DescribeSupportedProvidersResponse(AbstractModel):
+    r"""DescribeSupportedProviders返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Providers: <p>Provider 列表</p>
+        :type Providers: list of ProviderItem
+        :param _TotalCount: <p>Provider 总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Providers = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Providers(self):
+        r"""<p>Provider 列表</p>
+        :rtype: list of ProviderItem
+        """
+        return self._Providers
+
+    @Providers.setter
+    def Providers(self, Providers):
+        self._Providers = Providers
+
+    @property
+    def TotalCount(self):
+        r"""<p>Provider 总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Providers") is not None:
+            self._Providers = []
+            for item in params.get("Providers"):
+                obj = ProviderItem()
+                obj._deserialize(item)
+                self._Providers.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -13949,6 +17580,205 @@ class DescribeTaskStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUpperModelsRequest(AbstractModel):
+    r"""DescribeUpperModels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessType: <p>接入类型：PublicBYOK/PublicCustom/PrivateCustom</p>
+        :type AccessType: str
+        :param _ApiBase: <p>上游 Provider API 地址</p><p>示例：https://api.moonshot.cn</p>
+        :type ApiBase: str
+        :param _ApiKey: <p>上游 Provider API Key</p><p>用于鉴权访问上游模型列表接口</p>
+        :type ApiKey: str
+        :param _HostHeader: <p>自定义 Host Header，可选</p><p>仅 VPC 内网场景需要，用于指定请求的 Host 头</p>
+        :type HostHeader: str
+        :param _KeyId: <p>Key Id 配合ServiceProviderId一同输入，不指定则默认选用最近创建的Key</p>
+        :type KeyId: str
+        :param _ModelPath: <p>模型列表端点路径，可选</p><p>默认值：/v1/models</p>
+        :type ModelPath: str
+        :param _ModelProtocol: <p>模型协议</p>
+        :type ModelProtocol: str
+        :param _ModelProvider: <p>模型提供商</p>
+        :type ModelProvider: str
+        :param _ServiceProviderId: <p>BYOK 业务 ID，可选</p><p>格式：byok-xxxxxxxx</p>
+        :type ServiceProviderId: str
+        """
+        self._AccessType = None
+        self._ApiBase = None
+        self._ApiKey = None
+        self._HostHeader = None
+        self._KeyId = None
+        self._ModelPath = None
+        self._ModelProtocol = None
+        self._ModelProvider = None
+        self._ServiceProviderId = None
+
+    @property
+    def AccessType(self):
+        r"""<p>接入类型：PublicBYOK/PublicCustom/PrivateCustom</p>
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def ApiBase(self):
+        r"""<p>上游 Provider API 地址</p><p>示例：https://api.moonshot.cn</p>
+        :rtype: str
+        """
+        return self._ApiBase
+
+    @ApiBase.setter
+    def ApiBase(self, ApiBase):
+        self._ApiBase = ApiBase
+
+    @property
+    def ApiKey(self):
+        r"""<p>上游 Provider API Key</p><p>用于鉴权访问上游模型列表接口</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def HostHeader(self):
+        r"""<p>自定义 Host Header，可选</p><p>仅 VPC 内网场景需要，用于指定请求的 Host 头</p>
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
+    @property
+    def KeyId(self):
+        r"""<p>Key Id 配合ServiceProviderId一同输入，不指定则默认选用最近创建的Key</p>
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def ModelPath(self):
+        r"""<p>模型列表端点路径，可选</p><p>默认值：/v1/models</p>
+        :rtype: str
+        """
+        return self._ModelPath
+
+    @ModelPath.setter
+    def ModelPath(self, ModelPath):
+        self._ModelPath = ModelPath
+
+    @property
+    def ModelProtocol(self):
+        r"""<p>模型协议</p>
+        :rtype: str
+        """
+        return self._ModelProtocol
+
+    @ModelProtocol.setter
+    def ModelProtocol(self, ModelProtocol):
+        self._ModelProtocol = ModelProtocol
+
+    @property
+    def ModelProvider(self):
+        r"""<p>模型提供商</p>
+        :rtype: str
+        """
+        return self._ModelProvider
+
+    @ModelProvider.setter
+    def ModelProvider(self, ModelProvider):
+        self._ModelProvider = ModelProvider
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK 业务 ID，可选</p><p>格式：byok-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+
+    def _deserialize(self, params):
+        self._AccessType = params.get("AccessType")
+        self._ApiBase = params.get("ApiBase")
+        self._ApiKey = params.get("ApiKey")
+        self._HostHeader = params.get("HostHeader")
+        self._KeyId = params.get("KeyId")
+        self._ModelPath = params.get("ModelPath")
+        self._ModelProtocol = params.get("ModelProtocol")
+        self._ModelProvider = params.get("ModelProvider")
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpperModelsResponse(AbstractModel):
+    r"""DescribeUpperModels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Models: <p>上游模型列表</p>
+        :type Models: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Models = None
+        self._RequestId = None
+
+    @property
+    def Models(self):
+        r"""<p>上游模型列表</p>
+        :rtype: list of str
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Models = params.get("Models")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserGroupsRequest(AbstractModel):
     r"""DescribeUserGroups请求参数结构体
 
@@ -14255,6 +18085,210 @@ class DisassociateCustomizedConfigRequest(AbstractModel):
 
 class DisassociateCustomizedConfigResponse(AbstractModel):
     r"""DisassociateCustomizedConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DisassociateGuardrailConfig(AbstractModel):
+    r"""模型路由待解除关联 Guardrail 防护配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GuardrailId: <p>Guardrail 防护配置 ID。</p><p>可通过 DescribeModelRouterGuardrails 获取；DisassociateModelRouterGuardrails 使用该字段定位要解除关联的防护配置。</p>
+        :type GuardrailId: str
+        """
+        self._GuardrailId = None
+
+    @property
+    def GuardrailId(self):
+        r"""<p>Guardrail 防护配置 ID。</p><p>可通过 DescribeModelRouterGuardrails 获取；DisassociateModelRouterGuardrails 使用该字段定位要解除关联的防护配置。</p>
+        :rtype: str
+        """
+        return self._GuardrailId
+
+    @GuardrailId.setter
+    def GuardrailId(self, GuardrailId):
+        self._GuardrailId = GuardrailId
+
+
+    def _deserialize(self, params):
+        self._GuardrailId = params.get("GuardrailId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateModelRouterGuardrailsRequest(AbstractModel):
+    r"""DisassociateModelRouterGuardrails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Guardrails: <p>待解除关联的 Guardrail 防护配置列表。</p><p>每个元素只需要填写 GuardrailId。</p>
+        :type Guardrails: list of DisassociateGuardrailConfig
+        :param _ModelRouterId: <p>模型路由实例 ID。</p>
+        :type ModelRouterId: str
+        """
+        self._Guardrails = None
+        self._ModelRouterId = None
+
+    @property
+    def Guardrails(self):
+        r"""<p>待解除关联的 Guardrail 防护配置列表。</p><p>每个元素只需要填写 GuardrailId。</p>
+        :rtype: list of DisassociateGuardrailConfig
+        """
+        return self._Guardrails
+
+    @Guardrails.setter
+    def Guardrails(self, Guardrails):
+        self._Guardrails = Guardrails
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例 ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+
+    def _deserialize(self, params):
+        if params.get("Guardrails") is not None:
+            self._Guardrails = []
+            for item in params.get("Guardrails"):
+                obj = DisassociateGuardrailConfig()
+                obj._deserialize(item)
+                self._Guardrails.append(obj)
+        self._ModelRouterId = params.get("ModelRouterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateModelRouterGuardrailsResponse(AbstractModel):
+    r"""DisassociateModelRouterGuardrails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DisassociateModelsFromModelRouterRequest(AbstractModel):
+    r"""DisassociateModelsFromModelRouter请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID</p>
+        :type ModelRouterId: str
+        :param _Models: <p>需要解除关联的模型信息</p>
+        :type Models: list of ModelRouterModel
+        """
+        self._ModelRouterId = None
+        self._Models = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def Models(self):
+        r"""<p>需要解除关联的模型信息</p>
+        :rtype: list of ModelRouterModel
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = ModelRouterModel()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateModelsFromModelRouterResponse(AbstractModel):
+    r"""DisassociateModelsFromModelRouter返回参数结构体
 
     """
 
@@ -14698,6 +18732,102 @@ class FunctionTarget(AbstractModel):
             self._Function = FunctionInfo()
             self._Function._deserialize(params.get("Function"))
         self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GuardrailConfig(AbstractModel):
+    r"""模型路由 Guardrail 防护配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GuardrailId: <p>Guardrail 防护配置 ID。</p><p>DescribeModelRouterGuardrails 会返回该字段；DisassociateModelRouterGuardrails 和 ModifyModelRouterGuardrails 需要使用该字段定位要操作的防护配置。</p>
+        :type GuardrailId: str
+        :param _Type: <p>Guardrail 防护类型。</p><p>枚举值：</p><ul><li>WAF：使用腾讯云 WAF LLM SDK 接入配置对模型路由请求进行安全防护。</li></ul><p>当前仅支持 WAF；AssociateModelRouterGuardrails 不传时默认为 WAF，ModifyModelRouterGuardrails 不传时沿用当前已关联 Guardrail 的 Type。</p>
+        :type Type: str
+        :param _InstanceId: <p>关联的腾讯云 WAF 实例 ID。</p><p>ModifyModelRouterGuardrails 在 Type 为 WAF 时必填。DescribeModelRouterGuardrails 返回。接口会校验该 WAF 实例存在且属于当前账号。</p>
+        :type InstanceId: str
+        :param _ServiceId: <p>WAF LLM SDK 接入服务 ID。</p><p>该字段对应 WAF LLM SDK 接入配置中的服务标识，用于指定模型路由请求要绑定的 WAF 防护配置。ModifyModelRouterGuardrails 在 Type 为 WAF 时必填。DescribeModelRouterGuardrails 返回。接口会校验该服务配置存在于指定的 WAF 实例下。</p>
+        :type ServiceId: str
+        :param _InputCheckDepth: <p>最大检测对话轮数。</p><p>ModifyModelRouterGuardrails 选填；未传时沿用当前已关联 Guardrail 的 InputCheckDepth。DescribeModelRouterGuardrails 返回。若传入，取值必须为正整数。</p>
+        :type InputCheckDepth: int
+        """
+        self._GuardrailId = None
+        self._Type = None
+        self._InstanceId = None
+        self._ServiceId = None
+        self._InputCheckDepth = None
+
+    @property
+    def GuardrailId(self):
+        r"""<p>Guardrail 防护配置 ID。</p><p>DescribeModelRouterGuardrails 会返回该字段；DisassociateModelRouterGuardrails 和 ModifyModelRouterGuardrails 需要使用该字段定位要操作的防护配置。</p>
+        :rtype: str
+        """
+        return self._GuardrailId
+
+    @GuardrailId.setter
+    def GuardrailId(self, GuardrailId):
+        self._GuardrailId = GuardrailId
+
+    @property
+    def Type(self):
+        r"""<p>Guardrail 防护类型。</p><p>枚举值：</p><ul><li>WAF：使用腾讯云 WAF LLM SDK 接入配置对模型路由请求进行安全防护。</li></ul><p>当前仅支持 WAF；AssociateModelRouterGuardrails 不传时默认为 WAF，ModifyModelRouterGuardrails 不传时沿用当前已关联 Guardrail 的 Type。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InstanceId(self):
+        r"""<p>关联的腾讯云 WAF 实例 ID。</p><p>ModifyModelRouterGuardrails 在 Type 为 WAF 时必填。DescribeModelRouterGuardrails 返回。接口会校验该 WAF 实例存在且属于当前账号。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceId(self):
+        r"""<p>WAF LLM SDK 接入服务 ID。</p><p>该字段对应 WAF LLM SDK 接入配置中的服务标识，用于指定模型路由请求要绑定的 WAF 防护配置。ModifyModelRouterGuardrails 在 Type 为 WAF 时必填。DescribeModelRouterGuardrails 返回。接口会校验该服务配置存在于指定的 WAF 实例下。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def InputCheckDepth(self):
+        r"""<p>最大检测对话轮数。</p><p>ModifyModelRouterGuardrails 选填；未传时沿用当前已关联 Guardrail 的 InputCheckDepth。DescribeModelRouterGuardrails 返回。若传入，取值必须为正整数。</p>
+        :rtype: int
+        """
+        return self._InputCheckDepth
+
+    @InputCheckDepth.setter
+    def InputCheckDepth(self, InputCheckDepth):
+        self._InputCheckDepth = InputCheckDepth
+
+
+    def _deserialize(self, params):
+        self._GuardrailId = params.get("GuardrailId")
+        self._Type = params.get("Type")
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceId = params.get("ServiceId")
+        self._InputCheckDepth = params.get("InputCheckDepth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15205,6 +19335,186 @@ class InputKeyInfo(AbstractModel):
         
 
 
+class InquirePriceCreateModelRouterResourcePackageRequest(AbstractModel):
+    r"""InquirePriceCreateModelRouterResourcePackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackageAmount: <p>模型路由资源包容量</p><p>取值范围：[1000, 10000000]</p><p>单次购买的模型路由资源包容量下限为1000，上限为10000000</p>
+        :type ModelRouterResourcePackageAmount: int
+        """
+        self._ModelRouterResourcePackageAmount = None
+
+    @property
+    def ModelRouterResourcePackageAmount(self):
+        r"""<p>模型路由资源包容量</p><p>取值范围：[1000, 10000000]</p><p>单次购买的模型路由资源包容量下限为1000，上限为10000000</p>
+        :rtype: int
+        """
+        return self._ModelRouterResourcePackageAmount
+
+    @ModelRouterResourcePackageAmount.setter
+    def ModelRouterResourcePackageAmount(self, ModelRouterResourcePackageAmount):
+        self._ModelRouterResourcePackageAmount = ModelRouterResourcePackageAmount
+
+
+    def _deserialize(self, params):
+        self._ModelRouterResourcePackageAmount = params.get("ModelRouterResourcePackageAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceCreateModelRouterResourcePackageResponse(AbstractModel):
+    r"""InquirePriceCreateModelRouterResourcePackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackagePrice: <p>模型路由资源包价格</p>
+        :type ModelRouterResourcePackagePrice: :class:`tencentcloud.clb.v20180317.models.ItemPrice`
+        :param _FirstBuy: <p>本次购买资源包是否可享受首购优惠</p><p>1:可享受首购优惠，0:不可享受首购优惠</p>
+        :type FirstBuy: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelRouterResourcePackagePrice = None
+        self._FirstBuy = None
+        self._RequestId = None
+
+    @property
+    def ModelRouterResourcePackagePrice(self):
+        r"""<p>模型路由资源包价格</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ItemPrice`
+        """
+        return self._ModelRouterResourcePackagePrice
+
+    @ModelRouterResourcePackagePrice.setter
+    def ModelRouterResourcePackagePrice(self, ModelRouterResourcePackagePrice):
+        self._ModelRouterResourcePackagePrice = ModelRouterResourcePackagePrice
+
+    @property
+    def FirstBuy(self):
+        r"""<p>本次购买资源包是否可享受首购优惠</p><p>1:可享受首购优惠，0:不可享受首购优惠</p>
+        :rtype: int
+        """
+        return self._FirstBuy
+
+    @FirstBuy.setter
+    def FirstBuy(self, FirstBuy):
+        self._FirstBuy = FirstBuy
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelRouterResourcePackagePrice") is not None:
+            self._ModelRouterResourcePackagePrice = ItemPrice()
+            self._ModelRouterResourcePackagePrice._deserialize(params.get("ModelRouterResourcePackagePrice"))
+        self._FirstBuy = params.get("FirstBuy")
+        self._RequestId = params.get("RequestId")
+
+
+class InquirePriceRefundModelRouterResourcePackageRequest(AbstractModel):
+    r"""InquirePriceRefundModelRouterResourcePackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackageIds: <p>待退款的模型路由资源包Id</p><p>非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。</p>
+        :type ModelRouterResourcePackageIds: list of str
+        """
+        self._ModelRouterResourcePackageIds = None
+
+    @property
+    def ModelRouterResourcePackageIds(self):
+        r"""<p>待退款的模型路由资源包Id</p><p>非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。</p>
+        :rtype: list of str
+        """
+        return self._ModelRouterResourcePackageIds
+
+    @ModelRouterResourcePackageIds.setter
+    def ModelRouterResourcePackageIds(self, ModelRouterResourcePackageIds):
+        self._ModelRouterResourcePackageIds = ModelRouterResourcePackageIds
+
+
+    def _deserialize(self, params):
+        self._ModelRouterResourcePackageIds = params.get("ModelRouterResourcePackageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceRefundModelRouterResourcePackageResponse(AbstractModel):
+    r"""InquirePriceRefundModelRouterResourcePackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackageRefundPrice: <p>待退款的模型路由资源包可退价格</p>
+        :type ModelRouterResourcePackageRefundPrice: list of ModelRouterResourcePackageRefundPrice
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelRouterResourcePackageRefundPrice = None
+        self._RequestId = None
+
+    @property
+    def ModelRouterResourcePackageRefundPrice(self):
+        r"""<p>待退款的模型路由资源包可退价格</p>
+        :rtype: list of ModelRouterResourcePackageRefundPrice
+        """
+        return self._ModelRouterResourcePackageRefundPrice
+
+    @ModelRouterResourcePackageRefundPrice.setter
+    def ModelRouterResourcePackageRefundPrice(self, ModelRouterResourcePackageRefundPrice):
+        self._ModelRouterResourcePackageRefundPrice = ModelRouterResourcePackageRefundPrice
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelRouterResourcePackageRefundPrice") is not None:
+            self._ModelRouterResourcePackageRefundPrice = []
+            for item in params.get("ModelRouterResourcePackageRefundPrice"):
+                obj = ModelRouterResourcePackageRefundPrice()
+                obj._deserialize(item)
+                self._ModelRouterResourcePackageRefundPrice.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class InquiryPriceCreateLoadBalancerRequest(AbstractModel):
     r"""InquiryPriceCreateLoadBalancer请求参数结构体
 
@@ -15691,6 +20001,254 @@ class InquiryPriceRenewLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IntentRouterItem(AbstractModel):
+    r"""意图路由摘要信息对象（不含分层详情）。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreatedTime: <p>创建时间（ISO 8601格式）。</p>
+        :type CreatedTime: str
+        :param _IntentRouterId: <p>意图路由ID（ir-xxx格式）。</p>
+        :type IntentRouterId: str
+        :param _RouteName: <p>路由名称（例如 IntentRouter/customer-support）。</p>
+        :type RouteName: str
+        :param _RouterDescribe: <p>意图路由描述。</p>
+        :type RouterDescribe: str
+        :param _Status: <p>状态。</p><p>枚举值：</p><ul><li>Provisioning：创建中</li><li>Active：正常</li><li>Configuring：配置中</li><li>ConfigureFailed：配置失败</li></ul>
+        :type Status: str
+        :param _Tiers: <p>分层配置列表。</p>
+        :type Tiers: list of IntentRouterTierItem
+        :param _UpdatedTime: <p>更新时间（ISO 8601格式）。</p>
+        :type UpdatedTime: str
+        """
+        self._CreatedTime = None
+        self._IntentRouterId = None
+        self._RouteName = None
+        self._RouterDescribe = None
+        self._Status = None
+        self._Tiers = None
+        self._UpdatedTime = None
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间（ISO 8601格式）。</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def IntentRouterId(self):
+        r"""<p>意图路由ID（ir-xxx格式）。</p>
+        :rtype: str
+        """
+        return self._IntentRouterId
+
+    @IntentRouterId.setter
+    def IntentRouterId(self, IntentRouterId):
+        self._IntentRouterId = IntentRouterId
+
+    @property
+    def RouteName(self):
+        r"""<p>路由名称（例如 IntentRouter/customer-support）。</p>
+        :rtype: str
+        """
+        return self._RouteName
+
+    @RouteName.setter
+    def RouteName(self, RouteName):
+        self._RouteName = RouteName
+
+    @property
+    def RouterDescribe(self):
+        r"""<p>意图路由描述。</p>
+        :rtype: str
+        """
+        return self._RouterDescribe
+
+    @RouterDescribe.setter
+    def RouterDescribe(self, RouterDescribe):
+        self._RouterDescribe = RouterDescribe
+
+    @property
+    def Status(self):
+        r"""<p>状态。</p><p>枚举值：</p><ul><li>Provisioning：创建中</li><li>Active：正常</li><li>Configuring：配置中</li><li>ConfigureFailed：配置失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Tiers(self):
+        r"""<p>分层配置列表。</p>
+        :rtype: list of IntentRouterTierItem
+        """
+        return self._Tiers
+
+    @Tiers.setter
+    def Tiers(self, Tiers):
+        self._Tiers = Tiers
+
+    @property
+    def UpdatedTime(self):
+        r"""<p>更新时间（ISO 8601格式）。</p>
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+
+    def _deserialize(self, params):
+        self._CreatedTime = params.get("CreatedTime")
+        self._IntentRouterId = params.get("IntentRouterId")
+        self._RouteName = params.get("RouteName")
+        self._RouterDescribe = params.get("RouterDescribe")
+        self._Status = params.get("Status")
+        if params.get("Tiers") is not None:
+            self._Tiers = []
+            for item in params.get("Tiers"):
+                obj = IntentRouterTierItem()
+                obj._deserialize(item)
+                self._Tiers.append(obj)
+        self._UpdatedTime = params.get("UpdatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentRouterTierDictItem(AbstractModel):
+    r"""IntentRouter Tier 字典项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TierId: <p>Tier 标识</p><p>枚举值：</p><ul><li>default： 默认</li><li>general_chat： 通用对话</li><li>transformation_rewrite： 转换与改写</li><li>knowledge_qa： 知识问答</li><li>summarization： 摘要</li><li>extraction_structuring： 抽取与结构化输出</li><li>content_generation： 内容生成</li><li>coding_technical： 编码与技术</li><li>data_math_analysis： 数据、数学与分析</li><li>reasoning_planning： 推理与规划</li><li>tool_agentic_workflow： 工具与智能体工作流</li></ul>
+        :type TierId: str
+        :param _DisplayName: <p>Tier 显示名称（已国际化）</p>
+        :type DisplayName: str
+        :param _Description: <p>Tier 描述（已国际化）</p>
+        :type Description: str
+        """
+        self._TierId = None
+        self._DisplayName = None
+        self._Description = None
+
+    @property
+    def TierId(self):
+        r"""<p>Tier 标识</p><p>枚举值：</p><ul><li>default： 默认</li><li>general_chat： 通用对话</li><li>transformation_rewrite： 转换与改写</li><li>knowledge_qa： 知识问答</li><li>summarization： 摘要</li><li>extraction_structuring： 抽取与结构化输出</li><li>content_generation： 内容生成</li><li>coding_technical： 编码与技术</li><li>data_math_analysis： 数据、数学与分析</li><li>reasoning_planning： 推理与规划</li><li>tool_agentic_workflow： 工具与智能体工作流</li></ul>
+        :rtype: str
+        """
+        return self._TierId
+
+    @TierId.setter
+    def TierId(self, TierId):
+        self._TierId = TierId
+
+    @property
+    def DisplayName(self):
+        r"""<p>Tier 显示名称（已国际化）</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        r"""<p>Tier 描述（已国际化）</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._TierId = params.get("TierId")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentRouterTierItem(AbstractModel):
+    r"""意图路由分层配置对象，包含分层名称和该分层下的模型列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Models: <p>该分层下的模型显示名称列表。</p>
+        :type Models: list of str
+        :param _TierName: <p>Tier 标识。<br>枚举值：</p><ul><li>复杂度分层（4 个固定值，需全部包含）：SIMPLE、MEDIUM、COMPLEX、REASONING</li><li>default： 默认</li><li>general_chat： 通用对话</li><li>transformation_rewrite： 转换与改写</li><li>knowledge_qa： 知识问答</li><li>summarization： 摘要</li><li>extraction_structuring： 抽取与结构化输出</li><li>content_generation： 内容生成</li><li>coding_technical： 编码与技术</li><li>data_math_analysis： 数据、数学与分析</li><li>reasoning_planning： 推理与规划</li><li>tool_agentic_workflow： 工具与智能体工作流</li></ul>
+        :type TierName: str
+        """
+        self._Models = None
+        self._TierName = None
+
+    @property
+    def Models(self):
+        r"""<p>该分层下的模型显示名称列表。</p>
+        :rtype: list of str
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def TierName(self):
+        r"""<p>Tier 标识。<br>枚举值：</p><ul><li>复杂度分层（4 个固定值，需全部包含）：SIMPLE、MEDIUM、COMPLEX、REASONING</li><li>default： 默认</li><li>general_chat： 通用对话</li><li>transformation_rewrite： 转换与改写</li><li>knowledge_qa： 知识问答</li><li>summarization： 摘要</li><li>extraction_structuring： 抽取与结构化输出</li><li>content_generation： 内容生成</li><li>coding_technical： 编码与技术</li><li>data_math_analysis： 数据、数学与分析</li><li>reasoning_planning： 推理与规划</li><li>tool_agentic_workflow： 工具与智能体工作流</li></ul>
+        :rtype: str
+        """
+        return self._TierName
+
+    @TierName.setter
+    def TierName(self, TierName):
+        self._TierName = TierName
+
+
+    def _deserialize(self, params):
+        self._Models = params.get("Models")
+        self._TierName = params.get("TierName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InternetAccessible(AbstractModel):
     r"""网络计费模式，最大出带宽
 
@@ -15977,6 +20535,376 @@ class Job(AbstractModel):
         self._RequestId = params.get("RequestId")
         self._Status = params.get("Status")
         self._ResourceIds = params.get("ResourceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyDetailItem(AbstractModel):
+    r"""Key 详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: Key 业务 ID
+        :type KeyId: str
+        :param _CreatedAt: Key 创建时间（ISO 8601）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _Name: Key 显示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._KeyId = None
+        self._CreatedAt = None
+        self._Name = None
+
+    @property
+    def KeyId(self):
+        r"""Key 业务 ID
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def CreatedAt(self):
+        r"""Key 创建时间（ISO 8601）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def Name(self):
+        r"""Key 显示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._CreatedAt = params.get("CreatedAt")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyInfo(AbstractModel):
+    r"""Key信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Blocked: <p>是否禁用Key</p>
+        :type Blocked: bool
+        :param _BudgetId: <p>Key关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BudgetId: str
+        :param _BudgetName: <p>Key关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BudgetName: str
+        :param _CreatedTime: <p>创建时间</p>
+        :type CreatedTime: str
+        :param _CreditUsageSet: <p>Key按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
+        :type CreditUsageSet: list of CreditUsage
+        :param _Key: <p>Key的值</p>
+        :type Key: str
+        :param _KeyId: <p>Key的ID</p>
+        :type KeyId: str
+        :param _KeyName: <p>Key名称</p>
+        :type KeyName: str
+        :param _ModifiedTime: <p>修改时间</p>
+        :type ModifiedTime: str
+        :param _RateLimitConfig: <p>限速信息</p>
+        :type RateLimitConfig: :class:`tencentcloud.clb.v20180317.models.RateLimitConfigForKey`
+        :param _Status: <p>Key状态</p><p>枚举值：</p><ul><li>Active： 正常</li></ul>
+        :type Status: str
+        :param _Tags: <p>标签</p>
+        :type Tags: list of TagInfo
+        :param _UserGroupId: <p>所属的用户组ID</p>
+        :type UserGroupId: str
+        :param _UserGroupName: <p>所属的用户组名称</p>
+        :type UserGroupName: str
+        """
+        self._Blocked = None
+        self._BudgetId = None
+        self._BudgetName = None
+        self._CreatedTime = None
+        self._CreditUsageSet = None
+        self._Key = None
+        self._KeyId = None
+        self._KeyName = None
+        self._ModifiedTime = None
+        self._RateLimitConfig = None
+        self._Status = None
+        self._Tags = None
+        self._UserGroupId = None
+        self._UserGroupName = None
+
+    @property
+    def Blocked(self):
+        r"""<p>是否禁用Key</p>
+        :rtype: bool
+        """
+        return self._Blocked
+
+    @Blocked.setter
+    def Blocked(self, Blocked):
+        self._Blocked = Blocked
+
+    @property
+    def BudgetId(self):
+        r"""<p>Key关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def BudgetName(self):
+        r"""<p>Key关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def CreditUsageSet(self):
+        r"""<p>Key按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
+        :rtype: list of CreditUsage
+        """
+        return self._CreditUsageSet
+
+    @CreditUsageSet.setter
+    def CreditUsageSet(self, CreditUsageSet):
+        self._CreditUsageSet = CreditUsageSet
+
+    @property
+    def Key(self):
+        r"""<p>Key的值</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def KeyId(self):
+        r"""<p>Key的ID</p>
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyName(self):
+        r"""<p>Key名称</p>
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def ModifiedTime(self):
+        r"""<p>修改时间</p>
+        :rtype: str
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def RateLimitConfig(self):
+        r"""<p>限速信息</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RateLimitConfigForKey`
+        """
+        return self._RateLimitConfig
+
+    @RateLimitConfig.setter
+    def RateLimitConfig(self, RateLimitConfig):
+        self._RateLimitConfig = RateLimitConfig
+
+    @property
+    def Status(self):
+        r"""<p>Key状态</p><p>枚举值：</p><ul><li>Active： 正常</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def UserGroupId(self):
+        r"""<p>所属的用户组ID</p>
+        :rtype: str
+        """
+        return self._UserGroupId
+
+    @UserGroupId.setter
+    def UserGroupId(self, UserGroupId):
+        self._UserGroupId = UserGroupId
+
+    @property
+    def UserGroupName(self):
+        r"""<p>所属的用户组名称</p>
+        :rtype: str
+        """
+        return self._UserGroupName
+
+    @UserGroupName.setter
+    def UserGroupName(self, UserGroupName):
+        self._UserGroupName = UserGroupName
+
+
+    def _deserialize(self, params):
+        self._Blocked = params.get("Blocked")
+        self._BudgetId = params.get("BudgetId")
+        self._BudgetName = params.get("BudgetName")
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("CreditUsageSet") is not None:
+            self._CreditUsageSet = []
+            for item in params.get("CreditUsageSet"):
+                obj = CreditUsage()
+                obj._deserialize(item)
+                self._CreditUsageSet.append(obj)
+        self._Key = params.get("Key")
+        self._KeyId = params.get("KeyId")
+        self._KeyName = params.get("KeyName")
+        self._ModifiedTime = params.get("ModifiedTime")
+        if params.get("RateLimitConfig") is not None:
+            self._RateLimitConfig = RateLimitConfigForKey()
+            self._RateLimitConfig._deserialize(params.get("RateLimitConfig"))
+        self._Status = params.get("Status")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._UserGroupId = params.get("UserGroupId")
+        self._UserGroupName = params.get("UserGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyItem(AbstractModel):
+    r"""Key 项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKey: Provider API Key
+        :type ApiKey: str
+        :param _Name: Key 标识名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._ApiKey = None
+        self._Name = None
+
+    @property
+    def ApiKey(self):
+        r"""Provider API Key
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def Name(self):
+        r"""Key 标识名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ApiKey = params.get("ApiKey")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19356,6 +24284,835 @@ class MigrateClassicalLoadBalancersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModalityProbeDetail(AbstractModel):
+    r"""每个待探测模态的详细结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Modality: <p>探测的模态</p>
+        :type Modality: str
+        :param _Status: <p>探测结果</p><p>枚举值：</p><ul><li>Supported： 模型支持该输入模态</li><li>Unsupported： 模型不支持该输入模态</li><li>Inconclusive： 模型未明确是否支持该模态，待重新探测</li></ul>
+        :type Status: str
+        :param _ErrorInfo: <p>探测该模态请求的报错详情</p>
+        :type ErrorInfo: :class:`tencentcloud.clb.v20180317.models.ProviderTestConnectionErrorInfo`
+        """
+        self._Modality = None
+        self._Status = None
+        self._ErrorInfo = None
+
+    @property
+    def Modality(self):
+        r"""<p>探测的模态</p>
+        :rtype: str
+        """
+        return self._Modality
+
+    @Modality.setter
+    def Modality(self, Modality):
+        self._Modality = Modality
+
+    @property
+    def Status(self):
+        r"""<p>探测结果</p><p>枚举值：</p><ul><li>Supported： 模型支持该输入模态</li><li>Unsupported： 模型不支持该输入模态</li><li>Inconclusive： 模型未明确是否支持该模态，待重新探测</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorInfo(self):
+        r"""<p>探测该模态请求的报错详情</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ProviderTestConnectionErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+
+    def _deserialize(self, params):
+        self._Modality = params.get("Modality")
+        self._Status = params.get("Status")
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ProviderTestConnectionErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelAlias(AbstractModel):
+    r"""模型别名对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Coefficient: <p>模型积分系数配置，包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p>未配置时输入系数默认为 25，缓存命中输入系数默认为 3，输出系数默认为 100。</p>
+        :type Coefficient: :class:`tencentcloud.clb.v20180317.models.Coefficient`
+        :param _ModelAliasName: <p>模型别名名称。</p><p>若用户配置了模型别名，则为该别名；未配置时为原始模型名称。</p>
+        :type ModelAliasName: str
+        :param _ServiceProviderCoefficientSet: <p>该模型别名下各 BYOK 实例（ServiceProvider）的积分系数明细，体现 ModelAlias 与 ServiceProvider 的层级关系。</p><p>默认返回该别名引用的全部实例；某实例返回 <code>Coefficient</code> 表示其单独配置了 ServiceProvider 维度系数，否则继承顶层 ModelAlias 的 <code>Coefficient</code>。</p><p>该别名当前无有效 BYOK 引用时返回空数组。</p>
+        :type ServiceProviderCoefficientSet: list of ServiceProviderCoefficient
+        :param _Source: <p>模型来源。</p><p>枚举值：</p><ul><li>BYOK：用户 BYOK 配置的模型。</li></ul>
+        :type Source: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>Active： 正常可用</li><li>Configuring： 变配中</li><li>ConfigureFailed： 变配失败</li></ul>
+        :type Status: str
+        """
+        self._Coefficient = None
+        self._ModelAliasName = None
+        self._ServiceProviderCoefficientSet = None
+        self._Source = None
+        self._Status = None
+
+    @property
+    def Coefficient(self):
+        r"""<p>模型积分系数配置，包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p>未配置时输入系数默认为 25，缓存命中输入系数默认为 3，输出系数默认为 100。</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.Coefficient`
+        """
+        return self._Coefficient
+
+    @Coefficient.setter
+    def Coefficient(self, Coefficient):
+        self._Coefficient = Coefficient
+
+    @property
+    def ModelAliasName(self):
+        r"""<p>模型别名名称。</p><p>若用户配置了模型别名，则为该别名；未配置时为原始模型名称。</p>
+        :rtype: str
+        """
+        return self._ModelAliasName
+
+    @ModelAliasName.setter
+    def ModelAliasName(self, ModelAliasName):
+        self._ModelAliasName = ModelAliasName
+
+    @property
+    def ServiceProviderCoefficientSet(self):
+        r"""<p>该模型别名下各 BYOK 实例（ServiceProvider）的积分系数明细，体现 ModelAlias 与 ServiceProvider 的层级关系。</p><p>默认返回该别名引用的全部实例；某实例返回 <code>Coefficient</code> 表示其单独配置了 ServiceProvider 维度系数，否则继承顶层 ModelAlias 的 <code>Coefficient</code>。</p><p>该别名当前无有效 BYOK 引用时返回空数组。</p>
+        :rtype: list of ServiceProviderCoefficient
+        """
+        return self._ServiceProviderCoefficientSet
+
+    @ServiceProviderCoefficientSet.setter
+    def ServiceProviderCoefficientSet(self, ServiceProviderCoefficientSet):
+        self._ServiceProviderCoefficientSet = ServiceProviderCoefficientSet
+
+    @property
+    def Source(self):
+        r"""<p>模型来源。</p><p>枚举值：</p><ul><li>BYOK：用户 BYOK 配置的模型。</li></ul>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>Active： 正常可用</li><li>Configuring： 变配中</li><li>ConfigureFailed： 变配失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        if params.get("Coefficient") is not None:
+            self._Coefficient = Coefficient()
+            self._Coefficient._deserialize(params.get("Coefficient"))
+        self._ModelAliasName = params.get("ModelAliasName")
+        if params.get("ServiceProviderCoefficientSet") is not None:
+            self._ServiceProviderCoefficientSet = []
+            for item in params.get("ServiceProviderCoefficientSet"):
+                obj = ServiceProviderCoefficient()
+                obj._deserialize(item)
+                self._ServiceProviderCoefficientSet.append(obj)
+        self._Source = params.get("Source")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelAssociation(AbstractModel):
+    r"""模型关联信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputModalitiesUnion: <p>该模型最大可支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :type InputModalitiesUnion: list of str
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _ServiceProviders: <p>BYOK列表</p>
+        :type ServiceProviders: list of ServiceProvider
+        :param _Type: <p>模型类型</p>
+        :type Type: str
+        """
+        self._InputModalitiesUnion = None
+        self._ModelName = None
+        self._ServiceProviders = None
+        self._Type = None
+
+    @property
+    def InputModalitiesUnion(self):
+        r"""<p>该模型最大可支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :rtype: list of str
+        """
+        return self._InputModalitiesUnion
+
+    @InputModalitiesUnion.setter
+    def InputModalitiesUnion(self, InputModalitiesUnion):
+        self._InputModalitiesUnion = InputModalitiesUnion
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ServiceProviders(self):
+        r"""<p>BYOK列表</p>
+        :rtype: list of ServiceProvider
+        """
+        return self._ServiceProviders
+
+    @ServiceProviders.setter
+    def ServiceProviders(self, ServiceProviders):
+        self._ServiceProviders = ServiceProviders
+
+    @property
+    def Type(self):
+        r"""<p>模型类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._InputModalitiesUnion = params.get("InputModalitiesUnion")
+        self._ModelName = params.get("ModelName")
+        if params.get("ServiceProviders") is not None:
+            self._ServiceProviders = []
+            for item in params.get("ServiceProviders"):
+                obj = ServiceProvider()
+                obj._deserialize(item)
+                self._ServiceProviders.append(obj)
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelAvailability(AbstractModel):
+    r"""模型可用性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputModalities: <p>该模型所有健康BYOK实例下支持的输入多模态能力的并集。模型不健康时返回空列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :type InputModalities: list of str
+        :param _Model: <p>模型</p>
+        :type Model: str
+        :param _Status: <p>可用性状态</p><p>枚举值：</p><ul><li>Available： 可用</li><li>Unavailable： 不可用</li><li>Unknown： 未探测</li></ul>
+        :type Status: str
+        """
+        self._InputModalities = None
+        self._Model = None
+        self._Status = None
+
+    @property
+    def InputModalities(self):
+        r"""<p>该模型所有健康BYOK实例下支持的输入多模态能力的并集。模型不健康时返回空列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :rtype: list of str
+        """
+        return self._InputModalities
+
+    @InputModalities.setter
+    def InputModalities(self, InputModalities):
+        self._InputModalities = InputModalities
+
+    @property
+    def Model(self):
+        r"""<p>模型</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Status(self):
+        r"""<p>可用性状态</p><p>枚举值：</p><ul><li>Available： 可用</li><li>Unavailable： 不可用</li><li>Unknown： 未探测</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InputModalities = params.get("InputModalities")
+        self._Model = params.get("Model")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelHealthCheckResults(AbstractModel):
+    r"""BYOK的健康检查结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProviderKeyId: <p>BYOK的KeyID</p>
+        :type ProviderKeyId: str
+        :param _Model: <p>模型</p>
+        :type Model: str
+        :param _Status: <p>健康检查状态</p>
+        :type Status: str
+        """
+        self._ProviderKeyId = None
+        self._Model = None
+        self._Status = None
+
+    @property
+    def ProviderKeyId(self):
+        r"""<p>BYOK的KeyID</p>
+        :rtype: str
+        """
+        return self._ProviderKeyId
+
+    @ProviderKeyId.setter
+    def ProviderKeyId(self, ProviderKeyId):
+        self._ProviderKeyId = ProviderKeyId
+
+    @property
+    def Model(self):
+        r"""<p>模型</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Status(self):
+        r"""<p>健康检查状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ProviderKeyId = params.get("ProviderKeyId")
+        self._Model = params.get("Model")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelItem(AbstractModel):
+    r"""model 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: <p>模型唯一标识, 用于实际访问</p>
+        :type ModelId: str
+        :param _InputModalities: <p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>默认值：text</p>
+        :type InputModalities: list of str
+        :param _ModelAlias: <p>模型别名, 可以用于实际访问</p>
+        :type ModelAlias: str
+        """
+        self._ModelId = None
+        self._InputModalities = None
+        self._ModelAlias = None
+
+    @property
+    def ModelId(self):
+        r"""<p>模型唯一标识, 用于实际访问</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def InputModalities(self):
+        r"""<p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>默认值：text</p>
+        :rtype: list of str
+        """
+        return self._InputModalities
+
+    @InputModalities.setter
+    def InputModalities(self, InputModalities):
+        self._InputModalities = InputModalities
+
+    @property
+    def ModelAlias(self):
+        r"""<p>模型别名, 可以用于实际访问</p>
+        :rtype: str
+        """
+        return self._ModelAlias
+
+    @ModelAlias.setter
+    def ModelAlias(self, ModelAlias):
+        self._ModelAlias = ModelAlias
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._InputModalities = params.get("InputModalities")
+        self._ModelAlias = params.get("ModelAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelKeyInfoItem(AbstractModel):
+    r"""模型及其 Key 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessType: <p>接入类型</p>
+        :type AccessType: str
+        :param _ApiBase: <p>API Base URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiBase: str
+        :param _CreatedAt: <p>模型创建时间（ISO 8601）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _HostHeader: <p>自定义host header</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostHeader: str
+        :param _KeyCount: <p>Key 数量</p>
+        :type KeyCount: int
+        :param _Keys: <p>Key 详情列表</p>
+        :type Keys: list of KeyDetailItem
+        :param _ModelIdsWithAlias: <p>model信息</p>
+        :type ModelIdsWithAlias: list of ServiceProviderModelItem
+        :param _ModelProvider: <p>模型供应商</p>
+        :type ModelProvider: str
+        :param _Protocol: <p>模型协议</p>
+        :type Protocol: str
+        :param _ServiceIps: <p>内部通信占用IP</p>
+        :type ServiceIps: list of str
+        :param _ServiceProviderId: <p>服务提供商ID</p>
+        :type ServiceProviderId: str
+        :param _ServiceProviderName: <p>服务提供商自定义名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceProviderName: str
+        :param _Status: <p>模型状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li><li>Deleting： 删除中</li><li>ProvisionFailed： 创建失败</li><li>ConfigureFailed： 变配失败</li><li>DeletionFailed： 删除失败</li><li>Disabled： 已禁用</li></ul>
+        :type Status: str
+        :param _SubnetId: <p>子网 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _Tags: <p>标签信息</p>
+        :type Tags: list of TagInfo
+        :param _VerifySSL: <p>是否校验上游SSL</p>
+        :type VerifySSL: bool
+        :param _VpcId: <p>VPC 实例 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        """
+        self._AccessType = None
+        self._ApiBase = None
+        self._CreatedAt = None
+        self._HostHeader = None
+        self._KeyCount = None
+        self._Keys = None
+        self._ModelIdsWithAlias = None
+        self._ModelProvider = None
+        self._Protocol = None
+        self._ServiceIps = None
+        self._ServiceProviderId = None
+        self._ServiceProviderName = None
+        self._Status = None
+        self._SubnetId = None
+        self._Tags = None
+        self._VerifySSL = None
+        self._VpcId = None
+
+    @property
+    def AccessType(self):
+        r"""<p>接入类型</p>
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def ApiBase(self):
+        r"""<p>API Base URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApiBase
+
+    @ApiBase.setter
+    def ApiBase(self, ApiBase):
+        self._ApiBase = ApiBase
+
+    @property
+    def CreatedAt(self):
+        r"""<p>模型创建时间（ISO 8601）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def HostHeader(self):
+        r"""<p>自定义host header</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
+    @property
+    def KeyCount(self):
+        r"""<p>Key 数量</p>
+        :rtype: int
+        """
+        return self._KeyCount
+
+    @KeyCount.setter
+    def KeyCount(self, KeyCount):
+        self._KeyCount = KeyCount
+
+    @property
+    def Keys(self):
+        r"""<p>Key 详情列表</p>
+        :rtype: list of KeyDetailItem
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def ModelIdsWithAlias(self):
+        r"""<p>model信息</p>
+        :rtype: list of ServiceProviderModelItem
+        """
+        return self._ModelIdsWithAlias
+
+    @ModelIdsWithAlias.setter
+    def ModelIdsWithAlias(self, ModelIdsWithAlias):
+        self._ModelIdsWithAlias = ModelIdsWithAlias
+
+    @property
+    def ModelProvider(self):
+        r"""<p>模型供应商</p>
+        :rtype: str
+        """
+        return self._ModelProvider
+
+    @ModelProvider.setter
+    def ModelProvider(self, ModelProvider):
+        self._ModelProvider = ModelProvider
+
+    @property
+    def Protocol(self):
+        r"""<p>模型协议</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ServiceIps(self):
+        r"""<p>内部通信占用IP</p>
+        :rtype: list of str
+        """
+        return self._ServiceIps
+
+    @ServiceIps.setter
+    def ServiceIps(self, ServiceIps):
+        self._ServiceIps = ServiceIps
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>服务提供商ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def ServiceProviderName(self):
+        r"""<p>服务提供商自定义名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceProviderName
+
+    @ServiceProviderName.setter
+    def ServiceProviderName(self, ServiceProviderName):
+        self._ServiceProviderName = ServiceProviderName
+
+    @property
+    def Status(self):
+        r"""<p>模型状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li><li>Deleting： 删除中</li><li>ProvisionFailed： 创建失败</li><li>ConfigureFailed： 变配失败</li><li>DeletionFailed： 删除失败</li><li>Disabled： 已禁用</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Tags(self):
+        r"""<p>标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def VerifySSL(self):
+        r"""<p>是否校验上游SSL</p>
+        :rtype: bool
+        """
+        return self._VerifySSL
+
+    @VerifySSL.setter
+    def VerifySSL(self, VerifySSL):
+        self._VerifySSL = VerifySSL
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC 实例 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+
+    def _deserialize(self, params):
+        self._AccessType = params.get("AccessType")
+        self._ApiBase = params.get("ApiBase")
+        self._CreatedAt = params.get("CreatedAt")
+        self._HostHeader = params.get("HostHeader")
+        self._KeyCount = params.get("KeyCount")
+        if params.get("Keys") is not None:
+            self._Keys = []
+            for item in params.get("Keys"):
+                obj = KeyDetailItem()
+                obj._deserialize(item)
+                self._Keys.append(obj)
+        if params.get("ModelIdsWithAlias") is not None:
+            self._ModelIdsWithAlias = []
+            for item in params.get("ModelIdsWithAlias"):
+                obj = ServiceProviderModelItem()
+                obj._deserialize(item)
+                self._ModelIdsWithAlias.append(obj)
+        self._ModelProvider = params.get("ModelProvider")
+        self._Protocol = params.get("Protocol")
+        self._ServiceIps = params.get("ServiceIps")
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._ServiceProviderName = params.get("ServiceProviderName")
+        self._Status = params.get("Status")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._VerifySSL = params.get("VerifySSL")
+        self._VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelNameAggregatedItem(AbstractModel):
+    r"""按模型标识聚合的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型标识显示名称（优先使用 model_alias，否则使用 model_name）</p>
+        :type ModelName: str
+        :param _ServiceProviders: <p>关联的服务商列表</p>
+        :type ServiceProviders: list of ServiceProviderItem
+        :param _InputModalitiesUnion: <p>该模型最大可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :type InputModalitiesUnion: list of str
+        """
+        self._ModelName = None
+        self._ServiceProviders = None
+        self._InputModalitiesUnion = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型标识显示名称（优先使用 model_alias，否则使用 model_name）</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ServiceProviders(self):
+        r"""<p>关联的服务商列表</p>
+        :rtype: list of ServiceProviderItem
+        """
+        return self._ServiceProviders
+
+    @ServiceProviders.setter
+    def ServiceProviders(self, ServiceProviders):
+        self._ServiceProviders = ServiceProviders
+
+    @property
+    def InputModalitiesUnion(self):
+        r"""<p>该模型最大可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :rtype: list of str
+        """
+        return self._InputModalitiesUnion
+
+    @InputModalitiesUnion.setter
+    def InputModalitiesUnion(self, InputModalitiesUnion):
+        self._InputModalitiesUnion = InputModalitiesUnion
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        if params.get("ServiceProviders") is not None:
+            self._ServiceProviders = []
+            for item in params.get("ServiceProviders"):
+                obj = ServiceProviderItem()
+                obj._deserialize(item)
+                self._ServiceProviders.append(obj)
+        self._InputModalitiesUnion = params.get("InputModalitiesUnion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModelRouterDetail(AbstractModel):
     r"""查询单个实例详细信息
 
@@ -19363,8 +25120,18 @@ class ModelRouterDetail(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _BudgetId: <p>模型路由实例关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BudgetId: str
+        :param _BudgetName: <p>模型路由实例关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BudgetName: str
+        :param _ClusterInfo: <p>集群信息</p>
+        :type ClusterInfo: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
         :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
+        :param _CreditUsageSet: <p>模型路由实例按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
+        :type CreditUsageSet: list of CreditUsage
         :param _Domain: <p>模型路由实例域名</p>
         :type Domain: str
         :param _ModelRouterId: <p>模型路由ID</p>
@@ -19382,6 +25149,8 @@ class ModelRouterDetail(AbstractModel):
         :param _RouterSetting: <p>模型路由的路由配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouterSetting: :class:`tencentcloud.clb.v20180317.models.RouterSettingWithFallBack`
+        :param _SecurityGroups: <p>安全组ID列表</p>
+        :type SecurityGroups: list of str
         :param _SecurityStatus: <p>模型路由实例的安全状态</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Banned： 已封禁</li><li>Frozen： 已冻结</li></ul>
         :type SecurityStatus: str
         :param _ServiceEndPoints: <p>模型路由网络配置列表</p>
@@ -19398,23 +25167,12 @@ class ModelRouterDetail(AbstractModel):
         :type Vip: str
         :param _VpcId: <p>模型路由实例所属VPC的ID</p>
         :type VpcId: str
-        :param _BudgetId: <p>模型路由实例关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BudgetId: str
-        :param _BudgetName: <p>模型路由实例关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BudgetName: str
-        :param _CreditUsage: <p>模型路由实例的Credit使用情况。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreditUsage: :class:`tencentcloud.clb.v20180317.models.CreditUsage`
-        :param _CreditUsageSet: <p>模型路由实例按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
-        :type CreditUsageSet: list of CreditUsage
-        :param _SecurityGroups: <p>安全组ID列表</p>
-        :type SecurityGroups: list of str
-        :param _ClusterInfo: <p>集群信息</p>
-        :type ClusterInfo: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
         """
+        self._BudgetId = None
+        self._BudgetName = None
+        self._ClusterInfo = None
         self._CreatedTime = None
+        self._CreditUsageSet = None
         self._Domain = None
         self._ModelRouterId = None
         self._ModelRouterName = None
@@ -19423,6 +25181,7 @@ class ModelRouterDetail(AbstractModel):
         self._NetworkType = None
         self._RateLimitConfig = None
         self._RouterSetting = None
+        self._SecurityGroups = None
         self._SecurityStatus = None
         self._ServiceEndPoints = None
         self._Status = None
@@ -19431,12 +25190,41 @@ class ModelRouterDetail(AbstractModel):
         self._TradeStatus = None
         self._Vip = None
         self._VpcId = None
-        self._BudgetId = None
-        self._BudgetName = None
-        self._CreditUsage = None
-        self._CreditUsageSet = None
-        self._SecurityGroups = None
-        self._ClusterInfo = None
+
+    @property
+    def BudgetId(self):
+        r"""<p>模型路由实例关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BudgetId
+
+    @BudgetId.setter
+    def BudgetId(self, BudgetId):
+        self._BudgetId = BudgetId
+
+    @property
+    def BudgetName(self):
+        r"""<p>模型路由实例关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BudgetName
+
+    @BudgetName.setter
+    def BudgetName(self, BudgetName):
+        self._BudgetName = BudgetName
+
+    @property
+    def ClusterInfo(self):
+        r"""<p>集群信息</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
+        """
+        return self._ClusterInfo
+
+    @ClusterInfo.setter
+    def ClusterInfo(self, ClusterInfo):
+        self._ClusterInfo = ClusterInfo
 
     @property
     def CreatedTime(self):
@@ -19448,6 +25236,17 @@ class ModelRouterDetail(AbstractModel):
     @CreatedTime.setter
     def CreatedTime(self, CreatedTime):
         self._CreatedTime = CreatedTime
+
+    @property
+    def CreditUsageSet(self):
+        r"""<p>模型路由实例按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
+        :rtype: list of CreditUsage
+        """
+        return self._CreditUsageSet
+
+    @CreditUsageSet.setter
+    def CreditUsageSet(self, CreditUsageSet):
+        self._CreditUsageSet = CreditUsageSet
 
     @property
     def Domain(self):
@@ -19539,6 +25338,17 @@ class ModelRouterDetail(AbstractModel):
         self._RouterSetting = RouterSetting
 
     @property
+    def SecurityGroups(self):
+        r"""<p>安全组ID列表</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroups
+
+    @SecurityGroups.setter
+    def SecurityGroups(self, SecurityGroups):
+        self._SecurityGroups = SecurityGroups
+
+    @property
     def SecurityStatus(self):
         r"""<p>模型路由实例的安全状态</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Banned： 已封禁</li><li>Frozen： 已冻结</li></ul>
         :rtype: str
@@ -19626,78 +25436,20 @@ class ModelRouterDetail(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
-    @property
-    def BudgetId(self):
-        r"""<p>模型路由实例关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._BudgetId
-
-    @BudgetId.setter
-    def BudgetId(self, BudgetId):
-        self._BudgetId = BudgetId
-
-    @property
-    def BudgetName(self):
-        r"""<p>模型路由实例关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._BudgetName
-
-    @BudgetName.setter
-    def BudgetName(self, BudgetName):
-        self._BudgetName = BudgetName
-
-    @property
-    def CreditUsage(self):
-        r"""<p>模型路由实例的Credit使用情况。</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.clb.v20180317.models.CreditUsage`
-        """
-        return self._CreditUsage
-
-    @CreditUsage.setter
-    def CreditUsage(self, CreditUsage):
-        self._CreditUsage = CreditUsage
-
-    @property
-    def CreditUsageSet(self):
-        r"""<p>模型路由实例按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
-        :rtype: list of CreditUsage
-        """
-        return self._CreditUsageSet
-
-    @CreditUsageSet.setter
-    def CreditUsageSet(self, CreditUsageSet):
-        self._CreditUsageSet = CreditUsageSet
-
-    @property
-    def SecurityGroups(self):
-        r"""<p>安全组ID列表</p>
-        :rtype: list of str
-        """
-        return self._SecurityGroups
-
-    @SecurityGroups.setter
-    def SecurityGroups(self, SecurityGroups):
-        self._SecurityGroups = SecurityGroups
-
-    @property
-    def ClusterInfo(self):
-        r"""<p>集群信息</p>
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
-        """
-        return self._ClusterInfo
-
-    @ClusterInfo.setter
-    def ClusterInfo(self, ClusterInfo):
-        self._ClusterInfo = ClusterInfo
-
 
     def _deserialize(self, params):
+        self._BudgetId = params.get("BudgetId")
+        self._BudgetName = params.get("BudgetName")
+        if params.get("ClusterInfo") is not None:
+            self._ClusterInfo = ClusterInfo()
+            self._ClusterInfo._deserialize(params.get("ClusterInfo"))
         self._CreatedTime = params.get("CreatedTime")
+        if params.get("CreditUsageSet") is not None:
+            self._CreditUsageSet = []
+            for item in params.get("CreditUsageSet"):
+                obj = CreditUsage()
+                obj._deserialize(item)
+                self._CreditUsageSet.append(obj)
         self._Domain = params.get("Domain")
         self._ModelRouterId = params.get("ModelRouterId")
         self._ModelRouterName = params.get("ModelRouterName")
@@ -19710,6 +25462,7 @@ class ModelRouterDetail(AbstractModel):
         if params.get("RouterSetting") is not None:
             self._RouterSetting = RouterSettingWithFallBack()
             self._RouterSetting._deserialize(params.get("RouterSetting"))
+        self._SecurityGroups = params.get("SecurityGroups")
         self._SecurityStatus = params.get("SecurityStatus")
         if params.get("ServiceEndPoints") is not None:
             self._ServiceEndPoints = []
@@ -19728,21 +25481,474 @@ class ModelRouterDetail(AbstractModel):
         self._TradeStatus = params.get("TradeStatus")
         self._Vip = params.get("Vip")
         self._VpcId = params.get("VpcId")
-        self._BudgetId = params.get("BudgetId")
-        self._BudgetName = params.get("BudgetName")
-        if params.get("CreditUsage") is not None:
-            self._CreditUsage = CreditUsage()
-            self._CreditUsage._deserialize(params.get("CreditUsage"))
-        if params.get("CreditUsageSet") is not None:
-            self._CreditUsageSet = []
-            for item in params.get("CreditUsageSet"):
-                obj = CreditUsage()
-                obj._deserialize(item)
-                self._CreditUsageSet.append(obj)
-        self._SecurityGroups = params.get("SecurityGroups")
-        if params.get("ClusterInfo") is not None:
-            self._ClusterInfo = ClusterInfo()
-            self._ClusterInfo._deserialize(params.get("ClusterInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelRouterLog(AbstractModel):
+    r"""模型路由日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: <p>API Key的ID</p>
+        :type KeyId: str
+        :param _Model: <p>模型</p>
+        :type Model: str
+        :param _Provider: <p>所属厂商</p>
+        :type Provider: str
+        :param _Status: <p>请求状态</p><p>枚举值：</p><ul><li>failure： 失败</li><li>success： 成功</li></ul>
+        :type Status: str
+        :param _MaxRetries: <p>最大重试次数</p>
+        :type MaxRetries: int
+        :param _TotalTokens: <p>单次请求消耗的总Token数量</p>
+        :type TotalTokens: int
+        :param _InputTokens: <p>单次请求输入消耗的Token数量</p>
+        :type InputTokens: int
+        :param _OutputTokens: <p>单次请求输出消耗的Token数量</p>
+        :type OutputTokens: int
+        :param _RequestDuration: <p>请求耗时</p><p>单位：ms</p>
+        :type RequestDuration: int
+        :param _RequesterIp: <p>请求IP</p>
+        :type RequesterIp: str
+        :param _StartTime: <p>日志查询起始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>日志查询结束时间</p>
+        :type EndTime: str
+        """
+        self._KeyId = None
+        self._Model = None
+        self._Provider = None
+        self._Status = None
+        self._MaxRetries = None
+        self._TotalTokens = None
+        self._InputTokens = None
+        self._OutputTokens = None
+        self._RequestDuration = None
+        self._RequesterIp = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def KeyId(self):
+        r"""<p>API Key的ID</p>
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def Model(self):
+        r"""<p>模型</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Provider(self):
+        r"""<p>所属厂商</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Status(self):
+        r"""<p>请求状态</p><p>枚举值：</p><ul><li>failure： 失败</li><li>success： 成功</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MaxRetries(self):
+        r"""<p>最大重试次数</p>
+        :rtype: int
+        """
+        return self._MaxRetries
+
+    @MaxRetries.setter
+    def MaxRetries(self, MaxRetries):
+        self._MaxRetries = MaxRetries
+
+    @property
+    def TotalTokens(self):
+        r"""<p>单次请求消耗的总Token数量</p>
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def InputTokens(self):
+        r"""<p>单次请求输入消耗的Token数量</p>
+        :rtype: int
+        """
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def OutputTokens(self):
+        r"""<p>单次请求输出消耗的Token数量</p>
+        :rtype: int
+        """
+        return self._OutputTokens
+
+    @OutputTokens.setter
+    def OutputTokens(self, OutputTokens):
+        self._OutputTokens = OutputTokens
+
+    @property
+    def RequestDuration(self):
+        r"""<p>请求耗时</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._RequestDuration
+
+    @RequestDuration.setter
+    def RequestDuration(self, RequestDuration):
+        self._RequestDuration = RequestDuration
+
+    @property
+    def RequesterIp(self):
+        r"""<p>请求IP</p>
+        :rtype: str
+        """
+        return self._RequesterIp
+
+    @RequesterIp.setter
+    def RequesterIp(self, RequesterIp):
+        self._RequesterIp = RequesterIp
+
+    @property
+    def StartTime(self):
+        r"""<p>日志查询起始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>日志查询结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._Model = params.get("Model")
+        self._Provider = params.get("Provider")
+        self._Status = params.get("Status")
+        self._MaxRetries = params.get("MaxRetries")
+        self._TotalTokens = params.get("TotalTokens")
+        self._InputTokens = params.get("InputTokens")
+        self._OutputTokens = params.get("OutputTokens")
+        self._RequestDuration = params.get("RequestDuration")
+        self._RequesterIp = params.get("RequesterIp")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelRouterModel(AbstractModel):
+    r"""模型路由关联的模型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _Provider: <p>所属厂商</p>
+        :type Provider: str
+        :param _Type: <p>模型类型。</p><p>枚举值：</p><ul><li>BYOK： BYOK类型</li><li>Platform： 平台类型</li></ul>
+        :type Type: str
+        :param _ServiceProviderId: <p>服务商/模型 ID（byok_model.model_id，形如 model-xxxxxxxx；Platform 类型不传）</p>
+        :type ServiceProviderId: str
+        """
+        self._ModelName = None
+        self._Provider = None
+        self._Type = None
+        self._ServiceProviderId = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def Provider(self):
+        r"""<p>所属厂商</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Type(self):
+        r"""<p>模型类型。</p><p>枚举值：</p><ul><li>BYOK： BYOK类型</li><li>Platform： 平台类型</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>服务商/模型 ID（byok_model.model_id，形如 model-xxxxxxxx；Platform 类型不传）</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._Provider = params.get("Provider")
+        self._Type = params.get("Type")
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelRouterPackage(AbstractModel):
+    r"""模型路由资源包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CapacitySize: <p>模型路由资源包总容量</p>
+        :type CapacitySize: str
+        :param _CapacityRemain: <p>模型路由资源包总余量</p>
+        :type CapacityRemain: str
+        :param _CapacitySizePrecise: <p>模型路由资源包容量精确值</p>
+        :type CapacitySizePrecise: str
+        :param _CapacityRemainPrecise: <p>模型路由资源包总余量精确值</p>
+        :type CapacityRemainPrecise: str
+        :param _AutoPurchaseFlag: <p>模型路由资源包设置用尽续购标志位 0:未设置 1:用尽到期新购</p><p>取值范围：[0, 1]</p>
+        :type AutoPurchaseFlag: int
+        :param _ModelRouterResourcePackageId: <p>模型路由资源包Id</p>
+        :type ModelRouterResourcePackageId: str
+        :param _CreateTime: <p>模型路由资源包创建时间</p>
+        :type CreateTime: str
+        :param _DeductionStartTime: <p>模型路由资源包抵扣开始时间</p>
+        :type DeductionStartTime: str
+        :param _DeductionEndTime: <p>模型路由资源包抵扣截止时间</p>
+        :type DeductionEndTime: str
+        :param _ExpiredTime: <p>模型路由资源包失效时间</p>
+        :type ExpiredTime: str
+        :param _Status: <p>模型路由资源包状态</p><p>枚举值：</p><ul><li>0： 有效</li><li>1： 已退款</li><li>2： 已过期</li><li>3： 已用完</li></ul>
+        :type Status: int
+        """
+        self._CapacitySize = None
+        self._CapacityRemain = None
+        self._CapacitySizePrecise = None
+        self._CapacityRemainPrecise = None
+        self._AutoPurchaseFlag = None
+        self._ModelRouterResourcePackageId = None
+        self._CreateTime = None
+        self._DeductionStartTime = None
+        self._DeductionEndTime = None
+        self._ExpiredTime = None
+        self._Status = None
+
+    @property
+    def CapacitySize(self):
+        r"""<p>模型路由资源包总容量</p>
+        :rtype: str
+        """
+        return self._CapacitySize
+
+    @CapacitySize.setter
+    def CapacitySize(self, CapacitySize):
+        self._CapacitySize = CapacitySize
+
+    @property
+    def CapacityRemain(self):
+        r"""<p>模型路由资源包总余量</p>
+        :rtype: str
+        """
+        return self._CapacityRemain
+
+    @CapacityRemain.setter
+    def CapacityRemain(self, CapacityRemain):
+        self._CapacityRemain = CapacityRemain
+
+    @property
+    def CapacitySizePrecise(self):
+        r"""<p>模型路由资源包容量精确值</p>
+        :rtype: str
+        """
+        return self._CapacitySizePrecise
+
+    @CapacitySizePrecise.setter
+    def CapacitySizePrecise(self, CapacitySizePrecise):
+        self._CapacitySizePrecise = CapacitySizePrecise
+
+    @property
+    def CapacityRemainPrecise(self):
+        r"""<p>模型路由资源包总余量精确值</p>
+        :rtype: str
+        """
+        return self._CapacityRemainPrecise
+
+    @CapacityRemainPrecise.setter
+    def CapacityRemainPrecise(self, CapacityRemainPrecise):
+        self._CapacityRemainPrecise = CapacityRemainPrecise
+
+    @property
+    def AutoPurchaseFlag(self):
+        r"""<p>模型路由资源包设置用尽续购标志位 0:未设置 1:用尽到期新购</p><p>取值范围：[0, 1]</p>
+        :rtype: int
+        """
+        return self._AutoPurchaseFlag
+
+    @AutoPurchaseFlag.setter
+    def AutoPurchaseFlag(self, AutoPurchaseFlag):
+        self._AutoPurchaseFlag = AutoPurchaseFlag
+
+    @property
+    def ModelRouterResourcePackageId(self):
+        r"""<p>模型路由资源包Id</p>
+        :rtype: str
+        """
+        return self._ModelRouterResourcePackageId
+
+    @ModelRouterResourcePackageId.setter
+    def ModelRouterResourcePackageId(self, ModelRouterResourcePackageId):
+        self._ModelRouterResourcePackageId = ModelRouterResourcePackageId
+
+    @property
+    def CreateTime(self):
+        r"""<p>模型路由资源包创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DeductionStartTime(self):
+        r"""<p>模型路由资源包抵扣开始时间</p>
+        :rtype: str
+        """
+        return self._DeductionStartTime
+
+    @DeductionStartTime.setter
+    def DeductionStartTime(self, DeductionStartTime):
+        self._DeductionStartTime = DeductionStartTime
+
+    @property
+    def DeductionEndTime(self):
+        r"""<p>模型路由资源包抵扣截止时间</p>
+        :rtype: str
+        """
+        return self._DeductionEndTime
+
+    @DeductionEndTime.setter
+    def DeductionEndTime(self, DeductionEndTime):
+        self._DeductionEndTime = DeductionEndTime
+
+    @property
+    def ExpiredTime(self):
+        r"""<p>模型路由资源包失效时间</p>
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def Status(self):
+        r"""<p>模型路由资源包状态</p><p>枚举值：</p><ul><li>0： 有效</li><li>1： 已退款</li><li>2： 已过期</li><li>3： 已用完</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._CapacitySize = params.get("CapacitySize")
+        self._CapacityRemain = params.get("CapacityRemain")
+        self._CapacitySizePrecise = params.get("CapacitySizePrecise")
+        self._CapacityRemainPrecise = params.get("CapacityRemainPrecise")
+        self._AutoPurchaseFlag = params.get("AutoPurchaseFlag")
+        self._ModelRouterResourcePackageId = params.get("ModelRouterResourcePackageId")
+        self._CreateTime = params.get("CreateTime")
+        self._DeductionStartTime = params.get("DeductionStartTime")
+        self._DeductionEndTime = params.get("DeductionEndTime")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19849,6 +26055,213 @@ class ModelRouterQuota(AbstractModel):
         self._Limit = params.get("Limit")
         self._Used = params.get("Used")
         self._Available = params.get("Available")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelRouterResourcePackageDeduction(AbstractModel):
+    r"""模型路由资源包抵扣信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActualDosage: <p>实际抵扣量</p>
+        :type ActualDosage: str
+        :param _AfterDeductionRemain: <p>抵扣后包剩余量</p>
+        :type AfterDeductionRemain: str
+        :param _BeforeDeductionRemain: <p>抵扣前包剩余量</p>
+        :type BeforeDeductionRemain: str
+        :param _DeductionTime: <p>抵扣时间</p>
+        :type DeductionTime: str
+        :param _Dosage: <p>原始用量</p>
+        :type Dosage: str
+        :param _EndTime: <p>用量结束时间</p>
+        :type EndTime: str
+        :param _ModelRouterId: <p>产生用量的模型路由实例Id</p>
+        :type ModelRouterId: str
+        :param _ModelRouterResourcePackageId: <p>模型路由资源包Id</p>
+        :type ModelRouterResourcePackageId: str
+        :param _StartTime: <p>用量开始时间</p>
+        :type StartTime: str
+        """
+        self._ActualDosage = None
+        self._AfterDeductionRemain = None
+        self._BeforeDeductionRemain = None
+        self._DeductionTime = None
+        self._Dosage = None
+        self._EndTime = None
+        self._ModelRouterId = None
+        self._ModelRouterResourcePackageId = None
+        self._StartTime = None
+
+    @property
+    def ActualDosage(self):
+        r"""<p>实际抵扣量</p>
+        :rtype: str
+        """
+        return self._ActualDosage
+
+    @ActualDosage.setter
+    def ActualDosage(self, ActualDosage):
+        self._ActualDosage = ActualDosage
+
+    @property
+    def AfterDeductionRemain(self):
+        r"""<p>抵扣后包剩余量</p>
+        :rtype: str
+        """
+        return self._AfterDeductionRemain
+
+    @AfterDeductionRemain.setter
+    def AfterDeductionRemain(self, AfterDeductionRemain):
+        self._AfterDeductionRemain = AfterDeductionRemain
+
+    @property
+    def BeforeDeductionRemain(self):
+        r"""<p>抵扣前包剩余量</p>
+        :rtype: str
+        """
+        return self._BeforeDeductionRemain
+
+    @BeforeDeductionRemain.setter
+    def BeforeDeductionRemain(self, BeforeDeductionRemain):
+        self._BeforeDeductionRemain = BeforeDeductionRemain
+
+    @property
+    def DeductionTime(self):
+        r"""<p>抵扣时间</p>
+        :rtype: str
+        """
+        return self._DeductionTime
+
+    @DeductionTime.setter
+    def DeductionTime(self, DeductionTime):
+        self._DeductionTime = DeductionTime
+
+    @property
+    def Dosage(self):
+        r"""<p>原始用量</p>
+        :rtype: str
+        """
+        return self._Dosage
+
+    @Dosage.setter
+    def Dosage(self, Dosage):
+        self._Dosage = Dosage
+
+    @property
+    def EndTime(self):
+        r"""<p>用量结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>产生用量的模型路由实例Id</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def ModelRouterResourcePackageId(self):
+        r"""<p>模型路由资源包Id</p>
+        :rtype: str
+        """
+        return self._ModelRouterResourcePackageId
+
+    @ModelRouterResourcePackageId.setter
+    def ModelRouterResourcePackageId(self, ModelRouterResourcePackageId):
+        self._ModelRouterResourcePackageId = ModelRouterResourcePackageId
+
+    @property
+    def StartTime(self):
+        r"""<p>用量开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+
+    def _deserialize(self, params):
+        self._ActualDosage = params.get("ActualDosage")
+        self._AfterDeductionRemain = params.get("AfterDeductionRemain")
+        self._BeforeDeductionRemain = params.get("BeforeDeductionRemain")
+        self._DeductionTime = params.get("DeductionTime")
+        self._Dosage = params.get("Dosage")
+        self._EndTime = params.get("EndTime")
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._ModelRouterResourcePackageId = params.get("ModelRouterResourcePackageId")
+        self._StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelRouterResourcePackageRefundPrice(AbstractModel):
+    r"""模型路由资源包退款价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterPackageId: <p>模型路由资源包Id</p>
+        :type ModelRouterPackageId: str
+        :param _Price: <p>可退还金额</p>
+        :type Price: float
+        """
+        self._ModelRouterPackageId = None
+        self._Price = None
+
+    @property
+    def ModelRouterPackageId(self):
+        r"""<p>模型路由资源包Id</p>
+        :rtype: str
+        """
+        return self._ModelRouterPackageId
+
+    @ModelRouterPackageId.setter
+    def ModelRouterPackageId(self, ModelRouterPackageId):
+        self._ModelRouterPackageId = ModelRouterPackageId
+
+    @property
+    def Price(self):
+        r"""<p>可退还金额</p>
+        :rtype: float
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+
+    def _deserialize(self, params):
+        self._ModelRouterPackageId = params.get("ModelRouterPackageId")
+        self._Price = params.get("Price")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20151,6 +26564,91 @@ class ModelRouterSet(AbstractModel):
         
 
 
+class ModelTestResult(AbstractModel):
+    r"""BYOK健康探测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>模型</p>
+        :type Model: str
+        :param _Status: <p>健康状况</p><p>枚举值：</p><ul><li>Success： 健康</li><li>Error： 不健康</li></ul>
+        :type Status: str
+        :param _ErrorInfo: <p>错误信息</p>
+        :type ErrorInfo: :class:`tencentcloud.clb.v20180317.models.ProviderTestConnectionErrorInfo`
+        :param _TestConnectionRequest: <p>探测请求</p>
+        :type TestConnectionRequest: :class:`tencentcloud.clb.v20180317.models.TestConnectionRequestInfo`
+        """
+        self._Model = None
+        self._Status = None
+        self._ErrorInfo = None
+        self._TestConnectionRequest = None
+
+    @property
+    def Model(self):
+        r"""<p>模型</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Status(self):
+        r"""<p>健康状况</p><p>枚举值：</p><ul><li>Success： 健康</li><li>Error： 不健康</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorInfo(self):
+        r"""<p>错误信息</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ProviderTestConnectionErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def TestConnectionRequest(self):
+        r"""<p>探测请求</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.TestConnectionRequestInfo`
+        """
+        return self._TestConnectionRequest
+
+    @TestConnectionRequest.setter
+    def TestConnectionRequest(self, TestConnectionRequest):
+        self._TestConnectionRequest = TestConnectionRequest
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Status = params.get("Status")
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ProviderTestConnectionErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        if params.get("TestConnectionRequest") is not None:
+            self._TestConnectionRequest = TestConnectionRequestInfo()
+            self._TestConnectionRequest._deserialize(params.get("TestConnectionRequest"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyBlockIPListRequest(AbstractModel):
     r"""ModifyBlockIPList请求参数结构体
 
@@ -20326,7 +26824,7 @@ class ModifyBudgetAttributesRequest(AbstractModel):
         r"""
         :param _BudgetId: <p>Budget ID。</p>
         :type BudgetId: str
-        :param _BudgetConfigs: <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+        :param _BudgetConfigs: <p>预算配置数组。</p><p>数组长度最大为3，最多可同时配置1d、7d、30d三个刷新周期，且每种刷新周期只能出现一次。BudgetResetAt不支持作为入参设置，系统会按配置的刷新周期自动维护刷新时间。</p>
         :type BudgetConfigs: list of BudgetConfigInput
         :param _BudgetName: <p>Budget名称。</p>
         :type BudgetName: str
@@ -20351,7 +26849,7 @@ class ModifyBudgetAttributesRequest(AbstractModel):
 
     @property
     def BudgetConfigs(self):
-        r"""<p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+        r"""<p>预算配置数组。</p><p>数组长度最大为3，最多可同时配置1d、7d、30d三个刷新周期，且每种刷新周期只能出现一次。BudgetResetAt不支持作为入参设置，系统会按配置的刷新周期自动维护刷新时间。</p>
         :rtype: list of BudgetConfigInput
         """
         return self._BudgetConfigs
@@ -20884,6 +27382,135 @@ class ModifyFunctionTargetsRequest(AbstractModel):
 
 class ModifyFunctionTargetsResponse(AbstractModel):
     r"""ModifyFunctionTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyIntentRouterAttributeRequest(AbstractModel):
+    r"""ModifyIntentRouterAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IntentRouterId: <p>意图路由ID（ir-xxx格式）。</p>
+        :type IntentRouterId: str
+        :param _ModelRouterId: <p>模型路由实例ID。</p>
+        :type ModelRouterId: str
+        :param _RouteName: <p>新的路由名称。</p><p>选填；必须以"IntentRouter/"为前缀，后缀仅支持字母、数字、连字符和下划线，后缀长度1-128个字符。不传则不修改。</p>
+        :type RouteName: str
+        :param _RouterDescribe: <p>意图路由描述。</p>
+        :type RouterDescribe: str
+        :param _Tiers: <p>新的分层配置列表（全量替换）。</p><p>选填；不传则不修改。传入时必须为完整分层集合：复杂度分层须包含全部 4 个分层 SIMPLE/MEDIUM/COMPLEX/REASONING；语义分层须包含 default 及各语义 Tier（取决于实例所用协议，且不可跨协议变更）。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+        :type Tiers: list of TierItem
+        """
+        self._IntentRouterId = None
+        self._ModelRouterId = None
+        self._RouteName = None
+        self._RouterDescribe = None
+        self._Tiers = None
+
+    @property
+    def IntentRouterId(self):
+        r"""<p>意图路由ID（ir-xxx格式）。</p>
+        :rtype: str
+        """
+        return self._IntentRouterId
+
+    @IntentRouterId.setter
+    def IntentRouterId(self, IntentRouterId):
+        self._IntentRouterId = IntentRouterId
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def RouteName(self):
+        r"""<p>新的路由名称。</p><p>选填；必须以"IntentRouter/"为前缀，后缀仅支持字母、数字、连字符和下划线，后缀长度1-128个字符。不传则不修改。</p>
+        :rtype: str
+        """
+        return self._RouteName
+
+    @RouteName.setter
+    def RouteName(self, RouteName):
+        self._RouteName = RouteName
+
+    @property
+    def RouterDescribe(self):
+        r"""<p>意图路由描述。</p>
+        :rtype: str
+        """
+        return self._RouterDescribe
+
+    @RouterDescribe.setter
+    def RouterDescribe(self, RouterDescribe):
+        self._RouterDescribe = RouterDescribe
+
+    @property
+    def Tiers(self):
+        r"""<p>新的分层配置列表（全量替换）。</p><p>选填；不传则不修改。传入时必须为完整分层集合：复杂度分层须包含全部 4 个分层 SIMPLE/MEDIUM/COMPLEX/REASONING；语义分层须包含 default 及各语义 Tier（取决于实例所用协议，且不可跨协议变更）。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+        :rtype: list of TierItem
+        """
+        return self._Tiers
+
+    @Tiers.setter
+    def Tiers(self, Tiers):
+        self._Tiers = Tiers
+
+
+    def _deserialize(self, params):
+        self._IntentRouterId = params.get("IntentRouterId")
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._RouteName = params.get("RouteName")
+        self._RouterDescribe = params.get("RouterDescribe")
+        if params.get("Tiers") is not None:
+            self._Tiers = []
+            for item in params.get("Tiers"):
+                obj = TierItem()
+                obj._deserialize(item)
+                self._Tiers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIntentRouterAttributeResponse(AbstractModel):
+    r"""ModifyIntentRouterAttribute返回参数结构体
 
     """
 
@@ -22105,6 +28732,181 @@ class ModifyLoadBalancersProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyModelAliasAttributesRequest(AbstractModel):
+    r"""ModifyModelAliasAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Coefficient: <p>模型积分系数配置。</p><p>必填，至少包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code>、<code>OutputCoefficient</code> 中的一个字段，未传字段保持原值。</p><p><code>InputCoefficient</code> 为非缓存命中输入积分系数。</p><p><code>InputCachedCoefficient</code> 为缓存命中输入积分系数，用于 provider prompt cache 命中的输入 token。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>各字段取值范围：[0, 5000]，仅支持整数，0 表示该类 token 不计积分。</p>
+        :type Coefficient: :class:`tencentcloud.clb.v20180317.models.Coefficient`
+        :param _ModelAliasNames: <p>模型别名列表。</p><p>不传 <code>ServiceProviderIds</code>（按 ModelAlias 账号维度修改）时支持数组批量，同一份 Coefficient 应用到多个别名。</p><p>传入 <code>ServiceProviderIds</code>（按 ServiceProvider 维度修改）时只能传 1 个别名，锁定唯一 model 别名；去重后不等于 1 个将返回 InvalidParameter。</p>
+        :type ModelAliasNames: list of str
+        :param _ServiceProviderIds: <p>BYOK 实例（ServiceProvider）ID 列表。</p><p>可选，数组。传入时按 ServiceProvider 维度修改：把同一份 Coefficient 批量应用到数组内每一个实例（覆盖配置，仅作用于这些实例），此时 <code>ModelAliasNames</code> 只能传 1 个别名（即 1 别名 × N ServiceProvider）；数组需去重、非空、上限 100，任一实例不归属/不存在/该实例下无该别名将整批返回错误。不传时按 ModelAlias（账号）维度修改，作用于该别名下未单独配置覆盖的全部实例。</p>
+        :type ServiceProviderIds: list of str
+        """
+        self._Coefficient = None
+        self._ModelAliasNames = None
+        self._ServiceProviderIds = None
+
+    @property
+    def Coefficient(self):
+        r"""<p>模型积分系数配置。</p><p>必填，至少包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code>、<code>OutputCoefficient</code> 中的一个字段，未传字段保持原值。</p><p><code>InputCoefficient</code> 为非缓存命中输入积分系数。</p><p><code>InputCachedCoefficient</code> 为缓存命中输入积分系数，用于 provider prompt cache 命中的输入 token。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>各字段取值范围：[0, 5000]，仅支持整数，0 表示该类 token 不计积分。</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.Coefficient`
+        """
+        return self._Coefficient
+
+    @Coefficient.setter
+    def Coefficient(self, Coefficient):
+        self._Coefficient = Coefficient
+
+    @property
+    def ModelAliasNames(self):
+        r"""<p>模型别名列表。</p><p>不传 <code>ServiceProviderIds</code>（按 ModelAlias 账号维度修改）时支持数组批量，同一份 Coefficient 应用到多个别名。</p><p>传入 <code>ServiceProviderIds</code>（按 ServiceProvider 维度修改）时只能传 1 个别名，锁定唯一 model 别名；去重后不等于 1 个将返回 InvalidParameter。</p>
+        :rtype: list of str
+        """
+        return self._ModelAliasNames
+
+    @ModelAliasNames.setter
+    def ModelAliasNames(self, ModelAliasNames):
+        self._ModelAliasNames = ModelAliasNames
+
+    @property
+    def ServiceProviderIds(self):
+        r"""<p>BYOK 实例（ServiceProvider）ID 列表。</p><p>可选，数组。传入时按 ServiceProvider 维度修改：把同一份 Coefficient 批量应用到数组内每一个实例（覆盖配置，仅作用于这些实例），此时 <code>ModelAliasNames</code> 只能传 1 个别名（即 1 别名 × N ServiceProvider）；数组需去重、非空、上限 100，任一实例不归属/不存在/该实例下无该别名将整批返回错误。不传时按 ModelAlias（账号）维度修改，作用于该别名下未单独配置覆盖的全部实例。</p>
+        :rtype: list of str
+        """
+        return self._ServiceProviderIds
+
+    @ServiceProviderIds.setter
+    def ServiceProviderIds(self, ServiceProviderIds):
+        self._ServiceProviderIds = ServiceProviderIds
+
+
+    def _deserialize(self, params):
+        if params.get("Coefficient") is not None:
+            self._Coefficient = Coefficient()
+            self._Coefficient._deserialize(params.get("Coefficient"))
+        self._ModelAliasNames = params.get("ModelAliasNames")
+        self._ServiceProviderIds = params.get("ServiceProviderIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyModelAliasAttributesResponse(AbstractModel):
+    r"""ModifyModelAliasAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyModelAttributesRequest(AbstractModel):
+    r"""ModifyModelAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderId: <p>BYOK的ID</p><p>参数格式：byok-kot39u7j</p>
+        :type ServiceProviderId: str
+        :param _ServiceProviderName: <p>BYOK的自定义名字</p><p>入参限制：1～256个字符</p>
+        :type ServiceProviderName: str
+        """
+        self._ServiceProviderId = None
+        self._ServiceProviderName = None
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK的ID</p><p>参数格式：byok-kot39u7j</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def ServiceProviderName(self):
+        r"""<p>BYOK的自定义名字</p><p>入参限制：1～256个字符</p>
+        :rtype: str
+        """
+        return self._ServiceProviderName
+
+    @ServiceProviderName.setter
+    def ServiceProviderName(self, ServiceProviderName):
+        self._ServiceProviderName = ServiceProviderName
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._ServiceProviderName = params.get("ServiceProviderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyModelAttributesResponse(AbstractModel):
+    r"""ModifyModelAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyModelRouterAttributesRequest(AbstractModel):
     r"""ModifyModelRouterAttributes请求参数结构体
 
@@ -22114,20 +28916,20 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         r"""
         :param _ModelRouterId: <p>模型路由ID</p>
         :type ModelRouterId: str
+        :param _CertId: <p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
+        :type CertId: str
         :param _ModelRouterName: <p>模型路由名称</p>
         :type ModelRouterName: str
         :param _RateLimitConfig: <p>限速配置</p>
         :type RateLimitConfig: :class:`tencentcloud.clb.v20180317.models.RateLimitConfigForModelRouter`
         :param _RouterSetting: <p>路由配置</p>
         :type RouterSetting: :class:`tencentcloud.clb.v20180317.models.RouterSettingWithFallBack`
-        :param _CertId: <p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
-        :type CertId: str
         """
         self._ModelRouterId = None
+        self._CertId = None
         self._ModelRouterName = None
         self._RateLimitConfig = None
         self._RouterSetting = None
-        self._CertId = None
 
     @property
     def ModelRouterId(self):
@@ -22139,6 +28941,17 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
     @ModelRouterId.setter
     def ModelRouterId(self, ModelRouterId):
         self._ModelRouterId = ModelRouterId
+
+    @property
+    def CertId(self):
+        r"""<p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
 
     @property
     def ModelRouterName(self):
@@ -22173,20 +28986,10 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
     def RouterSetting(self, RouterSetting):
         self._RouterSetting = RouterSetting
 
-    @property
-    def CertId(self):
-        r"""<p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
-        :rtype: str
-        """
-        return self._CertId
-
-    @CertId.setter
-    def CertId(self, CertId):
-        self._CertId = CertId
-
 
     def _deserialize(self, params):
         self._ModelRouterId = params.get("ModelRouterId")
+        self._CertId = params.get("CertId")
         self._ModelRouterName = params.get("ModelRouterName")
         if params.get("RateLimitConfig") is not None:
             self._RateLimitConfig = RateLimitConfigForModelRouter()
@@ -22194,7 +28997,6 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         if params.get("RouterSetting") is not None:
             self._RouterSetting = RouterSettingWithFallBack()
             self._RouterSetting._deserialize(params.get("RouterSetting"))
-        self._CertId = params.get("CertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22207,6 +29009,169 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
 
 class ModifyModelRouterAttributesResponse(AbstractModel):
     r"""ModifyModelRouterAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyModelRouterGuardrailsRequest(AbstractModel):
+    r"""ModifyModelRouterGuardrails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Guardrails: <p>待修改的 Guardrail 防护配置列表。</p><p>当前最多支持 1 个元素。每个元素必须填写 GuardrailId；当 Type 为 WAF 或未传按 WAF 处理时，InstanceId 和 ServiceId 必填；InputCheckDepth 为选填，不传时沿用当前已关联 Guardrail 的取值。</p>
+        :type Guardrails: list of GuardrailConfig
+        :param _ModelRouterId: <p>模型路由实例 ID。</p>
+        :type ModelRouterId: str
+        """
+        self._Guardrails = None
+        self._ModelRouterId = None
+
+    @property
+    def Guardrails(self):
+        r"""<p>待修改的 Guardrail 防护配置列表。</p><p>当前最多支持 1 个元素。每个元素必须填写 GuardrailId；当 Type 为 WAF 或未传按 WAF 处理时，InstanceId 和 ServiceId 必填；InputCheckDepth 为选填，不传时沿用当前已关联 Guardrail 的取值。</p>
+        :rtype: list of GuardrailConfig
+        """
+        return self._Guardrails
+
+    @Guardrails.setter
+    def Guardrails(self, Guardrails):
+        self._Guardrails = Guardrails
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例 ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+
+    def _deserialize(self, params):
+        if params.get("Guardrails") is not None:
+            self._Guardrails = []
+            for item in params.get("Guardrails"):
+                obj = GuardrailConfig()
+                obj._deserialize(item)
+                self._Guardrails.append(obj)
+        self._ModelRouterId = params.get("ModelRouterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyModelRouterGuardrailsResponse(AbstractModel):
+    r"""ModifyModelRouterGuardrails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyModelRouterSecurityGroupsRequest(AbstractModel):
+    r"""ModifyModelRouterSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例ID</p>
+        :type ModelRouterId: str
+        :param _SecurityGroups: <p>需要绑定的安全组ID列表</p>
+        :type SecurityGroups: list of str
+        """
+        self._ModelRouterId = None
+        self._SecurityGroups = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例ID</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def SecurityGroups(self):
+        r"""<p>需要绑定的安全组ID列表</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroups
+
+    @SecurityGroups.setter
+    def SecurityGroups(self, SecurityGroups):
+        self._SecurityGroups = SecurityGroups
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._SecurityGroups = params.get("SecurityGroups")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyModelRouterSecurityGroupsResponse(AbstractModel):
+    r"""ModifyModelRouterSecurityGroups返回参数结构体
 
     """
 
@@ -22444,6 +29409,100 @@ class ModifyRuleRequest(AbstractModel):
 
 class ModifyRuleResponse(AbstractModel):
     r"""ModifyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyServiceProviderModelAttributesRequest(AbstractModel):
+    r"""ModifyServiceProviderModelAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderId: <p>BYOK 实例 ID</p>
+        :type ServiceProviderId: str
+        :param _ModelName: <p>待修改的模型的名称（原始模型名称）</p>
+        :type ModelName: str
+        :param _InputModalities: <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :type InputModalities: list of str
+        """
+        self._ServiceProviderId = None
+        self._ModelName = None
+        self._InputModalities = None
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK 实例 ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def ModelName(self):
+        r"""<p>待修改的模型的名称（原始模型名称）</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def InputModalities(self):
+        r"""<p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :rtype: list of str
+        """
+        return self._InputModalities
+
+    @InputModalities.setter
+    def InputModalities(self, InputModalities):
+        self._InputModalities = InputModalities
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._ModelName = params.get("ModelName")
+        self._InputModalities = params.get("InputModalities")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyServiceProviderModelAttributesResponse(AbstractModel):
+    r"""ModifyServiceProviderModelAttributes返回参数结构体
 
     """
 
@@ -23352,6 +30411,57 @@ class MultiCertInfo(AbstractModel):
         
 
 
+class MultiModalityAttachments(AbstractModel):
+    r"""聊天测试接口多模态附件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>base64 url编码的文件内容</p>
+        :type Data: str
+        :param _Type: <p>附件类型</p><p>枚举值：</p><ul><li>image： 图像</li><li>pdf： pdf（文件）</li></ul>
+        :type Type: str
+        """
+        self._Data = None
+        self._Type = None
+
+    @property
+    def Data(self):
+        r"""<p>base64 url编码的文件内容</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Type(self):
+        r"""<p>附件类型</p><p>枚举值：</p><ul><li>image： 图像</li><li>pdf： pdf（文件）</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OAuth(AbstractModel):
     r"""OAuth配置信息。
 
@@ -23481,6 +30591,153 @@ class Price(AbstractModel):
         if params.get("LcuPrice") is not None:
             self._LcuPrice = ItemPrice()
             self._LcuPrice._deserialize(params.get("LcuPrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProviderItem(AbstractModel):
+    r"""Provider 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: <p>Provider 标识（如 openai）</p>
+        :type Provider: str
+        :param _DisplayName: <p>显示名称（如 OpenAI）</p>
+        :type DisplayName: str
+        :param _Protocols: <p>模型协议列表</p>
+        :type Protocols: list of str
+        :param _EnglishDisplayName: <p>英文显示名称</p>
+        :type EnglishDisplayName: str
+        """
+        self._Provider = None
+        self._DisplayName = None
+        self._Protocols = None
+        self._EnglishDisplayName = None
+
+    @property
+    def Provider(self):
+        r"""<p>Provider 标识（如 openai）</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def DisplayName(self):
+        r"""<p>显示名称（如 OpenAI）</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Protocols(self):
+        r"""<p>模型协议列表</p>
+        :rtype: list of str
+        """
+        return self._Protocols
+
+    @Protocols.setter
+    def Protocols(self, Protocols):
+        self._Protocols = Protocols
+
+    @property
+    def EnglishDisplayName(self):
+        r"""<p>英文显示名称</p>
+        :rtype: str
+        """
+        return self._EnglishDisplayName
+
+    @EnglishDisplayName.setter
+    def EnglishDisplayName(self, EnglishDisplayName):
+        self._EnglishDisplayName = EnglishDisplayName
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._DisplayName = params.get("DisplayName")
+        self._Protocols = params.get("Protocols")
+        self._EnglishDisplayName = params.get("EnglishDisplayName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProviderTestConnectionErrorInfo(AbstractModel):
+    r"""BYOK健康检查错误信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HttpCode: <p>上游模型侧返回的HTTP状态码</p>
+        :type HttpCode: int
+        :param _ErrorStatus: <p>错误状态码</p>
+        :type ErrorStatus: str
+        :param _OriginalMessage: <p>探测请求错误信息</p>
+        :type OriginalMessage: str
+        """
+        self._HttpCode = None
+        self._ErrorStatus = None
+        self._OriginalMessage = None
+
+    @property
+    def HttpCode(self):
+        r"""<p>上游模型侧返回的HTTP状态码</p>
+        :rtype: int
+        """
+        return self._HttpCode
+
+    @HttpCode.setter
+    def HttpCode(self, HttpCode):
+        self._HttpCode = HttpCode
+
+    @property
+    def ErrorStatus(self):
+        r"""<p>错误状态码</p>
+        :rtype: str
+        """
+        return self._ErrorStatus
+
+    @ErrorStatus.setter
+    def ErrorStatus(self, ErrorStatus):
+        self._ErrorStatus = ErrorStatus
+
+    @property
+    def OriginalMessage(self):
+        r"""<p>探测请求错误信息</p>
+        :rtype: str
+        """
+        return self._OriginalMessage
+
+    @OriginalMessage.setter
+    def OriginalMessage(self, OriginalMessage):
+        self._OriginalMessage = OriginalMessage
+
+
+    def _deserialize(self, params):
+        self._HttpCode = params.get("HttpCode")
+        self._ErrorStatus = params.get("ErrorStatus")
+        self._OriginalMessage = params.get("OriginalMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23743,6 +31000,85 @@ class RateLimitConfigForModelRouter(AbstractModel):
         
 
 
+class RefundModelRouterResourcePackageRequest(AbstractModel):
+    r"""RefundModelRouterResourcePackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterResourcePackageIds: <p>待退还的模型路由资源包Id</p><p>非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。</p>
+        :type ModelRouterResourcePackageIds: list of str
+        """
+        self._ModelRouterResourcePackageIds = None
+
+    @property
+    def ModelRouterResourcePackageIds(self):
+        r"""<p>待退还的模型路由资源包Id</p><p>非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。</p>
+        :rtype: list of str
+        """
+        return self._ModelRouterResourcePackageIds
+
+    @ModelRouterResourcePackageIds.setter
+    def ModelRouterResourcePackageIds(self, ModelRouterResourcePackageIds):
+        self._ModelRouterResourcePackageIds = ModelRouterResourcePackageIds
+
+
+    def _deserialize(self, params):
+        self._ModelRouterResourcePackageIds = params.get("ModelRouterResourcePackageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefundModelRouterResourcePackageResponse(AbstractModel):
+    r"""RefundModelRouterResourcePackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealNames: <p>退还模型路由资源包的订单号</p>
+        :type DealNames: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealNames = None
+        self._RequestId = None
+
+    @property
+    def DealNames(self):
+        r"""<p>退还模型路由资源包的订单号</p>
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealNames = params.get("DealNames")
+        self._RequestId = params.get("RequestId")
+
+
 class RegenerateKeysRequest(AbstractModel):
     r"""RegenerateKeys请求参数结构体
 
@@ -23801,27 +31137,16 @@ class RegenerateKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegeneratedKeys: <p>重新生成后的Key的信息</p>
-        :type RegeneratedKeys: list of RegeneratedKey
         :param _FailedKeyIds: <p>重新生成失败的Key的ID列表</p>
         :type FailedKeyIds: list of str
+        :param _RegeneratedKeys: <p>重新生成后的Key的信息</p>
+        :type RegeneratedKeys: list of RegeneratedKey
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._RegeneratedKeys = None
         self._FailedKeyIds = None
+        self._RegeneratedKeys = None
         self._RequestId = None
-
-    @property
-    def RegeneratedKeys(self):
-        r"""<p>重新生成后的Key的信息</p>
-        :rtype: list of RegeneratedKey
-        """
-        return self._RegeneratedKeys
-
-    @RegeneratedKeys.setter
-    def RegeneratedKeys(self, RegeneratedKeys):
-        self._RegeneratedKeys = RegeneratedKeys
 
     @property
     def FailedKeyIds(self):
@@ -23833,6 +31158,17 @@ class RegenerateKeysResponse(AbstractModel):
     @FailedKeyIds.setter
     def FailedKeyIds(self, FailedKeyIds):
         self._FailedKeyIds = FailedKeyIds
+
+    @property
+    def RegeneratedKeys(self):
+        r"""<p>重新生成后的Key的信息</p>
+        :rtype: list of RegeneratedKey
+        """
+        return self._RegeneratedKeys
+
+    @RegeneratedKeys.setter
+    def RegeneratedKeys(self, RegeneratedKeys):
+        self._RegeneratedKeys = RegeneratedKeys
 
     @property
     def RequestId(self):
@@ -23847,13 +31183,13 @@ class RegenerateKeysResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FailedKeyIds = params.get("FailedKeyIds")
         if params.get("RegeneratedKeys") is not None:
             self._RegeneratedKeys = []
             for item in params.get("RegeneratedKeys"):
                 obj = RegeneratedKey()
                 obj._deserialize(item)
                 self._RegeneratedKeys.append(obj)
-        self._FailedKeyIds = params.get("FailedKeyIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -23864,24 +31200,13 @@ class RegeneratedKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyId: <p>Key的ID</p>
-        :type KeyId: str
         :param _Key: <p>重新生成的明文Key</p>
         :type Key: str
+        :param _KeyId: <p>Key的ID</p>
+        :type KeyId: str
         """
-        self._KeyId = None
         self._Key = None
-
-    @property
-    def KeyId(self):
-        r"""<p>Key的ID</p>
-        :rtype: str
-        """
-        return self._KeyId
-
-    @KeyId.setter
-    def KeyId(self, KeyId):
-        self._KeyId = KeyId
+        self._KeyId = None
 
     @property
     def Key(self):
@@ -23894,10 +31219,21 @@ class RegeneratedKey(AbstractModel):
     def Key(self, Key):
         self._Key = Key
 
+    @property
+    def KeyId(self):
+        r"""<p>Key的ID</p>
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
 
     def _deserialize(self, params):
-        self._KeyId = params.get("KeyId")
         self._Key = params.get("Key")
+        self._KeyId = params.get("KeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24026,6 +31362,90 @@ class RegisterFunctionTargetsRequest(AbstractModel):
 
 class RegisterFunctionTargetsResponse(AbstractModel):
     r"""RegisterFunctionTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RegisterModelsToServiceProviderRequest(AbstractModel):
+    r"""RegisterModelsToServiceProvider请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderId: <p>BYOK的ID</p>
+        :type ServiceProviderId: str
+        :param _Models: <p>需要关联的模型信息</p>
+        :type Models: list of ModelItem
+        """
+        self._ServiceProviderId = None
+        self._Models = None
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK的ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def Models(self):
+        r"""<p>需要关联的模型信息</p>
+        :rtype: list of ModelItem
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = ModelItem()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegisterModelsToServiceProviderResponse(AbstractModel):
+    r"""RegisterModelsToServiceProvider返回参数结构体
 
     """
 
@@ -24338,6 +31758,164 @@ class RegisterTargetsWithClassicalLBRequest(AbstractModel):
 
 class RegisterTargetsWithClassicalLBResponse(AbstractModel):
     r"""RegisterTargetsWithClassicalLB返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RemoveModelKeyRequest(AbstractModel):
+    r"""RemoveModelKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderId: <p>服务提供商ID</p>
+        :type ServiceProviderId: str
+        :param _KeyIds: <p>Key 业务 ID 列表，至少 1 个，最多 10 个</p>
+        :type KeyIds: list of str
+        """
+        self._ServiceProviderId = None
+        self._KeyIds = None
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>服务提供商ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def KeyIds(self):
+        r"""<p>Key 业务 ID 列表，至少 1 个，最多 10 个</p>
+        :rtype: list of str
+        """
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._KeyIds = params.get("KeyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveModelKeyResponse(AbstractModel):
+    r"""RemoveModelKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RemoveModelRewriteRequest(AbstractModel):
+    r"""RemoveModelRewrite请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelRouterId: <p>模型路由实例 ID。</p>
+        :type ModelRouterId: str
+        :param _SourceModel: <p>要删除的源模型名（重写规则的 key）。</p><p>长度 1-255 字符；支持特殊值 <code>default</code> 表示删除兜底规则。</p><p>当指定的 SourceModel 当前不存在重写规则时，请求幂等成功。</p>
+        :type SourceModel: str
+        """
+        self._ModelRouterId = None
+        self._SourceModel = None
+
+    @property
+    def ModelRouterId(self):
+        r"""<p>模型路由实例 ID。</p>
+        :rtype: str
+        """
+        return self._ModelRouterId
+
+    @ModelRouterId.setter
+    def ModelRouterId(self, ModelRouterId):
+        self._ModelRouterId = ModelRouterId
+
+    @property
+    def SourceModel(self):
+        r"""<p>要删除的源模型名（重写规则的 key）。</p><p>长度 1-255 字符；支持特殊值 <code>default</code> 表示删除兜底规则。</p><p>当指定的 SourceModel 当前不存在重写规则时，请求幂等成功。</p>
+        :rtype: str
+        """
+        return self._SourceModel
+
+    @SourceModel.setter
+    def SourceModel(self, SourceModel):
+        self._SourceModel = SourceModel
+
+
+    def _deserialize(self, params):
+        self._ModelRouterId = params.get("ModelRouterId")
+        self._SourceModel = params.get("SourceModel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveModelRewriteResponse(AbstractModel):
+    r"""RemoveModelRewrite返回参数结构体
 
     """
 
@@ -24683,6 +32261,57 @@ class ResourceAvailability(AbstractModel):
         
 
 
+class RewriteItem(AbstractModel):
+    r"""单条模型重写规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceModel: <p>源模型名（重写规则的 key）。</p><p>特殊值 <code>default</code> 表示兜底规则（命中所有未显式列出的源模型）。</p>
+        :type SourceModel: str
+        :param _TargetModel: <p>目标模型名（重写规则的 value）。</p>
+        :type TargetModel: str
+        """
+        self._SourceModel = None
+        self._TargetModel = None
+
+    @property
+    def SourceModel(self):
+        r"""<p>源模型名（重写规则的 key）。</p><p>特殊值 <code>default</code> 表示兜底规则（命中所有未显式列出的源模型）。</p>
+        :rtype: str
+        """
+        return self._SourceModel
+
+    @SourceModel.setter
+    def SourceModel(self, SourceModel):
+        self._SourceModel = SourceModel
+
+    @property
+    def TargetModel(self):
+        r"""<p>目标模型名（重写规则的 value）。</p>
+        :rtype: str
+        """
+        return self._TargetModel
+
+    @TargetModel.setter
+    def TargetModel(self, TargetModel):
+        self._TargetModel = TargetModel
+
+
+    def _deserialize(self, params):
+        self._SourceModel = params.get("SourceModel")
+        self._TargetModel = params.get("TargetModel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RewriteLocationMap(AbstractModel):
     r"""转发规则之间的重定向关系
 
@@ -24886,19 +32515,31 @@ class RouterSettingWithFallBack(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CrossModelGroupRoutingStrategy: <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LowestCost： 最低积分路由</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrossModelGroupRoutingStrategy: str
         :param _FallBack: <p>回退策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FallBack: :class:`tencentcloud.clb.v20180317.models.FallBackItem`
         :param _RoutingStrategy: <p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoutingStrategy: str
-        :param _CrossModelGroupRoutingStrategy: <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CrossModelGroupRoutingStrategy: str
         """
+        self._CrossModelGroupRoutingStrategy = None
         self._FallBack = None
         self._RoutingStrategy = None
-        self._CrossModelGroupRoutingStrategy = None
+
+    @property
+    def CrossModelGroupRoutingStrategy(self):
+        r"""<p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LowestCost： 最低积分路由</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CrossModelGroupRoutingStrategy
+
+    @CrossModelGroupRoutingStrategy.setter
+    def CrossModelGroupRoutingStrategy(self, CrossModelGroupRoutingStrategy):
+        self._CrossModelGroupRoutingStrategy = CrossModelGroupRoutingStrategy
 
     @property
     def FallBack(self):
@@ -24924,25 +32565,13 @@ class RouterSettingWithFallBack(AbstractModel):
     def RoutingStrategy(self, RoutingStrategy):
         self._RoutingStrategy = RoutingStrategy
 
-    @property
-    def CrossModelGroupRoutingStrategy(self):
-        r"""<p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CrossModelGroupRoutingStrategy
-
-    @CrossModelGroupRoutingStrategy.setter
-    def CrossModelGroupRoutingStrategy(self, CrossModelGroupRoutingStrategy):
-        self._CrossModelGroupRoutingStrategy = CrossModelGroupRoutingStrategy
-
 
     def _deserialize(self, params):
+        self._CrossModelGroupRoutingStrategy = params.get("CrossModelGroupRoutingStrategy")
         if params.get("FallBack") is not None:
             self._FallBack = FallBackItem()
             self._FallBack._deserialize(params.get("FallBack"))
         self._RoutingStrategy = params.get("RoutingStrategy")
-        self._CrossModelGroupRoutingStrategy = params.get("CrossModelGroupRoutingStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26250,6 +33879,375 @@ class ServiceEndPoints(AbstractModel):
         
 
 
+class ServiceProvider(AbstractModel):
+    r"""BYOK信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessType: <p>BYOK类型</p>
+        :type AccessType: str
+        :param _InputModalities: <p>单个byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+        :type InputModalities: list of str
+        :param _Protocol: <p>模型协议</p>
+        :type Protocol: str
+        :param _Provider: <p>BYOK的所属厂商</p>
+        :type Provider: str
+        :param _ServiceProviderId: <p>BYOK实例ID</p>
+        :type ServiceProviderId: str
+        :param _ServiceProviderName: <p>BYOK名称</p>
+        :type ServiceProviderName: str
+        """
+        self._AccessType = None
+        self._InputModalities = None
+        self._Protocol = None
+        self._Provider = None
+        self._ServiceProviderId = None
+        self._ServiceProviderName = None
+
+    @property
+    def AccessType(self):
+        r"""<p>BYOK类型</p>
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def InputModalities(self):
+        r"""<p>单个byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+        :rtype: list of str
+        """
+        return self._InputModalities
+
+    @InputModalities.setter
+    def InputModalities(self, InputModalities):
+        self._InputModalities = InputModalities
+
+    @property
+    def Protocol(self):
+        r"""<p>模型协议</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Provider(self):
+        r"""<p>BYOK的所属厂商</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK实例ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def ServiceProviderName(self):
+        r"""<p>BYOK名称</p>
+        :rtype: str
+        """
+        return self._ServiceProviderName
+
+    @ServiceProviderName.setter
+    def ServiceProviderName(self, ServiceProviderName):
+        self._ServiceProviderName = ServiceProviderName
+
+
+    def _deserialize(self, params):
+        self._AccessType = params.get("AccessType")
+        self._InputModalities = params.get("InputModalities")
+        self._Protocol = params.get("Protocol")
+        self._Provider = params.get("Provider")
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._ServiceProviderName = params.get("ServiceProviderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceProviderCoefficient(AbstractModel):
+    r"""BYOK 实例（ServiceProvider）维度积分系数明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Coefficient: <p>该 BYOK 实例（ServiceProvider）维度的积分系数。</p><p>可选字段：仅当该实例单独配置了 ServiceProvider 维度系数时返回，返回值即该实例的生效系数；未返回时表示该实例继承所属 ModelAlias 的 <code>Coefficient</code>。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Coefficient: :class:`tencentcloud.clb.v20180317.models.Coefficient`
+        :param _ServiceProviderId: <p>BYOK 实例（ServiceProvider）ID。</p>
+        :type ServiceProviderId: str
+        :param _ServiceProviderName: <p>BYOK 实例（ServiceProvider）名称。</p>
+        :type ServiceProviderName: str
+        """
+        self._Coefficient = None
+        self._ServiceProviderId = None
+        self._ServiceProviderName = None
+
+    @property
+    def Coefficient(self):
+        r"""<p>该 BYOK 实例（ServiceProvider）维度的积分系数。</p><p>可选字段：仅当该实例单独配置了 ServiceProvider 维度系数时返回，返回值即该实例的生效系数；未返回时表示该实例继承所属 ModelAlias 的 <code>Coefficient</code>。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.Coefficient`
+        """
+        return self._Coefficient
+
+    @Coefficient.setter
+    def Coefficient(self, Coefficient):
+        self._Coefficient = Coefficient
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK 实例（ServiceProvider）ID。</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def ServiceProviderName(self):
+        r"""<p>BYOK 实例（ServiceProvider）名称。</p>
+        :rtype: str
+        """
+        return self._ServiceProviderName
+
+    @ServiceProviderName.setter
+    def ServiceProviderName(self, ServiceProviderName):
+        self._ServiceProviderName = ServiceProviderName
+
+
+    def _deserialize(self, params):
+        if params.get("Coefficient") is not None:
+            self._Coefficient = Coefficient()
+            self._Coefficient._deserialize(params.get("Coefficient"))
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._ServiceProviderName = params.get("ServiceProviderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceProviderItem(AbstractModel):
+    r"""服务商详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceProviderId: <p>服务提供商 ID</p>
+        :type ServiceProviderId: str
+        :param _ServiceProviderName: <p>用户自定义服务提供商名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceProviderName: str
+        :param _ModelProvider: <p>模型供应商</p>
+        :type ModelProvider: str
+        :param _InputModalities: <p>该byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+        :type InputModalities: list of str
+        """
+        self._ServiceProviderId = None
+        self._ServiceProviderName = None
+        self._ModelProvider = None
+        self._InputModalities = None
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>服务提供商 ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def ServiceProviderName(self):
+        r"""<p>用户自定义服务提供商名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceProviderName
+
+    @ServiceProviderName.setter
+    def ServiceProviderName(self, ServiceProviderName):
+        self._ServiceProviderName = ServiceProviderName
+
+    @property
+    def ModelProvider(self):
+        r"""<p>模型供应商</p>
+        :rtype: str
+        """
+        return self._ModelProvider
+
+    @ModelProvider.setter
+    def ModelProvider(self, ModelProvider):
+        self._ModelProvider = ModelProvider
+
+    @property
+    def InputModalities(self):
+        r"""<p>该byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+        :rtype: list of str
+        """
+        return self._InputModalities
+
+    @InputModalities.setter
+    def InputModalities(self, InputModalities):
+        self._InputModalities = InputModalities
+
+
+    def _deserialize(self, params):
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._ServiceProviderName = params.get("ServiceProviderName")
+        self._ModelProvider = params.get("ModelProvider")
+        self._InputModalities = params.get("InputModalities")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceProviderModelItem(AbstractModel):
+    r"""model 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssociatedModelRouters: <p>关联的模型路由实例列表</p>
+        :type AssociatedModelRouters: list of AssociatedModelRouterItem
+        :param _InputModalities: <p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>默认值：text</p>
+        :type InputModalities: list of str
+        :param _ModelAlias: <p>模型别名, 可以用于实际访问</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAlias: str
+        :param _ModelId: <p>模型唯一标识, 原始模型名称</p>
+        :type ModelId: str
+        :param _ProbedInputModalities: <p>该模型经探测最多支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul><p>模型不健康时列表为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProbedInputModalities: list of str
+        """
+        self._AssociatedModelRouters = None
+        self._InputModalities = None
+        self._ModelAlias = None
+        self._ModelId = None
+        self._ProbedInputModalities = None
+
+    @property
+    def AssociatedModelRouters(self):
+        r"""<p>关联的模型路由实例列表</p>
+        :rtype: list of AssociatedModelRouterItem
+        """
+        return self._AssociatedModelRouters
+
+    @AssociatedModelRouters.setter
+    def AssociatedModelRouters(self, AssociatedModelRouters):
+        self._AssociatedModelRouters = AssociatedModelRouters
+
+    @property
+    def InputModalities(self):
+        r"""<p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>默认值：text</p>
+        :rtype: list of str
+        """
+        return self._InputModalities
+
+    @InputModalities.setter
+    def InputModalities(self, InputModalities):
+        self._InputModalities = InputModalities
+
+    @property
+    def ModelAlias(self):
+        r"""<p>模型别名, 可以用于实际访问</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelAlias
+
+    @ModelAlias.setter
+    def ModelAlias(self, ModelAlias):
+        self._ModelAlias = ModelAlias
+
+    @property
+    def ModelId(self):
+        r"""<p>模型唯一标识, 原始模型名称</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ProbedInputModalities(self):
+        r"""<p>该模型经探测最多支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul><p>模型不健康时列表为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ProbedInputModalities
+
+    @ProbedInputModalities.setter
+    def ProbedInputModalities(self, ProbedInputModalities):
+        self._ProbedInputModalities = ProbedInputModalities
+
+
+    def _deserialize(self, params):
+        if params.get("AssociatedModelRouters") is not None:
+            self._AssociatedModelRouters = []
+            for item in params.get("AssociatedModelRouters"):
+                obj = AssociatedModelRouterItem()
+                obj._deserialize(item)
+                self._AssociatedModelRouters.append(obj)
+        self._InputModalities = params.get("InputModalities")
+        self._ModelAlias = params.get("ModelAlias")
+        self._ModelId = params.get("ModelId")
+        self._ProbedInputModalities = params.get("ProbedInputModalities")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SetCustomizedConfigForLoadBalancerRequest(AbstractModel):
     r"""SetCustomizedConfigForLoadBalancer请求参数结构体
 
@@ -26927,6 +34925,57 @@ class SnatIp(AbstractModel):
     def _deserialize(self, params):
         self._SubnetId = params.get("SubnetId")
         self._Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Sort(AbstractModel):
+    r"""排序条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Field: <p>排序的字段</p>
+        :type Field: str
+        :param _Order: <p>排序方式，支持ASC、DESC</p>
+        :type Order: str
+        """
+        self._Field = None
+        self._Order = None
+
+    @property
+    def Field(self):
+        r"""<p>排序的字段</p>
+        :rtype: str
+        """
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def Order(self):
+        r"""<p>排序方式，支持ASC、DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._Field = params.get("Field")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28481,6 +36530,591 @@ class TargetRegionInfo(AbstractModel):
         self._Region = params.get("Region")
         self._VpcId = params.get("VpcId")
         self._NumericalVpcId = params.get("NumericalVpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TestConnectionRequestInfo(AbstractModel):
+    r"""BYOK健康检查请求
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestUrl: <p>请求URL</p>
+        :type RequestUrl: str
+        :param _RequestBody: <p>请求体</p>
+        :type RequestBody: str
+        :param _RequestHeaders: <p>请求头</p>
+        :type RequestHeaders: str
+        """
+        self._RequestUrl = None
+        self._RequestBody = None
+        self._RequestHeaders = None
+
+    @property
+    def RequestUrl(self):
+        r"""<p>请求URL</p>
+        :rtype: str
+        """
+        return self._RequestUrl
+
+    @RequestUrl.setter
+    def RequestUrl(self, RequestUrl):
+        self._RequestUrl = RequestUrl
+
+    @property
+    def RequestBody(self):
+        r"""<p>请求体</p>
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+    @property
+    def RequestHeaders(self):
+        r"""<p>请求头</p>
+        :rtype: str
+        """
+        return self._RequestHeaders
+
+    @RequestHeaders.setter
+    def RequestHeaders(self, RequestHeaders):
+        self._RequestHeaders = RequestHeaders
+
+
+    def _deserialize(self, params):
+        self._RequestUrl = params.get("RequestUrl")
+        self._RequestBody = params.get("RequestBody")
+        self._RequestHeaders = params.get("RequestHeaders")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TestModelInputModalitiesRequest(AbstractModel):
+    r"""TestModelInputModalities请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>待探测的模型（原始模型名称）</p>
+        :type Model: str
+        :param _ProviderKey: <p>待探测的API Key（明文）</p>
+        :type ProviderKey: str
+        :param _ProviderKeyId: <p>已创建的BYOK API Key ID（与ProviderKey二选一传入）</p>
+        :type ProviderKeyId: str
+        :param _AccessType: <p>BYOK类型，当ProviderKey传入时必填</p>
+        :type AccessType: str
+        :param _ModelProtocol: <p>模型厂商协议，当ProviderKey传入时必填</p>
+        :type ModelProtocol: str
+        :param _ModelProvider: <p>模型的厂商</p>
+        :type ModelProvider: str
+        :param _ApiBase: <p>自定义ApiBase，当ProviderKey传入且AccessType且PrivateCustom/PublicCustom时必填</p>
+        :type ApiBase: str
+        :param _HostHeader: <p>请求携带的Host头部，当AccessType为PrivateCustom时生效</p>
+        :type HostHeader: str
+        :param _ServiceProviderId: <p>BYOK实例ID，当AccessType为PrivateCustom时生效，ProviderKey传入时必填</p>
+        :type ServiceProviderId: str
+        :param _VerifySSL: <p>是否校验服务提供商的SSL证书</p><p>PublicBYOK时为True且禁止传入；若传入VerifySSL，则优先同步入参逻辑；若传入了ServiceProviderId则同步已创建的Byok实例该Model的逻辑；否则PublicCustom模式下为True，PrivateCustom模式下为False。</p>
+        :type VerifySSL: bool
+        """
+        self._Model = None
+        self._ProviderKey = None
+        self._ProviderKeyId = None
+        self._AccessType = None
+        self._ModelProtocol = None
+        self._ModelProvider = None
+        self._ApiBase = None
+        self._HostHeader = None
+        self._ServiceProviderId = None
+        self._VerifySSL = None
+
+    @property
+    def Model(self):
+        r"""<p>待探测的模型（原始模型名称）</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def ProviderKey(self):
+        r"""<p>待探测的API Key（明文）</p>
+        :rtype: str
+        """
+        return self._ProviderKey
+
+    @ProviderKey.setter
+    def ProviderKey(self, ProviderKey):
+        self._ProviderKey = ProviderKey
+
+    @property
+    def ProviderKeyId(self):
+        r"""<p>已创建的BYOK API Key ID（与ProviderKey二选一传入）</p>
+        :rtype: str
+        """
+        return self._ProviderKeyId
+
+    @ProviderKeyId.setter
+    def ProviderKeyId(self, ProviderKeyId):
+        self._ProviderKeyId = ProviderKeyId
+
+    @property
+    def AccessType(self):
+        r"""<p>BYOK类型，当ProviderKey传入时必填</p>
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def ModelProtocol(self):
+        r"""<p>模型厂商协议，当ProviderKey传入时必填</p>
+        :rtype: str
+        """
+        return self._ModelProtocol
+
+    @ModelProtocol.setter
+    def ModelProtocol(self, ModelProtocol):
+        self._ModelProtocol = ModelProtocol
+
+    @property
+    def ModelProvider(self):
+        r"""<p>模型的厂商</p>
+        :rtype: str
+        """
+        return self._ModelProvider
+
+    @ModelProvider.setter
+    def ModelProvider(self, ModelProvider):
+        self._ModelProvider = ModelProvider
+
+    @property
+    def ApiBase(self):
+        r"""<p>自定义ApiBase，当ProviderKey传入且AccessType且PrivateCustom/PublicCustom时必填</p>
+        :rtype: str
+        """
+        return self._ApiBase
+
+    @ApiBase.setter
+    def ApiBase(self, ApiBase):
+        self._ApiBase = ApiBase
+
+    @property
+    def HostHeader(self):
+        r"""<p>请求携带的Host头部，当AccessType为PrivateCustom时生效</p>
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK实例ID，当AccessType为PrivateCustom时生效，ProviderKey传入时必填</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def VerifySSL(self):
+        r"""<p>是否校验服务提供商的SSL证书</p><p>PublicBYOK时为True且禁止传入；若传入VerifySSL，则优先同步入参逻辑；若传入了ServiceProviderId则同步已创建的Byok实例该Model的逻辑；否则PublicCustom模式下为True，PrivateCustom模式下为False。</p>
+        :rtype: bool
+        """
+        return self._VerifySSL
+
+    @VerifySSL.setter
+    def VerifySSL(self, VerifySSL):
+        self._VerifySSL = VerifySSL
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._ProviderKey = params.get("ProviderKey")
+        self._ProviderKeyId = params.get("ProviderKeyId")
+        self._AccessType = params.get("AccessType")
+        self._ModelProtocol = params.get("ModelProtocol")
+        self._ModelProvider = params.get("ModelProvider")
+        self._ApiBase = params.get("ApiBase")
+        self._HostHeader = params.get("HostHeader")
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._VerifySSL = params.get("VerifySSL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TestModelInputModalitiesResponse(AbstractModel):
+    r"""TestModelInputModalities返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>探测的模型</p>
+        :type Model: str
+        :param _SupportedModalities: <p>该模型确认支持的输入模态列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>收到上游大模型对于输入模态的响应即为“确认支持”</p>
+        :type SupportedModalities: list of str
+        :param _ProbeDetails: <p>每个待探测模态的详细请求结果</p>
+        :type ProbeDetails: list of ModalityProbeDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Model = None
+        self._SupportedModalities = None
+        self._ProbeDetails = None
+        self._RequestId = None
+
+    @property
+    def Model(self):
+        r"""<p>探测的模型</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def SupportedModalities(self):
+        r"""<p>该模型确认支持的输入模态列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>收到上游大模型对于输入模态的响应即为“确认支持”</p>
+        :rtype: list of str
+        """
+        return self._SupportedModalities
+
+    @SupportedModalities.setter
+    def SupportedModalities(self, SupportedModalities):
+        self._SupportedModalities = SupportedModalities
+
+    @property
+    def ProbeDetails(self):
+        r"""<p>每个待探测模态的详细请求结果</p>
+        :rtype: list of ModalityProbeDetail
+        """
+        return self._ProbeDetails
+
+    @ProbeDetails.setter
+    def ProbeDetails(self, ProbeDetails):
+        self._ProbeDetails = ProbeDetails
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._SupportedModalities = params.get("SupportedModalities")
+        if params.get("ProbeDetails") is not None:
+            self._ProbeDetails = []
+            for item in params.get("ProbeDetails"):
+                obj = ModalityProbeDetail()
+                obj._deserialize(item)
+                self._ProbeDetails.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class TestServiceProviderConnectionRequest(AbstractModel):
+    r"""TestServiceProviderConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Models: <p>需要探测的模型列表</p><p>入参限制：上限为20个模型</p>
+        :type Models: list of str
+        :param _ProviderKey: <p>需要探测的Key</p>
+        :type ProviderKey: str
+        :param _ProviderKeyId: <p>需要探测的KeyId，和ProviderKey二者传一个即可</p>
+        :type ProviderKeyId: str
+        :param _AccessType: <p>BYOK类型，当ProviderKey存在时必传</p>
+        :type AccessType: str
+        :param _ModelProvider: <p>模型的厂商</p>
+        :type ModelProvider: str
+        :param _ModelProtocol: <p>模型厂商协议，当ProviderKey存在时必传</p>
+        :type ModelProtocol: str
+        :param _ApiBase: <p>BYOK类型，当AccessType为PublicCustom时生效</p>
+        :type ApiBase: str
+        :param _HostHeader: <p>请求携带的Host头部，当AccessType为PrivateCustom时生效</p>
+        :type HostHeader: str
+        :param _ServiceProviderId: <p>BYOK的ID，当AccessType为PrivateCustom时生效</p>
+        :type ServiceProviderId: str
+        :param _VerifySSL: <p>是否校验服务提供商的SSL证书</p><p>默认值：AccessType取值为：</p><ul><li>PublicBYOK时，该参数无效；</li><li>PublicCustom时，该参数默认为true；</li><li>PrivateCustom时，该参数默认为false；</li></ul>
+        :type VerifySSL: bool
+        """
+        self._Models = None
+        self._ProviderKey = None
+        self._ProviderKeyId = None
+        self._AccessType = None
+        self._ModelProvider = None
+        self._ModelProtocol = None
+        self._ApiBase = None
+        self._HostHeader = None
+        self._ServiceProviderId = None
+        self._VerifySSL = None
+
+    @property
+    def Models(self):
+        r"""<p>需要探测的模型列表</p><p>入参限制：上限为20个模型</p>
+        :rtype: list of str
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def ProviderKey(self):
+        r"""<p>需要探测的Key</p>
+        :rtype: str
+        """
+        return self._ProviderKey
+
+    @ProviderKey.setter
+    def ProviderKey(self, ProviderKey):
+        self._ProviderKey = ProviderKey
+
+    @property
+    def ProviderKeyId(self):
+        r"""<p>需要探测的KeyId，和ProviderKey二者传一个即可</p>
+        :rtype: str
+        """
+        return self._ProviderKeyId
+
+    @ProviderKeyId.setter
+    def ProviderKeyId(self, ProviderKeyId):
+        self._ProviderKeyId = ProviderKeyId
+
+    @property
+    def AccessType(self):
+        r"""<p>BYOK类型，当ProviderKey存在时必传</p>
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def ModelProvider(self):
+        r"""<p>模型的厂商</p>
+        :rtype: str
+        """
+        return self._ModelProvider
+
+    @ModelProvider.setter
+    def ModelProvider(self, ModelProvider):
+        self._ModelProvider = ModelProvider
+
+    @property
+    def ModelProtocol(self):
+        r"""<p>模型厂商协议，当ProviderKey存在时必传</p>
+        :rtype: str
+        """
+        return self._ModelProtocol
+
+    @ModelProtocol.setter
+    def ModelProtocol(self, ModelProtocol):
+        self._ModelProtocol = ModelProtocol
+
+    @property
+    def ApiBase(self):
+        r"""<p>BYOK类型，当AccessType为PublicCustom时生效</p>
+        :rtype: str
+        """
+        return self._ApiBase
+
+    @ApiBase.setter
+    def ApiBase(self, ApiBase):
+        self._ApiBase = ApiBase
+
+    @property
+    def HostHeader(self):
+        r"""<p>请求携带的Host头部，当AccessType为PrivateCustom时生效</p>
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK的ID，当AccessType为PrivateCustom时生效</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def VerifySSL(self):
+        r"""<p>是否校验服务提供商的SSL证书</p><p>默认值：AccessType取值为：</p><ul><li>PublicBYOK时，该参数无效；</li><li>PublicCustom时，该参数默认为true；</li><li>PrivateCustom时，该参数默认为false；</li></ul>
+        :rtype: bool
+        """
+        return self._VerifySSL
+
+    @VerifySSL.setter
+    def VerifySSL(self, VerifySSL):
+        self._VerifySSL = VerifySSL
+
+
+    def _deserialize(self, params):
+        self._Models = params.get("Models")
+        self._ProviderKey = params.get("ProviderKey")
+        self._ProviderKeyId = params.get("ProviderKeyId")
+        self._AccessType = params.get("AccessType")
+        self._ModelProvider = params.get("ModelProvider")
+        self._ModelProtocol = params.get("ModelProtocol")
+        self._ApiBase = params.get("ApiBase")
+        self._HostHeader = params.get("HostHeader")
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._VerifySSL = params.get("VerifySSL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TestServiceProviderConnectionResponse(AbstractModel):
+    r"""TestServiceProviderConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Results: <p>探测结果</p>
+        :type Results: list of ModelTestResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        r"""<p>探测结果</p>
+        :rtype: list of ModelTestResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = ModelTestResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class TierItem(AbstractModel):
+    r"""意图路由分层配置对象。支持两种分层协议（二选一，不可混用）：① 复杂度分层——必须包含全部 4 个固定分层：SIMPLE/MEDIUM/COMPLEX/REASONING；② 语义分层——包含 default 及各语义 Tier。TierName 取值见下。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Models: <p>该分层下的模型显示名称列表。</p><p>至少包含一个模型，模型名称必须是已关联到该模型路由实例的模型。同一分层内不允许重复模型名称。</p>
+        :type Models: list of str
+        :param _TierName: <p>Tier 标识。<br>枚举值：</p><ul><li>复杂度分层（4 个固定值，需全部包含）：SIMPLE、MEDIUM、COMPLEX、REASONING</li><li>default：默认</li><li>general_chat：通用对话</li><li>transformation_rewrite：转换与改写</li><li>knowledge_qa：知识问答</li><li>summarization：摘要</li><li>extraction_structuring：抽取与结构化输出</li><li>content_generation：内容生成</li><li>coding_technical：编码与技术</li><li>data_math_analysis：数据、数学与分析</li><li>reasoning_planning：推理与规划</li><li>tool_agentic_workflow：工具与智能体工作流</li></ul>
+        :type TierName: str
+        """
+        self._Models = None
+        self._TierName = None
+
+    @property
+    def Models(self):
+        r"""<p>该分层下的模型显示名称列表。</p><p>至少包含一个模型，模型名称必须是已关联到该模型路由实例的模型。同一分层内不允许重复模型名称。</p>
+        :rtype: list of str
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def TierName(self):
+        r"""<p>Tier 标识。<br>枚举值：</p><ul><li>复杂度分层（4 个固定值，需全部包含）：SIMPLE、MEDIUM、COMPLEX、REASONING</li><li>default：默认</li><li>general_chat：通用对话</li><li>transformation_rewrite：转换与改写</li><li>knowledge_qa：知识问答</li><li>summarization：摘要</li><li>extraction_structuring：抽取与结构化输出</li><li>content_generation：内容生成</li><li>coding_technical：编码与技术</li><li>data_math_analysis：数据、数学与分析</li><li>reasoning_planning：推理与规划</li><li>tool_agentic_workflow：工具与智能体工作流</li></ul>
+        :rtype: str
+        """
+        return self._TierName
+
+    @TierName.setter
+    def TierName(self, TierName):
+        self._TierName = TierName
+
+
+    def _deserialize(self, params):
+        self._Models = params.get("Models")
+        self._TierName = params.get("TierName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

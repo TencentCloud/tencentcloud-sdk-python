@@ -1498,6 +1498,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupOverview(self, request):
+        r"""本接口（DescribeBackupOverview）用于查询备份用量总览。
+
+        :param request: Request instance for DescribeBackupOverview.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupOverviewRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBinlogConfig(self, request):
         r"""该接口（DescribeBinlogConfig）用于查询binlog配置
 

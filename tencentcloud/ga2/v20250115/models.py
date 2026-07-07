@@ -25,19 +25,19 @@ class AcceleratorAreas(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccelerateRegion: 加速地域。
+        :param _AccelerateRegion: <p>加速地域。</p>
         :type AccelerateRegion: str
-        :param _Bandwidth: 带宽。
+        :param _Bandwidth: <p>带宽。</p>
         :type Bandwidth: int
-        :param _IspType: 支持'BGP', '三网', '精品'，默认BGP。
+        :param _IspType: <p>支持&#39;BGP&#39;, &#39;QUALITY_BGP&#39;, &#39;STATIC_IP&#39;，默认BGP。</p><p>枚举值：</p><ul><li>BGP： BGP</li><li>STATIC_IP： 三网</li><li>QUALITY_BGP： 精品BGP</li></ul>
         :type IspType: str
-        :param _IpVersion: 仅支持IPv4，默认是IPv4。
+        :param _IpVersion: <p>仅支持IPv4，默认是IPv4。</p>
         :type IpVersion: str
-        :param _AcceleratorAreaId: 加速地域ID。
+        :param _AcceleratorAreaId: <p>加速地域ID。</p>
         :type AcceleratorAreaId: str
-        :param _IpAddress: IP。
+        :param _IpAddress: <p>IP。</p>
         :type IpAddress: list of str
-        :param _IpAddressInfoSet: IP信息。
+        :param _IpAddressInfoSet: <p>IP信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpAddressInfoSet: list of IpAddressInfoSet
         """
@@ -51,7 +51,7 @@ class AcceleratorAreas(AbstractModel):
 
     @property
     def AccelerateRegion(self):
-        r"""加速地域。
+        r"""<p>加速地域。</p>
         :rtype: str
         """
         return self._AccelerateRegion
@@ -62,7 +62,7 @@ class AcceleratorAreas(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""带宽。
+        r"""<p>带宽。</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -73,7 +73,7 @@ class AcceleratorAreas(AbstractModel):
 
     @property
     def IspType(self):
-        r"""支持'BGP', '三网', '精品'，默认BGP。
+        r"""<p>支持&#39;BGP&#39;, &#39;QUALITY_BGP&#39;, &#39;STATIC_IP&#39;，默认BGP。</p><p>枚举值：</p><ul><li>BGP： BGP</li><li>STATIC_IP： 三网</li><li>QUALITY_BGP： 精品BGP</li></ul>
         :rtype: str
         """
         return self._IspType
@@ -84,7 +84,7 @@ class AcceleratorAreas(AbstractModel):
 
     @property
     def IpVersion(self):
-        r"""仅支持IPv4，默认是IPv4。
+        r"""<p>仅支持IPv4，默认是IPv4。</p>
         :rtype: str
         """
         return self._IpVersion
@@ -95,7 +95,7 @@ class AcceleratorAreas(AbstractModel):
 
     @property
     def AcceleratorAreaId(self):
-        r"""加速地域ID。
+        r"""<p>加速地域ID。</p>
         :rtype: str
         """
         return self._AcceleratorAreaId
@@ -106,7 +106,7 @@ class AcceleratorAreas(AbstractModel):
 
     @property
     def IpAddress(self):
-        r"""IP。
+        r"""<p>IP。</p>
         :rtype: list of str
         """
         return self._IpAddress
@@ -117,7 +117,7 @@ class AcceleratorAreas(AbstractModel):
 
     @property
     def IpAddressInfoSet(self):
-        r"""IP信息。
+        r"""<p>IP信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IpAddressInfoSet
         """
@@ -4672,17 +4672,20 @@ class IpAddressInfoSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IpAddress: IP地址。
+        :param _IpAddress: <p>IP地址。</p>
         :type IpAddress: str
-        :param _IspType: IP类型。
+        :param _IspType: <p>IP类型。</p>
         :type IspType: str
+        :param _DdosProtectionType: <p>Ddos类型</p>
+        :type DdosProtectionType: str
         """
         self._IpAddress = None
         self._IspType = None
+        self._DdosProtectionType = None
 
     @property
     def IpAddress(self):
-        r"""IP地址。
+        r"""<p>IP地址。</p>
         :rtype: str
         """
         return self._IpAddress
@@ -4693,7 +4696,7 @@ class IpAddressInfoSet(AbstractModel):
 
     @property
     def IspType(self):
-        r"""IP类型。
+        r"""<p>IP类型。</p>
         :rtype: str
         """
         return self._IspType
@@ -4702,10 +4705,22 @@ class IpAddressInfoSet(AbstractModel):
     def IspType(self, IspType):
         self._IspType = IspType
 
+    @property
+    def DdosProtectionType(self):
+        r"""<p>Ddos类型</p>
+        :rtype: str
+        """
+        return self._DdosProtectionType
+
+    @DdosProtectionType.setter
+    def DdosProtectionType(self, DdosProtectionType):
+        self._DdosProtectionType = DdosProtectionType
+
 
     def _deserialize(self, params):
         self._IpAddress = params.get("IpAddress")
         self._IspType = params.get("IspType")
+        self._DdosProtectionType = params.get("DdosProtectionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

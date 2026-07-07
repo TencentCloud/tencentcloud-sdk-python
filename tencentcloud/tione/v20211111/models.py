@@ -12223,6 +12223,185 @@ class DescribePlatformImagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePresetImageListRequest(AbstractModel):
+    r"""DescribePresetImageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
+        :param _Filters: <p>业务过滤表达式</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页排序</p>
+        :type Offset: int
+        :param _Limit: <p>单页大小</p>
+        :type Limit: int
+        :param _OrderField: <p>排序字段</p>
+        :type OrderField: list of str
+        :param _Order: <p>对应字段的排序方式</p>
+        :type Order: list of str
+        """
+        self._TiProjectId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Order = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def Filters(self):
+        r"""<p>业务过滤表达式</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页排序</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单页大小</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        r"""<p>排序字段</p>
+        :rtype: list of str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        r"""<p>对应字段的排序方式</p>
+        :rtype: list of str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePresetImageListResponse(AbstractModel):
+    r"""DescribePresetImageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>记录总数</p>
+        :type TotalCount: int
+        :param _PresetImageList: <p>镜像列表</p>
+        :type PresetImageList: list of PresetImageInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PresetImageList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>记录总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PresetImageList(self):
+        r"""<p>镜像列表</p>
+        :rtype: list of PresetImageInfo
+        """
+        return self._PresetImageList
+
+    @PresetImageList.setter
+    def PresetImageList(self, PresetImageList):
+        self._PresetImageList = PresetImageList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PresetImageList") is not None:
+            self._PresetImageList = []
+            for item in params.get("PresetImageList"):
+                obj = PresetImageInfo()
+                obj._deserialize(item)
+                self._PresetImageList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePublicAlgoVersionListRequest(AbstractModel):
     r"""DescribePublicAlgoVersionList请求参数结构体
 
@@ -22233,6 +22412,397 @@ class PodSSHInfo(AbstractModel):
         
 
 
+class PresetImageInfo(AbstractModel):
+    r"""预制镜像详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: <p>镜像id</p>
+        :type ImageId: str
+        :param _ImageRepo: <p>镜像仓库名称</p>
+        :type ImageRepo: str
+        :param _ImageTag: <p>镜像标签</p>
+        :type ImageTag: str
+        :param _ImageUrl: <p>镜像url地址</p>
+        :type ImageUrl: str
+        :param _ImageSize: <p>镜像的大小</p>
+        :type ImageSize: str
+        :param _Description: <p>镜像描述</p>
+        :type Description: str
+        :param _ApplicableModuleList: <p>适用模块</p>
+        :type ApplicableModuleList: list of str
+        :param _Scenario: <p>使用场景</p>
+        :type Scenario: str
+        :param _Framework: <p>框架名称</p>
+        :type Framework: str
+        :param _FrameworkVersion: <p>框架版本</p>
+        :type FrameworkVersion: str
+        :param _ChipTypeList: <p>芯片类型</p>
+        :type ChipTypeList: list of str
+        :param _ComputeLibVersion: <p>运行库版本</p>
+        :type ComputeLibVersion: str
+        :param _PythonVersion: <p>python版本</p>
+        :type PythonVersion: str
+        :param _OS: <p>操作系统</p>
+        :type OS: str
+        :param _RuntimeLibList: <p>运行库列表</p>
+        :type RuntimeLibList: list of RuntimeLib
+        :param _SupportGpuList: <p>支持的gpu列表</p>
+        :type SupportGpuList: list of str
+        :param _ExtraAttributeList: <p>扩展属性</p>
+        :type ExtraAttributeList: list of Attribute
+        :param _SupportDistributedDeploy: <p>是否支持分布式部署</p>
+        :type SupportDistributedDeploy: bool
+        :param _IsLatestStable: <p>是否最新稳定版本</p>
+        :type IsLatestStable: bool
+        :param _ImageName: <p>镜像的名称</p>
+        :type ImageName: str
+        :param _Version: <p>镜像版本号（内部）</p>
+        :type Version: int
+        :param _CreateTime: <p>录入时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :type UpdateTime: str
+        :param _ImageType: <p>镜像类型</p><p>枚举值：</p><ul><li>TCR： TCR类型的镜像</li></ul>
+        :type ImageType: str
+        """
+        self._ImageId = None
+        self._ImageRepo = None
+        self._ImageTag = None
+        self._ImageUrl = None
+        self._ImageSize = None
+        self._Description = None
+        self._ApplicableModuleList = None
+        self._Scenario = None
+        self._Framework = None
+        self._FrameworkVersion = None
+        self._ChipTypeList = None
+        self._ComputeLibVersion = None
+        self._PythonVersion = None
+        self._OS = None
+        self._RuntimeLibList = None
+        self._SupportGpuList = None
+        self._ExtraAttributeList = None
+        self._SupportDistributedDeploy = None
+        self._IsLatestStable = None
+        self._ImageName = None
+        self._Version = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ImageType = None
+
+    @property
+    def ImageId(self):
+        r"""<p>镜像id</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ImageRepo(self):
+        r"""<p>镜像仓库名称</p>
+        :rtype: str
+        """
+        return self._ImageRepo
+
+    @ImageRepo.setter
+    def ImageRepo(self, ImageRepo):
+        self._ImageRepo = ImageRepo
+
+    @property
+    def ImageTag(self):
+        r"""<p>镜像标签</p>
+        :rtype: str
+        """
+        return self._ImageTag
+
+    @ImageTag.setter
+    def ImageTag(self, ImageTag):
+        self._ImageTag = ImageTag
+
+    @property
+    def ImageUrl(self):
+        r"""<p>镜像url地址</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageSize(self):
+        r"""<p>镜像的大小</p>
+        :rtype: str
+        """
+        return self._ImageSize
+
+    @ImageSize.setter
+    def ImageSize(self, ImageSize):
+        self._ImageSize = ImageSize
+
+    @property
+    def Description(self):
+        r"""<p>镜像描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ApplicableModuleList(self):
+        r"""<p>适用模块</p>
+        :rtype: list of str
+        """
+        return self._ApplicableModuleList
+
+    @ApplicableModuleList.setter
+    def ApplicableModuleList(self, ApplicableModuleList):
+        self._ApplicableModuleList = ApplicableModuleList
+
+    @property
+    def Scenario(self):
+        r"""<p>使用场景</p>
+        :rtype: str
+        """
+        return self._Scenario
+
+    @Scenario.setter
+    def Scenario(self, Scenario):
+        self._Scenario = Scenario
+
+    @property
+    def Framework(self):
+        r"""<p>框架名称</p>
+        :rtype: str
+        """
+        return self._Framework
+
+    @Framework.setter
+    def Framework(self, Framework):
+        self._Framework = Framework
+
+    @property
+    def FrameworkVersion(self):
+        r"""<p>框架版本</p>
+        :rtype: str
+        """
+        return self._FrameworkVersion
+
+    @FrameworkVersion.setter
+    def FrameworkVersion(self, FrameworkVersion):
+        self._FrameworkVersion = FrameworkVersion
+
+    @property
+    def ChipTypeList(self):
+        r"""<p>芯片类型</p>
+        :rtype: list of str
+        """
+        return self._ChipTypeList
+
+    @ChipTypeList.setter
+    def ChipTypeList(self, ChipTypeList):
+        self._ChipTypeList = ChipTypeList
+
+    @property
+    def ComputeLibVersion(self):
+        r"""<p>运行库版本</p>
+        :rtype: str
+        """
+        return self._ComputeLibVersion
+
+    @ComputeLibVersion.setter
+    def ComputeLibVersion(self, ComputeLibVersion):
+        self._ComputeLibVersion = ComputeLibVersion
+
+    @property
+    def PythonVersion(self):
+        r"""<p>python版本</p>
+        :rtype: str
+        """
+        return self._PythonVersion
+
+    @PythonVersion.setter
+    def PythonVersion(self, PythonVersion):
+        self._PythonVersion = PythonVersion
+
+    @property
+    def OS(self):
+        r"""<p>操作系统</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def RuntimeLibList(self):
+        r"""<p>运行库列表</p>
+        :rtype: list of RuntimeLib
+        """
+        return self._RuntimeLibList
+
+    @RuntimeLibList.setter
+    def RuntimeLibList(self, RuntimeLibList):
+        self._RuntimeLibList = RuntimeLibList
+
+    @property
+    def SupportGpuList(self):
+        r"""<p>支持的gpu列表</p>
+        :rtype: list of str
+        """
+        return self._SupportGpuList
+
+    @SupportGpuList.setter
+    def SupportGpuList(self, SupportGpuList):
+        self._SupportGpuList = SupportGpuList
+
+    @property
+    def ExtraAttributeList(self):
+        r"""<p>扩展属性</p>
+        :rtype: list of Attribute
+        """
+        return self._ExtraAttributeList
+
+    @ExtraAttributeList.setter
+    def ExtraAttributeList(self, ExtraAttributeList):
+        self._ExtraAttributeList = ExtraAttributeList
+
+    @property
+    def SupportDistributedDeploy(self):
+        r"""<p>是否支持分布式部署</p>
+        :rtype: bool
+        """
+        return self._SupportDistributedDeploy
+
+    @SupportDistributedDeploy.setter
+    def SupportDistributedDeploy(self, SupportDistributedDeploy):
+        self._SupportDistributedDeploy = SupportDistributedDeploy
+
+    @property
+    def IsLatestStable(self):
+        r"""<p>是否最新稳定版本</p>
+        :rtype: bool
+        """
+        return self._IsLatestStable
+
+    @IsLatestStable.setter
+    def IsLatestStable(self, IsLatestStable):
+        self._IsLatestStable = IsLatestStable
+
+    @property
+    def ImageName(self):
+        r"""<p>镜像的名称</p>
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def Version(self):
+        r"""<p>镜像版本号（内部）</p>
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def CreateTime(self):
+        r"""<p>录入时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ImageType(self):
+        r"""<p>镜像类型</p><p>枚举值：</p><ul><li>TCR： TCR类型的镜像</li></ul>
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._ImageRepo = params.get("ImageRepo")
+        self._ImageTag = params.get("ImageTag")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageSize = params.get("ImageSize")
+        self._Description = params.get("Description")
+        self._ApplicableModuleList = params.get("ApplicableModuleList")
+        self._Scenario = params.get("Scenario")
+        self._Framework = params.get("Framework")
+        self._FrameworkVersion = params.get("FrameworkVersion")
+        self._ChipTypeList = params.get("ChipTypeList")
+        self._ComputeLibVersion = params.get("ComputeLibVersion")
+        self._PythonVersion = params.get("PythonVersion")
+        self._OS = params.get("OS")
+        if params.get("RuntimeLibList") is not None:
+            self._RuntimeLibList = []
+            for item in params.get("RuntimeLibList"):
+                obj = RuntimeLib()
+                obj._deserialize(item)
+                self._RuntimeLibList.append(obj)
+        self._SupportGpuList = params.get("SupportGpuList")
+        if params.get("ExtraAttributeList") is not None:
+            self._ExtraAttributeList = []
+            for item in params.get("ExtraAttributeList"):
+                obj = Attribute()
+                obj._deserialize(item)
+                self._ExtraAttributeList.append(obj)
+        self._SupportDistributedDeploy = params.get("SupportDistributedDeploy")
+        self._IsLatestStable = params.get("IsLatestStable")
+        self._ImageName = params.get("ImageName")
+        self._Version = params.get("Version")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ImageType = params.get("ImageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrivateLinkInfo(AbstractModel):
     r"""私有连接信息
 
@@ -24384,6 +24954,57 @@ class RollingUpdate(AbstractModel):
         if params.get("MaxSurge") is not None:
             self._MaxSurge = NumOrPercent()
             self._MaxSurge._deserialize(params.get("MaxSurge"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuntimeLib(AbstractModel):
+    r"""预制镜像中的运行库详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>运行库名称</p>
+        :type Name: str
+        :param _Version: <p>运行库版本号</p>
+        :type Version: str
+        """
+        self._Name = None
+        self._Version = None
+
+    @property
+    def Name(self):
+        r"""<p>运行库名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Version(self):
+        r"""<p>运行库版本号</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

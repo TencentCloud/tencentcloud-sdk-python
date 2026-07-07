@@ -259,6 +259,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDspmAssetIdentifyInfoExportJob(
+            self,
+            request: models.CreateDspmAssetIdentifyInfoExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmAssetIdentifyInfoExportJobResponse:
+        """
+        创建Dspm资产列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmAssetIdentifyInfoExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmAssetIdentifyInfoExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDspmAssetsExportJob(
             self,
             request: models.CreateDspmAssetsExportJobRequest,
@@ -295,6 +313,96 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDspmIdentifyCategory(
+            self,
+            request: models.CreateDspmIdentifyCategoryRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmIdentifyCategoryResponse:
+        """
+        创建dspm数据识别分类
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmIdentifyCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmIdentifyCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDspmIdentifyComplianceCategoryRelation(
+            self,
+            request: models.CreateDspmIdentifyComplianceCategoryRelationRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmIdentifyComplianceCategoryRelationResponse:
+        """
+        创建dspm数据识别模板分类关联
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmIdentifyComplianceCategoryRelation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmIdentifyComplianceCategoryRelationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDspmIdentifyComplianceGroup(
+            self,
+            request: models.CreateDspmIdentifyComplianceGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmIdentifyComplianceGroupResponse:
+        """
+        创建dspm数据识别模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmIdentifyComplianceGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmIdentifyComplianceGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDspmIdentifyComplianceGroupCopy(
+            self,
+            request: models.CreateDspmIdentifyComplianceGroupCopyRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmIdentifyComplianceGroupCopyResponse:
+        """
+        复制dspm数据识别模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmIdentifyComplianceGroupCopy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmIdentifyComplianceGroupCopyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDspmIdentifyComplianceRuleRelation(
+            self,
+            request: models.CreateDspmIdentifyComplianceRuleRelationRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmIdentifyComplianceRuleRelationResponse:
+        """
+        创建dspm数据识别模板数据项关联
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmIdentifyComplianceRuleRelation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmIdentifyComplianceRuleRelationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDspmIdentifyInfoListExportJob(
             self,
             request: models.CreateDspmIdentifyInfoListExportJobRequest,
@@ -308,6 +416,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateDspmIdentifyInfoListExportJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateDspmIdentifyInfoListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDspmIdentifyLevelGroup(
+            self,
+            request: models.CreateDspmIdentifyLevelGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmIdentifyLevelGroupResponse:
+        """
+        创建dspm数据识别分级组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmIdentifyLevelGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmIdentifyLevelGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDspmIdentifyRule(
+            self,
+            request: models.CreateDspmIdentifyRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmIdentifyRuleResponse:
+        """
+        创建dspm数据识别数据项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmIdentifyRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmIdentifyRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -578,6 +722,114 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteDspmExportTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDspmExportTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDspmIdentifyCategory(
+            self,
+            request: models.DeleteDspmIdentifyCategoryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmIdentifyCategoryResponse:
+        """
+        删除dspm数据识别分类
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmIdentifyCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmIdentifyCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDspmIdentifyComplianceCategoryRelation(
+            self,
+            request: models.DeleteDspmIdentifyComplianceCategoryRelationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmIdentifyComplianceCategoryRelationResponse:
+        """
+        删除dspm数据识别模板分类关联
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmIdentifyComplianceCategoryRelation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmIdentifyComplianceCategoryRelationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDspmIdentifyComplianceGroup(
+            self,
+            request: models.DeleteDspmIdentifyComplianceGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmIdentifyComplianceGroupResponse:
+        """
+        删除dspm数据识别模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmIdentifyComplianceGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmIdentifyComplianceGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDspmIdentifyComplianceRuleRelation(
+            self,
+            request: models.DeleteDspmIdentifyComplianceRuleRelationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmIdentifyComplianceRuleRelationResponse:
+        """
+        删除dspm数据识别模板数据项关联
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmIdentifyComplianceRuleRelation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmIdentifyComplianceRuleRelationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDspmIdentifyLevelGroup(
+            self,
+            request: models.DeleteDspmIdentifyLevelGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmIdentifyLevelGroupResponse:
+        """
+        删除dspm数据识别分级组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmIdentifyLevelGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmIdentifyLevelGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDspmIdentifyRule(
+            self,
+            request: models.DeleteDspmIdentifyRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmIdentifyRuleResponse:
+        """
+        删除dspm数据识别数据项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmIdentifyRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmIdentifyRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1573,6 +1825,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCosObjectScanTask(
+            self,
+            request: models.DescribeCosObjectScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosObjectScanTaskResponse:
+        """
+        查询cos风险文件扫描任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosObjectScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosObjectScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCosOverview(
             self,
             request: models.DescribeCosOverviewRequest,
@@ -2059,6 +2329,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDspmAssetFieldSamples(
+            self,
+            request: models.DescribeDspmAssetFieldSamplesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmAssetFieldSamplesResponse:
+        """
+        查询dspm资产字段样本值
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmAssetFieldSamples"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmAssetFieldSamplesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmAssetIdentifyInfoList(
+            self,
+            request: models.DescribeDspmAssetIdentifyInfoListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmAssetIdentifyInfoListResponse:
+        """
+        查询dspm资产数据识别信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmAssetIdentifyInfoList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmAssetIdentifyInfoListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDspmAssetIds(
             self,
             request: models.DescribeDspmAssetIdsRequest,
@@ -2239,6 +2545,96 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDspmIdentifyCategoryList(
+            self,
+            request: models.DescribeDspmIdentifyCategoryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmIdentifyCategoryListResponse:
+        """
+        查询dspm数据识别分类列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmIdentifyCategoryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmIdentifyCategoryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmIdentifyComplianceCategoryRuleList(
+            self,
+            request: models.DescribeDspmIdentifyComplianceCategoryRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmIdentifyComplianceCategoryRuleListResponse:
+        """
+        查询dspm数据识别模板分类关联数据项列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmIdentifyComplianceCategoryRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmIdentifyComplianceCategoryRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmIdentifyComplianceGroupDetail(
+            self,
+            request: models.DescribeDspmIdentifyComplianceGroupDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmIdentifyComplianceGroupDetailResponse:
+        """
+        查询dspm识别模板详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmIdentifyComplianceGroupDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmIdentifyComplianceGroupDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmIdentifyComplianceGroupList(
+            self,
+            request: models.DescribeDspmIdentifyComplianceGroupListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmIdentifyComplianceGroupListResponse:
+        """
+        查询dspm数据识别模板列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmIdentifyComplianceGroupList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmIdentifyComplianceGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmIdentifyDistributionStatistics(
+            self,
+            request: models.DescribeDspmIdentifyDistributionStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmIdentifyDistributionStatisticsResponse:
+        """
+        查询dspm数据识别分布统计
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmIdentifyDistributionStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmIdentifyDistributionStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDspmIdentifyIdList(
             self,
             request: models.DescribeDspmIdentifyIdListRequest,
@@ -2288,6 +2684,78 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeDspmIdentifyInfoList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDspmIdentifyInfoListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmIdentifyLevelGroupList(
+            self,
+            request: models.DescribeDspmIdentifyLevelGroupListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmIdentifyLevelGroupListResponse:
+        """
+        查询dspm数据识别分级组列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmIdentifyLevelGroupList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmIdentifyLevelGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmIdentifyRuleDetail(
+            self,
+            request: models.DescribeDspmIdentifyRuleDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmIdentifyRuleDetailResponse:
+        """
+        查询dspm数据识别数据项详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmIdentifyRuleDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmIdentifyRuleDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmIdentifyRuleList(
+            self,
+            request: models.DescribeDspmIdentifyRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmIdentifyRuleListResponse:
+        """
+        查询dspm数据识别数据项列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmIdentifyRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmIdentifyRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmIdentifyRuleTestResult(
+            self,
+            request: models.DescribeDspmIdentifyRuleTestResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmIdentifyRuleTestResultResponse:
+        """
+        查询dspm数据识别数据项验证结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmIdentifyRuleTestResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmIdentifyRuleTestResultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3769,6 +4237,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyCosAuditObjectIdentifyStatus(
+            self,
+            request: models.ModifyCosAuditObjectIdentifyStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCosAuditObjectIdentifyStatusResponse:
+        """
+        修改对象存储识别开关
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCosAuditObjectIdentifyStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCosAuditObjectIdentifyStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCosAuditObjectSampleRate(
+            self,
+            request: models.ModifyCosAuditObjectSampleRateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCosAuditObjectSampleRateResponse:
+        """
+        设置对象存储扫描采样率
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCosAuditObjectSampleRate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCosAuditObjectSampleRateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyCosMarkInfo(
             self,
             request: models.ModifyCosMarkInfoRequest,
@@ -3800,6 +4304,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyDspmAccessRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDspmAccessRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmApplyingIdentifyComplianceGroup(
+            self,
+            request: models.ModifyDspmApplyingIdentifyComplianceGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmApplyingIdentifyComplianceGroupResponse:
+        """
+        修改dspm当前应用的数据识别模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmApplyingIdentifyComplianceGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmApplyingIdentifyComplianceGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3877,6 +4399,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDspmAssetDataScanTaskStatus(
+            self,
+            request: models.ModifyDspmAssetDataScanTaskStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmAssetDataScanTaskStatusResponse:
+        """
+        修改Dspm资产数据扫描任务状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmAssetDataScanTaskStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmAssetDataScanTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDspmAssetLogDeliverySwitch(
             self,
             request: models.ModifyDspmAssetLogDeliverySwitchRequest,
@@ -3931,6 +4471,78 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDspmIdentifyCategory(
+            self,
+            request: models.ModifyDspmIdentifyCategoryRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmIdentifyCategoryResponse:
+        """
+        修改dspm数据识别分类
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmIdentifyCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmIdentifyCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmIdentifyComplianceGroup(
+            self,
+            request: models.ModifyDspmIdentifyComplianceGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmIdentifyComplianceGroupResponse:
+        """
+        修改dspm数据识别模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmIdentifyComplianceGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmIdentifyComplianceGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmIdentifyComplianceGroupStatus(
+            self,
+            request: models.ModifyDspmIdentifyComplianceGroupStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmIdentifyComplianceGroupStatusResponse:
+        """
+        修改dspm数据识别模板状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmIdentifyComplianceGroupStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmIdentifyComplianceGroupStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmIdentifyComplianceRuleLevelInfo(
+            self,
+            request: models.ModifyDspmIdentifyComplianceRuleLevelInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmIdentifyComplianceRuleLevelInfoResponse:
+        """
+        修改dspm数据识别模板数据项关联级别信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmIdentifyComplianceRuleLevelInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmIdentifyComplianceRuleLevelInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDspmIdentifyInfo(
             self,
             request: models.ModifyDspmIdentifyInfoRequest,
@@ -3944,6 +4556,78 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyDspmIdentifyInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDspmIdentifyInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmIdentifyLevelGroup(
+            self,
+            request: models.ModifyDspmIdentifyLevelGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmIdentifyLevelGroupResponse:
+        """
+        修改dspm数据识别分级组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmIdentifyLevelGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmIdentifyLevelGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmIdentifyLevelItem(
+            self,
+            request: models.ModifyDspmIdentifyLevelItemRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmIdentifyLevelItemResponse:
+        """
+        修改dspm数据识别分级信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmIdentifyLevelItem"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmIdentifyLevelItemResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmIdentifyRule(
+            self,
+            request: models.ModifyDspmIdentifyRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmIdentifyRuleResponse:
+        """
+        修改dspm数据识别数据项
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmIdentifyRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmIdentifyRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmIdentifyRuleStatus(
+            self,
+            request: models.ModifyDspmIdentifyRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmIdentifyRuleStatusResponse:
+        """
+        修改dspm数据识别数据项状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmIdentifyRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmIdentifyRuleStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

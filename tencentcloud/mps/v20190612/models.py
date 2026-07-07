@@ -79191,6 +79191,117 @@ class SmartSubtitleTaskFullTextResult(AbstractModel):
         
 
 
+class SmartSubtitleTaskFullTextSegmentItem(AbstractModel):
+    r"""智能字幕识别片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: <p>识别片段置信度。取值：0~100。</p>
+        :type Confidence: float
+        :param _StartTimeOffset: <p>识别片段起始的偏移时间，单位：秒。</p>
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: <p>识别片段终止的偏移时间，单位：秒。</p>
+        :type EndTimeOffset: float
+        :param _Text: <p>识别文本。</p>
+        :type Text: str
+        :param _Trans: <p>翻译文本。</p>
+        :type Trans: str
+        :param _SpeakerId: <p>说话人ID</p>
+        :type SpeakerId: str
+        """
+        self._Confidence = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Text = None
+        self._Trans = None
+        self._SpeakerId = None
+
+    @property
+    def Confidence(self):
+        r"""<p>识别片段置信度。取值：0~100。</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeOffset(self):
+        r"""<p>识别片段起始的偏移时间，单位：秒。</p>
+        :rtype: float
+        """
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        r"""<p>识别片段终止的偏移时间，单位：秒。</p>
+        :rtype: float
+        """
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Text(self):
+        r"""<p>识别文本。</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Trans(self):
+        r"""<p>翻译文本。</p>
+        :rtype: str
+        """
+        return self._Trans
+
+    @Trans.setter
+    def Trans(self, Trans):
+        self._Trans = Trans
+
+    @property
+    def SpeakerId(self):
+        r"""<p>说话人ID</p>
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Text = params.get("Text")
+        self._Trans = params.get("Trans")
+        self._SpeakerId = params.get("SpeakerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmartSubtitleTaskResultInput(AbstractModel):
     r"""智能字幕翻译的输入。
 
@@ -79268,6 +79379,9 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SegmentSet: <p>智能字幕识别片段列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentSet: list of SmartSubtitleTaskFullTextSegmentItem
         :param _RecognizeSubtitleResult: <p>识别字幕结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecognizeSubtitleResult: list of SubtitleResult
@@ -79278,9 +79392,22 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
+        self._SegmentSet = None
         self._RecognizeSubtitleResult = None
         self._TransSubtitleResult = None
         self._OutputStorage = None
+
+    @property
+    def SegmentSet(self):
+        r"""<p>智能字幕识别片段列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SmartSubtitleTaskFullTextSegmentItem
+        """
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
 
     @property
     def RecognizeSubtitleResult(self):
@@ -79320,6 +79447,12 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = SmartSubtitleTaskFullTextSegmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
         if params.get("RecognizeSubtitleResult") is not None:
             self._RecognizeSubtitleResult = []
             for item in params.get("RecognizeSubtitleResult"):

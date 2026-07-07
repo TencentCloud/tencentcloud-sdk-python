@@ -35,6 +35,9 @@ INVALIDPARAMETER_TOOMANYOBJECTS = 'InvalidParameter.TooManyObjects'
 # InvalidParameterValue.InvalidParameterValue
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = 'InvalidParameterValue.InvalidParameterValue'
 
+# 超过配额限制。
+LIMITEXCEEDED = 'LimitExceeded'
+
 # MissingParameter.MissingParameter
 MISSINGPARAMETER_MISSINGPARAMETER = 'MissingParameter.MissingParameter'
 
