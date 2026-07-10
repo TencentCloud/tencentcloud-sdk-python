@@ -187,6 +187,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateIgnoreDiagRecord(
+            self,
+            request: models.CreateIgnoreDiagRecordRequest,
+            opts: Dict = None,
+    ) -> models.CreateIgnoreDiagRecordResponse:
+        """
+        对实例的某个诊断项设置忽略或取消忽略状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateIgnoreDiagRecord"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateIgnoreDiagRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateKillTask(
             self,
             request: models.CreateKillTaskRequest,

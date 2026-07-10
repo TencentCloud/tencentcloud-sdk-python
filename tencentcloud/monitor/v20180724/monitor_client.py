@@ -2901,6 +2901,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnablePredefinedPolicies(self, request):
+        r"""一键启用（创建）某个云产品下的预设策略
+
+        :param request: Request instance for EnablePredefinedPolicies.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.EnablePredefinedPoliciesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.EnablePredefinedPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnablePredefinedPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnablePredefinedPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableSSOCamCheck(self, request):
         r"""SSO单点登录时，设置是否cam鉴权
 

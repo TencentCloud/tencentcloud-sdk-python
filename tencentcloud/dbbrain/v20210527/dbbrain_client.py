@@ -233,6 +233,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateIgnoreDiagRecord(self, request):
+        r"""对实例的某个诊断项设置忽略或取消忽略状态。
+
+        :param request: Request instance for CreateIgnoreDiagRecord.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateIgnoreDiagRecordRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CreateIgnoreDiagRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIgnoreDiagRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIgnoreDiagRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateKillTask(self, request):
         r"""创建中断会话的任务。
 

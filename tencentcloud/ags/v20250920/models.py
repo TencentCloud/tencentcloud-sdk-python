@@ -492,17 +492,20 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 镜像地址
+        :param _Image: <p>镜像地址</p>
         :type Image: str
-        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :type ImageRegistryType: str
+        :param _TimeoutMinutes: <p>预热超时时长</p>
+        :type TimeoutMinutes: int
         """
         self._Image = None
         self._ImageRegistryType = None
+        self._TimeoutMinutes = None
 
     @property
     def Image(self):
-        r"""镜像地址
+        r"""<p>镜像地址</p>
         :rtype: str
         """
         return self._Image
@@ -513,7 +516,7 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
 
     @property
     def ImageRegistryType(self):
-        r"""镜像仓库类型：`enterprise`、`personal`。
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :rtype: str
         """
         return self._ImageRegistryType
@@ -522,10 +525,22 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
     def ImageRegistryType(self, ImageRegistryType):
         self._ImageRegistryType = ImageRegistryType
 
+    @property
+    def TimeoutMinutes(self):
+        r"""<p>预热超时时长</p>
+        :rtype: int
+        """
+        return self._TimeoutMinutes
+
+    @TimeoutMinutes.setter
+    def TimeoutMinutes(self, TimeoutMinutes):
+        self._TimeoutMinutes = TimeoutMinutes
+
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
         self._ImageRegistryType = params.get("ImageRegistryType")
+        self._TimeoutMinutes = params.get("TimeoutMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -543,11 +558,11 @@ class CreatePreCacheImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 镜像地址
+        :param _Image: <p>镜像地址</p>
         :type Image: str
-        :param _ImageDigest: 镜像 Digest
+        :param _ImageDigest: <p>镜像 Digest</p>
         :type ImageDigest: str
-        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
         :type ImageRegistryType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -559,7 +574,7 @@ class CreatePreCacheImageTaskResponse(AbstractModel):
 
     @property
     def Image(self):
-        r"""镜像地址
+        r"""<p>镜像地址</p>
         :rtype: str
         """
         return self._Image
@@ -570,7 +585,7 @@ class CreatePreCacheImageTaskResponse(AbstractModel):
 
     @property
     def ImageDigest(self):
-        r"""镜像 Digest
+        r"""<p>镜像 Digest</p>
         :rtype: str
         """
         return self._ImageDigest
@@ -581,7 +596,7 @@ class CreatePreCacheImageTaskResponse(AbstractModel):
 
     @property
     def ImageRegistryType(self):
-        r"""镜像仓库类型：`enterprise`、`personal`。
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
         :rtype: str
         """
         return self._ImageRegistryType

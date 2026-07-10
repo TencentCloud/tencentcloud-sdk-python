@@ -738,6 +738,29 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def VoicePrintGroupList(self, request):
+        r"""返回注册的说话人分组信息列表
+
+        :param request: Request instance for VoicePrintGroupList.
+        :type request: :class:`tencentcloud.asr.v20190614.models.VoicePrintGroupListRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VoicePrintGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.VoicePrintGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def VoicePrintGroupVerify(self, request):
         r"""说话人验证1:N接口，可以通过传入一段说话人音频，并且指定已存在的groupId, 和返回topN,  接口返回groupId内所有声纹和传入音频声纹比对打分TopN的结果。
 

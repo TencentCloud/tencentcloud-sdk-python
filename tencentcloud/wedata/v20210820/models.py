@@ -114006,301 +114006,304 @@ class TaskOpsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _VirtualTaskId: 虚拟任务id
+        :param _VirtualTaskId: <p>虚拟任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualTaskId: str
-        :param _VirtualFlag: 虚拟任务标记
+        :param _VirtualFlag: <p>虚拟任务标记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualFlag: bool
-        :param _TaskName: 任务名
+        :param _TaskName: <p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _WorkflowId: 工作流id
+        :param _WorkflowId: <p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _RealWorkflowId: 任务为虚拟任务时，任务所在的真实工作流Id
+        :param _RealWorkflowId: <p>任务为虚拟任务时，任务所在的真实工作流Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealWorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _FolderId: 文件夹id
+        :param _FolderId: <p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _FolderName: 文件夹名字
+        :param _FolderName: <p>文件夹名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _LastUpdate: 最近更新时间
+        :param _LastUpdate: <p>最近更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdate: str
-        :param _Status: 任务状态
+        :param _Status: <p>任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _InCharge: 责任人
+        :param _InCharge: <p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InCharge: str
-        :param _InChargeId: 责任人用户id
+        :param _InChargeId: <p>责任人用户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InChargeId: str
-        :param _StartTime: 调度生效日期
+        :param _StartTime: <p>调度生效日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 调度结束日期
+        :param _EndTime: <p>调度结束日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _ExecutionStartTime: 执行时间左闭区间
+        :param _ExecutionStartTime: <p>执行时间左闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行时间右闭区间
+        :param _ExecutionEndTime: <p>执行时间右闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionEndTime: str
-        :param _CycleType: 周期类型
+        :param _CycleType: <p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _CycleStep: 步长
+        :param _CycleStep: <p>步长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleStep: int
-        :param _CrontabExpression: 调度cron表达式
+        :param _CrontabExpression: <p>调度cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrontabExpression: str
-        :param _DelayTime: 延时执行时间，unit=分钟
+        :param _DelayTime: <p>延时执行时间，unit=分钟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DelayTime: int
-        :param _StartupTime: 开始执行时间
+        :param _StartupTime: <p>开始执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartupTime: int
-        :param _RetryWait: 重试等待时间, unit=分钟
+        :param _RetryWait: <p>重试等待时间, unit=分钟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryWait: int
-        :param _RetryAble: 是否可重试，1 代表可以重试
+        :param _RetryAble: <p>是否可重试，1 代表可以重试</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryAble: int
-        :param _TaskAction: 调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为'0,3,4'
+        :param _TaskAction: <p>调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为&#39;0,3,4&#39;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAction: str
-        :param _TryLimit: 运行次数限制
+        :param _TryLimit: <p>运行次数限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TryLimit: int
-        :param _RunPriority: 运行优先级
+        :param _RunPriority: <p>运行优先级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunPriority: int
-        :param _TaskType: 任务类型
+        :param _TaskType: <p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
-        :param _BrokerIp: 指定的运行节点
+        :param _BrokerIp: <p>指定的运行节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrokerIp: str
-        :param _ClusterId: 集群name
+        :param _ClusterId: <p>集群name</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param _MinDateTime: 最小数据时间
+        :param _MinDateTime: <p>最小数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinDateTime: str
-        :param _MaxDateTime: 最大数据时间
+        :param _MaxDateTime: <p>最大数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDateTime: str
-        :param _ExecutionTTL: 运行耗时超时时间
+        :param _ExecutionTTL: <p>运行耗时超时时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionTTL: int
-        :param _SelfDepend: 自依赖类型
+        :param _SelfDepend: <p>自依赖类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfDepend: str
-        :param _LeftCoordinate: 左侧坐标
+        :param _LeftCoordinate: <p>左侧坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LeftCoordinate: float
-        :param _TopCoordinate: 顶部坐标
+        :param _TopCoordinate: <p>顶部坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopCoordinate: float
-        :param _Notes: 任务备注
+        :param _Notes: <p>任务备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Notes: str
-        :param _InstanceInitStrategy: 任务初始化策略
+        :param _InstanceInitStrategy: <p>任务初始化策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceInitStrategy: str
-        :param _YarnQueue: 计算队列
+        :param _YarnQueue: <p>计算队列</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type YarnQueue: str
-        :param _LastSchedulerCommitTime: 最新调度提交时间
+        :param _LastSchedulerCommitTime: <p>最新调度提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastSchedulerCommitTime: str
-        :param _NormalizedJobStartTime: 按cron表达式计算的任务开始执行时间
+        :param _NormalizedJobStartTime: <p>按cron表达式计算的任务开始执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NormalizedJobStartTime: str
-        :param _SchedulerDesc: 调度计划描述
+        :param _SchedulerDesc: <p>调度计划描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerDesc: str
-        :param _ResourceGroup: 计算资源组
+        :param _ResourceGroup: <p>计算资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroup: str
-        :param _Creator: 任务创建人
+        :param _Creator: <p>任务创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creator: str
-        :param _DependencyRel: 任务依赖类型 and、or
+        :param _DependencyRel: <p>任务依赖类型 and、or</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyRel: str
-        :param _DependencyWorkflow: 任务工作流依赖 yes、no
+        :param _DependencyWorkflow: <p>任务工作流依赖 yes、no</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyWorkflow: str
-        :param _EventListenerConfig: 事件监听配置
+        :param _EventListenerConfig: <p>事件监听配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventListenerConfig: str
-        :param _EventPublisherConfig: 事件驱动配置
+        :param _EventPublisherConfig: <p>事件驱动配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventPublisherConfig: str
-        :param _VirtualTaskStatus: 虚拟任务状态
+        :param _VirtualTaskStatus: <p>虚拟任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualTaskStatus: str
-        :param _TaskLinkInfo: 任务依赖边详情
+        :param _TaskLinkInfo: <p>任务依赖边详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskLinkInfo: :class:`tencentcloud.wedata.v20210820.models.LinkOpsDto`
-        :param _ProductName: 任务产品类型
+        :param _ProductName: <p>任务产品类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _ProjectIdent: 项目标识
+        :param _ProjectIdent: <p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectIdent: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _OwnId: 主账户userId
+        :param _OwnId: <p>主账户userId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnId: str
-        :param _UserId: 用户userId
+        :param _UserId: <p>用户userId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param _TenantId: 租户id
+        :param _TenantId: <p>租户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: str
-        :param _UpdateUser: 更新人昵称
+        :param _UpdateUser: <p>更新人昵称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUser: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _UpdateUserId: 更新人userId
+        :param _UpdateUserId: <p>更新人userId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUserId: str
-        :param _TaskTypeId: 任务类型id
+        :param _TaskTypeId: <p>任务类型id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeId: int
-        :param _TaskTypeDesc: 任务类型描述
+        :param _TaskTypeDesc: <p>任务类型描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeDesc: str
-        :param _ShowWorkflow: 是否展示工作流
+        :param _ShowWorkflow: <p>是否展示工作流</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShowWorkflow: bool
-        :param _FirstSubmitTime: 首次提交时间
+        :param _FirstSubmitTime: <p>首次提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstSubmitTime: str
-        :param _FirstRunTime: 首次运行时间
+        :param _FirstRunTime: <p>首次运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstRunTime: str
-        :param _ScheduleDesc: 调度描述
+        :param _ScheduleDesc: <p>调度描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleDesc: str
-        :param _CycleNum: 周期
+        :param _CycleNum: <p>周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleNum: int
-        :param _Crontab: 表达式
+        :param _Crontab: <p>表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Crontab: str
-        :param _StartDate: 开始日期
+        :param _StartDate: <p>开始日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartDate: str
-        :param _EndDate: 结束日期
+        :param _EndDate: <p>结束日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndDate: str
-        :param _CycleUnit: 周期单位
+        :param _CycleUnit: <p>周期单位</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleUnit: str
-        :param _InitStrategy: 初始化策略
+        :param _InitStrategy: <p>初始化策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InitStrategy: str
-        :param _Layer: 层级
+        :param _Layer: <p>层级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Layer: str
-        :param _SourceServiceId: 来源数据源ID
+        :param _SourceServiceId: <p>来源数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceServiceId: str
-        :param _SourceServiceType: 来源数据源类型
+        :param _SourceServiceType: <p>来源数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceServiceType: str
-        :param _TargetServiceId: 目标数据源ID
+        :param _TargetServiceId: <p>目标数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetServiceId: str
-        :param _TargetServiceType: 目标数据源类型
+        :param _TargetServiceType: <p>目标数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetServiceType: str
-        :param _TasksStr: 子任务列表
+        :param _TasksStr: <p>子任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TasksStr: str
-        :param _Submit: 任务版本是否已提交
+        :param _Submit: <p>任务版本是否已提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Submit: bool
-        :param _ExecutorGroupId: 资源组id
+        :param _ExecutorGroupId: <p>资源组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupId: str
-        :param _ExecutorGroupName: 资源组名称
+        :param _ExecutorGroupName: <p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
-        :param _TaskExtInfo: 任务扩展信息(目前返沪离线同步的任务详情)
+        :param _TaskExtInfo: <p>任务扩展信息(目前返沪离线同步的任务详情)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskExtInfo: str
-        :param _EventListenerInfos: 任务绑定的事件信息
+        :param _EventListenerInfos: <p>任务绑定的事件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventListenerInfos: list of AiOpsEventListenerDTO
-        :param _ScriptInfo: 脚本信息
+        :param _ScriptInfo: <p>脚本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScriptInfo: :class:`tencentcloud.wedata.v20210820.models.AiopsScriptInfo`
-        :param _DLCResourceConfig: DLC资源配置
+        :param _DLCResourceConfig: <p>DLC资源配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DLCResourceConfig: :class:`tencentcloud.wedata.v20210820.models.AiopsDLCResourceConfigDto`
-        :param _ParentTaskInfos: 父任务simple信息
+        :param _ParentTaskInfos: <p>父任务simple信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentTaskInfos: :class:`tencentcloud.wedata.v20210820.models.AiopsSimpleTaskDto`
-        :param _ExtResourceFlag: 资源获取标识
+        :param _ExtResourceFlag: <p>资源获取标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtResourceFlag: :class:`tencentcloud.wedata.v20210820.models.ExtResourceFlagDto`
-        :param _NewParentTaskInfos: 父任务simple信息(新)
+        :param _NewParentTaskInfos: <p>父任务simple信息(新)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewParentTaskInfos: list of AiopsSimpleTaskDto
-        :param _SelfWorkFlowDependType: 任务自依赖类型：
-yes： 任务需满足自依赖
-no：任务无需满足自依赖
+        :param _SelfWorkFlowDependType: <p>任务自依赖类型：<br>yes： 任务需满足自依赖<br>no：任务无需满足自依赖</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfWorkFlowDependType: str
-        :param _AllowRedoType: 允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+        :param _AllowRedoType: <p>允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑</p>
         :type AllowRedoType: str
-        :param _OwnerId: 负责人Id
+        :param _OwnerId: <p>负责人Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerId: str
-        :param _Privileges: 当前用户对该任务的权限列表， 当前支持
-CAN_MANAGE : 有权限管理操作
+        :param _Privileges: <p>当前用户对该任务的权限列表， 当前支持<br>CAN_MANAGE : 有权限管理操作</p>
         :type Privileges: list of str
-        :param _BundleId: bundle客户端唯一id
+        :param _BundleId: <p>bundle客户端唯一id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleId: str
-        :param _BundleInfo: bundle客户端信息
+        :param _BundleInfo: <p>bundle客户端信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleInfo: str
-        :param _WorkflowType: 工作流类型
+        :param _WorkflowType: <p>工作流类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowType: str
-        :param _TaskExtDTO: 任务扩展信息
+        :param _TaskExtDTO: <p>任务扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskExtDTO: :class:`tencentcloud.wedata.v20210820.models.TaskExtOpsDto`
-        :param _ScheduleTimeZone: 任务时区
+        :param _ScheduleTimeZone: <p>任务时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
+        :param _ProxyTaskId: <p>代理任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyTaskId: str
+        :param _ProxyTaskTypeId: <p>代理任务类型ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyTaskTypeId: int
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -114400,10 +114403,12 @@ CAN_MANAGE : 有权限管理操作
         self._WorkflowType = None
         self._TaskExtDTO = None
         self._ScheduleTimeZone = None
+        self._ProxyTaskId = None
+        self._ProxyTaskTypeId = None
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114415,7 +114420,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def VirtualTaskId(self):
-        r"""虚拟任务id
+        r"""<p>虚拟任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114427,7 +114432,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def VirtualFlag(self):
-        r"""虚拟任务标记
+        r"""<p>虚拟任务标记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -114439,7 +114444,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TaskName(self):
-        r"""任务名
+        r"""<p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114451,7 +114456,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def WorkflowId(self):
-        r"""工作流id
+        r"""<p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114463,7 +114468,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def RealWorkflowId(self):
-        r"""任务为虚拟任务时，任务所在的真实工作流Id
+        r"""<p>任务为虚拟任务时，任务所在的真实工作流Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114475,7 +114480,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114487,7 +114492,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def FolderId(self):
-        r"""文件夹id
+        r"""<p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114499,7 +114504,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def FolderName(self):
-        r"""文件夹名字
+        r"""<p>文件夹名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114511,7 +114516,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114523,7 +114528,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def LastUpdate(self):
-        r"""最近更新时间
+        r"""<p>最近更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114535,7 +114540,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def Status(self):
-        r"""任务状态
+        r"""<p>任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114547,7 +114552,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def InCharge(self):
-        r"""责任人
+        r"""<p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114559,7 +114564,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def InChargeId(self):
-        r"""责任人用户id
+        r"""<p>责任人用户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114571,7 +114576,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def StartTime(self):
-        r"""调度生效日期
+        r"""<p>调度生效日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114583,7 +114588,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def EndTime(self):
-        r"""调度结束日期
+        r"""<p>调度结束日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114595,7 +114600,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ExecutionStartTime(self):
-        r"""执行时间左闭区间
+        r"""<p>执行时间左闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114607,7 +114612,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ExecutionEndTime(self):
-        r"""执行时间右闭区间
+        r"""<p>执行时间右闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114619,7 +114624,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def CycleType(self):
-        r"""周期类型
+        r"""<p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114631,7 +114636,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def CycleStep(self):
-        r"""步长
+        r"""<p>步长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -114643,7 +114648,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def CrontabExpression(self):
-        r"""调度cron表达式
+        r"""<p>调度cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114655,7 +114660,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def DelayTime(self):
-        r"""延时执行时间，unit=分钟
+        r"""<p>延时执行时间，unit=分钟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -114667,7 +114672,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def StartupTime(self):
-        r"""开始执行时间
+        r"""<p>开始执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -114679,7 +114684,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def RetryWait(self):
-        r"""重试等待时间, unit=分钟
+        r"""<p>重试等待时间, unit=分钟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -114691,7 +114696,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def RetryAble(self):
-        r"""是否可重试，1 代表可以重试
+        r"""<p>是否可重试，1 代表可以重试</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -114703,7 +114708,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TaskAction(self):
-        r"""调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为'0,3,4'
+        r"""<p>调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为&#39;0,3,4&#39;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114715,7 +114720,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TryLimit(self):
-        r"""运行次数限制
+        r"""<p>运行次数限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -114727,7 +114732,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def RunPriority(self):
-        r"""运行优先级
+        r"""<p>运行优先级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -114739,7 +114744,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TaskType(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
         """
@@ -114751,7 +114756,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def BrokerIp(self):
-        r"""指定的运行节点
+        r"""<p>指定的运行节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114763,7 +114768,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ClusterId(self):
-        r"""集群name
+        r"""<p>集群name</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114775,7 +114780,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def MinDateTime(self):
-        r"""最小数据时间
+        r"""<p>最小数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114787,7 +114792,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def MaxDateTime(self):
-        r"""最大数据时间
+        r"""<p>最大数据时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114799,7 +114804,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ExecutionTTL(self):
-        r"""运行耗时超时时间
+        r"""<p>运行耗时超时时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -114811,7 +114816,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def SelfDepend(self):
-        r"""自依赖类型
+        r"""<p>自依赖类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114823,7 +114828,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def LeftCoordinate(self):
-        r"""左侧坐标
+        r"""<p>左侧坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -114835,7 +114840,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TopCoordinate(self):
-        r"""顶部坐标
+        r"""<p>顶部坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -114847,7 +114852,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def Notes(self):
-        r"""任务备注
+        r"""<p>任务备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114859,7 +114864,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def InstanceInitStrategy(self):
-        r"""任务初始化策略
+        r"""<p>任务初始化策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114871,7 +114876,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def YarnQueue(self):
-        r"""计算队列
+        r"""<p>计算队列</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114883,7 +114888,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def LastSchedulerCommitTime(self):
-        r"""最新调度提交时间
+        r"""<p>最新调度提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114895,7 +114900,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def NormalizedJobStartTime(self):
-        r"""按cron表达式计算的任务开始执行时间
+        r"""<p>按cron表达式计算的任务开始执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114907,7 +114912,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def SchedulerDesc(self):
-        r"""调度计划描述
+        r"""<p>调度计划描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114919,7 +114924,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ResourceGroup(self):
-        r"""计算资源组
+        r"""<p>计算资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114931,7 +114936,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def Creator(self):
-        r"""任务创建人
+        r"""<p>任务创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114943,7 +114948,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def DependencyRel(self):
-        r"""任务依赖类型 and、or
+        r"""<p>任务依赖类型 and、or</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114955,7 +114960,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def DependencyWorkflow(self):
-        r"""任务工作流依赖 yes、no
+        r"""<p>任务工作流依赖 yes、no</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114967,7 +114972,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def EventListenerConfig(self):
-        r"""事件监听配置
+        r"""<p>事件监听配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114979,7 +114984,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def EventPublisherConfig(self):
-        r"""事件驱动配置
+        r"""<p>事件驱动配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -114991,7 +114996,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def VirtualTaskStatus(self):
-        r"""虚拟任务状态
+        r"""<p>虚拟任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115003,7 +115008,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TaskLinkInfo(self):
-        r"""任务依赖边详情
+        r"""<p>任务依赖边详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.LinkOpsDto`
         """
@@ -115015,7 +115020,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ProductName(self):
-        r"""任务产品类型
+        r"""<p>任务产品类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115027,7 +115032,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115039,7 +115044,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ProjectIdent(self):
-        r"""项目标识
+        r"""<p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115051,7 +115056,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115063,7 +115068,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def OwnId(self):
-        r"""主账户userId
+        r"""<p>主账户userId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115075,7 +115080,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def UserId(self):
-        r"""用户userId
+        r"""<p>用户userId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115087,7 +115092,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TenantId(self):
-        r"""租户id
+        r"""<p>租户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115099,7 +115104,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def UpdateUser(self):
-        r"""更新人昵称
+        r"""<p>更新人昵称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115111,7 +115116,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115123,7 +115128,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def UpdateUserId(self):
-        r"""更新人userId
+        r"""<p>更新人userId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115135,7 +115140,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TaskTypeId(self):
-        r"""任务类型id
+        r"""<p>任务类型id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -115147,7 +115152,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TaskTypeDesc(self):
-        r"""任务类型描述
+        r"""<p>任务类型描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115159,7 +115164,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ShowWorkflow(self):
-        r"""是否展示工作流
+        r"""<p>是否展示工作流</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -115171,7 +115176,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def FirstSubmitTime(self):
-        r"""首次提交时间
+        r"""<p>首次提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115183,7 +115188,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def FirstRunTime(self):
-        r"""首次运行时间
+        r"""<p>首次运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115195,7 +115200,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ScheduleDesc(self):
-        r"""调度描述
+        r"""<p>调度描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115207,7 +115212,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def CycleNum(self):
-        r"""周期
+        r"""<p>周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -115219,7 +115224,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def Crontab(self):
-        r"""表达式
+        r"""<p>表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115231,7 +115236,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def StartDate(self):
-        r"""开始日期
+        r"""<p>开始日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115243,7 +115248,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def EndDate(self):
-        r"""结束日期
+        r"""<p>结束日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115255,7 +115260,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def CycleUnit(self):
-        r"""周期单位
+        r"""<p>周期单位</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115267,7 +115272,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def InitStrategy(self):
-        r"""初始化策略
+        r"""<p>初始化策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115279,7 +115284,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def Layer(self):
-        r"""层级
+        r"""<p>层级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115291,7 +115296,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def SourceServiceId(self):
-        r"""来源数据源ID
+        r"""<p>来源数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115303,7 +115308,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def SourceServiceType(self):
-        r"""来源数据源类型
+        r"""<p>来源数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115315,7 +115320,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TargetServiceId(self):
-        r"""目标数据源ID
+        r"""<p>目标数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115327,7 +115332,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TargetServiceType(self):
-        r"""目标数据源类型
+        r"""<p>目标数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115339,7 +115344,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TasksStr(self):
-        r"""子任务列表
+        r"""<p>子任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115351,7 +115356,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def Submit(self):
-        r"""任务版本是否已提交
+        r"""<p>任务版本是否已提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -115363,7 +115368,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ExecutorGroupId(self):
-        r"""资源组id
+        r"""<p>资源组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115375,7 +115380,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ExecutorGroupName(self):
-        r"""资源组名称
+        r"""<p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115387,7 +115392,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TaskExtInfo(self):
-        r"""任务扩展信息(目前返沪离线同步的任务详情)
+        r"""<p>任务扩展信息(目前返沪离线同步的任务详情)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115399,7 +115404,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def EventListenerInfos(self):
-        r"""任务绑定的事件信息
+        r"""<p>任务绑定的事件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AiOpsEventListenerDTO
         """
@@ -115411,7 +115416,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ScriptInfo(self):
-        r"""脚本信息
+        r"""<p>脚本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.AiopsScriptInfo`
         """
@@ -115423,7 +115428,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def DLCResourceConfig(self):
-        r"""DLC资源配置
+        r"""<p>DLC资源配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.AiopsDLCResourceConfigDto`
         """
@@ -115435,7 +115440,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ParentTaskInfos(self):
-        r"""父任务simple信息
+        r"""<p>父任务simple信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.AiopsSimpleTaskDto`
         """
@@ -115447,7 +115452,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ExtResourceFlag(self):
-        r"""资源获取标识
+        r"""<p>资源获取标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.ExtResourceFlagDto`
         """
@@ -115459,7 +115464,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def NewParentTaskInfos(self):
-        r"""父任务simple信息(新)
+        r"""<p>父任务simple信息(新)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AiopsSimpleTaskDto
         """
@@ -115471,9 +115476,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def SelfWorkFlowDependType(self):
-        r"""任务自依赖类型：
-yes： 任务需满足自依赖
-no：任务无需满足自依赖
+        r"""<p>任务自依赖类型：<br>yes： 任务需满足自依赖<br>no：任务无需满足自依赖</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115485,7 +115488,7 @@ no：任务无需满足自依赖
 
     @property
     def AllowRedoType(self):
-        r"""允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+        r"""<p>允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑</p>
         :rtype: str
         """
         return self._AllowRedoType
@@ -115496,7 +115499,7 @@ no：任务无需满足自依赖
 
     @property
     def OwnerId(self):
-        r"""负责人Id
+        r"""<p>负责人Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115508,8 +115511,7 @@ no：任务无需满足自依赖
 
     @property
     def Privileges(self):
-        r"""当前用户对该任务的权限列表， 当前支持
-CAN_MANAGE : 有权限管理操作
+        r"""<p>当前用户对该任务的权限列表， 当前支持<br>CAN_MANAGE : 有权限管理操作</p>
         :rtype: list of str
         """
         return self._Privileges
@@ -115520,7 +115522,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def BundleId(self):
-        r"""bundle客户端唯一id
+        r"""<p>bundle客户端唯一id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115532,7 +115534,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def BundleInfo(self):
-        r"""bundle客户端信息
+        r"""<p>bundle客户端信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115544,7 +115546,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def WorkflowType(self):
-        r"""工作流类型
+        r"""<p>工作流类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115556,7 +115558,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def TaskExtDTO(self):
-        r"""任务扩展信息
+        r"""<p>任务扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskExtOpsDto`
         """
@@ -115568,7 +115570,7 @@ CAN_MANAGE : 有权限管理操作
 
     @property
     def ScheduleTimeZone(self):
-        r"""任务时区
+        r"""<p>任务时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -115577,6 +115579,30 @@ CAN_MANAGE : 有权限管理操作
     @ScheduleTimeZone.setter
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
+
+    @property
+    def ProxyTaskId(self):
+        r"""<p>代理任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProxyTaskId
+
+    @ProxyTaskId.setter
+    def ProxyTaskId(self, ProxyTaskId):
+        self._ProxyTaskId = ProxyTaskId
+
+    @property
+    def ProxyTaskTypeId(self):
+        r"""<p>代理任务类型ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProxyTaskTypeId
+
+    @ProxyTaskTypeId.setter
+    def ProxyTaskTypeId(self, ProxyTaskTypeId):
+        self._ProxyTaskTypeId = ProxyTaskTypeId
 
 
     def _deserialize(self, params):
@@ -115702,6 +115728,8 @@ CAN_MANAGE : 有权限管理操作
             self._TaskExtDTO = TaskExtOpsDto()
             self._TaskExtDTO._deserialize(params.get("TaskExtDTO"))
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._ProxyTaskId = params.get("ProxyTaskId")
+        self._ProxyTaskTypeId = params.get("ProxyTaskTypeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

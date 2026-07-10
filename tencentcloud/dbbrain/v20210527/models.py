@@ -2812,6 +2812,115 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateIgnoreDiagRecordRequest(AbstractModel):
+    r"""CreateIgnoreDiagRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _Product: <p>服务产品类型，取值：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、dcdb（TDSQL MySQL 版）、mariadb（TDSQL MariaDB 版）、redis（云数据库 Redis）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）。</p>
+        :type Product: str
+        :param _DiagItem: <p>诊断项名称，用于指定需要忽略或取消忽略的诊断事件类型。</p>
+        :type DiagItem: str
+        :param _Status: <p>忽略状态，取值：1（取消忽略），2（忽略）。</p>
+        :type Status: int
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._DiagItem = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型，取值：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、dcdb（TDSQL MySQL 版）、mariadb（TDSQL MariaDB 版）、redis（云数据库 Redis）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def DiagItem(self):
+        r"""<p>诊断项名称，用于指定需要忽略或取消忽略的诊断事件类型。</p>
+        :rtype: str
+        """
+        return self._DiagItem
+
+    @DiagItem.setter
+    def DiagItem(self, DiagItem):
+        self._DiagItem = DiagItem
+
+    @property
+    def Status(self):
+        r"""<p>忽略状态，取值：1（取消忽略），2（忽略）。</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._DiagItem = params.get("DiagItem")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIgnoreDiagRecordResponse(AbstractModel):
+    r"""CreateIgnoreDiagRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateKillTaskRequest(AbstractModel):
     r"""CreateKillTask请求参数结构体
 

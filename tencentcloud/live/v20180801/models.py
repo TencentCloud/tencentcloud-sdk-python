@@ -6960,9 +6960,9 @@ class CreateAuditKeywordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keywords: 关键词列表。
+        :param _Keywords: <p>关键词列表。</p>
         :type Keywords: list of AuditKeyword
-        :param _LibId: 直播审核词库Id。
+        :param _LibId: <p>直播审核词库Id。</p>
         :type LibId: str
         """
         self._Keywords = None
@@ -6970,7 +6970,7 @@ class CreateAuditKeywordsRequest(AbstractModel):
 
     @property
     def Keywords(self):
-        r"""关键词列表。
+        r"""<p>关键词列表。</p>
         :rtype: list of AuditKeyword
         """
         return self._Keywords
@@ -6981,7 +6981,7 @@ class CreateAuditKeywordsRequest(AbstractModel):
 
     @property
     def LibId(self):
-        r"""直播审核词库Id。
+        r"""<p>直播审核词库Id。</p>
         :rtype: str
         """
         return self._LibId
@@ -7016,20 +7016,23 @@ class CreateAuditKeywordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeywordIds: 添加成功的关键词 Id 列表。
+        :param _KeywordIds: <p>添加成功的关键词 Id 列表。</p>
         :type KeywordIds: list of str
-        :param _DupInfos: 重复关键词列表。
+        :param _DupInfos: <p>重复关键词列表。</p>
         :type DupInfos: list of AuditKeywordInfo
+        :param _Keywords: <p>新增成功关键词列表</p>
+        :type Keywords: list of AuditKeywordInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KeywordIds = None
         self._DupInfos = None
+        self._Keywords = None
         self._RequestId = None
 
     @property
     def KeywordIds(self):
-        r"""添加成功的关键词 Id 列表。
+        r"""<p>添加成功的关键词 Id 列表。</p>
         :rtype: list of str
         """
         return self._KeywordIds
@@ -7040,7 +7043,7 @@ class CreateAuditKeywordsResponse(AbstractModel):
 
     @property
     def DupInfos(self):
-        r"""重复关键词列表。
+        r"""<p>重复关键词列表。</p>
         :rtype: list of AuditKeywordInfo
         """
         return self._DupInfos
@@ -7048,6 +7051,17 @@ class CreateAuditKeywordsResponse(AbstractModel):
     @DupInfos.setter
     def DupInfos(self, DupInfos):
         self._DupInfos = DupInfos
+
+    @property
+    def Keywords(self):
+        r"""<p>新增成功关键词列表</p>
+        :rtype: list of AuditKeywordInfo
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
 
     @property
     def RequestId(self):
@@ -7069,6 +7083,12 @@ class CreateAuditKeywordsResponse(AbstractModel):
                 obj = AuditKeywordInfo()
                 obj._deserialize(item)
                 self._DupInfos.append(obj)
+        if params.get("Keywords") is not None:
+            self._Keywords = []
+            for item in params.get("Keywords"):
+                obj = AuditKeywordInfo()
+                obj._deserialize(item)
+                self._Keywords.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -28646,14 +28646,9 @@ class StorageExtraConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CFSStorageType: cfs的存储类型
-  // HP:通用性能型
-  // SD:通用标准型
-  // TP:turbo性能型
-  // TB:turbo标准型
-  // THP:吞吐型
+        :param _CFSStorageType: <p>cfs的存储类型<br>  // HP:通用性能型<br>  // SD:通用标准型<br>  // TP:turbo性能型<br>  // TB:turbo标准型<br>  // THP:吞吐型</p>
         :type CFSStorageType: str
-        :param _CFSProtocol: cfs的协议
+        :param _CFSProtocol: <p>cfs的协议</p>
         :type CFSProtocol: str
         """
         self._CFSStorageType = None
@@ -28661,12 +28656,7 @@ class StorageExtraConf(AbstractModel):
 
     @property
     def CFSStorageType(self):
-        r"""cfs的存储类型
-  // HP:通用性能型
-  // SD:通用标准型
-  // TP:turbo性能型
-  // TB:turbo标准型
-  // THP:吞吐型
+        r"""<p>cfs的存储类型<br>  // HP:通用性能型<br>  // SD:通用标准型<br>  // TP:turbo性能型<br>  // TB:turbo标准型<br>  // THP:吞吐型</p>
         :rtype: str
         """
         return self._CFSStorageType
@@ -28677,7 +28667,7 @@ class StorageExtraConf(AbstractModel):
 
     @property
     def CFSProtocol(self):
-        r"""cfs的协议
+        r"""<p>cfs的协议</p>
         :rtype: str
         """
         return self._CFSProtocol

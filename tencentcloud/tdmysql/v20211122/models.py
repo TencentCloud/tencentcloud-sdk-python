@@ -7047,6 +7047,36 @@ class DescribeFlowRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>流程ID</p>
+        :type FlowId: int
+        """
+        self._FlowId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>流程ID</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeFlowResponse(AbstractModel):
     r"""DescribeFlow返回参数结构体

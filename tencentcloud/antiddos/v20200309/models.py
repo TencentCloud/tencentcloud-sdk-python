@@ -8478,13 +8478,13 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IpList: IP 资源列表
+        :param _IpList: <p>IP 资源列表</p>
         :type IpList: list of str
-        :param _IdList: 域名化资源传id
+        :param _IdList: <p>域名化资源传id</p>
         :type IdList: list of str
-        :param _FilterRegion: 地域名称
+        :param _FilterRegion: <p>地域名称</p>
         :type FilterRegion: int
-        :param _CnameWafIdList: cnameWaf资源
+        :param _CnameWafIdList: <p>cnameWaf资源</p>
         :type CnameWafIdList: list of str
         """
         self._IpList = None
@@ -8494,7 +8494,7 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
 
     @property
     def IpList(self):
-        r"""IP 资源列表
+        r"""<p>IP 资源列表</p>
         :rtype: list of str
         """
         return self._IpList
@@ -8505,7 +8505,7 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
 
     @property
     def IdList(self):
-        r"""域名化资源传id
+        r"""<p>域名化资源传id</p>
         :rtype: list of str
         """
         return self._IdList
@@ -8516,7 +8516,7 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
 
     @property
     def FilterRegion(self):
-        r"""地域名称
+        r"""<p>地域名称</p>
         :rtype: int
         """
         return self._FilterRegion
@@ -8527,7 +8527,7 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
 
     @property
     def CnameWafIdList(self):
-        r"""cnameWaf资源
+        r"""<p>cnameWaf资源</p>
         :rtype: list of str
         """
         return self._CnameWafIdList
@@ -8559,14 +8559,11 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回资源及状态，状态码：
-1 - 封堵状态
-2 - 正常状态
-3 - 攻击状态
+        :param _Data: <p>返回资源及状态，状态码：<br>1 - 封堵状态<br>2 - 正常状态<br>3 - 攻击状态</p>
         :type Data: list of KeyValue
-        :param _CLBData: 域名化资产的名称
+        :param _CLBData: <p>域名化资产的名称</p>
         :type CLBData: list of KeyValue
-        :param _CnameWafData: cnamewaf资源状态
+        :param _CnameWafData: <p>cnamewaf资源状态</p>
         :type CnameWafData: list of KeyValue
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8578,10 +8575,7 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""返回资源及状态，状态码：
-1 - 封堵状态
-2 - 正常状态
-3 - 攻击状态
+        r"""<p>返回资源及状态，状态码：<br>1 - 封堵状态<br>2 - 正常状态<br>3 - 攻击状态</p>
         :rtype: list of KeyValue
         """
         return self._Data
@@ -8592,7 +8586,7 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
 
     @property
     def CLBData(self):
-        r"""域名化资产的名称
+        r"""<p>域名化资产的名称</p>
         :rtype: list of KeyValue
         """
         return self._CLBData
@@ -8603,7 +8597,7 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
 
     @property
     def CnameWafData(self):
-        r"""cnamewaf资源状态
+        r"""<p>cnamewaf资源状态</p>
         :rtype: list of KeyValue
         """
         return self._CnameWafData

@@ -2021,20 +2021,23 @@ class DescribeAccelerateAreasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _Offset: 偏移量。
+        :param _Offset: <p>偏移量。默认为0。</p>
         :type Offset: int
-        :param _Limit: 符合条件实例数量。
+        :param _Limit: <p>符合条件实例数量。默认为20，最大200。</p>
         :type Limit: int
+        :param _Filters: <p>过滤条件。 accelerate-region- String -（过滤条件）终端节点组地域。</p>
+        :type Filters: list of Filter
         """
         self._GlobalAcceleratorId = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -2045,7 +2048,7 @@ class DescribeAccelerateAreasRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量。
+        r"""<p>偏移量。默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -2056,7 +2059,7 @@ class DescribeAccelerateAreasRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""符合条件实例数量。
+        r"""<p>符合条件实例数量。默认为20，最大200。</p>
         :rtype: int
         """
         return self._Limit
@@ -2065,11 +2068,28 @@ class DescribeAccelerateAreasRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。 accelerate-region- String -（过滤条件）终端节点组地域。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2087,9 +2107,9 @@ class DescribeAccelerateAreasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccelerateAreaSet: 加速地域信息。
+        :param _AccelerateAreaSet: <p>加速地域信息。</p>
         :type AccelerateAreaSet: list of AcceleratorAreas
-        :param _TotalCount: 实例个数。
+        :param _TotalCount: <p>实例个数。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2100,7 +2120,7 @@ class DescribeAccelerateAreasResponse(AbstractModel):
 
     @property
     def AccelerateAreaSet(self):
-        r"""加速地域信息。
+        r"""<p>加速地域信息。</p>
         :rtype: list of AcceleratorAreas
         """
         return self._AccelerateAreaSet
@@ -2111,7 +2131,7 @@ class DescribeAccelerateAreasResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""实例个数。
+        r"""<p>实例个数。</p>
         :rtype: int
         """
         return self._TotalCount

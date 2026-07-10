@@ -2179,21 +2179,21 @@ class CreateCloudModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和TRTC的房间所对应的SdkAppId相同。</p>
         :type SdkAppId: int
-        :param _RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+        :param _RoomId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，为TRTC房间所对应的RoomId。</p>
         :type RoomId: str
-        :param _UserId: 机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+        :param _UserId: <p>机器人的UserId，用于进房发起AI 内容理解任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。</p>
         :type UserId: str
-        :param _ModerationParams: 云端审核控制参数。
+        :param _ModerationParams: <p>AI 内容理解控制参数。</p>
         :type ModerationParams: :class:`tencentcloud.trtc.v20190722.models.ModerationParams`
-        :param _UserSig: 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+        :param _UserSig: <p>机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。</p>
         :type UserSig: str
-        :param _ModerationStorageParams: 云端审核文件上传到云存储的参数。
+        :param _ModerationStorageParams: <p>AI 内容理解文件上传到云存储的参数。</p>
         :type ModerationStorageParams: :class:`tencentcloud.trtc.v20190722.models.ModerationStorageParams`
-        :param _RoomIdType: TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+        :param _RoomIdType: <p>TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1</p>
         :type RoomIdType: int
-        :param _ResourceExpiredHour: 任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。
+        :param _ResourceExpiredHour: <p>任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。</p>
         :type ResourceExpiredHour: int
         """
         self._SdkAppId = None
@@ -2207,7 +2207,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和TRTC的房间所对应的SdkAppId相同。</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -2218,7 +2218,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，为TRTC房间所对应的RoomId。</p>
         :rtype: str
         """
         return self._RoomId
@@ -2229,7 +2229,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+        r"""<p>机器人的UserId，用于进房发起AI 内容理解任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。</p>
         :rtype: str
         """
         return self._UserId
@@ -2240,7 +2240,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def ModerationParams(self):
-        r"""云端审核控制参数。
+        r"""<p>AI 内容理解控制参数。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationParams`
         """
         return self._ModerationParams
@@ -2251,7 +2251,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def UserSig(self):
-        r"""机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+        r"""<p>机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。</p>
         :rtype: str
         """
         return self._UserSig
@@ -2262,7 +2262,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def ModerationStorageParams(self):
-        r"""云端审核文件上传到云存储的参数。
+        r"""<p>AI 内容理解文件上传到云存储的参数。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationStorageParams`
         """
         return self._ModerationStorageParams
@@ -2273,7 +2273,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
-        r"""TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+        r"""<p>TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1</p>
         :rtype: int
         """
         return self._RoomIdType
@@ -2284,7 +2284,7 @@ class CreateCloudModerationRequest(AbstractModel):
 
     @property
     def ResourceExpiredHour(self):
-        r"""任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。
+        r"""<p>任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。</p>
         :rtype: int
         """
         return self._ResourceExpiredHour
@@ -2324,7 +2324,7 @@ class CreateCloudModerationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 云端审核服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
+        :param _TaskId: <p>AI 内容理解服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2334,7 +2334,7 @@ class CreateCloudModerationResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""云端审核服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
+        r"""<p>AI 内容理解服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数</p>
         :rtype: str
         """
         return self._TaskId
@@ -3262,9 +3262,9 @@ class DeleteCloudModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :param _SdkAppId: <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
         :type SdkAppId: int
-        :param _TaskId: 审核任务的唯一Id，在启动切片任务成功后会返回。
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :type TaskId: str
         """
         self._SdkAppId = None
@@ -3272,7 +3272,7 @@ class DeleteCloudModerationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        r"""<p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -3283,7 +3283,7 @@ class DeleteCloudModerationRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""审核任务的唯一Id，在启动切片任务成功后会返回。
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :rtype: str
         """
         return self._TaskId
@@ -3313,7 +3313,7 @@ class DeleteCloudModerationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 审核任务的唯一Id，在启动切片任务成功后会返回。
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3323,7 +3323,7 @@ class DeleteCloudModerationResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""审核任务的唯一Id，在启动切片任务成功后会返回。
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :rtype: str
         """
         return self._TaskId
@@ -4507,9 +4507,9 @@ class DescribeCloudModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :param _SdkAppId: <p>TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。</p>
         :type SdkAppId: int
-        :param _TaskId: 云端审核任务的唯一Id，在启动切片任务成功后会返回。
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :type TaskId: str
         """
         self._SdkAppId = None
@@ -4517,7 +4517,7 @@ class DescribeCloudModerationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        r"""<p>TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -4528,7 +4528,7 @@ class DescribeCloudModerationRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""云端审核任务的唯一Id，在启动切片任务成功后会返回。
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :rtype: str
         """
         return self._TaskId
@@ -4558,11 +4558,11 @@ class DescribeCloudModerationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 切片任务的唯一Id，在启动切片任务成功后会返回。
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :type TaskId: str
-        :param _Status: 云端切片任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。
+        :param _Status: <p>AI内容理解任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。</p><p>枚举值：</p><ul><li>InProgress： 进行中</li></ul>
         :type Status: str
-        :param _SubscribeStreamUserIds: 订阅黑白名单
+        :param _SubscribeStreamUserIds: <p>订阅黑白名单</p>
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4574,7 +4574,7 @@ class DescribeCloudModerationResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""切片任务的唯一Id，在启动切片任务成功后会返回。
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :rtype: str
         """
         return self._TaskId
@@ -4585,7 +4585,7 @@ class DescribeCloudModerationResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""云端切片任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。
+        r"""<p>AI内容理解任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。</p><p>枚举值：</p><ul><li>InProgress： 进行中</li></ul>
         :rtype: str
         """
         return self._Status
@@ -4596,7 +4596,7 @@ class DescribeCloudModerationResponse(AbstractModel):
 
     @property
     def SubscribeStreamUserIds(self):
-        r"""订阅黑白名单
+        r"""<p>订阅黑白名单</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
         """
         return self._SubscribeStreamUserIds
@@ -11805,28 +11805,23 @@ class ModerationParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModerationType: 审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核  默认值1 
+        :param _ModerationType: <p>AI 内容理解任务类型， 1:音频切片理解，2:视频截帧理解，3:音视切片+视频截帧理解  默认值1 </p><p>枚举值：</p><ul><li>1： 音频切片理解</li></ul>
         :type ModerationType: int
-        :param _MaxIdleTime: 房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30 
+        :param _MaxIdleTime: <p>房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30</p>
         :type MaxIdleTime: int
-        :param _SliceAudio: 音频切片时长，默认15s 示例值：15, 范围15-60s
+        :param _SliceAudio: <p>音频切片时长，默认15s 示例值：15, 范围15-60s</p>
         :type SliceAudio: int
-        :param _SliceVideo: 视频截帧间隔时长，默认5s, 范围1-60s
+        :param _SliceVideo: <p>视频截帧间隔时长，默认5s, 范围1-60s</p>
         :type SliceVideo: int
-        :param _ModerationSupplier: 供应商枚举，
-trtc : trtc内容理解（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-tianyu : 天御内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-ace  : ACE内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-shumei : 数美审核（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+        :param _ModerationSupplier: <p>供应商枚举，<br>trtc : trtc内容理解</p>
         :type ModerationSupplier: str
-        :param _ModerationSupplierParam: 第三方审核商送审需要配置信息, ModerationSupplier为trtc时，这个参数可以不需要初始化
+        :param _ModerationSupplierParam: <p>第三方内容理解供应商需要配置信息, ModerationSupplier为trtc时，这个参数可以不需要初始化</p>
         :type ModerationSupplierParam: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
-        :param _SaveModerationFile: 是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件
+        :param _SaveModerationFile: <p>是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件</p>
         :type SaveModerationFile: int
-        :param _CallbackAllResults: 是否回调所有审核结果:0 默认回调所有结果 1 仅回调命中结果 
+        :param _CallbackAllResults: <p>是否回调所有内容理解结果:0 默认回调所有结果 1 仅回调命中结果</p>
         :type CallbackAllResults: int
-        :param _SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
+        :param _SubscribeStreamUserIds: <p>指定订阅流白名单或者黑名单。</p>
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
         """
         self._ModerationType = None
@@ -11841,7 +11836,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def ModerationType(self):
-        r"""审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核  默认值1 
+        r"""<p>AI 内容理解任务类型， 1:音频切片理解，2:视频截帧理解，3:音视切片+视频截帧理解  默认值1 </p><p>枚举值：</p><ul><li>1： 音频切片理解</li></ul>
         :rtype: int
         """
         return self._ModerationType
@@ -11852,7 +11847,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def MaxIdleTime(self):
-        r"""房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30 
+        r"""<p>房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30</p>
         :rtype: int
         """
         return self._MaxIdleTime
@@ -11863,7 +11858,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def SliceAudio(self):
-        r"""音频切片时长，默认15s 示例值：15, 范围15-60s
+        r"""<p>音频切片时长，默认15s 示例值：15, 范围15-60s</p>
         :rtype: int
         """
         return self._SliceAudio
@@ -11874,7 +11869,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def SliceVideo(self):
-        r"""视频截帧间隔时长，默认5s, 范围1-60s
+        r"""<p>视频截帧间隔时长，默认5s, 范围1-60s</p>
         :rtype: int
         """
         return self._SliceVideo
@@ -11885,12 +11880,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def ModerationSupplier(self):
-        r"""供应商枚举，
-trtc : trtc内容理解（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-tianyu : 天御内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-ace  : ACE内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-shumei : 数美审核（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+        r"""<p>供应商枚举，<br>trtc : trtc内容理解</p>
         :rtype: str
         """
         return self._ModerationSupplier
@@ -11901,7 +11891,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def ModerationSupplierParam(self):
-        r"""第三方审核商送审需要配置信息, ModerationSupplier为trtc时，这个参数可以不需要初始化
+        r"""<p>第三方内容理解供应商需要配置信息, ModerationSupplier为trtc时，这个参数可以不需要初始化</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
         """
         return self._ModerationSupplierParam
@@ -11912,7 +11902,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def SaveModerationFile(self):
-        r"""是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件
+        r"""<p>是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件</p>
         :rtype: int
         """
         return self._SaveModerationFile
@@ -11923,7 +11913,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def CallbackAllResults(self):
-        r"""是否回调所有审核结果:0 默认回调所有结果 1 仅回调命中结果 
+        r"""<p>是否回调所有内容理解结果:0 默认回调所有结果 1 仅回调命中结果</p>
         :rtype: int
         """
         return self._CallbackAllResults
@@ -11934,7 +11924,7 @@ yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核
 
     @property
     def SubscribeStreamUserIds(self):
-        r"""指定订阅流白名单或者黑名单。
+        r"""<p>指定订阅流白名单或者黑名单。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
         """
         return self._SubscribeStreamUserIds
@@ -12109,11 +12099,11 @@ class ModifyCloudModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        :param _SdkAppId: <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
         :type SdkAppId: int
-        :param _TaskId: 审核任务的唯一Id，在启动切片任务成功后会返回。
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :type TaskId: str
-        :param _SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
+        :param _SubscribeStreamUserIds: <p>指定订阅流白名单或者黑名单。</p>
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
         """
         self._SdkAppId = None
@@ -12122,7 +12112,7 @@ class ModifyCloudModerationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+        r"""<p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -12133,7 +12123,7 @@ class ModifyCloudModerationRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""审核任务的唯一Id，在启动切片任务成功后会返回。
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :rtype: str
         """
         return self._TaskId
@@ -12144,7 +12134,7 @@ class ModifyCloudModerationRequest(AbstractModel):
 
     @property
     def SubscribeStreamUserIds(self):
-        r"""指定订阅流白名单或者黑名单。
+        r"""<p>指定订阅流白名单或者黑名单。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
         """
         return self._SubscribeStreamUserIds
@@ -12177,7 +12167,7 @@ class ModifyCloudModerationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 审核任务的唯一Id，在启动切片任务成功后会返回。
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12187,7 +12177,7 @@ class ModifyCloudModerationResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""审核任务的唯一Id，在启动切片任务成功后会返回。
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :rtype: str
         """
         return self._TaskId

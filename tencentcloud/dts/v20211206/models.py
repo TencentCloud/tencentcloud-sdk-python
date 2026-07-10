@@ -3487,21 +3487,23 @@ class CreateSubscribeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+        :param _Product: <p>订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)</p>
         :type Product: str
-        :param _PayType: 付费方式，枚举值：0-包年包月，1-按量计费
+        :param _PayType: <p>付费方式，枚举值：0-包年包月，1-按量计费</p>
         :type PayType: int
-        :param _Duration: 购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1
+        :param _Duration: <p>购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1</p>
         :type Duration: int
-        :param _AutoRenew: 是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。
+        :param _AutoRenew: <p>是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。</p>
         :type AutoRenew: int
-        :param _Count: 购买数量,默认为1，最大为10
+        :param _Count: <p>购买数量,默认为1，最大为10</p>
         :type Count: int
-        :param _Tags: 实例资源标签
+        :param _Tags: <p>实例资源标签</p>
         :type Tags: list of TagItem
-        :param _Name: 任务名，自定义
+        :param _Name: <p>任务名，自定义</p>
         :type Name: str
-        :param _InstanceClass: 订阅实例规格，当前仅支持small、medium、large
+        :param _SubscribeVersion: <p>数据订阅版本，目前支持kafka和kafkaPro（专业版），如果不填，默认kafkaPro</p>
+        :type SubscribeVersion: str
+        :param _InstanceClass: <p>订阅实例规格，当前仅支持small、medium、large</p>
         :type InstanceClass: str
         """
         self._Product = None
@@ -3511,11 +3513,12 @@ class CreateSubscribeRequest(AbstractModel):
         self._Count = None
         self._Tags = None
         self._Name = None
+        self._SubscribeVersion = None
         self._InstanceClass = None
 
     @property
     def Product(self):
-        r"""订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+        r"""<p>订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)</p>
         :rtype: str
         """
         return self._Product
@@ -3526,7 +3529,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def PayType(self):
-        r"""付费方式，枚举值：0-包年包月，1-按量计费
+        r"""<p>付费方式，枚举值：0-包年包月，1-按量计费</p>
         :rtype: int
         """
         return self._PayType
@@ -3537,7 +3540,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Duration(self):
-        r"""购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1
+        r"""<p>购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1</p>
         :rtype: int
         """
         return self._Duration
@@ -3548,7 +3551,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        r"""是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。
+        r"""<p>是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。</p>
         :rtype: int
         """
         return self._AutoRenew
@@ -3559,7 +3562,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Count(self):
-        r"""购买数量,默认为1，最大为10
+        r"""<p>购买数量,默认为1，最大为10</p>
         :rtype: int
         """
         return self._Count
@@ -3570,7 +3573,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""实例资源标签
+        r"""<p>实例资源标签</p>
         :rtype: list of TagItem
         """
         return self._Tags
@@ -3581,7 +3584,7 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名，自定义
+        r"""<p>任务名，自定义</p>
         :rtype: str
         """
         return self._Name
@@ -3591,8 +3594,19 @@ class CreateSubscribeRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def SubscribeVersion(self):
+        r"""<p>数据订阅版本，目前支持kafka和kafkaPro（专业版），如果不填，默认kafkaPro</p>
+        :rtype: str
+        """
+        return self._SubscribeVersion
+
+    @SubscribeVersion.setter
+    def SubscribeVersion(self, SubscribeVersion):
+        self._SubscribeVersion = SubscribeVersion
+
+    @property
     def InstanceClass(self):
-        r"""订阅实例规格，当前仅支持small、medium、large
+        r"""<p>订阅实例规格，当前仅支持small、medium、large</p>
         :rtype: str
         """
         return self._InstanceClass
@@ -3615,6 +3629,7 @@ class CreateSubscribeRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Name = params.get("Name")
+        self._SubscribeVersion = params.get("SubscribeVersion")
         self._InstanceClass = params.get("InstanceClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3633,7 +3648,7 @@ class CreateSubscribeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeIds: 数据订阅实例的ID数组
+        :param _SubscribeIds: <p>数据订阅实例的ID数组</p>
         :type SubscribeIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3643,7 +3658,7 @@ class CreateSubscribeResponse(AbstractModel):
 
     @property
     def SubscribeIds(self):
-        r"""数据订阅实例的ID数组
+        r"""<p>数据订阅实例的ID数组</p>
         :rtype: list of str
         """
         return self._SubscribeIds

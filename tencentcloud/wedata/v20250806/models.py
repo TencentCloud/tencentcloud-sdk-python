@@ -32877,13 +32877,13 @@ class ListUpstreamOpsTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目Id
+        :param _ProjectId: <p>项目Id</p>
         :type ProjectId: str
-        :param _TaskId: 任务Id
+        :param _TaskId: <p>任务Id</p>
         :type TaskId: str
-        :param _PageNumber: 分页页码
+        :param _PageNumber: <p>分页页码</p>
         :type PageNumber: str
-        :param _PageSize: 分页大小
+        :param _PageSize: <p>分页大小</p>
         :type PageSize: str
         """
         self._ProjectId = None
@@ -32893,7 +32893,7 @@ class ListUpstreamOpsTasksRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目Id
+        r"""<p>项目Id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -32904,7 +32904,7 @@ class ListUpstreamOpsTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务Id
+        r"""<p>任务Id</p>
         :rtype: str
         """
         return self._TaskId
@@ -32915,7 +32915,7 @@ class ListUpstreamOpsTasksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""分页页码
+        r"""<p>分页页码</p>
         :rtype: str
         """
         return self._PageNumber
@@ -32926,7 +32926,7 @@ class ListUpstreamOpsTasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: str
         """
         return self._PageSize
@@ -32958,7 +32958,7 @@ class ListUpstreamOpsTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 上游任务详情
+        :param _Data: <p>上游任务详情</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.ParentDependencyConfigPage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32968,7 +32968,7 @@ class ListUpstreamOpsTasksResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""上游任务详情
+        r"""<p>上游任务详情</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.ParentDependencyConfigPage`
         """
         return self._Data

@@ -4648,23 +4648,26 @@ class ModelChargingItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PriceName: 价格维度标识。取值：Input（输入）、Output（输出）、Cache（缓存命中）、Thinking（思考）、BatchInput（批量输入）、BatchOutput（批量输出）、BatchCache（批量缓存命中）、ImageInput（输入图片）、ImageOutput（输出图片）、Search（搜索调用）。
+        :param _PriceName: <p>价格维度标识。取值：Input（输入）、Output（输出）、Cache（缓存命中）、Thinking（思考）、BatchInput（批量输入）、BatchOutput（批量输出）、BatchCache（批量缓存命中）、ImageInput（输入图片）、ImageOutput（输出图片）、Search（搜索调用）。</p>
         :type PriceName: str
-        :param _DisplayName: 价格维度展示名，后端直接提供当前语言文本（如 输入、Input），前端无需翻译。
+        :param _DisplayName: <p>价格维度展示名，后端直接提供当前语言文本（如 输入、Input），前端无需翻译。</p>
         :type DisplayName: str
-        :param _Price: 价格数值。
+        :param _Price: <p>价格数值。</p>
         :type Price: str
-        :param _PriceUnit: 价格单位，后端直接提供当前语言文本（如 元/百万tokens、元/张、积分/次）。
+        :param _PriceUnit: <p>价格单位，后端直接提供当前语言文本（如 元/百万tokens、元/张、积分/次）。</p>
         :type PriceUnit: str
+        :param _PeakPrice: <p>高峰价格，为空表示无高峰定价</p>
+        :type PeakPrice: str
         """
         self._PriceName = None
         self._DisplayName = None
         self._Price = None
         self._PriceUnit = None
+        self._PeakPrice = None
 
     @property
     def PriceName(self):
-        r"""价格维度标识。取值：Input（输入）、Output（输出）、Cache（缓存命中）、Thinking（思考）、BatchInput（批量输入）、BatchOutput（批量输出）、BatchCache（批量缓存命中）、ImageInput（输入图片）、ImageOutput（输出图片）、Search（搜索调用）。
+        r"""<p>价格维度标识。取值：Input（输入）、Output（输出）、Cache（缓存命中）、Thinking（思考）、BatchInput（批量输入）、BatchOutput（批量输出）、BatchCache（批量缓存命中）、ImageInput（输入图片）、ImageOutput（输出图片）、Search（搜索调用）。</p>
         :rtype: str
         """
         return self._PriceName
@@ -4675,7 +4678,7 @@ class ModelChargingItem(AbstractModel):
 
     @property
     def DisplayName(self):
-        r"""价格维度展示名，后端直接提供当前语言文本（如 输入、Input），前端无需翻译。
+        r"""<p>价格维度展示名，后端直接提供当前语言文本（如 输入、Input），前端无需翻译。</p>
         :rtype: str
         """
         return self._DisplayName
@@ -4686,7 +4689,7 @@ class ModelChargingItem(AbstractModel):
 
     @property
     def Price(self):
-        r"""价格数值。
+        r"""<p>价格数值。</p>
         :rtype: str
         """
         return self._Price
@@ -4697,7 +4700,7 @@ class ModelChargingItem(AbstractModel):
 
     @property
     def PriceUnit(self):
-        r"""价格单位，后端直接提供当前语言文本（如 元/百万tokens、元/张、积分/次）。
+        r"""<p>价格单位，后端直接提供当前语言文本（如 元/百万tokens、元/张、积分/次）。</p>
         :rtype: str
         """
         return self._PriceUnit
@@ -4706,12 +4709,24 @@ class ModelChargingItem(AbstractModel):
     def PriceUnit(self, PriceUnit):
         self._PriceUnit = PriceUnit
 
+    @property
+    def PeakPrice(self):
+        r"""<p>高峰价格，为空表示无高峰定价</p>
+        :rtype: str
+        """
+        return self._PeakPrice
+
+    @PeakPrice.setter
+    def PeakPrice(self, PeakPrice):
+        self._PeakPrice = PeakPrice
+
 
     def _deserialize(self, params):
         self._PriceName = params.get("PriceName")
         self._DisplayName = params.get("DisplayName")
         self._Price = params.get("Price")
         self._PriceUnit = params.get("PriceUnit")
+        self._PeakPrice = params.get("PeakPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

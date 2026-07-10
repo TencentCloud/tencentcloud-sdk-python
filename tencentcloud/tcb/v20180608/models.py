@@ -9497,19 +9497,19 @@ class DescribePGUserMigrationResponse(AbstractModel):
         :type Name: str
         :param _Query: <p>要执行的migration sql 语句</p>
         :type Query: str
-        :param _Rollback: <p>回滚的sql 语句</p>
+        :param _Rollback: <p>回滚的sql 语句</p><p>deprecated</p>
         :type Rollback: str
-        :param _Checksum: <p>migration query 语句的checksum值</p><p>由服务端自动生成，同版本 checksum 不一致会拒绝执行</p>
+        :param _Checksum: <p>migration query 语句的checksum值,由服务端自动生成，同版本 checksum 不一致会拒绝执行</p><p>deprecated</p>
         :type Checksum: str
-        :param _Source: <p>用于标记调用来源</p>
+        :param _Source: <p>用于标记调用来源</p><p>deprecated</p>
         :type Source: str
-        :param _CreatedBy: <p>用于标记该条migration由谁创建，目前默认调用的用户uin</p>
+        :param _CreatedBy: <p>用于标记该条migration由谁创建，目前默认调用的用户uin</p><p>deprecated</p>
         :type CreatedBy: str
-        :param _CreatedAt: <p>该migration创建时间</p>
+        :param _CreatedAt: <p>该migration创建时间</p><p>deprecated</p>
         :type CreatedAt: str
-        :param _AppliedAt: <p>该migration应用时间</p>
+        :param _AppliedAt: <p>该migration应用时间</p><p>deprecated</p>
         :type AppliedAt: str
-        :param _DurationMs: <p>该migration执行耗时</p><p>单位：毫秒</p>
+        :param _DurationMs: <p>该migration执行耗时</p><p>单位：毫秒</p><p>deprecated</p>
         :type DurationMs: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9561,7 +9561,7 @@ class DescribePGUserMigrationResponse(AbstractModel):
 
     @property
     def Rollback(self):
-        r"""<p>回滚的sql 语句</p>
+        r"""<p>回滚的sql 语句</p><p>deprecated</p>
         :rtype: str
         """
         return self._Rollback
@@ -9572,7 +9572,7 @@ class DescribePGUserMigrationResponse(AbstractModel):
 
     @property
     def Checksum(self):
-        r"""<p>migration query 语句的checksum值</p><p>由服务端自动生成，同版本 checksum 不一致会拒绝执行</p>
+        r"""<p>migration query 语句的checksum值,由服务端自动生成，同版本 checksum 不一致会拒绝执行</p><p>deprecated</p>
         :rtype: str
         """
         return self._Checksum
@@ -9583,7 +9583,7 @@ class DescribePGUserMigrationResponse(AbstractModel):
 
     @property
     def Source(self):
-        r"""<p>用于标记调用来源</p>
+        r"""<p>用于标记调用来源</p><p>deprecated</p>
         :rtype: str
         """
         return self._Source
@@ -9594,7 +9594,7 @@ class DescribePGUserMigrationResponse(AbstractModel):
 
     @property
     def CreatedBy(self):
-        r"""<p>用于标记该条migration由谁创建，目前默认调用的用户uin</p>
+        r"""<p>用于标记该条migration由谁创建，目前默认调用的用户uin</p><p>deprecated</p>
         :rtype: str
         """
         return self._CreatedBy
@@ -9605,7 +9605,7 @@ class DescribePGUserMigrationResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""<p>该migration创建时间</p>
+        r"""<p>该migration创建时间</p><p>deprecated</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -9616,7 +9616,7 @@ class DescribePGUserMigrationResponse(AbstractModel):
 
     @property
     def AppliedAt(self):
-        r"""<p>该migration应用时间</p>
+        r"""<p>该migration应用时间</p><p>deprecated</p>
         :rtype: str
         """
         return self._AppliedAt
@@ -9627,7 +9627,7 @@ class DescribePGUserMigrationResponse(AbstractModel):
 
     @property
     def DurationMs(self):
-        r"""<p>该migration执行耗时</p><p>单位：毫秒</p>
+        r"""<p>该migration执行耗时</p><p>单位：毫秒</p><p>deprecated</p>
         :rtype: int
         """
         return self._DurationMs
@@ -16719,13 +16719,13 @@ class MigrationSummary(AbstractModel):
         :type Version: str
         :param _Name: <p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
         :type Name: str
-        :param _Checksum: <p>migration query sql 语句checksum</p><p>服务端自动生成，同版本不同checksum会拒绝执行</p>
+        :param _Checksum: <p>migration query sql 语句checksum，服务端自动生成，同版本不同checksum会拒绝执行</p><p>deprecated</p>
         :type Checksum: str
-        :param _AppliedAt: <p>应用时间</p>
+        :param _AppliedAt: <p>应用时间</p><p>deprecated</p>
         :type AppliedAt: str
-        :param _Source: <p>请求来源</p>
+        :param _Source: <p>请求来源</p><p>deprecated</p>
         :type Source: str
-        :param _CreatedBy: <p>migration 创建时间</p>
+        :param _CreatedBy: <p>migration 创建时间</p><p>deprecated</p>
         :type CreatedBy: str
         """
         self._Version = None
@@ -16759,7 +16759,7 @@ class MigrationSummary(AbstractModel):
 
     @property
     def Checksum(self):
-        r"""<p>migration query sql 语句checksum</p><p>服务端自动生成，同版本不同checksum会拒绝执行</p>
+        r"""<p>migration query sql 语句checksum，服务端自动生成，同版本不同checksum会拒绝执行</p><p>deprecated</p>
         :rtype: str
         """
         return self._Checksum
@@ -16770,7 +16770,7 @@ class MigrationSummary(AbstractModel):
 
     @property
     def AppliedAt(self):
-        r"""<p>应用时间</p>
+        r"""<p>应用时间</p><p>deprecated</p>
         :rtype: str
         """
         return self._AppliedAt
@@ -16781,7 +16781,7 @@ class MigrationSummary(AbstractModel):
 
     @property
     def Source(self):
-        r"""<p>请求来源</p>
+        r"""<p>请求来源</p><p>deprecated</p>
         :rtype: str
         """
         return self._Source
@@ -16792,7 +16792,7 @@ class MigrationSummary(AbstractModel):
 
     @property
     def CreatedBy(self):
-        r"""<p>migration 创建时间</p>
+        r"""<p>migration 创建时间</p><p>deprecated</p>
         :rtype: str
         """
         return self._CreatedBy
@@ -19496,12 +19496,15 @@ class PreviewPGUserMigrationsRequest(AbstractModel):
         :type EnvId: str
         :param _Migrations: <p>预览要执行的migration 列表</p>
         :type Migrations: list of MigrationInput
-        :param _Source: <p>标记请求来源</p>
+        :param _Source: <p>标记请求来源</p><p>deprecated</p>
         :type Source: str
+        :param _IncludeAll: <p>是否允许 out-of-order local migrations</p><p>默认值：false</p>
+        :type IncludeAll: bool
         """
         self._EnvId = None
         self._Migrations = None
         self._Source = None
+        self._IncludeAll = None
 
     @property
     def EnvId(self):
@@ -19527,7 +19530,7 @@ class PreviewPGUserMigrationsRequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""<p>标记请求来源</p>
+        r"""<p>标记请求来源</p><p>deprecated</p>
         :rtype: str
         """
         return self._Source
@@ -19535,6 +19538,17 @@ class PreviewPGUserMigrationsRequest(AbstractModel):
     @Source.setter
     def Source(self, Source):
         self._Source = Source
+
+    @property
+    def IncludeAll(self):
+        r"""<p>是否允许 out-of-order local migrations</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._IncludeAll
+
+    @IncludeAll.setter
+    def IncludeAll(self, IncludeAll):
+        self._IncludeAll = IncludeAll
 
 
     def _deserialize(self, params):
@@ -19546,6 +19560,7 @@ class PreviewPGUserMigrationsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Migrations.append(obj)
         self._Source = params.get("Source")
+        self._IncludeAll = params.get("IncludeAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20555,14 +20570,17 @@ class PushPGUserMigrationsRequest(AbstractModel):
         :type LockTimeoutMs: int
         :param _StatementTimeoutMs: <p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
         :type StatementTimeoutMs: int
-        :param _Source: <p>标记请求来源</p>
+        :param _Source: <p>标记请求来源</p><p>deprecated</p>
         :type Source: str
+        :param _IncludeAll: <p>为true时允许 out-of-order local migrations</p><p>默认值：false</p>
+        :type IncludeAll: bool
         """
         self._EnvId = None
         self._Migrations = None
         self._LockTimeoutMs = None
         self._StatementTimeoutMs = None
         self._Source = None
+        self._IncludeAll = None
 
     @property
     def EnvId(self):
@@ -20610,7 +20628,7 @@ class PushPGUserMigrationsRequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""<p>标记请求来源</p>
+        r"""<p>标记请求来源</p><p>deprecated</p>
         :rtype: str
         """
         return self._Source
@@ -20618,6 +20636,17 @@ class PushPGUserMigrationsRequest(AbstractModel):
     @Source.setter
     def Source(self, Source):
         self._Source = Source
+
+    @property
+    def IncludeAll(self):
+        r"""<p>为true时允许 out-of-order local migrations</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._IncludeAll
+
+    @IncludeAll.setter
+    def IncludeAll(self, IncludeAll):
+        self._IncludeAll = IncludeAll
 
 
     def _deserialize(self, params):
@@ -20631,6 +20660,7 @@ class PushPGUserMigrationsRequest(AbstractModel):
         self._LockTimeoutMs = params.get("LockTimeoutMs")
         self._StatementTimeoutMs = params.get("StatementTimeoutMs")
         self._Source = params.get("Source")
+        self._IncludeAll = params.get("IncludeAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

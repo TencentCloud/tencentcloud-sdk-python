@@ -37886,6 +37886,8 @@ class Resource(AbstractModel):
         :type GpuDesc: str
         :param _PartitionNumber: <p>分区置放群组分区数</p>
         :type PartitionNumber: int
+        :param _HCCHpcClusterId: <p>高性能集群ID</p>
+        :type HCCHpcClusterId: str
         """
         self._Spec = None
         self._StorageType = None
@@ -37901,6 +37903,7 @@ class Resource(AbstractModel):
         self._DiskNum = None
         self._GpuDesc = None
         self._PartitionNumber = None
+        self._HCCHpcClusterId = None
 
     @property
     def Spec(self):
@@ -38058,6 +38061,17 @@ class Resource(AbstractModel):
     def PartitionNumber(self, PartitionNumber):
         self._PartitionNumber = PartitionNumber
 
+    @property
+    def HCCHpcClusterId(self):
+        r"""<p>高性能集群ID</p>
+        :rtype: str
+        """
+        return self._HCCHpcClusterId
+
+    @HCCHpcClusterId.setter
+    def HCCHpcClusterId(self, HCCHpcClusterId):
+        self._HCCHpcClusterId = HCCHpcClusterId
+
 
     def _deserialize(self, params):
         self._Spec = params.get("Spec")
@@ -38084,6 +38098,7 @@ class Resource(AbstractModel):
         self._DiskNum = params.get("DiskNum")
         self._GpuDesc = params.get("GpuDesc")
         self._PartitionNumber = params.get("PartitionNumber")
+        self._HCCHpcClusterId = params.get("HCCHpcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

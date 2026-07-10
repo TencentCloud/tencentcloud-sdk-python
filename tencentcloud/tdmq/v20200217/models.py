@@ -4988,49 +4988,44 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneIds: 可用区
+        :param _ZoneIds: <p>可用区</p>
         :type ZoneIds: list of int
-        :param _VpcId: 私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录[私有网络](https://console.cloud.tencent.com/vpc/vpc?rid=1)控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
+        :param _VpcId: <p>私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录<a href="https://console.cloud.tencent.com/vpc/vpc?rid=1">私有网络</a>控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/1372">DescribeVpcEx</a>，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。</p>
         :type VpcId: str
-        :param _SubnetId: 私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录[子网控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
+        :param _SubnetId: <p>私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录<a href="https://console.cloud.tencent.com/vpc/subnet?rid=1">子网控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets</a>，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。</p>
         :type SubnetId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _NodeSpec: 集群的节点规格，需要输入对应的规格标识：
-2C8G：rabbit-vip-profession-2c8g
-4C16G：rabbit-vip-profession-4c16g
-8C32G：rabbit-vip-profession-8c32g
-16C32G：rabbit-vip-basic-4
-16C64G：rabbit-vip-profession-16c64g
-2C4G：rabbit-vip-basic-5
-4C8G：rabbit-vip-basic-1
-8C16G（已售罄）：rabbit-vip-basic-2
-不传默认为 4C8G：rabbit-vip-basic-1
+        :param _NodeSpec: <p>集群的节点规格，需要输入对应的规格标识：<br>2C8G：rabbit-vip-profession-2c8g<br>4C16G：rabbit-vip-profession-4c16g<br>8C32G：rabbit-vip-profession-8c32g<br>16C32G：rabbit-vip-basic-4<br>16C64G：rabbit-vip-profession-16c64g<br>2C4G：rabbit-vip-basic-5<br>4C8G：rabbit-vip-basic-1<br>8C16G（已售罄）：rabbit-vip-basic-2<br>不传默认为 4C8G：rabbit-vip-basic-1</p>
         :type NodeSpec: str
-        :param _NodeNum: 节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
+        :param _NodeNum: <p>节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3</p>
         :type NodeNum: int
-        :param _StorageSize: 单节点存储规格,不传默认为200G
+        :param _StorageSize: <p>单节点存储规格,不传默认为200G</p>
         :type StorageSize: int
-        :param _EnableCreateDefaultHaMirrorQueue: 是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false
+        :param _EnableCreateDefaultHaMirrorQueue: <p>是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false。该参数对4.x集群不生效。</p>
         :type EnableCreateDefaultHaMirrorQueue: bool
-        :param _AutoRenewFlag: 仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true
+        :param _AutoRenewFlag: <p>仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true</p>
         :type AutoRenewFlag: bool
-        :param _TimeSpan: 购买时长,不传默认为1(月)
+        :param _TimeSpan: <p>购买时长,不传默认为1(月)</p>
         :type TimeSpan: int
-        :param _PayMode: 付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月
+        :param _PayMode: <p>付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月</p>
         :type PayMode: int
-        :param _ClusterVersion: 集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7
+        :param _ClusterVersion: <p>集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7</p>
         :type ClusterVersion: str
-        :param _IsIntl: 是否国际站请求，默认 false
+        :param _IsIntl: <p>是否国际站请求，默认 false</p>
         :type IsIntl: bool
-        :param _ResourceTags: 资源标签列表
+        :param _ResourceTags: <p>资源标签列表</p>
         :type ResourceTags: list of Tag
-        :param _Bandwidth: 公网带宽大小，单位 Mbps
+        :param _Bandwidth: <p>公网带宽大小，单位 Mbps</p>
         :type Bandwidth: int
-        :param _EnablePublicAccess: 是否打开公网接入，不传默认为false
+        :param _EnablePublicAccess: <p>是否打开公网接入，不传默认为false</p>
         :type EnablePublicAccess: bool
-        :param _EnableDeletionProtection: 是否打开集群删除保护，不传默认为 false
+        :param _EnableDeletionProtection: <p>是否打开集群删除保护，不传默认为 false</p>
         :type EnableDeletionProtection: bool
+        :param _ClusterType: <p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+        :type ClusterType: str
+        :param _CdcClusterId: <p>CDC 集群 ID</p>
+        :type CdcClusterId: str
         """
         self._ZoneIds = None
         self._VpcId = None
@@ -5049,10 +5044,12 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         self._Bandwidth = None
         self._EnablePublicAccess = None
         self._EnableDeletionProtection = None
+        self._ClusterType = None
+        self._CdcClusterId = None
 
     @property
     def ZoneIds(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: list of int
         """
         return self._ZoneIds
@@ -5063,7 +5060,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录[私有网络](https://console.cloud.tencent.com/vpc/vpc?rid=1)控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
+        r"""<p>私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录<a href="https://console.cloud.tencent.com/vpc/vpc?rid=1">私有网络</a>控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/1372">DescribeVpcEx</a>，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。</p>
         :rtype: str
         """
         return self._VpcId
@@ -5074,7 +5071,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录[子网控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
+        r"""<p>私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录<a href="https://console.cloud.tencent.com/vpc/subnet?rid=1">子网控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets</a>，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -5085,7 +5082,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -5096,16 +5093,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def NodeSpec(self):
-        r"""集群的节点规格，需要输入对应的规格标识：
-2C8G：rabbit-vip-profession-2c8g
-4C16G：rabbit-vip-profession-4c16g
-8C32G：rabbit-vip-profession-8c32g
-16C32G：rabbit-vip-basic-4
-16C64G：rabbit-vip-profession-16c64g
-2C4G：rabbit-vip-basic-5
-4C8G：rabbit-vip-basic-1
-8C16G（已售罄）：rabbit-vip-basic-2
-不传默认为 4C8G：rabbit-vip-basic-1
+        r"""<p>集群的节点规格，需要输入对应的规格标识：<br>2C8G：rabbit-vip-profession-2c8g<br>4C16G：rabbit-vip-profession-4c16g<br>8C32G：rabbit-vip-profession-8c32g<br>16C32G：rabbit-vip-basic-4<br>16C64G：rabbit-vip-profession-16c64g<br>2C4G：rabbit-vip-basic-5<br>4C8G：rabbit-vip-basic-1<br>8C16G（已售罄）：rabbit-vip-basic-2<br>不传默认为 4C8G：rabbit-vip-basic-1</p>
         :rtype: str
         """
         return self._NodeSpec
@@ -5116,7 +5104,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def NodeNum(self):
-        r"""节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
+        r"""<p>节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3</p>
         :rtype: int
         """
         return self._NodeNum
@@ -5127,7 +5115,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def StorageSize(self):
-        r"""单节点存储规格,不传默认为200G
+        r"""<p>单节点存储规格,不传默认为200G</p>
         :rtype: int
         """
         return self._StorageSize
@@ -5138,7 +5126,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def EnableCreateDefaultHaMirrorQueue(self):
-        r"""是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false
+        r"""<p>是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false。该参数对4.x集群不生效。</p>
         :rtype: bool
         """
         return self._EnableCreateDefaultHaMirrorQueue
@@ -5149,7 +5137,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true
+        r"""<p>仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true</p>
         :rtype: bool
         """
         return self._AutoRenewFlag
@@ -5160,7 +5148,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""购买时长,不传默认为1(月)
+        r"""<p>购买时长,不传默认为1(月)</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -5171,7 +5159,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月
+        r"""<p>付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月</p>
         :rtype: int
         """
         return self._PayMode
@@ -5182,7 +5170,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def ClusterVersion(self):
-        r"""集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7
+        r"""<p>集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7</p>
         :rtype: str
         """
         return self._ClusterVersion
@@ -5193,7 +5181,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def IsIntl(self):
-        r"""是否国际站请求，默认 false
+        r"""<p>是否国际站请求，默认 false</p>
         :rtype: bool
         """
         return self._IsIntl
@@ -5204,7 +5192,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""资源标签列表
+        r"""<p>资源标签列表</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -5215,7 +5203,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""公网带宽大小，单位 Mbps
+        r"""<p>公网带宽大小，单位 Mbps</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -5226,7 +5214,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def EnablePublicAccess(self):
-        r"""是否打开公网接入，不传默认为false
+        r"""<p>是否打开公网接入，不传默认为false</p>
         :rtype: bool
         """
         return self._EnablePublicAccess
@@ -5237,7 +5225,7 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
 
     @property
     def EnableDeletionProtection(self):
-        r"""是否打开集群删除保护，不传默认为 false
+        r"""<p>是否打开集群删除保护，不传默认为 false</p>
         :rtype: bool
         """
         return self._EnableDeletionProtection
@@ -5245,6 +5233,28 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
     @EnableDeletionProtection.setter
     def EnableDeletionProtection(self, EnableDeletionProtection):
         self._EnableDeletionProtection = EnableDeletionProtection
+
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def CdcClusterId(self):
+        r"""<p>CDC 集群 ID</p>
+        :rtype: str
+        """
+        return self._CdcClusterId
+
+    @CdcClusterId.setter
+    def CdcClusterId(self, CdcClusterId):
+        self._CdcClusterId = CdcClusterId
 
 
     def _deserialize(self, params):
@@ -5270,6 +5280,8 @@ class CreateRabbitMQVipInstanceRequest(AbstractModel):
         self._Bandwidth = params.get("Bandwidth")
         self._EnablePublicAccess = params.get("EnablePublicAccess")
         self._EnableDeletionProtection = params.get("EnableDeletionProtection")
+        self._ClusterType = params.get("ClusterType")
+        self._CdcClusterId = params.get("CdcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5287,9 +5299,9 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranId: 订单号 ID
+        :param _TranId: <p>订单号 ID</p>
         :type TranId: str
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: <p>实例 ID</p>
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5300,7 +5312,7 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
 
     @property
     def TranId(self):
-        r"""订单号 ID
+        r"""<p>订单号 ID</p>
         :rtype: str
         """
         return self._TranId
@@ -5311,7 +5323,7 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5345,15 +5357,15 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+        :param _InstanceId: <p>实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
         :type InstanceId: str
-        :param _VirtualHost: vhost名
+        :param _VirtualHost: <p>vhost名</p>
         :type VirtualHost: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _TraceFlag: 消息轨迹开关,true打开,false关闭,默认关闭
+        :param _TraceFlag: <p>消息轨迹开关,true打开,false关闭,默认关闭</p>
         :type TraceFlag: bool
-        :param _MirrorQueuePolicyFlag: 是否创建镜像队列策略，默认值 true
+        :param _MirrorQueuePolicyFlag: <p>是否创建镜像队列策略，默认值 true。该参数对4.x集群不生效。</p>
         :type MirrorQueuePolicyFlag: bool
         """
         self._InstanceId = None
@@ -5364,7 +5376,7 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+        r"""<p>实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5375,7 +5387,7 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        r"""vhost名
+        r"""<p>vhost名</p>
         :rtype: str
         """
         return self._VirtualHost
@@ -5386,7 +5398,7 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -5397,7 +5409,7 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def TraceFlag(self):
-        r"""消息轨迹开关,true打开,false关闭,默认关闭
+        r"""<p>消息轨迹开关,true打开,false关闭,默认关闭</p>
         :rtype: bool
         """
         return self._TraceFlag
@@ -5408,7 +5420,7 @@ class CreateRabbitMQVirtualHostRequest(AbstractModel):
 
     @property
     def MirrorQueuePolicyFlag(self):
-        r"""是否创建镜像队列策略，默认值 true
+        r"""<p>是否创建镜像队列策略，默认值 true。该参数对4.x集群不生效。</p>
         :rtype: bool
         """
         return self._MirrorQueuePolicyFlag
@@ -5441,7 +5453,7 @@ class CreateRabbitMQVirtualHostResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VirtualHost: vhost名
+        :param _VirtualHost: <p>vhost名</p>
         :type VirtualHost: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5451,7 +5463,7 @@ class CreateRabbitMQVirtualHostResponse(AbstractModel):
 
     @property
     def VirtualHost(self):
-        r"""vhost名
+        r"""<p>vhost名</p>
         :rtype: str
         """
         return self._VirtualHost
@@ -29839,71 +29851,75 @@ class RabbitMQClusterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: <p>集群 ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _Region: 地域信息
+        :param _Region: <p>地域信息</p>
         :type Region: str
-        :param _CreateTime: 创建时间，毫秒为单位。unix 时间戳
+        :param _CreateTime: <p>创建时间，毫秒为单位。unix 时间戳</p>
         :type CreateTime: int
-        :param _Remark: 集群说明信息
+        :param _Remark: <p>集群说明信息</p>
         :type Remark: str
-        :param _Vpcs: VPC及网络信息
+        :param _Vpcs: <p>VPC及网络信息</p>
         :type Vpcs: list of VpcEndpointInfo
-        :param _ZoneIds: 可用区信息
+        :param _ZoneIds: <p>可用区信息</p>
         :type ZoneIds: list of int
-        :param _VirtualHostNumber: 虚拟主机数量
+        :param _VirtualHostNumber: <p>虚拟主机数量</p>
         :type VirtualHostNumber: int
-        :param _QueueNumber: 队列数量
+        :param _QueueNumber: <p>队列数量</p>
         :type QueueNumber: int
-        :param _MessagePublishRate: 每秒生产消息数 单位：条/秒
+        :param _MessagePublishRate: <p>每秒生产消息数 单位：条/秒</p>
         :type MessagePublishRate: float
-        :param _MessageStackNumber: 堆积消息数 单位：条
+        :param _MessageStackNumber: <p>堆积消息数 单位：条</p>
         :type MessageStackNumber: int
-        :param _ExpireTime: 实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
+        :param _ExpireTime: <p>实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳</p>
         :type ExpireTime: int
-        :param _ChannelNumber: Channel数量
+        :param _ChannelNumber: <p>Channel数量</p>
         :type ChannelNumber: int
-        :param _ConnectionNumber: Connection数量
+        :param _ConnectionNumber: <p>Connection数量</p>
         :type ConnectionNumber: int
-        :param _ConsumerNumber: Consumer数量
+        :param _ConsumerNumber: <p>Consumer数量</p>
         :type ConsumerNumber: int
-        :param _ExchangeNumber: Exchang数量
+        :param _ExchangeNumber: <p>Exchang数量</p>
         :type ExchangeNumber: int
-        :param _ExceptionInformation: 集群异常信息
+        :param _ExceptionInformation: <p>集群异常信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionInformation: str
-        :param _ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        :param _ClusterStatus: <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败</p>
         :type ClusterStatus: int
-        :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :param _AutoRenewFlag: <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :type AutoRenewFlag: int
-        :param _MirrorQueuePolicyFlag: 是否开启镜像队列策略。1表示开启，0表示没开启。
+        :param _MirrorQueuePolicyFlag: <p>是否开启镜像队列策略。1表示开启，0表示没开启。</p>
         :type MirrorQueuePolicyFlag: int
-        :param _MessageConsumeRate: 每秒消费消息数 单位：条/秒
+        :param _MessageConsumeRate: <p>每秒消费消息数 单位：条/秒</p>
         :type MessageConsumeRate: float
-        :param _ClusterVersion: 集群版本信息
+        :param _ClusterVersion: <p>集群版本信息</p>
         :type ClusterVersion: str
-        :param _PayMode: 计费模式，0-后付费，1-预付费
+        :param _PayMode: <p>计费模式，0-后付费，1-预付费</p>
         :type PayMode: int
-        :param _InstanceType: 实例类型，0 专享版、1 Serverless 版
+        :param _InstanceType: <p>实例类型，0 专享版、1 Serverless 版</p>
         :type InstanceType: int
-        :param _IsolatedTime: 开始隔离时间。unix 时间戳
+        :param _IsolatedTime: <p>开始隔离时间。unix 时间戳</p>
         :type IsolatedTime: int
-        :param _Container: 是否为容器实例，默认 true
+        :param _Container: <p>是否为容器实例，默认 true</p>
         :type Container: bool
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
-        :param _EnableDeletionProtection: 是否已开启删除保护
+        :param _EnableDeletionProtection: <p>是否已开启删除保护</p>
         :type EnableDeletionProtection: bool
-        :param _MirroredQueueRisk: 是否有vhost未开启镜像队列风险
+        :param _MirroredQueueRisk: <p>是否有vhost未开启镜像队列风险</p>
         :type MirroredQueueRisk: bool
-        :param _EnableRiskWarning: 是否提示风险
+        :param _EnableRiskWarning: <p>是否提示风险</p>
         :type EnableRiskWarning: bool
-        :param _ConsumeTimeout: 消费超时时间
+        :param _ConsumeTimeout: <p>消费超时时间</p>
         :type ConsumeTimeout: int
-        :param _ChannelMax: 最大Channel数
+        :param _ChannelMax: <p>最大Channel数</p>
         :type ChannelMax: int
+        :param _ClusterType: <p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+        :type ClusterType: str
+        :param _CdcClusterId: <p>CDC集群ID</p>
+        :type CdcClusterId: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -29937,10 +29953,12 @@ class RabbitMQClusterInfo(AbstractModel):
         self._EnableRiskWarning = None
         self._ConsumeTimeout = None
         self._ChannelMax = None
+        self._ClusterType = None
+        self._CdcClusterId = None
 
     @property
     def ClusterId(self):
-        r"""集群 ID
+        r"""<p>集群 ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -29951,7 +29969,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -29962,7 +29980,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域信息
+        r"""<p>地域信息</p>
         :rtype: str
         """
         return self._Region
@@ -29973,7 +29991,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，毫秒为单位。unix 时间戳
+        r"""<p>创建时间，毫秒为单位。unix 时间戳</p>
         :rtype: int
         """
         return self._CreateTime
@@ -29984,7 +30002,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Remark(self):
-        r"""集群说明信息
+        r"""<p>集群说明信息</p>
         :rtype: str
         """
         return self._Remark
@@ -29995,7 +30013,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Vpcs(self):
-        r"""VPC及网络信息
+        r"""<p>VPC及网络信息</p>
         :rtype: list of VpcEndpointInfo
         """
         return self._Vpcs
@@ -30006,7 +30024,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""可用区信息
+        r"""<p>可用区信息</p>
         :rtype: list of int
         """
         return self._ZoneIds
@@ -30017,7 +30035,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def VirtualHostNumber(self):
-        r"""虚拟主机数量
+        r"""<p>虚拟主机数量</p>
         :rtype: int
         """
         return self._VirtualHostNumber
@@ -30028,7 +30046,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def QueueNumber(self):
-        r"""队列数量
+        r"""<p>队列数量</p>
         :rtype: int
         """
         return self._QueueNumber
@@ -30039,7 +30057,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessagePublishRate(self):
-        r"""每秒生产消息数 单位：条/秒
+        r"""<p>每秒生产消息数 单位：条/秒</p>
         :rtype: float
         """
         return self._MessagePublishRate
@@ -30050,7 +30068,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessageStackNumber(self):
-        r"""堆积消息数 单位：条
+        r"""<p>堆积消息数 单位：条</p>
         :rtype: int
         """
         return self._MessageStackNumber
@@ -30061,7 +30079,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
+        r"""<p>实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -30072,7 +30090,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ChannelNumber(self):
-        r"""Channel数量
+        r"""<p>Channel数量</p>
         :rtype: int
         """
         return self._ChannelNumber
@@ -30083,7 +30101,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ConnectionNumber(self):
-        r"""Connection数量
+        r"""<p>Connection数量</p>
         :rtype: int
         """
         return self._ConnectionNumber
@@ -30094,7 +30112,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ConsumerNumber(self):
-        r"""Consumer数量
+        r"""<p>Consumer数量</p>
         :rtype: int
         """
         return self._ConsumerNumber
@@ -30105,7 +30123,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExchangeNumber(self):
-        r"""Exchang数量
+        r"""<p>Exchang数量</p>
         :rtype: int
         """
         return self._ExchangeNumber
@@ -30116,7 +30134,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExceptionInformation(self):
-        r"""集群异常信息
+        r"""<p>集群异常信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -30128,7 +30146,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterStatus(self):
-        r"""实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        r"""<p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败</p>
         :rtype: int
         """
         return self._ClusterStatus
@@ -30139,7 +30157,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        r"""<p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -30150,7 +30168,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MirrorQueuePolicyFlag(self):
-        r"""是否开启镜像队列策略。1表示开启，0表示没开启。
+        r"""<p>是否开启镜像队列策略。1表示开启，0表示没开启。</p>
         :rtype: int
         """
         return self._MirrorQueuePolicyFlag
@@ -30161,7 +30179,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessageConsumeRate(self):
-        r"""每秒消费消息数 单位：条/秒
+        r"""<p>每秒消费消息数 单位：条/秒</p>
         :rtype: float
         """
         return self._MessageConsumeRate
@@ -30172,7 +30190,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterVersion(self):
-        r"""集群版本信息
+        r"""<p>集群版本信息</p>
         :rtype: str
         """
         return self._ClusterVersion
@@ -30183,7 +30201,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式，0-后付费，1-预付费
+        r"""<p>计费模式，0-后付费，1-预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -30194,7 +30212,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型，0 专享版、1 Serverless 版
+        r"""<p>实例类型，0 专享版、1 Serverless 版</p>
         :rtype: int
         """
         return self._InstanceType
@@ -30205,7 +30223,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        r"""开始隔离时间。unix 时间戳
+        r"""<p>开始隔离时间。unix 时间戳</p>
         :rtype: int
         """
         return self._IsolatedTime
@@ -30216,7 +30234,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Container(self):
-        r"""是否为容器实例，默认 true
+        r"""<p>是否为容器实例，默认 true</p>
         :rtype: bool
         """
         return self._Container
@@ -30227,7 +30245,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -30238,7 +30256,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def EnableDeletionProtection(self):
-        r"""是否已开启删除保护
+        r"""<p>是否已开启删除保护</p>
         :rtype: bool
         """
         return self._EnableDeletionProtection
@@ -30249,7 +30267,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MirroredQueueRisk(self):
-        r"""是否有vhost未开启镜像队列风险
+        r"""<p>是否有vhost未开启镜像队列风险</p>
         :rtype: bool
         """
         return self._MirroredQueueRisk
@@ -30260,7 +30278,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def EnableRiskWarning(self):
-        r"""是否提示风险
+        r"""<p>是否提示风险</p>
         :rtype: bool
         """
         return self._EnableRiskWarning
@@ -30271,7 +30289,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ConsumeTimeout(self):
-        r"""消费超时时间
+        r"""<p>消费超时时间</p>
         :rtype: int
         """
         return self._ConsumeTimeout
@@ -30282,7 +30300,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ChannelMax(self):
-        r"""最大Channel数
+        r"""<p>最大Channel数</p>
         :rtype: int
         """
         return self._ChannelMax
@@ -30290,6 +30308,28 @@ class RabbitMQClusterInfo(AbstractModel):
     @ChannelMax.setter
     def ChannelMax(self, ChannelMax):
         self._ChannelMax = ChannelMax
+
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def CdcClusterId(self):
+        r"""<p>CDC集群ID</p>
+        :rtype: str
+        """
+        return self._CdcClusterId
+
+    @CdcClusterId.setter
+    def CdcClusterId(self, CdcClusterId):
+        self._CdcClusterId = CdcClusterId
 
 
     def _deserialize(self, params):
@@ -30335,6 +30375,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._EnableRiskWarning = params.get("EnableRiskWarning")
         self._ConsumeTimeout = params.get("ConsumeTimeout")
         self._ChannelMax = params.get("ChannelMax")
+        self._ClusterType = params.get("ClusterType")
+        self._CdcClusterId = params.get("CdcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31918,6 +31960,10 @@ class RabbitMQVipInstance(AbstractModel):
         :type Tags: list of Tag
         :param _PublicStreamAccessEndpoint: <p>公有数据流Stream接入点</p>
         :type PublicStreamAccessEndpoint: str
+        :param _ClusterType: <p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+        :type ClusterType: str
+        :param _CdcClusterId: <p>CDC 集群 ID</p>
+        :type CdcClusterId: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -31943,6 +31989,8 @@ class RabbitMQVipInstance(AbstractModel):
         self._EnableDeletionProtection = None
         self._Tags = None
         self._PublicStreamAccessEndpoint = None
+        self._ClusterType = None
+        self._CdcClusterId = None
 
     @property
     def InstanceId(self):
@@ -32210,6 +32258,28 @@ class RabbitMQVipInstance(AbstractModel):
     def PublicStreamAccessEndpoint(self, PublicStreamAccessEndpoint):
         self._PublicStreamAccessEndpoint = PublicStreamAccessEndpoint
 
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def CdcClusterId(self):
+        r"""<p>CDC 集群 ID</p>
+        :rtype: str
+        """
+        return self._CdcClusterId
+
+    @CdcClusterId.setter
+    def CdcClusterId(self, CdcClusterId):
+        self._CdcClusterId = CdcClusterId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -32246,6 +32316,8 @@ class RabbitMQVipInstance(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._PublicStreamAccessEndpoint = params.get("PublicStreamAccessEndpoint")
+        self._ClusterType = params.get("ClusterType")
+        self._CdcClusterId = params.get("CdcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

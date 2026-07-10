@@ -17627,23 +17627,29 @@ class DescribeDataEngineEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataEngineName: 虚拟集群名称
+        :param _DataEngineName: <p>虚拟集群名称</p>
         :type DataEngineName: str
-        :param _Limit: 返回数量，默认为10，最大为100
+        :param _Limit: <p>返回数量，默认为10，最大为100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _SessionId: 资源组id
+        :param _SessionId: <p>资源组id</p>
         :type SessionId: str
+        :param _StartTime: <p>查询开始时间，用于筛选资源组启停事件的时间范围，不传则不限制开始时间</p><p>参数格式：YYYY-mm-dd HH:MM:SS</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间，用于筛选资源组启停事件的时间范围，不传则不限制结束时间。需大于等于 StartTime</p><p>参数格式：YYYY-mm-dd HH:MM:SS</p>
+        :type EndTime: str
         """
         self._DataEngineName = None
         self._Limit = None
         self._Offset = None
         self._SessionId = None
+        self._StartTime = None
+        self._EndTime = None
 
     @property
     def DataEngineName(self):
-        r"""虚拟集群名称
+        r"""<p>虚拟集群名称</p>
         :rtype: str
         """
         return self._DataEngineName
@@ -17654,7 +17660,7 @@ class DescribeDataEngineEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为10，最大为100
+        r"""<p>返回数量，默认为10，最大为100</p>
         :rtype: int
         """
         return self._Limit
@@ -17665,7 +17671,7 @@ class DescribeDataEngineEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -17676,7 +17682,7 @@ class DescribeDataEngineEventsRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""资源组id
+        r"""<p>资源组id</p>
         :rtype: str
         """
         return self._SessionId
@@ -17685,12 +17691,36 @@ class DescribeDataEngineEventsRequest(AbstractModel):
     def SessionId(self, SessionId):
         self._SessionId = SessionId
 
+    @property
+    def StartTime(self):
+        r"""<p>查询开始时间，用于筛选资源组启停事件的时间范围，不传则不限制开始时间</p><p>参数格式：YYYY-mm-dd HH:MM:SS</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间，用于筛选资源组启停事件的时间范围，不传则不限制结束时间。需大于等于 StartTime</p><p>参数格式：YYYY-mm-dd HH:MM:SS</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._SessionId = params.get("SessionId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17708,16 +17738,16 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Events: 事件详细信息
+        :param _Events: <p>事件详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of HouseEventsInfo
-        :param _Page: 分页号
+        :param _Page: <p>分页号</p>
         :type Page: int
-        :param _Size: 分页大小
+        :param _Size: <p>分页大小</p>
         :type Size: int
-        :param _TotalPages: 总页数
+        :param _TotalPages: <p>总页数</p>
         :type TotalPages: int
-        :param _TotalCount: 总条数
+        :param _TotalCount: <p>总条数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17731,7 +17761,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def Events(self):
-        r"""事件详细信息
+        r"""<p>事件详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HouseEventsInfo
         """
@@ -17743,7 +17773,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def Page(self):
-        r"""分页号
+        r"""<p>分页号</p>
         :rtype: int
         """
         return self._Page
@@ -17754,7 +17784,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def Size(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._Size
@@ -17765,7 +17795,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def TotalPages(self):
-        r"""总页数
+        r"""<p>总页数</p>
         :rtype: int
         """
         return self._TotalPages
@@ -17776,7 +17806,7 @@ class DescribeDataEngineEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._TotalCount

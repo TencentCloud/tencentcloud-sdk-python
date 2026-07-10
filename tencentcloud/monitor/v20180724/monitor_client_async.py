@@ -2280,6 +2280,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EnablePredefinedPolicies(
+            self,
+            request: models.EnablePredefinedPoliciesRequest,
+            opts: Dict = None,
+    ) -> models.EnablePredefinedPoliciesResponse:
+        """
+        一键启用（创建）某个云产品下的预设策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnablePredefinedPolicies"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnablePredefinedPoliciesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableSSOCamCheck(
             self,
             request: models.EnableSSOCamCheckRequest,

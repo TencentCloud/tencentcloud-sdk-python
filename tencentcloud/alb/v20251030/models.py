@@ -82,16 +82,16 @@ class AddTargetsToTargetGroupRequest(AbstractModel):
         r"""
         :param _TargetGroupId: 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
         :type TargetGroupId: str
+        :param _Targets: 需要添加至目标组的后端服务列表。单次请求最多支持添加 **50** 个后端服务。
+        :type Targets: list of TargetToAdd
         :param _DryRun: 是否预览此次请求。 
 - **false**（默认）：发送普通请求，直接添加后端服务至目标组。 
 - **true**：发送预览请求，检查添加后端服务的参数、格式、业务限制等是否符合要求。
         :type DryRun: bool
-        :param _Targets: 需要添加至目标组的后端服务列表。单次请求最多支持添加 **50** 个后端服务。
-        :type Targets: list of TargetToAdd
         """
         self._TargetGroupId = None
-        self._DryRun = None
         self._Targets = None
+        self._DryRun = None
 
     @property
     def TargetGroupId(self):
@@ -103,6 +103,17 @@ class AddTargetsToTargetGroupRequest(AbstractModel):
     @TargetGroupId.setter
     def TargetGroupId(self, TargetGroupId):
         self._TargetGroupId = TargetGroupId
+
+    @property
+    def Targets(self):
+        r"""需要添加至目标组的后端服务列表。单次请求最多支持添加 **50** 个后端服务。
+        :rtype: list of TargetToAdd
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
 
     @property
     def DryRun(self):
@@ -117,27 +128,16 @@ class AddTargetsToTargetGroupRequest(AbstractModel):
     def DryRun(self, DryRun):
         self._DryRun = DryRun
 
-    @property
-    def Targets(self):
-        r"""需要添加至目标组的后端服务列表。单次请求最多支持添加 **50** 个后端服务。
-        :rtype: list of TargetToAdd
-        """
-        return self._Targets
-
-    @Targets.setter
-    def Targets(self, Targets):
-        self._Targets = Targets
-
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
-        self._DryRun = params.get("DryRun")
         if params.get("Targets") is not None:
             self._Targets = []
             for item in params.get("Targets"):
                 obj = TargetToAdd()
                 obj._deserialize(item)
                 self._Targets.append(obj)
+        self._DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1496,18 +1496,18 @@ class CreateRulesRequest(AbstractModel):
         :type ListenerId: str
         :param _LoadBalancerId: 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
         :type LoadBalancerId: str
+        :param _Rules: 转发规则列表。
+        :type Rules: list of RuleInput
         :param _ClientToken: 客户端Token，用于保证请求的幂等性。  从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。  若您未指定，则系统自动使用API请求的RequestId作为ClientToken标识。每次API请求的RequestId不一样。
         :type ClientToken: str
         :param _DryRun: 是否只预检查此次请求。
         :type DryRun: bool
-        :param _Rules: 转发规则列表。
-        :type Rules: list of RuleInput
         """
         self._ListenerId = None
         self._LoadBalancerId = None
+        self._Rules = None
         self._ClientToken = None
         self._DryRun = None
-        self._Rules = None
 
     @property
     def ListenerId(self):
@@ -1532,6 +1532,17 @@ class CreateRulesRequest(AbstractModel):
         self._LoadBalancerId = LoadBalancerId
 
     @property
+    def Rules(self):
+        r"""转发规则列表。
+        :rtype: list of RuleInput
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
     def ClientToken(self):
         r"""客户端Token，用于保证请求的幂等性。  从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。  若您未指定，则系统自动使用API请求的RequestId作为ClientToken标识。每次API请求的RequestId不一样。
         :rtype: str
@@ -1553,29 +1564,18 @@ class CreateRulesRequest(AbstractModel):
     def DryRun(self, DryRun):
         self._DryRun = DryRun
 
-    @property
-    def Rules(self):
-        r"""转发规则列表。
-        :rtype: list of RuleInput
-        """
-        return self._Rules
-
-    @Rules.setter
-    def Rules(self, Rules):
-        self._Rules = Rules
-
 
     def _deserialize(self, params):
         self._ListenerId = params.get("ListenerId")
         self._LoadBalancerId = params.get("LoadBalancerId")
-        self._ClientToken = params.get("ClientToken")
-        self._DryRun = params.get("DryRun")
         if params.get("Rules") is not None:
             self._Rules = []
             for item in params.get("Rules"):
                 obj = RuleInput()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._ClientToken = params.get("ClientToken")
+        self._DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1636,52 +1636,17 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ciphers: 安全策略支持的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。
-
-**配置说明：**
-- 加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。
-- 只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。
-- 若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。
-
-**获取可用加密套件：**
-请调用 [DescribeSecurityPolicyCapabilities](https://cloud.tencent.com/document/api/xxx) 接口查询各 TLS 版本支持的加密套件列表。
-
+        :param _Ciphers: <p>安全策略支持的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。</p><p><strong>配置说明：</strong></p><ul><li>加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。</li><li>只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。</li><li>若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。</li></ul><p><strong>获取可用加密套件：</strong><br>请调用 <a href="https://cloud.tencent.com/document/api/1822/133718">DescribeSecurityPolicyCapabilities</a> 接口查询各 TLS 版本支持的加密套件列表。</p>
         :type Ciphers: list of str
-        :param _TLSVersions: 安全策略支持的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。
-
-**可选值：**
-- **TLSv1.0**：兼容性最好，但安全性较低，不推荐在生产环境使用。
-- **TLSv1.1**：安全性略优于 TLSv1.0，但仍不推荐。
-- **TLSv1.2**：目前主流的安全协议版本，兼顾安全性与兼容性。
-- **TLSv1.3**：最新版本，安全性最高，性能更优，推荐优先使用。
-
-**建议：** 生产环境建议至少选择 TLSv1.2，若客户端支持，优先启用 TLSv1.3。
-
+        :param _TLSVersions: <p>安全策略支持的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。</p><p><strong>可选值：</strong></p><ul><li><strong>TLSv1.0</strong>：兼容性最好，但安全性较低，不推荐在生产环境使用。</li><li><strong>TLSv1.1</strong>：安全性略优于 TLSv1.0，但仍不推荐。</li><li><strong>TLSv1.2</strong>：目前主流的安全协议版本，兼顾安全性与兼容性。</li><li><strong>TLSv1.3</strong>：最新版本，安全性最高，性能更优，推荐优先使用。</li></ul><p><strong>建议：</strong> 生产环境建议至少选择 TLSv1.2，若客户端支持，优先启用 TLSv1.3。</p>
         :type TLSVersions: list of str
-        :param _ClientToken: 客户端幂等性令牌。
-
-用于保证请求的幂等性，防止因网络超时或客户端重试导致的重复创建。建议使用 UUID 作为令牌值。相同的 ClientToken 在有效期内重复请求时，服务端将返回相同的结果。
-
+        :param _ClientToken: <p>客户端幂等性令牌。</p><p>用于保证请求的幂等性，防止因网络超时或客户端重试导致的重复创建。建议使用 UUID 作为令牌值。相同的 ClientToken 在有效期内重复请求时，服务端将返回相同的结果。</p>
         :type ClientToken: str
-        :param _DryRun: 是否仅执行预检请求。取值：
-- **true**：仅执行预检请求，不实际创建资源。预检请求将验证参数格式、权限及资源配额等，帮助您在正式操作前发现潜在问题。
-- **false**（默认）：执行正常请求，通过预检后将直接创建安全策略。
-
+        :param _DryRun: <p>是否仅执行预检请求。取值：</p><ul><li><strong>true</strong>：仅执行预检请求，不实际创建资源。预检请求将验证参数格式、权限及资源配额等，帮助您在正式操作前发现潜在问题。</li><li><strong>false</strong>（默认）：执行正常请求，通过预检后将直接创建安全策略。</li></ul>
         :type DryRun: bool
-        :param _SecurityPolicyName: 安全策略名称。用于标识和区分不同的安全策略。
-
-**命名规则：**
-- 长度为 2~128 个字符。
-- 必须以英文字母或中文开头。
-- 可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。
-
-**建议：** 使用具有业务含义的名称，例如 "prod-high-security" 或 "测试环境策略"。
-
+        :param _SecurityPolicyName: <p>安全策略名称。用于标识和区分不同的安全策略。</p><p><strong>命名规则：</strong></p><ul><li>长度为 2~128 个字符。</li><li>必须以英文字母或中文开头。</li><li>可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。</li></ul><p><strong>建议：</strong> 使用具有业务含义的名称，例如 &quot;prod-high-security&quot; 或 &quot;测试环境策略&quot;。</p>
         :type SecurityPolicyName: str
-        :param _Tags: 安全策略的标签列表。标签用于对资源进行分类和管理，便于按业务、环境、部门等维度筛选和组织资源。
-
-每个标签由键值对（Key-Value）组成，同一资源下标签键不可重复。
-
+        :param _Tags: <p>安全策略的标签列表。标签用于对资源进行分类和管理，便于按业务、环境、部门等维度筛选和组织资源。</p><p>每个标签由键值对（Key-Value）组成，同一资源下标签键不可重复。</p>
         :type Tags: list of TagInfo
         """
         self._Ciphers = None
@@ -1693,16 +1658,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def Ciphers(self):
-        r"""安全策略支持的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。
-
-**配置说明：**
-- 加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。
-- 只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。
-- 若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。
-
-**获取可用加密套件：**
-请调用 [DescribeSecurityPolicyCapabilities](https://cloud.tencent.com/document/api/xxx) 接口查询各 TLS 版本支持的加密套件列表。
-
+        r"""<p>安全策略支持的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。</p><p><strong>配置说明：</strong></p><ul><li>加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。</li><li>只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。</li><li>若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。</li></ul><p><strong>获取可用加密套件：</strong><br>请调用 <a href="https://cloud.tencent.com/document/api/1822/133718">DescribeSecurityPolicyCapabilities</a> 接口查询各 TLS 版本支持的加密套件列表。</p>
         :rtype: list of str
         """
         return self._Ciphers
@@ -1713,16 +1669,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def TLSVersions(self):
-        r"""安全策略支持的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。
-
-**可选值：**
-- **TLSv1.0**：兼容性最好，但安全性较低，不推荐在生产环境使用。
-- **TLSv1.1**：安全性略优于 TLSv1.0，但仍不推荐。
-- **TLSv1.2**：目前主流的安全协议版本，兼顾安全性与兼容性。
-- **TLSv1.3**：最新版本，安全性最高，性能更优，推荐优先使用。
-
-**建议：** 生产环境建议至少选择 TLSv1.2，若客户端支持，优先启用 TLSv1.3。
-
+        r"""<p>安全策略支持的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。</p><p><strong>可选值：</strong></p><ul><li><strong>TLSv1.0</strong>：兼容性最好，但安全性较低，不推荐在生产环境使用。</li><li><strong>TLSv1.1</strong>：安全性略优于 TLSv1.0，但仍不推荐。</li><li><strong>TLSv1.2</strong>：目前主流的安全协议版本，兼顾安全性与兼容性。</li><li><strong>TLSv1.3</strong>：最新版本，安全性最高，性能更优，推荐优先使用。</li></ul><p><strong>建议：</strong> 生产环境建议至少选择 TLSv1.2，若客户端支持，优先启用 TLSv1.3。</p>
         :rtype: list of str
         """
         return self._TLSVersions
@@ -1733,10 +1680,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""客户端幂等性令牌。
-
-用于保证请求的幂等性，防止因网络超时或客户端重试导致的重复创建。建议使用 UUID 作为令牌值。相同的 ClientToken 在有效期内重复请求时，服务端将返回相同的结果。
-
+        r"""<p>客户端幂等性令牌。</p><p>用于保证请求的幂等性，防止因网络超时或客户端重试导致的重复创建。建议使用 UUID 作为令牌值。相同的 ClientToken 在有效期内重复请求时，服务端将返回相同的结果。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -1747,10 +1691,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        r"""是否仅执行预检请求。取值：
-- **true**：仅执行预检请求，不实际创建资源。预检请求将验证参数格式、权限及资源配额等，帮助您在正式操作前发现潜在问题。
-- **false**（默认）：执行正常请求，通过预检后将直接创建安全策略。
-
+        r"""<p>是否仅执行预检请求。取值：</p><ul><li><strong>true</strong>：仅执行预检请求，不实际创建资源。预检请求将验证参数格式、权限及资源配额等，帮助您在正式操作前发现潜在问题。</li><li><strong>false</strong>（默认）：执行正常请求，通过预检后将直接创建安全策略。</li></ul>
         :rtype: bool
         """
         return self._DryRun
@@ -1761,15 +1702,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def SecurityPolicyName(self):
-        r"""安全策略名称。用于标识和区分不同的安全策略。
-
-**命名规则：**
-- 长度为 2~128 个字符。
-- 必须以英文字母或中文开头。
-- 可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。
-
-**建议：** 使用具有业务含义的名称，例如 "prod-high-security" 或 "测试环境策略"。
-
+        r"""<p>安全策略名称。用于标识和区分不同的安全策略。</p><p><strong>命名规则：</strong></p><ul><li>长度为 2~128 个字符。</li><li>必须以英文字母或中文开头。</li><li>可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。</li></ul><p><strong>建议：</strong> 使用具有业务含义的名称，例如 &quot;prod-high-security&quot; 或 &quot;测试环境策略&quot;。</p>
         :rtype: str
         """
         return self._SecurityPolicyName
@@ -1780,10 +1713,7 @@ class CreateSecurityPolicyRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""安全策略的标签列表。标签用于对资源进行分类和管理，便于按业务、环境、部门等维度筛选和组织资源。
-
-每个标签由键值对（Key-Value）组成，同一资源下标签键不可重复。
-
+        r"""<p>安全策略的标签列表。标签用于对资源进行分类和管理，便于按业务、环境、部门等维度筛选和组织资源。</p><p>每个标签由键值对（Key-Value）组成，同一资源下标签键不可重复。</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -1822,7 +1752,7 @@ class CreateSecurityPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityPolicyId: 安全策略 ID，格式为 tls- 后接 8 位字母数字。
+        :param _SecurityPolicyId: <p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
         :type SecurityPolicyId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1832,7 +1762,7 @@ class CreateSecurityPolicyResponse(AbstractModel):
 
     @property
     def SecurityPolicyId(self):
-        r"""安全策略 ID，格式为 tls- 后接 8 位字母数字。
+        r"""<p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._SecurityPolicyId
@@ -1865,34 +1795,25 @@ class CreateTargetGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetType: 目标组类型。取值：
-- **Instance**（默认）：Cvm服务器类型或者Eni网卡类型。
+        :param _TargetType: <p>目标组类型。取值：</p><ul><li><strong>Instance</strong>（默认）：Cvm服务器类型或者Eni网卡类型。</li></ul>
         :type TargetType: str
-        :param _VpcId: 私有网络 ID。
+        :param _VpcId: <p>私有网络 ID。</p>
         :type VpcId: str
-        :param _DryRun: 是否预览此次请求。
-- **false**（默认）：发送普通请求，直接创建目标组。
-- **true**：发送预览请求，检查创建目标组的参数、格式、业务限制等是否符合要求。
+        :param _DryRun: <p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接创建目标组。</li><li><strong>true</strong>：发送预览请求，检查创建目标组的参数、格式、业务限制等是否符合要求。</li></ul>
         :type DryRun: bool
-        :param _HealthCheckConfig: 健康检查配置。
+        :param _HealthCheckConfig: <p>健康检查配置。</p>
         :type HealthCheckConfig: :class:`tencentcloud.alb.v20251030.models.HealthCheckConfig`
-        :param _KeepaliveEnabled: 是否开启长连接。
+        :param _KeepaliveEnabled: <p>是否开启长连接。</p>
         :type KeepaliveEnabled: bool
-        :param _Protocol: 后端服务协议类型。取值：
-- **HTTP**（默认）：支持绑定HTTP、HTTPS的监听器
-- **HTTPS**：支持绑定HTTPS类型的监听器
-- **GRPC**：支持绑定HTTPS类型的监听器
-- **GRPCS**：支持绑定HTTPS类型的监听器
+        :param _Protocol: <p>后端服务协议类型。取值：</p><ul><li><strong>HTTP</strong>（默认）：支持绑定HTTP、HTTPS的监听器</li><li><strong>HTTPS</strong>：支持绑定HTTPS类型的监听器</li><li><strong>GRPC</strong>：支持绑定HTTPS类型的监听器</li><li><strong>GRPCS</strong>：支持绑定HTTPS类型的监听器</li></ul>
         :type Protocol: str
-        :param _SchedulerAlgorithm: 调度算法。取值：
-- **wrr**（默认）：加权轮训，按照权重选择后端服务器，权重越高的服务器被轮训到的概率越高。
-- **wlc**：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。
+        :param _SchedulerAlgorithm: <p>调度算法。取值：</p><ul><li><strong>wrr</strong>（默认）：加权轮询，按照权重选择后端服务器，权重越高的服务器被轮询到的概率越高。</li><li><strong>wlc</strong>：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。</li></ul>
         :type SchedulerAlgorithm: str
-        :param _StickySessionConfig: 会话保持配置。
+        :param _StickySessionConfig: <p>会话保持配置。</p>
         :type StickySessionConfig: :class:`tencentcloud.alb.v20251030.models.StickySessionConfig`
-        :param _Tags: 标签。
+        :param _Tags: <p>标签。</p>
         :type Tags: list of TagInfo
-        :param _TargetGroupName: 目标组名称。默认为目标组ID。长度为 **1-255** 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。
+        :param _TargetGroupName: <p>目标组名称。默认为目标组ID。长度为 <strong>1-255</strong> 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。</p>
         :type TargetGroupName: str
         """
         self._TargetType = None
@@ -1908,8 +1829,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""目标组类型。取值：
-- **Instance**（默认）：Cvm服务器类型或者Eni网卡类型。
+        r"""<p>目标组类型。取值：</p><ul><li><strong>Instance</strong>（默认）：Cvm服务器类型或者Eni网卡类型。</li></ul>
         :rtype: str
         """
         return self._TargetType
@@ -1920,7 +1840,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络 ID。
+        r"""<p>私有网络 ID。</p>
         :rtype: str
         """
         return self._VpcId
@@ -1931,9 +1851,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        r"""是否预览此次请求。
-- **false**（默认）：发送普通请求，直接创建目标组。
-- **true**：发送预览请求，检查创建目标组的参数、格式、业务限制等是否符合要求。
+        r"""<p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接创建目标组。</li><li><strong>true</strong>：发送预览请求，检查创建目标组的参数、格式、业务限制等是否符合要求。</li></ul>
         :rtype: bool
         """
         return self._DryRun
@@ -1944,7 +1862,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def HealthCheckConfig(self):
-        r"""健康检查配置。
+        r"""<p>健康检查配置。</p>
         :rtype: :class:`tencentcloud.alb.v20251030.models.HealthCheckConfig`
         """
         return self._HealthCheckConfig
@@ -1955,7 +1873,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def KeepaliveEnabled(self):
-        r"""是否开启长连接。
+        r"""<p>是否开启长连接。</p>
         :rtype: bool
         """
         return self._KeepaliveEnabled
@@ -1966,11 +1884,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""后端服务协议类型。取值：
-- **HTTP**（默认）：支持绑定HTTP、HTTPS的监听器
-- **HTTPS**：支持绑定HTTPS类型的监听器
-- **GRPC**：支持绑定HTTPS类型的监听器
-- **GRPCS**：支持绑定HTTPS类型的监听器
+        r"""<p>后端服务协议类型。取值：</p><ul><li><strong>HTTP</strong>（默认）：支持绑定HTTP、HTTPS的监听器</li><li><strong>HTTPS</strong>：支持绑定HTTPS类型的监听器</li><li><strong>GRPC</strong>：支持绑定HTTPS类型的监听器</li><li><strong>GRPCS</strong>：支持绑定HTTPS类型的监听器</li></ul>
         :rtype: str
         """
         return self._Protocol
@@ -1981,9 +1895,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def SchedulerAlgorithm(self):
-        r"""调度算法。取值：
-- **wrr**（默认）：加权轮训，按照权重选择后端服务器，权重越高的服务器被轮训到的概率越高。
-- **wlc**：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。
+        r"""<p>调度算法。取值：</p><ul><li><strong>wrr</strong>（默认）：加权轮询，按照权重选择后端服务器，权重越高的服务器被轮询到的概率越高。</li><li><strong>wlc</strong>：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。</li></ul>
         :rtype: str
         """
         return self._SchedulerAlgorithm
@@ -1994,7 +1906,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def StickySessionConfig(self):
-        r"""会话保持配置。
+        r"""<p>会话保持配置。</p>
         :rtype: :class:`tencentcloud.alb.v20251030.models.StickySessionConfig`
         """
         return self._StickySessionConfig
@@ -2005,7 +1917,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签。
+        r"""<p>标签。</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -2016,7 +1928,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        r"""目标组名称。默认为目标组ID。长度为 **1-255** 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。
+        r"""<p>目标组名称。默认为目标组ID。长度为 <strong>1-255</strong> 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -2063,7 +1975,7 @@ class CreateTargetGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetGroupId: 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
+        :param _TargetGroupId: <p>目标组 ID，格式为 lbtg- 后接 8 位字母数字。</p>
         :type TargetGroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2073,7 +1985,7 @@ class CreateTargetGroupResponse(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        r"""目标组 ID，格式为 lbtg- 后接 8 位字母数字。
+        r"""<p>目标组 ID，格式为 lbtg- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._TargetGroupId
@@ -2159,15 +2071,26 @@ class DeleteHealthCheckTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _HealthCheckTemplateIds: 健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
+        :type HealthCheckTemplateIds: list of str
         :param _DryRun: 是否预览此次请求。
 - **false**（默认）：发送普通请求，直接删除模板。
 - **true**：发送预览请求，检查删除模板的参数、格式、业务限制等是否符合要求。
         :type DryRun: bool
-        :param _HealthCheckTemplateIds: 健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
-        :type HealthCheckTemplateIds: list of str
         """
-        self._DryRun = None
         self._HealthCheckTemplateIds = None
+        self._DryRun = None
+
+    @property
+    def HealthCheckTemplateIds(self):
+        r"""健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
+        :rtype: list of str
+        """
+        return self._HealthCheckTemplateIds
+
+    @HealthCheckTemplateIds.setter
+    def HealthCheckTemplateIds(self, HealthCheckTemplateIds):
+        self._HealthCheckTemplateIds = HealthCheckTemplateIds
 
     @property
     def DryRun(self):
@@ -2182,21 +2105,10 @@ class DeleteHealthCheckTemplatesRequest(AbstractModel):
     def DryRun(self, DryRun):
         self._DryRun = DryRun
 
-    @property
-    def HealthCheckTemplateIds(self):
-        r"""健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
-        :rtype: list of str
-        """
-        return self._HealthCheckTemplateIds
-
-    @HealthCheckTemplateIds.setter
-    def HealthCheckTemplateIds(self, HealthCheckTemplateIds):
-        self._HealthCheckTemplateIds = HealthCheckTemplateIds
-
 
     def _deserialize(self, params):
-        self._DryRun = params.get("DryRun")
         self._HealthCheckTemplateIds = params.get("HealthCheckTemplateIds")
+        self._DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2943,17 +2855,13 @@ class DescribeHealthCheckTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤器。通过指定的过滤条件来查询健康检查模版，支持：
-- Name的值为**HealthCheckTemplateName**。通过名称来筛选健康检查模版。**Values**的值为模版名称列表。
-- Name的值为**HealthCheckProtocol**。通过健康检查协议来筛选健康检查模版。**Values**的值为协议列表。
-- 通过标签方式筛选。
+        :param _Filters: <p>过滤器。通过指定的过滤条件来查询健康检查模板，支持：</p><ul><li>Name的值为<strong>HealthCheckTemplateName</strong>。通过名称来筛选健康检查模板。<strong>Values</strong>的值为模板名称列表。</li><li>Name的值为<strong>HealthCheckProtocol</strong>。通过健康检查协议来筛选健康检查模板。<strong>Values</strong>的值为协议列表。</li><li>通过标签方式筛选。</li></ul>
         :type Filters: list of Filter
-        :param _HealthCheckTemplateIds: 健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
+        :param _HealthCheckTemplateIds: <p>健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。</p>
         :type HealthCheckTemplateIds: list of str
-        :param _MaxResults: 返回列表的数量，默认为20，最大值为100。
+        :param _MaxResults: <p>返回列表的数量，默认为20，最大值为100。</p>
         :type MaxResults: str
-        :param _NextToken: 下一次查询的Token值。第一次查询和没有下一次查询时，无需填写。
-如果有下一次查询，取值为上一次 API 调用返回的 NextToken 值。
+        :param _NextToken: <p>下一次查询的Token值。第一次查询和没有下一次查询时，无需填写。<br>如果有下一次查询，取值为上一次 API 调用返回的 NextToken 值。</p>
         :type NextToken: str
         """
         self._Filters = None
@@ -2963,10 +2871,7 @@ class DescribeHealthCheckTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤器。通过指定的过滤条件来查询健康检查模版，支持：
-- Name的值为**HealthCheckTemplateName**。通过名称来筛选健康检查模版。**Values**的值为模版名称列表。
-- Name的值为**HealthCheckProtocol**。通过健康检查协议来筛选健康检查模版。**Values**的值为协议列表。
-- 通过标签方式筛选。
+        r"""<p>过滤器。通过指定的过滤条件来查询健康检查模板，支持：</p><ul><li>Name的值为<strong>HealthCheckTemplateName</strong>。通过名称来筛选健康检查模板。<strong>Values</strong>的值为模板名称列表。</li><li>Name的值为<strong>HealthCheckProtocol</strong>。通过健康检查协议来筛选健康检查模板。<strong>Values</strong>的值为协议列表。</li><li>通过标签方式筛选。</li></ul>
         :rtype: list of Filter
         """
         return self._Filters
@@ -2977,7 +2882,7 @@ class DescribeHealthCheckTemplatesRequest(AbstractModel):
 
     @property
     def HealthCheckTemplateIds(self):
-        r"""健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
+        r"""<p>健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。</p>
         :rtype: list of str
         """
         return self._HealthCheckTemplateIds
@@ -2988,7 +2893,7 @@ class DescribeHealthCheckTemplatesRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""返回列表的数量，默认为20，最大值为100。
+        r"""<p>返回列表的数量，默认为20，最大值为100。</p>
         :rtype: str
         """
         return self._MaxResults
@@ -2999,8 +2904,7 @@ class DescribeHealthCheckTemplatesRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""下一次查询的Token值。第一次查询和没有下一次查询时，无需填写。
-如果有下一次查询，取值为上一次 API 调用返回的 NextToken 值。
+        r"""<p>下一次查询的Token值。第一次查询和没有下一次查询时，无需填写。<br>如果有下一次查询，取值为上一次 API 调用返回的 NextToken 值。</p>
         :rtype: str
         """
         return self._NextToken
@@ -3037,11 +2941,11 @@ class DescribeHealthCheckTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HealthCheckTemplates: 健康检查模板列表。
+        :param _HealthCheckTemplates: <p>健康检查模板列表。</p>
         :type HealthCheckTemplates: list of HealthCheckTemplate
-        :param _NextToken: 下一次查询的Token值，如果当前是最后一页，返回为空。
+        :param _NextToken: <p>下一次查询的Token值，如果当前是最后一页，返回为空。</p>
         :type NextToken: str
-        :param _TotalCount: 经过筛选后查询到的健康检查模板总数。
+        :param _TotalCount: <p>经过筛选后查询到的健康检查模板总数。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3053,7 +2957,7 @@ class DescribeHealthCheckTemplatesResponse(AbstractModel):
 
     @property
     def HealthCheckTemplates(self):
-        r"""健康检查模板列表。
+        r"""<p>健康检查模板列表。</p>
         :rtype: list of HealthCheckTemplate
         """
         return self._HealthCheckTemplates
@@ -3064,7 +2968,7 @@ class DescribeHealthCheckTemplatesResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""下一次查询的Token值，如果当前是最后一页，返回为空。
+        r"""<p>下一次查询的Token值，如果当前是最后一页，返回为空。</p>
         :rtype: str
         """
         return self._NextToken
@@ -3075,7 +2979,7 @@ class DescribeHealthCheckTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""经过筛选后查询到的健康检查模板总数。
+        r"""<p>经过筛选后查询到的健康检查模板总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6227,17 +6131,17 @@ class HTTPRedirectInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HttpCode: 重定向的HTTP码，支持301、302、303、307、 308。
+        :param _HttpCode: <p>重定向的HTTP码，支持301、302、303、307、 308。</p>
         :type HttpCode: int
-        :param _Host: 重定向的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。
+        :param _Host: <p>重定向的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。</p>
         :type Host: str
-        :param _Path: 重定向的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z 0-9  ? =  _  . - / : 。
+        :param _Path: <p>重定向的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z A-Z 0-9  ? =  _  . - / : 。</p>
         :type Path: str
-        :param _Port: 重定向的端口，默认值 ${port}。取值1 ~ 65535。
+        :param _Port: <p>重定向的端口，默认值 ${port}。取值1 ~ 65535。</p>
         :type Port: str
-        :param _Protocol: 重定向的协议，取值：HTTP,HTTPS，默认值${protocol}。
+        :param _Protocol: <p>重定向的协议，取值：HTTP,HTTPS，默认值${protocol}。</p>
         :type Protocol: str
-        :param _Query: 重定向的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}\|<>& 和空格。
+        :param _Query: <p>重定向的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}|&lt;&gt;&amp; 和空格。</p>
         :type Query: str
         """
         self._HttpCode = None
@@ -6249,7 +6153,7 @@ class HTTPRedirectInfo(AbstractModel):
 
     @property
     def HttpCode(self):
-        r"""重定向的HTTP码，支持301、302、303、307、 308。
+        r"""<p>重定向的HTTP码，支持301、302、303、307、 308。</p>
         :rtype: int
         """
         return self._HttpCode
@@ -6260,7 +6164,7 @@ class HTTPRedirectInfo(AbstractModel):
 
     @property
     def Host(self):
-        r"""重定向的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。
+        r"""<p>重定向的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。</p>
         :rtype: str
         """
         return self._Host
@@ -6271,7 +6175,7 @@ class HTTPRedirectInfo(AbstractModel):
 
     @property
     def Path(self):
-        r"""重定向的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z 0-9  ? =  _  . - / : 。
+        r"""<p>重定向的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z A-Z 0-9  ? =  _  . - / : 。</p>
         :rtype: str
         """
         return self._Path
@@ -6282,7 +6186,7 @@ class HTTPRedirectInfo(AbstractModel):
 
     @property
     def Port(self):
-        r"""重定向的端口，默认值 ${port}。取值1 ~ 65535。
+        r"""<p>重定向的端口，默认值 ${port}。取值1 ~ 65535。</p>
         :rtype: str
         """
         return self._Port
@@ -6293,7 +6197,7 @@ class HTTPRedirectInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""重定向的协议，取值：HTTP,HTTPS，默认值${protocol}。
+        r"""<p>重定向的协议，取值：HTTP,HTTPS，默认值${protocol}。</p>
         :rtype: str
         """
         return self._Protocol
@@ -6304,7 +6208,7 @@ class HTTPRedirectInfo(AbstractModel):
 
     @property
     def Query(self):
-        r"""重定向的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}\|<>& 和空格。
+        r"""<p>重定向的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}|&lt;&gt;&amp; 和空格。</p>
         :rtype: str
         """
         return self._Query
@@ -6338,11 +6242,11 @@ class HTTPRewriteInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Host: 重写的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。
+        :param _Host: <p>重写的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。</p>
         :type Host: str
-        :param _Path: 重写的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z 0-9 ? = _ . - / : 。
+        :param _Path: <p>重写的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z A-Z 0-9 ? = _ . - / : 。</p>
         :type Path: str
-        :param _Query: 重写的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}|<>& 和空格。
+        :param _Query: <p>重写的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}|&lt;&gt;&amp; 和空格。</p>
         :type Query: str
         """
         self._Host = None
@@ -6351,7 +6255,7 @@ class HTTPRewriteInfo(AbstractModel):
 
     @property
     def Host(self):
-        r"""重写的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。
+        r"""<p>重写的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。</p>
         :rtype: str
         """
         return self._Host
@@ -6362,7 +6266,7 @@ class HTTPRewriteInfo(AbstractModel):
 
     @property
     def Path(self):
-        r"""重写的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z 0-9 ? = _ . - / : 。
+        r"""<p>重写的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z A-Z 0-9 ? = _ . - / : 。</p>
         :rtype: str
         """
         return self._Path
@@ -6373,7 +6277,7 @@ class HTTPRewriteInfo(AbstractModel):
 
     @property
     def Query(self):
-        r"""重写的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}|<>& 和空格。
+        r"""<p>重写的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}|&lt;&gt;&amp; 和空格。</p>
         :rtype: str
         """
         return self._Query
@@ -9394,19 +9298,19 @@ class ModifyLoadBalancerModificationProtectionRequest(AbstractModel):
         r"""
         :param _LoadBalancerId: 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
         :type LoadBalancerId: str
+        :param _ModificationProtectionEnabled: 是否开启修改保护。开启后，可防止实例被意外修改或删除。\n- true：开启修改保护\n- false：关闭修改保护
+        :type ModificationProtectionEnabled: bool
         :param _DryRun: 是否只预检此次请求。取值：
 - true：仅执行预检，不实际操作资源。检查参数完整性、请求格式及业务限制，通过返回 DryRunOperation，不通过返回对应错误。
 - false（默认）：执行正常请求，检查通过后直接操作资源。
         :type DryRun: bool
-        :param _ModificationProtectionEnabled: 是否开启修改保护。开启后，可防止实例被意外修改或删除。\n- true：开启修改保护\n- false：关闭修改保护
-        :type ModificationProtectionEnabled: bool
         :param _Reason: 开启修改保护的原因说明。
 长度为 1~255 个字符，必须是中文和无害字符串中的字符， 可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。
         :type Reason: str
         """
         self._LoadBalancerId = None
-        self._DryRun = None
         self._ModificationProtectionEnabled = None
+        self._DryRun = None
         self._Reason = None
 
     @property
@@ -9421,6 +9325,17 @@ class ModifyLoadBalancerModificationProtectionRequest(AbstractModel):
         self._LoadBalancerId = LoadBalancerId
 
     @property
+    def ModificationProtectionEnabled(self):
+        r"""是否开启修改保护。开启后，可防止实例被意外修改或删除。\n- true：开启修改保护\n- false：关闭修改保护
+        :rtype: bool
+        """
+        return self._ModificationProtectionEnabled
+
+    @ModificationProtectionEnabled.setter
+    def ModificationProtectionEnabled(self, ModificationProtectionEnabled):
+        self._ModificationProtectionEnabled = ModificationProtectionEnabled
+
+    @property
     def DryRun(self):
         r"""是否只预检此次请求。取值：
 - true：仅执行预检，不实际操作资源。检查参数完整性、请求格式及业务限制，通过返回 DryRunOperation，不通过返回对应错误。
@@ -9432,17 +9347,6 @@ class ModifyLoadBalancerModificationProtectionRequest(AbstractModel):
     @DryRun.setter
     def DryRun(self, DryRun):
         self._DryRun = DryRun
-
-    @property
-    def ModificationProtectionEnabled(self):
-        r"""是否开启修改保护。开启后，可防止实例被意外修改或删除。\n- true：开启修改保护\n- false：关闭修改保护
-        :rtype: bool
-        """
-        return self._ModificationProtectionEnabled
-
-    @ModificationProtectionEnabled.setter
-    def ModificationProtectionEnabled(self, ModificationProtectionEnabled):
-        self._ModificationProtectionEnabled = ModificationProtectionEnabled
 
     @property
     def Reason(self):
@@ -9459,8 +9363,8 @@ class ModifyLoadBalancerModificationProtectionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
-        self._DryRun = params.get("DryRun")
         self._ModificationProtectionEnabled = params.get("ModificationProtectionEnabled")
+        self._DryRun = params.get("DryRun")
         self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -9621,48 +9525,15 @@ class ModifySecurityPolicyAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityPolicyId: 安全策略 ID，格式为 tls- 后接 8 位字母数字。
+        :param _SecurityPolicyId: <p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
         :type SecurityPolicyId: str
-        :param _Ciphers: 修改后的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。
-
-**配置说明：**
-- 加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。
-- 只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。
-- 若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。
-
-**获取可用加密套件：**
-请调用 [DescribeSecurityPolicyCapabilities](https://cloud.tencent.com/document/api/xxx) 接口查询各 TLS 版本支持的加密套件列表。
-
-**注意：** 若不传此参数，则保持原有配置不变。
-
+        :param _Ciphers: <p>修改后的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。</p><p><strong>配置说明：</strong></p><ul><li>加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。</li><li>只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。</li><li>若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。</li></ul><p><strong>获取可用加密套件：</strong><br>请调用 <a href="https://cloud.tencent.com/document/api/1822/133718">DescribeSecurityPolicyCapabilities</a> 接口查询各 TLS 版本支持的加密套件列表。</p><p><strong>注意：</strong> 若不传此参数，则保持原有配置不变。</p>
         :type Ciphers: list of str
-        :param _DryRun: 是否仅执行预检请求。取值：
-- **true**：仅执行预检请求，不实际修改资源。预检请求将验证参数格式、权限及配置有效性等，帮助您在正式操作前发现潜在问题。
-- **false**（默认）：执行正常请求，通过预检后将直接修改安全策略。
-
+        :param _DryRun: <p>是否仅执行预检请求。取值：</p><ul><li><strong>true</strong>：仅执行预检请求，不实际修改资源。预检请求将验证参数格式、权限及配置有效性等，帮助您在正式操作前发现潜在问题。</li><li><strong>false</strong>（默认）：执行正常请求，通过预检后将直接修改安全策略。</li></ul>
         :type DryRun: bool
-        :param _SecurityPolicyName: 修改后的安全策略名称。用于标识和区分不同的安全策略。
-
-**命名规则：**
-- 长度为 2~128 个字符。
-- 必须以英文字母或中文开头。
-- 可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。
-
-**注意：** 若不传此参数，则保持原有名称不变。
-
+        :param _SecurityPolicyName: <p>修改后的安全策略名称。用于标识和区分不同的安全策略。</p><p><strong>命名规则：</strong></p><ul><li>长度为 2~128 个字符。</li><li>必须以英文字母或中文开头。</li><li>可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。</li></ul><p><strong>注意：</strong> 若不传此参数，则保持原有名称不变。</p>
         :type SecurityPolicyName: str
-        :param _TLSVersions: 修改后的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。
-
-**可选值：**
-- **TLSv1.0**：兼容性最好，但安全性较低，不推荐在生产环境使用。
-- **TLSv1.1**：安全性略优于 TLSv1.0，但仍不推荐。
-- **TLSv1.2**：目前主流的安全协议版本，兼顾安全性与兼容性。
-- **TLSv1.3**：最新版本，安全性最高，性能更优，推荐优先使用。
-
-**注意：** 
-- 若不传此参数，则保持原有配置不变。
-- 修改 TLS 版本时，请同步检查 Ciphers 参数的配置是否兼容。
-
+        :param _TLSVersions: <p>修改后的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。</p><p><strong>可选值：</strong></p><ul><li><strong>TLSv1.0</strong>：兼容性最好，但安全性较低，不推荐在生产环境使用。</li><li><strong>TLSv1.1</strong>：安全性略优于 TLSv1.0，但仍不推荐。</li><li><strong>TLSv1.2</strong>：目前主流的安全协议版本，兼顾安全性与兼容性。</li><li><strong>TLSv1.3</strong>：最新版本，安全性最高，性能更优，推荐优先使用。</li></ul><p><strong>注意：</strong> </p><ul><li>若不传此参数，则保持原有配置不变。</li><li>修改 TLS 版本时，请同步检查 Ciphers 参数的配置是否兼容。</li></ul>
         :type TLSVersions: list of str
         """
         self._SecurityPolicyId = None
@@ -9673,7 +9544,7 @@ class ModifySecurityPolicyAttributesRequest(AbstractModel):
 
     @property
     def SecurityPolicyId(self):
-        r"""安全策略 ID，格式为 tls- 后接 8 位字母数字。
+        r"""<p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._SecurityPolicyId
@@ -9684,18 +9555,7 @@ class ModifySecurityPolicyAttributesRequest(AbstractModel):
 
     @property
     def Ciphers(self):
-        r"""修改后的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。
-
-**配置说明：**
-- 加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。
-- 只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。
-- 若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。
-
-**获取可用加密套件：**
-请调用 [DescribeSecurityPolicyCapabilities](https://cloud.tencent.com/document/api/xxx) 接口查询各 TLS 版本支持的加密套件列表。
-
-**注意：** 若不传此参数，则保持原有配置不变。
-
+        r"""<p>修改后的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。</p><p><strong>配置说明：</strong></p><ul><li>加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。</li><li>只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。</li><li>若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。</li></ul><p><strong>获取可用加密套件：</strong><br>请调用 <a href="https://cloud.tencent.com/document/api/1822/133718">DescribeSecurityPolicyCapabilities</a> 接口查询各 TLS 版本支持的加密套件列表。</p><p><strong>注意：</strong> 若不传此参数，则保持原有配置不变。</p>
         :rtype: list of str
         """
         return self._Ciphers
@@ -9706,10 +9566,7 @@ class ModifySecurityPolicyAttributesRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        r"""是否仅执行预检请求。取值：
-- **true**：仅执行预检请求，不实际修改资源。预检请求将验证参数格式、权限及配置有效性等，帮助您在正式操作前发现潜在问题。
-- **false**（默认）：执行正常请求，通过预检后将直接修改安全策略。
-
+        r"""<p>是否仅执行预检请求。取值：</p><ul><li><strong>true</strong>：仅执行预检请求，不实际修改资源。预检请求将验证参数格式、权限及配置有效性等，帮助您在正式操作前发现潜在问题。</li><li><strong>false</strong>（默认）：执行正常请求，通过预检后将直接修改安全策略。</li></ul>
         :rtype: bool
         """
         return self._DryRun
@@ -9720,15 +9577,7 @@ class ModifySecurityPolicyAttributesRequest(AbstractModel):
 
     @property
     def SecurityPolicyName(self):
-        r"""修改后的安全策略名称。用于标识和区分不同的安全策略。
-
-**命名规则：**
-- 长度为 2~128 个字符。
-- 必须以英文字母或中文开头。
-- 可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。
-
-**注意：** 若不传此参数，则保持原有名称不变。
-
+        r"""<p>修改后的安全策略名称。用于标识和区分不同的安全策略。</p><p><strong>命名规则：</strong></p><ul><li>长度为 2~128 个字符。</li><li>必须以英文字母或中文开头。</li><li>可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。</li></ul><p><strong>注意：</strong> 若不传此参数，则保持原有名称不变。</p>
         :rtype: str
         """
         return self._SecurityPolicyName
@@ -9739,18 +9588,7 @@ class ModifySecurityPolicyAttributesRequest(AbstractModel):
 
     @property
     def TLSVersions(self):
-        r"""修改后的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。
-
-**可选值：**
-- **TLSv1.0**：兼容性最好，但安全性较低，不推荐在生产环境使用。
-- **TLSv1.1**：安全性略优于 TLSv1.0，但仍不推荐。
-- **TLSv1.2**：目前主流的安全协议版本，兼顾安全性与兼容性。
-- **TLSv1.3**：最新版本，安全性最高，性能更优，推荐优先使用。
-
-**注意：** 
-- 若不传此参数，则保持原有配置不变。
-- 修改 TLS 版本时，请同步检查 Ciphers 参数的配置是否兼容。
-
+        r"""<p>修改后的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。</p><p><strong>可选值：</strong></p><ul><li><strong>TLSv1.0</strong>：兼容性最好，但安全性较低，不推荐在生产环境使用。</li><li><strong>TLSv1.1</strong>：安全性略优于 TLSv1.0，但仍不推荐。</li><li><strong>TLSv1.2</strong>：目前主流的安全协议版本，兼顾安全性与兼容性。</li><li><strong>TLSv1.3</strong>：最新版本，安全性最高，性能更优，推荐优先使用。</li></ul><p><strong>注意：</strong> </p><ul><li>若不传此参数，则保持原有配置不变。</li><li>修改 TLS 版本时，请同步检查 Ciphers 参数的配置是否兼容。</li></ul>
         :rtype: list of str
         """
         return self._TLSVersions
@@ -9811,24 +9649,19 @@ class ModifyTargetGroupAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DryRun: 是否预览此次请求。
-- **false**（默认）：发送普通请求，直接修改目标组。
-- **true**：发送预览请求，检查修改目标组的参数、格式、业务限制等是否符合要求。
+        :param _DryRun: <p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接修改目标组。</li><li><strong>true</strong>：发送预览请求，检查修改目标组的参数、格式、业务限制等是否符合要求。</li></ul>
         :type DryRun: bool
-        :param _HealthCheckConfig: 健康检查配置。
-
+        :param _HealthCheckConfig: <p>健康检查配置。</p>
         :type HealthCheckConfig: :class:`tencentcloud.alb.v20251030.models.HealthCheckConfig`
-        :param _KeepaliveEnabled: 是否开启长连接。
+        :param _KeepaliveEnabled: <p>是否开启长连接。</p>
         :type KeepaliveEnabled: bool
-        :param _SchedulerAlgorithm: 调度算法。取值：
-- **wrr**：加权轮训，按照权重选择后端服务器，权重越高的服务器被轮训到的概率越高。
-- **wlc**：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。
+        :param _SchedulerAlgorithm: <p>调度算法。取值：</p><ul><li><strong>wrr</strong>：加权轮询，按照权重选择后端服务器，权重越高的服务器被轮询到的概率越高。</li><li><strong>wlc</strong>：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。</li></ul>
         :type SchedulerAlgorithm: str
-        :param _StickySessionConfig: 会话保持配置。
+        :param _StickySessionConfig: <p>会话保持配置。</p>
         :type StickySessionConfig: :class:`tencentcloud.alb.v20251030.models.StickySessionConfig`
-        :param _TargetGroupId: 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
+        :param _TargetGroupId: <p>目标组 ID，格式为 lbtg- 后接 8 位字母数字。</p>
         :type TargetGroupId: str
-        :param _TargetGroupName: 目标组名称。长度为 1~255 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。不传目标组名称时默认使用ID作为目标组名称。
+        :param _TargetGroupName: <p>目标组名称。长度为 1~255 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。不传目标组名称时默认使用ID作为目标组名称。</p>
         :type TargetGroupName: str
         """
         self._DryRun = None
@@ -9841,9 +9674,7 @@ class ModifyTargetGroupAttributesRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        r"""是否预览此次请求。
-- **false**（默认）：发送普通请求，直接修改目标组。
-- **true**：发送预览请求，检查修改目标组的参数、格式、业务限制等是否符合要求。
+        r"""<p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接修改目标组。</li><li><strong>true</strong>：发送预览请求，检查修改目标组的参数、格式、业务限制等是否符合要求。</li></ul>
         :rtype: bool
         """
         return self._DryRun
@@ -9854,8 +9685,7 @@ class ModifyTargetGroupAttributesRequest(AbstractModel):
 
     @property
     def HealthCheckConfig(self):
-        r"""健康检查配置。
-
+        r"""<p>健康检查配置。</p>
         :rtype: :class:`tencentcloud.alb.v20251030.models.HealthCheckConfig`
         """
         return self._HealthCheckConfig
@@ -9866,7 +9696,7 @@ class ModifyTargetGroupAttributesRequest(AbstractModel):
 
     @property
     def KeepaliveEnabled(self):
-        r"""是否开启长连接。
+        r"""<p>是否开启长连接。</p>
         :rtype: bool
         """
         return self._KeepaliveEnabled
@@ -9877,9 +9707,7 @@ class ModifyTargetGroupAttributesRequest(AbstractModel):
 
     @property
     def SchedulerAlgorithm(self):
-        r"""调度算法。取值：
-- **wrr**：加权轮训，按照权重选择后端服务器，权重越高的服务器被轮训到的概率越高。
-- **wlc**：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。
+        r"""<p>调度算法。取值：</p><ul><li><strong>wrr</strong>：加权轮询，按照权重选择后端服务器，权重越高的服务器被轮询到的概率越高。</li><li><strong>wlc</strong>：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。</li></ul>
         :rtype: str
         """
         return self._SchedulerAlgorithm
@@ -9890,7 +9718,7 @@ class ModifyTargetGroupAttributesRequest(AbstractModel):
 
     @property
     def StickySessionConfig(self):
-        r"""会话保持配置。
+        r"""<p>会话保持配置。</p>
         :rtype: :class:`tencentcloud.alb.v20251030.models.StickySessionConfig`
         """
         return self._StickySessionConfig
@@ -9901,7 +9729,7 @@ class ModifyTargetGroupAttributesRequest(AbstractModel):
 
     @property
     def TargetGroupId(self):
-        r"""目标组 ID，格式为 lbtg- 后接 8 位字母数字。
+        r"""<p>目标组 ID，格式为 lbtg- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._TargetGroupId
@@ -9912,7 +9740,7 @@ class ModifyTargetGroupAttributesRequest(AbstractModel):
 
     @property
     def TargetGroupName(self):
-        r"""目标组名称。长度为 1~255 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。不传目标组名称时默认使用ID作为目标组名称。
+        r"""<p>目标组名称。长度为 1~255 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。不传目标组名称时默认使用ID作为目标组名称。</p>
         :rtype: str
         """
         return self._TargetGroupName
@@ -9981,16 +9809,16 @@ class ModifyTargetsInTargetGroupRequest(AbstractModel):
         r"""
         :param _TargetGroupId: 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
         :type TargetGroupId: str
+        :param _Targets: 需要修改的后端服务列表。
+        :type Targets: list of TargetToModify
         :param _DryRun: 是否预览此次请求。 
 - **false**（默认）：发送普通请求，直接修改后端服务信息。 
 - **true**：发送预览请求，检查修改后端服务的参数、格式、业务限制等是否符合要求。
         :type DryRun: bool
-        :param _Targets: 需要修改的后端服务列表。
-        :type Targets: list of TargetToModify
         """
         self._TargetGroupId = None
-        self._DryRun = None
         self._Targets = None
+        self._DryRun = None
 
     @property
     def TargetGroupId(self):
@@ -10002,6 +9830,17 @@ class ModifyTargetsInTargetGroupRequest(AbstractModel):
     @TargetGroupId.setter
     def TargetGroupId(self, TargetGroupId):
         self._TargetGroupId = TargetGroupId
+
+    @property
+    def Targets(self):
+        r"""需要修改的后端服务列表。
+        :rtype: list of TargetToModify
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
 
     @property
     def DryRun(self):
@@ -10016,27 +9855,16 @@ class ModifyTargetsInTargetGroupRequest(AbstractModel):
     def DryRun(self, DryRun):
         self._DryRun = DryRun
 
-    @property
-    def Targets(self):
-        r"""需要修改的后端服务列表。
-        :rtype: list of TargetToModify
-        """
-        return self._Targets
-
-    @Targets.setter
-    def Targets(self, Targets):
-        self._Targets = Targets
-
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
-        self._DryRun = params.get("DryRun")
         if params.get("Targets") is not None:
             self._Targets = []
             for item in params.get("Targets"):
                 obj = TargetToModify()
                 obj._deserialize(item)
                 self._Targets.append(obj)
+        self._DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10515,16 +10343,16 @@ class RemoveTargetsFromTargetGroupRequest(AbstractModel):
         r"""
         :param _TargetGroupId: 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
         :type TargetGroupId: str
+        :param _Targets: 需要从目标组移除的后端服务列表。单次请求最多移除 **50** 个后端服务。
+        :type Targets: list of TargetToRemove
         :param _DryRun: 是否预览此次请求。 
 - **false**（默认）：发送普通请求，直接移除后端服务。 
 - **true**：发送预览请求，检查移除后端服务的参数、格式、业务限制等是否符合要求。
         :type DryRun: bool
-        :param _Targets: 需要从目标组移除的后端服务列表。单次请求最多移除 **50** 个后端服务。
-        :type Targets: list of TargetToRemove
         """
         self._TargetGroupId = None
-        self._DryRun = None
         self._Targets = None
+        self._DryRun = None
 
     @property
     def TargetGroupId(self):
@@ -10536,6 +10364,17 @@ class RemoveTargetsFromTargetGroupRequest(AbstractModel):
     @TargetGroupId.setter
     def TargetGroupId(self, TargetGroupId):
         self._TargetGroupId = TargetGroupId
+
+    @property
+    def Targets(self):
+        r"""需要从目标组移除的后端服务列表。单次请求最多移除 **50** 个后端服务。
+        :rtype: list of TargetToRemove
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
 
     @property
     def DryRun(self):
@@ -10550,27 +10389,16 @@ class RemoveTargetsFromTargetGroupRequest(AbstractModel):
     def DryRun(self, DryRun):
         self._DryRun = DryRun
 
-    @property
-    def Targets(self):
-        r"""需要从目标组移除的后端服务列表。单次请求最多移除 **50** 个后端服务。
-        :rtype: list of TargetToRemove
-        """
-        return self._Targets
-
-    @Targets.setter
-    def Targets(self, Targets):
-        self._Targets = Targets
-
 
     def _deserialize(self, params):
         self._TargetGroupId = params.get("TargetGroupId")
-        self._DryRun = params.get("DryRun")
         if params.get("Targets") is not None:
             self._Targets = []
             for item in params.get("Targets"):
                 obj = TargetToRemove()
                 obj._deserialize(item)
                 self._Targets.append(obj)
+        self._DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13183,21 +13011,15 @@ class ZoneMappingInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubnetId: 子网 ID。
+        :param _SubnetId: <p>子网 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param _ZoneId: 可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。
-您可以通过调用[DescribeZones](~~36064~~)接口获取可用区ID对应的可用区的信息。
+        :param _ZoneId: <p>可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。<br>您可以通过调用<a href="https://cloud.tencent.com/document/api/1822/133727">DescribeZones</a>接口获取可用区ID对应的可用区的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: str
-        :param _LoadBalancerAddress: 负载均衡 VIP/EIP 信息
+        :param _LoadBalancerAddress: <p>负载均衡 VIP/EIP 信息</p>
         :type LoadBalancerAddress: :class:`tencentcloud.alb.v20251030.models.LoadBalancerAddress`
-        :param _Status: 可用区状态。取值：
-- **Active**：运行中。
-- **Stopped**：已停止。
-- **Shifted**：已移除。
-- **Starting**：启动中。
-- **Stopping**：停止中。
+        :param _Status: <p>可用区状态。取值：</p><ul><li><strong>Active</strong>：运行中。</li><li><strong>Stopped</strong>：已停止。</li><li><strong>Shifted</strong>：已移除。</li><li><strong>Starting</strong>：启动中。</li><li><strong>Stopping</strong>：停止中。</li></ul>
         :type Status: str
         """
         self._SubnetId = None
@@ -13207,7 +13029,7 @@ class ZoneMappingInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网 ID。
+        r"""<p>子网 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13219,8 +13041,7 @@ class ZoneMappingInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。
-您可以通过调用[DescribeZones](~~36064~~)接口获取可用区ID对应的可用区的信息。
+        r"""<p>可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。<br>您可以通过调用<a href="https://cloud.tencent.com/document/api/1822/133727">DescribeZones</a>接口获取可用区ID对应的可用区的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13232,7 +13053,7 @@ class ZoneMappingInfo(AbstractModel):
 
     @property
     def LoadBalancerAddress(self):
-        r"""负载均衡 VIP/EIP 信息
+        r"""<p>负载均衡 VIP/EIP 信息</p>
         :rtype: :class:`tencentcloud.alb.v20251030.models.LoadBalancerAddress`
         """
         return self._LoadBalancerAddress
@@ -13243,12 +13064,7 @@ class ZoneMappingInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""可用区状态。取值：
-- **Active**：运行中。
-- **Stopped**：已停止。
-- **Shifted**：已移除。
-- **Starting**：启动中。
-- **Stopping**：停止中。
+        r"""<p>可用区状态。取值：</p><ul><li><strong>Active</strong>：运行中。</li><li><strong>Stopped</strong>：已停止。</li><li><strong>Shifted</strong>：已移除。</li><li><strong>Starting</strong>：启动中。</li><li><strong>Stopping</strong>：停止中。</li></ul>
         :rtype: str
         """
         return self._Status
@@ -13285,7 +13101,7 @@ class ZoneMappingsItem(AbstractModel):
         :param _SubnetId: <p>子网 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param _ZoneId: <p>可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。<br>您可以通过调用<a href="~~36064~~">DescribeZones</a>接口获取可用区ID对应的可用区的信息。</p>
+        :param _ZoneId: <p>可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。<br>您可以通过调用<a href="https://cloud.tencent.com/document/api/1822/133727">DescribeZones</a>接口获取可用区ID对应的可用区的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: str
         :param _LoadBalancerAddress: <p>公网实例绑定的EIP实例ID。</p>
@@ -13310,7 +13126,7 @@ class ZoneMappingsItem(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""<p>可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。<br>您可以通过调用<a href="~~36064~~">DescribeZones</a>接口获取可用区ID对应的可用区的信息。</p>
+        r"""<p>可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。<br>您可以通过调用<a href="https://cloud.tencent.com/document/api/1822/133727">DescribeZones</a>接口获取可用区ID对应的可用区的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

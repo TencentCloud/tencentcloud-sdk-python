@@ -3459,29 +3459,29 @@ class BackupConfigInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupCustomAutoTime: 系统自动时间
+        :param _BackupCustomAutoTime: <p>系统自动时间</p>
         :type BackupCustomAutoTime: bool
-        :param _BackupTimeBeg: 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :param _BackupTimeBeg: <p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :type BackupTimeBeg: int
-        :param _BackupTimeEnd: 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :param _BackupTimeEnd: <p>表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :type BackupTimeEnd: int
-        :param _BackupWeekDays: 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份
+        :param _BackupWeekDays: <p>该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupWeekDays: list of str
-        :param _BackupIntervalTime: 间隔时间
+        :param _BackupIntervalTime: <p>间隔时间</p>
         :type BackupIntervalTime: int
-        :param _ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
+        :param _ReserveDuration: <p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000</p>
         :type ReserveDuration: int
-        :param _CrossRegionsEnable: 跨地域备份开启
-yes-开启
-no-关闭
+        :param _CrossRegionsEnable: <p>跨地域备份开启<br>yes-开启<br>no-关闭</p>
         :type CrossRegionsEnable: str
-        :param _CrossRegions: 跨地域备份地域
+        :param _CrossRegions: <p>跨地域备份地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrossRegions: list of str
-        :param _BackupTriggerStrategy: 自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        :param _CrossRegionSaveDays: <p>跨地域备份保留时间</p><p>单位：天</p>
+        :type CrossRegionSaveDays: int
+        :param _BackupTriggerStrategy: <p>自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份</p>
         :type BackupTriggerStrategy: str
-        :param _AutoCopyVaults: 备份投递关系
+        :param _AutoCopyVaults: <p>备份投递关系</p>
         :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._BackupCustomAutoTime = None
@@ -3492,12 +3492,13 @@ no-关闭
         self._ReserveDuration = None
         self._CrossRegionsEnable = None
         self._CrossRegions = None
+        self._CrossRegionSaveDays = None
         self._BackupTriggerStrategy = None
         self._AutoCopyVaults = None
 
     @property
     def BackupCustomAutoTime(self):
-        r"""系统自动时间
+        r"""<p>系统自动时间</p>
         :rtype: bool
         """
         return self._BackupCustomAutoTime
@@ -3508,7 +3509,7 @@ no-关闭
 
     @property
     def BackupTimeBeg(self):
-        r"""表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        r"""<p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :rtype: int
         """
         return self._BackupTimeBeg
@@ -3519,7 +3520,7 @@ no-关闭
 
     @property
     def BackupTimeEnd(self):
-        r"""表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        r"""<p>表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :rtype: int
         """
         return self._BackupTimeEnd
@@ -3530,7 +3531,7 @@ no-关闭
 
     @property
     def BackupWeekDays(self):
-        r"""该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份
+        r"""<p>该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3542,7 +3543,7 @@ no-关闭
 
     @property
     def BackupIntervalTime(self):
-        r"""间隔时间
+        r"""<p>间隔时间</p>
         :rtype: int
         """
         return self._BackupIntervalTime
@@ -3553,7 +3554,7 @@ no-关闭
 
     @property
     def ReserveDuration(self):
-        r"""表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
+        r"""<p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000</p>
         :rtype: int
         """
         return self._ReserveDuration
@@ -3564,9 +3565,7 @@ no-关闭
 
     @property
     def CrossRegionsEnable(self):
-        r"""跨地域备份开启
-yes-开启
-no-关闭
+        r"""<p>跨地域备份开启<br>yes-开启<br>no-关闭</p>
         :rtype: str
         """
         return self._CrossRegionsEnable
@@ -3577,7 +3576,7 @@ no-关闭
 
     @property
     def CrossRegions(self):
-        r"""跨地域备份地域
+        r"""<p>跨地域备份地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3588,8 +3587,19 @@ no-关闭
         self._CrossRegions = CrossRegions
 
     @property
+    def CrossRegionSaveDays(self):
+        r"""<p>跨地域备份保留时间</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._CrossRegionSaveDays
+
+    @CrossRegionSaveDays.setter
+    def CrossRegionSaveDays(self, CrossRegionSaveDays):
+        self._CrossRegionSaveDays = CrossRegionSaveDays
+
+    @property
     def BackupTriggerStrategy(self):
-        r"""自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        r"""<p>自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份</p>
         :rtype: str
         """
         return self._BackupTriggerStrategy
@@ -3600,7 +3610,7 @@ no-关闭
 
     @property
     def AutoCopyVaults(self):
-        r"""备份投递关系
+        r"""<p>备份投递关系</p>
         :rtype: list of CreateBackupVaultItem
         """
         return self._AutoCopyVaults
@@ -3619,6 +3629,7 @@ no-关闭
         self._ReserveDuration = params.get("ReserveDuration")
         self._CrossRegionsEnable = params.get("CrossRegionsEnable")
         self._CrossRegions = params.get("CrossRegions")
+        self._CrossRegionSaveDays = params.get("CrossRegionSaveDays")
         self._BackupTriggerStrategy = params.get("BackupTriggerStrategy")
         if params.get("AutoCopyVaults") is not None:
             self._AutoCopyVaults = []
@@ -4476,24 +4487,27 @@ class BinlogConfigInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BinlogSaveDays: binlog保留时间
+        :param _BinlogSaveDays: <p>binlog保留时间</p>
         :type BinlogSaveDays: int
-        :param _BinlogCrossRegionsEnable: binlog异地地域备份是否开启
+        :param _BinlogCrossRegionsEnable: <p>binlog异地地域备份是否开启</p>
         :type BinlogCrossRegionsEnable: str
-        :param _BinlogCrossRegions: binlog异地地域
+        :param _BinlogCrossRegions: <p>binlog异地地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BinlogCrossRegions: list of str
-        :param _AutoCopyVaults: 保险箱信息
+        :param _BinlogCrossRegionSaveDays: <p>跨地域备份保留时间</p><p>单位：天</p>
+        :type BinlogCrossRegionSaveDays: int
+        :param _AutoCopyVaults: <p>保险箱信息</p>
         :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._BinlogSaveDays = None
         self._BinlogCrossRegionsEnable = None
         self._BinlogCrossRegions = None
+        self._BinlogCrossRegionSaveDays = None
         self._AutoCopyVaults = None
 
     @property
     def BinlogSaveDays(self):
-        r"""binlog保留时间
+        r"""<p>binlog保留时间</p>
         :rtype: int
         """
         return self._BinlogSaveDays
@@ -4504,7 +4518,7 @@ class BinlogConfigInfo(AbstractModel):
 
     @property
     def BinlogCrossRegionsEnable(self):
-        r"""binlog异地地域备份是否开启
+        r"""<p>binlog异地地域备份是否开启</p>
         :rtype: str
         """
         return self._BinlogCrossRegionsEnable
@@ -4515,7 +4529,7 @@ class BinlogConfigInfo(AbstractModel):
 
     @property
     def BinlogCrossRegions(self):
-        r"""binlog异地地域
+        r"""<p>binlog异地地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -4526,8 +4540,19 @@ class BinlogConfigInfo(AbstractModel):
         self._BinlogCrossRegions = BinlogCrossRegions
 
     @property
+    def BinlogCrossRegionSaveDays(self):
+        r"""<p>跨地域备份保留时间</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._BinlogCrossRegionSaveDays
+
+    @BinlogCrossRegionSaveDays.setter
+    def BinlogCrossRegionSaveDays(self, BinlogCrossRegionSaveDays):
+        self._BinlogCrossRegionSaveDays = BinlogCrossRegionSaveDays
+
+    @property
     def AutoCopyVaults(self):
-        r"""保险箱信息
+        r"""<p>保险箱信息</p>
         :rtype: list of CreateBackupVaultItem
         """
         return self._AutoCopyVaults
@@ -4541,6 +4566,7 @@ class BinlogConfigInfo(AbstractModel):
         self._BinlogSaveDays = params.get("BinlogSaveDays")
         self._BinlogCrossRegionsEnable = params.get("BinlogCrossRegionsEnable")
         self._BinlogCrossRegions = params.get("BinlogCrossRegions")
+        self._BinlogCrossRegionSaveDays = params.get("BinlogCrossRegionSaveDays")
         if params.get("AutoCopyVaults") is not None:
             self._AutoCopyVaults = []
             for item in params.get("AutoCopyVaults"):
@@ -4564,26 +4590,28 @@ class BinlogItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileName: Binlog文件名称
+        :param _FileName: <p>Binlog文件名称</p>
         :type FileName: str
-        :param _FileSize: 文件大小，单位：字节
+        :param _FileSize: <p>文件大小，单位：字节</p>
         :type FileSize: int
-        :param _StartTime: 事务最早时间
+        :param _StartTime: <p>事务最早时间</p>
         :type StartTime: str
-        :param _FinishTime: 事务最晚时间
+        :param _FinishTime: <p>事务最晚时间</p>
         :type FinishTime: str
-        :param _BinlogId: Binlog文件ID
+        :param _BinlogId: <p>Binlog文件ID</p>
         :type BinlogId: int
-        :param _CrossRegions: binlog所跨地域
+        :param _CrossRegions: <p>binlog所跨地域</p>
         :type CrossRegions: list of str
-        :param _CopyStatus: 备份投递状态
+        :param _CopyStatus: <p>备份投递状态</p>
         :type CopyStatus: str
-        :param _VaultInfos: 保险箱信息
+        :param _VaultInfos: <p>保险箱信息</p>
         :type VaultInfos: list of VaultInfo
-        :param _EncryptKeyId: 加密秘钥key
+        :param _EncryptKeyId: <p>加密秘钥key</p>
         :type EncryptKeyId: str
-        :param _EncryptRegion: 加密秘钥地域
+        :param _EncryptRegion: <p>加密秘钥地域</p>
         :type EncryptRegion: str
+        :param _ExistRegions: <p>备份的地域分布信息</p>
+        :type ExistRegions: list of BinlogRegionInfo
         """
         self._FileName = None
         self._FileSize = None
@@ -4595,10 +4623,11 @@ class BinlogItem(AbstractModel):
         self._VaultInfos = None
         self._EncryptKeyId = None
         self._EncryptRegion = None
+        self._ExistRegions = None
 
     @property
     def FileName(self):
-        r"""Binlog文件名称
+        r"""<p>Binlog文件名称</p>
         :rtype: str
         """
         return self._FileName
@@ -4609,7 +4638,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""文件大小，单位：字节
+        r"""<p>文件大小，单位：字节</p>
         :rtype: int
         """
         return self._FileSize
@@ -4620,7 +4649,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""事务最早时间
+        r"""<p>事务最早时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -4631,7 +4660,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""事务最晚时间
+        r"""<p>事务最晚时间</p>
         :rtype: str
         """
         return self._FinishTime
@@ -4642,7 +4671,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def BinlogId(self):
-        r"""Binlog文件ID
+        r"""<p>Binlog文件ID</p>
         :rtype: int
         """
         return self._BinlogId
@@ -4653,7 +4682,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def CrossRegions(self):
-        r"""binlog所跨地域
+        r"""<p>binlog所跨地域</p>
         :rtype: list of str
         """
         return self._CrossRegions
@@ -4664,7 +4693,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def CopyStatus(self):
-        r"""备份投递状态
+        r"""<p>备份投递状态</p>
         :rtype: str
         """
         return self._CopyStatus
@@ -4675,7 +4704,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def VaultInfos(self):
-        r"""保险箱信息
+        r"""<p>保险箱信息</p>
         :rtype: list of VaultInfo
         """
         return self._VaultInfos
@@ -4686,7 +4715,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def EncryptKeyId(self):
-        r"""加密秘钥key
+        r"""<p>加密秘钥key</p>
         :rtype: str
         """
         return self._EncryptKeyId
@@ -4697,7 +4726,7 @@ class BinlogItem(AbstractModel):
 
     @property
     def EncryptRegion(self):
-        r"""加密秘钥地域
+        r"""<p>加密秘钥地域</p>
         :rtype: str
         """
         return self._EncryptRegion
@@ -4705,6 +4734,17 @@ class BinlogItem(AbstractModel):
     @EncryptRegion.setter
     def EncryptRegion(self, EncryptRegion):
         self._EncryptRegion = EncryptRegion
+
+    @property
+    def ExistRegions(self):
+        r"""<p>备份的地域分布信息</p>
+        :rtype: list of BinlogRegionInfo
+        """
+        return self._ExistRegions
+
+    @ExistRegions.setter
+    def ExistRegions(self, ExistRegions):
+        self._ExistRegions = ExistRegions
 
 
     def _deserialize(self, params):
@@ -4723,6 +4763,63 @@ class BinlogItem(AbstractModel):
                 self._VaultInfos.append(obj)
         self._EncryptKeyId = params.get("EncryptKeyId")
         self._EncryptRegion = params.get("EncryptRegion")
+        if params.get("ExistRegions") is not None:
+            self._ExistRegions = []
+            for item in params.get("ExistRegions"):
+                obj = BinlogRegionInfo()
+                obj._deserialize(item)
+                self._ExistRegions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BinlogRegionInfo(AbstractModel):
+    r"""各地域binlog保留信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupRegion: <p>备份地域</p>
+        :type BackupRegion: str
+        :param _BackupId: <p>备份ID</p>
+        :type BackupId: int
+        """
+        self._BackupRegion = None
+        self._BackupId = None
+
+    @property
+    def BackupRegion(self):
+        r"""<p>备份地域</p>
+        :rtype: str
+        """
+        return self._BackupRegion
+
+    @BackupRegion.setter
+    def BackupRegion(self, BackupRegion):
+        self._BackupRegion = BackupRegion
+
+    @property
+    def BackupId(self):
+        r"""<p>备份ID</p>
+        :rtype: int
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+
+    def _deserialize(self, params):
+        self._BackupRegion = params.get("BackupRegion")
+        self._BackupId = params.get("BackupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34660,30 +34757,32 @@ class InquirePriceCreateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区,每个地域提供最佳实践
+        :param _Zone: <p>可用区,每个地域提供最佳实践</p>
         :type Zone: str
-        :param _GoodsNum: 购买计算节点个数
+        :param _GoodsNum: <p>购买计算节点个数</p>
         :type GoodsNum: int
-        :param _InstancePayMode: 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+        :param _InstancePayMode: <p>实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS</p>
         :type InstancePayMode: str
-        :param _StoragePayMode: 存储购买类型，可选值为：PREPAID, POSTPAID
+        :param _StoragePayMode: <p>存储购买类型，可选值为：PREPAID, POSTPAID</p>
         :type StoragePayMode: str
-        :param _DeviceType: 实例设备类型，支持值如下：
-- common：表示通用型
-- exclusive：表示独享型
+        :param _DeviceType: <p>实例设备类型，支持值如下：</p><ul><li>common：表示通用型</li><li>exclusive：表示独享型</li></ul>
         :type DeviceType: str
-        :param _Cpu: CPU核数，PREPAID与POSTPAID实例类型必传
+        :param _Cpu: <p>CPU核数，PREPAID与POSTPAID实例类型必传</p>
         :type Cpu: int
-        :param _Memory: 内存大小，单位G，PREPAID与POSTPAID实例类型必传
+        :param _Memory: <p>内存大小，单位G，PREPAID与POSTPAID实例类型必传</p>
         :type Memory: int
-        :param _Ccu: Ccu大小，serverless类型必传
+        :param _Ccu: <p>Ccu大小，serverless类型必传</p>
         :type Ccu: float
-        :param _StorageLimit: 存储大小，PREPAID存储类型必传
+        :param _StorageLimit: <p>存储大小，PREPAID存储类型必传</p>
         :type StorageLimit: int
-        :param _TimeSpan: 购买时长，PREPAID购买类型必传
+        :param _TimeSpan: <p>购买时长，PREPAID购买类型必传</p>
         :type TimeSpan: int
-        :param _TimeUnit: 时长单位，可选值为：m,d。PREPAID购买类型必传
+        :param _TimeUnit: <p>时长单位，可选值为：m,d。PREPAID购买类型必传</p>
         :type TimeUnit: str
+        :param _StorageVersion: <p>存储架构类型。 枚举值：1.0/2.0 默认值：1.0</p>
+        :type StorageVersion: str
+        :param _IsMultiAz: <p>存储是否跨AZ，2.0存储架构下有效</p>
+        :type IsMultiAz: bool
         """
         self._Zone = None
         self._GoodsNum = None
@@ -34696,10 +34795,12 @@ class InquirePriceCreateRequest(AbstractModel):
         self._StorageLimit = None
         self._TimeSpan = None
         self._TimeUnit = None
+        self._StorageVersion = None
+        self._IsMultiAz = None
 
     @property
     def Zone(self):
-        r"""可用区,每个地域提供最佳实践
+        r"""<p>可用区,每个地域提供最佳实践</p>
         :rtype: str
         """
         return self._Zone
@@ -34710,7 +34811,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        r"""购买计算节点个数
+        r"""<p>购买计算节点个数</p>
         :rtype: int
         """
         return self._GoodsNum
@@ -34721,7 +34822,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def InstancePayMode(self):
-        r"""实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+        r"""<p>实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS</p>
         :rtype: str
         """
         return self._InstancePayMode
@@ -34732,7 +34833,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def StoragePayMode(self):
-        r"""存储购买类型，可选值为：PREPAID, POSTPAID
+        r"""<p>存储购买类型，可选值为：PREPAID, POSTPAID</p>
         :rtype: str
         """
         return self._StoragePayMode
@@ -34743,9 +34844,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""实例设备类型，支持值如下：
-- common：表示通用型
-- exclusive：表示独享型
+        r"""<p>实例设备类型，支持值如下：</p><ul><li>common：表示通用型</li><li>exclusive：表示独享型</li></ul>
         :rtype: str
         """
         return self._DeviceType
@@ -34756,7 +34855,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""CPU核数，PREPAID与POSTPAID实例类型必传
+        r"""<p>CPU核数，PREPAID与POSTPAID实例类型必传</p>
         :rtype: int
         """
         return self._Cpu
@@ -34767,7 +34866,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存大小，单位G，PREPAID与POSTPAID实例类型必传
+        r"""<p>内存大小，单位G，PREPAID与POSTPAID实例类型必传</p>
         :rtype: int
         """
         return self._Memory
@@ -34778,7 +34877,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def Ccu(self):
-        r"""Ccu大小，serverless类型必传
+        r"""<p>Ccu大小，serverless类型必传</p>
         :rtype: float
         """
         return self._Ccu
@@ -34789,7 +34888,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def StorageLimit(self):
-        r"""存储大小，PREPAID存储类型必传
+        r"""<p>存储大小，PREPAID存储类型必传</p>
         :rtype: int
         """
         return self._StorageLimit
@@ -34800,7 +34899,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""购买时长，PREPAID购买类型必传
+        r"""<p>购买时长，PREPAID购买类型必传</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -34811,7 +34910,7 @@ class InquirePriceCreateRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""时长单位，可选值为：m,d。PREPAID购买类型必传
+        r"""<p>时长单位，可选值为：m,d。PREPAID购买类型必传</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -34819,6 +34918,28 @@ class InquirePriceCreateRequest(AbstractModel):
     @TimeUnit.setter
     def TimeUnit(self, TimeUnit):
         self._TimeUnit = TimeUnit
+
+    @property
+    def StorageVersion(self):
+        r"""<p>存储架构类型。 枚举值：1.0/2.0 默认值：1.0</p>
+        :rtype: str
+        """
+        return self._StorageVersion
+
+    @StorageVersion.setter
+    def StorageVersion(self, StorageVersion):
+        self._StorageVersion = StorageVersion
+
+    @property
+    def IsMultiAz(self):
+        r"""<p>存储是否跨AZ，2.0存储架构下有效</p>
+        :rtype: bool
+        """
+        return self._IsMultiAz
+
+    @IsMultiAz.setter
+    def IsMultiAz(self, IsMultiAz):
+        self._IsMultiAz = IsMultiAz
 
 
     def _deserialize(self, params):
@@ -34833,6 +34954,8 @@ class InquirePriceCreateRequest(AbstractModel):
         self._StorageLimit = params.get("StorageLimit")
         self._TimeSpan = params.get("TimeSpan")
         self._TimeUnit = params.get("TimeUnit")
+        self._StorageVersion = params.get("StorageVersion")
+        self._IsMultiAz = params.get("IsMultiAz")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34850,9 +34973,9 @@ class InquirePriceCreateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstancePrice: 实例价格
+        :param _InstancePrice: <p>实例价格</p>
         :type InstancePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
-        :param _StoragePrice: 存储价格
+        :param _StoragePrice: <p>存储价格</p>
         :type StoragePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -34863,7 +34986,7 @@ class InquirePriceCreateResponse(AbstractModel):
 
     @property
     def InstancePrice(self):
-        r"""实例价格
+        r"""<p>实例价格</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         """
         return self._InstancePrice
@@ -34874,7 +34997,7 @@ class InquirePriceCreateResponse(AbstractModel):
 
     @property
     def StoragePrice(self):
-        r"""存储价格
+        r"""<p>存储价格</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
         """
         return self._StoragePrice
@@ -40170,23 +40293,23 @@ class LogicBackupConfigInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogicBackupEnable: 是否开启自动逻辑备份
+        :param _LogicBackupEnable: <p>是否开启自动逻辑备份</p>
         :type LogicBackupEnable: str
-        :param _LogicBackupTimeBeg: 自动逻辑备份开始时间
+        :param _LogicBackupTimeBeg: <p>自动逻辑备份开始时间</p>
         :type LogicBackupTimeBeg: int
-        :param _LogicBackupTimeEnd: 自动逻辑备份结束时间
+        :param _LogicBackupTimeEnd: <p>自动逻辑备份结束时间</p>
         :type LogicBackupTimeEnd: int
-        :param _LogicReserveDuration: 自动逻辑备份保留时间
-单位：秒
+        :param _LogicReserveDuration: <p>自动逻辑备份保留时间<br>单位：秒</p>
         :type LogicReserveDuration: int
-        :param _LogicCrossRegionsEnable: 是否开启跨地域逻辑备份
-可选值：ON/OFF
+        :param _LogicCrossRegionsEnable: <p>是否开启跨地域逻辑备份<br>可选值：ON/OFF</p>
         :type LogicCrossRegionsEnable: str
-        :param _LogicCrossRegions: 逻辑备份所跨地域
+        :param _LogicCrossRegions: <p>逻辑备份所跨地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogicCrossRegions: list of str
-        :param _AutoCopyVaults: 备份投递关系
+        :param _AutoCopyVaults: <p>备份投递关系</p>
         :type AutoCopyVaults: list of CreateBackupVaultItem
+        :param _LogicCrossRegionSaveDays: <p>天</p><p>单位：跨地域逻辑备份保留时间</p>
+        :type LogicCrossRegionSaveDays: int
         """
         self._LogicBackupEnable = None
         self._LogicBackupTimeBeg = None
@@ -40195,10 +40318,11 @@ class LogicBackupConfigInfo(AbstractModel):
         self._LogicCrossRegionsEnable = None
         self._LogicCrossRegions = None
         self._AutoCopyVaults = None
+        self._LogicCrossRegionSaveDays = None
 
     @property
     def LogicBackupEnable(self):
-        r"""是否开启自动逻辑备份
+        r"""<p>是否开启自动逻辑备份</p>
         :rtype: str
         """
         return self._LogicBackupEnable
@@ -40209,7 +40333,7 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def LogicBackupTimeBeg(self):
-        r"""自动逻辑备份开始时间
+        r"""<p>自动逻辑备份开始时间</p>
         :rtype: int
         """
         return self._LogicBackupTimeBeg
@@ -40220,7 +40344,7 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def LogicBackupTimeEnd(self):
-        r"""自动逻辑备份结束时间
+        r"""<p>自动逻辑备份结束时间</p>
         :rtype: int
         """
         return self._LogicBackupTimeEnd
@@ -40231,8 +40355,7 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def LogicReserveDuration(self):
-        r"""自动逻辑备份保留时间
-单位：秒
+        r"""<p>自动逻辑备份保留时间<br>单位：秒</p>
         :rtype: int
         """
         return self._LogicReserveDuration
@@ -40243,8 +40366,7 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def LogicCrossRegionsEnable(self):
-        r"""是否开启跨地域逻辑备份
-可选值：ON/OFF
+        r"""<p>是否开启跨地域逻辑备份<br>可选值：ON/OFF</p>
         :rtype: str
         """
         return self._LogicCrossRegionsEnable
@@ -40255,7 +40377,7 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def LogicCrossRegions(self):
-        r"""逻辑备份所跨地域
+        r"""<p>逻辑备份所跨地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -40267,7 +40389,7 @@ class LogicBackupConfigInfo(AbstractModel):
 
     @property
     def AutoCopyVaults(self):
-        r"""备份投递关系
+        r"""<p>备份投递关系</p>
         :rtype: list of CreateBackupVaultItem
         """
         return self._AutoCopyVaults
@@ -40275,6 +40397,17 @@ class LogicBackupConfigInfo(AbstractModel):
     @AutoCopyVaults.setter
     def AutoCopyVaults(self, AutoCopyVaults):
         self._AutoCopyVaults = AutoCopyVaults
+
+    @property
+    def LogicCrossRegionSaveDays(self):
+        r"""<p>天</p><p>单位：跨地域逻辑备份保留时间</p>
+        :rtype: int
+        """
+        return self._LogicCrossRegionSaveDays
+
+    @LogicCrossRegionSaveDays.setter
+    def LogicCrossRegionSaveDays(self, LogicCrossRegionSaveDays):
+        self._LogicCrossRegionSaveDays = LogicCrossRegionSaveDays
 
 
     def _deserialize(self, params):
@@ -40290,6 +40423,7 @@ class LogicBackupConfigInfo(AbstractModel):
                 obj = CreateBackupVaultItem()
                 obj._deserialize(item)
                 self._AutoCopyVaults.append(obj)
+        self._LogicCrossRegionSaveDays = params.get("LogicCrossRegionSaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42027,17 +42161,20 @@ class ModifyBinlogSaveDaysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _BinlogSaveDays: Binlog保留天数
+        :param _BinlogSaveDays: <p>Binlog保留天数</p>
         :type BinlogSaveDays: int
+        :param _BinlogCrossRegionSaveDays: <p>跨地域备份保留时间</p><p>单位：天</p>
+        :type BinlogCrossRegionSaveDays: int
         """
         self._ClusterId = None
         self._BinlogSaveDays = None
+        self._BinlogCrossRegionSaveDays = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -42048,7 +42185,7 @@ class ModifyBinlogSaveDaysRequest(AbstractModel):
 
     @property
     def BinlogSaveDays(self):
-        r"""Binlog保留天数
+        r"""<p>Binlog保留天数</p>
         :rtype: int
         """
         return self._BinlogSaveDays
@@ -42057,10 +42194,22 @@ class ModifyBinlogSaveDaysRequest(AbstractModel):
     def BinlogSaveDays(self, BinlogSaveDays):
         self._BinlogSaveDays = BinlogSaveDays
 
+    @property
+    def BinlogCrossRegionSaveDays(self):
+        r"""<p>跨地域备份保留时间</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._BinlogCrossRegionSaveDays
+
+    @BinlogCrossRegionSaveDays.setter
+    def BinlogCrossRegionSaveDays(self, BinlogCrossRegionSaveDays):
+        self._BinlogCrossRegionSaveDays = BinlogCrossRegionSaveDays
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._BinlogSaveDays = params.get("BinlogSaveDays")
+        self._BinlogCrossRegionSaveDays = params.get("BinlogCrossRegionSaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46396,20 +46545,23 @@ class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _CrossRegionsEnable: 是否开启跨地域快照备份ON/OFF
+        :param _CrossRegionsEnable: <p>是否开启跨地域快照备份ON/OFF</p>
         :type CrossRegionsEnable: str
-        :param _CrossRegions: 快照备份所跨地域
+        :param _CrossRegions: <p>快照备份所跨地域</p>
         :type CrossRegions: list of str
+        :param _CrossRegionSaveDays: <p>跨地域备份保留时间</p><p>单位：天</p>
+        :type CrossRegionSaveDays: int
         """
         self._ClusterId = None
         self._CrossRegionsEnable = None
         self._CrossRegions = None
+        self._CrossRegionSaveDays = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -46420,7 +46572,7 @@ class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
 
     @property
     def CrossRegionsEnable(self):
-        r"""是否开启跨地域快照备份ON/OFF
+        r"""<p>是否开启跨地域快照备份ON/OFF</p>
         :rtype: str
         """
         return self._CrossRegionsEnable
@@ -46431,7 +46583,7 @@ class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
 
     @property
     def CrossRegions(self):
-        r"""快照备份所跨地域
+        r"""<p>快照备份所跨地域</p>
         :rtype: list of str
         """
         return self._CrossRegions
@@ -46440,11 +46592,23 @@ class ModifySnapBackupCrossRegionConfigRequest(AbstractModel):
     def CrossRegions(self, CrossRegions):
         self._CrossRegions = CrossRegions
 
+    @property
+    def CrossRegionSaveDays(self):
+        r"""<p>跨地域备份保留时间</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._CrossRegionSaveDays
+
+    @CrossRegionSaveDays.setter
+    def CrossRegionSaveDays(self, CrossRegionSaveDays):
+        self._CrossRegionSaveDays = CrossRegionSaveDays
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._CrossRegionsEnable = params.get("CrossRegionsEnable")
         self._CrossRegions = params.get("CrossRegions")
+        self._CrossRegionSaveDays = params.get("CrossRegionSaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46462,7 +46626,7 @@ class ModifySnapBackupCrossRegionConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -46472,7 +46636,7 @@ class ModifySnapBackupCrossRegionConfigResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: int
         """
         return self._TaskId

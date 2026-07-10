@@ -592,6 +592,24 @@ class AsrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def VoicePrintGroupList(
+            self,
+            request: models.VoicePrintGroupListRequest,
+            opts: Dict = None,
+    ) -> models.VoicePrintGroupListResponse:
+        """
+        返回注册的说话人分组信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "VoicePrintGroupList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.VoicePrintGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def VoicePrintGroupVerify(
             self,
             request: models.VoicePrintGroupVerifyRequest,

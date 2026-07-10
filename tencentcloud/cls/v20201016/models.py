@@ -10697,6 +10697,12 @@ class CreateDlcDeliverRequest(AbstractModel):
         :type EndTime: int
         :param _HasServicesLog: <p>是否开启投递服务日志。1关闭，2开启。默认开启</p>
         :type HasServicesLog: int
+        :param _AutoCreateField: <p>自动创建dlc字段</p><p>默认值：false</p><p>当您的日志中有新增字段时，系统自动将其投递至DLC</p>
+        :type AutoCreateField: bool
+        :param _DlcFailHandle: <p>将投递失败的日志存储至DLC表</p>
+        :type DlcFailHandle: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        :param _DSLFilter: <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+        :type DSLFilter: str
         """
         self._TopicId = None
         self._Name = None
@@ -10707,6 +10713,9 @@ class CreateDlcDeliverRequest(AbstractModel):
         self._Interval = None
         self._EndTime = None
         self._HasServicesLog = None
+        self._AutoCreateField = None
+        self._DlcFailHandle = None
+        self._DSLFilter = None
 
     @property
     def TopicId(self):
@@ -10807,6 +10816,39 @@ class CreateDlcDeliverRequest(AbstractModel):
     def HasServicesLog(self, HasServicesLog):
         self._HasServicesLog = HasServicesLog
 
+    @property
+    def AutoCreateField(self):
+        r"""<p>自动创建dlc字段</p><p>默认值：false</p><p>当您的日志中有新增字段时，系统自动将其投递至DLC</p>
+        :rtype: bool
+        """
+        return self._AutoCreateField
+
+    @AutoCreateField.setter
+    def AutoCreateField(self, AutoCreateField):
+        self._AutoCreateField = AutoCreateField
+
+    @property
+    def DlcFailHandle(self):
+        r"""<p>将投递失败的日志存储至DLC表</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        """
+        return self._DlcFailHandle
+
+    @DlcFailHandle.setter
+    def DlcFailHandle(self, DlcFailHandle):
+        self._DlcFailHandle = DlcFailHandle
+
+    @property
+    def DSLFilter(self):
+        r"""<p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -10820,6 +10862,11 @@ class CreateDlcDeliverRequest(AbstractModel):
         self._Interval = params.get("Interval")
         self._EndTime = params.get("EndTime")
         self._HasServicesLog = params.get("HasServicesLog")
+        self._AutoCreateField = params.get("AutoCreateField")
+        if params.get("DlcFailHandle") is not None:
+            self._DlcFailHandle = DlcFailHandle()
+            self._DlcFailHandle._deserialize(params.get("DlcFailHandle"))
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39333,6 +39380,12 @@ class ModifyDlcDeliverRequest(AbstractModel):
         :type HasServicesLog: int
         :param _Status: <p>任务状态。</p><p>枚举值：</p><ul><li>1： 运行</li><li>2： 停止</li></ul>
         :type Status: int
+        :param _AutoCreateField: <p>自动创建dlc字段</p><p>默认值：false</p><p>当您的日志中有新增字段时，系统自动将其投递至DLC</p>
+        :type AutoCreateField: bool
+        :param _DlcFailHandle: <p>将投递失败的日志存储至DLC表</p>
+        :type DlcFailHandle: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        :param _DSLFilter: <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+        :type DSLFilter: str
         """
         self._TopicId = None
         self._TaskId = None
@@ -39345,6 +39398,9 @@ class ModifyDlcDeliverRequest(AbstractModel):
         self._DlcInfo = None
         self._HasServicesLog = None
         self._Status = None
+        self._AutoCreateField = None
+        self._DlcFailHandle = None
+        self._DSLFilter = None
 
     @property
     def TopicId(self):
@@ -39467,6 +39523,39 @@ class ModifyDlcDeliverRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def AutoCreateField(self):
+        r"""<p>自动创建dlc字段</p><p>默认值：false</p><p>当您的日志中有新增字段时，系统自动将其投递至DLC</p>
+        :rtype: bool
+        """
+        return self._AutoCreateField
+
+    @AutoCreateField.setter
+    def AutoCreateField(self, AutoCreateField):
+        self._AutoCreateField = AutoCreateField
+
+    @property
+    def DlcFailHandle(self):
+        r"""<p>将投递失败的日志存储至DLC表</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DlcFailHandle`
+        """
+        return self._DlcFailHandle
+
+    @DlcFailHandle.setter
+    def DlcFailHandle(self, DlcFailHandle):
+        self._DlcFailHandle = DlcFailHandle
+
+    @property
+    def DSLFilter(self):
+        r"""<p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -39482,6 +39571,11 @@ class ModifyDlcDeliverRequest(AbstractModel):
             self._DlcInfo._deserialize(params.get("DlcInfo"))
         self._HasServicesLog = params.get("HasServicesLog")
         self._Status = params.get("Status")
+        self._AutoCreateField = params.get("AutoCreateField")
+        if params.get("DlcFailHandle") is not None:
+            self._DlcFailHandle = DlcFailHandle()
+            self._DlcFailHandle._deserialize(params.get("DlcFailHandle"))
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

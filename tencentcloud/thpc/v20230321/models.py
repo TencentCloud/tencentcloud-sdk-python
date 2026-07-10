@@ -8395,38 +8395,43 @@ class SpaceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpaceId: 工作空间ID
+        :param _SpaceId: <p>工作空间ID</p>
         :type SpaceId: str
-        :param _SpaceFamily: 工作空间类型
+        :param _SpaceClass: <p>工作空间类别</p>
+        :type SpaceClass: str
+        :param _SpaceFamily: <p>工作空间类型</p>
         :type SpaceFamily: str
-        :param _SpaceType: 工作空间规格
+        :param _SpaceType: <p>工作空间规格</p>
         :type SpaceType: str
-        :param _SpaceName: 工作空间名称
+        :param _SpaceName: <p>工作空间名称</p>
         :type SpaceName: str
-        :param _SpaceState: 工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li>
+        :param _SpaceState: <p>工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li></p>
         :type SpaceState: str
-        :param _SpaceChargeType: 工作空间计费模式
+        :param _SpaceChargeType: <p>工作空间计费模式</p>
         :type SpaceChargeType: str
-        :param _ResourceId: 工作空间对应资源ID
+        :param _ResourceId: <p>工作空间对应资源ID</p>
         :type ResourceId: str
-        :param _RenewFlag: 自动续费标识
+        :param _RenewFlag: <p>自动续费标识</p>
         :type RenewFlag: str
-        :param _Tags: 工作空间关联的工作列表
+        :param _Tags: <p>工作空间关联的工作列表</p>
         :type Tags: list of Tag
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _ExpiredTime: 到期时间
+        :param _ExpiredTime: <p>到期时间</p>
         :type ExpiredTime: str
-        :param _Placement: 工作空间所在位置
+        :param _Placement: <p>工作空间所在位置</p>
         :type Placement: :class:`tencentcloud.thpc.v20230321.models.Placement`
-        :param _LatestOperation: 工作空间的最新操作
+        :param _LatestOperation: <p>工作空间的最新操作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperation: str
-        :param _LatestOperationState: 工作空间的最新操作状态
+        :param _LatestOperationState: <p>工作空间的最新操作状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationState: str
+        :param _PrivateIpAddresses: <p>实例的内网IP</p>
+        :type PrivateIpAddresses: list of str
         """
         self._SpaceId = None
+        self._SpaceClass = None
         self._SpaceFamily = None
         self._SpaceType = None
         self._SpaceName = None
@@ -8440,10 +8445,11 @@ class SpaceInfo(AbstractModel):
         self._Placement = None
         self._LatestOperation = None
         self._LatestOperationState = None
+        self._PrivateIpAddresses = None
 
     @property
     def SpaceId(self):
-        r"""工作空间ID
+        r"""<p>工作空间ID</p>
         :rtype: str
         """
         return self._SpaceId
@@ -8453,8 +8459,19 @@ class SpaceInfo(AbstractModel):
         self._SpaceId = SpaceId
 
     @property
+    def SpaceClass(self):
+        r"""<p>工作空间类别</p>
+        :rtype: str
+        """
+        return self._SpaceClass
+
+    @SpaceClass.setter
+    def SpaceClass(self, SpaceClass):
+        self._SpaceClass = SpaceClass
+
+    @property
     def SpaceFamily(self):
-        r"""工作空间类型
+        r"""<p>工作空间类型</p>
         :rtype: str
         """
         return self._SpaceFamily
@@ -8465,7 +8482,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceType(self):
-        r"""工作空间规格
+        r"""<p>工作空间规格</p>
         :rtype: str
         """
         return self._SpaceType
@@ -8476,7 +8493,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceName(self):
-        r"""工作空间名称
+        r"""<p>工作空间名称</p>
         :rtype: str
         """
         return self._SpaceName
@@ -8487,7 +8504,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceState(self):
-        r"""工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li>
+        r"""<p>工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li></p>
         :rtype: str
         """
         return self._SpaceState
@@ -8498,7 +8515,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def SpaceChargeType(self):
-        r"""工作空间计费模式
+        r"""<p>工作空间计费模式</p>
         :rtype: str
         """
         return self._SpaceChargeType
@@ -8509,7 +8526,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""工作空间对应资源ID
+        r"""<p>工作空间对应资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -8520,7 +8537,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识
+        r"""<p>自动续费标识</p>
         :rtype: str
         """
         return self._RenewFlag
@@ -8531,7 +8548,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""工作空间关联的工作列表
+        r"""<p>工作空间关联的工作列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -8542,7 +8559,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -8553,7 +8570,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""到期时间
+        r"""<p>到期时间</p>
         :rtype: str
         """
         return self._ExpiredTime
@@ -8564,7 +8581,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def Placement(self):
-        r"""工作空间所在位置
+        r"""<p>工作空间所在位置</p>
         :rtype: :class:`tencentcloud.thpc.v20230321.models.Placement`
         """
         return self._Placement
@@ -8575,7 +8592,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def LatestOperation(self):
-        r"""工作空间的最新操作
+        r"""<p>工作空间的最新操作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8587,7 +8604,7 @@ class SpaceInfo(AbstractModel):
 
     @property
     def LatestOperationState(self):
-        r"""工作空间的最新操作状态
+        r"""<p>工作空间的最新操作状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8597,9 +8614,21 @@ class SpaceInfo(AbstractModel):
     def LatestOperationState(self, LatestOperationState):
         self._LatestOperationState = LatestOperationState
 
+    @property
+    def PrivateIpAddresses(self):
+        r"""<p>实例的内网IP</p>
+        :rtype: list of str
+        """
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
+        self._SpaceClass = params.get("SpaceClass")
         self._SpaceFamily = params.get("SpaceFamily")
         self._SpaceType = params.get("SpaceType")
         self._SpaceName = params.get("SpaceName")
@@ -8620,6 +8649,7 @@ class SpaceInfo(AbstractModel):
             self._Placement._deserialize(params.get("Placement"))
         self._LatestOperation = params.get("LatestOperation")
         self._LatestOperationState = params.get("LatestOperationState")
+        self._PrivateIpAddresses = params.get("PrivateIpAddresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

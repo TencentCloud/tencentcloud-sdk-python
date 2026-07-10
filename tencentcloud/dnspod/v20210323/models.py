@@ -3708,14 +3708,14 @@ class CreateSubdomainValidateTXTValueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainZone: 要添加的子域名 Zone 域。
+        :param _DomainZone: <p>要添加的子域名 Zone 域。</p>
         :type DomainZone: str
         """
         self._DomainZone = None
 
     @property
     def DomainZone(self):
-        r"""要添加的子域名 Zone 域。
+        r"""<p>要添加的子域名 Zone 域。</p>
         :rtype: str
         """
         return self._DomainZone
@@ -3744,16 +3744,18 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 需要添加 TXT 记录的主域名。
+        :param _Domain: <p>需要添加 TXT 记录的主域名。</p>
         :type Domain: str
-        :param _Subdomain: 需要添加 TXT 记录的主机记录。
+        :param _Subdomain: <p>需要添加 TXT 记录的主机记录。</p>
         :type Subdomain: str
-        :param _RecordType: 需要添加记录类型。
+        :param _RecordType: <p>需要添加记录类型。</p>
         :type RecordType: str
-        :param _Value: 需要添加 TXT 记录的记录值。
+        :param _Value: <p>需要添加 TXT 记录的记录值。</p>
         :type Value: str
-        :param _ParentDomain: 需要添加 TXT 记录的上级域名(可选，主域名和上级域名任选一个添加即可)。
+        :param _ParentDomain: <p>需要添加 TXT 记录的上级域名(可选，主域名和上级域名任选一个添加即可)。</p>
         :type ParentDomain: str
+        :param _SubDomain: <p>需要添加 TXT 记录的主机记录。</p><p>新增规范参数，建议优先使用SubDomain参数</p>
+        :type SubDomain: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3762,11 +3764,12 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
         self._RecordType = None
         self._Value = None
         self._ParentDomain = None
+        self._SubDomain = None
         self._RequestId = None
 
     @property
     def Domain(self):
-        r"""需要添加 TXT 记录的主域名。
+        r"""<p>需要添加 TXT 记录的主域名。</p>
         :rtype: str
         """
         return self._Domain
@@ -3777,18 +3780,22 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
 
     @property
     def Subdomain(self):
-        r"""需要添加 TXT 记录的主机记录。
+        warnings.warn("parameter `Subdomain` is deprecated", DeprecationWarning) 
+
+        r"""<p>需要添加 TXT 记录的主机记录。</p>
         :rtype: str
         """
         return self._Subdomain
 
     @Subdomain.setter
     def Subdomain(self, Subdomain):
+        warnings.warn("parameter `Subdomain` is deprecated", DeprecationWarning) 
+
         self._Subdomain = Subdomain
 
     @property
     def RecordType(self):
-        r"""需要添加记录类型。
+        r"""<p>需要添加记录类型。</p>
         :rtype: str
         """
         return self._RecordType
@@ -3799,7 +3806,7 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
 
     @property
     def Value(self):
-        r"""需要添加 TXT 记录的记录值。
+        r"""<p>需要添加 TXT 记录的记录值。</p>
         :rtype: str
         """
         return self._Value
@@ -3810,7 +3817,7 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
 
     @property
     def ParentDomain(self):
-        r"""需要添加 TXT 记录的上级域名(可选，主域名和上级域名任选一个添加即可)。
+        r"""<p>需要添加 TXT 记录的上级域名(可选，主域名和上级域名任选一个添加即可)。</p>
         :rtype: str
         """
         return self._ParentDomain
@@ -3818,6 +3825,17 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
     @ParentDomain.setter
     def ParentDomain(self, ParentDomain):
         self._ParentDomain = ParentDomain
+
+    @property
+    def SubDomain(self):
+        r"""<p>需要添加 TXT 记录的主机记录。</p><p>新增规范参数，建议优先使用SubDomain参数</p>
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
 
     @property
     def RequestId(self):
@@ -3837,6 +3855,7 @@ class CreateSubdomainValidateTXTValueResponse(AbstractModel):
         self._RecordType = params.get("RecordType")
         self._Value = params.get("Value")
         self._ParentDomain = params.get("ParentDomain")
+        self._SubDomain = params.get("SubDomain")
         self._RequestId = params.get("RequestId")
 
 
@@ -5781,26 +5800,29 @@ class DescribeDomainAnalyticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 要查询解析量的域名
+        :param _Domain: <p>要查询解析量的域名</p>
         :type Domain: str
-        :param _StartDate: 查询的开始时间，格式：YYYY-MM-DD
+        :param _StartDate: <p>查询的开始时间，格式：YYYY-MM-DD</p>
         :type StartDate: str
-        :param _EndDate: 查询的结束时间，格式：YYYY-MM-DD
+        :param _EndDate: <p>查询的结束时间，格式：YYYY-MM-DD</p>
         :type EndDate: str
-        :param _DnsFormat: DATE:按天维度统计 HOUR:按小时维度统计
+        :param _DnsFormat: <p>DATE:按天维度统计 HOUR:按小时维度统计</p>
         :type DnsFormat: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。</p>
         :type DomainId: int
+        :param _DNSFormat: <p>解析量数据格式</p><p>枚举值：</p><ul><li>DATE： 按天维度统计</li><li>HOUR： 按小时维度统计</li></ul><p>新增规范参数，同时传递DNSFormat和DnsFormat参数时，后端优先使用DNSFormat参数</p>
+        :type DNSFormat: str
         """
         self._Domain = None
         self._StartDate = None
         self._EndDate = None
         self._DnsFormat = None
         self._DomainId = None
+        self._DNSFormat = None
 
     @property
     def Domain(self):
-        r"""要查询解析量的域名
+        r"""<p>要查询解析量的域名</p>
         :rtype: str
         """
         return self._Domain
@@ -5811,7 +5833,7 @@ class DescribeDomainAnalyticsRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        r"""查询的开始时间，格式：YYYY-MM-DD
+        r"""<p>查询的开始时间，格式：YYYY-MM-DD</p>
         :rtype: str
         """
         return self._StartDate
@@ -5822,7 +5844,7 @@ class DescribeDomainAnalyticsRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        r"""查询的结束时间，格式：YYYY-MM-DD
+        r"""<p>查询的结束时间，格式：YYYY-MM-DD</p>
         :rtype: str
         """
         return self._EndDate
@@ -5833,18 +5855,22 @@ class DescribeDomainAnalyticsRequest(AbstractModel):
 
     @property
     def DnsFormat(self):
-        r"""DATE:按天维度统计 HOUR:按小时维度统计
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
+        r"""<p>DATE:按天维度统计 HOUR:按小时维度统计</p>
         :rtype: str
         """
         return self._DnsFormat
 
     @DnsFormat.setter
     def DnsFormat(self, DnsFormat):
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
         self._DnsFormat = DnsFormat
 
     @property
     def DomainId(self):
-        r"""域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        r"""<p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。</p>
         :rtype: int
         """
         return self._DomainId
@@ -5853,6 +5879,17 @@ class DescribeDomainAnalyticsRequest(AbstractModel):
     def DomainId(self, DomainId):
         self._DomainId = DomainId
 
+    @property
+    def DNSFormat(self):
+        r"""<p>解析量数据格式</p><p>枚举值：</p><ul><li>DATE： 按天维度统计</li><li>HOUR： 按小时维度统计</li></ul><p>新增规范参数，同时传递DNSFormat和DnsFormat参数时，后端优先使用DNSFormat参数</p>
+        :rtype: str
+        """
+        return self._DNSFormat
+
+    @DNSFormat.setter
+    def DNSFormat(self, DNSFormat):
+        self._DNSFormat = DNSFormat
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -5860,6 +5897,7 @@ class DescribeDomainAnalyticsRequest(AbstractModel):
         self._EndDate = params.get("EndDate")
         self._DnsFormat = params.get("DnsFormat")
         self._DomainId = params.get("DomainId")
+        self._DNSFormat = params.get("DNSFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5877,11 +5915,11 @@ class DescribeDomainAnalyticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 当前统计维度解析量小计
+        :param _Data: <p>当前统计维度解析量小计</p>
         :type Data: list of DomainAnalyticsDetail
-        :param _Info: 域名解析量统计查询信息
+        :param _Info: <p>域名解析量统计查询信息</p>
         :type Info: :class:`tencentcloud.dnspod.v20210323.models.DomainAnalyticsInfo`
-        :param _AliasData: 域名别名解析量统计信息
+        :param _AliasData: <p>域名别名解析量统计信息</p>
         :type AliasData: list of DomainAliasAnalyticsItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5893,7 +5931,7 @@ class DescribeDomainAnalyticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""当前统计维度解析量小计
+        r"""<p>当前统计维度解析量小计</p>
         :rtype: list of DomainAnalyticsDetail
         """
         return self._Data
@@ -5904,7 +5942,7 @@ class DescribeDomainAnalyticsResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""域名解析量统计查询信息
+        r"""<p>域名解析量统计查询信息</p>
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.DomainAnalyticsInfo`
         """
         return self._Info
@@ -5915,7 +5953,7 @@ class DescribeDomainAnalyticsResponse(AbstractModel):
 
     @property
     def AliasData(self):
-        r"""域名别名解析量统计信息
+        r"""<p>域名别名解析量统计信息</p>
         :rtype: list of DomainAliasAnalyticsItem
         """
         return self._AliasData
@@ -9223,8 +9261,10 @@ class DescribeRecordListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: <p>限制数量，当前Limit最大支持3000。默认值为100。</p>
         :type Limit: int
-        :param _ErrorOnEmpty: <p>查询不到数据时是否报错</p>枚举值：<ul><li> yes： 报错</li><li> no： 不报错，返回空列表</li></ul>默认值：yes
+        :param _ErrorOnEmpty: <p>查询不到数据时是否报错</p><p>枚举值：</p><ul><li>yes： 报错</li><li>no： 不报错，返回空列表</li></ul><p>默认值：yes</p>
         :type ErrorOnEmpty: str
+        :param _SubDomain: <p>解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录</p><p>新增规范参数，同时传递SubDomain和Subdomain参数时，后端优先使用SubDomain参数</p>
+        :type SubDomain: str
         """
         self._Domain = None
         self._DomainId = None
@@ -9239,6 +9279,7 @@ class DescribeRecordListRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._ErrorOnEmpty = None
+        self._SubDomain = None
 
     @property
     def Domain(self):
@@ -9264,6 +9305,8 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Subdomain(self):
+        warnings.warn("parameter `Subdomain` is deprecated", DeprecationWarning) 
+
         r"""<p>解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录</p>
         :rtype: str
         """
@@ -9271,6 +9314,8 @@ class DescribeRecordListRequest(AbstractModel):
 
     @Subdomain.setter
     def Subdomain(self, Subdomain):
+        warnings.warn("parameter `Subdomain` is deprecated", DeprecationWarning) 
+
         self._Subdomain = Subdomain
 
     @property
@@ -9374,7 +9419,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def ErrorOnEmpty(self):
-        r"""<p>查询不到数据时是否报错</p>枚举值：<ul><li> yes： 报错</li><li> no： 不报错，返回空列表</li></ul>默认值：yes
+        r"""<p>查询不到数据时是否报错</p><p>枚举值：</p><ul><li>yes： 报错</li><li>no： 不报错，返回空列表</li></ul><p>默认值：yes</p>
         :rtype: str
         """
         return self._ErrorOnEmpty
@@ -9382,6 +9427,17 @@ class DescribeRecordListRequest(AbstractModel):
     @ErrorOnEmpty.setter
     def ErrorOnEmpty(self, ErrorOnEmpty):
         self._ErrorOnEmpty = ErrorOnEmpty
+
+    @property
+    def SubDomain(self):
+        r"""<p>解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录</p><p>新增规范参数，同时传递SubDomain和Subdomain参数时，后端优先使用SubDomain参数</p>
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
 
 
     def _deserialize(self, params):
@@ -9398,6 +9454,7 @@ class DescribeRecordListRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._ErrorOnEmpty = params.get("ErrorOnEmpty")
+        self._SubDomain = params.get("SubDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9937,26 +9994,29 @@ class DescribeResolveCountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 要查询解析量的域名
+        :param _Domain: <p>要查询解析量的域名</p>
         :type Domain: str
-        :param _StartDate: 查询的开始时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+        :param _StartDate: <p>查询的开始时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。</p>
         :type StartDate: str
-        :param _EndDate: 查询的结束时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+        :param _EndDate: <p>查询的结束时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。</p>
         :type EndDate: str
-        :param _DnsFormat: 数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+        :param _DnsFormat: <p>数据统计格式</p><p>枚举值：</p><ul><li>minute： 按十分钟维度统计数据</li><li>hour： 按小时维度统计数据</li><li>day： 按天维度统计数据</li></ul>
         :type DnsFormat: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :type DomainId: int
+        :param _DNSFormat: <p>数据统计格式</p><p>枚举值：</p><ul><li>minute： 按十分钟维度统计数据</li><li>hour： 按小时维度统计数据</li><li>day： 按天维度统计数据</li></ul><p>新增规范参数，同时传递DNSFormat和DnsFormat参数时，后端优先使用DNSFormat参数</p>
+        :type DNSFormat: str
         """
         self._Domain = None
         self._StartDate = None
         self._EndDate = None
         self._DnsFormat = None
         self._DomainId = None
+        self._DNSFormat = None
 
     @property
     def Domain(self):
-        r"""要查询解析量的域名
+        r"""<p>要查询解析量的域名</p>
         :rtype: str
         """
         return self._Domain
@@ -9967,7 +10027,7 @@ class DescribeResolveCountRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        r"""查询的开始时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+        r"""<p>查询的开始时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。</p>
         :rtype: str
         """
         return self._StartDate
@@ -9978,7 +10038,7 @@ class DescribeResolveCountRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        r"""查询的结束时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+        r"""<p>查询的结束时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。</p>
         :rtype: str
         """
         return self._EndDate
@@ -9989,18 +10049,22 @@ class DescribeResolveCountRequest(AbstractModel):
 
     @property
     def DnsFormat(self):
-        r"""数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
+        r"""<p>数据统计格式</p><p>枚举值：</p><ul><li>minute： 按十分钟维度统计数据</li><li>hour： 按小时维度统计数据</li><li>day： 按天维度统计数据</li></ul>
         :rtype: str
         """
         return self._DnsFormat
 
     @DnsFormat.setter
     def DnsFormat(self, DnsFormat):
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
         self._DnsFormat = DnsFormat
 
     @property
     def DomainId(self):
-        r"""域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        r"""<p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :rtype: int
         """
         return self._DomainId
@@ -10009,6 +10073,17 @@ class DescribeResolveCountRequest(AbstractModel):
     def DomainId(self, DomainId):
         self._DomainId = DomainId
 
+    @property
+    def DNSFormat(self):
+        r"""<p>数据统计格式</p><p>枚举值：</p><ul><li>minute： 按十分钟维度统计数据</li><li>hour： 按小时维度统计数据</li><li>day： 按天维度统计数据</li></ul><p>新增规范参数，同时传递DNSFormat和DnsFormat参数时，后端优先使用DNSFormat参数</p>
+        :rtype: str
+        """
+        return self._DNSFormat
+
+    @DNSFormat.setter
+    def DNSFormat(self, DNSFormat):
+        self._DNSFormat = DNSFormat
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -10016,6 +10091,7 @@ class DescribeResolveCountRequest(AbstractModel):
         self._EndDate = params.get("EndDate")
         self._DnsFormat = params.get("DnsFormat")
         self._DomainId = params.get("DomainId")
+        self._DNSFormat = params.get("DNSFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10033,11 +10109,11 @@ class DescribeResolveCountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 解析量明细
+        :param _Data: <p>解析量明细</p>
         :type Data: list of ResolveCountDataItem
-        :param _Info: 解析量统计信息
+        :param _Info: <p>解析量统计信息</p>
         :type Info: :class:`tencentcloud.dnspod.v20210323.models.ResolveCountInfo`
-        :param _AliasData: 别名解析量明细
+        :param _AliasData: <p>别名解析量明细</p>
         :type AliasData: list of ResolveCountAliasItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10049,7 +10125,7 @@ class DescribeResolveCountResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""解析量明细
+        r"""<p>解析量明细</p>
         :rtype: list of ResolveCountDataItem
         """
         return self._Data
@@ -10060,7 +10136,7 @@ class DescribeResolveCountResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""解析量统计信息
+        r"""<p>解析量统计信息</p>
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.ResolveCountInfo`
         """
         return self._Info
@@ -10071,7 +10147,7 @@ class DescribeResolveCountResponse(AbstractModel):
 
     @property
     def AliasData(self):
-        r"""别名解析量明细
+        r"""<p>别名解析量明细</p>
         :rtype: list of ResolveCountAliasItem
         """
         return self._AliasData
@@ -10773,29 +10849,35 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 要查询解析量的域名
+        :param _Domain: <p>要查询解析量的域名</p>
         :type Domain: str
-        :param _StartDate: 查询的开始时间，格式：YYYY-MM-DD
+        :param _StartDate: <p>查询的开始时间，格式：YYYY-MM-DD</p>
         :type StartDate: str
-        :param _EndDate: 查询的结束时间，格式：YYYY-MM-DD
+        :param _EndDate: <p>查询的结束时间，格式：YYYY-MM-DD</p>
         :type EndDate: str
-        :param _Subdomain: 要查询解析量的子域名
-        :type Subdomain: str
-        :param _DnsFormat: DATE:按天维度统计 HOUR:按小时维度统计
+        :param _DnsFormat: <p>DATE:按天维度统计 HOUR:按小时维度统计</p>
         :type DnsFormat: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :type DomainId: int
+        :param _Subdomain: <p>要查询解析量的子域名</p>
+        :type Subdomain: str
+        :param _SubDomain: <p>要查询解析量的子域名</p><p>新增规范参数，同时传递SubDomain和Subdomain参数时，后端优先使用SubDomain参数</p>
+        :type SubDomain: str
+        :param _DNSFormat: <p>解析量数据格式</p><p>枚举值：</p><ul><li>DATE： 按天维度统计</li><li>HOUR： 按小时维度统计</li></ul><p>新增规范参数，同时传递DNSFormat和DnsFormat参数时，后端优先使用DNSFormat参数</p>
+        :type DNSFormat: str
         """
         self._Domain = None
         self._StartDate = None
         self._EndDate = None
-        self._Subdomain = None
         self._DnsFormat = None
         self._DomainId = None
+        self._Subdomain = None
+        self._SubDomain = None
+        self._DNSFormat = None
 
     @property
     def Domain(self):
-        r"""要查询解析量的域名
+        r"""<p>要查询解析量的域名</p>
         :rtype: str
         """
         return self._Domain
@@ -10806,7 +10888,7 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
     @property
     def StartDate(self):
-        r"""查询的开始时间，格式：YYYY-MM-DD
+        r"""<p>查询的开始时间，格式：YYYY-MM-DD</p>
         :rtype: str
         """
         return self._StartDate
@@ -10817,7 +10899,7 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
 
     @property
     def EndDate(self):
-        r"""查询的结束时间，格式：YYYY-MM-DD
+        r"""<p>查询的结束时间，格式：YYYY-MM-DD</p>
         :rtype: str
         """
         return self._EndDate
@@ -10827,30 +10909,23 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
         self._EndDate = EndDate
 
     @property
-    def Subdomain(self):
-        r"""要查询解析量的子域名
-        :rtype: str
-        """
-        return self._Subdomain
-
-    @Subdomain.setter
-    def Subdomain(self, Subdomain):
-        self._Subdomain = Subdomain
-
-    @property
     def DnsFormat(self):
-        r"""DATE:按天维度统计 HOUR:按小时维度统计
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
+        r"""<p>DATE:按天维度统计 HOUR:按小时维度统计</p>
         :rtype: str
         """
         return self._DnsFormat
 
     @DnsFormat.setter
     def DnsFormat(self, DnsFormat):
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
         self._DnsFormat = DnsFormat
 
     @property
     def DomainId(self):
-        r"""域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        r"""<p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :rtype: int
         """
         return self._DomainId
@@ -10859,14 +10934,53 @@ class DescribeSubdomainAnalyticsRequest(AbstractModel):
     def DomainId(self, DomainId):
         self._DomainId = DomainId
 
+    @property
+    def Subdomain(self):
+        warnings.warn("parameter `Subdomain` is deprecated", DeprecationWarning) 
+
+        r"""<p>要查询解析量的子域名</p>
+        :rtype: str
+        """
+        return self._Subdomain
+
+    @Subdomain.setter
+    def Subdomain(self, Subdomain):
+        warnings.warn("parameter `Subdomain` is deprecated", DeprecationWarning) 
+
+        self._Subdomain = Subdomain
+
+    @property
+    def SubDomain(self):
+        r"""<p>要查询解析量的子域名</p><p>新增规范参数，同时传递SubDomain和Subdomain参数时，后端优先使用SubDomain参数</p>
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def DNSFormat(self):
+        r"""<p>解析量数据格式</p><p>枚举值：</p><ul><li>DATE： 按天维度统计</li><li>HOUR： 按小时维度统计</li></ul><p>新增规范参数，同时传递DNSFormat和DnsFormat参数时，后端优先使用DNSFormat参数</p>
+        :rtype: str
+        """
+        return self._DNSFormat
+
+    @DNSFormat.setter
+    def DNSFormat(self, DNSFormat):
+        self._DNSFormat = DNSFormat
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._StartDate = params.get("StartDate")
         self._EndDate = params.get("EndDate")
-        self._Subdomain = params.get("Subdomain")
         self._DnsFormat = params.get("DnsFormat")
         self._DomainId = params.get("DomainId")
+        self._Subdomain = params.get("Subdomain")
+        self._SubDomain = params.get("SubDomain")
+        self._DNSFormat = params.get("DNSFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10884,11 +10998,11 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 当前统计维度解析量小计
+        :param _Data: <p>当前统计维度解析量小计</p>
         :type Data: list of DomainAnalyticsDetail
-        :param _Info: 子域名解析量统计查询信息
+        :param _Info: <p>子域名解析量统计查询信息</p>
         :type Info: :class:`tencentcloud.dnspod.v20210323.models.SubdomainAnalyticsInfo`
-        :param _AliasData: 子域名别名解析量统计信息
+        :param _AliasData: <p>子域名别名解析量统计信息</p>
         :type AliasData: list of SubdomainAliasAnalyticsItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10900,7 +11014,7 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""当前统计维度解析量小计
+        r"""<p>当前统计维度解析量小计</p>
         :rtype: list of DomainAnalyticsDetail
         """
         return self._Data
@@ -10911,7 +11025,7 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""子域名解析量统计查询信息
+        r"""<p>子域名解析量统计查询信息</p>
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.SubdomainAnalyticsInfo`
         """
         return self._Info
@@ -10922,7 +11036,7 @@ class DescribeSubdomainAnalyticsResponse(AbstractModel):
 
     @property
     def AliasData(self):
-        r"""子域名别名解析量统计信息
+        r"""<p>子域名别名解析量统计信息</p>
         :rtype: list of SubdomainAliasAnalyticsItem
         """
         return self._AliasData
@@ -11168,15 +11282,15 @@ class DescribeVasListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，默认值为0。
+        :param _Offset: <p>偏移量，默认值为0。</p>
         :type Offset: int
-        :param _Limit: 限制数量，默认值为20。
+        :param _Limit: <p>限制数量，默认值为20。</p>
         :type Limit: int
-        :param _DomainId: 域名ID
+        :param _DomainId: <p>域名ID</p>
         :type DomainId: int
-        :param _ResourceIdList: 使用资源 ID 列表查询
+        :param _ResourceIdList: <p>使用资源 ID 列表查询</p>
         :type ResourceIdList: list of str
-        :param _LimitType: 增值服务类型
+        :param _LimitType: <p>增值服务类型</p>
         :type LimitType: str
         """
         self._Offset = None
@@ -11187,7 +11301,7 @@ class DescribeVasListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认值为0。
+        r"""<p>偏移量，默认值为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -11198,7 +11312,7 @@ class DescribeVasListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数量，默认值为20。
+        r"""<p>限制数量，默认值为20。</p>
         :rtype: int
         """
         return self._Limit
@@ -11209,7 +11323,7 @@ class DescribeVasListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名ID
+        r"""<p>域名ID</p>
         :rtype: int
         """
         return self._DomainId
@@ -11220,7 +11334,7 @@ class DescribeVasListRequest(AbstractModel):
 
     @property
     def ResourceIdList(self):
-        r"""使用资源 ID 列表查询
+        r"""<p>使用资源 ID 列表查询</p>
         :rtype: list of str
         """
         return self._ResourceIdList
@@ -11231,7 +11345,7 @@ class DescribeVasListRequest(AbstractModel):
 
     @property
     def LimitType(self):
-        r"""增值服务类型
+        r"""<p>增值服务类型</p>
         :rtype: str
         """
         return self._LimitType
@@ -11264,20 +11378,23 @@ class DescribeVasListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合筛选条件的套餐总数
+        :param _TotalCount: <p>符合筛选条件的套餐总数</p>
         :type TotalCount: int
-        :param _VasList: 增值服务信息列表
+        :param _VasList: <p>增值服务信息列表</p>
         :type VasList: list of VasListItem
+        :param _VASList: <p>增值服务信息列表</p>
+        :type VASList: list of VasListItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._VasList = None
+        self._VASList = None
         self._RequestId = None
 
     @property
     def TotalCount(self):
-        r"""符合筛选条件的套餐总数
+        r"""<p>符合筛选条件的套餐总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -11288,14 +11405,29 @@ class DescribeVasListResponse(AbstractModel):
 
     @property
     def VasList(self):
-        r"""增值服务信息列表
+        warnings.warn("parameter `VasList` is deprecated", DeprecationWarning) 
+
+        r"""<p>增值服务信息列表</p>
         :rtype: list of VasListItem
         """
         return self._VasList
 
     @VasList.setter
     def VasList(self, VasList):
+        warnings.warn("parameter `VasList` is deprecated", DeprecationWarning) 
+
         self._VasList = VasList
+
+    @property
+    def VASList(self):
+        r"""<p>增值服务信息列表</p>
+        :rtype: list of VasListItem
+        """
+        return self._VASList
+
+    @VASList.setter
+    def VASList(self, VASList):
+        self._VASList = VASList
 
     @property
     def RequestId(self):
@@ -11317,6 +11449,12 @@ class DescribeVasListResponse(AbstractModel):
                 obj = VasListItem()
                 obj._deserialize(item)
                 self._VasList.append(obj)
+        if params.get("VASList") is not None:
+            self._VASList = []
+            for item in params.get("VASList"):
+                obj = VasListItem()
+                obj._deserialize(item)
+                self._VASList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11519,48 +11657,62 @@ class DomainAnalyticsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DnsFormat: DATE:按天维度统计 HOUR:按小时维度统计
+        :param _DnsFormat: <p>DATE:按天维度统计 HOUR:按小时维度统计</p>
         :type DnsFormat: str
-        :param _DnsTotal: 当前统计周期解析量总计
+        :param _DnsTotal: <p>当前统计周期解析量总计</p>
         :type DnsTotal: int
-        :param _Domain: 当前查询的域名
+        :param _Domain: <p>当前查询的域名</p>
         :type Domain: str
-        :param _StartDate: 当前统计周期开始时间
+        :param _StartDate: <p>当前统计周期开始时间</p>
         :type StartDate: str
-        :param _EndDate: 当前统计周期结束时间
+        :param _EndDate: <p>当前统计周期结束时间</p>
         :type EndDate: str
+        :param _DNSFormat: <p>解析量数据格式</p><p>枚举值：</p><ul><li>DATE： 按天维度统计</li><li>HOUR： 按小时维度统计</li></ul>
+        :type DNSFormat: str
+        :param _DNSTotal: <p>当前统计周期解析量总计</p>
+        :type DNSTotal: int
         """
         self._DnsFormat = None
         self._DnsTotal = None
         self._Domain = None
         self._StartDate = None
         self._EndDate = None
+        self._DNSFormat = None
+        self._DNSTotal = None
 
     @property
     def DnsFormat(self):
-        r"""DATE:按天维度统计 HOUR:按小时维度统计
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
+        r"""<p>DATE:按天维度统计 HOUR:按小时维度统计</p>
         :rtype: str
         """
         return self._DnsFormat
 
     @DnsFormat.setter
     def DnsFormat(self, DnsFormat):
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
         self._DnsFormat = DnsFormat
 
     @property
     def DnsTotal(self):
-        r"""当前统计周期解析量总计
+        warnings.warn("parameter `DnsTotal` is deprecated", DeprecationWarning) 
+
+        r"""<p>当前统计周期解析量总计</p>
         :rtype: int
         """
         return self._DnsTotal
 
     @DnsTotal.setter
     def DnsTotal(self, DnsTotal):
+        warnings.warn("parameter `DnsTotal` is deprecated", DeprecationWarning) 
+
         self._DnsTotal = DnsTotal
 
     @property
     def Domain(self):
-        r"""当前查询的域名
+        r"""<p>当前查询的域名</p>
         :rtype: str
         """
         return self._Domain
@@ -11571,7 +11723,7 @@ class DomainAnalyticsInfo(AbstractModel):
 
     @property
     def StartDate(self):
-        r"""当前统计周期开始时间
+        r"""<p>当前统计周期开始时间</p>
         :rtype: str
         """
         return self._StartDate
@@ -11582,7 +11734,7 @@ class DomainAnalyticsInfo(AbstractModel):
 
     @property
     def EndDate(self):
-        r"""当前统计周期结束时间
+        r"""<p>当前统计周期结束时间</p>
         :rtype: str
         """
         return self._EndDate
@@ -11591,6 +11743,28 @@ class DomainAnalyticsInfo(AbstractModel):
     def EndDate(self, EndDate):
         self._EndDate = EndDate
 
+    @property
+    def DNSFormat(self):
+        r"""<p>解析量数据格式</p><p>枚举值：</p><ul><li>DATE： 按天维度统计</li><li>HOUR： 按小时维度统计</li></ul>
+        :rtype: str
+        """
+        return self._DNSFormat
+
+    @DNSFormat.setter
+    def DNSFormat(self, DNSFormat):
+        self._DNSFormat = DNSFormat
+
+    @property
+    def DNSTotal(self):
+        r"""<p>当前统计周期解析量总计</p>
+        :rtype: int
+        """
+        return self._DNSTotal
+
+    @DNSTotal.setter
+    def DNSTotal(self, DNSTotal):
+        self._DNSTotal = DNSTotal
+
 
     def _deserialize(self, params):
         self._DnsFormat = params.get("DnsFormat")
@@ -11598,6 +11772,8 @@ class DomainAnalyticsInfo(AbstractModel):
         self._Domain = params.get("Domain")
         self._StartDate = params.get("StartDate")
         self._EndDate = params.get("EndDate")
+        self._DNSFormat = params.get("DNSFormat")
+        self._DNSTotal = params.get("DNSTotal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11897,76 +12073,80 @@ class DomainInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainId: 域名ID
+        :param _DomainId: <p>域名ID</p>
         :type DomainId: int
-        :param _Status: 域名状态，正常：ENABLE，暂停：PAUSE，封禁：SPAM
+        :param _Status: <p>域名状态，正常：ENABLE，暂停：PAUSE，封禁：SPAM</p>
         :type Status: str
-        :param _Grade: 域名套餐等级
+        :param _Grade: <p>域名套餐等级</p>
         :type Grade: str
-        :param _GroupId: 域名分组ID
+        :param _GroupId: <p>域名分组ID</p>
         :type GroupId: int
-        :param _IsMark: 是否星标域名
+        :param _IsMark: <p>是否星标域名</p>
         :type IsMark: str
-        :param _TTL: TTL(DNS记录缓存时间)，单位：秒
+        :param _TTL: <p>TTL(DNS记录缓存时间)，单位：秒</p>
         :type TTL: int
-        :param _CnameSpeedup: cname加速启用状态
+        :param _CnameSpeedup: <p>CNAME加速启用状态</p>
         :type CnameSpeedup: str
-        :param _Remark: 域名备注
+        :param _Remark: <p>域名备注</p>
         :type Remark: str
-        :param _Punycode: 域名Punycode
+        :param _Punycode: <p>域名Punycode</p>
         :type Punycode: str
-        :param _DnsStatus: 域名DNS状态，错误：dnserror，正常：空字符串
+        :param _DnsStatus: <p>域名DNS状态，错误：dnserror，正常：空字符串</p>
         :type DnsStatus: str
-        :param _DnspodNsList: 域名的NS列表
+        :param _DnspodNsList: <p>域名的NS列表</p>
         :type DnspodNsList: list of str
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _GradeLevel: 域名等级代号
+        :param _GradeLevel: <p>域名等级代号</p>
         :type GradeLevel: int
-        :param _UserId: 域名所属的用户ID
+        :param _UserId: <p>域名所属的用户ID</p>
         :type UserId: int
-        :param _IsVip: 是否为付费域名
+        :param _IsVip: <p>是否为付费域名</p>
         :type IsVip: str
-        :param _Owner: 域名所有者的账号
+        :param _Owner: <p>域名所有者的账号</p>
         :type Owner: str
-        :param _GradeTitle: 域名等级的描述
+        :param _GradeTitle: <p>域名等级的描述</p>
         :type GradeTitle: str
-        :param _CreatedOn: 域名创建时间
+        :param _CreatedOn: <p>域名创建时间</p>
         :type CreatedOn: str
-        :param _UpdatedOn: 最后操作时间
+        :param _UpdatedOn: <p>最后操作时间</p>
         :type UpdatedOn: str
-        :param _Uin: 腾讯云账户Uin
+        :param _Uin: <p>腾讯云账户Uin</p>
         :type Uin: str
-        :param _ActualNsList: 域名实际使用的NS列表
+        :param _ActualNsList: <p>域名实际使用的NS列表</p>
         :type ActualNsList: list of str
-        :param _RecordCount: 域名的记录数量
+        :param _RecordCount: <p>域名的记录数量</p>
         :type RecordCount: int
-        :param _OwnerNick: 域名所有者的账户昵称
+        :param _OwnerNick: <p>域名所有者的账户昵称</p>
         :type OwnerNick: str
-        :param _IsGracePeriod: 是否在付费套餐宽限期
+        :param _IsGracePeriod: <p>是否在付费套餐宽限期</p>
         :type IsGracePeriod: str
-        :param _VipBuffered: 是否在付费套餐缓冲期
+        :param _VipBuffered: <p>是否在付费套餐缓冲期</p>
         :type VipBuffered: str
-        :param _VipStartAt: VIP套餐有效期开始时间
+        :param _VipStartAt: <p>VIP套餐有效期开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VipStartAt: str
-        :param _VipEndAt: VIP套餐有效期结束时间
+        :param _VipEndAt: <p>VIP套餐有效期结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VipEndAt: str
-        :param _VipAutoRenew: VIP套餐自动续费标识。可能的值为：default-默认；no-不自动续费；yes-自动续费
+        :param _VipAutoRenew: <p>VIP套餐自动续费标识。可能的值为：default-默认；no-不自动续费；yes-自动续费</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VipAutoRenew: str
-        :param _VipResourceId: VIP套餐资源ID
+        :param _VipResourceId: <p>VIP套餐资源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VipResourceId: str
-        :param _IsSubDomain: 是否是子域名。
+        :param _IsSubDomain: <p>是否是子域名。</p>
         :type IsSubDomain: bool
-        :param _TagList: 域名关联的标签列表
+        :param _TagList: <p>域名关联的标签列表</p>
         :type TagList: list of TagItem
-        :param _SearchEnginePush: 是否启用搜索引擎推送
+        :param _SearchEnginePush: <p>是否启用搜索引擎推送</p>
         :type SearchEnginePush: str
-        :param _SlaveDNS: 是否开启辅助 DNS
+        :param _SlaveDNS: <p>是否开启辅助 DNS</p>
         :type SlaveDNS: str
+        :param _DNSStatus: <p>域名DNS状态，错误：dnserror，正常：空字符串</p>
+        :type DNSStatus: str
+        :param _CNAMESpeedup: <p>CNAME加速启用状态</p>
+        :type CNAMESpeedup: str
         """
         self._DomainId = None
         self._Status = None
@@ -12001,10 +12181,12 @@ class DomainInfo(AbstractModel):
         self._TagList = None
         self._SearchEnginePush = None
         self._SlaveDNS = None
+        self._DNSStatus = None
+        self._CNAMESpeedup = None
 
     @property
     def DomainId(self):
-        r"""域名ID
+        r"""<p>域名ID</p>
         :rtype: int
         """
         return self._DomainId
@@ -12015,7 +12197,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""域名状态，正常：ENABLE，暂停：PAUSE，封禁：SPAM
+        r"""<p>域名状态，正常：ENABLE，暂停：PAUSE，封禁：SPAM</p>
         :rtype: str
         """
         return self._Status
@@ -12026,7 +12208,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Grade(self):
-        r"""域名套餐等级
+        r"""<p>域名套餐等级</p>
         :rtype: str
         """
         return self._Grade
@@ -12037,7 +12219,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""域名分组ID
+        r"""<p>域名分组ID</p>
         :rtype: int
         """
         return self._GroupId
@@ -12048,7 +12230,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsMark(self):
-        r"""是否星标域名
+        r"""<p>是否星标域名</p>
         :rtype: str
         """
         return self._IsMark
@@ -12059,7 +12241,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def TTL(self):
-        r"""TTL(DNS记录缓存时间)，单位：秒
+        r"""<p>TTL(DNS记录缓存时间)，单位：秒</p>
         :rtype: int
         """
         return self._TTL
@@ -12070,18 +12252,22 @@ class DomainInfo(AbstractModel):
 
     @property
     def CnameSpeedup(self):
-        r"""cname加速启用状态
+        warnings.warn("parameter `CnameSpeedup` is deprecated", DeprecationWarning) 
+
+        r"""<p>CNAME加速启用状态</p>
         :rtype: str
         """
         return self._CnameSpeedup
 
     @CnameSpeedup.setter
     def CnameSpeedup(self, CnameSpeedup):
+        warnings.warn("parameter `CnameSpeedup` is deprecated", DeprecationWarning) 
+
         self._CnameSpeedup = CnameSpeedup
 
     @property
     def Remark(self):
-        r"""域名备注
+        r"""<p>域名备注</p>
         :rtype: str
         """
         return self._Remark
@@ -12092,7 +12278,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Punycode(self):
-        r"""域名Punycode
+        r"""<p>域名Punycode</p>
         :rtype: str
         """
         return self._Punycode
@@ -12103,18 +12289,22 @@ class DomainInfo(AbstractModel):
 
     @property
     def DnsStatus(self):
-        r"""域名DNS状态，错误：dnserror，正常：空字符串
+        warnings.warn("parameter `DnsStatus` is deprecated", DeprecationWarning) 
+
+        r"""<p>域名DNS状态，错误：dnserror，正常：空字符串</p>
         :rtype: str
         """
         return self._DnsStatus
 
     @DnsStatus.setter
     def DnsStatus(self, DnsStatus):
+        warnings.warn("parameter `DnsStatus` is deprecated", DeprecationWarning) 
+
         self._DnsStatus = DnsStatus
 
     @property
     def DnspodNsList(self):
-        r"""域名的NS列表
+        r"""<p>域名的NS列表</p>
         :rtype: list of str
         """
         return self._DnspodNsList
@@ -12125,7 +12315,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -12136,7 +12326,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def GradeLevel(self):
-        r"""域名等级代号
+        r"""<p>域名等级代号</p>
         :rtype: int
         """
         return self._GradeLevel
@@ -12147,7 +12337,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def UserId(self):
-        r"""域名所属的用户ID
+        r"""<p>域名所属的用户ID</p>
         :rtype: int
         """
         return self._UserId
@@ -12158,7 +12348,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsVip(self):
-        r"""是否为付费域名
+        r"""<p>是否为付费域名</p>
         :rtype: str
         """
         return self._IsVip
@@ -12169,7 +12359,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Owner(self):
-        r"""域名所有者的账号
+        r"""<p>域名所有者的账号</p>
         :rtype: str
         """
         return self._Owner
@@ -12180,7 +12370,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def GradeTitle(self):
-        r"""域名等级的描述
+        r"""<p>域名等级的描述</p>
         :rtype: str
         """
         return self._GradeTitle
@@ -12191,7 +12381,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def CreatedOn(self):
-        r"""域名创建时间
+        r"""<p>域名创建时间</p>
         :rtype: str
         """
         return self._CreatedOn
@@ -12202,7 +12392,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def UpdatedOn(self):
-        r"""最后操作时间
+        r"""<p>最后操作时间</p>
         :rtype: str
         """
         return self._UpdatedOn
@@ -12213,7 +12403,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""腾讯云账户Uin
+        r"""<p>腾讯云账户Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -12224,7 +12414,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def ActualNsList(self):
-        r"""域名实际使用的NS列表
+        r"""<p>域名实际使用的NS列表</p>
         :rtype: list of str
         """
         return self._ActualNsList
@@ -12235,7 +12425,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def RecordCount(self):
-        r"""域名的记录数量
+        r"""<p>域名的记录数量</p>
         :rtype: int
         """
         return self._RecordCount
@@ -12246,7 +12436,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def OwnerNick(self):
-        r"""域名所有者的账户昵称
+        r"""<p>域名所有者的账户昵称</p>
         :rtype: str
         """
         return self._OwnerNick
@@ -12257,7 +12447,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsGracePeriod(self):
-        r"""是否在付费套餐宽限期
+        r"""<p>是否在付费套餐宽限期</p>
         :rtype: str
         """
         return self._IsGracePeriod
@@ -12268,7 +12458,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def VipBuffered(self):
-        r"""是否在付费套餐缓冲期
+        r"""<p>是否在付费套餐缓冲期</p>
         :rtype: str
         """
         return self._VipBuffered
@@ -12279,7 +12469,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def VipStartAt(self):
-        r"""VIP套餐有效期开始时间
+        r"""<p>VIP套餐有效期开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12291,7 +12481,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def VipEndAt(self):
-        r"""VIP套餐有效期结束时间
+        r"""<p>VIP套餐有效期结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12303,7 +12493,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def VipAutoRenew(self):
-        r"""VIP套餐自动续费标识。可能的值为：default-默认；no-不自动续费；yes-自动续费
+        r"""<p>VIP套餐自动续费标识。可能的值为：default-默认；no-不自动续费；yes-自动续费</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12315,7 +12505,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def VipResourceId(self):
-        r"""VIP套餐资源ID
+        r"""<p>VIP套餐资源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12327,7 +12517,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def IsSubDomain(self):
-        r"""是否是子域名。
+        r"""<p>是否是子域名。</p>
         :rtype: bool
         """
         return self._IsSubDomain
@@ -12338,7 +12528,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def TagList(self):
-        r"""域名关联的标签列表
+        r"""<p>域名关联的标签列表</p>
         :rtype: list of TagItem
         """
         return self._TagList
@@ -12349,7 +12539,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def SearchEnginePush(self):
-        r"""是否启用搜索引擎推送
+        r"""<p>是否启用搜索引擎推送</p>
         :rtype: str
         """
         return self._SearchEnginePush
@@ -12360,7 +12550,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def SlaveDNS(self):
-        r"""是否开启辅助 DNS
+        r"""<p>是否开启辅助 DNS</p>
         :rtype: str
         """
         return self._SlaveDNS
@@ -12368,6 +12558,28 @@ class DomainInfo(AbstractModel):
     @SlaveDNS.setter
     def SlaveDNS(self, SlaveDNS):
         self._SlaveDNS = SlaveDNS
+
+    @property
+    def DNSStatus(self):
+        r"""<p>域名DNS状态，错误：dnserror，正常：空字符串</p>
+        :rtype: str
+        """
+        return self._DNSStatus
+
+    @DNSStatus.setter
+    def DNSStatus(self, DNSStatus):
+        self._DNSStatus = DNSStatus
+
+    @property
+    def CNAMESpeedup(self):
+        r"""<p>CNAME加速启用状态</p>
+        :rtype: str
+        """
+        return self._CNAMESpeedup
+
+    @CNAMESpeedup.setter
+    def CNAMESpeedup(self, CNAMESpeedup):
+        self._CNAMESpeedup = CNAMESpeedup
 
 
     def _deserialize(self, params):
@@ -12409,6 +12621,8 @@ class DomainInfo(AbstractModel):
                 self._TagList.append(obj)
         self._SearchEnginePush = params.get("SearchEnginePush")
         self._SlaveDNS = params.get("SlaveDNS")
+        self._DNSStatus = params.get("DNSStatus")
+        self._CNAMESpeedup = params.get("CNAMESpeedup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14949,22 +15163,24 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _RecordId: 记录ID。 可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+        :param _RecordId: <p>记录ID。 可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId</p>
         :type RecordId: int
-        :param _RecordLine: 记录线路，中文，比如：默认。
+        :param _RecordLine: <p>记录线路，中文，比如：默认。</p>
         :type RecordLine: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。</p>
         :type DomainId: int
-        :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
+        :param _SubDomain: <p>主机记录，如 www，如果不传，默认为 @。</p>
         :type SubDomain: str
-        :param _RecordLineId: 线路的 ID，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        :param _RecordLineId: <p>线路的 ID，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
         :type RecordLineId: str
-        :param _Value: IP 地址，支持 IPv4、IPv6，例如 119.29.29.29 或者 2402:4e00::
+        :param _Value: <p>IP 地址，支持 IPv4、IPv6，例如 119.29.29.29 或者 2402:4e00::</p>
         :type Value: str
-        :param _Ttl: TTL值，如果不传，默认为域名的TTL值。
+        :param _Ttl: <p>TTL值，如果不传，默认为域名的TTL值。</p>
         :type Ttl: int
+        :param _TTL: <p>TTL值，如果不传，默认为域名的TTL值。</p><p>新增规范参数，同时传递TTL和Ttl参数时，后端优先使用TTL参数</p>
+        :type TTL: int
         """
         self._Domain = None
         self._RecordId = None
@@ -14974,10 +15190,11 @@ class ModifyDynamicDNSRequest(AbstractModel):
         self._RecordLineId = None
         self._Value = None
         self._Ttl = None
+        self._TTL = None
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -14988,7 +15205,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""记录ID。 可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+        r"""<p>记录ID。 可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId</p>
         :rtype: int
         """
         return self._RecordId
@@ -14999,7 +15216,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        r"""记录线路，中文，比如：默认。
+        r"""<p>记录线路，中文，比如：默认。</p>
         :rtype: str
         """
         return self._RecordLine
@@ -15010,7 +15227,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        r"""<p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。</p>
         :rtype: int
         """
         return self._DomainId
@@ -15021,7 +15238,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        r"""主机记录，如 www，如果不传，默认为 @。
+        r"""<p>主机记录，如 www，如果不传，默认为 @。</p>
         :rtype: str
         """
         return self._SubDomain
@@ -15032,7 +15249,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        r"""线路的 ID，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        r"""<p>线路的 ID，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
         :rtype: str
         """
         return self._RecordLineId
@@ -15043,7 +15260,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def Value(self):
-        r"""IP 地址，支持 IPv4、IPv6，例如 119.29.29.29 或者 2402:4e00::
+        r"""<p>IP 地址，支持 IPv4、IPv6，例如 119.29.29.29 或者 2402:4e00::</p>
         :rtype: str
         """
         return self._Value
@@ -15054,14 +15271,29 @@ class ModifyDynamicDNSRequest(AbstractModel):
 
     @property
     def Ttl(self):
-        r"""TTL值，如果不传，默认为域名的TTL值。
+        warnings.warn("parameter `Ttl` is deprecated", DeprecationWarning) 
+
+        r"""<p>TTL值，如果不传，默认为域名的TTL值。</p>
         :rtype: int
         """
         return self._Ttl
 
     @Ttl.setter
     def Ttl(self, Ttl):
+        warnings.warn("parameter `Ttl` is deprecated", DeprecationWarning) 
+
         self._Ttl = Ttl
+
+    @property
+    def TTL(self):
+        r"""<p>TTL值，如果不传，默认为域名的TTL值。</p><p>新增规范参数，同时传递TTL和Ttl参数时，后端优先使用TTL参数</p>
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
 
 
     def _deserialize(self, params):
@@ -15073,6 +15305,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
         self._RecordLineId = params.get("RecordLineId")
         self._Value = params.get("Value")
         self._Ttl = params.get("Ttl")
+        self._TTL = params.get("TTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15090,7 +15323,7 @@ class ModifyDynamicDNSResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordId: 记录ID
+        :param _RecordId: <p>记录ID</p>
         :type RecordId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15100,7 +15333,7 @@ class ModifyDynamicDNSResponse(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""记录ID
+        r"""<p>记录ID</p>
         :rtype: int
         """
         return self._RecordId
@@ -18907,18 +19140,22 @@ class ResolveCountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DnsTotal: 当前统计周期解析量总计
+        :param _DnsTotal: <p>当前统计周期解析量总计</p>
         :type DnsTotal: int
-        :param _Domain: 当前查询的域名
+        :param _Domain: <p>当前查询的域名</p>
         :type Domain: str
-        :param _StartDate: 当前统计周期开始时间
+        :param _StartDate: <p>当前统计周期开始时间</p>
         :type StartDate: str
-        :param _EndDate: 当前统计周期结束时间
+        :param _EndDate: <p>当前统计周期结束时间</p>
         :type EndDate: str
-        :param _SubDomain: 当前统计的子域名
+        :param _SubDomain: <p>当前统计的子域名</p>
         :type SubDomain: str
-        :param _DnsFormat: 数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+        :param _DnsFormat: <p>数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据</p>
         :type DnsFormat: str
+        :param _DNSTotal: <p>当前统计周期解析量总计</p>
+        :type DNSTotal: int
+        :param _DNSFormat: <p>数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据</p>
+        :type DNSFormat: str
         """
         self._DnsTotal = None
         self._Domain = None
@@ -18926,21 +19163,27 @@ class ResolveCountInfo(AbstractModel):
         self._EndDate = None
         self._SubDomain = None
         self._DnsFormat = None
+        self._DNSTotal = None
+        self._DNSFormat = None
 
     @property
     def DnsTotal(self):
-        r"""当前统计周期解析量总计
+        warnings.warn("parameter `DnsTotal` is deprecated", DeprecationWarning) 
+
+        r"""<p>当前统计周期解析量总计</p>
         :rtype: int
         """
         return self._DnsTotal
 
     @DnsTotal.setter
     def DnsTotal(self, DnsTotal):
+        warnings.warn("parameter `DnsTotal` is deprecated", DeprecationWarning) 
+
         self._DnsTotal = DnsTotal
 
     @property
     def Domain(self):
-        r"""当前查询的域名
+        r"""<p>当前查询的域名</p>
         :rtype: str
         """
         return self._Domain
@@ -18951,7 +19194,7 @@ class ResolveCountInfo(AbstractModel):
 
     @property
     def StartDate(self):
-        r"""当前统计周期开始时间
+        r"""<p>当前统计周期开始时间</p>
         :rtype: str
         """
         return self._StartDate
@@ -18962,7 +19205,7 @@ class ResolveCountInfo(AbstractModel):
 
     @property
     def EndDate(self):
-        r"""当前统计周期结束时间
+        r"""<p>当前统计周期结束时间</p>
         :rtype: str
         """
         return self._EndDate
@@ -18973,7 +19216,7 @@ class ResolveCountInfo(AbstractModel):
 
     @property
     def SubDomain(self):
-        r"""当前统计的子域名
+        r"""<p>当前统计的子域名</p>
         :rtype: str
         """
         return self._SubDomain
@@ -18984,14 +19227,40 @@ class ResolveCountInfo(AbstractModel):
 
     @property
     def DnsFormat(self):
-        r"""数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
+        r"""<p>数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据</p>
         :rtype: str
         """
         return self._DnsFormat
 
     @DnsFormat.setter
     def DnsFormat(self, DnsFormat):
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
         self._DnsFormat = DnsFormat
+
+    @property
+    def DNSTotal(self):
+        r"""<p>当前统计周期解析量总计</p>
+        :rtype: int
+        """
+        return self._DNSTotal
+
+    @DNSTotal.setter
+    def DNSTotal(self, DNSTotal):
+        self._DNSTotal = DNSTotal
+
+    @property
+    def DNSFormat(self):
+        r"""<p>数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据</p>
+        :rtype: str
+        """
+        return self._DNSFormat
+
+    @DNSFormat.setter
+    def DNSFormat(self, DNSFormat):
+        self._DNSFormat = DNSFormat
 
 
     def _deserialize(self, params):
@@ -19001,6 +19270,8 @@ class ResolveCountInfo(AbstractModel):
         self._EndDate = params.get("EndDate")
         self._SubDomain = params.get("SubDomain")
         self._DnsFormat = params.get("DnsFormat")
+        self._DNSTotal = params.get("DNSTotal")
+        self._DNSFormat = params.get("DNSFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19931,18 +20202,24 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DnsFormat: DATE:按天维度统计 HOUR:按小时维度统计
+        :param _DnsFormat: <p>DATE:按天维度统计 HOUR:按小时维度统计</p>
         :type DnsFormat: str
-        :param _DnsTotal: 当前统计周期解析量总计
+        :param _DnsTotal: <p>当前统计周期解析量总计</p>
         :type DnsTotal: int
-        :param _Domain: 当前查询的域名
+        :param _Domain: <p>当前查询的域名</p>
         :type Domain: str
-        :param _StartDate: 当前统计周期开始时间
+        :param _StartDate: <p>当前统计周期开始时间</p>
         :type StartDate: str
-        :param _EndDate: 当前统计周期结束时间
+        :param _EndDate: <p>当前统计周期结束时间</p>
         :type EndDate: str
-        :param _Subdomain: 当前统计的子域名
+        :param _Subdomain: <p>当前统计的子域名</p>
         :type Subdomain: str
+        :param _DNSFormat: <p>解析量数据格式</p><p>枚举值：</p><ul><li>DATE： 按天维度统计</li><li>HOUR： 按小时维度统计</li></ul>
+        :type DNSFormat: str
+        :param _DNSTotal: <p>当前统计周期解析量总计</p>
+        :type DNSTotal: int
+        :param _SubDomain: <p>当前统计的子域名</p>
+        :type SubDomain: str
         """
         self._DnsFormat = None
         self._DnsTotal = None
@@ -19950,32 +20227,43 @@ class SubdomainAnalyticsInfo(AbstractModel):
         self._StartDate = None
         self._EndDate = None
         self._Subdomain = None
+        self._DNSFormat = None
+        self._DNSTotal = None
+        self._SubDomain = None
 
     @property
     def DnsFormat(self):
-        r"""DATE:按天维度统计 HOUR:按小时维度统计
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
+        r"""<p>DATE:按天维度统计 HOUR:按小时维度统计</p>
         :rtype: str
         """
         return self._DnsFormat
 
     @DnsFormat.setter
     def DnsFormat(self, DnsFormat):
+        warnings.warn("parameter `DnsFormat` is deprecated", DeprecationWarning) 
+
         self._DnsFormat = DnsFormat
 
     @property
     def DnsTotal(self):
-        r"""当前统计周期解析量总计
+        warnings.warn("parameter `DnsTotal` is deprecated", DeprecationWarning) 
+
+        r"""<p>当前统计周期解析量总计</p>
         :rtype: int
         """
         return self._DnsTotal
 
     @DnsTotal.setter
     def DnsTotal(self, DnsTotal):
+        warnings.warn("parameter `DnsTotal` is deprecated", DeprecationWarning) 
+
         self._DnsTotal = DnsTotal
 
     @property
     def Domain(self):
-        r"""当前查询的域名
+        r"""<p>当前查询的域名</p>
         :rtype: str
         """
         return self._Domain
@@ -19986,7 +20274,7 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     @property
     def StartDate(self):
-        r"""当前统计周期开始时间
+        r"""<p>当前统计周期开始时间</p>
         :rtype: str
         """
         return self._StartDate
@@ -19997,7 +20285,7 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     @property
     def EndDate(self):
-        r"""当前统计周期结束时间
+        r"""<p>当前统计周期结束时间</p>
         :rtype: str
         """
         return self._EndDate
@@ -20008,14 +20296,51 @@ class SubdomainAnalyticsInfo(AbstractModel):
 
     @property
     def Subdomain(self):
-        r"""当前统计的子域名
+        warnings.warn("parameter `Subdomain` is deprecated", DeprecationWarning) 
+
+        r"""<p>当前统计的子域名</p>
         :rtype: str
         """
         return self._Subdomain
 
     @Subdomain.setter
     def Subdomain(self, Subdomain):
+        warnings.warn("parameter `Subdomain` is deprecated", DeprecationWarning) 
+
         self._Subdomain = Subdomain
+
+    @property
+    def DNSFormat(self):
+        r"""<p>解析量数据格式</p><p>枚举值：</p><ul><li>DATE： 按天维度统计</li><li>HOUR： 按小时维度统计</li></ul>
+        :rtype: str
+        """
+        return self._DNSFormat
+
+    @DNSFormat.setter
+    def DNSFormat(self, DNSFormat):
+        self._DNSFormat = DNSFormat
+
+    @property
+    def DNSTotal(self):
+        r"""<p>当前统计周期解析量总计</p>
+        :rtype: int
+        """
+        return self._DNSTotal
+
+    @DNSTotal.setter
+    def DNSTotal(self, DNSTotal):
+        self._DNSTotal = DNSTotal
+
+    @property
+    def SubDomain(self):
+        r"""<p>当前统计的子域名</p>
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
 
 
     def _deserialize(self, params):
@@ -20025,6 +20350,9 @@ class SubdomainAnalyticsInfo(AbstractModel):
         self._StartDate = params.get("StartDate")
         self._EndDate = params.get("EndDate")
         self._Subdomain = params.get("Subdomain")
+        self._DNSFormat = params.get("DNSFormat")
+        self._DNSTotal = params.get("DNSTotal")
+        self._SubDomain = params.get("SubDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
