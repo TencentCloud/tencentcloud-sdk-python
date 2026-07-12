@@ -1885,11 +1885,11 @@ class AttachUserPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
+        :param _UserId: <p>用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。</p>
         :type UserId: str
-        :param _PolicySet: 鉴权策略集合
+        :param _PolicySet: <p>鉴权策略集合</p>
         :type PolicySet: list of Policy
-        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :param _AccountType: <p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
         :type AccountType: str
         """
         self._UserId = None
@@ -1898,7 +1898,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
+        r"""<p>用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。</p>
         :rtype: str
         """
         return self._UserId
@@ -1909,7 +1909,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        r"""鉴权策略集合
+        r"""<p>鉴权策略集合</p>
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -1920,7 +1920,7 @@ class AttachUserPolicyRequest(AbstractModel):
 
     @property
     def AccountType(self):
-        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        r"""<p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
         :rtype: str
         """
         return self._AccountType
@@ -1956,10 +1956,24 @@ class AttachUserPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PolicySet: <p>要授权的策略列表</p>
+        :type PolicySet: list of Policy
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._PolicySet = None
         self._RequestId = None
+
+    @property
+    def PolicySet(self):
+        r"""<p>要授权的策略列表</p>
+        :rtype: list of Policy
+        """
+        return self._PolicySet
+
+    @PolicySet.setter
+    def PolicySet(self, PolicySet):
+        self._PolicySet = PolicySet
 
     @property
     def RequestId(self):
@@ -1974,6 +1988,12 @@ class AttachUserPolicyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("PolicySet") is not None:
+            self._PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self._PolicySet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1984,9 +2004,9 @@ class AttachWorkGroupPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkGroupId: 工作组Id
+        :param _WorkGroupId: <p>工作组Id</p>
         :type WorkGroupId: int
-        :param _PolicySet: 要绑定的策略集合
+        :param _PolicySet: <p>要绑定的策略集合</p>
         :type PolicySet: list of Policy
         """
         self._WorkGroupId = None
@@ -1994,7 +2014,7 @@ class AttachWorkGroupPolicyRequest(AbstractModel):
 
     @property
     def WorkGroupId(self):
-        r"""工作组Id
+        r"""<p>工作组Id</p>
         :rtype: int
         """
         return self._WorkGroupId
@@ -2005,7 +2025,7 @@ class AttachWorkGroupPolicyRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        r"""要绑定的策略集合
+        r"""<p>要绑定的策略集合</p>
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -2040,10 +2060,24 @@ class AttachWorkGroupPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PolicySet: <p>要授权的策略列表</p>
+        :type PolicySet: list of Policy
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._PolicySet = None
         self._RequestId = None
+
+    @property
+    def PolicySet(self):
+        r"""<p>要授权的策略列表</p>
+        :rtype: list of Policy
+        """
+        return self._PolicySet
+
+    @PolicySet.setter
+    def PolicySet(self, PolicySet):
+        self._PolicySet = PolicySet
 
     @property
     def RequestId(self):
@@ -2058,6 +2092,12 @@ class AttachWorkGroupPolicyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("PolicySet") is not None:
+            self._PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self._PolicySet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -26105,46 +26145,24 @@ class DescribeUserInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户Id
+        :param _UserId: <p>用户Id</p>
         :type UserId: str
-        :param _Type: 必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限
+        :param _Type: <p>必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限</p>
         :type Type: str
-        :param _Filters: 查询的过滤条件。
-
-当Type为Group时，支持Key为workgroup-name的模糊搜索；
-
-当Type为DataAuth时，支持key：
-
-policy-type：权限类型。
-
-policy-source：数据来源。
-
-data-name：库表的模糊搜索。
-
-当Type为EngineAuth时，支持key：
-
-policy-type：权限类型。
-
-policy-source：数据来源。
-
-engine-name：库表的模糊搜索。
+        :param _Filters: <p>查询的过滤条件。</p><p>当Type为Group时，支持Key为workgroup-name的模糊搜索；</p><p>当Type为DataAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>data-name：库表的模糊搜索。</p><p>当Type为EngineAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>engine-name：库表的模糊搜索。</p>
         :type Filters: list of Filter
-        :param _SortBy: 排序字段。
-
-当Type为Group时，支持create-time、group-name
-
-当Type为DataAuth时，支持create-time
-
-当Type为EngineAuth时，支持create-time
+        :param _SortBy: <p>排序字段。</p><p>当Type为Group时，支持create-time、group-name</p><p>当Type为DataAuth时，支持create-time</p><p>当Type为EngineAuth时，支持create-time</p>
         :type SortBy: str
-        :param _Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc
+        :param _Sorting: <p>排序方式，desc表示正序，asc表示反序， 默认为asc</p>
         :type Sorting: str
-        :param _Limit: 返回数量，默认20，最大值100
+        :param _Limit: <p>返回数量，默认20，最大值100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :param _AccountType: <p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
         :type AccountType: str
+        :param _PolicyId: <p>TF 资源 ID</p>
+        :type PolicyId: str
         """
         self._UserId = None
         self._Type = None
@@ -26154,10 +26172,11 @@ engine-name：库表的模糊搜索。
         self._Limit = None
         self._Offset = None
         self._AccountType = None
+        self._PolicyId = None
 
     @property
     def UserId(self):
-        r"""用户Id
+        r"""<p>用户Id</p>
         :rtype: str
         """
         return self._UserId
@@ -26168,7 +26187,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Type(self):
-        r"""必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限
+        r"""<p>必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限</p>
         :rtype: str
         """
         return self._Type
@@ -26179,25 +26198,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Filters(self):
-        r"""查询的过滤条件。
-
-当Type为Group时，支持Key为workgroup-name的模糊搜索；
-
-当Type为DataAuth时，支持key：
-
-policy-type：权限类型。
-
-policy-source：数据来源。
-
-data-name：库表的模糊搜索。
-
-当Type为EngineAuth时，支持key：
-
-policy-type：权限类型。
-
-policy-source：数据来源。
-
-engine-name：库表的模糊搜索。
+        r"""<p>查询的过滤条件。</p><p>当Type为Group时，支持Key为workgroup-name的模糊搜索；</p><p>当Type为DataAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>data-name：库表的模糊搜索。</p><p>当Type为EngineAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>engine-name：库表的模糊搜索。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -26208,13 +26209,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def SortBy(self):
-        r"""排序字段。
-
-当Type为Group时，支持create-time、group-name
-
-当Type为DataAuth时，支持create-time
-
-当Type为EngineAuth时，支持create-time
+        r"""<p>排序字段。</p><p>当Type为Group时，支持create-time、group-name</p><p>当Type为DataAuth时，支持create-time</p><p>当Type为EngineAuth时，支持create-time</p>
         :rtype: str
         """
         return self._SortBy
@@ -26225,7 +26220,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Sorting(self):
-        r"""排序方式，desc表示正序，asc表示反序， 默认为asc
+        r"""<p>排序方式，desc表示正序，asc表示反序， 默认为asc</p>
         :rtype: str
         """
         return self._Sorting
@@ -26236,7 +26231,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大值100
+        r"""<p>返回数量，默认20，最大值100</p>
         :rtype: int
         """
         return self._Limit
@@ -26247,7 +26242,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -26258,7 +26253,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def AccountType(self):
-        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        r"""<p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
         :rtype: str
         """
         return self._AccountType
@@ -26266,6 +26261,17 @@ engine-name：库表的模糊搜索。
     @AccountType.setter
     def AccountType(self, AccountType):
         self._AccountType = AccountType
+
+    @property
+    def PolicyId(self):
+        r"""<p>TF 资源 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
 
 
     def _deserialize(self, params):
@@ -26282,6 +26288,7 @@ engine-name：库表的模糊搜索。
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._AccountType = params.get("AccountType")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26299,7 +26306,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserInfo: 用户详细信息
+        :param _UserInfo: <p>用户详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserInfo: :class:`tencentcloud.dlc.v20210125.models.UserDetailInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -26310,7 +26317,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def UserInfo(self):
-        r"""用户详细信息
+        r"""<p>用户详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.UserDetailInfo`
         """
@@ -27233,44 +27240,22 @@ class DescribeWorkGroupInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkGroupId: 工作组Id
+        :param _WorkGroupId: <p>工作组Id</p>
         :type WorkGroupId: int
-        :param _Type: 查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限
+        :param _Type: <p>查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限</p>
         :type Type: str
-        :param _Filters: 查询的过滤条件。
-
-当Type为User时，支持Key为user-name的模糊搜索；
-
-当Type为DataAuth时，支持key：
-
-policy-type：权限类型。
-
-policy-source：数据来源。
-
-data-name：库表的模糊搜索。
-
-当Type为EngineAuth时，支持key：
-
-policy-type：权限类型。
-
-policy-source：数据来源。
-
-engine-name：库表的模糊搜索。
+        :param _Filters: <p>查询的过滤条件。</p><p>当Type为User时，支持Key为user-name的模糊搜索；</p><p>当Type为DataAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>data-name：库表的模糊搜索。</p><p>当Type为EngineAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>engine-name：库表的模糊搜索。</p>
         :type Filters: list of Filter
-        :param _SortBy: 排序字段。
-
-当Type为User时，支持create-time、user-name
-
-当Type为DataAuth时，支持create-time
-
-当Type为EngineAuth时，支持create-time
+        :param _SortBy: <p>排序字段。</p><p>当Type为User时，支持create-time、user-name</p><p>当Type为DataAuth时，支持create-time</p><p>当Type为EngineAuth时，支持create-time</p>
         :type SortBy: str
-        :param _Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc
+        :param _Sorting: <p>排序方式，desc表示正序，asc表示反序， 默认为asc</p>
         :type Sorting: str
-        :param _Limit: 返回数量，默认20，最大值100
+        :param _Limit: <p>返回数量，默认20，最大值100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
+        :param _PolicyId: <p>要授权的策略列表</p>
+        :type PolicyId: str
         """
         self._WorkGroupId = None
         self._Type = None
@@ -27279,10 +27264,11 @@ engine-name：库表的模糊搜索。
         self._Sorting = None
         self._Limit = None
         self._Offset = None
+        self._PolicyId = None
 
     @property
     def WorkGroupId(self):
-        r"""工作组Id
+        r"""<p>工作组Id</p>
         :rtype: int
         """
         return self._WorkGroupId
@@ -27293,7 +27279,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Type(self):
-        r"""查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限
+        r"""<p>查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限</p>
         :rtype: str
         """
         return self._Type
@@ -27304,25 +27290,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Filters(self):
-        r"""查询的过滤条件。
-
-当Type为User时，支持Key为user-name的模糊搜索；
-
-当Type为DataAuth时，支持key：
-
-policy-type：权限类型。
-
-policy-source：数据来源。
-
-data-name：库表的模糊搜索。
-
-当Type为EngineAuth时，支持key：
-
-policy-type：权限类型。
-
-policy-source：数据来源。
-
-engine-name：库表的模糊搜索。
+        r"""<p>查询的过滤条件。</p><p>当Type为User时，支持Key为user-name的模糊搜索；</p><p>当Type为DataAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>data-name：库表的模糊搜索。</p><p>当Type为EngineAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>engine-name：库表的模糊搜索。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -27333,13 +27301,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def SortBy(self):
-        r"""排序字段。
-
-当Type为User时，支持create-time、user-name
-
-当Type为DataAuth时，支持create-time
-
-当Type为EngineAuth时，支持create-time
+        r"""<p>排序字段。</p><p>当Type为User时，支持create-time、user-name</p><p>当Type为DataAuth时，支持create-time</p><p>当Type为EngineAuth时，支持create-time</p>
         :rtype: str
         """
         return self._SortBy
@@ -27350,7 +27312,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Sorting(self):
-        r"""排序方式，desc表示正序，asc表示反序， 默认为asc
+        r"""<p>排序方式，desc表示正序，asc表示反序， 默认为asc</p>
         :rtype: str
         """
         return self._Sorting
@@ -27361,7 +27323,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大值100
+        r"""<p>返回数量，默认20，最大值100</p>
         :rtype: int
         """
         return self._Limit
@@ -27372,7 +27334,7 @@ engine-name：库表的模糊搜索。
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -27380,6 +27342,17 @@ engine-name：库表的模糊搜索。
     @Offset.setter
     def Offset(self, Offset):
         self._Offset = Offset
+
+    @property
+    def PolicyId(self):
+        r"""<p>要授权的策略列表</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
 
 
     def _deserialize(self, params):
@@ -27395,6 +27368,7 @@ engine-name：库表的模糊搜索。
         self._Sorting = params.get("Sorting")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27412,7 +27386,7 @@ class DescribeWorkGroupInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkGroupInfo: 工作组详细信息
+        :param _WorkGroupInfo: <p>工作组详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkGroupInfo: :class:`tencentcloud.dlc.v20210125.models.WorkGroupDetailInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -27423,7 +27397,7 @@ class DescribeWorkGroupInfoResponse(AbstractModel):
 
     @property
     def WorkGroupInfo(self):
-        r"""工作组详细信息
+        r"""<p>工作组详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.WorkGroupDetailInfo`
         """
@@ -27638,20 +27612,23 @@ class DetachUserPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户Id，和CAM侧Uin匹配
+        :param _UserId: <p>用户Id，和CAM侧Uin匹配</p>
         :type UserId: str
-        :param _PolicySet: 解绑的权限集合
+        :param _PolicySet: <p>解绑的权限集合</p>
         :type PolicySet: list of Policy
-        :param _AccountType: 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        :param _AccountType: <p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
         :type AccountType: str
+        :param _PolicyIds: <p>要授权的策略列表</p>
+        :type PolicyIds: list of str
         """
         self._UserId = None
         self._PolicySet = None
         self._AccountType = None
+        self._PolicyIds = None
 
     @property
     def UserId(self):
-        r"""用户Id，和CAM侧Uin匹配
+        r"""<p>用户Id，和CAM侧Uin匹配</p>
         :rtype: str
         """
         return self._UserId
@@ -27662,7 +27639,7 @@ class DetachUserPolicyRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        r"""解绑的权限集合
+        r"""<p>解绑的权限集合</p>
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -27673,7 +27650,7 @@ class DetachUserPolicyRequest(AbstractModel):
 
     @property
     def AccountType(self):
-        r"""用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+        r"""<p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
         :rtype: str
         """
         return self._AccountType
@@ -27681,6 +27658,17 @@ class DetachUserPolicyRequest(AbstractModel):
     @AccountType.setter
     def AccountType(self, AccountType):
         self._AccountType = AccountType
+
+    @property
+    def PolicyIds(self):
+        r"""<p>要授权的策略列表</p>
+        :rtype: list of str
+        """
+        return self._PolicyIds
+
+    @PolicyIds.setter
+    def PolicyIds(self, PolicyIds):
+        self._PolicyIds = PolicyIds
 
 
     def _deserialize(self, params):
@@ -27692,6 +27680,7 @@ class DetachUserPolicyRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PolicySet.append(obj)
         self._AccountType = params.get("AccountType")
+        self._PolicyIds = params.get("PolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27737,17 +27726,20 @@ class DetachWorkGroupPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkGroupId: 工作组Id
+        :param _WorkGroupId: <p>工作组Id</p>
         :type WorkGroupId: int
-        :param _PolicySet: 解绑的权限集合
+        :param _PolicySet: <p>解绑的权限集合</p>
         :type PolicySet: list of Policy
+        :param _PolicyIds: <p>要授权的策略列表</p>
+        :type PolicyIds: list of str
         """
         self._WorkGroupId = None
         self._PolicySet = None
+        self._PolicyIds = None
 
     @property
     def WorkGroupId(self):
-        r"""工作组Id
+        r"""<p>工作组Id</p>
         :rtype: int
         """
         return self._WorkGroupId
@@ -27758,7 +27750,7 @@ class DetachWorkGroupPolicyRequest(AbstractModel):
 
     @property
     def PolicySet(self):
-        r"""解绑的权限集合
+        r"""<p>解绑的权限集合</p>
         :rtype: list of Policy
         """
         return self._PolicySet
@@ -27766,6 +27758,17 @@ class DetachWorkGroupPolicyRequest(AbstractModel):
     @PolicySet.setter
     def PolicySet(self, PolicySet):
         self._PolicySet = PolicySet
+
+    @property
+    def PolicyIds(self):
+        r"""<p>要授权的策略列表</p>
+        :rtype: list of str
+        """
+        return self._PolicyIds
+
+    @PolicyIds.setter
+    def PolicyIds(self, PolicyIds):
+        self._PolicyIds = PolicyIds
 
 
     def _deserialize(self, params):
@@ -27776,6 +27779,7 @@ class DetachWorkGroupPolicyRequest(AbstractModel):
                 obj = Policy()
                 obj._deserialize(item)
                 self._PolicySet.append(obj)
+        self._PolicyIds = params.get("PolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35185,59 +35189,60 @@ class Policy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Database: 需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
+        :param _Database: <p>需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。</p>
         :type Database: str
-        :param _Catalog: 需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
+        :param _Catalog: <p>需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。</p>
         :type Catalog: str
-        :param _Table: 需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+        :param _Table: <p>需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
         :type Table: str
-        :param _Operation: 授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。
+        :param _Operation: <p>授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。</p>
         :type Operation: str
-        :param _PolicyType: 授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。
+        :param _PolicyType: <p>授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。</p>
         :type PolicyType: str
-        :param _Function: 需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
+        :param _Function: <p>需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Function: str
-        :param _View: 需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
+        :param _View: <p>需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type View: str
-        :param _Column: 需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”
+        :param _Column: <p>需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Column: str
-        :param _DataEngine: 需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
+        :param _DataEngine: <p>需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngine: str
-        :param _ReAuth: 用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false
+        :param _ReAuth: <p>用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReAuth: bool
-        :param _Source: 权限来源，入参不填。USER：权限来自用户本身；WORKGROUP：权限来自绑定的工作组
+        :param _Source: <p>权限来源，入参不填。USER：权限来自用户本身；WORKGROUP：权限来自绑定的工作组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
-        :param _Mode: 授权模式，入参不填。COMMON：普通模式；SENIOR：高级模式。
+        :param _Mode: <p>授权模式，入参不填。COMMON：普通模式；SENIOR：高级模式。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
-        :param _Operator: 操作者，入参不填。
+        :param _Operator: <p>操作者，入参不填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
-        :param _CreateTime: 权限创建的时间，入参不填
+        :param _CreateTime: <p>权限创建的时间，入参不填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _SourceId: 权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+        :param _SourceId: <p>权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceId: int
-        :param _SourceName: 权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+        :param _SourceName: <p>权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceName: str
-        :param _Id: 策略ID
+        :param _Id: <p>策略ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _EngineGeneration: 引擎类型
-
+        :param _EngineGeneration: <p>引擎类型</p>
         :type EngineGeneration: str
-        :param _Model: 需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+        :param _Model: <p>需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
         :type Model: str
-        :param _IsAdminPolicy: 权限来源是否为管理员
+        :param _IsAdminPolicy: <p>权限来源是否为管理员</p>
         :type IsAdminPolicy: bool
+        :param _PolicyId: <p>user和workgroup对应的确定性字符串PolicyId</p>
+        :type PolicyId: str
         """
         self._Database = None
         self._Catalog = None
@@ -35259,10 +35264,11 @@ class Policy(AbstractModel):
         self._EngineGeneration = None
         self._Model = None
         self._IsAdminPolicy = None
+        self._PolicyId = None
 
     @property
     def Database(self):
-        r"""需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
+        r"""<p>需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。</p>
         :rtype: str
         """
         return self._Database
@@ -35273,7 +35279,7 @@ class Policy(AbstractModel):
 
     @property
     def Catalog(self):
-        r"""需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
+        r"""<p>需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。</p>
         :rtype: str
         """
         return self._Catalog
@@ -35284,7 +35290,7 @@ class Policy(AbstractModel):
 
     @property
     def Table(self):
-        r"""需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+        r"""<p>需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
         :rtype: str
         """
         return self._Table
@@ -35295,7 +35301,7 @@ class Policy(AbstractModel):
 
     @property
     def Operation(self):
-        r"""授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。
+        r"""<p>授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。</p>
         :rtype: str
         """
         return self._Operation
@@ -35306,7 +35312,7 @@ class Policy(AbstractModel):
 
     @property
     def PolicyType(self):
-        r"""授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。
+        r"""<p>授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。</p>
         :rtype: str
         """
         return self._PolicyType
@@ -35317,7 +35323,7 @@ class Policy(AbstractModel):
 
     @property
     def Function(self):
-        r"""需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
+        r"""<p>需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35329,7 +35335,7 @@ class Policy(AbstractModel):
 
     @property
     def View(self):
-        r"""需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
+        r"""<p>需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35341,7 +35347,7 @@ class Policy(AbstractModel):
 
     @property
     def Column(self):
-        r"""需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”
+        r"""<p>需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35353,7 +35359,7 @@ class Policy(AbstractModel):
 
     @property
     def DataEngine(self):
-        r"""需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
+        r"""<p>需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35365,7 +35371,7 @@ class Policy(AbstractModel):
 
     @property
     def ReAuth(self):
-        r"""用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false
+        r"""<p>用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -35377,7 +35383,7 @@ class Policy(AbstractModel):
 
     @property
     def Source(self):
-        r"""权限来源，入参不填。USER：权限来自用户本身；WORKGROUP：权限来自绑定的工作组
+        r"""<p>权限来源，入参不填。USER：权限来自用户本身；WORKGROUP：权限来自绑定的工作组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35389,7 +35395,7 @@ class Policy(AbstractModel):
 
     @property
     def Mode(self):
-        r"""授权模式，入参不填。COMMON：普通模式；SENIOR：高级模式。
+        r"""<p>授权模式，入参不填。COMMON：普通模式；SENIOR：高级模式。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35401,7 +35407,7 @@ class Policy(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作者，入参不填。
+        r"""<p>操作者，入参不填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35413,7 +35419,7 @@ class Policy(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""权限创建的时间，入参不填
+        r"""<p>权限创建的时间，入参不填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35425,7 +35431,7 @@ class Policy(AbstractModel):
 
     @property
     def SourceId(self):
-        r"""权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+        r"""<p>权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35437,7 +35443,7 @@ class Policy(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+        r"""<p>权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35449,7 +35455,7 @@ class Policy(AbstractModel):
 
     @property
     def Id(self):
-        r"""策略ID
+        r"""<p>策略ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35461,8 +35467,7 @@ class Policy(AbstractModel):
 
     @property
     def EngineGeneration(self):
-        r"""引擎类型
-
+        r"""<p>引擎类型</p>
         :rtype: str
         """
         return self._EngineGeneration
@@ -35473,7 +35478,7 @@ class Policy(AbstractModel):
 
     @property
     def Model(self):
-        r"""需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+        r"""<p>需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
         :rtype: str
         """
         return self._Model
@@ -35484,7 +35489,7 @@ class Policy(AbstractModel):
 
     @property
     def IsAdminPolicy(self):
-        r"""权限来源是否为管理员
+        r"""<p>权限来源是否为管理员</p>
         :rtype: bool
         """
         return self._IsAdminPolicy
@@ -35492,6 +35497,17 @@ class Policy(AbstractModel):
     @IsAdminPolicy.setter
     def IsAdminPolicy(self, IsAdminPolicy):
         self._IsAdminPolicy = IsAdminPolicy
+
+    @property
+    def PolicyId(self):
+        r"""<p>user和workgroup对应的确定性字符串PolicyId</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
 
 
     def _deserialize(self, params):
@@ -35515,6 +35531,7 @@ class Policy(AbstractModel):
         self._EngineGeneration = params.get("EngineGeneration")
         self._Model = params.get("Model")
         self._IsAdminPolicy = params.get("IsAdminPolicy")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

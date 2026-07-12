@@ -159,26 +159,26 @@ class DetailResults(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Label: 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Label: <p>该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :type Label: str
-        :param _Suggestion: 该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :param _Suggestion: <p>该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :type Suggestion: str
-        :param _Keywords: 该字段用于返回检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值。
+        :param _Keywords: <p>该字段用于返回检测文本命中的关键词信息，用于标注文本违规的具体原因（如：<em>加我微信</em>）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值。</p>
         :type Keywords: list of str
-        :param _Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
+        :param _Score: <p>该字段用于返回当前标签（Label）下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容；<em>色情 0</em>，则表明该文本不属于色情内容。</p>
         :type Score: int
-        :param _LibType: 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
+        :param _LibType: <p>该字段用于返回自定义关键词对应的词库类型，取值为<strong>1</strong>（黑白库）和<strong>2</strong>（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。</p>
         :type LibType: int
-        :param _LibId: 该字段用于返回自定义库的ID，以方便自定义库管理和配置。
+        :param _LibId: <p>该字段用于返回自定义库的ID，以方便自定义库管理和配置。</p>
         :type LibId: str
-        :param _LibName: 该字段用于返回自定义库的名称,以方便自定义库管理和配置。
+        :param _LibName: <p>该字段用于返回自定义库的名称,以方便自定义库管理和配置。</p>
         :type LibName: str
-        :param _SubLabel: 该字段用于返回当前标签（Label）下的二级标签。
+        :param _SubLabel: <p>该字段用于返回当前标签（Label）下的二级标签。</p>
         :type SubLabel: str
-        :param _Tags: 该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。
+        :param _Tags: <p>该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _HitInfos: 该字段用于返回违规文本命中信息
+        :param _HitInfos: <p>该字段用于返回违规文本命中信息</p>
         :type HitInfos: list of HitInfo
         """
         self._Label = None
@@ -194,7 +194,7 @@ class DetailResults(AbstractModel):
 
     @property
     def Label(self):
-        r"""该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""<p>该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :rtype: str
         """
         return self._Label
@@ -205,7 +205,7 @@ class DetailResults(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""<p>该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :rtype: str
         """
         return self._Suggestion
@@ -216,7 +216,7 @@ class DetailResults(AbstractModel):
 
     @property
     def Keywords(self):
-        r"""该字段用于返回检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值。
+        r"""<p>该字段用于返回检测文本命中的关键词信息，用于标注文本违规的具体原因（如：<em>加我微信</em>）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值。</p>
         :rtype: list of str
         """
         return self._Keywords
@@ -227,7 +227,7 @@ class DetailResults(AbstractModel):
 
     @property
     def Score(self):
-        r"""该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
+        r"""<p>该字段用于返回当前标签（Label）下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容；<em>色情 0</em>，则表明该文本不属于色情内容。</p>
         :rtype: int
         """
         return self._Score
@@ -238,7 +238,7 @@ class DetailResults(AbstractModel):
 
     @property
     def LibType(self):
-        r"""该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
+        r"""<p>该字段用于返回自定义关键词对应的词库类型，取值为<strong>1</strong>（黑白库）和<strong>2</strong>（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。</p>
         :rtype: int
         """
         return self._LibType
@@ -249,7 +249,7 @@ class DetailResults(AbstractModel):
 
     @property
     def LibId(self):
-        r"""该字段用于返回自定义库的ID，以方便自定义库管理和配置。
+        r"""<p>该字段用于返回自定义库的ID，以方便自定义库管理和配置。</p>
         :rtype: str
         """
         return self._LibId
@@ -260,7 +260,7 @@ class DetailResults(AbstractModel):
 
     @property
     def LibName(self):
-        r"""该字段用于返回自定义库的名称,以方便自定义库管理和配置。
+        r"""<p>该字段用于返回自定义库的名称,以方便自定义库管理和配置。</p>
         :rtype: str
         """
         return self._LibName
@@ -271,7 +271,7 @@ class DetailResults(AbstractModel):
 
     @property
     def SubLabel(self):
-        r"""该字段用于返回当前标签（Label）下的二级标签。
+        r"""<p>该字段用于返回当前标签（Label）下的二级标签。</p>
         :rtype: str
         """
         return self._SubLabel
@@ -282,7 +282,7 @@ class DetailResults(AbstractModel):
 
     @property
     def Tags(self):
-        r"""该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。
+        r"""<p>该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -294,7 +294,7 @@ class DetailResults(AbstractModel):
 
     @property
     def HitInfos(self):
-        r"""该字段用于返回违规文本命中信息
+        r"""<p>该字段用于返回违规文本命中信息</p>
         :rtype: list of HitInfo
         """
         return self._HitInfos
@@ -840,6 +840,143 @@ class HitInfo(AbstractModel):
         
 
 
+class HitPosition(AbstractModel):
+    r"""命中的位置坐标，是个左闭右开结构，比如原文是“一二三四五”，命中的文本是“二三”，则位置坐标是{1,3}
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: <p>起始下标，含（按 rune/字符计算）,一段文本的起始下标是0</p>
+        :type Start: int
+        :param _End: <p>结束下标，不含（按 rune/字符），比如Start：1，End:3,表示第1，第2个字符，不包含第3个字符</p>
+        :type End: int
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        r"""<p>起始下标，含（按 rune/字符计算）,一段文本的起始下标是0</p>
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""<p>结束下标，不含（按 rune/字符），比如Start：1，End:3,表示第1，第2个字符，不包含第3个字符</p>
+        :rtype: int
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HitSnippetInfo(AbstractModel):
+    r"""导致命中审核标签的原文片段信息，如果不命中任何审核标签，则不会有该片段信息，该片段信息只鹰用于辅助分析导致命中审核标签的文本所在位置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Snippet: <p>命中的文本片段（明文），已还原到预处理前的原文，注意该字段内容在原文中可能不连续，需要结合HitSnippetInfos[].Positions来还原出所在原文位置</p>
+        :type Snippet: str
+        :param _AtomicName: <p>原子能力类型，如果是业务自定义库命中，会给出词库名称</p>
+        :type AtomicName: str
+        :param _AtomicId: <p>原子能力ID，如果是业务自定义库导致命中本次审核标签，该值是词库ID</p>
+        :type AtomicId: str
+        :param _Positions: <p>该命中片段在原文中的位置列表，由于文本片段在原文中可能不连续，它可能是有多段位置信息</p>
+        :type Positions: list of HitPosition
+        """
+        self._Snippet = None
+        self._AtomicName = None
+        self._AtomicId = None
+        self._Positions = None
+
+    @property
+    def Snippet(self):
+        r"""<p>命中的文本片段（明文），已还原到预处理前的原文，注意该字段内容在原文中可能不连续，需要结合HitSnippetInfos[].Positions来还原出所在原文位置</p>
+        :rtype: str
+        """
+        return self._Snippet
+
+    @Snippet.setter
+    def Snippet(self, Snippet):
+        self._Snippet = Snippet
+
+    @property
+    def AtomicName(self):
+        r"""<p>原子能力类型，如果是业务自定义库命中，会给出词库名称</p>
+        :rtype: str
+        """
+        return self._AtomicName
+
+    @AtomicName.setter
+    def AtomicName(self, AtomicName):
+        self._AtomicName = AtomicName
+
+    @property
+    def AtomicId(self):
+        r"""<p>原子能力ID，如果是业务自定义库导致命中本次审核标签，该值是词库ID</p>
+        :rtype: str
+        """
+        return self._AtomicId
+
+    @AtomicId.setter
+    def AtomicId(self, AtomicId):
+        self._AtomicId = AtomicId
+
+    @property
+    def Positions(self):
+        r"""<p>该命中片段在原文中的位置列表，由于文本片段在原文中可能不连续，它可能是有多段位置信息</p>
+        :rtype: list of HitPosition
+        """
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+
+    def _deserialize(self, params):
+        self._Snippet = params.get("Snippet")
+        self._AtomicName = params.get("AtomicName")
+        self._AtomicId = params.get("AtomicId")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = HitPosition()
+                obj._deserialize(item)
+                self._Positions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Positions(AbstractModel):
     r"""标识命中的违规关键词位置信息
 
@@ -1164,30 +1301,21 @@ class TextModerationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Content: 待检测的文本内容，需为UTF-8编码并以Base64格式传入。
-
+        :param _Content: <p>待检测的文本内容，需为UTF-8编码并以Base64格式传入。</p>
         :type Content: str
-        :param _BizType: 接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
-- **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
-- **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
+        :param _BizType: <p>接口使用的识别策略编号，需在<a href="https://console.cloud.tencent.com/cms/clouds/manage">控制台</a>获取。详细获取方式请参考以下链接：</p><ul><li><strong>内容安全</strong>（详见步骤四：策略配置）：<a href="https://cloud.tencent.com/document/product/1124/37119">点击这里</a></li><li><strong>AI生成识别</strong>（详见服务对接-&gt;方式二）：<a href="https://cloud.tencent.com/document/product/1124/118694">点击这里</a></li></ul>
         :type BizType: str
-        :param _DataId: 该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
-取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+        :param _DataId: <p>该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。<br>取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，<strong>长度不超过64个字符</strong>。</p>
         :type DataId: str
-        :param _User: 该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
+        :param _User: <p>该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。</p>
         :type User: :class:`tencentcloud.tms.v20201229.models.User`
-        :param _Device: 该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。
+        :param _Device: <p>该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。</p>
         :type Device: :class:`tencentcloud.tms.v20201229.models.Device`
-        :param _SourceLanguage: Content字段的原始语种，枚举值包括 zh 和 en：
-- 推荐使用 zh
-- en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
-
+        :param _SourceLanguage: <p>Content字段的原始语种，枚举值包括 zh 和 en：</p><ul><li>推荐使用 zh</li><li>en 适用于纯英文内容，耗时较高。若需使用 en，请先通过<a href="https://console.cloud.tencent.com/workorder/category?level1_id=141&amp;level2_id=1287&amp;source=14&amp;data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&amp;step=1">反馈工单</a>确认</li></ul>
         :type SourceLanguage: str
-        :param _Type: 服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
-TEXT：内容安全
-TEXT_AIGC：AI生成识别
+        :param _Type: <p>服务类型，枚举值包括 TEXT 和 TEXT_AIGC：<br>TEXT：内容安全<br>TEXT_AIGC：AI生成识别</p>
         :type Type: str
-        :param _SessionId: 适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
+        :param _SessionId: <p>适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。</p>
         :type SessionId: str
         """
         self._Content = None
@@ -1201,8 +1329,7 @@ TEXT_AIGC：AI生成识别
 
     @property
     def Content(self):
-        r"""待检测的文本内容，需为UTF-8编码并以Base64格式传入。
-
+        r"""<p>待检测的文本内容，需为UTF-8编码并以Base64格式传入。</p>
         :rtype: str
         """
         return self._Content
@@ -1213,9 +1340,7 @@ TEXT_AIGC：AI生成识别
 
     @property
     def BizType(self):
-        r"""接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
-- **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
-- **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
+        r"""<p>接口使用的识别策略编号，需在<a href="https://console.cloud.tencent.com/cms/clouds/manage">控制台</a>获取。详细获取方式请参考以下链接：</p><ul><li><strong>内容安全</strong>（详见步骤四：策略配置）：<a href="https://cloud.tencent.com/document/product/1124/37119">点击这里</a></li><li><strong>AI生成识别</strong>（详见服务对接-&gt;方式二）：<a href="https://cloud.tencent.com/document/product/1124/118694">点击这里</a></li></ul>
         :rtype: str
         """
         return self._BizType
@@ -1226,8 +1351,7 @@ TEXT_AIGC：AI生成识别
 
     @property
     def DataId(self):
-        r"""该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
-取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+        r"""<p>该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。<br>取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，<strong>长度不超过64个字符</strong>。</p>
         :rtype: str
         """
         return self._DataId
@@ -1238,7 +1362,7 @@ TEXT_AIGC：AI生成识别
 
     @property
     def User(self):
-        r"""该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
+        r"""<p>该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。</p>
         :rtype: :class:`tencentcloud.tms.v20201229.models.User`
         """
         return self._User
@@ -1249,7 +1373,7 @@ TEXT_AIGC：AI生成识别
 
     @property
     def Device(self):
-        r"""该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。
+        r"""<p>该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。</p>
         :rtype: :class:`tencentcloud.tms.v20201229.models.Device`
         """
         return self._Device
@@ -1260,10 +1384,7 @@ TEXT_AIGC：AI生成识别
 
     @property
     def SourceLanguage(self):
-        r"""Content字段的原始语种，枚举值包括 zh 和 en：
-- 推荐使用 zh
-- en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
-
+        r"""<p>Content字段的原始语种，枚举值包括 zh 和 en：</p><ul><li>推荐使用 zh</li><li>en 适用于纯英文内容，耗时较高。若需使用 en，请先通过<a href="https://console.cloud.tencent.com/workorder/category?level1_id=141&amp;level2_id=1287&amp;source=14&amp;data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&amp;step=1">反馈工单</a>确认</li></ul>
         :rtype: str
         """
         return self._SourceLanguage
@@ -1274,9 +1395,7 @@ TEXT_AIGC：AI生成识别
 
     @property
     def Type(self):
-        r"""服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
-TEXT：内容安全
-TEXT_AIGC：AI生成识别
+        r"""<p>服务类型，枚举值包括 TEXT 和 TEXT_AIGC：<br>TEXT：内容安全<br>TEXT_AIGC：AI生成识别</p>
         :rtype: str
         """
         return self._Type
@@ -1287,7 +1406,7 @@ TEXT_AIGC：AI生成识别
 
     @property
     def SessionId(self):
-        r"""适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
+        r"""<p>适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。</p>
         :rtype: str
         """
         return self._SessionId
@@ -1327,40 +1446,40 @@ class TextModerationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizType: 该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。
+        :param _BizType: <p>该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。</p>
         :type BizType: str
-        :param _Suggestion: 用于标识对本次请求的处置建议，共三种返回值。
-返回值：**Block**: 建议直接做违规处置，**Review**: 建议人工二次确认，**Pass**: 未识别到风险。
+        :param _Suggestion: <p>用于标识对本次请求的处置建议，共三种返回值。<br>返回值：<strong>Block</strong>: 建议直接做违规处置，<strong>Review</strong>: 建议人工二次确认，<strong>Pass</strong>: 未识别到风险。</p>
         :type Suggestion: str
-        :param _Label: 该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型
+        :param _Label: <p>该字段用于返回检测结果（DetailResults）中所对应的<strong>优先级最高的恶意标签</strong>，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告；以及其他令人反感、不安全或不适宜的内容类型</p>
         :type Label: str
-        :param _SubLabel: 对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。
+        :param _SubLabel: <p>对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。</p>
         :type SubLabel: str
-        :param _Score: 该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。
+        :param _Score: <p>该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。</p>
         :type Score: int
-        :param _Keywords: 该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。
+        :param _Keywords: <p>该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keywords: list of str
-        :param _DetailResults: 该字段返回的检测的详细信息，返回值信息可参阅对应数据结构 DetailResults 的详细描述。
+        :param _DetailResults: <p>该字段返回的检测的详细信息，返回值信息可参阅对应数据结构 DetailResults 的详细描述。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetailResults: list of DetailResults
-        :param _RiskDetails: 该字段标识入参 User 的检测结果，具体内容参阅数据结构 RiskDetails。
+        :param _RiskDetails: <p>该字段标识入参 User 的检测结果，具体内容参阅数据结构 RiskDetails。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDetails: list of RiskDetails
-        :param _Extra: 该字段用于返回根据您的需求配置的附加信息（Extra），如未配置则默认返回值为空。
-备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+        :param _Extra: <p>该字段用于返回根据您的需求配置的附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。</p>
         :type Extra: str
-        :param _DataId: 该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。
+        :param _DataId: <p>该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。</p>
         :type DataId: str
-        :param _ContextText: 历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。
+        :param _ContextText: <p>历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。</p>
         :type ContextText: str
-        :param _SentimentAnalysis: 该字段为历史结构字段，不再推荐使用。
+        :param _SentimentAnalysis: <p>该字段为历史结构字段，不再推荐使用。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SentimentAnalysis: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
-        :param _HitType: 该字段为历史结构字段，不再推荐使用。
+        :param _HitType: <p>该字段为历史结构字段，不再推荐使用。</p>
         :type HitType: str
-        :param _SessionId: 该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。
+        :param _SessionId: <p>该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。</p>
         :type SessionId: str
+        :param _HitSnippetInfos: <p>该字段用于标记导致本次审核命中标签的原文内容位置信息</p>
+        :type HitSnippetInfos: list of HitSnippetInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1378,11 +1497,12 @@ class TextModerationResponse(AbstractModel):
         self._SentimentAnalysis = None
         self._HitType = None
         self._SessionId = None
+        self._HitSnippetInfos = None
         self._RequestId = None
 
     @property
     def BizType(self):
-        r"""该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。
+        r"""<p>该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。</p>
         :rtype: str
         """
         return self._BizType
@@ -1393,8 +1513,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""用于标识对本次请求的处置建议，共三种返回值。
-返回值：**Block**: 建议直接做违规处置，**Review**: 建议人工二次确认，**Pass**: 未识别到风险。
+        r"""<p>用于标识对本次请求的处置建议，共三种返回值。<br>返回值：<strong>Block</strong>: 建议直接做违规处置，<strong>Review</strong>: 建议人工二次确认，<strong>Pass</strong>: 未识别到风险。</p>
         :rtype: str
         """
         return self._Suggestion
@@ -1405,7 +1524,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Label(self):
-        r"""该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型
+        r"""<p>该字段用于返回检测结果（DetailResults）中所对应的<strong>优先级最高的恶意标签</strong>，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告；以及其他令人反感、不安全或不适宜的内容类型</p>
         :rtype: str
         """
         return self._Label
@@ -1416,7 +1535,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def SubLabel(self):
-        r"""对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。
+        r"""<p>对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。</p>
         :rtype: str
         """
         return self._SubLabel
@@ -1427,7 +1546,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Score(self):
-        r"""该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。
+        r"""<p>该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。</p>
         :rtype: int
         """
         return self._Score
@@ -1438,7 +1557,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Keywords(self):
-        r"""该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。
+        r"""<p>该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1450,7 +1569,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def DetailResults(self):
-        r"""该字段返回的检测的详细信息，返回值信息可参阅对应数据结构 DetailResults 的详细描述。
+        r"""<p>该字段返回的检测的详细信息，返回值信息可参阅对应数据结构 DetailResults 的详细描述。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DetailResults
         """
@@ -1462,7 +1581,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def RiskDetails(self):
-        r"""该字段标识入参 User 的检测结果，具体内容参阅数据结构 RiskDetails。
+        r"""<p>该字段标识入参 User 的检测结果，具体内容参阅数据结构 RiskDetails。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RiskDetails
         """
@@ -1474,8 +1593,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""该字段用于返回根据您的需求配置的附加信息（Extra），如未配置则默认返回值为空。
-备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+        r"""<p>该字段用于返回根据您的需求配置的附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。</p>
         :rtype: str
         """
         return self._Extra
@@ -1486,7 +1604,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def DataId(self):
-        r"""该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。
+        r"""<p>该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。</p>
         :rtype: str
         """
         return self._DataId
@@ -1497,7 +1615,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def ContextText(self):
-        r"""历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。
+        r"""<p>历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。</p>
         :rtype: str
         """
         return self._ContextText
@@ -1508,7 +1626,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def SentimentAnalysis(self):
-        r"""该字段为历史结构字段，不再推荐使用。
+        r"""<p>该字段为历史结构字段，不再推荐使用。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
         """
@@ -1520,7 +1638,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def HitType(self):
-        r"""该字段为历史结构字段，不再推荐使用。
+        r"""<p>该字段为历史结构字段，不再推荐使用。</p>
         :rtype: str
         """
         return self._HitType
@@ -1531,7 +1649,7 @@ class TextModerationResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。
+        r"""<p>该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。</p>
         :rtype: str
         """
         return self._SessionId
@@ -1539,6 +1657,17 @@ class TextModerationResponse(AbstractModel):
     @SessionId.setter
     def SessionId(self, SessionId):
         self._SessionId = SessionId
+
+    @property
+    def HitSnippetInfos(self):
+        r"""<p>该字段用于标记导致本次审核命中标签的原文内容位置信息</p>
+        :rtype: list of HitSnippetInfo
+        """
+        return self._HitSnippetInfos
+
+    @HitSnippetInfos.setter
+    def HitSnippetInfos(self, HitSnippetInfos):
+        self._HitSnippetInfos = HitSnippetInfos
 
     @property
     def RequestId(self):
@@ -1579,6 +1708,12 @@ class TextModerationResponse(AbstractModel):
             self._SentimentAnalysis._deserialize(params.get("SentimentAnalysis"))
         self._HitType = params.get("HitType")
         self._SessionId = params.get("SessionId")
+        if params.get("HitSnippetInfos") is not None:
+            self._HitSnippetInfos = []
+            for item in params.get("HitSnippetInfos"):
+                obj = HitSnippetInfo()
+                obj._deserialize(item)
+                self._HitSnippetInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 

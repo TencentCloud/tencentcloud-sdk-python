@@ -1693,6 +1693,125 @@ class AutoScalerRules(AbstractModel):
         
 
 
+class BetaLabel(AbstractModel):
+    r"""灰度命中规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>键</p>
+        :type Key: str
+        :param _Value: <p>值</p>
+        :type Value: :class:`tencentcloud.tse.v20201207.models.BetaLabelMatchString`
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.BetaLabelMatchString`
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        if params.get("Value") is not None:
+            self._Value = BetaLabelMatchString()
+            self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BetaLabelMatchString(AbstractModel):
+    r"""命中匹配方式与值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>EXAT： 精确匹配</li></ul>
+        :type Type: str
+        :param _Value: <p>值</p>
+        :type Value: str
+        :param _ValueType: <p>值类型</p><p>枚举值：</p><ul><li>TEXT： 文本</li></ul>
+        :type ValueType: str
+        """
+        self._Type = None
+        self._Value = None
+        self._ValueType = None
+
+    @property
+    def Type(self):
+        r"""<p>类型</p><p>枚举值：</p><ul><li>EXAT： 精确匹配</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ValueType(self):
+        r"""<p>值类型</p><p>枚举值：</p><ul><li>TEXT： 文本</li></ul>
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._ValueType = params.get("ValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindAutoScalerResourceStrategyToGroupsRequest(AbstractModel):
     r"""BindAutoScalerResourceStrategyToGroups请求参数结构体
 
@@ -6997,44 +7116,48 @@ class ConfigFileRelease(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 配置文件发布id
+        :param _Id: <p>配置文件发布id</p>
         :type Id: int
-        :param _Name: 配置文件发布名称
+        :param _Name: <p>配置文件发布名称</p>
         :type Name: str
-        :param _Namespace: 配置文件发布命名空间
+        :param _Namespace: <p>配置文件发布命名空间</p>
         :type Namespace: str
-        :param _Group: 配置文件发布组
+        :param _Group: <p>配置文件发布组</p>
         :type Group: str
-        :param _FileName: 配置文件发布文件名称
+        :param _FileName: <p>配置文件发布文件名称</p>
         :type FileName: str
-        :param _Content: 配置文件发布内容
+        :param _Content: <p>配置文件发布内容</p>
         :type Content: str
-        :param _Comment: 配置文件发布注释
+        :param _Comment: <p>配置文件发布注释</p>
         :type Comment: str
-        :param _Md5: 配置文件发布Md5
+        :param _Md5: <p>配置文件发布Md5</p>
         :type Md5: str
-        :param _Version: 配置文件发布版本
+        :param _Version: <p>配置文件发布版本</p>
         :type Version: int
-        :param _CreateTime: 配置文件发布创建时间
+        :param _CreateTime: <p>配置文件发布创建时间</p>
         :type CreateTime: str
-        :param _CreateBy: 配置文件发布创建者
+        :param _CreateBy: <p>配置文件发布创建者</p>
         :type CreateBy: str
-        :param _ModifyTime: 配置文件发布修改时间
+        :param _ModifyTime: <p>配置文件发布修改时间</p>
         :type ModifyTime: str
-        :param _ModifyBy: 配置文件发布修改者
+        :param _ModifyBy: <p>配置文件发布修改者</p>
         :type ModifyBy: str
-        :param _ReleaseDescription: 发布描述
+        :param _ReleaseDescription: <p>发布描述</p>
         :type ReleaseDescription: str
-        :param _Active: 是否生效
+        :param _Active: <p>是否生效</p>
         :type Active: bool
-        :param _Format: 格式
+        :param _Format: <p>格式</p>
         :type Format: str
-        :param _ConfigFileId: 配置文件ID
+        :param _ConfigFileId: <p>配置文件ID</p>
         :type ConfigFileId: str
-        :param _ConfigFileSupportedClient: 配置文件类型
+        :param _ConfigFileSupportedClient: <p>配置文件类型</p>
         :type ConfigFileSupportedClient: int
-        :param _ConfigFilePersistent: 配置文件持久化
+        :param _ConfigFilePersistent: <p>配置文件持久化</p>
         :type ConfigFilePersistent: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
+        :param _BetaLabels: <p>灰度标签</p>
+        :type BetaLabels: list of BetaLabel
+        :param _ReleaseType: <p>发布类型</p><p>枚举值：</p><ul><li>gary： 灰度发布</li></ul>
+        :type ReleaseType: str
         """
         self._Id = None
         self._Name = None
@@ -7055,10 +7178,12 @@ class ConfigFileRelease(AbstractModel):
         self._ConfigFileId = None
         self._ConfigFileSupportedClient = None
         self._ConfigFilePersistent = None
+        self._BetaLabels = None
+        self._ReleaseType = None
 
     @property
     def Id(self):
-        r"""配置文件发布id
+        r"""<p>配置文件发布id</p>
         :rtype: int
         """
         return self._Id
@@ -7069,7 +7194,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def Name(self):
-        r"""配置文件发布名称
+        r"""<p>配置文件发布名称</p>
         :rtype: str
         """
         return self._Name
@@ -7080,7 +7205,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""配置文件发布命名空间
+        r"""<p>配置文件发布命名空间</p>
         :rtype: str
         """
         return self._Namespace
@@ -7091,7 +7216,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def Group(self):
-        r"""配置文件发布组
+        r"""<p>配置文件发布组</p>
         :rtype: str
         """
         return self._Group
@@ -7102,7 +7227,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def FileName(self):
-        r"""配置文件发布文件名称
+        r"""<p>配置文件发布文件名称</p>
         :rtype: str
         """
         return self._FileName
@@ -7113,7 +7238,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def Content(self):
-        r"""配置文件发布内容
+        r"""<p>配置文件发布内容</p>
         :rtype: str
         """
         return self._Content
@@ -7124,7 +7249,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def Comment(self):
-        r"""配置文件发布注释
+        r"""<p>配置文件发布注释</p>
         :rtype: str
         """
         return self._Comment
@@ -7135,7 +7260,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def Md5(self):
-        r"""配置文件发布Md5
+        r"""<p>配置文件发布Md5</p>
         :rtype: str
         """
         return self._Md5
@@ -7146,7 +7271,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def Version(self):
-        r"""配置文件发布版本
+        r"""<p>配置文件发布版本</p>
         :rtype: int
         """
         return self._Version
@@ -7157,7 +7282,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""配置文件发布创建时间
+        r"""<p>配置文件发布创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -7168,7 +7293,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def CreateBy(self):
-        r"""配置文件发布创建者
+        r"""<p>配置文件发布创建者</p>
         :rtype: str
         """
         return self._CreateBy
@@ -7179,7 +7304,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""配置文件发布修改时间
+        r"""<p>配置文件发布修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -7190,7 +7315,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def ModifyBy(self):
-        r"""配置文件发布修改者
+        r"""<p>配置文件发布修改者</p>
         :rtype: str
         """
         return self._ModifyBy
@@ -7201,7 +7326,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def ReleaseDescription(self):
-        r"""发布描述
+        r"""<p>发布描述</p>
         :rtype: str
         """
         return self._ReleaseDescription
@@ -7212,7 +7337,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def Active(self):
-        r"""是否生效
+        r"""<p>是否生效</p>
         :rtype: bool
         """
         return self._Active
@@ -7223,7 +7348,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def Format(self):
-        r"""格式
+        r"""<p>格式</p>
         :rtype: str
         """
         return self._Format
@@ -7234,7 +7359,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def ConfigFileId(self):
-        r"""配置文件ID
+        r"""<p>配置文件ID</p>
         :rtype: str
         """
         return self._ConfigFileId
@@ -7245,7 +7370,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def ConfigFileSupportedClient(self):
-        r"""配置文件类型
+        r"""<p>配置文件类型</p>
         :rtype: int
         """
         return self._ConfigFileSupportedClient
@@ -7256,7 +7381,7 @@ class ConfigFileRelease(AbstractModel):
 
     @property
     def ConfigFilePersistent(self):
-        r"""配置文件持久化
+        r"""<p>配置文件持久化</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.ConfigFilePersistent`
         """
         return self._ConfigFilePersistent
@@ -7264,6 +7389,28 @@ class ConfigFileRelease(AbstractModel):
     @ConfigFilePersistent.setter
     def ConfigFilePersistent(self, ConfigFilePersistent):
         self._ConfigFilePersistent = ConfigFilePersistent
+
+    @property
+    def BetaLabels(self):
+        r"""<p>灰度标签</p>
+        :rtype: list of BetaLabel
+        """
+        return self._BetaLabels
+
+    @BetaLabels.setter
+    def BetaLabels(self, BetaLabels):
+        self._BetaLabels = BetaLabels
+
+    @property
+    def ReleaseType(self):
+        r"""<p>发布类型</p><p>枚举值：</p><ul><li>gary： 灰度发布</li></ul>
+        :rtype: str
+        """
+        return self._ReleaseType
+
+    @ReleaseType.setter
+    def ReleaseType(self, ReleaseType):
+        self._ReleaseType = ReleaseType
 
 
     def _deserialize(self, params):
@@ -7288,6 +7435,13 @@ class ConfigFileRelease(AbstractModel):
         if params.get("ConfigFilePersistent") is not None:
             self._ConfigFilePersistent = ConfigFilePersistent()
             self._ConfigFilePersistent._deserialize(params.get("ConfigFilePersistent"))
+        if params.get("BetaLabels") is not None:
+            self._BetaLabels = []
+            for item in params.get("BetaLabels"):
+                obj = BetaLabel()
+                obj._deserialize(item)
+                self._BetaLabels.append(obj)
+        self._ReleaseType = params.get("ReleaseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

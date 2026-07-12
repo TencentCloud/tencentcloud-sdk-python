@@ -1797,6 +1797,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterLevels(self, request):
+        r"""查询可支持的集群类型列表
+
+        :param request: Request instance for DescribeClusterLevels.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterLevelsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterLevelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterLevels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterLevelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterParamLogs(self, request):
         r"""本接口（DescribeClusterParamLogs）用于查询参数修改记录。
 

@@ -5821,13 +5821,13 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EncryptedKeyMaterial: 使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS版本region的KMS， 导入的密钥材料长度要求为 256 bit。
+        :param _EncryptedKeyMaterial: <p>使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS 140-2版本region的KMS， 导入的密钥材料长度要求为 256 bit。</p>
         :type EncryptedKeyMaterial: str
-        :param _ImportToken: 通过调用GetParametersForImport获得的导入令牌。
+        :param _ImportToken: <p>通过调用GetParametersForImport获得的导入令牌。</p>
         :type ImportToken: str
-        :param _KeyId: 指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
+        :param _KeyId: <p>指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。</p>
         :type KeyId: str
-        :param _ValidTo: 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。
+        :param _ValidTo: <p>密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。</p>
         :type ValidTo: int
         """
         self._EncryptedKeyMaterial = None
@@ -5837,7 +5837,7 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def EncryptedKeyMaterial(self):
-        r"""使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS版本region的KMS， 导入的密钥材料长度要求为 256 bit。
+        r"""<p>使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS 140-2版本region的KMS， 导入的密钥材料长度要求为 256 bit。</p>
         :rtype: str
         """
         return self._EncryptedKeyMaterial
@@ -5848,7 +5848,7 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def ImportToken(self):
-        r"""通过调用GetParametersForImport获得的导入令牌。
+        r"""<p>通过调用GetParametersForImport获得的导入令牌。</p>
         :rtype: str
         """
         return self._ImportToken
@@ -5859,7 +5859,7 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
+        r"""<p>指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。</p>
         :rtype: str
         """
         return self._KeyId
@@ -5870,7 +5870,7 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def ValidTo(self):
-        r"""密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。
+        r"""<p>密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。</p>
         :rtype: int
         """
         return self._ValidTo
@@ -5966,61 +5966,61 @@ class KeyMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KeyId: CMK的全局唯一标识
+        :param _KeyId: <p>CMK的全局唯一标识</p>
         :type KeyId: str
-        :param _Alias: 作为密钥更容易辨识，更容易被人看懂的别名
+        :param _Alias: <p>作为密钥更容易辨识，更容易被人看懂的别名</p>
         :type Alias: str
-        :param _CreateTime: 密钥创建时间
+        :param _CreateTime: <p>密钥创建时间</p>
         :type CreateTime: int
-        :param _Description: CMK的描述
+        :param _Description: <p>CMK的描述</p>
         :type Description: str
-        :param _KeyState: CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived
+        :param _KeyState: <p>CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived</p>
         :type KeyState: str
-        :param _KeyUsage: CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2 | ASYMMETRIC_SIGN_VERIFY_SM2 | ASYMMETRIC_SIGN_VERIFY_RSA_2048 | ASYMMETRIC_SIGN_VERIFY_ECC
+        :param _KeyUsage: <p>CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2 | ASYMMETRIC_SIGN_VERIFY_SM2 | ASYMMETRIC_SIGN_VERIFY_RSA_2048 | ASYMMETRIC_SIGN_VERIFY_ECC</p>
         :type KeyUsage: str
-        :param _Type: CMK类型，2 表示符合FIPS标准，4表示符合国密标准
+        :param _Type: <p>CMK类型，2 表示符合FIPS 140-2标准，4表示符合国密标准</p><p>枚举值：</p><ul><li>2： 表示符合FIPS 140-2标准</li><li>4： 表示符合国密标准</li></ul>
         :type Type: int
-        :param _CreatorUin: 创建者
+        :param _CreatorUin: <p>创建者</p>
         :type CreatorUin: int
-        :param _KeyRotationEnabled: 是否开启了密钥轮换功能
+        :param _KeyRotationEnabled: <p>是否开启了密钥轮换功能</p>
         :type KeyRotationEnabled: bool
-        :param _Owner: CMK的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+        :param _Owner: <p>CMK的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名</p>
         :type Owner: str
-        :param _NextRotateTime: 在密钥轮换开启状态下，下次轮换的时间
+        :param _NextRotateTime: <p>在密钥轮换开启状态下，下次轮换的时间</p>
         :type NextRotateTime: int
-        :param _DeletionDate: 计划删除的时间
+        :param _DeletionDate: <p>计划删除的时间</p>
         :type DeletionDate: int
-        :param _Origin: CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+        :param _Origin: <p>CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL</p>
         :type Origin: str
-        :param _ValidTo: 在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
+        :param _ValidTo: <p>在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期</p>
         :type ValidTo: int
-        :param _ResourceId: 资源ID，格式：creatorUin/$creatorUin/$keyId
+        :param _ResourceId: <p>资源ID，格式：creatorUin/$creatorUin/$keyId</p>
         :type ResourceId: str
-        :param _HsmClusterId: HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        :param _HsmClusterId: <p>HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）</p>
         :type HsmClusterId: str
-        :param _RotateDays: 密钥轮转周期（天）
+        :param _RotateDays: <p>密钥轮转周期（天）</p>
         :type RotateDays: int
-        :param _LastRotateTime: 上次乱转时间（Unix timestamp）
+        :param _LastRotateTime: <p>上次轮转时间（Unix timestamp）</p>
         :type LastRotateTime: int
-        :param _IsSyncReplica:  密钥是否是主副本。0:主本，1:同步副本。
+        :param _IsSyncReplica: <p>密钥是否是主副本。0:主本，1:同步副本。</p>
         :type IsSyncReplica: int
-        :param _SourceRegion: 同步的原始地域
+        :param _SourceRegion: <p>同步的原始地域</p>
         :type SourceRegion: str
-        :param _SyncStatus: 密钥同步的状态，0:未同步,1:同步成功,2:同步失败,3:同步中。
+        :param _SyncStatus: <p>密钥同步的状态，0:未同步,1:同步成功,2:同步失败,3:同步中。</p>
         :type SyncStatus: int
-        :param _SyncMessages: 同步的结果描述
+        :param _SyncMessages: <p>同步的结果描述</p>
         :type SyncMessages: str
-        :param _SyncStartTime: 同步的开始时间
+        :param _SyncStartTime: <p>同步的开始时间</p>
         :type SyncStartTime: int
-        :param _SyncEndTime: 同步的结束时间
+        :param _SyncEndTime: <p>同步的结束时间</p>
         :type SyncEndTime: int
-        :param _SourceHsmClusterId: 同步的原始集群，如果为空，是公有云公共集群
+        :param _SourceHsmClusterId: <p>同步的原始集群，如果为空，是公有云公共集群</p>
         :type SourceHsmClusterId: str
-        :param _AccountAppId: 成员账号appId
+        :param _AccountAppId: <p>成员账号appId</p>
         :type AccountAppId: int
-        :param _AccountUin: 成员账号uin
+        :param _AccountUin: <p>成员账号uin</p>
         :type AccountUin: int
-        :param _AccountName: 成员账号名称
+        :param _AccountName: <p>成员账号名称</p>
         :type AccountName: str
         """
         self._KeyId = None
@@ -6054,7 +6054,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""CMK的全局唯一标识
+        r"""<p>CMK的全局唯一标识</p>
         :rtype: str
         """
         return self._KeyId
@@ -6065,7 +6065,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Alias(self):
-        r"""作为密钥更容易辨识，更容易被人看懂的别名
+        r"""<p>作为密钥更容易辨识，更容易被人看懂的别名</p>
         :rtype: str
         """
         return self._Alias
@@ -6076,7 +6076,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""密钥创建时间
+        r"""<p>密钥创建时间</p>
         :rtype: int
         """
         return self._CreateTime
@@ -6087,7 +6087,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Description(self):
-        r"""CMK的描述
+        r"""<p>CMK的描述</p>
         :rtype: str
         """
         return self._Description
@@ -6098,7 +6098,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def KeyState(self):
-        r"""CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived
+        r"""<p>CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived</p>
         :rtype: str
         """
         return self._KeyState
@@ -6109,7 +6109,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def KeyUsage(self):
-        r"""CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2 | ASYMMETRIC_SIGN_VERIFY_SM2 | ASYMMETRIC_SIGN_VERIFY_RSA_2048 | ASYMMETRIC_SIGN_VERIFY_ECC
+        r"""<p>CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2 | ASYMMETRIC_SIGN_VERIFY_SM2 | ASYMMETRIC_SIGN_VERIFY_RSA_2048 | ASYMMETRIC_SIGN_VERIFY_ECC</p>
         :rtype: str
         """
         return self._KeyUsage
@@ -6120,7 +6120,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Type(self):
-        r"""CMK类型，2 表示符合FIPS标准，4表示符合国密标准
+        r"""<p>CMK类型，2 表示符合FIPS 140-2标准，4表示符合国密标准</p><p>枚举值：</p><ul><li>2： 表示符合FIPS 140-2标准</li><li>4： 表示符合国密标准</li></ul>
         :rtype: int
         """
         return self._Type
@@ -6131,7 +6131,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建者
+        r"""<p>创建者</p>
         :rtype: int
         """
         return self._CreatorUin
@@ -6142,7 +6142,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def KeyRotationEnabled(self):
-        r"""是否开启了密钥轮换功能
+        r"""<p>是否开启了密钥轮换功能</p>
         :rtype: bool
         """
         return self._KeyRotationEnabled
@@ -6153,7 +6153,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Owner(self):
-        r"""CMK的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+        r"""<p>CMK的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名</p>
         :rtype: str
         """
         return self._Owner
@@ -6164,7 +6164,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def NextRotateTime(self):
-        r"""在密钥轮换开启状态下，下次轮换的时间
+        r"""<p>在密钥轮换开启状态下，下次轮换的时间</p>
         :rtype: int
         """
         return self._NextRotateTime
@@ -6175,7 +6175,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def DeletionDate(self):
-        r"""计划删除的时间
+        r"""<p>计划删除的时间</p>
         :rtype: int
         """
         return self._DeletionDate
@@ -6186,7 +6186,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def Origin(self):
-        r"""CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+        r"""<p>CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL</p>
         :rtype: str
         """
         return self._Origin
@@ -6197,7 +6197,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def ValidTo(self):
-        r"""在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
+        r"""<p>在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期</p>
         :rtype: int
         """
         return self._ValidTo
@@ -6208,7 +6208,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID，格式：creatorUin/$creatorUin/$keyId
+        r"""<p>资源ID，格式：creatorUin/$creatorUin/$keyId</p>
         :rtype: str
         """
         return self._ResourceId
@@ -6219,7 +6219,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def HsmClusterId(self):
-        r"""HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        r"""<p>HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）</p>
         :rtype: str
         """
         return self._HsmClusterId
@@ -6230,7 +6230,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def RotateDays(self):
-        r"""密钥轮转周期（天）
+        r"""<p>密钥轮转周期（天）</p>
         :rtype: int
         """
         return self._RotateDays
@@ -6241,7 +6241,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def LastRotateTime(self):
-        r"""上次乱转时间（Unix timestamp）
+        r"""<p>上次轮转时间（Unix timestamp）</p>
         :rtype: int
         """
         return self._LastRotateTime
@@ -6252,7 +6252,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def IsSyncReplica(self):
-        r""" 密钥是否是主副本。0:主本，1:同步副本。
+        r"""<p>密钥是否是主副本。0:主本，1:同步副本。</p>
         :rtype: int
         """
         return self._IsSyncReplica
@@ -6263,7 +6263,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def SourceRegion(self):
-        r"""同步的原始地域
+        r"""<p>同步的原始地域</p>
         :rtype: str
         """
         return self._SourceRegion
@@ -6274,7 +6274,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def SyncStatus(self):
-        r"""密钥同步的状态，0:未同步,1:同步成功,2:同步失败,3:同步中。
+        r"""<p>密钥同步的状态，0:未同步,1:同步成功,2:同步失败,3:同步中。</p>
         :rtype: int
         """
         return self._SyncStatus
@@ -6285,7 +6285,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def SyncMessages(self):
-        r"""同步的结果描述
+        r"""<p>同步的结果描述</p>
         :rtype: str
         """
         return self._SyncMessages
@@ -6296,7 +6296,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def SyncStartTime(self):
-        r"""同步的开始时间
+        r"""<p>同步的开始时间</p>
         :rtype: int
         """
         return self._SyncStartTime
@@ -6307,7 +6307,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def SyncEndTime(self):
-        r"""同步的结束时间
+        r"""<p>同步的结束时间</p>
         :rtype: int
         """
         return self._SyncEndTime
@@ -6318,7 +6318,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def SourceHsmClusterId(self):
-        r"""同步的原始集群，如果为空，是公有云公共集群
+        r"""<p>同步的原始集群，如果为空，是公有云公共集群</p>
         :rtype: str
         """
         return self._SourceHsmClusterId
@@ -6329,7 +6329,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def AccountAppId(self):
-        r"""成员账号appId
+        r"""<p>成员账号appId</p>
         :rtype: int
         """
         return self._AccountAppId
@@ -6340,7 +6340,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def AccountUin(self):
-        r"""成员账号uin
+        r"""<p>成员账号uin</p>
         :rtype: int
         """
         return self._AccountUin
@@ -6351,7 +6351,7 @@ class KeyMetadata(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""成员账号名称
+        r"""<p>成员账号名称</p>
         :rtype: str
         """
         return self._AccountName

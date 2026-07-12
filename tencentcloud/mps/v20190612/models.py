@@ -13497,6 +13497,42 @@ class AigcVideoExtraParam(AbstractModel):
         
 
 
+class AigcVideoReferenceAudioInfo(AbstractModel):
+    r"""参考音频信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioUrl: <p>参考音频URL信息。需外网可访问。</p>
+        :type AudioUrl: str
+        """
+        self._AudioUrl = None
+
+    @property
+    def AudioUrl(self):
+        r"""<p>参考音频URL信息。需外网可访问。</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+
+    def _deserialize(self, params):
+        self._AudioUrl = params.get("AudioUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcVideoReferenceImageInfo(AbstractModel):
     r"""用于AIGC生视频创作的参考图片信息。
 
@@ -21089,6 +21125,8 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type ImageInfos: list of AigcVideoReferenceImageInfo
         :param _VideoInfos: <p>目前仅 Kling O1、Kling 3.0-Omni、Vidu q2-pro、H2 1.0 支持参考视频信息传入。</p><ol><li>Kling O1、3.0-Omni 可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声。</li><li>Vidu q2-pro 支持视频参考。</li><li>H2 1.0 支持视频参考。</li></ol>
         :type VideoInfos: list of AigcVideoReferenceVideoInfo
+        :param _AudioInfos: <p>部分模型支持参考音频传入，使用URL传入。</p>
+        :type AudioInfos: list of AigcVideoReferenceAudioInfo
         :param _Duration: <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
         :type Duration: int
         :param _ExtraParameters: <p>用于传入要求的额外参数。</p>
@@ -21110,6 +21148,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._LastImageUrl = None
         self._ImageInfos = None
         self._VideoInfos = None
+        self._AudioInfos = None
         self._Duration = None
         self._ExtraParameters = None
         self._StoreCosParam = None
@@ -21227,6 +21266,17 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._VideoInfos = VideoInfos
 
     @property
+    def AudioInfos(self):
+        r"""<p>部分模型支持参考音频传入，使用URL传入。</p>
+        :rtype: list of AigcVideoReferenceAudioInfo
+        """
+        return self._AudioInfos
+
+    @AudioInfos.setter
+    def AudioInfos(self, AudioInfos):
+        self._AudioInfos = AudioInfos
+
+    @property
     def Duration(self):
         r"""<p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
         :rtype: int
@@ -21303,6 +21353,12 @@ class CreateAigcVideoTaskRequest(AbstractModel):
                 obj = AigcVideoReferenceVideoInfo()
                 obj._deserialize(item)
                 self._VideoInfos.append(obj)
+        if params.get("AudioInfos") is not None:
+            self._AudioInfos = []
+            for item in params.get("AudioInfos"):
+                obj = AigcVideoReferenceAudioInfo()
+                obj._deserialize(item)
+                self._AudioInfos.append(obj)
         self._Duration = params.get("Duration")
         if params.get("ExtraParameters") is not None:
             self._ExtraParameters = AigcVideoExtraParam()

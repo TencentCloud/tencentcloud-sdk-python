@@ -17876,6 +17876,168 @@ class AudioVolumeParam(AbstractModel):
         
 
 
+class BeautyEffectItem(AbstractModel):
+    r"""图片美颜效果项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>是否开启美颜。</p><p>枚举值：</p><ul><li>ON： 开</li><li>OFF： 关</li></ul>
+        :type Switch: str
+        :param _Type: <p>美颜项。</p>
+        :type Type: str
+        :param _Value: <p>美颜强度。</p>
+        :type Value: int
+        :param _ResourcePath: <p>附加资源路径。</p>
+        :type ResourcePath: str
+        :param _ExtInfo: <p>附加信息。</p>
+        :type ExtInfo: str
+        """
+        self._Switch = None
+        self._Type = None
+        self._Value = None
+        self._ResourcePath = None
+        self._ExtInfo = None
+
+    @property
+    def Switch(self):
+        r"""<p>是否开启美颜。</p><p>枚举值：</p><ul><li>ON： 开</li><li>OFF： 关</li></ul>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>美颜项。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""<p>美颜强度。</p>
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ResourcePath(self):
+        r"""<p>附加资源路径。</p>
+        :rtype: str
+        """
+        return self._ResourcePath
+
+    @ResourcePath.setter
+    def ResourcePath(self, ResourcePath):
+        self._ResourcePath = ResourcePath
+
+    @property
+    def ExtInfo(self):
+        r"""<p>附加信息。</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._ResourcePath = params.get("ResourcePath")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BeautyFilterItem(AbstractModel):
+    r"""美颜滤镜项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>是否开启滤镜。</p><p>枚举值：</p><ul><li>ON： 开</li><li>OFF： 关</li></ul>
+        :type Switch: str
+        :param _Type: <p>滤镜项。</p>
+        :type Type: str
+        :param _Value: <p>滤镜强度。</p>
+        :type Value: int
+        """
+        self._Switch = None
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Switch(self):
+        r"""<p>是否开启滤镜。</p><p>枚举值：</p><ul><li>ON： 开</li><li>OFF： 关</li></ul>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>滤镜项。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""<p>滤镜强度。</p>
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlackWhiteEdgeConfigureInfo(AbstractModel):
     r"""视频画面黑边、白边、黑屏、白屏检测的控制参数。
 
@@ -52163,6 +52325,67 @@ class IPFilterPolicy(AbstractModel):
         
 
 
+class ImageBeautyConfig(AbstractModel):
+    r"""图片美颜配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeautyEffectItems: <p>美颜效果项。</p>
+        :type BeautyEffectItems: list of BeautyEffectItem
+        :param _BeautyFilterItems: <p>美颜滤镜项。</p>
+        :type BeautyFilterItems: list of BeautyFilterItem
+        """
+        self._BeautyEffectItems = None
+        self._BeautyFilterItems = None
+
+    @property
+    def BeautyEffectItems(self):
+        r"""<p>美颜效果项。</p>
+        :rtype: list of BeautyEffectItem
+        """
+        return self._BeautyEffectItems
+
+    @BeautyEffectItems.setter
+    def BeautyEffectItems(self, BeautyEffectItems):
+        self._BeautyEffectItems = BeautyEffectItems
+
+    @property
+    def BeautyFilterItems(self):
+        r"""<p>美颜滤镜项。</p>
+        :rtype: list of BeautyFilterItem
+        """
+        return self._BeautyFilterItems
+
+    @BeautyFilterItems.setter
+    def BeautyFilterItems(self, BeautyFilterItems):
+        self._BeautyFilterItems = BeautyFilterItems
+
+
+    def _deserialize(self, params):
+        if params.get("BeautyEffectItems") is not None:
+            self._BeautyEffectItems = []
+            for item in params.get("BeautyEffectItems"):
+                obj = BeautyEffectItem()
+                obj._deserialize(item)
+                self._BeautyEffectItems.append(obj)
+        if params.get("BeautyFilterItems") is not None:
+            self._BeautyFilterItems = []
+            for item in params.get("BeautyFilterItems"):
+                obj = BeautyFilterItem()
+                obj._deserialize(item)
+                self._BeautyFilterItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageBlur(AbstractModel):
     r"""图片模糊处理。
 
@@ -75382,20 +75605,23 @@ class ProcessImageAsyncInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: 图片处理的FileId。
+        :param _FileId: <p>图片处理的FileId。</p>
         :type FileId: str
-        :param _ImageTaskInput: 图片处理参数。
+        :param _Url: <p>图片URL。</p>
+        :type Url: str
+        :param _ImageTaskInput: <p>图片处理参数。</p>
         :type ImageTaskInput: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
-        :param _OutputConfig: 图片处理任务的输出媒体文件配置。
+        :param _OutputConfig: <p>图片处理任务的输出媒体文件配置。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
         """
         self._FileId = None
+        self._Url = None
         self._ImageTaskInput = None
         self._OutputConfig = None
 
     @property
     def FileId(self):
-        r"""图片处理的FileId。
+        r"""<p>图片处理的FileId。</p>
         :rtype: str
         """
         return self._FileId
@@ -75405,8 +75631,19 @@ class ProcessImageAsyncInput(AbstractModel):
         self._FileId = FileId
 
     @property
+    def Url(self):
+        r"""<p>图片URL。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
     def ImageTaskInput(self):
-        r"""图片处理参数。
+        r"""<p>图片处理参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
         """
         return self._ImageTaskInput
@@ -75417,7 +75654,7 @@ class ProcessImageAsyncInput(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""图片处理任务的输出媒体文件配置。
+        r"""<p>图片处理任务的输出媒体文件配置。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
         """
         return self._OutputConfig
@@ -75429,6 +75666,7 @@ class ProcessImageAsyncInput(AbstractModel):
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
         if params.get("ImageTaskInput") is not None:
             self._ImageTaskInput = ProcessImageAsyncTaskInput()
             self._ImageTaskInput._deserialize(params.get("ImageTaskInput"))
@@ -75951,25 +76189,29 @@ class ProcessImageAsyncResponse(AbstractModel):
 
 
 class ProcessImageAsyncTask(AbstractModel):
-    r"""图片异步处理配置
+    r"""图片异步处理配置。
 
     """
 
     def __init__(self):
         r"""
-        :param _EncodeConfig: 图片转码输出配置。
+        :param _EncodeConfig: <p>图片转码输出配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncodeConfig: :class:`tencentcloud.vod.v20180717.models.ImageEncodeConfig`
-        :param _EnhanceConfig: 图片增强配置。
+        :param _EnhanceConfig: <p>图片增强配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnhanceConfig: :class:`tencentcloud.vod.v20180717.models.ImageEnhanceConfig`
+        :param _BeautyConfig: <p>图片美颜配置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeautyConfig: :class:`tencentcloud.vod.v20180717.models.ImageBeautyConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
+        self._BeautyConfig = None
 
     @property
     def EncodeConfig(self):
-        r"""图片转码输出配置。
+        r"""<p>图片转码输出配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ImageEncodeConfig`
         """
@@ -75981,7 +76223,7 @@ class ProcessImageAsyncTask(AbstractModel):
 
     @property
     def EnhanceConfig(self):
-        r"""图片增强配置。
+        r"""<p>图片增强配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ImageEnhanceConfig`
         """
@@ -75991,6 +76233,18 @@ class ProcessImageAsyncTask(AbstractModel):
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def BeautyConfig(self):
+        r"""<p>图片美颜配置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImageBeautyConfig`
+        """
+        return self._BeautyConfig
+
+    @BeautyConfig.setter
+    def BeautyConfig(self, BeautyConfig):
+        self._BeautyConfig = BeautyConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -75999,6 +76253,9 @@ class ProcessImageAsyncTask(AbstractModel):
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = ImageEnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        if params.get("BeautyConfig") is not None:
+            self._BeautyConfig = ImageBeautyConfig()
+            self._BeautyConfig._deserialize(params.get("BeautyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -7419,21 +7419,20 @@ class CreateContractComparisonTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行合同审查任务的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行合同审查任务的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _OriginFileResourceId: 原版文件ID，对比基准的旧版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :param _OriginFileResourceId: <p>原版文件ID，对比基准的旧版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。</p>
         :type OriginFileResourceId: str
-        :param _DiffFileResourceId: 新版文件ID，与旧版进行对比的新版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        :param _DiffFileResourceId: <p>新版文件ID，与旧版进行对比的新版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。</p>
         :type DiffFileResourceId: str
-        :param _Comment: 对比任务备注，长度不能超过50个字符。
+        :param _Comment: <p>对比任务备注，长度不能超过50个字符。</p>
         :type Comment: str
-        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
-
-在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        :param _UserData: <p>调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。</p><p>在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2">回调通知</a>模块。</p>
         :type UserData: str
-        :param _Tags: 标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+        :param _Tags: <p>标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。</p>
         :type Tags: list of Tag
+        :param _RevisionOperation: <p>文档修订操作类型，对比任务执行前处理修订内容，适用于doc、docx存在修订情况。<br> 类型如下： <ul> <li> <strong>0</strong>：不做任何操作</li> <li> <strong>1</strong>：接受所有修订</li> </ul></p>
+        :type RevisionOperation: int
         """
         self._Operator = None
         self._OriginFileResourceId = None
@@ -7441,11 +7440,11 @@ class CreateContractComparisonTaskRequest(AbstractModel):
         self._Comment = None
         self._UserData = None
         self._Tags = None
+        self._RevisionOperation = None
 
     @property
     def Operator(self):
-        r"""执行合同审查任务的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行合同审查任务的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -7456,7 +7455,7 @@ class CreateContractComparisonTaskRequest(AbstractModel):
 
     @property
     def OriginFileResourceId(self):
-        r"""原版文件ID，对比基准的旧版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        r"""<p>原版文件ID，对比基准的旧版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。</p>
         :rtype: str
         """
         return self._OriginFileResourceId
@@ -7467,7 +7466,7 @@ class CreateContractComparisonTaskRequest(AbstractModel):
 
     @property
     def DiffFileResourceId(self):
-        r"""新版文件ID，与旧版进行对比的新版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+        r"""<p>新版文件ID，与旧版进行对比的新版本文件唯一标识，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。</p>
         :rtype: str
         """
         return self._DiffFileResourceId
@@ -7478,7 +7477,7 @@ class CreateContractComparisonTaskRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""对比任务备注，长度不能超过50个字符。
+        r"""<p>对比任务备注，长度不能超过50个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -7489,9 +7488,7 @@ class CreateContractComparisonTaskRequest(AbstractModel):
 
     @property
     def UserData(self):
-        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
-
-在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
+        r"""<p>调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。</p><p>在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2">回调通知</a>模块。</p>
         :rtype: str
         """
         return self._UserData
@@ -7502,7 +7499,7 @@ class CreateContractComparisonTaskRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。
+        r"""<p>标签列表，用户自定义的键值对（Key-Value），可绑定到资源上，用于资源的分类、管理和访问控制。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -7510,6 +7507,17 @@ class CreateContractComparisonTaskRequest(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def RevisionOperation(self):
+        r"""<p>文档修订操作类型，对比任务执行前处理修订内容，适用于doc、docx存在修订情况。<br> 类型如下： <ul> <li> <strong>0</strong>：不做任何操作</li> <li> <strong>1</strong>：接受所有修订</li> </ul></p>
+        :rtype: int
+        """
+        return self._RevisionOperation
+
+    @RevisionOperation.setter
+    def RevisionOperation(self, RevisionOperation):
+        self._RevisionOperation = RevisionOperation
 
 
     def _deserialize(self, params):
@@ -7526,6 +7534,7 @@ class CreateContractComparisonTaskRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._RevisionOperation = params.get("RevisionOperation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7543,9 +7552,9 @@ class CreateContractComparisonTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+        :param _UserData: <p>调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。</p>
         :type UserData: str
-        :param _TaskId: 合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractComparisonTask" target="_blank">查询合同对比任务结果</a>查看对比任务的结果。
+        :param _TaskId: <p>合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractComparisonTask" target="_blank">查询合同对比任务结果</a>查看对比任务的结果。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7556,7 +7565,7 @@ class CreateContractComparisonTaskResponse(AbstractModel):
 
     @property
     def UserData(self):
-        r"""调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。
+        r"""<p>调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1024长度。</p>
         :rtype: str
         """
         return self._UserData
@@ -7567,7 +7576,7 @@ class CreateContractComparisonTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractComparisonTask" target="_blank">查询合同对比任务结果</a>查看对比任务的结果。
+        r"""<p>合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractComparisonTask" target="_blank">查询合同对比任务结果</a>查看对比任务的结果。</p>
         :rtype: str
         """
         return self._TaskId
@@ -9285,13 +9294,13 @@ class CreateEmployeeChangeUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _Operator: 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _UserId: 待修改的员工UserId
+        :param _UserId: <p>待修改的员工UserId</p>
         :type UserId: str
-        :param _NewMobile: 待修改的员工手机号
+        :param _NewMobile: <p>待修改的员工手机号</p>
         :type NewMobile: str
         """
         self._Agent = None
@@ -9301,7 +9310,7 @@ class CreateEmployeeChangeUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -9312,7 +9321,7 @@ class CreateEmployeeChangeUrlRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -9323,7 +9332,7 @@ class CreateEmployeeChangeUrlRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""待修改的员工UserId
+        r"""<p>待修改的员工UserId</p>
         :rtype: str
         """
         return self._UserId
@@ -9334,7 +9343,7 @@ class CreateEmployeeChangeUrlRequest(AbstractModel):
 
     @property
     def NewMobile(self):
-        r"""待修改的员工手机号
+        r"""<p>待修改的员工手机号</p>
         :rtype: str
         """
         return self._NewMobile
@@ -9370,11 +9379,9 @@ class CreateEmployeeChangeUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MiniAppPath: 修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> 
+        :param _MiniAppPath: <p>修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a></p>
         :type MiniAppPath: str
-        :param _ExpireTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
-
-
+        :param _ExpireTime: <p>链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。</p>
         :type ExpireTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9385,7 +9392,7 @@ class CreateEmployeeChangeUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        r"""修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> 
+        r"""<p>修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a></p>
         :rtype: str
         """
         return self._MiniAppPath
@@ -9396,9 +9403,7 @@ class CreateEmployeeChangeUrlResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
-
-
+        r"""<p>链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -23532,13 +23537,13 @@ class DescribeBillUsageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+        :param _StartTime: <p>查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于90天</p>
         :type StartTime: str
-        :param _EndTime: 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+        :param _EndTime: <p>查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于90天</p>
         :type EndTime: str
-        :param _QuotaType: 查询的套餐类型 （选填 ）不传则查询所有套餐；目前支持:<ul><li>**CloudEnterprise**: 企业版合同</li><li>**SingleSignature**: 单方签章</li><li>**CloudProve**: 签署报告</li><li>**CloudOnlineSign**: 腾讯会议在线签约</li><li>**ChannelWeCard**: 微工卡</li><li>**SignFlow**: 合同套餐</li><li>**SignFace**: 签署意愿（人脸识别）</li><li>**SignPassword**: 签署意愿（密码）</li><li>**SignSMS**: 签署意愿（短信）</li><li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li><li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li><li>**OrgEssAuth**: 签署企业实名</li><li>**FlowNotify**: 短信通知</li><li>**AuthService**: 企业工商信息查询</li></ul>
+        :param _QuotaType: <p>查询的套餐类型 （选填 ）不传则查询所有套餐；目前支持:<ul><li><strong>CloudEnterprise</strong>: 企业版合同</li><li><strong>SingleSignature</strong>: 单方签章</li><li><strong>CloudProve</strong>: 签署报告</li><li><strong>CloudOnlineSign</strong>: 腾讯会议在线签约</li><li><strong>ChannelWeCard</strong>: 微工卡</li><li><strong>SignFlow</strong>: 合同套餐</li><li><strong>SignFace</strong>: 签署意愿（人脸识别）</li><li><strong>SignPassword</strong>: 签署意愿（密码）</li><li><strong>SignSMS</strong>: 签署意愿（短信）</li><li><strong>PersonalEssAuth</strong>: 签署人实名（腾讯电子签认证）</li><li><strong>PersonalThirdAuth</strong>: 签署人实名（信任第三方认证）</li><li><strong>OrgEssAuth</strong>: 签署企业实名</li><li><strong>FlowNotify</strong>: 短信通知</li><li><strong>AuthService</strong>: 企业工商信息查询</li></ul></p>
         :type QuotaType: str
-        :param _DisplaySubEnterprise: 是否展示集团子企业的明细，默认否
+        :param _DisplaySubEnterprise: <p>是否展示集团子企业的明细，默认否</p>
         :type DisplaySubEnterprise: bool
         """
         self._StartTime = None
@@ -23548,7 +23553,7 @@ class DescribeBillUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+        r"""<p>查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于90天</p>
         :rtype: str
         """
         return self._StartTime
@@ -23559,7 +23564,7 @@ class DescribeBillUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于90天
+        r"""<p>查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于90天</p>
         :rtype: str
         """
         return self._EndTime
@@ -23570,7 +23575,7 @@ class DescribeBillUsageRequest(AbstractModel):
 
     @property
     def QuotaType(self):
-        r"""查询的套餐类型 （选填 ）不传则查询所有套餐；目前支持:<ul><li>**CloudEnterprise**: 企业版合同</li><li>**SingleSignature**: 单方签章</li><li>**CloudProve**: 签署报告</li><li>**CloudOnlineSign**: 腾讯会议在线签约</li><li>**ChannelWeCard**: 微工卡</li><li>**SignFlow**: 合同套餐</li><li>**SignFace**: 签署意愿（人脸识别）</li><li>**SignPassword**: 签署意愿（密码）</li><li>**SignSMS**: 签署意愿（短信）</li><li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li><li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li><li>**OrgEssAuth**: 签署企业实名</li><li>**FlowNotify**: 短信通知</li><li>**AuthService**: 企业工商信息查询</li></ul>
+        r"""<p>查询的套餐类型 （选填 ）不传则查询所有套餐；目前支持:<ul><li><strong>CloudEnterprise</strong>: 企业版合同</li><li><strong>SingleSignature</strong>: 单方签章</li><li><strong>CloudProve</strong>: 签署报告</li><li><strong>CloudOnlineSign</strong>: 腾讯会议在线签约</li><li><strong>ChannelWeCard</strong>: 微工卡</li><li><strong>SignFlow</strong>: 合同套餐</li><li><strong>SignFace</strong>: 签署意愿（人脸识别）</li><li><strong>SignPassword</strong>: 签署意愿（密码）</li><li><strong>SignSMS</strong>: 签署意愿（短信）</li><li><strong>PersonalEssAuth</strong>: 签署人实名（腾讯电子签认证）</li><li><strong>PersonalThirdAuth</strong>: 签署人实名（信任第三方认证）</li><li><strong>OrgEssAuth</strong>: 签署企业实名</li><li><strong>FlowNotify</strong>: 短信通知</li><li><strong>AuthService</strong>: 企业工商信息查询</li></ul></p>
         :rtype: str
         """
         return self._QuotaType
@@ -23581,7 +23586,7 @@ class DescribeBillUsageRequest(AbstractModel):
 
     @property
     def DisplaySubEnterprise(self):
-        r"""是否展示集团子企业的明细，默认否
+        r"""<p>是否展示集团子企业的明细，默认否</p>
         :rtype: bool
         """
         return self._DisplaySubEnterprise
@@ -23613,9 +23618,9 @@ class DescribeBillUsageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Summary: 企业套餐余额及使用情况
+        :param _Summary: <p>企业套餐余额及使用情况</p>
         :type Summary: list of OrgBillSummary
-        :param _SubOrgSummary: 集团子企业套餐使用情况
+        :param _SubOrgSummary: <p>集团子企业套餐使用情况</p>
         :type SubOrgSummary: list of SubOrgBillSummary
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23626,7 +23631,7 @@ class DescribeBillUsageResponse(AbstractModel):
 
     @property
     def Summary(self):
-        r"""企业套餐余额及使用情况
+        r"""<p>企业套餐余额及使用情况</p>
         :rtype: list of OrgBillSummary
         """
         return self._Summary
@@ -23637,7 +23642,7 @@ class DescribeBillUsageResponse(AbstractModel):
 
     @property
     def SubOrgSummary(self):
-        r"""集团子企业套餐使用情况
+        r"""<p>集团子企业套餐使用情况</p>
         :rtype: list of SubOrgBillSummary
         """
         return self._SubOrgSummary
@@ -30177,16 +30182,13 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        :param _SceneKey: <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
-        :param _UserInfo: 要查询状态的用户信息, 包括名字,身份证等
+        :param _UserInfo: <p>要查询状态的用户信息, 包括名字,身份证等</p>
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -30196,8 +30198,7 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -30208,8 +30209,7 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        r"""<p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
         return self._SceneKey
@@ -30220,7 +30220,7 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
 
     @property
     def UserInfo(self):
-        r"""要查询状态的用户信息, 包括名字,身份证等
+        r"""<p>要查询状态的用户信息, 包括名字,身份证等</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -30231,8 +30231,7 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -30270,19 +30269,15 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsOpen: 查询用户是否已开通自动签
+        :param _IsOpen: <p>查询用户是否已开通自动签</p>
         :type IsOpen: bool
-        :param _LicenseFrom: 自动签许可生效时间。当且仅当已通过许可开通自动签时有值。
-
-值为unix时间戳,单位为秒。
+        :param _LicenseFrom: <p>自动签许可生效时间。当且仅当已通过许可开通自动签时有值。</p><p>值为unix时间戳,单位为秒。</p>
         :type LicenseFrom: int
-        :param _LicenseTo: 自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
-
-值为unix时间戳,单位为秒。
+        :param _LicenseTo: <p>自动签许可到期时间。当且仅当已通过许可开通自动签时有值。</p><p>值为unix时间戳,单位为秒。</p>
         :type LicenseTo: int
-        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。<ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li><li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
+        :param _LicenseType: <p>设置用户开通自动签时是否绑定个人自动签账号许可。<ul><li><strong>0</strong>: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: <code>不可解绑释放更换他人</code></li><li><strong>1</strong>: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul></p>
         :type LicenseType: int
-        :param _SealId: 用户开通自动签指定使用的印章，为空则未设置印章，需重新进入开通链接设置印章。
+        :param _SealId: <p>用户开通自动签指定使用的印章，为空则未设置印章，需重新进入开通链接设置印章。</p>
         :type SealId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30296,7 +30291,7 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def IsOpen(self):
-        r"""查询用户是否已开通自动签
+        r"""<p>查询用户是否已开通自动签</p>
         :rtype: bool
         """
         return self._IsOpen
@@ -30307,9 +30302,7 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def LicenseFrom(self):
-        r"""自动签许可生效时间。当且仅当已通过许可开通自动签时有值。
-
-值为unix时间戳,单位为秒。
+        r"""<p>自动签许可生效时间。当且仅当已通过许可开通自动签时有值。</p><p>值为unix时间戳,单位为秒。</p>
         :rtype: int
         """
         return self._LicenseFrom
@@ -30320,9 +30313,7 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def LicenseTo(self):
-        r"""自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
-
-值为unix时间戳,单位为秒。
+        r"""<p>自动签许可到期时间。当且仅当已通过许可开通自动签时有值。</p><p>值为unix时间戳,单位为秒。</p>
         :rtype: int
         """
         return self._LicenseTo
@@ -30333,7 +30324,7 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""设置用户开通自动签时是否绑定个人自动签账号许可。<ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li><li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
+        r"""<p>设置用户开通自动签时是否绑定个人自动签账号许可。<ul><li><strong>0</strong>: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: <code>不可解绑释放更换他人</code></li><li><strong>1</strong>: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul></p>
         :rtype: int
         """
         return self._LicenseType
@@ -30344,7 +30335,7 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
     @property
     def SealId(self):
-        r"""用户开通自动签指定使用的印章，为空则未设置印章，需重新进入开通链接设置印章。
+        r"""<p>用户开通自动签指定使用的印章，为空则未设置印章，需重新进入开通链接设置印章。</p>
         :rtype: str
         """
         return self._SealId
@@ -30381,16 +30372,13 @@ class DescribeUserFlowTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _Filters: 搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。
-<ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模板类型id列表。</li></ul>
+        :param _Filters: <p>搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。</p><ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模板类型id列表。</li></ul>
         :type Filters: list of Filter
-        :param _QueryBindTemplate: 查询绑定了模板的用户合同类型 <ul> <li>false（默认值），查询用户合同类型</li> <li>true，查询绑定了模板的用户合同类型</li> </ul>	
+        :param _QueryBindTemplate: <p>查询绑定了模板的用户合同类型 <ul> <li>false（默认值），查询用户合同类型</li> <li>true，查询绑定了模板的用户合同类型</li> </ul></p>
         :type QueryBindTemplate: bool
         """
         self._Operator = None
@@ -30400,8 +30388,7 @@ class DescribeUserFlowTypeRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -30412,8 +30399,7 @@ class DescribeUserFlowTypeRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -30424,8 +30410,7 @@ class DescribeUserFlowTypeRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。
-<ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模板类型id列表。</li></ul>
+        r"""<p>搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。</p><ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模板类型id列表。</li></ul>
         :rtype: list of Filter
         """
         return self._Filters
@@ -30436,7 +30421,7 @@ class DescribeUserFlowTypeRequest(AbstractModel):
 
     @property
     def QueryBindTemplate(self):
-        r"""查询绑定了模板的用户合同类型 <ul> <li>false（默认值），查询用户合同类型</li> <li>true，查询绑定了模板的用户合同类型</li> </ul>	
+        r"""<p>查询绑定了模板的用户合同类型 <ul> <li>false（默认值），查询用户合同类型</li> <li>true，查询绑定了模板的用户合同类型</li> </ul></p>
         :rtype: bool
         """
         return self._QueryBindTemplate
@@ -30477,7 +30462,7 @@ class DescribeUserFlowTypeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AllUserFlowTypes: 查询到的所有用户合同类型列表	
+        :param _AllUserFlowTypes: <p>查询到的所有用户合同类型列表</p>
         :type AllUserFlowTypes: list of TemplateUserFlowType
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30487,7 +30472,7 @@ class DescribeUserFlowTypeResponse(AbstractModel):
 
     @property
     def AllUserFlowTypes(self):
-        r"""查询到的所有用户合同类型列表	
+        r"""<p>查询到的所有用户合同类型列表</p>
         :rtype: list of TemplateUserFlowType
         """
         return self._AllUserFlowTypes
@@ -30705,16 +30690,13 @@ class DisableUserAutoSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        :param _SceneKey: <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
-        :param _UserInfo: 需要关闭自动签的个人的信息，如姓名，证件信息等。
+        :param _UserInfo: <p>需要关闭自动签的个人的信息，如姓名，证件信息等。</p>
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -30724,8 +30706,7 @@ class DisableUserAutoSignRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -30736,8 +30717,7 @@ class DisableUserAutoSignRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        r"""<p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :rtype: str
         """
         return self._SceneKey
@@ -30748,7 +30728,7 @@ class DisableUserAutoSignRequest(AbstractModel):
 
     @property
     def UserInfo(self):
-        r"""需要关闭自动签的个人的信息，如姓名，证件信息等。
+        r"""<p>需要关闭自动签的个人的信息，如姓名，证件信息等。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -30759,8 +30739,7 @@ class DisableUserAutoSignRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -31147,23 +31126,13 @@ class ExportContractComparisonTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行合同审查任务的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行合同审查任务的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _TaskId: 合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+        :param _TaskId: <p>合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。</p>
         :type TaskId: str
-        :param _ExportType: 导出对比结果文件类型。
-类型如下：
-<ul>
-<li> **0**：【PDF】以新合同文件为基础，导出带有可视化对比点标注的PDF文件。</li>
-<li> **1**：【EXCEL】导出结构化的对比点明细表格，以列表形式罗列每一个差异点，包含改动位置、类型、标签及修改前后的完整内容。</li>
-</ul>
+        :param _ExportType: <p>导出对比结果文件类型。<br>类型如下：</p><ul><li> **0**：【PDF】以新合同文件为基础，导出带有可视化对比点标注的PDF文件。</li><li> **1**：【EXCEL】导出结构化的对比点明细表格，以列表形式罗列每一个差异点，包含改动位置、类型、标签及修改前后的完整内容。</li></ul>
         :type ExportType: int
-        :param _Ignore: 是否忽略，适用于PDF。
-<ul>
-<li> **true**：导出文件标注去掉忽略项。</li>
-<li> **false**：导出文件包含所有对比点。</li>
-</ul>
+        :param _Ignore: <p>是否忽略，适用于PDF。</p><ul><li> **true**：导出文件标注去掉忽略项。</li><li> **false**：导出文件包含所有对比点。</li></ul>
         :type Ignore: bool
         """
         self._Operator = None
@@ -31173,8 +31142,7 @@ class ExportContractComparisonTaskRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行合同审查任务的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行合同审查任务的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -31185,7 +31153,7 @@ class ExportContractComparisonTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。
+        r"""<p>合同对比任务ID，该参数通过调用接口CreateContractComparisonTask获取。</p>
         :rtype: str
         """
         return self._TaskId
@@ -31196,12 +31164,7 @@ class ExportContractComparisonTaskRequest(AbstractModel):
 
     @property
     def ExportType(self):
-        r"""导出对比结果文件类型。
-类型如下：
-<ul>
-<li> **0**：【PDF】以新合同文件为基础，导出带有可视化对比点标注的PDF文件。</li>
-<li> **1**：【EXCEL】导出结构化的对比点明细表格，以列表形式罗列每一个差异点，包含改动位置、类型、标签及修改前后的完整内容。</li>
-</ul>
+        r"""<p>导出对比结果文件类型。<br>类型如下：</p><ul><li> **0**：【PDF】以新合同文件为基础，导出带有可视化对比点标注的PDF文件。</li><li> **1**：【EXCEL】导出结构化的对比点明细表格，以列表形式罗列每一个差异点，包含改动位置、类型、标签及修改前后的完整内容。</li></ul>
         :rtype: int
         """
         return self._ExportType
@@ -31212,11 +31175,7 @@ class ExportContractComparisonTaskRequest(AbstractModel):
 
     @property
     def Ignore(self):
-        r"""是否忽略，适用于PDF。
-<ul>
-<li> **true**：导出文件标注去掉忽略项。</li>
-<li> **false**：导出文件包含所有对比点。</li>
-</ul>
+        r"""<p>是否忽略，适用于PDF。</p><ul><li> **true**：导出文件标注去掉忽略项。</li><li> **false**：导出文件包含所有对比点。</li></ul>
         :rtype: bool
         """
         return self._Ignore
@@ -31250,9 +31209,9 @@ class ExportContractComparisonTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceUrl: 对比任务详情下载链接。
+        :param _ResourceUrl: <p>对比任务详情下载链接。</p>
         :type ResourceUrl: str
-        :param _ExpireTime: 下载链接有效截止时间。
+        :param _ExpireTime: <p>下载链接有效截止时间。</p>
         :type ExpireTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31263,7 +31222,7 @@ class ExportContractComparisonTaskResponse(AbstractModel):
 
     @property
     def ResourceUrl(self):
-        r"""对比任务详情下载链接。
+        r"""<p>对比任务详情下载链接。</p>
         :rtype: str
         """
         return self._ResourceUrl
@@ -31274,7 +31233,7 @@ class ExportContractComparisonTaskResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""下载链接有效截止时间。
+        r"""<p>下载链接有效截止时间。</p>
         :rtype: int
         """
         return self._ExpireTime

@@ -318,6 +318,10 @@ class ComputeDetail(AbstractModel):
         :type CPU: str
         :param _Memory: 内存
         :type Memory: str
+        :param _PrepaidEnable: 该套餐是否支持包年包月
+        :type PrepaidEnable: bool
+        :param _PostpaidEnable: 该套餐是否支持按量计费
+        :type PostpaidEnable: bool
         """
         self._BundleType = None
         self._Count = None
@@ -326,6 +330,8 @@ class ComputeDetail(AbstractModel):
         self._GPUPerformance = None
         self._CPU = None
         self._Memory = None
+        self._PrepaidEnable = None
+        self._PostpaidEnable = None
 
     @property
     def BundleType(self):
@@ -404,6 +410,28 @@ class ComputeDetail(AbstractModel):
     def Memory(self, Memory):
         self._Memory = Memory
 
+    @property
+    def PrepaidEnable(self):
+        r"""该套餐是否支持包年包月
+        :rtype: bool
+        """
+        return self._PrepaidEnable
+
+    @PrepaidEnable.setter
+    def PrepaidEnable(self, PrepaidEnable):
+        self._PrepaidEnable = PrepaidEnable
+
+    @property
+    def PostpaidEnable(self):
+        r"""该套餐是否支持按量计费
+        :rtype: bool
+        """
+        return self._PostpaidEnable
+
+    @PostpaidEnable.setter
+    def PostpaidEnable(self, PostpaidEnable):
+        self._PostpaidEnable = PostpaidEnable
+
 
     def _deserialize(self, params):
         self._BundleType = params.get("BundleType")
@@ -413,6 +441,8 @@ class ComputeDetail(AbstractModel):
         self._GPUPerformance = params.get("GPUPerformance")
         self._CPU = params.get("CPU")
         self._Memory = params.get("Memory")
+        self._PrepaidEnable = params.get("PrepaidEnable")
+        self._PostpaidEnable = params.get("PostpaidEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -785,6 +815,8 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
         :type NetworkSetting: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
         :param _SecurityType: <p>推理服务安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理服务</li><li>CONFIDENTIAL： 可信推理服务</li></ul>
         :type SecurityType: str
+        :param _ServiceChargePrepaid: <p>包年包月参数(ServiceChargeType为包月时必填)</p>
+        :type ServiceChargePrepaid: :class:`tencentcloud.hai.v20230812.models.ServiceChargePrepaid`
         """
         self._TemplateId = None
         self._ServiceName = None
@@ -793,6 +825,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
         self._HyperParam = None
         self._NetworkSetting = None
         self._SecurityType = None
+        self._ServiceChargePrepaid = None
 
     @property
     def TemplateId(self):
@@ -871,6 +904,17 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
     def SecurityType(self, SecurityType):
         self._SecurityType = SecurityType
 
+    @property
+    def ServiceChargePrepaid(self):
+        r"""<p>包年包月参数(ServiceChargeType为包月时必填)</p>
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ServiceChargePrepaid`
+        """
+        return self._ServiceChargePrepaid
+
+    @ServiceChargePrepaid.setter
+    def ServiceChargePrepaid(self, ServiceChargePrepaid):
+        self._ServiceChargePrepaid = ServiceChargePrepaid
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -884,6 +928,9 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
             self._NetworkSetting = NetworkSetting()
             self._NetworkSetting._deserialize(params.get("NetworkSetting"))
         self._SecurityType = params.get("SecurityType")
+        if params.get("ServiceChargePrepaid") is not None:
+            self._ServiceChargePrepaid = ServiceChargePrepaid()
+            self._ServiceChargePrepaid._deserialize(params.get("ServiceChargePrepaid"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1053,14 +1100,14 @@ class DeleteServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: 服务ID
+        :param _ServiceId: <p>服务ID</p>
         :type ServiceId: str
         """
         self._ServiceId = None
 
     @property
     def ServiceId(self):
-        r"""服务ID
+        r"""<p>服务ID</p>
         :rtype: str
         """
         return self._ServiceId
@@ -1129,6 +1176,8 @@ class DeployInferServiceRequest(AbstractModel):
         :type NetworkSetting: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
         :param _SecurityType: <p>安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理</li><li>CONFIDENTIAL： 可信推理</li></ul>
         :type SecurityType: str
+        :param _ServiceChargePrepaid: <p>包年包月参数(包月时必填)</p>
+        :type ServiceChargePrepaid: :class:`tencentcloud.hai.v20230812.models.ServiceChargePrepaid`
         """
         self._ServiceMetaData = None
         self._ComputeInfo = None
@@ -1136,6 +1185,7 @@ class DeployInferServiceRequest(AbstractModel):
         self._HyperParam = None
         self._NetworkSetting = None
         self._SecurityType = None
+        self._ServiceChargePrepaid = None
 
     @property
     def ServiceMetaData(self):
@@ -1203,6 +1253,17 @@ class DeployInferServiceRequest(AbstractModel):
     def SecurityType(self, SecurityType):
         self._SecurityType = SecurityType
 
+    @property
+    def ServiceChargePrepaid(self):
+        r"""<p>包年包月参数(包月时必填)</p>
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ServiceChargePrepaid`
+        """
+        return self._ServiceChargePrepaid
+
+    @ServiceChargePrepaid.setter
+    def ServiceChargePrepaid(self, ServiceChargePrepaid):
+        self._ServiceChargePrepaid = ServiceChargePrepaid
+
 
     def _deserialize(self, params):
         if params.get("ServiceMetaData") is not None:
@@ -1224,6 +1285,9 @@ class DeployInferServiceRequest(AbstractModel):
             self._NetworkSetting = NetworkSetting()
             self._NetworkSetting._deserialize(params.get("NetworkSetting"))
         self._SecurityType = params.get("SecurityType")
+        if params.get("ServiceChargePrepaid") is not None:
+            self._ServiceChargePrepaid = ServiceChargePrepaid()
+            self._ServiceChargePrepaid._deserialize(params.get("ServiceChargePrepaid"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5235,6 +5299,72 @@ class SceneInfo(AbstractModel):
         
 
 
+class ServiceChargePrepaid(AbstractModel):
+    r"""服务级包年包月入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: <p>购买时长，默认1</p>
+        :type Period: int
+        :param _TimeUnit: <p>时长单位：MONTH(月)/DAY(天)</p>
+        :type TimeUnit: str
+        :param _RenewFlag: <p>自动续费：NOTIFY_AND_AUTO_RENEW/NOTIFY_AND_MANUAL_RENEW/DISABLE_NOTIFY_AND_MANUAL_RENEW</p>
+        :type RenewFlag: str
+        """
+        self._Period = None
+        self._TimeUnit = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        r"""<p>购买时长，默认1</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def TimeUnit(self):
+        r"""<p>时长单位：MONTH(月)/DAY(天)</p>
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def RenewFlag(self):
+        r"""<p>自动续费：NOTIFY_AND_AUTO_RENEW/NOTIFY_AND_MANUAL_RENEW/DISABLE_NOTIFY_AND_MANUAL_RENEW</p>
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._TimeUnit = params.get("TimeUnit")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServiceDetail(AbstractModel):
     r"""服务详情
 
@@ -5268,6 +5398,16 @@ class ServiceDetail(AbstractModel):
         :type RoleComputeSet: list of ComputeDetail
         :param _TargetReplicas: 
         :type TargetReplicas: int
+        :param _ChargeType: 计费类型：POSTPAID_BY_HOUR(按量)/PREPAID_BY_MONTH(包月)
+        :type ChargeType: str
+        :param _ExpireTime: 到期时间(包月)，按量为空
+        :type ExpireTime: str
+        :param _RenewFlag: 自动续费标识(包月)
+        :type RenewFlag: str
+        :param _RestrictState: 受限状态(如欠费隔离)
+        :type RestrictState: str
+        :param _IsCustomDeploy: 是否自定义部署：1是 0否
+        :type IsCustomDeploy: int
         """
         self._ServiceId = None
         self._ServiceName = None
@@ -5282,6 +5422,11 @@ class ServiceDetail(AbstractModel):
         self._SecurityType = None
         self._RoleComputeSet = None
         self._TargetReplicas = None
+        self._ChargeType = None
+        self._ExpireTime = None
+        self._RenewFlag = None
+        self._RestrictState = None
+        self._IsCustomDeploy = None
 
     @property
     def ServiceId(self):
@@ -5426,6 +5571,61 @@ class ServiceDetail(AbstractModel):
     def TargetReplicas(self, TargetReplicas):
         self._TargetReplicas = TargetReplicas
 
+    @property
+    def ChargeType(self):
+        r"""计费类型：POSTPAID_BY_HOUR(按量)/PREPAID_BY_MONTH(包月)
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def ExpireTime(self):
+        r"""到期时间(包月)，按量为空
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RenewFlag(self):
+        r"""自动续费标识(包月)
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def RestrictState(self):
+        r"""受限状态(如欠费隔离)
+        :rtype: str
+        """
+        return self._RestrictState
+
+    @RestrictState.setter
+    def RestrictState(self, RestrictState):
+        self._RestrictState = RestrictState
+
+    @property
+    def IsCustomDeploy(self):
+        r"""是否自定义部署：1是 0否
+        :rtype: int
+        """
+        return self._IsCustomDeploy
+
+    @IsCustomDeploy.setter
+    def IsCustomDeploy(self, IsCustomDeploy):
+        self._IsCustomDeploy = IsCustomDeploy
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -5458,6 +5658,11 @@ class ServiceDetail(AbstractModel):
                 obj._deserialize(item)
                 self._RoleComputeSet.append(obj)
         self._TargetReplicas = params.get("TargetReplicas")
+        self._ChargeType = params.get("ChargeType")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RenewFlag = params.get("RenewFlag")
+        self._RestrictState = params.get("RestrictState")
+        self._IsCustomDeploy = params.get("IsCustomDeploy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

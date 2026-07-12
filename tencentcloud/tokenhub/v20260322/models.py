@@ -392,11 +392,11 @@ class BindingItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源 ID（模型 ID 或服务 ID）。
+        :param _ResourceId: <p>资源 ID（模型 ID 或服务 ID）。</p>
         :type ResourceId: str
-        :param _ResourceType: 资源类型。取值：endpoint（服务）、model（模型）。
+        :param _ResourceType: <p>资源类型。取值：endpoint（推理服务）、model（模型）。推荐绑定endpoint，绑定model即将下线。已绑定model的apikey仍可使用，但控制台回显将不会展示模型绑定列表。</p><p>枚举值：</p><ul><li>endpoint： 绑定到endpoint（默认推理服务或自定义推理服务）</li></ul>
         :type ResourceType: str
-        :param _Status: 资源状态
+        :param _Status: <p>资源状态</p>
         :type Status: str
         """
         self._ResourceId = None
@@ -405,7 +405,7 @@ class BindingItem(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源 ID（模型 ID 或服务 ID）。
+        r"""<p>资源 ID（模型 ID 或服务 ID）。</p>
         :rtype: str
         """
         return self._ResourceId
@@ -416,7 +416,7 @@ class BindingItem(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""资源类型。取值：endpoint（服务）、model（模型）。
+        r"""<p>资源类型。取值：endpoint（推理服务）、model（模型）。推荐绑定endpoint，绑定model即将下线。已绑定model的apikey仍可使用，但控制台回显将不会展示模型绑定列表。</p><p>枚举值：</p><ul><li>endpoint： 绑定到endpoint（默认推理服务或自定义推理服务）</li></ul>
         :rtype: str
         """
         return self._ResourceType
@@ -427,7 +427,7 @@ class BindingItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""资源状态
+        r"""<p>资源状态</p>
         :rtype: str
         """
         return self._Status
@@ -456,6 +456,151 @@ class CreateApiKeyRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ApiKeyName: <p>API 密钥名称，创建后不可修改。</p>
+        :type ApiKeyName: str
+        :param _Platform: <p>平台类型。取值：maas</p>
+        :type Platform: str
+        :param _BindType: <p>绑定类型。取值：all（全部模型和接入点）、model_custom_endpoint_custom（自定义模型+自定义接入点）。</p><p>枚举值：</p><ul><li>all： 全部模型和接入点</li><li>model_custom_endpoint_custom： 自定义模型+自定义接入点</li></ul>
+        :type BindType: str
+        :param _Remark: <p>备注信息</p>
+        :type Remark: str
+        :param _Status: <p>初始状态。取值：enable（启用）、disable（禁用）。不传默认 enable。</p>
+        :type Status: str
+        :param _Bindings: <p>资源绑定列表（model 和 endpoint 混合），每项需显式指定 ResourceType。BindType 为 all 时不填；BindType 为model_custom_endpoint_custom时必填。</p>
+        :type Bindings: list of BindingItem
+        :param _IpWhitelist: <p>IP 白名单列表。支持 IPv4（如 1.2.3.4）和 CIDR（如 10.0.0.0/24）格式，IPv6暂不支持。最多 50 个条目，不支持重复。不传或传空数组表示不限制 IP。</p>
+        :type IpWhitelist: list of str
+        :param _Quotas: <p>Token 限额配置多维度列表。可选，不传表示不开启限额。</p>
+        :type Quotas: list of QuotaCreateItem
+        """
+        self._ApiKeyName = None
+        self._Platform = None
+        self._BindType = None
+        self._Remark = None
+        self._Status = None
+        self._Bindings = None
+        self._IpWhitelist = None
+        self._Quotas = None
+
+    @property
+    def ApiKeyName(self):
+        r"""<p>API 密钥名称，创建后不可修改。</p>
+        :rtype: str
+        """
+        return self._ApiKeyName
+
+    @ApiKeyName.setter
+    def ApiKeyName(self, ApiKeyName):
+        self._ApiKeyName = ApiKeyName
+
+    @property
+    def Platform(self):
+        r"""<p>平台类型。取值：maas</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def BindType(self):
+        r"""<p>绑定类型。取值：all（全部模型和接入点）、model_custom_endpoint_custom（自定义模型+自定义接入点）。</p><p>枚举值：</p><ul><li>all： 全部模型和接入点</li><li>model_custom_endpoint_custom： 自定义模型+自定义接入点</li></ul>
+        :rtype: str
+        """
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def Remark(self):
+        r"""<p>备注信息</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Status(self):
+        r"""<p>初始状态。取值：enable（启用）、disable（禁用）。不传默认 enable。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Bindings(self):
+        r"""<p>资源绑定列表（model 和 endpoint 混合），每项需显式指定 ResourceType。BindType 为 all 时不填；BindType 为model_custom_endpoint_custom时必填。</p>
+        :rtype: list of BindingItem
+        """
+        return self._Bindings
+
+    @Bindings.setter
+    def Bindings(self, Bindings):
+        self._Bindings = Bindings
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>IP 白名单列表。支持 IPv4（如 1.2.3.4）和 CIDR（如 10.0.0.0/24）格式，IPv6暂不支持。最多 50 个条目，不支持重复。不传或传空数组表示不限制 IP。</p>
+        :rtype: list of str
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+    @property
+    def Quotas(self):
+        r"""<p>Token 限额配置多维度列表。可选，不传表示不开启限额。</p>
+        :rtype: list of QuotaCreateItem
+        """
+        return self._Quotas
+
+    @Quotas.setter
+    def Quotas(self, Quotas):
+        self._Quotas = Quotas
+
+
+    def _deserialize(self, params):
+        self._ApiKeyName = params.get("ApiKeyName")
+        self._Platform = params.get("Platform")
+        self._BindType = params.get("BindType")
+        self._Remark = params.get("Remark")
+        self._Status = params.get("Status")
+        if params.get("Bindings") is not None:
+            self._Bindings = []
+            for item in params.get("Bindings"):
+                obj = BindingItem()
+                obj._deserialize(item)
+                self._Bindings.append(obj)
+        self._IpWhitelist = params.get("IpWhitelist")
+        if params.get("Quotas") is not None:
+            self._Quotas = []
+            for item in params.get("Quotas"):
+                obj = QuotaCreateItem()
+                obj._deserialize(item)
+                self._Quotas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateApiKeyResponse(AbstractModel):
     r"""CreateApiKey返回参数结构体
@@ -464,10 +609,24 @@ class CreateApiKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ApiKeyId: <p>apikey id</p>
+        :type ApiKeyId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ApiKeyId = None
         self._RequestId = None
+
+    @property
+    def ApiKeyId(self):
+        r"""<p>apikey id</p>
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
 
     @property
     def RequestId(self):
@@ -482,6 +641,7 @@ class CreateApiKeyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1124,6 +1284,51 @@ class DeleteApiKeyRequest(AbstractModel):
     r"""DeleteApiKey请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: <p>API 密钥 ID。</p>
+        :type ApiKeyId: str
+        :param _Platform: <p>平台类型。取值：maas。</p>
+        :type Platform: str
+        """
+        self._ApiKeyId = None
+        self._Platform = None
+
+    @property
+    def ApiKeyId(self):
+        r"""<p>API 密钥 ID。</p>
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def Platform(self):
+        r"""<p>平台类型。取值：maas。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._Platform = params.get("Platform")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteApiKeyResponse(AbstractModel):
@@ -5036,6 +5241,116 @@ class ModifyApiKeyInfoRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: <p>API 密钥 ID。</p>
+        :type ApiKeyId: str
+        :param _Platform: <p>平台类型。取值：maas。</p>
+        :type Platform: str
+        :param _ApiKeyName: <p>API 密钥名称。最大 128 字符。不传表示不修改。</p>
+        :type ApiKeyName: str
+        :param _Remark: <p>备注。</p>
+        :type Remark: str
+        :param _IpWhitelist: <p>IP 白名单列表。支持 IPv4（如 1.2.3.4）、CIDR（如 10.0.0.0/24）格式，IPv6暂不支持。最多 50 个，不支持重复。传入空数组表示清空白名单（不限制 IP）。不传表示不修改。</p>
+        :type IpWhitelist: list of str
+        :param _QuotasDesired: <p>【修改限额推荐使用QuotaDesired参数】Token 限额期望状态。可选，不传表示不修改，传入空数组表示清空。和 Quotas（Token限额配置）字段互斥，不支持同时传入</p>
+        :type QuotasDesired: list of QuotasDesired
+        """
+        self._ApiKeyId = None
+        self._Platform = None
+        self._ApiKeyName = None
+        self._Remark = None
+        self._IpWhitelist = None
+        self._QuotasDesired = None
+
+    @property
+    def ApiKeyId(self):
+        r"""<p>API 密钥 ID。</p>
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def Platform(self):
+        r"""<p>平台类型。取值：maas。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def ApiKeyName(self):
+        r"""<p>API 密钥名称。最大 128 字符。不传表示不修改。</p>
+        :rtype: str
+        """
+        return self._ApiKeyName
+
+    @ApiKeyName.setter
+    def ApiKeyName(self, ApiKeyName):
+        self._ApiKeyName = ApiKeyName
+
+    @property
+    def Remark(self):
+        r"""<p>备注。</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>IP 白名单列表。支持 IPv4（如 1.2.3.4）、CIDR（如 10.0.0.0/24）格式，IPv6暂不支持。最多 50 个，不支持重复。传入空数组表示清空白名单（不限制 IP）。不传表示不修改。</p>
+        :rtype: list of str
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+    @property
+    def QuotasDesired(self):
+        r"""<p>【修改限额推荐使用QuotaDesired参数】Token 限额期望状态。可选，不传表示不修改，传入空数组表示清空。和 Quotas（Token限额配置）字段互斥，不支持同时传入</p>
+        :rtype: list of QuotasDesired
+        """
+        return self._QuotasDesired
+
+    @QuotasDesired.setter
+    def QuotasDesired(self, QuotasDesired):
+        self._QuotasDesired = QuotasDesired
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._Platform = params.get("Platform")
+        self._ApiKeyName = params.get("ApiKeyName")
+        self._Remark = params.get("Remark")
+        self._IpWhitelist = params.get("IpWhitelist")
+        if params.get("QuotasDesired") is not None:
+            self._QuotasDesired = []
+            for item in params.get("QuotasDesired"):
+                obj = QuotasDesired()
+                obj._deserialize(item)
+                self._QuotasDesired.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyApiKeyInfoResponse(AbstractModel):
     r"""ModifyApiKeyInfo返回参数结构体
@@ -5069,6 +5384,66 @@ class ModifyApiKeyStatusRequest(AbstractModel):
     r"""ModifyApiKeyStatus请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _ApiKeyId: <p>API 密钥 ID。</p>
+        :type ApiKeyId: str
+        :param _Platform: <p>平台类型。取值：maas。</p>
+        :type Platform: str
+        :param _Status: <p>状态。取值：enable（启用）、disable（禁用）。</p>
+        :type Status: str
+        """
+        self._ApiKeyId = None
+        self._Platform = None
+        self._Status = None
+
+    @property
+    def ApiKeyId(self):
+        r"""<p>API 密钥 ID。</p>
+        :rtype: str
+        """
+        return self._ApiKeyId
+
+    @ApiKeyId.setter
+    def ApiKeyId(self, ApiKeyId):
+        self._ApiKeyId = ApiKeyId
+
+    @property
+    def Platform(self):
+        r"""<p>平台类型。取值：maas。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Status(self):
+        r"""<p>状态。取值：enable（启用）、disable（禁用）。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ApiKeyId = params.get("ApiKeyId")
+        self._Platform = params.get("Platform")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyApiKeyStatusResponse(AbstractModel):
@@ -5524,6 +5899,72 @@ class ModifyTokenPlanApiKeySecretResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QuotaCreateItem(AbstractModel):
+    r"""Token 限额配置项（创建 API 密钥时用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CycleUnit: <p>限额周期。取值：d（按日）、m（按月）、lifetime（总额度，不重置）。</p>
+        :type CycleUnit: str
+        :param _CycleCredits: <p>维度当期限额总量（Token 数），不能大于10万亿。使用字符串避免大数精度丢失。</p>
+        :type CycleCredits: str
+        :param _MonthStartDay: <p>月度限额起始日。CycleUnit 为 m 时可选，1~31，默认 1。小月（如 2 月）由下游自动取该月最后一天。</p>
+        :type MonthStartDay: int
+        """
+        self._CycleUnit = None
+        self._CycleCredits = None
+        self._MonthStartDay = None
+
+    @property
+    def CycleUnit(self):
+        r"""<p>限额周期。取值：d（按日）、m（按月）、lifetime（总额度，不重置）。</p>
+        :rtype: str
+        """
+        return self._CycleUnit
+
+    @CycleUnit.setter
+    def CycleUnit(self, CycleUnit):
+        self._CycleUnit = CycleUnit
+
+    @property
+    def CycleCredits(self):
+        r"""<p>维度当期限额总量（Token 数），不能大于10万亿。使用字符串避免大数精度丢失。</p>
+        :rtype: str
+        """
+        return self._CycleCredits
+
+    @CycleCredits.setter
+    def CycleCredits(self, CycleCredits):
+        self._CycleCredits = CycleCredits
+
+    @property
+    def MonthStartDay(self):
+        r"""<p>月度限额起始日。CycleUnit 为 m 时可选，1~31，默认 1。小月（如 2 月）由下游自动取该月最后一天。</p>
+        :rtype: int
+        """
+        return self._MonthStartDay
+
+    @MonthStartDay.setter
+    def MonthStartDay(self, MonthStartDay):
+        self._MonthStartDay = MonthStartDay
+
+
+    def _deserialize(self, params):
+        self._CycleUnit = params.get("CycleUnit")
+        self._CycleCredits = params.get("CycleCredits")
+        self._MonthStartDay = params.get("MonthStartDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QuotaInfo(AbstractModel):
     r"""Token 限额信息
 
@@ -5640,6 +6081,72 @@ class QuotaInfo(AbstractModel):
         self._CycleUsed = params.get("CycleUsed")
         self._StartTime = params.get("StartTime")
         self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuotasDesired(AbstractModel):
+    r"""Token 限额期望状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CycleUnit: <p>限额周期，必填。取值：d（按日）、m（按月）、lifetime（总额度）。</p>
+        :type CycleUnit: str
+        :param _CycleCredits: <p>单周期额度（Token 数），必填，不能大于10万亿。使用字符串避免大数精度丢失。同维度若与现网不同视为升配/降配。</p>
+        :type CycleCredits: str
+        :param _MonthStartDay: <p>月度限额起始日。CycleUnit=m 时可选，1~31，默认 1。小月（如 2 月）由下游自动取该月最后一天。已有月度限额包时，更新月起始日视为周期窗口切换，会 delete 旧包后 add 新包，累计额度会重置</p>
+        :type MonthStartDay: int
+        """
+        self._CycleUnit = None
+        self._CycleCredits = None
+        self._MonthStartDay = None
+
+    @property
+    def CycleUnit(self):
+        r"""<p>限额周期，必填。取值：d（按日）、m（按月）、lifetime（总额度）。</p>
+        :rtype: str
+        """
+        return self._CycleUnit
+
+    @CycleUnit.setter
+    def CycleUnit(self, CycleUnit):
+        self._CycleUnit = CycleUnit
+
+    @property
+    def CycleCredits(self):
+        r"""<p>单周期额度（Token 数），必填，不能大于10万亿。使用字符串避免大数精度丢失。同维度若与现网不同视为升配/降配。</p>
+        :rtype: str
+        """
+        return self._CycleCredits
+
+    @CycleCredits.setter
+    def CycleCredits(self, CycleCredits):
+        self._CycleCredits = CycleCredits
+
+    @property
+    def MonthStartDay(self):
+        r"""<p>月度限额起始日。CycleUnit=m 时可选，1~31，默认 1。小月（如 2 月）由下游自动取该月最后一天。已有月度限额包时，更新月起始日视为周期窗口切换，会 delete 旧包后 add 新包，累计额度会重置</p>
+        :rtype: int
+        """
+        return self._MonthStartDay
+
+    @MonthStartDay.setter
+    def MonthStartDay(self, MonthStartDay):
+        self._MonthStartDay = MonthStartDay
+
+
+    def _deserialize(self, params):
+        self._CycleUnit = params.get("CycleUnit")
+        self._CycleCredits = params.get("CycleCredits")
+        self._MonthStartDay = params.get("MonthStartDay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

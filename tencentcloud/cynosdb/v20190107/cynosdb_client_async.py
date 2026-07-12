@@ -1411,6 +1411,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterLevels(
+            self,
+            request: models.DescribeClusterLevelsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterLevelsResponse:
+        """
+        查询可支持的集群类型列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterLevels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterLevelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterParamLogs(
             self,
             request: models.DescribeClusterParamLogsRequest,
