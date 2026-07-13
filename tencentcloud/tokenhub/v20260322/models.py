@@ -681,6 +681,207 @@ class CreateApiKeysResultItem(AbstractModel):
         
 
 
+class CreateEndpointRequest(AbstractModel):
+    r"""CreateEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndpointName: <p>服务名称。最大 64 字符。</p>
+        :type EndpointName: str
+        :param _ModelId: <p>模型 ID。可通过 DescribeModelList 接口获取。</p>
+        :type ModelId: str
+        :param _ChargeType: <p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）、TPM（TPM 保障）、COMPUTE_UNIT（按算力单元计费）。</p>
+        :type ChargeType: str
+        :param _RPM: <p>RPM（每分钟请求数）限流上限。可选。必须大于 0，且不能超过用户在该模型上的 RPM 上限。不传则使用默认值（60）。</p>
+        :type RPM: int
+        :param _TPM: <p>TPM（每分钟 Token 数）限流上限，单位为 tokens/min。可选。必须大于 0，且不能超过用户在该模型上的 TPM 上限。设置后会同时作用于输入 TPM 和输出 TPM。不传则使用默认值（0 表示不限流）。</p>
+        :type TPM: int
+        :param _AutoAdjustQuota: <p>自动调整配额</p>
+        :type AutoAdjustQuota: int
+        :param _EndpointId: <p>自定义推理服务 id</p>
+        :type EndpointId: str
+        """
+        self._EndpointName = None
+        self._ModelId = None
+        self._ChargeType = None
+        self._RPM = None
+        self._TPM = None
+        self._AutoAdjustQuota = None
+        self._EndpointId = None
+
+    @property
+    def EndpointName(self):
+        r"""<p>服务名称。最大 64 字符。</p>
+        :rtype: str
+        """
+        return self._EndpointName
+
+    @EndpointName.setter
+    def EndpointName(self, EndpointName):
+        self._EndpointName = EndpointName
+
+    @property
+    def ModelId(self):
+        r"""<p>模型 ID。可通过 DescribeModelList 接口获取。</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ChargeType(self):
+        r"""<p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）、TPM（TPM 保障）、COMPUTE_UNIT（按算力单元计费）。</p>
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def RPM(self):
+        r"""<p>RPM（每分钟请求数）限流上限。可选。必须大于 0，且不能超过用户在该模型上的 RPM 上限。不传则使用默认值（60）。</p>
+        :rtype: int
+        """
+        return self._RPM
+
+    @RPM.setter
+    def RPM(self, RPM):
+        self._RPM = RPM
+
+    @property
+    def TPM(self):
+        r"""<p>TPM（每分钟 Token 数）限流上限，单位为 tokens/min。可选。必须大于 0，且不能超过用户在该模型上的 TPM 上限。设置后会同时作用于输入 TPM 和输出 TPM。不传则使用默认值（0 表示不限流）。</p>
+        :rtype: int
+        """
+        return self._TPM
+
+    @TPM.setter
+    def TPM(self, TPM):
+        self._TPM = TPM
+
+    @property
+    def AutoAdjustQuota(self):
+        r"""<p>自动调整配额</p>
+        :rtype: int
+        """
+        return self._AutoAdjustQuota
+
+    @AutoAdjustQuota.setter
+    def AutoAdjustQuota(self, AutoAdjustQuota):
+        self._AutoAdjustQuota = AutoAdjustQuota
+
+    @property
+    def EndpointId(self):
+        r"""<p>自定义推理服务 id</p>
+        :rtype: str
+        """
+        return self._EndpointId
+
+    @EndpointId.setter
+    def EndpointId(self, EndpointId):
+        self._EndpointId = EndpointId
+
+
+    def _deserialize(self, params):
+        self._EndpointName = params.get("EndpointName")
+        self._ModelId = params.get("ModelId")
+        self._ChargeType = params.get("ChargeType")
+        self._RPM = params.get("RPM")
+        self._TPM = params.get("TPM")
+        self._AutoAdjustQuota = params.get("AutoAdjustQuota")
+        self._EndpointId = params.get("EndpointId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEndpointResponse(AbstractModel):
+    r"""CreateEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndpointId: <p>推理服务 ID。</p>
+        :type EndpointId: str
+        :param _Endpoint: <p>推理服务详情信息。</p>
+        :type Endpoint: :class:`tencentcloud.tokenhub.v20260322.models.EndpointCreateDetail`
+        :param _StopReason: <p>停止原因。当推理服务状态为已停止时返回。取值：FREE_QUOTA_EXHAUSTED（免费额度已用尽）、NO_FREE_PACKAGE（无可用免费包）、INSUFFICIENT_BALANCE（余额不足）、BILLING_ISOLATED（账户欠费隔离）、INTERNAL_ERROR（内部错误）。</p>
+        :type StopReason: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EndpointId = None
+        self._Endpoint = None
+        self._StopReason = None
+        self._RequestId = None
+
+    @property
+    def EndpointId(self):
+        r"""<p>推理服务 ID。</p>
+        :rtype: str
+        """
+        return self._EndpointId
+
+    @EndpointId.setter
+    def EndpointId(self, EndpointId):
+        self._EndpointId = EndpointId
+
+    @property
+    def Endpoint(self):
+        r"""<p>推理服务详情信息。</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.EndpointCreateDetail`
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def StopReason(self):
+        r"""<p>停止原因。当推理服务状态为已停止时返回。取值：FREE_QUOTA_EXHAUSTED（免费额度已用尽）、NO_FREE_PACKAGE（无可用免费包）、INSUFFICIENT_BALANCE（余额不足）、BILLING_ISOLATED（账户欠费隔离）、INTERNAL_ERROR（内部错误）。</p>
+        :rtype: str
+        """
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EndpointId = params.get("EndpointId")
+        if params.get("Endpoint") is not None:
+            self._Endpoint = EndpointCreateDetail()
+            self._Endpoint._deserialize(params.get("Endpoint"))
+        self._StopReason = params.get("StopReason")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGlossaryEntriesRequest(AbstractModel):
     r"""CreateGlossaryEntries请求参数结构体
 
@@ -1333,6 +1534,40 @@ class DeleteApiKeyRequest(AbstractModel):
 
 class DeleteApiKeyResponse(AbstractModel):
     r"""DeleteApiKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteEndpointRequest(AbstractModel):
+    r"""DeleteEndpoint请求参数结构体
+
+    """
+
+
+class DeleteEndpointResponse(AbstractModel):
+    r"""DeleteEndpoint返回参数结构体
 
     """
 
@@ -2150,6 +2385,87 @@ class DescribeApiKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEndpointRequest(AbstractModel):
+    r"""DescribeEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndpointId: <p>推理服务 ID。可通过 DescribeEndpointList 接口获取。</p>
+        :type EndpointId: str
+        """
+        self._EndpointId = None
+
+    @property
+    def EndpointId(self):
+        r"""<p>推理服务 ID。可通过 DescribeEndpointList 接口获取。</p>
+        :rtype: str
+        """
+        return self._EndpointId
+
+    @EndpointId.setter
+    def EndpointId(self, EndpointId):
+        self._EndpointId = EndpointId
+
+
+    def _deserialize(self, params):
+        self._EndpointId = params.get("EndpointId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEndpointResponse(AbstractModel):
+    r"""DescribeEndpoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Endpoint: <p>推理服务详情。</p>
+        :type Endpoint: :class:`tencentcloud.tokenhub.v20260322.models.EndpointDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Endpoint = None
+        self._RequestId = None
+
+    @property
+    def Endpoint(self):
+        r"""<p>推理服务详情。</p>
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.EndpointDetail`
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Endpoint") is not None:
+            self._Endpoint = EndpointDetail()
+            self._Endpoint._deserialize(params.get("Endpoint"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGlossariesRequest(AbstractModel):
     r"""DescribeGlossaries请求参数结构体
 
@@ -2490,6 +2806,160 @@ class DescribeGlossaryEntriesResponse(AbstractModel):
         self._Total = params.get("Total")
         self._Page = params.get("Page")
         self._PageSize = params.get("PageSize")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelEndpointListRequest(AbstractModel):
+    r"""DescribeModelEndpointList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>偏移量，从 0 开始，默认为 0。</p>
+        :type Offset: int
+        :param _Limit: <p>每页返回数量，默认为 20，最大值为 100。</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件列表。支持的过滤字段：Status（状态，取值 ACTIVE/INACTIVE）、ChargeType（计费方式，取值 FREE/TOKEN）、RequestSource（创建来源，取值 MC/GW）、ModelName（模型名称）、ModelId（模型 ID）、PaymentEnabled（是否已开启后付费，取值 true/false）。</p>
+        :type Filters: list of RequestFilter
+        :param _Sorts: <p>排序条件列表。支持的排序字段：CreatedTime、UpdatedTime。不传时使用默认排序规则。</p>
+        :type Sorts: list of RequestSort
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Sorts = None
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，从 0 开始，默认为 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量，默认为 20，最大值为 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件列表。支持的过滤字段：Status（状态，取值 ACTIVE/INACTIVE）、ChargeType（计费方式，取值 FREE/TOKEN）、RequestSource（创建来源，取值 MC/GW）、ModelName（模型名称）、ModelId（模型 ID）、PaymentEnabled（是否已开启后付费，取值 true/false）。</p>
+        :rtype: list of RequestFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Sorts(self):
+        r"""<p>排序条件列表。支持的排序字段：CreatedTime、UpdatedTime。不传时使用默认排序规则。</p>
+        :rtype: list of RequestSort
+        """
+        return self._Sorts
+
+    @Sorts.setter
+    def Sorts(self, Sorts):
+        self._Sorts = Sorts
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RequestFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("Sorts") is not None:
+            self._Sorts = []
+            for item in params.get("Sorts"):
+                obj = RequestSort()
+                obj._deserialize(item)
+                self._Sorts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelEndpointListResponse(AbstractModel):
+    r"""DescribeModelEndpointList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelEndpointSet: <p>模型接入点列表。</p>
+        :type ModelEndpointSet: list of ModelEndpointView
+        :param _TotalCount: <p>符合条件的总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelEndpointSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ModelEndpointSet(self):
+        r"""<p>模型接入点列表。</p>
+        :rtype: list of ModelEndpointView
+        """
+        return self._ModelEndpointSet
+
+    @ModelEndpointSet.setter
+    def ModelEndpointSet(self, ModelEndpointSet):
+        self._ModelEndpointSet = ModelEndpointSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ModelEndpointSet") is not None:
+            self._ModelEndpointSet = []
+            for item in params.get("ModelEndpointSet"):
+                obj = ModelEndpointView()
+                obj._deserialize(item)
+                self._ModelEndpointSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -4127,6 +4597,258 @@ class DescribeUsageRankListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EndpointCreateDetail(AbstractModel):
+    r"""创建推理服务返回的详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PreResourceId: 预付费包 id
+        :type PreResourceId: str
+        """
+        self._PreResourceId = None
+
+    @property
+    def PreResourceId(self):
+        r"""预付费包 id
+        :rtype: str
+        """
+        return self._PreResourceId
+
+    @PreResourceId.setter
+    def PreResourceId(self, PreResourceId):
+        self._PreResourceId = PreResourceId
+
+
+    def _deserialize(self, params):
+        self._PreResourceId = params.get("PreResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EndpointDetail(AbstractModel):
+    r"""推理服务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndpointId: <p>推理服务 ID。</p>
+        :type EndpointId: str
+        :param _EndpointName: <p>服务名称。</p>
+        :type EndpointName: str
+        :param _ModelName: <p>模型名称。</p>
+        :type ModelName: str
+        :param _ModelId: <p>模型 ID。</p>
+        :type ModelId: str
+        :param _Status: <p>状态。取值：ACTIVE（使用中）、INACTIVE（停止中）。</p>
+        :type Status: str
+        :param _ServiceType: <p>服务类型。取值：TEXT_GENERATION（文本生成）、IMAGE_GENERATION（图片生成）、VIDEO_GENERATION（视频生成）。</p>
+        :type ServiceType: str
+        :param _ChargeType: <p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）</p><p>枚举值：</p><ul><li>FREE： 免费体验</li><li>TOKEN： 按 Token 计费</li></ul>
+        :type ChargeType: str
+        :param _PaymentEnabled: <p>是否开启付费计费。true 表示已开启付费资源包，false 表示仅使用免费额度。</p>
+        :type PaymentEnabled: bool
+        :param _ChargeDetail: <p>计费详情信息，JSON 格式字符串。不同 ChargeType 对应不同的 JSON 结构：</p><ul><li>免费额度信息（所有类型均可能包含）：{&quot;FreeQuota&quot;: {&quot;TotalQuota&quot;: 200, &quot;UsedQuota&quot;: 56, &quot;UsagePercent&quot;: 28, &quot;ExpireTime&quot;: &quot;2026-06-15T00:00:00Z&quot;}}</li><li>TPM 类型额外包含：{&quot;Tpm&quot;: {&quot;TpmInputLimit&quot;: 1000, &quot;TpmOutputLimit&quot;: 1000}}</li><li>其他类型：预留扩展。</li></ul>
+        :type ChargeDetail: str
+        :param _StopReason: <p>停止原因。当状态为 INACTIVE 时返回。取值：FREE_QUOTA_EXHAUSTED（免费额度已用尽）、NO_FREE_PACKAGE（无可用免费包）、INSUFFICIENT_BALANCE（余额不足，格式为 INSUFFICIENT_BALANCE:&lt;待支付资源ID&gt;）、BILLING_ISOLATED（账户欠费隔离）、INTERNAL_ERROR（内部错误）。当值为 INSUFFICIENT_BALANCE 时，冒号后附带待支付的 TPM 包资源 ID，前端可据此引导用户前往对应订单页完成支付。</p>
+        :type StopReason: str
+        :param _TPM: <p>TPM（每分钟 Token 限流）。当推理服务未单独设置时，回退为关联模型的默认 TPM 值。</p>
+        :type TPM: int
+        :param _AutoAdjustQuota: <p>自动调整配额</p>
+        :type AutoAdjustQuota: int
+        :param _RPM: <p>RPM（每分钟请求数限流）。当推理服务未单独设置时，回退为关联模型的默认 RPM 值。</p>
+        :type RPM: int
+        """
+        self._EndpointId = None
+        self._EndpointName = None
+        self._ModelName = None
+        self._ModelId = None
+        self._Status = None
+        self._ServiceType = None
+        self._ChargeType = None
+        self._PaymentEnabled = None
+        self._ChargeDetail = None
+        self._StopReason = None
+        self._TPM = None
+        self._AutoAdjustQuota = None
+        self._RPM = None
+
+    @property
+    def EndpointId(self):
+        r"""<p>推理服务 ID。</p>
+        :rtype: str
+        """
+        return self._EndpointId
+
+    @EndpointId.setter
+    def EndpointId(self, EndpointId):
+        self._EndpointId = EndpointId
+
+    @property
+    def EndpointName(self):
+        r"""<p>服务名称。</p>
+        :rtype: str
+        """
+        return self._EndpointName
+
+    @EndpointName.setter
+    def EndpointName(self, EndpointName):
+        self._EndpointName = EndpointName
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称。</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelId(self):
+        r"""<p>模型 ID。</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def Status(self):
+        r"""<p>状态。取值：ACTIVE（使用中）、INACTIVE（停止中）。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ServiceType(self):
+        r"""<p>服务类型。取值：TEXT_GENERATION（文本生成）、IMAGE_GENERATION（图片生成）、VIDEO_GENERATION（视频生成）。</p>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ChargeType(self):
+        r"""<p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）</p><p>枚举值：</p><ul><li>FREE： 免费体验</li><li>TOKEN： 按 Token 计费</li></ul>
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def PaymentEnabled(self):
+        r"""<p>是否开启付费计费。true 表示已开启付费资源包，false 表示仅使用免费额度。</p>
+        :rtype: bool
+        """
+        return self._PaymentEnabled
+
+    @PaymentEnabled.setter
+    def PaymentEnabled(self, PaymentEnabled):
+        self._PaymentEnabled = PaymentEnabled
+
+    @property
+    def ChargeDetail(self):
+        r"""<p>计费详情信息，JSON 格式字符串。不同 ChargeType 对应不同的 JSON 结构：</p><ul><li>免费额度信息（所有类型均可能包含）：{&quot;FreeQuota&quot;: {&quot;TotalQuota&quot;: 200, &quot;UsedQuota&quot;: 56, &quot;UsagePercent&quot;: 28, &quot;ExpireTime&quot;: &quot;2026-06-15T00:00:00Z&quot;}}</li><li>TPM 类型额外包含：{&quot;Tpm&quot;: {&quot;TpmInputLimit&quot;: 1000, &quot;TpmOutputLimit&quot;: 1000}}</li><li>其他类型：预留扩展。</li></ul>
+        :rtype: str
+        """
+        return self._ChargeDetail
+
+    @ChargeDetail.setter
+    def ChargeDetail(self, ChargeDetail):
+        self._ChargeDetail = ChargeDetail
+
+    @property
+    def StopReason(self):
+        r"""<p>停止原因。当状态为 INACTIVE 时返回。取值：FREE_QUOTA_EXHAUSTED（免费额度已用尽）、NO_FREE_PACKAGE（无可用免费包）、INSUFFICIENT_BALANCE（余额不足，格式为 INSUFFICIENT_BALANCE:&lt;待支付资源ID&gt;）、BILLING_ISOLATED（账户欠费隔离）、INTERNAL_ERROR（内部错误）。当值为 INSUFFICIENT_BALANCE 时，冒号后附带待支付的 TPM 包资源 ID，前端可据此引导用户前往对应订单页完成支付。</p>
+        :rtype: str
+        """
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
+    @property
+    def TPM(self):
+        r"""<p>TPM（每分钟 Token 限流）。当推理服务未单独设置时，回退为关联模型的默认 TPM 值。</p>
+        :rtype: int
+        """
+        return self._TPM
+
+    @TPM.setter
+    def TPM(self, TPM):
+        self._TPM = TPM
+
+    @property
+    def AutoAdjustQuota(self):
+        r"""<p>自动调整配额</p>
+        :rtype: int
+        """
+        return self._AutoAdjustQuota
+
+    @AutoAdjustQuota.setter
+    def AutoAdjustQuota(self, AutoAdjustQuota):
+        self._AutoAdjustQuota = AutoAdjustQuota
+
+    @property
+    def RPM(self):
+        r"""<p>RPM（每分钟请求数限流）。当推理服务未单独设置时，回退为关联模型的默认 RPM 值。</p>
+        :rtype: int
+        """
+        return self._RPM
+
+    @RPM.setter
+    def RPM(self, RPM):
+        self._RPM = RPM
+
+
+    def _deserialize(self, params):
+        self._EndpointId = params.get("EndpointId")
+        self._EndpointName = params.get("EndpointName")
+        self._ModelName = params.get("ModelName")
+        self._ModelId = params.get("ModelId")
+        self._Status = params.get("Status")
+        self._ServiceType = params.get("ServiceType")
+        self._ChargeType = params.get("ChargeType")
+        self._PaymentEnabled = params.get("PaymentEnabled")
+        self._ChargeDetail = params.get("ChargeDetail")
+        self._StopReason = params.get("StopReason")
+        self._TPM = params.get("TPM")
+        self._AutoAdjustQuota = params.get("AutoAdjustQuota")
+        self._RPM = params.get("RPM")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GlossaryEntryInput(AbstractModel):
     r"""新建术语条目项
 
@@ -4942,6 +5664,207 @@ class ModelChargingItem(AbstractModel):
         
 
 
+class ModelEndpointView(AbstractModel):
+    r"""模型接入点概览信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndpointId: <p>推理服务 ID。网关默认创建的 id 与模型 id 相同；控制台自定义推理服务以 ep- 开头。</p>
+        :type EndpointId: str
+        :param _EndpointName: <p>推理服务名称。未激活时与 ModelId 相同。</p>
+        :type EndpointName: str
+        :param _ModelId: <p>模型 ID。</p>
+        :type ModelId: str
+        :param _ModelName: <p>模型名称。</p>
+        :type ModelName: str
+        :param _Status: <p>状态。取值：ACTIVE（运行中）、INACTIVE（已停止）。</p>
+        :type Status: str
+        :param _ServiceType: <p>服务类型。固定为 TEXT_GENERATION（文本生成）。</p>
+        :type ServiceType: str
+        :param _ChargeType: <p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）。未激活时为空。</p>
+        :type ChargeType: str
+        :param _PaymentEnabled: <p>是否已开启后付费。true 表示已开启，false 表示未开启。未激活时为 false。</p>
+        :type PaymentEnabled: bool
+        :param _ChargeDetail: <p>计费详情信息，JSON 格式字符串，包含免费额度用量等信息。未激活时为空。</p>
+        :type ChargeDetail: str
+        :param _StopReason: <p>停止原因。当状态为 INACTIVE 时返回。取值：FREE_QUOTA_EXHAUSTED（免费额度已用尽）、NO_FREE_PACKAGE（无可用免费包）、INSUFFICIENT_BALANCE（余额不足）、BILLING_ISOLATED（账户欠费隔离）、INTERNAL_ERROR（内部错误）。</p>
+        :type StopReason: str
+        :param _RPM: <p>推理服务的 rpm 限制，没设置就按模型维度 rpm 限制展示</p>
+        :type RPM: int
+        :param _TPM: <p>推理服务的tpm 限制，没设置就按模型维度 tpm 限制展示</p>
+        :type TPM: int
+        """
+        self._EndpointId = None
+        self._EndpointName = None
+        self._ModelId = None
+        self._ModelName = None
+        self._Status = None
+        self._ServiceType = None
+        self._ChargeType = None
+        self._PaymentEnabled = None
+        self._ChargeDetail = None
+        self._StopReason = None
+        self._RPM = None
+        self._TPM = None
+
+    @property
+    def EndpointId(self):
+        r"""<p>推理服务 ID。网关默认创建的 id 与模型 id 相同；控制台自定义推理服务以 ep- 开头。</p>
+        :rtype: str
+        """
+        return self._EndpointId
+
+    @EndpointId.setter
+    def EndpointId(self, EndpointId):
+        self._EndpointId = EndpointId
+
+    @property
+    def EndpointName(self):
+        r"""<p>推理服务名称。未激活时与 ModelId 相同。</p>
+        :rtype: str
+        """
+        return self._EndpointName
+
+    @EndpointName.setter
+    def EndpointName(self, EndpointName):
+        self._EndpointName = EndpointName
+
+    @property
+    def ModelId(self):
+        r"""<p>模型 ID。</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称。</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def Status(self):
+        r"""<p>状态。取值：ACTIVE（运行中）、INACTIVE（已停止）。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ServiceType(self):
+        r"""<p>服务类型。固定为 TEXT_GENERATION（文本生成）。</p>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ChargeType(self):
+        r"""<p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）。未激活时为空。</p>
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def PaymentEnabled(self):
+        r"""<p>是否已开启后付费。true 表示已开启，false 表示未开启。未激活时为 false。</p>
+        :rtype: bool
+        """
+        return self._PaymentEnabled
+
+    @PaymentEnabled.setter
+    def PaymentEnabled(self, PaymentEnabled):
+        self._PaymentEnabled = PaymentEnabled
+
+    @property
+    def ChargeDetail(self):
+        r"""<p>计费详情信息，JSON 格式字符串，包含免费额度用量等信息。未激活时为空。</p>
+        :rtype: str
+        """
+        return self._ChargeDetail
+
+    @ChargeDetail.setter
+    def ChargeDetail(self, ChargeDetail):
+        self._ChargeDetail = ChargeDetail
+
+    @property
+    def StopReason(self):
+        r"""<p>停止原因。当状态为 INACTIVE 时返回。取值：FREE_QUOTA_EXHAUSTED（免费额度已用尽）、NO_FREE_PACKAGE（无可用免费包）、INSUFFICIENT_BALANCE（余额不足）、BILLING_ISOLATED（账户欠费隔离）、INTERNAL_ERROR（内部错误）。</p>
+        :rtype: str
+        """
+        return self._StopReason
+
+    @StopReason.setter
+    def StopReason(self, StopReason):
+        self._StopReason = StopReason
+
+    @property
+    def RPM(self):
+        r"""<p>推理服务的 rpm 限制，没设置就按模型维度 rpm 限制展示</p>
+        :rtype: int
+        """
+        return self._RPM
+
+    @RPM.setter
+    def RPM(self, RPM):
+        self._RPM = RPM
+
+    @property
+    def TPM(self):
+        r"""<p>推理服务的tpm 限制，没设置就按模型维度 tpm 限制展示</p>
+        :rtype: int
+        """
+        return self._TPM
+
+    @TPM.setter
+    def TPM(self, TPM):
+        self._TPM = TPM
+
+
+    def _deserialize(self, params):
+        self._EndpointId = params.get("EndpointId")
+        self._EndpointName = params.get("EndpointName")
+        self._ModelId = params.get("ModelId")
+        self._ModelName = params.get("ModelName")
+        self._Status = params.get("Status")
+        self._ServiceType = params.get("ServiceType")
+        self._ChargeType = params.get("ChargeType")
+        self._PaymentEnabled = params.get("PaymentEnabled")
+        self._ChargeDetail = params.get("ChargeDetail")
+        self._StopReason = params.get("StopReason")
+        self._RPM = params.get("RPM")
+        self._TPM = params.get("TPM")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModelFreeTrialInfo(AbstractModel):
     r"""模型体验包信息
 
@@ -5448,6 +6371,70 @@ class ModifyApiKeyStatusRequest(AbstractModel):
 
 class ModifyApiKeyStatusResponse(AbstractModel):
     r"""ModifyApiKeyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEndpointRequest(AbstractModel):
+    r"""ModifyEndpoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoAdjustQuota: 自动调整配额
+        :type AutoAdjustQuota: int
+        """
+        self._AutoAdjustQuota = None
+
+    @property
+    def AutoAdjustQuota(self):
+        r"""自动调整配额
+        :rtype: int
+        """
+        return self._AutoAdjustQuota
+
+    @AutoAdjustQuota.setter
+    def AutoAdjustQuota(self, AutoAdjustQuota):
+        self._AutoAdjustQuota = AutoAdjustQuota
+
+
+    def _deserialize(self, params):
+        self._AutoAdjustQuota = params.get("AutoAdjustQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEndpointResponse(AbstractModel):
+    r"""ModifyEndpoint返回参数结构体
 
     """
 

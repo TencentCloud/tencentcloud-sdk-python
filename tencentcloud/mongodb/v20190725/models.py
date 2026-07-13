@@ -2311,6 +2311,14 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type HiddenZone: str
         :param _ParamTemplateId: <p>参数模板 ID。</p><ul><li>参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。</li><li>参数模板 ID 可通过 <a href="https://cloud.tencent.com/document/product/240/109155">DescribeDBInstanceParamTpl </a>接口获取。请选择与实例版本与架构所对应的参数模板 ID。</li></ul>
         :type ParamTemplateId: str
+        :param _DataEncryption: <p>数据库存储加密取值。</p><ul><li>No_Encryption：不采用存储加密。</li><li>TDE：开启 TDE 存储加密方式。</li></ul>
+        :type DataEncryption: str
+        :param _EncryptionKeySource: <p>如选取 TDE 存储加密，须指定密钥来源。</p><ul><li>auto 自动生成密钥。</li><li>manual 手动指定密钥。</li></ul>
+        :type EncryptionKeySource: str
+        :param _KeyId: <p>密钥 ID。如密钥资源选取为指定自定义，须输入指定的密钥 ID。</p>
+        :type KeyId: str
+        :param _KmsRegion: <p>如果密钥来源为指定自定义密钥，须填写该字段指定密钥的地域信息。</p>
+        :type KmsRegion: str
         :param _CpuCore: <p>实例CPU核大小，单位：C。具体售卖的CPU规格，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取。<br>注意：通用 I 型实例必须设置 CPU 大小。</p>
         :type CpuCore: int
         """
@@ -2341,6 +2349,10 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._ReadonlyNodeAvailabilityZoneList = None
         self._HiddenZone = None
         self._ParamTemplateId = None
+        self._DataEncryption = None
+        self._EncryptionKeySource = None
+        self._KeyId = None
+        self._KmsRegion = None
         self._CpuCore = None
 
     @property
@@ -2641,6 +2653,50 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._ParamTemplateId = ParamTemplateId
 
     @property
+    def DataEncryption(self):
+        r"""<p>数据库存储加密取值。</p><ul><li>No_Encryption：不采用存储加密。</li><li>TDE：开启 TDE 存储加密方式。</li></ul>
+        :rtype: str
+        """
+        return self._DataEncryption
+
+    @DataEncryption.setter
+    def DataEncryption(self, DataEncryption):
+        self._DataEncryption = DataEncryption
+
+    @property
+    def EncryptionKeySource(self):
+        r"""<p>如选取 TDE 存储加密，须指定密钥来源。</p><ul><li>auto 自动生成密钥。</li><li>manual 手动指定密钥。</li></ul>
+        :rtype: str
+        """
+        return self._EncryptionKeySource
+
+    @EncryptionKeySource.setter
+    def EncryptionKeySource(self, EncryptionKeySource):
+        self._EncryptionKeySource = EncryptionKeySource
+
+    @property
+    def KeyId(self):
+        r"""<p>密钥 ID。如密钥资源选取为指定自定义，须输入指定的密钥 ID。</p>
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KmsRegion(self):
+        r"""<p>如果密钥来源为指定自定义密钥，须填写该字段指定密钥的地域信息。</p>
+        :rtype: str
+        """
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
     def CpuCore(self):
         r"""<p>实例CPU核大小，单位：C。具体售卖的CPU规格，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取。<br>注意：通用 I 型实例必须设置 CPU 大小。</p>
         :rtype: int
@@ -2685,6 +2741,10 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._ReadonlyNodeAvailabilityZoneList = params.get("ReadonlyNodeAvailabilityZoneList")
         self._HiddenZone = params.get("HiddenZone")
         self._ParamTemplateId = params.get("ParamTemplateId")
+        self._DataEncryption = params.get("DataEncryption")
+        self._EncryptionKeySource = params.get("EncryptionKeySource")
+        self._KeyId = params.get("KeyId")
+        self._KmsRegion = params.get("KmsRegion")
         self._CpuCore = params.get("CpuCore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3004,6 +3064,14 @@ class CreateDBInstanceRequest(AbstractModel):
         :type HiddenZone: str
         :param _ParamTemplateId: <p>参数模板 ID。</p><ul><li>参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。</li><li>参数模板 ID 可通过 <a href="https://cloud.tencent.com/document/product/240/109155">DescribeDBInstanceParamTpl </a>接口获取。请选择与实例版本与架构所对应的参数模板 ID。</li></ul>
         :type ParamTemplateId: str
+        :param _DataEncryption: <p>数据库存储加密取值。</p><ul><li>No_Encryption：不采用存储加密。</li><li>TDE：开启 TDE 存储加密方式。</li></ul>
+        :type DataEncryption: str
+        :param _EncryptionKeySource: <p>如选取 TDE 存储加密，须指定密钥来源。</p><ul><li>auto 自动生成密钥。</li><li>manual 手动指定密钥。</li></ul>
+        :type EncryptionKeySource: str
+        :param _KeyId: <p>密钥 ID。如密钥资源选取为指定自定义，须输入指定的密钥 ID。</p>
+        :type KeyId: str
+        :param _KmsRegion: <p>如果密钥来源为指定自定义密钥，须填写该字段指定密钥的地域信息。</p>
+        :type KmsRegion: str
         :param _CpuCore: <p>实例CPU核大小，单位：C。具体售卖的CPU规格，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取<br>注意：通用 I 型实例必须设置 CPU 大小。</p>
         :type CpuCore: int
         """
@@ -3037,6 +3105,10 @@ class CreateDBInstanceRequest(AbstractModel):
         self._ReadonlyNodeAvailabilityZoneList = None
         self._HiddenZone = None
         self._ParamTemplateId = None
+        self._DataEncryption = None
+        self._EncryptionKeySource = None
+        self._KeyId = None
+        self._KmsRegion = None
         self._CpuCore = None
 
     @property
@@ -3370,6 +3442,50 @@ class CreateDBInstanceRequest(AbstractModel):
         self._ParamTemplateId = ParamTemplateId
 
     @property
+    def DataEncryption(self):
+        r"""<p>数据库存储加密取值。</p><ul><li>No_Encryption：不采用存储加密。</li><li>TDE：开启 TDE 存储加密方式。</li></ul>
+        :rtype: str
+        """
+        return self._DataEncryption
+
+    @DataEncryption.setter
+    def DataEncryption(self, DataEncryption):
+        self._DataEncryption = DataEncryption
+
+    @property
+    def EncryptionKeySource(self):
+        r"""<p>如选取 TDE 存储加密，须指定密钥来源。</p><ul><li>auto 自动生成密钥。</li><li>manual 手动指定密钥。</li></ul>
+        :rtype: str
+        """
+        return self._EncryptionKeySource
+
+    @EncryptionKeySource.setter
+    def EncryptionKeySource(self, EncryptionKeySource):
+        self._EncryptionKeySource = EncryptionKeySource
+
+    @property
+    def KeyId(self):
+        r"""<p>密钥 ID。如密钥资源选取为指定自定义，须输入指定的密钥 ID。</p>
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KmsRegion(self):
+        r"""<p>如果密钥来源为指定自定义密钥，须填写该字段指定密钥的地域信息。</p>
+        :rtype: str
+        """
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
     def CpuCore(self):
         r"""<p>实例CPU核大小，单位：C。具体售卖的CPU规格，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取<br>注意：通用 I 型实例必须设置 CPU 大小。</p>
         :rtype: int
@@ -3417,6 +3533,10 @@ class CreateDBInstanceRequest(AbstractModel):
         self._ReadonlyNodeAvailabilityZoneList = params.get("ReadonlyNodeAvailabilityZoneList")
         self._HiddenZone = params.get("HiddenZone")
         self._ParamTemplateId = params.get("ParamTemplateId")
+        self._DataEncryption = params.get("DataEncryption")
+        self._EncryptionKeySource = params.get("EncryptionKeySource")
+        self._KeyId = params.get("KeyId")
+        self._KmsRegion = params.get("KmsRegion")
         self._CpuCore = params.get("CpuCore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -16029,9 +16149,9 @@ class PromoteDBInstanceToActiveRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 灾备实例id
+        :param _InstanceId: <p>指定需转为普通实例的灾备或只读实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制灾备或只读实例 ID。</p>
         :type InstanceId: str
-        :param _MasterId: 主实例id
+        :param _MasterId: <p>指定灾备或只读实例所属的主实例。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :type MasterId: str
         """
         self._InstanceId = None
@@ -16039,7 +16159,7 @@ class PromoteDBInstanceToActiveRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""灾备实例id
+        r"""<p>指定需转为普通实例的灾备或只读实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制灾备或只读实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16050,7 +16170,7 @@ class PromoteDBInstanceToActiveRequest(AbstractModel):
 
     @property
     def MasterId(self):
-        r"""主实例id
+        r"""<p>指定灾备或只读实例所属的主实例。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._MasterId
@@ -16080,7 +16200,7 @@ class PromoteDBInstanceToActiveResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 任务id
+        :param _FlowId: <p>任务 ID。</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16090,7 +16210,7 @@ class PromoteDBInstanceToActiveResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""任务id
+        r"""<p>任务 ID。</p>
         :rtype: int
         """
         return self._FlowId

@@ -4014,15 +4014,15 @@ class UpdateSandboxToolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ToolId: 沙箱工具ID
+        :param _ToolId: <p>沙箱工具ID</p>
         :type ToolId: str
-        :param _Description: 沙箱工具描述，最大长度200字符
+        :param _Description: <p>沙箱工具描述，最大长度200字符</p>
         :type Description: str
-        :param _NetworkConfiguration: 网络配置
+        :param _NetworkConfiguration: <p>网络配置</p>
         :type NetworkConfiguration: :class:`tencentcloud.ags.v20250920.models.NetworkConfiguration`
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
         :type Tags: list of Tag
-        :param _CustomConfiguration: 沙箱工具自定义配置
+        :param _CustomConfiguration: <p>沙箱工具自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
         """
         self._ToolId = None
@@ -4033,7 +4033,7 @@ class UpdateSandboxToolRequest(AbstractModel):
 
     @property
     def ToolId(self):
-        r"""沙箱工具ID
+        r"""<p>沙箱工具ID</p>
         :rtype: str
         """
         return self._ToolId
@@ -4044,7 +4044,7 @@ class UpdateSandboxToolRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""沙箱工具描述，最大长度200字符
+        r"""<p>沙箱工具描述，最大长度200字符</p>
         :rtype: str
         """
         return self._Description
@@ -4055,7 +4055,7 @@ class UpdateSandboxToolRequest(AbstractModel):
 
     @property
     def NetworkConfiguration(self):
-        r"""网络配置
+        r"""<p>网络配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.NetworkConfiguration`
         """
         return self._NetworkConfiguration
@@ -4066,7 +4066,7 @@ class UpdateSandboxToolRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -4077,7 +4077,7 @@ class UpdateSandboxToolRequest(AbstractModel):
 
     @property
     def CustomConfiguration(self):
-        r"""沙箱工具自定义配置
+        r"""<p>沙箱工具自定义配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
         """
         return self._CustomConfiguration

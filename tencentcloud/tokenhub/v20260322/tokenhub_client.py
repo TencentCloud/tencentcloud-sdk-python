@@ -51,6 +51,31 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateEndpoint(self, request):
+        r"""创建推理服务。
+
+        创建一个在线推理服务，创建成功后返回推理服务 ID。
+
+        :param request: Request instance for CreateEndpoint.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.CreateEndpointRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.CreateEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEndpointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGlossary(self, request):
         r"""创建术语库。
 
@@ -165,6 +190,31 @@ class TokenhubClient(AbstractClient):
             body = self.call("DeleteApiKey", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteApiKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteEndpoint(self, request):
+        r"""删除推理服务。
+
+        删除指定的推理服务端点，操作不可逆。调用接口后，若通过 DescribeEndpoint 接口查询不到对应的端点，则表示删除成功。
+
+        :param request: Request instance for DeleteEndpoint.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DeleteEndpointRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DeleteEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteEndpointResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -297,6 +347,31 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEndpoint(self, request):
+        r"""查询推理服务详情。
+
+        根据推理服务 ID 查询推理服务的详细信息，包括计费信息、免费额度、API 调用地址等。
+
+        :param request: Request instance for DescribeEndpoint.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeEndpointRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEndpointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGlossaries(self, request):
         r"""查询术语库列表。
 
@@ -338,6 +413,31 @@ class TokenhubClient(AbstractClient):
             body = self.call("DescribeGlossaryEntries", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeGlossaryEntriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeModelEndpointList(self, request):
+        r"""查询模型接入点列表。
+
+        以模型为基准展示所有在线文本类型模型的接入点概览，支持按状态、计费方式、创建来源等条件筛选，使用 Offset/Limit 分页。
+
+        :param request: Request instance for DescribeModelEndpointList.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeModelEndpointListRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeModelEndpointListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModelEndpointList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModelEndpointListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -596,6 +696,36 @@ class TokenhubClient(AbstractClient):
             body = self.call("ModifyApiKeyStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyApiKeyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyEndpoint(self, request):
+        r"""修改推理服务。
+
+        修改推理服务的属性，支持修改服务名称、QPM/TPM 限流上限、TPM 包续费设置、智能路由开关和手动重试 TPM 购买。
+
+        注意事项：
+        - 不支持通过本接口切换计费类型（ChargeType），计费类型仅可在创建推理服务（CreateEndpoint）时指定。
+        - 不支持通过本接口修改 TPM 预付费保障包的 quota（TpmInputLimit/TpmOutputLimit/TimeSpan），这些值仅可在创建推理服务时指定。
+        - 当 RetryTPMPurchase 为 true 时，系统会异步重试 TPM 包购买，调用后需轮询推理服务状态确认结果。
+
+        :param request: Request instance for ModifyEndpoint.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.ModifyEndpointRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModifyEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyEndpointResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

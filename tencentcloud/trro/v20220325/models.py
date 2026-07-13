@@ -624,15 +624,15 @@ class CreateDeviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 创建设备所归属的项目ID
+        :param _ProjectId: <p>创建设备所归属的项目ID</p>
         :type ProjectId: str
-        :param _DeviceId: 创建设备ID，项目内需要唯一，由小写英文字母、数字和下划线构成，长度不超过18
+        :param _DeviceId: <p>创建设备ID，项目内需要唯一，由小写英文字母、数字和下划线构成，长度不超过32</p>
         :type DeviceId: str
-        :param _DeviceName: 创建设备名称，长度小于24, 可包含中文、数字、英文字母和下划线
+        :param _DeviceName: <p>创建设备名称，长度小于24, 可包含中文、数字、英文字母和下划线</p>
         :type DeviceName: str
-        :param _DeviceType: 设备类型，field为现场设备（受控设备），remote为远端设备（操控设备），不填默认为field
+        :param _DeviceType: <p>设备类型</p><p>枚举值：</p><ul><li>field： 现场设备（受控设备）</li><li>remote： 远端设备（操控设备）</li></ul>
         :type DeviceType: str
-        :param _DeviceToken: 设备认证口令，由大小写英文字母和数字构成，须为16位
+        :param _DeviceToken: <p>设备认证口令，由大小写英文字母和数字构成，须为16位</p>
         :type DeviceToken: str
         """
         self._ProjectId = None
@@ -643,7 +643,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""创建设备所归属的项目ID
+        r"""<p>创建设备所归属的项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -654,7 +654,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""创建设备ID，项目内需要唯一，由小写英文字母、数字和下划线构成，长度不超过18
+        r"""<p>创建设备ID，项目内需要唯一，由小写英文字母、数字和下划线构成，长度不超过32</p>
         :rtype: str
         """
         return self._DeviceId
@@ -665,7 +665,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""创建设备名称，长度小于24, 可包含中文、数字、英文字母和下划线
+        r"""<p>创建设备名称，长度小于24, 可包含中文、数字、英文字母和下划线</p>
         :rtype: str
         """
         return self._DeviceName
@@ -676,7 +676,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""设备类型，field为现场设备（受控设备），remote为远端设备（操控设备），不填默认为field
+        r"""<p>设备类型</p><p>枚举值：</p><ul><li>field： 现场设备（受控设备）</li><li>remote： 远端设备（操控设备）</li></ul>
         :rtype: str
         """
         return self._DeviceType
@@ -687,7 +687,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceToken(self):
-        r"""设备认证口令，由大小写英文字母和数字构成，须为16位
+        r"""<p>设备认证口令，由大小写英文字母和数字构成，须为16位</p>
         :rtype: str
         """
         return self._DeviceToken

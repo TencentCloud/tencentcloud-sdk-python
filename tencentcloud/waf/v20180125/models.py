@@ -41132,23 +41132,25 @@ class LLMMonPkg(AbstractModel):
 
 
 class LLMPkg(AbstractModel):
-    r"""有效大模型安全包信息
+    r"""大模型安全「后付费」资源信息（数据源：tb_waf_llm_resource），与 DescribeInstances 的 InstanceDetail.LLMPkg 保持一致
 
     """
 
     def __init__(self):
         r"""
-        :param _ResourceIds: 资源id
+        :param _ResourceIds: <p>资源id</p>
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: int
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: int
-        :param _BeginTime: 开始时间
+        :param _BeginTime: <p>开始时间</p>
         :type BeginTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _InquireKey: 计费项
+        :param _InquireNum: <p>申请数量</p>
+        :type InquireNum: int
+        :param _InquireKey: <p>计费项标签，如 sv_wsm_waf_llm_prompt_attack</p>
         :type InquireKey: str
         """
         self._ResourceIds = None
@@ -41156,11 +41158,12 @@ class LLMPkg(AbstractModel):
         self._Region = None
         self._BeginTime = None
         self._EndTime = None
+        self._InquireNum = None
         self._InquireKey = None
 
     @property
     def ResourceIds(self):
-        r"""资源id
+        r"""<p>资源id</p>
         :rtype: str
         """
         return self._ResourceIds
@@ -41171,7 +41174,7 @@ class LLMPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: int
         """
         return self._Status
@@ -41182,7 +41185,7 @@ class LLMPkg(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: int
         """
         return self._Region
@@ -41193,7 +41196,7 @@ class LLMPkg(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._BeginTime
@@ -41204,7 +41207,7 @@ class LLMPkg(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -41214,8 +41217,19 @@ class LLMPkg(AbstractModel):
         self._EndTime = EndTime
 
     @property
+    def InquireNum(self):
+        r"""<p>申请数量</p>
+        :rtype: int
+        """
+        return self._InquireNum
+
+    @InquireNum.setter
+    def InquireNum(self, InquireNum):
+        self._InquireNum = InquireNum
+
+    @property
     def InquireKey(self):
-        r"""计费项
+        r"""<p>计费项标签，如 sv_wsm_waf_llm_prompt_attack</p>
         :rtype: str
         """
         return self._InquireKey
@@ -41231,6 +41245,7 @@ class LLMPkg(AbstractModel):
         self._Region = params.get("Region")
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
+        self._InquireNum = params.get("InquireNum")
         self._InquireKey = params.get("InquireKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

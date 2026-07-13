@@ -5530,14 +5530,11 @@ class DriverLicenseOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
         :type ImageUrl: str
-        :param _CardSide: FRONT 为驾驶证主页正面（有红色印章的一面），
-BACK 为驾驶证副页正面（有档案编号的一面）。
-DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
-默认值为：FRONT。
+        :param _CardSide: <p>FRONT 为驾驶证主页正面（有红色印章的一面），<br>BACK 为驾驶证副页正面（有档案编号的一面）。<br>DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别<br>默认值为：FRONT。</p>
         :type CardSide: str
         """
         self._ImageBase64 = None
@@ -5546,7 +5543,7 @@ DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 
     @property
     def ImageBase64(self):
-        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -5557,7 +5554,7 @@ DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 
     @property
     def ImageUrl(self):
-        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""<p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -5568,10 +5565,7 @@ DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 
     @property
     def CardSide(self):
-        r"""FRONT 为驾驶证主页正面（有红色印章的一面），
-BACK 为驾驶证副页正面（有档案编号的一面）。
-DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
-默认值为：FRONT。
+        r"""<p>FRONT 为驾驶证主页正面（有红色印章的一面），<br>BACK 为驾驶证副页正面（有档案编号的一面）。<br>DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别<br>默认值为：FRONT。</p>
         :rtype: str
         """
         return self._CardSide
@@ -5602,64 +5596,49 @@ class DriverLicenseOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 驾驶证正页姓名
+        :param _Name: <p>驾驶证正页姓名</p>
         :type Name: str
-        :param _Sex: 性别
+        :param _Sex: <p>性别</p>
         :type Sex: str
-        :param _Nationality: 国籍
+        :param _Nationality: <p>国籍</p>
         :type Nationality: str
-        :param _Address: 住址
+        :param _Address: <p>住址</p>
         :type Address: str
-        :param _DateOfBirth: 出生日期（YYYY-MM-DD）
+        :param _DateOfBirth: <p>出生日期（YYYY-MM-DD）</p>
         :type DateOfBirth: str
-        :param _DateOfFirstIssue: 初次领证日期（YYYY-MM-DD）
+        :param _DateOfFirstIssue: <p>初次领证日期（YYYY-MM-DD）</p>
         :type DateOfFirstIssue: str
-        :param _Class: 准驾车型
+        :param _Class: <p>准驾车型</p>
         :type Class: str
-        :param _StartDate: 有效期开始时间（YYYY-MM-DD）
+        :param _StartDate: <p>有效期开始时间（YYYY-MM-DD）</p>
         :type StartDate: str
-        :param _EndDate: 有效期截止时间（新版驾驶证返回 YYYY-MM-DD，
-老版驾驶证返回有效期限 X年）
+        :param _EndDate: <p>有效期截止时间（新版驾驶证返回 YYYY-MM-DD，老版驾驶证返回有效期限 X年；若驾驶证有效期为长期，则返回&quot;长期&quot;）</p>
         :type EndDate: str
-        :param _CardCode: 驾驶证正页证号
+        :param _CardCode: <p>驾驶证正页证号</p>
         :type CardCode: str
-        :param _ArchivesCode: 档案编号
+        :param _ArchivesCode: <p>档案编号</p>
         :type ArchivesCode: str
-        :param _Record: 记录
+        :param _Record: <p>记录</p>
         :type Record: str
-        :param _RecognizeWarnCode: Code 告警码列表和释义：
--9102  复印件告警
--9103  翻拍件告警
--9104  反光告警
--9105  模糊告警
--9106  边框不完整告警
-注：告警码可以同时存在多个
+        :param _RecognizeWarnCode: <p>Code 告警码列表和释义：<br>-9102  复印件告警<br>-9103  翻拍件告警<br>-9104  反光告警<br>-9105  模糊告警<br>-9106  边框不完整告警<br>注：告警码可以同时存在多个</p>
         :type RecognizeWarnCode: list of int
-        :param _RecognizeWarnMsg: 告警码说明：
-WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
-WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
-WARN_DRIVER_LICENSE_REFLECTION 反光告警
-WARN_DRIVER_LICENSE_BLUR 模糊告警
-WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
-注：告警信息可以同时存在多个
+        :param _RecognizeWarnMsg: <p>告警码说明：<br>WARN_DRIVER_LICENSE_COPY_CARD 复印件告警<br>WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警<br>WARN_DRIVER_LICENSE_REFLECTION 反光告警<br>WARN_DRIVER_LICENSE_BLUR 模糊告警<br>WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警<br>注：告警信息可以同时存在多个</p>
         :type RecognizeWarnMsg: list of str
-        :param _IssuingAuthority: 发证单位
+        :param _IssuingAuthority: <p>发证单位</p>
         :type IssuingAuthority: str
-        :param _State: 状态（仅电子驾驶证支持返回该字段）
+        :param _State: <p>状态（仅电子驾驶证支持返回该字段）</p>
         :type State: str
-        :param _CumulativeScore: 累积记分（仅电子驾驶证支持返回该字段）
+        :param _CumulativeScore: <p>累积记分（仅电子驾驶证支持返回该字段）</p>
         :type CumulativeScore: str
-        :param _CurrentTime: 当前时间（仅电子驾驶证支持返回该字段）
+        :param _CurrentTime: <p>当前时间（仅电子驾驶证支持返回该字段）</p>
         :type CurrentTime: str
-        :param _GenerateTime: 生成时间（仅电子驾驶证支持返回该字段）
+        :param _GenerateTime: <p>生成时间（仅电子驾驶证支持返回该字段）</p>
         :type GenerateTime: str
-        :param _BackPageName: 驾驶证副页姓名
+        :param _BackPageName: <p>驾驶证副页姓名</p>
         :type BackPageName: str
-        :param _BackPageCardCode: 驾驶证副页证号
+        :param _BackPageCardCode: <p>驾驶证副页证号</p>
         :type BackPageCardCode: str
-        :param _DriverLicenseType: 驾驶证类型
-电子驾驶证：Electronic
-普通驾驶证：Normal
+        :param _DriverLicenseType: <p>驾驶证类型<br>电子驾驶证：Electronic<br>普通驾驶证：Normal</p>
         :type DriverLicenseType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5690,7 +5669,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Name(self):
-        r"""驾驶证正页姓名
+        r"""<p>驾驶证正页姓名</p>
         :rtype: str
         """
         return self._Name
@@ -5701,7 +5680,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Sex(self):
-        r"""性别
+        r"""<p>性别</p>
         :rtype: str
         """
         return self._Sex
@@ -5712,7 +5691,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Nationality(self):
-        r"""国籍
+        r"""<p>国籍</p>
         :rtype: str
         """
         return self._Nationality
@@ -5723,7 +5702,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Address(self):
-        r"""住址
+        r"""<p>住址</p>
         :rtype: str
         """
         return self._Address
@@ -5734,7 +5713,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def DateOfBirth(self):
-        r"""出生日期（YYYY-MM-DD）
+        r"""<p>出生日期（YYYY-MM-DD）</p>
         :rtype: str
         """
         return self._DateOfBirth
@@ -5745,7 +5724,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def DateOfFirstIssue(self):
-        r"""初次领证日期（YYYY-MM-DD）
+        r"""<p>初次领证日期（YYYY-MM-DD）</p>
         :rtype: str
         """
         return self._DateOfFirstIssue
@@ -5756,7 +5735,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Class(self):
-        r"""准驾车型
+        r"""<p>准驾车型</p>
         :rtype: str
         """
         return self._Class
@@ -5767,7 +5746,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def StartDate(self):
-        r"""有效期开始时间（YYYY-MM-DD）
+        r"""<p>有效期开始时间（YYYY-MM-DD）</p>
         :rtype: str
         """
         return self._StartDate
@@ -5778,8 +5757,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def EndDate(self):
-        r"""有效期截止时间（新版驾驶证返回 YYYY-MM-DD，
-老版驾驶证返回有效期限 X年）
+        r"""<p>有效期截止时间（新版驾驶证返回 YYYY-MM-DD，老版驾驶证返回有效期限 X年；若驾驶证有效期为长期，则返回&quot;长期&quot;）</p>
         :rtype: str
         """
         return self._EndDate
@@ -5790,7 +5768,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def CardCode(self):
-        r"""驾驶证正页证号
+        r"""<p>驾驶证正页证号</p>
         :rtype: str
         """
         return self._CardCode
@@ -5801,7 +5779,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def ArchivesCode(self):
-        r"""档案编号
+        r"""<p>档案编号</p>
         :rtype: str
         """
         return self._ArchivesCode
@@ -5812,7 +5790,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def Record(self):
-        r"""记录
+        r"""<p>记录</p>
         :rtype: str
         """
         return self._Record
@@ -5823,13 +5801,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def RecognizeWarnCode(self):
-        r"""Code 告警码列表和释义：
--9102  复印件告警
--9103  翻拍件告警
--9104  反光告警
--9105  模糊告警
--9106  边框不完整告警
-注：告警码可以同时存在多个
+        r"""<p>Code 告警码列表和释义：<br>-9102  复印件告警<br>-9103  翻拍件告警<br>-9104  反光告警<br>-9105  模糊告警<br>-9106  边框不完整告警<br>注：告警码可以同时存在多个</p>
         :rtype: list of int
         """
         return self._RecognizeWarnCode
@@ -5840,13 +5812,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def RecognizeWarnMsg(self):
-        r"""告警码说明：
-WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
-WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
-WARN_DRIVER_LICENSE_REFLECTION 反光告警
-WARN_DRIVER_LICENSE_BLUR 模糊告警
-WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
-注：告警信息可以同时存在多个
+        r"""<p>告警码说明：<br>WARN_DRIVER_LICENSE_COPY_CARD 复印件告警<br>WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警<br>WARN_DRIVER_LICENSE_REFLECTION 反光告警<br>WARN_DRIVER_LICENSE_BLUR 模糊告警<br>WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警<br>注：告警信息可以同时存在多个</p>
         :rtype: list of str
         """
         return self._RecognizeWarnMsg
@@ -5857,7 +5823,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def IssuingAuthority(self):
-        r"""发证单位
+        r"""<p>发证单位</p>
         :rtype: str
         """
         return self._IssuingAuthority
@@ -5868,7 +5834,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def State(self):
-        r"""状态（仅电子驾驶证支持返回该字段）
+        r"""<p>状态（仅电子驾驶证支持返回该字段）</p>
         :rtype: str
         """
         return self._State
@@ -5879,7 +5845,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def CumulativeScore(self):
-        r"""累积记分（仅电子驾驶证支持返回该字段）
+        r"""<p>累积记分（仅电子驾驶证支持返回该字段）</p>
         :rtype: str
         """
         return self._CumulativeScore
@@ -5890,7 +5856,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def CurrentTime(self):
-        r"""当前时间（仅电子驾驶证支持返回该字段）
+        r"""<p>当前时间（仅电子驾驶证支持返回该字段）</p>
         :rtype: str
         """
         return self._CurrentTime
@@ -5901,7 +5867,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def GenerateTime(self):
-        r"""生成时间（仅电子驾驶证支持返回该字段）
+        r"""<p>生成时间（仅电子驾驶证支持返回该字段）</p>
         :rtype: str
         """
         return self._GenerateTime
@@ -5912,7 +5878,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def BackPageName(self):
-        r"""驾驶证副页姓名
+        r"""<p>驾驶证副页姓名</p>
         :rtype: str
         """
         return self._BackPageName
@@ -5923,7 +5889,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def BackPageCardCode(self):
-        r"""驾驶证副页证号
+        r"""<p>驾驶证副页证号</p>
         :rtype: str
         """
         return self._BackPageCardCode
@@ -5934,9 +5900,7 @@ WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
 
     @property
     def DriverLicenseType(self):
-        r"""驾驶证类型
-电子驾驶证：Electronic
-普通驾驶证：Normal
+        r"""<p>驾驶证类型<br>电子驾驶证：Electronic<br>普通驾驶证：Normal</p>
         :rtype: str
         """
         return self._DriverLicenseType
@@ -14692,16 +14656,16 @@ class ImageCoordinates(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: 头像左上角横坐标
+        :param _X: <p>头像左上角横坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type X: int
-        :param _Y: 头像左上角纵坐标
+        :param _Y: <p>头像左上角纵坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Y: int
-        :param _Width: 头像框宽度
+        :param _Width: <p>头像框宽度</p><p>单位：px</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
-        :param _Height: 头像框高度
+        :param _Height: <p>头像框高度</p><p>单位：px</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         """
@@ -14712,7 +14676,7 @@ class ImageCoordinates(AbstractModel):
 
     @property
     def X(self):
-        r"""头像左上角横坐标
+        r"""<p>头像左上角横坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14724,7 +14688,7 @@ class ImageCoordinates(AbstractModel):
 
     @property
     def Y(self):
-        r"""头像左上角纵坐标
+        r"""<p>头像左上角纵坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14736,7 +14700,7 @@ class ImageCoordinates(AbstractModel):
 
     @property
     def Width(self):
-        r"""头像框宽度
+        r"""<p>头像框宽度</p><p>单位：px</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14748,7 +14712,7 @@ class ImageCoordinates(AbstractModel):
 
     @property
     def Height(self):
-        r"""头像框高度
+        r"""<p>头像框高度</p><p>单位：px</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -26911,13 +26875,13 @@ class Rect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: 左上角x
+        :param _X: <p>左上角x</p>
         :type X: int
-        :param _Y: 左上角y
+        :param _Y: <p>左上角y</p>
         :type Y: int
-        :param _Width: 宽度
+        :param _Width: <p>宽度</p><p>单位：px</p>
         :type Width: int
-        :param _Height: 高度
+        :param _Height: <p>高度</p><p>单位：px</p>
         :type Height: int
         """
         self._X = None
@@ -26927,7 +26891,7 @@ class Rect(AbstractModel):
 
     @property
     def X(self):
-        r"""左上角x
+        r"""<p>左上角x</p>
         :rtype: int
         """
         return self._X
@@ -26938,7 +26902,7 @@ class Rect(AbstractModel):
 
     @property
     def Y(self):
-        r"""左上角y
+        r"""<p>左上角y</p>
         :rtype: int
         """
         return self._Y
@@ -26949,7 +26913,7 @@ class Rect(AbstractModel):
 
     @property
     def Width(self):
-        r"""宽度
+        r"""<p>宽度</p><p>单位：px</p>
         :rtype: int
         """
         return self._Width
@@ -26960,7 +26924,7 @@ class Rect(AbstractModel):
 
     @property
     def Height(self):
-        r"""高度
+        r"""<p>高度</p><p>单位：px</p>
         :rtype: int
         """
         return self._Height

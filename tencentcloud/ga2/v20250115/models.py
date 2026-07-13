@@ -284,9 +284,9 @@ class CreateAccelerateAreasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _AcceleratorAreas: 加速地域信息。
+        :param _AcceleratorAreas: <p>加速地域信息。一次最多创建10组加速地域。</p>
         :type AcceleratorAreas: list of AcceleratorAreas
         """
         self._GlobalAcceleratorId = None
@@ -294,7 +294,7 @@ class CreateAccelerateAreasRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -305,7 +305,7 @@ class CreateAccelerateAreasRequest(AbstractModel):
 
     @property
     def AcceleratorAreas(self):
-        r"""加速地域信息。
+        r"""<p>加速地域信息。一次最多创建10组加速地域。</p>
         :rtype: list of AcceleratorAreas
         """
         return self._AcceleratorAreas
@@ -340,7 +340,7 @@ class CreateAccelerateAreasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -350,7 +350,7 @@ class CreateAccelerateAreasResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -5096,9 +5096,9 @@ class ModifyAccelerateAreasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _AcceleratorAreas: 加速地域信息。
+        :param _AcceleratorAreas: <p>加速地域信息。</p><p>入参限制：数组长度不能超过10。</p>
         :type AcceleratorAreas: list of AcceleratorAreas
         """
         self._GlobalAcceleratorId = None
@@ -5106,7 +5106,7 @@ class ModifyAccelerateAreasRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -5117,7 +5117,7 @@ class ModifyAccelerateAreasRequest(AbstractModel):
 
     @property
     def AcceleratorAreas(self):
-        r"""加速地域信息。
+        r"""<p>加速地域信息。</p><p>入参限制：数组长度不能超过10。</p>
         :rtype: list of AcceleratorAreas
         """
         return self._AcceleratorAreas
@@ -5152,7 +5152,7 @@ class ModifyAccelerateAreasResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5162,7 +5162,7 @@ class ModifyAccelerateAreasResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId

@@ -1867,6 +1867,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def IsolatedInstancePre(self, request):
+        r"""隔离预付费实例，该接口会对实例执行隔离的动作，执行成功后实例会被隔离
+
+        :param request: Request instance for IsolatedInstancePre.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.IsolatedInstancePreRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.IsolatedInstancePreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolatedInstancePre", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsolatedInstancePreResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAccessPolicy(self, request):
         r"""修改实例公网IP白名单列表接口
 

@@ -1351,7 +1351,7 @@ class MongodbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.PromoteDBInstanceToActiveResponse:
         """
-        本接口（PromoteDBInstanceToActive）用于灾备实例转正
+        本接口（PromoteDBInstanceToActive）用于将灾备实例或只读实例转为独立的主实例
         """
         
         kwargs = {}

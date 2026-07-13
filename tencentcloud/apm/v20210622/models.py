@@ -10258,92 +10258,98 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统 ID
+        :param _InstanceId: <p>业务系统 ID</p>
         :type InstanceId: str
-        :param _Name: 业务系统名
+        :param _Name: <p>业务系统名</p>
         :type Name: str
-        :param _Tags: Tag 列表
+        :param _Tags: <p>Tag 列表</p>
         :type Tags: list of ApmTag
-        :param _Description: 业务系统描述
+        :param _Description: <p>业务系统描述</p>
         :type Description: str
-        :param _TraceDuration: Trace 数据保存时长（单位：天）
+        :param _TraceDuration: <p>Trace 数据保存时长（单位：天）</p>
         :type TraceDuration: int
-        :param _OpenBilling: 是否开启计费
+        :param _OpenBilling: <p>是否开启计费</p>
         :type OpenBilling: bool
-        :param _SpanDailyCounters: 业务系统上报额度
+        :param _SpanDailyCounters: <p>业务系统上报额度</p>
         :type SpanDailyCounters: int
-        :param _ErrRateThreshold: 错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
+        :param _ErrRateThreshold: <p>错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。</p>
         :type ErrRateThreshold: int
-        :param _SampleRate: 采样率（单位：%）
+        :param _SampleRate: <p>采样率（单位：%）</p>
         :type SampleRate: int
-        :param _ErrorSample: 是否开启错误采样（0=关, 1=开）
+        :param _ErrorSample: <p>是否开启错误采样（0=关, 1=开）</p>
         :type ErrorSample: int
-        :param _SlowRequestSavedThreshold: 采样慢调用保存阈值（单位：ms）
+        :param _SlowRequestSavedThreshold: <p>采样慢调用保存阈值（单位：ms）</p>
         :type SlowRequestSavedThreshold: int
-        :param _IsRelatedLog: 是否开启日志功能（0=关, 1=开）
+        :param _IsRelatedLog: <p>是否开启日志功能（0=关, 1=开）</p>
         :type IsRelatedLog: int
-        :param _LogRegion: 日志地域，开启日志功能后才会生效
+        :param _LogRegion: <p>日志地域，开启日志功能后才会生效</p>
         :type LogRegion: str
-        :param _LogTopicID: CLS 日志主题 ID，开启日志功能后才会生效
+        :param _LogTopicID: <p>CLS 日志主题 ID，开启日志功能后才会生效</p>
         :type LogTopicID: str
-        :param _LogSet: 日志集，开启日志功能后才会生效
+        :param _LogSet: <p>日志集，开启日志功能后才会生效</p>
         :type LogSet: str
-        :param _LogSource: 日志源，开启日志功能后才会生效
+        :param _LogSource: <p>日志源，开启日志功能后才会生效</p>
         :type LogSource: str
-        :param _CustomShowTags: 用户自定义展示标签列表
+        :param _CustomShowTags: <p>用户自定义展示标签列表</p>
         :type CustomShowTags: list of str
-        :param _PayMode: 修改计费模式（1为预付费，0为按量付费）
+        :param _PayMode: <p>修改计费模式（1为预付费，0为按量付费）</p>
         :type PayMode: int
-        :param _ResponseDurationWarningThreshold: 响应时间警示线
+        :param _ResponseDurationWarningThreshold: <p>响应时间警示线</p>
         :type ResponseDurationWarningThreshold: int
-        :param _Free: 是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
+        :param _Free: <p>是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0</p>
         :type Free: int
-        :param _IsRelatedDashboard: 是否关联 Dashboard（0=关,1=开）
+        :param _IsRelatedDashboard: <p>是否关联 Dashboard（0=关,1=开）</p>
         :type IsRelatedDashboard: int
-        :param _DashboardTopicID: 关联的 Dashboard ID，开启关联 Dashboard 后才会生效
+        :param _DashboardTopicID: <p>关联的 Dashboard ID，开启关联 Dashboard 后才会生效</p>
         :type DashboardTopicID: str
-        :param _IsSqlInjectionAnalysis: 是否开启 SQL 注入检测（0=关,1=开）
+        :param _IsSqlInjectionAnalysis: <p>是否开启 SQL 注入检测（0=关,1=开）</p>
         :type IsSqlInjectionAnalysis: int
-        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测（0=关,1=开）
+        :param _IsInstrumentationVulnerabilityScan: <p>是否开启组件漏洞检测（0=关,1=开）</p>
         :type IsInstrumentationVulnerabilityScan: int
-        :param _IsRemoteCommandExecutionAnalysis: 是否开启远程命令攻击检测
+        :param _IsRemoteCommandExecutionAnalysis: <p>是否开启远程命令攻击检测</p>
         :type IsRemoteCommandExecutionAnalysis: int
-        :param _IsMemoryHijackingAnalysis: 是否开启内存马检测
+        :param _IsMemoryHijackingAnalysis: <p>是否开启内存马检测</p>
         :type IsMemoryHijackingAnalysis: int
-        :param _LogIndexType: CLS索引类型(0=全文索引，1=键值索引)
+        :param _LogIndexType: <p>CLS索引类型(0=全文索引，1=键值索引)</p>
         :type LogIndexType: int
-        :param _LogTraceIdKey: traceId的索引key: 当CLS索引类型为键值索引时生效
+        :param _LogTraceIdKey: <p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogTraceIdKey: str
-        :param _IsDeleteAnyFileAnalysis: 是否开启删除任意文件检测（0-关闭，1-开启）
+        :param _IsDeleteAnyFileAnalysis: <p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
         :type IsDeleteAnyFileAnalysis: int
-        :param _IsReadAnyFileAnalysis: 是否开启读取任意文件检测（0-关闭，1-开启）
+        :param _IsReadAnyFileAnalysis: <p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
         :type IsReadAnyFileAnalysis: int
-        :param _IsUploadAnyFileAnalysis: 是否开启上传任意文件检测（0-关闭，1-开启）
+        :param _IsUploadAnyFileAnalysis: <p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
         :type IsUploadAnyFileAnalysis: int
-        :param _IsIncludeAnyFileAnalysis: 是否开启包含任意文件检测（0-关闭，1-开启）
+        :param _IsIncludeAnyFileAnalysis: <p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
         :type IsIncludeAnyFileAnalysis: int
-        :param _IsDirectoryTraversalAnalysis: 是否开启目录遍历检测（0-关闭，1-开启）
+        :param _IsDirectoryTraversalAnalysis: <p>是否开启目录遍历检测（0-关闭，1-开启）</p>
         :type IsDirectoryTraversalAnalysis: int
-        :param _IsTemplateEngineInjectionAnalysis: 是否开启模板引擎注入检测（0-关闭，1-开启）
+        :param _IsTemplateEngineInjectionAnalysis: <p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
         :type IsTemplateEngineInjectionAnalysis: int
-        :param _IsScriptEngineInjectionAnalysis: 是否开启脚本引擎注入检测（0-关闭，1-开启）
+        :param _IsScriptEngineInjectionAnalysis: <p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
         :type IsScriptEngineInjectionAnalysis: int
-        :param _IsExpressionInjectionAnalysis: 是否开启表达式注入检测（0-关闭，1-开启）
+        :param _IsExpressionInjectionAnalysis: <p>是否开启表达式注入检测（0-关闭，1-开启）</p>
         :type IsExpressionInjectionAnalysis: int
-        :param _IsJNDIInjectionAnalysis: 是否开启JNDI注入检测（0-关闭，1-开启）
+        :param _IsJNDIInjectionAnalysis: <p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
         :type IsJNDIInjectionAnalysis: int
-        :param _IsJNIInjectionAnalysis: 是否开启JNI注入检测（0-关闭，1-开启）
+        :param _IsJNIInjectionAnalysis: <p>是否开启JNI注入检测（0-关闭，1-开启）</p>
         :type IsJNIInjectionAnalysis: int
-        :param _IsWebshellBackdoorAnalysis: 是否开启Webshell后门检测（0-关闭，1-开启）
+        :param _IsWebshellBackdoorAnalysis: <p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
         :type IsWebshellBackdoorAnalysis: int
-        :param _IsDeserializationAnalysis: 是否开启反序列化检测（0-关闭，1-开启）
+        :param _IsDeserializationAnalysis: <p>是否开启反序列化检测（0-关闭，1-开启）</p>
         :type IsDeserializationAnalysis: int
-        :param _UrlLongSegmentThreshold: URL长分段收敛阈值
+        :param _UrlLongSegmentThreshold: <p>URL长分段收敛阈值</p>
         :type UrlLongSegmentThreshold: int
-        :param _UrlNumberSegmentThreshold: URL数字分段收敛阈值
+        :param _UrlNumberSegmentThreshold: <p>URL数字分段收敛阈值</p>
         :type UrlNumberSegmentThreshold: int
-        :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
+        :param _LogSpanIdKey: <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogSpanIdKey: str
+        :param _EnableHeadSampler: <p>是否开启探针头采样</p>
+        :type EnableHeadSampler: bool
+        :param _HeadSamplerType: <p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul>
+        :type HeadSamplerType: str
+        :param _HeadSamplerArg: <p>头采采样率</p><p>取值范围：[0, 100]</p>
+        :type HeadSamplerArg: int
         """
         self._InstanceId = None
         self._Name = None
@@ -10388,10 +10394,13 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._UrlLongSegmentThreshold = None
         self._UrlNumberSegmentThreshold = None
         self._LogSpanIdKey = None
+        self._EnableHeadSampler = None
+        self._HeadSamplerType = None
+        self._HeadSamplerArg = None
 
     @property
     def InstanceId(self):
-        r"""业务系统 ID
+        r"""<p>业务系统 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -10402,7 +10411,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""业务系统名
+        r"""<p>业务系统名</p>
         :rtype: str
         """
         return self._Name
@@ -10413,7 +10422,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""Tag 列表
+        r"""<p>Tag 列表</p>
         :rtype: list of ApmTag
         """
         return self._Tags
@@ -10424,7 +10433,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""业务系统描述
+        r"""<p>业务系统描述</p>
         :rtype: str
         """
         return self._Description
@@ -10435,7 +10444,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def TraceDuration(self):
-        r"""Trace 数据保存时长（单位：天）
+        r"""<p>Trace 数据保存时长（单位：天）</p>
         :rtype: int
         """
         return self._TraceDuration
@@ -10446,7 +10455,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def OpenBilling(self):
-        r"""是否开启计费
+        r"""<p>是否开启计费</p>
         :rtype: bool
         """
         return self._OpenBilling
@@ -10457,7 +10466,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
-        r"""业务系统上报额度
+        r"""<p>业务系统上报额度</p>
         :rtype: int
         """
         return self._SpanDailyCounters
@@ -10468,7 +10477,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ErrRateThreshold(self):
-        r"""错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
+        r"""<p>错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。</p>
         :rtype: int
         """
         return self._ErrRateThreshold
@@ -10479,7 +10488,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""采样率（单位：%）
+        r"""<p>采样率（单位：%）</p>
         :rtype: int
         """
         return self._SampleRate
@@ -10490,7 +10499,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ErrorSample(self):
-        r"""是否开启错误采样（0=关, 1=开）
+        r"""<p>是否开启错误采样（0=关, 1=开）</p>
         :rtype: int
         """
         return self._ErrorSample
@@ -10501,7 +10510,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def SlowRequestSavedThreshold(self):
-        r"""采样慢调用保存阈值（单位：ms）
+        r"""<p>采样慢调用保存阈值（单位：ms）</p>
         :rtype: int
         """
         return self._SlowRequestSavedThreshold
@@ -10512,7 +10521,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        r"""是否开启日志功能（0=关, 1=开）
+        r"""<p>是否开启日志功能（0=关, 1=开）</p>
         :rtype: int
         """
         return self._IsRelatedLog
@@ -10523,7 +10532,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogRegion(self):
-        r"""日志地域，开启日志功能后才会生效
+        r"""<p>日志地域，开启日志功能后才会生效</p>
         :rtype: str
         """
         return self._LogRegion
@@ -10534,7 +10543,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogTopicID(self):
-        r"""CLS 日志主题 ID，开启日志功能后才会生效
+        r"""<p>CLS 日志主题 ID，开启日志功能后才会生效</p>
         :rtype: str
         """
         return self._LogTopicID
@@ -10545,7 +10554,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogSet(self):
-        r"""日志集，开启日志功能后才会生效
+        r"""<p>日志集，开启日志功能后才会生效</p>
         :rtype: str
         """
         return self._LogSet
@@ -10556,7 +10565,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogSource(self):
-        r"""日志源，开启日志功能后才会生效
+        r"""<p>日志源，开启日志功能后才会生效</p>
         :rtype: str
         """
         return self._LogSource
@@ -10567,7 +10576,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def CustomShowTags(self):
-        r"""用户自定义展示标签列表
+        r"""<p>用户自定义展示标签列表</p>
         :rtype: list of str
         """
         return self._CustomShowTags
@@ -10578,7 +10587,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""修改计费模式（1为预付费，0为按量付费）
+        r"""<p>修改计费模式（1为预付费，0为按量付费）</p>
         :rtype: int
         """
         return self._PayMode
@@ -10589,7 +10598,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def ResponseDurationWarningThreshold(self):
-        r"""响应时间警示线
+        r"""<p>响应时间警示线</p>
         :rtype: int
         """
         return self._ResponseDurationWarningThreshold
@@ -10600,7 +10609,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def Free(self):
-        r"""是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
+        r"""<p>是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0</p>
         :rtype: int
         """
         return self._Free
@@ -10611,7 +10620,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        r"""是否关联 Dashboard（0=关,1=开）
+        r"""<p>是否关联 Dashboard（0=关,1=开）</p>
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -10622,7 +10631,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        r"""关联的 Dashboard ID，开启关联 Dashboard 后才会生效
+        r"""<p>关联的 Dashboard ID，开启关联 Dashboard 后才会生效</p>
         :rtype: str
         """
         return self._DashboardTopicID
@@ -10633,7 +10642,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        r"""是否开启 SQL 注入检测（0=关,1=开）
+        r"""<p>是否开启 SQL 注入检测（0=关,1=开）</p>
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -10644,7 +10653,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        r"""是否开启组件漏洞检测（0=关,1=开）
+        r"""<p>是否开启组件漏洞检测（0=关,1=开）</p>
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -10655,7 +10664,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsRemoteCommandExecutionAnalysis(self):
-        r"""是否开启远程命令攻击检测
+        r"""<p>是否开启远程命令攻击检测</p>
         :rtype: int
         """
         return self._IsRemoteCommandExecutionAnalysis
@@ -10666,7 +10675,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsMemoryHijackingAnalysis(self):
-        r"""是否开启内存马检测
+        r"""<p>是否开启内存马检测</p>
         :rtype: int
         """
         return self._IsMemoryHijackingAnalysis
@@ -10677,7 +10686,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogIndexType(self):
-        r"""CLS索引类型(0=全文索引，1=键值索引)
+        r"""<p>CLS索引类型(0=全文索引，1=键值索引)</p>
         :rtype: int
         """
         return self._LogIndexType
@@ -10688,7 +10697,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogTraceIdKey(self):
-        r"""traceId的索引key: 当CLS索引类型为键值索引时生效
+        r"""<p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
         :rtype: str
         """
         return self._LogTraceIdKey
@@ -10699,7 +10708,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsDeleteAnyFileAnalysis(self):
-        r"""是否开启删除任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsDeleteAnyFileAnalysis
@@ -10710,7 +10719,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsReadAnyFileAnalysis(self):
-        r"""是否开启读取任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsReadAnyFileAnalysis
@@ -10721,7 +10730,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsUploadAnyFileAnalysis(self):
-        r"""是否开启上传任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsUploadAnyFileAnalysis
@@ -10732,7 +10741,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsIncludeAnyFileAnalysis(self):
-        r"""是否开启包含任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsIncludeAnyFileAnalysis
@@ -10743,7 +10752,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsDirectoryTraversalAnalysis(self):
-        r"""是否开启目录遍历检测（0-关闭，1-开启）
+        r"""<p>是否开启目录遍历检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsDirectoryTraversalAnalysis
@@ -10754,7 +10763,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsTemplateEngineInjectionAnalysis(self):
-        r"""是否开启模板引擎注入检测（0-关闭，1-开启）
+        r"""<p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsTemplateEngineInjectionAnalysis
@@ -10765,7 +10774,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsScriptEngineInjectionAnalysis(self):
-        r"""是否开启脚本引擎注入检测（0-关闭，1-开启）
+        r"""<p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsScriptEngineInjectionAnalysis
@@ -10776,7 +10785,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsExpressionInjectionAnalysis(self):
-        r"""是否开启表达式注入检测（0-关闭，1-开启）
+        r"""<p>是否开启表达式注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsExpressionInjectionAnalysis
@@ -10787,7 +10796,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsJNDIInjectionAnalysis(self):
-        r"""是否开启JNDI注入检测（0-关闭，1-开启）
+        r"""<p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsJNDIInjectionAnalysis
@@ -10798,7 +10807,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsJNIInjectionAnalysis(self):
-        r"""是否开启JNI注入检测（0-关闭，1-开启）
+        r"""<p>是否开启JNI注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsJNIInjectionAnalysis
@@ -10809,7 +10818,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsWebshellBackdoorAnalysis(self):
-        r"""是否开启Webshell后门检测（0-关闭，1-开启）
+        r"""<p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsWebshellBackdoorAnalysis
@@ -10820,7 +10829,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def IsDeserializationAnalysis(self):
-        r"""是否开启反序列化检测（0-关闭，1-开启）
+        r"""<p>是否开启反序列化检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsDeserializationAnalysis
@@ -10831,7 +10840,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def UrlLongSegmentThreshold(self):
-        r"""URL长分段收敛阈值
+        r"""<p>URL长分段收敛阈值</p>
         :rtype: int
         """
         return self._UrlLongSegmentThreshold
@@ -10842,7 +10851,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def UrlNumberSegmentThreshold(self):
-        r"""URL数字分段收敛阈值
+        r"""<p>URL数字分段收敛阈值</p>
         :rtype: int
         """
         return self._UrlNumberSegmentThreshold
@@ -10853,7 +10862,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def LogSpanIdKey(self):
-        r"""spanId的索引key: 当CLS索引类型为键值索引时生效
+        r"""<p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :rtype: str
         """
         return self._LogSpanIdKey
@@ -10861,6 +10870,39 @@ class ModifyApmInstanceRequest(AbstractModel):
     @LogSpanIdKey.setter
     def LogSpanIdKey(self, LogSpanIdKey):
         self._LogSpanIdKey = LogSpanIdKey
+
+    @property
+    def EnableHeadSampler(self):
+        r"""<p>是否开启探针头采样</p>
+        :rtype: bool
+        """
+        return self._EnableHeadSampler
+
+    @EnableHeadSampler.setter
+    def EnableHeadSampler(self, EnableHeadSampler):
+        self._EnableHeadSampler = EnableHeadSampler
+
+    @property
+    def HeadSamplerType(self):
+        r"""<p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul>
+        :rtype: str
+        """
+        return self._HeadSamplerType
+
+    @HeadSamplerType.setter
+    def HeadSamplerType(self, HeadSamplerType):
+        self._HeadSamplerType = HeadSamplerType
+
+    @property
+    def HeadSamplerArg(self):
+        r"""<p>头采采样率</p><p>取值范围：[0, 100]</p>
+        :rtype: int
+        """
+        return self._HeadSamplerArg
+
+    @HeadSamplerArg.setter
+    def HeadSamplerArg(self, HeadSamplerArg):
+        self._HeadSamplerArg = HeadSamplerArg
 
 
     def _deserialize(self, params):
@@ -10912,6 +10954,9 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._UrlLongSegmentThreshold = params.get("UrlLongSegmentThreshold")
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
         self._LogSpanIdKey = params.get("LogSpanIdKey")
+        self._EnableHeadSampler = params.get("EnableHeadSampler")
+        self._HeadSamplerType = params.get("HeadSamplerType")
+        self._HeadSamplerArg = params.get("HeadSamplerArg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

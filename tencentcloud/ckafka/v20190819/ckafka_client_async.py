@@ -1466,6 +1466,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def IsolatedInstancePre(
+            self,
+            request: models.IsolatedInstancePreRequest,
+            opts: Dict = None,
+    ) -> models.IsolatedInstancePreResponse:
+        """
+        隔离预付费实例，该接口会对实例执行隔离的动作，执行成功后实例会被隔离
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "IsolatedInstancePre"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.IsolatedInstancePreResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAccessPolicy(
             self,
             request: models.ModifyAccessPolicyRequest,

@@ -45,6 +45,26 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateEndpoint(
+            self,
+            request: models.CreateEndpointRequest,
+            opts: Dict = None,
+    ) -> models.CreateEndpointResponse:
+        """
+        创建推理服务。
+
+        创建一个在线推理服务，创建成功后返回推理服务 ID。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEndpoint"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEndpointResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateGlossary(
             self,
             request: models.CreateGlossaryRequest,
@@ -138,6 +158,26 @@ class TokenhubClient(AbstractClient):
         kwargs["action"] = "DeleteApiKey"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteApiKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteEndpoint(
+            self,
+            request: models.DeleteEndpointRequest,
+            opts: Dict = None,
+    ) -> models.DeleteEndpointResponse:
+        """
+        删除推理服务。
+
+        删除指定的推理服务端点，操作不可逆。调用接口后，若通过 DescribeEndpoint 接口查询不到对应的端点，则表示删除成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteEndpoint"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteEndpointResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -241,6 +281,26 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEndpoint(
+            self,
+            request: models.DescribeEndpointRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEndpointResponse:
+        """
+        查询推理服务详情。
+
+        根据推理服务 ID 查询推理服务的详细信息，包括计费信息、免费额度、API 调用地址等。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEndpoint"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEndpointResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeGlossaries(
             self,
             request: models.DescribeGlossariesRequest,
@@ -276,6 +336,26 @@ class TokenhubClient(AbstractClient):
         kwargs["action"] = "DescribeGlossaryEntries"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeGlossaryEntriesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelEndpointList(
+            self,
+            request: models.DescribeModelEndpointListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelEndpointListResponse:
+        """
+        查询模型接入点列表。
+
+        以模型为基准展示所有在线文本类型模型的接入点概览，支持按状态、计费方式、创建来源等条件筛选，使用 Offset/Limit 分页。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelEndpointList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelEndpointListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -484,6 +564,31 @@ class TokenhubClient(AbstractClient):
         kwargs["action"] = "ModifyApiKeyStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyApiKeyStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyEndpoint(
+            self,
+            request: models.ModifyEndpointRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEndpointResponse:
+        """
+        修改推理服务。
+
+        修改推理服务的属性，支持修改服务名称、QPM/TPM 限流上限、TPM 包续费设置、智能路由开关和手动重试 TPM 购买。
+
+        注意事项：
+        - 不支持通过本接口切换计费类型（ChargeType），计费类型仅可在创建推理服务（CreateEndpoint）时指定。
+        - 不支持通过本接口修改 TPM 预付费保障包的 quota（TpmInputLimit/TpmOutputLimit/TimeSpan），这些值仅可在创建推理服务时指定。
+        - 当 RetryTPMPurchase 为 true 时，系统会异步重试 TPM 包购买，调用后需轮询推理服务状态确认结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEndpoint"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEndpointResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

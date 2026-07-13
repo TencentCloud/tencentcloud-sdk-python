@@ -670,7 +670,7 @@ class AccountStatsGroup(AbstractModel):
 
 
 class AddressTemplateSpecification(AbstractModel):
-    r"""安全组地址模版
+    r"""安全组地址模板
 
     """
 
@@ -727,106 +727,73 @@ class AnalysisSgRuleInfoResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 规则id  等同RuleUuid
+        :param _Id: <p>规则id  等同RuleUuid</p>
         :type Id: int
-        :param _RuleId: 规则Id
+        :param _RuleId: <p>规则Id</p>
         :type RuleId: str
-        :param _OrderIndex: 排序
+        :param _OrderIndex: <p>排序</p>
         :type OrderIndex: int
-        :param _CfwOrderIndex: 云防排序
+        :param _CfwOrderIndex: <p>云防排序</p>
         :type CfwOrderIndex: int
-        :param _SourceId: 源规则内容
+        :param _SourceId: <p>源规则内容</p>
         :type SourceId: str
-        :param _SourceType: 源规则类型 
-取值范围 0/1/2/3/4/5/6/7/8/9/100
-0表示ip(net),
-1表示VPC实例(instance)
-2表示子网实例(instance)
-3表示CVM实例(instance)
-4表示CLB实例(instance)
-5表示ENI实例(instance)
-6表示数据库实例(instance)
-7表示模板(template)
-8表示标签(tag)
-9表示地域(region)
-100表示资产分组(resourcegroup)
+        :param _SourceType: <p>源规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)</p><p>枚举值：</p><ul><li>0： IP / CIDR</li><li>1： VPC 实例</li><li>2： 子网 </li><li>3： CVM 实例</li><li>4： CLB 实例</li><li>5： ENI（弹性网卡）实例</li><li>6： CDB（云数据库）实例</li><li>7： 参数模板</li><li>8： 标签</li><li>9： 地域</li></ul>
         :type SourceType: int
-        :param _TargetId: 目的规则内容
+        :param _TargetId: <p>目的规则内容</p>
         :type TargetId: str
-        :param _TargetType: 目的规则类型 
-取值范围 0/1/2/3/4/5/6/7/8/9/100
-0表示ip(net),
-1表示VPC实例(instance)
-2表示子网实例(instance)
-3表示CVM实例(instance)
-4表示CLB实例(instance)
-5表示ENI实例(instance)
-6表示数据库实例(instance)
-7表示模板(template)
-8表示标签(tag)
-9表示地域(region)
-100表示资产分组(resourcegroup)
+        :param _TargetType: <p>目的规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9/100<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)<br>100表示资产分组(resourcegroup)</p><p>枚举值：</p><ul><li>0： IP / CIDR</li><li>1： VPC 实例</li><li>2： 子网 </li><li>3： CVM 实例</li><li>4： CLB 实例</li><li>5： ENI（弹性网卡）实例</li><li>6： CDB（云数据库）实例</li><li>7： 参数模板</li><li>8： 标签</li><li>9： 地域</li></ul>
         :type TargetType: int
-        :param _Protocol: 协议名称
-取值范围:TCP/ANY/ICMP/UDP
-ANY:表示所有
-
+        :param _Protocol: <p>协议名称<br>取值范围:TCP/ANY/ICMP/UDP<br>ANY:表示所有</p>
         :type Protocol: str
-        :param _Port: 端口
+        :param _Port: <p>端口</p>
         :type Port: str
-        :param _Strategy: 规则策略
-取值范围:1/2
-1:阻断
-2:放行
+        :param _Strategy: <p>规则策略<br>取值范围:1/2<br>1:阻断<br>2:放行</p>
         :type Strategy: int
-        :param _Detail: 描述
+        :param _Detail: <p>描述</p>
         :type Detail: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _ServiceTemplateId: 服务模板id
+        :param _ServiceTemplateId: <p>服务模板id</p>
         :type ServiceTemplateId: str
-        :param _SouInstanceName: 源资产名称
+        :param _SouInstanceName: <p>源资产名称</p>
         :type SouInstanceName: str
-        :param _SouPublicIp: 源资产公网ip
+        :param _SouPublicIp: <p>源资产公网ip</p>
         :type SouPublicIp: str
-        :param _SouPrivateIp: 源资产内网ip
+        :param _SouPrivateIp: <p>源资产内网ip</p>
         :type SouPrivateIp: str
-        :param _SouCidr: 源资产网段信息
+        :param _SouCidr: <p>源资产网段信息</p>
         :type SouCidr: str
-        :param _SouParameterName: 源模板名称
+        :param _SouParameterName: <p>源模板名称</p>
         :type SouParameterName: str
-        :param _InstanceName: 目的资产名称
+        :param _InstanceName: <p>目的资产名称</p>
         :type InstanceName: str
-        :param _PublicIp: 目的资产公网ip
+        :param _PublicIp: <p>目的资产公网ip</p>
         :type PublicIp: str
-        :param _PrivateIp: 目的资产内网ip
+        :param _PrivateIp: <p>目的资产内网ip</p>
         :type PrivateIp: str
-        :param _Cidr: 目的资产网段信息
+        :param _Cidr: <p>目的资产网段信息</p>
         :type Cidr: str
-        :param _ParameterName: 目的模板名称
+        :param _ParameterName: <p>目的模板名称</p>
         :type ParameterName: str
-        :param _ProtocolPortName: 端口模板名称
+        :param _ProtocolPortName: <p>端口模板名称</p>
         :type ProtocolPortName: str
-        :param _DnsParseCount: 域名解析的IP统计
+        :param _DnsParseCount: <p>域名解析的IP统计</p>
         :type DnsParseCount: :class:`tencentcloud.fwm.v20250611.models.SgDnsParseCount`
-        :param _Scope: 规则生效范围
+        :param _Scope: <p>规则生效范围</p>
         :type Scope: str
-        :param _RulePartition: 分区：
-1防火墙管理最前分区
-2是云防规则
-3防火墙管理最后分区
+        :param _RulePartition: <p>分区：<br>1防火墙管理最前分区<br>2是云防规则<br>3防火墙管理最后分区</p>
         :type RulePartition: int
-        :param _GroupId: 规则组Id
+        :param _GroupId: <p>规则组Id</p>
         :type GroupId: str
-        :param _GroupName: 规则组名称
+        :param _GroupName: <p>规则组名称</p>
         :type GroupName: str
-        :param _GroupRuleId: 规则组内规则id
+        :param _GroupRuleId: <p>规则组内规则id</p>
         :type GroupRuleId: str
-        :param _StrategyId: 策略Id
+        :param _StrategyId: <p>策略Id</p>
         :type StrategyId: str
-        :param _IpVersion: ip类型
+        :param _IpVersion: <p>ip类型</p>
         :type IpVersion: str
-        :param _BelongMember: 成员信息
+        :param _BelongMember: <p>成员信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BelongMember: :class:`tencentcloud.fwm.v20250611.models.MemberInfo`
         """
@@ -867,7 +834,7 @@ ANY:表示所有
 
     @property
     def Id(self):
-        r"""规则id  等同RuleUuid
+        r"""<p>规则id  等同RuleUuid</p>
         :rtype: int
         """
         return self._Id
@@ -878,7 +845,7 @@ ANY:表示所有
 
     @property
     def RuleId(self):
-        r"""规则Id
+        r"""<p>规则Id</p>
         :rtype: str
         """
         return self._RuleId
@@ -889,7 +856,7 @@ ANY:表示所有
 
     @property
     def OrderIndex(self):
-        r"""排序
+        r"""<p>排序</p>
         :rtype: int
         """
         return self._OrderIndex
@@ -900,7 +867,7 @@ ANY:表示所有
 
     @property
     def CfwOrderIndex(self):
-        r"""云防排序
+        r"""<p>云防排序</p>
         :rtype: int
         """
         return self._CfwOrderIndex
@@ -911,7 +878,7 @@ ANY:表示所有
 
     @property
     def SourceId(self):
-        r"""源规则内容
+        r"""<p>源规则内容</p>
         :rtype: str
         """
         return self._SourceId
@@ -922,19 +889,7 @@ ANY:表示所有
 
     @property
     def SourceType(self):
-        r"""源规则类型 
-取值范围 0/1/2/3/4/5/6/7/8/9/100
-0表示ip(net),
-1表示VPC实例(instance)
-2表示子网实例(instance)
-3表示CVM实例(instance)
-4表示CLB实例(instance)
-5表示ENI实例(instance)
-6表示数据库实例(instance)
-7表示模板(template)
-8表示标签(tag)
-9表示地域(region)
-100表示资产分组(resourcegroup)
+        r"""<p>源规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)</p><p>枚举值：</p><ul><li>0： IP / CIDR</li><li>1： VPC 实例</li><li>2： 子网 </li><li>3： CVM 实例</li><li>4： CLB 实例</li><li>5： ENI（弹性网卡）实例</li><li>6： CDB（云数据库）实例</li><li>7： 参数模板</li><li>8： 标签</li><li>9： 地域</li></ul>
         :rtype: int
         """
         return self._SourceType
@@ -945,7 +900,7 @@ ANY:表示所有
 
     @property
     def TargetId(self):
-        r"""目的规则内容
+        r"""<p>目的规则内容</p>
         :rtype: str
         """
         return self._TargetId
@@ -956,19 +911,7 @@ ANY:表示所有
 
     @property
     def TargetType(self):
-        r"""目的规则类型 
-取值范围 0/1/2/3/4/5/6/7/8/9/100
-0表示ip(net),
-1表示VPC实例(instance)
-2表示子网实例(instance)
-3表示CVM实例(instance)
-4表示CLB实例(instance)
-5表示ENI实例(instance)
-6表示数据库实例(instance)
-7表示模板(template)
-8表示标签(tag)
-9表示地域(region)
-100表示资产分组(resourcegroup)
+        r"""<p>目的规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9/100<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)<br>100表示资产分组(resourcegroup)</p><p>枚举值：</p><ul><li>0： IP / CIDR</li><li>1： VPC 实例</li><li>2： 子网 </li><li>3： CVM 实例</li><li>4： CLB 实例</li><li>5： ENI（弹性网卡）实例</li><li>6： CDB（云数据库）实例</li><li>7： 参数模板</li><li>8： 标签</li><li>9： 地域</li></ul>
         :rtype: int
         """
         return self._TargetType
@@ -979,10 +922,7 @@ ANY:表示所有
 
     @property
     def Protocol(self):
-        r"""协议名称
-取值范围:TCP/ANY/ICMP/UDP
-ANY:表示所有
-
+        r"""<p>协议名称<br>取值范围:TCP/ANY/ICMP/UDP<br>ANY:表示所有</p>
         :rtype: str
         """
         return self._Protocol
@@ -993,7 +933,7 @@ ANY:表示所有
 
     @property
     def Port(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: str
         """
         return self._Port
@@ -1004,10 +944,7 @@ ANY:表示所有
 
     @property
     def Strategy(self):
-        r"""规则策略
-取值范围:1/2
-1:阻断
-2:放行
+        r"""<p>规则策略<br>取值范围:1/2<br>1:阻断<br>2:放行</p>
         :rtype: int
         """
         return self._Strategy
@@ -1018,7 +955,7 @@ ANY:表示所有
 
     @property
     def Detail(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Detail
@@ -1029,7 +966,7 @@ ANY:表示所有
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -1040,7 +977,7 @@ ANY:表示所有
 
     @property
     def ServiceTemplateId(self):
-        r"""服务模板id
+        r"""<p>服务模板id</p>
         :rtype: str
         """
         return self._ServiceTemplateId
@@ -1051,7 +988,7 @@ ANY:表示所有
 
     @property
     def SouInstanceName(self):
-        r"""源资产名称
+        r"""<p>源资产名称</p>
         :rtype: str
         """
         return self._SouInstanceName
@@ -1062,7 +999,7 @@ ANY:表示所有
 
     @property
     def SouPublicIp(self):
-        r"""源资产公网ip
+        r"""<p>源资产公网ip</p>
         :rtype: str
         """
         return self._SouPublicIp
@@ -1073,7 +1010,7 @@ ANY:表示所有
 
     @property
     def SouPrivateIp(self):
-        r"""源资产内网ip
+        r"""<p>源资产内网ip</p>
         :rtype: str
         """
         return self._SouPrivateIp
@@ -1084,7 +1021,7 @@ ANY:表示所有
 
     @property
     def SouCidr(self):
-        r"""源资产网段信息
+        r"""<p>源资产网段信息</p>
         :rtype: str
         """
         return self._SouCidr
@@ -1095,7 +1032,7 @@ ANY:表示所有
 
     @property
     def SouParameterName(self):
-        r"""源模板名称
+        r"""<p>源模板名称</p>
         :rtype: str
         """
         return self._SouParameterName
@@ -1106,7 +1043,7 @@ ANY:表示所有
 
     @property
     def InstanceName(self):
-        r"""目的资产名称
+        r"""<p>目的资产名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -1117,7 +1054,7 @@ ANY:表示所有
 
     @property
     def PublicIp(self):
-        r"""目的资产公网ip
+        r"""<p>目的资产公网ip</p>
         :rtype: str
         """
         return self._PublicIp
@@ -1128,7 +1065,7 @@ ANY:表示所有
 
     @property
     def PrivateIp(self):
-        r"""目的资产内网ip
+        r"""<p>目的资产内网ip</p>
         :rtype: str
         """
         return self._PrivateIp
@@ -1139,7 +1076,7 @@ ANY:表示所有
 
     @property
     def Cidr(self):
-        r"""目的资产网段信息
+        r"""<p>目的资产网段信息</p>
         :rtype: str
         """
         return self._Cidr
@@ -1150,7 +1087,7 @@ ANY:表示所有
 
     @property
     def ParameterName(self):
-        r"""目的模板名称
+        r"""<p>目的模板名称</p>
         :rtype: str
         """
         return self._ParameterName
@@ -1161,7 +1098,7 @@ ANY:表示所有
 
     @property
     def ProtocolPortName(self):
-        r"""端口模板名称
+        r"""<p>端口模板名称</p>
         :rtype: str
         """
         return self._ProtocolPortName
@@ -1172,7 +1109,7 @@ ANY:表示所有
 
     @property
     def DnsParseCount(self):
-        r"""域名解析的IP统计
+        r"""<p>域名解析的IP统计</p>
         :rtype: :class:`tencentcloud.fwm.v20250611.models.SgDnsParseCount`
         """
         return self._DnsParseCount
@@ -1183,7 +1120,7 @@ ANY:表示所有
 
     @property
     def Scope(self):
-        r"""规则生效范围
+        r"""<p>规则生效范围</p>
         :rtype: str
         """
         return self._Scope
@@ -1194,10 +1131,7 @@ ANY:表示所有
 
     @property
     def RulePartition(self):
-        r"""分区：
-1防火墙管理最前分区
-2是云防规则
-3防火墙管理最后分区
+        r"""<p>分区：<br>1防火墙管理最前分区<br>2是云防规则<br>3防火墙管理最后分区</p>
         :rtype: int
         """
         return self._RulePartition
@@ -1208,7 +1142,7 @@ ANY:表示所有
 
     @property
     def GroupId(self):
-        r"""规则组Id
+        r"""<p>规则组Id</p>
         :rtype: str
         """
         return self._GroupId
@@ -1219,7 +1153,7 @@ ANY:表示所有
 
     @property
     def GroupName(self):
-        r"""规则组名称
+        r"""<p>规则组名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -1230,7 +1164,7 @@ ANY:表示所有
 
     @property
     def GroupRuleId(self):
-        r"""规则组内规则id
+        r"""<p>规则组内规则id</p>
         :rtype: str
         """
         return self._GroupRuleId
@@ -1241,7 +1175,7 @@ ANY:表示所有
 
     @property
     def StrategyId(self):
-        r"""策略Id
+        r"""<p>策略Id</p>
         :rtype: str
         """
         return self._StrategyId
@@ -1252,7 +1186,7 @@ ANY:表示所有
 
     @property
     def IpVersion(self):
-        r"""ip类型
+        r"""<p>ip类型</p>
         :rtype: str
         """
         return self._IpVersion
@@ -1263,7 +1197,7 @@ ANY:表示所有
 
     @property
     def BelongMember(self):
-        r"""成员信息
+        r"""<p>成员信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.fwm.v20250611.models.MemberInfo`
         """
@@ -1409,13 +1343,13 @@ class CommonFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 筛选字段名。支持：SecurityGroupId、FwGroupId、Ip（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）
+        :param _Name: <p>筛选字段名。支持：SecurityGroupId、FwGroupId、IP（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Values: 筛选值列表
+        :param _Values: <p>筛选值列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
-        :param _OperatorType: 操作类型。1=等于，7=in，9=模糊匹配
+        :param _OperatorType: <p>操作类型。1=等于，7=in，9=模糊匹配</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorType: int
         """
@@ -1425,7 +1359,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def Name(self):
-        r"""筛选字段名。支持：SecurityGroupId、FwGroupId、Ip（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）
+        r"""<p>筛选字段名。支持：SecurityGroupId、FwGroupId、IP（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1437,7 +1371,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def Values(self):
-        r"""筛选值列表
+        r"""<p>筛选值列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1449,7 +1383,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def OperatorType(self):
-        r"""操作类型。1=等于，7=in，9=模糊匹配
+        r"""<p>操作类型。1=等于，7=in，9=模糊匹配</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7160,37 +7094,37 @@ class NatAclRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceContent: 源地址内容
+        :param _SourceContent: <p>源地址内容</p>
         :type SourceContent: str
-        :param _SourceType: 源类型：ip/url/template/instance/tag
+        :param _SourceType: <p>源类型：ip/url/template/instance/tag</p>
         :type SourceType: str
-        :param _TargetContent: 目的地址内容
+        :param _TargetContent: <p>目的地址内容</p>
         :type TargetContent: str
-        :param _TargetType: 目的类型：ip/url/template/instance/tag
+        :param _TargetType: <p>目的类型：ip/url/template/instance/tag</p>
         :type TargetType: str
-        :param _Protocol: 协议：TCP/UDP/ICMP/ANY/HTTP/HTTPS/DNS/FTP等
+        :param _Protocol: <p>协议：TCP/UDP/ICMP/ANY/HTTP/HTTPS/DNS/FTP等</p>
         :type Protocol: str
-        :param _RuleAction: 动作：accept/drop/log
+        :param _RuleAction: <p>动作：accept/drop/log</p>
         :type RuleAction: str
-        :param _OrderIndex: 优先级（从1开始）
+        :param _OrderIndex: <p>优先级（从1开始）</p>
         :type OrderIndex: int
-        :param _Scope: 规则生效范围：ALL-全局生效，ap-xxx-地域生效，cfwnat-xxx-NAT防火墙实例生效
+        :param _Scope: <p>规则生效范围：ALL-全局生效，ap-xxx-地域生效，cfwnat-xxx-NAT防火墙实例生效</p>
         :type Scope: str
-        :param _Direction: 规则方向：1-入站规则，0-出站规则
+        :param _Direction: <p>规则方向：1-入站规则，0-出站规则</p>
         :type Direction: int
-        :param _RuleId: 规则ID（修改时必填）
+        :param _RuleId: <p>规则ID（修改时必填）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
-        :param _Port: 端口（ICMP协议时为空）
+        :param _Port: <p>端口（ICMP协议时为空）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: str
-        :param _Description: 规则描述
+        :param _Description: <p>规则描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _ParamTemplateId: 端口模板ID
+        :param _ParamTemplateId: <p>端口模板ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamTemplateId: str
-        :param _BelongMemberId: 规则归属的成员账号ID（当Scope为cfwnat-xxx或SourceType/DestType为instance/tag时必填）
+        :param _BelongMemberId: <p>规则归属的成员账号ID(当Scope为cfwnat-xxx或SourceType/DestType为instance/tag时必填)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BelongMemberId: str
         """
@@ -7211,7 +7145,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def SourceContent(self):
-        r"""源地址内容
+        r"""<p>源地址内容</p>
         :rtype: str
         """
         return self._SourceContent
@@ -7222,7 +7156,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""源类型：ip/url/template/instance/tag
+        r"""<p>源类型：ip/url/template/instance/tag</p>
         :rtype: str
         """
         return self._SourceType
@@ -7233,7 +7167,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def TargetContent(self):
-        r"""目的地址内容
+        r"""<p>目的地址内容</p>
         :rtype: str
         """
         return self._TargetContent
@@ -7244,7 +7178,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""目的类型：ip/url/template/instance/tag
+        r"""<p>目的类型：ip/url/template/instance/tag</p>
         :rtype: str
         """
         return self._TargetType
@@ -7255,7 +7189,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议：TCP/UDP/ICMP/ANY/HTTP/HTTPS/DNS/FTP等
+        r"""<p>协议：TCP/UDP/ICMP/ANY/HTTP/HTTPS/DNS/FTP等</p>
         :rtype: str
         """
         return self._Protocol
@@ -7266,7 +7200,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def RuleAction(self):
-        r"""动作：accept/drop/log
+        r"""<p>动作：accept/drop/log</p>
         :rtype: str
         """
         return self._RuleAction
@@ -7277,7 +7211,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def OrderIndex(self):
-        r"""优先级（从1开始）
+        r"""<p>优先级（从1开始）</p>
         :rtype: int
         """
         return self._OrderIndex
@@ -7288,7 +7222,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def Scope(self):
-        r"""规则生效范围：ALL-全局生效，ap-xxx-地域生效，cfwnat-xxx-NAT防火墙实例生效
+        r"""<p>规则生效范围：ALL-全局生效，ap-xxx-地域生效，cfwnat-xxx-NAT防火墙实例生效</p>
         :rtype: str
         """
         return self._Scope
@@ -7299,7 +7233,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def Direction(self):
-        r"""规则方向：1-入站规则，0-出站规则
+        r"""<p>规则方向：1-入站规则，0-出站规则</p>
         :rtype: int
         """
         return self._Direction
@@ -7310,7 +7244,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则ID（修改时必填）
+        r"""<p>规则ID（修改时必填）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7322,7 +7256,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口（ICMP协议时为空）
+        r"""<p>端口（ICMP协议时为空）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7334,7 +7268,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def Description(self):
-        r"""规则描述
+        r"""<p>规则描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7346,7 +7280,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""端口模板ID
+        r"""<p>端口模板ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7358,7 +7292,7 @@ class NatAclRule(AbstractModel):
 
     @property
     def BelongMemberId(self):
-        r"""规则归属的成员账号ID（当Scope为cfwnat-xxx或SourceType/DestType为instance/tag时必填）
+        r"""<p>规则归属的成员账号ID(当Scope为cfwnat-xxx或SourceType/DestType为instance/tag时必填)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9081,90 +9015,63 @@ class SecGroupRuleResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderIndex: 排序
+        :param _OrderIndex: <p>排序</p>
         :type OrderIndex: int
-        :param _RuleId: 主键id
+        :param _RuleId: <p>主键id</p>
         :type RuleId: str
-        :param _IpVersion: ip类型
+        :param _IpVersion: <p>ip类型</p>
         :type IpVersion: str
-        :param _SourceId: 源规则内容
+        :param _SourceId: <p>源规则内容</p>
         :type SourceId: str
-        :param _SourceType: 源规则类型 
-取值范围 0/1/2/3/4/5/6/7/8/9/100
-0表示ip(net),
-1表示VPC实例(instance)
-2表示子网实例(instance)
-3表示CVM实例(instance)
-4表示CLB实例(instance)
-5表示ENI实例(instance)
-6表示数据库实例(instance)
-7表示模板(template)
-8表示标签(tag)
-9表示地域(region)
-100表示资产分组(resourcegroup)
+        :param _SourceType: <p>源规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9/100<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)<br>100表示资产分组(resourcegroup)</p>
         :type SourceType: int
-        :param _TargetId: 目的规则内容
+        :param _TargetId: <p>目的规则内容</p>
         :type TargetId: str
-        :param _TargetType: 目的规则类型 
-取值范围 0/1/2/3/4/5/6/7/8/9/100
-0表示ip(net),
-1表示VPC实例(instance)
-2表示子网实例(instance)
-3表示CVM实例(instance)
-4表示CLB实例(instance)
-5表示ENI实例(instance)
-6表示数据库实例(instance)
-7表示模板(template)
-8表示标签(tag)
-9表示地域(region)
-100表示资产分组(resourcegroup)
+        :param _TargetType: <p>目的规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9/100<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)<br>100表示资产分组(resourcegroup)</p>
         :type TargetType: int
-        :param _Protocol: 协议名称
-取值范围:TCP/ANY/ICMP/UDP
-ANY:表示所有
-
+        :param _Protocol: <p>协议名称<br>取值范围:TCP/ANY/ICMP/UDP<br>ANY:表示所有</p>
         :type Protocol: str
-        :param _Port: 端口
+        :param _Port: <p>端口</p>
         :type Port: str
-        :param _Strategy: 策略
+        :param _Strategy: <p>策略</p>
         :type Strategy: int
-        :param _Detail: 描述
+        :param _Detail: <p>描述</p>
         :type Detail: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _ServiceTemplateId: 服务模板id
+        :param _ServiceTemplateId: <p>服务模板id</p>
         :type ServiceTemplateId: str
-        :param _SouInstanceName: 源资产名称
+        :param _SouInstanceName: <p>源资产名称</p>
         :type SouInstanceName: str
-        :param _SouPublicIp: 源资产公网ip
+        :param _SouPublicIp: <p>源资产公网ip</p>
         :type SouPublicIp: str
-        :param _SouPrivateIp: 源资产内网ip
+        :param _SouPrivateIp: <p>源资产内网ip</p>
         :type SouPrivateIp: str
-        :param _SouCidr: 源资产网段信息
+        :param _SouCidr: <p>源资产网段信息</p>
         :type SouCidr: str
-        :param _SouParameterName: 源模板名称
+        :param _SouParameterName: <p>源模板名称</p>
         :type SouParameterName: str
-        :param _InstanceName: 目的资产名称
+        :param _InstanceName: <p>目的资产名称</p>
         :type InstanceName: str
-        :param _PublicIp: 目的资产公网ip
+        :param _PublicIp: <p>目的资产公网ip</p>
         :type PublicIp: str
-        :param _PrivateIp: 目的资产内网ip
+        :param _PrivateIp: <p>目的资产内网ip</p>
         :type PrivateIp: str
-        :param _Cidr: 目的资产网段信息
+        :param _Cidr: <p>目的资产网段信息</p>
         :type Cidr: str
-        :param _ParameterName: 目的模板名称
+        :param _ParameterName: <p>目的模板名称</p>
         :type ParameterName: str
-        :param _ProtocolPortName: 端口模板名称
+        :param _ProtocolPortName: <p>端口模板名称</p>
         :type ProtocolPortName: str
-        :param _Id: 规则id  等同RuleUuid
+        :param _Id: <p>规则id  等同RuleUuid</p>
         :type Id: int
-        :param _DnsParseCount: 域名解析的IP统计
+        :param _DnsParseCount: <p>域名解析的IP统计</p>
         :type DnsParseCount: :class:`tencentcloud.fwm.v20250611.models.SgDnsParseCount`
-        :param _Scope: 规则生效范围
+        :param _Scope: <p>规则生效范围</p>
         :type Scope: str
-        :param _IsNew: 规则最新一次是否有改动 取值范围：0/1 0:否 1:是
+        :param _IsNew: <p>规则最近一次是否有改动 取值范围：0/1 0:否 1:是</p>
         :type IsNew: int
-        :param _BelongMember: 规则归属的成员账号（当FwGroupId为cfwg-xxx或SourceType/DestType为instance/tag时必填)
+        :param _BelongMember: <p>规则归属的成员账号（当FwGroupId为cfwg-xxx或SourceType/DestType为instance/tag时必填)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BelongMember: :class:`tencentcloud.fwm.v20250611.models.MemberInfo`
         """
@@ -9200,7 +9107,7 @@ ANY:表示所有
 
     @property
     def OrderIndex(self):
-        r"""排序
+        r"""<p>排序</p>
         :rtype: int
         """
         return self._OrderIndex
@@ -9211,7 +9118,7 @@ ANY:表示所有
 
     @property
     def RuleId(self):
-        r"""主键id
+        r"""<p>主键id</p>
         :rtype: str
         """
         return self._RuleId
@@ -9222,7 +9129,7 @@ ANY:表示所有
 
     @property
     def IpVersion(self):
-        r"""ip类型
+        r"""<p>ip类型</p>
         :rtype: str
         """
         return self._IpVersion
@@ -9233,7 +9140,7 @@ ANY:表示所有
 
     @property
     def SourceId(self):
-        r"""源规则内容
+        r"""<p>源规则内容</p>
         :rtype: str
         """
         return self._SourceId
@@ -9244,19 +9151,7 @@ ANY:表示所有
 
     @property
     def SourceType(self):
-        r"""源规则类型 
-取值范围 0/1/2/3/4/5/6/7/8/9/100
-0表示ip(net),
-1表示VPC实例(instance)
-2表示子网实例(instance)
-3表示CVM实例(instance)
-4表示CLB实例(instance)
-5表示ENI实例(instance)
-6表示数据库实例(instance)
-7表示模板(template)
-8表示标签(tag)
-9表示地域(region)
-100表示资产分组(resourcegroup)
+        r"""<p>源规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9/100<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)<br>100表示资产分组(resourcegroup)</p>
         :rtype: int
         """
         return self._SourceType
@@ -9267,7 +9162,7 @@ ANY:表示所有
 
     @property
     def TargetId(self):
-        r"""目的规则内容
+        r"""<p>目的规则内容</p>
         :rtype: str
         """
         return self._TargetId
@@ -9278,19 +9173,7 @@ ANY:表示所有
 
     @property
     def TargetType(self):
-        r"""目的规则类型 
-取值范围 0/1/2/3/4/5/6/7/8/9/100
-0表示ip(net),
-1表示VPC实例(instance)
-2表示子网实例(instance)
-3表示CVM实例(instance)
-4表示CLB实例(instance)
-5表示ENI实例(instance)
-6表示数据库实例(instance)
-7表示模板(template)
-8表示标签(tag)
-9表示地域(region)
-100表示资产分组(resourcegroup)
+        r"""<p>目的规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9/100<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)<br>100表示资产分组(resourcegroup)</p>
         :rtype: int
         """
         return self._TargetType
@@ -9301,10 +9184,7 @@ ANY:表示所有
 
     @property
     def Protocol(self):
-        r"""协议名称
-取值范围:TCP/ANY/ICMP/UDP
-ANY:表示所有
-
+        r"""<p>协议名称<br>取值范围:TCP/ANY/ICMP/UDP<br>ANY:表示所有</p>
         :rtype: str
         """
         return self._Protocol
@@ -9315,7 +9195,7 @@ ANY:表示所有
 
     @property
     def Port(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: str
         """
         return self._Port
@@ -9326,7 +9206,7 @@ ANY:表示所有
 
     @property
     def Strategy(self):
-        r"""策略
+        r"""<p>策略</p>
         :rtype: int
         """
         return self._Strategy
@@ -9337,7 +9217,7 @@ ANY:表示所有
 
     @property
     def Detail(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Detail
@@ -9348,7 +9228,7 @@ ANY:表示所有
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -9359,7 +9239,7 @@ ANY:表示所有
 
     @property
     def ServiceTemplateId(self):
-        r"""服务模板id
+        r"""<p>服务模板id</p>
         :rtype: str
         """
         return self._ServiceTemplateId
@@ -9370,7 +9250,7 @@ ANY:表示所有
 
     @property
     def SouInstanceName(self):
-        r"""源资产名称
+        r"""<p>源资产名称</p>
         :rtype: str
         """
         return self._SouInstanceName
@@ -9381,7 +9261,7 @@ ANY:表示所有
 
     @property
     def SouPublicIp(self):
-        r"""源资产公网ip
+        r"""<p>源资产公网ip</p>
         :rtype: str
         """
         return self._SouPublicIp
@@ -9392,7 +9272,7 @@ ANY:表示所有
 
     @property
     def SouPrivateIp(self):
-        r"""源资产内网ip
+        r"""<p>源资产内网ip</p>
         :rtype: str
         """
         return self._SouPrivateIp
@@ -9403,7 +9283,7 @@ ANY:表示所有
 
     @property
     def SouCidr(self):
-        r"""源资产网段信息
+        r"""<p>源资产网段信息</p>
         :rtype: str
         """
         return self._SouCidr
@@ -9414,7 +9294,7 @@ ANY:表示所有
 
     @property
     def SouParameterName(self):
-        r"""源模板名称
+        r"""<p>源模板名称</p>
         :rtype: str
         """
         return self._SouParameterName
@@ -9425,7 +9305,7 @@ ANY:表示所有
 
     @property
     def InstanceName(self):
-        r"""目的资产名称
+        r"""<p>目的资产名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -9436,7 +9316,7 @@ ANY:表示所有
 
     @property
     def PublicIp(self):
-        r"""目的资产公网ip
+        r"""<p>目的资产公网ip</p>
         :rtype: str
         """
         return self._PublicIp
@@ -9447,7 +9327,7 @@ ANY:表示所有
 
     @property
     def PrivateIp(self):
-        r"""目的资产内网ip
+        r"""<p>目的资产内网ip</p>
         :rtype: str
         """
         return self._PrivateIp
@@ -9458,7 +9338,7 @@ ANY:表示所有
 
     @property
     def Cidr(self):
-        r"""目的资产网段信息
+        r"""<p>目的资产网段信息</p>
         :rtype: str
         """
         return self._Cidr
@@ -9469,7 +9349,7 @@ ANY:表示所有
 
     @property
     def ParameterName(self):
-        r"""目的模板名称
+        r"""<p>目的模板名称</p>
         :rtype: str
         """
         return self._ParameterName
@@ -9480,7 +9360,7 @@ ANY:表示所有
 
     @property
     def ProtocolPortName(self):
-        r"""端口模板名称
+        r"""<p>端口模板名称</p>
         :rtype: str
         """
         return self._ProtocolPortName
@@ -9491,7 +9371,7 @@ ANY:表示所有
 
     @property
     def Id(self):
-        r"""规则id  等同RuleUuid
+        r"""<p>规则id  等同RuleUuid</p>
         :rtype: int
         """
         return self._Id
@@ -9502,7 +9382,7 @@ ANY:表示所有
 
     @property
     def DnsParseCount(self):
-        r"""域名解析的IP统计
+        r"""<p>域名解析的IP统计</p>
         :rtype: :class:`tencentcloud.fwm.v20250611.models.SgDnsParseCount`
         """
         return self._DnsParseCount
@@ -9513,7 +9393,7 @@ ANY:表示所有
 
     @property
     def Scope(self):
-        r"""规则生效范围
+        r"""<p>规则生效范围</p>
         :rtype: str
         """
         return self._Scope
@@ -9524,7 +9404,7 @@ ANY:表示所有
 
     @property
     def IsNew(self):
-        r"""规则最新一次是否有改动 取值范围：0/1 0:否 1:是
+        r"""<p>规则最近一次是否有改动 取值范围：0/1 0:否 1:是</p>
         :rtype: int
         """
         return self._IsNew
@@ -9535,7 +9415,7 @@ ANY:表示所有
 
     @property
     def BelongMember(self):
-        r"""规则归属的成员账号（当FwGroupId为cfwg-xxx或SourceType/DestType为instance/tag时必填)
+        r"""<p>规则归属的成员账号（当FwGroupId为cfwg-xxx或SourceType/DestType为instance/tag时必填)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.fwm.v20250611.models.MemberInfo`
         """
@@ -10151,7 +10031,7 @@ class SequenceIndex(AbstractModel):
 
 
 class ServiceTemplateSpecification(AbstractModel):
-    r"""安全组服务模版
+    r"""安全组服务模板
 
     """
 

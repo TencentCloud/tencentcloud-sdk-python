@@ -524,23 +524,26 @@ class BuildCustomerClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统id
+        :param _FileSystemId: <p>文件系统id</p>
         :type FileSystemId: str
-        :param _VpcId: vpc网络ID
+        :param _VpcId: <p>vpc网络ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网id
+        :param _SubnetId: <p>子网id</p>
         :type SubnetId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
+        :param _Zone: <p>可用区</p>
+        :type Zone: str
         """
         self._FileSystemId = None
         self._VpcId = None
         self._SubnetId = None
         self._ClusterName = None
+        self._Zone = None
 
     @property
     def FileSystemId(self):
-        r"""文件系统id
+        r"""<p>文件系统id</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -551,7 +554,7 @@ class BuildCustomerClusterRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""vpc网络ID
+        r"""<p>vpc网络ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -562,7 +565,7 @@ class BuildCustomerClusterRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网id
+        r"""<p>子网id</p>
         :rtype: str
         """
         return self._SubnetId
@@ -573,7 +576,7 @@ class BuildCustomerClusterRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -582,12 +585,24 @@ class BuildCustomerClusterRequest(AbstractModel):
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def Zone(self):
+        r"""<p>可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._ClusterName = params.get("ClusterName")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -605,7 +620,7 @@ class BuildCustomerClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 客户端集群Id
+        :param _ClusterId: <p>客户端集群Id</p>
         :type ClusterId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -615,7 +630,7 @@ class BuildCustomerClusterResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""客户端集群Id
+        r"""<p>客户端集群Id</p>
         :rtype: str
         """
         return self._ClusterId

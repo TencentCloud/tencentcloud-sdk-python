@@ -14899,9 +14899,12 @@ class AigcVideoTaskOutput(AbstractModel):
         :type FileInfos: list of AigcVideoTaskOutputFileInfo
         :param _ProcedureTaskIds: <p>任务类型为 Procedure 的任务 ID。若发起<a href="https://cloud.tencent.com/document/product/266/126239">创建 AIGC 生视频任务</a>时指定了任务流模板(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。</p>
         :type ProcedureTaskIds: list of str
+        :param _Usage: <p>AIGC 生视频任务的用量信息。</p>
+        :type Usage: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskUsage`
         """
         self._FileInfos = None
         self._ProcedureTaskIds = None
+        self._Usage = None
 
     @property
     def FileInfos(self):
@@ -14925,6 +14928,17 @@ class AigcVideoTaskOutput(AbstractModel):
     def ProcedureTaskIds(self, ProcedureTaskIds):
         self._ProcedureTaskIds = ProcedureTaskIds
 
+    @property
+    def Usage(self):
+        r"""<p>AIGC 生视频任务的用量信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
 
     def _deserialize(self, params):
         if params.get("FileInfos") is not None:
@@ -14934,6 +14948,9 @@ class AigcVideoTaskOutput(AbstractModel):
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
         self._ProcedureTaskIds = params.get("ProcedureTaskIds")
+        if params.get("Usage") is not None:
+            self._Usage = AigcVideoTaskUsage()
+            self._Usage._deserialize(params.get("Usage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15107,6 +15124,57 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
             self._MetaData = MediaMetaData()
             self._MetaData._deserialize(params.get("MetaData"))
         self._UsageType = params.get("UsageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcVideoTaskUsage(AbstractModel):
+    r"""AIGC 生视频任务的用量。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputTokens: <p>输入 Token 数目。</p>
+        :type InputTokens: int
+        :param _ThoughtTokens: <p>思考产生的 Token 数目。</p>
+        :type ThoughtTokens: int
+        """
+        self._InputTokens = None
+        self._ThoughtTokens = None
+
+    @property
+    def InputTokens(self):
+        r"""<p>输入 Token 数目。</p>
+        :rtype: int
+        """
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def ThoughtTokens(self):
+        r"""<p>思考产生的 Token 数目。</p>
+        :rtype: int
+        """
+        return self._ThoughtTokens
+
+    @ThoughtTokens.setter
+    def ThoughtTokens(self, ThoughtTokens):
+        self._ThoughtTokens = ThoughtTokens
+
+
+    def _deserialize(self, params):
+        self._InputTokens = params.get("InputTokens")
+        self._ThoughtTokens = params.get("ThoughtTokens")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -11811,6 +11811,102 @@ class DeleteTimeWindowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeliverSummary(AbstractModel):
+    r"""投递错误
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeliverType: <p>投递类型，store（存储类），mq（消息通道）</p>
+        :type DeliverType: str
+        :param _DeliverSubType: <p>投递子类型：cls，ckafka。</p>
+        :type DeliverSubType: str
+        :param _DeliverConsumer: <p>投递者</p>
+        :type DeliverConsumer: str
+        :param _DeliverConsumerName: <p>投递者名称</p>
+        :type DeliverConsumerName: str
+        :param _DeliverError: <p>投递异常错误</p>
+        :type DeliverError: str
+        """
+        self._DeliverType = None
+        self._DeliverSubType = None
+        self._DeliverConsumer = None
+        self._DeliverConsumerName = None
+        self._DeliverError = None
+
+    @property
+    def DeliverType(self):
+        r"""<p>投递类型，store（存储类），mq（消息通道）</p>
+        :rtype: str
+        """
+        return self._DeliverType
+
+    @DeliverType.setter
+    def DeliverType(self, DeliverType):
+        self._DeliverType = DeliverType
+
+    @property
+    def DeliverSubType(self):
+        r"""<p>投递子类型：cls，ckafka。</p>
+        :rtype: str
+        """
+        return self._DeliverSubType
+
+    @DeliverSubType.setter
+    def DeliverSubType(self, DeliverSubType):
+        self._DeliverSubType = DeliverSubType
+
+    @property
+    def DeliverConsumer(self):
+        r"""<p>投递者</p>
+        :rtype: str
+        """
+        return self._DeliverConsumer
+
+    @DeliverConsumer.setter
+    def DeliverConsumer(self, DeliverConsumer):
+        self._DeliverConsumer = DeliverConsumer
+
+    @property
+    def DeliverConsumerName(self):
+        r"""<p>投递者名称</p>
+        :rtype: str
+        """
+        return self._DeliverConsumerName
+
+    @DeliverConsumerName.setter
+    def DeliverConsumerName(self, DeliverConsumerName):
+        self._DeliverConsumerName = DeliverConsumerName
+
+    @property
+    def DeliverError(self):
+        r"""<p>投递异常错误</p>
+        :rtype: str
+        """
+        return self._DeliverError
+
+    @DeliverError.setter
+    def DeliverError(self, DeliverError):
+        self._DeliverError = DeliverError
+
+
+    def _deserialize(self, params):
+        self._DeliverType = params.get("DeliverType")
+        self._DeliverSubType = params.get("DeliverSubType")
+        self._DeliverConsumer = params.get("DeliverConsumer")
+        self._DeliverConsumerName = params.get("DeliverConsumerName")
+        self._DeliverError = params.get("DeliverError")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeployGroupInfo(AbstractModel):
     r"""置放群组信息
 
@@ -12565,15 +12661,15 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AuditSwitch: 实例审计开启的状态。1-已开启审计；0-未开启审计。
+        :param _AuditSwitch: <p>实例审计开启的状态。1-已开启审计；0-未开启审计。</p>
         :type AuditSwitch: int
-        :param _Filters: 查询实例列表的过滤条件。
+        :param _Filters: <p>查询实例列表的过滤条件。</p>
         :type Filters: list of AuditInstanceFilters
-        :param _AuditMode: 实例的审计规则模式。1-规则审计；0-全审计。
+        :param _AuditMode: <p>实例的审计规则模式。1-规则审计；0-全审计。</p>
         :type AuditMode: int
-        :param _Limit: 单次请求返回的数量。默认值为30，最大值为 20000。
+        :param _Limit: <p>单次请求返回的数量。默认值为30，最大值为 20000。</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认值为 0。
+        :param _Offset: <p>偏移量，默认值为 0。</p>
         :type Offset: int
         """
         self._AuditSwitch = None
@@ -12584,7 +12680,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def AuditSwitch(self):
-        r"""实例审计开启的状态。1-已开启审计；0-未开启审计。
+        r"""<p>实例审计开启的状态。1-已开启审计；0-未开启审计。</p>
         :rtype: int
         """
         return self._AuditSwitch
@@ -12595,7 +12691,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""查询实例列表的过滤条件。
+        r"""<p>查询实例列表的过滤条件。</p>
         :rtype: list of AuditInstanceFilters
         """
         return self._Filters
@@ -12606,7 +12702,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def AuditMode(self):
-        r"""实例的审计规则模式。1-规则审计；0-全审计。
+        r"""<p>实例的审计规则模式。1-规则审计；0-全审计。</p>
         :rtype: int
         """
         return self._AuditMode
@@ -12617,7 +12713,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次请求返回的数量。默认值为30，最大值为 20000。
+        r"""<p>单次请求返回的数量。默认值为30，最大值为 20000。</p>
         :rtype: int
         """
         return self._Limit
@@ -12628,7 +12724,7 @@ class DescribeAuditInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认值为 0。
+        r"""<p>偏移量，默认值为 0。</p>
         :rtype: int
         """
         return self._Offset
@@ -12666,9 +12762,9 @@ class DescribeAuditInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合查询条件的实例总数。
+        :param _TotalCount: <p>符合查询条件的实例总数。</p>
         :type TotalCount: int
-        :param _Items: 审计实例详细信息列表。
+        :param _Items: <p>审计实例详细信息列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of InstanceDbAuditStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12680,7 +12776,7 @@ class DescribeAuditInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合查询条件的实例总数。
+        r"""<p>符合查询条件的实例总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -12691,7 +12787,7 @@ class DescribeAuditInstanceListResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""审计实例详细信息列表。
+        r"""<p>审计实例详细信息列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InstanceDbAuditStatus
         """
@@ -25001,61 +25097,50 @@ class InstanceDbAuditStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: <p>实例ID。</p>
         :type InstanceId: str
-        :param _AuditStatus: 审计状态。ON-表示审计已开启，OFF-表示审计关闭
+        :param _AuditStatus: <p>审计状态。ON-表示审计已开启，OFF-表示审计关闭</p>
         :type AuditStatus: str
-        :param _AuditTask: 任务状态。0-无任务；1-审计开启中，2-审计关闭中。
+        :param _AuditTask: <p>任务状态。0-无任务；1-审计开启中，2-审计关闭中。</p>
         :type AuditTask: int
-        :param _LogExpireDay: 日志保留时长。支持值包括：
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        :param _LogExpireDay: <p>日志保留时长。支持值包括：<br>7 - 一周；<br>30 - 一个月；<br>90 - 三个月；<br>180 - 六个月；<br>365 - 一年；<br>1095 - 三年；<br>1825 - 五年。</p>
         :type LogExpireDay: int
-        :param _HighLogExpireDay: 高频存储时长。支持值包括：
-3 - 3天；
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        :param _HighLogExpireDay: <p>高频存储时长。支持值包括：<br>3 - 3天；<br>7 - 一周；<br>30 - 一个月；<br>90 - 三个月；<br>180 - 六个月；<br>365 - 一年；<br>1095 - 三年；<br>1825 - 五年。</p>
         :type HighLogExpireDay: int
-        :param _LowLogExpireDay: 低频存储时长。单位：天，等于日志保存时长减去高频存储时长。
+        :param _LowLogExpireDay: <p>低频存储时长。单位：天，等于日志保存时长减去高频存储时长。</p>
         :type LowLogExpireDay: int
-        :param _BillingAmount: 日志存储量(单位：GB)。
+        :param _BillingAmount: <p>日志存储量(单位：GB)。</p>
         :type BillingAmount: float
-        :param _HighRealStorage: 高频存储量(单位：GB)。
+        :param _HighRealStorage: <p>高频存储量(单位：GB)。</p>
         :type HighRealStorage: float
-        :param _LowRealStorage: 低频存储量(单位：GB)。
+        :param _LowRealStorage: <p>低频存储量(单位：GB)。</p>
         :type LowRealStorage: float
-        :param _AuditAll: 是否为全审计。true-表示全审计。
+        :param _AuditAll: <p>是否为全审计（true-表示全审计）</p>
         :type AuditAll: bool
-        :param _CreateAt: 审计开通时间。
+        :param _CreateAt: <p>审计开通时间。</p>
         :type CreateAt: str
-        :param _InstanceInfo: 实例相关信息
+        :param _InstanceInfo: <p>实例相关信息</p>
         :type InstanceInfo: :class:`tencentcloud.cdb.v20170320.models.AuditInstanceInfo`
-        :param _RealStorage: 总存储量(单位：GB)。
+        :param _RealStorage: <p>总存储量(单位：GB)。</p>
         :type RealStorage: float
-        :param _OldRule: 是否包含审计策略
+        :param _OldRule: <p>是否包含审计策略</p>
         :type OldRule: bool
-        :param _RuleTemplateIds: 实例所应用的规则模板。
+        :param _RuleTemplateIds: <p>实例所应用的规则模板。</p>
         :type RuleTemplateIds: list of str
-        :param _TrialStatus: 限免状态
+        :param _TrialStatus: <p>限免状态</p>
         :type TrialStatus: str
-        :param _TrialStartTime: 限免开启时间
+        :param _TrialStartTime: <p>限免开启时间</p>
         :type TrialStartTime: int
-        :param _TrialDuration: 限免持续时间
+        :param _TrialDuration: <p>限免持续时间</p>
         :type TrialDuration: int
-        :param _TrialCloseTime: 限免关闭时间
+        :param _TrialCloseTime: <p>限免关闭时间</p>
         :type TrialCloseTime: int
-        :param _TrialDescribeLogHours: 限免期查询日志时长
+        :param _TrialDescribeLogHours: <p>限免期查询日志时长</p>
         :type TrialDescribeLogHours: int
+        :param _DeliverSummary: <p>投递信息</p>
+        :type DeliverSummary: list of DeliverSummary
+        :param _Deliver: <p>是否开启了投递，ON：开启，OFF：关闭</p>
+        :type Deliver: str
         """
         self._InstanceId = None
         self._AuditStatus = None
@@ -25077,10 +25162,12 @@ class InstanceDbAuditStatus(AbstractModel):
         self._TrialDuration = None
         self._TrialCloseTime = None
         self._TrialDescribeLogHours = None
+        self._DeliverSummary = None
+        self._Deliver = None
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""<p>实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -25091,7 +25178,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def AuditStatus(self):
-        r"""审计状态。ON-表示审计已开启，OFF-表示审计关闭
+        r"""<p>审计状态。ON-表示审计已开启，OFF-表示审计关闭</p>
         :rtype: str
         """
         return self._AuditStatus
@@ -25102,7 +25189,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def AuditTask(self):
-        r"""任务状态。0-无任务；1-审计开启中，2-审计关闭中。
+        r"""<p>任务状态。0-无任务；1-审计开启中，2-审计关闭中。</p>
         :rtype: int
         """
         return self._AuditTask
@@ -25113,14 +25200,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def LogExpireDay(self):
-        r"""日志保留时长。支持值包括：
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        r"""<p>日志保留时长。支持值包括：<br>7 - 一周；<br>30 - 一个月；<br>90 - 三个月；<br>180 - 六个月；<br>365 - 一年；<br>1095 - 三年；<br>1825 - 五年。</p>
         :rtype: int
         """
         return self._LogExpireDay
@@ -25131,15 +25211,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def HighLogExpireDay(self):
-        r"""高频存储时长。支持值包括：
-3 - 3天；
-7 - 一周；
-30 - 一个月；
-90 - 三个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年。
+        r"""<p>高频存储时长。支持值包括：<br>3 - 3天；<br>7 - 一周；<br>30 - 一个月；<br>90 - 三个月；<br>180 - 六个月；<br>365 - 一年；<br>1095 - 三年；<br>1825 - 五年。</p>
         :rtype: int
         """
         return self._HighLogExpireDay
@@ -25150,7 +25222,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def LowLogExpireDay(self):
-        r"""低频存储时长。单位：天，等于日志保存时长减去高频存储时长。
+        r"""<p>低频存储时长。单位：天，等于日志保存时长减去高频存储时长。</p>
         :rtype: int
         """
         return self._LowLogExpireDay
@@ -25161,7 +25233,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def BillingAmount(self):
-        r"""日志存储量(单位：GB)。
+        r"""<p>日志存储量(单位：GB)。</p>
         :rtype: float
         """
         return self._BillingAmount
@@ -25172,7 +25244,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def HighRealStorage(self):
-        r"""高频存储量(单位：GB)。
+        r"""<p>高频存储量(单位：GB)。</p>
         :rtype: float
         """
         return self._HighRealStorage
@@ -25183,7 +25255,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def LowRealStorage(self):
-        r"""低频存储量(单位：GB)。
+        r"""<p>低频存储量(单位：GB)。</p>
         :rtype: float
         """
         return self._LowRealStorage
@@ -25194,7 +25266,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def AuditAll(self):
-        r"""是否为全审计。true-表示全审计。
+        r"""<p>是否为全审计（true-表示全审计）</p>
         :rtype: bool
         """
         return self._AuditAll
@@ -25205,7 +25277,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def CreateAt(self):
-        r"""审计开通时间。
+        r"""<p>审计开通时间。</p>
         :rtype: str
         """
         return self._CreateAt
@@ -25216,7 +25288,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def InstanceInfo(self):
-        r"""实例相关信息
+        r"""<p>实例相关信息</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.AuditInstanceInfo`
         """
         return self._InstanceInfo
@@ -25227,7 +25299,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def RealStorage(self):
-        r"""总存储量(单位：GB)。
+        r"""<p>总存储量(单位：GB)。</p>
         :rtype: float
         """
         return self._RealStorage
@@ -25238,7 +25310,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def OldRule(self):
-        r"""是否包含审计策略
+        r"""<p>是否包含审计策略</p>
         :rtype: bool
         """
         return self._OldRule
@@ -25249,7 +25321,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def RuleTemplateIds(self):
-        r"""实例所应用的规则模板。
+        r"""<p>实例所应用的规则模板。</p>
         :rtype: list of str
         """
         return self._RuleTemplateIds
@@ -25260,7 +25332,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def TrialStatus(self):
-        r"""限免状态
+        r"""<p>限免状态</p>
         :rtype: str
         """
         return self._TrialStatus
@@ -25271,7 +25343,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def TrialStartTime(self):
-        r"""限免开启时间
+        r"""<p>限免开启时间</p>
         :rtype: int
         """
         return self._TrialStartTime
@@ -25282,7 +25354,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def TrialDuration(self):
-        r"""限免持续时间
+        r"""<p>限免持续时间</p>
         :rtype: int
         """
         return self._TrialDuration
@@ -25293,7 +25365,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def TrialCloseTime(self):
-        r"""限免关闭时间
+        r"""<p>限免关闭时间</p>
         :rtype: int
         """
         return self._TrialCloseTime
@@ -25304,7 +25376,7 @@ class InstanceDbAuditStatus(AbstractModel):
 
     @property
     def TrialDescribeLogHours(self):
-        r"""限免期查询日志时长
+        r"""<p>限免期查询日志时长</p>
         :rtype: int
         """
         return self._TrialDescribeLogHours
@@ -25312,6 +25384,28 @@ class InstanceDbAuditStatus(AbstractModel):
     @TrialDescribeLogHours.setter
     def TrialDescribeLogHours(self, TrialDescribeLogHours):
         self._TrialDescribeLogHours = TrialDescribeLogHours
+
+    @property
+    def DeliverSummary(self):
+        r"""<p>投递信息</p>
+        :rtype: list of DeliverSummary
+        """
+        return self._DeliverSummary
+
+    @DeliverSummary.setter
+    def DeliverSummary(self, DeliverSummary):
+        self._DeliverSummary = DeliverSummary
+
+    @property
+    def Deliver(self):
+        r"""<p>是否开启了投递，ON：开启，OFF：关闭</p>
+        :rtype: str
+        """
+        return self._Deliver
+
+    @Deliver.setter
+    def Deliver(self, Deliver):
+        self._Deliver = Deliver
 
 
     def _deserialize(self, params):
@@ -25337,6 +25431,13 @@ class InstanceDbAuditStatus(AbstractModel):
         self._TrialDuration = params.get("TrialDuration")
         self._TrialCloseTime = params.get("TrialCloseTime")
         self._TrialDescribeLogHours = params.get("TrialDescribeLogHours")
+        if params.get("DeliverSummary") is not None:
+            self._DeliverSummary = []
+            for item in params.get("DeliverSummary"):
+                obj = DeliverSummary()
+                obj._deserialize(item)
+                self._DeliverSummary.append(obj)
+        self._Deliver = params.get("Deliver")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

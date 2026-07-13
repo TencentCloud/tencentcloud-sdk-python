@@ -4195,9 +4195,9 @@ class DescribeBackupDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        :param _InstanceId: <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _BackupId: 备份 ID，可通过接口 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 返回的参数 **RedisBackupSet** 获取。
+        :param _BackupId: <p>备份 ID，可通过接口 <a href="https://cloud.tencent.com/document/product/239/20011">DescribeInstanceBackups</a> 返回的参数 <strong>RedisBackupSet</strong> 获取。</p>
         :type BackupId: str
         """
         self._InstanceId = None
@@ -4205,7 +4205,7 @@ class DescribeBackupDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+        r"""<p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4216,7 +4216,7 @@ class DescribeBackupDetailRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""备份 ID，可通过接口 [DescribeInstanceBackups](https://cloud.tencent.com/document/product/239/20011) 返回的参数 **RedisBackupSet** 获取。
+        r"""<p>备份 ID，可通过接口 <a href="https://cloud.tencent.com/document/product/239/20011">DescribeInstanceBackups</a> 返回的参数 <strong>RedisBackupSet</strong> 获取。</p>
         :rtype: str
         """
         return self._BackupId
@@ -4246,42 +4246,38 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupId: 备份 ID。
+        :param _BackupId: <p>备份 ID。</p>
         :type BackupId: str
-        :param _StartTime: 备份开始时间。
+        :param _StartTime: <p>备份开始时间。</p>
         :type StartTime: str
-        :param _EndTime: 备份结束时间。
+        :param _EndTime: <p>备份结束时间。</p>
         :type EndTime: str
-        :param _BackupType: 备份方式。 
-
-- 1：手动备份。
--  0：自动备份。
+        :param _BackupType: <p>备份方式。 </p><ul><li>1：手动备份。</li><li>0：自动备份。</li></ul>
         :type BackupType: str
-        :param _Status: 备份状态。 
-
-- 1：备份被其它流程锁定。
-- 2：备份正常，没有被任何流程锁定。
-- -1：备份已过期。
-- 3：备份正在被导出。
-- 4：备份导出成功。
+        :param _Status: <p>备份状态。 </p><ul><li>1：备份被其它流程锁定。</li><li>2：备份正常，没有被任何流程锁定。</li><li>-1：备份已过期。</li><li>3：备份正在被导出。</li><li>4：备份导出成功。</li></ul>
         :type Status: int
-        :param _Remark: 备份的备注信息。
+        :param _Remark: <p>备份的备注信息。</p>
         :type Remark: str
-        :param _Locked: 备份是否被锁定。
-
-- 0：未被锁定。
-- 1：已被锁定。
+        :param _Locked: <p>备份是否被锁定。</p><ul><li>0：未被锁定。</li><li>1：已被锁定。</li></ul>
         :type Locked: int
-        :param _BackupSize: 备份文件大小。单位：Byte。
+        :param _BackupSize: <p>备份文件大小。单位：Byte。</p>
         :type BackupSize: int
-        :param _InstanceType: 实例类型。
+        :param _InstanceType: <p>实例类型。</p>
         :type InstanceType: int
-        :param _MemSize: 单分片内存规格大小，单位：MB。
+        :param _MemSize: <p>单分片内存规格大小，单位：MB。</p>
         :type MemSize: int
-        :param _ShardNum: 分片数量。
+        :param _ShardNum: <p>分片数量。</p>
         :type ShardNum: int
-        :param _ReplicasNum: 副本数量。
+        :param _ReplicasNum: <p>副本数量。</p>
         :type ReplicasNum: int
+        :param _Encrypted: <p>是否已加密。</p><p>枚举值：</p><ul><li>true： 已加密</li><li>false： 未加密</li></ul>
+        :type Encrypted: bool
+        :param _DecryptKey: <p>解密密钥。</p>
+        :type DecryptKey: str
+        :param _KmsKeyId: <p>KMS的密钥ID。</p>
+        :type KmsKeyId: str
+        :param _KeyAlgorithm: <p>加密该备份文件的加密算法。</p><p>枚举值：</p><ul><li>AES-256-CBC： 当前仅支持AES-256-CBC</li></ul>
+        :type KeyAlgorithm: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4297,11 +4293,15 @@ class DescribeBackupDetailResponse(AbstractModel):
         self._MemSize = None
         self._ShardNum = None
         self._ReplicasNum = None
+        self._Encrypted = None
+        self._DecryptKey = None
+        self._KmsKeyId = None
+        self._KeyAlgorithm = None
         self._RequestId = None
 
     @property
     def BackupId(self):
-        r"""备份 ID。
+        r"""<p>备份 ID。</p>
         :rtype: str
         """
         return self._BackupId
@@ -4312,7 +4312,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""备份开始时间。
+        r"""<p>备份开始时间。</p>
         :rtype: str
         """
         return self._StartTime
@@ -4323,7 +4323,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""备份结束时间。
+        r"""<p>备份结束时间。</p>
         :rtype: str
         """
         return self._EndTime
@@ -4334,10 +4334,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""备份方式。 
-
-- 1：手动备份。
--  0：自动备份。
+        r"""<p>备份方式。 </p><ul><li>1：手动备份。</li><li>0：自动备份。</li></ul>
         :rtype: str
         """
         return self._BackupType
@@ -4348,13 +4345,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""备份状态。 
-
-- 1：备份被其它流程锁定。
-- 2：备份正常，没有被任何流程锁定。
-- -1：备份已过期。
-- 3：备份正在被导出。
-- 4：备份导出成功。
+        r"""<p>备份状态。 </p><ul><li>1：备份被其它流程锁定。</li><li>2：备份正常，没有被任何流程锁定。</li><li>-1：备份已过期。</li><li>3：备份正在被导出。</li><li>4：备份导出成功。</li></ul>
         :rtype: int
         """
         return self._Status
@@ -4365,7 +4356,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备份的备注信息。
+        r"""<p>备份的备注信息。</p>
         :rtype: str
         """
         return self._Remark
@@ -4376,10 +4367,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def Locked(self):
-        r"""备份是否被锁定。
-
-- 0：未被锁定。
-- 1：已被锁定。
+        r"""<p>备份是否被锁定。</p><ul><li>0：未被锁定。</li><li>1：已被锁定。</li></ul>
         :rtype: int
         """
         return self._Locked
@@ -4390,7 +4378,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def BackupSize(self):
-        r"""备份文件大小。单位：Byte。
+        r"""<p>备份文件大小。单位：Byte。</p>
         :rtype: int
         """
         return self._BackupSize
@@ -4401,7 +4389,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型。
+        r"""<p>实例类型。</p>
         :rtype: int
         """
         return self._InstanceType
@@ -4412,7 +4400,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def MemSize(self):
-        r"""单分片内存规格大小，单位：MB。
+        r"""<p>单分片内存规格大小，单位：MB。</p>
         :rtype: int
         """
         return self._MemSize
@@ -4423,7 +4411,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def ShardNum(self):
-        r"""分片数量。
+        r"""<p>分片数量。</p>
         :rtype: int
         """
         return self._ShardNum
@@ -4434,7 +4422,7 @@ class DescribeBackupDetailResponse(AbstractModel):
 
     @property
     def ReplicasNum(self):
-        r"""副本数量。
+        r"""<p>副本数量。</p>
         :rtype: int
         """
         return self._ReplicasNum
@@ -4442,6 +4430,50 @@ class DescribeBackupDetailResponse(AbstractModel):
     @ReplicasNum.setter
     def ReplicasNum(self, ReplicasNum):
         self._ReplicasNum = ReplicasNum
+
+    @property
+    def Encrypted(self):
+        r"""<p>是否已加密。</p><p>枚举值：</p><ul><li>true： 已加密</li><li>false： 未加密</li></ul>
+        :rtype: bool
+        """
+        return self._Encrypted
+
+    @Encrypted.setter
+    def Encrypted(self, Encrypted):
+        self._Encrypted = Encrypted
+
+    @property
+    def DecryptKey(self):
+        r"""<p>解密密钥。</p>
+        :rtype: str
+        """
+        return self._DecryptKey
+
+    @DecryptKey.setter
+    def DecryptKey(self, DecryptKey):
+        self._DecryptKey = DecryptKey
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>KMS的密钥ID。</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def KeyAlgorithm(self):
+        r"""<p>加密该备份文件的加密算法。</p><p>枚举值：</p><ul><li>AES-256-CBC： 当前仅支持AES-256-CBC</li></ul>
+        :rtype: str
+        """
+        return self._KeyAlgorithm
+
+    @KeyAlgorithm.setter
+    def KeyAlgorithm(self, KeyAlgorithm):
+        self._KeyAlgorithm = KeyAlgorithm
 
     @property
     def RequestId(self):
@@ -4468,6 +4500,10 @@ class DescribeBackupDetailResponse(AbstractModel):
         self._MemSize = params.get("MemSize")
         self._ShardNum = params.get("ShardNum")
         self._ReplicasNum = params.get("ReplicasNum")
+        self._Encrypted = params.get("Encrypted")
+        self._DecryptKey = params.get("DecryptKey")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._KeyAlgorithm = params.get("KeyAlgorithm")
         self._RequestId = params.get("RequestId")
 
 
@@ -5715,25 +5751,19 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页输出的备份列表大小。默认大小为20，最大值为 100。
+        :param _Limit: <p>每页输出的备份列表大小。默认大小为20，最大值为 100。</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+        :param _Offset: <p>分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。</p>
         :type Offset: int
-        :param _InstanceId: 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
+        :param _InstanceId: <p>待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。</p>
         :type InstanceId: str
-        :param _BeginTime: 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
+        :param _BeginTime: <p>开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。</p>
         :type BeginTime: str
-        :param _EndTime: 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
+        :param _EndTime: <p>结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。</p>
         :type EndTime: str
-        :param _Status: 备份任务的状态：
-1：备份在流程中。
-2：备份正常。
-3：备份转RDB文件处理中。
-4：已完成RDB转换。
--1：备份已过期。
--2：备份已删除。
+        :param _Status: <p>备份任务的状态：<br>1：备份在流程中。<br>2：备份正常。<br>3：备份转RDB文件处理中。<br>4：已完成RDB转换。<br>-1：备份已过期。<br>-2：备份已删除。</p>
         :type Status: list of int
-        :param _InstanceName: 实例名称，支持根据实例名称模糊搜索。
+        :param _InstanceName: <p>实例名称，支持根据实例名称模糊搜索。</p>
         :type InstanceName: str
         """
         self._Limit = None
@@ -5746,7 +5776,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页输出的备份列表大小。默认大小为20，最大值为 100。
+        r"""<p>每页输出的备份列表大小。默认大小为20，最大值为 100。</p>
         :rtype: int
         """
         return self._Limit
@@ -5757,7 +5787,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
+        r"""<p>分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。</p>
         :rtype: int
         """
         return self._Offset
@@ -5768,7 +5798,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
+        r"""<p>待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5779,7 +5809,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
+        r"""<p>开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。</p>
         :rtype: str
         """
         return self._BeginTime
@@ -5790,7 +5820,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。
+        r"""<p>结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表，查询时间最大跨度30天。</p>
         :rtype: str
         """
         return self._EndTime
@@ -5801,13 +5831,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""备份任务的状态：
-1：备份在流程中。
-2：备份正常。
-3：备份转RDB文件处理中。
-4：已完成RDB转换。
--1：备份已过期。
--2：备份已删除。
+        r"""<p>备份任务的状态：<br>1：备份在流程中。<br>2：备份正常。<br>3：备份转RDB文件处理中。<br>4：已完成RDB转换。<br>-1：备份已过期。<br>-2：备份已删除。</p>
         :rtype: list of int
         """
         return self._Status
@@ -5818,7 +5842,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称，支持根据实例名称模糊搜索。
+        r"""<p>实例名称，支持根据实例名称模糊搜索。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -5853,9 +5877,9 @@ class DescribeInstanceBackupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 备份总数。
+        :param _TotalCount: <p>备份总数。</p>
         :type TotalCount: int
-        :param _BackupSet: 实例的备份数组。
+        :param _BackupSet: <p>实例的备份数组。</p>
         :type BackupSet: list of RedisBackupSet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5866,7 +5890,7 @@ class DescribeInstanceBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""备份总数。
+        r"""<p>备份总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -5877,7 +5901,7 @@ class DescribeInstanceBackupsResponse(AbstractModel):
 
     @property
     def BackupSet(self):
-        r"""实例的备份数组。
+        r"""<p>实例的备份数组。</p>
         :rtype: list of RedisBackupSet
         """
         return self._BackupSet
@@ -21908,45 +21932,38 @@ class RedisBackupSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 备份开始时间。
+        :param _StartTime: <p>备份开始时间。</p>
         :type StartTime: str
-        :param _BackupId: 备份任务ID。
+        :param _BackupId: <p>备份任务ID。</p>
         :type BackupId: str
-        :param _BackupType: 备份类型。
-- 1：凌晨系统发起的自动备份。
-- 0：用户发起的手动备份。
+        :param _BackupType: <p>备份类型。</p><ul><li>1：凌晨系统发起的自动备份。</li><li>0：用户发起的手动备份。</li></ul>
         :type BackupType: str
-        :param _Status: 备份状态。 
-- 1：备份被其它流程锁定。
-- 2：备份正常，没有被任何流程锁定。
-- -1：备份已过期。
-- 3：备份正在被导出。
-- 4：备份导出成功。
+        :param _Status: <p>备份状态。 </p><ul><li>1：备份被其它流程锁定。</li><li>2：备份正常，没有被任何流程锁定。</li><li>-1：备份已过期。</li><li>3：备份正在被导出。</li><li>4：备份导出成功。</li></ul>
         :type Status: int
-        :param _Remark: 备份的备注信息。
+        :param _Remark: <p>备份的备注信息。</p>
         :type Remark: str
-        :param _Locked: 备份是否被锁定。
-- 0：未被锁定。
-- 1：已被锁定。
+        :param _Locked: <p>备份是否被锁定。</p><ul><li>0：未被锁定。</li><li>1：已被锁定。</li></ul>
         :type Locked: int
-        :param _BackupSize: 内部字段，用户可忽略。
+        :param _BackupSize: <p>内部字段，用户可忽略。</p>
         :type BackupSize: int
-        :param _FullBackup: 内部字段，用户可忽略。
+        :param _FullBackup: <p>内部字段，用户可忽略。</p>
         :type FullBackup: int
-        :param _InstanceType: 内部字段，用户可忽略。
+        :param _InstanceType: <p>内部字段，用户可忽略。</p>
         :type InstanceType: int
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: <p>实例 ID。</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称。
+        :param _InstanceName: <p>实例名称。</p>
         :type InstanceName: str
-        :param _Region: 本地备份所在地域。
+        :param _Region: <p>本地备份所在地域。</p>
         :type Region: str
-        :param _EndTime: 备份结束时间。
+        :param _EndTime: <p>备份结束时间。</p>
         :type EndTime: str
-        :param _FileType: 备份文件类型。
+        :param _FileType: <p>备份文件类型。</p>
         :type FileType: str
-        :param _ExpireTime: 备份文件过期时间。
+        :param _ExpireTime: <p>备份文件过期时间。</p>
         :type ExpireTime: str
+        :param _Encrypted: <p>备份文件是否加密</p>
+        :type Encrypted: bool
         """
         self._StartTime = None
         self._BackupId = None
@@ -21963,10 +21980,11 @@ class RedisBackupSet(AbstractModel):
         self._EndTime = None
         self._FileType = None
         self._ExpireTime = None
+        self._Encrypted = None
 
     @property
     def StartTime(self):
-        r"""备份开始时间。
+        r"""<p>备份开始时间。</p>
         :rtype: str
         """
         return self._StartTime
@@ -21977,7 +21995,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""备份任务ID。
+        r"""<p>备份任务ID。</p>
         :rtype: str
         """
         return self._BackupId
@@ -21988,9 +22006,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""备份类型。
-- 1：凌晨系统发起的自动备份。
-- 0：用户发起的手动备份。
+        r"""<p>备份类型。</p><ul><li>1：凌晨系统发起的自动备份。</li><li>0：用户发起的手动备份。</li></ul>
         :rtype: str
         """
         return self._BackupType
@@ -22001,12 +22017,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def Status(self):
-        r"""备份状态。 
-- 1：备份被其它流程锁定。
-- 2：备份正常，没有被任何流程锁定。
-- -1：备份已过期。
-- 3：备份正在被导出。
-- 4：备份导出成功。
+        r"""<p>备份状态。 </p><ul><li>1：备份被其它流程锁定。</li><li>2：备份正常，没有被任何流程锁定。</li><li>-1：备份已过期。</li><li>3：备份正在被导出。</li><li>4：备份导出成功。</li></ul>
         :rtype: int
         """
         return self._Status
@@ -22017,7 +22028,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备份的备注信息。
+        r"""<p>备份的备注信息。</p>
         :rtype: str
         """
         return self._Remark
@@ -22028,9 +22039,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def Locked(self):
-        r"""备份是否被锁定。
-- 0：未被锁定。
-- 1：已被锁定。
+        r"""<p>备份是否被锁定。</p><ul><li>0：未被锁定。</li><li>1：已被锁定。</li></ul>
         :rtype: int
         """
         return self._Locked
@@ -22041,7 +22050,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def BackupSize(self):
-        r"""内部字段，用户可忽略。
+        r"""<p>内部字段，用户可忽略。</p>
         :rtype: int
         """
         return self._BackupSize
@@ -22052,7 +22061,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def FullBackup(self):
-        r"""内部字段，用户可忽略。
+        r"""<p>内部字段，用户可忽略。</p>
         :rtype: int
         """
         return self._FullBackup
@@ -22063,7 +22072,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""内部字段，用户可忽略。
+        r"""<p>内部字段，用户可忽略。</p>
         :rtype: int
         """
         return self._InstanceType
@@ -22074,7 +22083,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。
+        r"""<p>实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -22085,7 +22094,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -22096,7 +22105,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def Region(self):
-        r"""本地备份所在地域。
+        r"""<p>本地备份所在地域。</p>
         :rtype: str
         """
         return self._Region
@@ -22107,7 +22116,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""备份结束时间。
+        r"""<p>备份结束时间。</p>
         :rtype: str
         """
         return self._EndTime
@@ -22118,7 +22127,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def FileType(self):
-        r"""备份文件类型。
+        r"""<p>备份文件类型。</p>
         :rtype: str
         """
         return self._FileType
@@ -22129,7 +22138,7 @@ class RedisBackupSet(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""备份文件过期时间。
+        r"""<p>备份文件过期时间。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -22137,6 +22146,17 @@ class RedisBackupSet(AbstractModel):
     @ExpireTime.setter
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
+
+    @property
+    def Encrypted(self):
+        r"""<p>备份文件是否加密</p>
+        :rtype: bool
+        """
+        return self._Encrypted
+
+    @Encrypted.setter
+    def Encrypted(self, Encrypted):
+        self._Encrypted = Encrypted
 
 
     def _deserialize(self, params):
@@ -22155,6 +22175,7 @@ class RedisBackupSet(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._FileType = params.get("FileType")
         self._ExpireTime = params.get("ExpireTime")
+        self._Encrypted = params.get("Encrypted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

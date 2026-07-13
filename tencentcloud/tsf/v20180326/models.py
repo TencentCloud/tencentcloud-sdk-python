@@ -2490,26 +2490,29 @@ class ApplicationAttribute(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceCount: 总实例个数
+        :param _InstanceCount: <p>总实例个数</p>
         :type InstanceCount: int
-        :param _RunInstanceCount: 运行实例个数
+        :param _RunInstanceCount: <p>运行实例个数</p>
         :type RunInstanceCount: int
-        :param _GroupCount: 应用下部署组个数
+        :param _GroupCount: <p>应用下部署组个数</p>
         :type GroupCount: int
-        :param _RunningGroupCount: 运行中部署组个数
+        :param _RunningGroupCount: <p>运行中部署组个数</p>
         :type RunningGroupCount: str
-        :param _AbnormalCount: 异常部署组个数
+        :param _AbnormalCount: <p>异常部署组个数</p>
         :type AbnormalCount: str
+        :param _ImageTagCount: <p>镜像tag数量</p>
+        :type ImageTagCount: int
         """
         self._InstanceCount = None
         self._RunInstanceCount = None
         self._GroupCount = None
         self._RunningGroupCount = None
         self._AbnormalCount = None
+        self._ImageTagCount = None
 
     @property
     def InstanceCount(self):
-        r"""总实例个数
+        r"""<p>总实例个数</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -2520,7 +2523,7 @@ class ApplicationAttribute(AbstractModel):
 
     @property
     def RunInstanceCount(self):
-        r"""运行实例个数
+        r"""<p>运行实例个数</p>
         :rtype: int
         """
         return self._RunInstanceCount
@@ -2531,7 +2534,7 @@ class ApplicationAttribute(AbstractModel):
 
     @property
     def GroupCount(self):
-        r"""应用下部署组个数
+        r"""<p>应用下部署组个数</p>
         :rtype: int
         """
         return self._GroupCount
@@ -2542,7 +2545,7 @@ class ApplicationAttribute(AbstractModel):
 
     @property
     def RunningGroupCount(self):
-        r"""运行中部署组个数
+        r"""<p>运行中部署组个数</p>
         :rtype: str
         """
         return self._RunningGroupCount
@@ -2553,7 +2556,7 @@ class ApplicationAttribute(AbstractModel):
 
     @property
     def AbnormalCount(self):
-        r"""异常部署组个数
+        r"""<p>异常部署组个数</p>
         :rtype: str
         """
         return self._AbnormalCount
@@ -2562,6 +2565,17 @@ class ApplicationAttribute(AbstractModel):
     def AbnormalCount(self, AbnormalCount):
         self._AbnormalCount = AbnormalCount
 
+    @property
+    def ImageTagCount(self):
+        r"""<p>镜像tag数量</p>
+        :rtype: int
+        """
+        return self._ImageTagCount
+
+    @ImageTagCount.setter
+    def ImageTagCount(self, ImageTagCount):
+        self._ImageTagCount = ImageTagCount
+
 
     def _deserialize(self, params):
         self._InstanceCount = params.get("InstanceCount")
@@ -2569,6 +2583,7 @@ class ApplicationAttribute(AbstractModel):
         self._GroupCount = params.get("GroupCount")
         self._RunningGroupCount = params.get("RunningGroupCount")
         self._AbnormalCount = params.get("AbnormalCount")
+        self._ImageTagCount = params.get("ImageTagCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

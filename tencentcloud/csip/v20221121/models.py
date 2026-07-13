@@ -14587,10 +14587,13 @@ class CosBucketId(AbstractModel):
         r"""
         :param _AppId: appid
         :type AppId: str
+        :param _IsAutoMonitor: 
+        :type IsAutoMonitor: int
         :param _BucketIdSet: bucket id集合
         :type BucketIdSet: list of str
         """
         self._AppId = None
+        self._IsAutoMonitor = None
         self._BucketIdSet = None
 
     @property
@@ -14603,6 +14606,17 @@ class CosBucketId(AbstractModel):
     @AppId.setter
     def AppId(self, AppId):
         self._AppId = AppId
+
+    @property
+    def IsAutoMonitor(self):
+        r"""
+        :rtype: int
+        """
+        return self._IsAutoMonitor
+
+    @IsAutoMonitor.setter
+    def IsAutoMonitor(self, IsAutoMonitor):
+        self._IsAutoMonitor = IsAutoMonitor
 
     @property
     def BucketIdSet(self):
@@ -14618,6 +14632,7 @@ class CosBucketId(AbstractModel):
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
+        self._IsAutoMonitor = params.get("IsAutoMonitor")
         self._BucketIdSet = params.get("BucketIdSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

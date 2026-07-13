@@ -4732,9 +4732,12 @@ class ClusterInfo(AbstractModel):
         :type ClusterId: str
         :param _Type: <p>集群类型</p><p>枚举值：</p><ul><li>Public： 公有云集群</li><li>Exclusive： 独占集群</li></ul><p>默认值：Public</p>
         :type Type: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
         """
         self._ClusterId = None
         self._Type = None
+        self._ClusterName = None
 
     @property
     def ClusterId(self):
@@ -4758,10 +4761,22 @@ class ClusterInfo(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._Type = params.get("Type")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
