@@ -367,6 +367,42 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAutoScaleDiskInfo(
+            self,
+            request: models.DescribeAutoScaleDiskInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAutoScaleDiskInfoResponse:
+        """
+        获取自动扩盘参数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAutoScaleDiskInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAutoScaleDiskInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterDiskRange(
+            self,
+            request: models.DescribeClusterDiskRangeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterDiskRangeResponse:
+        """
+        获取集群节点磁盘大小上下限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterDiskRange"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterDiskRangeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterSnapshot(
             self,
             request: models.DescribeClusterSnapshotRequest,
@@ -385,6 +421,24 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCosBackupStrategyViews(
+            self,
+            request: models.DescribeCosBackupStrategyViewsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosBackupStrategyViewsResponse:
+        """
+        获取集群自动备份策略概览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosBackupStrategyViews"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosBackupStrategyViewsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDiagnose(
             self,
             request: models.DescribeDiagnoseRequest,
@@ -398,6 +452,78 @@ class EsClient(AbstractClient):
         kwargs["action"] = "DescribeDiagnose"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDiagnoseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEsInstanceEventLists(
+            self,
+            request: models.DescribeEsInstanceEventListsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEsInstanceEventListsResponse:
+        """
+        查询事件中心列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEsInstanceEventLists"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEsInstanceEventListsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEventDataDetail(
+            self,
+            request: models.DescribeEventDataDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEventDataDetailResponse:
+        """
+        查询事件详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEventDataDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEventDataDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEventInfoList(
+            self,
+            request: models.DescribeEventInfoListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEventInfoListResponse:
+        """
+        查询事件类型列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEventInfoList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEventInfoListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeForceMergeTask(
+            self,
+            request: models.DescribeForceMergeTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeForceMergeTaskResponse:
+        """
+        查询新增的forcemerge任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeForceMergeTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeForceMergeTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -583,6 +709,60 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLogstashViews(
+            self,
+            request: models.DescribeLogstashViewsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogstashViewsResponse:
+        """
+        查询Logstash集群视图
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogstashViews"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogstashViewsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRegions(
+            self,
+            request: models.DescribeRegionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRegionsResponse:
+        """
+        查询ES支持的地域列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRegions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRegionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRequestInstancePolicy(
+            self,
+            request: models.DescribeRequestInstancePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRequestInstancePolicyResponse:
+        """
+        集群可访问API展示
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRequestInstancePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRequestInstancePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeServerlessInstances(
             self,
             request: models.DescribeServerlessInstancesRequest,
@@ -656,6 +836,24 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSnapshotViews(
+            self,
+            request: models.DescribeSnapshotViewsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSnapshotViewsResponse:
+        """
+        获取集群快照列表概览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSnapshotViews"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSnapshotViewsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSpaceKibanaTools(
             self,
             request: models.DescribeSpaceKibanaToolsRequest,
@@ -669,6 +867,24 @@ class EsClient(AbstractClient):
         kwargs["action"] = "DescribeSpaceKibanaTools"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSpaceKibanaToolsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUpgrade(
+            self,
+            request: models.DescribeUpgradeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUpgradeResponse:
+        """
+        获取实例可升级列表，包括可升级的大版本、商业特性
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUpgrade"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUpgradeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -903,6 +1119,42 @@ class EsClient(AbstractClient):
         kwargs["action"] = "QueryIpTraceLog"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryIpTraceLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryZoneResource(
+            self,
+            request: models.QueryZoneResourceRequest,
+            opts: Dict = None,
+    ) -> models.QueryZoneResourceResponse:
+        """
+        获取指定region下指定zone列表的资源情况
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryZoneResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryZoneResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryZoneResourceForLogstash(
+            self,
+            request: models.QueryZoneResourceForLogstashRequest,
+            opts: Dict = None,
+    ) -> models.QueryZoneResourceForLogstashResponse:
+        """
+        获取Logstash指定region下指定zone列表的资源情况
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryZoneResourceForLogstash"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryZoneResourceForLogstashResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

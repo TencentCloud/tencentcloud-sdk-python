@@ -69276,6 +69276,85 @@ class ModifyAlarmRiskStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCosAuditBucketMonitorStatusRequest(AbstractModel):
+    r"""ModifyCosAuditBucketMonitorStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketNameSet: 存储桶集合
+        :type BucketNameSet: list of str
+        :param _MonitorStatus: 0 关闭 1 开启
+        :type MonitorStatus: int
+        """
+        self._BucketNameSet = None
+        self._MonitorStatus = None
+
+    @property
+    def BucketNameSet(self):
+        r"""存储桶集合
+        :rtype: list of str
+        """
+        return self._BucketNameSet
+
+    @BucketNameSet.setter
+    def BucketNameSet(self, BucketNameSet):
+        self._BucketNameSet = BucketNameSet
+
+    @property
+    def MonitorStatus(self):
+        r"""0 关闭 1 开启
+        :rtype: int
+        """
+        return self._MonitorStatus
+
+    @MonitorStatus.setter
+    def MonitorStatus(self, MonitorStatus):
+        self._MonitorStatus = MonitorStatus
+
+
+    def _deserialize(self, params):
+        self._BucketNameSet = params.get("BucketNameSet")
+        self._MonitorStatus = params.get("MonitorStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosAuditBucketMonitorStatusResponse(AbstractModel):
+    r"""ModifyCosAuditBucketMonitorStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCosAuditMonitorAccountRequest(AbstractModel):
     r"""ModifyCosAuditMonitorAccount请求参数结构体
 
@@ -80364,7 +80443,7 @@ class SkillCapabilityTag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 能力标签标识，适合程序判定、过滤或聚合使用
+        :param _ID: 能力标签标识
         :type ID: str
         :param _Name: 能力标签展示名称
         :type Name: str
@@ -80374,7 +80453,7 @@ class SkillCapabilityTag(AbstractModel):
 
     @property
     def ID(self):
-        r"""能力标签标识，适合程序判定、过滤或聚合使用
+        r"""能力标签标识
         :rtype: str
         """
         return self._ID
@@ -80415,7 +80494,8 @@ class SkillRuleCatalogItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleID: 融合规则 ID（9xxxx）
+        :param _RuleID: 融合规则 ID
+参数格式：形如 9xxxx
         :type RuleID: str
         :param _RuleName: 风险类别名称
         :type RuleName: str
@@ -80425,7 +80505,8 @@ class SkillRuleCatalogItem(AbstractModel):
 
     @property
     def RuleID(self):
-        r"""融合规则 ID（9xxxx）
+        r"""融合规则 ID
+参数格式：形如 9xxxx
         :rtype: str
         """
         return self._RuleID
@@ -80471,7 +80552,7 @@ class SkillScanEngineResult(AbstractModel):
 AI：AI 引擎
 STATIC：静态分析引擎
         :type ScanType: str
-        :param _RuleList: 该引擎命中的规则列表
+        :param _RuleList: 命中规则列表
         :type RuleList: list of SkillScanRuleHit
         """
         self._ScanType = None
@@ -80493,7 +80574,7 @@ STATIC：静态分析引擎
 
     @property
     def RuleList(self):
-        r"""该引擎命中的规则列表
+        r"""命中规则列表
         :rtype: list of SkillScanRuleHit
         """
         return self._RuleList
@@ -80834,9 +80915,10 @@ class SkillScanRuleHit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleID: 融合规则编号（9xxxx），可与 RuleCatalog 交叉引用
+        :param _RuleID: 融合规则编号
+参数格式：形如 9xxxx
         :type RuleID: str
-        :param _Description: 当前命中规则的具体发现描述，包含文件位置、行为特征、风险点等信息
+        :param _Description: 风险发现描述
         :type Description: str
         """
         self._RuleID = None
@@ -80844,7 +80926,8 @@ class SkillScanRuleHit(AbstractModel):
 
     @property
     def RuleID(self):
-        r"""融合规则编号（9xxxx），可与 RuleCatalog 交叉引用
+        r"""融合规则编号
+参数格式：形如 9xxxx
         :rtype: str
         """
         return self._RuleID
@@ -80855,7 +80938,7 @@ class SkillScanRuleHit(AbstractModel):
 
     @property
     def Description(self):
-        r"""当前命中规则的具体发现描述，包含文件位置、行为特征、风险点等信息
+        r"""风险发现描述
         :rtype: str
         """
         return self._Description

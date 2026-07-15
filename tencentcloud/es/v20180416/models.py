@@ -4372,6 +4372,282 @@ class CreateServerlessSpaceV2Response(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CrontabTaskInfo(AbstractModel):
+    r"""forcemerge任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: forcemerge任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RegionId: 集群地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param _InstanceId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: int
+        :param _TaskName: forcemerge任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: str
+        :param _TaskTime: 任务执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTime: str
+        :param _Target: 执行forcemerge的索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Target: str
+        :param _LastExecTime: 上次执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastExecTime: str
+        :param _State: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _TaskStatus: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: int
+        :param _CreateTime: 创建任务时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 任务更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _TaskDetail: 任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskDetail: str
+        :param _OnlyExpungeDeletes: 是否只合并有deleted标记的索引，对应ES _forcemerge API中的only_expunge_deletes参数,默认值false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlyExpungeDeletes: bool
+        :param _MaxMumSegments: 最大合并Segment数量，对应ES _forcemerge API中的max_num_segments参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxMumSegments: int
+        """
+        self._TaskId = None
+        self._RegionId = None
+        self._InstanceId = None
+        self._TaskName = None
+        self._TaskType = None
+        self._TaskTime = None
+        self._Target = None
+        self._LastExecTime = None
+        self._State = None
+        self._TaskStatus = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._TaskDetail = None
+        self._OnlyExpungeDeletes = None
+        self._MaxMumSegments = None
+
+    @property
+    def TaskId(self):
+        r"""forcemerge任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RegionId(self):
+        r"""集群地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def InstanceId(self):
+        r"""集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TaskName(self):
+        r"""forcemerge任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskType(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskTime(self):
+        r"""任务执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskTime
+
+    @TaskTime.setter
+    def TaskTime(self, TaskTime):
+        self._TaskTime = TaskTime
+
+    @property
+    def Target(self):
+        r"""执行forcemerge的索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def LastExecTime(self):
+        r"""上次执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastExecTime
+
+    @LastExecTime.setter
+    def LastExecTime(self, LastExecTime):
+        self._LastExecTime = LastExecTime
+
+    @property
+    def State(self):
+        r"""状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def TaskStatus(self):
+        r"""任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def CreateTime(self):
+        r"""创建任务时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""任务更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def TaskDetail(self):
+        r"""任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskDetail
+
+    @TaskDetail.setter
+    def TaskDetail(self, TaskDetail):
+        self._TaskDetail = TaskDetail
+
+    @property
+    def OnlyExpungeDeletes(self):
+        r"""是否只合并有deleted标记的索引，对应ES _forcemerge API中的only_expunge_deletes参数,默认值false
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._OnlyExpungeDeletes
+
+    @OnlyExpungeDeletes.setter
+    def OnlyExpungeDeletes(self, OnlyExpungeDeletes):
+        self._OnlyExpungeDeletes = OnlyExpungeDeletes
+
+    @property
+    def MaxMumSegments(self):
+        r"""最大合并Segment数量，对应ES _forcemerge API中的max_num_segments参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxMumSegments
+
+    @MaxMumSegments.setter
+    def MaxMumSegments(self, MaxMumSegments):
+        self._MaxMumSegments = MaxMumSegments
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RegionId = params.get("RegionId")
+        self._InstanceId = params.get("InstanceId")
+        self._TaskName = params.get("TaskName")
+        self._TaskType = params.get("TaskType")
+        self._TaskTime = params.get("TaskTime")
+        self._Target = params.get("Target")
+        self._LastExecTime = params.get("LastExecTime")
+        self._State = params.get("State")
+        self._TaskStatus = params.get("TaskStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._TaskDetail = params.get("TaskDetail")
+        self._OnlyExpungeDeletes = params.get("OnlyExpungeDeletes")
+        self._MaxMumSegments = params.get("MaxMumSegments")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataStreamInfo(AbstractModel):
     r"""自治索引信息
 
@@ -5248,6 +5524,189 @@ class DescribeAutoBackUpStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAutoScaleDiskInfoRequest(AbstractModel):
+    r"""DescribeAutoScaleDiskInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名称
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoScaleDiskInfoResponse(AbstractModel):
+    r"""DescribeAutoScaleDiskInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScaleDiskInfoList: 自动扩盘参数列表
+        :type AutoScaleDiskInfoList: list of AutoScaleDiskInfo
+        :param _Status: 0 修改中; 1 正常
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AutoScaleDiskInfoList = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def AutoScaleDiskInfoList(self):
+        r"""自动扩盘参数列表
+        :rtype: list of AutoScaleDiskInfo
+        """
+        return self._AutoScaleDiskInfoList
+
+    @AutoScaleDiskInfoList.setter
+    def AutoScaleDiskInfoList(self, AutoScaleDiskInfoList):
+        self._AutoScaleDiskInfoList = AutoScaleDiskInfoList
+
+    @property
+    def Status(self):
+        r"""0 修改中; 1 正常
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AutoScaleDiskInfoList") is not None:
+            self._AutoScaleDiskInfoList = []
+            for item in params.get("AutoScaleDiskInfoList"):
+                obj = AutoScaleDiskInfo()
+                obj._deserialize(item)
+                self._AutoScaleDiskInfoList.append(obj)
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterDiskRangeRequest(AbstractModel):
+    r"""DescribeClusterDiskRange请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名称
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterDiskRangeResponse(AbstractModel):
+    r"""DescribeClusterDiskRange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeTypeDiskSizeRangeList: 节点磁盘大小上下限
+        :type NodeTypeDiskSizeRangeList: list of NodeTypeDiskSizeRange
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodeTypeDiskSizeRangeList = None
+        self._RequestId = None
+
+    @property
+    def NodeTypeDiskSizeRangeList(self):
+        r"""节点磁盘大小上下限
+        :rtype: list of NodeTypeDiskSizeRange
+        """
+        return self._NodeTypeDiskSizeRangeList
+
+    @NodeTypeDiskSizeRangeList.setter
+    def NodeTypeDiskSizeRangeList(self, NodeTypeDiskSizeRangeList):
+        self._NodeTypeDiskSizeRangeList = NodeTypeDiskSizeRangeList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NodeTypeDiskSizeRangeList") is not None:
+            self._NodeTypeDiskSizeRangeList = []
+            for item in params.get("NodeTypeDiskSizeRangeList"):
+                obj = NodeTypeDiskSizeRange()
+                obj._deserialize(item)
+                self._NodeTypeDiskSizeRangeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterSnapshotRequest(AbstractModel):
     r"""DescribeClusterSnapshot请求参数结构体
 
@@ -5392,6 +5851,90 @@ class DescribeClusterSnapshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCosBackupStrategyViewsRequest(AbstractModel):
+    r"""DescribeCosBackupStrategyViews请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>集群实例ID</p>
+        :type InstanceId: list of str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>集群实例ID</p>
+        :rtype: list of str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosBackupStrategyViewsResponse(AbstractModel):
+    r"""DescribeCosBackupStrategyViews返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBackupList: <p>自动备份策略列表</p>
+        :type CosBackupList: list of CosBackup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosBackupList = None
+        self._RequestId = None
+
+    @property
+    def CosBackupList(self):
+        r"""<p>自动备份策略列表</p>
+        :rtype: list of CosBackup
+        """
+        return self._CosBackupList
+
+    @CosBackupList.setter
+    def CosBackupList(self, CosBackupList):
+        self._CosBackupList = CosBackupList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosBackupList") is not None:
+            self._CosBackupList = []
+            for item in params.get("CosBackupList"):
+                obj = CosBackup()
+                obj._deserialize(item)
+                self._CosBackupList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDiagnoseRequest(AbstractModel):
     r"""DescribeDiagnose请求参数结构体
 
@@ -5518,6 +6061,495 @@ class DescribeDiagnoseResponse(AbstractModel):
                 obj = DiagnoseResult()
                 obj._deserialize(item)
                 self._DiagnoseResults.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEsInstanceEventListsRequest(AbstractModel):
+    r"""DescribeEsInstanceEventLists请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _StartTime: 起始时间, e.g. "2019-03-07 16:30:39"
+        :type StartTime: str
+        :param _EndTime: 结束时间, e.g. "2019-03-30 20:18:03"
+        :type EndTime: str
+        :param _InstanceIds: 集群id，非必填，查询集群相关的事件
+        :type InstanceIds: list of str
+        :param _EventTypes: 查询的类型，包括：硬件异常、用户变更和智能运维等，默认查询所有。1：硬件异常；2：用户变更；3：智能运维
+        :type EventTypes: list of int
+        :param _EventStatus: 事件状态
+        :type EventStatus: list of int
+        """
+        self._Limit = None
+        self._Offset = None
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceIds = None
+        self._EventTypes = None
+        self._EventStatus = None
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def StartTime(self):
+        r"""起始时间, e.g. "2019-03-07 16:30:39"
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间, e.g. "2019-03-30 20:18:03"
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceIds(self):
+        r"""集群id，非必填，查询集群相关的事件
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def EventTypes(self):
+        r"""查询的类型，包括：硬件异常、用户变更和智能运维等，默认查询所有。1：硬件异常；2：用户变更；3：智能运维
+        :rtype: list of int
+        """
+        return self._EventTypes
+
+    @EventTypes.setter
+    def EventTypes(self, EventTypes):
+        self._EventTypes = EventTypes
+
+    @property
+    def EventStatus(self):
+        r"""事件状态
+        :rtype: list of int
+        """
+        return self._EventStatus
+
+    @EventStatus.setter
+    def EventStatus(self, EventStatus):
+        self._EventStatus = EventStatus
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceIds = params.get("InstanceIds")
+        self._EventTypes = params.get("EventTypes")
+        self._EventStatus = params.get("EventStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEsInstanceEventListsResponse(AbstractModel):
+    r"""DescribeEsInstanceEventLists返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 事件中心记录总数
+        :type TotalCount: int
+        :param _EventDataInfoList: 事件中心记录信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventDataInfoList: list of EventDataInfoOverview
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._EventDataInfoList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""事件中心记录总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EventDataInfoList(self):
+        r"""事件中心记录信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventDataInfoOverview
+        """
+        return self._EventDataInfoList
+
+    @EventDataInfoList.setter
+    def EventDataInfoList(self, EventDataInfoList):
+        self._EventDataInfoList = EventDataInfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("EventDataInfoList") is not None:
+            self._EventDataInfoList = []
+            for item in params.get("EventDataInfoList"):
+                obj = EventDataInfoOverview()
+                obj._deserialize(item)
+                self._EventDataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEventDataDetailRequest(AbstractModel):
+    r"""DescribeEventDataDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ES集群Id
+        :type InstanceId: str
+        :param _EventType: 事件类型,1：硬件异常；2：用户变更；3：智能运维
+        :type EventType: int
+        :param _EventTaskId: 异常事件任务id
+        :type EventTaskId: int
+        """
+        self._InstanceId = None
+        self._EventType = None
+        self._EventTaskId = None
+
+    @property
+    def InstanceId(self):
+        r"""ES集群Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EventType(self):
+        r"""事件类型,1：硬件异常；2：用户变更；3：智能运维
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def EventTaskId(self):
+        r"""异常事件任务id
+        :rtype: int
+        """
+        return self._EventTaskId
+
+    @EventTaskId.setter
+    def EventTaskId(self, EventTaskId):
+        self._EventTaskId = EventTaskId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._EventType = params.get("EventType")
+        self._EventTaskId = params.get("EventTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEventDataDetailResponse(AbstractModel):
+    r"""DescribeEventDataDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventDataDetail: 异常事件详情
+        :type EventDataDetail: :class:`tencentcloud.es.v20180416.models.EventDataDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EventDataDetail = None
+        self._RequestId = None
+
+    @property
+    def EventDataDetail(self):
+        r"""异常事件详情
+        :rtype: :class:`tencentcloud.es.v20180416.models.EventDataDetail`
+        """
+        return self._EventDataDetail
+
+    @EventDataDetail.setter
+    def EventDataDetail(self, EventDataDetail):
+        self._EventDataDetail = EventDataDetail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EventDataDetail") is not None:
+            self._EventDataDetail = EventDataDetail()
+            self._EventDataDetail._deserialize(params.get("EventDataDetail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEventInfoListRequest(AbstractModel):
+    r"""DescribeEventInfoList请求参数结构体
+
+    """
+
+
+class DescribeEventInfoListResponse(AbstractModel):
+    r"""DescribeEventInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventTypeInfoList: <p>事件类型详情</p>
+        :type EventTypeInfoList: list of EventTypeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EventTypeInfoList = None
+        self._RequestId = None
+
+    @property
+    def EventTypeInfoList(self):
+        r"""<p>事件类型详情</p>
+        :rtype: list of EventTypeInfo
+        """
+        return self._EventTypeInfoList
+
+    @EventTypeInfoList.setter
+    def EventTypeInfoList(self, EventTypeInfoList):
+        self._EventTypeInfoList = EventTypeInfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EventTypeInfoList") is not None:
+            self._EventTypeInfoList = []
+            for item in params.get("EventTypeInfoList"):
+                obj = EventTypeInfo()
+                obj._deserialize(item)
+                self._EventTypeInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeForceMergeTaskRequest(AbstractModel):
+    r"""DescribeForceMergeTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例ID
+        :type InstanceId: str
+        :param _Offset: 分页页数
+        :type Offset: int
+        :param _Limit: 每页展示记录条数
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""集群实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        r"""分页页数
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页展示记录条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeForceMergeTaskResponse(AbstractModel):
+    r"""DescribeForceMergeTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CrontabTaskInfo: 新增的forcemerge任务列表
+Uin
+
+        :type CrontabTaskInfo: list of CrontabTaskInfo
+        :param _TotalCount: 记录总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CrontabTaskInfo = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CrontabTaskInfo(self):
+        r"""新增的forcemerge任务列表
+Uin
+
+        :rtype: list of CrontabTaskInfo
+        """
+        return self._CrontabTaskInfo
+
+    @CrontabTaskInfo.setter
+    def CrontabTaskInfo(self, CrontabTaskInfo):
+        self._CrontabTaskInfo = CrontabTaskInfo
+
+    @property
+    def TotalCount(self):
+        r"""记录总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CrontabTaskInfo") is not None:
+            self._CrontabTaskInfo = []
+            for item in params.get("CrontabTaskInfo"):
+                obj = CrontabTaskInfo()
+                obj._deserialize(item)
+                self._CrontabTaskInfo.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -7632,6 +8664,313 @@ class DescribeLogstashPipelinesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLogstashViewsRequest(AbstractModel):
+    r"""DescribeLogstashViews请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogstashInstanceId: longstash集群ID
+        :type LogstashInstanceId: str
+        """
+        self._LogstashInstanceId = None
+
+    @property
+    def LogstashInstanceId(self):
+        r"""longstash集群ID
+        :rtype: str
+        """
+        return self._LogstashInstanceId
+
+    @LogstashInstanceId.setter
+    def LogstashInstanceId(self, LogstashInstanceId):
+        self._LogstashInstanceId = LogstashInstanceId
+
+
+    def _deserialize(self, params):
+        self._LogstashInstanceId = params.get("LogstashInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogstashViewsResponse(AbstractModel):
+    r"""DescribeLogstashViews返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodesView: Logstash节点维度视图
+        :type NodesView: list of LogstashNodeView
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodesView = None
+        self._RequestId = None
+
+    @property
+    def NodesView(self):
+        r"""Logstash节点维度视图
+        :rtype: list of LogstashNodeView
+        """
+        return self._NodesView
+
+    @NodesView.setter
+    def NodesView(self, NodesView):
+        self._NodesView = NodesView
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NodesView") is not None:
+            self._NodesView = []
+            for item in params.get("NodesView"):
+                obj = LogstashNodeView()
+                obj._deserialize(item)
+                self._NodesView.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRegionsRequest(AbstractModel):
+    r"""DescribeRegions请求参数结构体
+
+    """
+
+
+class DescribeRegionsResponse(AbstractModel):
+    r"""DescribeRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 地域总数
+        :type TotalCount: int
+        :param _RegionSet: 地域详细信息
+        :type RegionSet: list of RegionsData
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RegionSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""地域总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RegionSet(self):
+        r"""地域详细信息
+        :rtype: list of RegionsData
+        """
+        return self._RegionSet
+
+    @RegionSet.setter
+    def RegionSet(self, RegionSet):
+        self._RegionSet = RegionSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RegionSet") is not None:
+            self._RegionSet = []
+            for item in params.get("RegionSet"):
+                obj = RegionsData()
+                obj._deserialize(item)
+                self._RegionSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRequestInstancePolicyRequest(AbstractModel):
+    r"""DescribeRequestInstancePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>集群id</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRequestInstancePolicyResponse(AbstractModel):
+    r"""DescribeRequestInstancePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GetPaths: <p>GET路径可请求的命令合集</p>
+        :type GetPaths: list of str
+        :param _PostPaths: <p>POST路径可请求的命令合集</p>
+        :type PostPaths: list of str
+        :param _PutPaths: <p>PUT路径可请求的命令合集</p>
+        :type PutPaths: list of str
+        :param _IsDefault: <p>是否是默认的参数</p>
+        :type IsDefault: bool
+        :param _UpdateTime: <p>变更时间</p>
+        :type UpdateTime: str
+        :param _Operator: <p>变更人</p>
+        :type Operator: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GetPaths = None
+        self._PostPaths = None
+        self._PutPaths = None
+        self._IsDefault = None
+        self._UpdateTime = None
+        self._Operator = None
+        self._RequestId = None
+
+    @property
+    def GetPaths(self):
+        r"""<p>GET路径可请求的命令合集</p>
+        :rtype: list of str
+        """
+        return self._GetPaths
+
+    @GetPaths.setter
+    def GetPaths(self, GetPaths):
+        self._GetPaths = GetPaths
+
+    @property
+    def PostPaths(self):
+        r"""<p>POST路径可请求的命令合集</p>
+        :rtype: list of str
+        """
+        return self._PostPaths
+
+    @PostPaths.setter
+    def PostPaths(self, PostPaths):
+        self._PostPaths = PostPaths
+
+    @property
+    def PutPaths(self):
+        r"""<p>PUT路径可请求的命令合集</p>
+        :rtype: list of str
+        """
+        return self._PutPaths
+
+    @PutPaths.setter
+    def PutPaths(self, PutPaths):
+        self._PutPaths = PutPaths
+
+    @property
+    def IsDefault(self):
+        r"""<p>是否是默认的参数</p>
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def UpdateTime(self):
+        r"""<p>变更时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Operator(self):
+        r"""<p>变更人</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GetPaths = params.get("GetPaths")
+        self._PostPaths = params.get("PostPaths")
+        self._PutPaths = params.get("PutPaths")
+        self._IsDefault = params.get("IsDefault")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Operator = params.get("Operator")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeServerlessInstancesRequest(AbstractModel):
     r"""DescribeServerlessInstances请求参数结构体
 
@@ -8483,6 +9822,154 @@ class DescribeServerlessSpacesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSnapshotViewsRequest(AbstractModel):
+    r"""DescribeSnapshotViews请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>集群实例ID</p>
+        :type InstanceId: list of str
+        :param _State: <p>快照状态，IN_PROGRESS,SUCCESS,FAILED,PARTIAL</p>
+        :type State: list of str
+        :param _UserBackUp: <p>创建方式: true(手动备份); false(自动备份); 空字符串表示全部</p>
+        :type UserBackUp: str
+        :param _Duration: <p>时间范围, 最近多少天, 0表示查询所有时间范围</p>
+        :type Duration: int
+        """
+        self._InstanceId = None
+        self._State = None
+        self._UserBackUp = None
+        self._Duration = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>集群实例ID</p>
+        :rtype: list of str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def State(self):
+        r"""<p>快照状态，IN_PROGRESS,SUCCESS,FAILED,PARTIAL</p>
+        :rtype: list of str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def UserBackUp(self):
+        r"""<p>创建方式: true(手动备份); false(自动备份); 空字符串表示全部</p>
+        :rtype: str
+        """
+        return self._UserBackUp
+
+    @UserBackUp.setter
+    def UserBackUp(self, UserBackUp):
+        self._UserBackUp = UserBackUp
+
+    @property
+    def Duration(self):
+        r"""<p>时间范围, 最近多少天, 0表示查询所有时间范围</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._State = params.get("State")
+        self._UserBackUp = params.get("UserBackUp")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotViewsResponse(AbstractModel):
+    r"""DescribeSnapshotViews返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Snapshots: <p>快照信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Snapshots: list of Snapshots
+        :param _FailedMsgs: <p>集群快照获取失败信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedMsgs: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Snapshots = None
+        self._FailedMsgs = None
+        self._RequestId = None
+
+    @property
+    def Snapshots(self):
+        r"""<p>快照信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Snapshots
+        """
+        return self._Snapshots
+
+    @Snapshots.setter
+    def Snapshots(self, Snapshots):
+        self._Snapshots = Snapshots
+
+    @property
+    def FailedMsgs(self):
+        r"""<p>集群快照获取失败信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._FailedMsgs
+
+    @FailedMsgs.setter
+    def FailedMsgs(self, FailedMsgs):
+        self._FailedMsgs = FailedMsgs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Snapshots") is not None:
+            self._Snapshots = []
+            for item in params.get("Snapshots"):
+                obj = Snapshots()
+                obj._deserialize(item)
+                self._Snapshots.append(obj)
+        self._FailedMsgs = params.get("FailedMsgs")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSpaceKibanaToolsRequest(AbstractModel):
     r"""DescribeSpaceKibanaTools请求参数结构体
 
@@ -8574,6 +10061,134 @@ class DescribeSpaceKibanaToolsResponse(AbstractModel):
     def _deserialize(self, params):
         self._KibanaToken = params.get("KibanaToken")
         self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUpgradeRequest(AbstractModel):
+    r"""DescribeUpgrade请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>需要升级的实例ID</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>需要升级的实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpgradeResponse(AbstractModel):
+    r"""DescribeUpgrade返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EsVersions: <p>可以升级到的大版本</p>
+        :type EsVersions: list of str
+        :param _EsLicenses: <p>可以升级到的商业特性</p>
+        :type EsLicenses: list of str
+        :param _EsSubProducts: <p>可以升级到的子产品</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsSubProducts: list of str
+        :param _EsRealLicenses: <p>可以升级到的商业特性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsRealLicenses: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EsVersions = None
+        self._EsLicenses = None
+        self._EsSubProducts = None
+        self._EsRealLicenses = None
+        self._RequestId = None
+
+    @property
+    def EsVersions(self):
+        r"""<p>可以升级到的大版本</p>
+        :rtype: list of str
+        """
+        return self._EsVersions
+
+    @EsVersions.setter
+    def EsVersions(self, EsVersions):
+        self._EsVersions = EsVersions
+
+    @property
+    def EsLicenses(self):
+        r"""<p>可以升级到的商业特性</p>
+        :rtype: list of str
+        """
+        return self._EsLicenses
+
+    @EsLicenses.setter
+    def EsLicenses(self, EsLicenses):
+        self._EsLicenses = EsLicenses
+
+    @property
+    def EsSubProducts(self):
+        r"""<p>可以升级到的子产品</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._EsSubProducts
+
+    @EsSubProducts.setter
+    def EsSubProducts(self, EsSubProducts):
+        self._EsSubProducts = EsSubProducts
+
+    @property
+    def EsRealLicenses(self):
+        r"""<p>可以升级到的商业特性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._EsRealLicenses
+
+    @EsRealLicenses.setter
+    def EsRealLicenses(self, EsRealLicenses):
+        self._EsRealLicenses = EsRealLicenses
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EsVersions = params.get("EsVersions")
+        self._EsLicenses = params.get("EsLicenses")
+        self._EsSubProducts = params.get("EsSubProducts")
+        self._EsRealLicenses = params.get("EsRealLicenses")
         self._RequestId = params.get("RequestId")
 
 
@@ -10358,6 +11973,172 @@ class Dimension(AbstractModel):
         
 
 
+class DiskCountRange(AbstractModel):
+    r"""多盘的取值范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Min: 云盘块数下限
+        :type Min: int
+        :param _Max: 云盘块数上限
+        :type Max: int
+        """
+        self._Min = None
+        self._Max = None
+
+    @property
+    def Min(self):
+        r"""云盘块数下限
+        :rtype: int
+        """
+        return self._Min
+
+    @Min.setter
+    def Min(self, Min):
+        self._Min = Min
+
+    @property
+    def Max(self):
+        r"""云盘块数上限
+        :rtype: int
+        """
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+
+    def _deserialize(self, params):
+        self._Min = params.get("Min")
+        self._Max = params.get("Max")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskSizeRange(AbstractModel):
+    r"""磁盘大小范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Min: 最小值
+        :type Min: int
+        :param _Sml: 小刻度值
+        :type Sml: int
+        :param _Med: 中刻度值
+        :type Med: int
+        :param _Max: 最大值
+        :type Max: int
+        :param _DiskCountMin: 磁盘块数最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskCountMin: int
+        :param _DiskCountMax: 磁盘块数最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskCountMax: int
+        """
+        self._Min = None
+        self._Sml = None
+        self._Med = None
+        self._Max = None
+        self._DiskCountMin = None
+        self._DiskCountMax = None
+
+    @property
+    def Min(self):
+        r"""最小值
+        :rtype: int
+        """
+        return self._Min
+
+    @Min.setter
+    def Min(self, Min):
+        self._Min = Min
+
+    @property
+    def Sml(self):
+        r"""小刻度值
+        :rtype: int
+        """
+        return self._Sml
+
+    @Sml.setter
+    def Sml(self, Sml):
+        self._Sml = Sml
+
+    @property
+    def Med(self):
+        r"""中刻度值
+        :rtype: int
+        """
+        return self._Med
+
+    @Med.setter
+    def Med(self, Med):
+        self._Med = Med
+
+    @property
+    def Max(self):
+        r"""最大值
+        :rtype: int
+        """
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+    @property
+    def DiskCountMin(self):
+        r"""磁盘块数最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DiskCountMin
+
+    @DiskCountMin.setter
+    def DiskCountMin(self, DiskCountMin):
+        self._DiskCountMin = DiskCountMin
+
+    @property
+    def DiskCountMax(self):
+        r"""磁盘块数最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DiskCountMax
+
+    @DiskCountMax.setter
+    def DiskCountMax(self, DiskCountMax):
+        self._DiskCountMax = DiskCountMax
+
+
+    def _deserialize(self, params):
+        self._Min = params.get("Min")
+        self._Sml = params.get("Sml")
+        self._Med = params.get("Med")
+        self._Max = params.get("Max")
+        self._DiskCountMin = params.get("DiskCountMin")
+        self._DiskCountMax = params.get("DiskCountMax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnableScheduleOperationDuration(AbstractModel):
     r"""置放群组异步任务维护的时间段
 
@@ -10794,6 +12575,564 @@ class EsPublicAcl(AbstractModel):
     def _deserialize(self, params):
         self._BlackIpList = params.get("BlackIpList")
         self._WhiteIpList = params.get("WhiteIpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventDataDetail(AbstractModel):
+    r"""事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventName: <p>事件名称</p>
+        :type EventName: str
+        :param _EventImportance: <p>事件重要程度;0: 一般  1: 重要</p>
+        :type EventImportance: int
+        :param _EventContent: <p>事件内容</p>
+        :type EventContent: str
+        :param _InstanceId: <p>ES集群id</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>集群名称</p>
+        :type InstanceName: str
+        :param _NodeId: <p>节点Id</p>
+        :type NodeId: str
+        :param _NodeRole: <p>节点类型</p>
+        :type NodeRole: str
+        :param _EventStatus: <p>事件状态,0:待处理，1:处理中，2:处理完成</p>
+        :type EventStatus: int
+        :param _EventType: <p>事件类型;1：硬件异常；2：用户变更；3：智能运维</p>
+        :type EventType: int
+        :param _EventTaskId: <p>事件任务id</p>
+        :type EventTaskId: int
+        :param _EventIsolationStatus: <p>节点隔离状态，0:未隔离；1:已隔离</p>
+        :type EventIsolationStatus: int
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: str
+        :param _SubEventType: <p>子事件异常类型</p>
+        :type SubEventType: int
+        :param _CvmRepairId: <p>cvm维修任务Id</p>
+        :type CvmRepairId: str
+        :param _ProcessType: <p>处理类型</p>
+        :type ProcessType: str
+        :param _SubEventName: <p>子事件名称</p>
+        :type SubEventName: str
+        """
+        self._EventName = None
+        self._EventImportance = None
+        self._EventContent = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._NodeId = None
+        self._NodeRole = None
+        self._EventStatus = None
+        self._EventType = None
+        self._EventTaskId = None
+        self._EventIsolationStatus = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SubEventType = None
+        self._CvmRepairId = None
+        self._ProcessType = None
+        self._SubEventName = None
+
+    @property
+    def EventName(self):
+        r"""<p>事件名称</p>
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventImportance(self):
+        r"""<p>事件重要程度;0: 一般  1: 重要</p>
+        :rtype: int
+        """
+        return self._EventImportance
+
+    @EventImportance.setter
+    def EventImportance(self, EventImportance):
+        self._EventImportance = EventImportance
+
+    @property
+    def EventContent(self):
+        r"""<p>事件内容</p>
+        :rtype: str
+        """
+        return self._EventContent
+
+    @EventContent.setter
+    def EventContent(self, EventContent):
+        self._EventContent = EventContent
+
+    @property
+    def InstanceId(self):
+        r"""<p>ES集群id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def NodeId(self):
+        r"""<p>节点Id</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeRole(self):
+        r"""<p>节点类型</p>
+        :rtype: str
+        """
+        return self._NodeRole
+
+    @NodeRole.setter
+    def NodeRole(self, NodeRole):
+        self._NodeRole = NodeRole
+
+    @property
+    def EventStatus(self):
+        r"""<p>事件状态,0:待处理，1:处理中，2:处理完成</p>
+        :rtype: int
+        """
+        return self._EventStatus
+
+    @EventStatus.setter
+    def EventStatus(self, EventStatus):
+        self._EventStatus = EventStatus
+
+    @property
+    def EventType(self):
+        r"""<p>事件类型;1：硬件异常；2：用户变更；3：智能运维</p>
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def EventTaskId(self):
+        r"""<p>事件任务id</p>
+        :rtype: int
+        """
+        return self._EventTaskId
+
+    @EventTaskId.setter
+    def EventTaskId(self, EventTaskId):
+        self._EventTaskId = EventTaskId
+
+    @property
+    def EventIsolationStatus(self):
+        r"""<p>节点隔离状态，0:未隔离；1:已隔离</p>
+        :rtype: int
+        """
+        return self._EventIsolationStatus
+
+    @EventIsolationStatus.setter
+    def EventIsolationStatus(self, EventIsolationStatus):
+        self._EventIsolationStatus = EventIsolationStatus
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SubEventType(self):
+        r"""<p>子事件异常类型</p>
+        :rtype: int
+        """
+        return self._SubEventType
+
+    @SubEventType.setter
+    def SubEventType(self, SubEventType):
+        self._SubEventType = SubEventType
+
+    @property
+    def CvmRepairId(self):
+        r"""<p>cvm维修任务Id</p>
+        :rtype: str
+        """
+        return self._CvmRepairId
+
+    @CvmRepairId.setter
+    def CvmRepairId(self, CvmRepairId):
+        self._CvmRepairId = CvmRepairId
+
+    @property
+    def ProcessType(self):
+        r"""<p>处理类型</p>
+        :rtype: str
+        """
+        return self._ProcessType
+
+    @ProcessType.setter
+    def ProcessType(self, ProcessType):
+        self._ProcessType = ProcessType
+
+    @property
+    def SubEventName(self):
+        r"""<p>子事件名称</p>
+        :rtype: str
+        """
+        return self._SubEventName
+
+    @SubEventName.setter
+    def SubEventName(self, SubEventName):
+        self._SubEventName = SubEventName
+
+
+    def _deserialize(self, params):
+        self._EventName = params.get("EventName")
+        self._EventImportance = params.get("EventImportance")
+        self._EventContent = params.get("EventContent")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._NodeId = params.get("NodeId")
+        self._NodeRole = params.get("NodeRole")
+        self._EventStatus = params.get("EventStatus")
+        self._EventType = params.get("EventType")
+        self._EventTaskId = params.get("EventTaskId")
+        self._EventIsolationStatus = params.get("EventIsolationStatus")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SubEventType = params.get("SubEventType")
+        self._CvmRepairId = params.get("CvmRepairId")
+        self._ProcessType = params.get("ProcessType")
+        self._SubEventName = params.get("SubEventName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventDataInfoOverview(AbstractModel):
+    r"""事件中心记录信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventType: <p>1：硬件异常；2：用户变更；3：智能运维</p>
+        :type EventType: int
+        :param _EventTaskId: <p>事件任务Id</p>
+        :type EventTaskId: int
+        :param _EventName: <p>事件名称</p>
+        :type EventName: str
+        :param _EventImportance: <p>事件重要程度;0: 一般  1: 重要</p>
+        :type EventImportance: int
+        :param _EventContent: <p>事件内容</p>
+        :type EventContent: str
+        :param _InstanceId: <p>ES集群Id</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>集群名称</p>
+        :type InstanceName: str
+        :param _NodeId: <p>ES集群节点id</p>
+        :type NodeId: str
+        :param _NodeRole: <p>节点类型</p>
+        :type NodeRole: str
+        :param _EventStatus: <p>事件状态：0:待处理，1:处理中，2:处理完成</p>
+        :type EventStatus: int
+        :param _StartTime: <p>事件发生时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>事件结束时间</p>
+        :type EndTime: str
+        :param _SubEventType: <p>子事件类型</p>
+        :type SubEventType: int
+        :param _SubEventName: <p>子事件名称</p>
+        :type SubEventName: str
+        """
+        self._EventType = None
+        self._EventTaskId = None
+        self._EventName = None
+        self._EventImportance = None
+        self._EventContent = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._NodeId = None
+        self._NodeRole = None
+        self._EventStatus = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SubEventType = None
+        self._SubEventName = None
+
+    @property
+    def EventType(self):
+        r"""<p>1：硬件异常；2：用户变更；3：智能运维</p>
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def EventTaskId(self):
+        r"""<p>事件任务Id</p>
+        :rtype: int
+        """
+        return self._EventTaskId
+
+    @EventTaskId.setter
+    def EventTaskId(self, EventTaskId):
+        self._EventTaskId = EventTaskId
+
+    @property
+    def EventName(self):
+        r"""<p>事件名称</p>
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventImportance(self):
+        r"""<p>事件重要程度;0: 一般  1: 重要</p>
+        :rtype: int
+        """
+        return self._EventImportance
+
+    @EventImportance.setter
+    def EventImportance(self, EventImportance):
+        self._EventImportance = EventImportance
+
+    @property
+    def EventContent(self):
+        r"""<p>事件内容</p>
+        :rtype: str
+        """
+        return self._EventContent
+
+    @EventContent.setter
+    def EventContent(self, EventContent):
+        self._EventContent = EventContent
+
+    @property
+    def InstanceId(self):
+        r"""<p>ES集群Id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def NodeId(self):
+        r"""<p>ES集群节点id</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeRole(self):
+        r"""<p>节点类型</p>
+        :rtype: str
+        """
+        return self._NodeRole
+
+    @NodeRole.setter
+    def NodeRole(self, NodeRole):
+        self._NodeRole = NodeRole
+
+    @property
+    def EventStatus(self):
+        r"""<p>事件状态：0:待处理，1:处理中，2:处理完成</p>
+        :rtype: int
+        """
+        return self._EventStatus
+
+    @EventStatus.setter
+    def EventStatus(self, EventStatus):
+        self._EventStatus = EventStatus
+
+    @property
+    def StartTime(self):
+        r"""<p>事件发生时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>事件结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SubEventType(self):
+        r"""<p>子事件类型</p>
+        :rtype: int
+        """
+        return self._SubEventType
+
+    @SubEventType.setter
+    def SubEventType(self, SubEventType):
+        self._SubEventType = SubEventType
+
+    @property
+    def SubEventName(self):
+        r"""<p>子事件名称</p>
+        :rtype: str
+        """
+        return self._SubEventName
+
+    @SubEventName.setter
+    def SubEventName(self, SubEventName):
+        self._SubEventName = SubEventName
+
+
+    def _deserialize(self, params):
+        self._EventType = params.get("EventType")
+        self._EventTaskId = params.get("EventTaskId")
+        self._EventName = params.get("EventName")
+        self._EventImportance = params.get("EventImportance")
+        self._EventContent = params.get("EventContent")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._NodeId = params.get("NodeId")
+        self._NodeRole = params.get("NodeRole")
+        self._EventStatus = params.get("EventStatus")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SubEventType = params.get("SubEventType")
+        self._SubEventName = params.get("SubEventName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventTypeInfo(AbstractModel):
+    r"""事件类型详情结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventType: <p>事件类型</p>
+        :type EventType: int
+        :param _EventTypeName: <p>事件名称</p>
+        :type EventTypeName: str
+        """
+        self._EventType = None
+        self._EventTypeName = None
+
+    @property
+    def EventType(self):
+        r"""<p>事件类型</p>
+        :rtype: int
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def EventTypeName(self):
+        r"""<p>事件名称</p>
+        :rtype: str
+        """
+        return self._EventTypeName
+
+    @EventTypeName.setter
+    def EventTypeName(self, EventTypeName):
+        self._EventTypeName = EventTypeName
+
+
+    def _deserialize(self, params):
+        self._EventType = params.get("EventType")
+        self._EventTypeName = params.get("EventTypeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16151,6 +18490,698 @@ class LogstashNodeInfo(AbstractModel):
         
 
 
+class LogstashNodeTypeResource(AbstractModel):
+    r"""Logstash节点规格资源描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeTypeName: 规格名称
+        :type NodeTypeName: str
+        :param _Available: 是否可售
+        :type Available: bool
+        :param _NodeTypeInfo: 规格信息
+        :type NodeTypeInfo: :class:`tencentcloud.es.v20180416.models.NodeTypeInfo`
+        :param _SsdAvailable: SSD盘是否可售
+        :type SsdAvailable: bool
+        :param _SsdDiskSizeRange: SSD磁盘取值范围
+        :type SsdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _SataAvailable: SATA盘是否可售
+        :type SataAvailable: bool
+        :param _SataDiskSizeRange: SATA磁盘取值范围
+        :type SataDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _SsdSoldOutReason: SSD机型售罄原因
+        :type SsdSoldOutReason: str
+        :param _SataSoldOutReason: SATA机型售罄原因
+        :type SataSoldOutReason: str
+        :param _LocalDiskInfo: 本地盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
+        :param _DiskCountRange: 云盘块数取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskCountRange: :class:`tencentcloud.es.v20180416.models.DiskCountRange`
+        :param _HSsdAvailable: 增强型SSD是否可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HSsdAvailable: bool
+        :param _HSsdSoldOutReason: 增强型SSD机型售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HSsdSoldOutReason: str
+        :param _HSsdDiskSizeRange: 增强型SSD磁盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HSsdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _ThroughputAvailable: 吞吐型云盘是否可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThroughputAvailable: bool
+        :param _ThroughputSoldOutReason: 吞吐型云盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThroughputSoldOutReason: str
+        :param _ThroughputDiskSizeRange: 吞吐型云盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThroughputDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _BigDataAvailable: BigData盘是否可售
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDataAvailable: bool
+        :param _BigDataSoldOutReason: BigData盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDataSoldOutReason: str
+        :param _BigDataDiskSizeRange: BigData磁盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDataDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _HighIOAvailable: HighIO盘是否可售
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighIOAvailable: bool
+        :param _HighIOSoldOutReason: HighIO盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighIOSoldOutReason: str
+        :param _HighIODiskSizeRange: HighIO磁盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighIODiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _BssdAvailable: Bssd盘是否可售
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BssdAvailable: bool
+        :param _BssdSoldOutReason: Bssd盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BssdSoldOutReason: str
+        :param _BssdDiskSizeRange: Bssd盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BssdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _GpuInfo: GpuInfo
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuInfo: :class:`tencentcloud.es.v20180416.models.GpuInfo`
+        """
+        self._NodeTypeName = None
+        self._Available = None
+        self._NodeTypeInfo = None
+        self._SsdAvailable = None
+        self._SsdDiskSizeRange = None
+        self._SataAvailable = None
+        self._SataDiskSizeRange = None
+        self._SsdSoldOutReason = None
+        self._SataSoldOutReason = None
+        self._LocalDiskInfo = None
+        self._DiskCountRange = None
+        self._HSsdAvailable = None
+        self._HSsdSoldOutReason = None
+        self._HSsdDiskSizeRange = None
+        self._ThroughputAvailable = None
+        self._ThroughputSoldOutReason = None
+        self._ThroughputDiskSizeRange = None
+        self._BigDataAvailable = None
+        self._BigDataSoldOutReason = None
+        self._BigDataDiskSizeRange = None
+        self._HighIOAvailable = None
+        self._HighIOSoldOutReason = None
+        self._HighIODiskSizeRange = None
+        self._BssdAvailable = None
+        self._BssdSoldOutReason = None
+        self._BssdDiskSizeRange = None
+        self._GpuInfo = None
+
+    @property
+    def NodeTypeName(self):
+        r"""规格名称
+        :rtype: str
+        """
+        return self._NodeTypeName
+
+    @NodeTypeName.setter
+    def NodeTypeName(self, NodeTypeName):
+        self._NodeTypeName = NodeTypeName
+
+    @property
+    def Available(self):
+        r"""是否可售
+        :rtype: bool
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def NodeTypeInfo(self):
+        r"""规格信息
+        :rtype: :class:`tencentcloud.es.v20180416.models.NodeTypeInfo`
+        """
+        return self._NodeTypeInfo
+
+    @NodeTypeInfo.setter
+    def NodeTypeInfo(self, NodeTypeInfo):
+        self._NodeTypeInfo = NodeTypeInfo
+
+    @property
+    def SsdAvailable(self):
+        r"""SSD盘是否可售
+        :rtype: bool
+        """
+        return self._SsdAvailable
+
+    @SsdAvailable.setter
+    def SsdAvailable(self, SsdAvailable):
+        self._SsdAvailable = SsdAvailable
+
+    @property
+    def SsdDiskSizeRange(self):
+        r"""SSD磁盘取值范围
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._SsdDiskSizeRange
+
+    @SsdDiskSizeRange.setter
+    def SsdDiskSizeRange(self, SsdDiskSizeRange):
+        self._SsdDiskSizeRange = SsdDiskSizeRange
+
+    @property
+    def SataAvailable(self):
+        r"""SATA盘是否可售
+        :rtype: bool
+        """
+        return self._SataAvailable
+
+    @SataAvailable.setter
+    def SataAvailable(self, SataAvailable):
+        self._SataAvailable = SataAvailable
+
+    @property
+    def SataDiskSizeRange(self):
+        r"""SATA磁盘取值范围
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._SataDiskSizeRange
+
+    @SataDiskSizeRange.setter
+    def SataDiskSizeRange(self, SataDiskSizeRange):
+        self._SataDiskSizeRange = SataDiskSizeRange
+
+    @property
+    def SsdSoldOutReason(self):
+        r"""SSD机型售罄原因
+        :rtype: str
+        """
+        return self._SsdSoldOutReason
+
+    @SsdSoldOutReason.setter
+    def SsdSoldOutReason(self, SsdSoldOutReason):
+        self._SsdSoldOutReason = SsdSoldOutReason
+
+    @property
+    def SataSoldOutReason(self):
+        r"""SATA机型售罄原因
+        :rtype: str
+        """
+        return self._SataSoldOutReason
+
+    @SataSoldOutReason.setter
+    def SataSoldOutReason(self, SataSoldOutReason):
+        self._SataSoldOutReason = SataSoldOutReason
+
+    @property
+    def LocalDiskInfo(self):
+        r"""本地盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
+        """
+        return self._LocalDiskInfo
+
+    @LocalDiskInfo.setter
+    def LocalDiskInfo(self, LocalDiskInfo):
+        self._LocalDiskInfo = LocalDiskInfo
+
+    @property
+    def DiskCountRange(self):
+        r"""云盘块数取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskCountRange`
+        """
+        return self._DiskCountRange
+
+    @DiskCountRange.setter
+    def DiskCountRange(self, DiskCountRange):
+        self._DiskCountRange = DiskCountRange
+
+    @property
+    def HSsdAvailable(self):
+        r"""增强型SSD是否可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HSsdAvailable
+
+    @HSsdAvailable.setter
+    def HSsdAvailable(self, HSsdAvailable):
+        self._HSsdAvailable = HSsdAvailable
+
+    @property
+    def HSsdSoldOutReason(self):
+        r"""增强型SSD机型售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HSsdSoldOutReason
+
+    @HSsdSoldOutReason.setter
+    def HSsdSoldOutReason(self, HSsdSoldOutReason):
+        self._HSsdSoldOutReason = HSsdSoldOutReason
+
+    @property
+    def HSsdDiskSizeRange(self):
+        r"""增强型SSD磁盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._HSsdDiskSizeRange
+
+    @HSsdDiskSizeRange.setter
+    def HSsdDiskSizeRange(self, HSsdDiskSizeRange):
+        self._HSsdDiskSizeRange = HSsdDiskSizeRange
+
+    @property
+    def ThroughputAvailable(self):
+        r"""吞吐型云盘是否可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ThroughputAvailable
+
+    @ThroughputAvailable.setter
+    def ThroughputAvailable(self, ThroughputAvailable):
+        self._ThroughputAvailable = ThroughputAvailable
+
+    @property
+    def ThroughputSoldOutReason(self):
+        r"""吞吐型云盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ThroughputSoldOutReason
+
+    @ThroughputSoldOutReason.setter
+    def ThroughputSoldOutReason(self, ThroughputSoldOutReason):
+        self._ThroughputSoldOutReason = ThroughputSoldOutReason
+
+    @property
+    def ThroughputDiskSizeRange(self):
+        r"""吞吐型云盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._ThroughputDiskSizeRange
+
+    @ThroughputDiskSizeRange.setter
+    def ThroughputDiskSizeRange(self, ThroughputDiskSizeRange):
+        self._ThroughputDiskSizeRange = ThroughputDiskSizeRange
+
+    @property
+    def BigDataAvailable(self):
+        r"""BigData盘是否可售
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._BigDataAvailable
+
+    @BigDataAvailable.setter
+    def BigDataAvailable(self, BigDataAvailable):
+        self._BigDataAvailable = BigDataAvailable
+
+    @property
+    def BigDataSoldOutReason(self):
+        r"""BigData盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BigDataSoldOutReason
+
+    @BigDataSoldOutReason.setter
+    def BigDataSoldOutReason(self, BigDataSoldOutReason):
+        self._BigDataSoldOutReason = BigDataSoldOutReason
+
+    @property
+    def BigDataDiskSizeRange(self):
+        r"""BigData磁盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._BigDataDiskSizeRange
+
+    @BigDataDiskSizeRange.setter
+    def BigDataDiskSizeRange(self, BigDataDiskSizeRange):
+        self._BigDataDiskSizeRange = BigDataDiskSizeRange
+
+    @property
+    def HighIOAvailable(self):
+        r"""HighIO盘是否可售
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HighIOAvailable
+
+    @HighIOAvailable.setter
+    def HighIOAvailable(self, HighIOAvailable):
+        self._HighIOAvailable = HighIOAvailable
+
+    @property
+    def HighIOSoldOutReason(self):
+        r"""HighIO盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HighIOSoldOutReason
+
+    @HighIOSoldOutReason.setter
+    def HighIOSoldOutReason(self, HighIOSoldOutReason):
+        self._HighIOSoldOutReason = HighIOSoldOutReason
+
+    @property
+    def HighIODiskSizeRange(self):
+        r"""HighIO磁盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._HighIODiskSizeRange
+
+    @HighIODiskSizeRange.setter
+    def HighIODiskSizeRange(self, HighIODiskSizeRange):
+        self._HighIODiskSizeRange = HighIODiskSizeRange
+
+    @property
+    def BssdAvailable(self):
+        r"""Bssd盘是否可售
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._BssdAvailable
+
+    @BssdAvailable.setter
+    def BssdAvailable(self, BssdAvailable):
+        self._BssdAvailable = BssdAvailable
+
+    @property
+    def BssdSoldOutReason(self):
+        r"""Bssd盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BssdSoldOutReason
+
+    @BssdSoldOutReason.setter
+    def BssdSoldOutReason(self, BssdSoldOutReason):
+        self._BssdSoldOutReason = BssdSoldOutReason
+
+    @property
+    def BssdDiskSizeRange(self):
+        r"""Bssd盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._BssdDiskSizeRange
+
+    @BssdDiskSizeRange.setter
+    def BssdDiskSizeRange(self, BssdDiskSizeRange):
+        self._BssdDiskSizeRange = BssdDiskSizeRange
+
+    @property
+    def GpuInfo(self):
+        r"""GpuInfo
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.GpuInfo`
+        """
+        return self._GpuInfo
+
+    @GpuInfo.setter
+    def GpuInfo(self, GpuInfo):
+        self._GpuInfo = GpuInfo
+
+
+    def _deserialize(self, params):
+        self._NodeTypeName = params.get("NodeTypeName")
+        self._Available = params.get("Available")
+        if params.get("NodeTypeInfo") is not None:
+            self._NodeTypeInfo = NodeTypeInfo()
+            self._NodeTypeInfo._deserialize(params.get("NodeTypeInfo"))
+        self._SsdAvailable = params.get("SsdAvailable")
+        if params.get("SsdDiskSizeRange") is not None:
+            self._SsdDiskSizeRange = DiskSizeRange()
+            self._SsdDiskSizeRange._deserialize(params.get("SsdDiskSizeRange"))
+        self._SataAvailable = params.get("SataAvailable")
+        if params.get("SataDiskSizeRange") is not None:
+            self._SataDiskSizeRange = DiskSizeRange()
+            self._SataDiskSizeRange._deserialize(params.get("SataDiskSizeRange"))
+        self._SsdSoldOutReason = params.get("SsdSoldOutReason")
+        self._SataSoldOutReason = params.get("SataSoldOutReason")
+        if params.get("LocalDiskInfo") is not None:
+            self._LocalDiskInfo = LocalDiskInfo()
+            self._LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
+        if params.get("DiskCountRange") is not None:
+            self._DiskCountRange = DiskCountRange()
+            self._DiskCountRange._deserialize(params.get("DiskCountRange"))
+        self._HSsdAvailable = params.get("HSsdAvailable")
+        self._HSsdSoldOutReason = params.get("HSsdSoldOutReason")
+        if params.get("HSsdDiskSizeRange") is not None:
+            self._HSsdDiskSizeRange = DiskSizeRange()
+            self._HSsdDiskSizeRange._deserialize(params.get("HSsdDiskSizeRange"))
+        self._ThroughputAvailable = params.get("ThroughputAvailable")
+        self._ThroughputSoldOutReason = params.get("ThroughputSoldOutReason")
+        if params.get("ThroughputDiskSizeRange") is not None:
+            self._ThroughputDiskSizeRange = DiskSizeRange()
+            self._ThroughputDiskSizeRange._deserialize(params.get("ThroughputDiskSizeRange"))
+        self._BigDataAvailable = params.get("BigDataAvailable")
+        self._BigDataSoldOutReason = params.get("BigDataSoldOutReason")
+        if params.get("BigDataDiskSizeRange") is not None:
+            self._BigDataDiskSizeRange = DiskSizeRange()
+            self._BigDataDiskSizeRange._deserialize(params.get("BigDataDiskSizeRange"))
+        self._HighIOAvailable = params.get("HighIOAvailable")
+        self._HighIOSoldOutReason = params.get("HighIOSoldOutReason")
+        if params.get("HighIODiskSizeRange") is not None:
+            self._HighIODiskSizeRange = DiskSizeRange()
+            self._HighIODiskSizeRange._deserialize(params.get("HighIODiskSizeRange"))
+        self._BssdAvailable = params.get("BssdAvailable")
+        self._BssdSoldOutReason = params.get("BssdSoldOutReason")
+        if params.get("BssdDiskSizeRange") is not None:
+            self._BssdDiskSizeRange = DiskSizeRange()
+            self._BssdDiskSizeRange._deserialize(params.get("BssdDiskSizeRange"))
+        if params.get("GpuInfo") is not None:
+            self._GpuInfo = GpuInfo()
+            self._GpuInfo._deserialize(params.get("GpuInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogstashNodeView(AbstractModel):
+    r"""Logstash节点维度视图数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: 节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: str
+        :param _NodeIp: 节点IP	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeIp: str
+        :param _NodeHttpIp: 节点HTTP IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeHttpIp: str
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _DiskSize: 节点总磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param _DiskUsage: 磁盘使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskUsage: float
+        :param _MemSize: 节点内存大小，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
+        :param _MemUsage: 内存使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemUsage: float
+        :param _JvmMemUsage: JVM内存使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JvmMemUsage: float
+        :param _CpuNum: 节点cpu个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuNum: int
+        :param _CpuUsage: cpu使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuUsage: float
+        """
+        self._NodeId = None
+        self._NodeIp = None
+        self._NodeHttpIp = None
+        self._Zone = None
+        self._DiskSize = None
+        self._DiskUsage = None
+        self._MemSize = None
+        self._MemUsage = None
+        self._JvmMemUsage = None
+        self._CpuNum = None
+        self._CpuUsage = None
+
+    @property
+    def NodeId(self):
+        r"""节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeIp(self):
+        r"""节点IP	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodeIp
+
+    @NodeIp.setter
+    def NodeIp(self, NodeIp):
+        self._NodeIp = NodeIp
+
+    @property
+    def NodeHttpIp(self):
+        r"""节点HTTP IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodeHttpIp
+
+    @NodeHttpIp.setter
+    def NodeHttpIp(self, NodeHttpIp):
+        self._NodeHttpIp = NodeHttpIp
+
+    @property
+    def Zone(self):
+        r"""可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def DiskSize(self):
+        r"""节点总磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskUsage(self):
+        r"""磁盘使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._DiskUsage
+
+    @DiskUsage.setter
+    def DiskUsage(self, DiskUsage):
+        self._DiskUsage = DiskUsage
+
+    @property
+    def MemSize(self):
+        r"""节点内存大小，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def MemUsage(self):
+        r"""内存使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._MemUsage
+
+    @MemUsage.setter
+    def MemUsage(self, MemUsage):
+        self._MemUsage = MemUsage
+
+    @property
+    def JvmMemUsage(self):
+        r"""JVM内存使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._JvmMemUsage
+
+    @JvmMemUsage.setter
+    def JvmMemUsage(self, JvmMemUsage):
+        self._JvmMemUsage = JvmMemUsage
+
+    @property
+    def CpuNum(self):
+        r"""节点cpu个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CpuNum
+
+    @CpuNum.setter
+    def CpuNum(self, CpuNum):
+        self._CpuNum = CpuNum
+
+    @property
+    def CpuUsage(self):
+        r"""cpu使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._CpuUsage
+
+    @CpuUsage.setter
+    def CpuUsage(self, CpuUsage):
+        self._CpuUsage = CpuUsage
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._NodeIp = params.get("NodeIp")
+        self._NodeHttpIp = params.get("NodeHttpIp")
+        self._Zone = params.get("Zone")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskUsage = params.get("DiskUsage")
+        self._MemSize = params.get("MemSize")
+        self._MemUsage = params.get("MemUsage")
+        self._JvmMemUsage = params.get("JvmMemUsage")
+        self._CpuNum = params.get("CpuNum")
+        self._CpuUsage = params.get("CpuUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogstashPipeline(AbstractModel):
     r"""Logstash管道信息
 
@@ -16532,6 +19563,92 @@ class LogstashPipelineInfo(AbstractModel):
         self._QueueCheckPointWrites = params.get("QueueCheckPointWrites")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogstashZoneResource(AbstractModel):
+    r"""Logstash可用区资源描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneName: 可用区名称
+        :type ZoneName: str
+        :param _Available: 是否可售
+        :type Available: bool
+        :param _NodeTypeList: 节点规格资源列表
+        :type NodeTypeList: list of LogstashNodeTypeResource
+        :param _AvailNodeFamilies: 可用节点机型族列表
+        :type AvailNodeFamilies: list of str
+        """
+        self._ZoneName = None
+        self._Available = None
+        self._NodeTypeList = None
+        self._AvailNodeFamilies = None
+
+    @property
+    def ZoneName(self):
+        r"""可用区名称
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def Available(self):
+        r"""是否可售
+        :rtype: bool
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def NodeTypeList(self):
+        r"""节点规格资源列表
+        :rtype: list of LogstashNodeTypeResource
+        """
+        return self._NodeTypeList
+
+    @NodeTypeList.setter
+    def NodeTypeList(self, NodeTypeList):
+        self._NodeTypeList = NodeTypeList
+
+    @property
+    def AvailNodeFamilies(self):
+        r"""可用节点机型族列表
+        :rtype: list of str
+        """
+        return self._AvailNodeFamilies
+
+    @AvailNodeFamilies.setter
+    def AvailNodeFamilies(self, AvailNodeFamilies):
+        self._AvailNodeFamilies = AvailNodeFamilies
+
+
+    def _deserialize(self, params):
+        self._ZoneName = params.get("ZoneName")
+        self._Available = params.get("Available")
+        if params.get("NodeTypeList") is not None:
+            self._NodeTypeList = []
+            for item in params.get("NodeTypeList"):
+                obj = LogstashNodeTypeResource()
+                obj._deserialize(item)
+                self._NodeTypeList.append(obj)
+        self._AvailNodeFamilies = params.get("AvailNodeFamilies")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17440,6 +20557,731 @@ class NodeInfo(AbstractModel):
         self._CpuNum = params.get("CpuNum")
         self._MemSize = params.get("MemSize")
         self._DiskEnhance = params.get("DiskEnhance")
+        if params.get("GpuInfo") is not None:
+            self._GpuInfo = GpuInfo()
+            self._GpuInfo._deserialize(params.get("GpuInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeTypeDiskSizeRange(AbstractModel):
+    r"""磁盘上下限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeType: 机器类型
+        :type NodeType: str
+        :param _Type: 节点类型
+        :type Type: str
+        :param _DiskType: 磁盘类型
+        :type DiskType: str
+        :param _Min: 磁盘最小值
+        :type Min: int
+        :param _Med: 中刻度值
+        :type Med: int
+        :param _Max: 磁盘最大值
+        :type Max: int
+        :param _DiskCountMin: 磁盘最小个数
+        :type DiskCountMin: int
+        :param _DiskCountMax: 磁盘最大个数
+        :type DiskCountMax: int
+        :param _DiskEncrypt: 是否加密盘
+        :type DiskEncrypt: int
+        :param _DiskEnhance: 是否增强
+        :type DiskEnhance: int
+        :param _IsLvm: 是否lvm
+        :type IsLvm: int
+        :param _IsLocalDiskType: 是否本地盘
+        :type IsLocalDiskType: bool
+        """
+        self._NodeType = None
+        self._Type = None
+        self._DiskType = None
+        self._Min = None
+        self._Med = None
+        self._Max = None
+        self._DiskCountMin = None
+        self._DiskCountMax = None
+        self._DiskEncrypt = None
+        self._DiskEnhance = None
+        self._IsLvm = None
+        self._IsLocalDiskType = None
+
+    @property
+    def NodeType(self):
+        r"""机器类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def Type(self):
+        r"""节点类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DiskType(self):
+        r"""磁盘类型
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def Min(self):
+        r"""磁盘最小值
+        :rtype: int
+        """
+        return self._Min
+
+    @Min.setter
+    def Min(self, Min):
+        self._Min = Min
+
+    @property
+    def Med(self):
+        r"""中刻度值
+        :rtype: int
+        """
+        return self._Med
+
+    @Med.setter
+    def Med(self, Med):
+        self._Med = Med
+
+    @property
+    def Max(self):
+        r"""磁盘最大值
+        :rtype: int
+        """
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+    @property
+    def DiskCountMin(self):
+        r"""磁盘最小个数
+        :rtype: int
+        """
+        return self._DiskCountMin
+
+    @DiskCountMin.setter
+    def DiskCountMin(self, DiskCountMin):
+        self._DiskCountMin = DiskCountMin
+
+    @property
+    def DiskCountMax(self):
+        r"""磁盘最大个数
+        :rtype: int
+        """
+        return self._DiskCountMax
+
+    @DiskCountMax.setter
+    def DiskCountMax(self, DiskCountMax):
+        self._DiskCountMax = DiskCountMax
+
+    @property
+    def DiskEncrypt(self):
+        r"""是否加密盘
+        :rtype: int
+        """
+        return self._DiskEncrypt
+
+    @DiskEncrypt.setter
+    def DiskEncrypt(self, DiskEncrypt):
+        self._DiskEncrypt = DiskEncrypt
+
+    @property
+    def DiskEnhance(self):
+        r"""是否增强
+        :rtype: int
+        """
+        return self._DiskEnhance
+
+    @DiskEnhance.setter
+    def DiskEnhance(self, DiskEnhance):
+        self._DiskEnhance = DiskEnhance
+
+    @property
+    def IsLvm(self):
+        r"""是否lvm
+        :rtype: int
+        """
+        return self._IsLvm
+
+    @IsLvm.setter
+    def IsLvm(self, IsLvm):
+        self._IsLvm = IsLvm
+
+    @property
+    def IsLocalDiskType(self):
+        r"""是否本地盘
+        :rtype: bool
+        """
+        return self._IsLocalDiskType
+
+    @IsLocalDiskType.setter
+    def IsLocalDiskType(self, IsLocalDiskType):
+        self._IsLocalDiskType = IsLocalDiskType
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._Type = params.get("Type")
+        self._DiskType = params.get("DiskType")
+        self._Min = params.get("Min")
+        self._Med = params.get("Med")
+        self._Max = params.get("Max")
+        self._DiskCountMin = params.get("DiskCountMin")
+        self._DiskCountMax = params.get("DiskCountMax")
+        self._DiskEncrypt = params.get("DiskEncrypt")
+        self._DiskEnhance = params.get("DiskEnhance")
+        self._IsLvm = params.get("IsLvm")
+        self._IsLocalDiskType = params.get("IsLocalDiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeTypeInfo(AbstractModel):
+    r"""节点规格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: CPU核数
+        :type Cpu: int
+        :param _Mem: 内存大小，单位GB
+        :type Mem: int
+        :param _Desc: 规格描述
+        :type Desc: str
+        """
+        self._Cpu = None
+        self._Mem = None
+        self._Desc = None
+
+    @property
+    def Cpu(self):
+        r"""CPU核数
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        r"""内存大小，单位GB
+        :rtype: int
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def Desc(self):
+        r"""规格描述
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeTypeResource(AbstractModel):
+    r"""节点规格资源描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeTypeName: 规格名称
+        :type NodeTypeName: str
+        :param _Available: 是否可售
+        :type Available: bool
+        :param _NodeTypeInfo: 规格信息
+        :type NodeTypeInfo: :class:`tencentcloud.es.v20180416.models.NodeTypeInfo`
+        :param _SsdAvailable: SSD盘是否可售
+        :type SsdAvailable: bool
+        :param _SsdDiskSizeRange: SSD磁盘取值范围
+        :type SsdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _SataAvailable: SATA盘是否可售
+        :type SataAvailable: bool
+        :param _SataDiskSizeRange: SATA磁盘取值范围
+        :type SataDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _SsdSoldOutReason: SSD机型售罄原因
+        :type SsdSoldOutReason: str
+        :param _SataSoldOutReason: SATA机型售罄原因
+        :type SataSoldOutReason: str
+        :param _LocalDiskInfo: 本地盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
+        :param _DiskCountRange: 云盘块数取值范围
+        :type DiskCountRange: :class:`tencentcloud.es.v20180416.models.DiskCountRange`
+        :param _HSsdAvailable: HSSD盘是否可售
+        :type HSsdAvailable: bool
+        :param _HSsdSoldOutReason: HSSD机型售罄原因
+        :type HSsdSoldOutReason: str
+        :param _HSsdDiskSizeRange: HSSD磁盘取值范围
+        :type HSsdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _ThroughputAvailable: Throughput盘是否可售
+        :type ThroughputAvailable: bool
+        :param _ThroughputSoldOutReason: Throughput机型售罄原因
+        :type ThroughputSoldOutReason: str
+        :param _ThroughputDiskSizeRange: Throughput磁盘取值范围
+        :type ThroughputDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _BigDataAvailable: BigData盘是否可售
+        :type BigDataAvailable: bool
+        :param _BigDataSoldOutReason: BigData盘售罄原因
+        :type BigDataSoldOutReason: str
+        :param _BigDataDiskSizeRange: BigData磁盘取值范围
+        :type BigDataDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _HighIOAvailable: HighIO盘是否可售
+        :type HighIOAvailable: bool
+        :param _HighIOSoldOutReason: HighIO盘售罄原因
+        :type HighIOSoldOutReason: str
+        :param _HighIODiskSizeRange: HighIO磁盘取值范围
+        :type HighIODiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _BssdAvailable: Bssd盘是否可售
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BssdAvailable: bool
+        :param _BssdSoldOutReason: Bssd盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BssdSoldOutReason: str
+        :param _BssdDiskSizeRange: Bssd盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BssdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _GpuInfo: 节点Gpu信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuInfo: :class:`tencentcloud.es.v20180416.models.GpuInfo`
+        """
+        self._NodeTypeName = None
+        self._Available = None
+        self._NodeTypeInfo = None
+        self._SsdAvailable = None
+        self._SsdDiskSizeRange = None
+        self._SataAvailable = None
+        self._SataDiskSizeRange = None
+        self._SsdSoldOutReason = None
+        self._SataSoldOutReason = None
+        self._LocalDiskInfo = None
+        self._DiskCountRange = None
+        self._HSsdAvailable = None
+        self._HSsdSoldOutReason = None
+        self._HSsdDiskSizeRange = None
+        self._ThroughputAvailable = None
+        self._ThroughputSoldOutReason = None
+        self._ThroughputDiskSizeRange = None
+        self._BigDataAvailable = None
+        self._BigDataSoldOutReason = None
+        self._BigDataDiskSizeRange = None
+        self._HighIOAvailable = None
+        self._HighIOSoldOutReason = None
+        self._HighIODiskSizeRange = None
+        self._BssdAvailable = None
+        self._BssdSoldOutReason = None
+        self._BssdDiskSizeRange = None
+        self._GpuInfo = None
+
+    @property
+    def NodeTypeName(self):
+        r"""规格名称
+        :rtype: str
+        """
+        return self._NodeTypeName
+
+    @NodeTypeName.setter
+    def NodeTypeName(self, NodeTypeName):
+        self._NodeTypeName = NodeTypeName
+
+    @property
+    def Available(self):
+        r"""是否可售
+        :rtype: bool
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def NodeTypeInfo(self):
+        r"""规格信息
+        :rtype: :class:`tencentcloud.es.v20180416.models.NodeTypeInfo`
+        """
+        return self._NodeTypeInfo
+
+    @NodeTypeInfo.setter
+    def NodeTypeInfo(self, NodeTypeInfo):
+        self._NodeTypeInfo = NodeTypeInfo
+
+    @property
+    def SsdAvailable(self):
+        r"""SSD盘是否可售
+        :rtype: bool
+        """
+        return self._SsdAvailable
+
+    @SsdAvailable.setter
+    def SsdAvailable(self, SsdAvailable):
+        self._SsdAvailable = SsdAvailable
+
+    @property
+    def SsdDiskSizeRange(self):
+        r"""SSD磁盘取值范围
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._SsdDiskSizeRange
+
+    @SsdDiskSizeRange.setter
+    def SsdDiskSizeRange(self, SsdDiskSizeRange):
+        self._SsdDiskSizeRange = SsdDiskSizeRange
+
+    @property
+    def SataAvailable(self):
+        r"""SATA盘是否可售
+        :rtype: bool
+        """
+        return self._SataAvailable
+
+    @SataAvailable.setter
+    def SataAvailable(self, SataAvailable):
+        self._SataAvailable = SataAvailable
+
+    @property
+    def SataDiskSizeRange(self):
+        r"""SATA磁盘取值范围
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._SataDiskSizeRange
+
+    @SataDiskSizeRange.setter
+    def SataDiskSizeRange(self, SataDiskSizeRange):
+        self._SataDiskSizeRange = SataDiskSizeRange
+
+    @property
+    def SsdSoldOutReason(self):
+        r"""SSD机型售罄原因
+        :rtype: str
+        """
+        return self._SsdSoldOutReason
+
+    @SsdSoldOutReason.setter
+    def SsdSoldOutReason(self, SsdSoldOutReason):
+        self._SsdSoldOutReason = SsdSoldOutReason
+
+    @property
+    def SataSoldOutReason(self):
+        r"""SATA机型售罄原因
+        :rtype: str
+        """
+        return self._SataSoldOutReason
+
+    @SataSoldOutReason.setter
+    def SataSoldOutReason(self, SataSoldOutReason):
+        self._SataSoldOutReason = SataSoldOutReason
+
+    @property
+    def LocalDiskInfo(self):
+        r"""本地盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
+        """
+        return self._LocalDiskInfo
+
+    @LocalDiskInfo.setter
+    def LocalDiskInfo(self, LocalDiskInfo):
+        self._LocalDiskInfo = LocalDiskInfo
+
+    @property
+    def DiskCountRange(self):
+        r"""云盘块数取值范围
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskCountRange`
+        """
+        return self._DiskCountRange
+
+    @DiskCountRange.setter
+    def DiskCountRange(self, DiskCountRange):
+        self._DiskCountRange = DiskCountRange
+
+    @property
+    def HSsdAvailable(self):
+        r"""HSSD盘是否可售
+        :rtype: bool
+        """
+        return self._HSsdAvailable
+
+    @HSsdAvailable.setter
+    def HSsdAvailable(self, HSsdAvailable):
+        self._HSsdAvailable = HSsdAvailable
+
+    @property
+    def HSsdSoldOutReason(self):
+        r"""HSSD机型售罄原因
+        :rtype: str
+        """
+        return self._HSsdSoldOutReason
+
+    @HSsdSoldOutReason.setter
+    def HSsdSoldOutReason(self, HSsdSoldOutReason):
+        self._HSsdSoldOutReason = HSsdSoldOutReason
+
+    @property
+    def HSsdDiskSizeRange(self):
+        r"""HSSD磁盘取值范围
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._HSsdDiskSizeRange
+
+    @HSsdDiskSizeRange.setter
+    def HSsdDiskSizeRange(self, HSsdDiskSizeRange):
+        self._HSsdDiskSizeRange = HSsdDiskSizeRange
+
+    @property
+    def ThroughputAvailable(self):
+        r"""Throughput盘是否可售
+        :rtype: bool
+        """
+        return self._ThroughputAvailable
+
+    @ThroughputAvailable.setter
+    def ThroughputAvailable(self, ThroughputAvailable):
+        self._ThroughputAvailable = ThroughputAvailable
+
+    @property
+    def ThroughputSoldOutReason(self):
+        r"""Throughput机型售罄原因
+        :rtype: str
+        """
+        return self._ThroughputSoldOutReason
+
+    @ThroughputSoldOutReason.setter
+    def ThroughputSoldOutReason(self, ThroughputSoldOutReason):
+        self._ThroughputSoldOutReason = ThroughputSoldOutReason
+
+    @property
+    def ThroughputDiskSizeRange(self):
+        r"""Throughput磁盘取值范围
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._ThroughputDiskSizeRange
+
+    @ThroughputDiskSizeRange.setter
+    def ThroughputDiskSizeRange(self, ThroughputDiskSizeRange):
+        self._ThroughputDiskSizeRange = ThroughputDiskSizeRange
+
+    @property
+    def BigDataAvailable(self):
+        r"""BigData盘是否可售
+        :rtype: bool
+        """
+        return self._BigDataAvailable
+
+    @BigDataAvailable.setter
+    def BigDataAvailable(self, BigDataAvailable):
+        self._BigDataAvailable = BigDataAvailable
+
+    @property
+    def BigDataSoldOutReason(self):
+        r"""BigData盘售罄原因
+        :rtype: str
+        """
+        return self._BigDataSoldOutReason
+
+    @BigDataSoldOutReason.setter
+    def BigDataSoldOutReason(self, BigDataSoldOutReason):
+        self._BigDataSoldOutReason = BigDataSoldOutReason
+
+    @property
+    def BigDataDiskSizeRange(self):
+        r"""BigData磁盘取值范围
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._BigDataDiskSizeRange
+
+    @BigDataDiskSizeRange.setter
+    def BigDataDiskSizeRange(self, BigDataDiskSizeRange):
+        self._BigDataDiskSizeRange = BigDataDiskSizeRange
+
+    @property
+    def HighIOAvailable(self):
+        r"""HighIO盘是否可售
+        :rtype: bool
+        """
+        return self._HighIOAvailable
+
+    @HighIOAvailable.setter
+    def HighIOAvailable(self, HighIOAvailable):
+        self._HighIOAvailable = HighIOAvailable
+
+    @property
+    def HighIOSoldOutReason(self):
+        r"""HighIO盘售罄原因
+        :rtype: str
+        """
+        return self._HighIOSoldOutReason
+
+    @HighIOSoldOutReason.setter
+    def HighIOSoldOutReason(self, HighIOSoldOutReason):
+        self._HighIOSoldOutReason = HighIOSoldOutReason
+
+    @property
+    def HighIODiskSizeRange(self):
+        r"""HighIO磁盘取值范围
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._HighIODiskSizeRange
+
+    @HighIODiskSizeRange.setter
+    def HighIODiskSizeRange(self, HighIODiskSizeRange):
+        self._HighIODiskSizeRange = HighIODiskSizeRange
+
+    @property
+    def BssdAvailable(self):
+        r"""Bssd盘是否可售
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._BssdAvailable
+
+    @BssdAvailable.setter
+    def BssdAvailable(self, BssdAvailable):
+        self._BssdAvailable = BssdAvailable
+
+    @property
+    def BssdSoldOutReason(self):
+        r"""Bssd盘售罄原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BssdSoldOutReason
+
+    @BssdSoldOutReason.setter
+    def BssdSoldOutReason(self, BssdSoldOutReason):
+        self._BssdSoldOutReason = BssdSoldOutReason
+
+    @property
+    def BssdDiskSizeRange(self):
+        r"""Bssd盘取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        """
+        return self._BssdDiskSizeRange
+
+    @BssdDiskSizeRange.setter
+    def BssdDiskSizeRange(self, BssdDiskSizeRange):
+        self._BssdDiskSizeRange = BssdDiskSizeRange
+
+    @property
+    def GpuInfo(self):
+        r"""节点Gpu信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.es.v20180416.models.GpuInfo`
+        """
+        return self._GpuInfo
+
+    @GpuInfo.setter
+    def GpuInfo(self, GpuInfo):
+        self._GpuInfo = GpuInfo
+
+
+    def _deserialize(self, params):
+        self._NodeTypeName = params.get("NodeTypeName")
+        self._Available = params.get("Available")
+        if params.get("NodeTypeInfo") is not None:
+            self._NodeTypeInfo = NodeTypeInfo()
+            self._NodeTypeInfo._deserialize(params.get("NodeTypeInfo"))
+        self._SsdAvailable = params.get("SsdAvailable")
+        if params.get("SsdDiskSizeRange") is not None:
+            self._SsdDiskSizeRange = DiskSizeRange()
+            self._SsdDiskSizeRange._deserialize(params.get("SsdDiskSizeRange"))
+        self._SataAvailable = params.get("SataAvailable")
+        if params.get("SataDiskSizeRange") is not None:
+            self._SataDiskSizeRange = DiskSizeRange()
+            self._SataDiskSizeRange._deserialize(params.get("SataDiskSizeRange"))
+        self._SsdSoldOutReason = params.get("SsdSoldOutReason")
+        self._SataSoldOutReason = params.get("SataSoldOutReason")
+        if params.get("LocalDiskInfo") is not None:
+            self._LocalDiskInfo = LocalDiskInfo()
+            self._LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
+        if params.get("DiskCountRange") is not None:
+            self._DiskCountRange = DiskCountRange()
+            self._DiskCountRange._deserialize(params.get("DiskCountRange"))
+        self._HSsdAvailable = params.get("HSsdAvailable")
+        self._HSsdSoldOutReason = params.get("HSsdSoldOutReason")
+        if params.get("HSsdDiskSizeRange") is not None:
+            self._HSsdDiskSizeRange = DiskSizeRange()
+            self._HSsdDiskSizeRange._deserialize(params.get("HSsdDiskSizeRange"))
+        self._ThroughputAvailable = params.get("ThroughputAvailable")
+        self._ThroughputSoldOutReason = params.get("ThroughputSoldOutReason")
+        if params.get("ThroughputDiskSizeRange") is not None:
+            self._ThroughputDiskSizeRange = DiskSizeRange()
+            self._ThroughputDiskSizeRange._deserialize(params.get("ThroughputDiskSizeRange"))
+        self._BigDataAvailable = params.get("BigDataAvailable")
+        self._BigDataSoldOutReason = params.get("BigDataSoldOutReason")
+        if params.get("BigDataDiskSizeRange") is not None:
+            self._BigDataDiskSizeRange = DiskSizeRange()
+            self._BigDataDiskSizeRange._deserialize(params.get("BigDataDiskSizeRange"))
+        self._HighIOAvailable = params.get("HighIOAvailable")
+        self._HighIOSoldOutReason = params.get("HighIOSoldOutReason")
+        if params.get("HighIODiskSizeRange") is not None:
+            self._HighIODiskSizeRange = DiskSizeRange()
+            self._HighIODiskSizeRange._deserialize(params.get("HighIODiskSizeRange"))
+        self._BssdAvailable = params.get("BssdAvailable")
+        self._BssdSoldOutReason = params.get("BssdSoldOutReason")
+        if params.get("BssdDiskSizeRange") is not None:
+            self._BssdDiskSizeRange = DiskSizeRange()
+            self._BssdDiskSizeRange._deserialize(params.get("BssdDiskSizeRange"))
         if params.get("GpuInfo") is not None:
             self._GpuInfo = GpuInfo()
             self._GpuInfo._deserialize(params.get("GpuInfo"))
@@ -18927,23 +22769,82 @@ class QueryIpTraceLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class RequestInstancesByGetRequest(AbstractModel):
-    r"""RequestInstancesByGet请求参数结构体
-
-    """
-
-
-class RequestInstancesByGetResponse(AbstractModel):
-    r"""RequestInstancesByGet返回参数结构体
+class QueryZoneResourceForLogstashRequest(AbstractModel):
+    r"""QueryZoneResourceForLogstash请求参数结构体
 
     """
 
     def __init__(self):
         r"""
+        :param _Zones: 要检查的可用区
+        :type Zones: list of str
+        :param _ChargeType: 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>
+        :type ChargeType: str
+        """
+        self._Zones = None
+        self._ChargeType = None
+
+    @property
+    def Zones(self):
+        r"""要检查的可用区
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def ChargeType(self):
+        r"""计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+
+    def _deserialize(self, params):
+        self._Zones = params.get("Zones")
+        self._ChargeType = params.get("ChargeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryZoneResourceForLogstashResponse(AbstractModel):
+    r"""QueryZoneResourceForLogstash返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneResources: 可用区资源描述列表
+        :type ZoneResources: list of LogstashZoneResource
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ZoneResources = None
         self._RequestId = None
+
+    @property
+    def ZoneResources(self):
+        r"""可用区资源描述列表
+        :rtype: list of LogstashZoneResource
+        """
+        return self._ZoneResources
+
+    @ZoneResources.setter
+    def ZoneResources(self, ZoneResources):
+        self._ZoneResources = ZoneResources
 
     @property
     def RequestId(self):
@@ -18958,6 +22859,350 @@ class RequestInstancesByGetResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ZoneResources") is not None:
+            self._ZoneResources = []
+            for item in params.get("ZoneResources"):
+                obj = LogstashZoneResource()
+                obj._deserialize(item)
+                self._ZoneResources.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class QueryZoneResourceRequest(AbstractModel):
+    r"""QueryZoneResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zones: 要检查的可用区
+        :type Zones: list of str
+        :param _OptType: 操作类型（create数据节点创建，masterCreate专用主节点创建，scaleUp数据节点纵向扩容，masterAdd添加专用主节点，masterScaleUp专用主节点纵向扩容）
+        :type OptType: str
+        :param _InstanceId: 实例ID(变配检查需要传递)
+        :type InstanceId: str
+        :param _DeployMode: 集群部署方式
+<li>0, 单可用区部署</li>
+<li>1, 多可用区部署</li>
+        :type DeployMode: int
+        :param _ChargeType: 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>
+        :type ChargeType: str
+        :param _EsVersion: ES版本号如5.6.4，6.4.3，6.8.2，7.5.1
+        :type EsVersion: str
+        :param _CdcId: cdcId，使用cdc子网时传递
+        :type CdcId: str
+        """
+        self._Zones = None
+        self._OptType = None
+        self._InstanceId = None
+        self._DeployMode = None
+        self._ChargeType = None
+        self._EsVersion = None
+        self._CdcId = None
+
+    @property
+    def Zones(self):
+        r"""要检查的可用区
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def OptType(self):
+        r"""操作类型（create数据节点创建，masterCreate专用主节点创建，scaleUp数据节点纵向扩容，masterAdd添加专用主节点，masterScaleUp专用主节点纵向扩容）
+        :rtype: str
+        """
+        return self._OptType
+
+    @OptType.setter
+    def OptType(self, OptType):
+        self._OptType = OptType
+
+    @property
+    def InstanceId(self):
+        r"""实例ID(变配检查需要传递)
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeployMode(self):
+        r"""集群部署方式
+<li>0, 单可用区部署</li>
+<li>1, 多可用区部署</li>
+        :rtype: int
+        """
+        return self._DeployMode
+
+    @DeployMode.setter
+    def DeployMode(self, DeployMode):
+        self._DeployMode = DeployMode
+
+    @property
+    def ChargeType(self):
+        r"""计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def EsVersion(self):
+        r"""ES版本号如5.6.4，6.4.3，6.8.2，7.5.1
+        :rtype: str
+        """
+        return self._EsVersion
+
+    @EsVersion.setter
+    def EsVersion(self, EsVersion):
+        self._EsVersion = EsVersion
+
+    @property
+    def CdcId(self):
+        r"""cdcId，使用cdc子网时传递
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+
+    def _deserialize(self, params):
+        self._Zones = params.get("Zones")
+        self._OptType = params.get("OptType")
+        self._InstanceId = params.get("InstanceId")
+        self._DeployMode = params.get("DeployMode")
+        self._ChargeType = params.get("ChargeType")
+        self._EsVersion = params.get("EsVersion")
+        self._CdcId = params.get("CdcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryZoneResourceResponse(AbstractModel):
+    r"""QueryZoneResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneResources: 可用区资源描述列表
+        :type ZoneResources: list of ZoneResource
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneResources = None
+        self._RequestId = None
+
+    @property
+    def ZoneResources(self):
+        r"""可用区资源描述列表
+        :rtype: list of ZoneResource
+        """
+        return self._ZoneResources
+
+    @ZoneResources.setter
+    def ZoneResources(self, ZoneResources):
+        self._ZoneResources = ZoneResources
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneResources") is not None:
+            self._ZoneResources = []
+            for item in params.get("ZoneResources"):
+                obj = ZoneResource()
+                obj._deserialize(item)
+                self._ZoneResources.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class RegionsData(AbstractModel):
+    r"""支持的地域名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域英文名
+        :type Region: str
+        :param _RegionName: 地域中文名
+        :type RegionName: str
+        """
+        self._Region = None
+        self._RegionName = None
+
+    @property
+    def Region(self):
+        r"""地域英文名
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionName(self):
+        r"""地域中文名
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RequestInstancesByGetRequest(AbstractModel):
+    r"""RequestInstancesByGet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>集群id</p>
+        :type InstanceId: str
+        :param _Uri: <p>请求路径</p>
+        :type Uri: str
+        :param _Caller: <p>调用方</p>
+        :type Caller: str
+        """
+        self._InstanceId = None
+        self._Uri = None
+        self._Caller = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Uri(self):
+        r"""<p>请求路径</p>
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def Caller(self):
+        r"""<p>调用方</p>
+        :rtype: str
+        """
+        return self._Caller
+
+    @Caller.setter
+    def Caller(self, Caller):
+        self._Caller = Caller
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Uri = params.get("Uri")
+        self._Caller = params.get("Caller")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RequestInstancesByGetResponse(AbstractModel):
+    r"""RequestInstancesByGet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Detail: <p>集群返回信息</p>
+        :type Detail: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def Detail(self):
+        r"""<p>集群返回信息</p>
+        :rtype: str
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Detail = params.get("Detail")
         self._RequestId = params.get("RequestId")
 
 
@@ -25057,6 +29302,92 @@ class ZoneDetail(AbstractModel):
         self._Zone = params.get("Zone")
         self._SubnetId = params.get("SubnetId")
         self._Hidden = params.get("Hidden")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneResource(AbstractModel):
+    r"""可用区资源描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneName: 可用区名称
+        :type ZoneName: str
+        :param _Available: 是否可售
+        :type Available: bool
+        :param _NodeTypeList: 节点规格资源列表
+        :type NodeTypeList: list of NodeTypeResource
+        :param _AvailNodeFamilies: 可用节点机型族列表
+        :type AvailNodeFamilies: list of str
+        """
+        self._ZoneName = None
+        self._Available = None
+        self._NodeTypeList = None
+        self._AvailNodeFamilies = None
+
+    @property
+    def ZoneName(self):
+        r"""可用区名称
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def Available(self):
+        r"""是否可售
+        :rtype: bool
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def NodeTypeList(self):
+        r"""节点规格资源列表
+        :rtype: list of NodeTypeResource
+        """
+        return self._NodeTypeList
+
+    @NodeTypeList.setter
+    def NodeTypeList(self, NodeTypeList):
+        self._NodeTypeList = NodeTypeList
+
+    @property
+    def AvailNodeFamilies(self):
+        r"""可用节点机型族列表
+        :rtype: list of str
+        """
+        return self._AvailNodeFamilies
+
+    @AvailNodeFamilies.setter
+    def AvailNodeFamilies(self, AvailNodeFamilies):
+        self._AvailNodeFamilies = AvailNodeFamilies
+
+
+    def _deserialize(self, params):
+        self._ZoneName = params.get("ZoneName")
+        self._Available = params.get("Available")
+        if params.get("NodeTypeList") is not None:
+            self._NodeTypeList = []
+            for item in params.get("NodeTypeList"):
+                obj = NodeTypeResource()
+                obj._deserialize(item)
+                self._NodeTypeList.append(obj)
+        self._AvailNodeFamilies = params.get("AvailNodeFamilies")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

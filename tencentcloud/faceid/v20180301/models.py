@@ -9107,10 +9107,9 @@ class MobileNetworkTimeVerificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mobile: 手机号码。
+        :param _Mobile: <p>手机号码。</p>
         :type Mobile: str
-        :param _Encryption: 敏感数据加密信息。
-- 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: <p>敏感数据加密信息。</p><ul><li>对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._Mobile = None
@@ -9118,7 +9117,7 @@ class MobileNetworkTimeVerificationRequest(AbstractModel):
 
     @property
     def Mobile(self):
-        r"""手机号码。
+        r"""<p>手机号码。</p>
         :rtype: str
         """
         return self._Mobile
@@ -9129,8 +9128,7 @@ class MobileNetworkTimeVerificationRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。
-- 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""<p>敏感数据加密信息。</p><ul><li>对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -9162,22 +9160,11 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 认证结果码，收费情况如下。
-- 收费结果码：
-0: 成功。
--2: 手机号不存在。
--3: 手机号存在，但无法查询到在网时长。
-
-- 不收费结果码：
--1: 手机号格式不正确。
--4: 验证中心服务繁忙。
--5：认证次数超过当日限制，请次日重试。
+        :param _Result: <p>认证结果码，收费情况如下。- 收费结果码：0: 成功。-2: 手机号不存在。-3: 手机号存在，但无法查询到在网时长。- 不收费结果码：-1: 手机号格式不正确。-4: 验证中心服务繁忙。-5：认证次数超过当日限制，请次日重试。-13：该号段不支持验证</p>
         :type Result: str
-        :param _Description: 业务结果描述。
+        :param _Description: <p>业务结果描述。</p>
         :type Description: str
-        :param _Range: 在网时长区间。
-- 格式为[a,b)，表示在网时长在a个月以上，b个月以下。
-- 若b为+时表示没有上限。
+        :param _Range: <p>在网时长区间。</p><ul><li>格式为[a,b)，表示在网时长在a个月以上，b个月以下。</li><li>若b为+时表示没有上限。</li></ul>
         :type Range: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9189,16 +9176,7 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""认证结果码，收费情况如下。
-- 收费结果码：
-0: 成功。
--2: 手机号不存在。
--3: 手机号存在，但无法查询到在网时长。
-
-- 不收费结果码：
--1: 手机号格式不正确。
--4: 验证中心服务繁忙。
--5：认证次数超过当日限制，请次日重试。
+        r"""<p>认证结果码，收费情况如下。- 收费结果码：0: 成功。-2: 手机号不存在。-3: 手机号存在，但无法查询到在网时长。- 不收费结果码：-1: 手机号格式不正确。-4: 验证中心服务繁忙。-5：认证次数超过当日限制，请次日重试。-13：该号段不支持验证</p>
         :rtype: str
         """
         return self._Result
@@ -9209,7 +9187,7 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""业务结果描述。
+        r"""<p>业务结果描述。</p>
         :rtype: str
         """
         return self._Description
@@ -9220,9 +9198,7 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
 
     @property
     def Range(self):
-        r"""在网时长区间。
-- 格式为[a,b)，表示在网时长在a个月以上，b个月以下。
-- 若b为+时表示没有上限。
+        r"""<p>在网时长区间。</p><ul><li>格式为[a,b)，表示在网时长在a个月以上，b个月以下。</li><li>若b为+时表示没有上限。</li></ul>
         :rtype: str
         """
         return self._Range
@@ -9310,7 +9286,7 @@ class MobileStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: <p>认证结果码，收费情况如下。</p><ul><li><p>收费结果码：<br>0：成功。</p></li><li><p>不收费结果码：<br>-1：未查询到结果。<br>-2：手机号格式不正确。<br>-3：验证中心服务繁忙。<br>-4：认证次数超过当日限制，请次日重试。</p></li></ul>
+        :param _Result: <p>认证结果码，收费情况如下。- 收费结果码：0：成功。- 不收费结果码：-1：未查询到结果。-2：手机号格式不正确。-3：验证中心服务繁忙。-4：认证次数超过当日限制，请次日重试。-13：该号段不支持验证</p>
         :type Result: str
         :param _Description: <p>业务结果描述。</p>
         :type Description: str
@@ -9326,7 +9302,7 @@ class MobileStatusResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""<p>认证结果码，收费情况如下。</p><ul><li><p>收费结果码：<br>0：成功。</p></li><li><p>不收费结果码：<br>-1：未查询到结果。<br>-2：手机号格式不正确。<br>-3：验证中心服务繁忙。<br>-4：认证次数超过当日限制，请次日重试。</p></li></ul>
+        r"""<p>认证结果码，收费情况如下。- 收费结果码：0：成功。- 不收费结果码：-1：未查询到结果。-2：手机号格式不正确。-3：验证中心服务繁忙。-4：认证次数超过当日限制，请次日重试。-13：该号段不支持验证</p>
         :rtype: str
         """
         return self._Result
@@ -9829,14 +9805,13 @@ class PhoneVerificationCMCCRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdCard: 身份证号。
+        :param _IdCard: <p>身份证号。</p>
         :type IdCard: str
-        :param _Name: 姓名。
+        :param _Name: <p>姓名。</p>
         :type Name: str
-        :param _Phone: 手机号。
+        :param _Phone: <p>手机号。</p>
         :type Phone: str
-        :param _Encryption: 敏感数据加密信息。
-- 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._IdCard = None
@@ -9846,7 +9821,7 @@ class PhoneVerificationCMCCRequest(AbstractModel):
 
     @property
     def IdCard(self):
-        r"""身份证号。
+        r"""<p>身份证号。</p>
         :rtype: str
         """
         return self._IdCard
@@ -9857,7 +9832,7 @@ class PhoneVerificationCMCCRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""姓名。
+        r"""<p>姓名。</p>
         :rtype: str
         """
         return self._Name
@@ -9868,7 +9843,7 @@ class PhoneVerificationCMCCRequest(AbstractModel):
 
     @property
     def Phone(self):
-        r"""手机号。
+        r"""<p>手机号。</p>
         :rtype: str
         """
         return self._Phone
@@ -9879,8 +9854,7 @@ class PhoneVerificationCMCCRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。
-- 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""<p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -9914,22 +9888,11 @@ class PhoneVerificationCMCCResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 认证结果码，收费情况如下。
-- 收费结果码：
-0: 认证通过。
--4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
-
-- 不收费结果码：
--6: 手机号码不合法。
--7: 身份证号码有误。
--8: 姓名校验不通过。
--9: 没有记录。
--11: 验证中心服务繁忙。
+        :param _Result: <p>认证结果码，收费情况如下。- 收费结果码：0: 认证通过。-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。- 不收费结果码：-6: 手机号码不合法。-7: 身份证号码有误。-8: 姓名校验不通过。-9: 没有记录。-11: 验证中心服务繁忙。-13：该号段不支持验证</p>
         :type Result: str
-        :param _Isp: 运营商名称。
-- 取值范围为["移动","联通","电信",""]。
+        :param _Isp: <p>运营商名称。</p><ul><li>取值范围为[&quot;移动&quot;,&quot;联通&quot;,&quot;电信&quot;,&quot;&quot;]。</li></ul>
         :type Isp: str
-        :param _Description: 业务结果描述。
+        :param _Description: <p>业务结果描述。</p>
         :type Description: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9941,17 +9904,7 @@ class PhoneVerificationCMCCResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""认证结果码，收费情况如下。
-- 收费结果码：
-0: 认证通过。
--4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
-
-- 不收费结果码：
--6: 手机号码不合法。
--7: 身份证号码有误。
--8: 姓名校验不通过。
--9: 没有记录。
--11: 验证中心服务繁忙。
+        r"""<p>认证结果码，收费情况如下。- 收费结果码：0: 认证通过。-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。- 不收费结果码：-6: 手机号码不合法。-7: 身份证号码有误。-8: 姓名校验不通过。-9: 没有记录。-11: 验证中心服务繁忙。-13：该号段不支持验证</p>
         :rtype: str
         """
         return self._Result
@@ -9962,8 +9915,7 @@ class PhoneVerificationCMCCResponse(AbstractModel):
 
     @property
     def Isp(self):
-        r"""运营商名称。
-- 取值范围为["移动","联通","电信",""]。
+        r"""<p>运营商名称。</p><ul><li>取值范围为[&quot;移动&quot;,&quot;联通&quot;,&quot;电信&quot;,&quot;&quot;]。</li></ul>
         :rtype: str
         """
         return self._Isp
@@ -9974,7 +9926,7 @@ class PhoneVerificationCMCCResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""业务结果描述。
+        r"""<p>业务结果描述。</p>
         :rtype: str
         """
         return self._Description
@@ -10009,14 +9961,13 @@ class PhoneVerificationCTCCRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdCard: 身份证号。
+        :param _IdCard: <p>身份证号。</p>
         :type IdCard: str
-        :param _Name: 姓名。
+        :param _Name: <p>姓名。</p>
         :type Name: str
-        :param _Phone: 手机号。
+        :param _Phone: <p>手机号。</p>
         :type Phone: str
-        :param _Encryption: 敏感数据加密信息。
-- 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._IdCard = None
@@ -10026,7 +9977,7 @@ class PhoneVerificationCTCCRequest(AbstractModel):
 
     @property
     def IdCard(self):
-        r"""身份证号。
+        r"""<p>身份证号。</p>
         :rtype: str
         """
         return self._IdCard
@@ -10037,7 +9988,7 @@ class PhoneVerificationCTCCRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""姓名。
+        r"""<p>姓名。</p>
         :rtype: str
         """
         return self._Name
@@ -10048,7 +9999,7 @@ class PhoneVerificationCTCCRequest(AbstractModel):
 
     @property
     def Phone(self):
-        r"""手机号。
+        r"""<p>手机号。</p>
         :rtype: str
         """
         return self._Phone
@@ -10059,8 +10010,7 @@ class PhoneVerificationCTCCRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。
-- 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""<p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -10094,22 +10044,11 @@ class PhoneVerificationCTCCResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 认证结果码，收费情况如下。
-- 收费结果码：
-0: 认证通过。
--4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
-
-- 不收费结果码：
--6: 手机号码不合法。
--7: 身份证号码有误。
--8: 姓名校验不通过。
--9: 没有记录。
--11: 验证中心服务繁忙。
+        :param _Result: <p>认证结果码，收费情况如下。- 收费结果码：0: 认证通过。-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。- 不收费结果码：-6: 手机号码不合法。-7: 身份证号码有误。-8: 姓名校验不通过。-9: 没有记录。-11: 验证中心服务繁忙。-13：该号段不支持验证</p>
         :type Result: str
-        :param _Isp: 运营商名称。
-- 取值范围为["移动","联通","电信",""]。
+        :param _Isp: <p>运营商名称。</p><ul><li>取值范围为[&quot;移动&quot;,&quot;联通&quot;,&quot;电信&quot;,&quot;&quot;]。</li></ul>
         :type Isp: str
-        :param _Description: 业务结果描述。
+        :param _Description: <p>业务结果描述。</p>
         :type Description: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10121,17 +10060,7 @@ class PhoneVerificationCTCCResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""认证结果码，收费情况如下。
-- 收费结果码：
-0: 认证通过。
--4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
-
-- 不收费结果码：
--6: 手机号码不合法。
--7: 身份证号码有误。
--8: 姓名校验不通过。
--9: 没有记录。
--11: 验证中心服务繁忙。
+        r"""<p>认证结果码，收费情况如下。- 收费结果码：0: 认证通过。-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。- 不收费结果码：-6: 手机号码不合法。-7: 身份证号码有误。-8: 姓名校验不通过。-9: 没有记录。-11: 验证中心服务繁忙。-13：该号段不支持验证</p>
         :rtype: str
         """
         return self._Result
@@ -10142,8 +10071,7 @@ class PhoneVerificationCTCCResponse(AbstractModel):
 
     @property
     def Isp(self):
-        r"""运营商名称。
-- 取值范围为["移动","联通","电信",""]。
+        r"""<p>运营商名称。</p><ul><li>取值范围为[&quot;移动&quot;,&quot;联通&quot;,&quot;电信&quot;,&quot;&quot;]。</li></ul>
         :rtype: str
         """
         return self._Isp
@@ -10154,7 +10082,7 @@ class PhoneVerificationCTCCResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""业务结果描述。
+        r"""<p>业务结果描述。</p>
         :rtype: str
         """
         return self._Description
@@ -10189,14 +10117,13 @@ class PhoneVerificationCUCCRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdCard: 身份证号。
+        :param _IdCard: <p>身份证号。</p>
         :type IdCard: str
-        :param _Name: 姓名。
+        :param _Name: <p>姓名。</p>
         :type Name: str
-        :param _Phone: 手机号。
+        :param _Phone: <p>手机号。</p>
         :type Phone: str
-        :param _Encryption: 敏感数据加密信息。
-- 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._IdCard = None
@@ -10206,7 +10133,7 @@ class PhoneVerificationCUCCRequest(AbstractModel):
 
     @property
     def IdCard(self):
-        r"""身份证号。
+        r"""<p>身份证号。</p>
         :rtype: str
         """
         return self._IdCard
@@ -10217,7 +10144,7 @@ class PhoneVerificationCUCCRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""姓名。
+        r"""<p>姓名。</p>
         :rtype: str
         """
         return self._Name
@@ -10228,7 +10155,7 @@ class PhoneVerificationCUCCRequest(AbstractModel):
 
     @property
     def Phone(self):
-        r"""手机号。
+        r"""<p>手机号。</p>
         :rtype: str
         """
         return self._Phone
@@ -10239,8 +10166,7 @@ class PhoneVerificationCUCCRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。
-- 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""<p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -10274,22 +10200,11 @@ class PhoneVerificationCUCCResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 认证结果码，收费情况如下。
-- 收费结果码：
-0: 认证通过。
--4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
-
-- 不收费结果码：
--6: 手机号码不合法。
--7: 身份证号码有误。
--8: 姓名校验不通过。
--9: 没有记录。
--11: 验证中心服务繁忙。
+        :param _Result: <p>认证结果码，收费情况如下。- 收费结果码：0: 认证通过。-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。- 不收费结果码：-6: 手机号码不合法。-7: 身份证号码有误。-8: 姓名校验不通过。-9: 没有记录。-11: 验证中心服务繁忙。-13：该号段不支持验证</p>
         :type Result: str
-        :param _Isp: 运营商名称。
-- 取值范围为["移动","联通","电信",""]。
+        :param _Isp: <p>运营商名称。</p><ul><li>取值范围为[&quot;移动&quot;,&quot;联通&quot;,&quot;电信&quot;,&quot;&quot;]。</li></ul>
         :type Isp: str
-        :param _Description: 业务结果描述。
+        :param _Description: <p>业务结果描述。</p>
         :type Description: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10301,17 +10216,7 @@ class PhoneVerificationCUCCResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""认证结果码，收费情况如下。
-- 收费结果码：
-0: 认证通过。
--4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
-
-- 不收费结果码：
--6: 手机号码不合法。
--7: 身份证号码有误。
--8: 姓名校验不通过。
--9: 没有记录。
--11: 验证中心服务繁忙。
+        r"""<p>认证结果码，收费情况如下。- 收费结果码：0: 认证通过。-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。- 不收费结果码：-6: 手机号码不合法。-7: 身份证号码有误。-8: 姓名校验不通过。-9: 没有记录。-11: 验证中心服务繁忙。-13：该号段不支持验证</p>
         :rtype: str
         """
         return self._Result
@@ -10322,8 +10227,7 @@ class PhoneVerificationCUCCResponse(AbstractModel):
 
     @property
     def Isp(self):
-        r"""运营商名称。
-- 取值范围为["移动","联通","电信",""]。
+        r"""<p>运营商名称。</p><ul><li>取值范围为[&quot;移动&quot;,&quot;联通&quot;,&quot;电信&quot;,&quot;&quot;]。</li></ul>
         :rtype: str
         """
         return self._Isp
@@ -10334,7 +10238,7 @@ class PhoneVerificationCUCCResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""业务结果描述。
+        r"""<p>业务结果描述。</p>
         :rtype: str
         """
         return self._Description

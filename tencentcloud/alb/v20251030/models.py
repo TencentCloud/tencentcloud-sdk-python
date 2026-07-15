@@ -8382,67 +8382,34 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HealthCheckTemplateId: 健康检查模板 ID，格式为 hct- 后接字母数字。
+        :param _HealthCheckTemplateId: <p>健康检查模板 ID，格式为 hct- 后接字母数字。</p>
         :type HealthCheckTemplateId: str
-        :param _DryRun: 是否预览此次请求。
-- **false**（默认）：发送普通请求，直接修改健康检查模板。
-- **true**：发送预览请求，检查修改健康检查模板的参数、格式、业务限制等是否符合要求。
+        :param _DryRun: <p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接修改健康检查模板。</li><li><strong>true</strong>：发送预览请求，检查修改健康检查模板的参数、格式、业务限制等是否符合要求。</li></ul>
         :type DryRun: bool
-        :param _HealthCheckCodes: 健康检查状态码。取值：
-- 当健康检查协议为**HTTP/HTTPS**时：
-	- **http_1xx**
-	- **http_2xx**（默认值）
-	-  **http_3xx**
-	-  **http_4xx**
-	-  **http_5xx**
-- 当健康检查协议为**GRPC/GRPCS**时：默认值为**12**，数值范围为**0-99**，输入值可为数值、多个数值或者范围以及相互组合，如：
-	- **"20"**
-	- **"0-99"**
+        :param _HealthCheckCodes: <p>健康检查状态码。取值：</p><ul><li>当健康检查协议为<strong>HTTP/HTTPS</strong>时：<ul><li><strong>http_1xx</strong></li><li><strong>http_2xx</strong>（默认值）</li><li><strong>http_3xx</strong></li><li><strong>http_4xx</strong></li><li><strong>http_5xx</strong></li></ul></li><li>当健康检查协议为<strong>GRPC/GRPCS</strong>时：默认值为<strong>12</strong>，数值范围为<strong>0-99</strong>，输入值可为数值、多个数值或者范围以及相互组合，如：<ul><li><strong>&quot;20&quot;</strong></li><li><strong>&quot;0-99&quot;</strong></li></ul></li></ul>
         :type HealthCheckCodes: list of str
-        :param _HealthCheckHealthyThreshold: 判定后端服务健康的阈值，当健康检查连续成功多少次后，后端服务的状态由**不健康**变为**健康**。
-取值范围：**2**-**10**。
-默认值：**2**。
+        :param _HealthCheckHealthyThreshold: <p>判定后端服务健康的阈值，当健康检查连续成功多少次后，后端服务的状态由<strong>不健康</strong>变为<strong>健康</strong>。<br>取值范围：<strong>2</strong>-<strong>10</strong>。<br>默认值：<strong>2</strong>。</p>
         :type HealthCheckHealthyThreshold: int
-        :param _HealthCheckHost: 健康检查域名。
-长度限制为 **1-255** 个字符。
-可包含小写字母、数字、短划线（-）和半角句号（.）。
-
-> 仅当 **HealthCheckProtocol** 设置为 **HTTP/HTTPS/GRPC/GRPCS** 时，该参数生效。
+        :param _HealthCheckHost: <p>健康检查域名。<br>长度限制为 <strong>1-255</strong> 个字符。<br>可包含小写字母、数字、短划线（-）和半角句号（.）。</p><blockquote><p>仅当 <strong>HealthCheckProtocol</strong> 设置为 <strong>HTTP/HTTPS/GRPC/GRPCS</strong> 时，该参数生效。</p></blockquote>
         :type HealthCheckHost: str
-        :param _HealthCheckHttpVersion: 健康检查 HTTP 协议版本，取值：
-- **HTTP1.1**（默认）
-- **HTTP1.0** 
-> 仅当**HealthCheckProtocol**设置为**HTTP** 或 **HTTPS** 时，该参数生效。
+        :param _HealthCheckHttpVersion: <p>健康检查 HTTP 协议版本，取值：</p><ul><li><strong>HTTP1.1</strong>（默认）</li><li><strong>HTTP1.0</strong> <blockquote><p>仅当<strong>HealthCheckProtocol</strong>设置为<strong>HTTP</strong> 或 <strong>HTTPS</strong> 时，该参数生效。</p></blockquote></li></ul>
         :type HealthCheckHttpVersion: str
-        :param _HealthCheckInterval: 健康检查的时间间隔。单位：秒。 取值范围：**2**-**300**。 默认值：**5**。
+        :param _HealthCheckInterval: <p>健康检查的时间间隔。单位：秒。 取值范围：<strong>2</strong>-<strong>300</strong>。 默认值：<strong>5</strong>。</p>
         :type HealthCheckInterval: int
-        :param _HealthCheckMethod: 健康检查方法，取值： - **GET** - **HEAD**（默认值） 
-> 仅当**HealthCheckProtocol**设置为**HTTP** 或 **HTTPS** 时，该参数生效。
+        :param _HealthCheckMethod: <p>健康检查方法，取值： - <strong>GET</strong> - <strong>HEAD</strong>（默认值） </p><blockquote><p>仅当<strong>HealthCheckProtocol</strong>设置为<strong>HTTP</strong> 或 <strong>HTTPS</strong> 时，该参数生效。</p></blockquote>
         :type HealthCheckMethod: str
-        :param _HealthCheckPath: 健康检查的转发规则路径。 长度为 **1-80** 个字符，只能使用字母、数字、字符`-/.%?#&=`以及扩展字符`_;~!（)*[]@$^:',+`。 URL 必须以正斜线（/）开头。 
-> 仅当**HealthCheckProtocol**为**HTTP/HTTPS/GRPC/GRPCS**时，转发规则路径参数生效。
+        :param _HealthCheckPath: <p>健康检查的转发规则路径。 长度为 <strong>1-80</strong> 个字符，只能使用字母、数字、字符<code>-/.%?#&amp;=</code>以及扩展字符<code>_;~!（)*[]@$^:&#39;,+</code>。 URL 必须以正斜线（/）开头。 </p><blockquote><p>仅当<strong>HealthCheckProtocol</strong>为<strong>HTTP/HTTPS/GRPC/GRPCS</strong>时，转发规则路径参数生效。</p></blockquote>
         :type HealthCheckPath: str
-        :param _HealthCheckPort: 健康检查访问后端服务器的端口。  取值范围：**0-65535**。  默认值：**0**，表示后端服务器的端口。
+        :param _HealthCheckPort: <p>健康检查访问后端服务器的端口。  取值范围：<strong>0-65535</strong>。  默认值：<strong>0</strong>，表示后端服务器的端口。</p>
         :type HealthCheckPort: int
-        :param _HealthCheckProtocol: 健康检查协议。取值：
-- **HTTP**（默认）：通过发送 HEAD 或 GET 请求模拟浏览器的访问行为来检查服务器应用是否健康。
-- **HTTPS**：通过发送 HEAD 或 GET 请求模拟浏览器的访问行为来检查服务器应用是否健康。（数据加密，相比 HTTP 更安全。）
-- **TCP**：通过发送 SYN 握手报文来检测服务器端口是否存活。
-- **GRPC**：通过发送 POST 或 GET 请求来检查服务器应用是否健康。
-- **GRPCS**：通过发送 POST 或 GET 请求来检查服务器应用是否健康。
+        :param _HealthCheckProtocol: <p>健康检查协议。取值：</p><ul><li><strong>HTTP</strong>（默认）：通过发送 HEAD 或 GET 请求模拟浏览器的访问行为来检查服务器应用是否健康。</li><li><strong>HTTPS</strong>：通过发送 HEAD 或 GET 请求模拟浏览器的访问行为来检查服务器应用是否健康。（数据加密，相比 HTTP 更安全。）</li><li><strong>TCP</strong>：通过发送 SYN 握手报文来检测服务器端口是否存活。</li><li><strong>GRPC</strong>：通过发送 POST 或 GET 请求来检查服务器应用是否健康。</li><li><strong>GRPCS</strong>：通过发送 POST 或 GET 请求来检查服务器应用是否健康。</li></ul>
         :type HealthCheckProtocol: str
-        :param _HealthCheckTemplateName: 健康检查模板名称。长度为 **1-255** 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。
+        :param _HealthCheckTemplateName: <p>健康检查模板名称。长度为 <strong>1-255</strong> 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。</p>
         :type HealthCheckTemplateName: str
-        :param _HealthCheckTimeout: 健康检查的响应超时时间。单位：秒。
-取值范围：**2**-**60**。
-默认值：**2**。
+        :param _HealthCheckTimeout: <p>健康检查的响应超时时间。单位：秒。<br>取值范围：<strong>2</strong>-<strong>60</strong>。<br>默认值：<strong>2</strong>。</p>
         :type HealthCheckTimeout: int
-        :param _HealthCheckUnhealthyThreshold: 判定后端服务不健康的阈值，当健康检查连续失败多少次后，后端服务的状态由**健康**变为**不健康**。
-取值范围：**2**-**10**。
-默认值：**2**。
+        :param _HealthCheckUnhealthyThreshold: <p>判定后端服务不健康的阈值，当健康检查连续失败多少次后，后端服务的状态由<strong>健康</strong>变为<strong>不健康</strong>。<br>取值范围：<strong>2</strong>-<strong>10</strong>。<br>默认值：<strong>2</strong>。</p>
         :type HealthCheckUnhealthyThreshold: int
-        :param _Tags: 标签。
-        :type Tags: list of TagInfo
         """
         self._HealthCheckTemplateId = None
         self._DryRun = None
@@ -8458,11 +8425,10 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
         self._HealthCheckTemplateName = None
         self._HealthCheckTimeout = None
         self._HealthCheckUnhealthyThreshold = None
-        self._Tags = None
 
     @property
     def HealthCheckTemplateId(self):
-        r"""健康检查模板 ID，格式为 hct- 后接字母数字。
+        r"""<p>健康检查模板 ID，格式为 hct- 后接字母数字。</p>
         :rtype: str
         """
         return self._HealthCheckTemplateId
@@ -8473,9 +8439,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def DryRun(self):
-        r"""是否预览此次请求。
-- **false**（默认）：发送普通请求，直接修改健康检查模板。
-- **true**：发送预览请求，检查修改健康检查模板的参数、格式、业务限制等是否符合要求。
+        r"""<p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接修改健康检查模板。</li><li><strong>true</strong>：发送预览请求，检查修改健康检查模板的参数、格式、业务限制等是否符合要求。</li></ul>
         :rtype: bool
         """
         return self._DryRun
@@ -8486,16 +8450,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckCodes(self):
-        r"""健康检查状态码。取值：
-- 当健康检查协议为**HTTP/HTTPS**时：
-	- **http_1xx**
-	- **http_2xx**（默认值）
-	-  **http_3xx**
-	-  **http_4xx**
-	-  **http_5xx**
-- 当健康检查协议为**GRPC/GRPCS**时：默认值为**12**，数值范围为**0-99**，输入值可为数值、多个数值或者范围以及相互组合，如：
-	- **"20"**
-	- **"0-99"**
+        r"""<p>健康检查状态码。取值：</p><ul><li>当健康检查协议为<strong>HTTP/HTTPS</strong>时：<ul><li><strong>http_1xx</strong></li><li><strong>http_2xx</strong>（默认值）</li><li><strong>http_3xx</strong></li><li><strong>http_4xx</strong></li><li><strong>http_5xx</strong></li></ul></li><li>当健康检查协议为<strong>GRPC/GRPCS</strong>时：默认值为<strong>12</strong>，数值范围为<strong>0-99</strong>，输入值可为数值、多个数值或者范围以及相互组合，如：<ul><li><strong>&quot;20&quot;</strong></li><li><strong>&quot;0-99&quot;</strong></li></ul></li></ul>
         :rtype: list of str
         """
         return self._HealthCheckCodes
@@ -8506,9 +8461,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckHealthyThreshold(self):
-        r"""判定后端服务健康的阈值，当健康检查连续成功多少次后，后端服务的状态由**不健康**变为**健康**。
-取值范围：**2**-**10**。
-默认值：**2**。
+        r"""<p>判定后端服务健康的阈值，当健康检查连续成功多少次后，后端服务的状态由<strong>不健康</strong>变为<strong>健康</strong>。<br>取值范围：<strong>2</strong>-<strong>10</strong>。<br>默认值：<strong>2</strong>。</p>
         :rtype: int
         """
         return self._HealthCheckHealthyThreshold
@@ -8519,11 +8472,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckHost(self):
-        r"""健康检查域名。
-长度限制为 **1-255** 个字符。
-可包含小写字母、数字、短划线（-）和半角句号（.）。
-
-> 仅当 **HealthCheckProtocol** 设置为 **HTTP/HTTPS/GRPC/GRPCS** 时，该参数生效。
+        r"""<p>健康检查域名。<br>长度限制为 <strong>1-255</strong> 个字符。<br>可包含小写字母、数字、短划线（-）和半角句号（.）。</p><blockquote><p>仅当 <strong>HealthCheckProtocol</strong> 设置为 <strong>HTTP/HTTPS/GRPC/GRPCS</strong> 时，该参数生效。</p></blockquote>
         :rtype: str
         """
         return self._HealthCheckHost
@@ -8534,10 +8483,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckHttpVersion(self):
-        r"""健康检查 HTTP 协议版本，取值：
-- **HTTP1.1**（默认）
-- **HTTP1.0** 
-> 仅当**HealthCheckProtocol**设置为**HTTP** 或 **HTTPS** 时，该参数生效。
+        r"""<p>健康检查 HTTP 协议版本，取值：</p><ul><li><strong>HTTP1.1</strong>（默认）</li><li><strong>HTTP1.0</strong> <blockquote><p>仅当<strong>HealthCheckProtocol</strong>设置为<strong>HTTP</strong> 或 <strong>HTTPS</strong> 时，该参数生效。</p></blockquote></li></ul>
         :rtype: str
         """
         return self._HealthCheckHttpVersion
@@ -8548,7 +8494,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckInterval(self):
-        r"""健康检查的时间间隔。单位：秒。 取值范围：**2**-**300**。 默认值：**5**。
+        r"""<p>健康检查的时间间隔。单位：秒。 取值范围：<strong>2</strong>-<strong>300</strong>。 默认值：<strong>5</strong>。</p>
         :rtype: int
         """
         return self._HealthCheckInterval
@@ -8559,8 +8505,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckMethod(self):
-        r"""健康检查方法，取值： - **GET** - **HEAD**（默认值） 
-> 仅当**HealthCheckProtocol**设置为**HTTP** 或 **HTTPS** 时，该参数生效。
+        r"""<p>健康检查方法，取值： - <strong>GET</strong> - <strong>HEAD</strong>（默认值） </p><blockquote><p>仅当<strong>HealthCheckProtocol</strong>设置为<strong>HTTP</strong> 或 <strong>HTTPS</strong> 时，该参数生效。</p></blockquote>
         :rtype: str
         """
         return self._HealthCheckMethod
@@ -8571,8 +8516,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckPath(self):
-        r"""健康检查的转发规则路径。 长度为 **1-80** 个字符，只能使用字母、数字、字符`-/.%?#&=`以及扩展字符`_;~!（)*[]@$^:',+`。 URL 必须以正斜线（/）开头。 
-> 仅当**HealthCheckProtocol**为**HTTP/HTTPS/GRPC/GRPCS**时，转发规则路径参数生效。
+        r"""<p>健康检查的转发规则路径。 长度为 <strong>1-80</strong> 个字符，只能使用字母、数字、字符<code>-/.%?#&amp;=</code>以及扩展字符<code>_;~!（)*[]@$^:&#39;,+</code>。 URL 必须以正斜线（/）开头。 </p><blockquote><p>仅当<strong>HealthCheckProtocol</strong>为<strong>HTTP/HTTPS/GRPC/GRPCS</strong>时，转发规则路径参数生效。</p></blockquote>
         :rtype: str
         """
         return self._HealthCheckPath
@@ -8583,7 +8527,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckPort(self):
-        r"""健康检查访问后端服务器的端口。  取值范围：**0-65535**。  默认值：**0**，表示后端服务器的端口。
+        r"""<p>健康检查访问后端服务器的端口。  取值范围：<strong>0-65535</strong>。  默认值：<strong>0</strong>，表示后端服务器的端口。</p>
         :rtype: int
         """
         return self._HealthCheckPort
@@ -8594,12 +8538,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckProtocol(self):
-        r"""健康检查协议。取值：
-- **HTTP**（默认）：通过发送 HEAD 或 GET 请求模拟浏览器的访问行为来检查服务器应用是否健康。
-- **HTTPS**：通过发送 HEAD 或 GET 请求模拟浏览器的访问行为来检查服务器应用是否健康。（数据加密，相比 HTTP 更安全。）
-- **TCP**：通过发送 SYN 握手报文来检测服务器端口是否存活。
-- **GRPC**：通过发送 POST 或 GET 请求来检查服务器应用是否健康。
-- **GRPCS**：通过发送 POST 或 GET 请求来检查服务器应用是否健康。
+        r"""<p>健康检查协议。取值：</p><ul><li><strong>HTTP</strong>（默认）：通过发送 HEAD 或 GET 请求模拟浏览器的访问行为来检查服务器应用是否健康。</li><li><strong>HTTPS</strong>：通过发送 HEAD 或 GET 请求模拟浏览器的访问行为来检查服务器应用是否健康。（数据加密，相比 HTTP 更安全。）</li><li><strong>TCP</strong>：通过发送 SYN 握手报文来检测服务器端口是否存活。</li><li><strong>GRPC</strong>：通过发送 POST 或 GET 请求来检查服务器应用是否健康。</li><li><strong>GRPCS</strong>：通过发送 POST 或 GET 请求来检查服务器应用是否健康。</li></ul>
         :rtype: str
         """
         return self._HealthCheckProtocol
@@ -8610,7 +8549,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckTemplateName(self):
-        r"""健康检查模板名称。长度为 **1-255** 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。
+        r"""<p>健康检查模板名称。长度为 <strong>1-255</strong> 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。</p>
         :rtype: str
         """
         return self._HealthCheckTemplateName
@@ -8621,9 +8560,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckTimeout(self):
-        r"""健康检查的响应超时时间。单位：秒。
-取值范围：**2**-**60**。
-默认值：**2**。
+        r"""<p>健康检查的响应超时时间。单位：秒。<br>取值范围：<strong>2</strong>-<strong>60</strong>。<br>默认值：<strong>2</strong>。</p>
         :rtype: int
         """
         return self._HealthCheckTimeout
@@ -8634,9 +8571,7 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
 
     @property
     def HealthCheckUnhealthyThreshold(self):
-        r"""判定后端服务不健康的阈值，当健康检查连续失败多少次后，后端服务的状态由**健康**变为**不健康**。
-取值范围：**2**-**10**。
-默认值：**2**。
+        r"""<p>判定后端服务不健康的阈值，当健康检查连续失败多少次后，后端服务的状态由<strong>健康</strong>变为<strong>不健康</strong>。<br>取值范围：<strong>2</strong>-<strong>10</strong>。<br>默认值：<strong>2</strong>。</p>
         :rtype: int
         """
         return self._HealthCheckUnhealthyThreshold
@@ -8644,17 +8579,6 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
     @HealthCheckUnhealthyThreshold.setter
     def HealthCheckUnhealthyThreshold(self, HealthCheckUnhealthyThreshold):
         self._HealthCheckUnhealthyThreshold = HealthCheckUnhealthyThreshold
-
-    @property
-    def Tags(self):
-        r"""标签。
-        :rtype: list of TagInfo
-        """
-        return self._Tags
-
-    @Tags.setter
-    def Tags(self, Tags):
-        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -8672,12 +8596,6 @@ class ModifyHealthCheckTemplateRequest(AbstractModel):
         self._HealthCheckTemplateName = params.get("HealthCheckTemplateName")
         self._HealthCheckTimeout = params.get("HealthCheckTimeout")
         self._HealthCheckUnhealthyThreshold = params.get("HealthCheckUnhealthyThreshold")
-        if params.get("Tags") is not None:
-            self._Tags = []
-            for item in params.get("Tags"):
-                obj = TagInfo()
-                obj._deserialize(item)
-                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

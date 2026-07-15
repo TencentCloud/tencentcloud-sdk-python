@@ -15859,6 +15859,8 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         :type AuthorizationMethod: list of int non-negative
         :param _HideBizLicense: <p>企业认证页面隐藏上传营业执照<br><img src="https://qcloudimg.tencent-cloud.cn/raw/cf827ce0e2043d8cc85e0735c9cfa3fc.png" alt="image"><br><img src="https://qcloudimg.tencent-cloud.cn/raw/f908cabe71238c78ee8fafc70888a344.png" alt="image"></p>
         :type HideBizLicense: bool
+        :param _AddressSame: <p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul><p></p><p>p.s. 仅在公司地址（OrganizationAddress）不为空时有效</p>
+        :type AddressSame: bool
         """
         self._Operator = None
         self._AuthorizationTypes = None
@@ -15889,6 +15891,7 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         self._OrganizationIdCardTypeSame = None
         self._AuthorizationMethod = None
         self._HideBizLicense = None
+        self._AddressSame = None
 
     @property
     def Operator(self):
@@ -16209,6 +16212,17 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
     def HideBizLicense(self, HideBizLicense):
         self._HideBizLicense = HideBizLicense
 
+    @property
+    def AddressSame(self):
+        r"""<p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul><p></p><p>p.s. 仅在公司地址（OrganizationAddress）不为空时有效</p>
+        :rtype: bool
+        """
+        return self._AddressSame
+
+    @AddressSame.setter
+    def AddressSame(self, AddressSame):
+        self._AddressSame = AddressSame
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -16247,6 +16261,7 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         self._OrganizationIdCardTypeSame = params.get("OrganizationIdCardTypeSame")
         self._AuthorizationMethod = params.get("AuthorizationMethod")
         self._HideBizLicense = params.get("HideBizLicense")
+        self._AddressSame = params.get("AddressSame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

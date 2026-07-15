@@ -4219,6 +4219,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyCosAuditBucketMonitorStatus(
+            self,
+            request: models.ModifyCosAuditBucketMonitorStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCosAuditBucketMonitorStatusResponse:
+        """
+        修改存储桶监测状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCosAuditBucketMonitorStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCosAuditBucketMonitorStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyCosAuditMonitorAccount(
             self,
             request: models.ModifyCosAuditMonitorAccountRequest,

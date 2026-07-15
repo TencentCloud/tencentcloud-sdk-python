@@ -12111,6 +12111,190 @@ class CreateLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLogAnalysisDownloadTaskRequest(AbstractModel):
+    r"""CreateLogAnalysisDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _Area: <p>数据归属地区，可选值：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul>注意：若站点服务区域为“全球可用区”，获取全部数据需要分别查询 mainland 和 overseas 的数据。</p>
+        :type Area: str
+        :param _StartTime: <p>开始时间，示例值：2020-04-29T00:00:00Z。套餐版本不同，支持的可查询开始时间至今的最大时间跨度不同，详情请见 <a href="https://cloud.tencent.com/document/product/1552/94165#45435466-9103-4ff6-be22-e31717044fb2">套餐选型对比</a>。</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间，示例值：2020-04-30T00:00:00Z。单次查询的开始时间到结束时间跨度最大为 31 天。</p>
+        :type EndTime: str
+        :param _LogType: <p>日志类型，可选值：<ul><li> l7-access-logs：七层访问日志；</li><li>web-attack：托管规则日志。</li></ul>默认为 l7-access-logs 。</p>
+        :type LogType: str
+        :param _Condition: <p><a href="https://cloud.tencent.com/document/product/1552/124662">日志匹配条件</a>，最大长度 12KB。</p>
+        :type Condition: str
+        :param _Format: <p>文件格式，可选值：<ul><li>csv</li></ul>默认为 csv。</p>
+        :type Format: str
+        :param _Sort: <p>原始日志的时间排序，可选值：  <ul><li>asc：升序；</li>  <li>desc：降序。</li></ul>  默认为 desc。</p>
+        :type Sort: str
+        """
+        self._ZoneId = None
+        self._Area = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LogType = None
+        self._Condition = None
+        self._Format = None
+        self._Sort = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Area(self):
+        r"""<p>数据归属地区，可选值：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul>注意：若站点服务区域为“全球可用区”，获取全部数据需要分别查询 mainland 和 overseas 的数据。</p>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，示例值：2020-04-29T00:00:00Z。套餐版本不同，支持的可查询开始时间至今的最大时间跨度不同，详情请见 <a href="https://cloud.tencent.com/document/product/1552/94165#45435466-9103-4ff6-be22-e31717044fb2">套餐选型对比</a>。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，示例值：2020-04-30T00:00:00Z。单次查询的开始时间到结束时间跨度最大为 31 天。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型，可选值：<ul><li> l7-access-logs：七层访问日志；</li><li>web-attack：托管规则日志。</li></ul>默认为 l7-access-logs 。</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Condition(self):
+        r"""<p><a href="https://cloud.tencent.com/document/product/1552/124662">日志匹配条件</a>，最大长度 12KB。</p>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Format(self):
+        r"""<p>文件格式，可选值：<ul><li>csv</li></ul>默认为 csv。</p>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Sort(self):
+        r"""<p>原始日志的时间排序，可选值：  <ul><li>asc：升序；</li>  <li>desc：降序。</li></ul>  默认为 desc。</p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Area = params.get("Area")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LogType = params.get("LogType")
+        self._Condition = params.get("Condition")
+        self._Format = params.get("Format")
+        self._Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLogAnalysisDownloadTaskResponse(AbstractModel):
+    r"""CreateLogAnalysisDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>日志分析下载任务 ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>日志分析下载任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateMultiPathGatewayLineRequest(AbstractModel):
     r"""CreateMultiPathGatewayLine请求参数结构体
 
@@ -24050,6 +24234,404 @@ class DescribeLoadBalancerListResponse(AbstractModel):
                 obj = LoadBalancer()
                 obj._deserialize(item)
                 self._LoadBalancerList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLogAnalysisDetailRequest(AbstractModel):
+    r"""DescribeLogAnalysisDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _Area: <p>数据归属地区，可选值：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul>注意：若站点服务区域为“全球可用区”，获取全部数据需要分别查询 mainland 和 overseas 的数据。</p>
+        :type Area: str
+        :param _StartTime: <p>开始时间，示例值：2020-04-29T00:00:00Z。套餐版本不同，支持的可查询开始时间至今的最大时间跨度不同，详情请见 <a href="https://cloud.tencent.com/document/product/1552/94165#45435466-9103-4ff6-be22-e31717044fb2">套餐选型对比</a>。</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间，示例值：2020-04-30T00:00:00Z。单次查询的开始时间到结束时间跨度最大为 31 天。</p>
+        :type EndTime: str
+        :param _LogType: <p>日志类型，可选值：<ul><li> l7-access-logs：七层访问日志；</li><li>web-attack：托管规则日志。</li></ul>默认为 l7-access-logs 。</p>
+        :type LogType: str
+        :param _Condition: <p><a href="https://cloud.tencent.com/document/product/1552/124662">日志匹配条件</a>，最大长度 12KB。</p>
+        :type Condition: str
+        :param _Limit: <p>分页查询限制数目，默认值：20，最大值 100。</p>
+        :type Limit: int
+        :param _Offset: <p>分页查询偏移量，默认为 0。</p>
+        :type Offset: int
+        :param _Sort: <p>原始日志是否按时间排序返回；可选值：<ul><li>asc：升序；</li><li>desc：降序。</li></ul>默认为 desc。</p>
+        :type Sort: str
+        """
+        self._ZoneId = None
+        self._Area = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LogType = None
+        self._Condition = None
+        self._Limit = None
+        self._Offset = None
+        self._Sort = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Area(self):
+        r"""<p>数据归属地区，可选值：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul>注意：若站点服务区域为“全球可用区”，获取全部数据需要分别查询 mainland 和 overseas 的数据。</p>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，示例值：2020-04-29T00:00:00Z。套餐版本不同，支持的可查询开始时间至今的最大时间跨度不同，详情请见 <a href="https://cloud.tencent.com/document/product/1552/94165#45435466-9103-4ff6-be22-e31717044fb2">套餐选型对比</a>。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，示例值：2020-04-30T00:00:00Z。单次查询的开始时间到结束时间跨度最大为 31 天。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型，可选值：<ul><li> l7-access-logs：七层访问日志；</li><li>web-attack：托管规则日志。</li></ul>默认为 l7-access-logs 。</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Condition(self):
+        r"""<p><a href="https://cloud.tencent.com/document/product/1552/124662">日志匹配条件</a>，最大长度 12KB。</p>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询限制数目，默认值：20，最大值 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页查询偏移量，默认为 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Sort(self):
+        r"""<p>原始日志是否按时间排序返回；可选值：<ul><li>asc：升序；</li><li>desc：降序。</li></ul>默认为 desc。</p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Area = params.get("Area")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LogType = params.get("LogType")
+        self._Condition = params.get("Condition")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogAnalysisDetailResponse(AbstractModel):
+    r"""DescribeLogAnalysisDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogDetail: <p>符合日志匹配条件的日志详情列表。</p>
+        :type LogDetail: list of LogItem
+        :param _TotalCount: <p>符合日志匹配条件的日志总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogDetail = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def LogDetail(self):
+        r"""<p>符合日志匹配条件的日志详情列表。</p>
+        :rtype: list of LogItem
+        """
+        return self._LogDetail
+
+    @LogDetail.setter
+    def LogDetail(self, LogDetail):
+        self._LogDetail = LogDetail
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合日志匹配条件的日志总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LogDetail") is not None:
+            self._LogDetail = []
+            for item in params.get("LogDetail"):
+                obj = LogItem()
+                obj._deserialize(item)
+                self._LogDetail.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLogAnalysisDownloadTasksRequest(AbstractModel):
+    r"""DescribeLogAnalysisDownloadTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _Area: <p>数据归属地区，可选值： <ul><li>mainland：中国大陆境内；</li> <li>overseas：全球（不含中国大陆）。</li></ul> 注意：若站点服务区域为“全球可用区”，获取全部数据需要分别查询 mainland 和 overseas 的数据。</p>
+        :type Area: str
+        :param _LogType: <p>日志类型，可选值：<ul><li> l7-access-logs：七层访问日志；</li><li>web-attack：托管规则日志。</li></ul>默认为 l7-access-logs 。</p>
+        :type LogType: str
+        :param _Filters: <p>过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：<ul><li>task-id：按照日志下载任务 ID进行过滤，可选值参考 CreateLogAnalysisDownloadTask 接口返回的 TaskId。</li></ul></p><p>取值参考：CreateLogAnalysisDownloadTask</p>
+        :type Filters: list of AdvancedFilter
+        :param _Limit: <p>分页查询限制数目，默认值：20，最大值 100。</p>
+        :type Limit: int
+        :param _Offset: <p>分页查询偏移量，默认为 0。</p>
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Area = None
+        self._LogType = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Area(self):
+        r"""<p>数据归属地区，可选值： <ul><li>mainland：中国大陆境内；</li> <li>overseas：全球（不含中国大陆）。</li></ul> 注意：若站点服务区域为“全球可用区”，获取全部数据需要分别查询 mainland 和 overseas 的数据。</p>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型，可选值：<ul><li> l7-access-logs：七层访问日志；</li><li>web-attack：托管规则日志。</li></ul>默认为 l7-access-logs 。</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：<ul><li>task-id：按照日志下载任务 ID进行过滤，可选值参考 CreateLogAnalysisDownloadTask 接口返回的 TaskId。</li></ul></p><p>取值参考：CreateLogAnalysisDownloadTask</p>
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询限制数目，默认值：20，最大值 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页查询偏移量，默认为 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Area = params.get("Area")
+        self._LogType = params.get("LogType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogAnalysisDownloadTasksResponse(AbstractModel):
+    r"""DescribeLogAnalysisDownloadTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合日志匹配条件的日志分析下载任务总条数。</p>
+        :type TotalCount: int
+        :param _Tasks: <p>符合日志匹配条件的日志分析下载任务列表。</p>
+        :type Tasks: list of LogAnalysisDownloadTask
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合日志匹配条件的日志分析下载任务总条数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Tasks(self):
+        r"""<p>符合日志匹配条件的日志分析下载任务列表。</p>
+        :rtype: list of LogAnalysisDownloadTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = LogAnalysisDownloadTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -39382,6 +39964,222 @@ class LoadBalancer(AbstractModel):
         
 
 
+class LogAnalysisDownloadTask(AbstractModel):
+    r"""日志分析日志下载任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _Area: <p>数据归属地区，取值有：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul></p>
+        :type Area: str
+        :param _StartTime: <p>开始时间，示例值：2020-04-29T00:00:00Z。</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间，示例值：2020-04-30T00:00:00Z。</p>
+        :type EndTime: str
+        :param _LogType: <p>日志类型，取值有：<ul><li> l7-access-logs：七层访问日志；</li><li>web-attack：托管规则日志。</li></ul></p>
+        :type LogType: str
+        :param _Condition: <p><a href="https://cloud.tencent.com/document/product/1552/124662">日志匹配条件</a>，长度上限 12KB。</p>
+        :type Condition: str
+        :param _Format: <p>文件格式，取值有：</p><ul><li>csv 。</li></ul>
+        :type Format: str
+        :param _Sort: <p>原始日志是否按时间排序返回，取值有：<ul><li>asc：升序；</li><li>desc：降序。</li></ul></p>
+        :type Sort: str
+        :param _Status: <p>任务状态，取值有：<ul><li>loading：处理中，等待生成下载链接；</li><li> failed: 处理失败，当前任务无法下载;</li><li>completed：已完成打包，可以下载。</li></ul></p>
+        :type Status: str
+        :param _CreateTime: <p>任务创建时间，任务创建成功后将保留3天。</p>
+        :type CreateTime: str
+        :param _Url: <p>下载地址，仅当 Status = completed 时有返回值。</p>
+        :type Url: str
+        :param _ExpireTime: <p>下载任务过期时间，过期后下载地址将不可用，请通过本接口获取新的下载地址。</p>
+        :type ExpireTime: str
+        """
+        self._TaskId = None
+        self._ZoneId = None
+        self._Area = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LogType = None
+        self._Condition = None
+        self._Format = None
+        self._Sort = None
+        self._Status = None
+        self._CreateTime = None
+        self._Url = None
+        self._ExpireTime = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Area(self):
+        r"""<p>数据归属地区，取值有：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul></p>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，示例值：2020-04-29T00:00:00Z。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，示例值：2020-04-30T00:00:00Z。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型，取值有：<ul><li> l7-access-logs：七层访问日志；</li><li>web-attack：托管规则日志。</li></ul></p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Condition(self):
+        r"""<p><a href="https://cloud.tencent.com/document/product/1552/124662">日志匹配条件</a>，长度上限 12KB。</p>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Format(self):
+        r"""<p>文件格式，取值有：</p><ul><li>csv 。</li></ul>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Sort(self):
+        r"""<p>原始日志是否按时间排序返回，取值有：<ul><li>asc：升序；</li><li>desc：降序。</li></ul></p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，取值有：<ul><li>loading：处理中，等待生成下载链接；</li><li> failed: 处理失败，当前任务无法下载;</li><li>completed：已完成打包，可以下载。</li></ul></p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>任务创建时间，任务创建成功后将保留3天。</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Url(self):
+        r"""<p>下载地址，仅当 Status = completed 时有返回值。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExpireTime(self):
+        r"""<p>下载任务过期时间，过期后下载地址将不可用，请通过本接口获取新的下载地址。</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ZoneId = params.get("ZoneId")
+        self._Area = params.get("Area")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LogType = params.get("LogType")
+        self._Condition = params.get("Condition")
+        self._Format = params.get("Format")
+        self._Sort = params.get("Sort")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._Url = params.get("Url")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogFormat(AbstractModel):
     r"""实时日志投递的输出格式。您可以直接通过 FormatType 参数使用指定预设日志输出格式（JSON Lines / csv），也可以在预设日志输出格式基础上，通过其他参数来自定义变体输出格式。
 
@@ -39514,6 +40312,57 @@ class LogFormat(AbstractModel):
         self._RecordSuffix = params.get("RecordSuffix")
         self._RecordDelimiter = params.get("RecordDelimiter")
         self._FieldDelimiter = params.get("FieldDelimiter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogItem(AbstractModel):
+    r"""日志分析的日志信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: 日志产生的时间点，采用 unix 毫秒级时间戳。
+        :type Timestamp: int
+        :param _LogJson: 日志的具体内容，采用JSON字符串格式。
+        :type LogJson: str
+        """
+        self._Timestamp = None
+        self._LogJson = None
+
+    @property
+    def Timestamp(self):
+        r"""日志产生的时间点，采用 unix 毫秒级时间戳。
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def LogJson(self):
+        r"""日志的具体内容，采用JSON字符串格式。
+        :rtype: str
+        """
+        return self._LogJson
+
+    @LogJson.setter
+    def LogJson(self, LogJson):
+        self._LogJson = LogJson
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._LogJson = params.get("LogJson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -511,6 +511,28 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLogAnalysisDownloadTask(
+            self,
+            request: models.CreateLogAnalysisDownloadTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateLogAnalysisDownloadTaskResponse:
+        """
+        本接口用以创建日志分析下载任务，创建完成后可通过 DescribeLogAnalysisDownloadTasks 接口查询下载任务。
+        注意：
+        1.单次最多支持下载 5000万条日志。
+        2.日志文件将保留 3 天。
+        3.同时存在多个任务时将按照任务创建时间依次处理。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLogAnalysisDownloadTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLogAnalysisDownloadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateMultiPathGateway(
             self,
             request: models.CreateMultiPathGatewayRequest,
@@ -1981,6 +2003,42 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeLoadBalancerList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLoadBalancerListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLogAnalysisDetail(
+            self,
+            request: models.DescribeLogAnalysisDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogAnalysisDetailResponse:
+        """
+        本接口用以查询日志分析日志详情，数据来自站点下实时日志推送任务目的地为 "log-analysis" 的任务推送的日志数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogAnalysisDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogAnalysisDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLogAnalysisDownloadTasks(
+            self,
+            request: models.DescribeLogAnalysisDownloadTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogAnalysisDownloadTasksResponse:
+        """
+        本接口用以查询日志分析日志下载任务列表。注意：只保留最近三天的下载任务记录。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogAnalysisDownloadTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogAnalysisDownloadTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

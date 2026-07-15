@@ -463,6 +463,52 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAutoScaleDiskInfo(self, request):
+        r"""获取自动扩盘参数
+
+        :param request: Request instance for DescribeAutoScaleDiskInfo.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeAutoScaleDiskInfoRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeAutoScaleDiskInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoScaleDiskInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAutoScaleDiskInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterDiskRange(self, request):
+        r"""获取集群节点磁盘大小上下限
+
+        :param request: Request instance for DescribeClusterDiskRange.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeClusterDiskRangeRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeClusterDiskRangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterDiskRange", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterDiskRangeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterSnapshot(self, request):
         r"""获取快照备份列表
 
@@ -486,6 +532,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCosBackupStrategyViews(self, request):
+        r"""获取集群自动备份策略概览
+
+        :param request: Request instance for DescribeCosBackupStrategyViews.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeCosBackupStrategyViewsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeCosBackupStrategyViewsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosBackupStrategyViews", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosBackupStrategyViewsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDiagnose(self, request):
         r"""查询智能运维诊断结果报告
 
@@ -500,6 +569,98 @@ class EsClient(AbstractClient):
             body = self.call("DescribeDiagnose", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDiagnoseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEsInstanceEventLists(self, request):
+        r"""查询事件中心列表
+
+        :param request: Request instance for DescribeEsInstanceEventLists.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeEsInstanceEventListsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeEsInstanceEventListsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEsInstanceEventLists", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEsInstanceEventListsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEventDataDetail(self, request):
+        r"""查询事件详情
+
+        :param request: Request instance for DescribeEventDataDetail.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeEventDataDetailRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeEventDataDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventDataDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventDataDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEventInfoList(self, request):
+        r"""查询事件类型列表
+
+        :param request: Request instance for DescribeEventInfoList.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeEventInfoListRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeEventInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeForceMergeTask(self, request):
+        r"""查询新增的forcemerge任务列表
+
+        :param request: Request instance for DescribeForceMergeTask.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeForceMergeTaskRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeForceMergeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeForceMergeTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeForceMergeTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -739,6 +900,75 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLogstashViews(self, request):
+        r"""查询Logstash集群视图
+
+        :param request: Request instance for DescribeLogstashViews.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeLogstashViewsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeLogstashViewsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogstashViews", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogstashViewsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRegions(self, request):
+        r"""查询ES支持的地域列表
+
+        :param request: Request instance for DescribeRegions.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeRegionsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRequestInstancePolicy(self, request):
+        r"""集群可访问API展示
+
+        :param request: Request instance for DescribeRequestInstancePolicy.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeRequestInstancePolicyRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeRequestInstancePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRequestInstancePolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRequestInstancePolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeServerlessInstances(self, request):
         r"""Serverless获取索引列表
 
@@ -832,6 +1062,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSnapshotViews(self, request):
+        r"""获取集群快照列表概览
+
+        :param request: Request instance for DescribeSnapshotViews.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeSnapshotViewsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeSnapshotViewsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotViews", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSnapshotViewsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSpaceKibanaTools(self, request):
         r"""space维度的kibana获取登录token
 
@@ -846,6 +1099,29 @@ class EsClient(AbstractClient):
             body = self.call("DescribeSpaceKibanaTools", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSpaceKibanaToolsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUpgrade(self, request):
+        r"""获取实例可升级列表，包括可升级的大版本、商业特性
+
+        :param request: Request instance for DescribeUpgrade.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeUpgradeRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeUpgradeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUpgrade", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUpgradeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1145,6 +1421,52 @@ class EsClient(AbstractClient):
             body = self.call("QueryIpTraceLog", params, headers=headers)
             response = json.loads(body)
             model = models.QueryIpTraceLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryZoneResource(self, request):
+        r"""获取指定region下指定zone列表的资源情况
+
+        :param request: Request instance for QueryZoneResource.
+        :type request: :class:`tencentcloud.es.v20180416.models.QueryZoneResourceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.QueryZoneResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryZoneResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryZoneResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryZoneResourceForLogstash(self, request):
+        r"""获取Logstash指定region下指定zone列表的资源情况
+
+        :param request: Request instance for QueryZoneResourceForLogstash.
+        :type request: :class:`tencentcloud.es.v20180416.models.QueryZoneResourceForLogstashRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.QueryZoneResourceForLogstashResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryZoneResourceForLogstash", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryZoneResourceForLogstashResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

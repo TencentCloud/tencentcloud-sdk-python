@@ -642,6 +642,33 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLogAnalysisDownloadTask(self, request):
+        r"""本接口用以创建日志分析下载任务，创建完成后可通过 DescribeLogAnalysisDownloadTasks 接口查询下载任务。
+        注意：
+        1.单次最多支持下载 5000万条日志。
+        2.日志文件将保留 3 天。
+        3.同时存在多个任务时将按照任务创建时间依次处理。
+
+        :param request: Request instance for CreateLogAnalysisDownloadTask.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateLogAnalysisDownloadTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateLogAnalysisDownloadTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLogAnalysisDownloadTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLogAnalysisDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMultiPathGateway(self, request):
         r"""通过本接口创建多通道安全加速网关，包括云上网关（腾讯云创建和管理的网关）和自有网关（用户部署的私有网关），需要通过接口 DescribeMultiPathGateway，查询状态为 online 即创建成功。
 
@@ -2513,6 +2540,52 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeLoadBalancerList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLoadBalancerListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogAnalysisDetail(self, request):
+        r"""本接口用以查询日志分析日志详情，数据来自站点下实时日志推送任务目的地为 "log-analysis" 的任务推送的日志数据。
+
+        :param request: Request instance for DescribeLogAnalysisDetail.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisDetailRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogAnalysisDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogAnalysisDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogAnalysisDownloadTasks(self, request):
+        r"""本接口用以查询日志分析日志下载任务列表。注意：只保留最近三天的下载任务记录。
+
+        :param request: Request instance for DescribeLogAnalysisDownloadTasks.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisDownloadTasksRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisDownloadTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogAnalysisDownloadTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogAnalysisDownloadTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

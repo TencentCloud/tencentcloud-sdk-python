@@ -34049,6 +34049,195 @@ class DescribeImageTaskDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeImageTasksRequest(AbstractModel):
+    r"""DescribeImageTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务状态过滤条件。</p>
+        :type Status: str
+        :param _Limit: <p>返回记录条数。</p>
+        :type Limit: int
+        :param _ScrollToken: <p>翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。</p>
+        :type ScrollToken: str
+        :param _StartTime: <p>任务开始时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :type StartTime: str
+        :param _EndTime: <p>任务结束时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :type EndTime: str
+        :param _SubTaskHasFailed: <p>筛选子任务状态。</p>
+        :type SubTaskHasFailed: bool
+        """
+        self._Status = None
+        self._Limit = None
+        self._ScrollToken = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SubTaskHasFailed = None
+
+    @property
+    def Status(self):
+        r"""<p>任务状态过滤条件。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Limit(self):
+        r"""<p>返回记录条数。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ScrollToken(self):
+        r"""<p>翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。</p>
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def StartTime(self):
+        r"""<p>任务开始时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>任务结束时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SubTaskHasFailed(self):
+        r"""<p>筛选子任务状态。</p>
+        :rtype: bool
+        """
+        return self._SubTaskHasFailed
+
+    @SubTaskHasFailed.setter
+    def SubTaskHasFailed(self, SubTaskHasFailed):
+        self._SubTaskHasFailed = SubTaskHasFailed
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Limit = params.get("Limit")
+        self._ScrollToken = params.get("ScrollToken")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SubTaskHasFailed = params.get("SubTaskHasFailed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageTasksResponse(AbstractModel):
+    r"""DescribeImageTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合过滤条件的记录总数。</p><p>单位：条</p>
+        :type TotalCount: int
+        :param _ScrollToken: <p>翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空字符串，说明已无更多数据。</p>
+        :type ScrollToken: str
+        :param _TaskSet: <p>图片任务概要列表。</p>
+        :type TaskSet: list of ImageTaskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ScrollToken = None
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合过滤条件的记录总数。</p><p>单位：条</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ScrollToken(self):
+        r"""<p>翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空字符串，说明已无更多数据。</p>
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def TaskSet(self):
+        r"""<p>图片任务概要列表。</p>
+        :rtype: list of ImageTaskInfo
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._ScrollToken = params.get("ScrollToken")
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = ImageTaskInfo()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInput(AbstractModel):
     r"""查询输入配置信息。
 
@@ -50952,6 +51141,132 @@ class ImageSpriteTemplate(AbstractModel):
         self._FillType = params.get("FillType")
         self._Comment = params.get("Comment")
         self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageTaskInfo(AbstractModel):
+    r"""图片处理任务概览。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>图片处理任务TaskId。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态。</p><p>枚举值：</p><ul><li>FINISH： 任务结束</li><li>PROCESSING： 任务处理中</li></ul>
+        :type Status: str
+        :param _Input: <p>输入文件。</p>
+        :type Input: str
+        :param _CreateTime: <p>创建时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :type CreateTime: str
+        :param _BeginProcessTime: <p>开始处理时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :type BeginProcessTime: str
+        :param _FinishTime: <p>结束时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :type FinishTime: str
+        :param _SubTaskHasFailed: <p>子任务失败标识。</p>
+        :type SubTaskHasFailed: bool
+        """
+        self._TaskId = None
+        self._Status = None
+        self._Input = None
+        self._CreateTime = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+        self._SubTaskHasFailed = None
+
+    @property
+    def TaskId(self):
+        r"""<p>图片处理任务TaskId。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。</p><p>枚举值：</p><ul><li>FINISH： 任务结束</li><li>PROCESSING： 任务处理中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Input(self):
+        r"""<p>输入文件。</p>
+        :rtype: str
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def BeginProcessTime(self):
+        r"""<p>开始处理时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>结束时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def SubTaskHasFailed(self):
+        r"""<p>子任务失败标识。</p>
+        :rtype: bool
+        """
+        return self._SubTaskHasFailed
+
+    @SubTaskHasFailed.setter
+    def SubTaskHasFailed(self, SubTaskHasFailed):
+        self._SubTaskHasFailed = SubTaskHasFailed
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._Input = params.get("Input")
+        self._CreateTime = params.get("CreateTime")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        self._SubTaskHasFailed = params.get("SubTaskHasFailed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

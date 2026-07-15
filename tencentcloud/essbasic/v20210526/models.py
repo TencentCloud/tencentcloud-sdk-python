@@ -18,6 +18,147 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AdminChangeInvitationInfo(AbstractModel):
+    r"""企业变更超管信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChangeAdminOrganizationId: <p>要变更的企业Id。 使用接口进行变更，所支持的企业有两种。</p><p>注意：<br>此参数和 ChangeAdminOrganizationOpenId二选一，如果都传递了，但是不一致会进行报错拦截。</p>
+        :type ChangeAdminOrganizationId: str
+        :param _ChangeAdminOrganizationOpenId: <p>要变更的企业Id。 使用接口进行变更，所支持的企业有两种。<br>注意： 此参数和 ChangeAdminOrganizationId二选一，如果都传递了，不一致会进行报错拦截。</p>
+        :type ChangeAdminOrganizationOpenId: str
+        :param _NewAdminOpenId: <p>组织机构要变更的超管OpenId。</p>
+        :type NewAdminOpenId: str
+        :param _NewAdminName: <p>组织机构要变更的超管姓名。</p>
+        :type NewAdminName: str
+        :param _NewAdminMobile: <p>组织机构要变更的超管手机号。 跟超管变更的操作人保持一致。</p>
+        :type NewAdminMobile: str
+        :param _NewAdminIdCardType: <p>组织机构要变更的超管证件类型支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>跟超管变更的操作人保持一致。</p><p>枚举值：</p><ul><li>ID_CARD： 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO： 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN： 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+        :type NewAdminIdCardType: str
+        :param _NewAdminIdCardNumber: <p>组织机构新超管证件号。 跟超管变更的操作人保持一致。</p>
+        :type NewAdminIdCardNumber: str
+        :param _AuthFiles: <p>授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。</p><p> p.s. 如果上传授权书 ，需遵循以下条件 1. 超管的信息（超管姓名，超管手机号）必须为必填参数。</p>
+        :type AuthFiles: list of str
+        """
+        self._ChangeAdminOrganizationId = None
+        self._ChangeAdminOrganizationOpenId = None
+        self._NewAdminOpenId = None
+        self._NewAdminName = None
+        self._NewAdminMobile = None
+        self._NewAdminIdCardType = None
+        self._NewAdminIdCardNumber = None
+        self._AuthFiles = None
+
+    @property
+    def ChangeAdminOrganizationId(self):
+        r"""<p>要变更的企业Id。 使用接口进行变更，所支持的企业有两种。</p><p>注意：<br>此参数和 ChangeAdminOrganizationOpenId二选一，如果都传递了，但是不一致会进行报错拦截。</p>
+        :rtype: str
+        """
+        return self._ChangeAdminOrganizationId
+
+    @ChangeAdminOrganizationId.setter
+    def ChangeAdminOrganizationId(self, ChangeAdminOrganizationId):
+        self._ChangeAdminOrganizationId = ChangeAdminOrganizationId
+
+    @property
+    def ChangeAdminOrganizationOpenId(self):
+        r"""<p>要变更的企业Id。 使用接口进行变更，所支持的企业有两种。<br>注意： 此参数和 ChangeAdminOrganizationId二选一，如果都传递了，不一致会进行报错拦截。</p>
+        :rtype: str
+        """
+        return self._ChangeAdminOrganizationOpenId
+
+    @ChangeAdminOrganizationOpenId.setter
+    def ChangeAdminOrganizationOpenId(self, ChangeAdminOrganizationOpenId):
+        self._ChangeAdminOrganizationOpenId = ChangeAdminOrganizationOpenId
+
+    @property
+    def NewAdminOpenId(self):
+        r"""<p>组织机构要变更的超管OpenId。</p>
+        :rtype: str
+        """
+        return self._NewAdminOpenId
+
+    @NewAdminOpenId.setter
+    def NewAdminOpenId(self, NewAdminOpenId):
+        self._NewAdminOpenId = NewAdminOpenId
+
+    @property
+    def NewAdminName(self):
+        r"""<p>组织机构要变更的超管姓名。</p>
+        :rtype: str
+        """
+        return self._NewAdminName
+
+    @NewAdminName.setter
+    def NewAdminName(self, NewAdminName):
+        self._NewAdminName = NewAdminName
+
+    @property
+    def NewAdminMobile(self):
+        r"""<p>组织机构要变更的超管手机号。 跟超管变更的操作人保持一致。</p>
+        :rtype: str
+        """
+        return self._NewAdminMobile
+
+    @NewAdminMobile.setter
+    def NewAdminMobile(self, NewAdminMobile):
+        self._NewAdminMobile = NewAdminMobile
+
+    @property
+    def NewAdminIdCardType(self):
+        r"""<p>组织机构要变更的超管证件类型支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>跟超管变更的操作人保持一致。</p><p>枚举值：</p><ul><li>ID_CARD： 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO： 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN： 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+        :rtype: str
+        """
+        return self._NewAdminIdCardType
+
+    @NewAdminIdCardType.setter
+    def NewAdminIdCardType(self, NewAdminIdCardType):
+        self._NewAdminIdCardType = NewAdminIdCardType
+
+    @property
+    def NewAdminIdCardNumber(self):
+        r"""<p>组织机构新超管证件号。 跟超管变更的操作人保持一致。</p>
+        :rtype: str
+        """
+        return self._NewAdminIdCardNumber
+
+    @NewAdminIdCardNumber.setter
+    def NewAdminIdCardNumber(self, NewAdminIdCardNumber):
+        self._NewAdminIdCardNumber = NewAdminIdCardNumber
+
+    @property
+    def AuthFiles(self):
+        r"""<p>授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。</p><p> p.s. 如果上传授权书 ，需遵循以下条件 1. 超管的信息（超管姓名，超管手机号）必须为必填参数。</p>
+        :rtype: list of str
+        """
+        return self._AuthFiles
+
+    @AuthFiles.setter
+    def AuthFiles(self, AuthFiles):
+        self._AuthFiles = AuthFiles
+
+
+    def _deserialize(self, params):
+        self._ChangeAdminOrganizationId = params.get("ChangeAdminOrganizationId")
+        self._ChangeAdminOrganizationOpenId = params.get("ChangeAdminOrganizationOpenId")
+        self._NewAdminOpenId = params.get("NewAdminOpenId")
+        self._NewAdminName = params.get("NewAdminName")
+        self._NewAdminMobile = params.get("NewAdminMobile")
+        self._NewAdminIdCardType = params.get("NewAdminIdCardType")
+        self._NewAdminIdCardNumber = params.get("NewAdminIdCardNumber")
+        self._AuthFiles = params.get("AuthFiles")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Agent(AbstractModel):
     r"""应用相关信息, 整体应用的层级图如下
 
@@ -13010,6 +13151,278 @@ class ComponentLimit(AbstractModel):
         
 
 
+class CreateBatchAdminChangeInvitationsRequest(AbstractModel):
+    r"""CreateBatchAdminChangeInvitations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li></ul>
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _AdminChangeInvitationInfos: <p>组织机构超管变更信息。 一次最多支持10条超管变更信息。</p>
+        :type AdminChangeInvitationInfos: list of AdminChangeInvitationInfo
+        """
+        self._Agent = None
+        self._AdminChangeInvitationInfos = None
+
+    @property
+    def Agent(self):
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li></ul>
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def AdminChangeInvitationInfos(self):
+        r"""<p>组织机构超管变更信息。 一次最多支持10条超管变更信息。</p>
+        :rtype: list of AdminChangeInvitationInfo
+        """
+        return self._AdminChangeInvitationInfos
+
+    @AdminChangeInvitationInfos.setter
+    def AdminChangeInvitationInfos(self, AdminChangeInvitationInfos):
+        self._AdminChangeInvitationInfos = AdminChangeInvitationInfos
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("AdminChangeInvitationInfos") is not None:
+            self._AdminChangeInvitationInfos = []
+            for item in params.get("AdminChangeInvitationInfos"):
+                obj = AdminChangeInvitationInfo()
+                obj._deserialize(item)
+                self._AdminChangeInvitationInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchAdminChangeInvitationsResponse(AbstractModel):
+    r"""CreateBatchAdminChangeInvitations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMessages: <p>批量生成企业认证链接的详细错误信息，顺序与输入参数子企业列表顺序一致。</p><ul><li>如果所有企业认证链接都成功生成，将不返回错误信息</li><li>如果存在任何错误，将返回具体的错误描述。（没有错误的企业返回空字符串）</li></ul>
+        :type ErrorMessages: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMessages = None
+        self._RequestId = None
+
+    @property
+    def ErrorMessages(self):
+        r"""<p>批量生成企业认证链接的详细错误信息，顺序与输入参数子企业列表顺序一致。</p><ul><li>如果所有企业认证链接都成功生成，将不返回错误信息</li><li>如果存在任何错误，将返回具体的错误描述。（没有错误的企业返回空字符串）</li></ul>
+        :rtype: list of str
+        """
+        return self._ErrorMessages
+
+    @ErrorMessages.setter
+    def ErrorMessages(self, ErrorMessages):
+        self._ErrorMessages = ErrorMessages
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMessages = params.get("ErrorMessages")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBatchAdminChangeInvitationsUrlRequest(AbstractModel):
+    r"""CreateBatchAdminChangeInvitationsUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li></ul>
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _NewAdminName: <p>组织机构要变更的超管姓名。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的姓名保持一致。</p>
+        :type NewAdminName: str
+        :param _NewAdminMobile: <p>组织机构要变更的超管手机号。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的手机号保持一致。 超管手机号 和超管证件号 二选一 必填。 注意： 1. 如果新超管的个人身份在电子签进行了手机号的变更，之前提交的超管变更任务将无法获取。</p>
+        :type NewAdminMobile: str
+        :param _NewAdminIdCardType: <p>组织机构要变更的超管证件类型支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)<br>需要更当前操作人的证件类型保持一致。</li></ul><p>枚举值：</p><ul><li>ID_CARD： 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO： 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN： 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>默认值：ID_CARD</p>
+        :type NewAdminIdCardType: str
+        :param _NewAdminIdCardNumber: <p>组织机构要变更的超管证件号。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的证件号保持一致。 超管手机号和超管证件号 二选一必填。</p>
+        :type NewAdminIdCardNumber: str
+        :param _Endpoint: <p>要跳转的链接类型</p><ul><li> **HTTP**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li></ul><p>枚举值：</p><ul><li>HTTP： 跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>HTTP_SHORT_URL： 跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>APP： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li><li>QR_CODE： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li></ul><p>默认值：HTTP</p>
+        :type Endpoint: str
+        """
+        self._Agent = None
+        self._NewAdminName = None
+        self._NewAdminMobile = None
+        self._NewAdminIdCardType = None
+        self._NewAdminIdCardNumber = None
+        self._Endpoint = None
+
+    @property
+    def Agent(self):
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li></ul>
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def NewAdminName(self):
+        r"""<p>组织机构要变更的超管姓名。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的姓名保持一致。</p>
+        :rtype: str
+        """
+        return self._NewAdminName
+
+    @NewAdminName.setter
+    def NewAdminName(self, NewAdminName):
+        self._NewAdminName = NewAdminName
+
+    @property
+    def NewAdminMobile(self):
+        r"""<p>组织机构要变更的超管手机号。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的手机号保持一致。 超管手机号 和超管证件号 二选一 必填。 注意： 1. 如果新超管的个人身份在电子签进行了手机号的变更，之前提交的超管变更任务将无法获取。</p>
+        :rtype: str
+        """
+        return self._NewAdminMobile
+
+    @NewAdminMobile.setter
+    def NewAdminMobile(self, NewAdminMobile):
+        self._NewAdminMobile = NewAdminMobile
+
+    @property
+    def NewAdminIdCardType(self):
+        r"""<p>组织机构要变更的超管证件类型支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)<br>需要更当前操作人的证件类型保持一致。</li></ul><p>枚举值：</p><ul><li>ID_CARD： 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO： 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN： 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>默认值：ID_CARD</p>
+        :rtype: str
+        """
+        return self._NewAdminIdCardType
+
+    @NewAdminIdCardType.setter
+    def NewAdminIdCardType(self, NewAdminIdCardType):
+        self._NewAdminIdCardType = NewAdminIdCardType
+
+    @property
+    def NewAdminIdCardNumber(self):
+        r"""<p>组织机构要变更的超管证件号。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的证件号保持一致。 超管手机号和超管证件号 二选一必填。</p>
+        :rtype: str
+        """
+        return self._NewAdminIdCardNumber
+
+    @NewAdminIdCardNumber.setter
+    def NewAdminIdCardNumber(self, NewAdminIdCardNumber):
+        self._NewAdminIdCardNumber = NewAdminIdCardNumber
+
+    @property
+    def Endpoint(self):
+        r"""<p>要跳转的链接类型</p><ul><li> **HTTP**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li></ul><p>枚举值：</p><ul><li>HTTP： 跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>HTTP_SHORT_URL： 跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>APP： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li><li>QR_CODE： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li></ul><p>默认值：HTTP</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._NewAdminName = params.get("NewAdminName")
+        self._NewAdminMobile = params.get("NewAdminMobile")
+        self._NewAdminIdCardType = params.get("NewAdminIdCardType")
+        self._NewAdminIdCardNumber = params.get("NewAdminIdCardNumber")
+        self._Endpoint = params.get("Endpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchAdminChangeInvitationsUrlResponse(AbstractModel):
+    r"""CreateBatchAdminChangeInvitationsUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天<br>跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表</p><table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&amp;shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> <tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> <tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&amp;shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>注： <code>1.创建的链接应避免被转义，如：&amp;被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义</code>
+        :type Url: str
+        :param _ExpireTime: <p>链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。</p><p>单位：格式为Unix标准时间戳（秒）</p>
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        r"""<p>批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天<br>跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表</p><table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&amp;shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> <tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> <tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&amp;shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>注： <code>1.创建的链接应避免被转义，如：&amp;被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义</code>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExpireTime(self):
+        r"""<p>链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。</p><p>单位：格式为Unix标准时间戳（秒）</p>
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBatchInitOrganizationUrlRequest(AbstractModel):
     r"""CreateBatchInitOrganizationUrl请求参数结构体
 
@@ -25717,6 +26130,222 @@ class ModifyFlowDeadlineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOrganizationBusinessInfoRequest(AbstractModel):
+    r"""ModifyOrganizationBusinessInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>注:<code>1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。</code><code>2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。</code><code>3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。</code></p>
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _BizLicenseResourceId: <p>企业营业执照或相关证照图片的 resourceId，需提前通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles">上传文件接口</a>获取后传入。<br>注意：电子签<b>不会</b>对上传的营业执照图片做 OCR 识别，该图片仅作为企业信息变更的凭证留存；企业最新的名称、法人、地址等信息仍需通过本接口的其它字段显式传入。</p>
+        :type BizLicenseResourceId: str
+        :param _OrganizationName: <p>变更后的最新工商登记企业名称。<br>仅当企业名称发生变更时传入，未变更则不传（系统自动沿用电子签侧当前企业名称）。<br></p>
+        :type OrganizationName: str
+        :param _Address: <p>变更后的企业注册地址。<br>仅当地址发生变更时传入，未变更则不传；传入后系统会自动解析省/市/区。<br></p>
+        :type Address: str
+        :param _OrganizationType: <p>变更后的企业类型。<br>仅当企业类型发生变更时传入，未变更则不传（沿用当前类型）。<br>目前仅支持个体工商户（INDIVIDUALBIZ）变更为企业（ENTERPRISE）。</p><p>枚举值：</p><ul><li>INDIVIDUALBIZ： 个体工商户</li><li>ENTERPRISE： 企业</li></ul>
+        :type OrganizationType: str
+        :param _LegalName: <p>变更后的最新工商登记法人姓名。<br>仅当法人发生变更时传入，未变更则不传（系统自动沿用当前法人姓名）。</p>
+        :type LegalName: str
+        """
+        self._Agent = None
+        self._BizLicenseResourceId = None
+        self._OrganizationName = None
+        self._Address = None
+        self._OrganizationType = None
+        self._LegalName = None
+
+    @property
+    def Agent(self):
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>注:<code>1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。</code><code>2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。</code><code>3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。</code></p>
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def BizLicenseResourceId(self):
+        r"""<p>企业营业执照或相关证照图片的 resourceId，需提前通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles">上传文件接口</a>获取后传入。<br>注意：电子签<b>不会</b>对上传的营业执照图片做 OCR 识别，该图片仅作为企业信息变更的凭证留存；企业最新的名称、法人、地址等信息仍需通过本接口的其它字段显式传入。</p>
+        :rtype: str
+        """
+        return self._BizLicenseResourceId
+
+    @BizLicenseResourceId.setter
+    def BizLicenseResourceId(self, BizLicenseResourceId):
+        self._BizLicenseResourceId = BizLicenseResourceId
+
+    @property
+    def OrganizationName(self):
+        r"""<p>变更后的最新工商登记企业名称。<br>仅当企业名称发生变更时传入，未变更则不传（系统自动沿用电子签侧当前企业名称）。<br></p>
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def Address(self):
+        r"""<p>变更后的企业注册地址。<br>仅当地址发生变更时传入，未变更则不传；传入后系统会自动解析省/市/区。<br></p>
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def OrganizationType(self):
+        r"""<p>变更后的企业类型。<br>仅当企业类型发生变更时传入，未变更则不传（沿用当前类型）。<br>目前仅支持个体工商户（INDIVIDUALBIZ）变更为企业（ENTERPRISE）。</p><p>枚举值：</p><ul><li>INDIVIDUALBIZ： 个体工商户</li><li>ENTERPRISE： 企业</li></ul>
+        :rtype: str
+        """
+        return self._OrganizationType
+
+    @OrganizationType.setter
+    def OrganizationType(self, OrganizationType):
+        self._OrganizationType = OrganizationType
+
+    @property
+    def LegalName(self):
+        r"""<p>变更后的最新工商登记法人姓名。<br>仅当法人发生变更时传入，未变更则不传（系统自动沿用当前法人姓名）。</p>
+        :rtype: str
+        """
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._BizLicenseResourceId = params.get("BizLicenseResourceId")
+        self._OrganizationName = params.get("OrganizationName")
+        self._Address = params.get("Address")
+        self._OrganizationType = params.get("OrganizationType")
+        self._LegalName = params.get("LegalName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOrganizationBusinessInfoResponse(AbstractModel):
+    r"""ModifyOrganizationBusinessInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>业务状态码。<br>0 表示正常（无阻断）；非 0 表示存在阻断，例如企业名称变更且存在未完结合同时返回 1。</p><p>枚举值：</p><ul><li>0： 正常（无阻断）</li><li>1： 存在未完结合同</li></ul>
+        :type ErrorCode: int
+        :param _ErrorMessage: <p>提示文案。<br>例如企业名称变更且存在未完结合同时返回「存在 X 份未完结的合同，请先撤销或者完成合同」。</p>
+        :type ErrorMessage: str
+        :param _UnfinishedCount: <p>未完结合同总数。<br>仅当企业名称变更且存在未完结合同时有值。</p>
+        :type UnfinishedCount: int
+        :param _FlowIds: <p>SaaS 企业下未完结合同的 flowId 列表。</p>
+        :type FlowIds: list of str
+        :param _ChannelFlowIds: <p>渠道子客企业下未完结合同的 flowId 列表。</p>
+        :type ChannelFlowIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._UnfinishedCount = None
+        self._FlowIds = None
+        self._ChannelFlowIds = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>业务状态码。<br>0 表示正常（无阻断）；非 0 表示存在阻断，例如企业名称变更且存在未完结合同时返回 1。</p><p>枚举值：</p><ul><li>0： 正常（无阻断）</li><li>1： 存在未完结合同</li></ul>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>提示文案。<br>例如企业名称变更且存在未完结合同时返回「存在 X 份未完结的合同，请先撤销或者完成合同」。</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def UnfinishedCount(self):
+        r"""<p>未完结合同总数。<br>仅当企业名称变更且存在未完结合同时有值。</p>
+        :rtype: int
+        """
+        return self._UnfinishedCount
+
+    @UnfinishedCount.setter
+    def UnfinishedCount(self, UnfinishedCount):
+        self._UnfinishedCount = UnfinishedCount
+
+    @property
+    def FlowIds(self):
+        r"""<p>SaaS 企业下未完结合同的 flowId 列表。</p>
+        :rtype: list of str
+        """
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def ChannelFlowIds(self):
+        r"""<p>渠道子客企业下未完结合同的 flowId 列表。</p>
+        :rtype: list of str
+        """
+        return self._ChannelFlowIds
+
+    @ChannelFlowIds.setter
+    def ChannelFlowIds(self, ChannelFlowIds):
+        self._ChannelFlowIds = ChannelFlowIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._UnfinishedCount = params.get("UnfinishedCount")
+        self._FlowIds = params.get("FlowIds")
+        self._ChannelFlowIds = params.get("ChannelFlowIds")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
     r"""ModifyPartnerAutoSignAuthUrl请求参数结构体
 
@@ -26998,23 +27627,26 @@ class OrganizationAuthorizationOptions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UniformSocialCreditCodeSame: 对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+        :param _UniformSocialCreditCodeSame: <p>对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul></p>
         :type UniformSocialCreditCodeSame: bool
-        :param _OrganizationNameSame: 对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效
+        :param _OrganizationNameSame: <p>对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效</p>
         :type OrganizationNameSame: bool
-        :param _LegalNameSame: 对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
+        :param _LegalNameSame: <p>对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效</p>
         :type LegalNameSame: bool
-        :param _BankAccountNumberSame: 对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效
+        :param _BankAccountNumberSame: <p>对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效</p>
         :type BankAccountNumberSame: bool
+        :param _AddressSame: <p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在公司地址（ProxyAddress）不为空时有效</p>
+        :type AddressSame: bool
         """
         self._UniformSocialCreditCodeSame = None
         self._OrganizationNameSame = None
         self._LegalNameSame = None
         self._BankAccountNumberSame = None
+        self._AddressSame = None
 
     @property
     def UniformSocialCreditCodeSame(self):
-        r"""对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+        r"""<p>对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul></p>
         :rtype: bool
         """
         return self._UniformSocialCreditCodeSame
@@ -27025,7 +27657,7 @@ class OrganizationAuthorizationOptions(AbstractModel):
 
     @property
     def OrganizationNameSame(self):
-        r"""对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效
+        r"""<p>对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效</p>
         :rtype: bool
         """
         return self._OrganizationNameSame
@@ -27036,7 +27668,7 @@ class OrganizationAuthorizationOptions(AbstractModel):
 
     @property
     def LegalNameSame(self):
-        r"""对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
+        r"""<p>对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效</p>
         :rtype: bool
         """
         return self._LegalNameSame
@@ -27047,7 +27679,7 @@ class OrganizationAuthorizationOptions(AbstractModel):
 
     @property
     def BankAccountNumberSame(self):
-        r"""对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效
+        r"""<p>对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效</p>
         :rtype: bool
         """
         return self._BankAccountNumberSame
@@ -27056,12 +27688,24 @@ class OrganizationAuthorizationOptions(AbstractModel):
     def BankAccountNumberSame(self, BankAccountNumberSame):
         self._BankAccountNumberSame = BankAccountNumberSame
 
+    @property
+    def AddressSame(self):
+        r"""<p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在公司地址（ProxyAddress）不为空时有效</p>
+        :rtype: bool
+        """
+        return self._AddressSame
+
+    @AddressSame.setter
+    def AddressSame(self, AddressSame):
+        self._AddressSame = AddressSame
+
 
     def _deserialize(self, params):
         self._UniformSocialCreditCodeSame = params.get("UniformSocialCreditCodeSame")
         self._OrganizationNameSame = params.get("OrganizationNameSame")
         self._LegalNameSame = params.get("LegalNameSame")
         self._BankAccountNumberSame = params.get("BankAccountNumberSame")
+        self._AddressSame = params.get("AddressSame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30353,36 +30997,23 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-</ul>
-
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li></ul>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _ProxyOrganizationName: 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
-注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
+        :param _ProxyOrganizationName: <p>第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。<br>注: <code>如果名称中包含英文括号()，请使用中文括号（）代替。</code></p>
         :type ProxyOrganizationName: str
-        :param _BusinessLicense: 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+        :param _BusinessLicense: <p>营业执照正面照(PNG或JPG) base64格式, 大小不超过5M</p>
         :type BusinessLicense: str
-        :param _UniformSocialCreditCode: 第三方平台子客企业统一社会信用代码，最大长度200个字符
+        :param _UniformSocialCreditCode: <p>第三方平台子客企业统一社会信用代码，最大长度200个字符</p>
         :type UniformSocialCreditCode: str
-        :param _ProxyLegalName: 第三方平台子客企业法定代表人的名字
+        :param _ProxyLegalName: <p>第三方平台子客企业法定代表人的名字</p>
         :type ProxyLegalName: str
-        :param _Operator: 暂未开放
+        :param _Operator: <p>暂未开放</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _ProxyLegalIdCardType: 第三方平台子客企业法定代表人的证件类型，支持以下类型
-<ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>
-注: `现在仅支持ID_CARD中国大陆居民身份证类型`
+        :param _ProxyLegalIdCardType: <p>第三方平台子客企业法定代表人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>注: <code>现在仅支持ID_CARD中国大陆居民身份证类型</code>
         :type ProxyLegalIdCardType: str
-        :param _ProxyLegalIdCardNumber: 第三方平台子客企业法定代表人的证件号码, 应符合以下规则
-<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
+        :param _ProxyLegalIdCardNumber: <p>第三方平台子客企业法定代表人的证件号码, 应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
         :type ProxyLegalIdCardNumber: str
-        :param _ProxyAddress: 第三方平台子客企业详细住所，最大长度500个字符
-
-注：`需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址`
+        :param _ProxyAddress: <p>第三方平台子客企业详细住所，最大长度500个字符</p><p>注：<code>需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址</code></p>
         :type ProxyAddress: str
         """
         self._Agent = None
@@ -30397,14 +31028,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-</ul>
-
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li></ul>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -30415,8 +31039,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyOrganizationName(self):
-        r"""第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
-注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
+        r"""<p>第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。<br>注: <code>如果名称中包含英文括号()，请使用中文括号（）代替。</code></p>
         :rtype: str
         """
         return self._ProxyOrganizationName
@@ -30427,7 +31050,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def BusinessLicense(self):
-        r"""营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+        r"""<p>营业执照正面照(PNG或JPG) base64格式, 大小不超过5M</p>
         :rtype: str
         """
         return self._BusinessLicense
@@ -30438,7 +31061,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def UniformSocialCreditCode(self):
-        r"""第三方平台子客企业统一社会信用代码，最大长度200个字符
+        r"""<p>第三方平台子客企业统一社会信用代码，最大长度200个字符</p>
         :rtype: str
         """
         return self._UniformSocialCreditCode
@@ -30449,7 +31072,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyLegalName(self):
-        r"""第三方平台子客企业法定代表人的名字
+        r"""<p>第三方平台子客企业法定代表人的名字</p>
         :rtype: str
         """
         return self._ProxyLegalName
@@ -30462,7 +31085,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""暂未开放
+        r"""<p>暂未开放</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -30475,9 +31098,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyLegalIdCardType(self):
-        r"""第三方平台子客企业法定代表人的证件类型，支持以下类型
-<ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>
-注: `现在仅支持ID_CARD中国大陆居民身份证类型`
+        r"""<p>第三方平台子客企业法定代表人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>注: <code>现在仅支持ID_CARD中国大陆居民身份证类型</code>
         :rtype: str
         """
         return self._ProxyLegalIdCardType
@@ -30488,8 +31109,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyLegalIdCardNumber(self):
-        r"""第三方平台子客企业法定代表人的证件号码, 应符合以下规则
-<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
+        r"""<p>第三方平台子客企业法定代表人的证件号码, 应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
         :rtype: str
         """
         return self._ProxyLegalIdCardNumber
@@ -30500,9 +31120,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
     @property
     def ProxyAddress(self):
-        r"""第三方平台子客企业详细住所，最大长度500个字符
-
-注：`需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址`
+        r"""<p>第三方平台子客企业详细住所，最大长度500个字符</p><p>注：<code>需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址</code></p>
         :rtype: str
         """
         return self._ProxyAddress

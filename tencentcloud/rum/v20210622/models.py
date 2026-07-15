@@ -19855,11 +19855,11 @@ class DescribeRumLogExportsV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageSize: Page size
+        :param _PageSize: <p>Page size</p>
         :type PageSize: int
-        :param _PageNum: Page number
+        :param _PageNum: <p>Page number</p>
         :type PageNum: int
-        :param _ID: Project ID
+        :param _ID: <p>Project ID</p>
         :type ID: int
         """
         self._PageSize = None
@@ -19868,7 +19868,7 @@ class DescribeRumLogExportsV2Request(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""Page size
+        r"""<p>Page size</p>
         :rtype: int
         """
         return self._PageSize
@@ -19879,7 +19879,7 @@ class DescribeRumLogExportsV2Request(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""Page number
+        r"""<p>Page number</p>
         :rtype: int
         """
         return self._PageNum
@@ -19890,7 +19890,7 @@ class DescribeRumLogExportsV2Request(AbstractModel):
 
     @property
     def ID(self):
-        r"""Project ID
+        r"""<p>Project ID</p>
         :rtype: int
         """
         return self._ID
@@ -19921,7 +19921,7 @@ class DescribeRumLogExportsV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Query result in JSON string format
+        :param _Result: <p>日志导出列表</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19931,7 +19931,7 @@ class DescribeRumLogExportsV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""Query result in JSON string format
+        r"""<p>日志导出列表</p>
         :rtype: str
         """
         return self._Result

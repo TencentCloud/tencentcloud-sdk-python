@@ -557,7 +557,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
         :type ProxyAllocation: list of ProxyAllocation
         :param _AutoLoadBalance: <p>是否开启自适应负载均衡。默认关闭。</p>
         :type AutoLoadBalance: bool
-        :param _AccessMode: <p>访问模式：nearby - 就近访问，balance - 均衡分配，默认就近访问。</p>
+        :param _AccessMode: <p>访问模式。</p><p>枚举值：</p><ul><li>nearby： 就近访问</li><li>balance： 均衡分配</li><li>direct_nearby： 纯网络转发就近访问</li><li>direct_balance： 纯网络转发均衡分配</li></ul>
         :type AccessMode: str
         :param _ApNodeAsRoNode: <p>是否将libra节点当作普通RO节点</p>
         :type ApNodeAsRoNode: bool
@@ -726,7 +726,7 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AccessMode(self):
-        r"""<p>访问模式：nearby - 就近访问，balance - 均衡分配，默认就近访问。</p>
+        r"""<p>访问模式。</p><p>枚举值：</p><ul><li>nearby： 就近访问</li><li>balance： 均衡分配</li><li>direct_nearby： 纯网络转发就近访问</li><li>direct_balance： 纯网络转发均衡分配</li></ul>
         :rtype: str
         """
         return self._AccessMode
@@ -7383,7 +7383,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         :type ConnectionPoolType: str
         :param _AutoLoadBalance: <p>是否开启自适应负载均衡。默认关闭。</p>
         :type AutoLoadBalance: bool
-        :param _AccessMode: <p>接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。</p>
+        :param _AccessMode: <p>接入模式。</p><p>枚举值：</p><ul><li>nearBy： 就近访问</li><li>balance： 均衡分配</li><li>direct_nearby： 纯网络转发就近访问</li><li>direct_balance： 纯网络转发均衡分配</li></ul><p>默认值：nearBy</p>
         :type AccessMode: str
         """
         self._ProxyGroupId = None
@@ -7618,7 +7618,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
 
     @property
     def AccessMode(self):
-        r"""<p>接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。</p>
+        r"""<p>接入模式。</p><p>枚举值：</p><ul><li>nearBy： 就近访问</li><li>balance： 均衡分配</li><li>direct_nearby： 纯网络转发就近访问</li><li>direct_balance： 纯网络转发均衡分配</li></ul><p>默认值：nearBy</p>
         :rtype: str
         """
         return self._AccessMode
@@ -12428,14 +12428,14 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务的请求 ID。
+        :param _AsyncRequestId: <p>异步任务的请求 ID。</p>
         :type AsyncRequestId: str
         """
         self._AsyncRequestId = None
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务的请求 ID。
+        r"""<p>异步任务的请求 ID。</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -12464,9 +12464,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务执行结果。可能的取值：INITIAL - 初始化，RUNNING - 运行中，SUCCESS - 执行成功，FAILED - 执行失败，KILLED - 已终止，REMOVED - 已删除，PAUSED - 终止中。
+        :param _Status: <p>任务执行结果。</p><p>枚举值：</p><ul><li>INITIAL： 初始化。</li><li>RUNNING： 运行中。</li><li>SUCCESS： 执行成功。</li><li>FAILED： 执行失败。</li><li>KILLED： 已终止。</li><li>REMOVED： 已删除。</li><li>PAUSED： 终止中。</li><li>UNDEFINED： 任务已创建但未开始执行，在 WaitSwitch = true 场景下，表示任务正在等待维护时间窗到来。</li></ul>
         :type Status: str
-        :param _Info: 任务执行信息描述。
+        :param _Info: <p>任务执行信息描述。</p>
         :type Info: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12477,7 +12477,7 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务执行结果。可能的取值：INITIAL - 初始化，RUNNING - 运行中，SUCCESS - 执行成功，FAILED - 执行失败，KILLED - 已终止，REMOVED - 已删除，PAUSED - 终止中。
+        r"""<p>任务执行结果。</p><p>枚举值：</p><ul><li>INITIAL： 初始化。</li><li>RUNNING： 运行中。</li><li>SUCCESS： 执行成功。</li><li>FAILED： 执行失败。</li><li>KILLED： 已终止。</li><li>REMOVED： 已删除。</li><li>PAUSED： 终止中。</li><li>UNDEFINED： 任务已创建但未开始执行，在 WaitSwitch = true 场景下，表示任务正在等待维护时间窗到来。</li></ul>
         :rtype: str
         """
         return self._Status
@@ -12488,7 +12488,7 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""任务执行信息描述。
+        r"""<p>任务执行信息描述。</p>
         :rtype: str
         """
         return self._Info
@@ -33057,47 +33057,48 @@ class ProxyAddress(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyAddressId: 代理组地址ID
+        :param _ProxyAddressId: <p>代理组地址ID</p>
         :type ProxyAddressId: str
-        :param _UniqVpcId: 私有网络ID
+        :param _UniqVpcId: <p>私有网络ID</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: 私有子网ID
+        :param _UniqSubnetId: <p>私有子网ID</p>
         :type UniqSubnetId: str
-        :param _Vip: IP地址
+        :param _Vip: <p>IP地址</p>
         :type Vip: str
-        :param _VPort: 端口
+        :param _VPort: <p>端口</p>
         :type VPort: int
-        :param _WeightMode: 权重分配模式；
-系统自动分配："system"， 自定义："custom"
+        :param _WeightMode: <p>权重分配模式；<br>系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
         :type WeightMode: str
-        :param _IsKickOut: 是否开启延迟剔除，取值："true" | "false"
+        :param _IsKickOut: <p>是否开启延迟剔除，取值：&quot;true&quot; | &quot;false&quot;</p>
         :type IsKickOut: bool
-        :param _MinCount: 最小保留数量，最小取值：0
+        :param _MinCount: <p>最小保留数量，最小取值：0</p>
         :type MinCount: int
-        :param _MaxDelay: 延迟剔除阈值，最小取值：0
+        :param _MaxDelay: <p>延迟剔除阈值，最小取值：0</p>
         :type MaxDelay: int
-        :param _AutoAddRo: 是否自动添加RO，取值："true" | "false"
+        :param _AutoAddRo: <p>是否自动添加RO，取值：&quot;true&quot; | &quot;false&quot;</p>
         :type AutoAddRo: bool
-        :param _ReadOnly: 是否是只读，取值："true" | "false"
+        :param _ReadOnly: <p>是否是只读，取值：&quot;true&quot; | &quot;false&quot;</p>
         :type ReadOnly: bool
-        :param _TransSplit: 是否开启事务分离
+        :param _TransSplit: <p>是否开启事务分离</p>
         :type TransSplit: bool
-        :param _FailOver: 是否开启故障转移
+        :param _FailOver: <p>是否开启故障转移</p>
         :type FailOver: bool
-        :param _ConnectionPool: 是否开启连接池
+        :param _ConnectionPool: <p>是否开启连接池</p>
         :type ConnectionPool: bool
-        :param _Desc: 描述
+        :param _Desc: <p>描述</p>
         :type Desc: str
-        :param _ProxyAllocation: 实例读权重分配
+        :param _ProxyAllocation: <p>实例读权重分配</p>
         :type ProxyAllocation: list of ProxyAllocation
-        :param _AccessMode: 接入模式
+        :param _AccessMode: <p>接入模式</p><p>枚举值：</p><ul><li>nearby： 就近访问</li><li>balance： 均衡分配</li><li>direct_nearby： 纯网络转发就近访问</li><li>direct_balance： 纯网络转发均衡分配</li></ul>
         :type AccessMode: str
-        :param _AutoLoadBalance: 是否开启自动负载均衡
+        :param _AutoLoadBalance: <p>是否开启自动负载均衡</p>
         :type AutoLoadBalance: bool
-        :param _ApNodeAsRoNode: 是否把libra当作ro节点
+        :param _ApNodeAsRoNode: <p>是否把libra当作ro节点</p>
         :type ApNodeAsRoNode: bool
-        :param _ApQueryToOtherNode: libra节点故障，是否转发给其他节点
+        :param _ApQueryToOtherNode: <p>libra节点故障，是否转发给其他节点</p>
         :type ApQueryToOtherNode: bool
+        :param _Region: <p>地址所在地域名</p>
+        :type Region: str
         """
         self._ProxyAddressId = None
         self._UniqVpcId = None
@@ -33119,10 +33120,11 @@ class ProxyAddress(AbstractModel):
         self._AutoLoadBalance = None
         self._ApNodeAsRoNode = None
         self._ApQueryToOtherNode = None
+        self._Region = None
 
     @property
     def ProxyAddressId(self):
-        r"""代理组地址ID
+        r"""<p>代理组地址ID</p>
         :rtype: str
         """
         return self._ProxyAddressId
@@ -33133,7 +33135,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""私有网络ID
+        r"""<p>私有网络ID</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -33144,7 +33146,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""私有子网ID
+        r"""<p>私有子网ID</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -33155,7 +33157,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def Vip(self):
-        r"""IP地址
+        r"""<p>IP地址</p>
         :rtype: str
         """
         return self._Vip
@@ -33166,7 +33168,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def VPort(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: int
         """
         return self._VPort
@@ -33177,8 +33179,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def WeightMode(self):
-        r"""权重分配模式；
-系统自动分配："system"， 自定义："custom"
+        r"""<p>权重分配模式；<br>系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
         :rtype: str
         """
         return self._WeightMode
@@ -33189,7 +33190,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def IsKickOut(self):
-        r"""是否开启延迟剔除，取值："true" | "false"
+        r"""<p>是否开启延迟剔除，取值：&quot;true&quot; | &quot;false&quot;</p>
         :rtype: bool
         """
         return self._IsKickOut
@@ -33200,7 +33201,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def MinCount(self):
-        r"""最小保留数量，最小取值：0
+        r"""<p>最小保留数量，最小取值：0</p>
         :rtype: int
         """
         return self._MinCount
@@ -33211,7 +33212,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def MaxDelay(self):
-        r"""延迟剔除阈值，最小取值：0
+        r"""<p>延迟剔除阈值，最小取值：0</p>
         :rtype: int
         """
         return self._MaxDelay
@@ -33222,7 +33223,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def AutoAddRo(self):
-        r"""是否自动添加RO，取值："true" | "false"
+        r"""<p>是否自动添加RO，取值：&quot;true&quot; | &quot;false&quot;</p>
         :rtype: bool
         """
         return self._AutoAddRo
@@ -33233,7 +33234,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""是否是只读，取值："true" | "false"
+        r"""<p>是否是只读，取值：&quot;true&quot; | &quot;false&quot;</p>
         :rtype: bool
         """
         return self._ReadOnly
@@ -33244,7 +33245,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def TransSplit(self):
-        r"""是否开启事务分离
+        r"""<p>是否开启事务分离</p>
         :rtype: bool
         """
         return self._TransSplit
@@ -33255,7 +33256,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def FailOver(self):
-        r"""是否开启故障转移
+        r"""<p>是否开启故障转移</p>
         :rtype: bool
         """
         return self._FailOver
@@ -33266,7 +33267,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def ConnectionPool(self):
-        r"""是否开启连接池
+        r"""<p>是否开启连接池</p>
         :rtype: bool
         """
         return self._ConnectionPool
@@ -33277,7 +33278,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def Desc(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Desc
@@ -33288,7 +33289,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def ProxyAllocation(self):
-        r"""实例读权重分配
+        r"""<p>实例读权重分配</p>
         :rtype: list of ProxyAllocation
         """
         return self._ProxyAllocation
@@ -33299,7 +33300,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def AccessMode(self):
-        r"""接入模式
+        r"""<p>接入模式</p><p>枚举值：</p><ul><li>nearby： 就近访问</li><li>balance： 均衡分配</li><li>direct_nearby： 纯网络转发就近访问</li><li>direct_balance： 纯网络转发均衡分配</li></ul>
         :rtype: str
         """
         return self._AccessMode
@@ -33310,7 +33311,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def AutoLoadBalance(self):
-        r"""是否开启自动负载均衡
+        r"""<p>是否开启自动负载均衡</p>
         :rtype: bool
         """
         return self._AutoLoadBalance
@@ -33321,7 +33322,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def ApNodeAsRoNode(self):
-        r"""是否把libra当作ro节点
+        r"""<p>是否把libra当作ro节点</p>
         :rtype: bool
         """
         return self._ApNodeAsRoNode
@@ -33332,7 +33333,7 @@ class ProxyAddress(AbstractModel):
 
     @property
     def ApQueryToOtherNode(self):
-        r"""libra节点故障，是否转发给其他节点
+        r"""<p>libra节点故障，是否转发给其他节点</p>
         :rtype: bool
         """
         return self._ApQueryToOtherNode
@@ -33340,6 +33341,17 @@ class ProxyAddress(AbstractModel):
     @ApQueryToOtherNode.setter
     def ApQueryToOtherNode(self, ApQueryToOtherNode):
         self._ApQueryToOtherNode = ApQueryToOtherNode
+
+    @property
+    def Region(self):
+        r"""<p>地址所在地域名</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
 
 
     def _deserialize(self, params):
@@ -33368,6 +33380,7 @@ class ProxyAddress(AbstractModel):
         self._AutoLoadBalance = params.get("AutoLoadBalance")
         self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
         self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38118,6 +38131,8 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
 
     @property
     def ForceSwitch(self):
+        warnings.warn("parameter `ForceSwitch` is deprecated", DeprecationWarning) 
+
         r"""是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。
         :rtype: bool
         """
@@ -38125,6 +38140,8 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
 
     @ForceSwitch.setter
     def ForceSwitch(self, ForceSwitch):
+        warnings.warn("parameter `ForceSwitch` is deprecated", DeprecationWarning) 
+
         self._ForceSwitch = ForceSwitch
 
     @property

@@ -5385,6 +5385,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCosAuditBucketMonitorStatus(self, request):
+        r"""修改存储桶监测状态
+
+        :param request: Request instance for ModifyCosAuditBucketMonitorStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditBucketMonitorStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyCosAuditBucketMonitorStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCosAuditBucketMonitorStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCosAuditBucketMonitorStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCosAuditMonitorAccount(self, request):
         r"""修改cos审计监测账号
 

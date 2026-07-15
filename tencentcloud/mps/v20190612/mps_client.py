@@ -2289,6 +2289,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeImageTasks(self, request):
+        r"""图片处理任务查询接口。
+
+        :param request: Request instance for DescribeImageTasks.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeImageTasksRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeImageTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLiveRecordTemplates(self, request):
         r"""获取直播录制模板
 

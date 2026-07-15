@@ -1803,6 +1803,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeImageTasks(
+            self,
+            request: models.DescribeImageTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageTasksResponse:
+        """
+        图片处理任务查询接口。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLiveRecordTemplates(
             self,
             request: models.DescribeLiveRecordTemplatesRequest,
