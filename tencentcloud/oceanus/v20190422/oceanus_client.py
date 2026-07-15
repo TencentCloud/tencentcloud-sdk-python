@@ -187,6 +187,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOceanusCluster(self, request):
+        r"""创建Oceanus集群
+
+        :param request: Request instance for CreateOceanusCluster.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateOceanusClusterRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CreateOceanusClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOceanusCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOceanusClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateResource(self, request):
         r"""创建资源接口
 
@@ -339,6 +362,29 @@ class OceanusClient(AbstractClient):
             body = self.call("DeleteJobs", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteOceanusCluster(self, request):
+        r"""销毁Oceanus集群
+
+        :param request: Request instance for DeleteOceanusCluster.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteOceanusClusterRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DeleteOceanusClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOceanusCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOceanusClusterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1000,6 +1046,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RenewOceanusCluster(self, request):
+        r"""续费Oceanus集群
+
+        :param request: Request instance for RenewOceanusCluster.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.RenewOceanusClusterRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.RenewOceanusClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewOceanusCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewOceanusClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunJobs(self, request):
         r"""批量启动或者恢复作业，批量操作数量上限20
 
@@ -1037,6 +1106,29 @@ class OceanusClient(AbstractClient):
             body = self.call("RunSqlGatewayStatement", params, headers=headers)
             response = json.loads(body)
             model = models.RunSqlGatewayStatementResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ScaleOceanusCluster(self, request):
+        r"""扩缩容Oceanus集群
+
+        :param request: Request instance for ScaleOceanusCluster.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.ScaleOceanusClusterRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ScaleOceanusClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleOceanusCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleOceanusClusterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -207,6 +207,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAgentApplication(self, request):
+        r"""本接口用于创建Agent应用
+
+        :param request: Request instance for CreateAgentApplication.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateAgentApplicationRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateAgentApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAgentApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAgentApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAlarm(self, request):
         r"""本接口用于创建告警策略。
 
@@ -910,6 +933,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRemoteWriteTask(self, request):
+        r"""创建remote write投递任务
+
+        :param request: Request instance for CreateRemoteWriteTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateRemoteWriteTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateRemoteWriteTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRemoteWriteTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRemoteWriteTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateS3Recharge(self, request):
+        r"""本接口用于创建aws导入任务
+
+        :param request: Request instance for CreateS3Recharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateS3RechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateS3RechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateS3Recharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateS3RechargeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateScheduledSql(self, request):
         r"""本接口用于创建定时SQL分析任务
 
@@ -1039,6 +1108,29 @@ class ClsClient(AbstractClient):
             body = self.call("CreateWebCallback", params, headers=headers)
             response = json.loads(body)
             model = models.CreateWebCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAgentApplication(self, request):
+        r"""本接口用于删除Agent应用
+
+        :param request: Request instance for DeleteAgentApplication.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAgentApplicationRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteAgentApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAgentApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAgentApplicationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1738,6 +1830,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRemoteWriteTask(self, request):
+        r"""删除RemoteWrite任务
+
+        :param request: Request instance for DeleteRemoteWriteTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteRemoteWriteTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteRemoteWriteTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRemoteWriteTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRemoteWriteTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteS3Recharge(self, request):
+        r"""本接口用于删除aws导入任务
+
+        :param request: Request instance for DeleteS3Recharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteS3RechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteS3RechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteS3Recharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteS3RechargeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteScheduledSql(self, request):
         r"""本接口用于删除定时SQL分析任务
 
@@ -1867,6 +2005,52 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteWebCallback", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteWebCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAgentApplications(self, request):
+        r"""获取Agent应用列表
+
+        :param request: Request instance for DescribeAgentApplications.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAgentApplicationsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeAgentApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentApplications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAgentApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAgentConfigs(self, request):
+        r"""获取agent对应的采集配置
+
+        :param request: Request instance for DescribeAgentConfigs.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAgentConfigsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeAgentConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAgentConfigsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3004,6 +3188,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRemoteWriteTasks(self, request):
+        r"""本接口获取RemoteWrite投递任务列表
+
+        :param request: Request instance for DescribeRemoteWriteTasks.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeRemoteWriteTasksRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeRemoteWriteTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRemoteWriteTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRemoteWriteTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeS3Recharges(self, request):
+        r"""本接口用于获取cos导入配置
+
+        :param request: Request instance for DescribeS3Recharges.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeS3RechargesRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeS3RechargesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeS3Recharges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeS3RechargesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeScheduledSqlInfo(self, request):
         r"""本接口用于获取定时SQL分析任务列表
 
@@ -3341,6 +3571,29 @@ class ClsClient(AbstractClient):
             body = self.call("MergePartition", params, headers=headers)
             response = json.loads(body)
             model = models.MergePartitionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAgentApplication(self, request):
+        r"""本接口用于修改Agent应用
+
+        :param request: Request instance for ModifyAgentApplication.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAgentApplicationRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyAgentApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAgentApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAgentApplicationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4018,6 +4271,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRemoteWriteTask(self, request):
+        r"""修改RemoteWrite任务
+
+        :param request: Request instance for ModifyRemoteWriteTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyRemoteWriteTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyRemoteWriteTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRemoteWriteTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRemoteWriteTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyS3Recharge(self, request):
+        r"""本接口用于修改aws导入任务
+
+        :param request: Request instance for ModifyS3Recharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyS3RechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyS3RechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyS3Recharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyS3RechargeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyScheduledSql(self, request):
         r"""本接口用于修改定时SQL分析任务
 
@@ -4381,6 +4680,29 @@ class ClsClient(AbstractClient):
             body = self.call("SearchLog", params, headers=headers)
             response = json.loads(body)
             model = models.SearchLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchS3RechargeInfo(self, request):
+        r"""本接口用于预览aws导入信息
+
+        :param request: Request instance for SearchS3RechargeInfo.
+        :type request: :class:`tencentcloud.cls.v20201016.models.SearchS3RechargeInfoRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SearchS3RechargeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchS3RechargeInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchS3RechargeInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

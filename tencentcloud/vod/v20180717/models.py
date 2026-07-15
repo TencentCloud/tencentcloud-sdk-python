@@ -35289,14 +35289,14 @@ class DescribeAigcApiTokensRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
         """
         self._SubAppId = None
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -35325,17 +35325,20 @@ class DescribeAigcApiTokensResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApiTokens: API Token 列表
+        :param _ApiTokens: <p>API Token 列表</p>
         :type ApiTokens: list of str
+        :param _ExtInfos: <p>ExtInfo信息，和API Token列表一一对应</p>
+        :type ExtInfos: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApiTokens = None
+        self._ExtInfos = None
         self._RequestId = None
 
     @property
     def ApiTokens(self):
-        r"""API Token 列表
+        r"""<p>API Token 列表</p>
         :rtype: list of str
         """
         return self._ApiTokens
@@ -35343,6 +35346,17 @@ class DescribeAigcApiTokensResponse(AbstractModel):
     @ApiTokens.setter
     def ApiTokens(self, ApiTokens):
         self._ApiTokens = ApiTokens
+
+    @property
+    def ExtInfos(self):
+        r"""<p>ExtInfo信息，和API Token列表一一对应</p>
+        :rtype: list of str
+        """
+        return self._ExtInfos
+
+    @ExtInfos.setter
+    def ExtInfos(self, ExtInfos):
+        self._ExtInfos = ExtInfos
 
     @property
     def RequestId(self):
@@ -35358,6 +35372,7 @@ class DescribeAigcApiTokensResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ApiTokens = params.get("ApiTokens")
+        self._ExtInfos = params.get("ExtInfos")
         self._RequestId = params.get("RequestId")
 
 
@@ -95463,6 +95478,115 @@ class TrtcRecordInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAigcApiTokenRequest(AbstractModel):
+    r"""UpdateAigcApiToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :type SubAppId: int
+        :param _ApiToken: <p>要更新Api Key</p>
+        :type ApiToken: str
+        :param _ActionType: <p>Merge（默认，对 ExtInfo JSON 按顶层 key 合并）、Overwrite（直接覆盖）</p>
+        :type ActionType: str
+        :param _ExtInfo: <p>token 的扩展信息</p>
+        :type ExtInfo: str
+        """
+        self._SubAppId = None
+        self._ApiToken = None
+        self._ActionType = None
+        self._ExtInfo = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ApiToken(self):
+        r"""<p>要更新Api Key</p>
+        :rtype: str
+        """
+        return self._ApiToken
+
+    @ApiToken.setter
+    def ApiToken(self, ApiToken):
+        self._ApiToken = ApiToken
+
+    @property
+    def ActionType(self):
+        r"""<p>Merge（默认，对 ExtInfo JSON 按顶层 key 合并）、Overwrite（直接覆盖）</p>
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ExtInfo(self):
+        r"""<p>token 的扩展信息</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._ApiToken = params.get("ApiToken")
+        self._ActionType = params.get("ActionType")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAigcApiTokenResponse(AbstractModel):
+    r"""UpdateAigcApiToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UrlSignatureAuthPolicy(AbstractModel):

@@ -808,6 +808,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEditVersions(self, request):
+        r"""获取课堂的所有编辑版本（含源版本）
+
+        :param request: Request instance for DescribeEditVersions.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeEditVersionsRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeEditVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEditVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEditVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGroup(self, request):
         r"""此接口用于获取群组详情
 
@@ -1341,6 +1364,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetEditVersionToken(self, request):
+        r"""获取剪辑信令回放token
+
+        :param request: Request instance for GetEditVersionToken.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.GetEditVersionTokenRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.GetEditVersionTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetEditVersionToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetEditVersionTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetPlaybackToken(self, request):
         r"""获取信令录制回放token，用于回放指定课堂时鉴权
 
@@ -1769,6 +1815,29 @@ class LcicClient(AbstractClient):
             body = self.call("SetAppCustomContent", params, headers=headers)
             response = json.loads(body)
             model = models.SetAppCustomContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetMainEditVersion(self, request):
+        r"""切换课堂的主编辑版本
+
+        :param request: Request instance for SetMainEditVersion.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.SetMainEditVersionRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.SetMainEditVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetMainEditVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetMainEditVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

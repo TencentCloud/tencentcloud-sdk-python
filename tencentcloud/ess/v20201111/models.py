@@ -19449,26 +19449,24 @@ class CreateSealPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Users: 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
+        :param _Users: <p>用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用,<br>同时也支持使用主企业的User进行授权， 当使用主企业的User时， 需要有集团角色。</p>
         :type Users: list of UserInfo
-        :param _SealId: 电子印章ID，为32位字符串。
-建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
+        :param _SealId: <p>电子印章ID，为32位字符串。<br>建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。<br>可登录腾讯电子签控制台，在 &quot;印章&quot;-&gt;&quot;印章中心&quot;选择查看的印章，在&quot;印章详情&quot; 中查看某个印章的SealId(在页面中展示为印章ID)。</p>
         :type SealId: str
-        :param _Expired: 授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。
+        :param _Expired: <p>授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。</p>
         :type Expired: int
-        :param _UserIds: 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+        :param _UserIds: <p>需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用。<br>支持使用主企业的UserId进行授权， 当使用主企业的UserId时，该UserId 需要有集团角色。</p>
         :type UserIds: list of str
-        :param _Policy: 印章授权内容
+        :param _Policy: <p>印章授权内容，最多300 个字符。</p>
         :type Policy: str
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _Options: 个性化配置字段，默认不传。
+        :param _Options: <p>个性化配置字段，默认不传。</p>
         :type Options: list of Option
+        :param _AuthorizationFlows: <p>针对用印的合同/合同组授权。<br>当单次用印授权时，可以仅在指定合同获得印章授权。<br>此场景下不会触发印章授权回调。</p>
+        :type AuthorizationFlows: :class:`tencentcloud.ess.v20201111.models.SealPolicyAuthorizationFlows`
         """
         self._Operator = None
         self._Users = None
@@ -19478,11 +19476,11 @@ class CreateSealPolicyRequest(AbstractModel):
         self._Policy = None
         self._Agent = None
         self._Options = None
+        self._AuthorizationFlows = None
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -19493,7 +19491,7 @@ class CreateSealPolicyRequest(AbstractModel):
 
     @property
     def Users(self):
-        r"""用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
+        r"""<p>用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用,<br>同时也支持使用主企业的User进行授权， 当使用主企业的User时， 需要有集团角色。</p>
         :rtype: list of UserInfo
         """
         return self._Users
@@ -19504,9 +19502,7 @@ class CreateSealPolicyRequest(AbstractModel):
 
     @property
     def SealId(self):
-        r"""电子印章ID，为32位字符串。
-建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
+        r"""<p>电子印章ID，为32位字符串。<br>建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。<br>可登录腾讯电子签控制台，在 &quot;印章&quot;-&gt;&quot;印章中心&quot;选择查看的印章，在&quot;印章详情&quot; 中查看某个印章的SealId(在页面中展示为印章ID)。</p>
         :rtype: str
         """
         return self._SealId
@@ -19517,7 +19513,7 @@ class CreateSealPolicyRequest(AbstractModel):
 
     @property
     def Expired(self):
-        r"""授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。
+        r"""<p>授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。</p>
         :rtype: int
         """
         return self._Expired
@@ -19528,7 +19524,7 @@ class CreateSealPolicyRequest(AbstractModel):
 
     @property
     def UserIds(self):
-        r"""需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+        r"""<p>需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用。<br>支持使用主企业的UserId进行授权， 当使用主企业的UserId时，该UserId 需要有集团角色。</p>
         :rtype: list of str
         """
         return self._UserIds
@@ -19539,7 +19535,7 @@ class CreateSealPolicyRequest(AbstractModel):
 
     @property
     def Policy(self):
-        r"""印章授权内容
+        r"""<p>印章授权内容，最多300 个字符。</p>
         :rtype: str
         """
         return self._Policy
@@ -19550,8 +19546,7 @@ class CreateSealPolicyRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -19562,7 +19557,7 @@ class CreateSealPolicyRequest(AbstractModel):
 
     @property
     def Options(self):
-        r"""个性化配置字段，默认不传。
+        r"""<p>个性化配置字段，默认不传。</p>
         :rtype: list of Option
         """
         return self._Options
@@ -19570,6 +19565,17 @@ class CreateSealPolicyRequest(AbstractModel):
     @Options.setter
     def Options(self, Options):
         self._Options = Options
+
+    @property
+    def AuthorizationFlows(self):
+        r"""<p>针对用印的合同/合同组授权。<br>当单次用印授权时，可以仅在指定合同获得印章授权。<br>此场景下不会触发印章授权回调。</p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.SealPolicyAuthorizationFlows`
+        """
+        return self._AuthorizationFlows
+
+    @AuthorizationFlows.setter
+    def AuthorizationFlows(self, AuthorizationFlows):
+        self._AuthorizationFlows = AuthorizationFlows
 
 
     def _deserialize(self, params):
@@ -19595,6 +19601,9 @@ class CreateSealPolicyRequest(AbstractModel):
                 obj = Option()
                 obj._deserialize(item)
                 self._Options.append(obj)
+        if params.get("AuthorizationFlows") is not None:
+            self._AuthorizationFlows = SealPolicyAuthorizationFlows()
+            self._AuthorizationFlows._deserialize(params.get("AuthorizationFlows"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19612,12 +19621,11 @@ class CreateSealPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserIds: 最终授权成功的用户ID，在腾讯电子签平台的唯一身份标识，为32位字符串。
-可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
+        :param _UserIds: <p>最终授权成功的用户ID，在腾讯电子签平台的唯一身份标识，为32位字符串。<br>可登录腾讯电子签控制台，在 &quot;更多能力&quot;-&gt;&quot;组织管理&quot; 中查看某位员工的UserId(在页面中展示为用户ID)。</p>
         :type UserIds: list of str
-        :param _SealOperatorVerifyPath: 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        :param _SealOperatorVerifyPath: <p>人脸验证操作人链接，用法可以参考&quot;<a href="https://qian.tencent.com/developers/company/openwxminiprogram/">跳转电子签小程序配置</a>&quot;，默认为空。</p>
         :type SealOperatorVerifyPath: str
-        :param _SealOperatorVerifyQrcodeUrl: 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        :param _SealOperatorVerifyQrcodeUrl: <p>人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。</p>
         :type SealOperatorVerifyQrcodeUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19629,8 +19637,7 @@ class CreateSealPolicyResponse(AbstractModel):
 
     @property
     def UserIds(self):
-        r"""最终授权成功的用户ID，在腾讯电子签平台的唯一身份标识，为32位字符串。
-可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
+        r"""<p>最终授权成功的用户ID，在腾讯电子签平台的唯一身份标识，为32位字符串。<br>可登录腾讯电子签控制台，在 &quot;更多能力&quot;-&gt;&quot;组织管理&quot; 中查看某位员工的UserId(在页面中展示为用户ID)。</p>
         :rtype: list of str
         """
         return self._UserIds
@@ -19641,7 +19648,7 @@ class CreateSealPolicyResponse(AbstractModel):
 
     @property
     def SealOperatorVerifyPath(self):
-        r"""人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        r"""<p>人脸验证操作人链接，用法可以参考&quot;<a href="https://qian.tencent.com/developers/company/openwxminiprogram/">跳转电子签小程序配置</a>&quot;，默认为空。</p>
         :rtype: str
         """
         return self._SealOperatorVerifyPath
@@ -19652,7 +19659,7 @@ class CreateSealPolicyResponse(AbstractModel):
 
     @property
     def SealOperatorVerifyQrcodeUrl(self):
-        r"""人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        r"""<p>人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。</p>
         :rtype: str
         """
         return self._SealOperatorVerifyQrcodeUrl
@@ -44028,6 +44035,57 @@ CONTRACT：合同专用章
         self._SealId = params.get("SealId")
         self._SealType = params.get("SealType")
         self._SealName = params.get("SealName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SealPolicyAuthorizationFlows(AbstractModel):
+    r"""根据合同对印章授权
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowIds: <p>合同id列表，最大支持50个</p>
+        :type FlowIds: list of str
+        :param _FlowGroupIds: <p>合同组id列表， 最大支持10个<br>FlowGroupIds(合同组)与FlowIds(合同列表) 两个参数只能选择其中一个，两者同时传会提示参数错误。</p>
+        :type FlowGroupIds: list of str
+        """
+        self._FlowIds = None
+        self._FlowGroupIds = None
+
+    @property
+    def FlowIds(self):
+        r"""<p>合同id列表，最大支持50个</p>
+        :rtype: list of str
+        """
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def FlowGroupIds(self):
+        r"""<p>合同组id列表， 最大支持10个<br>FlowGroupIds(合同组)与FlowIds(合同列表) 两个参数只能选择其中一个，两者同时传会提示参数错误。</p>
+        :rtype: list of str
+        """
+        return self._FlowGroupIds
+
+    @FlowGroupIds.setter
+    def FlowGroupIds(self, FlowGroupIds):
+        self._FlowGroupIds = FlowGroupIds
+
+
+    def _deserialize(self, params):
+        self._FlowIds = params.get("FlowIds")
+        self._FlowGroupIds = params.get("FlowGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

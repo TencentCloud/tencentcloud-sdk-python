@@ -931,25 +931,25 @@ class CreateNodePoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: <p>集群 ID</p>
         :type ClusterId: str
-        :param _Name: 节点池名称
+        :param _Name: <p>节点池名称</p>
         :type Name: str
-        :param _Type: 节点池类型
+        :param _Type: <p>节点池类型</p>
         :type Type: str
-        :param _Labels: 节点  Labels
+        :param _Labels: <p>节点  Labels</p>
         :type Labels: list of Label
-        :param _Taints: 节点污点
+        :param _Taints: <p>节点污点</p>
         :type Taints: list of Taint
-        :param _Tags: 节点标签
+        :param _Tags: <p>节点标签</p>
         :type Tags: list of TagSpecification
-        :param _DeletionProtection: 是否开启删除保护
+        :param _DeletionProtection: <p>是否开启删除保护</p>
         :type DeletionProtection: bool
-        :param _Unschedulable: 节点是否默认不可调度
+        :param _Unschedulable: <p>节点是否默认不可调度</p>
         :type Unschedulable: bool
-        :param _Native: 原生节点池创建参数（Type字段设置为Native时需填写）
+        :param _Native: <p>原生节点池创建参数（Type字段设置为Native时需填写）</p>
         :type Native: :class:`tencentcloud.tke.v20220501.models.CreateNativeNodePoolParam`
-        :param _Annotations: 节点 Annotation 列表
+        :param _Annotations: <p>节点 Annotation 列表</p>
         :type Annotations: list of Annotation
         """
         self._ClusterId = None
@@ -965,7 +965,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群 ID
+        r"""<p>集群 ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -976,7 +976,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""节点池名称
+        r"""<p>节点池名称</p>
         :rtype: str
         """
         return self._Name
@@ -987,7 +987,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""节点池类型
+        r"""<p>节点池类型</p>
         :rtype: str
         """
         return self._Type
@@ -998,7 +998,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        r"""节点  Labels
+        r"""<p>节点  Labels</p>
         :rtype: list of Label
         """
         return self._Labels
@@ -1009,7 +1009,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        r"""节点污点
+        r"""<p>节点污点</p>
         :rtype: list of Taint
         """
         return self._Taints
@@ -1020,7 +1020,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""节点标签
+        r"""<p>节点标签</p>
         :rtype: list of TagSpecification
         """
         return self._Tags
@@ -1031,7 +1031,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""是否开启删除保护
+        r"""<p>是否开启删除保护</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -1042,7 +1042,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Unschedulable(self):
-        r"""节点是否默认不可调度
+        r"""<p>节点是否默认不可调度</p>
         :rtype: bool
         """
         return self._Unschedulable
@@ -1053,7 +1053,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Native(self):
-        r"""原生节点池创建参数（Type字段设置为Native时需填写）
+        r"""<p>原生节点池创建参数（Type字段设置为Native时需填写）</p>
         :rtype: :class:`tencentcloud.tke.v20220501.models.CreateNativeNodePoolParam`
         """
         return self._Native
@@ -1064,7 +1064,7 @@ class CreateNodePoolRequest(AbstractModel):
 
     @property
     def Annotations(self):
-        r"""节点 Annotation 列表
+        r"""<p>节点 Annotation 列表</p>
         :rtype: list of Annotation
         """
         return self._Annotations
@@ -1124,7 +1124,7 @@ class CreateNodePoolResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodePoolId: 节点池 ID
+        :param _NodePoolId: <p>节点池 ID</p>
         :type NodePoolId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1134,7 +1134,7 @@ class CreateNodePoolResponse(AbstractModel):
 
     @property
     def NodePoolId(self):
-        r"""节点池 ID
+        r"""<p>节点池 ID</p>
         :rtype: str
         """
         return self._NodePoolId
@@ -8297,16 +8297,27 @@ class Taint(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Effect: Taint的Effect
+        :type Effect: str
         :param _Key: Taint的Key
         :type Key: str
         :param _Value: Taint的Value
         :type Value: str
-        :param _Effect: Taint的Effect
-        :type Effect: str
         """
+        self._Effect = None
         self._Key = None
         self._Value = None
-        self._Effect = None
+
+    @property
+    def Effect(self):
+        r"""Taint的Effect
+        :rtype: str
+        """
+        return self._Effect
+
+    @Effect.setter
+    def Effect(self, Effect):
+        self._Effect = Effect
 
     @property
     def Key(self):
@@ -8330,22 +8341,11 @@ class Taint(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
-    @property
-    def Effect(self):
-        r"""Taint的Effect
-        :rtype: str
-        """
-        return self._Effect
-
-    @Effect.setter
-    def Effect(self, Effect):
-        self._Effect = Effect
-
 
     def _deserialize(self, params):
+        self._Effect = params.get("Effect")
         self._Key = params.get("Key")
         self._Value = params.get("Value")
-        self._Effect = params.get("Effect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

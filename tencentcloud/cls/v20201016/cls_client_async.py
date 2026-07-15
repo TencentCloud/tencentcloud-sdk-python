@@ -171,6 +171,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAgentApplication(
+            self,
+            request: models.CreateAgentApplicationRequest,
+            opts: Dict = None,
+    ) -> models.CreateAgentApplicationResponse:
+        """
+        本接口用于创建Agent应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAgentApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAgentApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAlarm(
             self,
             request: models.CreateAlarmRequest,
@@ -724,6 +742,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRemoteWriteTask(
+            self,
+            request: models.CreateRemoteWriteTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRemoteWriteTaskResponse:
+        """
+        创建remote write投递任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRemoteWriteTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRemoteWriteTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateS3Recharge(
+            self,
+            request: models.CreateS3RechargeRequest,
+            opts: Dict = None,
+    ) -> models.CreateS3RechargeResponse:
+        """
+        本接口用于创建aws导入任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateS3Recharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateS3RechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateScheduledSql(
             self,
             request: models.CreateScheduledSqlRequest,
@@ -827,6 +881,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "CreateWebCallback"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateWebCallbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAgentApplication(
+            self,
+            request: models.DeleteAgentApplicationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAgentApplicationResponse:
+        """
+        本接口用于删除Agent应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAgentApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAgentApplicationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1372,6 +1444,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteRemoteWriteTask(
+            self,
+            request: models.DeleteRemoteWriteTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRemoteWriteTaskResponse:
+        """
+        删除RemoteWrite任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRemoteWriteTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRemoteWriteTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteS3Recharge(
+            self,
+            request: models.DeleteS3RechargeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteS3RechargeResponse:
+        """
+        本接口用于删除aws导入任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteS3Recharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteS3RechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteScheduledSql(
             self,
             request: models.DeleteScheduledSqlRequest,
@@ -1475,6 +1583,42 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteWebCallback"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteWebCallbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAgentApplications(
+            self,
+            request: models.DescribeAgentApplicationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAgentApplicationsResponse:
+        """
+        获取Agent应用列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAgentApplications"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAgentApplicationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAgentConfigs(
+            self,
+            request: models.DescribeAgentConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAgentConfigsResponse:
+        """
+        获取agent对应的采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAgentConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAgentConfigsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2363,6 +2507,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRemoteWriteTasks(
+            self,
+            request: models.DescribeRemoteWriteTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRemoteWriteTasksResponse:
+        """
+        本接口获取RemoteWrite投递任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRemoteWriteTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRemoteWriteTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeS3Recharges(
+            self,
+            request: models.DescribeS3RechargesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeS3RechargesResponse:
+        """
+        本接口用于获取cos导入配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeS3Recharges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeS3RechargesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeScheduledSqlInfo(
             self,
             request: models.DescribeScheduledSqlInfoRequest,
@@ -2629,6 +2809,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "MergePartition"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.MergePartitionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAgentApplication(
+            self,
+            request: models.ModifyAgentApplicationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAgentApplicationResponse:
+        """
+        本接口用于修改Agent应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAgentApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAgentApplicationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3157,6 +3355,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyRemoteWriteTask(
+            self,
+            request: models.ModifyRemoteWriteTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRemoteWriteTaskResponse:
+        """
+        修改RemoteWrite任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRemoteWriteTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRemoteWriteTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyS3Recharge(
+            self,
+            request: models.ModifyS3RechargeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyS3RechargeResponse:
+        """
+        本接口用于修改aws导入任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyS3Recharge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyS3RechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyScheduledSql(
             self,
             request: models.ModifyScheduledSqlRequest,
@@ -3444,6 +3678,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "SearchLog"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SearchS3RechargeInfo(
+            self,
+            request: models.SearchS3RechargeInfoRequest,
+            opts: Dict = None,
+    ) -> models.SearchS3RechargeInfoResponse:
+        """
+        本接口用于预览aws导入信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchS3RechargeInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchS3RechargeInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

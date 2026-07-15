@@ -151,6 +151,24 @@ class OceanusClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateOceanusCluster(
+            self,
+            request: models.CreateOceanusClusterRequest,
+            opts: Dict = None,
+    ) -> models.CreateOceanusClusterResponse:
+        """
+        创建Oceanus集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateOceanusCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateOceanusClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateResource(
             self,
             request: models.CreateResourceRequest,
@@ -272,6 +290,24 @@ class OceanusClient(AbstractClient):
         kwargs["action"] = "DeleteJobs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteJobsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteOceanusCluster(
+            self,
+            request: models.DeleteOceanusClusterRequest,
+            opts: Dict = None,
+    ) -> models.DeleteOceanusClusterResponse:
+        """
+        销毁Oceanus集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteOceanusCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteOceanusClusterResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -789,6 +825,24 @@ class OceanusClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RenewOceanusCluster(
+            self,
+            request: models.RenewOceanusClusterRequest,
+            opts: Dict = None,
+    ) -> models.RenewOceanusClusterResponse:
+        """
+        续费Oceanus集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewOceanusCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewOceanusClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RunJobs(
             self,
             request: models.RunJobsRequest,
@@ -820,6 +874,24 @@ class OceanusClient(AbstractClient):
         kwargs["action"] = "RunSqlGatewayStatement"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RunSqlGatewayStatementResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ScaleOceanusCluster(
+            self,
+            request: models.ScaleOceanusClusterRequest,
+            opts: Dict = None,
+    ) -> models.ScaleOceanusClusterResponse:
+        """
+        扩缩容Oceanus集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ScaleOceanusCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ScaleOceanusClusterResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

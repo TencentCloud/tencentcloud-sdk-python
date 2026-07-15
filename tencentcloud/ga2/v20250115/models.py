@@ -1084,6 +1084,115 @@ class CreateGlobalAcceleratorResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateListenerAdditionalCertRequest(AbstractModel):
+    r"""CreateListenerAdditionalCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: <p>监听器ID。</p>
+        :type ListenerId: str
+        :param _AdditionalCertificates: <p>证书ID。</p><p>当前只能添加服务器证书。</p>
+        :type AdditionalCertificates: list of str
+        """
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._AdditionalCertificates = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>全球加速实例ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""<p>监听器ID。</p>
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def AdditionalCertificates(self):
+        r"""<p>证书ID。</p><p>当前只能添加服务器证书。</p>
+        :rtype: list of str
+        """
+        return self._AdditionalCertificates
+
+    @AdditionalCertificates.setter
+    def AdditionalCertificates(self, AdditionalCertificates):
+        self._AdditionalCertificates = AdditionalCertificates
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._AdditionalCertificates = params.get("AdditionalCertificates")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateListenerAdditionalCertResponse(AbstractModel):
+    r"""CreateListenerAdditionalCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateListenerRequest(AbstractModel):
     r"""CreateListener请求参数结构体
 
@@ -1879,6 +1988,115 @@ class DeleteGlobalAcceleratorRequest(AbstractModel):
 
 class DeleteGlobalAcceleratorResponse(AbstractModel):
     r"""DeleteGlobalAccelerator返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteListenerAdditionalCertRequest(AbstractModel):
+    r"""DeleteListenerAdditionalCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: 监听器ID。
+        :type ListenerId: str
+        :param _AdditionalCertificates: 证书ID。
+        :type AdditionalCertificates: list of str
+        """
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._AdditionalCertificates = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""监听器ID。
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def AdditionalCertificates(self):
+        r"""证书ID。
+        :rtype: list of str
+        """
+        return self._AdditionalCertificates
+
+    @AdditionalCertificates.setter
+    def AdditionalCertificates(self, AdditionalCertificates):
+        self._AdditionalCertificates = AdditionalCertificates
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._AdditionalCertificates = params.get("AdditionalCertificates")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteListenerAdditionalCertResponse(AbstractModel):
+    r"""DeleteListenerAdditionalCert返回参数结构体
 
     """
 
@@ -6591,6 +6809,130 @@ class PortRanges(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReplaceListenerAdditionalCertRequest(AbstractModel):
+    r"""ReplaceListenerAdditionalCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: 监听器ID。
+        :type ListenerId: str
+        :param _AdditionalCertificate: 证书ID。
+        :type AdditionalCertificate: str
+        :param _OldCertificate: 旧的证书ID。
+        :type OldCertificate: str
+        """
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._AdditionalCertificate = None
+        self._OldCertificate = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""监听器ID。
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def AdditionalCertificate(self):
+        r"""证书ID。
+        :rtype: str
+        """
+        return self._AdditionalCertificate
+
+    @AdditionalCertificate.setter
+    def AdditionalCertificate(self, AdditionalCertificate):
+        self._AdditionalCertificate = AdditionalCertificate
+
+    @property
+    def OldCertificate(self):
+        r"""旧的证书ID。
+        :rtype: str
+        """
+        return self._OldCertificate
+
+    @OldCertificate.setter
+    def OldCertificate(self, OldCertificate):
+        self._OldCertificate = OldCertificate
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._AdditionalCertificate = params.get("AdditionalCertificate")
+        self._OldCertificate = params.get("OldCertificate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceListenerAdditionalCertResponse(AbstractModel):
+    r"""ReplaceListenerAdditionalCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ResponseHeaders(AbstractModel):

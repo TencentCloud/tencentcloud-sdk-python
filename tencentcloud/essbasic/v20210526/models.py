@@ -26149,6 +26149,8 @@ class ModifyOrganizationBusinessInfoRequest(AbstractModel):
         :type OrganizationType: str
         :param _LegalName: <p>变更后的最新工商登记法人姓名。<br>仅当法人发生变更时传入，未变更则不传（系统自动沿用当前法人姓名）。</p>
         :type LegalName: str
+        :param _NewLegalMobile: <p>新法人的手机号。<br>仅当法人发生变更时传入，用于向新法人发送短信通知。<br>需为合法的手机号或固定电话格式。</p>
+        :type NewLegalMobile: str
         """
         self._Agent = None
         self._BizLicenseResourceId = None
@@ -26156,6 +26158,7 @@ class ModifyOrganizationBusinessInfoRequest(AbstractModel):
         self._Address = None
         self._OrganizationType = None
         self._LegalName = None
+        self._NewLegalMobile = None
 
     @property
     def Agent(self):
@@ -26223,6 +26226,17 @@ class ModifyOrganizationBusinessInfoRequest(AbstractModel):
     def LegalName(self, LegalName):
         self._LegalName = LegalName
 
+    @property
+    def NewLegalMobile(self):
+        r"""<p>新法人的手机号。<br>仅当法人发生变更时传入，用于向新法人发送短信通知。<br>需为合法的手机号或固定电话格式。</p>
+        :rtype: str
+        """
+        return self._NewLegalMobile
+
+    @NewLegalMobile.setter
+    def NewLegalMobile(self, NewLegalMobile):
+        self._NewLegalMobile = NewLegalMobile
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -26233,6 +26247,7 @@ class ModifyOrganizationBusinessInfoRequest(AbstractModel):
         self._Address = params.get("Address")
         self._OrganizationType = params.get("OrganizationType")
         self._LegalName = params.get("LegalName")
+        self._NewLegalMobile = params.get("NewLegalMobile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26256,9 +26271,9 @@ class ModifyOrganizationBusinessInfoResponse(AbstractModel):
         :type ErrorMessage: str
         :param _UnfinishedCount: <p>未完结合同总数。<br>仅当企业名称变更且存在未完结合同时有值。</p>
         :type UnfinishedCount: int
-        :param _FlowIds: <p>SaaS 企业下未完结合同的 flowId 列表。</p>
+        :param _FlowIds: <p>SaaS 企业下未完结合同的 flowId 列表。注:<code>SaaS企业下的合同ID可能无法查询，可通知子客企业去处理相应的合同</code></p>
         :type FlowIds: list of str
-        :param _ChannelFlowIds: <p>渠道子客企业下未完结合同的 flowId 列表。</p>
+        :param _ChannelFlowIds: <p>渠道子客企业下未完结合同的 flowId 列表。注：<code>子客企业在其他渠道下的合同ID可能无法查询，可通知子客企业去处理其他渠道下相应的合同</code></p>
         :type ChannelFlowIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26305,7 +26320,7 @@ class ModifyOrganizationBusinessInfoResponse(AbstractModel):
 
     @property
     def FlowIds(self):
-        r"""<p>SaaS 企业下未完结合同的 flowId 列表。</p>
+        r"""<p>SaaS 企业下未完结合同的 flowId 列表。注:<code>SaaS企业下的合同ID可能无法查询，可通知子客企业去处理相应的合同</code></p>
         :rtype: list of str
         """
         return self._FlowIds
@@ -26316,7 +26331,7 @@ class ModifyOrganizationBusinessInfoResponse(AbstractModel):
 
     @property
     def ChannelFlowIds(self):
-        r"""<p>渠道子客企业下未完结合同的 flowId 列表。</p>
+        r"""<p>渠道子客企业下未完结合同的 flowId 列表。注：<code>子客企业在其他渠道下的合同ID可能无法查询，可通知子客企业去处理其他渠道下相应的合同</code></p>
         :rtype: list of str
         """
         return self._ChannelFlowIds

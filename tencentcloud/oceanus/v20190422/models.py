@@ -4300,6 +4300,305 @@ class CreateJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOceanusClusterRequest(AbstractModel):
+    r"""CreateOceanusCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterName: <p>集群名称</p><p>入参限制：支持1-50个英文、汉字、数字、连接线-或下划线_</p>
+        :type ClusterName: str
+        :param _RegionId: <p>地域Id，可通过地域管理系统<a href="https://cloud.tencent.com/document/api/1596/77930"> DescribeRegions</a>查询Product参数设置 oceanus</p>
+        :type RegionId: int
+        :param _ZoneId: <p>可用区Id，可通过地域管理系统<a href="https://cloud.tencent.com/document/api/1596/77929"> DescribeZones</a>查询<br>Product参数设置 oceanus</p>
+        :type ZoneId: int
+        :param _LoginPassword: <p>FlinkUI访问密码</p><p>用户名与密码将用于登录查看作业的 Flink UI 界面，集群用户名:admin</p>
+        :type LoginPassword: str
+        :param _VpcDescriptions: <p>流计算通过 VPC 和弹性网卡来访问同地域中的其他云产品资源，并需要占用一定的子网 IP 数量，请确保所选子网的可用 IP 数量充足 如现有网络不符合您的要求，请前往 VPC 控制台<a href="https://console.cloud.tencent.com/vpc/vpc?rid=undefined">新建私有网络</a> 或 <a href="https://console.cloud.tencent.com/vpc/subnet?rid=undefined">新建子网</a></p>
+        :type VpcDescriptions: list of VPCDescription
+        :param _DefaultCOSBucket: <p>流计算使用对象存储 COS 来保存作业的 checkpoint、jar 包、或投递日志等，如本地域无可用存储桶，请前往<a href="https://console.cloud.tencent.com/cos5">对象存储控制台</a>新建 为了保证您的正常使用，对应COS的生命周期配置请参考<a href="https://cloud.tencent.com/document/product/436/33417?from=console_document_search">文档</a></p>
+        :type DefaultCOSBucket: str
+        :param _CU: <p>集群CU数， 12 CU 是流计算的最小计算资源和计费单位，1CU 包含1个 CPU 和 4GB 内存。 当CU数大于等于 48 时，减免管理节点费用。</p>
+        :type CU: int
+        :param _Remark: <p>集群描述</p><p>入参限制：支持1-50个英文、汉字、数字、连接线-或下划线_</p>
+        :type Remark: str
+        :param _Period: <p>购买时长，以月为单位</p><p>取值范围：[1, 48]</p>
+        :type Period: int
+        :param _InstanceChargeType: <p>集群计费类型</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID_BY_SECOND： 按量计费</li></ul><p>默认值：POSTPAID_BY_SECOND</p>
+        :type InstanceChargeType: str
+        :param _ClusterType: <p>集群类型</p><p>枚举值：</p><ul><li>MULTI_AZ_CLUSTER： 多可用区集群</li></ul>
+        :type ClusterType: str
+        :param _RenewFlag: <p>自动续费标识</p><p>枚举值：</p><ul><li>NOTIFY_AND_MANUAL_RENEW： 通知并手动续费</li><li>NOTIFY_AND_AUTO_RENEW： 通知并自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知并不自动续费</li></ul><p>默认值：NOTIFY_AND_MANUAL_RENEW</p><p>InstanceChargeType设置PREPAID时，对应包年包月集群，需要设置自动续费标识，按量计费集群不需要设置</p>
+        :type RenewFlag: str
+        :param _FlinkWebUINetworkAccessType: <p>Flink UI访问类型设置</p><p>枚举值：</p><ul><li>NetworkAccess_INTERNAL： 内网访问</li><li>NetworkAccess_EXTERNAL： 公网访问</li></ul><p>默认值：NetworkAccess_EXTERNAL</p>
+        :type FlinkWebUINetworkAccessType: str
+        :param _SlaveVpcDescriptions: <p>多可用区VPC</p>
+        :type SlaveVpcDescriptions: list of SlaveVpcDescriptions
+        :param _CUMemory: <p>核心内存比值，只支持 [0，2，4，8]</p>
+        :type CUMemory: int
+        """
+        self._ClusterName = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._LoginPassword = None
+        self._VpcDescriptions = None
+        self._DefaultCOSBucket = None
+        self._CU = None
+        self._Remark = None
+        self._Period = None
+        self._InstanceChargeType = None
+        self._ClusterType = None
+        self._RenewFlag = None
+        self._FlinkWebUINetworkAccessType = None
+        self._SlaveVpcDescriptions = None
+        self._CUMemory = None
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p><p>入参限制：支持1-50个英文、汉字、数字、连接线-或下划线_</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RegionId(self):
+        r"""<p>地域Id，可通过地域管理系统<a href="https://cloud.tencent.com/document/api/1596/77930"> DescribeRegions</a>查询Product参数设置 oceanus</p>
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        r"""<p>可用区Id，可通过地域管理系统<a href="https://cloud.tencent.com/document/api/1596/77929"> DescribeZones</a>查询<br>Product参数设置 oceanus</p>
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def LoginPassword(self):
+        r"""<p>FlinkUI访问密码</p><p>用户名与密码将用于登录查看作业的 Flink UI 界面，集群用户名:admin</p>
+        :rtype: str
+        """
+        return self._LoginPassword
+
+    @LoginPassword.setter
+    def LoginPassword(self, LoginPassword):
+        self._LoginPassword = LoginPassword
+
+    @property
+    def VpcDescriptions(self):
+        r"""<p>流计算通过 VPC 和弹性网卡来访问同地域中的其他云产品资源，并需要占用一定的子网 IP 数量，请确保所选子网的可用 IP 数量充足 如现有网络不符合您的要求，请前往 VPC 控制台<a href="https://console.cloud.tencent.com/vpc/vpc?rid=undefined">新建私有网络</a> 或 <a href="https://console.cloud.tencent.com/vpc/subnet?rid=undefined">新建子网</a></p>
+        :rtype: list of VPCDescription
+        """
+        return self._VpcDescriptions
+
+    @VpcDescriptions.setter
+    def VpcDescriptions(self, VpcDescriptions):
+        self._VpcDescriptions = VpcDescriptions
+
+    @property
+    def DefaultCOSBucket(self):
+        r"""<p>流计算使用对象存储 COS 来保存作业的 checkpoint、jar 包、或投递日志等，如本地域无可用存储桶，请前往<a href="https://console.cloud.tencent.com/cos5">对象存储控制台</a>新建 为了保证您的正常使用，对应COS的生命周期配置请参考<a href="https://cloud.tencent.com/document/product/436/33417?from=console_document_search">文档</a></p>
+        :rtype: str
+        """
+        return self._DefaultCOSBucket
+
+    @DefaultCOSBucket.setter
+    def DefaultCOSBucket(self, DefaultCOSBucket):
+        self._DefaultCOSBucket = DefaultCOSBucket
+
+    @property
+    def CU(self):
+        r"""<p>集群CU数， 12 CU 是流计算的最小计算资源和计费单位，1CU 包含1个 CPU 和 4GB 内存。 当CU数大于等于 48 时，减免管理节点费用。</p>
+        :rtype: int
+        """
+        return self._CU
+
+    @CU.setter
+    def CU(self, CU):
+        self._CU = CU
+
+    @property
+    def Remark(self):
+        r"""<p>集群描述</p><p>入参限制：支持1-50个英文、汉字、数字、连接线-或下划线_</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Period(self):
+        r"""<p>购买时长，以月为单位</p><p>取值范围：[1, 48]</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def InstanceChargeType(self):
+        r"""<p>集群计费类型</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID_BY_SECOND： 按量计费</li></ul><p>默认值：POSTPAID_BY_SECOND</p>
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型</p><p>枚举值：</p><ul><li>MULTI_AZ_CLUSTER： 多可用区集群</li></ul>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def RenewFlag(self):
+        r"""<p>自动续费标识</p><p>枚举值：</p><ul><li>NOTIFY_AND_MANUAL_RENEW： 通知并手动续费</li><li>NOTIFY_AND_AUTO_RENEW： 通知并自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知并不自动续费</li></ul><p>默认值：NOTIFY_AND_MANUAL_RENEW</p><p>InstanceChargeType设置PREPAID时，对应包年包月集群，需要设置自动续费标识，按量计费集群不需要设置</p>
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def FlinkWebUINetworkAccessType(self):
+        r"""<p>Flink UI访问类型设置</p><p>枚举值：</p><ul><li>NetworkAccess_INTERNAL： 内网访问</li><li>NetworkAccess_EXTERNAL： 公网访问</li></ul><p>默认值：NetworkAccess_EXTERNAL</p>
+        :rtype: str
+        """
+        return self._FlinkWebUINetworkAccessType
+
+    @FlinkWebUINetworkAccessType.setter
+    def FlinkWebUINetworkAccessType(self, FlinkWebUINetworkAccessType):
+        self._FlinkWebUINetworkAccessType = FlinkWebUINetworkAccessType
+
+    @property
+    def SlaveVpcDescriptions(self):
+        r"""<p>多可用区VPC</p>
+        :rtype: list of SlaveVpcDescriptions
+        """
+        return self._SlaveVpcDescriptions
+
+    @SlaveVpcDescriptions.setter
+    def SlaveVpcDescriptions(self, SlaveVpcDescriptions):
+        self._SlaveVpcDescriptions = SlaveVpcDescriptions
+
+    @property
+    def CUMemory(self):
+        r"""<p>核心内存比值，只支持 [0，2，4，8]</p>
+        :rtype: int
+        """
+        return self._CUMemory
+
+    @CUMemory.setter
+    def CUMemory(self, CUMemory):
+        self._CUMemory = CUMemory
+
+
+    def _deserialize(self, params):
+        self._ClusterName = params.get("ClusterName")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._LoginPassword = params.get("LoginPassword")
+        if params.get("VpcDescriptions") is not None:
+            self._VpcDescriptions = []
+            for item in params.get("VpcDescriptions"):
+                obj = VPCDescription()
+                obj._deserialize(item)
+                self._VpcDescriptions.append(obj)
+        self._DefaultCOSBucket = params.get("DefaultCOSBucket")
+        self._CU = params.get("CU")
+        self._Remark = params.get("Remark")
+        self._Period = params.get("Period")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._ClusterType = params.get("ClusterType")
+        self._RenewFlag = params.get("RenewFlag")
+        self._FlinkWebUINetworkAccessType = params.get("FlinkWebUINetworkAccessType")
+        if params.get("SlaveVpcDescriptions") is not None:
+            self._SlaveVpcDescriptions = []
+            for item in params.get("SlaveVpcDescriptions"):
+                obj = SlaveVpcDescriptions()
+                obj._deserialize(item)
+                self._SlaveVpcDescriptions.append(obj)
+        self._CUMemory = params.get("CUMemory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOceanusClusterResponse(AbstractModel):
+    r"""CreateOceanusCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>创建的集群ID</p><p>参数格式：cluster-xxx</p>
+        :type ClusterId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterId = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>创建的集群ID</p><p>参数格式：cluster-xxx</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateResourceConfigRequest(AbstractModel):
     r"""CreateResourceConfig请求参数结构体
 
@@ -5229,6 +5528,85 @@ class DeleteJobsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOceanusClusterRequest(AbstractModel):
+    r"""DeleteOceanusCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p><p>参数格式：cluster-xxxx</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p><p>参数格式：cluster-xxxx</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOceanusClusterResponse(AbstractModel):
+    r"""DeleteOceanusCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskExecResult: <p>参数值success代表操作执行成功</p>
+        :type TaskExecResult: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskExecResult = None
+        self._RequestId = None
+
+    @property
+    def TaskExecResult(self):
+        r"""<p>参数值success代表操作执行成功</p>
+        :rtype: str
+        """
+        return self._TaskExecResult
+
+    @TaskExecResult.setter
+    def TaskExecResult(self, TaskExecResult):
+        self._TaskExecResult = TaskExecResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskExecResult = params.get("TaskExecResult")
         self._RequestId = params.get("RequestId")
 
 
@@ -13310,6 +13688,100 @@ class RefJobStatusCountItem(AbstractModel):
         
 
 
+class RenewOceanusClusterRequest(AbstractModel):
+    r"""RenewOceanusCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p><p>参数格式：cluster-xxx</p>
+        :type ClusterId: str
+        :param _Period: <p>续费的时长，单位为月，只支持包年包月集群</p><p>取值范围：[1, 36]</p>
+        :type Period: int
+        """
+        self._ClusterId = None
+        self._Period = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p><p>参数格式：cluster-xxx</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Period(self):
+        r"""<p>续费的时长，单位为月，只支持包年包月集群</p><p>取值范围：[1, 36]</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewOceanusClusterResponse(AbstractModel):
+    r"""RenewOceanusCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskExecResult: <p>参数值success代表操作执行成功</p>
+        :type TaskExecResult: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskExecResult = None
+        self._RequestId = None
+
+    @property
+    def TaskExecResult(self):
+        r"""<p>参数值success代表操作执行成功</p>
+        :rtype: str
+        """
+        return self._TaskExecResult
+
+    @TaskExecResult.setter
+    def TaskExecResult(self, TaskExecResult):
+        self._TaskExecResult = TaskExecResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskExecResult = params.get("TaskExecResult")
+        self._RequestId = params.get("RequestId")
+
+
 class ResourceConfigItem(AbstractModel):
     r"""描述资源配置的返回参数
 
@@ -15485,6 +15957,115 @@ class Savepoint(AbstractModel):
         
 
 
+class ScaleOceanusClusterRequest(AbstractModel):
+    r"""ScaleOceanusCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _NewCU: <p>集群的目标CU，需大于12CU，并且集群CU需要满足 12 + 7*n (n&gt;=0)</p>
+        :type NewCU: int
+        :param _ScaleMode: <p>扩容集群或者缩容集群</p><p>枚举值：</p><ul><li>ScaleDown： 缩容集群</li><li>ScaleUp： 扩容集群</li></ul><p>默认值：ScaleUp</p>
+        :type ScaleMode: str
+        """
+        self._ClusterId = None
+        self._NewCU = None
+        self._ScaleMode = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NewCU(self):
+        r"""<p>集群的目标CU，需大于12CU，并且集群CU需要满足 12 + 7*n (n&gt;=0)</p>
+        :rtype: int
+        """
+        return self._NewCU
+
+    @NewCU.setter
+    def NewCU(self, NewCU):
+        self._NewCU = NewCU
+
+    @property
+    def ScaleMode(self):
+        r"""<p>扩容集群或者缩容集群</p><p>枚举值：</p><ul><li>ScaleDown： 缩容集群</li><li>ScaleUp： 扩容集群</li></ul><p>默认值：ScaleUp</p>
+        :rtype: str
+        """
+        return self._ScaleMode
+
+    @ScaleMode.setter
+    def ScaleMode(self, ScaleMode):
+        self._ScaleMode = ScaleMode
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NewCU = params.get("NewCU")
+        self._ScaleMode = params.get("ScaleMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOceanusClusterResponse(AbstractModel):
+    r"""ScaleOceanusCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskExecResult: <p>参数值success代表操作执行成功</p>
+        :type TaskExecResult: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskExecResult = None
+        self._RequestId = None
+
+    @property
+    def TaskExecResult(self):
+        r"""<p>参数值success代表操作执行成功</p>
+        :rtype: str
+        """
+        return self._TaskExecResult
+
+    @TaskExecResult.setter
+    def TaskExecResult(self, TaskExecResult):
+        self._TaskExecResult = TaskExecResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskExecResult = params.get("TaskExecResult")
+        self._RequestId = params.get("RequestId")
+
+
 class SessionClusterRefItem(AbstractModel):
     r"""session集群引用资源信息
 
@@ -16066,6 +16647,87 @@ class SetatsDisk(AbstractModel):
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlaveVpcDescriptions(AbstractModel):
+    r"""多可用区VPC
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: <p>私有网络ID</p>
+        :type VpcId: str
+        :param _SubnetId: <p>子网ID</p>
+        :type SubnetId: str
+        :param _AppId: <p>用户AppId</p>
+        :type AppId: int
+        :param _OwnerUin: <p>用户UIN</p>
+        :type OwnerUin: str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+        self._AppId = None
+        self._OwnerUin = None
+
+    @property
+    def VpcId(self):
+        r"""<p>私有网络ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AppId(self):
+        r"""<p>用户AppId</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17740,6 +18402,91 @@ class TriggerJobSavepointResponse(AbstractModel):
         self._FinalSavepointPath = params.get("FinalSavepointPath")
         self._SavepointId = params.get("SavepointId")
         self._RequestId = params.get("RequestId")
+
+
+class VPCDescription(AbstractModel):
+    r"""客户VPC描述信息，包含VpcId和SubnetId参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 私有网络ID
+        :type VpcId: str
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
+        :param _AppId: 用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _OwnerUin: 用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+        self._AppId = None
+        self._OwnerUin = None
+
+    @property
+    def VpcId(self):
+        r"""私有网络ID
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""子网ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AppId(self):
+        r"""用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        r"""用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VariableItem(AbstractModel):

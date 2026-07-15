@@ -535,6 +535,8 @@ class ChatAIRequest(AbstractModel):
         :type OldRecordId: str
         :param _KnowledgeBaseIds: <p>知识库id列表</p>
         :type KnowledgeBaseIds: list of str
+        :param _ArchVersion: <p>版本信息</p>
+        :type ArchVersion: str
         """
         self._SessionId = None
         self._InstanceId = None
@@ -546,6 +548,7 @@ class ChatAIRequest(AbstractModel):
         self._AgentType = None
         self._OldRecordId = None
         self._KnowledgeBaseIds = None
+        self._ArchVersion = None
 
     @property
     def SessionId(self):
@@ -657,6 +660,17 @@ class ChatAIRequest(AbstractModel):
     def KnowledgeBaseIds(self, KnowledgeBaseIds):
         self._KnowledgeBaseIds = KnowledgeBaseIds
 
+    @property
+    def ArchVersion(self):
+        r"""<p>版本信息</p>
+        :rtype: str
+        """
+        return self._ArchVersion
+
+    @ArchVersion.setter
+    def ArchVersion(self, ArchVersion):
+        self._ArchVersion = ArchVersion
+
 
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
@@ -669,6 +683,7 @@ class ChatAIRequest(AbstractModel):
         self._AgentType = params.get("AgentType")
         self._OldRecordId = params.get("OldRecordId")
         self._KnowledgeBaseIds = params.get("KnowledgeBaseIds")
+        self._ArchVersion = params.get("ArchVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

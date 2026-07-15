@@ -4416,6 +4416,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateAigcApiToken(
+            self,
+            request: models.UpdateAigcApiTokenRequest,
+            opts: Dict = None,
+    ) -> models.UpdateAigcApiTokenResponse:
+        """
+        创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateAigcApiToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateAigcApiTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def VerifyDomainRecord(
             self,
             request: models.VerifyDomainRecordRequest,

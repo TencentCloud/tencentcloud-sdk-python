@@ -9849,15 +9849,15 @@ class DescribeDataReportCountV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: int
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
-        :param _ID: 项目ID
+        :param _ID: <p>项目ID</p>
         :type ID: int
-        :param _ReportType: 上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）
+        :param _ReportType: <p>上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）</p>
         :type ReportType: str
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
         """
         self._StartTime = None
@@ -9868,7 +9868,7 @@ class DescribeDataReportCountV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -9879,7 +9879,7 @@ class DescribeDataReportCountV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -9890,7 +9890,7 @@ class DescribeDataReportCountV2Request(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ID
@@ -9901,7 +9901,7 @@ class DescribeDataReportCountV2Request(AbstractModel):
 
     @property
     def ReportType(self):
-        r"""上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）
+        r"""<p>上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）</p>
         :rtype: str
         """
         return self._ReportType
@@ -9912,7 +9912,7 @@ class DescribeDataReportCountV2Request(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -9945,7 +9945,7 @@ class DescribeDataReportCountV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回值
+        :param _Result: <p>返回值</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9955,7 +9955,7 @@ class DescribeDataReportCountV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回值
+        r"""<p>返回值</p>
         :rtype: str
         """
         return self._Result
@@ -18886,21 +18886,21 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderBy: 排序方式  desc  asc（必填）
+        :param _OrderBy: <p>排序方式  desc  asc（必填）</p>
         :type OrderBy: str
-        :param _StartTime: 开始时间（必填）
+        :param _StartTime: <p>开始时间（必填）</p>
         :type StartTime: str
-        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Page: 页数，第几页
+        :param _Page: <p>页数，第几页（注意：该字段已废弃！）</p>
         :type Page: int
-        :param _Query: 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        :param _Query: <p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
         :type Query: str
-        :param _EndTime: 结束时间（必填）
+        :param _EndTime: <p>结束时间（必填）</p>
         :type EndTime: str
-        :param _ID: 项目ID（必填）
+        :param _ID: <p>项目ID（必填）</p>
         :type ID: int
-        :param _GroupField: 聚合字段
+        :param _GroupField: <p>聚合字段</p>
         :type GroupField: str
         """
         self._OrderBy = None
@@ -18914,7 +18914,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序方式  desc  asc（必填）
+        r"""<p>排序方式  desc  asc（必填）</p>
         :rtype: str
         """
         return self._OrderBy
@@ -18925,7 +18925,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间（必填）
+        r"""<p>开始时间（必填）</p>
         :rtype: str
         """
         return self._StartTime
@@ -18936,7 +18936,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        r"""<p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :rtype: int
         """
         return self._Limit
@@ -18947,7 +18947,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""页数，第几页
+        r"""<p>页数，第几页（注意：该字段已废弃！）</p>
         :rtype: int
         """
         return self._Page
@@ -18958,7 +18958,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        r"""<p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
         :rtype: str
         """
         return self._Query
@@ -18969,7 +18969,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（必填）
+        r"""<p>结束时间（必填）</p>
         :rtype: str
         """
         return self._EndTime
@@ -18980,7 +18980,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID（必填）
+        r"""<p>项目ID（必填）</p>
         :rtype: int
         """
         return self._ID
@@ -18991,7 +18991,7 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def GroupField(self):
-        r"""聚合字段
+        r"""<p>聚合字段</p>
         :rtype: str
         """
         return self._GroupField
@@ -19027,7 +19027,7 @@ class DescribeRumGroupLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回字符串
+        :param _Result: <p>返回字符串</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19037,7 +19037,7 @@ class DescribeRumGroupLogResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回字符串
+        r"""<p>返回字符串</p>
         :rtype: str
         """
         return self._Result
@@ -19070,21 +19070,21 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderBy: 排序方式 desc asc（必填）
+        :param _OrderBy: <p>排序方式 desc asc（必填）</p>
         :type OrderBy: str
-        :param _StartTime: 开始时间（必填）
+        :param _StartTime: <p>开始时间（必填）</p>
         :type StartTime: int
-        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Filter: 过滤条件
+        :param _Filter: <p>过滤条件</p>
         :type Filter: str
-        :param _EndTime: 结束时间（必填）
+        :param _EndTime: <p>结束时间（必填）</p>
         :type EndTime: int
-        :param _ID: 项目ID（必填）
+        :param _ID: <p>项目ID（必填）</p>
         :type ID: int
-        :param _Label: 聚合字段
+        :param _Label: <p>聚合字段</p>
         :type Label: str
-        :param _Last: 页数，第几页
+        :param _Last: <p>页数，第几页（注意：该字段已废弃！）</p>
         :type Last: int
         """
         self._OrderBy = None
@@ -19098,7 +19098,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序方式 desc asc（必填）
+        r"""<p>排序方式 desc asc（必填）</p>
         :rtype: str
         """
         return self._OrderBy
@@ -19109,7 +19109,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间（必填）
+        r"""<p>开始时间（必填）</p>
         :rtype: int
         """
         return self._StartTime
@@ -19120,7 +19120,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        r"""<p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :rtype: int
         """
         return self._Limit
@@ -19131,7 +19131,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""过滤条件
+        r"""<p>过滤条件</p>
         :rtype: str
         """
         return self._Filter
@@ -19142,7 +19142,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（必填）
+        r"""<p>结束时间（必填）</p>
         :rtype: int
         """
         return self._EndTime
@@ -19153,7 +19153,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID（必填）
+        r"""<p>项目ID（必填）</p>
         :rtype: int
         """
         return self._ID
@@ -19164,7 +19164,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def Label(self):
-        r"""聚合字段
+        r"""<p>聚合字段</p>
         :rtype: str
         """
         return self._Label
@@ -19175,7 +19175,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def Last(self):
-        r"""页数，第几页
+        r"""<p>页数，第几页（注意：该字段已废弃！）</p>
         :rtype: int
         """
         return self._Last
@@ -19211,7 +19211,7 @@ class DescribeRumGroupLogV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Query result in JSON string format
+        :param _Result: <p>Query result in JSON string format</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19221,7 +19221,7 @@ class DescribeRumGroupLogV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""Query result in JSON string format
+        r"""<p>Query result in JSON string format</p>
         :rtype: str
         """
         return self._Result
@@ -20743,15 +20743,15 @@ class DescribeScoresV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _IDList: 项目 ID 列表
+        :param _IDList: <p>项目 ID 列表</p>
         :type IDList: list of int
-        :param _Type: 查询粒度，hour 或 day
+        :param _Type: <p>查询粒度，hour 或 day</p>
         :type Type: str
-        :param _Env: 环境
+        :param _Env: <p>环境</p>
         :type Env: str
         """
         self._StartTime = None
@@ -20762,7 +20762,7 @@ class DescribeScoresV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -20773,7 +20773,7 @@ class DescribeScoresV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -20784,7 +20784,7 @@ class DescribeScoresV2Request(AbstractModel):
 
     @property
     def IDList(self):
-        r"""项目 ID 列表
+        r"""<p>项目 ID 列表</p>
         :rtype: list of int
         """
         return self._IDList
@@ -20795,7 +20795,7 @@ class DescribeScoresV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""查询粒度，hour 或 day
+        r"""<p>查询粒度，hour 或 day</p>
         :rtype: str
         """
         return self._Type
@@ -20806,7 +20806,7 @@ class DescribeScoresV2Request(AbstractModel):
 
     @property
     def Env(self):
-        r"""环境
+        r"""<p>环境</p>
         :rtype: str
         """
         return self._Env
@@ -20839,7 +20839,7 @@ class DescribeScoresV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScoreSet: 项目得分数组
+        :param _ScoreSet: <p>项目得分数组</p>
         :type ScoreSet: list of ScoreInfoV2
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20849,7 +20849,7 @@ class DescribeScoresV2Response(AbstractModel):
 
     @property
     def ScoreSet(self):
-        r"""项目得分数组
+        r"""<p>项目得分数组</p>
         :rtype: list of ScoreInfoV2
         """
         return self._ScoreSet

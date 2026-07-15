@@ -234,6 +234,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAiDramaTask(self, request):
+        r"""Ai漫剧工作流，输入剧本，自动拆分分镜，生成Ai漫剧
+
+        :param request: Request instance for CreateAiDramaTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAiDramaTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAiDramaTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAiDramaTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAiDramaTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAigcAudioTask(self, request):
         r"""调用该接口，用于创建AI生音频任务。
 
@@ -979,6 +1002,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreateVideoDatabaseEntryTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateVideoDatabaseEntryTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVideoRedrawTask(self, request):
+        r"""创建AIGC转绘任务
+
+        :param request: Request instance for CreateVideoRedrawTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateVideoRedrawTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateVideoRedrawTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoRedrawTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoRedrawTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

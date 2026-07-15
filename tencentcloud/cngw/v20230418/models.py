@@ -69,6 +69,98 @@ class AIGWACLSubject(AbstractModel):
         
 
 
+class AIGWCacheAwareRouteCandidate(AbstractModel):
+    r"""缓存感知路由候选模型服务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelServiceId: <p>模型服务ID</p>
+        :type ModelServiceId: str
+        :param _ModelServiceName: <p>模型服务名称</p>
+        :type ModelServiceName: str
+        """
+        self._ModelServiceId = None
+        self._ModelServiceName = None
+
+    @property
+    def ModelServiceId(self):
+        r"""<p>模型服务ID</p>
+        :rtype: str
+        """
+        return self._ModelServiceId
+
+    @ModelServiceId.setter
+    def ModelServiceId(self, ModelServiceId):
+        self._ModelServiceId = ModelServiceId
+
+    @property
+    def ModelServiceName(self):
+        r"""<p>模型服务名称</p>
+        :rtype: str
+        """
+        return self._ModelServiceName
+
+    @ModelServiceName.setter
+    def ModelServiceName(self, ModelServiceName):
+        self._ModelServiceName = ModelServiceName
+
+
+    def _deserialize(self, params):
+        self._ModelServiceId = params.get("ModelServiceId")
+        self._ModelServiceName = params.get("ModelServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWCacheAwareRouteConfig(AbstractModel):
+    r"""缓存感知路由
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Candidates: <p>前缀缓存感知路由模型服务列表</p>
+        :type Candidates: list of AIGWCacheAwareRouteCandidate
+        """
+        self._Candidates = None
+
+    @property
+    def Candidates(self):
+        r"""<p>前缀缓存感知路由模型服务列表</p>
+        :rtype: list of AIGWCacheAwareRouteCandidate
+        """
+        return self._Candidates
+
+    @Candidates.setter
+    def Candidates(self, Candidates):
+        self._Candidates = Candidates
+
+
+    def _deserialize(self, params):
+        if params.get("Candidates") is not None:
+            self._Candidates = []
+            for item in params.get("Candidates"):
+                obj = AIGWCacheAwareRouteCandidate()
+                obj._deserialize(item)
+                self._Candidates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWConsumerGroupBrief(AbstractModel):
     r"""AI 网关中消费者组简要信息
 
@@ -689,6 +781,228 @@ class AIGWIntentRouteRule(AbstractModel):
         
 
 
+class AIGWJWTAuthPluginConfig(AbstractModel):
+    r"""JWT 认证插件配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeaderNames: <p>签名的header名称列表</p>
+        :type HeaderNames: list of str
+        :param _CookieNames: <p>签名的cookie名称列表</p>
+        :type CookieNames: list of str
+        :param _URIParamNames: <p>签名的URL参数名称列表</p>
+        :type URIParamNames: list of str
+        :param _KeyClaimName: <p>消费者标识</p>
+        :type KeyClaimName: str
+        :param _ClaimsToVerify: <p>标准消费者校验</p><p>枚举值：</p><ul><li>exp： exp</li><li>nbf： nbf</li></ul>
+        :type ClaimsToVerify: list of str
+        :param _MaximumExpiration: <p>最大有效期</p>
+        :type MaximumExpiration: int
+        :param _SecretIsBase64: <p>是否Base64编码</p>
+        :type SecretIsBase64: bool
+        :param _RunOnPreFlight: <p>CORS预检验证</p>
+        :type RunOnPreFlight: bool
+        """
+        self._HeaderNames = None
+        self._CookieNames = None
+        self._URIParamNames = None
+        self._KeyClaimName = None
+        self._ClaimsToVerify = None
+        self._MaximumExpiration = None
+        self._SecretIsBase64 = None
+        self._RunOnPreFlight = None
+
+    @property
+    def HeaderNames(self):
+        r"""<p>签名的header名称列表</p>
+        :rtype: list of str
+        """
+        return self._HeaderNames
+
+    @HeaderNames.setter
+    def HeaderNames(self, HeaderNames):
+        self._HeaderNames = HeaderNames
+
+    @property
+    def CookieNames(self):
+        r"""<p>签名的cookie名称列表</p>
+        :rtype: list of str
+        """
+        return self._CookieNames
+
+    @CookieNames.setter
+    def CookieNames(self, CookieNames):
+        self._CookieNames = CookieNames
+
+    @property
+    def URIParamNames(self):
+        r"""<p>签名的URL参数名称列表</p>
+        :rtype: list of str
+        """
+        return self._URIParamNames
+
+    @URIParamNames.setter
+    def URIParamNames(self, URIParamNames):
+        self._URIParamNames = URIParamNames
+
+    @property
+    def KeyClaimName(self):
+        r"""<p>消费者标识</p>
+        :rtype: str
+        """
+        return self._KeyClaimName
+
+    @KeyClaimName.setter
+    def KeyClaimName(self, KeyClaimName):
+        self._KeyClaimName = KeyClaimName
+
+    @property
+    def ClaimsToVerify(self):
+        r"""<p>标准消费者校验</p><p>枚举值：</p><ul><li>exp： exp</li><li>nbf： nbf</li></ul>
+        :rtype: list of str
+        """
+        return self._ClaimsToVerify
+
+    @ClaimsToVerify.setter
+    def ClaimsToVerify(self, ClaimsToVerify):
+        self._ClaimsToVerify = ClaimsToVerify
+
+    @property
+    def MaximumExpiration(self):
+        r"""<p>最大有效期</p>
+        :rtype: int
+        """
+        return self._MaximumExpiration
+
+    @MaximumExpiration.setter
+    def MaximumExpiration(self, MaximumExpiration):
+        self._MaximumExpiration = MaximumExpiration
+
+    @property
+    def SecretIsBase64(self):
+        r"""<p>是否Base64编码</p>
+        :rtype: bool
+        """
+        return self._SecretIsBase64
+
+    @SecretIsBase64.setter
+    def SecretIsBase64(self, SecretIsBase64):
+        self._SecretIsBase64 = SecretIsBase64
+
+    @property
+    def RunOnPreFlight(self):
+        r"""<p>CORS预检验证</p>
+        :rtype: bool
+        """
+        return self._RunOnPreFlight
+
+    @RunOnPreFlight.setter
+    def RunOnPreFlight(self, RunOnPreFlight):
+        self._RunOnPreFlight = RunOnPreFlight
+
+
+    def _deserialize(self, params):
+        self._HeaderNames = params.get("HeaderNames")
+        self._CookieNames = params.get("CookieNames")
+        self._URIParamNames = params.get("URIParamNames")
+        self._KeyClaimName = params.get("KeyClaimName")
+        self._ClaimsToVerify = params.get("ClaimsToVerify")
+        self._MaximumExpiration = params.get("MaximumExpiration")
+        self._SecretIsBase64 = params.get("SecretIsBase64")
+        self._RunOnPreFlight = params.get("RunOnPreFlight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWJWTCredentialConfig(AbstractModel):
+    r"""AI网关 JWT 凭证物料配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>JWT 消费者标识，iss claim</p>
+        :type Key: str
+        :param _Algorithm: <p>签名算法，取值：HS256 HS384 HS512 RS256 RS384 RS512 ES256 ES384 ES512</p>
+        :type Algorithm: str
+        :param _Secret: <p>HS 对称密钥，仅 Algorithm 为 HS256/HS384/HS512 时必填；RS/ES* 时留空</p>
+        :type Secret: str
+        :param _RSAPublicKey: <p>RS/ES PEM 格式公钥，仅 Algorithm 为 RS256/RS384/RS512/ES256/ES384/ES512 时必填；HS* 时留空</p>
+        :type RSAPublicKey: str
+        """
+        self._Key = None
+        self._Algorithm = None
+        self._Secret = None
+        self._RSAPublicKey = None
+
+    @property
+    def Key(self):
+        r"""<p>JWT 消费者标识，iss claim</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Algorithm(self):
+        r"""<p>签名算法，取值：HS256 HS384 HS512 RS256 RS384 RS512 ES256 ES384 ES512</p>
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def Secret(self):
+        r"""<p>HS 对称密钥，仅 Algorithm 为 HS256/HS384/HS512 时必填；RS/ES* 时留空</p>
+        :rtype: str
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+    @property
+    def RSAPublicKey(self):
+        r"""<p>RS/ES PEM 格式公钥，仅 Algorithm 为 RS256/RS384/RS512/ES256/ES384/ES512 时必填；HS* 时留空</p>
+        :rtype: str
+        """
+        return self._RSAPublicKey
+
+    @RSAPublicKey.setter
+    def RSAPublicKey(self, RSAPublicKey):
+        self._RSAPublicKey = RSAPublicKey
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Algorithm = params.get("Algorithm")
+        self._Secret = params.get("Secret")
+        self._RSAPublicKey = params.get("RSAPublicKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWKVMatch(AbstractModel):
     r"""路由匹配规则
 
@@ -745,6 +1059,96 @@ class AIGWKVMatch(AbstractModel):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
         self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWLLMModelServiceSubRoute(AbstractModel):
+    r"""模型服务二级路由配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SelectedTypes: <p>生效的路由算法类型：权重路由，模型名称路由、参数路由等Weighted/ModelName/Query (预留多个，暂时只能填写一个)</p>
+        :type SelectedTypes: list of str
+        :param _WeightedConfig: <p>权重路由配置，最多10个</p>
+        :type WeightedConfig: list of CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy
+        :param _LatencyPriorityConfig: <p>延迟路由</p>
+        :type LatencyPriorityConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLatencyPriorityConfig`
+        :param _ModelServiceConfig: <p>指定模型路由（暂时只用在Token长度路由时的子路由选择）</p>
+        :type ModelServiceConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWRouteModelServiceConfig`
+        """
+        self._SelectedTypes = None
+        self._WeightedConfig = None
+        self._LatencyPriorityConfig = None
+        self._ModelServiceConfig = None
+
+    @property
+    def SelectedTypes(self):
+        r"""<p>生效的路由算法类型：权重路由，模型名称路由、参数路由等Weighted/ModelName/Query (预留多个，暂时只能填写一个)</p>
+        :rtype: list of str
+        """
+        return self._SelectedTypes
+
+    @SelectedTypes.setter
+    def SelectedTypes(self, SelectedTypes):
+        self._SelectedTypes = SelectedTypes
+
+    @property
+    def WeightedConfig(self):
+        r"""<p>权重路由配置，最多10个</p>
+        :rtype: list of CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy
+        """
+        return self._WeightedConfig
+
+    @WeightedConfig.setter
+    def WeightedConfig(self, WeightedConfig):
+        self._WeightedConfig = WeightedConfig
+
+    @property
+    def LatencyPriorityConfig(self):
+        r"""<p>延迟路由</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLatencyPriorityConfig`
+        """
+        return self._LatencyPriorityConfig
+
+    @LatencyPriorityConfig.setter
+    def LatencyPriorityConfig(self, LatencyPriorityConfig):
+        self._LatencyPriorityConfig = LatencyPriorityConfig
+
+    @property
+    def ModelServiceConfig(self):
+        r"""<p>指定模型路由（暂时只用在Token长度路由时的子路由选择）</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWRouteModelServiceConfig`
+        """
+        return self._ModelServiceConfig
+
+    @ModelServiceConfig.setter
+    def ModelServiceConfig(self, ModelServiceConfig):
+        self._ModelServiceConfig = ModelServiceConfig
+
+
+    def _deserialize(self, params):
+        self._SelectedTypes = params.get("SelectedTypes")
+        if params.get("WeightedConfig") is not None:
+            self._WeightedConfig = []
+            for item in params.get("WeightedConfig"):
+                obj = CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy()
+                obj._deserialize(item)
+                self._WeightedConfig.append(obj)
+        if params.get("LatencyPriorityConfig") is not None:
+            self._LatencyPriorityConfig = AIGWLatencyPriorityConfig()
+            self._LatencyPriorityConfig._deserialize(params.get("LatencyPriorityConfig"))
+        if params.get("ModelServiceConfig") is not None:
+            self._ModelServiceConfig = AIGWRouteModelServiceConfig()
+            self._ModelServiceConfig._deserialize(params.get("ModelServiceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1372,11 +1776,17 @@ class AIGWLogConfig(AbstractModel):
         :type RequestLogPayloadMaxSize: int
         :param _ResponseLogPayloadMaxSize: <p>日志记录的响应body的最大字节数</p><p>取值范围：[512, 1048576]</p><p>EnableResponseLogPayloads 为true时必填</p>
         :type ResponseLogPayloadMaxSize: int
+        :param _RequestLogPayloadMode: <p>请求 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始请求</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
+        :type RequestLogPayloadMode: str
+        :param _ResponseLogPayloadMode: <p>上游原始 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
+        :type ResponseLogPayloadMode: str
         """
         self._EnableRequestLogPayloads = None
         self._EnableResponseLogPayloads = None
         self._RequestLogPayloadMaxSize = None
         self._ResponseLogPayloadMaxSize = None
+        self._RequestLogPayloadMode = None
+        self._ResponseLogPayloadMode = None
 
     @property
     def EnableRequestLogPayloads(self):
@@ -1422,12 +1832,36 @@ class AIGWLogConfig(AbstractModel):
     def ResponseLogPayloadMaxSize(self, ResponseLogPayloadMaxSize):
         self._ResponseLogPayloadMaxSize = ResponseLogPayloadMaxSize
 
+    @property
+    def RequestLogPayloadMode(self):
+        r"""<p>请求 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始请求</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
+        :rtype: str
+        """
+        return self._RequestLogPayloadMode
+
+    @RequestLogPayloadMode.setter
+    def RequestLogPayloadMode(self, RequestLogPayloadMode):
+        self._RequestLogPayloadMode = RequestLogPayloadMode
+
+    @property
+    def ResponseLogPayloadMode(self):
+        r"""<p>上游原始 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
+        :rtype: str
+        """
+        return self._ResponseLogPayloadMode
+
+    @ResponseLogPayloadMode.setter
+    def ResponseLogPayloadMode(self, ResponseLogPayloadMode):
+        self._ResponseLogPayloadMode = ResponseLogPayloadMode
+
 
     def _deserialize(self, params):
         self._EnableRequestLogPayloads = params.get("EnableRequestLogPayloads")
         self._EnableResponseLogPayloads = params.get("EnableResponseLogPayloads")
         self._RequestLogPayloadMaxSize = params.get("RequestLogPayloadMaxSize")
         self._ResponseLogPayloadMaxSize = params.get("ResponseLogPayloadMaxSize")
+        self._RequestLogPayloadMode = params.get("RequestLogPayloadMode")
+        self._ResponseLogPayloadMode = params.get("ResponseLogPayloadMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1957,8 +2391,17 @@ class AIGWMCPServerAuthResult(AbstractModel):
         r"""
         :param _AuthType: <p>MCP服务认证类型</p><p>枚举值：</p><ul><li>None： 无认证</li><li>ApiKey： API Key认证</li></ul>
         :type AuthType: str
+        :param _JWTAuthConfig: <p>JWT认证配置</p>
+        :type JWTAuthConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTAuthPluginConfig`
+        :param _OAuthAuthConfig: <p>OAuth2认证配置</p>
+        :type OAuthAuthConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthAuthPluginConfig`
+        :param _OIDCAuthConfig: <p>OIDC认证配置</p>
+        :type OIDCAuthConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCAuthPluginConfig`
         """
         self._AuthType = None
+        self._JWTAuthConfig = None
+        self._OAuthAuthConfig = None
+        self._OIDCAuthConfig = None
 
     @property
     def AuthType(self):
@@ -1971,9 +2414,51 @@ class AIGWMCPServerAuthResult(AbstractModel):
     def AuthType(self, AuthType):
         self._AuthType = AuthType
 
+    @property
+    def JWTAuthConfig(self):
+        r"""<p>JWT认证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTAuthPluginConfig`
+        """
+        return self._JWTAuthConfig
+
+    @JWTAuthConfig.setter
+    def JWTAuthConfig(self, JWTAuthConfig):
+        self._JWTAuthConfig = JWTAuthConfig
+
+    @property
+    def OAuthAuthConfig(self):
+        r"""<p>OAuth2认证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthAuthPluginConfig`
+        """
+        return self._OAuthAuthConfig
+
+    @OAuthAuthConfig.setter
+    def OAuthAuthConfig(self, OAuthAuthConfig):
+        self._OAuthAuthConfig = OAuthAuthConfig
+
+    @property
+    def OIDCAuthConfig(self):
+        r"""<p>OIDC认证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCAuthPluginConfig`
+        """
+        return self._OIDCAuthConfig
+
+    @OIDCAuthConfig.setter
+    def OIDCAuthConfig(self, OIDCAuthConfig):
+        self._OIDCAuthConfig = OIDCAuthConfig
+
 
     def _deserialize(self, params):
         self._AuthType = params.get("AuthType")
+        if params.get("JWTAuthConfig") is not None:
+            self._JWTAuthConfig = AIGWJWTAuthPluginConfig()
+            self._JWTAuthConfig._deserialize(params.get("JWTAuthConfig"))
+        if params.get("OAuthAuthConfig") is not None:
+            self._OAuthAuthConfig = AIGWOAuthAuthPluginConfig()
+            self._OAuthAuthConfig._deserialize(params.get("OAuthAuthConfig"))
+        if params.get("OIDCAuthConfig") is not None:
+            self._OIDCAuthConfig = AIGWOIDCAuthPluginConfig()
+            self._OIDCAuthConfig._deserialize(params.get("OIDCAuthConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2644,6 +3129,471 @@ class AIGWMCPUpstreamInfoDetail(AbstractModel):
         
 
 
+class AIGWModelRewriteRule(AbstractModel):
+    r"""模型名字重写规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceModel: <p>原始模型</p>
+        :type SourceModel: str
+        :param _TargetModel: <p>目标模型</p>
+        :type TargetModel: str
+        """
+        self._SourceModel = None
+        self._TargetModel = None
+
+    @property
+    def SourceModel(self):
+        r"""<p>原始模型</p>
+        :rtype: str
+        """
+        return self._SourceModel
+
+    @SourceModel.setter
+    def SourceModel(self, SourceModel):
+        self._SourceModel = SourceModel
+
+    @property
+    def TargetModel(self):
+        r"""<p>目标模型</p>
+        :rtype: str
+        """
+        return self._TargetModel
+
+    @TargetModel.setter
+    def TargetModel(self, TargetModel):
+        self._TargetModel = TargetModel
+
+
+    def _deserialize(self, params):
+        self._SourceModel = params.get("SourceModel")
+        self._TargetModel = params.get("TargetModel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWOAuthAuthPluginConfig(AbstractModel):
+    r"""资源端 OAuth2 认证插件配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeaderNames: <p>取token的头部名称</p>
+        :type HeaderNames: list of str
+        :param _TokenExpiration: <p>过期时间</p>
+        :type TokenExpiration: int
+        :param _Scopes: <p>授权范围</p>
+        :type Scopes: list of str
+        :param _MandatoryScope: <p>是否强制判断授权范围</p>
+        :type MandatoryScope: bool
+        """
+        self._HeaderNames = None
+        self._TokenExpiration = None
+        self._Scopes = None
+        self._MandatoryScope = None
+
+    @property
+    def HeaderNames(self):
+        r"""<p>取token的头部名称</p>
+        :rtype: list of str
+        """
+        return self._HeaderNames
+
+    @HeaderNames.setter
+    def HeaderNames(self, HeaderNames):
+        self._HeaderNames = HeaderNames
+
+    @property
+    def TokenExpiration(self):
+        r"""<p>过期时间</p>
+        :rtype: int
+        """
+        return self._TokenExpiration
+
+    @TokenExpiration.setter
+    def TokenExpiration(self, TokenExpiration):
+        self._TokenExpiration = TokenExpiration
+
+    @property
+    def Scopes(self):
+        r"""<p>授权范围</p>
+        :rtype: list of str
+        """
+        return self._Scopes
+
+    @Scopes.setter
+    def Scopes(self, Scopes):
+        self._Scopes = Scopes
+
+    @property
+    def MandatoryScope(self):
+        r"""<p>是否强制判断授权范围</p>
+        :rtype: bool
+        """
+        return self._MandatoryScope
+
+    @MandatoryScope.setter
+    def MandatoryScope(self, MandatoryScope):
+        self._MandatoryScope = MandatoryScope
+
+
+    def _deserialize(self, params):
+        self._HeaderNames = params.get("HeaderNames")
+        self._TokenExpiration = params.get("TokenExpiration")
+        self._Scopes = params.get("Scopes")
+        self._MandatoryScope = params.get("MandatoryScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWOAuthCredentialConfig(AbstractModel):
+    r"""OAuth2 凭证物料配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: <p>客户端ID</p>
+        :type ClientId: str
+        :param _ClientSecret: <p>客户端密钥</p>
+        :type ClientSecret: str
+        """
+        self._ClientId = None
+        self._ClientSecret = None
+
+    @property
+    def ClientId(self):
+        r"""<p>客户端ID</p>
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientSecret(self):
+        r"""<p>客户端密钥</p>
+        :rtype: str
+        """
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientSecret = params.get("ClientSecret")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWOIDCAuthPluginConfig(AbstractModel):
+    r"""资源端 OIDC 认证插件配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Audience: <p>目标受众</p>
+        :type Audience: str
+        :param _BearerOnly: <p>是否BearerOnly</p><p>目前只能为true</p>
+        :type BearerOnly: bool
+        :param _Scopes: <p>授权范围</p>
+        :type Scopes: list of str
+        :param _ConsumerClaim: <p>消费者标识</p>
+        :type ConsumerClaim: str
+        :param _Realm: <p>认证域</p>
+        :type Realm: str
+        :param _Timeout: <p>超时时间</p>
+        :type Timeout: int
+        :param _TokenEndpointAuthMethod: <p>令牌端点认证方法</p><p>枚举值：</p><ul><li>client_secret_post： client_secret_post</li><li>client_secret_basic： client_secret_basic</li><li>private_key_jwt： private_key_jwt</li></ul>
+        :type TokenEndpointAuthMethod: str
+        :param _IntrospectionEndpoint: <p>令牌内省端点</p>
+        :type IntrospectionEndpoint: str
+        :param _IntrospectionEndpointAuthMethod: <p>令牌内省端点认证方法</p><p>枚举值：</p><ul><li>client_secret_basic： client_secret_basic</li><li>client_secret_post： client_secret_post</li></ul>
+        :type IntrospectionEndpointAuthMethod: str
+        :param _IssuerURL: <p>签发者地址</p>
+        :type IssuerURL: str
+        :param _ClientId: <p>客户端 ID</p>
+        :type ClientId: str
+        :param _ClientSecret: <p>客户端密钥</p>
+        :type ClientSecret: str
+        """
+        self._Audience = None
+        self._BearerOnly = None
+        self._Scopes = None
+        self._ConsumerClaim = None
+        self._Realm = None
+        self._Timeout = None
+        self._TokenEndpointAuthMethod = None
+        self._IntrospectionEndpoint = None
+        self._IntrospectionEndpointAuthMethod = None
+        self._IssuerURL = None
+        self._ClientId = None
+        self._ClientSecret = None
+
+    @property
+    def Audience(self):
+        r"""<p>目标受众</p>
+        :rtype: str
+        """
+        return self._Audience
+
+    @Audience.setter
+    def Audience(self, Audience):
+        self._Audience = Audience
+
+    @property
+    def BearerOnly(self):
+        r"""<p>是否BearerOnly</p><p>目前只能为true</p>
+        :rtype: bool
+        """
+        return self._BearerOnly
+
+    @BearerOnly.setter
+    def BearerOnly(self, BearerOnly):
+        self._BearerOnly = BearerOnly
+
+    @property
+    def Scopes(self):
+        r"""<p>授权范围</p>
+        :rtype: list of str
+        """
+        return self._Scopes
+
+    @Scopes.setter
+    def Scopes(self, Scopes):
+        self._Scopes = Scopes
+
+    @property
+    def ConsumerClaim(self):
+        r"""<p>消费者标识</p>
+        :rtype: str
+        """
+        return self._ConsumerClaim
+
+    @ConsumerClaim.setter
+    def ConsumerClaim(self, ConsumerClaim):
+        self._ConsumerClaim = ConsumerClaim
+
+    @property
+    def Realm(self):
+        r"""<p>认证域</p>
+        :rtype: str
+        """
+        return self._Realm
+
+    @Realm.setter
+    def Realm(self, Realm):
+        self._Realm = Realm
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def TokenEndpointAuthMethod(self):
+        r"""<p>令牌端点认证方法</p><p>枚举值：</p><ul><li>client_secret_post： client_secret_post</li><li>client_secret_basic： client_secret_basic</li><li>private_key_jwt： private_key_jwt</li></ul>
+        :rtype: str
+        """
+        return self._TokenEndpointAuthMethod
+
+    @TokenEndpointAuthMethod.setter
+    def TokenEndpointAuthMethod(self, TokenEndpointAuthMethod):
+        self._TokenEndpointAuthMethod = TokenEndpointAuthMethod
+
+    @property
+    def IntrospectionEndpoint(self):
+        r"""<p>令牌内省端点</p>
+        :rtype: str
+        """
+        return self._IntrospectionEndpoint
+
+    @IntrospectionEndpoint.setter
+    def IntrospectionEndpoint(self, IntrospectionEndpoint):
+        self._IntrospectionEndpoint = IntrospectionEndpoint
+
+    @property
+    def IntrospectionEndpointAuthMethod(self):
+        r"""<p>令牌内省端点认证方法</p><p>枚举值：</p><ul><li>client_secret_basic： client_secret_basic</li><li>client_secret_post： client_secret_post</li></ul>
+        :rtype: str
+        """
+        return self._IntrospectionEndpointAuthMethod
+
+    @IntrospectionEndpointAuthMethod.setter
+    def IntrospectionEndpointAuthMethod(self, IntrospectionEndpointAuthMethod):
+        self._IntrospectionEndpointAuthMethod = IntrospectionEndpointAuthMethod
+
+    @property
+    def IssuerURL(self):
+        r"""<p>签发者地址</p>
+        :rtype: str
+        """
+        return self._IssuerURL
+
+    @IssuerURL.setter
+    def IssuerURL(self, IssuerURL):
+        self._IssuerURL = IssuerURL
+
+    @property
+    def ClientId(self):
+        r"""<p>客户端 ID</p>
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientSecret(self):
+        r"""<p>客户端密钥</p>
+        :rtype: str
+        """
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+
+    def _deserialize(self, params):
+        self._Audience = params.get("Audience")
+        self._BearerOnly = params.get("BearerOnly")
+        self._Scopes = params.get("Scopes")
+        self._ConsumerClaim = params.get("ConsumerClaim")
+        self._Realm = params.get("Realm")
+        self._Timeout = params.get("Timeout")
+        self._TokenEndpointAuthMethod = params.get("TokenEndpointAuthMethod")
+        self._IntrospectionEndpoint = params.get("IntrospectionEndpoint")
+        self._IntrospectionEndpointAuthMethod = params.get("IntrospectionEndpointAuthMethod")
+        self._IssuerURL = params.get("IssuerURL")
+        self._ClientId = params.get("ClientId")
+        self._ClientSecret = params.get("ClientSecret")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWOIDCCredentialConfig(AbstractModel):
+    r"""OIDC 凭证物料配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: <p>IdP 注册的 client_id</p>
+        :type ClientId: str
+        :param _ClientSecret: <p>客户端密钥</p><p>参数格式：IdP 注册的 client_secret</p>
+        :type ClientSecret: str
+        :param _IssuerURL: <p>IdP Issuer URL</p>
+        :type IssuerURL: str
+        :param _ConsumerClaimValue: <p>IdP 中该用户的 claim 值</p>
+        :type ConsumerClaimValue: str
+        """
+        self._ClientId = None
+        self._ClientSecret = None
+        self._IssuerURL = None
+        self._ConsumerClaimValue = None
+
+    @property
+    def ClientId(self):
+        r"""<p>IdP 注册的 client_id</p>
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientSecret(self):
+        r"""<p>客户端密钥</p><p>参数格式：IdP 注册的 client_secret</p>
+        :rtype: str
+        """
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+    @property
+    def IssuerURL(self):
+        r"""<p>IdP Issuer URL</p>
+        :rtype: str
+        """
+        return self._IssuerURL
+
+    @IssuerURL.setter
+    def IssuerURL(self, IssuerURL):
+        self._IssuerURL = IssuerURL
+
+    @property
+    def ConsumerClaimValue(self):
+        r"""<p>IdP 中该用户的 claim 值</p>
+        :rtype: str
+        """
+        return self._ConsumerClaimValue
+
+    @ConsumerClaimValue.setter
+    def ConsumerClaimValue(self, ConsumerClaimValue):
+        self._ConsumerClaimValue = ConsumerClaimValue
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientSecret = params.get("ClientSecret")
+        self._IssuerURL = params.get("IssuerURL")
+        self._ConsumerClaimValue = params.get("ConsumerClaimValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWRedisConfig(AbstractModel):
     r"""精确缓存 redis 配置
 
@@ -2725,6 +3675,42 @@ class AIGWRedisConfig(AbstractModel):
         
 
 
+class AIGWRouteModelServiceConfig(AbstractModel):
+    r"""AI 网关指定模型路由（暂时只用在Token长度路由时的子路由选择）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelServiceName: <p>模型服务名字</p>
+        :type ModelServiceName: str
+        """
+        self._ModelServiceName = None
+
+    @property
+    def ModelServiceName(self):
+        r"""<p>模型服务名字</p>
+        :rtype: str
+        """
+        return self._ModelServiceName
+
+    @ModelServiceName.setter
+    def ModelServiceName(self, ModelServiceName):
+        self._ModelServiceName = ModelServiceName
+
+
+    def _deserialize(self, params):
+        self._ModelServiceName = params.get("ModelServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWTagFilter(AbstractModel):
     r"""AI网关标签过滤
 
@@ -2766,6 +3752,147 @@ class AIGWTagFilter(AbstractModel):
     def _deserialize(self, params):
         self._MatchStrategy = params.get("MatchStrategy")
         self._Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWTokenLengthRoute(AbstractModel):
+    r"""AI 网关token长度路由配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DefaultEncodingName: <p>默认tokenizer编码器</p><p>枚举值：</p><ul><li>o200k_base： OpenApi o200k_base</li><li>cl100k_base： OpenApi cl100k_base</li><li>p50k_base： OpenApi p50k_base</li><li>r50k_base： OpenApi r50k_base</li></ul>
+        :type DefaultEncodingName: str
+        :param _DefaultTarget: <p>token 计数失败、规则为空或未命中任何规则时执行的默认二级路由（暂时只能选择一个指定模型路由）</p>
+        :type DefaultTarget: :class:`tencentcloud.cngw.v20230418.models.AIGWLLMModelServiceSubRoute`
+        :param _Rules: <p>规则</p>
+        :type Rules: list of AIGWTokenLengthRouteRule
+        """
+        self._DefaultEncodingName = None
+        self._DefaultTarget = None
+        self._Rules = None
+
+    @property
+    def DefaultEncodingName(self):
+        r"""<p>默认tokenizer编码器</p><p>枚举值：</p><ul><li>o200k_base： OpenApi o200k_base</li><li>cl100k_base： OpenApi cl100k_base</li><li>p50k_base： OpenApi p50k_base</li><li>r50k_base： OpenApi r50k_base</li></ul>
+        :rtype: str
+        """
+        return self._DefaultEncodingName
+
+    @DefaultEncodingName.setter
+    def DefaultEncodingName(self, DefaultEncodingName):
+        self._DefaultEncodingName = DefaultEncodingName
+
+    @property
+    def DefaultTarget(self):
+        r"""<p>token 计数失败、规则为空或未命中任何规则时执行的默认二级路由（暂时只能选择一个指定模型路由）</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLLMModelServiceSubRoute`
+        """
+        return self._DefaultTarget
+
+    @DefaultTarget.setter
+    def DefaultTarget(self, DefaultTarget):
+        self._DefaultTarget = DefaultTarget
+
+    @property
+    def Rules(self):
+        r"""<p>规则</p>
+        :rtype: list of AIGWTokenLengthRouteRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._DefaultEncodingName = params.get("DefaultEncodingName")
+        if params.get("DefaultTarget") is not None:
+            self._DefaultTarget = AIGWLLMModelServiceSubRoute()
+            self._DefaultTarget._deserialize(params.get("DefaultTarget"))
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = AIGWTokenLengthRouteRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWTokenLengthRouteRule(AbstractModel):
+    r"""AI 网关Token长度路由规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinTokenLength: <p>token 长度下界，闭区间；0 合法</p>
+        :type MinTokenLength: int
+        :param _MaxTokenLength: <p>token 长度上界，闭区间</p>
+        :type MaxTokenLength: int
+        :param _Target: <p>命中该分段后执行的二级路由</p>
+        :type Target: :class:`tencentcloud.cngw.v20230418.models.AIGWLLMModelServiceSubRoute`
+        """
+        self._MinTokenLength = None
+        self._MaxTokenLength = None
+        self._Target = None
+
+    @property
+    def MinTokenLength(self):
+        r"""<p>token 长度下界，闭区间；0 合法</p>
+        :rtype: int
+        """
+        return self._MinTokenLength
+
+    @MinTokenLength.setter
+    def MinTokenLength(self, MinTokenLength):
+        self._MinTokenLength = MinTokenLength
+
+    @property
+    def MaxTokenLength(self):
+        r"""<p>token 长度上界，闭区间</p>
+        :rtype: int
+        """
+        return self._MaxTokenLength
+
+    @MaxTokenLength.setter
+    def MaxTokenLength(self, MaxTokenLength):
+        self._MaxTokenLength = MaxTokenLength
+
+    @property
+    def Target(self):
+        r"""<p>命中该分段后执行的二级路由</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLLMModelServiceSubRoute`
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        self._MinTokenLength = params.get("MinTokenLength")
+        self._MaxTokenLength = params.get("MaxTokenLength")
+        if params.get("Target") is not None:
+            self._Target = AIGWLLMModelServiceSubRoute()
+            self._Target._deserialize(params.get("Target"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3964,6 +5091,14 @@ class CNAPIGwSecretKey(AbstractModel):
         :type BindCount: int
         :param _ResourceType: <p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer： 消费者</li><li>ModelService： 模型服务</li></ul>
         :type ResourceType: str
+        :param _JWTCredentialConfig: <p>JWT凭证配置</p>
+        :type JWTCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTCredentialConfig`
+        :param _OAuthCredentialConfig: <p>OAuth2凭证配置</p>
+        :type OAuthCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthCredentialConfig`
+        :param _OIDCCredentialConfig: <p>OIDC凭证配置</p>
+        :type OIDCCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCCredentialConfig`
+        :param _Provider: <p>Agent 密钥类型</p>
+        :type Provider: str
         """
         self._SecretKeyId = None
         self._Name = None
@@ -3979,6 +5114,10 @@ class CNAPIGwSecretKey(AbstractModel):
         self._ModifyTime = None
         self._BindCount = None
         self._ResourceType = None
+        self._JWTCredentialConfig = None
+        self._OAuthCredentialConfig = None
+        self._OIDCCredentialConfig = None
+        self._Provider = None
 
     @property
     def SecretKeyId(self):
@@ -4138,6 +5277,50 @@ class CNAPIGwSecretKey(AbstractModel):
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
 
+    @property
+    def JWTCredentialConfig(self):
+        r"""<p>JWT凭证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTCredentialConfig`
+        """
+        return self._JWTCredentialConfig
+
+    @JWTCredentialConfig.setter
+    def JWTCredentialConfig(self, JWTCredentialConfig):
+        self._JWTCredentialConfig = JWTCredentialConfig
+
+    @property
+    def OAuthCredentialConfig(self):
+        r"""<p>OAuth2凭证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthCredentialConfig`
+        """
+        return self._OAuthCredentialConfig
+
+    @OAuthCredentialConfig.setter
+    def OAuthCredentialConfig(self, OAuthCredentialConfig):
+        self._OAuthCredentialConfig = OAuthCredentialConfig
+
+    @property
+    def OIDCCredentialConfig(self):
+        r"""<p>OIDC凭证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCCredentialConfig`
+        """
+        return self._OIDCCredentialConfig
+
+    @OIDCCredentialConfig.setter
+    def OIDCCredentialConfig(self, OIDCCredentialConfig):
+        self._OIDCCredentialConfig = OIDCCredentialConfig
+
+    @property
+    def Provider(self):
+        r"""<p>Agent 密钥类型</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
 
     def _deserialize(self, params):
         self._SecretKeyId = params.get("SecretKeyId")
@@ -4154,6 +5337,16 @@ class CNAPIGwSecretKey(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._BindCount = params.get("BindCount")
         self._ResourceType = params.get("ResourceType")
+        if params.get("JWTCredentialConfig") is not None:
+            self._JWTCredentialConfig = AIGWJWTCredentialConfig()
+            self._JWTCredentialConfig._deserialize(params.get("JWTCredentialConfig"))
+        if params.get("OAuthCredentialConfig") is not None:
+            self._OAuthCredentialConfig = AIGWOAuthCredentialConfig()
+            self._OAuthCredentialConfig._deserialize(params.get("OAuthCredentialConfig"))
+        if params.get("OIDCCredentialConfig") is not None:
+            self._OIDCCredentialConfig = AIGWOIDCCredentialConfig()
+            self._OIDCCredentialConfig._deserialize(params.get("OIDCCredentialConfig"))
+        self._Provider = params.get("Provider")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4664,6 +5857,26 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
         :type Tags: str
         :param _SecretKeyIds: <p>绑定的模型服务秘钥</p>
         :type SecretKeyIds: list of str
+        :param _ModelRewriteRules: <p>模型改写规则</p>
+        :type ModelRewriteRules: list of AIGWModelRewriteRule
+        :param _SourceId: <p>服务来源</p>
+        :type SourceId: str
+        :param _Namespace: <p>命名空间</p>
+        :type Namespace: str
+        :param _ServiceName: <p>服务名称</p>
+        :type ServiceName: str
+        :param _Protocol: <p>命名空间</p>
+        :type Protocol: str
+        :param _ExtParams: <p>扩展参数</p>
+        :type ExtParams: list of KeyValue
+        :param _CustomProviderName: <p>模型自定义供应商名称</p>
+        :type CustomProviderName: str
+        :param _KeyRotationEnabled: <p>是否开启密钥轮转</p>
+        :type KeyRotationEnabled: bool
+        :param _KeyRotationPeriodDays: <p>密钥轮转周期</p><p>单位：天</p>
+        :type KeyRotationPeriodDays: int
+        :param _ExternalInstanceId: <p>外部服务来源ID</p>
+        :type ExternalInstanceId: str
         """
         self._Id = None
         self._Name = None
@@ -4689,6 +5902,16 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
         self._QuotaLimit = None
         self._Tags = None
         self._SecretKeyIds = None
+        self._ModelRewriteRules = None
+        self._SourceId = None
+        self._Namespace = None
+        self._ServiceName = None
+        self._Protocol = None
+        self._ExtParams = None
+        self._CustomProviderName = None
+        self._KeyRotationEnabled = None
+        self._KeyRotationPeriodDays = None
+        self._ExternalInstanceId = None
 
     @property
     def Id(self):
@@ -4954,6 +6177,116 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
     def SecretKeyIds(self, SecretKeyIds):
         self._SecretKeyIds = SecretKeyIds
 
+    @property
+    def ModelRewriteRules(self):
+        r"""<p>模型改写规则</p>
+        :rtype: list of AIGWModelRewriteRule
+        """
+        return self._ModelRewriteRules
+
+    @ModelRewriteRules.setter
+    def ModelRewriteRules(self, ModelRewriteRules):
+        self._ModelRewriteRules = ModelRewriteRules
+
+    @property
+    def SourceId(self):
+        r"""<p>服务来源</p>
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Protocol(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ExtParams(self):
+        r"""<p>扩展参数</p>
+        :rtype: list of KeyValue
+        """
+        return self._ExtParams
+
+    @ExtParams.setter
+    def ExtParams(self, ExtParams):
+        self._ExtParams = ExtParams
+
+    @property
+    def CustomProviderName(self):
+        r"""<p>模型自定义供应商名称</p>
+        :rtype: str
+        """
+        return self._CustomProviderName
+
+    @CustomProviderName.setter
+    def CustomProviderName(self, CustomProviderName):
+        self._CustomProviderName = CustomProviderName
+
+    @property
+    def KeyRotationEnabled(self):
+        r"""<p>是否开启密钥轮转</p>
+        :rtype: bool
+        """
+        return self._KeyRotationEnabled
+
+    @KeyRotationEnabled.setter
+    def KeyRotationEnabled(self, KeyRotationEnabled):
+        self._KeyRotationEnabled = KeyRotationEnabled
+
+    @property
+    def KeyRotationPeriodDays(self):
+        r"""<p>密钥轮转周期</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._KeyRotationPeriodDays
+
+    @KeyRotationPeriodDays.setter
+    def KeyRotationPeriodDays(self, KeyRotationPeriodDays):
+        self._KeyRotationPeriodDays = KeyRotationPeriodDays
+
+    @property
+    def ExternalInstanceId(self):
+        r"""<p>外部服务来源ID</p>
+        :rtype: str
+        """
+        return self._ExternalInstanceId
+
+    @ExternalInstanceId.setter
+    def ExternalInstanceId(self, ExternalInstanceId):
+        self._ExternalInstanceId = ExternalInstanceId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -4986,6 +6319,26 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
             self._QuotaLimit._deserialize(params.get("QuotaLimit"))
         self._Tags = params.get("Tags")
         self._SecretKeyIds = params.get("SecretKeyIds")
+        if params.get("ModelRewriteRules") is not None:
+            self._ModelRewriteRules = []
+            for item in params.get("ModelRewriteRules"):
+                obj = AIGWModelRewriteRule()
+                obj._deserialize(item)
+                self._ModelRewriteRules.append(obj)
+        self._SourceId = params.get("SourceId")
+        self._Namespace = params.get("Namespace")
+        self._ServiceName = params.get("ServiceName")
+        self._Protocol = params.get("Protocol")
+        if params.get("ExtParams") is not None:
+            self._ExtParams = []
+            for item in params.get("ExtParams"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self._ExtParams.append(obj)
+        self._CustomProviderName = params.get("CustomProviderName")
+        self._KeyRotationEnabled = params.get("KeyRotationEnabled")
+        self._KeyRotationPeriodDays = params.get("KeyRotationPeriodDays")
+        self._ExternalInstanceId = params.get("ExternalInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5013,12 +6366,18 @@ class CloudNativeAPIGatewayLLMModelServiceRoute(AbstractModel):
         :type IntentRouteConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWIntentRoute`
         :param _LatencyPriorityConfig: <p>延迟路由</p>
         :type LatencyPriorityConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLatencyPriorityConfig`
+        :param _CacheAwareRouteConfig: <p>前缀缓存感知路由</p>
+        :type CacheAwareRouteConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWCacheAwareRouteConfig`
+        :param _TokenLengthRouteConfig: <p>token 长度路</p>
+        :type TokenLengthRouteConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWTokenLengthRoute`
         """
         self._SelectedTypes = None
         self._WeightedConfig = None
         self._ModelNameConfig = None
         self._IntentRouteConfig = None
         self._LatencyPriorityConfig = None
+        self._CacheAwareRouteConfig = None
+        self._TokenLengthRouteConfig = None
 
     @property
     def SelectedTypes(self):
@@ -5075,6 +6434,28 @@ class CloudNativeAPIGatewayLLMModelServiceRoute(AbstractModel):
     def LatencyPriorityConfig(self, LatencyPriorityConfig):
         self._LatencyPriorityConfig = LatencyPriorityConfig
 
+    @property
+    def CacheAwareRouteConfig(self):
+        r"""<p>前缀缓存感知路由</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWCacheAwareRouteConfig`
+        """
+        return self._CacheAwareRouteConfig
+
+    @CacheAwareRouteConfig.setter
+    def CacheAwareRouteConfig(self, CacheAwareRouteConfig):
+        self._CacheAwareRouteConfig = CacheAwareRouteConfig
+
+    @property
+    def TokenLengthRouteConfig(self):
+        r"""<p>token 长度路</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWTokenLengthRoute`
+        """
+        return self._TokenLengthRouteConfig
+
+    @TokenLengthRouteConfig.setter
+    def TokenLengthRouteConfig(self, TokenLengthRouteConfig):
+        self._TokenLengthRouteConfig = TokenLengthRouteConfig
+
 
     def _deserialize(self, params):
         self._SelectedTypes = params.get("SelectedTypes")
@@ -5096,6 +6477,12 @@ class CloudNativeAPIGatewayLLMModelServiceRoute(AbstractModel):
         if params.get("LatencyPriorityConfig") is not None:
             self._LatencyPriorityConfig = AIGWLatencyPriorityConfig()
             self._LatencyPriorityConfig._deserialize(params.get("LatencyPriorityConfig"))
+        if params.get("CacheAwareRouteConfig") is not None:
+            self._CacheAwareRouteConfig = AIGWCacheAwareRouteConfig()
+            self._CacheAwareRouteConfig._deserialize(params.get("CacheAwareRouteConfig"))
+        if params.get("TokenLengthRouteConfig") is not None:
+            self._TokenLengthRouteConfig = AIGWTokenLengthRoute()
+            self._TokenLengthRouteConfig._deserialize(params.get("TokenLengthRouteConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5818,6 +7205,18 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         :type QuotaLimit: :class:`tencentcloud.cngw.v20230418.models.AIGWLLMQuotaLimit`
         :param _Tags: <p>标签</p>
         :type Tags: list of str
+        :param _ModelRewriteRules: <p>参数改写规则</p>
+        :type ModelRewriteRules: list of AIGWModelRewriteRule
+        :param _CustomProviderName: <p>模型自定义供应商名称</p>
+        :type CustomProviderName: str
+        :param _ExternalInstanceId: <p>外部服务来源ID</p>
+        :type ExternalInstanceId: str
+        :param _ExtParams: <p>其他参数</p>
+        :type ExtParams: list of KeyValue
+        :param _KeyRotationEnabled: <p>密钥轮转开关</p>
+        :type KeyRotationEnabled: bool
+        :param _KeyRotationPeriodDays: <p>密钥轮转周期</p><p>单位：天数</p>
+        :type KeyRotationPeriodDays: int
         """
         self._GatewayId = None
         self._Name = None
@@ -5841,6 +7240,12 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._SNI = None
         self._QuotaLimit = None
         self._Tags = None
+        self._ModelRewriteRules = None
+        self._CustomProviderName = None
+        self._ExternalInstanceId = None
+        self._ExtParams = None
+        self._KeyRotationEnabled = None
+        self._KeyRotationPeriodDays = None
 
     @property
     def GatewayId(self):
@@ -6084,6 +7489,72 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def ModelRewriteRules(self):
+        r"""<p>参数改写规则</p>
+        :rtype: list of AIGWModelRewriteRule
+        """
+        return self._ModelRewriteRules
+
+    @ModelRewriteRules.setter
+    def ModelRewriteRules(self, ModelRewriteRules):
+        self._ModelRewriteRules = ModelRewriteRules
+
+    @property
+    def CustomProviderName(self):
+        r"""<p>模型自定义供应商名称</p>
+        :rtype: str
+        """
+        return self._CustomProviderName
+
+    @CustomProviderName.setter
+    def CustomProviderName(self, CustomProviderName):
+        self._CustomProviderName = CustomProviderName
+
+    @property
+    def ExternalInstanceId(self):
+        r"""<p>外部服务来源ID</p>
+        :rtype: str
+        """
+        return self._ExternalInstanceId
+
+    @ExternalInstanceId.setter
+    def ExternalInstanceId(self, ExternalInstanceId):
+        self._ExternalInstanceId = ExternalInstanceId
+
+    @property
+    def ExtParams(self):
+        r"""<p>其他参数</p>
+        :rtype: list of KeyValue
+        """
+        return self._ExtParams
+
+    @ExtParams.setter
+    def ExtParams(self, ExtParams):
+        self._ExtParams = ExtParams
+
+    @property
+    def KeyRotationEnabled(self):
+        r"""<p>密钥轮转开关</p>
+        :rtype: bool
+        """
+        return self._KeyRotationEnabled
+
+    @KeyRotationEnabled.setter
+    def KeyRotationEnabled(self, KeyRotationEnabled):
+        self._KeyRotationEnabled = KeyRotationEnabled
+
+    @property
+    def KeyRotationPeriodDays(self):
+        r"""<p>密钥轮转周期</p><p>单位：天数</p>
+        :rtype: int
+        """
+        return self._KeyRotationPeriodDays
+
+    @KeyRotationPeriodDays.setter
+    def KeyRotationPeriodDays(self, KeyRotationPeriodDays):
+        self._KeyRotationPeriodDays = KeyRotationPeriodDays
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -6114,6 +7585,22 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
             self._QuotaLimit = AIGWLLMQuotaLimit()
             self._QuotaLimit._deserialize(params.get("QuotaLimit"))
         self._Tags = params.get("Tags")
+        if params.get("ModelRewriteRules") is not None:
+            self._ModelRewriteRules = []
+            for item in params.get("ModelRewriteRules"):
+                obj = AIGWModelRewriteRule()
+                obj._deserialize(item)
+                self._ModelRewriteRules.append(obj)
+        self._CustomProviderName = params.get("CustomProviderName")
+        self._ExternalInstanceId = params.get("ExternalInstanceId")
+        if params.get("ExtParams") is not None:
+            self._ExtParams = []
+            for item in params.get("ExtParams"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self._ExtParams.append(obj)
+        self._KeyRotationEnabled = params.get("KeyRotationEnabled")
+        self._KeyRotationPeriodDays = params.get("KeyRotationPeriodDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6567,7 +8054,7 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 实例 ID
+        :param _GatewayId: <p>实例 ID</p>
         :type GatewayId: str
         :param _SecretType: <p>密钥协议类型。</p><p>枚举值：</p><ul><li>ApiKey</li><li>Basic</li><li>Hmac</li><li>OAuth2</li><li>JWT</li></ul>
         :type SecretType: str
@@ -6585,6 +8072,12 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         :type SecretValue: str
         :param _Description: <p>密钥描述。最长 200 字符。</p>
         :type Description: str
+        :param _JWTCredentialConfig: <p>JWT凭证配置</p>
+        :type JWTCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTCredentialConfig`
+        :param _OAuthCredentialConfig: <p>Oauth2凭证配置</p>
+        :type OAuthCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthCredentialConfig`
+        :param _OIDCCredentialConfig: <p>OIDC凭证配置</p>
+        :type OIDCCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCCredentialConfig`
         """
         self._GatewayId = None
         self._SecretType = None
@@ -6595,10 +8088,13 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         self._KmsKeyVersion = None
         self._SecretValue = None
         self._Description = None
+        self._JWTCredentialConfig = None
+        self._OAuthCredentialConfig = None
+        self._OIDCCredentialConfig = None
 
     @property
     def GatewayId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._GatewayId
@@ -6695,6 +8191,39 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def JWTCredentialConfig(self):
+        r"""<p>JWT凭证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTCredentialConfig`
+        """
+        return self._JWTCredentialConfig
+
+    @JWTCredentialConfig.setter
+    def JWTCredentialConfig(self, JWTCredentialConfig):
+        self._JWTCredentialConfig = JWTCredentialConfig
+
+    @property
+    def OAuthCredentialConfig(self):
+        r"""<p>Oauth2凭证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthCredentialConfig`
+        """
+        return self._OAuthCredentialConfig
+
+    @OAuthCredentialConfig.setter
+    def OAuthCredentialConfig(self, OAuthCredentialConfig):
+        self._OAuthCredentialConfig = OAuthCredentialConfig
+
+    @property
+    def OIDCCredentialConfig(self):
+        r"""<p>OIDC凭证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCCredentialConfig`
+        """
+        return self._OIDCCredentialConfig
+
+    @OIDCCredentialConfig.setter
+    def OIDCCredentialConfig(self, OIDCCredentialConfig):
+        self._OIDCCredentialConfig = OIDCCredentialConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -6706,6 +8235,15 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         self._KmsKeyVersion = params.get("KmsKeyVersion")
         self._SecretValue = params.get("SecretValue")
         self._Description = params.get("Description")
+        if params.get("JWTCredentialConfig") is not None:
+            self._JWTCredentialConfig = AIGWJWTCredentialConfig()
+            self._JWTCredentialConfig._deserialize(params.get("JWTCredentialConfig"))
+        if params.get("OAuthCredentialConfig") is not None:
+            self._OAuthCredentialConfig = AIGWOAuthCredentialConfig()
+            self._OAuthCredentialConfig._deserialize(params.get("OAuthCredentialConfig"))
+        if params.get("OIDCCredentialConfig") is not None:
+            self._OIDCCredentialConfig = AIGWOIDCCredentialConfig()
+            self._OIDCCredentialConfig._deserialize(params.get("OIDCCredentialConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9469,6 +11007,57 @@ class Filter(AbstractModel):
         
 
 
+class KeyValue(AbstractModel):
+    r"""Key/Value结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 条件的Key
+        :type Key: str
+        :param _Value: 条件的Value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""条件的Key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""条件的Value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListCloudNativeAPIGatewayLLMModelAPI(AbstractModel):
     r"""LLM 模型 API 列表
 
@@ -10116,6 +11705,16 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         :type QuotaLimit: :class:`tencentcloud.cngw.v20230418.models.AIGWLLMQuotaLimit`
         :param _Tags: <p>标签</p>
         :type Tags: list of str
+        :param _ModelRewriteRules: <p>参数改写规则</p>
+        :type ModelRewriteRules: list of AIGWModelRewriteRule
+        :param _ExternalInstanceId: <p>外部服务来源ID</p>
+        :type ExternalInstanceId: str
+        :param _ExtParams: <p>其他参数</p>
+        :type ExtParams: list of KeyValue
+        :param _KeyRotationEnabled: <p>密钥轮转开关</p>
+        :type KeyRotationEnabled: bool
+        :param _KeyRotationPeriodDays: <p>密钥轮转周期</p><p>单位：天数</p>
+        :type KeyRotationPeriodDays: int
         """
         self._GatewayId = None
         self._ModelServiceId = None
@@ -10136,6 +11735,11 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._SNI = None
         self._QuotaLimit = None
         self._Tags = None
+        self._ModelRewriteRules = None
+        self._ExternalInstanceId = None
+        self._ExtParams = None
+        self._KeyRotationEnabled = None
+        self._KeyRotationPeriodDays = None
 
     @property
     def GatewayId(self):
@@ -10346,6 +11950,61 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def ModelRewriteRules(self):
+        r"""<p>参数改写规则</p>
+        :rtype: list of AIGWModelRewriteRule
+        """
+        return self._ModelRewriteRules
+
+    @ModelRewriteRules.setter
+    def ModelRewriteRules(self, ModelRewriteRules):
+        self._ModelRewriteRules = ModelRewriteRules
+
+    @property
+    def ExternalInstanceId(self):
+        r"""<p>外部服务来源ID</p>
+        :rtype: str
+        """
+        return self._ExternalInstanceId
+
+    @ExternalInstanceId.setter
+    def ExternalInstanceId(self, ExternalInstanceId):
+        self._ExternalInstanceId = ExternalInstanceId
+
+    @property
+    def ExtParams(self):
+        r"""<p>其他参数</p>
+        :rtype: list of KeyValue
+        """
+        return self._ExtParams
+
+    @ExtParams.setter
+    def ExtParams(self, ExtParams):
+        self._ExtParams = ExtParams
+
+    @property
+    def KeyRotationEnabled(self):
+        r"""<p>密钥轮转开关</p>
+        :rtype: bool
+        """
+        return self._KeyRotationEnabled
+
+    @KeyRotationEnabled.setter
+    def KeyRotationEnabled(self, KeyRotationEnabled):
+        self._KeyRotationEnabled = KeyRotationEnabled
+
+    @property
+    def KeyRotationPeriodDays(self):
+        r"""<p>密钥轮转周期</p><p>单位：天数</p>
+        :rtype: int
+        """
+        return self._KeyRotationPeriodDays
+
+    @KeyRotationPeriodDays.setter
+    def KeyRotationPeriodDays(self, KeyRotationPeriodDays):
+        self._KeyRotationPeriodDays = KeyRotationPeriodDays
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -10373,6 +12032,21 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
             self._QuotaLimit = AIGWLLMQuotaLimit()
             self._QuotaLimit._deserialize(params.get("QuotaLimit"))
         self._Tags = params.get("Tags")
+        if params.get("ModelRewriteRules") is not None:
+            self._ModelRewriteRules = []
+            for item in params.get("ModelRewriteRules"):
+                obj = AIGWModelRewriteRule()
+                obj._deserialize(item)
+                self._ModelRewriteRules.append(obj)
+        self._ExternalInstanceId = params.get("ExternalInstanceId")
+        if params.get("ExtParams") is not None:
+            self._ExtParams = []
+            for item in params.get("ExtParams"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self._ExtParams.append(obj)
+        self._KeyRotationEnabled = params.get("KeyRotationEnabled")
+        self._KeyRotationPeriodDays = params.get("KeyRotationPeriodDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10563,10 +12237,19 @@ class ModifyCloudNativeAPIGatewayMCPServerAuthRequest(AbstractModel):
         :type ServerId: str
         :param _AuthType: <p>认证类型</p><p>枚举值：</p><ul><li>None： 无认证</li><li>ApiKey： API Key认证</li></ul>
         :type AuthType: str
+        :param _JWTAuthConfig: <p>JWT认证配置</p>
+        :type JWTAuthConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTAuthPluginConfig`
+        :param _OAuthAuthConfig: <p>OAuth认证配置</p>
+        :type OAuthAuthConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthAuthPluginConfig`
+        :param _OIDCAuthConfig: <p>OIDC认证配置</p>
+        :type OIDCAuthConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCAuthPluginConfig`
         """
         self._GatewayId = None
         self._ServerId = None
         self._AuthType = None
+        self._JWTAuthConfig = None
+        self._OAuthAuthConfig = None
+        self._OIDCAuthConfig = None
 
     @property
     def GatewayId(self):
@@ -10601,11 +12284,53 @@ class ModifyCloudNativeAPIGatewayMCPServerAuthRequest(AbstractModel):
     def AuthType(self, AuthType):
         self._AuthType = AuthType
 
+    @property
+    def JWTAuthConfig(self):
+        r"""<p>JWT认证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTAuthPluginConfig`
+        """
+        return self._JWTAuthConfig
+
+    @JWTAuthConfig.setter
+    def JWTAuthConfig(self, JWTAuthConfig):
+        self._JWTAuthConfig = JWTAuthConfig
+
+    @property
+    def OAuthAuthConfig(self):
+        r"""<p>OAuth认证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthAuthPluginConfig`
+        """
+        return self._OAuthAuthConfig
+
+    @OAuthAuthConfig.setter
+    def OAuthAuthConfig(self, OAuthAuthConfig):
+        self._OAuthAuthConfig = OAuthAuthConfig
+
+    @property
+    def OIDCAuthConfig(self):
+        r"""<p>OIDC认证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCAuthPluginConfig`
+        """
+        return self._OIDCAuthConfig
+
+    @OIDCAuthConfig.setter
+    def OIDCAuthConfig(self, OIDCAuthConfig):
+        self._OIDCAuthConfig = OIDCAuthConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._ServerId = params.get("ServerId")
         self._AuthType = params.get("AuthType")
+        if params.get("JWTAuthConfig") is not None:
+            self._JWTAuthConfig = AIGWJWTAuthPluginConfig()
+            self._JWTAuthConfig._deserialize(params.get("JWTAuthConfig"))
+        if params.get("OAuthAuthConfig") is not None:
+            self._OAuthAuthConfig = AIGWOAuthAuthPluginConfig()
+            self._OAuthAuthConfig._deserialize(params.get("OAuthAuthConfig"))
+        if params.get("OIDCAuthConfig") is not None:
+            self._OIDCAuthConfig = AIGWOIDCAuthPluginConfig()
+            self._OIDCAuthConfig._deserialize(params.get("OIDCAuthConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

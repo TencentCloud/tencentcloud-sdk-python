@@ -642,6 +642,24 @@ class LcicClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEditVersions(
+            self,
+            request: models.DescribeEditVersionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEditVersionsResponse:
+        """
+        获取课堂的所有编辑版本（含源版本）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEditVersions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEditVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeGroup(
             self,
             request: models.DescribeGroupRequest,
@@ -1060,6 +1078,24 @@ class LcicClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetEditVersionToken(
+            self,
+            request: models.GetEditVersionTokenRequest,
+            opts: Dict = None,
+    ) -> models.GetEditVersionTokenResponse:
+        """
+        获取剪辑信令回放token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetEditVersionToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetEditVersionTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetPlaybackToken(
             self,
             request: models.GetPlaybackTokenRequest,
@@ -1397,6 +1433,24 @@ class LcicClient(AbstractClient):
         kwargs["action"] = "SetAppCustomContent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetAppCustomContentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetMainEditVersion(
+            self,
+            request: models.SetMainEditVersionRequest,
+            opts: Dict = None,
+    ) -> models.SetMainEditVersionResponse:
+        """
+        切换课堂的主编辑版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetMainEditVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetMainEditVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

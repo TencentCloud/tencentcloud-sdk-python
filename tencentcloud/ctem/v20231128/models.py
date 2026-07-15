@@ -480,6 +480,8 @@ class CreateCustomerRequest(AbstractModel):
         :type HighRiskAck: bool
         :param _ScanRateAckChecklist: <p>知情同意勾选清单，用于审计回放</p>
         :type ScanRateAckChecklist: list of str
+        :param _ScanPriority: <p>扫描优先级配置</p>
+        :type ScanPriority: :class:`tencentcloud.ctem.v20231128.models.ScanPriorityReq`
         """
         self._Name = None
         self._ScanType = None
@@ -502,6 +504,7 @@ class CreateCustomerRequest(AbstractModel):
         self._SingleIPTaskLimit = None
         self._HighRiskAck = None
         self._ScanRateAckChecklist = None
+        self._ScanPriority = None
 
     @property
     def Name(self):
@@ -734,6 +737,17 @@ class CreateCustomerRequest(AbstractModel):
     def ScanRateAckChecklist(self, ScanRateAckChecklist):
         self._ScanRateAckChecklist = ScanRateAckChecklist
 
+    @property
+    def ScanPriority(self):
+        r"""<p>扫描优先级配置</p>
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.ScanPriorityReq`
+        """
+        return self._ScanPriority
+
+    @ScanPriority.setter
+    def ScanPriority(self, ScanPriority):
+        self._ScanPriority = ScanPriority
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -757,6 +771,9 @@ class CreateCustomerRequest(AbstractModel):
         self._SingleIPTaskLimit = params.get("SingleIPTaskLimit")
         self._HighRiskAck = params.get("HighRiskAck")
         self._ScanRateAckChecklist = params.get("ScanRateAckChecklist")
+        if params.get("ScanPriority") is not None:
+            self._ScanPriority = ScanPriorityReq()
+            self._ScanPriority._deserialize(params.get("ScanPriority"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1462,6 +1479,8 @@ class CreateJobRecordRequest(AbstractModel):
         :type HighRiskAck: bool
         :param _ScanRateAckChecklist: <p>知情同意勾选清单，用于审计回放</p>
         :type ScanRateAckChecklist: list of str
+        :param _ScanPriority: <p>扫描优先级配置</p>
+        :type ScanPriority: :class:`tencentcloud.ctem.v20231128.models.ScanPriorityReq`
         """
         self._CustomerId = None
         self._TaskType = None
@@ -1472,6 +1491,7 @@ class CreateJobRecordRequest(AbstractModel):
         self._SingleIPTaskLimit = None
         self._HighRiskAck = None
         self._ScanRateAckChecklist = None
+        self._ScanPriority = None
 
     @property
     def CustomerId(self):
@@ -1572,6 +1592,17 @@ class CreateJobRecordRequest(AbstractModel):
     def ScanRateAckChecklist(self, ScanRateAckChecklist):
         self._ScanRateAckChecklist = ScanRateAckChecklist
 
+    @property
+    def ScanPriority(self):
+        r"""<p>扫描优先级配置</p>
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.ScanPriorityReq`
+        """
+        return self._ScanPriority
+
+    @ScanPriority.setter
+    def ScanPriority(self, ScanPriority):
+        self._ScanPriority = ScanPriority
+
 
     def _deserialize(self, params):
         self._CustomerId = params.get("CustomerId")
@@ -1583,6 +1614,9 @@ class CreateJobRecordRequest(AbstractModel):
         self._SingleIPTaskLimit = params.get("SingleIPTaskLimit")
         self._HighRiskAck = params.get("HighRiskAck")
         self._ScanRateAckChecklist = params.get("ScanRateAckChecklist")
+        if params.get("ScanPriority") is not None:
+            self._ScanPriority = ScanPriorityReq()
+            self._ScanPriority._deserialize(params.get("ScanPriority"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3012,6 +3046,9 @@ class Customer(AbstractModel):
         :type SingleIPTaskLimit: int
         :param _PortScanQps: <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p>
         :type PortScanQps: int
+        :param _ScanPriority: <p>扫描优先级配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanPriority: :class:`tencentcloud.ctem.v20231128.models.ScanPriorityDisplay`
         """
         self._Id = None
         self._Name = None
@@ -3038,6 +3075,7 @@ class Customer(AbstractModel):
         self._EnableGroupMemberDiscovered = None
         self._SingleIPTaskLimit = None
         self._PortScanQps = None
+        self._ScanPriority = None
 
     @property
     def Id(self):
@@ -3315,6 +3353,18 @@ class Customer(AbstractModel):
     def PortScanQps(self, PortScanQps):
         self._PortScanQps = PortScanQps
 
+    @property
+    def ScanPriority(self):
+        r"""<p>扫描优先级配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.ScanPriorityDisplay`
+        """
+        return self._ScanPriority
+
+    @ScanPriority.setter
+    def ScanPriority(self, ScanPriority):
+        self._ScanPriority = ScanPriority
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3342,6 +3392,9 @@ class Customer(AbstractModel):
         self._EnableGroupMemberDiscovered = params.get("EnableGroupMemberDiscovered")
         self._SingleIPTaskLimit = params.get("SingleIPTaskLimit")
         self._PortScanQps = params.get("PortScanQps")
+        if params.get("ScanPriority") is not None:
+            self._ScanPriority = ScanPriorityDisplay()
+            self._ScanPriority._deserialize(params.get("ScanPriority"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5509,7 +5562,7 @@ class DescribeCustomersRequest(AbstractModel):
         :type Offset: int
         :param _Filters: 查询数组
         :type Filters: list of Filter
-        :param _Keyword: 企业名称模糊搜索
+        :param _Keyword: <p>企业名称模糊搜索</p>
         :type Keyword: str
         """
         self._Limit = None
@@ -5552,7 +5605,7 @@ class DescribeCustomersRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""企业名称模糊搜索
+        r"""<p>企业名称模糊搜索</p>
         :rtype: str
         """
         return self._Keyword
@@ -5589,9 +5642,9 @@ class DescribeCustomersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _List: 企业列表
+        :param _List: <p>企业列表</p>
         :type List: list of Customer
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5602,7 +5655,7 @@ class DescribeCustomersResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -5613,7 +5666,7 @@ class DescribeCustomersResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""企业列表
+        r"""<p>企业列表</p>
         :rtype: list of Customer
         """
         return self._List
@@ -15369,32 +15422,38 @@ class DisplayLeakageCode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: <p>主键ID</p>
         :type Id: int
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _Name: 事件名称
+        :param _Name: <p>事件名称</p>
         :type Name: str
-        :param _Description: 事件描述
+        :param _Description: <p>事件描述</p>
         :type Description: str
-        :param _Source: 数据源
+        :param _Source: <p>数据源</p>
         :type Source: str
-        :param _RiskLevel: 风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+        :param _RiskLevel: <p>风险等级：1-低危 2-中危 3-高危 4-严重 5-误报</p>
         :type RiskLevel: int
-        :param _HubName: 仓库名称
+        :param _HubName: <p>仓库名称</p>
         :type HubName: str
-        :param _Url: 链接
+        :param _Url: <p>链接</p>
         :type Url: str
-        :param _Screenshot: 截图
+        :param _Screenshot: <p>截图</p>
         :type Screenshot: str
-        :param _Suggestion: 建议
+        :param _Suggestion: <p>建议</p>
         :type Suggestion: str
-        :param _Keyword: 关键词
+        :param _Keyword: <p>关键词</p>
         :type Keyword: str
-        :param _HandlingStatus: 处置状态：0-待处理 1-处理中 2-已处理
+        :param _HandlingStatus: <p>处置状态</p><p>枚举值：</p><ul><li>0： 待处理</li><li>1： 处理中</li><li>2： 已处理</li><li>3： 误报</li></ul>
         :type HandlingStatus: int
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
+        :param _RepoNamespace: <p>仓库命名空间</p>
+        :type RepoNamespace: str
+        :param _RepoName: <p>仓库名称</p>
+        :type RepoName: str
+        :param _AuthorName: <p>作者名称</p>
+        :type AuthorName: str
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -15409,10 +15468,13 @@ class DisplayLeakageCode(AbstractModel):
         self._Keyword = None
         self._HandlingStatus = None
         self._Remark = None
+        self._RepoNamespace = None
+        self._RepoName = None
+        self._AuthorName = None
 
     @property
     def Id(self):
-        r"""主键ID
+        r"""<p>主键ID</p>
         :rtype: int
         """
         return self._Id
@@ -15423,7 +15485,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -15434,7 +15496,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Name(self):
-        r"""事件名称
+        r"""<p>事件名称</p>
         :rtype: str
         """
         return self._Name
@@ -15445,7 +15507,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Description(self):
-        r"""事件描述
+        r"""<p>事件描述</p>
         :rtype: str
         """
         return self._Description
@@ -15456,7 +15518,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Source(self):
-        r"""数据源
+        r"""<p>数据源</p>
         :rtype: str
         """
         return self._Source
@@ -15467,7 +15529,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+        r"""<p>风险等级：1-低危 2-中危 3-高危 4-严重 5-误报</p>
         :rtype: int
         """
         return self._RiskLevel
@@ -15478,7 +15540,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def HubName(self):
-        r"""仓库名称
+        r"""<p>仓库名称</p>
         :rtype: str
         """
         return self._HubName
@@ -15489,7 +15551,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Url(self):
-        r"""链接
+        r"""<p>链接</p>
         :rtype: str
         """
         return self._Url
@@ -15500,7 +15562,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Screenshot(self):
-        r"""截图
+        r"""<p>截图</p>
         :rtype: str
         """
         return self._Screenshot
@@ -15511,7 +15573,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""建议
+        r"""<p>建议</p>
         :rtype: str
         """
         return self._Suggestion
@@ -15522,7 +15584,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""关键词
+        r"""<p>关键词</p>
         :rtype: str
         """
         return self._Keyword
@@ -15533,7 +15595,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def HandlingStatus(self):
-        r"""处置状态：0-待处理 1-处理中 2-已处理
+        r"""<p>处置状态</p><p>枚举值：</p><ul><li>0： 待处理</li><li>1： 处理中</li><li>2： 已处理</li><li>3： 误报</li></ul>
         :rtype: int
         """
         return self._HandlingStatus
@@ -15544,7 +15606,7 @@ class DisplayLeakageCode(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -15552,6 +15614,39 @@ class DisplayLeakageCode(AbstractModel):
     @Remark.setter
     def Remark(self, Remark):
         self._Remark = Remark
+
+    @property
+    def RepoNamespace(self):
+        r"""<p>仓库命名空间</p>
+        :rtype: str
+        """
+        return self._RepoNamespace
+
+    @RepoNamespace.setter
+    def RepoNamespace(self, RepoNamespace):
+        self._RepoNamespace = RepoNamespace
+
+    @property
+    def RepoName(self):
+        r"""<p>仓库名称</p>
+        :rtype: str
+        """
+        return self._RepoName
+
+    @RepoName.setter
+    def RepoName(self, RepoName):
+        self._RepoName = RepoName
+
+    @property
+    def AuthorName(self):
+        r"""<p>作者名称</p>
+        :rtype: str
+        """
+        return self._AuthorName
+
+    @AuthorName.setter
+    def AuthorName(self, AuthorName):
+        self._AuthorName = AuthorName
 
 
     def _deserialize(self, params):
@@ -15570,6 +15665,9 @@ class DisplayLeakageCode(AbstractModel):
         self._Keyword = params.get("Keyword")
         self._HandlingStatus = params.get("HandlingStatus")
         self._Remark = params.get("Remark")
+        self._RepoNamespace = params.get("RepoNamespace")
+        self._RepoName = params.get("RepoName")
+        self._AuthorName = params.get("AuthorName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18921,6 +19019,8 @@ class ModifyCustomerRequest(AbstractModel):
         :type HighRiskAck: bool
         :param _ScanRateAckChecklist: <p>知情同意勾选清单，用于审计回放</p>
         :type ScanRateAckChecklist: list of str
+        :param _ScanPriority: <p>扫描优先级配置</p>
+        :type ScanPriority: :class:`tencentcloud.ctem.v20231128.models.ScanPriorityReq`
         """
         self._Name = None
         self._Percent = None
@@ -18943,6 +19043,7 @@ class ModifyCustomerRequest(AbstractModel):
         self._SingleIPTaskLimit = None
         self._HighRiskAck = None
         self._ScanRateAckChecklist = None
+        self._ScanPriority = None
 
     @property
     def Name(self):
@@ -19175,6 +19276,17 @@ class ModifyCustomerRequest(AbstractModel):
     def ScanRateAckChecklist(self, ScanRateAckChecklist):
         self._ScanRateAckChecklist = ScanRateAckChecklist
 
+    @property
+    def ScanPriority(self):
+        r"""<p>扫描优先级配置</p>
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.ScanPriorityReq`
+        """
+        return self._ScanPriority
+
+    @ScanPriority.setter
+    def ScanPriority(self, ScanPriority):
+        self._ScanPriority = ScanPriority
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -19198,6 +19310,9 @@ class ModifyCustomerRequest(AbstractModel):
         self._SingleIPTaskLimit = params.get("SingleIPTaskLimit")
         self._HighRiskAck = params.get("HighRiskAck")
         self._ScanRateAckChecklist = params.get("ScanRateAckChecklist")
+        if params.get("ScanPriority") is not None:
+            self._ScanPriority = ScanPriorityReq()
+            self._ScanPriority._deserialize(params.get("ScanPriority"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19482,6 +19597,112 @@ class ModifySeedStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ScanPriorityDisplay(AbstractModel):
+    r"""优先级出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnlyScanNewAsset: <p>只对新增资产进行漏洞扫描</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlyScanNewAsset: bool
+        :param _PriorityRules: <p>启用的优先级规则(有序):new_asset,high_risk_port,admin_panel,high_risk_fingerprint</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriorityRules: list of str
+        """
+        self._OnlyScanNewAsset = None
+        self._PriorityRules = None
+
+    @property
+    def OnlyScanNewAsset(self):
+        r"""<p>只对新增资产进行漏洞扫描</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._OnlyScanNewAsset
+
+    @OnlyScanNewAsset.setter
+    def OnlyScanNewAsset(self, OnlyScanNewAsset):
+        self._OnlyScanNewAsset = OnlyScanNewAsset
+
+    @property
+    def PriorityRules(self):
+        r"""<p>启用的优先级规则(有序):new_asset,high_risk_port,admin_panel,high_risk_fingerprint</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._PriorityRules
+
+    @PriorityRules.setter
+    def PriorityRules(self, PriorityRules):
+        self._PriorityRules = PriorityRules
+
+
+    def _deserialize(self, params):
+        self._OnlyScanNewAsset = params.get("OnlyScanNewAsset")
+        self._PriorityRules = params.get("PriorityRules")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanPriorityReq(AbstractModel):
+    r"""优先级入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnlyScanNewAsset: <p>只对新增资产进行漏洞扫描</p>
+        :type OnlyScanNewAsset: bool
+        :param _PriorityRules: <p>启用的优先级规则(有序):new_asset,high_risk_port,admin_panel,high_risk_fingerprint</p>
+        :type PriorityRules: list of str
+        """
+        self._OnlyScanNewAsset = None
+        self._PriorityRules = None
+
+    @property
+    def OnlyScanNewAsset(self):
+        r"""<p>只对新增资产进行漏洞扫描</p>
+        :rtype: bool
+        """
+        return self._OnlyScanNewAsset
+
+    @OnlyScanNewAsset.setter
+    def OnlyScanNewAsset(self, OnlyScanNewAsset):
+        self._OnlyScanNewAsset = OnlyScanNewAsset
+
+    @property
+    def PriorityRules(self):
+        r"""<p>启用的优先级规则(有序):new_asset,high_risk_port,admin_panel,high_risk_fingerprint</p>
+        :rtype: list of str
+        """
+        return self._PriorityRules
+
+    @PriorityRules.setter
+    def PriorityRules(self, PriorityRules):
+        self._PriorityRules = PriorityRules
+
+
+    def _deserialize(self, params):
+        self._OnlyScanNewAsset = params.get("OnlyScanNewAsset")
+        self._PriorityRules = params.get("PriorityRules")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StopJobRecordRequest(AbstractModel):

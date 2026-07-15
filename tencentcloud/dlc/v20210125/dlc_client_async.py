@@ -2247,7 +2247,7 @@ class DlcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTasksResponse:
         """
-        该接口（DescribleTasks）用于查询任务列表
+        该接口（DescribeTasks）用于查询任务列表
         """
         
         kwargs = {}

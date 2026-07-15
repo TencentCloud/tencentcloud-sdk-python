@@ -188,6 +188,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAiDramaTask(
+            self,
+            request: models.CreateAiDramaTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAiDramaTaskResponse:
+        """
+        Ai漫剧工作流，输入剧本，自动拆分分镜，生成Ai漫剧
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAiDramaTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAiDramaTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcAudioTask(
             self,
             request: models.CreateAigcAudioTaskRequest,
@@ -777,6 +795,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "CreateVideoDatabaseEntryTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateVideoDatabaseEntryTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVideoRedrawTask(
+            self,
+            request: models.CreateVideoRedrawTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateVideoRedrawTaskResponse:
+        """
+        创建AIGC转绘任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVideoRedrawTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVideoRedrawTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

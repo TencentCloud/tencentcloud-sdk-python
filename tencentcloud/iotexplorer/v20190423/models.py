@@ -1920,6 +1920,130 @@ class BindTWeTalkAIBotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BindTWeTalkAgentRequest(AbstractModel):
+    r"""BindTWeTalkAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _AgentId: <p>智能体 ID</p>
+        :type AgentId: str
+        :param _BindingScope: <p>绑定维度：product 或 device</p>
+        :type BindingScope: str
+        :param _DeviceName: <p>设备名称；<code>BindingScope=device</code> 时必填</p>
+        :type DeviceName: str
+        :param _Priority: <p>绑定优先级，数值越小优先级越高</p>
+        :type Priority: int
+        """
+        self._ProductId = None
+        self._AgentId = None
+        self._BindingScope = None
+        self._DeviceName = None
+        self._Priority = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def AgentId(self):
+        r"""<p>智能体 ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def BindingScope(self):
+        r"""<p>绑定维度：product 或 device</p>
+        :rtype: str
+        """
+        return self._BindingScope
+
+    @BindingScope.setter
+    def BindingScope(self, BindingScope):
+        self._BindingScope = BindingScope
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称；<code>BindingScope=device</code> 时必填</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Priority(self):
+        r"""<p>绑定优先级，数值越小优先级越高</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._AgentId = params.get("AgentId")
+        self._BindingScope = params.get("BindingScope")
+        self._DeviceName = params.get("DeviceName")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindTWeTalkAgentResponse(AbstractModel):
+    r"""BindTWeTalkAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CallDeviceActionAsyncRequest(AbstractModel):
     r"""CallDeviceActionAsync请求参数结构体
 
@@ -8563,6 +8687,255 @@ class CreateTWeTalkAIBotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTWeTalkAgentRequest(AbstractModel):
+    r"""CreateTWeTalkAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _STTConfig: <p>语音识别配置</p>
+        :type STTConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfig`
+        :param _LLMConfig: <p>大模型配置</p>
+        :type LLMConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfig`
+        :param _TTSConfig: <p>语音合成配置</p>
+        :type TTSConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfig`
+        :param _Name: <p>智能体名称；为空时使用默认智能体名称</p>
+        :type Name: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _Description: <p>智能体描述，最长1024字符</p>
+        :type Description: str
+        :param _ConversationConfig: <p>对话行为配置</p>
+        :type ConversationConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfig`
+        :param _MemoryConfig: <p>长期记忆配置</p>
+        :type MemoryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkMemoryConfig`
+        :param _IOTTools: <p>IoT工具配置列表</p>
+        :type IOTTools: list of TalkIOTTool
+        :param _WebhookTools: <p>Webhook工具配置列表</p>
+        :type WebhookTools: list of TalkWebhookTool
+        :param _Metadata: <p>元信息扩展JSON对象字符串</p>
+        :type Metadata: str
+        """
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+        self._Name = None
+        self._InstanceId = None
+        self._Description = None
+        self._ConversationConfig = None
+        self._MemoryConfig = None
+        self._IOTTools = None
+        self._WebhookTools = None
+        self._Metadata = None
+
+    @property
+    def STTConfig(self):
+        r"""<p>语音识别配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfig`
+        """
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        r"""<p>大模型配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfig`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        r"""<p>语音合成配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfig`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+    @property
+    def Name(self):
+        r"""<p>智能体名称；为空时使用默认智能体名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Description(self):
+        r"""<p>智能体描述，最长1024字符</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ConversationConfig(self):
+        r"""<p>对话行为配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfig`
+        """
+        return self._ConversationConfig
+
+    @ConversationConfig.setter
+    def ConversationConfig(self, ConversationConfig):
+        self._ConversationConfig = ConversationConfig
+
+    @property
+    def MemoryConfig(self):
+        r"""<p>长期记忆配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkMemoryConfig`
+        """
+        return self._MemoryConfig
+
+    @MemoryConfig.setter
+    def MemoryConfig(self, MemoryConfig):
+        self._MemoryConfig = MemoryConfig
+
+    @property
+    def IOTTools(self):
+        r"""<p>IoT工具配置列表</p>
+        :rtype: list of TalkIOTTool
+        """
+        return self._IOTTools
+
+    @IOTTools.setter
+    def IOTTools(self, IOTTools):
+        self._IOTTools = IOTTools
+
+    @property
+    def WebhookTools(self):
+        r"""<p>Webhook工具配置列表</p>
+        :rtype: list of TalkWebhookTool
+        """
+        return self._WebhookTools
+
+    @WebhookTools.setter
+    def WebhookTools(self, WebhookTools):
+        self._WebhookTools = WebhookTools
+
+    @property
+    def Metadata(self):
+        r"""<p>元信息扩展JSON对象字符串</p>
+        :rtype: str
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+
+    def _deserialize(self, params):
+        if params.get("STTConfig") is not None:
+            self._STTConfig = TalkSTTConfig()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = TalkLLMConfig()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = TalkTTSConfig()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
+        self._Name = params.get("Name")
+        self._InstanceId = params.get("InstanceId")
+        self._Description = params.get("Description")
+        if params.get("ConversationConfig") is not None:
+            self._ConversationConfig = TalkConversationConfig()
+            self._ConversationConfig._deserialize(params.get("ConversationConfig"))
+        if params.get("MemoryConfig") is not None:
+            self._MemoryConfig = TalkMemoryConfig()
+            self._MemoryConfig._deserialize(params.get("MemoryConfig"))
+        if params.get("IOTTools") is not None:
+            self._IOTTools = []
+            for item in params.get("IOTTools"):
+                obj = TalkIOTTool()
+                obj._deserialize(item)
+                self._IOTTools.append(obj)
+        if params.get("WebhookTools") is not None:
+            self._WebhookTools = []
+            for item in params.get("WebhookTools"):
+                obj = TalkWebhookTool()
+                obj._deserialize(item)
+                self._WebhookTools.append(obj)
+        self._Metadata = params.get("Metadata")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTWeTalkAgentResponse(AbstractModel):
+    r"""CreateTWeTalkAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>智能体ID</p>
+        :type AgentId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AgentId = None
+        self._RequestId = None
+
+    @property
+    def AgentId(self):
+        r"""<p>智能体ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTWeTalkProductConfigRequest(AbstractModel):
     r"""CreateTWeTalkProductConfig请求参数结构体
 
@@ -10553,6 +10926,70 @@ class DeleteTWeTalkAIBotRequest(AbstractModel):
 
 class DeleteTWeTalkAIBotResponse(AbstractModel):
     r"""DeleteTWeTalkAIBot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTWeTalkAgentRequest(AbstractModel):
+    r"""DeleteTWeTalkAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>智能体ID</p>
+        :type AgentId: str
+        """
+        self._AgentId = None
+
+    @property
+    def AgentId(self):
+        r"""<p>智能体ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTWeTalkAgentResponse(AbstractModel):
+    r"""DeleteTWeTalkAgent返回参数结构体
 
     """
 
@@ -19923,6 +20360,465 @@ class DescribeTWeTalkAIBotResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = TalkAIBotInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTWeTalkAgentBindingRequest(AbstractModel):
+    r"""DescribeTWeTalkAgentBinding请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名称</p>
+        :type DeviceName: str
+        :param _BindingScope: <p>绑定维度：product 或 device</p>
+        :type BindingScope: str
+        :param _AgentId: <p>智能体 ID</p>
+        :type AgentId: str
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，最大 100</p>
+        :type Limit: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._BindingScope = None
+        self._AgentId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BindingScope(self):
+        r"""<p>绑定维度：product 或 device</p>
+        :rtype: str
+        """
+        return self._BindingScope
+
+    @BindingScope.setter
+    def BindingScope(self, BindingScope):
+        self._BindingScope = BindingScope
+
+    @property
+    def AgentId(self):
+        r"""<p>智能体 ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._BindingScope = params.get("BindingScope")
+        self._AgentId = params.get("AgentId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeTalkAgentBindingResponse(AbstractModel):
+    r"""DescribeTWeTalkAgentBinding返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _Bindings: <p>绑定关系列表</p>
+        :type Bindings: list of TalkAgentBinding
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Bindings = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Bindings(self):
+        r"""<p>绑定关系列表</p>
+        :rtype: list of TalkAgentBinding
+        """
+        return self._Bindings
+
+    @Bindings.setter
+    def Bindings(self, Bindings):
+        self._Bindings = Bindings
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Bindings") is not None:
+            self._Bindings = []
+            for item in params.get("Bindings"):
+                obj = TalkAgentBinding()
+                obj._deserialize(item)
+                self._Bindings.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTWeTalkAgentListRequest(AbstractModel):
+    r"""DescribeTWeTalkAgentList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名称，设备级绑定查询时使用</p>
+        :type DeviceName: str
+        :param _BindingScope: <p>绑定维度：product 或 device</p>
+        :type BindingScope: str
+        :param _AgentId: <p>智能体 ID</p>
+        :type AgentId: str
+        :param _InstanceId: <p>实例 ID</p>
+        :type InstanceId: str
+        :param _Name: <p>智能体名称筛选</p>
+        :type Name: str
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，最大 100</p>
+        :type Limit: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._BindingScope = None
+        self._AgentId = None
+        self._InstanceId = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称，设备级绑定查询时使用</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BindingScope(self):
+        r"""<p>绑定维度：product 或 device</p>
+        :rtype: str
+        """
+        return self._BindingScope
+
+    @BindingScope.setter
+    def BindingScope(self, BindingScope):
+        self._BindingScope = BindingScope
+
+    @property
+    def AgentId(self):
+        r"""<p>智能体 ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        r"""<p>智能体名称筛选</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._BindingScope = params.get("BindingScope")
+        self._AgentId = params.get("AgentId")
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeTalkAgentListResponse(AbstractModel):
+    r"""DescribeTWeTalkAgentList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _Data: <p>智能体列</p>
+        :type Data: list of TalkAgentInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""<p>智能体列</p>
+        :rtype: list of TalkAgentInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TalkAgentInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTWeTalkAgentRequest(AbstractModel):
+    r"""DescribeTWeTalkAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>智能体ID</p>
+        :type AgentId: str
+        """
+        self._AgentId = None
+
+    @property
+    def AgentId(self):
+        r"""<p>智能体ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeTalkAgentResponse(AbstractModel):
+    r"""DescribeTWeTalkAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>智能体详情</p>
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.TalkAgentInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>智能体详情</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkAgentInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TalkAgentInfo()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -34162,6 +35058,240 @@ class ModifyTWeTalkAIBotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyTWeTalkAgentRequest(AbstractModel):
+    r"""ModifyTWeTalkAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>智能体ID</p>
+        :type AgentId: str
+        :param _Name: <p>智能体名称</p>
+        :type Name: str
+        :param _Description: <p>智能体描述</p>
+        :type Description: str
+        :param _STTConfig: <p>语音识别配置</p>
+        :type STTConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfig`
+        :param _LLMConfig: <p>大模型配置</p>
+        :type LLMConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfig`
+        :param _TTSConfig: <p>语音合成配置</p>
+        :type TTSConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfig`
+        :param _ConversationConfig: <p>对话行为配置</p>
+        :type ConversationConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfig`
+        :param _MemoryConfig: <p>长期记忆配置</p>
+        :type MemoryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkMemoryConfig`
+        :param _IOTTools: <p>IoT工具配置列表</p>
+        :type IOTTools: list of TalkIOTTool
+        :param _WebhookTools: <p>Webhook工具配置列表</p>
+        :type WebhookTools: list of TalkWebhookTool
+        :param _Metadata: <p>元信息扩展JSON对象字符串</p>
+        :type Metadata: str
+        """
+        self._AgentId = None
+        self._Name = None
+        self._Description = None
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+        self._ConversationConfig = None
+        self._MemoryConfig = None
+        self._IOTTools = None
+        self._WebhookTools = None
+        self._Metadata = None
+
+    @property
+    def AgentId(self):
+        r"""<p>智能体ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Name(self):
+        r"""<p>智能体名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>智能体描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def STTConfig(self):
+        r"""<p>语音识别配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfig`
+        """
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        r"""<p>大模型配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfig`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        r"""<p>语音合成配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfig`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+    @property
+    def ConversationConfig(self):
+        r"""<p>对话行为配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfig`
+        """
+        return self._ConversationConfig
+
+    @ConversationConfig.setter
+    def ConversationConfig(self, ConversationConfig):
+        self._ConversationConfig = ConversationConfig
+
+    @property
+    def MemoryConfig(self):
+        r"""<p>长期记忆配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkMemoryConfig`
+        """
+        return self._MemoryConfig
+
+    @MemoryConfig.setter
+    def MemoryConfig(self, MemoryConfig):
+        self._MemoryConfig = MemoryConfig
+
+    @property
+    def IOTTools(self):
+        r"""<p>IoT工具配置列表</p>
+        :rtype: list of TalkIOTTool
+        """
+        return self._IOTTools
+
+    @IOTTools.setter
+    def IOTTools(self, IOTTools):
+        self._IOTTools = IOTTools
+
+    @property
+    def WebhookTools(self):
+        r"""<p>Webhook工具配置列表</p>
+        :rtype: list of TalkWebhookTool
+        """
+        return self._WebhookTools
+
+    @WebhookTools.setter
+    def WebhookTools(self, WebhookTools):
+        self._WebhookTools = WebhookTools
+
+    @property
+    def Metadata(self):
+        r"""<p>元信息扩展JSON对象字符串</p>
+        :rtype: str
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("STTConfig") is not None:
+            self._STTConfig = TalkSTTConfig()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = TalkLLMConfig()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = TalkTTSConfig()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
+        if params.get("ConversationConfig") is not None:
+            self._ConversationConfig = TalkConversationConfig()
+            self._ConversationConfig._deserialize(params.get("ConversationConfig"))
+        if params.get("MemoryConfig") is not None:
+            self._MemoryConfig = TalkMemoryConfig()
+            self._MemoryConfig._deserialize(params.get("MemoryConfig"))
+        if params.get("IOTTools") is not None:
+            self._IOTTools = []
+            for item in params.get("IOTTools"):
+                obj = TalkIOTTool()
+                obj._deserialize(item)
+                self._IOTTools.append(obj)
+        if params.get("WebhookTools") is not None:
+            self._WebhookTools = []
+            for item in params.get("WebhookTools"):
+                obj = TalkWebhookTool()
+                obj._deserialize(item)
+                self._WebhookTools.append(obj)
+        self._Metadata = params.get("Metadata")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTWeTalkAgentResponse(AbstractModel):
+    r"""ModifyTWeTalkAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyTWeTalkProductConfigRequest(AbstractModel):
     r"""ModifyTWeTalkProductConfig请求参数结构体
 
@@ -40593,6 +41723,132 @@ class TalkActivationStatusInfo(AbstractModel):
         
 
 
+class TalkAgentBinding(AbstractModel):
+    r"""智能体绑定配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BindingScope: product 或 device
+        :type BindingScope: str
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _AgentId: 智能体ID
+        :type AgentId: str
+        :param _Priority: 绑定优先级
+        :type Priority: int
+        :param _CreateTime: 创建时间，Unix 秒
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间，Unix 秒
+        :type UpdateTime: int
+        """
+        self._BindingScope = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._AgentId = None
+        self._Priority = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def BindingScope(self):
+        r"""product 或 device
+        :rtype: str
+        """
+        return self._BindingScope
+
+    @BindingScope.setter
+    def BindingScope(self, BindingScope):
+        self._BindingScope = BindingScope
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def AgentId(self):
+        r"""智能体ID
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Priority(self):
+        r"""绑定优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，Unix 秒
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间，Unix 秒
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._BindingScope = params.get("BindingScope")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._AgentId = params.get("AgentId")
+        self._Priority = params.get("Priority")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TalkAgentConfigInfo(AbstractModel):
     r"""智能体配置信息。
 
@@ -40871,6 +42127,307 @@ class TalkAgentConfigInfo(AbstractModel):
         
 
 
+class TalkAgentInfo(AbstractModel):
+    r"""TWeTalk智能体配置信息描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 主账号UIN
+        :type Uin: int
+        :param _AppId: 账号AppId
+        :type AppId: int
+        :param _InstanceId: 实例 ID
+        :type InstanceId: str
+        :param _AgentId: 智能体ID
+        :type AgentId: str
+        :param _Name: 智能体名称
+        :type Name: str
+        :param _Description: 智能体描述
+        :type Description: str
+        :param _STTConfig: 语音识别配置
+        :type STTConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfig`
+        :param _LLMConfig: 大模型配置
+        :type LLMConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfig`
+        :param _TTSConfig: 语音合成配置
+        :type TTSConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfig`
+        :param _ConversationConfig: 对话行为配置
+        :type ConversationConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfig`
+        :param _MemoryConfig: 长期记忆配置
+        :type MemoryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkMemoryConfig`
+        :param _IOTTools: IoT 工具列表
+        :type IOTTools: list of TalkIOTTool
+        :param _WebhookTools: Webhook 工具列表
+        :type WebhookTools: list of TalkWebhookTool
+        :param _Metadata: 元信息JSON object 字符串
+        :type Metadata: str
+        :param _Bindings: 绑定关系列表
+        :type Bindings: list of TalkAgentBinding
+        :param _CreateTime: 创建时间，Unix 秒
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间，Unix 秒
+        :type UpdateTime: int
+        """
+        self._Uin = None
+        self._AppId = None
+        self._InstanceId = None
+        self._AgentId = None
+        self._Name = None
+        self._Description = None
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+        self._ConversationConfig = None
+        self._MemoryConfig = None
+        self._IOTTools = None
+        self._WebhookTools = None
+        self._Metadata = None
+        self._Bindings = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Uin(self):
+        r"""主账号UIN
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        r"""账号AppId
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def InstanceId(self):
+        r"""实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AgentId(self):
+        r"""智能体ID
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Name(self):
+        r"""智能体名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""智能体描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def STTConfig(self):
+        r"""语音识别配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfig`
+        """
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        r"""大模型配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfig`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        r"""语音合成配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfig`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+    @property
+    def ConversationConfig(self):
+        r"""对话行为配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfig`
+        """
+        return self._ConversationConfig
+
+    @ConversationConfig.setter
+    def ConversationConfig(self, ConversationConfig):
+        self._ConversationConfig = ConversationConfig
+
+    @property
+    def MemoryConfig(self):
+        r"""长期记忆配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkMemoryConfig`
+        """
+        return self._MemoryConfig
+
+    @MemoryConfig.setter
+    def MemoryConfig(self, MemoryConfig):
+        self._MemoryConfig = MemoryConfig
+
+    @property
+    def IOTTools(self):
+        r"""IoT 工具列表
+        :rtype: list of TalkIOTTool
+        """
+        return self._IOTTools
+
+    @IOTTools.setter
+    def IOTTools(self, IOTTools):
+        self._IOTTools = IOTTools
+
+    @property
+    def WebhookTools(self):
+        r"""Webhook 工具列表
+        :rtype: list of TalkWebhookTool
+        """
+        return self._WebhookTools
+
+    @WebhookTools.setter
+    def WebhookTools(self, WebhookTools):
+        self._WebhookTools = WebhookTools
+
+    @property
+    def Metadata(self):
+        r"""元信息JSON object 字符串
+        :rtype: str
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def Bindings(self):
+        r"""绑定关系列表
+        :rtype: list of TalkAgentBinding
+        """
+        return self._Bindings
+
+    @Bindings.setter
+    def Bindings(self, Bindings):
+        self._Bindings = Bindings
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，Unix 秒
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间，Unix 秒
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._InstanceId = params.get("InstanceId")
+        self._AgentId = params.get("AgentId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("STTConfig") is not None:
+            self._STTConfig = TalkSTTConfig()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = TalkLLMConfig()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = TalkTTSConfig()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
+        if params.get("ConversationConfig") is not None:
+            self._ConversationConfig = TalkConversationConfig()
+            self._ConversationConfig._deserialize(params.get("ConversationConfig"))
+        if params.get("MemoryConfig") is not None:
+            self._MemoryConfig = TalkMemoryConfig()
+            self._MemoryConfig._deserialize(params.get("MemoryConfig"))
+        if params.get("IOTTools") is not None:
+            self._IOTTools = []
+            for item in params.get("IOTTools"):
+                obj = TalkIOTTool()
+                obj._deserialize(item)
+                self._IOTTools.append(obj)
+        if params.get("WebhookTools") is not None:
+            self._WebhookTools = []
+            for item in params.get("WebhookTools"):
+                obj = TalkWebhookTool()
+                obj._deserialize(item)
+                self._WebhookTools.append(obj)
+        self._Metadata = params.get("Metadata")
+        if params.get("Bindings") is not None:
+            self._Bindings = []
+            for item in params.get("Bindings"):
+                obj = TalkAgentBinding()
+                obj._deserialize(item)
+                self._Bindings.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TalkBasicConfigInfo(AbstractModel):
     r"""基础配置信息。
 
@@ -40942,6 +42499,87 @@ class TalkBasicConfigInfo(AbstractModel):
         self._GreetingMessage = params.get("GreetingMessage")
         self._DefaultVoiceType = params.get("DefaultVoiceType")
         self._FastVoiceType = params.get("FastVoiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkConversationConfig(AbstractModel):
+    r"""对话行为配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WelcomeMessage: 欢迎语
+        :type WelcomeMessage: str
+        :param _WelcomeMessagePriority: 欢迎语优先级。`0`=默认，`1`=高优不可打断
+        :type WelcomeMessagePriority: int
+        :param _InterruptMode: 智能打断模式。`0`=服务端自动打断，`1`=端上发送打断信令
+        :type InterruptMode: int
+        :param _InterruptWordList: 打断词列表。AI 说话期间，仅当用户说出列表中的词才打断 AI；不会触发新的回复
+        :type InterruptWordList: list of str
+        """
+        self._WelcomeMessage = None
+        self._WelcomeMessagePriority = None
+        self._InterruptMode = None
+        self._InterruptWordList = None
+
+    @property
+    def WelcomeMessage(self):
+        r"""欢迎语
+        :rtype: str
+        """
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+    @property
+    def WelcomeMessagePriority(self):
+        r"""欢迎语优先级。`0`=默认，`1`=高优不可打断
+        :rtype: int
+        """
+        return self._WelcomeMessagePriority
+
+    @WelcomeMessagePriority.setter
+    def WelcomeMessagePriority(self, WelcomeMessagePriority):
+        self._WelcomeMessagePriority = WelcomeMessagePriority
+
+    @property
+    def InterruptMode(self):
+        r"""智能打断模式。`0`=服务端自动打断，`1`=端上发送打断信令
+        :rtype: int
+        """
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptWordList(self):
+        r"""打断词列表。AI 说话期间，仅当用户说出列表中的词才打断 AI；不会触发新的回复
+        :rtype: list of str
+        """
+        return self._InterruptWordList
+
+    @InterruptWordList.setter
+    def InterruptWordList(self, InterruptWordList):
+        self._InterruptWordList = InterruptWordList
+
+
+    def _deserialize(self, params):
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        self._WelcomeMessagePriority = params.get("WelcomeMessagePriority")
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptWordList = params.get("InterruptWordList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41080,6 +42718,87 @@ class TalkConversationConfigInfo(AbstractModel):
         
 
 
+class TalkIOTTool(AbstractModel):
+    r"""IoT工具配置列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 工具名称，同时作为IoT ActionId
+        :type Name: str
+        :param _Description: 工具描述，用于模型判断何时调用
+        :type Description: str
+        :param _Parameters: 工具参数JSON Schema，JSON对象字符串，必须为type=object
+        :type Parameters: str
+        :param _Required: 必填参数名列表，必须存在于Parameters.properties中
+        :type Required: list of str
+        """
+        self._Name = None
+        self._Description = None
+        self._Parameters = None
+        self._Required = None
+
+    @property
+    def Name(self):
+        r"""工具名称，同时作为IoT ActionId
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""工具描述，用于模型判断何时调用
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Parameters(self):
+        r"""工具参数JSON Schema，JSON对象字符串，必须为type=object
+        :rtype: str
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def Required(self):
+        r"""必填参数名列表，必须存在于Parameters.properties中
+        :rtype: list of str
+        """
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Parameters = params.get("Parameters")
+        self._Required = params.get("Required")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TalkIdleDetectionConfigInfo(AbstractModel):
     r"""空闲检测信息。
 
@@ -41156,6 +42875,162 @@ class TalkIdleDetectionConfigInfo(AbstractModel):
                 obj = IdleResponseInfo()
                 obj._deserialize(item)
                 self._IdleResponses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkLLMConfig(AbstractModel):
+    r"""大模型配置。基础对话必填；如使用平台默认能力，请显式设置 Type=default。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>LLM类型：default-平台默认；openai-OpenAI兼容模型</p>
+        :type Type: str
+        :param _SystemPrompt: <p>系统提示词</p>
+        :type SystemPrompt: str
+        :param _Temperature: <p>采样温度，建议范围0-2</p>
+        :type Temperature: float
+        :param _History: <p>上下文历史轮数，建议范围0-50</p>
+        :type History: int
+        :param _Timeout: <p>超时时间，秒</p>
+        :type Timeout: int
+        :param _BaseUrl: <p>OpenAI兼容模型Base URL，仅支持 80 和 443 端口，Type=openai时必填</p>
+        :type BaseUrl: str
+        :param _Model: <p>模型名称，Type=openai时必填</p>
+        :type Model: str
+        :param _ApiKey: <p>模型API Key，Type=openai时必填</p>
+        :type ApiKey: str
+        :param _ExtraBody: <p>额外模型请求体参数，JSON对象字符串，只允许JSON object，不允许普通字符串</p>
+        :type ExtraBody: str
+        """
+        self._Type = None
+        self._SystemPrompt = None
+        self._Temperature = None
+        self._History = None
+        self._Timeout = None
+        self._BaseUrl = None
+        self._Model = None
+        self._ApiKey = None
+        self._ExtraBody = None
+
+    @property
+    def Type(self):
+        r"""<p>LLM类型：default-平台默认；openai-OpenAI兼容模型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SystemPrompt(self):
+        r"""<p>系统提示词</p>
+        :rtype: str
+        """
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+    @property
+    def Temperature(self):
+        r"""<p>采样温度，建议范围0-2</p>
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def History(self):
+        r"""<p>上下文历史轮数，建议范围0-50</p>
+        :rtype: int
+        """
+        return self._History
+
+    @History.setter
+    def History(self, History):
+        self._History = History
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间，秒</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def BaseUrl(self):
+        r"""<p>OpenAI兼容模型Base URL，仅支持 80 和 443 端口，Type=openai时必填</p>
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def Model(self):
+        r"""<p>模型名称，Type=openai时必填</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def ApiKey(self):
+        r"""<p>模型API Key，Type=openai时必填</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def ExtraBody(self):
+        r"""<p>额外模型请求体参数，JSON对象字符串，只允许JSON object，不允许普通字符串</p>
+        :rtype: str
+        """
+        return self._ExtraBody
+
+    @ExtraBody.setter
+    def ExtraBody(self, ExtraBody):
+        self._ExtraBody = ExtraBody
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._Temperature = params.get("Temperature")
+        self._History = params.get("History")
+        self._Timeout = params.get("Timeout")
+        self._BaseUrl = params.get("BaseUrl")
+        self._Model = params.get("Model")
+        self._ApiKey = params.get("ApiKey")
+        self._ExtraBody = params.get("ExtraBody")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41336,6 +43211,42 @@ class TalkLLMConfigInfo(AbstractModel):
         self._MaxTokens = params.get("MaxTokens")
         self._TopP = params.get("TopP")
         self._Tools = params.get("Tools")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkMemoryConfig(AbstractModel):
+    r"""长期记忆配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 是否启用长期记忆；启用时需满足产品和运行时能力要求
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""是否启用长期记忆；启用时需满足产品和运行时能力要求
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41764,6 +43675,59 @@ class TalkProductInfo(AbstractModel):
         
 
 
+class TalkSTTConfig(AbstractModel):
+    r"""语音识别配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 当前仅支持 `trtc`（使用 TRTC 内置语音识别）。
+        :type Type: str
+        :param _TRTC: `Type=trtc` 时生效。整体省略表示全部使用 TRTC 默认值。
+        :type TRTC: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTTRTC`
+        """
+        self._Type = None
+        self._TRTC = None
+
+    @property
+    def Type(self):
+        r"""当前仅支持 `trtc`（使用 TRTC 内置语音识别）。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TRTC(self):
+        r"""`Type=trtc` 时生效。整体省略表示全部使用 TRTC 默认值。
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTTRTC`
+        """
+        return self._TRTC
+
+    @TRTC.setter
+    def TRTC(self, TRTC):
+        self._TRTC = TRTC
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("TRTC") is not None:
+            self._TRTC = TalkSTTTRTC()
+            self._TRTC._deserialize(params.get("TRTC"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TalkSTTConfigInfo(AbstractModel):
     r"""STT配置信息。
 
@@ -41882,6 +43846,125 @@ class TalkSTTConfigInfo(AbstractModel):
         self._STTType = params.get("STTType")
         self._Enabled = params.get("Enabled")
         self._Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkSTTTRTC(AbstractModel):
+    r"""TRTC STT配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Language: <p>识别语言，只支持 <code>zh</code>、<code>16k_zh_large</code></p>
+        :type Language: str
+        :param _VADSilenceTime: <p>VAD 静默检测时间，单位 ms，范围 240–2000</p>
+        :type VADSilenceTime: int
+        :param _VADLevel: <p>远场人声抑制等级，范围 0–5</p>
+        :type VADLevel: int
+        """
+        self._Language = None
+        self._VADSilenceTime = None
+        self._VADLevel = None
+
+    @property
+    def Language(self):
+        r"""<p>识别语言，只支持 <code>zh</code>、<code>16k_zh_large</code></p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def VADSilenceTime(self):
+        r"""<p>VAD 静默检测时间，单位 ms，范围 240–2000</p>
+        :rtype: int
+        """
+        return self._VADSilenceTime
+
+    @VADSilenceTime.setter
+    def VADSilenceTime(self, VADSilenceTime):
+        self._VADSilenceTime = VADSilenceTime
+
+    @property
+    def VADLevel(self):
+        r"""<p>远场人声抑制等级，范围 0–5</p>
+        :rtype: int
+        """
+        return self._VADLevel
+
+    @VADLevel.setter
+    def VADLevel(self, VADLevel):
+        self._VADLevel = VADLevel
+
+
+    def _deserialize(self, params):
+        self._Language = params.get("Language")
+        self._VADSilenceTime = params.get("VADSilenceTime")
+        self._VADLevel = params.get("VADLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkTTSConfig(AbstractModel):
+    r"""当前仅支持 `flow`（TRTC Flow TTS）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: TTS的类型
+        :type Type: str
+        :param _Flow: Flow TTS 的具体配置
+        :type Flow: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSFlow`
+        """
+        self._Type = None
+        self._Flow = None
+
+    @property
+    def Type(self):
+        r"""TTS的类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Flow(self):
+        r"""Flow TTS 的具体配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSFlow`
+        """
+        return self._Flow
+
+    @Flow.setter
+    def Flow(self, Flow):
+        self._Flow = Flow
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Flow") is not None:
+            self._Flow = TalkTTSFlow()
+            self._Flow._deserialize(params.get("Flow"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42121,6 +44204,304 @@ class TalkTTSConfigInfo(AbstractModel):
         self._Speed = params.get("Speed")
         self._Volume = params.get("Volume")
         self._Pitch = params.get("Pitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkTTSFlow(AbstractModel):
+    r"""Flow TTS 的具体配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>精品音色 ID 或克隆音色 ID：具体可参考https://cloud.tencent.com/document/product/647/115414</p>
+        :type VoiceId: str
+        :param _Speed: <p>语速，范围 0.5–2.0；为 0 表示采用默认值</p>
+        :type Speed: float
+        """
+        self._VoiceId = None
+        self._Speed = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>精品音色 ID 或克隆音色 ID：具体可参考https://cloud.tencent.com/document/product/647/115414</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Speed(self):
+        r"""<p>语速，范围 0.5–2.0；为 0 表示采用默认值</p>
+        :rtype: float
+        """
+        return self._Speed
+
+    @Speed.setter
+    def Speed(self, Speed):
+        self._Speed = Speed
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._Speed = params.get("Speed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkWebhookAuth(AbstractModel):
+    r"""Webhook鉴权配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 鉴权类型：none、hmac、static_headers、bearer
+        :type Type: str
+        :param _SignKey: HMAC签名密钥，Type=hmac时必填
+        :type SignKey: str
+        :param _Headers: 静态鉴权请求头，JSON对象字符串，仅允许白名单header名
+        :type Headers: str
+        :param _BearerToken: Bearer Token，Type=bearer时用于生成Authorization请求头
+        :type BearerToken: str
+        """
+        self._Type = None
+        self._SignKey = None
+        self._Headers = None
+        self._BearerToken = None
+
+    @property
+    def Type(self):
+        r"""鉴权类型：none、hmac、static_headers、bearer
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SignKey(self):
+        r"""HMAC签名密钥，Type=hmac时必填
+        :rtype: str
+        """
+        return self._SignKey
+
+    @SignKey.setter
+    def SignKey(self, SignKey):
+        self._SignKey = SignKey
+
+    @property
+    def Headers(self):
+        r"""静态鉴权请求头，JSON对象字符串，仅允许白名单header名
+        :rtype: str
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def BearerToken(self):
+        r"""Bearer Token，Type=bearer时用于生成Authorization请求头
+        :rtype: str
+        """
+        return self._BearerToken
+
+    @BearerToken.setter
+    def BearerToken(self, BearerToken):
+        self._BearerToken = BearerToken
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._SignKey = params.get("SignKey")
+        self._Headers = params.get("Headers")
+        self._BearerToken = params.get("BearerToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkWebhookEndpoint(AbstractModel):
+    r"""Webhook工具配置列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>Webhook地址，仅支持 80 和 443 端口</p>
+        :type Url: str
+        :param _Timeout: <p>超时时间，0~30 秒</p><p>取值范围：[0, 30]</p>
+        :type Timeout: int
+        """
+        self._Url = None
+        self._Timeout = None
+
+    @property
+    def Url(self):
+        r"""<p>Webhook地址，仅支持 80 和 443 端口</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间，0~30 秒</p><p>取值范围：[0, 30]</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Timeout = params.get("Timeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkWebhookTool(AbstractModel):
+    r"""Webhook工具配置列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Webhook工具名称
+        :type Name: str
+        :param _Description: Webhook工具描述
+        :type Description: str
+        :param _Parameters: 工具参数JSON Schema，JSON对象字符串，必须为type=object
+        :type Parameters: str
+        :param _Endpoint: Webhook HTTP端点配置
+        :type Endpoint: :class:`tencentcloud.iotexplorer.v20190423.models.TalkWebhookEndpoint`
+        :param _Required: 必填参数名列表，必须存在于Parameters.properties中
+        :type Required: list of str
+        :param _Auth: Webhook鉴权配置
+        :type Auth: :class:`tencentcloud.iotexplorer.v20190423.models.TalkWebhookAuth`
+        """
+        self._Name = None
+        self._Description = None
+        self._Parameters = None
+        self._Endpoint = None
+        self._Required = None
+        self._Auth = None
+
+    @property
+    def Name(self):
+        r"""Webhook工具名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""Webhook工具描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Parameters(self):
+        r"""工具参数JSON Schema，JSON对象字符串，必须为type=object
+        :rtype: str
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def Endpoint(self):
+        r"""Webhook HTTP端点配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkWebhookEndpoint`
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Required(self):
+        r"""必填参数名列表，必须存在于Parameters.properties中
+        :rtype: list of str
+        """
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def Auth(self):
+        r"""Webhook鉴权配置
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkWebhookAuth`
+        """
+        return self._Auth
+
+    @Auth.setter
+    def Auth(self, Auth):
+        self._Auth = Auth
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Parameters = params.get("Parameters")
+        if params.get("Endpoint") is not None:
+            self._Endpoint = TalkWebhookEndpoint()
+            self._Endpoint._deserialize(params.get("Endpoint"))
+        self._Required = params.get("Required")
+        if params.get("Auth") is not None:
+            self._Auth = TalkWebhookAuth()
+            self._Auth._deserialize(params.get("Auth"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43360,6 +45741,115 @@ class UnbindTWeTalkAIBotRequest(AbstractModel):
 
 class UnbindTWeTalkAIBotResponse(AbstractModel):
     r"""UnbindTWeTalkAIBot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UnbindTWeTalkAgentRequest(AbstractModel):
+    r"""UnbindTWeTalkAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _AgentId: <p>智能体 ID</p>
+        :type AgentId: str
+        :param _DeviceName: <p>设备名称；BindingScope=device 时必填</p>
+        :type DeviceName: str
+        :param _BindingScope: <p>绑定维度：product 或 device</p>
+        :type BindingScope: str
+        """
+        self._ProductId = None
+        self._AgentId = None
+        self._DeviceName = None
+        self._BindingScope = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def AgentId(self):
+        r"""<p>智能体 ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称；BindingScope=device 时必填</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def BindingScope(self):
+        r"""<p>绑定维度：product 或 device</p>
+        :rtype: str
+        """
+        return self._BindingScope
+
+    @BindingScope.setter
+    def BindingScope(self, BindingScope):
+        self._BindingScope = BindingScope
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._AgentId = params.get("AgentId")
+        self._DeviceName = params.get("DeviceName")
+        self._BindingScope = params.get("BindingScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindTWeTalkAgentResponse(AbstractModel):
+    r"""UnbindTWeTalkAgent返回参数结构体
 
     """
 

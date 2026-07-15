@@ -40483,16 +40483,16 @@ class SingleOrderedDataPoint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Dimensions: 实例对象维度组合	
+        :param _Dimensions: <p>实例对象维度组合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Dimensions: list of Dimension
-        :param _Value: 监控数据值
+        :param _Value: <p>监控数据值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: float
-        :param _Timestamp: 监控数据时间戳
+        :param _Timestamp: <p>监控数据时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
-        :param _Order: 排序序号
+        :param _Order: <p>排序序号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Order: int
         """
@@ -40503,7 +40503,7 @@ class SingleOrderedDataPoint(AbstractModel):
 
     @property
     def Dimensions(self):
-        r"""实例对象维度组合	
+        r"""<p>实例对象维度组合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Dimension
         """
@@ -40515,7 +40515,7 @@ class SingleOrderedDataPoint(AbstractModel):
 
     @property
     def Value(self):
-        r"""监控数据值
+        r"""<p>监控数据值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -40527,7 +40527,7 @@ class SingleOrderedDataPoint(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""监控数据时间戳
+        r"""<p>监控数据时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -40539,7 +40539,7 @@ class SingleOrderedDataPoint(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序序号
+        r"""<p>排序序号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

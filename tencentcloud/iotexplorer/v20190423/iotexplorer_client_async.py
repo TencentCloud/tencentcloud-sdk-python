@@ -187,6 +187,26 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BindTWeTalkAgent(
+            self,
+            request: models.BindTWeTalkAgentRequest,
+            opts: Dict = None,
+    ) -> models.BindTWeTalkAgentResponse:
+        """
+        绑定智能体到产品或设备
+        - `BindingScope=product` 时，`DeviceName` 必须为空。
+        - `BindingScope=device` 时，`DeviceName` 必填。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindTWeTalkAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindTWeTalkAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CallDeviceActionAsync(
             self,
             request: models.CallDeviceActionAsyncRequest,
@@ -781,6 +801,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTWeTalkAgent(
+            self,
+            request: models.CreateTWeTalkAgentRequest,
+            opts: Dict = None,
+    ) -> models.CreateTWeTalkAgentResponse:
+        """
+        新增TWeTalk智能体。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTWeTalkAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTWeTalkAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTWeTalkProductConfig(
             self,
             request: models.CreateTWeTalkProductConfigRequest,
@@ -1100,6 +1138,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DeleteTWeTalkAIBot"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteTWeTalkAIBotResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTWeTalkAgent(
+            self,
+            request: models.DeleteTWeTalkAgentRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTWeTalkAgentResponse:
+        """
+        用于删除TWeTalk智能体
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTWeTalkAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTWeTalkAgentResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2306,6 +2362,60 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DescribeTWeTalkAIBot"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTWeTalkAIBotResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTWeTalkAgent(
+            self,
+            request: models.DescribeTWeTalkAgentRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeTalkAgentResponse:
+        """
+        用户查询TWeTalk智能体详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeTalkAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeTalkAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTWeTalkAgentBinding(
+            self,
+            request: models.DescribeTWeTalkAgentBindingRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeTalkAgentBindingResponse:
+        """
+        查询智能体绑定关系
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeTalkAgentBinding"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeTalkAgentBindingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTWeTalkAgentList(
+            self,
+            request: models.DescribeTWeTalkAgentListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeTalkAgentListResponse:
+        """
+        分页查询智能体列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeTalkAgentList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeTalkAgentListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3573,6 +3683,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyTWeTalkAgent(
+            self,
+            request: models.ModifyTWeTalkAgentRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTWeTalkAgentResponse:
+        """
+        修改TWeTalk智能体
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTWeTalkAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTWeTalkAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyTWeTalkProductConfig(
             self,
             request: models.ModifyTWeTalkProductConfigRequest,
@@ -4040,6 +4168,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "UnbindTWeTalkAIBot"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnbindTWeTalkAIBotResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnbindTWeTalkAgent(
+            self,
+            request: models.UnbindTWeTalkAgentRequest,
+            opts: Dict = None,
+    ) -> models.UnbindTWeTalkAgentResponse:
+        """
+        解绑产品或设备上的智能体
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnbindTWeTalkAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnbindTWeTalkAgentResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

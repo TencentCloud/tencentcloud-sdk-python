@@ -5207,6 +5207,150 @@ class DescribeDocumentsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEditVersionsRequest(AbstractModel):
+    r"""DescribeEditVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>应用ID</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>课堂ID</p>
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>课堂ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEditVersionsResponse(AbstractModel):
+    r"""DescribeEditVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClassId: <p>课堂ID</p>
+        :type ClassId: int
+        :param _LatestVersionNo: <p>当前课堂最新的版本号</p>
+        :type LatestVersionNo: int
+        :param _MainVersion: <p>当前课堂设置的主版本号</p>
+        :type MainVersion: int
+        :param _Versions: <p>当前课堂所有版本信息</p>
+        :type Versions: list of EditVersions
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClassId = None
+        self._LatestVersionNo = None
+        self._MainVersion = None
+        self._Versions = None
+        self._RequestId = None
+
+    @property
+    def ClassId(self):
+        r"""<p>课堂ID</p>
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def LatestVersionNo(self):
+        r"""<p>当前课堂最新的版本号</p>
+        :rtype: int
+        """
+        return self._LatestVersionNo
+
+    @LatestVersionNo.setter
+    def LatestVersionNo(self, LatestVersionNo):
+        self._LatestVersionNo = LatestVersionNo
+
+    @property
+    def MainVersion(self):
+        r"""<p>当前课堂设置的主版本号</p>
+        :rtype: int
+        """
+        return self._MainVersion
+
+    @MainVersion.setter
+    def MainVersion(self, MainVersion):
+        self._MainVersion = MainVersion
+
+    @property
+    def Versions(self):
+        r"""<p>当前课堂所有版本信息</p>
+        :rtype: list of EditVersions
+        """
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClassId = params.get("ClassId")
+        self._LatestVersionNo = params.get("LatestVersionNo")
+        self._MainVersion = params.get("MainVersion")
+        if params.get("Versions") is not None:
+            self._Versions = []
+            for item in params.get("Versions"):
+                obj = EditVersions()
+                obj._deserialize(item)
+                self._Versions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGroupListRequest(AbstractModel):
     r"""DescribeGroupList请求参数结构体
 
@@ -9043,6 +9187,177 @@ class DocumentInfo(AbstractModel):
         
 
 
+class EditVersions(AbstractModel):
+    r"""编辑版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: <p>版本号</p><p>取值范围：[0, 100]</p><p>默认值：0</p>
+        :type Version: int
+        :param _Status: <p>版本状态</p><p>枚举值：</p><ul><li>READY： 已完成</li><li>FAILED： 失败</li><li>PROCESSING： 进行中</li></ul>
+        :type Status: str
+        :param _IsMain: <p>是否是主版本</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type IsMain: bool
+        :param _IsSource: <p>是否源头版本</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type IsSource: bool
+        :param _KeepDurationSec: <p>版本时长</p><p>取值范围：[0, 1000000]</p><p>单位：秒</p>
+        :type KeepDurationSec: int
+        :param _CreatedAtMs: <p>创建时间</p><p>取值范围：[0, 10000000]</p>
+        :type CreatedAtMs: int
+        :param _CreatorUserId: <p>创建用户id</p>
+        :type CreatorUserId: str
+        :param _FailReason: <p>失败原因</p><p>默认值：空</p><p>仅失败才会有原因</p>
+        :type FailReason: str
+        :param _UpdatedAtMs: <p>更新时间</p><p>取值范围：[0, 100000]</p>
+        :type UpdatedAtMs: int
+        :param _VersionName: <p>版本名字</p>
+        :type VersionName: str
+        """
+        self._Version = None
+        self._Status = None
+        self._IsMain = None
+        self._IsSource = None
+        self._KeepDurationSec = None
+        self._CreatedAtMs = None
+        self._CreatorUserId = None
+        self._FailReason = None
+        self._UpdatedAtMs = None
+        self._VersionName = None
+
+    @property
+    def Version(self):
+        r"""<p>版本号</p><p>取值范围：[0, 100]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Status(self):
+        r"""<p>版本状态</p><p>枚举值：</p><ul><li>READY： 已完成</li><li>FAILED： 失败</li><li>PROCESSING： 进行中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsMain(self):
+        r"""<p>是否是主版本</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._IsMain
+
+    @IsMain.setter
+    def IsMain(self, IsMain):
+        self._IsMain = IsMain
+
+    @property
+    def IsSource(self):
+        r"""<p>是否源头版本</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._IsSource
+
+    @IsSource.setter
+    def IsSource(self, IsSource):
+        self._IsSource = IsSource
+
+    @property
+    def KeepDurationSec(self):
+        r"""<p>版本时长</p><p>取值范围：[0, 1000000]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._KeepDurationSec
+
+    @KeepDurationSec.setter
+    def KeepDurationSec(self, KeepDurationSec):
+        self._KeepDurationSec = KeepDurationSec
+
+    @property
+    def CreatedAtMs(self):
+        r"""<p>创建时间</p><p>取值范围：[0, 10000000]</p>
+        :rtype: int
+        """
+        return self._CreatedAtMs
+
+    @CreatedAtMs.setter
+    def CreatedAtMs(self, CreatedAtMs):
+        self._CreatedAtMs = CreatedAtMs
+
+    @property
+    def CreatorUserId(self):
+        r"""<p>创建用户id</p>
+        :rtype: str
+        """
+        return self._CreatorUserId
+
+    @CreatorUserId.setter
+    def CreatorUserId(self, CreatorUserId):
+        self._CreatorUserId = CreatorUserId
+
+    @property
+    def FailReason(self):
+        r"""<p>失败原因</p><p>默认值：空</p><p>仅失败才会有原因</p>
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def UpdatedAtMs(self):
+        r"""<p>更新时间</p><p>取值范围：[0, 100000]</p>
+        :rtype: int
+        """
+        return self._UpdatedAtMs
+
+    @UpdatedAtMs.setter
+    def UpdatedAtMs(self, UpdatedAtMs):
+        self._UpdatedAtMs = UpdatedAtMs
+
+    @property
+    def VersionName(self):
+        r"""<p>版本名字</p>
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Status = params.get("Status")
+        self._IsMain = params.get("IsMain")
+        self._IsSource = params.get("IsSource")
+        self._KeepDurationSec = params.get("KeepDurationSec")
+        self._CreatedAtMs = params.get("CreatedAtMs")
+        self._CreatorUserId = params.get("CreatorUserId")
+        self._FailReason = params.get("FailReason")
+        self._UpdatedAtMs = params.get("UpdatedAtMs")
+        self._VersionName = params.get("VersionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EndRoomRequest(AbstractModel):
     r"""EndRoom请求参数结构体
 
@@ -9491,6 +9806,175 @@ class ForbidSendMsgResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class GetEditVersionTokenRequest(AbstractModel):
+    r"""GetEditVersionToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>实时互动-教育版的SdkAppId。</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>课堂ID</p>
+        :type RoomId: int
+        :param _UserId: <p>用户ID</p>
+        :type UserId: str
+        :param _ExpireSeconds: <p>token过期时间，0代表无过期时间，单位毫秒。</p>
+        :type ExpireSeconds: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._UserId = None
+        self._ExpireSeconds = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>实时互动-教育版的SdkAppId。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>课堂ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        r"""<p>用户ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def ExpireSeconds(self):
+        r"""<p>token过期时间，0代表无过期时间，单位毫秒。</p>
+        :rtype: int
+        """
+        return self._ExpireSeconds
+
+    @ExpireSeconds.setter
+    def ExpireSeconds(self, ExpireSeconds):
+        self._ExpireSeconds = ExpireSeconds
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._ExpireSeconds = params.get("ExpireSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetEditVersionTokenResponse(AbstractModel):
+    r"""GetEditVersionToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: <p>信令回放剪辑页面token</p>
+        :type Token: str
+        :param _RoomId: <p>课堂ID</p>
+        :type RoomId: int
+        :param _UserId: <p>用户ID</p>
+        :type UserId: str
+        :param _VersionNo: <p>版本号，预留</p><p>默认值：0</p>
+        :type VersionNo: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Token = None
+        self._RoomId = None
+        self._UserId = None
+        self._VersionNo = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        r"""<p>信令回放剪辑页面token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RoomId(self):
+        r"""<p>课堂ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        r"""<p>用户ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def VersionNo(self):
+        r"""<p>版本号，预留</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._VersionNo
+
+    @VersionNo.setter
+    def VersionNo(self, VersionNo):
+        self._VersionNo = VersionNo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._VersionNo = params.get("VersionNo")
         self._RequestId = params.get("RequestId")
 
 
@@ -14671,6 +15155,160 @@ class SetAppCustomContentResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SetMainEditVersionRequest(AbstractModel):
+    r"""SetMainEditVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>应用ID</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>课堂ID</p>
+        :type RoomId: int
+        :param _VersionNo: <p>版本号，可通过DescribeEditVersion接口获取当前课堂全部版本，来查看到版本号。</p>
+        :type VersionNo: int
+        :param _Operator: <p>操作者ID</p>
+        :type Operator: str
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._VersionNo = None
+        self._Operator = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>课堂ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def VersionNo(self):
+        r"""<p>版本号，可通过DescribeEditVersion接口获取当前课堂全部版本，来查看到版本号。</p>
+        :rtype: int
+        """
+        return self._VersionNo
+
+    @VersionNo.setter
+    def VersionNo(self, VersionNo):
+        self._VersionNo = VersionNo
+
+    @property
+    def Operator(self):
+        r"""<p>操作者ID</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._VersionNo = params.get("VersionNo")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetMainEditVersionResponse(AbstractModel):
+    r"""SetMainEditVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClassId: <p>课堂ID</p>
+        :type ClassId: int
+        :param _PreviousMainVersion: <p>上一个主版本的版本号</p>
+        :type PreviousMainVersion: int
+        :param _MainVersion: <p>当前生效中的主版本号</p>
+        :type MainVersion: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClassId = None
+        self._PreviousMainVersion = None
+        self._MainVersion = None
+        self._RequestId = None
+
+    @property
+    def ClassId(self):
+        r"""<p>课堂ID</p>
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def PreviousMainVersion(self):
+        r"""<p>上一个主版本的版本号</p>
+        :rtype: int
+        """
+        return self._PreviousMainVersion
+
+    @PreviousMainVersion.setter
+    def PreviousMainVersion(self, PreviousMainVersion):
+        self._PreviousMainVersion = PreviousMainVersion
+
+    @property
+    def MainVersion(self):
+        r"""<p>当前生效中的主版本号</p>
+        :rtype: int
+        """
+        return self._MainVersion
+
+    @MainVersion.setter
+    def MainVersion(self, MainVersion):
+        self._MainVersion = MainVersion
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClassId = params.get("ClassId")
+        self._PreviousMainVersion = params.get("PreviousMainVersion")
+        self._MainVersion = params.get("MainVersion")
         self._RequestId = params.get("RequestId")
 
 

@@ -47,7 +47,7 @@ class AIAgentAsset(AbstractModel):
         :type ExposureStatus: str
         :param _MetadataRiskURL: <p>metadata 有风险时对应路径</p>
         :type MetadataRiskURL: str
-        :param _SkillState: <p>无</p>
+        :param _SkillState: <p>凭据 Skill 安装状态</p>
         :type SkillState: :class:`tencentcloud.csip.v20221121.models.SkillState`
         :param _TrafficPluginState: <p>流量沙箱插件状态</p>
         :type TrafficPluginState: :class:`tencentcloud.csip.v20221121.models.TrafficPluginState`
@@ -195,7 +195,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def SkillState(self):
-        r"""<p>无</p>
+        r"""<p>凭据 Skill 安装状态</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.SkillState`
         """
         return self._SkillState
@@ -14585,11 +14585,11 @@ class CosBucketId(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: appid
+        :param _AppId: <p>appid</p>
         :type AppId: str
-        :param _IsAutoMonitor: 
+        :param _IsAutoMonitor: <p>是否自动监测</p>
         :type IsAutoMonitor: int
-        :param _BucketIdSet: bucket id集合
+        :param _BucketIdSet: <p>bucket id集合</p>
         :type BucketIdSet: list of str
         """
         self._AppId = None
@@ -14598,7 +14598,7 @@ class CosBucketId(AbstractModel):
 
     @property
     def AppId(self):
-        r"""appid
+        r"""<p>appid</p>
         :rtype: str
         """
         return self._AppId
@@ -14609,7 +14609,7 @@ class CosBucketId(AbstractModel):
 
     @property
     def IsAutoMonitor(self):
-        r"""
+        r"""<p>是否自动监测</p>
         :rtype: int
         """
         return self._IsAutoMonitor
@@ -14620,7 +14620,7 @@ class CosBucketId(AbstractModel):
 
     @property
     def BucketIdSet(self):
-        r"""bucket id集合
+        r"""<p>bucket id集合</p>
         :rtype: list of str
         """
         return self._BucketIdSet
@@ -56830,7 +56830,7 @@ class DspmIdentifyCategoryItem(AbstractModel):
         :type Type: int
         :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _ComplianceRelations: <p>无</p>
+        :param _ComplianceRelations: <p>关联的识别模板信息</p>
         :type ComplianceRelations: list of DspmIdentifyRefComplianceInfo
         """
         self._Id = None
@@ -56885,7 +56885,7 @@ class DspmIdentifyCategoryItem(AbstractModel):
 
     @property
     def ComplianceRelations(self):
-        r"""<p>无</p>
+        r"""<p>关联的识别模板信息</p>
         :rtype: list of DspmIdentifyRefComplianceInfo
         """
         return self._ComplianceRelations
@@ -57097,9 +57097,9 @@ class DspmIdentifyComplianceCategoryRelation(AbstractModel):
         :type CategoryType: int
         :param _CategoryGrade: <p>分类层级</p><p>单位：层</p>
         :type CategoryGrade: int
-        :param _RuleRelations: <p>无</p>
+        :param _RuleRelations: <p>关联的数据项信息</p>
         :type RuleRelations: list of DspmIdentifyComplianceRuleRelation
-        :param _Children: <p>无</p>
+        :param _Children: <p>子节点信息</p>
         :type Children: list of DspmIdentifyComplianceCategoryRelation
         """
         self._CategoryId = None
@@ -57179,7 +57179,7 @@ class DspmIdentifyComplianceCategoryRelation(AbstractModel):
 
     @property
     def RuleRelations(self):
-        r"""<p>无</p>
+        r"""<p>关联的数据项信息</p>
         :rtype: list of DspmIdentifyComplianceRuleRelation
         """
         return self._RuleRelations
@@ -57190,7 +57190,7 @@ class DspmIdentifyComplianceCategoryRelation(AbstractModel):
 
     @property
     def Children(self):
-        r"""<p>无</p>
+        r"""<p>子节点信息</p>
         :rtype: list of DspmIdentifyComplianceCategoryRelation
         """
         return self._Children
@@ -57977,7 +57977,7 @@ class DspmIdentifyLevelGroupItem(AbstractModel):
         :type LevelItems: list of DspmIdentifyLevelItem
         :param _UpdateTime: <p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
         :type UpdateTime: str
-        :param _ComplianceRelations: <p>无</p>
+        :param _ComplianceRelations: <p>关联的识别模板信息</p>
         :type ComplianceRelations: list of DspmIdentifyRefComplianceInfo
         """
         self._Id = None
@@ -58056,7 +58056,7 @@ class DspmIdentifyLevelGroupItem(AbstractModel):
 
     @property
     def ComplianceRelations(self):
-        r"""<p>无</p>
+        r"""<p>关联的识别模板信息</p>
         :rtype: list of DspmIdentifyRefComplianceInfo
         """
         return self._ComplianceRelations
@@ -58345,7 +58345,7 @@ class DspmIdentifyRuleItem(AbstractModel):
         :type StructuredStatus: bool
         :param _UnStructuredStatus: <p>非结构化规则配置状态</p>
         :type UnStructuredStatus: bool
-        :param _ComplianceRelations: <p>无</p>
+        :param _ComplianceRelations: <p>关联的识别模板信息</p>
         :type ComplianceRelations: list of DspmIdentifyRefComplianceInfo
         """
         self._Id = None
@@ -58448,7 +58448,7 @@ class DspmIdentifyRuleItem(AbstractModel):
 
     @property
     def ComplianceRelations(self):
-        r"""<p>无</p>
+        r"""<p>关联的识别模板信息</p>
         :rtype: list of DspmIdentifyRefComplianceInfo
         """
         return self._ComplianceRelations

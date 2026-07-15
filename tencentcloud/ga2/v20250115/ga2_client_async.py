@@ -133,6 +133,24 @@ class Ga2Client(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateListenerAdditionalCert(
+            self,
+            request: models.CreateListenerAdditionalCertRequest,
+            opts: Dict = None,
+    ) -> models.CreateListenerAdditionalCertResponse:
+        """
+        添加扩展证书
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateListenerAdditionalCert"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateListenerAdditionalCertResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAccelerateAreas(
             self,
             request: models.DeleteAccelerateAreasRequest,
@@ -236,6 +254,24 @@ class Ga2Client(AbstractClient):
         kwargs["action"] = "DeleteListener"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteListenerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteListenerAdditionalCert(
+            self,
+            request: models.DeleteListenerAdditionalCertRequest,
+            opts: Dict = None,
+    ) -> models.DeleteListenerAdditionalCertResponse:
+        """
+        删除扩展证书
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteListenerAdditionalCert"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteListenerAdditionalCertResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -506,6 +542,24 @@ class Ga2Client(AbstractClient):
         kwargs["action"] = "ModifyListener"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyListenerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ReplaceListenerAdditionalCert(
+            self,
+            request: models.ReplaceListenerAdditionalCertRequest,
+            opts: Dict = None,
+    ) -> models.ReplaceListenerAdditionalCertResponse:
+        """
+        替换扩展证书
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReplaceListenerAdditionalCert"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReplaceListenerAdditionalCertResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

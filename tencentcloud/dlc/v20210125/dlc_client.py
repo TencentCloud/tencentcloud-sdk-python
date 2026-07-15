@@ -2858,7 +2858,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        r"""该接口（DescribleTasks）用于查询任务列表
+        r"""该接口（DescribeTasks）用于查询任务列表
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTasksRequest`

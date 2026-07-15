@@ -1533,6 +1533,8 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type KeyPTSList: list of int
         :param _AddOnAudios: <p>外挂音频功能，指定要插入的音频文件。</p>
         :type AddOnAudios: list of AddOnAudio
+        :param _StdExtStreamInfos: <p>非空时直接替换模板的 StreamInfos 字段，字段格式与创建自适应模板时的 StreamInfos 完全一致</p>
+        :type StdExtStreamInfos: list of AdaptiveStreamTemplate
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1548,6 +1550,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         self._StdExtInfo = None
         self._KeyPTSList = None
         self._AddOnAudios = None
+        self._StdExtStreamInfos = None
 
     @property
     def Definition(self):
@@ -1709,6 +1712,17 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
     def AddOnAudios(self, AddOnAudios):
         self._AddOnAudios = AddOnAudios
 
+    @property
+    def StdExtStreamInfos(self):
+        r"""<p>非空时直接替换模板的 StreamInfos 字段，字段格式与创建自适应模板时的 StreamInfos 完全一致</p>
+        :rtype: list of AdaptiveStreamTemplate
+        """
+        return self._StdExtStreamInfos
+
+    @StdExtStreamInfos.setter
+    def StdExtStreamInfos(self, StdExtStreamInfos):
+        self._StdExtStreamInfos = StdExtStreamInfos
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1748,6 +1762,12 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
                 obj = AddOnAudio()
                 obj._deserialize(item)
                 self._AddOnAudios.append(obj)
+        if params.get("StdExtStreamInfos") is not None:
+            self._StdExtStreamInfos = []
+            for item in params.get("StdExtStreamInfos"):
+                obj = AdaptiveStreamTemplate()
+                obj._deserialize(item)
+                self._StdExtStreamInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6906,6 +6926,87 @@ class AiContentReviewTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiDramaInput(AbstractModel):
+    r"""Ai自动生成漫剧的输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Script: <p>ai漫剧剧本</p><p>参数格式：无</p><p>入参限制：无</p>
+        :type Script: str
+        :param _Style: <p>ai漫剧风格</p><p>枚举值：</p><ul><li>chinese_ink_wash： 国风水墨</li><li>fantasy_cyberpunk： 奇幻赛博朋克</li><li>japanese_anime_2d： 日漫二次元</li></ul><p>默认值：chinese_ink_wash</p><p>枚举值：</p><ul><li>realistic_live_action： 真人写实</li><li>chinese_ink_wash： 国风水墨</li><li>fantasy_cyberpunk： 奇幻赛博朋克</li><li>japanese_anime_2d： 日漫二次元</li></ul><p>默认值：chinese_ink_wash</p>
+        :type Style: str
+        :param _Ratio: <p>宽高比</p><p>枚举值：</p><ul><li>16:9： 16:9</li><li>9:16： 9:16</li></ul><p>默认值：16:9</p>
+        :type Ratio: str
+        :param _Resolution: <p>输出视频分辨率</p><p>枚举值：</p><ul><li>720p： 720p</li><li>1080p： 1080p</li></ul><p>默认值：720p</p>
+        :type Resolution: str
+        """
+        self._Script = None
+        self._Style = None
+        self._Ratio = None
+        self._Resolution = None
+
+    @property
+    def Script(self):
+        r"""<p>ai漫剧剧本</p><p>参数格式：无</p><p>入参限制：无</p>
+        :rtype: str
+        """
+        return self._Script
+
+    @Script.setter
+    def Script(self, Script):
+        self._Script = Script
+
+    @property
+    def Style(self):
+        r"""<p>ai漫剧风格</p><p>枚举值：</p><ul><li>chinese_ink_wash： 国风水墨</li><li>fantasy_cyberpunk： 奇幻赛博朋克</li><li>japanese_anime_2d： 日漫二次元</li></ul><p>默认值：chinese_ink_wash</p><p>枚举值：</p><ul><li>realistic_live_action： 真人写实</li><li>chinese_ink_wash： 国风水墨</li><li>fantasy_cyberpunk： 奇幻赛博朋克</li><li>japanese_anime_2d： 日漫二次元</li></ul><p>默认值：chinese_ink_wash</p>
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def Ratio(self):
+        r"""<p>宽高比</p><p>枚举值：</p><ul><li>16:9： 16:9</li><li>9:16： 9:16</li></ul><p>默认值：16:9</p>
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Resolution(self):
+        r"""<p>输出视频分辨率</p><p>枚举值：</p><ul><li>720p： 720p</li><li>1080p： 1080p</li></ul><p>默认值：720p</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+
+    def _deserialize(self, params):
+        self._Script = params.get("Script")
+        self._Style = params.get("Style")
+        self._Ratio = params.get("Ratio")
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20602,6 +20703,104 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAiDramaTaskRequest(AbstractModel):
+    r"""CreateAiDramaTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>ai漫剧输入</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiDramaInput`
+        :param _CosInfo: <p>用户cos信息</p>
+        :type CosInfo: :class:`tencentcloud.mps.v20190612.models.VideoDramaCosInfo`
+        """
+        self._Input = None
+        self._CosInfo = None
+
+    @property
+    def Input(self):
+        r"""<p>ai漫剧输入</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiDramaInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CosInfo(self):
+        r"""<p>用户cos信息</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDramaCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = AiDramaInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("CosInfo") is not None:
+            self._CosInfo = VideoDramaCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAiDramaTaskResponse(AbstractModel):
+    r"""CreateAiDramaTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcAudioTaskRequest(AbstractModel):
     r"""CreateAigcAudioTask请求参数结构体
 
@@ -27568,6 +27767,104 @@ class CreateVideoDatabaseEntryTaskResponse(AbstractModel):
     def TaskId(self):
         r"""任务ID
 注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVideoRedrawTaskRequest(AbstractModel):
+    r"""CreateVideoRedrawTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>输入待转绘视频url信息</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.VideoRedrawInput`
+        :param _CosInfo: <p>用户cos信息，用于保存生成结果</p>
+        :type CosInfo: :class:`tencentcloud.mps.v20190612.models.VideoRedrawCosInfo`
+        """
+        self._Input = None
+        self._CosInfo = None
+
+    @property
+    def Input(self):
+        r"""<p>输入待转绘视频url信息</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoRedrawInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CosInfo(self):
+        r"""<p>用户cos信息，用于保存生成结果</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoRedrawCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = VideoRedrawInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("CosInfo") is not None:
+            self._CosInfo = VideoRedrawCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoRedrawTaskResponse(AbstractModel):
+    r"""CreateVideoRedrawTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -90469,6 +90766,72 @@ class VideoDenoiseConfig(AbstractModel):
         
 
 
+class VideoDramaCosInfo(AbstractModel):
+    r"""aigc cos信息，存储用户请求时填写的cos信息，存放结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketRegion: <p>cos通地域</p>
+        :type CosBucketRegion: str
+        :param _CosBucketName: <p>cos桶名称</p>
+        :type CosBucketName: str
+        :param _CosBucketPath: <p>cos桶路径</p>
+        :type CosBucketPath: str
+        """
+        self._CosBucketRegion = None
+        self._CosBucketName = None
+        self._CosBucketPath = None
+
+    @property
+    def CosBucketRegion(self):
+        r"""<p>cos通地域</p>
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketName(self):
+        r"""<p>cos桶名称</p>
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketPath(self):
+        r"""<p>cos桶路径</p>
+        :rtype: str
+        """
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
+
+    def _deserialize(self, params):
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketPath = params.get("CosBucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoEnhanceConfig(AbstractModel):
     r"""视频增强配置
 
@@ -90734,6 +91097,108 @@ class VideoEnhanceConfig(AbstractModel):
         if params.get("FrameRateWithDen") is not None:
             self._FrameRateWithDen = FrameRateWithDenConfig()
             self._FrameRateWithDen._deserialize(params.get("FrameRateWithDen"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoRedrawCosInfo(AbstractModel):
+    r"""aigc cos信息，存储用户请求时填写的cos信息，存放结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketRegion: <p>cos桶地域</p>
+        :type CosBucketRegion: str
+        :param _CosBucketName: <p>cos桶名称</p>
+        :type CosBucketName: str
+        :param _CosBucketPath: <p>cos桶路径</p>
+        :type CosBucketPath: str
+        """
+        self._CosBucketRegion = None
+        self._CosBucketName = None
+        self._CosBucketPath = None
+
+    @property
+    def CosBucketRegion(self):
+        r"""<p>cos桶地域</p>
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketName(self):
+        r"""<p>cos桶名称</p>
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketPath(self):
+        r"""<p>cos桶路径</p>
+        :rtype: str
+        """
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
+
+    def _deserialize(self, params):
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketPath = params.get("CosBucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoRedrawInput(AbstractModel):
+    r"""视频转绘的输入源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>输入待转绘的视频URL</p>
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        r"""<p>输入待转绘的视频URL</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

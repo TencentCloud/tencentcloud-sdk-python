@@ -5537,6 +5537,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateAigcApiToken(self, request):
+        r"""创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+
+        :param request: Request instance for UpdateAigcApiToken.
+        :type request: :class:`tencentcloud.vod.v20180717.models.UpdateAigcApiTokenRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.UpdateAigcApiTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAigcApiToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAigcApiTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def VerifyDomainRecord(self, request):
         r"""该接口用于验证域名解析值。
 

@@ -164,6 +164,29 @@ class Ga2Client(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateListenerAdditionalCert(self, request):
+        r"""添加扩展证书
+
+        :param request: Request instance for CreateListenerAdditionalCert.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.CreateListenerAdditionalCertRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.CreateListenerAdditionalCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateListenerAdditionalCert", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateListenerAdditionalCertResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccelerateAreas(self, request):
         r"""删除加速地域
 
@@ -293,6 +316,29 @@ class Ga2Client(AbstractClient):
             body = self.call("DeleteListener", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteListenerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteListenerAdditionalCert(self, request):
+        r"""删除扩展证书
+
+        :param request: Request instance for DeleteListenerAdditionalCert.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.DeleteListenerAdditionalCertRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.DeleteListenerAdditionalCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteListenerAdditionalCert", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteListenerAdditionalCertResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -638,6 +684,29 @@ class Ga2Client(AbstractClient):
             body = self.call("ModifyListener", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyListenerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReplaceListenerAdditionalCert(self, request):
+        r"""替换扩展证书
+
+        :param request: Request instance for ReplaceListenerAdditionalCert.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.ReplaceListenerAdditionalCertRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.ReplaceListenerAdditionalCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaceListenerAdditionalCert", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaceListenerAdditionalCertResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

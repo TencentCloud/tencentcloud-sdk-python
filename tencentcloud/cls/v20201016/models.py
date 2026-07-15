@@ -298,6 +298,208 @@ class AdvancedConsumerConfiguration(AbstractModel):
         
 
 
+class AgentApplicationInfo(AbstractModel):
+    r"""agent 应用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: <p>应用id</p>
+        :type ApplicationId: str
+        :param _ApplicationName: <p>应用名称</p>
+        :type ApplicationName: str
+        :param _AccessType: <p>接入类型</p><p>枚举值：</p><ul><li>Langfuse：  Langfuse​ 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
+        :type AccessType: str
+        :param _Region: <p>应用下资源所属地域</p><p>例如：ap-guangzhou</p>
+        :type Region: str
+        :param _LogTopics: <p>日志主题列表</p>
+        :type LogTopics: list of AgentTopicInfo
+        :param _MetricsTopics: <p>指标主题列表</p>
+        :type MetricsTopics: list of AgentTopicInfo
+        :param _CreateTime: <p>创建时间</p><p>单位：秒</p><p>秒级时间戳</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p><p>单位：秒</p><p>秒级时间戳</p>
+        :type UpdateTime: int
+        """
+        self._ApplicationId = None
+        self._ApplicationName = None
+        self._AccessType = None
+        self._Region = None
+        self._LogTopics = None
+        self._MetricsTopics = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ApplicationId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationName(self):
+        r"""<p>应用名称</p>
+        :rtype: str
+        """
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+    @property
+    def AccessType(self):
+        r"""<p>接入类型</p><p>枚举值：</p><ul><li>Langfuse：  Langfuse​ 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def Region(self):
+        r"""<p>应用下资源所属地域</p><p>例如：ap-guangzhou</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def LogTopics(self):
+        r"""<p>日志主题列表</p>
+        :rtype: list of AgentTopicInfo
+        """
+        return self._LogTopics
+
+    @LogTopics.setter
+    def LogTopics(self, LogTopics):
+        self._LogTopics = LogTopics
+
+    @property
+    def MetricsTopics(self):
+        r"""<p>指标主题列表</p>
+        :rtype: list of AgentTopicInfo
+        """
+        return self._MetricsTopics
+
+    @MetricsTopics.setter
+    def MetricsTopics(self, MetricsTopics):
+        self._MetricsTopics = MetricsTopics
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>单位：秒</p><p>秒级时间戳</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>单位：秒</p><p>秒级时间戳</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationName = params.get("ApplicationName")
+        self._AccessType = params.get("AccessType")
+        self._Region = params.get("Region")
+        if params.get("LogTopics") is not None:
+            self._LogTopics = []
+            for item in params.get("LogTopics"):
+                obj = AgentTopicInfo()
+                obj._deserialize(item)
+                self._LogTopics.append(obj)
+        if params.get("MetricsTopics") is not None:
+            self._MetricsTopics = []
+            for item in params.get("MetricsTopics"):
+                obj = AgentTopicInfo()
+                obj._deserialize(item)
+                self._MetricsTopics.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentTopicInfo(AbstractModel):
+    r"""agent 应用主题信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>日志主题id</p>
+        :type TopicId: str
+        :param _Flag: <p>主题对应的标识</p><p>Langfuse类型对应一个trace标识的日志主题</p>
+        :type Flag: str
+        """
+        self._TopicId = None
+        self._Flag = None
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Flag(self):
+        r"""<p>主题对应的标识</p><p>Langfuse类型对应一个trace标识的日志主题</p>
+        :rtype: str
+        """
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Flag = params.get("Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmAnalysisConfig(AbstractModel):
     r"""告警多维分析一些配置信息
 
@@ -7108,6 +7310,155 @@ class CosRechargeInfo(AbstractModel):
         
 
 
+class CreateAgentApplicationRequest(AbstractModel):
+    r"""CreateAgentApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationName: <p>应用名称</p><p>入参限制：</p><ul><li>不能为空字符串</li><li>不能包含字符<code>|</code></li><li>不能超过64字符</li></ul>
+        :type ApplicationName: str
+        :param _AccessType: <p>接入类型</p><p>枚举值：</p><ul><li>Langfuse： Langfuse 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
+        :type AccessType: str
+        :param _LogsetId: <p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
+        :type LogsetId: str
+        """
+        self._ApplicationName = None
+        self._AccessType = None
+        self._LogsetId = None
+
+    @property
+    def ApplicationName(self):
+        r"""<p>应用名称</p><p>入参限制：</p><ul><li>不能为空字符串</li><li>不能包含字符<code>|</code></li><li>不能超过64字符</li></ul>
+        :rtype: str
+        """
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+    @property
+    def AccessType(self):
+        r"""<p>接入类型</p><p>枚举值：</p><ul><li>Langfuse： Langfuse 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def LogsetId(self):
+        r"""<p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+
+    def _deserialize(self, params):
+        self._ApplicationName = params.get("ApplicationName")
+        self._AccessType = params.get("AccessType")
+        self._LogsetId = params.get("LogsetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAgentApplicationResponse(AbstractModel):
+    r"""CreateAgentApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: <p>应用id</p>
+        :type ApplicationId: str
+        :param _LogTopics: <p>日志主题列表</p>
+        :type LogTopics: list of AgentTopicInfo
+        :param _MetricsTopics: <p>指标主题列表</p>
+        :type MetricsTopics: list of AgentTopicInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApplicationId = None
+        self._LogTopics = None
+        self._MetricsTopics = None
+        self._RequestId = None
+
+    @property
+    def ApplicationId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def LogTopics(self):
+        r"""<p>日志主题列表</p>
+        :rtype: list of AgentTopicInfo
+        """
+        return self._LogTopics
+
+    @LogTopics.setter
+    def LogTopics(self, LogTopics):
+        self._LogTopics = LogTopics
+
+    @property
+    def MetricsTopics(self):
+        r"""<p>指标主题列表</p>
+        :rtype: list of AgentTopicInfo
+        """
+        return self._MetricsTopics
+
+    @MetricsTopics.setter
+    def MetricsTopics(self, MetricsTopics):
+        self._MetricsTopics = MetricsTopics
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        if params.get("LogTopics") is not None:
+            self._LogTopics = []
+            for item in params.get("LogTopics"):
+                obj = AgentTopicInfo()
+                obj._deserialize(item)
+                self._LogTopics.append(obj)
+        if params.get("MetricsTopics") is not None:
+            self._MetricsTopics = []
+            for item in params.get("MetricsTopics"):
+                obj = AgentTopicInfo()
+                obj._deserialize(item)
+                self._MetricsTopics.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAlarmNoticeRequest(AbstractModel):
     r"""CreateAlarmNotice请求参数结构体
 
@@ -7949,11 +8300,11 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>实例ID</p><ul><li>通过各个接入云产品官方文档获取</li></ul>
         :type InstanceId: str
-        :param _AssumerName: <p>云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</p>
+        :param _AssumerName: <p>云产品标识。支持以下产品</p><ul><li>APIS</li><li>BH</li><li>CDB</li><li>CDS</li><li>CFS</li><li>CLB</li><li>CSIP</li><li>CWP</li><li>DCDB</li><li>DNSPod</li><li>EMR</li><li>HTTPDNS</li><li>KHL</li><li>llmsgw</li><li>MariaDB</li><li>MDP</li><li>MongoDB</li><li>PostgreSQL</li><li>TCSS</li><li>TDSQL-C</li><li>TDStore</li><li>TencentDB-Redis</li><li>TEO</li><li>TokenHub</li><li>TSE</li></ul>
         :type AssumerName: str
-        :param _LogType: <p>日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</p>
+        :param _LogType: <p>各云产品支持的日志类型如下：</p><table><thead><tr><th>assumer_name</th><th>支持的 log_type</th></tr></thead><tbody><tr><td>APIS</td><td>APIS-ACCESS</td></tr><tr><td>BH</td><td>BH-COMMANDLOG, BH-FILELOG</td></tr><tr><td>CDB</td><td>CDB-AUDIT</td></tr><tr><td>CDS</td><td>CDS-AUDIT, CDS-RISK</td></tr><tr><td>CFS</td><td>CFS-AUDIT</td></tr><tr><td>CLB</td><td>CMR-SPEND</td></tr><tr><td>CSIP</td><td>CSIP</td></tr><tr><td>CWP</td><td>CWP</td></tr><tr><td>DCDB</td><td>DCDB-AUDIT, DCDB-ERROR, DCDB-SLOW</td></tr><tr><td>DNSPod</td><td>DNSPod-RESOLVELOG</td></tr><tr><td>EMR</td><td>EMR-OPERATION</td></tr><tr><td>HTTPDNS</td><td>HTTPDNS-RESOLVELOG</td></tr><tr><td>MariaDB</td><td>MariaDB-AUDIT, MariaDB-ERROR, MariaDB-SLOW</td></tr><tr><td>MDP</td><td>MDP-SSAI</td></tr><tr><td>MongoDB</td><td>MongoDB-AUDIT, MongoDB-ErrorLog, MongoDB-OperationLog, MongoDB-SlowLog</td></tr><tr><td>PostgreSQL</td><td>PostgreSQL-AUDIT, PostgreSQL-ERROR, PostgreSQL-SLOW</td></tr><tr><td>TCSS</td><td>TCSS</td></tr><tr><td>TDSQL-C</td><td>TDSQL-C-AUDIT</td></tr><tr><td>TDStore</td><td>TDMYSQL-SLOW</td></tr><tr><td>TencentDB-Redis</td><td>Redis-AUDIT, Redis-ERROR, Redis-SLOW</td></tr><tr><td>TEO</td><td>TEO-INEFERENCE</td></tr><tr><td>llmsgw</td><td>llmsgw-mcp-security-alarm</td></tr></tbody></table>
         :type LogType: str
-        :param _CloudProductRegion: <p>云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：</p><ul><li>CDS所有日志类型：ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT:  gz</li><li>MongoDB-AUDIT:  gz</li><li>MongoDB-SlowLog：ap-guangzhou</li><li>MongoDB-ErrorLog：ap-guangzhou</li><li>TDMYSQL-SLOW：gz</li><li>DCDB所有日志类型：gz</li><li>MariaDB所有日志类型：gz</li><li>PostgreSQL所有日志类型：gz</li><li>BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)</li><li>APIS所有日志类型：gz</li></ul>
+        :param _CloudProductRegion: <p>云产品地域。不同 LogType 入参格式存在差异：</p><p><strong>格式 A：短 region 码</strong>（gz / sh / bj …）</p><ul><li>APIS 全部日志类型：如 <code>gz</code></li><li>CDB-AUDIT</li><li>TDSQL-C-AUDIT</li><li>TDMYSQL-SLOW</li><li>DCDB 全部日志类型</li><li>MariaDB 全部日志类型</li><li>PostgreSQL 全部日志类型</li><li>MongoDB-AUDIT（<strong>注意与 SlowLog/ErrorLog/OperationLog 不同</strong>）</li><li>TencentDB-Redis 全部日志类型</li><li>EMR-OPERATION</li></ul><p><strong>格式 B：长 region 码</strong>（ap-guangzhou / ap-shanghai / ap-singapore …）</p><ul><li>CDS 全部日志类型：如 <code>ap-guangzhou</code></li><li>MongoDB-SlowLog / MongoDB-ErrorLog / MongoDB-OperationLog</li><li>DNSPod-RESOLVELOG</li><li>HTTPDNS-RESOLVELOG</li><li>MDP-SSAI</li><li>CFS-AUDIT</li><li>TEO-INEFERENCE</li><li>TokenHub-ActivityLog / TokenHub-AuditLog</li><li>llmsgw-mcp-security-alarm</li><li>CSIP / TCSS / TSE / CWP / KHL 等</li></ul><p><strong>格式 C：BH 专用 Polaris 名</strong></p><ul><li>BH 全部日志类型：<code>overseas-polaris</code>（中国香港及其他海外）/ <code>fsi-polaris</code>（金融区）/ <code>general-polaris</code>（普通区）/ <code>intl-sg-prod</code>（国际站）</li></ul>
         :type CloudProductRegion: str
         :param _ClsRegion: <p>CLS目标地域</p><ul><li>支持地域参考  <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</li></ul>
         :type ClsRegion: str
@@ -7995,7 +8346,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def AssumerName(self):
-        r"""<p>云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</p>
+        r"""<p>云产品标识。支持以下产品</p><ul><li>APIS</li><li>BH</li><li>CDB</li><li>CDS</li><li>CFS</li><li>CLB</li><li>CSIP</li><li>CWP</li><li>DCDB</li><li>DNSPod</li><li>EMR</li><li>HTTPDNS</li><li>KHL</li><li>llmsgw</li><li>MariaDB</li><li>MDP</li><li>MongoDB</li><li>PostgreSQL</li><li>TCSS</li><li>TDSQL-C</li><li>TDStore</li><li>TencentDB-Redis</li><li>TEO</li><li>TokenHub</li><li>TSE</li></ul>
         :rtype: str
         """
         return self._AssumerName
@@ -8006,7 +8357,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""<p>日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</p>
+        r"""<p>各云产品支持的日志类型如下：</p><table><thead><tr><th>assumer_name</th><th>支持的 log_type</th></tr></thead><tbody><tr><td>APIS</td><td>APIS-ACCESS</td></tr><tr><td>BH</td><td>BH-COMMANDLOG, BH-FILELOG</td></tr><tr><td>CDB</td><td>CDB-AUDIT</td></tr><tr><td>CDS</td><td>CDS-AUDIT, CDS-RISK</td></tr><tr><td>CFS</td><td>CFS-AUDIT</td></tr><tr><td>CLB</td><td>CMR-SPEND</td></tr><tr><td>CSIP</td><td>CSIP</td></tr><tr><td>CWP</td><td>CWP</td></tr><tr><td>DCDB</td><td>DCDB-AUDIT, DCDB-ERROR, DCDB-SLOW</td></tr><tr><td>DNSPod</td><td>DNSPod-RESOLVELOG</td></tr><tr><td>EMR</td><td>EMR-OPERATION</td></tr><tr><td>HTTPDNS</td><td>HTTPDNS-RESOLVELOG</td></tr><tr><td>MariaDB</td><td>MariaDB-AUDIT, MariaDB-ERROR, MariaDB-SLOW</td></tr><tr><td>MDP</td><td>MDP-SSAI</td></tr><tr><td>MongoDB</td><td>MongoDB-AUDIT, MongoDB-ErrorLog, MongoDB-OperationLog, MongoDB-SlowLog</td></tr><tr><td>PostgreSQL</td><td>PostgreSQL-AUDIT, PostgreSQL-ERROR, PostgreSQL-SLOW</td></tr><tr><td>TCSS</td><td>TCSS</td></tr><tr><td>TDSQL-C</td><td>TDSQL-C-AUDIT</td></tr><tr><td>TDStore</td><td>TDMYSQL-SLOW</td></tr><tr><td>TencentDB-Redis</td><td>Redis-AUDIT, Redis-ERROR, Redis-SLOW</td></tr><tr><td>TEO</td><td>TEO-INEFERENCE</td></tr><tr><td>llmsgw</td><td>llmsgw-mcp-security-alarm</td></tr></tbody></table>
         :rtype: str
         """
         return self._LogType
@@ -8017,7 +8368,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
 
     @property
     def CloudProductRegion(self):
-        r"""<p>云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：</p><ul><li>CDS所有日志类型：ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT:  gz</li><li>MongoDB-AUDIT:  gz</li><li>MongoDB-SlowLog：ap-guangzhou</li><li>MongoDB-ErrorLog：ap-guangzhou</li><li>TDMYSQL-SLOW：gz</li><li>DCDB所有日志类型：gz</li><li>MariaDB所有日志类型：gz</li><li>PostgreSQL所有日志类型：gz</li><li>BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)</li><li>APIS所有日志类型：gz</li></ul>
+        r"""<p>云产品地域。不同 LogType 入参格式存在差异：</p><p><strong>格式 A：短 region 码</strong>（gz / sh / bj …）</p><ul><li>APIS 全部日志类型：如 <code>gz</code></li><li>CDB-AUDIT</li><li>TDSQL-C-AUDIT</li><li>TDMYSQL-SLOW</li><li>DCDB 全部日志类型</li><li>MariaDB 全部日志类型</li><li>PostgreSQL 全部日志类型</li><li>MongoDB-AUDIT（<strong>注意与 SlowLog/ErrorLog/OperationLog 不同</strong>）</li><li>TencentDB-Redis 全部日志类型</li><li>EMR-OPERATION</li></ul><p><strong>格式 B：长 region 码</strong>（ap-guangzhou / ap-shanghai / ap-singapore …）</p><ul><li>CDS 全部日志类型：如 <code>ap-guangzhou</code></li><li>MongoDB-SlowLog / MongoDB-ErrorLog / MongoDB-OperationLog</li><li>DNSPod-RESOLVELOG</li><li>HTTPDNS-RESOLVELOG</li><li>MDP-SSAI</li><li>CFS-AUDIT</li><li>TEO-INEFERENCE</li><li>TokenHub-ActivityLog / TokenHub-AuditLog</li><li>llmsgw-mcp-security-alarm</li><li>CSIP / TCSS / TSE / CWP / KHL 等</li></ul><p><strong>格式 C：BH 专用 Polaris 名</strong></p><ul><li>BH 全部日志类型：<code>overseas-polaris</code>（中国香港及其他海外）/ <code>fsi-polaris</code>（金融区）/ <code>general-polaris</code>（普通区）/ <code>intl-sg-prod</code>（国际站）</li></ul>
         :rtype: str
         """
         return self._CloudProductRegion
@@ -13496,6 +13847,465 @@ class CreateRecordingRuleYamlTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRemoteWriteTaskRequest(AbstractModel):
+    r"""CreateRemoteWriteTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题 ID
+        :type TopicId: str
+        :param _Name: 任务名称
+        :type Name: str
+        :param _Target: 目标服务名称
+        :type Target: str
+        :param _RemoteWriteURL: 目标地址
+        :type RemoteWriteURL: str
+        :param _AuthType: 鉴权类型
+0: 无鉴权
+1: basic_auth 
+2: token
+        :type AuthType: int
+        :param _NetType: 网络类型： 1 内网 2外网
+        :type NetType: int
+        :param _VpcId: 私有网络id
+        :type VpcId: str
+        :param _AuthInfo: 鉴权信息
+        :type AuthInfo: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        :param _VirtualGatewayType: 后端服务类型
+0 CVM
+1025 CLB
+        :type VirtualGatewayType: int
+        """
+        self._TopicId = None
+        self._Name = None
+        self._Target = None
+        self._RemoteWriteURL = None
+        self._AuthType = None
+        self._NetType = None
+        self._VpcId = None
+        self._AuthInfo = None
+        self._VirtualGatewayType = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题 ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Target(self):
+        r"""目标服务名称
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def RemoteWriteURL(self):
+        r"""目标地址
+        :rtype: str
+        """
+        return self._RemoteWriteURL
+
+    @RemoteWriteURL.setter
+    def RemoteWriteURL(self, RemoteWriteURL):
+        self._RemoteWriteURL = RemoteWriteURL
+
+    @property
+    def AuthType(self):
+        r"""鉴权类型
+0: 无鉴权
+1: basic_auth 
+2: token
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def NetType(self):
+        r"""网络类型： 1 内网 2外网
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        r"""私有网络id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def AuthInfo(self):
+        r"""鉴权信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        """
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
+
+    @property
+    def VirtualGatewayType(self):
+        r"""后端服务类型
+0 CVM
+1025 CLB
+        :rtype: int
+        """
+        return self._VirtualGatewayType
+
+    @VirtualGatewayType.setter
+    def VirtualGatewayType(self, VirtualGatewayType):
+        self._VirtualGatewayType = VirtualGatewayType
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._Target = params.get("Target")
+        self._RemoteWriteURL = params.get("RemoteWriteURL")
+        self._AuthType = params.get("AuthType")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        if params.get("AuthInfo") is not None:
+            self._AuthInfo = RemoteWriteAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
+        self._VirtualGatewayType = params.get("VirtualGatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRemoteWriteTaskResponse(AbstractModel):
+    r"""CreateRemoteWriteTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: remoteWrite任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""remoteWrite任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateS3RechargeRequest(AbstractModel):
+    r"""CreateS3Recharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :type TopicId: str
+        :param _Name: <p>s3导入任务名称,最大支持128个字节。</p><p>同一个TopicId下的s3任务Name必须唯一</p>
+        :type Name: str
+        :param _Bucket: <p>s3存储桶</p>
+        :type Bucket: str
+        :param _S3Region: <p>地域</p>
+        :type S3Region: str
+        :param _AccessKeyId: <p>访问密钥 ID（Access Key ID）</p>
+        :type AccessKeyId: str
+        :param _SecretAccessKey: <p>访问密钥Key（Secret Access Key）</p>
+        :type SecretAccessKey: str
+        :param _LogType: <p>采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；<br>默认为minimalist_log</p>
+        :type LogType: str
+        :param _Endpoint: <p>自定义端点</p>
+        :type Endpoint: str
+        :param _Prefix: <p>s3文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。</p>
+        :type Prefix: str
+        :param _Compress: <p>压缩模式。支持: &quot;&quot;, &quot;gzip&quot;, &quot;lzop&quot;, &quot;snappy&quot;。</p><p>默认值：不压缩</p>
+        :type Compress: str
+        :param _ExtractRuleInfo: <p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
+        :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param _TaskType: <p>s3导入任务类型.</p><p>枚举值：</p><ul><li>1： 一次性导入任务</li><li>2： 持续性导入任务</li></ul><p>默认值：1</p>
+        :type TaskType: int
+        """
+        self._TopicId = None
+        self._Name = None
+        self._Bucket = None
+        self._S3Region = None
+        self._AccessKeyId = None
+        self._SecretAccessKey = None
+        self._LogType = None
+        self._Endpoint = None
+        self._Prefix = None
+        self._Compress = None
+        self._ExtractRuleInfo = None
+        self._TaskType = None
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""<p>s3导入任务名称,最大支持128个字节。</p><p>同一个TopicId下的s3任务Name必须唯一</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Bucket(self):
+        r"""<p>s3存储桶</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def S3Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._S3Region
+
+    @S3Region.setter
+    def S3Region(self, S3Region):
+        self._S3Region = S3Region
+
+    @property
+    def AccessKeyId(self):
+        r"""<p>访问密钥 ID（Access Key ID）</p>
+        :rtype: str
+        """
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def SecretAccessKey(self):
+        r"""<p>访问密钥Key（Secret Access Key）</p>
+        :rtype: str
+        """
+        return self._SecretAccessKey
+
+    @SecretAccessKey.setter
+    def SecretAccessKey(self, SecretAccessKey):
+        self._SecretAccessKey = SecretAccessKey
+
+    @property
+    def LogType(self):
+        r"""<p>采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；<br>默认为minimalist_log</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Endpoint(self):
+        r"""<p>自定义端点</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Prefix(self):
+        r"""<p>s3文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Compress(self):
+        r"""<p>压缩模式。支持: &quot;&quot;, &quot;gzip&quot;, &quot;lzop&quot;, &quot;snappy&quot;。</p><p>默认值：不压缩</p>
+        :rtype: str
+        """
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+    @property
+    def ExtractRuleInfo(self):
+        r"""<p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
+        return self._ExtractRuleInfo
+
+    @ExtractRuleInfo.setter
+    def ExtractRuleInfo(self, ExtractRuleInfo):
+        self._ExtractRuleInfo = ExtractRuleInfo
+
+    @property
+    def TaskType(self):
+        r"""<p>s3导入任务类型.</p><p>枚举值：</p><ul><li>1： 一次性导入任务</li><li>2： 持续性导入任务</li></ul><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._Bucket = params.get("Bucket")
+        self._S3Region = params.get("S3Region")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._SecretAccessKey = params.get("SecretAccessKey")
+        self._LogType = params.get("LogType")
+        self._Endpoint = params.get("Endpoint")
+        self._Prefix = params.get("Prefix")
+        self._Compress = params.get("Compress")
+        if params.get("ExtractRuleInfo") is not None:
+            self._ExtractRuleInfo = ExtractRuleInfo()
+            self._ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        self._TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateS3RechargeResponse(AbstractModel):
+    r"""CreateS3Recharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>导入任务Id</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>导入任务Id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateScheduledSqlRequest(AbstractModel):
     r"""CreateScheduledSql请求参数结构体
 
@@ -16749,6 +17559,85 @@ class DataTransformTaskInfo(AbstractModel):
         
 
 
+class DeleteAgentApplicationRequest(AbstractModel):
+    r"""DeleteAgentApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: <p>应用id</p>
+        :type ApplicationId: str
+        :param _DeleteTopics: <p>是否删除agent应用关联的主题</p><p>枚举值：</p><ul><li>false： 不删除agent应用关联的主题</li><li>true： 删除agent应用关联的主题</li></ul><p>默认值：false</p>
+        :type DeleteTopics: bool
+        """
+        self._ApplicationId = None
+        self._DeleteTopics = None
+
+    @property
+    def ApplicationId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def DeleteTopics(self):
+        r"""<p>是否删除agent应用关联的主题</p><p>枚举值：</p><ul><li>false： 不删除agent应用关联的主题</li><li>true： 删除agent应用关联的主题</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._DeleteTopics
+
+    @DeleteTopics.setter
+    def DeleteTopics(self, DeleteTopics):
+        self._DeleteTopics = DeleteTopics
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        self._DeleteTopics = params.get("DeleteTopics")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAgentApplicationResponse(AbstractModel):
+    r"""DeleteAgentApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAlarmNoticeRequest(AbstractModel):
     r"""DeleteAlarmNotice请求参数结构体
 
@@ -19010,6 +19899,164 @@ class DeleteRecordingRuleYamlTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRemoteWriteTaskRequest(AbstractModel):
+    r"""DeleteRemoteWriteTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: RemoteWrite导入任务ID
+        :type TaskId: str
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        """
+        self._TaskId = None
+        self._TopicId = None
+
+    @property
+    def TaskId(self):
+        r"""RemoteWrite导入任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRemoteWriteTaskResponse(AbstractModel):
+    r"""DeleteRemoteWriteTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteS3RechargeRequest(AbstractModel):
+    r"""DeleteS3Recharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>导入任务Id</p>
+        :type TaskId: str
+        :param _TopicId: <p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :type TopicId: str
+        """
+        self._TaskId = None
+        self._TopicId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>导入任务Id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteS3RechargeResponse(AbstractModel):
+    r"""DeleteS3Recharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteScheduledSqlRequest(AbstractModel):
     r"""DeleteScheduledSql请求参数结构体
 
@@ -19602,6 +20649,361 @@ class Delta(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeAgentApplicationsRequest(AbstractModel):
+    r"""DescribeAgentApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤项</p><ul><li><p>applicationName<br>按照【应用名称】进行过滤。模糊匹配方式查询。<br>类型：String<br>必选：否</p></li><li><p>applicationId<br>按照【应用id】进行过滤。<br>类型：String<br>必选：否</p></li><li><p>accessType<br>按照【接入类型】进行过滤。<br>类型：String<br>支持：<code>Langfuse</code><br>必选：否</p></li></ul><p>每次请求的Filters的上限为10，Filter.Values的上限为10。</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。</p>
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤项</p><ul><li><p>applicationName<br>按照【应用名称】进行过滤。模糊匹配方式查询。<br>类型：String<br>必选：否</p></li><li><p>applicationId<br>按照【应用id】进行过滤。<br>类型：String<br>必选：否</p></li><li><p>accessType<br>按照【接入类型】进行过滤。<br>类型：String<br>支持：<code>Langfuse</code><br>必选：否</p></li></ul><p>每次请求的Filters的上限为10，Filter.Values的上限为10。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页的偏移量，默认值为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为20，最大值100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentApplicationsResponse(AbstractModel):
+    r"""DescribeAgentApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: <p>符合查询条件的大模型性能剖析任务列表</p>
+        :type Infos: list of AgentApplicationInfo
+        :param _Total: <p>符合查询条件的任务总数。</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""<p>符合查询条件的大模型性能剖析任务列表</p>
+        :rtype: list of AgentApplicationInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def Total(self):
+        r"""<p>符合查询条件的任务总数。</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = AgentApplicationInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAgentConfigsRequest(AbstractModel):
+    r"""DescribeAgentConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentVersion: agent的版本号
+        :type AgentVersion: str
+        :param _AgentIp: agent的IP地址
+        :type AgentIp: str
+        :param _Labels: 机器组标签列表
+        :type Labels: list of str
+        :param _InstanceId: agent的instance id
+        :type InstanceId: str
+        """
+        self._AgentVersion = None
+        self._AgentIp = None
+        self._Labels = None
+        self._InstanceId = None
+
+    @property
+    def AgentVersion(self):
+        r"""agent的版本号
+        :rtype: str
+        """
+        return self._AgentVersion
+
+    @AgentVersion.setter
+    def AgentVersion(self, AgentVersion):
+        self._AgentVersion = AgentVersion
+
+    @property
+    def AgentIp(self):
+        r"""agent的IP地址
+        :rtype: str
+        """
+        return self._AgentIp
+
+    @AgentIp.setter
+    def AgentIp(self, AgentIp):
+        self._AgentIp = AgentIp
+
+    @property
+    def Labels(self):
+        r"""机器组标签列表
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def InstanceId(self):
+        r"""agent的instance id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._AgentVersion = params.get("AgentVersion")
+        self._AgentIp = params.get("AgentIp")
+        self._Labels = params.get("Labels")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentConfigsResponse(AbstractModel):
+    r"""DescribeAgentConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogConfigs: 采集配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogConfigs: list of LogConfigInfo
+        :param _ServiceLogConfigs: 服务日志的配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceLogConfigs: list of ServiceLogConfigInfo
+        :param _LastVersion: 弃用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastVersion: str
+        :param _NeedUpdate: 弃用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedUpdate: bool
+        :param _URL: 弃用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URL: str
+        :param _FileMd5: 弃用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileMd5: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogConfigs = None
+        self._ServiceLogConfigs = None
+        self._LastVersion = None
+        self._NeedUpdate = None
+        self._URL = None
+        self._FileMd5 = None
+        self._RequestId = None
+
+    @property
+    def LogConfigs(self):
+        r"""采集配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LogConfigInfo
+        """
+        return self._LogConfigs
+
+    @LogConfigs.setter
+    def LogConfigs(self, LogConfigs):
+        self._LogConfigs = LogConfigs
+
+    @property
+    def ServiceLogConfigs(self):
+        r"""服务日志的配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceLogConfigInfo
+        """
+        return self._ServiceLogConfigs
+
+    @ServiceLogConfigs.setter
+    def ServiceLogConfigs(self, ServiceLogConfigs):
+        self._ServiceLogConfigs = ServiceLogConfigs
+
+    @property
+    def LastVersion(self):
+        r"""弃用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastVersion
+
+    @LastVersion.setter
+    def LastVersion(self, LastVersion):
+        self._LastVersion = LastVersion
+
+    @property
+    def NeedUpdate(self):
+        r"""弃用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._NeedUpdate
+
+    @NeedUpdate.setter
+    def NeedUpdate(self, NeedUpdate):
+        self._NeedUpdate = NeedUpdate
+
+    @property
+    def URL(self):
+        r"""弃用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+    @property
+    def FileMd5(self):
+        r"""弃用
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileMd5
+
+    @FileMd5.setter
+    def FileMd5(self, FileMd5):
+        self._FileMd5 = FileMd5
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LogConfigs") is not None:
+            self._LogConfigs = []
+            for item in params.get("LogConfigs"):
+                obj = LogConfigInfo()
+                obj._deserialize(item)
+                self._LogConfigs.append(obj)
+        if params.get("ServiceLogConfigs") is not None:
+            self._ServiceLogConfigs = []
+            for item in params.get("ServiceLogConfigs"):
+                obj = ServiceLogConfigInfo()
+                obj._deserialize(item)
+                self._ServiceLogConfigs.append(obj)
+        self._LastVersion = params.get("LastVersion")
+        self._NeedUpdate = params.get("NeedUpdate")
+        self._URL = params.get("URL")
+        self._FileMd5 = params.get("FileMd5")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAlarmNoticesRequest(AbstractModel):
@@ -26981,6 +28383,331 @@ class DescribeRecordingRuleYamlTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRemoteWriteTasksRequest(AbstractModel):
+    r"""DescribeRemoteWriteTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: - taskId
+按照【任务ID】进行过滤。
+类型：String
+必选：否
+
+- topicId
+按照【日志主题】进行过滤。
+类型：String
+必选：否
+
+- taskStatus
+按照【任务运行状态】进行过滤。 支持`1`：运行中，`2`：停止，`3`：异常
+类型：String
+必选：否
+
+- name
+按照【任务名称】进行模糊过滤。 
+类型：String
+必选：否
+
+
+每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。	
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""- taskId
+按照【任务ID】进行过滤。
+类型：String
+必选：否
+
+- topicId
+按照【日志主题】进行过滤。
+类型：String
+必选：否
+
+- taskStatus
+按照【任务运行状态】进行过滤。 支持`1`：运行中，`2`：停止，`3`：异常
+类型：String
+必选：否
+
+- name
+按照【任务名称】进行模糊过滤。 
+类型：String
+必选：否
+
+
+每次请求的Filters的上限为10，Filter.Values的上限为10。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页的偏移量，默认值为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页单页限制数目，默认值为20，最大值100。	
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRemoteWriteTasksResponse(AbstractModel):
+    r"""DescribeRemoteWriteTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: RemoteWrite 信息列表
+        :type Infos: list of RemoteWriteInfo
+        :param _TotalCount: RemoteWrite信息总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""RemoteWrite 信息列表
+        :rtype: list of RemoteWriteInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def TotalCount(self):
+        r"""RemoteWrite信息总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = RemoteWriteInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeS3RechargesRequest(AbstractModel):
+    r"""DescribeS3Recharges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :type TopicId: str
+        :param _Filters: <ul><li>name 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>bucket 按照【S3 存储桶名称】进行过滤。类型：String。必选：否</li><li>status 按照【任务状态】进行过滤，支持0:已创建, 1:运行中, 2:已停止, 3:已完成, 4:运行失败。 类型：String。必选：否</li><li>enable 按照【启用状态】进行过滤，支持0:暂停，1:启用。类型：String。必选：否</li></ul><p>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为10。</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。</p>
+        :type Limit: int
+        """
+        self._TopicId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Filters(self):
+        r"""<ul><li>name 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>bucket 按照【S3 存储桶名称】进行过滤。类型：String。必选：否</li><li>status 按照【任务状态】进行过滤，支持0:已创建, 1:运行中, 2:已停止, 3:已完成, 4:运行失败。 类型：String。必选：否</li><li>enable 按照【启用状态】进行过滤，支持0:暂停，1:启用。类型：String。必选：否</li></ul><p>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为10。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页的偏移量，默认值为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为20，最大值100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeS3RechargesResponse(AbstractModel):
+    r"""DescribeS3Recharges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: <p>S3导入任务配置列表</p>
+        :type Infos: list of S3RechargeInfo
+        :param _Total: <p>任务总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""<p>S3导入任务配置列表</p>
+        :rtype: list of S3RechargeInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def Total(self):
+        r"""<p>任务总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = S3RechargeInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeScheduledSqlInfoRequest(AbstractModel):
     r"""DescribeScheduledSqlInfo请求参数结构体
 
@@ -33599,6 +35326,194 @@ class Label(AbstractModel):
         
 
 
+class LogConfigInfo(AbstractModel):
+    r"""采集日志配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _LogsetId: 日志集ID
+        :type LogsetId: str
+        :param _Path: 采集日志路径列表
+        :type Path: str
+        :param _LogType: 日志类型
+        :type LogType: str
+        :param _ExtractRule: 提取规则
+        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param _LogFormat: 日志格式化格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogFormat: str
+        :param _ExcludePaths: 黑名单path列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludePaths: list of ExcludePathInfo
+        :param _UserDefineRule: 用户自定义解析字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDefineRule: str
+        :param _ConfigId: 采集配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
+        :param _GroupIds: 使用了元数据的机器组ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupIds: list of str
+        """
+        self._TopicId = None
+        self._LogsetId = None
+        self._Path = None
+        self._LogType = None
+        self._ExtractRule = None
+        self._LogFormat = None
+        self._ExcludePaths = None
+        self._UserDefineRule = None
+        self._ConfigId = None
+        self._GroupIds = None
+
+    @property
+    def TopicId(self):
+        r"""日志主题ID
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogsetId(self):
+        r"""日志集ID
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Path(self):
+        r"""采集日志路径列表
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def LogType(self):
+        r"""日志类型
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def ExtractRule(self):
+        r"""提取规则
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
+        return self._ExtractRule
+
+    @ExtractRule.setter
+    def ExtractRule(self, ExtractRule):
+        self._ExtractRule = ExtractRule
+
+    @property
+    def LogFormat(self):
+        r"""日志格式化格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogFormat
+
+    @LogFormat.setter
+    def LogFormat(self, LogFormat):
+        self._LogFormat = LogFormat
+
+    @property
+    def ExcludePaths(self):
+        r"""黑名单path列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExcludePathInfo
+        """
+        return self._ExcludePaths
+
+    @ExcludePaths.setter
+    def ExcludePaths(self, ExcludePaths):
+        self._ExcludePaths = ExcludePaths
+
+    @property
+    def UserDefineRule(self):
+        r"""用户自定义解析字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserDefineRule
+
+    @UserDefineRule.setter
+    def UserDefineRule(self, UserDefineRule):
+        self._UserDefineRule = UserDefineRule
+
+    @property
+    def ConfigId(self):
+        r"""采集配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def GroupIds(self):
+        r"""使用了元数据的机器组ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._LogsetId = params.get("LogsetId")
+        self._Path = params.get("Path")
+        self._LogType = params.get("LogType")
+        if params.get("ExtractRule") is not None:
+            self._ExtractRule = ExtractRuleInfo()
+            self._ExtractRule._deserialize(params.get("ExtractRule"))
+        self._LogFormat = params.get("LogFormat")
+        if params.get("ExcludePaths") is not None:
+            self._ExcludePaths = []
+            for item in params.get("ExcludePaths"):
+                obj = ExcludePathInfo()
+                obj._deserialize(item)
+                self._ExcludePaths.append(obj)
+        self._UserDefineRule = params.get("UserDefineRule")
+        self._ConfigId = params.get("ConfigId")
+        self._GroupIds = params.get("GroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogContextInfo(AbstractModel):
     r"""日志上下文信息
 
@@ -36264,6 +38179,85 @@ spec:
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAgentApplicationRequest(AbstractModel):
+    r"""ModifyAgentApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: <p>应用id</p>
+        :type ApplicationId: str
+        :param _ApplicationName: <p>应用名称</p><p>参数格式：- 不能为空字符串- 不能包含字符<code>|</code>- 不能超过64字符</p>
+        :type ApplicationName: str
+        """
+        self._ApplicationId = None
+        self._ApplicationName = None
+
+    @property
+    def ApplicationId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationName(self):
+        r"""<p>应用名称</p><p>参数格式：- 不能为空字符串- 不能包含字符<code>|</code>- 不能超过64字符</p>
+        :rtype: str
+        """
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationName = params.get("ApplicationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAgentApplicationResponse(AbstractModel):
+    r"""ModifyAgentApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAlarmNoticeRequest(AbstractModel):
@@ -42009,6 +44003,491 @@ class ModifyRecordingRuleYamlTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRemoteWriteTaskRequest(AbstractModel):
+    r"""ModifyRemoteWriteTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _TopicId: 日志主题id
+        :type TopicId: str
+        :param _Enable: 任务状态
+0 关闭 1 开启
+        :type Enable: int
+        :param _Name: RemoteWrite任务名称
+        :type Name: str
+        :param _NetType: 1 内网 2外网
+        :type NetType: int
+        :param _VpcId: 私有网络id
+        :type VpcId: str
+        :param _Target: 目标服务名称
+        :type Target: str
+        :param _RemoteWriteURL: 目标地址
+        :type RemoteWriteURL: str
+        :param _AuthType: 0: 无鉴权 1: basic_auth 2: token	
+        :type AuthType: int
+        :param _AuthInfo: 鉴权信息
+        :type AuthInfo: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        :param _VirtualGatewayType: 后端服务类型
+-1 没有
+0 CVM
+1025 CLB
+        :type VirtualGatewayType: int
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._Enable = None
+        self._Name = None
+        self._NetType = None
+        self._VpcId = None
+        self._Target = None
+        self._RemoteWriteURL = None
+        self._AuthType = None
+        self._AuthInfo = None
+        self._VirtualGatewayType = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""日志主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Enable(self):
+        r"""任务状态
+0 关闭 1 开启
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Name(self):
+        r"""RemoteWrite任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NetType(self):
+        r"""1 内网 2外网
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        r"""私有网络id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Target(self):
+        r"""目标服务名称
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def RemoteWriteURL(self):
+        r"""目标地址
+        :rtype: str
+        """
+        return self._RemoteWriteURL
+
+    @RemoteWriteURL.setter
+    def RemoteWriteURL(self, RemoteWriteURL):
+        self._RemoteWriteURL = RemoteWriteURL
+
+    @property
+    def AuthType(self):
+        r"""0: 无鉴权 1: basic_auth 2: token	
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AuthInfo(self):
+        r"""鉴权信息
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        """
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
+
+    @property
+    def VirtualGatewayType(self):
+        r"""后端服务类型
+-1 没有
+0 CVM
+1025 CLB
+        :rtype: int
+        """
+        return self._VirtualGatewayType
+
+    @VirtualGatewayType.setter
+    def VirtualGatewayType(self, VirtualGatewayType):
+        self._VirtualGatewayType = VirtualGatewayType
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._Enable = params.get("Enable")
+        self._Name = params.get("Name")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        self._Target = params.get("Target")
+        self._RemoteWriteURL = params.get("RemoteWriteURL")
+        self._AuthType = params.get("AuthType")
+        if params.get("AuthInfo") is not None:
+            self._AuthInfo = RemoteWriteAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
+        self._VirtualGatewayType = params.get("VirtualGatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRemoteWriteTaskResponse(AbstractModel):
+    r"""ModifyRemoteWriteTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyS3RechargeRequest(AbstractModel):
+    r"""ModifyS3Recharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>导入任务Id</p>
+        :type TaskId: str
+        :param _TopicId: <p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :type TopicId: str
+        :param _Name: <p>s3导入任务名称,最大支持128个字节。</p><p>同一个TopicId下的s3任务Name必须唯一</p>
+        :type Name: str
+        :param _TaskType: <p>s3导入任务类型.</p><p>枚举值：</p><ul><li>1： 一次性导入任务</li><li>2： 持续性导入任务</li></ul>
+        :type TaskType: int
+        :param _Enable: <p>是否启用</p><p>枚举值：</p><ul><li>0： 暂停</li><li>1： 启用</li></ul>
+        :type Enable: int
+        :param _Bucket: <p>s3存储桶</p>
+        :type Bucket: str
+        :param _S3Region: <p>地域</p>
+        :type S3Region: str
+        :param _AccessKeyId: <p>访问密钥 ID（Access Key ID）</p>
+        :type AccessKeyId: str
+        :param _SecretAccessKey: <p>访问密钥Key（Secret Access Key）</p>
+        :type SecretAccessKey: str
+        :param _Endpoint: <p>自定义端点</p>
+        :type Endpoint: str
+        :param _LogType: <p>采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；<br>默认为minimalist_log</p>
+        :type LogType: str
+        :param _Prefix: <p>s3文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。</p>
+        :type Prefix: str
+        :param _Compress: <p>压缩模式。支持: &quot;&quot;, &quot;gzip&quot;, &quot;lzop&quot;, &quot;snappy&quot;。</p>
+        :type Compress: str
+        :param _ExtractRuleInfo: <p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
+        :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._Name = None
+        self._TaskType = None
+        self._Enable = None
+        self._Bucket = None
+        self._S3Region = None
+        self._AccessKeyId = None
+        self._SecretAccessKey = None
+        self._Endpoint = None
+        self._LogType = None
+        self._Prefix = None
+        self._Compress = None
+        self._ExtractRuleInfo = None
+
+    @property
+    def TaskId(self):
+        r"""<p>导入任务Id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""<p>s3导入任务名称,最大支持128个字节。</p><p>同一个TopicId下的s3任务Name必须唯一</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TaskType(self):
+        r"""<p>s3导入任务类型.</p><p>枚举值：</p><ul><li>1： 一次性导入任务</li><li>2： 持续性导入任务</li></ul>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Enable(self):
+        r"""<p>是否启用</p><p>枚举值：</p><ul><li>0： 暂停</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Bucket(self):
+        r"""<p>s3存储桶</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def S3Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._S3Region
+
+    @S3Region.setter
+    def S3Region(self, S3Region):
+        self._S3Region = S3Region
+
+    @property
+    def AccessKeyId(self):
+        r"""<p>访问密钥 ID（Access Key ID）</p>
+        :rtype: str
+        """
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def SecretAccessKey(self):
+        r"""<p>访问密钥Key（Secret Access Key）</p>
+        :rtype: str
+        """
+        return self._SecretAccessKey
+
+    @SecretAccessKey.setter
+    def SecretAccessKey(self, SecretAccessKey):
+        self._SecretAccessKey = SecretAccessKey
+
+    @property
+    def Endpoint(self):
+        r"""<p>自定义端点</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def LogType(self):
+        r"""<p>采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；<br>默认为minimalist_log</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Prefix(self):
+        r"""<p>s3文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Compress(self):
+        r"""<p>压缩模式。支持: &quot;&quot;, &quot;gzip&quot;, &quot;lzop&quot;, &quot;snappy&quot;。</p>
+        :rtype: str
+        """
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+    @property
+    def ExtractRuleInfo(self):
+        r"""<p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
+        return self._ExtractRuleInfo
+
+    @ExtractRuleInfo.setter
+    def ExtractRuleInfo(self, ExtractRuleInfo):
+        self._ExtractRuleInfo = ExtractRuleInfo
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._TaskType = params.get("TaskType")
+        self._Enable = params.get("Enable")
+        self._Bucket = params.get("Bucket")
+        self._S3Region = params.get("S3Region")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._SecretAccessKey = params.get("SecretAccessKey")
+        self._Endpoint = params.get("Endpoint")
+        self._LogType = params.get("LogType")
+        self._Prefix = params.get("Prefix")
+        self._Compress = params.get("Compress")
+        if params.get("ExtractRuleInfo") is not None:
+            self._ExtractRuleInfo = ExtractRuleInfo()
+            self._ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyS3RechargeResponse(AbstractModel):
+    r"""ModifyS3Recharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyScheduledSqlRequest(AbstractModel):
     r"""ModifyScheduledSql请求参数结构体
 
@@ -47185,6 +49664,368 @@ class Relabeling(AbstractModel):
         
 
 
+class RemoteWriteAuthInfo(AbstractModel):
+    r"""Remote Write鉴权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Username: basic auth username
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param _Password: basic auth password
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _Token: basic auth token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Token: str
+        """
+        self._Username = None
+        self._Password = None
+        self._Token = None
+
+    @property
+    def Username(self):
+        r"""basic auth username
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""basic auth password
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Token(self):
+        r"""basic auth token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+
+    def _deserialize(self, params):
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoteWriteInfo(AbstractModel):
+    r"""RemoteWrite配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TopicId: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _Name: Remote Write任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _NetType: 网络类型
+1: 内网
+2:外网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetType: int
+        :param _VpcId: 私有网络id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _Status: 任务运行状态
+1: 运行中
+2:暂停
+3: 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Target: 目标服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Target: str
+        :param _RemoteWriteURL: 目标地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteWriteURL: str
+        :param _AuthType: 鉴权类型
+0: 无鉴权 1: basic_auth 2: token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: int
+        :param _AuthInfo: 鉴权信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthInfo: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        :param _LogsetId: 日志集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogsetId: str
+        :param _Enable: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param _VirtualGatewayType: 后端服务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualGatewayType: int
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._Name = None
+        self._NetType = None
+        self._VpcId = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Target = None
+        self._RemoteWriteURL = None
+        self._AuthType = None
+        self._AuthInfo = None
+        self._LogsetId = None
+        self._Enable = None
+        self._VirtualGatewayType = None
+
+    @property
+    def TaskId(self):
+        r"""任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""Remote Write任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NetType(self):
+        r"""网络类型
+1: 内网
+2:外网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def VpcId(self):
+        r"""私有网络id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Status(self):
+        r"""任务运行状态
+1: 运行中
+2:暂停
+3: 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Target(self):
+        r"""目标服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def RemoteWriteURL(self):
+        r"""目标地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RemoteWriteURL
+
+    @RemoteWriteURL.setter
+    def RemoteWriteURL(self, RemoteWriteURL):
+        self._RemoteWriteURL = RemoteWriteURL
+
+    @property
+    def AuthType(self):
+        r"""鉴权类型
+0: 无鉴权 1: basic_auth 2: token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AuthInfo(self):
+        r"""鉴权信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
+        """
+        return self._AuthInfo
+
+    @AuthInfo.setter
+    def AuthInfo(self, AuthInfo):
+        self._AuthInfo = AuthInfo
+
+    @property
+    def LogsetId(self):
+        r"""日志集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Enable(self):
+        r"""任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def VirtualGatewayType(self):
+        r"""后端服务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._VirtualGatewayType
+
+    @VirtualGatewayType.setter
+    def VirtualGatewayType(self, VirtualGatewayType):
+        self._VirtualGatewayType = VirtualGatewayType
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._NetType = params.get("NetType")
+        self._VpcId = params.get("VpcId")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Target = params.get("Target")
+        self._RemoteWriteURL = params.get("RemoteWriteURL")
+        self._AuthType = params.get("AuthType")
+        if params.get("AuthInfo") is not None:
+            self._AuthInfo = RemoteWriteAuthInfo()
+            self._AuthInfo._deserialize(params.get("AuthInfo"))
+        self._LogsetId = params.get("LogsetId")
+        self._Enable = params.get("Enable")
+        self._VirtualGatewayType = params.get("VirtualGatewayType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RetryShipperTaskRequest(AbstractModel):
     r"""RetryShipperTask请求参数结构体
 
@@ -47473,6 +50314,314 @@ class RuleTagInfo(AbstractModel):
                 obj = KeyValueInfo()
                 obj._deserialize(item)
                 self._KeyValues.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class S3RechargeInfo(AbstractModel):
+    r"""aws 导入信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>导入任务Id</p>
+        :type TaskId: str
+        :param _TopicId: <p>日志主题Id。- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
+        :type TopicId: str
+        :param _LogsetId: <p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
+        :type LogsetId: str
+        :param _Name: <p>任务名称</p>
+        :type Name: str
+        :param _Bucket: <p>s3存储桶</p>
+        :type Bucket: str
+        :param _S3Region: <p>地域</p>
+        :type S3Region: str
+        :param _AccessKeyId: <p>访问密钥 ID（Access Key ID）</p>
+        :type AccessKeyId: str
+        :param _Endpoint: <p>自定义端点</p>
+        :type Endpoint: str
+        :param _LogType: <p>采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；默认为minimalist_log</p>
+        :type LogType: str
+        :param _Prefix: <p>s3文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。</p>
+        :type Prefix: str
+        :param _Compress: <p>压缩模式。支持: &quot;&quot;, &quot;gzip&quot;, &quot;lzop&quot;, &quot;snappy&quot;。</p><p>默认值：不压缩</p>
+        :type Compress: str
+        :param _ExtractRule: <p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
+        :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        :param _TaskType: <p>s3导入任务类型.</p><p>枚举值：</p><ul><li>1： 一次性导入任务</li><li>2： 持续性导入任务</li></ul>
+        :type TaskType: int
+        :param _Metadata: <p>元数据。</p><p>枚举值：</p><ul><li>bucket： 桶</li><li>object： 对象</li></ul><p>选中元数据将以 <strong>TAG</strong>.{元数据}:xxx 的形式与日志一起导入。如：<strong>TAG</strong>.object: csv/object.gz</p>
+        :type Metadata: list of str
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>0： 已创建</li><li>1： 运行中</li><li>2： 已停止</li><li>3： 已完成</li><li>4： 运行失败</li></ul>
+        :type Status: int
+        :param _Enable: <p>是否启用</p><p>枚举值：</p><ul><li>0： 暂停</li><li>1： 启用</li></ul>
+        :type Enable: int
+        :param _Progress: <p>进度条百分值</p>
+        :type Progress: int
+        :param _CreateTime: <p>创建时间</p><p>单位：秒</p><p>秒级时间戳</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p><p>单位：秒</p><p>秒级时间戳</p>
+        :type UpdateTime: int
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._LogsetId = None
+        self._Name = None
+        self._Bucket = None
+        self._S3Region = None
+        self._AccessKeyId = None
+        self._Endpoint = None
+        self._LogType = None
+        self._Prefix = None
+        self._Compress = None
+        self._ExtractRule = None
+        self._TaskType = None
+        self._Metadata = None
+        self._Status = None
+        self._Enable = None
+        self._Progress = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TaskId(self):
+        r"""<p>导入任务Id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题Id。- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogsetId(self):
+        r"""<p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Name(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Bucket(self):
+        r"""<p>s3存储桶</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def S3Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._S3Region
+
+    @S3Region.setter
+    def S3Region(self, S3Region):
+        self._S3Region = S3Region
+
+    @property
+    def AccessKeyId(self):
+        r"""<p>访问密钥 ID（Access Key ID）</p>
+        :rtype: str
+        """
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def Endpoint(self):
+        r"""<p>自定义端点</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def LogType(self):
+        r"""<p>采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；默认为minimalist_log</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Prefix(self):
+        r"""<p>s3文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Compress(self):
+        r"""<p>压缩模式。支持: &quot;&quot;, &quot;gzip&quot;, &quot;lzop&quot;, &quot;snappy&quot;。</p><p>默认值：不压缩</p>
+        :rtype: str
+        """
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+    @property
+    def ExtractRule(self):
+        r"""<p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
+        return self._ExtractRule
+
+    @ExtractRule.setter
+    def ExtractRule(self, ExtractRule):
+        self._ExtractRule = ExtractRule
+
+    @property
+    def TaskType(self):
+        r"""<p>s3导入任务类型.</p><p>枚举值：</p><ul><li>1： 一次性导入任务</li><li>2： 持续性导入任务</li></ul>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Metadata(self):
+        r"""<p>元数据。</p><p>枚举值：</p><ul><li>bucket： 桶</li><li>object： 对象</li></ul><p>选中元数据将以 <strong>TAG</strong>.{元数据}:xxx 的形式与日志一起导入。如：<strong>TAG</strong>.object: csv/object.gz</p>
+        :rtype: list of str
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>0： 已创建</li><li>1： 运行中</li><li>2： 已停止</li><li>3： 已完成</li><li>4： 运行失败</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Enable(self):
+        r"""<p>是否启用</p><p>枚举值：</p><ul><li>0： 暂停</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Progress(self):
+        r"""<p>进度条百分值</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>单位：秒</p><p>秒级时间戳</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>单位：秒</p><p>秒级时间戳</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._LogsetId = params.get("LogsetId")
+        self._Name = params.get("Name")
+        self._Bucket = params.get("Bucket")
+        self._S3Region = params.get("S3Region")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._Endpoint = params.get("Endpoint")
+        self._LogType = params.get("LogType")
+        self._Prefix = params.get("Prefix")
+        self._Compress = params.get("Compress")
+        if params.get("ExtractRule") is not None:
+            self._ExtractRule = ExtractRuleInfo()
+            self._ExtractRule._deserialize(params.get("ExtractRule"))
+        self._TaskType = params.get("TaskType")
+        self._Metadata = params.get("Metadata")
+        self._Status = params.get("Status")
+        self._Enable = params.get("Enable")
+        self._Progress = params.get("Progress")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48998,6 +52147,265 @@ class SearchLogTopics(AbstractModel):
         
 
 
+class SearchS3RechargeInfoRequest(AbstractModel):
+    r"""SearchS3RechargeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :type TopicId: str
+        :param _Name: <p>s3导入任务名称,最大支持128个字节。</p>
+        :type Name: str
+        :param _Bucket: <p>s3存储桶</p>
+        :type Bucket: str
+        :param _S3Region: <p>地域</p>
+        :type S3Region: str
+        :param _AccessKeyId: <p>访问密钥 ID（Access Key ID）</p>
+        :type AccessKeyId: str
+        :param _SecretAccessKey: <p>访问密钥Key（Secret Access Key）</p>
+        :type SecretAccessKey: str
+        :param _Endpoint: <p>自定义端点</p>
+        :type Endpoint: str
+        :param _Prefix: <p>s3文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。</p>
+        :type Prefix: str
+        :param _Compress: <p>压缩模式。支持: &quot;&quot;, &quot;gzip&quot;, &quot;lzop&quot;, &quot;snappy&quot;。</p><p>默认值：不压缩</p>
+        :type Compress: str
+        """
+        self._TopicId = None
+        self._Name = None
+        self._Bucket = None
+        self._S3Region = None
+        self._AccessKeyId = None
+        self._SecretAccessKey = None
+        self._Endpoint = None
+        self._Prefix = None
+        self._Compress = None
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""<p>s3导入任务名称,最大支持128个字节。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Bucket(self):
+        r"""<p>s3存储桶</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def S3Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._S3Region
+
+    @S3Region.setter
+    def S3Region(self, S3Region):
+        self._S3Region = S3Region
+
+    @property
+    def AccessKeyId(self):
+        r"""<p>访问密钥 ID（Access Key ID）</p>
+        :rtype: str
+        """
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def SecretAccessKey(self):
+        r"""<p>访问密钥Key（Secret Access Key）</p>
+        :rtype: str
+        """
+        return self._SecretAccessKey
+
+    @SecretAccessKey.setter
+    def SecretAccessKey(self, SecretAccessKey):
+        self._SecretAccessKey = SecretAccessKey
+
+    @property
+    def Endpoint(self):
+        r"""<p>自定义端点</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Prefix(self):
+        r"""<p>s3文件所在文件夹的前缀。默认为空，投递存储桶下所有的文件。</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Compress(self):
+        r"""<p>压缩模式。支持: &quot;&quot;, &quot;gzip&quot;, &quot;lzop&quot;, &quot;snappy&quot;。</p><p>默认值：不压缩</p>
+        :rtype: str
+        """
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._Bucket = params.get("Bucket")
+        self._S3Region = params.get("S3Region")
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._SecretAccessKey = params.get("SecretAccessKey")
+        self._Endpoint = params.get("Endpoint")
+        self._Prefix = params.get("Prefix")
+        self._Compress = params.get("Compress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchS3RechargeInfoResponse(AbstractModel):
+    r"""SearchS3RechargeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>匹配到的存储桶下的某个文件的前几行数据</p>
+        :type Data: list of str
+        :param _Sum: <p>匹配到的存储桶下的文件个数</p>
+        :type Sum: int
+        :param _Path: <p>当前预览文件路径</p>
+        :type Path: str
+        :param _Msg: <p>预览获取数据失败原因</p>
+        :type Msg: str
+        :param _Status: <p>状态。</p><ul><li>0：成功</li><li>10000：参数错误，请确认参数</li><li>10001：授权失败，请确认授权</li><li>10002：获取文件列表失败，请稍后再试。若无法解决，请咨询 <a href="https://cloud.tencent.com/online-service">在线支持</a> 或 <a href="https://console.cloud.tencent.com/workorder/category?level1_id=83&amp;level2_id=469&amp;source=14&amp;data_title=%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1&amp;step=1">提交工单</a> 处理。</li><li>10003：桶内无相应前缀文件，请使用正确的桶、文件前缀和压缩方式</li><li>10004：文件下载失败，请稍后再试。若无法解决，请咨询 <a href="https://cloud.tencent.com/online-service">在线支持</a> 或 <a href="https://console.cloud.tencent.com/workorder/category?level1_id=83&amp;level2_id=469&amp;source=14&amp;data_title=%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1&amp;step=1">提交工单</a> 处理。</li><li>10005：文件解压缩失败，请选择正确的压缩方式然后再试</li><li>10006：读取文件内容失败，请确认文件可读</li><li>10007：文件预览失败，请稍后再试。若无法解决，请咨询 <a href="https://cloud.tencent.com/online-service">在线支持</a> 或 <a href="https://console.cloud.tencent.com/workorder/category?level1_id=83&amp;level2_id=469&amp;source=14&amp;data_title=%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1&amp;step=1">提交工单</a> 处理。</li></ul>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Sum = None
+        self._Path = None
+        self._Msg = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>匹配到的存储桶下的某个文件的前几行数据</p>
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Sum(self):
+        r"""<p>匹配到的存储桶下的文件个数</p>
+        :rtype: int
+        """
+        return self._Sum
+
+    @Sum.setter
+    def Sum(self, Sum):
+        self._Sum = Sum
+
+    @property
+    def Path(self):
+        r"""<p>当前预览文件路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Msg(self):
+        r"""<p>预览获取数据失败原因</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Status(self):
+        r"""<p>状态。</p><ul><li>0：成功</li><li>10000：参数错误，请确认参数</li><li>10001：授权失败，请确认授权</li><li>10002：获取文件列表失败，请稍后再试。若无法解决，请咨询 <a href="https://cloud.tencent.com/online-service">在线支持</a> 或 <a href="https://console.cloud.tencent.com/workorder/category?level1_id=83&amp;level2_id=469&amp;source=14&amp;data_title=%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1&amp;step=1">提交工单</a> 处理。</li><li>10003：桶内无相应前缀文件，请使用正确的桶、文件前缀和压缩方式</li><li>10004：文件下载失败，请稍后再试。若无法解决，请咨询 <a href="https://cloud.tencent.com/online-service">在线支持</a> 或 <a href="https://console.cloud.tencent.com/workorder/category?level1_id=83&amp;level2_id=469&amp;source=14&amp;data_title=%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1&amp;step=1">提交工单</a> 处理。</li><li>10005：文件解压缩失败，请选择正确的压缩方式然后再试</li><li>10006：读取文件内容失败，请确认文件可读</li><li>10007：文件预览失败，请稍后再试。若无法解决，请咨询 <a href="https://cloud.tencent.com/online-service">在线支持</a> 或 <a href="https://console.cloud.tencent.com/workorder/category?level1_id=83&amp;level2_id=469&amp;source=14&amp;data_title=%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1&amp;step=1">提交工单</a> 处理。</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Sum = params.get("Sum")
+        self._Path = params.get("Path")
+        self._Msg = params.get("Msg")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class SearchViewInfo(AbstractModel):
     r"""查询视图信息
 
@@ -49308,6 +52716,12 @@ class SendConsumerHeartbeatResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TopicPartitionsInfo.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class ServiceLogConfigInfo(AbstractModel):
+    r"""服务日志topic信息
+
+    """
 
 
 class ShipperInfo(AbstractModel):
