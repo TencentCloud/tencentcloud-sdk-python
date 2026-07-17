@@ -1349,26 +1349,29 @@ class CreateTokenPlanTeamOrderAndBuyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductType: 套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）。
+        :param _ProductType: <p>套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）。</p>
         :type ProductType: str
-        :param _TeamName: 套餐名称。只能包含中文、字母、数字、下划线、连字符，以中文或者字母开头，以中文或字母或数字结尾，2~50个字符
+        :param _TeamName: <p>套餐名称。只能包含中文、字母、数字、下划线、连字符，以中文或者字母开头，以中文或字母或数字结尾，2~50个字符</p>
         :type TeamName: str
-        :param _TimeSpan: 购买时长。单位：月。必须大于 0。
+        :param _TimeSpan: <p>购买时长。单位：月。必须大于 0，支持1个月～12个月。</p>
         :type TimeSpan: int
-        :param _CreditOrToken: 购买的套餐规格。套餐类型为专业套餐（enterprise），单位取值为积分；轻享套餐（enterprise-auto），单位取值为 tokens。
+        :param _CreditOrToken: <p>购买的套餐规格。套餐类型为专业套餐（enterprise），单位取值为积分；轻享套餐（enterprise-auto），单位取值为 tokens。</p>
         :type CreditOrToken: int
-        :param _EnableAutoRenew: 是否开启自动续费。默认不开启。
+        :param _EnableAutoRenew: <p>是否开启自动续费。默认不开启。</p>
         :type EnableAutoRenew: bool
+        :param _TeamId: <p>已有套餐 ID（非空时走过期续费，空时走新购）</p>
+        :type TeamId: str
         """
         self._ProductType = None
         self._TeamName = None
         self._TimeSpan = None
         self._CreditOrToken = None
         self._EnableAutoRenew = None
+        self._TeamId = None
 
     @property
     def ProductType(self):
-        r"""套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）。
+        r"""<p>套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）。</p>
         :rtype: str
         """
         return self._ProductType
@@ -1379,7 +1382,7 @@ class CreateTokenPlanTeamOrderAndBuyRequest(AbstractModel):
 
     @property
     def TeamName(self):
-        r"""套餐名称。只能包含中文、字母、数字、下划线、连字符，以中文或者字母开头，以中文或字母或数字结尾，2~50个字符
+        r"""<p>套餐名称。只能包含中文、字母、数字、下划线、连字符，以中文或者字母开头，以中文或字母或数字结尾，2~50个字符</p>
         :rtype: str
         """
         return self._TeamName
@@ -1390,7 +1393,7 @@ class CreateTokenPlanTeamOrderAndBuyRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""购买时长。单位：月。必须大于 0。
+        r"""<p>购买时长。单位：月。必须大于 0，支持1个月～12个月。</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -1401,7 +1404,7 @@ class CreateTokenPlanTeamOrderAndBuyRequest(AbstractModel):
 
     @property
     def CreditOrToken(self):
-        r"""购买的套餐规格。套餐类型为专业套餐（enterprise），单位取值为积分；轻享套餐（enterprise-auto），单位取值为 tokens。
+        r"""<p>购买的套餐规格。套餐类型为专业套餐（enterprise），单位取值为积分；轻享套餐（enterprise-auto），单位取值为 tokens。</p>
         :rtype: int
         """
         return self._CreditOrToken
@@ -1412,7 +1415,7 @@ class CreateTokenPlanTeamOrderAndBuyRequest(AbstractModel):
 
     @property
     def EnableAutoRenew(self):
-        r"""是否开启自动续费。默认不开启。
+        r"""<p>是否开启自动续费。默认不开启。</p>
         :rtype: bool
         """
         return self._EnableAutoRenew
@@ -1421,6 +1424,17 @@ class CreateTokenPlanTeamOrderAndBuyRequest(AbstractModel):
     def EnableAutoRenew(self, EnableAutoRenew):
         self._EnableAutoRenew = EnableAutoRenew
 
+    @property
+    def TeamId(self):
+        r"""<p>已有套餐 ID（非空时走过期续费，空时走新购）</p>
+        :rtype: str
+        """
+        return self._TeamId
+
+    @TeamId.setter
+    def TeamId(self, TeamId):
+        self._TeamId = TeamId
+
 
     def _deserialize(self, params):
         self._ProductType = params.get("ProductType")
@@ -1428,6 +1442,7 @@ class CreateTokenPlanTeamOrderAndBuyRequest(AbstractModel):
         self._TimeSpan = params.get("TimeSpan")
         self._CreditOrToken = params.get("CreditOrToken")
         self._EnableAutoRenew = params.get("EnableAutoRenew")
+        self._TeamId = params.get("TeamId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1445,7 +1460,7 @@ class CreateTokenPlanTeamOrderAndBuyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BigOrderId: 腾讯云订单 ID。用于关联一次购买操作下的所有子订单。
+        :param _BigOrderId: <p>腾讯云订单 ID。用于关联一次购买操作下的所有子订单。</p>
         :type BigOrderId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1455,7 +1470,7 @@ class CreateTokenPlanTeamOrderAndBuyResponse(AbstractModel):
 
     @property
     def BigOrderId(self):
-        r"""腾讯云订单 ID。用于关联一次购买操作下的所有子订单。
+        r"""<p>腾讯云订单 ID。用于关联一次购买操作下的所有子订单。</p>
         :rtype: str
         """
         return self._BigOrderId

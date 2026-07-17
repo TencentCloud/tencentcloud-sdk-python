@@ -4300,11 +4300,14 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
         :type VoiceId: str
         :param _OutputStorage: <p>译制视频存储位置。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _ExtraOutput: <p>额外结果，目前包含字幕文件结果 Url</p>
+        :type ExtraOutput: str
         """
         self._VideoPath = None
         self._SpeakerPath = None
         self._VoiceId = None
         self._OutputStorage = None
+        self._ExtraOutput = None
 
     @property
     def VideoPath(self):
@@ -4350,6 +4353,17 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
     def OutputStorage(self, OutputStorage):
         self._OutputStorage = OutputStorage
 
+    @property
+    def ExtraOutput(self):
+        r"""<p>额外结果，目前包含字幕文件结果 Url</p>
+        :rtype: str
+        """
+        return self._ExtraOutput
+
+    @ExtraOutput.setter
+    def ExtraOutput(self, ExtraOutput):
+        self._ExtraOutput = ExtraOutput
+
 
     def _deserialize(self, params):
         self._VideoPath = params.get("VideoPath")
@@ -4358,6 +4372,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._ExtraOutput = params.get("ExtraOutput")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -90506,11 +90521,11 @@ class VODOutputStorage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bucket: 媒体处理生成的文件输出的目标 *Bucket ID*
+        :param _Bucket: <p>媒体处理生成的文件输出的目标 <em>Bucket ID</em></p>
         :type Bucket: str
-        :param _Region: 媒体处理生成的文件输出的目标 Bucket 的园区
+        :param _Region: <p>媒体处理生成的文件输出的目标 Bucket 的园区</p>
         :type Region: str
-        :param _SubAppId: 点播专业版应用Id
+        :param _SubAppId: <p>点播专业版应用Id</p>
         :type SubAppId: int
         """
         self._Bucket = None
@@ -90519,7 +90534,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""媒体处理生成的文件输出的目标 *Bucket ID*
+        r"""<p>媒体处理生成的文件输出的目标 <em>Bucket ID</em></p>
         :rtype: str
         """
         return self._Bucket
@@ -90530,7 +90545,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def Region(self):
-        r"""媒体处理生成的文件输出的目标 Bucket 的园区
+        r"""<p>媒体处理生成的文件输出的目标 Bucket 的园区</p>
         :rtype: str
         """
         return self._Region
@@ -90541,7 +90556,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""点播专业版应用Id
+        r"""<p>点播专业版应用Id</p>
         :rtype: int
         """
         return self._SubAppId

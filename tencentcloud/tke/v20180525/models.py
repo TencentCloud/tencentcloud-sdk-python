@@ -6783,35 +6783,35 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: cluster id
+        :param _ClusterId: <p>cluster id</p>
         :type ClusterId: str
-        :param _AutoScalingGroupPara: AutoScalingGroupPara AS组参数，参考 https://cloud.tencent.com/document/product/377/20440
+        :param _AutoScalingGroupPara: <p>AutoScalingGroupPara AS组参数，参考 https://cloud.tencent.com/document/product/377/20440</p>
         :type AutoScalingGroupPara: str
-        :param _LaunchConfigurePara: LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447
+        :param _LaunchConfigurePara: <p>LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447</p>
         :type LaunchConfigurePara: str
-        :param _InstanceAdvancedSettings: InstanceAdvancedSettings
+        :param _InstanceAdvancedSettings: <p>InstanceAdvancedSettings</p>
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param _EnableAutoscale: 是否启用自动伸缩
+        :param _EnableAutoscale: <p>是否启用自动伸缩</p>
         :type EnableAutoscale: bool
-        :param _Name: 节点池名称
+        :param _Name: <p>节点池名称</p>
         :type Name: str
-        :param _Labels: Labels标签
+        :param _Labels: <p>Labels标签</p>
         :type Labels: list of Label
-        :param _Taints: Taints互斥
+        :param _Taints: <p>Taints互斥</p>
         :type Taints: list of Taint
-        :param _Annotations: 节点Annotation 列表
+        :param _Annotations: <p>节点Annotation 列表</p>
         :type Annotations: list of AnnotationValue
-        :param _ContainerRuntime: 节点池纬度运行时类型及版本
+        :param _ContainerRuntime: <p>节点池纬度运行时类型及版本</p>
         :type ContainerRuntime: str
-        :param _RuntimeVersion: 运行时版本
+        :param _RuntimeVersion: <p>运行时版本</p>
         :type RuntimeVersion: str
-        :param _NodePoolOs: 节点池os，当为自定义镜像时，传镜像id；否则为公共镜像的osName
+        :param _NodePoolOs: <p>节点池os，当为自定义镜像时，传镜像id；否则为公共镜像的osName</p>
         :type NodePoolOs: str
-        :param _OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+        :param _OsCustomizeType: <p>容器的镜像版本，&quot;DOCKER_CUSTOMIZE&quot;(容器定制版),&quot;GENERAL&quot;(普通版本，默认值)</p>
         :type OsCustomizeType: str
-        :param _Tags: 资源标签
+        :param _Tags: <p>资源标签</p>
         :type Tags: list of Tag
-        :param _DeletionProtection: 删除保护开关
+        :param _DeletionProtection: <p>删除保护开关</p>
         :type DeletionProtection: bool
         """
         self._ClusterId = None
@@ -6832,7 +6832,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""cluster id
+        r"""<p>cluster id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -6843,7 +6843,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def AutoScalingGroupPara(self):
-        r"""AutoScalingGroupPara AS组参数，参考 https://cloud.tencent.com/document/product/377/20440
+        r"""<p>AutoScalingGroupPara AS组参数，参考 https://cloud.tencent.com/document/product/377/20440</p>
         :rtype: str
         """
         return self._AutoScalingGroupPara
@@ -6854,7 +6854,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def LaunchConfigurePara(self):
-        r"""LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447
+        r"""<p>LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447</p>
         :rtype: str
         """
         return self._LaunchConfigurePara
@@ -6865,7 +6865,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def InstanceAdvancedSettings(self):
-        r"""InstanceAdvancedSettings
+        r"""<p>InstanceAdvancedSettings</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         """
         return self._InstanceAdvancedSettings
@@ -6876,7 +6876,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def EnableAutoscale(self):
-        r"""是否启用自动伸缩
+        r"""<p>是否启用自动伸缩</p>
         :rtype: bool
         """
         return self._EnableAutoscale
@@ -6887,7 +6887,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""节点池名称
+        r"""<p>节点池名称</p>
         :rtype: str
         """
         return self._Name
@@ -6898,7 +6898,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        r"""Labels标签
+        r"""<p>Labels标签</p>
         :rtype: list of Label
         """
         return self._Labels
@@ -6909,7 +6909,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        r"""Taints互斥
+        r"""<p>Taints互斥</p>
         :rtype: list of Taint
         """
         return self._Taints
@@ -6920,7 +6920,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def Annotations(self):
-        r"""节点Annotation 列表
+        r"""<p>节点Annotation 列表</p>
         :rtype: list of AnnotationValue
         """
         return self._Annotations
@@ -6931,7 +6931,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def ContainerRuntime(self):
-        r"""节点池纬度运行时类型及版本
+        r"""<p>节点池纬度运行时类型及版本</p>
         :rtype: str
         """
         return self._ContainerRuntime
@@ -6942,7 +6942,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        r"""运行时版本
+        r"""<p>运行时版本</p>
         :rtype: str
         """
         return self._RuntimeVersion
@@ -6953,7 +6953,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def NodePoolOs(self):
-        r"""节点池os，当为自定义镜像时，传镜像id；否则为公共镜像的osName
+        r"""<p>节点池os，当为自定义镜像时，传镜像id；否则为公共镜像的osName</p>
         :rtype: str
         """
         return self._NodePoolOs
@@ -6964,7 +6964,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def OsCustomizeType(self):
-        r"""容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+        r"""<p>容器的镜像版本，&quot;DOCKER_CUSTOMIZE&quot;(容器定制版),&quot;GENERAL&quot;(普通版本，默认值)</p>
         :rtype: str
         """
         return self._OsCustomizeType
@@ -6975,7 +6975,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""资源标签
+        r"""<p>资源标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -6986,7 +6986,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""删除保护开关
+        r"""<p>删除保护开关</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -7051,7 +7051,7 @@ class CreateClusterNodePoolResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodePoolId: 节点池id
+        :param _NodePoolId: <p>节点池id</p>
         :type NodePoolId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7061,7 +7061,7 @@ class CreateClusterNodePoolResponse(AbstractModel):
 
     @property
     def NodePoolId(self):
-        r"""节点池id
+        r"""<p>节点池id</p>
         :rtype: str
         """
         return self._NodePoolId
@@ -39844,45 +39844,45 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _NodePoolId: 节点池ID
+        :param _NodePoolId: <p>节点池ID</p>
         :type NodePoolId: str
-        :param _Name: 名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾
+        :param _Name: <p>名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾</p>
         :type Name: str
-        :param _MaxNodesNum: 最大节点数
+        :param _MaxNodesNum: <p>最大节点数</p>
         :type MaxNodesNum: int
-        :param _MinNodesNum: 最小节点数
+        :param _MinNodesNum: <p>最小节点数</p>
         :type MinNodesNum: int
-        :param _Labels: 标签
+        :param _Labels: <p>标签</p>
         :type Labels: list of Label
-        :param _Taints: 污点
+        :param _Taints: <p>污点</p>
         :type Taints: list of Taint
-        :param _Annotations: 节点 Annotation 列表
+        :param _Annotations: <p>节点 Annotation 列表</p>
         :type Annotations: list of AnnotationValue
-        :param _EnableAutoscale: 是否开启伸缩
+        :param _EnableAutoscale: <p>是否开启伸缩</p>
         :type EnableAutoscale: bool
-        :param _OsName: 操作系统名称
+        :param _OsName: <p>操作系统名称</p>
         :type OsName: str
-        :param _OsCustomizeType: 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+        :param _OsCustomizeType: <p>镜像版本，&quot;DOCKER_CUSTOMIZE&quot;(容器定制版),&quot;GENERAL&quot;(普通版本，默认值)</p>
         :type OsCustomizeType: str
-        :param _GPUArgs: GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性
+        :param _GPUArgs: <p>GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性</p>
         :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
-        :param _UserScript: base64编码后的自定义脚本
+        :param _UserScript: <p>base64编码后的自定义脚本</p>
         :type UserScript: str
-        :param _IgnoreExistedNode: 更新label和taint时忽略存量节点
+        :param _IgnoreExistedNode: <p>更新label和taint时忽略存量节点</p>
         :type IgnoreExistedNode: bool
-        :param _ExtraArgs: 节点自定义参数
+        :param _ExtraArgs: <p>节点自定义参数</p>
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
-        :param _Tags: 资源标签
+        :param _Tags: <p>资源标签</p>
         :type Tags: list of Tag
-        :param _Unschedulable: 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
+        :param _Unschedulable: <p>设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.</p>
         :type Unschedulable: int
-        :param _DeletionProtection: 删除保护开关
+        :param _DeletionProtection: <p>删除保护开关</p>
         :type DeletionProtection: bool
-        :param _DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
+        :param _DockerGraphPath: <p>dockerd --graph 指定值, 默认为 /var/lib/docker</p>
         :type DockerGraphPath: str
-        :param _PreStartUserScript: base64编码后的自定义脚本
+        :param _PreStartUserScript: <p>base64编码后的自定义脚本</p>
         :type PreStartUserScript: str
         """
         self._ClusterId = None
@@ -39908,7 +39908,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -39919,7 +39919,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def NodePoolId(self):
-        r"""节点池ID
+        r"""<p>节点池ID</p>
         :rtype: str
         """
         return self._NodePoolId
@@ -39930,7 +39930,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾
+        r"""<p>名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾</p>
         :rtype: str
         """
         return self._Name
@@ -39941,7 +39941,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def MaxNodesNum(self):
-        r"""最大节点数
+        r"""<p>最大节点数</p>
         :rtype: int
         """
         return self._MaxNodesNum
@@ -39952,7 +39952,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def MinNodesNum(self):
-        r"""最小节点数
+        r"""<p>最小节点数</p>
         :rtype: int
         """
         return self._MinNodesNum
@@ -39963,7 +39963,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of Label
         """
         return self._Labels
@@ -39974,7 +39974,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        r"""污点
+        r"""<p>污点</p>
         :rtype: list of Taint
         """
         return self._Taints
@@ -39985,7 +39985,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def Annotations(self):
-        r"""节点 Annotation 列表
+        r"""<p>节点 Annotation 列表</p>
         :rtype: list of AnnotationValue
         """
         return self._Annotations
@@ -39996,7 +39996,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def EnableAutoscale(self):
-        r"""是否开启伸缩
+        r"""<p>是否开启伸缩</p>
         :rtype: bool
         """
         return self._EnableAutoscale
@@ -40007,7 +40007,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def OsName(self):
-        r"""操作系统名称
+        r"""<p>操作系统名称</p>
         :rtype: str
         """
         return self._OsName
@@ -40018,7 +40018,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def OsCustomizeType(self):
-        r"""镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+        r"""<p>镜像版本，&quot;DOCKER_CUSTOMIZE&quot;(容器定制版),&quot;GENERAL&quot;(普通版本，默认值)</p>
         :rtype: str
         """
         return self._OsCustomizeType
@@ -40029,7 +40029,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def GPUArgs(self):
-        r"""GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性
+        r"""<p>GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
         """
         return self._GPUArgs
@@ -40040,7 +40040,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def UserScript(self):
-        r"""base64编码后的自定义脚本
+        r"""<p>base64编码后的自定义脚本</p>
         :rtype: str
         """
         return self._UserScript
@@ -40051,7 +40051,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def IgnoreExistedNode(self):
-        r"""更新label和taint时忽略存量节点
+        r"""<p>更新label和taint时忽略存量节点</p>
         :rtype: bool
         """
         return self._IgnoreExistedNode
@@ -40062,7 +40062,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def ExtraArgs(self):
-        r"""节点自定义参数
+        r"""<p>节点自定义参数</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         """
         return self._ExtraArgs
@@ -40073,7 +40073,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""资源标签
+        r"""<p>资源标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -40084,7 +40084,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def Unschedulable(self):
-        r"""设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
+        r"""<p>设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.</p>
         :rtype: int
         """
         return self._Unschedulable
@@ -40095,7 +40095,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""删除保护开关
+        r"""<p>删除保护开关</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -40106,7 +40106,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def DockerGraphPath(self):
-        r"""dockerd --graph 指定值, 默认为 /var/lib/docker
+        r"""<p>dockerd --graph 指定值, 默认为 /var/lib/docker</p>
         :rtype: str
         """
         return self._DockerGraphPath
@@ -40117,7 +40117,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
     @property
     def PreStartUserScript(self):
-        r"""base64编码后的自定义脚本
+        r"""<p>base64编码后的自定义脚本</p>
         :rtype: str
         """
         return self._PreStartUserScript
@@ -40874,19 +40874,19 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _NodePoolId: 节点池ID
+        :param _NodePoolId: <p>节点池ID</p>
         :type NodePoolId: str
-        :param _Name: 节点池名称
+        :param _Name: <p>节点池名称</p>
         :type Name: str
-        :param _Labels: 注册节点标签
+        :param _Labels: <p>注册节点标签</p>
         :type Labels: list of Label
-        :param _Taints: 注册节点污点
+        :param _Taints: <p>注册节点污点</p>
         :type Taints: list of Taint
-        :param _DeletionProtection: 删除保护开关
+        :param _DeletionProtection: <p>删除保护开关</p>
         :type DeletionProtection: bool
-        :param _UserScript: base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+        :param _UserScript: <p>base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看</p>
         :type UserScript: str
         """
         self._ClusterId = None
@@ -40899,7 +40899,7 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -40910,7 +40910,7 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     @property
     def NodePoolId(self):
-        r"""节点池ID
+        r"""<p>节点池ID</p>
         :rtype: str
         """
         return self._NodePoolId
@@ -40921,7 +40921,7 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""节点池名称
+        r"""<p>节点池名称</p>
         :rtype: str
         """
         return self._Name
@@ -40932,7 +40932,7 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        r"""注册节点标签
+        r"""<p>注册节点标签</p>
         :rtype: list of Label
         """
         return self._Labels
@@ -40943,7 +40943,7 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        r"""注册节点污点
+        r"""<p>注册节点污点</p>
         :rtype: list of Taint
         """
         return self._Taints
@@ -40954,7 +40954,7 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""删除保护开关
+        r"""<p>删除保护开关</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -40965,7 +40965,7 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     @property
     def UserScript(self):
-        r"""base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+        r"""<p>base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看</p>
         :rtype: str
         """
         return self._UserScript
@@ -55882,30 +55882,23 @@ class UpgradeClusterInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
+        :param _ClusterId: <p>集群ID（请登录 <a href="https://console.cloud.tencent.com/tke2">TKE 控制台</a> 获取集群 ID ）</p>
         :type ClusterId: str
-        :param _Operation: create 表示开始一次升级任务
-pause 表示停止任务
-resume表示继续任务
-abort表示终止任务
+        :param _Operation: <p>create 表示开始一次升级任务<br>pause 表示停止任务<br>resume表示继续任务<br>abort表示终止任务</p>
         :type Operation: str
-        :param _UpgradeType: 升级类型，只有Operation是create需要设置
-reset 大版本重装升级
-hot 小版本热升级
-major 大版本原地升级
+        :param _UpgradeType: <p>升级类型，只有Operation是create需要设置<br>reset 大版本重装升级<br>hot 小版本热升级<br>major 大版本原地升级</p>
         :type UpgradeType: str
-        :param _InstanceIds: 需要升级的节点列表，可以通过控制台或 [查询待升级节点接口
-](https://cloud.tencent.com/document/api/457/50366) 获取
+        :param _InstanceIds: <p>需要升级的节点列表，可以通过控制台或 <a href="https://cloud.tencent.com/document/api/457/50366">查询待升级节点接口</a> 获取</p>
         :type InstanceIds: list of str
-        :param _ResetParam: 当节点重新加入集群时候所使用的参数，参考添加已有节点接口
+        :param _ResetParam: <p>当节点重新加入集群时候所使用的参数，参考添加已有节点接口</p>
         :type ResetParam: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`
-        :param _SkipPreCheck: 是否忽略节点升级前检查，默认值 false
+        :param _SkipPreCheck: <p>是否忽略节点升级前检查，默认值 false</p>
         :type SkipPreCheck: bool
-        :param _MaxNotReadyPercent: 最大可容忍的不可用Pod比例，如果设置 0 表示不做校验
+        :param _MaxNotReadyPercent: <p>最大可容忍的不可用Pod百分比，如果设置 0 表示不做校验</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
         :type MaxNotReadyPercent: float
-        :param _UpgradeRunTime: 是否升级节点运行时，默认false不升级
+        :param _UpgradeRunTime: <p>是否升级节点运行时，默认false不升级</p>
         :type UpgradeRunTime: bool
-        :param _Concurrent: 支持多个节点并行升级，默认值为 1，最大并行数为15
+        :param _Concurrent: <p>支持多个节点并行升级，默认值为 1，最大并行数为15</p>
         :type Concurrent: int
         """
         self._ClusterId = None
@@ -55920,7 +55913,7 @@ major 大版本原地升级
 
     @property
     def ClusterId(self):
-        r"""集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
+        r"""<p>集群ID（请登录 <a href="https://console.cloud.tencent.com/tke2">TKE 控制台</a> 获取集群 ID ）</p>
         :rtype: str
         """
         return self._ClusterId
@@ -55931,10 +55924,7 @@ major 大版本原地升级
 
     @property
     def Operation(self):
-        r"""create 表示开始一次升级任务
-pause 表示停止任务
-resume表示继续任务
-abort表示终止任务
+        r"""<p>create 表示开始一次升级任务<br>pause 表示停止任务<br>resume表示继续任务<br>abort表示终止任务</p>
         :rtype: str
         """
         return self._Operation
@@ -55945,10 +55935,7 @@ abort表示终止任务
 
     @property
     def UpgradeType(self):
-        r"""升级类型，只有Operation是create需要设置
-reset 大版本重装升级
-hot 小版本热升级
-major 大版本原地升级
+        r"""<p>升级类型，只有Operation是create需要设置<br>reset 大版本重装升级<br>hot 小版本热升级<br>major 大版本原地升级</p>
         :rtype: str
         """
         return self._UpgradeType
@@ -55959,8 +55946,7 @@ major 大版本原地升级
 
     @property
     def InstanceIds(self):
-        r"""需要升级的节点列表，可以通过控制台或 [查询待升级节点接口
-](https://cloud.tencent.com/document/api/457/50366) 获取
+        r"""<p>需要升级的节点列表，可以通过控制台或 <a href="https://cloud.tencent.com/document/api/457/50366">查询待升级节点接口</a> 获取</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -55971,7 +55957,7 @@ major 大版本原地升级
 
     @property
     def ResetParam(self):
-        r"""当节点重新加入集群时候所使用的参数，参考添加已有节点接口
+        r"""<p>当节点重新加入集群时候所使用的参数，参考添加已有节点接口</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`
         """
         return self._ResetParam
@@ -55982,7 +55968,7 @@ major 大版本原地升级
 
     @property
     def SkipPreCheck(self):
-        r"""是否忽略节点升级前检查，默认值 false
+        r"""<p>是否忽略节点升级前检查，默认值 false</p>
         :rtype: bool
         """
         return self._SkipPreCheck
@@ -55993,7 +55979,7 @@ major 大版本原地升级
 
     @property
     def MaxNotReadyPercent(self):
-        r"""最大可容忍的不可用Pod比例，如果设置 0 表示不做校验
+        r"""<p>最大可容忍的不可用Pod百分比，如果设置 0 表示不做校验</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
         :rtype: float
         """
         return self._MaxNotReadyPercent
@@ -56004,7 +55990,7 @@ major 大版本原地升级
 
     @property
     def UpgradeRunTime(self):
-        r"""是否升级节点运行时，默认false不升级
+        r"""<p>是否升级节点运行时，默认false不升级</p>
         :rtype: bool
         """
         return self._UpgradeRunTime
@@ -56015,7 +56001,7 @@ major 大版本原地升级
 
     @property
     def Concurrent(self):
-        r"""支持多个节点并行升级，默认值为 1，最大并行数为15
+        r"""<p>支持多个节点并行升级，默认值为 1，最大并行数为15</p>
         :rtype: int
         """
         return self._Concurrent

@@ -11332,6 +11332,291 @@ class CreateFunctionRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateInferenceAPITokenRequest(AbstractModel):
+    r"""CreateInferenceAPIToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Name: 推理 API Token 的名称，长度限制不超过 30 个字符。
+        :type Name: str
+        """
+        self._ZoneId = None
+        self._Name = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        r"""推理 API Token 的名称，长度限制不超过 30 个字符。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInferenceAPITokenResponse(AbstractModel):
+    r"""CreateInferenceAPIToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TokenId: 推理 API Token ID。
+        :type TokenId: str
+        :param _Content: 推理 API Token 内容。
+        :type Content: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TokenId = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def TokenId(self):
+        r"""推理 API Token ID。
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+    @property
+    def Content(self):
+        r"""推理 API Token 内容。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TokenId = params.get("TokenId")
+        self._Content = params.get("Content")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateInferenceServiceRequest(AbstractModel):
+    r"""CreateInferenceService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _Name: <p>推理服务的名称。长度限制不超过 30 个字符，仅支持小写字母、数字、连字符，以字母开头，数字或字母结尾，不支持重复。</p>
+        :type Name: str
+        :param _ListenPort: <p>模型服务需要监听的端口。仅支持 1-65535 之间的整数。</p>
+        :type ListenPort: int
+        :param _Containers: <p>推理服务的容器配置。当前仅支持设置 1 个容器。</p>
+        :type Containers: list of InferenceContainerConfig
+        :param _ResourceConfig: <p>推理服务的资源配置。</p>
+        :type ResourceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfig`
+        :param _RequestPaths: <p>推理服务的请求路径列表。最多支持 20 个路径。</p>
+        :type RequestPaths: list of str
+        :param _Description: <p>描述信息。长度限制不超过 60 个字符。</p>
+        :type Description: str
+        """
+        self._ZoneId = None
+        self._Name = None
+        self._ListenPort = None
+        self._Containers = None
+        self._ResourceConfig = None
+        self._RequestPaths = None
+        self._Description = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        r"""<p>推理服务的名称。长度限制不超过 30 个字符，仅支持小写字母、数字、连字符，以字母开头，数字或字母结尾，不支持重复。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ListenPort(self):
+        r"""<p>模型服务需要监听的端口。仅支持 1-65535 之间的整数。</p>
+        :rtype: int
+        """
+        return self._ListenPort
+
+    @ListenPort.setter
+    def ListenPort(self, ListenPort):
+        self._ListenPort = ListenPort
+
+    @property
+    def Containers(self):
+        r"""<p>推理服务的容器配置。当前仅支持设置 1 个容器。</p>
+        :rtype: list of InferenceContainerConfig
+        """
+        return self._Containers
+
+    @Containers.setter
+    def Containers(self, Containers):
+        self._Containers = Containers
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>推理服务的资源配置。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfig`
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def RequestPaths(self):
+        r"""<p>推理服务的请求路径列表。最多支持 20 个路径。</p>
+        :rtype: list of str
+        """
+        return self._RequestPaths
+
+    @RequestPaths.setter
+    def RequestPaths(self, RequestPaths):
+        self._RequestPaths = RequestPaths
+
+    @property
+    def Description(self):
+        r"""<p>描述信息。长度限制不超过 60 个字符。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._ListenPort = params.get("ListenPort")
+        if params.get("Containers") is not None:
+            self._Containers = []
+            for item in params.get("Containers"):
+                obj = InferenceContainerConfig()
+                obj._deserialize(item)
+                self._Containers.append(obj)
+        if params.get("ResourceConfig") is not None:
+            self._ResourceConfig = InferenceResourceConfig()
+            self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        self._RequestPaths = params.get("RequestPaths")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInferenceServiceResponse(AbstractModel):
+    r"""CreateInferenceService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: <p>服务 ID。</p>
+        :type ServiceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServiceId = None
+        self._RequestId = None
+
+    @property
+    def ServiceId(self):
+        r"""<p>服务 ID。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateJustInTimeTranscodeTemplateRequest(AbstractModel):
     r"""CreateJustInTimeTranscodeTemplate请求参数结构体
 
@@ -17296,6 +17581,85 @@ class DeleteFunctionRulesRequest(AbstractModel):
 
 class DeleteFunctionRulesResponse(AbstractModel):
     r"""DeleteFunctionRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteInferenceAPITokenRequest(AbstractModel):
+    r"""DeleteInferenceAPIToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _TokenId: 推理 API Token 的 ID。
+        :type TokenId: str
+        """
+        self._ZoneId = None
+        self._TokenId = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TokenId(self):
+        r"""推理 API Token 的 ID。
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TokenId = params.get("TokenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInferenceAPITokenResponse(AbstractModel):
+    r"""DeleteInferenceAPIToken返回参数结构体
 
     """
 
@@ -23343,6 +23707,965 @@ class DescribeIdentificationsResponse(AbstractModel):
                 obj = Identification()
                 obj._deserialize(item)
                 self._Identifications.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInferenceAPITokensRequest(AbstractModel):
+    r"""DescribeInferenceAPITokens请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _Offset: <p>分页查询偏移量。默认值：0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页查询限制数目。默认值：20，最大值：100。</p>
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        r"""<p>分页查询偏移量。默认值：0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询限制数目。默认值：20，最大值：100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInferenceAPITokensResponse(AbstractModel):
+    r"""DescribeInferenceAPITokens返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>Token 的总数。</p>
+        :type TotalCount: int
+        :param _Tokens: <p>Token 列表。</p>
+        :type Tokens: list of InferenceAPIToken
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Tokens = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>Token 的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Tokens(self):
+        r"""<p>Token 列表。</p>
+        :rtype: list of InferenceAPIToken
+        """
+        return self._Tokens
+
+    @Tokens.setter
+    def Tokens(self, Tokens):
+        self._Tokens = Tokens
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Tokens") is not None:
+            self._Tokens = []
+            for item in params.get("Tokens"):
+                obj = InferenceAPIToken()
+                obj._deserialize(item)
+                self._Tokens.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInferenceHardwareSpecificationsRequest(AbstractModel):
+    r"""DescribeInferenceHardwareSpecifications请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInferenceHardwareSpecificationsResponse(AbstractModel):
+    r"""DescribeInferenceHardwareSpecifications返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HardwareSpecifications: <p>硬件规格列表。</p>
+        :type HardwareSpecifications: list of InferenceHardwareSpecification
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HardwareSpecifications = None
+        self._RequestId = None
+
+    @property
+    def HardwareSpecifications(self):
+        r"""<p>硬件规格列表。</p>
+        :rtype: list of InferenceHardwareSpecification
+        """
+        return self._HardwareSpecifications
+
+    @HardwareSpecifications.setter
+    def HardwareSpecifications(self, HardwareSpecifications):
+        self._HardwareSpecifications = HardwareSpecifications
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HardwareSpecifications") is not None:
+            self._HardwareSpecifications = []
+            for item in params.get("HardwareSpecifications"):
+                obj = InferenceHardwareSpecification()
+                obj._deserialize(item)
+                self._HardwareSpecifications.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInferenceServiceDeploymentLogsRequest(AbstractModel):
+    r"""DescribeInferenceServiceDeploymentLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _ServiceId: 推理服务 ID。
+        :type ServiceId: str
+        :param _RecordId: 部署记录 ID。
+        :type RecordId: str
+        :param _StartTime: 需检索日志的开始时间。
+        :type StartTime: str
+        :param _EndTime: 需检索日志的结束时间。默认查询时间范围（EndTime - StartTime）为最近 7 天。
+        :type EndTime: str
+        :param _SortBy: 排序字段，取值有：<li>timestamp：日志生成时间。</li>默认值为：timestamp。
+        :type SortBy: str
+        :param _SortOrder: 排序方式，取值有：<li>asc：升序方式；</li><li>desc：降序方式。</li>默认值为：desc。
+        :type SortOrder: str
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：20，最大值：1000。
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._ServiceId = None
+        self._RecordId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ServiceId(self):
+        r"""推理服务 ID。
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def RecordId(self):
+        r"""部署记录 ID。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def StartTime(self):
+        r"""需检索日志的开始时间。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""需检索日志的结束时间。默认查询时间范围（EndTime - StartTime）为最近 7 天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortBy(self):
+        r"""排序字段，取值有：<li>timestamp：日志生成时间。</li>默认值为：timestamp。
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""排序方式，取值有：<li>asc：升序方式；</li><li>desc：降序方式。</li>默认值为：desc。
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Offset(self):
+        r"""分页偏移量，默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回记录条数，默认值：20，最大值：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ServiceId = params.get("ServiceId")
+        self._RecordId = params.get("RecordId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInferenceServiceDeploymentLogsResponse(AbstractModel):
+    r"""DescribeInferenceServiceDeploymentLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的部署日志总数。
+        :type TotalCount: int
+        :param _DeploymentLogInfoSet: 部署日志列表。
+        :type DeploymentLogInfoSet: list of InferenceServiceDeploymentLogInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DeploymentLogInfoSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的部署日志总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DeploymentLogInfoSet(self):
+        r"""部署日志列表。
+        :rtype: list of InferenceServiceDeploymentLogInfo
+        """
+        return self._DeploymentLogInfoSet
+
+    @DeploymentLogInfoSet.setter
+    def DeploymentLogInfoSet(self, DeploymentLogInfoSet):
+        self._DeploymentLogInfoSet = DeploymentLogInfoSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DeploymentLogInfoSet") is not None:
+            self._DeploymentLogInfoSet = []
+            for item in params.get("DeploymentLogInfoSet"):
+                obj = InferenceServiceDeploymentLogInfo()
+                obj._deserialize(item)
+                self._DeploymentLogInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInferenceServiceDeploymentRecordsRequest(AbstractModel):
+    r"""DescribeInferenceServiceDeploymentRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _ServiceId: <p>推理服务 ID。</p>
+        :type ServiceId: str
+        :param _SortBy: <p>排序字段，取值有：<li>create-time：部署创建时间。</li>默认值为：create-time。</p>
+        :type SortBy: str
+        :param _SortOrder: <p>排序方式，取值有：<li>asc：升序方式；</li><li>desc：降序方式。</li>默认值为：desc。</p>
+        :type SortOrder: str
+        :param _Offset: <p>分页偏移量，默认值：0。</p>
+        :type Offset: int
+        :param _Limit: <p>返回记录条数，默认值：20，最大值：100。</p>
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._ServiceId = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ServiceId(self):
+        r"""<p>推理服务 ID。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段，取值有：<li>create-time：部署创建时间。</li>默认值为：create-time。</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序方式，取值有：<li>asc：升序方式；</li><li>desc：降序方式。</li>默认值为：desc。</p>
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认值：0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回记录条数，默认值：20，最大值：100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ServiceId = params.get("ServiceId")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInferenceServiceDeploymentRecordsResponse(AbstractModel):
+    r"""DescribeInferenceServiceDeploymentRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>部署历史总数。</p>
+        :type TotalCount: int
+        :param _RecordSet: <p>推理服务部署历史列表。</p>
+        :type RecordSet: list of InferenceServiceDeploymentRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RecordSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>部署历史总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RecordSet(self):
+        r"""<p>推理服务部署历史列表。</p>
+        :rtype: list of InferenceServiceDeploymentRecord
+        """
+        return self._RecordSet
+
+    @RecordSet.setter
+    def RecordSet(self, RecordSet):
+        self._RecordSet = RecordSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RecordSet") is not None:
+            self._RecordSet = []
+            for item in params.get("RecordSet"):
+                obj = InferenceServiceDeploymentRecord()
+                obj._deserialize(item)
+                self._RecordSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInferenceServiceMonitorDataRequest(AbstractModel):
+    r"""DescribeInferenceServiceMonitorData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _ServiceIds: <p>推理服务 ID。最多传入10个推理服务 ID。</p>
+        :type ServiceIds: list of str
+        :param _MetricNames: <p>指标列表，最多支持 10 个指标。取值有：<li>cpu_usage_average: CPU 平均使用率，单位：%，指标类型：Float；</li><li>cpu_usage_max: CPU 最大使用率，单位：%，指标类型：Float；</li><li>gpu_usage_average: GPU 平均使用率，单位：%，指标类型：Float；</li><li>gpu_usage_max: GPU 最大使用率，单位：%，指标类型：Float；</li><li>instance_num_average: 实例平均数量，单位：个，指标类型：Float；</li><li>instance_num_max: 实例最大数量，单位：个，指标类型：Float；</li><li>gpu_memory_usage_max: 显存最大使用率，单位：%，指标类型：Float；</li><li>memory_usage_average: 内存平均使用率，单位：%，指标类型：Float；</li><li>memory_usage_max: 内存最大使用率，单位：%，指标类型：Float；</li></p>
+        :type MetricNames: list of str
+        :param _StartTime: <p>开始时间。</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间。查询时间范围（<code>EndTime - StartTime</code>）需小于等于 30 天。</p>
+        :type EndTime: str
+        :param _Interval: <p>查询时间粒度，取值有：</p><li>min: 1分钟，支持1天范围内的查询；</li><li>5min: 5分钟，支持7天范围内的查询；</li><li>hour: 1小时，支持30天范围内的查询；</li><li>day: 1天，支持30天范围内的查询；</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2小时范围内以 min 粒度查询，2天范围内以 5min 粒度查询，7天范围内以 hour 粒度查询，超过7天以 day 粒度查询。
+        :type Interval: str
+        """
+        self._ZoneId = None
+        self._ServiceIds = None
+        self._MetricNames = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Interval = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ServiceIds(self):
+        r"""<p>推理服务 ID。最多传入10个推理服务 ID。</p>
+        :rtype: list of str
+        """
+        return self._ServiceIds
+
+    @ServiceIds.setter
+    def ServiceIds(self, ServiceIds):
+        self._ServiceIds = ServiceIds
+
+    @property
+    def MetricNames(self):
+        r"""<p>指标列表，最多支持 10 个指标。取值有：<li>cpu_usage_average: CPU 平均使用率，单位：%，指标类型：Float；</li><li>cpu_usage_max: CPU 最大使用率，单位：%，指标类型：Float；</li><li>gpu_usage_average: GPU 平均使用率，单位：%，指标类型：Float；</li><li>gpu_usage_max: GPU 最大使用率，单位：%，指标类型：Float；</li><li>instance_num_average: 实例平均数量，单位：个，指标类型：Float；</li><li>instance_num_max: 实例最大数量，单位：个，指标类型：Float；</li><li>gpu_memory_usage_max: 显存最大使用率，单位：%，指标类型：Float；</li><li>memory_usage_average: 内存平均使用率，单位：%，指标类型：Float；</li><li>memory_usage_max: 内存最大使用率，单位：%，指标类型：Float；</li></p>
+        :rtype: list of str
+        """
+        return self._MetricNames
+
+    @MetricNames.setter
+    def MetricNames(self, MetricNames):
+        self._MetricNames = MetricNames
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间。查询时间范围（<code>EndTime - StartTime</code>）需小于等于 30 天。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Interval(self):
+        r"""<p>查询时间粒度，取值有：</p><li>min: 1分钟，支持1天范围内的查询；</li><li>5min: 5分钟，支持7天范围内的查询；</li><li>hour: 1小时，支持30天范围内的查询；</li><li>day: 1天，支持30天范围内的查询；</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：2小时范围内以 min 粒度查询，2天范围内以 5min 粒度查询，7天范围内以 hour 粒度查询，超过7天以 day 粒度查询。
+        :rtype: str
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ServiceIds = params.get("ServiceIds")
+        self._MetricNames = params.get("MetricNames")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInferenceServiceMonitorDataResponse(AbstractModel):
+    r"""DescribeInferenceServiceMonitorData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>查询结果的总条数。</p>
+        :type TotalCount: int
+        :param _InferenceServiceMonitorRecords: <p>推理服务监控数据。</p>
+        :type InferenceServiceMonitorRecords: list of InferenceServiceMonitorRecord
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InferenceServiceMonitorRecords = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>查询结果的总条数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InferenceServiceMonitorRecords(self):
+        r"""<p>推理服务监控数据。</p>
+        :rtype: list of InferenceServiceMonitorRecord
+        """
+        return self._InferenceServiceMonitorRecords
+
+    @InferenceServiceMonitorRecords.setter
+    def InferenceServiceMonitorRecords(self, InferenceServiceMonitorRecords):
+        self._InferenceServiceMonitorRecords = InferenceServiceMonitorRecords
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InferenceServiceMonitorRecords") is not None:
+            self._InferenceServiceMonitorRecords = []
+            for item in params.get("InferenceServiceMonitorRecords"):
+                obj = InferenceServiceMonitorRecord()
+                obj._deserialize(item)
+                self._InferenceServiceMonitorRecords.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInferenceServicesRequest(AbstractModel):
+    r"""DescribeInferenceServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点ID。</p>
+        :type ZoneId: str
+        :param _Filters: <p>过滤条件，上限 20 个，多个条件为且关系，Filters.Values 的上限为 20。详细的过滤条件如下：<li>service-name：按照服务名称进行过滤；</li><li>service-id：按照服务 ID 过滤；</li><li>status：按照服务状态过滤。</li>模糊查询时仅支持过滤字段名为 service-name。</p>
+        :type Filters: list of AdvancedFilter
+        :param _Offset: <p>分页查询偏移量。默认值：0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页查询限制数目。默认值：20，最大值：200。</p>
+        :type Limit: int
+        :param _Order: <p>可根据该字段对返回结果进行排序，取值有：<li>create-time：创建时间。</li>不填写时默认按照 create-time 排序。</p>
+        :type Order: str
+        :param _Direction: <p>排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ASCII 码的大小排序。取值有：<li>asc：从小到大排序；</li><li>desc：从大到小排序。</li>不填写使用默认值 desc。</p>
+        :type Direction: str
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._Order = None
+        self._Direction = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，上限 20 个，多个条件为且关系，Filters.Values 的上限为 20。详细的过滤条件如下：<li>service-name：按照服务名称进行过滤；</li><li>service-id：按照服务 ID 过滤；</li><li>status：按照服务状态过滤。</li>模糊查询时仅支持过滤字段名为 service-name。</p>
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页查询偏移量。默认值：0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询限制数目。默认值：20，最大值：200。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        r"""<p>可根据该字段对返回结果进行排序，取值有：<li>create-time：创建时间。</li>不填写时默认按照 create-time 排序。</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Direction(self):
+        r"""<p>排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ASCII 码的大小排序。取值有：<li>asc：从小到大排序；</li><li>desc：从大到小排序。</li>不填写使用默认值 desc。</p>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInferenceServicesResponse(AbstractModel):
+    r"""DescribeInferenceServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>满足条件的服务总数。</p>
+        :type TotalCount: int
+        :param _Services: <p>推理服务列表。</p>
+        :type Services: list of InferenceService
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Services = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>满足条件的服务总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Services(self):
+        r"""<p>推理服务列表。</p>
+        :rtype: list of InferenceService
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = InferenceService()
+                obj._deserialize(item)
+                self._Services.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -37791,6 +39114,1687 @@ class IncreasePlanQuotaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InferenceAPIToken(AbstractModel):
+    r"""推理 API Token 信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TokenId: 推理 API Token ID。
+        :type TokenId: str
+        :param _Name: 推理 API Token 名称。
+        :type Name: str
+        :param _Content: 推理 API Token 内容。
+        :type Content: str
+        :param _CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        """
+        self._TokenId = None
+        self._Name = None
+        self._Content = None
+        self._CreateTime = None
+
+    @property
+    def TokenId(self):
+        r"""推理 API Token ID。
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+    @property
+    def Name(self):
+        r"""推理 API Token 名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        r"""推理 API Token 内容。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._TokenId = params.get("TokenId")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceAutoScalingConfig(AbstractModel):
+    r"""推理服务自动伸缩配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinInstanceCount: <p>最小实例数量。当配置了伸缩策略并且策略处于有效期时，将不会生效。</p>
+        :type MinInstanceCount: int
+        :param _ScalingPolicies: <p>伸缩策略列表。最多支持 5 个策略。</p>
+        :type ScalingPolicies: list of InferenceScalingPolicy
+        """
+        self._MinInstanceCount = None
+        self._ScalingPolicies = None
+
+    @property
+    def MinInstanceCount(self):
+        r"""<p>最小实例数量。当配置了伸缩策略并且策略处于有效期时，将不会生效。</p>
+        :rtype: int
+        """
+        return self._MinInstanceCount
+
+    @MinInstanceCount.setter
+    def MinInstanceCount(self, MinInstanceCount):
+        self._MinInstanceCount = MinInstanceCount
+
+    @property
+    def ScalingPolicies(self):
+        r"""<p>伸缩策略列表。最多支持 5 个策略。</p>
+        :rtype: list of InferenceScalingPolicy
+        """
+        return self._ScalingPolicies
+
+    @ScalingPolicies.setter
+    def ScalingPolicies(self, ScalingPolicies):
+        self._ScalingPolicies = ScalingPolicies
+
+
+    def _deserialize(self, params):
+        self._MinInstanceCount = params.get("MinInstanceCount")
+        if params.get("ScalingPolicies") is not None:
+            self._ScalingPolicies = []
+            for item in params.get("ScalingPolicies"):
+                obj = InferenceScalingPolicy()
+                obj._deserialize(item)
+                self._ScalingPolicies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceContainerConfig(AbstractModel):
+    r"""推理服务的容器配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageType: 镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li>
+        :type ImageType: str
+        :param _TcrRepositoryConfig: TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcrRepositoryConfig: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
+        :param _StartupCommand: 容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。
+        :type StartupCommand: str
+        :param _EnvironmentVariables: 容器运行时的环境变量。最多支持 10 个变量。
+        :type EnvironmentVariables: list of InferenceEnvironmentVariable
+        """
+        self._ImageType = None
+        self._TcrRepositoryConfig = None
+        self._StartupCommand = None
+        self._EnvironmentVariables = None
+
+    @property
+    def ImageType(self):
+        r"""镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li>
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def TcrRepositoryConfig(self):
+        r"""TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
+        """
+        return self._TcrRepositoryConfig
+
+    @TcrRepositoryConfig.setter
+    def TcrRepositoryConfig(self, TcrRepositoryConfig):
+        self._TcrRepositoryConfig = TcrRepositoryConfig
+
+    @property
+    def StartupCommand(self):
+        r"""容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。
+        :rtype: str
+        """
+        return self._StartupCommand
+
+    @StartupCommand.setter
+    def StartupCommand(self, StartupCommand):
+        self._StartupCommand = StartupCommand
+
+    @property
+    def EnvironmentVariables(self):
+        r"""容器运行时的环境变量。最多支持 10 个变量。
+        :rtype: list of InferenceEnvironmentVariable
+        """
+        return self._EnvironmentVariables
+
+    @EnvironmentVariables.setter
+    def EnvironmentVariables(self, EnvironmentVariables):
+        self._EnvironmentVariables = EnvironmentVariables
+
+
+    def _deserialize(self, params):
+        self._ImageType = params.get("ImageType")
+        if params.get("TcrRepositoryConfig") is not None:
+            self._TcrRepositoryConfig = InferenceTCRRepositoryConfig()
+            self._TcrRepositoryConfig._deserialize(params.get("TcrRepositoryConfig"))
+        self._StartupCommand = params.get("StartupCommand")
+        if params.get("EnvironmentVariables") is not None:
+            self._EnvironmentVariables = []
+            for item in params.get("EnvironmentVariables"):
+                obj = InferenceEnvironmentVariable()
+                obj._deserialize(item)
+                self._EnvironmentVariables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceContainerConfigForModify(AbstractModel):
+    r"""推理服务容器配置的修改参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageType: 镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li>
+        :type ImageType: str
+        :param _TcrRepositoryConfig: TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。
+        :type TcrRepositoryConfig: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
+        :param _StartupCommand: 容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。
+        :type StartupCommand: str
+        :param _EnvironmentVariables: 容器运行时的环境变量。最多支持 10 个变量。
+        :type EnvironmentVariables: list of InferenceEnvironmentVariable
+        """
+        self._ImageType = None
+        self._TcrRepositoryConfig = None
+        self._StartupCommand = None
+        self._EnvironmentVariables = None
+
+    @property
+    def ImageType(self):
+        r"""镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li>
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def TcrRepositoryConfig(self):
+        r"""TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
+        """
+        return self._TcrRepositoryConfig
+
+    @TcrRepositoryConfig.setter
+    def TcrRepositoryConfig(self, TcrRepositoryConfig):
+        self._TcrRepositoryConfig = TcrRepositoryConfig
+
+    @property
+    def StartupCommand(self):
+        r"""容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。
+        :rtype: str
+        """
+        return self._StartupCommand
+
+    @StartupCommand.setter
+    def StartupCommand(self, StartupCommand):
+        self._StartupCommand = StartupCommand
+
+    @property
+    def EnvironmentVariables(self):
+        r"""容器运行时的环境变量。最多支持 10 个变量。
+        :rtype: list of InferenceEnvironmentVariable
+        """
+        return self._EnvironmentVariables
+
+    @EnvironmentVariables.setter
+    def EnvironmentVariables(self, EnvironmentVariables):
+        self._EnvironmentVariables = EnvironmentVariables
+
+
+    def _deserialize(self, params):
+        self._ImageType = params.get("ImageType")
+        if params.get("TcrRepositoryConfig") is not None:
+            self._TcrRepositoryConfig = InferenceTCRRepositoryConfig()
+            self._TcrRepositoryConfig._deserialize(params.get("TcrRepositoryConfig"))
+        self._StartupCommand = params.get("StartupCommand")
+        if params.get("EnvironmentVariables") is not None:
+            self._EnvironmentVariables = []
+            for item in params.get("EnvironmentVariables"):
+                obj = InferenceEnvironmentVariable()
+                obj._deserialize(item)
+                self._EnvironmentVariables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceEnvironmentVariable(AbstractModel):
+    r"""推理容器运行时的环境变量。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 变量名。仅允许包含大小写字母、数字、下划线，且必须以字母或下划线开头。长度限制不超过 64 个字符。
+        :type Key: str
+        :param _Value: 变量值。支持任意可见字符如字母、数字、符号等。长度限制不超过 2048 个字符。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""变量名。仅允许包含大小写字母、数字、下划线，且必须以字母或下划线开头。长度限制不超过 64 个字符。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""变量值。支持任意可见字符如字母、数字、符号等。长度限制不超过 2048 个字符。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceHardwareSpecification(AbstractModel):
+    r"""推理硬件规格信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Spec: 规格标识。
+        :type Spec: str
+        :param _Name: 规格名称。
+        :type Name: str
+        :param _CPUNum: CPU 核数。
+        :type CPUNum: float
+        :param _MemSize: 内存大小。单位为 MB。
+        :type MemSize: int
+        :param _GPUNum: GPU 卡数。
+        :type GPUNum: float
+        :param _GPUMemSize: 显存大小。单位为 MB。
+        :type GPUMemSize: int
+        """
+        self._Spec = None
+        self._Name = None
+        self._CPUNum = None
+        self._MemSize = None
+        self._GPUNum = None
+        self._GPUMemSize = None
+
+    @property
+    def Spec(self):
+        r"""规格标识。
+        :rtype: str
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def Name(self):
+        r"""规格名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CPUNum(self):
+        r"""CPU 核数。
+        :rtype: float
+        """
+        return self._CPUNum
+
+    @CPUNum.setter
+    def CPUNum(self, CPUNum):
+        self._CPUNum = CPUNum
+
+    @property
+    def MemSize(self):
+        r"""内存大小。单位为 MB。
+        :rtype: int
+        """
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def GPUNum(self):
+        r"""GPU 卡数。
+        :rtype: float
+        """
+        return self._GPUNum
+
+    @GPUNum.setter
+    def GPUNum(self, GPUNum):
+        self._GPUNum = GPUNum
+
+    @property
+    def GPUMemSize(self):
+        r"""显存大小。单位为 MB。
+        :rtype: int
+        """
+        return self._GPUMemSize
+
+    @GPUMemSize.setter
+    def GPUMemSize(self, GPUMemSize):
+        self._GPUMemSize = GPUMemSize
+
+
+    def _deserialize(self, params):
+        self._Spec = params.get("Spec")
+        self._Name = params.get("Name")
+        self._CPUNum = params.get("CPUNum")
+        self._MemSize = params.get("MemSize")
+        self._GPUNum = params.get("GPUNum")
+        self._GPUMemSize = params.get("GPUMemSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceManualInstanceConfig(AbstractModel):
+    r"""推理服务人工设置实例配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FixedInstanceCount: 固定实例数量。
+        :type FixedInstanceCount: int
+        """
+        self._FixedInstanceCount = None
+
+    @property
+    def FixedInstanceCount(self):
+        r"""固定实例数量。
+        :rtype: int
+        """
+        return self._FixedInstanceCount
+
+    @FixedInstanceCount.setter
+    def FixedInstanceCount(self, FixedInstanceCount):
+        self._FixedInstanceCount = FixedInstanceCount
+
+
+    def _deserialize(self, params):
+        self._FixedInstanceCount = params.get("FixedInstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceResourceConfig(AbstractModel):
+    r"""推理服务的资源配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScalingMode: 扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+        :type ScalingMode: str
+        :param _HardwareSpec: 硬件规格。
+        :type HardwareSpec: str
+        :param _AutoScalingConfig: 推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoScalingConfig: :class:`tencentcloud.teo.v20220901.models.InferenceAutoScalingConfig`
+        :param _ManualInstanceConfig: 推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManualInstanceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceManualInstanceConfig`
+        :param _Concurrency: 单实例的并发数。默认值为 1。
+        :type Concurrency: int
+        """
+        self._ScalingMode = None
+        self._HardwareSpec = None
+        self._AutoScalingConfig = None
+        self._ManualInstanceConfig = None
+        self._Concurrency = None
+
+    @property
+    def ScalingMode(self):
+        r"""扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+        :rtype: str
+        """
+        return self._ScalingMode
+
+    @ScalingMode.setter
+    def ScalingMode(self, ScalingMode):
+        self._ScalingMode = ScalingMode
+
+    @property
+    def HardwareSpec(self):
+        r"""硬件规格。
+        :rtype: str
+        """
+        return self._HardwareSpec
+
+    @HardwareSpec.setter
+    def HardwareSpec(self, HardwareSpec):
+        self._HardwareSpec = HardwareSpec
+
+    @property
+    def AutoScalingConfig(self):
+        r"""推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceAutoScalingConfig`
+        """
+        return self._AutoScalingConfig
+
+    @AutoScalingConfig.setter
+    def AutoScalingConfig(self, AutoScalingConfig):
+        self._AutoScalingConfig = AutoScalingConfig
+
+    @property
+    def ManualInstanceConfig(self):
+        r"""推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceManualInstanceConfig`
+        """
+        return self._ManualInstanceConfig
+
+    @ManualInstanceConfig.setter
+    def ManualInstanceConfig(self, ManualInstanceConfig):
+        self._ManualInstanceConfig = ManualInstanceConfig
+
+    @property
+    def Concurrency(self):
+        r"""单实例的并发数。默认值为 1。
+        :rtype: int
+        """
+        return self._Concurrency
+
+    @Concurrency.setter
+    def Concurrency(self, Concurrency):
+        self._Concurrency = Concurrency
+
+
+    def _deserialize(self, params):
+        self._ScalingMode = params.get("ScalingMode")
+        self._HardwareSpec = params.get("HardwareSpec")
+        if params.get("AutoScalingConfig") is not None:
+            self._AutoScalingConfig = InferenceAutoScalingConfig()
+            self._AutoScalingConfig._deserialize(params.get("AutoScalingConfig"))
+        if params.get("ManualInstanceConfig") is not None:
+            self._ManualInstanceConfig = InferenceManualInstanceConfig()
+            self._ManualInstanceConfig._deserialize(params.get("ManualInstanceConfig"))
+        self._Concurrency = params.get("Concurrency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceResourceConfigForModify(AbstractModel):
+    r"""推理服务资源配置的修改参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScalingMode: 扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+        :type ScalingMode: str
+        :param _AutoScalingConfig: 推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+        :type AutoScalingConfig: :class:`tencentcloud.teo.v20220901.models.InferenceAutoScalingConfig`
+        :param _ManualInstanceConfig: 推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+        :type ManualInstanceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceManualInstanceConfig`
+        :param _Concurrency: 单实例的并发数。默认值为 1。
+        :type Concurrency: int
+        """
+        self._ScalingMode = None
+        self._AutoScalingConfig = None
+        self._ManualInstanceConfig = None
+        self._Concurrency = None
+
+    @property
+    def ScalingMode(self):
+        r"""扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+        :rtype: str
+        """
+        return self._ScalingMode
+
+    @ScalingMode.setter
+    def ScalingMode(self, ScalingMode):
+        self._ScalingMode = ScalingMode
+
+    @property
+    def AutoScalingConfig(self):
+        r"""推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceAutoScalingConfig`
+        """
+        return self._AutoScalingConfig
+
+    @AutoScalingConfig.setter
+    def AutoScalingConfig(self, AutoScalingConfig):
+        self._AutoScalingConfig = AutoScalingConfig
+
+    @property
+    def ManualInstanceConfig(self):
+        r"""推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceManualInstanceConfig`
+        """
+        return self._ManualInstanceConfig
+
+    @ManualInstanceConfig.setter
+    def ManualInstanceConfig(self, ManualInstanceConfig):
+        self._ManualInstanceConfig = ManualInstanceConfig
+
+    @property
+    def Concurrency(self):
+        r"""单实例的并发数。默认值为 1。
+        :rtype: int
+        """
+        return self._Concurrency
+
+    @Concurrency.setter
+    def Concurrency(self, Concurrency):
+        self._Concurrency = Concurrency
+
+
+    def _deserialize(self, params):
+        self._ScalingMode = params.get("ScalingMode")
+        if params.get("AutoScalingConfig") is not None:
+            self._AutoScalingConfig = InferenceAutoScalingConfig()
+            self._AutoScalingConfig._deserialize(params.get("AutoScalingConfig"))
+        if params.get("ManualInstanceConfig") is not None:
+            self._ManualInstanceConfig = InferenceManualInstanceConfig()
+            self._ManualInstanceConfig._deserialize(params.get("ManualInstanceConfig"))
+        self._Concurrency = params.get("Concurrency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceScalingPolicy(AbstractModel):
+    r"""边缘推理弹性伸缩策略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyName: 策略名称。长度限制为 1~30 个字符。同一服务内策略名称需唯一。
+        :type PolicyName: str
+        :param _PolicyType: 策略类型，创建后不可修改。取值：<li>ScheduledScaling：定时伸缩。</li>
+        :type PolicyType: str
+        :param _ScheduledScalingPolicy: 定时伸缩配置。当 PolicyType 取值为 ScheduledScaling 时，该字段必填。
+        :type ScheduledScalingPolicy: :class:`tencentcloud.teo.v20220901.models.InferenceScheduledScalingPolicy`
+        """
+        self._PolicyName = None
+        self._PolicyType = None
+        self._ScheduledScalingPolicy = None
+
+    @property
+    def PolicyName(self):
+        r"""策略名称。长度限制为 1~30 个字符。同一服务内策略名称需唯一。
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyType(self):
+        r"""策略类型，创建后不可修改。取值：<li>ScheduledScaling：定时伸缩。</li>
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def ScheduledScalingPolicy(self):
+        r"""定时伸缩配置。当 PolicyType 取值为 ScheduledScaling 时，该字段必填。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceScheduledScalingPolicy`
+        """
+        return self._ScheduledScalingPolicy
+
+    @ScheduledScalingPolicy.setter
+    def ScheduledScalingPolicy(self, ScheduledScalingPolicy):
+        self._ScheduledScalingPolicy = ScheduledScalingPolicy
+
+
+    def _deserialize(self, params):
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyType = params.get("PolicyType")
+        if params.get("ScheduledScalingPolicy") is not None:
+            self._ScheduledScalingPolicy = InferenceScheduledScalingPolicy()
+            self._ScheduledScalingPolicy._deserialize(params.get("ScheduledScalingPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceScheduledScalingAction(AbstractModel):
+    r"""边缘推理定时伸缩动作配置，用于描述一条具体的定时伸缩动作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CronExpression: Cron 表达式，用于描述定时伸缩动作的触发时间。采用 5 字段标准 Cron 格式：分钟 小时 日期 月份 星期。不支持秒字段和年份字段。
+        :type CronExpression: str
+        :param _MinInstanceCount: 命中该定时伸缩动作后，推理服务需要调整到的最小实例数。若同一评估窗口内多个定时伸缩动作同时命中，则使用其中最大的 MinInstanceCount。
+        :type MinInstanceCount: int
+        """
+        self._CronExpression = None
+        self._MinInstanceCount = None
+
+    @property
+    def CronExpression(self):
+        r"""Cron 表达式，用于描述定时伸缩动作的触发时间。采用 5 字段标准 Cron 格式：分钟 小时 日期 月份 星期。不支持秒字段和年份字段。
+        :rtype: str
+        """
+        return self._CronExpression
+
+    @CronExpression.setter
+    def CronExpression(self, CronExpression):
+        self._CronExpression = CronExpression
+
+    @property
+    def MinInstanceCount(self):
+        r"""命中该定时伸缩动作后，推理服务需要调整到的最小实例数。若同一评估窗口内多个定时伸缩动作同时命中，则使用其中最大的 MinInstanceCount。
+        :rtype: int
+        """
+        return self._MinInstanceCount
+
+    @MinInstanceCount.setter
+    def MinInstanceCount(self, MinInstanceCount):
+        self._MinInstanceCount = MinInstanceCount
+
+
+    def _deserialize(self, params):
+        self._CronExpression = params.get("CronExpression")
+        self._MinInstanceCount = params.get("MinInstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceScheduledScalingEffectiveRange(AbstractModel):
+    r"""边缘推理定时伸缩有效期范围配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EffectiveType: <p>有效期类型。取值有：<li>LongTerm：长期有效；</li><li>Custom：自定义起止日期。</li></p>
+        :type EffectiveType: str
+        :param _StartDate: <p>有效期起始日期。当 EffectiveType 为 Custom 时必填；当 EffectiveType 为 LongTerm 时不传该字段。</p>
+        :type StartDate: str
+        :param _EndDate: <p>有效期终止日期。当 EffectiveType 为 Custom 时必填，且不得早于 StartDate；当 EffectiveType 为 LongTerm 时不传该字段。</p>
+        :type EndDate: str
+        """
+        self._EffectiveType = None
+        self._StartDate = None
+        self._EndDate = None
+
+    @property
+    def EffectiveType(self):
+        r"""<p>有效期类型。取值有：<li>LongTerm：长期有效；</li><li>Custom：自定义起止日期。</li></p>
+        :rtype: str
+        """
+        return self._EffectiveType
+
+    @EffectiveType.setter
+    def EffectiveType(self, EffectiveType):
+        self._EffectiveType = EffectiveType
+
+    @property
+    def StartDate(self):
+        r"""<p>有效期起始日期。当 EffectiveType 为 Custom 时必填；当 EffectiveType 为 LongTerm 时不传该字段。</p>
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        r"""<p>有效期终止日期。当 EffectiveType 为 Custom 时必填，且不得早于 StartDate；当 EffectiveType 为 LongTerm 时不传该字段。</p>
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+
+    def _deserialize(self, params):
+        self._EffectiveType = params.get("EffectiveType")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceScheduledScalingPolicy(AbstractModel):
+    r"""边缘推理定时伸缩策略配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScheduledActions: 定时伸缩动作列表。至少填写 1 个，最多支持 10 个。
+        :type ScheduledActions: list of InferenceScheduledScalingAction
+        :param _EffectiveRange: 有效期范围，用于描述该定时伸缩策略长期有效或仅在指定日期范围内有效。
+        :type EffectiveRange: :class:`tencentcloud.teo.v20220901.models.InferenceScheduledScalingEffectiveRange`
+        :param _TimeZone: 时区，使用 [IANA 时区](https://www.iana.org/time-zones) 标识 ScheduledActions 中的触发时间，例如 UTC、Asia/Shanghai、America/New_York、Europe/London、Asia/Kolkata。不传时默认使用 UTC。
+
+
+
+
+
+        :type TimeZone: str
+        """
+        self._ScheduledActions = None
+        self._EffectiveRange = None
+        self._TimeZone = None
+
+    @property
+    def ScheduledActions(self):
+        r"""定时伸缩动作列表。至少填写 1 个，最多支持 10 个。
+        :rtype: list of InferenceScheduledScalingAction
+        """
+        return self._ScheduledActions
+
+    @ScheduledActions.setter
+    def ScheduledActions(self, ScheduledActions):
+        self._ScheduledActions = ScheduledActions
+
+    @property
+    def EffectiveRange(self):
+        r"""有效期范围，用于描述该定时伸缩策略长期有效或仅在指定日期范围内有效。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceScheduledScalingEffectiveRange`
+        """
+        return self._EffectiveRange
+
+    @EffectiveRange.setter
+    def EffectiveRange(self, EffectiveRange):
+        self._EffectiveRange = EffectiveRange
+
+    @property
+    def TimeZone(self):
+        r"""时区，使用 [IANA 时区](https://www.iana.org/time-zones) 标识 ScheduledActions 中的触发时间，例如 UTC、Asia/Shanghai、America/New_York、Europe/London、Asia/Kolkata。不传时默认使用 UTC。
+
+
+
+
+
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+
+    def _deserialize(self, params):
+        if params.get("ScheduledActions") is not None:
+            self._ScheduledActions = []
+            for item in params.get("ScheduledActions"):
+                obj = InferenceScheduledScalingAction()
+                obj._deserialize(item)
+                self._ScheduledActions.append(obj)
+        if params.get("EffectiveRange") is not None:
+            self._EffectiveRange = InferenceScheduledScalingEffectiveRange()
+            self._EffectiveRange._deserialize(params.get("EffectiveRange"))
+        self._TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceService(AbstractModel):
+    r"""推理服务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 推理服务 ID。
+        :type ServiceId: str
+        :param _Name: 推理服务的名称。
+        :type Name: str
+        :param _Description: 描述信息。
+        :type Description: str
+        :param _ListenPort: 模型服务需要监听的端口。仅支持 1-65535 之间的整数。
+        :type ListenPort: int
+        :param _RequestPaths: 推理服务的请求路径列表。最多支持 20 个路径。
+        :type RequestPaths: list of str
+        :param _Containers: 推理服务的容器配置。
+        :type Containers: list of InferenceContainerConfig
+        :param _ResourceConfig: 推理服务的资源配置。
+        :type ResourceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfig`
+        :param _Status: 推理服务状态，包含以下几种状态：<li>Deploying：部署中；</li><li>Running：运行中；</li><li>Stopping：停止中；</li><li>Stopped：已停止；</li><li>Exception：异常；</li><li>Banned：被封禁。</li>
+        :type Status: str
+        :param _ScalingStatus: 伸缩状态。取值有：<li>Normal：稳定运行，无进行中的伸缩操作；</li><li>ScalingOut：扩容中；</li><li>ScalingIn：缩容中。</li>
+        :type ScalingStatus: str
+        :param _CurrentInstanceCount: 当前运行中的实例数量。
+        :type CurrentInstanceCount: int
+        :param _InferenceURL: 推理访问地址，可通过链接访问底层模型进行推理。
+        :type InferenceURL: str
+        :param _CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param _UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
+        """
+        self._ServiceId = None
+        self._Name = None
+        self._Description = None
+        self._ListenPort = None
+        self._RequestPaths = None
+        self._Containers = None
+        self._ResourceConfig = None
+        self._Status = None
+        self._ScalingStatus = None
+        self._CurrentInstanceCount = None
+        self._InferenceURL = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ServiceId(self):
+        r"""推理服务 ID。
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Name(self):
+        r"""推理服务的名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述信息。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ListenPort(self):
+        r"""模型服务需要监听的端口。仅支持 1-65535 之间的整数。
+        :rtype: int
+        """
+        return self._ListenPort
+
+    @ListenPort.setter
+    def ListenPort(self, ListenPort):
+        self._ListenPort = ListenPort
+
+    @property
+    def RequestPaths(self):
+        r"""推理服务的请求路径列表。最多支持 20 个路径。
+        :rtype: list of str
+        """
+        return self._RequestPaths
+
+    @RequestPaths.setter
+    def RequestPaths(self, RequestPaths):
+        self._RequestPaths = RequestPaths
+
+    @property
+    def Containers(self):
+        r"""推理服务的容器配置。
+        :rtype: list of InferenceContainerConfig
+        """
+        return self._Containers
+
+    @Containers.setter
+    def Containers(self, Containers):
+        self._Containers = Containers
+
+    @property
+    def ResourceConfig(self):
+        r"""推理服务的资源配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfig`
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Status(self):
+        r"""推理服务状态，包含以下几种状态：<li>Deploying：部署中；</li><li>Running：运行中；</li><li>Stopping：停止中；</li><li>Stopped：已停止；</li><li>Exception：异常；</li><li>Banned：被封禁。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ScalingStatus(self):
+        r"""伸缩状态。取值有：<li>Normal：稳定运行，无进行中的伸缩操作；</li><li>ScalingOut：扩容中；</li><li>ScalingIn：缩容中。</li>
+        :rtype: str
+        """
+        return self._ScalingStatus
+
+    @ScalingStatus.setter
+    def ScalingStatus(self, ScalingStatus):
+        self._ScalingStatus = ScalingStatus
+
+    @property
+    def CurrentInstanceCount(self):
+        r"""当前运行中的实例数量。
+        :rtype: int
+        """
+        return self._CurrentInstanceCount
+
+    @CurrentInstanceCount.setter
+    def CurrentInstanceCount(self, CurrentInstanceCount):
+        self._CurrentInstanceCount = CurrentInstanceCount
+
+    @property
+    def InferenceURL(self):
+        r"""推理访问地址，可通过链接访问底层模型进行推理。
+        :rtype: str
+        """
+        return self._InferenceURL
+
+    @InferenceURL.setter
+    def InferenceURL(self, InferenceURL):
+        self._InferenceURL = InferenceURL
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ListenPort = params.get("ListenPort")
+        self._RequestPaths = params.get("RequestPaths")
+        if params.get("Containers") is not None:
+            self._Containers = []
+            for item in params.get("Containers"):
+                obj = InferenceContainerConfig()
+                obj._deserialize(item)
+                self._Containers.append(obj)
+        if params.get("ResourceConfig") is not None:
+            self._ResourceConfig = InferenceResourceConfig()
+            self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        self._Status = params.get("Status")
+        self._ScalingStatus = params.get("ScalingStatus")
+        self._CurrentInstanceCount = params.get("CurrentInstanceCount")
+        self._InferenceURL = params.get("InferenceURL")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceServiceConfig(AbstractModel):
+    r"""推理服务单次部署配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ListenPort: 模型服务需要监听的端口。
+        :type ListenPort: int
+        :param _RequestPaths: 推理服务的请求路径列表。
+        :type RequestPaths: list of str
+        :param _Containers: 推理服务的容器配置。
+        :type Containers: list of InferenceContainerConfig
+        :param _ResourceConfig: 推理服务的资源配置。
+        :type ResourceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfig`
+        """
+        self._ListenPort = None
+        self._RequestPaths = None
+        self._Containers = None
+        self._ResourceConfig = None
+
+    @property
+    def ListenPort(self):
+        r"""模型服务需要监听的端口。
+        :rtype: int
+        """
+        return self._ListenPort
+
+    @ListenPort.setter
+    def ListenPort(self, ListenPort):
+        self._ListenPort = ListenPort
+
+    @property
+    def RequestPaths(self):
+        r"""推理服务的请求路径列表。
+        :rtype: list of str
+        """
+        return self._RequestPaths
+
+    @RequestPaths.setter
+    def RequestPaths(self, RequestPaths):
+        self._RequestPaths = RequestPaths
+
+    @property
+    def Containers(self):
+        r"""推理服务的容器配置。
+        :rtype: list of InferenceContainerConfig
+        """
+        return self._Containers
+
+    @Containers.setter
+    def Containers(self, Containers):
+        self._Containers = Containers
+
+    @property
+    def ResourceConfig(self):
+        r"""推理服务的资源配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfig`
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+
+    def _deserialize(self, params):
+        self._ListenPort = params.get("ListenPort")
+        self._RequestPaths = params.get("RequestPaths")
+        if params.get("Containers") is not None:
+            self._Containers = []
+            for item in params.get("Containers"):
+                obj = InferenceContainerConfig()
+                obj._deserialize(item)
+                self._Containers.append(obj)
+        if params.get("ResourceConfig") is not None:
+            self._ResourceConfig = InferenceResourceConfig()
+            self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceServiceDeploymentLogInfo(AbstractModel):
+    r"""推理服务部署日志信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogMessage: 日志消息内容。
+        :type LogMessage: str
+        :param _Timestamp: 日志产生时间。
+        :type Timestamp: str
+        """
+        self._LogMessage = None
+        self._Timestamp = None
+
+    @property
+    def LogMessage(self):
+        r"""日志消息内容。
+        :rtype: str
+        """
+        return self._LogMessage
+
+    @LogMessage.setter
+    def LogMessage(self, LogMessage):
+        self._LogMessage = LogMessage
+
+    @property
+    def Timestamp(self):
+        r"""日志产生时间。
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+
+    def _deserialize(self, params):
+        self._LogMessage = params.get("LogMessage")
+        self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceServiceDeploymentRecord(AbstractModel):
+    r"""推理服务部署历史记录。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: 部署记录 ID。
+        :type RecordId: str
+        :param _Operation: 部署操作类型，取值：
+<li>create：创建；</li>
+<li>update：更新；</li>
+<li>resume：启用；</li>
+<li>stop：停用。</li>
+        :type Operation: str
+        :param _Status: 部署状态，取值：
+<li>processing：部署中；</li>
+<li>succeeded：部署成功；</li>
+<li>failed：部署失败。</li>
+        :type Status: str
+        :param _Duration: 部署时长，单位：秒。
+        :type Duration: int
+        :param _InferenceServiceConfig: 本次推理服务部署的配置。
+        :type InferenceServiceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceServiceConfig`
+        :param _CreateTime: 部署发起时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param _ActiveStatus: 该部署配置是否是当前生效配置，取值：
+<li> active：当前生效配置；</li>
+<li> inactive：历史版本或异常版本配置。</li>
+        :type ActiveStatus: str
+        """
+        self._RecordId = None
+        self._Operation = None
+        self._Status = None
+        self._Duration = None
+        self._InferenceServiceConfig = None
+        self._CreateTime = None
+        self._ActiveStatus = None
+
+    @property
+    def RecordId(self):
+        r"""部署记录 ID。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Operation(self):
+        r"""部署操作类型，取值：
+<li>create：创建；</li>
+<li>update：更新；</li>
+<li>resume：启用；</li>
+<li>stop：停用。</li>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def Status(self):
+        r"""部署状态，取值：
+<li>processing：部署中；</li>
+<li>succeeded：部署成功；</li>
+<li>failed：部署失败。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Duration(self):
+        r"""部署时长，单位：秒。
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def InferenceServiceConfig(self):
+        r"""本次推理服务部署的配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceServiceConfig`
+        """
+        return self._InferenceServiceConfig
+
+    @InferenceServiceConfig.setter
+    def InferenceServiceConfig(self, InferenceServiceConfig):
+        self._InferenceServiceConfig = InferenceServiceConfig
+
+    @property
+    def CreateTime(self):
+        r"""部署发起时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ActiveStatus(self):
+        r"""该部署配置是否是当前生效配置，取值：
+<li> active：当前生效配置；</li>
+<li> inactive：历史版本或异常版本配置。</li>
+        :rtype: str
+        """
+        return self._ActiveStatus
+
+    @ActiveStatus.setter
+    def ActiveStatus(self, ActiveStatus):
+        self._ActiveStatus = ActiveStatus
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._Operation = params.get("Operation")
+        self._Status = params.get("Status")
+        self._Duration = params.get("Duration")
+        if params.get("InferenceServiceConfig") is not None:
+            self._InferenceServiceConfig = InferenceServiceConfig()
+            self._InferenceServiceConfig._deserialize(params.get("InferenceServiceConfig"))
+        self._CreateTime = params.get("CreateTime")
+        self._ActiveStatus = params.get("ActiveStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceServiceMonitorItem(AbstractModel):
+    r"""推理服务监控数据项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: 监控数据对应时间点。
+        :type Timestamp: str
+        :param _Value: 具体数值。
+        :type Value: float
+        """
+        self._Timestamp = None
+        self._Value = None
+
+    @property
+    def Timestamp(self):
+        r"""监控数据对应时间点。
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Value(self):
+        r"""具体数值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceServiceMonitorRecord(AbstractModel):
+    r"""推理服务监控数据记录。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 推理服务 ID。
+        :type ServiceId: str
+        :param _MetricName: 指标名称。
+        :type MetricName: str
+        :param _InferenceServiceMonitorItems: 详细推理服务监控数据。
+        :type InferenceServiceMonitorItems: list of InferenceServiceMonitorItem
+        """
+        self._ServiceId = None
+        self._MetricName = None
+        self._InferenceServiceMonitorItems = None
+
+    @property
+    def ServiceId(self):
+        r"""推理服务 ID。
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def MetricName(self):
+        r"""指标名称。
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def InferenceServiceMonitorItems(self):
+        r"""详细推理服务监控数据。
+        :rtype: list of InferenceServiceMonitorItem
+        """
+        return self._InferenceServiceMonitorItems
+
+    @InferenceServiceMonitorItems.setter
+    def InferenceServiceMonitorItems(self, InferenceServiceMonitorItems):
+        self._InferenceServiceMonitorItems = InferenceServiceMonitorItems
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._MetricName = params.get("MetricName")
+        if params.get("InferenceServiceMonitorItems") is not None:
+            self._InferenceServiceMonitorItems = []
+            for item in params.get("InferenceServiceMonitorItems"):
+                obj = InferenceServiceMonitorItem()
+                obj._deserialize(item)
+                self._InferenceServiceMonitorItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceTCRRepositoryConfig(AbstractModel):
+    r"""推理的 TCR 镜像仓库配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TCRType: <p>TCR 服务类型。取值有：<li>Personal：个人版；</li><li>Enterprise：企业版。</li></p>
+        :type TCRType: str
+        :param _Image: <p>镜像地址。</p>
+        :type Image: str
+        :param _RegistryId: <p>镜像仓库实例 ID。当 TCRType = Enterprise 时必填。</p>
+        :type RegistryId: str
+        :param _RegionName: <p>地域名称。</p>
+        :type RegionName: str
+        """
+        self._TCRType = None
+        self._Image = None
+        self._RegistryId = None
+        self._RegionName = None
+
+    @property
+    def TCRType(self):
+        r"""<p>TCR 服务类型。取值有：<li>Personal：个人版；</li><li>Enterprise：企业版。</li></p>
+        :rtype: str
+        """
+        return self._TCRType
+
+    @TCRType.setter
+    def TCRType(self, TCRType):
+        self._TCRType = TCRType
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def RegistryId(self):
+        r"""<p>镜像仓库实例 ID。当 TCRType = Enterprise 时必填。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RegionName(self):
+        r"""<p>地域名称。</p>
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+
+    def _deserialize(self, params):
+        self._TCRType = params.get("TCRType")
+        self._Image = params.get("Image")
+        self._RegistryId = params.get("RegistryId")
+        self._RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IntelligenceRule(AbstractModel):
     r"""智能分析规则
 
@@ -43643,6 +46647,167 @@ class ModifyHostsCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInferenceServiceRequest(AbstractModel):
+    r"""ModifyInferenceService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _ServiceId: <p>推理服务 ID。</p>
+        :type ServiceId: str
+        :param _ListenPort: <p>模型服务需要监听的端口。仅支持 1-65535 之间的整数。</p>
+        :type ListenPort: int
+        :param _RequestPaths: <p>推理服务的请求路径列表。最多支持 20 个路径。</p>
+        :type RequestPaths: list of str
+        :param _Containers: <p>推理服务的容器配置。当前仅支持设置 1 个容器。</p>
+        :type Containers: list of InferenceContainerConfigForModify
+        :param _ResourceConfig: <p>推理服务的资源配置。</p>
+        :type ResourceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfigForModify`
+        :param _Description: <p>描述信息。长度限制不超过 60 个字符。</p>
+        :type Description: str
+        """
+        self._ZoneId = None
+        self._ServiceId = None
+        self._ListenPort = None
+        self._RequestPaths = None
+        self._Containers = None
+        self._ResourceConfig = None
+        self._Description = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ServiceId(self):
+        r"""<p>推理服务 ID。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ListenPort(self):
+        r"""<p>模型服务需要监听的端口。仅支持 1-65535 之间的整数。</p>
+        :rtype: int
+        """
+        return self._ListenPort
+
+    @ListenPort.setter
+    def ListenPort(self, ListenPort):
+        self._ListenPort = ListenPort
+
+    @property
+    def RequestPaths(self):
+        r"""<p>推理服务的请求路径列表。最多支持 20 个路径。</p>
+        :rtype: list of str
+        """
+        return self._RequestPaths
+
+    @RequestPaths.setter
+    def RequestPaths(self, RequestPaths):
+        self._RequestPaths = RequestPaths
+
+    @property
+    def Containers(self):
+        r"""<p>推理服务的容器配置。当前仅支持设置 1 个容器。</p>
+        :rtype: list of InferenceContainerConfigForModify
+        """
+        return self._Containers
+
+    @Containers.setter
+    def Containers(self, Containers):
+        self._Containers = Containers
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>推理服务的资源配置。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfigForModify`
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Description(self):
+        r"""<p>描述信息。长度限制不超过 60 个字符。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ServiceId = params.get("ServiceId")
+        self._ListenPort = params.get("ListenPort")
+        self._RequestPaths = params.get("RequestPaths")
+        if params.get("Containers") is not None:
+            self._Containers = []
+            for item in params.get("Containers"):
+                obj = InferenceContainerConfigForModify()
+                obj._deserialize(item)
+                self._Containers.append(obj)
+        if params.get("ResourceConfig") is not None:
+            self._ResourceConfig = InferenceResourceConfigForModify()
+            self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInferenceServiceResponse(AbstractModel):
+    r"""ModifyInferenceService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyL4ProxyRequest(AbstractModel):
     r"""ModifyL4Proxy请求参数结构体
 
@@ -48852,6 +52017,100 @@ class OfflineCacheParameters(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OperateInferenceServiceRequest(AbstractModel):
+    r"""OperateInferenceService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _ServiceId: 推理服务 ID。
+        :type ServiceId: str
+        :param _Operation: 操作类型，包含以下几种：<li>Stop：停止；</li><li>Resume：启动；</li><li>Delete：删除。</li>
+        :type Operation: str
+        """
+        self._ZoneId = None
+        self._ServiceId = None
+        self._Operation = None
+
+    @property
+    def ZoneId(self):
+        r"""站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ServiceId(self):
+        r"""推理服务 ID。
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Operation(self):
+        r"""操作类型，包含以下几种：<li>Stop：停止；</li><li>Resume：启动；</li><li>Delete：删除。</li>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ServiceId = params.get("ServiceId")
+        self._Operation = params.get("Operation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperateInferenceServiceResponse(AbstractModel):
+    r"""OperateInferenceService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Origin(AbstractModel):

@@ -1391,7 +1391,7 @@ class ApmApplicationConfigView(AbstractModel):
         :type ExceptionFilter: str
         :param _ErrorCodeFilter: <p>HTTP 状态码过滤</p>
         :type ErrorCodeFilter: str
-        :param _EventEnable: <p>应用诊断开关（已废弃）</p>
+        :param _EventEnable: <p>应用诊断开关</p>
         :type EventEnable: bool
         :param _UrlConvergenceSwitch: <p>URL 收敛开关 0 关 1 开</p>
         :type UrlConvergenceSwitch: int
@@ -1415,9 +1415,9 @@ class ApmApplicationConfigView(AbstractModel):
         :type SnapshotTimeout: int
         :param _AgentEnable: <p>探针总开关</p>
         :type AgentEnable: bool
-        :param _InstrumentList: <p>组件列表开关（已废弃）</p>
+        :param _InstrumentList: <p>组件列表开关</p>
         :type InstrumentList: list of Instrument
-        :param _TraceSquash: <p>链路压缩开关（已废弃）</p>
+        :param _TraceSquash: <p>链路压缩开关</p>
         :type TraceSquash: bool
         :param _AgentIgnoreOperation: <p>链路过滤配置</p>
         :type AgentIgnoreOperation: str
@@ -1593,7 +1593,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def EventEnable(self):
-        r"""<p>应用诊断开关（已废弃）</p>
+        r"""<p>应用诊断开关</p>
         :rtype: bool
         """
         return self._EventEnable
@@ -1725,7 +1725,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def InstrumentList(self):
-        r"""<p>组件列表开关（已废弃）</p>
+        r"""<p>组件列表开关</p>
         :rtype: list of Instrument
         """
         return self._InstrumentList
@@ -1736,7 +1736,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def TraceSquash(self):
-        r"""<p>链路压缩开关（已废弃）</p>
+        r"""<p>链路压缩开关</p>
         :rtype: bool
         """
         return self._TraceSquash
@@ -4193,6 +4193,8 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @property
     def SpanDailyCounters(self):
+        warnings.warn("parameter `SpanDailyCounters` is deprecated", DeprecationWarning) 
+
         r"""业务系统上报额度值，默认赋值为0表示不限制上报额度，已废弃
         :rtype: int
         """
@@ -4200,6 +4202,8 @@ class CreateApmInstanceRequest(AbstractModel):
 
     @SpanDailyCounters.setter
     def SpanDailyCounters(self, SpanDailyCounters):
+        warnings.warn("parameter `SpanDailyCounters` is deprecated", DeprecationWarning) 
+
         self._SpanDailyCounters = SpanDailyCounters
 
     @property
@@ -4954,6 +4958,8 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @property
     def ReportMethod(self):
+        warnings.warn("parameter `ReportMethod` is deprecated", DeprecationWarning) 
+
         r"""上报方式，已弃用
         :rtype: str
         """
@@ -4961,6 +4967,8 @@ class DescribeApmAgentRequest(AbstractModel):
 
     @ReportMethod.setter
     def ReportMethod(self, ReportMethod):
+        warnings.warn("parameter `ReportMethod` is deprecated", DeprecationWarning) 
+
         self._ReportMethod = ReportMethod
 
 
@@ -8722,7 +8730,7 @@ class DescribeTopologyNewResponse(AbstractModel):
         :type Nodes: list of TopologyNode
         :param _Edges: <p>边集合</p>
         :type Edges: list of TopologyEdgeNew
-        :param _TopologyModifyFlag: <p>拓扑图是否有修改</p>
+        :param _TopologyModifyFlag: <p>拓扑图是否有修改</p><p>枚举值：</p><ul><li>0： 拓扑图未修改</li><li>1： 拓扑图已修改</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopologyModifyFlag: int
         :param _Selectors: <p>节点数量</p>
@@ -8766,7 +8774,7 @@ class DescribeTopologyNewResponse(AbstractModel):
 
     @property
     def TopologyModifyFlag(self):
-        r"""<p>拓扑图是否有修改</p>
+        r"""<p>拓扑图是否有修改</p><p>枚举值：</p><ul><li>0： 拓扑图未修改</li><li>1： 拓扑图已修改</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11360,11 +11368,11 @@ class ModifyApmServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceID: 应用ID
+        :param _ServiceID: <p>应用ID</p>
         :type ServiceID: str
-        :param _ServiceDescription: 应用描述
+        :param _ServiceDescription: <p>应用描述</p>
         :type ServiceDescription: str
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of ApmTag
         """
         self._ServiceID = None
@@ -11373,7 +11381,7 @@ class ModifyApmServiceRequest(AbstractModel):
 
     @property
     def ServiceID(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._ServiceID
@@ -11384,7 +11392,7 @@ class ModifyApmServiceRequest(AbstractModel):
 
     @property
     def ServiceDescription(self):
-        r"""应用描述
+        r"""<p>应用描述</p>
         :rtype: str
         """
         return self._ServiceDescription
@@ -11395,7 +11403,7 @@ class ModifyApmServiceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of ApmTag
         """
         return self._Tags

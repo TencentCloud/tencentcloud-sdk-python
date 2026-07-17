@@ -525,6 +525,52 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInferenceAPIToken(self, request):
+        r"""创建推理 API Token，用于访问推理服务时进行鉴权，Token 内容仅在创建时返回一次，每个站点最多创建 100 个。
+
+        :param request: Request instance for CreateInferenceAPIToken.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateInferenceAPITokenRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateInferenceAPITokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInferenceAPIToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInferenceAPITokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateInferenceService(self, request):
+        r"""创建推理服务，支持设置服务名称、监听端口、容器镜像配置和资源配置，创建成功后提供推理访问地址。
+
+        :param request: Request instance for CreateInferenceService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInferenceServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateJustInTimeTranscodeTemplate(self, request):
         r"""即时转码已经提供了预置转码模板，满足大部分的需求。如果有个性化的转码需求，可以通过本接口创建自定义的转码模板，最多可创建100个自定义转码模板。
         为了确保即时转码效果的一致性，避免因 EO 缓存或 M3U8 分片处理过程中的模板变更导致视频输出异常，模板在创建后不可进行修改。
@@ -1342,6 +1388,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteFunctionRules", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteFunctionRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteInferenceAPIToken(self, request):
+        r"""删除推理 API Token，删除后该 Token 立即失效，使用其访问推理服务的请求将无法通过鉴权。
+
+        :param request: Request instance for DeleteInferenceAPIToken.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteInferenceAPITokenRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteInferenceAPITokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInferenceAPIToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInferenceAPITokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2402,6 +2471,144 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeIdentifications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIdentificationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceAPITokens(self, request):
+        r"""查询推理 API Token 列表，返回 Token 的 ID、名称、内容和创建时间，支持分页查询。
+
+        :param request: Request instance for DescribeInferenceAPITokens.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceAPITokensRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceAPITokensResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceAPITokens", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceAPITokensResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceHardwareSpecifications(self, request):
+        r"""查询推理硬件规格列表，返回各规格的 CPU、内存、GPU 和显存等配置，创建服务时可从中选择所需规格。
+
+        :param request: Request instance for DescribeInferenceHardwareSpecifications.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceHardwareSpecificationsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceHardwareSpecificationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceHardwareSpecifications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceHardwareSpecificationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceServiceDeploymentLogs(self, request):
+        r"""查询推理服务指定一次部署的日志，返回日志内容和产生时间，支持按时间范围检索、分页和排序。
+
+        :param request: Request instance for DescribeInferenceServiceDeploymentLogs.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentLogsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceServiceDeploymentLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceServiceDeploymentLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceServiceDeploymentRecords(self, request):
+        r"""查询推理服务部署历史列表，返回每次部署的操作类型、状态、耗时、配置快照和是否为当前生效配置，支持分页和排序。
+
+        :param request: Request instance for DescribeInferenceServiceDeploymentRecords.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentRecordsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceDeploymentRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceServiceDeploymentRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceServiceDeploymentRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceServiceMonitorData(self, request):
+        r"""查询推理服务监控数据，支持 CPU、内存、GPU、显存使用率和实例数量等指标，可指定时间范围和聚合粒度，最多查询最近 30 天的数据。
+
+        :param request: Request instance for DescribeInferenceServiceMonitorData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceMonitorDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServiceMonitorDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceServiceMonitorData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceServiceMonitorDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceServices(self, request):
+        r"""查询推理服务列表，支持按服务名称、服务 ID、状态过滤，返回服务的配置、运行状态、实例数和推理访问地址等信息。
+
+        :param request: Request instance for DescribeInferenceServices.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServicesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4307,6 +4514,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInferenceService(self, request):
+        r"""修改推理服务，支持更新监听端口、请求路径、容器镜像、资源配置和描述信息，仅传入的参数会被修改，未传入的参数保持不变。
+
+        :param request: Request instance for ModifyInferenceService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInferenceServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyL4Proxy(self, request):
         r"""用于修改四层代理实例的配置。
 
@@ -4990,6 +5220,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyZoneWorkMode", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyZoneWorkModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OperateInferenceService(self, request):
+        r"""操作推理服务，支持停止、启动和删除推理服务，删除后资源不可恢复。
+
+        :param request: Request instance for OperateInferenceService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.OperateInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OperateInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OperateInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OperateInferenceServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

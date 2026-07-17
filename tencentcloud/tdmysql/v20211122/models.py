@@ -3393,6 +3393,155 @@ class CreateUsersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DBEngineInfo(AbstractModel):
+    r"""数据库引擎信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>引擎类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Version: <p>引擎版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _Name: <p>引擎名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>引擎描述</p>
+        :type Description: str
+        :param _New: <p>是否最新版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type New: bool
+        :param _SQLMode: <p>支持的兼容的模式，以,分隔</p>
+        :type SQLMode: list of str
+        :param _IsSupportParamTemplate: <p>是否支持参数模板</p>
+        :type IsSupportParamTemplate: bool
+        :param _IsSupportServerless: <p>是否支持Serverless模式</p>
+        :type IsSupportServerless: bool
+        """
+        self._Type = None
+        self._Version = None
+        self._Name = None
+        self._Description = None
+        self._New = None
+        self._SQLMode = None
+        self._IsSupportParamTemplate = None
+        self._IsSupportServerless = None
+
+    @property
+    def Type(self):
+        r"""<p>引擎类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Version(self):
+        r"""<p>引擎版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Name(self):
+        r"""<p>引擎名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>引擎描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def New(self):
+        r"""<p>是否最新版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._New
+
+    @New.setter
+    def New(self, New):
+        self._New = New
+
+    @property
+    def SQLMode(self):
+        r"""<p>支持的兼容的模式，以,分隔</p>
+        :rtype: list of str
+        """
+        return self._SQLMode
+
+    @SQLMode.setter
+    def SQLMode(self, SQLMode):
+        self._SQLMode = SQLMode
+
+    @property
+    def IsSupportParamTemplate(self):
+        r"""<p>是否支持参数模板</p>
+        :rtype: bool
+        """
+        return self._IsSupportParamTemplate
+
+    @IsSupportParamTemplate.setter
+    def IsSupportParamTemplate(self, IsSupportParamTemplate):
+        self._IsSupportParamTemplate = IsSupportParamTemplate
+
+    @property
+    def IsSupportServerless(self):
+        r"""<p>是否支持Serverless模式</p>
+        :rtype: bool
+        """
+        return self._IsSupportServerless
+
+    @IsSupportServerless.setter
+    def IsSupportServerless(self, IsSupportServerless):
+        self._IsSupportServerless = IsSupportServerless
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Version = params.get("Version")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._New = params.get("New")
+        self._SQLMode = params.get("SQLMode")
+        self._IsSupportParamTemplate = params.get("IsSupportParamTemplate")
+        self._IsSupportServerless = params.get("IsSupportServerless")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DBParamValue(AbstractModel):
     r"""云数据库参数信息。
 
@@ -4052,6 +4201,75 @@ class DeleteUsersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBEnginesRequest(AbstractModel):
+    r"""DescribeDBEngines请求参数结构体
+
+    """
+
+
+class DescribeDBEnginesResponse(AbstractModel):
+    r"""DescribeDBEngines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: items总数
+        :type TotalCount: int
+        :param _Items: DB引擎信息
+        :type Items: list of DBEngineInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""items总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""DB引擎信息
+        :rtype: list of DBEngineInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DBEngineInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 

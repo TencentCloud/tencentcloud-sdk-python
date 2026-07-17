@@ -506,17 +506,20 @@ class AddAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 需要添加的访问控制规则列表
+        :param _Rules: <p>需要添加的访问控制规则列表</p>
         :type Rules: list of CreateRuleItem
-        :param _From: 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _From: <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
         :type From: str
         """
         self._Rules = None
+        self._CfwAiAgentOperationSource = None
         self._From = None
 
     @property
     def Rules(self):
-        r"""需要添加的访问控制规则列表
+        r"""<p>需要添加的访问控制规则列表</p>
         :rtype: list of CreateRuleItem
         """
         return self._Rules
@@ -526,8 +529,19 @@ class AddAclRuleRequest(AbstractModel):
         self._Rules = Rules
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def From(self):
-        r"""添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+        r"""<p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
         :rtype: str
         """
         return self._From
@@ -544,6 +558,7 @@ class AddAclRuleRequest(AbstractModel):
                 obj = CreateRuleItem()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._From = params.get("From")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -562,7 +577,7 @@ class AddAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 创建成功后返回新策略ID列表
+        :param _RuleUuid: <p>创建成功后返回新策略ID列表</p>
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -572,7 +587,7 @@ class AddAclRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""创建成功后返回新策略ID列表
+        r"""<p>创建成功后返回新策略ID列表</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -607,6 +622,8 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
         r"""
         :param _Data: <p>创建规则数据</p>
         :type Data: list of SecurityGroupRule
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
         :param _Type: <p>添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后</p>
         :type Type: int
         :param _ClientToken: <p>保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。</p>
@@ -619,6 +636,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
         :type IsUseId: int
         """
         self._Data = None
+        self._CfwAiAgentOperationSource = None
         self._Type = None
         self._ClientToken = None
         self._IsDelay = None
@@ -635,6 +653,17 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
 
     @property
     def Type(self):
@@ -699,6 +728,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
                 obj = SecurityGroupRule()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._Type = params.get("Type")
         self._ClientToken = params.get("ClientToken")
         self._IsDelay = params.get("IsDelay")
@@ -784,17 +814,20 @@ class AddNatAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 需要添加的nat访问控制规则列表
+        :param _Rules: <p>需要添加的nat访问控制规则列表</p>
         :type Rules: list of CreateNatRuleItem
-        :param _From: 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _From: <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
         :type From: str
         """
         self._Rules = None
+        self._CfwAiAgentOperationSource = None
         self._From = None
 
     @property
     def Rules(self):
-        r"""需要添加的nat访问控制规则列表
+        r"""<p>需要添加的nat访问控制规则列表</p>
         :rtype: list of CreateNatRuleItem
         """
         return self._Rules
@@ -804,8 +837,19 @@ class AddNatAcRuleRequest(AbstractModel):
         self._Rules = Rules
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def From(self):
-        r"""添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+        r"""<p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
         :rtype: str
         """
         return self._From
@@ -822,6 +866,7 @@ class AddNatAcRuleRequest(AbstractModel):
                 obj = CreateNatRuleItem()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._From = params.get("From")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -840,7 +885,7 @@ class AddNatAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 创建成功后返回新策略ID列表
+        :param _RuleUuid: <p>创建成功后返回新策略ID列表</p>
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -850,7 +895,7 @@ class AddNatAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""创建成功后返回新策略ID列表
+        r"""<p>创建成功后返回新策略ID列表</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -883,17 +928,20 @@ class AddVpcAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 需要添加的vpc内网间规则列表
+        :param _Rules: <p>需要添加的vpc内网间规则列表</p>
         :type Rules: list of VpcRuleItem
-        :param _From: 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _From: <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
         :type From: str
         """
         self._Rules = None
+        self._CfwAiAgentOperationSource = None
         self._From = None
 
     @property
     def Rules(self):
-        r"""需要添加的vpc内网间规则列表
+        r"""<p>需要添加的vpc内网间规则列表</p>
         :rtype: list of VpcRuleItem
         """
         return self._Rules
@@ -903,8 +951,19 @@ class AddVpcAcRuleRequest(AbstractModel):
         self._Rules = Rules
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def From(self):
-        r"""添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+        r"""<p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
         :rtype: str
         """
         return self._From
@@ -921,6 +980,7 @@ class AddVpcAcRuleRequest(AbstractModel):
                 obj = VpcRuleItem()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._From = params.get("From")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -939,7 +999,7 @@ class AddVpcAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuids: 创建成功后返回新策略ID列表
+        :param _RuleUuids: <p>创建成功后返回新策略ID列表</p>
         :type RuleUuids: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -949,7 +1009,7 @@ class AddVpcAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuids(self):
-        r"""创建成功后返回新策略ID列表
+        r"""<p>创建成功后返回新策略ID列表</p>
         :rtype: list of int
         """
         return self._RuleUuids
@@ -2390,6 +2450,78 @@ class CfwNatDnatRule(AbstractModel):
         self._PrivateIpAddress = params.get("PrivateIpAddress")
         self._PrivatePort = params.get("PrivatePort")
         self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CfwStatusMonitorFilter(AbstractModel):
+    r"""状态监控过滤条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>过滤字段名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Values: <p>过滤值列表，最多 10 个。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        :param _OperatorType: <p>操作符类型，可选；仅支持后端允许的类型。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorType: int
+        """
+        self._Name = None
+        self._Values = None
+        self._OperatorType = None
+
+    @property
+    def Name(self):
+        r"""<p>过滤字段名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""<p>过滤值列表，最多 10 个。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def OperatorType(self):
+        r"""<p>操作符类型，可选；仅支持后端允许的类型。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OperatorType
+
+    @OperatorType.setter
+    def OperatorType(self, OperatorType):
+        self._OperatorType = OperatorType
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._OperatorType = params.get("OperatorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3880,21 +4012,23 @@ class CreateAlertCenterOmitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HandleIdList: 处置对象,ID列表，  IdLists和IpList二选一
+        :param _HandleIdList: <p>处置对象,ID列表，  IdLists和IpList二选一</p>
         :type HandleIdList: list of str
-        :param _TableType: 忽略数据来源：
-AlertTable 告警中心  InterceptionTable拦截列表
+        :param _TableType: <p>忽略数据来源：<br>AlertTable 告警中心  InterceptionTable拦截列表</p>
         :type TableType: str
-        :param _HandleEventIdList: 处置对象,事件ID列表
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _HandleEventIdList: <p>处置对象,事件ID列表</p>
         :type HandleEventIdList: list of str
         """
         self._HandleIdList = None
         self._TableType = None
+        self._CfwAiAgentOperationSource = None
         self._HandleEventIdList = None
 
     @property
     def HandleIdList(self):
-        r"""处置对象,ID列表，  IdLists和IpList二选一
+        r"""<p>处置对象,ID列表，  IdLists和IpList二选一</p>
         :rtype: list of str
         """
         return self._HandleIdList
@@ -3905,8 +4039,7 @@ AlertTable 告警中心  InterceptionTable拦截列表
 
     @property
     def TableType(self):
-        r"""忽略数据来源：
-AlertTable 告警中心  InterceptionTable拦截列表
+        r"""<p>忽略数据来源：<br>AlertTable 告警中心  InterceptionTable拦截列表</p>
         :rtype: str
         """
         return self._TableType
@@ -3916,8 +4049,19 @@ AlertTable 告警中心  InterceptionTable拦截列表
         self._TableType = TableType
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def HandleEventIdList(self):
-        r"""处置对象,事件ID列表
+        r"""<p>处置对象,事件ID列表</p>
         :rtype: list of str
         """
         return self._HandleEventIdList
@@ -3930,6 +4074,7 @@ AlertTable 告警中心  InterceptionTable拦截列表
     def _deserialize(self, params):
         self._HandleIdList = params.get("HandleIdList")
         self._TableType = params.get("TableType")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._HandleEventIdList = params.get("HandleEventIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3948,19 +4093,11 @@ class CreateAlertCenterOmitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnCode: 返回状态码：
-0 成功
-非0 失败
+        :param _ReturnCode: <p>返回状态码：<br>0 成功<br>非0 失败</p>
         :type ReturnCode: int
-        :param _ReturnMsg: 返回信息：
-success 成功
-其他
+        :param _ReturnMsg: <p>返回信息：<br>success 成功<br>其他</p>
         :type ReturnMsg: str
-        :param _Status: 处置状态码：
-0  处置成功
--1 通用错误，不用处理
--3 表示重复，需重新刷新列表
-其他
+        :param _Status: <p>处置状态码：<br>0  处置成功<br>-1 通用错误，不用处理<br>-3 表示重复，需重新刷新列表<br>其他</p>
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3972,9 +4109,7 @@ success 成功
 
     @property
     def ReturnCode(self):
-        r"""返回状态码：
-0 成功
-非0 失败
+        r"""<p>返回状态码：<br>0 成功<br>非0 失败</p>
         :rtype: int
         """
         return self._ReturnCode
@@ -3985,9 +4120,7 @@ success 成功
 
     @property
     def ReturnMsg(self):
-        r"""返回信息：
-success 成功
-其他
+        r"""<p>返回信息：<br>success 成功<br>其他</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -3998,11 +4131,7 @@ success 成功
 
     @property
     def Status(self):
-        r"""处置状态码：
-0  处置成功
--1 通用错误，不用处理
--3 表示重复，需重新刷新列表
-其他
+        r"""<p>处置状态码：<br>0  处置成功<br>-1 通用错误，不用处理<br>-3 表示重复，需重新刷新列表<br>其他</p>
         :rtype: int
         """
         return self._Status
@@ -4413,20 +4542,23 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 非自定义类型规则列表
+        :param _Rules: <p>非自定义类型规则列表</p>
         :type Rules: list of BanAndAllowRule
-        :param _RuleType: RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+        :param _RuleType: <p>RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则</p>
         :type RuleType: int
-        :param _CoverDuplicate: 删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _CoverDuplicate: <p>删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据</p>
         :type CoverDuplicate: int
         """
         self._Rules = None
         self._RuleType = None
+        self._CfwAiAgentOperationSource = None
         self._CoverDuplicate = None
 
     @property
     def Rules(self):
-        r"""非自定义类型规则列表
+        r"""<p>非自定义类型规则列表</p>
         :rtype: list of BanAndAllowRule
         """
         return self._Rules
@@ -4437,7 +4569,7 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
 
     @property
     def RuleType(self):
-        r"""RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+        r"""<p>RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则</p>
         :rtype: int
         """
         return self._RuleType
@@ -4447,8 +4579,19 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
         self._RuleType = RuleType
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def CoverDuplicate(self):
-        r"""删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据
+        r"""<p>删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据</p>
         :rtype: int
         """
         return self._CoverDuplicate
@@ -4466,6 +4609,7 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._RuleType = params.get("RuleType")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._CoverDuplicate = params.get("CoverDuplicate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6663,24 +6807,26 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeleteAll: 是否删除全部
+        :param _DeleteAll: <p>是否删除全部</p>
         :type DeleteAll: int
-        :param _ShowType: blocklist 封禁列表 whitelist 白名单列表
+        :param _ShowType: <p>blocklist 封禁列表 whitelist 白名单列表</p>
         :type ShowType: str
-        :param _Rules: 规则列表
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _Rules: <p>规则列表</p>
         :type Rules: list of BanAndAllowRuleDel
-        :param _RuleType: 封禁：1，放通：100，
-主要用于全部删除时区分列表类型
+        :param _RuleType: <p>封禁：1，放通：100，<br>主要用于全部删除时区分列表类型</p>
         :type RuleType: int
         """
         self._DeleteAll = None
         self._ShowType = None
+        self._CfwAiAgentOperationSource = None
         self._Rules = None
         self._RuleType = None
 
     @property
     def DeleteAll(self):
-        r"""是否删除全部
+        r"""<p>是否删除全部</p>
         :rtype: int
         """
         return self._DeleteAll
@@ -6691,7 +6837,7 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
 
     @property
     def ShowType(self):
-        r"""blocklist 封禁列表 whitelist 白名单列表
+        r"""<p>blocklist 封禁列表 whitelist 白名单列表</p>
         :rtype: str
         """
         return self._ShowType
@@ -6701,8 +6847,19 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
         self._ShowType = ShowType
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def Rules(self):
-        r"""规则列表
+        r"""<p>规则列表</p>
         :rtype: list of BanAndAllowRuleDel
         """
         return self._Rules
@@ -6713,8 +6870,7 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
 
     @property
     def RuleType(self):
-        r"""封禁：1，放通：100，
-主要用于全部删除时区分列表类型
+        r"""<p>封禁：1，放通：100，<br>主要用于全部删除时区分列表类型</p>
         :rtype: int
         """
         return self._RuleType
@@ -6727,6 +6883,7 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
     def _deserialize(self, params):
         self._DeleteAll = params.get("DeleteAll")
         self._ShowType = params.get("ShowType")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         if params.get("Rules") is not None:
             self._Rules = []
             for item in params.get("Rules"):
@@ -10183,6 +10340,348 @@ class DescribeCcnVpcFwSwitchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCfwAlertsRequest(AbstractModel):
+    r"""DescribeCfwAlerts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>单页返回告警数。可选，默认 10，最大 50。</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移。可选，默认 0。</p>
+        :type Offset: int
+        """
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        r"""<p>单页返回告警数。可选，默认 10，最大 50。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移。可选，默认 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfwAlertsResponse(AbstractModel):
+    r"""DescribeCfwAlerts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwAnalysisDataRequest(AbstractModel):
+    r"""DescribeCfwAnalysisData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scenario: <p>分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。</p>
+        :type Scenario: str
+        :param _StartTime: <p>查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。</p>
+        :type EndTime: str
+        :param _ObjectType: <p>分析对象类型。可选，默认 user；user 表示租户全局，asset 表示单个资产，vpc 表示 VPC，domain 表示域名。</p>
+        :type ObjectType: str
+        :param _ObjectId: <p>分析对象标识。ObjectType 为 asset、vpc 或 domain 时按需传入，可填写 IP、实例 ID、VPC ID 或域名。</p>
+        :type ObjectId: str
+        :param _Target: <p>排障目标。可选，主要用于 access_troubleshoot 场景，可填写 IP 或域名。</p>
+        :type Target: str
+        :param _SkipSections: <p>需要跳过的分析段名称列表。可选；不传时执行该场景全部分析段。</p>
+        :type SkipSections: list of str
+        """
+        self._Scenario = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ObjectType = None
+        self._ObjectId = None
+        self._Target = None
+        self._SkipSections = None
+
+    @property
+    def Scenario(self):
+        r"""<p>分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。</p>
+        :rtype: str
+        """
+        return self._Scenario
+
+    @Scenario.setter
+    def Scenario(self, Scenario):
+        self._Scenario = Scenario
+
+    @property
+    def StartTime(self):
+        r"""<p>查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ObjectType(self):
+        r"""<p>分析对象类型。可选，默认 user；user 表示租户全局，asset 表示单个资产，vpc 表示 VPC，domain 表示域名。</p>
+        :rtype: str
+        """
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def ObjectId(self):
+        r"""<p>分析对象标识。ObjectType 为 asset、vpc 或 domain 时按需传入，可填写 IP、实例 ID、VPC ID 或域名。</p>
+        :rtype: str
+        """
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def Target(self):
+        r"""<p>排障目标。可选，主要用于 access_troubleshoot 场景，可填写 IP 或域名。</p>
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def SkipSections(self):
+        r"""<p>需要跳过的分析段名称列表。可选；不传时执行该场景全部分析段。</p>
+        :rtype: list of str
+        """
+        return self._SkipSections
+
+    @SkipSections.setter
+    def SkipSections(self, SkipSections):
+        self._SkipSections = SkipSections
+
+
+    def _deserialize(self, params):
+        self._Scenario = params.get("Scenario")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ObjectType = params.get("ObjectType")
+        self._ObjectId = params.get("ObjectId")
+        self._Target = params.get("Target")
+        self._SkipSections = params.get("SkipSections")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfwAnalysisDataResponse(AbstractModel):
+    r"""DescribeCfwAnalysisData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwAssetsRequest(AbstractModel):
+    r"""DescribeCfwAssets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 最大返回资产数。可选，默认 100；取值 1 至 1000。
+        :type Limit: int
+        """
+        self._Limit = None
+
+    @property
+    def Limit(self):
+        r"""最大返回资产数。可选，默认 100；取值 1 至 1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfwAssetsResponse(AbstractModel):
+    r"""DescribeCfwAssets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCfwEipsRequest(AbstractModel):
     r"""DescribeCfwEips请求参数结构体
 
@@ -10365,6 +10864,875 @@ class DescribeCfwInsStatusResponse(AbstractModel):
                 obj._deserialize(item)
                 self._CfwInsStatus.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwLogsRequest(AbstractModel):
+    r"""DescribeCfwLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogType: <p>日志类型。首次查询必填；使用 NextToken 续查时不能传。枚举值包括 cfw_netflow_border、cfw_netflow_vpc、cfw_netflow_nat、cfw_netflow_nta、cfw_netflow_dns、cfw_rule_threatinfo、cfw_rule_acl、cfw_rule_vpc_acl、cfw_rule_nat_acl、cfw_ndr_subject_risk、cfw_ndr_dataleak_entry、cfw_ndr_ai_audit、cfw_feature_collect、cfw_behavior_collect、operate_log_all。</p>
+        :type LogType: str
+        :param _Query: <p>CLS CQL 查询语句。默认 *；使用 NextToken 续查时不能传。</p>
+        :type Query: str
+        :param _StartTime: <p>查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。</p>
+        :type StartTime: str
+        :param _TimeRange: <p>查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。</p>
+        :type TimeRange: str
+        :param _Limit: <p>单页返回条数。默认 100，最大 1000；使用 NextToken 续查时不能传。</p>
+        :type Limit: int
+        :param _NextToken: <p>上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改、过期或租户不匹配会被拒绝。</p>
+        :type NextToken: str
+        """
+        self._LogType = None
+        self._Query = None
+        self._StartTime = None
+        self._TimeRange = None
+        self._Limit = None
+        self._NextToken = None
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型。首次查询必填；使用 NextToken 续查时不能传。枚举值包括 cfw_netflow_border、cfw_netflow_vpc、cfw_netflow_nat、cfw_netflow_nta、cfw_netflow_dns、cfw_rule_threatinfo、cfw_rule_acl、cfw_rule_vpc_acl、cfw_rule_nat_acl、cfw_ndr_subject_risk、cfw_ndr_dataleak_entry、cfw_ndr_ai_audit、cfw_feature_collect、cfw_behavior_collect、operate_log_all。</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Query(self):
+        r"""<p>CLS CQL 查询语句。默认 *；使用 NextToken 续查时不能传。</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def StartTime(self):
+        r"""<p>查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def TimeRange(self):
+        r"""<p>查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。</p>
+        :rtype: str
+        """
+        return self._TimeRange
+
+    @TimeRange.setter
+    def TimeRange(self, TimeRange):
+        self._TimeRange = TimeRange
+
+    @property
+    def Limit(self):
+        r"""<p>单页返回条数。默认 100，最大 1000；使用 NextToken 续查时不能传。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NextToken(self):
+        r"""<p>上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改、过期或租户不匹配会被拒绝。</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+
+    def _deserialize(self, params):
+        self._LogType = params.get("LogType")
+        self._Query = params.get("Query")
+        self._StartTime = params.get("StartTime")
+        self._TimeRange = params.get("TimeRange")
+        self._Limit = params.get("Limit")
+        self._NextToken = params.get("NextToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfwLogsResponse(AbstractModel):
+    r"""DescribeCfwLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwRiskOverviewRequest(AbstractModel):
+    r"""DescribeCfwRiskOverview请求参数结构体
+
+    """
+
+
+class DescribeCfwRiskOverviewResponse(AbstractModel):
+    r"""DescribeCfwRiskOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwRuleOptimizationRequest(AbstractModel):
+    r"""DescribeCfwRuleOptimization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdleDays: 长期零命中规则阈值天数。可选，必须为正整数，默认 180。
+        :type IdleDays: int
+        :param _IpAggMin: 单 IP 离散过多聚合建议的最小数量。可选，最小为 2，默认 10。
+        :type IpAggMin: int
+        :param _IocSample: 可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，必须为正整数，默认 50。
+        :type IocSample: int
+        """
+        self._IdleDays = None
+        self._IpAggMin = None
+        self._IocSample = None
+
+    @property
+    def IdleDays(self):
+        r"""长期零命中规则阈值天数。可选，必须为正整数，默认 180。
+        :rtype: int
+        """
+        return self._IdleDays
+
+    @IdleDays.setter
+    def IdleDays(self, IdleDays):
+        self._IdleDays = IdleDays
+
+    @property
+    def IpAggMin(self):
+        r"""单 IP 离散过多聚合建议的最小数量。可选，最小为 2，默认 10。
+        :rtype: int
+        """
+        return self._IpAggMin
+
+    @IpAggMin.setter
+    def IpAggMin(self, IpAggMin):
+        self._IpAggMin = IpAggMin
+
+    @property
+    def IocSample(self):
+        r"""可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，必须为正整数，默认 50。
+        :rtype: int
+        """
+        return self._IocSample
+
+    @IocSample.setter
+    def IocSample(self, IocSample):
+        self._IocSample = IocSample
+
+
+    def _deserialize(self, params):
+        self._IdleDays = params.get("IdleDays")
+        self._IpAggMin = params.get("IpAggMin")
+        self._IocSample = params.get("IocSample")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfwRuleOptimizationResponse(AbstractModel):
+    r"""DescribeCfwRuleOptimization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。示例仅展示代表性字段；完整结果还包含 rule_type_name、rule_total、rule_active、rule_skipped_geo_or_cloud、dimension_skipped、thresholds 和 generated_at，finding 还包含 risk_level、affected_rule_uuids、affected_rule_seqs、recommendation_action、reason 和 evidence。结果过大时返回摘要，不返回 findings，并增加 truncated 和 truncated_reason。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。示例仅展示代表性字段；完整结果还包含 rule_type_name、rule_total、rule_active、rule_skipped_geo_or_cloud、dimension_skipped、thresholds 和 generated_at，finding 还包含 risk_level、affected_rule_uuids、affected_rule_seqs、recommendation_action、reason 和 evidence。结果过大时返回摘要，不返回 findings，并增加 truncated 和 truncated_reason。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwRulesRequest(AbstractModel):
+    r"""DescribeCfwRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleType: <p>规则域。必填。枚举：border 互联网边界；nat NAT 边界；vpc VPC 间；enterprise_sg 企业安全组；intrusion_prevention 入侵防御。RuleType=intrusion_prevention 时还必须传 ListType。</p>
+        :type RuleType: str
+        :param _ListType: <p>入侵防御列表类型。仅 RuleType=intrusion_prevention 时使用并必填。blocklist 表示封禁列表，whitelist 表示白名单策略，isolate 表示隔离列表。</p>
+        :type ListType: str
+        :param _Direction: <p>访问方向过滤。可选。0 表示出站，1 表示入站；不传则不过滤。RuleType=intrusion_prevention 时不支持。</p>
+        :type Direction: int
+        :param _RuleAction: <p>规则动作过滤。可选。0 表示观察，1 表示阻断，2 表示放行；不传则不过滤。</p>
+        :type RuleAction: int
+        :param _RuleId: <p>精确规则 ID 过滤。可选。用于按数值规则标识定位单条规则。</p>
+        :type RuleId: int
+        :param _Limit: <p>单页返回规则数。可选，默认 100，最大 1000。</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移。可选，默认 0。</p>
+        :type Offset: int
+        """
+        self._RuleType = None
+        self._ListType = None
+        self._Direction = None
+        self._RuleAction = None
+        self._RuleId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def RuleType(self):
+        r"""<p>规则域。必填。枚举：border 互联网边界；nat NAT 边界；vpc VPC 间；enterprise_sg 企业安全组；intrusion_prevention 入侵防御。RuleType=intrusion_prevention 时还必须传 ListType。</p>
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def ListType(self):
+        r"""<p>入侵防御列表类型。仅 RuleType=intrusion_prevention 时使用并必填。blocklist 表示封禁列表，whitelist 表示白名单策略，isolate 表示隔离列表。</p>
+        :rtype: str
+        """
+        return self._ListType
+
+    @ListType.setter
+    def ListType(self, ListType):
+        self._ListType = ListType
+
+    @property
+    def Direction(self):
+        r"""<p>访问方向过滤。可选。0 表示出站，1 表示入站；不传则不过滤。RuleType=intrusion_prevention 时不支持。</p>
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def RuleAction(self):
+        r"""<p>规则动作过滤。可选。0 表示观察，1 表示阻断，2 表示放行；不传则不过滤。</p>
+        :rtype: int
+        """
+        return self._RuleAction
+
+    @RuleAction.setter
+    def RuleAction(self, RuleAction):
+        self._RuleAction = RuleAction
+
+    @property
+    def RuleId(self):
+        r"""<p>精确规则 ID 过滤。可选。用于按数值规则标识定位单条规则。</p>
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Limit(self):
+        r"""<p>单页返回规则数。可选，默认 100，最大 1000。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移。可选，默认 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        self._ListType = params.get("ListType")
+        self._Direction = params.get("Direction")
+        self._RuleAction = params.get("RuleAction")
+        self._RuleId = params.get("RuleId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfwRulesResponse(AbstractModel):
+    r"""DescribeCfwRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwStatusMonitorRequest(AbstractModel):
+    r"""DescribeCfwStatusMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Op: <p>操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。</p>
+        :type Op: str
+        :param _FirewallType: <p>防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。</p>
+        :type FirewallType: str
+        :param _SelectionId: <p>二级下拉选项 ID。fetch_scene 按需传入；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。</p>
+        :type SelectionId: str
+        :param _SelectionName: <p>二级下拉显示名称。可替代 SelectionId 按名称匹配。</p>
+        :type SelectionName: str
+        :param _SelectionInstanceId: <p>引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景。</p>
+        :type SelectionInstanceId: str
+        :param _Metric: <p>指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。</p>
+        :type Metric: str
+        :param _Perspective: <p>指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。</p>
+        :type Perspective: str
+        :param _IpScope: <p>NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用。</p>
+        :type IpScope: str
+        :param _TimePreset: <p>预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。</p>
+        :type TimePreset: str
+        :param _StartTime: <p>自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。</p>
+        :type StartTime: str
+        :param _EndTime: <p>自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。</p>
+        :type EndTime: str
+        :param _Page: <p>页码，从 1 开始。默认 1；fetch_scene 列表视角使用。</p>
+        :type Page: int
+        :param _Limit: <p>每页条数。默认 10，最大 100；fetch_scene 列表视角使用。</p>
+        :type Limit: int
+        :param _OverviewOnly: <p>是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。</p>
+        :type OverviewOnly: bool
+        :param _Offset: <p>原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；必须大于等于 0 且不超过安全上限。</p>
+        :type Offset: int
+        :param _SortBy: <p>排序字段。可选，只接受当前场景后端允许的安全字段。</p>
+        :type SortBy: str
+        :param _SortOrder: <p>排序方向。默认 desc；支持 asc、desc。</p>
+        :type SortOrder: str
+        :param _Filters: <p>过滤条件列表。可选，最多 5 个；是否支持以及字段名以具体 fetch_scene 场景为准。</p>
+        :type Filters: list of CfwStatusMonitorFilter
+        """
+        self._Op = None
+        self._FirewallType = None
+        self._SelectionId = None
+        self._SelectionName = None
+        self._SelectionInstanceId = None
+        self._Metric = None
+        self._Perspective = None
+        self._IpScope = None
+        self._TimePreset = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Page = None
+        self._Limit = None
+        self._OverviewOnly = None
+        self._Offset = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Filters = None
+
+    @property
+    def Op(self):
+        r"""<p>操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。</p>
+        :rtype: str
+        """
+        return self._Op
+
+    @Op.setter
+    def Op(self, Op):
+        self._Op = Op
+
+    @property
+    def FirewallType(self):
+        r"""<p>防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。</p>
+        :rtype: str
+        """
+        return self._FirewallType
+
+    @FirewallType.setter
+    def FirewallType(self, FirewallType):
+        self._FirewallType = FirewallType
+
+    @property
+    def SelectionId(self):
+        r"""<p>二级下拉选项 ID。fetch_scene 按需传入；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。</p>
+        :rtype: str
+        """
+        return self._SelectionId
+
+    @SelectionId.setter
+    def SelectionId(self, SelectionId):
+        self._SelectionId = SelectionId
+
+    @property
+    def SelectionName(self):
+        r"""<p>二级下拉显示名称。可替代 SelectionId 按名称匹配。</p>
+        :rtype: str
+        """
+        return self._SelectionName
+
+    @SelectionName.setter
+    def SelectionName(self, SelectionName):
+        self._SelectionName = SelectionName
+
+    @property
+    def SelectionInstanceId(self):
+        r"""<p>引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景。</p>
+        :rtype: str
+        """
+        return self._SelectionInstanceId
+
+    @SelectionInstanceId.setter
+    def SelectionInstanceId(self, SelectionInstanceId):
+        self._SelectionInstanceId = SelectionInstanceId
+
+    @property
+    def Metric(self):
+        r"""<p>指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。</p>
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Perspective(self):
+        r"""<p>指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。</p>
+        :rtype: str
+        """
+        return self._Perspective
+
+    @Perspective.setter
+    def Perspective(self, Perspective):
+        self._Perspective = Perspective
+
+    @property
+    def IpScope(self):
+        r"""<p>NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用。</p>
+        :rtype: str
+        """
+        return self._IpScope
+
+    @IpScope.setter
+    def IpScope(self, IpScope):
+        self._IpScope = IpScope
+
+    @property
+    def TimePreset(self):
+        r"""<p>预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。</p>
+        :rtype: str
+        """
+        return self._TimePreset
+
+    @TimePreset.setter
+    def TimePreset(self, TimePreset):
+        self._TimePreset = TimePreset
+
+    @property
+    def StartTime(self):
+        r"""<p>自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Page(self):
+        r"""<p>页码，从 1 开始。默认 1；fetch_scene 列表视角使用。</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Limit(self):
+        r"""<p>每页条数。默认 10，最大 100；fetch_scene 列表视角使用。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OverviewOnly(self):
+        r"""<p>是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。</p>
+        :rtype: bool
+        """
+        return self._OverviewOnly
+
+    @OverviewOnly.setter
+    def OverviewOnly(self, OverviewOnly):
+        self._OverviewOnly = OverviewOnly
+
+    @property
+    def Offset(self):
+        r"""<p>原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；必须大于等于 0 且不超过安全上限。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段。可选，只接受当前场景后端允许的安全字段。</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序方向。默认 desc；支持 asc、desc。</p>
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件列表。可选，最多 5 个；是否支持以及字段名以具体 fetch_scene 场景为准。</p>
+        :rtype: list of CfwStatusMonitorFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Op = params.get("Op")
+        self._FirewallType = params.get("FirewallType")
+        self._SelectionId = params.get("SelectionId")
+        self._SelectionName = params.get("SelectionName")
+        self._SelectionInstanceId = params.get("SelectionInstanceId")
+        self._Metric = params.get("Metric")
+        self._Perspective = params.get("Perspective")
+        self._IpScope = params.get("IpScope")
+        self._TimePreset = params.get("TimePreset")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Page = params.get("Page")
+        self._Limit = params.get("Limit")
+        self._OverviewOnly = params.get("OverviewOnly")
+        self._Offset = params.get("Offset")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CfwStatusMonitorFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfwStatusMonitorResponse(AbstractModel):
+    r"""DescribeCfwStatusMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。describe_scene 返回 scene 与 selection.available_options；fetch_scene 返回选中场景的 data 快照。</p>
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。describe_scene 返回 scene 与 selection.available_options；fetch_scene 返回选中场景的 data 快照。</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwSwitchesRequest(AbstractModel):
+    r"""DescribeCfwSwitches请求参数结构体
+
+    """
+
+
+class DescribeCfwSwitchesResponse(AbstractModel):
+    r"""DescribeCfwSwitches返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -21523,14 +22891,17 @@ class ModifyAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 需要编辑的规则数组，基于Uuid唯一id修改该规则
+        :param _Rules: <p>需要编辑的规则数组，基于Uuid唯一id修改该规则</p>
         :type Rules: list of CreateRuleItem
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
         """
         self._Rules = None
+        self._CfwAiAgentOperationSource = None
 
     @property
     def Rules(self):
-        r"""需要编辑的规则数组，基于Uuid唯一id修改该规则
+        r"""<p>需要编辑的规则数组，基于Uuid唯一id修改该规则</p>
         :rtype: list of CreateRuleItem
         """
         return self._Rules
@@ -21538,6 +22909,17 @@ class ModifyAclRuleRequest(AbstractModel):
     @Rules.setter
     def Rules(self, Rules):
         self._Rules = Rules
+
+    @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
 
 
     def _deserialize(self, params):
@@ -21547,6 +22929,7 @@ class ModifyAclRuleRequest(AbstractModel):
                 obj = CreateRuleItem()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21564,7 +22947,7 @@ class ModifyAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 编辑成功后返回新策略ID列表
+        :param _RuleUuid: <p>编辑成功后返回新策略ID列表</p>
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21574,7 +22957,7 @@ class ModifyAclRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""编辑成功后返回新策略ID列表
+        r"""<p>编辑成功后返回新策略ID列表</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -23353,23 +24736,26 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 规则的uuid，可通过查询规则列表获取
+        :param _RuleUuid: <p>规则的uuid，可通过查询规则列表获取</p>
         :type RuleUuid: int
-        :param _ModifyType: 修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态
+        :param _ModifyType: <p>修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态</p>
         :type ModifyType: int
-        :param _Data: 编辑后的企业安全组规则数据；修改规则状态不用填该字段
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _Data: <p>编辑后的企业安全组规则数据；修改规则状态不用填该字段</p>
         :type Data: :class:`tencentcloud.cfw.v20190904.models.SecurityGroupRule`
-        :param _Enable: 0是关闭,1是开启
+        :param _Enable: <p>0是关闭,1是开启</p>
         :type Enable: int
         """
         self._RuleUuid = None
         self._ModifyType = None
+        self._CfwAiAgentOperationSource = None
         self._Data = None
         self._Enable = None
 
     @property
     def RuleUuid(self):
-        r"""规则的uuid，可通过查询规则列表获取
+        r"""<p>规则的uuid，可通过查询规则列表获取</p>
         :rtype: int
         """
         return self._RuleUuid
@@ -23380,7 +24766,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def ModifyType(self):
-        r"""修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态
+        r"""<p>修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态</p>
         :rtype: int
         """
         return self._ModifyType
@@ -23390,8 +24776,19 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
         self._ModifyType = ModifyType
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def Data(self):
-        r"""编辑后的企业安全组规则数据；修改规则状态不用填该字段
+        r"""<p>编辑后的企业安全组规则数据；修改规则状态不用填该字段</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.SecurityGroupRule`
         """
         return self._Data
@@ -23402,7 +24799,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""0是关闭,1是开启
+        r"""<p>0是关闭,1是开启</p>
         :rtype: int
         """
         return self._Enable
@@ -23415,6 +24812,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
     def _deserialize(self, params):
         self._RuleUuid = params.get("RuleUuid")
         self._ModifyType = params.get("ModifyType")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         if params.get("Data") is not None:
             self._Data = SecurityGroupRule()
             self._Data._deserialize(params.get("Data"))
@@ -23436,9 +24834,9 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 状态值，0：编辑成功，非0：编辑失败
+        :param _Status: <p>状态值，0：编辑成功，非0：编辑失败</p>
         :type Status: int
-        :param _NewRuleUuid: 编辑后新生成规则的Id
+        :param _NewRuleUuid: <p>编辑后新生成规则的Id</p>
         :type NewRuleUuid: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23449,7 +24847,7 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态值，0：编辑成功，非0：编辑失败
+        r"""<p>状态值，0：编辑成功，非0：编辑失败</p>
         :rtype: int
         """
         return self._Status
@@ -23460,7 +24858,7 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def NewRuleUuid(self):
-        r"""编辑后新生成规则的Id
+        r"""<p>编辑后新生成规则的Id</p>
         :rtype: int
         """
         return self._NewRuleUuid
@@ -23661,14 +25059,17 @@ class ModifyNatAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 需要编辑的规则数组,基于Uuid唯一id来修改该规则
+        :param _Rules: <p>需要编辑的规则数组,基于Uuid唯一id来修改该规则</p>
         :type Rules: list of CreateNatRuleItem
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
         """
         self._Rules = None
+        self._CfwAiAgentOperationSource = None
 
     @property
     def Rules(self):
-        r"""需要编辑的规则数组,基于Uuid唯一id来修改该规则
+        r"""<p>需要编辑的规则数组,基于Uuid唯一id来修改该规则</p>
         :rtype: list of CreateNatRuleItem
         """
         return self._Rules
@@ -23676,6 +25077,17 @@ class ModifyNatAcRuleRequest(AbstractModel):
     @Rules.setter
     def Rules(self, Rules):
         self._Rules = Rules
+
+    @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
 
 
     def _deserialize(self, params):
@@ -23685,6 +25097,7 @@ class ModifyNatAcRuleRequest(AbstractModel):
                 obj = CreateNatRuleItem()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23702,7 +25115,7 @@ class ModifyNatAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 编辑成功后返回新策略ID列表
+        :param _RuleUuid: <p>编辑成功后返回新策略ID列表</p>
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23712,7 +25125,7 @@ class ModifyNatAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""编辑成功后返回新策略ID列表
+        r"""<p>编辑成功后返回新策略ID列表</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -25170,14 +26583,17 @@ class ModifyVpcAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 需要编辑的规则数组
+        :param _Rules: <p>需要编辑的规则数组</p>
         :type Rules: list of VpcRuleItem
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
         """
         self._Rules = None
+        self._CfwAiAgentOperationSource = None
 
     @property
     def Rules(self):
-        r"""需要编辑的规则数组
+        r"""<p>需要编辑的规则数组</p>
         :rtype: list of VpcRuleItem
         """
         return self._Rules
@@ -25185,6 +26601,17 @@ class ModifyVpcAcRuleRequest(AbstractModel):
     @Rules.setter
     def Rules(self, Rules):
         self._Rules = Rules
+
+    @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
 
 
     def _deserialize(self, params):
@@ -25194,6 +26621,7 @@ class ModifyVpcAcRuleRequest(AbstractModel):
                 obj = VpcRuleItem()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25211,7 +26639,7 @@ class ModifyVpcAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuids: 编辑成功后返回新策略ID列表
+        :param _RuleUuids: <p>编辑成功后返回新策略ID列表</p>
         :type RuleUuids: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25221,7 +26649,7 @@ class ModifyVpcAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuids(self):
-        r"""编辑成功后返回新策略ID列表
+        r"""<p>编辑成功后返回新策略ID列表</p>
         :rtype: list of int
         """
         return self._RuleUuids
@@ -28537,17 +29965,20 @@ class RemoveAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+        :param _RuleUuid: <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
         :type RuleUuid: list of int
-        :param _Direction: 规则方向：1，入站；0，出站
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _Direction: <p>规则方向：1，入站；0，出站</p>
         :type Direction: int
         """
         self._RuleUuid = None
+        self._CfwAiAgentOperationSource = None
         self._Direction = None
 
     @property
     def RuleUuid(self):
-        r"""规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+        r"""<p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -28557,8 +29988,19 @@ class RemoveAclRuleRequest(AbstractModel):
         self._RuleUuid = RuleUuid
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def Direction(self):
-        r"""规则方向：1，入站；0，出站
+        r"""<p>规则方向：1，入站；0，出站</p>
         :rtype: int
         """
         return self._Direction
@@ -28570,6 +30012,7 @@ class RemoveAclRuleRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._RuleUuid = params.get("RuleUuid")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -28588,7 +30031,7 @@ class RemoveAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 删除成功后返回被删除策略的uuid列表
+        :param _RuleUuid: <p>删除成功后返回被删除策略的uuid列表</p>
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28598,7 +30041,7 @@ class RemoveAclRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""删除成功后返回被删除策略的uuid列表
+        r"""<p>删除成功后返回被删除策略的uuid列表</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -28631,17 +30074,20 @@ class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 规则的uuid，可通过查询规则列表获取
+        :param _RuleUuid: <p>规则的uuid，可通过查询规则列表获取</p>
         :type RuleUuid: int
-        :param _RemoveType: 删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可
+        :param _RemoveType: <p>删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可</p>
         :type RemoveType: int
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
         """
         self._RuleUuid = None
         self._RemoveType = None
+        self._CfwAiAgentOperationSource = None
 
     @property
     def RuleUuid(self):
-        r"""规则的uuid，可通过查询规则列表获取
+        r"""<p>规则的uuid，可通过查询规则列表获取</p>
         :rtype: int
         """
         return self._RuleUuid
@@ -28652,7 +30098,7 @@ class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def RemoveType(self):
-        r"""删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可
+        r"""<p>删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可</p>
         :rtype: int
         """
         return self._RemoveType
@@ -28661,10 +30107,22 @@ class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
     def RemoveType(self, RemoveType):
         self._RemoveType = RemoveType
 
+    @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
 
     def _deserialize(self, params):
         self._RuleUuid = params.get("RuleUuid")
         self._RemoveType = params.get("RemoveType")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28682,9 +30140,9 @@ class RemoveEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 删除成功后返回被删除策略的uuid
+        :param _RuleUuid: <p>删除成功后返回被删除策略的uuid</p>
         :type RuleUuid: int
-        :param _Status: 0代表成功，-1代表失败
+        :param _Status: <p>0代表成功，-1代表失败</p>
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28695,7 +30153,7 @@ class RemoveEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""删除成功后返回被删除策略的uuid
+        r"""<p>删除成功后返回被删除策略的uuid</p>
         :rtype: int
         """
         return self._RuleUuid
@@ -28706,7 +30164,7 @@ class RemoveEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""0代表成功，-1代表失败
+        r"""<p>0代表成功，-1代表失败</p>
         :rtype: int
         """
         return self._Status
@@ -28740,17 +30198,20 @@ class RemoveNatAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+        :param _RuleUuid: <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
         :type RuleUuid: list of int
-        :param _Direction: 规则方向：1，入站；0，出站
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _Direction: <p>规则方向：1，入站；0，出站</p>
         :type Direction: int
         """
         self._RuleUuid = None
+        self._CfwAiAgentOperationSource = None
         self._Direction = None
 
     @property
     def RuleUuid(self):
-        r"""规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+        r"""<p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -28760,8 +30221,19 @@ class RemoveNatAcRuleRequest(AbstractModel):
         self._RuleUuid = RuleUuid
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def Direction(self):
-        r"""规则方向：1，入站；0，出站
+        r"""<p>规则方向：1，入站；0，出站</p>
         :rtype: int
         """
         return self._Direction
@@ -28773,6 +30245,7 @@ class RemoveNatAcRuleRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._RuleUuid = params.get("RuleUuid")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -28791,7 +30264,7 @@ class RemoveNatAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 删除成功后返回被删除策略的uuid列表
+        :param _RuleUuid: <p>删除成功后返回被删除策略的uuid列表</p>
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28801,7 +30274,7 @@ class RemoveNatAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""删除成功后返回被删除策略的uuid列表
+        r"""<p>删除成功后返回被删除策略的uuid列表</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -28943,17 +30416,20 @@ class RemoveVpcAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuids: 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+        :param _RuleUuids: <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
         :type RuleUuids: list of int
-        :param _IpVersion: 仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _IpVersion: <p>仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则</p>
         :type IpVersion: int
         """
         self._RuleUuids = None
+        self._CfwAiAgentOperationSource = None
         self._IpVersion = None
 
     @property
     def RuleUuids(self):
-        r"""规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+        r"""<p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
         :rtype: list of int
         """
         return self._RuleUuids
@@ -28963,8 +30439,19 @@ class RemoveVpcAcRuleRequest(AbstractModel):
         self._RuleUuids = RuleUuids
 
     @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
     def IpVersion(self):
-        r"""仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则
+        r"""<p>仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则</p>
         :rtype: int
         """
         return self._IpVersion
@@ -28976,6 +30463,7 @@ class RemoveVpcAcRuleRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._RuleUuids = params.get("RuleUuids")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._IpVersion = params.get("IpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -28994,7 +30482,7 @@ class RemoveVpcAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuids: 删除成功后返回被删除策略的uuid列表
+        :param _RuleUuids: <p>删除成功后返回被删除策略的uuid列表</p>
         :type RuleUuids: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29004,7 +30492,7 @@ class RemoveVpcAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuids(self):
-        r"""删除成功后返回被删除策略的uuid列表
+        r"""<p>删除成功后返回被删除策略的uuid列表</p>
         :rtype: list of int
         """
         return self._RuleUuids

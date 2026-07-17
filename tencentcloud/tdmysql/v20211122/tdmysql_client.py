@@ -187,6 +187,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBEngines(self, request):
+        r"""本接口（DescribeDBEngines）用于获取DB引擎版本列表
+
+        :param request: Request instance for DescribeDBEngines.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBEnginesRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBEnginesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBEngines", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBEnginesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBInstanceDetail(self, request):
         r"""本接口（DescribeDBInstanceDetail）提供查询实例详情功能
 

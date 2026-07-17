@@ -25159,7 +25159,7 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
         r"""
         :param _SubAppId: <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _FileInfo: <p>AIGC 视频转绘任务的输入视频的文件信息。</p>
+        :param _FileInfo: <p>AIGC 视频转绘任务的输入视频的文件信息。输入视频时长需短于 90 秒，大小在2GB内。</p>
         :type FileInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
         :param _OutputConfig: <p>AIGC 视频转绘任务的输出媒体文件配置。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawOutputConfig`
@@ -25193,7 +25193,7 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
 
     @property
     def FileInfo(self):
-        r"""<p>AIGC 视频转绘任务的输入视频的文件信息。</p>
+        r"""<p>AIGC 视频转绘任务的输入视频的文件信息。输入视频时长需短于 90 秒，大小在2GB内。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
         """
         return self._FileInfo

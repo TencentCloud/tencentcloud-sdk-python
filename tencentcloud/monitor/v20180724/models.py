@@ -21792,28 +21792,29 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Prometheus 实例 ID
+        :param _InstanceId: <p>Prometheus 实例 ID</p>
         :type InstanceId: str
-        :param _Limit: 返回数量，默认为 20，最大值为 100
+        :param _Limit: <p>返回数量，默认为 20，最大值为 100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为 0
+        :param _Offset: <p>偏移量，默认为 0</p>
         :type Offset: int
-        :param _GroupId: 告警分组ID，形如alert-xxxx。
-查询给定ID的告警分组
+        :param _GroupId: <p>告警分组ID，形如alert-xxxx。<br>查询给定ID的告警分组</p>
         :type GroupId: str
-        :param _GroupName: 告警分组名称。
-查询名称中包含给定字符串的告警分组
+        :param _GroupName: <p>告警分组名称。<br>查询名称中包含给定字符串的告警分组</p>
         :type GroupName: str
+        :param _Labels: <p>通过自定义label查询告警规则：<br>返回包含符合过滤条件告警规则的整个分组</p><p>多个label过滤条件取交集</p>
+        :type Labels: list of PrometheusRuleKV
         """
         self._InstanceId = None
         self._Limit = None
         self._Offset = None
         self._GroupId = None
         self._GroupName = None
+        self._Labels = None
 
     @property
     def InstanceId(self):
-        r"""Prometheus 实例 ID
+        r"""<p>Prometheus 实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -21824,7 +21825,7 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为 20，最大值为 100
+        r"""<p>返回数量，默认为 20，最大值为 100</p>
         :rtype: int
         """
         return self._Limit
@@ -21835,7 +21836,7 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为 0
+        r"""<p>偏移量，默认为 0</p>
         :rtype: int
         """
         return self._Offset
@@ -21846,8 +21847,7 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""告警分组ID，形如alert-xxxx。
-查询给定ID的告警分组
+        r"""<p>告警分组ID，形如alert-xxxx。<br>查询给定ID的告警分组</p>
         :rtype: str
         """
         return self._GroupId
@@ -21858,8 +21858,7 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""告警分组名称。
-查询名称中包含给定字符串的告警分组
+        r"""<p>告警分组名称。<br>查询名称中包含给定字符串的告警分组</p>
         :rtype: str
         """
         return self._GroupName
@@ -21868,6 +21867,17 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
     def GroupName(self, GroupName):
         self._GroupName = GroupName
 
+    @property
+    def Labels(self):
+        r"""<p>通过自定义label查询告警规则：<br>返回包含符合过滤条件告警规则的整个分组</p><p>多个label过滤条件取交集</p>
+        :rtype: list of PrometheusRuleKV
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -21875,6 +21885,12 @@ class DescribePrometheusAlertGroupsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._GroupId = params.get("GroupId")
         self._GroupName = params.get("GroupName")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self._Labels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21892,10 +21908,10 @@ class DescribePrometheusAlertGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlertGroupSet: 告警分组信息
+        :param _AlertGroupSet: <p>告警分组信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlertGroupSet: list of PrometheusAlertGroupSet
-        :param _TotalCount: 告警分组总数
+        :param _TotalCount: <p>告警分组总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21907,7 +21923,7 @@ class DescribePrometheusAlertGroupsResponse(AbstractModel):
 
     @property
     def AlertGroupSet(self):
-        r"""告警分组信息
+        r"""<p>告警分组信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PrometheusAlertGroupSet
         """
@@ -21919,7 +21935,7 @@ class DescribePrometheusAlertGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""告警分组总数
+        r"""<p>告警分组总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

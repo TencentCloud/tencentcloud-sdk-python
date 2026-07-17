@@ -431,62 +431,35 @@ class DescribeDetailedSingleProbeDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 开始时间戳（毫秒级）
+        :param _BeginTime: <p>开始时间戳（毫秒级）</p>
         :type BeginTime: int
-        :param _EndTime: 结束时间戳（毫秒级）
+        :param _EndTime: <p>结束时间戳（毫秒级）</p>
         :type EndTime: int
-        :param _TaskType: 任务类型
-AnalyzeTaskType_Network：网络质量
-AnalyzeTaskType_Browse：页面性能
-AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）
-AnalyzeTaskType_Transport：端口性能
-AnalyzeTaskType_MediaStream：音视频体验
+        :param _TaskType: <p>任务类型<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_MediaStream：音视频体验</p>
         :type TaskType: str
-        :param _SortField: 待排序字段
-可以填写 ProbeTime 拨测时间排序
-也可填写SelectedFields 中的选中字段
+        :param _SortField: <p>待排序字段<br>可以填写 ProbeTime 拨测时间排序<br>也可填写SelectedFields 中的选中字段</p>
         :type SortField: str
-        :param _Ascending: true表示升序
+        :param _Ascending: <p>true表示升序</p>
         :type Ascending: bool
-        :param _SelectedFields: 选中字段，如ProbeTime、TransferTime、TransferSize等。
+        :param _SelectedFields: <p>选中字段，如ProbeTime、TransferTime、TransferSize等。</p>
         :type SelectedFields: list of str
-        :param _Offset: 起始取数位置
+        :param _Offset: <p>起始取数位置</p>
         :type Offset: int
-        :param _Limit: 取数数量
+        :param _Limit: <p>取数数量</p>
         :type Limit: int
-        :param _TaskID: 任务ID
+        :param _TaskID: <p>任务ID</p>
         :type TaskID: list of str
-        :param _Operators: 拨测点运营商
-	
-这里实际按拨测结果中的运营商来填写即可
-
-电信：中国电信
-移动：中国移动
-联通：中国联通
+        :param _Operators: <p>拨测点运营商</p><p>这里实际按拨测结果中的运营商来填写即可</p><p>电信：中国电信<br>移动：中国移动<br>联通：中国联通</p>
         :type Operators: list of str
-        :param _Districts: 拨测点地区
-	
-这里实际按拨测结果中的地区来填写即可
-
-国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海
-
-境外一般是国家名，如澳大利亚、新加坡
+        :param _Districts: <p>拨测点地区</p><p>这里实际按拨测结果中的地区来填写即可</p><p>国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海</p><p>境外一般是国家名，如澳大利亚、新加坡</p>
         :type Districts: list of str
-        :param _ErrorTypes: 错误类型
+        :param _ErrorTypes: <p>错误类型</p>
         :type ErrorTypes: list of str
-        :param _City: 城市
-这里实际按拨测结果中的城市来填写即可
-
-示例：
-
-深圳市
-武汉市
-首尔
-多伦多
+        :param _City: <p>城市<br>这里实际按拨测结果中的城市来填写即可</p><p>示例：</p><p>深圳市<br>武汉市<br>首尔<br>多伦多</p>
         :type City: list of str
-        :param _ScrollID: es scroll查询id
+        :param _ScrollID: <p>es scroll查询id</p>
         :type ScrollID: str
-        :param _QueryFlag: 详情数据下载
+        :param _QueryFlag: <p>详情数据下载</p>
         :type QueryFlag: str
         """
         self._BeginTime = None
@@ -507,7 +480,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def BeginTime(self):
-        r"""开始时间戳（毫秒级）
+        r"""<p>开始时间戳（毫秒级）</p>
         :rtype: int
         """
         return self._BeginTime
@@ -518,7 +491,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def EndTime(self):
-        r"""结束时间戳（毫秒级）
+        r"""<p>结束时间戳（毫秒级）</p>
         :rtype: int
         """
         return self._EndTime
@@ -529,12 +502,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def TaskType(self):
-        r"""任务类型
-AnalyzeTaskType_Network：网络质量
-AnalyzeTaskType_Browse：页面性能
-AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）
-AnalyzeTaskType_Transport：端口性能
-AnalyzeTaskType_MediaStream：音视频体验
+        r"""<p>任务类型<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_MediaStream：音视频体验</p>
         :rtype: str
         """
         return self._TaskType
@@ -545,9 +513,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def SortField(self):
-        r"""待排序字段
-可以填写 ProbeTime 拨测时间排序
-也可填写SelectedFields 中的选中字段
+        r"""<p>待排序字段<br>可以填写 ProbeTime 拨测时间排序<br>也可填写SelectedFields 中的选中字段</p>
         :rtype: str
         """
         return self._SortField
@@ -558,7 +524,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Ascending(self):
-        r"""true表示升序
+        r"""<p>true表示升序</p>
         :rtype: bool
         """
         return self._Ascending
@@ -569,7 +535,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def SelectedFields(self):
-        r"""选中字段，如ProbeTime、TransferTime、TransferSize等。
+        r"""<p>选中字段，如ProbeTime、TransferTime、TransferSize等。</p>
         :rtype: list of str
         """
         return self._SelectedFields
@@ -580,7 +546,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Offset(self):
-        r"""起始取数位置
+        r"""<p>起始取数位置</p>
         :rtype: int
         """
         return self._Offset
@@ -591,7 +557,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Limit(self):
-        r"""取数数量
+        r"""<p>取数数量</p>
         :rtype: int
         """
         return self._Limit
@@ -602,7 +568,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def TaskID(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: list of str
         """
         return self._TaskID
@@ -613,13 +579,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Operators(self):
-        r"""拨测点运营商
-	
-这里实际按拨测结果中的运营商来填写即可
-
-电信：中国电信
-移动：中国移动
-联通：中国联通
+        r"""<p>拨测点运营商</p><p>这里实际按拨测结果中的运营商来填写即可</p><p>电信：中国电信<br>移动：中国移动<br>联通：中国联通</p>
         :rtype: list of str
         """
         return self._Operators
@@ -630,13 +590,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Districts(self):
-        r"""拨测点地区
-	
-这里实际按拨测结果中的地区来填写即可
-
-国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海
-
-境外一般是国家名，如澳大利亚、新加坡
+        r"""<p>拨测点地区</p><p>这里实际按拨测结果中的地区来填写即可</p><p>国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海</p><p>境外一般是国家名，如澳大利亚、新加坡</p>
         :rtype: list of str
         """
         return self._Districts
@@ -647,7 +601,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def ErrorTypes(self):
-        r"""错误类型
+        r"""<p>错误类型</p>
         :rtype: list of str
         """
         return self._ErrorTypes
@@ -658,15 +612,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def City(self):
-        r"""城市
-这里实际按拨测结果中的城市来填写即可
-
-示例：
-
-深圳市
-武汉市
-首尔
-多伦多
+        r"""<p>城市<br>这里实际按拨测结果中的城市来填写即可</p><p>示例：</p><p>深圳市<br>武汉市<br>首尔<br>多伦多</p>
         :rtype: list of str
         """
         return self._City
@@ -677,7 +623,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def ScrollID(self):
-        r"""es scroll查询id
+        r"""<p>es scroll查询id</p>
         :rtype: str
         """
         return self._ScrollID
@@ -688,7 +634,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def QueryFlag(self):
-        r"""详情数据下载
+        r"""<p>详情数据下载</p>
         :rtype: str
         """
         return self._QueryFlag
@@ -731,11 +677,11 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataSet: 单次详情数据
+        :param _DataSet: <p>单次详情数据</p>
         :type DataSet: list of DetailedSingleDataDefine
-        :param _TotalNumber: 符合条件的数据总数
+        :param _TotalNumber: <p>符合条件的数据总数</p>
         :type TotalNumber: int
-        :param _ScrollID: es scroll查询的id
+        :param _ScrollID: <p>es scroll查询的id</p>
         :type ScrollID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -747,7 +693,7 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
 
     @property
     def DataSet(self):
-        r"""单次详情数据
+        r"""<p>单次详情数据</p>
         :rtype: list of DetailedSingleDataDefine
         """
         return self._DataSet
@@ -758,7 +704,7 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
 
     @property
     def TotalNumber(self):
-        r"""符合条件的数据总数
+        r"""<p>符合条件的数据总数</p>
         :rtype: int
         """
         return self._TotalNumber
@@ -769,7 +715,7 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
 
     @property
     def ScrollID(self):
-        r"""es scroll查询的id
+        r"""<p>es scroll查询的id</p>
         :rtype: str
         """
         return self._ScrollID

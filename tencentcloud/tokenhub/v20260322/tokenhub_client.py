@@ -77,7 +77,7 @@ class TokenhubClient(AbstractClient):
 
 
     def CreateGlossary(self, request):
-        r"""创建术语库。
+        r"""创建术语库。(单个用户默认最多可以创建50个术语库，支持加白)
 
         在当前应用下创建一个新的翻译术语库，用于自定义源语言到目标语言的术语映射。创建成功后返回术语库 ID，可通过该 ID 进一步管理术语条目。
 
@@ -105,6 +105,7 @@ class TokenhubClient(AbstractClient):
         r"""批量创建术语条目。
 
         在指定术语库下批量创建术语条目。单次最多创建 100 条。
+        单个术语库默认最多总共可以创建10000个术语对
 
         :param request: Request instance for CreateGlossaryEntries.
         :type request: :class:`tencentcloud.tokenhub.v20260322.models.CreateGlossaryEntriesRequest`
@@ -152,7 +153,7 @@ class TokenhubClient(AbstractClient):
 
 
     def CreateTokenPlanTeamOrderAndBuy(self, request):
-        r"""购买套餐。
+        r"""购买套餐（重新开通过期的套餐续费也通过该接口实现，需要额外传已过期套餐teamId。注：续费成功后套餐包总周期数（TotalCycles）会包含历史周期数，实际套餐包生效周期以生效时间（StartTime）和到期时间（ExpireTime）为准）。
 
         发起 TokenPlan 套餐下单并完成支付，成功后返回大订单 ID 及关联的子订单、资源信息。
 

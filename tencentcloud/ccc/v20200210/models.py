@@ -5120,6 +5120,8 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type AvailableWorkTimeConfig: list of AvailableTimeConfig
         :param _TriggerStrategy: <p>触发策略</p>
         :type TriggerStrategy: list of TriggerStrategyItem
+        :param _ConcurrencyLimit: <p>智能体并发限制</p>
+        :type ConcurrencyLimit: int
         """
         self._SdkAppId = None
         self._NotBefore = None
@@ -5142,6 +5144,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._RetryTags = None
         self._AvailableWorkTimeConfig = None
         self._TriggerStrategy = None
+        self._ConcurrencyLimit = None
 
     @property
     def SdkAppId(self):
@@ -5374,6 +5377,17 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
     def TriggerStrategy(self, TriggerStrategy):
         self._TriggerStrategy = TriggerStrategy
 
+    @property
+    def ConcurrencyLimit(self):
+        r"""<p>智能体并发限制</p>
+        :rtype: int
+        """
+        return self._ConcurrencyLimit
+
+    @ConcurrencyLimit.setter
+    def ConcurrencyLimit(self, ConcurrencyLimit):
+        self._ConcurrencyLimit = ConcurrencyLimit
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -5427,6 +5441,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
                 obj = TriggerStrategyItem()
                 obj._deserialize(item)
                 self._TriggerStrategy.append(obj)
+        self._ConcurrencyLimit = params.get("ConcurrencyLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

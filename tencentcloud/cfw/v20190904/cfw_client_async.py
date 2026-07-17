@@ -765,6 +765,60 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCfwAlerts(
+            self,
+            request: models.DescribeCfwAlertsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwAlertsResponse:
+        """
+        查询当前租户防火墙聚合告警事件。Response.Data 内 total 表示聚合告警事件数；alerts[].occurrence_count 表示单个聚合告警事件的告警发生次数/命中次数。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwAlerts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwAlertsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwAnalysisData(
+            self,
+            request: models.DescribeCfwAnalysisDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwAnalysisDataResponse:
+        """
+        查询当前租户防火墙分析报告数据。按分析场景返回整组分析结果，结果在 Response.Data 的 JSON 字符串中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwAnalysisData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwAnalysisDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwAssets(
+            self,
+            request: models.DescribeCfwAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwAssetsResponse:
+        """
+        查询当前租户防火墙纳管资产。默认查询主机资产；仅明确需要 VPC 或子网时传 AssetType。结果在 Response.Data 的 JSON 字符串中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCfwEips(
             self,
             request: models.DescribeCfwEipsRequest,
@@ -796,6 +850,114 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeCfwInsStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCfwInsStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwLogs(
+            self,
+            request: models.DescribeCfwLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwLogsResponse:
+        """
+        查询当前租户防火墙日志。分页只使用 Response.Data 内的 HasMore / NextToken。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwRiskOverview(
+            self,
+            request: models.DescribeCfwRiskOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwRiskOverviewResponse:
+        """
+        查询当前租户风险中心未处理风险概览。默认查询最近 7 天；自定义时间范围需同时传 StartTime 和 EndTime。结果在 Response.Data 的 JSON 字符串中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwRiskOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwRiskOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwRuleOptimization(
+            self,
+            request: models.DescribeCfwRuleOptimizationRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwRuleOptimizationResponse:
+        """
+        查询当前租户防火墙规则优化建议。只读分析，不修改规则；Action 名保持单数 RuleOptimization。结果在 Response.Data 的 JSON 字符串中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwRuleOptimization"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwRuleOptimizationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwRules(
+            self,
+            request: models.DescribeCfwRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwRulesResponse:
+        """
+        查询当前租户防火墙规则配置。覆盖互联网边界、NAT、VPC、企业安全组，以及入侵防御 intrusion_prevention 的 blocklist、whitelist、isolate 三类有效列表。结果在 Response.Data 的 JSON 字符串中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwStatusMonitor(
+            self,
+            request: models.DescribeCfwStatusMonitorRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwStatusMonitorResponse:
+        """
+        查询状态监控场景。Op=describe_scene 用于发现可用场景、指标、视角和二级下拉 available_options；Op=fetch_scene 用于拉取具体场景快照，结果在 Response.Data 的 JSON 字符串中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwStatusMonitor"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwStatusMonitorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCfwSwitches(
+            self,
+            request: models.DescribeCfwSwitchesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCfwSwitchesResponse:
+        """
+        查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCfwSwitches"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCfwSwitchesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

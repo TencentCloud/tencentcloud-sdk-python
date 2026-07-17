@@ -2044,6 +2044,190 @@ class BindTWeTalkAgentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BindUserDeviceRequest(AbstractModel):
+    r"""BindUserDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppKey: <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+        :type AppKey: str
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名（禁止使用虚拟设备名 ~virtualDev）</p>
+        :type DeviceName: str
+        :param _OpenID: <p>用户 OpenID，用于定位 / 兜底创建 App 用户</p>
+        :type OpenID: str
+        :param _FamilyName: <p>家庭名，默认 default</p>
+        :type FamilyName: str
+        :param _RoomId: <p>房间 ID，默认 &quot;0&quot;</p>
+        :type RoomId: str
+        :param _NickName: <p>用户昵称（仅首次创建用户时使用）</p>
+        :type NickName: str
+        """
+        self._AppKey = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._OpenID = None
+        self._FamilyName = None
+        self._RoomId = None
+        self._NickName = None
+
+    @property
+    def AppKey(self):
+        r"""<p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名（禁止使用虚拟设备名 ~virtualDev）</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def OpenID(self):
+        r"""<p>用户 OpenID，用于定位 / 兜底创建 App 用户</p>
+        :rtype: str
+        """
+        return self._OpenID
+
+    @OpenID.setter
+    def OpenID(self, OpenID):
+        self._OpenID = OpenID
+
+    @property
+    def FamilyName(self):
+        r"""<p>家庭名，默认 default</p>
+        :rtype: str
+        """
+        return self._FamilyName
+
+    @FamilyName.setter
+    def FamilyName(self, FamilyName):
+        self._FamilyName = FamilyName
+
+    @property
+    def RoomId(self):
+        r"""<p>房间 ID，默认 &quot;0&quot;</p>
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def NickName(self):
+        r"""<p>用户昵称（仅首次创建用户时使用）</p>
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+
+    def _deserialize(self, params):
+        self._AppKey = params.get("AppKey")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._OpenID = params.get("OpenID")
+        self._FamilyName = params.get("FamilyName")
+        self._RoomId = params.get("RoomId")
+        self._NickName = params.get("NickName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindUserDeviceResponse(AbstractModel):
+    r"""BindUserDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserID: <p>用户 UserID（已存在则复用）</p>
+        :type UserID: str
+        :param _FamilyId: <p>家庭 ID（已存在则复用）</p>
+        :type FamilyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserID = None
+        self._FamilyId = None
+        self._RequestId = None
+
+    @property
+    def UserID(self):
+        r"""<p>用户 UserID（已存在则复用）</p>
+        :rtype: str
+        """
+        return self._UserID
+
+    @UserID.setter
+    def UserID(self, UserID):
+        self._UserID = UserID
+
+    @property
+    def FamilyId(self):
+        r"""<p>家庭 ID（已存在则复用）</p>
+        :rtype: str
+        """
+        return self._FamilyId
+
+    @FamilyId.setter
+    def FamilyId(self, FamilyId):
+        self._FamilyId = FamilyId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserID = params.get("UserID")
+        self._FamilyId = params.get("FamilyId")
+        self._RequestId = params.get("RequestId")
+
+
 class CallDeviceActionAsyncRequest(AbstractModel):
     r"""CallDeviceActionAsync请求参数结构体
 
@@ -2334,6 +2518,220 @@ class CallDeviceActionSyncResponse(AbstractModel):
         self._ClientToken = params.get("ClientToken")
         self._OutputParams = params.get("OutputParams")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CallDeviceRRPCSyncRequest(AbstractModel):
+    r"""CallDeviceRRPCSync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _Payload: <p>业务原始 payload，透传给设备</p>
+        :type Payload: str
+        :param _Encoding: <p>下行传输层编码标识；base64 时下发到 broker 的 payload 会做一次 base64 编码</p>
+        :type Encoding: str
+        :param _Topic: <p>自定义下行 topic；为空则用 <code>$iotrrpc/down/{ProductId}/{DeviceName}/{mid}</code></p>
+        :type Topic: str
+        :param _ReplyTopic: <p>自定义上行 topic 模板（支持通配符）；可留空，留空时仅依赖 clientToken 关联 ack</p>
+        :type ReplyTopic: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._Payload = None
+        self._Encoding = None
+        self._Topic = None
+        self._ReplyTopic = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Payload(self):
+        r"""<p>业务原始 payload，透传给设备</p>
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def Encoding(self):
+        r"""<p>下行传输层编码标识；base64 时下发到 broker 的 payload 会做一次 base64 编码</p>
+        :rtype: str
+        """
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+    @property
+    def Topic(self):
+        r"""<p>自定义下行 topic；为空则用 <code>$iotrrpc/down/{ProductId}/{DeviceName}/{mid}</code></p>
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def ReplyTopic(self):
+        r"""<p>自定义上行 topic 模板（支持通配符）；可留空，留空时仅依赖 clientToken 关联 ack</p>
+        :rtype: str
+        """
+        return self._ReplyTopic
+
+    @ReplyTopic.setter
+    def ReplyTopic(self, ReplyTopic):
+        self._ReplyTopic = ReplyTopic
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._Payload = params.get("Payload")
+        self._Encoding = params.get("Encoding")
+        self._Topic = params.get("Topic")
+        self._ReplyTopic = params.get("ReplyTopic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CallDeviceRRPCSyncResponse(AbstractModel):
+    r"""CallDeviceRRPCSync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientToken: <p>平台为本次调用分配的关联 token（v2{instanceId}::{reqId} 形式）</p>
+        :type ClientToken: str
+        :param _Status: <p>调用状态</p>
+        :type Status: str
+        :param _MessageId: <p>平台分配的 messageID</p>
+        :type MessageId: int
+        :param _PayloadBase64: <p>设备回包原始字节的 base64 编码（仅 Status=Replied 有值）</p>
+        :type PayloadBase64: str
+        :param _ReplyTopic: <p>实际生效的 reply topic 模板（默认模式由平台生成，自定义模式为入参原值）</p>
+        :type ReplyTopic: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClientToken = None
+        self._Status = None
+        self._MessageId = None
+        self._PayloadBase64 = None
+        self._ReplyTopic = None
+        self._RequestId = None
+
+    @property
+    def ClientToken(self):
+        r"""<p>平台为本次调用分配的关联 token（v2{instanceId}::{reqId} 形式）</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def Status(self):
+        r"""<p>调用状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MessageId(self):
+        r"""<p>平台分配的 messageID</p>
+        :rtype: int
+        """
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def PayloadBase64(self):
+        r"""<p>设备回包原始字节的 base64 编码（仅 Status=Replied 有值）</p>
+        :rtype: str
+        """
+        return self._PayloadBase64
+
+    @PayloadBase64.setter
+    def PayloadBase64(self, PayloadBase64):
+        self._PayloadBase64 = PayloadBase64
+
+    @property
+    def ReplyTopic(self):
+        r"""<p>实际生效的 reply topic 模板（默认模式由平台生成，自定义模式为入参原值）</p>
+        :rtype: str
+        """
+        return self._ReplyTopic
+
+    @ReplyTopic.setter
+    def ReplyTopic(self, ReplyTopic):
+        self._ReplyTopic = ReplyTopic
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClientToken = params.get("ClientToken")
+        self._Status = params.get("Status")
+        self._MessageId = params.get("MessageId")
+        self._PayloadBase64 = params.get("PayloadBase64")
+        self._ReplyTopic = params.get("ReplyTopic")
         self._RequestId = params.get("RequestId")
 
 
@@ -39089,6 +39487,130 @@ class ResumeWeCallDeviceRequest(AbstractModel):
 
 class ResumeWeCallDeviceResponse(AbstractModel):
     r"""ResumeWeCallDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RevokeBindUserDeviceRequest(AbstractModel):
+    r"""RevokeBindUserDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppKey: <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+        :type AppKey: str
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _OpenID: <p>用户 OpenID（仅只读定位，不会创建）</p>
+        :type OpenID: str
+        :param _FamilyName: <p>家庭名，默认 default</p>
+        :type FamilyName: str
+        """
+        self._AppKey = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._OpenID = None
+        self._FamilyName = None
+
+    @property
+    def AppKey(self):
+        r"""<p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def OpenID(self):
+        r"""<p>用户 OpenID（仅只读定位，不会创建）</p>
+        :rtype: str
+        """
+        return self._OpenID
+
+    @OpenID.setter
+    def OpenID(self, OpenID):
+        self._OpenID = OpenID
+
+    @property
+    def FamilyName(self):
+        r"""<p>家庭名，默认 default</p>
+        :rtype: str
+        """
+        return self._FamilyName
+
+    @FamilyName.setter
+    def FamilyName(self, FamilyName):
+        self._FamilyName = FamilyName
+
+
+    def _deserialize(self, params):
+        self._AppKey = params.get("AppKey")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._OpenID = params.get("OpenID")
+        self._FamilyName = params.get("FamilyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RevokeBindUserDeviceResponse(AbstractModel):
+    r"""RevokeBindUserDevice返回参数结构体
 
     """
 

@@ -4147,9 +4147,9 @@ class VPCConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubnetIds: VPC子网ID列表
+        :param _SubnetIds: <p>VPC子网ID列表</p>
         :type SubnetIds: list of str
-        :param _SecurityGroupIds: 安全组ID列表
+        :param _SecurityGroupIds: <p>安全组ID列表</p>
         :type SecurityGroupIds: list of str
         """
         self._SubnetIds = None
@@ -4157,7 +4157,7 @@ class VPCConfig(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""VPC子网ID列表
+        r"""<p>VPC子网ID列表</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -4168,7 +4168,7 @@ class VPCConfig(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组ID列表
+        r"""<p>安全组ID列表</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds

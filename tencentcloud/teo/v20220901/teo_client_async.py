@@ -419,6 +419,42 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateInferenceAPIToken(
+            self,
+            request: models.CreateInferenceAPITokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateInferenceAPITokenResponse:
+        """
+        创建推理 API Token，用于访问推理服务时进行鉴权，Token 内容仅在创建时返回一次，每个站点最多创建 100 个。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInferenceAPIToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInferenceAPITokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateInferenceService(
+            self,
+            request: models.CreateInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.CreateInferenceServiceResponse:
+        """
+        创建推理服务，支持设置服务名称、监听端口、容器镜像配置和资源配置，创建成功后提供推理访问地址。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInferenceServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateJustInTimeTranscodeTemplate(
             self,
             request: models.CreateJustInTimeTranscodeTemplateRequest,
@@ -1065,6 +1101,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DeleteFunctionRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteFunctionRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteInferenceAPIToken(
+            self,
+            request: models.DeleteInferenceAPITokenRequest,
+            opts: Dict = None,
+    ) -> models.DeleteInferenceAPITokenResponse:
+        """
+        删除推理 API Token，删除后该 Token 立即失效，使用其访问推理服务的请求将无法通过鉴权。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteInferenceAPIToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteInferenceAPITokenResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1895,6 +1949,114 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeIdentifications"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeIdentificationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceAPITokens(
+            self,
+            request: models.DescribeInferenceAPITokensRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceAPITokensResponse:
+        """
+        查询推理 API Token 列表，返回 Token 的 ID、名称、内容和创建时间，支持分页查询。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceAPITokens"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceAPITokensResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceHardwareSpecifications(
+            self,
+            request: models.DescribeInferenceHardwareSpecificationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceHardwareSpecificationsResponse:
+        """
+        查询推理硬件规格列表，返回各规格的 CPU、内存、GPU 和显存等配置，创建服务时可从中选择所需规格。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceHardwareSpecifications"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceHardwareSpecificationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceServiceDeploymentLogs(
+            self,
+            request: models.DescribeInferenceServiceDeploymentLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceServiceDeploymentLogsResponse:
+        """
+        查询推理服务指定一次部署的日志，返回日志内容和产生时间，支持按时间范围检索、分页和排序。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceServiceDeploymentLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceServiceDeploymentLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceServiceDeploymentRecords(
+            self,
+            request: models.DescribeInferenceServiceDeploymentRecordsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceServiceDeploymentRecordsResponse:
+        """
+        查询推理服务部署历史列表，返回每次部署的操作类型、状态、耗时、配置快照和是否为当前生效配置，支持分页和排序。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceServiceDeploymentRecords"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceServiceDeploymentRecordsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceServiceMonitorData(
+            self,
+            request: models.DescribeInferenceServiceMonitorDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceServiceMonitorDataResponse:
+        """
+        查询推理服务监控数据，支持 CPU、内存、GPU、显存使用率和实例数量等指标，可指定时间范围和聚合粒度，最多查询最近 30 天的数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceServiceMonitorData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceServiceMonitorDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceServices(
+            self,
+            request: models.DescribeInferenceServicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceServicesResponse:
+        """
+        查询推理服务列表，支持按服务名称、服务 ID、状态过滤，返回服务的配置、运行状态、实例数和推理访问地址等信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceServices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceServicesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3391,6 +3553,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInferenceService(
+            self,
+            request: models.ModifyInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInferenceServiceResponse:
+        """
+        修改推理服务，支持更新监听端口、请求路径、容器镜像、资源配置和描述信息，仅传入的参数会被修改，未传入的参数保持不变。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInferenceServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyL4Proxy(
             self,
             request: models.ModifyL4ProxyRequest,
@@ -3928,6 +4108,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyZoneWorkMode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyZoneWorkModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OperateInferenceService(
+            self,
+            request: models.OperateInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.OperateInferenceServiceResponse:
+        """
+        操作推理服务，支持停止、启动和删除推理服务，删除后资源不可恢复。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OperateInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OperateInferenceServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
