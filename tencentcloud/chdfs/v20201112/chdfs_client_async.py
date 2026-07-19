@@ -151,6 +151,24 @@ class ChdfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTrashConfig(
+            self,
+            request: models.CreateTrashConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateTrashConfigResponse:
+        """
+        创建回收站配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTrashConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTrashConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAccessGroup(
             self,
             request: models.DeleteAccessGroupRequest,
@@ -236,6 +254,24 @@ class ChdfsClient(AbstractClient):
         kwargs["action"] = "DeleteMountPoint"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteMountPointResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTrashConfig(
+            self,
+            request: models.DeleteTrashConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTrashConfigResponse:
+        """
+        删除回收站配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTrashConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTrashConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -421,6 +457,24 @@ class ChdfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTrashConfig(
+            self,
+            request: models.DescribeTrashConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTrashConfigResponse:
+        """
+        通过文件系统ID查看回收站配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTrashConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTrashConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DisassociateAccessGroups(
             self,
             request: models.DisassociateAccessGroupsRequest,
@@ -542,6 +596,24 @@ class ChdfsClient(AbstractClient):
         kwargs["action"] = "ModifyResourceTags"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyResourceTagsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyTrashConfig(
+            self,
+            request: models.ModifyTrashConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTrashConfigResponse:
+        """
+        修改回收站配置，需要指定回收站路径，数据保留时间、和状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTrashConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTrashConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

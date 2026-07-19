@@ -418,6 +418,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDocToVideoTask(self, request):
+        r"""创建 AiGC 文档生成视频任务
+
+        :param request: Request instance for CreateDocToVideoTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateDocToVideoTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateDocToVideoTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDocToVideoTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDocToVideoTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateImageSpriteTemplate(self, request):
         r"""创建用户自定义雪碧图模板，数量上限：16。
 
@@ -3745,6 +3768,29 @@ class MpsClient(AbstractClient):
             body = self.call("EditMedia", params, headers=headers)
             response = json.loads(body)
             model = models.EditMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EmbeddingData(self, request):
+        r"""模型embedding 接口
+
+        :param request: Request instance for EmbeddingData.
+        :type request: :class:`tencentcloud.mps.v20190612.models.EmbeddingDataRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EmbeddingDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EmbeddingData", params, headers=headers)
+            response = json.loads(body)
+            model = models.EmbeddingDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

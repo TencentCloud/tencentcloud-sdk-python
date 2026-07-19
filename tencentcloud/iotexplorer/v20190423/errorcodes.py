@@ -353,6 +353,9 @@ INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = 'InvalidParameterValue.RuleNumberB
 # 二进制数据格式只可利用 * 将数据进行转发。
 INVALIDPARAMETERVALUE_SELECTKEYFROMBINARYPAYLOAD = 'InvalidParameterValue.SelectKeyFromBinaryPayload'
 
+# 不能将设备分享给自己
+INVALIDPARAMETERVALUE_SHAREDEVICETOSELF = 'InvalidParameterValue.ShareDeviceToSelf'
+
 # 开始时间晚于结束时间。
 INVALIDPARAMETERVALUE_STARTTIMELATERENDTIME = 'InvalidParameterValue.StartTimeLaterEndTime'
 
@@ -479,6 +482,9 @@ RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = 'ResourceNotFound.DeviceHasNoFirmware'
 # 设备未绑定家庭。
 RESOURCENOTFOUND_DEVICENOTBIND = 'ResourceNotFound.DeviceNotBind'
 
+# 设备未被任何用户绑定
+RESOURCENOTFOUND_DEVICENOTBOUND = 'ResourceNotFound.DeviceNotBound'
+
 # 设备不存在。
 RESOURCENOTFOUND_DEVICENOTEXIST = 'ResourceNotFound.DeviceNotExist'
 
@@ -586,6 +592,9 @@ UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = 'UnauthorizedOperation.NoPermissionToP
 
 # 项目ACL错误。
 UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = 'UnauthorizedOperation.NoPermissionToProject'
+
+# 无权限分享该设备，仅设备所有者可分享
+UNAUTHORIZEDOPERATION_NOPERMISSIONTOSHAREDEVICE = 'UnauthorizedOperation.NoPermissionToShareDevice'
 
 # 围栏ACL错误。
 UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = 'UnauthorizedOperation.NoPermissionToStudioFence'

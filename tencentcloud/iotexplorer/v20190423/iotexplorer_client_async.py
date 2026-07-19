@@ -4103,6 +4103,28 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RevokeShareDeviceFromUser(
+            self,
+            request: models.RevokeShareDeviceFromUserRequest,
+            opts: Dict = None,
+    ) -> models.RevokeShareDeviceFromUserResponse:
+        """
+        Owner 取消对指定用户的设备分享：
+        1. 校验产品 ACL / 子产品禁止 / 设备真实存在；
+        2. 只读定位 Owner（必须已存在），并校验 Owner 持有该设备；
+        3. 只读定位被取消分享用户（不存在视为已取消，幂等成功）；
+        4. 删除分享关系记录（不存在视为已取消，幂等成功）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RevokeShareDeviceFromUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RevokeShareDeviceFromUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SearchPositionSpace(
             self,
             request: models.SearchPositionSpaceRequest,
@@ -4152,6 +4174,28 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "SearchTopicRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchTopicRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ShareDeviceToUser(
+            self,
+            request: models.ShareDeviceToUserRequest,
+            opts: Dict = None,
+    ) -> models.ShareDeviceToUserResponse:
+        """
+        Owner 将其名下的设备分享给指定 App 用户：
+        1. 校验产品 ACL / 子产品禁止 / 设备真实存在；
+        2. 只读定位 Owner（必须已存在），并校验 Owner 确实持有该设备；
+        3. 兜底创建被分享用户（已存在则复用，昵称不覆盖）；
+        4. 写入分享关系（重复分享幂等成功，不修改原 CreateTime）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ShareDeviceToUser"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ShareDeviceToUserResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

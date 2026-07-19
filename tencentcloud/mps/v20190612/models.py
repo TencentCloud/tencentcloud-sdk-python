@@ -22318,6 +22318,104 @@ class CreateContentReviewTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDocToVideoTaskRequest(AbstractModel):
+    r"""CreateDocToVideoTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>AIGC文档生成视频的输入信息</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.DocToVideoInput`
+        :param _CosInfo: <p>用户cos信息，用于保存生成结果</p>
+        :type CosInfo: :class:`tencentcloud.mps.v20190612.models.DocToVideoCosInfo`
+        """
+        self._Input = None
+        self._CosInfo = None
+
+    @property
+    def Input(self):
+        r"""<p>AIGC文档生成视频的输入信息</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DocToVideoInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CosInfo(self):
+        r"""<p>用户cos信息，用于保存生成结果</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DocToVideoCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = DocToVideoInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("CosInfo") is not None:
+            self._CosInfo = DocToVideoCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDocToVideoTaskResponse(AbstractModel):
+    r"""CreateDocToVideoTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateImageSpriteTemplateRequest(AbstractModel):
     r"""CreateImageSpriteTemplate请求参数结构体
 
@@ -45343,6 +45441,228 @@ class DisassociateSecurityGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DocToVideoCosInfo(AbstractModel):
+    r"""cos信息，存储用户请求时填写的cos信息，用于存放结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketRegion: <p>cos桶地域</p>
+        :type CosBucketRegion: str
+        :param _CosBucketName: <p>cos桶名称</p>
+        :type CosBucketName: str
+        :param _CosBucketPath: <p>cos桶路径</p>
+        :type CosBucketPath: str
+        """
+        self._CosBucketRegion = None
+        self._CosBucketName = None
+        self._CosBucketPath = None
+
+    @property
+    def CosBucketRegion(self):
+        r"""<p>cos桶地域</p>
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketName(self):
+        r"""<p>cos桶名称</p>
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketPath(self):
+        r"""<p>cos桶路径</p>
+        :rtype: str
+        """
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
+
+    def _deserialize(self, params):
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketPath = params.get("CosBucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocToVideoInput(AbstractModel):
+    r"""AIGC 文档生成视频输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileUrl: <p>用于生成视频的文档链接。</p><p>支持的文档类型：pdf、pptx、docx、png、jpg<br>文档数量限制：3个<br>文档大小限制：10MB<br>文档页数限制：100页</p>
+        :type FileUrl: list of str
+        :param _Prompt: <p>用于生成视频的prompt信息。</p><p>prompt长度限制：2000字符。</p>
+        :type Prompt: str
+        :param _ModelName: <p>文档生成视频模型名称</p><p>默认值：Wand</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>文档生成视频模型版本号</p><p>默认值：1.0</p>
+        :type ModelVersion: str
+        :param _Ratio: <p>生成视频的宽高比。</p><p>枚举值：</p><ul><li>16:9： 16:9</li><li>9:16： 9:16</li><li>1:1： 1:1</li></ul><p>默认值：16:9</p>
+        :type Ratio: str
+        :param _Language: <p>生成视频的语言。</p><p>枚举值：</p><ul><li>zh： 中文</li><li>en： 英文</li><li>ja： 日语</li><li>ko： 韩语</li><li>ru： 俄语</li><li>fr： 法语</li><li>es： 西班牙语</li><li>de： 德语</li></ul><p>默认值：zh</p>
+        :type Language: str
+        :param _ReferenceDuration: <p>生成视频的时长参考。</p><p>非准确的视频时长，仅供大模型参考生成。</p><p>取值范围：[15, 1200]</p><p>单位：秒</p>
+        :type ReferenceDuration: int
+        :param _EnableTTS: <p>是否开启AI配音功能。</p><p>默认值：false</p>
+        :type EnableTTS: bool
+        :param _VoiceId: <p>音色ID。仅开启AI配音功能时有效。</p>
+        :type VoiceId: str
+        """
+        self._FileUrl = None
+        self._Prompt = None
+        self._ModelName = None
+        self._ModelVersion = None
+        self._Ratio = None
+        self._Language = None
+        self._ReferenceDuration = None
+        self._EnableTTS = None
+        self._VoiceId = None
+
+    @property
+    def FileUrl(self):
+        r"""<p>用于生成视频的文档链接。</p><p>支持的文档类型：pdf、pptx、docx、png、jpg<br>文档数量限制：3个<br>文档大小限制：10MB<br>文档页数限制：100页</p>
+        :rtype: list of str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def Prompt(self):
+        r"""<p>用于生成视频的prompt信息。</p><p>prompt长度限制：2000字符。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def ModelName(self):
+        r"""<p>文档生成视频模型名称</p><p>默认值：Wand</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>文档生成视频模型版本号</p><p>默认值：1.0</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def Ratio(self):
+        r"""<p>生成视频的宽高比。</p><p>枚举值：</p><ul><li>16:9： 16:9</li><li>9:16： 9:16</li><li>1:1： 1:1</li></ul><p>默认值：16:9</p>
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Language(self):
+        r"""<p>生成视频的语言。</p><p>枚举值：</p><ul><li>zh： 中文</li><li>en： 英文</li><li>ja： 日语</li><li>ko： 韩语</li><li>ru： 俄语</li><li>fr： 法语</li><li>es： 西班牙语</li><li>de： 德语</li></ul><p>默认值：zh</p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def ReferenceDuration(self):
+        r"""<p>生成视频的时长参考。</p><p>非准确的视频时长，仅供大模型参考生成。</p><p>取值范围：[15, 1200]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._ReferenceDuration
+
+    @ReferenceDuration.setter
+    def ReferenceDuration(self, ReferenceDuration):
+        self._ReferenceDuration = ReferenceDuration
+
+    @property
+    def EnableTTS(self):
+        r"""<p>是否开启AI配音功能。</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableTTS
+
+    @EnableTTS.setter
+    def EnableTTS(self, EnableTTS):
+        self._EnableTTS = EnableTTS
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID。仅开启AI配音功能时有效。</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+
+    def _deserialize(self, params):
+        self._FileUrl = params.get("FileUrl")
+        self._Prompt = params.get("Prompt")
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._Ratio = params.get("Ratio")
+        self._Language = params.get("Language")
+        self._ReferenceDuration = params.get("ReferenceDuration")
+        self._EnableTTS = params.get("EnableTTS")
+        self._VoiceId = params.get("VoiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DrmInfo(AbstractModel):
     r"""Drm 加密信息。
 
@@ -46074,6 +46394,231 @@ class EditMediaTaskOutput(AbstractModel):
         if params.get("MetaData") is not None:
             self._MetaData = MediaMetaData()
             self._MetaData._deserialize(params.get("MetaData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmbeddingData(AbstractModel):
+    r"""embedding 接口的输入:
+    Type   数据类型,现在只支持text
+    Data  数据内容，当前只支持为文本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>数据类型</p><p>枚举值：</p><ul><li>text： 文本</li></ul>
+        :type Type: str
+        :param _Data: <p>数据内容，当Type 为text时，为文本字符串</p>
+        :type Data: str
+        """
+        self._Type = None
+        self._Data = None
+
+    @property
+    def Type(self):
+        r"""<p>数据类型</p><p>枚举值：</p><ul><li>text： 文本</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Data(self):
+        r"""<p>数据内容，当Type 为text时，为文本字符串</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmbeddingDataRequest(AbstractModel):
+    r"""EmbeddingData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>embedding 的模型，现在只支持 text_embedding_v1</p><p>枚举值：</p><ul><li>text_embedding_v1： 文本embedding的模型，可以填写Prompt</li></ul>
+        :type Model: str
+        :param _Files: <p>embedding的输入</p>
+        :type Files: list of EmbeddingData
+        :param _Prompt: <p>embedding 的输入prompt</p>
+        :type Prompt: str
+        """
+        self._Model = None
+        self._Files = None
+        self._Prompt = None
+
+    @property
+    def Model(self):
+        r"""<p>embedding 的模型，现在只支持 text_embedding_v1</p><p>枚举值：</p><ul><li>text_embedding_v1： 文本embedding的模型，可以填写Prompt</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Files(self):
+        r"""<p>embedding的输入</p>
+        :rtype: list of EmbeddingData
+        """
+        return self._Files
+
+    @Files.setter
+    def Files(self, Files):
+        self._Files = Files
+
+    @property
+    def Prompt(self):
+        r"""<p>embedding 的输入prompt</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("Files") is not None:
+            self._Files = []
+            for item in params.get("Files"):
+                obj = EmbeddingData()
+                obj._deserialize(item)
+                self._Files.append(obj)
+        self._Prompt = params.get("Prompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmbeddingDataResponse(AbstractModel):
+    r"""EmbeddingData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>embedding 的结果</p>
+        :type Data: list of EmbeddingResultItem
+        :param _Usage: <p>embedding 的 token 用量</p>
+        :type Usage: :class:`tencentcloud.mps.v20190612.models.TokensUsage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Usage = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>embedding 的结果</p>
+        :rtype: list of EmbeddingResultItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Usage(self):
+        r"""<p>embedding 的 token 用量</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TokensUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = EmbeddingResultItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("Usage") is not None:
+            self._Usage = TokensUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
+
+
+class EmbeddingResultItem(AbstractModel):
+    r"""embedding 的结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>向量</p>
+        :type Result: list of float
+        """
+        self._Result = None
+
+    @property
+    def Result(self):
+        r"""<p>向量</p>
+        :rtype: list of float
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -87605,6 +88150,72 @@ class TimeSpotCheck(AbstractModel):
         self._CheckInterval = params.get("CheckInterval")
         self._SkipDuration = params.get("SkipDuration")
         self._CirclesNumber = params.get("CirclesNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokensUsage(AbstractModel):
+    r"""token 的用量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputTokens: <p>输入token量</p>
+        :type InputTokens: int
+        :param _OutputTokens: <p>输出token量</p>
+        :type OutputTokens: int
+        :param _TotalTokens: <p>总token量，一般是输入+输出</p>
+        :type TotalTokens: int
+        """
+        self._InputTokens = None
+        self._OutputTokens = None
+        self._TotalTokens = None
+
+    @property
+    def InputTokens(self):
+        r"""<p>输入token量</p>
+        :rtype: int
+        """
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def OutputTokens(self):
+        r"""<p>输出token量</p>
+        :rtype: int
+        """
+        return self._OutputTokens
+
+    @OutputTokens.setter
+    def OutputTokens(self, OutputTokens):
+        self._OutputTokens = OutputTokens
+
+    @property
+    def TotalTokens(self):
+        r"""<p>总token量，一般是输入+输出</p>
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._InputTokens = params.get("InputTokens")
+        self._OutputTokens = params.get("OutputTokens")
+        self._TotalTokens = params.get("TotalTokens")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

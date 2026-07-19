@@ -39637,6 +39637,130 @@ class RevokeBindUserDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RevokeShareDeviceFromUserRequest(AbstractModel):
+    r"""RevokeShareDeviceFromUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppKey: <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+        :type AppKey: str
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _OwnerOpenID: <p>设备所有者 OpenID（必须已存在）</p>
+        :type OwnerOpenID: str
+        :param _ToOpenID: <p>被取消分享用户 OpenID（不存在视为已取消，幂等成功）</p>
+        :type ToOpenID: str
+        """
+        self._AppKey = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._OwnerOpenID = None
+        self._ToOpenID = None
+
+    @property
+    def AppKey(self):
+        r"""<p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def OwnerOpenID(self):
+        r"""<p>设备所有者 OpenID（必须已存在）</p>
+        :rtype: str
+        """
+        return self._OwnerOpenID
+
+    @OwnerOpenID.setter
+    def OwnerOpenID(self, OwnerOpenID):
+        self._OwnerOpenID = OwnerOpenID
+
+    @property
+    def ToOpenID(self):
+        r"""<p>被取消分享用户 OpenID（不存在视为已取消，幂等成功）</p>
+        :rtype: str
+        """
+        return self._ToOpenID
+
+    @ToOpenID.setter
+    def ToOpenID(self, ToOpenID):
+        self._ToOpenID = ToOpenID
+
+
+    def _deserialize(self, params):
+        self._AppKey = params.get("AppKey")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._OwnerOpenID = params.get("OwnerOpenID")
+        self._ToOpenID = params.get("ToOpenID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RevokeShareDeviceFromUserResponse(AbstractModel):
+    r"""RevokeShareDeviceFromUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SearchKeyword(AbstractModel):
     r"""搜索关键词
 
@@ -41282,6 +41406,175 @@ class SeeTaskMetadata(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ShareDeviceToUserRequest(AbstractModel):
+    r"""ShareDeviceToUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppKey: <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+        :type AppKey: str
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _OwnerOpenID: <p>设备所有者 OpenID（必须已存在）</p>
+        :type OwnerOpenID: str
+        :param _ToOpenID: <p>被分享用户 OpenID（不存在则自动创建）</p>
+        :type ToOpenID: str
+        :param _ToNickName: <p>被分享用户昵称（仅自动创建时使用）</p>
+        :type ToNickName: str
+        """
+        self._AppKey = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._OwnerOpenID = None
+        self._ToOpenID = None
+        self._ToNickName = None
+
+    @property
+    def AppKey(self):
+        r"""<p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def OwnerOpenID(self):
+        r"""<p>设备所有者 OpenID（必须已存在）</p>
+        :rtype: str
+        """
+        return self._OwnerOpenID
+
+    @OwnerOpenID.setter
+    def OwnerOpenID(self, OwnerOpenID):
+        self._OwnerOpenID = OwnerOpenID
+
+    @property
+    def ToOpenID(self):
+        r"""<p>被分享用户 OpenID（不存在则自动创建）</p>
+        :rtype: str
+        """
+        return self._ToOpenID
+
+    @ToOpenID.setter
+    def ToOpenID(self, ToOpenID):
+        self._ToOpenID = ToOpenID
+
+    @property
+    def ToNickName(self):
+        r"""<p>被分享用户昵称（仅自动创建时使用）</p>
+        :rtype: str
+        """
+        return self._ToNickName
+
+    @ToNickName.setter
+    def ToNickName(self, ToNickName):
+        self._ToNickName = ToNickName
+
+
+    def _deserialize(self, params):
+        self._AppKey = params.get("AppKey")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._OwnerOpenID = params.get("OwnerOpenID")
+        self._ToOpenID = params.get("ToOpenID")
+        self._ToNickName = params.get("ToNickName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShareDeviceToUserResponse(AbstractModel):
+    r"""ShareDeviceToUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OwnerUserID: <p>Owner 的 UserID</p>
+        :type OwnerUserID: str
+        :param _ToUserID: <p>被分享用户的 UserID</p>
+        :type ToUserID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OwnerUserID = None
+        self._ToUserID = None
+        self._RequestId = None
+
+    @property
+    def OwnerUserID(self):
+        r"""<p>Owner 的 UserID</p>
+        :rtype: str
+        """
+        return self._OwnerUserID
+
+    @OwnerUserID.setter
+    def OwnerUserID(self, OwnerUserID):
+        self._OwnerUserID = OwnerUserID
+
+    @property
+    def ToUserID(self):
+        r"""<p>被分享用户的 UserID</p>
+        :rtype: str
+        """
+        return self._ToUserID
+
+    @ToUserID.setter
+    def ToUserID(self, ToUserID):
+        self._ToUserID = ToUserID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OwnerUserID = params.get("OwnerUserID")
+        self._ToUserID = params.get("ToUserID")
+        self._RequestId = params.get("RequestId")
 
 
 class SubscribedTopicItem(AbstractModel):

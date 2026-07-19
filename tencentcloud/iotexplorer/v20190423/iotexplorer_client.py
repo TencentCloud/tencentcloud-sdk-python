@@ -5224,6 +5224,33 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RevokeShareDeviceFromUser(self, request):
+        r"""Owner 取消对指定用户的设备分享：
+        1. 校验产品 ACL / 子产品禁止 / 设备真实存在；
+        2. 只读定位 Owner（必须已存在），并校验 Owner 持有该设备；
+        3. 只读定位被取消分享用户（不存在视为已取消，幂等成功）；
+        4. 删除分享关系记录（不存在视为已取消，幂等成功）。
+
+        :param request: Request instance for RevokeShareDeviceFromUser.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.RevokeShareDeviceFromUserRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.RevokeShareDeviceFromUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RevokeShareDeviceFromUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.RevokeShareDeviceFromUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchPositionSpace(self, request):
         r"""搜索位置空间
 
@@ -5284,6 +5311,33 @@ class IotexplorerClient(AbstractClient):
             body = self.call("SearchTopicRule", params, headers=headers)
             response = json.loads(body)
             model = models.SearchTopicRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ShareDeviceToUser(self, request):
+        r"""Owner 将其名下的设备分享给指定 App 用户：
+        1. 校验产品 ACL / 子产品禁止 / 设备真实存在；
+        2. 只读定位 Owner（必须已存在），并校验 Owner 确实持有该设备；
+        3. 兜底创建被分享用户（已存在则复用，昵称不覆盖）；
+        4. 写入分享关系（重复分享幂等成功，不修改原 CreateTime）。
+
+        :param request: Request instance for ShareDeviceToUser.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ShareDeviceToUserRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ShareDeviceToUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ShareDeviceToUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ShareDeviceToUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1034,6 +1034,115 @@ class CreateRestoreTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTrashConfigRequest(AbstractModel):
+    r"""CreateTrashConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统ID</p>
+        :type FileSystemId: str
+        :param _ReservedDays: <p>数据保留时间（天）</p>
+        :type ReservedDays: int
+        :param _Status: <p>规则状态（1：打开；2：关闭）</p>
+        :type Status: int
+        :param _Path: <ol><li>字段为空表示开启普通用户回收站 </li><li>字段不为空表示开启HDFS原生回收站，且值必须为/user/*/.Trash</li></ol>
+        :type Path: str
+        """
+        self._FileSystemId = None
+        self._ReservedDays = None
+        self._Status = None
+        self._Path = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def ReservedDays(self):
+        r"""<p>数据保留时间（天）</p>
+        :rtype: int
+        """
+        return self._ReservedDays
+
+    @ReservedDays.setter
+    def ReservedDays(self, ReservedDays):
+        self._ReservedDays = ReservedDays
+
+    @property
+    def Status(self):
+        r"""<p>规则状态（1：打开；2：关闭）</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Path(self):
+        r"""<ol><li>字段为空表示开启普通用户回收站 </li><li>字段不为空表示开启HDFS原生回收站，且值必须为/user/*/.Trash</li></ol>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._ReservedDays = params.get("ReservedDays")
+        self._Status = params.get("Status")
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTrashConfigResponse(AbstractModel):
+    r"""CreateTrashConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAccessGroupRequest(AbstractModel):
     r"""DeleteAccessGroup请求参数结构体
 
@@ -1328,6 +1437,70 @@ class DeleteMountPointRequest(AbstractModel):
 
 class DeleteMountPointResponse(AbstractModel):
     r"""DeleteMountPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTrashConfigRequest(AbstractModel):
+    r"""DeleteTrashConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        """
+        self._FileSystemId = None
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTrashConfigResponse(AbstractModel):
+    r"""DeleteTrashConfig返回参数结构体
 
     """
 
@@ -2444,6 +2617,87 @@ class DescribeRestoreTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTrashConfigRequest(AbstractModel):
+    r"""DescribeTrashConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统ID</p>
+        :type FileSystemId: str
+        """
+        self._FileSystemId = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrashConfigResponse(AbstractModel):
+    r"""DescribeTrashConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrashConfig: <p>回收站配置</p>
+        :type TrashConfig: :class:`tencentcloud.chdfs.v20201112.models.TrashConfig`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TrashConfig = None
+        self._RequestId = None
+
+    @property
+    def TrashConfig(self):
+        r"""<p>回收站配置</p>
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.TrashConfig`
+        """
+        return self._TrashConfig
+
+    @TrashConfig.setter
+    def TrashConfig(self, TrashConfig):
+        self._TrashConfig = TrashConfig
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TrashConfig") is not None:
+            self._TrashConfig = TrashConfig()
+            self._TrashConfig._deserialize(params.get("TrashConfig"))
+        self._RequestId = params.get("RequestId")
+
+
 class DisassociateAccessGroupsRequest(AbstractModel):
     r"""DisassociateAccessGroups请求参数结构体
 
@@ -3468,6 +3722,100 @@ class ModifyResourceTagsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyTrashConfigRequest(AbstractModel):
+    r"""ModifyTrashConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param _ReservedDays: 数据保留时间（天）
+        :type ReservedDays: int
+        :param _Status: 规则状态（1：打开；2：关闭）
+        :type Status: int
+        """
+        self._FileSystemId = None
+        self._ReservedDays = None
+        self._Status = None
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def ReservedDays(self):
+        r"""数据保留时间（天）
+        :rtype: int
+        """
+        return self._ReservedDays
+
+    @ReservedDays.setter
+    def ReservedDays(self, ReservedDays):
+        self._ReservedDays = ReservedDays
+
+    @property
+    def Status(self):
+        r"""规则状态（1：打开；2：关闭）
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._ReservedDays = params.get("ReservedDays")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTrashConfigResponse(AbstractModel):
+    r"""ModifyTrashConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MountPoint(AbstractModel):
     r"""挂载点
 
@@ -3893,6 +4241,87 @@ class Transition(AbstractModel):
     def _deserialize(self, params):
         self._Days = params.get("Days")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrashConfig(AbstractModel):
+    r"""回收站配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param _ReservedDays: 数据保留时间（天）
+        :type ReservedDays: int
+        :param _Status: 回收站配置状态（1：打开；2：关闭）
+        :type Status: int
+        :param _Path: 回收站路径
+        :type Path: str
+        """
+        self._FileSystemId = None
+        self._ReservedDays = None
+        self._Status = None
+        self._Path = None
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def ReservedDays(self):
+        r"""数据保留时间（天）
+        :rtype: int
+        """
+        return self._ReservedDays
+
+    @ReservedDays.setter
+    def ReservedDays(self, ReservedDays):
+        self._ReservedDays = ReservedDays
+
+    @property
+    def Status(self):
+        r"""回收站配置状态（1：打开；2：关闭）
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Path(self):
+        r"""回收站路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._ReservedDays = params.get("ReservedDays")
+        self._Status = params.get("Status")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

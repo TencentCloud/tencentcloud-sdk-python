@@ -4618,6 +4618,87 @@ class DestroyInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DiskEncryptInfo(AbstractModel):
+    r"""群磁盘加密信息。用于 DescribeInstances / DescribeInstance 返回实例的当前加密配置，供控制台、SDK、运维侧识别该集群是否启用磁盘加密、使用的是哪一把 KMS 根密钥
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncryptType: <p>加密类型</p><p>枚举值：</p><ul><li>CUSTOMER_KMS： 客户自定义的KMS密钥信息</li><li>TENCENT_KEY： 使用腾讯云自动创建的KMS密钥信息</li></ul>
+        :type EncryptType: str
+        :param _KmsKeyId: <p>KMS 根密钥ID</p>
+        :type KmsKeyId: str
+        :param _KmsRegion: <p>KMS密钥地域</p>
+        :type KmsRegion: str
+        :param _KmsKeyName: <p>KMS 根密钥 key 名</p>
+        :type KmsKeyName: str
+        """
+        self._EncryptType = None
+        self._KmsKeyId = None
+        self._KmsRegion = None
+        self._KmsKeyName = None
+
+    @property
+    def EncryptType(self):
+        r"""<p>加密类型</p><p>枚举值：</p><ul><li>CUSTOMER_KMS： 客户自定义的KMS密钥信息</li><li>TENCENT_KEY： 使用腾讯云自动创建的KMS密钥信息</li></ul>
+        :rtype: str
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>KMS 根密钥ID</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def KmsRegion(self):
+        r"""<p>KMS密钥地域</p>
+        :rtype: str
+        """
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
+    def KmsKeyName(self):
+        r"""<p>KMS 根密钥 key 名</p>
+        :rtype: str
+        """
+        return self._KmsKeyName
+
+    @KmsKeyName.setter
+    def KmsKeyName(self, KmsKeyName):
+        self._KmsKeyName = KmsKeyName
+
+
+    def _deserialize(self, params):
+        self._EncryptType = params.get("EncryptType")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._KmsRegion = params.get("KmsRegion")
+        self._KmsKeyName = params.get("KmsKeyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DiskSpec(AbstractModel):
     r"""磁盘规格描述
 
@@ -5527,6 +5608,8 @@ class InstanceInfo(AbstractModel):
         :type EnableConfigKeyValue: str
         :param _HttpsEnabled: <p>实例是否开启HTTPS</p><p>枚举值：</p><ul><li>true： 已开启HTTPS</li><li>false： 未开启HTTPS</li></ul>
         :type HttpsEnabled: bool
+        :param _DiskEncryptInfo: <p>集群磁盘加密配置</p>
+        :type DiskEncryptInfo: :class:`tencentcloud.cdwch.v20200915.models.DiskEncryptInfo`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -5586,6 +5669,7 @@ class InstanceInfo(AbstractModel):
         self._InstanceType = None
         self._EnableConfigKeyValue = None
         self._HttpsEnabled = None
+        self._DiskEncryptInfo = None
 
     @property
     def InstanceId(self):
@@ -6225,6 +6309,17 @@ class InstanceInfo(AbstractModel):
     def HttpsEnabled(self, HttpsEnabled):
         self._HttpsEnabled = HttpsEnabled
 
+    @property
+    def DiskEncryptInfo(self):
+        r"""<p>集群磁盘加密配置</p>
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DiskEncryptInfo`
+        """
+        return self._DiskEncryptInfo
+
+    @DiskEncryptInfo.setter
+    def DiskEncryptInfo(self, DiskEncryptInfo):
+        self._DiskEncryptInfo = DiskEncryptInfo
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6303,6 +6398,9 @@ class InstanceInfo(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._EnableConfigKeyValue = params.get("EnableConfigKeyValue")
         self._HttpsEnabled = params.get("HttpsEnabled")
+        if params.get("DiskEncryptInfo") is not None:
+            self._DiskEncryptInfo = DiskEncryptInfo()
+            self._DiskEncryptInfo._deserialize(params.get("DiskEncryptInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

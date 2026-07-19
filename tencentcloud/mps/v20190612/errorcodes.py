@@ -116,6 +116,9 @@ INVALIDPARAMETER_INVALIDURL = 'InvalidParameter.InvalidUrl'
 # InvalidParameter.MaxBandwidth
 INVALIDPARAMETER_MAXBANDWIDTH = 'InvalidParameter.MaxBandwidth'
 
+# 非法参数，模型不支持
+INVALIDPARAMETER_MODELNOTSUPPORTED = 'InvalidParameter.ModelNotSupported'
+
 # InvalidParameter.Name
 INVALIDPARAMETER_NAME = 'InvalidParameter.Name'
 
@@ -166,6 +169,9 @@ INVALIDPARAMETER_TYPE = 'InvalidParameter.Type'
 
 # InvalidParameter.Url
 INVALIDPARAMETER_URL = 'InvalidParameter.Url'
+
+# JSON 解析失败；`Uin` / `SubAccountUin` / `Message` 缺失
+INVALIDPARAMETER_VALUE = 'InvalidParameter.Value'
 
 # 输入审核拦截。
 INVALIDPARAMETER_VIOLATIONCONTENT = 'InvalidParameter.ViolationContent'

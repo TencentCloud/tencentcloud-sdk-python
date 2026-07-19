@@ -332,6 +332,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDocToVideoTask(
+            self,
+            request: models.CreateDocToVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateDocToVideoTaskResponse:
+        """
+        创建 AiGC 文档生成视频任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDocToVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDocToVideoTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateImageSpriteTemplate(
             self,
             request: models.CreateImageSpriteTemplateRequest,
@@ -2948,6 +2966,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "EditMedia"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.EditMediaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EmbeddingData(
+            self,
+            request: models.EmbeddingDataRequest,
+            opts: Dict = None,
+    ) -> models.EmbeddingDataResponse:
+        """
+        模型embedding 接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EmbeddingData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EmbeddingDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

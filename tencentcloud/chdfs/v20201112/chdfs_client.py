@@ -187,6 +187,29 @@ class ChdfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTrashConfig(self, request):
+        r"""创建回收站配置。
+
+        :param request: Request instance for CreateTrashConfig.
+        :type request: :class:`tencentcloud.chdfs.v20201112.models.CreateTrashConfigRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.CreateTrashConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTrashConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTrashConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccessGroup(self, request):
         r"""删除权限组。
 
@@ -293,6 +316,29 @@ class ChdfsClient(AbstractClient):
             body = self.call("DeleteMountPoint", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteMountPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTrashConfig(self, request):
+        r"""删除回收站配置。
+
+        :param request: Request instance for DeleteTrashConfig.
+        :type request: :class:`tencentcloud.chdfs.v20201112.models.DeleteTrashConfigRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.DeleteTrashConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTrashConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTrashConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -532,6 +578,29 @@ class ChdfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTrashConfig(self, request):
+        r"""通过文件系统ID查看回收站配置。
+
+        :param request: Request instance for DescribeTrashConfig.
+        :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribeTrashConfigRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.DescribeTrashConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTrashConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTrashConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisassociateAccessGroups(self, request):
         r"""给挂载点解绑多个权限组。
 
@@ -684,6 +753,29 @@ class ChdfsClient(AbstractClient):
             body = self.call("ModifyResourceTags", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyResourceTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTrashConfig(self, request):
+        r"""修改回收站配置，需要指定回收站路径，数据保留时间、和状态。
+
+        :param request: Request instance for ModifyTrashConfig.
+        :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyTrashConfigRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.ModifyTrashConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTrashConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTrashConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

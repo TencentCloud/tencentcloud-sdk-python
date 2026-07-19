@@ -25763,15 +25763,9 @@ class JumpEvent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JumpEventType: 跳转事件枚举，
-* 1 - 企业收录。
-* 2 - 超管授权书审核。
-* 3 - 认证完成。
+        :param _JumpEventType: <p>跳转事件枚举</p><p>枚举值：</p><ul><li>1： 企业收录</li><li>2： 超管授权书审核</li><li>3： 企业认证完成</li><li>4： 员工加入完成</li></ul>
         :type JumpEventType: int
-        :param _JumpUrl: 为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
-Endpoint如果是APP 类型，请传递<font color="red">"true"</font>
-如果 Endpoint 是 H5 类型，请参考文档[跳转电子签H5](https://qian.tencent.com/developers/partner/openqianh5)
-p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        :param _JumpUrl: <p>为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。<br>Endpoint如果是APP 类型，请传递<font color="red">&quot;true&quot;</font><br>如果 Endpoint 是 H5 类型，请参考文档<a href="https://qian.tencent.com/developers/partner/openqianh5">跳转电子签H5</a><br>p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。</p>
         :type JumpUrl: str
         """
         self._JumpEventType = None
@@ -25779,10 +25773,7 @@ p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，
 
     @property
     def JumpEventType(self):
-        r"""跳转事件枚举，
-* 1 - 企业收录。
-* 2 - 超管授权书审核。
-* 3 - 认证完成。
+        r"""<p>跳转事件枚举</p><p>枚举值：</p><ul><li>1： 企业收录</li><li>2： 超管授权书审核</li><li>3： 企业认证完成</li><li>4： 员工加入完成</li></ul>
         :rtype: int
         """
         return self._JumpEventType
@@ -25793,10 +25784,7 @@ p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，
 
     @property
     def JumpUrl(self):
-        r"""为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
-Endpoint如果是APP 类型，请传递<font color="red">"true"</font>
-如果 Endpoint 是 H5 类型，请参考文档[跳转电子签H5](https://qian.tencent.com/developers/partner/openqianh5)
-p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+        r"""<p>为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。<br>Endpoint如果是APP 类型，请传递<font color="red">&quot;true&quot;</font><br>如果 Endpoint 是 H5 类型，请参考文档<a href="https://qian.tencent.com/developers/partner/openqianh5">跳转电子签H5</a><br>p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。</p>
         :rtype: str
         """
         return self._JumpUrl
@@ -27652,12 +27640,15 @@ class OrganizationAuthorizationOptions(AbstractModel):
         :type BankAccountNumberSame: bool
         :param _AddressSame: <p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在公司地址（ProxyAddress）不为空时有效</p>
         :type AddressSame: bool
+        :param _BizLicenseSame: <p>对方打开链接认证时，公司营业执照是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在公司营业执照（BusinessLicense）不为空时有效</p>
+        :type BizLicenseSame: bool
         """
         self._UniformSocialCreditCodeSame = None
         self._OrganizationNameSame = None
         self._LegalNameSame = None
         self._BankAccountNumberSame = None
         self._AddressSame = None
+        self._BizLicenseSame = None
 
     @property
     def UniformSocialCreditCodeSame(self):
@@ -27714,6 +27705,17 @@ class OrganizationAuthorizationOptions(AbstractModel):
     def AddressSame(self, AddressSame):
         self._AddressSame = AddressSame
 
+    @property
+    def BizLicenseSame(self):
+        r"""<p>对方打开链接认证时，公司营业执照是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在公司营业执照（BusinessLicense）不为空时有效</p>
+        :rtype: bool
+        """
+        return self._BizLicenseSame
+
+    @BizLicenseSame.setter
+    def BizLicenseSame(self, BizLicenseSame):
+        self._BizLicenseSame = BizLicenseSame
+
 
     def _deserialize(self, params):
         self._UniformSocialCreditCodeSame = params.get("UniformSocialCreditCodeSame")
@@ -27721,6 +27723,7 @@ class OrganizationAuthorizationOptions(AbstractModel):
         self._LegalNameSame = params.get("LegalNameSame")
         self._BankAccountNumberSame = params.get("BankAccountNumberSame")
         self._AddressSame = params.get("AddressSame")
+        self._BizLicenseSame = params.get("BizLicenseSame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
