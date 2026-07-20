@@ -131,6 +131,9 @@ FAILEDOPERATION_REVOKEPOLICYFAILED = 'FailedOperation.RevokePolicyFailed'
 # 语法解析失败，请校验后重试
 FAILEDOPERATION_SQLTASKPARSEFAILED = 'FailedOperation.SQLTaskParseFailed'
 
+# SQL任务结果超出限制
+FAILEDOPERATION_SQLTASKRESULTOVERSIZE = 'FailedOperation.SQLTaskResultOversize'
+
 # 资源已经绑定了同名标签键。
 FAILEDOPERATION_TAGALREADYATTACHED = 'FailedOperation.TagAlreadyAttached'
 

@@ -1009,6 +1009,11 @@ def test_import_rce_v20250425():
     from tencentcloud.rce.v20250425 import models
 
 
+def test_import_rce_v20260130():
+    from tencentcloud.rce.v20260130 import rce_client
+    from tencentcloud.rce.v20260130 import models
+
+
 def test_import_redis_v20180412():
     from tencentcloud.redis.v20180412 import redis_client
     from tencentcloud.redis.v20180412 import models

@@ -256,6 +256,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAlertCenterRuleAsync(self, request):
+        r"""用户告警中心-封禁、放通处置按钮
+
+        :param request: Request instance for CreateAlertCenterRuleAsync.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterRuleAsyncRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterRuleAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAlertCenterRuleAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAlertCenterRuleAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBlockIgnoreRuleList(self, request):
         r"""批量添加入侵防御封禁列表、放通列表规则
 
@@ -1018,7 +1041,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeCfwAssets(self, request):
-        r"""查询当前租户防火墙纳管资产。默认查询主机资产；仅明确需要 VPC 或子网时传 AssetType。结果在 Response.Data 的 JSON 字符串中。
+        r"""查询当前租户防火墙纳管资产。首次查询传 AssetType、过滤条件和 Limit；Response.Data.HasMore=true 时，续查只传 NextToken。默认查询 host；broad 查询分页返回资产，exact InstanceId 查询分页返回该实例 fingerprints 且每页重复基础资产。仅明确需要 VPC 或子网时传 AssetType。
 
         :param request: Request instance for DescribeCfwAssets.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwAssetsRequest`
@@ -1202,7 +1225,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeCfwSwitches(self, request):
-        r"""查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。
+        r"""查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。border_firewall、nat_firewall、vpc_firewall、ndr 的 available 表示至少一个对应防护开关实际开启，不表示仅已购买或已创建；ips.mode 可能为跟随全局、观察、拦截、严格、关闭或未知。
 
         :param request: Request instance for DescribeCfwSwitches.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeCfwSwitchesRequest`
@@ -2737,6 +2760,29 @@ class CfwClient(AbstractClient):
             body = self.call("ModifyIpsModeSwitch", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyIpsModeSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyIsolateTable(self, request):
+        r"""ModifyIsolateTable 隔离列表编辑和删除操作
+
+        :param request: Request instance for ModifyIsolateTable.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyIsolateTableRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyIsolateTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIsolateTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIsolateTableResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

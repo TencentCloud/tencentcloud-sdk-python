@@ -403,6 +403,24 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryModels(
+            self,
+            request: models.QueryModelsRequest,
+            opts: Dict = None,
+    ) -> models.QueryModelsResponse:
+        """
+        查询聊天支持模型信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryModels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryModelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QuerySceneList(
             self,
             request: models.QuerySceneListRequest,

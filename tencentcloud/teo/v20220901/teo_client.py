@@ -342,7 +342,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateConfigGroupVersion(self, request):
-        r"""在版本管理模式下，用于创建指定配置组的新版本。版本管理功能内测中，当前仅白名单开放。
+        r"""在版本管理模式下，用于创建指定配置组的新版本。
 
         :param request: Request instance for CreateConfigGroupVersion.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateConfigGroupVersionRequest`

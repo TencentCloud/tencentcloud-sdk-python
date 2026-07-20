@@ -2467,13 +2467,13 @@ class CfwStatusMonitorFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>过滤字段名。</p>
+        :param _Name: 过滤字段名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Values: <p>过滤值列表，最多 10 个。</p>
+        :param _Values: 过滤值列表，最多 10 个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
-        :param _OperatorType: <p>操作符类型，可选；仅支持后端允许的类型。</p>
+        :param _OperatorType: 操作符类型，可选；仅支持后端允许的类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorType: int
         """
@@ -2483,7 +2483,7 @@ class CfwStatusMonitorFilter(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>过滤字段名。</p>
+        r"""过滤字段名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2495,7 +2495,7 @@ class CfwStatusMonitorFilter(AbstractModel):
 
     @property
     def Values(self):
-        r"""<p>过滤值列表，最多 10 个。</p>
+        r"""过滤值列表，最多 10 个。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2507,7 +2507,7 @@ class CfwStatusMonitorFilter(AbstractModel):
 
     @property
     def OperatorType(self):
-        r"""<p>操作符类型，可选；仅支持后端允许的类型。</p>
+        r"""操作符类型，可选；仅支持后端允许的类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2539,9 +2539,9 @@ class CloseClusterNatFwSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatInsId: NAT防火墙实例ID
+        :param _NatInsId: <p>NAT防火墙实例ID</p>
         :type NatInsId: str
-        :param _CcnId: 云联网实例ID
+        :param _CcnId: <p>云联网实例ID</p>
         :type CcnId: str
         """
         self._NatInsId = None
@@ -2549,7 +2549,7 @@ class CloseClusterNatFwSwitchRequest(AbstractModel):
 
     @property
     def NatInsId(self):
-        r"""NAT防火墙实例ID
+        r"""<p>NAT防火墙实例ID</p>
         :rtype: str
         """
         return self._NatInsId
@@ -2560,7 +2560,7 @@ class CloseClusterNatFwSwitchRequest(AbstractModel):
 
     @property
     def CcnId(self):
-        r"""云联网实例ID
+        r"""<p>云联网实例ID</p>
         :rtype: str
         """
         return self._CcnId
@@ -4159,6 +4159,325 @@ class CreateAlertCenterOmitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAlertCenterRuleAsyncRequest(AbstractModel):
+    r"""CreateAlertCenterRuleAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HandleTime: <p>处置时间<br>1  1天<br>7   7天<br>-2 永久</p>
+        :type HandleTime: int
+        :param _HandleType: <p>处置类型<br>当HandleIdList 不为空时：1封禁 2放通<br>当HandleIpList 不为空时：3放通 4封禁</p>
+        :type HandleType: int
+        :param _AlertDirection: <p>当前日志方向： 0 出向 1 入向</p>
+        :type AlertDirection: int
+        :param _HandleDirection: <p>处置方向： 0出向 1入向 0,1出入向 3内网</p>
+        :type HandleDirection: str
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _HandleIdList: <p>处置对象,ID列表，  IdLists,IpList,EventIdList三选一</p>
+        :type HandleIdList: list of str
+        :param _HandleIpList: <p>处置对象,IP列表，  IdLists,IpList,EventIdList三选一</p>
+        :type HandleIpList: list of str
+        :param _HandleComment: <p>处置描述</p>
+        :type HandleComment: str
+        :param _IgnoreReason: <p>放通原因:<br>0默认 1重复 2误报 3紧急放通</p>
+        :type IgnoreReason: int
+        :param _BlockDomain: <p>封禁域名-保留字段</p>
+        :type BlockDomain: str
+        :param _HandleEventIdList: <p>处置对象,事件ID列表，  IdLists,IpList,EventIdList三选一</p>
+        :type HandleEventIdList: list of str
+        :param _WhiteIpList: <p>加白IP列表 隔离时放通的ip列表</p>
+        :type WhiteIpList: list of str
+        :param _IsolateType: <p>隔离类型 1 互联网入站 2 互联网出站 4 内网访问</p>
+        :type IsolateType: list of int
+        :param _AssetIdList: <p>隔离资产列表</p>
+        :type AssetIdList: list of str
+        :param _TargetEventIdList: <p>处置HandleIpList，属于的告警事件ID</p>
+        :type TargetEventIdList: list of str
+        """
+        self._HandleTime = None
+        self._HandleType = None
+        self._AlertDirection = None
+        self._HandleDirection = None
+        self._CfwAiAgentOperationSource = None
+        self._HandleIdList = None
+        self._HandleIpList = None
+        self._HandleComment = None
+        self._IgnoreReason = None
+        self._BlockDomain = None
+        self._HandleEventIdList = None
+        self._WhiteIpList = None
+        self._IsolateType = None
+        self._AssetIdList = None
+        self._TargetEventIdList = None
+
+    @property
+    def HandleTime(self):
+        r"""<p>处置时间<br>1  1天<br>7   7天<br>-2 永久</p>
+        :rtype: int
+        """
+        return self._HandleTime
+
+    @HandleTime.setter
+    def HandleTime(self, HandleTime):
+        self._HandleTime = HandleTime
+
+    @property
+    def HandleType(self):
+        r"""<p>处置类型<br>当HandleIdList 不为空时：1封禁 2放通<br>当HandleIpList 不为空时：3放通 4封禁</p>
+        :rtype: int
+        """
+        return self._HandleType
+
+    @HandleType.setter
+    def HandleType(self, HandleType):
+        self._HandleType = HandleType
+
+    @property
+    def AlertDirection(self):
+        r"""<p>当前日志方向： 0 出向 1 入向</p>
+        :rtype: int
+        """
+        return self._AlertDirection
+
+    @AlertDirection.setter
+    def AlertDirection(self, AlertDirection):
+        self._AlertDirection = AlertDirection
+
+    @property
+    def HandleDirection(self):
+        r"""<p>处置方向： 0出向 1入向 0,1出入向 3内网</p>
+        :rtype: str
+        """
+        return self._HandleDirection
+
+    @HandleDirection.setter
+    def HandleDirection(self, HandleDirection):
+        self._HandleDirection = HandleDirection
+
+    @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
+    def HandleIdList(self):
+        r"""<p>处置对象,ID列表，  IdLists,IpList,EventIdList三选一</p>
+        :rtype: list of str
+        """
+        return self._HandleIdList
+
+    @HandleIdList.setter
+    def HandleIdList(self, HandleIdList):
+        self._HandleIdList = HandleIdList
+
+    @property
+    def HandleIpList(self):
+        r"""<p>处置对象,IP列表，  IdLists,IpList,EventIdList三选一</p>
+        :rtype: list of str
+        """
+        return self._HandleIpList
+
+    @HandleIpList.setter
+    def HandleIpList(self, HandleIpList):
+        self._HandleIpList = HandleIpList
+
+    @property
+    def HandleComment(self):
+        r"""<p>处置描述</p>
+        :rtype: str
+        """
+        return self._HandleComment
+
+    @HandleComment.setter
+    def HandleComment(self, HandleComment):
+        self._HandleComment = HandleComment
+
+    @property
+    def IgnoreReason(self):
+        r"""<p>放通原因:<br>0默认 1重复 2误报 3紧急放通</p>
+        :rtype: int
+        """
+        return self._IgnoreReason
+
+    @IgnoreReason.setter
+    def IgnoreReason(self, IgnoreReason):
+        self._IgnoreReason = IgnoreReason
+
+    @property
+    def BlockDomain(self):
+        r"""<p>封禁域名-保留字段</p>
+        :rtype: str
+        """
+        return self._BlockDomain
+
+    @BlockDomain.setter
+    def BlockDomain(self, BlockDomain):
+        self._BlockDomain = BlockDomain
+
+    @property
+    def HandleEventIdList(self):
+        r"""<p>处置对象,事件ID列表，  IdLists,IpList,EventIdList三选一</p>
+        :rtype: list of str
+        """
+        return self._HandleEventIdList
+
+    @HandleEventIdList.setter
+    def HandleEventIdList(self, HandleEventIdList):
+        self._HandleEventIdList = HandleEventIdList
+
+    @property
+    def WhiteIpList(self):
+        r"""<p>加白IP列表 隔离时放通的ip列表</p>
+        :rtype: list of str
+        """
+        return self._WhiteIpList
+
+    @WhiteIpList.setter
+    def WhiteIpList(self, WhiteIpList):
+        self._WhiteIpList = WhiteIpList
+
+    @property
+    def IsolateType(self):
+        r"""<p>隔离类型 1 互联网入站 2 互联网出站 4 内网访问</p>
+        :rtype: list of int
+        """
+        return self._IsolateType
+
+    @IsolateType.setter
+    def IsolateType(self, IsolateType):
+        self._IsolateType = IsolateType
+
+    @property
+    def AssetIdList(self):
+        r"""<p>隔离资产列表</p>
+        :rtype: list of str
+        """
+        return self._AssetIdList
+
+    @AssetIdList.setter
+    def AssetIdList(self, AssetIdList):
+        self._AssetIdList = AssetIdList
+
+    @property
+    def TargetEventIdList(self):
+        r"""<p>处置HandleIpList，属于的告警事件ID</p>
+        :rtype: list of str
+        """
+        return self._TargetEventIdList
+
+    @TargetEventIdList.setter
+    def TargetEventIdList(self, TargetEventIdList):
+        self._TargetEventIdList = TargetEventIdList
+
+
+    def _deserialize(self, params):
+        self._HandleTime = params.get("HandleTime")
+        self._HandleType = params.get("HandleType")
+        self._AlertDirection = params.get("AlertDirection")
+        self._HandleDirection = params.get("HandleDirection")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
+        self._HandleIdList = params.get("HandleIdList")
+        self._HandleIpList = params.get("HandleIpList")
+        self._HandleComment = params.get("HandleComment")
+        self._IgnoreReason = params.get("IgnoreReason")
+        self._BlockDomain = params.get("BlockDomain")
+        self._HandleEventIdList = params.get("HandleEventIdList")
+        self._WhiteIpList = params.get("WhiteIpList")
+        self._IsolateType = params.get("IsolateType")
+        self._AssetIdList = params.get("AssetIdList")
+        self._TargetEventIdList = params.get("TargetEventIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAlertCenterRuleAsyncResponse(AbstractModel):
+    r"""CreateAlertCenterRuleAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: <p>返回状态码：<br>0 成功<br>非0 失败</p>
+        :type ReturnCode: int
+        :param _ReturnMsg: <p>返回信息：<br>success 成功<br>其他</p>
+        :type ReturnMsg: str
+        :param _Status: <p>处置状态码：0  处置成功 1处置中  -1 通用错误，不用处理-3 表示重复，需重新刷新列表其他</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        r"""<p>返回状态码：<br>0 成功<br>非0 失败</p>
+        :rtype: int
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        r"""<p>返回信息：<br>success 成功<br>其他</p>
+        :rtype: str
+        """
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def Status(self):
+        r"""<p>处置状态码：0  处置成功 1处置中  -1 通用错误，不用处理-3 表示重复，需重新刷新列表其他</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAlertCenterRuleRequest(AbstractModel):
     r"""CreateAlertCenterRule请求参数结构体
 
@@ -4824,11 +5143,11 @@ class CreateNatFwDnatRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 0：cfw新增模式，1：cfw接入模式。
+        :param _Mode: <p>0：cfw新增模式，1：cfw接入模式。</p>
         :type Mode: int
-        :param _CfwInstance: 防火墙实例id，该字段必须传递。
+        :param _CfwInstance: <p>防火墙实例id，该字段必须传递。</p>
         :type CfwInstance: str
-        :param _DnatRules: 添加或删除操作的Dnat规则列表。
+        :param _DnatRules: <p>添加或删除操作的Dnat规则列表。</p>
         :type DnatRules: list of CfwNatDnatRule
         """
         self._Mode = None
@@ -4837,7 +5156,7 @@ class CreateNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""0：cfw新增模式，1：cfw接入模式。
+        r"""<p>0：cfw新增模式，1：cfw接入模式。</p>
         :rtype: int
         """
         return self._Mode
@@ -4848,7 +5167,7 @@ class CreateNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        r"""防火墙实例id，该字段必须传递。
+        r"""<p>防火墙实例id，该字段必须传递。</p>
         :rtype: str
         """
         return self._CfwInstance
@@ -4859,7 +5178,7 @@ class CreateNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def DnatRules(self):
-        r"""添加或删除操作的Dnat规则列表。
+        r"""<p>添加或删除操作的Dnat规则列表。</p>
         :rtype: list of CfwNatDnatRule
         """
         return self._DnatRules
@@ -5126,27 +5445,27 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 防火墙实例名称
+        :param _Name: <p>防火墙实例名称</p>
         :type Name: str
-        :param _Width: 带宽
+        :param _Width: <p>带宽</p>
         :type Width: int
-        :param _Mode: 模式 1：接入模式；0：新增模式
+        :param _Mode: <p>模式 1：接入模式；0：新增模式</p>
         :type Mode: int
-        :param _NewModeItems: 新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+        :param _NewModeItems: <p>新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。</p>
         :type NewModeItems: :class:`tencentcloud.cfw.v20190904.models.NewModeItems`
-        :param _NatGwList: 接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+        :param _NatGwList: <p>接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。</p>
         :type NatGwList: list of str
-        :param _Zone: 主可用区，为空则选择默认可用区
+        :param _Zone: <p>主可用区，为空则选择默认可用区</p>
         :type Zone: str
-        :param _ZoneBak: 备可用区，为空则选择默认可用区
+        :param _ZoneBak: <p>备可用区，为空则选择默认可用区</p>
         :type ZoneBak: str
-        :param _CrossAZone: 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
+        :param _CrossAZone: <p>异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备</p>
         :type CrossAZone: int
-        :param _IsCreateDomain: 0不创建域名,1创建域名
+        :param _IsCreateDomain: <p>0不创建域名,1创建域名</p>
         :type IsCreateDomain: int
-        :param _Domain: 如果要创建域名则必填
+        :param _Domain: <p>如果要创建域名则必填</p>
         :type Domain: str
-        :param _FwCidrInfo: 指定防火墙使用网段信息
+        :param _FwCidrInfo: <p>指定防火墙使用网段信息</p>
         :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self._Name = None
@@ -5163,7 +5482,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""防火墙实例名称
+        r"""<p>防火墙实例名称</p>
         :rtype: str
         """
         return self._Name
@@ -5174,7 +5493,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Width(self):
-        r"""带宽
+        r"""<p>带宽</p>
         :rtype: int
         """
         return self._Width
@@ -5185,7 +5504,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""模式 1：接入模式；0：新增模式
+        r"""<p>模式 1：接入模式；0：新增模式</p>
         :rtype: int
         """
         return self._Mode
@@ -5196,7 +5515,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def NewModeItems(self):
-        r"""新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+        r"""<p>新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.NewModeItems`
         """
         return self._NewModeItems
@@ -5207,7 +5526,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def NatGwList(self):
-        r"""接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+        r"""<p>接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。</p>
         :rtype: list of str
         """
         return self._NatGwList
@@ -5218,7 +5537,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""主可用区，为空则选择默认可用区
+        r"""<p>主可用区，为空则选择默认可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -5229,7 +5548,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def ZoneBak(self):
-        r"""备可用区，为空则选择默认可用区
+        r"""<p>备可用区，为空则选择默认可用区</p>
         :rtype: str
         """
         return self._ZoneBak
@@ -5240,7 +5559,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def CrossAZone(self):
-        r"""异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
+        r"""<p>异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备</p>
         :rtype: int
         """
         return self._CrossAZone
@@ -5251,7 +5570,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def IsCreateDomain(self):
-        r"""0不创建域名,1创建域名
+        r"""<p>0不创建域名,1创建域名</p>
         :rtype: int
         """
         return self._IsCreateDomain
@@ -5262,7 +5581,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""如果要创建域名则必填
+        r"""<p>如果要创建域名则必填</p>
         :rtype: str
         """
         return self._Domain
@@ -5273,7 +5592,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
 
     @property
     def FwCidrInfo(self):
-        r"""指定防火墙使用网段信息
+        r"""<p>指定防火墙使用网段信息</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         return self._FwCidrInfo
@@ -5316,7 +5635,7 @@ class CreateNatFwInstanceWithDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CfwInsId: nat实例信息
+        :param _CfwInsId: <p>nat实例信息</p>
         :type CfwInsId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5326,7 +5645,7 @@ class CreateNatFwInstanceWithDomainResponse(AbstractModel):
 
     @property
     def CfwInsId(self):
-        r"""nat实例信息
+        r"""<p>nat实例信息</p>
         :rtype: str
         """
         return self._CfwInsId
@@ -6007,26 +6326,21 @@ class CreateVpcFwGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: VPC防火墙(组)名称
+        :param _Name: <p>VPC防火墙(组)名称</p>
         :type Name: str
-        :param _Mode: 模式 1：CCN云联网模式；0：私有网络模式 2: sase 模式 3：ccn 高级模式 4: 私有网络(跨租户单边模式)
+        :param _Mode: <p>模式 1：CCN云联网模式；0：私有网络模式 2: sase 模式 3：ccn 高级模式 4: 私有网络(跨租户单边模式)</p>
         :type Mode: int
-        :param _VpcFwInstances: 防火墙(组)下的防火墙实例列表
+        :param _VpcFwInstances: <p>防火墙(组)下的防火墙实例列表</p>
         :type VpcFwInstances: list of VpcFwInstance
-        :param _SwitchMode: 防火墙实例的开关模式
-1: 单点互通
-2: 多点互通
-3: 全互通
-4: 自定义路由
+        :param _SwitchMode: <p>防火墙实例的开关模式<br>1: 单点互通<br>2: 多点互通<br>3: 全互通<br>4: 自定义路由</p>
         :type SwitchMode: int
-        :param _FwVpcCidr: auto 自动选择防火墙网段
-10.10.10.0/24 用户输入的防火墙网段
+        :param _FwVpcCidr: <p>auto 自动选择防火墙网段<br>10.10.10.0/24 用户输入的防火墙网段</p>
         :type FwVpcCidr: str
-        :param _CcnId: 云联网id ，适用于云联网模式
+        :param _CcnId: <p>云联网id ，适用于云联网模式</p>
         :type CcnId: str
-        :param _FwCidrInfo: 指定防火墙使用网段信息
+        :param _FwCidrInfo: <p>指定防火墙使用网段信息</p>
         :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
-        :param _CrossUserMode: 跨租户管理员模式  1管理员 2多账号
+        :param _CrossUserMode: <p>跨租户管理员模式  1管理员 2多账号</p>
         :type CrossUserMode: str
         """
         self._Name = None
@@ -6040,7 +6354,7 @@ class CreateVpcFwGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""VPC防火墙(组)名称
+        r"""<p>VPC防火墙(组)名称</p>
         :rtype: str
         """
         return self._Name
@@ -6051,7 +6365,7 @@ class CreateVpcFwGroupRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""模式 1：CCN云联网模式；0：私有网络模式 2: sase 模式 3：ccn 高级模式 4: 私有网络(跨租户单边模式)
+        r"""<p>模式 1：CCN云联网模式；0：私有网络模式 2: sase 模式 3：ccn 高级模式 4: 私有网络(跨租户单边模式)</p>
         :rtype: int
         """
         return self._Mode
@@ -6062,7 +6376,7 @@ class CreateVpcFwGroupRequest(AbstractModel):
 
     @property
     def VpcFwInstances(self):
-        r"""防火墙(组)下的防火墙实例列表
+        r"""<p>防火墙(组)下的防火墙实例列表</p>
         :rtype: list of VpcFwInstance
         """
         return self._VpcFwInstances
@@ -6073,11 +6387,7 @@ class CreateVpcFwGroupRequest(AbstractModel):
 
     @property
     def SwitchMode(self):
-        r"""防火墙实例的开关模式
-1: 单点互通
-2: 多点互通
-3: 全互通
-4: 自定义路由
+        r"""<p>防火墙实例的开关模式<br>1: 单点互通<br>2: 多点互通<br>3: 全互通<br>4: 自定义路由</p>
         :rtype: int
         """
         return self._SwitchMode
@@ -6088,8 +6398,7 @@ class CreateVpcFwGroupRequest(AbstractModel):
 
     @property
     def FwVpcCidr(self):
-        r"""auto 自动选择防火墙网段
-10.10.10.0/24 用户输入的防火墙网段
+        r"""<p>auto 自动选择防火墙网段<br>10.10.10.0/24 用户输入的防火墙网段</p>
         :rtype: str
         """
         return self._FwVpcCidr
@@ -6100,7 +6409,7 @@ class CreateVpcFwGroupRequest(AbstractModel):
 
     @property
     def CcnId(self):
-        r"""云联网id ，适用于云联网模式
+        r"""<p>云联网id ，适用于云联网模式</p>
         :rtype: str
         """
         return self._CcnId
@@ -6111,7 +6420,7 @@ class CreateVpcFwGroupRequest(AbstractModel):
 
     @property
     def FwCidrInfo(self):
-        r"""指定防火墙使用网段信息
+        r"""<p>指定防火墙使用网段信息</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         return self._FwCidrInfo
@@ -6122,7 +6431,7 @@ class CreateVpcFwGroupRequest(AbstractModel):
 
     @property
     def CrossUserMode(self):
-        r"""跨租户管理员模式  1管理员 2多账号
+        r"""<p>跨租户管理员模式  1管理员 2多账号</p>
         :rtype: str
         """
         return self._CrossUserMode
@@ -6165,7 +6474,7 @@ class CreateVpcFwGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FwGroupId: 防火墙组ID
+        :param _FwGroupId: <p>防火墙组ID</p>
         :type FwGroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6175,7 +6484,7 @@ class CreateVpcFwGroupResponse(AbstractModel):
 
     @property
     def FwGroupId(self):
-        r"""防火墙组ID
+        r"""<p>防火墙组ID</p>
         :rtype: str
         """
         return self._FwGroupId
@@ -6936,11 +7245,11 @@ class DeleteNatFwDnatRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 0：cfw新增模式，1：cfw接入模式。
+        :param _Mode: <p>0：cfw新增模式，1：cfw接入模式。</p>
         :type Mode: int
-        :param _CfwInstance: 防火墙实例id，该字段必须传递。
+        :param _CfwInstance: <p>防火墙实例id，该字段必须传递。</p>
         :type CfwInstance: str
-        :param _DnatRules: 添加或删除操作的Dnat规则列表。
+        :param _DnatRules: <p>添加或删除操作的Dnat规则列表。</p>
         :type DnatRules: list of CfwNatDnatRule
         """
         self._Mode = None
@@ -6949,7 +7258,7 @@ class DeleteNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""0：cfw新增模式，1：cfw接入模式。
+        r"""<p>0：cfw新增模式，1：cfw接入模式。</p>
         :rtype: int
         """
         return self._Mode
@@ -6960,7 +7269,7 @@ class DeleteNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        r"""防火墙实例id，该字段必须传递。
+        r"""<p>防火墙实例id，该字段必须传递。</p>
         :rtype: str
         """
         return self._CfwInstance
@@ -6971,7 +7280,7 @@ class DeleteNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def DnatRules(self):
-        r"""添加或删除操作的Dnat规则列表。
+        r"""<p>添加或删除操作的Dnat规则列表。</p>
         :rtype: list of CfwNatDnatRule
         """
         return self._DnatRules
@@ -7035,14 +7344,14 @@ class DeleteNatFwInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CfwInstance: 防火墙实例id
+        :param _CfwInstance: <p>防火墙实例id</p>
         :type CfwInstance: str
         """
         self._CfwInstance = None
 
     @property
     def CfwInstance(self):
-        r"""防火墙实例id
+        r"""<p>防火墙实例id</p>
         :rtype: str
         """
         return self._CfwInstance
@@ -7381,13 +7690,11 @@ class DeleteVpcFwGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FwGroupId: 防火墙(组)Id
+        :param _FwGroupId: <p>防火墙(组)Id</p>
         :type FwGroupId: str
-        :param _DeleteFwGroup: 是否删除整个防火墙(组)
-0：不删除防火墙(组)，只删除单独实例
-1：删除整个防火墙(组)
+        :param _DeleteFwGroup: <p>是否删除整个防火墙(组)<br>0：不删除防火墙(组)，只删除单独实例<br>1：删除整个防火墙(组)</p>
         :type DeleteFwGroup: int
-        :param _VpcFwInsList: 待删除的防火墙实例数组
+        :param _VpcFwInsList: <p>待删除的防火墙实例数组</p>
         :type VpcFwInsList: list of str
         """
         self._FwGroupId = None
@@ -7396,7 +7703,7 @@ class DeleteVpcFwGroupRequest(AbstractModel):
 
     @property
     def FwGroupId(self):
-        r"""防火墙(组)Id
+        r"""<p>防火墙(组)Id</p>
         :rtype: str
         """
         return self._FwGroupId
@@ -7407,9 +7714,7 @@ class DeleteVpcFwGroupRequest(AbstractModel):
 
     @property
     def DeleteFwGroup(self):
-        r"""是否删除整个防火墙(组)
-0：不删除防火墙(组)，只删除单独实例
-1：删除整个防火墙(组)
+        r"""<p>是否删除整个防火墙(组)<br>0：不删除防火墙(组)，只删除单独实例<br>1：删除整个防火墙(组)</p>
         :rtype: int
         """
         return self._DeleteFwGroup
@@ -7420,7 +7725,7 @@ class DeleteVpcFwGroupRequest(AbstractModel):
 
     @property
     def VpcFwInsList(self):
-        r"""待删除的防火墙实例数组
+        r"""<p>待删除的防火墙实例数组</p>
         :rtype: list of str
         """
         return self._VpcFwInsList
@@ -9051,33 +9356,26 @@ class DescribeAssetSyncResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 返回状态
-1 更新中
-2 更新完成
-3 更新失败
-4 更新失败
+        :param _Status: <p>返回状态<br>1 更新中<br>2 更新完成<br>3 更新失败<br>4 更新失败</p>
         :type Status: int
-        :param _ReturnMsg: success 成功
-其他失败
+        :param _ReturnMsg: <p>success 成功<br>其他失败</p>
         :type ReturnMsg: str
-        :param _ReturnCode: 0 成功
-非0 失败
+        :param _ReturnCode: <p>0 成功<br>非0 失败</p>
         :type ReturnCode: int
+        :param _CVMCount: <p>已有CVM数量</p>
+        :type CVMCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._ReturnMsg = None
         self._ReturnCode = None
+        self._CVMCount = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""返回状态
-1 更新中
-2 更新完成
-3 更新失败
-4 更新失败
+        r"""<p>返回状态<br>1 更新中<br>2 更新完成<br>3 更新失败<br>4 更新失败</p>
         :rtype: int
         """
         return self._Status
@@ -9088,8 +9386,7 @@ class DescribeAssetSyncResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""success 成功
-其他失败
+        r"""<p>success 成功<br>其他失败</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -9100,8 +9397,7 @@ class DescribeAssetSyncResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""0 成功
-非0 失败
+        r"""<p>0 成功<br>非0 失败</p>
         :rtype: int
         """
         return self._ReturnCode
@@ -9109,6 +9405,17 @@ class DescribeAssetSyncResponse(AbstractModel):
     @ReturnCode.setter
     def ReturnCode(self, ReturnCode):
         self._ReturnCode = ReturnCode
+
+    @property
+    def CVMCount(self):
+        r"""<p>已有CVM数量</p>
+        :rtype: int
+        """
+        return self._CVMCount
+
+    @CVMCount.setter
+    def CVMCount(self, CVMCount):
+        self._CVMCount = CVMCount
 
     @property
     def RequestId(self):
@@ -9126,6 +9433,7 @@ class DescribeAssetSyncResponse(AbstractModel):
         self._Status = params.get("Status")
         self._ReturnMsg = params.get("ReturnMsg")
         self._ReturnCode = params.get("ReturnCode")
+        self._CVMCount = params.get("CVMCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9954,14 +10262,14 @@ class DescribeCcnAssociatedInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网ID
+        :param _CcnId: <p>云联网ID</p>
         :type CcnId: str
         """
         self._CcnId = None
 
     @property
     def CcnId(self):
-        r"""云联网ID
+        r"""<p>云联网ID</p>
         :rtype: str
         """
         return self._CcnId
@@ -9990,9 +10298,9 @@ class DescribeCcnAssociatedInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 实例总数
+        :param _Total: <p>实例总数</p>
         :type Total: int
-        :param _CcnAssociatedInstances: 云联网关联的实例信息
+        :param _CcnAssociatedInstances: <p>云联网关联的实例信息</p>
         :type CcnAssociatedInstances: list of CcnAssociatedInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10003,7 +10311,7 @@ class DescribeCcnAssociatedInstancesResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""实例总数
+        r"""<p>实例总数</p>
         :rtype: int
         """
         return self._Total
@@ -10014,7 +10322,7 @@ class DescribeCcnAssociatedInstancesResponse(AbstractModel):
 
     @property
     def CcnAssociatedInstances(self):
-        r"""云联网关联的实例信息
+        r"""<p>云联网关联的实例信息</p>
         :rtype: list of CcnAssociatedInstance
         """
         return self._CcnAssociatedInstances
@@ -10053,11 +10361,11 @@ class DescribeCcnInstanceRegionStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网ID
+        :param _CcnId: <p>云联网ID</p>
         :type CcnId: str
-        :param _InstanceIds: 要查询引流网络部署状态的云联网关联的实例ID列表
+        :param _InstanceIds: <p>要查询引流网络部署状态的云联网关联的实例ID列表</p>
         :type InstanceIds: list of str
-        :param _RoutingMode: 引流路由方法 0:多路由表, 1:策略路由
+        :param _RoutingMode: <p>引流路由方法 0:多路由表, 1:策略路由</p>
         :type RoutingMode: int
         """
         self._CcnId = None
@@ -10066,7 +10374,7 @@ class DescribeCcnInstanceRegionStatusRequest(AbstractModel):
 
     @property
     def CcnId(self):
-        r"""云联网ID
+        r"""<p>云联网ID</p>
         :rtype: str
         """
         return self._CcnId
@@ -10077,7 +10385,7 @@ class DescribeCcnInstanceRegionStatusRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""要查询引流网络部署状态的云联网关联的实例ID列表
+        r"""<p>要查询引流网络部署状态的云联网关联的实例ID列表</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -10088,7 +10396,7 @@ class DescribeCcnInstanceRegionStatusRequest(AbstractModel):
 
     @property
     def RoutingMode(self):
-        r"""引流路由方法 0:多路由表, 1:策略路由
+        r"""<p>引流路由方法 0:多路由表, 1:策略路由</p>
         :rtype: int
         """
         return self._RoutingMode
@@ -10119,9 +10427,9 @@ class DescribeCcnInstanceRegionStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 地域总数量
+        :param _Total: <p>地域总数量</p>
         :type Total: int
-        :param _RegionFwStatus: 地域防火墙引流网络状态列表
+        :param _RegionFwStatus: <p>地域防火墙引流网络状态列表</p>
         :type RegionFwStatus: list of RegionFwStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10132,7 +10440,7 @@ class DescribeCcnInstanceRegionStatusResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""地域总数量
+        r"""<p>地域总数量</p>
         :rtype: int
         """
         return self._Total
@@ -10143,7 +10451,7 @@ class DescribeCcnInstanceRegionStatusResponse(AbstractModel):
 
     @property
     def RegionFwStatus(self):
-        r"""地域防火墙引流网络状态列表
+        r"""<p>地域防火墙引流网络状态列表</p>
         :rtype: list of RegionFwStatus
         """
         return self._RegionFwStatus
@@ -10188,11 +10496,11 @@ class DescribeCcnVpcFwPolicyLimitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnPolicyInterconnectPairLenLimit: 支持的引流策略数量（最外层总条数）
+        :param _CcnPolicyInterconnectPairLenLimit: <p>支持的引流策略数量（最外层总条数）</p>
         :type CcnPolicyInterconnectPairLenLimit: int
-        :param _CcnPolicyGroupLenLimit: 单条引流策略中单组的最大配置数量（内层单组总条数）
+        :param _CcnPolicyGroupLenLimit: <p>单条引流策略中单组的最大配置数量（内层单组总条数）</p>
         :type CcnPolicyGroupLenLimit: int
-        :param _CcnPolicyCidrLenLimit: 接入的实例网段长度（网段数量）限制
+        :param _CcnPolicyCidrLenLimit: <p>接入的实例网段长度（网段数量）限制</p>
         :type CcnPolicyCidrLenLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10204,7 +10512,7 @@ class DescribeCcnVpcFwPolicyLimitResponse(AbstractModel):
 
     @property
     def CcnPolicyInterconnectPairLenLimit(self):
-        r"""支持的引流策略数量（最外层总条数）
+        r"""<p>支持的引流策略数量（最外层总条数）</p>
         :rtype: int
         """
         return self._CcnPolicyInterconnectPairLenLimit
@@ -10215,7 +10523,7 @@ class DescribeCcnVpcFwPolicyLimitResponse(AbstractModel):
 
     @property
     def CcnPolicyGroupLenLimit(self):
-        r"""单条引流策略中单组的最大配置数量（内层单组总条数）
+        r"""<p>单条引流策略中单组的最大配置数量（内层单组总条数）</p>
         :rtype: int
         """
         return self._CcnPolicyGroupLenLimit
@@ -10226,7 +10534,7 @@ class DescribeCcnVpcFwPolicyLimitResponse(AbstractModel):
 
     @property
     def CcnPolicyCidrLenLimit(self):
-        r"""接入的实例网段长度（网段数量）限制
+        r"""<p>接入的实例网段长度（网段数量）限制</p>
         :rtype: int
         """
         return self._CcnPolicyCidrLenLimit
@@ -10261,14 +10569,14 @@ class DescribeCcnVpcFwSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网ID
+        :param _CcnId: <p>云联网ID</p>
         :type CcnId: str
         """
         self._CcnId = None
 
     @property
     def CcnId(self):
-        r"""云联网ID
+        r"""<p>云联网ID</p>
         :rtype: str
         """
         return self._CcnId
@@ -10297,7 +10605,7 @@ class DescribeCcnVpcFwSwitchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InterconnectPairs: 互联对配置
+        :param _InterconnectPairs: <p>互联对配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InterconnectPairs: list of InterconnectPair
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10308,7 +10616,7 @@ class DescribeCcnVpcFwSwitchResponse(AbstractModel):
 
     @property
     def InterconnectPairs(self):
-        r"""互联对配置
+        r"""<p>互联对配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InterconnectPair
         """
@@ -10347,13 +10655,201 @@ class DescribeCfwAlertsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _StartTime: <p>告警开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；默认查询最近 1 小时。</p>
+        :type StartTime: str
+        :param _EndTime: <p>告警结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；默认当前时间。</p>
+        :type EndTime: str
+        :param _Level: <p>告警严重级别过滤。可选；枚举 low、middle、high。</p>
+        :type Level: str
+        :param _Direction: <p>流量方向过滤。可选；枚举 outbound 出站、inbound 入站、lateral 横向。</p>
+        :type Direction: str
+        :param _ActionStatus: <p>处置状态过滤。可选；枚举 unhandled、handled、blocked、passed、isolated、ignored。</p>
+        :type ActionStatus: str
+        :param _KillChain: <p>攻击链阶段过滤。可选；枚举 recon、brute_force、delivery、exploit、c2、lateral_movement、exfiltration。</p>
+        :type KillChain: str
+        :param _AttackResult: <p>攻击结果过滤。可选；枚举 attempt、success、fail、unknown。</p>
+        :type AttackResult: str
+        :param _Strategy: <p>IPS 策略动作过滤。可选；枚举 observe、block。</p>
+        :type Strategy: str
+        :param _EventName: <p>攻击事件名称关键字过滤。可选，例如 SQL注入、暴力破解、恶意域名访问。</p>
+        :type EventName: str
+        :param _EventId: <p>精确告警事件 ID 过滤。用于指定事件的写操作前检查和写操作后核验；事件重新聚合时返回原请求 ID 和当前事件 ID。无匹配返回空结果，多匹配或定位过程异常时失败，不退化为宽查询。</p>
+        :type EventId: str
+        :param _SrcIp: <p>源 IP 过滤。可选。</p>
+        :type SrcIp: str
+        :param _DstIp: <p>目的 IP 过滤。可选。</p>
+        :type DstIp: str
+        :param _InstanceId: <p>云资源实例 ID 过滤。可选，例如 ins-xxxxxxxx。</p>
+        :type InstanceId: str
         :param _Limit: <p>单页返回告警数。可选，默认 10，最大 50。</p>
         :type Limit: int
         :param _Offset: <p>分页偏移。可选，默认 0。</p>
         :type Offset: int
+        :param _OrderBy: <p>排序字段。可选，默认 EndTime；枚举 EndTime、StartTime、Count。排序字段。可选，默认 EndTime；枚举 EndTime、StartTime、Count；Count 表示按单个聚合告警事件的告警发生次数/命中次数排序，对应返回中的 occurrence_count</p>
+        :type OrderBy: str
+        :param _Order: <p>排序方向。可选，默认 desc；枚举 desc、asc。</p>
+        :type Order: str
         """
+        self._StartTime = None
+        self._EndTime = None
+        self._Level = None
+        self._Direction = None
+        self._ActionStatus = None
+        self._KillChain = None
+        self._AttackResult = None
+        self._Strategy = None
+        self._EventName = None
+        self._EventId = None
+        self._SrcIp = None
+        self._DstIp = None
+        self._InstanceId = None
         self._Limit = None
         self._Offset = None
+        self._OrderBy = None
+        self._Order = None
+
+    @property
+    def StartTime(self):
+        r"""<p>告警开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；默认查询最近 1 小时。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>告警结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；默认当前时间。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Level(self):
+        r"""<p>告警严重级别过滤。可选；枚举 low、middle、high。</p>
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Direction(self):
+        r"""<p>流量方向过滤。可选；枚举 outbound 出站、inbound 入站、lateral 横向。</p>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def ActionStatus(self):
+        r"""<p>处置状态过滤。可选；枚举 unhandled、handled、blocked、passed、isolated、ignored。</p>
+        :rtype: str
+        """
+        return self._ActionStatus
+
+    @ActionStatus.setter
+    def ActionStatus(self, ActionStatus):
+        self._ActionStatus = ActionStatus
+
+    @property
+    def KillChain(self):
+        r"""<p>攻击链阶段过滤。可选；枚举 recon、brute_force、delivery、exploit、c2、lateral_movement、exfiltration。</p>
+        :rtype: str
+        """
+        return self._KillChain
+
+    @KillChain.setter
+    def KillChain(self, KillChain):
+        self._KillChain = KillChain
+
+    @property
+    def AttackResult(self):
+        r"""<p>攻击结果过滤。可选；枚举 attempt、success、fail、unknown。</p>
+        :rtype: str
+        """
+        return self._AttackResult
+
+    @AttackResult.setter
+    def AttackResult(self, AttackResult):
+        self._AttackResult = AttackResult
+
+    @property
+    def Strategy(self):
+        r"""<p>IPS 策略动作过滤。可选；枚举 observe、block。</p>
+        :rtype: str
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def EventName(self):
+        r"""<p>攻击事件名称关键字过滤。可选，例如 SQL注入、暴力破解、恶意域名访问。</p>
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventId(self):
+        r"""<p>精确告警事件 ID 过滤。用于指定事件的写操作前检查和写操作后核验；事件重新聚合时返回原请求 ID 和当前事件 ID。无匹配返回空结果，多匹配或定位过程异常时失败，不退化为宽查询。</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def SrcIp(self):
+        r"""<p>源 IP 过滤。可选。</p>
+        :rtype: str
+        """
+        return self._SrcIp
+
+    @SrcIp.setter
+    def SrcIp(self, SrcIp):
+        self._SrcIp = SrcIp
+
+    @property
+    def DstIp(self):
+        r"""<p>目的 IP 过滤。可选。</p>
+        :rtype: str
+        """
+        return self._DstIp
+
+    @DstIp.setter
+    def DstIp(self, DstIp):
+        self._DstIp = DstIp
+
+    @property
+    def InstanceId(self):
+        r"""<p>云资源实例 ID 过滤。可选，例如 ins-xxxxxxxx。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def Limit(self):
@@ -10377,10 +10873,47 @@ class DescribeCfwAlertsRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def OrderBy(self):
+        r"""<p>排序字段。可选，默认 EndTime；枚举 EndTime、StartTime、Count。排序字段。可选，默认 EndTime；枚举 EndTime、StartTime、Count；Count 表示按单个聚合告警事件的告警发生次数/命中次数排序，对应返回中的 occurrence_count</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Order(self):
+        r"""<p>排序方向。可选，默认 desc；枚举 desc、asc。</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
 
     def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Level = params.get("Level")
+        self._Direction = params.get("Direction")
+        self._ActionStatus = params.get("ActionStatus")
+        self._KillChain = params.get("KillChain")
+        self._AttackResult = params.get("AttackResult")
+        self._Strategy = params.get("Strategy")
+        self._EventName = params.get("EventName")
+        self._EventId = params.get("EventId")
+        self._SrcIp = params.get("SrcIp")
+        self._DstIp = params.get("DstIp")
+        self._InstanceId = params.get("InstanceId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10441,19 +10974,19 @@ class DescribeCfwAnalysisDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scenario: <p>分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。</p>
+        :param _Scenario: 分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。
         :type Scenario: str
-        :param _StartTime: <p>查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。</p>
+        :param _StartTime: 查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。
         :type StartTime: str
-        :param _EndTime: <p>查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。</p>
+        :param _EndTime: 查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。
         :type EndTime: str
-        :param _ObjectType: <p>分析对象类型。可选，默认 user；user 表示租户全局，asset 表示单个资产，vpc 表示 VPC，domain 表示域名。</p>
+        :param _ObjectType: 分析对象类型。可选，默认 user；user 表示租户全局，asset 表示资产上下文，vpc 表示 VPC 上下文，domain 表示域名上下文。选择非 user 时建议同时传 ObjectId 以限定具体对象；当前未传 ObjectId 时仍按该对象类型执行宽查询。
         :type ObjectType: str
-        :param _ObjectId: <p>分析对象标识。ObjectType 为 asset、vpc 或 domain 时按需传入，可填写 IP、实例 ID、VPC ID 或域名。</p>
+        :param _ObjectId: 分析对象标识。ObjectType 为 asset、vpc 或 domain 时可传，用于限定具体 IP、实例 ID、VPC ID 或域名；当前为可选参数，省略时不会按具体对象过滤。
         :type ObjectId: str
-        :param _Target: <p>排障目标。可选，主要用于 access_troubleshoot 场景，可填写 IP 或域名。</p>
+        :param _Target: 目标 IP 或域名过滤。可选，常用于 access_troubleshoot，也可用于其他 Scenario；传入后优先于 ObjectType/ObjectId，并对该场景全部分析段追加源 IP、目的 IP 或目的域名过滤。
         :type Target: str
-        :param _SkipSections: <p>需要跳过的分析段名称列表。可选；不传时执行该场景全部分析段。</p>
+        :param _SkipSections: 需要跳过的分析段名称列表。可选；不传或传空数组时执行该场景全部分析段。full_traffic 支持 beacon、dns_large、dns_dga、dns_dga_fine、dns_tunnel、icmp_tunnel、mining、p2p、remote_tool、file_transfer、high_risk_outbound、lateral_baseline、vpc_sensitive、smb_write、outbound_baseline、inbound_high_risk、tls_expired、tls_self_signed、first_seen_ip、first_seen_country、first_seen_port；east_west 支持 vpc_inter_vpc、subnet_inter、service_port、lateral_baseline、vpc_sensitive、smb_write、database_lateral；alert_comprehensive 支持 outbound_baseline、lateral_baseline、beacon、inbound_high_risk、first_seen_ip、first_seen_country、first_seen_port；asset_exposure 支持 inbound_high_risk、tls_expired、tls_self_signed、high_risk_outbound；access_troubleshoot 支持 acl_border_block、acl_nat_block、acl_vpc_block、ips_block。传入当前 Scenario 不支持的名称会返回 InvalidParameter。
         :type SkipSections: list of str
         """
         self._Scenario = None
@@ -10466,7 +10999,7 @@ class DescribeCfwAnalysisDataRequest(AbstractModel):
 
     @property
     def Scenario(self):
-        r"""<p>分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。</p>
+        r"""分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。
         :rtype: str
         """
         return self._Scenario
@@ -10477,7 +11010,7 @@ class DescribeCfwAnalysisDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。</p>
+        r"""查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。
         :rtype: str
         """
         return self._StartTime
@@ -10488,7 +11021,7 @@ class DescribeCfwAnalysisDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""<p>查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。</p>
+        r"""查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。
         :rtype: str
         """
         return self._EndTime
@@ -10499,7 +11032,7 @@ class DescribeCfwAnalysisDataRequest(AbstractModel):
 
     @property
     def ObjectType(self):
-        r"""<p>分析对象类型。可选，默认 user；user 表示租户全局，asset 表示单个资产，vpc 表示 VPC，domain 表示域名。</p>
+        r"""分析对象类型。可选，默认 user；user 表示租户全局，asset 表示资产上下文，vpc 表示 VPC 上下文，domain 表示域名上下文。选择非 user 时建议同时传 ObjectId 以限定具体对象；当前未传 ObjectId 时仍按该对象类型执行宽查询。
         :rtype: str
         """
         return self._ObjectType
@@ -10510,7 +11043,7 @@ class DescribeCfwAnalysisDataRequest(AbstractModel):
 
     @property
     def ObjectId(self):
-        r"""<p>分析对象标识。ObjectType 为 asset、vpc 或 domain 时按需传入，可填写 IP、实例 ID、VPC ID 或域名。</p>
+        r"""分析对象标识。ObjectType 为 asset、vpc 或 domain 时可传，用于限定具体 IP、实例 ID、VPC ID 或域名；当前为可选参数，省略时不会按具体对象过滤。
         :rtype: str
         """
         return self._ObjectId
@@ -10521,7 +11054,7 @@ class DescribeCfwAnalysisDataRequest(AbstractModel):
 
     @property
     def Target(self):
-        r"""<p>排障目标。可选，主要用于 access_troubleshoot 场景，可填写 IP 或域名。</p>
+        r"""目标 IP 或域名过滤。可选，常用于 access_troubleshoot，也可用于其他 Scenario；传入后优先于 ObjectType/ObjectId，并对该场景全部分析段追加源 IP、目的 IP 或目的域名过滤。
         :rtype: str
         """
         return self._Target
@@ -10532,7 +11065,7 @@ class DescribeCfwAnalysisDataRequest(AbstractModel):
 
     @property
     def SkipSections(self):
-        r"""<p>需要跳过的分析段名称列表。可选；不传时执行该场景全部分析段。</p>
+        r"""需要跳过的分析段名称列表。可选；不传或传空数组时执行该场景全部分析段。full_traffic 支持 beacon、dns_large、dns_dga、dns_dga_fine、dns_tunnel、icmp_tunnel、mining、p2p、remote_tool、file_transfer、high_risk_outbound、lateral_baseline、vpc_sensitive、smb_write、outbound_baseline、inbound_high_risk、tls_expired、tls_self_signed、first_seen_ip、first_seen_country、first_seen_port；east_west 支持 vpc_inter_vpc、subnet_inter、service_port、lateral_baseline、vpc_sensitive、smb_write、database_lateral；alert_comprehensive 支持 outbound_baseline、lateral_baseline、beacon、inbound_high_risk、first_seen_ip、first_seen_country、first_seen_port；asset_exposure 支持 inbound_high_risk、tls_expired、tls_self_signed、high_risk_outbound；access_troubleshoot 支持 acl_border_block、acl_nat_block、acl_vpc_block、ips_block。传入当前 Scenario 不支持的名称会返回 InvalidParameter。
         :rtype: list of str
         """
         return self._SkipSections
@@ -10562,6 +11095,190 @@ class DescribeCfwAnalysisDataRequest(AbstractModel):
 
 class DescribeCfwAnalysisDataResponse(AbstractModel):
     r"""DescribeCfwAnalysisData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询结果。Response.Data 是 UTF-8 JSON object 字符串，调用方需要二次 JSON 解析。status 取值为 success、partial 或 error。section 查询失败时，error 只返回固定安全摘要，不包含底层服务内部信息。示例仅展示一个代表性 section；实际返回包含当前场景全部未跳过的 section；summary 包含 total_findings、high_risk_count 和 data_coverage，metadata 包含 scenario、time_range、object 和 query_stats，query_stats 包含 total_queries、successful 和 failed。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询结果。Response.Data 是 UTF-8 JSON object 字符串，调用方需要二次 JSON 解析。status 取值为 success、partial 或 error。section 查询失败时，error 只返回固定安全摘要，不包含底层服务内部信息。示例仅展示一个代表性 section；实际返回包含当前场景全部未跳过的 section；summary 包含 total_findings、high_risk_count 和 data_coverage，metadata 包含 scenario、time_range、object 和 query_stats，query_stats 包含 total_queries、successful 和 failed。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwAssetsRequest(AbstractModel):
+    r"""DescribeCfwAssets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetType: <p>资产类型。可选，默认 host；枚举 host 主机资产、vpc VPC 网络、subnet 子网。</p>
+        :type AssetType: str
+        :param _Ip: <p>IP 地址过滤。可选，支持部分匹配；适用于 host。</p>
+        :type Ip: str
+        :param _InstanceId: <p>实例 ID 过滤。可选，适用于 host。</p>
+        :type InstanceId: str
+        :param _VpcId: <p>VPC ID 过滤。可选，适用于 host、vpc、subnet。</p>
+        :type VpcId: str
+        :param _SubnetId: <p>子网 ID 过滤。可选，适用于 host、subnet。</p>
+        :type SubnetId: str
+        :param _InstanceType: <p>实例类型过滤。可选，适用于 host；常见值包括 CVM、CLB、ENI、POD、MYSQL、REDIS、MARIADB、NAT、VPN、HAVIP、NATFW、GAAP、DC。</p>
+        :type InstanceType: str
+        :param _Limit: <p>最大返回资产数。可选，默认 100，最大 1000。</p>
+        :type Limit: int
+        :param _NextToken: <p>上一页 Response.Data 返回的不透明资产或指纹续查 token。首次查询不传；续查时只传 NextToken，不能同时传 AssetType、过滤条件或 Limit。调用方无需区分 token 类型；无效、篡改或租户不匹配会被拒绝。</p>
+        :type NextToken: str
+        """
+        self._AssetType = None
+        self._Ip = None
+        self._InstanceId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._InstanceType = None
+        self._Limit = None
+        self._NextToken = None
+
+    @property
+    def AssetType(self):
+        r"""<p>资产类型。可选，默认 host；枚举 host 主机资产、vpc VPC 网络、subnet 子网。</p>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def Ip(self):
+        r"""<p>IP 地址过滤。可选，支持部分匹配；适用于 host。</p>
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID 过滤。可选，适用于 host。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC ID 过滤。可选，适用于 host、vpc、subnet。</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网 ID 过滤。可选，适用于 host、subnet。</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型过滤。可选，适用于 host；常见值包括 CVM、CLB、ENI、POD、MYSQL、REDIS、MARIADB、NAT、VPN、HAVIP、NATFW、GAAP、DC。</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Limit(self):
+        r"""<p>最大返回资产数。可选，默认 100，最大 1000。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NextToken(self):
+        r"""<p>上一页 Response.Data 返回的不透明资产或指纹续查 token。首次查询不传；续查时只传 NextToken，不能同时传 AssetType、过滤条件或 Limit。调用方无需区分 token 类型；无效、篡改或租户不匹配会被拒绝。</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+
+    def _deserialize(self, params):
+        self._AssetType = params.get("AssetType")
+        self._Ip = params.get("Ip")
+        self._InstanceId = params.get("InstanceId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._InstanceType = params.get("InstanceType")
+        self._Limit = params.get("Limit")
+        self._NextToken = params.get("NextToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfwAssetsResponse(AbstractModel):
+    r"""DescribeCfwAssets返回参数结构体
 
     """
 
@@ -10603,85 +11320,6 @@ class DescribeCfwAnalysisDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeCfwAssetsRequest(AbstractModel):
-    r"""DescribeCfwAssets请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Limit: 最大返回资产数。可选，默认 100；取值 1 至 1000。
-        :type Limit: int
-        """
-        self._Limit = None
-
-    @property
-    def Limit(self):
-        r"""最大返回资产数。可选，默认 100；取值 1 至 1000。
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-
-    def _deserialize(self, params):
-        self._Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCfwAssetsResponse(AbstractModel):
-    r"""DescribeCfwAssets返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
-        :type Data: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Data = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
-        :rtype: str
-        """
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Data = params.get("Data")
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeCfwEipsRequest(AbstractModel):
     r"""DescribeCfwEips请求参数结构体
 
@@ -10689,11 +11327,11 @@ class DescribeCfwEipsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 1：cfw接入模式，目前仅支持接入模式实例
+        :param _Mode: <p>1：cfw接入模式，目前仅支持接入模式实例</p>
         :type Mode: int
-        :param _NatGatewayId: ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
+        :param _NatGatewayId: <p>ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip</p>
         :type NatGatewayId: str
-        :param _CfwInstance: 防火墙实例id，当前仅支持接入模式的实例，该字段必填
+        :param _CfwInstance: <p>防火墙实例id，当前仅支持接入模式的实例，该字段必填</p>
         :type CfwInstance: str
         """
         self._Mode = None
@@ -10702,7 +11340,7 @@ class DescribeCfwEipsRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""1：cfw接入模式，目前仅支持接入模式实例
+        r"""<p>1：cfw接入模式，目前仅支持接入模式实例</p>
         :rtype: int
         """
         return self._Mode
@@ -10713,7 +11351,7 @@ class DescribeCfwEipsRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
-        r"""ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
+        r"""<p>ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip</p>
         :rtype: str
         """
         return self._NatGatewayId
@@ -10724,7 +11362,7 @@ class DescribeCfwEipsRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        r"""防火墙实例id，当前仅支持接入模式的实例，该字段必填
+        r"""<p>防火墙实例id，当前仅支持接入模式的实例，该字段必填</p>
         :rtype: str
         """
         return self._CfwInstance
@@ -10755,7 +11393,7 @@ class DescribeCfwEipsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatFwEipList: 返回值信息
+        :param _NatFwEipList: <p>返回值信息</p>
         :type NatFwEipList: list of NatFwEipsInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10765,7 +11403,7 @@ class DescribeCfwEipsResponse(AbstractModel):
 
     @property
     def NatFwEipList(self):
-        r"""返回值信息
+        r"""<p>返回值信息</p>
         :rtype: list of NatFwEipsInfo
         """
         return self._NatFwEipList
@@ -10809,10 +11447,10 @@ class DescribeCfwInsStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CfwInsStatus: 防火墙实例运行状态
+        :param _CfwInsStatus: <p>防火墙实例运行状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CfwInsStatus: list of CfwInsStatus
-        :param _TotalCount: 0
+        :param _TotalCount: <p>0</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10823,7 +11461,7 @@ class DescribeCfwInsStatusResponse(AbstractModel):
 
     @property
     def CfwInsStatus(self):
-        r"""防火墙实例运行状态
+        r"""<p>防火墙实例运行状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CfwInsStatus
         """
@@ -10835,7 +11473,7 @@ class DescribeCfwInsStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""0
+        r"""<p>0</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10874,17 +11512,17 @@ class DescribeCfwLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogType: <p>日志类型。首次查询必填；使用 NextToken 续查时不能传。枚举值包括 cfw_netflow_border、cfw_netflow_vpc、cfw_netflow_nat、cfw_netflow_nta、cfw_netflow_dns、cfw_rule_threatinfo、cfw_rule_acl、cfw_rule_vpc_acl、cfw_rule_nat_acl、cfw_ndr_subject_risk、cfw_ndr_dataleak_entry、cfw_ndr_ai_audit、cfw_feature_collect、cfw_behavior_collect、operate_log_all。</p>
+        :param _LogType: 日志类型。首次查询必填；使用 NextToken 续查时不能传。cfw_netflow_border=互联网边界流量，cfw_netflow_vpc=VPC 东西向流量，cfw_netflow_nat=NAT 防火墙流量，cfw_netflow_nta=NDR/NTA 流量，cfw_netflow_dns=DNS 防火墙日志，cfw_rule_threatinfo=入侵防御/威胁情报告警，cfw_rule_acl=互联网边界访问控制日志，cfw_rule_vpc_acl=VPC 访问控制日志，cfw_rule_nat_acl=NAT 访问控制日志，cfw_ndr_subject_risk=NDR 专题风险，cfw_ndr_dataleak_entry=NDR 敏感数据泄露，cfw_ndr_ai_audit=NDR AI 应用识别与大模型调用审计，cfw_feature_collect=统计特征与基线异常，cfw_behavior_collect=Beacon/DNS/端口/证书/VPC 互访行为，operate_log_all=操作审计日志。
         :type LogType: str
-        :param _Query: <p>CLS CQL 查询语句。默认 *；使用 NextToken 续查时不能传。</p>
+        :param _Query: 日志过滤表达式。默认 * 表示不过滤；例如 src_ip:1.1.1.1。可查询字段随 LogType 变化，应优先使用对应 Items 中已返回的字段名，不要猜测不存在的字段；使用 NextToken 续查时不能传。
         :type Query: str
-        :param _StartTime: <p>查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。</p>
+        :param _StartTime: 查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。
         :type StartTime: str
-        :param _TimeRange: <p>查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。</p>
+        :param _TimeRange: 查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。
         :type TimeRange: str
-        :param _Limit: <p>单页返回条数。默认 100，最大 1000；使用 NextToken 续查时不能传。</p>
+        :param _Limit: 单页返回条数。首次查询可选，默认 100；取值 1 至 1000；使用 NextToken 续查时不能传。
         :type Limit: int
-        :param _NextToken: <p>上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改、过期或租户不匹配会被拒绝。</p>
+        :param _NextToken: 上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改或租户不匹配会被拒绝。
         :type NextToken: str
         """
         self._LogType = None
@@ -10896,7 +11534,7 @@ class DescribeCfwLogsRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""<p>日志类型。首次查询必填；使用 NextToken 续查时不能传。枚举值包括 cfw_netflow_border、cfw_netflow_vpc、cfw_netflow_nat、cfw_netflow_nta、cfw_netflow_dns、cfw_rule_threatinfo、cfw_rule_acl、cfw_rule_vpc_acl、cfw_rule_nat_acl、cfw_ndr_subject_risk、cfw_ndr_dataleak_entry、cfw_ndr_ai_audit、cfw_feature_collect、cfw_behavior_collect、operate_log_all。</p>
+        r"""日志类型。首次查询必填；使用 NextToken 续查时不能传。cfw_netflow_border=互联网边界流量，cfw_netflow_vpc=VPC 东西向流量，cfw_netflow_nat=NAT 防火墙流量，cfw_netflow_nta=NDR/NTA 流量，cfw_netflow_dns=DNS 防火墙日志，cfw_rule_threatinfo=入侵防御/威胁情报告警，cfw_rule_acl=互联网边界访问控制日志，cfw_rule_vpc_acl=VPC 访问控制日志，cfw_rule_nat_acl=NAT 访问控制日志，cfw_ndr_subject_risk=NDR 专题风险，cfw_ndr_dataleak_entry=NDR 敏感数据泄露，cfw_ndr_ai_audit=NDR AI 应用识别与大模型调用审计，cfw_feature_collect=统计特征与基线异常，cfw_behavior_collect=Beacon/DNS/端口/证书/VPC 互访行为，operate_log_all=操作审计日志。
         :rtype: str
         """
         return self._LogType
@@ -10907,7 +11545,7 @@ class DescribeCfwLogsRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""<p>CLS CQL 查询语句。默认 *；使用 NextToken 续查时不能传。</p>
+        r"""日志过滤表达式。默认 * 表示不过滤；例如 src_ip:1.1.1.1。可查询字段随 LogType 变化，应优先使用对应 Items 中已返回的字段名，不要猜测不存在的字段；使用 NextToken 续查时不能传。
         :rtype: str
         """
         return self._Query
@@ -10918,7 +11556,7 @@ class DescribeCfwLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。</p>
+        r"""查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。
         :rtype: str
         """
         return self._StartTime
@@ -10929,7 +11567,7 @@ class DescribeCfwLogsRequest(AbstractModel):
 
     @property
     def TimeRange(self):
-        r"""<p>查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。</p>
+        r"""查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。
         :rtype: str
         """
         return self._TimeRange
@@ -10940,7 +11578,7 @@ class DescribeCfwLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>单页返回条数。默认 100，最大 1000；使用 NextToken 续查时不能传。</p>
+        r"""单页返回条数。首次查询可选，默认 100；取值 1 至 1000；使用 NextToken 续查时不能传。
         :rtype: int
         """
         return self._Limit
@@ -10951,7 +11589,7 @@ class DescribeCfwLogsRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""<p>上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改、过期或租户不匹配会被拒绝。</p>
+        r"""上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改或租户不匹配会被拒绝。
         :rtype: str
         """
         return self._NextToken
@@ -10980,6 +11618,100 @@ class DescribeCfwLogsRequest(AbstractModel):
 
 class DescribeCfwLogsResponse(AbstractModel):
     r"""DescribeCfwLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。Items 是当前页日志数组，字段随 LogType 变化；TotalCount 是当前页返回条数，Limit 是页大小，LogType 和 TimeWindow 回显查询范围。HasMore=true 时必须保存并原样使用 NextToken 续查；HasMore=false 时分页结束。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。Items 是当前页日志数组，字段随 LogType 变化；TotalCount 是当前页返回条数，Limit 是页大小，LogType 和 TimeWindow 回显查询范围。HasMore=true 时必须保存并原样使用 NextToken 续查；HasMore=false 时分页结束。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCfwRiskOverviewRequest(AbstractModel):
+    r"""DescribeCfwRiskOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>自定义开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；必须和 EndTime 同时传。</p>
+        :type StartTime: str
+        :param _EndTime: <p>自定义结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；必须和 StartTime 同时传。</p>
+        :type EndTime: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        r"""<p>自定义开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；必须和 EndTime 同时传。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>自定义结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；必须和 StartTime 同时传。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCfwRiskOverviewResponse(AbstractModel):
+    r"""DescribeCfwRiskOverview返回参数结构体
 
     """
 
@@ -11021,55 +11753,6 @@ class DescribeCfwLogsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeCfwRiskOverviewRequest(AbstractModel):
-    r"""DescribeCfwRiskOverview请求参数结构体
-
-    """
-
-
-class DescribeCfwRiskOverviewResponse(AbstractModel):
-    r"""DescribeCfwRiskOverview返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
-        :type Data: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Data = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
-        :rtype: str
-        """
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Data = params.get("Data")
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeCfwRuleOptimizationRequest(AbstractModel):
     r"""DescribeCfwRuleOptimization请求参数结构体
 
@@ -11077,20 +11760,48 @@ class DescribeCfwRuleOptimizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdleDays: 长期零命中规则阈值天数。可选，必须为正整数，默认 180。
+        :param _RuleType: <p>防火墙规则类型。必填。枚举：border 互联网边界；nat NAT 边界；vpc VPC 间；enterprise_sg 企业安全组。</p>
+        :type RuleType: str
+        :param _Dimensions: <p>要执行的优化维度白名单。可选，例如 D1、D2、D8；不传默认执行全部支持维度。</p>
+        :type Dimensions: list of str
+        :param _IdleDays: <p>长期零命中规则阈值天数。可选，默认 180。</p>
         :type IdleDays: int
-        :param _IpAggMin: 单 IP 离散过多聚合建议的最小数量。可选，最小为 2，默认 10。
+        :param _IpAggMin: <p>单 IP 离散过多聚合建议的最小数量。可选，默认 10。</p>
         :type IpAggMin: int
-        :param _IocSample: 可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，必须为正整数，默认 50。
+        :param _IocSample: <p>可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，默认 50。</p>
         :type IocSample: int
         """
+        self._RuleType = None
+        self._Dimensions = None
         self._IdleDays = None
         self._IpAggMin = None
         self._IocSample = None
 
     @property
+    def RuleType(self):
+        r"""<p>防火墙规则类型。必填。枚举：border 互联网边界；nat NAT 边界；vpc VPC 间；enterprise_sg 企业安全组。</p>
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Dimensions(self):
+        r"""<p>要执行的优化维度白名单。可选，例如 D1、D2、D8；不传默认执行全部支持维度。</p>
+        :rtype: list of str
+        """
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
     def IdleDays(self):
-        r"""长期零命中规则阈值天数。可选，必须为正整数，默认 180。
+        r"""<p>长期零命中规则阈值天数。可选，默认 180。</p>
         :rtype: int
         """
         return self._IdleDays
@@ -11101,7 +11812,7 @@ class DescribeCfwRuleOptimizationRequest(AbstractModel):
 
     @property
     def IpAggMin(self):
-        r"""单 IP 离散过多聚合建议的最小数量。可选，最小为 2，默认 10。
+        r"""<p>单 IP 离散过多聚合建议的最小数量。可选，默认 10。</p>
         :rtype: int
         """
         return self._IpAggMin
@@ -11112,7 +11823,7 @@ class DescribeCfwRuleOptimizationRequest(AbstractModel):
 
     @property
     def IocSample(self):
-        r"""可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，必须为正整数，默认 50。
+        r"""<p>可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，默认 50。</p>
         :rtype: int
         """
         return self._IocSample
@@ -11123,6 +11834,8 @@ class DescribeCfwRuleOptimizationRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        self._Dimensions = params.get("Dimensions")
         self._IdleDays = params.get("IdleDays")
         self._IpAggMin = params.get("IpAggMin")
         self._IocSample = params.get("IocSample")
@@ -11143,7 +11856,7 @@ class DescribeCfwRuleOptimizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。示例仅展示代表性字段；完整结果还包含 rule_type_name、rule_total、rule_active、rule_skipped_geo_or_cloud、dimension_skipped、thresholds 和 generated_at，finding 还包含 risk_level、affected_rule_uuids、affected_rule_seqs、recommendation_action、reason 和 evidence。结果过大时返回摘要，不返回 findings，并增加 truncated 和 truncated_reason。
+        :param _Data: <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11153,7 +11866,7 @@ class DescribeCfwRuleOptimizationResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。示例仅展示代表性字段；完整结果还包含 rule_type_name、rule_total、rule_active、rule_skipped_geo_or_cloud、dimension_skipped、thresholds 和 generated_at，finding 还包含 risk_level、affected_rule_uuids、affected_rule_seqs、recommendation_action、reason 和 evidence。结果过大时返回摘要，不返回 findings，并增加 truncated 和 truncated_reason。
+        r"""<p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
         :rtype: str
         """
         return self._Data
@@ -11194,8 +11907,28 @@ class DescribeCfwRulesRequest(AbstractModel):
         :type Direction: int
         :param _RuleAction: <p>规则动作过滤。可选。0 表示观察，1 表示阻断，2 表示放行；不传则不过滤。</p>
         :type RuleAction: int
+        :param _Enabled: <p>启用状态过滤。可选。默认只返回启用规则；传 false 只查询禁用规则。</p>
+        :type Enabled: bool
+        :param _IncludeDisabled: <p>是否同时包含启用和禁用规则。可选。true 表示包含两类；不能和 Enabled 同时使用。</p>
+        :type IncludeDisabled: bool
         :param _RuleId: <p>精确规则 ID 过滤。可选。用于按数值规则标识定位单条规则。</p>
         :type RuleId: int
+        :param _RuleUuid: <p>精确公开规则标识过滤。可选。推荐在用户提供规则标识时使用。</p>
+        :type RuleUuid: str
+        :param _Protocol: <p>协议过滤。可选。例如 TCP、UDP、ICMP、HTTP、HTTPS、ANY；不传则不过滤。</p>
+        :type Protocol: str
+        :param _SrcIp: <p>源地址或源内容关键字过滤。可选，支持模糊匹配。</p>
+        :type SrcIp: str
+        :param _DstIp: <p>目的地址、目的域名或目的内容关键字过滤。可选，支持模糊匹配。</p>
+        :type DstIp: str
+        :param _Description: <p>规则描述关键字过滤。可选。</p>
+        :type Description: str
+        :param _Keyword: <p>入侵防御列表关键字搜索。可选，最大 100 字符。blocklist 搜索 ioc/address/comment/rule_source；whitelist 搜索 rule_name/ioc/comment/src_ip/dst_ip；isolate 搜索实例、公网 IP、内网 IP、VPC、地域。</p>
+        :type Keyword: str
+        :param _InstanceId: <p>精确实例 ID 过滤。仅 RuleType=intrusion_prevention 且 ListType=isolate 时使用；写操作前后核验应使用该参数而不是 Keyword。</p>
+        :type InstanceId: str
+        :param _ExpandNames: <p>是否展开模板、资产组、实例等名称。可选，默认 true；传 false 返回原始标识。</p>
+        :type ExpandNames: bool
         :param _Limit: <p>单页返回规则数。可选，默认 100，最大 1000。</p>
         :type Limit: int
         :param _Offset: <p>分页偏移。可选，默认 0。</p>
@@ -11205,7 +11938,17 @@ class DescribeCfwRulesRequest(AbstractModel):
         self._ListType = None
         self._Direction = None
         self._RuleAction = None
+        self._Enabled = None
+        self._IncludeDisabled = None
         self._RuleId = None
+        self._RuleUuid = None
+        self._Protocol = None
+        self._SrcIp = None
+        self._DstIp = None
+        self._Description = None
+        self._Keyword = None
+        self._InstanceId = None
+        self._ExpandNames = None
         self._Limit = None
         self._Offset = None
 
@@ -11254,6 +11997,28 @@ class DescribeCfwRulesRequest(AbstractModel):
         self._RuleAction = RuleAction
 
     @property
+    def Enabled(self):
+        r"""<p>启用状态过滤。可选。默认只返回启用规则；传 false 只查询禁用规则。</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def IncludeDisabled(self):
+        r"""<p>是否同时包含启用和禁用规则。可选。true 表示包含两类；不能和 Enabled 同时使用。</p>
+        :rtype: bool
+        """
+        return self._IncludeDisabled
+
+    @IncludeDisabled.setter
+    def IncludeDisabled(self, IncludeDisabled):
+        self._IncludeDisabled = IncludeDisabled
+
+    @property
     def RuleId(self):
         r"""<p>精确规则 ID 过滤。可选。用于按数值规则标识定位单条规则。</p>
         :rtype: int
@@ -11263,6 +12028,94 @@ class DescribeCfwRulesRequest(AbstractModel):
     @RuleId.setter
     def RuleId(self, RuleId):
         self._RuleId = RuleId
+
+    @property
+    def RuleUuid(self):
+        r"""<p>精确公开规则标识过滤。可选。推荐在用户提供规则标识时使用。</p>
+        :rtype: str
+        """
+        return self._RuleUuid
+
+    @RuleUuid.setter
+    def RuleUuid(self, RuleUuid):
+        self._RuleUuid = RuleUuid
+
+    @property
+    def Protocol(self):
+        r"""<p>协议过滤。可选。例如 TCP、UDP、ICMP、HTTP、HTTPS、ANY；不传则不过滤。</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def SrcIp(self):
+        r"""<p>源地址或源内容关键字过滤。可选，支持模糊匹配。</p>
+        :rtype: str
+        """
+        return self._SrcIp
+
+    @SrcIp.setter
+    def SrcIp(self, SrcIp):
+        self._SrcIp = SrcIp
+
+    @property
+    def DstIp(self):
+        r"""<p>目的地址、目的域名或目的内容关键字过滤。可选，支持模糊匹配。</p>
+        :rtype: str
+        """
+        return self._DstIp
+
+    @DstIp.setter
+    def DstIp(self, DstIp):
+        self._DstIp = DstIp
+
+    @property
+    def Description(self):
+        r"""<p>规则描述关键字过滤。可选。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Keyword(self):
+        r"""<p>入侵防御列表关键字搜索。可选，最大 100 字符。blocklist 搜索 ioc/address/comment/rule_source；whitelist 搜索 rule_name/ioc/comment/src_ip/dst_ip；isolate 搜索实例、公网 IP、内网 IP、VPC、地域。</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def InstanceId(self):
+        r"""<p>精确实例 ID 过滤。仅 RuleType=intrusion_prevention 且 ListType=isolate 时使用；写操作前后核验应使用该参数而不是 Keyword。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ExpandNames(self):
+        r"""<p>是否展开模板、资产组、实例等名称。可选，默认 true；传 false 返回原始标识。</p>
+        :rtype: bool
+        """
+        return self._ExpandNames
+
+    @ExpandNames.setter
+    def ExpandNames(self, ExpandNames):
+        self._ExpandNames = ExpandNames
 
     @property
     def Limit(self):
@@ -11292,7 +12145,17 @@ class DescribeCfwRulesRequest(AbstractModel):
         self._ListType = params.get("ListType")
         self._Direction = params.get("Direction")
         self._RuleAction = params.get("RuleAction")
+        self._Enabled = params.get("Enabled")
+        self._IncludeDisabled = params.get("IncludeDisabled")
         self._RuleId = params.get("RuleId")
+        self._RuleUuid = params.get("RuleUuid")
+        self._Protocol = params.get("Protocol")
+        self._SrcIp = params.get("SrcIp")
+        self._DstIp = params.get("DstIp")
+        self._Description = params.get("Description")
+        self._Keyword = params.get("Keyword")
+        self._InstanceId = params.get("InstanceId")
+        self._ExpandNames = params.get("ExpandNames")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
@@ -11355,41 +12218,41 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Op: <p>操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。</p>
+        :param _Op: 操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。
         :type Op: str
-        :param _FirewallType: <p>防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。</p>
+        :param _FirewallType: 防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。
         :type FirewallType: str
-        :param _SelectionId: <p>二级下拉选项 ID。fetch_scene 按需传入；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。</p>
+        :param _SelectionId: 二级下拉选项 ID。fetch_scene 按需传入，值来自 describe_scene 返回的 selection.available_options[].id；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。
         :type SelectionId: str
-        :param _SelectionName: <p>二级下拉显示名称。可替代 SelectionId 按名称匹配。</p>
+        :param _SelectionName: 二级下拉显示名称。可替代 SelectionId 按名称匹配，值来自 describe_scene 返回的 selection.available_options[].name。
         :type SelectionName: str
-        :param _SelectionInstanceId: <p>引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景。</p>
+        :param _SelectionInstanceId: 引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景，优先使用 describe_scene 返回的 selection.available_options[].instance_id；如只有 instance_ids，则从数组中选择一个字符串值。
         :type SelectionInstanceId: str
-        :param _Metric: <p>指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。</p>
+        :param _Metric: 指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。
         :type Metric: str
-        :param _Perspective: <p>指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。</p>
+        :param _Perspective: 指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。
         :type Perspective: str
-        :param _IpScope: <p>NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用。</p>
+        :param _IpScope: NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用，其他组合传入将返回 InvalidParameter。
         :type IpScope: str
-        :param _TimePreset: <p>预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。</p>
+        :param _TimePreset: 预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。
         :type TimePreset: str
-        :param _StartTime: <p>自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。</p>
+        :param _StartTime: 自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。
         :type StartTime: str
-        :param _EndTime: <p>自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。</p>
+        :param _EndTime: 自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。
         :type EndTime: str
-        :param _Page: <p>页码，从 1 开始。默认 1；fetch_scene 列表视角使用。</p>
+        :param _Page: 页码，从 1 开始。默认 1；fetch_scene 列表视角使用。
         :type Page: int
-        :param _Limit: <p>每页条数。默认 10，最大 100；fetch_scene 列表视角使用。</p>
+        :param _Limit: 每页条数。默认 10，取值 1 至 100；fetch_scene 列表视角使用。
         :type Limit: int
-        :param _OverviewOnly: <p>是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。</p>
+        :param _OverviewOnly: 是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。
         :type OverviewOnly: bool
-        :param _Offset: <p>原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；必须大于等于 0 且不超过安全上限。</p>
+        :param _Offset: 原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；取值 0 至 10000。
         :type Offset: int
-        :param _SortBy: <p>排序字段。可选，只接受当前场景后端允许的安全字段。</p>
+        :param _SortBy: 排序字段。可选。互联网边界 IP、NAT IP/子网视角支持 InputMax、OutputMax；VPC switch 视角支持 SwitchName；VPC ip/vpc 视角支持 FlowMax；其他组合不要传。
         :type SortBy: str
-        :param _SortOrder: <p>排序方向。默认 desc；支持 asc、desc。</p>
+        :param _SortOrder: 排序方向。默认 desc；支持 asc、desc。
         :type SortOrder: str
-        :param _Filters: <p>过滤条件列表。可选，最多 5 个；是否支持以及字段名以具体 fetch_scene 场景为准。</p>
+        :param _Filters: 过滤条件列表。保留字段；当前公开 fetch_scene 场景均不支持，调用方不要传。
         :type Filters: list of CfwStatusMonitorFilter
         """
         self._Op = None
@@ -11413,7 +12276,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def Op(self):
-        r"""<p>操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。</p>
+        r"""操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。
         :rtype: str
         """
         return self._Op
@@ -11424,7 +12287,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def FirewallType(self):
-        r"""<p>防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。</p>
+        r"""防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。
         :rtype: str
         """
         return self._FirewallType
@@ -11435,7 +12298,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def SelectionId(self):
-        r"""<p>二级下拉选项 ID。fetch_scene 按需传入；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。</p>
+        r"""二级下拉选项 ID。fetch_scene 按需传入，值来自 describe_scene 返回的 selection.available_options[].id；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。
         :rtype: str
         """
         return self._SelectionId
@@ -11446,7 +12309,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def SelectionName(self):
-        r"""<p>二级下拉显示名称。可替代 SelectionId 按名称匹配。</p>
+        r"""二级下拉显示名称。可替代 SelectionId 按名称匹配，值来自 describe_scene 返回的 selection.available_options[].name。
         :rtype: str
         """
         return self._SelectionName
@@ -11457,7 +12320,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def SelectionInstanceId(self):
-        r"""<p>引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景。</p>
+        r"""引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景，优先使用 describe_scene 返回的 selection.available_options[].instance_id；如只有 instance_ids，则从数组中选择一个字符串值。
         :rtype: str
         """
         return self._SelectionInstanceId
@@ -11468,7 +12331,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def Metric(self):
-        r"""<p>指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。</p>
+        r"""指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。
         :rtype: str
         """
         return self._Metric
@@ -11479,7 +12342,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def Perspective(self):
-        r"""<p>指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。</p>
+        r"""指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。
         :rtype: str
         """
         return self._Perspective
@@ -11490,7 +12353,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def IpScope(self):
-        r"""<p>NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用。</p>
+        r"""NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用，其他组合传入将返回 InvalidParameter。
         :rtype: str
         """
         return self._IpScope
@@ -11501,7 +12364,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def TimePreset(self):
-        r"""<p>预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。</p>
+        r"""预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。
         :rtype: str
         """
         return self._TimePreset
@@ -11512,7 +12375,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。</p>
+        r"""自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。
         :rtype: str
         """
         return self._StartTime
@@ -11523,7 +12386,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""<p>自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。</p>
+        r"""自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。
         :rtype: str
         """
         return self._EndTime
@@ -11534,7 +12397,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""<p>页码，从 1 开始。默认 1；fetch_scene 列表视角使用。</p>
+        r"""页码，从 1 开始。默认 1；fetch_scene 列表视角使用。
         :rtype: int
         """
         return self._Page
@@ -11545,7 +12408,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>每页条数。默认 10，最大 100；fetch_scene 列表视角使用。</p>
+        r"""每页条数。默认 10，取值 1 至 100；fetch_scene 列表视角使用。
         :rtype: int
         """
         return self._Limit
@@ -11556,7 +12419,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def OverviewOnly(self):
-        r"""<p>是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。</p>
+        r"""是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。
         :rtype: bool
         """
         return self._OverviewOnly
@@ -11567,7 +12430,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""<p>原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；必须大于等于 0 且不超过安全上限。</p>
+        r"""原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；取值 0 至 10000。
         :rtype: int
         """
         return self._Offset
@@ -11578,7 +12441,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        r"""<p>排序字段。可选，只接受当前场景后端允许的安全字段。</p>
+        r"""排序字段。可选。互联网边界 IP、NAT IP/子网视角支持 InputMax、OutputMax；VPC switch 视角支持 SwitchName；VPC ip/vpc 视角支持 FlowMax；其他组合不要传。
         :rtype: str
         """
         return self._SortBy
@@ -11589,7 +12452,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def SortOrder(self):
-        r"""<p>排序方向。默认 desc；支持 asc、desc。</p>
+        r"""排序方向。默认 desc；支持 asc、desc。
         :rtype: str
         """
         return self._SortOrder
@@ -11600,7 +12463,7 @@ class DescribeCfwStatusMonitorRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>过滤条件列表。可选，最多 5 个；是否支持以及字段名以具体 fetch_scene 场景为准。</p>
+        r"""过滤条件列表。保留字段；当前公开 fetch_scene 场景均不支持，调用方不要传。
         :rtype: list of CfwStatusMonitorFilter
         """
         return self._Filters
@@ -11651,7 +12514,7 @@ class DescribeCfwStatusMonitorResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。describe_scene 返回 scene 与 selection.available_options；fetch_scene 返回选中场景的 data 快照。</p>
+        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。describe_scene 的 scene 返回 metric_options、perspective_options、default_metric、default_perspective、selection_required_by_metric、selection_kind_by_metric 和 time_preset_options；selection.available_options 返回可用于 SelectionId/SelectionName/SelectionInstanceId 的选项。fetch_scene 返回选中场景的 data 快照，可能包含 overview、table 或 detail。下方示例是字段结构节选，数组仅展示代表值。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11661,7 +12524,7 @@ class DescribeCfwStatusMonitorResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。describe_scene 返回 scene 与 selection.available_options；fetch_scene 返回选中场景的 data 快照。</p>
+        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。describe_scene 的 scene 返回 metric_options、perspective_options、default_metric、default_perspective、selection_required_by_metric、selection_kind_by_metric 和 time_preset_options；selection.available_options 返回可用于 SelectionId/SelectionName/SelectionInstanceId 的选项。fetch_scene 返回选中场景的 data 快照，可能包含 overview、table 或 detail。下方示例是字段结构节选，数组仅展示代表值。
         :rtype: str
         """
         return self._Data
@@ -11700,7 +12563,7 @@ class DescribeCfwSwitchesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+        :param _Data: 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。border_firewall 返回公网 IP 总数、已防护数、未防护数、操作中数量和防护率；nat_firewall、vpc_firewall 按 cluster/ha 返回实例及子开关汇总；ndr 返回已开启开关数；ips 返回当前防护模式。
         :type Data: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11710,7 +12573,7 @@ class DescribeCfwSwitchesResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+        r"""查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。border_firewall 返回公网 IP 总数、已防护数、未防护数、操作中数量和防护率；nat_firewall、vpc_firewall 按 cluster/ha 返回实例及子开关汇总；ndr 返回已开启开关数；ips 返回当前防护模式。
         :rtype: str
         """
         return self._Data
@@ -11912,21 +12775,21 @@ class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Index: 需要查询的索引，特定场景使用，可不填
+        :param _Index: <p>需要查询的索引，特定场景使用，可不填</p>
         :type Index: str
-        :param _Filters: 过滤条件组合
+        :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _StartTime: 检索的起始时间，可不传
+        :param _StartTime: <p>检索的起始时间，可不传</p>
         :type StartTime: str
-        :param _EndTime: 检索的截止时间，可不传
+        :param _EndTime: <p>检索的截止时间，可不传</p>
         :type EndTime: str
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :type Order: str
-        :param _By: 排序所用到的字段
+        :param _By: <p>排序所用到的字段</p>
         :type By: str
         """
         self._Index = None
@@ -11940,7 +12803,7 @@ class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
 
     @property
     def Index(self):
-        r"""需要查询的索引，特定场景使用，可不填
+        r"""<p>需要查询的索引，特定场景使用，可不填</p>
         :rtype: str
         """
         return self._Index
@@ -11951,7 +12814,7 @@ class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合
+        r"""<p>过滤条件组合</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -11962,7 +12825,7 @@ class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -11973,7 +12836,7 @@ class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -11984,7 +12847,7 @@ class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检索的起始时间，可不传
+        r"""<p>检索的起始时间，可不传</p>
         :rtype: str
         """
         return self._StartTime
@@ -11995,7 +12858,7 @@ class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检索的截止时间，可不传
+        r"""<p>检索的截止时间，可不传</p>
         :rtype: str
         """
         return self._EndTime
@@ -12006,7 +12869,7 @@ class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :rtype: str
         """
         return self._Order
@@ -12017,7 +12880,7 @@ class DescribeClusterVpcFwSwitchsRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段
+        r"""<p>排序所用到的字段</p>
         :rtype: str
         """
         return self._By
@@ -12058,12 +12921,12 @@ class DescribeClusterVpcFwSwitchsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总条数
+        :param _Total: <p>总条数</p>
         :type Total: int
-        :param _Data: 防火墙开关列表
+        :param _Data: <p>防火墙开关列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ClusterSwitchDetail
-        :param _FailData: 开关开启失败列表
+        :param _FailData: <p>开关开启失败列表</p>
         :type FailData: list of SwitchFailInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12075,7 +12938,7 @@ class DescribeClusterVpcFwSwitchsResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._Total
@@ -12086,7 +12949,7 @@ class DescribeClusterVpcFwSwitchsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""防火墙开关列表
+        r"""<p>防火墙开关列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClusterSwitchDetail
         """
@@ -12098,7 +12961,7 @@ class DescribeClusterVpcFwSwitchsResponse(AbstractModel):
 
     @property
     def FailData(self):
-        r"""开关开启失败列表
+        r"""<p>开关开启失败列表</p>
         :rtype: list of SwitchFailInfo
         """
         return self._FailData
@@ -12149,19 +13012,19 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BasicRuleSwitch: 基础防御开关
+        :param _BasicRuleSwitch: <p>基础防御开关</p>
         :type BasicRuleSwitch: int
-        :param _BaselineAllSwitch: 安全基线开关
+        :param _BaselineAllSwitch: <p>安全基线开关</p>
         :type BaselineAllSwitch: int
-        :param _TiSwitch: 威胁情报开关
+        :param _TiSwitch: <p>威胁情报开关</p>
         :type TiSwitch: int
-        :param _VirtualPatchSwitch: 虚拟补丁开关
+        :param _VirtualPatchSwitch: <p>虚拟补丁开关</p>
         :type VirtualPatchSwitch: int
-        :param _HistoryOpen: 是否历史开启
+        :param _HistoryOpen: <p>是否历史开启</p>
         :type HistoryOpen: int
-        :param _ReturnCode: 状态值，0：查询成功，非0：查询失败
+        :param _ReturnCode: <p>状态值，0：查询成功，非0：查询失败</p>
         :type ReturnCode: int
-        :param _ReturnMsg: 状态信息，success：查询成功，fail：查询失败
+        :param _ReturnMsg: <p>状态信息，success：查询成功，fail：查询失败</p>
         :type ReturnMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12177,7 +13040,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def BasicRuleSwitch(self):
-        r"""基础防御开关
+        r"""<p>基础防御开关</p>
         :rtype: int
         """
         return self._BasicRuleSwitch
@@ -12188,7 +13051,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def BaselineAllSwitch(self):
-        r"""安全基线开关
+        r"""<p>安全基线开关</p>
         :rtype: int
         """
         return self._BaselineAllSwitch
@@ -12199,7 +13062,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def TiSwitch(self):
-        r"""威胁情报开关
+        r"""<p>威胁情报开关</p>
         :rtype: int
         """
         return self._TiSwitch
@@ -12210,7 +13073,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def VirtualPatchSwitch(self):
-        r"""虚拟补丁开关
+        r"""<p>虚拟补丁开关</p>
         :rtype: int
         """
         return self._VirtualPatchSwitch
@@ -12221,7 +13084,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def HistoryOpen(self):
-        r"""是否历史开启
+        r"""<p>是否历史开启</p>
         :rtype: int
         """
         return self._HistoryOpen
@@ -12232,7 +13095,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""状态值，0：查询成功，非0：查询失败
+        r"""<p>状态值，0：查询成功，非0：查询失败</p>
         :rtype: int
         """
         return self._ReturnCode
@@ -12243,7 +13106,7 @@ class DescribeDefenseSwitchResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""状态信息，success：查询成功，fail：查询失败
+        r"""<p>状态信息，success：查询成功，fail：查询失败</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -13067,19 +13930,19 @@ class DescribeFwEdgeIpsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件组合
+        :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _StartTime: 检索的起始时间，可不传
+        :param _StartTime: <p>检索的起始时间，可不传</p>
         :type StartTime: str
-        :param _EndTime: 检索的截止时间，可不传
+        :param _EndTime: <p>检索的截止时间，可不传</p>
         :type EndTime: str
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :type Order: str
-        :param _By: 排序所用到的字段
+        :param _By: <p>排序所用到的字段</p>
         :type By: str
         """
         self._Filters = None
@@ -13092,7 +13955,7 @@ class DescribeFwEdgeIpsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合
+        r"""<p>过滤条件组合</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -13103,7 +13966,7 @@ class DescribeFwEdgeIpsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -13114,7 +13977,7 @@ class DescribeFwEdgeIpsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -13125,7 +13988,7 @@ class DescribeFwEdgeIpsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检索的起始时间，可不传
+        r"""<p>检索的起始时间，可不传</p>
         :rtype: str
         """
         return self._StartTime
@@ -13136,7 +13999,7 @@ class DescribeFwEdgeIpsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检索的截止时间，可不传
+        r"""<p>检索的截止时间，可不传</p>
         :rtype: str
         """
         return self._EndTime
@@ -13147,7 +14010,7 @@ class DescribeFwEdgeIpsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :rtype: str
         """
         return self._Order
@@ -13158,7 +14021,7 @@ class DescribeFwEdgeIpsRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段
+        r"""<p>排序所用到的字段</p>
         :rtype: str
         """
         return self._By
@@ -13198,15 +14061,15 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: ip 开关列表
+        :param _Data: <p>ip 开关列表</p>
         :type Data: list of EdgeIpInfo
-        :param _Total: ip 开关列表个数
+        :param _Total: <p>ip 开关列表个数</p>
         :type Total: int
-        :param _RegionLst: 地域列表
+        :param _RegionLst: <p>地域列表</p>
         :type RegionLst: list of str
-        :param _InstanceTypeLst: 实例类型列表
+        :param _InstanceTypeLst: <p>实例类型列表</p>
         :type InstanceTypeLst: list of str
-        :param _SerilCount: 串行模式开关个数
+        :param _SerilCount: <p>串行模式开关个数</p>
         :type SerilCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13220,7 +14083,7 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""ip 开关列表
+        r"""<p>ip 开关列表</p>
         :rtype: list of EdgeIpInfo
         """
         return self._Data
@@ -13231,7 +14094,7 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""ip 开关列表个数
+        r"""<p>ip 开关列表个数</p>
         :rtype: int
         """
         return self._Total
@@ -13242,7 +14105,7 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
 
     @property
     def RegionLst(self):
-        r"""地域列表
+        r"""<p>地域列表</p>
         :rtype: list of str
         """
         return self._RegionLst
@@ -13253,7 +14116,7 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
 
     @property
     def InstanceTypeLst(self):
-        r"""实例类型列表
+        r"""<p>实例类型列表</p>
         :rtype: list of str
         """
         return self._InstanceTypeLst
@@ -13264,7 +14127,7 @@ class DescribeFwEdgeIpsResponse(AbstractModel):
 
     @property
     def SerilCount(self):
-        r"""串行模式开关个数
+        r"""<p>串行模式开关个数</p>
         :rtype: int
         """
         return self._SerilCount
@@ -13500,14 +14363,14 @@ class DescribeFwSyncStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SyncType: 查询的同步状态类型：Route,同步路由状态
+        :param _SyncType: <p>查询的同步状态类型：Route,同步路由状态</p>
         :type SyncType: str
         """
         self._SyncType = None
 
     @property
     def SyncType(self):
-        r"""查询的同步状态类型：Route,同步路由状态
+        r"""<p>查询的同步状态类型：Route,同步路由状态</p>
         :rtype: str
         """
         return self._SyncType
@@ -13536,7 +14399,7 @@ class DescribeFwSyncStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SyncStatus: 同步状态：1，同步中；0，同步完成
+        :param _SyncStatus: <p>同步状态：1，同步中；0，同步完成</p>
         :type SyncStatus: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13546,7 +14409,7 @@ class DescribeFwSyncStatusResponse(AbstractModel):
 
     @property
     def SyncStatus(self):
-        r"""同步状态：1，同步中；0，同步完成
+        r"""<p>同步状态：1，同步中；0，同步完成</p>
         :rtype: int
         """
         return self._SyncStatus
@@ -13585,7 +14448,7 @@ class DescribeGuideScanInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 扫描信息
+        :param _Data: <p>扫描信息</p>
         :type Data: :class:`tencentcloud.cfw.v20190904.models.ScanInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13595,7 +14458,7 @@ class DescribeGuideScanInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""扫描信息
+        r"""<p>扫描信息</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.ScanInfo`
         """
         return self._Data
@@ -15355,21 +16218,21 @@ class DescribeNatFwDnatRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Index: 需要查询的索引，特定场景使用，可不填
+        :param _Index: <p>需要查询的索引，特定场景使用，可不填</p>
         :type Index: str
-        :param _Filters: 过滤条件组合
+        :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _StartTime: 检索的起始时间，可不传
+        :param _StartTime: <p>检索的起始时间，可不传</p>
         :type StartTime: str
-        :param _EndTime: 检索的截止时间，可不传
+        :param _EndTime: <p>检索的截止时间，可不传</p>
         :type EndTime: str
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传</p>
         :type Order: str
-        :param _By: 排序所用到的字段，可不传
+        :param _By: <p>排序所用到的字段，可不传</p>
         :type By: str
         """
         self._Index = None
@@ -15383,7 +16246,7 @@ class DescribeNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def Index(self):
-        r"""需要查询的索引，特定场景使用，可不填
+        r"""<p>需要查询的索引，特定场景使用，可不填</p>
         :rtype: str
         """
         return self._Index
@@ -15394,7 +16257,7 @@ class DescribeNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合
+        r"""<p>过滤条件组合</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -15405,7 +16268,7 @@ class DescribeNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -15416,7 +16279,7 @@ class DescribeNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -15427,7 +16290,7 @@ class DescribeNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检索的起始时间，可不传
+        r"""<p>检索的起始时间，可不传</p>
         :rtype: str
         """
         return self._StartTime
@@ -15438,7 +16301,7 @@ class DescribeNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检索的截止时间，可不传
+        r"""<p>检索的截止时间，可不传</p>
         :rtype: str
         """
         return self._EndTime
@@ -15449,7 +16312,7 @@ class DescribeNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传</p>
         :rtype: str
         """
         return self._Order
@@ -15460,7 +16323,7 @@ class DescribeNatFwDnatRuleRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段，可不传
+        r"""<p>排序所用到的字段，可不传</p>
         :rtype: str
         """
         return self._By
@@ -15501,9 +16364,9 @@ class DescribeNatFwDnatRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Dnat规则列表
+        :param _Data: <p>Dnat规则列表</p>
         :type Data: list of DescNatDnatRule
-        :param _Total: 列表总数
+        :param _Total: <p>列表总数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15514,7 +16377,7 @@ class DescribeNatFwDnatRuleResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Dnat规则列表
+        r"""<p>Dnat规则列表</p>
         :rtype: list of DescNatDnatRule
         """
         return self._Data
@@ -15525,7 +16388,7 @@ class DescribeNatFwDnatRuleResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""列表总数
+        r"""<p>列表总数</p>
         :rtype: int
         """
         return self._Total
@@ -15570,13 +16433,13 @@ class DescribeNatFwInfoCountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnMsg: 返回参数 success 成功 failed 失败
+        :param _ReturnMsg: <p>返回参数 success 成功 failed 失败</p>
         :type ReturnMsg: str
-        :param _NatFwInsCount: 当前租户的nat防火墙实例个数
+        :param _NatFwInsCount: <p>当前租户的nat防火墙实例个数</p>
         :type NatFwInsCount: int
-        :param _SubnetCount: 当前租户接入防火墙的子网个数
+        :param _SubnetCount: <p>当前租户接入防火墙的子网个数</p>
         :type SubnetCount: int
-        :param _OpenSwitchCount: 打开NAT防火墙开关个数
+        :param _OpenSwitchCount: <p>打开NAT防火墙开关个数</p>
         :type OpenSwitchCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15589,7 +16452,7 @@ class DescribeNatFwInfoCountResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""返回参数 success 成功 failed 失败
+        r"""<p>返回参数 success 成功 failed 失败</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -15600,7 +16463,7 @@ class DescribeNatFwInfoCountResponse(AbstractModel):
 
     @property
     def NatFwInsCount(self):
-        r"""当前租户的nat防火墙实例个数
+        r"""<p>当前租户的nat防火墙实例个数</p>
         :rtype: int
         """
         return self._NatFwInsCount
@@ -15611,7 +16474,7 @@ class DescribeNatFwInfoCountResponse(AbstractModel):
 
     @property
     def SubnetCount(self):
-        r"""当前租户接入防火墙的子网个数
+        r"""<p>当前租户接入防火墙的子网个数</p>
         :rtype: int
         """
         return self._SubnetCount
@@ -15622,7 +16485,7 @@ class DescribeNatFwInfoCountResponse(AbstractModel):
 
     @property
     def OpenSwitchCount(self):
-        r"""打开NAT防火墙开关个数
+        r"""<p>打开NAT防火墙开关个数</p>
         :rtype: int
         """
         return self._OpenSwitchCount
@@ -15738,7 +16601,7 @@ class DescribeNatFwInstanceWithRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatinsLst: 实例数组
+        :param _NatinsLst: <p>实例数组</p>
         :type NatinsLst: list of NatFwInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15748,7 +16611,7 @@ class DescribeNatFwInstanceWithRegionResponse(AbstractModel):
 
     @property
     def NatinsLst(self):
-        r"""实例数组
+        r"""<p>实例数组</p>
         :rtype: list of NatFwInstance
         """
         return self._NatinsLst
@@ -15786,11 +16649,11 @@ class DescribeNatFwInstancesInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filter: 获取实例列表过滤字段
+        :param _Filter: <p>获取实例列表过滤字段</p>
         :type Filter: list of NatFwFilter
-        :param _Offset: 第几页
+        :param _Offset: <p>第几页</p>
         :type Offset: int
-        :param _Limit: 每页长度
+        :param _Limit: <p>每页长度</p>
         :type Limit: int
         """
         self._Filter = None
@@ -15799,7 +16662,7 @@ class DescribeNatFwInstancesInfoRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""获取实例列表过滤字段
+        r"""<p>获取实例列表过滤字段</p>
         :rtype: list of NatFwFilter
         """
         return self._Filter
@@ -15810,7 +16673,7 @@ class DescribeNatFwInstancesInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""第几页
+        r"""<p>第几页</p>
         :rtype: int
         """
         return self._Offset
@@ -15821,7 +16684,7 @@ class DescribeNatFwInstancesInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页长度
+        r"""<p>每页长度</p>
         :rtype: int
         """
         return self._Limit
@@ -15857,9 +16720,9 @@ class DescribeNatFwInstancesInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatinsLst: 实例卡片信息数组
+        :param _NatinsLst: <p>实例卡片信息数组</p>
         :type NatinsLst: list of NatInstanceInfo
-        :param _Total: nat 防火墙个数
+        :param _Total: <p>nat 防火墙个数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15870,7 +16733,7 @@ class DescribeNatFwInstancesInfoResponse(AbstractModel):
 
     @property
     def NatinsLst(self):
-        r"""实例卡片信息数组
+        r"""<p>实例卡片信息数组</p>
         :rtype: list of NatInstanceInfo
         """
         return self._NatinsLst
@@ -15881,7 +16744,7 @@ class DescribeNatFwInstancesInfoResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""nat 防火墙个数
+        r"""<p>nat 防火墙个数</p>
         :rtype: int
         """
         return self._Total
@@ -15920,15 +16783,15 @@ class DescribeNatFwSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，分页用
+        :param _Offset: <p>偏移量，分页用</p>
         :type Offset: int
-        :param _Limit: 条数，分页用
+        :param _Limit: <p>条数，分页用</p>
         :type Limit: int
-        :param _Filters: 过滤条件组合
+        :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :type Order: str
-        :param _By: 排序所用到的字段
+        :param _By: <p>排序所用到的字段</p>
         :type By: str
         """
         self._Offset = None
@@ -15939,7 +16802,7 @@ class DescribeNatFwSwitchRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，分页用
+        r"""<p>偏移量，分页用</p>
         :rtype: int
         """
         return self._Offset
@@ -15950,7 +16813,7 @@ class DescribeNatFwSwitchRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""条数，分页用
+        r"""<p>条数，分页用</p>
         :rtype: int
         """
         return self._Limit
@@ -15961,7 +16824,7 @@ class DescribeNatFwSwitchRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合
+        r"""<p>过滤条件组合</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -15972,7 +16835,7 @@ class DescribeNatFwSwitchRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :rtype: str
         """
         return self._Order
@@ -15983,7 +16846,7 @@ class DescribeNatFwSwitchRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段
+        r"""<p>排序所用到的字段</p>
         :rtype: str
         """
         return self._By
@@ -16021,28 +16884,28 @@ class DescribeNatFwSwitchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _Data: NAT边界防火墙开关列表数据
+        :param _Data: <p>NAT边界防火墙开关列表数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of NatSwitchListData
-        :param _VpcList: 开关相关VPC列表
+        :param _VpcList: <p>开关相关VPC列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcList: list of CommonIdName
-        :param _NatList: 开关相关NAT列表
+        :param _NatList: <p>开关相关NAT列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NatList: list of CommonIdName
-        :param _RouteList: 开关相关ROUTE列表
+        :param _RouteList: <p>开关相关ROUTE列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteList: list of CommonIdName
-        :param _OnNum: 开启开关个数
+        :param _OnNum: <p>开启开关个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnNum: int
-        :param _OffNum: 关闭开关个数
+        :param _OffNum: <p>关闭开关个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffNum: int
-        :param _FailData: 失败开关状态
+        :param _FailData: <p>失败开关状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailData: list of CommonIdNameStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16060,7 +16923,7 @@ class DescribeNatFwSwitchResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16072,7 +16935,7 @@ class DescribeNatFwSwitchResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""NAT边界防火墙开关列表数据
+        r"""<p>NAT边界防火墙开关列表数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NatSwitchListData
         """
@@ -16084,7 +16947,7 @@ class DescribeNatFwSwitchResponse(AbstractModel):
 
     @property
     def VpcList(self):
-        r"""开关相关VPC列表
+        r"""<p>开关相关VPC列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CommonIdName
         """
@@ -16096,7 +16959,7 @@ class DescribeNatFwSwitchResponse(AbstractModel):
 
     @property
     def NatList(self):
-        r"""开关相关NAT列表
+        r"""<p>开关相关NAT列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CommonIdName
         """
@@ -16108,7 +16971,7 @@ class DescribeNatFwSwitchResponse(AbstractModel):
 
     @property
     def RouteList(self):
-        r"""开关相关ROUTE列表
+        r"""<p>开关相关ROUTE列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CommonIdName
         """
@@ -16120,7 +16983,7 @@ class DescribeNatFwSwitchResponse(AbstractModel):
 
     @property
     def OnNum(self):
-        r"""开启开关个数
+        r"""<p>开启开关个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16132,7 +16995,7 @@ class DescribeNatFwSwitchResponse(AbstractModel):
 
     @property
     def OffNum(self):
-        r"""关闭开关个数
+        r"""<p>关闭开关个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16144,7 +17007,7 @@ class DescribeNatFwSwitchResponse(AbstractModel):
 
     @property
     def FailData(self):
-        r"""失败开关状态
+        r"""<p>失败开关状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CommonIdNameStatus
         """
@@ -16210,13 +17073,13 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatFwInsId: natfw 防火墙实例id
+        :param _NatFwInsId: <p>natfw 防火墙实例id</p>
         :type NatFwInsId: str
-        :param _NatInsIdFilter: natfw 过滤，以','分隔
+        :param _NatInsIdFilter: <p>natfw 过滤，以&#39;,&#39;分隔</p>
         :type NatInsIdFilter: str
-        :param _Offset: 分页页数
+        :param _Offset: <p>分页页数</p>
         :type Offset: int
-        :param _Limit: 每页最多个数
+        :param _Limit: <p>每页最多个数</p>
         :type Limit: int
         """
         self._NatFwInsId = None
@@ -16226,7 +17089,7 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
     @property
     def NatFwInsId(self):
-        r"""natfw 防火墙实例id
+        r"""<p>natfw 防火墙实例id</p>
         :rtype: str
         """
         return self._NatFwInsId
@@ -16237,7 +17100,7 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
     @property
     def NatInsIdFilter(self):
-        r"""natfw 过滤，以','分隔
+        r"""<p>natfw 过滤，以&#39;,&#39;分隔</p>
         :rtype: str
         """
         return self._NatInsIdFilter
@@ -16248,7 +17111,7 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页页数
+        r"""<p>分页页数</p>
         :rtype: int
         """
         return self._Offset
@@ -16259,7 +17122,7 @@ class DescribeNatFwVpcDnsLstRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页最多个数
+        r"""<p>每页最多个数</p>
         :rtype: int
         """
         return self._Limit
@@ -16291,11 +17154,11 @@ class DescribeNatFwVpcDnsLstResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcDnsSwitchLst: nat防火墙vpc dns 信息数组
+        :param _VpcDnsSwitchLst: <p>nat防火墙vpc dns 信息数组</p>
         :type VpcDnsSwitchLst: list of VpcDnsInfo
-        :param _ReturnMsg: 返回参数 success成功 failed 失败
+        :param _ReturnMsg: <p>返回参数 success成功 failed 失败</p>
         :type ReturnMsg: str
-        :param _Total: 开关总条数
+        :param _Total: <p>开关总条数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16307,7 +17170,7 @@ class DescribeNatFwVpcDnsLstResponse(AbstractModel):
 
     @property
     def VpcDnsSwitchLst(self):
-        r"""nat防火墙vpc dns 信息数组
+        r"""<p>nat防火墙vpc dns 信息数组</p>
         :rtype: list of VpcDnsInfo
         """
         return self._VpcDnsSwitchLst
@@ -16318,7 +17181,7 @@ class DescribeNatFwVpcDnsLstResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""返回参数 success成功 failed 失败
+        r"""<p>返回参数 success成功 failed 失败</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -16329,7 +17192,7 @@ class DescribeNatFwVpcDnsLstResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""开关总条数
+        r"""<p>开关总条数</p>
         :rtype: int
         """
         return self._Total
@@ -17696,14 +18559,14 @@ class DescribeSwitchErrorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FwType: EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙
+        :param _FwType: <p>EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙</p>
         :type FwType: str
         """
         self._FwType = None
 
     @property
     def FwType(self):
-        r"""EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙
+        r"""<p>EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙</p>
         :rtype: str
         """
         return self._FwType
@@ -17732,7 +18595,7 @@ class DescribeSwitchErrorResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 错误信息列表
+        :param _Data: <p>错误信息列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of SwitchError
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17743,7 +18606,7 @@ class DescribeSwitchErrorResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""错误信息列表
+        r"""<p>错误信息列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SwitchError
         """
@@ -18791,10 +19654,10 @@ class DescribeVpcFwCcnPolicyWhiteListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SupportCcnPolicy: 支持自动接入和策略路由的CCN列表
+        :param _SupportCcnPolicy: <p>支持自动接入和策略路由的CCN列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportCcnPolicy: list of str
-        :param _SupportCcnPolicyCidr: 自动接入中支持自定义cidr的CCN列表
+        :param _SupportCcnPolicyCidr: <p>自动接入中支持自定义cidr的CCN列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportCcnPolicyCidr: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18806,7 +19669,7 @@ class DescribeVpcFwCcnPolicyWhiteListResponse(AbstractModel):
 
     @property
     def SupportCcnPolicy(self):
-        r"""支持自动接入和策略路由的CCN列表
+        r"""<p>支持自动接入和策略路由的CCN列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -18818,7 +19681,7 @@ class DescribeVpcFwCcnPolicyWhiteListResponse(AbstractModel):
 
     @property
     def SupportCcnPolicyCidr(self):
-        r"""自动接入中支持自定义cidr的CCN列表
+        r"""<p>自动接入中支持自定义cidr的CCN列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -18853,19 +19716,19 @@ class DescribeVpcFwGroupSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _Filters: 过滤条件组合
+        :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _StartTime: 检索的起始时间，可不传
+        :param _StartTime: <p>检索的起始时间，可不传</p>
         :type StartTime: str
-        :param _EndTime: 检索的截止时间，可不传
+        :param _EndTime: <p>检索的截止时间，可不传</p>
         :type EndTime: str
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :type Order: str
-        :param _By: 排序所用到的字段
+        :param _By: <p>排序所用到的字段</p>
         :type By: str
         """
         self._Limit = None
@@ -18878,7 +19741,7 @@ class DescribeVpcFwGroupSwitchRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -18889,7 +19752,7 @@ class DescribeVpcFwGroupSwitchRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -18900,7 +19763,7 @@ class DescribeVpcFwGroupSwitchRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合
+        r"""<p>过滤条件组合</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -18911,7 +19774,7 @@ class DescribeVpcFwGroupSwitchRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""检索的起始时间，可不传
+        r"""<p>检索的起始时间，可不传</p>
         :rtype: str
         """
         return self._StartTime
@@ -18922,7 +19785,7 @@ class DescribeVpcFwGroupSwitchRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""检索的截止时间，可不传
+        r"""<p>检索的截止时间，可不传</p>
         :rtype: str
         """
         return self._EndTime
@@ -18933,7 +19796,7 @@ class DescribeVpcFwGroupSwitchRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :rtype: str
         """
         return self._Order
@@ -18944,7 +19807,7 @@ class DescribeVpcFwGroupSwitchRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段
+        r"""<p>排序所用到的字段</p>
         :rtype: str
         """
         return self._By
@@ -18984,9 +19847,9 @@ class DescribeVpcFwGroupSwitchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SwitchList: 开关列表
+        :param _SwitchList: <p>开关列表</p>
         :type SwitchList: list of FwGroupSwitchShow
-        :param _Total: 开关总个数
+        :param _Total: <p>开关总个数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18997,7 +19860,7 @@ class DescribeVpcFwGroupSwitchResponse(AbstractModel):
 
     @property
     def SwitchList(self):
-        r"""开关列表
+        r"""<p>开关列表</p>
         :rtype: list of FwGroupSwitchShow
         """
         return self._SwitchList
@@ -19008,7 +19871,7 @@ class DescribeVpcFwGroupSwitchResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""开关总个数
+        r"""<p>开关总个数</p>
         :rtype: int
         """
         return self._Total
@@ -23614,16 +24477,11 @@ class ModifyAssetSyncResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 返回状态
-0 请求成功
-2 请求失败
-3 请求失败-频率限制
+        :param _Status: <p>返回状态<br>0 请求成功<br>2 请求失败<br>3 请求失败-频率限制</p>
         :type Status: int
-        :param _ReturnMsg: success 成功
-其他失败
+        :param _ReturnMsg: <p>success 成功<br>其他失败</p>
         :type ReturnMsg: str
-        :param _ReturnCode: 0 成功
-非0 失败
+        :param _ReturnCode: <p>0 成功<br>非0 失败</p>
         :type ReturnCode: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23635,10 +24493,7 @@ class ModifyAssetSyncResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""返回状态
-0 请求成功
-2 请求失败
-3 请求失败-频率限制
+        r"""<p>返回状态<br>0 请求成功<br>2 请求失败<br>3 请求失败-频率限制</p>
         :rtype: int
         """
         return self._Status
@@ -23649,8 +24504,7 @@ class ModifyAssetSyncResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""success 成功
-其他失败
+        r"""<p>success 成功<br>其他失败</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -23661,8 +24515,7 @@ class ModifyAssetSyncResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""0 成功
-非0 失败
+        r"""<p>0 成功<br>非0 失败</p>
         :rtype: int
         """
         return self._ReturnCode
@@ -24112,13 +24965,13 @@ class ModifyClusterFwBypassRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FwType: 防火墙类型，"VPC_FW"-VPC防火墙，"NAT_FW"-NAT防火墙
+        :param _FwType: <p>防火墙类型，&quot;VPC_FW&quot;-VPC防火墙，&quot;NAT_FW&quot;-NAT防火墙</p>
         :type FwType: str
-        :param _CcnId: 云联网实例ID
+        :param _CcnId: <p>云联网实例ID</p>
         :type CcnId: str
-        :param _Enable: Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）
+        :param _Enable: <p>Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）</p>
         :type Enable: bool
-        :param _NatInsId: NAT防火墙实例ID，FwType为nat时必填
+        :param _NatInsId: <p>NAT防火墙实例ID，FwType为nat时必填</p>
         :type NatInsId: str
         """
         self._FwType = None
@@ -24128,7 +24981,7 @@ class ModifyClusterFwBypassRequest(AbstractModel):
 
     @property
     def FwType(self):
-        r"""防火墙类型，"VPC_FW"-VPC防火墙，"NAT_FW"-NAT防火墙
+        r"""<p>防火墙类型，&quot;VPC_FW&quot;-VPC防火墙，&quot;NAT_FW&quot;-NAT防火墙</p>
         :rtype: str
         """
         return self._FwType
@@ -24139,7 +24992,7 @@ class ModifyClusterFwBypassRequest(AbstractModel):
 
     @property
     def CcnId(self):
-        r"""云联网实例ID
+        r"""<p>云联网实例ID</p>
         :rtype: str
         """
         return self._CcnId
@@ -24150,7 +25003,7 @@ class ModifyClusterFwBypassRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）
+        r"""<p>Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）</p>
         :rtype: bool
         """
         return self._Enable
@@ -24161,7 +25014,7 @@ class ModifyClusterFwBypassRequest(AbstractModel):
 
     @property
     def NatInsId(self):
-        r"""NAT防火墙实例ID，FwType为nat时必填
+        r"""<p>NAT防火墙实例ID，FwType为nat时必填</p>
         :rtype: str
         """
         return self._NatInsId
@@ -24287,9 +25140,9 @@ class ModifyClusterVpcFwSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 开关，0：关闭，1：开启
+        :param _Enable: <p>开关，0：关闭，1：开启</p>
         :type Enable: int
-        :param _CcnSwitch: 集群模式vpc间防火墙ccn开关信息
+        :param _CcnSwitch: <p>集群模式vpc间防火墙ccn开关信息</p>
         :type CcnSwitch: list of CcnSwitchInfo
         """
         self._Enable = None
@@ -24297,7 +25150,7 @@ class ModifyClusterVpcFwSwitchRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""开关，0：关闭，1：开启
+        r"""<p>开关，0：关闭，1：开启</p>
         :rtype: int
         """
         return self._Enable
@@ -24308,7 +25161,7 @@ class ModifyClusterVpcFwSwitchRequest(AbstractModel):
 
     @property
     def CcnSwitch(self):
-        r"""集群模式vpc间防火墙ccn开关信息
+        r"""<p>集群模式vpc间防火墙ccn开关信息</p>
         :rtype: list of CcnSwitchInfo
         """
         return self._CcnSwitch
@@ -24525,18 +25378,13 @@ class ModifyEdgeIpSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 0 关闭开关
-1 打开开关
-2 不操作开关，此次切换模式
+        :param _Enable: <p>0 关闭开关<br>1 打开开关<br>2 不操作开关，此次切换模式</p>
         :type Enable: int
-        :param _EdgeIpSwitchLst: 操作开关详情
+        :param _EdgeIpSwitchLst: <p>操作开关详情</p>
         :type EdgeIpSwitchLst: list of EdgeIpSwitch
-        :param _AutoChooseSubnet: 0 不自动选择子网
-1 自动选择子网创建私有连接
+        :param _AutoChooseSubnet: <p>0 不自动选择子网<br>1 自动选择子网创建私有连接</p>
         :type AutoChooseSubnet: int
-        :param _SwitchMode: 0 切换为旁路
-1 切换为串行
-2 不切换模式，此次操作开关
+        :param _SwitchMode: <p>0 切换为旁路<br>1 切换为串行<br>2 不切换模式，此次操作开关</p>
         :type SwitchMode: int
         """
         self._Enable = None
@@ -24546,9 +25394,7 @@ class ModifyEdgeIpSwitchRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""0 关闭开关
-1 打开开关
-2 不操作开关，此次切换模式
+        r"""<p>0 关闭开关<br>1 打开开关<br>2 不操作开关，此次切换模式</p>
         :rtype: int
         """
         return self._Enable
@@ -24559,7 +25405,7 @@ class ModifyEdgeIpSwitchRequest(AbstractModel):
 
     @property
     def EdgeIpSwitchLst(self):
-        r"""操作开关详情
+        r"""<p>操作开关详情</p>
         :rtype: list of EdgeIpSwitch
         """
         return self._EdgeIpSwitchLst
@@ -24570,8 +25416,7 @@ class ModifyEdgeIpSwitchRequest(AbstractModel):
 
     @property
     def AutoChooseSubnet(self):
-        r"""0 不自动选择子网
-1 自动选择子网创建私有连接
+        r"""<p>0 不自动选择子网<br>1 自动选择子网创建私有连接</p>
         :rtype: int
         """
         return self._AutoChooseSubnet
@@ -24582,9 +25427,7 @@ class ModifyEdgeIpSwitchRequest(AbstractModel):
 
     @property
     def SwitchMode(self):
-        r"""0 切换为旁路
-1 切换为串行
-2 不切换模式，此次操作开关
+        r"""<p>0 切换为旁路<br>1 切换为串行<br>2 不切换模式，此次操作开关</p>
         :rtype: int
         """
         return self._SwitchMode
@@ -24892,13 +25735,11 @@ class ModifyFwGroupSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 打开或关闭开关
-0：关闭开关
-1：打开开关
+        :param _Enable: <p>打开或关闭开关<br>0：关闭开关<br>1：打开开关</p>
         :type Enable: int
-        :param _AllSwitch: 是否操作全部开关 0 不操作全部开关，1 操作全部开关
+        :param _AllSwitch: <p>是否操作全部开关 0 不操作全部开关，1 操作全部开关</p>
         :type AllSwitch: int
-        :param _SwitchList: 开关列表
+        :param _SwitchList: <p>开关列表</p>
         :type SwitchList: list of FwGroupSwitch
         """
         self._Enable = None
@@ -24907,9 +25748,7 @@ class ModifyFwGroupSwitchRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""打开或关闭开关
-0：关闭开关
-1：打开开关
+        r"""<p>打开或关闭开关<br>0：关闭开关<br>1：打开开关</p>
         :rtype: int
         """
         return self._Enable
@@ -24920,7 +25759,7 @@ class ModifyFwGroupSwitchRequest(AbstractModel):
 
     @property
     def AllSwitch(self):
-        r"""是否操作全部开关 0 不操作全部开关，1 操作全部开关
+        r"""<p>是否操作全部开关 0 不操作全部开关，1 操作全部开关</p>
         :rtype: int
         """
         return self._AllSwitch
@@ -24931,7 +25770,7 @@ class ModifyFwGroupSwitchRequest(AbstractModel):
 
     @property
     def SwitchList(self):
-        r"""开关列表
+        r"""<p>开关列表</p>
         :rtype: list of FwGroupSwitch
         """
         return self._SwitchList
@@ -25052,6 +25891,160 @@ class ModifyIpsModeSwitchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyIsolateTableRequest(AbstractModel):
+    r"""ModifyIsolateTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>资产唯一id</p>
+        :type InstanceID: str
+        :param _ButtonAction: <p>操作动作：编辑、删除</p>
+        :type ButtonAction: str
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :type CfwAiAgentOperationSource: str
+        :param _StartTime: <p>起始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: str
+        """
+        self._InstanceID = None
+        self._ButtonAction = None
+        self._CfwAiAgentOperationSource = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>资产唯一id</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def ButtonAction(self):
+        r"""<p>操作动作：编辑、删除</p>
+        :rtype: str
+        """
+        return self._ButtonAction
+
+    @ButtonAction.setter
+    def ButtonAction(self, ButtonAction):
+        self._ButtonAction = ButtonAction
+
+    @property
+    def CfwAiAgentOperationSource(self):
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :rtype: str
+        """
+        return self._CfwAiAgentOperationSource
+
+    @CfwAiAgentOperationSource.setter
+    def CfwAiAgentOperationSource(self, CfwAiAgentOperationSource):
+        self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
+
+    @property
+    def StartTime(self):
+        r"""<p>起始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._ButtonAction = params.get("ButtonAction")
+        self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIsolateTableResponse(AbstractModel):
+    r"""ModifyIsolateTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: <p>0 成功  非0失败</p>
+        :type ReturnCode: int
+        :param _ReturnMsg: <p>success 成功 其他失败</p>
+        :type ReturnMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        r"""<p>0 成功  非0失败</p>
+        :rtype: int
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        r"""<p>success 成功 其他失败</p>
+        :rtype: str
+        """
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyNatAcRuleRequest(AbstractModel):
     r"""ModifyNatAcRule请求参数结构体
 
@@ -25158,15 +26151,15 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 模式 1：接入模式；0：新增模式
+        :param _Mode: <p>模式 1：接入模式；0：新增模式</p>
         :type Mode: int
-        :param _CfwInstance: 防火墙实例id
+        :param _CfwInstance: <p>防火墙实例id</p>
         :type CfwInstance: str
-        :param _NatGwList: 接入模式重新接入的nat网关列表，其中NatGwList和VpcList只能传递一个。
+        :param _NatGwList: <p>接入模式重新接入的nat网关列表，其中NatGwList和VpcList只能传递一个。</p>
         :type NatGwList: list of str
-        :param _VpcList: 新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。
+        :param _VpcList: <p>新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。</p>
         :type VpcList: list of str
-        :param _FwCidrInfo: 指定防火墙使用网段信息
+        :param _FwCidrInfo: <p>指定防火墙使用网段信息</p>
         :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self._Mode = None
@@ -25177,7 +26170,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""模式 1：接入模式；0：新增模式
+        r"""<p>模式 1：接入模式；0：新增模式</p>
         :rtype: int
         """
         return self._Mode
@@ -25188,7 +26181,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        r"""防火墙实例id
+        r"""<p>防火墙实例id</p>
         :rtype: str
         """
         return self._CfwInstance
@@ -25199,7 +26192,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def NatGwList(self):
-        r"""接入模式重新接入的nat网关列表，其中NatGwList和VpcList只能传递一个。
+        r"""<p>接入模式重新接入的nat网关列表，其中NatGwList和VpcList只能传递一个。</p>
         :rtype: list of str
         """
         return self._NatGwList
@@ -25210,7 +26203,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def VpcList(self):
-        r"""新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。
+        r"""<p>新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。</p>
         :rtype: list of str
         """
         return self._VpcList
@@ -25221,7 +26214,7 @@ class ModifyNatFwReSelectRequest(AbstractModel):
 
     @property
     def FwCidrInfo(self):
-        r"""指定防火墙使用网段信息
+        r"""<p>指定防火墙使用网段信息</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         return self._FwCidrInfo
@@ -25284,13 +26277,13 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 开关，0：关闭，1：开启
+        :param _Enable: <p>开关，0：关闭，1：开启</p>
         :type Enable: int
-        :param _CfwInsIdList: 防火墙实例id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+        :param _CfwInsIdList: <p>防火墙实例id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
         :type CfwInsIdList: list of str
-        :param _SubnetIdList: 子网id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+        :param _SubnetIdList: <p>子网id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
         :type SubnetIdList: list of str
-        :param _RouteTableIdList: 路由表id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+        :param _RouteTableIdList: <p>路由表id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
         :type RouteTableIdList: list of str
         """
         self._Enable = None
@@ -25300,7 +26293,7 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""开关，0：关闭，1：开启
+        r"""<p>开关，0：关闭，1：开启</p>
         :rtype: int
         """
         return self._Enable
@@ -25311,7 +26304,7 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
     @property
     def CfwInsIdList(self):
-        r"""防火墙实例id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+        r"""<p>防火墙实例id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
         :rtype: list of str
         """
         return self._CfwInsIdList
@@ -25322,7 +26315,7 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
     @property
     def SubnetIdList(self):
-        r"""子网id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+        r"""<p>子网id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
         :rtype: list of str
         """
         return self._SubnetIdList
@@ -25333,7 +26326,7 @@ class ModifyNatFwSwitchRequest(AbstractModel):
 
     @property
     def RouteTableIdList(self):
-        r"""路由表id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+        r"""<p>路由表id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
         :rtype: list of str
         """
         return self._RouteTableIdList
@@ -25393,9 +26386,9 @@ class ModifyNatFwVpcDnsSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatFwInsId: nat 防火墙 id
+        :param _NatFwInsId: <p>nat 防火墙 id</p>
         :type NatFwInsId: str
-        :param _DnsVpcSwitchLst: DNS 开关切换列表
+        :param _DnsVpcSwitchLst: <p>DNS 开关切换列表</p>
         :type DnsVpcSwitchLst: list of DnsVpcSwitch
         """
         self._NatFwInsId = None
@@ -25403,7 +26396,7 @@ class ModifyNatFwVpcDnsSwitchRequest(AbstractModel):
 
     @property
     def NatFwInsId(self):
-        r"""nat 防火墙 id
+        r"""<p>nat 防火墙 id</p>
         :rtype: str
         """
         return self._NatFwInsId
@@ -25414,7 +26407,7 @@ class ModifyNatFwVpcDnsSwitchRequest(AbstractModel):
 
     @property
     def DnsVpcSwitchLst(self):
-        r"""DNS 开关切换列表
+        r"""<p>DNS 开关切换列表</p>
         :rtype: list of DnsVpcSwitch
         """
         return self._DnsVpcSwitchLst
@@ -25449,7 +26442,7 @@ class ModifyNatFwVpcDnsSwitchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnMsg: 修改成功
+        :param _ReturnMsg: <p>修改成功</p>
         :type ReturnMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25459,7 +26452,7 @@ class ModifyNatFwVpcDnsSwitchResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""修改成功
+        r"""<p>修改成功</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -25492,9 +26485,9 @@ class ModifyNatInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: NAT防火墙实例名称
+        :param _InstanceName: <p>NAT防火墙实例名称</p>
         :type InstanceName: str
-        :param _NatInstanceId: NAT防火墙实例ID
+        :param _NatInstanceId: <p>NAT防火墙实例ID</p>
         :type NatInstanceId: str
         """
         self._InstanceName = None
@@ -25502,7 +26495,7 @@ class ModifyNatInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""NAT防火墙实例名称
+        r"""<p>NAT防火墙实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -25513,7 +26506,7 @@ class ModifyNatInstanceRequest(AbstractModel):
 
     @property
     def NatInstanceId(self):
-        r"""NAT防火墙实例ID
+        r"""<p>NAT防火墙实例ID</p>
         :rtype: str
         """
         return self._NatInstanceId
@@ -25543,10 +26536,9 @@ class ModifyNatInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 0 正常
--1 异常
+        :param _Status: <p>0 正常<br>-1 异常</p>
         :type Status: int
-        :param _NatInstanceId: nat实例唯一ID
+        :param _NatInstanceId: <p>nat实例唯一ID</p>
         :type NatInstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25557,8 +26549,7 @@ class ModifyNatInstanceResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""0 正常
--1 异常
+        r"""<p>0 正常<br>-1 异常</p>
         :rtype: int
         """
         return self._Status
@@ -25569,7 +26560,7 @@ class ModifyNatInstanceResponse(AbstractModel):
 
     @property
     def NatInstanceId(self):
-        r"""nat实例唯一ID
+        r"""<p>nat实例唯一ID</p>
         :rtype: str
         """
         return self._NatInstanceId
@@ -26682,13 +27673,13 @@ class ModifyVpcFwGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FwGroupId: 编辑的防火墙(组)ID
+        :param _FwGroupId: <p>编辑的防火墙(组)ID</p>
         :type FwGroupId: str
-        :param _Name: 修改防火墙(组)名称
+        :param _Name: <p>修改防火墙(组)名称</p>
         :type Name: str
-        :param _VpcFwInstances: 编辑的防火墙实例列表
+        :param _VpcFwInstances: <p>编辑的防火墙实例列表</p>
         :type VpcFwInstances: list of VpcFwInstance
-        :param _FwCidrInfo: 指定防火墙使用网段信息
+        :param _FwCidrInfo: <p>指定防火墙使用网段信息</p>
         :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self._FwGroupId = None
@@ -26698,7 +27689,7 @@ class ModifyVpcFwGroupRequest(AbstractModel):
 
     @property
     def FwGroupId(self):
-        r"""编辑的防火墙(组)ID
+        r"""<p>编辑的防火墙(组)ID</p>
         :rtype: str
         """
         return self._FwGroupId
@@ -26709,7 +27700,7 @@ class ModifyVpcFwGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""修改防火墙(组)名称
+        r"""<p>修改防火墙(组)名称</p>
         :rtype: str
         """
         return self._Name
@@ -26720,7 +27711,7 @@ class ModifyVpcFwGroupRequest(AbstractModel):
 
     @property
     def VpcFwInstances(self):
-        r"""编辑的防火墙实例列表
+        r"""<p>编辑的防火墙实例列表</p>
         :rtype: list of VpcFwInstance
         """
         return self._VpcFwInstances
@@ -26731,7 +27722,7 @@ class ModifyVpcFwGroupRequest(AbstractModel):
 
     @property
     def FwCidrInfo(self):
-        r"""指定防火墙使用网段信息
+        r"""<p>指定防火墙使用网段信息</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         return self._FwCidrInfo
@@ -29421,14 +30412,14 @@ class OpenClusterNatFwSwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatCcnSwitch: NAT CCN防火墙开关配置
+        :param _NatCcnSwitch: <p>NAT CCN防火墙开关配置</p>
         :type NatCcnSwitch: :class:`tencentcloud.cfw.v20190904.models.NatCcnSwitchConfig`
         """
         self._NatCcnSwitch = None
 
     @property
     def NatCcnSwitch(self):
-        r"""NAT CCN防火墙开关配置
+        r"""<p>NAT CCN防火墙开关配置</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.NatCcnSwitchConfig`
         """
         return self._NatCcnSwitch
@@ -33337,11 +34328,11 @@ class SetNatFwEipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OperationType: bind：绑定eip；unbind：解绑eip；newAdd：新增防火墙弹性公网ip
+        :param _OperationType: <p>bind：绑定eip；unbind：解绑eip；newAdd：新增防火墙弹性公网ip</p>
         :type OperationType: str
-        :param _CfwInstance: 防火墙实例id
+        :param _CfwInstance: <p>防火墙实例id</p>
         :type CfwInstance: str
-        :param _EipList: 当OperationType 为bind或unbind操作时，使用该字段。
+        :param _EipList: <p>当OperationType 为bind或unbind操作时，使用该字段。</p>
         :type EipList: list of str
         """
         self._OperationType = None
@@ -33350,7 +34341,7 @@ class SetNatFwEipRequest(AbstractModel):
 
     @property
     def OperationType(self):
-        r"""bind：绑定eip；unbind：解绑eip；newAdd：新增防火墙弹性公网ip
+        r"""<p>bind：绑定eip；unbind：解绑eip；newAdd：新增防火墙弹性公网ip</p>
         :rtype: str
         """
         return self._OperationType
@@ -33361,7 +34352,7 @@ class SetNatFwEipRequest(AbstractModel):
 
     @property
     def CfwInstance(self):
-        r"""防火墙实例id
+        r"""<p>防火墙实例id</p>
         :rtype: str
         """
         return self._CfwInstance
@@ -33372,7 +34363,7 @@ class SetNatFwEipRequest(AbstractModel):
 
     @property
     def EipList(self):
-        r"""当OperationType 为bind或unbind操作时，使用该字段。
+        r"""<p>当OperationType 为bind或unbind操作时，使用该字段。</p>
         :rtype: list of str
         """
         return self._EipList
@@ -34256,9 +35247,9 @@ class SyncFwOperateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SyncType: 同步操作类型：Route，同步防火墙路由
+        :param _SyncType: <p>同步操作类型：Route，同步防火墙路由</p>
         :type SyncType: str
-        :param _FwType: 防火墙类型；nat,nat防火墙;ew,vpc间防火墙
+        :param _FwType: <p>防火墙类型；nat,nat防火墙;ew,vpc间防火墙</p>
         :type FwType: str
         """
         self._SyncType = None
@@ -34266,7 +35257,7 @@ class SyncFwOperateRequest(AbstractModel):
 
     @property
     def SyncType(self):
-        r"""同步操作类型：Route，同步防火墙路由
+        r"""<p>同步操作类型：Route，同步防火墙路由</p>
         :rtype: str
         """
         return self._SyncType
@@ -34277,7 +35268,7 @@ class SyncFwOperateRequest(AbstractModel):
 
     @property
     def FwType(self):
-        r"""防火墙类型；nat,nat防火墙;ew,vpc间防火墙
+        r"""<p>防火墙类型；nat,nat防火墙;ew,vpc间防火墙</p>
         :rtype: str
         """
         return self._FwType

@@ -1388,36 +1388,38 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 规则名称
+        :param _Name: <p>规则名称</p>
         :type Name: str
-        :param _ExpireTime: 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :param _ExpireTime: <p>如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）</p>
         :type ExpireTime: int
-        :param _SortId: 优先级
+        :param _SortId: <p>优先级</p>
         :type SortId: int
-        :param _ActionType: 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+        :param _ActionType: <p>动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向</p>
         :type ActionType: int
-        :param _Redirect: 重定向地址
+        :param _Redirect: <p>重定向地址</p>
         :type Redirect: str
-        :param _Bypass: 加白模块
+        :param _Bypass: <p>加白模块</p>
         :type Bypass: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _EventId: 事件Id
+        :param _EventId: <p>事件Id</p>
         :type EventId: str
-        :param _Domains: 域名列表
+        :param _Domains: <p>域名列表</p>
         :type Domains: list of str
-        :param _Strategies: 策略详情列表
+        :param _Strategies: <p>策略详情列表</p>
         :type Strategies: list of Strategy
-        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :param _JobType: <p>规则执行的方式，TimedJob为定时执行，CronJob为周期执行</p>
         :type JobType: str
-        :param _JobDateTime: 定时任务配置
+        :param _JobDateTime: <p>定时任务配置</p>
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
-        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :param _LogicalOp: <p>匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系</p>
         :type LogicalOp: str
-        :param _PageId: 页面ID
+        :param _PageId: <p>页面ID</p>
         :type PageId: str
-        :param _ActionRatio: 动作灰度比例
+        :param _ActionRatio: <p>动作灰度比例</p>
         :type ActionRatio: int
+        :param _GroupIds: <p>绑定的防护组ID</p>
+        :type GroupIds: list of int non-negative
         """
         self._Name = None
         self._ExpireTime = None
@@ -1434,10 +1436,11 @@ class AddBatchCustomRuleRequest(AbstractModel):
         self._LogicalOp = None
         self._PageId = None
         self._ActionRatio = None
+        self._GroupIds = None
 
     @property
     def Name(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._Name
@@ -1448,7 +1451,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        r"""<p>如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -1459,7 +1462,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def SortId(self):
-        r"""优先级
+        r"""<p>优先级</p>
         :rtype: int
         """
         return self._SortId
@@ -1470,7 +1473,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+        r"""<p>动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向</p>
         :rtype: int
         """
         return self._ActionType
@@ -1481,7 +1484,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def Redirect(self):
-        r"""重定向地址
+        r"""<p>重定向地址</p>
         :rtype: str
         """
         return self._Redirect
@@ -1492,7 +1495,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def Bypass(self):
-        r"""加白模块
+        r"""<p>加白模块</p>
         :rtype: str
         """
         return self._Bypass
@@ -1503,7 +1506,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -1514,7 +1517,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def EventId(self):
-        r"""事件Id
+        r"""<p>事件Id</p>
         :rtype: str
         """
         return self._EventId
@@ -1525,7 +1528,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def Domains(self):
-        r"""域名列表
+        r"""<p>域名列表</p>
         :rtype: list of str
         """
         return self._Domains
@@ -1536,7 +1539,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def Strategies(self):
-        r"""策略详情列表
+        r"""<p>策略详情列表</p>
         :rtype: list of Strategy
         """
         return self._Strategies
@@ -1547,7 +1550,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def JobType(self):
-        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        r"""<p>规则执行的方式，TimedJob为定时执行，CronJob为周期执行</p>
         :rtype: str
         """
         return self._JobType
@@ -1558,7 +1561,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def JobDateTime(self):
-        r"""定时任务配置
+        r"""<p>定时任务配置</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         """
         return self._JobDateTime
@@ -1569,7 +1572,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def LogicalOp(self):
-        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        r"""<p>匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系</p>
         :rtype: str
         """
         return self._LogicalOp
@@ -1580,7 +1583,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def PageId(self):
-        r"""页面ID
+        r"""<p>页面ID</p>
         :rtype: str
         """
         return self._PageId
@@ -1591,7 +1594,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
 
     @property
     def ActionRatio(self):
-        r"""动作灰度比例
+        r"""<p>动作灰度比例</p>
         :rtype: int
         """
         return self._ActionRatio
@@ -1599,6 +1602,17 @@ class AddBatchCustomRuleRequest(AbstractModel):
     @ActionRatio.setter
     def ActionRatio(self, ActionRatio):
         self._ActionRatio = ActionRatio
+
+    @property
+    def GroupIds(self):
+        r"""<p>绑定的防护组ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
 
 
     def _deserialize(self, params):
@@ -1624,6 +1638,7 @@ class AddBatchCustomRuleRequest(AbstractModel):
         self._LogicalOp = params.get("LogicalOp")
         self._PageId = params.get("PageId")
         self._ActionRatio = params.get("ActionRatio")
+        self._GroupIds = params.get("GroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1641,7 +1656,7 @@ class AddBatchCustomRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Res: 操作成功
+        :param _Res: <p>操作成功</p>
         :type Res: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1651,7 +1666,7 @@ class AddBatchCustomRuleResponse(AbstractModel):
 
     @property
     def Res(self):
-        r"""操作成功
+        r"""<p>操作成功</p>
         :rtype: str
         """
         return self._Res
@@ -4144,6 +4159,72 @@ class ApiEvent(AbstractModel):
         
 
 
+class ApiEventSample(AbstractModel):
+    r"""API 安全事件样本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Request: <p>攻击样本的请求部分</p>
+        :type Request: str
+        :param _Response: <p>攻击样本的响应</p>
+        :type Response: str
+        :param _Status: <p>攻击样本状态码</p>
+        :type Status: str
+        """
+        self._Request = None
+        self._Response = None
+        self._Status = None
+
+    @property
+    def Request(self):
+        r"""<p>攻击样本的请求部分</p>
+        :rtype: str
+        """
+        return self._Request
+
+    @Request.setter
+    def Request(self, Request):
+        self._Request = Request
+
+    @property
+    def Response(self):
+        r"""<p>攻击样本的响应</p>
+        :rtype: str
+        """
+        return self._Response
+
+    @Response.setter
+    def Response(self, Response):
+        self._Response = Response
+
+    @property
+    def Status(self):
+        r"""<p>攻击样本状态码</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Request = params.get("Request")
+        self._Response = params.get("Response")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiGuardContent(AbstractModel):
     r"""guard content
 
@@ -4666,28 +4747,34 @@ class ApiSecAttackSource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SrcIp: 攻击来源ip
+        :param _SrcIp: <p>攻击来源ip</p>
         :type SrcIp: str
-        :param _EventLevel: 威胁等级
+        :param _EventLevel: <p>威胁等级</p>
         :type EventLevel: str
-        :param _BotLabel: BOT标签
+        :param _BotLabel: <p>BOT标签</p>
         :type BotLabel: str
-        :param _Timestamp: 变更时间
+        :param _Timestamp: <p>变更时间</p>
         :type Timestamp: int
-        :param _City: 地理位置
+        :param _City: <p>地理位置</p>
         :type City: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: int
-        :param _EventCount: 关联事件数量
+        :param _EventCount: <p>关联事件数量</p>
         :type EventCount: int
-        :param _AttackCount: 攻击数量
+        :param _AttackCount: <p>攻击数量</p>
         :type AttackCount: int
-        :param _MissUserName: 缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+        :param _MissUserName: <p>缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段</p>
         :type MissUserName: str
-        :param _AttackDetail: 当是水平越权和垂直越权时，返回此字段
+        :param _AttackDetail: <p>当是水平越权和垂直越权时，返回此字段</p>
         :type AttackDetail: list of str
-        :param _MissPassword: 缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+        :param _MissPassword: <p>缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段</p>
         :type MissPassword: str
+        :param _EventDescription: <p>事件描述</p>
+        :type EventDescription: str
+        :param _EventDescriptionEng: <p>事件描述(英文)</p>
+        :type EventDescriptionEng: str
+        :param _Sample: <p>攻击样本</p>
+        :type Sample: :class:`tencentcloud.waf.v20180125.models.ApiEventSample`
         """
         self._SrcIp = None
         self._EventLevel = None
@@ -4700,10 +4787,13 @@ class ApiSecAttackSource(AbstractModel):
         self._MissUserName = None
         self._AttackDetail = None
         self._MissPassword = None
+        self._EventDescription = None
+        self._EventDescriptionEng = None
+        self._Sample = None
 
     @property
     def SrcIp(self):
-        r"""攻击来源ip
+        r"""<p>攻击来源ip</p>
         :rtype: str
         """
         return self._SrcIp
@@ -4714,7 +4804,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def EventLevel(self):
-        r"""威胁等级
+        r"""<p>威胁等级</p>
         :rtype: str
         """
         return self._EventLevel
@@ -4725,7 +4815,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def BotLabel(self):
-        r"""BOT标签
+        r"""<p>BOT标签</p>
         :rtype: str
         """
         return self._BotLabel
@@ -4736,7 +4826,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""变更时间
+        r"""<p>变更时间</p>
         :rtype: int
         """
         return self._Timestamp
@@ -4747,7 +4837,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def City(self):
-        r"""地理位置
+        r"""<p>地理位置</p>
         :rtype: str
         """
         return self._City
@@ -4758,7 +4848,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -4769,7 +4859,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def EventCount(self):
-        r"""关联事件数量
+        r"""<p>关联事件数量</p>
         :rtype: int
         """
         return self._EventCount
@@ -4780,7 +4870,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def AttackCount(self):
-        r"""攻击数量
+        r"""<p>攻击数量</p>
         :rtype: int
         """
         return self._AttackCount
@@ -4791,7 +4881,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def MissUserName(self):
-        r"""缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+        r"""<p>缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段</p>
         :rtype: str
         """
         return self._MissUserName
@@ -4802,7 +4892,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def AttackDetail(self):
-        r"""当是水平越权和垂直越权时，返回此字段
+        r"""<p>当是水平越权和垂直越权时，返回此字段</p>
         :rtype: list of str
         """
         return self._AttackDetail
@@ -4813,7 +4903,7 @@ class ApiSecAttackSource(AbstractModel):
 
     @property
     def MissPassword(self):
-        r"""缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+        r"""<p>缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段</p>
         :rtype: str
         """
         return self._MissPassword
@@ -4821,6 +4911,39 @@ class ApiSecAttackSource(AbstractModel):
     @MissPassword.setter
     def MissPassword(self, MissPassword):
         self._MissPassword = MissPassword
+
+    @property
+    def EventDescription(self):
+        r"""<p>事件描述</p>
+        :rtype: str
+        """
+        return self._EventDescription
+
+    @EventDescription.setter
+    def EventDescription(self, EventDescription):
+        self._EventDescription = EventDescription
+
+    @property
+    def EventDescriptionEng(self):
+        r"""<p>事件描述(英文)</p>
+        :rtype: str
+        """
+        return self._EventDescriptionEng
+
+    @EventDescriptionEng.setter
+    def EventDescriptionEng(self, EventDescriptionEng):
+        self._EventDescriptionEng = EventDescriptionEng
+
+    @property
+    def Sample(self):
+        r"""<p>攻击样本</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiEventSample`
+        """
+        return self._Sample
+
+    @Sample.setter
+    def Sample(self, Sample):
+        self._Sample = Sample
 
 
     def _deserialize(self, params):
@@ -4835,6 +4958,11 @@ class ApiSecAttackSource(AbstractModel):
         self._MissUserName = params.get("MissUserName")
         self._AttackDetail = params.get("AttackDetail")
         self._MissPassword = params.get("MissPassword")
+        self._EventDescription = params.get("EventDescription")
+        self._EventDescriptionEng = params.get("EventDescriptionEng")
+        if params.get("Sample") is not None:
+            self._Sample = ApiEventSample()
+            self._Sample._deserialize(params.get("Sample"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6625,50 +6753,52 @@ class BatchCustomRuleListItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 规则Id
+        :param _Id: <p>规则Id</p>
         :type Id: int
-        :param _ActionType: 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+        :param _ActionType: <p>动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验</p>
         :type ActionType: int
-        :param _Bypass: 加白模块
+        :param _Bypass: <p>加白模块</p>
         :type Bypass: str
-        :param _ExpireTime: 有效期
+        :param _ExpireTime: <p>有效期</p>
         :type ExpireTime: int
-        :param _Name: 规则名称
+        :param _Name: <p>规则名称</p>
         :type Name: str
-        :param _Redirect: 重定向地址
+        :param _Redirect: <p>重定向地址</p>
         :type Redirect: str
-        :param _SortId: 优先级
+        :param _SortId: <p>优先级</p>
         :type SortId: int
-        :param _Status: 开关状态
+        :param _Status: <p>开关状态</p>
         :type Status: int
-        :param _Domains: 域名列表
+        :param _Domains: <p>域名列表</p>
         :type Domains: list of str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _Strategies: 策略列表
+        :param _Strategies: <p>策略列表</p>
         :type Strategies: list of Strategy
-        :param _EventId: 事件Id
+        :param _EventId: <p>事件Id</p>
         :type EventId: str
-        :param _ValidStatus: 生效状态
+        :param _ValidStatus: <p>生效状态</p>
         :type ValidStatus: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :param _JobType: <p>规则执行的方式，TimedJob为定时执行，CronJob为周期执行</p>
         :type JobType: str
-        :param _JobDateTime: 定时任务配置
+        :param _JobDateTime: <p>定时任务配置</p>
         :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
-        :param _CronType: 周期任务粒度
+        :param _CronType: <p>周期任务粒度</p>
         :type CronType: str
-        :param _Label: 标签
+        :param _Label: <p>标签</p>
         :type Label: str
-        :param _PageId: 页面ID
+        :param _PageId: <p>页面ID</p>
         :type PageId: str
-        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :param _LogicalOp: <p>匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系</p>
         :type LogicalOp: str
-        :param _ActionRatio: 动作灰度的比例
+        :param _ActionRatio: <p>动作灰度的比例</p>
         :type ActionRatio: int
+        :param _GroupIds: <p>防护对象组ID</p>
+        :type GroupIds: list of int non-negative
         """
         self._Id = None
         self._ActionType = None
@@ -6692,10 +6822,11 @@ class BatchCustomRuleListItem(AbstractModel):
         self._PageId = None
         self._LogicalOp = None
         self._ActionRatio = None
+        self._GroupIds = None
 
     @property
     def Id(self):
-        r"""规则Id
+        r"""<p>规则Id</p>
         :rtype: int
         """
         return self._Id
@@ -6706,7 +6837,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+        r"""<p>动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验</p>
         :rtype: int
         """
         return self._ActionType
@@ -6717,7 +6848,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def Bypass(self):
-        r"""加白模块
+        r"""<p>加白模块</p>
         :rtype: str
         """
         return self._Bypass
@@ -6728,7 +6859,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""有效期
+        r"""<p>有效期</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -6739,7 +6870,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._Name
@@ -6750,7 +6881,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def Redirect(self):
-        r"""重定向地址
+        r"""<p>重定向地址</p>
         :rtype: str
         """
         return self._Redirect
@@ -6761,7 +6892,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def SortId(self):
-        r"""优先级
+        r"""<p>优先级</p>
         :rtype: int
         """
         return self._SortId
@@ -6772,7 +6903,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""开关状态
+        r"""<p>开关状态</p>
         :rtype: int
         """
         return self._Status
@@ -6783,7 +6914,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def Domains(self):
-        r"""域名列表
+        r"""<p>域名列表</p>
         :rtype: list of str
         """
         return self._Domains
@@ -6794,7 +6925,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -6805,7 +6936,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def Strategies(self):
-        r"""策略列表
+        r"""<p>策略列表</p>
         :rtype: list of Strategy
         """
         return self._Strategies
@@ -6816,7 +6947,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def EventId(self):
-        r"""事件Id
+        r"""<p>事件Id</p>
         :rtype: str
         """
         return self._EventId
@@ -6827,7 +6958,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def ValidStatus(self):
-        r"""生效状态
+        r"""<p>生效状态</p>
         :rtype: int
         """
         return self._ValidStatus
@@ -6838,7 +6969,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -6849,7 +6980,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -6860,7 +6991,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def JobType(self):
-        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        r"""<p>规则执行的方式，TimedJob为定时执行，CronJob为周期执行</p>
         :rtype: str
         """
         return self._JobType
@@ -6871,7 +7002,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def JobDateTime(self):
-        r"""定时任务配置
+        r"""<p>定时任务配置</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
         """
         return self._JobDateTime
@@ -6882,7 +7013,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def CronType(self):
-        r"""周期任务粒度
+        r"""<p>周期任务粒度</p>
         :rtype: str
         """
         return self._CronType
@@ -6893,7 +7024,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def Label(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: str
         """
         return self._Label
@@ -6904,7 +7035,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def PageId(self):
-        r"""页面ID
+        r"""<p>页面ID</p>
         :rtype: str
         """
         return self._PageId
@@ -6915,7 +7046,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def LogicalOp(self):
-        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        r"""<p>匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系</p>
         :rtype: str
         """
         return self._LogicalOp
@@ -6926,7 +7057,7 @@ class BatchCustomRuleListItem(AbstractModel):
 
     @property
     def ActionRatio(self):
-        r"""动作灰度的比例
+        r"""<p>动作灰度的比例</p>
         :rtype: int
         """
         return self._ActionRatio
@@ -6934,6 +7065,17 @@ class BatchCustomRuleListItem(AbstractModel):
     @ActionRatio.setter
     def ActionRatio(self, ActionRatio):
         self._ActionRatio = ActionRatio
+
+    @property
+    def GroupIds(self):
+        r"""<p>防护对象组ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
 
 
     def _deserialize(self, params):
@@ -6966,6 +7108,7 @@ class BatchCustomRuleListItem(AbstractModel):
         self._PageId = params.get("PageId")
         self._LogicalOp = params.get("LogicalOp")
         self._ActionRatio = params.get("ActionRatio")
+        self._GroupIds = params.get("GroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11837,6 +11980,8 @@ class ClbObject(AbstractModel):
         :type PreciseDomainDetails: list of DomainInfo
         :param _WafAccessStatus: <p>waf接入状态</p>
         :type WafAccessStatus: int
+        :param _Note: <p>备注</p>
+        :type Note: str
         """
         self._ObjectId = None
         self._InstanceId = None
@@ -11869,6 +12014,7 @@ class ClbObject(AbstractModel):
         self._TagInfos = None
         self._PreciseDomainDetails = None
         self._WafAccessStatus = None
+        self._Note = None
 
     @property
     def ObjectId(self):
@@ -12211,6 +12357,17 @@ class ClbObject(AbstractModel):
     def WafAccessStatus(self, WafAccessStatus):
         self._WafAccessStatus = WafAccessStatus
 
+    @property
+    def Note(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
 
     def _deserialize(self, params):
         self._ObjectId = params.get("ObjectId")
@@ -12254,6 +12411,7 @@ class ClbObject(AbstractModel):
                 obj._deserialize(item)
                 self._PreciseDomainDetails.append(obj)
         self._WafAccessStatus = params.get("WafAccessStatus")
+        self._Note = params.get("Note")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39904,8 +40062,11 @@ class IntentDetectResult(AbstractModel):
         r"""
         :param _IsUnSafe: <p>是否恶意意图</p><p>枚举值：</p><ul><li>1： 恶意</li><li>0： 正常</li></ul>
         :type IsUnSafe: int
+        :param _Category: <p>检出分类</p>
+        :type Category: str
         """
         self._IsUnSafe = None
+        self._Category = None
 
     @property
     def IsUnSafe(self):
@@ -39918,9 +40079,21 @@ class IntentDetectResult(AbstractModel):
     def IsUnSafe(self, IsUnSafe):
         self._IsUnSafe = IsUnSafe
 
+    @property
+    def Category(self):
+        r"""<p>检出分类</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._IsUnSafe = params.get("IsUnSafe")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58175,11 +58348,152 @@ class Strategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Field: 匹配字段
-
-    匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同具体如下所示：
-<table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>CONTENT_LENGTH（Content-length）</td><td>支持参数录入</td><td>numgt（数值大于）<br/>numlt（数值小于）<br/>numeq（数值等于）<br/></td><td>请输入0-9999999999999之间的整数</td></tr><tr><td>IP_GEO（来源IP归属地）</td><td>支持参数录入</td><td>geo_in（属于）<br/>geo_not_in（不属于）<br/></td><td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td></tr><tr><td>CAPTCHA_RISK（验证码风险）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>belong（属于）<br/>not_belong（不属于）<br/>null（不存在）<br/>exist（存在）</td><td>请输入风险等级值,支持数值范围0-255</td></tr><tr><td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>belong（属于）<br/>not_belong（不属于）<br/>null（不存在）<br/>exist（存在）</td><td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td></tr><tr><td>CAPTCHAR_SCORE（验证码风险评估分）</td><td>不支持参数</td><td>numeq（数值等于）<br/>numgt（数值大于）<br/>numlt（数值小于）<br/>numle（数值小于等于）<br/>numge（数值大于等于）<br/>null（不存在）<br/>exist（存在）</td><td>请输入评估分数,支持数值范围0-100</td></tr>
-</tbody></table>
+        :param _Field: 匹配字段 匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同具体如下所示： <table>
+	<thead>
+		<tr>
+			<th>匹配字段</th>
+			<th>匹配参数</th>
+			<th>逻辑符号</th>
+			<th>匹配内容</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>IP（来源IP）</td>
+			<td>不支持参数</td>
+			<td>ipmatch（匹配）<br />ipnmatch（不匹配）</td>
+			<td>多个IP以英文逗号隔开,最多20个</td>
+		</tr>
+		<tr>
+			<td>IPV6（来源IPv6）</td>
+			<td>不支持参数</td>
+			<td>ipmatch（匹配）<br />ipnmatch（不匹配）</td>
+			<td>支持单个IPV6地址</td>
+		</tr>
+		<tr>
+			<td>Referer（Referer）</td>
+			<td>不支持参数</td>
+			<td>empty（内容为空）<br />null（不存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>URL（请求路径）</td>
+			<td>不支持参数</td>
+			<td>eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）<br /></td>
+			<td>请以/开头,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>UserAgent（UserAgent）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">Referer</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>HTTP_METHOD（HTTP请求方法）</td>
+			<td>不支持参数</td>
+			<td>eq（等于）<br />neq（不等于）<br/>belong_to（属于）<br/>not_belong_to（不属于）</td>
+			<td>请输入方法名称,建议大写</td>
+		</tr>
+		<tr>
+			<td>QUERY_STRING（请求字符串）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>GET（GET参数值）</td>
+			<td>支持参数录入</td>
+			<td>contains（包含）<br />ncontains（不包含）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>GET_PARAMS_NAMES（GET参数名）</td>
+			<td>不支持参数</td>
+			<td>exsit（存在参数）<br />nexsit（不存在参数）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>POST（POST参数值）</td>
+			<td>支持参数录入</td>
+			<td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>GET_POST_NAMES（POST参数名）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>POST_BODY（完整BODY）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td>
+			<td>请输入BODY内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>COOKIE（Cookie）</td>
+			<td>不支持参数</td>
+			<td>empty（内容为空）<br />null（不存在）<br />rematch（正则匹配）</td>
+			<td>
+				<font color="Red">暂不支持</font>
+			</td>
+		</tr>
+		<tr>
+			<td>GET_COOKIES_NAMES（Cookie参数名）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>ARGS_COOKIE（Cookie参数值）</td>
+			<td>支持参数录入</td>
+			<td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>GET_HEADERS_NAMES（Header参数名）</td>
+			<td>不支持参数</td>
+			<td>exsit（存在参数）<br />nexsit（不存在参数）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+			<td>请输入内容,建议小写,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>ARGS_HEADER（Header参数值）</td>
+			<td>支持参数录入</td>
+			<td>contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>CONTENT_LENGTH（Content-length）</td>
+			<td>支持参数录入</td>
+			<td>numgt（数值大于）<br />numlt（数值小于）<br />numeq（数值等于）<br /></td>
+			<td>请输入0-9999999999999之间的整数</td>
+		</tr>
+		<tr>
+			<td>IP_GEO（来源IP归属地）</td>
+			<td>支持参数录入</td>
+			<td>geo_in（属于）<br />geo_not_in（不属于）<br /></td>
+			<td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td>
+		</tr>
+		<tr>
+			<td>CAPTCHA_RISK（验证码风险）</td>
+			<td>不支持参数</td>
+			<td>eq（等于）<br />neq（不等于）<br />belong（属于）<br />not_belong（不属于）<br />null（不存在）<br />exist（存在）</td>
+			<td>请输入风险等级值,支持数值范围0-255</td>
+		</tr>
+		<tr>
+			<td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td>
+			<td>不支持参数</td>
+			<td>eq（等于）<br />neq（不等于）<br />belong（属于）<br />not_belong（不属于）<br />null（不存在）<br />exist（存在）</td>
+			<td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td>
+		</tr>
+		<tr>
+			<td>CAPTCHAR_SCORE（验证码风险评估分）</td>
+			<td>不支持参数</td>
+			<td>numeq（数值等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />exist（存在）</td>
+			<td>请输入评估分数,支持数值范围0-100</td>
+		</tr>
+	</tbody>
+</table>
         :type Field: str
         :param _CompareFunc: 逻辑符号 
 
@@ -58203,6 +58517,8 @@ class Strategy(AbstractModel):
         numneq （ 数值不等于）
         numle （ 数值小于等于）
         numge （ 数值大于等于）
+		belong_to（属于）
+		not_belong_to（不属于）
         geo_in （ IP地理属于）
         geo_not_in （ IP地理不属于）
     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
@@ -58234,11 +58550,152 @@ class Strategy(AbstractModel):
 
     @property
     def Field(self):
-        r"""匹配字段
-
-    匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同具体如下所示：
-<table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>CONTENT_LENGTH（Content-length）</td><td>支持参数录入</td><td>numgt（数值大于）<br/>numlt（数值小于）<br/>numeq（数值等于）<br/></td><td>请输入0-9999999999999之间的整数</td></tr><tr><td>IP_GEO（来源IP归属地）</td><td>支持参数录入</td><td>geo_in（属于）<br/>geo_not_in（不属于）<br/></td><td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td></tr><tr><td>CAPTCHA_RISK（验证码风险）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>belong（属于）<br/>not_belong（不属于）<br/>null（不存在）<br/>exist（存在）</td><td>请输入风险等级值,支持数值范围0-255</td></tr><tr><td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>belong（属于）<br/>not_belong（不属于）<br/>null（不存在）<br/>exist（存在）</td><td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td></tr><tr><td>CAPTCHAR_SCORE（验证码风险评估分）</td><td>不支持参数</td><td>numeq（数值等于）<br/>numgt（数值大于）<br/>numlt（数值小于）<br/>numle（数值小于等于）<br/>numge（数值大于等于）<br/>null（不存在）<br/>exist（存在）</td><td>请输入评估分数,支持数值范围0-100</td></tr>
-</tbody></table>
+        r"""匹配字段 匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同具体如下所示： <table>
+	<thead>
+		<tr>
+			<th>匹配字段</th>
+			<th>匹配参数</th>
+			<th>逻辑符号</th>
+			<th>匹配内容</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>IP（来源IP）</td>
+			<td>不支持参数</td>
+			<td>ipmatch（匹配）<br />ipnmatch（不匹配）</td>
+			<td>多个IP以英文逗号隔开,最多20个</td>
+		</tr>
+		<tr>
+			<td>IPV6（来源IPv6）</td>
+			<td>不支持参数</td>
+			<td>ipmatch（匹配）<br />ipnmatch（不匹配）</td>
+			<td>支持单个IPV6地址</td>
+		</tr>
+		<tr>
+			<td>Referer（Referer）</td>
+			<td>不支持参数</td>
+			<td>empty（内容为空）<br />null（不存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>URL（请求路径）</td>
+			<td>不支持参数</td>
+			<td>eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）<br /></td>
+			<td>请以/开头,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>UserAgent（UserAgent）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">Referer</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>HTTP_METHOD（HTTP请求方法）</td>
+			<td>不支持参数</td>
+			<td>eq（等于）<br />neq（不等于）<br/>belong_to（属于）<br/>not_belong_to（不属于）</td>
+			<td>请输入方法名称,建议大写</td>
+		</tr>
+		<tr>
+			<td>QUERY_STRING（请求字符串）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>GET（GET参数值）</td>
+			<td>支持参数录入</td>
+			<td>contains（包含）<br />ncontains（不包含）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>GET_PARAMS_NAMES（GET参数名）</td>
+			<td>不支持参数</td>
+			<td>exsit（存在参数）<br />nexsit（不存在参数）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>POST（POST参数值）</td>
+			<td>支持参数录入</td>
+			<td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>GET_POST_NAMES（POST参数名）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>POST_BODY（完整BODY）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td>
+			<td>请输入BODY内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>COOKIE（Cookie）</td>
+			<td>不支持参数</td>
+			<td>empty（内容为空）<br />null（不存在）<br />rematch（正则匹配）</td>
+			<td>
+				<font color="Red">暂不支持</font>
+			</td>
+		</tr>
+		<tr>
+			<td>GET_COOKIES_NAMES（Cookie参数名）</td>
+			<td>不支持参数</td>
+			<td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>ARGS_COOKIE（Cookie参数值）</td>
+			<td>支持参数录入</td>
+			<td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>GET_HEADERS_NAMES（Header参数名）</td>
+			<td>不支持参数</td>
+			<td>exsit（存在参数）<br />nexsit（不存在参数）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+			<td>请输入内容,建议小写,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>ARGS_HEADER（Header参数值）</td>
+			<td>支持参数录入</td>
+			<td>contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+			<td>请输入内容,512个字符以内</td>
+		</tr>
+		<tr>
+			<td>CONTENT_LENGTH（Content-length）</td>
+			<td>支持参数录入</td>
+			<td>numgt（数值大于）<br />numlt（数值小于）<br />numeq（数值等于）<br /></td>
+			<td>请输入0-9999999999999之间的整数</td>
+		</tr>
+		<tr>
+			<td>IP_GEO（来源IP归属地）</td>
+			<td>支持参数录入</td>
+			<td>geo_in（属于）<br />geo_not_in（不属于）<br /></td>
+			<td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td>
+		</tr>
+		<tr>
+			<td>CAPTCHA_RISK（验证码风险）</td>
+			<td>不支持参数</td>
+			<td>eq（等于）<br />neq（不等于）<br />belong（属于）<br />not_belong（不属于）<br />null（不存在）<br />exist（存在）</td>
+			<td>请输入风险等级值,支持数值范围0-255</td>
+		</tr>
+		<tr>
+			<td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td>
+			<td>不支持参数</td>
+			<td>eq（等于）<br />neq（不等于）<br />belong（属于）<br />not_belong（不属于）<br />null（不存在）<br />exist（存在）</td>
+			<td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td>
+		</tr>
+		<tr>
+			<td>CAPTCHAR_SCORE（验证码风险评估分）</td>
+			<td>不支持参数</td>
+			<td>numeq（数值等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />exist（存在）</td>
+			<td>请输入评估分数,支持数值范围0-100</td>
+		</tr>
+	</tbody>
+</table>
         :rtype: str
         """
         return self._Field
@@ -58271,6 +58728,8 @@ class Strategy(AbstractModel):
         numneq （ 数值不等于）
         numle （ 数值小于等于）
         numge （ 数值大于等于）
+		belong_to（属于）
+		not_belong_to（不属于）
         geo_in （ IP地理属于）
         geo_not_in （ IP地理不属于）
     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格

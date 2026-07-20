@@ -2936,6 +2936,57 @@ class KnowledgeTaskConfig(AbstractModel):
         
 
 
+class ModelList(AbstractModel):
+    r"""模型详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>模型版本名称</p>
+        :type Model: str
+        :param _Vendor: <p>模型厂商</p>
+        :type Vendor: str
+        """
+        self._Model = None
+        self._Vendor = None
+
+    @property
+    def Model(self):
+        r"""<p>模型版本名称</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Vendor(self):
+        r"""<p>模型厂商</p>
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Vendor = params.get("Vendor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModelUserAuthority(AbstractModel):
     r"""用户对象的权限
 
@@ -3796,6 +3847,105 @@ class QueryKnowledgeTaskResponse(AbstractModel):
                 obj = FileTaskStatus()
                 obj._deserialize(item)
                 self._FileList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class QueryModelsRequest(AbstractModel):
+    r"""QueryModels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryModelsResponse(AbstractModel):
+    r"""QueryModels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Models: <p>模型列表</p>
+        :type Models: list of ModelList
+        :param _Status: <p>200成功，500失败</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Models = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Models(self):
+        r"""<p>模型列表</p>
+        :rtype: list of ModelList
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def Status(self):
+        r"""<p>200成功，500失败</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = ModelList()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 

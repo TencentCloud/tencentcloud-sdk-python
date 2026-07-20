@@ -3486,15 +3486,15 @@ class ListConnectionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _OrderBy: 根据哪个字段进行返回结果排序，目前支持如下以下字段：AddTime, ModTime
+        :param _OrderBy: <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 更新时间</li><li>name： 连接器名称</li></ul><p>默认值：updated_at</p>
         :type OrderBy: str
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _Order: 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+        :param _Order: <p>以升序还是降序的方式返回结果，可选值 ASC 和 DESC</p>
         :type Order: str
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
         """
         self._EventBusId = None
@@ -3505,7 +3505,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -3516,7 +3516,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""根据哪个字段进行返回结果排序，目前支持如下以下字段：AddTime, ModTime
+        r"""<p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 更新时间</li><li>name： 连接器名称</li></ul><p>默认值：updated_at</p>
         :rtype: str
         """
         return self._OrderBy
@@ -3527,7 +3527,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -3538,7 +3538,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+        r"""<p>以升序还是降序的方式返回结果，可选值 ASC 和 DESC</p>
         :rtype: str
         """
         return self._Order
@@ -3549,7 +3549,7 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -3582,9 +3582,9 @@ class ListConnectionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Connections: 连接器信息
+        :param _Connections: <p>连接器信息</p>
         :type Connections: list of Connection
-        :param _TotalCount: 连接器总数
+        :param _TotalCount: <p>连接器总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3595,7 +3595,7 @@ class ListConnectionsResponse(AbstractModel):
 
     @property
     def Connections(self):
-        r"""连接器信息
+        r"""<p>连接器信息</p>
         :rtype: list of Connection
         """
         return self._Connections
@@ -3606,7 +3606,7 @@ class ListConnectionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""连接器总数
+        r"""<p>连接器总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -3645,15 +3645,15 @@ class ListEventBusesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：created_at（创建时间）, updated_at（修改时间）
+        :param _OrderBy: <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li><li>name： 事件集名称</li></ul><p>默认值：updated_at</p>
         :type OrderBy: str
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _Order: 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+        :param _Order: <p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
         :type Order: str
-        :param _Filters: 过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
+        :param _Filters: <p>过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{&quot;Name&quot;:&quot;Type&quot;,&quot;Values&quot;:[&quot;Cloud&quot;,&quot;Platform&quot;]}]</p>
         :type Filters: list of Filter
-        :param _Offset: 分页偏移量，默认为0。
+        :param _Offset: <p>分页偏移量，默认为0。</p>
         :type Offset: int
         """
         self._OrderBy = None
@@ -3664,7 +3664,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""根据哪个字段进行返回结果排序,支持以下字段：created_at（创建时间）, updated_at（修改时间）
+        r"""<p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li><li>name： 事件集名称</li></ul><p>默认值：updated_at</p>
         :rtype: str
         """
         return self._OrderBy
@@ -3675,7 +3675,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -3686,7 +3686,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+        r"""<p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
         :rtype: str
         """
         return self._Order
@@ -3697,7 +3697,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
+        r"""<p>过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{&quot;Name&quot;:&quot;Type&quot;,&quot;Values&quot;:[&quot;Cloud&quot;,&quot;Platform&quot;]}]</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -3708,7 +3708,7 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认为0。
+        r"""<p>分页偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -3746,9 +3746,9 @@ class ListEventBusesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBuses: 事件集信息
+        :param _EventBuses: <p>事件集信息</p>
         :type EventBuses: list of EventBus
-        :param _TotalCount: 事件集总数
+        :param _TotalCount: <p>事件集总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3759,7 +3759,7 @@ class ListEventBusesResponse(AbstractModel):
 
     @property
     def EventBuses(self):
-        r"""事件集信息
+        r"""<p>事件集信息</p>
         :rtype: list of EventBus
         """
         return self._EventBuses
@@ -3770,7 +3770,7 @@ class ListEventBusesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""事件集总数
+        r"""<p>事件集总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -4031,15 +4031,15 @@ class ListRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）,name（规则名称）
+        :param _OrderBy: <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li><li>name： 规则名称</li></ul><p>默认值：updated_at</p>
         :type OrderBy: str
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，默认为0。
+        :param _Offset: <p>分页偏移量，默认为0。</p>
         :type Offset: int
-        :param _Order: 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+        :param _Order: <p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
         :type Order: str
         """
         self._EventBusId = None
@@ -4050,7 +4050,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -4061,7 +4061,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）,name（规则名称）
+        r"""<p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li><li>name： 规则名称</li></ul><p>默认值：updated_at</p>
         :rtype: str
         """
         return self._OrderBy
@@ -4072,7 +4072,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -4083,7 +4083,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认为0。
+        r"""<p>分页偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -4094,7 +4094,7 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+        r"""<p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
         :rtype: str
         """
         return self._Order
@@ -4127,9 +4127,9 @@ class ListRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 事件规则信息
+        :param _Rules: <p>事件规则信息</p>
         :type Rules: list of Rule
-        :param _TotalCount: 事件规则总数
+        :param _TotalCount: <p>事件规则总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4140,7 +4140,7 @@ class ListRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
-        r"""事件规则信息
+        r"""<p>事件规则信息</p>
         :rtype: list of Rule
         """
         return self._Rules
@@ -4151,7 +4151,7 @@ class ListRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""事件规则总数
+        r"""<p>事件规则总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -4194,7 +4194,7 @@ class ListTargetsRequest(AbstractModel):
         :type EventBusId: str
         :param _RuleId: <p>事件规则ID</p>
         :type RuleId: str
-        :param _OrderBy: <p>根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）</p>
+        :param _OrderBy: <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li></ul><p>默认值：updated_at</p>
         :type OrderBy: str
         :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
@@ -4234,7 +4234,7 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""<p>根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）</p>
+        r"""<p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li></ul><p>默认值：updated_at</p>
         :rtype: str
         """
         return self._OrderBy
@@ -4981,26 +4981,26 @@ class Rule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _ModTime: 修改时间
+        :param _ModTime: <p>修改时间</p>
         :type ModTime: str
-        :param _Enable: 使能开关
+        :param _Enable: <p>使能开关</p>
         :type Enable: bool
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _RuleId: 规则ID
+        :param _RuleId: <p>规则ID</p>
         :type RuleId: str
-        :param _AddTime: 创建时间
+        :param _AddTime: <p>创建时间</p>
         :type AddTime: str
-        :param _EventBusId: 事件集ID
+        :param _EventBusId: <p>事件集ID</p>
         :type EventBusId: str
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
         :type RuleName: str
-        :param _Targets: Target 简要信息
+        :param _Targets: <p>Target 简要信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of TargetBrief
-        :param _DeadLetterConfig: rule设置的dlq规则. 可能为null
+        :param _DeadLetterConfig: <p>rule设置的dlq规则. 可能为null</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterConfig: :class:`tencentcloud.eb.v20210416.models.DeadLetterConfig`
         """
@@ -5017,7 +5017,7 @@ class Rule(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -5028,7 +5028,7 @@ class Rule(AbstractModel):
 
     @property
     def ModTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._ModTime
@@ -5039,7 +5039,7 @@ class Rule(AbstractModel):
 
     @property
     def Enable(self):
-        r"""使能开关
+        r"""<p>使能开关</p>
         :rtype: bool
         """
         return self._Enable
@@ -5050,7 +5050,7 @@ class Rule(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -5061,7 +5061,7 @@ class Rule(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -5072,7 +5072,7 @@ class Rule(AbstractModel):
 
     @property
     def AddTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._AddTime
@@ -5083,7 +5083,7 @@ class Rule(AbstractModel):
 
     @property
     def EventBusId(self):
-        r"""事件集ID
+        r"""<p>事件集ID</p>
         :rtype: str
         """
         return self._EventBusId
@@ -5094,7 +5094,7 @@ class Rule(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -5105,7 +5105,7 @@ class Rule(AbstractModel):
 
     @property
     def Targets(self):
-        r"""Target 简要信息
+        r"""<p>Target 简要信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TargetBrief
         """
@@ -5117,7 +5117,7 @@ class Rule(AbstractModel):
 
     @property
     def DeadLetterConfig(self):
-        r"""rule设置的dlq规则. 可能为null
+        r"""<p>rule设置的dlq规则. 可能为null</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.eb.v20210416.models.DeadLetterConfig`
         """
@@ -5243,13 +5243,13 @@ class SearchLogRequest(AbstractModel):
         :type EventBusId: str
         :param _Page: <p>页码</p>
         :type Page: int
-        :param _Limit: <p>每页数据大小</p>
+        :param _Limit: <p>每页数据大小</p><p>取值范围：[1, 1000]</p><p>默认值：10</p>
         :type Limit: int
         :param _Filter: <p>事件查询筛选条件；示例如下：[{&quot;key&quot;:&quot;host&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;106.53.106.243&quot;},{&quot;type&quot;:&quot;AND&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;region&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>guangzhou</em>&quot;},{&quot;key&quot;:&quot;type&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;cvm:ErrorEvent:GuestReboot&quot;}]},{&quot;type&quot;:&quot;OR&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;field1&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>access</em>&quot;},{&quot;key&quot;:&quot;field2&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;custom&quot;}]}]</p>
         :type Filter: list of LogFilter
-        :param _OrderFields: <p>事件查询结果排序，[&quot;timestamp&quot;,&quot;subject&quot;]</p>
+        :param _OrderFields: <p>事件查询结果排序</p><p>枚举值：</p><ul><li>Timestamp： 事件触发时间</li><li>Source： 事件源</li><li>Type： 事件类型</li><li>RuleIds： 事件规则</li><li>Subject： 事件对象</li><li>Region： 事件地域</li><li>Status： 事件状态</li></ul>
         :type OrderFields: list of str
-        :param _OrderBy: <p>排序方式，asc 从旧到新，desc 从新到旧</p>
+        :param _OrderBy: <p>排序方式，asc 从旧到新，desc 从新到旧</p><p>枚举值：</p><ul><li>asc： 从旧到新</li><li>desc： 从新到旧</li></ul><p>默认值：desc</p>
         :type OrderBy: str
         """
         self._StartTime = None
@@ -5307,7 +5307,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>每页数据大小</p>
+        r"""<p>每页数据大小</p><p>取值范围：[1, 1000]</p><p>默认值：10</p>
         :rtype: int
         """
         return self._Limit
@@ -5329,7 +5329,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def OrderFields(self):
-        r"""<p>事件查询结果排序，[&quot;timestamp&quot;,&quot;subject&quot;]</p>
+        r"""<p>事件查询结果排序</p><p>枚举值：</p><ul><li>Timestamp： 事件触发时间</li><li>Source： 事件源</li><li>Type： 事件类型</li><li>RuleIds： 事件规则</li><li>Subject： 事件对象</li><li>Region： 事件地域</li><li>Status： 事件状态</li></ul>
         :rtype: list of str
         """
         return self._OrderFields
@@ -5340,7 +5340,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""<p>排序方式，asc 从旧到新，desc 从新到旧</p>
+        r"""<p>排序方式，asc 从旧到新，desc 从新到旧</p><p>枚举值：</p><ul><li>asc： 从旧到新</li><li>desc： 从新到旧</li></ul><p>默认值：desc</p>
         :rtype: str
         """
         return self._OrderBy

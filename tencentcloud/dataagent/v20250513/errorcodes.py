@@ -26,6 +26,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 自定义错误码
 INVALIDPARAMETER_INVALID = 'InvalidParameter.Invalid'
 
+# 无效参数组合
+INVALIDPARAMETERCOMBINATION = 'InvalidParameterCombination'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 

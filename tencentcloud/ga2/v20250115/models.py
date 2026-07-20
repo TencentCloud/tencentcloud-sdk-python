@@ -277,6 +277,102 @@ class AcceleratorRegionSet(AbstractModel):
         
 
 
+class AclEntries(AbstractModel):
+    r"""Acl信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: <p>协议。</p><p>入参限制：支持配置&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;；</p>
+        :type Protocol: str
+        :param _Port: <p>端口。</p>
+        :type Port: str
+        :param _SourceCidrBlock: <p>网段。</p>
+        :type SourceCidrBlock: str
+        :param _Policy: <p>执行动作。</p><p>入参限制：支持配置&#39;ACCEPT&#39;, &#39;DROP&#39;；</p>
+        :type Policy: str
+        :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
+        :type Description: str
+        """
+        self._Protocol = None
+        self._Port = None
+        self._SourceCidrBlock = None
+        self._Policy = None
+        self._Description = None
+
+    @property
+    def Protocol(self):
+        r"""<p>协议。</p><p>入参限制：支持配置&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;；</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        r"""<p>端口。</p>
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def SourceCidrBlock(self):
+        r"""<p>网段。</p>
+        :rtype: str
+        """
+        return self._SourceCidrBlock
+
+    @SourceCidrBlock.setter
+    def SourceCidrBlock(self, SourceCidrBlock):
+        self._SourceCidrBlock = SourceCidrBlock
+
+    @property
+    def Policy(self):
+        r"""<p>执行动作。</p><p>入参限制：支持配置&#39;ACCEPT&#39;, &#39;DROP&#39;；</p>
+        :rtype: str
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Description(self):
+        r"""<p>描述信息，最大长度不能超过100个字节。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
+        self._SourceCidrBlock = params.get("SourceCidrBlock")
+        self._Policy = params.get("Policy")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAccelerateAreasRequest(AbstractModel):
     r"""CreateAccelerateAreas请求参数结构体
 
@@ -907,6 +1003,244 @@ class CreateForwardingRuleResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._ForwardingRuleId = params.get("ForwardingRuleId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateGlobalAcceleratorAclPolicyRequest(AbstractModel):
+    r"""CreateGlobalAcceleratorAclPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
+        :type GlobalAcceleratorId: str
+        :param _DefaultAction: <p>默认行为。</p><p>枚举值：</p><ul><li>ACCEPT： 默认准许所有流量访问通道</li><li>DROP： 默认拒绝所有流量访问通道</li></ul>
+        :type DefaultAction: str
+        """
+        self._GlobalAcceleratorId = None
+        self._DefaultAction = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>全球加速实例ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def DefaultAction(self):
+        r"""<p>默认行为。</p><p>枚举值：</p><ul><li>ACCEPT： 默认准许所有流量访问通道</li><li>DROP： 默认拒绝所有流量访问通道</li></ul>
+        :rtype: str
+        """
+        return self._DefaultAction
+
+    @DefaultAction.setter
+    def DefaultAction(self, DefaultAction):
+        self._DefaultAction = DefaultAction
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._DefaultAction = params.get("DefaultAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGlobalAcceleratorAclPolicyResponse(AbstractModel):
+    r"""CreateGlobalAcceleratorAclPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>异步任务ID。</p>
+        :type TaskId: str
+        :param _GlobalAcceleratorAclPolicyId: <p>访问控制策略ID。</p>
+        :type GlobalAcceleratorAclPolicyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._GlobalAcceleratorAclPolicyId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>异步任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def GlobalAcceleratorAclPolicyId(self):
+        r"""<p>访问控制策略ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclPolicyId
+
+    @GlobalAcceleratorAclPolicyId.setter
+    def GlobalAcceleratorAclPolicyId(self, GlobalAcceleratorAclPolicyId):
+        self._GlobalAcceleratorAclPolicyId = GlobalAcceleratorAclPolicyId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._GlobalAcceleratorAclPolicyId = params.get("GlobalAcceleratorAclPolicyId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateGlobalAcceleratorAclRuleRequest(AbstractModel):
+    r"""CreateGlobalAcceleratorAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _GlobalAcceleratorAclPolicyId: 安全策略ID
+        :type GlobalAcceleratorAclPolicyId: str
+        :param _AclEntries: Acl信息。
+        :type AclEntries: list of AclEntries
+        """
+        self._GlobalAcceleratorId = None
+        self._GlobalAcceleratorAclPolicyId = None
+        self._AclEntries = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def GlobalAcceleratorAclPolicyId(self):
+        r"""安全策略ID
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclPolicyId
+
+    @GlobalAcceleratorAclPolicyId.setter
+    def GlobalAcceleratorAclPolicyId(self, GlobalAcceleratorAclPolicyId):
+        self._GlobalAcceleratorAclPolicyId = GlobalAcceleratorAclPolicyId
+
+    @property
+    def AclEntries(self):
+        r"""Acl信息。
+        :rtype: list of AclEntries
+        """
+        return self._AclEntries
+
+    @AclEntries.setter
+    def AclEntries(self, AclEntries):
+        self._AclEntries = AclEntries
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._GlobalAcceleratorAclPolicyId = params.get("GlobalAcceleratorAclPolicyId")
+        if params.get("AclEntries") is not None:
+            self._AclEntries = []
+            for item in params.get("AclEntries"):
+                obj = AclEntries()
+                obj._deserialize(item)
+                self._AclEntries.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGlobalAcceleratorAclRuleResponse(AbstractModel):
+    r"""CreateGlobalAcceleratorAclRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务ID。
+        :type TaskId: str
+        :param _GlobalAcceleratorAclRuleIds: ACL规则ID。
+        :type GlobalAcceleratorAclRuleIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._GlobalAcceleratorAclRuleIds = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""异步任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def GlobalAcceleratorAclRuleIds(self):
+        r"""ACL规则ID。
+        :rtype: list of str
+        """
+        return self._GlobalAcceleratorAclRuleIds
+
+    @GlobalAcceleratorAclRuleIds.setter
+    def GlobalAcceleratorAclRuleIds(self, GlobalAcceleratorAclRuleIds):
+        self._GlobalAcceleratorAclRuleIds = GlobalAcceleratorAclRuleIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._GlobalAcceleratorAclRuleIds = params.get("GlobalAcceleratorAclRuleIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -1909,6 +2243,209 @@ class DeleteForwardingRuleRequest(AbstractModel):
 
 class DeleteForwardingRuleResponse(AbstractModel):
     r"""DeleteForwardingRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""异步任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGlobalAcceleratorAclPolicyRequest(AbstractModel):
+    r"""DeleteGlobalAcceleratorAclPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _GlobalAcceleratorAclPolicyId: 访问控制策略ID。
+        :type GlobalAcceleratorAclPolicyId: str
+        """
+        self._GlobalAcceleratorId = None
+        self._GlobalAcceleratorAclPolicyId = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def GlobalAcceleratorAclPolicyId(self):
+        r"""访问控制策略ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclPolicyId
+
+    @GlobalAcceleratorAclPolicyId.setter
+    def GlobalAcceleratorAclPolicyId(self, GlobalAcceleratorAclPolicyId):
+        self._GlobalAcceleratorAclPolicyId = GlobalAcceleratorAclPolicyId
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._GlobalAcceleratorAclPolicyId = params.get("GlobalAcceleratorAclPolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGlobalAcceleratorAclPolicyResponse(AbstractModel):
+    r"""DeleteGlobalAcceleratorAclPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""异步任务ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGlobalAcceleratorAclRuleRequest(AbstractModel):
+    r"""DeleteGlobalAcceleratorAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :type GlobalAcceleratorId: str
+        :param _GlobalAcceleratorAclPolicyId: 安全策略ID
+        :type GlobalAcceleratorAclPolicyId: str
+        :param _GlobalAcceleratorAclRuleIds: Acl规则ID。
+        :type GlobalAcceleratorAclRuleIds: list of str
+        """
+        self._GlobalAcceleratorId = None
+        self._GlobalAcceleratorAclPolicyId = None
+        self._GlobalAcceleratorAclRuleIds = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""全球加速实例ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def GlobalAcceleratorAclPolicyId(self):
+        r"""安全策略ID
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclPolicyId
+
+    @GlobalAcceleratorAclPolicyId.setter
+    def GlobalAcceleratorAclPolicyId(self, GlobalAcceleratorAclPolicyId):
+        self._GlobalAcceleratorAclPolicyId = GlobalAcceleratorAclPolicyId
+
+    @property
+    def GlobalAcceleratorAclRuleIds(self):
+        r"""Acl规则ID。
+        :rtype: list of str
+        """
+        return self._GlobalAcceleratorAclRuleIds
+
+    @GlobalAcceleratorAclRuleIds.setter
+    def GlobalAcceleratorAclRuleIds(self, GlobalAcceleratorAclRuleIds):
+        self._GlobalAcceleratorAclRuleIds = GlobalAcceleratorAclRuleIds
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._GlobalAcceleratorAclPolicyId = params.get("GlobalAcceleratorAclPolicyId")
+        self._GlobalAcceleratorAclRuleIds = params.get("GlobalAcceleratorAclRuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGlobalAcceleratorAclRuleResponse(AbstractModel):
+    r"""DeleteGlobalAcceleratorAclRule返回参数结构体
 
     """
 
@@ -6192,6 +6729,299 @@ class ModifyForwardingRuleRequest(AbstractModel):
 
 class ModifyForwardingRuleResponse(AbstractModel):
     r"""ModifyForwardingRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>异步任务ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>异步任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGlobalAcceleratorAclPolicyRequest(AbstractModel):
+    r"""ModifyGlobalAcceleratorAclPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
+        :type GlobalAcceleratorId: str
+        :param _GlobalAcceleratorAclPolicyId: <p>访问控制策略ID。</p>
+        :type GlobalAcceleratorAclPolicyId: str
+        :param _Status: <p>访问控制策略状态。</p><p>枚举值：</p><ul><li>OPEN： 打开。</li><li>CLOSE： 关闭。</li></ul>
+        :type Status: str
+        """
+        self._GlobalAcceleratorId = None
+        self._GlobalAcceleratorAclPolicyId = None
+        self._Status = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>全球加速实例ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def GlobalAcceleratorAclPolicyId(self):
+        r"""<p>访问控制策略ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclPolicyId
+
+    @GlobalAcceleratorAclPolicyId.setter
+    def GlobalAcceleratorAclPolicyId(self, GlobalAcceleratorAclPolicyId):
+        self._GlobalAcceleratorAclPolicyId = GlobalAcceleratorAclPolicyId
+
+    @property
+    def Status(self):
+        r"""<p>访问控制策略状态。</p><p>枚举值：</p><ul><li>OPEN： 打开。</li><li>CLOSE： 关闭。</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._GlobalAcceleratorAclPolicyId = params.get("GlobalAcceleratorAclPolicyId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGlobalAcceleratorAclPolicyResponse(AbstractModel):
+    r"""ModifyGlobalAcceleratorAclPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>异步任务ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>异步任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGlobalAcceleratorAclRuleRequest(AbstractModel):
+    r"""ModifyGlobalAcceleratorAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
+        :type GlobalAcceleratorId: str
+        :param _GlobalAcceleratorAclPolicyId: <p>安全策略ID</p>
+        :type GlobalAcceleratorAclPolicyId: str
+        :param _GlobalAcceleratorAclRuleId: <p>Acl规则ID。</p>
+        :type GlobalAcceleratorAclRuleId: str
+        :param _Protocol: <p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;。</p>
+        :type Protocol: str
+        :param _Port: <p>端口。</p>
+        :type Port: str
+        :param _SourceCidrBlock: <p>网段。</p>
+        :type SourceCidrBlock: str
+        :param _Policy: <p>动作。</p><p>入参限制：支持选择&#39;ACCEPT&#39;, &#39;DROP&#39;。</p><p>枚举值：</p><ul><li>ACCEPT： 允许。</li><li>DROP： 拒绝。</li></ul>
+        :type Policy: str
+        :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
+        :type Description: str
+        """
+        self._GlobalAcceleratorId = None
+        self._GlobalAcceleratorAclPolicyId = None
+        self._GlobalAcceleratorAclRuleId = None
+        self._Protocol = None
+        self._Port = None
+        self._SourceCidrBlock = None
+        self._Policy = None
+        self._Description = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>全球加速实例ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def GlobalAcceleratorAclPolicyId(self):
+        r"""<p>安全策略ID</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclPolicyId
+
+    @GlobalAcceleratorAclPolicyId.setter
+    def GlobalAcceleratorAclPolicyId(self, GlobalAcceleratorAclPolicyId):
+        self._GlobalAcceleratorAclPolicyId = GlobalAcceleratorAclPolicyId
+
+    @property
+    def GlobalAcceleratorAclRuleId(self):
+        r"""<p>Acl规则ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclRuleId
+
+    @GlobalAcceleratorAclRuleId.setter
+    def GlobalAcceleratorAclRuleId(self, GlobalAcceleratorAclRuleId):
+        self._GlobalAcceleratorAclRuleId = GlobalAcceleratorAclRuleId
+
+    @property
+    def Protocol(self):
+        r"""<p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;。</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        r"""<p>端口。</p>
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def SourceCidrBlock(self):
+        r"""<p>网段。</p>
+        :rtype: str
+        """
+        return self._SourceCidrBlock
+
+    @SourceCidrBlock.setter
+    def SourceCidrBlock(self, SourceCidrBlock):
+        self._SourceCidrBlock = SourceCidrBlock
+
+    @property
+    def Policy(self):
+        r"""<p>动作。</p><p>入参限制：支持选择&#39;ACCEPT&#39;, &#39;DROP&#39;。</p><p>枚举值：</p><ul><li>ACCEPT： 允许。</li><li>DROP： 拒绝。</li></ul>
+        :rtype: str
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Description(self):
+        r"""<p>描述信息，最大长度不能超过100个字节。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._GlobalAcceleratorAclPolicyId = params.get("GlobalAcceleratorAclPolicyId")
+        self._GlobalAcceleratorAclRuleId = params.get("GlobalAcceleratorAclRuleId")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
+        self._SourceCidrBlock = params.get("SourceCidrBlock")
+        self._Policy = params.get("Policy")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGlobalAcceleratorAclRuleResponse(AbstractModel):
+    r"""ModifyGlobalAcceleratorAclRule返回参数结构体
 
     """
 

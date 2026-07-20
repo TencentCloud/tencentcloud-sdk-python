@@ -162,6 +162,72 @@ class AIOptimizeModel(AbstractModel):
         
 
 
+class AccountInfo(AbstractModel):
+    r"""员工信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountUin: <p>员工子账号id</p>
+        :type AccountUin: str
+        :param _NickName: <p>员工昵称</p>
+        :type NickName: str
+        :param _Avatar: <p>员工头像</p>
+        :type Avatar: str
+        """
+        self._AccountUin = None
+        self._NickName = None
+        self._Avatar = None
+
+    @property
+    def AccountUin(self):
+        r"""<p>员工子账号id</p>
+        :rtype: str
+        """
+        return self._AccountUin
+
+    @AccountUin.setter
+    def AccountUin(self, AccountUin):
+        self._AccountUin = AccountUin
+
+    @property
+    def NickName(self):
+        r"""<p>员工昵称</p>
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Avatar(self):
+        r"""<p>员工头像</p>
+        :rtype: str
+        """
+        return self._Avatar
+
+    @Avatar.setter
+    def Avatar(self, Avatar):
+        self._Avatar = Avatar
+
+
+    def _deserialize(self, params):
+        self._AccountUin = params.get("AccountUin")
+        self._NickName = params.get("NickName")
+        self._Avatar = params.get("Avatar")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentAdvancedConfig(AbstractModel):
     r"""Agent高级设置
 
@@ -790,7 +856,7 @@ class AgentPluginConfig(AbstractModel):
         :type EnableCamRoleAuth: bool
         :param _AuthType: <p>授权类型</p><p>枚举值：</p><ul><li>0： 无鉴权</li><li>1： API Key</li><li>2： CAM授权</li><li>3： OAuth2.0授权</li></ul>
         :type AuthType: int
-        :param _OAuthConsent: OAuth 授权同意模式；0-开发者授权；1-使用者授权（仅在auth_type=3时生效）
+        :param _OAuthConsent: <p>OAuth 授权同意模式；0-开发者授权；1-使用者授权（仅在auth_type=3时生效）</p>
         :type OAuthConsent: int
         """
         self._PluginId = None
@@ -857,7 +923,7 @@ class AgentPluginConfig(AbstractModel):
 
     @property
     def OAuthConsent(self):
-        r"""OAuth 授权同意模式；0-开发者授权；1-使用者授权（仅在auth_type=3时生效）
+        r"""<p>OAuth 授权同意模式；0-开发者授权；1-使用者授权（仅在auth_type=3时生效）</p>
         :rtype: int
         """
         return self._OAuthConsent
@@ -2686,26 +2752,29 @@ class App(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AuxiliaryInfo: 辅助信息(子状态/审批/申诉/搜索资源/特殊状态等)
+        :param _AuxiliaryInfo: <p>辅助信息(子状态/审批/申诉/搜索资源/特殊状态等)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuxiliaryInfo: :class:`tencentcloud.adp.v20260520.models.AppAuxiliaryInfo`
-        :param _Config: 配置
+        :param _Config: <p>配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Config: :class:`tencentcloud.adp.v20260520.models.AppConfig`
-        :param _Metadata: 元数据
+        :param _Metadata: <p>元数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metadata: :class:`tencentcloud.adp.v20260520.models.AppMetadata`
-        :param _SecretInfo: 应用密钥信息
+        :param _SecretInfo: <p>应用密钥信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretInfo: :class:`tencentcloud.adp.v20260520.models.AppSecretInfo`
-        :param _ShareUrlInfo: 分享链接信息(含访问控制)
+        :param _ShareUrlInfo: <p>分享链接信息(含访问控制)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareUrlInfo: :class:`tencentcloud.adp.v20260520.models.AppShareURLInfo`
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: :class:`tencentcloud.adp.v20260520.models.AppStatusInfo`
-        :param _SharedKbList: 应用引用的共享知识库列表
+        :param _SharedKbList: <p>应用引用的共享知识库列表</p>
         :type SharedKbList: list of AppSharedKbInfo
+        :param _CorpShareConfig: <p>企业共享配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpShareConfig: :class:`tencentcloud.adp.v20260520.models.CorpShareConfig`
         """
         self._AuxiliaryInfo = None
         self._Config = None
@@ -2714,10 +2783,11 @@ class App(AbstractModel):
         self._ShareUrlInfo = None
         self._Status = None
         self._SharedKbList = None
+        self._CorpShareConfig = None
 
     @property
     def AuxiliaryInfo(self):
-        r"""辅助信息(子状态/审批/申诉/搜索资源/特殊状态等)
+        r"""<p>辅助信息(子状态/审批/申诉/搜索资源/特殊状态等)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.AppAuxiliaryInfo`
         """
@@ -2729,7 +2799,7 @@ class App(AbstractModel):
 
     @property
     def Config(self):
-        r"""配置
+        r"""<p>配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.AppConfig`
         """
@@ -2741,7 +2811,7 @@ class App(AbstractModel):
 
     @property
     def Metadata(self):
-        r"""元数据
+        r"""<p>元数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.AppMetadata`
         """
@@ -2753,7 +2823,7 @@ class App(AbstractModel):
 
     @property
     def SecretInfo(self):
-        r"""应用密钥信息
+        r"""<p>应用密钥信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.AppSecretInfo`
         """
@@ -2765,7 +2835,7 @@ class App(AbstractModel):
 
     @property
     def ShareUrlInfo(self):
-        r"""分享链接信息(含访问控制)
+        r"""<p>分享链接信息(含访问控制)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.AppShareURLInfo`
         """
@@ -2777,7 +2847,7 @@ class App(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.AppStatusInfo`
         """
@@ -2789,7 +2859,7 @@ class App(AbstractModel):
 
     @property
     def SharedKbList(self):
-        r"""应用引用的共享知识库列表
+        r"""<p>应用引用的共享知识库列表</p>
         :rtype: list of AppSharedKbInfo
         """
         return self._SharedKbList
@@ -2797,6 +2867,18 @@ class App(AbstractModel):
     @SharedKbList.setter
     def SharedKbList(self, SharedKbList):
         self._SharedKbList = SharedKbList
+
+    @property
+    def CorpShareConfig(self):
+        r"""<p>企业共享配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CorpShareConfig`
+        """
+        return self._CorpShareConfig
+
+    @CorpShareConfig.setter
+    def CorpShareConfig(self, CorpShareConfig):
+        self._CorpShareConfig = CorpShareConfig
 
 
     def _deserialize(self, params):
@@ -2824,6 +2906,9 @@ class App(AbstractModel):
                 obj = AppSharedKbInfo()
                 obj._deserialize(item)
                 self._SharedKbList.append(obj)
+        if params.get("CorpShareConfig") is not None:
+            self._CorpShareConfig = CorpShareConfig()
+            self._CorpShareConfig._deserialize(params.get("CorpShareConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4012,17 +4097,17 @@ class AppSecretInfo(AbstractModel):
 
 
 class AppShareAccessControl(AbstractModel):
-    r"""应用分享访问控制配置
+    r"""AppShareAccessControl
 
     """
 
     def __init__(self):
         r"""
-        :param _AccessType: 访问控制类型。枚举值: 1:公开访问(所有用户都可访问), 2:内部访问(仅企业用户可访问), 3:账号白名单(指定UIN/手机/邮箱/IP可访问)
+        :param _AccessType: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_SHARE_ACCESS_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>APP_SHARE_ACCESS_TYPE_PUBLIC</td><td>1</td><td>公开访问(所有用户都可访问)</td></tr><tr><td>APP_SHARE_ACCESS_TYPE_INTERNAL</td><td>2</td><td>内部访问(仅企业用户可访问)</td></tr><tr><td>APP_SHARE_ACCESS_TYPE_ACCOUNT_WHITELIST</td><td>3</td><td>账号白名单(指定UIN/手机/邮箱/IP可访问)</td></tr></tbody></table>
         :type AccessType: int
-        :param _Enabled: 体验链接开关
+        :param _Enabled: <p>是否开启访问控制</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 禁用</li></ul>
         :type Enabled: bool
-        :param _Whitelist: 白名单(仅 access_type=ACCOUNT_WHITELIST 时生效)
+        :param _Whitelist: <p>白名单信息</p>
         :type Whitelist: list of AppShareWhitelistItem
         """
         self._AccessType = None
@@ -4031,7 +4116,7 @@ class AppShareAccessControl(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""访问控制类型。枚举值: 1:公开访问(所有用户都可访问), 2:内部访问(仅企业用户可访问), 3:账号白名单(指定UIN/手机/邮箱/IP可访问)
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_SHARE_ACCESS_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>APP_SHARE_ACCESS_TYPE_PUBLIC</td><td>1</td><td>公开访问(所有用户都可访问)</td></tr><tr><td>APP_SHARE_ACCESS_TYPE_INTERNAL</td><td>2</td><td>内部访问(仅企业用户可访问)</td></tr><tr><td>APP_SHARE_ACCESS_TYPE_ACCOUNT_WHITELIST</td><td>3</td><td>账号白名单(指定UIN/手机/邮箱/IP可访问)</td></tr></tbody></table>
         :rtype: int
         """
         return self._AccessType
@@ -4042,7 +4127,7 @@ class AppShareAccessControl(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""体验链接开关
+        r"""<p>是否开启访问控制</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 禁用</li></ul>
         :rtype: bool
         """
         return self._Enabled
@@ -4053,7 +4138,7 @@ class AppShareAccessControl(AbstractModel):
 
     @property
     def Whitelist(self):
-        r"""白名单(仅 access_type=ACCOUNT_WHITELIST 时生效)
+        r"""<p>白名单信息</p>
         :rtype: list of AppShareWhitelistItem
         """
         return self._Whitelist
@@ -4138,15 +4223,15 @@ class AppShareURLInfo(AbstractModel):
 
 
 class AppShareWhitelistItem(AbstractModel):
-    r"""应用分享白名单项
+    r"""AppShareWhitelistItem
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 白名单类型。枚举值: 1:UIN账号, 2:手机号码, 3:邮箱地址, 4:IP地址
+        :param _Type: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_UIN</td><td>1</td><td>UIN账号</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_PHONE</td><td>2</td><td>手机号码</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_EMAIL</td><td>3</td><td>邮箱地址</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_IP</td><td>4</td><td>IP地址</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_RTX</td><td>5</td><td>RTX账号</td></tr></tbody></table>
         :type Type: int
-        :param _Values: 白名单值列表(UIN/手机号/邮箱/IP等)
+        :param _Values: <p>白名单数组信息</p><p>参数格式：白名单值</p>
         :type Values: list of str
         """
         self._Type = None
@@ -4154,7 +4239,7 @@ class AppShareWhitelistItem(AbstractModel):
 
     @property
     def Type(self):
-        r"""白名单类型。枚举值: 1:UIN账号, 2:手机号码, 3:邮箱地址, 4:IP地址
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_UIN</td><td>1</td><td>UIN账号</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_PHONE</td><td>2</td><td>手机号码</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_EMAIL</td><td>3</td><td>邮箱地址</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_IP</td><td>4</td><td>IP地址</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_RTX</td><td>5</td><td>RTX账号</td></tr></tbody></table>
         :rtype: int
         """
         return self._Type
@@ -4165,7 +4250,7 @@ class AppShareWhitelistItem(AbstractModel):
 
     @property
     def Values(self):
-        r"""白名单值列表(UIN/手机号/邮箱/IP等)
+        r"""<p>白名单数组信息</p><p>参数格式：白名单值</p>
         :rtype: list of str
         """
         return self._Values
@@ -4768,6 +4853,200 @@ class AppealingStatus(AbstractModel):
         
 
 
+class AuditLog(AbstractModel):
+    r"""操作日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountInfo: <p>员工信息</p>
+        :type AccountInfo: :class:`tencentcloud.adp.v20260520.models.AccountInfo`
+        :param _AppId: <p>应用业务id</p>
+        :type AppId: str
+        :param _AppName: <p>应用名称</p><p>操作日志触发时的名称</p>
+        :type AppName: str
+        :param _OperateTime: <p>操作时间</p><p>参数格式：秒时间戳</p>
+        :type OperateTime: str
+        :param _Action: <p>操作类型</p>
+        :type Action: str
+        :param _Biz: <p>操作对象</p>
+        :type Biz: str
+        :param _Content: <p>操作内容</p>
+        :type Content: str
+        :param _UniqueId: <p>操作唯一ID</p>
+        :type UniqueId: str
+        """
+        self._AccountInfo = None
+        self._AppId = None
+        self._AppName = None
+        self._OperateTime = None
+        self._Action = None
+        self._Biz = None
+        self._Content = None
+        self._UniqueId = None
+
+    @property
+    def AccountInfo(self):
+        r"""<p>员工信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AccountInfo`
+        """
+        return self._AccountInfo
+
+    @AccountInfo.setter
+    def AccountInfo(self, AccountInfo):
+        self._AccountInfo = AccountInfo
+
+    @property
+    def AppId(self):
+        r"""<p>应用业务id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppName(self):
+        r"""<p>应用名称</p><p>操作日志触发时的名称</p>
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def OperateTime(self):
+        r"""<p>操作时间</p><p>参数格式：秒时间戳</p>
+        :rtype: str
+        """
+        return self._OperateTime
+
+    @OperateTime.setter
+    def OperateTime(self, OperateTime):
+        self._OperateTime = OperateTime
+
+    @property
+    def Action(self):
+        r"""<p>操作类型</p>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Biz(self):
+        r"""<p>操作对象</p>
+        :rtype: str
+        """
+        return self._Biz
+
+    @Biz.setter
+    def Biz(self, Biz):
+        self._Biz = Biz
+
+    @property
+    def Content(self):
+        r"""<p>操作内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def UniqueId(self):
+        r"""<p>操作唯一ID</p>
+        :rtype: str
+        """
+        return self._UniqueId
+
+    @UniqueId.setter
+    def UniqueId(self, UniqueId):
+        self._UniqueId = UniqueId
+
+
+    def _deserialize(self, params):
+        if params.get("AccountInfo") is not None:
+            self._AccountInfo = AccountInfo()
+            self._AccountInfo._deserialize(params.get("AccountInfo"))
+        self._AppId = params.get("AppId")
+        self._AppName = params.get("AppName")
+        self._OperateTime = params.get("OperateTime")
+        self._Action = params.get("Action")
+        self._Biz = params.get("Biz")
+        self._Content = params.get("Content")
+        self._UniqueId = params.get("UniqueId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogMetaField(AbstractModel):
+    r"""操作日志元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>操作日志元数据key</p>
+        :type Key: str
+        :param _Name: <p>操作日志元数据Name</p>
+        :type Name: str
+        """
+        self._Key = None
+        self._Name = None
+
+    @property
+    def Key(self):
+        r"""<p>操作日志元数据key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        r"""<p>操作日志元数据Name</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthConfig(AbstractModel):
     r"""插件授权配置
 
@@ -5167,6 +5446,57 @@ class CamAuthConfig(AbstractModel):
         
 
 
+class ClawAgentAgentTeamConfig(AbstractModel):
+    r"""ClawAgent Agent团队协作配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否开启Agent团队协作</p>
+        :type Enabled: bool
+        :param _PromptContent: <p>prompt内容</p>
+        :type PromptContent: str
+        """
+        self._Enabled = None
+        self._PromptContent = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启Agent团队协作</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def PromptContent(self):
+        r"""<p>prompt内容</p>
+        :rtype: str
+        """
+        return self._PromptContent
+
+    @PromptContent.setter
+    def PromptContent(self, PromptContent):
+        self._PromptContent = PromptContent
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._PromptContent = params.get("PromptContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClawAgentConfig(AbstractModel):
     r"""ClawAgent配置
 
@@ -5177,8 +5507,16 @@ class ClawAgentConfig(AbstractModel):
         :param _CustomConfig: 调用方自定义配置(控制C端用户在对话时可动态传入哪些自定义配置)
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomConfig: :class:`tencentcloud.adp.v20260520.models.ClawAgentCustomConfig`
+        :param _AgentTeamConfig: Agent团队协作配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentTeamConfig: :class:`tencentcloud.adp.v20260520.models.ClawAgentAgentTeamConfig`
+        :param _LongMemoryConfig: 长期记忆配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LongMemoryConfig: :class:`tencentcloud.adp.v20260520.models.ClawAgentLongMemoryConfig`
         """
         self._CustomConfig = None
+        self._AgentTeamConfig = None
+        self._LongMemoryConfig = None
 
     @property
     def CustomConfig(self):
@@ -5192,11 +5530,41 @@ class ClawAgentConfig(AbstractModel):
     def CustomConfig(self, CustomConfig):
         self._CustomConfig = CustomConfig
 
+    @property
+    def AgentTeamConfig(self):
+        r"""Agent团队协作配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ClawAgentAgentTeamConfig`
+        """
+        return self._AgentTeamConfig
+
+    @AgentTeamConfig.setter
+    def AgentTeamConfig(self, AgentTeamConfig):
+        self._AgentTeamConfig = AgentTeamConfig
+
+    @property
+    def LongMemoryConfig(self):
+        r"""长期记忆配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ClawAgentLongMemoryConfig`
+        """
+        return self._LongMemoryConfig
+
+    @LongMemoryConfig.setter
+    def LongMemoryConfig(self, LongMemoryConfig):
+        self._LongMemoryConfig = LongMemoryConfig
+
 
     def _deserialize(self, params):
         if params.get("CustomConfig") is not None:
             self._CustomConfig = ClawAgentCustomConfig()
             self._CustomConfig._deserialize(params.get("CustomConfig"))
+        if params.get("AgentTeamConfig") is not None:
+            self._AgentTeamConfig = ClawAgentAgentTeamConfig()
+            self._AgentTeamConfig._deserialize(params.get("AgentTeamConfig"))
+        if params.get("LongMemoryConfig") is not None:
+            self._LongMemoryConfig = ClawAgentLongMemoryConfig()
+            self._LongMemoryConfig._deserialize(params.get("LongMemoryConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5222,6 +5590,42 @@ class ClawAgentCustomConfig(AbstractModel):
     @property
     def Enabled(self):
         r"""<p>是否允许C端用户在对话时动态传入自定义Agent配置</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClawAgentLongMemoryConfig(AbstractModel):
+    r"""ClawAgent长期记忆配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否开启长期记忆</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启长期记忆</p>
         :rtype: bool
         """
         return self._Enabled
@@ -6723,6 +7127,72 @@ class CopyAppResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CorpShareConfig(AbstractModel):
+    r"""CorpShareConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>企业共享开关</p>
+        :type Enabled: bool
+        :param _ShareScope: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARE_SCOPE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ALL</td><td>1</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ACCOUNT</td><td>2</td><td></td></tr></tbody></table>
+        :type ShareScope: int
+        :param _TagIdList: <p>企业共享应用标签</p>
+        :type TagIdList: list of str
+        """
+        self._Enabled = None
+        self._ShareScope = None
+        self._TagIdList = None
+
+    @property
+    def Enabled(self):
+        r"""<p>企业共享开关</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ShareScope(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARE_SCOPE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ALL</td><td>1</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ACCOUNT</td><td>2</td><td></td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._ShareScope
+
+    @ShareScope.setter
+    def ShareScope(self, ShareScope):
+        self._ShareScope = ShareScope
+
+    @property
+    def TagIdList(self):
+        r"""<p>企业共享应用标签</p>
+        :rtype: list of str
+        """
+        return self._TagIdList
+
+    @TagIdList.setter
+    def TagIdList(self, TagIdList):
+        self._TagIdList = TagIdList
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._ShareScope = params.get("ShareScope")
+        self._TagIdList = params.get("TagIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAgentRequest(AbstractModel):
     r"""CreateAgent请求参数结构体
 
@@ -7171,12 +7641,18 @@ class CreatePluginRequest(AbstractModel):
         :param _SpaceId: <p>当前空间id</p>
         :type SpaceId: str
         :param _ToolList: <p>插件的工具列表</p>
-        :type ToolList: :class:`tencentcloud.adp.v20260520.models.Tool`
+        :type ToolList: list of Tool
+        :param _LoginUin: <p>登录用户主账号(集成商模式必填)</p>
+        :type LoginUin: str
+        :param _LoginSubAccountUin: <p>登录用户子账号(集成商模式必填)</p>
+        :type LoginSubAccountUin: str
         """
         self._Profile = None
         self._Config = None
         self._SpaceId = None
         self._ToolList = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
 
     @property
     def Profile(self):
@@ -7214,13 +7690,35 @@ class CreatePluginRequest(AbstractModel):
     @property
     def ToolList(self):
         r"""<p>插件的工具列表</p>
-        :rtype: :class:`tencentcloud.adp.v20260520.models.Tool`
+        :rtype: list of Tool
         """
         return self._ToolList
 
     @ToolList.setter
     def ToolList(self, ToolList):
         self._ToolList = ToolList
+
+    @property
+    def LoginUin(self):
+        r"""<p>登录用户主账号(集成商模式必填)</p>
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""<p>登录用户子账号(集成商模式必填)</p>
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
 
 
     def _deserialize(self, params):
@@ -7232,8 +7730,13 @@ class CreatePluginRequest(AbstractModel):
             self._Config._deserialize(params.get("Config"))
         self._SpaceId = params.get("SpaceId")
         if params.get("ToolList") is not None:
-            self._ToolList = Tool()
-            self._ToolList._deserialize(params.get("ToolList"))
+            self._ToolList = []
+            for item in params.get("ToolList"):
+                obj = Tool()
+                obj._deserialize(item)
+                self._ToolList.append(obj)
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7294,26 +7797,32 @@ class CreateReleaseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 应用ID
+        :param _AppId: <p>应用ID</p>
         :type AppId: str
-        :param _ChannelIdList: 渠道ID列表
+        :param _AppShareAccessControl: <p>应用分享访问控制配置</p>
+        :type AppShareAccessControl: :class:`tencentcloud.adp.v20260520.models.AppShareAccessControl`
+        :param _ChannelIdList: <p>渠道ID列表</p>
         :type ChannelIdList: list of str
-        :param _Description: 发布描述
+        :param _CorpShareConfig: <p>企业共享配置</p>
+        :type CorpShareConfig: :class:`tencentcloud.adp.v20260520.models.CorpShareConfig`
+        :param _Description: <p>发布描述</p>
         :type Description: str
-        :param _IsDevToRelease: 将默认知识库中，仅调试生效的知识批量变更为"调试/发布都生效"
+        :param _IsDevToRelease: <p>将默认知识库中，仅调试生效的知识批量变更为&quot;调试/发布都生效&quot;</p>
         :type IsDevToRelease: bool
-        :param _IsPublishAsTemplate: 是否同步发布为应用模板
+        :param _IsPublishAsTemplate: <p>是否同步发布为应用模板</p>
         :type IsPublishAsTemplate: bool
         """
         self._AppId = None
+        self._AppShareAccessControl = None
         self._ChannelIdList = None
+        self._CorpShareConfig = None
         self._Description = None
         self._IsDevToRelease = None
         self._IsPublishAsTemplate = None
 
     @property
     def AppId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._AppId
@@ -7323,8 +7832,19 @@ class CreateReleaseRequest(AbstractModel):
         self._AppId = AppId
 
     @property
+    def AppShareAccessControl(self):
+        r"""<p>应用分享访问控制配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppShareAccessControl`
+        """
+        return self._AppShareAccessControl
+
+    @AppShareAccessControl.setter
+    def AppShareAccessControl(self, AppShareAccessControl):
+        self._AppShareAccessControl = AppShareAccessControl
+
+    @property
     def ChannelIdList(self):
-        r"""渠道ID列表
+        r"""<p>渠道ID列表</p>
         :rtype: list of str
         """
         return self._ChannelIdList
@@ -7334,8 +7854,19 @@ class CreateReleaseRequest(AbstractModel):
         self._ChannelIdList = ChannelIdList
 
     @property
+    def CorpShareConfig(self):
+        r"""<p>企业共享配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CorpShareConfig`
+        """
+        return self._CorpShareConfig
+
+    @CorpShareConfig.setter
+    def CorpShareConfig(self, CorpShareConfig):
+        self._CorpShareConfig = CorpShareConfig
+
+    @property
     def Description(self):
-        r"""发布描述
+        r"""<p>发布描述</p>
         :rtype: str
         """
         return self._Description
@@ -7346,7 +7877,7 @@ class CreateReleaseRequest(AbstractModel):
 
     @property
     def IsDevToRelease(self):
-        r"""将默认知识库中，仅调试生效的知识批量变更为"调试/发布都生效"
+        r"""<p>将默认知识库中，仅调试生效的知识批量变更为&quot;调试/发布都生效&quot;</p>
         :rtype: bool
         """
         return self._IsDevToRelease
@@ -7357,7 +7888,7 @@ class CreateReleaseRequest(AbstractModel):
 
     @property
     def IsPublishAsTemplate(self):
-        r"""是否同步发布为应用模板
+        r"""<p>是否同步发布为应用模板</p>
         :rtype: bool
         """
         return self._IsPublishAsTemplate
@@ -7369,7 +7900,13 @@ class CreateReleaseRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
+        if params.get("AppShareAccessControl") is not None:
+            self._AppShareAccessControl = AppShareAccessControl()
+            self._AppShareAccessControl._deserialize(params.get("AppShareAccessControl"))
         self._ChannelIdList = params.get("ChannelIdList")
+        if params.get("CorpShareConfig") is not None:
+            self._CorpShareConfig = CorpShareConfig()
+            self._CorpShareConfig._deserialize(params.get("CorpShareConfig"))
         self._Description = params.get("Description")
         self._IsDevToRelease = params.get("IsDevToRelease")
         self._IsPublishAsTemplate = params.get("IsPublishAsTemplate")
@@ -7390,9 +7927,9 @@ class CreateReleaseResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NeedApproval: need_approval
+        :param _NeedApproval: <p>need_approval</p>
         :type NeedApproval: bool
-        :param _ReleaseId: release_id
+        :param _ReleaseId: <p>release_id</p>
         :type ReleaseId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7403,7 +7940,7 @@ class CreateReleaseResponse(AbstractModel):
 
     @property
     def NeedApproval(self):
-        r"""need_approval
+        r"""<p>need_approval</p>
         :rtype: bool
         """
         return self._NeedApproval
@@ -7414,7 +7951,7 @@ class CreateReleaseResponse(AbstractModel):
 
     @property
     def ReleaseId(self):
-        r"""release_id
+        r"""<p>release_id</p>
         :rtype: str
         """
         return self._ReleaseId
@@ -8455,14 +8992,17 @@ class DeleteAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: app_id
+        :param _AppId: <p>app_id</p>
         :type AppId: str
+        :param _Reason: <p>删除原因(非必填,审批时展示)</p>
+        :type Reason: str
         """
         self._AppId = None
+        self._Reason = None
 
     @property
     def AppId(self):
-        r"""app_id
+        r"""<p>app_id</p>
         :rtype: str
         """
         return self._AppId
@@ -8471,9 +9011,21 @@ class DeleteAppRequest(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def Reason(self):
+        r"""<p>删除原因(非必填,审批时展示)</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8660,8 +9212,14 @@ class DeletePluginRequest(AbstractModel):
         r"""
         :param _PluginId: <p>插件id</p>
         :type PluginId: str
+        :param _LoginUin: <p>登录用户主账号(集成商模式必填)</p>
+        :type LoginUin: str
+        :param _LoginSubAccountUin: <p>登录用户子账号(集成商模式必填)</p>
+        :type LoginSubAccountUin: str
         """
         self._PluginId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
 
     @property
     def PluginId(self):
@@ -8674,9 +9232,33 @@ class DeletePluginRequest(AbstractModel):
     def PluginId(self, PluginId):
         self._PluginId = PluginId
 
+    @property
+    def LoginUin(self):
+        r"""<p>登录用户主账号(集成商模式必填)</p>
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""<p>登录用户子账号(集成商模式必填)</p>
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9073,6 +9655,140 @@ class DeleteVariableResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccountListRequest(AbstractModel):
+    r"""DescribeAccountList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: <p>页码</p><p>从0开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>分页数量</p><p>取值范围：[1, 100]</p><p>单位：个</p><p>最大100</p>
+        :type PageSize: int
+        :param _FilterList: <p>参数过滤</p><p>支持SpaceId,NIckName 过滤查询</p>
+        :type FilterList: list of Filter
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._FilterList = None
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码</p><p>从0开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>分页数量</p><p>取值范围：[1, 100]</p><p>单位：个</p><p>最大100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def FilterList(self):
+        r"""<p>参数过滤</p><p>支持SpaceId,NIckName 过滤查询</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountListResponse(AbstractModel):
+    r"""DescribeAccountList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: str
+        :param _AccountList: <p>员工列表</p>
+        :type AccountList: list of AccountInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AccountList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AccountList(self):
+        r"""<p>员工列表</p>
+        :rtype: list of AccountInfo
+        """
+        return self._AccountList
+
+    @AccountList.setter
+    def AccountList(self, AccountList):
+        self._AccountList = AccountList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AccountList") is not None:
+            self._AccountList = []
+            for item in params.get("AccountList"):
+                obj = AccountInfo()
+                obj._deserialize(item)
+                self._AccountList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9507,13 +10223,13 @@ class DescribeAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 应用ID
+        :param _AppId: <p>应用ID</p>
         :type AppId: str
-        :param _Domain: 应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域
+        :param _Domain: <p>应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域</p>
         :type Domain: int
-        :param _FieldMask: 字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表)
+        :param _FieldMask: <p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置)</p>
         :type FieldMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
-        :param _StatusType: 特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态
+        :param _StatusType: <p>特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态</p>
         :type StatusType: int
         """
         self._AppId = None
@@ -9523,7 +10239,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def AppId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._AppId
@@ -9534,7 +10250,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域
+        r"""<p>应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域</p>
         :rtype: int
         """
         return self._Domain
@@ -9545,7 +10261,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def FieldMask(self):
-        r"""字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表)
+        r"""<p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置)</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         return self._FieldMask
@@ -9556,7 +10272,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def StatusType(self):
-        r"""特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态
+        r"""<p>特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态</p>
         :rtype: int
         """
         return self._StatusType
@@ -9590,7 +10306,7 @@ class DescribeAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _App: 应用详情
+        :param _App: <p>应用详情</p>
         :type App: :class:`tencentcloud.adp.v20260520.models.App`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9600,7 +10316,7 @@ class DescribeAppResponse(AbstractModel):
 
     @property
     def App(self):
-        r"""应用详情
+        r"""<p>应用详情</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.App`
         """
         return self._App
@@ -9789,6 +10505,229 @@ class DescribeAppSummaryListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._AppSummaryList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogListRequest(AbstractModel):
+    r"""DescribeAuditLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>空间id</p>
+        :type SpaceId: str
+        :param _Limit: <p>每页数量</p><p>取值范围：[1, 100]</p>
+        :type Limit: int
+        :param _SearchAfter: <p>es查询起始位置</p><p>对应接口返回SearchAfter</p>
+        :type SearchAfter: list of str
+        :param _FilterList: <p>参数过滤</p><p>支持 Action,BizObject,Content<br>支持SpaceId,AccountUin,AppId(最多100个)<br>支持startTime,endTime(秒时间戳)</p>
+        :type FilterList: list of Filter
+        """
+        self._SpaceId = None
+        self._Limit = None
+        self._SearchAfter = None
+        self._FilterList = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间id</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量</p><p>取值范围：[1, 100]</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchAfter(self):
+        r"""<p>es查询起始位置</p><p>对应接口返回SearchAfter</p>
+        :rtype: list of str
+        """
+        return self._SearchAfter
+
+    @SearchAfter.setter
+    def SearchAfter(self, SearchAfter):
+        self._SearchAfter = SearchAfter
+
+    @property
+    def FilterList(self):
+        r"""<p>参数过滤</p><p>支持 Action,BizObject,Content<br>支持SpaceId,AccountUin,AppId(最多100个)<br>支持startTime,endTime(秒时间戳)</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Limit = params.get("Limit")
+        self._SearchAfter = params.get("SearchAfter")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogListResponse(AbstractModel):
+    r"""DescribeAuditLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditLogList: <p>操作日志列表</p>
+        :type AuditLogList: list of AuditLog
+        :param _SearchAfter: <p>es查询起始位置</p><p>用于入参查询下一页</p>
+        :type SearchAfter: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AuditLogList = None
+        self._SearchAfter = None
+        self._RequestId = None
+
+    @property
+    def AuditLogList(self):
+        r"""<p>操作日志列表</p>
+        :rtype: list of AuditLog
+        """
+        return self._AuditLogList
+
+    @AuditLogList.setter
+    def AuditLogList(self, AuditLogList):
+        self._AuditLogList = AuditLogList
+
+    @property
+    def SearchAfter(self):
+        r"""<p>es查询起始位置</p><p>用于入参查询下一页</p>
+        :rtype: list of str
+        """
+        return self._SearchAfter
+
+    @SearchAfter.setter
+    def SearchAfter(self, SearchAfter):
+        self._SearchAfter = SearchAfter
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AuditLogList") is not None:
+            self._AuditLogList = []
+            for item in params.get("AuditLogList"):
+                obj = AuditLog()
+                obj._deserialize(item)
+                self._AuditLogList.append(obj)
+        self._SearchAfter = params.get("SearchAfter")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogMetaRequest(AbstractModel):
+    r"""DescribeAuditLogMeta请求参数结构体
+
+    """
+
+
+class DescribeAuditLogMetaResponse(AbstractModel):
+    r"""DescribeAuditLogMeta返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Actions: <p>操作类型列表</p>
+        :type Actions: list of AuditLogMetaField
+        :param _BizObjects: <p>操作对象列表</p>
+        :type BizObjects: list of AuditLogMetaField
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Actions = None
+        self._BizObjects = None
+        self._RequestId = None
+
+    @property
+    def Actions(self):
+        r"""<p>操作类型列表</p>
+        :rtype: list of AuditLogMetaField
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def BizObjects(self):
+        r"""<p>操作对象列表</p>
+        :rtype: list of AuditLogMetaField
+        """
+        return self._BizObjects
+
+    @BizObjects.setter
+    def BizObjects(self, BizObjects):
+        self._BizObjects = BizObjects
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Actions") is not None:
+            self._Actions = []
+            for item in params.get("Actions"):
+                obj = AuditLogMetaField()
+                obj._deserialize(item)
+                self._Actions.append(obj)
+        if params.get("BizObjects") is not None:
+            self._BizObjects = []
+            for item in params.get("BizObjects"):
+                obj = AuditLogMetaField()
+                obj._deserialize(item)
+                self._BizObjects.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12766,20 +13705,20 @@ class FavoriteSkillResponse(AbstractModel):
 
 
 class FieldMask(AbstractModel):
-    r"""FieldMask
+    r"""字段掩码
 
     """
 
     def __init__(self):
         r"""
-        :param _Paths: <p>参数名称</p><p>参数格式：需要获取的指定字段路径</p>
+        :param _Paths: 字段路径列表
         :type Paths: list of str
         """
         self._Paths = None
 
     @property
     def Paths(self):
-        r"""<p>参数名称</p><p>参数格式：需要获取的指定字段路径</p>
+        r"""字段路径列表
         :rtype: list of str
         """
         return self._Paths
@@ -12969,7 +13908,7 @@ class FileParseModel(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r"""列表通用过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 value_list 为 OR 关系）
+    r"""列表通用过滤条件（多个Filter之间为AND关系，同一Filter的多个value_list为OR关系）
 
     """
 
@@ -12977,7 +13916,7 @@ class Filter(AbstractModel):
         r"""
         :param _Name: 过滤字段名
         :type Name: str
-        :param _Operator: 操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
+        :param _Operator: 操作符：0-属于，1-不属于
         :type Operator: int
         :param _ValueList: 过滤值数组
         :type ValueList: list of str
@@ -12999,7 +13938,7 @@ class Filter(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
+        r"""操作符：0-属于，1-不属于
         :rtype: int
         """
         return self._Operator
@@ -14557,33 +15496,21 @@ class ModifyAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 应用ID
+        :param _AppId: <p>应用ID</p>
         :type AppId: str
-        :param _AppMode: 应用模式。枚举值: 1:标准模式, 2:Agent模式, 3:单工作流模式, 4:ClawAgent模式
+        :param _AppMode: <p>应用模式。枚举值: 1:标准模式, 2:Agent模式, 3:单工作流模式, 4:ClawAgent模式</p>
         :type AppMode: int
-        :param _Avatar: 应用头像
+        :param _Avatar: <p>应用头像</p>
         :type Avatar: str
-        :param _Config: 应用配置
+        :param _Config: <p>应用配置</p>
         :type Config: :class:`tencentcloud.adp.v20260520.models.AppConfig`
-        :param _Description: 应用描述
+        :param _Description: <p>应用描述</p>
         :type Description: str
-        :param _Name: 应用名称
+        :param _Name: <p>应用名称</p>
         :type Name: str
-        :param _ShareConfig: 分享配置
-        :type ShareConfig: :class:`tencentcloud.adp.v20260520.models.AppShareAccessControl`
-        :param _SharedKbIdList: 引用的共享知识库ID列表(全量覆盖)
+        :param _SharedKbIdList: <p>引用的共享知识库ID列表(全量覆盖)</p>
         :type SharedKbIdList: list of str
-        :param _UpdateMask: 字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：
-【顶层】Name, Avatar, Description, AppMode, ShareConfig, SharedKbIdList
-【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList
-【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel
-【WebSearch】Config.WebSearch
-【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent
-【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig
-【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced
-【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch
-【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman
-【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility
+        :param _UpdateMask: <p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
         :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         self._AppId = None
@@ -14592,13 +15519,12 @@ class ModifyAppRequest(AbstractModel):
         self._Config = None
         self._Description = None
         self._Name = None
-        self._ShareConfig = None
         self._SharedKbIdList = None
         self._UpdateMask = None
 
     @property
     def AppId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._AppId
@@ -14609,7 +15535,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def AppMode(self):
-        r"""应用模式。枚举值: 1:标准模式, 2:Agent模式, 3:单工作流模式, 4:ClawAgent模式
+        r"""<p>应用模式。枚举值: 1:标准模式, 2:Agent模式, 3:单工作流模式, 4:ClawAgent模式</p>
         :rtype: int
         """
         return self._AppMode
@@ -14620,7 +15546,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def Avatar(self):
-        r"""应用头像
+        r"""<p>应用头像</p>
         :rtype: str
         """
         return self._Avatar
@@ -14631,7 +15557,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def Config(self):
-        r"""应用配置
+        r"""<p>应用配置</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.AppConfig`
         """
         return self._Config
@@ -14642,7 +15568,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""应用描述
+        r"""<p>应用描述</p>
         :rtype: str
         """
         return self._Description
@@ -14653,7 +15579,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""应用名称
+        r"""<p>应用名称</p>
         :rtype: str
         """
         return self._Name
@@ -14663,19 +15589,8 @@ class ModifyAppRequest(AbstractModel):
         self._Name = Name
 
     @property
-    def ShareConfig(self):
-        r"""分享配置
-        :rtype: :class:`tencentcloud.adp.v20260520.models.AppShareAccessControl`
-        """
-        return self._ShareConfig
-
-    @ShareConfig.setter
-    def ShareConfig(self, ShareConfig):
-        self._ShareConfig = ShareConfig
-
-    @property
     def SharedKbIdList(self):
-        r"""引用的共享知识库ID列表(全量覆盖)
+        r"""<p>引用的共享知识库ID列表(全量覆盖)</p>
         :rtype: list of str
         """
         return self._SharedKbIdList
@@ -14686,17 +15601,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def UpdateMask(self):
-        r"""字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：
-【顶层】Name, Avatar, Description, AppMode, ShareConfig, SharedKbIdList
-【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList
-【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel
-【WebSearch】Config.WebSearch
-【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent
-【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig
-【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced
-【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch
-【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman
-【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility
+        r"""<p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         return self._UpdateMask
@@ -14715,9 +15620,6 @@ class ModifyAppRequest(AbstractModel):
             self._Config._deserialize(params.get("Config"))
         self._Description = params.get("Description")
         self._Name = params.get("Name")
-        if params.get("ShareConfig") is not None:
-            self._ShareConfig = AppShareAccessControl()
-            self._ShareConfig._deserialize(params.get("ShareConfig"))
         self._SharedKbIdList = params.get("SharedKbIdList")
         if params.get("UpdateMask") is not None:
             self._UpdateMask = FieldMask()
@@ -14739,9 +15641,9 @@ class ModifyAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: app_id
+        :param _AppId: <p>app_id</p>
         :type AppId: str
-        :param _UpdateTime: 更新时间 (Unix时间戳,秒级)
+        :param _UpdateTime: <p>更新时间 (Unix时间戳,秒级)</p>
         :type UpdateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14752,7 +15654,7 @@ class ModifyAppResponse(AbstractModel):
 
     @property
     def AppId(self):
-        r"""app_id
+        r"""<p>app_id</p>
         :rtype: str
         """
         return self._AppId
@@ -14763,7 +15665,7 @@ class ModifyAppResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间 (Unix时间戳,秒级)
+        r"""<p>更新时间 (Unix时间戳,秒级)</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -14993,6 +15895,10 @@ class ModifyPluginRequest(AbstractModel):
         :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         :param _ToolList: <p>插件的工具列表，mcp插件不传</p>
         :type ToolList: list of Tool
+        :param _LoginUin: <p>登录用户主账号(集成商模式必填)</p>
+        :type LoginUin: str
+        :param _LoginSubAccountUin: <p>登录用户子账号(集成商模式必填)</p>
+        :type LoginSubAccountUin: str
         """
         self._PluginId = None
         self._PluginVersion = None
@@ -15000,6 +15906,8 @@ class ModifyPluginRequest(AbstractModel):
         self._Config = None
         self._UpdateMask = None
         self._ToolList = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
 
     @property
     def PluginId(self):
@@ -15067,6 +15975,28 @@ class ModifyPluginRequest(AbstractModel):
     def ToolList(self, ToolList):
         self._ToolList = ToolList
 
+    @property
+    def LoginUin(self):
+        r"""<p>登录用户主账号(集成商模式必填)</p>
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""<p>登录用户子账号(集成商模式必填)</p>
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
@@ -15086,6 +16016,8 @@ class ModifyPluginRequest(AbstractModel):
                 obj = Tool()
                 obj._deserialize(item)
                 self._ToolList.append(obj)
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15714,22 +16646,27 @@ class Plugin(AbstractModel):
         :param _CreateTime: 创建时间，unix时间戳
         :type CreateTime: str
         :param _Operation: 插件运营管理信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Operation: :class:`tencentcloud.adp.v20260520.models.PluginOperation`
         :param _PluginId: 插件id
         :type PluginId: str
         :param _PluginVersion: 插件版本号
         :type PluginVersion: int
         :param _Profile: 插件基础信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Profile: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
         :param _Statistics: 插件统计信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Statistics: :class:`tencentcloud.adp.v20260520.models.PluginStatistics`
         :param _Status: <p>插件状态，1:可用，2:不可用 </p><p>枚举值：</p><ul><li>1： 可用</li><li>2： 不可用</li></ul>
         :type Status: int
         :param _ToolList: 工具列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type ToolList: list of Tool
         :param _UpdateTime: 更新时间，Unix时间戳
         :type UpdateTime: str
         :param _UserState: 用户维度的插件状态信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type UserState: :class:`tencentcloud.adp.v20260520.models.PluginUserState`
         """
         self._Config = None
@@ -15770,6 +16707,7 @@ class Plugin(AbstractModel):
     @property
     def Operation(self):
         r"""插件运营管理信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginOperation`
         """
         return self._Operation
@@ -15803,6 +16741,7 @@ class Plugin(AbstractModel):
     @property
     def Profile(self):
         r"""插件基础信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
         """
         return self._Profile
@@ -15814,6 +16753,7 @@ class Plugin(AbstractModel):
     @property
     def Statistics(self):
         r"""插件统计信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginStatistics`
         """
         return self._Statistics
@@ -15836,6 +16776,7 @@ class Plugin(AbstractModel):
     @property
     def ToolList(self):
         r"""工具列表
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tool
         """
         return self._ToolList
@@ -15858,6 +16799,7 @@ class Plugin(AbstractModel):
     @property
     def UserState(self):
         r"""用户维度的插件状态信息
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginUserState`
         """
         return self._UserState
@@ -16880,29 +17822,37 @@ class ReleaseSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreateTime: 创建时间 (Unix时间戳,秒级)
+        :param _CreateTime: <p>创建时间 (Unix时间戳,秒级)</p>
         :type CreateTime: str
-        :param _Description: 发布描述
+        :param _Description: <p>发布描述</p>
         :type Description: str
-        :param _ReleaseId: 发布ID
+        :param _ReleaseId: <p>发布ID</p>
         :type ReleaseId: str
-        :param _Status: 发布状态。枚举值: 1:待发布, 2:发布中, 3:发布成功, 4:发布失败, 5:审核中, 6:审核成功, 7:审核失败, 8:发布成功回调处理中, 9:发布暂停, 10:申诉审核中, 11:申诉审核通过, 12:申诉审核不通过
+        :param _Status: <p>发布状态。枚举值: 1:待发布, 2:发布中, 3:发布成功, 4:发布失败, 5:审核中, 6:审核成功, 7:审核失败, 8:发布成功回调处理中, 9:发布暂停, 10:申诉审核中, 11:申诉审核通过, 12:申诉审核不通过</p>
         :type Status: int
-        :param _StatusDescription: 状态描述
+        :param _StatusDescription: <p>状态描述</p>
         :type StatusDescription: str
-        :param _ChannelIdList: 发布渠道ID列表
+        :param _AppShareAccessControl: <p>应用分享访问控制</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppShareAccessControl: :class:`tencentcloud.adp.v20260520.models.AppShareAccessControl`
+        :param _ChannelIdList: <p>发布渠道ID列表</p>
         :type ChannelIdList: list of str
+        :param _CorpShareConfig: <p>企业共享配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpShareConfig: :class:`tencentcloud.adp.v20260520.models.CorpShareConfig`
         """
         self._CreateTime = None
         self._Description = None
         self._ReleaseId = None
         self._Status = None
         self._StatusDescription = None
+        self._AppShareAccessControl = None
         self._ChannelIdList = None
+        self._CorpShareConfig = None
 
     @property
     def CreateTime(self):
-        r"""创建时间 (Unix时间戳,秒级)
+        r"""<p>创建时间 (Unix时间戳,秒级)</p>
         :rtype: str
         """
         return self._CreateTime
@@ -16913,7 +17863,7 @@ class ReleaseSummary(AbstractModel):
 
     @property
     def Description(self):
-        r"""发布描述
+        r"""<p>发布描述</p>
         :rtype: str
         """
         return self._Description
@@ -16924,7 +17874,7 @@ class ReleaseSummary(AbstractModel):
 
     @property
     def ReleaseId(self):
-        r"""发布ID
+        r"""<p>发布ID</p>
         :rtype: str
         """
         return self._ReleaseId
@@ -16935,7 +17885,7 @@ class ReleaseSummary(AbstractModel):
 
     @property
     def Status(self):
-        r"""发布状态。枚举值: 1:待发布, 2:发布中, 3:发布成功, 4:发布失败, 5:审核中, 6:审核成功, 7:审核失败, 8:发布成功回调处理中, 9:发布暂停, 10:申诉审核中, 11:申诉审核通过, 12:申诉审核不通过
+        r"""<p>发布状态。枚举值: 1:待发布, 2:发布中, 3:发布成功, 4:发布失败, 5:审核中, 6:审核成功, 7:审核失败, 8:发布成功回调处理中, 9:发布暂停, 10:申诉审核中, 11:申诉审核通过, 12:申诉审核不通过</p>
         :rtype: int
         """
         return self._Status
@@ -16946,7 +17896,7 @@ class ReleaseSummary(AbstractModel):
 
     @property
     def StatusDescription(self):
-        r"""状态描述
+        r"""<p>状态描述</p>
         :rtype: str
         """
         return self._StatusDescription
@@ -16956,8 +17906,20 @@ class ReleaseSummary(AbstractModel):
         self._StatusDescription = StatusDescription
 
     @property
+    def AppShareAccessControl(self):
+        r"""<p>应用分享访问控制</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppShareAccessControl`
+        """
+        return self._AppShareAccessControl
+
+    @AppShareAccessControl.setter
+    def AppShareAccessControl(self, AppShareAccessControl):
+        self._AppShareAccessControl = AppShareAccessControl
+
+    @property
     def ChannelIdList(self):
-        r"""发布渠道ID列表
+        r"""<p>发布渠道ID列表</p>
         :rtype: list of str
         """
         return self._ChannelIdList
@@ -16966,6 +17928,18 @@ class ReleaseSummary(AbstractModel):
     def ChannelIdList(self, ChannelIdList):
         self._ChannelIdList = ChannelIdList
 
+    @property
+    def CorpShareConfig(self):
+        r"""<p>企业共享配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CorpShareConfig`
+        """
+        return self._CorpShareConfig
+
+    @CorpShareConfig.setter
+    def CorpShareConfig(self, CorpShareConfig):
+        self._CorpShareConfig = CorpShareConfig
+
 
     def _deserialize(self, params):
         self._CreateTime = params.get("CreateTime")
@@ -16973,7 +17947,13 @@ class ReleaseSummary(AbstractModel):
         self._ReleaseId = params.get("ReleaseId")
         self._Status = params.get("Status")
         self._StatusDescription = params.get("StatusDescription")
+        if params.get("AppShareAccessControl") is not None:
+            self._AppShareAccessControl = AppShareAccessControl()
+            self._AppShareAccessControl._deserialize(params.get("AppShareAccessControl"))
         self._ChannelIdList = params.get("ChannelIdList")
+        if params.get("CorpShareConfig") is not None:
+            self._CorpShareConfig = CorpShareConfig()
+            self._CorpShareConfig._deserialize(params.get("CorpShareConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19912,20 +20892,24 @@ class Variable(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DefaultFileName: 默认文件名称
+        :param _DefaultFileName: <p>默认文件名称</p>
         :type DefaultFileName: str
-        :param _DefaultValue: 默认值
+        :param _DefaultValue: <p>默认值</p>
         :type DefaultValue: str
-        :param _Description: 变量描述
+        :param _Description: <p>变量描述</p>
         :type Description: str
-        :param _ModuleType: 模块类型。枚举值: 1:环境参数, 2:应用参数, 3:系统参数, -1:所有参数
+        :param _ModuleType: <p>模块类型。枚举值: 1:环境参数, 2:应用参数, 3:系统参数, -1:所有参数</p>
         :type ModuleType: int
-        :param _Name: 变量名称
+        :param _Name: <p>变量名称</p>
         :type Name: str
-        :param _Type: 变量类型。枚举值: 1:字符串, 2:整数, 3:浮点数, 4:布尔值, 5:对象, 6:字符串数组, 7:整数数组, 8:浮点数数组, 9:布尔值数组, 10:对象数组, 11:文件, 12:文档, 13:图片, 14:音频, 15:视频, 16:文件数组, 17:文档数组, 18:图片数组, 19:音频数组, 20:视频数组, 21:数组的数组, 22:密钥/敏感信息, 99:空值
+        :param _Type: <p>变量类型</p><p>枚举值：</p><ul><li>0： 字符串</li><li>1： 整数</li><li>2： 浮点数</li><li>3： 布尔值</li><li>4： 对象</li><li>5： 字符串数组</li><li>6： 整数数组</li><li>7： 浮点数数组</li><li>8： 布尔值数组</li><li>9： 对象数组</li><li>10： 文件</li><li>11： 文档</li><li>12： 图片</li><li>13： 音频</li><li>14： 视频</li><li>15： 文件数组</li><li>16： 文档数组</li><li>17： 图片数组</li><li>18： 音频数组</li><li>19： 视频数组</li><li>20： 数组的数组</li><li>21： 密钥</li></ul>
         :type Type: int
-        :param _VariableId: 变量ID
+        :param _VariableId: <p>变量ID</p>
         :type VariableId: str
+        :param _EnableEndpoints: <p>是否启用网络策略(仅环境变量生效)</p>
+        :type EnableEndpoints: bool
+        :param _EndpointList: <p>网络策略列表(支持: 精确域名、*.通配子域名、可带协议/端口/路径前缀)</p>
+        :type EndpointList: list of str
         """
         self._DefaultFileName = None
         self._DefaultValue = None
@@ -19934,10 +20918,12 @@ class Variable(AbstractModel):
         self._Name = None
         self._Type = None
         self._VariableId = None
+        self._EnableEndpoints = None
+        self._EndpointList = None
 
     @property
     def DefaultFileName(self):
-        r"""默认文件名称
+        r"""<p>默认文件名称</p>
         :rtype: str
         """
         return self._DefaultFileName
@@ -19948,7 +20934,7 @@ class Variable(AbstractModel):
 
     @property
     def DefaultValue(self):
-        r"""默认值
+        r"""<p>默认值</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -19959,7 +20945,7 @@ class Variable(AbstractModel):
 
     @property
     def Description(self):
-        r"""变量描述
+        r"""<p>变量描述</p>
         :rtype: str
         """
         return self._Description
@@ -19970,7 +20956,7 @@ class Variable(AbstractModel):
 
     @property
     def ModuleType(self):
-        r"""模块类型。枚举值: 1:环境参数, 2:应用参数, 3:系统参数, -1:所有参数
+        r"""<p>模块类型。枚举值: 1:环境参数, 2:应用参数, 3:系统参数, -1:所有参数</p>
         :rtype: int
         """
         return self._ModuleType
@@ -19981,7 +20967,7 @@ class Variable(AbstractModel):
 
     @property
     def Name(self):
-        r"""变量名称
+        r"""<p>变量名称</p>
         :rtype: str
         """
         return self._Name
@@ -19992,7 +20978,7 @@ class Variable(AbstractModel):
 
     @property
     def Type(self):
-        r"""变量类型。枚举值: 1:字符串, 2:整数, 3:浮点数, 4:布尔值, 5:对象, 6:字符串数组, 7:整数数组, 8:浮点数数组, 9:布尔值数组, 10:对象数组, 11:文件, 12:文档, 13:图片, 14:音频, 15:视频, 16:文件数组, 17:文档数组, 18:图片数组, 19:音频数组, 20:视频数组, 21:数组的数组, 22:密钥/敏感信息, 99:空值
+        r"""<p>变量类型</p><p>枚举值：</p><ul><li>0： 字符串</li><li>1： 整数</li><li>2： 浮点数</li><li>3： 布尔值</li><li>4： 对象</li><li>5： 字符串数组</li><li>6： 整数数组</li><li>7： 浮点数数组</li><li>8： 布尔值数组</li><li>9： 对象数组</li><li>10： 文件</li><li>11： 文档</li><li>12： 图片</li><li>13： 音频</li><li>14： 视频</li><li>15： 文件数组</li><li>16： 文档数组</li><li>17： 图片数组</li><li>18： 音频数组</li><li>19： 视频数组</li><li>20： 数组的数组</li><li>21： 密钥</li></ul>
         :rtype: int
         """
         return self._Type
@@ -20003,7 +20989,7 @@ class Variable(AbstractModel):
 
     @property
     def VariableId(self):
-        r"""变量ID
+        r"""<p>变量ID</p>
         :rtype: str
         """
         return self._VariableId
@@ -20011,6 +20997,28 @@ class Variable(AbstractModel):
     @VariableId.setter
     def VariableId(self, VariableId):
         self._VariableId = VariableId
+
+    @property
+    def EnableEndpoints(self):
+        r"""<p>是否启用网络策略(仅环境变量生效)</p>
+        :rtype: bool
+        """
+        return self._EnableEndpoints
+
+    @EnableEndpoints.setter
+    def EnableEndpoints(self, EnableEndpoints):
+        self._EnableEndpoints = EnableEndpoints
+
+    @property
+    def EndpointList(self):
+        r"""<p>网络策略列表(支持: 精确域名、*.通配子域名、可带协议/端口/路径前缀)</p>
+        :rtype: list of str
+        """
+        return self._EndpointList
+
+    @EndpointList.setter
+    def EndpointList(self, EndpointList):
+        self._EndpointList = EndpointList
 
 
     def _deserialize(self, params):
@@ -20021,6 +21029,8 @@ class Variable(AbstractModel):
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._VariableId = params.get("VariableId")
+        self._EnableEndpoints = params.get("EnableEndpoints")
+        self._EndpointList = params.get("EndpointList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

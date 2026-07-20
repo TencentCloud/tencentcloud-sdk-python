@@ -8669,6 +8669,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DiskType: str
         :param _ClusterType: <p>集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群</p>
         :type ClusterType: str
+        :param _DiskEncryption: <p>是否对磁盘进行加密。仅云盘版实例支持该功能。 指定为 &quot;on&quot; 表示开启加密， 否则不加密。 购买只读实例、灾备实例、新克隆实例时该参数自动和主实例保持一致。</p>
+        :type DiskEncryption: str
         :param _DestroyProtect: <p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
         :type DestroyProtect: str
         :param _FourthZone: <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
@@ -8715,6 +8717,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._ClusterTopology = None
         self._DiskType = None
         self._ClusterType = None
+        self._DiskEncryption = None
         self._DestroyProtect = None
         self._FourthZone = None
 
@@ -9170,6 +9173,17 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._ClusterType = ClusterType
 
     @property
+    def DiskEncryption(self):
+        r"""<p>是否对磁盘进行加密。仅云盘版实例支持该功能。 指定为 &quot;on&quot; 表示开启加密， 否则不加密。 购买只读实例、灾备实例、新克隆实例时该参数自动和主实例保持一致。</p>
+        :rtype: str
+        """
+        return self._DiskEncryption
+
+    @DiskEncryption.setter
+    def DiskEncryption(self, DiskEncryption):
+        self._DiskEncryption = DiskEncryption
+
+    @property
     def DestroyProtect(self):
         r"""<p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
         :rtype: str
@@ -9248,6 +9262,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         self._DiskType = params.get("DiskType")
         self._ClusterType = params.get("ClusterType")
+        self._DiskEncryption = params.get("DiskEncryption")
         self._DestroyProtect = params.get("DestroyProtect")
         self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())
@@ -9407,6 +9422,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         :param _DiskType: <p>磁盘类型，单节点（云盘版）或者云盘版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘，CLOUD_PREMIUM 表示高性能云硬盘。<br>说明：单节点（云盘版）、云盘版实例硬盘类型所支持的地域略有不同，具体支持情况请参考 <a href="https://cloud.tencent.com/document/product/236/8458">地域和可用区</a>。</p>
         :type DiskType: str
+        :param _DiskEncryption: <p>是否对磁盘进行加密。仅云盘版实例支持该功能。 指定为 &quot;on&quot; 表示开启加密， 否则不加密。 购买只读实例、灾备实例、新克隆实例时该参数自动和主实例保持一致。</p>
+        :type DiskEncryption: str
         :param _DestroyProtect: <p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
         :type DestroyProtect: str
         :param _FourthZone: <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
@@ -9453,6 +9470,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DataProtectVolume = None
         self._ClusterTopology = None
         self._DiskType = None
+        self._DiskEncryption = None
         self._DestroyProtect = None
         self._FourthZone = None
 
@@ -9908,6 +9926,17 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DiskType = DiskType
 
     @property
+    def DiskEncryption(self):
+        r"""<p>是否对磁盘进行加密。仅云盘版实例支持该功能。 指定为 &quot;on&quot; 表示开启加密， 否则不加密。 购买只读实例、灾备实例、新克隆实例时该参数自动和主实例保持一致。</p>
+        :rtype: str
+        """
+        return self._DiskEncryption
+
+    @DiskEncryption.setter
+    def DiskEncryption(self, DiskEncryption):
+        self._DiskEncryption = DiskEncryption
+
+    @property
     def DestroyProtect(self):
         r"""<p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
         :rtype: str
@@ -9986,6 +10015,7 @@ class CreateDBInstanceRequest(AbstractModel):
             self._ClusterTopology = ClusterTopology()
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         self._DiskType = params.get("DiskType")
+        self._DiskEncryption = params.get("DiskEncryption")
         self._DestroyProtect = params.get("DestroyProtect")
         self._FourthZone = params.get("FourthZone")
         memeber_set = set(params.keys())

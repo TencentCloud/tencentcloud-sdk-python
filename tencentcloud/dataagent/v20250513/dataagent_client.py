@@ -499,6 +499,29 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryModels(self, request):
+        r"""查询聊天支持模型信息
+
+        :param request: Request instance for QueryModels.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.QueryModelsRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.QueryModelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryModels", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryModelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QuerySceneList(self, request):
         r"""查询场景列表
 

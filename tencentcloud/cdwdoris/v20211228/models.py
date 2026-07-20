@@ -16984,26 +16984,41 @@ class WorkloadGroupConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkloadGroupName: 资源组名称
+        :param _WorkloadGroupName: <p>资源组名称</p>
         :type WorkloadGroupName: str
-        :param _CpuShare: CPU权重
+        :param _CpuShare: <p>CPU权重</p>
         :type CpuShare: int
-        :param _MemoryLimit: 内存限制，所有资源组的内存限制值之和应该小于等于100
+        :param _MemoryLimit: <p>内存限制，所有资源组的内存限制值之和应该小于等于100</p>
         :type MemoryLimit: int
-        :param _EnableMemoryOverCommit: 是否允许超配分配
+        :param _EnableMemoryOverCommit: <p>是否允许超配分配</p>
         :type EnableMemoryOverCommit: bool
-        :param _CpuHardLimit: cpu硬限制
+        :param _CpuHardLimit: <p>cpu硬限制</p>
         :type CpuHardLimit: str
+        :param _MinCpuPercent: <p>4.1+ 新增；默认值为 0（不预留），根据业务可设为 5/10</p>
+        :type MinCpuPercent: int
+        :param _MinMemoryPercent: <p>4.1+ 新增；默认值为 0（不预留），根据业务可设为 5/10</p>
+        :type MinMemoryPercent: int
+        :param _MaxConcurrencyNum: <p>2.1+ 新增；不传走内核默认（Integer.MAX_VALUE=2147483647），建议按业务并发量配置</p>
+        :type MaxConcurrencyNum: int
+        :param _MaxQueueSize: <p>2.1+ 新增；0=不排队，建议为 MaxConcurrencyNum 的 50%</p>
+        :type MaxQueueSize: int
+        :param _QueueTimeout: <p>2.1+ 新增；单位 ms，建议 5000（5s）</p>
+        :type QueueTimeout: int
         """
         self._WorkloadGroupName = None
         self._CpuShare = None
         self._MemoryLimit = None
         self._EnableMemoryOverCommit = None
         self._CpuHardLimit = None
+        self._MinCpuPercent = None
+        self._MinMemoryPercent = None
+        self._MaxConcurrencyNum = None
+        self._MaxQueueSize = None
+        self._QueueTimeout = None
 
     @property
     def WorkloadGroupName(self):
-        r"""资源组名称
+        r"""<p>资源组名称</p>
         :rtype: str
         """
         return self._WorkloadGroupName
@@ -17014,7 +17029,7 @@ class WorkloadGroupConfig(AbstractModel):
 
     @property
     def CpuShare(self):
-        r"""CPU权重
+        r"""<p>CPU权重</p>
         :rtype: int
         """
         return self._CpuShare
@@ -17025,7 +17040,7 @@ class WorkloadGroupConfig(AbstractModel):
 
     @property
     def MemoryLimit(self):
-        r"""内存限制，所有资源组的内存限制值之和应该小于等于100
+        r"""<p>内存限制，所有资源组的内存限制值之和应该小于等于100</p>
         :rtype: int
         """
         return self._MemoryLimit
@@ -17036,7 +17051,7 @@ class WorkloadGroupConfig(AbstractModel):
 
     @property
     def EnableMemoryOverCommit(self):
-        r"""是否允许超配分配
+        r"""<p>是否允许超配分配</p>
         :rtype: bool
         """
         return self._EnableMemoryOverCommit
@@ -17047,7 +17062,7 @@ class WorkloadGroupConfig(AbstractModel):
 
     @property
     def CpuHardLimit(self):
-        r"""cpu硬限制
+        r"""<p>cpu硬限制</p>
         :rtype: str
         """
         return self._CpuHardLimit
@@ -17056,6 +17071,61 @@ class WorkloadGroupConfig(AbstractModel):
     def CpuHardLimit(self, CpuHardLimit):
         self._CpuHardLimit = CpuHardLimit
 
+    @property
+    def MinCpuPercent(self):
+        r"""<p>4.1+ 新增；默认值为 0（不预留），根据业务可设为 5/10</p>
+        :rtype: int
+        """
+        return self._MinCpuPercent
+
+    @MinCpuPercent.setter
+    def MinCpuPercent(self, MinCpuPercent):
+        self._MinCpuPercent = MinCpuPercent
+
+    @property
+    def MinMemoryPercent(self):
+        r"""<p>4.1+ 新增；默认值为 0（不预留），根据业务可设为 5/10</p>
+        :rtype: int
+        """
+        return self._MinMemoryPercent
+
+    @MinMemoryPercent.setter
+    def MinMemoryPercent(self, MinMemoryPercent):
+        self._MinMemoryPercent = MinMemoryPercent
+
+    @property
+    def MaxConcurrencyNum(self):
+        r"""<p>2.1+ 新增；不传走内核默认（Integer.MAX_VALUE=2147483647），建议按业务并发量配置</p>
+        :rtype: int
+        """
+        return self._MaxConcurrencyNum
+
+    @MaxConcurrencyNum.setter
+    def MaxConcurrencyNum(self, MaxConcurrencyNum):
+        self._MaxConcurrencyNum = MaxConcurrencyNum
+
+    @property
+    def MaxQueueSize(self):
+        r"""<p>2.1+ 新增；0=不排队，建议为 MaxConcurrencyNum 的 50%</p>
+        :rtype: int
+        """
+        return self._MaxQueueSize
+
+    @MaxQueueSize.setter
+    def MaxQueueSize(self, MaxQueueSize):
+        self._MaxQueueSize = MaxQueueSize
+
+    @property
+    def QueueTimeout(self):
+        r"""<p>2.1+ 新增；单位 ms，建议 5000（5s）</p>
+        :rtype: int
+        """
+        return self._QueueTimeout
+
+    @QueueTimeout.setter
+    def QueueTimeout(self, QueueTimeout):
+        self._QueueTimeout = QueueTimeout
+
 
     def _deserialize(self, params):
         self._WorkloadGroupName = params.get("WorkloadGroupName")
@@ -17063,6 +17133,11 @@ class WorkloadGroupConfig(AbstractModel):
         self._MemoryLimit = params.get("MemoryLimit")
         self._EnableMemoryOverCommit = params.get("EnableMemoryOverCommit")
         self._CpuHardLimit = params.get("CpuHardLimit")
+        self._MinCpuPercent = params.get("MinCpuPercent")
+        self._MinMemoryPercent = params.get("MinMemoryPercent")
+        self._MaxConcurrencyNum = params.get("MaxConcurrencyNum")
+        self._MaxQueueSize = params.get("MaxQueueSize")
+        self._QueueTimeout = params.get("QueueTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

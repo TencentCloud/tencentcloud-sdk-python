@@ -141,6 +141,52 @@ class Ga2Client(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGlobalAcceleratorAclPolicy(self, request):
+        r"""创建访问控制策略
+
+        :param request: Request instance for CreateGlobalAcceleratorAclPolicy.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.CreateGlobalAcceleratorAclPolicyRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.CreateGlobalAcceleratorAclPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGlobalAcceleratorAclPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGlobalAcceleratorAclPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateGlobalAcceleratorAclRule(self, request):
+        r"""创建ACL规则
+
+        :param request: Request instance for CreateGlobalAcceleratorAclRule.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.CreateGlobalAcceleratorAclRuleRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.CreateGlobalAcceleratorAclRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGlobalAcceleratorAclRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGlobalAcceleratorAclRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateListener(self, request):
         r"""创建监听器
 
@@ -293,6 +339,52 @@ class Ga2Client(AbstractClient):
             body = self.call("DeleteGlobalAccelerator", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteGlobalAcceleratorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGlobalAcceleratorAclPolicy(self, request):
+        r"""删除访问控制策略
+
+        :param request: Request instance for DeleteGlobalAcceleratorAclPolicy.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.DeleteGlobalAcceleratorAclPolicyRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.DeleteGlobalAcceleratorAclPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGlobalAcceleratorAclPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGlobalAcceleratorAclPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGlobalAcceleratorAclRule(self, request):
+        r"""删除ACL规则
+
+        :param request: Request instance for DeleteGlobalAcceleratorAclRule.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.DeleteGlobalAcceleratorAclRuleRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.DeleteGlobalAcceleratorAclRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGlobalAcceleratorAclRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGlobalAcceleratorAclRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -661,6 +753,52 @@ class Ga2Client(AbstractClient):
             body = self.call("ModifyGlobalAccelerator", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyGlobalAcceleratorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGlobalAcceleratorAclPolicy(self, request):
+        r"""修改访问控制策略状态
+
+        :param request: Request instance for ModifyGlobalAcceleratorAclPolicy.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.ModifyGlobalAcceleratorAclPolicyRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.ModifyGlobalAcceleratorAclPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGlobalAcceleratorAclPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGlobalAcceleratorAclPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGlobalAcceleratorAclRule(self, request):
+        r"""修改ACL规则
+
+        :param request: Request instance for ModifyGlobalAcceleratorAclRule.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.ModifyGlobalAcceleratorAclRuleRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.ModifyGlobalAcceleratorAclRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGlobalAcceleratorAclRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGlobalAcceleratorAclRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

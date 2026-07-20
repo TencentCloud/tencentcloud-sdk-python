@@ -18,6 +18,42 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ADPConfig(AbstractModel):
+    r"""ADP 平台配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppKey: <p>ADP 平台 AppKey</p>
+        :type AppKey: str
+        """
+        self._AppKey = None
+
+    @property
+    def AppKey(self):
+        r"""<p>ADP 平台 AppKey</p>
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+
+    def _deserialize(self, params):
+        self._AppKey = params.get("AppKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AISearchInfo(AbstractModel):
     r"""AI视频搜索结果结构体。
 
@@ -43717,7 +43753,7 @@ class TalkLLMConfig(AbstractModel):
         :type History: int
         :param _Timeout: <p>超时时间，秒</p>
         :type Timeout: int
-        :param _BaseUrl: <p>OpenAI兼容模型Base URL，仅支持 80 和 443 端口，Type=openai时必填</p>
+        :param _BaseUrl: <p>OpenAI兼容模型的Base URL，Type=openai时必填</p>
         :type BaseUrl: str
         :param _Model: <p>模型名称，Type=openai时必填</p>
         :type Model: str
@@ -43725,6 +43761,8 @@ class TalkLLMConfig(AbstractModel):
         :type ApiKey: str
         :param _ExtraBody: <p>额外模型请求体参数，JSON对象字符串，只允许JSON object，不允许普通字符串</p>
         :type ExtraBody: str
+        :param _ADP: <p>ADP 平台配置</p>
+        :type ADP: :class:`tencentcloud.iotexplorer.v20190423.models.ADPConfig`
         """
         self._Type = None
         self._SystemPrompt = None
@@ -43735,6 +43773,7 @@ class TalkLLMConfig(AbstractModel):
         self._Model = None
         self._ApiKey = None
         self._ExtraBody = None
+        self._ADP = None
 
     @property
     def Type(self):
@@ -43793,7 +43832,7 @@ class TalkLLMConfig(AbstractModel):
 
     @property
     def BaseUrl(self):
-        r"""<p>OpenAI兼容模型Base URL，仅支持 80 和 443 端口，Type=openai时必填</p>
+        r"""<p>OpenAI兼容模型的Base URL，Type=openai时必填</p>
         :rtype: str
         """
         return self._BaseUrl
@@ -43835,6 +43874,17 @@ class TalkLLMConfig(AbstractModel):
     def ExtraBody(self, ExtraBody):
         self._ExtraBody = ExtraBody
 
+    @property
+    def ADP(self):
+        r"""<p>ADP 平台配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ADPConfig`
+        """
+        return self._ADP
+
+    @ADP.setter
+    def ADP(self, ADP):
+        self._ADP = ADP
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -43846,6 +43896,9 @@ class TalkLLMConfig(AbstractModel):
         self._Model = params.get("Model")
         self._ApiKey = params.get("ApiKey")
         self._ExtraBody = params.get("ExtraBody")
+        if params.get("ADP") is not None:
+            self._ADP = ADPConfig()
+            self._ADP._deserialize(params.get("ADP"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

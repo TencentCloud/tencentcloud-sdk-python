@@ -15859,8 +15859,10 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         :type AuthorizationMethod: list of int non-negative
         :param _HideBizLicense: <p>企业认证页面隐藏上传营业执照<br><img src="https://qcloudimg.tencent-cloud.cn/raw/cf827ce0e2043d8cc85e0735c9cfa3fc.png" alt="image"><br><img src="https://qcloudimg.tencent-cloud.cn/raw/f908cabe71238c78ee8fafc70888a344.png" alt="image"></p>
         :type HideBizLicense: bool
-        :param _AddressSame: <p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul><p></p><p>p.s. 仅在公司地址（OrganizationAddress）不为空时有效</p>
+        :param _AddressSame: <p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时会回显接口传递的值，且不可更改</li></ul>p.s. 仅在公司地址（OrganizationAddress）不为空时有效<p>如下图所示：<br><img src="https://qcloudimg.tencent-cloud.cn/raw/4aa67a434cdf522c04e32f2e1de0382b.png" alt="示例"><p></p></p>
         :type AddressSame: bool
+        :param _BizLicenseSame: <p>对方打开链接认证时，公司营业执照是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致，用户可以进行修改</li><li><b>true</b>：启用状态，实际认证时回填的信息就是用户传递的值，并且不能修改</li></ul><p></p><p>p.s. 仅在公司营业执照（BusinessLicense）不为空时有效</p>如下图<img src="https://qcloudimg.tencent-cloud.cn/raw/7159637d5a8ac3d92b35813b1fc9660a.png" alt="示例">
+        :type BizLicenseSame: bool
         """
         self._Operator = None
         self._AuthorizationTypes = None
@@ -15892,6 +15894,7 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         self._AuthorizationMethod = None
         self._HideBizLicense = None
         self._AddressSame = None
+        self._BizLicenseSame = None
 
     @property
     def Operator(self):
@@ -16214,7 +16217,7 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
 
     @property
     def AddressSame(self):
-        r"""<p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul><p></p><p>p.s. 仅在公司地址（OrganizationAddress）不为空时有效</p>
+        r"""<p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时会回显接口传递的值，且不可更改</li></ul>p.s. 仅在公司地址（OrganizationAddress）不为空时有效<p>如下图所示：<br><img src="https://qcloudimg.tencent-cloud.cn/raw/4aa67a434cdf522c04e32f2e1de0382b.png" alt="示例"><p></p></p>
         :rtype: bool
         """
         return self._AddressSame
@@ -16222,6 +16225,17 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
     @AddressSame.setter
     def AddressSame(self, AddressSame):
         self._AddressSame = AddressSame
+
+    @property
+    def BizLicenseSame(self):
+        r"""<p>对方打开链接认证时，公司营业执照是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致，用户可以进行修改</li><li><b>true</b>：启用状态，实际认证时回填的信息就是用户传递的值，并且不能修改</li></ul><p></p><p>p.s. 仅在公司营业执照（BusinessLicense）不为空时有效</p>如下图<img src="https://qcloudimg.tencent-cloud.cn/raw/7159637d5a8ac3d92b35813b1fc9660a.png" alt="示例">
+        :rtype: bool
+        """
+        return self._BizLicenseSame
+
+    @BizLicenseSame.setter
+    def BizLicenseSame(self, BizLicenseSame):
+        self._BizLicenseSame = BizLicenseSame
 
 
     def _deserialize(self, params):
@@ -16262,6 +16276,7 @@ class CreateOrganizationAuthUrlRequest(AbstractModel):
         self._AuthorizationMethod = params.get("AuthorizationMethod")
         self._HideBizLicense = params.get("HideBizLicense")
         self._AddressSame = params.get("AddressSame")
+        self._BizLicenseSame = params.get("BizLicenseSame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27265,44 +27280,27 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _ContentType: 查询内容控制
-
-<ul><li>**0**：模板列表及详情（默认）</li>
-<li>**1**：仅模板列表</li></ul>
+        :param _ContentType: <p>查询内容控制</p><ul><li>**0**：模板列表及详情（默认）</li><li>**1**：仅模板列表</li></ul>
         :type ContentType: int
-        :param _Filters: 搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。<ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模板类型id列表。</li></ul>
+        :param _Filters: <p>搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。<ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模板类型id列表。</li></ul></p>
         :type Filters: list of Filter
-        :param _Offset: 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
-
-注：`1.offset从0开始，即第一页为0。`
-`2.默认从第一页返回。`
+        :param _Offset: <p>偏移量:从 0 开始，最大20000。</p>
         :type Offset: int
-        :param _Limit: 指定每页返回的数据条数，和Offset参数配合使用。
-
-注：`1.默认值为20，单页做大值为200。`
+        :param _Limit: <p>指定每页返回的数据条数，和Offset参数配合使用。</p><p>注：<code>1.默认值为20，单页做大值为200。</code></p>
         :type Limit: int
-        :param _ApplicationId: 通过指定[第三方应用的应用号（ApplicationId）](https://qcloudimg.tencent-cloud.cn/raw/60efa1e9049732e5246b20a268882b1a.png)，您可以查询<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中某个第三方应用下的模板。
-
-<p><strong>注意事项：</strong></p>
-<ul><li>当 <strong>ApplicationId</strong> 为空时（默认），系统将查询<a href="https://qcloudimg.tencent-cloud.cn/raw/376943a1d472393dd5388592f2e85ee5.png" target="_blank">平台企业的所有模板</a>（自建应用使用的模板）。</li><li>当 <strong>ApplicationId</strong> 不为空时，系统将从<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中查询该特定应用下的模板（分享给第三方应用子企业的模板）。</li></ul>
+        :param _ApplicationId: <p>通过指定<a href="https://qcloudimg.tencent-cloud.cn/raw/60efa1e9049732e5246b20a268882b1a.png">第三方应用的应用号（ApplicationId）</a>，您可以查询<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中某个第三方应用下的模板。</p><p><strong>注意事项：</strong></p><ul><li>当 <strong>ApplicationId</strong> 为空时（默认），系统将查询<a href="https://qcloudimg.tencent-cloud.cn/raw/376943a1d472393dd5388592f2e85ee5.png" target="_blank">平台企业的所有模板</a>（自建应用使用的模板）。</li><li>当 <strong>ApplicationId</strong> 不为空时，系统将从<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中查询该特定应用下的模板（分享给第三方应用子企业的模板）。</li></ul>
         :type ApplicationId: str
-        :param _IsChannel: 默认为false，查询SaaS模板库列表；
-为true，查询第三方应用集成平台企业模板库管理列表
+        :param _IsChannel: <p>默认为false，查询SaaS模板库列表；<br>为true，查询第三方应用集成平台企业模板库管理列表</p>
         :type IsChannel: bool
-        :param _Organization: 暂未开放
+        :param _Organization: <p>暂未开放</p>
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
-        :param _GenerateSource: 暂未开放
+        :param _GenerateSource: <p>暂未开放</p>
         :type GenerateSource: int
-        :param _WithPreviewUrl: 是否获取模板预览链接。
-
-<ul><li><strong>false</strong>：不获取（默认）</li><li><strong>true</strong>：需要获取</li></ul>
-设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接, 有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+        :param _WithPreviewUrl: <p>是否获取模板预览链接。</p><ul><li><strong>false</strong>：不获取（默认）</li><li><strong>true</strong>：需要获取</li></ul>设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接, 有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
         :type WithPreviewUrl: bool
         """
         self._Operator = None
@@ -27319,8 +27317,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -27331,8 +27328,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -27343,10 +27339,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        r"""查询内容控制
-
-<ul><li>**0**：模板列表及详情（默认）</li>
-<li>**1**：仅模板列表</li></ul>
+        r"""<p>查询内容控制</p><ul><li>**0**：模板列表及详情（默认）</li><li>**1**：仅模板列表</li></ul>
         :rtype: int
         """
         return self._ContentType
@@ -27357,7 +27350,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。<ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模板类型id列表。</li></ul>
+        r"""<p>搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。<ul><li><strong>模板 ID</strong>：<strong>Key</strong>设置为 <code>template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">模板 ID </a>列表。</li>  <li><strong>主企业模板 ID</strong>：<strong>Key</strong>设置为 <code>share-template-id</code> ，<strong>Values</strong>为您想要查询的 <a href="https://qcloudimg.tencent-cloud.cn/raw/5c27b917b2bbe8c341566c78ca6f8782.png" target="_blank">主企业模板 ID </a>列表。用来查询主企业分享模板到子企业场景下，子企业的模板信息，在此情境下，参数 <strong>Agent.ProxyOrganizationId</strong>（子企业的组织ID）为必填项。</li> <li><strong>模板名称</strong>：<strong>Key</strong>设置为 <code>template-name</code> ，<strong>Values</strong>为您想要查询的<a href="https://qcloudimg.tencent-cloud.cn/raw/03a924ee0a53d86575f8067d1c97876d.png" target="_blank">模板名称</a>列表。</li><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模板类型id列表。</li></ul></p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -27368,10 +27361,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
-
-注：`1.offset从0开始，即第一页为0。`
-`2.默认从第一页返回。`
+        r"""<p>偏移量:从 0 开始，最大20000。</p>
         :rtype: int
         """
         return self._Offset
@@ -27382,9 +27372,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""指定每页返回的数据条数，和Offset参数配合使用。
-
-注：`1.默认值为20，单页做大值为200。`
+        r"""<p>指定每页返回的数据条数，和Offset参数配合使用。</p><p>注：<code>1.默认值为20，单页做大值为200。</code></p>
         :rtype: int
         """
         return self._Limit
@@ -27395,10 +27383,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""通过指定[第三方应用的应用号（ApplicationId）](https://qcloudimg.tencent-cloud.cn/raw/60efa1e9049732e5246b20a268882b1a.png)，您可以查询<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中某个第三方应用下的模板。
-
-<p><strong>注意事项：</strong></p>
-<ul><li>当 <strong>ApplicationId</strong> 为空时（默认），系统将查询<a href="https://qcloudimg.tencent-cloud.cn/raw/376943a1d472393dd5388592f2e85ee5.png" target="_blank">平台企业的所有模板</a>（自建应用使用的模板）。</li><li>当 <strong>ApplicationId</strong> 不为空时，系统将从<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中查询该特定应用下的模板（分享给第三方应用子企业的模板）。</li></ul>
+        r"""<p>通过指定<a href="https://qcloudimg.tencent-cloud.cn/raw/60efa1e9049732e5246b20a268882b1a.png">第三方应用的应用号（ApplicationId）</a>，您可以查询<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中某个第三方应用下的模板。</p><p><strong>注意事项：</strong></p><ul><li>当 <strong>ApplicationId</strong> 为空时（默认），系统将查询<a href="https://qcloudimg.tencent-cloud.cn/raw/376943a1d472393dd5388592f2e85ee5.png" target="_blank">平台企业的所有模板</a>（自建应用使用的模板）。</li><li>当 <strong>ApplicationId</strong> 不为空时，系统将从<a href="https://qcloudimg.tencent-cloud.cn/raw/18319e5e77f7d47eab493d43d47827d3.png" target="_blank">【应用模板库管理】</a>中查询该特定应用下的模板（分享给第三方应用子企业的模板）。</li></ul>
         :rtype: str
         """
         return self._ApplicationId
@@ -27411,8 +27396,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
     def IsChannel(self):
         warnings.warn("parameter `IsChannel` is deprecated", DeprecationWarning) 
 
-        r"""默认为false，查询SaaS模板库列表；
-为true，查询第三方应用集成平台企业模板库管理列表
+        r"""<p>默认为false，查询SaaS模板库列表；<br>为true，查询第三方应用集成平台企业模板库管理列表</p>
         :rtype: bool
         """
         return self._IsChannel
@@ -27427,7 +27411,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
     def Organization(self):
         warnings.warn("parameter `Organization` is deprecated", DeprecationWarning) 
 
-        r"""暂未开放
+        r"""<p>暂未开放</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
         """
         return self._Organization
@@ -27442,7 +27426,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
     def GenerateSource(self):
         warnings.warn("parameter `GenerateSource` is deprecated", DeprecationWarning) 
 
-        r"""暂未开放
+        r"""<p>暂未开放</p>
         :rtype: int
         """
         return self._GenerateSource
@@ -27455,10 +27439,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     @property
     def WithPreviewUrl(self):
-        r"""是否获取模板预览链接。
-
-<ul><li><strong>false</strong>：不获取（默认）</li><li><strong>true</strong>：需要获取</li></ul>
-设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接, 有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+        r"""<p>是否获取模板预览链接。</p><ul><li><strong>false</strong>：不获取（默认）</li><li><strong>true</strong>：需要获取</li></ul>设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接, 有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
         :rtype: bool
         """
         return self._WithPreviewUrl
@@ -27508,9 +27489,9 @@ class DescribeFlowTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Templates: 模板详情列表数据
+        :param _Templates: <p>模板详情列表数据</p>
         :type Templates: list of TemplateInfo
-        :param _TotalCount: 查询到的模板总数
+        :param _TotalCount: <p>查询到的模板总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27521,7 +27502,7 @@ class DescribeFlowTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        r"""模板详情列表数据
+        r"""<p>模板详情列表数据</p>
         :rtype: list of TemplateInfo
         """
         return self._Templates
@@ -27532,7 +27513,7 @@ class DescribeFlowTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询到的模板总数
+        r"""<p>查询到的模板总数</p>
         :rtype: int
         """
         return self._TotalCount

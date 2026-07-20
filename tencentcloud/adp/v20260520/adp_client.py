@@ -509,6 +509,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccountList(self, request):
+        r"""查看企业下的员工列表
+
+        :param request: Request instance for DescribeAccountList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeAccountListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeAccountListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAgentDetail(self, request):
         r"""查询 Agent 详情
 
@@ -615,6 +638,52 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeAppSummaryList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAppSummaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditLogList(self, request):
+        r"""查看操作日志列表
+
+        :param request: Request instance for DescribeAuditLogList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeAuditLogListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeAuditLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditLogMeta(self, request):
+        r"""获取审计日志元信息
+
+        :param request: Request instance for DescribeAuditLogMeta.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeAuditLogMetaRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeAuditLogMetaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogMeta", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogMetaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

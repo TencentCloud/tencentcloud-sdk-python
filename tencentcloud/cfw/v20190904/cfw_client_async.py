@@ -205,6 +205,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAlertCenterRuleAsync(
+            self,
+            request: models.CreateAlertCenterRuleAsyncRequest,
+            opts: Dict = None,
+    ) -> models.CreateAlertCenterRuleAsyncResponse:
+        """
+        用户告警中心-封禁、放通处置按钮
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAlertCenterRuleAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAlertCenterRuleAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateBlockIgnoreRuleList(
             self,
             request: models.CreateBlockIgnoreRuleListRequest,
@@ -807,7 +825,7 @@ class CfwClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCfwAssetsResponse:
         """
-        查询当前租户防火墙纳管资产。默认查询主机资产；仅明确需要 VPC 或子网时传 AssetType。结果在 Response.Data 的 JSON 字符串中。
+        查询当前租户防火墙纳管资产。首次查询传 AssetType、过滤条件和 Limit；Response.Data.HasMore=true 时，续查只传 NextToken。默认查询 host；broad 查询分页返回资产，exact InstanceId 查询分页返回该实例 fingerprints 且每页重复基础资产。仅明确需要 VPC 或子网时传 AssetType。
         """
         
         kwargs = {}
@@ -951,7 +969,7 @@ class CfwClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCfwSwitchesResponse:
         """
-        查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。
+        查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。border_firewall、nat_firewall、vpc_firewall、ndr 的 available 表示至少一个对应防护开关实际开启，不表示仅已购买或已创建；ips.mode 可能为跟随全局、观察、拦截、严格、关闭或未知。
         """
         
         kwargs = {}
@@ -2150,6 +2168,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "ModifyIpsModeSwitch"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyIpsModeSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyIsolateTable(
+            self,
+            request: models.ModifyIsolateTableRequest,
+            opts: Dict = None,
+    ) -> models.ModifyIsolateTableResponse:
+        """
+        ModifyIsolateTable 隔离列表编辑和删除操作
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyIsolateTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyIsolateTableResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -403,6 +403,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAccountList(
+            self,
+            request: models.DescribeAccountListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccountListResponse:
+        """
+        查看企业下的员工列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccountList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccountListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAgentDetail(
             self,
             request: models.DescribeAgentDetailRequest,
@@ -488,6 +506,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribeAppSummaryList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAppSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogList(
+            self,
+            request: models.DescribeAuditLogListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogListResponse:
+        """
+        查看操作日志列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogMeta(
+            self,
+            request: models.DescribeAuditLogMetaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogMetaResponse:
+        """
+        获取审计日志元信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogMeta"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogMetaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

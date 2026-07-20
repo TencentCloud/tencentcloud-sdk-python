@@ -64106,13 +64106,13 @@ class FilterDataObject(AbstractModel):
 
 
 class Filters(AbstractModel):
-    r"""过滤条件。同一 Name 下多个 Values 为或关系；不同 Name 之间为且关系
+    r"""过滤条件。同一 Name 下多个 Values 为或关系；不同 Name 之间为且关系。支持的 Name：TaskID（任务ID精确）、TaskStatus（任务状态）、TaskType（任务类型）
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 过滤条件名称
+        :param _Name: 过滤条件名称。取值：TaskID（任务ID，精确匹配）、TaskStatus（任务状态，Values: INIT/SCANNING/SUCCESS/FAILED）、TaskType（任务类型，Values: PERIODIC/MANUAL）
         :type Name: str
         :param _Values: 过滤条件值列表
         :type Values: list of str
@@ -64125,7 +64125,7 @@ class Filters(AbstractModel):
 
     @property
     def Name(self):
-        r"""过滤条件名称
+        r"""过滤条件名称。取值：TaskID（任务ID，精确匹配）、TaskStatus（任务状态，Values: INIT/SCANNING/SUCCESS/FAILED）、TaskType（任务类型，Values: PERIODIC/MANUAL）
         :rtype: str
         """
         return self._Name
@@ -67611,6 +67611,12 @@ class Machine(AbstractModel):
         :type ContainerCount: int
         :param _CpuCoreCount: <p>核数</p>
         :type CpuCoreCount: int
+        :param _MigrationRequired: <p>是否支持迁移</p>
+        :type MigrationRequired: bool
+        :param _IsSupportXSPM: <p>是否支持暴露面扫描</p>
+        :type IsSupportXSPM: bool
+        :param _CanUnbind: <p>是否能解绑</p>
+        :type CanUnbind: bool
         """
         self._AgentStatus = None
         self._AgentVersion = None
@@ -67644,6 +67650,9 @@ class Machine(AbstractModel):
         self._ContainerDefendStatus = None
         self._ContainerCount = None
         self._CpuCoreCount = None
+        self._MigrationRequired = None
+        self._IsSupportXSPM = None
+        self._CanUnbind = None
 
     @property
     def AgentStatus(self):
@@ -67997,6 +68006,39 @@ class Machine(AbstractModel):
     def CpuCoreCount(self, CpuCoreCount):
         self._CpuCoreCount = CpuCoreCount
 
+    @property
+    def MigrationRequired(self):
+        r"""<p>是否支持迁移</p>
+        :rtype: bool
+        """
+        return self._MigrationRequired
+
+    @MigrationRequired.setter
+    def MigrationRequired(self, MigrationRequired):
+        self._MigrationRequired = MigrationRequired
+
+    @property
+    def IsSupportXSPM(self):
+        r"""<p>是否支持暴露面扫描</p>
+        :rtype: bool
+        """
+        return self._IsSupportXSPM
+
+    @IsSupportXSPM.setter
+    def IsSupportXSPM(self, IsSupportXSPM):
+        self._IsSupportXSPM = IsSupportXSPM
+
+    @property
+    def CanUnbind(self):
+        r"""<p>是否能解绑</p>
+        :rtype: bool
+        """
+        return self._CanUnbind
+
+    @CanUnbind.setter
+    def CanUnbind(self, CanUnbind):
+        self._CanUnbind = CanUnbind
+
 
     def _deserialize(self, params):
         self._AgentStatus = params.get("AgentStatus")
@@ -68045,6 +68087,9 @@ class Machine(AbstractModel):
         self._ContainerDefendStatus = params.get("ContainerDefendStatus")
         self._ContainerCount = params.get("ContainerCount")
         self._CpuCoreCount = params.get("CpuCoreCount")
+        self._MigrationRequired = params.get("MigrationRequired")
+        self._IsSupportXSPM = params.get("IsSupportXSPM")
+        self._CanUnbind = params.get("CanUnbind")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

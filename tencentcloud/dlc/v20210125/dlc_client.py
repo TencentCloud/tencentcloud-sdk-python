@@ -2075,6 +2075,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMCPTask(self, request):
+        r"""该接口（DescribeTasks）用于查询任务列表
+
+        :param request: Request instance for DescribeMCPTask.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeMCPTaskRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeMCPTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMCPTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMCPTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMCPTaskResult(self, request):
+        r"""获取任务结果查询
+
+        :param request: Request instance for DescribeMCPTaskResult.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeMCPTaskResultRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeMCPTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMCPTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMCPTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNativeSparkSessions(self, request):
         r"""根据资源组获取spark session列表
 

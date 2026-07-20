@@ -48020,29 +48020,29 @@ class IKEOptionsSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PropoEncryAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
+        :param _PropoEncryAlgorithm: <p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;，&#39;SM4&#39;, 默认为3DES-CBC</p>
         :type PropoEncryAlgorithm: str
-        :param _PropoAuthenAlgorithm: 认证算法：可选值：'MD5'，'SHA'，'SHA-256'，'SHA-512'， 默认为SHA。
+        :param _PropoAuthenAlgorithm: <p>认证算法：可选值：&#39;MD5&#39;，&#39;SHA&#39;，&#39;SHA-256&#39;，&#39;SHA-512&#39;， 默认为SHA。</p>
         :type PropoAuthenAlgorithm: str
-        :param _ExchangeMode: 协商模式：可选值：'AGGRESSIVE'， 'MAIN'，默认为MAIN。
+        :param _ExchangeMode: <p>协商模式：可选值：&#39;AGGRESSIVE&#39;， &#39;MAIN&#39;，默认为MAIN。</p>
         :type ExchangeMode: str
-        :param _LocalIdentity: 本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+        :param _LocalIdentity: <p>本端标识类型：可选值：&#39;ADDRESS&#39;, &#39;FQDN&#39;，默认为ADDRESS</p>
         :type LocalIdentity: str
-        :param _RemoteIdentity: 对端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+        :param _RemoteIdentity: <p>对端标识类型：可选值：&#39;ADDRESS&#39;, &#39;FQDN&#39;，默认为ADDRESS</p>
         :type RemoteIdentity: str
-        :param _LocalAddress: 本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP
+        :param _LocalAddress: <p>本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP</p>
         :type LocalAddress: str
-        :param _RemoteAddress: 对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填
+        :param _RemoteAddress: <p>对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填</p>
         :type RemoteAddress: str
-        :param _LocalFqdnName: 本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填
+        :param _LocalFqdnName: <p>本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填</p>
         :type LocalFqdnName: str
-        :param _RemoteFqdnName: 对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
+        :param _RemoteFqdnName: <p>对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填</p>
         :type RemoteFqdnName: str
-        :param _DhGroupName: DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，默认是GROUP1。
+        :param _DhGroupName: <p>DH group，指定IKE交换密钥时使用的DH组，可选值：&#39;GROUP1&#39;, &#39;GROUP2&#39;, &#39;GROUP5&#39;, &#39;GROUP14&#39;, &#39;GROUP15&#39;, &#39;GROUP16&#39;, &#39;GROUP19&#39;, &#39;GROUP20&#39;, &#39;GROUP21&#39;, &#39;GROUP24&#39;，默认是GROUP1。</p>
         :type DhGroupName: str
-        :param _IKESaLifetimeSeconds: IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
+        :param _IKESaLifetimeSeconds: <p>IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800</p>
         :type IKESaLifetimeSeconds: int
-        :param _IKEVersion: IKE版本
+        :param _IKEVersion: <p>IKE版本</p>
         :type IKEVersion: str
         """
         self._PropoEncryAlgorithm = None
@@ -48060,7 +48060,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def PropoEncryAlgorithm(self):
-        r"""加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
+        r"""<p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;，&#39;SM4&#39;, 默认为3DES-CBC</p>
         :rtype: str
         """
         return self._PropoEncryAlgorithm
@@ -48071,7 +48071,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def PropoAuthenAlgorithm(self):
-        r"""认证算法：可选值：'MD5'，'SHA'，'SHA-256'，'SHA-512'， 默认为SHA。
+        r"""<p>认证算法：可选值：&#39;MD5&#39;，&#39;SHA&#39;，&#39;SHA-256&#39;，&#39;SHA-512&#39;， 默认为SHA。</p>
         :rtype: str
         """
         return self._PropoAuthenAlgorithm
@@ -48082,7 +48082,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def ExchangeMode(self):
-        r"""协商模式：可选值：'AGGRESSIVE'， 'MAIN'，默认为MAIN。
+        r"""<p>协商模式：可选值：&#39;AGGRESSIVE&#39;， &#39;MAIN&#39;，默认为MAIN。</p>
         :rtype: str
         """
         return self._ExchangeMode
@@ -48093,7 +48093,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def LocalIdentity(self):
-        r"""本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+        r"""<p>本端标识类型：可选值：&#39;ADDRESS&#39;, &#39;FQDN&#39;，默认为ADDRESS</p>
         :rtype: str
         """
         return self._LocalIdentity
@@ -48104,7 +48104,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def RemoteIdentity(self):
-        r"""对端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+        r"""<p>对端标识类型：可选值：&#39;ADDRESS&#39;, &#39;FQDN&#39;，默认为ADDRESS</p>
         :rtype: str
         """
         return self._RemoteIdentity
@@ -48115,7 +48115,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def LocalAddress(self):
-        r"""本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP
+        r"""<p>本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP</p>
         :rtype: str
         """
         return self._LocalAddress
@@ -48126,7 +48126,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def RemoteAddress(self):
-        r"""对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填
+        r"""<p>对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填</p>
         :rtype: str
         """
         return self._RemoteAddress
@@ -48137,7 +48137,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def LocalFqdnName(self):
-        r"""本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填
+        r"""<p>本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填</p>
         :rtype: str
         """
         return self._LocalFqdnName
@@ -48148,7 +48148,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def RemoteFqdnName(self):
-        r"""对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
+        r"""<p>对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填</p>
         :rtype: str
         """
         return self._RemoteFqdnName
@@ -48159,7 +48159,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def DhGroupName(self):
-        r"""DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，默认是GROUP1。
+        r"""<p>DH group，指定IKE交换密钥时使用的DH组，可选值：&#39;GROUP1&#39;, &#39;GROUP2&#39;, &#39;GROUP5&#39;, &#39;GROUP14&#39;, &#39;GROUP15&#39;, &#39;GROUP16&#39;, &#39;GROUP19&#39;, &#39;GROUP20&#39;, &#39;GROUP21&#39;, &#39;GROUP24&#39;，默认是GROUP1。</p>
         :rtype: str
         """
         return self._DhGroupName
@@ -48170,7 +48170,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def IKESaLifetimeSeconds(self):
-        r"""IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
+        r"""<p>IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800</p>
         :rtype: int
         """
         return self._IKESaLifetimeSeconds
@@ -48181,7 +48181,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def IKEVersion(self):
-        r"""IKE版本
+        r"""<p>IKE版本</p>
         :rtype: str
         """
         return self._IKEVersion
@@ -48221,18 +48221,18 @@ class IPSECOptionsSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EncryptAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'SM4', 'NULL'， 默认为AES-CBC-128
+        :param _EncryptAlgorithm: <p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;, &#39;SM4&#39;, &#39;NULL&#39;， 默认为AES-CBC-128</p>
         :type EncryptAlgorithm: str
-        :param _IntegrityAlgorith: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
+        :param _IntegrityAlgorith: <p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;，&#39;SHA-256&#39; 默认为</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntegrityAlgorith: str
-        :param _IPSECSaLifetimeSeconds: IPsec SA lifetime(s)：单位秒，取值范围：180-604800
+        :param _IPSECSaLifetimeSeconds: <p>IPsec SA lifetime(s)</p><p>取值范围：[180, 604800]</p><p>单位：秒</p><p>默认值：14400</p>
         :type IPSECSaLifetimeSeconds: int
-        :param _PfsDhGroup: PFS：可选值：'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', 'DH-GROUP24'，默认为NULL
+        :param _PfsDhGroup: <p>PFS：可选值：&#39;NULL&#39;, &#39;DH-GROUP1&#39;, &#39;DH-GROUP2&#39;, &#39;DH-GROUP5&#39;, &#39;DH-GROUP14&#39;, &#39;DH-GROUP15&#39;,&#39;DH-GROUP16&#39;,&#39;DH-GROUP19&#39;,&#39;DH-GROUP20&#39;,&#39;DH-GROUP21&#39;,&#39;DH-GROUP24&#39;，默认为NULL</p>
         :type PfsDhGroup: str
-        :param _IPSECSaLifetimeTraffic: IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
+        :param _IPSECSaLifetimeTraffic: <p>IPsec SA lifetime(KB)</p><p>取值范围：[2560, 4294967295]</p><p>单位：KB</p><p>默认值：4096000000</p>
         :type IPSECSaLifetimeTraffic: int
-        :param _IntegrityAlgorithm: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
+        :param _IntegrityAlgorithm: <p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;，&#39;SHA-256&#39; 默认为</p>
         :type IntegrityAlgorithm: str
         """
         self._EncryptAlgorithm = None
@@ -48244,7 +48244,7 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def EncryptAlgorithm(self):
-        r"""加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'SM4', 'NULL'， 默认为AES-CBC-128
+        r"""<p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;, &#39;SM4&#39;, &#39;NULL&#39;， 默认为AES-CBC-128</p>
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -48257,7 +48257,7 @@ class IPSECOptionsSpecification(AbstractModel):
     def IntegrityAlgorith(self):
         warnings.warn("parameter `IntegrityAlgorith` is deprecated", DeprecationWarning) 
 
-        r"""认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
+        r"""<p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;，&#39;SHA-256&#39; 默认为</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -48271,7 +48271,7 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def IPSECSaLifetimeSeconds(self):
-        r"""IPsec SA lifetime(s)：单位秒，取值范围：180-604800
+        r"""<p>IPsec SA lifetime(s)</p><p>取值范围：[180, 604800]</p><p>单位：秒</p><p>默认值：14400</p>
         :rtype: int
         """
         return self._IPSECSaLifetimeSeconds
@@ -48282,7 +48282,7 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def PfsDhGroup(self):
-        r"""PFS：可选值：'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', 'DH-GROUP24'，默认为NULL
+        r"""<p>PFS：可选值：&#39;NULL&#39;, &#39;DH-GROUP1&#39;, &#39;DH-GROUP2&#39;, &#39;DH-GROUP5&#39;, &#39;DH-GROUP14&#39;, &#39;DH-GROUP15&#39;,&#39;DH-GROUP16&#39;,&#39;DH-GROUP19&#39;,&#39;DH-GROUP20&#39;,&#39;DH-GROUP21&#39;,&#39;DH-GROUP24&#39;，默认为NULL</p>
         :rtype: str
         """
         return self._PfsDhGroup
@@ -48293,7 +48293,7 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def IPSECSaLifetimeTraffic(self):
-        r"""IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
+        r"""<p>IPsec SA lifetime(KB)</p><p>取值范围：[2560, 4294967295]</p><p>单位：KB</p><p>默认值：4096000000</p>
         :rtype: int
         """
         return self._IPSECSaLifetimeTraffic
@@ -48304,7 +48304,7 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def IntegrityAlgorithm(self):
-        r"""认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
+        r"""<p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;，&#39;SHA-256&#39; 默认为</p>
         :rtype: str
         """
         return self._IntegrityAlgorithm
