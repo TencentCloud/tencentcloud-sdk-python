@@ -1910,6 +1910,8 @@ class AvatarScriptInfo(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: <p>话术最后更新时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
         :type UpdateTime: str
+        :param _MediaUrl: <p>已完成状态的视频URL</p>
+        :type MediaUrl: str
         """
         self._ScriptId = None
         self._ProductId = None
@@ -1920,6 +1922,7 @@ class AvatarScriptInfo(AbstractModel):
         self._Position = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._MediaUrl = None
 
     @property
     def ScriptId(self):
@@ -2020,6 +2023,17 @@ class AvatarScriptInfo(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def MediaUrl(self):
+        r"""<p>已完成状态的视频URL</p>
+        :rtype: str
+        """
+        return self._MediaUrl
+
+    @MediaUrl.setter
+    def MediaUrl(self, MediaUrl):
+        self._MediaUrl = MediaUrl
+
 
     def _deserialize(self, params):
         self._ScriptId = params.get("ScriptId")
@@ -2031,6 +2045,7 @@ class AvatarScriptInfo(AbstractModel):
         self._Position = params.get("Position")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._MediaUrl = params.get("MediaUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

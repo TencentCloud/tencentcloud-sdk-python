@@ -25,6 +25,42 @@ class RceClient(AbstractClient):
     _endpoint = 'rce.tencentcloudapi.com'
     _service = 'rce'
 
+    async def AssessDeviceRiskPremiumPro(
+            self,
+            request: models.AssessDeviceRiskPremiumProRequest,
+            opts: Dict = None,
+    ) -> models.AssessDeviceRiskPremiumProResponse:
+        """
+        设备风险评估-高级版
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssessDeviceRiskPremiumPro"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssessDeviceRiskPremiumProResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AssessDeviceRiskPro(
+            self,
+            request: models.AssessDeviceRiskProRequest,
+            opts: Dict = None,
+    ) -> models.AssessDeviceRiskProResponse:
+        """
+        设备风险评估-基础版
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssessDeviceRiskPro"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssessDeviceRiskProResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AssessEnvironmentRisk(
             self,
             request: models.AssessEnvironmentRiskRequest,

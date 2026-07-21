@@ -3826,6 +3826,12 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :param _VoiceClonedMarkFile: <p>音色克隆的标注文件地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceClonedMarkFile: str
+        :param _FileId: <p>擦除后文件的FileId。</p>
+        :type FileId: str
+        :param _OriginSubtitleFileId: <p>基于画面提取的字幕文件FileId。</p>
+        :type OriginSubtitleFileId: str
+        :param _TranslateSubtitleFileId: <p>基于画面提取的字幕翻译文件FileId    。</p>
+        :type TranslateSubtitleFileId: str
         """
         self._Path = None
         self._OutputStorage = None
@@ -3834,6 +3840,9 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         self._SubtitlePos = None
         self._VoiceClonedVideo = None
         self._VoiceClonedMarkFile = None
+        self._FileId = None
+        self._OriginSubtitleFileId = None
+        self._TranslateSubtitleFileId = None
 
     @property
     def Path(self):
@@ -3915,6 +3924,39 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
     def VoiceClonedMarkFile(self, VoiceClonedMarkFile):
         self._VoiceClonedMarkFile = VoiceClonedMarkFile
 
+    @property
+    def FileId(self):
+        r"""<p>擦除后文件的FileId。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def OriginSubtitleFileId(self):
+        r"""<p>基于画面提取的字幕文件FileId。</p>
+        :rtype: str
+        """
+        return self._OriginSubtitleFileId
+
+    @OriginSubtitleFileId.setter
+    def OriginSubtitleFileId(self, OriginSubtitleFileId):
+        self._OriginSubtitleFileId = OriginSubtitleFileId
+
+    @property
+    def TranslateSubtitleFileId(self):
+        r"""<p>基于画面提取的字幕翻译文件FileId    。</p>
+        :rtype: str
+        """
+        return self._TranslateSubtitleFileId
+
+    @TranslateSubtitleFileId.setter
+    def TranslateSubtitleFileId(self, TranslateSubtitleFileId):
+        self._TranslateSubtitleFileId = TranslateSubtitleFileId
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -3928,6 +3970,9 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
             self._SubtitlePos._deserialize(params.get("SubtitlePos"))
         self._VoiceClonedVideo = params.get("VoiceClonedVideo")
         self._VoiceClonedMarkFile = params.get("VoiceClonedMarkFile")
+        self._FileId = params.get("FileId")
+        self._OriginSubtitleFileId = params.get("OriginSubtitleFileId")
+        self._TranslateSubtitleFileId = params.get("TranslateSubtitleFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4302,12 +4347,18 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _ExtraOutput: <p>额外结果，目前包含字幕文件结果 Url</p>
         :type ExtraOutput: str
+        :param _VideoFileId: <p>译制视频FileId。</p>
+        :type VideoFileId: str
+        :param _SpeakerFileId: <p>标记文件FileId。</p>
+        :type SpeakerFileId: str
         """
         self._VideoPath = None
         self._SpeakerPath = None
         self._VoiceId = None
         self._OutputStorage = None
         self._ExtraOutput = None
+        self._VideoFileId = None
+        self._SpeakerFileId = None
 
     @property
     def VideoPath(self):
@@ -4364,6 +4415,28 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
     def ExtraOutput(self, ExtraOutput):
         self._ExtraOutput = ExtraOutput
 
+    @property
+    def VideoFileId(self):
+        r"""<p>译制视频FileId。</p>
+        :rtype: str
+        """
+        return self._VideoFileId
+
+    @VideoFileId.setter
+    def VideoFileId(self, VideoFileId):
+        self._VideoFileId = VideoFileId
+
+    @property
+    def SpeakerFileId(self):
+        r"""<p>标记文件FileId。</p>
+        :rtype: str
+        """
+        return self._SpeakerFileId
+
+    @SpeakerFileId.setter
+    def SpeakerFileId(self, SpeakerFileId):
+        self._SpeakerFileId = SpeakerFileId
+
 
     def _deserialize(self, params):
         self._VideoPath = params.get("VideoPath")
@@ -4373,6 +4446,8 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._ExtraOutput = params.get("ExtraOutput")
+        self._VideoFileId = params.get("VideoFileId")
+        self._SpeakerFileId = params.get("SpeakerFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10086,6 +10161,59 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
                 obj = WordResult()
                 obj._deserialize(item)
                 self._Wordlist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRestorationConfig(AbstractModel):
+    r"""大模型修复
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :type Switch: str
+        :param _Type: <p>强度类型</p><p>枚举值：</p><ul><li>weak： 弱</li><li>normal： 中</li><li>strong： 强</li></ul><p>默认值：normal</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>强度类型</p><p>枚举值：</p><ul><li>weak： 弱</li><li>normal： 中</li><li>strong： 强</li></ul><p>默认值：normal</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20841,7 +20969,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         :param _ExtraParameters: <p>用于传入要求的额外参数。</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
-        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p>
+        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
         :type AdditionalParameters: str
         :param _Operator: <p>接口操作者名称。</p>
         :type Operator: str
@@ -20959,7 +21087,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def AdditionalParameters(self):
-        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p>
+        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -51183,25 +51311,28 @@ class ImageProcessTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: 输出文件的路径。
+        :param _Path: <p>输出文件的路径。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param _OutputStorage: 输出文件的存储位置。
+        :param _OutputStorage: <p>输出文件的存储位置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _SignedUrl: 输出文件的URL。
+        :param _SignedUrl: <p>输出文件的URL。</p>
         :type SignedUrl: str
-        :param _Content: 图生文任务的处理结果。
+        :param _Content: <p>图生文任务的处理结果。</p>
         :type Content: str
+        :param _FileId: <p>VOD标准版FileId</p>
+        :type FileId: str
         """
         self._Path = None
         self._OutputStorage = None
         self._SignedUrl = None
         self._Content = None
+        self._FileId = None
 
     @property
     def Path(self):
-        r"""输出文件的路径。
+        r"""<p>输出文件的路径。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -51213,7 +51344,7 @@ class ImageProcessTaskOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""输出文件的存储位置。
+        r"""<p>输出文件的存储位置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -51225,7 +51356,7 @@ class ImageProcessTaskOutput(AbstractModel):
 
     @property
     def SignedUrl(self):
-        r"""输出文件的URL。
+        r"""<p>输出文件的URL。</p>
         :rtype: str
         """
         return self._SignedUrl
@@ -51236,7 +51367,7 @@ class ImageProcessTaskOutput(AbstractModel):
 
     @property
     def Content(self):
-        r"""图生文任务的处理结果。
+        r"""<p>图生文任务的处理结果。</p>
         :rtype: str
         """
         return self._Content
@@ -51244,6 +51375,17 @@ class ImageProcessTaskOutput(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def FileId(self):
+        r"""<p>VOD标准版FileId</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
 
 
     def _deserialize(self, params):
@@ -51253,6 +51395,7 @@ class ImageProcessTaskOutput(AbstractModel):
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._SignedUrl = params.get("SignedUrl")
         self._Content = params.get("Content")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -84443,11 +84586,14 @@ class SubtitleResult(AbstractModel):
         :type Path: str
         :param _SubtitleEmbedPath: <p>字幕压制视频路径。</p>
         :type SubtitleEmbedPath: str
+        :param _SubtitleFileId: <p>字幕文件FileId。</p>
+        :type SubtitleFileId: str
         """
         self._Language = None
         self._Status = None
         self._Path = None
         self._SubtitleEmbedPath = None
+        self._SubtitleFileId = None
 
     @property
     def Language(self):
@@ -84493,12 +84639,24 @@ class SubtitleResult(AbstractModel):
     def SubtitleEmbedPath(self, SubtitleEmbedPath):
         self._SubtitleEmbedPath = SubtitleEmbedPath
 
+    @property
+    def SubtitleFileId(self):
+        r"""<p>字幕文件FileId。</p>
+        :rtype: str
+        """
+        return self._SubtitleFileId
+
+    @SubtitleFileId.setter
+    def SubtitleFileId(self, SubtitleFileId):
+        self._SubtitleFileId = SubtitleFileId
+
 
     def _deserialize(self, params):
         self._Language = params.get("Language")
         self._Status = params.get("Status")
         self._Path = params.get("Path")
         self._SubtitleEmbedPath = params.get("SubtitleEmbedPath")
+        self._SubtitleFileId = params.get("SubtitleFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -85286,12 +85444,15 @@ class SubtitleTransResultItem(AbstractModel):
         :type Path: str
         :param _SubtitleEmbedPath: <p>翻译字幕压制视频路径。</p>
         :type SubtitleEmbedPath: str
+        :param _SubtitleFileId: <p>字幕文件FileId。</p>
+        :type SubtitleFileId: str
         """
         self._Status = None
         self._TransSrc = None
         self._TransDst = None
         self._Path = None
         self._SubtitleEmbedPath = None
+        self._SubtitleFileId = None
 
     @property
     def Status(self):
@@ -85348,6 +85509,17 @@ class SubtitleTransResultItem(AbstractModel):
     def SubtitleEmbedPath(self, SubtitleEmbedPath):
         self._SubtitleEmbedPath = SubtitleEmbedPath
 
+    @property
+    def SubtitleFileId(self):
+        r"""<p>字幕文件FileId。</p>
+        :rtype: str
+        """
+        return self._SubtitleFileId
+
+    @SubtitleFileId.setter
+    def SubtitleFileId(self, SubtitleFileId):
+        self._SubtitleFileId = SubtitleFileId
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -85355,6 +85527,7 @@ class SubtitleTransResultItem(AbstractModel):
         self._TransDst = params.get("TransDst")
         self._Path = params.get("Path")
         self._SubtitleEmbedPath = params.get("SubtitleEmbedPath")
+        self._SubtitleFileId = params.get("SubtitleFileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -91062,29 +91235,35 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class VODInputInfo(AbstractModel):
-    r"""媒体处理 VOD （点播专业版）对象信息。
+    r"""媒体处理 VOD 对象信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _Bucket: 媒体处理对象文件所在的 *Bucket ID*
+        :param _Bucket: <p>媒体处理对象文件所在的 <em>Bucket ID</em></p>
         :type Bucket: str
-        :param _Region: 媒体处理对象文件所在的 Bucket 所属园区
+        :param _Region: <p>媒体处理对象文件所在的 Bucket 所属园区</p>
         :type Region: str
-        :param _Object: 媒体处理对象文件的输入路径
+        :param _Object: <p>媒体处理对象文件的输入路径</p>
         :type Object: str
-        :param _SubAppId: 点播专业版应用Id
+        :param _SubAppId: <p>点播应用Id。</p>
         :type SubAppId: int
+        :param _VodBasic: <p>是否使用VOD标准版。<br>注意：不填表示使用VOD专业版。</p><p>枚举值：</p><ul><li>0： 使用VOD专业版</li><li>1： 使用VOD标准版，可使用FileId发起任务</li></ul><p>默认值：0</p>
+        :type VodBasic: int
+        :param _FileId: <p>VOD标准版FileId</p>
+        :type FileId: str
         """
         self._Bucket = None
         self._Region = None
         self._Object = None
         self._SubAppId = None
+        self._VodBasic = None
+        self._FileId = None
 
     @property
     def Bucket(self):
-        r"""媒体处理对象文件所在的 *Bucket ID*
+        r"""<p>媒体处理对象文件所在的 <em>Bucket ID</em></p>
         :rtype: str
         """
         return self._Bucket
@@ -91095,7 +91274,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""媒体处理对象文件所在的 Bucket 所属园区
+        r"""<p>媒体处理对象文件所在的 Bucket 所属园区</p>
         :rtype: str
         """
         return self._Region
@@ -91106,7 +91285,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def Object(self):
-        r"""媒体处理对象文件的输入路径
+        r"""<p>媒体处理对象文件的输入路径</p>
         :rtype: str
         """
         return self._Object
@@ -91117,7 +91296,7 @@ class VODInputInfo(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""点播专业版应用Id
+        r"""<p>点播应用Id。</p>
         :rtype: int
         """
         return self._SubAppId
@@ -91126,12 +91305,36 @@ class VODInputInfo(AbstractModel):
     def SubAppId(self, SubAppId):
         self._SubAppId = SubAppId
 
+    @property
+    def VodBasic(self):
+        r"""<p>是否使用VOD标准版。<br>注意：不填表示使用VOD专业版。</p><p>枚举值：</p><ul><li>0： 使用VOD专业版</li><li>1： 使用VOD标准版，可使用FileId发起任务</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._VodBasic
+
+    @VodBasic.setter
+    def VodBasic(self, VodBasic):
+        self._VodBasic = VodBasic
+
+    @property
+    def FileId(self):
+        r"""<p>VOD标准版FileId</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
 
     def _deserialize(self, params):
         self._Bucket = params.get("Bucket")
         self._Region = params.get("Region")
         self._Object = params.get("Object")
         self._SubAppId = params.get("SubAppId")
+        self._VodBasic = params.get("VodBasic")
+        self._FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -91143,7 +91346,7 @@ class VODInputInfo(AbstractModel):
 
 
 class VODOutputStorage(AbstractModel):
-    r"""媒体处理 VOD（点播专业版） 输出对象信息。
+    r"""媒体处理 VOD输出对象信息。
 
     """
 
@@ -91153,12 +91356,15 @@ class VODOutputStorage(AbstractModel):
         :type Bucket: str
         :param _Region: <p>媒体处理生成的文件输出的目标 Bucket 的园区</p>
         :type Region: str
-        :param _SubAppId: <p>点播专业版应用Id</p>
+        :param _SubAppId: <p>点播应用Id</p>
         :type SubAppId: int
+        :param _VodBasic: <p>任务输出是否使用VOD标准版。<br>注意：不填表示使用VOD专业版。</p><p>枚举值：</p><ul><li>0： 不使用VOD标准版</li><li>1： 使用VOD标准版</li></ul>
+        :type VodBasic: int
         """
         self._Bucket = None
         self._Region = None
         self._SubAppId = None
+        self._VodBasic = None
 
     @property
     def Bucket(self):
@@ -91184,7 +91390,7 @@ class VODOutputStorage(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<p>点播专业版应用Id</p>
+        r"""<p>点播应用Id</p>
         :rtype: int
         """
         return self._SubAppId
@@ -91193,11 +91399,23 @@ class VODOutputStorage(AbstractModel):
     def SubAppId(self, SubAppId):
         self._SubAppId = SubAppId
 
+    @property
+    def VodBasic(self):
+        r"""<p>任务输出是否使用VOD标准版。<br>注意：不填表示使用VOD专业版。</p><p>枚举值：</p><ul><li>0： 不使用VOD标准版</li><li>1： 使用VOD标准版</li></ul>
+        :rtype: int
+        """
+        return self._VodBasic
+
+    @VodBasic.setter
+    def VodBasic(self, VodBasic):
+        self._VodBasic = VodBasic
+
 
     def _deserialize(self, params):
         self._Bucket = params.get("Bucket")
         self._Region = params.get("Region")
         self._SubAppId = params.get("SubAppId")
+        self._VodBasic = params.get("VodBasic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -91482,56 +91700,45 @@ class VideoEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FrameRate: 插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。
-
+        :param _FrameRate: <p>插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameRate: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
-        :param _SuperResolution: 超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。
-
+        :param _SuperResolution: <p>超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
-        :param _Hdr: HDR配置。
+        :param _Hdr: <p>HDR配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Hdr: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
-        :param _Denoise: 视频降噪配置。注意与大模型增强不可同时开启。
-
+        :param _Denoise: <p>视频降噪配置。注意与大模型增强不可同时开启。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
-        :param _ImageQualityEnhance: 综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项
+        :param _ImageQualityEnhance: <p>综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
-        :param _ColorEnhance: 色彩增强配置。
+        :param _ColorEnhance: <p>色彩增强配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
-        :param _LowLightEnhance: 低光照增强配置。
+        :param _LowLightEnhance: <p>低光照增强配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
-        :param _ScratchRepair: 去划痕配置。
+        :param _ScratchRepair: <p>去划痕配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScratchRepair: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
-        :param _ArtifactRepair: 去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项
+        :param _ArtifactRepair: <p>去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ArtifactRepair: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
-        :param _EnhanceSceneType: 增强场景配置，可选值：
-<li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
-<li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
-<li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
-<li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
-<li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
-<li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
-<li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
-<li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
-<li>填空字符串代表不使用增强场景</li>
+        :param _EnhanceSceneType: <p>增强场景配置，可选值：</p><li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li><li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li><li>short_play（短剧 &amp; AI 仿真人剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li><li>ai_comic（AI漫剧），增强漫画风格画面细节。</li><li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li><li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li><li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li><li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li><li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li><li>填空字符串代表不使用增强场景</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnhanceSceneType: str
-        :param _DiffusionEnhance: 大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。
-
+        :param _DiffusionEnhance: <p>大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiffusionEnhance: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
-        :param _FrameRateWithDen: 新插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。
-
+        :param _FrameRateWithDen: <p>新插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameRateWithDen: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
+        :param _AiRestoration: <p>大模型修复配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiRestoration: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
         """
         self._FrameRate = None
         self._SuperResolution = None
@@ -91545,11 +91752,11 @@ class VideoEnhanceConfig(AbstractModel):
         self._EnhanceSceneType = None
         self._DiffusionEnhance = None
         self._FrameRateWithDen = None
+        self._AiRestoration = None
 
     @property
     def FrameRate(self):
-        r"""插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。
-
+        r"""<p>插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
         """
@@ -91561,8 +91768,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def SuperResolution(self):
-        r"""超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。
-
+        r"""<p>超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         """
@@ -91574,7 +91780,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def Hdr(self):
-        r"""HDR配置。
+        r"""<p>HDR配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
         """
@@ -91586,8 +91792,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def Denoise(self):
-        r"""视频降噪配置。注意与大模型增强不可同时开启。
-
+        r"""<p>视频降噪配置。注意与大模型增强不可同时开启。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
         """
@@ -91599,7 +91804,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ImageQualityEnhance(self):
-        r"""综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项
+        r"""<p>综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         """
@@ -91611,7 +91816,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ColorEnhance(self):
-        r"""色彩增强配置。
+        r"""<p>色彩增强配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
         """
@@ -91623,7 +91828,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def LowLightEnhance(self):
-        r"""低光照增强配置。
+        r"""<p>低光照增强配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
@@ -91635,7 +91840,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ScratchRepair(self):
-        r"""去划痕配置。
+        r"""<p>去划痕配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
         """
@@ -91647,7 +91852,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def ArtifactRepair(self):
-        r"""去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项
+        r"""<p>去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
         """
@@ -91659,16 +91864,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def EnhanceSceneType(self):
-        r"""增强场景配置，可选值：
-<li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
-<li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
-<li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
-<li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
-<li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
-<li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
-<li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
-<li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
-<li>填空字符串代表不使用增强场景</li>
+        r"""<p>增强场景配置，可选值：</p><li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li><li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li><li>short_play（短剧 &amp; AI 仿真人剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li><li>ai_comic（AI漫剧），增强漫画风格画面细节。</li><li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li><li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li><li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li><li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li><li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li><li>填空字符串代表不使用增强场景</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -91680,8 +91876,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def DiffusionEnhance(self):
-        r"""大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。
-
+        r"""<p>大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceConfig`
         """
@@ -91693,8 +91888,7 @@ class VideoEnhanceConfig(AbstractModel):
 
     @property
     def FrameRateWithDen(self):
-        r"""新插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。
-
+        r"""<p>新插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateWithDenConfig`
         """
@@ -91703,6 +91897,18 @@ class VideoEnhanceConfig(AbstractModel):
     @FrameRateWithDen.setter
     def FrameRateWithDen(self, FrameRateWithDen):
         self._FrameRateWithDen = FrameRateWithDen
+
+    @property
+    def AiRestoration(self):
+        r"""<p>大模型修复配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
+        """
+        return self._AiRestoration
+
+    @AiRestoration.setter
+    def AiRestoration(self, AiRestoration):
+        self._AiRestoration = AiRestoration
 
 
     def _deserialize(self, params):
@@ -91740,6 +91946,9 @@ class VideoEnhanceConfig(AbstractModel):
         if params.get("FrameRateWithDen") is not None:
             self._FrameRateWithDen = FrameRateWithDenConfig()
             self._FrameRateWithDen._deserialize(params.get("FrameRateWithDen"))
+        if params.get("AiRestoration") is not None:
+            self._AiRestoration = AiRestorationConfig()
+            self._AiRestoration._deserialize(params.get("AiRestoration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

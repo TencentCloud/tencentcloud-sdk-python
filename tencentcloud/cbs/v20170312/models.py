@@ -8143,10 +8143,13 @@ class ModifyRemoteDiskAttributesRequest(AbstractModel):
         :type DiskName: str
         :param _ProjectId: <p>新的单副本SSD硬盘项目ID。</p>
         :type ProjectId: int
+        :param _AutoRenewFlag: <p>云硬盘的自动续费标识</p><p>枚举值：</p><ul><li>NOTIFY_AND_AUTO_RENEW： 通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW： 通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知过期不自动续费</li></ul>
+        :type AutoRenewFlag: str
         """
         self._RemoteDiskIds = None
         self._DiskName = None
         self._ProjectId = None
+        self._AutoRenewFlag = None
 
     @property
     def RemoteDiskIds(self):
@@ -8181,11 +8184,23 @@ class ModifyRemoteDiskAttributesRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def AutoRenewFlag(self):
+        r"""<p>云硬盘的自动续费标识</p><p>枚举值：</p><ul><li>NOTIFY_AND_AUTO_RENEW： 通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW： 通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知过期不自动续费</li></ul>
+        :rtype: str
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
 
     def _deserialize(self, params):
         self._RemoteDiskIds = params.get("RemoteDiskIds")
         self._DiskName = params.get("DiskName")
         self._ProjectId = params.get("ProjectId")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9433,6 +9448,8 @@ class Snapshot(AbstractModel):
         :type LatestModifyTime: str
         :param _AutoSnapshotPolicyId: <p>自动快照策略ID，仅当该快照由自动快照策略方式创建时才会返回。</p>
         :type AutoSnapshotPolicyId: str
+        :param _SnapshotMode: <p>快照模式。取值为 INSTANT_SNAPSHOT 表示极速快照，STANDARD_SNAPSHOT 表示普通快照。</p><p>枚举值：</p><ul><li>INSTANT_SNAPSHOT： 极速快照</li><li>STANDARD_SNAPSHOT： 普通快照</li></ul>
+        :type SnapshotMode: str
         """
         self._Placement = None
         self._CopyFromRemote = None
@@ -9457,6 +9474,7 @@ class Snapshot(AbstractModel):
         self._IsLocked = None
         self._LatestModifyTime = None
         self._AutoSnapshotPolicyId = None
+        self._SnapshotMode = None
 
     @property
     def Placement(self):
@@ -9711,6 +9729,17 @@ class Snapshot(AbstractModel):
     def AutoSnapshotPolicyId(self, AutoSnapshotPolicyId):
         self._AutoSnapshotPolicyId = AutoSnapshotPolicyId
 
+    @property
+    def SnapshotMode(self):
+        r"""<p>快照模式。取值为 INSTANT_SNAPSHOT 表示极速快照，STANDARD_SNAPSHOT 表示普通快照。</p><p>枚举值：</p><ul><li>INSTANT_SNAPSHOT： 极速快照</li><li>STANDARD_SNAPSHOT： 普通快照</li></ul>
+        :rtype: str
+        """
+        return self._SnapshotMode
+
+    @SnapshotMode.setter
+    def SnapshotMode(self, SnapshotMode):
+        self._SnapshotMode = SnapshotMode
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -9748,6 +9777,7 @@ class Snapshot(AbstractModel):
         self._IsLocked = params.get("IsLocked")
         self._LatestModifyTime = params.get("LatestModifyTime")
         self._AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self._SnapshotMode = params.get("SnapshotMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

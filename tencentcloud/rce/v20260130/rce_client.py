@@ -26,6 +26,52 @@ class RceClient(AbstractClient):
     _service = 'rce'
 
 
+    def AssessDeviceRiskPremiumPro(self, request):
+        r"""设备风险评估-高级版
+
+        :param request: Request instance for AssessDeviceRiskPremiumPro.
+        :type request: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskPremiumProRequest`
+        :rtype: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskPremiumProResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssessDeviceRiskPremiumPro", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssessDeviceRiskPremiumProResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AssessDeviceRiskPro(self, request):
+        r"""设备风险评估-基础版
+
+        :param request: Request instance for AssessDeviceRiskPro.
+        :type request: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskProRequest`
+        :rtype: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskProResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssessDeviceRiskPro", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssessDeviceRiskProResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AssessEnvironmentRisk(self, request):
         r"""环境风险评估
 

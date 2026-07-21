@@ -16995,6 +16995,87 @@ class SlotSharingGroupSpec(AbstractModel):
         
 
 
+class SqlGatewayEndpoint(AbstractModel):
+    r"""对外接口访问信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>rest： rest</li><li>hiveserver2： hiveserver2</li><li>pg： pg</li></ul>
+        :type Type: str
+        :param _Address: <p>地址</p>
+        :type Address: str
+        :param _Enabled: <p>是否开启</p>
+        :type Enabled: bool
+        :param _Extra: <p>其他信息</p>
+        :type Extra: str
+        """
+        self._Type = None
+        self._Address = None
+        self._Enabled = None
+        self._Extra = None
+
+    @property
+    def Type(self):
+        r"""<p>类型</p><p>枚举值：</p><ul><li>rest： rest</li><li>hiveserver2： hiveserver2</li><li>pg： pg</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Address(self):
+        r"""<p>地址</p>
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Extra(self):
+        r"""<p>其他信息</p>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Address = params.get("Address")
+        self._Enabled = params.get("Enabled")
+        self._Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SqlGatewayItem(AbstractModel):
     r"""SqlGateway配置信息
 
@@ -17002,39 +17083,48 @@ class SqlGatewayItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SerialId: 唯一标识
+        :param _SerialId: <p>唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SerialId: str
-        :param _FlinkVersion: Flink内核版本
+        :param _FlinkVersion: <p>Flink内核版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlinkVersion: str
-        :param _Status: 状态，1.停止 2. 开启中 3. 开启 4. 开启失败 5. 停止中
+        :param _Status: <p>状态，1.停止 2. 开启中 3. 开启 4. 开启失败 5. 停止中</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _CreatorUin: 创建人
+        :param _CreatorUin: <p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: str
-        :param _ResourceRefs: 引用资源
+        :param _ResourceRefs: <p>引用资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRefs: list of GatewayRefItem
-        :param _CuSpec: Cu规格
+        :param _CuSpec: <p>Cu规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CuSpec: float
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _Properties: 配置参数
+        :param _Properties: <p>配置参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
-        :param _Cpu: Cpu
+        :param _Cpu: <p>Cpu</p>
         :type Cpu: float
-        :param _Mem: Mem
+        :param _Mem: <p>Mem</p>
         :type Mem: float
-        :param _JdkVersion: jdk版本
+        :param _JdkVersion: <p>jdk版本</p>
         :type JdkVersion: str
+        :param _SessionClusterId: <p>session id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionClusterId: str
+        :param _PgUser: <p>pg用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PgUser: str
+        :param _Endpoints: <p>协议</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endpoints: list of SqlGatewayEndpoint
         """
         self._SerialId = None
         self._FlinkVersion = None
@@ -17048,10 +17138,13 @@ class SqlGatewayItem(AbstractModel):
         self._Cpu = None
         self._Mem = None
         self._JdkVersion = None
+        self._SessionClusterId = None
+        self._PgUser = None
+        self._Endpoints = None
 
     @property
     def SerialId(self):
-        r"""唯一标识
+        r"""<p>唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17063,7 +17156,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def FlinkVersion(self):
-        r"""Flink内核版本
+        r"""<p>Flink内核版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17075,7 +17168,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态，1.停止 2. 开启中 3. 开启 4. 开启失败 5. 停止中
+        r"""<p>状态，1.停止 2. 开启中 3. 开启 4. 开启失败 5. 停止中</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -17087,7 +17180,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建人
+        r"""<p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17099,7 +17192,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def ResourceRefs(self):
-        r"""引用资源
+        r"""<p>引用资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatewayRefItem
         """
@@ -17111,7 +17204,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def CuSpec(self):
-        r"""Cu规格
+        r"""<p>Cu规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -17123,7 +17216,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17135,7 +17228,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17147,7 +17240,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def Properties(self):
-        r"""配置参数
+        r"""<p>配置参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Property
         """
@@ -17159,7 +17252,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Cpu
+        r"""<p>Cpu</p>
         :rtype: float
         """
         return self._Cpu
@@ -17170,7 +17263,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def Mem(self):
-        r"""Mem
+        r"""<p>Mem</p>
         :rtype: float
         """
         return self._Mem
@@ -17181,7 +17274,7 @@ class SqlGatewayItem(AbstractModel):
 
     @property
     def JdkVersion(self):
-        r"""jdk版本
+        r"""<p>jdk版本</p>
         :rtype: str
         """
         return self._JdkVersion
@@ -17189,6 +17282,42 @@ class SqlGatewayItem(AbstractModel):
     @JdkVersion.setter
     def JdkVersion(self, JdkVersion):
         self._JdkVersion = JdkVersion
+
+    @property
+    def SessionClusterId(self):
+        r"""<p>session id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionClusterId
+
+    @SessionClusterId.setter
+    def SessionClusterId(self, SessionClusterId):
+        self._SessionClusterId = SessionClusterId
+
+    @property
+    def PgUser(self):
+        r"""<p>pg用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PgUser
+
+    @PgUser.setter
+    def PgUser(self, PgUser):
+        self._PgUser = PgUser
+
+    @property
+    def Endpoints(self):
+        r"""<p>协议</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SqlGatewayEndpoint
+        """
+        return self._Endpoints
+
+    @Endpoints.setter
+    def Endpoints(self, Endpoints):
+        self._Endpoints = Endpoints
 
 
     def _deserialize(self, params):
@@ -17214,6 +17343,14 @@ class SqlGatewayItem(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._Mem = params.get("Mem")
         self._JdkVersion = params.get("JdkVersion")
+        self._SessionClusterId = params.get("SessionClusterId")
+        self._PgUser = params.get("PgUser")
+        if params.get("Endpoints") is not None:
+            self._Endpoints = []
+            for item in params.get("Endpoints"):
+                obj = SqlGatewayEndpoint()
+                obj._deserialize(item)
+                self._Endpoints.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

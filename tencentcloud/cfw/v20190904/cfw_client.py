@@ -739,6 +739,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAclRegInfo(self, request):
+        r"""查询ACL规则支持配置的地区
+
+        :param request: Request instance for DescribeAclRegInfo.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAclRegInfoRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeAclRegInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAclRegInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAclRegInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAclRule(self, request):
         r"""查询互联网边界访问控制列表
 

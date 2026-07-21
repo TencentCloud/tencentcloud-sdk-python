@@ -104795,19 +104795,19 @@ class TableLineage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatasourceId: 数据源id
+        :param _DatasourceId: <p>数据源id</p>
         :type DatasourceId: str
-        :param _DatabaseName: 库名称
+        :param _DatabaseName: <p>库名称</p>
         :type DatabaseName: str
-        :param _TableName: 表名称
+        :param _TableName: <p>表名称</p>
         :type TableName: str
-        :param _CatalogName: catalog值
+        :param _CatalogName: <p>catalog值,仅使用DLC且开启TcLake的支持,其他类型传空即可</p>
         :type CatalogName: str
-        :param _SchemaName: schema名称
+        :param _SchemaName: <p>schema名称</p>
         :type SchemaName: str
-        :param _ExtParams: 扩展参数
+        :param _ExtParams: <p>扩展参数</p>
         :type ExtParams: list of ExtParam
-        :param _TableType: table类型 TABLE｜VIEW
+        :param _TableType: <p>table类型 TABLE｜VIEW</p>
         :type TableType: str
         """
         self._DatasourceId = None
@@ -104820,7 +104820,7 @@ class TableLineage(AbstractModel):
 
     @property
     def DatasourceId(self):
-        r"""数据源id
+        r"""<p>数据源id</p>
         :rtype: str
         """
         return self._DatasourceId
@@ -104831,7 +104831,7 @@ class TableLineage(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""库名称
+        r"""<p>库名称</p>
         :rtype: str
         """
         return self._DatabaseName
@@ -104842,7 +104842,7 @@ class TableLineage(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名称
+        r"""<p>表名称</p>
         :rtype: str
         """
         return self._TableName
@@ -104853,7 +104853,7 @@ class TableLineage(AbstractModel):
 
     @property
     def CatalogName(self):
-        r"""catalog值
+        r"""<p>catalog值,仅使用DLC且开启TcLake的支持,其他类型传空即可</p>
         :rtype: str
         """
         return self._CatalogName
@@ -104864,7 +104864,7 @@ class TableLineage(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""schema名称
+        r"""<p>schema名称</p>
         :rtype: str
         """
         return self._SchemaName
@@ -104875,7 +104875,7 @@ class TableLineage(AbstractModel):
 
     @property
     def ExtParams(self):
-        r"""扩展参数
+        r"""<p>扩展参数</p>
         :rtype: list of ExtParam
         """
         return self._ExtParams
@@ -104886,7 +104886,7 @@ class TableLineage(AbstractModel):
 
     @property
     def TableType(self):
-        r"""table类型 TABLE｜VIEW
+        r"""<p>table类型 TABLE｜VIEW</p>
         :rtype: str
         """
         return self._TableType

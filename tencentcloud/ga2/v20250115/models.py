@@ -1006,6 +1006,190 @@ class CreateForwardingRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateGlobalAcceleratorAccessLogRequest(AbstractModel):
+    r"""CreateGlobalAcceleratorAccessLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: <p>GA示例唯一Id</p>
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: <p>监听器Id</p>
+        :type ListenerId: str
+        :param _EndpointGroupId: <p>终端节点组Id</p>
+        :type EndpointGroupId: str
+        :param _CloudRegion: <p>日志集所在地域</p>
+        :type CloudRegion: str
+        :param _CloudLogId: <p>日志主题Id</p>
+        :type CloudLogId: str
+        :param _CloudLogSetId: <p>日志集Id</p>
+        :type CloudLogSetId: str
+        :param _FieldKeys: <p>指定采集字段</p><p>枚举值：</p><ul><li>session_time： 四层，会话持续时间</li><li>upstream_bytes_received： 四层、七层，从终端节点接收的字节数</li><li>upstream_bytes_sent： 四层、七层，发送给终端节点的字节数</li><li>request_method： 七层，GET/POST</li><li>scheme： 七层，http/https</li><li>request_uri： 七层，客户端原始请求的URI</li><li>uri： 七层，当前请求的URI</li><li>host： 七层，客户端访问域名（七层）</li><li>remote_user： 七层，基本认证时的用户名（未认证时为&quot;-&quot;）</li><li>http_user_agent： 七层，客户端浏览器标识</li><li>http_referer： 七层，请求来源URL（直接从地址栏访问时为&quot;-&quot;）</li><li>http_x_forwarded_for： 七层，记录客户端原始IP及经过的代理服务器IP链</li><li>content_type： 七层，content_type</li><li>body_bytes_sent： 七层，发送给客户端的http body大小，不包含header</li><li>request_time： 七层，从接收到客户端请求的第一个字节到发送完响应最后一个字节之间的总时间（单位：秒）</li><li>sent_http_content_type： 七层，响应内容类型</li><li>upstream_header_time： 七层，终端节点的响应头到达时间</li><li>upstream_response_length： 七层，终端节点返回的响应体长度</li><li>upstream_response_time： 七层，终端节点完整响应时间</li><li>upstream_status： 七层，终端节点返回的HTTP状态码</li></ul>
+        :type FieldKeys: list of str
+        :param _FlowLogDescription: <p>日志描述</p>
+        :type FlowLogDescription: str
+        """
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._EndpointGroupId = None
+        self._CloudRegion = None
+        self._CloudLogId = None
+        self._CloudLogSetId = None
+        self._FieldKeys = None
+        self._FlowLogDescription = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>GA示例唯一Id</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""<p>监听器Id</p>
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def EndpointGroupId(self):
+        r"""<p>终端节点组Id</p>
+        :rtype: str
+        """
+        return self._EndpointGroupId
+
+    @EndpointGroupId.setter
+    def EndpointGroupId(self, EndpointGroupId):
+        self._EndpointGroupId = EndpointGroupId
+
+    @property
+    def CloudRegion(self):
+        r"""<p>日志集所在地域</p>
+        :rtype: str
+        """
+        return self._CloudRegion
+
+    @CloudRegion.setter
+    def CloudRegion(self, CloudRegion):
+        self._CloudRegion = CloudRegion
+
+    @property
+    def CloudLogId(self):
+        r"""<p>日志主题Id</p>
+        :rtype: str
+        """
+        return self._CloudLogId
+
+    @CloudLogId.setter
+    def CloudLogId(self, CloudLogId):
+        self._CloudLogId = CloudLogId
+
+    @property
+    def CloudLogSetId(self):
+        r"""<p>日志集Id</p>
+        :rtype: str
+        """
+        return self._CloudLogSetId
+
+    @CloudLogSetId.setter
+    def CloudLogSetId(self, CloudLogSetId):
+        self._CloudLogSetId = CloudLogSetId
+
+    @property
+    def FieldKeys(self):
+        r"""<p>指定采集字段</p><p>枚举值：</p><ul><li>session_time： 四层，会话持续时间</li><li>upstream_bytes_received： 四层、七层，从终端节点接收的字节数</li><li>upstream_bytes_sent： 四层、七层，发送给终端节点的字节数</li><li>request_method： 七层，GET/POST</li><li>scheme： 七层，http/https</li><li>request_uri： 七层，客户端原始请求的URI</li><li>uri： 七层，当前请求的URI</li><li>host： 七层，客户端访问域名（七层）</li><li>remote_user： 七层，基本认证时的用户名（未认证时为&quot;-&quot;）</li><li>http_user_agent： 七层，客户端浏览器标识</li><li>http_referer： 七层，请求来源URL（直接从地址栏访问时为&quot;-&quot;）</li><li>http_x_forwarded_for： 七层，记录客户端原始IP及经过的代理服务器IP链</li><li>content_type： 七层，content_type</li><li>body_bytes_sent： 七层，发送给客户端的http body大小，不包含header</li><li>request_time： 七层，从接收到客户端请求的第一个字节到发送完响应最后一个字节之间的总时间（单位：秒）</li><li>sent_http_content_type： 七层，响应内容类型</li><li>upstream_header_time： 七层，终端节点的响应头到达时间</li><li>upstream_response_length： 七层，终端节点返回的响应体长度</li><li>upstream_response_time： 七层，终端节点完整响应时间</li><li>upstream_status： 七层，终端节点返回的HTTP状态码</li></ul>
+        :rtype: list of str
+        """
+        return self._FieldKeys
+
+    @FieldKeys.setter
+    def FieldKeys(self, FieldKeys):
+        self._FieldKeys = FieldKeys
+
+    @property
+    def FlowLogDescription(self):
+        r"""<p>日志描述</p>
+        :rtype: str
+        """
+        return self._FlowLogDescription
+
+    @FlowLogDescription.setter
+    def FlowLogDescription(self, FlowLogDescription):
+        self._FlowLogDescription = FlowLogDescription
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._EndpointGroupId = params.get("EndpointGroupId")
+        self._CloudRegion = params.get("CloudRegion")
+        self._CloudLogId = params.get("CloudLogId")
+        self._CloudLogSetId = params.get("CloudLogSetId")
+        self._FieldKeys = params.get("FieldKeys")
+        self._FlowLogDescription = params.get("FlowLogDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGlobalAcceleratorAccessLogResponse(AbstractModel):
+    r"""CreateGlobalAcceleratorAccessLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogPushTaskId: <p>日志任务唯一Id</p>
+        :type LogPushTaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogPushTaskId = None
+        self._RequestId = None
+
+    @property
+    def LogPushTaskId(self):
+        r"""<p>日志任务唯一Id</p>
+        :rtype: str
+        """
+        return self._LogPushTaskId
+
+    @LogPushTaskId.setter
+    def LogPushTaskId(self, LogPushTaskId):
+        self._LogPushTaskId = LogPushTaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogPushTaskId = params.get("LogPushTaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGlobalAcceleratorAclPolicyRequest(AbstractModel):
     r"""CreateGlobalAcceleratorAclPolicy请求参数结构体
 
@@ -2284,6 +2468,85 @@ class DeleteForwardingRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteGlobalAcceleratorAccessLogRequest(AbstractModel):
+    r"""DeleteGlobalAcceleratorAccessLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogPushTaskId: <p>日志唯一Id</p>
+        :type LogPushTaskId: str
+        :param _GlobalAcceleratorId: <p>GA实例唯一Id</p>
+        :type GlobalAcceleratorId: str
+        """
+        self._LogPushTaskId = None
+        self._GlobalAcceleratorId = None
+
+    @property
+    def LogPushTaskId(self):
+        r"""<p>日志唯一Id</p>
+        :rtype: str
+        """
+        return self._LogPushTaskId
+
+    @LogPushTaskId.setter
+    def LogPushTaskId(self, LogPushTaskId):
+        self._LogPushTaskId = LogPushTaskId
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>GA实例唯一Id</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+
+    def _deserialize(self, params):
+        self._LogPushTaskId = params.get("LogPushTaskId")
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGlobalAcceleratorAccessLogResponse(AbstractModel):
+    r"""DeleteGlobalAcceleratorAccessLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteGlobalAcceleratorAclPolicyRequest(AbstractModel):
     r"""DeleteGlobalAcceleratorAclPolicy请求参数结构体
 
@@ -2972,6 +3235,70 @@ class DescribeAccelerateRegionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAccessLogParamRequest(AbstractModel):
+    r"""DescribeAccessLogParam请求参数结构体
+
+    """
+
+
+class DescribeAccessLogParamResponse(AbstractModel):
+    r"""DescribeAccessLogParam返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L7Param: <p>七层可选参数</p>
+        :type L7Param: list of str
+        :param _L4Param: <p>四层可选参数</p>
+        :type L4Param: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._L7Param = None
+        self._L4Param = None
+        self._RequestId = None
+
+    @property
+    def L7Param(self):
+        r"""<p>七层可选参数</p>
+        :rtype: list of str
+        """
+        return self._L7Param
+
+    @L7Param.setter
+    def L7Param(self, L7Param):
+        self._L7Param = L7Param
+
+    @property
+    def L4Param(self):
+        r"""<p>四层可选参数</p>
+        :rtype: list of str
+        """
+        return self._L4Param
+
+    @L4Param.setter
+    def L4Param(self, L4Param):
+        self._L4Param = L4Param
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._L7Param = params.get("L7Param")
+        self._L4Param = params.get("L4Param")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCrossBorderSettlementRequest(AbstractModel):
     r"""DescribeCrossBorderSettlement请求参数结构体
 
@@ -3544,6 +3871,413 @@ class DescribeForwardingRuleResponse(AbstractModel):
                 obj = ForwardingRuleSet()
                 obj._deserialize(item)
                 self._ForwardingRuleSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGlobalAcceleratorAccessLogRequest(AbstractModel):
+    r"""DescribeGlobalAcceleratorAccessLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: <p>ga实例唯一Id</p>
+        :type GlobalAcceleratorId: str
+        :param _Filters: <p>查询过滤参数。{ &quot;Name&quot;: &quot;listener-id&quot;, &quot;Values&quot;: [&quot;监听器唯一Id&quot;] },{ &quot;Name&quot;: &quot;endpoint-group-id&quot;, &quot;Values&quot;: [&quot;终端节点组唯一Id&quot;] },{ &quot;Name&quot;: &quot;access_log_id&quot;, &quot;Values&quot;: [&quot;日志唯一Id&quot;] }</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>偏移量，默认为0。</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量。</p><p>取值范围：[0, 200]</p>
+        :type Limit: int
+        """
+        self._GlobalAcceleratorId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>ga实例唯一Id</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def Filters(self):
+        r"""<p>查询过滤参数。{ &quot;Name&quot;: &quot;listener-id&quot;, &quot;Values&quot;: [&quot;监听器唯一Id&quot;] },{ &quot;Name&quot;: &quot;endpoint-group-id&quot;, &quot;Values&quot;: [&quot;终端节点组唯一Id&quot;] },{ &quot;Name&quot;: &quot;access_log_id&quot;, &quot;Values&quot;: [&quot;日志唯一Id&quot;] }</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量。</p><p>取值范围：[0, 200]</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGlobalAcceleratorAccessLogResponse(AbstractModel):
+    r"""DescribeGlobalAcceleratorAccessLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorAccessLog: <p>返回日志任务详情</p>
+        :type GlobalAcceleratorAccessLog: list of GlobalAcceleratorAccessLog
+        :param _TotalCount: <p>日志任务条数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GlobalAcceleratorAccessLog = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def GlobalAcceleratorAccessLog(self):
+        r"""<p>返回日志任务详情</p>
+        :rtype: list of GlobalAcceleratorAccessLog
+        """
+        return self._GlobalAcceleratorAccessLog
+
+    @GlobalAcceleratorAccessLog.setter
+    def GlobalAcceleratorAccessLog(self, GlobalAcceleratorAccessLog):
+        self._GlobalAcceleratorAccessLog = GlobalAcceleratorAccessLog
+
+    @property
+    def TotalCount(self):
+        r"""<p>日志任务条数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GlobalAcceleratorAccessLog") is not None:
+            self._GlobalAcceleratorAccessLog = []
+            for item in params.get("GlobalAcceleratorAccessLog"):
+                obj = GlobalAcceleratorAccessLog()
+                obj._deserialize(item)
+                self._GlobalAcceleratorAccessLog.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGlobalAcceleratorAclPoliciesRequest(AbstractModel):
+    r"""DescribeGlobalAcceleratorAclPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
+        :type GlobalAcceleratorId: str
+        :param _Offset: <p>偏移量。默认值为0。</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，默认值为20，最大值为200。</p>
+        :type Limit: str
+        """
+        self._GlobalAcceleratorId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>全球加速实例ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量。默认值为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认值为20，最大值为200。</p>
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGlobalAcceleratorAclPoliciesResponse(AbstractModel):
+    r"""DescribeGlobalAcceleratorAclPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorAclPolicySet: <p>访问控制策略信息。</p>
+        :type GlobalAcceleratorAclPolicySet: list of GlobalAcceleratorAclPolicies
+        :param _TotalCount: <p>符合条件实例总个数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GlobalAcceleratorAclPolicySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def GlobalAcceleratorAclPolicySet(self):
+        r"""<p>访问控制策略信息。</p>
+        :rtype: list of GlobalAcceleratorAclPolicies
+        """
+        return self._GlobalAcceleratorAclPolicySet
+
+    @GlobalAcceleratorAclPolicySet.setter
+    def GlobalAcceleratorAclPolicySet(self, GlobalAcceleratorAclPolicySet):
+        self._GlobalAcceleratorAclPolicySet = GlobalAcceleratorAclPolicySet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件实例总个数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GlobalAcceleratorAclPolicySet") is not None:
+            self._GlobalAcceleratorAclPolicySet = []
+            for item in params.get("GlobalAcceleratorAclPolicySet"):
+                obj = GlobalAcceleratorAclPolicies()
+                obj._deserialize(item)
+                self._GlobalAcceleratorAclPolicySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGlobalAcceleratorAclRulesRequest(AbstractModel):
+    r"""DescribeGlobalAcceleratorAclRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorAclPolicyId: <p>访问控制策略ID。</p>
+        :type GlobalAcceleratorAclPolicyId: str
+        :param _Offset: <p>偏移量，默认为0。</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._GlobalAcceleratorAclPolicyId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def GlobalAcceleratorAclPolicyId(self):
+        r"""<p>访问控制策略ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclPolicyId
+
+    @GlobalAcceleratorAclPolicyId.setter
+    def GlobalAcceleratorAclPolicyId(self, GlobalAcceleratorAclPolicyId):
+        self._GlobalAcceleratorAclPolicyId = GlobalAcceleratorAclPolicyId
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorAclPolicyId = params.get("GlobalAcceleratorAclPolicyId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGlobalAcceleratorAclRulesResponse(AbstractModel):
+    r"""DescribeGlobalAcceleratorAclRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorAclRuleSet: <p>符合条件的Acl规则实例。</p>
+        :type GlobalAcceleratorAclRuleSet: list of GlobalAcceleratorAclRuleSet
+        :param _TotalCount: <p>符合条件的实例个数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GlobalAcceleratorAclRuleSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def GlobalAcceleratorAclRuleSet(self):
+        r"""<p>符合条件的Acl规则实例。</p>
+        :rtype: list of GlobalAcceleratorAclRuleSet
+        """
+        return self._GlobalAcceleratorAclRuleSet
+
+    @GlobalAcceleratorAclRuleSet.setter
+    def GlobalAcceleratorAclRuleSet(self, GlobalAcceleratorAclRuleSet):
+        self._GlobalAcceleratorAclRuleSet = GlobalAcceleratorAclRuleSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的实例个数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GlobalAcceleratorAclRuleSet") is not None:
+            self._GlobalAcceleratorAclRuleSet = []
+            for item in params.get("GlobalAcceleratorAclRuleSet"):
+                obj = GlobalAcceleratorAclRuleSet()
+                obj._deserialize(item)
+                self._GlobalAcceleratorAclRuleSet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -4987,26 +5721,30 @@ class ForwardingRuleSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleCondition: 七层转发规则条件信息。
+        :param _RuleCondition: <p>七层转发规则条件信息。</p>
         :type RuleCondition: list of RuleCondition
-        :param _RuleAction: 七层转发规则行为信息。
+        :param _RuleAction: <p>七层转发规则行为信息。</p>
         :type RuleAction: list of RuleAction
-        :param _EnableOriginSni: 是否开启回源Sni。
+        :param _EnableOriginSni: <p>是否开启回源Sni。</p>
         :type EnableOriginSni: bool
-        :param _OriginSni: 回源Sni。
+        :param _OriginSni: <p>回源Sni。</p>
         :type OriginSni: str
-        :param _OriginHeaders: 回源Herder信息。
+        :param _OriginHeaders: <p>回源Herder信息。</p>
         :type OriginHeaders: list of OriginHeader
-        :param _OriginHost: 回源Host。
+        :param _OriginHost: <p>回源Host。</p>
         :type OriginHost: str
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _ForwardingPolicyId: 七层转发策略ID。
+        :param _ForwardingPolicyId: <p>七层转发策略ID。</p>
         :type ForwardingPolicyId: str
-        :param _ForwardingRuleId: 七层转发规则ID。
+        :param _ForwardingRuleId: <p>七层转发规则ID。</p>
         :type ForwardingRuleId: str
+        :param _HideResponseHeaders: <p>源站响应头</p>
+        :type HideResponseHeaders: list of HideResponseHeaders
+        :param _ResponseHeaders: <p>删除源站响应头</p>
+        :type ResponseHeaders: list of ResponseHeaders
         """
         self._RuleCondition = None
         self._RuleAction = None
@@ -5018,10 +5756,12 @@ class ForwardingRuleSet(AbstractModel):
         self._ListenerId = None
         self._ForwardingPolicyId = None
         self._ForwardingRuleId = None
+        self._HideResponseHeaders = None
+        self._ResponseHeaders = None
 
     @property
     def RuleCondition(self):
-        r"""七层转发规则条件信息。
+        r"""<p>七层转发规则条件信息。</p>
         :rtype: list of RuleCondition
         """
         return self._RuleCondition
@@ -5032,7 +5772,7 @@ class ForwardingRuleSet(AbstractModel):
 
     @property
     def RuleAction(self):
-        r"""七层转发规则行为信息。
+        r"""<p>七层转发规则行为信息。</p>
         :rtype: list of RuleAction
         """
         return self._RuleAction
@@ -5043,7 +5783,7 @@ class ForwardingRuleSet(AbstractModel):
 
     @property
     def EnableOriginSni(self):
-        r"""是否开启回源Sni。
+        r"""<p>是否开启回源Sni。</p>
         :rtype: bool
         """
         return self._EnableOriginSni
@@ -5054,7 +5794,7 @@ class ForwardingRuleSet(AbstractModel):
 
     @property
     def OriginSni(self):
-        r"""回源Sni。
+        r"""<p>回源Sni。</p>
         :rtype: str
         """
         return self._OriginSni
@@ -5065,7 +5805,7 @@ class ForwardingRuleSet(AbstractModel):
 
     @property
     def OriginHeaders(self):
-        r"""回源Herder信息。
+        r"""<p>回源Herder信息。</p>
         :rtype: list of OriginHeader
         """
         return self._OriginHeaders
@@ -5076,7 +5816,7 @@ class ForwardingRuleSet(AbstractModel):
 
     @property
     def OriginHost(self):
-        r"""回源Host。
+        r"""<p>回源Host。</p>
         :rtype: str
         """
         return self._OriginHost
@@ -5087,7 +5827,7 @@ class ForwardingRuleSet(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -5098,7 +5838,7 @@ class ForwardingRuleSet(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -5109,7 +5849,7 @@ class ForwardingRuleSet(AbstractModel):
 
     @property
     def ForwardingPolicyId(self):
-        r"""七层转发策略ID。
+        r"""<p>七层转发策略ID。</p>
         :rtype: str
         """
         return self._ForwardingPolicyId
@@ -5120,7 +5860,7 @@ class ForwardingRuleSet(AbstractModel):
 
     @property
     def ForwardingRuleId(self):
-        r"""七层转发规则ID。
+        r"""<p>七层转发规则ID。</p>
         :rtype: str
         """
         return self._ForwardingRuleId
@@ -5128,6 +5868,28 @@ class ForwardingRuleSet(AbstractModel):
     @ForwardingRuleId.setter
     def ForwardingRuleId(self, ForwardingRuleId):
         self._ForwardingRuleId = ForwardingRuleId
+
+    @property
+    def HideResponseHeaders(self):
+        r"""<p>源站响应头</p>
+        :rtype: list of HideResponseHeaders
+        """
+        return self._HideResponseHeaders
+
+    @HideResponseHeaders.setter
+    def HideResponseHeaders(self, HideResponseHeaders):
+        self._HideResponseHeaders = HideResponseHeaders
+
+    @property
+    def ResponseHeaders(self):
+        r"""<p>删除源站响应头</p>
+        :rtype: list of ResponseHeaders
+        """
+        return self._ResponseHeaders
+
+    @ResponseHeaders.setter
+    def ResponseHeaders(self, ResponseHeaders):
+        self._ResponseHeaders = ResponseHeaders
 
 
     def _deserialize(self, params):
@@ -5156,6 +5918,216 @@ class ForwardingRuleSet(AbstractModel):
         self._ListenerId = params.get("ListenerId")
         self._ForwardingPolicyId = params.get("ForwardingPolicyId")
         self._ForwardingRuleId = params.get("ForwardingRuleId")
+        if params.get("HideResponseHeaders") is not None:
+            self._HideResponseHeaders = []
+            for item in params.get("HideResponseHeaders"):
+                obj = HideResponseHeaders()
+                obj._deserialize(item)
+                self._HideResponseHeaders.append(obj)
+        if params.get("ResponseHeaders") is not None:
+            self._ResponseHeaders = []
+            for item in params.get("ResponseHeaders"):
+                obj = ResponseHeaders()
+                obj._deserialize(item)
+                self._ResponseHeaders.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GlobalAcceleratorAccessLog(AbstractModel):
+    r"""GA访问日志
+
+    """
+
+
+class GlobalAcceleratorAclPolicies(AbstractModel):
+    r"""访问控制策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorAclPolicyId: 访问控制策略ID。
+        :type GlobalAcceleratorAclPolicyId: str
+        :param _DefaultAction: 默认动作。
+        :type DefaultAction: str
+        :param _Status: 状态。
+        :type Status: str
+        """
+        self._GlobalAcceleratorAclPolicyId = None
+        self._DefaultAction = None
+        self._Status = None
+
+    @property
+    def GlobalAcceleratorAclPolicyId(self):
+        r"""访问控制策略ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclPolicyId
+
+    @GlobalAcceleratorAclPolicyId.setter
+    def GlobalAcceleratorAclPolicyId(self, GlobalAcceleratorAclPolicyId):
+        self._GlobalAcceleratorAclPolicyId = GlobalAcceleratorAclPolicyId
+
+    @property
+    def DefaultAction(self):
+        r"""默认动作。
+        :rtype: str
+        """
+        return self._DefaultAction
+
+    @DefaultAction.setter
+    def DefaultAction(self, DefaultAction):
+        self._DefaultAction = DefaultAction
+
+    @property
+    def Status(self):
+        r"""状态。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorAclPolicyId = params.get("GlobalAcceleratorAclPolicyId")
+        self._DefaultAction = params.get("DefaultAction")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GlobalAcceleratorAclRuleSet(AbstractModel):
+    r"""Acl规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorPolicyId: 访问控制策略ID。
+        :type GlobalAcceleratorPolicyId: str
+        :param _GlobalAcceleratorAclRuleId: Acl规则ID。
+        :type GlobalAcceleratorAclRuleId: str
+        :param _Protocol: 协议。
+        :type Protocol: str
+        :param _Port: 端口。
+        :type Port: str
+        :param _SourceCidrBlock: 网段。
+        :type SourceCidrBlock: str
+        :param _Policy: 动作。
+        :type Policy: str
+        :param _Description: 描述。
+        :type Description: str
+        """
+        self._GlobalAcceleratorPolicyId = None
+        self._GlobalAcceleratorAclRuleId = None
+        self._Protocol = None
+        self._Port = None
+        self._SourceCidrBlock = None
+        self._Policy = None
+        self._Description = None
+
+    @property
+    def GlobalAcceleratorPolicyId(self):
+        r"""访问控制策略ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorPolicyId
+
+    @GlobalAcceleratorPolicyId.setter
+    def GlobalAcceleratorPolicyId(self, GlobalAcceleratorPolicyId):
+        self._GlobalAcceleratorPolicyId = GlobalAcceleratorPolicyId
+
+    @property
+    def GlobalAcceleratorAclRuleId(self):
+        r"""Acl规则ID。
+        :rtype: str
+        """
+        return self._GlobalAcceleratorAclRuleId
+
+    @GlobalAcceleratorAclRuleId.setter
+    def GlobalAcceleratorAclRuleId(self, GlobalAcceleratorAclRuleId):
+        self._GlobalAcceleratorAclRuleId = GlobalAcceleratorAclRuleId
+
+    @property
+    def Protocol(self):
+        r"""协议。
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        r"""端口。
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def SourceCidrBlock(self):
+        r"""网段。
+        :rtype: str
+        """
+        return self._SourceCidrBlock
+
+    @SourceCidrBlock.setter
+    def SourceCidrBlock(self, SourceCidrBlock):
+        self._SourceCidrBlock = SourceCidrBlock
+
+    @property
+    def Policy(self):
+        r"""动作。
+        :rtype: str
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Description(self):
+        r"""描述。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorPolicyId = params.get("GlobalAcceleratorPolicyId")
+        self._GlobalAcceleratorAclRuleId = params.get("GlobalAcceleratorAclRuleId")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
+        self._SourceCidrBlock = params.get("SourceCidrBlock")
+        self._Policy = params.get("Policy")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5940,6 +6912,100 @@ class ModifyAccelerateAreasResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAccessLogStatusRequest(AbstractModel):
+    r"""ModifyAccessLogStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogPushTaskId: <p>日志唯一Id</p>
+        :type LogPushTaskId: str
+        :param _Status: <p>状态（启动START， 停止STOP）</p><p>枚举值：</p><ul><li>START： 启动</li><li>STOP： 停止</li></ul>
+        :type Status: str
+        :param _GlobalAcceleratorId: <p>GA实例唯一Id</p>
+        :type GlobalAcceleratorId: str
+        """
+        self._LogPushTaskId = None
+        self._Status = None
+        self._GlobalAcceleratorId = None
+
+    @property
+    def LogPushTaskId(self):
+        r"""<p>日志唯一Id</p>
+        :rtype: str
+        """
+        return self._LogPushTaskId
+
+    @LogPushTaskId.setter
+    def LogPushTaskId(self, LogPushTaskId):
+        self._LogPushTaskId = LogPushTaskId
+
+    @property
+    def Status(self):
+        r"""<p>状态（启动START， 停止STOP）</p><p>枚举值：</p><ul><li>START： 启动</li><li>STOP： 停止</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>GA实例唯一Id</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+
+    def _deserialize(self, params):
+        self._LogPushTaskId = params.get("LogPushTaskId")
+        self._Status = params.get("Status")
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccessLogStatusResponse(AbstractModel):
+    r"""ModifyAccessLogStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -6767,6 +7833,145 @@ class ModifyForwardingRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGlobalAcceleratorAccessLogRequest(AbstractModel):
+    r"""ModifyGlobalAcceleratorAccessLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogPushTaskId: <p>日志唯一Id</p>
+        :type LogPushTaskId: str
+        :param _GlobalAcceleratorId: <p>GA实例唯一Id</p>
+        :type GlobalAcceleratorId: str
+        :param _CloudLogId: <p>日志主题Id</p>
+        :type CloudLogId: str
+        :param _CloudLogSetId: <p>日志集Id</p>
+        :type CloudLogSetId: str
+        :param _FieldKeys: <p>用户可选日志监听字段</p><p>枚举值：</p><ul><li>session_time： 四层，会话持续时间</li><li>upstream_bytes_received： 四层、七层，从终端节点接收的字节数</li><li>upstream_bytes_sent： 四层、七层，发送给终端节点的字节数</li><li>request_method： 七层，GET/POST</li><li>scheme： 七层，http/https</li><li>request_uri： 七层，客户端原始请求的URI</li><li>uri： 七层，当前请求的URI</li><li>host： 七层，客户端访问域名（七层）</li><li>remote_user： 七层，基本认证时的用户名（未认证时为&quot;-&quot;）</li><li>http_user_agent： 七层，客户端浏览器标识</li><li>http_referer： 七层，请求来源URL（直接从地址栏访问时为&quot;-&quot;）</li><li>http_x_forwarded_for： 七层，记录客户端原始IP及经过的代理服务器IP链</li><li>content_type： 七层，content_type</li><li>body_bytes_sent： 七层，发送给客户端的http body大小，不包含header</li><li>request_time： 七层，从接收到客户端请求的第一个字节到发送完响应最后一个字节之间的总时间（单位：秒）</li><li>sent_http_content_type： 七层，响应内容类型</li><li>upstream_header_time： 七层，终端节点的响应头到达时间</li><li>upstream_response_length： 七层，终端节点返回的响应体长度</li><li>upstream_response_time： 七层，终端节点完整响应时间</li><li>upstream_status： 七层，终端节点返回的HTTP状态码</li></ul>
+        :type FieldKeys: list of str
+        :param _FlowLogDescription: <p>日志描述</p>
+        :type FlowLogDescription: str
+        """
+        self._LogPushTaskId = None
+        self._GlobalAcceleratorId = None
+        self._CloudLogId = None
+        self._CloudLogSetId = None
+        self._FieldKeys = None
+        self._FlowLogDescription = None
+
+    @property
+    def LogPushTaskId(self):
+        r"""<p>日志唯一Id</p>
+        :rtype: str
+        """
+        return self._LogPushTaskId
+
+    @LogPushTaskId.setter
+    def LogPushTaskId(self, LogPushTaskId):
+        self._LogPushTaskId = LogPushTaskId
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>GA实例唯一Id</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def CloudLogId(self):
+        r"""<p>日志主题Id</p>
+        :rtype: str
+        """
+        return self._CloudLogId
+
+    @CloudLogId.setter
+    def CloudLogId(self, CloudLogId):
+        self._CloudLogId = CloudLogId
+
+    @property
+    def CloudLogSetId(self):
+        r"""<p>日志集Id</p>
+        :rtype: str
+        """
+        return self._CloudLogSetId
+
+    @CloudLogSetId.setter
+    def CloudLogSetId(self, CloudLogSetId):
+        self._CloudLogSetId = CloudLogSetId
+
+    @property
+    def FieldKeys(self):
+        r"""<p>用户可选日志监听字段</p><p>枚举值：</p><ul><li>session_time： 四层，会话持续时间</li><li>upstream_bytes_received： 四层、七层，从终端节点接收的字节数</li><li>upstream_bytes_sent： 四层、七层，发送给终端节点的字节数</li><li>request_method： 七层，GET/POST</li><li>scheme： 七层，http/https</li><li>request_uri： 七层，客户端原始请求的URI</li><li>uri： 七层，当前请求的URI</li><li>host： 七层，客户端访问域名（七层）</li><li>remote_user： 七层，基本认证时的用户名（未认证时为&quot;-&quot;）</li><li>http_user_agent： 七层，客户端浏览器标识</li><li>http_referer： 七层，请求来源URL（直接从地址栏访问时为&quot;-&quot;）</li><li>http_x_forwarded_for： 七层，记录客户端原始IP及经过的代理服务器IP链</li><li>content_type： 七层，content_type</li><li>body_bytes_sent： 七层，发送给客户端的http body大小，不包含header</li><li>request_time： 七层，从接收到客户端请求的第一个字节到发送完响应最后一个字节之间的总时间（单位：秒）</li><li>sent_http_content_type： 七层，响应内容类型</li><li>upstream_header_time： 七层，终端节点的响应头到达时间</li><li>upstream_response_length： 七层，终端节点返回的响应体长度</li><li>upstream_response_time： 七层，终端节点完整响应时间</li><li>upstream_status： 七层，终端节点返回的HTTP状态码</li></ul>
+        :rtype: list of str
+        """
+        return self._FieldKeys
+
+    @FieldKeys.setter
+    def FieldKeys(self, FieldKeys):
+        self._FieldKeys = FieldKeys
+
+    @property
+    def FlowLogDescription(self):
+        r"""<p>日志描述</p>
+        :rtype: str
+        """
+        return self._FlowLogDescription
+
+    @FlowLogDescription.setter
+    def FlowLogDescription(self, FlowLogDescription):
+        self._FlowLogDescription = FlowLogDescription
+
+
+    def _deserialize(self, params):
+        self._LogPushTaskId = params.get("LogPushTaskId")
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._CloudLogId = params.get("CloudLogId")
+        self._CloudLogSetId = params.get("CloudLogSetId")
+        self._FieldKeys = params.get("FieldKeys")
+        self._FlowLogDescription = params.get("FlowLogDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGlobalAcceleratorAccessLogResponse(AbstractModel):
+    r"""ModifyGlobalAcceleratorAccessLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

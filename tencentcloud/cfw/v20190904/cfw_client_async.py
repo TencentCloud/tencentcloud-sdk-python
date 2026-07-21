@@ -583,6 +583,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAclRegInfo(
+            self,
+            request: models.DescribeAclRegInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAclRegInfoResponse:
+        """
+        查询ACL规则支持配置的地区
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAclRegInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAclRegInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAclRule(
             self,
             request: models.DescribeAclRuleRequest,

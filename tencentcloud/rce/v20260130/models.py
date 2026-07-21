@@ -18,6 +18,344 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AssessDeviceRiskPremiumProRequest(AbstractModel):
+    r"""AssessDeviceRiskPremiumPro请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceToken: <p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
+        :type DeviceToken: str
+        :param _UserIp: <p>客户端 IP 地址</p>
+        :type UserIp: str
+        """
+        self._DeviceToken = None
+        self._UserIp = None
+
+    @property
+    def DeviceToken(self):
+        r"""<p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
+        :rtype: str
+        """
+        return self._DeviceToken
+
+    @DeviceToken.setter
+    def DeviceToken(self, DeviceToken):
+        self._DeviceToken = DeviceToken
+
+    @property
+    def UserIp(self):
+        r"""<p>客户端 IP 地址</p>
+        :rtype: str
+        """
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+
+    def _deserialize(self, params):
+        self._DeviceToken = params.get("DeviceToken")
+        self._UserIp = params.get("UserIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssessDeviceRiskPremiumProResponse(AbstractModel):
+    r"""AssessDeviceRiskPremiumPro返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>设备风险评估高级版返回结果</p>
+        :type Data: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskPremiumRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>设备风险评估高级版返回结果</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskPremiumRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = AssessDeviceRiskPremiumRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class AssessDeviceRiskPremiumRsp(AbstractModel):
+    r"""设备风险评估高级版返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Decision: <p>决策信息</p>
+        :type Decision: :class:`tencentcloud.rce.v20260130.models.Decision`
+        :param _Score: <p>设备风险分信息</p>
+        :type Score: :class:`tencentcloud.rce.v20260130.models.DataScore`
+        :param _Device: <p>设备基础信息</p>
+        :type Device: :class:`tencentcloud.rce.v20260130.models.Device`
+        :param _Environment: <p>IP环境基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Environment: :class:`tencentcloud.rce.v20260130.models.Environment`
+        """
+        self._Decision = None
+        self._Score = None
+        self._Device = None
+        self._Environment = None
+
+    @property
+    def Decision(self):
+        r"""<p>决策信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Decision`
+        """
+        return self._Decision
+
+    @Decision.setter
+    def Decision(self, Decision):
+        self._Decision = Decision
+
+    @property
+    def Score(self):
+        r"""<p>设备风险分信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.DataScore`
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Device(self):
+        r"""<p>设备基础信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Device`
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def Environment(self):
+        r"""<p>IP环境基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Environment`
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        if params.get("Decision") is not None:
+            self._Decision = Decision()
+            self._Decision._deserialize(params.get("Decision"))
+        if params.get("Score") is not None:
+            self._Score = DataScore()
+            self._Score._deserialize(params.get("Score"))
+        if params.get("Device") is not None:
+            self._Device = Device()
+            self._Device._deserialize(params.get("Device"))
+        if params.get("Environment") is not None:
+            self._Environment = Environment()
+            self._Environment._deserialize(params.get("Environment"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssessDeviceRiskProRequest(AbstractModel):
+    r"""AssessDeviceRiskPro请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceToken: <p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
+        :type DeviceToken: str
+        :param _UserIp: <p>客户端 IP 地址</p>
+        :type UserIp: str
+        """
+        self._DeviceToken = None
+        self._UserIp = None
+
+    @property
+    def DeviceToken(self):
+        r"""<p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
+        :rtype: str
+        """
+        return self._DeviceToken
+
+    @DeviceToken.setter
+    def DeviceToken(self, DeviceToken):
+        self._DeviceToken = DeviceToken
+
+    @property
+    def UserIp(self):
+        r"""<p>客户端 IP 地址</p>
+        :rtype: str
+        """
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+
+    def _deserialize(self, params):
+        self._DeviceToken = params.get("DeviceToken")
+        self._UserIp = params.get("UserIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssessDeviceRiskProResponse(AbstractModel):
+    r"""AssessDeviceRiskPro返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>设备风险评估基础版返回结果</p>
+        :type Data: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>设备风险评估基础版返回结果</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = AssessDeviceRiskRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class AssessDeviceRiskRsp(AbstractModel):
+    r"""设备风险评估基础版返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Score: <p>设备风险分信息</p>
+        :type Score: :class:`tencentcloud.rce.v20260130.models.DataScore`
+        :param _Device: <p>设备基础信息</p>
+        :type Device: :class:`tencentcloud.rce.v20260130.models.Device`
+        """
+        self._Score = None
+        self._Device = None
+
+    @property
+    def Score(self):
+        r"""<p>设备风险分信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.DataScore`
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Device(self):
+        r"""<p>设备基础信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Device`
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+
+    def _deserialize(self, params):
+        if params.get("Score") is not None:
+            self._Score = DataScore()
+            self._Score._deserialize(params.get("Score"))
+        if params.get("Device") is not None:
+            self._Device = Device()
+            self._Device._deserialize(params.get("Device"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssessEnvironmentRiskRequest(AbstractModel):
     r"""AssessEnvironmentRisk请求参数结构体
 
@@ -106,9 +444,9 @@ class AssessEnvironmentRiskRsp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Score: <p>环境风险分信息</p>
+        :param _Score: <p>IP环境风险分信息</p>
         :type Score: :class:`tencentcloud.rce.v20260130.models.DataScore`
-        :param _Environment: <p>环境基础信息</p>
+        :param _Environment: <p>IP环境基础信息</p>
         :type Environment: :class:`tencentcloud.rce.v20260130.models.Environment`
         """
         self._Score = None
@@ -116,7 +454,7 @@ class AssessEnvironmentRiskRsp(AbstractModel):
 
     @property
     def Score(self):
-        r"""<p>环境风险分信息</p>
+        r"""<p>IP环境风险分信息</p>
         :rtype: :class:`tencentcloud.rce.v20260130.models.DataScore`
         """
         return self._Score
@@ -127,7 +465,7 @@ class AssessEnvironmentRiskRsp(AbstractModel):
 
     @property
     def Environment(self):
-        r"""<p>环境基础信息</p>
+        r"""<p>IP环境基础信息</p>
         :rtype: :class:`tencentcloud.rce.v20260130.models.Environment`
         """
         return self._Environment
@@ -200,6 +538,213 @@ class DataScore(AbstractModel):
                 obj = RiskLabel()
                 obj._deserialize(item)
                 self._RiskLabels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Decision(AbstractModel):
+    r"""决策信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DecisionResult: <p>决策结果</p><ul><li>pass：通过</li><li>review：复审</li><li>reject：拒绝</li></ul>
+        :type DecisionResult: str
+        """
+        self._DecisionResult = None
+
+    @property
+    def DecisionResult(self):
+        r"""<p>决策结果</p><ul><li>pass：通过</li><li>review：复审</li><li>reject：拒绝</li></ul>
+        :rtype: str
+        """
+        return self._DecisionResult
+
+    @DecisionResult.setter
+    def DecisionResult(self, DecisionResult):
+        self._DecisionResult = DecisionResult
+
+
+    def _deserialize(self, params):
+        self._DecisionResult = params.get("DecisionResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Device(AbstractModel):
+    r"""设备基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: <p>设备ID</p>
+        :type DeviceId: str
+        :param _AppVersion: <p>App版本信息</p>
+        :type AppVersion: str
+        :param _Brand: <p>品牌</p>
+        :type Brand: str
+        :param _ClientIp: <p>客户端IP</p>
+        :type ClientIp: str
+        :param _Model: <p>机型</p>
+        :type Model: str
+        :param _NetworkType: <p>网络类型</p>
+        :type NetworkType: str
+        :param _PackageName: <p>应用包名</p>
+        :type PackageName: str
+        :param _Platform: <p>平台</p><p>枚举值：</p><ul><li>2： Android</li><li>3： IOS</li><li>4： H5</li><li>5： 微信小程序</li></ul>
+        :type Platform: str
+        :param _SystemVersion: <p>系统版本</p>
+        :type SystemVersion: str
+        :param _SdkBuildVersion: <p>SDK版本</p>
+        :type SdkBuildVersion: str
+        """
+        self._DeviceId = None
+        self._AppVersion = None
+        self._Brand = None
+        self._ClientIp = None
+        self._Model = None
+        self._NetworkType = None
+        self._PackageName = None
+        self._Platform = None
+        self._SystemVersion = None
+        self._SdkBuildVersion = None
+
+    @property
+    def DeviceId(self):
+        r"""<p>设备ID</p>
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def AppVersion(self):
+        r"""<p>App版本信息</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Brand(self):
+        r"""<p>品牌</p>
+        :rtype: str
+        """
+        return self._Brand
+
+    @Brand.setter
+    def Brand(self, Brand):
+        self._Brand = Brand
+
+    @property
+    def ClientIp(self):
+        r"""<p>客户端IP</p>
+        :rtype: str
+        """
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def Model(self):
+        r"""<p>机型</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def NetworkType(self):
+        r"""<p>网络类型</p>
+        :rtype: str
+        """
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def PackageName(self):
+        r"""<p>应用包名</p>
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p><p>枚举值：</p><ul><li>2： Android</li><li>3： IOS</li><li>4： H5</li><li>5： 微信小程序</li></ul>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def SystemVersion(self):
+        r"""<p>系统版本</p>
+        :rtype: str
+        """
+        return self._SystemVersion
+
+    @SystemVersion.setter
+    def SystemVersion(self, SystemVersion):
+        self._SystemVersion = SystemVersion
+
+    @property
+    def SdkBuildVersion(self):
+        r"""<p>SDK版本</p>
+        :rtype: str
+        """
+        return self._SdkBuildVersion
+
+    @SdkBuildVersion.setter
+    def SdkBuildVersion(self, SdkBuildVersion):
+        self._SdkBuildVersion = SdkBuildVersion
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._AppVersion = params.get("AppVersion")
+        self._Brand = params.get("Brand")
+        self._ClientIp = params.get("ClientIp")
+        self._Model = params.get("Model")
+        self._NetworkType = params.get("NetworkType")
+        self._PackageName = params.get("PackageName")
+        self._Platform = params.get("Platform")
+        self._SystemVersion = params.get("SystemVersion")
+        self._SdkBuildVersion = params.get("SdkBuildVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

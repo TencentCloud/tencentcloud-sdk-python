@@ -19878,6 +19878,36 @@ class DescribeMCPTaskRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeMCPTaskResponse(AbstractModel):
     r"""DescribeMCPTask返回参数结构体
@@ -19886,10 +19916,24 @@ class DescribeMCPTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskInfo: <p>任务详细信息</p>
+        :type TaskInfo: :class:`tencentcloud.dlc.v20210125.models.MCPTaskInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskInfo = None
         self._RequestId = None
+
+    @property
+    def TaskInfo(self):
+        r"""<p>任务详细信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.MCPTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
 
     @property
     def RequestId(self):
@@ -19904,6 +19948,9 @@ class DescribeMCPTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = MCPTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -19911,6 +19958,36 @@ class DescribeMCPTaskResultRequest(AbstractModel):
     r"""DescribeMCPTaskResult请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeMCPTaskResultResponse(AbstractModel):
@@ -19920,10 +19997,24 @@ class DescribeMCPTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskResult: <p>任务结果信息</p>
+        :type TaskResult: :class:`tencentcloud.dlc.v20210125.models.MCPTaskResultInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskResult = None
         self._RequestId = None
+
+    @property
+    def TaskResult(self):
+        r"""<p>任务结果信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.MCPTaskResultInfo`
+        """
+        return self._TaskResult
+
+    @TaskResult.setter
+    def TaskResult(self, TaskResult):
+        self._TaskResult = TaskResult
 
     @property
     def RequestId(self):
@@ -19938,6 +20029,9 @@ class DescribeMCPTaskResultResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("TaskResult") is not None:
+            self._TaskResult = MCPTaskResultInfo()
+            self._TaskResult._deserialize(params.get("TaskResult"))
         self._RequestId = params.get("RequestId")
 
 
@@ -31734,6 +31828,578 @@ class LockMetaDataResponse(AbstractModel):
         self._LockId = params.get("LockId")
         self._LockState = params.get("LockState")
         self._RequestId = params.get("RequestId")
+
+
+class MCPTaskInfo(AbstractModel):
+    r"""mcp 请求任务详情的返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务 ID</p>
+        :type Id: str
+        :param _BatchId: <p>BatchId</p>
+        :type BatchId: str
+        :param _State: <p>状态</p>
+        :type State: int
+        :param _TaskType: <p>任务类型</p>
+        :type TaskType: str
+        :param _TaskKind: <p>任务类型</p>
+        :type TaskKind: str
+        :param _EngineTypeDetail: <p>引擎详情</p>
+        :type EngineTypeDetail: str
+        :param _SQLType: <p>SQL 类型</p>
+        :type SQLType: str
+        :param _SQL: <p>SQL</p>
+        :type SQL: str
+        :param _IsSQLCutOff: <p>是否截断</p>
+        :type IsSQLCutOff: bool
+        :param _DatabaseName: <p>数据库名称</p>
+        :type DatabaseName: str
+        :param _DataEngineId: <p>引擎 ID</p>
+        :type DataEngineId: str
+        :param _ResourceGroupName: <p>资源组名称</p>
+        :type ResourceGroupName: str
+        :param _SparkJobId: <p>JobId</p>
+        :type SparkJobId: str
+        :param _SparkJobName: <p>Job 名称</p>
+        :type SparkJobName: str
+        :param _OperateUin: <p>操作人 Uin</p>
+        :type OperateUin: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _UsedTime: <p>引擎耗时</p><p>单位：毫秒</p>
+        :type UsedTime: int
+        :param _TotalTime: <p>执行总耗时</p><p>单位：毫秒</p>
+        :type TotalTime: int
+        :param _Progress: <p>进度</p>
+        :type Progress: int
+        :param _OutputMessage: <p>输出信息</p>
+        :type OutputMessage: str
+        :param _DataSet: <p>结果集</p>
+        :type DataSet: str
+        """
+        self._Id = None
+        self._BatchId = None
+        self._State = None
+        self._TaskType = None
+        self._TaskKind = None
+        self._EngineTypeDetail = None
+        self._SQLType = None
+        self._SQL = None
+        self._IsSQLCutOff = None
+        self._DatabaseName = None
+        self._DataEngineId = None
+        self._ResourceGroupName = None
+        self._SparkJobId = None
+        self._SparkJobName = None
+        self._OperateUin = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._UpdateTime = None
+        self._UsedTime = None
+        self._TotalTime = None
+        self._Progress = None
+        self._OutputMessage = None
+        self._DataSet = None
+
+    @property
+    def Id(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def BatchId(self):
+        r"""<p>BatchId</p>
+        :rtype: str
+        """
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def State(self):
+        r"""<p>状态</p>
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskKind(self):
+        r"""<p>任务类型</p>
+        :rtype: str
+        """
+        return self._TaskKind
+
+    @TaskKind.setter
+    def TaskKind(self, TaskKind):
+        self._TaskKind = TaskKind
+
+    @property
+    def EngineTypeDetail(self):
+        r"""<p>引擎详情</p>
+        :rtype: str
+        """
+        return self._EngineTypeDetail
+
+    @EngineTypeDetail.setter
+    def EngineTypeDetail(self, EngineTypeDetail):
+        self._EngineTypeDetail = EngineTypeDetail
+
+    @property
+    def SQLType(self):
+        r"""<p>SQL 类型</p>
+        :rtype: str
+        """
+        return self._SQLType
+
+    @SQLType.setter
+    def SQLType(self, SQLType):
+        self._SQLType = SQLType
+
+    @property
+    def SQL(self):
+        r"""<p>SQL</p>
+        :rtype: str
+        """
+        return self._SQL
+
+    @SQL.setter
+    def SQL(self, SQL):
+        self._SQL = SQL
+
+    @property
+    def IsSQLCutOff(self):
+        r"""<p>是否截断</p>
+        :rtype: bool
+        """
+        return self._IsSQLCutOff
+
+    @IsSQLCutOff.setter
+    def IsSQLCutOff(self, IsSQLCutOff):
+        self._IsSQLCutOff = IsSQLCutOff
+
+    @property
+    def DatabaseName(self):
+        r"""<p>数据库名称</p>
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DataEngineId(self):
+        r"""<p>引擎 ID</p>
+        :rtype: str
+        """
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def ResourceGroupName(self):
+        r"""<p>资源组名称</p>
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def SparkJobId(self):
+        r"""<p>JobId</p>
+        :rtype: str
+        """
+        return self._SparkJobId
+
+    @SparkJobId.setter
+    def SparkJobId(self, SparkJobId):
+        self._SparkJobId = SparkJobId
+
+    @property
+    def SparkJobName(self):
+        r"""<p>Job 名称</p>
+        :rtype: str
+        """
+        return self._SparkJobName
+
+    @SparkJobName.setter
+    def SparkJobName(self, SparkJobName):
+        self._SparkJobName = SparkJobName
+
+    @property
+    def OperateUin(self):
+        r"""<p>操作人 Uin</p>
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def UsedTime(self):
+        r"""<p>引擎耗时</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._UsedTime
+
+    @UsedTime.setter
+    def UsedTime(self, UsedTime):
+        self._UsedTime = UsedTime
+
+    @property
+    def TotalTime(self):
+        r"""<p>执行总耗时</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._TotalTime
+
+    @TotalTime.setter
+    def TotalTime(self, TotalTime):
+        self._TotalTime = TotalTime
+
+    @property
+    def Progress(self):
+        r"""<p>进度</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def OutputMessage(self):
+        r"""<p>输出信息</p>
+        :rtype: str
+        """
+        return self._OutputMessage
+
+    @OutputMessage.setter
+    def OutputMessage(self, OutputMessage):
+        self._OutputMessage = OutputMessage
+
+    @property
+    def DataSet(self):
+        r"""<p>结果集</p>
+        :rtype: str
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._BatchId = params.get("BatchId")
+        self._State = params.get("State")
+        self._TaskType = params.get("TaskType")
+        self._TaskKind = params.get("TaskKind")
+        self._EngineTypeDetail = params.get("EngineTypeDetail")
+        self._SQLType = params.get("SQLType")
+        self._SQL = params.get("SQL")
+        self._IsSQLCutOff = params.get("IsSQLCutOff")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DataEngineId = params.get("DataEngineId")
+        self._ResourceGroupName = params.get("ResourceGroupName")
+        self._SparkJobId = params.get("SparkJobId")
+        self._SparkJobName = params.get("SparkJobName")
+        self._OperateUin = params.get("OperateUin")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._UsedTime = params.get("UsedTime")
+        self._TotalTime = params.get("TotalTime")
+        self._Progress = params.get("Progress")
+        self._OutputMessage = params.get("OutputMessage")
+        self._DataSet = params.get("DataSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MCPTaskResultInfo(AbstractModel):
+    r"""MCP 任务结果返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _State: <p>状态</p>
+        :type State: int
+        :param _ResultSchema: <p>结果集 Schema</p>
+        :type ResultSchema: list of Column
+        :param _ResultSet: <p>结果集</p>
+        :type ResultSet: str
+        :param _NextToken: <p>是否还有其他结果</p>
+        :type NextToken: str
+        :param _RowAffectInfo: <p>影响行数</p>
+        :type RowAffectInfo: str
+        :param _OutputMessage: <p>输出信息</p>
+        :type OutputMessage: str
+        :param _DisplayFormat: <p>展示 format</p>
+        :type DisplayFormat: str
+        :param _CanDownload: <p>能否下载</p>
+        :type CanDownload: bool
+        :param _QueryResultTime: <p>结果花费时间</p><p>单位：毫秒</p>
+        :type QueryResultTime: float
+        :param _IsResultOversize: <p>是否超大</p>
+        :type IsResultOversize: bool
+        """
+        self._TaskId = None
+        self._State = None
+        self._ResultSchema = None
+        self._ResultSet = None
+        self._NextToken = None
+        self._RowAffectInfo = None
+        self._OutputMessage = None
+        self._DisplayFormat = None
+        self._CanDownload = None
+        self._QueryResultTime = None
+        self._IsResultOversize = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def State(self):
+        r"""<p>状态</p>
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def ResultSchema(self):
+        r"""<p>结果集 Schema</p>
+        :rtype: list of Column
+        """
+        return self._ResultSchema
+
+    @ResultSchema.setter
+    def ResultSchema(self, ResultSchema):
+        self._ResultSchema = ResultSchema
+
+    @property
+    def ResultSet(self):
+        r"""<p>结果集</p>
+        :rtype: str
+        """
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+    @property
+    def NextToken(self):
+        r"""<p>是否还有其他结果</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RowAffectInfo(self):
+        r"""<p>影响行数</p>
+        :rtype: str
+        """
+        return self._RowAffectInfo
+
+    @RowAffectInfo.setter
+    def RowAffectInfo(self, RowAffectInfo):
+        self._RowAffectInfo = RowAffectInfo
+
+    @property
+    def OutputMessage(self):
+        r"""<p>输出信息</p>
+        :rtype: str
+        """
+        return self._OutputMessage
+
+    @OutputMessage.setter
+    def OutputMessage(self, OutputMessage):
+        self._OutputMessage = OutputMessage
+
+    @property
+    def DisplayFormat(self):
+        r"""<p>展示 format</p>
+        :rtype: str
+        """
+        return self._DisplayFormat
+
+    @DisplayFormat.setter
+    def DisplayFormat(self, DisplayFormat):
+        self._DisplayFormat = DisplayFormat
+
+    @property
+    def CanDownload(self):
+        r"""<p>能否下载</p>
+        :rtype: bool
+        """
+        return self._CanDownload
+
+    @CanDownload.setter
+    def CanDownload(self, CanDownload):
+        self._CanDownload = CanDownload
+
+    @property
+    def QueryResultTime(self):
+        r"""<p>结果花费时间</p><p>单位：毫秒</p>
+        :rtype: float
+        """
+        return self._QueryResultTime
+
+    @QueryResultTime.setter
+    def QueryResultTime(self, QueryResultTime):
+        self._QueryResultTime = QueryResultTime
+
+    @property
+    def IsResultOversize(self):
+        r"""<p>是否超大</p>
+        :rtype: bool
+        """
+        return self._IsResultOversize
+
+    @IsResultOversize.setter
+    def IsResultOversize(self, IsResultOversize):
+        self._IsResultOversize = IsResultOversize
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._State = params.get("State")
+        if params.get("ResultSchema") is not None:
+            self._ResultSchema = []
+            for item in params.get("ResultSchema"):
+                obj = Column()
+                obj._deserialize(item)
+                self._ResultSchema.append(obj)
+        self._ResultSet = params.get("ResultSet")
+        self._NextToken = params.get("NextToken")
+        self._RowAffectInfo = params.get("RowAffectInfo")
+        self._OutputMessage = params.get("OutputMessage")
+        self._DisplayFormat = params.get("DisplayFormat")
+        self._CanDownload = params.get("CanDownload")
+        self._QueryResultTime = params.get("QueryResultTime")
+        self._IsResultOversize = params.get("IsResultOversize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MixedTablePartitions(AbstractModel):

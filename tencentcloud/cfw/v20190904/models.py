@@ -499,6 +499,192 @@ class AccessInstanceInfo(AbstractModel):
         
 
 
+class AclRegInfo(AbstractModel):
+    r"""ACL 地理位置支持地域数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionCode: 地域KEY
+        :type RegionCode: str
+        :param _RegionName: 地域名称
+        :type RegionName: str
+        :param _Parent: 上级地域信息
+        :type Parent: str
+        :param _ZhKey: 中文拼音首字母
+        :type ZhKey: str
+        :param _EnKey: 英文首字母
+        :type EnKey: str
+        :param _Area: 是否为地区
+        :type Area: int
+        :param _IsCity: 是否为省份、城市
+        :type IsCity: int
+        :param _Num: 序号
+        :type Num: int
+        :param _ForBypass: 是否支持旁路
+        :type ForBypass: int
+        :param _ForSerial: 是否支持串行
+        :type ForSerial: int
+        :param _ForNat: 是否支持NAT
+        :type ForNat: int
+        """
+        self._RegionCode = None
+        self._RegionName = None
+        self._Parent = None
+        self._ZhKey = None
+        self._EnKey = None
+        self._Area = None
+        self._IsCity = None
+        self._Num = None
+        self._ForBypass = None
+        self._ForSerial = None
+        self._ForNat = None
+
+    @property
+    def RegionCode(self):
+        r"""地域KEY
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def RegionName(self):
+        r"""地域名称
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def Parent(self):
+        r"""上级地域信息
+        :rtype: str
+        """
+        return self._Parent
+
+    @Parent.setter
+    def Parent(self, Parent):
+        self._Parent = Parent
+
+    @property
+    def ZhKey(self):
+        r"""中文拼音首字母
+        :rtype: str
+        """
+        return self._ZhKey
+
+    @ZhKey.setter
+    def ZhKey(self, ZhKey):
+        self._ZhKey = ZhKey
+
+    @property
+    def EnKey(self):
+        r"""英文首字母
+        :rtype: str
+        """
+        return self._EnKey
+
+    @EnKey.setter
+    def EnKey(self, EnKey):
+        self._EnKey = EnKey
+
+    @property
+    def Area(self):
+        r"""是否为地区
+        :rtype: int
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def IsCity(self):
+        r"""是否为省份、城市
+        :rtype: int
+        """
+        return self._IsCity
+
+    @IsCity.setter
+    def IsCity(self, IsCity):
+        self._IsCity = IsCity
+
+    @property
+    def Num(self):
+        r"""序号
+        :rtype: int
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def ForBypass(self):
+        r"""是否支持旁路
+        :rtype: int
+        """
+        return self._ForBypass
+
+    @ForBypass.setter
+    def ForBypass(self, ForBypass):
+        self._ForBypass = ForBypass
+
+    @property
+    def ForSerial(self):
+        r"""是否支持串行
+        :rtype: int
+        """
+        return self._ForSerial
+
+    @ForSerial.setter
+    def ForSerial(self, ForSerial):
+        self._ForSerial = ForSerial
+
+    @property
+    def ForNat(self):
+        r"""是否支持NAT
+        :rtype: int
+        """
+        return self._ForNat
+
+    @ForNat.setter
+    def ForNat(self, ForNat):
+        self._ForNat = ForNat
+
+
+    def _deserialize(self, params):
+        self._RegionCode = params.get("RegionCode")
+        self._RegionName = params.get("RegionName")
+        self._Parent = params.get("Parent")
+        self._ZhKey = params.get("ZhKey")
+        self._EnKey = params.get("EnKey")
+        self._Area = params.get("Area")
+        self._IsCity = params.get("IsCity")
+        self._Num = params.get("Num")
+        self._ForBypass = params.get("ForBypass")
+        self._ForSerial = params.get("ForSerial")
+        self._ForNat = params.get("ForNat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddAclRuleRequest(AbstractModel):
     r"""AddAclRule请求参数结构体
 
@@ -5242,23 +5428,23 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 防火墙实例名称
+        :param _Name: <p>防火墙实例名称</p>
         :type Name: str
-        :param _Width: 带宽
+        :param _Width: <p>带宽</p>
         :type Width: int
-        :param _Mode: 模式 1：接入模式；0：新增模式
+        :param _Mode: <p>模式 1：接入模式；0：新增模式</p>
         :type Mode: int
-        :param _NewModeItems: 新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+        :param _NewModeItems: <p>新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。</p>
         :type NewModeItems: :class:`tencentcloud.cfw.v20190904.models.NewModeItems`
-        :param _NatGwList: 接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+        :param _NatGwList: <p>接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。</p>
         :type NatGwList: list of str
-        :param _Zone: 主可用区，为空则选择默认可用区
+        :param _Zone: <p>主可用区，为空则选择默认可用区</p>
         :type Zone: str
-        :param _ZoneBak: 备可用区，为空则选择默认可用区
+        :param _ZoneBak: <p>备可用区，为空则选择默认可用区</p>
         :type ZoneBak: str
-        :param _CrossAZone: 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
+        :param _CrossAZone: <p>异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备</p>
         :type CrossAZone: int
-        :param _FwCidrInfo: 指定防火墙使用网段信息
+        :param _FwCidrInfo: <p>指定防火墙使用网段信息</p>
         :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self._Name = None
@@ -5273,7 +5459,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""防火墙实例名称
+        r"""<p>防火墙实例名称</p>
         :rtype: str
         """
         return self._Name
@@ -5284,7 +5470,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def Width(self):
-        r"""带宽
+        r"""<p>带宽</p>
         :rtype: int
         """
         return self._Width
@@ -5295,7 +5481,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""模式 1：接入模式；0：新增模式
+        r"""<p>模式 1：接入模式；0：新增模式</p>
         :rtype: int
         """
         return self._Mode
@@ -5306,7 +5492,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def NewModeItems(self):
-        r"""新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+        r"""<p>新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.NewModeItems`
         """
         return self._NewModeItems
@@ -5317,7 +5503,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def NatGwList(self):
-        r"""接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+        r"""<p>接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。</p>
         :rtype: list of str
         """
         return self._NatGwList
@@ -5328,7 +5514,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""主可用区，为空则选择默认可用区
+        r"""<p>主可用区，为空则选择默认可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -5339,7 +5525,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def ZoneBak(self):
-        r"""备可用区，为空则选择默认可用区
+        r"""<p>备可用区，为空则选择默认可用区</p>
         :rtype: str
         """
         return self._ZoneBak
@@ -5350,7 +5536,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def CrossAZone(self):
-        r"""异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
+        r"""<p>异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备</p>
         :rtype: int
         """
         return self._CrossAZone
@@ -5361,7 +5547,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
 
     @property
     def FwCidrInfo(self):
-        r"""指定防火墙使用网段信息
+        r"""<p>指定防火墙使用网段信息</p>
         :rtype: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         return self._FwCidrInfo
@@ -5402,7 +5588,7 @@ class CreateNatFwInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CfwInsId: 防火墙实例id
+        :param _CfwInsId: <p>防火墙实例id</p>
         :type CfwInsId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5412,7 +5598,7 @@ class CreateNatFwInstanceResponse(AbstractModel):
 
     @property
     def CfwInsId(self):
-        r"""防火墙实例id
+        r"""<p>防火墙实例id</p>
         :rtype: str
         """
         return self._CfwInsId
@@ -8822,6 +9008,90 @@ class DescribeAcListsResponse(AbstractModel):
                 self._Data.append(obj)
         self._AllTotal = params.get("AllTotal")
         self._Enable = params.get("Enable")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAclRegInfoRequest(AbstractModel):
+    r"""DescribeAclRegInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FwType: 防火墙类型 SERIAL：串行、NAT：NAT防火墙，BYPASS：旁路防火墙
+        :type FwType: list of str
+        """
+        self._FwType = None
+
+    @property
+    def FwType(self):
+        r"""防火墙类型 SERIAL：串行、NAT：NAT防火墙，BYPASS：旁路防火墙
+        :rtype: list of str
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+
+    def _deserialize(self, params):
+        self._FwType = params.get("FwType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAclRegInfoResponse(AbstractModel):
+    r"""DescribeAclRegInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 规则支持的地域列表
+        :type Data: list of AclRegInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""规则支持的地域列表
+        :rtype: list of AclRegInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AclRegInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -26772,14 +27042,14 @@ class ModifyRunSyncAssetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 0: 互联网防火墙开关，1：vpc 防火墙开关
+        :param _Type: <p>0: 互联网防火墙开关，1：vpc 防火墙开关</p>
         :type Type: int
         """
         self._Type = None
 
     @property
     def Type(self):
-        r"""0: 互联网防火墙开关，1：vpc 防火墙开关
+        r"""<p>0: 互联网防火墙开关，1：vpc 防火墙开关</p>
         :rtype: int
         """
         return self._Type
@@ -26808,7 +27078,7 @@ class ModifyRunSyncAssetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 0：同步成功，1：资产更新中，2：后台同步调用失败
+        :param _Status: <p>0：同步成功，1：资产更新中，2：后台同步调用失败</p>
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26818,7 +27088,7 @@ class ModifyRunSyncAssetResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""0：同步成功，1：资产更新中，2：后台同步调用失败
+        r"""<p>0：同步成功，1：资产更新中，2：后台同步调用失败</p>
         :rtype: int
         """
         return self._Status

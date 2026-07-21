@@ -6871,6 +6871,57 @@ class ConversationReference(AbstractModel):
         
 
 
+class ConversationResetInfo(AbstractModel):
+    r"""会话重置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResetTime: <p>最近一次重置的毫秒级时间戳</p>
+        :type ResetTime: str
+        :param _ResetThroughRecordId: <p>最近一次重置边界；该记录及更早的记录不再作为对话上下文</p>
+        :type ResetThroughRecordId: str
+        """
+        self._ResetTime = None
+        self._ResetThroughRecordId = None
+
+    @property
+    def ResetTime(self):
+        r"""<p>最近一次重置的毫秒级时间戳</p>
+        :rtype: str
+        """
+        return self._ResetTime
+
+    @ResetTime.setter
+    def ResetTime(self, ResetTime):
+        self._ResetTime = ResetTime
+
+    @property
+    def ResetThroughRecordId(self):
+        r"""<p>最近一次重置边界；该记录及更早的记录不再作为对话上下文</p>
+        :rtype: str
+        """
+        return self._ResetThroughRecordId
+
+    @ResetThroughRecordId.setter
+    def ResetThroughRecordId(self, ResetThroughRecordId):
+        self._ResetThroughRecordId = ResetThroughRecordId
+
+
+    def _deserialize(self, params):
+        self._ResetTime = params.get("ResetTime")
+        self._ResetThroughRecordId = params.get("ResetThroughRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConversationWorkspace(AbstractModel):
     r"""Workspace 工作空间信息
 
@@ -11190,6 +11241,9 @@ class DescribeConversationMessageListResponse(AbstractModel):
         :type MessageList: list of ConversationMessage
         :param _Messages: <p>消息列表</p>
         :type Messages: list of ConversationMessage
+        :param _ResetInfo: <p>最近一次重置信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResetInfo: :class:`tencentcloud.adp.v20260520.models.ConversationResetInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11199,6 +11253,7 @@ class DescribeConversationMessageListResponse(AbstractModel):
         self._LastRecordId = None
         self._MessageList = None
         self._Messages = None
+        self._ResetInfo = None
         self._RequestId = None
 
     @property
@@ -11258,6 +11313,8 @@ class DescribeConversationMessageListResponse(AbstractModel):
 
     @property
     def Messages(self):
+        warnings.warn("parameter `Messages` is deprecated", DeprecationWarning) 
+
         r"""<p>消息列表</p>
         :rtype: list of ConversationMessage
         """
@@ -11265,7 +11322,21 @@ class DescribeConversationMessageListResponse(AbstractModel):
 
     @Messages.setter
     def Messages(self, Messages):
+        warnings.warn("parameter `Messages` is deprecated", DeprecationWarning) 
+
         self._Messages = Messages
+
+    @property
+    def ResetInfo(self):
+        r"""<p>最近一次重置信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConversationResetInfo`
+        """
+        return self._ResetInfo
+
+    @ResetInfo.setter
+    def ResetInfo(self, ResetInfo):
+        self._ResetInfo = ResetInfo
 
     @property
     def RequestId(self):
@@ -11296,6 +11367,9 @@ class DescribeConversationMessageListResponse(AbstractModel):
                 obj = ConversationMessage()
                 obj._deserialize(item)
                 self._Messages.append(obj)
+        if params.get("ResetInfo") is not None:
+            self._ResetInfo = ConversationResetInfo()
+            self._ResetInfo._deserialize(params.get("ResetInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -11865,10 +11939,13 @@ class DescribePluginRequest(AbstractModel):
         :type SpaceId: str
         :param _FieldMask: <p>获取指定字段</p>
         :type FieldMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        :param _Module: <p>插件展示场景。不传或取 0 时不限定场景。</p><p>枚举值：</p><ul><li>0：不限定场景</li><li>1：Agent 模式</li><li>2：工作流</li><li>3：智能工作台</li></ul>
+        :type Module: int
         """
         self._PluginId = None
         self._SpaceId = None
         self._FieldMask = None
+        self._Module = None
 
     @property
     def PluginId(self):
@@ -11903,6 +11980,17 @@ class DescribePluginRequest(AbstractModel):
     def FieldMask(self, FieldMask):
         self._FieldMask = FieldMask
 
+    @property
+    def Module(self):
+        r"""<p>插件展示场景。不传或取 0 时不限定场景。</p><p>枚举值：</p><ul><li>0：不限定场景</li><li>1：Agent 模式</li><li>2：工作流</li><li>3：智能工作台</li></ul>
+        :rtype: int
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
@@ -11910,6 +11998,7 @@ class DescribePluginRequest(AbstractModel):
         if params.get("FieldMask") is not None:
             self._FieldMask = FieldMask()
             self._FieldMask._deserialize(params.get("FieldMask"))
+        self._Module = params.get("Module")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13908,7 +13997,7 @@ class FileParseModel(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r"""列表通用过滤条件（多个Filter之间为AND关系，同一Filter的多个value_list为OR关系）
+    r"""列表通用过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 value_list 为 OR 关系）
 
     """
 
@@ -13916,7 +14005,7 @@ class Filter(AbstractModel):
         r"""
         :param _Name: 过滤字段名
         :type Name: str
-        :param _Operator: 操作符：0-属于，1-不属于
+        :param _Operator: 操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
         :type Operator: int
         :param _ValueList: 过滤值数组
         :type ValueList: list of str
@@ -13938,7 +14027,7 @@ class Filter(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作符：0-属于，1-不属于
+        r"""操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
         :rtype: int
         """
         return self._Operator
@@ -17299,6 +17388,8 @@ class PluginSummary(AbstractModel):
         :type UserState: :class:`tencentcloud.adp.v20260520.models.PluginUserState`
         :param _Config: <p>插件配置信息</p>
         :type Config: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        :param _ToolList: <p>工具信息</p>
+        :type ToolList: list of ToolSummary
         """
         self._Operation = None
         self._PluginId = None
@@ -17307,6 +17398,7 @@ class PluginSummary(AbstractModel):
         self._Status = None
         self._UserState = None
         self._Config = None
+        self._ToolList = None
 
     @property
     def Operation(self):
@@ -17385,6 +17477,17 @@ class PluginSummary(AbstractModel):
     def Config(self, Config):
         self._Config = Config
 
+    @property
+    def ToolList(self):
+        r"""<p>工具信息</p>
+        :rtype: list of ToolSummary
+        """
+        return self._ToolList
+
+    @ToolList.setter
+    def ToolList(self, ToolList):
+        self._ToolList = ToolList
+
 
     def _deserialize(self, params):
         if params.get("Operation") is not None:
@@ -17404,6 +17507,12 @@ class PluginSummary(AbstractModel):
         if params.get("Config") is not None:
             self._Config = PluginConfig()
             self._Config._deserialize(params.get("Config"))
+        if params.get("ToolList") is not None:
+            self._ToolList = []
+            for item in params.get("ToolList"):
+                obj = ToolSummary()
+                obj._deserialize(item)
+                self._ToolList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20717,6 +20826,42 @@ class ToolExample(AbstractModel):
     def _deserialize(self, params):
         self._Request = params.get("Request")
         self._Response = params.get("Response")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ToolSummary(AbstractModel):
+    r"""工具信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ToolId: <p>工具Id</p>
+        :type ToolId: str
+        """
+        self._ToolId = None
+
+    @property
+    def ToolId(self):
+        r"""<p>工具Id</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+
+    def _deserialize(self, params):
+        self._ToolId = params.get("ToolId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
