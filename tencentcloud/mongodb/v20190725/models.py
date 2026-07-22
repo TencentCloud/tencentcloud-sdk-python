@@ -8593,14 +8593,14 @@ class DescribeInstanceSSLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceId: <p>实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        r"""<p>实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8629,13 +8629,13 @@ class DescribeInstanceSSLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: SSL开启状态。0为关闭，1为开启
+        :param _Status: <p>SSL开启状态。0为关闭，1为开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _ExpiredTime: 证书过期时间，格式为2023-05-01 12:00:00
+        :param _ExpiredTime: <p>证书过期时间，格式为2023-05-01 12:00:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredTime: str
-        :param _CertUrl: 证书下载链接
+        :param _CertUrl: <p>证书下载链接</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8648,7 +8648,7 @@ class DescribeInstanceSSLResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""SSL开启状态。0为关闭，1为开启
+        r"""<p>SSL开启状态。0为关闭，1为开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8660,7 +8660,7 @@ class DescribeInstanceSSLResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""证书过期时间，格式为2023-05-01 12:00:00
+        r"""<p>证书过期时间，格式为2023-05-01 12:00:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8672,7 +8672,7 @@ class DescribeInstanceSSLResponse(AbstractModel):
 
     @property
     def CertUrl(self):
-        r"""证书下载链接
+        r"""<p>证书下载链接</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12350,11 +12350,9 @@ class InstanceEnableSSLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Enable: 配置是否要开启SSL访问。
-- true：开启。
-- false：关闭。
+        :param _Enable: <p>配置是否要开启SSL访问。</p><ul><li>true：开启。</li><li>false：关闭。</li></ul>
         :type Enable: bool
         """
         self._InstanceId = None
@@ -12362,7 +12360,7 @@ class InstanceEnableSSLRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12373,9 +12371,7 @@ class InstanceEnableSSLRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""配置是否要开启SSL访问。
-- true：开启。
-- false：关闭。
+        r"""<p>配置是否要开启SSL访问。</p><ul><li>true：开启。</li><li>false：关闭。</li></ul>
         :rtype: bool
         """
         return self._Enable
@@ -12405,18 +12401,16 @@ class InstanceEnableSSLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: SSL开启状态。
-- 0：关闭。
-- 1：开启。
+        :param _Status: <p>SSL开启状态。</p><ul><li>0：关闭。</li><li>1：开启。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _ExpiredTime: 证书文件过期时间，格式为：2023-05-01 12:00:00。
+        :param _ExpiredTime: <p>证书文件过期时间，格式为：2023-05-01 12:00:00。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredTime: str
-        :param _CertUrl: 证书文件的下载链接。
+        :param _CertUrl: <p>证书文件的下载链接。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertUrl: str
-        :param _FlowId: 流程id
+        :param _FlowId: <p>流程id</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12429,9 +12423,7 @@ class InstanceEnableSSLResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""SSL开启状态。
-- 0：关闭。
-- 1：开启。
+        r"""<p>SSL开启状态。</p><ul><li>0：关闭。</li><li>1：开启。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -12443,7 +12435,7 @@ class InstanceEnableSSLResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""证书文件过期时间，格式为：2023-05-01 12:00:00。
+        r"""<p>证书文件过期时间，格式为：2023-05-01 12:00:00。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12455,7 +12447,7 @@ class InstanceEnableSSLResponse(AbstractModel):
 
     @property
     def CertUrl(self):
-        r"""证书文件的下载链接。
+        r"""<p>证书文件的下载链接。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12467,7 +12459,7 @@ class InstanceEnableSSLResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""流程id
+        r"""<p>流程id</p>
         :rtype: int
         """
         return self._FlowId

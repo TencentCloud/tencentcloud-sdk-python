@@ -962,6 +962,72 @@ class AlterDMSTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AlterTableCommentRequest(AbstractModel):
+    r"""AlterTableComment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableBaseInfo: 修改表的基本信息
+        :type TableBaseInfo: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        """
+        self._TableBaseInfo = None
+
+    @property
+    def TableBaseInfo(self):
+        r"""修改表的基本信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        """
+        return self._TableBaseInfo
+
+    @TableBaseInfo.setter
+    def TableBaseInfo(self, TableBaseInfo):
+        self._TableBaseInfo = TableBaseInfo
+
+
+    def _deserialize(self, params):
+        if params.get("TableBaseInfo") is not None:
+            self._TableBaseInfo = TableBaseInfo()
+            self._TableBaseInfo._deserialize(params.get("TableBaseInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlterTableCommentResponse(AbstractModel):
+    r"""AlterTableComment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AnalysisTaskResults(AbstractModel):
     r"""洞察分析结果返回体
 
@@ -5954,6 +6020,151 @@ class CreateInternalTableResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Execution = params.get("Execution")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMetaDatabaseRequest(AbstractModel):
+    r"""CreateMetaDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceConnectionName: 数据源名称，默认DataLakeCatalog
+        :type DatasourceConnectionName: str
+        :param _MetaDatabaseInfo: 元数据库基本信息
+        :type MetaDatabaseInfo: :class:`tencentcloud.dlc.v20210125.models.MetaDatabaseInfo`
+        :param _GovernPolicy: 数据治理配置项
+        :type GovernPolicy: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
+        :param _SmartPolicy: 智能数据治理配置
+        :type SmartPolicy: :class:`tencentcloud.dlc.v20210125.models.SmartPolicy`
+        """
+        self._DatasourceConnectionName = None
+        self._MetaDatabaseInfo = None
+        self._GovernPolicy = None
+        self._SmartPolicy = None
+
+    @property
+    def DatasourceConnectionName(self):
+        r"""数据源名称，默认DataLakeCatalog
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
+    @property
+    def MetaDatabaseInfo(self):
+        r"""元数据库基本信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.MetaDatabaseInfo`
+        """
+        return self._MetaDatabaseInfo
+
+    @MetaDatabaseInfo.setter
+    def MetaDatabaseInfo(self, MetaDatabaseInfo):
+        self._MetaDatabaseInfo = MetaDatabaseInfo
+
+    @property
+    def GovernPolicy(self):
+        r"""数据治理配置项
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
+        """
+        return self._GovernPolicy
+
+    @GovernPolicy.setter
+    def GovernPolicy(self, GovernPolicy):
+        self._GovernPolicy = GovernPolicy
+
+    @property
+    def SmartPolicy(self):
+        r"""智能数据治理配置
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SmartPolicy`
+        """
+        return self._SmartPolicy
+
+    @SmartPolicy.setter
+    def SmartPolicy(self, SmartPolicy):
+        self._SmartPolicy = SmartPolicy
+
+
+    def _deserialize(self, params):
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
+        if params.get("MetaDatabaseInfo") is not None:
+            self._MetaDatabaseInfo = MetaDatabaseInfo()
+            self._MetaDatabaseInfo._deserialize(params.get("MetaDatabaseInfo"))
+        if params.get("GovernPolicy") is not None:
+            self._GovernPolicy = DataGovernPolicy()
+            self._GovernPolicy._deserialize(params.get("GovernPolicy"))
+        if params.get("SmartPolicy") is not None:
+            self._SmartPolicy = SmartPolicy()
+            self._SmartPolicy._deserialize(params.get("SmartPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMetaDatabaseResponse(AbstractModel):
+    r"""CreateMetaDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BatchId: 本批次提交的任务的批次Id
+        :type BatchId: str
+        :param _TaskIdSet: 任务Id集合，按照执行顺序排列
+        :type TaskIdSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BatchId = None
+        self._TaskIdSet = None
+        self._RequestId = None
+
+    @property
+    def BatchId(self):
+        r"""本批次提交的任务的批次Id
+        :rtype: str
+        """
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def TaskIdSet(self):
+        r"""任务Id集合，按照执行顺序排列
+        :rtype: list of str
+        """
+        return self._TaskIdSet
+
+    @TaskIdSet.setter
+    def TaskIdSet(self, TaskIdSet):
+        self._TaskIdSet = TaskIdSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BatchId = params.get("BatchId")
+        self._TaskIdSet = params.get("TaskIdSet")
         self._RequestId = params.get("RequestId")
 
 
@@ -15176,6 +15387,115 @@ class DeleteDataMaskStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteMetaDatabaseRequest(AbstractModel):
+    r"""DeleteMetaDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param _DatasourceConnectionName: 数据源名称，默认DataLakeCatalog
+        :type DatasourceConnectionName: str
+        """
+        self._DatabaseName = None
+        self._DatasourceConnectionName = None
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatasourceConnectionName(self):
+        r"""数据源名称，默认DataLakeCatalog
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMetaDatabaseResponse(AbstractModel):
+    r"""DeleteMetaDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BatchId: 本批次提交的任务的批次Id
+        :type BatchId: str
+        :param _TaskIdSet: 任务Id集合，按照执行顺序排列
+        :type TaskIdSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BatchId = None
+        self._TaskIdSet = None
+        self._RequestId = None
+
+    @property
+    def BatchId(self):
+        r"""本批次提交的任务的批次Id
+        :rtype: str
+        """
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def TaskIdSet(self):
+        r"""任务Id集合，按照执行顺序排列
+        :rtype: list of str
+        """
+        return self._TaskIdSet
+
+    @TaskIdSet.setter
+    def TaskIdSet(self, TaskIdSet):
+        self._TaskIdSet = TaskIdSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BatchId = params.get("BatchId")
+        self._TaskIdSet = params.get("TaskIdSet")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteNativeSparkSessionRequest(AbstractModel):
     r"""DeleteNativeSparkSession请求参数结构体
 
@@ -18822,6 +19142,102 @@ class DescribeDataMaskStrategiesResponse(AbstractModel):
                 obj = DataMaskStrategy()
                 obj._deserialize(item)
                 self._Strategies.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDatabaseRequest(AbstractModel):
+    r"""DescribeDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param _DatasourceConnectionName: 数据连接名称，不填默认为DataLakeCatalog
+        :type DatasourceConnectionName: str
+        """
+        self._DatabaseName = None
+        self._DatasourceConnectionName = None
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatasourceConnectionName(self):
+        r"""数据连接名称，不填默认为DataLakeCatalog
+        :rtype: str
+        """
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseResponse(AbstractModel):
+    r"""DescribeDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseInfo: 数据库信息
+        :type DatabaseInfo: :class:`tencentcloud.dlc.v20210125.models.DatabaseResponseInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DatabaseInfo = None
+        self._RequestId = None
+
+    @property
+    def DatabaseInfo(self):
+        r"""数据库信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DatabaseResponseInfo`
+        """
+        return self._DatabaseInfo
+
+    @DatabaseInfo.setter
+    def DatabaseInfo(self, DatabaseInfo):
+        self._DatabaseInfo = DatabaseInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DatabaseInfo") is not None:
+            self._DatabaseInfo = DatabaseResponseInfo()
+            self._DatabaseInfo._deserialize(params.get("DatabaseInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -29562,6 +29978,179 @@ class GenerateCreateMangedTableSqlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GenerateInternalTableRequest(AbstractModel):
+    r"""GenerateInternalTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableBaseInfo: 表基本信息
+        :type TableBaseInfo: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        :param _Columns: 字段信息
+        :type Columns: list of TColumn
+        :param _Partitions: 分区信息
+        :type Partitions: list of TPartition
+        :param _Properties: 属性
+        :type Properties: list of Property
+        :param _UpsertKeys: V2 upsert表 upsert键
+        :type UpsertKeys: list of str
+        """
+        self._TableBaseInfo = None
+        self._Columns = None
+        self._Partitions = None
+        self._Properties = None
+        self._UpsertKeys = None
+
+    @property
+    def TableBaseInfo(self):
+        r"""表基本信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        """
+        return self._TableBaseInfo
+
+    @TableBaseInfo.setter
+    def TableBaseInfo(self, TableBaseInfo):
+        self._TableBaseInfo = TableBaseInfo
+
+    @property
+    def Columns(self):
+        r"""字段信息
+        :rtype: list of TColumn
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Partitions(self):
+        r"""分区信息
+        :rtype: list of TPartition
+        """
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Properties(self):
+        r"""属性
+        :rtype: list of Property
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def UpsertKeys(self):
+        r"""V2 upsert表 upsert键
+        :rtype: list of str
+        """
+        return self._UpsertKeys
+
+    @UpsertKeys.setter
+    def UpsertKeys(self, UpsertKeys):
+        self._UpsertKeys = UpsertKeys
+
+
+    def _deserialize(self, params):
+        if params.get("TableBaseInfo") is not None:
+            self._TableBaseInfo = TableBaseInfo()
+            self._TableBaseInfo._deserialize(params.get("TableBaseInfo"))
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = TColumn()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        if params.get("Partitions") is not None:
+            self._Partitions = []
+            for item in params.get("Partitions"):
+                obj = TPartition()
+                obj._deserialize(item)
+                self._Partitions.append(obj)
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._UpsertKeys = params.get("UpsertKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateInternalTableResponse(AbstractModel):
+    r"""GenerateInternalTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Execution: 返回sql
+        :type Execution: :class:`tencentcloud.dlc.v20210125.models.Execution`
+        :param _IsTIcebergSql: 是否tciceberg
+        :type IsTIcebergSql: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Execution = None
+        self._IsTIcebergSql = None
+        self._RequestId = None
+
+    @property
+    def Execution(self):
+        r"""返回sql
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Execution`
+        """
+        return self._Execution
+
+    @Execution.setter
+    def Execution(self, Execution):
+        self._Execution = Execution
+
+    @property
+    def IsTIcebergSql(self):
+        r"""是否tciceberg
+        :rtype: bool
+        """
+        return self._IsTIcebergSql
+
+    @IsTIcebergSql.setter
+    def IsTIcebergSql(self, IsTIcebergSql):
+        self._IsTIcebergSql = IsTIcebergSql
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Execution") is not None:
+            self._Execution = Execution()
+            self._Execution._deserialize(params.get("Execution"))
+        self._IsTIcebergSql = params.get("IsTIcebergSql")
+        self._RequestId = params.get("RequestId")
+
+
 class GetOptimizerPolicyRequest(AbstractModel):
     r"""GetOptimizerPolicy请求参数结构体
 
@@ -32392,6 +32981,59 @@ class MCPTaskResultInfo(AbstractModel):
         self._CanDownload = params.get("CanDownload")
         self._QueryResultTime = params.get("QueryResultTime")
         self._IsResultOversize = params.get("IsResultOversize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetaDatabaseInfo(AbstractModel):
+    r"""元数据库基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 数据库名称。
+        :type DatabaseName: str
+        :param _Comment: 数据库描述信息，长度 0~2048。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        """
+        self._DatabaseName = None
+        self._Comment = None
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def Comment(self):
+        r"""数据库描述信息，长度 0~2048。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

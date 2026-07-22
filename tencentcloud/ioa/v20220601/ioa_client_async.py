@@ -391,6 +391,8 @@ class IoaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDeviceDetailListResponse:
         """
+        不使用了
+
         基于软件查看终端详情列表,私有化调用path为：capi/Software/DescribeDeviceDetailList
         """
         

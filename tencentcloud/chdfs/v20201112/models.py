@@ -950,6 +950,115 @@ class CreateMountPointResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePathProtectionRuleRequest(AbstractModel):
+    r"""CreatePathProtectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param _Name: 规则名称
+        :type Name: str
+        :param _Path: 指定保护路径
+        :type Path: str
+        :param _Status: 规则状态（1：打开；2：关闭）
+        :type Status: int
+        """
+        self._FileSystemId = None
+        self._Name = None
+        self._Path = None
+        self._Status = None
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        r"""指定保护路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Status(self):
+        r"""规则状态（1：打开；2：关闭）
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePathProtectionRuleResponse(AbstractModel):
+    r"""CreatePathProtectionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRestoreTasksRequest(AbstractModel):
     r"""CreateRestoreTasks请求参数结构体
 
@@ -1437,6 +1546,70 @@ class DeleteMountPointRequest(AbstractModel):
 
 class DeleteMountPointResponse(AbstractModel):
     r"""DeleteMountPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePathProtectionRuleRequest(AbstractModel):
+    r"""DeletePathProtectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PathProtectionRuleId: 路径保护规则ID
+        :type PathProtectionRuleId: int
+        """
+        self._PathProtectionRuleId = None
+
+    @property
+    def PathProtectionRuleId(self):
+        r"""路径保护规则ID
+        :rtype: int
+        """
+        return self._PathProtectionRuleId
+
+    @PathProtectionRuleId.setter
+    def PathProtectionRuleId(self, PathProtectionRuleId):
+        self._PathProtectionRuleId = PathProtectionRuleId
+
+
+    def _deserialize(self, params):
+        self._PathProtectionRuleId = params.get("PathProtectionRuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePathProtectionRuleResponse(AbstractModel):
+    r"""DeletePathProtectionRule返回参数结构体
 
     """
 
@@ -2401,6 +2574,90 @@ class DescribeMountPointsResponse(AbstractModel):
                 obj = MountPoint()
                 obj._deserialize(item)
                 self._MountPoints.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePathProtectionRulesRequest(AbstractModel):
+    r"""DescribePathProtectionRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        """
+        self._FileSystemId = None
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePathProtectionRulesResponse(AbstractModel):
+    r"""DescribePathProtectionRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PathProtectionRules: 路径保护规则列表
+        :type PathProtectionRules: list of PathProtectionRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PathProtectionRules = None
+        self._RequestId = None
+
+    @property
+    def PathProtectionRules(self):
+        r"""路径保护规则列表
+        :rtype: list of PathProtectionRule
+        """
+        return self._PathProtectionRules
+
+    @PathProtectionRules.setter
+    def PathProtectionRules(self, PathProtectionRules):
+        self._PathProtectionRules = PathProtectionRules
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PathProtectionRules") is not None:
+            self._PathProtectionRules = []
+            for item in params.get("PathProtectionRules"):
+                obj = PathProtectionRule()
+                obj._deserialize(item)
+                self._PathProtectionRules.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3638,6 +3895,115 @@ class ModifyMountPointResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPathProtectionRuleRequest(AbstractModel):
+    r"""ModifyPathProtectionRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PathProtectionRuleId: 路径保护规则ID
+        :type PathProtectionRuleId: int
+        :param _Name: 规则名称
+        :type Name: str
+        :param _Path: 指定保护路径
+        :type Path: str
+        :param _Status: 规则状态（1：打开；2：关闭）
+        :type Status: int
+        """
+        self._PathProtectionRuleId = None
+        self._Name = None
+        self._Path = None
+        self._Status = None
+
+    @property
+    def PathProtectionRuleId(self):
+        r"""路径保护规则ID
+        :rtype: int
+        """
+        return self._PathProtectionRuleId
+
+    @PathProtectionRuleId.setter
+    def PathProtectionRuleId(self, PathProtectionRuleId):
+        self._PathProtectionRuleId = PathProtectionRuleId
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        r"""指定保护路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Status(self):
+        r"""规则状态（1：打开；2：关闭）
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PathProtectionRuleId = params.get("PathProtectionRuleId")
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPathProtectionRuleResponse(AbstractModel):
+    r"""ModifyPathProtectionRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyResourceTagsRequest(AbstractModel):
     r"""ModifyResourceTags请求参数结构体
 
@@ -3917,6 +4283,102 @@ class MountPoint(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._AccessGroupIds = params.get("AccessGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PathProtectionRule(AbstractModel):
+    r"""路径保护规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PathProtectionRuleId: 路径保护规则ID
+        :type PathProtectionRuleId: int
+        :param _Name: 规则名称
+        :type Name: str
+        :param _Path: 指定保护路径
+        :type Path: str
+        :param _Status: 规则状态（1：打开；2：关闭）
+        :type Status: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self._PathProtectionRuleId = None
+        self._Name = None
+        self._Path = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def PathProtectionRuleId(self):
+        r"""路径保护规则ID
+        :rtype: int
+        """
+        return self._PathProtectionRuleId
+
+    @PathProtectionRuleId.setter
+    def PathProtectionRuleId(self, PathProtectionRuleId):
+        self._PathProtectionRuleId = PathProtectionRuleId
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        r"""指定保护路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Status(self):
+        r"""规则状态（1：打开；2：关闭）
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._PathProtectionRuleId = params.get("PathProtectionRuleId")
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

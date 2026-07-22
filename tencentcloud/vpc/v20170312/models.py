@@ -37984,14 +37984,14 @@ class DescribeSubnetResourceDashboardRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubnetIds: Subnet实例ID，例如：subnet-f1xjkw1b。
+        :param _SubnetIds: <p>Subnet实例ID，例如：subnet-f1xjkw1b。</p>
         :type SubnetIds: list of str
         """
         self._SubnetIds = None
 
     @property
     def SubnetIds(self):
-        r"""Subnet实例ID，例如：subnet-f1xjkw1b。
+        r"""<p>Subnet实例ID，例如：subnet-f1xjkw1b。</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -38020,7 +38020,7 @@ class DescribeSubnetResourceDashboardResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceStatisticsSet: 资源统计结果。
+        :param _ResourceStatisticsSet: <p>资源统计结果。</p>
         :type ResourceStatisticsSet: list of ResourceStatistics
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -38030,7 +38030,7 @@ class DescribeSubnetResourceDashboardResponse(AbstractModel):
 
     @property
     def ResourceStatisticsSet(self):
-        r"""资源统计结果。
+        r"""<p>资源统计结果。</p>
         :rtype: list of ResourceStatistics
         """
         return self._ResourceStatisticsSet
@@ -40685,14 +40685,14 @@ class DescribeVpcResourceDashboardRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcIds: Vpc实例ID，例如：vpc-f1xjkw1b。
+        :param _VpcIds: <p>Vpc实例ID，例如：vpc-f1xjkw1b。</p>
         :type VpcIds: list of str
         """
         self._VpcIds = None
 
     @property
     def VpcIds(self):
-        r"""Vpc实例ID，例如：vpc-f1xjkw1b。
+        r"""<p>Vpc实例ID，例如：vpc-f1xjkw1b。</p>
         :rtype: list of str
         """
         return self._VpcIds
@@ -40721,7 +40721,7 @@ class DescribeVpcResourceDashboardResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceDashboardSet: 资源对象列表。
+        :param _ResourceDashboardSet: <p>资源对象列表。</p>
         :type ResourceDashboardSet: list of ResourceDashboard
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40731,7 +40731,7 @@ class DescribeVpcResourceDashboardResponse(AbstractModel):
 
     @property
     def ResourceDashboardSet(self):
-        r"""资源对象列表。
+        r"""<p>资源对象列表。</p>
         :rtype: list of ResourceDashboard
         """
         return self._ResourceDashboardSet

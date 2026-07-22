@@ -133,6 +133,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AlterTableComment(
+            self,
+            request: models.AlterTableCommentRequest,
+            opts: Dict = None,
+    ) -> models.AlterTableCommentResponse:
+        """
+        修改表备注
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AlterTableComment"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AlterTableCommentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AssignMangedTableProperties(
             self,
             request: models.AssignMangedTablePropertiesRequest,
@@ -583,6 +601,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMetaDatabase(
+            self,
+            request: models.CreateMetaDatabaseRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetaDatabaseResponse:
+        """
+        本接口（CreateMetaDatabase）用于创建元数据库
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetaDatabase"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetaDatabaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateNotebookSession(
             self,
             request: models.CreateNotebookSessionRequest,
@@ -994,6 +1030,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DeleteDataMaskStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDataMaskStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteMetaDatabase(
+            self,
+            request: models.DeleteMetaDatabaseRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMetaDatabaseResponse:
+        """
+        本接口（DeleteMetaDatabase）用于一键删除元数据库
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMetaDatabase"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMetaDatabaseResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1462,6 +1516,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DescribeDataMaskStrategies"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDataMaskStrategiesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDatabase(
+            self,
+            request: models.DescribeDatabaseRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDatabaseResponse:
+        """
+        本接口（DescribeDatabase）,查询数据库详细信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDatabase"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDatabaseResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2686,6 +2758,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "GenerateCreateMangedTableSql"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GenerateCreateMangedTableSqlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GenerateInternalTable(
+            self,
+            request: models.GenerateInternalTableRequest,
+            opts: Dict = None,
+    ) -> models.GenerateInternalTableResponse:
+        """
+        建表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GenerateInternalTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GenerateInternalTableResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

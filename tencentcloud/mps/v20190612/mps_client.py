@@ -2105,6 +2105,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAigcTaskStatus(self, request):
+        r"""查询AIGC场景任务接口
+
+        :param request: Request instance for DescribeAigcTaskStatus.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcTaskStatusRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAigcTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAigcVideoTask(self, request):
         r"""调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
 
@@ -4683,6 +4706,8 @@ class MpsClient(AbstractClient):
         1. 格式转换；
         2. 图像增强；
         3. 图像擦除;
+        4. 数字水印；
+        5. 美颜滤镜；
 
         :param request: Request instance for ProcessImage.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessImageRequest`

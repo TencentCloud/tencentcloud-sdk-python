@@ -10830,10 +10830,13 @@ class DescribeModelServiceGroupRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: 服务组ID
         :type ServiceGroupId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _ServiceCategory: 服务分类
         :type ServiceCategory: str
         """
         self._ServiceGroupId = None
+        self._TiProjectId = None
         self._ServiceCategory = None
 
     @property
@@ -10846,6 +10849,17 @@ class DescribeModelServiceGroupRequest(AbstractModel):
     @ServiceGroupId.setter
     def ServiceGroupId(self, ServiceGroupId):
         self._ServiceGroupId = ServiceGroupId
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def ServiceCategory(self):
@@ -10865,6 +10879,7 @@ class DescribeModelServiceGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
+        self._TiProjectId = params.get("TiProjectId")
         self._ServiceCategory = params.get("ServiceCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -11284,10 +11299,13 @@ class DescribeModelServiceRequest(AbstractModel):
         r"""
         :param _ServiceId: 服务id
         :type ServiceId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _ServiceCategory: 服务分类
         :type ServiceCategory: str
         """
         self._ServiceId = None
+        self._TiProjectId = None
         self._ServiceCategory = None
 
     @property
@@ -11300,6 +11318,17 @@ class DescribeModelServiceRequest(AbstractModel):
     @ServiceId.setter
     def ServiceId(self, ServiceId):
         self._ServiceId = ServiceId
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def ServiceCategory(self):
@@ -11319,6 +11348,7 @@ class DescribeModelServiceRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
+        self._TiProjectId = params.get("TiProjectId")
         self._ServiceCategory = params.get("ServiceCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

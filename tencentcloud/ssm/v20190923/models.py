@@ -912,23 +912,23 @@ class DeleteSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 指定需要删除的凭据名称。
+        :param _SecretName: <p>指定需要删除的凭据名称。</p>
         :type SecretName: str
-        :param _RecoveryWindowInDays: 指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。
-当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。
+        :param _RecoveryWindowInDays: <p>指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。<br>当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。</p>
         :type RecoveryWindowInDays: int
-        :param _CleanSSHKey: 当凭据类型为SSH密钥对凭据时，此字段有效，取值：
-True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。
-False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。
+        :param _CleanSSHKey: <p>当凭据类型为SSH密钥对凭据时，此字段有效，取值：<br>True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。<br>False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。</p>
         :type CleanSSHKey: bool
+        :param _DeleteMode: <p>删除模式</p><p>枚举值：</p><ul><li>0： 仅删除凭据</li><li>1： 删除凭据和账号</li></ul>
+        :type DeleteMode: int
         """
         self._SecretName = None
         self._RecoveryWindowInDays = None
         self._CleanSSHKey = None
+        self._DeleteMode = None
 
     @property
     def SecretName(self):
-        r"""指定需要删除的凭据名称。
+        r"""<p>指定需要删除的凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -939,8 +939,7 @@ False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进�
 
     @property
     def RecoveryWindowInDays(self):
-        r"""指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。
-当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。
+        r"""<p>指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。<br>当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。</p>
         :rtype: int
         """
         return self._RecoveryWindowInDays
@@ -951,9 +950,7 @@ False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进�
 
     @property
     def CleanSSHKey(self):
-        r"""当凭据类型为SSH密钥对凭据时，此字段有效，取值：
-True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。
-False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。
+        r"""<p>当凭据类型为SSH密钥对凭据时，此字段有效，取值：<br>True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。<br>False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。</p>
         :rtype: bool
         """
         return self._CleanSSHKey
@@ -962,11 +959,23 @@ False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进�
     def CleanSSHKey(self, CleanSSHKey):
         self._CleanSSHKey = CleanSSHKey
 
+    @property
+    def DeleteMode(self):
+        r"""<p>删除模式</p><p>枚举值：</p><ul><li>0： 仅删除凭据</li><li>1： 删除凭据和账号</li></ul>
+        :rtype: int
+        """
+        return self._DeleteMode
+
+    @DeleteMode.setter
+    def DeleteMode(self, DeleteMode):
+        self._DeleteMode = DeleteMode
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
         self._RecoveryWindowInDays = params.get("RecoveryWindowInDays")
         self._CleanSSHKey = params.get("CleanSSHKey")
+        self._DeleteMode = params.get("DeleteMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -984,20 +993,23 @@ class DeleteSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 指定删除的凭据名称。
+        :param _SecretName: <p>指定删除的凭据名称。</p>
         :type SecretName: str
-        :param _DeleteTime: 凭据删除的日期，unix时间戳。
+        :param _DeleteTime: <p>凭据删除的日期，unix时间戳。</p>
         :type DeleteTime: int
+        :param _FlowID: <p>异步删除任务 ID</p>
+        :type FlowID: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
         self._DeleteTime = None
+        self._FlowID = None
         self._RequestId = None
 
     @property
     def SecretName(self):
-        r"""指定删除的凭据名称。
+        r"""<p>指定删除的凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -1008,7 +1020,7 @@ class DeleteSecretResponse(AbstractModel):
 
     @property
     def DeleteTime(self):
-        r"""凭据删除的日期，unix时间戳。
+        r"""<p>凭据删除的日期，unix时间戳。</p>
         :rtype: int
         """
         return self._DeleteTime
@@ -1016,6 +1028,17 @@ class DeleteSecretResponse(AbstractModel):
     @DeleteTime.setter
     def DeleteTime(self, DeleteTime):
         self._DeleteTime = DeleteTime
+
+    @property
+    def FlowID(self):
+        r"""<p>异步删除任务 ID</p>
+        :rtype: int
+        """
+        return self._FlowID
+
+    @FlowID.setter
+    def FlowID(self, FlowID):
+        self._FlowID = FlowID
 
     @property
     def RequestId(self):
@@ -1032,6 +1055,7 @@ class DeleteSecretResponse(AbstractModel):
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
         self._DeleteTime = params.get("DeleteTime")
+        self._FlowID = params.get("FlowID")
         self._RequestId = params.get("RequestId")
 
 
@@ -1369,14 +1393,14 @@ class DescribeRotationHistoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 指定需要获取凭据轮转历史的凭据名称。
+        :param _SecretName: <p>指定需要获取凭据轮转历史的凭据名称。</p>
         :type SecretName: str
         """
         self._SecretName = None
 
     @property
     def SecretName(self):
-        r"""指定需要获取凭据轮转历史的凭据名称。
+        r"""<p>指定需要获取凭据轮转历史的凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -1405,20 +1429,23 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VersionIDs: 版本号列表
+        :param _VersionIDs: <p>版本号列表</p>
         :type VersionIDs: list of str
-        :param _TotalCount: 版本号个数，可以给用户展示的版本号个数上限为10个。
+        :param _TotalCount: <p>版本号个数，可以给用户展示的版本号个数上限为10个。</p>
         :type TotalCount: int
+        :param _AccountInfoList: <p>凭据对应账号相关信息</p>
+        :type AccountInfoList: list of SecretAccountInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VersionIDs = None
         self._TotalCount = None
+        self._AccountInfoList = None
         self._RequestId = None
 
     @property
     def VersionIDs(self):
-        r"""版本号列表
+        r"""<p>版本号列表</p>
         :rtype: list of str
         """
         return self._VersionIDs
@@ -1429,7 +1456,7 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""版本号个数，可以给用户展示的版本号个数上限为10个。
+        r"""<p>版本号个数，可以给用户展示的版本号个数上限为10个。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -1437,6 +1464,17 @@ class DescribeRotationHistoryResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def AccountInfoList(self):
+        r"""<p>凭据对应账号相关信息</p>
+        :rtype: list of SecretAccountInfo
+        """
+        return self._AccountInfoList
+
+    @AccountInfoList.setter
+    def AccountInfoList(self, AccountInfoList):
+        self._AccountInfoList = AccountInfoList
 
     @property
     def RequestId(self):
@@ -1453,6 +1491,12 @@ class DescribeRotationHistoryResponse(AbstractModel):
     def _deserialize(self, params):
         self._VersionIDs = params.get("VersionIDs")
         self._TotalCount = params.get("TotalCount")
+        if params.get("AccountInfoList") is not None:
+            self._AccountInfoList = []
+            for item in params.get("AccountInfoList"):
+                obj = SecretAccountInfo()
+                obj._deserialize(item)
+                self._AccountInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1541,6 +1585,8 @@ class DescribeSecretResponse(AbstractModel):
         :type CreateUinString: str
         :param _TargetUinString: <p>所属用户UIN 字符串</p>
         :type TargetUinString: str
+        :param _AccountInfoList: <p>对应云产品的账号信息</p>
+        :type AccountInfoList: list of SecretAccountInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1565,6 +1611,7 @@ class DescribeSecretResponse(AbstractModel):
         self._EncryptSwitching = None
         self._CreateUinString = None
         self._TargetUinString = None
+        self._AccountInfoList = None
         self._RequestId = None
 
     @property
@@ -1799,6 +1846,17 @@ class DescribeSecretResponse(AbstractModel):
         self._TargetUinString = TargetUinString
 
     @property
+    def AccountInfoList(self):
+        r"""<p>对应云产品的账号信息</p>
+        :rtype: list of SecretAccountInfo
+        """
+        return self._AccountInfoList
+
+    @AccountInfoList.setter
+    def AccountInfoList(self, AccountInfoList):
+        self._AccountInfoList = AccountInfoList
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1832,6 +1890,12 @@ class DescribeSecretResponse(AbstractModel):
         self._EncryptSwitching = params.get("EncryptSwitching")
         self._CreateUinString = params.get("CreateUinString")
         self._TargetUinString = params.get("TargetUinString")
+        if params.get("AccountInfoList") is not None:
+            self._AccountInfoList = []
+            for item in params.get("AccountInfoList"):
+                obj = SecretAccountInfo()
+                obj._deserialize(item)
+                self._AccountInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3518,6 +3582,87 @@ class RotateProductSecretResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowID = params.get("FlowID")
         self._RequestId = params.get("RequestId")
+
+
+class SecretAccountInfo(AbstractModel):
+    r"""凭据对应的账户信息(用户名、主机、版本号、轮转时间)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountName: <p>账户名称</p>
+        :type AccountName: str
+        :param _Host: <p>账户登录主机</p>
+        :type Host: list of str
+        :param _Version: <p>账号状态（生效中/待轮转）</p>
+        :type Version: str
+        :param _RotatedTime: <p>账号轮转时间</p>
+        :type RotatedTime: str
+        """
+        self._AccountName = None
+        self._Host = None
+        self._Version = None
+        self._RotatedTime = None
+
+    @property
+    def AccountName(self):
+        r"""<p>账户名称</p>
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Host(self):
+        r"""<p>账户登录主机</p>
+        :rtype: list of str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Version(self):
+        r"""<p>账号状态（生效中/待轮转）</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def RotatedTime(self):
+        r"""<p>账号轮转时间</p>
+        :rtype: str
+        """
+        return self._RotatedTime
+
+    @RotatedTime.setter
+    def RotatedTime(self, RotatedTime):
+        self._RotatedTime = RotatedTime
+
+
+    def _deserialize(self, params):
+        self._AccountName = params.get("AccountName")
+        self._Host = params.get("Host")
+        self._Version = params.get("Version")
+        self._RotatedTime = params.get("RotatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SecretMetadata(AbstractModel):

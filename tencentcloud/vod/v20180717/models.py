@@ -13974,6 +13974,42 @@ class AigcVideoRedrawTask(AbstractModel):
         
 
 
+class AigcVideoRedrawTaskInfo(AbstractModel):
+    r"""AIGC 视频转绘人物参数信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Style: <p>用于描述转绘风格。限制50字符。</p>
+        :type Style: str
+        """
+        self._Style = None
+
+    @property
+    def Style(self):
+        r"""<p>用于描述转绘风格。限制50字符。</p>
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+
+    def _deserialize(self, params):
+        self._Style = params.get("Style")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcVideoRedrawTaskInput(AbstractModel):
     r"""AIGC 视频转绘任务的输入。
 
@@ -13983,10 +14019,13 @@ class AigcVideoRedrawTaskInput(AbstractModel):
         r"""
         :param _FileInfo: <p>AIGC 视频转绘任务输入文件信息。</p>
         :type FileInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
+        :param _TaskInfo: <p>AIGC 视频转绘任务参数信息。</p>
+        :type TaskInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInfo`
         :param _OutputConfig: <p>AIGC 视频转绘输出配置。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawOutputConfig`
         """
         self._FileInfo = None
+        self._TaskInfo = None
         self._OutputConfig = None
 
     @property
@@ -13999,6 +14038,17 @@ class AigcVideoRedrawTaskInput(AbstractModel):
     @FileInfo.setter
     def FileInfo(self, FileInfo):
         self._FileInfo = FileInfo
+
+    @property
+    def TaskInfo(self):
+        r"""<p>AIGC 视频转绘任务参数信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
 
     @property
     def OutputConfig(self):
@@ -14016,6 +14066,9 @@ class AigcVideoRedrawTaskInput(AbstractModel):
         if params.get("FileInfo") is not None:
             self._FileInfo = AigcVideoRedrawTaskInputFileInfo()
             self._FileInfo._deserialize(params.get("FileInfo"))
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = AigcVideoRedrawTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
         if params.get("OutputConfig") is not None:
             self._OutputConfig = AigcVideoRedrawOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))

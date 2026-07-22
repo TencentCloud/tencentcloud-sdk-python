@@ -22544,6 +22544,87 @@ class CreateDocToVideoTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateImageConfig(AbstractModel):
+    r"""生图任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>生图模型</p><p>枚举值：</p><ul><li>WAND-create-1.0-lite： 轻量生图模型</li><li>WAND-create-1.0-flash： 质量-速度平衡生图模型</li><li>WAND-create-1.0-pro： 高质量生图模型</li></ul>
+        :type Model: str
+        :param _Prompt: <p>生图指令</p>
+        :type Prompt: str
+        :param _Resolution: <p>输出图片的分辨率</p><p>枚举值：</p><ul><li>1K： 短边分辨率 1080</li><li>2K： 短边分辨率 1440</li><li>4K： 短边分辨率 2160</li></ul><p>默认值：1K</p>
+        :type Resolution: str
+        :param _AspectRatio: <p>输出图片的宽高比</p><p>枚举值：</p><ul><li>1:1： 宽高比 1:1</li><li>2:3： 宽高比 2:3</li><li>3:2： 宽高比 3:2</li><li>3:4： 宽高比 3:4</li><li>4:3： 宽高比 4:3</li><li>9:16： 宽高比 9:16</li><li>16:9： 宽高比 16:9</li></ul><p>默认值：1:1</p>
+        :type AspectRatio: str
+        """
+        self._Model = None
+        self._Prompt = None
+        self._Resolution = None
+        self._AspectRatio = None
+
+    @property
+    def Model(self):
+        r"""<p>生图模型</p><p>枚举值：</p><ul><li>WAND-create-1.0-lite： 轻量生图模型</li><li>WAND-create-1.0-flash： 质量-速度平衡生图模型</li><li>WAND-create-1.0-pro： 高质量生图模型</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Prompt(self):
+        r"""<p>生图指令</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Resolution(self):
+        r"""<p>输出图片的分辨率</p><p>枚举值：</p><ul><li>1K： 短边分辨率 1080</li><li>2K： 短边分辨率 1440</li><li>4K： 短边分辨率 2160</li></ul><p>默认值：1K</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def AspectRatio(self):
+        r"""<p>输出图片的宽高比</p><p>枚举值：</p><ul><li>1:1： 宽高比 1:1</li><li>2:3： 宽高比 2:3</li><li>3:2： 宽高比 3:2</li><li>3:4： 宽高比 3:4</li><li>4:3： 宽高比 4:3</li><li>9:16： 宽高比 9:16</li><li>16:9： 宽高比 16:9</li></ul><p>默认值：1:1</p>
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Prompt = params.get("Prompt")
+        self._Resolution = params.get("Resolution")
+        self._AspectRatio = params.get("AspectRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateImageSpriteTemplateRequest(AbstractModel):
     r"""CreateImageSpriteTemplate请求参数结构体
 
@@ -32098,6 +32179,222 @@ class DescribeAigcImageTaskResponse(AbstractModel):
         self._Status = params.get("Status")
         self._ImageUrls = params.get("ImageUrls")
         self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcTaskStatusRequest(AbstractModel):
+    r"""DescribeAigcTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcTaskStatusResponse(AbstractModel):
+    r"""DescribeAigcTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TaskStatus: <p>任务状态描述</p><p>枚举值：</p><ul><li>PENDING： 任务等待调度</li><li>RUNNING： 任务运行中</li><li>FINISHED： 任务执行成功</li><li>STOP： 任务被中止</li><li>FAILED： 任务失败</li><li>TIMEOUT： 任务超时</li></ul>
+        :type TaskStatus: str
+        :param _OutputUrl: <p>输出url</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputUrl: str
+        :param _CreateTime: <p>任务创建时间</p>
+        :type CreateTime: str
+        :param _ScheduledTime: <p>任务调度时间</p>
+        :type ScheduledTime: str
+        :param _FinishedTime: <p>任务完成时间</p>
+        :type FinishedTime: str
+        :param _TaskResultCode: <p>任务错误码</p>
+        :type TaskResultCode: int
+        :param _TaskResultMsg: <p>任务返回错误信息</p>
+        :type TaskResultMsg: str
+        :param _RequestBody: <p>请求结构体</p>
+        :type RequestBody: str
+        :param _TaskType: <p>任务类型</p>
+        :type TaskType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskStatus = None
+        self._OutputUrl = None
+        self._CreateTime = None
+        self._ScheduledTime = None
+        self._FinishedTime = None
+        self._TaskResultCode = None
+        self._TaskResultMsg = None
+        self._RequestBody = None
+        self._TaskType = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskStatus(self):
+        r"""<p>任务状态描述</p><p>枚举值：</p><ul><li>PENDING： 任务等待调度</li><li>RUNNING： 任务运行中</li><li>FINISHED： 任务执行成功</li><li>STOP： 任务被中止</li><li>FAILED： 任务失败</li><li>TIMEOUT： 任务超时</li></ul>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def OutputUrl(self):
+        r"""<p>输出url</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OutputUrl
+
+    @OutputUrl.setter
+    def OutputUrl(self, OutputUrl):
+        self._OutputUrl = OutputUrl
+
+    @property
+    def CreateTime(self):
+        r"""<p>任务创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ScheduledTime(self):
+        r"""<p>任务调度时间</p>
+        :rtype: str
+        """
+        return self._ScheduledTime
+
+    @ScheduledTime.setter
+    def ScheduledTime(self, ScheduledTime):
+        self._ScheduledTime = ScheduledTime
+
+    @property
+    def FinishedTime(self):
+        r"""<p>任务完成时间</p>
+        :rtype: str
+        """
+        return self._FinishedTime
+
+    @FinishedTime.setter
+    def FinishedTime(self, FinishedTime):
+        self._FinishedTime = FinishedTime
+
+    @property
+    def TaskResultCode(self):
+        r"""<p>任务错误码</p>
+        :rtype: int
+        """
+        return self._TaskResultCode
+
+    @TaskResultCode.setter
+    def TaskResultCode(self, TaskResultCode):
+        self._TaskResultCode = TaskResultCode
+
+    @property
+    def TaskResultMsg(self):
+        r"""<p>任务返回错误信息</p>
+        :rtype: str
+        """
+        return self._TaskResultMsg
+
+    @TaskResultMsg.setter
+    def TaskResultMsg(self, TaskResultMsg):
+        self._TaskResultMsg = TaskResultMsg
+
+    @property
+    def RequestBody(self):
+        r"""<p>请求结构体</p>
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._OutputUrl = params.get("OutputUrl")
+        self._CreateTime = params.get("CreateTime")
+        self._ScheduledTime = params.get("ScheduledTime")
+        self._FinishedTime = params.get("FinishedTime")
+        self._TaskResultCode = params.get("TaskResultCode")
+        self._TaskResultMsg = params.get("TaskResultMsg")
+        self._RequestBody = params.get("RequestBody")
+        self._TaskType = params.get("TaskType")
         self._RequestId = params.get("RequestId")
 
 
@@ -52321,6 +52618,8 @@ class ImageTaskInput(AbstractModel):
         :type AiTryOnConfig: :class:`tencentcloud.mps.v20190612.models.AiTryOnConfig`
         :param _AiPosterSuiteConfig: <p>Ai套图配置。</p>
         :type AiPosterSuiteConfig: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
+        :param _CreateImageConfig: <p>生图任务配置</p>
+        :type CreateImageConfig: :class:`tencentcloud.mps.v20190612.models.CreateImageConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
@@ -52330,6 +52629,7 @@ class ImageTaskInput(AbstractModel):
         self._TransformConfig = None
         self._AiTryOnConfig = None
         self._AiPosterSuiteConfig = None
+        self._CreateImageConfig = None
 
     @property
     def EncodeConfig(self):
@@ -52423,6 +52723,17 @@ class ImageTaskInput(AbstractModel):
     def AiPosterSuiteConfig(self, AiPosterSuiteConfig):
         self._AiPosterSuiteConfig = AiPosterSuiteConfig
 
+    @property
+    def CreateImageConfig(self):
+        r"""<p>生图任务配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateImageConfig`
+        """
+        return self._CreateImageConfig
+
+    @CreateImageConfig.setter
+    def CreateImageConfig(self, CreateImageConfig):
+        self._CreateImageConfig = CreateImageConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -52449,6 +52760,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("AiPosterSuiteConfig") is not None:
             self._AiPosterSuiteConfig = AiPosterSuiteConfig()
             self._AiPosterSuiteConfig._deserialize(params.get("AiPosterSuiteConfig"))
+        if params.get("CreateImageConfig") is not None:
+            self._CreateImageConfig = CreateImageConfig()
+            self._CreateImageConfig._deserialize(params.get("CreateImageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

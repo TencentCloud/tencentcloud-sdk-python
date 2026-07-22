@@ -133,6 +133,24 @@ class ChdfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePathProtectionRule(
+            self,
+            request: models.CreatePathProtectionRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreatePathProtectionRuleResponse:
+        """
+        创建路径保护规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePathProtectionRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePathProtectionRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRestoreTasks(
             self,
             request: models.CreateRestoreTasksRequest,
@@ -254,6 +272,24 @@ class ChdfsClient(AbstractClient):
         kwargs["action"] = "DeleteMountPoint"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteMountPointResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePathProtectionRule(
+            self,
+            request: models.DeletePathProtectionRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeletePathProtectionRuleResponse:
+        """
+        删除路径保护规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePathProtectionRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePathProtectionRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -421,6 +457,24 @@ class ChdfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePathProtectionRules(
+            self,
+            request: models.DescribePathProtectionRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribePathProtectionRulesResponse:
+        """
+        通过文件系统ID查看路径保护规则列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePathProtectionRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePathProtectionRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeResourceTags(
             self,
             request: models.DescribeResourceTagsRequest,
@@ -578,6 +632,24 @@ class ChdfsClient(AbstractClient):
         kwargs["action"] = "ModifyMountPoint"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyMountPointResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPathProtectionRule(
+            self,
+            request: models.ModifyPathProtectionRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPathProtectionRuleResponse:
+        """
+        修改路径保护规则属性，需要指定路径保护规则ID，支持修改规则名称、路径和状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPathProtectionRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPathProtectionRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

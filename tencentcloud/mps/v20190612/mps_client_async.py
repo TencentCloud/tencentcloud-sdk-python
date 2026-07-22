@@ -1659,6 +1659,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAigcTaskStatus(
+            self,
+            request: models.DescribeAigcTaskStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcTaskStatusResponse:
+        """
+        查询AIGC场景任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcTaskStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAigcVideoTask(
             self,
             request: models.DescribeAigcVideoTaskRequest,
@@ -3687,6 +3705,8 @@ class MpsClient(AbstractClient):
         1. 格式转换；
         2. 图像增强；
         3. 图像擦除;
+        4. 数字水印；
+        5. 美颜滤镜；
         """
         
         kwargs = {}

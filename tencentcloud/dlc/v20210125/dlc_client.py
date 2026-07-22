@@ -164,6 +164,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AlterTableComment(self, request):
+        r"""修改表备注
+
+        :param request: Request instance for AlterTableComment.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.AlterTableCommentRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.AlterTableCommentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AlterTableComment", params, headers=headers)
+            response = json.loads(body)
+            model = models.AlterTableCommentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AssignMangedTableProperties(self, request):
         r"""分配原生表表属性
 
@@ -739,6 +762,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMetaDatabase(self, request):
+        r"""本接口（CreateMetaDatabase）用于创建元数据库
+
+        :param request: Request instance for CreateMetaDatabase.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateMetaDatabaseRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateMetaDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMetaDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMetaDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateNotebookSession(self, request):
         r"""本接口（CreateNotebookSession）用于创建交互式session（notebook）
 
@@ -1261,6 +1307,29 @@ class DlcClient(AbstractClient):
             body = self.call("DeleteDataMaskStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDataMaskStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteMetaDatabase(self, request):
+        r"""本接口（DeleteMetaDatabase）用于一键删除元数据库
+
+        :param request: Request instance for DeleteMetaDatabase.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteMetaDatabaseRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteMetaDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMetaDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMetaDatabaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1859,6 +1928,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeDataMaskStrategies", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDataMaskStrategiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDatabase(self, request):
+        r"""本接口（DescribeDatabase）,查询数据库详细信息
+
+        :param request: Request instance for DescribeDatabase.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDatabaseRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3423,6 +3515,29 @@ class DlcClient(AbstractClient):
             body = self.call("GenerateCreateMangedTableSql", params, headers=headers)
             response = json.loads(body)
             model = models.GenerateCreateMangedTableSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GenerateInternalTable(self, request):
+        r"""建表
+
+        :param request: Request instance for GenerateInternalTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GenerateInternalTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GenerateInternalTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateInternalTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateInternalTableResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

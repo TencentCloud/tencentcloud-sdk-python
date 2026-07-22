@@ -164,6 +164,29 @@ class ChdfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePathProtectionRule(self, request):
+        r"""创建路径保护规则。
+
+        :param request: Request instance for CreatePathProtectionRule.
+        :type request: :class:`tencentcloud.chdfs.v20201112.models.CreatePathProtectionRuleRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.CreatePathProtectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePathProtectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePathProtectionRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRestoreTasks(self, request):
         r"""批量创建回热任务，回热任务ID、状态和创建时间无需填写。
 
@@ -316,6 +339,29 @@ class ChdfsClient(AbstractClient):
             body = self.call("DeleteMountPoint", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteMountPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePathProtectionRule(self, request):
+        r"""删除路径保护规则。
+
+        :param request: Request instance for DeletePathProtectionRule.
+        :type request: :class:`tencentcloud.chdfs.v20201112.models.DeletePathProtectionRuleRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.DeletePathProtectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePathProtectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePathProtectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -532,6 +578,29 @@ class ChdfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePathProtectionRules(self, request):
+        r"""通过文件系统ID查看路径保护规则列表。
+
+        :param request: Request instance for DescribePathProtectionRules.
+        :type request: :class:`tencentcloud.chdfs.v20201112.models.DescribePathProtectionRulesRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.DescribePathProtectionRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePathProtectionRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePathProtectionRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourceTags(self, request):
         r"""通过文件系统ID查看资源标签列表。
 
@@ -730,6 +799,29 @@ class ChdfsClient(AbstractClient):
             body = self.call("ModifyMountPoint", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMountPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPathProtectionRule(self, request):
+        r"""修改路径保护规则属性，需要指定路径保护规则ID，支持修改规则名称、路径和状态。
+
+        :param request: Request instance for ModifyPathProtectionRule.
+        :type request: :class:`tencentcloud.chdfs.v20201112.models.ModifyPathProtectionRuleRequest`
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.ModifyPathProtectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPathProtectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPathProtectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
